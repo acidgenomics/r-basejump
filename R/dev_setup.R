@@ -1,9 +1,13 @@
 # http://r-pkgs.had.co.nz/intro.html
-install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
-install.packages("rstudioapi")
-devtools::install_github("hadley/devtools")
-library(devtools)
-has_devel()
 
-install.packages("lintr")
-lintr::lint_package()
+dev_setup <- function() {
+  install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
+  install.packages("rstudioapi")
+
+  devtools::install_github("hadley/devtools")
+  library(devtools)
+  has_devel()
+
+  install.packages("lintr")
+  lintr::lint_package()
+}
