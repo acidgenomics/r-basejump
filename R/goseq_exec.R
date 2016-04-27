@@ -1,7 +1,21 @@
-goseq_run <- function(deg,
-                      bg,
-                      envir = .GlobalEnv,
-                      save_dir = ".") {
+#' Execute goseq
+#'
+#' Allows for input of differentially expressed genes (DEG),
+#' background genes (bg), output environemnt, and data save folder.
+#'
+#' @param deg
+#' @param bg
+#' @param envir
+#' @param save_dir
+#'
+#' @return
+#' @export
+#'
+#' @examples
+goseq_exec <- function(deg,
+                       bg,
+                       envir = .GlobalEnv,
+                       save_dir = ".") {
   head(deg)
   GO_input <- as.integer(bg %in% deg)
   names(GO_input) <- bg

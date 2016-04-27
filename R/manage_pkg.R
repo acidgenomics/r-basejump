@@ -1,26 +1,26 @@
-manage_bioc <- function(bioc_pkg) {
-  install_bioc_pkg <-
-    bioc_pkg[!(bioc_pkg %in% installed.packages()[, "Package"])]
-  if (length(install_bioc_pkg) > 0) {
+#' Manage R packages.
+#'
+#' This function allows for dynamic install and loading of packages from CRAN,
+#' Bioconductor, and GitHub.
+#'
+#' @param pkg
+#' @param source
+#'
+#' @return
+#' @export
+#'
+#' @examples
+manage_pkg <- function(pkg, source = "cran") {
+  install_pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (source == "cran" & length(install_pkg) > 0) {
+    install.packages(install_pkg)
+  }
+  if (source == "bioc" & length(install_pkg) > 0) {
     source("https://bioconductor.org/biocLite.R")
-    biocLite()
-    biocLite(install_bioc_pkg)
+    biocLite(install_pkg)
   }
-  invisible(lapply(bioc_pkg, require, character.only = TRUE))
-}
-manage_cran <- function(cran_pkg) {
-  install_cran_pkg <-
-    cran_pkg[!(cran_pkg %in% installed.packages()[, "Package"])]
-  if (length(install_cran_pkg) > 0) {
-    install.packages(install_cran_pkg)
-  }
-  invisible(lapply(cran_pkg, require, character.only = TRUE))
-}
-manage_github <- function(github_pkg) {
-  install_github_pkg <-
-    github_pkg[!(github_pkg %in% installed.packages()[, "Package"])]
-  if (length(install_github_pkg) > 0) {
+  if (source == "github" & length(install_pkg) > 0) {
+    library(devtools)
     devtools::install_github(install_github_pkg)
   }
-  invisible(lapply(github_pkg, require, character.only = TRUE))
 }
