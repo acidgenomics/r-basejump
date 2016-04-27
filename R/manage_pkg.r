@@ -16,3 +16,11 @@ manage_cran <- function(cran_pkg) {
   }
   invisible(lapply(cran_pkg, require, character.only = TRUE))
 }
+manage_github <- function(github_pkg) {
+  install_github_pkg <-
+    github_pkg[!(github_pkg %in% installed.packages()[, "Package"])]
+  if (length(install_github_pkg) > 0) {
+    devtools::install_github(install_github_pkg)
+  }
+  invisible(lapply(github_pkg, require, character.only = TRUE))
+}
