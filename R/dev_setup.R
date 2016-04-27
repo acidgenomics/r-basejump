@@ -1,5 +1,11 @@
-# http://r-pkgs.had.co.nz/intro.html
-
+#' Set up developer environment.
+#'
+#' This installs devtools, roxygen2, and checks RStudio environment.
+#'
+#' @return
+#' @export
+#'
+#' @examples
 dev_setup <- function() {
   install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
   install.packages("rstudioapi")
