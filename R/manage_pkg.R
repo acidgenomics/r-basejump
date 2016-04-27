@@ -11,7 +11,12 @@
 #'
 #' @examples
 manage_pkg <- function(pkg, source = "cran") {
-  install_pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  pkg_name <- pkg
+  # Rename GitHub package input
+  if (source == "github") {
+    pkg_name <- gsub("^.*/", "", pkg)
+  }
+  install_pkg <- pkg_name[!(pkg_name %in% installed.packages()[, "Package"])]
   if (source == "cran" & length(install_pkg) > 0) {
     install.packages(install_pkg)
   }
@@ -21,7 +26,7 @@ manage_pkg <- function(pkg, source = "cran") {
   }
   if (source == "github" & length(install_pkg) > 0) {
     library(devtools)
-    devtools::install_github(install_github_pkg)
+    devtools::install_github(install_pkg)
   }
-  invisible(lapply(pkg, require, character.only = TRUE))
+  invisible(lapply(pkg_name, require, character.only = TRUE))
 }
