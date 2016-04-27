@@ -11,7 +11,7 @@
 #'
 #' @examples
 manage_pkg <- function(pkg, source = "cran") {
-  install_pkg[!(pkg %in% installed.packages()[, "Package"])]
+  install_pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if (source == "cran" & length(install_pkg) > 0) {
     install.packages(install_pkg)
   }
@@ -23,4 +23,5 @@ manage_pkg <- function(pkg, source = "cran") {
     library(devtools)
     devtools::install_github(install_github_pkg)
   }
+  invisible(lapply(pkg, require, character.only = TRUE))
 }
