@@ -6,8 +6,7 @@ Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
-LazyData: TRUE
+LazyData: true
 URL: https://github.com/seqcloud/seqcloudR
-BugReports: https://github.com/seqcloud/seqcloudR/issues
 Depends:
-  R (>= 2.10)
+  R (>= 3.1.0)
