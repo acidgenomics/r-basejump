@@ -1,12 +1,11 @@
-assign_multiple <- function(vec, envir = ".GlobalEnv", prefix = NULL) {
-  invisible(lapply(seq_along(vec), function(x) {
-    if (is.null(prefix)) {
-      name <- vec[x]
-    } else {
-      name <- paste0(c(prefix, vec[x]), collapse = "_")
+assign_multiple <- function(..., envir = .GlobalEnv, prefix = NULL) {
+  list <- list(...)
+  ##### switch to other option from lapply here...
+    invisible(lapply(seq_along(list), function(x) {
+    name <- deparse(substitute(list[[x]]))
+    if (!is.null(prefix)) {
+      name <- paste(c(prefix, name), collapse = "_")
     }
-    assign(name, get(vec[x]), envir = get(envir))
+    assign(name, list[[x]], envir = get(envir))
   }))
-  print(envir)
-  ls.str(get(envir))
 }
