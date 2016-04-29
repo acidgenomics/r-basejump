@@ -1,3 +1,5 @@
+library(goseq)
+
 #' Execute goseq
 #'
 #' Allows for input of differentially expressed genes (DEG),

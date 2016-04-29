@@ -1,12 +1,18 @@
 Package: seqcloudR
 Type: Package
-Title: Common R functions
+Title: Common NGS functions
 Version: 0.1
 Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Description: Common R functions for use with RNA-seq, ChIP-seq, and microarrays.
+License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/seqcloud/seqcloudR
 Depends:
   R (>= 3.1.0)
+Suggests:
+  devtools,
+  goseq,
+  lintr,
+  roxygen2
+RoxygenNote: 5.0.1
