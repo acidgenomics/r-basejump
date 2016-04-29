@@ -1,10 +1,8 @@
 sam_exec <- function() {
-  manage_github("impute")
-  manage_cran(c("samr",
-                "matrixStats",
-                "GSA",
-                "shiny",
-                "shinyFiles",
-                "openxlsx"))
+  install.packages(c("samr", "matrixStats", "GSA", "shiny", "shinyFiles", "openxlsx"))
+  source("http://bioconductor.org/biocLite.R")
+  biocLite("impute")
+  library(shiny)
+  library(shinyFiles)
   runGitHub("SAM", "MikeJSeo")
 }
