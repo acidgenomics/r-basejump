@@ -1,15 +1,18 @@
-#' Manage R packages.
+#' Manage R packages
 #'
 #' This function allows for dynamic install and loading of packages from CRAN,
 #' Bioconductor, and GitHub.
 #'
-#' @param pkg
-#' @param source
+#' @param pkg Character vector of package names
+#' @param source Where to download packages (CRAN, Bioconductor, GitHub)
 #'
-#' @return
+#' @return Installs packages if necessary, then loads into current workspace.
 #' @export
 #'
 #' @examples
+#' manage_pkg(c("edgeR", "limma"), source = "bioc")
+#' manage_pkg(c("plyr", "readr"), source = "cran")
+#' manage_pkg("seqcloud/worminfo", source = "github")
 manage_pkg <- function(pkg, source = "cran") {
   pkg_name <- pkg
   # Rename GitHub package input

@@ -2,11 +2,17 @@
 % Please edit documentation in R/dev_setup.R
 \name{dev_setup}
 \alias{dev_setup}
-\title{Set up developer environment.}
+\title{Set up developer environment}
 \usage{
 dev_setup()
 }
+\value{
+Installs devtools, roxygen2, and lintr.
+}
 \description{
-This installs devtools, roxygen2, and checks RStudio environment.
+Installs devtools, roxygen2, and lintr.
+}
+\examples{
+dev_setup()
 }
 

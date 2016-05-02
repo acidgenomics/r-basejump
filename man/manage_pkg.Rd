@@ -2,15 +2,25 @@
 % Please edit documentation in R/manage_pkg.R
 \name{manage_pkg}
 \alias{manage_pkg}
-\title{Manage R packages.}
+\title{Manage R packages}
 \usage{
 manage_pkg(pkg, source = "cran")
 }
 \arguments{
-\item{source}{}
+\item{pkg}{Character vector of package names}
+
+\item{source}{Where to download packages (CRAN, Bioconductor, GitHub)}
+}
+\value{
+Installs packages if necessary, then loads into current workspace.
 }
 \description{
 This function allows for dynamic install and loading of packages from CRAN,
 Bioconductor, and GitHub.
+}
+\examples{
+manage_pkg(c("edgeR", "limma"), source = "bioc")
+manage_pkg(c("plyr", "readr"), source = "cran")
+manage_pkg("seqcloud/worminfo", source = "github")
 }
 
