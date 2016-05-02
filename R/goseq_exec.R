@@ -1,23 +1,29 @@
 library(goseq)
 
-#' Execute goseq
+#' goseq execution
 #'
 #' Allows for input of differentially expressed genes (DEG),
 #' background genes (bg), output environemnt, and data save folder.
 #'
-#' @param deg
-#' @param bg
-#' @param envir
-#' @param save_dir
+#' @param deg Character vector of differentially expressed genes (DEGs)
+#' @param bg Character vector of background genes
+#' @param envir Desired environment (optional - default is .GlobalEnv)
+#' @param save_dir Save directory (optional - default is working directory)
 #'
-#' @return
+#' @return GO and KEGG data for DEG vector.
 #' @export
 #'
 #' @examples
+#' goseq(c("WBGene00004804"),
+#'       c("WBGene00004804", "WBGene00000001"),
+#'       envir = "GSE1",
+#'       save_dir = "GSE1_data")
 goseq_exec <- function(deg,
                        bg,
                        envir = .GlobalEnv,
                        save_dir = ".") {
+  #! Add code to create environment if it doesn't exist.
+
   head(deg)
   GO_input <- as.integer(bg %in% deg)
   names(GO_input) <- bg

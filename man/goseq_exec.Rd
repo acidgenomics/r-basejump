@@ -2,15 +2,30 @@
 % Please edit documentation in R/goseq_exec.R
 \name{goseq_exec}
 \alias{goseq_exec}
-\title{Execute goseq}
+\title{goseq execution}
 \usage{
 goseq_exec(deg, bg, envir = .GlobalEnv, save_dir = ".")
 }
 \arguments{
-\item{save_dir}{}
+\item{deg}{Character vector of differentially expressed genes (DEGs)}
+
+\item{bg}{Character vector of background genes}
+
+\item{envir}{Desired environment (optional - default is .GlobalEnv)}
+
+\item{save_dir}{Save directory (optional - default is working directory)}
+}
+\value{
+GO and KEGG data for DEG vector.
 }
 \description{
 Allows for input of differentially expressed genes (DEG),
 background genes (bg), output environemnt, and data save folder.
+}
+\examples{
+goseq(c("WBGene00004804"),
+      c("WBGene00004804", "WBGene00000001"),
+      envir = "GSE1",
+      save_dir = "GSE1_data")
 }
 
