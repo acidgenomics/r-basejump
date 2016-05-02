@@ -2,3 +2,5 @@
 
 # seqcloudr
 Common R functions
+
+To install, run devtools::install_github("seqcloud/seqcloudr") in R.
