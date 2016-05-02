@@ -10,8 +10,4 @@ LazyData: true
 URL: https://github.com/seqcloud/seqcloudR
 Depends:
   R (>= 3.1.0)
-Suggests:
-  devtools,
-  lintr,
-  roxygen2
 RoxygenNote: 5.0.1
