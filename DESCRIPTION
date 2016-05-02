@@ -12,7 +12,6 @@ Depends:
   R (>= 3.1.0)
 Suggests:
   devtools,
-  goseq,
   lintr,
   roxygen2
 RoxygenNote: 5.0.1
