@@ -20,10 +20,6 @@ run_goseq <- function(deg,
                        bg,
                        envir = .GlobalEnv,
                        save_dir = ".") {
-  source("https://bioconductor.org/biocLite.R")
-  biocLite("goseq")
-  library(goseq)
-
   #! Add code to create environment if it doesn't exist.
 
   head(deg)
