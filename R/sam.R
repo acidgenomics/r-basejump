@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples sam_exec()
-sam_exec <- function() {
+run_sam <- function() {
   install.packages(c("samr", "matrixStats", "GSA", "shiny", "shinyFiles", "openxlsx"))
   source("http://bioconductor.org/biocLite.R")
   biocLite("impute")
