@@ -24,11 +24,11 @@ manage_pkg <- function(pkg, source = "cran") {
     install.packages(install_pkg)
   }
   if (source == "bioc" & length(install_pkg) > 0) {
+    biocLite <- NULL; rm(biocLite)
     source("https://bioconductor.org/biocLite.R")
     biocLite(install_pkg)
   }
   if (source == "github" & length(install_pkg) > 0) {
-    library(devtools)
     devtools::install_github(install_pkg)
   }
   invisible(lapply(pkg_name, require, character.only = TRUE))

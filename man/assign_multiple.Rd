@@ -19,7 +19,4 @@ Assigns variables to new environment with a name prefix, if desired.
 \description{
 Optionally, you can specify a name prefix and the desired environment.
 }
-\examples{
-assign(mtcars1, mtcars2, envir = "environment", prefix = "prefix")
-}
 
