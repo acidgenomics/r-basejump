@@ -19,8 +19,6 @@ This function allows for dynamic install and loading of packages from CRAN,
 Bioconductor, and GitHub.
 }
 \examples{
-manage_pkg(c("edgeR", "limma"), source = "bioc")
 manage_pkg(c("plyr", "readr"), source = "cran")
-manage_pkg("seqcloud/worminfo", source = "github")
 }
 

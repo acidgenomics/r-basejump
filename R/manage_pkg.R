@@ -10,9 +10,7 @@
 #' @export
 #'
 #' @examples
-#' manage_pkg(c("edgeR", "limma"), source = "bioc")
 #' manage_pkg(c("plyr", "readr"), source = "cran")
-#' manage_pkg("seqcloud/worminfo", source = "github")
 manage_pkg <- function(pkg, source = "cran") {
   pkg_name <- pkg
   # Rename GitHub package input
