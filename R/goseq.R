@@ -18,7 +18,7 @@ library(goseq)
 #'       c("WBGene00004804", "WBGene00000001"),
 #'       envir = "GSE1",
 #'       save_dir = "GSE1_data")
-goseq_exec <- function(deg,
+run_goseq <- function(deg,
                        bg,
                        envir = .GlobalEnv,
                        save_dir = ".") {
