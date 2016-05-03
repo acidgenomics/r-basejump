@@ -19,7 +19,7 @@ manage_pkg <- function(pkg, source = "cran") {
   }
   install_pkg <- pkg_name[!(pkg_name %in% installed.packages()[, "Package"])]
   if (source == "cran" & length(install_pkg) > 0) {
-    install.packages(install_pkg)
+    install.packages(install_pkg, repos = "http://cran.rstudio.com/")
   }
   if (source == "bioc" & length(install_pkg) > 0) {
     biocLite <- NULL; rm(biocLite)
