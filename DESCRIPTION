@@ -1,4 +1,4 @@
-Package: seqcloudr
+Package: seqcloudR
 Type: Package
 Title: Common NGS functions
 Version: 0.1
