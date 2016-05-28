@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/seqcloud/seqcloudr.svg?branch=master)](https://travis-ci.org/seqcloud/seqcloudr)
+[![Build Status](https://travis-ci.org/seqcloud/seqcloudR.svg?branch=master)](https://travis-ci.org/seqcloud/seqcloudR)
 
 # seqcloudR
 
