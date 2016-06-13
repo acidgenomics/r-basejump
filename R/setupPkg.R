@@ -10,8 +10,8 @@
 #' @export
 #'
 #' @examples
-#' setup_pkg(c("plyr", "readr"), source = "cran")
-setup_pkg <- function(pkg, source = "cran") {
+#' setupPkg(c("plyr", "readr"), source = "cran")
+setupPkg <- function(pkg, source = "cran") {
   pkg_name <- pkg
   # Rename GitHub package input
   if (source == "github") {
