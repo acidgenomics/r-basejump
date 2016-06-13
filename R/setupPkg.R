@@ -12,22 +12,23 @@
 #' @examples
 #' setupPkg(c("plyr", "readr"), source = "cran")
 setupPkg <- function(pkg, source = "cran") {
-  pkg_name <- pkg
-  # Rename GitHub package input
+  #! This needs a rework -- use a for loop?
+  pkgName <- pkg
   if (source == "github") {
-    pkg_name <- gsub("^.*/", "", pkg)
+    pkgName <- gsub("^.*/", "", pkg)
   }
-  install_pkg <- pkg_name[!(pkg_name %in% installed.packages()[, "Package"])]
-  if (source == "cran" & length(install_pkg) > 0) {
-    install.packages(install_pkg, repos = "http://cran.rstudio.com/")
+  pkgNeedsInstall <- pkgName[!(pkgName %in% installed.packages()[, "Package"])]
+  if (source == "cran" & length(pkgNeedsInstall) > 0) {
+    install.packages(pkgNeedsInstall, repos = "http://cran.rstudio.com/")
   }
-  if (source == "bioc" & length(install_pkg) > 0) {
+  if (source == "bioc" & length(pkgNeedsInstall) > 0) {
     biocLite <- NULL; rm(biocLite)
     source("https://bioconductor.org/biocLite.R")
-    biocLite(install_pkg)
+    biocLite(pkgNeedsInstall)
   }
-  if (source == "github" & length(install_pkg) > 0) {
-    devtools::install_github(install_pkg)
+  if (source == "github" & length(pkgNeedsInstall) > 0) {
+    # This step doesn't right because it needs to call full package name
+    devtools::install_github(pkgNeedsInstall)
   }
-  invisible(lapply(pkg_name, require, character.only = TRUE))
+  invisible(lapply(pkgName, require, character.only = TRUE))
 }
