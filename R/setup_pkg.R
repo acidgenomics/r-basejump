@@ -1,4 +1,4 @@
-#' Manage R packages
+#' Setup R packages
 #'
 #' This function allows for dynamic install and loading of packages from CRAN,
 #' Bioconductor, and GitHub.
@@ -10,8 +10,8 @@
 #' @export
 #'
 #' @examples
-#' manage_pkg(c("plyr", "readr"), source = "cran")
-manage_pkg <- function(pkg, source = "cran") {
+#' setup_pkg(c("plyr", "readr"), source = "cran")
+setup_pkg <- function(pkg, source = "cran") {
   pkg_name <- pkg
   # Rename GitHub package input
   if (source == "github") {
