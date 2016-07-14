@@ -1,10 +1,12 @@
 #' camelCase
 #'
-#' @param x Alphanumeric string
+#' @param alphanum Alphanumeric string
 #'
 #' @return stringWithCamelCaseFormatting
 #' @export
-camel <- function(x) {
+camel <- function(alphanum) {
+  x <- alphanum
+
   # Convert all periods and dashes to underscores
   x <- gsub("(\\.|-)", "_", x)
 
@@ -21,16 +23,19 @@ camel <- function(x) {
 
 #' snake_case
 #'
-#' @param x Alphanumeric string
+#' @param alphanum Alphanumeric string
 #'
 #' @return string_with_snake_case_formatting
 #' @export
-snake <- function(x) {
+snake <- function(alphanum) {
+  x <- alphanum
   x <- gsub("(\\.|-)", "_", x)
   x <- gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", x, perl = TRUE)
+
   # Convert camelCase to snake_case
   x <- gsub("([a-z0-9])([A-Z])", "\\1_\\L\\2", x, perl = TRUE)
 
+  # Lowercase all
   x <- tolower(x)
   return(x)
 }

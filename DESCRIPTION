@@ -1,7 +1,7 @@
 Package: seqcloudR
 Type: Package
 Title: Common NGS functions
-Version: 0.2
+Version: 0.3
 Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: R functions for use in next-generation sequencing data analysis.

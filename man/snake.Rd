@@ -4,10 +4,10 @@
 \alias{snake}
 \title{snake_case}
 \usage{
-snake(x)
+snake(alphanum)
 }
 \arguments{
-\item{x}{Alphanumeric string}
+\item{alphanum}{Alphanumeric string}
 }
 \value{
 string_with_snake_case_formatting

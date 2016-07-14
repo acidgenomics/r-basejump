@@ -4,10 +4,10 @@
 \alias{camel}
 \title{camelCase}
 \usage{
-camel(x)
+camel(alphanum)
 }
 \arguments{
-\item{x}{Alphanumeric string}
+\item{alphanum}{Alphanumeric string}
 }
 \value{
 stringWithCamelCaseFormatting
