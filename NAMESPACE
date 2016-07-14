@@ -3,4 +3,5 @@
 export(antilog2)
 export(assignMultiple)
 export(camel)
+export(cleanCells)
 export(snake)
