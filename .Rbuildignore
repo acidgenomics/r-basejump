@@ -1,5 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^_deprecated$
+^_draft$
 ^data-raw$
 ^setup$
 ^\.travis\.yml$
