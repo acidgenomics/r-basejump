@@ -1,17 +1,11 @@
 #' RDAVIDWebService query
 #'
 #' @param email Registered email address
-#' @param foregroundGenes
-#' @param backgroundGenes
+#' @param foregroundGenes Gene ID vector
+#' @param backgroundGenes Gene ID vector
 #' @param idType Gene identifier type
 #'
 #' @export
-#'
-#' @examples
-#' davidQuery(email = "user@david.ncifcrf.gov",
-#'            foregroundGenes = "WBGene00004804",
-#'            backgroundGenes = c("WBGene00004804", "WBGene00006351"),
-#'            idType = "WORMBASE_GENE_ID")
 davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
   # RDAVIDWebService requires a registered email address:
   # http://david.abcc.ncifcrf.gov/content.jsp?file=WS.html
@@ -21,18 +15,22 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
 
   # Foreground list
   # The foreground list should be contained within the background list.
-  fg <- addList(david,
-                foregroundGenes,
-                idType = idType,
-                listName = "isClass",
-                listType = "Gene")
+  fg <- RDAVIDWebService::addList(
+    david,
+    foregroundGenes,
+    idType = idType,
+    listName = "isClass",
+    listType = "Gene"
+  )
 
   # Background list
-  bg <- addList(david,
-                backgroundGenes,
-                idType = idType,
-                listName = "all",
-                listType = "Background")
+  bg <- RDAVIDWebService::addList(
+    david,
+    backgroundGenes,
+    idType = idType,
+    listName = "all",
+    listType = "Background"
+  )
 
   # Inspect to see the proportion of genes recognized by DAVID.
   fg
@@ -48,16 +46,17 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
   #                                  "INTERPRO"))
 
   # Get functional annotation chart as R object.
-  chart <- getFunctionalAnnotationChart(david)
-  assign("davidChart", chart, envir = .GlobalEnv)
+  chart <- RDAVIDWebService::getFunctionalAnnotationChart(david)
 
   # Get functional annotation clustering (limited to 3000 genes).
-  cluster <- getClusterReport(david)
-  assign("davidCluster", cluster, envir = .GlobalEnv)
+  #! cluster <- RDAVIDWebService::getClusterReport(david)
+  #! assign("davidCluster", cluster, envir = .GlobalEnv)
 
   # Print functional annotation chart to file.
-  getFunctionalAnnotationChartFile(david, "davidChart.tsv")
+  RDAVIDWebService::getFunctionalAnnotationChartFile(david, "davidChart.tsv")
 
   # Print functional annotation clustering to file (limited to 3000 genes).
-  getClusterReportFile(david, "davidCluster.tsv")
+  RDAVIDWebService::getClusterReportFile(david, "davidCluster.tsv")
+
+  return(chart)
 }
