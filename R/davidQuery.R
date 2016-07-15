@@ -47,6 +47,7 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
 
   # Get functional annotation chart as R object.
   chart <- RDAVIDWebService::getFunctionalAnnotationChart(david)
+  colnames(chart) <- camel(colnames(chart))
 
   # Get functional annotation clustering (limited to 3000 genes).
   #! cluster <- RDAVIDWebService::getClusterReport(david)
