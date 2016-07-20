@@ -7,8 +7,11 @@
 camel <- function(alphanum) {
   x <- alphanum
 
-  # Convert all periods and dashes to underscores
-  x <- gsub("(\\.|-)", "_", x)
+  # Remove parentheses
+  x <- gsub("(\\(|\\))", "", x)
+
+  # Convert all periods, dashes, spaces to underscores
+  x <- gsub("(\\.|-| )", "_", x)
 
   # Convert acronymes to Mixed Case
   x <- gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", x, perl = TRUE)
@@ -29,7 +32,8 @@ camel <- function(alphanum) {
 #' @export
 snake <- function(alphanum) {
   x <- alphanum
-  x <- gsub("(\\.|-)", "_", x)
+  x <- gsub("(\\(|\\))", "", x)
+  x <- gsub("(\\.|-| )", "_", x)
   x <- gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", x, perl = TRUE)
 
   # Convert camelCase to snake_case
