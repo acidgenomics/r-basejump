@@ -2,6 +2,8 @@
 
 Next-generation sequencing data analysis utilities.
 
+[![Build Status](https://travis-ci.org/seqcloud/seqcloudr.svg?branch=master)](https://travis-ci.org/seqcloud/seqcloudr)
+
 ## Installation
 
 This is an [R](https://www.r-project.org) data package.
