@@ -1,5 +1,6 @@
 # seqcloudr
-R functions for use in next-generation sequencing data analysis
+
+R functions for use in next-generation sequencing data analysis.
 
 [![Build Status](https://travis-ci.org/seqcloud/seqcloudr.svg?branch=master)](https://travis-ci.org/seqcloud/seqcloudr)
 
