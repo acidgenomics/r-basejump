@@ -1,6 +1,6 @@
 Package: seqcloudr
 Type: Package
-Title: Common NGS functions
+Title: Sequencing Data Analysis Tools
 Version: 0.3
 Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@seq.cloud>
