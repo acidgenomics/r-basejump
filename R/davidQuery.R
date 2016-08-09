@@ -1,12 +1,13 @@
 #' RDAVIDWebService query
 #'
 #' @param email Registered email address
-#' @param foregroundGenes Gene ID vector
-#' @param backgroundGenes Gene ID vector
-#' @param idType Gene identifier type
+#' @param fg foregroundGenes identifier vector
+#' @param bg backgroundGenes identifier vector
+#' @param id Gene identifier type (see DAVID website)
 #'
+#' @return Functional annotation chart data frame
 #' @export
-davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
+davidQuery <- function(email, fg, bg, id, save = NULL) {
   # RDAVIDWebService requires a registered email address:
   # http://david.abcc.ncifcrf.gov/content.jsp?file=WS.html
 
@@ -17,8 +18,8 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
   # The foreground list should be contained within the background list.
   fg <- RDAVIDWebService::addList(
     david,
-    foregroundGenes,
-    idType = idType,
+    fg,
+    id = id,
     listName = "isClass",
     listType = "Gene"
   )
@@ -26,8 +27,8 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
   # Background list
   bg <- RDAVIDWebService::addList(
     david,
-    backgroundGenes,
-    idType = idType,
+    bg,
+    id = id,
     listName = "all",
     listType = "Background"
   )
@@ -46,18 +47,24 @@ davidQuery <- function(email, foregroundGenes, backgroundGenes, idType) {
   #                                  "INTERPRO"))
 
   # Get functional annotation chart as R object.
-  chart <- RDAVIDWebService::getFunctionalAnnotationChart(david)
-  colnames(chart) <- camel(colnames(chart))
+  annotationChart <- RDAVIDWebService::getFunctionalAnnotationChart(david)
+  colnames(annotationChart) <- camel(colnames(annotationChart))
 
   # Get functional annotation clustering (limited to 3000 genes).
-  #! cluster <- RDAVIDWebService::getClusterReport(david)
-  #! assign("davidCluster", cluster, envir = .GlobalEnv)
+  #! annotationCluster <- RDAVIDWebService::getClusterReport(david)
+  #! assign("davidCluster", annotationCluster, envir = .GlobalEnv)
 
   # Print functional annotation chart to file.
-  RDAVIDWebService::getFunctionalAnnotationChartFile(david, "davidChart.tsv")
+  RDAVIDWebService::getFunctionalAnnotationChartFile(
+    david,
+    file.path(save, "davidChart.tsv")
+    )
 
   # Print functional annotation clustering to file (limited to 3000 genes).
-  RDAVIDWebService::getClusterReportFile(david, "davidCluster.tsv")
+  RDAVIDWebService::getClusterReportFile(
+    david,
+    file.path(save, "davidCluster.tsv")
+    )
 
-  return(chart)
+  return(annotationChart)
 }
