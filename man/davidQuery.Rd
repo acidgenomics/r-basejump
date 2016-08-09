@@ -4,16 +4,19 @@
 \alias{davidQuery}
 \title{RDAVIDWebService query}
 \usage{
-davidQuery(email, foregroundGenes, backgroundGenes, idType)
+davidQuery(email, fg, bg, id, save = NULL)
 }
 \arguments{
 \item{email}{Registered email address}
 
-\item{foregroundGenes}{Gene ID vector}
+\item{fg}{foregroundGenes identifier vector}
 
-\item{backgroundGenes}{Gene ID vector}
+\item{bg}{backgroundGenes identifier vector}
 
-\item{idType}{Gene identifier type}
+\item{id}{Gene identifier type (see DAVID website)}
+}
+\value{
+Functional annotation chart data frame
 }
 \description{
 RDAVIDWebService query
