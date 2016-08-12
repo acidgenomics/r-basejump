@@ -7,34 +7,36 @@ output: html_document
 
 * [Homebrew](http://brew.sh)
 * [RStudio](https://www.rstudio.com)
-* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) >= 1.8
+* [OpenSSL](https://www.openssl.org/source/) >= 1.0.2
 
-## openssl update
+## Install OpenSSL
 
-In terminal:
+In Terminal.app:
 
 ```{bash openssl, eval = FALSE}
-brew update
-brew install openssl
-brew link --force openssl
-
-# Quit terminal and relaunch
-openssl version
+source("https://raw.githubusercontent.com/steinbaugh/macOS/master/Bash/install_openssl.sh")
 ```
 
 
 ## Java JDK 1.8 update
 
 The current version of the web service only works with JDK 1.8, which must be
-installed from Oracle. The Mac Java JDK is version 1.6.
+installed from Oracle. The Mac Java JDK is version 1.6. See
+[Bioconductor thread #72188](https://support.bioconductor.org/p/72188/) and
+[Stack Overflow thread #31480579](http://stackoverflow.com/questions/31480579/r-david-webservice-sudden-transport-error-301-error-moved-permanently) for more information and instructions.
 
-* [Bioconductor thread #72188](https://support.bioconductor.org/p/72188/)
-* [Stack Overflow thread #31480579](http://stackoverflow.com/questions/31480579/r-david-webservice-sudden-transport-error-301-error-moved-permanently)
+Use Homebrew to install Java:
+
+```{bash, eval = FALSE}
+brew cask install java
+java version  # >= 1.8
+```
 
 
 ## DAVID certificates
 
-In terminal:
+In Terminal.app:
 
 ```{bash, eval = FALSE}
 echo -n | openssl s_client -connect david.ncifcrf.gov:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > ncifcrf.cert
@@ -42,20 +44,18 @@ echo -n | openssl s_client -connect david.ncifcrf.gov:443 | sed -ne '/-BEGIN CER
 # Check if it was properly downloaded:
 openssl x509 -in ncifcrf.cert -text
 
+# Find the cacerts file:
+find /Library/Java/JavaVirtualMachines -name "cacerts"
+
 # Update cacerts in JRE:
-sudo cp /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/security/cacerts .
+sudo cp /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts .
 sudo keytool -import -trustcacerts -keystore cacerts -storepass changeit -noprompt -alias david -file ncifcrf.cert
-sudo cp cacerts /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/security/cacerts
-```
+sudo cp cacerts /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts
 
-
-## Reconfigure Java in R
-
-In terminal:
-
-```{bash eval = FALSE}
+# Update Java configuration in R:
 sudo R CMD javareconf
 ```
+
 
 ## Update rJava from source
 
@@ -68,8 +68,8 @@ install.packages('rJava',,'http://www.rforge.net/')
 
 ### Check if rJava loads
 
-```{r rstudio check}
-dyn.load("/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre/lib/server/libjvm.dylib")
+```{r rstudio check, eval = FALSE}
+dyn.load("/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/server/libjvm.dylib")
 library("rJava")
 .jinit()
 .jcall("java/lang/System", "S", "getProperty", "java.runtime.version")
