@@ -48,6 +48,7 @@ openssl x509 -in ncifcrf.cert -text
 find /Library/Java/JavaVirtualMachines -name "cacerts"
 
 # Update cacerts in JRE:
+sudo keytool -delete -alias david -keystore /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts -storepass changeit -noprompt
 sudo cp /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts .
 sudo keytool -import -trustcacerts -keystore cacerts -storepass changeit -noprompt -alias david -file ncifcrf.cert
 sudo cp cacerts /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts
