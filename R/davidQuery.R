@@ -7,19 +7,24 @@
 #'
 #' @return Functional annotation chart data frame
 #' @export
-davidQuery <- function(email, fg, bg, id, save = NULL) {
+davidQuery <- function(email, fg, bg, id) {
   # RDAVIDWebService requires a registered email address:
   # http://david.abcc.ncifcrf.gov/content.jsp?file=WS.html
 
-  url = "https://david.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/"
-  david <- RDAVIDWebService::DAVIDWebService$new(email = email, url = url)
+  # 6.7: https://david.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/
+  # 6.8 Beta: https://david-d.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/
+
+  david <- RDAVIDWebService::DAVIDWebService$new(
+    email = email,
+    url = "https://david.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/"
+  )
 
   # Foreground list
   # The foreground list should be contained within the background list.
   fg <- RDAVIDWebService::addList(
     david,
     fg,
-    id = id,
+    idType = id,
     listName = "isClass",
     listType = "Gene"
   )
@@ -28,7 +33,7 @@ davidQuery <- function(email, fg, bg, id, save = NULL) {
   bg <- RDAVIDWebService::addList(
     david,
     bg,
-    id = id,
+    idType = id,
     listName = "all",
     listType = "Background"
   )
@@ -48,7 +53,7 @@ davidQuery <- function(email, fg, bg, id, save = NULL) {
 
   # Get functional annotation chart as R object.
   annotationChart <- RDAVIDWebService::getFunctionalAnnotationChart(david)
-  colnames(annotationChart) <- camel(colnames(annotationChart))
+  #! colnames(annotationChart) <- camel(colnames(annotationChart))
 
   # Get functional annotation clustering (limited to 3000 genes).
   #! annotationCluster <- RDAVIDWebService::getClusterReport(david)
