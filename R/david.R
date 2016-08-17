@@ -7,7 +7,7 @@
 #'
 #' @return Functional annotation chart data frame
 #' @export
-davidQuery <- function(email, fg, bg, id) {
+david <- function(email, fg, bg, id) {
   # RDAVIDWebService requires a registered email address:
   # http://david.abcc.ncifcrf.gov/content.jsp?file=WS.html
 

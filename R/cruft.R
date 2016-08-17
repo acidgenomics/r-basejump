@@ -4,7 +4,7 @@
 #'
 #' @return A reformatted, clean data frame
 #' @export
-cleanCells <- function(df) {
+cruft <- function(df) {
   # Set cells with only spaces to NA
   df <- data.frame(apply(df, 2, function(x) gsub("^$|^ $", NA, x)))
 

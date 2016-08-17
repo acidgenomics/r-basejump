@@ -3,4 +3,5 @@
 ^\.travis\.yml$
 ^data$
 ^data-raw$
+^R-draft$
 ^setup$
