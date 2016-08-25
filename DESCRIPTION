@@ -1,7 +1,7 @@
 Package: seqcloudr
 Type: Package
 Title: Sequencing Data Analysis Tools
-Version: 0.4
+Version: 0.4.1
 Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@seq.cloud>
 Description: R functions for use in next-generation sequencing data analysis.
