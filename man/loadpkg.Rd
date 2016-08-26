@@ -9,7 +9,4 @@ loadpkg()
 \description{
 Initialize package in development
 }
-\examples{
-loadpkg()
-}
 

@@ -3,7 +3,7 @@
 export(antilog2)
 export(camel)
 export(cruft)
-export(david)
 export(loadpkg)
 export(multiassign)
+export(renderall)
 export(snake)
