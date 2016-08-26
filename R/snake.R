@@ -1,8 +1,8 @@
 #' snake_case
 #'
-#' @param alphanum Alphanumeric string
+#' @param alphanum Alphanumeric \code{string}.
 #'
-#' @return string_with_snake_case_formatting
+#' @return \code{string} with snake_case formatting.
 #' @export
 snake <- function(alphanum) {
   x <- alphanum
