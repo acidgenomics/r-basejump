@@ -1,3 +1,10 @@
+#' Render all RMarkdown files
+#'
+#' @param ... Optional rmarkdown parameters
+#' @export
+#'
+#' @examples
+#' renderall(output_dir = "docs")
 renderall <- function(...) {
   sapply(
     list.files(pattern = "*.Rmd", full.names = TRUE, recursive = TRUE),

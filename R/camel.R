@@ -23,23 +23,3 @@ camel <- function(alphanum) {
   x <- gsub("_(\\w?)", "\\U\\1", x, perl = TRUE)
   return(x)
 }
-
-#' snake_case
-#'
-#' @param alphanum Alphanumeric string
-#'
-#' @return string_with_snake_case_formatting
-#' @export
-snake <- function(alphanum) {
-  x <- alphanum
-  x <- gsub("(\\(|\\))", "", x)
-  x <- gsub("(\\.|-| )", "_", x)
-  x <- gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", x, perl = TRUE)
-
-  # Convert camelCase to snake_case
-  x <- gsub("([a-z0-9])([A-Z])", "\\1_\\L\\2", x, perl = TRUE)
-
-  # Lowercase all
-  x <- tolower(x)
-  return(x)
-}

@@ -1,7 +1,4 @@
 #' Initialize package in development
-#'
-#' @examples
-#' loadpkg()
 #' @export
 loadpkg <- function() {
   devtools::load_all()
