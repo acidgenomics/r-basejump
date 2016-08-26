@@ -2,11 +2,11 @@
 % Please edit documentation in R/loadpkg.R
 \name{loadpkg}
 \alias{loadpkg}
-\title{Initialize package in development}
+\title{Initialize package in development.}
 \usage{
 loadpkg()
 }
 \description{
-Initialize package in development
+Initialize package in development.
 }
 

@@ -1,8 +1,8 @@
 #' Cruft removal for data frame cells
 #'
-#' @param df Messy data frame -- leading/trailing spaces, dashes
+#' @param df Messy \code{data.frame} with leading/trailing spaces, dashes.
 #'
-#' @return A reformatted, clean data frame
+#' @return A reformatted, clean \code{data.frame}
 #' @export
 cruft <- function(df) {
   # Set cells with only spaces to NA

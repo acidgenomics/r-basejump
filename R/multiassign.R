@@ -2,11 +2,11 @@
 #'
 #' Optionally, you can specify a name prefix and the desired environment.
 #'
-#' @param ... List of variables to assign
-#' @param envir Desired environment (optional)
-#' @param prefix Name prefix (optional)
+#' @param ... \code{list} of variables to assign.
+#' @param envir Desired \code{environment} (optional).
+#' @param prefix Name prefix (optional).
 #'
-#' @return Assigns variables to new environment with a name prefix, if desired.
+#' @return Assigns variables to new \code{environment} with a name prefix, if desired.
 #' @export
 multiassign <- function(..., envir = .GlobalEnv, prefix = NULL) {
   # The `-1` here removes `assign_multiple`

@@ -7,10 +7,10 @@
 antilog2(log2)
 }
 \arguments{
-\item{log2}{Numeric vector of log base 2 normalized values.}
+\item{log2}{\code{numeric} vector of log base 2 normalized values.}
 }
 \value{
-Antilog numeric vector with proper sign.
+Antilog \code{numeric} vector with proper sign.
 }
 \description{
 Convert a string of log2 normalized values (e.g. fold changes) for better

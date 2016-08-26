@@ -1,7 +1,7 @@
 Package: seqcloudr
 Type: Package
 Title: Biological Data Analysis Tools
-Version: 0.4.3
+Version: 0.4.4
 Author: Michael Steinbaugh
 Maintainer: Michael Steinbaugh <mike@seq.cloud>
 Description: R functions for use in next-generation sequencing data analysis.
@@ -11,5 +11,10 @@ URL: https://github.com/seqcloud/seqcloudr
 Depends: R (>= 3.1.0)
 Imports:
   devtools,
-  rmarkdown
+  rmarkdown,
+  dplyr,
+  magrittr,
+  readr,
+  stringr,
+  tibble
 RoxygenNote: 5.0.1

@@ -7,10 +7,10 @@
 cruft(df)
 }
 \arguments{
-\item{df}{Messy data frame -- leading/trailing spaces, dashes}
+\item{df}{Messy \code{data.frame} with leading/trailing spaces, dashes.}
 }
 \value{
-A reformatted, clean data frame
+A reformatted, clean \code{data.frame}
 }
 \description{
 Cruft removal for data frame cells

@@ -1,8 +1,8 @@
 #' camelCase
 #'
-#' @param alphanum Alphanumeric string
+#' @param alphanum Alphanumeric \code{string}.
 #'
-#' @return stringWithCamelCaseFormatting
+#' @return \code{string} with camelCase formatting.
 #' @export
 camel <- function(alphanum) {
   x <- alphanum

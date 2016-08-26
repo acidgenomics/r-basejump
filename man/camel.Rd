@@ -7,10 +7,10 @@
 camel(alphanum)
 }
 \arguments{
-\item{alphanum}{Alphanumeric string}
+\item{alphanum}{Alphanumeric \code{string}.}
 }
 \value{
-stringWithCamelCaseFormatting
+\code{string} with camelCase formatting.
 }
 \description{
 camelCase
