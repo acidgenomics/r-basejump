@@ -7,10 +7,10 @@
 snake(alphanum)
 }
 \arguments{
-\item{alphanum}{Alphanumeric string}
+\item{alphanum}{Alphanumeric \code{string}.}
 }
 \value{
-string_with_snake_case_formatting
+\code{string} with snake_case formatting.
 }
 \description{
 snake_case
