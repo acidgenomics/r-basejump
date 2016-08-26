@@ -1,8 +1,6 @@
 #' Markdown list
 #'
 #' @importFrom magrittr %>%
-#' @name %>%
-#' @rdname pipe
 #'
 #' @param character \code{character} vector.
 #' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format.
