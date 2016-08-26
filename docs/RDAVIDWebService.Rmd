@@ -1,0 +1,87 @@
+---
+title: "Install RDAVIDWebService"
+date: '`r format(Sys.time(), "%B %d, %Y")`'
+output: github_document
+---
+
+# macOS environment
+
+* [Homebrew](http://brew.sh)
+* [RStudio](https://www.rstudio.com)
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) >= 1.8
+* [OpenSSL](https://www.openssl.org/source/) >= 1.0.2
+
+## Install OpenSSL
+
+In Terminal.app:
+
+```{bash openssl, eval = FALSE}
+source("https://raw.githubusercontent.com/steinbaugh/macOS/master/Bash/install_openssl.sh")
+```
+
+
+## Java JDK 1.8 update
+
+The current version of the web service only works with JDK 1.8, which must be
+installed from Oracle. The Mac Java JDK is version 1.6. See
+[Bioconductor thread #72188](https://support.bioconductor.org/p/72188/) and
+[Stack Overflow thread #31480579](http://stackoverflow.com/questions/31480579/r-david-webservice-sudden-transport-error-301-error-moved-permanently) for more information and instructions.
+
+Use Homebrew to install Java:
+
+```{bash, eval = FALSE}
+brew cask install java
+java version  # >= 1.8
+```
+
+
+## DAVID certificates
+
+In Terminal.app:
+
+```{bash, eval = FALSE}
+echo -n | openssl s_client -connect david.ncifcrf.gov:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > ncifcrf.cert
+
+# Check if it was properly downloaded:
+openssl x509 -in ncifcrf.cert -text
+
+# Find the cacerts file:
+find /Library/Java/JavaVirtualMachines -name "cacerts"
+
+# Update cacerts in JRE:
+sudo keytool -delete -alias david -keystore /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts -storepass changeit -noprompt
+sudo cp /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts .
+sudo keytool -import -trustcacerts -keystore cacerts -storepass changeit -noprompt -alias david -file ncifcrf.cert
+sudo cp cacerts /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts
+
+# Update Java configuration in R:
+sudo R CMD javareconf
+```
+
+
+## Update rJava from source
+
+See [Bioconductor thread #70090](https://support.bioconductor.org/p/70090/)
+for more info.
+
+```{r rjava, eval = FALSE}
+install.packages('rJava',,'http://www.rforge.net/')
+```
+
+### Check if rJava loads
+
+```{r rstudio check, eval = FALSE}
+dyn.load("/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/server/libjvm.dylib")
+library("rJava")
+.jinit()
+.jcall("java/lang/System", "S", "getProperty", "java.runtime.version")
+```
+
+
+## Install RDAVIDWebService
+
+```{r RDAVIDWebService, eval = FALSE}
+source("https://bioconductor.org/biocLite.R")
+biocLite("RDAVIDWebService")
+browseVignettes("RDAVIDWebService")
+```
