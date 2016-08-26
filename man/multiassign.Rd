@@ -7,14 +7,14 @@
 multiassign(..., envir = .GlobalEnv, prefix = NULL)
 }
 \arguments{
-\item{...}{List of variables to assign}
+\item{...}{\code{list} of variables to assign.}
 
-\item{envir}{Desired environment (optional)}
+\item{envir}{Desired \code{environment} (optional).}
 
-\item{prefix}{Name prefix (optional)}
+\item{prefix}{Name prefix (optional).}
 }
 \value{
-Assigns variables to new environment with a name prefix, if desired.
+Assigns variables to new \code{environment} with a name prefix, if desired.
 }
 \description{
 Optionally, you can specify a name prefix and the desired environment.
