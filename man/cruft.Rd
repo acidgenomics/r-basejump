@@ -2,17 +2,17 @@
 % Please edit documentation in R/cruft.R
 \name{cruft}
 \alias{cruft}
-\title{Cruft removal for data frame cells}
+\title{Cruft removal for tibbles.}
 \usage{
-cruft(df)
+cruft(crufty)
 }
 \arguments{
-\item{df}{Messy \code{data.frame} with leading/trailing spaces, dashes.}
+\item{crufty}{Crufty \code{tibble} with leading/trailing spaces, dashes.}
 }
 \value{
-A reformatted, clean \code{data.frame}
+A reformatted, clean \code{tibble}
 }
 \description{
-Cruft removal for data frame cells
+Cruft removal for tibbles.
 }
 
