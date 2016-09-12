@@ -15,11 +15,6 @@ output: github_document
 
 In Terminal.app:
 
-```{bash openssl, eval = FALSE}
-source("https://raw.githubusercontent.com/steinbaugh/macOS/master/Bash/install_openssl.sh")
-```
-
-
 ## Java JDK 1.8 update
 
 The current version of the web service only works with JDK 1.8, which must be
@@ -29,35 +24,14 @@ installed from Oracle. The Mac Java JDK is version 1.6. See
 
 Use Homebrew to install Java:
 
-```{bash, eval = FALSE}
-brew cask install java
-java version  # >= 1.8
-```
-
-
 ## DAVID certificates
 
 In Terminal.app:
 
 ```{bash, eval = FALSE}
-echo -n | openssl s_client -connect david.ncifcrf.gov:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > ncifcrf.cert
-
-# Check if it was properly downloaded:
-openssl x509 -in ncifcrf.cert -text
-
-# Find the cacerts file:
-find /Library/Java/JavaVirtualMachines -name "cacerts"
-
-# Update cacerts in JRE:
-sudo keytool -delete -alias david -keystore /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts -storepass changeit -noprompt
-sudo cp /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts .
-sudo keytool -import -trustcacerts -keystore cacerts -storepass changeit -noprompt -alias david -file ncifcrf.cert
-sudo cp cacerts /Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/security/cacerts
-
-# Update Java configuration in R:
-sudo R CMD javareconf
+sh docs/install_openssl.sh
+sh docs/RDAVIDWebService.sh
 ```
-
 
 ## Update rJava from source
 
