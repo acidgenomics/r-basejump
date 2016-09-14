@@ -1,10 +1,10 @@
 Package: seqcloudr
 Type: Package
-Title: Biological Data Analysis Tools
-Version: 0.4.6
+Title: Computational Biology Tools
+Version: 0.4.7
 Author: Michael Steinbaugh
-Maintainer: Michael Steinbaugh <mike@seq.cloud>
-Description: R functions for use in next-generation sequencing data analysis.
+Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
+Description: Miscellaneous R functions for use in computational biology.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/seqcloud/seqcloudr
