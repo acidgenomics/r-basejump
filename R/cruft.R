@@ -1,15 +1,23 @@
 #' Cruft removal for tibbles.
 #'
+#' @import dplyr
 #' @import tibble
 #'
-#' @param crufty Crufty \code{tibble} with leading/trailing spaces, dashes.
+#' @param data Data with leading/trailing spaces/commas, empty cells.
 #'
 #' @return A reformatted, clean \code{tibble}
 #' @export
-cruft <- function(crufty) {
-  crufty %>%
-    apply(., 2, function(x) gsub("^$|^ $", NA, x)) %>%
-    apply(., 2, function(x) gsub("^(,|\\s//)\\s(.*)", "\\2", x)) %>%
-    apply(., 2, function(x) gsub("(.*)(,|\\s//)\\s$", "\\1", x)) %>%
-    as_tibble
-}
+cruft <- function(data) {
+    data %>%
+        # Set cells with only spaces to NA
+        apply(., 2, function(a) {
+            gsub("^$|^ $", NA, a)
+            }) %>%
+        # Fix leading and trailing commas
+        apply(., 2, function(a) {
+            gsub("^(,|\\s//)\\s(.*)", "\\2", a)
+        }) %>%
+        apply(., 2, function(a) {
+            gsub("(.*)(,|\\s//)\\s$", "\\1", a)
+        }) %>%
+        tibble::as_tibble

@@ -1,25 +1,25 @@
 #' camelCase
 #'
-#' @param alphanum Alphanumeric \code{string}.
+#' @import dplyr
+#'
+#' @param string \code{string}.
 #'
 #' @return \code{string} with camelCase formatting.
 #' @export
-camel <- function(alphanum) {
-  x <- alphanum
-
-  # Remove parentheses
-  x <- gsub("(\\(|\\))", "", x)
-
-  # Convert all periods, dashes, spaces to underscores
-  x <- gsub("(\\.|-| )", "_", x)
-
-  # Convert acronymes to Mixed Case
-  x <- gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", x, perl = TRUE)
-
-  # Lowercase first letter
-  x <- paste0(tolower(substr(x, 1, 1)), substr(x, 2, nchar(x)))
-
-  # Convert snake_case to camelCase
-  x <- gsub("_(\\w?)", "\\U\\1", x, perl = TRUE)
-  return(x)
+#'
+#' @examples
+#' camel("RNAi clone")
+#'
+camel <- function(string) {
+    string %>%
+        # Remove parentheses:
+        gsub("(\\(|\\))", "", .) %>%
+        # Convert all periods, dashes, spaces to underscores:
+        gsub("(\\.|-| )", "_", .) %>%
+        # Convert acronymes to Mixed Case:
+        gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
+        # Lowercase first letter:
+        gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
+        # Convert snake_case to camelCase
+        gsub("_(\\w?)", "\\U\\1", ., perl = TRUE)
 }
