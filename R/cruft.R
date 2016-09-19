@@ -21,3 +21,4 @@ cruft <- function(data) {
             gsub("(.*)(,|\\s//)\\s$", "\\1", a)
         }) %>%
         tibble::as_tibble
+}

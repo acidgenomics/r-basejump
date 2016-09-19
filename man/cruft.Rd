@@ -4,10 +4,10 @@
 \alias{cruft}
 \title{Cruft removal for tibbles.}
 \usage{
-cruft(crufty)
+cruft(data)
 }
 \arguments{
-\item{crufty}{Crufty \code{tibble} with leading/trailing spaces, dashes.}
+\item{data}{Data with leading/trailing spaces/commas, empty cells.}
 }
 \value{
 A reformatted, clean \code{tibble}
