@@ -12,7 +12,6 @@ Depends: R (>= 3.1.0)
 Imports:
     devtools,
     dplyr,
-    ggplot2,
     magrittr,
     RCurl,
     readr,
