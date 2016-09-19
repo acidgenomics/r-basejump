@@ -1,23 +1,24 @@
 #' Cruft removal for data frame cells
 #'
-#' @param df Messy \code{data.frame} with leading/trailing spaces, dashes.
+#' @import dplyr
+#' @import tibble
 #'
-#' @return A reformatted, clean \code{data.frame}
+#' @param data Data with leading/trailing spaces/commas, empty cells.
+#'
+#' @return A reformatted, clean \code{tibble}
 #' @export
-cruft <- function(df) {
-  # Set cells with only spaces to NA
-  df <- data.frame(apply(df, 2, function(x) gsub("^$|^ $", NA, x)))
-
-  # Fix leading and trailing commas
-  df <-
-    data.frame(apply(df, 2, function(x)
-      gsub("^(,|\\s//)\\s(.*)", "\\2", x, perl = TRUE)))
-  df <-
-    data.frame(apply(df, 2, function(x)
-      gsub("(.*)(,|\\s//)\\s$", "\\1", x, perl = TRUE)))
-
-  #! lapply(df, class)
-  #! names(df)
-
-  return(df)
+cruft <- function(data) {
+    data %>%
+        # Set cells with only spaces to NA
+        apply(., 2, function(a) {
+            gsub("^$|^ $", NA, a)
+            }) %>%
+        # Fix leading and trailing commas
+        apply(., 2, function(a) {
+            gsub("^(,|\\s//)\\s(.*)", "\\2", a, perl = TRUE)
+        }) %>%
+        apply(., 2, function(a) {
+            gsub("(.*)(,|\\s//)\\s$", "\\1", a, perl = TRUE)
+        }) %>%
+        tibble::as_tibble
 }

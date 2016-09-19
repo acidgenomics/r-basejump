@@ -4,15 +4,18 @@
 \alias{snake}
 \title{snake_case}
 \usage{
-snake(alphanum)
+snake(string)
 }
 \arguments{
-\item{alphanum}{Alphanumeric \code{string}.}
+\item{string}{\code{string}.}
 }
 \value{
 \code{string} with snake_case formatting.
 }
 \description{
 snake_case
+}
+\examples{
+snake("RNAi clone")
 }
 
