@@ -4,13 +4,13 @@
 \alias{cruft}
 \title{Cruft removal for data frame cells}
 \usage{
-cruft(df)
+cruft(data)
 }
 \arguments{
-\item{df}{Messy \code{data.frame} with leading/trailing spaces, dashes.}
+\item{data}{Data with leading/trailing spaces/commas, empty cells.}
 }
 \value{
-A reformatted, clean \code{data.frame}
+A reformatted, clean \code{tibble}
 }
 \description{
 Cruft removal for data frame cells

@@ -7,9 +7,11 @@
 #'
 #' @return Antilog \code{numeric} vector with proper sign.
 #' @export
+#'
+#' @examples
+#' antilog2(c(-2, -1, 0, 1, 2))
 antilog2 <- function(log2) {
-  # Sign is -1 if log2 < 0; 1 if log2 >= 0
-  sgn <- (-1) ^ (1 + as.numeric(log2 >= 0))
-  fc <- sgn * 2 ^ abs(log2)
-  return(fc)
+    # Sign is -1 if log2 < 0; 1 if log2 >= 0
+    sign <- (-1) ^ (1 + as.numeric(log2 >= 0))
+    sign * 2 ^ abs(log2)
 }
