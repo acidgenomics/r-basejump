@@ -4,15 +4,19 @@
 \alias{camel}
 \title{camelCase}
 \usage{
-camel(alphanum)
+camel(string)
 }
 \arguments{
-\item{alphanum}{Alphanumeric \code{string}.}
+\item{string}{\code{string}.}
 }
 \value{
 \code{string} with camelCase formatting.
 }
 \description{
 camelCase
+}
+\examples{
+camel("RNAi clone")
+
 }
 

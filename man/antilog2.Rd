@@ -16,4 +16,7 @@ Antilog \code{numeric} vector with proper sign.
 Convert a string of log2 normalized values (e.g. fold changes) for better
 readability.
 }
+\examples{
+antilog2(c(-2, -1, 0, 1, 2))
+}
 
