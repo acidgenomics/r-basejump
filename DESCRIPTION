@@ -1,20 +1,22 @@
 Package: seqcloudr
 Type: Package
-Title: Biological Data Analysis Tools
-Version: 0.4.5
+Title: Computational Biology Tools
+Version: 0.4.8
 Author: Michael Steinbaugh
-Maintainer: Michael Steinbaugh <mike@seq.cloud>
-Description: R functions for use in next-generation sequencing data analysis.
+Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
+Description: Miscellaneous R functions for use in computational biology.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/seqcloud/seqcloudr
 Depends: R (>= 3.1.0)
 Imports:
     devtools,
-    rmarkdown,
     dplyr,
     magrittr,
+    RCurl,
     readr,
+    rmarkdown,
     stringr,
     tibble
+biocViews:
 RoxygenNote: 5.0.1

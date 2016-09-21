@@ -12,7 +12,7 @@ mdlist(character, ordered = FALSE)
 \item{ordered}{Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format.}
 }
 \value{
-Character vector.
+\code{character} vector.
 }
 \description{
 Markdown list
