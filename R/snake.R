@@ -1,6 +1,6 @@
 #' snake_case
 #'
-#' @import dplyr
+#' @import magrittr
 #'
 #' @param string \code{string}.
 #'
