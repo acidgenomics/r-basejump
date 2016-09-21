@@ -10,6 +10,5 @@
 unique <- function(x) {
     x %>%
         stats::na.omit(.) %>%
-        sort(.) %>%
         base::unique(.)
 }
