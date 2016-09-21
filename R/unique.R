@@ -7,9 +7,9 @@
 #'
 #' @return vector.
 #' @export
-toUnique <- function(x) {
+unique <- function(x) {
     x %>%
         stats::na.omit(.) %>%
         sort(.) %>%
-        unique(.)
+        base::unique(.)
 }
