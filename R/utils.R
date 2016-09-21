@@ -1,5 +1,3 @@
-utils::globalVariables(".")
-
 dots <- function(...) {
   eval(substitute(alist(...)))
 }

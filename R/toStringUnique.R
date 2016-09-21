@@ -1,12 +1,15 @@
 #' toString call that outputs uniques.
+#'
 #' @import magrittr
+#' @import stats
+#'
 #' @param x vector.
-#' @return vector.
+#'
+#' @return string vector.
 #' @export
 toStringUnique <- function(x) {
-    x <- x %>%
+    x %>%
         unique %>%
-        sort %>%
-        toString(.)
-    return(x)
+        toString(.) %>%
+        gsub("NA,\\s|,\\sNA", "", .)
 }
