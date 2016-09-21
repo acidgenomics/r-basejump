@@ -10,7 +10,7 @@ toStringUnique(x)
 \item{x}{vector.}
 }
 \value{
-vector.
+string vector.
 }
 \description{
 toString call that outputs uniques.

@@ -1,7 +1,7 @@
 #' toString call that outputs uniques.
 #'
 #' @import magrittr
-#' @import stats
+#' @importFrom stats na.omit
 #'
 #' @param x vector.
 #'
@@ -9,7 +9,7 @@
 #' @export
 toStringUnique <- function(x) {
     x %>%
-        unique %>%
+        unique(.) %>%
         toString(.) %>%
         gsub("NA,\\s|,\\sNA", "", .)
 }
