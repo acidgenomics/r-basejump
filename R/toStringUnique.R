@@ -6,9 +6,9 @@
 #'
 #' @return string vector.
 #' @export
-toString <- function(x) {
+toStringUnique <- function(x) {
     x %>%
-        base::unique(.) %>%
-        base::toString(.) %>%
+        unique(.) %>%
+        toString(.) %>%
         gsub("NA,\\s|,\\sNA", "", .)
 }

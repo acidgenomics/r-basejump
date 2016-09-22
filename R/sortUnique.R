@@ -1,4 +1,4 @@
-#' Vector uniques.
+#' Sort unique.
 #'
 #' @import magrittr
 #' @importFrom stats na.omit
@@ -7,8 +7,9 @@
 #'
 #' @return vector.
 #' @export
-unique <- function(x) {
+sortUnique <- function(x) {
     x %>%
         stats::na.omit(.) %>%
-        base::unique(.)
+        sort(.) %>%
+        unique(.)
 }
