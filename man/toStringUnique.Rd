@@ -2,7 +2,7 @@
 % Please edit documentation in R/toStringUnique.R
 \name{toStringUnique}
 \alias{toStringUnique}
-\title{toString call that outputs uniques.}
+\title{toString call that only outputs uniques.}
 \usage{
 toStringUnique(x)
 }
@@ -10,9 +10,9 @@ toStringUnique(x)
 \item{x}{vector.}
 }
 \value{
-vector.
+string vector.
 }
 \description{
-toString call that outputs uniques.
+toString call that only outputs uniques.
 }
 
