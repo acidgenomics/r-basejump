@@ -2,7 +2,7 @@
 #'
 #' @import dplyr
 #'
-#' @param tibble A \code{data.frame} with leading/trailing spaces/commas, empty cells.
+#' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.
 #'
 #' @return A reformatted, clean \code{data.frame}.
 #' @export
