@@ -1,8 +1,8 @@
 Package: seqcloudr
 Type: Package
-Title: Computational Biology Tools
+Title: Computational biology tools
 Version: 0.4.10
-Author: Michael Steinbaugh
+Author: Michael Steinbaugh <mike@steinbaugh.com>
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: Miscellaneous R functions for use in computational biology.
 License: MIT + file LICENSE

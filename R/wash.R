@@ -1,30 +1,25 @@
 #' Wash data.frame.
 #'
-#' @import magrittr
-#' @import stringr
-#' @import tibble
+#' @import dplyr
 #'
 #' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.
 #'
 #' @return A reformatted, clean \code{data.frame}.
 #' @export
 wash <- function(data) {
-    data %>%
-        # Leading commas:
-        apply(., 2, function(a) {
-            gsub("^(,|\\s//)\\s(.*)", "\\2", a)
-        }) %>%
-        # Trailing commas:
-        apply(., 2, function(a) {
-            gsub("(.*)(,|\\s//)\\s$", "\\1", a)
-        }) %>%
-        # Duplicate NAs from \code{toString}:
-        apply(., 2, function(a) {
-            gsub("NA,\\s|,\\sNA", "", a)
-        }) %>%
-        # NA needed:
-        apply(., 2, function(a) {
-            gsub("^$|^\\s+$|^NA$", NA, a)
-        }) %>%
-        tibble::as_tibble(.)
+    gsubs <- function(a) {
+        a %>%
+            # Duplicate separators
+            gsub("(,|;|/)\\s(,|;|/)", "\\1", .) %>%
+            # Leading separators
+            gsub("^(,|;|/)\\s", "", .) %>%
+            # Trailing separators
+            gsub("\\s(,|;|/)$", "", .) %>%
+            # NAs in string
+            gsub("NA,\\s|,\\sNA", "", .) %>%
+            # Character NAs
+            gsub("^$|^\\s+$|^NA$", NA, .)
+        return(a)
+    }
+    dplyr::mutate_each(data, funs(gsubs))
 }
