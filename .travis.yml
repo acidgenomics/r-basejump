@@ -5,5 +5,5 @@ r: bioc-release
 sudo: false
 cache: packages
 bioc_packages:
-    RDAVIDWebService,
-    STRINGdb
+  - RDAVIDWebService
+  - STRINGdb
