@@ -1,9 +1,8 @@
 #' Find and download a file from a remote server.
 #'
-#' @import magrittr
 #' @import RCurl
 #' @import stringr
-#' @import utils
+#' @importFrom utils download.file
 #'
 #' @param url URL of remote directory.
 #' @param subset Match string.

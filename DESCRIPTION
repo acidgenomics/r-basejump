@@ -1,7 +1,7 @@
 Package: seqcloudr
 Type: Package
 Title: Computational biology tools
-Version: 0.4.10
+Version: 0.5.0
 Author: Michael Steinbaugh <mike@steinbaugh.com>
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: Miscellaneous R functions for use in computational biology.
@@ -14,9 +14,10 @@ Imports:
     dplyr,
     magrittr,
     RCurl,
+    RDAVIDWebService,
     readr,
     rmarkdown,
-    stringr,
-    tibble
+    STRINGdb,
+    stringr
 biocViews:
 RoxygenNote: 5.0.1

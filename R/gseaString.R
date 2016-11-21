@@ -1,5 +1,7 @@
 #' Gene set enrichment analysis (GSEA) with STRING
 #'
+#' @import STRINGdb
+#'
 #' @param gene Gene identifier vector.
 #' @param background Background identifier vector.
 #' @param species Species (e.g. "Homo sapiens")
@@ -37,9 +39,7 @@ gseaString <- function(gene,
     }
 
     species <- STRINGdb::get_STRING_species(version = version) %>%
-        dplyr::filter(official_name == get("species")) %>%
-        dplyr::select(species_id) %>% .[[1]]
-
+        .[.$official_name == get("species"), "species_id"]
     string_db <- STRINGdb::STRINGdb$new(species = species,
                                         input_directory = cache,
                                         version = version)
@@ -73,10 +73,11 @@ gseaString <- function(gene,
         string_db$get_png(id, file = file.path(stringDir, "string.png"))
     }
 
+    # STILL IN DEVELOPMENT:
     if (isTRUE(pdf)) {
-        pdf(file.path(stringDir, "string.pdf"))
-        string_db$plot_network(id, add_link = FALSE)
-        dev.off()
+        # pdf(file.path(stringDir, "string.pdf"))
+        # string_db$plot_network(id, add_link = FALSE)
+        # dev.off()
     }
 
     return(string)

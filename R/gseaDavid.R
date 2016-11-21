@@ -1,5 +1,7 @@
 #' Gene set enrichment analysis (GSEA) with DAVID
 #'
+#' @import RDAVIDWebService
+#'
 #' @param gene Gene identifier vector.
 #' @param background Background identifier vector.
 #' @param format Identifier format (see DAVID website).
@@ -41,11 +43,11 @@ gseaDavid <- function(gene,
         RDAVIDWebService::getGeneListReportFile(david, fileName = "davidGeneListReportFile.tsv")
     }
 
-    list <- list(annotationSummary = getAnnotationSummary(david),
-                 clusterReport = getClusterReport(david),
-                 functionalAnnotationChart = getFunctionalAnnotationChart(david),
-                 functionalAnnotationTable = getFunctionalAnnotationTable(david),
-                 geneCategoriesReport = getGeneCategoriesReport(david),
-                 geneListReport = getGeneListReport(david))
+    list <- list(annotationSummary = RDAVIDWebService::getAnnotationSummary(david),
+                 clusterReport = RDAVIDWebService::getClusterReport(david),
+                 functionalAnnotationChart = RDAVIDWebService::getFunctionalAnnotationChart(david),
+                 functionalAnnotationTable = RDAVIDWebService::getFunctionalAnnotationTable(david),
+                 geneCategoriesReport = RDAVIDWebService::getGeneCategoriesReport(david),
+                 geneListReport = RDAVIDWebService::getGeneListReport(david))
     return(list)
 }
