@@ -19,5 +19,5 @@ devtools::install_github("steinbaugh/seqcloudr", build_vignettes = TRUE)
 Instructions on how to use the functions in this package are available as vignettes:
 
 ```{r}
-browseVignettes("worminfo")
+browseVignettes("seqcloudr")
 ```
