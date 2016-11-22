@@ -13,7 +13,7 @@ To install, run this code in [R][]:
 
 ```{r}
 install.packages("devtools")
-devtools::install_github("steinbaugh/worminfo", build_vignettes = TRUE)
+devtools::install_github("steinbaugh/seqcloudr", build_vignettes = TRUE)
 ```
 
 Instructions on how to use the functions in this package are available as vignettes:
