@@ -12,12 +12,14 @@ Depends: R (>= 3.1.0)
 Imports:
     devtools,
     dplyr,
+    knitr,
     magrittr,
     RCurl,
     RDAVIDWebService,
     readr,
     rmarkdown,
     STRINGdb,
-    stringr
+    stringr,
+    tibble
 biocViews:
 RoxygenNote: 5.0.1
