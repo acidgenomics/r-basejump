@@ -12,7 +12,8 @@ renderTibble <- function(tibble,
     if (is.null(caption)) {
         stop("A caption is required.")
     }
-    tibble <- tibble::as_tibble(tibble)
+    tibble <- tibble::as_tibble(tibble) %>%
+        magrittr::set_names(camel(names(.)))
     if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to")) & nrow(tibble) > 0) {
         knitr::kable(tibble,
                      booktabs = TRUE,
