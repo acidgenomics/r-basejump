@@ -19,13 +19,15 @@ gseaDavidCutoff <- function(gseaDavid,
     tibble <- gseaDavid[["functionalAnnotationChart"]] %>%
         data.frame(.) %>%
         tibble::as_tibble(.) %>%
-        magrittr::set_names(camel(names(.))) %>%
+        setNamesCamel %>%
         dplyr::select_(.dots = c("category",
                                  "term",
                                  "count",
+                                 "genes",
                                  "pvalue",
                                  "fdr")) %>%
         dplyr::rename_(.dots = c("p" = "pvalue")) %>%
+        # FDR maximum is 1, not 100
         dplyr::mutate_(.dots = stats::setNames(list(~fdr / 100), "fdr")) %>%
         dplyr::arrange_(.dots = c("category", "fdr"))
     if (!is.null(count)) {
