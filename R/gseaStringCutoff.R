@@ -20,7 +20,7 @@ gseaStringCutoff <- function(gseaString,
     list <- lapply(gseaString, function(tibble) {
         tibble <- tibble %>%
             tibble::as_tibble(.) %>%
-            magrittr::set_names(camel(names(.))) %>%
+            setNamesCamel %>%
             dplyr::select_(.dots = c("termId",
                                      "termDescription",
                                      "hits",
