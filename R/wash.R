@@ -19,7 +19,6 @@ wash <- function(data) {
             gsub("NA,\\s|,\\sNA", "", .) %>%
             # Character NAs
             gsub("^$|^\\s+$|^NA$", NA, .)
-        return(a)
     }
     dplyr::mutate_each(data, funs(gsubs))
 }
