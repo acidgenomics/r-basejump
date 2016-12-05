@@ -13,6 +13,8 @@ snake <- function(string) {
     string %>%
         # Convert non-alphanumeric characters to underscores:
         gsub("[^[:alnum:]]", "_", .) %>%
+        # Remove repeat underscores:
+        gsub("[_]+", "_", .) %>%
         # Remove leading or trailing underscores:
         gsub("(^_|_$)", "", .) %>%
         # Convert acronymes to Mixed Case:
