@@ -4,12 +4,10 @@
 \alias{loadRemote}
 \title{Load a remote R binary data file}
 \usage{
-loadRemote(url, ...)
+loadRemote(url)
 }
 \arguments{
 \item{url}{URL}
-
-\item{...}{Passthrough to `load()` function.}
 }
 \value{
 Loaded R data file
