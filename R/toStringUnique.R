@@ -8,7 +8,7 @@
 #' @export
 toStringUnique <- function(x) {
     x %>%
-        unique(.) %>%
-        toString(.) %>%
+        unique %>%
+        toString %>%
         gsub("NA,\\s|,\\sNA", "", .)
 }
