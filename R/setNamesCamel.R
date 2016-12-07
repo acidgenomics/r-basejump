@@ -1,12 +1,12 @@
-#' Set names of tibble as camelCase
+#' Set names as camelCase
 #'
 #' @importFrom magrittr set_names
 #'
-#' @param tibble 
+#' @param data \code{data.frame}, \code{list}, or \code{tibble}
 #'
-#' @return tibble
+#' @return data Same data but with reformatted camelCase names
 #' @export
-setNamesCamel <- function(tibble) {
-    tibble %>%
+setNamesCamel <- function(data) {
+    data %>%
         magrittr::set_names(., camel(names(.)))
 }

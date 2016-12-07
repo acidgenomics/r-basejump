@@ -2,17 +2,17 @@
 % Please edit documentation in R/setNamesSnake.R
 \name{setNamesSnake}
 \alias{setNamesSnake}
-\title{Set names of tibble as snake_case}
+\title{Set names as snake_case}
 \usage{
-setNamesSnake(tibble)
+setNamesSnake(data)
 }
 \arguments{
-\item{tibble}{}
+\item{data}{\code{data.frame}, \code{list}, or \code{tibble}}
 }
 \value{
-tibble
+data Same data but with reformatted snake_case names
 }
 \description{
-Set names of tibble as snake_case
+Set names as snake_case
 }
 

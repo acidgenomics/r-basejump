@@ -2,17 +2,17 @@
 % Please edit documentation in R/setNamesCamel.R
 \name{setNamesCamel}
 \alias{setNamesCamel}
-\title{Set names of tibble as camelCase}
+\title{Set names as camelCase}
 \usage{
-setNamesCamel(tibble)
+setNamesCamel(data)
 }
 \arguments{
-\item{tibble}{}
+\item{data}{\code{data.frame}, \code{list}, or \code{tibble}}
 }
 \value{
-tibble
+data Same data but with reformatted camelCase names
 }
 \description{
-Set names of tibble as camelCase
+Set names as camelCase
 }
 

@@ -1,12 +1,12 @@
-#' Set names of tibble as snake_case
+#' Set names as snake_case
 #'
 #' @importFrom magrittr set_names
 #'
-#' @param tibble 
+#' @param data \code{data.frame}, \code{list}, or \code{tibble}
 #'
-#' @return tibble
+#' @return data Same data but with reformatted snake_case names
 #' @export
-setNamesSnake <- function(tibble) {
-    tibble %>%
-        magrittr::set_names(., snake(names(.)))
+setNamesSnake <- function(data) {
+    data %>%
+        magrittr::set_names(data, snake(names(.)))
 }

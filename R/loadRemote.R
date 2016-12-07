@@ -3,12 +3,11 @@
 #' @importFrom utils download.file
 #'
 #' @param url URL
-#' @param ... Passthrough to `load()` function.
 #'
 #' @return Loaded R data file
 #' @export
-loadRemote <- function(url, ...) {
+loadRemote <- function(url) {
     tempfile <- tempfile()
     utils::download.file(url, get("tempfile"), quiet = TRUE)
-    load(get("tempfile"), ...)
+    load(get("tempfile"), envir = globalenv())
 }
