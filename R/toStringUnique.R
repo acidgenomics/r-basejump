@@ -9,6 +9,7 @@
 toStringUnique <- function(x) {
     x %>%
         unique %>%
+        sort %>%
         toString %>%
         gsub("NA,\\s|,\\sNA", "", .)
 }
