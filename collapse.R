@@ -2,12 +2,12 @@
 #'
 #' @import dplyr
 #'
-#' @param df long data.frame.
+#' @param tibble long tibble.
 #'
-#' @return collapsed data.frame.
+#' @return collapsed tibble.
 #' @export
-collapse <- function(df) {
-    df %>%
+collapse <- function(tibble) {
+    tibble %>%
         dplyr::summarise_each(funs(toStringUnique)) %>%
         dplyr::mutate_each(funs(fixNA))
 }
