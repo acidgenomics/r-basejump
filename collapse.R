@@ -6,7 +6,7 @@
 #'
 #' @return collapsed data.frame.
 #' @export
-rowCollapse <- function(df) {
+collapse <- function(df) {
     df %>%
         dplyr::summarise_each(funs(toStringUnique)) %>%
         dplyr::mutate_each(funs(fixNA))
