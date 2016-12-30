@@ -1,6 +1,6 @@
 #' Collapse rows in a data.frame.
 #'
-#' @import dplyr
+#' @importFrom dplyr mutate_each summarise_each
 #'
 #' @param tibble long tibble.
 #'
