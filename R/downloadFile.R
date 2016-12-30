@@ -1,7 +1,7 @@
 #' Find and download a file from a remote server.
 #'
-#' @import RCurl
-#' @import stringr
+#' @importFrom RCurl getURL
+#' @importFrom stringr str_split
 #' @importFrom utils download.file
 #'
 #' @param url URL of remote directory.
