@@ -2,8 +2,8 @@
 #'
 #' @export
 #' @keywords general
-#' @param string \code{string}.
-#' @return \code{string} with camelCase formatting.
+#' @param string \code{string}
+#' @return \code{string} with camelCase formatting
 #'
 #' @examples
 #' camel("RNAi clone")

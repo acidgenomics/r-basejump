@@ -2,20 +2,21 @@
 % Please edit documentation in R/fixNA.R
 \name{fixNA}
 \alias{fixNA}
-\title{Fix empty and "NA" character strings.}
+\title{Fix empty and "NA" character strings}
 \usage{
-fixNA(a)
+fixNA(string)
 }
 \arguments{
-\item{a}{Values missing \code{NA}.}
+\item{string}{\code{string} missing \code{NA}.}
 }
 \value{
-Values containing \code{NA}.
+\code{string} containing \code{NA}
 }
 \description{
-Fix empty and "NA" character strings.
+Fix empty and "NA" character strings
 }
 \examples{
 fixNA(c(1, "x", "", "NA"))
 }
+\keyword{general}
 

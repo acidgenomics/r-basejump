@@ -7,16 +7,16 @@
 camel(string)
 }
 \arguments{
-\item{string}{\code{string}.}
+\item{string}{\code{string}}
 }
 \value{
-\code{string} with camelCase formatting.
+\code{string} with camelCase formatting
 }
 \description{
 camelCase
 }
 \examples{
 camel("RNAi clone")
-
 }
+\keyword{general}
 

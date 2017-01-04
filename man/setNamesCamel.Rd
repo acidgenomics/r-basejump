@@ -15,4 +15,5 @@ data Same data but with reformatted camelCase names
 \description{
 Set names as camelCase
 }
+\keyword{general}
 
