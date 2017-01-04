@@ -1,14 +1,12 @@
 #' Gene set enrichment analysis (GSEA) with DAVID
 #'
-#' @import RDAVIDWebService
-#'
-#' @param gene Gene identifier vector.
-#' @param background Background identifier vector.
-#' @param format Identifier format (see DAVID website).
-#' @param file Export to file (TRUE/FALSE).
-#'
-#' @return List of DAVID chart and cluster
 #' @export
+#' @import RDAVIDWebService
+#' @param gene Gene identifier vector
+#' @param background Background identifier vector
+#' @param format Identifier format (see DAVID website)
+#' @param file Export to file (\code{TRUE} or \code{FALSE})
+#' @return List of DAVID chart and cluster
 gseaDavid <- function(gene,
                       background,
                       format,

@@ -1,13 +1,11 @@
-#' toString call that only outputs uniques.
+#' toString call that outputs sorted uniques
 #'
-#' @import magrittr
-#'
-#' @param x vector.
-#'
-#' @return string vector.
 #' @export
-toStringUnique <- function(x) {
-    x %>%
+#' @keywords general
+#' @param vector \code{vector}
+#' @return Sorted unique \code{string}
+toStringUnique <- function(vector) {
+    vector %>%
         unique %>%
         sort %>%
         toString %>%

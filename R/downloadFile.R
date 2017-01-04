@@ -1,15 +1,14 @@
-#' Find and download a file from a remote server.
+#' Find and download a file from a remote server
 #'
+#' @export
 #' @importFrom RCurl getURL
 #' @importFrom stringr str_split
 #' @importFrom utils download.file
-#'
-#' @param url URL of remote directory.
-#' @param subset Match string.
-#' @param rename Rename the file, if desired.
-#' @param data_raw Append \code{data-raw} to saved file name.
-
-#' @export
+#' @keywords web
+#' @param url URL of remote directory
+#' @param subset Match \code{string}
+#' @param rename Rename the file, if desired
+#' @param data_raw Append \code{data-raw} to saved file name
 downloadFile <- function(url, subset, rename = NULL, data_raw = TRUE) {
   remoteFile <- RCurl::getURL(url, dirlistonly = TRUE) %>%
     stringr::str_split(., "\n") %>%

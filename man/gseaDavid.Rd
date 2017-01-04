@@ -7,13 +7,13 @@
 gseaDavid(gene, background, format, file = FALSE)
 }
 \arguments{
-\item{gene}{Gene identifier vector.}
+\item{gene}{Gene identifier vector}
 
-\item{background}{Background identifier vector.}
+\item{background}{Background identifier vector}
 
-\item{format}{Identifier format (see DAVID website).}
+\item{format}{Identifier format (see DAVID website)}
 
-\item{file}{Export to file (TRUE/FALSE).}
+\item{file}{Export to file (\code{TRUE} or \code{FALSE})}
 }
 \value{
 List of DAVID chart and cluster

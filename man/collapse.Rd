@@ -2,17 +2,18 @@
 % Please edit documentation in R/collapse.R
 \name{collapse}
 \alias{collapse}
-\title{Collapse rows in a data.frame.}
+\title{Collapse rows in a tibble}
 \usage{
 collapse(tibble)
 }
 \arguments{
-\item{tibble}{long tibble.}
+\item{tibble}{Long \code{tibble}}
 }
 \value{
-collapsed tibble.
+Collapsed \code{tibble}
 }
 \description{
-Collapse rows in a data.frame.
+Collapse rows in a tibble
 }
+\keyword{general}
 
