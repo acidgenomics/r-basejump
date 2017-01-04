@@ -1,15 +1,12 @@
 #' camelCase
 #'
-#' @import magrittr
-#'
-#' @param string \code{string}.
-#'
-#' @return \code{string} with camelCase formatting.
 #' @export
+#' @keywords general
+#' @param string \code{string}.
+#' @return \code{string} with camelCase formatting.
 #'
 #' @examples
 #' camel("RNAi clone")
-#'
 camel <- function(string) {
     string %>%
         # Convert non-alphanumeric characters to underscores:
