@@ -1,12 +1,12 @@
-#' Fix empty and "NA" character strings.
+#' Fix empty and "NA" character strings
 #'
-#' @param a Values missing \code{NA}.
-#'
-#' @return Values containing \code{NA}.
 #' @export
+#' @keywords general
+#' @param string \code{string} missing \code{NA}.
+#' @return \code{string} containing \code{NA}
 #'
 #' @examples
 #' fixNA(c(1, "x", "", "NA"))
-fixNA <- function(a) {
-    gsub("^$|^NA$", NA, a)
+fixNA <- function(string) {
+    gsub("^$|^NA$", NA, string)
 }
