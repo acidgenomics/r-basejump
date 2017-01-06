@@ -8,7 +8,7 @@
 #'
 #' @return Assigns variables to new \code{environment} with a name prefix, if desired.
 #' @export
-multiassign <- function(..., envir = .GlobalEnv, prefix = NULL) {
+multiAssign <- function(..., envir = .GlobalEnv, prefix = NULL) {
     # The `-1` here removes the function name:
     names <- sapply(match.call(expand.dots = TRUE)[-1], deparse)
     data <- list(...)

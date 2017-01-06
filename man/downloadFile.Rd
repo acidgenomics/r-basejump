@@ -2,20 +2,21 @@
 % Please edit documentation in R/downloadFile.R
 \name{downloadFile}
 \alias{downloadFile}
-\title{Find and download a file from a remote server.}
+\title{Find and download a file from a remote server}
 \usage{
 downloadFile(url, subset, rename = NULL, data_raw = TRUE)
 }
 \arguments{
-\item{url}{URL of remote directory.}
+\item{url}{URL of remote directory}
 
-\item{subset}{Match string.}
+\item{subset}{Match \code{string}}
 
-\item{rename}{Rename the file, if desired.}
+\item{rename}{Rename the file, if desired}
 
-\item{data_raw}{Append \code{data-raw} to saved file name.}
+\item{data_raw}{Append \code{data-raw} to saved file name}
 }
 \description{
-Find and download a file from a remote server.
+Find and download a file from a remote server
 }
+\keyword{web}
 
