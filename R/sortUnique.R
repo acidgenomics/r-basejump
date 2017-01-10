@@ -1,15 +1,12 @@
 #' Sort unique.
 #'
-#' @import magrittr
-#' @importFrom stats na.omit
-#'
-#' @param x vector with duplicates, NA values.
-#'
-#' @return vector.
 #' @export
-sortUnique <- function(x) {
-    x %>%
+#' @importFrom stats na.omit
+#' @param vector \code{vector} with duplicates, \code{NA} values.
+#' @return vector
+sortUnique <- function(vector) {
+    vector %>%
         stats::na.omit(.) %>%
-        sort(.) %>%
-        unique(.)
+        sort %>%
+        unique
 }
