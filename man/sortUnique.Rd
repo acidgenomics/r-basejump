@@ -4,13 +4,13 @@
 \alias{sortUnique}
 \title{Sort unique.}
 \usage{
-sortUnique(x)
+sortUnique(vector)
 }
 \arguments{
-\item{x}{vector with duplicates, NA values.}
+\item{vector}{\code{vector} with duplicates, \code{NA} values.}
 }
 \value{
-vector.
+vector
 }
 \description{
 Sort unique.
