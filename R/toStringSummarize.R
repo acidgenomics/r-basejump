@@ -1,11 +1,11 @@
-#' Collapse rows in a tibble
-#'
+#' Summarize rows using \code{toString}
+#' @export
 #' @importFrom dplyr mutate_each summarise_each
 #' @importFrom tibble as_tibble
 #' @keywords general
 #' @param tibble Long \code{tibble}
 #' @return Collapsed \code{tibble}
-collapse <- function(tibble) {
+toStringSummarize <- function(tibble) {
     tibble %>%
         tibble::as_tibble(.) %>%
         dplyr::summarise_each(funs(toStringUnique)) %>%
