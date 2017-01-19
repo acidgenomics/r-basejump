@@ -15,6 +15,7 @@ Imports:
     magrittr,
     RCurl,
     RDAVIDWebService,
+    pkgdown,
     readr,
     rmarkdown,
     STRINGdb,
