@@ -1,7 +1,7 @@
 Package: basejump
 Type: Package
 Title: Basejump
-Version: 2016-01-06
+Version: 2016-01-19
 Author: Michael Steinbaugh <mike@steinbaugh.com>
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: Base functions for computational biology and package development.
