@@ -2,12 +2,11 @@ Package: basejump
 Type: Package
 Title: Basejump
 Version: 2016-01-23
-Author: Michael Steinbaugh <mike@steinbaugh.com>
-Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
+Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
 Description: Base functions for computational biology and package development.
 License: MIT + file LICENSE
 LazyData: true
-URL: https://github.com/steinbaugh/basejump
+URL: http://steinbaugh.com/basejump
 Depends: R (>= 3.3.0)
 Imports:
     bookdown,
