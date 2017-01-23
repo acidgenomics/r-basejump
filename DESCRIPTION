@@ -1,7 +1,7 @@
 Package: basejump
 Type: Package
 Title: Basejump
-Version: 2016-01-06
+Version: 2016-01-23
 Author: Michael Steinbaugh <mike@steinbaugh.com>
 Maintainer: Michael Steinbaugh <mike@steinbaugh.com>
 Description: Base functions for computational biology and package development.
@@ -10,16 +10,17 @@ LazyData: true
 URL: https://github.com/steinbaugh/basejump
 Depends: R (>= 3.3.0)
 Imports:
+    bookdown,
     devtools,
     dplyr,
+    httr,
     knitr,
     magrittr,
+    parallel,
     RCurl,
-    RDAVIDWebService,
     pkgdown,
-    readr,
+    readxl,
     rmarkdown,
-    STRINGdb,
     stringr,
     tibble
 RoxygenNote: 5.0.1
