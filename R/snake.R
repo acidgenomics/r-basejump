@@ -1,12 +1,7 @@
 #' snake_case
-#'
-#' @import magrittr
-#'
-#' @param string \code{string}.
-#'
-#' @return \code{string} with snake_case formatting.
 #' @export
-#'
+#' @param string \code{string}
+#' @return snake_case formatted \code{string}
 #' @examples
 #' snake("RNAi clone")
 snake <- function(string) {

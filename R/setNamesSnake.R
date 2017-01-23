@@ -1,12 +1,10 @@
 #' Set names as snake_case
-#'
-#' @importFrom magrittr set_names
-#'
-#' @param data \code{data.frame}, \code{list}, or \code{tibble}
-#'
-#' @return data Same data but with reformatted snake_case names
 #' @export
+#' @importFrom stats setNames
+#' @keywords general
+#' @param data \code{data.frame}, \code{list}, or \code{tibble}
+#' @return data Data with reformatted snake_case names
 setNamesSnake <- function(data) {
     data %>%
-        magrittr::set_names(data, snake(names(.)))
+        stats::setNames(data, snake(names(.)))
 }

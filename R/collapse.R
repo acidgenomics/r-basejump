@@ -1,5 +1,4 @@
 #' Collapse rows in a tibble
-#'
 #' @export
 #' @importFrom dplyr mutate_each summarise_each
 #' @importFrom tibble as_tibble
