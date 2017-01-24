@@ -10,9 +10,10 @@ setNamesSnake(data)
 \item{data}{\code{data.frame}, \code{list}, or \code{tibble}}
 }
 \value{
-data Same data but with reformatted snake_case names
+data Data with reformatted snake_case names
 }
 \description{
 Set names as snake_case
 }
+\keyword{general}
 

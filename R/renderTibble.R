@@ -1,19 +1,18 @@
-#' Render a tibble when necessary
-#'
-#' @import knitr
-#'
-#' @param tibble Input tibble.
-#' @param caption Caption, which will be used with `knitr` call.
-#'
-#' @return Tibble or kable depending on the call.
+#' Render a \code{tibble} when necessary
 #' @export
+#' @importFrom knitr kable opts_knit
+#' @importFrom tibble as_tibble
+#' @keywords report
+#' @param tibble \code{tibble}
+#' @param caption Caption, to be used during a \code{knitr} call
+#' @return \code{tibble} or \code{kable} depending on the calling environment
 renderTibble <- function(tibble,
                          caption = NULL) {
     if (is.null(caption)) {
         stop("A caption is required.")
     }
     tibble <- tibble::as_tibble(tibble) %>%
-        magrittr::set_names(camel(names(.)))
+        setNamesCamel
     if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to")) & nrow(tibble) > 0) {
         knitr::kable(tibble,
                      booktabs = TRUE,

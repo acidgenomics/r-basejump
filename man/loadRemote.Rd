@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadRemote.R
 \name{loadRemote}
 \alias{loadRemote}
-\title{Load a remote R binary data file}
+\title{Load a remote R binary}
 \usage{
 loadRemote(url)
 }
@@ -13,6 +13,6 @@ loadRemote(url)
 Loaded R data file
 }
 \description{
-Load a remote R binary data file
+Load a remote R binary
 }
 
