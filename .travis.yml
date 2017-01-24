@@ -4,6 +4,5 @@ language: R
 cache: packages
 sudo: false
 r: bioc-release
-bioc_packages:
-  - RDAVIDWebService
-  - STRINGdb
+r_github_packages:
+  - hadley/pkgdown
