@@ -1,11 +1,8 @@
-#' Wash data.frame.
-#'
-#' @import dplyr
-#'
-#' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.
-#'
-#' @return A reformatted, clean \code{data.frame}.
+#' Wash a \code{data.frame}
 #' @export
+#' @importFrom dplyr mutate_each
+#' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.
+#' @return A reformatted, clean \code{data.frame}.
 wash <- function(data) {
     gsubs <- function(a) {
         a %>%
