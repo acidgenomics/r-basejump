@@ -2,17 +2,17 @@
 % Please edit documentation in R/sortUnique.R
 \name{sortUnique}
 \alias{sortUnique}
-\title{Sort unique.}
+\title{Sort unique}
 \usage{
-sortUnique(vector)
+sortUnique(x)
 }
 \arguments{
-\item{vector}{\code{vector} with duplicates, \code{NA} values.}
+\item{x}{vector with duplicates, `NA` values}
 }
 \value{
 vector
 }
 \description{
-Sort unique.
+Sort unique
 }
 

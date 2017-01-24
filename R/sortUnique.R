@@ -1,11 +1,10 @@
-#' Sort unique.
-#'
+#' Sort unique
 #' @export
 #' @importFrom stats na.omit
-#' @param vector \code{vector} with duplicates, \code{NA} values.
+#' @param x vector with duplicates, `NA` values
 #' @return vector
-sortUnique <- function(vector) {
-    vector %>%
+sortUnique <- function(x) {
+    x %>%
         stats::na.omit(.) %>%
         sort %>%
         unique
