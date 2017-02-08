@@ -20,4 +20,3 @@ Markdown list
 \examples{
 markdownList(c("item1", "item2"), ordered = TRUE)
 }
-
