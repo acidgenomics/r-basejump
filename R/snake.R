@@ -6,6 +6,7 @@
 #' snake("RNAi clone")
 snake <- function(string) {
     string %>%
+        specialWords %>%
         # Convert non-alphanumeric characters to underscores:
         gsub("[^[:alnum:]]", "_", .) %>%
         # Multiple underscores to single:
