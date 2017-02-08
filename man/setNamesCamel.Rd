@@ -16,4 +16,3 @@ data Same data but with reformatted camelCase names
 Set names as camelCase
 }
 \keyword{general}
-

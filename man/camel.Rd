@@ -19,4 +19,3 @@ camelCase
 camel("RNAi clone")
 }
 \keyword{general}
-

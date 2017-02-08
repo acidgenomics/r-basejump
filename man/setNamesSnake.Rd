@@ -16,4 +16,3 @@ data Data with reformatted snake_case names
 Set names as snake_case
 }
 \keyword{general}
-
