@@ -6,7 +6,7 @@ Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("au
 Description: Base functions for computational biology and package development.
 License: MIT + file LICENSE
 LazyData: true
-URL: http://steinbaugh.com/basejump
+URL: https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.3.0)
 Imports:
