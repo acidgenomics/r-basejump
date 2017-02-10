@@ -1,5 +1,4 @@
 #' Pipe operator
-#'
 #' @export
 #' @importFrom magrittr %>%
 #' @keywords internal

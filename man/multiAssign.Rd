@@ -2,21 +2,22 @@
 % Please edit documentation in R/multiassign.R
 \name{multiAssign}
 \alias{multiAssign}
-\title{Assign multiple variables}
+\title{Assign multiple variables
+Optionally, you can specify a name prefix and the desired environment}
 \usage{
 multiAssign(..., envir = .GlobalEnv, prefix = NULL)
 }
 \arguments{
-\item{...}{\code{list} of variables to assign.}
+\item{...}{\code{list} of variables to assign}
 
-\item{envir}{Desired \code{environment} (optional).}
+\item{envir}{Desired \code{environment} (optional)}
 
-\item{prefix}{Name prefix (optional).}
+\item{prefix}{Name prefix (optional)}
 }
 \value{
-Assigns variables to new \code{environment} with a name prefix, if desired.
+Assigns variables to new \code{environment} with a name prefix, if desired
 }
 \description{
-Optionally, you can specify a name prefix and the desired environment.
+Assign multiple variables
+Optionally, you can specify a name prefix and the desired environment
 }
-

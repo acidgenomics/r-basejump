@@ -16,4 +16,3 @@ Unique \code{string}
 toString call that outputs sorted uniques
 }
 \keyword{general}
-

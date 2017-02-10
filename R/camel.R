@@ -1,14 +1,13 @@
 #' camelCase
-#'
 #' @export
 #' @keywords general
 #' @param string \code{string}
 #' @return \code{string} with camelCase formatting
-#'
 #' @examples
 #' camel("RNAi clone")
 camel <- function(string) {
     string %>%
+        specialWords %>%
         # Convert non-alphanumeric characters to underscores:
         gsub("[^[:alnum:]]", "_", .) %>%
         # Multiple underscores to single:
