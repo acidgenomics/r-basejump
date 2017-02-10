@@ -4,6 +4,7 @@
 #' @importFrom pkgdown build_site
 buildAll <- function() {
     devtools::document()
+    devtools::build_vignettes()
     devtools::check()
     devtools::build()
     pkgdown::build_site()
