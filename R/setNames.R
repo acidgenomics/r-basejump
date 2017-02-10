@@ -1,5 +1,4 @@
 #' setNames
-#'
 #' @export
 #' @importFrom stats setNames
 #' @name setNames

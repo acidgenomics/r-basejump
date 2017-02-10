@@ -9,9 +9,8 @@ renderProject(dir = "docs", ...)
 \arguments{
 \item{dir}{Output directory.}
 
-\item{...}{Optional rmarkdown parameters}
+\item{...}{Optional \code{rmarkdown} parameters}
 }
 \description{
 Render all RMarkdown files in current project
 }
-

@@ -1,5 +1,4 @@
 #' Find and download a file from a remote server
-#'
 #' @export
 #' @importFrom RCurl getURL
 #' @importFrom stringr str_split

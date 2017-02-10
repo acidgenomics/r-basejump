@@ -1,11 +1,8 @@
 #' Markdown list
-#'
-#' @param character \code{character} vector.
-#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format.
-#'
-#' @return \code{character} vector.
 #' @export
-#'
+#' @param character \code{character} vector
+#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format
+#' @return \code{character} vector
 #' @examples
 #' markdownList(c("item1", "item2"), ordered = TRUE)
 markdownList <- function(character, ordered = FALSE) {

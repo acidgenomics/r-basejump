@@ -2,19 +2,19 @@
 % Please edit documentation in R/renderTibble.R
 \name{renderTibble}
 \alias{renderTibble}
-\title{Render a tibble when necessary}
+\title{Render a \code{tibble} when necessary}
 \usage{
 renderTibble(tibble, caption = NULL)
 }
 \arguments{
-\item{tibble}{Input tibble.}
+\item{tibble}{\code{tibble}}
 
-\item{caption}{Caption, which will be used with `knitr` call.}
+\item{caption}{Caption, to be used during a \code{knitr} call}
 }
 \value{
-Tibble or kable depending on the call.
+\code{tibble} or \code{kable} depending on the calling environment
 }
 \description{
-Render a tibble when necessary
+Render a \code{tibble} when necessary
 }
-
+\keyword{report}

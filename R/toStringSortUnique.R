@@ -1,5 +1,4 @@
 #' toString call that outputs sorted uniques
-#'
 #' @export
 #' @keywords general
 #' @param vector \code{vector}

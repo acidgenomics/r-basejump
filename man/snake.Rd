@@ -7,10 +7,10 @@
 snake(string)
 }
 \arguments{
-\item{string}{\code{string}.}
+\item{string}{\code{string}}
 }
 \value{
-\code{string} with snake_case formatting.
+snake_case formatted \code{string}
 }
 \description{
 snake_case
@@ -18,4 +18,3 @@ snake_case
 \examples{
 snake("RNAi clone")
 }
-

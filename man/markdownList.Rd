@@ -7,12 +7,12 @@
 markdownList(character, ordered = FALSE)
 }
 \arguments{
-\item{character}{\code{character} vector.}
+\item{character}{\code{character} vector}
 
-\item{ordered}{Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format.}
+\item{ordered}{Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format}
 }
 \value{
-\code{character} vector.
+\code{character} vector
 }
 \description{
 Markdown list
@@ -20,4 +20,3 @@ Markdown list
 \examples{
 markdownList(c("item1", "item2"), ordered = TRUE)
 }
-
