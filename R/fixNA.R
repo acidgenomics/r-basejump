@@ -1,4 +1,4 @@
-#' Fix empty and "NA" character strings
+#' Fix empty and NA character strings
 #' @export
 #' @keywords general
 #' @param string \code{string} missing \code{NA}.

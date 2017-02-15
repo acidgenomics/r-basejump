@@ -1,4 +1,5 @@
 #' Assign multiple variables
+#'
 #' Optionally, you can specify a name prefix and the desired environment
 #' @export
 #' @param ... \code{list} of variables to assign
