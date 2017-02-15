@@ -1,6 +1,7 @@
 #' Export CSV file
 #'
-#' Quickly export a comma separated values (CSV) file to the `results` folder.
+#' Quickly export a comma separated values (CSV) file to the \code{results}
+#' folder.
 #'
 #' @export
 #' @importFrom utils write.csv
@@ -23,8 +24,10 @@ exportCsv <- function(..., dir = "results") {
     paths <- file.path(dir, paste0(objs, ".csv"))
     message("Exporting ", paste(unlist(objs), collapse = ", "),
             " as ", paste(basename(paths), collapse = ", "))
+    #! Improve this using an `apply` method:
     for (a in 1:length(objs)) {
-        utils::write.csv(list(...)[[a]], paths[a])
+        list(...)[[a]] %>%
+            as.data.frame %>%
+            utils::write.csv(., paths[a])
     }
-    invisible()
 }
