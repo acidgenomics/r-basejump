@@ -1,4 +1,4 @@
-#' Log base 2 antilog conversion
+#' log2 antilog conversion
 #' Convert a string of log2 normalized values (e.g. fold changes) for better
 #' readability.
 #' @export

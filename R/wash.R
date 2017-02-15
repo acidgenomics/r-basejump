@@ -1,4 +1,4 @@
-#' Wash a \code{data.frame}
+#' Wash a data.frame
 #' @export
 #' @importFrom dplyr mutate_each
 #' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.

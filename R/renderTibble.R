@@ -1,4 +1,4 @@
-#' Render a \code{tibble} when necessary
+#' Render a tibble
 #' @export
 #' @importFrom knitr kable opts_knit
 #' @importFrom tibble as_tibble
