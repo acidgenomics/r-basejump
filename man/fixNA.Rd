@@ -2,7 +2,7 @@
 % Please edit documentation in R/fixNA.R
 \name{fixNA}
 \alias{fixNA}
-\title{Fix empty and "NA" character strings}
+\title{Fix empty and NA character strings}
 \usage{
 fixNA(string)
 }
@@ -13,7 +13,7 @@ fixNA(string)
 \code{string} containing \code{NA}
 }
 \description{
-Fix empty and "NA" character strings
+Fix empty and NA character strings
 }
 \examples{
 fixNA(c(1, "x", "", "NA"))

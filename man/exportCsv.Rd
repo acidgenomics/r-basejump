@@ -12,7 +12,8 @@ exportCsv(..., dir = "results")
 \item{dir}{Target directory}
 }
 \description{
-Quickly export a comma separated values (CSV) file to the `results` folder.
+Quickly export a comma separated values (CSV) file to the \code{results}
+folder.
 }
 \examples{
 \dontrun{

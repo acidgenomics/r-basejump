@@ -2,7 +2,7 @@
 % Please edit documentation in R/antilog2.R
 \name{antilog2}
 \alias{antilog2}
-\title{Log base 2 antilog conversion
+\title{log2 antilog conversion
 Convert a string of log2 normalized values (e.g. fold changes) for better
 readability.}
 \usage{
@@ -15,7 +15,7 @@ antilog2(log2)
 Antilog \code{numeric} vector with proper sign.
 }
 \description{
-Log base 2 antilog conversion
+log2 antilog conversion
 Convert a string of log2 normalized values (e.g. fold changes) for better
 readability.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/renderTibble.R
 \name{renderTibble}
 \alias{renderTibble}
-\title{Render a \code{tibble} when necessary}
+\title{Render a tibble}
 \usage{
 renderTibble(tibble, caption = NULL)
 }
@@ -15,6 +15,6 @@ renderTibble(tibble, caption = NULL)
 \code{tibble} or \code{kable} depending on the calling environment
 }
 \description{
-Render a \code{tibble} when necessary
+Render a tibble
 }
 \keyword{report}
