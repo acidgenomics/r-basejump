@@ -19,4 +19,3 @@ Fix empty and "NA" character strings
 fixNA(c(1, "x", "", "NA"))
 }
 \keyword{general}
-

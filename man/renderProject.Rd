@@ -14,4 +14,3 @@ renderProject(dir = "docs", ...)
 \description{
 Render all RMarkdown files in current project
 }
-

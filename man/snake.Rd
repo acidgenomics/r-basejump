@@ -18,4 +18,3 @@ snake_case
 \examples{
 snake("RNAi clone")
 }
-

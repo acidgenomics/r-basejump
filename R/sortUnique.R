@@ -6,6 +6,6 @@
 sortUnique <- function(x) {
     x %>%
         stats::na.omit(.) %>%
-        sort(.) %>%
-        unique(.)
+        sort %>%
+        unique
 }
