@@ -1,7 +1,7 @@
 Package: basejump
 Type: Package
 Title: Basejump
-Version: 2017.2.10
+Version: 2017.2.15
 Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
 Description: Base functions for computational biology and package development.
 License: MIT + file LICENSE
