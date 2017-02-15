@@ -21,4 +21,3 @@ Assigns variables to new \code{environment} with a name prefix, if desired
 Assign multiple variables
 Optionally, you can specify a name prefix and the desired environment
 }
-

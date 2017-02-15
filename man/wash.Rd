@@ -15,4 +15,3 @@ A reformatted, clean \code{data.frame}.
 \description{
 Wash a \code{data.frame}
 }
-

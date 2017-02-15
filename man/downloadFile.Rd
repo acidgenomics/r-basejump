@@ -19,4 +19,3 @@ downloadFile(url, subset, rename = NULL, data_raw = TRUE)
 Find and download a file from a remote server
 }
 \keyword{web}
-

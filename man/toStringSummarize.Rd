@@ -16,4 +16,3 @@ Collapsed \code{tibble}
 Summarize all rows in a \code{tibble} using \code{toString()}
 }
 \keyword{general}
-

@@ -18,4 +18,3 @@ renderTibble(tibble, caption = NULL)
 Render a \code{tibble} when necessary
 }
 \keyword{report}
-
