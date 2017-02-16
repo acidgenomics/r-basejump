@@ -1,9 +1,9 @@
-#' Render all RMarkdown files in current project
+#' Render all RMarkdown files in working directory
 #' @export
 #' @importFrom rmarkdown render
 #' @param dir Output directory.
 #' @param ... Optional \code{rmarkdown} parameters
-renderProject <- function(dir = "docs", ...) {
+renderAll <- function(dir = "docs", ...) {
     sapply(
         list.files(pattern = "*.Rmd", full.names = TRUE, recursive = TRUE),
         function(a) {

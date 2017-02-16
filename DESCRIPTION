@@ -1,9 +1,9 @@
 Package: basejump
 Type: Package
-Title: Basejump
+Title: Additional base functions
 Version: 2017.2.16
 Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
-Description: Base functions for computational biology and package development.
+Description: Helper functions for computational biology, package development, and RMarkdown workflows.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/steinbaugh/basejump
