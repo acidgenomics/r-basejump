@@ -3,8 +3,8 @@
 #' @importFrom devtools build build_vignettes check document load_all
 #' @importFrom pkgdown build_site
 pack <- function() {
-    devtools::load_all()
     devtools::document()
+    devtools::load_all()
     devtools::build_vignettes()
     devtools::check()
     devtools::build()
