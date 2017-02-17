@@ -26,10 +26,11 @@ writeCsv <- function(..., dir = "results") {
     lapply(objs, function(object) {
         path <- file.path(dir, paste0(object, ".csv"))
         message("Writing ", object, " as ", basename(path))
-        get(object) %>%
-            as.data.frame %>%
-            tibble::rownames_to_column(.) %>%
-            readr::write_csv(., path)
+        df <- get(object) %>% as.data.frame
+        if (!rownames(df)[1] == 1) {
+            df <- tibble::rownames_to_column(df)
+        }
+        readr::write_csv(df, path)
     })
     invisible()
 }
