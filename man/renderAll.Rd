@@ -4,12 +4,12 @@
 \alias{renderAll}
 \title{Render all RMarkdown files in working directory}
 \usage{
-renderAll(dir = "docs", ...)
+renderAll(outputDir = "render", ...)
 }
 \arguments{
-\item{dir}{Output directory.}
+\item{outputDir}{Output directory}
 
-\item{...}{Optional \code{rmarkdown} parameters}
+\item{...}{Passthrough \code{rmarkdown::render()} parameters}
 }
 \description{
 Render all RMarkdown files in working directory
