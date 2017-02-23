@@ -1,13 +1,21 @@
 #' Render all RMarkdown files in working directory
 #' @export
 #' @importFrom rmarkdown render
-#' @param dir Output directory.
-#' @param ... Optional \code{rmarkdown} parameters
-renderAll <- function(dir = "docs", ...) {
+#' @param outputDir Output directory
+#' @param ... Passthrough \code{rmarkdown::render()} parameters
+renderAll <- function(outputDir = "render", ...) {
+    # Create `outputDir` if necessary
+    if (!file.exists(outputDir)) {
+        dir.create(outputDir, recursive = TRUE)
+    }
     sapply(
         list.files(pattern = "*.Rmd", full.names = TRUE, recursive = TRUE),
         function(a) {
-            rmarkdown::render(a, output_dir = dir, output_format = "all", ...)
+            rmarkdown::render(a,
+                              output_dir = outputDir,
+                              output_format = "all",
+                              clean = TRUE,
+                              ...)
         }
     )
 }
