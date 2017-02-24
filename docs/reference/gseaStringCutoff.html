@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Render all RMarkdown files in working directory — renderAll • basejump</title>
+<title>Reformat STRINGdb to a tibble with significance cutoffs — gseaStringCutoff • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -71,22 +71,31 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Render all RMarkdown files in working directory</h1>
+    <h1>Reformat STRINGdb to a tibble with significance cutoffs</h1>
     </div>
 
     
-    <p>Render all RMarkdown files in working directory</p>
+    <p>Reformat STRINGdb to a tibble with significance cutoffs</p>
     
 
-    <pre><span class='fu'>renderAll</span>(<span class='kw'>outputDir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>gseaStringCutoff</span>(<span class='no'>gseaString</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"count"</span>), <span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"p"</span>),
+  <span class='kw'>fdr</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"fdr"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>outputDir</dt>
-      <dd>Output directory</dd>
-      <dt>...</dt>
-      <dd>Passthrough <code>rmarkdown::render()</code> parameters</dd>
+      <dt>gseaString</dt>
+      <dd>STRINGdb list from `gseaString()`.</dd>
+      <dt>count</dt>
+      <dd>Minimum count of hits.</dd>
+      <dt>p</dt>
+      <dd>P value cutoff value.</dd>
+      <dt>fdr</dt>
+      <dd>False discovery rate cutoff value.</dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Tibble or kable depending on the call.</p>
     
 
   </div>
@@ -94,7 +103,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
