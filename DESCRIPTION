@@ -4,6 +4,7 @@ Version: 0.1.0
 Date: 2017-02-23
 Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
 Description: Helper functions for computational biology, package development, and RMarkdown workflows.
+biocViews: DifferentialExpression, GeneExpression, ReportWriting, RNASeq, Visualization
 License: MIT + file LICENSE
 URL: http://steinbaugh.com/basejump, https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
@@ -17,11 +18,13 @@ Imports:
     knitr,
     magrittr,
     parallel,
-    RCurl,
     pkgdown,
+    RCurl,
+    RDAVIDWebService,
     readr,
     readxl,
     rmarkdown,
+    STRINGdb,
     stringr,
     tibble,
     utils

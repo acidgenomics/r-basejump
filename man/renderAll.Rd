@@ -4,7 +4,7 @@
 \alias{renderAll}
 \title{Render all RMarkdown files in working directory}
 \usage{
-renderAll(outputDir = "render", ...)
+renderAll(outputDir = NULL, ...)
 }
 \arguments{
 \item{outputDir}{Output directory}

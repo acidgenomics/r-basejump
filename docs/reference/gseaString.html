@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Render all RMarkdown files in working directory — renderAll • basejump</title>
+<title>Gene set enrichment analysis (GSEA) with STRING — gseaString • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -71,22 +71,39 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Render all RMarkdown files in working directory</h1>
+    <h1>Gene set enrichment analysis (GSEA) with STRING</h1>
     </div>
 
     
-    <p>Render all RMarkdown files in working directory</p>
+    <p>Gene set enrichment analysis (GSEA) with STRING</p>
     
 
-    <pre><span class='fu'>renderAll</span>(<span class='kw'>outputDir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>gseaString</span>(<span class='no'>gene</span>, <span class='no'>background</span>, <span class='no'>species</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>csv</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>png</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pdf</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"10"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>outputDir</dt>
-      <dd>Output directory</dd>
-      <dt>...</dt>
-      <dd>Passthrough <code>rmarkdown::render()</code> parameters</dd>
+      <dt>gene</dt>
+      <dd>Gene identifier vector.</dd>
+      <dt>background</dt>
+      <dd>Background identifier vector.</dd>
+      <dt>species</dt>
+      <dd>Species (e.g. &quot;Homo sapiens&quot;)</dd>
+      <dt>cache</dt>
+      <dd>Cache files to disk (TRUE/FALSE).</dd>
+      <dt>csv</dt>
+      <dd>Export to CSV (TRUE/FALSE).</dd>
+      <dt>png</dt>
+      <dd>Export network as PNG file (TRUE/FALSE).</dd>
+      <dt>pdf</dt>
+      <dd>Export network as high resolution PDF file (TRUE/FALSE).</dd>
+      <dt>version</dt>
+      <dd>STRING version to use.</dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>STRING list.</p>
     
 
   </div>
@@ -94,7 +111,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
