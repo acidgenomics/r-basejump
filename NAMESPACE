@@ -2,6 +2,7 @@
 
 export("%>%")
 export(antilog2)
+export(bioc)
 export(camel)
 export(checkInstall)
 export(clearWarnings)
