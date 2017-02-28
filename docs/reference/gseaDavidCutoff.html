@@ -78,19 +78,16 @@
     <p>Reformat RDAVIDWebService functionalAnnotationChart to a tibble with significance cutoffs</p>
     
 
-    <pre><span class='fu'>gseaDavidCutoff</span>(<span class='no'>gseaDavid</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"count"</span>), <span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"p"</span>),
-  <span class='kw'>fdr</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"fdr"</span>))</pre>
+    <pre><span class='fu'>gseaDavidCutoff</span>(<span class='no'>david</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>fdr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>gseaDavid</dt>
-      <dd>RDAVIDWebService list from `gseaDavid()`.</dd>
+      <dt>david</dt>
+      <dd>RDAVIDWebService list from `gseaDavid()`</dd>
       <dt>count</dt>
-      <dd>Minimum count of hits.</dd>
-      <dt>p</dt>
-      <dd>P value cutoff value.</dd>
+      <dd>Minimum hit count</dd>
       <dt>fdr</dt>
-      <dd>False discovery rate cutoff value.</dd>
+      <dd>False discovery rate cutoff (alpha)</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>

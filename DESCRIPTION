@@ -10,20 +10,18 @@ URL: http://steinbaugh.com/basejump, https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.3.0)
 Imports:
-    bookdown,
+    BiocCheck,
     devtools,
     dplyr,
     DT,
-    httr,
     knitr,
     magrittr,
-    parallel,
     pkgdown,
     RCurl,
     RDAVIDWebService,
     readr,
-    readxl,
     rmarkdown,
+    stats,
     STRINGdb,
     stringr,
     tibble,
