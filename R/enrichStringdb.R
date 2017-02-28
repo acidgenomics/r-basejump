@@ -1,4 +1,4 @@
-#' STRINGdb analysis
+#' STRINGdb enrichment analysis
 #'
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' STRINGdb, using simplified input options.
@@ -15,14 +15,14 @@
 #' @param pdf Export network as high resolution PDF file (TRUE/FALSE)
 #' @param version STRING version to use
 #' @return STRINGdb output list
-stringdb <- function(gene,
-                     background,
-                     species,
-                     cache = TRUE,
-                     csv = FALSE,
-                     png = TRUE,
-                     pdf = FALSE,
-                     version = "10") {
+enrichStringdb <- function(gene,
+                           background,
+                           species,
+                           cache = TRUE,
+                           csv = FALSE,
+                           png = TRUE,
+                           pdf = FALSE,
+                           version = "10") {
     if (isTRUE(cache)) {
         cache <- "cache/string"
         if (!file.exists(cache)) {

@@ -1,4 +1,4 @@
-#' DAVID analysis
+#' DAVID enrichment analysis
 #'
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' RDAVIDWebService, using simplified input options.
@@ -16,13 +16,13 @@
 #' @param count Minimum hit count
 #' @param fdr False discovery rate cutoff (alpha)
 #' @return List of \code{RDAVIDWebService()} report objects
-david <- function(foreground,
-                  background = NULL,
-                  idType = "ENSEMBL_GENE_ID",
-                  saveFiles = TRUE,
-                  saveDir = "results/david",
-                  count = 3,
-                  fdr = 0.1) {
+enrichDavid <- function(foreground,
+                      background = NULL,
+                      idType = "ENSEMBL_GENE_ID",
+                      saveFiles = TRUE,
+                      saveDir = "results/david",
+                      count = 3,
+                      fdr = 0.1) {
     if (is.null(getOption("email"))) {
         stop("An email must be specified using options().
              We recommend globally saving options in `~/.Rprofile`.")
