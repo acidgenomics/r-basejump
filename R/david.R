@@ -42,10 +42,10 @@ david <- function(foreground,
              numeric in the range of 0-1.")
     }
 
-    email <- getOption("email")
-    url <- "https://david.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/"
-
-    david <- RDAVIDWebService::DAVIDWebService$new(email = email, url = url)
+    david <- RDAVIDWebService::DAVIDWebService$new(
+        email = getOption("email"),
+        url = "https://david.ncifcrf.gov/webservice/services/DAVIDWebService.DAVIDWebServiceHttpSoap12Endpoint/"
+    )
 
     # Set a longer timeout (30000 default)
     setTimeOut(david, 200000)
@@ -68,7 +68,7 @@ david <- function(foreground,
     }
 
     # Generate the annotation chart with cutoffs applied
-    cutoffChart <- david$functionalAnnotationChart %>%
+    cutoffChart <- RDAVIDWebService::getFunctionalAnnotationChart(david) %>%
         as.data.frame(.) %>%
         setNamesSnake %>%
         .[, c("category",
@@ -81,8 +81,8 @@ david <- function(foreground,
         # FDR should be presented on 0-1 scale, not as a percentage
         dplyr::mutate_(.dots = stats::setNames(list(~fdr / 100), "fdr")) %>%
         dplyr::arrange_(.dots = c("category", "fdr")) %>%
-        subset(count >= count) %>%
-        subset(fdr < fdr)
+        .[.$count >= count, ] %>%
+        .[.$fdr < fdr, ]
 
     # Save the TSV files to disk
     if (isTRUE(saveFiles)) {
