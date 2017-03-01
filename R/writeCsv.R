@@ -1,9 +1,13 @@
+# This function fails with `rmarkdown::render()`. Likely need to change
+# environment settings for getting objects from dots. Not exported until
+# this issue is fixed.
+
 #' Write CSV files
 #'
 #' Quickly write comma separated values (CSV) files. Uses non-standard
 #' evaluation to obtain objects.
 #'
-#' @export
+# @export
 #' @importFrom readr write_csv
 #' @importFrom tibble rownames_to_column
 #' @importFrom utils write.csv
@@ -26,8 +30,8 @@ writeCsv <- function(..., dir = "results") {
     lapply(objs, function(object) {
         path <- file.path(dir, paste0(object, ".csv"))
         message("Writing ", object, " as ", basename(path))
-        df <- get(object) %>% as.data.frame
-        if (!rownames(df)[1] == 1) {
+        df <- get(object)
+        if (is.data.frame(df) & !is_tibble(df)) {
             df <- tibble::rownames_to_column(df)
         }
         readr::write_csv(df, path)
