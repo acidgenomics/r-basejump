@@ -2,10 +2,10 @@
 % Please edit documentation in R/clearWarnings.R
 \name{clearWarnings}
 \alias{clearWarnings}
-\title{Clear warnings()}
+\title{Clear warnings}
 \usage{
 clearWarnings()
 }
 \description{
-Clear warnings()
+Clear warnings
 }

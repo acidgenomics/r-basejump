@@ -2,7 +2,7 @@
 % Please edit documentation in R/toStringSummarize.R
 \name{toStringSummarize}
 \alias{toStringSummarize}
-\title{Summarize all rows in a tibble using toString()}
+\title{Summarize all rows in a tibble using toString}
 \usage{
 toStringSummarize(tibble)
 }
@@ -13,6 +13,6 @@ toStringSummarize(tibble)
 Collapsed \code{tibble}
 }
 \description{
-Summarize all rows in a tibble using toString()
+Summarize all rows in a tibble using toString
 }
 \keyword{general}
