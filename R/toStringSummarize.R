@@ -1,4 +1,4 @@
-#' Summarize all rows in a \code{tibble} using \code{toString()}
+#' Summarize all rows in a tibble using toString()
 #' @export
 #' @importFrom dplyr mutate_each summarise_each
 #' @importFrom tibble as_tibble

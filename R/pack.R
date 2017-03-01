@@ -1,11 +1,15 @@
 #' Build package and website
 #' @export
-#' @importFrom devtools build check document
+#' @import BiocCheck
+#' @importFrom devtools build build_vignettes check document install load_all
 #' @importFrom pkgdown build_site
-buildAll <- function() {
+pack <- function() {
+    devtools::load_all()
     devtools::document()
     devtools::build_vignettes()
+    BiocCheck::BiocCheck(getwd())
     devtools::check()
     devtools::build()
+    devtools::install()
     pkgdown::build_site()
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wash.R
 \name{wash}
 \alias{wash}
-\title{Wash a \code{data.frame}}
+\title{Wash data.frame}
 \usage{
 wash(data)
 }
@@ -13,5 +13,5 @@ wash(data)
 A reformatted, clean \code{data.frame}.
 }
 \description{
-Wash a \code{data.frame}
+Wash data.frame
 }
