@@ -57,10 +57,21 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"> </a>Installation</h2>
-<p>This is an <a href="https://www.r-project.org">R</a> package. <a href="https://cran.r-project.org/package=devtools"><code>devtools</code></a> is required to install the latest version directly from GitHub.</p>
-<p>To install, run this code in <a href="https://www.r-project.org">R</a>:</p>
+<p>This is an <a href="https://www.r-project.org">R</a> package. The latest version can be installed directly from our <a href="https://github.com/steinbaugh/basejump">GitHub repository</a>.</p>
+<div id="bioconductor-method" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bioconductor-method" class="anchor"> </a>
+<a href="https://bioconductor.org">Bioconductor</a> method</h3>
+<pre class="{r}"><code>source("https://bioconductor.org/biocLite.R")
+biocLite("steinbaugh/basejump")</code></pre>
+</div>
+<div id="devtools-method" class="section level3">
+<h3 class="hasAnchor">
+<a href="#devtools-method" class="anchor"> </a>
+<a href="https://cran.r-project.org/package=devtools"><code>devtools</code></a> method</h3>
 <pre class="{r}"><code>install.packages("devtools")
 devtools::install_github("steinbaugh/basejump")</code></pre>
+</div>
 </div>
 </div>
   </div>

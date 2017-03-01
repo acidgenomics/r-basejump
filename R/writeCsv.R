@@ -30,13 +30,8 @@ writeCsv <- function(..., dir = "results") {
     lapply(objs, function(object) {
         path <- file.path(dir, paste0(object, ".csv"))
         message("Writing ", object, " as ", basename(path))
-        df <- get(object)
-        if (is.data.frame(df) & !is_tibble(df)) {
-            df <- tibble::rownames_to_column(df)
-        }
-        readr::write_csv(df, path)
+        df <- get(object) %>% as.data.frame
+        write.csv(df, file = path)
     })
     invisible()
 }
-# 2x faster than base method:
-# utils::write.csv(object, path)
