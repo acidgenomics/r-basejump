@@ -30,14 +30,14 @@ enrichDavid <- function(foreground,
     if (is.null(foreground)) {
         stop("A foreground gene vector is required.")
     }
-    if (is.null(idType) || length(idType) != 1) {
+    if (is.null(idType) | length(idType) != 1) {
         stop("An single identifier type must be specified.")
     }
-    if (!is.numeric(count) || length(count) != 1 || count < 0) {
+    if (!is.numeric(count) | length(count) != 1 | count < 0) {
         stop("Please specify the minimum count cutoff of gene hits per
              annotation as a single non-negative numeric.")
     }
-    if (!is.numeric(fdr) || length(fdr) != 1 || fdr < 0 || fdr > 1) {
+    if (!is.numeric(fdr) | length(fdr) != 1 | fdr < 0 | fdr > 1) {
         stop("Please specify the false discovery rate (FDR) cutoff as a single
              numeric in the range of 0-1.")
     }
