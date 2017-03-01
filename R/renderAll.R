@@ -10,17 +10,18 @@ renderAll <- function(outputDir = NULL, ...) {
             dir.create(outputDir, recursive = TRUE)
         }
     }
-    sapply(
-        # Match `.Rmd` files, except drafts
-        list.files(pattern = "[^(_draft)]\\.Rmd$",
-                   full.names = TRUE, recursive = TRUE),
-        function(input) {
-            rmarkdown::render(input,
-                              output_dir = outputDir,
-                              output_format = "all",
-                              clean = TRUE,
-                              ...)
-        }
-    )
-    # invisible()
+    # Get the recursive list of RMarkdown files
+    files <- list.files(pattern = "\\.Rmd$",
+                       full.names = TRUE,
+                       recursive = TRUE) %>%
+        # Ignore drafts
+        .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)]
+    sapply(files, function(input) {
+        rmarkdown::render(input,
+                          output_dir = outputDir,
+                          output_format = "all",
+                          clean = TRUE,
+                          ...)
+    })
+    invisible()
 }
