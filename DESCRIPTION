@@ -21,6 +21,7 @@ Imports:
     RDAVIDWebService,
     readr,
     rmarkdown,
+    R.utils,
     stats,
     STRINGdb,
     stringr,
