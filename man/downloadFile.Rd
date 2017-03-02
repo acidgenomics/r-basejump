@@ -4,7 +4,8 @@
 \alias{downloadFile}
 \title{Match and download a file from a remote directory}
 \usage{
-downloadFile(remoteDir, string, rename = NULL, localDir = "data-raw")
+downloadFile(remoteDir, string, rename = NULL, compress = FALSE,
+  localDir = "data-raw")
 }
 \arguments{
 \item{remoteDir}{Remote directory URL}
@@ -12,6 +13,8 @@ downloadFile(remoteDir, string, rename = NULL, localDir = "data-raw")
 \item{string}{\code{string} to match against remote file names}
 
 \item{rename}{Rename the local file, if desired}
+
+\item{compress}{Whether to compress the file (gzip) after download}
 
 \item{localDir}{Directory where to save file locally}
 }
