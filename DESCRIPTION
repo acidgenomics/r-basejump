@@ -20,6 +20,7 @@ Imports:
     RCurl,
     RDAVIDWebService,
     readr,
+    reshape2,
     rmarkdown,
     stats,
     STRINGdb,
