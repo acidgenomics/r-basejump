@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find and download a file from a remote server — downloadFile • basejump</title>
+<title>Match and download a file from a remote directory — downloadFile • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -71,25 +71,25 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find and download a file from a remote server</h1>
+    <h1>Match and download a file from a remote directory</h1>
     </div>
 
     
-    <p>Find and download a file from a remote server</p>
+    <p>Match and download a file from a remote directory</p>
     
 
-    <pre><span class='fu'>downloadFile</span>(<span class='no'>url</span>, <span class='no'>subset</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data_raw</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre><span class='fu'>downloadFile</span>(<span class='no'>remoteDir</span>, <span class='no'>string</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>url</dt>
-      <dd>URL of remote directory</dd>
-      <dt>subset</dt>
-      <dd>Match <code>string</code></dd>
+      <dt>remoteDir</dt>
+      <dd>Remote directory URL</dd>
+      <dt>string</dt>
+      <dd><code>string</code> to match against remote file names</dd>
       <dt>rename</dt>
-      <dd>Rename the file, if desired</dd>
-      <dt>data_raw</dt>
-      <dd>Append <code>data-raw</code> to saved file name</dd>
+      <dd>Rename the local file, if desired</dd>
+      <dt>localDir</dt>
+      <dd>Directory where to save file locally</dd>
     </dl>
     
 
