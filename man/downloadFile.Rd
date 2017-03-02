@@ -9,11 +9,11 @@ downloadFile(remoteDir, string, rename = NULL, localDir = "data-raw")
 \arguments{
 \item{remoteDir}{Remote directory URL}
 
-\item{rename}{Rename the file, if desired}
+\item{string}{\code{string} to match against remote file names}
+
+\item{rename}{Rename the local file, if desired}
 
 \item{localDir}{Directory where to save file locally}
-
-\item{subset}{Match \code{string}}
 }
 \description{
 Match and download a file from a remote directory

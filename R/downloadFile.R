@@ -5,8 +5,8 @@
 #' @importFrom utils download.file
 #' @keywords web
 #' @param remoteDir Remote directory URL
-#' @param subset Match \code{string}
-#' @param rename Rename the file, if desired
+#' @param string \code{string} to match against remote file names
+#' @param rename Rename the local file, if desired
 #' @param localDir Directory where to save file locally
 downloadFile <- function(remoteDir,
                          string,
