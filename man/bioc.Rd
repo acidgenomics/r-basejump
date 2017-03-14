@@ -2,10 +2,23 @@
 % Please edit documentation in R/bioc.R
 \name{bioc}
 \alias{bioc}
-\title{Load Bioconductor}
+\title{Install or update Bioconductor packages}
 \usage{
-bioc()
+bioc(...)
+}
+\arguments{
+\item{...}{Passthrough to \code{biocLite()}}
 }
 \description{
-Load Bioconductor
+This is function simply a wrapper for \code{biocLite}. It first sources the
+code from the Bioconductor website then calls \code{biocLite}.
+}
+\examples{
+\dontrun{
+# Load Bioconductor and update packages
+bioc()
+
+# Install `limma`
+bioc("limma")
+}
 }
