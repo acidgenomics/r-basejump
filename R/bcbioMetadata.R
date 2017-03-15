@@ -8,7 +8,7 @@
 #' @import stringr
 #' @import tidyr
 #'
-#' @param configDir bcbio config directory
+#' @param project bcbio project
 #' @param group Sample grouping. Used later in pipline for graph colors.
 #' @param laneSplit Whether samples were split across flow cell lanes.
 #'
@@ -17,14 +17,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' bcbioMetadata(config_dir,
+#' bcbioMetadata(project,
 #'               group = "treatment",
 #'               laneSplit = TRUE)
 #' }
-bcbioMetadata <- function(configDir,
+bcbioMetadata <- function(project,
                           group = "genotype",
                           laneSplit = FALSE) {
-    metadata <- list.files(configDir,
+    metadata <- list.files(project$configDir,
                            pattern = ".csv",
                            full.names = TRUE) %>%
         readr::read_csv(.,

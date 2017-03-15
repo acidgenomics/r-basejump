@@ -4,7 +4,7 @@
 \alias{meltLog10}
 \title{Melt RNA-Seq count data to long format and log10 transform}
 \usage{
-meltLog10(rawCounts, metadata = NULL)
+meltLog10(rawCounts, metadata)
 }
 \arguments{
 \item{rawCounts}{Raw counts \code{matrix}}

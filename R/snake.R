@@ -19,7 +19,8 @@ snake <- function(string) {
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
         # Capital first letter
         gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
-        # camelCase
+        # Convert camelCase
         gsub("([a-z0-9])([A-Z])", "\\1_\\L\\2", ., perl = TRUE) %>%
+        # Lowercase everything
         tolower
 }

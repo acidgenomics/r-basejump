@@ -12,7 +12,7 @@
 #'
 #' @return log10 melted \code{data.frame}
 #' @export
-meltLog10 <- function(rawCounts, metadata = NULL) {
+meltLog10 <- function(rawCounts, metadata) {
     rawCounts %>%
         as.data.frame %>%
         tibble::rownames_to_column(.) %>%

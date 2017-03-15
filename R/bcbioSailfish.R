@@ -1,3 +1,6 @@
+# Modified from bcbio-rnaseq qc-summary tempalte
+# https://github.com/roryk/bcbio.rnaseq/blob/master/resources/bcbio/qc-summary.template
+
 #' Sailfish data
 #'
 #' Import sailfish data from \code{bcbio-rnaseq} run
@@ -9,7 +12,7 @@
 #' @import tximport
 #' @importFrom utils read.csv
 #'
-#' @param summaryDir Summary directory
+#' @param project bcbio project
 #' @param summary Summary \code{data.frame}
 #'
 #' @return txi \code{tximport} count data from \code{sailfish}
@@ -17,22 +20,35 @@
 #'
 #' @examples
 #' \dontrun{
-#' bcbioSailfish(summary_dir, summary)
+#' bcbioSailfish(project, summary)
 #' }
-bcbioSailfish <- function(summaryDir, summary) {
-    tx2gene <- file.path(summaryDir, "tx2gene.csv") %>%
+bcbioSailfish <- function(project, summary) {
+    if (!is.list(project)) {
+        stop("bcbio project list is required.")
+    }
+    if (!is.data.frame(summary)) {
+        stop("bcbio-rnaseq summary data.frame is required.")
+    }
+    if (!file.exists(file.path(project$summaryDir, "tx2gene.csv"))) {
+        stop("tx2gene.csv file not found.")
+    }
+
+    tx2gene <- file.path(project$summaryDir, "tx2gene.csv") %>%
         utils::read.csv(header = FALSE)
-    finalDir <- dirname(summaryDir)
 
     # Parse the HPC sailfish directories
-    sailfishFiles <- dir(finalDir) %>%
+    sailfishFiles <- dir(project$finalDir) %>%
         .[. %in% summary$description] %>%
-        file.path(finalDir,
+        file.path(project$finalDir,
                   .,
                   "sailfish",
                   "quant",
                   "quant.sf") %>%
         sort
+    if (!length(sailfishFiles)) {
+        stop("No sailfish files were found.")
+    }
+
     names(sailfishFiles) <- sort(summary$description)
     print(sailfishFiles)
 
