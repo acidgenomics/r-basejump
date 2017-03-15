@@ -8,6 +8,12 @@ corHeatmap(counts, method = "pearson", annotation, ...)
 }
 \arguments{
 \item{counts}{Counts matrix}
+
+\item{method}{Correlation coefficient (or covariance) to be computed}
+
+\item{annotation}{Annotation data frame}
+
+\item{...}{Passthrough to \code{pheatmap()}}
 }
 \value{
 Heatmap
