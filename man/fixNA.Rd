@@ -18,4 +18,7 @@ Fix empty and NA character strings
 \examples{
 fixNA(c(1, "x", "", "NA"))
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{general}

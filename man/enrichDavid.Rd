@@ -29,3 +29,9 @@ List of \code{RDAVIDWebService()} report objects
 Wrapper function that performs gene set enrichment analysis (GSEA) with
 RDAVIDWebService, using simplified input options.
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{enrichment}
+\keyword{gsea}
+\keyword{rnaseq}

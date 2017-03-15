@@ -1,8 +1,12 @@
 #' toString call that outputs sorted uniques
-#' @export
+#'
+#' @author Michael Steinbaugh
 #' @keywords general
+#'
 #' @param vector \code{vector}
+#'
 #' @return Sorted unique \code{string}
+#' @export
 toStringSortUnique <- function(vector) {
     vector %>%
         unique %>%

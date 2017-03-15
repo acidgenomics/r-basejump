@@ -1,8 +1,13 @@
 #' Load raw data
 #'
 #' Dynamically source or load raw data in the `data-raw` directory
-#' @export
+#'
+#' @author Michael Steinbaugh
+#' @keywords data package
+#'
 #' @param data Data object
+#'
+#' @export
 dataRaw <- function(data) {
     for (a in 1:length(data)) {
         if (!file.exists(paste0("data/", data[a], ".rda"))) {

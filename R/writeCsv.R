@@ -2,17 +2,22 @@
 # environment settings for getting objects from dots. Not exported until
 # this issue is fixed.
 
+
 #' Write CSV files
 #'
 #' Quickly write comma separated values (CSV) files. Uses non-standard
 #' evaluation to obtain objects.
 #'
-# @export
-#' @importFrom readr write_csv
-#' @importFrom tibble rownames_to_column
+#' @author Michael Steinbaugh
+#' @keywords data save
+#'
+#' @import readr
+#' @import tibble
 #' @importFrom utils write.csv
+#'
 #' @param ... Unquoted names of existing objects to export
 #' @param dir Target directory
+#'
 #' @examples
 #' \dontrun{
 #' x <- data.frame(col1 = 1:10, col2 = 11:20)

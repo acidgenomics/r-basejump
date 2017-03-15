@@ -15,3 +15,7 @@ vector
 \description{
 Sort unique
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{general}

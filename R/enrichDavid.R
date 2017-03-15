@@ -3,11 +3,13 @@
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' RDAVIDWebService, using simplified input options.
 #'
-#' @export
+#' @author Michael Steinbaugh
+#' @keywords enrichment gsea rnaseq
+#'
+#' @import dplyr
 #' @import RDAVIDWebService
-#' @importFrom dplyr arrange_ mutate_ rename_
-#' @importFrom readr write_tsv
-#' @importFrom stats setNames
+#' @import readr
+#'
 #' @param foreground Foreground identifier vector
 #' @param background Background identifier vector
 #' @param idType Identifier type (see DAVID website)
@@ -15,7 +17,9 @@
 #' @param saveDir Directory where to save TSV files
 #' @param count Minimum hit count
 #' @param fdr False discovery rate cutoff (alpha)
+#'
 #' @return List of \code{RDAVIDWebService()} report objects
+#' @export
 enrichDavid <- function(foreground,
                       background = NULL,
                       idType = "ENSEMBL_GENE_ID",
@@ -79,7 +83,7 @@ enrichDavid <- function(foreground,
               "fdr")] %>%
         dplyr::rename_(.dots = c("p" = "pvalue")) %>%
         # FDR should be presented on 0-1 scale, not as a percentage
-        dplyr::mutate_(.dots = stats::setNames(list(~fdr / 100), "fdr")) %>%
+        dplyr::mutate_(.dots = setNames(list(~fdr / 100), "fdr")) %>%
         dplyr::arrange_(.dots = c("category", "fdr")) %>%
         .[.$count >= count, ] %>%
         .[.$fdr < fdr, ]

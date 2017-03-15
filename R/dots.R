@@ -1,4 +1,10 @@
+#' @keywords internal
+utils::globalVariables(".")
+
+
+
 # https://github.com/hadley/devtools/blob/master/R/utils.r
+#' @keywords internal
 dots <- function(...) {
     eval(substitute(alist(...)))
 }
@@ -6,6 +12,7 @@ dots <- function(...) {
 
 
 # https://github.com/hadley/devtools/blob/master/R/infrastructure.R
+#' @keywords internal
 get_objs_from_dots <- function(.dots) {
     if (length(.dots) == 0L) {
         stop("Nothing to save", call. = FALSE)

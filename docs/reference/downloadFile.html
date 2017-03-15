@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -78,19 +80,26 @@
     <p>Match and download a file from a remote directory</p>
     
 
-    <pre><span class='fu'>downloadFile</span>(<span class='no'>remoteDir</span>, <span class='no'>string</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
+    <pre><span class='fu'>downloadFile</span>(<span class='no'>remoteDir</span>, <span class='no'>string</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>remoteDir</dt>
-      <dd>Remote directory URL</dd>
+      <dd><p>Remote directory URL</p></dd>
       <dt>string</dt>
-      <dd><code>string</code> to match against remote file names</dd>
+      <dd><p><code>string</code> to match against remote file names</p></dd>
       <dt>rename</dt>
-      <dd>Rename the local file, if desired</dd>
+      <dd><p>Rename the local file, if desired</p></dd>
+      <dt>compress</dt>
+      <dd><p>Whether to compress the file (gzip) after download</p></dd>
       <dt>localDir</dt>
-      <dd>Directory where to save file locally</dd>
+      <dd><p>Directory where to save file locally</p></dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Local file name</p>
     
 
   </div>
@@ -98,7 +107,13 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

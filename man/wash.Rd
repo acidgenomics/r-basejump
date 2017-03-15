@@ -2,16 +2,22 @@
 % Please edit documentation in R/wash.R
 \name{wash}
 \alias{wash}
-\title{Wash data.frame}
+\title{Wash}
 \usage{
-wash(data)
+wash(df)
 }
 \arguments{
-\item{data}{A \code{data.frame} with leading/trailing spaces/commas, empty cells.}
+\item{df}{Dirty \code{data.frame}}
 }
 \value{
-A reformatted, clean \code{data.frame}.
+Washed \code{data.frame}
 }
 \description{
-Wash data.frame
+This function cleans poorly formed separators, leading and trailing commas or
+spaces, empty cells, and sets \code{NA} values if necessary.
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{dev}
+\keyword{text}

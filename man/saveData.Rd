@@ -9,7 +9,9 @@ saveData(..., dir = "data")
 \arguments{
 \item{...}{Unquoted names of existing objects to save}
 
-\item{dir}{Target directory}
+\item{dir}{Target directory
+
+# @export}
 }
 \description{
 This function makes it easy to save data in the correct format. Based off
@@ -23,3 +25,7 @@ y <- 1:100
 saveData(x, y)
 }
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{save}

@@ -1,13 +1,20 @@
 # Modified version of `rafalib::install_bioc()`
 # https://github.com/rafalab/rafalib/blob/master/R/install_bioc.R
+
 utils::globalVariables("biocLite")
+
 #' Install or update Bioconductor packages
 #'
 #' This is function simply a wrapper for \code{biocLite}. It first sources the
 #' code from the Bioconductor website then calls \code{biocLite}.
 #'
-#' @export
+#' @author Michael Steinbaugh
+#' @keywords bioc dev
+#'
 #' @param ... Passthrough to \code{biocLite()}
+#'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' # Load Bioconductor and update packages

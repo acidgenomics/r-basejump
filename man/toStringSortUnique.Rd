@@ -15,4 +15,7 @@ Sorted unique \code{string}
 \description{
 toString call that outputs sorted uniques
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{general}
