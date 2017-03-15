@@ -4,17 +4,17 @@
 \alias{bcbioSummary}
 \title{Import a bcbio project summary}
 \usage{
-bcbioSummary(summaryDir)
+bcbioSummary(project)
 }
 \arguments{
-\item{summaryDir}{Summary directory}
+\item{project}{bcbio project}
 }
 \description{
 Import a bcbio project summary
 }
 \examples{
 \dontrun{
-bcbioSummary()
+bcbioSummary(project)
 }
 }
 \author{

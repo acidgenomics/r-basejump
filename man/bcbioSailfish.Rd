@@ -4,10 +4,10 @@
 \alias{bcbioSailfish}
 \title{Sailfish data}
 \usage{
-bcbioSailfish(summaryDir, summary)
+bcbioSailfish(project, summary)
 }
 \arguments{
-\item{summaryDir}{Summary directory}
+\item{project}{bcbio project}
 
 \item{summary}{Summary \code{data.frame}}
 }
@@ -19,7 +19,7 @@ Import sailfish data from \code{bcbio-rnaseq} run
 }
 \examples{
 \dontrun{
-bcbioSailfish(summary_dir, summary)
+bcbioSailfish(project, summary)
 }
 }
 \author{

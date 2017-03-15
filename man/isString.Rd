@@ -28,9 +28,6 @@ isString(c("hello", "world"))
 # data.frame
 isString(data.frame(1:2, 3:4))
 
-# tibble
-isString(tibble(1:2, 3:4))
-
 # list
 isString(list(1, 2))
 

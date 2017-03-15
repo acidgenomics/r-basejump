@@ -6,15 +6,15 @@
 #' @import dplyr
 #' @import readr
 #'
-#' @param summaryDir Summary directory
+#' @param project bcbio project
 #'
 #' @export
 #' @examples
 #' \dontrun{
-#' bcbioSummary()
+#' bcbioSummary(project)
 #' }
-bcbioSummary <- function(summaryDir) {
-    summary <- file.path(summaryDir, "project-summary.csv") %>%
+bcbioSummary <- function(project) {
+    summary <- file.path(project$summaryDir, "project-summary.csv") %>%
         readr::read_csv(., col_types = readr::cols()) %>%
         setNamesSnake %>%
         # Remove NA only columns

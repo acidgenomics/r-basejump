@@ -14,5 +14,7 @@ sanitize <- function(string) {
         # Multiple underscores
         gsub("[_]+", "_", .) %>%
         # Leading or trailing underscores
-        gsub("(^_|_$)", "", .)
+        gsub("(^_|_$)", "", .) %>%
+        # Syntactically valid names
+        make.names
 }

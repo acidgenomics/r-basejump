@@ -4,10 +4,10 @@
 \alias{bcbioMetadata}
 \title{Metadata for bcbio run}
 \usage{
-bcbioMetadata(configDir, group = "genotype", laneSplit = FALSE)
+bcbioMetadata(project, group = "genotype", laneSplit = FALSE)
 }
 \arguments{
-\item{configDir}{bcbio config directory}
+\item{project}{bcbio project}
 
 \item{group}{Sample grouping. Used later in pipline for graph colors.}
 
@@ -21,7 +21,7 @@ Metadata for bcbio run
 }
 \examples{
 \dontrun{
-bcbioMetadata(config_dir,
+bcbioMetadata(project,
               group = "treatment",
               laneSplit = TRUE)
 }
