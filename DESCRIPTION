@@ -13,7 +13,6 @@ Imports:
     BiocCheck,
     devtools,
     dplyr,
-    DT,
     ggplot2,
     knitr,
     magrittr,
