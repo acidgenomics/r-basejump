@@ -15,4 +15,7 @@ data Same data but with reformatted camelCase names
 \description{
 Set names as camelCase
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{general}

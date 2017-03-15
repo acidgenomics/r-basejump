@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -83,16 +85,43 @@
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>object</dt>
-      <dd>Generic object</dd>
+      <dd><p>Generic object</p></dd>
     </dl>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p><code>TRUE</code>/<code>FALSE</code></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># string</span>
+<span class='fu'>isString</span>(<span class='st'>"hello world"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'># numeric</span>
+<span class='fu'>isString</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># character vector</span>
+<span class='fu'>isString</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># data.frame</span>
+<span class='fu'>isString</span>(<span class='fu'>data.frame</span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>3</span>:<span class='fl'>4</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># tibble</span>
+<span class='fu'>isString</span>(<span class='fu'>tibble</span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>3</span>:<span class='fl'>4</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># list</span>
+<span class='fu'>isString</span>(<span class='fu'>list</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># function</span>
+<span class='fu'>isString</span>(<span class='kw'>base</span><span class='kw'>::</span><span class='no'>sum</span>)</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

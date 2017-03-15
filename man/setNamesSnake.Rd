@@ -15,4 +15,7 @@ data Data with reformatted snake_case names
 \description{
 Set names as snake_case
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{general}

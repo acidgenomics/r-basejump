@@ -1,24 +1,32 @@
 #' Melt RNA-Seq count data to long format and log10 transform
+#'
+#' @author Michael Steinbaugh
+#' @keywords bcbio rnaseq
+#'
+#' @import dplyr
+#' @import reshape2
+#' @import tibble
+#'
+#' @param rawCounts Raw counts \code{matrix}
+#' @param metadata Metadata \code{data.frame}
+#'
+#' @return log10 melted \code{data.frame}
 #' @export
-#' @importFrom dplyr mutate_
-#' @importFrom reshape2 melt
-#' @importFrom stats setNames
-#' @param rawCounts Raw counts `matrix`
-#' @param metadata Metadata `data.frame`
-#' @return log10 melted `data.frame`
 meltLog10 <- function(rawCounts, metadata = NULL) {
-    meltedCounts <- rawCounts %>%
+    rawCounts %>%
         as.data.frame %>%
-        reshape2::melt(.,
-                       variable.name = "description",
-                       value.name = "counts") %>%
-        subset(counts > 0)
-    if (!is.null(metadata)) {
-        meltedCounts <- merge(meltedCounts, metadata)
-    }
-    meltedCounts %>%
-        dplyr::mutate_(.dots = stats::setNames(list(quote(log(counts))), "counts"))
+        tibble::rownames_to_column(.) %>%
+        reshape2::melt(., id = 1) %>%
+        setNames(c("ensembl_gene",
+                   "description",
+                   "counts")) %>%
+        subset(counts > 0) %>%
+        merge(metadata) %>%
+        dplyr::mutate_(.dots = setNames(list(quote(log(counts))), "counts"))
 }
+
+# variable.name = "description",
+# value.name = "counts"
 
 # Work on suppressing this warning message:
 # No id variables; using all as measure variables

@@ -21,7 +21,8 @@ Convert log ratio normalized values to fold change
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))
 }
-\keyword{antilog}
-\keyword{log}
+\author{
+Michael Steinbaugh
+}
 \keyword{math}
 \keyword{rnaseq}

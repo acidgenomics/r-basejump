@@ -1,21 +1,25 @@
 #' snake_case
-#' @export
+#'
+#' @author Michael Steinbaugh
+#' @keywords general
+#'
 #' @param string \code{string}
+#'
 #' @return snake_case formatted \code{string}
+#' @export
+#'
 #' @examples
 #' snake("RNAi clone")
 snake <- function(string) {
     string %>%
-        specialWords %>%
-        # Convert non-alphanumeric characters to underscores:
-        gsub("[^[:alnum:]]", "_", .) %>%
-        # Multiple underscores to single:
-        gsub("[_]+", "_", .) %>%
-        # Remove leading or trailing underscores:
-        gsub("(^_|_$)", "", .) %>%
-        # Convert acronymes to Mixed Case:
-        gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
-        # Convert camelCase to snake_case
+        sanitize %>%
+        # RNA types
+        gsub("(m|nc|r)RNA", "\\1rna", .) %>%
+        # Acronyms
+        gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
+        # Capital first letter
+        gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
+        # camelCase
         gsub("([a-z0-9])([A-Z])", "\\1_\\L\\2", ., perl = TRUE) %>%
         tolower
 }

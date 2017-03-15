@@ -1,9 +1,18 @@
-#' Wash data.frame
+#' Wash
+#'
+#' This function cleans poorly formed separators, leading and trailing commas or
+#' spaces, empty cells, and sets \code{NA} values if necessary.
+#'
+#' @author Michael Steinbaugh
+#' @keywords dev text
+#'
+#' @import dplyr
+#'
+#' @param df Dirty \code{data.frame}
+#'
+#' @return Washed \code{data.frame}
 #' @export
-#' @importFrom dplyr mutate_each
-#' @param data A \code{data.frame} with leading/trailing spaces/commas, empty cells.
-#' @return A reformatted, clean \code{data.frame}.
-wash <- function(data) {
+wash <- function(df) {
     gsubs <- function(a) {
         a %>%
             # Duplicate separators
@@ -17,5 +26,5 @@ wash <- function(data) {
             # Character NAs
             gsub("^$|^\\s+$|^NA$", NA, .)
     }
-    dplyr::mutate_each(data, funs(gsubs))
+    dplyr::mutate_each(df, funs(gsubs))
 }

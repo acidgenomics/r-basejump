@@ -18,7 +18,13 @@ downloadFile(remoteDir, string, rename = NULL, compress = FALSE,
 
 \item{localDir}{Directory where to save file locally}
 }
+\value{
+Local file name
+}
 \description{
 Match and download a file from a remote directory
+}
+\author{
+Michael Steinbaugh
 }
 \keyword{web}

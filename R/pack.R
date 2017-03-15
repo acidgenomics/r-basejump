@@ -1,15 +1,20 @@
 #' Build package and website
-#' @export
+#'
+#' @author Michael Steinbaugh
+#' @keywords dev package website
+#'
 #' @import BiocCheck
-#' @importFrom devtools build build_vignettes check document install load_all
-#' @importFrom pkgdown build_site
+#' @import devtools
+#' @import pkgdown
+#'
+#' @export
 pack <- function() {
-    devtools::load_all()
+    #` devtools::load_all()
     devtools::document()
     devtools::build_vignettes()
     BiocCheck::BiocCheck(getwd())
     devtools::check()
     devtools::build()
-    devtools::install()
+    #` devtools::install()
     pkgdown::build_site()
 }

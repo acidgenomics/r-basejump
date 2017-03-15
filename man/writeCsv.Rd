@@ -22,3 +22,8 @@ y <- data.frame(col3 = 21:30, col4 = 31:40)
 writeCsv(x, y)
 }
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{data}
+\keyword{save}

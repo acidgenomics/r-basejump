@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wash data.frame — wash • basejump</title>
+<title>Wash — wash • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -71,24 +73,25 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wash data.frame</h1>
+    <h1>Wash</h1>
     </div>
 
     
-    <p>Wash data.frame</p>
+    <p>This function cleans poorly formed separators, leading and trailing commas or
+spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
     
 
-    <pre><span class='fu'>wash</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>wash</span>(<span class='no'>df</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd>A <code>data.frame</code> with leading/trailing spaces/commas, empty cells.</dd>
+      <dt>df</dt>
+      <dd><p>Dirty <code>data.frame</code></p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A reformatted, clean <code>data.frame</code>.</p>
+    <p>Washed <code>data.frame</code></p>
     
 
   </div>
@@ -99,6 +102,10 @@
       
       <li><a href="#value">Value</a></li>
           </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

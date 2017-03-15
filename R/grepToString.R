@@ -1,7 +1,12 @@
-#' Generate a grep for matching against toString
+#' Grep pattern for toString
 #'
+#' @author Michael Steinbaugh
+#' @keywords text
+#'
+#' @param identifier Identifier
+#'
+#' @return Comma separated string for matching against \code{toString} output
 #' @export
-#' @param identifier Identifier to match in toString
 grepToString <- function(identifier) {
     identifier %>%
         paste0(

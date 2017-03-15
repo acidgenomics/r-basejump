@@ -2,13 +2,20 @@
 % Please edit documentation in R/grepToString.R
 \name{grepToString}
 \alias{grepToString}
-\title{Generate a grep for matching against toString}
+\title{Grep pattern for toString}
 \usage{
 grepToString(identifier)
 }
 \arguments{
-\item{identifier}{Identifier to match in toString}
+\item{identifier}{Identifier}
+}
+\value{
+Comma separated string for matching against \code{toString} output
 }
 \description{
-Generate a grep for matching against toString
+Grep pattern for toString
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{text}

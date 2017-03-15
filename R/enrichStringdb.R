@@ -3,9 +3,12 @@
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' STRINGdb, using simplified input options.
 #'
-#' @export
+#' @author Michael Steinbaugh
+#' @keywords enrichment rnaseq
+#'
+#' @import readr
 #' @import STRINGdb
-#' @importFrom readr write_csv
+#'
 #' @param gene Gene identifier vector
 #' @param background Background identifier vector
 #' @param species Species (e.g. "Homo sapiens")
@@ -14,7 +17,9 @@
 #' @param png Export network as PNG file (TRUE/FALSE)
 #' @param pdf Export network as high resolution PDF file (TRUE/FALSE)
 #' @param version STRING version to use
-#' @return STRINGdb output list
+#'
+#' @return \code{STRINGdb} output list
+#' @export
 enrichStringdb <- function(gene,
                            background,
                            species,

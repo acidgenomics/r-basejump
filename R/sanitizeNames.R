@@ -1,12 +1,24 @@
-#' Remove dashes in column and row names
+#' Sanitize names
 #'
-#' This function removes dashes, which can cause unwanted wrapping in RMarkdown reports.
+#' This function prevents illegal characters from being set in variable names
+#' and column or row names. Additionally, it will prepend an \code{X} character
+#' if necessary
+#'
+#' @author Michael Steinbaugh
+#' @keywords dev text
+#'
+#' @param data \code{data.frame}
+#'
+#' @return Sanitized \code{data.frame}
 #' @export
-#' @importFrom DT datatable
-#' @param df \code{data.frame}
-#' @param ... Passthrough to \code{datatable} function
-sanitizeNames <- function(df, ...) {
-    DT::datatable(df, ...,
-                  rownames = gsub("-", "_", rownames(df)),
-                  colnames = gsub("-", "_", colnames(df)))
+sanitizeNames <- function(data) {
+    names(data) <- names(data) %>%
+        sanitize %>%
+        # Fix columns leading with a number
+        gsub("^([0-9])", "X\\1", .)
+    if (is.matrix | is.data.frame) {
+        rownames(data) <- rownames(data) %>%
+            sanitize
+    }
+    return(data)
 }

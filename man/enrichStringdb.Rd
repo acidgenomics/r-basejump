@@ -25,9 +25,14 @@ enrichStringdb(gene, background, species, cache = TRUE, csv = FALSE,
 \item{version}{STRING version to use}
 }
 \value{
-STRINGdb output list
+\code{STRINGdb} output list
 }
 \description{
 Wrapper function that performs gene set enrichment analysis (GSEA) with
 STRINGdb, using simplified input options.
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{enrichment}
+\keyword{rnaseq}
