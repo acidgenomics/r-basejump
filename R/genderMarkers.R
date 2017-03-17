@@ -56,7 +56,7 @@ genderMarkers <- function(counts, organism) {
                           color = ~description,
                           shape = ~chromosome)
         ) +
-        ggplot2::ggtitle("Gender-specific markers") +
+        ggplot2::ggtitle("gender markers") +
         ggplot2::theme(legend.position = "none") +
         ggplot2::geom_jitter(size = 4) +
         ggplot2::expand_limits(y = 0) +

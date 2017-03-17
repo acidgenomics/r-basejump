@@ -20,7 +20,7 @@ mappedReads <- function(summary) {
                           y = ~mapped_reads / 1e6,
                           fill = ~group)
         ) +
-        ggplot2::ggtitle("Mapped reads") +
+        ggplot2::ggtitle("mapped reads") +
         ggplot2::geom_bar(stat = "identity") +
         ggplot2::geom_hline(color = "orange",
                             size = 2,

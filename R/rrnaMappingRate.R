@@ -27,6 +27,6 @@ rrnaMappingRate <- function(summary) {
                             yintercept = 10) +
         ggplot2::xlab("sample") +
         ggplot2::ylab("rRNA mapping rate (%)") +
-        ggplot2::ylim(0, 100) +
+        #` ggplot2::ylim(0, 100) +
         ggplot2::coord_flip()
 }

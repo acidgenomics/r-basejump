@@ -1,6 +1,6 @@
 #' Set row names
 #'
-#' Useful utility function for setting rownames in a chain operation.
+#' Useful utility function for setting rownames in a chain operation
 #'
 #' @author Michael Steinbaugh
 #' @keywords general

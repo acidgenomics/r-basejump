@@ -20,7 +20,7 @@ geneDetectionSaturation <- function(summary) {
                           y = ~colSums(raw_counts > 0),
                           color = ~group,
                           shape = ~group)) +
-        ggplot2::ggtitle("Gene detection saturation") +
+        ggplot2::ggtitle("gene detection saturation") +
         ggplot2::geom_point(size = 3) +
         ggplot2::geom_smooth(method = "lm", se = FALSE) +
         #` expand_limits(x = 0, y = 0) +
