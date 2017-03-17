@@ -4,12 +4,16 @@
 \alias{countsPerGene}
 \title{Counts per gene plot}
 \usage{
-countsPerGene(counts, metadata)
+countsPerGene(counts, metadata, flip = TRUE, print = TRUE)
 }
 \arguments{
 \item{counts}{Counts matrix}
 
 \item{metadata}{Metadata data frame}
+
+\item{flip}{Flip x and y axes}
+
+\item{print}{Print plot}
 }
 \value{
 Boxplot

@@ -4,12 +4,14 @@
 \alias{countDensity}
 \title{Count density plot}
 \usage{
-countDensity(counts, metadata)
+countDensity(counts, metadata, print = TRUE)
 }
 \arguments{
 \item{counts}{Counts matrix}
 
 \item{metadata}{Metadata data frame}
+
+\item{print}{Print plot}
 }
 \value{
 Density plot

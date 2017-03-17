@@ -4,14 +4,19 @@
 \alias{corHeatmap}
 \title{Correlation matrix heatmap}
 \usage{
-corHeatmap(counts, method = "pearson", annotation, ...)
+corHeatmap(counts, metadata, intgroup = "group", method = "pearson",
+  format = "DESeqTransform", ...)
 }
 \arguments{
-\item{counts}{Counts matrix}
+\item{counts}{RNA-Seq counts}
+
+\item{metadata}{Metadata data frame}
+
+\item{intgroup}{Internal groups to use for clustering color headers}
 
 \item{method}{Correlation coefficient (or covariance) to be computed}
 
-\item{annotation}{Annotation data frame}
+\item{format}{Format of input count data}
 
 \item{...}{Passthrough to \code{pheatmap()}}
 }
