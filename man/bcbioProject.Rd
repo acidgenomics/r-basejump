@@ -5,7 +5,7 @@
 \title{Load a remote bcbio project}
 \usage{
 bcbioProject(researcher, project, workflow, mountDir = file.path("~",
-  "Orchestra", "bcbio", "PIs"), dirCreate = TRUE)
+  "Orchestra", "bcbio", "PIs"), subdirCreate = TRUE)
 }
 \arguments{
 \item{researcher}{Researcher (primary investigator)}
@@ -15,6 +15,8 @@ bcbioProject(researcher, project, workflow, mountDir = file.path("~",
 \item{workflow}{bcbio workflow template}
 
 \item{mountDir}{SSH mount directory. Defaults to \code{bcbio} group share.}
+
+\item{subdirCreate}{Create subdirectories}
 }
 \value{
 List with directory paths
@@ -23,8 +25,10 @@ List with directory paths
 We recommend loading the \code{mountDir} as a connection over \code{sshfs}.
 }
 \examples{
+\dontrun{
 bcbioProject(researcher = "joe_smith",
              project = "gene_ko_rnaseq",
              workflow = "illumina_rnaseq",
-             dirCreate = FALSE)
+             subdirCreate = FALSE)
+}
 }

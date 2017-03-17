@@ -61,7 +61,7 @@ bcbioSailfish <- function(project, summary) {
 
     # Transcripts per million
     tpm <- txi$abundance
-    assign("tpm", tpm, envir = .GlobalEnv)
+    assign("tpm", tpm, envir = parent.frame())
     save(tpm, file = "data/tpm.rda")
     write.csv(tpm, file = "results/tpm.csv")
 

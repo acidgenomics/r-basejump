@@ -4,7 +4,7 @@
 \alias{corHeatmap}
 \title{Correlation matrix heatmap}
 \usage{
-corHeatmap(counts, metadata, intgroup = "group", method = "pearson",
+corHeatmap(counts, metadata, factor = "group", method = "pearson",
   format = "DESeqTransform", ...)
 }
 \arguments{
@@ -12,7 +12,7 @@ corHeatmap(counts, metadata, intgroup = "group", method = "pearson",
 
 \item{metadata}{Metadata data frame}
 
-\item{intgroup}{Internal groups to use for clustering color headers}
+\item{factor}{Factor groups to use for clustering color headers}
 
 \item{method}{Correlation coefficient (or covariance) to be computed}
 

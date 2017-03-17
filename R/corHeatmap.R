@@ -3,13 +3,16 @@
 #' @author Michael Steinbaugh
 #' @keywords bcbio plot rnaseq
 #'
+#' @import DESeq2
 #' @import pheatmap
 #' @import RColorBrewer
+#' @import SummarizedExperiment
 #' @importFrom grDevices colorRampPalette
+#' @importFrom stats cor
 #'
 #' @param counts RNA-Seq counts
 #' @param metadata Metadata data frame
-#' @param intgroup Internal groups to use for clustering color headers
+#' @param factor Factor groups to use for clustering color headers
 #' @param method Correlation coefficient (or covariance) to be computed
 #' @param format Format of input count data
 #' @param ... Passthrough to \code{pheatmap()}
@@ -18,7 +21,7 @@
 #' @export
 corHeatmap <- function(counts,
                        metadata,
-                       intgroup = "group",
+                       factor = "group",
                        method = "pearson",
                        format = "DESeqTransform",
                        ...) {
@@ -26,15 +29,15 @@ corHeatmap <- function(counts,
     if (!is.data.frame(metadata)) {
         stop("A metadata data frame is required.")
     }
-    if (!is.character(intgroup)) {
-        stop("An intgroup character vector is required.")
+    if (!is.character(factor)) {
+        stop("A factor group character vector is required.")
     }
     if (format == "DESeqTransform") {
         if (class(counts)[1] != "DESeqTransform") {
             stop("Format was delcared as DESeqTransform, but counts are not a
                  DESeqTransform object.")
         }
-        counts <- assay(counts)
+        counts <- SummarizedExperiment::assay(counts)
     }
     if (!is.matrix(counts)) {
         stop("A counts matrix is required.")
@@ -44,11 +47,11 @@ corHeatmap <- function(counts,
             RColorBrewer::brewer.pal(n = 9, name = "Blues")
         )(100)
     counts %>%
-        cor(method = method) %>%
+        stats::cor(., method = method) %>%
         pheatmap::pheatmap(main = paste(method,
                                         "correlation:",
                                         name),
-                           annotation = metadata[, intgroup],
+                           annotation = metadata[, factor],
                            color = color,
                            show_colnames = FALSE,
                            ...)

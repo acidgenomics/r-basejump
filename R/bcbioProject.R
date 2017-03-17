@@ -9,15 +9,18 @@
 #' @param project Project name
 #' @param workflow bcbio workflow template
 #' @param mountDir SSH mount directory. Defaults to \code{bcbio} group share.
+#' @param subdirCreate Create subdirectories
 #'
 #' @return List with directory paths
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' bcbioProject(researcher = "joe_smith",
 #'              project = "gene_ko_rnaseq",
 #'              workflow = "illumina_rnaseq",
-#'              dirCreate = FALSE)
+#'              subdirCreate = FALSE)
+#' }
 bcbioProject <- function(researcher,
                          project,
                          workflow,
@@ -25,7 +28,7 @@ bcbioProject <- function(researcher,
                                               "Orchestra",
                                               "bcbio",
                                               "PIs"),
-                         dirCreate = TRUE) {
+                         subdirCreate = TRUE) {
 
     # `mountDir` defaults to Orchestra connection over `sshfs`
     rootDir <- file.path(mountDir,
@@ -47,7 +50,7 @@ bcbioProject <- function(researcher,
         .[grepl(paste0("/\\d{4}-\\d{2}-\\d{2}_", workflow, "$"), .)]
 
     # Create directories, if desired
-    if (isTRUE(dirCreate)) {
+    if (isTRUE(subdirCreate)) {
         dir.create("data", showWarnings = FALSE)
         dir.create("results", showWarnings = FALSE)
     }
