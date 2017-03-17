@@ -30,7 +30,7 @@ bcbioMetadata <- function(project,
         readr::read_csv(.,
                         col_types = readr::cols()) %>%
         setNamesSnake %>%
-        dplyr::rename_(.dots = c("name" = "samplename")) %>%
+        #` dplyr::rename_(.dots = c("name" = "samplename")) %>%
         dplyr::mutate_(.dots = setNames(list(group), "group"))
 
     # Lane splitting
@@ -38,22 +38,22 @@ bcbioMetadata <- function(project,
     if (isTRUE(laneSplit)) {
         lane <- paste0("L", stringr::str_pad(1:4, 3, pad = "0"))
         metadata <- metadata %>%
-            dplyr::group_by_(.dots = "name") %>%
+            dplyr::group_by_(.dots = "samplename") %>%
             tidyr::expand_(~lane) %>%
-            dplyr::left_join(metadata, by = "name") %>%
+            dplyr::left_join(metadata, by = "samplename") %>%
             dplyr::ungroup() %>%
             # NSE version
-            # dplyr::mutate(description = paste(name, lane, sep = "_")) %>%
+            # dplyr::mutate(description = paste(samplename, lane, sep = "_")) %>%
             dplyr::mutate_(
                 .dots = setNames(
-                    list(quote(paste(name, lane, sep = "_"))),
+                    list(quote(paste(samplename, lane, sep = "_"))),
                     "description"
                 ))
     }
 
     # Arrange the rows by description
     metadata <- metadata %>%
-        dplyr::arrange_(.dots = "name") %>%
+        dplyr::arrange_(.dots = "samplename") %>%
         setRownames("description")
 
     # Save binary
@@ -63,9 +63,6 @@ bcbioMetadata <- function(project,
     # Write CSV
     dir.create("results", showWarnings = FALSE)
     write.csv(metadata, file = "results/metadata.csv")
-
-    printTable(metadata,
-               caption = "Sample metadata") %>% print
 
     return(metadata)
 }
