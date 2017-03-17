@@ -1,3 +1,6 @@
+#
+
+
 #' Load a remote bcbio project
 #'
 #' We recommend loading the \code{mountDir} as a connection over \code{sshfs}.
@@ -39,7 +42,7 @@ bcbioProject <- function(researcher,
     finalDir <- file.path(workflowDir, "final")
 
     # Default naming scheme is `illumina_rnaseq/final/YYYY-MM-DD_illumina_rnaseq`
-    summaryDir <- file.path(finalDir) %>%
+    projectDir <- file.path(finalDir) %>%
         dir(full.names = TRUE) %>%
         .[grepl(paste0("/\\d{4}-\\d{2}-\\d{2}_", workflow, "$"), .)]
 
@@ -53,5 +56,5 @@ bcbioProject <- function(researcher,
          workflowDir = workflowDir,
          configDir = configDir,
          finalDir = finalDir,
-         summaryDir = summaryDir) %>% return
+         projectDir = projectDir) %>% return
 }
