@@ -3,9 +3,9 @@
 #' @author Michael Steinbaugh
 #' @keywords general
 #'
-#' @param string \code{string}
+#' @param string String
 #'
-#' @return \code{string} with camelCase formatting
+#' @return String with camelCase formatting
 #' @export
 #'
 #' @examples

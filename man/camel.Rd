@@ -7,10 +7,10 @@
 camel(string)
 }
 \arguments{
-\item{string}{\code{string}}
+\item{string}{String}
 }
 \value{
-\code{string} with camelCase formatting
+String with camelCase formatting
 }
 \description{
 camelCase

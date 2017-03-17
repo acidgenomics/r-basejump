@@ -12,10 +12,10 @@
 #' @param gene Gene identifier vector
 #' @param background Background identifier vector
 #' @param species Species (e.g. "Homo sapiens")
-#' @param cache Cache files to disk (TRUE/FALSE)
-#' @param csv Export to CSV (TRUE/FALSE)
-#' @param png Export network as PNG file (TRUE/FALSE)
-#' @param pdf Export network as high resolution PDF file (TRUE/FALSE)
+#' @param cache Cache files to disk (\code{TRUE/FALSE})
+#' @param csv Export to CSV (\code{TRUE/FALSE})
+#' @param png Export network as PNG file (\code{TRUE/FALSE})
+#' @param pdf Export network as high resolution PDF file (\code{TRUE/FALSE})
 #' @param version STRING version to use
 #'
 #' @return \code{STRINGdb} output list

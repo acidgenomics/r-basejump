@@ -5,7 +5,7 @@
 #'
 #' @param object Generic object
 #'
-#' @return \code{TRUE}/\code{FALSE}
+#' @return \code{TRUE/FALSE}
 #' @export
 #'
 #' @examples

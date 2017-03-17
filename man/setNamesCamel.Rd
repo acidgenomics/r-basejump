@@ -7,7 +7,7 @@
 setNamesCamel(data)
 }
 \arguments{
-\item{data}{\code{data.frame}, \code{list}, or \code{tibble}}
+\item{data}{Data frame, list, tibble, etc.}
 }
 \value{
 data Same data but with reformatted camelCase names

@@ -10,7 +10,7 @@ isString(object)
 \item{object}{Generic object}
 }
 \value{
-\code{TRUE}/\code{FALSE}
+\code{TRUE/FALSE}
 }
 \description{
 Check if an object is a string

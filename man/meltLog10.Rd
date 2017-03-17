@@ -7,12 +7,12 @@
 meltLog10(rawCounts, metadata)
 }
 \arguments{
-\item{rawCounts}{Raw counts \code{matrix}}
+\item{rawCounts}{Raw counts matrix}
 
-\item{metadata}{Metadata \code{data.frame}}
+\item{metadata}{Metadata data frame}
 }
 \value{
-log10 melted \code{data.frame}
+log10 melted data frame
 }
 \description{
 Melt RNA-Seq count data to long format and log10 transform

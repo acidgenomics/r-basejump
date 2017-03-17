@@ -5,8 +5,8 @@
 #' @author Michael Steinbaugh
 #' @keywords dev package
 #'
-#' @param ... \code{list} of variables to assign
-#' @param envir Desired \code{environment} (optional)
+#' @param ... List of variables to assign
+#' @param envir Desired environment (optional)
 #' @param prefix Name prefix (optional)
 multiAssign <- function(..., envir = .GlobalEnv, prefix = NULL) {
     # The `-1` here removes the function name:

@@ -7,7 +7,7 @@
 #' @param workflow bcbio workflow template
 #' @param mountDir SSH mount directory. Defaults to \code{bcbio} group share.
 #'
-#' @return \code{list} with directory paths
+#' @return List with directory paths
 #' @export
 #'
 #' @examples

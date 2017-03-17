@@ -7,10 +7,10 @@
 sanitizeNames(data)
 }
 \arguments{
-\item{data}{\code{data.frame}}
+\item{data}{Data frame}
 }
 \value{
-Sanitized \code{data.frame}
+Sanitized data frame
 }
 \description{
 This function prevents illegal characters from being set in variable names

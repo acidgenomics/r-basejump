@@ -1,6 +1,6 @@
 #' Smart data.frame print
 #'
-#' Display as \code{data.frame} in RMarkdown chunk or \code{kable()} during knit
+#' Display as data frame in RMarkdown chunk or \code{kable()} during knit
 #'
 #' @author Michael Steinbaugh
 #' @keywords report
@@ -8,12 +8,12 @@
 #' @import knitr
 #' @import tibble
 #'
-#' @param df \code{data.frame}
+#' @param df Data frame
 #' @param rownames Print rownames (\code{TRUE/FALSE})
-#' @param ... Passthrough to \code{kable()} during \code{RMarkdown} rendering
-#'   with \code{knitr}
+#' @param ... Passthrough to \code{kable()} during RMarkdown render with
+#'   \code{knitr}
 #'
-#' @return \code{tibble} or \code{kable} for chunk output, depending on the call
+#' @return Tibble or kable for chunk output, depending on the call
 #'
 #' @export
 printTable <- function(df, rownames = FALSE, ...) {

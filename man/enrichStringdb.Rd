@@ -14,13 +14,13 @@ enrichStringdb(gene, background, species, cache = TRUE, csv = FALSE,
 
 \item{species}{Species (e.g. "Homo sapiens")}
 
-\item{cache}{Cache files to disk (TRUE/FALSE)}
+\item{cache}{Cache files to disk (\code{TRUE/FALSE})}
 
-\item{csv}{Export to CSV (TRUE/FALSE)}
+\item{csv}{Export to CSV (\code{TRUE/FALSE})}
 
-\item{png}{Export network as PNG file (TRUE/FALSE)}
+\item{png}{Export network as PNG file (\code{TRUE/FALSE})}
 
-\item{pdf}{Export network as high resolution PDF file (TRUE/FALSE)}
+\item{pdf}{Export network as high resolution PDF file (\code{TRUE/FALSE})}
 
 \item{version}{STRING version to use}
 }

@@ -4,17 +4,17 @@
 \alias{bcbioMetadata}
 \title{Metadata for bcbio run}
 \usage{
-bcbioMetadata(project, group = "genotype", laneSplit = FALSE)
+bcbioMetadata(project, group = "treatment", laneSplit = FALSE)
 }
 \arguments{
 \item{project}{bcbio project}
 
-\item{group}{Sample grouping. Used later in pipline for graph colors.}
+\item{group}{Sample grouping. Used later in pipline for plot colors.}
 
 \item{laneSplit}{Whether samples were split across flow cell lanes.}
 }
 \value{
-Metadata \code{data.frame}
+Metadata data frame
 }
 \description{
 Metadata for bcbio run

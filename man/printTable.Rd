@@ -7,18 +7,18 @@
 printTable(df, rownames = FALSE, ...)
 }
 \arguments{
-\item{df}{\code{data.frame}}
+\item{df}{Data frame}
 
 \item{rownames}{Print rownames (\code{TRUE/FALSE})}
 
-\item{...}{Passthrough to \code{kable()} during \code{RMarkdown} rendering
-with \code{knitr}}
+\item{...}{Passthrough to \code{kable()} during RMarkdown render with
+\code{knitr}}
 }
 \value{
-\code{tibble} or \code{kable} for chunk output, depending on the call
+Tibble or kable for chunk output, depending on the call
 }
 \description{
-Display as \code{data.frame} in RMarkdown chunk or \code{kable()} during knit
+Display as data frame in RMarkdown chunk or \code{kable()} during knit
 }
 \author{
 Michael Steinbaugh

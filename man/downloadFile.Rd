@@ -10,11 +10,11 @@ downloadFile(remoteDir, string, rename = NULL, compress = FALSE,
 \arguments{
 \item{remoteDir}{Remote directory URL}
 
-\item{string}{\code{string} to match against remote file names}
+\item{string}{String to match against remote file names}
 
 \item{rename}{Rename the local file, if desired}
 
-\item{compress}{Whether to compress the file (gzip) after download}
+\item{compress}{Whether to compress the file (\code{gzip}) after download}
 
 \item{localDir}{Directory where to save file locally}
 }

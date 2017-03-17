@@ -7,10 +7,10 @@
 wash(df)
 }
 \arguments{
-\item{df}{Dirty \code{data.frame}}
+\item{df}{Dirty data frame}
 }
 \value{
-Washed \code{data.frame}
+Washed data frame
 }
 \description{
 This function cleans poorly formed separators, leading and trailing commas or

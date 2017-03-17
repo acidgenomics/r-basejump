@@ -8,9 +8,9 @@
 #'
 #' @import dplyr
 #'
-#' @param df Dirty \code{data.frame}
+#' @param df Dirty data frame
 #'
-#' @return Washed \code{data.frame}
+#' @return Washed data frame
 #' @export
 wash <- function(df) {
     gsubs <- function(a) {
