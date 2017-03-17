@@ -19,7 +19,7 @@ totalReads <- function(summary) {
                              y = ~total_reads / 1e6,
                              fill = ~group)
         ) +
-        ggplot2::ggtitle("Total reads") +
+        ggplot2::ggtitle("total reads") +
         ggplot2::geom_bar(stat = "identity") +
         ggplot2::geom_hline(color = "orange",
                             size = 2,

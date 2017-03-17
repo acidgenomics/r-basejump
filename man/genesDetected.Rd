@@ -4,9 +4,11 @@
 \alias{genesDetected}
 \title{Genes detected plot}
 \usage{
-genesDetected(summary)
+genesDetected(counts, summary)
 }
 \arguments{
+\item{counts}{Counts matrix}
+
 \item{summary}{\code{bcbio-rnaseq} summary report}
 }
 \description{

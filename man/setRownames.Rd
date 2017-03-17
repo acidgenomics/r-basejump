@@ -12,7 +12,7 @@ setRownames(df, column)
 \item{column}{Column to use for \code{rownames}}
 }
 \description{
-Useful utility function for setting rownames in a chain operation.
+Useful utility function for setting rownames in a chain operation
 }
 \examples{
 \dontrun{
