@@ -29,11 +29,11 @@ bcbioSailfish <- function(project, summary) {
     if (!is.data.frame(summary)) {
         stop("bcbio-rnaseq summary data.frame is required.")
     }
-    if (!file.exists(file.path(project$summaryDir, "tx2gene.csv"))) {
+    if (!file.exists(file.path(project$projectDir, "tx2gene.csv"))) {
         stop("tx2gene.csv file not found.")
     }
 
-    tx2gene <- file.path(project$summaryDir, "tx2gene.csv") %>%
+    tx2gene <- file.path(project$projectDir, "tx2gene.csv") %>%
         utils::read.csv(header = FALSE)
 
     # Parse the HPC sailfish directories
@@ -50,7 +50,6 @@ bcbioSailfish <- function(project, summary) {
     }
 
     names(sailfishFiles) <- sort(summary$description)
-    print(sailfishFiles)
 
     # Import the counts
     txi <- tximport::tximport(sailfishFiles,
@@ -58,9 +57,14 @@ bcbioSailfish <- function(project, summary) {
                               tx2gene = tx2gene,
                               reader = readr::read_tsv,
                               countsFromAbundance = "lengthScaledTPM")
+        save(txi, file = "data/txi.rda")
 
-    # Save binary data
-    save(txi, file = "data/txi.rda")
+    # Transcripts per million
+    tpm <- txi$abundance
+    assign("tpm", tpm, envir = .GlobalEnv)
+    save(tpm, file = "data/tpm.rda")
+    write.csv(tpm, file = "results/tpm.csv")
 
     return(txi)
+    #` invisible()
 }
