@@ -18,7 +18,7 @@ bcbioSummary <- function(project, metadata) {
     if (!is.data.frame(metadata)) {
         stop("A metadata data frame is required.")
     }
-    summary <- file.path(project$summaryDir, "project-summary.csv") %>%
+    summary <- file.path(project$projectDir, "project-summary.csv") %>%
         readr::read_csv(., col_types = readr::cols()) %>%
         setNamesSnake %>%
         # Remove NA only columns

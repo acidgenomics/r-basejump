@@ -5,6 +5,7 @@
 #'
 #' @import ggplot2
 #'
+#' @param counts Counts matrix
 #' @param summary \code{bcbio-rnaseq} summary report
 #'
 #' @export
@@ -13,14 +14,15 @@
 #' \dontrun{
 #' genesDetected(summary)
 #' }
-genesDetected <- function(summary) {
+genesDetected <- function(counts, summary) {
+    countSums <- colSums(counts > 0)
     summary %>%
         ggplot2::ggplot(
             ggplot2::aes_(x = ~description,
-                          y = ~colSums(raw_counts > 0),
+                          y = countSums,
                           fill = ~group)
         ) +
-        ggplot2::ggtitle("Number of genes detected") +
+        ggplot2::ggtitle("genes detected") +
         ggplot2::geom_bar(stat = "identity") +
         ggplot2::geom_hline(color = "green",
                             size = 2,

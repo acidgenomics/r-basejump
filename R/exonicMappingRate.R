@@ -21,7 +21,7 @@ exonicMappingRate <- function(summary) {
                           y = ~exonic_rate * 100,
                           fill = ~group)
         ) +
-        ggplot2::ggtitle("Exonic mapping rate") +
+        ggplot2::ggtitle("exonic mapping rate") +
         ggplot2::geom_bar(stat = "identity") +
         ggplot2::geom_hline(color = "green",
                             size = 2,

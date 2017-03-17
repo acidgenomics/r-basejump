@@ -9,7 +9,9 @@
 #' @param ... Passthrough \code{rmarkdown::render()} parameters
 #'
 #' @export
-renderAll <- function(outputDir = NULL, ...) {
+renderProject <- function(outputDir = NULL,
+                          
+                          ...) {
     if (!is.null(outputDir)) {
         # Create `outputDir` if necessary
         if (!dir.exists(outputDir)) {
