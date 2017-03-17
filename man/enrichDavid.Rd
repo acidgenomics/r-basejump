@@ -8,13 +8,13 @@ enrichDavid(foreground, background = NULL, idType = "ENSEMBL_GENE_ID",
   saveFiles = TRUE, saveDir = "results/david", count = 3, fdr = 0.1)
 }
 \arguments{
-\item{foreground}{Foreground identifier vector}
+\item{foreground}{Foreground identifiers}
 
-\item{background}{Background identifier vector}
+\item{background}{Background identifiers}
 
 \item{idType}{Identifier type (see DAVID website)}
 
-\item{saveFiles}{Save files to disk (\code{TRUE} or \code{FALSE})}
+\item{saveFiles}{Save files to disk (\code{TRUE/FALSE})}
 
 \item{saveDir}{Directory where to save TSV files}
 

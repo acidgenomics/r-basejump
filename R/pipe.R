@@ -1,8 +1,11 @@
 #' Pipe operator
-#' @export
-#' @importFrom magrittr %>%
-#' @keywords internal
+#'
 #' @name %>%
 #' @rdname pipe
+#' @keywords internal
+#'
+#' @importFrom magrittr %>%
+
 #' @usage lhs \%>\% rhs
+#' @export
 NULL

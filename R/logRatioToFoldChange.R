@@ -8,9 +8,9 @@
 #' @author Michael Steinbaugh
 #' @keywords math rnaseq
 #'
-#' @param logRatio \code{numeric} vector of log ratio values
-#' @param base Logarithm base. Defaults to 2, for compatibility with RNA-Seq
-#'   differential expression output.
+#' @param logRatio Numeric vector of log ratio values
+#' @param base Logarithm base. Defaults to \code{2}, for compatibility with
+#'   RNA-Seq differential expression output.
 #'
 #' @return Fold change values
 #' @export

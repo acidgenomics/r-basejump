@@ -3,7 +3,7 @@
 #' @author Michael Steinbaugh
 #' @keywords text
 #'
-#' @param string \code{string}
+#' @param string String
 #'
 #' @return Sanitized string
 #' @export

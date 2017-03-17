@@ -3,9 +3,9 @@
 #' @author Michael Steinbaugh
 #' @keywords general
 #'
-#' @param string \code{string}
+#' @param string String
 #'
-#' @return snake_case formatted \code{string}
+#' @return snake_case formatted string
 #' @export
 #'
 #' @examples

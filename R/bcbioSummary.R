@@ -7,13 +7,17 @@
 #' @import readr
 #'
 #' @param project bcbio project
+#' @param metadata bcbio project metadata
 #'
 #' @export
 #' @examples
 #' \dontrun{
 #' bcbioSummary(project)
 #' }
-bcbioSummary <- function(project) {
+bcbioSummary <- function(project, metadata) {
+    if (!is.data.frame(metadata)) {
+        stop("A metadata data frame is required.")
+    }
     summary <- file.path(project$summaryDir, "project-summary.csv") %>%
         readr::read_csv(., col_types = readr::cols()) %>%
         setNamesSnake %>%
@@ -25,6 +29,9 @@ bcbioSummary <- function(project) {
                                          "description"))) %>%
         dplyr::arrange_(.dots = "description") %>%
         setRownames("description")
+
+    # Set the group, used for plots
+    summary$group <- metadata[rownames(summary), "group"]
 
     # Save binary
     dir.create("data", showWarnings = FALSE)

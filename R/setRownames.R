@@ -5,7 +5,7 @@
 #' @author Michael Steinbaugh
 #' @keywords general
 #'
-#' @param df \code{data.frame}
+#' @param df Data frame
 #' @param column Column to use for \code{rownames}
 #'
 #' @export

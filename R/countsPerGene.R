@@ -5,20 +5,21 @@
 #'
 #' @import ggplot2
 #'
-#' @param rawCounts Raw counts \code{matrix}
-#' @param metadata Metadata \code{data.frame}
+#' @param counts Counts matrix
+#' @param metadata Metadata data frame
 #'
 #' @return Boxplot
 #' @export
-countsPerGene <- function(rawCounts, metadata) {
-    rawCounts %>%
+countsPerGene <- function(counts, metadata) {
+    countsName <- deparse(substitute(counts))
+    counts %>%
         meltLog10(metadata = metadata) %>%
         ggplot2::ggplot(
             ggplot2::aes_(x = ~description,
                           y = ~counts,
                           color = ~group)
         ) +
-        ggplot2::ggtitle("Counts per gene") +
+        ggplot2::ggtitle(paste("Counts per gene:", countsName)) +
         ggplot2::geom_boxplot(outlier.shape = NA) +
         ggplot2::xlab("sample") +
         ggplot2::ylab(expression(log[10]~counts~per~gene)) +

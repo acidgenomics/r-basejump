@@ -7,10 +7,10 @@
 #' @import reshape2
 #' @import tibble
 #'
-#' @param rawCounts Raw counts \code{matrix}
-#' @param metadata Metadata \code{data.frame}
+#' @param rawCounts Raw counts matrix
+#' @param metadata Metadata data frame
 #'
-#' @return log10 melted \code{data.frame}
+#' @return log10 melted data frame
 #' @export
 meltLog10 <- function(rawCounts, metadata) {
     rawCounts %>%

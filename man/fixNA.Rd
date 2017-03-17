@@ -7,10 +7,10 @@
 fixNA(string)
 }
 \arguments{
-\item{string}{\code{string} missing \code{NA}.}
+\item{string}{String missing \code{NA}}
 }
 \value{
-\code{string} containing \code{NA}
+String containing \code{NA}
 }
 \description{
 Fix empty and NA character strings

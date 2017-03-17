@@ -4,10 +4,12 @@
 \alias{bcbioSummary}
 \title{Import a bcbio project summary}
 \usage{
-bcbioSummary(project)
+bcbioSummary(project, metadata)
 }
 \arguments{
 \item{project}{bcbio project}
+
+\item{metadata}{bcbio project metadata}
 }
 \description{
 Import a bcbio project summary

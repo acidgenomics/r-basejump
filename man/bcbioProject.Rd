@@ -17,7 +17,7 @@ bcbioProject(researcher, project, workflow, mountDir = file.path("~",
 \item{mountDir}{SSH mount directory. Defaults to \code{bcbio} group share.}
 }
 \value{
-\code{list} with directory paths
+List with directory paths
 }
 \description{
 We recommend loading the \code{mountDir} as a connection over \code{sshfs}.

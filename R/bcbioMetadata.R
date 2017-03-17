@@ -9,10 +9,10 @@
 #' @import tidyr
 #'
 #' @param project bcbio project
-#' @param group Sample grouping. Used later in pipline for graph colors.
 #' @param laneSplit Whether samples were split across flow cell lanes.
+#' @param group Sample grouping. Used later in pipline for plot colors.
 #'
-#' @return Metadata \code{data.frame}
+#' @return Metadata data frame
 #' @export
 #'
 #' @examples
@@ -22,7 +22,7 @@
 #'               laneSplit = TRUE)
 #' }
 bcbioMetadata <- function(project,
-                          group = "genotype",
+                          group = "treatment",
                           laneSplit = FALSE) {
     metadata <- list.files(project$configDir,
                            pattern = ".csv",

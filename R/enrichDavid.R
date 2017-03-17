@@ -7,13 +7,17 @@
 #' @keywords enrichment gsea rnaseq
 #'
 #' @import dplyr
-#' @import RDAVIDWebService
 #' @import readr
+#' @importFrom RDAVIDWebService addList DAVIDWebService getAnnotationSummary
+#'   getClusterReport getClusterReportFile getFunctionalAnnotationChart
+#'   getFunctionalAnnotationChartFile getFunctionalAnnotationTable
+#'   getFunctionalAnnotationTableFile getGeneCategoriesReport getGeneListReport
+#'   getGeneListReportFile setTimeOut
 #'
-#' @param foreground Foreground identifier vector
-#' @param background Background identifier vector
+#' @param foreground Foreground identifiers
+#' @param background Background identifiers
 #' @param idType Identifier type (see DAVID website)
-#' @param saveFiles Save files to disk (\code{TRUE} or \code{FALSE})
+#' @param saveFiles Save files to disk (\code{TRUE/FALSE})
 #' @param saveDir Directory where to save TSV files
 #' @param count Minimum hit count
 #' @param fdr False discovery rate cutoff (alpha)
@@ -52,8 +56,8 @@ enrichDavid <- function(foreground,
     )
 
     # Set a longer timeout (30000 default)
-    setTimeOut(david, 200000)
-    # getTimeOut(david)
+    RDAVIDWebService::setTimeOut(david, 200000)
+    #` RDAVIDWebService::getTimeOut(david)
 
     RDAVIDWebService::addList(david,
                               foreground,

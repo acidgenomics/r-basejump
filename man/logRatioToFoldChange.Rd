@@ -7,10 +7,10 @@
 logRatioToFoldChange(logRatio, base = 2)
 }
 \arguments{
-\item{logRatio}{\code{numeric} vector of log ratio values}
+\item{logRatio}{Numeric vector of log ratio values}
 
-\item{base}{Logarithm base. Defaults to 2, for compatibility with RNA-Seq
-differential expression output.}
+\item{base}{Logarithm base. Defaults to \code{2}, for compatibility with
+RNA-Seq differential expression output.}
 }
 \value{
 Fold change values

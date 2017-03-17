@@ -9,9 +9,9 @@
 #' @importFrom utils download.file
 #'
 #' @param remoteDir Remote directory URL
-#' @param string \code{string} to match against remote file names
+#' @param string String to match against remote file names
 #' @param rename Rename the local file, if desired
-#' @param compress Whether to compress the file (gzip) after download
+#' @param compress Whether to compress the file (\code{gzip}) after download
 #' @param localDir Directory where to save file locally
 #'
 #' @export

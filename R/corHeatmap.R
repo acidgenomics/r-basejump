@@ -4,6 +4,8 @@
 #' @keywords bcbio plot rnaseq
 #'
 #' @import pheatmap
+#' @import RColorBrewer
+#' @importFrom grDevices colorRampPalette
 #'
 #' @param counts Counts matrix
 #' @param method Correlation coefficient (or covariance) to be computed
@@ -22,9 +24,16 @@ corHeatmap <- function(counts,
     if (!is.data.frame(annotation)) {
         stop("An annotation data.frame is required.")
     }
+
+    color <-
+        grDevices::colorRampPalette(
+            RColorBrewer::brewer.pal(n = 9, name = "Blues")
+        )(100)
+
     counts %>%
         cor(method = method) %>%
         pheatmap::pheatmap(main = paste(method, "correlation"),
                            annotation = annotation,
+                           color = color,
                            ...)
 }

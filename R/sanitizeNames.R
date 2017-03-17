@@ -7,9 +7,9 @@
 #' @author Michael Steinbaugh
 #' @keywords dev text
 #'
-#' @param data \code{data.frame}
+#' @param data Data frame
 #'
-#' @return Sanitized \code{data.frame}
+#' @return Sanitized data frame
 #' @export
 sanitizeNames <- function(data) {
     names(data) <- names(data) %>%

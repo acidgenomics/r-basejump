@@ -7,7 +7,7 @@
 setRownames(df, column)
 }
 \arguments{
-\item{df}{\code{data.frame}}
+\item{df}{Data frame}
 
 \item{column}{Column to use for \code{rownames}}
 }

@@ -7,7 +7,7 @@
 sanitize(string)
 }
 \arguments{
-\item{string}{\code{string}}
+\item{string}{String}
 }
 \value{
 Sanitized string

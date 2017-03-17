@@ -3,9 +3,9 @@
 #' @author Michael Steinbaugh
 #' @keywords general
 #'
-#' @param string \code{string} missing \code{NA}.
+#' @param string String missing \code{NA}
 #'
-#' @return \code{string} containing \code{NA}
+#' @return String containing \code{NA}
 #' @export
 #'
 #' @examples
