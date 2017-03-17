@@ -4,7 +4,7 @@
 \alias{deseqPca}
 \title{Quickly plot principal component analysis (PCA)}
 \usage{
-deseqPca(dt, intgroup = c("group"), ...)
+deseqPca(dt, factor = c("group"), ...)
 }
 \arguments{
 \item{dt}{\code{DESeqTransform} object generated from \code{rlog()} or
@@ -12,8 +12,8 @@ deseqPca(dt, intgroup = c("group"), ...)
 transformed data in to this function because the operation is CPU
 intensive, and is slow when applied to multiple PCA plot operations.}
 
-\item{intgroup}{PCA groups for \code{DESeq2::plotPCA()}. Shapes are defined by
-the first value.}
+\item{factor}{PCA factor groups for \code{DESeq2::plotPCA()}. Shapes are
+defined by the first value.}
 
 \item{...}{Passthrough to \code{DESeq2::plotPCA()}.}
 }
