@@ -7,33 +7,49 @@
 #' @import RColorBrewer
 #' @importFrom grDevices colorRampPalette
 #'
-#' @param counts Counts matrix
+#' @param counts RNA-Seq counts
+#' @param metadata Metadata data frame
+#' @param intgroup Internal groups to use for clustering color headers
 #' @param method Correlation coefficient (or covariance) to be computed
-#' @param annotation Annotation data frame
+#' @param format Format of input count data
 #' @param ... Passthrough to \code{pheatmap()}
 #'
 #' @return Heatmap
 #' @export
 corHeatmap <- function(counts,
+                       metadata,
+                       intgroup = "group",
                        method = "pearson",
-                       annotation,
+                       format = "DESeqTransform",
                        ...) {
+    name <- deparse(substitute(counts))
+    if (!is.data.frame(metadata)) {
+        stop("A metadata data frame is required.")
+    }
+    if (!is.character(intgroup)) {
+        stop("An intgroup character vector is required.")
+    }
+    if (format == "DESeqTransform") {
+        if (class(counts)[1] != "DESeqTransform") {
+            stop("Format was delcared as DESeqTransform, but counts are not a
+                 DESeqTransform object.")
+        }
+        counts <- assay(counts)
+    }
     if (!is.matrix(counts)) {
         stop("A counts matrix is required.")
     }
-    if (!is.data.frame(annotation)) {
-        stop("An annotation data.frame is required.")
-    }
-
     color <-
         grDevices::colorRampPalette(
             RColorBrewer::brewer.pal(n = 9, name = "Blues")
         )(100)
-
     counts %>%
         cor(method = method) %>%
-        pheatmap::pheatmap(main = paste(method, "correlation"),
-                           annotation = annotation,
+        pheatmap::pheatmap(main = paste(method,
+                                        "correlation:",
+                                        name),
+                           annotation = metadata[, intgroup],
                            color = color,
+                           show_colnames = FALSE,
                            ...)
 }
