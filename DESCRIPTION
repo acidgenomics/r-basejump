@@ -24,7 +24,6 @@ Imports:
     RColorBrewer,
     RCurl,
     RDAVIDWebService,
-    SummarizedExperiment,
     readr,
     reshape2,
     rmarkdown,
