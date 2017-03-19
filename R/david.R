@@ -24,13 +24,13 @@
 #'
 #' @return List of \code{RDAVIDWebService()} report objects
 #' @export
-enrichDavid <- function(foreground,
-                      background = NULL,
-                      idType = "ENSEMBL_GENE_ID",
-                      saveFiles = TRUE,
-                      saveDir = "results/david",
-                      count = 3,
-                      fdr = 0.1) {
+david <- function(foreground,
+                  background = NULL,
+                  idType = "ENSEMBL_GENE_ID",
+                  saveFiles = TRUE,
+                  saveDir = "results/david",
+                  count = 3,
+                  fdr = 0.1) {
     if (is.null(getOption("email"))) {
         stop("An email must be specified using options().
              We recommend globally saving options in `~/.Rprofile`.")
