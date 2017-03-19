@@ -1,4 +1,4 @@
-#' Import a bcbio project file
+#' Import a bcbio project data file
 #'
 #' @author Michael Steinbaugh
 #' @keywords bcbio import
@@ -11,8 +11,17 @@
 #' @param output Desired output format
 #' @param rownames Column identifier to use for rownames
 #'
+#' @return bcbio data
 #' @export
-bcbioFile <- function(project,
+#'
+#' @examples
+#' \dontrun{
+#' bcbioData(project,
+#'           file = "combined.counts",
+#'           output = "matrix",
+#'           rownames = "id")
+#' }
+bcbioData <- function(project,
                       file,
                       input = "tsv",
                       output = "data.frame",

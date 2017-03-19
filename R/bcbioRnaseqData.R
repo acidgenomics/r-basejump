@@ -15,10 +15,10 @@
 bcbioRnaseqData <- function(project) {
     # `.counts` = `featureCounts`
     annotated_combined.counts <-
-        bcbioFile(project,
+        bcbioData(project,
                   file = "annotated_combined.counts")
     combined.counts <-
-        bcbioFile(project,
+        bcbioData(project,
                   file = "combined.counts",
                   output = "matrix",
                   rownames = "id")
@@ -27,12 +27,12 @@ bcbioRnaseqData <- function(project) {
     # Don't import the `combined.sf` file. Use the `tximport()` method on the
     # sailfish data in the sample folders instead.
     combined.gene.sf.tpm <-
-        bcbioFile(project,
+        bcbioData(project,
                   file = "combined.gene.sf.tpm",
                   output = "matrix",
                   rownames = "gene_id")
     combined.isoform.sf.tpm <-
-        bcbioFile(project,
+        bcbioData(project,
                   file = "combined.isoform.sf.tpm",
                   output = "matrix",
                   rownames = "id")
