@@ -4,14 +4,10 @@
 \alias{bcbioProject}
 \title{Load a remote bcbio project}
 \usage{
-bcbioProject(researcher, project, workflow, mountDir = file.path("~",
-  "Orchestra", "bcbio", "PIs"), subdirCreate = TRUE)
+bcbioProject(workflow, mountDir = file.path("~", "Orchestra", "bcbio", "PIs",
+  basename(dirname(getwd())), basename(getwd())), subdirCreate = TRUE)
 }
 \arguments{
-\item{researcher}{Researcher (primary investigator)}
-
-\item{project}{Project name}
-
 \item{workflow}{bcbio workflow template}
 
 \item{mountDir}{SSH mount directory. Defaults to \code{bcbio} group share.}
@@ -26,9 +22,7 @@ We recommend loading the \code{mountDir} as a connection over \code{sshfs}.
 }
 \examples{
 \dontrun{
-bcbioProject(researcher = "joe_smith",
-             project = "gene_ko_rnaseq",
-             workflow = "illumina_rnaseq",
+bcbioProject(workflow = "illumina_rnaseq",
              subdirCreate = FALSE)
 }
 }
