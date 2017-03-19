@@ -20,14 +20,14 @@
 #'
 #' @return \code{STRINGdb} output list
 #' @export
-enrichStringdb <- function(gene,
-                           background,
-                           species,
-                           cache = TRUE,
-                           csv = FALSE,
-                           png = TRUE,
-                           pdf = FALSE,
-                           version = "10") {
+stringdb <- function(gene,
+                     background,
+                     species,
+                     cache = TRUE,
+                     csv = FALSE,
+                     png = TRUE,
+                     pdf = FALSE,
+                     version = "10") {
     if (isTRUE(cache)) {
         cache <- "cache/string"
         if (!file.exists(cache)) {
