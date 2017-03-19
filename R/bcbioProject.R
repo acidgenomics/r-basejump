@@ -2,6 +2,9 @@
 #'
 #' We recommend loading the \code{mountDir} as a connection over \code{sshfs}.
 #'
+#' @author Michael Steinbaugh
+#' @keywords bcbio hpc sshfs
+#'
 #' @param workflow bcbio workflow template
 #' @param mountDir SSH mount directory. Defaults to \code{bcbio} group share.
 #' @param subdirCreate Create subdirectories
