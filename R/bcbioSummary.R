@@ -29,17 +29,9 @@ bcbioSummary <- function(project, metadata) {
                                          "description"))) %>%
         dplyr::arrange_(.dots = "description") %>%
         setRownames("description")
-
+    
     # Set the group, used for plots
     summary$group <- metadata[rownames(summary), "group"]
-
-    # Save binary
-    dir.create("data", showWarnings = FALSE)
-    save(summary, file = "data/summary.rda")
-
-    # Write CSV
-    dir.create("results", showWarnings = FALSE)
-    write.csv(summary, file = "results/summary.csv")
-
+    
     return(summary)
 }
