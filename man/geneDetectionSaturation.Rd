@@ -4,9 +4,11 @@
 \alias{geneDetectionSaturation}
 \title{Genes detection saturation plot}
 \usage{
-geneDetectionSaturation(summary)
+geneDetectionSaturation(counts, summary)
 }
 \arguments{
+\item{counts}{Counts matrix}
+
 \item{summary}{\code{bcbio-rnaseq} summary report}
 }
 \description{
@@ -14,7 +16,7 @@ Genes detection saturation plot
 }
 \examples{
 \dontrun{
-geneDetectionSaturation(summary)
+geneDetectionSaturation(counts, summary)
 }
 }
 \author{
