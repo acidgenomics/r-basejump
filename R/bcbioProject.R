@@ -45,7 +45,7 @@ bcbioProject <-
     # Project naming scheme is `workflow/final/YYYY-MM-DD_workflow`
     projectDir <- file.path(finalDir) %>%
         dir(full.names = TRUE) %>%
-        .[grepl(paste0("/\\d{4}-\\d{2}-\\d{2}_", workflow, "$"), .)]
+        .[grepl(paste0("/\\d{4}-\\d{2}-\\d{2}_[^/]+$"), .)]
 
     # Create local directories, if desired
     if (isTRUE(subdirCreate)) {
