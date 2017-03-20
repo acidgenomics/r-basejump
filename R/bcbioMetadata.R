@@ -56,13 +56,5 @@ bcbioMetadata <- function(project,
         dplyr::arrange_(.dots = "samplename") %>%
         setRownames("description")
 
-    # Save binary
-    dir.create("data", showWarnings = FALSE)
-    save(metadata, file = "data/metadata.rda")
-
-    # Write CSV
-    dir.create("results", showWarnings = FALSE)
-    write.csv(metadata, file = "results/metadata.csv")
-
     return(metadata)
 }
