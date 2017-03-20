@@ -4,3 +4,5 @@ sudo: false
 r: bioc-release
 r_github_packages:
   - hadley/pkgdown
+before_install:
+  Rscript -e 'update.packages(ask = FALSE)'
