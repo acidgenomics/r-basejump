@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Version: 0.1.2
-Date: 2017-03-17
+Date: 2017-03-20
 Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
 Description: Helper functions for bioinformatics, package development, and RMarkdown reports.
 biocViews: DifferentialExpression, GeneExpression, ReportWriting, RNASeq, Visualization
