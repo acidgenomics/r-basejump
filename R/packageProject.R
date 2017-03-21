@@ -8,7 +8,7 @@
 #' @import pkgdown
 #'
 #' @export
-pack <- function() {
+packageProject <- function() {
     #` devtools::load_all()
     devtools::document()
     devtools::build_vignettes()
