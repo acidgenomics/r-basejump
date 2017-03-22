@@ -26,5 +26,3 @@ Quickly plot principal component analysis (PCA)
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

@@ -7,7 +7,7 @@
 sortUnique(x)
 }
 \arguments{
-\item{x}{vector with duplicates, `NA` values}
+\item{x}{vector with duplicates, \code{NA} values}
 }
 \value{
 vector
@@ -18,4 +18,4 @@ Sort unique
 \author{
 Michael Steinbaugh
 }
-\keyword{general}
+\keyword{internal}

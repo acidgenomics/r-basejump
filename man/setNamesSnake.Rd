@@ -18,4 +18,3 @@ Set names as snake_case
 \author{
 Michael Steinbaugh
 }
-\keyword{general}

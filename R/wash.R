@@ -4,7 +4,8 @@
 #' spaces, empty cells, and sets \code{NA} values if necessary.
 #'
 #' @author Michael Steinbaugh
-#' @keywords dev text
+#'
+#' @keywords internal
 #'
 #' @import dplyr
 #'

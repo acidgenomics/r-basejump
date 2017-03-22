@@ -18,4 +18,3 @@ Set names as camelCase
 \author{
 Michael Steinbaugh
 }
-\keyword{general}

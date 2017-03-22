@@ -18,4 +18,4 @@ Summarize all rows in a tibble using toString
 \author{
 Michael Steinbaugh
 }
-\keyword{general}
+\keyword{internal}

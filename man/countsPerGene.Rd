@@ -24,6 +24,3 @@ Counts per gene plot
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

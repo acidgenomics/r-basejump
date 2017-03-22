@@ -1,7 +1,8 @@
 #' Check if an object is a string
 #'
 #' @author Michael Steinbaugh
-#' @keywords text
+#'
+#' @keywords internal
 #'
 #' @param object Generic object
 #'

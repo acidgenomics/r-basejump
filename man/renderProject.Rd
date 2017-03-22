@@ -17,5 +17,3 @@ Render all RMarkdown files in working directory
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{report}

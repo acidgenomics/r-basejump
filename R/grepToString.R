@@ -1,7 +1,8 @@
 #' Grep pattern for toString
 #'
 #' @author Michael Steinbaugh
-#' @keywords text
+#'
+#' @keywords internal
 #'
 #' @param identifier Identifier
 #'

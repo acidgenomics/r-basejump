@@ -1,7 +1,6 @@
 #' Metadata for bcbio run
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio rnaseq
 #'
 #' @import dplyr
 #' @import readr

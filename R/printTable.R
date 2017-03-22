@@ -3,7 +3,6 @@
 #' Display as data frame in RMarkdown chunk or \code{kable()} during knit
 #'
 #' @author Michael Steinbaugh
-#' @keywords report
 #'
 #' @import knitr
 #' @import tibble

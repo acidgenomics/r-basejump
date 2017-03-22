@@ -23,4 +23,3 @@ markdownList(c("item1", "item2"), ordered = TRUE)
 \author{
 Michael Steinbaugh
 }
-\keyword{report}

@@ -1,7 +1,6 @@
 #' Match and download a file from a remote directory
 #'
 #' @author Michael Steinbaugh
-#' @keywords web
 #'
 #' @import stringr
 #' @importFrom RCurl getURL

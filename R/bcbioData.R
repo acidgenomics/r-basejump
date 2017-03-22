@@ -1,7 +1,6 @@
 #' Import a bcbio project data file
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio import
 #'
 #' @import readr
 #'

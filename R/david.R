@@ -4,7 +4,6 @@
 #' RDAVIDWebService, using simplified input options.
 #'
 #' @author Michael Steinbaugh
-#' @keywords enrichment gsea rnaseq
 #'
 #' @import dplyr
 #' @import readr

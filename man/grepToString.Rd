@@ -18,4 +18,4 @@ Grep pattern for toString
 \author{
 Michael Steinbaugh
 }
-\keyword{text}
+\keyword{internal}

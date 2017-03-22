@@ -21,4 +21,3 @@ camel("RNAi clone")
 \author{
 Michael Steinbaugh
 }
-\keyword{general}

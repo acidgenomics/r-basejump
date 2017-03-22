@@ -19,5 +19,4 @@ Optionally, you can specify a name prefix and the desired environment
 \author{
 Michael Steinbaugh
 }
-\keyword{dev}
-\keyword{package}
+\keyword{internal}

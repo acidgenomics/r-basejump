@@ -9,3 +9,7 @@ clearWarnings()
 \description{
 Clear warnings
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

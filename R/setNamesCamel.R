@@ -1,7 +1,6 @@
 #' Set names as camelCase
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
 #'
 #' @param data Data frame, list, tibble, etc.
 #'

@@ -22,5 +22,3 @@ bcbioSummary(project)
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

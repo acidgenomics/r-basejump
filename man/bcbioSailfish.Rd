@@ -25,5 +25,3 @@ bcbioSailfish(project, summary)
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

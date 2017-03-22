@@ -1,7 +1,6 @@
 #' Set names as snake_case
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
 #'
 #' @param data Data frame, list, tibble, etc.
 #'

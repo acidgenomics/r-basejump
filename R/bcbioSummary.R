@@ -1,7 +1,6 @@
 #' Import a bcbio project summary
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio rnaseq
 #'
 #' @import dplyr
 #' @import readr
@@ -29,9 +28,9 @@ bcbioSummary <- function(project, metadata) {
                                          "description"))) %>%
         dplyr::arrange_(.dots = "description") %>%
         setRownames("description")
-    
+
     # Set the group, used for plots
     summary$group <- metadata[rownames(summary), "group"]
-    
+
     return(summary)
 }

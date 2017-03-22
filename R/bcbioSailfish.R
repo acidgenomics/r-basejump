@@ -1,12 +1,12 @@
 # Modified from bcbio-rnaseq qc-summary tempalte
 # https://github.com/roryk/bcbio.rnaseq/blob/master/resources/bcbio/qc-summary.template
 
+
 #' Sailfish data
 #'
 #' Import sailfish data from \code{bcbio-rnaseq} run
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio rnaseq
 #'
 #' @import readr
 #' @import tximport

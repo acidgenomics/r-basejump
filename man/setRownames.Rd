@@ -12,7 +12,7 @@ setRownames(df, column)
 \item{column}{Column to use for \code{rownames}}
 }
 \description{
-Useful utility function for setting rownames in a chain operation
+Wrapper function for \code{rownames} that works in a chain operation
 }
 \examples{
 \dontrun{
@@ -22,4 +22,3 @@ setRownames(df, "description")
 \author{
 Michael Steinbaugh
 }
-\keyword{general}

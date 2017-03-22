@@ -6,7 +6,6 @@
 #' Convert log ratio normalized values to fold change
 #'
 #' @author Michael Steinbaugh
-#' @keywords math rnaseq
 #'
 #' @param logRatio Numeric vector of log ratio values
 #' @param base Logarithm base. Defaults to \code{2}, for compatibility with

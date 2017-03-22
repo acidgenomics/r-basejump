@@ -2,6 +2,7 @@
 #'
 #' @name setNames
 #' @rdname setNames
+#' @keywords internal
 #'
 #' @importFrom stats setNames
 #'

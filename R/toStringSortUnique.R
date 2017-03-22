@@ -1,7 +1,8 @@
 #' toString call that outputs sorted uniques
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
+#'
+#' @keywords internal
 #'
 #' @param vector \code{vector}
 #'

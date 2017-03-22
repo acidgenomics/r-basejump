@@ -26,6 +26,3 @@ genderMarkers(tpm, "mmusculus")
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

@@ -3,11 +3,14 @@
 #' Optionally, you can specify a name prefix and the desired environment
 #'
 #' @author Michael Steinbaugh
-#' @keywords dev package
+#'
+#' @keywords internal
 #'
 #' @param ... List of variables to assign
 #' @param envir Desired environment (optional)
 #' @param prefix Name prefix (optional)
+#'
+#' @export
 multiAssign <- function(..., envir = .GlobalEnv, prefix = NULL) {
     # The `-1` here removes the function name:
     names <- sapply(match.call(expand.dots = TRUE)[-1], deparse)

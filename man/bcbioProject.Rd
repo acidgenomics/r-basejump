@@ -29,6 +29,3 @@ bcbioProject(workflow = "illumina_rnaseq",
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{hpc}
-\keyword{sshfs}

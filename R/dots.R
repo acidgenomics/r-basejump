@@ -1,8 +1,3 @@
-#' @keywords internal
-utils::globalVariables(".")
-
-
-
 # https://github.com/hadley/devtools/blob/master/R/utils.r
 #' @keywords internal
 dots <- function(...) {

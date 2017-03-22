@@ -1,7 +1,8 @@
 #' Fix empty and NA character strings
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
+#'
+#' @keywords internal
 #'
 #' @param string String missing \code{NA}
 #'

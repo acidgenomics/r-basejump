@@ -10,12 +10,13 @@
 #' will overwrite existing data files.
 #'
 #' @author Michael Steinbaugh
-#' @keywords save
+#'
+#' @keywords internal
 #'
 #' @param ... Unquoted names of existing objects to save
 #' @param dir Target directory
 #'
-#' # @export
+#' @export
 #'
 #' @examples
 #' \dontrun{

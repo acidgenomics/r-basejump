@@ -1,7 +1,6 @@
 #' camelCase
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
 #'
 #' @param string String
 #'

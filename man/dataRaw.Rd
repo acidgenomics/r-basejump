@@ -15,5 +15,4 @@ Dynamically source or load raw data in the `data-raw` directory
 \author{
 Michael Steinbaugh
 }
-\keyword{data}
-\keyword{package}
+\keyword{internal}

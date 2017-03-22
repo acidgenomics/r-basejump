@@ -77,7 +77,7 @@
     </div>
 
     
-    <p>Display as <code>data.frame</code> in RMarkdown chunk or <code>kable()</code> during knit</p>
+    <p>Display as data frame in RMarkdown chunk or <code>kable()</code> during knit</p>
     
 
     <pre><span class='fu'>printTable</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
@@ -85,17 +85,17 @@
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>df</dt>
-      <dd><p><code>data.frame</code></p></dd>
+      <dd><p>Data frame</p></dd>
       <dt>rownames</dt>
       <dd><p>Print rownames (<code>TRUE/FALSE</code>)</p></dd>
       <dt>...</dt>
-      <dd><p>Passthrough to <code>kable()</code> during <code>RMarkdown</code> rendering
-with <code>knitr</code></p></dd>
+      <dd><p>Passthrough to <code>kable()</code> during RMarkdown render with
+<code>knitr</code></p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>tibble</code> or <code>kable</code> for chunk output, depending on the call</p>
+    <p>Tibble or kable for chunk output, depending on the call</p>
     
 
   </div>
