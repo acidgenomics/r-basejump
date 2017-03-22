@@ -7,5 +7,5 @@
 #' @return data Unmodified data with reformatted dot notation names
 #' @export
 setNamesDot <- function(data) {
-    setNames(data, makeNamesDot(colnames(data)))
+    setNames(data, makeNames(colnames(data)))
 }
