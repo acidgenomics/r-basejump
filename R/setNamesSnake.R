@@ -2,10 +2,10 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @param data Data frame, list, tibble, etc.
+#' @param data Data type that supports name assignments
 #'
-#' @return data Data with reformatted snake_case names
+#' @return data Unmodified data with reformatted snake_case names
 #' @export
 setNamesSnake <- function(data) {
-    setNames(data, snake(colnames(data)))
+    setNames(data, makeNamesSnake(colnames(data)))
 }

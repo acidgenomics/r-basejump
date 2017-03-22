@@ -7,10 +7,10 @@
 setNamesCamel(data)
 }
 \arguments{
-\item{data}{Data frame, list, tibble, etc.}
+\item{data}{Data type that supports name assignments}
 }
 \value{
-data Same data but with reformatted camelCase names
+data Unmodified data with reformatted camelCase names
 }
 \description{
 Set names as camelCase
