@@ -3,26 +3,30 @@
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' STRINGdb, using simplified input options.
 #'
-#' @export
+#' @author Michael Steinbaugh
+#'
+#' @import readr
 #' @import STRINGdb
-#' @importFrom readr write_csv
+#'
 #' @param gene Gene identifier vector
 #' @param background Background identifier vector
 #' @param species Species (e.g. "Homo sapiens")
-#' @param cache Cache files to disk (TRUE/FALSE)
-#' @param csv Export to CSV (TRUE/FALSE)
-#' @param png Export network as PNG file (TRUE/FALSE)
-#' @param pdf Export network as high resolution PDF file (TRUE/FALSE)
+#' @param cache Cache files to disk (\code{TRUE/FALSE})
+#' @param csv Export to CSV (\code{TRUE/FALSE})
+#' @param png Export network as PNG file (\code{TRUE/FALSE})
+#' @param pdf Export network as high resolution PDF file (\code{TRUE/FALSE})
 #' @param version STRING version to use
-#' @return STRINGdb output list
-enrichStringdb <- function(gene,
-                           background,
-                           species,
-                           cache = TRUE,
-                           csv = FALSE,
-                           png = TRUE,
-                           pdf = FALSE,
-                           version = "10") {
+#'
+#' @return \code{STRINGdb} output list
+#' @export
+stringdb <- function(gene,
+                     background,
+                     species,
+                     cache = TRUE,
+                     csv = FALSE,
+                     png = TRUE,
+                     pdf = FALSE,
+                     version = "10") {
     if (isTRUE(cache)) {
         cache <- "cache/string"
         if (!file.exists(cache)) {

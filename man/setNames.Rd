@@ -11,3 +11,4 @@
 \description{
 setNames
 }
+\keyword{internal}

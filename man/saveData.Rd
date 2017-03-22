@@ -23,3 +23,7 @@ y <- 1:100
 saveData(x, y)
 }
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

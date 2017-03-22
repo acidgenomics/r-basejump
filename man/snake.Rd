@@ -7,14 +7,17 @@
 snake(string)
 }
 \arguments{
-\item{string}{\code{string}}
+\item{string}{String}
 }
 \value{
-snake_case formatted \code{string}
+snake_case formatted string
 }
 \description{
 snake_case
 }
 \examples{
 snake("RNAi clone")
+}
+\author{
+Michael Steinbaugh
 }

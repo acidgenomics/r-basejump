@@ -2,21 +2,24 @@
 % Please edit documentation in R/printTable.R
 \name{printTable}
 \alias{printTable}
-\title{Smart data.frame printing}
+\title{Smart data.frame print}
 \usage{
-printTable(df, ...)
+printTable(df, rownames = FALSE, ...)
 }
 \arguments{
-\item{df}{\code{data.frame}}
+\item{df}{Data frame}
 
-\item{...}{Passthrough to \code{kable()} during \code{RMarkdown} rendering
-with \code{knitr}}
+\item{rownames}{Print rownames (\code{TRUE/FALSE})}
+
+\item{...}{Passthrough to \code{kable()} during RMarkdown render with
+\code{knitr}}
 }
 \value{
-\code{data.frame} or \code{kable}, depending on the call
+Tibble or kable for chunk output, depending on the call
 }
 \description{
-Display as `data.frame` in RMarkdown chunk output or `kable()` during a
-`knitr` call
+Display as data frame in RMarkdown chunk or \code{kable()} during knit
 }
-\keyword{report}
+\author{
+Michael Steinbaugh
+}

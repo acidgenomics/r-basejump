@@ -3,26 +3,33 @@
 #' Wrapper function that performs gene set enrichment analysis (GSEA) with
 #' RDAVIDWebService, using simplified input options.
 #'
-#' @export
-#' @import RDAVIDWebService
-#' @importFrom dplyr arrange_ mutate_ rename_
-#' @importFrom readr write_tsv
-#' @importFrom stats setNames
-#' @param foreground Foreground identifier vector
-#' @param background Background identifier vector
+#' @author Michael Steinbaugh
+#'
+#' @import dplyr
+#' @import readr
+#' @importFrom RDAVIDWebService addList DAVIDWebService getAnnotationSummary
+#'   getClusterReport getClusterReportFile getFunctionalAnnotationChart
+#'   getFunctionalAnnotationChartFile getFunctionalAnnotationTable
+#'   getFunctionalAnnotationTableFile getGeneCategoriesReport getGeneListReport
+#'   getGeneListReportFile setTimeOut
+#'
+#' @param foreground Foreground identifiers
+#' @param background Background identifiers
 #' @param idType Identifier type (see DAVID website)
-#' @param saveFiles Save files to disk (\code{TRUE} or \code{FALSE})
+#' @param saveFiles Save files to disk (\code{TRUE/FALSE})
 #' @param saveDir Directory where to save TSV files
 #' @param count Minimum hit count
 #' @param fdr False discovery rate cutoff (alpha)
+#'
 #' @return List of \code{RDAVIDWebService()} report objects
-enrichDavid <- function(foreground,
-                      background = NULL,
-                      idType = "ENSEMBL_GENE_ID",
-                      saveFiles = TRUE,
-                      saveDir = "results/david",
-                      count = 3,
-                      fdr = 0.1) {
+#' @export
+david <- function(foreground,
+                  background = NULL,
+                  idType = "ENSEMBL_GENE_ID",
+                  saveFiles = TRUE,
+                  saveDir = "results/david",
+                  count = 3,
+                  fdr = 0.1) {
     if (is.null(getOption("email"))) {
         stop("An email must be specified using options().
              We recommend globally saving options in `~/.Rprofile`.")
@@ -48,8 +55,8 @@ enrichDavid <- function(foreground,
     )
 
     # Set a longer timeout (30000 default)
-    setTimeOut(david, 200000)
-    # getTimeOut(david)
+    RDAVIDWebService::setTimeOut(david, 200000)
+    #` RDAVIDWebService::getTimeOut(david)
 
     RDAVIDWebService::addList(david,
                               foreground,
@@ -79,7 +86,7 @@ enrichDavid <- function(foreground,
               "fdr")] %>%
         dplyr::rename_(.dots = c("p" = "pvalue")) %>%
         # FDR should be presented on 0-1 scale, not as a percentage
-        dplyr::mutate_(.dots = stats::setNames(list(~fdr / 100), "fdr")) %>%
+        dplyr::mutate_(.dots = setNames(list(~fdr / 100), "fdr")) %>%
         dplyr::arrange_(.dots = c("category", "fdr")) %>%
         .[.$count >= count, ] %>%
         .[.$fdr < fdr, ]

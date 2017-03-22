@@ -7,10 +7,10 @@
 logRatioToFoldChange(logRatio, base = 2)
 }
 \arguments{
-\item{logRatio}{\code{numeric} vector of log ratio values}
+\item{logRatio}{Numeric vector of log ratio values}
 
-\item{base}{Logarithm base. Defaults to 2, for compatibility with RNA-Seq
-differential expression output.}
+\item{base}{Logarithm base. Defaults to \code{2}, for compatibility with
+RNA-Seq differential expression output.}
 }
 \value{
 Fold change values
@@ -21,7 +21,6 @@ Convert log ratio normalized values to fold change
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))
 }
-\keyword{antilog}
-\keyword{log}
-\keyword{math}
-\keyword{rnaseq}
+\author{
+Michael Steinbaugh
+}
