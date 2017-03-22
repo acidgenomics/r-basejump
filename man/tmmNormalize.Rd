@@ -17,5 +17,3 @@ tool when plotting counts per gene.
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

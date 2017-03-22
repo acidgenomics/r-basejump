@@ -1,7 +1,6 @@
 #' snake_case
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
 #'
 #' @param string String
 #'
@@ -12,7 +11,7 @@
 #' snake("RNAi clone")
 snake <- function(string) {
     string %>%
-        sanitize %>%
+        sanitizeString %>%
         # RNA types
         gsub("(m|nc|r)RNA", "\\1rna", .) %>%
         # Acronyms

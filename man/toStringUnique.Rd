@@ -18,4 +18,4 @@ toString call that outputs sorted uniques
 \author{
 Michael Steinbaugh
 }
-\keyword{general}
+\keyword{internal}

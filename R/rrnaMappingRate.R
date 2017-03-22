@@ -1,7 +1,6 @@
 #' rRNA contamination mapping rate
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio plot rnaseq
 #'
 #' @import ggplot2
 #'

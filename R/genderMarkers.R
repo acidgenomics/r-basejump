@@ -1,7 +1,6 @@
 #' Graph sexually dimorphic marker genes
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio plot rnaseq
 #'
 #' @import dplyr
 #' @import ggplot2

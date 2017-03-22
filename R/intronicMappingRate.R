@@ -1,7 +1,6 @@
 #' Intronic mapping rate plot
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio plot rnaseq
 #'
 #' @import ggplot2
 #'

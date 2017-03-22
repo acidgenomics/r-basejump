@@ -20,6 +20,3 @@ rrnaMappingRate(summary)
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

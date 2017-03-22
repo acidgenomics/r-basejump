@@ -12,6 +12,3 @@ Build package and website
 \author{
 Michael Steinbaugh
 }
-\keyword{dev}
-\keyword{package}
-\keyword{website}

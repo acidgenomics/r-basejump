@@ -29,5 +29,3 @@ bcbioMetadata(project,
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

@@ -1,7 +1,6 @@
 #' Build package and website
 #'
 #' @author Michael Steinbaugh
-#' @keywords dev package website
 #'
 #' @import BiocCheck
 #' @import devtools

@@ -1,7 +1,6 @@
 #' Correlation matrix heatmap
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio plot rnaseq
 #'
 #' @import DESeq2
 #' @import pheatmap

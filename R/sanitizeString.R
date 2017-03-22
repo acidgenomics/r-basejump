@@ -1,13 +1,14 @@
-#' Sanitize
+#' Sanitize a string
 #'
 #' @author Michael Steinbaugh
-#' @keywords text
+#'
+#' @keywords internal
 #'
 #' @param string String
 #'
 #' @return Sanitized string
 #' @export
-sanitize <- function(string) {
+sanitizeString <- function(string) {
     string %>%
         # Non-alphanumeric characters
         gsub("[^[:alnum:]]", "_", .) %>%

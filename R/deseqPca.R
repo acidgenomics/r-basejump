@@ -1,7 +1,6 @@
 #' Quickly plot principal component analysis (PCA)
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio rnaseq
 #'
 #' @import DESeq2
 #' @import ggplot2

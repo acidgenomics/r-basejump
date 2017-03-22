@@ -1,7 +1,6 @@
 #' Markdown list
 #'
 #' @author Michael Steinbaugh
-#' @keywords report
 #'
 #' @param character \code{character} vector
 #' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format

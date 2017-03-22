@@ -32,6 +32,3 @@ RDAVIDWebService, using simplified input options.
 \author{
 Michael Steinbaugh
 }
-\keyword{enrichment}
-\keyword{gsea}
-\keyword{rnaseq}

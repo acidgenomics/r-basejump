@@ -9,7 +9,8 @@
 #' evaluation to obtain objects.
 #'
 #' @author Michael Steinbaugh
-#' @keywords data save
+#'
+#' @keywords internal
 #'
 #' @import readr
 #' @import tibble
@@ -17,6 +18,8 @@
 #'
 #' @param ... Unquoted names of existing objects to export
 #' @param dir Target directory
+#'
+#' @export
 #'
 #' @examples
 #' \dontrun{

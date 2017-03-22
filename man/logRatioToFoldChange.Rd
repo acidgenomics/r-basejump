@@ -24,5 +24,3 @@ logRatioToFoldChange(seq(-3, 3, 0.5))
 \author{
 Michael Steinbaugh
 }
-\keyword{math}
-\keyword{rnaseq}

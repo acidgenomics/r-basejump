@@ -37,4 +37,4 @@ isString(base::sum)
 \author{
 Michael Steinbaugh
 }
-\keyword{text}
+\keyword{internal}

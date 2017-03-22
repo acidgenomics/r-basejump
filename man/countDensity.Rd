@@ -22,6 +22,3 @@ Count density plot
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

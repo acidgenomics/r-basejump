@@ -25,5 +25,4 @@ bioc("limma")
 \author{
 Michael Steinbaugh
 }
-\keyword{bioc}
-\keyword{dev}
+\keyword{internal}

@@ -19,5 +19,4 @@ spaces, empty cells, and sets \code{NA} values if necessary.
 \author{
 Michael Steinbaugh
 }
-\keyword{dev}
-\keyword{text}
+\keyword{internal}

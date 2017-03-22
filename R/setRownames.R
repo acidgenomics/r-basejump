@@ -1,9 +1,10 @@
 #' Set row names
 #'
-#' Useful utility function for setting rownames in a chain operation
+#' Wrapper function for \code{rownames} that works in a chain operation
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
+#'
+#' @import tibble
 #'
 #' @param df Data frame
 #' @param column Column to use for \code{rownames}
@@ -15,7 +16,11 @@
 #' setRownames(df, "description")
 #' }
 setRownames <- function(df, column) {
-    df <- as.data.frame(df)
+    # Setting rownames on a tibble is deprecated. Therefore, we must coerce to
+    # data frame first, if necessary.
+    if (tibble::is_tibble(df)) {
+        df <- as.data.frame(df)
+    }
     rownames(df) <- df[[column]]
     return(df)
 }

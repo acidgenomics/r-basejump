@@ -5,7 +5,6 @@
 #' tool when plotting counts per gene.
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio rnaseq
 #'
 #' @importFrom edgeR calcNormFactors cpm DGEList
 #'

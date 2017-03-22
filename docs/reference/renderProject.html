@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Render all RMarkdown files in current project — renderProject • basejump</title>
+<title>Render all RMarkdown files in working directory — renderProject • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -71,21 +73,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Render all RMarkdown files in current project</h1>
+    <h1>Render all RMarkdown files in working directory</h1>
     </div>
 
     
-    <p>Render all RMarkdown files in current project</p>
+    <p>Render all RMarkdown files in working directory</p>
     
 
-    <pre><span class='fu'>renderProject</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"docs"</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>renderProject</span>(<span class='kw'>outputDir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>dir</dt>
-      <dd>Output directory.</dd>
+      <dt>outputDir</dt>
+      <dd><p>Output directory</p></dd>
       <dt>...</dt>
-      <dd>Optional <code>rmarkdown</code> parameters</dd>
+      <dd><p>Passthrough <code>rmarkdown::render()</code> parameters</p></dd>
     </dl>
     
 
@@ -95,6 +97,10 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
                 </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

@@ -22,6 +22,3 @@ geneDetectionSaturation(counts, summary)
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

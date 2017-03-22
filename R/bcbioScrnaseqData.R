@@ -1,7 +1,6 @@
 #' Import scRNA-Seq data from a bcbio project
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio scrnaseq
 #'
 #' @import readr
 #' @importFrom Matrix readMM

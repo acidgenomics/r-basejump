@@ -4,7 +4,6 @@
 #' STRINGdb, using simplified input options.
 #'
 #' @author Michael Steinbaugh
-#' @keywords enrichment rnaseq
 #'
 #' @import readr
 #' @import STRINGdb

@@ -5,7 +5,8 @@
 #' if necessary
 #'
 #' @author Michael Steinbaugh
-#' @keywords dev text
+#'
+#' @keywords internal
 #'
 #' @param data Data frame
 #'
@@ -13,12 +14,12 @@
 #' @export
 sanitizeNames <- function(data) {
     names(data) <- names(data) %>%
-        sanitize %>%
+        sanitizeString %>%
         # Fix columns leading with a number
         gsub("^([0-9])", "X\\1", .)
     if (is.matrix | is.data.frame) {
         rownames(data) <- rownames(data) %>%
-            sanitize
+            sanitizeString
     }
     return(data)
 }

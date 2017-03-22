@@ -20,5 +20,4 @@ if necessary
 \author{
 Michael Steinbaugh
 }
-\keyword{dev}
-\keyword{text}
+\keyword{internal}

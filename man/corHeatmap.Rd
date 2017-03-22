@@ -29,6 +29,3 @@ Correlation matrix heatmap
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{plot}
-\keyword{rnaseq}

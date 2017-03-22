@@ -4,10 +4,10 @@
 \alias{meltLog10}
 \title{Melt RNA-Seq count data to long format and log10 transform}
 \usage{
-meltLog10(rawCounts, metadata)
+meltLog10(counts, metadata)
 }
 \arguments{
-\item{rawCounts}{Raw counts matrix}
+\item{counts}{Counts matrix}
 
 \item{metadata}{Metadata data frame}
 }
@@ -20,5 +20,3 @@ Melt RNA-Seq count data to long format and log10 transform
 \author{
 Michael Steinbaugh
 }
-\keyword{bcbio}
-\keyword{rnaseq}

@@ -1,6 +1,10 @@
 #' Check to see if packages are installed
 #'
+#' @author Michael Steinbaugh
+#'
 #' @importFrom utils installed.packages
+#'
+#' @keywords internal
 #'
 #' @param packages Character vector of packages
 #'

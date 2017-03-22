@@ -1,7 +1,8 @@
 #' Summarize all rows in a tibble using toString
 #'
 #' @author Michael Steinbaugh
-#' @keywords general
+#'
+#' @keywords internal
 #'
 #' @import dplyr
 #' @import tibble

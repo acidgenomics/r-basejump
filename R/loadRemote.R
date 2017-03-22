@@ -1,7 +1,8 @@
 #' Load a remote R binary
 #'
 #' @author Michael Steinbaugh
-#' @keywords data package
+#'
+#' @keywords internal
 #'
 #' @importFrom utils download.file
 #'

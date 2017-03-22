@@ -3,7 +3,8 @@
 #' Dynamically source or load raw data in the `data-raw` directory
 #'
 #' @author Michael Steinbaugh
-#' @keywords data package
+#'
+#' @keywords internal
 #'
 #' @param data Data object
 #'

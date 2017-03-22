@@ -1,7 +1,6 @@
 #' Import RNA-Seq data from a bcbio project
 #'
 #' @author Michael Steinbaugh
-#' @keywords bcbio import
 #'
 #' @param project bcbio project
 #'

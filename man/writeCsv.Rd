@@ -25,5 +25,4 @@ writeCsv(x, y)
 \author{
 Michael Steinbaugh
 }
-\keyword{data}
-\keyword{save}
+\keyword{internal}
