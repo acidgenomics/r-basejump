@@ -11,18 +11,12 @@ BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.3.0)
 Imports:
     BiocCheck,
-    DESeq2,
     devtools,
     dplyr,
-    edgeR,
     ggplot2,
-    grDevices,
     knitr,
     magrittr,
-    Matrix,
-    pheatmap,
     pkgdown,
-    RColorBrewer,
     RCurl,
     RDAVIDWebService,
     readr,
@@ -32,10 +26,7 @@ Imports:
     stats,
     STRINGdb,
     stringr,
-    SummarizedExperiment,
     tibble,
-    tidyr,
-    tximport,
     utils
 Remotes:
     hadley/pkgdown
