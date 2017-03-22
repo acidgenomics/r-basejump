@@ -1,30 +1,41 @@
 Package: basejump
-Title: Additional Base Functions
-Version: 0.1.0
-Date: 2017-03-01
+Title: Base Functions for Bioinformatics
+Version: 0.1.2
+Date: 2017-03-22
 Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
-Description: Helper functions for computational biology, package development, and RMarkdown workflows.
-biocViews: DifferentialExpression, GeneExpression, ReportWriting, RNASeq, Visualization
+Description: Helper functions for bioinformatics, package development, and RMarkdown reports.
+biocViews: DataImport, DifferentialExpression, GeneExpression, ReportWriting, RNASeq, Visualization
 License: MIT + file LICENSE
 URL: http://steinbaugh.com/basejump, https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.3.0)
 Imports:
     BiocCheck,
+    DESeq2,
     devtools,
     dplyr,
-    DT,
+    edgeR,
+    ggplot2,
+    grDevices,
     knitr,
     magrittr,
+    Matrix,
+    pheatmap,
     pkgdown,
+    RColorBrewer,
     RCurl,
     RDAVIDWebService,
     readr,
+    reshape2,
     rmarkdown,
+    R.utils,
     stats,
     STRINGdb,
     stringr,
+    SummarizedExperiment,
     tibble,
+    tidyr,
+    tximport,
     utils
 Remotes:
     hadley/pkgdown

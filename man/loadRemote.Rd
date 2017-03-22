@@ -15,3 +15,7 @@ Loaded R data file
 \description{
 Load a remote R binary
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

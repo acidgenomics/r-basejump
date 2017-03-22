@@ -12,3 +12,7 @@ checkInstall(packages)
 \description{
 Check to see if packages are installed
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

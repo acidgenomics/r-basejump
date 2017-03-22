@@ -1,7 +1,14 @@
 #' Check to see if packages are installed
-#' @export
+#'
+#' @author Michael Steinbaugh
+#'
 #' @importFrom utils installed.packages
+#'
+#' @keywords internal
+#'
 #' @param packages Character vector of packages
+#'
+#' @export
 checkInstall <- function(packages) {
     not_installed <- setdiff(packages, rownames(installed.packages()))
     if (length(not_installed) > 0) {

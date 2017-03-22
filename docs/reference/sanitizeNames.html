@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove dashes in column and row names — sanitizeNames • basejump</title>
+<title>Sanitize names — sanitizeNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -71,22 +73,26 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove dashes in column and row names</h1>
+    <h1>Sanitize names</h1>
     </div>
 
     
-    <p>This function removes dashes, which can cause unwanted wrapping in RMarkdown reports.</p>
+    <p>This function prevents illegal characters from being set in variable names
+and column or row names. Additionally, it will prepend an <code>X</code> character
+if necessary</p>
     
 
-    <pre><span class='fu'>sanitizeNames</span>(<span class='no'>df</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>sanitizeNames</span>(<span class='no'>data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>df</dt>
-      <dd><code>data.frame</code></dd>
-      <dt>...</dt>
-      <dd>Passthrough to <code>datatable</code> function</dd>
+      <dt>data</dt>
+      <dd><p>Data frame</p></dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Sanitized data frame</p>
     
 
   </div>
@@ -94,7 +100,13 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

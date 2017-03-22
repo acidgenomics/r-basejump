@@ -2,15 +2,22 @@
 % Please edit documentation in R/sanitizeNames.R
 \name{sanitizeNames}
 \alias{sanitizeNames}
-\title{Remove dashes in column and row names}
+\title{Sanitize names}
 \usage{
-sanitizeNames(df, ...)
+sanitizeNames(data)
 }
 \arguments{
-\item{df}{\code{data.frame}}
-
-\item{...}{Passthrough to \code{datatable} function}
+\item{data}{Data frame}
+}
+\value{
+Sanitized data frame
 }
 \description{
-This function removes dashes, which can cause unwanted wrapping in RMarkdown reports.
+This function prevents illegal characters from being set in variable names
+and column or row names. Additionally, it will prepend an \code{X} character
+if necessary
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

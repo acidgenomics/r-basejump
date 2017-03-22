@@ -9,6 +9,32 @@ isString(object)
 \arguments{
 \item{object}{Generic object}
 }
+\value{
+\code{TRUE/FALSE}
+}
 \description{
 Check if an object is a string
 }
+\examples{
+# string
+isString("hello world")
+
+# numeric
+isString(1)
+
+# character vector
+isString(c("hello", "world"))
+
+# data.frame
+isString(data.frame(1:2, 3:4))
+
+# list
+isString(list(1, 2))
+
+# function
+isString(base::sum)
+}
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}

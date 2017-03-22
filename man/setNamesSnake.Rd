@@ -7,7 +7,7 @@
 setNamesSnake(data)
 }
 \arguments{
-\item{data}{\code{data.frame}, \code{list}, or \code{tibble}}
+\item{data}{Data frame, list, tibble, etc.}
 }
 \value{
 data Data with reformatted snake_case names
@@ -15,4 +15,6 @@ data Data with reformatted snake_case names
 \description{
 Set names as snake_case
 }
-\keyword{general}
+\author{
+Michael Steinbaugh
+}

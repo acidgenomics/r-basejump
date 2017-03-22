@@ -1,8 +1,14 @@
 #' Fix empty and NA character strings
+#'
+#' @author Michael Steinbaugh
+#'
+#' @keywords internal
+#'
+#' @param string String missing \code{NA}
+#'
+#' @return String containing \code{NA}
 #' @export
-#' @keywords general
-#' @param string \code{string} missing \code{NA}.
-#' @return \code{string} containing \code{NA}
+#'
 #' @examples
 #' fixNA(c(1, "x", "", "NA"))
 fixNA <- function(string) {

@@ -1,9 +1,14 @@
 #' Render all RMarkdown files in working directory
-#' @export
-#' @importFrom rmarkdown render
+#'
+#' @author Michael Steinbaugh
+#'
+#' @import rmarkdown
+#'
 #' @param outputDir Output directory
 #' @param ... Passthrough \code{rmarkdown::render()} parameters
-renderAll <- function(outputDir = NULL, ...) {
+#'
+#' @export
+renderProject <- function(outputDir = NULL, ...) {
     if (!is.null(outputDir)) {
         # Create `outputDir` if necessary
         if (!dir.exists(outputDir)) {

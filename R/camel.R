@@ -1,23 +1,16 @@
 #' camelCase
+#'
+#' @author Michael Steinbaugh
+#'
+#' @param string String
+#'
+#' @return String with camelCase formatting
 #' @export
-#' @keywords general
-#' @param string \code{string}
-#' @return \code{string} with camelCase formatting
+#'
 #' @examples
 #' camel("RNAi clone")
 camel <- function(string) {
     string %>%
-        specialWords %>%
-        # Convert non-alphanumeric characters to underscores:
-        gsub("[^[:alnum:]]", "_", .) %>%
-        # Multiple underscores to single:
-        gsub("[_]+", "_", .) %>%
-        # Remove leading or trailing underscores:
-        gsub("(^_|_$)", "", .) %>%
-        # Convert acronymes to Mixed Case:
-        gsub("([A-Z]{1})([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
-        # Lowercase first letter:
-        gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
-        # Convert snake_case to camelCase
+        snake %>%
         gsub("_(\\w?)", "\\U\\1", ., perl = TRUE)
 }

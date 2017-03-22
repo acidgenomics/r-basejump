@@ -2,14 +2,22 @@
 # environment settings for getting objects from dots. Not exported until
 # this issue is fixed.
 
+
 #' Save data files
 #'
 #' This function makes it easy to save data in the correct format. Based off
 #' \code{use_data()} from the \code{devtools} package. Note that this function
 #' will overwrite existing data files.
-# @export
+#'
+#' @author Michael Steinbaugh
+#'
+#' @keywords internal
+#'
 #' @param ... Unquoted names of existing objects to save
 #' @param dir Target directory
+#'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' x <- 1:10
