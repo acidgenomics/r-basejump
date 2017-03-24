@@ -23,7 +23,7 @@
 #'
 #' @return List of \code{RDAVIDWebService()} report objects
 #' @export
-david <- function(foreground,
+runDavid <- function(foreground,
                   background = NULL,
                   idType = "ENSEMBL_GENE_ID",
                   saveFiles = TRUE,

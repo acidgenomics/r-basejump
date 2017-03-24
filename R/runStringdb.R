@@ -19,7 +19,7 @@
 #'
 #' @return \code{STRINGdb} output list
 #' @export
-stringdb <- function(gene,
+runStringdb <- function(gene,
                      background,
                      species,
                      cache = TRUE,
