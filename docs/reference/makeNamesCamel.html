@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>log2 antilog conversion — antilog2 • basejump</title>
+<title>Make names camelCase — makeNamesCamel • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -71,29 +73,30 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>log2 antilog conversion</h1>
+    <h1>Make names camelCase</h1>
     </div>
 
     
-    <p>Convert a string of log2 normalized values (e.g. fold changes) for better
-readability.</p>
+    <p>Make names camelCase</p>
     
 
-    <pre><span class='fu'>antilog2</span>(<span class='no'>log2</span>)</pre>
+    <pre><span class='fu'>makeNamesCamel</span>(<span class='no'>character</span>)
+
+<span class='fu'>camel</span>(<span class='no'>character</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>log2</dt>
-      <dd><code>numeric</code> vector of log base 2 normalized values.</dd>
+      <dt>character</dt>
+      <dd><p>Character vector</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Antilog <code>numeric</code> vector with proper sign.</p>
+    <p>Character vector formatted as camelCase</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>antilog2</span>(<span class='fu'>seq</span>(-<span class='fl'>3</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] -8 -4 -2  1  2  4  8</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>makeNamesCamel</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnaiClone"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -104,6 +107,10 @@ readability.</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
