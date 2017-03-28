@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set names as camelCase — setNamesCamel • basejump</title>
+<title>Make syntactically valid names out of character vectors — makeNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,26 +73,28 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set names as camelCase</h1>
+    <h1>Make syntactically valid names out of character vectors</h1>
     </div>
 
     
-    <p>Set names as camelCase</p>
+    <p>Make syntactically valid names out of character vectors</p>
     
 
-    <pre><span class='fu'>setNamesCamel</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>makeNames</span>(<span class='no'>character</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd><p>Data type that supports name assignments</p></dd>
+      <dt>character</dt>
+      <dd><p>Character vector</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data Unmodified data with reformatted camelCase names</p>
+    <p>Character vector formatted in dot notation</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>makeNames</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnai.clone"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -100,7 +102,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     
