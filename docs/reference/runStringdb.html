@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>camelCase — camel • basejump</title>
+<title>STRINGdb enrichment analysis — runStringdb • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,28 +73,42 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>camelCase</h1>
+    <h1>STRINGdb enrichment analysis</h1>
     </div>
 
     
-    <p>camelCase</p>
+    <p>Wrapper function that performs gene set enrichment analysis (GSEA) with
+STRINGdb, using simplified input options.</p>
     
 
-    <pre><span class='fu'>camel</span>(<span class='no'>string</span>)</pre>
+    <pre><span class='fu'>runStringdb</span>(<span class='no'>gene</span>, <span class='no'>background</span>, <span class='no'>species</span>, <span class='kw'>cache</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>csv</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>png</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pdf</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"10"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>string</dt>
-      <dd><p>String</p></dd>
+      <dt>gene</dt>
+      <dd><p>Gene identifier vector</p></dd>
+      <dt>background</dt>
+      <dd><p>Background identifier vector</p></dd>
+      <dt>species</dt>
+      <dd><p>Species (e.g. "Homo sapiens")</p></dd>
+      <dt>cache</dt>
+      <dd><p>Cache files to disk (<code>TRUE/FALSE</code>)</p></dd>
+      <dt>csv</dt>
+      <dd><p>Export to CSV (<code>TRUE/FALSE</code>)</p></dd>
+      <dt>png</dt>
+      <dd><p>Export network as PNG file (<code>TRUE/FALSE</code>)</p></dd>
+      <dt>pdf</dt>
+      <dd><p>Export network as high resolution PDF file (<code>TRUE/FALSE</code>)</p></dd>
+      <dt>version</dt>
+      <dd><p>STRING version to use</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>String with camelCase formatting</p>
+    <p><code>STRINGdb</code> output list</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>camel</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnaiClone"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -102,9 +116,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
     
