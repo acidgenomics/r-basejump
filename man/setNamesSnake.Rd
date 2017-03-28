@@ -7,10 +7,10 @@
 setNamesSnake(data)
 }
 \arguments{
-\item{data}{Data frame, list, tibble, etc.}
+\item{data}{Data type that supports name assignments}
 }
 \value{
-data Data with reformatted snake_case names
+data Unmodified data with reformatted snake_case names
 }
 \description{
 Set names as snake_case

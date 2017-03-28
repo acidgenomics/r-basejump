@@ -13,13 +13,9 @@
 #' @return Sanitized data frame
 #' @export
 sanitizeNames <- function(data) {
-    names(data) <- names(data) %>%
-        sanitizeString %>%
-        # Fix columns leading with a number
-        gsub("^([0-9])", "X\\1", .)
+    names(data) <- makeNamesSnake(names(data))
     if (is.matrix | is.data.frame) {
-        rownames(data) <- rownames(data) %>%
-            sanitizeString
+        rownames(data) <- makeNamesSnake(rownames(data))
     }
     return(data)
 }

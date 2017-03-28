@@ -2,10 +2,10 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @param data Data frame, list, tibble, etc.
+#' @param data Data type that supports name assignments
 #'
-#' @return data Same data but with reformatted camelCase names
+#' @return data Unmodified data with reformatted camelCase names
 #' @export
 setNamesCamel <- function(data) {
-    setNames(data, camel(colnames(data)))
+    setNames(data, makeNamesCamel(colnames(data)))
 }
