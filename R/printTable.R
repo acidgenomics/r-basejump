@@ -32,6 +32,6 @@ printTable <- function(df, rownames = FALSE, ...) {
                      longtable = TRUE,
                      ...)
     } else {
-        print(df)
+        return(df)
     }
 }
