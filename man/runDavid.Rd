@@ -5,7 +5,8 @@
 \title{DAVID enrichment analysis}
 \usage{
 runDavid(foreground, background = NULL, idType = "ENSEMBL_GENE_ID",
-  saveFiles = TRUE, saveDir = "results/david", count = 3, fdr = 0.1)
+  writeFiles = TRUE, writePrefix = NULL, writeDir = "results/david",
+  count = 3, fdr = 0.1)
 }
 \arguments{
 \item{foreground}{Foreground identifiers}
@@ -14,9 +15,11 @@ runDavid(foreground, background = NULL, idType = "ENSEMBL_GENE_ID",
 
 \item{idType}{Identifier type (see DAVID website)}
 
-\item{saveFiles}{Save files to disk (\code{TRUE/FALSE})}
+\item{writeFiles}{Write files to disk (\code{TRUE/FALSE})}
 
-\item{saveDir}{Directory where to save TSV files}
+\item{writePrefix}{Add an optional prefix to the file names}
+
+\item{writeDir}{Directory to write the TSV files}
 
 \item{count}{Minimum hit count}
 
