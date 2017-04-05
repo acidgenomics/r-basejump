@@ -20,7 +20,9 @@ renderProject <- function(outputDir = NULL, ...) {
                        full.names = TRUE,
                        recursive = TRUE) %>%
         # Ignore drafts
-        .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)]
+        .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)] %>%
+        # Ignore child chunk files
+        .[!grepl("(footer|header)\\.Rmd$", .)]
     sapply(files, function(input) {
         rmarkdown::render(input,
                           output_dir = outputDir,
