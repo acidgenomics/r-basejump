@@ -4,10 +4,12 @@
 \alias{printTable}
 \title{Smart data.frame print}
 \usage{
-printTable(df, rownames = FALSE, ...)
+printTable(df, caption = NULL, rownames = FALSE, ...)
 }
 \arguments{
 \item{df}{Data frame}
+
+\item{caption}{Caption (optional)}
 
 \item{rownames}{Print rownames (\code{TRUE/FALSE})}
 
