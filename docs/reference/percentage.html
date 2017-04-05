@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart data.frame print — printTable • basejump</title>
+<title>Convert numeric to percentage — percentage • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,33 +73,28 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Smart data.frame print</h1>
+    <h1>Convert numeric to percentage</h1>
     </div>
 
     
-    <p>Display as data frame in RMarkdown chunk or <code>kable()</code> during knit</p>
+    <p>Convert numeric to percentage</p>
     
 
-    <pre><span class='fu'>printTable</span>(<span class='no'>df</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>percentage</span>(<span class='no'>number</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>df</dt>
-      <dd><p>Data frame</p></dd>
-      <dt>caption</dt>
-      <dd><p>Caption (optional)</p></dd>
-      <dt>rownames</dt>
-      <dd><p>Print rownames (<code>TRUE/FALSE</code>)</p></dd>
-      <dt>...</dt>
-      <dd><p>Passthrough to <code>kable()</code> during RMarkdown render with
-<code>knitr</code></p></dd>
+      <dt>number</dt>
+      <dd><p>Number</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Tibble or kable for chunk output, depending on the call</p>
+    <p>Percentage</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>percentage</span>(<span class='fl'>0.1</span>)</div><div class='output co'>#&gt; [1] "10.0%"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -107,7 +102,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     
