@@ -4,12 +4,7 @@
 \alias{renderProject}
 \title{Render all RMarkdown files in working directory}
 \usage{
-renderProject(outputDir = NULL, ...)
-}
-\arguments{
-\item{outputDir}{Output directory}
-
-\item{...}{Passthrough \code{rmarkdown::render()} parameters}
+renderProject(ouputDir = NULL)
 }
 \description{
 Render all RMarkdown files in working directory
