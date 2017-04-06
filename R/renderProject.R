@@ -5,7 +5,6 @@
 #' @import rmarkdown
 #'
 #' @param outputDir Output directory
-#' @param ... Passthrough \code{rmarkdown::render()} parameters
 #'
 #' @export
 renderProject <- function(outputDir = NULL, ...) {
@@ -25,10 +24,11 @@ renderProject <- function(outputDir = NULL, ...) {
         .[!grepl("(footer|header)\\.Rmd$", .)]
     sapply(files, function(input) {
         rmarkdown::render(input,
-                          output_dir = outputDir,
-                          output_format = "all",
                           clean = TRUE,
-                          ...)
+                          envir = new.env(),
+                          knit_root_dir = getwd(),
+                          output_dir = outputDir,
+                          output_format = "all")
     })
     invisible()
 }
