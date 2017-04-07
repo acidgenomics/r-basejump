@@ -2,20 +2,21 @@
 % Please edit documentation in R/loadRemote.R
 \name{loadRemote}
 \alias{loadRemote}
-\title{Load a remote R binary}
+\title{Load a remote R binary file}
 \usage{
 loadRemote(url)
 }
 \arguments{
 \item{url}{URL}
 }
-\value{
-Loaded R data file
-}
 \description{
-Load a remote R binary
+Load a remote R binary file
+}
+\examples{
+\dontrun{
+loadRemote("http://example.com/data.rda")
+}
 }
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}

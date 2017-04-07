@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sort unique — sortUnique • basejump</title>
+<title>Quickly perform sort unique on a vector — sortUnique • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,26 +73,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sort unique</h1>
+    <h1>Quickly perform sort unique on a vector</h1>
     </div>
 
     
-    <p>Sort unique</p>
+    <p>The function also strips <code>NA</code> values. This is useful for gene list
+server queries, for example.</p>
     
 
-    <pre><span class='fu'>sortUnique</span>(<span class='no'>x</span>)</pre>
+    <pre><span class='fu'>sortUnique</span>(<span class='no'>vector</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd><p>vector with duplicates, <code>NA</code> values</p></dd>
+      <dt>vector</dt>
+      <dd><p>Vector with duplicates, <code>NA</code> values</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>vector</p>
+    <p>Unique vector</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>sortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs" "milk"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -100,7 +103,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

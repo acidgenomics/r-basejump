@@ -1,15 +1,17 @@
-#' Load a remote R binary
+#' Load a remote R binary file
 #'
 #' @author Michael Steinbaugh
-#'
-#' @keywords internal
 #'
 #' @importFrom utils download.file
 #'
 #' @param url URL
 #'
-#' @return Loaded R data file
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' loadRemote("http://example.com/data.rda")
+#' }
 loadRemote <- function(url) {
     tempfile <- tempfile()
     utils::download.file(url, get("tempfile"), quiet = TRUE)

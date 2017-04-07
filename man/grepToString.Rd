@@ -2,7 +2,7 @@
 % Please edit documentation in R/grepToString.R
 \name{grepToString}
 \alias{grepToString}
-\title{Grep pattern for toString}
+\title{Grep against toString formatted data}
 \usage{
 grepToString(identifier)
 }
@@ -13,7 +13,11 @@ grepToString(identifier)
 Comma separated string for matching against \code{toString} output
 }
 \description{
-Grep pattern for toString
+Generates a grep pattern that will match an identifier in a comma separated
+string
+}
+\examples{
+grepToString("gene")
 }
 \author{
 Michael Steinbaugh

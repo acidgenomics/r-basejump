@@ -9,7 +9,8 @@
 #' @export
 #'
 #' @examples
-#' markdownList(c("item1", "item2"), ordered = TRUE)
+#' markdownList(c("milk", "eggs"))
+#' markdownList(c("milk", "eggs"), ordered = TRUE)
 markdownList <- function(character, ordered = FALSE) {
     if (!is.character(character)) {
         stop("A character vector is required.")
@@ -20,7 +21,7 @@ markdownList <- function(character, ordered = FALSE) {
         } else {
             prefix <- "-"
         }
-        paste0(prefix, " ", character[a])
+        paste(prefix, character[a])
     })
-    return(cat(paste(string, collapse = "\n")))
+    return(writeLines(string))
 }

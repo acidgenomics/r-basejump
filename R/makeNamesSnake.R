@@ -1,12 +1,5 @@
-#' Make names snake_case
-#'
-#' @author Michael Steinbaugh
-#'
-#' @param character Character vector
-#'
-#' @return Character vector formatted as snake_case
+#' @rdname makeNames
 #' @export
-#'
 #' @examples
 #' makeNamesSnake("RNAi clone")
 makeNamesSnake <- function(character) {
@@ -16,6 +9,7 @@ makeNamesSnake <- function(character) {
 }
 
 
-#' @rdname makeNamesSnake
+
+#' @rdname makeNames
 #' @export
 snake <- makeNamesSnake

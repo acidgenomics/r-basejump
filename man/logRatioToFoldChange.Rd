@@ -16,7 +16,8 @@ RNA-Seq differential expression output.}
 Fold change values
 }
 \description{
-Convert log ratio normalized values to fold change
+Convert log ratio normalized values to fold change.
+Based on the approach used in `gtools::logratio2foldchange()`.
 }
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))
