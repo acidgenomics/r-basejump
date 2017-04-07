@@ -7,9 +7,9 @@
 [![Build Status](https://travis-ci.org/steinbaugh/basejump.svg?branch=master)](https://travis-ci.org/steinbaugh/basejump)
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
-## Installation
-
 This is an [R][] package.
+
+## Installation
 
 ### [Bioconductor][] method
 
