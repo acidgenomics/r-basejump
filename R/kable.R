@@ -5,7 +5,7 @@
 #' @author Michael Steinbaugh
 #' @keywords internal
 #'
-#' @import knitr
+#' @importFrom knitr kable opts_knit
 #'
 #' @param x An R object (typically a matrix or data frame)
 #' @param ... Other arguments
