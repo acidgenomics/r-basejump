@@ -4,31 +4,32 @@
 #'
 #' @import rmarkdown
 #'
+#' @param outputDir Output directory
+#' @param recursive Find files recursively
+#'
 #' @export
-renderProject <- function(ouputDir = NULL) {
-    if (identical(getwd(), Sys.getenv("HOME"))) {
-        stop("careful, working from HOME")
-    }
+renderProject <- function(
+    ouputDir = "docs",
+    recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
         stop("no Rproj file found")
     }
-    
-    # Output to docs in a dated subfolder by default
-    if (is.null(outputDir)) {
-        outputDir <- file.path("docs", Sys.Date())
+    if (identical(getwd(), Sys.getenv("HOME"))) {
+        stop("careful, working from HOME")
     }
-    
+
+    # Create the output directory
     dir.create(outputDir, showWarnings = FALSE)
-    
-    # Get the recursive list of RMarkdown files
+
+    # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
                         full.names = TRUE,
-                        recursive = TRUE) %>%
+                        recursive = recursive) %>%
         # Ignore drafts
         .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)] %>%
         # Ignore child chunk files
         .[!grepl("(footer|header)\\.Rmd$", .)]
-    
+
     sapply(files, function(input) {
         rmarkdown::render(input,
                           clean = TRUE,
