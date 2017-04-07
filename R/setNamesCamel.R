@@ -1,10 +1,8 @@
-#' Set names as camelCase
-#'
-#' @author Michael Steinbaugh
+#' @rdname setNames
 #'
 #' @param data Data type that supports name assignments
 #'
-#' @return data Unmodified data with reformatted camelCase names
+#' @return data Unmodified data with reformatted names
 #' @export
 #'
 #' @examples
