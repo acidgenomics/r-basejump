@@ -9,6 +9,11 @@ clearWarnings()
 \description{
 Clear warnings
 }
+\examples{
+\dontrun{
+clearWarnings()
+}
+}
 \author{
 Michael Steinbaugh
 }

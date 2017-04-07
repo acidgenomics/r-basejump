@@ -12,6 +12,11 @@ loadDataRaw(data)
 \description{
 Dynamically source or load raw data in the `data-raw` directory
 }
+\examples{
+\dontrun{
+loadDataRaw("counts")
+}
+}
 \author{
 Michael Steinbaugh
 }
