@@ -16,7 +16,7 @@
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        stats::na.omit(.) %>%
+        na.omit %>%
         sort %>%
         unique
 }

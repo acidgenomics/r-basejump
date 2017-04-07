@@ -11,7 +11,7 @@
 #' @param prefix Name prefix (optional)
 #'
 #' @export
-assignMultiple <- function(..., envir = .GlobalEnv, prefix = NULL) {
+assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
     # The `-1` here removes the function name:
     names <- sapply(match.call(expand.dots = TRUE)[-1], deparse)
     data <- list(...)

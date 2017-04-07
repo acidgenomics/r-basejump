@@ -13,6 +13,6 @@
 toStringSummarize <- function(data) {
     data %>%
         as.data.frame %>%
-        dplyr::summarise_each(funs(toStringUnique)) %>%
-        dplyr::mutate_each(funs(fixNA))
+        summarise_each(funs(toStringUnique)) %>%
+        mutate_each(funs(fixNA))
 }
