@@ -1,7 +1,7 @@
 #' Set the names in an object
 #'
 #' @name setNames
-#' @keywords internal
+#' @rdname setNames
 #' @importFrom stats setNames
 #' @export
 NULL
