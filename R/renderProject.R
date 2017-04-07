@@ -8,8 +8,13 @@
 #' @param recursive Find files recursively
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' renderProject()
+#' }
 renderProject <- function(
-    ouputDir = "docs",
+    outputDir = "docs",
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
         stop("no Rproj file found")
@@ -19,7 +24,7 @@ renderProject <- function(
     }
 
     # Create the output directory
-    dir.create(outputDir, showWarnings = FALSE)
+    dir.create(outputDir, recursive = TRUE, showWarnings = FALSE)
 
     # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
