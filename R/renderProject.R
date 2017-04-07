@@ -2,7 +2,7 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @import rmarkdown
+#' @importFrom rmarkdown render
 #'
 #' @param outputDir Output directory
 #' @param recursive Find files recursively
