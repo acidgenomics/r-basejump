@@ -36,11 +36,11 @@ renderProject <- function(
         .[!grepl("(footer|header)\\.Rmd$", .)]
 
     sapply(files, function(input) {
-        rmarkdown::render(input,
-                          clean = TRUE,
-                          envir = new.env(),
-                          knit_root_dir = getwd(),
-                          output_dir = outputDir,
-                          output_format = "all")
+        render(input,
+               clean = TRUE,
+               envir = new.env(),
+               knit_root_dir = getwd(),
+               output_dir = outputDir,
+               output_format = "all")
     }) %>% invisible
 }

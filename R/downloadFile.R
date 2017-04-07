@@ -2,9 +2,9 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @import stringr
 #' @importFrom RCurl getURL
 #' @importFrom R.utils gzip
+#' @importFrom stringr str_split str_subset
 #' @importFrom utils download.file
 #'
 #' @param remoteDir Remote directory URL
@@ -22,9 +22,9 @@ downloadFile <- function(remoteDir,
                          localDir = "data-raw") {
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
 
-    remoteFile <- RCurl::getURL(remoteDir, dirlistonly = TRUE) %>%
-        stringr::str_split(., "\n") %>% .[[1]] %>%
-        stringr::str_subset(., string)
+    remoteFile <- getURL(remoteDir, dirlistonly = TRUE) %>%
+        str_split("\n") %>% .[[1]] %>%
+        str_subset(string)
 
     # Rename, if desired
     if (!is.null(rename)) {
@@ -36,11 +36,11 @@ downloadFile <- function(remoteDir,
     remoteFile <- paste0(remoteDir, remoteFile)
     localFile <- file.path(localDir, localFile)
 
-    utils::download.file(remoteFile, localFile)
+    download.file(remoteFile, localFile)
 
     # Compress, if desired
     if (isTRUE(compress)) {
-        R.utils::gzip(localFile, overwrite = TRUE)
+        gzip(localFile, overwrite = TRUE)
         localFile <- paste0(localFile, ".gz")
     }
 

@@ -4,7 +4,7 @@
 \alias{assignMultiple}
 \title{Assign multiple variables}
 \usage{
-assignMultiple(..., envir = .GlobalEnv, prefix = NULL)
+assignMultiple(..., envir = globalenv(), prefix = NULL)
 }
 \arguments{
 \item{...}{List of variables to assign}
