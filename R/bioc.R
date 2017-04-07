@@ -1,9 +1,12 @@
 # Modified version of `rafalib::install_bioc()`
 # https://github.com/rafalab/rafalib/blob/master/R/install_bioc.R
 
+
+
 #' @importFrom utils globalVariables
 #' @keywords internal
 utils::globalVariables("biocLite")
+
 
 
 #' Install or update Bioconductor packages
