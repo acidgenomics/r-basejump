@@ -18,7 +18,8 @@ markdownList(character, ordered = FALSE)
 Markdown list
 }
 \examples{
-markdownList(c("item1", "item2"), ordered = TRUE)
+markdownList(c("milk", "eggs"))
+markdownList(c("milk", "eggs"), ordered = TRUE)
 }
 \author{
 Michael Steinbaugh
