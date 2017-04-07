@@ -23,12 +23,9 @@ setRownames(data, column)
 \arguments{
 \item{data}{Data type that supports name assignments}
 
-\item{column}{Column to use for \code{rownames}}
+\item{column}{Column to assign rownames}
 }
 \value{
-Sanitized data with valid names. Outputs in snake_case format. Tested
-  on data frames, matrices, and lists.
-
 data Unmodified data with reformatted names
 }
 \description{
@@ -39,7 +36,4 @@ sanitizeNames(head(iris))
 setNamesCamel(head(iris))
 setNamesDot(head(iris))
 setNamesSnake(head(iris))
-\dontrun{
-setRownames(data, column = "ensembl_gene_id")
-}
 }
