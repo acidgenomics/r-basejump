@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the names in an object — setNames • basejump</title>
+<title>Set the names in an object — sanitizeNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,7 +80,9 @@
     <p>Set the names in an object</p>
     
 
-    <pre><span class='fu'>setNamesCamel</span>(<span class='no'>data</span>)
+    <pre><span class='fu'>sanitizeNames</span>(<span class='no'>data</span>)
+
+<span class='fu'>setNamesCamel</span>(<span class='no'>data</span>)
 
 <span class='fu'>setNamesDot</span>(<span class='no'>data</span>)
 
@@ -93,7 +95,7 @@
       <dt>data</dt>
       <dd><p>Data type that supports name assignments</p></dd>
       <dt>column</dt>
-      <dd><p>Column to use for <code>rownames</code></p></dd>
+      <dd><p>Column to assign rownames</p></dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -102,7 +104,13 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>setNamesCamel</span>(<span class='fu'>head</span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt;   sepalLength sepalWidth petalLength petalWidth species
+    <pre class="examples"><div class='input'><span class='fu'>sanitizeNames</span>(<span class='fu'>head</span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt;   sepal_length sepal_width petal_length petal_width species
+#&gt; 1          5.1         3.5          1.4         0.2  setosa
+#&gt; 2          4.9         3.0          1.4         0.2  setosa
+#&gt; 3          4.7         3.2          1.3         0.2  setosa
+#&gt; 4          4.6         3.1          1.5         0.2  setosa
+#&gt; 5          5.0         3.6          1.4         0.2  setosa
+#&gt; 6          5.4         3.9          1.7         0.4  setosa</div><div class='input'><span class='fu'>setNamesCamel</span>(<span class='fu'>head</span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt;   sepalLength sepalWidth petalLength petalWidth species
 #&gt; 1         5.1        3.5         1.4        0.2  setosa
 #&gt; 2         4.9        3.0         1.4        0.2  setosa
 #&gt; 3         4.7        3.2         1.3        0.2  setosa
@@ -120,9 +128,7 @@
 #&gt; 3          4.7         3.2          1.3         0.2  setosa
 #&gt; 4          4.6         3.1          1.5         0.2  setosa
 #&gt; 5          5.0         3.6          1.4         0.2  setosa
-#&gt; 6          5.4         3.9          1.7         0.4  setosa</div><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># setRownames(data, column = "ensembl_gene_id")</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+#&gt; 6          5.4         3.9          1.7         0.4  setosa</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
