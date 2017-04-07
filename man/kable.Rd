@@ -2,17 +2,21 @@
 % Please edit documentation in R/kable.R
 \name{kable}
 \alias{kable}
-\title{kable rework with custom defaults}
+\title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 kable(x, ...)
 }
 \arguments{
 \item{x}{An R object (typically a matrix or data frame)}
 
-\item{...}{Pass through to \code{knitr::kable()}}
+\item{...}{Other arguments}
+}
+\value{
+Kable during knit (via \code{rmarkdown::render()}), otherwise the
+  original data
 }
 \description{
-Display as data frame in RMarkdown chunk or \code{kable()} during knit
+Wrapper function for \code{knitr::kable()}
 }
 \examples{
 kable(head(iris))
@@ -20,3 +24,4 @@ kable(head(iris))
 \author{
 Michael Steinbaugh
 }
+\keyword{internal}
