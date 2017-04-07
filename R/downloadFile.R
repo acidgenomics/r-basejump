@@ -20,14 +20,7 @@ downloadFile <- function(remoteDir,
                          rename = NULL,
                          compress = FALSE,
                          localDir = "data-raw") {
-    # Create the local directory, if necessary
-    if (!is.null(localDir)) {
-        if (!dir.exists(localDir)) {
-            dir.create(localDir, recursive = TRUE)
-        }
-    } else {
-        stop("Local directory cannot be NULL.")
-    }
+    dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
 
     remoteFile <- RCurl::getURL(remoteDir, dirlistonly = TRUE) %>%
         stringr::str_split(., "\n") %>% .[[1]] %>%
