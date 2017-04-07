@@ -9,6 +9,11 @@
 #' @param data Data object
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' loadDataRaw("counts")
+#' }
 loadDataRaw <- function(data) {
     for (a in 1:length(data)) {
         if (!file.exists(paste0("data/", data[a], ".rda"))) {
