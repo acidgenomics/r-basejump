@@ -6,6 +6,9 @@
 #'
 #' @return data Unmodified data with reformatted camelCase names
 #' @export
+#'
+#' @examples
+#' setNamesCamel(head(iris))
 setNamesCamel <- function(data) {
     setNames(data, makeNamesCamel(colnames(data)))
 }

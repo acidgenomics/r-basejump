@@ -6,6 +6,9 @@
 #'
 #' @return data Unmodified data with reformatted snake_case names
 #' @export
+#'
+#' @examples
+#' setNamesSnake(head(iris))
 setNamesSnake <- function(data) {
     setNames(data, makeNamesSnake(colnames(data)))
 }
