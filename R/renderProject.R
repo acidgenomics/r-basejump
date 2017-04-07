@@ -2,33 +2,45 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @import rmarkdown
+#' @importFrom rmarkdown render
 #'
 #' @param outputDir Output directory
-#' @param ... Passthrough \code{rmarkdown::render()} parameters
+#' @param recursive Find files recursively
 #'
 #' @export
-renderProject <- function(outputDir = NULL, ...) {
-    if (!is.null(outputDir)) {
-        # Create `outputDir` if necessary
-        if (!dir.exists(outputDir)) {
-            dir.create(outputDir, recursive = TRUE)
-        }
+#'
+#' @examples
+#' \dontrun{
+#' renderProject()
+#' }
+renderProject <- function(
+    outputDir = "docs",
+    recursive = FALSE) {
+    if (!length(dir(pattern = "*.Rproj"))) {
+        stop("no Rproj file found")
     }
-    # Get the recursive list of RMarkdown files
+    if (identical(getwd(), Sys.getenv("HOME"))) {
+        stop("careful, working from HOME")
+    }
+
+    # Create the output directory
+    dir.create(outputDir, recursive = TRUE, showWarnings = FALSE)
+
+    # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
-                       full.names = TRUE,
-                       recursive = TRUE) %>%
+                        full.names = TRUE,
+                        recursive = recursive) %>%
         # Ignore drafts
         .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)] %>%
         # Ignore child chunk files
         .[!grepl("(footer|header)\\.Rmd$", .)]
+
     sapply(files, function(input) {
         rmarkdown::render(input,
-                          output_dir = outputDir,
-                          output_format = "all",
                           clean = TRUE,
-                          ...)
-    })
-    invisible()
+                          envir = new.env(),
+                          knit_root_dir = getwd(),
+                          output_dir = outputDir,
+                          output_format = "all")
+    }) %>% invisible
 }

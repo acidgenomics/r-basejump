@@ -1,15 +1,10 @@
-#' toString call that outputs sorted uniques
-#'
-#' @author Michael Steinbaugh
-#'
-#' @keywords internal
-#'
-#' @param vector \code{vector}
-#'
-#' @return Sorted unique \code{string}
+#' @rdname toString
+#' @return Sorted unique character vector
 #' @export
-toStringSortUnique <- function(vector) {
-    vector %>%
+#' @examples
+#' toStringSortUnique(c("milk", "eggs", "eggs", NA))
+toStringSortUnique <- function(character) {
+    character %>%
         unique %>%
         sort %>%
         toString %>%

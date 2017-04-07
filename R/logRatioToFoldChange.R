@@ -1,9 +1,7 @@
-# Based on `gtools::logratio2foldchange()` method
-
-
 #' log ratio to fold change
 #'
-#' Convert log ratio normalized values to fold change
+#' Convert log ratio normalized values to fold change.
+#' Based on the approach used in `gtools::logratio2foldchange()`.
 #'
 #' @author Michael Steinbaugh
 #'
@@ -17,13 +15,14 @@
 #' @examples
 #' logRatioToFoldChange(seq(-3, 3, 0.5))
 logRatioToFoldChange <- function(logRatio, base = 2) {
-    return <- base^(logRatio)
-    return <- ifelse(return < 1, -1/return, return)
-    return(return)
+    x <- base^(logRatio)
+    x <- ifelse(x < 1, -1/x, x)
+    return(x)
 }
 
 
-# Deprecated method
-# Sign is -1 if log2 < 0; 1 if log2 >= 0
-## sign <- (-1) ^ (1 + as.numeric(log2 >= 0))
-## sign * 2 ^ abs(log2)
+
+# Alternate approach
+# sign is -1 if log2 < 0; 1 if log2 >= 0
+# sign <- (-1) ^ (1 + as.numeric(log2 >= 0))
+# return(sign * 2 ^ abs(log2))

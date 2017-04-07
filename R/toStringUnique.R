@@ -1,15 +1,18 @@
-#' toString call that outputs sorted uniques
+#' Utility functions for toString
+#'
+#' @rdname toString
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
+#' @param character Character vector
 #'
-#' @param vector \code{vector}
-#'
-#' @return Unique \code{string}
+#' @return Unique character vector
 #' @export
-toStringUnique <- function(vector) {
-    vector %>%
+#'
+#' @examples
+#' toStringUnique(c("milk", "eggs", "eggs", NA))
+toStringUnique <- function(character) {
+    character %>%
         unique %>%
         toString %>%
         gsub("NA,\\s|,\\sNA", "", .)

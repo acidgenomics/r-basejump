@@ -1,12 +1,5 @@
-#' Make names camelCase
-#'
-#' @author Michael Steinbaugh
-#'
-#' @param character Character vector
-#'
-#' @return Character vector formatted as camelCase
+#' @rdname makeNames
 #' @export
-#'
 #' @examples
 #' makeNamesCamel("RNAi clone")
 makeNamesCamel <- function(character) {
@@ -16,6 +9,7 @@ makeNamesCamel <- function(character) {
 }
 
 
-#' @rdname makeNamesCamel
+
+#' @rdname makeNames
 #' @export
 camel <- makeNamesCamel

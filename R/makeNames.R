@@ -4,7 +4,7 @@
 #'
 #' @param character Character vector
 #'
-#' @return Character vector formatted in dot notation
+#' @return Character vector formatted with valid names
 #' @export
 #'
 #' @examples

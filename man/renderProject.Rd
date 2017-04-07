@@ -4,15 +4,20 @@
 \alias{renderProject}
 \title{Render all RMarkdown files in working directory}
 \usage{
-renderProject(outputDir = NULL, ...)
+renderProject(outputDir = "docs", recursive = FALSE)
 }
 \arguments{
 \item{outputDir}{Output directory}
 
-\item{...}{Passthrough \code{rmarkdown::render()} parameters}
+\item{recursive}{Find files recursively}
 }
 \description{
 Render all RMarkdown files in working directory
+}
+\examples{
+\dontrun{
+renderProject()
+}
 }
 \author{
 Michael Steinbaugh

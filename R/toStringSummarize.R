@@ -1,19 +1,18 @@
-#' Summarize all rows in a tibble using toString
-#'
-#' @author Michael Steinbaugh
-#'
-#' @keywords internal
+#' @rdname toString
 #'
 #' @import dplyr
-#' @import tibble
 #'
-#' @param tibble Long \code{tibble}
+#' @param data Data with rows and columns (e.g. data frame, matrix)
 #'
-#' @return Collapsed \code{tibble}
+#' @return Summarized data frame that has been collapsed to a single
+#'   \code{toString()}-formatted row, separated by commas
 #' @export
-toStringSummarize <- function(tibble) {
-    tibble %>%
-        tibble::as_tibble(.) %>%
+#'
+#' @examples
+#' toStringSummarize(head(iris))
+toStringSummarize <- function(data) {
+    data %>%
+        as.data.frame %>%
         dplyr::summarise_each(funs(toStringUnique)) %>%
         dplyr::mutate_each(funs(fixNA))
 }
