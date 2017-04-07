@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>kable rework with custom defaults — kable • basejump</title>
+<title>Create tables in LaTeX, HTML, Markdown and reStructuredText — kable • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,11 +73,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>kable rework with custom defaults</h1>
+    <h1>Create tables in LaTeX, HTML, Markdown and reStructuredText</h1>
     </div>
 
     
-    <p>Display as data frame in RMarkdown chunk or <code>kable()</code> during knit</p>
+    <p>Wrapper function for <code>knitr::kable()</code></p>
     
 
     <pre><span class='fu'>kable</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
@@ -87,8 +87,13 @@
       <dt>x</dt>
       <dd><p>An R object (typically a matrix or data frame)</p></dd>
       <dt>...</dt>
-      <dd><p>Pass through to <code>knitr::kable()</code></p></dd>
+      <dd><p>Other arguments</p></dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Kable during knit (via <code>rmarkdown::render()</code>), otherwise the
+  original data</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -104,7 +109,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
