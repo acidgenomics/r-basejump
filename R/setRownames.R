@@ -2,17 +2,11 @@
 #'
 #' @import tibble
 #'
-#' @param column Column to use for \code{rownames}
+#' @param column Column to assign rownames
 #'
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' setRownames(data, column = "ensembl_gene_id")
-#' }
 setRownames <- function(data, column) {
-    # Setting rownames on a tibble is deprecated. Therefore, we must coerce to
-    # data frame first, if necessary.
+    # Setting rownames on a tibble is deprecated
     if (tibble::is_tibble(data)) {
         data <- as.data.frame(data)
     }

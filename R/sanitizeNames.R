@@ -1,9 +1,5 @@
 #' @rdname setNames
-#'
-#' @return Sanitized data with valid names. Outputs in snake_case. Tested on
-#'   data frames, matrices, and lists.
 #' @export
-#'
 #' @examples
 #' sanitizeNames(head(iris))
 sanitizeNames <- function(data) {
