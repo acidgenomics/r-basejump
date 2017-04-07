@@ -1,6 +1,5 @@
 [`devtools`]: https://cran.r-project.org/package=devtools
 [Bioconductor]: https://bioconductor.org
-[GitHub repository]: https://github.com/steinbaugh/basejump
 [R]: https://www.r-project.org
 
 # basejump
@@ -11,7 +10,6 @@
 ## Installation
 
 This is an [R][] package.
-The latest version can be installed directly from our [GitHub repository][].
 
 ### [Bioconductor][] method
 
