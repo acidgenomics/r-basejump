@@ -4,10 +4,12 @@
 \alias{kable}
 \title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
-kable(x, ...)
+kable(x, digits = 3, ...)
 }
 \arguments{
 \item{x}{An R object (typically a matrix or data frame)}
+
+\item{digits}{Maximum number of digits for numeric columns}
 
 \item{...}{Other arguments supported by \code{knitr::kable}}
 }
@@ -17,9 +19,7 @@ Kable during knit, otherwise the original data
 \description{
 Wrapper for \code{knitr::kable}. Improves appearance in RStudio RMarkdown
 chunks by returning a data frame instead of a kable outside of a knit.
-Customizes knit output defaults based on format matches. The function applies
-grep matching to both default and custom document templates by format (e.g.
-\code{BiocStyle::pdf_document2}).
+Customizes knit output defaults based on format.
 }
 \examples{
 kable(head(iris))
