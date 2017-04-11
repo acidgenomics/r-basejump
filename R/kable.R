@@ -2,9 +2,7 @@
 #'
 #' Wrapper for \code{knitr::kable}. Improves appearance in RStudio RMarkdown
 #' chunks by returning a data frame instead of a kable outside of a knit.
-#' Customizes knit output defaults based on format matches. The function applies
-#' grep matching to both default and custom document templates by format (e.g.
-#' \code{BiocStyle::pdf_document2}).
+#' Customizes knit output defaults based on format.
 #'
 #' @author Michael Steinbaugh
 #'
@@ -20,18 +18,16 @@
 #' kable(head(iris))
 kable <- function(x, ...) {
     output <- opts_knit$get("rmarkdown.pandoc.to")
-    if (!is.null(output)) {
-        if (grepl("pdf_document", output)) {
-            return(knitr::kable(x,
-                                digits = 2,
-                                row.names = FALSE,
-                                booktabs = TRUE,
-                                longtable = TRUE,
-                                ...))
-        } else {
-            return(knitr::kable(x, ...))
-        }
-    } else {
+    if (is.null(output)) {
         return(x)
+    } else if (output == "latex") {
+        return(knitr::kable(x,
+                            digits = 2,
+                            row.names = FALSE,
+                            booktabs = TRUE,
+                            longtable = TRUE,
+                            ...))
+    } else {
+        return(knitr::kable(x, ...))
     }
 }
