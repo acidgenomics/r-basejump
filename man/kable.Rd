@@ -27,4 +27,3 @@ kable(head(iris))
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
