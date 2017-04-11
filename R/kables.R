@@ -4,21 +4,21 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom knitr asis_output opts_knit
+#' @importFrom knitr asis_output kable opts_knit
 #'
 #' @param list List of tables (e.g. data frame, matrix)
+#' @param captions Caption character vector
 #'
 #' @return Knit tables, using \code{kable}
 #' @export
 #'
 #' @examples
-#' kables(list(example1 = iris, example2 = mtcars))
-kables <- function(list) {
+#' kables(list(iris, mtcars))
+kables <- function(list, captions = NULL) {
     output <- opts_knit$get("rmarkdown.pandoc.to")
     if (!is.null(output)) {
-        # Need to fix caption handling for PDFs
         tables <- lapply(seq_along(list), function(a) {
-            kable(list[a], caption = "XXX")
+            kable(list[a], caption = captions[a])
         })
         return(asis_output(tables))
     } else {
