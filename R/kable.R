@@ -9,6 +9,7 @@
 #' @importFrom knitr kable opts_knit
 #'
 #' @param x An R object (typically a matrix or data frame)
+#' @param digits Maximum number of digits for numeric columns
 #' @param ... Other arguments supported by \code{knitr::kable}
 #'
 #' @return Kable during knit, otherwise the original data
@@ -16,18 +17,18 @@
 #'
 #' @examples
 #' kable(head(iris))
-kable <- function(x, ...) {
+kable <- function(x, digits = 3, ...) {
     output <- opts_knit$get("rmarkdown.pandoc.to")
     if (is.null(output)) {
         return(x)
     } else if (output == "latex") {
-        return(knitr::kable(x,
-                            digits = 2,
-                            row.names = FALSE,
-                            booktabs = TRUE,
-                            longtable = TRUE,
-                            ...))
+        knitr::kable(x,
+                     digits = digits,
+                     row.names = FALSE,
+                     longtable = TRUE,
+                     booktabs = TRUE,
+                     ...)
     } else {
-        return(knitr::kable(x, ...))
+        knitr::kable(x, digits = digits, ...)
     }
 }
