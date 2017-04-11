@@ -7,7 +7,6 @@
 #' \code{BiocStyle::pdf_document2}).
 #'
 #' @author Michael Steinbaugh
-#' @keywords internal
 #'
 #' @importFrom knitr kable opts_knit
 #'
