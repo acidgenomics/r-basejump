@@ -4,10 +4,12 @@
 \alias{kables}
 \title{Handle multiple kables in a single RMarkdown chunk}
 \usage{
-kables(list)
+kables(list, captions = NULL)
 }
 \arguments{
 \item{list}{List of tables (e.g. data frame, matrix)}
+
+\item{captions}{Caption character vector}
 }
 \value{
 Knit tables, using \code{kable}
@@ -16,7 +18,7 @@ Knit tables, using \code{kable}
 Utility function for improving knit reports
 }
 \examples{
-kables(list(example1 = iris, example2 = mtcars))
+kables(list(iris, mtcars))
 }
 \author{
 Michael Steinbaugh
