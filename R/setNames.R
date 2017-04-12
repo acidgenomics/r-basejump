@@ -70,7 +70,7 @@ sanitizeNames <- function(data) {
 #' @keywords internal
 #' @usage NULL
 #' @export
-setColnames <- magrittr::set_colnames
+setColnames <- set_colnames
 
 
 
@@ -78,4 +78,4 @@ setColnames <- magrittr::set_colnames
 #' @keywords internal
 #' @usage NULL
 #' @export
-setRownames <- magrittr::set_rownames
+setRownames <- set_rownames
