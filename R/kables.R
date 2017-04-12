@@ -4,8 +4,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom knitr asis_output kable opts_knit
-#'
 #' @param list List of tables (e.g. data frame, matrix)
 #' @param captions Caption character vector
 #'

@@ -2,8 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom utils download.file
-#'
 #' @param url URL
 #'
 #' @export

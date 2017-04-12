@@ -2,11 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom RCurl getURL
-#' @importFrom R.utils gzip
-#' @importFrom stringr str_split str_subset
-#' @importFrom utils download.file
-#'
 #' @param remoteDir Remote directory URL
 #' @param string String to match against remote file names
 #' @param rename Rename the local file, if desired

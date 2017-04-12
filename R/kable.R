@@ -6,8 +6,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom knitr kable opts_knit
-#'
 #' @param x An R object (typically a matrix or data frame)
 #' @param ... Other arguments supported by \code{knitr::kable}
 #'
