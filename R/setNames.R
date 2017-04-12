@@ -2,6 +2,8 @@
 #'
 #' @rdname setNames
 #'
+#' @author Michael Steinbaugh
+#'
 #' @param data Data type that supports name assignments
 #'
 #' @return Unmodified data with reformatted names

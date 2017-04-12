@@ -2,8 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
 #' @param string String missing \code{NA}
 #'
 #' @return String containing \code{NA}
