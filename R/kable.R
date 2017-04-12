@@ -1,34 +1,27 @@
 #' Create tables in LaTeX, HTML, Markdown and reStructuredText
 #'
-#' Wrapper function for \code{knitr::kable()}
+#' Wrapper for \code{knitr::kable}. Improves appearance in RStudio RMarkdown
+#' chunks by returning a data frame instead of a kable outside of a knit.
+#' Customizes knit output defaults based on format.
 #'
 #' @author Michael Steinbaugh
-#' @keywords internal
 #'
 #' @importFrom knitr kable opts_knit
 #'
 #' @param x An R object (typically a matrix or data frame)
-#' @param ... Other arguments
+#' @param ... Other arguments supported by \code{knitr::kable}
 #'
-#' @return Kable during knit (via \code{rmarkdown::render()}), otherwise the
-#'   original data
+#' @return Kable during knit, otherwise the original data
 #' @export
 #'
 #' @examples
 #' kable(head(iris))
 kable <- function(x, ...) {
-    # Improve appearance in RStudio RMarkdown chunks
-    output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-    if (!is.null(output)) {
-        # Customize output defaults based on format
-        if (output == "pdf") {
-            return(knitr::kable(x, ...,
-                                booktabs = TRUE,
-                                longtable = TRUE))
-        } else {
-            return(knitr::kable(x, ...))
-        }
-    } else {
+    output <- opts_knit$get("rmarkdown.pandoc.to")
+    if (is.null(output)) {
         return(x)
+    } else {
+        kable(x, row.names = FALSE, ...)
     }
 }
+# For PDF: output == "latex"
