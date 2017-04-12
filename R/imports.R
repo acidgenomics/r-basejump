@@ -5,6 +5,7 @@
 #' @importFrom R.utils gzip
 #' @importFrom stats na.omit setNames
 #' @importFrom utils download.file globalVariables
+NULL
 
 
 
@@ -12,6 +13,7 @@
 #' @import devtools
 #' @importFrom BiocCheck BiocCheck
 #' @importFrom pkgdown build_site
+NULL
 
 
 
