@@ -20,9 +20,7 @@ NULL
 # tidyverse ====
 # http://tidyverse.org/
 #' @import dplyr
-#' @import ggplot2
 #' @import magrittr
-#' @import readr
 #' @import stringr
 #' @import tibble
 NULL
