@@ -5,10 +5,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
-#' @import dplyr
-#'
 #' @param df Dirty data frame
 #'
 #' @return Washed data frame

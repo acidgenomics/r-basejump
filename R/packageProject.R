@@ -2,10 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @import devtools
-#' @importFrom BiocCheck BiocCheck
-#' @importFrom pkgdown build_site
-#'
 #' @export
 packageProject <- function() {
     document()
