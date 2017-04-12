@@ -2,25 +2,37 @@
 % Please edit documentation in R/kable.R
 \name{kable}
 \alias{kable}
+\alias{kables}
 \title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 kable(x, ...)
+
+kables(list, captions = NULL)
 }
 \arguments{
 \item{x}{An R object (typically a matrix or data frame)}
 
 \item{...}{Other arguments supported by \code{knitr::kable}}
+
+\item{list}{List of tables (e.g. data frame, matrix)}
+
+\item{captions}{Caption character vector}
 }
 \value{
 Kable during knit, otherwise the original data
+
+Knit tables, using \code{kable}
 }
 \description{
-Wrapper for \code{knitr::kable}. Improves appearance in RStudio RMarkdown
-chunks by returning a data frame instead of a kable outside of a knit.
-Customizes knit output defaults based on format.
+Wrapper for \code{knitr::kable} (knit table). Improves
+  appearance in RStudio RMarkdown chunks by returning a data frame instead of
+  a kable outside of a knit. Customizes knit output defaults based on format.
+
+Handle multiple kables in a single RMarkdown chunk
 }
 \examples{
 kable(head(iris))
+kables(list(iris, mtcars))
 }
 \author{
 Michael Steinbaugh
