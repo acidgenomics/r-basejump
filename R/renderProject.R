@@ -14,7 +14,7 @@
 #' renderProject()
 #' }
 renderProject <- function(
-    outputDir = "docs",
+    outputDir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
         stop("no Rproj file found")
