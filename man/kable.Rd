@@ -9,14 +9,15 @@ kable(x, ...)
 \arguments{
 \item{x}{An R object (typically a matrix or data frame)}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments supported by \code{knitr::kable}}
 }
 \value{
-Kable during knit (via \code{rmarkdown::render()}), otherwise the
-  original data
+Kable during knit, otherwise the original data
 }
 \description{
-Wrapper function for \code{knitr::kable()}
+Wrapper for \code{knitr::kable}. Improves appearance in RStudio RMarkdown
+chunks by returning a data frame instead of a kable outside of a knit.
+Customizes knit output defaults based on format.
 }
 \examples{
 kable(head(iris))
@@ -24,4 +25,3 @@ kable(head(iris))
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
