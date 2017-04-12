@@ -5,8 +5,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom stats na.omit
-#'
 #' @param vector Vector with duplicates, \code{NA} values
 #'
 #' @return Unique vector
@@ -16,7 +14,7 @@
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        stats::na.omit(.) %>%
+        na.omit %>%
         sort %>%
         unique
 }

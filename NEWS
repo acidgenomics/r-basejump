@@ -1,5 +1,6 @@
-0.1.4 Improve documentation
-0.1.3 Remove dependencies and transfer functions to bcbioRnaseq
-0.1.2 Add bcbio data import functions
-0.1.1 Add ggplot2 wrapper functions for quality control
-0.1.0 Initial draft release
+0.1.5   Consolidate functions in the documentation.
+0.1.4   Improve documentation.
+0.1.3   Remove dependencies and transfer functions to bcbioRnaseq.
+0.1.2   Add bcbio data import functions.
+0.1.1   Add ggplot2 wrapper functions for quality control.
+0.1.0   Initial draft release.
