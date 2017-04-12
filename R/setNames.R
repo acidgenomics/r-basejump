@@ -1,16 +1,45 @@
-#' Set the names in an object
+#' setNames utility functions
 #'
-#' @name setNames
 #' @rdname setNames
-#' @importFrom stats setNames
-#' @usage NULL
+#'
+#' @param data Data type that supports name assignments
+#'
+#' @return Unmodified data with reformatted names
+
+
+
+#' @rdname setNames
 #' @export
-NULL
+#' @examples
+#' setNamesCamel(head(iris))
+setNamesCamel <- function(data) {
+    setNames(data, makeNamesCamel(colnames(data)))
+}
 
 
 
 #' @rdname setNames
-#' @importFrom magrittr set_colnames
+#' @export
+#' @examples
+#' setNamesDot(head(iris))
+setNamesDot <- function(data) {
+    setNames(data, makeNames(colnames(data)))
+}
+
+
+
+#' @rdname setNames
+#' @export
+#' @examples
+#' setNamesSnake(head(iris))
+setNamesSnake <- function(data) {
+    setNames(data, makeNamesSnake(colnames(data)))
+}
+
+
+
+#' @rdname setNames
+#' @keywords internal
 #' @usage NULL
 #' @export
 setColnames <- magrittr::set_colnames
@@ -18,7 +47,7 @@ setColnames <- magrittr::set_colnames
 
 
 #' @rdname setNames
-#' @importFrom magrittr set_rownames
+#' @keywords internal
 #' @usage NULL
 #' @export
 setRownames <- magrittr::set_rownames
