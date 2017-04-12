@@ -4,7 +4,7 @@
 \alias{renderProject}
 \title{Render all RMarkdown files in working directory}
 \usage{
-renderProject(outputDir = "docs", recursive = FALSE)
+renderProject(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
 }
 \arguments{
 \item{outputDir}{Output directory}
