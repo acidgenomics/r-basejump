@@ -5,10 +5,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
-#' @import dplyr
-#'
 #' @param df Dirty data frame
 #'
 #' @return Washed data frame
@@ -27,5 +23,5 @@ wash <- function(df) {
             # Character NAs
             gsub("^$|^\\s+$|^NA$", NA, .)
     }
-    dplyr::mutate_each(df, funs(gsubs))
+    mutate_each(df, funs(gsubs))
 }

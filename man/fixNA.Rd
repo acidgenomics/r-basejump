@@ -21,4 +21,3 @@ fixNA(c(1, "x", "", "NA"))
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}

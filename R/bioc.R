@@ -3,9 +3,8 @@
 
 
 
-#' @importFrom utils globalVariables
 #' @keywords internal
-utils::globalVariables("biocLite")
+globalVariables("biocLite")
 
 
 

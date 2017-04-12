@@ -2,8 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @importFrom utils download.file
-#'
 #' @param url URL
 #'
 #' @export
@@ -14,6 +12,6 @@
 #' }
 loadRemote <- function(url) {
     tempfile <- tempfile()
-    utils::download.file(url, get("tempfile"), quiet = TRUE)
+    download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = globalenv())
 }

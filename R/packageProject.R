@@ -2,18 +2,14 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @import BiocCheck
-#' @import devtools
-#' @import pkgdown
-#'
 #' @export
 packageProject <- function() {
-    #` devtools::load_all()
-    devtools::document()
-    devtools::build_vignettes()
-    BiocCheck::BiocCheck(getwd())
-    devtools::check()
-    devtools::build()
-    #` devtools::install()
-    pkgdown::build_site()
+    document()
+    build_vignettes()
+    BiocCheck(getwd())
+    load_all()
+    check()
+    build()
+    install()
+    build_site()
 }
