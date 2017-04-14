@@ -33,6 +33,7 @@ comp <- function(dna) {
 
 #' @rdname dna
 #' @description Reverse complement
+#' @export
 #' @examples
 #' revcomp("ATGCATGC")
 revcomp <- function(dna) {
