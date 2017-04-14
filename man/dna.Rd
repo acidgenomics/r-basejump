@@ -18,7 +18,7 @@ Modified DNA sequence
 \description{
 Complement
 
-Reverse complemen
+Reverse complement
 }
 \examples{
 comp("ATGCATGC")
