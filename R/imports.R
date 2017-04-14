@@ -12,7 +12,6 @@ NULL
 # Package development ====
 #' @import devtools
 #' @importFrom BiocCheck BiocCheck
-#' @importFrom pkgdown build_site
 NULL
 
 
