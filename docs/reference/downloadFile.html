@@ -25,7 +25,7 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -80,22 +80,33 @@
     <p>Match and download a file from a remote directory</p>
     
 
-    <pre><span class='fu'>downloadFile</span>(<span class='no'>remoteDir</span>, <span class='no'>string</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <pre class="usage"><span class='fu'>downloadFile</span>(<span class='no'>remoteDir</span>, <span class='no'>string</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>remoteDir</dt>
-      <dd><p>Remote directory URL</p></dd>
-      <dt>string</dt>
-      <dd><p>String to match against remote file names</p></dd>
-      <dt>rename</dt>
-      <dd><p>Rename the local file, if desired</p></dd>
-      <dt>compress</dt>
-      <dd><p>Whether to compress the file (<code>gzip</code>) after download</p></dd>
-      <dt>localDir</dt>
-      <dd><p>Directory where to save file locally</p></dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>remoteDir</th>
+      <td><p>Remote directory URL</p></td>
+    </tr>
+    <tr>
+      <th>string</th>
+      <td><p>String to match against remote file names</p></td>
+    </tr>
+    <tr>
+      <th>rename</th>
+      <td><p>Rename the local file, if desired</p></td>
+    </tr>
+    <tr>
+      <th>compress</th>
+      <td><p>Whether to compress the file (<code>gzip</code>) after download</p></td>
+    </tr>
+    <tr>
+      <th>localDir</th>
+      <td><p>Directory where to save file locally</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
