@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-#' markdownList(c("milk", "eggs"))
-#' markdownList(c("milk", "eggs"), ordered = TRUE)
-markdownList <- function(character, ordered = FALSE) {
+#' mdList(c("milk", "eggs"))
+#' mdList(c("milk", "eggs"), ordered = TRUE)
+mdList <- function(character, ordered = FALSE) {
     if (!is.character(character)) {
         stop("A character vector is required.")
     }
