@@ -9,9 +9,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' renderProject()
+#' renderProj()
 #' }
-renderProject <- function(
+renderProj <- function(
     outputDir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
