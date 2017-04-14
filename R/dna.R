@@ -1,9 +1,9 @@
 #' DNA sequence utilites
-#' 
+#'
 #' @author Michael Steinbaugh
-#' 
+#'
 #' @param dna DNA sequence (ATGC nucleotides)
-#' 
+#'
 #' @return Modified DNA sequence
 
 # Modified versions based on \code{seqRFLP::revComp()}
@@ -20,11 +20,11 @@ comp <- function(dna) {
     comp <- dna %>%
         # AT base pair swap
         gsub("A", "A1", .) %>%
-        gsub("T", "A", .) %>% 
+        gsub("T", "A", .) %>%
         gsub("A1", "T", .) %>%
         # GC base pair swap
         gsub("G", "G1", .) %>%
-        gsub("C", "G", .) %>% 
+        gsub("C", "G", .) %>%
         gsub("G1", "C", .)
     return(comp)
 }
@@ -32,7 +32,7 @@ comp <- function(dna) {
 
 
 #' @rdname dna
-#' @description Reverse complemen
+#' @description Reverse complement
 #' @examples
 #' revcomp("ATGCATGC")
 revcomp <- function(dna) {
