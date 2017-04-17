@@ -25,6 +25,7 @@ titleCase <- function(character) {
 
 
 #' @rdname case
+#' @description First case
 #' @export
 #' @examples
 #' firstCase("RNA sequencing")
