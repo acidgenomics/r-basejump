@@ -4,8 +4,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
 #' @param data Data object
 #'
 #' @export
