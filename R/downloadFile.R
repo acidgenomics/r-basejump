@@ -8,13 +8,14 @@
 #' @param compress Whether to compress the file (\code{gzip}) after download
 #' @param localDir Directory where to save file locally
 #'
-#' @export
 #' @return Local file name
-downloadFile <- function(remoteDir,
-                         string,
-                         rename = NULL,
-                         compress = FALSE,
-                         localDir = "data-raw") {
+#' @export
+downloadFile <- function(
+    remoteDir,
+    string,
+    rename = NULL,
+    compress = FALSE,
+    localDir = "data-raw") {
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
 
     remoteFile <- getURL(remoteDir, dirlistonly = TRUE) %>%
