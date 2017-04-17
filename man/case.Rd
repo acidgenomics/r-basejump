@@ -17,6 +17,8 @@ Reformatted character vector
 }
 \description{
 Title case
+
+First case
 }
 \examples{
 titleCase("RNA sequencing")

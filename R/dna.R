@@ -6,8 +6,6 @@
 #'
 #' @return Modified DNA sequence
 
-# Modified versions based on \code{seqRFLP::revComp()}
-
 
 
 #' @rdname dna

@@ -17,4 +17,3 @@ clearWarnings()
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
