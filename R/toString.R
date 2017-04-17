@@ -47,6 +47,6 @@ toStringSortUnique <- function(character) {
 toStringSummarize <- function(data) {
     data %>%
         as.data.frame %>%
-        summarise_each(funs(toStringUnique)) %>%
-        mutate_each(funs(fixNA))
+        summarise_all(funs(toStringUnique)) %>%
+        mutate_all(funs(fixNA))
 }
