@@ -2,10 +2,11 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @param character \code{character} vector
-#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown format
+#' @param character Character vector
+#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown
+#'   format
 #'
-#' @return \code{character} vector
+#' @return Character vector
 #' @export
 #'
 #' @examples
