@@ -2,8 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
 #' @param object Generic object
 #'
 #' @return \code{TRUE/FALSE}
