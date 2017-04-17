@@ -2,8 +2,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
 #' @export
 #'
 #' @examples

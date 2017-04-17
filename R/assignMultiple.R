@@ -4,8 +4,6 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @keywords internal
-#'
 #' @param ... List of variables to assign
 #' @param envir Desired environment (optional)
 #' @param prefix Name prefix (optional)
