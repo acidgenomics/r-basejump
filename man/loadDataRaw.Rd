@@ -20,4 +20,3 @@ loadDataRaw("counts")
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
