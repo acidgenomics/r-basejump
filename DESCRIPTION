@@ -1,10 +1,14 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.6
-Date: 2017-04-17
-Authors@R: person("Michael", "Steinbaugh", , "mike@steinbaugh.com", role = c("aut", "cre"))
-Description: Helper functions for bioinformatics, package development, and RMarkdown reports.
-biocViews: DataImport, DifferentialExpression, GeneExpression, ReportWriting, RNASeq, Visualization
+Version: 0.1.7
+Date: 2017-04-19
+Authors@R: person("Michael", "Steinbaugh",
+                  email = "mike@steinbaugh.com",
+                  role = c("aut", "cre"))
+Description: Helper functions for bioinformatics, package development, and
+    RMarkdown reports.
+biocViews: DataImport, DifferentialExpression, GeneExpression, ReportWriting,
+    RNASeq, Visualization
 License: MIT + file LICENSE
 URL: http://steinbaugh.com/basejump, https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
@@ -25,4 +29,3 @@ Imports:
 Remotes:
     hadley/pkgdown
 RoxygenNote: 6.0.1
-Suggests: testthat

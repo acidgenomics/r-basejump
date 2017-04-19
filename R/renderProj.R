@@ -15,7 +15,7 @@ renderProj <- function(
     outputDir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
-        stop("no Rproj file found")
+        warning("no Rproj file found")
     }
     if (identical(getwd(), Sys.getenv("HOME"))) {
         stop("careful, working from HOME")

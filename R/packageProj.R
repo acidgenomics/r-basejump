@@ -9,7 +9,7 @@ packageProj <- function() {
     BiocCheck(getwd())
     load_all()
     check()
-    test()
+    # test()
     build()
     install()
 }

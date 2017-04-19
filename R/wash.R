@@ -23,5 +23,5 @@ wash <- function(df) {
             # Character NAs
             gsub("^$|^\\s+$|^NA$", NA, .)
     }
-    mutate_each(df, funs(gsubs))
+    mutate_all(df, funs(gsubs))
 }
