@@ -12,7 +12,7 @@ kables(list, captions = NULL)
 \item{captions}{Caption character vector}
 }
 \value{
-Knit tables, using \code{kable}
+Knit tables, using \code{knitr::kable()}
 }
 \description{
 Handle multiple kables in a single RMarkdown chunk
