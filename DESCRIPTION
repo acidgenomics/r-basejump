@@ -20,6 +20,7 @@ Imports:
     knitr,
     magrittr,
     RCurl,
+    readr,
     rmarkdown,
     R.utils,
     stats,

@@ -19,6 +19,7 @@ NULL
 # tidyverse ====
 # http://tidyverse.org/
 #' @import dplyr
+#' @import readr
 #' @import magrittr
 #' @import stringr
 #' @import tibble
