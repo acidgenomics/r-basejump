@@ -30,10 +30,11 @@ globalVariables("biocLite")
 #' bioc("limma")
 #' }
 bioc <- function(...) {
-    internet <- try(source("http://bioconductor.org/biocLite.R"), silent = TRUE)
+    internet <- try(source("https://bioconductor.org/biocLite.R"),
+                    silent = TRUE)
     if (!class(internet) == "try-error") {
         biocLite(...)
     } else {
-        stop("No connection to http://bioconductor.org.")
+        stop("No connection to bioconductor.org")
     }
 }
