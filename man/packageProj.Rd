@@ -4,7 +4,12 @@
 \alias{packageProj}
 \title{Build package and website}
 \usage{
-packageProj()
+packageProj(install = FALSE, test = FALSE)
+}
+\arguments{
+\item{install}{Install package}
+
+\item{test}{Run tests with \code{testthat}}
 }
 \description{
 Build package and website
