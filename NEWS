@@ -1,3 +1,4 @@
+0.1.8   Add back saveData utility functions.
 0.1.7   Bug fixes for dplyr 0.6.0 update and improved kable handling.
 0.1.6   Dependency fix for successful compilation on Orchestra cluster.
 0.1.5   Consolidate functions in the documentation.
