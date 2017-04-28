@@ -15,7 +15,7 @@
 #' @examples
 #' setNamesCamel(head(iris))
 setNamesCamel <- function(data) {
-    setNames(data, makeNamesCamel(colnames(data)))
+    setNames(data, makeNamesCamel(names(data)))
 }
 
 
@@ -25,7 +25,7 @@ setNamesCamel <- function(data) {
 #' @examples
 #' setNamesDot(head(iris))
 setNamesDot <- function(data) {
-    setNames(data, makeNames(colnames(data)))
+    setNames(data, makeNames(names(data)))
 }
 
 
@@ -35,7 +35,7 @@ setNamesDot <- function(data) {
 #' @examples
 #' setNamesSnake(head(iris))
 setNamesSnake <- function(data) {
-    setNames(data, makeNamesSnake(colnames(data)))
+    setNames(data, makeNamesSnake(names(data)))
 }
 
 
