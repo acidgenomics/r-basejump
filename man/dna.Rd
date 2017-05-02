@@ -16,9 +16,9 @@ revcomp(dna)
 Modified DNA sequence
 }
 \description{
-Complement
+Complement DNA sequence
 
-Reverse complement
+Reverse complement DNA sequence
 }
 \examples{
 comp("ATGCATGC")
