@@ -9,7 +9,7 @@
 
 
 #' @rdname dna
-#' @description Complement
+#' @description Complement DNA sequence
 #' @export
 #' @examples
 #' comp("ATGCATGC")
@@ -30,7 +30,7 @@ comp <- function(dna) {
 
 
 #' @rdname dna
-#' @description Reverse complement
+#' @description Reverse complement DNA sequence
 #' @export
 #' @examples
 #' revcomp("ATGCATGC")
