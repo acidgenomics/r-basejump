@@ -3,6 +3,8 @@ dots <- function(...) {
     eval(substitute(alist(...)))
 }
 
+
+
 # https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 get_objs_from_dots <- function(.dots) {
     if (length(.dots) == 0L) {
@@ -20,5 +22,5 @@ get_objs_from_dots <- function(.dots) {
                 paste(names(duplicated_objs), collapse = ", "),
                 call. = FALSE)
     }
-    objs
+    return(objs)
 }
