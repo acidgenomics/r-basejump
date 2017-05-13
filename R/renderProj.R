@@ -1,9 +1,7 @@
-#' Render all RMarkdown files in working directory
+#' Render all RMarkdown files in working directory.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param outputDir Output directory
-#' @param recursive Find files recursively
+#' @param outputDir Output directory.
+#' @param recursive Find files recursively.
 #'
 #' @export
 #'
@@ -42,3 +40,10 @@ renderProj <- function(
                output_format = "all")
     }) %>% invisible
 }
+
+
+
+#' @rdname renderProj
+#' @usage NULL
+#' @export
+render_proj <- renderProj

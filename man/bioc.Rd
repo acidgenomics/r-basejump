@@ -2,16 +2,20 @@
 % Please edit documentation in R/bioc.R
 \name{bioc}
 \alias{bioc}
-\title{Install or update Bioconductor packages}
+\title{Install or update Bioconductor packages.}
 \usage{
-bioc(...)
+bioc(pkgs = NULL, ...)
 }
 \arguments{
-\item{...}{Passthrough to \code{biocLite()}}
+\item{pkgs}{Character vector of package names to install or update. Supports
+Bioconductor, CRAN, and GitHub repositories (e.g.
+\code{steinbaugh/basejump} format).}
+
+\item{...}{Passthrough parameters.}
 }
 \description{
-This is function simply a wrapper for \code{biocLite}. It first sources the
-code from the Bioconductor website then calls \code{biocLite}.
+This function is a wrapper for \code{\link[=biocLite]{biocLite()}}. It first sources the code from
+the Bioconductor website then calls \code{\link[=biocLite]{biocLite()}}.
 }
 \examples{
 \dontrun{
@@ -22,7 +26,7 @@ bioc()
 bioc("limma")
 }
 }
-\author{
-Michael Steinbaugh
+\seealso{
+This function is a modified version of \code{\link[rafalib:install_bioc]{rafalib::install_bioc()}}. It
+calls \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}} internally.
 }
-\keyword{internal}

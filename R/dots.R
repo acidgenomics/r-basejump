@@ -1,28 +1,24 @@
-# https://github.com/hadley/devtools/blob/master/R/utils.r
-dots <- function(...) {
-    eval(substitute(alist(...)))
-}
+#' Objects as dots utilities.
+#'
+#' Handle object names as dots instead of character vector.
+#'
+#' @param ... Object as ellipsis.
+#' @param .dots Objects as dots.
+#'
+#' @export
+#'
+#' @seealso \code{browseVignettes(package = "dplyr")}.
+dots <- dplyr:::dots
 
 
 
-# https://github.com/hadley/devtools/blob/master/R/infrastructure.R
-get_objs_from_dots <- function(.dots) {
-    if (length(.dots) == 0L) {
-        stop("Nothing to save", call. = FALSE)
-    }
+#' @rdname dots
+#' @usage NULL
+#' @export
+get_objs_from_dots <- devtools:::get_objs_from_dots
 
-    is_name <- vapply(.dots, is.symbol, logical(1))
-    if (any(!is_name)) {
-        stop("Can only save existing named objects", call. = FALSE)
-    }
 
-    objs <- vapply(.dots, as.character, character(1))
-    duplicated_objs <- which(setNames(duplicated(objs), objs))
-    if (length(duplicated_objs) > 0L) {
-        objs <- unique(objs)
-        warning("Saving duplicates only once: ",
-                paste(names(duplicated_objs), collapse = ", "),
-                call. = FALSE)
-    }
-    objs
-}
+
+#' @rdname dots
+#' @export
+getObjsFromDots <- get_objs_from_dots

@@ -1,15 +1,11 @@
-#' Grep against toString formatted data
+#' Grep against toString formatted data.
 #'
 #' Generates a grep pattern that will match an identifier in a comma separated
-#' string
+#' string.
 #'
-#' @author Michael Steinbaugh
+#' @param identifier Identifier.
 #'
-#' @keywords internal
-#'
-#' @param identifier Identifier
-#'
-#' @return Comma separated string for matching against \code{toString} output
+#' @return Comma separated string for matching against \code{toString} return.
 #' @export
 #'
 #' @examples
@@ -29,3 +25,10 @@ grepToString <- function(identifier) {
             # End of list:
             "\\s", ., "$")
 }
+
+
+
+#' @rdname grepToString
+#' @usage NULL
+#' @export
+grep_to_string <- grepToString

@@ -1,17 +1,15 @@
-#' Change case of a character vector
+#' Change case of a character vector.
 #'
 #' @rdname case
 #'
-#' @author Michael Steinbaugh
+#' @param character Character vector.
 #'
-#' @param character Character vector
-#'
-#' @return Reformatted character vector
+#' @return Reformatted character vector.
 
 
 
 #' @rdname case
-#' @description Title case
+#' @description Title case.
 #' @export
 #' @examples
 #' titleCase("RNA sequencing")
@@ -25,6 +23,14 @@ titleCase <- function(character) {
 
 
 #' @rdname case
+#' @usage NULL
+#' @export
+title_case <- titleCase
+
+
+
+#' @rdname case
+#' @description First case.
 #' @export
 #' @examples
 #' firstCase("RNA sequencing")
@@ -33,3 +39,10 @@ firstCase <- function(character) {
         titleCase %>%
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE)
 }
+
+
+
+#' @rdname case
+#' @usage NULL
+#' @export
+first_case <- firstCase

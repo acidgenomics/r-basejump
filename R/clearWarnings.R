@@ -1,9 +1,5 @@
 #' Clear warnings
 #'
-#' @author Michael Steinbaugh
-#'
-#' @keywords internal
-#'
 #' @export
 #'
 #' @examples
@@ -13,3 +9,10 @@
 clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
+
+
+
+#' @rdname clearWarnings
+#' @usage NULL
+#' @export
+clear_warnings <- clearWarnings

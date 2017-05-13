@@ -1,8 +1,6 @@
-#' Load a remote R binary file
+#' Load a remote R binary file.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param url URL
+#' @param url URL.
 #'
 #' @export
 #'
@@ -15,3 +13,10 @@ loadRemote <- function(url) {
     download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = globalenv())
 }
+
+
+
+#' @rdname loadRemote
+#' @usage NULL
+#' @export
+load_remote <- loadRemote

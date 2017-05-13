@@ -1,30 +1,25 @@
-#' Make syntactically valid names out of character vectors
+#' Make syntactically valid names out of character vectors.
 #'
-#' @rdname makeNames
+#' @param character Character vector.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param character Character vector
-#'
-#' @return Character vector formatted with valid names
-
-
-
-#' @rdname makeNames
+#' @return Character vector formatted with valid names.
 #' @export
+#'
 #' @examples
 #' makeNames("RNAi clone")
+#' makeNamesCamel("RNAi clone")
+#' makeNamesSnake("RNAi clone")
 makeNames <- function(character) {
     character %>%
         as.character %>%
         # Convert non-alphanumeric characters
-        gsub("[^[:alnum:]]", ".", .) %>%
+        str_replace_all("[^[:alnum:]]", ".") %>%
         # Combine multiple underscores
-        gsub("[\\.]+", ".", .) %>%
+        str_replace_all("[\\.]+", ".") %>%
         # Strip leading or trailing underscores
-        gsub("(^\\.|\\.$)", "", .) %>%
+        str_replace_all("(^\\.|\\.$)", "") %>%
         # Special names
-        gsub("(m|nc|r)RNA", "\\1rna", .) %>%
+        str_replace_all("(m|nc|r)RNA", "\\1rna") %>%
         # Convert acronyms to mixed case
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
         # Make first letter lowercase
@@ -40,9 +35,14 @@ makeNames <- function(character) {
 
 
 #' @rdname makeNames
+#' @usage NULL
 #' @export
-#' @examples
-#' makeNamesCamel("RNAi clone")
+make_names <- makeNames
+
+
+
+#' @rdname makeNames
+#' @export
 makeNamesCamel <- function(character) {
     character %>%
         makeNames %>%
@@ -52,23 +52,37 @@ makeNamesCamel <- function(character) {
 
 
 #' @rdname makeNames
+#' @usage NULL
 #' @export
-#' @examples
-#' makeNamesSnake("RNAi clone")
-makeNamesSnake <- function(character) {
-    character %>%
-        makeNames %>%
-        gsub("\\.", "_", .)
-}
+make_names_camel <- makeNamesCamel
 
 
 
 #' @rdname makeNames
+#' @usage NULL
 #' @export
 camel <- makeNamesCamel
 
 
 
 #' @rdname makeNames
+#' @export
+makeNamesSnake <- function(character) {
+    character %>%
+        makeNames %>%
+        str_replace_all("\\.", "_")
+}
+
+
+
+#' @rdname makeNames
+#' @usage NULL
+#' @export
+make_names_snake <- makeNamesSnake
+
+
+
+#' @rdname makeNames
+#' @usage NULL
 #' @export
 snake <- makeNamesSnake
