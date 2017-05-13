@@ -17,6 +17,7 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.4.0)
 Imports:
+    AnnotationDbi,
     BiocCheck (>= 1.12.0),
     BiocGenerics,
     BiocInstaller (>= 1.26.0),
