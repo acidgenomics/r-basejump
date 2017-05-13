@@ -3,6 +3,8 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{select}
+\alias{reexports}
 \alias{colSums}
 \alias{reexports}
 \alias{biocValid}
@@ -89,6 +91,8 @@
 \alias{reexports}
 \alias{na.omit}
 \alias{reexports}
+\alias{setNames}
+\alias{reexports}
 \alias{str_detect}
 \alias{reexports}
 \alias{str_extract}
@@ -131,6 +135,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
+
   \item{BiocGenerics}{\code{\link[BiocGenerics]{colSums}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
@@ -159,7 +165,7 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}}
+  \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}, \code{\link[stats]{setNames}}}
 
   \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_subset}}}
 

@@ -2,13 +2,12 @@
 #'
 #' @rdname setNames
 #'
-#' @param data Data type that supports name assignments.
+#' @param object Object for which a [names()] attribute will be meaningful.
 #'
-#' @usage NULL
-#'
-#' @return Unmodified data with reformatted names.
+#' @return Object with unmodified data and reformatted names.
 #' @export
-setNames <- set_names
+#'
+#' @seealso [stats::setNames()]
 
 
 
@@ -16,8 +15,8 @@ setNames <- set_names
 #' @export
 #' @examples
 #' setNamesCamel(head(starwars))
-setNamesCamel <- function(data) {
-    setNames(data, makeNamesCamel(names(data)))
+setNamesCamel <- function(object) {
+    setNames(object, makeNamesCamel(names(object)))
 }
 
 
@@ -33,8 +32,8 @@ set_names_camel <- setNamesCamel
 #' @export
 #' @examples
 #' setNamesDot(head(starwars))
-setNamesDot <- function(data) {
-    setNames(data, makeNames(names(data)))
+setNamesDot <- function(object) {
+    setNames(object, makeNames(names(object)))
 }
 
 
@@ -50,8 +49,8 @@ set_names_dot <- setNamesDot
 #' @export
 #' @examples
 #' setNamesSnake(head(starwars))
-setNamesSnake <- function(data) {
-    setNames(data, makeNamesSnake(names(data)))
+setNamesSnake <- function(object) {
+    setNames(object, makeNamesSnake(names(object)))
 }
 
 
@@ -67,24 +66,24 @@ set_names_snake <- setNamesSnake
 #' @export
 #' @examples
 #' sanitizeNames(head(starwars))
-sanitizeNames <- function(data) {
-    if (is.null(names(data))) {
-        stop("object doesn't contain names")
+sanitizeNames <- function(object) {
+    if (is.null(names(object))) {
+        stop("Object doesn't contain names")
     }
 
     # (Column) names
-    names(data) <- makeNamesSnake(names(data))
+    names(object) <- makeNamesSnake(names(object))
 
     # Rows, if they exist
-    if (!is.null(rownames(data))) {
+    if (!is.null(rownames(object))) {
         # Ignore numbered rownames
-        if (!identical(rownames(data), as.character(1:nrow(data)))) {
-            rownames(data) <- makeNamesSnake(rownames(data))
+        if (!identical(rownames(object), as.character(1:nrow(object)))) {
+            rownames(object) <- makeNamesSnake(rownames(object))
         }
 
     }
 
-    return(data)
+    return(object)
 }
 
 

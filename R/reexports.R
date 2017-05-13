@@ -1,4 +1,9 @@
 # Bioconductor ====
+#' @importFrom AnnotationDbi select
+#' @usage NULL
+#' @export
+AnnotationDbi::select
+
 #' @importFrom BiocGenerics colSums
 #' @usage NULL
 #' @usage NULL
@@ -64,11 +69,8 @@ devtools::test
 
 
 # dplyr ====
-#' tidyverse functions
-#'
-#' @importFrom dplyr arrange filter funs group_by left_join mutate mutate_all
-#'   select summarise_all top_n
-#'
+#' @importFrom dplyr funs group_by left_join mutate_all summarise_all top_n
+
 #' @rdname tidyverse
 #' @description Arrange rows by variables.
 #' @export
@@ -78,16 +80,6 @@ dplyr::arrange -> tidy_arrange
 #' @description Return rows with matching conditions.
 #' @export
 dplyr::filter -> tidy_filter
-
-#' @rdname tidyverse
-#' @description Add new variables.
-#' @export
-dplyr::mutate -> tidy_mutate
-
-#' @rdname tidyverse
-#' @description Select/rename variables by name.
-#' @export
-dplyr::select -> tidy_select
 
 #' @usage NULL
 #' @export
@@ -101,9 +93,19 @@ dplyr::group_by
 #' @export
 dplyr::left_join
 
+#' @rdname tidyverse
+#' @description Add new variables.
+#' @export
+dplyr::mutate -> tidy_mutate
+
 #' @usage NULL
 #' @export
 dplyr::mutate_all
+
+#' @rdname tidyverse
+#' @description Select/rename variables by name.
+#' @export
+dplyr::select -> tidy_select
 
 #' @usage NULL
 #' @export
@@ -253,7 +255,7 @@ rmarkdown::render
 
 
 # stats ====
-#' @importFrom stats aggregate median na.omit
+#' @importFrom stats aggregate median na.omit setNames
 
 #' @usage NULL
 #' @export
@@ -266,6 +268,10 @@ stats::median
 #' @usage NULL
 #' @export
 stats::na.omit
+
+#' @usage NULL
+#' @export
+stats::setNames
 
 
 
