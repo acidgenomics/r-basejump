@@ -1,11 +1,13 @@
-#' \code{basejump} package
+#' basejump package.
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' See the README on \href{https://github.com/steinbaugh/basejump}{GitHub}.
+#' Consult the \href{http://steinbaugh.com/basejump/}{package website} for more
+#' information.
 #'
 #' @docType package
 #' @name basejump
+#' @keywords internal
 NULL
 
 
