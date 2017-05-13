@@ -1,18 +1,17 @@
-# Modified version of `rafalib::install_bioc()`
-# https://github.com/rafalab/rafalib/blob/master/R/install_bioc.R
-
-#' Install or update Bioconductor packages
+#' Install or update Bioconductor packages.
 #'
-#' This is function simply a wrapper for \code{biocLite}. It first sources the
-#' code from the Bioconductor website then calls \code{biocLite}.
+#' This function is a wrapper for [biocLite()]. It first sources the code from
+#' the Bioconductor website then calls [biocLite()].
 #'
-#' @author Michael Steinbaugh
-#'
-#' @keywords internal
-#'
-#' @param ... Passthrough to \code{biocLite()}
+#' @param pkgs Character vector of package names to install or update. Supports
+#'   Bioconductor, CRAN, and GitHub repositories (e.g.
+#'   \code{steinbaugh/basejump} format).
+#' @param ... Passthrough parameters.
 #'
 #' @export
+#'
+#' @seealso This function is a modified version of [rafalib::install_bioc()]. It
+#'   calls [BiocInstaller::biocLite()] internally.
 #'
 #' @examples
 #' \dontrun{
@@ -22,11 +21,11 @@
 #' # Install `limma`
 #' bioc("limma")
 #' }
-bioc <- function(...) {
+bioc <- function(pkgs = NULL, ...) {
     internet <- try(source("https://bioconductor.org/biocLite.R"),
                     silent = TRUE)
     if (!class(internet) == "try-error") {
-        biocLite(...)
+        biocLite(pkgs, ...)
     } else {
         stop("No connection to bioconductor.org")
     }
