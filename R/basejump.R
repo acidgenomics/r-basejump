@@ -1,14 +1,24 @@
-#' basejump package.
+#' basejump
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' Consult the \href{http://steinbaugh.com/basejump/}{package website} for more
-#' information.
-#'
-#' @docType package
-#' @name basejump
-#' @keywords internal
-NULL
+#' @import dplyr
+#' @import magrittr
+#' @import readr
+#' @import stringr
+#' @import tibble
+#' @importFrom BiocCheck BiocCheck
+#' @importFrom BiocInstaller biocValid
+#' @importFrom devtools build build_vignettes check document install load_all
+#'   test
+#' @importFrom knitr asis_output kable opts_knit
+#' @importFrom R.utils gzip
+#' @importFrom RCurl getURL
+#' @importFrom rlang is_string
+#' @importFrom rmarkdown render
+#' @importFrom stats na.omit setNames
+#' @importFrom utils download.file globalVariables
+"_PACKAGE"
 
 
 
@@ -17,34 +27,23 @@ globalVariables(c(".", "biocLite"))
 
 
 
-# Imports ====
-# General ----
-#' @importFrom knitr asis_output kable opts_knit
-#' @importFrom RCurl getURL
-#' @importFrom rmarkdown render
-#' @importFrom R.utils gzip
-#' @importFrom stats na.omit setNames
-#' @importFrom utils download.file globalVariables
-NULL
-
-# Development ----
-#' @import devtools
-#' @importFrom BiocCheck BiocCheck
-#' @importFrom BiocInstaller biocValid
-NULL
-
-# tidyverse ----
-# http://tidyverse.org/
-#' @import dplyr
-#' @import readr
-#' @import magrittr
-#' @import stringr
-#' @import tibble
-NULL
-
-
-
 # Re-exports ====
 #' @usage NULL
 #' @export
 magrittr::`%>%`
+
+#' @usage NULL
+#' @export
+rlang::is_string
+
+#' @usage NULL
+#' @export
+magrittr::set_colnames
+
+#' @usage NULL
+#' @export
+magrittr::set_names
+
+#' @usage NULL
+#' @export
+magrittr::set_rownames

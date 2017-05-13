@@ -1,15 +1,13 @@
-#' DNA sequence utilites
+#' DNA sequence utilites.
 #'
-#' @author Michael Steinbaugh
+#' @param dna DNA sequence (ATGC nucleotides).
 #'
-#' @param dna DNA sequence (ATGC nucleotides)
-#'
-#' @return Modified DNA sequence
+#' @return Modified DNA sequence.
 
 
 
 #' @rdname dna
-#' @description Complement DNA sequence
+#' @description Complement DNA sequence.
 #' @export
 #' @examples
 #' comp("ATGCATGC")
@@ -30,7 +28,7 @@ comp <- function(dna) {
 
 
 #' @rdname dna
-#' @description Reverse complement DNA sequence
+#' @description Reverse complement DNA sequence.
 #' @export
 #' @examples
 #' revcomp("ATGCATGC")

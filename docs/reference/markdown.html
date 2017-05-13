@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wash a data frame. — wash • basejump</title>
+<title>Markdown utilities. — mdList • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,30 +73,38 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wash a data frame.</h1>
+    <h1>Markdown utilities.</h1>
     </div>
 
     
-    <p>This function cleans poorly formed separators, leading and trailing commas or
-spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
+    <p>Markdown list.</p>
     
 
-    <pre class="usage"><span class='fu'>wash</span>(<span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>mdList</span>(<span class='no'>character</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>Dirty data frame.</p></td>
+      <th>character</th>
+      <td><p>Character vector.</p></td>
+    </tr>
+    <tr>
+      <th>ordered</th>
+      <td><p>Ordered <code>TRUE</code> or unordered <code>FALSE</code> list in Markdown
+format.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Clean data frame.</p>
+    <p>Character vector.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>mdList</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>))</div><div class='output co'>#&gt; - milk
+#&gt; - eggs</div><div class='input'><span class='fu'>mdList</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>), <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 1. milk
+#&gt; 2. eggs</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -104,7 +112,9 @@ spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

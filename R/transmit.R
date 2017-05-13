@@ -1,18 +1,16 @@
-#' Transmit files from a remote server
+#' Transmit files from a remote server.
 #'
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param remoteDir Remote directory URL
-#' @param pattern Pattern to match against remote file names
-#' @param rename Rename the local file (including suffix), if desired
-#' @param compress Compress the file with \code{gzip} after download
+#' @param remoteDir Remote directory URL.
+#' @param pattern Pattern to match against remote file names.
+#' @param rename Rename the local file (including suffix), if desired.
+#' @param compress Compress the file with \code{gzip} after download.
 #'   (\code{TRUE/FALSE})
-#' @param localDir Directory where to save file locally
+#' @param localDir Directory where to save file locally.
 #'
-#' @return List of local files
+#' @return List of local files.
 #' @export
 transmit <- function(
     remoteDir,

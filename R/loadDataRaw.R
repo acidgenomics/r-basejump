@@ -1,10 +1,8 @@
-#' Load data-raw directory
+#' Load data-raw directory.
 #'
-#' Dynamically source or load raw data in the `data-raw` directory
+#' Dynamically source or load raw data in the \code{data-raw} directory.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param data Data object
+#' @param data Data object.
 #'
 #' @export
 #'
@@ -21,3 +19,10 @@ loadDataRaw <- function(data) {
         }
     }
 }
+
+
+
+#' @rdname loadDataRaw
+#' @usage NULL
+#' @export
+load_data_raw <- loadDataRaw

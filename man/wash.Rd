@@ -2,20 +2,17 @@
 % Please edit documentation in R/wash.R
 \name{wash}
 \alias{wash}
-\title{Wash}
+\title{Wash a data frame.}
 \usage{
 wash(df)
 }
 \arguments{
-\item{df}{Dirty data frame}
+\item{df}{Dirty data frame.}
 }
 \value{
-Washed data frame
+Clean data frame.
 }
 \description{
 This function cleans poorly formed separators, leading and trailing commas or
 spaces, empty cells, and sets \code{NA} values if necessary.
-}
-\author{
-Michael Steinbaugh
 }

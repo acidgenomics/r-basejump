@@ -2,24 +2,21 @@
 % Please edit documentation in R/grepToString.R
 \name{grepToString}
 \alias{grepToString}
-\title{Grep against toString formatted data}
+\alias{grep_to_string}
+\title{Grep against toString formatted data.}
 \usage{
 grepToString(identifier)
 }
 \arguments{
-\item{identifier}{Identifier}
+\item{identifier}{Identifier.}
 }
 \value{
-Comma separated string for matching against \code{toString} output
+Comma separated string for matching against \code{toString} return.
 }
 \description{
 Generates a grep pattern that will match an identifier in a comma separated
-string
+string.
 }
 \examples{
 grepToString("gene")
 }
-\author{
-Michael Steinbaugh
-}
-\keyword{internal}

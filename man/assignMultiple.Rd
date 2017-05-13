@@ -6,8 +6,6 @@
 \title{Assign multiple variables.}
 \usage{
 assignMultiple(..., envir = globalenv(), prefix = NULL)
-
-assign_multiple(..., envir = globalenv(), prefix = NULL)
 }
 \arguments{
 \item{...}{List of variables to assign.}
@@ -18,6 +16,4 @@ assign_multiple(..., envir = globalenv(), prefix = NULL)
 }
 \description{
 Optionally, you can specify a name prefix and the desired environment.
-
-snake_case alias
 }

@@ -1,13 +1,11 @@
-#' Quickly perform sort unique on a vector
+#' Quickly perform sort unique on a vector.
 #'
 #' The function also strips \code{NA} values. This is useful for gene list
 #' server queries, for example.
 #'
-#' @author Michael Steinbaugh
+#' @param vector Vector with duplicates, \code{NA} values.
 #'
-#' @param vector Vector with duplicates, \code{NA} values
-#'
-#' @return Unique vector
+#' @return Unique vector.
 #' @export
 #'
 #' @examples
@@ -18,3 +16,10 @@ sortUnique <- function(vector) {
         sort %>%
         unique
 }
+
+
+
+#' @rdname sortUnique
+#' @usage NULL
+#' @export
+sort_unique <- sortUnique

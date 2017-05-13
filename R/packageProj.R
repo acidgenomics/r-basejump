@@ -1,28 +1,26 @@
-#' Build package and website
+#' Build package and website.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param install Install package
-#' @param test Run tests with \code{testthat}
+#' @param install Install package.
+#' @param test Run tests with [testthat::testthat()].
 #'
 #' @export
 packageProj <- function(
     install = FALSE,
     test = FALSE) {
     # Ensure package is up to date
-    document()
-    build_vignettes()
-    load_all()
+    devtools::document()
+    devtools::build_vignettes()
+    devtools::load_all()
 
     # Run integrity checks
     BiocCheck(getwd())
-    check()
+    devtools::check()
     if (isTRUE(test)) {
         devtools::test()
     }
 
     # Save the build to disk
-    build()
+    devtools::build()
 
     # Install the package
     if (isTRUE(install)) {
@@ -32,3 +30,10 @@ packageProj <- function(
     # Ensure safe developer environment
     biocValid()
 }
+
+
+
+#' @rdname packageProj
+#' @usage NULL
+#' @export
+package_proj <- packageProj

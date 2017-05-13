@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wash a data frame. — wash • basejump</title>
+<title>Objects as dots utilities. — dots • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,28 +73,33 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wash a data frame.</h1>
+    <h1>Objects as dots utilities.</h1>
     </div>
 
     
-    <p>This function cleans poorly formed separators, leading and trailing commas or
-spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
+    <p>Handle object names as dots instead of character vector.</p>
     
 
-    <pre class="usage"><span class='fu'>wash</span>(<span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>dots</span>(<span class='no'>...</span>)
+
+<span class='fu'>getObjsFromDots</span>(<span class='no'>.dots</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>Dirty data frame.</p></td>
+      <th>...</th>
+      <td><p>Object as ellipsis.</p></td>
+    </tr>
+    <tr>
+      <th>.dots</th>
+      <td><p>Objects as dots.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Clean data frame.</p>
+    <p><code>browseVignettes(package = "dplyr")</code>.</p>
     
 
   </div>
@@ -103,7 +108,7 @@ spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

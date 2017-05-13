@@ -2,26 +2,24 @@
 % Please edit documentation in R/logRatioToFoldChange.R
 \name{logRatioToFoldChange}
 \alias{logRatioToFoldChange}
-\title{log ratio to fold change}
+\alias{log_ratio_to_fold_change}
+\title{log ratio to fold change.}
 \usage{
 logRatioToFoldChange(logRatio, base = 2)
 }
 \arguments{
-\item{logRatio}{Numeric vector of log ratio values}
+\item{logRatio}{Numeric vector of log ratio values.}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with
 RNA-Seq differential expression output.}
 }
 \value{
-Fold change values
+Fold change values.
 }
 \description{
-Convert log ratio normalized values to fold change.
-Based on the approach used in `gtools::logratio2foldchange()`.
+Convert log ratio normalized values to fold change. Based on the approach
+used in \code{\link[gtools:logratio2foldchange]{gtools::logratio2foldchange()}}.
 }
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))
-}
-\author{
-Michael Steinbaugh
 }
