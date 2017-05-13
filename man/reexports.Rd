@@ -3,37 +3,45 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{!!!}
+\alias{colSums}
 \alias{reexports}
-\alias{!!}
+\alias{biocValid}
 \alias{reexports}
-\alias{\%>\%}
+\alias{getBM}
 \alias{reexports}
-\alias{arrange}
+\alias{listMarts}
 \alias{reexports}
-\alias{filter}
+\alias{useEnsembl}
 \alias{reexports}
-\alias{glimpse}
+\alias{build}
+\alias{reexports}
+\alias{build_vignettes}
+\alias{reexports}
+\alias{check}
+\alias{reexports}
+\alias{document}
+\alias{reexports}
+\alias{install}
+\alias{reexports}
+\alias{load_all}
+\alias{reexports}
+\alias{test}
+\alias{reexports}
+\alias{funs}
 \alias{reexports}
 \alias{group_by}
 \alias{reexports}
-\alias{is_string}
-\alias{reexports}
 \alias{left_join}
 \alias{reexports}
-\alias{mutate}
+\alias{mutate_all}
 \alias{reexports}
-\alias{read_csv}
+\alias{summarise_all}
 \alias{reexports}
-\alias{read_delim}
+\alias{top_n}
 \alias{reexports}
-\alias{read_excel}
+\alias{hist}
 \alias{reexports}
-\alias{read_tsv}
-\alias{reexports}
-\alias{remove_rownames}
-\alias{reexports}
-\alias{select}
+\alias{\%>\%}
 \alias{reexports}
 \alias{set_colnames}
 \alias{reexports}
@@ -41,13 +49,81 @@
 \alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
+\alias{as}
+\alias{reexports}
+\alias{show}
+\alias{reexports}
+\alias{gunzip}
+\alias{reexports}
+\alias{gzip}
+\alias{reexports}
+\alias{getURL}
+\alias{reexports}
+\alias{read_csv}
+\alias{reexports}
+\alias{read_delim}
+\alias{reexports}
+\alias{read_lines}
+\alias{reexports}
+\alias{read_tsv}
+\alias{reexports}
+\alias{write_csv}
+\alias{reexports}
+\alias{read_excel}
+\alias{reexports}
+\alias{!!!}
+\alias{reexports}
+\alias{!!}
+\alias{reexports}
+\alias{is_string}
+\alias{reexports}
 \alias{sym}
 \alias{reexports}
 \alias{syms}
 \alias{reexports}
-\alias{top_n}
+\alias{render}
 \alias{reexports}
-\alias{write_csv}
+\alias{aggregate}
+\alias{reexports}
+\alias{median}
+\alias{reexports}
+\alias{na.omit}
+\alias{reexports}
+\alias{str_detect}
+\alias{reexports}
+\alias{str_extract}
+\alias{reexports}
+\alias{str_extract_all}
+\alias{reexports}
+\alias{str_match}
+\alias{reexports}
+\alias{str_match_all}
+\alias{reexports}
+\alias{str_replace}
+\alias{reexports}
+\alias{str_replace_all}
+\alias{reexports}
+\alias{str_subset}
+\alias{reexports}
+\alias{as_tibble}
+\alias{reexports}
+\alias{glimpse}
+\alias{reexports}
+\alias{remove_rownames}
+\alias{reexports}
+\alias{tibble}
+\alias{reexports}
+\alias{expand_}
+\alias{reexports}
+\alias{nest}
+\alias{reexports}
+\alias{separate_}
+\alias{reexports}
+\alias{unnest}
+\alias{reexports}
+\alias{download.file}
+\alias{reexports}
+\alias{globalVariables}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -55,16 +131,42 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{top_n}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{colSums}}}
+
+  \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
+
+  \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}}
+
+  \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
+
+  \item{dplyr}{\code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}}
+
+  \item{graphics}{\code{\link[graphics]{hist}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
-  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}}
+  \item{methods}{\code{\link[methods]{as}}, \code{\link[methods]{show}}}
+
+  \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
+
+  \item{RCurl}{\code{\link[RCurl]{getURL}}}
+
+  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}}
 
   \item{readxl}{\code{\link[readxl]{read_excel}}}
 
   \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}}
 
-  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{remove_rownames}}}
+  \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
+
+  \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}}
+
+  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_subset}}}
+
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{tibble}}}
+
+  \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}}
+
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}}
 }}
 
