@@ -2,36 +2,32 @@
 % Please edit documentation in R/makeNames.R
 \name{makeNames}
 \alias{makeNames}
+\alias{make_names}
 \alias{makeNamesCamel}
-\alias{makeNamesSnake}
+\alias{make_names_camel}
 \alias{camel}
+\alias{makeNamesSnake}
+\alias{make_names_snake}
 \alias{snake}
-\title{Make syntactically valid names out of character vectors}
+\title{Make syntactically valid names out of character vectors.}
 \usage{
 makeNames(character)
 
 makeNamesCamel(character)
 
 makeNamesSnake(character)
-
-camel(character)
-
-snake(character)
 }
 \arguments{
-\item{character}{Character vector}
+\item{character}{Character vector.}
 }
 \value{
-Character vector formatted with valid names
+Character vector formatted with valid names.
 }
 \description{
-Make syntactically valid names out of character vectors
+Make syntactically valid names out of character vectors.
 }
 \examples{
 makeNames("RNAi clone")
 makeNamesCamel("RNAi clone")
 makeNamesSnake("RNAi clone")
-}
-\author{
-Michael Steinbaugh
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Install or update Bioconductor packages — bioc • basejump</title>
+<title>Install or update Bioconductor packages. — bioc • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,24 +73,35 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Install or update Bioconductor packages</h1>
+    <h1>Install or update Bioconductor packages.</h1>
     </div>
 
     
-    <p>This is function simply a wrapper for <code>biocLite</code>. It first sources the
-code from the Bioconductor website then calls <code>biocLite</code>.</p>
+    <p>This function is a wrapper for <code>biocLite()</code>. It first sources the code from
+the Bioconductor website then calls <code>biocLite()</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>bioc</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>bioc</span>(<span class='kw'>pkgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>pkgs</th>
+      <td><p>Character vector of package names to install or update. Supports
+Bioconductor, CRAN, and GitHub repositories (e.g.
+<code>steinbaugh/basejump</code> format).</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Passthrough to <code>biocLite()</code></p></td>
+      <td><p>Passthrough parameters.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>This function is a modified version of <code><a href='http://www.rdocumentation.org/packages/rafalib/topics/install_bioc'>rafalib::install_bioc()</a></code>. It
+calls <code><a href='http://www.rdocumentation.org/packages/BiocInstaller/topics/biocLite'>BiocInstaller::biocLite()</a></code> internally.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -106,13 +117,11 @@ code from the Bioconductor website then calls <code>biocLite</code>.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh
 
   </div>
 </div>

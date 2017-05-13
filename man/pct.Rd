@@ -2,22 +2,19 @@
 % Please edit documentation in R/pct.R
 \name{pct}
 \alias{pct}
-\title{Convert numeric to percentage}
+\title{Convert numeric to percentage.}
 \usage{
 pct(number)
 }
 \arguments{
-\item{number}{Number}
+\item{number}{Number.}
 }
 \value{
-Percentage
+Percentage.
 }
 \description{
-Convert numeric to percentage
+Convert numeric to percentage.
 }
 \examples{
 pct(0.1)
-}
-\author{
-Michael Steinbaugh
 }

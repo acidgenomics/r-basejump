@@ -2,6 +2,7 @@
 % Please edit documentation in R/clearWarnings.R
 \name{clearWarnings}
 \alias{clearWarnings}
+\alias{clear_warnings}
 \title{Clear warnings}
 \usage{
 clearWarnings()
@@ -14,7 +15,3 @@ Clear warnings
 clearWarnings()
 }
 }
-\author{
-Michael Steinbaugh
-}
-\keyword{internal}

@@ -2,15 +2,16 @@
 % Please edit documentation in R/sortUnique.R
 \name{sortUnique}
 \alias{sortUnique}
-\title{Quickly perform sort unique on a vector}
+\alias{sort_unique}
+\title{Quickly perform sort unique on a vector.}
 \usage{
 sortUnique(vector)
 }
 \arguments{
-\item{vector}{Vector with duplicates, \code{NA} values}
+\item{vector}{Vector with duplicates, \code{NA} values.}
 }
 \value{
-Unique vector
+Unique vector.
 }
 \description{
 The function also strips \code{NA} values. This is useful for gene list
@@ -18,7 +19,4 @@ server queries, for example.
 }
 \examples{
 sortUnique(c("milk", "eggs", "eggs", NA))
-}
-\author{
-Michael Steinbaugh
 }

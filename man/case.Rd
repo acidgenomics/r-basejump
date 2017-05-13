@@ -2,26 +2,27 @@
 % Please edit documentation in R/case.R
 \name{titleCase}
 \alias{titleCase}
+\alias{title_case}
 \alias{firstCase}
-\title{Change case of a character vector}
+\alias{first_case}
+\title{Change case of a character vector.}
 \usage{
 titleCase(character)
 
 firstCase(character)
 }
 \arguments{
-\item{character}{Character vector}
+\item{character}{Character vector.}
 }
 \value{
-Reformatted character vector
+Reformatted character vector.
 }
 \description{
-Title case
+Title case.
+
+First case.
 }
 \examples{
 titleCase("RNA sequencing")
 firstCase("RNA sequencing")
-}
-\author{
-Michael Steinbaugh
 }

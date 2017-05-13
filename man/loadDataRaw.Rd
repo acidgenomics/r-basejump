@@ -2,22 +2,19 @@
 % Please edit documentation in R/loadDataRaw.R
 \name{loadDataRaw}
 \alias{loadDataRaw}
-\title{Load data-raw directory}
+\alias{load_data_raw}
+\title{Load data-raw directory.}
 \usage{
 loadDataRaw(data)
 }
 \arguments{
-\item{data}{Data object}
+\item{data}{Data object.}
 }
 \description{
-Dynamically source or load raw data in the `data-raw` directory
+Dynamically source or load raw data in the \code{data-raw} directory.
 }
 \examples{
 \dontrun{
 loadDataRaw("counts")
 }
 }
-\author{
-Michael Steinbaugh
-}
-\keyword{internal}

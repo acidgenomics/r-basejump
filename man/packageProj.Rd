@@ -2,13 +2,16 @@
 % Please edit documentation in R/packageProj.R
 \name{packageProj}
 \alias{packageProj}
-\title{Build package and website}
+\alias{package_proj}
+\title{Build package and website.}
 \usage{
-packageProj()
+packageProj(install = FALSE, test = FALSE)
+}
+\arguments{
+\item{install}{Install package.}
+
+\item{test}{Run tests with \code{\link[testthat:testthat]{testthat::testthat()}}.}
 }
 \description{
-Build package and website
-}
-\author{
-Michael Steinbaugh
+Build package and website.
 }

@@ -1,10 +1,8 @@
-#' Convert numeric to percentage
+#' Convert numeric to percentage.
 #'
-#' @author Michael Steinbaugh
+#' @param number Number.
 #'
-#' @param number Number
-#'
-#' @return Percentage
+#' @return Percentage.
 #' @export
 #'
 #' @examples

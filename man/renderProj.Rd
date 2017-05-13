@@ -2,23 +2,21 @@
 % Please edit documentation in R/renderProj.R
 \name{renderProj}
 \alias{renderProj}
-\title{Render all RMarkdown files in working directory}
+\alias{render_proj}
+\title{Render all RMarkdown files in working directory.}
 \usage{
 renderProj(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
 }
 \arguments{
-\item{outputDir}{Output directory}
+\item{outputDir}{Output directory.}
 
-\item{recursive}{Find files recursively}
+\item{recursive}{Find files recursively.}
 }
 \description{
-Render all RMarkdown files in working directory
+Render all RMarkdown files in working directory.
 }
 \examples{
 \dontrun{
 renderProj()
 }
-}
-\author{
-Michael Steinbaugh
 }
