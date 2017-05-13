@@ -23,6 +23,5 @@ assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
 
 
 #' @rdname assignMultiple
-#' @description snake_case alias
 #' @export
 assign_multiple <- assignMultiple
