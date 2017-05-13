@@ -18,20 +18,24 @@ BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.4.0)
 Imports:
     BiocCheck (>= 1.12.0),
+    BiocGenerics,
     BiocInstaller (>= 1.26.0),
+    biomaRt (>= 2.30.0),
     devtools (>= 1.12.0),
     dplyr (>= 0.5.0.9000),
     knitr (>= 1.15.0),
     magrittr (>= 1.5),
+    methods,
     RCurl,
     readr (>= 1.1.0),
-    readxl,
+    readxl (>= 1.0.0),
     rmarkdown (>= 1.5),
-    rlang,
+    rlang (>= 0.0.0.9000),
     R.utils,
     stats,
     stringr (>= 1.2.0),
     tibble (>= 1.3.0),
+    tidyr (>= 0.6.1),
     utils
 Remotes:
     hadley/rlang,

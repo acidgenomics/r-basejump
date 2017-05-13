@@ -3,6 +3,8 @@
 #' This function is a wrapper for [biocLite()]. It first sources the code from
 #' the Bioconductor website then calls [biocLite()].
 #'
+#' @importFrom BiocCheck BiocCheck
+#'
 #' @param pkgs Character vector of package names to install or update. Supports
 #'   Bioconductor, CRAN, and GitHub repositories (e.g.
 #'   \code{steinbaugh/basejump} format).
