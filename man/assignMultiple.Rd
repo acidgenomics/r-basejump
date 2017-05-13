@@ -2,20 +2,22 @@
 % Please edit documentation in R/assignMultiple.R
 \name{assignMultiple}
 \alias{assignMultiple}
-\title{Assign multiple variables}
+\alias{assign_multiple}
+\title{Assign multiple variables.}
 \usage{
 assignMultiple(..., envir = globalenv(), prefix = NULL)
+
+assign_multiple(..., envir = globalenv(), prefix = NULL)
 }
 \arguments{
-\item{...}{List of variables to assign}
+\item{...}{List of variables to assign.}
 
-\item{envir}{Desired environment (optional)}
+\item{envir}{Desired environment (optional).}
 
-\item{prefix}{Name prefix (optional)}
+\item{prefix}{Name prefix (optional).}
 }
 \description{
-Optionally, you can specify a name prefix and the desired environment
-}
-\author{
-Michael Steinbaugh
+Optionally, you can specify a name prefix and the desired environment.
+
+snake_case alias
 }

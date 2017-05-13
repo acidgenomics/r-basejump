@@ -1,12 +1,10 @@
-#' Assign multiple variables
+#' Assign multiple variables.
 #'
-#' Optionally, you can specify a name prefix and the desired environment
+#' Optionally, you can specify a name prefix and the desired environment.
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param ... List of variables to assign
-#' @param envir Desired environment (optional)
-#' @param prefix Name prefix (optional)
+#' @param ... List of variables to assign.
+#' @param envir Desired environment (optional).
+#' @param prefix Name prefix (optional).
 #'
 #' @export
 assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
@@ -21,3 +19,10 @@ assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
         assign(name, data[[x]], envir = get(envir))
     }))
 }
+
+
+
+#' @rdname assignMultiple
+#' @description snake_case alias
+#' @export
+assign_multiple <- assignMultiple

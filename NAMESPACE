@@ -2,6 +2,7 @@
 
 export("%>%")
 export(assignMultiple)
+export(assign_multiple)
 export(bioc)
 export(camel)
 export(clearWarnings)
