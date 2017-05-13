@@ -3,27 +3,24 @@
 \name{comp}
 \alias{comp}
 \alias{revcomp}
-\title{DNA sequence utilites}
+\title{DNA sequence utilites.}
 \usage{
 comp(dna)
 
 revcomp(dna)
 }
 \arguments{
-\item{dna}{DNA sequence (ATGC nucleotides)}
+\item{dna}{DNA sequence (ATGC nucleotides).}
 }
 \value{
-Modified DNA sequence
+Modified DNA sequence.
 }
 \description{
-Complement DNA sequence
+Complement DNA sequence.
 
-Reverse complement DNA sequence
+Reverse complement DNA sequence.
 }
 \examples{
 comp("ATGCATGC")
 revcomp("ATGCATGC")
-}
-\author{
-Michael Steinbaugh
 }

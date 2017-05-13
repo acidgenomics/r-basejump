@@ -1,12 +1,10 @@
-#' Save data objects
+#' Save data objects.
 #'
-#' @param ... Data objects
-#' @param dir Output directory
-
-
-
-#' @rdname saveData
-#' @description Quick save to \code{data} directory
+#' Quick save to \code{data} directory.
+#'
+#' @param ... Data objects.
+#' @param dir Output directory.
+#'
 #' @export
 saveData <- function(..., dir = "data") {
     if (!isString(dir)) {
@@ -26,8 +24,22 @@ saveData <- function(..., dir = "data") {
 
 
 #' @rdname saveData
-#' @description Quick save to \code{data-raw} directory
+#' @usage NULL
+#' @export
+save_data <- saveData
+
+
+
+#' @rdname saveData
+#' @description Quick save to \code{data-raw} directory.
 #' @export
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
+
+
+
+#' @rdname saveData
+#' @usage NULL
+#' @export
+save_data_raw <- saveDataRaw

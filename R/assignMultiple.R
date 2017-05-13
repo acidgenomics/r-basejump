@@ -23,5 +23,6 @@ assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
 
 
 #' @rdname assignMultiple
+#' @usage NULL
 #' @export
 assign_multiple <- assignMultiple

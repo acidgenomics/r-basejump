@@ -2,24 +2,24 @@
 % Please edit documentation in R/kables.R
 \name{kables}
 \alias{kables}
-\title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
+\title{Create tables in LaTeX, HTML, Markdown and reStructuredText.}
 \usage{
 kables(list, captions = NULL)
 }
 \arguments{
-\item{list}{List of tables (e.g. data frame, matrix)}
+\item{list}{List of tables (e.g. data frame, matrix).}
 
-\item{captions}{Caption character vector}
+\item{captions}{Caption character vector.}
 }
 \value{
-Knit tables, using \code{knitr::kable()}
+Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
 }
 \description{
-Handle multiple kables in a single RMarkdown chunk
+Handle multiple kables in a single RMarkdown chunk.
 }
 \examples{
-kables(list(iris, mtcars))
-}
-\author{
-Michael Steinbaugh
+list(
+    starwars,
+    head(mtcars)
+) \%>\% kables
 }

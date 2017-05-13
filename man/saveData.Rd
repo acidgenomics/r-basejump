@@ -2,20 +2,22 @@
 % Please edit documentation in R/saveData.R
 \name{saveData}
 \alias{saveData}
+\alias{save_data}
 \alias{saveDataRaw}
-\title{Save data objects}
+\alias{save_data_raw}
+\title{Save data objects.}
 \usage{
 saveData(..., dir = "data")
 
 saveDataRaw(...)
 }
 \arguments{
-\item{...}{Data objects}
+\item{...}{Data objects.}
 
-\item{dir}{Output directory}
+\item{dir}{Output directory.}
 }
 \description{
-Quick save to \code{data} directory
+Quick save to \code{data} directory.
 
-Quick save to \code{data-raw} directory
+Quick save to \code{data-raw} directory.
 }

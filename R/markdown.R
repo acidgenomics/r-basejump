@@ -1,17 +1,23 @@
-#' Markdown list
+#' Markdown utilities.
 #'
-#' @author Michael Steinbaugh
+#' @rdname markdown
 #'
-#' @param character Character vector
-#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown
-#'   format
-#'
-#' @return Character vector
-#' @export
+#' @param character Character vector.
 #'
 #' @examples
 #' mdList(c("milk", "eggs"))
 #' mdList(c("milk", "eggs"), ordered = TRUE)
+
+
+
+#' @rdname markdown
+#' @description Markdown list.
+#'
+#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown
+#'   format.
+#'
+#' @return Character vector.
+#' @export
 mdList <- function(character, ordered = FALSE) {
     if (!is.character(character)) {
         stop("A character vector is required.")
@@ -26,3 +32,10 @@ mdList <- function(character, ordered = FALSE) {
     })
     return(writeLines(string))
 }
+
+
+
+#' @rdname markdown
+#' @usage NULL
+#' @export
+md_list <- mdList

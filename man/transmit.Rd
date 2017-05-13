@@ -2,30 +2,27 @@
 % Please edit documentation in R/transmit.R
 \name{transmit}
 \alias{transmit}
-\title{Transmit files from a remote server}
+\title{Transmit files from a remote server.}
 \usage{
 transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
   localDir = "data-raw")
 }
 \arguments{
-\item{remoteDir}{Remote directory URL}
+\item{remoteDir}{Remote directory URL.}
 
-\item{pattern}{Pattern to match against remote file names}
+\item{pattern}{Pattern to match against remote file names.}
 
-\item{rename}{Rename the local file (including suffix), if desired}
+\item{rename}{Rename the local file (including suffix), if desired.}
 
-\item{compress}{Compress the file with \code{gzip} after download
+\item{compress}{Compress the file with \code{gzip} after download.
 (\code{TRUE/FALSE})}
 
-\item{localDir}{Directory where to save file locally}
+\item{localDir}{Directory where to save file locally.}
 }
 \value{
-List of local files
+List of local files.
 }
 \description{
 Utility function that supports file matching on a remote server. Also enables
 users to rename and compress on the fly.
-}
-\author{
-Michael Steinbaugh
 }

@@ -1,10 +1,8 @@
-#' Fix empty and NA character strings
+#' Fix empty and NA character strings.
 #'
-#' @author Michael Steinbaugh
+#' @param string String missing \code{NA}.
 #'
-#' @param string String missing \code{NA}
-#'
-#' @return String containing \code{NA}
+#' @return String containing \code{NA}.
 #' @export
 #'
 #' @examples
@@ -12,3 +10,10 @@
 fixNA <- function(string) {
     gsub("^$|^NA$", NA, string)
 }
+
+
+
+#' @rdname fixNA
+#' @usage NULL
+#' @export
+fix_na <- fixNA

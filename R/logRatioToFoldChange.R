@@ -1,15 +1,13 @@
-#' log ratio to fold change
+#' log ratio to fold change.
 #'
-#' Convert log ratio normalized values to fold change.
-#' Based on the approach used in `gtools::logratio2foldchange()`.
+#' Convert log ratio normalized values to fold change. Based on the approach
+#' used in [gtools::logratio2foldchange()].
 #'
-#' @author Michael Steinbaugh
-#'
-#' @param logRatio Numeric vector of log ratio values
+#' @param logRatio Numeric vector of log ratio values.
 #' @param base Logarithm base. Defaults to \code{2}, for compatibility with
 #'   RNA-Seq differential expression output.
 #'
-#' @return Fold change values
+#' @return Fold change values.
 #' @export
 #'
 #' @examples
@@ -19,6 +17,13 @@ logRatioToFoldChange <- function(logRatio, base = 2) {
     x <- ifelse(x < 1, -1/x, x)
     return(x)
 }
+
+
+
+#' @rdname logRatioToFoldChange
+#' @usage NULL
+#' @export
+log_ratio_to_fold_change <- logRatioToFoldChange
 
 
 
