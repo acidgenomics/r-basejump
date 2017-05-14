@@ -79,8 +79,8 @@ devtools::test
 
 
 # dplyr ====
-#' @importFrom dplyr case_when funs group_by left_join mutate_all summarise_all
-#'   top_n ungroup
+#' @importFrom dplyr case_when everything funs group_by left_join mutate_all
+#'   summarise_all top_n ungroup
 #' @rdname tidyverse
 #' @description Arrange rows by variables.
 #' @export
