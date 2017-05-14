@@ -7,6 +7,7 @@
 #'
 #' @rdname tidyverse
 #'
+#' @param envir Environment to assign the tidy verbs.
 #' @param .data Tibble. All main verbs are S3 generics.
 #' @param ... Comma separated list of unquoted variable names.
 #'
@@ -18,8 +19,7 @@
 #' - [dplyr::filter()]
 #' - [dplyr::mutate()]
 #' - [dplyr::select()]
-tidy_verbs <- function() {
-    envir <- parent.frame()
+tidy_verbs <- function(envir = parent.frame()) {
     assign("arrange", tbl_arrange, envir = envir)
     assign("filter", tbl_filter, envir = envir)
     assign("mutate", tbl_mutate, envir = envir)

@@ -8,7 +8,7 @@
 \alias{tbl_select}
 \title{Prefixed \href{http://tidyverse.org/}{tidyverse} grammar alternates.}
 \usage{
-tidy_verbs()
+tidy_verbs(envir = parent.frame())
 
 tbl_arrange(.data, ...)
 
@@ -19,6 +19,8 @@ tbl_mutate(.data, ...)
 tbl_select(.data, ...)
 }
 \arguments{
+\item{envir}{Environment to assign the tidy verbs.}
+
 \item{.data}{Tibble. All main verbs are S3 generics.}
 
 \item{...}{Comma separated list of unquoted variable names.}
