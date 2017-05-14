@@ -11,7 +11,7 @@ wash <- function(df) {
     if (!is.data.frame(df)) {
         stop("Object must be a data frame")
     }
-    gsubs <- function(a) {
+    replace <- function(a) {
         a %>%
             # Duplicate separators
             str_replace_all("(,|;|/)\\s(,|;|/)", "\\1") %>%
@@ -22,7 +22,7 @@ wash <- function(df) {
             # NAs in string
             str_replace_all("NA,\\s|,\\sNA", "") %>%
             # Character NAs
-            str_replace_all("^$|^\\s+$|^NA$", NA)
+            gsub("^$|^\\s+$|^NA$", NA, .)
     }
-    mutate_all(df, funs(gsubs))
+    mutate_all(df, funs(replace))
 }

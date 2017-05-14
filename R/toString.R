@@ -28,7 +28,7 @@ toStringUnique <- function(x) {
     x %>%
         unique %>%
         toString %>%
-        gsub("NA,\\s|,\\sNA", "", .)
+        str_replace_all("NA,\\s|,\\sNA", "")
 }
 
 
@@ -48,7 +48,7 @@ toStringSortUnique <- function(x) {
         unique %>%
         sort %>%
         toString %>%
-        gsub("NA,\\s|,\\sNA", "", .)
+        str_replace_all("NA,\\s|,\\sNA", "")
 }
 
 
