@@ -84,7 +84,7 @@ devtools::test
 #' @rdname tidyverse
 #' @description Arrange rows by variables.
 #' @export
-dplyr::arrange -> tidy_arrange
+dplyr::arrange -> tbl_arrange
 
 #' @usage NULL
 #' @export
@@ -97,7 +97,7 @@ dplyr::everything
 #' @rdname tidyverse
 #' @description Return rows with matching conditions.
 #' @export
-dplyr::filter -> tidy_filter
+dplyr::filter -> tbl_filter
 
 #' @usage NULL
 #' @export
@@ -114,7 +114,7 @@ dplyr::left_join
 #' @rdname tidyverse
 #' @description Add new variables.
 #' @export
-dplyr::mutate -> tidy_mutate
+dplyr::mutate -> tbl_mutate
 
 #' @usage NULL
 #' @export
@@ -123,7 +123,7 @@ dplyr::mutate_all
 #' @rdname tidyverse
 #' @description Select/rename variables by name.
 #' @export
-dplyr::select -> tidy_select
+dplyr::select -> tbl_select
 
 #' @usage NULL
 #' @export
