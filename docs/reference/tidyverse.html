@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Example datasets. — starwars • basejump</title>
+<title>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates. — tidy_arrange • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,26 +73,63 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Example datasets.</h1>
+    <h1>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates.</h1>
     </div>
 
     
-    <p>Star Wars.</p>
+    <p>Arrange rows by variables.</p>
+<p>Return rows with matching conditions.</p>
+<p>Add new variables.</p>
+<p>Select/rename variables by name.</p>
+<p>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates.</p>
     
 
-    <pre class="usage"><span class='no'>starwars</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>tidy_arrange</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
 
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 87 rows and 13 columns.</p>
+<span class='fu'>tidy_filter</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy_mutate</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>.data</th>
+      <td><p>Tibble. All main verbs are S3 generics.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Comma separated list of unquoted variable names.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Avoid NAMESPACE collisions with
+<a href = 'https://www.bioconductor.org'>Bioconductor</a> BiocGenerics.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <ul>
+<li><p><a href = 'http://style.tidyverse.org/'>tidyverse style guide</a></p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/dplyr/topics/arrange'>dplyr::arrange()</a></code></p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>dplyr::filter()</a></code></p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>dplyr::mutate()</a></code></p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>dplyr::select()</a></code></p></li>
+</ul>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
