@@ -1,15 +1,16 @@
 #' Prefixed [tidyverse](http://tidyverse.org/) grammar alternates.
 #'
-#' @details Avoid NAMESPACE collisions with
-#'   [Bioconductor](https://www.bioconductor.org) and other S4 generics.
+#' Assign generic tidyverse verbs to the working environment.
+#'
+#' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org)
+#' and other S4 generics.
 #'
 #' @rdname tidyverse
-#' @name tidyverse
 #'
 #' @param .data Tibble. All main verbs are S3 generics.
 #' @param ... Comma separated list of unquoted variable names.
 #'
-#' @usage NULL
+#' @export
 #'
 #' @seealso
 #' - [tidyverse style guide](http://style.tidyverse.org/)
@@ -17,7 +18,14 @@
 #' - [dplyr::filter()]
 #' - [dplyr::mutate()]
 #' - [dplyr::select()]
-NULL
+tidy_verbs <- function() {
+    envir <- parent.frame()
+    assign("arrange", tbl_arrange, envir = envir)
+    assign("filter", tbl_filter, envir = envir)
+    assign("mutate", tbl_mutate, envir = envir)
+    assign("select", tbl_select, envir = envir)
+}
+
 
 
 
@@ -46,16 +54,3 @@ dplyr::mutate -> tbl_mutate
 #' @description Select/rename variables by name.
 #' @export
 dplyr::select -> tbl_select
-
-
-
-#' @rdname tidyverse
-#' @description Assign generic tidyverse verbs to the working environment.
-#' @export
-tidy_verbs <- function() {
-    envir <- parent.frame()
-    assign("arrange", tbl_arrange, envir = envir)
-    assign("filter", tbl_filter, envir = envir)
-    assign("mutate", tbl_mutate, envir = envir)
-    assign("select", tbl_select, envir = envir)
-}
