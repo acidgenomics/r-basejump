@@ -5,7 +5,13 @@
 \alias{reexports}
 \alias{select}
 \alias{reexports}
+\alias{colMeans}
+\alias{reexports}
 \alias{colSums}
+\alias{reexports}
+\alias{rowMeans}
+\alias{reexports}
+\alias{rowSums}
 \alias{reexports}
 \alias{biocValid}
 \alias{reexports}
@@ -137,7 +143,7 @@ below to see their documentation.
 \describe{
   \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
 
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{colSums}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{colMeans}}, \code{\link[BiocGenerics]{colSums}}, \code{\link[BiocGenerics]{rowMeans}}, \code{\link[BiocGenerics]{rowSums}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 

@@ -1,16 +1,28 @@
 # Bioconductor ====
 #' @importFrom AnnotationDbi select
+#' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
+#' @importFrom BiocInstaller biocValid
+
 #' @usage NULL
 #' @export
 AnnotationDbi::select
 
-#' @importFrom BiocGenerics colSums
 #' @usage NULL
+#' @export
+BiocGenerics::colMeans
+
 #' @usage NULL
 #' @export
 BiocGenerics::colSums
 
-#' @importFrom BiocInstaller biocValid
+#' @usage NULL
+#' @export
+BiocGenerics::rowMeans
+
+#' @usage NULL
+#' @export
+BiocGenerics::rowSums
+
 #' @usage NULL
 #' @export
 BiocInstaller::biocValid
