@@ -1,3 +1,4 @@
+0.0.10  NAMESPACE utilities to deal with tidyverse generic verbs.
 0.0.9   Add snake_case function variants.
 0.0.8   Add back saveData utility functions.
 0.0.7   Bug fixes for dplyr 0.6.0 update and improved kable handling.
