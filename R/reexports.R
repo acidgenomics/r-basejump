@@ -1,12 +1,10 @@
 # Bioconductor ====
 #' @importFrom AnnotationDbi select
-#' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
-#' @importFrom BiocInstaller biocValid
-
 #' @usage NULL
 #' @export
 AnnotationDbi::select
 
+#' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
 #' @usage NULL
 #' @export
 BiocGenerics::colMeans
@@ -19,6 +17,7 @@ BiocGenerics::colSums
 #' @export
 BiocGenerics::rowMeans
 
+#' @importFrom BiocInstaller biocValid
 #' @usage NULL
 #' @export
 BiocGenerics::rowSums
@@ -31,7 +30,6 @@ BiocInstaller::biocValid
 
 # biomaRt ====
 #' @importFrom biomaRt getBM listMarts useEnsembl
-
 #' @usage NULL
 #' @export
 biomaRt::getBM
@@ -49,7 +47,6 @@ biomaRt::useEnsembl
 # devtools ====
 #' @importFrom devtools build build_vignettes check document install load_all
 #'   test
-
 #' @usage NULL
 #' @export
 devtools::build
@@ -82,7 +79,6 @@ devtools::test
 
 # dplyr ====
 #' @importFrom dplyr funs group_by left_join mutate_all summarise_all top_n
-
 #' @rdname tidyverse
 #' @description Arrange rows by variables.
 #' @export
@@ -138,13 +134,26 @@ graphics::hist
 
 
 # knitr ====
-#' @importFrom knitr asis_output kable opts_knit
+#' @importFrom knitr asis_output kable opts_chunk opts_knit
+#' @usage NULL
+#' @export
+knitr::asis_output
 
+#' @usage NULL
+#' @export
+knitr::kable
+
+#' @usage NULL
+#' @export
+knitr::opts_chunk
+
+#' @usage NULL
+#' @export
+knitr::opts_knit
 
 
 # magrittr ====
 #' @importFrom magrittr %>% set_colnames set_names set_rownames
-
 #' @usage NULL
 #' @export
 magrittr::`%>%`
@@ -165,7 +174,6 @@ magrittr::set_rownames
 
 # methods ====
 #' @importFrom methods as show
-
 #' @usage NULL
 #' @export
 methods::as
@@ -178,7 +186,6 @@ methods::show
 
 # R.utils ====
 #' @importFrom R.utils gzip gunzip
-
 #' @usage NULL
 #' @export
 R.utils::gunzip
@@ -191,7 +198,6 @@ R.utils::gzip
 
 # RCurl ====
 #' @importFrom RCurl getURL
-
 #' @usage NULL
 #' @export
 RCurl::getURL
@@ -200,7 +206,6 @@ RCurl::getURL
 
 # readr ====
 #' @importFrom readr read_csv read_delim read_lines read_tsv write_csv
-
 #' @usage NULL
 #' @export
 readr::read_csv
@@ -225,7 +230,6 @@ readr::write_csv
 
 # readxl ====
 #' @importFrom readxl read_excel
-
 #' @usage NULL
 #' @export
 readxl::read_excel
@@ -234,7 +238,6 @@ readxl::read_excel
 
 # rlang ====
 #' @importFrom rlang !!! !! is_string sym syms
-
 #' @usage NULL
 #' @export
 rlang::`!!!`
@@ -259,7 +262,6 @@ rlang::syms
 
 # rmarkdown ====
 #' @importFrom rmarkdown render
-
 #' @usage NULL
 #' @export
 rmarkdown::render
@@ -268,7 +270,6 @@ rmarkdown::render
 
 # stats ====
 #' @importFrom stats aggregate median na.omit setNames
-
 #' @usage NULL
 #' @export
 stats::aggregate
@@ -289,7 +290,6 @@ stats::setNames
 
 # stringr ====
 #' @import stringr
-
 #' @usage NULL
 #' @export
 stringr::str_detect
@@ -326,7 +326,6 @@ stringr::str_subset
 
 # tibble ====
 #' @importFrom tibble as_tibble glimpse remove_rownames tibble
-
 #' @usage NULL
 #' @export
 tibble::as_tibble
@@ -347,7 +346,6 @@ tibble::tibble
 
 # tidyr ====
 #' @importFrom tidyr expand_ nest separate_ unnest
-
 #' @usage NULL
 #' @export
 tidyr::expand_
@@ -368,7 +366,6 @@ tidyr::unnest
 
 # utils ====
 #' @importFrom utils download.file globalVariables
-
 #' @usage NULL
 #' @export
 utils::download.file
