@@ -79,11 +79,20 @@ devtools::test
 
 
 # dplyr ====
-#' @importFrom dplyr funs group_by left_join mutate_all summarise_all top_n
+#' @importFrom dplyr case_when funs group_by left_join mutate_all summarise_all
+#'   top_n ungroup
 #' @rdname tidyverse
 #' @description Arrange rows by variables.
 #' @export
 dplyr::arrange -> tidy_arrange
+
+#' @usage NULL
+#' @export
+dplyr::case_when
+
+#' @usage NULL
+#' @export
+dplyr::everything
 
 #' @rdname tidyverse
 #' @description Return rows with matching conditions.
@@ -123,6 +132,10 @@ dplyr::summarise_all
 #' @usage NULL
 #' @export
 dplyr::top_n
+
+#' @usage NULL
+#' @export
+dplyr::ungroup
 
 
 
@@ -222,11 +235,23 @@ readr::read_lines
 
 #' @usage NULL
 #' @export
+readr::read_table
+
+#' @usage NULL
+#' @export
 readr::read_tsv
 
 #' @usage NULL
 #' @export
 readr::write_csv
+
+#' @usage NULL
+#' @export
+readr::write_lines
+
+#' @usage NULL
+#' @export
+readr::write_tsv
 
 
 
@@ -239,7 +264,7 @@ readxl::read_excel
 
 
 # rlang ====
-#' @importFrom rlang !!! !! is_string sym syms
+#' @importFrom rlang !!! !! .data is_string quo quos sym syms
 #' @usage NULL
 #' @export
 rlang::`!!!`
@@ -250,7 +275,19 @@ rlang::`!!`
 
 #' @usage NULL
 #' @export
+rlang::.data
+
+#' @usage NULL
+#' @export
 rlang::is_string
+
+#' @usage NULL
+#' @export
+rlang::quo
+
+#' @usage NULL
+#' @export
+rlang::quos
 
 #' @usage NULL
 #' @export
@@ -314,6 +351,10 @@ stringr::str_match_all
 
 #' @usage NULL
 #' @export
+stringr::str_pad
+
+#' @usage NULL
+#' @export
 stringr::str_replace
 
 #' @usage NULL
@@ -371,7 +412,7 @@ tidyr::unnest
 
 
 # utils ====
-#' @importFrom utils download.file globalVariables
+#' @importFrom utils download.file globalVariables sessionInfo
 #' @usage NULL
 #' @export
 utils::download.file
@@ -379,3 +420,7 @@ utils::download.file
 #' @usage NULL
 #' @export
 utils::globalVariables
+
+#' @usage NULL
+#' @export
+utils::sessionInfo

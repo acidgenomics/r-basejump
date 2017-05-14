@@ -35,6 +35,10 @@
 \alias{reexports}
 \alias{test}
 \alias{reexports}
+\alias{case_when}
+\alias{reexports}
+\alias{everything}
+\alias{reexports}
 \alias{funs}
 \alias{reexports}
 \alias{group_by}
@@ -46,6 +50,8 @@
 \alias{summarise_all}
 \alias{reexports}
 \alias{top_n}
+\alias{reexports}
+\alias{ungroup}
 \alias{reexports}
 \alias{hist}
 \alias{reexports}
@@ -81,9 +87,15 @@
 \alias{reexports}
 \alias{read_lines}
 \alias{reexports}
+\alias{read_table}
+\alias{reexports}
 \alias{read_tsv}
 \alias{reexports}
 \alias{write_csv}
+\alias{reexports}
+\alias{write_lines}
+\alias{reexports}
+\alias{write_tsv}
 \alias{reexports}
 \alias{read_excel}
 \alias{reexports}
@@ -91,7 +103,13 @@
 \alias{reexports}
 \alias{!!}
 \alias{reexports}
+\alias{.data}
+\alias{reexports}
 \alias{is_string}
+\alias{reexports}
+\alias{quo}
+\alias{reexports}
+\alias{quos}
 \alias{reexports}
 \alias{sym}
 \alias{reexports}
@@ -116,6 +134,8 @@
 \alias{str_match}
 \alias{reexports}
 \alias{str_match_all}
+\alias{reexports}
+\alias{str_pad}
 \alias{reexports}
 \alias{str_replace}
 \alias{reexports}
@@ -144,6 +164,8 @@
 \alias{download.file}
 \alias{reexports}
 \alias{globalVariables}
+\alias{reexports}
+\alias{sessionInfo}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -161,7 +183,7 @@ below to see their documentation.
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}}
+  \item{dplyr}{\code{\link[dplyr]{case_when}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
@@ -175,22 +197,22 @@ below to see their documentation.
 
   \item{RCurl}{\code{\link[RCurl]{getURL}}}
 
-  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}}
+  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_table}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}, \code{\link[readr]{write_lines}}, \code{\link[readr]{write_tsv}}}
 
   \item{readxl}{\code{\link[readxl]{read_excel}}}
 
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}}
+  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}}
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
   \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}, \code{\link[stats]{setNames}}}
 
-  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
+  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}}
 
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}}
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{sessionInfo}}}
 }}
 
