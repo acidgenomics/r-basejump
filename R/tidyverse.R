@@ -1,7 +1,7 @@
-#' Prefixed [tidyverse](http://tidyverse.org/) function alternates.
+#' Prefixed [tidyverse](http://tidyverse.org/) grammar alternates.
 #'
 #' @details Avoid NAMESPACE collisions with
-#'   [Bioconductor](https://www.bioconductor.org) [BiocGenerics].
+#'   [Bioconductor](https://www.bioconductor.org) and other S4 generics.
 #'
 #' @rdname tidyverse
 #' @name tidyverse
