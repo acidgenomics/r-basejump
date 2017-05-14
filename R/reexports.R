@@ -4,6 +4,7 @@
 #' @export
 AnnotationDbi::select
 
+
 #' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
 #' @usage NULL
 #' @export
@@ -17,11 +18,12 @@ BiocGenerics::colSums
 #' @export
 BiocGenerics::rowMeans
 
-#' @importFrom BiocInstaller biocValid
 #' @usage NULL
 #' @export
 BiocGenerics::rowSums
 
+
+#' @importFrom BiocInstaller biocValid
 #' @usage NULL
 #' @export
 BiocInstaller::biocValid
@@ -45,8 +47,7 @@ biomaRt::useEnsembl
 
 
 # devtools ====
-#' @importFrom devtools build build_vignettes check document install load_all
-#'   test
+#' @import devtools
 #' @usage NULL
 #' @export
 devtools::build
@@ -152,6 +153,7 @@ knitr::opts_chunk
 knitr::opts_knit
 
 
+
 # magrittr ====
 #' @importFrom magrittr %>% set_colnames set_names set_rownames
 #' @usage NULL
@@ -205,7 +207,7 @@ RCurl::getURL
 
 
 # readr ====
-#' @importFrom readr read_csv read_delim read_lines read_tsv write_csv
+#' @import readr
 #' @usage NULL
 #' @export
 readr::read_csv
@@ -317,6 +319,10 @@ stringr::str_replace
 #' @usage NULL
 #' @export
 stringr::str_replace_all
+
+#' @usage NULL
+#' @export
+stringr::str_split
 
 #' @usage NULL
 #' @export
