@@ -74,7 +74,7 @@ devtools::test
 
 # dplyr ====
 #' @importFrom dplyr case_when everything funs group_by left_join mutate_all
-#'   summarise_all top_n ungroup
+#'   summarise summarise_all top_n ungroup
 #' @usage NULL
 #' @export
 dplyr::case_when
@@ -98,6 +98,10 @@ dplyr::left_join
 #' @usage NULL
 #' @export
 dplyr::mutate_all
+
+#' @usage NULL
+#' @export
+dplyr::summarise
 
 #' @usage NULL
 #' @export

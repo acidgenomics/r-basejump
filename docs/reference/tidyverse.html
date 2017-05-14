@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates. — tidy_arrange • basejump</title>
+<title>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> grammar alternates. — tidy_verbs • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,24 +73,26 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates.</h1>
+    <h1>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> grammar alternates.</h1>
     </div>
 
     
-    <p>Arrange rows by variables.</p>
+    <p>Assign generic tidyverse verbs to the working environment.</p>
+<p>Arrange rows by variables.</p>
 <p>Return rows with matching conditions.</p>
 <p>Add new variables.</p>
 <p>Select/rename variables by name.</p>
-<p>Prefixed <a href = 'http://tidyverse.org/'>tidyverse</a> function alternates.</p>
     
 
-    <pre class="usage"><span class='fu'>tidy_arrange</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>tidy_verbs</span>()
 
-<span class='fu'>tidy_filter</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+<span class='fu'>tbl_arrange</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
 
-<span class='fu'>tidy_mutate</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+<span class='fu'>tbl_filter</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
 
-<span class='fu'>tidy_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>tbl_mutate</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='fu'>tbl_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,8 +109,8 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Avoid NAMESPACE collisions with
-<a href = 'https://www.bioconductor.org'>Bioconductor</a> BiocGenerics.</p>
+    <p>Avoid NAMESPACE collisions with <a href = 'https://www.bioconductor.org'>Bioconductor</a>
+and other S4 generics.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
