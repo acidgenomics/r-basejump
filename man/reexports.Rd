@@ -3,8 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{select}
-\alias{reexports}
 \alias{colMeans}
 \alias{reexports}
 \alias{colSums}
@@ -173,8 +171,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
-
   \item{BiocGenerics}{\code{\link[BiocGenerics]{colMeans}}, \code{\link[BiocGenerics]{colSums}}, \code{\link[BiocGenerics]{rowMeans}}, \code{\link[BiocGenerics]{rowSums}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}

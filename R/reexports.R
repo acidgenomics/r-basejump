@@ -1,10 +1,4 @@
 # Bioconductor ====
-#' @importFrom AnnotationDbi select
-#' @usage NULL
-#' @export
-AnnotationDbi::select
-
-
 #' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
 #' @usage NULL
 #' @export
@@ -81,11 +75,6 @@ devtools::test
 # dplyr ====
 #' @importFrom dplyr case_when everything funs group_by left_join mutate_all
 #'   summarise_all top_n ungroup
-#' @rdname tidyverse
-#' @description Arrange rows by variables.
-#' @export
-dplyr::arrange -> tbl_arrange
-
 #' @usage NULL
 #' @export
 dplyr::case_when
@@ -93,11 +82,6 @@ dplyr::case_when
 #' @usage NULL
 #' @export
 dplyr::everything
-
-#' @rdname tidyverse
-#' @description Return rows with matching conditions.
-#' @export
-dplyr::filter -> tbl_filter
 
 #' @usage NULL
 #' @export
@@ -111,19 +95,9 @@ dplyr::group_by
 #' @export
 dplyr::left_join
 
-#' @rdname tidyverse
-#' @description Add new variables.
-#' @export
-dplyr::mutate -> tbl_mutate
-
 #' @usage NULL
 #' @export
 dplyr::mutate_all
-
-#' @rdname tidyverse
-#' @description Select/rename variables by name.
-#' @export
-dplyr::select -> tbl_select
 
 #' @usage NULL
 #' @export
