@@ -49,6 +49,14 @@
 \alias{reexports}
 \alias{hist}
 \alias{reexports}
+\alias{asis_output}
+\alias{reexports}
+\alias{kable}
+\alias{reexports}
+\alias{opts_chunk}
+\alias{reexports}
+\alias{opts_knit}
+\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{set_colnames}
@@ -154,6 +162,8 @@ below to see their documentation.
   \item{dplyr}{\code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
+
+  \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
 
