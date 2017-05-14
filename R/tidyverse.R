@@ -18,3 +18,44 @@
 #' - [dplyr::mutate()]
 #' - [dplyr::select()]
 NULL
+
+
+
+#' @rdname tidyverse
+#' @description Arrange rows by variables.
+#' @export
+dplyr::arrange -> tbl_arrange
+
+
+
+#' @rdname tidyverse
+#' @description Return rows with matching conditions.
+#' @export
+dplyr::filter -> tbl_filter
+
+
+
+#' @rdname tidyverse
+#' @description Add new variables.
+#' @export
+dplyr::mutate -> tbl_mutate
+
+
+
+#' @rdname tidyverse
+#' @description Select/rename variables by name.
+#' @export
+dplyr::select -> tbl_select
+
+
+
+#' @rdname tidyverse
+#' @description Assign generic tidyverse verbs to the working environment.
+#' @export
+tidy_verbs <- function() {
+    envir <- parent.frame()
+    assign("arrange", tbl_arrange, envir = envir)
+    assign("filter", tbl_filter, envir = envir)
+    assign("mutate", tbl_mutate, envir = envir)
+    assign("select", tbl_select, envir = envir)
+}
