@@ -15,13 +15,13 @@ comp <- function(dna) {
     dna <- toupper(dna)
     comp <- dna %>%
         # AT base pair swap
-        gsub("A", "A1", .) %>%
-        gsub("T", "A", .) %>%
-        gsub("A1", "T", .) %>%
+        str_replace_all("A", "A1") %>%
+        str_replace_all("T", "A") %>%
+        str_replace_all("A1", "T") %>%
         # GC base pair swap
-        gsub("G", "G1", .) %>%
-        gsub("C", "G", .) %>%
-        gsub("G1", "C", .)
+        str_replace_all("G", "G1") %>%
+        str_replace_all("C", "G") %>%
+        str_replace_all("G1", "C")
     return(comp)
 }
 
@@ -35,8 +35,8 @@ comp <- function(dna) {
 revcomp <- function(dna) {
     dna <- toupper(dna)
     comp <- comp(dna)
-    revcomp <- strsplit(comp, "")[[1]] %>%
+    revcomp <- str_split(comp, "")[[1]] %>%
         .[order(seq_along(.), decreasing = TRUE)] %>%
-        paste(., sep = "", collapse = "")
+        paste(sep = "", collapse = "")
     return(revcomp)
 }

@@ -14,15 +14,15 @@ wash <- function(df) {
     gsubs <- function(a) {
         a %>%
             # Duplicate separators
-            gsub("(,|;|/)\\s(,|;|/)", "\\1", .) %>%
+            str_replace_all("(,|;|/)\\s(,|;|/)", "\\1") %>%
             # Leading separators
-            gsub("^(,|;|/)\\s", "", .) %>%
+            str_replace_all("^(,|;|/)\\s", "") %>%
             # Trailing separators
-            gsub("\\s(,|;|/)$", "", .) %>%
+            str_replace_all("\\s(,|;|/)$", "") %>%
             # NAs in string
-            gsub("NA,\\s|,\\sNA", "", .) %>%
+            str_replace_all("NA,\\s|,\\sNA", "") %>%
             # Character NAs
-            gsub("^$|^\\s+$|^NA$", NA, .)
+            str_replace_all("^$|^\\s+$|^NA$", NA)
     }
     mutate_all(df, funs(gsubs))
 }
