@@ -35,12 +35,12 @@ makeNames <- function(character) {
 
 
 #' @rdname makeNames
-#' @usage NULL
 #' @export
 make_names <- makeNames
 
 
 
+# camelCase ====
 #' @rdname makeNames
 #' @export
 makeNamesCamel <- function(character) {
@@ -52,19 +52,12 @@ makeNamesCamel <- function(character) {
 
 
 #' @rdname makeNames
-#' @usage NULL
 #' @export
 make_names_camel <- makeNamesCamel
 
 
 
-#' @rdname makeNames
-#' @usage NULL
-#' @export
-camel <- makeNamesCamel
-
-
-
+# snake_case ====
 #' @rdname makeNames
 #' @export
 makeNamesSnake <- function(character) {
@@ -76,13 +69,18 @@ makeNamesSnake <- function(character) {
 
 
 #' @rdname makeNames
-#' @usage NULL
 #' @export
 make_names_snake <- makeNamesSnake
 
 
 
+# Shorthand ====
 #' @rdname makeNames
-#' @usage NULL
+#' @export
+camel <- makeNamesCamel
+
+
+
+#' @rdname makeNames
 #' @export
 snake <- makeNamesSnake

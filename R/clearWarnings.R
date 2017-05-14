@@ -1,4 +1,4 @@
-#' Clear warnings
+#' Clear warnings.
 #'
 #' @export
 #'
@@ -13,6 +13,5 @@ clearWarnings <- function() {
 
 
 #' @rdname clearWarnings
-#' @usage NULL
 #' @export
 clear_warnings <- clearWarnings

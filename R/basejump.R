@@ -5,21 +5,19 @@
 
 
 
-#' Prepare the NAMESPACE.
+#' Global variables.
 #'
 #' @keywords internal
 #' @export
 #'
 #' @seealso
+#' - [globalVariables()].
 #' - [reexports].
 #' - [tidy_verbs()].
-namespace <- function() {
-    globalVariables(
-        c(".",
-          "arrange",
-          "biocLite",
-          "filter",
-          "mutate",
-          "select"))
-}
-namespace()
+globals <- c(".",
+             "arrange",
+             "biocLite",
+             "filter",
+             "mutate",
+             "select")
+globalVariables(globals)

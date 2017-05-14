@@ -8,6 +8,12 @@
 \title{Summarize columns using \code{\link[=toString]{toString()}}.}
 \usage{
 toStringSummarize(data)
+
+toStringSummarise(data)
+
+to_string_summarize(data)
+
+to_string_summarise(data)
 }
 \arguments{
 \item{data}{Data with rows and columns (e.g. data frame, matrix)}

@@ -9,7 +9,11 @@
 \usage{
 titleCase(character)
 
+title_case(character)
+
 firstCase(character)
+
+first_case(character)
 }
 \arguments{
 \item{character}{Character vector.}

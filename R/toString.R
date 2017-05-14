@@ -14,7 +14,6 @@
 
 
 #' @rdname toString
-#' @usage NULL
 #' @export
 to_string <- toString
 
@@ -33,7 +32,6 @@ toStringUnique <- function(x) {
 
 
 #' @rdname toString
-#' @usage NULL
 #' @export
 to_string_unique <- toStringUnique
 
@@ -54,7 +52,6 @@ toStringSortUnique <- function(x) {
 
 
 #' @rdname toString
-#' @usage NULL
 #' @export
 to_string_sort_unique <- toStringSortUnique
 
@@ -90,20 +87,17 @@ toStringSummarize <- function(data) {
 
 
 #' @rdname toStringSummarize
-#' @usage NULL
 #' @export
 toStringSummarise <- toStringSummarize
 
 
 
 #' @rdname toStringSummarize
-#' @usage NULL
 #' @export
 to_string_summarize <- toStringSummarize
 
 
 
 #' @rdname toStringSummarize
-#' @usage NULL
 #' @export
 to_string_summarise <- toStringSummarize

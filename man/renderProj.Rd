@@ -6,6 +6,8 @@
 \title{Render all RMarkdown files in working directory.}
 \usage{
 renderProj(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
+
+render_proj(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
 }
 \arguments{
 \item{outputDir}{Output directory.}

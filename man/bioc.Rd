@@ -8,8 +8,8 @@ bioc(pkgs = NULL, ...)
 }
 \arguments{
 \item{pkgs}{Character vector of package names to install or update. Supports
-Bioconductor, CRAN, and GitHub repositories (e.g.
-\code{steinbaugh/basejump} format).}
+Bioconductor, CRAN, and GitHub repositories (e.g. \code{steinbaugh/basejump}
+format).}
 
 \item{...}{Passthrough parameters.}
 }

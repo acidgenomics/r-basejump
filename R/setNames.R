@@ -1,5 +1,10 @@
 #' Naming utility functions.
 #'
+#' The [setNames()] family of functions manipulate the [names()] of an object,
+#' supporting either `camelCase` or `snake_case`. [sanitizeNames()] modifies
+#' both [colnames()] and [rownames()] to `snake_case` format, and is generally
+#' recommended for clean-up of RNA-seq count matrices containing gene names.
+#'
 #' @rdname setNames
 #'
 #' @param object Object for which a [names()] attribute will be meaningful.
@@ -7,7 +12,9 @@
 #' @return Object with unmodified data and reformatted names.
 #' @export
 #'
-#' @seealso [stats::setNames()]
+#' @seealso
+#' - [magrittr::set_names()].
+#' - [stats::setNames()].
 
 
 
@@ -22,7 +29,6 @@ setNamesCamel <- function(object) {
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 set_names_camel <- setNamesCamel
 
@@ -39,7 +45,6 @@ setNamesDot <- function(object) {
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 set_names_dot <- setNamesDot
 
@@ -56,7 +61,6 @@ setNamesSnake <- function(object) {
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 set_names_snake <- setNamesSnake
 
@@ -89,21 +93,18 @@ sanitizeNames <- function(object) {
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 sanitiseNames <- sanitizeNames
 
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 sanitize_names <- sanitizeNames
 
 
 
 #' @rdname setNames
-#' @usage NULL
 #' @export
 sanitise_names <- sanitizeNames
 

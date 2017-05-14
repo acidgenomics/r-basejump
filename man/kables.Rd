@@ -7,9 +7,9 @@
 kables(list, captions = NULL)
 }
 \arguments{
-\item{list}{List of tables (e.g. data frame, matrix).}
+\item{list}{List of column data (e.g. data frame, matrix).}
 
-\item{captions}{Caption character vector.}
+\item{captions}{Optional character vector of table captions.}
 }
 \value{
 Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.

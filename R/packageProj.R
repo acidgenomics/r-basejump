@@ -34,6 +34,5 @@ packageProj <- function(
 
 
 #' @rdname packageProj
-#' @usage NULL
 #' @export
 package_proj <- packageProj

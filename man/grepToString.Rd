@@ -6,12 +6,14 @@
 \title{Grep against toString formatted data.}
 \usage{
 grepToString(identifier)
+
+grep_to_string(identifier)
 }
 \arguments{
 \item{identifier}{Identifier.}
 }
 \value{
-Comma separated string for matching against \code{toString} return.
+Comma separated string for matching against \code{\link[=toString]{toString()}} return.
 }
 \description{
 Generates a grep pattern that will match an identifier in a comma separated

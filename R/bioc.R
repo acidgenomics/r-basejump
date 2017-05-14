@@ -6,8 +6,8 @@
 #' @importFrom BiocCheck BiocCheck
 #'
 #' @param pkgs Character vector of package names to install or update. Supports
-#'   Bioconductor, CRAN, and GitHub repositories (e.g.
-#'   \code{steinbaugh/basejump} format).
+#'   Bioconductor, CRAN, and GitHub repositories (e.g. `steinbaugh/basejump`
+#'   format).
 #' @param ... Passthrough parameters.
 #'
 #' @export

@@ -5,7 +5,9 @@
 \alias{assign_multiple}
 \title{Assign multiple variables.}
 \usage{
-assignMultiple(..., envir = globalenv(), prefix = NULL)
+assignMultiple(..., envir = parent.frame(), prefix = NULL)
+
+assign_multiple(..., envir = parent.frame(), prefix = NULL)
 }
 \arguments{
 \item{...}{List of variables to assign.}

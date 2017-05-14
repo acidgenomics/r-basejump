@@ -17,11 +17,23 @@
 \usage{
 setNamesCamel(object)
 
+set_names_camel(object)
+
 setNamesDot(object)
+
+set_names_dot(object)
 
 setNamesSnake(object)
 
+set_names_snake(object)
+
 sanitizeNames(object)
+
+sanitiseNames(object)
+
+sanitize_names(object)
+
+sanitise_names(object)
 }
 \arguments{
 \item{object}{Object for which a \code{\link[=names]{names()}} attribute will be meaningful.}
@@ -30,7 +42,10 @@ sanitizeNames(object)
 Object with unmodified data and reformatted names.
 }
 \description{
-Naming utility functions.
+The \code{\link[=setNames]{setNames()}} family of functions manipulate the \code{\link[=names]{names()}} of an object,
+supporting either \code{camelCase} or \code{snake_case}. \code{\link[=sanitizeNames]{sanitizeNames()}} modifies
+both \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} to \code{snake_case} format, and is generally
+recommended for clean-up of RNA-seq count matrices containing gene names.
 }
 \examples{
 setNamesCamel(head(starwars))
@@ -39,5 +54,8 @@ setNamesSnake(head(starwars))
 sanitizeNames(head(starwars))
 }
 \seealso{
-\code{\link[stats:setNames]{stats::setNames()}}
+\itemize{
+\item \code{\link[magrittr:set_names]{magrittr::set_names()}}.
+\item \code{\link[stats:setNames]{stats::setNames()}}.
+}
 }

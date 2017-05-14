@@ -7,8 +7,11 @@
 #' @param prefix Name prefix (optional).
 #'
 #' @export
-assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
-    # The `-1` here removes the function name:
+assignMultiple <- function(
+    ...,
+    envir = parent.frame(),
+    prefix = NULL) {
+    # `-1` here removes the function name
     names <- sapply(match.call(expand.dots = TRUE)[-1], deparse)
     data <- list(...)
     invisible(lapply(seq_along(data), function(x) {
@@ -23,6 +26,5 @@ assignMultiple <- function(..., envir = globalenv(), prefix = NULL) {
 
 
 #' @rdname assignMultiple
-#' @usage NULL
 #' @export
 assign_multiple <- assignMultiple

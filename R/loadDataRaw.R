@@ -1,6 +1,6 @@
 #' Load data-raw directory.
 #'
-#' Dynamically source or load raw data in the \code{data-raw} directory.
+#' Dynamically source or load raw data in the `data-raw` directory.
 #'
 #' @param data Data object.
 #'
@@ -23,6 +23,5 @@ loadDataRaw <- function(data) {
 
 
 #' @rdname loadDataRaw
-#' @usage NULL
 #' @export
 load_data_raw <- loadDataRaw

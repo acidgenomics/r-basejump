@@ -6,6 +6,8 @@
 \title{Build package and website.}
 \usage{
 packageProj(install = FALSE, test = FALSE)
+
+package_proj(install = FALSE, test = FALSE)
 }
 \arguments{
 \item{install}{Install package.}

@@ -2,8 +2,8 @@
 #'
 #' Handle multiple kables in a single RMarkdown chunk.
 #'
-#' @param list List of tables (e.g. data frame, matrix).
-#' @param captions Caption character vector.
+#' @param list List of column data (e.g. data frame, matrix).
+#' @param captions Optional character vector of table captions.
 #'
 #' @return Knit tables, using [knitr::kable()].
 #' @export
