@@ -77,16 +77,31 @@
     </div>
 
     
-    <p>Naming utility functions.</p>
+    <p>The <code><a href='reexports.html'>setNames()</a></code> family of functions manipulate the <code>names()</code> of an object,
+supporting either <code>camelCase</code> or <code>snake_case</code>. <code>sanitizeNames()</code> modifies
+both <code>colnames()</code> and <code>rownames()</code> to <code>snake_case</code> format, and is generally
+recommended for clean-up of RNA-seq count matrices containing gene names.</p>
     
 
     <pre class="usage"><span class='fu'>setNamesCamel</span>(<span class='no'>object</span>)
 
+<span class='fu'>set_names_camel</span>(<span class='no'>object</span>)
+
 <span class='fu'>setNamesDot</span>(<span class='no'>object</span>)
+
+<span class='fu'>set_names_dot</span>(<span class='no'>object</span>)
 
 <span class='fu'>setNamesSnake</span>(<span class='no'>object</span>)
 
-<span class='fu'>sanitizeNames</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>set_names_snake</span>(<span class='no'>object</span>)
+
+<span class='fu'>sanitizeNames</span>(<span class='no'>object</span>)
+
+<span class='fu'>sanitiseNames</span>(<span class='no'>object</span>)
+
+<span class='fu'>sanitize_names</span>(<span class='no'>object</span>)
+
+<span class='fu'>sanitise_names</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -103,7 +118,10 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/stats/topics/setNames'>stats::setNames()</a></code></p>
+    <ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/magrittr/topics/aliases'>magrittr::set_names()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/stats/topics/setNames'>stats::setNames()</a></code>.</p></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

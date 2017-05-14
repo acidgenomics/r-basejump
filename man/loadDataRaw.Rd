@@ -6,6 +6,8 @@
 \title{Load data-raw directory.}
 \usage{
 loadDataRaw(data)
+
+load_data_raw(data)
 }
 \arguments{
 \item{data}{Data object.}

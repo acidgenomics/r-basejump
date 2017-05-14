@@ -6,8 +6,8 @@
 #' @param remoteDir Remote directory URL.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
-#' @param compress Compress the file with \code{gzip} after download.
-#'   (\code{TRUE/FALSE})
+#' @param compress Compress the file with [gzip()] after download.
+#'   (`TRUE`/`FALSE`)
 #' @param localDir Directory where to save file locally.
 #'
 #' @return List of local files.

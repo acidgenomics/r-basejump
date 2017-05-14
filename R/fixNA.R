@@ -1,8 +1,8 @@
-#' Fix empty and NA character strings.
+#' Fix empty and `NA` character strings.
 #'
-#' @param string String missing \code{NA}.
+#' @param string String missing `NA`.
 #'
-#' @return String containing \code{NA}.
+#' @return String containing `NA`.
 #' @export
 #'
 #' @examples
@@ -14,6 +14,5 @@ fixNA <- function(string) {
 
 
 #' @rdname fixNA
-#' @usage NULL
 #' @export
 fix_na <- fixNA

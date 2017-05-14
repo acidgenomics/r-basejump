@@ -6,11 +6,13 @@
 \title{Markdown utilities.}
 \usage{
 mdList(character, ordered = FALSE)
+
+md_list(character, ordered = FALSE)
 }
 \arguments{
 \item{character}{Character vector.}
 
-\item{ordered}{Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown
+\item{ordered}{Ordered (\code{TRUE}) or unordered (\code{FALSE}) list in Markdown
 format.}
 }
 \value{

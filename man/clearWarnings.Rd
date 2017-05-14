@@ -3,12 +3,14 @@
 \name{clearWarnings}
 \alias{clearWarnings}
 \alias{clear_warnings}
-\title{Clear warnings}
+\title{Clear warnings.}
 \usage{
 clearWarnings()
+
+clear_warnings()
 }
 \description{
-Clear warnings
+Clear warnings.
 }
 \examples{
 \dontrun{

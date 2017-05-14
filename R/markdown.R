@@ -13,7 +13,7 @@
 #' @rdname markdown
 #' @description Markdown list.
 #'
-#' @param ordered Ordered \code{TRUE} or unordered \code{FALSE} list in Markdown
+#' @param ordered Ordered (`TRUE`) or unordered (`FALSE`) list in Markdown
 #'   format.
 #'
 #' @return Character vector.
@@ -36,6 +36,5 @@ mdList <- function(character, ordered = FALSE) {
 
 
 #' @rdname markdown
-#' @usage NULL
 #' @export
 md_list <- mdList

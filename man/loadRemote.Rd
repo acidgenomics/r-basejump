@@ -6,6 +6,8 @@
 \title{Load a remote R binary file.}
 \usage{
 loadRemote(url)
+
+load_remote(url)
 }
 \arguments{
 \item{url}{URL.}

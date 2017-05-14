@@ -9,15 +9,17 @@
 \usage{
 saveData(..., dir = "data")
 
+save_data(..., dir = "data")
+
 saveDataRaw(...)
+
+save_data_raw(...)
 }
 \arguments{
-\item{...}{Data objects.}
+\item{...}{Objects.}
 
-\item{dir}{Output directory.}
+\item{dir}{Save directory.}
 }
 \description{
-Quick save to \code{data} directory.
-
-Quick save to \code{data-raw} directory.
+Quick save to \code{data} (default) or \code{data-raw} directory.
 }

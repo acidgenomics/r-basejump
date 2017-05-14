@@ -5,7 +5,7 @@
 #'
 #' @param identifier Identifier.
 #'
-#' @return Comma separated string for matching against \code{toString} return.
+#' @return Comma separated string for matching against [toString()] return.
 #' @export
 #'
 #' @examples
@@ -29,6 +29,5 @@ grepToString <- function(identifier) {
 
 
 #' @rdname grepToString
-#' @usage NULL
 #' @export
 grep_to_string <- grepToString

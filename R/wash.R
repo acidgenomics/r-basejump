@@ -1,7 +1,7 @@
 #' Wash a data frame.
 #'
 #' This function cleans poorly formed separators, leading and trailing commas or
-#' spaces, empty cells, and sets \code{NA} values if necessary.
+#' spaces, empty cells, and sets `NA` values if necessary.
 #'
 #' @param df Dirty data frame.
 #'

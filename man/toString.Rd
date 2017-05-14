@@ -9,9 +9,15 @@
 \alias{to_string_sort_unique}
 \title{Convert an R object to a character string.}
 \usage{
+to_string(x, ...)
+
 toStringUnique(x)
 
+to_string_unique(x)
+
 toStringSortUnique(x)
+
+to_string_sort_unique(x)
 }
 \arguments{
 \item{x}{The object to be converted.}

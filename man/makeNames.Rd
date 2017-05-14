@@ -5,17 +5,27 @@
 \alias{make_names}
 \alias{makeNamesCamel}
 \alias{make_names_camel}
-\alias{camel}
 \alias{makeNamesSnake}
 \alias{make_names_snake}
+\alias{camel}
 \alias{snake}
 \title{Make syntactically valid names out of character vectors.}
 \usage{
 makeNames(character)
 
+make_names(character)
+
 makeNamesCamel(character)
 
+make_names_camel(character)
+
 makeNamesSnake(character)
+
+make_names_snake(character)
+
+camel(character)
+
+snake(character)
 }
 \arguments{
 \item{character}{Character vector.}

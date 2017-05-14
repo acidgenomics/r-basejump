@@ -6,6 +6,8 @@
 \title{Quickly perform sort unique on a vector.}
 \usage{
 sortUnique(vector)
+
+sort_unique(vector)
 }
 \arguments{
 \item{vector}{Vector with duplicates, \code{NA} values.}
@@ -14,8 +16,8 @@ sortUnique(vector)
 Unique vector.
 }
 \description{
-The function also strips \code{NA} values. This is useful for gene list
-server queries, for example.
+The function also strips \code{NA} values. This is useful for gene list server
+queries, for example.
 }
 \examples{
 sortUnique(c("milk", "eggs", "eggs", NA))

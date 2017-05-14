@@ -4,8 +4,8 @@
 #' used in [gtools::logratio2foldchange()].
 #'
 #' @param logRatio Numeric vector of log ratio values.
-#' @param base Logarithm base. Defaults to \code{2}, for compatibility with
-#'   RNA-Seq differential expression output.
+#' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
+#'   differential expression output.
 #'
 #' @return Fold change values.
 #' @export
@@ -21,7 +21,6 @@ logRatioToFoldChange <- function(logRatio, base = 2) {
 
 
 #' @rdname logRatioToFoldChange
-#' @usage NULL
 #' @export
 log_ratio_to_fold_change <- logRatioToFoldChange
 

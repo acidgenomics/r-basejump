@@ -17,6 +17,5 @@ loadRemote <- function(url) {
 
 
 #' @rdname loadRemote
-#' @usage NULL
 #' @export
 load_remote <- loadRemote

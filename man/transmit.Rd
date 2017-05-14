@@ -14,8 +14,8 @@ transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
 
 \item{rename}{Rename the local file (including suffix), if desired.}
 
-\item{compress}{Compress the file with \code{gzip} after download.
-(\code{TRUE/FALSE})}
+\item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
+(\code{TRUE}/\code{FALSE})}
 
 \item{localDir}{Directory where to save file locally.}
 }

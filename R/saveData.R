@@ -1,9 +1,9 @@
 #' Save data objects.
 #'
-#' Quick save to \code{data} directory.
+#' Quick save to `data` (default) or `data-raw` directory.
 #'
-#' @param ... Data objects.
-#' @param dir Output directory.
+#' @param ... Objects.
+#' @param dir Save directory.
 #'
 #' @export
 saveData <- function(..., dir = "data") {
@@ -24,14 +24,12 @@ saveData <- function(..., dir = "data") {
 
 
 #' @rdname saveData
-#' @usage NULL
 #' @export
 save_data <- saveData
 
 
 
 #' @rdname saveData
-#' @description Quick save to \code{data-raw} directory.
 #' @export
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
@@ -40,6 +38,5 @@ saveDataRaw <- function(...) {
 
 
 #' @rdname saveData
-#' @usage NULL
 #' @export
 save_data_raw <- saveDataRaw

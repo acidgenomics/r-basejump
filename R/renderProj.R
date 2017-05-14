@@ -44,6 +44,5 @@ renderProj <- function(
 
 
 #' @rdname renderProj
-#' @usage NULL
 #' @export
 render_proj <- renderProj

@@ -23,7 +23,6 @@ titleCase <- function(character) {
 
 
 #' @rdname case
-#' @usage NULL
 #' @export
 title_case <- titleCase
 
@@ -43,6 +42,5 @@ firstCase <- function(character) {
 
 
 #' @rdname case
-#' @usage NULL
 #' @export
 first_case <- firstCase
