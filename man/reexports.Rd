@@ -3,14 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{colMeans}
-\alias{reexports}
-\alias{colSums}
-\alias{reexports}
-\alias{rowMeans}
-\alias{reexports}
-\alias{rowSums}
-\alias{reexports}
 \alias{biocValid}
 \alias{reexports}
 \alias{getBM}
@@ -183,8 +175,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{colMeans}}, \code{\link[BiocGenerics]{colSums}}, \code{\link[BiocGenerics]{rowMeans}}, \code{\link[BiocGenerics]{rowSums}}}
-
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}}
