@@ -315,27 +315,7 @@ rmarkdown::render
 
 
 ## stats ====
-#' @importFrom stats aggregate cor density median na.omit setNames
-#' @usage NULL
-#' @export
-stats::aggregate
-
-#' @usage NULL
-#' @export
-stats::cor
-
-#' @usage NULL
-#' @export
-stats::density
-
-#' @usage NULL
-#' @export
-stats::median
-
-#' @usage NULL
-#' @export
-stats::na.omit
-
+#' @importFrom stats setNames
 #' @usage NULL
 #' @export
 stats::setNames
@@ -443,7 +423,7 @@ tools::file_path_sans_ext
 
 
 ## utils ====
-#' @importFrom utils download.file globalVariables head sessionInfo
+#' @importFrom utils download.file globalVariables sessionInfo
 #' @usage NULL
 #' @export
 utils::download.file
@@ -451,10 +431,6 @@ utils::download.file
 #' @usage NULL
 #' @export
 utils::globalVariables
-
-#' @usage NULL
-#' @export
-utils::head
 
 #' @usage NULL
 #' @export

@@ -1,6 +1,8 @@
 #' basejump
 #'
 #' Base functions for bioinformatics and R package development.
+#'
+#' @import S4Vectors
 "_PACKAGE"
 
 
