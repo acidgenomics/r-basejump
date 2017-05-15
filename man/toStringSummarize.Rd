@@ -3,7 +3,7 @@
 \name{toStringSummarize}
 \alias{toStringSummarize}
 \alias{toStringSummarise}
-\title{Summarize columns with \code{\link[=toString]{toString()}}.}
+\title{Summarize columns with \code{\link[=toString]{toString()}}}
 \usage{
 toStringSummarize(data)
 

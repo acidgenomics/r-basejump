@@ -5,7 +5,7 @@
 \alias{load_data_raw}
 \alias{loadRemote}
 \alias{load_remote}
-\title{Data loading utilities.}
+\title{Data loading utilities}
 \usage{
 loadDataRaw(data)
 

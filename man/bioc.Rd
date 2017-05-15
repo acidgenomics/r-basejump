@@ -2,7 +2,7 @@
 % Please edit documentation in R/bioconductor.R
 \name{bioc}
 \alias{bioc}
-\title{Install or update Bioconductor packages.}
+\title{Install or update Bioconductor packages}
 \usage{
 bioc(pkgs = NULL, ...)
 }

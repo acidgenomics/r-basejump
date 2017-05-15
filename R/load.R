@@ -1,4 +1,4 @@
-#' Data loading utilities.
+#' Data loading utilities
 #'
 #' @rdname load
 #' @description Dynamically [source()] or [load()] raw data in the `data-raw`

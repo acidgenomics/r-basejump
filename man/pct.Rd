@@ -2,7 +2,7 @@
 % Please edit documentation in R/math.R
 \name{pct}
 \alias{pct}
-\title{Convert numeric to percentage.}
+\title{Convert numeric to percentage}
 \usage{
 pct(number)
 }
@@ -13,7 +13,7 @@ pct(number)
 Percentage.
 }
 \description{
-Convert numeric to percentage.
+Convert numeric to percentage
 }
 \examples{
 pct(0.1)

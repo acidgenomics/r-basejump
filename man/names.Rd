@@ -25,7 +25,7 @@
 \alias{sanitize_names}
 \alias{sanitiseNames}
 \alias{sanitise_names}
-\title{Generate syntactically valid names.}
+\title{Generate syntactically valid names}
 \usage{
 titleCase(character)
 

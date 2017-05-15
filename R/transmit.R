@@ -1,4 +1,4 @@
-#' Transmit (download) files from a remote server.
+#' Transmit (download) files from a remote server
 #'
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
@@ -46,9 +46,7 @@ transmit <- function(
 
     # Ensure the local directory exists
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
-
     message(toString(remoteFileName))
-
     list <- lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
@@ -65,8 +63,7 @@ transmit <- function(
         } else {
             localFileName <- remoteFileName
         }
-        return(localFileName)
+        localFileName
     }) %>% setNames(remoteFileName)
-
-    return(list)
+    list
 }
