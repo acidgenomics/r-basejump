@@ -55,8 +55,8 @@ devtools::test
 
 
 ## dplyr ====
-#' @importFrom dplyr bind_cols bind_rows case_when combine everything funs
-#'   group_by left_join mutate_all summarise summarise_all top_n ungroup
+#' @importFrom dplyr bind_cols bind_rows case_when combine distinct everything
+#'   funs group_by left_join mutate_all summarise summarise_all top_n ungroup
 #' @usage NULL
 #' @export
 dplyr::bind_cols
@@ -72,6 +72,10 @@ dplyr::case_when
 #' @usage NULL
 #' @export
 dplyr::combine
+
+#' @usage NULL
+#' @export
+dplyr::distinct
 
 #' @usage NULL
 #' @export
