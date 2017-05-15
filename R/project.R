@@ -12,7 +12,7 @@
 #'   [RMarkdown](http://rmarkdown.rstudio.com) report in
 #'   [RStudio](https://www.rstudio.com).
 #' @export
-createProjDirs <- function() {
+createProjectDirs <- function() {
     local_dirs <- c("data",
                     "figures",
                     "meta",
@@ -24,7 +24,7 @@ createProjDirs <- function() {
 
 #' @rdname project
 #' @export
-create_proj_dirs <- createProjDirs
+create_project_dirs <- createProjectDirs
 
 
 
@@ -56,7 +56,7 @@ detect_hpc <- detectHPC
 #' @rdname project
 #' @description Package project and build website.
 #' @export
-packageProj <- function(
+packageProject <- function(
     install = FALSE,
     test = FALSE) {
     # Ensure package is up to date
@@ -85,7 +85,7 @@ packageProj <- function(
 
 #' @rdname project
 #' @export
-package_proj <- packageProj
+package_project <- packageProject
 
 
 
@@ -96,12 +96,7 @@ package_proj <- packageProj
 #' @param recursive Find files recursively.
 #'
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' renderProj()
-#' }
-renderProj <- function(
+renderProject <- function(
     outputDir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
@@ -135,18 +130,13 @@ renderProj <- function(
 
 #' @rdname project
 #' @export
-render_proj <- renderProj
+render_project <- renderProject
 
 
 
 #' @rdname project
 #' @description Clear warnings.
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' clearWarnings()
-#' }
 clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
