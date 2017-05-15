@@ -50,7 +50,6 @@ titleCase <- function(character) {
     gsub("\\b([a-z])", "\\U\\1", character, perl = TRUE)
 }
 
-
 #' @rdname names
 #' @export
 title_case <- titleCase
@@ -64,7 +63,6 @@ firstCase <- function(character) {
         titleCase %>%
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE)
 }
-
 
 #' @rdname names
 #' @export
@@ -97,7 +95,6 @@ makeNames <- function(character) {
         tolower
 }
 
-
 #' @rdname names
 #' @export
 make_names <- makeNames
@@ -112,11 +109,9 @@ makeNamesCamel <- function(character) {
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
-
 #' @rdname names
 #' @export
 make_names_camel <- makeNamesCamel
-
 
 #' @rdname names
 #' @export
@@ -131,7 +126,6 @@ makeNamesSnake <- function(character) {
         makeNames %>%
         str_replace_all("\\.", "_")
 }
-
 
 #' @rdname names
 #' @export
@@ -149,7 +143,6 @@ snake <- makeNamesSnake
 setNamesCamel <- function(object) {
     setNames(object, makeNamesCamel(names(object)))
 }
-
 
 #' @rdname names
 #' @export
@@ -175,7 +168,6 @@ set_names_dot <- setNamesDot
 setNamesSnake <- function(object) {
     setNames(object, makeNamesSnake(names(object)))
 }
-
 
 #' @rdname names
 #' @export
@@ -215,16 +207,13 @@ sanitizeNames <- function(object) {
     object
 }
 
-
 #' @rdname names
 #' @export
 sanitize_names <- sanitizeNames
 
-
 #' @rdname names
 #' @export
 sanitiseNames <- sanitizeNames
-
 
 #' @rdname names
 #' @export
