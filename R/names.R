@@ -1,4 +1,4 @@
-#' Generate syntactically valid names.
+#' Generate syntactically valid names
 #'
 #' These are convenience function that set [names()] on an object and return the
 #' object, without modifying the underlying data.
@@ -203,20 +203,16 @@ sanitizeNames <- function(object) {
     if (is.null(names(object))) {
         stop("Object doesn't contain names")
     }
-
     # (Column) names
     names(object) <- makeNamesSnake(names(object))
-
     # Rows, if they exist
     if (!is.null(rownames(object))) {
         # Ignore numbered rownames
         if (!identical(rownames(object), as.character(1:nrow(object)))) {
             rownames(object) <- makeNamesSnake(rownames(object))
         }
-
     }
-
-    return(object)
+    object
 }
 
 

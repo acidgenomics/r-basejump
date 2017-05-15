@@ -1,0 +1,3 @@
+grepToString <- function() {
+    .Deprecated("grepString")
+}

@@ -3,7 +3,7 @@
 \name{sortUnique}
 \alias{sortUnique}
 \alias{sort_unique}
-\title{Quickly perform sort unique on a vector.}
+\title{Quickly perform sort unique on a vector}
 \usage{
 sortUnique(vector)
 

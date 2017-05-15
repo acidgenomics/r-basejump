@@ -1,4 +1,4 @@
-#' Convert an R object to a character string.
+#' Convert an R object to a character string
 #'
 #' Helper functions for [format()] to produce a single character string
 #' describing an R object.
@@ -43,7 +43,7 @@ toStringSortUnique <- function(x) {
 
 
 ## Data frame manipulations ====
-#' Summarize columns with [toString()].
+#' Summarize columns with [toString()]
 #'
 #' Collapse column data into a single row summary columnwize using
 #' [toString()].

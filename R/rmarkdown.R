@@ -1,5 +1,5 @@
 ## Markdown ====
-#' Markdown utilities.
+#' Markdown utilities
 #'
 #' @rdname markdown
 #'
@@ -31,8 +31,12 @@ mdList <- function(character, ordered = FALSE) {
         }
         paste(prefix, character[a])
     })
-    return(writeLines(string))
+    writeLines(string)
 }
+
+#' @rdname markdown
+#' @export
+md_list <- mdList
 
 
 
@@ -40,9 +44,11 @@ mdList <- function(character, ordered = FALSE) {
 
 
 ## knitr ====
-#' Create tables in LaTeX, HTML, Markdown and reStructuredText.
+#' Create tables in LaTeX, HTML, Markdown and reStructuredText
 #'
 #' Handle multiple kables in a single RMarkdown chunk.
+#'
+#' @rdname knitr
 #'
 #' @param list List of column data (e.g. data frame, matrix).
 #' @param captions Optional character vector of table captions.
@@ -61,8 +67,8 @@ kables <- function(list, captions = NULL) {
         tables <- lapply(seq_along(list), function(a) {
             kable(list[a], caption = captions[a])
         })
-        return(asis_output(tables))
+        asis_output(tables)
     } else {
-        return(list)
+        list
     }
 }

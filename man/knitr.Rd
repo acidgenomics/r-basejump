@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmarkdown.R
 \name{kables}
 \alias{kables}
-\title{Create tables in LaTeX, HTML, Markdown and reStructuredText.}
+\title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 kables(list, captions = NULL)
 }

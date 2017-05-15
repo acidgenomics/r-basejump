@@ -2,9 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{fixNA}
 \alias{fixNA}
-\title{Fix empty and \code{NA} character strings.}
+\alias{fix_na}
+\title{Fix empty and \code{NA} character strings}
 \usage{
 fixNA(string)
+
+fix_na(string)
 }
 \arguments{
 \item{string}{String missing \code{NA}.}
@@ -13,7 +16,7 @@ fixNA(string)
 String containing \code{NA}.
 }
 \description{
-Fix empty and \code{NA} character strings.
+Fix empty and \code{NA} character strings
 }
 \examples{
 fixNA(c(1, "x", "", "NA"))

@@ -2,9 +2,12 @@
 % Please edit documentation in R/rmarkdown.R
 \name{mdList}
 \alias{mdList}
-\title{Markdown utilities.}
+\alias{md_list}
+\title{Markdown utilities}
 \usage{
 mdList(character, ordered = FALSE)
+
+md_list(character, ordered = FALSE)
 }
 \arguments{
 \item{character}{Character vector.}
