@@ -1,7 +1,29 @@
+## General ====
+#' Convert numeric to percentage.
+#'
+#' @param number Number.
+#'
+#' @return Percentage.
+#' @export
+#'
+#' @examples
+#' pct(0.1)
+pct <- function(number) {
+    return(sprintf("%1.1f%%", number * 100))
+}
+
+
+
+
+
+
+## RNA-seq counts ====
 #' log ratio to fold change.
 #'
 #' Convert log ratio normalized values to fold change. Based on the approach
 #' used in [gtools::logratio2foldchange()].
+#'
+#' @aliases log_ratio_to_fold_change
 #'
 #' @param logRatio Numeric vector of log ratio values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
@@ -17,16 +39,3 @@ logRatioToFoldChange <- function(logRatio, base = 2) {
     x <- ifelse(x < 1, -1/x, x)
     return(x)
 }
-
-
-
-#' @rdname logRatioToFoldChange
-#' @export
-log_ratio_to_fold_change <- logRatioToFoldChange
-
-
-
-# Alternate approach
-# sign is -1 if log2 < 0; 1 if log2 >= 0
-# sign <- (-1) ^ (1 + as.numeric(log2 >= 0))
-# return(sign * 2 ^ abs(log2))

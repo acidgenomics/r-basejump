@@ -1,4 +1,4 @@
-#' Transmit files from a remote server.
+#' Transmit (download) files from a remote server.
 #'
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.

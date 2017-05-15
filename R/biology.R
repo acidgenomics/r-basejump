@@ -1,16 +1,23 @@
+## DNA strings ====
 #' DNA sequence utilites.
 #'
-#' @param dna DNA sequence (ATGC nucleotides).
+#' Generate complement or reverse complement sequences.
 #'
-#' @return Modified DNA sequence.
+#' @rdname dna
+#'
+#' @param dna DNA sequence (`ATGC` nucleotides).
+#'
+#' @return Matching DNA sequence.
+#'
+#' @examples
+#' dna <- "ATGCATGC"
+#' comp(dna)
+#' revcomp(dna)
 
 
 
 #' @rdname dna
-#' @description Complement DNA sequence.
 #' @export
-#' @examples
-#' comp("ATGCATGC")
 comp <- function(dna) {
     dna <- toupper(dna)
     comp <- dna %>%
@@ -28,10 +35,7 @@ comp <- function(dna) {
 
 
 #' @rdname dna
-#' @description Reverse complement DNA sequence.
 #' @export
-#' @examples
-#' revcomp("ATGCATGC")
 revcomp <- function(dna) {
     dna <- toupper(dna)
     comp <- comp(dna)
