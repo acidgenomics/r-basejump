@@ -1,7 +1,7 @@
 #' Generate syntactically valid names
 #'
-#' These are convenience function that set [names()] on an object and return the
-#' object, without modifying the underlying data.
+#' These are convenience function that set [base::names()] on an object and
+#' return the object, without modifying the underlying data.
 #'
 #' - The [makeNames()] and `*Case()` family of functions manipulate a character
 #'   vector, supporting either `camelCase` or `snake_case`.
@@ -19,7 +19,8 @@
 #' - [stats::setNames()].
 #'
 #' @param character Character vector.
-#' @param object Object for which a [names()] attribute will be meaningful.
+#' @param object Object for which a [base::names()] attribute will be
+#'   meaningful.
 #'
 #' @return Character vector or object with valid names.
 #' @export
@@ -28,6 +29,7 @@
 #' # Create character vectors of valid names
 #' camel("RNAi clone")
 #' snake("RNAi clone")
+#'
 #' titleCase("RNA sequencing")
 #' firstCase("RNA sequencing")
 #'

@@ -77,8 +77,8 @@
     </div>
 
     
-    <p>These are convenience function that set <code>names()</code> on an object and return the
-object, without modifying the underlying data.</p>
+    <p>These are convenience function that set <code><a href='http://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code> on an object and
+return the object, without modifying the underlying data.</p>
     
 
     <pre class="usage"><span class='fu'>titleCase</span>(<span class='no'>character</span>)
@@ -134,7 +134,8 @@ object, without modifying the underlying data.</p>
     </tr>
     <tr>
       <th>object</th>
-      <td><p>Object for which a <code>names()</code> attribute will be meaningful.</p></td>
+      <td><p>Object for which a <code><a href='http://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code> attribute will be
+meaningful.</p></td>
     </tr>
     </table>
     
@@ -165,7 +166,8 @@ count matrices containing gene names.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Create character vectors of valid names</span>
-<span class='fu'>camel</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnaiClone"</div><div class='input'><span class='fu'>snake</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnai_clone"</div><div class='input'><span class='fu'>titleCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "RNA Sequencing"</div><div class='input'><span class='fu'>firstCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "Rna Sequencing"</div><div class='input'>
+<span class='fu'>camel</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnaiClone"</div><div class='input'><span class='fu'>snake</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnai_clone"</div><div class='input'>
+<span class='fu'>titleCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "RNA Sequencing"</div><div class='input'><span class='fu'>firstCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "Rna Sequencing"</div><div class='input'>
 <span class='co'># Set names on objects</span>
 <span class='fu'>setNamesCamel</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass   hairColor   skinColor eyeColor birthYear gender
