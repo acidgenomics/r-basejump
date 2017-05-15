@@ -1,10 +1,12 @@
-0.0.9   Add snake_case function variants.
-0.0.8   Add back saveData utility functions.
+0.0.10  Added NAMESPACE utilities to deal with tidyverse generic verbs.
+        Switched package documentation method to use roxygen with `pkgapi`.
+0.0.9   Added snake_case function variants.
+0.0.8   Added back saveData utility functions.
 0.0.7   Bug fixes for dplyr 0.6.0 update and improved kable handling.
 0.0.6   Dependency fix for successful compilation on Orchestra cluster.
-0.0.5   Consolidate functions in the documentation.
-0.0.4   Improve documentation.
-0.0.3   Remove dependencies and transfer functions to bcbioRnaseq.
-0.0.2   Add bcbio data import functions.
-        Add ggplot2 wrapper functions for quality control.
+0.0.5   Consolidated functions in the documentation.
+0.0.4   Improved documentation.
+0.0.3   Removed dependencies and transfer functions to bcbioRnaseq.
+0.0.2   Added bcbio data import functions.
+        Added ggplot2 wrapper functions for quality control.
 0.0.1   Initial draft release.

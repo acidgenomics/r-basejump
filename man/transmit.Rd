@@ -2,7 +2,7 @@
 % Please edit documentation in R/transmit.R
 \name{transmit}
 \alias{transmit}
-\title{Transmit files from a remote server.}
+\title{Transmit (download) files from a remote server.}
 \usage{
 transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
   localDir = "data-raw")
@@ -14,8 +14,8 @@ transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
 
 \item{rename}{Rename the local file (including suffix), if desired.}
 
-\item{compress}{Compress the file with \code{gzip} after download.
-(\code{TRUE/FALSE})}
+\item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
+(\code{TRUE}/\code{FALSE})}
 
 \item{localDir}{Directory where to save file locally.}
 }

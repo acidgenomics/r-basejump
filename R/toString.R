@@ -14,13 +14,6 @@
 
 
 #' @rdname toString
-#' @usage NULL
-#' @export
-to_string <- toString
-
-
-
-#' @rdname toString
 #' @export
 #' @examples
 #' toStringUnique(c("milk", "eggs", "eggs", NA))
@@ -28,15 +21,8 @@ toStringUnique <- function(x) {
     x %>%
         unique %>%
         toString %>%
-        gsub("NA,\\s|,\\sNA", "", .)
+        str_replace_all("NA,\\s|,\\sNA", "")
 }
-
-
-#' @rdname toString
-#' @usage NULL
-#' @export
-to_string_unique <- toStringUnique
-
 
 
 #' @rdname toString
@@ -48,24 +34,16 @@ toStringSortUnique <- function(x) {
         unique %>%
         sort %>%
         toString %>%
-        gsub("NA,\\s|,\\sNA", "", .)
+        str_replace_all("NA,\\s|,\\sNA", "")
 }
 
 
 
-#' @rdname toString
-#' @usage NULL
-#' @export
-to_string_sort_unique <- toStringSortUnique
 
 
 
-
-
-
-# Data frame manipulations ====
-
-#' Summarize columns using [toString()].
+## Data frame manipulations ====
+#' Summarize columns with [toString()].
 #'
 #' Collapse column data into a single row summary columnwize using
 #' [toString()].
@@ -88,22 +66,6 @@ toStringSummarize <- function(data) {
 }
 
 
-
 #' @rdname toStringSummarize
-#' @usage NULL
 #' @export
 toStringSummarise <- toStringSummarize
-
-
-
-#' @rdname toStringSummarize
-#' @usage NULL
-#' @export
-to_string_summarize <- toStringSummarize
-
-
-
-#' @rdname toStringSummarize
-#' @usage NULL
-#' @export
-to_string_summarise <- toStringSummarize
