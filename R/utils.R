@@ -84,7 +84,7 @@ grepToString <- function(identifier) {
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        na.omit %>%
+        stats::na.omit(.) %>%
         sort %>%
         unique
 }
