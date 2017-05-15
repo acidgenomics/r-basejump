@@ -12,7 +12,6 @@
 
 
 #' @rdname markdown
-#' @aliases md_list
 #' @description Markdown list.
 #'
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in

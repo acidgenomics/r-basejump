@@ -2,7 +2,6 @@
 % Please edit documentation in R/utils.R
 \name{fixNA}
 \alias{fixNA}
-\alias{fix_na}
 \title{Fix empty and \code{NA} character strings.}
 \usage{
 fixNA(string)

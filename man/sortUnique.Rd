@@ -6,6 +6,8 @@
 \title{Quickly perform sort unique on a vector.}
 \usage{
 sortUnique(vector)
+
+sort_unique(vector)
 }
 \arguments{
 \item{vector}{Vector with duplicates, \code{NA} values.}

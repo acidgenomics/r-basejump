@@ -2,11 +2,8 @@
 % Please edit documentation in R/project.R
 \name{packageProj}
 \alias{packageProj}
-\alias{package_proj}
 \alias{renderProj}
-\alias{render_proj}
 \alias{clearWarnings}
-\alias{clear_warnings}
 \title{R project management utilities.}
 \usage{
 packageProj(install = FALSE, test = FALSE)

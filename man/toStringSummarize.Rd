@@ -2,9 +2,7 @@
 % Please edit documentation in R/toString.R
 \name{toStringSummarize}
 \alias{toStringSummarize}
-\alias{to_string_summarize}
 \alias{toStringSummarise}
-\alias{to_string_summarise}
 \title{Summarize columns with \code{\link[=toString]{toString()}}.}
 \usage{
 toStringSummarize(data)
