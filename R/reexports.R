@@ -1,22 +1,4 @@
 ## Bioconductor ====
-#' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
-#' @usage NULL
-#' @export
-BiocGenerics::colMeans
-
-#' @usage NULL
-#' @export
-BiocGenerics::colSums
-
-#' @usage NULL
-#' @export
-BiocGenerics::rowMeans
-
-#' @usage NULL
-#' @export
-BiocGenerics::rowSums
-
-
 #' @importFrom BiocInstaller biocValid
 #' @usage NULL
 #' @export
