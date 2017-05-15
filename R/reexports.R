@@ -1,4 +1,4 @@
-# Bioconductor ====
+## Bioconductor ====
 #' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
 #' @usage NULL
 #' @export
@@ -24,7 +24,7 @@ BiocInstaller::biocValid
 
 
 
-# biomaRt ====
+## biomaRt ====
 #' @importFrom biomaRt getBM listMarts useEnsembl
 #' @usage NULL
 #' @export
@@ -40,7 +40,7 @@ biomaRt::useEnsembl
 
 
 
-# devtools ====
+## devtools ====
 #' @import devtools
 #' @usage NULL
 #' @export
@@ -72,7 +72,7 @@ devtools::test
 
 
 
-# dplyr ====
+## dplyr ====
 #' @importFrom dplyr case_when everything funs group_by left_join mutate_all
 #'   summarise summarise_all top_n ungroup
 #' @usage NULL
@@ -122,7 +122,7 @@ dplyr::ungroup
 
 
 
-# graphics ====
+## graphics ====
 #' @importFrom graphics hist
 #' @usage NULL
 #' @export
@@ -130,7 +130,7 @@ graphics::hist
 
 
 
-# knitr ====
+## knitr ====
 #' @importFrom knitr asis_output kable opts_chunk opts_knit
 #' @usage NULL
 #' @export
@@ -150,7 +150,7 @@ knitr::opts_knit
 
 
 
-# magrittr ====
+## magrittr ====
 #' @importFrom magrittr %>% set_colnames set_names set_rownames
 #' @usage NULL
 #' @export
@@ -170,7 +170,7 @@ magrittr::set_rownames
 
 
 
-# methods ====
+## methods ====
 #' @importFrom methods as show
 #' @usage NULL
 #' @export
@@ -182,7 +182,7 @@ methods::show
 
 
 
-# R.utils ====
+## R.utils ====
 #' @importFrom R.utils gzip gunzip
 #' @usage NULL
 #' @export
@@ -194,7 +194,7 @@ R.utils::gzip
 
 
 
-# RCurl ====
+## RCurl ====
 #' @importFrom RCurl getURL
 #' @usage NULL
 #' @export
@@ -202,7 +202,7 @@ RCurl::getURL
 
 
 
-# readr ====
+## readr ====
 #' @import readr
 #' @usage NULL
 #' @export
@@ -238,7 +238,7 @@ readr::write_tsv
 
 
 
-# readxl ====
+## readxl ====
 #' @importFrom readxl read_excel
 #' @usage NULL
 #' @export
@@ -246,8 +246,16 @@ readxl::read_excel
 
 
 
-# rlang ====
-#' @importFrom rlang !!! !! .data is_string quo quos sym syms
+## reshape ====
+#' @importFrom reshape2 melt
+#' @usage NULL
+#' @export
+reshape2::melt
+
+
+
+## rlang ====
+#' @importFrom rlang !!! !! .data is_string quo quos sym syms UQ
 #' @usage NULL
 #' @export
 rlang::`!!!`
@@ -280,9 +288,13 @@ rlang::sym
 #' @export
 rlang::syms
 
+#' @usage NULL
+#' @export
+rlang::UQ
 
 
-# rmarkdown ====
+
+## rmarkdown ====
 #' @importFrom rmarkdown render
 #' @usage NULL
 #' @export
@@ -290,11 +302,19 @@ rmarkdown::render
 
 
 
-# stats ====
-#' @importFrom stats aggregate median na.omit setNames
+## stats ====
+#' @importFrom stats aggregate cor density median na.omit setNames
 #' @usage NULL
 #' @export
 stats::aggregate
+
+#' @usage NULL
+#' @export
+stats::cor
+
+#' @usage NULL
+#' @export
+stats::density
 
 #' @usage NULL
 #' @export
@@ -310,7 +330,7 @@ stats::setNames
 
 
 
-# stringr ====
+## stringr ====
 #' @import stringr
 #' @usage NULL
 #' @export
@@ -354,8 +374,9 @@ stringr::str_subset
 
 
 
-# tibble ====
-#' @importFrom tibble as_tibble glimpse remove_rownames tibble
+## tibble ====
+#' @importFrom tibble as_tibble glimpse remove_rownames rownames_to_column
+#'   tibble
 #' @usage NULL
 #' @export
 tibble::as_tibble
@@ -370,11 +391,15 @@ tibble::remove_rownames
 
 #' @usage NULL
 #' @export
+tibble::rownames_to_column
+
+#' @usage NULL
+#' @export
 tibble::tibble
 
 
 
-# tidyr ====
+## tidyr ====
 #' @importFrom tidyr expand_ nest separate_ unnest
 #' @usage NULL
 #' @export
@@ -394,8 +419,8 @@ tidyr::unnest
 
 
 
-# utils ====
-#' @importFrom utils download.file globalVariables sessionInfo
+## utils ====
+#' @importFrom utils download.file globalVariables head sessionInfo
 #' @usage NULL
 #' @export
 utils::download.file
@@ -403,6 +428,10 @@ utils::download.file
 #' @usage NULL
 #' @export
 utils::globalVariables
+
+#' @usage NULL
+#' @export
+utils::head
 
 #' @usage NULL
 #' @export

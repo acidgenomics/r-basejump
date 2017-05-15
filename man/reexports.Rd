@@ -99,6 +99,8 @@
 \alias{reexports}
 \alias{read_excel}
 \alias{reexports}
+\alias{melt}
+\alias{reexports}
 \alias{!!!}
 \alias{reexports}
 \alias{!!}
@@ -115,9 +117,15 @@
 \alias{reexports}
 \alias{syms}
 \alias{reexports}
+\alias{UQ}
+\alias{reexports}
 \alias{render}
 \alias{reexports}
 \alias{aggregate}
+\alias{reexports}
+\alias{cor}
+\alias{reexports}
+\alias{density}
 \alias{reexports}
 \alias{median}
 \alias{reexports}
@@ -151,6 +159,8 @@
 \alias{reexports}
 \alias{remove_rownames}
 \alias{reexports}
+\alias{rownames_to_column}
+\alias{reexports}
 \alias{tibble}
 \alias{reexports}
 \alias{expand_}
@@ -164,6 +174,8 @@
 \alias{download.file}
 \alias{reexports}
 \alias{globalVariables}
+\alias{reexports}
+\alias{head}
 \alias{reexports}
 \alias{sessionInfo}
 \title{Objects exported from other packages}
@@ -199,18 +211,20 @@ below to see their documentation.
 
   \item{readxl}{\code{\link[readxl]{read_excel}}}
 
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}}
+  \item{reshape2}{\code{\link[reshape2]{melt}}}
+
+  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}, \code{\link[stats]{setNames}}}
+  \item{stats}{\code{\link[stats]{aggregate}}, \code{\link[stats]{cor}}, \code{\link[stats]{density}}, \code{\link[stats]{median}}, \code{\link[stats]{na.omit}}, \code{\link[stats]{setNames}}}
 
   \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}}
 
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{sessionInfo}}}
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{head}}, \code{\link[utils]{sessionInfo}}}
 }}
 
