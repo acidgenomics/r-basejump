@@ -73,11 +73,23 @@ devtools::test
 
 
 ## dplyr ====
-#' @importFrom dplyr case_when everything funs group_by left_join mutate_all
-#'   summarise summarise_all top_n ungroup
+#' @importFrom dplyr bind_cols bind_rows case_when combine everything funs
+#'   group_by left_join mutate_all summarise summarise_all top_n ungroup
+#' @usage NULL
+#' @export
+dplyr::bind_cols
+
+#' @usage NULL
+#' @export
+dplyr::bind_rows
+
 #' @usage NULL
 #' @export
 dplyr::case_when
+
+#' @usage NULL
+#' @export
+dplyr::combine
 
 #' @usage NULL
 #' @export
@@ -420,6 +432,13 @@ tidyr::separate_
 #' @usage NULL
 #' @export
 tidyr::unnest
+
+
+
+## tools ====
+#' @importFrom tools file_path_sans_ext
+#' @export
+tools::file_path_sans_ext
 
 
 

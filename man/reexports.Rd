@@ -33,7 +33,13 @@
 \alias{reexports}
 \alias{test}
 \alias{reexports}
+\alias{bind_cols}
+\alias{reexports}
+\alias{bind_rows}
+\alias{reexports}
 \alias{case_when}
+\alias{reexports}
+\alias{combine}
 \alias{reexports}
 \alias{everything}
 \alias{reexports}
@@ -173,6 +179,8 @@
 \alias{reexports}
 \alias{unnest}
 \alias{reexports}
+\alias{file_path_sans_ext}
+\alias{reexports}
 \alias{download.file}
 \alias{reexports}
 \alias{globalVariables}
@@ -195,7 +203,7 @@ below to see their documentation.
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{case_when}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
@@ -226,6 +234,8 @@ below to see their documentation.
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}}
+
+  \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 
   \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{head}}, \code{\link[utils]{sessionInfo}}}
 }}
