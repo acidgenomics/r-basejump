@@ -375,7 +375,7 @@ stringr::str_subset
 
 
 ## tibble ====
-#' @importFrom tibble as_tibble glimpse is tibble remove_rownames
+#' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
 #'   rownames_to_column tibble
 #' @usage NULL
 #' @export
