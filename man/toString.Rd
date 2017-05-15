@@ -2,11 +2,8 @@
 % Please edit documentation in R/toString.R
 \name{toString}
 \alias{toString}
-\alias{to_string}
 \alias{toStringUnique}
-\alias{to_string_unique}
 \alias{toStringSortUnique}
-\alias{to_string_sort_unique}
 \title{Convert an R object to a character string.}
 \usage{
 toStringUnique(x)

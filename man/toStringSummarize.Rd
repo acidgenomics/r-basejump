@@ -3,11 +3,11 @@
 \name{toStringSummarize}
 \alias{toStringSummarize}
 \alias{toStringSummarise}
-\alias{to_string_summarize}
-\alias{to_string_summarise}
-\title{Summarize columns using \code{\link[=toString]{toString()}}.}
+\title{Summarize columns with \code{\link[=toString]{toString()}}.}
 \usage{
 toStringSummarize(data)
+
+toStringSummarise(data)
 }
 \arguments{
 \item{data}{Data with rows and columns (e.g. data frame, matrix)}
