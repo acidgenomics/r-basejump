@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert an R object to a character string. — toString • basejump</title>
+<title>R project management utilities. — packageProj • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,46 +73,56 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert an R object to a character string.</h1>
+    <h1>R project management utilities.</h1>
     </div>
 
     
-    <p>Helper functions for <code>format()</code> to produce a single character string
-describing an R object.</p>
+    <p>Build package and website.</p>
+<p>Render all RMarkdown files in working directory.</p>
+<p>Clear warnings.</p>
     
 
-    <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>packageProj</span>(<span class='kw'>install</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>toStringSortUnique</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>renderProj</span>(<span class='kw'>outputDir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"docs"</span>, <span class='fu'>Sys.Date</span>()), <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>clearWarnings</span>()</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>The object to be converted.</p></td>
+      <th>install</th>
+      <td><p>Install package.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional arguments passed to or from methods.</p></td>
+      <th>test</th>
+      <td><p>Run tests with <code><a href='http://www.rdocumentation.org/packages/devtools/topics/test'>devtools::test()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>outputDir</th>
+      <td><p>Output directory.</p></td>
+    </tr>
+    <tr>
+      <th>recursive</th>
+      <td><p>Find files recursively.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A character vector of length 1 is returned.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>toStringUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "milk, eggs"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs, milk"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
+  <span class='fu'>renderProj</span>()
+})
+<span class='fu'>not_run</span>({
+  <span class='fu'>clearWarnings</span>()
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

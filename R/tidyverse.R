@@ -10,11 +10,11 @@
 #' @export
 #'
 #' @seealso
-#' - [tidyverse style guide](http://style.tidyverse.org/)
-#' - [dplyr::arrange()]
-#' - [dplyr::filter()]
-#' - [dplyr::mutate()]
-#' - [dplyr::select()]
+#' - [tidyverse style guide](http://style.tidyverse.org/).
+#' - [dplyr::arrange()].
+#' - [dplyr::filter()].
+#' - [dplyr::mutate()].
+#' - [dplyr::select()].
 import_tidy_verbs <- function(envir = parent.frame()) {
     assign("arrange", dplyr::arrange, envir = envir)
     assign("filter", dplyr::filter, envir = envir)

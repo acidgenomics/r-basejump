@@ -77,8 +77,7 @@
     </div>
 
     
-    <p>Complement DNA sequence.</p>
-<p>Reverse complement DNA sequence.</p>
+    <p>Generate complement or reverse complement sequences.</p>
     
 
     <pre class="usage"><span class='fu'>comp</span>(<span class='no'>dna</span>)
@@ -90,17 +89,18 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dna</th>
-      <td><p>DNA sequence (ATGC nucleotides).</p></td>
+      <td><p>DNA sequence (<code>ATGC</code> nucleotides).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified DNA sequence.</p>
+    <p>Matching DNA sequence.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>comp</span>(<span class='st'>"ATGCATGC"</span>)</div><div class='output co'>#&gt; [1] "TACGTACG"</div><div class='input'><span class='fu'>revcomp</span>(<span class='st'>"ATGCATGC"</span>)</div><div class='output co'>#&gt; [1] "GCATGCAT"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dna</span> <span class='kw'>&lt;-</span> <span class='st'>"ATGCATGC"</span>
+<span class='fu'>comp</span>(<span class='no'>dna</span>)</div><div class='output co'>#&gt; [1] "TACGTACG"</div><div class='input'><span class='fu'>revcomp</span>(<span class='no'>dna</span>)</div><div class='output co'>#&gt; [1] "GCATGCAT"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

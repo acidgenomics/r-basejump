@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Naming utility functions. — setNamesCamel • basejump</title>
+<title>Generate syntactically valid names. — titleCase • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,17 +73,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Naming utility functions.</h1>
+    <h1>Generate syntactically valid names.</h1>
     </div>
 
     
-    <p>The <code><a href='reexports.html'>setNames()</a></code> family of functions manipulate the <code>names()</code> of an object,
-supporting either <code>camelCase</code> or <code>snake_case</code>. <code>sanitizeNames()</code> modifies
-both <code>colnames()</code> and <code>rownames()</code> to <code>snake_case</code> format, and is generally
-recommended for clean-up of RNA-seq count matrices containing gene names.</p>
+    <p>These are convenience function that set <code>names()</code> on an object and return the
+object, without modifying the underlying data.</p>
     
 
-    <pre class="usage"><span class='fu'>setNamesCamel</span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>titleCase</span>(<span class='no'>character</span>)
+
+<span class='fu'>firstCase</span>(<span class='no'>character</span>)
+
+<span class='fu'>makeNames</span>(<span class='no'>character</span>)
+
+<span class='fu'>makeNamesCamel</span>(<span class='no'>character</span>)
+
+<span class='fu'>camel</span>(<span class='no'>character</span>)
+
+<span class='fu'>makeNamesSnake</span>(<span class='no'>character</span>)
+
+<span class='fu'>snake</span>(<span class='no'>character</span>)
+
+<span class='fu'>setNamesCamel</span>(<span class='no'>object</span>)
 
 <span class='fu'>setNamesDot</span>(<span class='no'>object</span>)
 
@@ -97,6 +109,10 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>character</th>
+      <td><p>Character vector.</p></td>
+    </tr>
+    <tr>
       <th>object</th>
       <td><p>Object for which a <code>names()</code> attribute will be meaningful.</p></td>
     </tr>
@@ -104,7 +120,20 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object with unmodified data and reformatted names.</p>
+    <p>Character vector or object with valid names.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p>The <code>makeNames()</code> and <code>*Case()</code> family of functions manipulate a character
+vector, supporting either <code>camelCase</code> or <code>snake_case</code>.</p></li>
+<li><p>The <code><a href='reexports.html'>setNames()</a></code> family of functions work similarly to <code>makeNames()</code>
+overall, but are to be used on objects supporting name assignments (e.g.
+<code>data.frame</code>, <code>matrix</code>, <code>list</code>).</p></li>
+<li><p><code>sanitizeNames()</code> modifies both <code>colnames()</code> and <code>rownames()</code> to
+<code>snake_case</code> format, and is generally recommended for clean-up of RNA-seq
+count matrices containing gene names.</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -115,7 +144,10 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>setNamesCamel</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
+    <pre class="examples"><div class='input'><span class='co'># Create character vectors of valid names</span>
+<span class='fu'>camel</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnaiClone"</div><div class='input'><span class='fu'>snake</span>(<span class='st'>"RNAi clone"</span>)</div><div class='output co'>#&gt; [1] "rnai_clone"</div><div class='input'><span class='fu'>titleCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "RNA Sequencing"</div><div class='input'><span class='fu'>firstCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "Rna Sequencing"</div><div class='input'>
+<span class='co'># Set names on objects</span>
+<span class='fu'>setNamesCamel</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass   hairColor   skinColor eyeColor birthYear gender
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;  &lt;chr&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair     blue      19.0   male
@@ -125,7 +157,17 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
 #&gt; 5    Leia Organa    150    49       brown       light    brown      19.0 female
 #&gt; 6      Owen Lars    178   120 brown, grey       light     blue      52.0   male
 #&gt; # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
-#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>setNamesDot</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>setNamesSnake</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt;             name height  mass  hair_color  skin_color eye_color birth_year
+#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
+#&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
+#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0
+#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0
+#&gt; 4    Darth Vader    202   136        none       white    yellow       41.9
+#&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
+#&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
+#&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
+#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>setNamesDot</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass  hair.color  skin.color eye.color birth.year
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
@@ -135,27 +177,15 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
 #&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
 #&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
 #&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
-#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>setNamesSnake</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
-#&gt;             name height  mass  hair_color  skin_color eye_color birth_year
-#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
-#&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
-#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0
-#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0
-#&gt; 4    Darth Vader    202   136        none       white    yellow       41.9
-#&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
-#&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
-#&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
-#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>sanitizeNames</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 13
-#&gt;             name height  mass  hair_color  skin_color eye_color birth_year
-#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
-#&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
-#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0
-#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0
-#&gt; 4    Darth Vader    202   136        none       white    yellow       41.9
-#&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
-#&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
-#&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
-#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div></pre>
+#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'>
+<span class='co'># Sanitize both colnames and rownames</span>
+<span class='fu'>sanitizeNames</span>(<span class='fu'>head</span>(<span class='no'>mtcars</span>))</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; mazda_rx4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; mazda_rx4_wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; datsun_710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; hornet_4_drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; hornet_sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -163,6 +193,8 @@ recommended for clean-up of RNA-seq count matrices containing gene names.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

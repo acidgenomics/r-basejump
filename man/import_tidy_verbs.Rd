@@ -15,11 +15,11 @@ and other S4 generics.
 }
 \seealso{
 \itemize{
-\item \href{http://style.tidyverse.org/}{tidyverse style guide}
-\item \code{\link[dplyr:arrange]{dplyr::arrange()}}
-\item \code{\link[dplyr:filter]{dplyr::filter()}}
-\item \code{\link[dplyr:mutate]{dplyr::mutate()}}
-\item \code{\link[dplyr:select]{dplyr::select()}}
+\item \href{http://style.tidyverse.org/}{tidyverse style guide}.
+\item \code{\link[dplyr:arrange]{dplyr::arrange()}}.
+\item \code{\link[dplyr:filter]{dplyr::filter()}}.
+\item \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+\item \code{\link[dplyr:select]{dplyr::select()}}.
 }
 }
 \keyword{internal}

@@ -2,12 +2,14 @@
 #'
 #' Quick save to `data` (default) or `data-raw` directory.
 #'
+#' @rdname save
+#'
 #' @param ... Objects.
 #' @param dir Save directory.
 #'
 #' @export
 saveData <- function(..., dir = "data") {
-    if (!isString(dir)) {
+    if (!is_string(dir)) {
         stop("dir must be a string")
     }
     if (!dir.exists(dir)) {
@@ -23,13 +25,7 @@ saveData <- function(..., dir = "data") {
 
 
 
-#' @rdname saveData
-#' @export
-save_data <- saveData
-
-
-
-#' @rdname saveData
+#' @rdname save
 #' @export
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
@@ -37,6 +33,12 @@ saveDataRaw <- function(...) {
 
 
 
-#' @rdname saveData
+#' @rdname save
+#' @export
+save_data <- saveData
+
+
+
+#' @rdname save
 #' @export
 save_data_raw <- saveDataRaw

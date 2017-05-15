@@ -99,6 +99,11 @@ dplyr::left_join
 #' @export
 dplyr::mutate_all
 
+#' Star Wars dataset.
+#' @keywords internal
+#' @export
+dplyr::"starwars" -> "starwars"
+
 #' @usage NULL
 #' @export
 dplyr::summarise

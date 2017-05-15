@@ -12,8 +12,8 @@
 #'
 #' @seealso
 #' - [globalVariables()].
+#' - [import_tidy_verbs()].
 #' - [reexports].
-#' - [tidy_verbs()].
 globals <- c(".",
              "arrange",
              "biocLite",
