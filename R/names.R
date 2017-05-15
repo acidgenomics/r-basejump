@@ -41,9 +41,7 @@
 
 
 
-
 #' @rdname names
-#' @aliases title_case
 #' @export
 titleCase <- function(character) {
     if (!is.character(character)) {
@@ -53,9 +51,13 @@ titleCase <- function(character) {
 }
 
 
+#' @rdname names
+#' @export
+title_case <- titleCase
+
+
 
 #' @rdname names
-#' @aliases first_case
 #' @export
 firstCase <- function(character) {
     character %>%
@@ -64,9 +66,13 @@ firstCase <- function(character) {
 }
 
 
+#' @rdname names
+#' @export
+first_case <- firstCase
+
+
 
 #' @rdname names
-#' @aliases make_names
 #' @export
 makeNames <- function(character) {
     character %>%
@@ -92,9 +98,13 @@ makeNames <- function(character) {
 }
 
 
+#' @rdname names
+#' @export
+make_names <- makeNames
+
+
 
 #' @rdname names
-#' @aliases make_names_camel
 #' @export
 makeNamesCamel <- function(character) {
     character %>%
@@ -102,6 +112,10 @@ makeNamesCamel <- function(character) {
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
+
+#' @rdname names
+#' @export
+make_names_camel <- makeNamesCamel
 
 
 #' @rdname names
@@ -111,7 +125,6 @@ camel <- makeNamesCamel
 
 
 #' @rdname names
-#' @aliases make_names_snake
 #' @export
 makeNamesSnake <- function(character) {
     character %>%
@@ -119,6 +132,10 @@ makeNamesSnake <- function(character) {
         str_replace_all("\\.", "_")
 }
 
+
+#' @rdname names
+#' @export
+make_names_snake <- makeNamesSnake
 
 
 #' @rdname names
@@ -128,34 +145,59 @@ snake <- makeNamesSnake
 
 
 #' @rdname names
-#' @aliases set_names_camel
 #' @export
 setNamesCamel <- function(object) {
     setNames(object, makeNamesCamel(names(object)))
 }
 
 
+#' @rdname names
+#' @export
+set_names_camel <- setNamesCamel
+
+
 
 #' @rdname names
-#' @aliases set_names_dot
 #' @export
 setNamesDot <- function(object) {
     setNames(object, makeNames(names(object)))
 }
 
 
+#' @rdname names
+#' @export
+set_names_dot <- setNamesDot
+
+
 
 #' @rdname names
-#' @aliases set_names_snake
 #' @export
 setNamesSnake <- function(object) {
     setNames(object, makeNamesSnake(names(object)))
 }
 
 
+#' @rdname names
+#' @export
+set_names_snake <- setNamesSnake
+
+
 
 #' @rdname names
-#' @aliases sanitize_names
+#' @usage NULL
+#' @export
+setColnames <- set_colnames
+
+
+
+#' @rdname names
+#' @usage NULL
+#' @export
+setRownames <- set_rownames
+
+
+
+#' @rdname names
 #' @export
 sanitizeNames <- function(object) {
     if (is.null(names(object))) {
@@ -178,22 +220,16 @@ sanitizeNames <- function(object) {
 }
 
 
+#' @rdname names
+#' @export
+sanitize_names <- sanitizeNames
+
 
 #' @rdname names
-#' @aliases sanitise_names
 #' @export
 sanitiseNames <- sanitizeNames
 
 
-
 #' @rdname names
-#' @usage NULL
 #' @export
-setColnames <- set_colnames
-
-
-
-#' @rdname names
-#' @usage NULL
-#' @export
-setRownames <- set_rownames
+sanitise_names <- sanitizeNames

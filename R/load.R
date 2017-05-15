@@ -22,6 +22,10 @@ loadDataRaw <- function(data) {
     }
 }
 
+#' @rdname load
+#' @export
+load_data_raw <- loadDataRaw
+
 
 
 #' @rdname load
@@ -40,13 +44,6 @@ loadRemote <- function(url) {
     download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = globalenv())
 }
-
-
-
-# snake_case variants ====
-#' @rdname load
-#' @export
-load_data_raw <- loadDataRaw
 
 #' @rdname load
 #' @export

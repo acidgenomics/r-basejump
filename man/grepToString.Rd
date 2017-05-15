@@ -2,7 +2,6 @@
 % Please edit documentation in R/utils.R
 \name{grepToString}
 \alias{grepToString}
-\alias{grep_to_string}
 \title{\code{\link[=grep]{grep()}} against \code{\link[=toString]{toString()}} formatted data.}
 \usage{
 grepToString(identifier)

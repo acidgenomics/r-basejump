@@ -2,8 +2,6 @@
 #'
 #' Optionally, you can specify a name prefix and the desired environment.
 #'
-#' @aliases assign_multiple
-#'
 #' @param ... List of variables to assign.
 #' @param envir Desired environment (optional).
 #' @param prefix Name prefix (optional).
@@ -29,8 +27,6 @@ assignMultiple <- function(
 
 #' Fix empty and `NA` character strings.
 #'
-#' @aliases fix_na
-#'
 #' @param string String missing `NA`.
 #'
 #' @return String containing `NA`.
@@ -48,8 +44,6 @@ fixNA <- function(string) {
 #'
 #' Generates a grep pattern that will match an identifier in a comma separated
 #' string.
-#'
-#' @aliases grep_to_string
 #'
 #' @param identifier Identifier.
 #'
@@ -81,8 +75,6 @@ grepToString <- function(identifier) {
 #' The function also strips `NA` values. This is useful for gene list server
 #' queries, for example.
 #'
-#' @aliases sort_unique
-#'
 #' @param vector Vector with duplicates, `NA` values.
 #'
 #' @return Unique vector.
@@ -96,6 +88,11 @@ sortUnique <- function(vector) {
         sort %>%
         unique
 }
+
+#' @rdname sortUnique
+#' @export
+sort_unique <- sortUnique
+
 
 
 

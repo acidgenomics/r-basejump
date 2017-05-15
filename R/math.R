@@ -23,8 +23,6 @@ pct <- function(number) {
 #' Convert log ratio normalized values to fold change. Based on the approach
 #' used in [gtools::logratio2foldchange()].
 #'
-#' @aliases log_ratio_to_fold_change
-#'
 #' @param logRatio Numeric vector of log ratio values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.

@@ -19,37 +19,57 @@
 \alias{set_names_dot}
 \alias{setNamesSnake}
 \alias{set_names_snake}
+\alias{setColnames}
+\alias{setRownames}
 \alias{sanitizeNames}
 \alias{sanitize_names}
 \alias{sanitiseNames}
 \alias{sanitise_names}
-\alias{setColnames}
-\alias{setRownames}
 \title{Generate syntactically valid names.}
 \usage{
 titleCase(character)
 
+title_case(character)
+
 firstCase(character)
+
+first_case(character)
 
 makeNames(character)
 
+make_names(character)
+
 makeNamesCamel(character)
+
+make_names_camel(character)
 
 camel(character)
 
 makeNamesSnake(character)
 
+make_names_snake(character)
+
 snake(character)
 
 setNamesCamel(object)
 
+set_names_camel(object)
+
 setNamesDot(object)
+
+set_names_dot(object)
 
 setNamesSnake(object)
 
+set_names_snake(object)
+
 sanitizeNames(object)
 
+sanitize_names(object)
+
 sanitiseNames(object)
+
+sanitise_names(object)
 }
 \arguments{
 \item{character}{Character vector.}

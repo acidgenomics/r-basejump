@@ -2,7 +2,6 @@
 % Please edit documentation in R/math.R
 \name{logRatioToFoldChange}
 \alias{logRatioToFoldChange}
-\alias{log_ratio_to_fold_change}
 \title{log ratio to fold change.}
 \usage{
 logRatioToFoldChange(logRatio, base = 2)

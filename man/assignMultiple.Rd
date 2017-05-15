@@ -2,7 +2,6 @@
 % Please edit documentation in R/utils.R
 \name{assignMultiple}
 \alias{assignMultiple}
-\alias{assign_multiple}
 \title{Assign multiple variables.}
 \usage{
 assignMultiple(..., envir = parent.frame(), prefix = NULL)

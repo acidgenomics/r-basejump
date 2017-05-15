@@ -1,7 +1,6 @@
 #' R project management utilities.
 #'
 #' @rdname project
-#' @aliases package_proj
 #' @description Build package and website.
 #'
 #' @param install Install package.
@@ -38,7 +37,6 @@ packageProj <- function(
 
 
 #' @rdname project
-#' @aliases render_proj
 #' @description Render all RMarkdown files in working directory.
 #'
 #' @param outputDir Output directory.
@@ -85,7 +83,6 @@ renderProj <- function(
 
 
 #' @rdname project
-#' @aliases clear_warnings
 #' @description Clear warnings.
 #' @export
 #'
