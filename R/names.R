@@ -1,81 +1,93 @@
-#' Generate syntactically valid names
+#' Make syntactically valid names
 #'
-#' These are convenience function that set [base::names()] on an object and
-#' return the object, without modifying the underlying data.
+#' These are convenience functions that sanitize names into `camelCase`
+#' (preferred), `snake_case`, or `dot.notation`. Dot assignment is provided for
+#' use with base R operations, but we advise against using `dot.notation` name
+#' assignments for values and/or function.
 #'
-#' - The [makeNames()] and `*Case()` family of functions manipulate a character
-#'   vector, supporting either `camelCase` or `snake_case`.
-#' - The [setNames()] family of functions work similarly to [makeNames()]
-#'   overall, but are to be used on objects supporting name assignments (e.g.
-#'   `data.frame`, `matrix`, `list`).
-#' - [sanitizeNames()] modifies both [colnames()] and [rownames()] to
-#'   `snake_case` format, and is generally recommended for clean-up of RNA-seq
-#'   count matrices containing gene names.
+#' For unnamed character vectors, these functions will sanitize the underlying
+#' values. Otherwise, the functions will set [base::names()] and/or
+#' [base::rownames()] on objects supporting name assignments. They return the
+#' object without modification of the underlying data.
 #'
 #' @rdname names
+#' @name names
+#' @usage NULL
 #'
 #' @seealso
-#' - [magrittr::set_names()].
+#' - [base::make.names()].
+#' - [purrr::set_names()].
 #' - [stats::setNames()].
 #'
-#' @param character Character vector.
-#' @param object Object for which a [base::names()] attribute will be
-#'   meaningful.
+#' @param x Character vector or an object for which [base::names()] assignment
+#'   will be meaningful.
 #'
-#' @return Character vector or object with valid names.
-#' @export
+#' @return Object with syntatically valid names. For objects supporting
+#'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
-#' # Create character vectors of valid names
-#' camel("RNAi clone")
-#' snake("RNAi clone")
+#' # Unnamed character vector, with no names assigned
+#' unnamed_vec <- c("hello world", "HELLO WORLD", "RNAi clones", 123, NA)
 #'
-#' titleCase("RNA sequencing")
-#' firstCase("RNA sequencing")
+#' # Named character vector
+#' named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 #'
-#' # Set names on objects
-#' setNamesCamel(head(starwars))
-#' setNamesSnake(head(starwars))
-#' setNamesDot(head(starwars))
+#' # Data frame with colnames and rownames
+#' df <- head(mtcars)
 #'
-#' # Sanitize both colnames and rownames
-#' sanitizeNames(head(mtcars))
+#' # Tibble, with colnames. Rownames aren't supported on these!
+#' tbl <- head(starwars)
+#'
+#' # List, with assigned namess
+#' lst <- list(Item.A = c(1, 2),
+#'             Item.B = c(3, 4))
+#'
+#'
+#' # camelCase
+#' camel(unnamed_vec)
+#' camel(named_vec)
+#' camel(df)
+#' camel(tbl)
+#' camel(lst)
+#'
+#'
+#' # snake_case
+#' snake(unnamed_vec)
+#' snake(named_vec)
+#' snake(df)
+#' snake(tbl)
+#' snake(lst)
+#'
+#'
+#' # dot.notation
+#' dotNotation(unnamed_vec)
+#' dotNotation(named_vec)
+#' dotNotation(df)
+#' dotNotation(tbl)
+#' dotNotation(lst)
+NULL
 
 
 
-#' @rdname names
-#' @export
-titleCase <- function(character) {
-    if (!is.character(character)) {
-        stop("character vector required")
-    }
-    gsub("\\b([a-z])", "\\U\\1", character, perl = TRUE)
+# Vector operations ====
+makeTitleCase <- function(x) {
+    x %>%
+        as.character %>%
+        gsub("\\b([a-z])", "\\U\\1", ., perl = TRUE)
 }
 
-#' @rdname names
-#' @export
-title_case <- titleCase
 
 
-
-#' @rdname names
-#' @export
-firstCase <- function(character) {
-    character %>%
-        titleCase %>%
+makeFirstCase <- function(x) {
+    x %>%
+        makeTitleCase %>%
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE)
 }
 
-#' @rdname names
-#' @export
-first_case <- firstCase
 
 
-
-#' @rdname names
-#' @export
-makeNames <- function(character) {
-    character %>%
+makeNamesDot <- function(x) {
+    x %>%
         as.character %>%
         # Convert non-alphanumeric characters
         str_replace_all("[^[:alnum:]]", ".") %>%
@@ -97,126 +109,185 @@ makeNames <- function(character) {
         tolower
 }
 
-#' @rdname names
-#' @export
-make_names <- makeNames
 
 
-
-#' @rdname names
-#' @export
-makeNamesCamel <- function(character) {
-    character %>%
-        makeNames %>%
+makeNamesCamel <- function(x) {
+    x %>%
+        makeNamesDot %>%
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
-#' @rdname names
-#' @export
-make_names_camel <- makeNamesCamel
-
-#' @rdname names
-#' @export
-camel <- makeNamesCamel
 
 
-
-#' @rdname names
-#' @export
-makeNamesSnake <- function(character) {
-    character %>%
-        makeNames %>%
+makeNamesSnake <- function(x) {
+    x %>%
+        makeNamesDot %>%
         str_replace_all("\\.", "_")
 }
 
-#' @rdname names
-#' @export
-make_names_snake <- makeNamesSnake
-
-
-#' @rdname names
-#' @export
-snake <- makeNamesSnake
 
 
 
-#' @rdname names
-#' @export
-setNamesCamel <- function(object) {
-    setNames(object, makeNamesCamel(names(object)))
-}
-
-#' @rdname names
-#' @export
-set_names_camel <- setNamesCamel
 
 
-
-#' @rdname names
-#' @export
-setNamesDot <- function(object) {
-    setNames(object, makeNames(names(object)))
-}
-
-
-#' @rdname names
-#' @export
-set_names_dot <- setNamesDot
-
-
-
-#' @rdname names
-#' @export
-setNamesSnake <- function(object) {
-    setNames(object, makeNamesSnake(names(object)))
-}
-
-#' @rdname names
-#' @export
-set_names_snake <- setNamesSnake
-
-
-
-#' @rdname names
-#' @usage NULL
-#' @export
-setColnames <- set_colnames
-
-
-
-#' @rdname names
-#' @usage NULL
-#' @export
-setRownames <- set_rownames
-
-
-
-#' @rdname names
-#' @export
-sanitizeNames <- function(object) {
-    if (is.null(names(object))) {
-        stop("Object doesn't contain names")
+# Object name operations ====
+checkNames <- function(x) {
+    if (!is.null(names(x))) {
+        TRUE
+    } else {
+        FALSE
     }
-    # (Column) names
-    names(object) <- makeNamesSnake(names(object))
-    # Rows, if they exist
-    if (!is.null(rownames(object))) {
+}
+
+
+
+checkRownames <- function(x) {
+    if (!is.null(rownames(x))) {
         # Ignore numbered rownames
-        if (!identical(rownames(object), as.character(1:nrow(object)))) {
-            rownames(object) <- makeNamesSnake(rownames(object))
+        if (!identical(rownames(x), as.character(1:nrow(x)))) {
+            TRUE
+        } else {
+            FALSE
         }
+    } else {
+        FALSE
     }
-    object
 }
 
+
+
+setNamesDot <- function(x) {
+    if (checkNames(x)) {
+        x <- setNames(x, makeNamesDot(names(x)))
+    }
+    if (checkRownames(x)) {
+        x <- setRownames(x, makeNamesDot(rownames(x)))
+    }
+    x
+}
+
+
+
+setNamesCamel <- function(x) {
+    if (checkNames(x)) {
+        x <- setNames(x, makeNamesCamel(names(x)))
+    }
+    if (checkRownames(x)) {
+        x <- setRownames(x, makeNamesCamel(rownames(x)))
+    }
+    x
+}
+
+
+
+setNamesSnake <- function(x) {
+    if (checkNames(x)) {
+        x <- setNames(x, makeNamesSnake(names(x)))
+    }
+    if (checkRownames(x)) {
+        x <- setRownames(x, makeNamesSnake(rownames(x)))
+    }
+    x
+}
+
+
+
+
+
+
+# Flexible utilities ====
 #' @rdname names
 #' @export
-sanitize_names <- sanitizeNames
+camel <- function(x) {
+    if (is.null(names(x))) {
+        makeNamesCamel(x)
+    } else {
+        setNamesCamel(x)
+    }
+}
+
+
 
 #' @rdname names
 #' @export
-sanitiseNames <- sanitizeNames
+dotNotation <- function(x) {
+    if (is.null(names(x))) {
+        makeNamesDot(x)
+    } else {
+        setNamesDot(x)
+    }
+}
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+dot_notation <- dotNotation
+
+
 
 #' @rdname names
 #' @export
-sanitise_names <- sanitizeNames
+snake <- function(x) {
+    if (is.null(names(x))) {
+        makeNamesSnake(x)
+    } else {
+        setNamesSnake(x)
+    }
+}
+
+#' @rdname aliases
+#' @export
+sanitizeNames <- snake
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+sanitize_names <- snake
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+sanitiseNames <- snake
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+sanitise_names <- snake
+
+
+
+
+
+
+# Additional simple name utilities ====
+#' @rdname names
+#' @usage NULL
+#' @export
+titleCase <- function(x) {
+    if (is.null(names(x))) {
+        x <- makeTitleCase(x)
+    }
+    x
+}
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+title_case <- titleCase
+
+
+
+#' @rdname names
+#' @usage NULL
+#' @export
+firstCase <- function(x) {
+    if (is.null(names(x))) {
+        x <- makeFirstCase(x)
+    }
+    x
+}
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+first_case <- firstCase
