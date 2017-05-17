@@ -1,5 +1,5 @@
 ## General ====
-#' Convert numeric to percentage.
+#' Convert numeric to percentage
 #'
 #' @param number Number.
 #'
@@ -9,7 +9,7 @@
 #' @examples
 #' pct(0.1)
 pct <- function(number) {
-    return(sprintf("%1.1f%%", number * 100))
+    sprintf("%1.1f%%", number * 100)
 }
 
 
@@ -17,8 +17,8 @@ pct <- function(number) {
 
 
 
-## RNA-seq counts ====
-#' log ratio to fold change.
+## RNA-seq ====
+#' log ratio to fold change
 #'
 #' Convert log ratio normalized values to fold change. Based on the approach
 #' used in [gtools::logratio2foldchange()].
@@ -35,5 +35,9 @@ pct <- function(number) {
 logRatioToFoldChange <- function(logRatio, base = 2) {
     x <- base^(logRatio)
     x <- ifelse(x < 1, -1/x, x)
-    return(x)
+    x
 }
+
+#' @rdname logRatioToFoldChange
+#' @export
+log_ratio_to_fold_change <- logRatioToFoldChange

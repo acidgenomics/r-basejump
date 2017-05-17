@@ -1,13 +1,62 @@
-#' R project management utilities.
+#' Project management utilities
 #'
 #' @rdname project
-#' @description Build package and website.
 #'
 #' @param install Install package.
 #' @param test Run tests with [devtools::test()].
-#'
+
+
+
+#' @rdname project
+#' @description Create necessary directory structure for an
+#'   [RMarkdown](http://rmarkdown.rstudio.com) report in
+#'   [RStudio](https://www.rstudio.com).
 #' @export
-packageProj <- function(
+createProjectDirs <- function() {
+    local_dirs <- c("data",
+                    "figures",
+                    "meta",
+                    "results")
+    lapply(seq_along(local_dirs), function(a) {
+        dir.create(local_dirs[a], showWarnings = FALSE)
+    }) %>% invisible
+}
+
+#' @rdname project
+#' @export
+create_project_dirs <- createProjectDirs
+
+
+
+#' @rdname project
+#' @description Detect if R is running on an HPC cluster.
+#' @export
+detectHPC <- function() {
+    if (Sys.info()[["login"]] == "root" &
+        Sys.info()[["sysname"]] == "Linux" &
+        any(
+            Sys.getenv("CDC_JOINED_DOMAIN") == "med.harvard.edu",
+            Sys.getenv("LSB_EXEC_CLUSTER") == "hms_orchestra",
+            grepl("\\.orchestra$", Sys.getenv("HOSTNAME")),
+            grepl("\\.orchestra$", Sys.getenv("LSB_HOSTS")),
+            grepl("@MED\\.HARVARD\\.EDU$", Sys.getenv("USER_PRINCIPAL_NAME"))
+        )) {
+        "orchestra"
+    } else {
+        FALSE
+    }
+}
+
+#' @rdname project
+#' @export
+detect_hpc <- detectHPC
+
+
+
+#' @rdname project
+#' @description Package project and build website.
+#' @export
+packageProject <- function(
     install = FALSE,
     test = FALSE) {
     # Ensure package is up to date
@@ -34,6 +83,10 @@ packageProj <- function(
     biocValid()
 }
 
+#' @rdname project
+#' @export
+package_project <- packageProject
+
 
 
 #' @rdname project
@@ -43,12 +96,7 @@ packageProj <- function(
 #' @param recursive Find files recursively.
 #'
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' renderProj()
-#' }
-renderProj <- function(
+renderProject <- function(
     outputDir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
@@ -80,16 +128,19 @@ renderProj <- function(
     }) %>% invisible
 }
 
+#' @rdname project
+#' @export
+render_project <- renderProject
+
 
 
 #' @rdname project
 #' @description Clear warnings.
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' clearWarnings()
-#' }
 clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
+
+#' @rdname project
+#' @export
+clear_warnings <- clearWarnings

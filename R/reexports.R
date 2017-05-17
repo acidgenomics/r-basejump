@@ -1,22 +1,4 @@
 ## Bioconductor ====
-#' @importFrom BiocGenerics colMeans colSums rowMeans rowSums
-#' @usage NULL
-#' @export
-BiocGenerics::colMeans
-
-#' @usage NULL
-#' @export
-BiocGenerics::colSums
-
-#' @usage NULL
-#' @export
-BiocGenerics::rowMeans
-
-#' @usage NULL
-#' @export
-BiocGenerics::rowSums
-
-
 #' @importFrom BiocInstaller biocValid
 #' @usage NULL
 #' @export
@@ -73,11 +55,27 @@ devtools::test
 
 
 ## dplyr ====
-#' @importFrom dplyr case_when everything funs group_by left_join mutate_all
-#'   summarise summarise_all top_n ungroup
+#' @importFrom dplyr bind_cols bind_rows case_when combine distinct everything
+#'   funs group_by left_join mutate_all summarise summarise_all top_n ungroup
+#' @usage NULL
+#' @export
+dplyr::bind_cols
+
+#' @usage NULL
+#' @export
+dplyr::bind_rows
+
 #' @usage NULL
 #' @export
 dplyr::case_when
+
+#' @usage NULL
+#' @export
+dplyr::combine
+
+#' @usage NULL
+#' @export
+dplyr::distinct
 
 #' @usage NULL
 #' @export
@@ -303,27 +301,7 @@ rmarkdown::render
 
 
 ## stats ====
-#' @importFrom stats aggregate cor density median na.omit setNames
-#' @usage NULL
-#' @export
-stats::aggregate
-
-#' @usage NULL
-#' @export
-stats::cor
-
-#' @usage NULL
-#' @export
-stats::density
-
-#' @usage NULL
-#' @export
-stats::median
-
-#' @usage NULL
-#' @export
-stats::na.omit
-
+#' @importFrom stats setNames
 #' @usage NULL
 #' @export
 stats::setNames
@@ -375,8 +353,8 @@ stringr::str_subset
 
 
 ## tibble ====
-#' @importFrom tibble as_tibble glimpse remove_rownames rownames_to_column
-#'   tibble
+#' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
+#'   rownames_to_column tibble
 #' @usage NULL
 #' @export
 tibble::as_tibble
@@ -384,6 +362,10 @@ tibble::as_tibble
 #' @usage NULL
 #' @export
 tibble::glimpse
+
+#' @usage NULL
+#' @export
+tibble::is_tibble
 
 #' @usage NULL
 #' @export
@@ -419,8 +401,15 @@ tidyr::unnest
 
 
 
+## tools ====
+#' @importFrom tools file_path_sans_ext
+#' @export
+tools::file_path_sans_ext
+
+
+
 ## utils ====
-#' @importFrom utils download.file globalVariables head sessionInfo
+#' @importFrom utils download.file globalVariables sessionInfo
 #' @usage NULL
 #' @export
 utils::download.file
@@ -428,10 +417,6 @@ utils::download.file
 #' @usage NULL
 #' @export
 utils::globalVariables
-
-#' @usage NULL
-#' @export
-utils::head
 
 #' @usage NULL
 #' @export

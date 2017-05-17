@@ -8,6 +8,13 @@
 \description{
 Base functions for bioinformatics and R package development.
 }
+\details{
+The package exports \code{\link[=camel]{camel()}} and \code{\link[=snake]{snake()}} variants of all functions,
+for seamless integration into \href{https://www.bioconductor.org}{Bioconductor}
+and \href{http://tidyverse.org}{tidyverse} workflows. Function parameters are
+always passed in \code{\link[=camel]{camel()}} case. We also provide British spelling variants
+(e.g. colour) of the function names wherever applicable.
+}
 \seealso{
 Useful links:
 \itemize{

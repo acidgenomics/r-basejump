@@ -1,5 +1,5 @@
 ## DNA strings ====
-#' DNA sequence utilites.
+#' DNA sequence utilites
 #'
 #' Generate complement or reverse complement sequences.
 #'
@@ -19,8 +19,8 @@
 #' @rdname dna
 #' @export
 comp <- function(dna) {
-    dna <- toupper(dna)
-    comp <- dna %>%
+    dna %>%
+        toupper %>%
         # AT base pair swap
         str_replace_all("A", "A1") %>%
         str_replace_all("T", "A") %>%
@@ -29,7 +29,6 @@ comp <- function(dna) {
         str_replace_all("G", "G1") %>%
         str_replace_all("C", "G") %>%
         str_replace_all("G1", "C")
-    return(comp)
 }
 
 
@@ -42,5 +41,5 @@ revcomp <- function(dna) {
     revcomp <- str_split(comp, "")[[1]] %>%
         .[order(seq_along(.), decreasing = TRUE)] %>%
         paste(sep = "", collapse = "")
-    return(revcomp)
+    revcomp
 }

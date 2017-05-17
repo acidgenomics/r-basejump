@@ -2,16 +2,16 @@
 % Please edit documentation in R/save.R
 \name{saveData}
 \alias{saveData}
-\alias{saveDataRaw}
 \alias{save_data}
+\alias{saveDataRaw}
 \alias{save_data_raw}
-\title{Save data objects.}
+\title{Save data objects}
 \usage{
 saveData(..., dir = "data")
 
-saveDataRaw(...)
-
 save_data(..., dir = "data")
+
+saveDataRaw(...)
 
 save_data_raw(...)
 }

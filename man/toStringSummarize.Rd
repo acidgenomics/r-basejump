@@ -2,12 +2,18 @@
 % Please edit documentation in R/toString.R
 \name{toStringSummarize}
 \alias{toStringSummarize}
+\alias{to_string_summarize}
 \alias{toStringSummarise}
-\title{Summarize columns with \code{\link[=toString]{toString()}}.}
+\alias{to_string_summarise}
+\title{Summarize columns with \code{\link[=toString]{toString()}}}
 \usage{
 toStringSummarize(data)
 
+to_string_summarize(data)
+
 toStringSummarise(data)
+
+to_string_summarise(data)
 }
 \arguments{
 \item{data}{Data with rows and columns (e.g. data frame, matrix)}

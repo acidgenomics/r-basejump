@@ -1,4 +1,4 @@
-#' Install or update Bioconductor packages.
+#' Install or update Bioconductor packages
 #'
 #' This function is a wrapper for [biocLite()]. It first sources the code from
 #' the Bioconductor website then calls [biocLite()].

@@ -3,13 +3,13 @@
 \docType{data}
 \name{globals}
 \alias{globals}
-\title{Global variables.}
+\title{Global variables}
 \format{An object of class \code{character} of length 6.}
 \usage{
 globals
 }
 \description{
-Global variables.
+Global variables
 }
 \seealso{
 \itemize{

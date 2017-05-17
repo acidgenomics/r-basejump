@@ -2,9 +2,12 @@
 % Please edit documentation in R/math.R
 \name{logRatioToFoldChange}
 \alias{logRatioToFoldChange}
-\title{log ratio to fold change.}
+\alias{log_ratio_to_fold_change}
+\title{log ratio to fold change}
 \usage{
 logRatioToFoldChange(logRatio, base = 2)
+
+log_ratio_to_fold_change(logRatio, base = 2)
 }
 \arguments{
 \item{logRatio}{Numeric vector of log ratio values.}

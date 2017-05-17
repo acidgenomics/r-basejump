@@ -1,7 +1,7 @@
-#' Generate syntactically valid names.
+#' Generate syntactically valid names
 #'
-#' These are convenience function that set [names()] on an object and return the
-#' object, without modifying the underlying data.
+#' These are convenience function that set [base::names()] on an object and
+#' return the object, without modifying the underlying data.
 #'
 #' - The [makeNames()] and `*Case()` family of functions manipulate a character
 #'   vector, supporting either `camelCase` or `snake_case`.
@@ -19,7 +19,8 @@
 #' - [stats::setNames()].
 #'
 #' @param character Character vector.
-#' @param object Object for which a [names()] attribute will be meaningful.
+#' @param object Object for which a [base::names()] attribute will be
+#'   meaningful.
 #'
 #' @return Character vector or object with valid names.
 #' @export
@@ -28,6 +29,7 @@
 #' # Create character vectors of valid names
 #' camel("RNAi clone")
 #' snake("RNAi clone")
+#'
 #' titleCase("RNA sequencing")
 #' firstCase("RNA sequencing")
 #'
@@ -50,7 +52,6 @@ titleCase <- function(character) {
     gsub("\\b([a-z])", "\\U\\1", character, perl = TRUE)
 }
 
-
 #' @rdname names
 #' @export
 title_case <- titleCase
@@ -64,7 +65,6 @@ firstCase <- function(character) {
         titleCase %>%
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE)
 }
-
 
 #' @rdname names
 #' @export
@@ -97,7 +97,6 @@ makeNames <- function(character) {
         tolower
 }
 
-
 #' @rdname names
 #' @export
 make_names <- makeNames
@@ -112,11 +111,9 @@ makeNamesCamel <- function(character) {
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
-
 #' @rdname names
 #' @export
 make_names_camel <- makeNamesCamel
-
 
 #' @rdname names
 #' @export
@@ -131,7 +128,6 @@ makeNamesSnake <- function(character) {
         makeNames %>%
         str_replace_all("\\.", "_")
 }
-
 
 #' @rdname names
 #' @export
@@ -149,7 +145,6 @@ snake <- makeNamesSnake
 setNamesCamel <- function(object) {
     setNames(object, makeNamesCamel(names(object)))
 }
-
 
 #' @rdname names
 #' @export
@@ -175,7 +170,6 @@ set_names_dot <- setNamesDot
 setNamesSnake <- function(object) {
     setNames(object, makeNamesSnake(names(object)))
 }
-
 
 #' @rdname names
 #' @export
@@ -203,32 +197,25 @@ sanitizeNames <- function(object) {
     if (is.null(names(object))) {
         stop("Object doesn't contain names")
     }
-
     # (Column) names
     names(object) <- makeNamesSnake(names(object))
-
     # Rows, if they exist
     if (!is.null(rownames(object))) {
         # Ignore numbered rownames
         if (!identical(rownames(object), as.character(1:nrow(object)))) {
             rownames(object) <- makeNamesSnake(rownames(object))
         }
-
     }
-
-    return(object)
+    object
 }
-
 
 #' @rdname names
 #' @export
 sanitize_names <- sanitizeNames
 
-
 #' @rdname names
 #' @export
 sanitiseNames <- sanitizeNames
-
 
 #' @rdname names
 #' @export

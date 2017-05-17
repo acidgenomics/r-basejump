@@ -25,7 +25,7 @@
 \alias{sanitize_names}
 \alias{sanitiseNames}
 \alias{sanitise_names}
-\title{Generate syntactically valid names.}
+\title{Generate syntactically valid names}
 \usage{
 titleCase(character)
 
@@ -74,14 +74,15 @@ sanitise_names(object)
 \arguments{
 \item{character}{Character vector.}
 
-\item{object}{Object for which a \code{\link[=names]{names()}} attribute will be meaningful.}
+\item{object}{Object for which a \code{\link[base:names]{base::names()}} attribute will be
+meaningful.}
 }
 \value{
 Character vector or object with valid names.
 }
 \description{
-These are convenience function that set \code{\link[=names]{names()}} on an object and return the
-object, without modifying the underlying data.
+These are convenience function that set \code{\link[base:names]{base::names()}} on an object and
+return the object, without modifying the underlying data.
 }
 \details{
 \itemize{
@@ -99,6 +100,7 @@ count matrices containing gene names.
 # Create character vectors of valid names
 camel("RNAi clone")
 snake("RNAi clone")
+
 titleCase("RNA sequencing")
 firstCase("RNA sequencing")
 

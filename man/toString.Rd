@@ -3,12 +3,18 @@
 \name{toString}
 \alias{toString}
 \alias{toStringUnique}
+\alias{to_string_unique}
 \alias{toStringSortUnique}
-\title{Convert an R object to a character string.}
+\alias{to_string_sort_unique}
+\title{Convert an R object to a character string}
 \usage{
 toStringUnique(x)
 
+to_string_unique(x)
+
 toStringSortUnique(x)
+
+to_string_sort_unique(x)
 }
 \arguments{
 \item{x}{The object to be converted.}
