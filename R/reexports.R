@@ -323,27 +323,16 @@ tibble::tibble
 
 
 # tidyr ====
-#' @importFrom tidyr expand expand_ nest nest_ separate separate_ unnest unnest_
-#' @export
-tidyr::expand
+#' @importFrom tidyr expand_ nest_ separate_ unnest_
 
 #' @export
 tidyr::expand_
 
 #' @export
-tidyr::nest
-
-#' @export
 tidyr::nest_
 
 #' @export
-tidyr::separate
-
-#' @export
 tidyr::separate_
-
-#' @export
-tidyr::unnest
 
 #' @export
 tidyr::unnest_
