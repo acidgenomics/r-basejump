@@ -324,7 +324,6 @@ tibble::tibble
 
 # tidyr ====
 #' @importFrom tidyr expand_ nest_ separate_ unnest_
-
 #' @export
 tidyr::expand_
 
