@@ -1,4 +1,4 @@
-#' Save data objects.
+#' Save data objects
 #'
 #' Quick save to `data` (default) or `data-raw` directory.
 #'
@@ -23,6 +23,10 @@ saveData <- function(..., dir = "data") {
     invisible()
 }
 
+#' @rdname save
+#' @export
+save_data <- saveData
+
 
 
 #' @rdname save
@@ -30,14 +34,6 @@ saveData <- function(..., dir = "data") {
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
-
-
-
-#' @rdname save
-#' @export
-save_data <- saveData
-
-
 
 #' @rdname save
 #' @export

@@ -1,4 +1,4 @@
-#' Convert an R object to a character string.
+#' Convert an R object to a character string
 #'
 #' Helper functions for [format()] to produce a single character string
 #' describing an R object.
@@ -24,6 +24,11 @@ toStringUnique <- function(x) {
         str_replace_all("NA,\\s|,\\sNA", "")
 }
 
+#' @rdname toString
+#' @export
+to_string_unique <- toStringUnique
+
+
 
 #' @rdname toString
 #' @export
@@ -37,13 +42,17 @@ toStringSortUnique <- function(x) {
         str_replace_all("NA,\\s|,\\sNA", "")
 }
 
+#' @rdname toString
+#' @export
+to_string_sort_unique <- toStringSortUnique
+
 
 
 
 
 
 ## Data frame manipulations ====
-#' Summarize columns with [toString()].
+#' Summarize columns with [toString()]
 #'
 #' Collapse column data into a single row summary columnwize using
 #' [toString()].
@@ -65,7 +74,14 @@ toStringSummarize <- function(data) {
         mutate_all(funs(fixNA))
 }
 
+#' @rdname toStringSummarize
+#' @export
+to_string_summarize <- toStringSummarize
 
 #' @rdname toStringSummarize
 #' @export
 toStringSummarise <- toStringSummarize
+
+#' @rdname toStringSummarize
+#' @export
+to_string_summarise <- toStringSummarize

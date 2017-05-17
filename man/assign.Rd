@@ -2,9 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{assignMultiple}
 \alias{assignMultiple}
-\title{Assign multiple variables.}
+\alias{assign_multiple}
+\title{Assign multiple variables}
 \usage{
 assignMultiple(..., envir = parent.frame(), prefix = NULL)
+
+assign_multiple(..., envir = parent.frame(), prefix = NULL)
 }
 \arguments{
 \item{...}{List of variables to assign.}

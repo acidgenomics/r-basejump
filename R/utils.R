@@ -1,6 +1,8 @@
-#' Assign multiple variables.
+#' Assign multiple variables
 #'
 #' Optionally, you can specify a name prefix and the desired environment.
+#'
+#' @rdname assign
 #'
 #' @param ... List of variables to assign.
 #' @param envir Desired environment (optional).
@@ -23,9 +25,12 @@ assignMultiple <- function(
     }))
 }
 
+#' @rdname assign
+assign_multiple <- assignMultiple
 
 
-#' Fix empty and `NA` character strings.
+
+#' Fix empty and `NA` character strings
 #'
 #' @param string String missing `NA`.
 #'
@@ -38,12 +43,16 @@ fixNA <- function(string) {
     gsub("^$|^NA$", NA, string)
 }
 
+#' @rdname fixNA
+#' @export
+fix_na <- fixNA
 
 
-#' [grep()] against [toString()] formatted data.
+
+#' [grep()] pattern string generator
 #'
-#' Generates a grep pattern that will match an identifier in a comma separated
-#' string.
+#' Generate a [grep()] string for pattern matching against [toString()] return
+#' (comma separated).
 #'
 #' @param identifier Identifier.
 #'
@@ -51,8 +60,8 @@ fixNA <- function(string) {
 #' @export
 #'
 #' @examples
-#' grepToString("gene")
-grepToString <- function(identifier) {
+#' grepString("gene")
+grepString <- function(identifier) {
     identifier %>%
         paste0(
             # Unique:
@@ -68,9 +77,13 @@ grepToString <- function(identifier) {
             "\\s", ., "$")
 }
 
+#' @rdname grepString
+#' @export
+grep_string <- grepString
 
 
-#' Quickly perform sort unique on a vector.
+
+#' Quickly perform sort unique on a vector
 #'
 #' The function also strips `NA` values. This is useful for gene list server
 #' queries, for example.
@@ -84,7 +97,7 @@ grepToString <- function(identifier) {
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        na.omit %>%
+        stats::na.omit(.) %>%
         sort %>%
         unique
 }
@@ -96,7 +109,7 @@ sort_unique <- sortUnique
 
 
 
-#' Wash a data frame.
+#' Wash a data frame
 #'
 #' This function cleans poorly formed separators, leading and trailing commas or
 #' spaces, empty cells, and sets `NA` values if necessary.
