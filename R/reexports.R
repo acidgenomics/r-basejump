@@ -44,9 +44,9 @@ devtools::test
 
 
 ## dplyr ====
-#' @importFrom dplyr bind_cols bind_rows case_when combine distinct everything
-#'   funs group_by left_join mutate_all summarise summarise_all summarize
-#'   summarize_all top_n ungroup
+#' @importFrom dplyr bind_cols bind_rows case_when combine desc distinct
+#'   everything funs group_by left_join mutate_all summarise summarise_all
+#'   summarize summarize_all top_n ungroup
 #' @export
 dplyr::bind_cols
 
@@ -58,6 +58,9 @@ dplyr::case_when
 
 #' @export
 dplyr::combine
+
+#' @export
+dplyr::desc
 
 #' @export
 dplyr::distinct
@@ -159,11 +162,11 @@ methods::show
 
 
 # purrr ====
-# Prefer [set_names()] over [stats::setNames()]
 #' @importFrom purrr set_names
+#' @export
 purrr::set_names
 
-# Don't export over stats
+# Don't export camel variant over stats!
 purrr::set_names -> setNames
 
 

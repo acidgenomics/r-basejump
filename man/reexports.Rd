@@ -33,6 +33,8 @@
 \alias{reexports}
 \alias{combine}
 \alias{reexports}
+\alias{desc}
+\alias{reexports}
 \alias{distinct}
 \alias{reexports}
 \alias{everything}
@@ -185,7 +187,7 @@ below to see their documentation.
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
