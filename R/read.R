@@ -18,7 +18,8 @@ readDataRaw <- function() {
     }) %>% invisible
 }
 
-#' @rdname read
+#' @rdname aliases
+#' @usage NULL
 #' @export
 read_data_raw <- readDataRaw
 
@@ -36,6 +37,7 @@ readYAML <- function(yaml_file) {
     }
 }
 
-#' @rdname read
+#' @rdname aliases
+#' @usage NULL
 #' @export
 read_yaml <- readYAML

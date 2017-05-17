@@ -34,7 +34,8 @@ mdList <- function(character, ordered = FALSE) {
     writeLines(string)
 }
 
-#' @rdname markdown
+#' @rdname aliases
+#' @usage NULL
 #' @export
 md_list <- mdList
 

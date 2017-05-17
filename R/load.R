@@ -1,6 +1,7 @@
 #' Data loading utilities
 #'
 #' @rdname load
+#'
 #' @description Dynamically [source()] or [load()] raw data in the `data-raw`
 #'   directory.
 #'
@@ -22,7 +23,8 @@ loadDataRaw <- function(data) {
     }
 }
 
-#' @rdname load
+#' @rdname aliases
+#' @usage NULL
 #' @export
 load_data_raw <- loadDataRaw
 
@@ -45,6 +47,7 @@ loadRemote <- function(url) {
     load(get("tempfile"), envir = globalenv())
 }
 
-#' @rdname load
+#' @rdname aliases
+#' @usage NULL
 #' @export
 load_remote <- loadRemote
