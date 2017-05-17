@@ -38,6 +38,7 @@ logRatioToFoldChange <- function(logRatio, base = 2) {
     x
 }
 
-#' @rdname logRatioToFoldChange
+#' @rdname aliases
+#' @usage NULL
 #' @export
 log_ratio_to_fold_change <- logRatioToFoldChange

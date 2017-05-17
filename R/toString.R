@@ -24,7 +24,8 @@ toStringUnique <- function(x) {
         str_replace_all("NA,\\s|,\\sNA", "")
 }
 
-#' @rdname toString
+#' @rdname aliases
+#' @usage NULL
 #' @export
 to_string_unique <- toStringUnique
 
@@ -42,7 +43,8 @@ toStringSortUnique <- function(x) {
         str_replace_all("NA,\\s|,\\sNA", "")
 }
 
-#' @rdname toString
+#' @rdname aliases
+#' @usage NULL
 #' @export
 to_string_sort_unique <- toStringSortUnique
 
@@ -74,14 +76,17 @@ toStringSummarize <- function(data) {
         mutate_all(funs(fixNA))
 }
 
-#' @rdname toStringSummarize
+#' @rdname aliases
+#' @usage NULL
 #' @export
 to_string_summarize <- toStringSummarize
 
-#' @rdname toStringSummarize
+#' @rdname aliases
+#' @usage NULL
 #' @export
 toStringSummarise <- toStringSummarize
 
-#' @rdname toStringSummarize
+#' @rdname aliases
+#' @usage NULL
 #' @export
 to_string_summarise <- toStringSummarize

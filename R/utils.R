@@ -25,7 +25,9 @@ assignMultiple <- function(
     }))
 }
 
-#' @rdname assign
+#' @rdname aliases
+#' @usage NULL
+#' @export
 assign_multiple <- assignMultiple
 
 
@@ -43,7 +45,8 @@ fixNA <- function(string) {
     gsub("^$|^NA$", NA, string)
 }
 
-#' @rdname fixNA
+#' @rdname aliases
+#' @usage NULL
 #' @export
 fix_na <- fixNA
 
@@ -77,7 +80,8 @@ grepString <- function(identifier) {
             "\\s", ., "$")
 }
 
-#' @rdname grepString
+#' @rdname aliases
+#' @usage NULL
 #' @export
 grep_string <- grepString
 
@@ -102,7 +106,8 @@ sortUnique <- function(vector) {
         unique
 }
 
-#' @rdname sortUnique
+#' @rdname aliases
+#' @usage NULL
 #' @export
 sort_unique <- sortUnique
 
