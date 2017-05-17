@@ -49,6 +49,10 @@
 \alias{reexports}
 \alias{summarise_all}
 \alias{reexports}
+\alias{summarize}
+\alias{reexports}
+\alias{summarize_all}
+\alias{reexports}
 \alias{top_n}
 \alias{reexports}
 \alias{ungroup}
@@ -67,13 +71,13 @@
 \alias{reexports}
 \alias{set_colnames}
 \alias{reexports}
-\alias{set_names}
-\alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
 \alias{as}
 \alias{reexports}
 \alias{show}
+\alias{reexports}
+\alias{set_names}
 \alias{reexports}
 \alias{gunzip}
 \alias{reexports}
@@ -121,8 +125,6 @@
 \alias{reexports}
 \alias{render}
 \alias{reexports}
-\alias{setNames}
-\alias{reexports}
 \alias{str_detect}
 \alias{reexports}
 \alias{str_extract}
@@ -155,13 +157,21 @@
 \alias{reexports}
 \alias{tibble}
 \alias{reexports}
+\alias{expand}
+\alias{reexports}
 \alias{expand_}
 \alias{reexports}
 \alias{nest}
 \alias{reexports}
+\alias{nest_}
+\alias{reexports}
+\alias{separate}
+\alias{reexports}
 \alias{separate_}
 \alias{reexports}
 \alias{unnest}
+\alias{reexports}
+\alias{unnest_}
 \alias{reexports}
 \alias{file_path_sans_ext}
 \alias{reexports}
@@ -183,15 +193,17 @@ below to see their documentation.
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_names}}, \code{\link[magrittr]{set_rownames}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{methods}{\code{\link[methods]{as}}, \code{\link[methods]{show}}}
+
+  \item{purrr}{\code{\link[purrr]{set_names}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 
@@ -207,13 +219,11 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{stats}{\code{\link[stats]{setNames}}}
-
   \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
-  \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}}
+  \item{tidyr}{\code{\link[tidyr]{expand}}, \code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
 
   \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 

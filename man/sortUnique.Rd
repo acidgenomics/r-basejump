@@ -2,12 +2,9 @@
 % Please edit documentation in R/utils.R
 \name{sortUnique}
 \alias{sortUnique}
-\alias{sort_unique}
 \title{Quickly perform sort unique on a vector}
 \usage{
 sortUnique(vector)
-
-sort_unique(vector)
 }
 \arguments{
 \item{vector}{Vector with duplicates, \code{NA} values.}
