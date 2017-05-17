@@ -2,36 +2,21 @@
 % Please edit documentation in R/project.R
 \name{createProjectDirs}
 \alias{createProjectDirs}
-\alias{create_project_dirs}
 \alias{detectHPC}
-\alias{detect_hpc}
 \alias{packageProject}
-\alias{package_project}
 \alias{renderProject}
-\alias{render_project}
 \alias{clearWarnings}
-\alias{clear_warnings}
 \title{Project management utilities}
 \usage{
 createProjectDirs()
 
-create_project_dirs()
-
 detectHPC()
-
-detect_hpc()
 
 packageProject(install = FALSE, test = FALSE)
 
-package_project(install = FALSE, test = FALSE)
-
 renderProject(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
 
-render_project(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
-
 clearWarnings()
-
-clear_warnings()
 }
 \arguments{
 \item{install}{Install package.}
