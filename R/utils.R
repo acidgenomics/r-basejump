@@ -87,6 +87,32 @@ grep_string <- grepString
 
 
 
+#' Remove rows and columns containing only `NA` values
+#'
+#' @param x Object with column data (e.g. data frame, matrix).
+#'
+#' @return Sanitized data.
+#'
+#' @examples
+#' # Remove NA only rows and columns
+#' data.frame(a = c(1,  NA, 3),
+#'            b = c(NA, NA, NA),
+#'            c = c(4,  NA, 6)) %>% removeNA
+removeNA <- function(x) {
+    if (!class(x) %in% c("data.frame", "matrix")) {
+        message("Only applicable to column data")
+        return(x)
+    }
+    x %>%
+        # Remove all NA rows
+        .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
+        # Remove all NA columns
+        .[, apply(., 2, function(a) { !all(is.na(a)) })]
+
+}
+
+
+
 #' Quickly perform sort unique on a vector
 #'
 #' The function also strips `NA` values. This is useful for gene list server
