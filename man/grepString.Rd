@@ -2,12 +2,9 @@
 % Please edit documentation in R/utils.R
 \name{grepString}
 \alias{grepString}
-\alias{grep_string}
 \title{\code{\link[=grep]{grep()}} pattern string generator}
 \usage{
 grepString(identifier)
-
-grep_string(identifier)
 }
 \arguments{
 \item{identifier}{Identifier.}

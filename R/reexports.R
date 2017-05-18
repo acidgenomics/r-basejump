@@ -1,99 +1,82 @@
-## Bioconductor ====
+# Bioconductor ====
 #' @importFrom BiocInstaller biocValid
-#' @usage NULL
 #' @export
 BiocInstaller::biocValid
 
 
 
-## biomaRt ====
+# biomaRt ====
 #' @importFrom biomaRt getBM listMarts useEnsembl
-#' @usage NULL
 #' @export
 biomaRt::getBM
 
-#' @usage NULL
 #' @export
 biomaRt::listMarts
 
-#' @usage NULL
 #' @export
 biomaRt::useEnsembl
 
 
 
-## devtools ====
+# devtools ====
 #' @import devtools
-#' @usage NULL
 #' @export
 devtools::build
 
-#' @usage NULL
 #' @export
 devtools::build_vignettes
 
-#' @usage NULL
 #' @export
 devtools::check
 
-#' @usage NULL
 #' @export
 devtools::document
 
-#' @usage NULL
 #' @export
 devtools::install
 
-#' @usage NULL
 #' @export
 devtools::load_all
 
-#' @usage NULL
 #' @export
 devtools::test
 
 
 
 ## dplyr ====
-#' @importFrom dplyr bind_cols bind_rows case_when combine distinct everything
-#'   funs group_by left_join mutate_all summarise summarise_all top_n ungroup
-#' @usage NULL
+#' @importFrom dplyr bind_cols bind_rows case_when combine desc distinct
+#'   everything funs group_by left_join mutate_all summarise summarise_all
+#'   summarize summarize_all top_n ungroup
 #' @export
 dplyr::bind_cols
 
-#' @usage NULL
 #' @export
 dplyr::bind_rows
 
-#' @usage NULL
 #' @export
 dplyr::case_when
 
-#' @usage NULL
 #' @export
 dplyr::combine
 
-#' @usage NULL
+#' @export
+dplyr::desc
+
 #' @export
 dplyr::distinct
 
-#' @usage NULL
 #' @export
 dplyr::everything
 
-#' @usage NULL
 #' @export
 dplyr::funs
 
-#' @usage NULL
 #' @export
 dplyr::group_by
 
-#' @usage NULL
 #' @export
 dplyr::left_join
 
-#' @usage NULL
 #' @export
 dplyr::mutate_all
 
@@ -102,251 +85,218 @@ dplyr::mutate_all
 #' @export
 dplyr::"starwars" -> "starwars"
 
-#' @usage NULL
 #' @export
 dplyr::summarise
 
-#' @usage NULL
 #' @export
 dplyr::summarise_all
 
-#' @usage NULL
+#' @export
+dplyr::summarize
+
+#' @export
+dplyr::summarize_all
+
 #' @export
 dplyr::top_n
 
-#' @usage NULL
 #' @export
 dplyr::ungroup
 
 
 
-## graphics ====
+# graphics ====
 #' @importFrom graphics hist
-#' @usage NULL
 #' @export
 graphics::hist
 
 
 
-## knitr ====
+# knitr ====
 #' @importFrom knitr asis_output kable opts_chunk opts_knit
-#' @usage NULL
 #' @export
 knitr::asis_output
 
-#' @usage NULL
 #' @export
 knitr::kable
 
-#' @usage NULL
 #' @export
 knitr::opts_chunk
 
-#' @usage NULL
 #' @export
 knitr::opts_knit
 
 
 
-## magrittr ====
-#' @importFrom magrittr %>% set_colnames set_names set_rownames
-#' @usage NULL
+# magrittr ====
+#' @importFrom magrittr %>% set_colnames set_rownames
 #' @export
 magrittr::`%>%`
 
-#' @usage NULL
 #' @export
 magrittr::set_colnames
 
+#' @rdname aliases
 #' @usage NULL
 #' @export
-magrittr::set_names
+magrittr::set_colnames -> setColnames
 
-#' @usage NULL
 #' @export
 magrittr::set_rownames
 
-
-
-## methods ====
-#' @importFrom methods as show
+#' @rdname aliases
 #' @usage NULL
+#' @export
+magrittr::set_rownames -> setRownames
+
+
+
+# methods ====
+#' @importFrom methods as show
 #' @export
 methods::as
 
-#' @usage NULL
 #' @export
 methods::show
 
 
 
-## R.utils ====
+# purrr ====
+#' @importFrom purrr set_names
+#' @export
+purrr::set_names
+
+# Don't export camel variant over stats!
+purrr::set_names -> setNames
+
+
+
+# R.utils ====
 #' @importFrom R.utils gzip gunzip
-#' @usage NULL
 #' @export
 R.utils::gunzip
 
-#' @usage NULL
 #' @export
 R.utils::gzip
 
 
 
-## RCurl ====
+# RCurl ====
 #' @importFrom RCurl getURL
-#' @usage NULL
 #' @export
 RCurl::getURL
 
 
 
-## readr ====
+# readr ====
 #' @import readr
-#' @usage NULL
 #' @export
 readr::read_csv
 
-#' @usage NULL
 #' @export
 readr::read_delim
 
-#' @usage NULL
 #' @export
 readr::read_lines
 
-#' @usage NULL
 #' @export
 readr::read_table
 
-#' @usage NULL
 #' @export
 readr::read_tsv
 
-#' @usage NULL
 #' @export
 readr::write_csv
 
-#' @usage NULL
 #' @export
 readr::write_lines
 
-#' @usage NULL
 #' @export
 readr::write_tsv
 
 
 
-## readxl ====
+# readxl ====
 #' @importFrom readxl read_excel
-#' @usage NULL
 #' @export
 readxl::read_excel
 
 
 
-## reshape ====
+# reshape ====
 #' @importFrom reshape2 melt
-#' @usage NULL
 #' @export
 reshape2::melt
 
 
 
-## rlang ====
+# rlang ====
 #' @importFrom rlang !!! !! .data is_string quo quos sym syms UQ
-#' @usage NULL
 #' @export
 rlang::`!!!`
 
-#' @usage NULL
 #' @export
 rlang::`!!`
 
-#' @usage NULL
 #' @export
 rlang::.data
 
-#' @usage NULL
 #' @export
 rlang::is_string
 
-#' @usage NULL
 #' @export
 rlang::quo
 
-#' @usage NULL
 #' @export
 rlang::quos
 
-#' @usage NULL
 #' @export
 rlang::sym
 
-#' @usage NULL
 #' @export
 rlang::syms
 
-#' @usage NULL
 #' @export
 rlang::UQ
 
 
 
-## rmarkdown ====
+# rmarkdown ====
 #' @importFrom rmarkdown render
-#' @usage NULL
 #' @export
 rmarkdown::render
 
 
 
-## stats ====
-#' @importFrom stats setNames
-#' @usage NULL
-#' @export
-stats::setNames
-
-
-
-## stringr ====
+# stringr ====
 #' @import stringr
-#' @usage NULL
 #' @export
 stringr::str_detect
 
-#' @usage NULL
 #' @export
 stringr::str_extract
 
-#' @usage NULL
 #' @export
 stringr::str_extract_all
 
-#' @usage NULL
 #' @export
 stringr::str_match
 
-#' @usage NULL
 #' @export
 stringr::str_match_all
 
-#' @usage NULL
 #' @export
 stringr::str_pad
 
-#' @usage NULL
 #' @export
 stringr::str_replace
 
-#' @usage NULL
 #' @export
 stringr::str_replace_all
 
-#' @usage NULL
 #' @export
 stringr::str_split
 
-#' @usage NULL
 #' @export
 stringr::str_subset
 
@@ -355,49 +305,39 @@ stringr::str_subset
 ## tibble ====
 #' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
 #'   rownames_to_column tibble
-#' @usage NULL
 #' @export
 tibble::as_tibble
 
-#' @usage NULL
 #' @export
 tibble::glimpse
 
-#' @usage NULL
 #' @export
 tibble::is_tibble
 
-#' @usage NULL
 #' @export
 tibble::remove_rownames
 
-#' @usage NULL
 #' @export
 tibble::rownames_to_column
 
-#' @usage NULL
 #' @export
 tibble::tibble
 
 
 
-## tidyr ====
-#' @importFrom tidyr expand_ nest separate_ unnest
-#' @usage NULL
+# tidyr ====
+#' @importFrom tidyr expand_ nest_ separate_ unnest_
 #' @export
 tidyr::expand_
 
-#' @usage NULL
 #' @export
-tidyr::nest
+tidyr::nest_
 
-#' @usage NULL
 #' @export
 tidyr::separate_
 
-#' @usage NULL
 #' @export
-tidyr::unnest
+tidyr::unnest_
 
 
 
@@ -408,16 +348,13 @@ tools::file_path_sans_ext
 
 
 
-## utils ====
+# utils ====
 #' @importFrom utils download.file globalVariables sessionInfo
-#' @usage NULL
 #' @export
 utils::download.file
 
-#' @usage NULL
 #' @export
 utils::globalVariables
 
-#' @usage NULL
 #' @export
 utils::sessionInfo

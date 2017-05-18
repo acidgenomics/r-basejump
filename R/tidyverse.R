@@ -15,9 +15,14 @@
 #' - [dplyr::filter()].
 #' - [dplyr::mutate()].
 #' - [dplyr::select()].
-import_tidy_verbs <- function(envir = parent.frame()) {
+importTidyVerbs <- function(envir = parent.frame()) {
     assign("arrange", dplyr::arrange, envir = envir)
     assign("filter", dplyr::filter, envir = envir)
     assign("mutate", dplyr::mutate, envir = envir)
     assign("select", dplyr::select, envir = envir)
 }
+
+#' @rdname aliases
+#' @usage NULL
+#' @export
+import_tidy_verbs <- importTidyVerbs
