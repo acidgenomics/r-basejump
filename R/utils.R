@@ -92,23 +92,39 @@ grep_string <- grepString
 #' @param x Object with column data (e.g. data frame, matrix).
 #'
 #' @return Sanitized data.
+#' @export
 #'
 #' @examples
 #' # Remove NA only rows and columns
-#' data.frame(a = c(1,  NA, 3),
+#' matrix(c(1, NA, 3,
+#'          NA, NA, NA,
+#'          2, NA, 4),
+#'        nrow = 3, ncol = 3) %>% removeNA
+#'
+#' data.frame(a = c("A", NA, "C"),
 #'            b = c(NA, NA, NA),
-#'            c = c(4,  NA, 6)) %>% removeNA
+#'            c = c("B", NA, "D")) %>% removeNA
+#'
+#' tibble(a = c("A", NA, "C"),
+#'        b = c(NA, NA, NA),
+#'        c = c("B", NA, "D")) %>% removeNA
+#'
+#'
+#' # Return unmodified
+#' list(a = c("A", NA, "C"),
+#'      b = c(NA, NA, NA),
+#'      c = c("B", NA, "D")) %>% removeNA
 removeNA <- function(x) {
-    if (!class(x) %in% c("data.frame", "matrix")) {
+    if (!any(is.data.frame(x), is.matrix(x))) {
         message("Only applicable to column data")
-        return(x)
+        x
+    } else {
+        x %>%
+            # Remove all NA rows
+            .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
+            # Remove all NA columns
+            .[, apply(., 2, function(a) { !all(is.na(a)) })]
     }
-    x %>%
-        # Remove all NA rows
-        .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
-        # Remove all NA columns
-        .[, apply(., 2, function(a) { !all(is.na(a)) })]
-
 }
 
 #' @rdname aliases

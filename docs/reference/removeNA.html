@@ -98,11 +98,37 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Remove NA only rows and columns</span>
-<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>,  <span class='fl'>NA</span>, <span class='fl'>3</span>),
+<span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>,
+         <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>,
+         <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
+       <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt;      [,1] [,2]
+#&gt; [1,]    1    2
+#&gt; [2,]    3    4</div><div class='input'>
+<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
            <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-           <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4</span>,  <span class='fl'>NA</span>, <span class='fl'>6</span>)) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt;   a c
-#&gt; 1 1 4
-#&gt; 3 3 6</div></pre>
+           <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt;   a c
+#&gt; 1 A B
+#&gt; 3 C D</div><div class='input'>
+<span class='fu'><a href='reexports.html'>tibble</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
+       <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+       <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;       a     c
+#&gt;   &lt;chr&gt; &lt;chr&gt;
+#&gt; 1     A     B
+#&gt; 2     C     D</div><div class='input'>
+
+<span class='co'># Return unmodified</span>
+<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
+     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt; <span class='message'>Only applicable to column data</span></div><div class='output co'>#&gt; $a
+#&gt; [1] "A" NA  "C"
+#&gt; 
+#&gt; $b
+#&gt; [1] NA NA NA
+#&gt; 
+#&gt; $c
+#&gt; [1] "B" NA  "D"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
