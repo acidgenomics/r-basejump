@@ -111,6 +111,11 @@ removeNA <- function(x) {
 
 }
 
+#' @rdname aliases
+#' @usage NULL
+#' @export
+remove_na <- removeNA
+
 
 
 #' Quickly perform sort unique on a vector
