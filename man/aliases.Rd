@@ -35,6 +35,7 @@
 \alias{assign_multiple}
 \alias{fix_na}
 \alias{grep_string}
+\alias{remove_na}
 \alias{sort_unique}
 \title{Function aliases}
 \usage{
