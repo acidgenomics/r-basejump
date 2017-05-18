@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.0.10
-Date: 2017-05-14
+Version: 0.0.11
+Date: 2017-05-18
 Authors@R:
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -26,13 +26,13 @@ Imports:
     magrittr (>= 1.5),
     methods,
     RCurl (>= 1.95),
+    purrr (>= 0.2.2),
     readr (>= 1.1.0),
     readxl (>= 1.0.0),
     reshape2 (>= 1.4.2),
     rmarkdown (>= 1.5),
     rlang (>= 0.0.0.9000),
     R.utils,
-    stats,
     stringr (>= 1.2.0),
     tibble (>= 1.3.0),
     tidyr (>= 0.6.1),

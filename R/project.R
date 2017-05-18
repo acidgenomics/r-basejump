@@ -22,7 +22,8 @@ createProjectDirs <- function() {
     }) %>% invisible
 }
 
-#' @rdname project
+#' @rdname aliases
+#' @usage NULL
 #' @export
 create_project_dirs <- createProjectDirs
 
@@ -47,7 +48,8 @@ detectHPC <- function() {
     }
 }
 
-#' @rdname project
+#' @rdname aliases
+#' @usage NULL
 #' @export
 detect_hpc <- detectHPC
 
@@ -83,7 +85,8 @@ packageProject <- function(
     biocValid()
 }
 
-#' @rdname project
+#' @rdname aliases
+#' @usage NULL
 #' @export
 package_project <- packageProject
 
@@ -128,7 +131,8 @@ renderProject <- function(
     }) %>% invisible
 }
 
-#' @rdname project
+#' @rdname aliases
+#' @usage NULL
 #' @export
 render_project <- renderProject
 
@@ -141,6 +145,7 @@ clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
 
-#' @rdname project
+#' @rdname aliases
+#' @usage NULL
 #' @export
 clear_warnings <- clearWarnings

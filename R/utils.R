@@ -25,7 +25,9 @@ assignMultiple <- function(
     }))
 }
 
-#' @rdname assign
+#' @rdname aliases
+#' @usage NULL
+#' @export
 assign_multiple <- assignMultiple
 
 
@@ -43,7 +45,8 @@ fixNA <- function(string) {
     gsub("^$|^NA$", NA, string)
 }
 
-#' @rdname fixNA
+#' @rdname aliases
+#' @usage NULL
 #' @export
 fix_na <- fixNA
 
@@ -77,9 +80,36 @@ grepString <- function(identifier) {
             "\\s", ., "$")
 }
 
-#' @rdname grepString
+#' @rdname aliases
+#' @usage NULL
 #' @export
 grep_string <- grepString
+
+
+
+#' Remove rows and columns containing only `NA` values
+#'
+#' @param x Object with column data (e.g. data frame, matrix).
+#'
+#' @return Sanitized data.
+#'
+#' @examples
+#' # Remove NA only rows and columns
+#' data.frame(a = c(1,  NA, 3),
+#'            b = c(NA, NA, NA),
+#'            c = c(4,  NA, 6)) %>% removeNA
+removeNA <- function(x) {
+    if (!class(x) %in% c("data.frame", "matrix")) {
+        message("Only applicable to column data")
+        return(x)
+    }
+    x %>%
+        # Remove all NA rows
+        .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
+        # Remove all NA columns
+        .[, apply(., 2, function(a) { !all(is.na(a)) })]
+
+}
 
 
 
@@ -102,7 +132,8 @@ sortUnique <- function(vector) {
         unique
 }
 
-#' @rdname sortUnique
+#' @rdname aliases
+#' @usage NULL
 #' @export
 sort_unique <- sortUnique
 

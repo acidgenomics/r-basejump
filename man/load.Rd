@@ -2,18 +2,12 @@
 % Please edit documentation in R/load.R
 \name{loadDataRaw}
 \alias{loadDataRaw}
-\alias{load_data_raw}
 \alias{loadRemote}
-\alias{load_remote}
 \title{Data loading utilities}
 \usage{
 loadDataRaw(data)
 
-load_data_raw(data)
-
 loadRemote(url)
-
-load_remote(url)
 }
 \arguments{
 \item{data}{Data object.}
