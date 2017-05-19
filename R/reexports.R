@@ -151,16 +151,6 @@ magrittr::set_rownames -> setRownames
 
 
 
-# methods ====
-#' @importFrom methods as show
-#' @export
-methods::as
-
-#' @export
-methods::show
-
-
-
 # purrr ====
 #' @importFrom purrr set_names
 #' @export
@@ -349,12 +339,15 @@ tools::file_path_sans_ext
 
 
 # utils ====
-#' @importFrom utils download.file globalVariables sessionInfo
+#' @importFrom utils download.file globalVariables read.table sessionInfo
 #' @export
 utils::download.file
 
 #' @export
 utils::globalVariables
+
+#' @export
+utils::read.table
 
 #' @export
 utils::sessionInfo

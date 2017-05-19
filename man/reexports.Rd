@@ -75,10 +75,6 @@
 \alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
-\alias{as}
-\alias{reexports}
-\alias{show}
-\alias{reexports}
 \alias{set_names}
 \alias{reexports}
 \alias{gunzip}
@@ -173,6 +169,8 @@
 \alias{reexports}
 \alias{globalVariables}
 \alias{reexports}
+\alias{read.table}
+\alias{reexports}
 \alias{sessionInfo}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -194,8 +192,6 @@ below to see their documentation.
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
-
-  \item{methods}{\code{\link[methods]{as}}, \code{\link[methods]{show}}}
 
   \item{purrr}{\code{\link[purrr]{set_names}}}
 
@@ -221,6 +217,6 @@ below to see their documentation.
 
   \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{sessionInfo}}}
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{read.table}}, \code{\link[utils]{sessionInfo}}}
 }}
 
