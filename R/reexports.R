@@ -45,7 +45,7 @@ devtools::test
 
 ## dplyr ====
 #' @importFrom dplyr bind_cols bind_rows case_when combine desc distinct
-#'   everything funs group_by left_join mutate_all summarise summarise_all
+#'   everything funs group_by left_join mutate_all n summarise summarise_all
 #'   summarize summarize_all top_n ungroup
 #' @export
 dplyr::bind_cols
@@ -79,6 +79,9 @@ dplyr::left_join
 
 #' @export
 dplyr::mutate_all
+
+#' @export
+dplyr::n
 
 #' Star Wars dataset.
 #' @keywords internal
