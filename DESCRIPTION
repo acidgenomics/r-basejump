@@ -24,7 +24,6 @@ Imports:
     dplyr (>= 0.5.0.9000),
     knitr (>= 1.15),
     magrittr (>= 1.5),
-    methods,
     RCurl (>= 1.95),
     purrr (>= 0.2.2),
     readr (>= 1.1.0),
