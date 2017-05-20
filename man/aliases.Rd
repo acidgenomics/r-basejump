@@ -4,7 +4,6 @@
 %   R/tidyverse.R, R/toString.R, R/utils.R
 \name{aliases}
 \alias{aliases}
-\alias{load_data}
 \alias{load_remote}
 \alias{log_ratio_to_fold_change}
 \alias{dot_notation}

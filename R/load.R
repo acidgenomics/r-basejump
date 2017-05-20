@@ -37,10 +37,11 @@ loadData <- function(...) {
     }) %>% invisible
 }
 
-#' @rdname aliases
-#' @usage NULL
-#' @export
-load_data <- loadData
+# NAMESPACE collison with devtools::load_data
+# @rdname aliases
+# @usage NULL
+# @export
+# load_data <- loadData
 
 
 
