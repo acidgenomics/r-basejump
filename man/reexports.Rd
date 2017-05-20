@@ -11,6 +11,8 @@
 \alias{reexports}
 \alias{useEnsembl}
 \alias{reexports}
+\alias{useMart}
+\alias{reexports}
 \alias{build}
 \alias{reexports}
 \alias{build_vignettes}
@@ -31,23 +33,27 @@
 \alias{reexports}
 \alias{case_when}
 \alias{reexports}
-\alias{combine}
-\alias{reexports}
 \alias{desc}
 \alias{reexports}
 \alias{distinct}
 \alias{reexports}
 \alias{everything}
 \alias{reexports}
+\alias{full_join}
+\alias{reexports}
 \alias{funs}
 \alias{reexports}
 \alias{group_by}
+\alias{reexports}
+\alias{inner_join}
 \alias{reexports}
 \alias{left_join}
 \alias{reexports}
 \alias{mutate_all}
 \alias{reexports}
 \alias{n}
+\alias{reexports}
+\alias{right_join}
 \alias{reexports}
 \alias{summarise}
 \alias{reexports}
@@ -63,6 +69,14 @@
 \alias{reexports}
 \alias{hist}
 \alias{reexports}
+\alias{content}
+\alias{reexports}
+\alias{content_type_json}
+\alias{reexports}
+\alias{GET}
+\alias{reexports}
+\alias{user_agent}
+\alias{reexports}
 \alias{asis_output}
 \alias{reexports}
 \alias{kable}
@@ -77,7 +91,11 @@
 \alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
-\alias{set_names}
+\alias{mclapply}
+\alias{reexports}
+\alias{mcmapply}
+\alias{reexports}
+\alias{pbmclapply}
 \alias{reexports}
 \alias{gunzip}
 \alias{reexports}
@@ -111,11 +129,33 @@
 \alias{reexports}
 \alias{.data}
 \alias{reexports}
+\alias{is_atomic}
+\alias{reexports}
+\alias{is_bytes}
+\alias{reexports}
+\alias{is_character}
+\alias{reexports}
+\alias{is_double}
+\alias{reexports}
+\alias{is_integer}
+\alias{reexports}
+\alias{is_list}
+\alias{reexports}
+\alias{is_logical}
+\alias{reexports}
+\alias{is_null}
+\alias{reexports}
+\alias{is_raw}
+\alias{reexports}
 \alias{is_string}
+\alias{reexports}
+\alias{is_vector}
 \alias{reexports}
 \alias{quo}
 \alias{reexports}
 \alias{quos}
+\alias{reexports}
+\alias{set_names}
 \alias{reexports}
 \alias{sym}
 \alias{reexports}
@@ -130,6 +170,8 @@
 \alias{str_extract}
 \alias{reexports}
 \alias{str_extract_all}
+\alias{reexports}
+\alias{str_length}
 \alias{reexports}
 \alias{str_match}
 \alias{reexports}
@@ -159,9 +201,13 @@
 \alias{reexports}
 \alias{expand_}
 \alias{reexports}
+\alias{nest}
+\alias{reexports}
 \alias{nest_}
 \alias{reexports}
 \alias{separate_}
+\alias{reexports}
+\alias{unnest}
 \alias{reexports}
 \alias{unnest_}
 \alias{reexports}
@@ -183,19 +229,23 @@ below to see their documentation.
 \describe{
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
-  \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}}
+  \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{combine}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
+
+  \item{httr}{\code{\link[httr]{content}}, \code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
-  \item{purrr}{\code{\link[purrr]{set_names}}}
+  \item{parallel}{\code{\link[parallel]{mclapply}}, \code{\link[parallel]{mcmapply}}}
+
+  \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 
@@ -207,15 +257,15 @@ below to see their documentation.
 
   \item{reshape2}{\code{\link[reshape2]{melt}}}
 
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
+  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
+  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_subset}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
-  \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest_}}}
+  \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
 
   \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 
