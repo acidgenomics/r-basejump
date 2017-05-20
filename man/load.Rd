@@ -5,14 +5,14 @@
 \alias{loadRemote}
 \title{Data loading utilities}
 \usage{
-loadData(data)
+loadData(...)
 
 loadRemote(url)
 }
 \arguments{
-\item{url}{URL.}
-
 \item{...}{Data files as dot objects.}
+
+\item{url}{URL.}
 }
 \description{
 Dynamically \code{\link[=load]{load()}} data from \code{data} directory or \code{\link[=source]{source()}}
@@ -23,8 +23,7 @@ Load a remote R binary file.
 \examples{
 \dontrun{
 loadData(geneIDs, oligo)
-}
-\dontrun{
 loadRemote("http://example.com/data.rda")
 }
+
 }

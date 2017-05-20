@@ -2,18 +2,19 @@
 #'
 #' @rdname load
 #'
-#' @description Dynamically [load()] data from `data` directory or [source()]
-#'   the corresponding script frmo the `data-raw` directory.
-#'
 #' @param ... Data files as dot objects.
-#'
-#' @export
+#' @param url URL.
 #'
 #' @examples
 #' \dontrun{
 #' loadData(geneIDs, oligo)
+#' loadRemote("http://example.com/data.rda")
 #' }
-loadData <- function(data) {
+#'
+#' @description Dynamically [load()] data from `data` directory or [source()]
+#'   the corresponding script frmo the `data-raw` directory.
+#' @export
+loadData <- function(...) {
     names <- as.character(substitute(list(...)))[-1L]
     sapply(seq_along(names), function(a) {
         if (file.exists(paste0("data/", names[a], ".rda"))) {
@@ -41,15 +42,7 @@ load_data <- loadData
 
 #' @rdname load
 #' @description Load a remote R binary file.
-#'
-#' @param url URL.
-#'
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' loadRemote("http://example.com/data.rda")
-#' }
 loadRemote <- function(url) {
     tempfile <- tempfile()
     download.file(url, get("tempfile"), quiet = TRUE)
