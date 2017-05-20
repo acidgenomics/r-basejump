@@ -2,31 +2,40 @@
 #'
 #' @rdname load
 #'
-#' @description Dynamically [source()] or [load()] raw data in the `data-raw`
-#'   directory.
+#' @description Dynamically [load()] data from `data` directory or [source()]
+#'   the corresponding script frmo the `data-raw` directory.
 #'
-#' @param data Data object.
+#' @param ... Data files as dot objects.
 #'
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' loadDataRaw("counts")
+#' loadData(geneIDs, oligo)
 #' }
-loadDataRaw <- function(data) {
-    for (a in 1:length(data)) {
-        if (!file.exists(paste0("data/", data[a], ".rda"))) {
-            source(paste0("data-raw/", data[a], ".R"))
+loadData <- function(data) {
+    names <- as.character(substitute(list(...)))[-1L]
+    sapply(seq_along(names), function(a) {
+        if (file.exists(paste0("data/", names[a], ".rda"))) {
+            # Check for .rda file in `data/`
+            load(paste0("data/", names[a], ".rda"), envir = parent.frame())
+        } else if (file.exists(paste0("data-raw/", names[a], ".rda"))) {
+            # Check for .rda file in `data-raw/
+            load(paste0("data-raw/", names[a], ".rda"), envir = parent.frame())
+        } else if (file.exists(paste0("data-raw/", names[a], ".R"))) {
+            # Source .R script in `data-raw/`
+            source(paste0("data-raw/", names[a], ".R"))
         } else {
-            load(paste0("data/", data[a], ".rda"), envir = parent.frame())
+            # Skip and warn
+            warning(paste(names[a], "missing"))
         }
-    }
+    }) %>% invisible
 }
 
 #' @rdname aliases
 #' @usage NULL
 #' @export
-load_data_raw <- loadDataRaw
+load_data <- loadData
 
 
 
