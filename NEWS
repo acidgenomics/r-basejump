@@ -1,3 +1,4 @@
+0.0.12  Update exports based on worminfo package.
 0.0.11  Improved naming functions to dynamically handle character vectors
         and objects that support naming assignments.
         Added removeNA utility function.

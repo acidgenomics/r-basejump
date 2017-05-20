@@ -2,7 +2,8 @@
 % Please edit documentation in R/tidyverse.R
 \name{importTidyVerbs}
 \alias{importTidyVerbs}
-\title{Import generic \href{http://tidyverse.org/}{tidyverse} verbs to environment.}
+\title{Import \href{https://www.bioconductor.org/}{Bioconductor}-masked generic
+\href{http://tidyverse.org/}{tidyverse} verbs to environment.}
 \usage{
 importTidyVerbs(envir = parent.frame())
 }
@@ -10,16 +11,16 @@ importTidyVerbs(envir = parent.frame())
 \item{envir}{Environment to assign the verbs.}
 }
 \description{
-Avoid NAMESPACE collisions with \href{https://www.bioconductor.org}{Bioconductor}
-and other S4 generics.
+Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconductor}
+BiocGenerics and S4Vectors.
 }
 \seealso{
 \itemize{
+\item \href{http://bioconductor.org/packages/release/bioc/html/BiocGenerics.html}{BiocGenerics}.
+\item \href{http://bioconductor.org/packages/release/bioc/html/S4Vectors.html}{S4Vectors}.
 \item \href{http://style.tidyverse.org/}{tidyverse style guide}.
-\item \code{\link[dplyr:arrange]{dplyr::arrange()}}.
-\item \code{\link[dplyr:filter]{dplyr::filter()}}.
-\item \code{\link[dplyr:mutate]{dplyr::mutate()}}.
-\item \code{\link[dplyr:select]{dplyr::select()}}.
+\item \href{http://dplyr.tidyverse.org/}{dplyr}.
+\item \href{http://tidyr.tidyverse.org/}{tidyr}.
 }
 }
 \keyword{internal}

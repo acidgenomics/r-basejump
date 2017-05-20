@@ -8,6 +8,8 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
+#' @import BiocGenerics
+#' @import S4Vectors
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
