@@ -8,7 +8,7 @@
 importTidyVerbs(envir = parent.frame())
 }
 \arguments{
-\item{envir}{Environment to assign the verbs.}
+\item{envir}{Environment where to assign the verbs.}
 }
 \description{
 Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconductor}

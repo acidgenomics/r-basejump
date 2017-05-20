@@ -365,6 +365,9 @@ stringr::str_replace_all
 stringr::str_split
 
 #' @export
+stringr::str_sub
+
+#' @export
 stringr::str_subset
 
 
