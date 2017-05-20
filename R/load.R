@@ -49,9 +49,10 @@ loadData <- function(...) {
 #' @description Load a remote R binary file.
 #' @export
 loadRemote <- function(url) {
+    envir = parent.frame()
     tempfile <- tempfile()
     download.file(url, get("tempfile"), quiet = TRUE)
-    load(get("tempfile"), envir = globalenv())
+    load(get("tempfile"), envir = envir)
 }
 
 #' @rdname aliases
