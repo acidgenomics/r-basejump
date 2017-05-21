@@ -6,28 +6,28 @@
 #' assignments for values and/or function.
 #'
 #' For unnamed character vectors, these functions will sanitize the underlying
-#' values. Otherwise, the functions will set [base::names()] and/or
-#' [base::rownames()] on objects supporting name assignments. They return the
-#' object without modification of the underlying data.
+#' values. Otherwise, the functions will set [names()] and/or [rownames()] on
+#' objects supporting name assignments. They return the object without
+#' modification of the underlying data.
 #'
 #' @rdname names
 #' @name names
 #' @usage NULL
 #'
-#' @seealso
-#' - [base::make.names()].
-#' - [purrr::set_names()].
-#' - [stats::setNames()].
-#'
-#' @param x Character vector or an object for which [base::names()] assignment
-#'   will be meaningful.
+#' @param x Character vector or an object for which [names()] assignment will be
+#'   meaningful.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
 #' # Unnamed character vector, with no names assigned
-#' unnamed_vec <- c("hello world", "HELLO WORLD", "RNAi clones", 123, NA)
+#' unnamed_vec <- c("hello world",
+#'                  "HELLO WORLD",
+#'                  "RNAi clones",
+#'                  "worfdbHTMLRemap",
+#'                  123,
+#'                  NA)
 #'
 #' # Named character vector
 #' named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
@@ -89,23 +89,25 @@ makeFirstCase <- function(x) {
 makeNamesDot <- function(x) {
     x %>%
         as.character %>%
+        make.names %>%
         # Convert non-alphanumeric characters
         str_replace_all("[^[:alnum:]]", ".") %>%
         # Combine multiple underscores
         str_replace_all("[\\.]+", ".") %>%
-        # Strip leading or trailing underscores
+        # Strip leading or trailing dots
         str_replace_all("(^\\.|\\.$)", "") %>%
-        # Special names
-        str_replace_all("(m|nc|r)RNA", "\\1rna") %>%
-        # Convert acronyms to mixed case
+        # Special acronym exceptions
+        str_replace_all("RNAi", "Rnai") %>%
+        # Handle snakeCase acronyms
+        # e.g. worfdbHTMLRemap -> worfdb.html.remap
+        gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
+             "\\1\\L\\2\\U\\3\\L\\4", ., perl = TRUE) %>%
+        # Convert remaining acronyms to mixed case
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
         # Make first letter lowercase
         gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
         # Convert camelCase
         gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
-        # Ensure syntactically valid names
-        make.names %>%
-        # Lowercase everything
         tolower
 }
 
