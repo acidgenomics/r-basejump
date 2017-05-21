@@ -42,7 +42,9 @@ assign_multiple <- assignMultiple
 #' @examples
 #' fixNA(c(1, "x", "", "NA"))
 fixNA <- function(string) {
-    gsub("^$|^NA$", NA, string)
+    string %>%
+        as.character %>%
+        gsub("^$|^\\s+$|^NA$", NA, .)
 }
 
 #' @rdname aliases
@@ -66,6 +68,7 @@ fix_na <- fixNA
 #' grepString("gene")
 grepString <- function(identifier) {
     identifier %>%
+        as.character %>%
         paste0(
             # Unique:
             "^", ., "$",
@@ -148,7 +151,7 @@ remove_na <- removeNA
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        stats::na.omit(.) %>%
+        na.omit %>%
         sort %>%
         unique
 }
@@ -184,8 +187,7 @@ wash <- function(df) {
             str_replace_all("\\s(,|;|/)$", "") %>%
             # NAs in string
             str_replace_all("NA,\\s|,\\sNA", "") %>%
-            # Character NAs
-            gsub("^$|^\\s+$|^NA$", NA, .)
+            fixNA
     }
     mutate_all(df, funs(replace))
 }
