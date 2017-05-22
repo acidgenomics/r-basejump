@@ -18,7 +18,6 @@
 #' mtcars %>% head %>% summarizeRows
 toStringUnique <- function(x, sep = ", ") {
     x %>%
-        na.omit %>%
         unique %>%
         str_c(collapse = sep)
 }
@@ -34,7 +33,6 @@ to_string_unique <- toStringUnique
 #' @export
 toStringSortUnique <- function(x, sep = ", ") {
     x %>%
-        na.omit %>%
         unique %>%
         sort %>%
         str_c(collapse = sep)
