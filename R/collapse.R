@@ -1,13 +1,12 @@
-#' Convert an R object to a character string
+#' Collapse utilities
 #'
-#' Helper functions for to produce a character string output for vectors and
-#' data frames (via [toStringSummarize()]).
+#' Helper functions for to produce collapsed output for vectors ([toString()])
+#' and data frames (summarizeRows()]).
 #'
-#' @rdname toString
+#' @rdname collapse
 #'
 #' @param x The object to be converted.
 #' @param sep Separator used for collapse.
-#' @param sort Optional arguments passed to or from methods.
 #'
 #' @return A character vector of length 1 is returned.
 #' @export
@@ -16,7 +15,7 @@
 #' toStringUnique(c("milk", "eggs", "eggs", NA))
 #' toStringSortUnique(c("milk", "eggs", "eggs", NA))
 #'
-#' mtcars %>% head %>% toStringSummarize
+#' mtcars %>% head %>% summarizeRows
 toStringUnique <- function(x, sep = ", ") {
     x %>%
         na.omit %>%
@@ -31,7 +30,7 @@ to_string_unique <- toStringUnique
 
 
 
-#' @rdname toString
+#' @rdname collapse
 #' @export
 toStringSortUnique <- function(x, sep = ", ") {
     x %>%
@@ -52,33 +51,29 @@ to_string_sort_unique <- toStringSortUnique
 
 
 ## Data frame manipulations ====
-#' @rdname toString
+#' @rdname collapse
 #' @export
-toStringSummarize <- function(x, sort = TRUE) {
+summarizeRows <- function(x, sep = ", ") {
     if (!any(is.data.frame(x) | is.matrix(x))) {
         stop("Column data required")
     }
-    if (isTRUE(sort)) {
-        fxn <- toStringSortUnique
-    } else {
-        fxn <- toStringUnique
-    }
     x %>%
-        summarise_all(funs(fxn)) %>%
+        as_tibble %>%
+        summarise_all(funs(toStringSortUnique(., sep = sep))) %>%
         mutate_all(funs(fixNA))
 }
 
 #' @rdname aliases
 #' @usage NULL
 #' @export
-to_string_summarize <- toStringSummarize
+summarize_rows <- summarizeRows
 
 #' @rdname aliases
 #' @usage NULL
 #' @export
-toStringSummarise <- toStringSummarize
+summariseRows <- summarizeRows
 
 #' @rdname aliases
 #' @usage NULL
 #' @export
-to_string_summarise <- toStringSummarize
+summarise_rows <- summarizeRows
