@@ -9,3 +9,7 @@ grepToString <- function() {
 loadDataRaw <- function() {
     .Deprecated("loadData")
 }
+
+toStringSummarize <- function() {
+    .Deprecated("summarizeRows")
+}
