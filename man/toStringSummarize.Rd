@@ -4,19 +4,20 @@
 \alias{toStringSummarize}
 \title{Summarize columns with \code{\link[=toString]{toString()}}}
 \usage{
-toStringSummarize(data)
+toStringSummarize(x, sort = TRUE)
 }
 \arguments{
-\item{data}{Data with rows and columns (e.g. data frame, matrix)}
+\item{x}{Data with rows and columns (e.g. data frame, matrix)}
+
+\item{sort}{Sort the collapsed results.}
 }
 \value{
-Summarized data frame that has been collapsed to a single
-\code{\link[=toString]{toString()}}-formatted row, separated by commas.
+Summarized data frame collapsed to a single row.
 }
 \description{
 Collapse column data into a single row summary columnwize using
 \code{\link[=toString]{toString()}}.
 }
 \examples{
-toStringSummarize(head(starwars))
+mtcars \%>\% head \%>\% toStringSummarize
 }

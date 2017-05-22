@@ -17,11 +17,11 @@
 #' @export
 #' @examples
 #' toStringUnique(c("milk", "eggs", "eggs", NA))
-toStringUnique <- function(x) {
+toStringUnique <- function(x, sep = ", ") {
     x %>%
+        na.omit %>%
         unique %>%
-        toString %>%
-        str_replace_all("NA,\\s|,\\sNA", "")
+        str_c(collapse = sep)
 }
 
 #' @rdname aliases
@@ -35,12 +35,12 @@ to_string_unique <- toStringUnique
 #' @export
 #' @examples
 #' toStringSortUnique(c("milk", "eggs", "eggs", NA))
-toStringSortUnique <- function(x) {
+toStringSortUnique <- function(x, sep = ", ") {
     x %>%
+        na.omit %>%
         unique %>%
         sort %>%
-        toString %>%
-        str_replace_all("NA,\\s|,\\sNA", "")
+        str_c(collapse = sep)
 }
 
 #' @rdname aliases
@@ -61,18 +61,22 @@ to_string_sort_unique <- toStringSortUnique
 #'
 #' @rdname toStringSummarize
 #'
-#' @param data Data with rows and columns (e.g. data frame, matrix)
+#' @param x Data with rows and columns (e.g. data frame, matrix)
+#' @param sort Sort the collapsed results.
 #'
-#' @return Summarized data frame that has been collapsed to a single
-#'   [toString()]-formatted row, separated by commas.
+#' @return Summarized data frame collapsed to a single row.
 #' @export
 #'
 #' @examples
-#' toStringSummarize(head(starwars))
-toStringSummarize <- function(data) {
-    data %>%
-        as.data.frame %>%
-        summarise_all(funs(toStringUnique)) %>%
+#' mtcars %>% head %>% toStringSummarize
+toStringSummarize <- function(x, sort = TRUE) {
+    if (isTRUE(sort)) {
+        fxn <- toStringSortUnique
+    } else {
+        fxn <- toStringUnique
+    }
+    x %>%
+        summarise_all(funs(fxn)) %>%
         mutate_all(funs(fixNA))
 }
 

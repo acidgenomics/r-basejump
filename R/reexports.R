@@ -335,6 +335,9 @@ rmarkdown::render
 # stringr ====
 #' @import stringr
 #' @export
+stringr::str_c
+
+#' @export
 stringr::str_detect
 
 #' @export
