@@ -1,22 +1,22 @@
 #' Convert an R object to a character string
 #'
-#' Helper functions for [format()] to produce a single character string
-#' describing an R object.
+#' Helper functions for to produce a character string output for vectors and
+#' data frames (via [toStringSummarize()]).
 #'
 #' @rdname toString
-#' @name toString
 #'
 #' @param x The object to be converted.
-#' @param ... Optional arguments passed to or from methods.
+#' @param sep Separator used for collapse.
+#' @param sort Optional arguments passed to or from methods.
 #'
 #' @return A character vector of length 1 is returned.
-
-
-
-#' @rdname toString
 #' @export
+#'
 #' @examples
 #' toStringUnique(c("milk", "eggs", "eggs", NA))
+#' toStringSortUnique(c("milk", "eggs", "eggs", NA))
+#'
+#' mtcars %>% head %>% toStringSummarize
 toStringUnique <- function(x, sep = ", ") {
     x %>%
         na.omit %>%
@@ -33,8 +33,6 @@ to_string_unique <- toStringUnique
 
 #' @rdname toString
 #' @export
-#' @examples
-#' toStringSortUnique(c("milk", "eggs", "eggs", NA))
 toStringSortUnique <- function(x, sep = ", ") {
     x %>%
         na.omit %>%
@@ -54,22 +52,12 @@ to_string_sort_unique <- toStringSortUnique
 
 
 ## Data frame manipulations ====
-#' Summarize columns with [toString()]
-#'
-#' Collapse column data into a single row summary columnwize using
-#' [toString()].
-#'
-#' @rdname toStringSummarize
-#'
-#' @param x Data with rows and columns (e.g. data frame, matrix)
-#' @param sort Sort the collapsed results.
-#'
-#' @return Summarized data frame collapsed to a single row.
+#' @rdname toString
 #' @export
-#'
-#' @examples
-#' mtcars %>% head %>% toStringSummarize
 toStringSummarize <- function(x, sort = TRUE) {
+    if (!any(is.data.frame(x) | is.matrix(x))) {
+        stop("Column data required")
+    }
     if (isTRUE(sort)) {
         fxn <- toStringSortUnique
     } else {
