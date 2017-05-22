@@ -6,9 +6,9 @@
 \alias{toStringSortUnique}
 \title{Convert an R object to a character string}
 \usage{
-toStringUnique(x)
+toStringUnique(x, sep = ", ")
 
-toStringSortUnique(x)
+toStringSortUnique(x, sep = ", ")
 }
 \arguments{
 \item{x}{The object to be converted.}

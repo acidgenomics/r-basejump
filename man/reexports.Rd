@@ -165,6 +165,8 @@
 \alias{reexports}
 \alias{render}
 \alias{reexports}
+\alias{str_c}
+\alias{reexports}
 \alias{str_detect}
 \alias{reexports}
 \alias{str_extract}
@@ -263,7 +265,7 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{stringr}{\code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
+  \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
