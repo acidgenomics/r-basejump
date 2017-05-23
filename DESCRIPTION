@@ -1,7 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
 Version: 0.0.12
-Date: 2017-05-20
+Date: 2017-05-23
 Authors@R:
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
