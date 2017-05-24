@@ -1,12 +1,10 @@
 # Bioconductor ====
-#' @importFrom BiocInstaller biocValid
 #' @export
 BiocInstaller::biocValid
 
 
 
 # biomaRt ====
-#' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @export
 biomaRt::getBM
 
@@ -22,9 +20,6 @@ biomaRt::useMart
 
 
 # devtools ====
-# NAMESPACE collison with [rlang] on full import
-#' @importFrom devtools build build_vignettes check document install load_all
-#'   test
 #' @export
 devtools::build
 
@@ -49,10 +44,7 @@ devtools::test
 
 
 # dplyr ====
-# NAMESPACE collisons with BiocGenerics::combine and S4Vectors
-#' @importFrom dplyr bind_cols bind_rows case_when desc distinct
-#'   everything full_join funs group_by inner_join left_join mutate_all n
-#'   right_join summarise summarise_all summarize summarize_all top_n ungroup
+# Collisons with BiocGenerics::combine and S4Vectors
 #' @export
 dplyr::bind_cols
 
@@ -121,17 +113,13 @@ dplyr::ungroup
 
 
 # graphics ====
-#' @importFrom graphics hist
 #' @export
 graphics::hist
 
 
 
 # httr ====
-#' @import httr
-#' @export
-httr::content
-
+# Collison with Biobase::content
 #' @export
 httr::content_type_json
 
@@ -144,7 +132,6 @@ httr::user_agent
 
 
 # knitr ====
-#' @importFrom knitr asis_output kable opts_chunk opts_knit
 #' @export
 knitr::asis_output
 
@@ -160,7 +147,6 @@ knitr::opts_knit
 
 
 # magrittr ====
-#' @importFrom magrittr %>% set_colnames set_rownames
 #' @export
 magrittr::`%>%`
 
@@ -183,7 +169,6 @@ magrittr::set_rownames -> setRownames
 
 
 # parallel ====
-#' @importFrom parallel mclapply mcmapply
 #' @export
 parallel::mclapply
 
@@ -193,14 +178,12 @@ parallel::mcmapply
 
 
 # pbmcapply ====
-#' @importFrom pbmcapply pbmclapply
 #' @export
 pbmcapply::pbmclapply
 
 
 
 # R.utils ====
-#' @importFrom R.utils gzip gunzip
 #' @export
 R.utils::gunzip
 
@@ -210,14 +193,12 @@ R.utils::gzip
 
 
 # RCurl ====
-#' @importFrom RCurl getURL
 #' @export
 RCurl::getURL
 
 
 
 # readr ====
-#' @import readr
 #' @export
 readr::read_csv
 
@@ -245,21 +226,19 @@ readr::write_tsv
 
 
 # readxl ====
-#' @importFrom readxl read_excel
 #' @export
 readxl::read_excel
 
 
 
 # reshape ====
-#' @importFrom reshape2 melt
 #' @export
 reshape2::melt
 
 
 
 # rlang ====
-#' @import rlang
+# Collison with Biobase::exprs
 #' @export
 rlang::`!!!`
 
@@ -326,14 +305,12 @@ rlang::UQ
 
 
 # rmarkdown ====
-#' @importFrom rmarkdown render
 #' @export
 rmarkdown::render
 
 
 
 # stringr ====
-#' @import stringr
 #' @export
 stringr::str_c
 
@@ -376,9 +353,7 @@ stringr::str_subset
 
 
 # tibble ====
-# NAMESPACE collison with [rlang] on full import
-#' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
-#'   rownames_to_column tibble
+# Collison with rlang on full import
 #' @export
 tibble::as_tibble
 
@@ -400,8 +375,7 @@ tibble::tibble
 
 
 # tidyr ====
-# NAMESPACE collison with S4Vectors::expand
-#' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
+# Collison with S4Vectors::expand
 #' @export
 tidyr::expand_
 
@@ -423,14 +397,12 @@ tidyr::unnest_
 
 
 # tools ====
-#' @importFrom tools file_path_sans_ext
 #' @export
 tools::file_path_sans_ext
 
 
 
 # utils ====
-#' @importFrom utils download.file globalVariables read.table sessionInfo
 #' @export
 utils::download.file
 

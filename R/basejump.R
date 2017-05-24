@@ -8,8 +8,39 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
+#' @keywords internal
+#'
+#' @import Biobase
 #' @import BiocGenerics
+#' @import readr
+#' @import stringr
 #' @import S4Vectors
+#' @importFrom BiocInstaller biocValid
+#' @importFrom biomaRt getBM listMarts useEnsembl useMart
+#' @importFrom devtools build build_vignettes check document install load_all
+#'   test
+#' @importFrom dplyr bind_cols bind_rows case_when desc distinct
+#'   everything full_join funs group_by inner_join left_join mutate_all n
+#'   right_join summarise summarise_all summarize summarize_all top_n ungroup
+#' @importFrom graphics hist
+#' @importFrom httr content_type_json GET user_agent
+#' @importFrom knitr asis_output kable opts_chunk opts_knit
+#' @importFrom magrittr %>% set_colnames set_rownames
+#' @importFrom parallel mclapply mcmapply
+#' @importFrom pbmcapply pbmclapply
+#' @importFrom R.utils gzip gunzip
+#' @importFrom RCurl getURL
+#' @importFrom readxl read_excel
+#' @importFrom reshape2 melt
+#' @importFrom rlang !!! !! .data is_atomic is_bytes is_character is_double
+#'   is_integer is_list is_logical is_null is_raw is_string is_vector quo quos
+#'   set_names sym syms UQ
+#' @importFrom rmarkdown render
+#' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
+#'   rownames_to_column tibble
+#' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
+#' @importFrom tools file_path_sans_ext
+#' @importFrom utils download.file globalVariables read.table sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 

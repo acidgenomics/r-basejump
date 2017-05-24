@@ -24,6 +24,10 @@ importTidyVerbs <- function(envir = parent.frame()) {
     assign("combine",
            dplyr::combine,
            envir = envir)
+    # Biobase
+    assign("content",
+           httr::content,
+           envir = envir)
     # S4Vectors
     assign("expand",
            tidyr::expand,
