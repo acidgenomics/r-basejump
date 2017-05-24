@@ -69,8 +69,6 @@
 \alias{reexports}
 \alias{hist}
 \alias{reexports}
-\alias{content}
-\alias{reexports}
 \alias{content_type_json}
 \alias{reexports}
 \alias{GET}
@@ -241,7 +239,7 @@ below to see their documentation.
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
-  \item{httr}{\code{\link[httr]{content}}, \code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
+  \item{httr}{\code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
