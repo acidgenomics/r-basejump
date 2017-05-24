@@ -17,7 +17,7 @@ Fold change values.
 }
 \description{
 Convert log ratio normalized values to fold change. Based on the approach
-used in \code{\link[gtools:logratio2foldchange]{gtools::logratio2foldchange()}}.
+used in \code{gtools::logratio2foldchange()}.
 }
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))
