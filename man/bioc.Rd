@@ -27,6 +27,6 @@ bioc("limma")
 }
 }
 \seealso{
-This function is a modified version of \code{\link[rafalib:install_bioc]{rafalib::install_bioc()}}. It
+This function is a modified version of \code{rafalib::install_bioc()}. It
 calls \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}} internally.
 }
