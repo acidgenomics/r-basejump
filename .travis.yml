@@ -2,6 +2,6 @@ language: R
 cache: packages
 sudo: false
 r: bioc-devel
-warnings_are_errors: false
 
 r_github_packages: tidyverse/dplyr
+warnings_are_errors: false
