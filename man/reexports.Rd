@@ -3,6 +3,12 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{select}
+\alias{reexports}
+\alias{content}
+\alias{reexports}
+\alias{intersect}
+\alias{reexports}
 \alias{biocValid}
 \alias{reexports}
 \alias{getBM}
@@ -27,6 +33,8 @@
 \alias{reexports}
 \alias{test}
 \alias{reexports}
+\alias{arrange}
+\alias{reexports}
 \alias{bind_cols}
 \alias{reexports}
 \alias{bind_rows}
@@ -39,6 +47,8 @@
 \alias{reexports}
 \alias{everything}
 \alias{reexports}
+\alias{filter}
+\alias{reexports}
 \alias{full_join}
 \alias{reexports}
 \alias{funs}
@@ -48,6 +58,8 @@
 \alias{inner_join}
 \alias{reexports}
 \alias{left_join}
+\alias{reexports}
+\alias{mutate}
 \alias{reexports}
 \alias{mutate_all}
 \alias{reexports}
@@ -189,6 +201,12 @@
 \alias{reexports}
 \alias{str_subset}
 \alias{reexports}
+\alias{expand}
+\alias{reexports}
+\alias{first}
+\alias{reexports}
+\alias{rename}
+\alias{reexports}
 \alias{as_tibble}
 \alias{reexports}
 \alias{glimpse}
@@ -219,8 +237,6 @@
 \alias{reexports}
 \alias{globalVariables}
 \alias{reexports}
-\alias{read.table}
-\alias{reexports}
 \alias{sessionInfo}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -229,13 +245,19 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
+
+  \item{Biobase}{\code{\link[Biobase]{content}}}
+
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{intersect}}}
+
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
 
-  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
@@ -263,6 +285,8 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
+  \item{S4Vectors}{\code{\link[S4Vectors]{expand}}, \code{\link[S4Vectors]{first}}, \code{\link[S4Vectors]{rename}}}
+
   \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
@@ -271,6 +295,6 @@ below to see their documentation.
 
   \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{read.table}}, \code{\link[utils]{sessionInfo}}}
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{sessionInfo}}}
 }}
 

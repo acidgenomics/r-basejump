@@ -1,3 +1,21 @@
+# AnnotationDbi ====
+#' @export
+AnnotationDbi::select
+
+
+
+# Biobase ====
+#' @export
+Biobase::content
+
+
+
+# BiocGenerics ====
+#' @export
+BiocGenerics::intersect
+
+
+
 # Bioconductor ====
 #' @export
 BiocInstaller::biocValid
@@ -44,7 +62,9 @@ devtools::test
 
 
 # dplyr ====
-# Collisons with BiocGenerics::combine and S4Vectors
+#' @export
+dplyr::arrange
+
 #' @export
 dplyr::bind_cols
 
@@ -64,6 +84,9 @@ dplyr::distinct
 dplyr::everything
 
 #' @export
+dplyr::filter
+
+#' @export
 dplyr::full_join
 
 #' @export
@@ -79,6 +102,9 @@ dplyr::inner_join
 dplyr::left_join
 
 #' @export
+dplyr::mutate
+
+#' @export
 dplyr::mutate_all
 
 #' @export
@@ -86,6 +112,11 @@ dplyr::n
 
 #' @export
 dplyr::right_join
+
+#' @rdname tidy
+#' @usage NULL
+#' @export
+dplyr::select -> tidy_select
 
 #' Star Wars dataset.
 #' @keywords internal
@@ -352,6 +383,18 @@ stringr::str_subset
 
 
 
+# S4Vectors ====
+#' @export
+S4Vectors::expand
+
+#' @export
+S4Vectors::first
+
+#' @export
+S4Vectors::rename
+
+
+
 # tibble ====
 # Collison with rlang on full import
 #' @export
@@ -408,9 +451,6 @@ utils::download.file
 
 #' @export
 utils::globalVariables
-
-#' @export
-utils::read.table
 
 #' @export
 utils::sessionInfo
