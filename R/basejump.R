@@ -10,8 +10,10 @@
 #'
 #' @keywords internal
 #'
+#' @import AnnotationDbi
 #' @import Biobase
 #' @import BiocGenerics
+#' @import methods
 #' @import readr
 #' @import stringr
 #' @import S4Vectors
@@ -19,9 +21,10 @@
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom devtools build build_vignettes check document install load_all
 #'   test
-#' @importFrom dplyr bind_cols bind_rows case_when desc distinct
-#'   everything full_join funs group_by inner_join left_join mutate_all n
-#'   right_join summarise summarise_all summarize summarize_all top_n ungroup
+#' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
+#'   everything filter full_join funs group_by inner_join left_join mutate
+#'   mutate_all n right_join summarise summarise_all summarize summarize_all
+#'   top_n ungroup
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable opts_chunk opts_knit
@@ -40,7 +43,7 @@
 #'   rownames_to_column tibble
 #' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
 #' @importFrom tools file_path_sans_ext
-#' @importFrom utils download.file globalVariables read.table sessionInfo
+#' @importFrom utils download.file globalVariables sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
@@ -53,12 +56,6 @@
 #'
 #' @seealso
 #' - [globalVariables()].
-#' - [import_tidy_verbs()].
 #' - [reexports].
-globals <- c(".",
-             "arrange",
-             "biocLite",
-             "filter",
-             "mutate",
-             "select")
+globals <- c(".", "biocLite")
 globalVariables(globals)

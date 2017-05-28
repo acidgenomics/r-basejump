@@ -4,7 +4,7 @@
 \name{globals}
 \alias{globals}
 \title{Global variables}
-\format{An object of class \code{character} of length 6.}
+\format{An object of class \code{character} of length 2.}
 \usage{
 globals
 }
@@ -14,7 +14,6 @@ Global variables
 \seealso{
 \itemize{
 \item \code{\link[=globalVariables]{globalVariables()}}.
-\item \code{\link[=import_tidy_verbs]{import_tidy_verbs()}}.
 \item \link{reexports}.
 }
 }
