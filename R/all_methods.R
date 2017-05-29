@@ -3,6 +3,15 @@
 
 
 
+# arrange ====
+#' @rdname tidy
+#' @export
+setMethod("arrange", "data.frame", function(object, ...) {
+    dplyr::arrange(object, ...)
+})
+
+
+
 # content ====
 #' @rdname tidy
 #' @export
@@ -17,6 +26,15 @@ setMethod("content", "response", function(object) {
 #' @export
 setMethod("expand", "data.frame", function(x, ...) {
     tidyr::expand(x, ...)
+})
+
+
+
+# filter ====
+#' @rdname tidy
+#' @export
+setMethod("filter", "data.frame", function(object, ...) {
+    dplyr::filter(object, ...)
 })
 
 
@@ -39,6 +57,15 @@ setMethod(
     function(x, y, ...) {
         dplyr::intersect(x, y, ...)
     })
+
+
+
+# filter ====
+#' @rdname tidy
+#' @export
+setMethod("mutate", "data.frame", function(object, ...) {
+    dplyr::mutate(object, ...)
+})
 
 
 

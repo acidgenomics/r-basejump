@@ -8,6 +8,11 @@
 #' @aliases tidyverse
 #' @docType methods
 #'
+#' @param object Primary object.
+#' @param x Primary object.
+#' @param y Secondary object.
+#' @param ... Passthrough parameters.
+#'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):
 #'     [Biobase], [BiocGenerics], S4Vectors.

@@ -63,9 +63,6 @@ devtools::test
 
 # dplyr ====
 #' @export
-dplyr::arrange
-
-#' @export
 dplyr::bind_cols
 
 #' @export
@@ -84,9 +81,6 @@ dplyr::distinct
 dplyr::everything
 
 #' @export
-dplyr::filter
-
-#' @export
 dplyr::full_join
 
 #' @export
@@ -100,9 +94,6 @@ dplyr::inner_join
 
 #' @export
 dplyr::left_join
-
-#' @export
-dplyr::mutate
 
 #' @export
 dplyr::mutate_all
