@@ -2,6 +2,7 @@
 
 ## Exported functions
 
+arrange(object, ...)
 assignMultiple(..., envir = parent.frame(), prefix = NULL)
 assign_multiple(..., envir = parent.frame(), prefix = NULL)
 bioc(pkgs = NULL, ...)
@@ -15,6 +16,7 @@ detectHPC()
 detect_hpc()
 dotNotation(x)
 dot_notation(x)
+filter(object, ...)
 firstCase(x)
 first_case(x)
 fixNA(string)
@@ -29,6 +31,7 @@ logRatioToFoldChange(logRatio, base = 2)
 log_ratio_to_fold_change(logRatio, base = 2)
 mdList(character, ordered = FALSE)
 md_list(character, ordered = FALSE)
+mutate(object, ...)
 packageProject(install = FALSE, test = FALSE)
 package_project(install = FALSE, test = FALSE)
 pct(number)
@@ -70,10 +73,13 @@ wash(df)
 
 ## Exported data
 
+.__T__arrange:basejump: environment (environment[1])
 .__T__content:Biobase: environment (environment[1])
 .__T__expand:S4Vectors: environment (environment[1])
+.__T__filter:basejump: environment (environment[1])
 .__T__first:S4Vectors: environment (environment[1])
 .__T__intersect:BiocGenerics: environment (environment[1])
+.__T__mutate:basejump: environment (environment[1])
 .__T__rename:S4Vectors: environment (environment[1])
 .__T__select:AnnotationDbi: environment (environment[1])
 .__T__setdiff:BiocGenerics: environment (environment[1])
