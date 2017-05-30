@@ -145,16 +145,16 @@ modification of the underlying data.</p>
 #&gt; hornet4Drive     21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; hornetSportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #&gt; valiant          18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>camel</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
-#&gt;             name height  mass   hairColor   skinColor eyeColor birthYear
-#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;
-#&gt; 1 Luke Skywalker    172    77       blond        fair     blue      19.0
-#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold   yellow     112.0
-#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue      red      33.0
-#&gt; 4    Darth Vader    202   136        none       white   yellow      41.9
-#&gt; 5    Leia Organa    150    49       brown       light    brown      19.0
-#&gt; 6      Owen Lars    178   120 brown, grey       light     blue      52.0
-#&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
-#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>camel</span>(<span class='no'>lst</span>)</div><div class='output co'>#&gt; $itemA
+#&gt;             name height  mass   hairColor   skinColor eyeColor birthYear gender
+#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;  &lt;chr&gt;
+#&gt; 1 Luke Skywalker    172    77       blond        fair     blue      19.0   male
+#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold   yellow     112.0   &lt;NA&gt;
+#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue      red      33.0   &lt;NA&gt;
+#&gt; 4    Darth Vader    202   136        none       white   yellow      41.9   male
+#&gt; 5    Leia Organa    150    49       brown       light    brown      19.0 female
+#&gt; 6      Owen Lars    178   120 brown, grey       light     blue      52.0   male
+#&gt; # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>camel</span>(<span class='no'>lst</span>)</div><div class='output co'>#&gt; $itemA
 #&gt; [1] 1 2
 #&gt; 
 #&gt; $itemB
