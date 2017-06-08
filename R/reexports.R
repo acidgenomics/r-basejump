@@ -392,6 +392,9 @@ S4Vectors::rename
 tibble::as_tibble
 
 #' @export
+tibble::column_to_rownames
+
+#' @export
 tibble::glimpse
 
 #' @export
