@@ -203,6 +203,8 @@
 \alias{reexports}
 \alias{as_tibble}
 \alias{reexports}
+\alias{column_to_rownames}
+\alias{reexports}
 \alias{glimpse}
 \alias{reexports}
 \alias{is_tibble}
@@ -283,7 +285,7 @@ below to see their documentation.
 
   \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
 
