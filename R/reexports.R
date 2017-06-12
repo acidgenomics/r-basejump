@@ -121,6 +121,9 @@ dplyr::mutate_all
 dplyr::n
 
 #' @export
+dplyr::pull
+
+#' @export
 dplyr::right_join
 
 #' @rdname tidy

@@ -24,8 +24,8 @@
 #'   test update_packages
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate
-#'   mutate_all n right_join summarise summarise_all summarize summarize_all
-#'   top_n ungroup
+#'   mutate_all n pull right_join summarise summarise_all summarize
+#'   summarize_all top_n ungroup
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable opts_chunk opts_knit
