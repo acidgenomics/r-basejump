@@ -70,6 +70,7 @@ toStringUnique(x, sep = ", ")
 to_string_sort_unique(x, sep = ", ")
 to_string_unique(x, sep = ", ")
 transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE, localDir = "data-raw")
+update()
 wash(df)
 
 ## Exported data

@@ -101,6 +101,8 @@
 \alias{reexports}
 \alias{pbmclapply}
 \alias{reexports}
+\alias{build_site}
+\alias{reexports}
 \alias{gunzip}
 \alias{reexports}
 \alias{gzip}
@@ -266,6 +268,8 @@ below to see their documentation.
   \item{parallel}{\code{\link[parallel]{mclapply}}, \code{\link[parallel]{mcmapply}}}
 
   \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
+
+  \item{pkgdown}{\code{\link[pkgdown]{build_site}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 
