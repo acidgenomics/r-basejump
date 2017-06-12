@@ -6,9 +6,12 @@
 #'
 #' @param ... Objects.
 #' @param dir Save directory.
+#' @param compress Compression method, supporting `xz` (preferred), `bzip2`, or
+#'   `gzip`. Compression can be disabled by setting as `FALSE`, although this is
+#'   not generally recommended.
 #'
 #' @export
-saveData <- function(..., dir = "data") {
+saveData <- function(..., dir = "data", compress = "xz") {
     if (!is_string(dir)) {
         stop("dir must be a string")
     }
@@ -19,7 +22,7 @@ saveData <- function(..., dir = "data") {
     objs <- get_objs_from_dots(dots(...))
     paths <- file.path(dir, paste0(objs, ".rda"))
     message(paste("Saving", toString(names), "to", dir, "..."))
-    mapply(save, list = objs, file = paths)
+    mapply(save, list = objs, file = paths, compress = compress)
     invisible()
 }
 
