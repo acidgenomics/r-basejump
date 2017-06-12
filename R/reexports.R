@@ -205,6 +205,12 @@ pbmcapply::pbmclapply
 
 
 
+# pkgdown ====
+#' @export
+pkgdown::build_site
+
+
+
 # R.utils ====
 #' @export
 R.utils::gunzip
