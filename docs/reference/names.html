@@ -83,11 +83,11 @@ use with base R operations, but we advise against using <code>dot.notation</code
 assignments for values and/or function.</p>
     
 
-    <pre class="usage"><span class='fu'>camel</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>camel</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>dotNotation</span>(<span class='no'>x</span>)
+<span class='fu'>dotNotation</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>snake</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>snake</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -96,6 +96,10 @@ assignments for values and/or function.</p>
       <th>x</th>
       <td><p>Character vector or an object for which <code>names()</code> assignment will be
 meaningful.</p></td>
+    </tr>
+    <tr>
+      <th>rownames</th>
+      <td><p>Include row names.</p></td>
     </tr>
     </table>
     
@@ -144,7 +148,13 @@ modification of the underlying data.</p>
 #&gt; datsun710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; hornet4Drive     21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; hornetSportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; valiant          18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>camel</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt; valiant          18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>camel</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass   hairColor   skinColor eyeColor birthYear gender
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;  &lt;chr&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair     blue      19.0   male
@@ -170,7 +180,13 @@ modification of the underlying data.</p>
 #&gt; datsun_710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; hornet_4_drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; hornet_sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>snake</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>snake</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>snake</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass  hair_color  skin_color eye_color birth_year
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
@@ -196,7 +212,13 @@ modification of the underlying data.</p>
 #&gt; datsun.710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; hornet.4.drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; hornet.sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotNotation</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotNotation</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotNotation</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass  hair.color  skin.color eye.color birth.year
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0

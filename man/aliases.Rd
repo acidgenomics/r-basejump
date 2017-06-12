@@ -37,7 +37,7 @@
 \alias{sort_unique}
 \title{Function aliases}
 \usage{
-sanitizeNames(x)
+sanitizeNames(x, rownames = TRUE)
 }
 \description{
 Name variants supporting \code{snake_case} and British English (e.g. \code{\link[=summarise]{summarise()}}

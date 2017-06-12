@@ -9,7 +9,7 @@ geomean(object, na.rm = TRUE)
 \arguments{
 \item{object}{Vector or column data (data frame, matrix).}
 
-\item{nm.rm}{Remove \code{NA} values before processing.}
+\item{na.rm}{Remove \code{NA} values before processing.}
 }
 \value{
 Geometric means.
