@@ -13,6 +13,14 @@
 \alias{reexports}
 \alias{doc_date}
 \alias{reexports}
+\alias{html_document}
+\alias{reexports}
+\alias{html_document2}
+\alias{reexports}
+\alias{pdf_document}
+\alias{reexports}
+\alias{pdf_document2}
+\alias{reexports}
 \alias{getBM}
 \alias{reexports}
 \alias{listMarts}
@@ -253,7 +261,7 @@ below to see their documentation.
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
-  \item{BiocStyle}{\code{\link[BiocStyle]{doc_date}}}
+  \item{BiocStyle}{\code{\link[BiocStyle]{doc_date}}, \code{\link[BiocStyle]{html_document}}, \code{\link[BiocStyle]{html_document2}}, \code{\link[BiocStyle]{pdf_document}}, \code{\link[BiocStyle]{pdf_document2}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
