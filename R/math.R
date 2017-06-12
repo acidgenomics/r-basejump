@@ -9,7 +9,7 @@
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
 #' @param object Vector or column data (data frame, matrix).
-#' @param nm.rm Remove `NA` values before processing.
+#' @param na.rm Remove `NA` values before processing.
 #'
 #' @return Geometric means.
 #' @export
