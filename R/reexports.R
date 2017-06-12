@@ -183,6 +183,9 @@ knitr::asis_output
 knitr::kable
 
 #' @export
+knitr::knit
+
+#' @export
 knitr::opts_chunk
 
 #' @export
