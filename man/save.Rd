@@ -5,7 +5,7 @@
 \alias{saveDataRaw}
 \title{Save data objects}
 \usage{
-saveData(..., dir = "data")
+saveData(..., dir = "data", compress = "xz")
 
 saveDataRaw(...)
 }
@@ -13,6 +13,10 @@ saveDataRaw(...)
 \item{...}{Objects.}
 
 \item{dir}{Save directory.}
+
+\item{compress}{Compression method, supporting \code{xz} (preferred), \code{bzip2}, or
+\code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this is
+not generally recommended.}
 }
 \description{
 Quick save to \code{data} (default) or \code{data-raw} directory.

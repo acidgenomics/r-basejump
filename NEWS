@@ -1,3 +1,4 @@
+0.0.14  dplyr 0.7 NAMESPACE fixes and function tweaks.
 0.0.13  setMethod on tidyverse NAMESPACE collisons (dplyr, tidyr) using
         `signature("data.frame").
 0.0.12  Update exports based on worminfo package.

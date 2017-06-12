@@ -16,9 +16,28 @@ BiocGenerics::intersect
 
 
 
-# Bioconductor ====
+# BiocInstaller ====
 #' @export
 BiocInstaller::biocValid
+
+
+
+# BiocStyle ====
+#' @export
+BiocStyle::doc_date
+
+#' @export
+BiocStyle::html_document
+# [fix] rmarkdown::html_document instead?
+
+#' @export
+BiocStyle::html_document2
+
+#' @export
+BiocStyle::pdf_document
+
+#' @export
+BiocStyle::pdf_document2
 
 
 
@@ -100,6 +119,9 @@ dplyr::mutate_all
 
 #' @export
 dplyr::n
+
+#' @export
+dplyr::pull
 
 #' @export
 dplyr::right_join
