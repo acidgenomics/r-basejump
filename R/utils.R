@@ -163,6 +163,24 @@ sort_unique <- sortUnique
 
 
 
+#' Update all installed packages
+#'
+#' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+#'
+#' @export
+update <- function() {
+    # Update Bioconductor packages first
+    bioc()
+
+    # Now update packages from GitHub repos
+    update_packages()
+
+    # Ensure safe developer environment
+    biocValid()
+}
+
+
+
 
 #' Wash a data frame
 #'
