@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Global variables — globals • basejump</title>
+<title><a href = 'http://tidyverse.org/'>tidyverse</a> generics — arrange,data.frame-method • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,24 +73,75 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Global variables</h1>
+    <h1><a href = 'http://tidyverse.org/'>tidyverse</a> generics</h1>
     </div>
 
     
-    <p>Global variables</p>
+    <p>Avoid NAMESPACE collisions with <a href = 'https://www.bioconductor.org/'>Bioconductor</a>
+generics by using <code>setMethod()</code> to relevant <code>signature</code>.</p>
     
 
-    <pre class="usage"><span class='no'>globals</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='generics.html'>arrange</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-    <p>An object of class <code>character</code> of length 2.</p>
+<span class='co'># S4 method for response</span>
+<span class='fu'><a href='reexports.html'>content</a></span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='reexports.html'>expand</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='generics.html'>filter</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='reexports.html'>first</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'><a href='reexports.html'>intersect</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='generics.html'>mutate</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='reexports.html'>rename</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>setdiff</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>setequal</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Primary object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Passthrough parameters.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>Primary object.</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>Secondary object.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p><code><a href='reexports.html'>globalVariables()</a></code>.</p></li>
-<li><p><a href='reexports.html'>reexports</a>.</p></li>
+<li><p><a href = 'https://www.bioconductor.org/'>Bioconductor</a>:
+Biobase, BiocGenerics, S4Vectors.</p></li>
+<li><p><a href = 'http://tidyverse.org/'>tidyverse</a>:
+dplyr, httr, tidyr.</p></li>
 </ul>
     
 
@@ -98,9 +149,8 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
-
       <li><a href="#see-also">See also</a></li>
           </ul>
 

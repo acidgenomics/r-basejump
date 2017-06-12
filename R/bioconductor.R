@@ -12,7 +12,7 @@
 #'
 #' @export
 #'
-#' @seealso This function is a modified version of [rafalib::install_bioc()]. It
+#' @seealso This function is a modified version of `rafalib::install_bioc()`. It
 #'   calls [BiocInstaller::biocLite()] internally.
 #'
 #' @examples

@@ -62,27 +62,32 @@ packageProject <- function(
     install = FALSE,
     test = FALSE) {
     # Ensure package is up to date
-    devtools::document()
-    devtools::build_vignettes()
-    devtools::load_all()
+    document()
+    build_vignettes()
+    load_all()
 
     # Run integrity checks
     BiocCheck(getwd())
-    devtools::check()
+    check()
+
+    # Perform tests, if desired
     if (isTRUE(test)) {
-        devtools::test()
+        test()
     }
 
-    # Save the build to disk
-    devtools::build()
+    # Save the package build to disk
+    build()
 
     # Install the package
     if (isTRUE(install)) {
-        devtools::install()
+        install()
     }
 
-    # Ensure safe developer environment
-    biocValid()
+    # Build website
+    build_site()
+
+    # [fix] switch to `build_site_rstudio()` if function gets exported?
+    # https://github.com/hadley/pkgdown/blob/master/R/build.r
 }
 
 #' @rdname aliases

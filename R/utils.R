@@ -42,7 +42,9 @@ assign_multiple <- assignMultiple
 #' @examples
 #' fixNA(c(1, "x", "", "NA"))
 fixNA <- function(string) {
-    gsub("^$|^NA$", NA, string)
+    string %>%
+        as.character %>%
+        gsub("^$|^\\s+$|^NA$", NA, .)
 }
 
 #' @rdname aliases
@@ -66,6 +68,7 @@ fix_na <- fixNA
 #' grepString("gene")
 grepString <- function(identifier) {
     identifier %>%
+        as.character %>%
         paste0(
             # Unique:
             "^", ., "$",
@@ -92,23 +95,39 @@ grep_string <- grepString
 #' @param x Object with column data (e.g. data frame, matrix).
 #'
 #' @return Sanitized data.
+#' @export
 #'
 #' @examples
 #' # Remove NA only rows and columns
-#' data.frame(a = c(1,  NA, 3),
+#' matrix(c(1, NA, 3,
+#'          NA, NA, NA,
+#'          2, NA, 4),
+#'        nrow = 3, ncol = 3) %>% removeNA
+#'
+#' data.frame(a = c("A", NA, "C"),
 #'            b = c(NA, NA, NA),
-#'            c = c(4,  NA, 6)) %>% removeNA
+#'            c = c("B", NA, "D")) %>% removeNA
+#'
+#' tibble(a = c("A", NA, "C"),
+#'        b = c(NA, NA, NA),
+#'        c = c("B", NA, "D")) %>% removeNA
+#'
+#'
+#' # Return unmodified
+#' list(a = c("A", NA, "C"),
+#'      b = c(NA, NA, NA),
+#'      c = c("B", NA, "D")) %>% removeNA
 removeNA <- function(x) {
-    if (!class(x) %in% c("data.frame", "matrix")) {
+    if (!any(is.data.frame(x), is.matrix(x))) {
         message("Only applicable to column data")
-        return(x)
+        x
+    } else {
+        x %>%
+            # Remove all NA rows
+            .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
+            # Remove all NA columns
+            .[, apply(., 2, function(a) { !all(is.na(a)) })]
     }
-    x %>%
-        # Remove all NA rows
-        .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
-        # Remove all NA columns
-        .[, apply(., 2, function(a) { !all(is.na(a)) })]
-
 }
 
 #' @rdname aliases
@@ -132,7 +151,7 @@ remove_na <- removeNA
 #' sortUnique(c("milk", "eggs", "eggs", NA))
 sortUnique <- function(vector) {
     vector %>%
-        stats::na.omit(.) %>%
+        na.omit %>%
         sort %>%
         unique
 }
@@ -141,6 +160,24 @@ sortUnique <- function(vector) {
 #' @usage NULL
 #' @export
 sort_unique <- sortUnique
+
+
+
+#' Update all installed packages
+#'
+#' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+#'
+#' @export
+update <- function() {
+    # Update Bioconductor packages first
+    bioc()
+
+    # Now update packages from GitHub repos
+    update_packages()
+
+    # Ensure safe developer environment
+    biocValid()
+}
 
 
 
@@ -168,8 +205,7 @@ wash <- function(df) {
             str_replace_all("\\s(,|;|/)$", "") %>%
             # NAs in string
             str_replace_all("NA,\\s|,\\sNA", "") %>%
-            # Character NAs
-            gsub("^$|^\\s+$|^NA$", NA, .)
+            fixNA
     }
     mutate_all(df, funs(replace))
 }

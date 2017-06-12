@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Data loading utilities — loadDataRaw • basejump</title>
+<title>Data loading utilities — loadData • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,12 +77,12 @@
     </div>
 
     
-    <p>Dynamically <code>source()</code> or <code>load()</code> raw data in the <code>data-raw</code>
-directory.</p>
+    <p>Dynamically <code>load()</code> data from <code>data</code> directory or <code>source()</code>
+the corresponding script frmo the <code>data-raw</code> directory.</p>
 <p>Load a remote R binary file.</p>
     
 
-    <pre class="usage"><span class='fu'>loadDataRaw</span>(<span class='no'>data</span>)
+    <pre class="usage"><span class='fu'>loadData</span>(<span class='no'>...</span>)
 
 <span class='fu'>loadRemote</span>(<span class='no'>url</span>)</pre>
     
@@ -90,8 +90,8 @@ directory.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>Data object.</p></td>
+      <th>...</th>
+      <td><p>Data files as dot objects.</p></td>
     </tr>
     <tr>
       <th>url</th>
@@ -102,9 +102,7 @@ directory.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-  <span class='fu'>loadDataRaw</span>(<span class='st'>"counts"</span>)
-})
-<span class='fu'>not_run</span>({
+  <span class='fu'>loadData</span>(<span class='no'>geneIDs</span>, <span class='no'>oligo</span>)
   <span class='fu'>loadRemote</span>(<span class='st'>"http://example.com/data.rda"</span>)
 })</div></pre>
   </div>

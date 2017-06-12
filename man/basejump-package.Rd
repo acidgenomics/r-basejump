@@ -18,7 +18,7 @@ always passed in \code{\link[=camel]{camel()}} case. We also provide British spe
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://steinbaugh.com/basejump}
+  \item \url{http://steinbaugh.com/basejump/}
   \item \url{https://github.com/steinbaugh/basejump}
   \item Report bugs at \url{https://github.com/steinbaugh/basejump/issues}
 }
@@ -28,3 +28,4 @@ Useful links:
 \strong{Maintainer}: Michael Steinbaugh \email{mike@steinbaugh.com}
 
 }
+\keyword{internal}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Global variables — globals • basejump</title>
+<title>Collapse utilities — toStringUnique • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,36 +73,56 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Global variables</h1>
+    <h1>Collapse utilities</h1>
     </div>
 
     
-    <p>Global variables</p>
+    <p>Helper functions for to produce collapsed output for vectors (<code>toString()</code>)
+and data frames (summarizeRows()]).</p>
     
 
-    <pre class="usage"><span class='no'>globals</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
 
-    <p>An object of class <code>character</code> of length 2.</p>
+<span class='fu'>toStringSortUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
+
+<span class='fu'>summarizeRows</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)</pre>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>The object to be converted.</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>Separator used for collapse.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <ul>
-<li><p><code><a href='reexports.html'>globalVariables()</a></code>.</p></li>
-<li><p><a href='reexports.html'>reexports</a>.</p></li>
-</ul>
+    <p>A character vector of length 1 is returned.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>toStringUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "milk, eggs, NA"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs, milk, NA"</div><div class='input'>
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span> <span class='kw'>%&gt;%</span> <span class='no'>summarizeRows</span></div><div class='output co'>#&gt; # A tibble: 1 x 11
+#&gt;                          mpg     cyl                    disp                hp
+#&gt;                        &lt;chr&gt;   &lt;chr&gt;                   &lt;chr&gt;             &lt;chr&gt;
+#&gt; 1 18.1, 18.7, 21, 21.4, 22.8 4, 6, 8 108, 160, 225, 258, 360 105, 110, 175, 93
+#&gt; # ... with 7 more variables: drat &lt;chr&gt;, wt &lt;chr&gt;, qsec &lt;chr&gt;, vs &lt;chr&gt;,
+#&gt; #   am &lt;chr&gt;, gear &lt;chr&gt;, carb &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

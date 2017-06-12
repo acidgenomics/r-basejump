@@ -18,7 +18,7 @@ saveData <- function(..., dir = "data") {
     names <- as.character(substitute(list(...)))[-1L]
     objs <- get_objs_from_dots(dots(...))
     paths <- file.path(dir, paste0(objs, ".rda"))
-    message(paste("Saving", toString(names), "to", dir))
+    message(paste("Saving", toString(names), "to", dir, "..."))
     mapply(save, list = objs, file = paths)
     invisible()
 }

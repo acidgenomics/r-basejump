@@ -1,12 +1,28 @@
+# AnnotationDbi ====
+#' @export
+AnnotationDbi::select
+
+
+
+# Biobase ====
+#' @export
+Biobase::content
+
+
+
+# BiocGenerics ====
+#' @export
+BiocGenerics::intersect
+
+
+
 # Bioconductor ====
-#' @importFrom BiocInstaller biocValid
 #' @export
 BiocInstaller::biocValid
 
 
 
 # biomaRt ====
-#' @importFrom biomaRt getBM listMarts useEnsembl
 #' @export
 biomaRt::getBM
 
@@ -16,10 +32,12 @@ biomaRt::listMarts
 #' @export
 biomaRt::useEnsembl
 
+#' @export
+biomaRt::useMart
+
 
 
 # devtools ====
-#' @import devtools
 #' @export
 devtools::build
 
@@ -43,10 +61,7 @@ devtools::test
 
 
 
-## dplyr ====
-#' @importFrom dplyr bind_cols bind_rows case_when combine desc distinct
-#'   everything funs group_by left_join mutate_all summarise summarise_all
-#'   summarize summarize_all top_n ungroup
+# dplyr ====
 #' @export
 dplyr::bind_cols
 
@@ -55,9 +70,6 @@ dplyr::bind_rows
 
 #' @export
 dplyr::case_when
-
-#' @export
-dplyr::combine
 
 #' @export
 dplyr::desc
@@ -69,16 +81,33 @@ dplyr::distinct
 dplyr::everything
 
 #' @export
+dplyr::full_join
+
+#' @export
 dplyr::funs
 
 #' @export
 dplyr::group_by
 
 #' @export
+dplyr::inner_join
+
+#' @export
 dplyr::left_join
 
 #' @export
 dplyr::mutate_all
+
+#' @export
+dplyr::n
+
+#' @export
+dplyr::right_join
+
+#' @rdname tidy
+#' @usage NULL
+#' @export
+dplyr::select -> tidy_select
 
 #' Star Wars dataset.
 #' @keywords internal
@@ -106,14 +135,25 @@ dplyr::ungroup
 
 
 # graphics ====
-#' @importFrom graphics hist
 #' @export
 graphics::hist
 
 
 
+# httr ====
+# Collison with Biobase::content
+#' @export
+httr::content_type_json
+
+#' @export
+httr::GET
+
+#' @export
+httr::user_agent
+
+
+
 # knitr ====
-#' @importFrom knitr asis_output kable opts_chunk opts_knit
 #' @export
 knitr::asis_output
 
@@ -129,7 +169,6 @@ knitr::opts_knit
 
 
 # magrittr ====
-#' @importFrom magrittr %>% set_colnames set_rownames
 #' @export
 magrittr::`%>%`
 
@@ -151,28 +190,28 @@ magrittr::set_rownames -> setRownames
 
 
 
-# methods ====
-#' @importFrom methods as show
+# parallel ====
 #' @export
-methods::as
+parallel::mclapply
 
 #' @export
-methods::show
+parallel::mcmapply
 
 
 
-# purrr ====
-#' @importFrom purrr set_names
+# pbmcapply ====
 #' @export
-purrr::set_names
+pbmcapply::pbmclapply
 
-# Don't export camel variant over stats!
-purrr::set_names -> setNames
+
+
+# pkgdown ====
+#' @export
+pkgdown::build_site
 
 
 
 # R.utils ====
-#' @importFrom R.utils gzip gunzip
 #' @export
 R.utils::gunzip
 
@@ -182,14 +221,12 @@ R.utils::gzip
 
 
 # RCurl ====
-#' @importFrom RCurl getURL
 #' @export
 RCurl::getURL
 
 
 
 # readr ====
-#' @import readr
 #' @export
 readr::read_csv
 
@@ -217,21 +254,19 @@ readr::write_tsv
 
 
 # readxl ====
-#' @importFrom readxl read_excel
 #' @export
 readxl::read_excel
 
 
 
 # reshape ====
-#' @importFrom reshape2 melt
 #' @export
 reshape2::melt
 
 
 
 # rlang ====
-#' @importFrom rlang !!! !! .data is_string quo quos sym syms UQ
+# Collison with Biobase::exprs
 #' @export
 rlang::`!!!`
 
@@ -242,13 +277,49 @@ rlang::`!!`
 rlang::.data
 
 #' @export
+rlang::is_atomic
+
+#' @export
+rlang::is_bytes
+
+#' @export
+rlang::is_character
+
+#' @export
+rlang::is_double
+
+#' @export
+rlang::is_integer
+
+#' @export
+rlang::is_list
+
+#' @export
+rlang::is_logical
+
+#' @export
+rlang::is_null
+
+#' @export
+rlang::is_raw
+
+#' @export
 rlang::is_string
+
+#' @export
+rlang::is_vector
 
 #' @export
 rlang::quo
 
 #' @export
 rlang::quos
+
+#' @export
+rlang::set_names
+
+# Don't export over [stats::setNames]
+rlang::set_names -> setNames
 
 #' @export
 rlang::sym
@@ -262,14 +333,15 @@ rlang::UQ
 
 
 # rmarkdown ====
-#' @importFrom rmarkdown render
 #' @export
 rmarkdown::render
 
 
 
 # stringr ====
-#' @import stringr
+#' @export
+stringr::str_c
+
 #' @export
 stringr::str_detect
 
@@ -278,6 +350,9 @@ stringr::str_extract
 
 #' @export
 stringr::str_extract_all
+
+#' @export
+stringr::str_length
 
 #' @export
 stringr::str_match
@@ -298,15 +373,32 @@ stringr::str_replace_all
 stringr::str_split
 
 #' @export
+stringr::str_sub
+
+#' @export
 stringr::str_subset
 
 
 
-## tibble ====
-#' @importFrom tibble as_tibble glimpse is_tibble remove_rownames
-#'   rownames_to_column tibble
+# S4Vectors ====
+#' @export
+S4Vectors::expand
+
+#' @export
+S4Vectors::first
+
+#' @export
+S4Vectors::rename
+
+
+
+# tibble ====
+# Collison with rlang on full import
 #' @export
 tibble::as_tibble
+
+#' @export
+tibble::column_to_rownames
 
 #' @export
 tibble::glimpse
@@ -326,9 +418,12 @@ tibble::tibble
 
 
 # tidyr ====
-#' @importFrom tidyr expand_ nest_ separate_ unnest_
+# Collison with S4Vectors::expand
 #' @export
 tidyr::expand_
+
+#' @export
+tidyr::nest
 
 #' @export
 tidyr::nest_
@@ -337,19 +432,20 @@ tidyr::nest_
 tidyr::separate_
 
 #' @export
+tidyr::unnest
+
+#' @export
 tidyr::unnest_
 
 
 
-## tools ====
-#' @importFrom tools file_path_sans_ext
+# tools ====
 #' @export
 tools::file_path_sans_ext
 
 
 
 # utils ====
-#' @importFrom utils download.file globalVariables sessionInfo
 #' @export
 utils::download.file
 

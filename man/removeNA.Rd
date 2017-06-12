@@ -17,7 +17,22 @@ Remove rows and columns containing only \code{NA} values
 }
 \examples{
 # Remove NA only rows and columns
-data.frame(a = c(1,  NA, 3),
+matrix(c(1, NA, 3,
+         NA, NA, NA,
+         2, NA, 4),
+       nrow = 3, ncol = 3) \%>\% removeNA
+
+data.frame(a = c("A", NA, "C"),
            b = c(NA, NA, NA),
-           c = c(4,  NA, 6)) \%>\% removeNA
+           c = c("B", NA, "D")) \%>\% removeNA
+
+tibble(a = c("A", NA, "C"),
+       b = c(NA, NA, NA),
+       c = c("B", NA, "D")) \%>\% removeNA
+
+
+# Return unmodified
+list(a = c("A", NA, "C"),
+     b = c(NA, NA, NA),
+     c = c("B", NA, "D")) \%>\% removeNA
 }

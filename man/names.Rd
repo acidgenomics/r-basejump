@@ -9,15 +9,17 @@
 \alias{firstCase}
 \title{Make syntactically valid names}
 \usage{
-camel(x)
+camel(x, rownames = TRUE)
 
-dotNotation(x)
+dotNotation(x, rownames = TRUE)
 
-snake(x)
+snake(x, rownames = TRUE)
 }
 \arguments{
-\item{x}{Character vector or an object for which \code{\link[base:names]{base::names()}} assignment
-will be meaningful.}
+\item{x}{Character vector or an object for which \code{\link[=names]{names()}} assignment will be
+meaningful.}
+
+\item{rownames}{Include row names.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
@@ -31,13 +33,18 @@ assignments for values and/or function.
 }
 \details{
 For unnamed character vectors, these functions will sanitize the underlying
-values. Otherwise, the functions will set \code{\link[base:names]{base::names()}} and/or
-\code{\link[base:rownames]{base::rownames()}} on objects supporting name assignments. They return the
-object without modification of the underlying data.
+values. Otherwise, the functions will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
+objects supporting name assignments. They return the object without
+modification of the underlying data.
 }
 \examples{
 # Unnamed character vector, with no names assigned
-unnamed_vec <- c("hello world", "HELLO WORLD", "RNAi clones", 123, NA)
+unnamed_vec <- c("hello world",
+                 "HELLO WORLD",
+                 "RNAi clones",
+                 "worfdbHTMLRemap",
+                 123,
+                 NA)
 
 # Named character vector
 named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
@@ -57,6 +64,7 @@ lst <- list(Item.A = c(1, 2),
 camel(unnamed_vec)
 camel(named_vec)
 camel(df)
+camel(df, rownames = FALSE)
 camel(tbl)
 camel(lst)
 
@@ -65,6 +73,7 @@ camel(lst)
 snake(unnamed_vec)
 snake(named_vec)
 snake(df)
+snake(df, rownames = FALSE)
 snake(tbl)
 snake(lst)
 
@@ -73,13 +82,7 @@ snake(lst)
 dotNotation(unnamed_vec)
 dotNotation(named_vec)
 dotNotation(df)
+dotNotation(df, rownames = FALSE)
 dotNotation(tbl)
 dotNotation(lst)
-}
-\seealso{
-\itemize{
-\item \code{\link[base:make.names]{base::make.names()}}.
-\item \code{\link[purrr:set_names]{purrr::set_names()}}.
-\item \code{\link[stats:setNames]{stats::setNames()}}.
-}
 }
