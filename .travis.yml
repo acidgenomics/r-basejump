@@ -1,12 +1,9 @@
 # R for travis
 # https://docs.travis-ci.com/user/languages/r
-cache: packages
 language: r
+sudo: false
+cache: packages
 r:
   - bioc-release
   - bioc-devel
-  - oldrel
-  - release
-  - devel
-sudo: false
 warnings_are_errors: false
