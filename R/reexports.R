@@ -16,9 +16,15 @@ BiocGenerics::intersect
 
 
 
-# Bioconductor ====
+# BiocInstaller ====
 #' @export
 BiocInstaller::biocValid
+
+
+
+# BiocStyle ====
+#' @export
+BiocStyle::doc_date
 
 
 

@@ -22,6 +22,7 @@ Imports:
     BiocCheck,
     BiocGenerics,
     BiocInstaller,
+    BiocStyle,
     biomaRt (>= 2.30.0),
     devtools (>= 1.13.0),
     dplyr (>= 0.7.0),

@@ -11,6 +11,8 @@
 \alias{reexports}
 \alias{biocValid}
 \alias{reexports}
+\alias{doc_date}
+\alias{reexports}
 \alias{getBM}
 \alias{reexports}
 \alias{listMarts}
@@ -250,6 +252,8 @@ below to see their documentation.
   \item{BiocGenerics}{\code{\link[BiocGenerics]{intersect}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
+
+  \item{BiocStyle}{\code{\link[BiocStyle]{doc_date}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
