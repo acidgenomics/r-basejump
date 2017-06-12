@@ -28,7 +28,7 @@
 #'   summarize_all top_n ungroup
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
-#' @importFrom knitr asis_output kable opts_chunk opts_knit
+#' @importFrom knitr asis_output kable knit opts_chunk opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom parallel mclapply mcmapply
 #' @importFrom pbmcapply pbmclapply

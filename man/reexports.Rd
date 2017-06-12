@@ -97,6 +97,8 @@
 \alias{reexports}
 \alias{kable}
 \alias{reexports}
+\alias{knit}
+\alias{reexports}
 \alias{opts_chunk}
 \alias{reexports}
 \alias{opts_knit}
@@ -275,7 +277,7 @@ below to see their documentation.
 
   \item{httr}{\code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
 
-  \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
+  \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{knit}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
