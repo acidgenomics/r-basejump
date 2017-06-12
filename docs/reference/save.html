@@ -80,7 +80,7 @@
     <p>Quick save to <code>data</code> (default) or <code>data-raw</code> directory.</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>)
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"xz"</span>)
 
 <span class='fu'>saveDataRaw</span>(<span class='no'>...</span>)</pre>
     
@@ -94,6 +94,12 @@
     <tr>
       <th>dir</th>
       <td><p>Save directory.</p></td>
+    </tr>
+    <tr>
+      <th>compress</th>
+      <td><p>Compression method, supporting <code>xz</code> (preferred), <code>bzip2</code>, or
+<code>gzip</code>. Compression can be disabled by setting as <code>FALSE</code>, although this is
+not generally recommended.</p></td>
     </tr>
     </table>
     
