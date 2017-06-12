@@ -38,7 +38,7 @@ Imports:
     readxl (>= 1.0.0),
     reshape2 (>= 1.4.2),
     rmarkdown (>= 1.5),
-    rlang (>= 0.1.1.9000),
+    rlang (>= 0.1.1),
     R.utils,
     S4Vectors,
     stringr (>= 1.2.0),
