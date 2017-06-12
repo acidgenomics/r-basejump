@@ -16,6 +16,7 @@
 #'
 #' @param x Character vector or an object for which [names()] assignment will be
 #'   meaningful.
+#' @param rownames Include row names.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [base::names()], the underlying data returns unchanged.
@@ -47,6 +48,7 @@
 #' camel(unnamed_vec)
 #' camel(named_vec)
 #' camel(df)
+#' camel(df, rownames = FALSE)
 #' camel(tbl)
 #' camel(lst)
 #'
@@ -55,6 +57,7 @@
 #' snake(unnamed_vec)
 #' snake(named_vec)
 #' snake(df)
+#' snake(df, rownames = FALSE)
 #' snake(tbl)
 #' snake(lst)
 #'
@@ -63,6 +66,7 @@
 #' dotNotation(unnamed_vec)
 #' dotNotation(named_vec)
 #' dotNotation(df)
+#' dotNotation(df, rownames = FALSE)
 #' dotNotation(tbl)
 #' dotNotation(lst)
 NULL
@@ -158,11 +162,11 @@ checkRownames <- function(x) {
 
 
 
-setNamesDot <- function(x) {
+setNamesDot <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesDot(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesDot(rownames(x)))
     }
     x
@@ -170,11 +174,11 @@ setNamesDot <- function(x) {
 
 
 
-setNamesCamel <- function(x) {
+setNamesCamel <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesCamel(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesCamel(rownames(x)))
     }
     x
@@ -182,11 +186,11 @@ setNamesCamel <- function(x) {
 
 
 
-setNamesSnake <- function(x) {
+setNamesSnake <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesSnake(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesSnake(rownames(x)))
     }
     x
@@ -200,11 +204,11 @@ setNamesSnake <- function(x) {
 # Flexible utilities ====
 #' @rdname names
 #' @export
-camel <- function(x) {
+camel <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesCamel(x)
     } else {
-        setNamesCamel(x)
+        setNamesCamel(x, rownames)
     }
 }
 
@@ -212,11 +216,11 @@ camel <- function(x) {
 
 #' @rdname names
 #' @export
-dotNotation <- function(x) {
+dotNotation <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesDot(x)
     } else {
-        setNamesDot(x)
+        setNamesDot(x, rownames)
     }
 }
 
@@ -229,11 +233,11 @@ dot_notation <- dotNotation
 
 #' @rdname names
 #' @export
-snake <- function(x) {
+snake <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesSnake(x)
     } else {
-        setNamesSnake(x)
+        setNamesSnake(x, rownames)
     }
 }
 
