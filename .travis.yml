@@ -5,8 +5,5 @@ language: r
 r:
   - bioc-release
   - bioc-devel
-  - oldrel
-  - release
-  - devel
 sudo: false
 warnings_are_errors: false
