@@ -6,28 +6,29 @@
 #' assignments for values and/or function.
 #'
 #' For unnamed character vectors, these functions will sanitize the underlying
-#' values. Otherwise, the functions will set [base::names()] and/or
-#' [base::rownames()] on objects supporting name assignments. They return the
-#' object without modification of the underlying data.
+#' values. Otherwise, the functions will set [names()] and/or [rownames()] on
+#' objects supporting name assignments. They return the object without
+#' modification of the underlying data.
 #'
 #' @rdname names
 #' @name names
 #' @usage NULL
 #'
-#' @seealso
-#' - [base::make.names()].
-#' - [purrr::set_names()].
-#' - [stats::setNames()].
-#'
-#' @param x Character vector or an object for which [base::names()] assignment
-#'   will be meaningful.
+#' @param x Character vector or an object for which [names()] assignment will be
+#'   meaningful.
+#' @param rownames Include row names.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
 #' # Unnamed character vector, with no names assigned
-#' unnamed_vec <- c("hello world", "HELLO WORLD", "RNAi clones", 123, NA)
+#' unnamed_vec <- c("hello world",
+#'                  "HELLO WORLD",
+#'                  "RNAi clones",
+#'                  "worfdbHTMLRemap",
+#'                  123,
+#'                  NA)
 #'
 #' # Named character vector
 #' named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
@@ -47,6 +48,7 @@
 #' camel(unnamed_vec)
 #' camel(named_vec)
 #' camel(df)
+#' camel(df, rownames = FALSE)
 #' camel(tbl)
 #' camel(lst)
 #'
@@ -55,6 +57,7 @@
 #' snake(unnamed_vec)
 #' snake(named_vec)
 #' snake(df)
+#' snake(df, rownames = FALSE)
 #' snake(tbl)
 #' snake(lst)
 #'
@@ -63,6 +66,7 @@
 #' dotNotation(unnamed_vec)
 #' dotNotation(named_vec)
 #' dotNotation(df)
+#' dotNotation(df, rownames = FALSE)
 #' dotNotation(tbl)
 #' dotNotation(lst)
 NULL
@@ -89,23 +93,25 @@ makeFirstCase <- function(x) {
 makeNamesDot <- function(x) {
     x %>%
         as.character %>%
+        make.names %>%
         # Convert non-alphanumeric characters
         str_replace_all("[^[:alnum:]]", ".") %>%
         # Combine multiple underscores
         str_replace_all("[\\.]+", ".") %>%
-        # Strip leading or trailing underscores
+        # Strip leading or trailing dots
         str_replace_all("(^\\.|\\.$)", "") %>%
-        # Special names
-        str_replace_all("(m|nc|r)RNA", "\\1rna") %>%
-        # Convert acronyms to mixed case
+        # Special acronym exceptions
+        str_replace_all("RNAi", "Rnai") %>%
+        # Handle snakeCase acronyms
+        # e.g. worfdbHTMLRemap -> worfdb.html.remap
+        gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
+             "\\1\\L\\2\\U\\3\\L\\4", ., perl = TRUE) %>%
+        # Convert remaining acronyms to mixed case
         gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
         # Make first letter lowercase
         gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
         # Convert camelCase
         gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
-        # Ensure syntactically valid names
-        make.names %>%
-        # Lowercase everything
         tolower
 }
 
@@ -156,11 +162,11 @@ checkRownames <- function(x) {
 
 
 
-setNamesDot <- function(x) {
+setNamesDot <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesDot(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesDot(rownames(x)))
     }
     x
@@ -168,11 +174,11 @@ setNamesDot <- function(x) {
 
 
 
-setNamesCamel <- function(x) {
+setNamesCamel <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesCamel(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesCamel(rownames(x)))
     }
     x
@@ -180,11 +186,11 @@ setNamesCamel <- function(x) {
 
 
 
-setNamesSnake <- function(x) {
+setNamesSnake <- function(x, rownames) {
     if (checkNames(x)) {
         x <- setNames(x, makeNamesSnake(names(x)))
     }
-    if (checkRownames(x)) {
+    if (isTRUE(rownames) & checkRownames(x)) {
         x <- setRownames(x, makeNamesSnake(rownames(x)))
     }
     x
@@ -198,11 +204,11 @@ setNamesSnake <- function(x) {
 # Flexible utilities ====
 #' @rdname names
 #' @export
-camel <- function(x) {
+camel <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesCamel(x)
     } else {
-        setNamesCamel(x)
+        setNamesCamel(x, rownames)
     }
 }
 
@@ -210,11 +216,11 @@ camel <- function(x) {
 
 #' @rdname names
 #' @export
-dotNotation <- function(x) {
+dotNotation <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesDot(x)
     } else {
-        setNamesDot(x)
+        setNamesDot(x, rownames)
     }
 }
 
@@ -227,11 +233,11 @@ dot_notation <- dotNotation
 
 #' @rdname names
 #' @export
-snake <- function(x) {
+snake <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesSnake(x)
     } else {
-        setNamesSnake(x)
+        setNamesSnake(x, rownames)
     }
 }
 

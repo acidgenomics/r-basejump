@@ -1,4 +1,9 @@
-language: R
-cache: packages
+# R for travis
+# https://docs.travis-ci.com/user/languages/r
+language: r
 sudo: false
-r: bioc-release
+cache: packages
+r:
+  - bioc-release
+  - bioc-devel
+warnings_are_errors: false

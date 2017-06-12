@@ -4,10 +4,10 @@
 \alias{logRatioToFoldChange}
 \title{log ratio to fold change}
 \usage{
-logRatioToFoldChange(logRatio, base = 2)
+logRatioToFoldChange(lr, base = 2)
 }
 \arguments{
-\item{logRatio}{Numeric vector of log ratio values.}
+\item{lr}{Numeric vector of log ratio values.}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}
@@ -17,7 +17,7 @@ Fold change values.
 }
 \description{
 Convert log ratio normalized values to fold change. Based on the approach
-used in \code{\link[gtools:logratio2foldchange]{gtools::logratio2foldchange()}}.
+used in \code{gtools::logratio2foldchange()}.
 }
 \examples{
 logRatioToFoldChange(seq(-3, 3, 0.5))

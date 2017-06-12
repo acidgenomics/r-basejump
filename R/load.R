@@ -2,49 +2,57 @@
 #'
 #' @rdname load
 #'
-#' @description Dynamically [source()] or [load()] raw data in the `data-raw`
-#'   directory.
-#'
-#' @param data Data object.
-#'
-#' @export
+#' @param ... Data files as dot objects.
+#' @param url URL.
 #'
 #' @examples
 #' \dontrun{
-#' loadDataRaw("counts")
+#' loadData(geneIDs, oligo)
+#' loadRemote("http://example.com/data.rda")
 #' }
-loadDataRaw <- function(data) {
-    for (a in 1:length(data)) {
-        if (!file.exists(paste0("data/", data[a], ".rda"))) {
-            source(paste0("data-raw/", data[a], ".R"))
+#'
+#' @description Dynamically [load()] data from `data` directory or [source()]
+#'   the corresponding script frmo the `data-raw` directory.
+#' @export
+loadData <- function(...) {
+    envir <- parent.frame()
+    names <- as.character(substitute(list(...)))[-1L]
+    sapply(seq_along(names), function(a) {
+        if (file.exists(paste0("data/", names[a], ".rda"))) {
+            # Check for .rda file in `data/`
+            message(paste("Loading", names[a], "from data/..."))
+            load(paste0("data/", names[a], ".rda"), envir = envir)
+        } else if (file.exists(paste0("data-raw/", names[a], ".rda"))) {
+            # Check for .rda file in `data-raw/
+            message(paste("Loading", names[a], "from data-raw/..."))
+            load(paste0("data-raw/", names[a], ".rda"), envir = envir)
+        } else if (file.exists(paste0("data-raw/", names[a], ".R"))) {
+            # Source .R script in `data-raw/`
+            message(paste("Sourcing", names[a], "from data-raw/..."))
+            source(paste0("data-raw/", names[a], ".R"))
         } else {
-            load(paste0("data/", data[a], ".rda"), envir = parent.frame())
+            # Skip and warn
+            warning(paste(names[a], "missing"))
         }
-    }
+    }) %>% invisible
 }
 
-#' @rdname aliases
-#' @usage NULL
-#' @export
-load_data_raw <- loadDataRaw
+# NAMESPACE collison with devtools::load_data
+# @rdname aliases
+# @usage NULL
+# @export
+# load_data <- loadData
 
 
 
 #' @rdname load
 #' @description Load a remote R binary file.
-#'
-#' @param url URL.
-#'
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' loadRemote("http://example.com/data.rda")
-#' }
 loadRemote <- function(url) {
+    envir = parent.frame()
     tempfile <- tempfile()
     download.file(url, get("tempfile"), quiet = TRUE)
-    load(get("tempfile"), envir = globalenv())
+    load(get("tempfile"), envir = envir)
 }
 
 #' @rdname aliases

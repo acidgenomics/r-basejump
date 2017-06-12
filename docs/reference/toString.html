@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert an R object to a character string — toString • basejump</title>
+<title>Convert an R object to a character string — toStringUnique • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,13 +77,15 @@
     </div>
 
     
-    <p>Helper functions for <code>format()</code> to produce a single character string
-describing an R object.</p>
+    <p>Helper functions for to produce a character string output for vectors and
+data frames (via <code>toStringSummarize()</code>).</p>
     
 
-    <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
 
-<span class='fu'>toStringSortUnique</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>toStringSortUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
+
+<span class='fu'>toStringSummarize</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -93,7 +95,11 @@ describing an R object.</p>
       <td><p>The object to be converted.</p></td>
     </tr>
     <tr>
-      <th>...</th>
+      <th>sep</th>
+      <td><p>Separator used for collapse.</p></td>
+    </tr>
+    <tr>
+      <th>sort</th>
       <td><p>Optional arguments passed to or from methods.</p></td>
     </tr>
     </table>
@@ -104,7 +110,13 @@ describing an R object.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>toStringUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "milk, eggs"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs, milk"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>toStringUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "milk, eggs"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs, milk"</div><div class='input'>
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span> <span class='kw'>%&gt;%</span> <span class='no'>toStringSummarize</span></div><div class='output co'>#&gt;                          mpg     cyl                    disp                hp
+#&gt; 1 18.1, 18.7, 21, 21.4, 22.8 4, 6, 8 108, 160, 225, 258, 360 93, 105, 110, 175
+#&gt;                          drat                                   wt
+#&gt; 1 2.76, 3.08, 3.15, 3.85, 3.9 2.32, 2.62, 2.875, 3.215, 3.44, 3.46
+#&gt;                                qsec   vs   am gear    carb
+#&gt; 1 16.46, 17.02, 18.61, 19.44, 20.22 0, 1 0, 1 3, 4 1, 2, 4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
