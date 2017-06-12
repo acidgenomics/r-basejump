@@ -26,6 +26,19 @@ BiocInstaller::biocValid
 #' @export
 BiocStyle::doc_date
 
+#' @export
+BiocStyle::html_document
+# [fix] rmarkdown::html_document instead?
+
+#' @export
+BiocStyle::html_document2
+
+#' @export
+BiocStyle::pdf_document
+
+#' @export
+BiocStyle::pdf_document2
+
 
 
 # biomaRt ====
