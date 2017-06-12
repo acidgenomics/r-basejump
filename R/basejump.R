@@ -13,6 +13,7 @@
 #' @import AnnotationDbi
 #' @import Biobase
 #' @import BiocGenerics
+#' @import BiocStyle
 #' @import methods
 #' @import readr
 #' @import stringr
