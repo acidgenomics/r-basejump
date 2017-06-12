@@ -24,7 +24,7 @@ Imports:
     BiocInstaller,
     biomaRt (>= 2.30.0),
     devtools (>= 1.13.0),
-    dplyr (>= 0.6.0),
+    dplyr (>= 0.7.0),
     graphics,
     httr (>= 1.2.1),
     knitr (>= 1.15),
@@ -32,6 +32,7 @@ Imports:
     methods,
     parallel,
     pbmcapply (>= 1.2.1),
+    pkgdown (>= 0.1.0.9),
     RCurl (>= 1.95),
     readr (>= 1.1.0),
     readxl (>= 1.0.0),
@@ -47,7 +48,8 @@ Imports:
     utils,
     yaml (>= 2.1.14)
 Remotes:
-    tidyverse/dplyr,
+    hadley/pkgdown,
+    r-pkgs/pkgapi,
     tidyverse/rlang
 Roxygen: list(markdown = TRUE,
               roclets = c("collate",

@@ -20,7 +20,7 @@
 #' @importFrom BiocInstaller biocValid
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom devtools build build_vignettes check document install load_all
-#'   test
+#'   test update_packages
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate
 #'   mutate_all n right_join summarise summarise_all summarize summarize_all
@@ -31,6 +31,7 @@
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom parallel mclapply mcmapply
 #' @importFrom pbmcapply pbmclapply
+#' @importFrom pkgdown build_site
 #' @importFrom R.utils gzip gunzip
 #' @importFrom RCurl getURL
 #' @importFrom readxl read_excel
