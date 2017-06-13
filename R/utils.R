@@ -168,7 +168,7 @@ sort_unique <- sortUnique
 #' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
 #'
 #' @export
-update <- function() {
+update_packages <- function() {
     # Update Bioconductor packages first
     bioc()
 
