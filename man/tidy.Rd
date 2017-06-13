@@ -17,7 +17,7 @@
 \alias{tidy_select}
 \alias{tidy}
 \alias{tidyverse}
-\title{\href{http://tidyverse.org/}{tidyverse} generics}
+\title{S4 generic variants of \href{http://tidyverse.org/}{tidyverse} verbs}
 \usage{
 \S4method{arrange}{data.frame}(object, ...)
 
