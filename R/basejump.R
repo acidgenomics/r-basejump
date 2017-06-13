@@ -28,11 +28,12 @@
 #'   summarize_all top_n ungroup
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
-#' @importFrom knitr asis_output kable opts_chunk opts_knit
+#' @importFrom knitr asis_output kable knit opts_chunk opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom parallel mclapply mcmapply
 #' @importFrom pbmcapply pbmclapply
-#' @importFrom pkgdown build_site
+# [fix] Add back once pkgdown is on CRAN
+# @importFrom pkgdown build_site
 #' @importFrom R.utils gzip gunzip
 #' @importFrom RCurl getURL
 #' @importFrom readxl read_excel

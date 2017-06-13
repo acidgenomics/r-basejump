@@ -1,4 +1,4 @@
-#' [tidyverse](http://tidyverse.org/) generics
+#' S4 generic variants of [tidyverse](http://tidyverse.org/) verbs
 #'
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.
