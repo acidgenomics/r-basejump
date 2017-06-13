@@ -84,7 +84,8 @@ packageProject <- function(
     }
 
     # Build website
-    build_site()
+    # [fix] Add back once pkgdown is on CRAN
+    # build_site()
 
     # [fix] switch to `build_site_rstudio()` if function gets exported?
     # https://github.com/hadley/pkgdown/blob/master/R/build.r
