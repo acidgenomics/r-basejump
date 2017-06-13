@@ -183,6 +183,9 @@ knitr::asis_output
 knitr::kable
 
 #' @export
+knitr::knit
+
+#' @export
 knitr::opts_chunk
 
 #' @export
@@ -224,12 +227,6 @@ parallel::mcmapply
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
-
-
-
-# pkgdown ====
-#' @export
-pkgdown::build_site
 
 
 
