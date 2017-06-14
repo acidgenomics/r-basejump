@@ -173,7 +173,7 @@ update_packages <- function() {
     bioc()
 
     # Now update packages from GitHub repos
-    update_packages()
+    devtools::update_packages()
 
     # Ensure safe developer environment
     biocValid()
