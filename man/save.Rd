@@ -21,3 +21,6 @@ not generally recommended.}
 \description{
 Quick save to \code{data} (default) or \code{data-raw} directory.
 }
+\seealso{
+\code{\link[base:save]{base::save()}}.
+}
