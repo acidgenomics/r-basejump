@@ -121,6 +121,8 @@
 \alias{reexports}
 \alias{getURL}
 \alias{reexports}
+\alias{cols}
+\alias{reexports}
 \alias{read_csv}
 \alias{reexports}
 \alias{read_delim}
@@ -287,7 +289,7 @@ below to see their documentation.
 
   \item{RCurl}{\code{\link[RCurl]{getURL}}}
 
-  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_table}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}, \code{\link[readr]{write_lines}}, \code{\link[readr]{write_tsv}}}
+  \item{readr}{\code{\link[readr]{cols}}, \code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_table}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}, \code{\link[readr]{write_lines}}, \code{\link[readr]{write_tsv}}}
 
   \item{readxl}{\code{\link[readxl]{read_excel}}}
 

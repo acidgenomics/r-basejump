@@ -247,6 +247,9 @@ RCurl::getURL
 
 # readr ====
 #' @export
+readr::cols
+
+#' @export
 readr::read_csv
 
 #' @export
