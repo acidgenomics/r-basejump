@@ -11,6 +11,7 @@
 #'   not generally recommended.
 #'
 #' @export
+#' @seealso [base::save()].
 saveData <- function(..., dir = "data", compress = "xz") {
     if (!is_string(dir)) {
         stop("dir must be a string")
