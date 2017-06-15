@@ -15,6 +15,8 @@
 #' @import BiocGenerics
 #' @import BiocStyle
 #' @import methods
+#' @import pbapply
+#' @import pbmcapply
 #' @import readr
 #' @import stringr
 #' @import S4Vectors
@@ -31,7 +33,6 @@
 #' @importFrom knitr asis_output kable knit opts_chunk opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom parallel mclapply mcmapply
-#' @importFrom pbmcapply pbmclapply
 # [fix] Add back once pkgdown is on CRAN
 # @importFrom pkgdown build_site
 #' @importFrom R.utils gzip gunzip

@@ -224,6 +224,15 @@ parallel::mcmapply
 
 
 
+# pbapply ====
+#' @export
+pbapply::pblapply
+
+#' @export
+pbapply::pbsapply
+
+
+
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
