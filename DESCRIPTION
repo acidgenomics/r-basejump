@@ -32,6 +32,7 @@ Imports:
     magrittr (>= 1.5),
     methods,
     parallel,
+    pbapply,
     pbmcapply (>= 1.2.1),
     RCurl (>= 1.95),
     readr (>= 1.1.0),

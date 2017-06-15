@@ -113,6 +113,10 @@
 \alias{reexports}
 \alias{mcmapply}
 \alias{reexports}
+\alias{pblapply}
+\alias{reexports}
+\alias{pbsapply}
+\alias{reexports}
 \alias{pbmclapply}
 \alias{reexports}
 \alias{gunzip}
@@ -282,6 +286,8 @@ below to see their documentation.
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{parallel}{\code{\link[parallel]{mclapply}}, \code{\link[parallel]{mcmapply}}}
+
+  \item{pbapply}{\code{\link[pbapply]{pblapply}}, \code{\link[pbapply]{pbsapply}}}
 
   \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
 
