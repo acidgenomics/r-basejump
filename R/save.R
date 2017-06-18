@@ -31,7 +31,7 @@ saveData <- function(..., dir = "data", compress = "xz") {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-save_data <- saveData
+save_data <- saveData  # nolint
 
 
 
@@ -44,4 +44,4 @@ saveDataRaw <- function(...) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-save_data_raw <- saveDataRaw
+save_data_raw <- saveDataRaw  # nolint

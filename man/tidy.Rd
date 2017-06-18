@@ -16,7 +16,7 @@
 \alias{setdiff,data.frame,data.frame-method}
 \alias{setequal,data.frame,data.frame-method}
 \alias{union,data.frame,data.frame-method}
-\alias{tidy_select}
+\alias{tidySelect}
 \title{S4 generic variants of \href{http://tidyverse.org/}{tidyverse} verbs}
 \usage{
 \S4method{arrange}{data.frame}(object, ...)

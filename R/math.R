@@ -8,8 +8,7 @@
 #'
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
-#' @param object Vector or column data (data frame, matrix).
-#' @param na_rm Remove `NA` values before processing.
+#' @param x Vector or column data (data frame, matrix).
 #'
 #' @return Geometric means.
 #' @export
@@ -25,13 +24,12 @@
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
-#' geomean(df, na_rm = FALSE)
-geomean <- function(object, na_rm = TRUE) {
+geomean <- function(object) {
     if (is.vector(object)) {
         exp(mean(log(object), na.rm = TRUE))
     } else if (is.data.frame(object) | is.matrix(object)) {
         # `2` denotes columnwise calculation
-        exp(apply(log(object), 2, mean, na.rm = na_rm))
+        exp(apply(log(object), 2L, mean, na.rm = TRUE))
     }
 }
 
@@ -47,7 +45,7 @@ geomean <- function(object, na_rm = TRUE) {
 #' @examples
 #' pct(0.1)
 pct <- function(number) {
-    sprintf("%1.1f%%", number * 100)
+    sprintf("%1.1f%%", number * 100L)
 }
 
 
@@ -70,13 +68,13 @@ pct <- function(number) {
 #'
 #' @examples
 #' logRatioToFoldChange(seq(-3, 3, 0.5))
-logRatioToFoldChange <- function(x, base = 2) {
+logRatioToFoldChange <- function(x, base = 2L) {
     x <- base ^ x
-    x <- ifelse(x < 1, -1 / x, x)
+    x <- ifelse(x < 1L, -1L / x, x)
     x
 }
 
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-log_ratio_to_fold_change <- logRatioToFoldChange
+log_ratio_to_fold_change <- logRatioToFoldChange  # nolint

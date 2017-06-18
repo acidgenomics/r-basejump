@@ -26,14 +26,14 @@ mdList <- function(character, ordered = FALSE) {
         }
         paste(prefix, character[a])
     },
-    character(1))
+    character(1L))
     writeLines(string)
 }
 
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-md_list <- mdList
+md_list <- mdList  # nolint
 
 
 
@@ -59,7 +59,7 @@ md_list <- mdList
 #'     head(mtcars)
 #' ) %>% kables
 kables <- function(list, captions = NULL) {
-    output <- opts_knit$get("rmarkdown.pandoc.to")
+    output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output)) {
         tables <- lapply(seq_along(list), function(a) {
             kable(list[a], caption = captions[a])

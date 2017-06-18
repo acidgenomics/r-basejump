@@ -6,12 +6,9 @@
 #'   [RStudio](https://www.rstudio.com).
 #' @export
 createProjectDirs <- function() {
-    local_dirs <- c("data",
-                    "figures",
-                    "meta",
-                    "results")
-    lapply(seq_along(local_dirs), function(a) {
-        dir.create(local_dirs[a], showWarnings = FALSE)
+    localDirs <- c("data", "figures", "meta", "results")
+    lapply(seq_along(localDirs), function(a) {
+        dir.create(localDirs[a], showWarnings = FALSE)
     }
     ) %>% invisible
 }
@@ -19,7 +16,7 @@ createProjectDirs <- function() {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-create_project_dirs <- createProjectDirs
+create_project_dirs <- createProjectDirs  # nolint
 
 
 
@@ -45,7 +42,7 @@ detectHPC <- function() {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-detect_hpc <- detectHPC
+detect_hpc <- detectHPC  # nolint
 
 
 
@@ -80,7 +77,7 @@ packageProject <- function(install = FALSE) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-package_project <- packageProject
+package_project <- packageProject  # nolint
 
 
 
@@ -99,10 +96,10 @@ renderProject <- function(today = TRUE) {
     }
 
     if (isTRUE(today)) {
-        output_dir <- file.path(Sys.Date())
-        dir.create(output_dir, showWarnings = FALSE)
+        outputDir <- file.path(Sys.Date())
+        dir.create(outputDir, showWarnings = FALSE)
     } else {
-        output_dir <- getwd()
+        outputDir <- getwd()
     }
 
     # Get the list of RMarkdown files
@@ -123,7 +120,7 @@ renderProject <- function(today = TRUE) {
                clean = TRUE,
                envir = new.env(),
                knit_root_dir = getwd(),
-               output_dir = output_dir,
+               output_dir = outputDir,
                output_format = "all")
     }
     ) %>% invisible
@@ -132,4 +129,4 @@ renderProject <- function(today = TRUE) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-render_project <- renderProject
+render_project <- renderProject  # nolint

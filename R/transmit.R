@@ -3,62 +3,62 @@
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
 #'
-#' @param remote_dir Remote directory URL.
+#' @param remoteDir Remote directory URL.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
 #'   (`TRUE`/`FALSE`)
-#' @param local_dir Directory where to save file locally.
+#' @param localDir Directory where to save file locally.
 #'
 #' @return List of local files.
 #' @export
 transmit <- function(
-    remote_dir,
+    remoteDir,
     pattern = NULL,
     rename = NULL,
     compress = FALSE,
-    local_dir = "data-raw") {
-    remote_file_name <- getURL(remote_dir, dirlistonly = TRUE) %>% read_lines
-    if (!length(remote_file_name)) {
+    localDir = "data-raw") {
+    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>% read_lines
+    if (!length(remoteFileName)) {
         stop("No files listed on remote server")
     }
 
     # Apply pattern matching
     if (!is.null(pattern)) {
-        remote_file_name <- str_subset(remote_file_name, pattern)
-        if (!length(remote_file_name)) {
+        remoteFileName <- str_subset(remoteFileName, pattern)
+        if (!length(remoteFileName)) {
             stop("Pattern didn't match any files")
         }
     }
 
     # Rename files, if desired
     if (!is.null(rename)) {
-        if (length(rename) != length(remote_file_name)) {
+        if (length(rename) != length(remoteFileName)) {
             stop("Rename vector doesn't match the number of remote files")
         }
     }
 
     # Ensure the local directory exists
-    dir.create(local_dir, recursive = TRUE, showWarnings = FALSE)
-    message(toString(remote_file_name))
-    list <- lapply(seq_along(remote_file_name), function(a) {
+    dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
+    message(toString(remoteFileName))
+    list <- lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
-            local_file_name <- rename[a]
+            localFileName <- rename[a]
         } else {
-            local_file_name <- remote_file_name[a]
+            localFileName <- remoteFileName[a]
         }
-        remote_file_path <- paste0(remote_dir, remote_file_name[a])
-        local_file_path <- file.path(local_dir, local_file_name)
-        download.file(remote_file_path, local_file_path)
+        remoteFilePath <- paste0(remoteDir, remoteFileName[a])
+        localFilePath <- file.path(localDir, localFileName)
+        download.file(remoteFilePath, localFilePath)
         # Compress, if desired
         if (isTRUE(compress)) {
-            local_file_name <- gzip(local_file_path, overwrite = TRUE)
+            localFileName <- gzip(localFilePath, overwrite = TRUE)
         } else {
-            local_file_name <- remote_file_name
+            localFileName <- remoteFileName
         }
-        local_file_name
+        localFileName
     }
-    ) %>% setNames(remote_file_name)
+    ) %>% setNames(remoteFileName)
     list
 }

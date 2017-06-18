@@ -4,11 +4,11 @@
 \alias{transmit}
 \title{Transmit (download) files from a remote server}
 \usage{
-transmit(remote_dir, pattern = NULL, rename = NULL, compress = FALSE,
-  local_dir = "data-raw")
+transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
+  localDir = "data-raw")
 }
 \arguments{
-\item{remote_dir}{Remote directory URL.}
+\item{remoteDir}{Remote directory URL.}
 
 \item{pattern}{Pattern to match against remote file names.}
 
@@ -17,7 +17,7 @@ transmit(remote_dir, pattern = NULL, rename = NULL, compress = FALSE,
 \item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
 
-\item{local_dir}{Directory where to save file locally.}
+\item{localDir}{Directory where to save file locally.}
 }
 \value{
 List of local files.

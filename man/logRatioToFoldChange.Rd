@@ -4,7 +4,7 @@
 \alias{logRatioToFoldChange}
 \title{log ratio to fold change}
 \usage{
-logRatioToFoldChange(x, base = 2)
+logRatioToFoldChange(x, base = 2L)
 }
 \arguments{
 \item{x}{Numeric vector of log ratio values.}

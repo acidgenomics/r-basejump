@@ -22,17 +22,17 @@ readDataRaw <- function() {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-read_data_raw <- readDataRaw
+read_data_raw <- readDataRaw  # nolint
 
 
 
 #' @rdname read
 #' @description Read YAML file into a list.
-#' @param yaml_file YAML file.
+#' @param file YAML file.
 #' @export
-readYAML <- function(yaml_file) {
-    if (file.exists(yaml_file)) {
-        yaml.load_file(yaml_file)
+readYAML <- function(file) {
+    if (file.exists(file)) {
+        yaml.load_file(file)
     } else {
         NULL
     }
@@ -41,4 +41,4 @@ readYAML <- function(yaml_file) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-read_yaml <- readYAML
+read_yaml <- readYAML  # nolint

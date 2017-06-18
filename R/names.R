@@ -248,7 +248,7 @@ sanitizeNames <- snake
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-sanitize_names <- sanitizeNames
+sanitize_names <- sanitizeNames  # nolint
 
 #' @rdname british_aliases
 #' @usage NULL
@@ -258,7 +258,7 @@ sanitiseNames <- snake
 #' @rdname british_aliases
 #' @usage NULL
 #' @export
-sanitise_names <- snake
+sanitise_names <- snake  # nolint
 
 
 
@@ -279,7 +279,7 @@ titleCase <- function(x) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-title_case <- titleCase
+title_case <- titleCase  # nolint
 
 
 
@@ -296,4 +296,4 @@ firstCase <- function(x) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-first_case <- firstCase
+first_case <- firstCase  # nolint

@@ -3,15 +3,15 @@
 #' @rdname assign
 #'
 #' @param ... List of objects to assign.
-#' @param envir_name Environment name.
+#' @param envirName Environment name.
 #'
 #' @return Object names.
 #'
 #' @export
 #' @examples
-#' assignAsNewEnv(mtcars, starwars, envir_name = "testenv")
-assignAsNewEnv <- function(..., envir_name) {
-    if (!is_string(envir_name)) {
+#' assignAsNewEnv(mtcars, starwars, envirName = "testenv")
+assignAsNewEnv <- function(..., envirName) {
+    if (!is_string(envirName)) {
         stop("Environment name must be a string.")
     }
     envir <- new.env()
@@ -21,8 +21,8 @@ assignAsNewEnv <- function(..., envir_name) {
         assign(objs[a], dots[[a]], envir = envir)
     }
     ) %>% invisible
-    message(paste("Assigning", toString(objs), "to", envir_name))
-    assign(envir_name, envir, parent.frame())
+    message(paste("Assigning", toString(objs), "to", envirName))
+    assign(envirName, envir, parent.frame())
     objs
 }
 
@@ -140,9 +140,9 @@ removeNA <- function(x) {
     } else {
         x %>%
             # Remove all NA rows
-            .[apply(., 1, function(a) !all(is.na(a))), ] %>%
+            .[apply(., 1L, function(a) !all(is.na(a))), ] %>%
             # Remove all NA columns
-            .[, apply(., 2, function(a) !all(is.na(a)))]
+            .[, apply(., 2L, function(a) !all(is.na(a)))]
     }
 }
 

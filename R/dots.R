@@ -1,16 +1,26 @@
-# Dot objects ====
-# Handle function ellipsis using tidyverse dots method.
-# - [browseVignettes("rlang")].
-# - [rlang::eval_tidy()].
-# - [rlang::dots_values()].
-# - [Programming with dplyr](http://dplyr.tidyverse.org/articles/programming.html).
-
-# https://github.com/tidyverse/dplyr/blob/master/R/utils.r
+#' Evaluate dots
+#'
+#' Capture function ellipses as dots using rlang syntax.
+#'
+#' @param ... Ellipsis.
+#' @param .dots Dots values.
+#'
+#' @seealso
+#' - [browseVignettes("rlang")].
+#' - [rlang::dots_values()], [rlang::eval_tidy()].
+#' - https://github.com/tidyverse/dplyr/blob/master/R/utils.r
+#' - https://github.com/hadley/devtools/blob/master/R/infrastructure.R
+#'
+#' @export
 dots <- function(...) {
     eval_bare(substitute(alist(...)))
 }
 
-# https://github.com/hadley/devtools/blob/master/R/infrastructure.R
+
+
+# nolint start
+#' @rdname dots
+#' @export
 get_objs_from_dots <- function(.dots) {
     if (length(.dots) == 0L) {
         stop("Nothing to save", call. = FALSE)
@@ -31,3 +41,11 @@ get_objs_from_dots <- function(.dots) {
     }
     objs
 }
+# nolint end
+
+
+
+#' @rdname camel_aliases
+#' @usage NULL
+#' @export
+getObjsFromDots <- get_objs_from_dots

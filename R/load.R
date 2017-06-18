@@ -41,7 +41,7 @@ loadData <- function(...) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-load_data <- loadData
+load_data <- loadData  # nolint
 
 
 
@@ -58,4 +58,4 @@ loadRemote <- function(url) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-load_remote <- loadRemote
+load_remote <- loadRemote  # nolint
