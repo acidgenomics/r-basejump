@@ -2,14 +2,14 @@ context("Mathematical operations")
 
 test_that("geometric mean", {
     vec <- seq(1L, 5L, 1L)
-    expect_equal(round(geomean(vec), digits = 6), 2.605171)
+    expect_equal(round(geomean(vec), digits = 6L), 2.605171)
 
     vec2 <- vec ^ 2L
-    expect_equal(round(geomean(vec2), digits = 6), 6.786916)
+    expect_equal(round(geomean(vec2), digits = 6L), 6.786916)
 
     df <- data.frame(vec, vec2)
     expect_equal(
-        round(geomean(df), digits = 6),
+        round(geomean(df), digits = 6L),
         c(vec = 2.605171, vec2 = 6.786916))
 })
 
