@@ -19,7 +19,7 @@ The geometric mean is the nth root of n products or e to the mean log of \code{x
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \details{
-Modified version of \code{\link[psych:geometric.mean]{psych::geometric.mean()}}.
+Modified version of \code{psych::geometric.mean()}.
 }
 \note{
 Not particularly useful if there are elements that are <= 0.
