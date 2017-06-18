@@ -23,7 +23,7 @@ toStringUnique <- function(x, sep = ", ") {
         str_c(collapse = sep)
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 to_string_unique <- toStringUnique
@@ -40,17 +40,13 @@ toStringSortUnique <- function(x, sep = ", ") {
         str_c(collapse = sep)
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 to_string_sort_unique <- toStringSortUnique
 
 
 
-
-
-
-# Data frame manipulations ====
 #' @rdname collapse
 #' @export
 summarizeRows <- function(x, sep = ", ") {
@@ -63,17 +59,17 @@ summarizeRows <- function(x, sep = ", ") {
         mutate_all(funs(fixNA))
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 summarize_rows <- summarizeRows
 
-#' @rdname aliases
+#' @rdname british_aliases
 #' @usage NULL
 #' @export
 summariseRows <- summarizeRows
 
-#' @rdname aliases
+#' @rdname british_aliases
 #' @usage NULL
 #' @export
 summarise_rows <- summarizeRows

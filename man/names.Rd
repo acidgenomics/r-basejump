@@ -3,7 +3,7 @@
 \name{names}
 \alias{names}
 \alias{camel}
-\alias{dottedCase}
+\alias{dotted}
 \alias{snake}
 \alias{titleCase}
 \alias{firstCase}
@@ -11,7 +11,7 @@
 \usage{
 camel(x, rownames = TRUE)
 
-dottedCase(x, rownames = TRUE)
+dotted(x, rownames = TRUE)
 
 snake(x, rownames = TRUE)
 }
@@ -79,10 +79,10 @@ snake(lst)
 
 
 # dotted.case
-dottedCase(unnamed_vec)
-dottedCase(named_vec)
-dottedCase(df)
-dottedCase(df, rownames = FALSE)
-dottedCase(tbl)
-dottedCase(lst)
+dotted(unnamed_vec)
+dotted(named_vec)
+dotted(df)
+dotted(df, rownames = FALSE)
+dotted(tbl)
+dotted(lst)
 }

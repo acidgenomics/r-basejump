@@ -217,7 +217,7 @@ magrittr::`%>%`
 #' @export
 magrittr::set_colnames
 
-#' @rdname aliases
+#' @rdname camel_aliases
 #' @usage NULL
 #' @export
 magrittr::set_colnames -> setColnames
@@ -225,7 +225,7 @@ magrittr::set_colnames -> setColnames
 #' @export
 magrittr::set_rownames
 
-#' @rdname aliases
+#' @rdname camel_aliases
 #' @usage NULL
 #' @export
 magrittr::set_rownames -> setRownames

@@ -26,10 +26,24 @@ assignAsNewEnv <- function(..., envir_name) {
     objs
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 assign_as_new_env <- assignAsNewEnv
+
+
+
+#' Clear warnings
+#'
+#' @export
+clearWarnings <- function() {
+    assign("last.warning", NULL, envir = baseenv())
+}
+
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+clear_warnings <- clearWarnings
 
 
 
@@ -45,10 +59,11 @@ assign_as_new_env <- assignAsNewEnv
 fixNA <- function(string) {
     string %>%
         as.character %>%
+        # Note that [str_replace()] doesn't work with `NA` values
         gsub("^$|^\\s+$|^NA$", NA, .)
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 fix_na <- fixNA
@@ -71,20 +86,20 @@ grepString <- function(identifier) {
     identifier %>%
         as.character %>%
         paste0(
-            # Unique:
+            # Unique
             "^", ., "$",
             "|",
-            # Beginning of list:
+            # Beginning of list
             "^", ., ",",
             "|",
-            # Middle of list:
+            # Middle of list
             "\\s", ., ",",
             "|",
-            # End of list:
+            # End of list
             "\\s", ., "$")
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 grep_string <- grepString
@@ -131,7 +146,7 @@ removeNA <- function(x) {
     }
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 remove_na <- removeNA
@@ -157,7 +172,7 @@ sortUnique <- function(vector) {
         unique
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 sort_unique <- sortUnique
@@ -169,7 +184,7 @@ sort_unique <- sortUnique
 #' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
 #'
 #' @export
-update_packages <- function() {
+updatePackages <- function() {
     # Update Bioconductor packages first
     bioc()
 
@@ -180,6 +195,10 @@ update_packages <- function() {
     biocValid()
 }
 
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+update_packages <- updatePackages
 
 
 
@@ -188,12 +207,12 @@ update_packages <- function() {
 #' This function cleans poorly formed separators, leading and trailing commas or
 #' spaces, empty cells, and sets `NA` values if necessary.
 #'
-#' @param df Dirty data frame.
+#' @param x Dirty data frame.
 #'
 #' @return Clean data frame.
 #' @export
-wash <- function(df) {
-    if (!is.data.frame(df)) {
+wash <- function(x) {
+    if (!is.data.frame(x)) {
         stop("Object must be a data frame")
     }
     replace <- function(a) {
@@ -208,5 +227,5 @@ wash <- function(df) {
             str_replace_all("NA,\\s|,\\sNA", "") %>%
             fixNA
     }
-    mutate_all(df, funs(replace))
+    mutate_all(x, funs(replace))
 }
