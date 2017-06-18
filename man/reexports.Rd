@@ -43,6 +43,12 @@
 \alias{reexports}
 \alias{test}
 \alias{reexports}
+\alias{use_data}
+\alias{reexports}
+\alias{use_data_raw}
+\alias{reexports}
+\alias{use_testthat}
+\alias{reexports}
 \alias{bind_cols}
 \alias{reexports}
 \alias{bind_rows}
@@ -152,6 +158,8 @@
 \alias{!!}
 \alias{reexports}
 \alias{.data}
+\alias{reexports}
+\alias{eval_bare}
 \alias{reexports}
 \alias{is_atomic}
 \alias{reexports}
@@ -273,7 +281,7 @@ below to see their documentation.
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
-  \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}}
+  \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}, \code{\link[devtools]{use_data}}, \code{\link[devtools]{use_data_raw}}, \code{\link[devtools]{use_testthat}}}
 
   \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
@@ -301,7 +309,7 @@ below to see their documentation.
 
   \item{reshape2}{\code{\link[reshape2]{melt}}}
 
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
+  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{eval_bare}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 

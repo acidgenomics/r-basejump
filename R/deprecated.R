@@ -1,5 +1,9 @@
-create_new_project <- function() {
-    .Deprecated("create_project_dirs")
+createNewProject <- function() {
+    .Deprecated("createProjectDirs")
+}
+
+dotNotation <- function() {
+    .Deprecated("dottedCase")
 }
 
 grepToString <- function() {

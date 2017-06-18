@@ -15,7 +15,8 @@ readDataRaw <- function() {
         dir.create("data", showWarnings = FALSE)
         assign(name, df)
         save(list = name, file = file.path("data", paste0(name, ".rda")))
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
 #' @rdname aliases

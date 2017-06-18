@@ -56,6 +56,14 @@ biomaRt::useMart
 
 
 
+# datasets ====
+#' Motor Trend car road tests.
+#' @keywords internal
+#' @export
+datasets::"mtcars" -> "mtcars"
+
+
+
 # devtools ====
 #' @export
 devtools::build
@@ -77,6 +85,15 @@ devtools::load_all
 
 #' @export
 devtools::test
+
+#' @export
+devtools::use_data
+
+#' @export
+devtools::use_data_raw
+
+#' @export
+devtools::use_testthat
 
 
 
@@ -308,6 +325,9 @@ rlang::`!!`
 rlang::.data
 
 #' @export
+rlang::eval_bare
+
+#' @export
 rlang::is_atomic
 
 #' @export
@@ -349,7 +369,7 @@ rlang::quos
 #' @export
 rlang::set_names
 
-# Don't export over [stats::setNames]
+# Don't export over [stats::setNames]!
 rlang::set_names -> setNames
 
 #' @export

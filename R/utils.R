@@ -1,34 +1,35 @@
-#' Assign multiple variables
-#'
-#' Optionally, you can specify a name prefix and the desired environment.
+#' Assign multiple objects to a new environment
 #'
 #' @rdname assign
 #'
-#' @param ... List of variables to assign.
-#' @param envir Desired environment (optional).
-#' @param prefix Name prefix (optional).
+#' @param ... List of objects to assign.
+#' @param envir_name Environment name.
+#'
+#' @return Object names.
 #'
 #' @export
-assignMultiple <- function(
-    ...,
-    envir = parent.frame(),
-    prefix = NULL) {
-    # `-1` here removes the function name
-    names <- sapply(match.call(expand.dots = TRUE)[-1], deparse)
-    data <- list(...)
-    invisible(lapply(seq_along(data), function(x) {
-        name <- names[x]
-        if (!is.null(prefix)) {
-            name <- paste(c(prefix, name), collapse = "_")
-        }
-        assign(name, data[[x]], envir = get(envir))
-    }))
+#' @examples
+#' assignAsNewEnv(mtcars, starwars, envir_name = "testenv")
+assignAsNewEnv <- function(..., envir_name) {
+    if (!is_string(envir_name)) {
+        stop("Environment name must be a string.")
+    }
+    envir <- new.env()
+    dots <- dots(...)
+    objs <- get_objs_from_dots(dots)
+    lapply(seq_along(objs), function(a) {
+        assign(objs[a], dots[[a]], envir = envir)
+    }
+    ) %>% invisible
+    message(paste("Assigning", toString(objs), "to", envir_name))
+    assign(envir_name, envir, parent.frame())
+    objs
 }
 
 #' @rdname aliases
 #' @usage NULL
 #' @export
-assign_multiple <- assignMultiple
+assign_as_new_env <- assignAsNewEnv
 
 
 
@@ -124,9 +125,9 @@ removeNA <- function(x) {
     } else {
         x %>%
             # Remove all NA rows
-            .[apply(., 1, function(a) { !all(is.na(a)) }), ] %>%
+            .[apply(., 1, function(a) !all(is.na(a))), ] %>%
             # Remove all NA columns
-            .[, apply(., 2, function(a) { !all(is.na(a)) })]
+            .[, apply(., 2, function(a) !all(is.na(a)))]
     }
 }
 

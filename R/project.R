@@ -1,13 +1,6 @@
 #' Project management utilities
 #'
 #' @rdname project
-#'
-#' @param install Install package.
-#' @param test Run tests with [devtools::test()].
-
-
-
-#' @rdname project
 #' @description Create necessary directory structure for an
 #'   [RMarkdown](http://rmarkdown.rstudio.com) report in
 #'   [RStudio](https://www.rstudio.com).
@@ -19,7 +12,8 @@ createProjectDirs <- function() {
                     "results")
     lapply(seq_along(local_dirs), function(a) {
         dir.create(local_dirs[a], showWarnings = FALSE)
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
 #' @rdname aliases
@@ -57,23 +51,19 @@ detect_hpc <- detectHPC
 
 #' @rdname project
 #' @description Package project and build website.
+#'
+#' @param install Install package.
+#'
 #' @export
-packageProject <- function(
-    install = FALSE,
-    test = FALSE) {
+packageProject <- function(install = FALSE) {
     # Ensure package is up to date
     document()
     build_vignettes()
     load_all()
 
     # Run integrity checks
-    BiocCheck(getwd())
+    BiocCheck::BiocCheck(getwd())
     check()
-
-    # Perform tests, if desired
-    if (isTRUE(test)) {
-        test()
-    }
 
     # Save the package build to disk
     build()
@@ -84,11 +74,7 @@ packageProject <- function(
     }
 
     # Build website
-    # [fix] Add back once pkgdown is on CRAN
-    # build_site()
-
-    # [fix] switch to `build_site_rstudio()` if function gets exported?
-    # https://github.com/hadley/pkgdown/blob/master/R/build.r
+    build_site()
 }
 
 #' @rdname aliases
@@ -101,12 +87,12 @@ package_project <- packageProject
 #' @rdname project
 #' @description Render all RMarkdown files in working directory.
 #'
-#' @param outputDir Output directory.
+#' @param output_dir Output directory.
 #' @param recursive Find files recursively.
 #'
 #' @export
 renderProject <- function(
-    outputDir = file.path("docs", Sys.Date()),
+    output_dir = file.path("docs", Sys.Date()),
     recursive = FALSE) {
     if (!length(dir(pattern = "*.Rproj"))) {
         warning("no Rproj file found")
@@ -116,7 +102,7 @@ renderProject <- function(
     }
 
     # Create the output directory
-    dir.create(outputDir, recursive = TRUE, showWarnings = FALSE)
+    dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
     # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
@@ -132,9 +118,10 @@ renderProject <- function(
                clean = TRUE,
                envir = new.env(),
                knit_root_dir = getwd(),
-               output_dir = outputDir,
+               output_dir = output_dir,
                output_format = "all")
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
 #' @rdname aliases

@@ -50,7 +50,7 @@ to_string_sort_unique <- toStringSortUnique
 
 
 
-## Data frame manipulations ====
+# Data frame manipulations ====
 #' @rdname collapse
 #' @export
 summarizeRows <- function(x, sep = ", ") {

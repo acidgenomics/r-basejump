@@ -12,18 +12,16 @@ createProjectDirs()
 
 detectHPC()
 
-packageProject(install = FALSE, test = FALSE)
+packageProject(install = FALSE)
 
-renderProject(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
+renderProject(output_dir = file.path("docs", Sys.Date()), recursive = FALSE)
 
 clearWarnings()
 }
 \arguments{
 \item{install}{Install package.}
 
-\item{test}{Run tests with \code{\link[devtools:test]{devtools::test()}}.}
-
-\item{outputDir}{Output directory.}
+\item{output_dir}{Output directory.}
 
 \item{recursive}{Find files recursively.}
 }

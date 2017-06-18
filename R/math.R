@@ -1,4 +1,4 @@
-## General ====
+# General ====
 #' Geometric mean
 #'
 #' The geometric mean is the nth root of n products or e to the mean log of `x`.
@@ -55,13 +55,13 @@ pct <- function(number) {
 
 
 
-## RNA-seq ====
+# RNA-seq ====
 #' log ratio to fold change
 #'
 #' Convert log ratio normalized values to fold change. Based on the approach
 #' used in `gtools::logratio2foldchange()`.
 #'
-#' @param lr Numeric vector of log ratio values.
+#' @param x Numeric vector of log ratio values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
@@ -70,8 +70,10 @@ pct <- function(number) {
 #'
 #' @examples
 #' logRatioToFoldChange(seq(-3, 3, 0.5))
-logRatioToFoldChange <- function(lr, base = 2) {
-    base^(lr) %>% ifelse(. < 1, -1/., .)
+logRatioToFoldChange <- function(x, base = 2) {
+    x <- base ^ x
+    x <- ifelse(x < 1, -1 / x, x)
+    x
 }
 
 #' @rdname aliases
