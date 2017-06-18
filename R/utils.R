@@ -186,7 +186,7 @@ sort_unique <- sortUnique
 #' @export
 updatePackages <- function() {
     # Update Bioconductor packages first
-    bioc()
+    biocLite()
 
     # Now update packages from GitHub repos
     devtools::update_packages()

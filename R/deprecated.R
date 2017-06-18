@@ -4,6 +4,8 @@
 #' @name renamed
 NULL
 
+
+
 #' @rdname renamed
 #' @usage NULL
 #' @export
@@ -79,4 +81,4 @@ toStringSummarise <- toStringSummarize
 
 #' @rdname british_aliases
 #' @usage NULL
-to_string_summarize <- toStringSummarize
+to_string_summarise <- toStringSummarize

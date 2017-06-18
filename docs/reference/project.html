@@ -92,7 +92,7 @@
 
 <span class='fu'>packageProject</span>(<span class='kw'>install</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>renderProject</span>(<span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"docs"</span>, <span class='fu'>Sys.Date</span>()), <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>renderProject</span>(<span class='kw'>today</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -102,12 +102,8 @@
       <td><p>Install package.</p></td>
     </tr>
     <tr>
-      <th>output_dir</th>
-      <td><p>Output directory.</p></td>
-    </tr>
-    <tr>
-      <th>recursive</th>
-      <td><p>Find files recursively.</p></td>
+      <th>today</th>
+      <td><p>Render to a subdirectory with today's date.</p></td>
     </tr>
     </table>
     
