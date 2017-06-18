@@ -13,14 +13,12 @@ detectHPC()
 
 packageProject(install = FALSE)
 
-renderProject(output_dir = file.path("docs", Sys.Date()), recursive = FALSE)
+renderProject(today = TRUE)
 }
 \arguments{
 \item{install}{Install package.}
 
-\item{output_dir}{Output directory.}
-
-\item{recursive}{Find files recursively.}
+\item{today}{Render to a subdirectory with today's date.}
 }
 \description{
 Create necessary directory structure for an

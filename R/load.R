@@ -17,7 +17,7 @@
 loadData <- function(...) {
     envir <- parent.frame()
     names <- as.character(substitute(list(...)))[-1L]
-    sapply(seq_along(names), function(a) {
+    lapply(seq_along(names), function(a) {
         if (file.exists(paste0("data/", names[a], ".rda"))) {
             # Check for .rda file in `data/`
             message(paste("Loading", names[a], "from data/..."))

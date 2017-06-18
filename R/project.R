@@ -87,33 +87,38 @@ package_project <- packageProject
 #' @rdname project
 #' @description Render all RMarkdown files in working directory.
 #'
-#' @param output_dir Output directory.
-#' @param recursive Find files recursively.
+#' @param today Render to a subdirectory with today's date.
 #'
 #' @export
-renderProject <- function(
-    output_dir = file.path("docs", Sys.Date()),
-    recursive = FALSE) {
-    if (!length(dir(pattern = "*.Rproj"))) {
-        warning("no Rproj file found")
-    }
+renderProject <- function(today = TRUE) {
     if (identical(getwd(), Sys.getenv("HOME"))) {
-        stop("careful, working from HOME")
+        stop("Working from HOME directory")
+    }
+    if (!length(dir(pattern = "*.Rproj"))) {
+        warning("No Rproj file found")
     }
 
-    # Create the output directory
-    dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+    if (isTRUE(today)) {
+        output_dir <- file.path(Sys.Date())
+        dir.create(output_dir, showWarnings = FALSE)
+    } else {
+        output_dir <- getwd()
+    }
 
     # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
                         full.names = TRUE,
-                        recursive = recursive) %>%
+                        recursive = FALSE) %>%
         # Ignore drafts
         .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)] %>%
         # Ignore child chunk files
         .[!grepl("(footer|header)\\.Rmd$", .)]
+    if (!length(files)) {
+        message("No RMarkdown files to render")
+        return(invisible())
+    }
 
-    sapply(files, function(input) {
+    lapply(files, function(input) {
         render(input,
                clean = TRUE,
                envir = new.env(),
