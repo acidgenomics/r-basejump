@@ -15,10 +15,10 @@
 #'
 #' @examples
 #' # Vector
-#' vec <- seq(1,5)
-#' vec2 <- vec^2
-#' vec2[2] <- NA
+#' vec <- seq(1L, 5L, 1L)
 #' geomean(vec)
+#'
+#' vec2 <- vec ^ 2L
 #' geomean(vec2)
 #'
 #' # Data frame
@@ -79,6 +79,10 @@ fc2lr <- function(x, base = 2L) {
     x
 }
 
+
+
+#' @rdname log_ratio
+#' @export
 lr2fc <- function(x, base = 2L) {
     x <- base ^ x
     x <- ifelse(x < 1L, -1L / x, x)
