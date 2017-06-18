@@ -12,8 +12,8 @@
 #'
 #' @export
 #'
-#' @seealso This function is a modified version of `rafalib::install_bioc()`. It
-#'   calls [BiocInstaller::biocLite()] internally.
+#' @seealso This function is a modified version of `rafalib::install_bioc()`.
+#'   It calls [BiocInstaller::biocLite()] internally.
 #'
 #' @examples
 #' \dontrun{
@@ -24,10 +24,10 @@
 #' bioc("limma")
 #' }
 bioc <- function(pkgs = NULL, ...) {
-    internet <- try(source("https://bioconductor.org/biocLite.R"),
-                    silent = TRUE)
+    internet <- try(
+        source("https://bioconductor.org/biocLite.R"), silent = TRUE)
     if (!class(internet) == "try-error") {
-        biocLite(pkgs, ...)
+        BiocInstaller::biocLite(pkgs, ...)
     } else {
         stop("No connection to bioconductor.org")
     }

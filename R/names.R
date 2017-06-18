@@ -62,13 +62,13 @@
 #' snake(lst)
 #'
 #'
-#' # dot.notation
-#' dotNotation(unnamed_vec)
-#' dotNotation(named_vec)
-#' dotNotation(df)
-#' dotNotation(df, rownames = FALSE)
-#' dotNotation(tbl)
-#' dotNotation(lst)
+#' # dotted.case
+#' dottedCase(unnamed_vec)
+#' dottedCase(named_vec)
+#' dottedCase(df)
+#' dottedCase(df, rownames = FALSE)
+#' dottedCase(tbl)
+#' dottedCase(lst)
 NULL
 
 
@@ -150,7 +150,7 @@ checkNames <- function(x) {
 checkRownames <- function(x) {
     if (!is.null(rownames(x))) {
         # Ignore numbered rownames
-        if (!identical(rownames(x), as.character(1:nrow(x)))) {
+        if (!identical(rownames(x), as.character(seq_len(nrow(x))))) {
             TRUE
         } else {
             FALSE
@@ -216,7 +216,7 @@ camel <- function(x, rownames = TRUE) {
 
 #' @rdname names
 #' @export
-dotNotation <- function(x, rownames = TRUE) {
+dottedCase <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
         makeNamesDot(x)
     } else {
@@ -227,7 +227,7 @@ dotNotation <- function(x, rownames = TRUE) {
 #' @rdname aliases
 #' @usage NULL
 #' @export
-dot_notation <- dotNotation
+dotted_case <- dottedCase
 
 
 

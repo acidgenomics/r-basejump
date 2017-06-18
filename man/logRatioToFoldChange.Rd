@@ -4,10 +4,10 @@
 \alias{logRatioToFoldChange}
 \title{log ratio to fold change}
 \usage{
-logRatioToFoldChange(lr, base = 2)
+logRatioToFoldChange(x, base = 2)
 }
 \arguments{
-\item{lr}{Numeric vector of log ratio values.}
+\item{x}{Numeric vector of log ratio values.}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}

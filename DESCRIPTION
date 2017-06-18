@@ -1,7 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.0.14
-Date: 2017-06-12
+Version: 0.0.15
 Authors@R:
     person("Michael J.", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -24,6 +23,8 @@ Imports:
     BiocInstaller,
     BiocStyle,
     biomaRt (>= 2.30.0),
+    covr,
+    datasets,
     devtools (>= 1.13.0),
     dplyr (>= 0.7.0),
     graphics,
@@ -34,6 +35,7 @@ Imports:
     parallel,
     pbapply,
     pbmcapply (>= 1.2.1),
+    pkgdown,
     RCurl (>= 1.95),
     readr (>= 1.1.0),
     readxl (>= 1.0.0),
@@ -48,6 +50,9 @@ Imports:
     tools,
     utils,
     yaml (>= 2.1.14)
+Remotes:
+    hadley/pkgdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+Suggests: testthat

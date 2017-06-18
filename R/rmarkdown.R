@@ -1,4 +1,4 @@
-## Markdown ====
+# Markdown ====
 #' Markdown utilities
 #'
 #' @rdname markdown
@@ -44,7 +44,7 @@ md_list <- mdList
 
 
 
-## knitr ====
+# knitr ====
 #' Create tables in LaTeX, HTML, Markdown and reStructuredText
 #'
 #' Handle multiple kables in a single RMarkdown chunk.

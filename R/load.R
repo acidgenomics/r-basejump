@@ -34,14 +34,14 @@ loadData <- function(...) {
             # Skip and warn
             warning(paste(names[a], "missing"))
         }
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
-# NAMESPACE collison with devtools::load_data
-# @rdname aliases
-# @usage NULL
-# @export
-# load_data <- loadData
+#' @rdname aliases
+#' @usage NULL
+#' @export
+load_data <- loadData
 
 
 
@@ -49,7 +49,7 @@ loadData <- function(...) {
 #' @description Load a remote R binary file.
 #' @export
 loadRemote <- function(url) {
-    envir = parent.frame()
+    envir <- parent.frame()
     tempfile <- tempfile()
     download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = envir)

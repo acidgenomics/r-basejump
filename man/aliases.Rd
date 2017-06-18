@@ -9,9 +9,10 @@
 \alias{summarize_rows}
 \alias{summariseRows}
 \alias{summarise_rows}
+\alias{load_data}
 \alias{load_remote}
 \alias{log_ratio_to_fold_change}
-\alias{dot_notation}
+\alias{dotted_case}
 \alias{sanitizeNames}
 \alias{sanitize_names}
 \alias{sanitiseNames}
@@ -30,7 +31,7 @@
 \alias{md_list}
 \alias{save_data}
 \alias{save_data_raw}
-\alias{assign_multiple}
+\alias{assign_as_new_env}
 \alias{fix_na}
 \alias{grep_string}
 \alias{remove_na}
