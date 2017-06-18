@@ -19,7 +19,7 @@ Capture function ellipses as dots using rlang syntax.
 }
 \seealso{
 \itemize{
-\item \link{browseVignettes("rlang")}.
+\item \code{browseVignettes("rlang")}.
 \item \code{\link[rlang:dots_values]{rlang::dots_values()}}, \code{\link[rlang:eval_tidy]{rlang::eval_tidy()}}.
 \item https://github.com/tidyverse/dplyr/blob/master/R/utils.r
 \item https://github.com/hadley/devtools/blob/master/R/infrastructure.R

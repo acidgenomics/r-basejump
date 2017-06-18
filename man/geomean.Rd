@@ -4,7 +4,7 @@
 \alias{geomean}
 \title{Geometric mean}
 \usage{
-geomean(object)
+geomean(x)
 }
 \arguments{
 \item{x}{Vector or column data (data frame, matrix).}
