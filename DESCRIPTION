@@ -51,10 +51,11 @@ Imports:
     utils,
     yaml (>= 2.1.14)
 Suggests:
-    lintr,
+    lintr (>= 1.0.0.9001),
     testthat
 Remotes:
-    hadley/pkgdown
+    hadley/pkgdown,
+    jimhester/lintr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

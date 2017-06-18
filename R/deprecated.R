@@ -17,7 +17,7 @@ createNewProject <- function(...) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-create_new_project <- createNewProject
+create_new_project <- createNewProject  # nolint
 
 
 
@@ -31,7 +31,7 @@ dotNotation <- function(...) {
 
 #' @rdname snake_aliases
 #' @export
-dot_notation <- dotNotation
+dot_notation <- dotNotation  # nolint
 
 
 
@@ -45,7 +45,7 @@ grepToString <- function() {
 #' @rdname renamed
 #' @usage NULL
 #' @export
-grep_to_string <- grepToString
+grep_to_string <- grepToString  # nolint
 
 
 
@@ -59,7 +59,7 @@ loadDataRaw <- function(...) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-load_data_raw <- loadDataRaw
+load_data_raw <- loadDataRaw  # nolint
 
 
 
@@ -73,7 +73,7 @@ toStringSummarize <- function(...) {
 
 #' @rdname snake_aliases
 #' @usage NULL
-to_string_summarize <- toStringSummarize
+to_string_summarize <- toStringSummarize  # nolint
 
 #' @rdname british_aliases
 #' @usage NULL
@@ -81,4 +81,4 @@ toStringSummarise <- toStringSummarize
 
 #' @rdname british_aliases
 #' @usage NULL
-to_string_summarise <- toStringSummarize
+to_string_summarise <- toStringSummarize  # nolint
