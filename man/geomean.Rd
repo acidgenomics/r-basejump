@@ -24,10 +24,10 @@ Not particularly useful if there are elements that are <= 0.
 }
 \examples{
 # Vector
-vec <- seq(1,5)
-vec2 <- vec^2
-vec2[2] <- NA
+vec <- seq(1L, 5L, 1L)
 geomean(vec)
+
+vec2 <- vec ^ 2L
 geomean(vec2)
 
 # Data frame

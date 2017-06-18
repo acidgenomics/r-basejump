@@ -2,9 +2,12 @@
 % Please edit documentation in R/math.R
 \name{fc2lr}
 \alias{fc2lr}
+\alias{lr2fc}
 \title{Log ratio to fold change}
 \usage{
 fc2lr(x, base = 2L)
+
+lr2fc(x, base = 2L)
 }
 \arguments{
 \item{x}{Numeric vector of log ratio (\code{lr}) or fold change (\code{fc}) values.}
