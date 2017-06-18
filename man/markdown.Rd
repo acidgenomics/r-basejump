@@ -13,7 +13,7 @@ mdList(character, ordered = FALSE)
 Markdown format.}
 }
 \value{
-Character vector.
+Printed Markdown syntax.
 }
 \description{
 Markdown list.
