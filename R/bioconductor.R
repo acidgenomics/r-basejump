@@ -1,34 +1,33 @@
 #' Install or update Bioconductor packages
 #'
-#' This function is a wrapper for [biocLite()]. It first sources the code from
-#' the Bioconductor website then calls [biocLite()].
-#'
-#' @importFrom BiocCheck BiocCheck
+#' This function is a convenience wrapper for [BiocInstaller::biocLite()]. It
+#' sources the required `biocLite.R` file from the Bioconductor website
+#' automatically then calls [biocLite()].
 #'
 #' @param pkgs Character vector of package names to install or update. Supports
-#'   Bioconductor, CRAN, and GitHub repositories (e.g. `steinbaugh/basejump`
-#'   format).
+#'   Bioconductor, CRAN, and GitHub repositories.
 #' @param ... Passthrough parameters.
 #'
 #' @export
 #'
 #' @seealso This function is a modified version of `rafalib::install_bioc()`.
-#'   It calls [BiocInstaller::biocLite()] internally.
 #'
 #' @examples
 #' \dontrun{
 #' # Load Bioconductor and update packages
-#' bioc()
+#' biocLite()
 #'
-#' # Install `limma`
-#' bioc("limma")
+#' # Install packages
+#' biocLite("limma")            # Bioconductor
+#' biocLite("dplyr")            # CRAN
+#' biocLite("tidyverse/dplyr")  # GitHub
 #' }
-bioc <- function(pkgs = NULL, ...) {
+biocLite <- function(pkgs = NULL, ...) {
     internet <- try(
         source("https://bioconductor.org/biocLite.R"), silent = TRUE)
     if (!class(internet) == "try-error") {
         BiocInstaller::biocLite(pkgs, ...)
     } else {
-        stop("No connection to bioconductor.org")
+        stop("Connection to bioconductor.org failed")
     }
 }

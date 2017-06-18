@@ -6,7 +6,7 @@
 \alias{summariseRows}
 \alias{summarise_rows}
 \alias{toStringSummarise}
-\alias{to_string_summarize}
+\alias{to_string_summarise}
 \alias{sanitiseNames}
 \alias{sanitise_names}
 \title{British spelling variants}
