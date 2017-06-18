@@ -38,7 +38,7 @@ comp <- function(dna) {
 revcomp <- function(dna) {
     dna <- toupper(dna)
     comp <- comp(dna)
-    revcomp <- str_split(comp, "")[[1]] %>%
+    revcomp <- str_split(comp, "")[[1L]] %>%
         .[order(seq_along(.), decreasing = TRUE)] %>%
         paste(sep = "", collapse = "")
     revcomp

@@ -1,8 +1,3 @@
-# Tibbles: tbl_df, tbl, data.frame. Default to matching data.frame.
-# https://stackoverflow.com/questions/31392715/setmethod-for-two-different-object-signature-in-r
-
-
-
 # arrange ====
 #' @rdname tidy
 #' @export

@@ -26,7 +26,7 @@ toStringUnique <- function(x, sep = ", ") {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-to_string_unique <- toStringUnique
+to_string_unique <- toStringUnique  # nolint
 
 
 
@@ -43,7 +43,7 @@ toStringSortUnique <- function(x, sep = ", ") {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-to_string_sort_unique <- toStringSortUnique
+to_string_sort_unique <- toStringSortUnique  # nolint
 
 
 
@@ -62,14 +62,14 @@ summarizeRows <- function(x, sep = ", ") {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-summarize_rows <- summarizeRows
+summarize_rows <- summarizeRows  # nolint
 
 #' @rdname british_aliases
 #' @usage NULL
 #' @export
-summariseRows <- summarizeRows
+summariseRows <- summarizeRows  # nolint
 
 #' @rdname british_aliases
 #' @usage NULL
 #' @export
-summarise_rows <- summarizeRows
+summarise_rows <- summarizeRows  # nolint
