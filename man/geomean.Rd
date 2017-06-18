@@ -4,12 +4,10 @@
 \alias{geomean}
 \title{Geometric mean}
 \usage{
-geomean(object, na.rm = TRUE)
+geomean(x)
 }
 \arguments{
-\item{object}{Vector or column data (data frame, matrix).}
-
-\item{na.rm}{Remove \code{NA} values before processing.}
+\item{x}{Vector or column data (data frame, matrix).}
 }
 \value{
 Geometric means.
@@ -19,21 +17,20 @@ The geometric mean is the nth root of n products or e to the mean log of \code{x
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \details{
-Modified version of \code{\link[psych:geometric.mean]{psych::geometric.mean()}}.
+Modified version of \code{psych::geometric.mean()}.
 }
 \note{
 Not particularly useful if there are elements that are <= 0.
 }
 \examples{
 # Vector
-vec <- seq(1,5)
-vec2 <- vec^2
-vec2[2] <- NA
+vec <- seq(1L, 5L, 1L)
 geomean(vec)
+
+vec2 <- vec ^ 2L
 geomean(vec2)
 
 # Data frame
 df <- data.frame(vec, vec2)
 geomean(df)
-geomean(df, na.rm = FALSE)
 }

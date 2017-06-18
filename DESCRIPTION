@@ -1,7 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.0.14
-Date: 2017-06-12
+Version: 0.0.15
 Authors@R:
     person("Michael J.", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -18,13 +17,15 @@ BugReports: https://github.com/steinbaugh/basejump/issues
 Depends: R (>= 3.3.1)
 Imports:
     AnnotationDbi,
-    Biobase,
+    Biobase (>= 2.36.2),
     BiocCheck,
     BiocGenerics,
     BiocInstaller,
     BiocStyle,
-    biomaRt (>= 2.30.0),
-    devtools (>= 1.13.0),
+    biomaRt (>= 2.32.1),
+    covr,
+    datasets,
+    devtools (>= 1.13.2),
     dplyr (>= 0.7.0),
     graphics,
     httr (>= 1.2.1),
@@ -32,21 +33,29 @@ Imports:
     magrittr (>= 1.5),
     methods,
     parallel,
-    pbmcapply (>= 1.2.1),
-    RCurl (>= 1.95),
-    readr (>= 1.1.0),
+    pbapply (>= 1.3),
+    pbmcapply,
+    pkgdown,
+    RCurl,
+    readr (>= 1.1.1),
     readxl (>= 1.0.0),
-    reshape2 (>= 1.4.2),
-    rmarkdown (>= 1.5),
+    reshape2,
+    rmarkdown (>= 1.6),
     rlang (>= 0.1),
     R.utils,
     S4Vectors,
     stringr (>= 1.2.0),
-    tibble (>= 1.3.1),
-    tidyr (>= 0.6.1),
+    tibble (>= 1.3.3),
+    tidyr (>= 0.6.3),
     tools,
     utils,
-    yaml (>= 2.1.14)
+    yaml
+Suggests:
+    lintr (>= 1.0.0.9001),
+    testthat
+Remotes:
+    hadley/pkgdown,
+    jimhester/lintr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

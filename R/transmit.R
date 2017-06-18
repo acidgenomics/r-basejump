@@ -18,13 +18,7 @@ transmit <- function(
     rename = NULL,
     compress = FALSE,
     localDir = "data-raw") {
-    # Automatically add trailing slash on remote dir, if necessary
-    if (!grepl("/$", remoteDir)) {
-        remoteDir <- paste0(remoteDir, "/")
-    }
-
-    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>%
-        read_lines
+    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>% read_lines
     if (!length(remoteFileName)) {
         stop("No files listed on remote server")
     }
@@ -64,6 +58,7 @@ transmit <- function(
             localFileName <- remoteFileName
         }
         localFileName
-    }) %>% setNames(remoteFileName)
+    }
+    ) %>% setNames(remoteFileName)
     list
 }

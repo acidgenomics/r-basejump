@@ -9,35 +9,36 @@
 #' @export
 readDataRaw <- function() {
     csv <- list.files("data-raw", pattern = "*.csv", full.names = TRUE)
-    sapply(seq_along(csv), function(a) {
+    lapply(seq_along(csv), function(a) {
         name <- basename(csv[a]) %>% file_path_sans_ext
         df <- read_csv(csv[a])
         dir.create("data", showWarnings = FALSE)
         assign(name, df)
         save(list = name, file = file.path("data", paste0(name, ".rda")))
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-read_data_raw <- readDataRaw
+read_data_raw <- readDataRaw  # nolint
 
 
 
 #' @rdname read
 #' @description Read YAML file into a list.
-#' @param yaml_file YAML file.
+#' @param file YAML file.
 #' @export
-readYAML <- function(yaml_file) {
-    if (file.exists(yaml_file)) {
-        yaml.load_file(yaml_file)
+readYAML <- function(file) {
+    if (file.exists(file)) {
+        yaml.load_file(file)
     } else {
         NULL
     }
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-read_yaml <- readYAML
+read_yaml <- readYAML  # nolint

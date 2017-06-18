@@ -11,6 +11,7 @@
 #'   not generally recommended.
 #'
 #' @export
+#' @seealso [base::save()].
 saveData <- function(..., dir = "data", compress = "xz") {
     if (!is_string(dir)) {
         stop("dir must be a string")
@@ -18,18 +19,19 @@ saveData <- function(..., dir = "data", compress = "xz") {
     if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
-    names <- as.character(substitute(list(...)))[-1L]
     objs <- get_objs_from_dots(dots(...))
     paths <- file.path(dir, paste0(objs, ".rda"))
-    message(paste("Saving", toString(names), "to", dir, "..."))
+    paste("Saving", toString(objs), "to", dir) %>%
+        paste0("...") %>%
+        message
     mapply(save, list = objs, file = paths, compress = compress)
     invisible()
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-save_data <- saveData
+save_data <- saveData  # nolint
 
 
 
@@ -39,7 +41,7 @@ saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-save_data_raw <- saveDataRaw
+save_data_raw <- saveDataRaw  # nolint

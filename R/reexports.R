@@ -56,6 +56,14 @@ biomaRt::useMart
 
 
 
+# datasets ====
+#' Motor Trend car road tests.
+#' @keywords internal
+#' @export
+datasets::"mtcars" -> "mtcars"
+
+
+
 # devtools ====
 #' @export
 devtools::build
@@ -77,6 +85,15 @@ devtools::load_all
 
 #' @export
 devtools::test
+
+#' @export
+devtools::use_data
+
+#' @export
+devtools::use_data_raw
+
+#' @export
+devtools::use_testthat
 
 
 
@@ -129,7 +146,12 @@ dplyr::right_join
 #' @rdname tidy
 #' @usage NULL
 #' @export
-dplyr::select -> tidy_select
+dplyr::select -> tidySelect
+
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+tidy_select <- tidySelect  # nolint
 
 #' Star Wars dataset.
 #' @keywords internal
@@ -200,7 +222,7 @@ magrittr::`%>%`
 #' @export
 magrittr::set_colnames
 
-#' @rdname aliases
+#' @rdname camel_aliases
 #' @usage NULL
 #' @export
 magrittr::set_colnames -> setColnames
@@ -208,7 +230,7 @@ magrittr::set_colnames -> setColnames
 #' @export
 magrittr::set_rownames
 
-#' @rdname aliases
+#' @rdname camel_aliases
 #' @usage NULL
 #' @export
 magrittr::set_rownames -> setRownames
@@ -221,6 +243,15 @@ parallel::mclapply
 
 #' @export
 parallel::mcmapply
+
+
+
+# pbapply ====
+#' @export
+pbapply::pblapply
+
+#' @export
+pbapply::pbsapply
 
 
 
@@ -246,6 +277,9 @@ RCurl::getURL
 
 
 # readr ====
+#' @export
+readr::cols
+
 #' @export
 readr::read_csv
 
@@ -296,6 +330,9 @@ rlang::`!!`
 rlang::.data
 
 #' @export
+rlang::eval_bare
+
+#' @export
 rlang::is_atomic
 
 #' @export
@@ -337,7 +374,7 @@ rlang::quos
 #' @export
 rlang::set_names
 
-# Don't export over [stats::setNames]
+# Don't export over [stats::setNames]!
 rlang::set_names -> setNames
 
 #' @export

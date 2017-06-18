@@ -1,31 +1,22 @@
 #' Project management utilities
 #'
 #' @rdname project
-#'
-#' @param install Install package.
-#' @param test Run tests with [devtools::test()].
-
-
-
-#' @rdname project
 #' @description Create necessary directory structure for an
 #'   [RMarkdown](http://rmarkdown.rstudio.com) report in
 #'   [RStudio](https://www.rstudio.com).
 #' @export
 createProjectDirs <- function() {
-    local_dirs <- c("data",
-                    "figures",
-                    "meta",
-                    "results")
-    lapply(seq_along(local_dirs), function(a) {
-        dir.create(local_dirs[a], showWarnings = FALSE)
-    }) %>% invisible
+    localDirs <- c("data", "figures", "meta", "results")
+    lapply(seq_along(localDirs), function(a) {
+        dir.create(localDirs[a], showWarnings = FALSE)
+    }
+    ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-create_project_dirs <- createProjectDirs
+create_project_dirs <- createProjectDirs  # nolint
 
 
 
@@ -48,32 +39,28 @@ detectHPC <- function() {
     }
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-detect_hpc <- detectHPC
+detect_hpc <- detectHPC  # nolint
 
 
 
 #' @rdname project
 #' @description Package project and build website.
+#'
+#' @param install Install package.
+#'
 #' @export
-packageProject <- function(
-    install = FALSE,
-    test = FALSE) {
+packageProject <- function(install = FALSE) {
     # Ensure package is up to date
     document()
     build_vignettes()
     load_all()
 
     # Run integrity checks
-    BiocCheck(getwd())
+    BiocCheck::BiocCheck(getwd())
     check()
-
-    # Perform tests, if desired
-    if (isTRUE(test)) {
-        test()
-    }
 
     # Save the package build to disk
     build()
@@ -84,74 +71,62 @@ packageProject <- function(
     }
 
     # Build website
-    # [fix] Add back once pkgdown is on CRAN
-    # build_site()
-
-    # [fix] switch to `build_site_rstudio()` if function gets exported?
-    # https://github.com/hadley/pkgdown/blob/master/R/build.r
+    build_site()
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-package_project <- packageProject
+package_project <- packageProject  # nolint
 
 
 
 #' @rdname project
 #' @description Render all RMarkdown files in working directory.
 #'
-#' @param outputDir Output directory.
-#' @param recursive Find files recursively.
+#' @param today Render to a subdirectory with today's date.
 #'
 #' @export
-renderProject <- function(
-    outputDir = file.path("docs", Sys.Date()),
-    recursive = FALSE) {
-    if (!length(dir(pattern = "*.Rproj"))) {
-        warning("no Rproj file found")
-    }
+renderProject <- function(today = TRUE) {
     if (identical(getwd(), Sys.getenv("HOME"))) {
-        stop("careful, working from HOME")
+        stop("Working from HOME directory")
+    }
+    if (!length(dir(pattern = "*.Rproj"))) {
+        warning("No Rproj file found")
     }
 
-    # Create the output directory
-    dir.create(outputDir, recursive = TRUE, showWarnings = FALSE)
+    if (isTRUE(today)) {
+        outputDir <- file.path(Sys.Date())
+        dir.create(outputDir, showWarnings = FALSE)
+    } else {
+        outputDir <- getwd()
+    }
 
     # Get the list of RMarkdown files
     files <- list.files(pattern = "\\.Rmd$",
                         full.names = TRUE,
-                        recursive = recursive) %>%
+                        recursive = FALSE) %>%
         # Ignore drafts
         .[!grepl("_draft\\.Rmd$", ., ignore.case = TRUE)] %>%
         # Ignore child chunk files
         .[!grepl("(footer|header)\\.Rmd$", .)]
+    if (!length(files)) {
+        message("No RMarkdown files to render")
+        return(invisible())
+    }
 
-    sapply(files, function(input) {
+    lapply(files, function(input) {
         render(input,
                clean = TRUE,
                envir = new.env(),
                knit_root_dir = getwd(),
                output_dir = outputDir,
                output_format = "all")
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-render_project <- renderProject
-
-
-
-#' @rdname project
-#' @description Clear warnings.
-#' @export
-clearWarnings <- function() {
-    assign("last.warning", NULL, envir = baseenv())
-}
-
-#' @rdname aliases
-#' @usage NULL
-#' @export
-clear_warnings <- clearWarnings
+render_project <- renderProject  # nolint
