@@ -4,12 +4,12 @@
 \alias{geomean}
 \title{Geometric mean}
 \usage{
-geomean(object, na.rm = TRUE)
+geomean(object, na_rm = TRUE)
 }
 \arguments{
 \item{object}{Vector or column data (data frame, matrix).}
 
-\item{na.rm}{Remove \code{NA} values before processing.}
+\item{na_rm}{Remove \code{NA} values before processing.}
 }
 \value{
 Geometric means.
@@ -35,5 +35,5 @@ geomean(vec2)
 # Data frame
 df <- data.frame(vec, vec2)
 geomean(df)
-geomean(df, na.rm = FALSE)
+geomean(df, na_rm = FALSE)
 }

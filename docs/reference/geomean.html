@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -81,7 +82,7 @@
 Useful for describing non-normal (i.e. geometric) distributions.</p>
     
 
-    <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -91,7 +92,7 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
       <td><p>Vector or column data (data frame, matrix).</p></td>
     </tr>
     <tr>
-      <th>na.rm</th>
+      <th>na_rm</th>
       <td><p>Remove <code>NA</code> values before processing.</p></td>
     </tr>
     </table>
@@ -118,7 +119,7 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
 <span class='co'># Data frame</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='no'>vec</span>, <span class='no'>vec2</span>)
 <span class='fu'>geomean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;      vec     vec2 
-#&gt; 2.605171 7.745967 </div><div class='input'><span class='fu'>geomean</span>(<span class='no'>df</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;      vec     vec2 
+#&gt; 2.605171 7.745967 </div><div class='input'><span class='fu'>geomean</span>(<span class='no'>df</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;      vec     vec2 
 #&gt; 2.605171       NA </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

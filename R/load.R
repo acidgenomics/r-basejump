@@ -38,7 +38,7 @@ loadData <- function(...) {
     ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 load_data <- loadData
@@ -55,7 +55,7 @@ loadRemote <- function(url) {
     load(get("tempfile"), envir = envir)
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 load_remote <- loadRemote

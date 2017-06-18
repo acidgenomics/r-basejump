@@ -5,7 +5,6 @@
 \alias{detectHPC}
 \alias{packageProject}
 \alias{renderProject}
-\alias{clearWarnings}
 \title{Project management utilities}
 \usage{
 createProjectDirs()
@@ -15,8 +14,6 @@ detectHPC()
 packageProject(install = FALSE)
 
 renderProject(output_dir = file.path("docs", Sys.Date()), recursive = FALSE)
-
-clearWarnings()
 }
 \arguments{
 \item{install}{Install package.}
@@ -35,6 +32,4 @@ Detect if R is running on an HPC cluster.
 Package project and build website.
 
 Render all RMarkdown files in working directory.
-
-Clear warnings.
 }

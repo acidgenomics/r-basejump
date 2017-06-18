@@ -63,13 +63,16 @@
 #'
 #'
 #' # dotted.case
-#' dottedCase(unnamed_vec)
-#' dottedCase(named_vec)
-#' dottedCase(df)
-#' dottedCase(df, rownames = FALSE)
-#' dottedCase(tbl)
-#' dottedCase(lst)
+#' dotted(unnamed_vec)
+#' dotted(named_vec)
+#' dotted(df)
+#' dotted(df, rownames = FALSE)
+#' dotted(tbl)
+#' dotted(lst)
 NULL
+
+
+
 
 
 
@@ -90,7 +93,7 @@ makeFirstCase <- function(x) {
 
 
 
-makeNamesDot <- function(x) {
+makeNamesDotted <- function(x) {
     x %>%
         as.character %>%
         make.names %>%
@@ -119,7 +122,7 @@ makeNamesDot <- function(x) {
 
 makeNamesCamel <- function(x) {
     x %>%
-        makeNamesDot %>%
+        makeNamesDotted %>%
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
@@ -127,7 +130,7 @@ makeNamesCamel <- function(x) {
 
 makeNamesSnake <- function(x) {
     x %>%
-        makeNamesDot %>%
+        makeNamesDotted %>%
         str_replace_all("\\.", "_")
 }
 
@@ -162,12 +165,12 @@ checkRownames <- function(x) {
 
 
 
-setNamesDot <- function(x, rownames) {
+setNamesDotted <- function(x, rownames) {
     if (checkNames(x)) {
-        x <- setNames(x, makeNamesDot(names(x)))
+        x <- setNames(x, makeNamesDotted(names(x)))
     }
     if (isTRUE(rownames) & checkRownames(x)) {
-        x <- setRownames(x, makeNamesDot(rownames(x)))
+        x <- setRownames(x, makeNamesDotted(rownames(x)))
     }
     x
 }
@@ -216,18 +219,13 @@ camel <- function(x, rownames = TRUE) {
 
 #' @rdname names
 #' @export
-dottedCase <- function(x, rownames = TRUE) {
+dotted <- function(x, rownames = TRUE) {
     if (is.null(names(x))) {
-        makeNamesDot(x)
+        makeNamesDotted(x)
     } else {
-        setNamesDot(x, rownames)
+        setNamesDotted(x, rownames)
     }
 }
-
-#' @rdname aliases
-#' @usage NULL
-#' @export
-dotted_case <- dottedCase
 
 
 
@@ -241,21 +239,23 @@ snake <- function(x, rownames = TRUE) {
     }
 }
 
-#' @rdname aliases
+
+
+#' @rdname camel_aliases
 #' @export
 sanitizeNames <- snake
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-sanitize_names <- snake
+sanitize_names <- sanitizeNames
 
-#' @rdname aliases
+#' @rdname british_aliases
 #' @usage NULL
 #' @export
 sanitiseNames <- snake
 
-#' @rdname aliases
+#' @rdname british_aliases
 #' @usage NULL
 #' @export
 sanitise_names <- snake
@@ -276,7 +276,7 @@ titleCase <- function(x) {
     x
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 title_case <- titleCase
@@ -293,7 +293,7 @@ firstCase <- function(x) {
     x
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 first_case <- firstCase

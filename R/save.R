@@ -28,7 +28,7 @@ saveData <- function(..., dir = "data", compress = "xz") {
     invisible()
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 save_data <- saveData
@@ -41,7 +41,7 @@ saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 save_data_raw <- saveDataRaw

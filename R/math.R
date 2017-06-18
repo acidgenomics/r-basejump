@@ -9,7 +9,7 @@
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
 #' @param object Vector or column data (data frame, matrix).
-#' @param na.rm Remove `NA` values before processing.
+#' @param na_rm Remove `NA` values before processing.
 #'
 #' @return Geometric means.
 #' @export
@@ -25,13 +25,13 @@
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
-#' geomean(df, na.rm = FALSE)
-geomean <- function(object, na.rm = TRUE) {
+#' geomean(df, na_rm = FALSE)
+geomean <- function(object, na_rm = TRUE) {
     if (is.vector(object)) {
         exp(mean(log(object), na.rm = TRUE))
     } else if (is.data.frame(object) | is.matrix(object)) {
         # `2` denotes columnwise calculation
-        exp(apply(log(object), 2, mean, na.rm = na.rm))
+        exp(apply(log(object), 2, mean, na.rm = na_rm))
     }
 }
 
@@ -76,7 +76,7 @@ logRatioToFoldChange <- function(x, base = 2) {
     x
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 log_ratio_to_fold_change <- logRatioToFoldChange

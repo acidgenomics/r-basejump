@@ -16,7 +16,7 @@ createProjectDirs <- function() {
     ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 create_project_dirs <- createProjectDirs
@@ -42,7 +42,7 @@ detectHPC <- function() {
     }
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 detect_hpc <- detectHPC
@@ -77,7 +77,7 @@ packageProject <- function(install = FALSE) {
     build_site()
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 package_project <- packageProject
@@ -124,21 +124,7 @@ renderProject <- function(
     ) %>% invisible
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
 render_project <- renderProject
-
-
-
-#' @rdname project
-#' @description Clear warnings.
-#' @export
-clearWarnings <- function() {
-    assign("last.warning", NULL, envir = baseenv())
-}
-
-#' @rdname aliases
-#' @usage NULL
-#' @export
-clear_warnings <- clearWarnings
