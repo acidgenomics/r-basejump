@@ -6,7 +6,7 @@
 #' @param .dots Dots values.
 #'
 #' @seealso
-#' - [browseVignettes("rlang")].
+#' - `browseVignettes("rlang")`.
 #' - [rlang::dots_values()], [rlang::eval_tidy()].
 #' - https://github.com/tidyverse/dplyr/blob/master/R/utils.r
 #' - https://github.com/hadley/devtools/blob/master/R/infrastructure.R
