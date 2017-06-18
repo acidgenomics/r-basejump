@@ -29,7 +29,7 @@ assignAsNewEnv <- function(..., envir_name) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-assign_as_new_env <- assignAsNewEnv
+assign_as_new_env <- assignAsNewEnv  # nolint
 
 
 
@@ -43,7 +43,7 @@ clearWarnings <- function() {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-clear_warnings <- clearWarnings
+clear_warnings <- clearWarnings  # nolint
 
 
 
@@ -66,7 +66,7 @@ fixNA <- function(string) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-fix_na <- fixNA
+fix_na <- fixNA  # nolint
 
 
 
@@ -102,7 +102,7 @@ grepString <- function(identifier) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-grep_string <- grepString
+grep_string <- grepString  # nolint
 
 
 
@@ -149,7 +149,7 @@ removeNA <- function(x) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-remove_na <- removeNA
+remove_na <- removeNA  # nolint
 
 
 
@@ -175,7 +175,7 @@ sortUnique <- function(vector) {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-sort_unique <- sortUnique
+sort_unique <- sortUnique  # nolint
 
 
 
@@ -198,7 +198,7 @@ updatePackages <- function() {
 #' @rdname snake_aliases
 #' @usage NULL
 #' @export
-update_packages <- updatePackages
+update_packages <- updatePackages  # nolint
 
 
 
