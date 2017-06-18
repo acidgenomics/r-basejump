@@ -1,15 +1,84 @@
-create_new_project <- function() {
-    .Deprecated("create_project_dirs")
+#' Renamed functions
+#'
+#' @rdname renamed
+#' @name renamed
+NULL
+
+
+
+#' @rdname renamed
+#' @usage NULL
+#' @export
+createNewProject <- function(...) {
+    .Deprecated("createProjectDirs")
+    createProjectDirs(...)
 }
 
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+create_new_project <- createNewProject  # nolint
+
+
+
+#' @rdname renamed
+#' @usage NULL
+#' @export
+dotNotation <- function(...) {
+    .Deprecated("dotted")
+    dotted(...)
+}
+
+#' @rdname snake_aliases
+#' @export
+dot_notation <- dotNotation  # nolint
+
+
+
+#' @rdname renamed
+#' @usage NULL
+#' @export
 grepToString <- function() {
     .Deprecated("grepString")
 }
 
-loadDataRaw <- function() {
+#' @rdname renamed
+#' @usage NULL
+#' @export
+grep_to_string <- grepToString  # nolint
+
+
+
+#' @rdname renamed
+#' @usage NULL
+#' @export
+loadDataRaw <- function(...) {
     .Deprecated("loadData")
 }
 
-toStringSummarize <- function() {
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+load_data_raw <- loadDataRaw  # nolint
+
+
+
+#' @rdname renamed
+#' @usage NULL
+#' @export
+toStringSummarize <- function(...) {
     .Deprecated("summarizeRows")
+    summarizeRows(...)
 }
+
+#' @rdname snake_aliases
+#' @usage NULL
+to_string_summarize <- toStringSummarize  # nolint
+
+#' @rdname british_aliases
+#' @usage NULL
+toStringSummarise <- toStringSummarize
+
+#' @rdname british_aliases
+#' @usage NULL
+to_string_summarise <- toStringSummarize  # nolint

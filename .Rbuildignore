@@ -1,6 +1,7 @@
 ^.*\.Rproj$
+^\.lintr$
 ^\.Rprofile$
 ^\.Rproj\.user$
 ^\.travis\.yml$
+^data-raw$
 ^docs$
-^API$

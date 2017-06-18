@@ -17,7 +17,7 @@
 loadData <- function(...) {
     envir <- parent.frame()
     names <- as.character(substitute(list(...)))[-1L]
-    sapply(seq_along(names), function(a) {
+    lapply(seq_along(names), function(a) {
         if (file.exists(paste0("data/", names[a], ".rda"))) {
             # Check for .rda file in `data/`
             message(paste("Loading", names[a], "from data/..."))
@@ -34,14 +34,14 @@ loadData <- function(...) {
             # Skip and warn
             warning(paste(names[a], "missing"))
         }
-    }) %>% invisible
+    }
+    ) %>% invisible
 }
 
-# NAMESPACE collison with devtools::load_data
-# @rdname aliases
-# @usage NULL
-# @export
-# load_data <- loadData
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+load_data <- loadData  # nolint
 
 
 
@@ -49,13 +49,13 @@ loadData <- function(...) {
 #' @description Load a remote R binary file.
 #' @export
 loadRemote <- function(url) {
-    envir = parent.frame()
+    envir <- parent.frame()
     tempfile <- tempfile()
     download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = envir)
 }
 
-#' @rdname aliases
+#' @rdname snake_aliases
 #' @usage NULL
 #' @export
-load_remote <- loadRemote
+load_remote <- loadRemote  # nolint

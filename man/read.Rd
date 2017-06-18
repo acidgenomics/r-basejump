@@ -7,10 +7,10 @@
 \usage{
 readDataRaw()
 
-readYAML(yaml_file)
+readYAML(file)
 }
 \arguments{
-\item{yaml_file}{YAML file.}
+\item{file}{YAML file.}
 }
 \description{
 Read CSV files inside \code{data-raw} directory.

@@ -1,37 +1,35 @@
-## General ====
+# General ====
 #' Geometric mean
 #'
 #' The geometric mean is the nth root of n products or e to the mean log of `x`.
 #' Useful for describing non-normal (i.e. geometric) distributions.
 #'
-#' @details Modified version of [psych::geometric.mean()].
+#' @details Modified version of `psych::geometric.mean()`.
 #'
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
-#' @param object Vector or column data (data frame, matrix).
-#' @param na.rm Remove `NA` values before processing.
+#' @param x Vector or column data (data frame, matrix).
 #'
 #' @return Geometric means.
 #' @export
 #'
 #' @examples
 #' # Vector
-#' vec <- seq(1,5)
-#' vec2 <- vec^2
-#' vec2[2] <- NA
+#' vec <- seq(1L, 5L, 1L)
 #' geomean(vec)
+#'
+#' vec2 <- vec ^ 2L
 #' geomean(vec2)
 #'
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
-#' geomean(df, na.rm = FALSE)
-geomean <- function(object, na.rm = TRUE) {
-    if (is.vector(object)) {
-        exp(mean(log(object), na.rm = TRUE))
-    } else if (is.data.frame(object) | is.matrix(object)) {
+geomean <- function(x) {
+    if (is.vector(x)) {
+        exp(mean(log(x), na.rm = TRUE))
+    } else if (is.data.frame(x) | is.matrix(x)) {
         # `2` denotes columnwise calculation
-        exp(apply(log(object), 2, mean, na.rm = na.rm))
+        exp(apply(log(x), 2L, mean, na.rm = TRUE))
     }
 }
 
@@ -47,7 +45,7 @@ geomean <- function(object, na.rm = TRUE) {
 #' @examples
 #' pct(0.1)
 pct <- function(number) {
-    sprintf("%1.1f%%", number * 100)
+    sprintf("%1.1f%%", number * 100L)
 }
 
 
@@ -55,26 +53,38 @@ pct <- function(number) {
 
 
 
-## RNA-seq ====
-#' log ratio to fold change
+# RNA-seq ====
+#' Log ratio to fold change
 #'
-#' Convert log ratio normalized values to fold change. Based on the approach
-#' used in `gtools::logratio2foldchange()`.
+#' Convert log ratio normalized values to fold change.
 #'
-#' @param lr Numeric vector of log ratio values.
+#' @rdname log_ratio
+#'
+#' @param x Numeric vector of log ratio (`lr`) or fold change (`fc`) values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
-#' @return Fold change values.
+#' @return Numeric vector.
 #' @export
 #'
+#' @seealso
+#' `gtools::foldchange2logratio()`, `gtools::logratio2foldchange()`.
+#'
 #' @examples
-#' logRatioToFoldChange(seq(-3, 3, 0.5))
-logRatioToFoldChange <- function(lr, base = 2) {
-    base^(lr) %>% ifelse(. < 1, -1/., .)
+#' lr2fc(seq(-3, 3, 1))
+#' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
+fc2lr <- function(x, base = 2L) {
+    x <- ifelse(x < 0L, 1L / -x, x)
+    x <- log(x, base)
+    x
 }
 
-#' @rdname aliases
-#' @usage NULL
+
+
+#' @rdname log_ratio
 #' @export
-log_ratio_to_fold_change <- logRatioToFoldChange
+lr2fc <- function(x, base = 2L) {
+    x <- base ^ x
+    x <- ifelse(x < 1L, -1L / x, x)
+    x
+}

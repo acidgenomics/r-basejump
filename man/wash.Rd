@@ -4,10 +4,10 @@
 \alias{wash}
 \title{Wash a data frame}
 \usage{
-wash(df)
+wash(x)
 }
 \arguments{
-\item{df}{Dirty data frame.}
+\item{x}{Dirty data frame.}
 }
 \value{
 Clean data frame.

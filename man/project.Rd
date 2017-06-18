@@ -5,27 +5,20 @@
 \alias{detectHPC}
 \alias{packageProject}
 \alias{renderProject}
-\alias{clearWarnings}
 \title{Project management utilities}
 \usage{
 createProjectDirs()
 
 detectHPC()
 
-packageProject(install = FALSE, test = FALSE)
+packageProject(install = FALSE)
 
-renderProject(outputDir = file.path("docs", Sys.Date()), recursive = FALSE)
-
-clearWarnings()
+renderProject(today = TRUE)
 }
 \arguments{
 \item{install}{Install package.}
 
-\item{test}{Run tests with \code{\link[devtools:test]{devtools::test()}}.}
-
-\item{outputDir}{Output directory.}
-
-\item{recursive}{Find files recursively.}
+\item{today}{Render to a subdirectory with today's date.}
 }
 \description{
 Create necessary directory structure for an
@@ -37,6 +30,4 @@ Detect if R is running on an HPC cluster.
 Package project and build website.
 
 Render all RMarkdown files in working directory.
-
-Clear warnings.
 }
