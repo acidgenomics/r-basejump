@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Objects as dots utilities. — dots • basejump</title>
+<title>Evaluate dots — dots • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -73,33 +74,38 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Objects as dots utilities.</h1>
+    <h1>Evaluate dots</h1>
     </div>
 
     
-    <p>Handle object names as dots instead of character vector.</p>
+    <p>Capture function ellipses as dots using rlang syntax.</p>
     
 
     <pre class="usage"><span class='fu'>dots</span>(<span class='no'>...</span>)
 
-<span class='fu'>getObjsFromDots</span>(<span class='no'>.dots</span>)</pre>
+<span class='fu'>get_objs_from_dots</span>(<span class='no'>.dots</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Object as ellipsis.</p></td>
+      <td><p>Ellipsis.</p></td>
     </tr>
     <tr>
       <th>.dots</th>
-      <td><p>Objects as dots.</p></td>
+      <td><p>Dots values.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>browseVignettes(package = "dplyr")</code>.</p>
+    <ul>
+<li><p>browseVignettes("rlang").</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/rlang/topics/dots_values'>rlang::dots_values()</a></code>, <code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_tidy'>rlang::eval_tidy()</a></code>.</p></li>
+<li><p>https://github.com/tidyverse/dplyr/blob/master/R/utils.r</p></li>
+<li><p>https://github.com/hadley/devtools/blob/master/R/infrastructure.R</p></li>
+</ul>
     
 
   </div>
@@ -116,7 +122,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michael Steinbaugh.</p>
+  <p>Developed by Michael J. Steinbaugh.</p>
 </div>
 
 <div class="pkgdown">

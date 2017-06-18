@@ -4,12 +4,12 @@
 \alias{assignAsNewEnv}
 \title{Assign multiple objects to a new environment}
 \usage{
-assignAsNewEnv(..., envir_name)
+assignAsNewEnv(..., envirName)
 }
 \arguments{
 \item{...}{List of objects to assign.}
 
-\item{envir_name}{Environment name.}
+\item{envirName}{Environment name.}
 }
 \value{
 Object names.
@@ -18,5 +18,5 @@ Object names.
 Assign multiple objects to a new environment
 }
 \examples{
-assignAsNewEnv(mtcars, starwars, envir_name = "testenv")
+assignAsNewEnv(mtcars, starwars, envirName = "testenv")
 }

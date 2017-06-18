@@ -146,7 +146,12 @@ dplyr::right_join
 #' @rdname tidy
 #' @usage NULL
 #' @export
-dplyr::select -> tidy_select
+dplyr::select -> tidySelect
+
+#' @rdname snake_aliases
+#' @usage NULL
+#' @export
+tidy_select <- tidySelect  # nolint
 
 #' Star Wars dataset.
 #' @keywords internal
