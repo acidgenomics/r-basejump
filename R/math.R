@@ -4,7 +4,7 @@
 #' The geometric mean is the nth root of n products or e to the mean log of `x`.
 #' Useful for describing non-normal (i.e. geometric) distributions.
 #'
-#' @details Modified version of [psych::geometric.mean()].
+#' @details Modified version of `psych::geometric.mean()`.
 #'
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
