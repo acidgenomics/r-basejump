@@ -50,9 +50,11 @@ Imports:
     tools,
     utils,
     yaml (>= 2.1.14)
+Suggests:
+    lintr,
+    testthat
 Remotes:
     hadley/pkgdown
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-Suggests: testthat
