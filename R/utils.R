@@ -12,7 +12,7 @@
 #' assignAsNewEnv(mtcars, starwars, envirName = "testenv")
 assignAsNewEnv <- function(..., envirName) {
     if (!is_string(envirName)) {
-        stop("Environment name must be a string.")
+        stop("Environment name must be a string")
     }
     envir <- new.env()
     dots <- dots(...)
