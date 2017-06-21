@@ -1,4 +1,5 @@
 0.0.15  Added testthat support for lintr checks.
+        Added S4 generic for `as_tibble()`.
 0.0.14  dplyr 0.7 NAMESPACE fixes and function tweaks.
 0.0.13  setMethod on tidyverse NAMESPACE collisons (dplyr, tidyr) using
         `signature("data.frame").
