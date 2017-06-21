@@ -29,6 +29,7 @@ Imports:
     graphics,
     httr (>= 1.2.1),
     knitr (>= 1.15),
+    lintr (>= 1.0.0.9001),
     magrittr (>= 1.5),
     methods,
     parallel,
@@ -51,7 +52,6 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    lintr (>= 1.0.0.9001),
     testthat
 Remotes:
     hadley/pkgdown,

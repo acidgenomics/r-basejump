@@ -32,6 +32,7 @@
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable knit opts_chunk opts_knit
+#' @importFrom lintr lint_package
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom parallel mclapply mcmapply
 #' @importFrom pkgdown build_site
