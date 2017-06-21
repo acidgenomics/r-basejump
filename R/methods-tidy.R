@@ -1,8 +1,32 @@
+#' S4 method support for tidyverse verbs
+#'
+#' @rdname tidy
+#' @docType methods
+
+
+
 # arrange ====
 #' @rdname tidy
 #' @export
 setMethod("arrange", "data.frame", function(object, ...) {
     dplyr::arrange(object, ...)
+})
+
+
+
+# as_tibble ====
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "data.frame", function(object, ...) {
+    tibble::as_tibble(object, ...)
+})
+
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "DataFrame", function(object, ...) {
+    object %>%
+        as.data.frame %>%
+        tibble::as_tibble(., ...)
 })
 
 

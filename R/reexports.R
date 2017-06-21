@@ -12,6 +12,12 @@ Biobase::content
 
 # BiocGenerics ====
 #' @export
+BiocGenerics::counts
+
+#' @export
+BiocGenerics::design
+
+#' @export
 BiocGenerics::intersect
 
 
@@ -19,25 +25,6 @@ BiocGenerics::intersect
 # BiocInstaller ====
 #' @export
 BiocInstaller::biocValid
-
-
-
-# BiocStyle ====
-#' @export
-BiocStyle::doc_date
-
-#' @export
-BiocStyle::html_document
-# [fix] rmarkdown::html_document instead?
-
-#' @export
-BiocStyle::html_document2
-
-#' @export
-BiocStyle::pdf_document
-
-#' @export
-BiocStyle::pdf_document2
 
 
 
@@ -433,6 +420,21 @@ stringr::str_sub
 
 #' @export
 stringr::str_subset
+
+
+
+# SummarizedExperiment ====
+#' @export
+SummarizedExperiment::assay
+
+#' @export
+SummarizedExperiment::assays
+
+#' @export
+SummarizedExperiment::colData
+
+#' @export
+SummarizedExperiment::rowData
 
 
 

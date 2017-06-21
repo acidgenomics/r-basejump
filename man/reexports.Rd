@@ -7,19 +7,13 @@
 \alias{reexports}
 \alias{content}
 \alias{reexports}
+\alias{counts}
+\alias{reexports}
+\alias{design}
+\alias{reexports}
 \alias{intersect}
 \alias{reexports}
 \alias{biocValid}
-\alias{reexports}
-\alias{doc_date}
-\alias{reexports}
-\alias{html_document}
-\alias{reexports}
-\alias{html_document2}
-\alias{reexports}
-\alias{pdf_document}
-\alias{reexports}
-\alias{pdf_document2}
 \alias{reexports}
 \alias{getBM}
 \alias{reexports}
@@ -223,6 +217,14 @@
 \alias{reexports}
 \alias{str_subset}
 \alias{reexports}
+\alias{assay}
+\alias{reexports}
+\alias{assays}
+\alias{reexports}
+\alias{colData}
+\alias{reexports}
+\alias{rowData}
+\alias{reexports}
 \alias{expand}
 \alias{reexports}
 \alias{first}
@@ -273,11 +275,9 @@ below to see their documentation.
 
   \item{Biobase}{\code{\link[Biobase]{content}}}
 
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{intersect}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{intersect}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
-
-  \item{BiocStyle}{\code{\link[BiocStyle]{doc_date}}, \code{\link[BiocStyle]{html_document}}, \code{\link[BiocStyle]{html_document2}}, \code{\link[BiocStyle]{pdf_document}}, \code{\link[BiocStyle]{pdf_document2}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
@@ -316,6 +316,8 @@ below to see their documentation.
   \item{S4Vectors}{\code{\link[S4Vectors]{expand}}, \code{\link[S4Vectors]{first}}, \code{\link[S4Vectors]{rename}}}
 
   \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
+
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{rowData}}}
 
   \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
