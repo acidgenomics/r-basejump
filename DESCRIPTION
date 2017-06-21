@@ -21,7 +21,6 @@ Imports:
     BiocCheck,
     BiocGenerics,
     BiocInstaller,
-    BiocStyle,
     biomaRt (>= 2.32.1),
     covr,
     datasets,
@@ -51,6 +50,7 @@ Imports:
     utils,
     yaml
 Suggests:
+    BiocStyle,
     lintr (>= 1.0.0.9001),
     testthat
 Remotes:

@@ -13,12 +13,12 @@
 #' @import AnnotationDbi
 #' @import Biobase
 #' @import BiocGenerics
-#' @import BiocStyle
 #' @import methods
 #' @import pbapply
 #' @import pbmcapply
 #' @import readr
 #' @import stringr
+#' @import SummarizedExperiment
 #' @import S4Vectors
 #' @importFrom BiocInstaller biocValid
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart

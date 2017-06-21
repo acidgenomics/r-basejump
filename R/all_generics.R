@@ -1,26 +1,15 @@
-#' All generics
-#'
-#' @rdname generics
-#' @docType methods
-#' @keywords internal
-
-
-
-#' @rdname generics
-#' @name arrange
+#' @rdname tidy
 #' @export
 setGeneric("arrange", function(object, ...) standardGeneric("arrange"))
 
+#' @rdname tidy
+#' @export
+setGeneric("as_tibble", function(object, ...) standardGeneric("as_tibble"))
 
-
-#' @rdname generics
-#' @name filter
+#' @rdname tidy
 #' @export
 setGeneric("filter", function(object, ...) standardGeneric("filter"))
 
-
-
-#' @rdname generics
-#' @name mutate
+#' @rdname tidy
 #' @export
 setGeneric("mutate", function(object, ...) standardGeneric("mutate"))
