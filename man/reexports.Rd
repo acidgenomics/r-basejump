@@ -103,6 +103,8 @@
 \alias{reexports}
 \alias{opts_knit}
 \alias{reexports}
+\alias{lint_package}
+\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{set_colnames}
@@ -290,6 +292,8 @@ below to see their documentation.
   \item{httr}{\code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{knit}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
+
+  \item{lintr}{\code{\link[lintr]{lint_package}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 

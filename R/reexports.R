@@ -202,6 +202,12 @@ knitr::opts_knit
 
 
 
+# lintr ====
+#' @export
+lintr::lint_package
+
+
+
 # magrittr ====
 #' @export
 magrittr::`%>%`
