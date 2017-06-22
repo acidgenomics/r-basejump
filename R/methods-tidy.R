@@ -12,7 +12,10 @@
 # arrange ====
 #' @rdname tidy
 #' @export
-setMethod("arrange", "data.frame", function(object, ...) {
+setMethod(
+    "arrange",
+    signature(object = "data.frame"),
+    function(object, ...) {
     dplyr::arrange(object, ...)
 })
 
@@ -21,13 +24,19 @@ setMethod("arrange", "data.frame", function(object, ...) {
 # as_tibble ====
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "data.frame", function(object, ...) {
+setMethod(
+    "as_tibble",
+    signature(object = "data.frame"),
+    function(object, ...) {
     tibble::as_tibble(object, ...)
 })
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "DataFrame", function(object, ...) {
+setMethod(
+    "as_tibble",
+    signature(object = "DataFrame"),
+    function(object, ...) {
     object %>%
         as.data.frame %>%
         tibble::as_tibble(., ...)
@@ -38,7 +47,10 @@ setMethod("as_tibble", "DataFrame", function(object, ...) {
 # content ====
 #' @rdname tidy
 #' @export
-setMethod("content", "response", function(object) {
+setMethod(
+    "content",
+    signature(object = "response"),
+    function(object) {
     httr::content(object)
 })
 
@@ -47,7 +59,10 @@ setMethod("content", "response", function(object) {
 # expand ====
 #' @rdname tidy
 #' @export
-setMethod("expand", "data.frame", function(x, ...) {
+setMethod(
+    "expand",
+    signature(x = "data.frame"),
+    function(x, ...) {
     tidyr::expand(x, ...)
 })
 
@@ -56,7 +71,10 @@ setMethod("expand", "data.frame", function(x, ...) {
 # filter ====
 #' @rdname tidy
 #' @export
-setMethod("filter", "data.frame", function(object, ...) {
+setMethod(
+    "filter",
+    signature(object = "data.frame"),
+    function(object, ...) {
     dplyr::filter(object, ...)
 })
 
@@ -65,7 +83,10 @@ setMethod("filter", "data.frame", function(object, ...) {
 # first ====
 #' @rdname tidy
 #' @export
-setMethod("first", "data.frame", function(x, ...) {
+setMethod(
+    "first",
+    signature(x = "data.frame"),
+    function(x, ...) {
     dplyr::first(x, ...)
 })
 
@@ -86,7 +107,10 @@ setMethod(
 # filter ====
 #' @rdname tidy
 #' @export
-setMethod("mutate", "data.frame", function(object, ...) {
+setMethod(
+    "mutate",
+    signature(object = "data.frame"),
+    function(object, ...) {
     dplyr::mutate(object, ...)
 })
 
@@ -95,7 +119,10 @@ setMethod("mutate", "data.frame", function(object, ...) {
 # rename ====
 #' @rdname tidy
 #' @export
-setMethod("rename", "data.frame", function(x, ...) {
+setMethod(
+    "rename",
+    signature(x = "data.frame"),
+    function(x, ...) {
     dplyr::rename(x, ...)
 })
 
@@ -105,7 +132,9 @@ setMethod("rename", "data.frame", function(x, ...) {
 #' @rdname tidy
 #' @usage NULL
 #' @export
-setMethod("select", "data.frame", function(x) {
+setMethod("select",
+          signature(x = "data.frame"),
+          function(x) {
     stop("Use [tidy_select()] on data.frame.
          NAMESPACE collison with [AnnotationDbi::select()].")
 })
