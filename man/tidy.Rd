@@ -68,6 +68,12 @@ mutate(object, ...)
 \item{x}{Primary object.}
 
 \item{y}{Secondary object.}
+
+\item{object}{Object.}
+
+\item{x}{Object.}
+
+\item{...}{Additional parameters.}
 }
 \description{
 Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconductor}

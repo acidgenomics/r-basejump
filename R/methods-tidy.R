@@ -2,6 +2,10 @@
 #'
 #' @rdname tidy
 #' @docType methods
+#'
+#' @param object Object.
+#' @param x Object.
+#' @param ... Additional parameters.
 
 
 
