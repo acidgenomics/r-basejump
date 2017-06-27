@@ -12,7 +12,6 @@
 \alias{arrange,data.frame-method}
 \alias{as_tibble,data.frame-method}
 \alias{as_tibble,DataFrame-method}
-\alias{content,response-method}
 \alias{expand,data.frame-method}
 \alias{filter,data.frame-method}
 \alias{first,data.frame-method}
@@ -23,7 +22,15 @@
 \alias{setdiff,data.frame,data.frame-method}
 \alias{setequal,data.frame,data.frame-method}
 \alias{union,data.frame,data.frame-method}
+\alias{select}
+\alias{content}
+\alias{intersect}
+\alias{setdiff}
+\alias{union}
 \alias{tidySelect}
+\alias{expand}
+\alias{first}
+\alias{rename}
 \title{S4 generic variants of \href{http://tidyverse.org/}{tidyverse} verbs}
 \usage{
 arrange(object, ...)
@@ -39,8 +46,6 @@ mutate(object, ...)
 \S4method{as_tibble}{data.frame}(object, ...)
 
 \S4method{as_tibble}{DataFrame}(object, ...)
-
-\S4method{content}{response}(object)
 
 \S4method{expand}{data.frame}(x, ...)
 
@@ -59,6 +64,22 @@ mutate(object, ...)
 \S4method{setequal}{data.frame,data.frame}(x, y)
 
 \S4method{union}{data.frame,data.frame}(x, y, ...)
+
+select(x, keys, columns, keytype, ...)
+
+content(object)
+
+intersect(x, y, ...)
+
+setdiff(x, y, ...)
+
+union(x, y, ...)
+
+expand(x, ...)
+
+first(x, ...)
+
+rename(x, ...)
 }
 \arguments{
 \item{object}{Primary object.}

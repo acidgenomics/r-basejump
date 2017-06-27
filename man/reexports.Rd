@@ -3,15 +3,9 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{select}
-\alias{reexports}
-\alias{content}
-\alias{reexports}
 \alias{counts}
 \alias{reexports}
 \alias{design}
-\alias{reexports}
-\alias{intersect}
 \alias{reexports}
 \alias{biocValid}
 \alias{reexports}
@@ -227,11 +221,9 @@
 \alias{reexports}
 \alias{rowData}
 \alias{reexports}
-\alias{expand}
+\alias{DataFrame}
 \alias{reexports}
-\alias{first}
-\alias{reexports}
-\alias{rename}
+\alias{SimpleList}
 \alias{reexports}
 \alias{as_tibble}
 \alias{reexports}
@@ -273,11 +265,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
-
-  \item{Biobase}{\code{\link[Biobase]{content}}}
-
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{intersect}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
@@ -317,7 +305,7 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{expand}}, \code{\link[S4Vectors]{first}}, \code{\link[S4Vectors]{rename}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}}
 
   \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
