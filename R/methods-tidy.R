@@ -45,14 +45,7 @@ setMethod(
 
 
 # content ====
-#' @rdname tidy
-#' @export
-setMethod(
-    "content",
-    signature(object = "response"),
-    function(object) {
-    httr::content(object)
-})
+
 
 
 
@@ -104,7 +97,7 @@ setMethod(
 
 
 
-# filter ====
+# mutate ====
 #' @rdname tidy
 #' @export
 setMethod(
