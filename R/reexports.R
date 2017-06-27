@@ -403,6 +403,12 @@ rmarkdown::render
 
 # stringr ====
 #' @export
+stringr::fixed
+
+#' @export
+stringr::regex
+
+#' @export
 stringr::str_c
 
 #' @export
