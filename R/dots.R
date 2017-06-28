@@ -2,6 +2,8 @@
 #'
 #' Capture function ellipses as dots using rlang syntax.
 #'
+#' @keywords internal
+#'
 #' @param ... Ellipsis.
 #' @param .dots Dots values.
 #'

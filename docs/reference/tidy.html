@@ -97,6 +97,9 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for matrix</span>
+<span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for response</span>
 <span class='fu'>content</span>(<span class='no'>object</span>)
 
@@ -154,6 +157,13 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>For tibble coercion with <code><a href='generics.html'>as_tibble()</a></code>, rownames are always moved to
+the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally. This
+provides more consistent behavior in the tidyverse, which can inadvertently
+strip rownames during filtering operations.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
@@ -170,6 +180,8 @@ dplyr, httr, tidyr.</p></li>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#note">Note</a></li>
+
       <li><a href="#see-also">See also</a></li>
           </ul>
 

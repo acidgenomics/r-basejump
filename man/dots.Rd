@@ -26,3 +26,4 @@ Capture function ellipses as dots using rlang syntax.
 \item https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 }
 }
+\keyword{internal}

@@ -32,3 +32,4 @@ toStringSummarize(...)
 \description{
 Deprecated functions
 }
+\keyword{internal}

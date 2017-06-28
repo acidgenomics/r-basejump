@@ -8,6 +8,8 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
+#' @keywords internal
+#'
 #' @import AnnotationDbi Biobase BiocGenerics methods pbapply pbmcapply readr
 #'   stringr SummarizedExperiment S4Vectors
 #' @importFrom BiocInstaller biocValid

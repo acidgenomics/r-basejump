@@ -1,6 +1,7 @@
 #' S4 generics
 #'
 #' @rdname generics
+#' @keywords internal
 #'
 #' @param object Object.
 #' @param ... Additional parameters.
