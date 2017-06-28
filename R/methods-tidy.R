@@ -39,44 +39,27 @@ setMethod(
 
 
 # as_tibble ====
-#' @rdname tidy
-#' @export
-setMethod(
-    "as_tibble",
-    signature(object = "data.frame"),
-    function(object, ...) {
+.as_tibble <- function(object, ...) {  # nolint
+    object <- as.data.frame(object)
     # Check to see if rownames are set
     if (!identical(rownames(object),
-              as.character(seq_len(nrow(object))))) {
+                   as.character(seq_len(nrow(object))))) {
         object <- rownames_to_column(object)
     }
     tibble::as_tibble(object, ...)
-})
+}
 
 #' @rdname tidy
 #' @export
-setMethod(
-    "as_tibble",
-    signature(object = "DataFrame"),
-    function(object, ...) {
-    df <- as.data.frame(object)
-    if (!is.null(rownames(df))) {
-        df <- rownames_to_column(df)
-    }
-    tibble::as_tibble(df, ...)
-})
+setMethod("as_tibble", "data.frame", .as_tibble)
 
 #' @rdname tidy
 #' @export
-setMethod(
-    "as_tibble",
-    signature(object = "matrix"),
-    function(object, ...) {
-        object %>%
-            as.data.frame %>%
-            rownames_to_column %>%
-            tibble::as_tibble(., ...)
-    })
+setMethod("as_tibble", "DataFrame", .as_tibble)
+
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "matrix", .as_tibble)
 
 
 
