@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{clearWarnings}
 \alias{clearWarnings}
+\alias{clear_warnings}
 \title{Clear warnings}
 \usage{
 clearWarnings()

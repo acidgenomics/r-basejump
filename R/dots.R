@@ -43,9 +43,7 @@ get_objs_from_dots <- function(.dots) {
 }
 # nolint end
 
-
-
-#' @rdname camel_aliases
+#' @rdname dots
 #' @usage NULL
 #' @export
-getObjsFromDots <- get_objs_from_dots
+get_objs_from_dots -> getObjsFromDots

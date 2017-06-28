@@ -1,26 +1,30 @@
-#' All generics
+#' S4 generics
 #'
 #' @rdname generics
-#' @docType methods
-#' @keywords internal
+#'
+#' @param object Object.
+#' @param ... Additional parameters.
 
 
 
 #' @rdname generics
-#' @name arrange
 #' @export
 setGeneric("arrange", function(object, ...) standardGeneric("arrange"))
 
 
 
 #' @rdname generics
-#' @name filter
+#' @export
+setGeneric("as_tibble", function(object, ...) standardGeneric("as_tibble"))
+
+
+
+#' @rdname generics
 #' @export
 setGeneric("filter", function(object, ...) standardGeneric("filter"))
 
 
 
 #' @rdname generics
-#' @name mutate
 #' @export
 setGeneric("mutate", function(object, ...) standardGeneric("mutate"))

@@ -52,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -79,7 +85,7 @@
 
     
     <p>Helper functions for to produce collapsed output for vectors (<code>toString()</code>)
-and data frames (summarizeRows()]).</p>
+and data frames (<code>summarizeRows()</code>).</p>
     
 
     <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
@@ -107,7 +113,9 @@ and data frames (summarizeRows()]).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>toStringUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "milk, eggs, NA"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "eggs, milk, NA"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>groceries</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>)
+
+<span class='fu'>toStringUnique</span>(<span class='no'>groceries</span>)</div><div class='output co'>#&gt; [1] "milk, eggs, NA"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='no'>groceries</span>)</div><div class='output co'>#&gt; [1] "eggs, milk, NA"</div><div class='input'>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span> <span class='kw'>%&gt;%</span> <span class='no'>summarizeRows</span></div><div class='output co'>#&gt; # A tibble: 1 x 11
 #&gt;                          mpg     cyl                    disp                hp
 #&gt;                        &lt;chr&gt;   &lt;chr&gt;                   &lt;chr&gt;             &lt;chr&gt;

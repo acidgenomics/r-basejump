@@ -1,7 +1,7 @@
 #' Collapse utilities
 #'
 #' Helper functions for to produce collapsed output for vectors ([toString()])
-#' and data frames (summarizeRows()]).
+#' and data frames ([summarizeRows()]).
 #'
 #' @rdname collapse
 #'
@@ -9,13 +9,19 @@
 #' @param sep Separator used for collapse.
 #'
 #' @return A character vector of length 1 is returned.
-#' @export
 #'
 #' @examples
-#' toStringUnique(c("milk", "eggs", "eggs", NA))
-#' toStringSortUnique(c("milk", "eggs", "eggs", NA))
+#' groceries <- c("milk", "eggs", "eggs", NA)
+#'
+#' toStringUnique(groceries)
+#' toStringSortUnique(groceries)
 #'
 #' mtcars %>% head %>% summarizeRows
+
+
+
+#' @rdname collapse
+#' @export
 toStringUnique <- function(x, sep = ", ") {
     x %>%
         str_replace_na %>%
@@ -23,10 +29,10 @@ toStringUnique <- function(x, sep = ", ") {
         str_c(collapse = sep)
 }
 
-#' @rdname snake_aliases
+#' @rdname collapse
 #' @usage NULL
 #' @export
-to_string_unique <- toStringUnique  # nolint
+toStringUnique -> to_string_unique  # nolint
 
 
 
@@ -40,10 +46,10 @@ toStringSortUnique <- function(x, sep = ", ") {
         str_c(collapse = sep)
 }
 
-#' @rdname snake_aliases
+#' @rdname collapse
 #' @usage NULL
 #' @export
-to_string_sort_unique <- toStringSortUnique  # nolint
+toStringSortUnique -> to_string_sort_unique   # nolint
 
 
 
@@ -59,17 +65,17 @@ summarizeRows <- function(x, sep = ", ") {
         mutate_all(funs(fixNA))
 }
 
-#' @rdname snake_aliases
+#' @rdname collapse
 #' @usage NULL
 #' @export
-summarize_rows <- summarizeRows  # nolint
+summarizeRows -> summariseRows
 
-#' @rdname british_aliases
+#' @rdname collapse
 #' @usage NULL
 #' @export
-summariseRows <- summarizeRows  # nolint
+summarizeRows -> summarize_rows   # nolint
 
-#' @rdname british_aliases
+#' @rdname collapse
 #' @usage NULL
 #' @export
-summarise_rows <- summarizeRows  # nolint
+summarizeRows -> summarise_rows  # nolint

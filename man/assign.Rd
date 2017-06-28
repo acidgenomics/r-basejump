@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{assignAsNewEnv}
 \alias{assignAsNewEnv}
+\alias{assign_as_new_env}
 \title{Assign multiple objects to a new environment}
 \usage{
 assignAsNewEnv(..., envirName)

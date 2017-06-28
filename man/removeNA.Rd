@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{removeNA}
 \alias{removeNA}
+\alias{remove_na}
 \title{Remove rows and columns containing only \code{NA} values}
 \usage{
 removeNA(x)

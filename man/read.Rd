@@ -2,7 +2,9 @@
 % Please edit documentation in R/read.R
 \name{readDataRaw}
 \alias{readDataRaw}
+\alias{read_data_raw}
 \alias{readYAML}
+\alias{read_yaml}
 \title{Read utilities}
 \usage{
 readDataRaw()

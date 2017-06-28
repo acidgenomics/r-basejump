@@ -3,6 +3,7 @@
 \name{dots}
 \alias{dots}
 \alias{get_objs_from_dots}
+\alias{getObjsFromDots}
 \title{Evaluate dots}
 \usage{
 dots(...)

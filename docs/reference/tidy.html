@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>S4 generic variants of <a href = 'http://tidyverse.org/'>tidyverse</a> verbs — tidy • basejump</title>
+<title>S4 method support for <a href='http://tidyverse.org/'>tidyverse</a> verbs — arrange,data.frame-method • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -74,37 +80,43 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>S4 generic variants of <a href = 'http://tidyverse.org/'>tidyverse</a> verbs</h1>
+    <h1>S4 method support for <a href='http://tidyverse.org/'>tidyverse</a> verbs</h1>
     </div>
 
     
-    <p>Avoid NAMESPACE collisions with <a href = 'https://www.bioconductor.org/'>Bioconductor</a>
+    <p>Avoid NAMESPACE collisions with <a href='https://www.bioconductor.org/'>Bioconductor</a>
 generics by using <code>setMethod()</code> to relevant <code>signature</code>.</p>
     
 
     <pre class="usage"><span class='co'># S4 method for data.frame</span>
 <span class='fu'><a href='generics.html'>arrange</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for response</span>
-<span class='fu'><a href='reexports.html'>content</a></span>(<span class='no'>object</span>)
+<span class='fu'>content</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='reexports.html'>expand</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'><a href='generics.html'>filter</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='reexports.html'>first</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'><a href='reexports.html'>intersect</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'><a href='generics.html'>mutate</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='reexports.html'>rename</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
 <span class='fu'>setdiff</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
@@ -113,7 +125,9 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='fu'>setequal</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,7 +138,7 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough parameters.</p></td>
+      <td><p>Additional parameters.</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -134,14 +148,18 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
       <th>y</th>
       <td><p>Secondary object.</p></td>
     </tr>
+    <tr>
+      <th>.data</th>
+      <td><p>Data object.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p><a href = 'https://www.bioconductor.org/'>Bioconductor</a>:
+<li><p><a href='https://www.bioconductor.org/'>Bioconductor</a>:
 Biobase, BiocGenerics, S4Vectors.</p></li>
-<li><p><a href = 'http://tidyverse.org/'>tidyverse</a>:
+<li><p><a href='http://tidyverse.org/'>tidyverse</a>:
 dplyr, httr, tidyr.</p></li>
 </ul>
     

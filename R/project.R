@@ -13,10 +13,10 @@ createProjectDirs <- function() {
     ) %>% invisible
 }
 
-#' @rdname snake_aliases
+#' @rdname project
 #' @usage NULL
 #' @export
-create_project_dirs <- createProjectDirs  # nolint
+createProjectDirs -> create_project_dirs  # nolint
 
 
 
@@ -39,10 +39,10 @@ detectHPC <- function() {
     }
 }
 
-#' @rdname snake_aliases
+#' @rdname project
 #' @usage NULL
 #' @export
-detect_hpc <- detectHPC  # nolint
+detectHPC -> detect_hpc  # nolint
 
 
 
@@ -74,10 +74,10 @@ packageProject <- function(install = FALSE) {
     build_site()
 }
 
-#' @rdname snake_aliases
+#' @rdname project
 #' @usage NULL
 #' @export
-package_project <- packageProject  # nolint
+packageProject -> package_project  # nolint
 
 
 
@@ -126,7 +126,7 @@ renderProject <- function(today = TRUE) {
     ) %>% invisible
 }
 
-#' @rdname snake_aliases
+#' @rdname project
 #' @usage NULL
 #' @export
-render_project <- renderProject  # nolint
+renderProject -> render_project  # nolint

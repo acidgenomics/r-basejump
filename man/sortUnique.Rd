@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{sortUnique}
 \alias{sortUnique}
+\alias{sort_unique}
 \title{Quickly perform sort unique on a vector}
 \usage{
 sortUnique(vector)
