@@ -2,8 +2,13 @@
 % Please edit documentation in R/collapse.R
 \name{toStringUnique}
 \alias{toStringUnique}
+\alias{to_string_unique}
 \alias{toStringSortUnique}
+\alias{to_string_sort_unique}
 \alias{summarizeRows}
+\alias{summariseRows}
+\alias{summarize_rows}
+\alias{summarise_rows}
 \title{Collapse utilities}
 \usage{
 toStringUnique(x, sep = ", ")
@@ -22,11 +27,13 @@ A character vector of length 1 is returned.
 }
 \description{
 Helper functions for to produce collapsed output for vectors (\code{\link[=toString]{toString()}})
-and data frames (summarizeRows()]).
+and data frames (\code{\link[=summarizeRows]{summarizeRows()}}).
 }
 \examples{
-toStringUnique(c("milk", "eggs", "eggs", NA))
-toStringSortUnique(c("milk", "eggs", "eggs", NA))
+groceries <- c("milk", "eggs", "eggs", NA)
+
+toStringUnique(groceries)
+toStringSortUnique(groceries)
 
 mtcars \%>\% head \%>\% summarizeRows
 }

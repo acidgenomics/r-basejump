@@ -4,6 +4,7 @@
 
 # AnnotationDbi ====
 #' @rdname tidy
+#' @usage NULL
 #' @export
 AnnotationDbi::select -> select
 
@@ -11,6 +12,7 @@ AnnotationDbi::select -> select
 
 # Biobase ====
 #' @rdname tidy
+#' @usage NULL
 #' @export
 Biobase::content -> content
 
@@ -24,14 +26,18 @@ BiocGenerics::counts
 BiocGenerics::design
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 BiocGenerics::intersect -> intersect
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 BiocGenerics::setdiff -> setdiff
 
 #' @rdname tidy
+#' @usage NULL
+#' @export
 BiocGenerics::union -> union
 
 
@@ -145,14 +151,13 @@ dplyr::pull
 dplyr::right_join
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
-dplyr::select -> tidySelect
+dplyr::select -> tidy_select  # nolint
 
-#' @rdname snake_aliases
+#' @rdname tidy
 #' @usage NULL
 #' @export
-tidy_select <- tidySelect  # nolint
+tidy_select -> tidySelect
 
 #' Star Wars dataset.
 #' @keywords internal
@@ -186,7 +191,6 @@ graphics::hist
 
 
 # httr ====
-# Collison with Biobase::content
 #' @export
 httr::content_type_json
 
@@ -229,7 +233,7 @@ magrittr::`%>%`
 #' @export
 magrittr::set_colnames
 
-#' @rdname camel_aliases
+#' @rdname names
 #' @usage NULL
 #' @export
 magrittr::set_colnames -> setColnames
@@ -237,7 +241,7 @@ magrittr::set_colnames -> setColnames
 #' @export
 magrittr::set_rownames
 
-#' @rdname camel_aliases
+#' @rdname names
 #' @usage NULL
 #' @export
 magrittr::set_rownames -> setRownames
@@ -326,7 +330,6 @@ reshape2::melt
 
 
 # rlang ====
-# Collison with Biobase::exprs
 #' @export
 rlang::`!!!`
 
@@ -469,14 +472,17 @@ SummarizedExperiment::rowData
 S4Vectors::DataFrame
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::expand -> expand
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::first -> first
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::rename -> rename
 
@@ -486,10 +492,6 @@ S4Vectors::SimpleList
 
 
 # tibble ====
-# Collison with rlang on full import
-#' @export
-tibble::as_tibble
-
 #' @export
 tibble::column_to_rownames
 

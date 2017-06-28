@@ -19,10 +19,10 @@ readDataRaw <- function() {
     ) %>% invisible
 }
 
-#' @rdname snake_aliases
+#' @rdname read
 #' @usage NULL
 #' @export
-read_data_raw <- readDataRaw  # nolint
+readDataRaw -> read_data_raw  # nolint
 
 
 
@@ -38,7 +38,7 @@ readYAML <- function(file) {
     }
 }
 
-#' @rdname snake_aliases
+#' @rdname read
 #' @usage NULL
 #' @export
-read_yaml <- readYAML  # nolint
+readYAML -> read_yaml  # nolint

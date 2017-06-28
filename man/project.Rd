@@ -2,9 +2,13 @@
 % Please edit documentation in R/project.R
 \name{createProjectDirs}
 \alias{createProjectDirs}
+\alias{create_project_dirs}
 \alias{detectHPC}
+\alias{detect_hpc}
 \alias{packageProject}
+\alias{package_project}
 \alias{renderProject}
+\alias{render_project}
 \title{Project management utilities}
 \usage{
 createProjectDirs()

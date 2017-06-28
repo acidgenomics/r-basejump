@@ -38,10 +38,10 @@ loadData <- function(...) {
     ) %>% invisible
 }
 
-#' @rdname snake_aliases
+#' @rdname load
 #' @usage NULL
 #' @export
-load_data <- loadData  # nolint
+loadData -> load_data  # nolint
 
 
 
@@ -55,7 +55,7 @@ loadRemote <- function(url) {
     load(get("tempfile"), envir = envir)
 }
 
-#' @rdname snake_aliases
+#' @rdname load
 #' @usage NULL
 #' @export
-load_remote <- loadRemote  # nolint
+loadRemote -> load_remote  # nolint

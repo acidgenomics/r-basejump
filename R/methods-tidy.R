@@ -1,11 +1,23 @@
-#' S4 method support for tidyverse verbs
+#' S4 method support for [tidyverse](http://tidyverse.org/) verbs
+#'
+#' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
+#' generics by using [setMethod()] to relevant `signature`.
 #'
 #' @rdname tidy
 #' @docType methods
 #'
-#' @param object Object.
-#' @param x Object.
+#' @param object Primary object.
 #' @param ... Additional parameters.
+#' @param x Primary object.
+#' @param y Secondary object.
+#' @param .data Data object.
+
+#'
+#' @seealso
+#' - [Bioconductor](https://www.bioconductor.org/):
+#'     [Biobase], [BiocGenerics], S4Vectors.
+#' - [tidyverse](http://tidyverse.org/):
+#'     [dplyr], [httr], [tidyr].
 
 
 
@@ -45,7 +57,11 @@ setMethod(
 
 
 # content ====
-
+#' @rdname tidy
+#' @export
+setMethod("content", "response", function(object) {
+    httr::content(object)
+})
 
 
 

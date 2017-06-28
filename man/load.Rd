@@ -2,7 +2,9 @@
 % Please edit documentation in R/load.R
 \name{loadData}
 \alias{loadData}
+\alias{load_data}
 \alias{loadRemote}
+\alias{load_remote}
 \title{Data loading utilities}
 \usage{
 loadData(...)
