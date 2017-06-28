@@ -2,6 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{updatePackages}
 \alias{updatePackages}
+\alias{update_packages}
 \title{Update all installed packages}
 \usage{
 updatePackages()

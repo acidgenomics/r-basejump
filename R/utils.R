@@ -26,7 +26,7 @@ assignAsNewEnv <- function(..., envirName) {
     objs
 }
 
-#' @rdname snake_aliases
+#' @rdname assign
 #' @usage NULL
 #' @export
 assign_as_new_env <- assignAsNewEnv  # nolint
@@ -40,7 +40,7 @@ clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
 
-#' @rdname snake_aliases
+#' @rdname clearWarnings
 #' @usage NULL
 #' @export
 clear_warnings <- clearWarnings  # nolint
@@ -63,7 +63,7 @@ fixNA <- function(string) {
         gsub("^$|^\\s+$|^NA$", NA, .)
 }
 
-#' @rdname snake_aliases
+#' @rdname fixNA
 #' @usage NULL
 #' @export
 fix_na <- fixNA  # nolint
@@ -99,7 +99,7 @@ grepString <- function(identifier) {
             "\\s", ., "$")
 }
 
-#' @rdname snake_aliases
+#' @rdname grepString
 #' @usage NULL
 #' @export
 grep_string <- grepString  # nolint
@@ -146,7 +146,7 @@ removeNA <- function(x) {
     }
 }
 
-#' @rdname snake_aliases
+#' @rdname removeNA
 #' @usage NULL
 #' @export
 remove_na <- removeNA  # nolint
@@ -172,7 +172,7 @@ sortUnique <- function(vector) {
         unique
 }
 
-#' @rdname snake_aliases
+#' @rdname sortUnique
 #' @usage NULL
 #' @export
 sort_unique <- sortUnique  # nolint
@@ -195,7 +195,7 @@ updatePackages <- function() {
     biocValid()
 }
 
-#' @rdname snake_aliases
+#' @rdname updatePackages
 #' @usage NULL
 #' @export
 update_packages <- updatePackages  # nolint

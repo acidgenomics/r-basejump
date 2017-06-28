@@ -25,5 +25,6 @@ detectOrganism <- function(genomeBuild) {
 }
 
 #' @rdname detectOrganism
+#' @usage NULL
 #' @export
-detect_organism <- detectOrganism  # nolint
+detectOrganism -> detect_organism  # nolint

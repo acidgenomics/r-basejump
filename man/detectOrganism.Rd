@@ -6,8 +6,6 @@
 \title{Detect the organism from the genome build name}
 \usage{
 detectOrganism(genomeBuild)
-
-detect_organism(genomeBuild)
 }
 \arguments{
 \item{genomeBuild}{Genome build.}

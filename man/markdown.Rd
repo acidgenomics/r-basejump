@@ -2,6 +2,7 @@
 % Please edit documentation in R/rmarkdown.R
 \name{mdList}
 \alias{mdList}
+\alias{md_list}
 \title{Markdown utilities}
 \usage{
 mdList(character, ordered = FALSE)

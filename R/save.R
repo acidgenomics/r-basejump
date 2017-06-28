@@ -26,10 +26,10 @@ saveData <- function(..., dir = "data", compress = "xz") {
     invisible()
 }
 
-#' @rdname snake_aliases
+#' @rdname save
 #' @usage NULL
 #' @export
-save_data <- saveData  # nolint
+saveData -> save_data  # nolint
 
 
 
@@ -39,7 +39,7 @@ saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
 
-#' @rdname snake_aliases
+#' @rdname save
 #' @usage NULL
 #' @export
-save_data_raw <- saveDataRaw  # nolint
+saveDataRaw -> save_data_raw  # nolint

@@ -8,18 +8,8 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
-#' @keywords internal
-#'
-#' @import AnnotationDbi
-#' @import Biobase
-#' @import BiocGenerics
-#' @import methods
-#' @import pbapply
-#' @import pbmcapply
-#' @import readr
-#' @import stringr
-#' @import SummarizedExperiment
-#' @import S4Vectors
+#' @import AnnotationDbi Biobase BiocGenerics methods pbapply pbmcapply readr
+#'   stringr SummarizedExperiment S4Vectors
 #' @importFrom BiocInstaller biocValid
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom covr package_coverage
@@ -52,15 +42,4 @@
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
-
-
-#' Global variables
-#'
-#' @keywords internal
-#' @export
-#'
-#' @seealso
-#' - [globalVariables()].
-#' - [reexports].
-globals <- c(".", "biocLite")
-globalVariables(globals)
+globalVariables(c(".", "biocLite"))

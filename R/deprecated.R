@@ -1,84 +1,82 @@
-#' Renamed functions
+#' Deprecated functions
 #'
-#' @rdname renamed
-#' @name renamed
+#' @rdname deprecated
+#' @name deprecated
+#'
+#' @param ... Additional parameters.
 NULL
 
 
 
-#' @rdname renamed
-#' @usage NULL
+#' @rdname deprecated
 #' @export
 createNewProject <- function(...) {
     .Deprecated("createProjectDirs")
     createProjectDirs(...)
 }
 
-#' @rdname snake_aliases
+#' @rdname deprecated
 #' @usage NULL
 #' @export
-create_new_project <- createNewProject  # nolint
+createNewProject -> create_new_project  # nolint
 
 
 
-#' @rdname renamed
-#' @usage NULL
+#' @rdname deprecated
 #' @export
 dotNotation <- function(...) {
     .Deprecated("dotted")
     dotted(...)
 }
 
-#' @rdname snake_aliases
-#' @export
-dot_notation <- dotNotation  # nolint
-
-
-
-#' @rdname renamed
+#' @rdname deprecated
 #' @usage NULL
+#' @export
+dotNotation -> dot_notation  # nolint
+
+
+
+#' @rdname deprecated
 #' @export
 grepToString <- function() {
     .Deprecated("grepString")
 }
 
-#' @rdname renamed
+#' @rdname deprecated
 #' @usage NULL
 #' @export
-grep_to_string <- grepToString  # nolint
+grepToString -> grep_to_string  # nolint
 
 
 
-#' @rdname renamed
-#' @usage NULL
+#' @rdname deprecated
 #' @export
 loadDataRaw <- function(...) {
     .Deprecated("loadData")
 }
 
-#' @rdname snake_aliases
+#' @rdname deprecated
 #' @usage NULL
 #' @export
-load_data_raw <- loadDataRaw  # nolint
+loadDataRaw -> load_data_raw  # nolint
 
 
 
-#' @rdname renamed
-#' @usage NULL
+#' @rdname deprecated
 #' @export
 toStringSummarize <- function(...) {
     .Deprecated("summarizeRows")
     summarizeRows(...)
 }
 
-#' @rdname snake_aliases
+#' @rdname deprecated
 #' @usage NULL
-to_string_summarize <- toStringSummarize  # nolint
+toStringSummarize -> to_string_summarize  # nolint
 
-#' @rdname british_aliases
+#' @rdname deprecated
 #' @usage NULL
-toStringSummarise <- toStringSummarize
+toStringSummarize -> toStringSummarise
 
-#' @rdname british_aliases
+#' @rdname deprecated
 #' @usage NULL
-to_string_summarise <- toStringSummarize  # nolint
+toStringSummarize -> to_string_summarise  # nolint

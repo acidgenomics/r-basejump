@@ -1,4 +1,3 @@
-# DNA strings ====
 #' DNA sequence utilites
 #'
 #' Generate complement or reverse complement sequences.
