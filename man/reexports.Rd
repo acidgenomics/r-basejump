@@ -3,23 +3,11 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{select}
+\alias{counts}
 \alias{reexports}
-\alias{content}
-\alias{reexports}
-\alias{intersect}
+\alias{design}
 \alias{reexports}
 \alias{biocValid}
-\alias{reexports}
-\alias{doc_date}
-\alias{reexports}
-\alias{html_document}
-\alias{reexports}
-\alias{html_document2}
-\alias{reexports}
-\alias{pdf_document}
-\alias{reexports}
-\alias{pdf_document2}
 \alias{reexports}
 \alias{getBM}
 \alias{reexports}
@@ -109,6 +97,8 @@
 \alias{reexports}
 \alias{opts_knit}
 \alias{reexports}
+\alias{lint_package}
+\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{set_colnames}
@@ -197,6 +187,10 @@
 \alias{reexports}
 \alias{render}
 \alias{reexports}
+\alias{fixed}
+\alias{reexports}
+\alias{regex}
+\alias{reexports}
 \alias{str_c}
 \alias{reexports}
 \alias{str_detect}
@@ -223,13 +217,17 @@
 \alias{reexports}
 \alias{str_subset}
 \alias{reexports}
-\alias{expand}
+\alias{assay}
 \alias{reexports}
-\alias{first}
+\alias{assays}
 \alias{reexports}
-\alias{rename}
+\alias{colData}
 \alias{reexports}
-\alias{as_tibble}
+\alias{rowData}
+\alias{reexports}
+\alias{DataFrame}
+\alias{reexports}
+\alias{SimpleList}
 \alias{reexports}
 \alias{column_to_rownames}
 \alias{reexports}
@@ -269,15 +267,9 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
-
-  \item{Biobase}{\code{\link[Biobase]{content}}}
-
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{intersect}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}}
 
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
-
-  \item{BiocStyle}{\code{\link[BiocStyle]{doc_date}}, \code{\link[BiocStyle]{html_document}}, \code{\link[BiocStyle]{html_document2}}, \code{\link[BiocStyle]{pdf_document}}, \code{\link[BiocStyle]{pdf_document2}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
@@ -290,6 +282,8 @@ below to see their documentation.
   \item{httr}{\code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{knit}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
+
+  \item{lintr}{\code{\link[lintr]{lint_package}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
@@ -313,11 +307,13 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{expand}}, \code{\link[S4Vectors]{first}}, \code{\link[S4Vectors]{rename}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}}
 
-  \item{stringr}{\code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
+  \item{stringr}{\code{\link[stringr]{fixed}}, \code{\link[stringr]{regex}}, \code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
-  \item{tibble}{\code{\link[tibble]{as_tibble}}, \code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{rowData}}}
+
+  \item{tibble}{\code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
 

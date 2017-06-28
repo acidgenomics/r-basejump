@@ -30,10 +30,10 @@ mdList <- function(character, ordered = FALSE) {
     writeLines(string)
 }
 
-#' @rdname snake_aliases
+#' @rdname markdown
 #' @usage NULL
 #' @export
-md_list <- mdList  # nolint
+mdList -> md_list  # nolint
 
 
 

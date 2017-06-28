@@ -58,7 +58,7 @@ pct <- function(number) {
 #'
 #' Convert log ratio normalized values to fold change.
 #'
-#' @rdname log_ratio
+#' @rdname logRatio
 #'
 #' @param x Numeric vector of log ratio (`lr`) or fold change (`fc`) values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
@@ -81,7 +81,7 @@ fc2lr <- function(x, base = 2L) {
 
 
 
-#' @rdname log_ratio
+#' @rdname logRatio
 #' @export
 lr2fc <- function(x, base = 2L) {
     x <- base ^ x

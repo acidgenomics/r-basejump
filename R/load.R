@@ -20,15 +20,15 @@ loadData <- function(...) {
     lapply(seq_along(names), function(a) {
         if (file.exists(paste0("data/", names[a], ".rda"))) {
             # Check for .rda file in `data/`
-            message(paste("Loading", names[a], "from data/..."))
+            message(paste("Loading", names[a], "from data"))
             load(paste0("data/", names[a], ".rda"), envir = envir)
         } else if (file.exists(paste0("data-raw/", names[a], ".rda"))) {
             # Check for .rda file in `data-raw/
-            message(paste("Loading", names[a], "from data-raw/..."))
+            message(paste("Loading", names[a], "from data-raw"))
             load(paste0("data-raw/", names[a], ".rda"), envir = envir)
         } else if (file.exists(paste0("data-raw/", names[a], ".R"))) {
             # Source .R script in `data-raw/`
-            message(paste("Sourcing", names[a], "from data-raw/..."))
+            message(paste("Sourcing", names[a], "from data-raw"))
             source(paste0("data-raw/", names[a], ".R"))
         } else {
             # Skip and warn
@@ -38,10 +38,10 @@ loadData <- function(...) {
     ) %>% invisible
 }
 
-#' @rdname snake_aliases
+#' @rdname load
 #' @usage NULL
 #' @export
-load_data <- loadData  # nolint
+loadData -> load_data  # nolint
 
 
 
@@ -55,7 +55,7 @@ loadRemote <- function(url) {
     load(get("tempfile"), envir = envir)
 }
 
-#' @rdname snake_aliases
+#' @rdname load
 #' @usage NULL
 #' @export
-load_remote <- loadRemote  # nolint
+loadRemote -> load_remote  # nolint
