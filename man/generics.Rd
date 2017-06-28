@@ -23,3 +23,4 @@ mutate(object, ...)
 \description{
 S4 generics
 }
+\keyword{internal}
