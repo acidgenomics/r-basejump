@@ -1,4 +1,4 @@
-#' S4 method support for [tidyverse](http://tidyverse.org/) verbs
+#' [tidyverse](http://tidyverse.org/) S4 method support
 #'
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.
@@ -31,8 +31,8 @@ setMethod(
     "arrange",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::arrange(object, ...)
-})
+        dplyr::arrange(object, ...)
+    })
 
 
 
@@ -77,8 +77,8 @@ setMethod(
     "expand",
     signature(x = "data.frame"),
     function(x, ...) {
-    tidyr::expand(x, ...)
-})
+        tidyr::expand(x, ...)
+    })
 
 
 
@@ -89,8 +89,8 @@ setMethod(
     "filter",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::filter(object, ...)
-})
+        dplyr::filter(object, ...)
+    })
 
 
 
@@ -101,8 +101,8 @@ setMethod(
     "first",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::first(x, ...)
-})
+        dplyr::first(x, ...)
+    })
 
 
 
@@ -125,8 +125,8 @@ setMethod(
     "mutate",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::mutate(object, ...)
-})
+        dplyr::mutate(object, ...)
+    })
 
 
 
@@ -137,8 +137,8 @@ setMethod(
     "rename",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::rename(x, ...)
-})
+        dplyr::rename(x, ...)
+    })
 
 
 
@@ -149,9 +149,9 @@ setMethod(
 setMethod("select",
           signature(x = "data.frame"),
           function(x) {
-    stop("Use [tidy_select()] on data.frame.
+              stop("Use [tidy_select()] on data.frame.
          NAMESPACE collison with [AnnotationDbi::select()].")
-})
+          })
 
 
 
