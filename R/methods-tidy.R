@@ -12,11 +12,9 @@
 #' @docType methods
 #'
 #' @param object Primary object.
-#' @param ... Additional parameters.
 #' @param x Primary object.
 #' @param y Secondary object.
-#' @param .data Data object.
-
+#' @param ... Additional parameters.
 #'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):

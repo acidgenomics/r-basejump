@@ -227,6 +227,8 @@
 \alias{reexports}
 \alias{DataFrame}
 \alias{reexports}
+\alias{metadata}
+\alias{reexports}
 \alias{SimpleList}
 \alias{reexports}
 \alias{column_to_rownames}
@@ -307,7 +309,7 @@ below to see their documentation.
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{SimpleList}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{SimpleList}}}
 
   \item{stringr}{\code{\link[stringr]{fixed}}, \code{\link[stringr]{regex}}, \code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 

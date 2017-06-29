@@ -1,31 +1,21 @@
-#' S4 generics
-#'
-#' @rdname generics
-#' @keywords internal
-#'
-#' @param object Object.
-#' @param ... Additional parameters.
-
-
-
-#' @rdname generics
+#' @rdname tidy
 #' @export
 setGeneric("arrange", function(object, ...) standardGeneric("arrange"))
 
 
 
-#' @rdname generics
+#' @rdname tidy
 #' @export
 setGeneric("as_tibble", function(object, ...) standardGeneric("as_tibble"))
 
 
 
-#' @rdname generics
+#' @rdname tidy
 #' @export
 setGeneric("filter", function(object, ...) standardGeneric("filter"))
 
 
 
-#' @rdname generics
+#' @rdname tidy
 #' @export
 setGeneric("mutate", function(object, ...) standardGeneric("mutate"))
