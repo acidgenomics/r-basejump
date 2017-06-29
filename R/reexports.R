@@ -12,6 +12,7 @@ AnnotationDbi::select -> select
 
 # Biobase ====
 #' @rdname tidy
+#' @usage NULL
 #' @export
 Biobase::content -> content
 
@@ -25,14 +26,17 @@ BiocGenerics::counts
 BiocGenerics::design
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 BiocGenerics::intersect -> intersect
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 BiocGenerics::setdiff -> setdiff
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 BiocGenerics::union -> union
 
@@ -469,10 +473,12 @@ SummarizedExperiment::rowData
 S4Vectors::DataFrame
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::expand -> expand
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::first -> first
 
@@ -480,6 +486,7 @@ S4Vectors::first -> first
 S4Vectors::metadata
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 S4Vectors::rename -> rename
 
