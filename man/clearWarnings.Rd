@@ -10,3 +10,4 @@ clearWarnings()
 \description{
 Clear warnings
 }
+\keyword{internal}

@@ -54,9 +54,7 @@ pct <- function(number) {
 
 
 # RNA-seq ====
-#' Log ratio to fold change
-#'
-#' Convert log ratio normalized values to fold change.
+#' Interconvert log ratio and fold change values
 #'
 #' @rdname logRatio
 #'
@@ -68,7 +66,8 @@ pct <- function(number) {
 #' @export
 #'
 #' @seealso
-#' `gtools::foldchange2logratio()`, `gtools::logratio2foldchange()`.
+#' Modified variants of `gtools::foldchange2logratio()` and
+#' `gtools::logratio2foldchange()`.
 #'
 #' @examples
 #' lr2fc(seq(-3, 3, 1))

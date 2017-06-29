@@ -1,7 +1,7 @@
 #' Collapse utilities
 #'
-#' Helper functions for to produce collapsed output for vectors ([toString()])
-#' and data frames ([summarizeRows()]).
+#' Helper functions for to produce collapsed output for vectors
+#' ([base::toString()]) and data frames ([summarizeRows()]).
 #'
 #' @rdname collapse
 #'

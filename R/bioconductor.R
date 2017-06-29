@@ -1,16 +1,19 @@
-#' Install or update Bioconductor packages
+#' Install or update Bioconductor and CRAN packages
 #'
 #' This function is a convenience wrapper for [BiocInstaller::biocLite()]. It
-#' sources the required `biocLite.R` file from the Bioconductor website
-#' automatically then calls [biocLite()].
+#' sources the required [biocLite.R](https://bioconductor.org/biocLite.R) file
+#' from the Bioconductor website automatically then calls [biocLite()].
 #'
-#' @param pkgs Character vector of package names to install or update. Supports
-#'   Bioconductor, CRAN, and GitHub repositories.
-#' @param ... Passthrough parameters.
+#' Supports Bioconductor, CRAN, and GitHub repositories.
+#'
+#' @keywords internal
+#'
+#' @param pkgs Character vector of package names.
+#' @param ... Additional arguments passed to [BiocInstaller::biocLite()].
 #'
 #' @export
 #'
-#' @seealso This function is a modified version of `rafalib::install_bioc()`.
+#' @seealso Modified variant of `rafalib::install_bioc()`.
 #'
 #' @examples
 #' \dontrun{

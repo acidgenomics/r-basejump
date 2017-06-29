@@ -6,9 +6,9 @@
 #'
 #' @param ... Objects.
 #' @param dir Save directory.
-#' @param compress Compression method, supporting `xz` (preferred), `bzip2`, or
-#'   `gzip`. Compression can be disabled by setting as `FALSE`, although this is
-#'   not generally recommended.
+#' @param compress Compression method, supporting `xz` (**preferred**), `bzip2`,
+#'   or `gzip`. Compression can be disabled by setting as `FALSE`, although this
+#'   is not generally recommended.
 #'
 #' @export
 #' @seealso [base::save()].
