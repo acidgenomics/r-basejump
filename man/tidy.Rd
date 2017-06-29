@@ -33,14 +33,6 @@
 \alias{rename}
 \title{S4 method support for \href{http://tidyverse.org/}{tidyverse} verbs}
 \usage{
-arrange(object, ...)
-
-as_tibble(object, ...)
-
-filter(object, ...)
-
-mutate(object, ...)
-
 \S4method{arrange}{data.frame}(object, ...)
 
 \S4method{as_tibble}{data.frame}(object, ...)
@@ -68,20 +60,6 @@ mutate(object, ...)
 \S4method{setequal}{data.frame,data.frame}(x, y)
 
 \S4method{union}{data.frame,data.frame}(x, y, ...)
-
-content(object)
-
-intersect(x, y, ...)
-
-setdiff(x, y, ...)
-
-union(x, y, ...)
-
-expand(x, ...)
-
-first(x, ...)
-
-rename(x, ...)
 }
 \arguments{
 \item{object}{Primary object.}
