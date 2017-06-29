@@ -2,7 +2,7 @@
 #'
 #' @rdname assign
 #'
-#' @param ... List of objects to assign.
+#' @param ... Dot objects to assign.
 #' @param envirName Environment name.
 #'
 #' @return Object names.
@@ -35,6 +35,8 @@ assign_as_new_env <- assignAsNewEnv  # nolint
 
 #' Clear warnings
 #'
+#' @keywords internal
+#'
 #' @export
 clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
@@ -47,7 +49,7 @@ clear_warnings <- clearWarnings  # nolint
 
 
 
-#' Fix empty and `NA` character strings
+#' Fix character strings missing `NA`
 #'
 #' @param string String missing `NA`.
 #'
@@ -70,14 +72,14 @@ fix_na <- fixNA  # nolint
 
 
 
-#' [grep()] pattern string generator
+#' grep string generator
 #'
-#' Generate a [grep()] string for pattern matching against [toString()] return
-#' (comma separated).
+#' Generate a grep string for pattern matching against comma separated
+#' [base::toString()] output.
 #'
 #' @param identifier Identifier.
 #'
-#' @return Comma separated string for matching against [toString()] return.
+#' @return Comma separated grep string.
 #' @export
 #'
 #' @examples
@@ -182,6 +184,8 @@ sort_unique <- sortUnique  # nolint
 #' Update all installed packages
 #'
 #' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+#'
+#' @keywords internal
 #'
 #' @export
 updatePackages <- function() {

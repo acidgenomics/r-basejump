@@ -10,3 +10,4 @@ updatePackages()
 \description{
 Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
 }
+\keyword{internal}

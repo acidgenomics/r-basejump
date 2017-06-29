@@ -8,7 +8,7 @@
 assignAsNewEnv(..., envirName)
 }
 \arguments{
-\item{...}{List of objects to assign.}
+\item{...}{Dot objects to assign.}
 
 \item{envirName}{Environment name.}
 }
