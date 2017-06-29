@@ -12,7 +12,6 @@ AnnotationDbi::select -> select
 
 # Biobase ====
 #' @rdname tidy
-#' @usage NULL
 #' @export
 Biobase::content -> content
 
@@ -26,17 +25,14 @@ BiocGenerics::counts
 BiocGenerics::design
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 BiocGenerics::intersect -> intersect
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 BiocGenerics::setdiff -> setdiff
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 BiocGenerics::union -> union
 
@@ -151,6 +147,7 @@ dplyr::pull
 dplyr::right_join
 
 #' @rdname tidy
+#' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
 
@@ -472,17 +469,17 @@ SummarizedExperiment::rowData
 S4Vectors::DataFrame
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 S4Vectors::expand -> expand
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 S4Vectors::first -> first
 
+#' @export
+S4Vectors::metadata
+
 #' @rdname tidy
-#' @usage NULL
 #' @export
 S4Vectors::rename -> rename
 
