@@ -82,7 +82,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.0.16</small>
+        <small>version&nbsp;0.0.17</small>
       </h1>
     </div>
 
@@ -104,7 +104,13 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="assign.html">assignAsNewEnv</a></code> </p>
+            <p><code><a href="annotable.html">annotable</a></code> </p>
+          </td>
+          <td><p><a href='http://www.ensembl.org/'>Ensembl</a> annotations</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assignAsNewEnv.html">assignAsNewEnv</a></code> </p>
           </td>
           <td><p>Assign multiple objects to a new environment</p></td>
         </tr><tr>
@@ -116,27 +122,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="biocLite.html">biocLite</a></code> </p>
-          </td>
-          <td><p>Install or update Bioconductor packages</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clearWarnings.html">clearWarnings</a></code> </p>
-          </td>
-          <td><p>Clear warnings</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="collapse.html">toStringUnique</a></code> <code><a href="collapse.html">toStringSortUnique</a></code> <code><a href="collapse.html">summarizeRows</a></code> </p>
           </td>
           <td><p>Collapse utilities</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="deprecated.html">createNewProject</a></code> <code><a href="deprecated.html">dotNotation</a></code> <code><a href="deprecated.html">grepToString</a></code> <code><a href="deprecated.html">loadDataRaw</a></code> <code><a href="deprecated.html">toStringSummarize</a></code> </p>
-          </td>
-          <td><p>Deprecated functions</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -152,21 +140,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="dots.html">dots</a></code> <code><a href="dots.html">get_objs_from_dots</a></code> </p>
-          </td>
-          <td><p>Evaluate dots</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="fixNA.html">fixNA</a></code> </p>
           </td>
-          <td><p>Fix empty and <code>NA</code> character strings</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="generics.html">arrange</a></code> <code><a href="generics.html">as_tibble</a></code> <code><a href="generics.html">filter</a></code> <code><a href="generics.html">mutate</a></code> </p>
-          </td>
-          <td><p>S4 generics</p></td>
+          <td><p>Fix character strings missing <code>NA</code></p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -178,7 +154,7 @@
           <td>
             <p><code><a href="grepString.html">grepString</a></code> </p>
           </td>
-          <td><p><code>grep()</code> pattern string generator</p></td>
+          <td><p>grep string generator</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -196,7 +172,7 @@
           <td>
             <p><code><a href="logRatio.html">fc2lr</a></code> <code><a href="logRatio.html">lr2fc</a></code> </p>
           </td>
-          <td><p>Log ratio to fold change</p></td>
+          <td><p>Interconvert log ratio and fold change values</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -224,9 +200,21 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="read.html">readDataRaw</a></code> <code><a href="read.html">readYAML</a></code> </p>
+            <p><code><a href="readDataRaw.html">readDataRaw</a></code> </p>
           </td>
-          <td><p>Read utilities</p></td>
+          <td><p>Read CSV files inside <code>data-raw</code> directory</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="readFileByExtension.html">readFileByExtension</a></code> </p>
+          </td>
+          <td><p>Read file by extension</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="readYAML.html">readYAML</a></code> </p>
+          </td>
+          <td><p>Read YAML file</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -248,9 +236,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="tidy.html">arrange</a></code> <code><a href="tidy.html">as_tibble</a></code> <code><a href="tidy.html">content</a></code> <code><a href="tidy.html">expand</a></code> <code><a href="tidy.html">filter</a></code> <code><a href="tidy.html">first</a></code> <code><a href="tidy.html">intersect</a></code> <code><a href="tidy.html">mutate</a></code> <code><a href="tidy.html">rename</a></code> <code><a href="tidy.html">setdiff</a></code> <code><a href="tidy.html">setequal</a></code> <code><a href="tidy.html">union</a></code> <code><a href="tidy.html">tidy_select</a></code> </p>
+            <p><code><a href="tidy.html">arrange</a></code> <code><a href="tidy.html">as_tibble</a></code> <code><a href="tidy.html">content</a></code> <code><a href="tidy.html">expand</a></code> <code><a href="tidy.html">filter</a></code> <code><a href="tidy.html">first</a></code> <code><a href="tidy.html">intersect</a></code> <code><a href="tidy.html">mutate</a></code> <code><a href="tidy.html">rename</a></code> <code><a href="tidy.html">setdiff</a></code> <code><a href="tidy.html">setequal</a></code> <code><a href="tidy.html">union</a></code> </p>
           </td>
-          <td><p>S4 method support for <a href='http://tidyverse.org/'>tidyverse</a> verbs</p></td>
+          <td><p><a href='http://tidyverse.org/'>tidyverse</a> S4 methods</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -260,15 +248,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="updatePackages.html">updatePackages</a></code> </p>
-          </td>
-          <td><p>Update all installed packages</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="wash.html">wash</a></code> </p>
           </td>
           <td><p>Wash a data frame</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="writeCounts.html">writeCounts</a></code> </p>
+          </td>
+          <td><p>Write counts</p></td>
         </tr>
       </tbody>
       </table>

@@ -2,20 +2,22 @@
 % Please edit documentation in R/bioconductor.R
 \name{biocLite}
 \alias{biocLite}
-\title{Install or update Bioconductor packages}
+\title{Install or update Bioconductor and CRAN packages}
 \usage{
 biocLite(pkgs = NULL, ...)
 }
 \arguments{
-\item{pkgs}{Character vector of package names to install or update. Supports
-Bioconductor, CRAN, and GitHub repositories.}
+\item{pkgs}{Character vector of package names.}
 
-\item{...}{Passthrough parameters.}
+\item{...}{Additional arguments passed to \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}}.}
 }
 \description{
 This function is a convenience wrapper for \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}}. It
-sources the required \code{biocLite.R} file from the Bioconductor website
-automatically then calls \code{\link[=biocLite]{biocLite()}}.
+sources the required \href{https://bioconductor.org/biocLite.R}{biocLite.R} file
+from the Bioconductor website automatically then calls \code{\link[=biocLite]{biocLite()}}.
+}
+\details{
+Supports Bioconductor, CRAN, and GitHub repositories.
 }
 \examples{
 \dontrun{
@@ -29,5 +31,6 @@ biocLite("tidyverse/dplyr")  # GitHub
 }
 }
 \seealso{
-This function is a modified version of \code{rafalib::install_bioc()}.
+Modified variant of \code{rafalib::install_bioc()}.
 }
+\keyword{internal}

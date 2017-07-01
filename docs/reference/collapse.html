@@ -84,8 +84,8 @@
     </div>
 
     
-    <p>Helper functions for to produce collapsed output for vectors (<code>toString()</code>)
-and data frames (<code>summarizeRows()</code>).</p>
+    <p>Helper functions for to produce collapsed output for vectors
+(<code><a href='http://www.rdocumentation.org/packages/base/topics/toString'>base::toString()</a></code>) and data frames (<code>summarizeRows()</code>).</p>
     
 
     <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>)
@@ -116,12 +116,13 @@ and data frames (<code>summarizeRows()</code>).</p>
     <pre class="examples"><div class='input'><span class='no'>groceries</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='fl'>NA</span>)
 
 <span class='fu'>toStringUnique</span>(<span class='no'>groceries</span>)</div><div class='output co'>#&gt; [1] "milk, eggs, NA"</div><div class='input'><span class='fu'>toStringSortUnique</span>(<span class='no'>groceries</span>)</div><div class='output co'>#&gt; [1] "eggs, milk, NA"</div><div class='input'>
-<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span> <span class='kw'>%&gt;%</span> <span class='no'>summarizeRows</span></div><div class='output co'>#&gt; # A tibble: 1 x 11
-#&gt;                          mpg     cyl                    disp                hp
-#&gt;                        &lt;chr&gt;   &lt;chr&gt;                   &lt;chr&gt;             &lt;chr&gt;
-#&gt; 1 18.1, 18.7, 21, 21.4, 22.8 4, 6, 8 108, 160, 225, 258, 360 105, 110, 175, 93
-#&gt; # ... with 7 more variables: drat &lt;chr&gt;, wt &lt;chr&gt;, qsec &lt;chr&gt;, vs &lt;chr&gt;,
-#&gt; #   am &lt;chr&gt;, gear &lt;chr&gt;, carb &lt;chr&gt;</div></pre>
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span> <span class='kw'>%&gt;%</span> <span class='no'>summarizeRows</span></div><div class='output co'>#&gt; # A tibble: 1 x 12
+#&gt;                                                                            rowname
+#&gt;                                                                              &lt;chr&gt;
+#&gt; 1 Datsun 710, Hornet 4 Drive, Hornet Sportabout, Mazda RX4, Mazda RX4 Wag, Valiant
+#&gt; # ... with 11 more variables: mpg &lt;chr&gt;, cyl &lt;chr&gt;, disp &lt;chr&gt;, hp &lt;chr&gt;,
+#&gt; #   drat &lt;chr&gt;, wt &lt;chr&gt;, qsec &lt;chr&gt;, vs &lt;chr&gt;, am &lt;chr&gt;, gear &lt;chr&gt;,
+#&gt; #   carb &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

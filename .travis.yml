@@ -3,6 +3,7 @@
 language: r
 sudo: false
 cache: packages
+dist: trusty
 r:
   - bioc-release
   - bioc-devel

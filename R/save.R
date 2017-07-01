@@ -6,9 +6,9 @@
 #'
 #' @param ... Objects.
 #' @param dir Save directory.
-#' @param compress Compression method, supporting `xz` (preferred), `bzip2`, or
-#'   `gzip`. Compression can be disabled by setting as `FALSE`, although this is
-#'   not generally recommended.
+#' @param compress Compression method, supporting `xz` (**preferred**), `bzip2`,
+#'   or `gzip`. Compression can be disabled by setting as `FALSE`, although this
+#'   is not generally recommended.
 #'
 #' @export
 #' @seealso [base::save()].
@@ -19,17 +19,12 @@ saveData <- function(..., dir = "data", compress = "xz") {
     if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
-    objs <- get_objs_from_dots(dots(...))
+    objs <- getObjsFromDots(dots(...))
     paths <- file.path(dir, paste0(objs, ".rda"))
     message(paste("Saving", toString(objs), "to", dir))
     mapply(save, list = objs, file = paths, compress = compress)
     invisible()
 }
-
-#' @rdname save
-#' @usage NULL
-#' @export
-saveData -> save_data  # nolint
 
 
 
@@ -38,8 +33,3 @@ saveData -> save_data  # nolint
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
-
-#' @rdname save
-#' @usage NULL
-#' @export
-saveDataRaw -> save_data_raw  # nolint

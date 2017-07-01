@@ -23,8 +23,3 @@ detectOrganism <- function(genomeBuild) {
         stop("Failed to detect organism from genome build")
     }
 }
-
-#' @rdname detectOrganism
-#' @usage NULL
-#' @export
-detectOrganism -> detect_organism  # nolint

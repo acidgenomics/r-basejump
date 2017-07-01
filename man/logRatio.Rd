@@ -3,7 +3,7 @@
 \name{fc2lr}
 \alias{fc2lr}
 \alias{lr2fc}
-\title{Log ratio to fold change}
+\title{Interconvert log ratio and fold change values}
 \usage{
 fc2lr(x, base = 2L)
 
@@ -19,12 +19,13 @@ differential expression output.}
 Numeric vector.
 }
 \description{
-Convert log ratio normalized values to fold change.
+Interconvert log ratio and fold change values
 }
 \examples{
 lr2fc(seq(-3, 3, 1))
 fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 }
 \seealso{
-\code{gtools::foldchange2logratio()}, \code{gtools::logratio2foldchange()}.
+Modified variants of \code{gtools::foldchange2logratio()} and
+\code{gtools::logratio2foldchange()}.
 }

@@ -1,17 +1,20 @@
-#' S4 method support for [tidyverse](http://tidyverse.org/) verbs
+#' [tidyverse](http://tidyverse.org/) S4 methods
 #'
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.
+#'
+#' @note For tibble coercion with [as_tibble()], rownames are always moved to
+#'   the `rowname` column, using [rownames_to_column()] internally. This
+#'   provides more consistent behavior in the tidyverse, which can inadvertently
+#'   strip rownames during filtering operations.
 #'
 #' @rdname tidy
 #' @docType methods
 #'
 #' @param object Primary object.
-#' @param ... Additional parameters.
 #' @param x Primary object.
 #' @param y Secondary object.
-#' @param .data Data object.
-
+#' @param ... Additional parameters.
 #'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):
@@ -28,31 +31,35 @@ setMethod(
     "arrange",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::arrange(object, ...)
-})
+        dplyr::arrange(object, ...)
+    })
 
 
 
 # as_tibble ====
 #' @rdname tidy
-#' @export
-setMethod(
-    "as_tibble",
-    signature(object = "data.frame"),
-    function(object, ...) {
+#' @usage NULL
+.as_tibble <- function(object, ...) {  # nolint
+    object <- as.data.frame(object)
+    # Check to see if rownames are set
+    if (!identical(rownames(object),
+                   as.character(seq_len(nrow(object))))) {
+        object <- rownames_to_column(object)
+    }
     tibble::as_tibble(object, ...)
-})
+}
 
 #' @rdname tidy
 #' @export
-setMethod(
-    "as_tibble",
-    signature(object = "DataFrame"),
-    function(object, ...) {
-    object %>%
-        as.data.frame %>%
-        tibble::as_tibble(., ...)
-})
+setMethod("as_tibble", "data.frame", .as_tibble)
+
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "DataFrame", .as_tibble)
+
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "matrix", .as_tibble)
 
 
 
@@ -72,8 +79,8 @@ setMethod(
     "expand",
     signature(x = "data.frame"),
     function(x, ...) {
-    tidyr::expand(x, ...)
-})
+        tidyr::expand(x, ...)
+    })
 
 
 
@@ -84,8 +91,8 @@ setMethod(
     "filter",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::filter(object, ...)
-})
+        dplyr::filter(object, ...)
+    })
 
 
 
@@ -96,8 +103,8 @@ setMethod(
     "first",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::first(x, ...)
-})
+        dplyr::first(x, ...)
+    })
 
 
 
@@ -120,8 +127,8 @@ setMethod(
     "mutate",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::mutate(object, ...)
-})
+        dplyr::mutate(object, ...)
+    })
 
 
 
@@ -132,8 +139,8 @@ setMethod(
     "rename",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::rename(x, ...)
-})
+        dplyr::rename(x, ...)
+    })
 
 
 
@@ -144,9 +151,9 @@ setMethod(
 setMethod("select",
           signature(x = "data.frame"),
           function(x) {
-    stop("Use [tidy_select()] on data.frame.
+              stop("Use [tidy_select()] on data.frame.
          NAMESPACE collison with [AnnotationDbi::select()].")
-})
+          })
 
 
 
