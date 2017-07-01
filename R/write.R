@@ -38,37 +38,32 @@ writeCounts <- function(
             if (isTRUE(gzip)) {
                 ext <- str_c(ext, ".gz")
             }
-            file_name <- str_c(name, ".", ext)
+            fileName <- str_c(name, ".", ext)
             counts %>%
                 as.data.frame %>%
                 rownames_to_column %>%
-                write_csv(path = file.path(dir, file_name))
+                write_csv(path = file.path(dir, fileName))
         } else if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
             # Single-cell RNA-seq sparse counts
-            matrix_file <- file.path(dir, str_c(name, ".mtx"))
-            writeMM(counts, matrix_file)
+            matrixFile <- file.path(dir, str_c(name, ".mtx"))
+            writeMM(counts, matrixFile)
 
             # Write barcodes (colnames)
             barcodes <- colnames(counts)
-            barcodes_file <- str_c(matrix_file, ".colnames")
-            write_lines(barcodes, barcodes_file)
+            barcodesFile <- str_c(matrixFile, ".colnames")
+            write_lines(barcodes, barcodesFile)
 
             # Write gene names (rownames)
             genes <- rownames(counts)
-            genes_file <- str_c(matrix_file, ".rownames")
-            write_lines(genes, genes_file)
+            genesFile <- str_c(matrixFile, ".rownames")
+            write_lines(genes, genesFile)
 
             # gzip the matrix, if desired
             if (isTRUE(gzip)) {
-                gzip(matrix_file)
+                gzip(matrixFile)
             }
         } else {
             stop(paste(name, "contains an unsupported class"))
         }
     }) %>% invisible
 }
-
-#' @rdname writeCounts
-#' @usage NULL
-#' @export
-writeCounts -> write_counts  # nolint

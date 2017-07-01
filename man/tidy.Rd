@@ -31,7 +31,7 @@
 \alias{expand}
 \alias{first}
 \alias{rename}
-\title{S4 method support for \href{http://tidyverse.org/}{tidyverse} verbs}
+\title{\href{http://tidyverse.org/}{tidyverse} S4 methods}
 \usage{
 \S4method{arrange}{data.frame}(object, ...)
 

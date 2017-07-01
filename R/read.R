@@ -13,11 +13,6 @@ readDataRaw <- function() {
     ) %>% invisible
 }
 
-#' @rdname readDataRaw
-#' @usage NULL
-#' @export
-readDataRaw -> read_data_raw  # nolint
-
 
 
 #' Read file by extension
@@ -43,37 +38,37 @@ readFileByExtension <- function(file, ...) {
         stop("File path must be a string")
     }
 
-    file_path <- normalizePath(file)
-    file_name <- basename(file_path)
+    filePath <- normalizePath(file)
+    fileName <- basename(filePath)
 
-    if (!file.exists(file_path)) {
-        stop(paste(file_name, "not found"))
+    if (!file.exists(filePath)) {
+        stop(paste(fileName, "not found"))
     }
 
-    message(paste("Reading", file_name))
+    message(paste("Reading", fileName))
 
     # Detect file extension
-    if (grepl("\\.[a-z]+$", file_name)) {
-        ext <- str_match(file_name, "\\.([a-z]+)$")[[2L]]
+    if (grepl("\\.[a-z]+$", fileName)) {
+        ext <- str_match(fileName, "\\.([a-z]+)$")[[2L]]
     } else {
         stop("File extension missing")
     }
 
     # File import, based on extension
     if (ext == "csv") {
-        data <- read_csv(file_path, progress = FALSE, ...)
+        data <- read_csv(filePath, progress = FALSE, ...)
     } else if (ext == "mtx") {
-        data <- readMM(file_path, ...)
+        data <- readMM(filePath, ...)
     } else if (ext == "tsv") {
-        data <- read_tsv(file_path, progress = FALSE, ...)
+        data <- read_tsv(filePath, progress = FALSE, ...)
     } else if (ext == "txt") {
-        data <- read_delim(file_path, progress = FALSE, ...)
+        data <- read_delim(filePath, progress = FALSE, ...)
     } else if (ext == "xlsx") {
-        data <- read_excel(file_path, ...)
+        data <- read_excel(filePath, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(file_path, ...)
+        data <- read_lines(filePath, ...)
     } else if (ext == "counts") {
-        data <- read_tsv(file_path, progress = FALSE, ...)
+        data <- read_tsv(filePath, progress = FALSE, ...)
     } else {
         stop("Unsupported file type")
     }
@@ -93,11 +88,6 @@ readFileByExtension <- function(file, ...) {
     }
 }
 
-#' @rdname readFileByExtension
-#' @usage NULL
-#' @export
-readFileByExtension -> read_file_by_extension  # nolint
-
 
 
 #' Read YAML file
@@ -113,8 +103,3 @@ readYAML <- function(file) {
         NULL
     }
 }
-
-#' @rdname readYAML
-#' @usage NULL
-#' @export
-readYAML -> read_yaml  # nolint

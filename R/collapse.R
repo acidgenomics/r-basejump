@@ -29,11 +29,6 @@ toStringUnique <- function(x, sep = ", ") {
         str_c(collapse = sep)
 }
 
-#' @rdname collapse
-#' @usage NULL
-#' @export
-toStringUnique -> to_string_unique  # nolint
-
 
 
 #' @rdname collapse
@@ -45,11 +40,6 @@ toStringSortUnique <- function(x, sep = ", ") {
         sort %>%
         str_c(collapse = sep)
 }
-
-#' @rdname collapse
-#' @usage NULL
-#' @export
-toStringSortUnique -> to_string_sort_unique   # nolint
 
 
 
@@ -64,18 +54,3 @@ summarizeRows <- function(x, sep = ", ") {
         summarise_all(funs(toStringSortUnique(., sep = sep))) %>%
         mutate_all(funs(fixNA))
 }
-
-#' @rdname collapse
-#' @usage NULL
-#' @export
-summarizeRows -> summariseRows
-
-#' @rdname collapse
-#' @usage NULL
-#' @export
-summarizeRows -> summarize_rows   # nolint
-
-#' @rdname collapse
-#' @usage NULL
-#' @export
-summarizeRows -> summarise_rows  # nolint

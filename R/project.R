@@ -13,11 +13,6 @@ createProjectDirs <- function() {
     ) %>% invisible
 }
 
-#' @rdname project
-#' @usage NULL
-#' @export
-createProjectDirs -> create_project_dirs  # nolint
-
 
 
 #' @rdname project
@@ -38,11 +33,6 @@ detectHPC <- function() {
         FALSE
     }
 }
-
-#' @rdname project
-#' @usage NULL
-#' @export
-detectHPC -> detect_hpc  # nolint
 
 
 
@@ -73,11 +63,6 @@ packageProject <- function(install = FALSE) {
     # Build website
     build_site()
 }
-
-#' @rdname project
-#' @usage NULL
-#' @export
-packageProject -> package_project  # nolint
 
 
 
@@ -125,8 +110,3 @@ renderProject <- function(today = TRUE) {
     }
     ) %>% invisible
 }
-
-#' @rdname project
-#' @usage NULL
-#' @export
-renderProject -> render_project  # nolint
