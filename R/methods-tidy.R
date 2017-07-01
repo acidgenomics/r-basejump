@@ -31,12 +31,14 @@ setMethod(
     "arrange",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::arrange(object, ...)
-})
+        dplyr::arrange(object, ...)
+    })
 
 
 
 # as_tibble ====
+#' @rdname tidy
+#' @usage NULL
 .as_tibble <- function(object, ...) {  # nolint
     object <- as.data.frame(object)
     # Check to see if rownames are set
@@ -77,8 +79,8 @@ setMethod(
     "expand",
     signature(x = "data.frame"),
     function(x, ...) {
-    tidyr::expand(x, ...)
-})
+        tidyr::expand(x, ...)
+    })
 
 
 
@@ -89,8 +91,8 @@ setMethod(
     "filter",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::filter(object, ...)
-})
+        dplyr::filter(object, ...)
+    })
 
 
 
@@ -101,8 +103,8 @@ setMethod(
     "first",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::first(x, ...)
-})
+        dplyr::first(x, ...)
+    })
 
 
 
@@ -125,8 +127,8 @@ setMethod(
     "mutate",
     signature(object = "data.frame"),
     function(object, ...) {
-    dplyr::mutate(object, ...)
-})
+        dplyr::mutate(object, ...)
+    })
 
 
 
@@ -137,8 +139,8 @@ setMethod(
     "rename",
     signature(x = "data.frame"),
     function(x, ...) {
-    dplyr::rename(x, ...)
-})
+        dplyr::rename(x, ...)
+    })
 
 
 
@@ -149,9 +151,9 @@ setMethod(
 setMethod("select",
           signature(x = "data.frame"),
           function(x) {
-    stop("Use [tidy_select()] on data.frame.
+              stop("Use [tidy_select()] on data.frame.
          NAMESPACE collison with [AnnotationDbi::select()].")
-})
+          })
 
 
 

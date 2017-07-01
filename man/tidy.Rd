@@ -7,6 +7,7 @@
 \alias{filter}
 \alias{mutate}
 \alias{arrange,data.frame-method}
+\alias{.as_tibble}
 \alias{as_tibble,data.frame-method}
 \alias{as_tibble,DataFrame-method}
 \alias{as_tibble,matrix-method}
