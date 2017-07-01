@@ -26,11 +26,6 @@ saveData <- function(..., dir = "data", compress = "xz") {
     invisible()
 }
 
-#' @rdname save
-#' @usage NULL
-#' @export
-saveData -> save_data  # nolint
-
 
 
 #' @rdname save
@@ -38,8 +33,3 @@ saveData -> save_data  # nolint
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
 }
-
-#' @rdname save
-#' @usage NULL
-#' @export
-saveDataRaw -> save_data_raw  # nolint

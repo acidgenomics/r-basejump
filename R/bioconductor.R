@@ -4,6 +4,8 @@
 #' sources the required `biocLite.R` file from the Bioconductor website
 #' automatically then calls [biocLite()].
 #'
+#' @keywords internal
+#'
 #' @param pkgs Character vector of package names to install or update. Supports
 #'   Bioconductor, CRAN, and GitHub repositories.
 #' @param ... Passthrough parameters.

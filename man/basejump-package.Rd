@@ -27,4 +27,9 @@ Useful links:
 \author{
 \strong{Maintainer}: Michael J. Steinbaugh \email{mike@steinbaugh.com}
 
+Other contributors:
+\itemize{
+  \item Rory Kirchner \email{roryk@alum.mit.edu} [contributor]
+}
+
 }

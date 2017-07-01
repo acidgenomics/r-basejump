@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • basejump</title>
+<title><a href='http://www.ensembl.org/'>Ensembl</a> annotations — annotable • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -20,9 +20,9 @@
 
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script>
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
+<script src="../pkgdown.js"></script>
   
   
 <!-- mathjax -->
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +47,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">basejump</a>
+      <a class="navbar-brand" href="../index.html">basejump</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="/index.html">
+  <a href="..//index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       
@@ -78,26 +78,55 @@
       </header>
 
       <div class="row">
-  <div class="contents col-md-12">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Authors</h1>
+    <h1><a href='http://www.ensembl.org/'>Ensembl</a> annotations</h1>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Michael J. Steinbaugh</strong>. Author, maintainer.
-        </p>
-      </li>
-      <li>
-        <p><strong>Rory Kirchner</strong>. Contributor.
-        </p>
-      </li>
-    </ul>
+    
+    <p>Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
+pre-compiled from <a href='http://www.ensembl.org/'>Ensembl</a> with the
+<a href='http://bioconductor.org/packages/release/bioc/html/biomaRt.html'>biomaRt</a>
+package. For gene annotables, the Entrez identifier is removed, to allow
+for unique Ensembl gene identifiers.</p>
+    
+
+    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>genomeBuild</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p>Genome build. Consult the annotables documentation
+for a list of currently supported genomes.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Desired table format, either <code>gene</code> or <code>tx2gene</code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data.frame with unique rows per gene/transcript.</p>
+    
 
   </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
+    <h2>Author</h2>
+    
+Michael Steinbaugh, Rory Kirchner
+
+  </div>
 </div>
-
 
       <footer>
       <div class="copyright">
