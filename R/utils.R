@@ -1,6 +1,6 @@
 #' Assign multiple objects to a new environment
 #'
-#' @param ... List of objects to assign.
+#' @param ... Dot objects to assign.
 #' @param envirName Environment name.
 #'
 #' @return Object names.
@@ -37,7 +37,7 @@ clearWarnings <- function() {
 
 
 
-#' Fix empty and `NA` character strings
+#' Fix character strings missing `NA`
 #'
 #' @param string String missing `NA`.
 #'
@@ -55,14 +55,14 @@ fixNA <- function(string) {
 
 
 
-#' [grep()] pattern string generator
+#' grep string generator
 #'
-#' Generate a [grep()] string for pattern matching against [toString()] return
-#' (comma separated).
+#' Generate a grep string for pattern matching against comma separated
+#' [base::toString()] output.
 #'
 #' @param identifier Identifier.
 #'
-#' @return Comma separated string for matching against [toString()] return.
+#' @return Comma separated grep string.
 #' @export
 #'
 #' @examples

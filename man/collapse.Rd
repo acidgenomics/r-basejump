@@ -26,8 +26,8 @@ summarizeRows(x, sep = ", ")
 A character vector of length 1 is returned.
 }
 \description{
-Helper functions for to produce collapsed output for vectors (\code{\link[=toString]{toString()}})
-and data frames (\code{\link[=summarizeRows]{summarizeRows()}}).
+Helper functions for to produce collapsed output for vectors
+(\code{\link[base:toString]{base::toString()}}) and data frames (\code{\link[=summarizeRows]{summarizeRows()}}).
 }
 \examples{
 groceries <- c("milk", "eggs", "eggs", NA)

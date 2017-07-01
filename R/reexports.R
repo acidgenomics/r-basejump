@@ -1,7 +1,3 @@
-# base::setequal
-
-
-
 # AnnotationDbi ====
 #' @rdname tidy
 #' @usage NULL
@@ -24,6 +20,9 @@ BiocGenerics::counts
 
 #' @export
 BiocGenerics::design
+
+#' @export
+BiocGenerics::grep
 
 #' @rdname tidy
 #' @usage NULL
@@ -405,6 +404,12 @@ rmarkdown::render
 
 
 
+# stats ====
+#' @export
+stats::hclust
+
+
+
 # stringr ====
 #' @export
 stringr::fixed
@@ -466,6 +471,9 @@ SummarizedExperiment::colData
 #' @export
 SummarizedExperiment::rowData
 
+#' @export
+SummarizedExperiment::SummarizedExperiment
+
 
 
 # S4Vectors ====
@@ -517,7 +525,6 @@ tibble::tibble
 
 
 # tidyr ====
-# Collison with S4Vectors::expand
 #' @export
 tidyr::expand_
 

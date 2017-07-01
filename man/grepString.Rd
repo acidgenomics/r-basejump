@@ -3,7 +3,7 @@
 \name{grepString}
 \alias{grepString}
 \alias{grep_string}
-\title{\code{\link[=grep]{grep()}} pattern string generator}
+\title{grep string generator}
 \usage{
 grepString(identifier)
 }
@@ -11,11 +11,11 @@ grepString(identifier)
 \item{identifier}{Identifier.}
 }
 \value{
-Comma separated string for matching against \code{\link[=toString]{toString()}} return.
+Comma separated grep string.
 }
 \description{
-Generate a \code{\link[=grep]{grep()}} string for pattern matching against \code{\link[=toString]{toString()}} return
-(comma separated).
+Generate a grep string for pattern matching against comma separated
+\code{\link[base:toString]{base::toString()}} output.
 }
 \examples{
 grepString("gene")
