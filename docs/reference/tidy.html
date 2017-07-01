@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>S4 method support for <a href='http://tidyverse.org/'>tidyverse</a> verbs — arrange,data.frame-method • basejump</title>
+<title><a href='http://tidyverse.org/'>tidyverse</a> S4 methods — arrange • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,7 +80,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>S4 method support for <a href='http://tidyverse.org/'>tidyverse</a> verbs</h1>
+    <h1><a href='http://tidyverse.org/'>tidyverse</a> S4 methods</h1>
     </div>
 
     
@@ -89,13 +89,16 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
     
 
     <pre class="usage"><span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='generics.html'>arrange</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'><a href='generics.html'>as_tibble</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for response</span>
 <span class='fu'>content</span>(<span class='no'>object</span>)
@@ -104,7 +107,7 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='generics.html'>filter</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -113,7 +116,7 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='generics.html'>mutate</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -125,9 +128,7 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='fu'>setequal</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>tidy_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -148,11 +149,14 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
       <th>y</th>
       <td><p>Secondary object.</p></td>
     </tr>
-    <tr>
-      <th>.data</th>
-      <td><p>Data object.</p></td>
-    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>For tibble coercion with <code>as_tibble()</code>, rownames are always moved to
+the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally. This
+provides more consistent behavior in the tidyverse, which can inadvertently
+strip rownames during filtering operations.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -170,6 +174,8 @@ dplyr, httr, tidyr.</p></li>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#note">Note</a></li>
+
       <li><a href="#see-also">See also</a></li>
           </ul>
 

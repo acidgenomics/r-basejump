@@ -30,14 +30,6 @@ mdList <- function(character, ordered = FALSE) {
     writeLines(string)
 }
 
-#' @rdname markdown
-#' @usage NULL
-#' @export
-mdList -> md_list  # nolint
-
-
-
-
 
 
 # knitr ====

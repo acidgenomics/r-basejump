@@ -1,8 +1,6 @@
 #' Assign multiple objects to a new environment
 #'
-#' @rdname assign
-#'
-#' @param ... List of objects to assign.
+#' @param ... Dot objects to assign.
 #' @param envirName Environment name.
 #'
 #' @return Object names.
@@ -26,28 +24,20 @@ assignAsNewEnv <- function(..., envirName) {
     objs
 }
 
-#' @rdname assign
-#' @usage NULL
-#' @export
-assign_as_new_env <- assignAsNewEnv  # nolint
-
 
 
 #' Clear warnings
+#'
+#' @keywords internal
 #'
 #' @export
 clearWarnings <- function() {
     assign("last.warning", NULL, envir = baseenv())
 }
 
-#' @rdname clearWarnings
-#' @usage NULL
-#' @export
-clear_warnings <- clearWarnings  # nolint
 
 
-
-#' Fix empty and `NA` character strings
+#' Fix character strings missing `NA`
 #'
 #' @param string String missing `NA`.
 #'
@@ -63,21 +53,16 @@ fixNA <- function(string) {
         gsub("^$|^\\s+$|^NA$", NA, .)
 }
 
-#' @rdname fixNA
-#' @usage NULL
-#' @export
-fix_na <- fixNA  # nolint
 
 
-
-#' [grep()] pattern string generator
+#' grep string generator
 #'
-#' Generate a [grep()] string for pattern matching against [toString()] return
-#' (comma separated).
+#' Generate a grep string for pattern matching against comma separated
+#' [base::toString()] output.
 #'
 #' @param identifier Identifier.
 #'
-#' @return Comma separated string for matching against [toString()] return.
+#' @return Comma separated grep string.
 #' @export
 #'
 #' @examples
@@ -98,11 +83,6 @@ grepString <- function(identifier) {
             # End of list
             "\\s", ., "$")
 }
-
-#' @rdname grepString
-#' @usage NULL
-#' @export
-grep_string <- grepString  # nolint
 
 
 
@@ -146,11 +126,6 @@ removeNA <- function(x) {
     }
 }
 
-#' @rdname removeNA
-#' @usage NULL
-#' @export
-remove_na <- removeNA  # nolint
-
 
 
 #' Quickly perform sort unique on a vector
@@ -172,16 +147,16 @@ sortUnique <- function(vector) {
         unique
 }
 
-#' @rdname sortUnique
-#' @usage NULL
-#' @export
-sort_unique <- sortUnique  # nolint
-
 
 
 #' Update all installed packages
 #'
 #' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+#'
+#' Internaly this is a wrapper for [devtools::update_packages()] that improves
+#' support for Bioconductor.
+#'
+#' @keywords internal
 #'
 #' @export
 updatePackages <- function() {
@@ -194,11 +169,6 @@ updatePackages <- function() {
     # Ensure safe developer environment
     biocValid()
 }
-
-#' @rdname updatePackages
-#' @usage NULL
-#' @export
-update_packages <- updatePackages  # nolint
 
 
 

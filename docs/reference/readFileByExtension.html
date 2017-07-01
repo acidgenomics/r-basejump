@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Change case of a character vector. — titleCase • basejump</title>
+<title>Read file by extension — readFileByExtension • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -73,34 +80,43 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Change case of a character vector.</h1>
+    <h1>Read file by extension</h1>
     </div>
 
     
-    <p>Title case.</p>
-<p>First case.</p>
+    <p>Supports automatic loading of standard <code>.csv</code>, <code>.mtx</code>, <code>.tsv</code>, and <code>.xlsx</code>
+files. Also supports bcbio-nextgen pipeline-specific <code>.counts</code>, <code>.colnames</code>,
+and <code>.rownames</code> files.</p>
     
 
-    <pre class="usage"><span class='fu'>titleCase</span>(<span class='no'>character</span>)
-
-<span class='fu'>firstCase</span>(<span class='no'>character</span>)</pre>
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>character</th>
-      <td><p>Character vector.</p></td>
+      <th>file</th>
+      <td><p>File path.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional parameters.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Reformatted character vector.</p>
+    <p><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> by default, or a sparse matrix for <code>.mtx</code> files.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <ul>
+<li><p><a href='http://readr.tidyverse.org'>readr</a>.</p></li>
+<li><p><a href='http://readxl.tidyverse.org'>readxl</a>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/Matrix/topics/externalFormats'>Matrix::readMM()</a></code>: Read a MatrixMarket file.</p></li>
+</ul>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>titleCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "RNA Sequencing"</div><div class='input'><span class='fu'>firstCase</span>(<span class='st'>"RNA sequencing"</span>)</div><div class='output co'>#&gt; [1] "Rna Sequencing"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -108,16 +124,16 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michael Steinbaugh.</p>
+  <p>Developed by Michael J. Steinbaugh.</p>
 </div>
 
 <div class="pkgdown">
