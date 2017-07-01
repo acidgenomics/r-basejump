@@ -1,4 +1,4 @@
-#' S4 method support for [tidyverse](http://tidyverse.org/) verbs
+#' [tidyverse](http://tidyverse.org/) S4 methods
 #'
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.

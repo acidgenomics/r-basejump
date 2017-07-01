@@ -21,18 +21,17 @@ writeCounts <- function(
     ...,
     dir = file.path("results", "counts"),
     gzip = TRUE) {
-    # FIXME Switch to tidy dots method
-    names <- as.character(substitute(list(...)))[-1L]
     dots <- list(...)
+    objs <- getObjsFromDots(dots(...))
 
     # Create the counts output directory
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
 
     # Iterate across the dots and write CSVs
-    message(paste("Writing", toString(names), "to", dir))
-    lapply(seq_along(names), function(a) {
-        name <- names[a]
-        counts <- dots[a]
+    message(paste("Writing", toString(objs), "to", dir))
+    lapply(seq_along(objs), function(a) {
+        name <- objs[[a]]
+        counts <- dots[[a]]
         if (is.data.frame(counts)) {
             # Bulk RNA-seq dense counts
             ext <- ".csv"

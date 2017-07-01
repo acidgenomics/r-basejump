@@ -1,4 +1,4 @@
-#' Read CSV files inside `data-raw` directory.
+#' Read CSV files inside `data-raw` directory
 #'
 #' @export
 readDataRaw <- function() {
@@ -34,7 +34,7 @@ readDataRaw -> read_data_raw  # nolint
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
-#' - [readMM()]: Read a MatrixMarket file.
+#' - [Matrix::readMM()]: Read a MatrixMarket file.
 readFileByExtension <- function(file, ...) {
     if (is.null(file)) {
         return(NULL)
@@ -100,10 +100,11 @@ readFileByExtension -> read_file_by_extension  # nolint
 
 
 
-#' Read YAML file into a list
+#' Read YAML file
 #'
 #' @param file YAML file.
 #'
+#' @return list.
 #' @export
 readYAML <- function(file) {
     if (file.exists(file)) {
