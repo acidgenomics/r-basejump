@@ -32,13 +32,13 @@ writeCounts <- function(
     lapply(seq_along(objs), function(a) {
         name <- objs[[a]]
         counts <- dots[[a]]
-        if (is.data.frame(counts)) {
+        if (is.matrix(counts) | is.data.frame(counts)) {
             # Bulk RNA-seq dense counts
             ext <- ".csv"
             if (isTRUE(gzip)) {
                 ext <- str_c(ext, ".gz")
             }
-            fileName <- str_c(name, ".", ext)
+            fileName <- str_c(name, ext)
             counts %>%
                 as.data.frame %>%
                 rownames_to_column %>%
