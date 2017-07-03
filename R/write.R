@@ -38,7 +38,7 @@ writeCounts <- function(
             if (isTRUE(gzip)) {
                 ext <- str_c(ext, ".gz")
             }
-            fileName <- str_c(name, ".", ext)
+            fileName <- str_c(name, ext)
             counts %>%
                 as.data.frame %>%
                 rownames_to_column %>%
