@@ -76,3 +76,5 @@ annotable <- function(genomeBuild, format = "gene") {
         as.data.frame %>%
         set_rownames(.[[1L]])
 }
+
+# FIXME Add Ensembl 2 Entrez generic function
