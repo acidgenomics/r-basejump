@@ -27,6 +27,7 @@ Imports:
     BiocInstaller,
     biomaRt (>= 2.32.1),
     covr,
+    cowplot,
     datasets,
     devtools (>= 1.13.2),
     dplyr (>= 0.7.1),
