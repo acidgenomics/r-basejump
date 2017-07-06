@@ -13,6 +13,7 @@
 #' @importFrom BiocInstaller biocValid
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom covr package_coverage
+#' @importFrom cowplot plot_grid
 #' @importFrom devtools build build_vignettes check document install load_all
 #'   test update_packages use_data use_data_raw use_testthat
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct

@@ -62,6 +62,12 @@ biomaRt::useMart
 
 
 
+# cowplot ====
+#' @export
+cowplot::plot_grid
+
+
+
 # datasets ====
 #' Motor Trend car road tests.
 #' @keywords internal

@@ -19,6 +19,8 @@
 \alias{reexports}
 \alias{useMart}
 \alias{reexports}
+\alias{plot_grid}
+\alias{reexports}
 \alias{build}
 \alias{reexports}
 \alias{build_vignettes}
@@ -280,6 +282,8 @@ below to see their documentation.
   \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
+
+  \item{cowplot}{\code{\link[cowplot]{plot_grid}}}
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}, \code{\link[devtools]{use_data}}, \code{\link[devtools]{use_data_raw}}, \code{\link[devtools]{use_testthat}}}
 
