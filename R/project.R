@@ -59,9 +59,6 @@ packageProject <- function(install = FALSE) {
     if (isTRUE(install)) {
         install()
     }
-
-    # Build website
-    build_site()
 }
 
 
