@@ -40,7 +40,7 @@
 #'   remove_rownames rownames_to_column tibble
 #' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
 #' @importFrom tools file_path_sans_ext
-#' @importFrom utils download.file globalVariables sessionInfo
+#' @importFrom utils download.file globalVariables object.size sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
