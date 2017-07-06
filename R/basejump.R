@@ -27,7 +27,6 @@
 #' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom Matrix readMM writeMM
 #' @importFrom parallel mclapply mcmapply
-#' @importFrom pkgdown build_site
 #' @importFrom R.utils gzip gunzip
 #' @importFrom RCurl getURL
 #' @importFrom readxl read_excel
