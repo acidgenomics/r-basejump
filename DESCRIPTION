@@ -62,7 +62,6 @@ Suggests:
     testthat
 Remotes:
     hbc/annotables,
-    hadley/pkgdown,
     jimhester/lintr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
