@@ -25,7 +25,7 @@ Imports:
     BiocCheck,
     BiocGenerics,
     BiocInstaller,
-    biomaRt (>= 2.32.1),
+    biomaRt (>= 2.30.0),
     covr,
     datasets,
     devtools (>= 1.13.2),
