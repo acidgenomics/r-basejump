@@ -61,7 +61,8 @@ packageProject <- function(install = FALSE) {
     }
 
     # Build website
-    build_site()
+    # FIXME Add back once pkgdown is on CRAN
+    # pkgdown::build_site()
 }
 
 
