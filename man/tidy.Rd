@@ -28,7 +28,6 @@
 \alias{setdiff}
 \alias{union}
 \alias{tidy_select}
-\alias{tidySelect}
 \alias{expand}
 \alias{first}
 \alias{rename}

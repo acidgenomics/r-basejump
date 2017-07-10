@@ -70,13 +70,6 @@ mdList -> md_list
 
 
 
-#' @rdname objectSize
-#' @usage NULL
-#' @export
-objectSize -> object_size
-
-
-
 #' @rdname project
 #' @usage NULL
 #' @export

@@ -41,6 +41,7 @@ Imports:
     parallel,
     pbapply (>= 1.3),
     pbmcapply,
+    pryr,
     RCurl,
     readr (>= 1.1.1),
     readxl (>= 1.0.0),

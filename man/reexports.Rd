@@ -119,6 +119,8 @@
 \alias{reexports}
 \alias{pbmclapply}
 \alias{reexports}
+\alias{object_size}
+\alias{reexports}
 \alias{gunzip}
 \alias{reexports}
 \alias{gzip}
@@ -304,6 +306,8 @@ below to see their documentation.
   \item{pbapply}{\code{\link[pbapply]{pblapply}}, \code{\link[pbapply]{pbsapply}}}
 
   \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
+
+  \item{pryr}{\code{\link[pryr]{object_size}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 
