@@ -7,6 +7,13 @@ assignAsNewEnv -> assign_as_new_env
 
 
 
+#' @rdname assignAsNewEnv
+#' @usage NULL
+#' @export
+assignData -> assign_data
+
+
+
 #' @rdname clearWarnings
 #' @usage NULL
 #' @export
