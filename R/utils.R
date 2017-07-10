@@ -86,18 +86,6 @@ grepString <- function(identifier) {
 
 
 
-#' Object size with automatic units
-#'
-#' @param object Object.
-#'
-#' @return Object size in human readable units.
-#' @export
-objectSize <- function(object) {
-    object.size(object) %>% format(units = "auto")
-}
-
-
-
 #' Remove rows and columns containing only `NA` values
 #'
 #' @param x Object with column data (e.g. data frame, matrix).

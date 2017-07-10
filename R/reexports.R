@@ -160,11 +160,6 @@ dplyr::right_join
 #' @export
 dplyr::select -> tidy_select  # nolint
 
-#' @rdname tidy
-#' @usage NULL
-#' @export
-tidy_select -> tidySelect
-
 #' Star Wars dataset.
 #' @keywords internal
 #' @export
@@ -275,6 +270,12 @@ pbapply::pbsapply
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
+
+
+
+# pryr ====
+#' @export
+pryr::object_size
 
 
 
