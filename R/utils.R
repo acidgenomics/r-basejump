@@ -70,7 +70,7 @@ fixNA <- function(string) {
 grepString <- function(identifier) {
     identifier %>%
         as.character %>%
-        paste0(
+        str_c(
             # Unique
             "^", ., "$",
             "|",

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assign and save data — assignData • basejump</title>
+<title>Assign data — assignData • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,14 +80,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assign and save data</h1>
+    <h1>Assign data</h1>
     </div>
 
     
-    <p>Assign and save data</p>
+    <p>Also automatically saves newly assigned object to <code>data</code> directory.</p>
     
 
-    <pre class="usage"><span class='fu'>assignData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"xz"</span>)</pre>
+    <pre class="usage"><span class='fu'>assignData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"xz"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -99,6 +99,10 @@
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Output directory.</p></td>
     </tr>
     <tr>
       <th>compress</th>

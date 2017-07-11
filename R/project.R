@@ -8,9 +8,9 @@
 createProjectDirs <- function() {
     localDirs <- c("data", "figures", "meta", "results")
     lapply(seq_along(localDirs), function(a) {
-        dir.create(localDirs[a], showWarnings = FALSE)
-    }
-    ) %>% invisible
+        dir.create(localDirs[[a]], showWarnings = FALSE)
+    }) %>%
+        invisible
 }
 
 
@@ -104,6 +104,6 @@ renderProject <- function(today = TRUE) {
                knit_root_dir = getwd(),
                output_dir = outputDir,
                output_format = "all")
-    }
-    ) %>% invisible
+    }) %>%
+        invisible
 }
