@@ -3,10 +3,10 @@
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.
 #'
-#' @note For tibble coercion with [as_tibble()], rownames are always moved to
-#'   the `rowname` column, using [rownames_to_column()] internally. This
-#'   provides more consistent behavior in the tidyverse, which can inadvertently
-#'   strip rownames during filtering operations.
+#' @note For tibble coercion with [as()], rownames are always moved to the
+#'   `rowname` column, using [rownames_to_column()] internally. This provides
+#'   more consistent behavior in the tidyverse, which can inadvertently strip
+#'   rownames during filtering operations.
 #'
 #' @rdname tidy
 #' @docType methods
@@ -37,29 +37,32 @@ setMethod(
 
 
 # as_tibble ====
+# Prevent accidental rowname drops by masking [as_tibble()]
 #' @rdname tidy
 #' @usage NULL
-.as_tibble <- function(object, ...) {  # nolint
-    object <- as.data.frame(object)
-    # Check to see if rownames are set
-    if (!identical(rownames(object),
-                   as.character(seq_len(nrow(object))))) {
-        object <- rownames_to_column(object)
+.asTibble <- function(from) {
+    from <- as.data.frame(from)
+    if (has_rownames(from)) {
+        from <- rownames_to_column(from)
     }
-    tibble::as_tibble(object, ...)
+    tibble::as_tibble(from)
 }
 
-#' @rdname tidy
-#' @export
-setMethod("as_tibble", "data.frame", .as_tibble)
+setAs("data.frame", "tibble", .asTibble)
+setAs("DataFrame", "tibble", .asTibble)
+setAs("matrix", "tibble", .asTibble)
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "DataFrame", .as_tibble)
+setMethod("as_tibble", "data.frame", .asTibble)
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "matrix", .as_tibble)
+setMethod("as_tibble", "DataFrame", .asTibble)
+
+#' @rdname tidy
+#' @export
+setMethod("as_tibble", "matrix", .asTibble)
 
 
 
