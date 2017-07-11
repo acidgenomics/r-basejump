@@ -2,17 +2,19 @@
 % Please edit documentation in R/assign.R
 \name{assignData}
 \alias{assignData}
-\title{Assign and save data}
+\title{Assign data}
 \usage{
-assignData(name, object, compress = "xz")
+assignData(name, object, dir = "data", compress = "xz")
 }
 \arguments{
 \item{name}{Desired variable name.}
 
 \item{object}{Object.}
 
+\item{dir}{Output directory.}
+
 \item{compress}{File compression argument from \code{\link[=save]{save()}}.}
 }
 \description{
-Assign and save data
+Also automatically saves newly assigned object to \code{data} directory.
 }

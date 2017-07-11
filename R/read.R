@@ -8,9 +8,9 @@ readDataRaw <- function() {
         df <- read_csv(csv[a])
         dir.create("data", showWarnings = FALSE)
         assign(name, df)
-        save(list = name, file = file.path("data", paste0(name, ".rda")))
-    }
-    ) %>% invisible
+        save(list = name, file = file.path("data", str_c(name, ".rda")))
+    }) %>%
+        invisible
 }
 
 
