@@ -19,7 +19,7 @@ annotable <- function(genomeBuild, format = "gene") {
     if (!is.character(genomeBuild)) {
         stop("Genome build must be a character vector")
     }
-    if (!format %in% c("gene", "tx2gene")) {
+    if (!format %in% c("gene", "tx2gene", "gene2entrez")) {
         stop("Unsupported table format")
     }
     envir <- as.environment("package:annotables")
@@ -36,9 +36,10 @@ annotable <- function(genomeBuild, format = "gene") {
     message(paste("Using", genomeBuild, format, "annotable"))
 
     if (format == "gene") {
-        annotable <- get(genomeBuild, envir = envir) %>%
+        get(genomeBuild, envir = envir) %>%
             mutate(entrez = NULL) %>%
             distinct %>%
+            arrange(.data[["ensgene"]]) %>%
             mutate(broad_class = case_when(
                 # Chromosome
                 str_detect(.data[["chr"]],
@@ -65,14 +66,20 @@ annotable <- function(genomeBuild, format = "gene") {
                       "nonsense_mediated_decay") ~ "decaying",
                 str_detect(.data[["biotype"]], "IG_") ~ "ig",
                 str_detect(.data[["biotype"]], "TR_") ~ "tcr",
-                TRUE ~ "other"))
+                TRUE ~ "other")) %>%
+            as.data.frame %>%
+            set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        annotable <- paste(genomeBuild, "tx2gene", sep = "_") %>%
-            get(envir = envir)
+        paste(genomeBuild, "tx2gene", sep = "_") %>%
+            get(envir = envir) %>%
+            arrange(.data[["enstxp"]]) %>%
+            as.data.frame %>%
+            set_rownames(.[["enstxp"]])
+    } else if (format == "gene2entrez") {
+        get(genomeBuild, envir = envir) %>%
+            tidy_select(c("ensgene", "entrez")) %>%
+            filter(!is.na(.data[["entrez"]])) %>%
+            group_by(.data[["ensgene"]]) %>%
+            arrange(.data[["entrez"]], .by_group = TRUE)
     }
-
-    # Return
-    annotable %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]])
 }
