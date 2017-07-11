@@ -58,7 +58,7 @@ transmit <- function(
             localFileName <- remoteFileName
         }
         localFileName
-    }
-    ) %>% setNames(remoteFileName)
+    }) %>%
+        set_names(remoteFileName)
     list
 }
