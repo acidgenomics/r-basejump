@@ -162,10 +162,10 @@
 #' @usage NULL
 .setNamesDotted <- function(object, rownames) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesDotted(names(object)))
+        object <- set_names(object, .makeNamesDotted(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- setRownames(object, .makeNamesDotted(rownames(object)))
+        object <- set_rownames(object, .makeNamesDotted(rownames(object)))
     }
     object
 }
@@ -174,10 +174,10 @@
 #' @usage NULL
 .setNamesCamel <- function(object, rownames) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesCamel(names(object)))
+        object <- set_names(object, .makeNamesCamel(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- setRownames(object, .makeNamesCamel(rownames(object)))
+        object <- set_rownames(object, .makeNamesCamel(rownames(object)))
     }
     object
 }
@@ -186,10 +186,10 @@
 #' @usage NULL
 .setNamesSnake <- function(object, rownames) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesSnake(names(object)))
+        object <- set_names(object, .makeNamesSnake(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- setRownames(object, .makeNamesSnake(rownames(object)))
+        object <- set_rownames(object, .makeNamesSnake(rownames(object)))
     }
     object
 }

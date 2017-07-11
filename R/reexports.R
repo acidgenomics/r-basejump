@@ -234,18 +234,8 @@ magrittr::`%>%`
 #' @export
 magrittr::set_colnames
 
-#' @rdname names
-#' @usage NULL
-#' @export
-magrittr::set_colnames -> setColnames
-
 #' @export
 magrittr::set_rownames
-
-#' @rdname names
-#' @usage NULL
-#' @export
-magrittr::set_rownames -> setRownames
 
 
 
@@ -390,9 +380,6 @@ rlang::quos
 
 #' @export
 rlang::set_names
-
-# Don't export over [stats::setNames]!
-rlang::set_names -> setNames
 
 #' @export
 rlang::sym
