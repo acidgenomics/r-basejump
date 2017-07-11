@@ -62,6 +62,12 @@ biomaRt::useMart
 
 
 
+# cowplot ====
+#' @export
+cowplot::plot_grid
+
+
+
 # datasets ====
 #' Motor Trend car road tests.
 #' @keywords internal
@@ -154,11 +160,6 @@ dplyr::right_join
 #' @export
 dplyr::select -> tidy_select  # nolint
 
-#' @rdname tidy
-#' @usage NULL
-#' @export
-tidy_select -> tidySelect
-
 #' Star Wars dataset.
 #' @keywords internal
 #' @export
@@ -233,18 +234,8 @@ magrittr::`%>%`
 #' @export
 magrittr::set_colnames
 
-#' @rdname names
-#' @usage NULL
-#' @export
-magrittr::set_colnames -> setColnames
-
 #' @export
 magrittr::set_rownames
-
-#' @rdname names
-#' @usage NULL
-#' @export
-magrittr::set_rownames -> setRownames
 
 
 
@@ -269,6 +260,12 @@ pbapply::pbsapply
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
+
+
+
+# pryr ====
+#' @export
+pryr::object_size
 
 
 
@@ -383,9 +380,6 @@ rlang::quos
 
 #' @export
 rlang::set_names
-
-# Don't export over [stats::setNames]!
-rlang::set_names -> setNames
 
 #' @export
 rlang::sym

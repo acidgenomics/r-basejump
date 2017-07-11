@@ -11,16 +11,18 @@
 #'
 #' @param genomeBuild Genome build. Consult the [annotables] documentation
 #'   for a list of currently supported genomes.
-#' @param format Desired table format, either `gene` or `tx2gene`.
+#' @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
+#'   or `gene2entrez`.
 #'
-#' @return [data.frame] with unique rows per gene/transcript.
+#' @return [data.frame] with unique rows per gene/transcript, or grouped
+#'   [tibble] for `gene2entrez` format argument with non-unique rows.
 #' @export
 annotable <- function(genomeBuild, format = "gene") {
     if (!is.character(genomeBuild)) {
         stop("Genome build must be a character vector")
     }
-    if (!format %in% c("gene", "tx2gene")) {
-        stop("Unsupported table format")
+    if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
+        stop("Unsupported format")
     }
     envir <- as.environment("package:annotables")
 
@@ -36,43 +38,60 @@ annotable <- function(genomeBuild, format = "gene") {
     message(paste("Using", genomeBuild, format, "annotable"))
 
     if (format == "gene") {
-        annotable <- get(genomeBuild, envir = envir) %>%
+        get(genomeBuild, envir = envir) %>%
             mutate(entrez = NULL) %>%
             distinct %>%
-            mutate(broad_class = case_when(
-                # Chromosome
-                str_detect(.data[["chr"]],
-                           regex("mito|mt", ignore_case = TRUE)) ~ "mito",
-                # Biotype
-                .data[["biotype"]] == "protein_coding" ~ "coding",
-                .data[["biotype"]] %in%
-                    c("known_ncrna",
-                      "lincRNA",
-                      "non_coding") ~ "noncoding",
-                str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
-                .data[["biotype"]] %in%
-                    c("miRNA",
-                      "misc_RNA",
-                      "ribozyme",
-                      "rRNA",
-                      "scaRNA",
-                      "scRNA",
-                      "snoRNA",
-                      "snRNA",
-                      "sRNA") ~ "small",
-                .data[["biotype"]] %in%
-                    c("non_stop_decay",
-                      "nonsense_mediated_decay") ~ "decaying",
-                str_detect(.data[["biotype"]], "IG_") ~ "ig",
-                str_detect(.data[["biotype"]], "TR_") ~ "tcr",
-                TRUE ~ "other"))
+            arrange(.data[["ensgene"]]) %>%
+            mutate(symbol = make.unique(.data[["symbol"]]),
+                   broad_class = case_when(
+                       # Chromosome
+                       str_detect(.data[["chr"]],
+                                  regex("mito|mt",
+                                        ignore_case = TRUE)) ~ "mito",
+                       # Biotype
+                       .data[["biotype"]] == "protein_coding" ~ "coding",
+                       .data[["biotype"]] %in%
+                           c("known_ncrna",
+                             "lincRNA",
+                             "non_coding") ~ "noncoding",
+                       str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
+                       .data[["biotype"]] %in%
+                           c("miRNA",
+                             "misc_RNA",
+                             "ribozyme",
+                             "rRNA",
+                             "scaRNA",
+                             "scRNA",
+                             "snoRNA",
+                             "snRNA",
+                             "sRNA") ~ "small",
+                       .data[["biotype"]] %in%
+                           c("non_stop_decay",
+                             "nonsense_mediated_decay") ~ "decaying",
+                       str_detect(.data[["biotype"]], "IG_") ~ "ig",
+                       str_detect(.data[["biotype"]], "TR_") ~ "tcr",
+                       TRUE ~ "other")) %>%
+            as.data.frame %>%
+            set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        annotable <- paste(genomeBuild, "tx2gene", sep = "_") %>%
-            get(envir = envir)
+        str_c(genomeBuild, "tx2gene", sep = "_") %>%
+            get(envir = envir) %>%
+            arrange(.data[["enstxp"]]) %>%
+            as.data.frame %>%
+            set_rownames(.[["enstxp"]])
+    } else if (format == "gene2symbol") {
+        get(genomeBuild, envir = envir) %>%
+            tidy_select(c("ensgene", "symbol")) %>%
+            distinct %>%
+            arrange(.data[["ensgene"]]) %>%
+            mutate(symbol = make.unique(.data[["symbol"]])) %>%
+            as.data.frame %>%
+            set_rownames(.[["ensgene"]])
+    } else if (format == "gene2entrez") {
+        get(genomeBuild, envir = envir) %>%
+            tidy_select(c("ensgene", "entrez")) %>%
+            filter(!is.na(.data[["entrez"]])) %>%
+            group_by(.data[["ensgene"]]) %>%
+            arrange(.data[["entrez"]], .by_group = TRUE)
     }
-
-    # Return
-    annotable %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]])
 }

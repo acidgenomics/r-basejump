@@ -19,6 +19,8 @@
 \alias{reexports}
 \alias{useMart}
 \alias{reexports}
+\alias{plot_grid}
+\alias{reexports}
 \alias{build}
 \alias{reexports}
 \alias{build_vignettes}
@@ -116,6 +118,8 @@
 \alias{pbsapply}
 \alias{reexports}
 \alias{pbmclapply}
+\alias{reexports}
+\alias{object_size}
 \alias{reexports}
 \alias{gunzip}
 \alias{reexports}
@@ -281,6 +285,8 @@ below to see their documentation.
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
+  \item{cowplot}{\code{\link[cowplot]{plot_grid}}}
+
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}, \code{\link[devtools]{use_data}}, \code{\link[devtools]{use_data_raw}}, \code{\link[devtools]{use_testthat}}}
 
   \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
@@ -300,6 +306,8 @@ below to see their documentation.
   \item{pbapply}{\code{\link[pbapply]{pblapply}}, \code{\link[pbapply]{pbsapply}}}
 
   \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
+
+  \item{pryr}{\code{\link[pryr]{object_size}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 
