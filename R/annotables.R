@@ -42,33 +42,35 @@ annotable <- function(genomeBuild, format = "gene") {
             mutate(entrez = NULL) %>%
             distinct %>%
             arrange(.data[["ensgene"]]) %>%
-            mutate(broad_class = case_when(
-                # Chromosome
-                str_detect(.data[["chr"]],
-                           regex("mito|mt", ignore_case = TRUE)) ~ "mito",
-                # Biotype
-                .data[["biotype"]] == "protein_coding" ~ "coding",
-                .data[["biotype"]] %in%
-                    c("known_ncrna",
-                      "lincRNA",
-                      "non_coding") ~ "noncoding",
-                str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
-                .data[["biotype"]] %in%
-                    c("miRNA",
-                      "misc_RNA",
-                      "ribozyme",
-                      "rRNA",
-                      "scaRNA",
-                      "scRNA",
-                      "snoRNA",
-                      "snRNA",
-                      "sRNA") ~ "small",
-                .data[["biotype"]] %in%
-                    c("non_stop_decay",
-                      "nonsense_mediated_decay") ~ "decaying",
-                str_detect(.data[["biotype"]], "IG_") ~ "ig",
-                str_detect(.data[["biotype"]], "TR_") ~ "tcr",
-                TRUE ~ "other")) %>%
+            mutate(symbol = make.unique(.data[["symbol"]]),
+                   broad_class = case_when(
+                       # Chromosome
+                       str_detect(.data[["chr"]],
+                                  regex("mito|mt",
+                                        ignore_case = TRUE)) ~ "mito",
+                       # Biotype
+                       .data[["biotype"]] == "protein_coding" ~ "coding",
+                       .data[["biotype"]] %in%
+                           c("known_ncrna",
+                             "lincRNA",
+                             "non_coding") ~ "noncoding",
+                       str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
+                       .data[["biotype"]] %in%
+                           c("miRNA",
+                             "misc_RNA",
+                             "ribozyme",
+                             "rRNA",
+                             "scaRNA",
+                             "scRNA",
+                             "snoRNA",
+                             "snRNA",
+                             "sRNA") ~ "small",
+                       .data[["biotype"]] %in%
+                           c("non_stop_decay",
+                             "nonsense_mediated_decay") ~ "decaying",
+                       str_detect(.data[["biotype"]], "IG_") ~ "ig",
+                       str_detect(.data[["biotype"]], "TR_") ~ "tcr",
+                       TRUE ~ "other")) %>%
             as.data.frame %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
