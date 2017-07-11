@@ -18,30 +18,25 @@ loadData <- function(...) {
     envir <- parent.frame()
     names <- as.character(substitute(list(...)))[-1L]
     lapply(seq_along(names), function(a) {
-        if (file.exists(paste0("data/", names[a], ".rda"))) {
+        if (file.exists(str_c("data/", names[a], ".rda"))) {
             # Check for .rda file in `data/`
             message(paste("Loading", names[a], "from data"))
-            load(paste0("data/", names[a], ".rda"), envir = envir)
-        } else if (file.exists(paste0("data-raw/", names[a], ".rda"))) {
+            load(str_c("data/", names[a], ".rda"), envir = envir)
+        } else if (file.exists(str_c("data-raw/", names[a], ".rda"))) {
             # Check for .rda file in `data-raw/
             message(paste("Loading", names[a], "from data-raw"))
-            load(paste0("data-raw/", names[a], ".rda"), envir = envir)
-        } else if (file.exists(paste0("data-raw/", names[a], ".R"))) {
+            load(str_c("data-raw/", names[a], ".rda"), envir = envir)
+        } else if (file.exists(str_c("data-raw/", names[a], ".R"))) {
             # Source .R script in `data-raw/`
             message(paste("Sourcing", names[a], "from data-raw"))
-            source(paste0("data-raw/", names[a], ".R"))
+            source(str_c("data-raw/", names[a], ".R"))
         } else {
             # Skip and warn
             warning(paste(names[a], "missing"))
         }
-    }
-    ) %>% invisible
+    }) %>%
+        invisible
 }
-
-#' @rdname load
-#' @usage NULL
-#' @export
-loadData -> load_data  # nolint
 
 
 
@@ -54,8 +49,3 @@ loadRemote <- function(url) {
     download.file(url, get("tempfile"), quiet = TRUE)
     load(get("tempfile"), envir = envir)
 }
-
-#' @rdname load
-#' @usage NULL
-#' @export
-loadRemote -> load_remote  # nolint

@@ -20,7 +20,7 @@ saveData <- function(..., dir = "data", compress = "xz") {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
     objs <- getObjsFromDots(dots(...))
-    paths <- file.path(dir, paste0(objs, ".rda"))
+    paths <- file.path(dir, str_c(objs, ".rda"))
     message(paste("Saving", toString(objs), "to", dir))
     mapply(save, list = objs, file = paths, compress = compress)
     invisible()

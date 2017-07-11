@@ -20,7 +20,7 @@ mdList <- function(character, ordered = FALSE) {
     }
     string <- vapply(seq_along(character), function(a) {
         if (isTRUE(ordered)) {
-            prefix <- paste0(a, ".")
+            prefix <- str_c(a, ".")
         } else {
             prefix <- "-"
         }
@@ -46,10 +46,7 @@ mdList <- function(character, ordered = FALSE) {
 #' @export
 #'
 #' @examples
-#' list(
-#'     starwars,
-#'     head(mtcars)
-#' ) %>% kables
+#' list(starwars, head(mtcars)) %>% kables
 kables <- function(list, captions = NULL) {
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output)) {

@@ -18,8 +18,5 @@ Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
 Handle multiple kables in a single RMarkdown chunk.
 }
 \examples{
-list(
-    starwars,
-    head(mtcars)
-) \%>\% kables
+list(starwars, head(mtcars)) \%>\% kables
 }

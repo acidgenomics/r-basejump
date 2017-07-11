@@ -65,5 +65,6 @@ writeCounts <- function(
         } else {
             stop(paste(name, "contains an unsupported class"))
         }
-    }) %>% invisible
+    }) %>%
+        invisible
 }

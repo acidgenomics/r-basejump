@@ -1,27 +1,107 @@
-0.0.17  Added annotables common code from bcbio packages.
-        Added automatic file reading using readr package.
-        Combined write_counts functions from bcbioRnaseq and bcbioSinglecell.
-0.0.16  Minor NAMESPACE updates while working on bcbio packages.
-        Tweaks for tidyverse S4 generic verbs. In particular, [as_tibble()]
-        now provides better consistency for rowname conversion.
-0.0.15  Added testthat support for lintr checks.
-        Added S4 generic for `as_tibble()`.
-0.0.14  dplyr 0.7 NAMESPACE fixes and function tweaks.
-0.0.13  setMethod on tidyverse NAMESPACE collisons (dplyr, tidyr) using
-        `signature("data.frame").
-0.0.12  Updated exports based on worminfo package.
-0.0.11  Improved naming functions to dynamically handle character vectors
-        and objects that support naming assignments.
-        Added removeNA utility function.
-0.0.10  Added NAMESPACE utilities to deal with tidyverse generic verbs.
-        Switched package documentation method to use roxygen with `pkgapi`.
-0.0.9   Added snake_case function variants.
-0.0.8   Added back saveData utility functions.
-0.0.7   Bug fixes for dplyr 0.6.0 update and improved kable handling.
-0.0.6   Dependency fix for successful compilation on Orchestra cluster.
-0.0.5   Consolidated functions in the documentation.
-0.0.4   Improved documentation.
-0.0.3   Removed dependencies and transfer functions to bcbioRnaseq.
-0.0.2   Added bcbio data import functions.
-        Added ggplot2 wrapper functions for quality control.
-0.0.1   Initial draft release.
+# 0.0.17
+
+- Added annotables common code from bcbio packages.
+- Added automatic file reading using readr package.
+- Combined write_counts functions from bcbioRnaseq and bcbioSinglecell.
+- Initial commit of `assign_data()` for use in bcbioSinglecell sample loops.
+
+
+
+# 0.0.16
+
+- Minor NAMESPACE updates while working on bcbio packages.
+- Tweaks for tidyverse S4 generic verbs. In particular, `as_tibble()` now provides better consistency for rowname conversion.
+
+
+
+# 0.0.15
+
+- Added testthat support for lintr checks.
+- Added S4 generic for `as_tibble()`.
+
+
+
+# 0.0.14
+
+- dplyr 0.7 NAMESPACE fixes and function tweaks.
+
+
+
+# 0.0.13
+
+- setMethod on tidyverse NAMESPACE collisons (dplyr, tidyr) using `signature("data.frame").
+
+
+
+# 0.0.12
+
+- Updated exports based on worminfo package.
+
+
+
+# 0.0.11
+
+- Improved naming functions to dynamically handle character vectors and objects that support naming assignments.
+- Added `removeNA()` utility function.
+
+
+
+# 0.0.10
+
+- Added NAMESPACE utilities to deal with tidyverse generic verbs.
+- Switched package documentation method to use roxygen with pkgapi.
+
+
+
+# 0.0.9
+
+- Added snake_case function variants.
+
+
+
+# 0.0.8
+
+- Added back `saveData()` utility functions.
+
+
+
+# 0.0.7
+
+- Bug fixes for dplyr 0.6.0 update and improved kable handling.
+
+
+
+# 0.0.6
+
+- Dependency fix for successful compilation on Orchestra cluster.
+
+
+
+# 0.0.5
+
+- Consolidated functions in the documentation.
+
+
+
+# 0.0.4
+
+- Improved documentation.
+
+
+
+# 0.0.3
+
+- Removed dependencies and transfer functions to bcbioRnaseq.
+
+
+
+# 0.0.2
+
+- Added bcbio data import functions.
+- Added ggplot2 wrapper functions for quality control.
+
+
+
+# 0.0.1
+
+- Initial draft release.

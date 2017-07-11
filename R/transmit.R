@@ -41,14 +41,14 @@ transmit <- function(
     # Ensure the local directory exists
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
     message(toString(remoteFileName))
-    list <- lapply(seq_along(remoteFileName), function(a) {
+    lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
             localFileName <- rename[a]
         } else {
             localFileName <- remoteFileName[a]
         }
-        remoteFilePath <- paste0(remoteDir, remoteFileName[a])
+        remoteFilePath <- str_c(remoteDir, remoteFileName[a])
         localFilePath <- file.path(localDir, localFileName)
         download.file(remoteFilePath, localFilePath)
         # Compress, if desired
@@ -58,7 +58,6 @@ transmit <- function(
             localFileName <- remoteFileName
         }
         localFileName
-    }
-    ) %>% setNames(remoteFileName)
-    list
+    }) %>%
+        set_names(remoteFileName)
 }

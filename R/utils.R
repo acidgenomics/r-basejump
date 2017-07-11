@@ -70,7 +70,7 @@ fixNA <- function(string) {
 grepString <- function(identifier) {
     identifier %>%
         as.character %>%
-        paste0(
+        str_c(
             # Unique
             "^", ., "$",
             "|",
@@ -82,18 +82,6 @@ grepString <- function(identifier) {
             "|",
             # End of list
             "\\s", ., "$")
-}
-
-
-
-#' Object size with automatic units
-#'
-#' @param object Object.
-#'
-#' @return Object size in human readable units.
-#' @export
-objectSize <- function(object) {
-    object.size(object) %>% format(units = "auto")
 }
 
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><a href='http://www.ensembl.org/'>Ensembl</a> annotations — annotable • basejump</title>
+<title>Assign data — assignData • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,38 +80,35 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><a href='http://www.ensembl.org/'>Ensembl</a> annotations</h1>
+    <h1>Assign data</h1>
     </div>
 
     
-    <p>Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-pre-compiled from <a href='http://www.ensembl.org/'>Ensembl</a> with the
-<a href='http://bioconductor.org/packages/release/bioc/html/biomaRt.html'>biomaRt</a>
-package. For gene annotables, the Entrez identifier is removed, to allow
-for unique Ensembl gene identifiers.</p>
+    <p>Also automatically saves newly assigned object to <code>data</code> directory.</p>
     
 
-    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>genomeBuild</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>)</pre>
+    <pre class="usage"><span class='fu'>assignData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"xz"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>genomeBuild</th>
-      <td><p>Genome build. Consult the annotables documentation
-for a list of currently supported genomes.</p></td>
+      <th>name</th>
+      <td><p>Desired variable name.</p></td>
     </tr>
     <tr>
-      <th>format</th>
-      <td><p>Desired table format, either <code>gene</code>, <code>tx2gene</code>, <code>gene2symbol</code>,
-or <code>gene2entrez</code>.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>Output directory.</p></td>
+    </tr>
+    <tr>
+      <th>compress</th>
+      <td><p>File compression argument from <code>save()</code>.</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>data.frame with unique rows per gene/transcript, or grouped
-<a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> for <code>gene2entrez</code> format argument with non-unique rows.</p>
     
 
   </div>
@@ -119,13 +116,7 @@ or <code>gene2entrez</code>.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh, Rory Kirchner
+                </ul>
 
   </div>
 </div>
