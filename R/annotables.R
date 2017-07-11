@@ -11,16 +11,18 @@
 #'
 #' @param genomeBuild Genome build. Consult the [annotables] documentation
 #'   for a list of currently supported genomes.
-#' @param format Desired table format, either `gene` or `tx2gene`.
+#' @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
+#'   or `gene2entrez`.
 #'
-#' @return [data.frame] with unique rows per gene/transcript.
+#' @return [data.frame] with unique rows per gene/transcript, or grouped
+#'   [tibble] for `gene2entrez` format argument with non-unique rows.
 #' @export
 annotable <- function(genomeBuild, format = "gene") {
     if (!is.character(genomeBuild)) {
         stop("Genome build must be a character vector")
     }
-    if (!format %in% c("gene", "tx2gene", "gene2entrez")) {
-        stop("Unsupported table format")
+    if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
+        stop("Unsupported format")
     }
     envir <- as.environment("package:annotables")
 
@@ -70,11 +72,19 @@ annotable <- function(genomeBuild, format = "gene") {
             as.data.frame %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        paste(genomeBuild, "tx2gene", sep = "_") %>%
+        str_c(genomeBuild, "tx2gene", sep = "_") %>%
             get(envir = envir) %>%
             arrange(.data[["enstxp"]]) %>%
             as.data.frame %>%
             set_rownames(.[["enstxp"]])
+    } else if (format == "gene2symbol") {
+        get(genomeBuild, envir = envir) %>%
+            tidy_select(c("ensgene", "symbol")) %>%
+            distinct %>%
+            arrange(.data[["ensgene"]]) %>%
+            mutate(symbol = make.unique(.data[["symbol"]])) %>%
+            as.data.frame %>%
+            set_rownames(.[["ensgene"]])
     } else if (format == "gene2entrez") {
         get(genomeBuild, envir = envir) %>%
             tidy_select(c("ensgene", "entrez")) %>%
