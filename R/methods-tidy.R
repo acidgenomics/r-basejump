@@ -3,15 +3,16 @@
 #' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
 #' generics by using [setMethod()] to relevant `signature`.
 #'
-#' @note For tibble coercion with [as()], rownames are always moved to the
-#'   `rowname` column, using [rownames_to_column()] internally. This provides
-#'   more consistent behavior in the tidyverse, which can inadvertently strip
-#'   rownames during filtering operations.
+#' @note For tibble coercion with [as()] or [as_tibble()], rownames are always
+#'   moved to the `rowname` column, using [rownames_to_column()] internally.
+#'   This provides more consistent behavior in the tidyverse, which can
+#'   inadvertently strip rownames during filtering operations.
 #'
 #' @rdname tidy
 #' @docType methods
 #'
 #' @param object Primary object.
+#' @param from Object to coerce.
 #' @param x Primary object.
 #' @param y Secondary object.
 #' @param ... Additional parameters.
