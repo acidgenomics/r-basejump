@@ -103,13 +103,15 @@ for a list of currently supported genomes.</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Desired table format, either <code>gene</code> or <code>tx2gene</code>.</p></td>
+      <td><p>Desired table format, either <code>gene</code>, <code>tx2gene</code>, <code>gene2symbol</code>,
+or <code>gene2entrez</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame with unique rows per gene/transcript.</p>
+    <p>data.frame with unique rows per gene/transcript, or grouped
+<a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> for <code>gene2entrez</code> format argument with non-unique rows.</p>
     
 
   </div>

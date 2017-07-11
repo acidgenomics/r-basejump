@@ -10,10 +10,12 @@ annotable(genomeBuild, format = "gene")
 \item{genomeBuild}{Genome build. Consult the \link{annotables} documentation
 for a list of currently supported genomes.}
 
-\item{format}{Desired table format, either \code{gene} or \code{tx2gene}.}
+\item{format}{Desired table format, either \code{gene}, \code{tx2gene}, \code{gene2symbol},
+or \code{gene2entrez}.}
 }
 \value{
-\link{data.frame} with unique rows per gene/transcript.
+\link{data.frame} with unique rows per gene/transcript, or grouped
+\link{tibble} for \code{gene2entrez} format argument with non-unique rows.
 }
 \description{
 Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
