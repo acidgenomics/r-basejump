@@ -92,13 +92,13 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
 <span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>as_tibble</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for response</span>
 <span class='fu'>content</span>(<span class='no'>object</span>)
@@ -142,6 +142,10 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
       <td><p>Additional parameters.</p></td>
     </tr>
     <tr>
+      <th>from</th>
+      <td><p>Object to coerce.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
       <td><p>Primary object.</p></td>
     </tr>
@@ -153,10 +157,10 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For tibble coercion with <code>as_tibble()</code>, rownames are always moved to
-the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally. This
-provides more consistent behavior in the tidyverse, which can inadvertently
-strip rownames during filtering operations.</p>
+    <p>For tibble coercion with <code>as()</code>, rownames are always moved to the
+<code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally. This provides
+more consistent behavior in the tidyverse, which can inadvertently strip
+rownames during filtering operations.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

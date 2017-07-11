@@ -1,1 +1,2 @@
 setOldClass("response")
+setOldClass("tibble")

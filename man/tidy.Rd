@@ -7,7 +7,7 @@
 \alias{filter}
 \alias{mutate}
 \alias{arrange,data.frame-method}
-\alias{.as_tibble}
+\alias{.asTibble}
 \alias{as_tibble,data.frame-method}
 \alias{as_tibble,DataFrame-method}
 \alias{as_tibble,matrix-method}
@@ -35,11 +35,11 @@
 \usage{
 \S4method{arrange}{data.frame}(object, ...)
 
-\S4method{as_tibble}{data.frame}(object, ...)
+\S4method{as_tibble}{data.frame}(from)
 
-\S4method{as_tibble}{DataFrame}(object, ...)
+\S4method{as_tibble}{DataFrame}(from)
 
-\S4method{as_tibble}{matrix}(object, ...)
+\S4method{as_tibble}{matrix}(from)
 
 \S4method{content}{response}(object)
 
@@ -66,6 +66,8 @@
 
 \item{...}{Additional parameters.}
 
+\item{from}{Object to coerce.}
+
 \item{x}{Primary object.}
 
 \item{y}{Secondary object.}
@@ -75,10 +77,10 @@ Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconducto
 generics by using \code{\link[=setMethod]{setMethod()}} to relevant \code{signature}.
 }
 \note{
-For tibble coercion with \code{\link[=as_tibble]{as_tibble()}}, rownames are always moved to
-the \code{rowname} column, using \code{\link[=rownames_to_column]{rownames_to_column()}} internally. This
-provides more consistent behavior in the tidyverse, which can inadvertently
-strip rownames during filtering operations.
+For tibble coercion with \code{\link[=as]{as()}}, rownames are always moved to the
+\code{rowname} column, using \code{\link[=rownames_to_column]{rownames_to_column()}} internally. This provides
+more consistent behavior in the tidyverse, which can inadvertently strip
+rownames during filtering operations.
 }
 \seealso{
 \itemize{
