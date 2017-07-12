@@ -77,10 +77,10 @@ Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconducto
 generics by using \code{\link[=setMethod]{setMethod()}} to relevant \code{signature}.
 }
 \note{
-For tibble coercion with \code{\link[=as]{as()}}, rownames are always moved to the
-\code{rowname} column, using \code{\link[=rownames_to_column]{rownames_to_column()}} internally. This provides
-more consistent behavior in the tidyverse, which can inadvertently strip
-rownames during filtering operations.
+For tibble coercion with \code{\link[=as]{as()}} or \code{\link[=as_tibble]{as_tibble()}}, rownames are always
+moved to the \code{rowname} column, using \code{\link[=rownames_to_column]{rownames_to_column()}} internally.
+This provides more consistent behavior in the tidyverse, which can
+inadvertently strip rownames during filtering operations.
 }
 \seealso{
 \itemize{

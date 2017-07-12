@@ -9,7 +9,7 @@ assignAsNewEnv -> assign_as_new_env
 #' @rdname assignAsNewEnv
 #' @usage NULL
 #' @export
-assignData -> assign_data
+assignAndSaveData -> assign_and_save_data
 
 #' @rdname clearWarnings
 #' @usage NULL
