@@ -157,10 +157,10 @@ generics by using <code>setMethod()</code> to relevant <code>signature</code>.</
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For tibble coercion with <code>as()</code>, rownames are always moved to the
-<code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally. This provides
-more consistent behavior in the tidyverse, which can inadvertently strip
-rownames during filtering operations.</p>
+    <p>For tibble coercion with <code>as()</code> or <code>as_tibble()</code>, rownames are always
+moved to the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally.
+This provides more consistent behavior in the tidyverse, which can
+inadvertently strip rownames during filtering operations.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

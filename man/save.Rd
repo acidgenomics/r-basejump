@@ -3,6 +3,7 @@
 \name{saveData}
 \alias{saveData}
 \alias{saveDataRaw}
+\alias{assignAndSaveData}
 \alias{save_data}
 \alias{save_data_raw}
 \title{Save data objects}
@@ -10,18 +11,31 @@
 saveData(..., dir = "data", compress = "xz")
 
 saveDataRaw(...)
+
+assignAndSaveData(name, object, dir = "data", compress = "xz")
 }
 \arguments{
-\item{...}{Objects.}
+\item{...}{Dot objects.}
 
-\item{dir}{Save directory.}
+\item{dir}{Output directory. Defaults to \strong{data}.}
 
 \item{compress}{Compression method, supporting \code{xz} (\strong{preferred}), \code{bzip2},
 or \code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this
 is not generally recommended.}
+
+\item{name}{Desired variable name.}
+
+\item{object}{Object.}
 }
 \description{
-Quick save to \code{data} (default) or \code{data-raw} directory.
+Quickly save objects in a project.
+
+\code{\link[=saveDataRaw]{saveDataRaw()}} is a wrapper for \code{\link[=saveData]{saveData()}} that enables quick
+saving of objects to the \code{data-raw} directory.
+
+\code{\link[=assignAndSaveData]{assignAndSaveData()}} assigns a new object by name to the
+current working environment then saves the newly assigned object, specified
+by \code{dir}.
 }
 \seealso{
 \code{\link[base:save]{base::save()}}.
