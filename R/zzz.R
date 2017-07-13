@@ -56,7 +56,12 @@ loadData -> load_data
 #' @export
 loadRemote -> load_remote
 
-#' @rdname markdown
+#' @rdname mdHeader
+#' @usage NULL
+#' @export
+mdHeader -> md_header
+
+#' @rdname mdList
 #' @usage NULL
 #' @export
 mdList -> md_list
