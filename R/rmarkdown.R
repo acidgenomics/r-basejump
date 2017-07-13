@@ -1,33 +1,48 @@
 # Markdown ====
-#' Markdown utilities
+#' Markdown header
 #'
-#' @rdname markdown
-#' @description Markdown list.
+#' @param string String.
+#' @param level Header level (1-7).
 #'
-#' @param character Character vector.
+#' @return String.
+#' @export
+#'
+#' @examples
+#' mdHeader("Header")
+#' mdHeader("Header", level = 4L)
+mdHeader <- function(string, level = 2L) {
+    if (!level %in% seq(1:7)) {
+        stop("Markdown supports 1-7 header levels")
+    }
+    paste(str_dup("#", level), string)
+}
+
+
+
+#' Markdown list
+#'
+#' @param vec Character vector.
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
 #'   Markdown format.
-#'
-#' @return Printed Markdown syntax.
 #' @export
 #'
 #' @examples
 #' mdList(c("milk", "eggs"))
 #' mdList(c("milk", "eggs"), ordered = TRUE)
-mdList <- function(character, ordered = FALSE) {
-    if (!is.character(character)) {
+mdList <- function(vec, ordered = FALSE) {
+    if (!is.character(vec)) {
         stop("A character vector is required.")
     }
-    string <- vapply(seq_along(character), function(a) {
+    lines <- vapply(seq_along(vec), function(a) {
         if (isTRUE(ordered)) {
             prefix <- str_c(a, ".")
         } else {
             prefix <- "-"
         }
-        paste(prefix, character[a])
+        paste(prefix, vec[[a]])
     },
     character(1L))
-    writeLines(string)
+    writeLines(lines)
 }
 
 
@@ -36,8 +51,6 @@ mdList <- function(character, ordered = FALSE) {
 #' Create tables in LaTeX, HTML, Markdown and reStructuredText
 #'
 #' Handle multiple kables in a single RMarkdown chunk.
-#'
-#' @rdname knitr
 #'
 #' @param list List of column data (e.g. data frame, matrix).
 #' @param captions Optional character vector of table captions.
