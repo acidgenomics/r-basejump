@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><a href='http://www.ensembl.org/'>Ensembl</a> annotations — .annotable • basejump</title>
+<title>S4 generics — annotable • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,53 +80,45 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><a href='http://www.ensembl.org/'>Ensembl</a> annotations</h1>
+    <h1>S4 generics</h1>
     </div>
 
     
-    <p>Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-pre-compiled from <a href='http://www.ensembl.org/'>Ensembl</a> with the
-<a href='http://bioconductor.org/packages/release/bioc/html/biomaRt.html'>biomaRt</a>
-package. For gene annotables, the Entrez identifier is removed, to allow
-for unique Ensembl gene identifiers.</p>
+    <p>S4 generics</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for character</span>
-<span class='fu'><a href='all_generics.html'>annotable</a></span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'><a href='all_generics.html'>gene2entrez</a></span>(<span class='no'>object</span>)
+<span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'><a href='all_generics.html'>gene2symbol</a></span>(<span class='no'>object</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'><a href='all_generics.html'>tx2gene</a></span>(<span class='no'>object</span>)</pre>
+<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)
+
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+
+<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object. Default usage is to provide Ensembl genome build as a
-string.</p></td>
+      <td><p>Primary object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>from</th>
+      <td><p>Object to coerce.</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>data.frame with unique rows per gene or transcript.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>If the <code>format</code> argument is set to <code>gene2entrez</code>, <code><a href='all_generics.html'>annotable()</a></code> returns
-a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> with non-unique rows grouped by <code>ensgene</code>, instead of a
-data.frame.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Consult the annotables package documentation (<code>help("annotables")</code>)
-for a list of currently supported genomes.</p>
     
 
   </div>
@@ -134,17 +126,7 @@ for a list of currently supported genomes.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh, Rory Kirchner
+                </ul>
 
   </div>
 </div>
