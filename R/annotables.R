@@ -6,16 +6,20 @@
 #' package. For gene annotables, the Entrez identifier is removed, to allow
 #' for unique Ensembl gene identifiers.
 #'
-#' @rdname annotable
+#' @rdname annotables
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
-#' @param genomeBuild Genome build. Consult the [annotables] documentation
-#'   for a list of currently supported genomes.
+#' @param genomeBuild Genome build.
 #' @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
 #'   or `gene2entrez`.
 #'
-#' @return [data.frame] with unique rows per gene/transcript, or grouped
-#'   [tibble] for `gene2entrez` format argument with non-unique rows.
+#' @note If the `format` argument is set to `gene2entrez`, [annotable()] returns
+#'   a [tibble] with non-unique rows grouped by `ensgene`, instead of a
+#'   [data.frame].
+#' @seealso Consult the annotables package documentation (`help("annotables")`)
+#'   for a list of currently supported genomes.
+#'
+#' @return [data.frame] with unique rows per gene or transcript..
 #' @export
 annotable <- function(genomeBuild, format = "gene") {
     if (!is.character(genomeBuild)) {
@@ -94,4 +98,28 @@ annotable <- function(genomeBuild, format = "gene") {
             group_by(.data[["ensgene"]]) %>%
             arrange(.data[["entrez"]], .by_group = TRUE)
     }
+}
+
+
+
+#' @rdname annotables
+#' @export
+gene2entrez <- function(genomeBuild) {
+    annotable(genomeBuild, format = "gene2entrez")
+}
+
+
+
+#' @rdname annotables
+#' @export
+gene2symbol <- function(genomeBuild) {
+    annotable(genomeBuild, format = "gene2symbol")
+}
+
+
+
+#' @rdname annotables
+#' @export
+tx2gene <- function(genomeBuild) {
+    annotable(genomeBuild, format = "tx2gene")
 }
