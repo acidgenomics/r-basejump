@@ -37,7 +37,7 @@ setMethod(
 
 
 
-# as_tibble ====
+# asTibble ====
 # Prevent accidental rowname drops by masking [as_tibble()]
 #' @rdname tidy
 #' @usage NULL
@@ -55,15 +55,15 @@ setAs("matrix", "tibble", .asTibble)
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "data.frame", .asTibble)
+setMethod("asTibble", "data.frame", .asTibble)
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "DataFrame", .asTibble)
+setMethod("asTibble", "DataFrame", .asTibble)
 
 #' @rdname tidy
 #' @export
-setMethod("as_tibble", "matrix", .asTibble)
+setMethod("asTibble", "matrix", .asTibble)
 
 
 
