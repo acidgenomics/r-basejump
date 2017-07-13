@@ -2,20 +2,27 @@
 % Please edit documentation in R/annotables.R
 \name{annotable}
 \alias{annotable}
+\alias{gene2entrez}
+\alias{gene2symbol}
+\alias{tx2gene}
 \title{\href{http://www.ensembl.org/}{Ensembl} annotations}
 \usage{
 annotable(genomeBuild, format = "gene")
+
+gene2entrez(genomeBuild)
+
+gene2symbol(genomeBuild)
+
+tx2gene(genomeBuild)
 }
 \arguments{
-\item{genomeBuild}{Genome build. Consult the \link{annotables} documentation
-for a list of currently supported genomes.}
+\item{genomeBuild}{Genome build.}
 
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, \code{gene2symbol},
 or \code{gene2entrez}.}
 }
 \value{
-\link{data.frame} with unique rows per gene/transcript, or grouped
-\link{tibble} for \code{gene2entrez} format argument with non-unique rows.
+\link{data.frame} with unique rows per gene or transcript..
 }
 \description{
 Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
@@ -23,6 +30,15 @@ pre-compiled from \href{http://www.ensembl.org/}{Ensembl} with the
 \href{http://bioconductor.org/packages/release/bioc/html/biomaRt.html}{biomaRt}
 package. For gene annotables, the Entrez identifier is removed, to allow
 for unique Ensembl gene identifiers.
+}
+\note{
+If the \code{format} argument is set to \code{gene2entrez}, \code{\link[=annotable]{annotable()}} returns
+a \link{tibble} with non-unique rows grouped by \code{ensgene}, instead of a
+\link{data.frame}.
+}
+\seealso{
+Consult the annotables package documentation (\code{help("annotables")})
+for a list of currently supported genomes.
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
