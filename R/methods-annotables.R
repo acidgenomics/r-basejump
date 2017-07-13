@@ -7,6 +7,7 @@
 #' for unique Ensembl gene identifiers.
 #'
 #' @rdname annotables
+#' @docType methods
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
