@@ -8,7 +8,7 @@ setGeneric("arrange", function(object, ...) standardGeneric("arrange"))
 #' @rdname tidy
 #' @usage NULL
 #' @export
-setGeneric("asTibble", function(from) standardGeneric("asTibble"))
+setGeneric("as_tibble", function(from) standardGeneric("as_tibble"))
 
 
 
