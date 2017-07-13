@@ -10,7 +10,7 @@
 #' mdHeader("Header")
 #' mdHeader("Header", level = 4L)
 mdHeader <- function(string, level = 2L) {
-    if (!level %in% seq(1:7)) {
+    if (!level %in% seq(1L:7L)) {
         stop("Markdown supports 1-7 header levels")
     }
     paste(str_dup("#", level), string)

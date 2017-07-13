@@ -11,11 +11,6 @@ assignAsNewEnv -> assign_as_new_env
 #' @export
 assignAndSaveData -> assign_and_save_data
 
-#' @rdname tidy
-#' @usage NULL
-#' @export
-asTibble -> as_tibble
-
 #' @rdname clearWarnings
 #' @usage NULL
 #' @export

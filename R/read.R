@@ -75,7 +75,7 @@ readFileByExtension <- function(file, ...) {
 
     # Coerce data frame to tibble, if necessary
     if (is.data.frame(data) & !is_tibble(data)) {
-        data <- as_tibble(data)
+        data <- as(data, "tibble")
     }
 
     # Return
