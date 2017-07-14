@@ -8,11 +8,11 @@
 \alias{save_data_raw}
 \title{Save data objects}
 \usage{
-saveData(..., dir = "data", compress = "xz")
+saveData(..., dir = "data", compress = TRUE)
 
 saveDataRaw(...)
 
-assignAndSaveData(name, object, dir = "data", compress = "xz")
+assignAndSaveData(name, object, dir = "data", compress = TRUE)
 }
 \arguments{
 \item{...}{Dot objects.}
