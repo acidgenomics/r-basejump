@@ -17,7 +17,7 @@
 
 #' @rdname save
 #' @export
-saveData <- function(..., dir = "data", compress = "xz") {
+saveData <- function(..., dir = "data", compress = TRUE) {
     if (!is_string(dir)) {
         stop("dir must be a string")
     }
@@ -52,7 +52,7 @@ saveDataRaw <- function(...) {
 #' @param object Object.
 #'
 #' @export
-assignAndSaveData <- function(name, object, dir = "data", compress = "xz") {
+assignAndSaveData <- function(name, object, dir = "data", compress = TRUE) {
     envir <- parent.frame()
     assign(name, object, envir = envir)
     save(list = name,
