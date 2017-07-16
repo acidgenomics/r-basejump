@@ -147,6 +147,9 @@ dplyr::left_join
 dplyr::mutate_all
 
 #' @export
+dplyr::mutate_if
+
+#' @export
 dplyr::n
 
 #' @export
@@ -172,10 +175,16 @@ dplyr::summarise
 dplyr::summarise_all
 
 #' @export
+dplyr::summarise_if
+
+#' @export
 dplyr::summarize
 
 #' @export
 dplyr::summarize_all
+
+#' @export
+dplyr::summarize_if
 
 #' @export
 dplyr::top_n
