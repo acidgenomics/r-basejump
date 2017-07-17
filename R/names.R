@@ -46,7 +46,7 @@
 #' camel(unnamed_vec)
 #' camel(named_vec)
 #' camel(df)
-#' camel(df, rownames = FALSE)
+#' camel(df, rownames = TRUE)
 #' camel(tbl)
 #' camel(lst)
 #'
@@ -55,7 +55,7 @@
 #' snake(unnamed_vec)
 #' snake(named_vec)
 #' snake(df)
-#' snake(df, rownames = FALSE)
+#' snake(df, rownames = TRUE)
 #' snake(tbl)
 #' snake(lst)
 #'
@@ -64,7 +64,7 @@
 #' dotted(unnamed_vec)
 #' dotted(named_vec)
 #' dotted(df)
-#' dotted(df, rownames = FALSE)
+#' dotted(df, rownames = TRUE)
 #' dotted(tbl)
 #' dotted(lst)
 
@@ -198,7 +198,7 @@
 
 #' @rdname names
 #' @export
-camel <- function(object, rownames = TRUE) {
+camel <- function(object, rownames = FALSE) {
     if (is.null(names(object))) {
         .makeNamesCamel(object)
     } else {
@@ -210,7 +210,7 @@ camel <- function(object, rownames = TRUE) {
 
 #' @rdname names
 #' @export
-dotted <- function(object, rownames = TRUE) {
+dotted <- function(object, rownames = FALSE) {
     if (is.null(names(object))) {
         .makeNamesDotted(object)
     } else {
@@ -222,7 +222,7 @@ dotted <- function(object, rownames = TRUE) {
 
 #' @rdname names
 #' @export
-snake <- function(object, rownames = TRUE) {
+snake <- function(object, rownames = FALSE) {
     if (is.null(names(object))) {
         .makeNamesSnake(object)
     } else {

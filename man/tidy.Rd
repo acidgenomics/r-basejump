@@ -69,8 +69,9 @@
 \item{y}{Secondary object.}
 }
 \description{
-Avoid NAMESPACE collisions with \href{https://www.bioconductor.org/}{Bioconductor}
-generics by using \code{\link[=setMethod]{setMethod()}} to relevant \code{signature}.
+Avoid \code{NAMESPACE} collisions with
+\href{https://www.bioconductor.org/}{Bioconductor} generics by using \code{\link[=setMethod]{setMethod()}}
+to relevant \code{signature}.
 }
 \note{
 For tibble coercion with \code{\link[=as]{as()}} or \code{\link[=as_tibble]{as_tibble()}}, rownames are always

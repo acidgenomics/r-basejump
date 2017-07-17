@@ -1,4 +1,4 @@
-# function name variants ====
+# Function name variants ====
 # nolint start
 
 #' @rdname assignAsNewEnv

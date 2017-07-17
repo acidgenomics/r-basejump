@@ -474,9 +474,6 @@ SummarizedExperiment::colData
 #' @export
 SummarizedExperiment::rowData
 
-#' @export
-SummarizedExperiment::SummarizedExperiment
-
 
 
 # S4Vectors ====

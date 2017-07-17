@@ -1,7 +1,8 @@
 #' [tidyverse](http://tidyverse.org/) S4 methods
 #'
-#' Avoid NAMESPACE collisions with [Bioconductor](https://www.bioconductor.org/)
-#' generics by using [setMethod()] to relevant `signature`.
+#' Avoid `NAMESPACE` collisions with
+#' [Bioconductor](https://www.bioconductor.org/) generics by using [setMethod()]
+#' to relevant `signature`.
 #'
 #' @rdname tidy
 #' @docType methods

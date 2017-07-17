@@ -13,7 +13,7 @@ mdHeader(string, level = 2L)
 \item{level}{Header level (1-7).}
 }
 \value{
-String.
+\code{\link[=writeLines]{writeLines()}}.
 }
 \description{
 Markdown header
@@ -21,4 +21,7 @@ Markdown header
 \examples{
 mdHeader("Header")
 mdHeader("Header", level = 4L)
+}
+\seealso{
+Other Markdown utilities: \code{\link{mdList}}
 }
