@@ -50,7 +50,7 @@ summarizeRows <- function(x, sep = ", ") {
         stop("Column data required")
     }
     x %>%
-        as_tibble %>%
+        as("tibble") %>%
         summarise_all(funs(toStringSortUnique(., sep = sep))) %>%
         mutate_all(funs(fixNA))
 }

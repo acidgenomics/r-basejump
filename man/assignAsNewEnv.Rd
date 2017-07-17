@@ -3,7 +3,7 @@
 \name{assignAsNewEnv}
 \alias{assignAsNewEnv}
 \alias{assign_as_new_env}
-\alias{assign_data}
+\alias{assign_and_save_data}
 \title{Assign multiple objects to a new environment}
 \usage{
 assignAsNewEnv(..., envirName)
