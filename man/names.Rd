@@ -24,11 +24,11 @@
 \alias{title_case}
 \title{Make syntactically valid names}
 \usage{
-camel(object, rownames = TRUE)
+camel(object, rownames = FALSE)
 
-dotted(object, rownames = TRUE)
+dotted(object, rownames = FALSE)
 
-snake(object, rownames = TRUE)
+snake(object, rownames = FALSE)
 
 titleCase(object)
 
@@ -83,7 +83,7 @@ lst <- list(Item.A = c(1, 2),
 camel(unnamed_vec)
 camel(named_vec)
 camel(df)
-camel(df, rownames = FALSE)
+camel(df, rownames = TRUE)
 camel(tbl)
 camel(lst)
 
@@ -92,7 +92,7 @@ camel(lst)
 snake(unnamed_vec)
 snake(named_vec)
 snake(df)
-snake(df, rownames = FALSE)
+snake(df, rownames = TRUE)
 snake(tbl)
 snake(lst)
 
@@ -101,7 +101,7 @@ snake(lst)
 dotted(unnamed_vec)
 dotted(named_vec)
 dotted(df)
-dotted(df, rownames = FALSE)
+dotted(df, rownames = TRUE)
 dotted(tbl)
 dotted(lst)
 }

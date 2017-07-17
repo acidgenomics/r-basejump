@@ -18,8 +18,8 @@
 #'   test update_packages use_data use_data_raw use_testthat
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate
-#'   mutate_all n pull right_join summarise summarise_all summarize
-#'   summarize_all top_n ungroup
+#'   mutate_all mutate_if n pull right_join summarise summarise_all summarise_if
+#'   summarize summarize_all summarize_if top_n ungroup
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable knit opts_chunk opts_knit

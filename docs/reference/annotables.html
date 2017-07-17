@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><a href='http://tidyverse.org/'>tidyverse</a> S4 methods — arrange,data.frame-method • basejump</title>
+<title><a href='http://www.ensembl.org/'>Ensembl</a> annotations — .annotable • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,97 +80,53 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><a href='http://tidyverse.org/'>tidyverse</a> S4 methods</h1>
+    <h1><a href='http://www.ensembl.org/'>Ensembl</a> annotations</h1>
     </div>
 
     
-    <p>Avoid <code>NAMESPACE</code> collisions with
-<a href='https://www.bioconductor.org/'>Bioconductor</a> generics by using <code>setMethod()</code>
-to relevant <code>signature</code>.</p>
+    <p>Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
+pre-compiled from <a href='http://www.ensembl.org/'>Ensembl</a> with the
+<a href='http://bioconductor.org/packages/release/bioc/html/biomaRt.html'>biomaRt</a>
+package. For gene annotables, the Entrez identifier is removed, to allow
+for unique Ensembl gene identifiers.</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>arrange</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='co'># S4 method for character</span>
+<span class='fu'><a href='all_generics.html'>annotable</a></span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
+<span class='co'># S4 method for character</span>
+<span class='fu'><a href='all_generics.html'>gene2entrez</a></span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
+<span class='co'># S4 method for character</span>
+<span class='fu'><a href='all_generics.html'>gene2symbol</a></span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for response</span>
-<span class='fu'>content</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>filter</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>mutate</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>setdiff</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>setequal</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
+<span class='co'># S4 method for character</span>
+<span class='fu'><a href='all_generics.html'>tx2gene</a></span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Primary object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional parameters.</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>Object to coerce.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>Primary object.</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>Secondary object.</p></td>
+      <td><p>Object. Default usage is to provide Ensembl genome build as a
+string.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data.frame with unique rows per gene or transcript.</p>
+    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For tibble coercion with <code>as()</code> or <code><a href='all_generics.html'>as_tibble()</a></code>, rownames are always
-moved to the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally.
-This provides more consistent behavior in the tidyverse, which can
-inadvertently strip rownames during filtering operations.</p>
+    <p>If the <code>format</code> argument is set to <code>gene2entrez</code>, <code><a href='all_generics.html'>annotable()</a></code> returns
+a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> with non-unique rows grouped by <code>ensgene</code>, instead of a
+data.frame.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <ul>
-<li><p><a href='https://www.bioconductor.org/'>Bioconductor</a>:
-Biobase, BiocGenerics, S4Vectors.</p></li>
-<li><p><a href='http://tidyverse.org/'>tidyverse</a>:
-dplyr, httr, tidyr.</p></li>
-</ul>
+    <p>Consult the annotables package documentation (<code>help("annotables")</code>)
+for a list of currently supported genomes.</p>
     
 
   </div>
@@ -179,10 +135,16 @@ dplyr, httr, tidyr.</p></li>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh, Rory Kirchner
 
   </div>
 </div>

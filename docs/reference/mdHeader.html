@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Save data objects — saveData • basejump</title>
+<title>Markdown header — mdHeader • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,66 +80,57 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Save data objects</h1>
+    <h1>Markdown header</h1>
     </div>
 
     
-    <p>Quickly save objects in a project.
-
-    <code>saveDataRaw()</code> is a wrapper for <code>saveData()</code> that enables quick
-saving of objects to the <code>data-raw</code> directory.
-
-    <code>assignAndSaveData()</code> assigns a new object by name to the
-current working environment then saves the newly assigned object, specified
-by <code>dir</code>.</p>
+    <p>Markdown header</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>saveDataRaw</span>(<span class='no'>...</span>)
-
-<span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>mdHeader</span>(<span class='no'>string</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Dot objects.</p></td>
+      <th>string</th>
+      <td><p>String.</p></td>
     </tr>
     <tr>
-      <th>dir</th>
-      <td><p>Output directory. Defaults to <strong>data</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>compress</th>
-      <td><p>Compression method, supporting <code>xz</code> (<strong>preferred</strong>), <code>bzip2</code>,
-or <code>gzip</code>. Compression can be disabled by setting as <code>FALSE</code>, although this
-is not generally recommended.</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>Desired variable name.</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>level</th>
+      <td><p>Header level (1-7).</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>writeLines()</code>.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p>
+    <p>Other Markdown utilities: <code><a href='mdList.html'>mdList</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>mdHeader</span>(<span class='st'>"Header"</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## Header
+#&gt; </div><div class='input'><span class='fu'>mdHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>4L</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; #### Header
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

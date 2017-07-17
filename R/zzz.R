@@ -1,4 +1,4 @@
-# function name variants ====
+# Function name variants ====
 # nolint start
 
 #' @rdname assignAsNewEnv
@@ -9,7 +9,7 @@ assignAsNewEnv -> assign_as_new_env
 #' @rdname assignAsNewEnv
 #' @usage NULL
 #' @export
-assignData -> assign_data
+assignAndSaveData -> assign_and_save_data
 
 #' @rdname clearWarnings
 #' @usage NULL
@@ -56,7 +56,12 @@ loadData -> load_data
 #' @export
 loadRemote -> load_remote
 
-#' @rdname markdown
+#' @rdname mdHeader
+#' @usage NULL
+#' @export
+mdHeader -> md_header
+
+#' @rdname mdList
 #' @usage NULL
 #' @export
 mdList -> md_list
@@ -65,6 +70,11 @@ mdList -> md_list
 #' @usage NULL
 #' @export
 packageProject -> package_project
+
+#' @rdname packageSE
+#' @usage NULL
+#' @export
+packageSE -> package_se
 
 #' @rdname readDataRaw
 #' @usage NULL
