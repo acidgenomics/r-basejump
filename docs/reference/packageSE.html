@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>basejump — basejump-package • basejump</title>
+<title>Package into a SummarizedExperiment — packageSE • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,50 +80,53 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>basejump</h1>
+    <h1>Package into a SummarizedExperiment</h1>
     </div>
 
     
-    <p>Base functions for bioinformatics and R package development.</p>
+    <p>Package into a SummarizedExperiment</p>
     
 
-        
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The package exports <code><a href='names.html'>camel()</a></code> and <code><a href='names.html'>snake()</a></code> variants of all functions,
-for seamless integration into <a href='https://www.bioconductor.org'>Bioconductor</a>
-and <a href='http://tidyverse.org'>tidyverse</a> workflows. Function parameters are
-always passed in <code><a href='names.html'>camel()</a></code> case. We also provide British spelling variants
-(e.g. colour) of the function names wherever applicable.</p>
+    <pre class="usage"><span class='fu'>packageSE</span>(<span class='no'>assays</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>assays</th>
+      <td><p>assays.</p></td>
+    </tr>
+    <tr>
+      <th>colData</th>
+      <td><p>Sample metadata.</p></td>
+    </tr>
+    <tr>
+      <th>rowData</th>
+      <td><p><a href='http://www.ensembl.org/'>Ensembl</a> gene annotations.</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p>Custom metadata.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Useful links:</p><ul>
-<li><p><a href='http://steinbaugh.com/basejump'>http://steinbaugh.com/basejump</a></p></li>
-<li><p><a href='https://github.com/steinbaugh/basejump'>https://github.com/steinbaugh/basejump</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/steinbaugh/basejump/issues'>https://github.com/steinbaugh/basejump/issues</a></p></li>
-</ul>
+    <p>SummarizedExperiment.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
           </ul>
 
     <h2>Author</h2>
     
-<strong>Maintainer</strong>: Michael J. Steinbaugh <a href='mailto:mike@steinbaugh.com'>mike@steinbaugh.com</a>
-
-Other contributors:
-<ul>
-<li><p>Rory Kirchner <a href='mailto:roryk@alum.mit.edu'>roryk@alum.mit.edu</a> [contributor]</p></li>
-</ul>
-
+Michael Steinbaugh
 
   </div>
 </div>

@@ -13,10 +13,16 @@ mdList(vec, ordered = FALSE)
 \item{ordered}{Ordered (\code{TRUE}; \code{1.}) or unordered (\code{FALSE}; \code{-}) list in
 Markdown format.}
 }
+\value{
+\code{\link[=writeLines]{writeLines()}}.
+}
 \description{
 Markdown list
 }
 \examples{
 mdList(c("milk", "eggs"))
 mdList(c("milk", "eggs"), ordered = TRUE)
+}
+\seealso{
+Other Markdown utilities: \code{\link{mdHeader}}
 }

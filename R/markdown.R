@@ -1,9 +1,11 @@
 #' Markdown header
 #'
+#' @family Markdown utilities
+#'
 #' @param string String.
 #' @param level Header level (1-7).
 #'
-#' @return String.
+#' @return [writeLines()].
 #' @export
 #'
 #' @examples
@@ -13,16 +15,24 @@ mdHeader <- function(string, level = 2L) {
     if (!level %in% seq(1L:7L)) {
         stop("Markdown supports 1-7 header levels")
     }
-    paste(str_dup("#", level), string)
+    writeLines(c(
+        "",
+        "",
+        paste(str_dup("#", level), string),
+        ""))
 }
 
 
 
 #' Markdown list
 #'
+#' @family Markdown utilities
+#'
 #' @param vec Character vector.
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
 #'   Markdown format.
+#'
+#' @return [writeLines()].
 #' @export
 #'
 #' @examples
