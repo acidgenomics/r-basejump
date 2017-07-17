@@ -71,6 +71,11 @@ mdList -> md_list
 #' @export
 packageProject -> package_project
 
+#' @rdname packageSE
+#' @usage NULL
+#' @export
+packageSE -> package_se
+
 #' @rdname readDataRaw
 #' @usage NULL
 #' @export
