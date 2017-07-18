@@ -31,6 +31,11 @@ detectHPC -> detect_hpc
 #' @export
 detectOrganism -> detect_organism
 
+#' @rdname ensemblVersion
+#' @usage NULL
+#' @export
+ensemblVersion -> ensembl_version
+
 #' @rdname names
 #' @usage NULL
 #' @export
