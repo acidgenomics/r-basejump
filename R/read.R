@@ -94,11 +94,11 @@ readFileByExtension <- function(file, ...) {
 #'
 #' @param file YAML file.
 #'
-#' @return list.
+#' @return [list].
 #' @export
 readYAML <- function(file) {
     if (file.exists(file)) {
-        message(paste("Reading", file))
+        message(paste("Reading", basename(file)))
         yaml.load_file(file)
     } else {
         NULL
