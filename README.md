@@ -1,9 +1,3 @@
-[`devtools`]: https://cran.r-project.org/package=devtools
-[Bioconductor]: https://bioconductor.org
-[R]: https://www.r-project.org
-
-
-
 # basejump
 
 [![Build Status](https://travis-ci.org/steinbaugh/basejump.svg?branch=master)](https://travis-ci.org/steinbaugh/basejump)
@@ -22,9 +16,14 @@ source("https://bioconductor.org/biocLite.R")
 biocLite("steinbaugh/basejump")
 ```
 
-### [`devtools`][] method
+### [devtools][] method
 
 ```{r}
 install.packages("devtools")
 devtools::install_github("steinbaugh/basejump")
 ```
+
+
+[Bioconductor]: https://bioconductor.org
+[devtools]: https://cran.r-project.org/package=devtools
+[R]: https://www.r-project.org
