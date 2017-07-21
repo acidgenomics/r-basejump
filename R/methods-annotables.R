@@ -24,13 +24,12 @@
 
 
 #' @rdname annotables
-#' @usage NULL
-## @param genomeBuild Genome build.
-## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
-##   or `gene2entrez`.
-.annotable <- function(genomeBuild, format) {
-    if (!is.character(genomeBuild)) {
-        stop("Genome build must be a character vector")
+#' @param string String containing genome build or organism name (sing
+#' @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
+#'   or `gene2entrez`.
+.annotable <- function(string, format) {
+    if (!is_string(string)) {
+        stop("Not a string")
     }
     if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
         stop("Unsupported format")
@@ -38,18 +37,34 @@
     envir <- as.environment("package:annotables")
 
     # Remap genome build aliases
-    if (genomeBuild == "hg19") {
-        genomeBuild <- "grch37"
-    } else if (genomeBuild == "hg38") {
-        genomeBuild <- "grch38"
-    } else if (genomeBuild == "mm10") {
-        genomeBuild <- "grcm38"
+    string <- tolower(string)
+    if (string == "hg19") {
+        genome <- "grch37"
+    } else if (string == "hg38") {
+        genome <- "grch38"
+    } else if (string == "mm10") {
+        genome <- "grcm38"
+    } else {
+        genome <- string
     }
 
-    message(paste("Using", genomeBuild, format, "annotable"))
+    # FIXME Add support for matching by name
+    supportedGenomes <-
+        c(chicken = "galgal5",
+          fruitfly = "bdgp6",
+          human = "grch38",
+          human37 = "grch37",
+          mouse = "grcm38",
+          rat = "rnor6",
+          roundworm = "wbcel235")
+    if (!genome %in% supportedGenomes) {
+        stop("Failed to match a supported genome")
+    }
+
+    message(paste("Using", genome, format, "annotable"))
 
     if (format == "gene") {
-        get(genomeBuild, envir = envir) %>%
+        get(genome, envir = envir) %>%
             mutate(entrez = NULL) %>%
             distinct %>%
             arrange(.data[["ensgene"]]) %>%
@@ -79,19 +94,21 @@
                        .data[["biotype"]] %in%
                            c("non_stop_decay",
                              "nonsense_mediated_decay") ~ "decaying",
-                       str_detect(.data[["biotype"]], "IG_") ~ "ig",
-                       str_detect(.data[["biotype"]], "TR_") ~ "tcr",
+                       str_detect(.data[["biotype"]],
+                                  regex("^ig_", ignore_case = TRUE)) ~ "ig",
+                       str_detect(.data[["biotype"]],
+                                  regex("^tr_", ignore_case = TRUE)) ~ "tcr",
                        TRUE ~ "other")) %>%
             as.data.frame %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        str_c(genomeBuild, "tx2gene", sep = "_") %>%
+        str_c(genome, "tx2gene", sep = "_") %>%
             get(envir = envir) %>%
             arrange(.data[["enstxp"]]) %>%
             as.data.frame %>%
             set_rownames(.[["enstxp"]])
     } else if (format == "gene2symbol") {
-        get(genomeBuild, envir = envir) %>%
+        get(genome, envir = envir) %>%
             tidy_select(c("ensgene", "symbol")) %>%
             distinct %>%
             arrange(.data[["ensgene"]]) %>%
@@ -99,7 +116,7 @@
             as.data.frame %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "gene2entrez") {
-        get(genomeBuild, envir = envir) %>%
+        get(genome, envir = envir) %>%
             tidy_select(c("ensgene", "entrez")) %>%
             filter(!is.na(.data[["entrez"]])) %>%
             group_by(.data[["ensgene"]]) %>%
@@ -112,10 +129,7 @@
 #' @rdname annotables
 #' @export
 setMethod("annotable", "character", function(object) {
-    if (!is_string(object)) {
-        stop("Genome build must be specified as string")
-    }
-    .annotable(genomeBuild = object, format = "gene")
+    .annotable(object, format = "gene")
 })
 
 
@@ -123,10 +137,7 @@ setMethod("annotable", "character", function(object) {
 #' @rdname annotables
 #' @export
 setMethod("gene2entrez", "character", function(object) {
-    if (!is_string(object)) {
-        stop("Genome build must be specified as string")
-    }
-    .annotable(genomeBuild = object, format = "gene2entrez")
+    .annotable(object, format = "gene2entrez")
 })
 
 
@@ -134,10 +145,7 @@ setMethod("gene2entrez", "character", function(object) {
 #' @rdname annotables
 #' @export
 setMethod("gene2symbol", "character", function(object) {
-    if (!is_string(object)) {
-        stop("Genome build must be specified as string")
-    }
-    .annotable(genomeBuild = object, format = "gene2symbol")
+    .annotable(object, format = "gene2symbol")
 })
 
 
@@ -145,8 +153,5 @@ setMethod("gene2symbol", "character", function(object) {
 #' @rdname annotables
 #' @export
 setMethod("tx2gene", "character", function(object) {
-    if (!is_string(object)) {
-        stop("Genome build must be specified as string")
-    }
-    .annotable(genomeBuild = object, format = "tx2gene")
+    .annotable(object, format = "tx2gene")
 })

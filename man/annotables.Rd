@@ -9,6 +9,8 @@
 \alias{tx2gene,character-method}
 \title{\href{http://www.ensembl.org/}{Ensembl} annotations}
 \usage{
+.annotable(string, format)
+
 \S4method{annotable}{character}(object)
 
 \S4method{gene2entrez}{character}(object)
@@ -18,6 +20,11 @@
 \S4method{tx2gene}{character}(object)
 }
 \arguments{
+\item{string}{String containing genome build or organism name (sing}
+
+\item{format}{Desired table format, either \code{gene}, \code{tx2gene}, \code{gene2symbol},
+or \code{gene2entrez}.}
+
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
 string.}
 }
