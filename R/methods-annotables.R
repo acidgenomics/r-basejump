@@ -20,6 +20,10 @@
 #'   for a list of currently supported genomes.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
+#'
+#' @examples
+#' annotable("hg38") %>% glimpse
+#' detectOrganism("ENSMUSG00000000001") %>% gene2symbol %>% head
 
 
 
@@ -36,19 +40,6 @@
     }
     envir <- as.environment("package:annotables")
 
-    # Remap genome build aliases
-    string <- tolower(string)
-    if (string == "hg19") {
-        genome <- "grch37"
-    } else if (string == "hg38") {
-        genome <- "grch38"
-    } else if (string == "mm10") {
-        genome <- "grcm38"
-    } else {
-        genome <- string
-    }
-
-    # FIXME Add support for matching by name
     supportedGenomes <-
         c(chicken = "galgal5",
           fruitfly = "bdgp6",
@@ -57,8 +48,30 @@
           mouse = "grcm38",
           rat = "rnor6",
           roundworm = "wbcel235")
-    if (!genome %in% supportedGenomes) {
-        stop("Failed to match a supported genome")
+
+    if (!is.null(names(string))) {
+        # `detectOrganism()` support
+        # Get genome build by organism name
+        string <- names(string)
+        if (string %in% names(supportedGenomes)) {
+            genome <- supportedGenomes[[string]]
+        } else {
+            stop("Unsupported organism name")
+        }
+    } else {
+        string <- tolower(string)
+        if (string == "hg19") {
+            genome <- "grch37"
+        } else if (string == "hg38") {
+            genome <- "grch38"
+        } else if (string == "mm10") {
+            genome <- "grcm38"
+        } else {
+            genome <- string
+        }
+        if (!genome %in% supportedGenomes) {
+            stop("String failed to match a supported genome")
+        }
     }
 
     message(paste("Using", genome, format, "annotable"))
