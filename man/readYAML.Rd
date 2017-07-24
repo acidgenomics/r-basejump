@@ -11,7 +11,7 @@ readYAML(file)
 \item{file}{YAML file.}
 }
 \value{
-list.
+\link{list}.
 }
 \description{
 Read YAML file

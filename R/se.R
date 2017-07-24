@@ -8,6 +8,7 @@
 #' @param metadata Custom metadata.
 #'
 #' @return [SummarizedExperiment].
+#' @export
 packageSE <- function(
     assays,
     colData,
