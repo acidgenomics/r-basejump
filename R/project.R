@@ -1,4 +1,4 @@
-#' Project management utilities
+#' Project Management Utilities
 #'
 #' @rdname project
 #' @description Create necessary directory structure for an

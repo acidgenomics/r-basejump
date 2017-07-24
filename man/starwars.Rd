@@ -3,12 +3,12 @@
 \docType{data}
 \name{starwars}
 \alias{starwars}
-\title{Star Wars dataset.}
+\title{Starwars characters}
 \format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 87 rows and 13 columns.}
 \usage{
 starwars
 }
 \description{
-Star Wars dataset.
+This data comes from SWAPI, the Star Wars API, \url{http://swapi.co/}
 }
 \keyword{internal}

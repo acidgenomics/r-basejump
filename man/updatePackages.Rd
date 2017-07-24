@@ -3,15 +3,16 @@
 \name{updatePackages}
 \alias{updatePackages}
 \alias{update_packages}
-\title{Update all installed packages}
+\title{Update All Installed Packages}
 \usage{
 updatePackages()
 }
 \description{
-Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+Ensure that all \href{https://bioconductor.org}{Bioconductor},
+\href{https://cran.r-project.org}{CRAN}, and \href{https://github.com}{GitHub} packages
+are up to date.
 }
 \details{
-Internaly this is a wrapper for \code{\link[devtools:update_packages]{devtools::update_packages()}} that improves
-support for Bioconductor.
+Internaly this is a wrapper for \code{\link[devtools:update_packages]{devtools::update_packages()}} that adds
+Bioconductor support.
 }
-\keyword{internal}

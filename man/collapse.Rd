@@ -9,7 +9,7 @@
 \alias{summarise_rows}
 \alias{to_string_sort_unique}
 \alias{to_string_unique}
-\title{Collapse utilities}
+\title{Collapse Utilities}
 \usage{
 toStringUnique(x, sep = ", ")
 

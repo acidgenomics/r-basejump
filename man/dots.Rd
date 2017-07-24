@@ -4,7 +4,7 @@
 \alias{dots}
 \alias{get_objs_from_dots}
 \alias{getObjsFromDots}
-\title{Evaluate dots}
+\title{Evaluate Dots}
 \usage{
 dots(...)
 
@@ -16,7 +16,8 @@ get_objs_from_dots(.dots)
 \item{.dots}{Dots values.}
 }
 \description{
-Capture function ellipses as dots using rlang syntax.
+Capture function ellipses as dots using
+\href{https://cran.r-project.org/package=rlang}{rlang} syntax.
 }
 \seealso{
 \itemize{

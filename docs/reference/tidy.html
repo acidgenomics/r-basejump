@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><a href='http://tidyverse.org/'>tidyverse</a> S4 methods — arrange,data.frame-method • basejump</title>
+<title><a href='http://tidyverse.org/'>tidyverse</a> S4 Methods — arrange • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,7 +80,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><a href='http://tidyverse.org/'>tidyverse</a> S4 methods</h1>
+    <h1><a href='http://tidyverse.org/'>tidyverse</a> S4 Methods</h1>
     </div>
 
     
@@ -89,17 +89,31 @@
 to relevant <code>signature</code>.</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>arrange</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
+
+<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)
+
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+
+<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
+<span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'><a href='all_generics.html'>as_tibble</a></span>(<span class='no'>from</span>)
+<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for response</span>
 <span class='fu'>content</span>(<span class='no'>object</span>)
@@ -108,7 +122,7 @@ to relevant <code>signature</code>.</p>
 <span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>filter</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -117,7 +131,7 @@ to relevant <code>signature</code>.</p>
 <span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'><a href='all_generics.html'>mutate</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -129,18 +143,36 @@ to relevant <code>signature</code>.</p>
 <span class='fu'>setequal</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>select</span>(<span class='no'>x</span>, <span class='no'>keys</span>, <span class='no'>columns</span>, <span class='no'>keytype</span>, <span class='no'>...</span>)
+
+<span class='fu'>content</span>(<span class='no'>object</span>)
+
+<span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>setdiff</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>union</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>tidy_select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Primary object.</p></td>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional parameters.</p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>from</th>
@@ -154,11 +186,33 @@ to relevant <code>signature</code>.</p>
       <th>y</th>
       <td><p>Secondary object.</p></td>
     </tr>
+    <tr>
+      <th>keys</th>
+      <td><p>the keys to select records for from the database.  All possible 
+    keys are returned by using the <code>keys</code> method.</p></td>
+    </tr>
+    <tr>
+      <th>columns</th>
+      <td><p>the columns or kinds of things that can be retrieved
+    from the database.  As with <code>keys</code>, all possible columns are
+    returned by using the <code>columns</code> method.</p></td>
+    </tr>
+    <tr>
+      <th>keytype</th>
+      <td><p>the keytype that matches the keys used.  For the
+    <code>select</code> methods, this is used to indicate the kind of ID being used
+    with the keys argument. For the <code>keys</code> method this is used to
+    indicate which kind of keys are desired from <code>keys</code></p></td>
+    </tr>
+    <tr>
+      <th>.data</th>
+      <td><p>Data object.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>For tibble coercion with <code>as()</code> or <code><a href='all_generics.html'>as_tibble()</a></code>, rownames are always
+    <p>For tibble coercion with <code>as()</code> or <code>as_tibble()</code>, rownames are always
 moved to the <code>rowname</code> column, using <code><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column()</a></code> internally.
 This provides more consistent behavior in the tidyverse, which can
 inadvertently strip rownames during filtering operations.</p>

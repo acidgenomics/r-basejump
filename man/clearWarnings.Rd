@@ -3,11 +3,11 @@
 \name{clearWarnings}
 \alias{clearWarnings}
 \alias{clear_warnings}
-\title{Clear warnings}
+\title{Clear Warnings}
 \usage{
 clearWarnings()
 }
 \description{
-Clear warnings
+Clear Warnings
 }
 \keyword{internal}

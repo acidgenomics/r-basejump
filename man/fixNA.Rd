@@ -3,7 +3,7 @@
 \name{fixNA}
 \alias{fixNA}
 \alias{fix_na}
-\title{Fix character strings missing \code{NA}}
+\title{Fix Character Strings Missing \code{NA}}
 \usage{
 fixNA(string)
 }
@@ -14,7 +14,7 @@ fixNA(string)
 String containing \code{NA}.
 }
 \description{
-Fix character strings missing \code{NA}
+Fix Character Strings Missing \code{NA}
 }
 \examples{
 fixNA(c(1, "x", "", "NA"))

@@ -1,15 +1,17 @@
-#' Install or update Bioconductor and CRAN packages
+#' Install or Update Bioconductor Packages
 #'
 #' This function is a convenience wrapper for [BiocInstaller::biocLite()]. It
 #' sources the required [biocLite.R](https://bioconductor.org/biocLite.R) file
 #' from the Bioconductor website automatically then calls [biocLite()].
 #'
-#' Supports Bioconductor, CRAN, and GitHub repositories.
+#' Supports [Bioconductor](https://bioconductor.org),
+#' [CRAN](https://cran.r-project.org), and [GitHub](https://github.com)
+#' repositories.
 #'
 #' @keywords internal
 #'
 #' @param pkgs Character vector of package names.
-#' @param ... Additional arguments passed to [BiocInstaller::biocLite()].
+#' @param ... Additional arguments, passed to [BiocInstaller::biocLite()].
 #'
 #' @export
 #'
@@ -17,7 +19,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Load Bioconductor and update packages
+#' # Update all packages
 #' biocLite()
 #'
 #' # Install packages
