@@ -82,7 +82,7 @@ readFileByExtension <- function(file, ...) {
     if (is_tibble(data)) {
         data %>%
             remove_na %>%
-            snake(rownames = FALSE)
+            snake
     } else {
         data
     }
