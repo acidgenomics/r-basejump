@@ -37,6 +37,17 @@ clearWarnings <- function() {
 
 
 
+#' Ensembl build version
+#'
+#' @keywords internal
+#'
+#' @export
+ensemblVersion <- function() {
+    annotables::ensembl_version
+}
+
+
+
 #' Fix character strings missing `NA`
 #'
 #' @param string String missing `NA`.
