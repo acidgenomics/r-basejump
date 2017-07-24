@@ -2,7 +2,7 @@
 % Please edit documentation in R/transmit.R
 \name{transmit}
 \alias{transmit}
-\title{Transmit (Download) Files From a Remote Server}
+\title{Transmit (Download) Files from a Remote Server}
 \usage{
 transmit(remoteDir, pattern = NULL, rename = NULL, compress = FALSE,
   localDir = "data-raw")

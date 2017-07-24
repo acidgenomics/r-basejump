@@ -119,6 +119,8 @@ rename(x, ...)
     with the keys argument. For the \code{keys} method this is used to
     indicate which kind of keys are desired from \code{keys}
   }
+
+\item{.data}{Data object.}
 }
 \description{
 Avoid \code{NAMESPACE} collisions with

@@ -6,6 +6,8 @@
 #'
 #' @rdname tidy
 #'
+#' @param .data Data object.
+#'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):
 #'     [Biobase], [BiocGenerics], S4Vectors.

@@ -11,16 +11,28 @@
 \alias{.checkRownames}
 \alias{.makeNamesDotted}
 \alias{.setNamesDotted}
-\alias{dotted,character-method}
 \alias{dotted,ANY-method}
+\alias{dotted,character-method}
+\alias{dotted,data.frame-method}
+\alias{dotted,list-method}
+\alias{dotted,matrix-method}
+\alias{dotted,tbl_df-method}
 \alias{.makeNamesCamel}
 \alias{.setNamesCamel}
-\alias{camel,character-method}
 \alias{camel,ANY-method}
+\alias{camel,character-method}
+\alias{camel,data.frame-method}
+\alias{camel,list-method}
+\alias{camel,matrix-method}
+\alias{camel,tbl_df-method}
 \alias{.makeNamesSnake}
 \alias{.setNamesSnake}
-\alias{snake,character-method}
 \alias{snake,ANY-method}
+\alias{snake,character-method}
+\alias{snake,data.frame-method}
+\alias{snake,list-method}
+\alias{snake,matrix-method}
+\alias{snake,tbl_df-method}
 \alias{.makeTitleCase}
 \alias{titleCase,character-method}
 \alias{.makeFirstCase}
@@ -43,17 +55,41 @@ snake(object, ...)
 
 titleCase(object, ...)
 
+\S4method{dotted}{ANY}(object, rownames = FALSE)
+
 \S4method{dotted}{character}(object)
 
-\S4method{dotted}{ANY}(object, rownames)
+\S4method{dotted}{data.frame}(object, rownames = FALSE)
 
-\S4method{camel}{character}(object)
+\S4method{dotted}{list}(object)
+
+\S4method{dotted}{matrix}(object, rownames = FALSE)
+
+\S4method{dotted}{tbl_df}(object)
 
 \S4method{camel}{ANY}(object, rownames = FALSE)
 
-\S4method{snake}{character}(object)
+\S4method{camel}{character}(object)
+
+\S4method{camel}{data.frame}(object, rownames = FALSE)
+
+\S4method{camel}{list}(object)
+
+\S4method{camel}{matrix}(object, rownames = FALSE)
+
+\S4method{camel}{tbl_df}(object)
 
 \S4method{snake}{ANY}(object, rownames = FALSE)
+
+\S4method{snake}{character}(object)
+
+\S4method{snake}{data.frame}(object, rownames = FALSE)
+
+\S4method{snake}{list}(object)
+
+\S4method{snake}{matrix}(object, rownames = FALSE)
+
+\S4method{snake}{tbl_df}(object)
 
 \S4method{titleCase}{character}(object)
 
@@ -85,12 +121,13 @@ modification of the underlying data.
 }
 \examples{
 # Unnamed character vector, with no names assigned
-unnamed_vec <- c("hello world",
-                 "HELLO WORLD",
-                 "RNAi clones",
-                 "worfdbHTMLRemap",
-                 123,
-                 NA)
+unnamed_vec <-
+  c("hello world",
+    "HELLO WORLD",
+    "RNAi clones",
+    "worfdbHTMLRemap",
+    123,
+    NA)
 
 # Named character vector
 named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
