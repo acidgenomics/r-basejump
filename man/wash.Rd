@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{wash}
 \alias{wash}
-\title{Wash a data frame}
+\title{Wash a \code{data.frame}}
 \usage{
 wash(x)
 }

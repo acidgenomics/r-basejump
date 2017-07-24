@@ -3,7 +3,7 @@
 \name{writeCounts}
 \alias{writeCounts}
 \alias{write_counts}
-\title{Write counts}
+\title{Write Counts}
 \usage{
 writeCounts(..., dir = file.path("results", "counts"), gzip = TRUE)
 }

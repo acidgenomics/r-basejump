@@ -1,4 +1,4 @@
-#' Read CSV files inside `data-raw` directory
+#' Read CSV Files Inside `data-raw`
 #'
 #' @export
 readDataRaw <- function() {
@@ -15,7 +15,7 @@ readDataRaw <- function() {
 
 
 
-#' Read file by extension
+#' Read File by Extension
 #'
 #' Supports automatic loading of standard `.csv`, `.mtx`, `.tsv`, and `.xlsx`
 #' files. Also supports bcbio-nextgen pipeline-specific `.counts`, `.colnames`,
@@ -90,7 +90,7 @@ readFileByExtension <- function(file, ...) {
 
 
 
-#' Read YAML file
+#' Read YAML File
 #'
 #' @param file YAML file.
 #'

@@ -1,6 +1,6 @@
-#' Markdown header
+#' Markdown Header
 #'
-#' @family Markdown utilities
+#' @family Markdown Utilities
 #'
 #' @param string String.
 #' @param level Header level (1-7).
@@ -24,9 +24,9 @@ mdHeader <- function(string, level = 2L) {
 
 
 
-#' Markdown list
+#' Markdown List
 #'
-#' @family Markdown utilities
+#' @family Markdown Utilities
 #'
 #' @param vec Character vector.
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in

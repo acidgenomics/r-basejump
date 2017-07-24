@@ -3,10 +3,10 @@
 \name{readDataRaw}
 \alias{readDataRaw}
 \alias{read_data_raw}
-\title{Read CSV files inside \code{data-raw} directory}
+\title{Read CSV Files Inside \code{data-raw}}
 \usage{
 readDataRaw()
 }
 \description{
-Read CSV files inside \code{data-raw} directory
+Read CSV Files Inside \code{data-raw}
 }

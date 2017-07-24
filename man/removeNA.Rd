@@ -3,7 +3,7 @@
 \name{removeNA}
 \alias{removeNA}
 \alias{remove_na}
-\title{Remove rows and columns containing only \code{NA} values}
+\title{Remove Rows and Columns Containing Only \code{NA} Values}
 \usage{
 removeNA(x)
 }
@@ -14,7 +14,7 @@ removeNA(x)
 Sanitized data.
 }
 \description{
-Remove rows and columns containing only \code{NA} values
+Remove Rows and Columns Containing Only \code{NA} Values
 }
 \examples{
 # Remove NA only rows and columns

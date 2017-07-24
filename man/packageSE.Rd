@@ -3,7 +3,7 @@
 \name{packageSE}
 \alias{packageSE}
 \alias{package_se}
-\title{Package into a \link{SummarizedExperiment}}
+\title{Package into a \code{SummarizedExperiment}}
 \usage{
 packageSE(assays, colData, rowData, metadata = NULL)
 }
@@ -20,7 +20,10 @@ packageSE(assays, colData, rowData, metadata = NULL)
 \link{SummarizedExperiment}.
 }
 \description{
-Package into a \link{SummarizedExperiment}
+Package into a \code{SummarizedExperiment}
+}
+\seealso{
+\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment}.
 }
 \author{
 Michael Steinbaugh
