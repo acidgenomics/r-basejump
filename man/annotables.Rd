@@ -43,6 +43,10 @@ If the \code{format} argument is set to \code{gene2entrez}, \code{\link[=annotab
 a \link{tibble} with non-unique rows grouped by \code{ensgene}, instead of a
 \link{data.frame}.
 }
+\examples{
+annotable("hg38") \%>\% glimpse
+detectOrganism("ENSMUSG00000000001") \%>\% gene2symbol \%>\% head
+}
 \seealso{
 Consult the annotables package documentation (\code{help("annotables")})
 for a list of currently supported genomes.
