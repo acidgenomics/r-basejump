@@ -3,11 +3,11 @@
 \name{ensemblVersion}
 \alias{ensemblVersion}
 \alias{ensembl_version}
-\title{Ensembl build version}
+\title{Ensembl Build Version}
 \usage{
 ensemblVersion()
 }
 \description{
-Ensembl build version
+Ensembl Build Version
 }
 \keyword{internal}

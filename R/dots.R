@@ -1,6 +1,11 @@
-#' Evaluate dots
+# nolint start
+
+
+
+#' Evaluate Dots
 #'
-#' Capture function ellipses as dots using rlang syntax.
+#' Capture function ellipses as dots using
+#' [rlang](https://cran.r-project.org/package=rlang) syntax.
 #'
 #' @keywords internal
 #'
@@ -20,7 +25,6 @@ dots <- function(...) {
 
 
 
-# nolint start
 #' @rdname dots
 #' @export
 get_objs_from_dots <- function(.dots) {
@@ -43,9 +47,14 @@ get_objs_from_dots <- function(.dots) {
     }
     objs
 }
-# nolint end
+
+
 
 #' @rdname dots
 #' @usage NULL
 #' @export
 get_objs_from_dots -> getObjsFromDots
+
+
+
+# nolint end

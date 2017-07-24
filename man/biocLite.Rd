@@ -2,14 +2,14 @@
 % Please edit documentation in R/bioconductor.R
 \name{biocLite}
 \alias{biocLite}
-\title{Install or update Bioconductor and CRAN packages}
+\title{Install or Update Bioconductor Packages}
 \usage{
 biocLite(pkgs = NULL, ...)
 }
 \arguments{
 \item{pkgs}{Character vector of package names.}
 
-\item{...}{Additional arguments passed to \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}}.}
+\item{...}{Additional arguments, passed to \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}}.}
 }
 \description{
 This function is a convenience wrapper for \code{\link[BiocInstaller:biocLite]{BiocInstaller::biocLite()}}. It
@@ -17,11 +17,13 @@ sources the required \href{https://bioconductor.org/biocLite.R}{biocLite.R} file
 from the Bioconductor website automatically then calls \code{\link[=biocLite]{biocLite()}}.
 }
 \details{
-Supports Bioconductor, CRAN, and GitHub repositories.
+Supports \href{https://bioconductor.org}{Bioconductor},
+\href{https://cran.r-project.org}{CRAN}, and \href{https://github.com}{GitHub}
+repositories.
 }
 \examples{
 \dontrun{
-# Load Bioconductor and update packages
+# Update all packages
 biocLite()
 
 # Install packages

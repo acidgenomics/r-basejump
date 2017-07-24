@@ -109,6 +109,11 @@ renderProject -> render_project
 #' @rdname names
 #' @usage NULL
 #' @export
+sanitizeNames <- snake
+
+#' @rdname names
+#' @usage NULL
+#' @export
 sanitizeNames -> sanitiseNames
 
 #' @rdname names

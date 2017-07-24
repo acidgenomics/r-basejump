@@ -3,7 +3,7 @@
 \name{readFileByExtension}
 \alias{readFileByExtension}
 \alias{read_file_by_extension}
-\title{Read file by extension}
+\title{Read File by Extension}
 \usage{
 readFileByExtension(file, ...)
 }

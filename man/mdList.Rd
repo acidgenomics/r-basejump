@@ -3,7 +3,7 @@
 \name{mdList}
 \alias{mdList}
 \alias{md_list}
-\title{Markdown list}
+\title{Markdown List}
 \usage{
 mdList(vec, ordered = FALSE)
 }
@@ -17,12 +17,12 @@ Markdown format.}
 \code{\link[=writeLines]{writeLines()}}.
 }
 \description{
-Markdown list
+Markdown List
 }
 \examples{
 mdList(c("milk", "eggs"))
 mdList(c("milk", "eggs"), ordered = TRUE)
 }
 \seealso{
-Other Markdown utilities: \code{\link{mdHeader}}
+Other Markdown Utilities: \code{\link{mdHeader}}
 }

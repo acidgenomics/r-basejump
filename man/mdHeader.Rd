@@ -3,7 +3,7 @@
 \name{mdHeader}
 \alias{mdHeader}
 \alias{md_header}
-\title{Markdown header}
+\title{Markdown Header}
 \usage{
 mdHeader(string, level = 2L)
 }
@@ -16,12 +16,12 @@ mdHeader(string, level = 2L)
 \code{\link[=writeLines]{writeLines()}}.
 }
 \description{
-Markdown header
+Markdown Header
 }
 \examples{
 mdHeader("Header")
 mdHeader("Header", level = 4L)
 }
 \seealso{
-Other Markdown utilities: \code{\link{mdList}}
+Other Markdown Utilities: \code{\link{mdList}}
 }

@@ -1,4 +1,4 @@
-#' [Ensembl](http://www.ensembl.org/) annotations
+#' [Ensembl](http://www.ensembl.org/) Annotations
 #'
 #' Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
 #' pre-compiled from [Ensembl](http://www.ensembl.org/) with the
@@ -28,9 +28,10 @@
 
 
 #' @rdname annotables
-#' @param string String containing genome build or organism name (sing
-#' @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
-#'   or `gene2entrez`.
+#' @usage NULL
+## @param string String containing genome build or organism name.
+## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
+##   or `gene2entrez`.
 .annotable <- function(string, format) {
     if (!is_string(string)) {
         stop("Not a string")

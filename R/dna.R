@@ -1,4 +1,4 @@
-#' DNA sequence utilites
+#' DNA Sequence Utilites
 #'
 #' Generate complement or reverse complement sequences.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/math.R
 \name{geomean}
 \alias{geomean}
-\title{Geometric mean}
+\title{Geometric Mean}
 \usage{
 geomean(x)
 }
@@ -33,4 +33,8 @@ geomean(vec2)
 # Data frame
 df <- data.frame(vec, vec2)
 geomean(df)
+}
+\seealso{
+Other Math Utilities: \code{\link{fc2lr}},
+  \code{\link{pct}}
 }

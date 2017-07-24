@@ -1,3 +1,10 @@
+# 0.0.19
+
+- Improved documentation and consistency with bcbio packages.
+- Improved integration of gene annotation calls using annotables package.
+
+
+
 # 0.0.18
 
 - Initial support for SummarizedExperiment creation with `packageSE()`.

@@ -1,4 +1,4 @@
-#' Collapse utilities
+#' Collapse Utilities
 #'
 #' Helper functions for to produce collapsed output for vectors
 #' ([toString()]) and data frames ([summarizeRows()]).

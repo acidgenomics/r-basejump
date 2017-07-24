@@ -3,7 +3,7 @@
 \name{grepString}
 \alias{grepString}
 \alias{grep_string}
-\title{grep string generator}
+\title{\code{grep} String Generator}
 \usage{
 grepString(identifier)
 }

@@ -1,6 +1,6 @@
 # AnnotationDbi ====
 #' @rdname tidy
-#' @usage NULL
+#' @inheritParams AnnotationDbi::select
 #' @export
 AnnotationDbi::select -> select
 
@@ -8,7 +8,7 @@ AnnotationDbi::select -> select
 
 # Biobase ====
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 Biobase::content -> content
 
@@ -25,17 +25,17 @@ BiocGenerics::design
 BiocGenerics::grep
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 BiocGenerics::intersect -> intersect
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 BiocGenerics::setdiff -> setdiff
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 BiocGenerics::union -> union
 
@@ -69,10 +69,10 @@ cowplot::plot_grid
 
 
 # datasets ====
-#' Motor Trend car road tests.
+#' @inherit datasets::mtcars
 #' @keywords internal
 #' @export
-datasets::"mtcars" -> "mtcars"
+datasets::mtcars -> mtcars
 
 
 
@@ -159,14 +159,13 @@ dplyr::pull
 dplyr::right_join
 
 #' @rdname tidy
-#' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
 
-#' Star Wars dataset.
+#' @inherit dplyr::starwars
 #' @keywords internal
 #' @export
-dplyr::"starwars" -> "starwars"
+dplyr::starwars -> starwars
 
 #' @export
 dplyr::summarise
@@ -481,12 +480,12 @@ SummarizedExperiment::rowData
 S4Vectors::DataFrame
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 S4Vectors::expand -> expand
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 S4Vectors::first -> first
 
@@ -494,7 +493,7 @@ S4Vectors::first -> first
 S4Vectors::metadata
 
 #' @rdname tidy
-#' @usage NULL
+#' @inherit all_generics
 #' @export
 S4Vectors::rename -> rename
 

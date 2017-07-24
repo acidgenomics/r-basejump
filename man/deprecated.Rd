@@ -13,7 +13,7 @@
 \alias{to_string_summarize}
 \alias{toStringSummarise}
 \alias{to_string_summarise}
-\title{Deprecated functions}
+\title{Deprecated Functions}
 \usage{
 createNewProject(...)
 
@@ -29,6 +29,6 @@ toStringSummarize(...)
 \item{...}{Additional parameters.}
 }
 \description{
-Deprecated functions
+Deprecated Functions
 }
 \keyword{internal}

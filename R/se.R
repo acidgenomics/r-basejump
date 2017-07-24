@@ -1,4 +1,4 @@
-#' Package into a [SummarizedExperiment]
+#' Package into a `SummarizedExperiment`
 #'
 #' @author Michael Steinbaugh
 #'
@@ -6,6 +6,8 @@
 #' @param colData Sample metadata.
 #' @param rowData [Ensembl](http://www.ensembl.org/) gene annotations.
 #' @param metadata Custom metadata.
+#'
+#' @seealso [SummarizedExperiment::SummarizedExperiment].
 #'
 #' @return [SummarizedExperiment].
 #' @export
