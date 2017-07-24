@@ -21,12 +21,13 @@
 #'
 #' @examples
 #' # Unnamed character vector, with no names assigned
-#' unnamed_vec <- c("hello world",
-#'                  "HELLO WORLD",
-#'                  "RNAi clones",
-#'                  "worfdbHTMLRemap",
-#'                  123,
-#'                  NA)
+#' unnamed_vec <-
+#'   c("hello world",
+#'     "HELLO WORLD",
+#'     "RNAi clones",
+#'     "worfdbHTMLRemap",
+#'     123,
+#'     NA)
 #'
 #' # Named character vector
 #' named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
@@ -129,7 +130,7 @@
 
 #' @rdname names
 #' @usage NULL
-.setNamesDotted <- function(object, rownames) {
+.setNamesDotted <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
         object <- set_names(object, .makeNamesDotted(names(object)))
     }
@@ -141,11 +142,35 @@
 
 #' @rdname names
 #' @export
-setMethod("dotted", "character", .makeNamesDotted)
+setMethod("dotted", "ANY", .setNamesDotted)
 
 #' @rdname names
 #' @export
-setMethod("dotted", "ANY", .setNamesDotted)
+setMethod("dotted", "character", function(object) {
+    .setNamesDotted(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("dotted", "data.frame", .setNamesDotted)
+
+#' @rdname names
+#' @export
+setMethod("dotted", "list", function(object) {
+    .setNamesDotted(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("dotted", "matrix", .setNamesDotted)
+
+#' @rdname names
+#' @export
+setMethod("dotted", "tbl_df", function(object) {
+    .setNamesDotted(object, rownames = FALSE)
+})
+
+
 
 
 
@@ -172,11 +197,33 @@ setMethod("dotted", "ANY", .setNamesDotted)
 
 #' @rdname names
 #' @export
-setMethod("camel", "character", .makeNamesCamel)
+setMethod("camel", "ANY", .setNamesCamel)
 
 #' @rdname names
 #' @export
-setMethod("camel", "ANY", .setNamesCamel)
+setMethod("camel", "character", function(object) {
+    .setNamesCamel(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("camel", "data.frame", .setNamesCamel)
+
+#' @rdname names
+#' @export
+setMethod("camel", "list", function(object) {
+    .setNamesCamel(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("camel", "matrix", .setNamesCamel)
+
+#' @rdname names
+#' @export
+setMethod("camel", "tbl_df", function(object) {
+    .setNamesCamel(object, rownames = FALSE)
+})
 
 
 
@@ -203,11 +250,33 @@ setMethod("camel", "ANY", .setNamesCamel)
 
 #' @rdname names
 #' @export
-setMethod("snake", "character", .makeNamesSnake)
+setMethod("snake", "ANY", .setNamesSnake)
 
 #' @rdname names
 #' @export
-setMethod("snake", "ANY", .setNamesSnake)
+setMethod("snake", "character", function(object) {
+    .setNamesSnake(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("snake", "data.frame", .setNamesSnake)
+
+#' @rdname names
+#' @export
+setMethod("snake", "list", function(object) {
+    .setNamesSnake(object, rownames = FALSE)
+})
+
+#' @rdname names
+#' @export
+setMethod("snake", "matrix", .setNamesSnake)
+
+#' @rdname names
+#' @export
+setMethod("snake", "tbl_df", function(object) {
+    .setNamesSnake(object, rownames = FALSE)
+})
 
 
 
