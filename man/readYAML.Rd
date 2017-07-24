@@ -3,7 +3,7 @@
 \name{readYAML}
 \alias{readYAML}
 \alias{read_yaml}
-\title{Read YAML file}
+\title{Read YAML File}
 \usage{
 readYAML(file)
 }
@@ -14,5 +14,5 @@ readYAML(file)
 \link{list}.
 }
 \description{
-Read YAML file
+Read YAML File
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make syntactically valid names — .makeTitleCase • basejump</title>
+<title>Make Syntactically Valid Names — camel • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,24 +80,84 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make syntactically valid names</h1>
+    <h1>Make Syntactically Valid Names</h1>
     </div>
 
     
     <p>These are convenience functions that sanitize names into <code>camelCase</code>
-(preferred), <code>snake_case</code>, or <code>dot.notation</code>. Dot assignment is provided for
-use with base R operations, but we advise against using <code>dot.notation</code> name
-assignments for values and/or function.</p>
+(<strong>preferred</strong>), <code>snake_case</code>, or <code>dotted.case</code>. <code>dotted.case</code> support is
+provided for matching against base R parameters, but we strongly advise
+against using it for object and/or argument name assignments.</p>
     
 
-    <pre class="usage"><span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>camel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>firstCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>titleCase</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for ANY</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for character</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for ANY</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for character</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for character</span>
 <span class='fu'>titleCase</span>(<span class='no'>object</span>)
 
+<span class='co'># S4 method for character</span>
 <span class='fu'>firstCase</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -107,6 +167,10 @@ assignments for values and/or function.</p>
       <th>object</th>
       <td><p>Character vector or an object for which <code>names()</code> assignment
 will be meaningful.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
@@ -129,12 +193,13 @@ modification of the underlying data.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Unnamed character vector, with no names assigned</span>
-<span class='no'>unnamed_vec</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"hello world"</span>,
-                 <span class='st'>"HELLO WORLD"</span>,
-                 <span class='st'>"RNAi clones"</span>,
-                 <span class='st'>"worfdbHTMLRemap"</span>,
-                 <span class='fl'>123</span>,
-                 <span class='fl'>NA</span>)
+<span class='no'>unnamed_vec</span> <span class='kw'>&lt;-</span>
+  <span class='fu'>c</span>(<span class='st'>"hello world"</span>,
+    <span class='st'>"HELLO WORLD"</span>,
+    <span class='st'>"RNAi clones"</span>,
+    <span class='st'>"worfdbHTMLRemap"</span>,
+    <span class='fl'>123</span>,
+    <span class='fl'>NA</span>)
 
 <span class='co'># Named character vector</span>
 <span class='no'>named_vec</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>Item.A</span> <span class='kw'>=</span> <span class='st'>"hello world"</span>, <span class='kw'>Item.B</span> <span class='kw'>=</span> <span class='st'>"HELLO WORLD"</span>)
@@ -151,8 +216,8 @@ modification of the underlying data.</p>
 
 
 <span class='co'># camelCase</span>
-<span class='fu'>camel</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
-#&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
+<span class='fu'>camel</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
+#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>camel</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -183,8 +248,8 @@ modification of the underlying data.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># snake_case</span>
-<span class='fu'>snake</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rnai_clones"      
-#&gt; [4] "worfdb_html_remap" "x123"              "na"               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
+<span class='fu'>snake</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
+#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -215,8 +280,8 @@ modification of the underlying data.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># dotted.case</span>
-<span class='fu'>dotted</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
-#&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
+<span class='fu'>dotted</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
+#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4

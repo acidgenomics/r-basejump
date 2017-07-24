@@ -6,7 +6,7 @@
 \alias{assignAndSaveData}
 \alias{save_data}
 \alias{save_data_raw}
-\title{Save data objects}
+\title{Save Data Objects}
 \usage{
 saveData(..., dir = "data", compress = TRUE)
 
@@ -15,7 +15,7 @@ saveDataRaw(...)
 assignAndSaveData(name, object, dir = "data", compress = TRUE)
 }
 \arguments{
-\item{...}{Dot objects.}
+\item{...}{Object names as symbols.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
 
@@ -29,14 +29,34 @@ is not generally recommended.}
 }
 \description{
 Quickly save objects in a project.
+}
+\details{
+\itemize{
+\item \code{\link[=saveData]{saveData()}}: Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object
+names passed as symbols. This function saves each object into a separate
+\code{.rda} file rather than combining into a single file.
+}
 
-\code{\link[=saveDataRaw]{saveDataRaw()}} is a wrapper for \code{\link[=saveData]{saveData()}} that enables quick
-saving of objects to the \code{data-raw} directory.
+\itemize{
+\item \code{\link[=saveDataRaw]{saveDataRaw()}}: Wrapper for \code{\link[=saveData]{saveData()}} that enables quick saving of
+objects to the \code{data-raw} directory.
+}
 
-\code{\link[=assignAndSaveData]{assignAndSaveData()}} assigns a new object by name to the
+\itemize{
+\item \code{\link[=assignAndSaveData]{assignAndSaveData()}}: Assigns a new object by name to the
 current working environment then saves the newly assigned object, specified
 by \code{dir}.
 }
+}
+\note{
+These functions will \emph{overwrite} existing saved data, following the
+same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\link[devtools:use_data]{devtools::use_data()}} does
+not overwrite by default if that behavior is preferred.
+}
 \seealso{
-\code{\link[base:save]{base::save()}}.
+\itemize{
+\item \code{\link[base:save]{base::save()}}.
+\item \code{\link[devtools:use_data]{devtools::use_data()}}.
+\item \code{\link[devtools:use_data_raw]{devtools::use_data_raw()}}.
+}
 }

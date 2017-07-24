@@ -4,7 +4,7 @@
 \alias{assignAsNewEnv}
 \alias{assign_as_new_env}
 \alias{assign_and_save_data}
-\title{Assign multiple objects to a new environment}
+\title{Assign Multiple Objects to a New Environment}
 \usage{
 assignAsNewEnv(..., envirName)
 }
@@ -17,7 +17,7 @@ assignAsNewEnv(..., envirName)
 Object names.
 }
 \description{
-Assign multiple objects to a new environment
+Assign Multiple Objects to a New Environment
 }
 \examples{
 assignAsNewEnv(mtcars, starwars, envirName = "testenv")

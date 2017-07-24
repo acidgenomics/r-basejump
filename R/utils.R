@@ -1,4 +1,4 @@
-#' Assign multiple objects to a new environment
+#' Assign Multiple Objects to a New Environment
 #'
 #' @param ... Dot objects to assign.
 #' @param envirName Environment name.
@@ -26,7 +26,7 @@ assignAsNewEnv <- function(..., envirName) {
 
 
 
-#' Clear warnings
+#' Clear Warnings
 #'
 #' @keywords internal
 #'
@@ -37,7 +37,7 @@ clearWarnings <- function() {
 
 
 
-#' Ensembl build version
+#' Ensembl Build Version
 #'
 #' @keywords internal
 #'
@@ -48,7 +48,7 @@ ensemblVersion <- function() {
 
 
 
-#' Fix character strings missing `NA`
+#' Fix Character Strings Missing `NA`
 #'
 #' @param string String missing `NA`.
 #'
@@ -66,7 +66,7 @@ fixNA <- function(string) {
 
 
 
-#' grep string generator
+#' `grep` String Generator
 #'
 #' Generate a grep string for pattern matching against comma separated
 #' [base::toString()] output.
@@ -97,7 +97,7 @@ grepString <- function(identifier) {
 
 
 
-#' Remove rows and columns containing only `NA` values
+#' Remove Rows and Columns Containing Only `NA` Values
 #'
 #' @param x Object with column data (e.g. data frame, matrix).
 #'
@@ -139,7 +139,7 @@ removeNA <- function(x) {
 
 
 
-#' Quickly perform sort unique on a vector
+#' Quickly Perform Sort Unique on a Vector
 #'
 #' The function also strips `NA` values. This is useful for gene list server
 #' queries, for example.
@@ -160,14 +160,14 @@ sortUnique <- function(vector) {
 
 
 
-#' Update all installed packages
+#' Update All Installed Packages
 #'
-#' Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.
+#' Ensure that all [Bioconductor](https://bioconductor.org),
+#' [CRAN](https://cran.r-project.org), and [GitHub](https://github.com) packages
+#' are up to date.
 #'
-#' Internaly this is a wrapper for [devtools::update_packages()] that improves
-#' support for Bioconductor.
-#'
-#' @keywords internal
+#' Internaly this is a wrapper for [devtools::update_packages()] that adds
+#' Bioconductor support.
 #'
 #' @export
 updatePackages <- function() {
@@ -183,7 +183,7 @@ updatePackages <- function() {
 
 
 
-#' Wash a data frame
+#' Wash a `data.frame`
 #'
 #' This function cleans poorly formed separators, leading and trailing commas or
 #' spaces, empty cells, and sets `NA` values if necessary.

@@ -1,4 +1,4 @@
-#' Data loading utilities
+#' Data Loading Utilities
 #'
 #' @rdname load
 #'

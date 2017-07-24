@@ -3,16 +3,33 @@
 \name{detectOrganism}
 \alias{detectOrganism}
 \alias{detect_organism}
-\title{Detect the organism from the genome build name}
+\title{Detect the Organism from String}
 \usage{
-detectOrganism(genomeBuild)
+detectOrganism(string)
 }
 \arguments{
-\item{genomeBuild}{Genome build.}
+\item{string}{String.}
 }
 \value{
-Organism string.
+Full latin scientific organism name.
 }
 \description{
-Detect the organism from the genome build name
+Supports organism detection from genome build or Ensembl identifier.
+}
+\examples{
+# H. sapiens
+detectOrganism("hg38")
+detectOrganism("ENSG00000000003")
+
+# M. musculus
+detectOrganism("mm10")
+detectOrganism("ENSMUSG00000002459")
+
+# C. elegans
+detectOrganism("WBcel235")
+detectOrganism("WBGene00000001")
+
+# D. melanogaster
+detectOrganism("BDGP6")
+detectOrganism("FBgn0000003")
 }

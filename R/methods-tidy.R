@@ -1,17 +1,12 @@
-#' [tidyverse](http://tidyverse.org/) S4 methods
+#' [tidyverse](http://tidyverse.org/) S4 Methods
 #'
 #' Avoid `NAMESPACE` collisions with
 #' [Bioconductor](https://www.bioconductor.org/) generics by using [setMethod()]
 #' to relevant `signature`.
 #'
 #' @rdname tidy
-#' @docType methods
 #'
-#' @param object Primary object.
-#' @param from Object to coerce.
-#' @param x Primary object.
-#' @param y Secondary object.
-#' @param ... Additional parameters.
+#' @param .data Data object.
 #'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):

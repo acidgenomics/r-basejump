@@ -1,8 +1,8 @@
-#' Create tables in LaTeX, HTML, Markdown and reStructuredText
+#' Create Tables in LaTeX, HTML, Markdown and reStructuredText
 #'
 #' Handle multiple kables in a single RMarkdown chunk.
 #'
-#' @param list List of column data (e.g. data frame, matrix).
+#' @param list List of column data (e.g. [data.frame], [matrix]).
 #' @param captions Optional character vector of table captions.
 #'
 #' @return Knit tables, using [knitr::kable()].

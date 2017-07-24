@@ -3,7 +3,7 @@
 \name{comp}
 \alias{comp}
 \alias{revcomp}
-\title{DNA sequence utilites}
+\title{DNA Sequence Utilites}
 \usage{
 comp(dna)
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update all installed packages — updatePackages • basejump</title>
+<title>Update All Installed Packages — updatePackages • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,19 +80,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update all installed packages</h1>
+    <h1>Update All Installed Packages</h1>
     </div>
 
     
-    <p>Ensure that all GitHub, Bioconductor, and CRAN packages are up to date.</p>
+    <p>Ensure that all <a href='https://bioconductor.org'>Bioconductor</a>,
+<a href='https://cran.r-project.org'>CRAN</a>, and <a href='https://github.com'>GitHub</a> packages
+are up to date.</p>
     
 
     <pre class="usage"><span class='fu'>updatePackages</span>()</pre>
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Internaly this is a wrapper for <code><a href='http://www.rdocumentation.org/packages/devtools/topics/update_packages'>devtools::update_packages()</a></code> that improves
-support for Bioconductor.</p>
+    <p>Internaly this is a wrapper for <code><a href='http://www.rdocumentation.org/packages/devtools/topics/update_packages'>devtools::update_packages()</a></code> that adds
+Bioconductor support.</p>
     
 
   </div>

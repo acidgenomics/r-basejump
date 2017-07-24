@@ -2,12 +2,12 @@
 % Please edit documentation in R/knitr.R
 \name{kables}
 \alias{kables}
-\title{Create tables in LaTeX, HTML, Markdown and reStructuredText}
+\title{Create Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 kables(list, captions = NULL)
 }
 \arguments{
-\item{list}{List of column data (e.g. data frame, matrix).}
+\item{list}{List of column data (e.g. \link{data.frame}, \link{matrix}).}
 
 \item{captions}{Optional character vector of table captions.}
 }

@@ -9,7 +9,7 @@
 \alias{detect_hpc}
 \alias{package_project}
 \alias{render_project}
-\title{Project management utilities}
+\title{Project Management Utilities}
 \usage{
 createProjectDirs()
 
