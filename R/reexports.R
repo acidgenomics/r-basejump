@@ -64,6 +64,12 @@ biomaRt::useMart
 
 # cowplot ====
 #' @export
+cowplot::draw_plot
+
+#' @export
+cowplot::ggdraw
+
+#' @export
 cowplot::plot_grid
 
 
