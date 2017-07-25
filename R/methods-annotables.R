@@ -75,8 +75,6 @@
         }
     }
 
-    message(paste("Using", genome, format, "annotable"))
-
     if (format == "gene") {
         get(genome, envir = envir) %>%
             mutate(entrez = NULL) %>%
