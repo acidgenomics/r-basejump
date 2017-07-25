@@ -25,6 +25,7 @@ readDataRaw <- function() {
 #' @param ... Additional parameters.
 #'
 #' @return [tibble] by default, or a sparse matrix for `.mtx` files.
+#' @export
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
