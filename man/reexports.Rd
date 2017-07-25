@@ -19,6 +19,10 @@
 \alias{reexports}
 \alias{useMart}
 \alias{reexports}
+\alias{draw_plot}
+\alias{reexports}
+\alias{ggdraw}
+\alias{reexports}
 \alias{plot_grid}
 \alias{reexports}
 \alias{build}
@@ -291,7 +295,7 @@ below to see their documentation.
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
-  \item{cowplot}{\code{\link[cowplot]{plot_grid}}}
+  \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
   \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}, \code{\link[devtools]{use_data}}, \code{\link[devtools]{use_data_raw}}, \code{\link[devtools]{use_testthat}}}
 

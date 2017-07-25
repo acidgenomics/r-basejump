@@ -36,6 +36,7 @@ Imports:
     datasets,
     devtools (>= 1.13.2),
     dplyr (>= 0.7.1),
+    ggrepel,
     graphics,
     httr (>= 1.2.1),
     knitr (>= 1.15),
