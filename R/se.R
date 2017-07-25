@@ -19,25 +19,37 @@ packageSE <- function(
     message("Packaging SummarizedExperiment")
     assays <- as(assays, "SimpleList")
     assay <- assays[[1L]]
+    colData <- as.data.frame(colData)
+    if (!has_rownames(colData)) {
+        # Attempt to use the first column for rownames, if unset
+        colData <- colData %>% set_rownames(.[[1L]])
+    }
     colData <- colData %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]]) %>%
         .[colnames(assay), , drop = FALSE] %>%
         set_rownames(colnames(assay)) %>%
         as("DataFrame")
+    rowData <- as.data.frame(rowData)
+    if (!has_rownames(rowData)) {
+        # Attempt to use the first column for rownames, if unset
+        rowData <- rowData %>% set_rownames(.[[1L]])
+    }
     rowData <- rowData %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]]) %>%
         .[rownames(assay), , drop = FALSE] %>%
         set_rownames(rownames(assay)) %>%
         as("DataFrame")
 
-    # Check for assay name mismatches
+    # Check for name assignment problems
+    if (any(duplicated(rownames(colData)))) {
+        stop("Non-unique rownames in colData")
+    }
+    if (any(duplicated(rownames(rowData)))) {
+        stop("Non-unique rownames in rowData")
+    }
     if (!identical(colnames(assay), rownames(colData))) {
-        stop("Colname mismatch")
+        stop("colData rowname mismatch")
     }
     if (!identical(rownames(assay), rownames(rowData))) {
-        stop("Rowname mismatch")
+        stop("rowData rowname mismatch")
     }
 
     # Metadata
@@ -54,7 +66,7 @@ packageSE <- function(
     # annotable build is used than the genome build. If present, store these
     # identifiers in the metadata.
     if (any(is.na(rowData[["ensgene"]]))) {
-        metadata[["retired_ensgene"]] <- rowData %>%
+        metadata[["missing_ensgene"]] <- rowData %>%
             as_tibble %>%
             filter(is.na(.data[["ensgene"]])) %>%
             pull("rowname") %>%

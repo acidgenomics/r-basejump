@@ -147,7 +147,11 @@ setMethod("dotted", "ANY", .setNamesDotted)
 #' @rdname names
 #' @export
 setMethod("dotted", "character", function(object) {
-    .setNamesDotted(object, rownames = FALSE)
+    if (isTRUE(.checkNames(object))) {
+        .setNamesDotted(object, rownames = FALSE)
+    } else {
+        .makeNamesDotted(object)
+    }
 })
 
 #' @rdname names
@@ -202,7 +206,11 @@ setMethod("camel", "ANY", .setNamesCamel)
 #' @rdname names
 #' @export
 setMethod("camel", "character", function(object) {
-    .setNamesCamel(object, rownames = FALSE)
+    if (isTRUE(.checkNames(object))) {
+        .setNamesCamel(object, rownames = FALSE)
+    } else {
+        .makeNamesCamel(object)
+    }
 })
 
 #' @rdname names
@@ -255,7 +263,11 @@ setMethod("snake", "ANY", .setNamesSnake)
 #' @rdname names
 #' @export
 setMethod("snake", "character", function(object) {
-    .setNamesSnake(object, rownames = FALSE)
+    if (isTRUE(.checkNames(object))) {
+        .setNamesSnake(object, rownames = FALSE)
+    } else {
+        .makeNamesSnake(object)
+    }
 })
 
 #' @rdname names

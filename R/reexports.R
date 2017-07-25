@@ -64,6 +64,12 @@ biomaRt::useMart
 
 # cowplot ====
 #' @export
+cowplot::draw_plot
+
+#' @export
+cowplot::ggdraw
+
+#' @export
 cowplot::plot_grid
 
 
@@ -508,6 +514,9 @@ tibble::column_to_rownames
 
 #' @export
 tibble::glimpse
+
+#' @export
+tibble::has_rownames
 
 #' @export
 tibble::is_tibble
