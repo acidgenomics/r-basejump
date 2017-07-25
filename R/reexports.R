@@ -510,6 +510,9 @@ tibble::column_to_rownames
 tibble::glimpse
 
 #' @export
+tibble::has_rownames
+
+#' @export
 tibble::is_tibble
 
 #' @export

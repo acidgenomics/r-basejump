@@ -19,9 +19,12 @@ packageSE <- function(
     message("Packaging SummarizedExperiment")
     assays <- as(assays, "SimpleList")
     assay <- assays[[1L]]
+    colData <- as.data.frame(colData)
+    if (!has_rownames(colData)) {
+        # Attempt to use the first column for rownames, if unset
+        colData <- set_rownames(colData, .[[1L]])
+    }
     colData <- colData %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]]) %>%
         .[colnames(assay), , drop = FALSE] %>%
         set_rownames(colnames(assay)) %>%
         as("DataFrame")
@@ -32,12 +35,18 @@ packageSE <- function(
         set_rownames(rownames(assay)) %>%
         as("DataFrame")
 
-    # Check for assay name mismatches
+    # Check for name assignment problems
+    if (any(duplicated(rownames(colData)))) {
+        stop("Non-unique rownames in colData")
+    }
+    if (any(duplicated(rownames(rowData)))) {
+        stop("Non-unique rownames in rowData")
+    }
     if (!identical(colnames(assay), rownames(colData))) {
-        stop("Colname mismatch")
+        stop("colData rowname mismatch")
     }
     if (!identical(rownames(assay), rownames(rowData))) {
-        stop("Rowname mismatch")
+        stop("rowData rowname mismatch")
     }
 
     # Metadata
