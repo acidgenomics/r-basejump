@@ -249,6 +249,8 @@
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
+\alias{has_rownames}
+\alias{reexports}
 \alias{is_tibble}
 \alias{reexports}
 \alias{remove_rownames}
@@ -335,7 +337,7 @@ below to see their documentation.
 
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{assay}}, \code{\link[SummarizedExperiment]{assays}}, \code{\link[SummarizedExperiment]{colData}}, \code{\link[SummarizedExperiment]{rowData}}}
 
-  \item{tibble}{\code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{has_rownames}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 
   \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
 
