@@ -216,8 +216,8 @@ modification of the underlying data.</p>
 
 
 <span class='co'># camelCase</span>
-<span class='fu'>camel</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
-#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>camel</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
+<span class='fu'>camel</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
+#&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -248,8 +248,8 @@ modification of the underlying data.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># snake_case</span>
-<span class='fu'>snake</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
-#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
+<span class='fu'>snake</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rnai_clones"      
+#&gt; [4] "worfdb_html_remap" "x123"              "na"               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -280,8 +280,8 @@ modification of the underlying data.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># dotted.case</span>
-<span class='fu'>dotted</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "worfdbHTMLRemap"
-#&gt; [5] "123"             NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
+<span class='fu'>dotted</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
+#&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
