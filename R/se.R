@@ -22,15 +22,18 @@ packageSE <- function(
     colData <- as.data.frame(colData)
     if (!has_rownames(colData)) {
         # Attempt to use the first column for rownames, if unset
-        colData <- set_rownames(colData, .[[1L]])
+        colData <- colData %>% set_rownames(.[[1L]])
     }
     colData <- colData %>%
         .[colnames(assay), , drop = FALSE] %>%
         set_rownames(colnames(assay)) %>%
         as("DataFrame")
+    rowData <- as.data.frame(rowData)
+    if (!has_rownames(rowData)) {
+        # Attempt to use the first column for rownames, if unset
+        rowData <- rowData %>% set_rownames(.[[1L]])
+    }
     rowData <- rowData %>%
-        as.data.frame %>%
-        set_rownames(.[[1L]]) %>%
         .[rownames(assay), , drop = FALSE] %>%
         set_rownames(rownames(assay)) %>%
         as("DataFrame")
@@ -63,7 +66,7 @@ packageSE <- function(
     # annotable build is used than the genome build. If present, store these
     # identifiers in the metadata.
     if (any(is.na(rowData[["ensgene"]]))) {
-        metadata[["retired_ensgene"]] <- rowData %>%
+        metadata[["missing_ensgene"]] <- rowData %>%
             as_tibble %>%
             filter(is.na(.data[["ensgene"]])) %>%
             pull("rowname") %>%
