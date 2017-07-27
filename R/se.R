@@ -60,7 +60,7 @@ packageSE <- function(
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
-    metadata[["hpc"]] <- detect_hpc()
+    metadata[["hpc"]] <- detectHPC()
     metadata[["session_info"]] <- sessionInfo()
     # Check for retired Ensembl identifiers, which can happen when a more recent
     # annotable build is used than the genome build. If present, store these

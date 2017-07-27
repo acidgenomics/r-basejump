@@ -54,3 +54,9 @@ summarizeRows <- function(x, sep = ", ") {
         summarise_all(funs(toStringSortUnique(., sep = sep))) %>%
         mutate_all(funs(fixNA))
 }
+
+# British variant
+#' @rdname collapse
+#' @usage NULL
+#' @export
+summarizeRows -> summariseRows

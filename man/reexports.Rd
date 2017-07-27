@@ -3,13 +3,13 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{select}
+\alias{reexports}
 \alias{counts}
 \alias{reexports}
 \alias{design}
 \alias{reexports}
 \alias{grep}
-\alias{reexports}
-\alias{biocValid}
 \alias{reexports}
 \alias{getBM}
 \alias{reexports}
@@ -24,26 +24,6 @@
 \alias{ggdraw}
 \alias{reexports}
 \alias{plot_grid}
-\alias{reexports}
-\alias{build}
-\alias{reexports}
-\alias{build_vignettes}
-\alias{reexports}
-\alias{check}
-\alias{reexports}
-\alias{document}
-\alias{reexports}
-\alias{install}
-\alias{reexports}
-\alias{load_all}
-\alias{reexports}
-\alias{test}
-\alias{reexports}
-\alias{use_data}
-\alias{reexports}
-\alias{use_data_raw}
-\alias{reexports}
-\alias{use_testthat}
 \alias{reexports}
 \alias{bind_cols}
 \alias{reexports}
@@ -111,7 +91,7 @@
 \alias{reexports}
 \alias{opts_knit}
 \alias{reexports}
-\alias{lint_package}
+\alias{\%$\%}
 \alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
@@ -203,6 +183,8 @@
 \alias{reexports}
 \alias{render}
 \alias{reexports}
+\alias{render}
+\alias{reexports}
 \alias{hclust}
 \alias{reexports}
 \alias{fixed}
@@ -289,15 +271,13 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{grep}}}
+  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
 
-  \item{BiocInstaller}{\code{\link[BiocInstaller]{biocValid}}}
+  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{grep}}}
 
   \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
-
-  \item{devtools}{\code{\link[devtools]{build}}, \code{\link[devtools]{build_vignettes}}, \code{\link[devtools]{check}}, \code{\link[devtools]{document}}, \code{\link[devtools]{install}}, \code{\link[devtools]{load_all}}, \code{\link[devtools]{test}}, \code{\link[devtools]{use_data}}, \code{\link[devtools]{use_data_raw}}, \code{\link[devtools]{use_testthat}}}
 
   \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarise_if}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
@@ -307,9 +287,7 @@ below to see their documentation.
 
   \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{knit}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
 
-  \item{lintr}{\code{\link[lintr]{lint_package}}}
-
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
+  \item{magrittr}{\code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{parallel}{\code{\link[parallel]{mclapply}}, \code{\link[parallel]{mcmapply}}}
 
@@ -331,7 +309,7 @@ below to see their documentation.
 
   \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{eval_bare}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
 
-  \item{rmarkdown}{\code{\link[rmarkdown]{render}}}
+  \item{rmarkdown}{\code{\link[rmarkdown]{render}}, \code{\link[rmarkdown]{render}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{SimpleList}}}
 

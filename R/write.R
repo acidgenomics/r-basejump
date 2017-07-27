@@ -68,3 +68,9 @@ writeCounts <- function(
     }) %>%
         invisible
 }
+
+# Snake variant for RMarkdown templates
+#' @rdname writeCounts
+#' @usage NULL
+#' @export
+writeCounts -> write_counts  # nolint
