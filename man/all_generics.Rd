@@ -6,8 +6,6 @@
 \arguments{
 \item{object}{Object.}
 
-\item{from}{Object to coerce.}
-
 \item{x}{Primary object.}
 
 \item{y}{Secondary object.}

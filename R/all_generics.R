@@ -5,7 +5,6 @@
 #' @keywords internal
 #'
 #' @param object Object.
-#' @param from Object to coerce.
 #' @param x Primary object.
 #' @param y Secondary object.
 #' @param ... Additional arguments.
@@ -14,7 +13,7 @@ NULL
 
 
 #' @rdname annotables
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("annotable", function(object) {
     standardGeneric("annotable")
@@ -22,26 +21,8 @@ setGeneric("annotable", function(object) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
-#' @export
-setGeneric("arrange", function(object, ...) {
-    standardGeneric("arrange")
-})
-
-
-
-#' @rdname tidyverse
-#' @inherit all_generics
-#' @export
-setGeneric("as_tibble", function(from) {
-    standardGeneric("as_tibble")
-})
-
-
-
 #' @rdname names
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("camel", function(object, ...) {
     standardGeneric("camel")
@@ -50,7 +31,7 @@ setGeneric("camel", function(object, ...) {
 
 
 #' @rdname names
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
@@ -58,17 +39,8 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
-#' @export
-setGeneric("filter", function(object, ...) {
-    standardGeneric("filter")
-})
-
-
-
 #' @rdname names
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("firstCase", function(object, ...) {
     standardGeneric("firstCase")
@@ -76,8 +48,8 @@ setGeneric("firstCase", function(object, ...) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
+#' @rdname annotables
+#' @inheritParams all_generics
 #' @export
 setGeneric("gene2entrez", function(object) {
     standardGeneric("gene2entrez")
@@ -85,8 +57,8 @@ setGeneric("gene2entrez", function(object) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
+#' @rdname annotables
+#' @inheritParams all_generics
 #' @export
 setGeneric("gene2symbol", function(object) {
     standardGeneric("gene2symbol")
@@ -94,17 +66,8 @@ setGeneric("gene2symbol", function(object) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
-#' @export
-setGeneric("mutate", function(object, ...) {
-    standardGeneric("mutate")
-})
-
-
-
 #' @rdname names
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("snake", function(object, ...) {
     standardGeneric("snake")
@@ -113,7 +76,7 @@ setGeneric("snake", function(object, ...) {
 
 
 #' @rdname names
-#' @inherit all_generics
+#' @inheritParams all_generics
 #' @export
 setGeneric("titleCase", function(object, ...) {
     standardGeneric("titleCase")
@@ -121,8 +84,8 @@ setGeneric("titleCase", function(object, ...) {
 
 
 
-#' @rdname tidyverse
-#' @inherit all_generics
+#' @rdname annotables
+#' @inheritParams all_generics
 #' @export
 setGeneric("tx2gene", function(object) {
     standardGeneric("tx2gene")
