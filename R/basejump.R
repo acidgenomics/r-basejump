@@ -8,14 +8,10 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
-#' @import AnnotationDbi Biobase BiocGenerics methods pbapply pbmcapply readr
-#'   stringr SummarizedExperiment S4Vectors
-#' @importFrom BiocInstaller biocValid
+#' @import AnnotationDbi Biobase BiocGenerics datasets methods pbapply pbmcapply
+#'   readr stringr SummarizedExperiment S4Vectors
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
-#' @importFrom covr package_coverage
 #' @importFrom cowplot draw_plot ggdraw plot_grid
-#' @importFrom devtools build build_vignettes check document install load_all
-#'   test update_packages use_data use_data_raw use_testthat
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate
 #'   mutate_all mutate_if n pull right_join summarise summarise_all summarise_if
@@ -24,8 +20,7 @@
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable knit opts_chunk opts_knit
-#' @importFrom lintr lint_package
-#' @importFrom magrittr %>% set_colnames set_rownames
+#' @importFrom magrittr %$% %>% set_colnames set_rownames
 #' @importFrom Matrix readMM writeMM
 #' @importFrom parallel mclapply mcmapply
 #' @importFrom pryr object_size
@@ -46,4 +41,4 @@
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
-globalVariables(c(".", "biocLite"))
+globalVariables(".")

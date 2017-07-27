@@ -1,14 +1,12 @@
 # AnnotationDbi ====
-#' @rdname tidy
-#' @inheritParams AnnotationDbi::select
 #' @export
-AnnotationDbi::select -> select
+AnnotationDbi::select
 
 
 
 # Biobase ====
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams all_generics
 #' @export
 Biobase::content -> content
 
@@ -24,26 +22,20 @@ BiocGenerics::design
 #' @export
 BiocGenerics::grep
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams all_generics
 #' @export
 BiocGenerics::intersect -> intersect
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams all_generics
 #' @export
 BiocGenerics::setdiff -> setdiff
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams all_generics
 #' @export
 BiocGenerics::union -> union
-
-
-
-# BiocInstaller ====
-#' @export
-BiocInstaller::biocValid
 
 
 
@@ -77,41 +69,9 @@ cowplot::plot_grid
 # datasets ====
 #' @inherit datasets::mtcars
 #' @keywords internal
+#' @return [data.frame].
 #' @export
 datasets::mtcars -> mtcars
-
-
-
-# devtools ====
-#' @export
-devtools::build
-
-#' @export
-devtools::build_vignettes
-
-#' @export
-devtools::check
-
-#' @export
-devtools::document
-
-#' @export
-devtools::install
-
-#' @export
-devtools::load_all
-
-#' @export
-devtools::test
-
-#' @export
-devtools::use_data
-
-#' @export
-devtools::use_data_raw
-
-#' @export
-devtools::use_testthat
 
 
 
@@ -164,12 +124,13 @@ dplyr::pull
 #' @export
 dplyr::right_join
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 dplyr::select -> tidy_select  # nolint
 
 #' @inherit dplyr::starwars
 #' @keywords internal
+#' @return [tibble].
 #' @export
 dplyr::starwars -> starwars
 
@@ -235,13 +196,10 @@ knitr::opts_knit
 
 
 
-# lintr ====
-#' @export
-lintr::lint_package
-
-
-
 # magrittr ====
+#' @export
+magrittr::`%$%`
+
 #' @export
 magrittr::`%>%`
 
@@ -412,6 +370,12 @@ rmarkdown::render
 
 
 
+# rmarkdown ====
+#' @export
+rmarkdown::render
+
+
+
 # stats ====
 #' @export
 stats::hclust
@@ -485,12 +449,12 @@ SummarizedExperiment::rowData
 #' @export
 S4Vectors::DataFrame
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 S4Vectors::expand -> expand
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 S4Vectors::first -> first
@@ -498,7 +462,7 @@ S4Vectors::first -> first
 #' @export
 S4Vectors::metadata
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 S4Vectors::rename -> rename

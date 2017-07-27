@@ -22,7 +22,7 @@ setGeneric("annotable", function(object) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("arrange", function(object, ...) {
@@ -31,7 +31,7 @@ setGeneric("arrange", function(object, ...) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("as_tibble", function(from) {
@@ -58,7 +58,7 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("filter", function(object, ...) {
@@ -76,7 +76,7 @@ setGeneric("firstCase", function(object, ...) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("gene2entrez", function(object) {
@@ -85,7 +85,7 @@ setGeneric("gene2entrez", function(object) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("gene2symbol", function(object) {
@@ -94,7 +94,7 @@ setGeneric("gene2symbol", function(object) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("mutate", function(object, ...) {
@@ -121,7 +121,7 @@ setGeneric("titleCase", function(object, ...) {
 
 
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @inherit all_generics
 #' @export
 setGeneric("tx2gene", function(object) {

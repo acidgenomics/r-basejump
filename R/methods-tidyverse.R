@@ -4,7 +4,7 @@
 #' [Bioconductor](https://www.bioconductor.org/) generics by using [setMethod()]
 #' to relevant `signature`.
 #'
-#' @rdname tidy
+#' @rdname tidyverse
 #'
 #' @param .data Data object.
 #'
@@ -17,7 +17,7 @@
 
 
 # arrange ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "arrange",
@@ -29,7 +29,7 @@ setMethod(
 
 
 # as_tibble ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @usage NULL
 #' @note For tibble coercion with [as()] or [as_tibble()], rownames are always
 #'   moved to the `rowname` column, using [rownames_to_column()] internally.
@@ -47,22 +47,22 @@ setAs("data.frame", "tibble", .asTibble)
 setAs("DataFrame", "tibble", .asTibble)
 setAs("matrix", "tibble", .asTibble)
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod("as_tibble", "data.frame", .asTibble)
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod("as_tibble", "DataFrame", .asTibble)
 
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod("as_tibble", "matrix", .asTibble)
 
 
 
 # content ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod("content", "response", function(object) {
     httr::content(object)
@@ -71,7 +71,7 @@ setMethod("content", "response", function(object) {
 
 
 # expand ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "expand",
@@ -83,7 +83,7 @@ setMethod(
 
 
 # filter ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "filter",
@@ -95,7 +95,7 @@ setMethod(
 
 
 # first ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "first",
@@ -107,7 +107,7 @@ setMethod(
 
 
 # intersect ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "intersect",
@@ -119,7 +119,7 @@ setMethod(
 
 
 # mutate ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "mutate",
@@ -131,7 +131,7 @@ setMethod(
 
 
 # rename ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "rename",
@@ -142,21 +142,8 @@ setMethod(
 
 
 
-# select ====
-#' @rdname tidy
-#' @usage NULL
-#' @export
-setMethod("select",
-          signature(x = "data.frame"),
-          function(x) {
-              stop("Use [tidy_select()] on data.frame.
-         NAMESPACE collison with [AnnotationDbi::select()].")
-          })
-
-
-
 # setdiff ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "setdiff",
@@ -168,7 +155,7 @@ setMethod(
 
 
 # setequal ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "setequal",
@@ -180,7 +167,7 @@ setMethod(
 
 
 # union ====
-#' @rdname tidy
+#' @rdname tidyverse
 #' @export
 setMethod(
     "union",

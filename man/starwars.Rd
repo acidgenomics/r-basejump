@@ -8,6 +8,9 @@
 \usage{
 starwars
 }
+\value{
+\link{tibble}.
+}
 \description{
 This data comes from SWAPI, the Star Wars API, \url{http://swapi.co/}
 }

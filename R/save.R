@@ -41,6 +41,12 @@ saveData <- function(..., dir = "data", compress = TRUE) {
     invisible()
 }
 
+# Snake variant for RMarkdown templates
+#' @rdname save
+#' @usage NULL
+#' @export
+saveData -> save_data  # nolint
+
 
 
 #' @rdname save

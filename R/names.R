@@ -318,3 +318,14 @@ setMethod("titleCase", "character", .makeTitleCase)
 #' @rdname names
 #' @export
 setMethod("firstCase", "character", .makeFirstCase)
+
+
+
+# Name variants ====
+#' @rdname names
+#' @export
+sanitizeNames <- snake
+
+#' @rdname names
+#' @export
+sanitizeNames -> sanitiseNames
