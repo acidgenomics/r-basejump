@@ -16,19 +16,7 @@
 
 
 
-# arrange ====
-#' @rdname tidyverse
-#' @export
-setMethod(
-    "arrange",
-    signature(object = "data.frame"),
-    function(object, ...) {
-        dplyr::arrange(object, ...)
-    })
-
-
-
-# as_tibble ====
+# as tibble coercion ====
 #' @rdname tidyverse
 #' @usage NULL
 #' @note For tibble coercion with [as()] or [as_tibble()], rownames are always
@@ -46,18 +34,6 @@ setMethod(
 setAs("data.frame", "tibble", .asTibble)
 setAs("DataFrame", "tibble", .asTibble)
 setAs("matrix", "tibble", .asTibble)
-
-#' @rdname tidyverse
-#' @export
-setMethod("as_tibble", "data.frame", .asTibble)
-
-#' @rdname tidyverse
-#' @export
-setMethod("as_tibble", "DataFrame", .asTibble)
-
-#' @rdname tidyverse
-#' @export
-setMethod("as_tibble", "matrix", .asTibble)
 
 
 
@@ -82,18 +58,6 @@ setMethod(
 
 
 
-# filter ====
-#' @rdname tidyverse
-#' @export
-setMethod(
-    "filter",
-    signature(object = "data.frame"),
-    function(object, ...) {
-        dplyr::filter(object, ...)
-    })
-
-
-
 # first ====
 #' @rdname tidyverse
 #' @export
@@ -114,18 +78,6 @@ setMethod(
     signature(x = "data.frame", y = "data.frame"),
     function(x, y, ...) {
         dplyr::intersect(x, y, ...)
-    })
-
-
-
-# mutate ====
-#' @rdname tidyverse
-#' @export
-setMethod(
-    "mutate",
-    signature(object = "data.frame"),
-    function(object, ...) {
-        dplyr::mutate(object, ...)
     })
 
 
