@@ -84,6 +84,33 @@ setGeneric("titleCase", function(object, ...) {
 
 
 
+#' @rdname collapse
+#' @inheritParams all_generics
+#' @export
+setGeneric("toStringUnique", function(object, ...) {
+    standardGeneric("toStringUnique")
+})
+
+
+
+#' @rdname collapse
+#' @inheritParams all_generics
+#' @export
+setGeneric("toStringSortUnique", function(object, ...) {
+    standardGeneric("toStringSortUnique")
+})
+
+
+
+#' @rdname collapse
+#' @inheritParams all_generics
+#' @export
+setGeneric("summarizeRows", function(object, ...) {
+    standardGeneric("summarizeRows")
+})
+
+
+
 #' @rdname annotables
 #' @inheritParams all_generics
 #' @export
