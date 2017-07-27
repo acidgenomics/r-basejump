@@ -22,41 +22,41 @@
 
 #' @rdname collapse
 #' @export
-toStringUnique <- function(x, sep = ", ") {
-    x %>%
+setMethod("toStringUnique", "character", function(object, sep = ", ") {
+    object %>%
         str_replace_na %>%
         unique %>%
         str_c(collapse = sep)
-}
+})
 
 
 
 #' @rdname collapse
 #' @export
-toStringSortUnique <- function(x, sep = ", ") {
-    x %>%
+setMethod("toStringSortUnique", "character", function(object, sep = ", ") {
+    object %>%
         str_replace_na %>%
         unique %>%
         sort %>%
         str_c(collapse = sep)
-}
+})
 
 
 
+# summarizeRows ====
 #' @rdname collapse
-#' @export
-summarizeRows <- function(x, sep = ", ") {
-    if (!any(is.data.frame(x) | is.matrix(x))) {
-        stop("Column data required")
-    }
-    x %>%
+#' @usage NULL
+.summarizeRows <- function(object, sep = ", ") {
+    object %>%
         as("tibble") %>%
         summarise_all(funs(toStringSortUnique(., sep = sep))) %>%
         mutate_all(funs(fixNA))
 }
 
-# British variant
 #' @rdname collapse
-#' @usage NULL
 #' @export
-summarizeRows -> summariseRows
+setMethod("summarizeRows", "data.frame", .summarizeRows)
+
+#' @rdname collapse
+#' @export
+setMethod("summarizeRows", "matrix", .summarizeRows)
