@@ -8,8 +8,8 @@
 #' always passed in [camel()] case. We also provide British spelling variants
 #' (e.g. colour) of the function names wherever applicable.
 #'
-#' @import AnnotationDbi Biobase BiocGenerics datasets methods pbapply pbmcapply
-#'   readr stringr SummarizedExperiment S4Vectors
+#' @import annotables AnnotationDbi Biobase BiocGenerics datasets methods
+#'   pbapply pbmcapply readr stringr SummarizedExperiment S4Vectors
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom cowplot draw_plot ggdraw plot_grid
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
