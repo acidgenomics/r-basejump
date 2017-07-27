@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><a href='http://tidyverse.org/'>tidyverse</a> S4 Methods — arrange • basejump</title>
+<title><a href='http://tidyverse.org/'>tidyverse</a> S4 Methods — .asTibble • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -89,49 +89,17 @@
 to relevant <code>signature</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
-
-<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)
-
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
-
-<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>arrange</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>as_tibble</span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for response</span>
+    <pre class="usage"><span class='co'># S4 method for response</span>
 <span class='fu'>content</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>expand</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>filter</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
 <span class='fu'>first</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame,data.frame</span>
 <span class='fu'>intersect</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>mutate</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>rename</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -169,16 +137,12 @@ to relevant <code>signature</code>.</p>
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>Object to coerce.</p></td>
-    </tr>
-    <tr>
       <th>x</th>
       <td><p>Primary object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>y</th>
