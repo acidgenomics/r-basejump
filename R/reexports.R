@@ -135,15 +135,6 @@ dplyr::select -> tidy_select  # nolint
 dplyr::starwars -> starwars
 
 #' @export
-dplyr::summarise
-
-#' @export
-dplyr::summarise_all
-
-#' @export
-dplyr::summarise_if
-
-#' @export
 dplyr::summarize
 
 #' @export
