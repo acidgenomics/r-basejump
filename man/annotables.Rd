@@ -3,6 +3,9 @@
 \docType{methods}
 \name{annotable}
 \alias{annotable}
+\alias{gene2entrez}
+\alias{gene2symbol}
+\alias{tx2gene}
 \alias{.annotable}
 \alias{annotable,character-method}
 \alias{gene2entrez,character-method}
@@ -11,6 +14,12 @@
 \title{\href{http://www.ensembl.org/}{Ensembl} Annotations}
 \usage{
 annotable(object)
+
+gene2entrez(object)
+
+gene2symbol(object)
+
+tx2gene(object)
 
 \S4method{annotable}{character}(object)
 
