@@ -17,6 +17,7 @@
 #'   mutate_all mutate_if n pull right_join summarise summarise_all summarise_if
 #'   summarize summarize_all summarize_if top_n ungroup
 #' @importFrom ggrepel geom_label_repel geom_text_repel
+#' @importFrom glue collapse
 #' @importFrom graphics hist
 #' @importFrom httr content_type_json GET user_agent
 #' @importFrom knitr asis_output kable knit opts_chunk opts_knit
@@ -39,6 +40,7 @@
 #' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file globalVariables object.size sessionInfo
 #' @importFrom yaml yaml.load_file
+#' @importClassesFrom Matrix dgCMatrix dgTMatrix
 "_PACKAGE"
 
 globalVariables(".")
