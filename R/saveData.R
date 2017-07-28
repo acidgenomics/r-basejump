@@ -41,12 +41,6 @@ saveData <- function(..., dir = "data", compress = TRUE) {
     invisible()
 }
 
-# Snake variant for RMarkdown templates
-#' @rdname save
-#' @usage NULL
-#' @export
-saveData -> save_data  # nolint
-
 
 
 #' @rdname save
@@ -56,26 +50,4 @@ saveData -> save_data  # nolint
 #' @export
 saveDataRaw <- function(...) {
     saveData(..., dir = "data-raw")
-}
-
-
-
-#' @rdname save
-#'
-#' @param name Desired variable name.
-#' @param object Object.
-#'
-#' @details
-#' - [assignAndSaveData()]: Assigns a new object by name to the
-#'   current working environment then saves the newly assigned object, specified
-#'   by `dir`.
-#'
-#' @export
-assignAndSaveData <- function(name, object, dir = "data", compress = TRUE) {
-    envir <- parent.frame()
-    assign(name, object, envir = envir)
-    save(list = name,
-         file = file.path(dir, str_c(name, ".rda")),
-         envir = envir,
-         compress = compress)
 }
