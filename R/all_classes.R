@@ -1,2 +1,1 @@
-setOldClass("response")
-setOldClass("tibble")
+setOldClass(c("response", "tibble"))
