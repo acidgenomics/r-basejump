@@ -4,7 +4,7 @@
 #'
 #' @rdname dna
 #'
-#' @param dna DNA sequence (`ATGC` nucleotides).
+#' @param object DNA sequence (`ATGC` nucleotides).
 #'
 #' @return Matching DNA sequence.
 #'
@@ -17,8 +17,8 @@
 
 #' @rdname dna
 #' @export
-comp <- function(dna) {
-    dna %>%
+setMethod("comp", "character", function(object) {
+    object %>%
         toupper %>%
         # AT base pair swap
         str_replace_all("A", "A1") %>%
@@ -28,18 +28,18 @@ comp <- function(dna) {
         str_replace_all("G", "G1") %>%
         str_replace_all("C", "G") %>%
         str_replace_all("G1", "C")
-}
+})
 
 
 
 #' @rdname dna
 #' @export
-revcomp <- function(dna) {
-    dna <- toupper(dna)
-    comp <- comp(dna)
+setMethod("revcomp", "character", function(object) {
+    object <- toupper(object)
+    comp <- comp(object)
     revcomp <- str_split(comp, "") %>%
         .[[1L]] %>%
         .[order(seq_along(.), decreasing = TRUE)] %>%
         str_c(collapse = "")
     revcomp
-}
+})
