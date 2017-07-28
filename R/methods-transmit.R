@@ -3,6 +3,8 @@
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
 #'
+#' @rdname transmit
+#'
 #' @param object Remote directory URL.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
@@ -11,6 +13,10 @@
 #' @param localDir Directory where to save file locally.
 #'
 #' @return List of local files.
+
+
+
+#' @rdname transmit
 #' @export
 setMethod("transmit", "character", function(
     object,
