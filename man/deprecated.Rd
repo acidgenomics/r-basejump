@@ -3,20 +3,29 @@
 \name{createNewProject}
 \alias{createNewProject}
 \alias{dotNotation}
+\alias{get_objs_from_dots}
 \alias{grepToString}
 \alias{loadDataRaw}
+\alias{save_data}
 \alias{toStringSummarize}
+\alias{write_counts}
 \title{Deprecated Functions}
 \usage{
 createNewProject(...)
 
 dotNotation(...)
 
+get_objs_from_dots(...)
+
 grepToString()
 
 loadDataRaw(...)
 
+save_data(...)
+
 toStringSummarize(...)
+
+write_counts(...)
 }
 \arguments{
 \item{...}{Additional parameters.}
