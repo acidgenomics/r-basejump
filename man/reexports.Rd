@@ -25,6 +25,8 @@
 \alias{reexports}
 \alias{plot_grid}
 \alias{reexports}
+\alias{arrange}
+\alias{reexports}
 \alias{bind_cols}
 \alias{reexports}
 \alias{bind_rows}
@@ -37,6 +39,8 @@
 \alias{reexports}
 \alias{everything}
 \alias{reexports}
+\alias{filter}
+\alias{reexports}
 \alias{full_join}
 \alias{reexports}
 \alias{funs}
@@ -47,6 +51,8 @@
 \alias{reexports}
 \alias{left_join}
 \alias{reexports}
+\alias{mutate}
+\alias{reexports}
 \alias{mutate_all}
 \alias{reexports}
 \alias{mutate_if}
@@ -56,12 +62,6 @@
 \alias{pull}
 \alias{reexports}
 \alias{right_join}
-\alias{reexports}
-\alias{summarise}
-\alias{reexports}
-\alias{summarise_all}
-\alias{reexports}
-\alias{summarise_if}
 \alias{reexports}
 \alias{summarize}
 \alias{reexports}
@@ -279,7 +279,7 @@ below to see their documentation.
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
-  \item{dplyr}{\code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{summarise_all}}, \code{\link[dplyr]{summarise_if}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
