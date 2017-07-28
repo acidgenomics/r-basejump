@@ -1,7 +1,3 @@
-# nolint start
-
-
-
 #' Evaluate Dots
 #'
 #' Capture function ellipses as dots using
@@ -27,7 +23,7 @@ dots <- function(...) {
 
 #' @rdname dots
 #' @export
-get_objs_from_dots <- function(.dots) {
+getObjsFromDots <- function(.dots) {
     if (length(.dots) == 0L) {
         stop("Nothing to save", call. = FALSE)
     }
@@ -47,14 +43,3 @@ get_objs_from_dots <- function(.dots) {
     }
     objs
 }
-
-
-
-#' @rdname dots
-#' @usage NULL
-#' @export
-get_objs_from_dots -> getObjsFromDots
-
-
-
-# nolint end
