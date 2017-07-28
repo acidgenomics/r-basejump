@@ -3,7 +3,8 @@
 #' @rdname logRatio
 #' @family Math Utilities
 #'
-#' @param x Numeric vector of log ratio (`lr`) or fold change (`fc`) values.
+#' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
+#'   values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
@@ -17,18 +18,18 @@
 #' @examples
 #' lr2fc(seq(-3, 3, 1))
 #' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
-fc2lr <- function(x, base = 2L) {
-    x <- ifelse(x < 0L, 1L / -x, x)
-    x <- log(x, base)
-    x
-}
+setMethod("fc2lr", "character", function(object, base = 2L) {
+    object <- ifelse(object < 0L, 1L / -object, object)
+    object <- log(object, base)
+    object
+})
 
 
 
 #' @rdname logRatio
 #' @export
-lr2fc <- function(x, base = 2L) {
-    x <- base ^ x
-    x <- ifelse(x < 1L, -1L / x, x)
-    x
-}
+setMethod("lr2fc", "character", function(object, base = 2L) {
+    object <- base ^ object
+    object <- ifelse(object < 1L, -1L / object, object)
+    object
+})
