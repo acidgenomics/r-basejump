@@ -34,6 +34,7 @@ Imports:
     datasets,
     dplyr (>= 0.7.1),
     ggrepel,
+    glue,
     graphics,
     httr (>= 1.2.1),
     knitr (>= 1.15),
