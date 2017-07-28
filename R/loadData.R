@@ -1,19 +1,17 @@
-#' Data Loading Utilities
+#' Load Local Data
 #'
-#' @rdname load
+#' Dynamically [load()] data from `data` directory or [source()] the
+#' corresponding script frmo the `data-raw` directory.
 #'
-#' @param ... Data files as dot objects.
-#' @param url URL.
+#' @param ... Data files as symbols (dot objects).
+#'
+#' @return No value.
+#' @export
 #'
 #' @examples
 #' \dontrun{
 #' loadData(geneIDs, oligo)
-#' loadRemote("http://example.com/data.rda")
 #' }
-#'
-#' @description Dynamically [load()] data from `data` directory or [source()]
-#'   the corresponding script frmo the `data-raw` directory.
-#' @export
 loadData <- function(...) {
     envir <- parent.frame()
     names <- as.character(substitute(list(...)))[-1L]
@@ -36,16 +34,4 @@ loadData <- function(...) {
         }
     }) %>%
         invisible
-}
-
-
-
-#' @rdname load
-#' @description Load a remote R binary file.
-#' @export
-loadRemote <- function(url) {
-    envir <- parent.frame()
-    tempfile <- tempfile()
-    download.file(url, get("tempfile"), quiet = TRUE)
-    load(get("tempfile"), envir = envir)
 }
