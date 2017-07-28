@@ -14,11 +14,6 @@ createNewProject <- function(...) {
     createProjectDirs(...)
 }
 
-#' @rdname deprecated
-#' @usage NULL
-#' @export
-createNewProject -> create_new_project  # nolint
-
 
 
 #' @rdname deprecated
@@ -28,11 +23,6 @@ dotNotation <- function(...) {
     dotted(...)
 }
 
-#' @rdname deprecated
-#' @usage NULL
-#' @export
-dotNotation -> dot_notation  # nolint
-
 
 
 #' @rdname deprecated
@@ -40,11 +30,6 @@ dotNotation -> dot_notation  # nolint
 grepToString <- function() {
     .Deprecated("grepString")
 }
-
-#' @rdname deprecated
-#' @usage NULL
-#' @export
-grepToString -> grep_to_string  # nolint
 
 
 
@@ -54,28 +39,10 @@ loadDataRaw <- function(...) {
     .Deprecated("loadData")
 }
 
-#' @rdname deprecated
-#' @usage NULL
-#' @export
-loadDataRaw -> load_data_raw  # nolint
-
 
 
 #' @rdname deprecated
 #' @export
 toStringSummarize <- function(...) {
-    .Deprecated("summarizeRows")
-    summarizeRows(...)
+    .Deprecated("collapse")
 }
-
-#' @rdname deprecated
-#' @usage NULL
-toStringSummarize -> to_string_summarize  # nolint
-
-#' @rdname deprecated
-#' @usage NULL
-toStringSummarize -> toStringSummarise
-
-#' @rdname deprecated
-#' @usage NULL
-toStringSummarize -> to_string_summarise  # nolint
