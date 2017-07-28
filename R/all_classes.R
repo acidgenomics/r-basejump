@@ -1,1 +1,1 @@
-setOldClass(c("response", "tibble"))
+setOldClass(c("response", "tbl_df", "tibble"))
