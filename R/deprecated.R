@@ -27,6 +27,15 @@ dotNotation <- function(...) {
 
 #' @rdname deprecated
 #' @export
+get_objs_from_dots <- function(...) {  # nolint
+    .Deprecated("getObjsFromDots")
+    getObjsFromDots(...)
+}
+
+
+
+#' @rdname deprecated
+#' @export
 grepToString <- function() {
     .Deprecated("grepString")
 }
