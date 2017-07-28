@@ -7,7 +7,7 @@
 ensemblVersion()
 }
 \value{
-Straining containing Ensembl build version of annotables.
+String containing Ensembl build version of annotables.
 }
 \description{
 Ensembl Build Version
