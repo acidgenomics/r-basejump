@@ -2,17 +2,10 @@
 % Please edit documentation in R/deprecated.R
 \name{createNewProject}
 \alias{createNewProject}
-\alias{create_new_project}
 \alias{dotNotation}
-\alias{dot_notation}
 \alias{grepToString}
-\alias{grep_to_string}
 \alias{loadDataRaw}
-\alias{load_data_raw}
 \alias{toStringSummarize}
-\alias{to_string_summarize}
-\alias{toStringSummarise}
-\alias{to_string_summarise}
 \title{Deprecated Functions}
 \usage{
 createNewProject(...)

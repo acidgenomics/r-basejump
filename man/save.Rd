@@ -4,14 +4,11 @@
 \alias{saveData}
 \alias{save_data}
 \alias{saveDataRaw}
-\alias{assignAndSaveData}
 \title{Save Data Objects}
 \usage{
 saveData(..., dir = "data", compress = TRUE)
 
 saveDataRaw(...)
-
-assignAndSaveData(name, object, dir = "data", compress = TRUE)
 }
 \arguments{
 \item{...}{Object names as symbols.}
@@ -21,10 +18,6 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE)
 \item{compress}{Compression method, supporting \code{xz} (\strong{preferred}), \code{bzip2},
 or \code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this
 is not generally recommended.}
-
-\item{name}{Desired variable name.}
-
-\item{object}{Object.}
 }
 \description{
 Quickly save objects in a project.
@@ -39,12 +32,6 @@ names passed as symbols. This function saves each object into a separate
 \itemize{
 \item \code{\link[=saveDataRaw]{saveDataRaw()}}: Wrapper for \code{\link[=saveData]{saveData()}} that enables quick saving of
 objects to the \code{data-raw} directory.
-}
-
-\itemize{
-\item \code{\link[=assignAndSaveData]{assignAndSaveData()}}: Assigns a new object by name to the
-current working environment then saves the newly assigned object, specified
-by \code{dir}.
 }
 }
 \note{

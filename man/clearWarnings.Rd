@@ -6,6 +6,9 @@
 \usage{
 clearWarnings()
 }
+\value{
+No value.
+}
 \description{
 Clear Warnings
 }
