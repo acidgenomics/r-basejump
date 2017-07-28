@@ -3,7 +3,7 @@
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
 #'
-#' @param remoteDir Remote directory URL.
+#' @param object Remote directory URL.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
@@ -12,13 +12,15 @@
 #'
 #' @return List of local files.
 #' @export
-transmit <- function(
-    remoteDir,
+setMethod("transmit", "character", function(
+    object,
     pattern = NULL,
     rename = NULL,
     compress = FALSE,
     localDir = "data-raw") {
-    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>% read_lines
+    remoteFileName <- object %>%
+        getURL(dirlistonly = TRUE) %>%
+        read_lines
     if (!length(remoteFileName)) {
         stop("No files listed on remote server")
     }
@@ -48,16 +50,19 @@ transmit <- function(
         } else {
             localFileName <- remoteFileName[a]
         }
+
         remoteFilePath <- str_c(remoteDir, remoteFileName[a])
         localFilePath <- file.path(localDir, localFileName)
         download.file(remoteFilePath, localFilePath)
+
         # Compress, if desired
         if (isTRUE(compress)) {
             localFileName <- gzip(localFilePath, overwrite = TRUE)
         } else {
             localFileName <- remoteFileName
         }
+
         localFileName
     }) %>%
         set_names(remoteFileName)
-}
+})
