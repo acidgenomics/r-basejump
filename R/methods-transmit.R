@@ -24,8 +24,8 @@ setMethod("transmit", "character", function(
     rename = NULL,
     compress = FALSE,
     localDir = "data-raw") {
-    remoteFileName <- object %>%
-        getURL(dirlistonly = TRUE) %>%
+    remoteDir <- object
+    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>%
         read_lines
     if (!length(remoteFileName)) {
         stop("No files listed on remote server")
@@ -57,7 +57,7 @@ setMethod("transmit", "character", function(
             localFileName <- remoteFileName[a]
         }
 
-        remoteFilePath <- str_c(remoteDir, remoteFileName[a])
+        remoteFilePath <- paste0(remoteDir, remoteFileName[a])
         localFilePath <- file.path(localDir, localFileName)
         download.file(remoteFilePath, localFilePath)
 

@@ -40,6 +40,6 @@ setMethod("revcomp", "character", function(object) {
     revcomp <- str_split(comp, "") %>%
         .[[1L]] %>%
         .[order(seq_along(.), decreasing = TRUE)] %>%
-        str_c(collapse = "")
+        paste0(collapse = "")
     revcomp
 })

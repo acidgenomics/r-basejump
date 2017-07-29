@@ -18,7 +18,7 @@
 #' @examples
 #' lr2fc(seq(-3, 3, 1))
 #' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
-setMethod("fc2lr", "character", function(object, base = 2L) {
+setMethod("fc2lr", "numeric", function(object, base = 2L) {
     object <- ifelse(object < 0L, 1L / -object, object)
     object <- log(object, base)
     object
@@ -28,7 +28,7 @@ setMethod("fc2lr", "character", function(object, base = 2L) {
 
 #' @rdname logRatio
 #' @export
-setMethod("lr2fc", "character", function(object, base = 2L) {
+setMethod("lr2fc", "numeric", function(object, base = 2L) {
     object <- base ^ object
     object <- ifelse(object < 1L, -1L / object, object)
     object

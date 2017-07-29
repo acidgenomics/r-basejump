@@ -5,8 +5,6 @@
 #'
 #' @rdname sortUnique
 #'
-#' @param vector Vector with duplicates, `NA` values.
-#'
 #' @return Unique vector.
 #' @export
 #'

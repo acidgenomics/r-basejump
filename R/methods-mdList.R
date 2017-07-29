@@ -17,7 +17,7 @@ setMethod("mdList", "character", function(object, ordered = FALSE) {
     }
     lines <- vapply(seq_along(object), function(a) {
         if (isTRUE(ordered)) {
-            prefix <- str_c(a, ".")
+            prefix <- paste0(a, ".")
         } else {
             prefix <- "-"
         }
