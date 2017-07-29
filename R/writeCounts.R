@@ -36,26 +36,26 @@ writeCounts <- function(
             # Bulk RNA-seq dense counts
             ext <- ".csv"
             if (isTRUE(gzip)) {
-                ext <- str_c(ext, ".gz")
+                ext <- paste0(ext, ".gz")
             }
-            fileName <- str_c(name, ext)
+            fileName <- paste0(name, ext)
             counts %>%
                 as.data.frame %>%
                 rownames_to_column %>%
                 write_csv(path = file.path(dir, fileName))
         } else if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
             # Single-cell RNA-seq sparse counts
-            matrixFile <- file.path(dir, str_c(name, ".mtx"))
+            matrixFile <- file.path(dir, paste0(name, ".mtx"))
             writeMM(counts, matrixFile)
 
             # Write barcodes (colnames)
             barcodes <- colnames(counts)
-            barcodesFile <- str_c(matrixFile, ".colnames")
+            barcodesFile <- paste0(matrixFile, ".colnames")
             write_lines(barcodes, barcodesFile)
 
             # Write gene names (rownames)
             genes <- rownames(counts)
-            genesFile <- str_c(matrixFile, ".rownames")
+            genesFile <- paste0(matrixFile, ".rownames")
             write_lines(genes, genesFile)
 
             # gzip the matrix, if desired

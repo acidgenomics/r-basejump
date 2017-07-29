@@ -3,15 +3,12 @@
 \docType{methods}
 \name{comp}
 \alias{comp}
-\alias{removeNA}
 \alias{revcomp}
 \alias{comp,character-method}
 \alias{revcomp,character-method}
 \title{DNA Sequence Utilites}
 \usage{
 comp(object)
-
-removeNA(object, ...)
 
 revcomp(object)
 
@@ -21,8 +18,6 @@ revcomp(object)
 }
 \arguments{
 \item{object}{DNA sequence (\code{ATGC} nucleotides).}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Matching DNA sequence.

@@ -2,12 +2,9 @@
 % Please edit documentation in R/saveData.R
 \name{saveData}
 \alias{saveData}
-\alias{saveDataRaw}
-\title{Save Data Objects}
+\title{Save Data}
 \usage{
 saveData(..., dir = "data", compress = TRUE)
-
-saveDataRaw(...)
 }
 \arguments{
 \item{...}{Object names as symbols.}
@@ -18,30 +15,24 @@ saveDataRaw(...)
 or \code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this
 is not generally recommended.}
 }
+\value{
+No value.
+}
 \description{
-Quickly save objects in a project.
-}
-\details{
-\itemize{
-\item \code{\link[=saveData]{saveData()}}: Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object
-names passed as symbols. This function saves each object into a separate
-\code{.rda} file rather than combining into a single file.
-}
-
-\itemize{
-\item \code{\link[=saveDataRaw]{saveDataRaw()}}: Wrapper for \code{\link[=saveData]{saveData()}} that enables quick saving of
-objects to the \code{data-raw} directory.
-}
+Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object names passed as
+symbols. This function saves each object into a separate \code{.rda} file rather
+than combining into a single file.
 }
 \note{
-These functions will \emph{overwrite} existing saved data, following the
+These function will \emph{overwrite} existing saved data, following the
 same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\link[devtools:use_data]{devtools::use_data()}} does
 not overwrite by default if that behavior is preferred.
 }
 \seealso{
 \itemize{
-\item \code{\link[base:save]{base::save()}}.
+\item \code{\link[base:save]{base::save()}}
 \item \code{\link[devtools:use_data]{devtools::use_data()}}.
-\item \code{\link[devtools:use_data_raw]{devtools::use_data_raw()}}.
 }
+
+Other Save Utilities: \code{\link{saveDataRaw}}
 }

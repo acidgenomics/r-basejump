@@ -3,7 +3,6 @@
 \docType{methods}
 \name{collapse}
 \alias{collapse}
-\alias{summarizeRows}
 \alias{.collapseVec}
 \alias{.collapseCols}
 \alias{collapse,character-method}
@@ -15,8 +14,6 @@
 \title{Collapse Utilities}
 \usage{
 collapse(object, ...)
-
-summarizeRows(object, ...)
 
 .collapseVec(object, sep = ", ", unique = TRUE, sort = TRUE,
   keepNA = FALSE, ...)
@@ -60,12 +57,13 @@ summarizeRows(object, ...)
 Collapse Utilities
 }
 \examples{
-groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-
-collapse(groceries)
-collapse(groceries, sort = )
-
+# Designed primarily for `dims` objects
 mtcars \%>\% head \%>\% collapse \%>\% t
+
+# Vectors are also supported
+groceries <- c("milk", "eggs", "eggs", "veggies", NA)
+collapse(groceries)
+collapse(groceries, unique = FALSE, sort = FALSE)
 }
 \seealso{
 \itemize{

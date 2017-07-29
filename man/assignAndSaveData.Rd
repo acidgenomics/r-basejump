@@ -17,14 +17,14 @@ assignAndSaveData(name, object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{dir}{Output directory. Defaults to \strong{data}.}
+
+\item{compress}{Compression method, supporting \code{xz} (\strong{preferred}), \code{bzip2},
+or \code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this
+is not generally recommended.}
 }
 \description{
-Assign and Save Data
-}
-\details{
-\itemize{
-\item \code{\link[=assignAndSaveData]{assignAndSaveData()}}: Assigns a new object by name to the
-current working environment then saves the newly assigned object, specified
-by \code{dir}.
-}
+Assigns a new object by name to the current working environment then saves
+the newly assigned object, specified by \code{dir}.
 }

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{geomean}
 \alias{geomean}
-\alias{pct}
 \alias{.geomeanVector}
 \alias{.geomeanColData}
 \alias{geomean,numeric-method}
@@ -12,8 +11,6 @@
 \title{Geometric Mean}
 \usage{
 geomean(object)
-
-pct(object)
 
 \S4method{geomean}{numeric}(object)
 
@@ -50,7 +47,6 @@ df <- data.frame(vec, vec2)
 geomean(df)
 }
 \seealso{
-Other Math Utilities: \code{\link{fc2lr}}
-
-Other Math Utilities: \code{\link{fc2lr}}
+Other Math Utilities: \code{\link{fc2lr}},
+  \code{\link{pct}}
 }

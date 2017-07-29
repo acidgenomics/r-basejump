@@ -12,8 +12,6 @@ sortUnique(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{vector}{Vector with duplicates, \code{NA} values.}
 }
 \value{
 Unique vector.
