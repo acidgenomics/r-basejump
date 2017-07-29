@@ -59,10 +59,4 @@ tibble(a = c("A", NA, "C"),
 # Support for vectors (using `stats::na.omit()`)
 removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
-
-
-# Return unmodified
-list(a = c("A", NA, "C"),
-     b = c(NA, NA, NA),
-     c = c("B", NA, "D")) \%>\% removeNA
 }
