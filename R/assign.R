@@ -6,6 +6,7 @@
 #' @rdname assignAndSaveData
 #' @family Assign Utilities
 #'
+#' @inheritParams AllGenerics
 #' @inheritParams saveData
 #' @param name Desired variable name.
 #' @param env Destination environment.

@@ -10,6 +10,8 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE,
 \arguments{
 \item{name}{Desired variable name.}
 
+\item{object}{Object.}
+
 \item{dir}{Output directory. Defaults to \strong{data}.}
 
 \item{compress}{Compression method, supporting \code{xz} (\strong{preferred}), \code{bzip2},
