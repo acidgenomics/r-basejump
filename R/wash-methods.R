@@ -4,11 +4,14 @@
 #' spaces, empty cells, and sets `NA` values if necessary.
 #'
 #' @rdname wash
+#' @name wash
 #'
 #' @return Clean object.
+NULL
 
 
 
+# Constructors ====
 .wash <- function(object) {
     replace <- function(a) {
         a %>%
@@ -29,6 +32,7 @@
 
 
 
+# Methods ====
 #' @rdname wash
 #' @export
 setMethod("wash", "data.frame", function(object) {
