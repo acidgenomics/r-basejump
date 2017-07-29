@@ -184,7 +184,7 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname geomean
+#' @rdname pct
 #' @inheritParams all_generics
 #' @family Math Utilities
 setGeneric("pct", function(object) {
@@ -211,7 +211,7 @@ setGeneric("readYAML", function(object, ...) {
 
 
 
-#' @rdname dna
+#' @rdname removeNA
 #' @inheritParams all_generics
 #' @export
 setGeneric("removeNA", function(object, ...) {
@@ -243,15 +243,6 @@ setGeneric("snake", function(object, ...) {
 #' @export
 setGeneric("sortUnique", function(object) {
     standardGeneric("sortUnique")
-})
-
-
-
-#' @rdname collapse
-#' @inheritParams all_generics
-#' @export
-setGeneric("summarizeRows", function(object, ...) {
-    standardGeneric("summarizeRows")
 })
 
 
