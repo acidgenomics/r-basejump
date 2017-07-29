@@ -21,29 +21,6 @@ setGeneric("annotable", function(object) {
 
 
 
-#' @rdname assignAndSaveData
-#' @family Assign Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("assignAndSaveData", function(name, object, ...) {
-    standardGeneric("assignAndSaveData")
-})
-
-
-
-#' @rdname assignIntoNewEnv
-#' @family Assign Utilities
-#' @inheritParams dots
-#' @export
-setGeneric(
-    "assignIntoNewEnv",
-    signature = "...",
-    function(..., envName, parentEnv = parent.frame(99L)) {
-    standardGeneric("assignIntoNewEnv")
-})
-
-
-
 #' @rdname makeNames
 #' @inheritParams AllGenerics
 #' @export
