@@ -4,7 +4,7 @@
 \name{transmit}
 \alias{transmit}
 \alias{transmit,character-method}
-\title{Transmit (Download) Files from a Remote FTP Server}
+\title{Transmit Files from a Remote FTP Server}
 \usage{
 transmit(object, ...)
 
@@ -29,8 +29,8 @@ transmit(object, ...)
 List of local files.
 }
 \description{
-Utility function that supports file matching on a remote server. Also enables
-users to rename and compress on the fly.
+Utility function that supports easy file matching and download from a remote
+FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
 transmit("ftp://ftp.ensembl.org/pub/release-89",

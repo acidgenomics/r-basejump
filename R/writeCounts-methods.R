@@ -26,7 +26,7 @@ setMethod(
         dots <- dots_list(...)
         hasDim <- dots %>%
             sapply(dim) %>%
-            vapply(is.numeric, logical(1))
+            vapply(is.numeric, logical(1L))
         if (any(!hasDim)) {
             stop("Object must support `dim()`",
                  call. = FALSE)

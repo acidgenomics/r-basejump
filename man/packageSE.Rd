@@ -2,27 +2,59 @@
 % Please edit documentation in R/packageSE.R
 \name{packageSE}
 \alias{packageSE}
-\title{Package into a \code{SummarizedExperiment}}
+\title{Package Data into a \code{SummarizedExperiment}}
 \usage{
 packageSE(assays, colData, rowData, metadata = NULL)
 }
 \arguments{
-\item{assays}{assays.}
+\item{assays}{Assays.}
 
-\item{colData}{Sample metadata.}
+\item{colData}{Column data.}
 
-\item{rowData}{\href{http://www.ensembl.org/}{Ensembl} gene annotations.}
+\item{rowData}{Row data.}
 
-\item{metadata}{Custom metadata.}
+\item{metadata}{Metadata.}
 }
 \value{
 \link{SummarizedExperiment}.
 }
 \description{
-Package into a \code{SummarizedExperiment}
+This is a utility wrapper for \code{SummarizedExperiment()} that provides
+automatic subsetting for \code{colData} and \code{rowData}.
+}
+\details{
+\code{packageSE()} also provides automatic metadata slotting of multiple useful
+environment parameters:
+\itemize{
+\item \code{date}: Today's date.
+\item \code{wd}: Working directory.
+\item \code{hpc}: High-performance computing cluster detection.
+\item \code{session_info}: R session information.
+}
+}
+\examples{
+mat <- mtcars \%>\%
+    .[c("Mazda RX4", "Datsun 710"), ] \%>\%
+    .[, c("mpg", "gear")] \%>\%
+    as.matrix
+colData <- data.frame(
+    description = c("Miles per gallon", "Number of gears"),
+    abbreviation = c(TRUE, FALSE),
+    row.names = colnames(mat))
+rowData <- data.frame(
+    manufacturer = c("Mazda", "Datsun"),
+    model_number = c("RX4", "710"),
+    row.names = rownames(mat))
+packageSE(mat, colData, rowData)
 }
 \seealso{
-\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment}.
+\itemize{
+\item \link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment}.
+\item \code{\link[base:Sys.Date]{base::Sys.Date()}}.
+\item \code{\link[base:getwd]{base::getwd()}}.
+\item \code{\link[=detectHPC]{detectHPC()}}.
+\item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
+}
 }
 \author{
 Michael Steinbaugh
