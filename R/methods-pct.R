@@ -1,6 +1,6 @@
 #' Convert Numeric to Percentage
 #'
-#' @param number Number.
+#' @rdname pct
 #'
 #' @return Percentage.
 #' @export

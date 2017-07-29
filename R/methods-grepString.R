@@ -13,7 +13,7 @@
 setMethod("grepString", "character", function(object) {
     object %>%
         as.character %>%
-        str_c(
+        paste0(
             # Unique
             "^", ., "$",
             "|",

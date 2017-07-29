@@ -16,12 +16,13 @@
 #' - [glue::collapse()].
 #'
 #' @examples
-#' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-#'
-#' collapse(groceries)
-#' collapse(groceries, sort = )
-#'
+#' # Designed primarily for `dims` objects
 #' mtcars %>% head %>% collapse %>% t
+#'
+#' # Vectors are also supported
+#' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
+#' collapse(groceries)
+#' collapse(groceries, unique = FALSE, sort = FALSE)
 
 
 

@@ -7,7 +7,6 @@
 #' for unique Ensembl gene identifiers.
 #'
 #' @rdname annotables
-#' @docType methods
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
@@ -114,7 +113,7 @@
             as.data.frame %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        str_c(genome, "tx2gene", sep = "_") %>%
+        paste(genome, "tx2gene", sep = "_") %>%
             get(envir = envir) %>%
             arrange(.data[["enstxp"]]) %>%
             as.data.frame %>%

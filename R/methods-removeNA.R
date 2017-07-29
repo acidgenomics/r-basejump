@@ -1,6 +1,6 @@
 #' Remove Rows and Columns Containing Only `NA` Values
 #'
-#' @param x Object with column data (e.g. data frame, matrix).
+#' @rdname removeNA
 #'
 #' @return Sanitized data.
 #'
@@ -36,10 +36,8 @@
 #' @usage NULL
 .removeNA <- function(object) {
     object %>%
-        # Remove all NA rows
-        .[apply(., 1L, function(a) !all(is.na(a))), ] %>%
-        # Remove all NA columns
-        .[, apply(., 2L, function(a) !all(is.na(a)))]
+        .[apply(., 1L, function(a) !all(is.na(a))), ] %>%  # rows
+        .[, apply(., 2L, function(a) !all(is.na(a)))]      # cols
 }
 
 
@@ -60,6 +58,16 @@ setMethod("removeNA", "numeric", function(object) {
 
 #' @rdname removeNA
 #' @export
+setMethod("removeNA", "matrix", .removeNA)
+
+#' @rdname removeNA
+#' @export
+setMethod("removeNA", "dgCMatrix", .removeNA)
+
+
+
+#' @rdname removeNA
+#' @export
 setMethod("removeNA", "data.frame", .removeNA)
 
 #' @rdname removeNA
@@ -68,12 +76,4 @@ setMethod("removeNA", "DataFrame", .removeNA)
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "dgCMatrix", .removeNA)
-
-#' @rdname removeNA
-#' @export
-setMethod("removeNA", "matrix", .removeNA)
-
-#' @rdname removeNA
-#' @export
-setMethod("removeNA", "data.frame", .removeNA)
+setMethod("removeNA", "tbl_df", .removeNA)

@@ -2,9 +2,7 @@
 #'
 #' @rdname fixNA
 #'
-#' @param string String missing `NA`.
-#'
-#' @return String containing `NA`.
+#' @return Object containing proper `NA` values.
 #'
 #' @examples
 #' fixNA(c(1, "x", "", "NA"))
