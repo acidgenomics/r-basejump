@@ -1,10 +1,11 @@
-#' Package into a `SummarizedExperiment`
+#' Package Data into a `SummarizedExperiment`
 #'
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.
 #'
-#' `packageSE()` also provides automatic metadata
-#' slotting of multiple useful environment parameters:
+#' `packageSE()` also provides automatic metadata slotting of multiple useful
+#' environment parameters:
+#'
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
 #' - `hpc`: High-performance computing cluster detection.
@@ -15,7 +16,7 @@
 #' @param assays Assays.
 #' @param colData Column data.
 #' @param rowData Row data.
-#' @param metadata Custom metadata.
+#' @param metadata Metadata.
 #'
 #' @seealso
 #' - [SummarizedExperiment::SummarizedExperiment].

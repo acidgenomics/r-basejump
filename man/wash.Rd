@@ -3,15 +3,13 @@
 \docType{methods}
 \name{wash}
 \alias{wash}
-\alias{.wash}
+\alias{wash}
 \alias{wash,data.frame-method}
 \alias{wash,DataFrame-method}
 \alias{wash,tbl_df-method}
 \title{Wash Column Data}
 \usage{
 wash(object)
-
-.wash(object)
 
 \S4method{wash}{data.frame}(object)
 

@@ -34,12 +34,12 @@ setMethod(
         if (length(dots) == 0L) {
             stop("No dot objects to return", call. = FALSE)
         }
-        isName <- vapply(dots, is.symbol, logical(1))
+        isName <- vapply(dots, is.symbol, logical(1L))
         if (any(!isName)) {
             stop("Dot objects cannot contain arguments", call. = FALSE)
         }
         if (isTRUE(character)) {
-            names <- vapply(dots, as.character, character(1))
+            names <- vapply(dots, as.character, character(1L))
             dupes <- which(set_names(duplicated(names), names))
             if (length(dupes) > 0L) {
                 names <- unique(names)

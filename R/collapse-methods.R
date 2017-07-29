@@ -49,7 +49,7 @@ NULL
     if (length(x) > 1L) {
         if (isTRUE(unique)) {
             x <- unique(x)
-            if (length(x) == 1) {
+            if (length(x) == 1L) {
                 return(x)
             }
         }
@@ -95,7 +95,9 @@ setMethod("collapse", "integer", .collapseVec)
 #' @rdname collapse
 #' @export
 setMethod("collapse", "data.frame", function(object) {
-    object %>% .collapseCols %>% as.data.frame
+    object %>%
+        .collapseCols %>%
+        as.data.frame
 })
 
 
@@ -103,7 +105,9 @@ setMethod("collapse", "data.frame", function(object) {
 #' @rdname collapse
 #' @export
 setMethod("collapse", "DataFrame", function(object) {
-    object %>% .collapseCols %>% as("DataFrame")
+    object %>%
+        .collapseCols %>%
+        as("DataFrame")
 })
 
 
@@ -111,7 +115,9 @@ setMethod("collapse", "DataFrame", function(object) {
 #' @rdname collapse
 #' @export
 setMethod("collapse", "matrix", function(object) {
-    object %>% .collapseCols %>% as.matrix
+    object %>%
+        .collapseCols %>%
+        as.matrix
 })
 
 
