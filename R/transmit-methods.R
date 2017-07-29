@@ -1,7 +1,7 @@
-#' Transmit (Download) Files from a Remote FTP Server
+#' Transmit Files from a Remote FTP Server
 #'
-#' Utility function that supports file matching on a remote server. Also enables
-#' users to rename and compress on the fly.
+#' Utility function that supports easy file matching and download from a remote
+#' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @rdname transmit
 #'
@@ -27,6 +27,9 @@ setMethod("transmit", "character", function(
     compress = FALSE,
     localDir = "data-raw") {
     remoteDir <- object
+    if (!str_detect(remoteDir, "ftp\\://")) {
+        stop("FTP protocol not detected")
+    }
     # Fix trailing slash, if necessary
     if (!str_detect(remoteDir, "/$")) {
         remoteDir <- paste0(remoteDir, "/")
