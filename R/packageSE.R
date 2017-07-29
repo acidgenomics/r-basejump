@@ -1,13 +1,28 @@
 #' Package into a `SummarizedExperiment`
 #'
+#' This is a utility wrapper for `SummarizedExperiment()` that provides
+#' automatic subsetting for `colData` and `rowData`.
+#'
+#' `packageSE()` also provides automatic metadata
+#' slotting of multiple useful environment parameters:
+#' - `date`: Today's date.
+#' - `wd`: Working directory.
+#' - `hpc`: High-performance computing cluster detection.
+#' - `session_info`: R session information.
+#'
 #' @author Michael Steinbaugh
 #'
-#' @param assays assays.
-#' @param colData Sample metadata.
-#' @param rowData [Ensembl](http://www.ensembl.org/) gene annotations.
+#' @param assays Assays.
+#' @param colData Column data.
+#' @param rowData Row data.
 #' @param metadata Custom metadata.
 #'
-#' @seealso [SummarizedExperiment::SummarizedExperiment].
+#' @seealso
+#' - [SummarizedExperiment::SummarizedExperiment].
+#' - [base::Sys.Date()].
+#' - [base::getwd()].
+#' - [detectHPC()].
+#' - [utils::sessionInfo()].
 #'
 #' @return [SummarizedExperiment].
 #' @export
@@ -97,7 +112,7 @@ packageSE <- function(
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
     metadata[["hpc"]] <- detectHPC()
-    metadata[["session_info"]] <- sessionInfo()
+    metadata[["sessionInfo"]] <- sessionInfo()
 
     # Check for retired Ensembl identifiers, which can happen when a more recent
     # annotable build is used than the genome build. If present, store these
