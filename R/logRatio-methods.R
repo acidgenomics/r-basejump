@@ -1,6 +1,7 @@
 #' Interconvert Log Ratio and Fold Change Values
 #'
 #' @rdname logRatio
+#' @name logRatio
 #' @family Math Utilities
 #'
 #' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
@@ -9,7 +10,6 @@
 #'   differential expression output.
 #'
 #' @return Numeric vector.
-#' @export
 #'
 #' @seealso
 #' Modified variants of `gtools::foldchange2logratio()` and
@@ -18,6 +18,11 @@
 #' @examples
 #' lr2fc(seq(-3, 3, 1))
 #' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
+NULL
+
+
+
+#' @rdname logRatio
 setMethod("fc2lr", "numeric", function(object, base = 2L) {
     object <- ifelse(object < 0L, 1L / -object, object)
     object <- log(object, base)

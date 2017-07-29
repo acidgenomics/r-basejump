@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wash a <code>data.frame</code> — wash • basejump</title>
+<title>Wash Column Data — wash • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,7 +80,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wash a <code>data.frame</code></h1>
+    <h1>Wash Column Data</h1>
     </div>
 
     
@@ -88,20 +88,31 @@
 spaces, empty cells, and sets <code>NA</code> values if necessary.</p>
     
 
-    <pre class="usage"><span class='fu'>wash</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>wash</span>(<span class='no'>object</span>)
+
+<span class='fu'>.wash</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>wash</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>wash</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>wash</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Dirty data frame.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Clean data frame.</p>
+    <p>Clean object.</p>
     
 
   </div>

@@ -4,6 +4,7 @@
 #' Useful for describing non-normal (i.e. geometric) distributions.
 #'
 #' @rdname geomean
+#' @name geomean
 #'
 #' @details Modified version of `psych::geometric.mean()`.
 #'
@@ -22,18 +23,11 @@
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
+NULL
 
 
 
-#' @rdname geomean
-#' @usage NULL
-.geomeanVector <- function(object) {
-
-}
-
-
-#' @rdname geomean
-#' @usage NULL
+# Constructors ====
 .geomeanColData <- function(object) {
     object %>%
         as.matrix %>%
@@ -45,6 +39,7 @@
 
 
 
+# Methods ====
 #' @rdname geomean
 #' @export
 setMethod("geomean", "numeric", function(object) {

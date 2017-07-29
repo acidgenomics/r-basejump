@@ -7,6 +7,7 @@
 #' for unique Ensembl gene identifiers.
 #'
 #' @rdname annotables
+#' @name annotables
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
@@ -23,11 +24,11 @@
 #' @examples
 #' annotable("hg38") %>% glimpse
 #' detectOrganism("ENSMUSG00000000001") %>% gene2symbol %>% head
+NULL
 
 
 
-#' @rdname annotables
-#' @usage NULL
+# Constructors ====
 ## @param string String containing genome build or organism name.
 ## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
 ##   or `gene2entrez`.
@@ -137,6 +138,7 @@
 
 
 
+# Methods ====
 #' @rdname annotables
 #' @export
 setMethod("annotable", "character", function(object) {

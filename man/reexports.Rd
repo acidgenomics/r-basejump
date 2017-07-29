@@ -147,6 +147,8 @@
 \alias{reexports}
 \alias{eval_bare}
 \alias{reexports}
+\alias{eval_tidy}
+\alias{reexports}
 \alias{is_atomic}
 \alias{reexports}
 \alias{is_bytes}
@@ -299,7 +301,7 @@ below to see their documentation.
 
   \item{reshape2}{\code{\link[reshape2]{melt}}}
 
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{eval_bare}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
+  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{eval_bare}}, \code{\link[rlang]{eval_tidy}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
 
   \item{rmarkdown}{\code{\link[rmarkdown]{render}}, \code{\link[rmarkdown]{render}}}
 

@@ -4,7 +4,7 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @family Save Utilities
+#' @rdname saveData
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.
@@ -19,34 +19,23 @@
 #' @seealso
 #' - [base::save()]
 #' - [devtools::use_data()].
+#' - https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 #'
 #' @return No value.
 #' @export
-saveData <- function(..., dir = "data", compress = TRUE) {
-    if (!is_string(dir)) stop("dir must be a string")
-    if (!dir.exists(dir)) {
-        dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    }
-    objs <- getObjsFromDots(dots(...))
-    paths <- file.path(dir, paste0(objs, ".rda"))
-    message(paste("Saving", toString(objs), "to", dir))
-    mapply(save, list = objs, file = paths, compress = compress)
-    invisible()
-}
-
-
-
-#' Save Raw Data
 #'
-#' Wrapper for [saveData()] that enables quick saving of objects to the
-#' `data-raw/` directory.
-#'
-#' @family Save Utilities
-#' @inherit saveData
-#'
-#' @seealso [devtools::use_data_raw()].
-#'
-#' @export
-saveDataRaw <- function(...) {
-    saveData(..., dir = "data-raw")
-}
+#' @examples
+#' saveData(mtcars, starwars)
+setMethod(
+    "saveData",
+    signature("..." = "ANY"),
+    function(..., dir, compress) {
+        if (!dir.exists(dir)) {
+            dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+        }
+        names <- dots(..., character = TRUE)
+        paths <- file.path(dir, paste0(names, ".rda"))
+        message(paste("Saving", toString(names), "to", dir))
+        mapply(save, list = names, file = paths, compress = compress)
+        invisible()
+    })

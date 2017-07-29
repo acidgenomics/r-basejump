@@ -29,11 +29,11 @@
 #' @importFrom RCurl getURL
 #' @importFrom readxl read_excel
 #' @importFrom reshape2 melt
-#' @importFrom rlang !!! !! .data eval_bare is_atomic is_bytes is_character
-#'   is_double is_integer is_list is_logical is_null is_raw is_string is_vector
-#'   quo quos set_names sym syms UQ
+#' @importFrom rlang !!! !! .data dots_list dots_values eval_bare eval_tidy
+#'   is_atomic is_bytes is_character is_double is_integer is_list is_logical
+#'   is_null is_raw is_string is_vector quo quos set_names sym syms UQ
 #' @importFrom rmarkdown render
-#' @importFrom stats hclust
+#' @importFrom stats hclust setNames
 #' @importFrom tibble as_tibble column_to_rownames glimpse has_rownames
 #'   is_tibble remove_rownames rownames_to_column tibble
 #' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_

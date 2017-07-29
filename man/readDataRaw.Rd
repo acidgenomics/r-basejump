@@ -13,3 +13,7 @@ No value.
 This function automatically loads raw CSVs using the readr package and
 saves the data as R binary data into the \code{data/} directory.
 }
+\seealso{
+Other Read Utilities: \code{\link{readFileByExtension}},
+  \code{\link{readYAML}}
+}
