@@ -4,17 +4,17 @@
 \name{fc2lr}
 \alias{fc2lr}
 \alias{lr2fc}
-\alias{fc2lr,character-method}
-\alias{lr2fc,character-method}
+\alias{fc2lr,numeric-method}
+\alias{lr2fc,numeric-method}
 \title{Interconvert Log Ratio and Fold Change Values}
 \usage{
 fc2lr(object, ...)
 
 lr2fc(object, ...)
 
-\S4method{fc2lr}{character}(object, base = 2L)
+\S4method{fc2lr}{numeric}(object, base = 2L)
 
-\S4method{lr2fc}{character}(object, base = 2L)
+\S4method{lr2fc}{numeric}(object, base = 2L)
 }
 \arguments{
 \item{object}{Numeric vector of log ratio (\code{lr}) or fold change (\code{fc})
@@ -39,5 +39,6 @@ fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 Modified variants of \code{gtools::foldchange2logratio()} and
 \code{gtools::logratio2foldchange()}.
 
-Other Math Utilities: \code{\link{geomean}}
+Other Math Utilities: \code{\link{geomean}},
+  \code{\link{pct}}
 }

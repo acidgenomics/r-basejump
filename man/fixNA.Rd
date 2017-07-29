@@ -15,11 +15,9 @@ fixNA(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{string}{String missing \code{NA}.}
 }
 \value{
-String containing \code{NA}.
+Object containing proper \code{NA} values.
 }
 \description{
 Fix Character Strings Missing \code{NA}
