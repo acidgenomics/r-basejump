@@ -9,7 +9,7 @@
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
 #' - `hpc`: High-performance computing cluster detection.
-#' - `session_info`: R session information.
+#' - `sessionInfo`: R session information.
 #'
 #' @author Michael Steinbaugh
 #'

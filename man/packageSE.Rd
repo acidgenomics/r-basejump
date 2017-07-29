@@ -29,7 +29,7 @@ environment parameters:
 \item \code{date}: Today's date.
 \item \code{wd}: Working directory.
 \item \code{hpc}: High-performance computing cluster detection.
-\item \code{session_info}: R session information.
+\item \code{sessionInfo}: R session information.
 }
 }
 \examples{
