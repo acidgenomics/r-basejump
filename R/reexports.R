@@ -6,7 +6,7 @@ AnnotationDbi::select
 
 # Biobase ====
 #' @rdname tidyverse
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 Biobase::content -> content
 
@@ -23,17 +23,17 @@ BiocGenerics::design
 BiocGenerics::grep
 
 #' @rdname tidyverse
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::intersect -> intersect
 
 #' @rdname tidyverse
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::setdiff -> setdiff
 
 #' @rdname tidyverse
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::union -> union
 
@@ -312,6 +312,9 @@ rlang::.data
 rlang::eval_bare
 
 #' @export
+rlang::eval_tidy
+
+#' @export
 rlang::is_atomic
 
 #' @export
@@ -435,12 +438,12 @@ stringr::str_subset
 S4Vectors::DataFrame
 
 #' @rdname tidyverse
-#' @inherit all_generics
+#' @inherit AllGenerics
 #' @export
 S4Vectors::expand -> expand
 
 #' @rdname tidyverse
-#' @inherit all_generics
+#' @inherit AllGenerics
 #' @export
 S4Vectors::first -> first
 
@@ -448,7 +451,7 @@ S4Vectors::first -> first
 S4Vectors::metadata
 
 #' @rdname tidyverse
-#' @inherit all_generics
+#' @inherit AllGenerics
 #' @export
 S4Vectors::rename -> rename
 

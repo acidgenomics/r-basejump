@@ -1,6 +1,7 @@
 #' Remove Rows and Columns Containing Only `NA` Values
 #'
 #' @rdname removeNA
+#' @name removeNA
 #'
 #' @return Sanitized data.
 #'
@@ -23,11 +24,11 @@
 #' # Support for vectors (using `stats::na.omit()`)
 #' removeNA(c("hello", "world", NA))
 #' removeNA(c(1, 2, NA))
+NULL
 
 
 
-#' @rdname removeNA
-#' @usage NULL
+# Constructors ====
 .removeNA <- function(object) {
     object %>%
         .[apply(., 1L, function(a) !all(is.na(a))), ] %>%  # rows
@@ -36,11 +37,14 @@
 
 
 
+# Methods ====
 #' @rdname removeNA
 #' @export
 setMethod("removeNA", "character", function(object) {
     stats::na.omit(object)
 })
+
+
 
 #' @rdname removeNA
 #' @export
@@ -54,6 +58,8 @@ setMethod("removeNA", "numeric", function(object) {
 #' @export
 setMethod("removeNA", "matrix", .removeNA)
 
+
+
 #' @rdname removeNA
 #' @export
 setMethod("removeNA", "dgCMatrix", .removeNA)
@@ -64,9 +70,13 @@ setMethod("removeNA", "dgCMatrix", .removeNA)
 #' @export
 setMethod("removeNA", "data.frame", .removeNA)
 
+
+
 #' @rdname removeNA
 #' @export
 setMethod("removeNA", "DataFrame", .removeNA)
+
+
 
 #' @rdname removeNA
 #' @export

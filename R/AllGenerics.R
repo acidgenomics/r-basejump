@@ -1,7 +1,7 @@
 #' S4 Generics
 #'
-#' @rdname all_generics
-#' @name all_generics
+#' @rdname AllGenerics
+#' @name AllGenerics
 #' @keywords internal
 #'
 #' @param object Object.
@@ -13,7 +13,7 @@ NULL
 
 
 #' @rdname annotables
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("annotable", function(object) {
     standardGeneric("annotable")
@@ -22,7 +22,8 @@ setGeneric("annotable", function(object) {
 
 
 #' @rdname assignAndSaveData
-#' @inheritParams all_generics
+#' @family Assign Utilities
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("assignAndSaveData", function(name, object, ...) {
     standardGeneric("assignAndSaveData")
@@ -30,8 +31,21 @@ setGeneric("assignAndSaveData", function(name, object, ...) {
 
 
 
-#' @rdname names
-#' @inheritParams all_generics
+#' @rdname assignIntoNewEnv
+#' @family Assign Utilities
+#' @inheritParams dots
+#' @export
+setGeneric(
+    "assignIntoNewEnv",
+    signature = "...",
+    function(..., envName, parentEnv = parent.frame(99L)) {
+    standardGeneric("assignIntoNewEnv")
+})
+
+
+
+#' @rdname makeNames
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("camel", function(object, ...) {
     standardGeneric("camel")
@@ -40,7 +54,7 @@ setGeneric("camel", function(object, ...) {
 
 
 #' @rdname collapse
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("collapse", function(object, ...) {
     standardGeneric("collapse")
@@ -49,7 +63,7 @@ setGeneric("collapse", function(object, ...) {
 
 
 #' @rdname dna
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("comp", function(object) {
     standardGeneric("comp")
@@ -58,7 +72,7 @@ setGeneric("comp", function(object) {
 
 
 #' @rdname detectOrganism
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("detectOrganism", function(object) {
     standardGeneric("detectOrganism")
@@ -66,8 +80,20 @@ setGeneric("detectOrganism", function(object) {
 
 
 
-#' @rdname names
-#' @inheritParams all_generics
+#' @rdname dots
+#' @param ... Objects as dots.
+#' @export
+setGeneric(
+    "dots",
+    signature = "...",
+    function(..., character = FALSE) {
+    standardGeneric("dots")
+})
+
+
+
+#' @rdname makeNames
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
@@ -76,7 +102,7 @@ setGeneric("dotted", function(object, ...) {
 
 
 #' @rdname logRatio
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("fc2lr", function(object, ...) {
     standardGeneric("fc2lr")
@@ -84,8 +110,8 @@ setGeneric("fc2lr", function(object, ...) {
 
 
 
-#' @rdname names
-#' @inheritParams all_generics
+#' @rdname makeNames
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("firstCase", function(object, ...) {
     standardGeneric("firstCase")
@@ -94,7 +120,7 @@ setGeneric("firstCase", function(object, ...) {
 
 
 #' @rdname fixNA
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("fixNA", function(object) {
     standardGeneric("fixNA")
@@ -103,7 +129,7 @@ setGeneric("fixNA", function(object) {
 
 
 #' @rdname annotables
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2entrez", function(object) {
     standardGeneric("gene2entrez")
@@ -112,7 +138,7 @@ setGeneric("gene2entrez", function(object) {
 
 
 #' @rdname annotables
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbol", function(object) {
     standardGeneric("gene2symbol")
@@ -121,7 +147,7 @@ setGeneric("gene2symbol", function(object) {
 
 
 #' @rdname geomean
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @family Math Utilities
 setGeneric("geomean", function(object) {
     standardGeneric("geomean")
@@ -130,7 +156,7 @@ setGeneric("geomean", function(object) {
 
 
 #' @rdname grepString
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 setGeneric("grepString", function(object) {
     standardGeneric("grepString")
 })
@@ -138,7 +164,8 @@ setGeneric("grepString", function(object) {
 
 
 #' @rdname kables
-#' @inheritParams all_generics
+#' @family Markdown Utilities
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("kables", function(object, ...) {
     standardGeneric("kables")
@@ -146,17 +173,28 @@ setGeneric("kables", function(object, ...) {
 
 
 
-#' @rdname load
-#' @inheritParams all_generics
+#' @rdname loadData
+#' @family Load Utilities
+#' @inheritParams dots
 #' @export
-setGeneric("loadRemote", function(object) {
-    standardGeneric("loadRemote")
+setGeneric("loadData", function(...) {
+    standardGeneric("loadData")
+})
+
+
+
+#' @rdname loadRemoteData
+#' @family Load Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("loadRemoteData", function(object) {
+    standardGeneric("loadRemoteData")
 })
 
 
 
 #' @rdname logRatio
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("lr2fc", function(object, ...) {
     standardGeneric("lr2fc")
@@ -166,7 +204,7 @@ setGeneric("lr2fc", function(object, ...) {
 
 #' @rdname mdHeader
 #' @family Markdown Utilities
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("mdHeader", function(object, ...) {
     standardGeneric("mdHeader")
@@ -176,7 +214,7 @@ setGeneric("mdHeader", function(object, ...) {
 
 #' @rdname mdList
 #' @family Markdown Utilities
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("mdList", function(object, ...) {
     standardGeneric("mdList")
@@ -185,7 +223,7 @@ setGeneric("mdList", function(object, ...) {
 
 
 #' @rdname pct
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @family Math Utilities
 setGeneric("pct", function(object) {
     standardGeneric("pct")
@@ -194,7 +232,8 @@ setGeneric("pct", function(object) {
 
 
 #' @rdname readFileByExtension
-#' @inheritParams all_generics
+#' @family Read Utilities
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("readFileByExtension", function(object, ...) {
     standardGeneric("readFileByExtension")
@@ -203,7 +242,8 @@ setGeneric("readFileByExtension", function(object, ...) {
 
 
 #' @rdname readYAML
-#' @inheritParams all_generics
+#' @family Read Utilities
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("readYAML", function(object, ...) {
     standardGeneric("readYAML")
@@ -212,7 +252,7 @@ setGeneric("readYAML", function(object, ...) {
 
 
 #' @rdname removeNA
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("removeNA", function(object, ...) {
     standardGeneric("removeNA")
@@ -221,7 +261,7 @@ setGeneric("removeNA", function(object, ...) {
 
 
 #' @rdname dna
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("revcomp", function(object) {
     standardGeneric("revcomp")
@@ -229,8 +269,31 @@ setGeneric("revcomp", function(object) {
 
 
 
-#' @rdname names
-#' @inheritParams all_generics
+#' @rdname saveData
+#' @family Save Utilities
+#' @inheritParams dots
+#' @export
+setGeneric(
+    "saveData",
+    signature = "...",
+    function(..., dir = "data", compress = TRUE) {
+        standardGeneric("saveData")
+    })
+
+
+
+#' @rdname saveDataRaw
+#' @family Save Utilities
+#' @inheritParams dots
+#' @export
+setGeneric("saveDataRaw", function(...) {
+    standardGeneric("saveDataRaw")
+})
+
+
+
+#' @rdname makeNames
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("snake", function(object, ...) {
     standardGeneric("snake")
@@ -239,7 +302,7 @@ setGeneric("snake", function(object, ...) {
 
 
 #' @rdname sortUnique
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("sortUnique", function(object) {
     standardGeneric("sortUnique")
@@ -247,8 +310,8 @@ setGeneric("sortUnique", function(object) {
 
 
 
-#' @rdname names
-#' @inheritParams all_generics
+#' @rdname makeNames
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("titleCase", function(object, ...) {
     standardGeneric("titleCase")
@@ -257,7 +320,7 @@ setGeneric("titleCase", function(object, ...) {
 
 
 #' @rdname transmit
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("transmit", function(object, ...) {
     standardGeneric("transmit")
@@ -266,7 +329,7 @@ setGeneric("transmit", function(object, ...) {
 
 
 #' @rdname annotables
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2gene", function(object) {
     standardGeneric("tx2gene")
@@ -275,8 +338,22 @@ setGeneric("tx2gene", function(object) {
 
 
 #' @rdname wash
-#' @inheritParams all_generics
+#' @inheritParams AllGenerics
 #' @export
 setGeneric("wash", function(object) {
     standardGeneric("wash")
 })
+
+
+
+#' @rdname writeCounts
+#' @inheritParams dots
+#' @export
+setGeneric(
+    "writeCounts",
+    signature = "...",
+    function(...,
+             dir = file.path("results", "counts"),
+             gzip = TRUE) {
+        standardGeneric("writeCounts")
+    })

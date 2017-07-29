@@ -1,15 +1,16 @@
 #' Collapse Utilities
 #'
 #' @rdname collapse
+#' @name collapse
 #'
-#' @param sep Separator. Defaults to comma, like [base::toString()].
+#' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
 #' @param keepNA Keep `NA` values.
 #'
 #' @return
-#' - Vector: String.
-#' - Column data: Single row.
+#' - For vector: String.
+#' - For column data: Single row.
 #'
 #' @seealso
 #' - [base::toString()].
@@ -23,10 +24,11 @@
 #' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
 #' collapse(groceries)
 #' collapse(groceries, unique = FALSE, sort = FALSE)
+NULL
 
 
 
-#' @rdname collapse
+# Constructors ====
 .collapseVec <- function(
     object,
     sep = ", ",
@@ -67,7 +69,6 @@
 
 
 
-#' @rdname collapse
 .collapseCols <- function(object, ...) {
     tbl <- as(object, "tibble")
     tbl[["rowname"]] <- NULL
@@ -78,13 +79,18 @@
 
 
 
+# Methods ====
 #' @rdname collapse
 #' @export
 setMethod("collapse", "character", .collapseVec)
 
+
+
 #' @rdname collapse
 #' @export
 setMethod("collapse", "integer", .collapseVec)
+
+
 
 #' @rdname collapse
 #' @export
@@ -92,17 +98,23 @@ setMethod("collapse", "data.frame", function(object) {
     object %>% .collapseCols %>% as.data.frame
 })
 
+
+
 #' @rdname collapse
 #' @export
 setMethod("collapse", "DataFrame", function(object) {
     object %>% .collapseCols %>% as("DataFrame")
 })
 
+
+
 #' @rdname collapse
 #' @export
 setMethod("collapse", "matrix", function(object) {
     object %>% .collapseCols %>% as.matrix
 })
+
+
 
 #' @rdname collapse
 #' @export

@@ -3,6 +3,7 @@
 #' Generate complement or reverse complement sequences.
 #'
 #' @rdname dna
+#' @name dna
 #'
 #' @param object DNA sequence (`ATGC` nucleotides).
 #'
@@ -12,6 +13,7 @@
 #' dna <- "ATGCATGC"
 #' comp(dna)
 #' revcomp(dna)
+NULL
 
 
 

@@ -2,14 +2,16 @@
 #'
 #' Load a remote R binary file.
 #'
-#' @rdname load
+#' @rdname loadRemoteData
+#'
+#' @return No value.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' loadRemoteData("http://example.com/data.rda")
 #' }
-setMethod("loadRemote", "character", function(object) {
+setMethod("loadRemoteData", "character", function(object) {
     envir <- parent.frame()
     tempfile <- tempfile()
     download.file(object, get("tempfile"), quiet = TRUE)

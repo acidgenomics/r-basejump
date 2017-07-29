@@ -1,11 +1,11 @@
-#' Transmit (Download) Files from a Remote Server
+#' Transmit (Download) Files from a Remote FTP Server
 #'
 #' Utility function that supports file matching on a remote server. Also enables
 #' users to rename and compress on the fly.
 #'
 #' @rdname transmit
 #'
-#' @param object Remote directory URL.
+#' @param object Remote directory URL. Currently supports FTP.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
@@ -13,11 +13,13 @@
 #' @param localDir Directory where to save file locally.
 #'
 #' @return List of local files.
-
-
-
-#' @rdname transmit
 #' @export
+#'
+#' @examples
+#' transmit("ftp://ftp.ensembl.org/pub/release-89",
+#'          pattern = "README",
+#'          rename = "ensembl_readme.txt",
+#'          compress = TRUE)
 setMethod("transmit", "character", function(
     object,
     pattern = NULL,
@@ -25,15 +27,21 @@ setMethod("transmit", "character", function(
     compress = FALSE,
     localDir = "data-raw") {
     remoteDir <- object
-    remoteFileName <- getURL(remoteDir, dirlistonly = TRUE) %>%
+    # Fix trailing slash, if necessary
+    if (!str_detect(remoteDir, "/$")) {
+        remoteDir <- paste0(remoteDir, "/")
+    }
+
+    remoteFileList <- remoteDir %>%
+        getURL(dirlistonly = TRUE) %>%
         read_lines
-    if (!length(remoteFileName)) {
+    if (!length(remoteFileList)) {
         stop("No files listed on remote server")
     }
 
     # Apply pattern matching
     if (!is.null(pattern)) {
-        remoteFileName <- str_subset(remoteFileName, pattern)
+        remoteFileName <- str_subset(remoteFileList, pattern)
         if (!length(remoteFileName)) {
             stop("Pattern didn't match any files")
         }
@@ -48,7 +56,7 @@ setMethod("transmit", "character", function(
 
     # Ensure the local directory exists
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
-    message(toString(remoteFileName))
+    message(paste("Downloading", toString(remoteFileName)))
     lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {

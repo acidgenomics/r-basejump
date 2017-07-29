@@ -89,13 +89,16 @@ files. Also supports bcbio-nextgen pipeline-specific <code>.counts</code>, <code
 and <code>.rownames</code> files.</p>
     
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
+      <th>object</th>
       <td><p>File path.</p></td>
     </tr>
     <tr>
@@ -115,6 +118,8 @@ and <code>.rownames</code> files.</p>
 <li><p><a href='http://readxl.tidyverse.org'>readxl</a>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/Matrix/topics/externalFormats'>Matrix::readMM()</a></code>: Read a MatrixMarket file.</p></li>
 </ul>
+    <p>Other Read Utilities: <code><a href='readDataRaw.html'>readDataRaw</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code></p>
     
 
   </div>

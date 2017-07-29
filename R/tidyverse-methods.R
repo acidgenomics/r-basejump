@@ -5,24 +5,27 @@
 #' to relevant `signature`.
 #'
 #' @rdname tidyverse
+#' @name tidyverse
 #'
 #' @param .data Data object.
 #'
+#' @return Tidy data.
+#'
+#' @note For tibble coercion with [as()], rownames are always moved to the
+#'   `rowname` column, using [rownames_to_column()] internally. This provides
+#'   more consistent behavior in the tidyverse, which can inadvertently strip
+#'   rownames during filtering operations.
+#'
 #' @seealso
 #' - [Bioconductor](https://www.bioconductor.org/):
-#'     [Biobase], [BiocGenerics], S4Vectors.
+#'     Biobase, BiocGenerics, S4Vectors.
 #' - [tidyverse](http://tidyverse.org/):
-#'     [dplyr], [httr], [tidyr].
+#'     dplyr, httr, tidyr.
+NULL
 
 
 
-# as tibble coercion ====
-#' @rdname tidyverse
-#' @usage NULL
-#' @note For tibble coercion with [as()] or [as_tibble()], rownames are always
-#'   moved to the `rowname` column, using [rownames_to_column()] internally.
-#'   This provides more consistent behavior in the tidyverse, which can
-#'   inadvertently strip rownames during filtering operations.
+# As tibble ====
 .asTibble <- function(from) {
     from <- as.data.frame(from)
     if (has_rownames(from)) {
@@ -34,6 +37,7 @@
 setAs("data.frame", "tibble", .asTibble)
 setAs("DataFrame", "tibble", .asTibble)
 setAs("matrix", "tibble", .asTibble)
+setAs("tbl_df", "tibble", .asTibble)  # Ensure rownames to column
 
 
 
