@@ -7,7 +7,8 @@
 #' @rdname readFileByExtension
 #'
 #' @param object File path.
-#' @param ... Additional parameters.
+#' @param makeNames Make syntactically valid names. Supports **`camel`**,
+#'   `snake`, or `FALSE`.
 #'
 #' @return [tibble] by default, or a sparse matrix for `.mtx` files.
 #' @export
@@ -16,8 +17,11 @@
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
 #' - [Matrix::readMM()]: Read a MatrixMarket file.
-setMethod("readFileByExtension", "character", function(object, ...) {
-    filePath <- normalizePath(file)
+setMethod("readFileByExtension", "character", function(
+    object,
+    makeNames = "camel",
+    ...) {
+    filePath <- normalizePath(object)
     fileName <- basename(filePath)
     if (!file.exists(filePath)) {
         stop(paste(fileName, "not found"))
@@ -56,9 +60,12 @@ setMethod("readFileByExtension", "character", function(object, ...) {
         data <- as(data, "tibble")
     }
 
-    # Sanitize colnames into snake_case
-    if (!is.null(colnames(data))) {
-        colnames(data) <- snake(colnames(data))
+    # Sanitize colnames, if desired
+    if (!is.null(colnames(data)) &
+        makeNames %in% c("camel", "snake")) {
+        makeNames <- get(makeNames)
+        if (!is.function(makeNames)) stop("makeNames function failure")
+        colnames(data) <- makeNames(colnames(data))
     }
 
     # Remove all NA rows and columns from column data
@@ -66,12 +73,5 @@ setMethod("readFileByExtension", "character", function(object, ...) {
         data <- removeNA(data)
     }
 
-    # Return
-    if (is_tibble(data)) {
-        data %>%
-            removeNA %>%
-            snake
-    } else {
-        data
-    }
+    data
 })
