@@ -81,7 +81,7 @@ NULL
             distinct %>%
             arrange(.data[["ensgene"]]) %>%
             mutate(symbol = make.unique(.data[["symbol"]]),
-                   broad_class = case_when(
+                   broadClass = case_when(
                        # Chromosome
                        str_detect(.data[["chr"]],
                                   regex("mito|mt",
