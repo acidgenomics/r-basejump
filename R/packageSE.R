@@ -125,7 +125,7 @@ packageSE <- function(
     if (!is.null(rowData[["ensgene"]])) {
         if (any(is.na(rowData[["ensgene"]]))) {
             metadata[["missingGenes"]] <- rowData %>%
-                .[is.na(.[["ensgene"]]), drop = FALSE] %>%
+                .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
                 rownames %>%
                 sort
         }
