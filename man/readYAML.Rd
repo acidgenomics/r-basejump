@@ -22,6 +22,8 @@ readYAML(object, ...)
 Read YAML File
 }
 \seealso{
-Other Read Utilities: \code{\link{readDataRaw}},
-  \code{\link{readFileByExtension}}
+Other Data Import and Project Utilities: \code{\link{createProjectDirs}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{packageSE}}, \code{\link{readDataRaw}},
+  \code{\link{readFileByExtension}}, \code{\link{transmit}}
 }

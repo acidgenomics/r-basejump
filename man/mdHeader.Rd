@@ -28,6 +28,6 @@ mdHeader("Header")
 mdHeader("Header", level = 4L)
 }
 \seealso{
-Other Markdown Utilities: \code{\link{kables}},
+Other Report Utilities: \code{\link{kables}},
   \code{\link{mdList}}
 }

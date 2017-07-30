@@ -45,7 +45,4 @@ Other Math Utilities: \code{\link{geomean}},
 
 Other Math Utilities: \code{\link{geomean}},
   \code{\link{pct}}
-
-Other Math Utilities: \code{\link{geomean}},
-  \code{\link{pct}}
 }

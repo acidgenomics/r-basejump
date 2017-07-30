@@ -27,3 +27,8 @@ Clean object.
 This function cleans poorly formed separators, leading and trailing commas or
 spaces, empty cells, and sets \code{NA} values if necessary.
 }
+\seealso{
+Other Cleanup Utilities: \code{\link{camel}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sortUnique}}
+}

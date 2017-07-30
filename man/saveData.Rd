@@ -42,5 +42,6 @@ saveData(mtcars, starwars)
 \item https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 }
 
-Other Save Utilities: \code{\link{saveDataRaw}}
+Other Write Utilities: \code{\link{saveDataRaw}},
+  \code{\link{writeCounts}}
 }

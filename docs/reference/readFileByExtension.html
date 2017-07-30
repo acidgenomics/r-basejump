@@ -92,7 +92,7 @@ and <code>.rownames</code> files.</p>
     <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -103,7 +103,12 @@ and <code>.rownames</code> files.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional parameters.</p></td>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>makeNames</th>
+      <td><p>Make syntactically valid names. Supports <strong><code>camel</code></strong>,
+<code>snake</code>, or <code>FALSE</code>.</p></td>
     </tr>
     </table>
     
@@ -118,8 +123,10 @@ and <code>.rownames</code> files.</p>
 <li><p><a href='http://readxl.tidyverse.org'>readxl</a>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/Matrix/topics/externalFormats'>Matrix::readMM()</a></code>: Read a MatrixMarket file.</p></li>
 </ul>
-    <p>Other Read Utilities: <code><a href='readDataRaw.html'>readDataRaw</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p>
+    <p>Other Data Import and Project Utilities: <code><a href='createProjectDirs.html'>createProjectDirs</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code>packageSE</code>, <code><a href='readDataRaw.html'>readDataRaw</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
     
 
   </div>

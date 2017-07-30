@@ -3,7 +3,7 @@
 #' This function automatically loads raw CSVs using the readr package and
 #' saves the data as R binary data into the `data/` directory.
 #'
-#' @family Read Utilities
+#' @family Data Import and Project Utilities
 #'
 #' @return No value.
 #' @export

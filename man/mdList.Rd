@@ -29,6 +29,6 @@ mdList(c("milk", "eggs"))
 mdList(c("milk", "eggs"), ordered = TRUE)
 }
 \seealso{
-Other Markdown Utilities: \code{\link{kables}},
+Other Report Utilities: \code{\link{kables}},
   \code{\link{mdHeader}}
 }

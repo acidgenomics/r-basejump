@@ -23,5 +23,6 @@ Wrapper for \code{\link[=saveData]{saveData()}} that enables quick saving of obj
 \seealso{
 \code{\link[devtools:use_data_raw]{devtools::use_data_raw()}}.
 
-Other Save Utilities: \code{\link{saveData}}
+Other Write Utilities: \code{\link{saveData}},
+  \code{\link{writeCounts}}
 }

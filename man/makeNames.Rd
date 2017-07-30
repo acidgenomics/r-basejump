@@ -157,3 +157,24 @@ dotted(df, rownames = TRUE)
 dotted(tbl)
 dotted(lst)
 }
+\seealso{
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+}

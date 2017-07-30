@@ -11,12 +11,20 @@
 #' - `hpc`: High-performance computing cluster detection.
 #' - `sessionInfo`: R session information.
 #'
-#' @author Michael Steinbaugh
+#' @rdname packageSE
+#' @name packageSE
 #'
-#' @param assays Assays.
-#' @param colData Column data.
-#' @param rowData Row data.
-#' @param metadata Metadata.
+#' @param object Object supporting dimensions ([base::dim()]), or a list
+#'   containing valid objects. For NGS experiments, a counts matrix is
+#'   recommended, and can be passed in either dense (`matrix`) or sparse
+#'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
+#'   list, as long as they all have the same dimensions. List object can be
+#'   supplied as either class `list` or `SimpleList`.
+#' @param colData **Required**. Object describing assay matrix columns.
+#'   Must support [base::dim()].
+#' @param rowData **Required**. Object describing assay matrix rows.
+#'   Must support [base::dim()].
+#' @param metadata *Optional*. Metadata list.
 #'
 #' @seealso
 #' - [SummarizedExperiment::SummarizedExperiment].
@@ -26,7 +34,6 @@
 #' - [utils::sessionInfo()].
 #'
 #' @return [SummarizedExperiment].
-#' @export
 #'
 #' @examples
 #' mat <- mtcars %>%
@@ -42,21 +49,20 @@
 #'     model_number = c("RX4", "710"),
 #'     row.names = rownames(mat))
 #' packageSE(mat, colData, rowData)
-packageSE <- function(
-    assays,
+NULL
+
+
+
+# Constructors ====
+.packageSE <- function(
+    object,
     colData,
     rowData,
     metadata = NULL) {
     message("Packaging SummarizedExperiment")
+
     # Assays ====
-    if (!is.null(dim(assays))) {
-        # Coerce matrix-like object to SimpleList
-        assays <- SimpleList(assay = assays)
-    } else if (any(is(assays, "list") | is(assays, "SimpleList"))) {
-        assays <- as(assays, "SimpleList")
-    } else {
-        stop("Invalid assays object")
-    }
+    assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
 
     # colData ====
@@ -137,3 +143,33 @@ packageSE <- function(
         rowData = rowData,
         metadata = metadata)
 }
+
+
+
+# Methods ====
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "list", .packageSE)
+
+
+
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "SimpleList", .packageSE)
+
+
+
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "ANY", function(
+    object, colData, rowData, metadata = NULL) {
+    if (is.null(dim(object))) {
+        stop("Object must support `dim()`", call. = FALSE)
+
+    }
+    .packageSE(
+        SimpleList(assay = object),
+        colData,
+        rowData,
+        metadata)
+})

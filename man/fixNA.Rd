@@ -26,3 +26,8 @@ Fix Character Strings Missing \code{NA}
 \examples{
 fixNA(c(1, "x", "", "NA"))
 }
+\seealso{
+Other Cleanup Utilities: \code{\link{camel}},
+  \code{\link{removeNA}}, \code{\link{sortUnique}},
+  \code{\link{wash}}
+}
