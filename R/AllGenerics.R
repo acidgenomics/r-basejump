@@ -79,6 +79,7 @@ setGeneric("dotted", function(object, ...) {
 
 
 #' @rdname logRatio
+#' @family Math Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("fc2lr", function(object, ...) {
@@ -171,6 +172,7 @@ setGeneric("loadRemoteData", function(object) {
 
 
 #' @rdname logRatio
+#' @family Math Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("lr2fc", function(object, ...) {
