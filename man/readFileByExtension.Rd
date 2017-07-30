@@ -8,12 +8,15 @@
 \usage{
 readFileByExtension(object, ...)
 
-\S4method{readFileByExtension}{character}(object, ...)
+\S4method{readFileByExtension}{character}(object, makeNames = "camel", ...)
 }
 \arguments{
 \item{object}{File path.}
 
-\item{...}{Additional parameters.}
+\item{...}{Additional arguments.}
+
+\item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
+\code{snake}, or \code{FALSE}.}
 }
 \value{
 \link{tibble} by default, or a sparse matrix for \code{.mtx} files.
