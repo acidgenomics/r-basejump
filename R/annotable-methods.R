@@ -6,8 +6,8 @@
 #' package. For gene annotables, the Entrez identifier is removed, to allow
 #' for unique Ensembl gene identifiers.
 #'
-#' @rdname annotables
-#' @name annotables
+#' @rdname annotable
+#' @name annotable
 #' @author Broad class definitions by Rory Kirchner
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
@@ -23,7 +23,6 @@
 #'
 #' @examples
 #' annotable("hg38") %>% glimpse
-#' detectOrganism("ENSMUSG00000000001") %>% gene2symbol %>% head
 NULL
 
 
@@ -32,10 +31,9 @@ NULL
 ## @param string String containing genome build or organism name.
 ## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
 ##   or `gene2entrez`.
-.annotable <- function(string, format) {
-    if (!is_string(string)) {
-        stop("Not a string")
-    }
+.annotable <- function(object, format = "gene") {
+    string <- object[1L]
+
     if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
         stop("Unsupported format")
     }
@@ -142,32 +140,6 @@ NULL
 
 
 # Methods ====
-#' @rdname annotables
+#' @rdname annotable
 #' @export
-setMethod("annotable", "character", function(object) {
-    .annotable(object, format = "gene")
-})
-
-
-
-#' @rdname annotables
-#' @export
-setMethod("gene2entrez", "character", function(object) {
-    .annotable(object, format = "gene2entrez")
-})
-
-
-
-#' @rdname annotables
-#' @export
-setMethod("gene2symbol", "character", function(object) {
-    .annotable(object, format = "gene2symbol")
-})
-
-
-
-#' @rdname annotables
-#' @export
-setMethod("tx2gene", "character", function(object) {
-    .annotable(object, format = "tx2gene")
-})
+setMethod("annotable", "character", .annotable)
