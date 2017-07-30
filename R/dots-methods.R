@@ -2,7 +2,7 @@
 #'
 #' @rdname dots
 #'
-#' @param character Return dots as character vector.
+#' @param character Return `...` as character.
 #'
 #' @return
 #' - For `character = FALSE`: [list] containing objects as names. Can return

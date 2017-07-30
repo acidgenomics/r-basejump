@@ -1,10 +1,23 @@
 #' Detect HPC Environment
 #'
-#' Detect if R is running on an HPC cluster.
+#' Detect if R is running on a high-performance computing (HPC) cluster.
+#'
+#' @note Currently supports detection of
+#'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
+#'
+#' @rdname detectHPC
 #'
 #' @return [logical].
 #' @export
-detectHPC <- function() {
+#'
+#' @seealso
+#' - `Sys.info()`.
+#' - `R.version`.
+#' - `.Platform`.
+#'
+#' @examples
+#' detectHPC()
+setMethod("detectHPC", "missing", function() {
     if (Sys.info()[["login"]] == "root" &
         Sys.info()[["sysname"]] == "Linux" &
         any(
@@ -18,4 +31,4 @@ detectHPC <- function() {
     } else {
         FALSE
     }
-}
+})

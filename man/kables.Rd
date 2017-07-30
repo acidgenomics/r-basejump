@@ -29,6 +29,6 @@ Handle multiple kables in a single RMarkdown chunk.
 list(starwars, head(mtcars)) \%>\% kables
 }
 \seealso{
-Other Markdown Utilities: \code{\link{mdHeader}},
+Other Report Utilities: \code{\link{mdHeader}},
   \code{\link{mdList}}
 }

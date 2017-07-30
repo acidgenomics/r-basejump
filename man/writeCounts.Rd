@@ -31,6 +31,10 @@ is enabled by default to save disk space. Note that the
 \href{http://readr.tidyverse.org/}{readr} package, built into
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
+\seealso{
+Other Write Utilities: \code{\link{saveDataRaw}},
+  \code{\link{saveData}}
+}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }

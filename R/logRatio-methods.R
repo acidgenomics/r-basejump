@@ -2,7 +2,6 @@
 #'
 #' @rdname logRatio
 #' @name logRatio
-#' @family Math Utilities
 #'
 #' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
 #'   values.

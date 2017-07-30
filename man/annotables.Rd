@@ -55,7 +55,15 @@ detectOrganism("ENSMUSG00000000001") \%>\% gene2symbol \%>\% head
 \seealso{
 Consult the annotables package documentation (\code{help("annotables")})
 for a list of currently supported genomes.
+
+Other Gene Identifier Utilities: \code{\link{detectOrganism}}
+
+Other Gene Identifier Utilities: \code{\link{detectOrganism}}
+
+Other Gene Identifier Utilities: \code{\link{detectOrganism}}
+
+Other Gene Identifier Utilities: \code{\link{detectOrganism}}
 }
 \author{
-Michael Steinbaugh, Rory Kirchner
+Broad class definitions by Rory Kirchner
 }

@@ -13,7 +13,7 @@ dots(..., character = FALSE)
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{character}{Return dots as character vector.}
+\item{character}{Return \code{...} as character.}
 }
 \value{
 \itemize{

@@ -8,7 +8,7 @@
 #'
 #' @rdname annotables
 #' @name annotables
-#' @author Michael Steinbaugh, Rory Kirchner
+#' @author Broad class definitions by Rory Kirchner
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
 #'   string.

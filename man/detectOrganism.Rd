@@ -36,3 +36,6 @@ detectOrganism("WBGene00000001")
 detectOrganism("BDGP6")
 detectOrganism("FBgn0000003")
 }
+\seealso{
+Other Gene Identifier Utilities: \code{\link{annotable}}
+}

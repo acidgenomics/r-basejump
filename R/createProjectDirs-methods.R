@@ -4,12 +4,14 @@
 #' [RMarkdown](http://rmarkdown.rstudio.com) report in
 #' [RStudio](https://www.rstudio.com).
 #'
+#' @rdname createProjectDirs
+#'
 #' @return No value.
 #' @export
-createProjectDirs <- function() {
+setMethod("createProjectDirs", "missing", function() {
     localDirs <- c("data", "figures", "meta", "results")
     lapply(seq_along(localDirs), function(a) {
         dir.create(localDirs[[a]], showWarnings = FALSE)
     }) %>%
         invisible
-}
+})

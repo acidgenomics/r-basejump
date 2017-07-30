@@ -13,6 +13,7 @@ NULL
 
 
 #' @rdname annotables
+#' @family Gene Identifier Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("annotable", function(object) {
@@ -22,6 +23,7 @@ setGeneric("annotable", function(object) {
 
 
 #' @rdname makeNames
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("camel", function(object, ...) {
@@ -31,6 +33,7 @@ setGeneric("camel", function(object, ...) {
 
 
 #' @rdname collapse
+#' @family Data Manipulation Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("collapse", function(object, ...) {
@@ -39,7 +42,18 @@ setGeneric("collapse", function(object, ...) {
 
 
 
+#' @rdname createProjectDirs
+#' @family Data Import and Project Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("createProjectDirs", function(object, ...) {
+    standardGeneric("createProjectDirs")
+})
+
+
+
 #' @rdname dna
+#' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("comp", function(object) {
@@ -48,7 +62,18 @@ setGeneric("comp", function(object) {
 
 
 
+#' @rdname detectHPC
+#' @family Infrastructure Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("detectHPC", function(object, ...) {
+    standardGeneric("detectHPC")
+})
+
+
+
 #' @rdname detectOrganism
+#' @family Gene Identifier Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("detectOrganism", function(object) {
@@ -58,6 +83,7 @@ setGeneric("detectOrganism", function(object) {
 
 
 #' @rdname dots
+#' @family Function Utilities
 #' @param ... Objects as dots.
 #' @export
 setGeneric(
@@ -70,6 +96,7 @@ setGeneric(
 
 
 #' @rdname makeNames
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("dotted", function(object, ...) {
@@ -89,6 +116,7 @@ setGeneric("fc2lr", function(object, ...) {
 
 
 #' @rdname makeNames
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("firstCase", function(object, ...) {
@@ -98,6 +126,7 @@ setGeneric("firstCase", function(object, ...) {
 
 
 #' @rdname fixNA
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("fixNA", function(object) {
@@ -107,6 +136,7 @@ setGeneric("fixNA", function(object) {
 
 
 #' @rdname annotables
+#' @family Gene Identifier Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2entrez", function(object) {
@@ -116,6 +146,7 @@ setGeneric("gene2entrez", function(object) {
 
 
 #' @rdname annotables
+#' @family Gene Identifier Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbol", function(object) {
@@ -125,8 +156,8 @@ setGeneric("gene2symbol", function(object) {
 
 
 #' @rdname geomean
-#' @inheritParams AllGenerics
 #' @family Math Utilities
+#' @inheritParams AllGenerics
 setGeneric("geomean", function(object) {
     standardGeneric("geomean")
 })
@@ -134,6 +165,7 @@ setGeneric("geomean", function(object) {
 
 
 #' @rdname grepString
+#' @family String Utilities
 #' @inheritParams AllGenerics
 setGeneric("grepString", function(object) {
     standardGeneric("grepString")
@@ -142,7 +174,7 @@ setGeneric("grepString", function(object) {
 
 
 #' @rdname kables
-#' @family Markdown Utilities
+#' @family Report Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("kables", function(object, ...) {
@@ -152,7 +184,7 @@ setGeneric("kables", function(object, ...) {
 
 
 #' @rdname loadData
-#' @family Load Utilities
+#' @family Data Import and Project Utilities
 #' @inheritParams dots
 #' @export
 setGeneric("loadData", function(...) {
@@ -162,7 +194,7 @@ setGeneric("loadData", function(...) {
 
 
 #' @rdname loadRemoteData
-#' @family Load Utilities
+#' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("loadRemoteData", function(object) {
@@ -182,7 +214,7 @@ setGeneric("lr2fc", function(object, ...) {
 
 
 #' @rdname mdHeader
-#' @family Markdown Utilities
+#' @family Report Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("mdHeader", function(object, ...) {
@@ -192,7 +224,7 @@ setGeneric("mdHeader", function(object, ...) {
 
 
 #' @rdname mdList
-#' @family Markdown Utilities
+#' @family Report Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("mdList", function(object, ...) {
@@ -201,9 +233,19 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname pct
+#' @rdname packageSE
+#' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
+#' @export
+setGeneric("packageSE", function(object, ...) {
+    standardGeneric("packageSE")
+})
+
+
+
+#' @rdname pct
 #' @family Math Utilities
+#' @inheritParams AllGenerics
 setGeneric("pct", function(object) {
     standardGeneric("pct")
 })
@@ -211,7 +253,7 @@ setGeneric("pct", function(object) {
 
 
 #' @rdname readFileByExtension
-#' @family Read Utilities
+#' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("readFileByExtension", function(object, ...) {
@@ -221,7 +263,7 @@ setGeneric("readFileByExtension", function(object, ...) {
 
 
 #' @rdname readYAML
-#' @family Read Utilities
+#' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("readYAML", function(object, ...) {
@@ -231,6 +273,7 @@ setGeneric("readYAML", function(object, ...) {
 
 
 #' @rdname removeNA
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("removeNA", function(object, ...) {
@@ -240,6 +283,7 @@ setGeneric("removeNA", function(object, ...) {
 
 
 #' @rdname dna
+#' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("revcomp", function(object) {
@@ -249,7 +293,7 @@ setGeneric("revcomp", function(object) {
 
 
 #' @rdname saveData
-#' @family Save Utilities
+#' @family Write Utilities
 #' @inheritParams dots
 #' @export
 setGeneric(
@@ -262,7 +306,7 @@ setGeneric(
 
 
 #' @rdname saveDataRaw
-#' @family Save Utilities
+#' @family Write Utilities
 #' @inheritParams dots
 #' @export
 setGeneric("saveDataRaw", function(...) {
@@ -272,6 +316,7 @@ setGeneric("saveDataRaw", function(...) {
 
 
 #' @rdname makeNames
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("snake", function(object, ...) {
@@ -281,6 +326,7 @@ setGeneric("snake", function(object, ...) {
 
 
 #' @rdname sortUnique
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("sortUnique", function(object) {
@@ -290,6 +336,7 @@ setGeneric("sortUnique", function(object) {
 
 
 #' @rdname makeNames
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("titleCase", function(object, ...) {
@@ -299,6 +346,7 @@ setGeneric("titleCase", function(object, ...) {
 
 
 #' @rdname transmit
+#' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("transmit", function(object, ...) {
@@ -308,6 +356,7 @@ setGeneric("transmit", function(object, ...) {
 
 
 #' @rdname annotables
+#' @family Gene Identifier Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2gene", function(object) {
@@ -317,6 +366,7 @@ setGeneric("tx2gene", function(object) {
 
 
 #' @rdname wash
+#' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("wash", function(object) {
@@ -326,6 +376,7 @@ setGeneric("wash", function(object) {
 
 
 #' @rdname writeCounts
+#' @family Write Utilities
 #' @inheritParams dots
 #' @export
 setGeneric(
