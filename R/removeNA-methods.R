@@ -62,12 +62,6 @@ setMethod("removeNA", "matrix", .removeNA)
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "dgCMatrix", .removeNA)
-
-
-
-#' @rdname removeNA
-#' @export
 setMethod("removeNA", "data.frame", .removeNA)
 
 
@@ -81,3 +75,12 @@ setMethod("removeNA", "DataFrame", .removeNA)
 #' @rdname removeNA
 #' @export
 setMethod("removeNA", "tbl_df", .removeNA)
+
+
+
+# Otherwise, simply return unmodified
+#' @rdname removeNA
+#' @export
+setMethod("removeNA", "ANY", function(object) {
+    object
+})

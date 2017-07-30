@@ -7,10 +7,10 @@
 \alias{removeNA,character-method}
 \alias{removeNA,numeric-method}
 \alias{removeNA,matrix-method}
-\alias{removeNA,dgCMatrix-method}
 \alias{removeNA,data.frame-method}
 \alias{removeNA,DataFrame-method}
 \alias{removeNA,tbl_df-method}
+\alias{removeNA,ANY-method}
 \title{Remove Rows and Columns Containing Only \code{NA} Values}
 \usage{
 removeNA(object, ...)
@@ -21,13 +21,13 @@ removeNA(object, ...)
 
 \S4method{removeNA}{matrix}(object)
 
-\S4method{removeNA}{dgCMatrix}(object)
-
 \S4method{removeNA}{data.frame}(object)
 
 \S4method{removeNA}{DataFrame}(object)
 
 \S4method{removeNA}{tbl_df}(object)
+
+\S4method{removeNA}{ANY}(object)
 }
 \arguments{
 \item{object}{Object.}
