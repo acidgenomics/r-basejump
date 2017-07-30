@@ -12,11 +12,11 @@ NULL
 
 
 
-#' @rdname annotables
-#' @family Gene Identifier Utilities
+#' @rdname annotable
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("annotable", function(object) {
+setGeneric("annotable", function(object, ...) {
     standardGeneric("annotable")
 })
 
@@ -73,7 +73,7 @@ setGeneric("detectHPC", function(object, ...) {
 
 
 #' @rdname detectOrganism
-#' @family Gene Identifier Utilities
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("detectOrganism", function(object) {
@@ -135,21 +135,21 @@ setGeneric("fixNA", function(object) {
 
 
 
-#' @rdname annotables
-#' @family Gene Identifier Utilities
+#' @rdname gene2entrez
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("gene2entrez", function(object) {
+setGeneric("gene2entrez", function(object, ...) {
     standardGeneric("gene2entrez")
 })
 
 
 
-#' @rdname annotables
-#' @family Gene Identifier Utilities
+#' @rdname gene2symbol
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("gene2symbol", function(object) {
+setGeneric("gene2symbol", function(object, ...) {
     standardGeneric("gene2symbol")
 })
 
@@ -355,8 +355,8 @@ setGeneric("transmit", function(object, ...) {
 
 
 
-#' @rdname annotables
-#' @family Gene Identifier Utilities
+#' @rdname tx2gene
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2gene", function(object) {

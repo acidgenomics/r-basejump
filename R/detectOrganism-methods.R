@@ -26,11 +26,11 @@
 setMethod("detectOrganism", "character", function(object) {
     if (str_detect(object,
                    regex("^(grch|hg)\\d{2}$", ignore_case = TRUE)) |
-        str_detect(object, "^ENSG\\d{11}$")) {
+        str_detect(object, "^ENS(G|T)\\d{11}$")) {
         c(human = "Homo sapiens")
     } else if (str_detect(object,
                           regex("^(grcm|mm)\\d{2}$", ignore_case = TRUE)) |
-               str_detect(object, "^ENSMUSG\\d{11}$")) {
+               str_detect(object, "^ENSMUS(G|T)\\d{11}$")) {
         c(mouse = "Mus musculus")
     } else if (str_detect(object,
                           regex("^wbcel\\d{3}$", ignore_case = TRUE)) |
@@ -38,11 +38,11 @@ setMethod("detectOrganism", "character", function(object) {
         c(roundworm = "Caenorhabditis elegans")
     } else if (str_detect(object,
                           regex("^bdgp\\d$", ignore_case = TRUE)) |
-               str_detect(object, "^FBgn\\d{7}$")) {
+               str_detect(object, "^FB(gn|tr)\\d{7}$")) {
         c(fruitfly = "Drosophila melanogaster")
-    } else if (str_detect(object, "^ENSGALG\\d{11}$")) {
+    } else if (str_detect(object, "^ENSGAL(G|T)\\d{11}$")) {
         c(chicken = "Gallus gallus")
-    } else if (str_detect(object, "^ENSRNOG\\d{11}$")) {
+    } else if (str_detect(object, "^ENSRNO(G|T)\\d{11}$")) {
         c(rat = "Rattus norvegicus")
     } else if (str_detect(object,
                           regex("^(mb|mb)\\d", ignore_case = TRUE))) {
