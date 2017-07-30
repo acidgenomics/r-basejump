@@ -60,32 +60,36 @@ packageSE <- function(
     assay <- assays[[1L]]
 
     # colData ====
-    if (!any(is(colData, "data.frame") | is(colData, "DataFrame"))) {
-        stop("colData must be a data frame", call. = FALSE)
+    if (is.null(dim(colData))) {
+        stop("colData must support `dim`", call. = FALSE)
     }
-    colData <- as.data.frame(colData)
-    if (!has_rownames(colData)) {
-        # Attempt to use the first column for rownames, if unset
-        colData <- colData %>% set_rownames(.[[1L]])
+    # Ensure `tibble` class coercion to `data.frame`
+    if (is_tibble(colData)) {
+        colData <- as.data.frame(colData)
     }
-    colData <- colData %>%
-        .[colnames(assay), , drop = FALSE] %>%
-        set_rownames(colnames(assay)) %>%
-        as("DataFrame")
+    # Attempt to use the first column for rownames, if unset
+    if (is.data.frame(colData) & !has_rownames(colData)) {
+        rownames(colData) <- colData[, 1L]
+    }
+    colData <- colData[colnames(assay), , drop = FALSE]
+    rownames(colData) <- colnames(assay)
+    colData <- as(colData, "DataFrame")
 
     # rowData ====
-    if (!any(is(rowData, "data.frame") | is(rowData, "DataFrame"))) {
-        stop("rowData must be a data frame")
+    if (is.null(dim(rowData))) {
+        stop("rowData must support `dim`", call. = FALSE)
     }
-    rowData <- as.data.frame(rowData)
-    if (!has_rownames(rowData)) {
-        # Attempt to use the first column for rownames, if unset
-        rowData <- rowData %>% set_rownames(.[[1L]])
+    # Ensure `tibble` class coercion to `data.frame`
+    if (is_tibble(rowData)) {
+        rowData <- as.data.frame(rowData)
     }
-    rowData <- rowData %>%
-        .[rownames(assay), , drop = FALSE] %>%
-        set_rownames(rownames(assay)) %>%
-        as("DataFrame")
+    # Attempt to use the first column for rownames, if unset
+    if (is.data.frame(rowData) & !has_rownames(rowData)) {
+        rownames(rowData) <- rowData[, 1L]
+    }
+    rowData <- rowData[rownames(assay), , drop = FALSE]
+    rownames(rowData) <- rownames(assay)
+    rowData <- as(rowData, "DataFrame")
 
     # Check for name assignment problems
     if (any(duplicated(rownames(colData)))) {
@@ -120,10 +124,9 @@ packageSE <- function(
     # identifiers in the metadata.
     if (!is.null(rowData[["ensgene"]])) {
         if (any(is.na(rowData[["ensgene"]]))) {
-            metadata[["missing_ensgene"]] <- rowData %>%
-                as_tibble %>%
-                filter(is.na(.data[["ensgene"]])) %>%
-                pull("rowname") %>%
+            metadata[["missingGenes"]] <- rowData %>%
+                .[is.na(.[["ensgene"]]), drop = FALSE] %>%
+                rownames %>%
                 sort
         }
     }
