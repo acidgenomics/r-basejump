@@ -62,7 +62,6 @@ NULL
     message("Packaging SummarizedExperiment")
 
     # Assays ====
-    assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
 
     # colData ====
