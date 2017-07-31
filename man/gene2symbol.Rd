@@ -5,12 +5,24 @@
 \alias{gene2symbol}
 \alias{gene2symbol}
 \alias{gene2symbol,character-method}
+\alias{gene2symbol,data.frame-method}
+\alias{gene2symbol,DataFrame-method}
+\alias{gene2symbol,dgCMatrix-method}
+\alias{gene2symbol,dgTMatrix-method}
 \alias{gene2symbol,matrix-method}
 \title{Convert Ensembl Identifier to Gene Symbol}
 \usage{
 gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object)
+
+\S4method{gene2symbol}{data.frame}(object)
+
+\S4method{gene2symbol}{DataFrame}(object)
+
+\S4method{gene2symbol}{dgCMatrix}(object)
+
+\S4method{gene2symbol}{dgTMatrix}(object)
 
 \S4method{gene2symbol}{matrix}(object)
 }
