@@ -16,7 +16,7 @@ gene2entrez(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\link{tibble}.
+Grouped \link{tibble}.
 }
 \description{
 Convert Ensembl Identifier to Entrez

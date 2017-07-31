@@ -3,24 +3,44 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
+\alias{gene2symbol}
 \alias{gene2symbol,character-method}
+\alias{gene2symbol,matrix-method}
 \title{Convert Ensembl Identifier to Gene Symbol}
 \usage{
 gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object)
+
+\S4method{gene2symbol}{matrix}(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 }
+\value{
+Same class as original object.
+}
 \description{
 Convert Ensembl Identifier to Gene Symbol
 }
 \examples{
 # character
-gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000003"))
+c("ENSMUSG00000000000",
+  "ENSMUSG00000000001",
+  "ENSMUSG00000000003")) \%>\% gene2symbol
+
+# matrix
+matrix(
+    data = seq(1:4),
+    byrow = TRUE,
+    nrow = 2,
+    ncol = 2,
+    dimnames = list(c("ENSMUSG00000000001",
+                      "ENSMUSG00000000003"),
+                    c("sample1",
+                      "sample2"))) \%>\% gene2symbol
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

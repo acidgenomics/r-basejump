@@ -1,18 +1,60 @@
 #' Convert Ensembl Identifier to Gene Symbol
 #'
 #' @rdname gene2symbol
+#' @name gene2symbol
 #'
 #' @return Same class as original object.
 #' @export
 #'
 #' @examples
 #' # character
-#' gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000003"))
-setMethod("gene2symbol", "character", function(object) {
+#' c("ENSMUSG00000000000",
+#'   "ENSMUSG00000000001",
+#'   "ENSMUSG00000000003")) %>% gene2symbol
+#'
+#' # matrix
+#' matrix(
+#'     data = seq(1:4),
+#'     byrow = TRUE,
+#'     nrow = 2,
+#'     ncol = 2,
+#'     dimnames = list(c("ENSMUSG00000000001",
+#'                       "ENSMUSG00000000003"),
+#'                     c("sample1",
+#'                       "sample2"))) %>% gene2symbol
+NULL
+
+
+
+# Constructors ====
+.g2s <- function(object) {
+    if (!is.vector(object)) stop("Object must be vector")
     organism <- detectOrganism(object[[1L]])
-    g2s <- annotable(organism, format = "gene2symbol")
-    if (!all(object %in% rownames(g2s))) {
-        stop("Unknown transcripts present", call. = FALSE)
+    g2s <- annotable(organism, format = "gene2symbol") %>%
+        .[object, ] %>%
+        .[!is.na(.[["symbol"]]), ]
+    symbol <- g2s[["symbol"]]
+    names(symbol) <- g2s[["ensgene"]]
+    if (!all(object %in% names(symbol))) {
+        warning("Unmatched genes present")
+        nomatch <- setdiff(object, rownames(g2s))
+        names(nomatch) <- nomatch
     }
-    g2s[object, "symbol"]
+    c(symbol, nomatch)[object]
+}
+
+
+
+# Methods ====
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "character", .g2s)
+
+
+
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "matrix", function(object) {
+    rownames(object) <- rownames(object) %>% .g2s
+    object
 })
