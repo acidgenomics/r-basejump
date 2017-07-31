@@ -78,37 +78,39 @@ NULL
             mutate(entrez = NULL) %>%
             distinct %>%
             arrange(.data[["ensgene"]]) %>%
-            mutate(symbol = make.unique(.data[["symbol"]]),
-                   broadClass = case_when(
-                       # Chromosome
-                       str_detect(.data[["chr"]],
-                                  regex("mito|mt",
-                                        ignore_case = TRUE)) ~ "mito",
-                       # Biotype
-                       .data[["biotype"]] == "protein_coding" ~ "coding",
-                       .data[["biotype"]] %in%
-                           c("known_ncrna",
-                             "lincRNA",
-                             "non_coding") ~ "noncoding",
-                       str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
-                       .data[["biotype"]] %in%
-                           c("miRNA",
-                             "misc_RNA",
-                             "ribozyme",
-                             "rRNA",
-                             "scaRNA",
-                             "scRNA",
-                             "snoRNA",
-                             "snRNA",
-                             "sRNA") ~ "small",
-                       .data[["biotype"]] %in%
-                           c("non_stop_decay",
-                             "nonsense_mediated_decay") ~ "decaying",
-                       str_detect(.data[["biotype"]],
-                                  regex("^ig_", ignore_case = TRUE)) ~ "ig",
-                       str_detect(.data[["biotype"]],
-                                  regex("^tr_", ignore_case = TRUE)) ~ "tcr",
-                       TRUE ~ "other")) %>%
+            mutate(
+                # Ensure unique symbols
+                symbol = make.unique(.data[["symbol"]]),
+                broadClass = case_when(
+                    # Chromosome
+                    str_detect(.data[["chr"]],
+                               regex("mito|mt",
+                                     ignore_case = TRUE)) ~ "mito",
+                    # Biotype
+                    .data[["biotype"]] == "protein_coding" ~ "coding",
+                    .data[["biotype"]] %in%
+                        c("known_ncrna",
+                          "lincRNA",
+                          "non_coding") ~ "noncoding",
+                    str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
+                    .data[["biotype"]] %in%
+                        c("miRNA",
+                          "misc_RNA",
+                          "ribozyme",
+                          "rRNA",
+                          "scaRNA",
+                          "scRNA",
+                          "snoRNA",
+                          "snRNA",
+                          "sRNA") ~ "small",
+                    .data[["biotype"]] %in%
+                        c("non_stop_decay",
+                          "nonsense_mediated_decay") ~ "decaying",
+                    str_detect(.data[["biotype"]],
+                               regex("^ig_", ignore_case = TRUE)) ~ "ig",
+                    str_detect(.data[["biotype"]],
+                               regex("^tr_", ignore_case = TRUE)) ~ "tcr",
+                    TRUE ~ "other")) %>%
             as.data.frame %>%
             set_rownames(.[["ensgene"]]) %>%
             as("DataFrame")
