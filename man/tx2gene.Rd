@@ -20,6 +20,7 @@ Same class as original object.
 Convert Ensembl Transcripts to Genes
 }
 \examples{
+# character
 tx2gene(c("ENSMUST00000000001",
           "ENSMUST00000000003",
           "ENSMUST00000114041"))
