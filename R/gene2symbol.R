@@ -27,7 +27,7 @@ NULL
 
 
 # Constructors ====
-.g2s <- function(object) {
+.g2svec <- function(object) {
     if (!is.vector(object)) stop("Object must be vector")
     organism <- detectOrganism(object[[1L]])
     g2s <- annotable(organism, format = "gene2symbol") %>%
@@ -45,16 +45,34 @@ NULL
 
 
 
+.g2srow <- function(object) {
+    rownames(object) <- rownames(object) %>% .g2svec
+    object
+}
+
+
+
 # Methods ====
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "character", .g2s)
-
-
+setMethod("gene2symbol", "character", .g2svec)
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "matrix", function(object) {
-    rownames(object) <- rownames(object) %>% .g2s
-    object
-})
+setMethod("gene2symbol", "data.frame", .g2srow)
+
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "DataFrame", .g2srow)
+
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "dgCMatrix", .g2srow)
+
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "dgTMatrix", .g2srow)
+
+#' @rdname gene2symbol
+#' @export
+setMethod("gene2symbol", "matrix", .g2srow)
