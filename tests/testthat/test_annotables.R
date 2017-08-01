@@ -1,5 +1,14 @@
 context("Annotables Utilities")
 
+test_that("ensemblVersion", {
+    expect_equal(
+        grepl("^Ensembl Genes ", ensemblVersion()),
+        TRUE)
+    expect_error(ensemblVersion("x"))
+})
+
+
+
 test_that("gene2symbol", {
     # character
     expect_equal(
@@ -30,6 +39,8 @@ test_that("gene2symbol", {
         c(ENSMUSG00000000001 = "Gnai3",
           ENSMUSG00000000003 = "Pbsn"))
 })
+
+
 
 test_that("tx2gene", {
     # character

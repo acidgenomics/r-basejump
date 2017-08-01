@@ -39,16 +39,15 @@ Convert Ensembl Identifier to Gene Symbol
 }
 \examples{
 # character
-c("ENSMUSG00000000000",
-  "ENSMUSG00000000001",
+c("ENSMUSG00000000001",
   "ENSMUSG00000000003") \%>\% gene2symbol
 
 # matrix
 matrix(
-    data = seq(1:4),
+    data = seq(1L:4L),
     byrow = TRUE,
-    nrow = 2,
-    ncol = 2,
+    nrow = 2L,
+    ncol = 2L,
     dimnames = list(c("ENSMUSG00000000001",
                       "ENSMUSG00000000003"),
                     c("sample1",
