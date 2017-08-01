@@ -16,6 +16,9 @@ annotable(object, ...)
 string.}
 
 \item{...}{Additional arguments.}
+
+\item{format}{Desired table format, either \strong{\code{gene}}, \code{tx2gene},
+\code{gene2symbol}, or \code{gene2entrez}.}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.

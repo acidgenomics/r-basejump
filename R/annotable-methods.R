@@ -12,6 +12,8 @@
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
 #'   string.
+#' @param format Desired table format, either **`gene`**, `tx2gene`,
+#'   `gene2symbol`, or `gene2entrez`.
 #'
 #' @note If the `format` argument is set to `gene2entrez`, [annotable()] returns
 #'   a [tibble] with non-unique rows grouped by `ensgene`, instead of a
@@ -28,9 +30,6 @@ NULL
 
 
 # Constructors ====
-## @param string String containing genome build or organism name.
-## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
-##   or `gene2entrez`.
 .annotable <- function(object, format = "gene") {
     string <- object[1L]  # nolint
 
