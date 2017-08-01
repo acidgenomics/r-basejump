@@ -32,7 +32,7 @@ NULL
 ## @param format Desired table format, either `gene`, `tx2gene`, `gene2symbol`,
 ##   or `gene2entrez`.
 .annotable <- function(object, format = "gene") {
-    string <- object[1L]
+    string <- object[1L]  # nolint
 
     if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
         stop("Unsupported format")
