@@ -111,15 +111,13 @@ NULL
                                regex("^tr_", ignore_case = TRUE)) ~ "tcr",
                     TRUE ~ "other")) %>%
             as.data.frame %>%
-            set_rownames(.[["ensgene"]]) %>%
-            as("DataFrame")
+            set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
         paste(genome, "tx2gene", sep = "_") %>%
             get(envir = envir) %>%
             arrange(.data[["enstxp"]]) %>%
             as.data.frame %>%
-            set_rownames(.[["enstxp"]]) %>%
-            as("DataFrame")
+            set_rownames(.[["enstxp"]])
     } else if (format == "gene2symbol") {
         get(genome, envir = envir) %>%
             tidy_select(c("ensgene", "symbol")) %>%
@@ -127,8 +125,7 @@ NULL
             arrange(.data[["ensgene"]]) %>%
             mutate(symbol = make.unique(.data[["symbol"]])) %>%
             as.data.frame %>%
-            set_rownames(.[["ensgene"]]) %>%
-            as("DataFrame")
+            set_rownames(.[["ensgene"]])
     } else if (format == "gene2entrez") {
         get(genome, envir = envir) %>%
             tidy_select(c("ensgene", "entrez")) %>%
