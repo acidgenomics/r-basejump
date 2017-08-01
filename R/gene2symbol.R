@@ -39,8 +39,8 @@ NULL
         warning("Unmatched genes present")
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
+        vec <- c(symbol, nomatch)[object]
     }
-    vec <- c(symbol, nomatch)[object]
 
     # Final integrity checks
     if (any(is.na(vec))) stop("NA symbols detected")
