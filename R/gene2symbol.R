@@ -39,14 +39,14 @@ NULL
         warning("Unmatched genes present")
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
-        vec <- c(symbol, nomatch)[object]
+        symbol <- c(symbol, nomatch)[object]
     }
 
     # Final integrity checks
-    if (any(is.na(vec))) stop("NA symbols detected")
-    if (any(duplicated(vec))) stop("Duplicate symbols detected")
+    if (any(is.na(symbol))) stop("NA symbols detected")
+    if (any(duplicated(symbol))) stop("Duplicate symbols detected")
 
-    vec
+    symbol
 }
 
 
