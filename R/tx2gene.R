@@ -3,14 +3,14 @@
 #' @rdname tx2gene
 #' @name tx2gene
 #'
-#' @return Same class as original object.
+#' @return Same class as object.
 #' @export
 #'
 #' @examples
 #' # character
 #' c("ENSMUST00000000001",
 #'   "ENSMUST00000000003",
-#'   "ENSMUST00000114041")) %>% tx2gene
+#'   "ENSMUST00000114041") %>% tx2gene
 #'
 #' # matrix
 #' matrix(
@@ -22,7 +22,7 @@
 #'                       "ENSMUST00000000003",
 #'                       "ENSMUST00000114041"),
 #'                     c("sample1",
-#'                       "sample2") %>% tx2gene
+#'                       "sample2"))) %>% tx2gene
 NULL
 
 

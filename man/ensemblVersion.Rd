@@ -12,4 +12,7 @@ String containing Ensembl build version of annotables.
 \description{
 Ensembl Build Version
 }
+\examples{
+ensemblVersion()
+}
 \keyword{internal}

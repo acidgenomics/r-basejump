@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ensembl Build Version — ensemblVersion • basejump</title>
+<title>Convert Ensembl Identifier to Entrez — gene2entrez • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,28 +80,67 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Ensembl Build Version</h1>
+    <h1>Convert Ensembl Identifier to Entrez</h1>
     </div>
 
     
-    <p>Ensembl Build Version</p>
+    <p>Convert Ensembl Identifier to Entrez</p>
     
 
-    <pre class="usage"><span class='fu'>ensemblVersion</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>gene2entrez</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>String containing Ensembl build version of annotables.</p>
+    <p>Grouped <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Gene Annotation Utilities: <code>annotable</code>,
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code>gene2symbol</code>,
+  <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ensemblVersion</span>()</div><div class='output co'>#&gt; [1] "Ensembl Genes 89"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>gene2entrez</span>(<span class='st'>"grcm38"</span>)</div><div class='output co'>#&gt; # A tibble: 21,525 x 2
+#&gt; # Groups:   ensgene [20,910]
+#&gt;               ensgene entrez
+#&gt;                 &lt;chr&gt;  &lt;int&gt;
+#&gt;  1 ENSMUSG00000000001  14679
+#&gt;  2 ENSMUSG00000000003  54192
+#&gt;  3 ENSMUSG00000000028  12544
+#&gt;  4 ENSMUSG00000000037 107815
+#&gt;  5 ENSMUSG00000000049  11818
+#&gt;  6 ENSMUSG00000000056  67608
+#&gt;  7 ENSMUSG00000000058  12390
+#&gt;  8 ENSMUSG00000000078  23849
+#&gt;  9 ENSMUSG00000000085  29871
+#&gt; 10 ENSMUSG00000000088  12858
+#&gt; # ... with 21,515 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
