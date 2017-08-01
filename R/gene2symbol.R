@@ -10,7 +10,7 @@
 #' # character
 #' c("ENSMUSG00000000000",
 #'   "ENSMUSG00000000001",
-#'   "ENSMUSG00000000003")) %>% gene2symbol
+#'   "ENSMUSG00000000003") %>% gene2symbol
 #'
 #' # matrix
 #' matrix(
@@ -40,7 +40,13 @@ NULL
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
     }
-    c(symbol, nomatch)[object]
+    vec <- c(symbol, nomatch)[object]
+
+    # Final integrity checks
+    if (any(is.na(vec))) stop("NA symbols detected")
+    if (any(duplicated(vec))) stop("Duplicate symbols detected")
+
+    vec
 }
 
 

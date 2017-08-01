@@ -41,7 +41,7 @@ Convert Ensembl Identifier to Gene Symbol
 # character
 c("ENSMUSG00000000000",
   "ENSMUSG00000000001",
-  "ENSMUSG00000000003")) \%>\% gene2symbol
+  "ENSMUSG00000000003") \%>\% gene2symbol
 
 # matrix
 matrix(
