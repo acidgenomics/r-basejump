@@ -134,6 +134,7 @@ dplyr::pull
 dplyr::right_join
 
 #' @rdname tidyverse
+#' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
 

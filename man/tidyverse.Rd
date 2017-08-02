@@ -45,8 +45,6 @@ setdiff(x, y, ...)
 
 union(x, y, ...)
 
-tidy_select(.data, ...)
-
 expand(x, ...)
 
 first(x, ...)
