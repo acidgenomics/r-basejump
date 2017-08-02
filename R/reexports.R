@@ -381,6 +381,9 @@ rmarkdown::render
 
 # stats ====
 #' @export
+stats::formula
+
+#' @export
 stats::hclust
 
 #' @export
