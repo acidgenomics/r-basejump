@@ -62,7 +62,7 @@ NULL
     message("Packaging SummarizedExperiment")
 
     # Assays ====
-    assays <- object
+    assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
 
     # colData ====
@@ -165,7 +165,6 @@ setMethod("packageSE", "ANY", function(
     object, colData, rowData, metadata = NULL) {
     if (is.null(dim(object))) {
         stop("Object must support `dim()`", call. = FALSE)
-
     }
     .packageSE(
         SimpleList(assay = object),
