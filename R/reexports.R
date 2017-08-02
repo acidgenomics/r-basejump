@@ -383,6 +383,9 @@ rmarkdown::render
 #' @export
 stats::hclust
 
+#' @export
+stats::setNames
+
 
 
 # stringr ====
