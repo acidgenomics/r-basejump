@@ -189,6 +189,8 @@
 \alias{reexports}
 \alias{hclust}
 \alias{reexports}
+\alias{setNames}
+\alias{reexports}
 \alias{fixed}
 \alias{reexports}
 \alias{regex}
@@ -307,7 +309,7 @@ below to see their documentation.
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{SimpleList}}}
 
-  \item{stats}{\code{\link[stats]{hclust}}}
+  \item{stats}{\code{\link[stats]{hclust}}, \code{\link[stats]{setNames}}}
 
   \item{stringr}{\code{\link[stringr]{fixed}}, \code{\link[stringr]{regex}}, \code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}}
 
