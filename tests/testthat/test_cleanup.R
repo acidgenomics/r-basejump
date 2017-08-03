@@ -1,7 +1,7 @@
 context("Cleanup Utilities")
 
 # Named character vector
-namedVec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
+named <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 
 # Data frame
 df <- head(mtcars)
@@ -27,7 +27,7 @@ test_that("camel", {
 
     # Named character vector
     expect_equal(
-        camel(namedVec),
+        camel(named),
         c(itemA = "hello world",
           itemB = "HELLO WORLD"))
 
@@ -59,7 +59,7 @@ test_that("snake", {
 
     # Named character vector
     expect_equal(
-        snake(namedVec),
+        snake(named),
         c(item_a = "hello world",
           item_b = "HELLO WORLD"))
 
@@ -91,7 +91,7 @@ test_that("dotted", {
 
     # Named character vector
     expect_equal(
-        dotted(namedVec),
+        dotted(named),
         c(item.a = "hello world",
           item.b = "HELLO WORLD"))
 
