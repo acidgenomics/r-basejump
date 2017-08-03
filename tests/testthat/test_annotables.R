@@ -15,7 +15,8 @@ test_that("gene2symbol", {
         gene2symbol("ENSMUSG00000000001"),
         c(ENSMUSG00000000001 = "Gnai3"))
     expect_warning(
-        gene2symbol("ENSMUSG00000000000"), "Unmatched genes present")
+        gene2symbol("ENSMUSG00000000000"),
+        "Failed to match all gene IDs to symbols")
     expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
     expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
 
@@ -30,7 +31,8 @@ test_that("gene2symbol", {
                           "ENSMUSG00000000003"),
                         c("sample1", "sample2")))
     expect_warning(
-        gene2symbol(mat), "Unmatched genes present")
+        gene2symbol(mat),
+        "Failed to match all gene IDs to symbols")
     expect_equal(
         mat[2L:3L, ] %>%
             gene2symbol %>%
@@ -47,9 +49,8 @@ test_that("tx2gene", {
     expect_equal(
         tx2gene("ENSMUST00000000001"),
         c(ENSMUST00000000001 = "ENSMUSG00000000001"))
-    expect_warning(
-        tx2gene(c("ENSMUST00000000000", "ENSMUST00000000001")),
-        "Unmatched transcripts present")
+    expect_error(
+        tx2gene(c("ENSMUST00000000000", "ENSMUST00000000001")))
     expect_error(tx2gene(c("ENSMUSG00000000001", NA)))
     expect_error(tx2gene(c("ENSMUSG00000000001", "")))
 
@@ -64,8 +65,7 @@ test_that("tx2gene", {
                           "ENSMUST00000000003",
                           "ENSMUST00000114041"),
                         c("sample1", "sample2")))
-    expect_warning(
-        tx2gene(mat), "Unmatched transcripts present")
+    expect_error(tx2gene(mat))
     expect_equal(
         mat[2L:4L, ] %>%
             tx2gene %>%
