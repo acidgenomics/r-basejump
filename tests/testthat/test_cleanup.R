@@ -10,8 +10,8 @@ df <- head(mtcars)
 tbl <- head(starwars)
 
 # List
-lst <- list(Item.A = c(1, 2),
-            Item.B = c(3, 4))
+lst <- list(Item.A = c(1L, 2L),
+            Item.B = c(3L, 4L))
 
 
 
@@ -21,7 +21,7 @@ test_that("camel", {
     expect_equal(camel("HELLO WORLD"), "helloWorld")
     expect_equal(camel("RNAi clones"), "rnaiClones")
     expect_equal(camel("worfdbHTMLRemap"), "worfdbHtmlRemap")
-    expect_equal(camel(123), 123)
+    expect_equal(camel(123L), 123L)
     expect_equal(camel(NA), NA)
     expect_error(camel())
 
@@ -33,14 +33,16 @@ test_that("camel", {
 
     # Tibble
     expect_equal(
-        tbl[, 1L:5L] %>% camel %>% colnames,
+        tbl[, 1L:5L] %>%
+            camel %>%
+            colnames,
         c("name", "height", "mass", "hairColor", "skinColor"))
 
     # List
     expect_equal(
         camel(lst),
-        list(itemA = c(1, 2),
-             itemB = c(3, 4)))
+        list(itemA = c(1L, 2L),
+             itemB = c(3L, 4L)))
 })
 
 
@@ -51,7 +53,7 @@ test_that("snake", {
     expect_equal(snake("HELLO WORLD"), "hello_world")
     expect_equal(snake("RNAi clones"), "rnai_clones")
     expect_equal(snake("worfdbHTMLRemap"), "worfdb_html_remap")
-    expect_equal(snake(123), 123)
+    expect_equal(snake(123L), 123L)
     expect_equal(snake(NA), NA)
     expect_error(snake())
 
@@ -63,14 +65,16 @@ test_that("snake", {
 
     # Tibble
     expect_equal(
-        tbl[, 1L:5L] %>% snake %>% colnames,
+        tbl[, 1L:5L] %>%
+            snake %>%
+            colnames,
         c("name", "height", "mass", "hair_color", "skin_color"))
 
     # List
     expect_equal(
         snake(lst),
-        list(item_a = c(1, 2),
-             item_b = c(3, 4)))
+        list(item_a = c(1L, 2L),
+             item_b = c(3L, 4L)))
 })
 
 
@@ -81,7 +85,7 @@ test_that("dotted", {
     expect_equal(dotted("HELLO WORLD"), "hello.world")
     expect_equal(dotted("RNAi clones"), "rnai.clones")
     expect_equal(dotted("worfdbHTMLRemap"), "worfdb.html.remap")
-    expect_equal(dotted(123), 123)
+    expect_equal(dotted(123L), 123L)
     expect_equal(dotted(NA), NA)
     expect_error(dotted())
 
@@ -93,12 +97,14 @@ test_that("dotted", {
 
     # Tibble
     expect_equal(
-        tbl[, 1L:5L] %>% dotted %>% colnames,
+        tbl[, 1L:5L] %>%
+            dotted %>%
+            colnames,
         c("name", "height", "mass", "hair.color", "skin.color"))
 
     # List
     expect_equal(
         dotted(lst),
-        list(item.a = c(1, 2),
-             item.b = c(3, 4)))
+        list(item.a = c(1L, 2L),
+             item.b = c(3L, 4L)))
 })
