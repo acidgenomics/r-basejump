@@ -1,3 +1,14 @@
+# 0.0.20
+
+- Offloaded devtools functions to personal package.
+- Upgraded all functions to S4 functions where possible.
+- Assign utilities were kept as S3 functions since S4 dispatch makes `parent.frame()` assignment not work correctly.
+- Deprecated snake_case and British spelling variants to reduce the number of exported functions.
+- Added more working examples.
+- Added unit testing for annotables functions.
+
+
+
 # 0.0.19
 
 - Improved documentation and consistency with bcbio packages.
