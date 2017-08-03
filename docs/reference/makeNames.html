@@ -214,8 +214,8 @@ argument name assignments.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Unnamed character vector, with no names assigned</span>
-<span class='no'>unnamed_vec</span> <span class='kw'>&lt;-</span>
+    <pre class="examples"><div class='input'><span class='co'># Unnamed character vector</span>
+<span class='no'>unnamedVec</span> <span class='kw'>&lt;-</span>
   <span class='fu'>c</span>(<span class='st'>"hello world"</span>,
     <span class='st'>"HELLO WORLD"</span>,
     <span class='st'>"RNAi clones"</span>,
@@ -224,7 +224,7 @@ argument name assignments.</p>
     <span class='fl'>NA</span>)
 
 <span class='co'># Named character vector</span>
-<span class='no'>named_vec</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>Item.A</span> <span class='kw'>=</span> <span class='st'>"hello world"</span>, <span class='kw'>Item.B</span> <span class='kw'>=</span> <span class='st'>"HELLO WORLD"</span>)
+<span class='no'>namedVec</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>Item.A</span> <span class='kw'>=</span> <span class='st'>"hello world"</span>, <span class='kw'>Item.B</span> <span class='kw'>=</span> <span class='st'>"HELLO WORLD"</span>)
 
 <span class='co'># Data frame with colnames and rownames</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>mtcars</span>)
@@ -232,14 +232,14 @@ argument name assignments.</p>
 <span class='co'># Tibble, with colnames. Rownames aren't supported on these!</span>
 <span class='no'>tbl</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>starwars</span>)
 
-<span class='co'># List, with assigned namess</span>
+<span class='co'># List, with assigned names</span>
 <span class='no'>lst</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>Item.A</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>),
             <span class='kw'>Item.B</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>))
 
 
 <span class='co'># camelCase</span>
-<span class='fu'>camel</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
-#&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
+<span class='fu'>camel</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
+#&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -270,8 +270,8 @@ argument name assignments.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># snake_case</span>
-<span class='fu'>snake</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rnai_clones"      
-#&gt; [4] "worfdb_html_remap" "x123"              "na"               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
+<span class='fu'>snake</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rnai_clones"      
+#&gt; [4] "worfdb_html_remap" "x123"              "na"               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -302,8 +302,8 @@ argument name assignments.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># dotted.case</span>
-<span class='fu'>dotted</span>(<span class='no'>unnamed_vec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
-#&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>named_vec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
+<span class='fu'>dotted</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
+#&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4

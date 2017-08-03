@@ -1,6 +1,11 @@
 .onLoad <- function(libname, pkgname) {
-    if (!"annotables" %in% (.packages())) {
-        attachNamespace("annotables")
-    }
+    pkgs <- c("annotables",
+              "ggplot2",
+              "SummarizedExperiment")
+    lapply(seq_along(pkgs), function(a) {
+        if (!pkgs[[a]] %in% (.packages())) {
+            attachNamespace(pkgs[[a]])
+        }
+    })
     invisible()
 }
