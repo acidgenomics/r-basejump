@@ -3,7 +3,8 @@
 #' Base functions for bioinformatics and R package development.
 #'
 #' @import annotables AnnotationDbi Biobase BiocGenerics datasets methods
-#'   pbapply pbmcapply readr stringr SummarizedExperiment S4Vectors
+#'   MultiAssayExperiment pbapply pbmcapply readr stringr SummarizedExperiment
+#'   S4Vectors
 #' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom cowplot draw_plot ggdraw plot_grid
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
