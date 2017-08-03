@@ -1,14 +1,12 @@
 # AnnotationDbi ====
-#' @rdname tidy
-#' @inheritParams AnnotationDbi::select
 #' @export
-AnnotationDbi::select -> select
+AnnotationDbi::select
 
 
 
 # Biobase ====
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams AllGenerics
 #' @export
 Biobase::content -> content
 
@@ -24,26 +22,20 @@ BiocGenerics::design
 #' @export
 BiocGenerics::grep
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::intersect -> intersect
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::setdiff -> setdiff
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::union -> union
-
-
-
-# BiocInstaller ====
-#' @export
-BiocInstaller::biocValid
 
 
 
@@ -77,45 +69,16 @@ cowplot::plot_grid
 # datasets ====
 #' @inherit datasets::mtcars
 #' @keywords internal
+#' @return [data.frame].
 #' @export
 datasets::mtcars -> mtcars
 
 
 
-# devtools ====
-#' @export
-devtools::build
-
-#' @export
-devtools::build_vignettes
-
-#' @export
-devtools::check
-
-#' @export
-devtools::document
-
-#' @export
-devtools::install
-
-#' @export
-devtools::load_all
-
-#' @export
-devtools::test
-
-#' @export
-devtools::use_data
-
-#' @export
-devtools::use_data_raw
-
-#' @export
-devtools::use_testthat
-
-
-
 # dplyr ====
+#' @export
+dplyr::arrange
+
 #' @export
 dplyr::bind_cols
 
@@ -135,6 +98,9 @@ dplyr::distinct
 dplyr::everything
 
 #' @export
+dplyr::filter
+
+#' @export
 dplyr::full_join
 
 #' @export
@@ -148,6 +114,9 @@ dplyr::inner_join
 
 #' @export
 dplyr::left_join
+
+#' @export
+dplyr::mutate
 
 #' @export
 dplyr::mutate_all
@@ -164,23 +133,16 @@ dplyr::pull
 #' @export
 dplyr::right_join
 
-#' @rdname tidy
+#' @rdname tidyverse
+#' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
 
 #' @inherit dplyr::starwars
 #' @keywords internal
+#' @return [tibble].
 #' @export
 dplyr::starwars -> starwars
-
-#' @export
-dplyr::summarise
-
-#' @export
-dplyr::summarise_all
-
-#' @export
-dplyr::summarise_if
 
 #' @export
 dplyr::summarize
@@ -235,13 +197,10 @@ knitr::opts_knit
 
 
 
-# lintr ====
-#' @export
-lintr::lint_package
-
-
-
 # magrittr ====
+#' @export
+magrittr::`%$%`
+
 #' @export
 magrittr::`%>%`
 
@@ -354,6 +313,9 @@ rlang::.data
 rlang::eval_bare
 
 #' @export
+rlang::eval_tidy
+
+#' @export
 rlang::is_atomic
 
 #' @export
@@ -412,9 +374,21 @@ rmarkdown::render
 
 
 
+# rmarkdown ====
+#' @export
+rmarkdown::render
+
+
+
 # stats ====
 #' @export
+stats::formula
+
+#' @export
 stats::hclust
+
+#' @export
+stats::setNames
 
 
 
@@ -466,40 +440,25 @@ stringr::str_subset
 
 
 
-# SummarizedExperiment ====
-#' @export
-SummarizedExperiment::assay
-
-#' @export
-SummarizedExperiment::assays
-
-#' @export
-SummarizedExperiment::colData
-
-#' @export
-SummarizedExperiment::rowData
-
-
-
 # S4Vectors ====
 #' @export
 S4Vectors::DataFrame
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inherit AllGenerics
 #' @export
 S4Vectors::expand -> expand
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inherit AllGenerics
 #' @export
 S4Vectors::first -> first
 
 #' @export
 S4Vectors::metadata
 
-#' @rdname tidy
-#' @inherit all_generics
+#' @rdname tidyverse
+#' @inherit AllGenerics
 #' @export
 S4Vectors::rename -> rename
 

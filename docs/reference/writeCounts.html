@@ -88,7 +88,11 @@
 written to disk as comma separated values (<code>.csv). Single-cell RNA-seq counts are written to disk in MatrixMarket format (</code>.mtx<code>), along with the sample barcodes (</code>.colnames<code>), and gene identifiers (</code>.rownames`).</p>
     
 
-    <pre class="usage"><span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>), <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>), <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>),
+  <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,12 +111,21 @@ written to disk as comma separated values (<code>.csv). Single-cell RNA-seq coun
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>No value.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Automatic gzip compression is offered as a user-defined option. This setting
 is enabled by default to save disk space. Note that the
 <a href='http://readr.tidyverse.org/'>readr</a> package, built into
 <a href='https://www.rstudio.com/'>RStudio</a>, now natively supports compressed files.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Write Utilities: <code><a href='saveDataRaw.html'>saveDataRaw</a></code>,
+  <code><a href='saveData.html'>saveData</a></code></p>
     
 
   </div>
@@ -121,7 +134,11 @@ is enabled by default to save disk space. Note that the
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
     <h2>Author</h2>

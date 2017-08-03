@@ -87,20 +87,51 @@
     <p>Remove Rows and Columns Containing Only <code>NA</code> Values</p>
     
 
-    <pre class="usage"><span class='fu'>removeNA</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>removeNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for numeric</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>removeNA</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object with column data (e.g. data frame, matrix).</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Sanitized data.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Cleanup Utilities: <code><a href='makeNames.html'>camel</a></code>,
+  <code>fixNA</code>, <code><a href='sortUnique.html'>sortUnique</a></code>,
+  <code>wash</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -124,18 +155,16 @@
 #&gt; 1     A     B
 #&gt; 2     C     D</div><div class='input'>
 
-<span class='co'># Return unmodified</span>
-<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
-     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-     <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span> <span class='no'>removeNA</span></div><div class='output co'>#&gt; <span class='message'>Only applicable to column data</span></div><div class='output co'>#&gt; $a
-#&gt; [1] "A" NA  "C"
-#&gt; 
-#&gt; $b
-#&gt; [1] NA NA NA
-#&gt; 
-#&gt; $c
-#&gt; [1] "B" NA  "D"
-#&gt; </div></pre>
+<span class='co'># Support for vectors (using `stats::na.omit()`)</span>
+<span class='fu'>removeNA</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "hello" "world"
+#&gt; attr(,"na.action")
+#&gt; [1] 3
+#&gt; attr(,"class")
+#&gt; [1] "omit"</div><div class='input'><span class='fu'>removeNA</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] 1 2
+#&gt; attr(,"na.action")
+#&gt; [1] 3
+#&gt; attr(,"class")
+#&gt; [1] "omit"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -143,6 +172,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

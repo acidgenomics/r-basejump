@@ -8,6 +8,9 @@
 \usage{
 mtcars
 }
+\value{
+\link{data.frame}.
+}
 \description{
 The data was extracted from the 1974 \emph{Motor Trend} US magazine,
   and comprises fuel consumption and 10 aspects of

@@ -82,7 +82,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.0.19</small>
+        <small>version&nbsp;0.0.20</small>
       </h1>
     </div>
 
@@ -104,13 +104,19 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="annotables.html">annotable</a></code> <code><a href="annotables.html">gene2entrez</a></code> <code><a href="annotables.html">gene2symbol</a></code> <code><a href="annotables.html">tx2gene</a></code> </p>
+            <p><code><a href="annotable.html">annotable</a></code> </p>
           </td>
           <td><p><a href='http://www.ensembl.org/'>Ensembl</a> Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assignAsNewEnv.html">assignAsNewEnv</a></code> </p>
+            <p><code><a href="assignAndSaveData.html">assignAndSaveData</a></code> </p>
+          </td>
+          <td><p>Assign and Save Data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assignIntoNewEnv.html">assignIntoNewEnv</a></code> </p>
           </td>
           <td><p>Assign Multiple Objects to a New Environment</p></td>
         </tr><tr>
@@ -122,15 +128,27 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="collapse.html">toStringUnique</a></code> <code><a href="collapse.html">toStringSortUnique</a></code> <code><a href="collapse.html">summarizeRows</a></code> </p>
+            <p><code><a href="collapse.html">collapse</a></code> </p>
           </td>
           <td><p>Collapse Utilities</p></td>
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="createProjectDirs.html">createProjectDirs</a></code> </p>
+          </td>
+          <td><p>Create Project Directory Structure</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="detectHPC.html">detectHPC</a></code> </p>
+          </td>
+          <td><p>Detect HPC Environment</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="detectOrganism.html">detectOrganism</a></code> </p>
           </td>
-          <td><p>Detect the Organism from String</p></td>
+          <td><p>Detect Organism</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -140,9 +158,27 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="dots.html">dots</a></code> </p>
+          </td>
+          <td><p>Extract Dots from Function</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="fixNA.html">fixNA</a></code> </p>
           </td>
           <td><p>Fix Character Strings Missing <code>NA</code></p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gene2entrez.html">gene2entrez</a></code> </p>
+          </td>
+          <td><p>Convert Ensembl Identifier to Entrez</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gene2symbol.html">gene2symbol</a></code> </p>
+          </td>
+          <td><p>Convert Ensembl Identifier to Gene Symbol</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -164,15 +200,27 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="load.html">loadData</a></code> <code><a href="load.html">loadRemote</a></code> </p>
+            <p><code><a href="loadData.html">loadData</a></code> </p>
           </td>
-          <td><p>Data Loading Utilities</p></td>
+          <td><p>Load Local Data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="loadRemoteData.html">loadRemoteData</a></code> </p>
+          </td>
+          <td><p>Load Remote Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="logRatio.html">fc2lr</a></code> <code><a href="logRatio.html">lr2fc</a></code> </p>
           </td>
           <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="makeNames.html">camel</a></code> <code><a href="makeNames.html">dotted</a></code> <code><a href="makeNames.html">firstCase</a></code> <code><a href="makeNames.html">snake</a></code> <code><a href="makeNames.html">titleCase</a></code> </p>
+          </td>
+          <td><p>Make Syntactically Valid Names</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -188,15 +236,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="names.html">camel</a></code> <code><a href="names.html">dotted</a></code> <code><a href="names.html">firstCase</a></code> <code><a href="names.html">snake</a></code> <code><a href="names.html">titleCase</a></code> </p>
-          </td>
-          <td><p>Make Syntactically Valid Names</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="packageSE.html">packageSE</a></code> </p>
           </td>
-          <td><p>Package into a <code>SummarizedExperiment</code></p></td>
+          <td><p>Package Data into a <code>SummarizedExperiment</code></p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -206,15 +248,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="project.html">createProjectDirs</a></code> <code><a href="project.html">detectHPC</a></code> <code><a href="project.html">packageProject</a></code> <code><a href="project.html">renderProject</a></code> </p>
-          </td>
-          <td><p>Project Management Utilities</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="readDataRaw.html">readDataRaw</a></code> </p>
           </td>
-          <td><p>Read CSV Files Inside <code>data-raw</code></p></td>
+          <td><p>Read CSV Files Inside <code>data-raw/</code> Directory</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -236,9 +272,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="save.html">saveData</a></code> <code><a href="save.html">saveDataRaw</a></code> <code><a href="save.html">assignAndSaveData</a></code> </p>
+            <p><code><a href="saveData.html">saveData</a></code> </p>
           </td>
-          <td><p>Save Data Objects</p></td>
+          <td><p>Save Data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="saveDataRaw.html">saveDataRaw</a></code> </p>
+          </td>
+          <td><p>Save Raw Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -248,7 +290,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="tidy.html">arrange</a></code> <code><a href="tidy.html">as_tibble</a></code> <code><a href="tidy.html">filter</a></code> <code><a href="tidy.html">gene2entrez</a></code> <code><a href="tidy.html">gene2symbol</a></code> <code><a href="tidy.html">mutate</a></code> <code><a href="tidy.html">tx2gene</a></code> <code><a href="tidy.html">content</a></code> <code><a href="tidy.html">expand</a></code> <code><a href="tidy.html">first</a></code> <code><a href="tidy.html">intersect</a></code> <code><a href="tidy.html">rename</a></code> <code><a href="tidy.html">setdiff</a></code> <code><a href="tidy.html">setequal</a></code> <code><a href="tidy.html">union</a></code> <code><a href="tidy.html">select</a></code> <code><a href="tidy.html">tidy_select</a></code> </p>
+            <p><code><a href="tidyverse.html">content</a></code> <code><a href="tidyverse.html">expand</a></code> <code><a href="tidyverse.html">first</a></code> <code><a href="tidyverse.html">intersect</a></code> <code><a href="tidyverse.html">rename</a></code> <code><a href="tidyverse.html">setdiff</a></code> <code><a href="tidyverse.html">setequal</a></code> <code><a href="tidyverse.html">union</a></code> </p>
           </td>
           <td><p><a href='http://tidyverse.org/'>tidyverse</a> S4 Methods</p></td>
         </tr><tr>
@@ -256,19 +298,19 @@
           <td>
             <p><code><a href="transmit.html">transmit</a></code> </p>
           </td>
-          <td><p>Transmit (Download) Files from a Remote Server</p></td>
+          <td><p>Transmit Files from a Remote FTP Server</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="updatePackages.html">updatePackages</a></code> </p>
+            <p><code><a href="tx2gene.html">tx2gene</a></code> </p>
           </td>
-          <td><p>Update All Installed Packages</p></td>
+          <td><p>Convert Ensembl Transcript to Gene</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="wash.html">wash</a></code> </p>
           </td>
-          <td><p>Wash a <code>data.frame</code></p></td>
+          <td><p>Wash Column Data</p></td>
         </tr><tr>
           <!--  -->
           <td>

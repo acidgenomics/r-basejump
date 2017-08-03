@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transmit (Download) Files from a Remote Server — transmit • basejump</title>
+<title>Transmit Files from a Remote FTP Server — transmit • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,23 +80,30 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transmit (Download) Files from a Remote Server</h1>
+    <h1>Transmit Files from a Remote FTP Server</h1>
     </div>
 
     
-    <p>Utility function that supports file matching on a remote server. Also enables
-users to rename and compress on the fly.</p>
+    <p>Utility function that supports easy file matching and download from a remote
+FTP server. Also enables on-the-fly file renaming and compression.</p>
     
 
-    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>remoteDir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
+    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>transmit</span>(<span class='no'>object</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>remoteDir</th>
-      <td><p>Remote directory URL.</p></td>
+      <th>object</th>
+      <td><p>Remote directory URL. Currently supports FTP.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
@@ -121,7 +128,23 @@ users to rename and compress on the fly.</p>
 
     <p>List of local files.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <p>Other Data Import and Project Utilities: <code><a href='createProjectDirs.html'>createProjectDirs</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code>packageSE</code>, <code><a href='readDataRaw.html'>readDataRaw</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>transmit</span>(<span class='st'>"ftp://ftp.ensembl.org/pub/release-89"</span>,
+         <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
+         <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"ensembl_readme.txt"</span>,
+         <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading README</span></div><div class='output co'>#&gt; $README
+#&gt; [1] "data-raw/ensembl_readme.txt.gz"
+#&gt; attr(,"nbrOfBytes")
+#&gt; [1] 5034
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -129,7 +152,11 @@ users to rename and compress on the fly.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

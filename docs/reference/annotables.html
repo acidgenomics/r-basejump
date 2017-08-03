@@ -93,17 +93,23 @@ for unique Ensembl gene identifiers.</p>
 
     <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>object</span>)
 
+<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)
+
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for character</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'><a href='tidy.html'>gene2entrez</a></span>(<span class='no'>object</span>)
+<span class='fu'>gene2entrez</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'><a href='tidy.html'>gene2symbol</a></span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'><a href='tidy.html'>tx2gene</a></span>(<span class='no'>object</span>)</pre>
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -129,26 +135,37 @@ data.frame.</p>
 
     <p>Consult the annotables package documentation (<code>help("annotables")</code>)
 for a list of currently supported genomes.</p>
+<p>Other Gene Identifier Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code></p>
+<p>Other Gene Identifier Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code></p>
+<p>Other Gene Identifier Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code></p>
+<p>Other Gene Identifier Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>annotable</span>(<span class='st'>"hg38"</span>) <span class='kw'>%&gt;%</span> <span class='no'>glimpse</span></div><div class='output co'>#&gt; Observations: 63,898
-#&gt; Variables: 9
-#&gt; $ ensgene     &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419"...
-#&gt; $ symbol      &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "...
-#&gt; $ chr         &lt;chr&gt; "X", "X", "20", "1", "1", "1", "1", "6", "6", "6", "1",...
-#&gt; $ start       &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 169662007, 2...
-#&gt; $ end         &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 169854080, 2...
-#&gt; $ strand      &lt;int&gt; -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1,...
-#&gt; $ biotype     &lt;chr&gt; "protein_coding", "protein_coding", "protein_coding", "...
-#&gt; $ description &lt;chr&gt; "tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858]", "t...
-#&gt; $ broad_class &lt;chr&gt; "coding", "coding", "coding", "coding", "coding", "codi...</div><div class='input'><span class='fu'><a href='detectOrganism.html'>detectOrganism</a></span>(<span class='st'>"ENSMUSG00000000001"</span>) <span class='kw'>%&gt;%</span> <span class='no'>gene2symbol</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span></div><div class='output co'>#&gt;                               ensgene symbol
-#&gt; ENSMUSG00000000001 ENSMUSG00000000001  Gnai3
-#&gt; ENSMUSG00000000003 ENSMUSG00000000003   Pbsn
-#&gt; ENSMUSG00000000028 ENSMUSG00000000028  Cdc45
-#&gt; ENSMUSG00000000031 ENSMUSG00000000031    H19
-#&gt; ENSMUSG00000000037 ENSMUSG00000000037  Scml2
-#&gt; ENSMUSG00000000049 ENSMUSG00000000049   Apoh</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>annotable</span>(<span class='st'>"hg38"</span>) <span class='kw'>%&gt;%</span> <span class='no'>glimpse</span></div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+#&gt;   ..@ rownames       : chr [1:63898] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
+#&gt;   ..@ nrows          : int 63898
+#&gt;   ..@ listData       :List of 9
+#&gt;   .. ..$ ensgene    : chr [1:63898] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
+#&gt;   .. ..$ symbol     : chr [1:63898] "TSPAN6" "TNMD" "DPM1" "SCYL3" ...
+#&gt;   .. ..$ chr        : chr [1:63898] "X" "X" "20" "1" ...
+#&gt;   .. ..$ start      : int [1:63898] 100627109 100584802 50934867 169849631 169662007 27612064 196651878 143494811 53497341 41072945 ...
+#&gt;   .. ..$ end        : int [1:63898] 100639991 100599885 50958555 169894267 169854080 27635277 196747504 143511690 53616970 41099976 ...
+#&gt;   .. ..$ strand     : int [1:63898] -1 1 -1 -1 1 -1 1 -1 -1 1 ...
+#&gt;   .. ..$ biotype    : chr [1:63898] "protein_coding" "protein_coding" "protein_coding" "protein_coding" ...
+#&gt;   .. ..$ description: chr [1:63898] "tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858]" "tenomodulin [Source:HGNC Symbol;Acc:HGNC:17757]" "dolichyl-phosphate mannosyltransferase subunit 1, catalytic [Source:HGNC Symbol;Acc:HGNC:3005]" "SCY1 like pseudokinase 3 [Source:HGNC Symbol;Acc:HGNC:19285]" ...
+#&gt;   .. ..$ broadClass : chr [1:63898] "coding" "coding" "coding" "coding" ...
+#&gt;   ..@ elementType    : chr "ANY"
+#&gt;   ..@ elementMetadata: NULL
+#&gt;   ..@ metadata       : list()</div><div class='input'><span class='fu'><a href='detectOrganism.html'>detectOrganism</a></span>(<span class='st'>"ENSMUSG00000000001"</span>) <span class='kw'>%&gt;%</span> <span class='no'>gene2symbol</span> <span class='kw'>%&gt;%</span> <span class='no'>head</span></div><div class='output co'>#&gt; DataFrame with 6 rows and 2 columns
+#&gt;                               ensgene      symbol
+#&gt;                           &lt;character&gt; &lt;character&gt;
+#&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3
+#&gt; ENSMUSG00000000003 ENSMUSG00000000003        Pbsn
+#&gt; ENSMUSG00000000028 ENSMUSG00000000028       Cdc45
+#&gt; ENSMUSG00000000031 ENSMUSG00000000031         H19
+#&gt; ENSMUSG00000000037 ENSMUSG00000000037       Scml2
+#&gt; ENSMUSG00000000049 ENSMUSG00000000049        Apoh</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,7 +183,7 @@ for a list of currently supported genomes.</p>
 
     <h2>Author</h2>
     
-Michael Steinbaugh, Rory Kirchner
+Broad class definitions by Rory Kirchner
 
   </div>
 </div>

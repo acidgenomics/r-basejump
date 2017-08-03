@@ -1,2 +1,0 @@
-setOldClass("response")
-setOldClass("tibble")
