@@ -526,4 +526,10 @@ utils::download.file
 utils::globalVariables
 
 #' @export
+utils::object.size
+
+#' @export
+utils::packageVersion
+
+#' @export
 utils::sessionInfo

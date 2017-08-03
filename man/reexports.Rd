@@ -261,6 +261,10 @@
 \alias{reexports}
 \alias{globalVariables}
 \alias{reexports}
+\alias{object.size}
+\alias{reexports}
+\alias{packageVersion}
+\alias{reexports}
 \alias{sessionInfo}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -321,6 +325,6 @@ below to see their documentation.
 
   \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{sessionInfo}}}
+  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{object.size}}, \code{\link[utils]{packageVersion}}, \code{\link[utils]{sessionInfo}}}
 }}
 
