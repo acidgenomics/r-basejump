@@ -43,7 +43,7 @@ NULL
     symbol <- g2s[["symbol"]]
     names(symbol) <- g2s[["ensgene"]]
     if (!all(object %in% names(symbol))) {
-        warning("Unmatched genes present", call. = FALSE)
+        warning("Failed to match all gene IDs to symbols", call. = FALSE)
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
         symbol <- c(symbol, nomatch)
