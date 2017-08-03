@@ -11,14 +11,6 @@
 \alias{reexports}
 \alias{grep}
 \alias{reexports}
-\alias{getBM}
-\alias{reexports}
-\alias{listMarts}
-\alias{reexports}
-\alias{useEnsembl}
-\alias{reexports}
-\alias{useMart}
-\alias{reexports}
 \alias{draw_plot}
 \alias{reexports}
 \alias{ggdraw}
@@ -276,8 +268,6 @@ below to see their documentation.
   \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
 
   \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{grep}}}
-
-  \item{biomaRt}{\code{\link[biomaRt]{getBM}}, \code{\link[biomaRt]{listMarts}}, \code{\link[biomaRt]{useEnsembl}}, \code{\link[biomaRt]{useMart}}}
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
