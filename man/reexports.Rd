@@ -3,14 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{select}
-\alias{reexports}
-\alias{counts}
-\alias{reexports}
-\alias{design}
-\alias{reexports}
-\alias{grep}
-\alias{reexports}
 \alias{draw_plot}
 \alias{reexports}
 \alias{ggdraw}
@@ -100,8 +92,6 @@
 \alias{pbsapply}
 \alias{reexports}
 \alias{pbmclapply}
-\alias{reexports}
-\alias{object_size}
 \alias{reexports}
 \alias{gunzip}
 \alias{reexports}
@@ -265,10 +255,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{AnnotationDbi}{\code{\link[AnnotationDbi]{select}}}
-
-  \item{BiocGenerics}{\code{\link[BiocGenerics]{counts}}, \code{\link[BiocGenerics]{design}}, \code{\link[BiocGenerics]{grep}}}
-
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
   \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
@@ -286,8 +272,6 @@ below to see their documentation.
   \item{pbapply}{\code{\link[pbapply]{pblapply}}, \code{\link[pbapply]{pbsapply}}}
 
   \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
-
-  \item{pryr}{\code{\link[pryr]{object_size}}}
 
   \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
 

@@ -1,9 +1,3 @@
-# AnnotationDbi ====
-#' @export
-AnnotationDbi::select
-
-
-
 # Biobase ====
 #' @rdname tidyverse
 #' @inheritParams AllGenerics
@@ -13,15 +7,6 @@ Biobase::content -> content
 
 
 # BiocGenerics ====
-#' @export
-BiocGenerics::counts
-
-#' @export
-BiocGenerics::design
-
-#' @export
-BiocGenerics::grep
-
 #' @rdname tidyverse
 #' @inheritParams AllGenerics
 #' @export
@@ -218,12 +203,6 @@ pbapply::pbsapply
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
-
-
-
-# pryr ====
-#' @export
-pryr::object_size
 
 
 
