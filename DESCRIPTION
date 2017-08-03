@@ -33,6 +33,7 @@ Imports:
     cowplot,
     datasets,
     dplyr (>= 0.7.1),
+    ggplot2 (>= 2.2.1),
     ggrepel,
     glue,
     graphics,
