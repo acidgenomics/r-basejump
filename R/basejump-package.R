@@ -10,6 +10,7 @@
 #'   everything filter full_join funs group_by inner_join left_join mutate
 #'   mutate_all mutate_if n pull right_join summarise summarise_all summarise_if
 #'   summarize summarize_all summarize_if top_n ungroup
+#' @importFrom ggplot2 ggplot
 #' @importFrom ggrepel geom_label_repel geom_text_repel
 #' @importFrom glue collapse
 #' @importFrom graphics hist
