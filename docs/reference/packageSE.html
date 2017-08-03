@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Package into a <code>SummarizedExperiment</code> — packageSE • basejump</title>
+<title>Package Data into a <code>SummarizedExperiment</code> — packageSE • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,33 +80,54 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Package into a <code>SummarizedExperiment</code></h1>
+    <h1>Package Data into a <code>SummarizedExperiment</code></h1>
     </div>
 
     
-    <p>Package into a <code>SummarizedExperiment</code></p>
+    <p>This is a utility wrapper for <code>SummarizedExperiment()</code> that provides
+automatic subsetting for <code>colData</code> and <code>rowData</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>packageSE</span>(<span class='no'>assays</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>packageSE</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>packageSE</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>packageSE</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>packageSE</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>assays</th>
-      <td><p>assays.</p></td>
+      <th>object</th>
+      <td><p>Object supporting dimensions (<code><a href='http://www.rdocumentation.org/packages/base/topics/dim'>base::dim()</a></code>), or a list
+containing valid objects. For NGS experiments, a counts matrix is
+recommended, and can be passed in either dense (<code>matrix</code>) or sparse
+(<code>dgCMatrix</code>, <code>dgTMatrix</code>) format. Multiple matrices can be supplied as a
+list, as long as they all have the same dimensions. List object can be
+supplied as either class <code>list</code> or <code>SimpleList</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>colData</th>
-      <td><p>Sample metadata.</p></td>
+      <td><p><strong>Required</strong>. Object describing assay matrix columns.
+Must support <code><a href='http://www.rdocumentation.org/packages/base/topics/dim'>base::dim()</a></code>.</p></td>
     </tr>
     <tr>
       <th>rowData</th>
-      <td><p><a href='http://www.ensembl.org/'>Ensembl</a> gene annotations.</p></td>
+      <td><p><strong>Required</strong>. Object describing assay matrix rows.
+Must support <code><a href='http://www.rdocumentation.org/packages/base/topics/dim'>base::dim()</a></code>.</p></td>
     </tr>
     <tr>
       <th>metadata</th>
-      <td><p>Custom metadata.</p></td>
+      <td><p><em>Optional</em>. Metadata list.</p></td>
     </tr>
     </table>
     
@@ -114,11 +135,53 @@
 
     <p>SummarizedExperiment.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>packageSE()</code> also provides automatic metadata slotting of multiple useful
+environment parameters:</p><ul>
+<li><p><code>date</code>: Today's date.</p></li>
+<li><p><code>wd</code>: Working directory.</p></li>
+<li><p><code>hpc</code>: High-performance computing cluster detection.</p></li>
+<li><p><code>sessionInfo</code>: R session information.</p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment</a>.</p>
+    <ul>
+<li><p><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment::SummarizedExperiment</a>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/Sys.time'>base::Sys.Date()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/getwd'>base::getwd()</a></code>.</p></li>
+<li><p><code><a href='detectHPC.html'>detectHPC()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/utils/topics/sessionInfo'>utils::sessionInfo()</a></code>.</p></li>
+</ul>
+    <p>Other Data Import and Project Utilities: <code><a href='createProjectDirs.html'>createProjectDirs</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='readDataRaw.html'>readDataRaw</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+    <span class='no'>.</span>[<span class='fu'>c</span>(<span class='st'>"Mazda RX4"</span>, <span class='st'>"Datsun 710"</span>), ] <span class='kw'>%&gt;%</span>
+    <span class='no'>.</span>[, <span class='fu'>c</span>(<span class='st'>"mpg"</span>, <span class='st'>"gear"</span>)] <span class='kw'>%&gt;%</span>
+    <span class='no'>as.matrix</span>
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <span class='kw'>description</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Miles per gallon"</span>, <span class='st'>"Number of gears"</span>),
+    <span class='kw'>abbreviation</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>mat</span>))
+<span class='no'>rowData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <span class='kw'>manufacturer</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Mazda"</span>, <span class='st'>"Datsun"</span>),
+    <span class='kw'>model_number</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"RX4"</span>, <span class='st'>"710"</span>),
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>mat</span>))
+<span class='fu'>packageSE</span>(<span class='no'>mat</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>)</div><div class='output co'>#&gt; <span class='message'>Packaging SummarizedExperiment</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 2 2 
+#&gt; metadata(4): date wd hpc sessionInfo
+#&gt; assays(1): assay
+#&gt; rownames(2): Mazda RX4 Datsun 710
+#&gt; rowData names(2): manufacturer model_number
+#&gt; colnames(2): mpg gear
+#&gt; colData names(2): description abbreviation</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -127,12 +190,12 @@
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#details">Details</a></li>
 
-    <h2>Author</h2>
-    
-Michael Steinbaugh
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -1,0 +1,174 @@
+#' Package Data into a `SummarizedExperiment`
+#'
+#' This is a utility wrapper for `SummarizedExperiment()` that provides
+#' automatic subsetting for `colData` and `rowData`.
+#'
+#' `packageSE()` also provides automatic metadata slotting of multiple useful
+#' environment parameters:
+#'
+#' - `date`: Today's date.
+#' - `wd`: Working directory.
+#' - `hpc`: High-performance computing cluster detection.
+#' - `sessionInfo`: R session information.
+#'
+#' @rdname packageSE
+#' @name packageSE
+#'
+#' @param object Object supporting dimensions ([base::dim()]), or a list
+#'   containing valid objects. For NGS experiments, a counts matrix is
+#'   recommended, and can be passed in either dense (`matrix`) or sparse
+#'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
+#'   list, as long as they all have the same dimensions. List object can be
+#'   supplied as either class `list` or `SimpleList`.
+#' @param colData **Required**. Object describing assay matrix columns.
+#'   Must support [base::dim()].
+#' @param rowData **Required**. Object describing assay matrix rows.
+#'   Must support [base::dim()].
+#' @param metadata *Optional*. Metadata list.
+#'
+#' @seealso
+#' - [SummarizedExperiment::SummarizedExperiment].
+#' - [base::Sys.Date()].
+#' - [base::getwd()].
+#' - [detectHPC()].
+#' - [utils::sessionInfo()].
+#'
+#' @return [SummarizedExperiment].
+#'
+#' @examples
+#' mat <- mtcars %>%
+#'     .[c("Mazda RX4", "Datsun 710"), ] %>%
+#'     .[, c("mpg", "gear")] %>%
+#'     as.matrix
+#' colData <- data.frame(
+#'     description = c("Miles per gallon", "Number of gears"),
+#'     abbreviation = c(TRUE, FALSE),
+#'     row.names = colnames(mat))
+#' rowData <- data.frame(
+#'     manufacturer = c("Mazda", "Datsun"),
+#'     model_number = c("RX4", "710"),
+#'     row.names = rownames(mat))
+#' packageSE(mat, colData, rowData)
+NULL
+
+
+
+# Constructors ====
+.packageSE <- function(
+    object,
+    colData,
+    rowData,
+    metadata = NULL) {
+    message("Packaging SummarizedExperiment")
+
+    # Assays ====
+    assays <- as(object, "SimpleList")
+    assay <- assays[[1L]]
+
+    # colData ====
+    if (is.null(dim(colData))) {
+        stop("colData must support `dim`", call. = FALSE)
+    }
+    # Ensure `tibble` class coercion to `data.frame`
+    if (is_tibble(colData)) {
+        colData <- as.data.frame(colData)
+    }
+    # Attempt to use the first column for rownames, if unset
+    if (is.data.frame(colData) & !has_rownames(colData)) {
+        rownames(colData) <- colData[, 1L]
+    }
+    colData <- colData[colnames(assay), , drop = FALSE]
+    rownames(colData) <- colnames(assay)
+    colData <- as(colData, "DataFrame")
+
+    # rowData ====
+    if (is.null(dim(rowData))) {
+        stop("rowData must support `dim`", call. = FALSE)
+    }
+    # Ensure `tibble` class coercion to `data.frame`
+    if (is_tibble(rowData)) {
+        rowData <- as.data.frame(rowData)
+    }
+    # Attempt to use the first column for rownames, if unset
+    if (is.data.frame(rowData) & !has_rownames(rowData)) {
+        rownames(rowData) <- rowData[, 1L]
+    }
+    rowData <- rowData[rownames(assay), , drop = FALSE]
+    rownames(rowData) <- rownames(assay)
+    rowData <- as(rowData, "DataFrame")
+
+    # Check for name assignment problems
+    if (any(duplicated(rownames(colData)))) {
+        stop("Non-unique rownames in colData", call. = FALSE)
+    }
+    if (any(duplicated(rownames(rowData)))) {
+        stop("Non-unique rownames in rowData", call. = FALSE)
+    }
+    if (!identical(colnames(assay), rownames(colData))) {
+        stop("Unexpected colData rowname mismatch", call. = FALSE)
+    }
+    if (!identical(rownames(assay), rownames(rowData))) {
+        stop("Unexpected rowData rowname mismatch", call. = FALSE)
+    }
+
+    # Metadata
+    if (is.null(metadata)) {
+        metadata <- SimpleList()
+    } else {
+        if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
+            stop("metadata must be `list` or `SimpleList` object")
+        }
+        metadata <- as(metadata, "SimpleList")
+    }
+    metadata[["date"]] <- Sys.Date()
+    metadata[["wd"]] <- getwd()
+    metadata[["hpc"]] <- detectHPC()
+    metadata[["sessionInfo"]] <- sessionInfo()
+
+    # Check for retired Ensembl identifiers, which can happen when a more recent
+    # annotable build is used than the genome build. If present, store these
+    # identifiers in the metadata.
+    if (!is.null(rowData[["ensgene"]])) {
+        if (any(is.na(rowData[["ensgene"]]))) {
+            metadata[["missingGenes"]] <- rowData %>%
+                .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
+                rownames %>%
+                sort
+        }
+    }
+
+    SummarizedExperiment(
+        assays,
+        colData = colData,
+        rowData = rowData,
+        metadata = metadata)
+}
+
+
+
+# Methods ====
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "list", .packageSE)
+
+
+
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "SimpleList", .packageSE)
+
+
+
+#' @rdname packageSE
+#' @export
+setMethod("packageSE", "ANY", function(
+    object, colData, rowData, metadata = NULL) {
+    if (is.null(dim(object))) {
+        stop("Object must support `dim()`", call. = FALSE)
+    }
+    .packageSE(
+        SimpleList(assay = object),
+        colData,
+        rowData,
+        metadata)
+})

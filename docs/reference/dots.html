@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Evaluate Dots — dots • basejump</title>
+<title>Extract Dots from Function — dots • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,49 +80,77 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Evaluate Dots</h1>
+    <h1>Extract Dots from Function</h1>
     </div>
 
     
-    <p>Capture function ellipses as dots using
-<a href='https://cran.r-project.org/package=rlang'>rlang</a> syntax.</p>
+    <p>Extract Dots from Function</p>
     
 
-    <pre class="usage"><span class='fu'>dots</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>dots</span>(<span class='no'>...</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>get_objs_from_dots</span>(<span class='no'>.dots</span>)</pre>
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>dots</span>(<span class='no'>...</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Ellipsis.</p></td>
+      <td><p>Objects as dots.</p></td>
     </tr>
     <tr>
-      <th>.dots</th>
-      <td><p>Dots values.</p></td>
+      <th>character</th>
+      <td><p>Return <code>...</code> as character.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+<ul>
+<li><p>For <code>character = FALSE</code>: list containing objects as names. Can return
+object from the stored name class with <code>eval()</code>.</p></li>
+<li><p>For <code>character = TRUE</code>: Character vector.</p></li>
+</ul>
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
+<li><p><code>help("dotsMethods", "methods")</code></p></li>
 <li><p><code>browseVignettes("rlang")</code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/rlang/topics/dots_values'>rlang::dots_values()</a></code>, <code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_tidy'>rlang::eval_tidy()</a></code>.</p></li>
-<li><p>https://github.com/tidyverse/dplyr/blob/master/R/utils.r</p></li>
-<li><p>https://github.com/hadley/devtools/blob/master/R/infrastructure.R</p></li>
+<li><p><a href='http://rlang.tidyverse.org'>rlang</a> functions:
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosures'>rlang::quos()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosures'>rlang::dots_definitions()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/dots_values'>rlang::dots_values()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_tidy'>rlang::eval_tidy()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_bare'>rlang::eval_bare()</a></code>.</p></li>
+<li><p><a href='http://tidyverse.org'>tidyverse</a> code:
+<a href='https://goo.gl/fhAuak'>dplyr utils</a>,
+<a href='https://goo.gl/bM5TrP'>devtools infrastructure</a></p></li>
 </ul>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; mtcars
+#&gt; 
+#&gt; [[2]]
+#&gt; starwars
+#&gt; </div><div class='input'><span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "mtcars"   "starwars"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
