@@ -108,8 +108,8 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-# Unnamed character vector, with no names assigned
-unnamed_vec <-
+# Unnamed character vector
+unnamedVec <-
   c("hello world",
     "HELLO WORLD",
     "RNAi clones",
@@ -118,7 +118,7 @@ unnamed_vec <-
     NA)
 
 # Named character vector
-named_vec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
+namedVec <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 
 # Data frame with colnames and rownames
 df <- head(mtcars)
@@ -126,14 +126,14 @@ df <- head(mtcars)
 # Tibble, with colnames. Rownames aren't supported on these!
 tbl <- head(starwars)
 
-# List, with assigned namess
+# List, with assigned names
 lst <- list(Item.A = c(1, 2),
             Item.B = c(3, 4))
 
 
 # camelCase
-camel(unnamed_vec)
-camel(named_vec)
+camel(unnamedVec)
+camel(namedVec)
 camel(df)
 camel(df, rownames = TRUE)
 camel(tbl)
@@ -141,8 +141,8 @@ camel(lst)
 
 
 # snake_case
-snake(unnamed_vec)
-snake(named_vec)
+snake(unnamedVec)
+snake(namedVec)
 snake(df)
 snake(df, rownames = TRUE)
 snake(tbl)
@@ -150,8 +150,8 @@ snake(lst)
 
 
 # dotted.case
-dotted(unnamed_vec)
-dotted(named_vec)
+dotted(unnamedVec)
+dotted(namedVec)
 dotted(df)
 dotted(df, rownames = TRUE)
 dotted(tbl)
