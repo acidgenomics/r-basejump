@@ -45,10 +45,10 @@ NULL
     gene <- t2g[["ensgene"]]
     names(gene) <- t2g[["enstxp"]]
     if (!all(object %in% names(gene))) {
-        warning("Unmatched transcripts present", call. = FALSE)
-        nomatch <- setdiff(object, rownames(t2g))
-        names(nomatch) <- nomatch
-        gene <- c(gene, nomatch)
+        stop(paste(
+            "Unmatched transcripts present.",
+            "Try using `tx2geneFromGTF()` instead."),
+            call. = FALSE)
     }
     gene <- gene[object]
 
