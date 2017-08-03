@@ -5,7 +5,6 @@
 #' @import annotables AnnotationDbi Biobase BiocGenerics datasets methods
 #'   MultiAssayExperiment pbapply pbmcapply readr stringr SummarizedExperiment
 #'   S4Vectors
-#' @importFrom biomaRt getBM listMarts useEnsembl useMart
 #' @importFrom cowplot draw_plot ggdraw plot_grid
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate

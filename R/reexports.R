@@ -39,21 +39,6 @@ BiocGenerics::union -> union
 
 
 
-# biomaRt ====
-#' @export
-biomaRt::getBM
-
-#' @export
-biomaRt::listMarts
-
-#' @export
-biomaRt::useEnsembl
-
-#' @export
-biomaRt::useMart
-
-
-
 # cowplot ====
 #' @export
 cowplot::draw_plot
