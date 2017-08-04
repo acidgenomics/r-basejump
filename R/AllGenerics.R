@@ -95,6 +95,16 @@ setGeneric("dotted", function(object, ...) {
 
 
 
+#' @rdname ensemblVersion
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("ensemblVersion", function(object, ...) {
+    standardGeneric("ensemblVersion")
+})
+
+
+
 #' @rdname logRatio
 #' @family Math Utilities
 #' @inheritParams AllGenerics
@@ -238,6 +248,16 @@ setGeneric("packageSE", function(object, ...) {
 #' @inheritParams AllGenerics
 setGeneric("pct", function(object) {
     standardGeneric("pct")
+})
+
+
+
+#' @rdname readDataRaw
+#' @family Data Import and Project Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("readDataRaw", function(object, ...) {
+    standardGeneric("readDataRaw")
 })
 
 
