@@ -26,6 +26,7 @@ gene2entrez("grcm38")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
+  \code{\link{detectOrganism}},
+  \code{\link{ensemblVersion}}, \code{\link{gene2symbol}},
   \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }
