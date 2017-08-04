@@ -2,15 +2,13 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' @import annotables AnnotationDbi Biobase BiocGenerics datasets methods
-#'   pbapply pbmcapply readr stringr SummarizedExperiment S4Vectors
-#' @importFrom biomaRt getBM listMarts useEnsembl useMart
+#' @import annotables Biobase BiocGenerics datasets methods MultiAssayExperiment
+#'  pbapply pbmcapply readr stringr SummarizedExperiment S4Vectors
 #' @importFrom cowplot draw_plot ggdraw plot_grid
 #' @importFrom dplyr arrange bind_cols bind_rows case_when desc distinct
 #'   everything filter full_join funs group_by inner_join left_join mutate
 #'   mutate_all mutate_if n pull right_join summarise summarise_all summarise_if
 #'   summarize summarize_all summarize_if top_n ungroup
-#' @importFrom ggplot2 ggplot
 #' @importFrom ggrepel geom_label_repel geom_text_repel
 #' @importFrom glue collapse
 #' @importFrom graphics hist
@@ -19,7 +17,6 @@
 #' @importFrom magrittr %$% %>% set_colnames set_rownames
 #' @importFrom Matrix readMM writeMM
 #' @importFrom parallel mclapply mcmapply
-#' @importFrom pryr object_size
 #' @importFrom R.utils gzip gunzip
 #' @importFrom RCurl getURL
 #' @importFrom readxl read_excel
@@ -33,7 +30,8 @@
 #'   is_tibble remove_rownames rownames_to_column tibble
 #' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
 #' @importFrom tools file_path_sans_ext
-#' @importFrom utils download.file globalVariables object.size sessionInfo
+#' @importFrom utils download.file globalVariables object.size packageVersion
+#'   sessionInfo
 #' @importFrom yaml yaml.load_file
 #' @importClassesFrom Matrix dgCMatrix dgTMatrix
 "_PACKAGE"
