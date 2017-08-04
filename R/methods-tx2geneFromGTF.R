@@ -54,8 +54,8 @@ NULL
     cbind(enstxp, ensgene) %>%
         as.data.frame %>%
         distinct %>%
-        arrange(enstxp) %>%
-        set_rownames(.$enstxp)
+        arrange(!!sym("enstxp")) %>%
+        set_rownames(.[["enstxp"]])
 }
 
 
