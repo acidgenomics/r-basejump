@@ -42,16 +42,6 @@ setGeneric("collapse", function(object, ...) {
 
 
 
-#' @rdname createProjectDirs
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("createProjectDirs", function(object, ...) {
-    standardGeneric("createProjectDirs")
-})
-
-
-
 #' @rdname dna
 #' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
