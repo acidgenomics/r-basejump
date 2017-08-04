@@ -1,9 +1,3 @@
-# AnnotationDbi ====
-#' @export
-AnnotationDbi::select
-
-
-
 # Biobase ====
 #' @rdname tidyverse
 #' @inheritParams AllGenerics
@@ -13,15 +7,6 @@ Biobase::content -> content
 
 
 # BiocGenerics ====
-#' @export
-BiocGenerics::counts
-
-#' @export
-BiocGenerics::design
-
-#' @export
-BiocGenerics::grep
-
 #' @rdname tidyverse
 #' @inheritParams AllGenerics
 #' @export
@@ -36,21 +21,6 @@ BiocGenerics::setdiff -> setdiff
 #' @inheritParams AllGenerics
 #' @export
 BiocGenerics::union -> union
-
-
-
-# biomaRt ====
-#' @export
-biomaRt::getBM
-
-#' @export
-biomaRt::listMarts
-
-#' @export
-biomaRt::useEnsembl
-
-#' @export
-biomaRt::useMart
 
 
 
@@ -233,12 +203,6 @@ pbapply::pbsapply
 # pbmcapply ====
 #' @export
 pbmcapply::pbmclapply
-
-
-
-# pryr ====
-#' @export
-pryr::object_size
 
 
 
@@ -524,6 +488,12 @@ utils::download.file
 
 #' @export
 utils::globalVariables
+
+#' @export
+utils::object.size
+
+#' @export
+utils::packageVersion
 
 #' @export
 utils::sessionInfo
