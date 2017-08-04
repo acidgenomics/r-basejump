@@ -3,15 +3,13 @@
 #' @rdname tx2geneFromGTF
 #' @name tx2geneFromGTF
 #'
-#' @param save Save tx2gene to disk as RData and CSV files.
-#'
 #' @return [data.frame].
 NULL
 
 
 
 # Constructors ====
-.tx2geneFromGTF <- function(object, save = FALSE) {
+.tx2geneFromGTF <- function(object) {
     first <- read_lines(object, n_max = 1L)
     if (str_detect(first, "^#!genome-build")) {
         message("Ensembl GTF")
@@ -53,19 +51,11 @@ NULL
         stop("Transcript/gene identifier mismatch")
     }
 
-    tx2gene <- cbind(enstxp, ensgene) %>%
+    cbind(enstxp, ensgene) %>%
         as.data.frame %>%
         distinct %>%
         arrange(enstxp) %>%
         set_rownames(.$enstxp)
-
-    if (isTRUE(save)) {
-        saveData(tx2gene)
-        dir.create("annotations", showWarnings = FALSE)
-        write_csv(tx2gene, file.path("annotations", "tx2gene.csv"))
-    }
-
-    tx2gene
 }
 
 
