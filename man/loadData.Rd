@@ -26,9 +26,8 @@ loadData(geneIDs, oligo)
 }
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{createProjectDirs}},
-  \code{\link{loadRemoteData}}, \code{\link{packageSE}},
-  \code{\link{readDataRaw}},
+Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
+  \code{\link{packageSE}}, \code{\link{readDataRaw}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
