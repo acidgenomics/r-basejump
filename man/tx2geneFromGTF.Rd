@@ -9,14 +9,12 @@
 \usage{
 tx2geneFromGTF(object, ...)
 
-\S4method{tx2geneFromGTF}{character}(object, save = FALSE)
+\S4method{tx2geneFromGTF}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{save}{Save tx2gene to disk as RData and CSV files.}
 }
 \value{
 \link{data.frame}.
