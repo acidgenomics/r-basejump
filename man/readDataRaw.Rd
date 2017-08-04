@@ -14,9 +14,8 @@ This function automatically loads raw CSVs using the readr package and
 saves the data as R binary data into the \code{data/} directory.
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{createProjectDirs}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{packageSE}},
+Other Data Import and Project Utilities: \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{packageSE}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
