@@ -365,6 +365,16 @@ setGeneric("tx2gene", function(object) {
 
 
 
+#' @rdname tx2geneFromGTF
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("tx2geneFromGTF", function(object, ...) {
+    standardGeneric("tx2geneFromGTF")
+})
+
+
+
 #' @rdname wash
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
