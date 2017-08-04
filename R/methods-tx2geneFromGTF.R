@@ -71,4 +71,6 @@ NULL
 
 
 # Methods ====
+#' @rdname tx2geneFromGTF
+#' @export
 setMethod("tx2geneFromGTF", "character", .tx2geneFromGTF)
