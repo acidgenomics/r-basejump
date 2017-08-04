@@ -39,5 +39,5 @@ detectOrganism("FBgn0000003")
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{gene2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }

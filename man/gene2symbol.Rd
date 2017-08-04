@@ -56,5 +56,5 @@ matrix(
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}}, \code{\link{gene2entrez}},
-  \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }
