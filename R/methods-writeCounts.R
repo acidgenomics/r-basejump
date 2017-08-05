@@ -19,7 +19,7 @@
 #'
 #' @return No value.
 #'
-#' @results
+#' @examples
 #' writeCounts(mtcars)
 NULL
 
