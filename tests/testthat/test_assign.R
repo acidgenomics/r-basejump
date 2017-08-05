@@ -15,4 +15,6 @@ test_that("multiassignAsNewEnv", {
     expect_equal(
         multiassignAsNewEnv(mtcars, starwars, newEnv = "test"),
         c("mtcars", "starwars"))
+    expect_error(
+        multiassignAsNewEnv(mtcars, newEnv = parent.frame()))
 })
