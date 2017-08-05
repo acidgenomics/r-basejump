@@ -11,13 +11,22 @@
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
 #' @rdname writeCounts
-#' @author Michael Steinbaugh, Rory Kirchner
+#' @name writeCounts
 #'
 #' @param ... Count matrices, passed in as dots.
 #' @param dir Output directory.
 #' @param gzip Compress the counts file using gzip.
 #'
 #' @return No value.
+#'
+#' @results
+#' writeCounts(mtcars)
+NULL
+
+
+
+# Methods ====
+#' @rdname writeCounts
 #' @export
 setMethod(
     "writeCounts",
