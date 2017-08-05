@@ -3,6 +3,7 @@
 \docType{methods}
 \name{gene2entrez}
 \alias{gene2entrez}
+\alias{gene2entrez}
 \alias{gene2entrez,character-method}
 \title{Convert Ensembl Identifier to Entrez}
 \usage{
@@ -20,6 +21,8 @@ Grouped \link{tibble}.
 }
 \description{
 Convert Ensembl Identifier to Entrez
+
+Methods ====
 }
 \examples{
 gene2entrez("grch38")
