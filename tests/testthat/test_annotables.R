@@ -9,6 +9,14 @@ test_that("ensemblVersion", {
 
 
 
+test_that("gene2entrez", {
+    expect_equal(
+        colnames(gene2entrez("grch38")),
+        c("ensgene", "entrez"))
+})
+
+
+
 test_that("gene2symbol", {
     # character
     expect_equal(
