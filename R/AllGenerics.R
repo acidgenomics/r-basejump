@@ -252,16 +252,6 @@ setGeneric("pct", function(object) {
 
 
 
-#' @rdname readDataRaw
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("readDataRaw", function(object, ...) {
-    standardGeneric("readDataRaw")
-})
-
-
-
 #' @rdname readFileByExtension
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
@@ -312,16 +302,6 @@ setGeneric(
     function(..., dir = "data", compress = TRUE) {
         standardGeneric("saveData")
     })
-
-
-
-#' @rdname saveDataRaw
-#' @family Write Utilities
-#' @inheritParams dots
-#' @export
-setGeneric("saveDataRaw", function(...) {
-    standardGeneric("saveDataRaw")
-})
 
 
 
