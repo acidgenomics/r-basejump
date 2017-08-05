@@ -56,8 +56,20 @@ getObjsFromDots <- function() {
 
 #' @rdname deprecated
 #' @export
+readDataRaw <- function() {
+    .Deprecated()
+}
+
+#' @rdname deprecated
+#' @export
 sanitizeNames <- function() {
     .Deprecated("snake")
+}
+
+#' @rdname deprecated
+#' @export
+saveDataRaw <- function() {
+    .Deprecated()
 }
 
 #' @rdname deprecated
