@@ -3,6 +3,7 @@
 \docType{methods}
 \name{saveData}
 \alias{saveData}
+\alias{saveData}
 \alias{saveData,ANY-method}
 \title{Save Data}
 \usage{
@@ -42,6 +43,5 @@ saveData(mtcars, starwars)
 \item https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 }
 
-Other Write Utilities: \code{\link{saveDataRaw}},
-  \code{\link{writeCounts}}
+Other Write Utilities: \code{\link{writeCounts}}
 }

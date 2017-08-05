@@ -41,6 +41,5 @@ transmit("ftp://ftp.ensembl.org/pub/release-89",
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadData}},
   \code{\link{loadRemoteData}}, \code{\link{packageSE}},
-  \code{\link{readDataRaw}},
   \code{\link{readFileByExtension}}, \code{\link{readYAML}}
 }

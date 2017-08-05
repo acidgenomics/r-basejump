@@ -8,7 +8,9 @@
 \alias{toStringSummarize}
 \alias{assignAsNewEnv}
 \alias{getObjsFromDots}
+\alias{readDataRaw}
 \alias{sanitizeNames}
+\alias{saveDataRaw}
 \alias{save_data}
 \alias{write_counts}
 \title{Deprecated Functions}
@@ -25,7 +27,11 @@ assignAsNewEnv()
 
 getObjsFromDots()
 
+readDataRaw()
+
 sanitizeNames()
+
+saveDataRaw()
 
 save_data(...)
 
