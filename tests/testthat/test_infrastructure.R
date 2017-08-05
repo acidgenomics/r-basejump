@@ -77,12 +77,9 @@ test_that("dots", {
         dots(mtcars, starwars, character = TRUE),
         c("mtcars", "starwars"))
     expect_error(
-        dots(test, test),
-        "Duplicate dots: test")
+        dots(mtcars, mtcars),
+        "Duplicate dots: mtcars")
     expect_error(
-        dots(test, test),
-        "Duplicate dots: test")
-    expect_error(
-        dots(test, test, character = TRUE),
-        "Duplicate dots: test")
+        dots(mtcars, mtcars, character = TRUE),
+        "Duplicate dots: mtcars")
 })
