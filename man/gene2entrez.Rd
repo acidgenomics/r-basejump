@@ -22,7 +22,7 @@ Grouped \link{tibble}.
 Convert Ensembl Identifier to Entrez
 }
 \examples{
-gene2entrez("grcm38")
+gene2entrez("grch38")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

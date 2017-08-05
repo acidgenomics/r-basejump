@@ -77,7 +77,7 @@ packageSE(mat, colData, rowData)
 }
 
 Other Data Import and Project Utilities: \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{readDataRaw}},
+  \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
