@@ -9,7 +9,8 @@ test_that("geomean", {
 
     df <- data.frame(vec, vec2)
     expect_equal(
-        round(geomean(df), digits = 6L),
+        geomean(df) %>%
+            round(digits = 6L),
         c(vec = 2.605171, vec2 = 6.786916))
 })
 

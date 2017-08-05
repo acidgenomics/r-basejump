@@ -37,7 +37,7 @@ setMethod(
             sapply(dim) %>%
             vapply(is.numeric, logical(1L))
         if (any(!hasDim)) {
-            stop("Object must support `dim()`",
+            stop("Object must support dim()",
                  call. = FALSE)
         }
 

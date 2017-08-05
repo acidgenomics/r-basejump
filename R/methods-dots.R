@@ -38,15 +38,13 @@ setMethod(
         if (any(!isName)) {
             stop("Dot objects cannot contain arguments", call. = FALSE)
         }
+        names <- vapply(dots, as.character, character(1L))
+        dupes <- which(setNames(duplicated(names), names))
+        if (length(dupes) > 0L) {
+            names <- unique(names)
+            stop("Duplicate dots: ", toString(names(dupes)), call. = FALSE)
+        }
         if (isTRUE(character)) {
-            names <- vapply(dots, as.character, character(1L))
-            dupes <- which(set_names(duplicated(names), names))
-            if (length(dupes) > 0L) {
-                names <- unique(names)
-                warning("Saving duplicates only once: ",
-                        paste(names(dupes), collapse = ", "),
-                        call. = FALSE)
-            }
             names
         } else {
             dots
