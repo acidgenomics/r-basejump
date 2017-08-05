@@ -81,6 +81,12 @@ save_data <- function(...) {
 
 #' @rdname deprecated
 #' @export
+wash <- function() {
+    .Deprecated()
+}
+
+#' @rdname deprecated
+#' @export
 write_counts <- function(...) {
     .Deprecated("writeCounts")
     writeCounts(...)

@@ -365,16 +365,6 @@ setGeneric("tx2geneFromGTF", function(object, ...) {
 
 
 
-#' @rdname wash
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("wash", function(object) {
-    standardGeneric("wash")
-})
-
-
-
 #' @rdname writeCounts
 #' @family Write Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
