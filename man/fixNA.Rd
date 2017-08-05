@@ -24,10 +24,9 @@ Object containing proper \code{NA} values.
 Fix Character Strings Missing \code{NA}
 }
 \examples{
-fixNA(c(1, "x", "", "NA"))
+fixNA(c(1L, "x", "", "NA"))
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 }

@@ -159,22 +159,17 @@ dotted(lst)
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 
 Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 
 Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 
 Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 
 Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{removeNA}}, \code{\link{sortUnique}}
 }

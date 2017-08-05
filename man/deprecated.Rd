@@ -12,6 +12,7 @@
 \alias{sanitizeNames}
 \alias{saveDataRaw}
 \alias{save_data}
+\alias{wash}
 \alias{write_counts}
 \title{Deprecated Functions}
 \usage{
@@ -34,6 +35,8 @@ sanitizeNames()
 saveDataRaw()
 
 save_data(...)
+
+wash()
 
 write_counts(...)
 }
