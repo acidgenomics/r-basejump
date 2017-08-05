@@ -377,6 +377,7 @@ setGeneric("wash", function(object) {
 
 #' @rdname writeCounts
 #' @family Write Utilities
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams dots
 #' @export
 setGeneric(
