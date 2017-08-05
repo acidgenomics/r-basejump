@@ -1,5 +1,15 @@
 context("Cleanup Utilities")
 
+# fixNA ====
+test_that("fixNA", {
+    expect_equal(
+        fixNA(c(1, "x", "", "NA")),
+        c("1", "x", NA, NA))
+})
+
+
+
+# makeNames ====
 # Named character vector
 named <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 
@@ -107,4 +117,61 @@ test_that("dotted", {
         dotted(lst),
         list(item.a = c(1L, 2L),
              item.b = c(3L, 4L)))
+})
+
+
+
+# wash ====
+test_that("wash", {
+    symbols <- "Gnai3, Pbsn"
+
+    dirty_df <- data.frame(
+        symbols = c("Gnai3, Pbsn"),
+        leading_sep = c(", Gnai3, Pbsn"),
+        trailing_sep = c("Gnai3, Pbsn ,"),
+        dupe_sep = c("Gnai3, , Pbsn"),
+        remove_na = c("Gnai3, Pbsn, NA"),
+        fix_empty = c(""),
+        fix_na = c("NA"),
+        row.names = "sample")
+    clean_df <- wash(dirty_df)
+    expect_identical(
+        clean_df,
+        data.frame(
+            symbols = symbols,
+            leading_sep = symbols,
+            trailing_sep = symbols,
+            dupe_sep = symbols,
+            remove_na = symbols,
+            fix_empty = NA_character_,
+            fix_na = NA_character_,
+            row.names = "sample"))
+
+    dirty_DF <- as(dirty_df, "DataFrame")
+    clean_DF <- wash(dirty_DF)
+    expect_identical(
+        clean_DF,
+        DataFrame(
+            symbols = symbols,
+            leading_sep = symbols,
+            trailing_sep = symbols,
+            dupe_sep = symbols,
+            remove_na = symbols,
+            fix_empty = NA_character_,
+            fix_na = NA_character_,
+            row.names = "sample"))
+
+    dirty_tbl <- as(dirty, "tibble")
+    clean_tbl <- wash(dirty_tbl)
+    expect_identical(
+        clean_tbl,
+        tibble(
+            rowname = "sample",
+            symbols = symbols,
+            leading_sep = symbols,
+            trailing_sep = symbols,
+            dupe_sep = symbols,
+            remove_na = symbols,
+            fix_empty = NA_character_,
+            fix_na = NA_character_))
 })
