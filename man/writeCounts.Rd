@@ -3,6 +3,7 @@
 \docType{methods}
 \name{writeCounts}
 \alias{writeCounts}
+\alias{writeCounts}
 \alias{writeCounts,ANY-method}
 \title{Write Counts}
 \usage{
