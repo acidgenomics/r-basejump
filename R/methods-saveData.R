@@ -5,6 +5,7 @@
 #' than combining into a single file.
 #'
 #' @rdname saveData
+#' @name saveData
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.
@@ -22,10 +23,16 @@
 #' - https://github.com/hadley/devtools/blob/master/R/infrastructure.R
 #'
 #' @return No value.
-#' @export
 #'
 #' @examples
 #' saveData(mtcars, starwars)
+NULL
+
+
+
+# Methods ====
+#' @rdname saveData
+#' @export
 setMethod(
     "saveData",
     signature("..." = "ANY"),
