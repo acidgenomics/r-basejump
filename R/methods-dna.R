@@ -20,6 +20,9 @@ NULL
 #' @rdname dna
 #' @export
 setMethod("comp", "character", function(object) {
+    if (!str_detect(object, "^[ACGT]+$")) {
+        stop("DNA string must only contain ACGT nucleotides")
+    }
     object %>%
         toupper %>%
         # AT base pair swap
