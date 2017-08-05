@@ -25,6 +25,5 @@ sortUnique(c("milk", "eggs", "eggs", NA))
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{wash}}
+  \code{\link{fixNA}}, \code{\link{removeNA}}
 }

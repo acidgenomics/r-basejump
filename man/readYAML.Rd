@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readYAML}
 \alias{readYAML}
+\alias{readYAML}
 \alias{readYAML,character-method}
 \title{Read YAML File}
 \usage{
