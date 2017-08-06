@@ -4,6 +4,9 @@
 #' @name tx2geneFromGTF
 #'
 #' @return [data.frame].
+#'
+#' @examples
+#' tx2geneFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
 NULL
 
 
@@ -63,4 +66,14 @@ NULL
 # Methods ====
 #' @rdname tx2geneFromGTF
 #' @export
-setMethod("tx2geneFromGTF", "character", .tx2geneFromGTF)
+setMethod("tx2geneFromGTF", "character", function(object) {
+    # Check for remote file. Does the pattern need escaping?
+    if (str_detect(object, "://")) {
+        # Save as temp file
+        file <- tempfile()
+        download.file(object, file)
+    } else {
+        file <- object
+    }
+    .tx2geneFromGTF(file)
+})
