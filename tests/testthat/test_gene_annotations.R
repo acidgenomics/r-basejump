@@ -1,4 +1,4 @@
-context("Annotables Utilities")
+context("Gene Annotation Utilities")
 
 test_that("ensemblVersion", {
     expect_equal(
