@@ -10,7 +10,7 @@
 #'
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
-#' @return Geometric means.
+#' @return Numeric containing geometric means.
 #'
 #' @examples
 #' # Vector
@@ -42,17 +42,6 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
-setMethod("geomean", "numeric", function(object) {
-    object %>%
-        log %>%
-        mean(na.rm = TRUE) %>%
-        exp
-})
-
-
-
-#' @rdname geomean
-#' @export
 setMethod("geomean", "data.frame", .geomeanColData)
 
 
@@ -60,3 +49,14 @@ setMethod("geomean", "data.frame", .geomeanColData)
 #' @rdname geomean
 #' @export
 setMethod("geomean", "matrix", .geomeanColData)
+
+
+
+#' @rdname geomean
+#' @export
+setMethod("geomean", "numeric", function(object) {
+    object %>%
+        log %>%
+        mean(na.rm = TRUE) %>%
+        exp
+})
