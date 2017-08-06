@@ -21,9 +21,7 @@ No value.
 Load a remote R binary file.
 }
 \examples{
-\dontrun{
-loadRemoteData("http://steinbaugh.com/basejump/reference/data/mtcars.rda")
-}
+loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadData}},

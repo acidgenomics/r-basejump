@@ -22,6 +22,9 @@ tx2geneFromGTF(object, ...)
 \description{
 Generate tx2gene from GTF File
 }
+\examples{
+tx2geneFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+}
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
