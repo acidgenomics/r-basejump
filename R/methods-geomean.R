@@ -34,7 +34,8 @@ NULL
 
 
 # Constructors ====
-.geomeanColData <- function(object) {
+.geomeanDim <- function(object) {
+    if (is.null(dim(object))) stop("Object must support dim()")
     object %>%
         as.matrix %>%
         log %>%
@@ -48,13 +49,19 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
-setMethod("geomean", "data.frame", .geomeanColData)
+setMethod("geomean", "ANY", .geomeanDim)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "matrix", .geomeanColData)
+setMethod("geomean", "data.frame", .geomeanDim)
+
+
+
+#' @rdname geomean
+#' @export
+setMethod("geomean", "matrix", .geomeanDim)
 
 
 
