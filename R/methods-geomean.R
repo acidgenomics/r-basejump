@@ -20,9 +20,15 @@
 #' vec2 <- vec ^ 2L
 #' geomean(vec2)
 #'
+#'
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
+#'
+#'
+#' # Matrix
+#' mat <- as.matrix(df)
+#' geomean(mat)
 NULL
 
 

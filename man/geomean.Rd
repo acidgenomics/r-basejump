@@ -4,24 +4,24 @@
 \name{geomean}
 \alias{geomean}
 \alias{geomean}
-\alias{geomean,numeric-method}
 \alias{geomean,data.frame-method}
 \alias{geomean,matrix-method}
+\alias{geomean,numeric-method}
 \title{Geometric Mean}
 \usage{
 geomean(object)
 
-\S4method{geomean}{numeric}(object)
-
 \S4method{geomean}{data.frame}(object)
 
 \S4method{geomean}{matrix}(object)
+
+\S4method{geomean}{numeric}(object)
 }
 \arguments{
 \item{object}{Object.}
 }
 \value{
-Geometric means.
+Numeric containing geometric means.
 }
 \description{
 The geometric mean is the nth root of n products or e to the mean log of \code{x}.
@@ -41,9 +41,15 @@ geomean(vec)
 vec2 <- vec ^ 2L
 geomean(vec2)
 
+
 # Data frame
 df <- data.frame(vec, vec2)
 geomean(df)
+
+
+# Matrix
+mat <- as.matrix(df)
+geomean(mat)
 }
 \seealso{
 Other Math Utilities: \code{\link{fc2lr}},
