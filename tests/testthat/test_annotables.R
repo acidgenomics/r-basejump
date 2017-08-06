@@ -83,3 +83,66 @@ test_that("tx2gene", {
           ENSMUST00000000003 = "ENSMUSG00000000003",
           ENSMUST00000114041 = "ENSMUSG00000000003"))
 })
+
+
+
+test_that(tx2geneFromGTF, {
+    # Mouse
+    mmusURL <- file.path("http://steinbaugh.com",
+                         "basejump",
+                         "tests",
+                         "mmusculus.gtf")
+    mmus <-  tx2geneFromGTF(mmusURL) %>%
+        head(n = 5L)
+    expect_equal(
+        dimnames(mmus),
+        list(c("ENSMUST00000070533",
+               "ENSMUST00000082908",
+               "ENSMUST00000157708",
+               "ENSMUST00000159265",
+               "ENSMUST00000161581"),
+             c("enstxp", "ensgene")))
+    expect_equal(
+        mmus[1L, ],
+        data.frame(
+            enstxp = "ENSMUST00000070533",
+            ensgene = "ENSMUSG00000051951",
+            row.names = "ENSMUST00000070533"))
+
+    # Fruitfly
+    dmelURL <- file.path("http://steinbaugh.com",
+                         "basejump",
+                         "tests",
+                         "dmelanogaster.gtf")
+    dmel <- tx2geneFromGTF(dmelURL) %>%
+        head(n = 5L)
+    expect_equal(
+        dimnames(dmel),
+        list(c("FBtr0070000",
+               "FBtr0070001",
+               "FBtr0070002",
+               "FBtr0070003",
+               "FBtr0301569"),
+             c("enstxp", "ensgene")))
+    expect_equal(
+        dmel[1L, ],
+        data.frame(
+            enstxp = "FBtr0070000",
+            ensgene = "FBgn0031081",
+            row.names = "FBtr0070000"))
+
+    # Local file method check
+    tmp <- tempfile()
+    download.file(mmusURL, tmp)
+    mmus2 <- tx2geneFromGTF(tmp) %>%
+        head(n = 5L)
+    expect_identical(mmus, mmus2)
+
+    # Missing or bad files
+    expect_error(
+        tx2geneFromGTF("XXX"),
+        "'XXX' does not exist in current working directory")
+    expect_error(
+        tx2geneFromGTF("http://steinbaugh.com"),
+        "Unsupported GTF format")
+})
