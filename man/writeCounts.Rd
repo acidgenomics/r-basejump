@@ -3,6 +3,7 @@
 \docType{methods}
 \name{writeCounts}
 \alias{writeCounts}
+\alias{writeCounts}
 \alias{writeCounts,ANY-method}
 \title{Write Counts}
 \usage{
@@ -31,9 +32,11 @@ is enabled by default to save disk space. Note that the
 \href{http://readr.tidyverse.org/}{readr} package, built into
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
+\examples{
+writeCounts(mtcars)
+}
 \seealso{
-Other Write Utilities: \code{\link{saveDataRaw}},
-  \code{\link{saveData}}
+Other Write Utilities: \code{\link{saveData}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

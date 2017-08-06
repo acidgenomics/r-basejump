@@ -3,6 +3,7 @@
 \docType{methods}
 \name{gene2entrez}
 \alias{gene2entrez}
+\alias{gene2entrez}
 \alias{gene2entrez,character-method}
 \title{Convert Ensembl Identifier to Entrez}
 \usage{
@@ -20,12 +21,15 @@ Grouped \link{tibble}.
 }
 \description{
 Convert Ensembl Identifier to Entrez
+
+Methods ====
 }
 \examples{
-gene2entrez("grcm38")
+gene2entrez("grch38")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
-  \code{\link{tx2gene}}
+  \code{\link{detectOrganism}},
+  \code{\link{ensemblVersion}}, \code{\link{gene2symbol}},
+  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }

@@ -10,7 +10,7 @@
 #'
 #' @note Not particularly useful if there are elements that are <= 0.
 #'
-#' @return Geometric means.
+#' @return Numeric containing geometric means.
 #'
 #' @examples
 #' # Vector
@@ -20,15 +20,22 @@
 #' vec2 <- vec ^ 2L
 #' geomean(vec2)
 #'
+#'
 #' # Data frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
+#'
+#'
+#' # Matrix
+#' mat <- as.matrix(df)
+#' geomean(mat)
 NULL
 
 
 
 # Constructors ====
-.geomeanColData <- function(object) {
+.geomeanDim <- function(object) {
+    if (is.null(dim(object))) stop("Object must support dim()")
     object %>%
         as.matrix %>%
         log %>%
@@ -42,21 +49,27 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
+setMethod("geomean", "ANY", .geomeanDim)
+
+
+
+#' @rdname geomean
+#' @export
+setMethod("geomean", "data.frame", .geomeanDim)
+
+
+
+#' @rdname geomean
+#' @export
+setMethod("geomean", "matrix", .geomeanDim)
+
+
+
+#' @rdname geomean
+#' @export
 setMethod("geomean", "numeric", function(object) {
     object %>%
         log %>%
         mean(na.rm = TRUE) %>%
         exp
 })
-
-
-
-#' @rdname geomean
-#' @export
-setMethod("geomean", "data.frame", .geomeanColData)
-
-
-
-#' @rdname geomean
-#' @export
-setMethod("geomean", "matrix", .geomeanColData)

@@ -17,37 +17,26 @@ NULL
 # v0.0.19 ====
 #' @rdname deprecated
 #' @export
-createNewProject <- function(...) {
-    .Deprecated("createProjectDirs")
-    createProjectDirs(...)
-}
-
-#' @rdname deprecated
-#' @export
-dotNotation <- function(...) {
+dotNotation <- function() {
     .Deprecated("dotted")
-    dotted(...)
 }
 
 #' @rdname deprecated
 #' @export
-grepToString <- function(...) {
+grepToString <- function() {
     .Deprecated("grepString")
-    grepString(...)
 }
 
 #' @rdname deprecated
 #' @export
-loadDataRaw <- function(...) {
+loadDataRaw <- function() {
     .Deprecated("loadData")
-    loadData(...)
 }
 
 #' @rdname deprecated
 #' @export
-toStringSummarize <- function(...) {
+toStringSummarize <- function() {
     .Deprecated("collapse")
-    collapse(...)
 }
 
 
@@ -61,21 +50,26 @@ assignAsNewEnv <- function() {
 
 #' @rdname deprecated
 #' @export
-getObjsFromDots <- function(...) {
+getObjsFromDots <- function() {
     .Deprecated("dots")
-    dots(..., character = TRUE)
 }
 
 #' @rdname deprecated
-#' @usage NULL
 #' @export
-getObjsFromDots -> get_objs_from_dots
+readDataRaw <- function() {
+    .Deprecated()
+}
 
 #' @rdname deprecated
 #' @export
-sanitizeNames <- function(...) {
+sanitizeNames <- function() {
     .Deprecated("snake")
-    snake(...)
+}
+
+#' @rdname deprecated
+#' @export
+saveDataRaw <- function() {
+    .Deprecated()
 }
 
 #' @rdname deprecated
@@ -83,6 +77,12 @@ sanitizeNames <- function(...) {
 save_data <- function(...) {
     .Deprecated("saveData")
     saveData(...)
+}
+
+#' @rdname deprecated
+#' @export
+wash <- function() {
+    .Deprecated()
 }
 
 #' @rdname deprecated

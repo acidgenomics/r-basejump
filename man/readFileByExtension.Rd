@@ -33,8 +33,7 @@ and \code{.rownames} files.
 \item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
 }
 
-Other Data Import and Project Utilities: \code{\link{createProjectDirs}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{packageSE}}, \code{\link{readDataRaw}},
+Other Data Import and Project Utilities: \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{packageSE}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

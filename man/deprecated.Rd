@@ -2,36 +2,41 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
-\alias{createNewProject}
 \alias{dotNotation}
 \alias{grepToString}
 \alias{loadDataRaw}
 \alias{toStringSummarize}
 \alias{assignAsNewEnv}
 \alias{getObjsFromDots}
-\alias{get_objs_from_dots}
+\alias{readDataRaw}
 \alias{sanitizeNames}
+\alias{saveDataRaw}
 \alias{save_data}
+\alias{wash}
 \alias{write_counts}
 \title{Deprecated Functions}
 \usage{
-createNewProject(...)
+dotNotation()
 
-dotNotation(...)
+grepToString()
 
-grepToString(...)
+loadDataRaw()
 
-loadDataRaw(...)
-
-toStringSummarize(...)
+toStringSummarize()
 
 assignAsNewEnv()
 
-getObjsFromDots(...)
+getObjsFromDots()
 
-sanitizeNames(...)
+readDataRaw()
+
+sanitizeNames()
+
+saveDataRaw()
 
 save_data(...)
+
+wash()
 
 write_counts(...)
 }

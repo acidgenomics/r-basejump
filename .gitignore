@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-data/
-results/
+docs/reference/*/
+tests/testthat/data/

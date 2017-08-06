@@ -1,10 +1,18 @@
-context("Annotables Utilities")
+context("Gene Annotation Utilities")
 
 test_that("ensemblVersion", {
     expect_equal(
         grepl("^Ensembl Genes ", ensemblVersion()),
         TRUE)
     expect_error(ensemblVersion("x"))
+})
+
+
+
+test_that("gene2entrez", {
+    expect_equal(
+        colnames(gene2entrez("grch38")),
+        c("ensgene", "entrez"))
 })
 
 

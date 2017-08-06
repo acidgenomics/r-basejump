@@ -29,9 +29,6 @@ NULL
 
 # Constructors ====
 .t2gvec <- function(object) {
-    if (!is.vector(object)) {
-        stop("Object must be vector", call. = FALSE)
-    }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
     }
@@ -50,14 +47,7 @@ NULL
             "Try using `tx2geneFromGTF()` instead."),
             call. = FALSE)
     }
-    gene <- gene[object]
-
-    # Final integrity checks
-    if (any(is.na(gene))) {
-        stop("NA gene identifiers detected", call. = FALSE)
-    }
-
-    gene
+    gene[object]
 }
 
 
