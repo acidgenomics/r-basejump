@@ -8,9 +8,7 @@
 #' @return No value.
 #'
 #' @examples
-#' \dontrun{
 #' loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
-#' }
 NULL
 
 
