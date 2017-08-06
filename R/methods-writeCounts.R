@@ -31,7 +31,10 @@ NULL
 setMethod(
     "writeCounts",
     signature("..." = "ANY"),
-    function(..., dir, gzip) {
+    function(
+        ...,
+        dir = file.path("results", "counts"),
+        gzip = TRUE) {
         dots <- dots_list(...)
         hasDim <- dots %>%
             sapply(dim) %>%
