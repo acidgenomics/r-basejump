@@ -67,7 +67,7 @@ setMethod(
 
                 # gzip the matrix, if desired
                 if (isTRUE(gzip)) {
-                    gzip(matrixFile)
+                    gzip(matrixFile, overwrite = TRUE)
                 }
             } else {
                 # Coerce to tibble use readr
