@@ -11,24 +11,36 @@
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
 #' @rdname writeCounts
-#' @author Michael Steinbaugh, Rory Kirchner
+#' @name writeCounts
 #'
 #' @param ... Count matrices, passed in as dots.
 #' @param dir Output directory.
 #' @param gzip Compress the counts file using gzip.
 #'
 #' @return No value.
+#'
+#' @examples
+#' writeCounts(mtcars)
+NULL
+
+
+
+# Methods ====
+#' @rdname writeCounts
 #' @export
 setMethod(
     "writeCounts",
     signature("..." = "ANY"),
-    function(..., dir, gzip) {
+    function(
+        ...,
+        dir = file.path("results", "counts"),
+        gzip = TRUE) {
         dots <- dots_list(...)
         hasDim <- dots %>%
             sapply(dim) %>%
             vapply(is.numeric, logical(1L))
         if (any(!hasDim)) {
-            stop("Object must support `dim()`",
+            stop("Object must support dim()",
                  call. = FALSE)
         }
 
@@ -58,7 +70,7 @@ setMethod(
 
                 # gzip the matrix, if desired
                 if (isTRUE(gzip)) {
-                    gzip(matrixFile)
+                    gzip(matrixFile, overwrite = TRUE)
                 }
             } else {
                 # Coerce to tibble use readr

@@ -21,7 +21,7 @@ is not generally recommended.}
 \item{env}{Destination environment.}
 }
 \value{
-No value.
+Assigned object name as a string.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
@@ -31,5 +31,5 @@ the newly assigned object, specified by \code{dir}.
 assignAndSaveData("test", mtcars)
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{assignIntoNewEnv}}
+Other Object Assignment Utilities: \code{\link{multiassignAsNewEnv}}
 }

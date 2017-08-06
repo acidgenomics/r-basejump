@@ -62,6 +62,5 @@ removeNA(c(1, 2, NA))
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{fixNA}}, \code{\link{sortUnique}},
-  \code{\link{wash}}
+  \code{\link{fixNA}}, \code{\link{sortUnique}}
 }

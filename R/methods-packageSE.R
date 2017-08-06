@@ -67,7 +67,7 @@ NULL
 
     # colData ====
     if (is.null(dim(colData))) {
-        stop("colData must support `dim`", call. = FALSE)
+        stop("colData must support dim()", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(colData)) {
@@ -83,7 +83,7 @@ NULL
 
     # rowData ====
     if (is.null(dim(rowData))) {
-        stop("rowData must support `dim`", call. = FALSE)
+        stop("rowData must support dim()", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(rowData)) {

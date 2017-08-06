@@ -21,23 +21,31 @@ Supports organism detection from genome build or Ensembl identifier.
 }
 \examples{
 # H. sapiens
+detectOrganism("GRCh38")
 detectOrganism("hg38")
 detectOrganism("ENSG00000000003")
+detectOrganism("human")
+detectOrganism("hsapiens")
+detectOrganism("Homo sapiens")
 
 # M. musculus
+detectOrganism("GRCm38")
 detectOrganism("mm10")
 detectOrganism("ENSMUSG00000002459")
 
 # C. elegans
 detectOrganism("WBcel235")
+detectOrganism("ce11")
 detectOrganism("WBGene00000001")
 
 # D. melanogaster
 detectOrganism("BDGP6")
+detectOrganism("dm6")
 detectOrganism("FBgn0000003")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{gene2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{ensemblVersion}}, \code{\link{gene2entrez}},
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGTF}},
   \code{\link{tx2gene}}
 }

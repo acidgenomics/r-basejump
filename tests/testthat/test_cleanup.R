@@ -1,5 +1,15 @@
 context("Cleanup Utilities")
 
+# fixNA ====
+test_that("fixNA", {
+    expect_equal(
+        fixNA(c(1L, "x", "", "NA")),
+        c("1", "x", NA, NA))
+})
+
+
+
+# makeNames ====
 # Named character vector
 named <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 

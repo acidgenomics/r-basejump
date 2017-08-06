@@ -90,13 +90,16 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
 
     <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for numeric</span>
+<span class='co'># S4 method for ANY</span>
 <span class='fu'>geomean</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>geomean</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for matrix</span>
+<span class='fu'>geomean</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for numeric</span>
 <span class='fu'>geomean</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -110,7 +113,7 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Geometric means.</p>
+    <p>Numeric containing geometric means.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -132,9 +135,15 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
 <span class='fu'>geomean</span>(<span class='no'>vec</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'>
 <span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec</span> ^ <span class='fl'>2L</span>
 <span class='fu'>geomean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
+
 <span class='co'># Data frame</span>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='no'>vec</span>, <span class='no'>vec2</span>)
 <span class='fu'>geomean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;      vec     vec2 
+#&gt; 2.605171 6.786916 </div><div class='input'>
+
+<span class='co'># Matrix</span>
+<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>df</span>)
+<span class='fu'>geomean</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;      vec     vec2 
 #&gt; 2.605171 6.786916 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

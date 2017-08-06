@@ -42,16 +42,6 @@ setGeneric("collapse", function(object, ...) {
 
 
 
-#' @rdname createProjectDirs
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("createProjectDirs", function(object, ...) {
-    standardGeneric("createProjectDirs")
-})
-
-
-
 #' @rdname dna
 #' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
@@ -101,6 +91,16 @@ setGeneric(
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
+})
+
+
+
+#' @rdname ensemblVersion
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("ensemblVersion", function(object, ...) {
+    standardGeneric("ensemblVersion")
 })
 
 
@@ -305,16 +305,6 @@ setGeneric(
 
 
 
-#' @rdname saveDataRaw
-#' @family Write Utilities
-#' @inheritParams dots
-#' @export
-setGeneric("saveDataRaw", function(...) {
-    standardGeneric("saveDataRaw")
-})
-
-
-
 #' @rdname makeNames
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
@@ -365,18 +355,19 @@ setGeneric("tx2gene", function(object) {
 
 
 
-#' @rdname wash
-#' @family Cleanup Utilities
+#' @rdname tx2geneFromGTF
+#' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("wash", function(object) {
-    standardGeneric("wash")
+setGeneric("tx2geneFromGTF", function(object, ...) {
+    standardGeneric("tx2geneFromGTF")
 })
 
 
 
 #' @rdname writeCounts
 #' @family Write Utilities
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams dots
 #' @export
 setGeneric(
