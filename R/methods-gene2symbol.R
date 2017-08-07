@@ -26,7 +26,7 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object) {
+.g2svec <- function(object, genomeBuild = NULL) {
     if (!is.vector(object)) {
         stop("Object must be vector", call. = FALSE)
     }
@@ -36,16 +36,26 @@ NULL
     if (any(object == "")) {
         stop("Empty string identifier detected", call. = FALSE)
     }
-    organism <- detectOrganism(object[[1L]])
+
+    # Detect organism
+    if (!is.null(genomeBuild)) {
+        organism <- detectOrganism(genomeBuild)
+    } else {
+        organism <- detectOrganism(object[[1L]])
+    }
+
     g2s <- annotable(organism, format = "gene2symbol") %>%
         .[object, ] %>%
         .[!is.na(.[["symbol"]]), ]
+
     symbol <- g2s[["symbol"]]
     names(symbol) <- g2s[["ensgene"]]
     if (!all(object %in% names(symbol))) {
-        warning("Failed to match all gene IDs to symbols", call. = FALSE)
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
+        warning(paste(
+            "Failed to match all gene IDs to symbols",
+            toString(nomatch)))
         symbol <- c(symbol, nomatch)
     }
     symbol <- symbol[object]
@@ -63,8 +73,10 @@ NULL
 
 
 
-.g2sdim <- function(object) {
-    rownames(object) <- rownames(object) %>% .g2svec
+# Pass arguments to .g2svec
+.g2sdim <- function(object, genomeBuild = NULL) {
+    rownames(object) <- rownames(object) %>%
+        .g2svec(genomeBuild = genomeBuild)
     object
 }
 
