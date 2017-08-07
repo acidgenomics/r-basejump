@@ -14,17 +14,17 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object)
+\S4method{gene2symbol}{character}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{data.frame}(object)
+\S4method{gene2symbol}{data.frame}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{DataFrame}(object)
+\S4method{gene2symbol}{DataFrame}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{dgCMatrix}(object)
+\S4method{gene2symbol}{dgCMatrix}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{dgTMatrix}(object)
+\S4method{gene2symbol}{dgTMatrix}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{matrix}(object)
+\S4method{gene2symbol}{matrix}(object, genomeBuild = NULL)
 }
 \arguments{
 \item{object}{Object.}
