@@ -30,6 +30,8 @@ gene2symbol(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{genomeBuild}{Genome build.}
 }
 \value{
 Same class as original object.
@@ -56,6 +58,6 @@ matrix(
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{ensemblVersion}}, \code{\link{gene2entrez}},
+  \code{\link{gene2symbolFromGTF}},
   \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }
