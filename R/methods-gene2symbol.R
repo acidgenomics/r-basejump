@@ -3,6 +3,8 @@
 #' @rdname gene2symbol
 #' @name gene2symbol
 #'
+#' @param genomeBuild Genome build.
+#'
 #' @return Same class as original object.
 #' @export
 #'
