@@ -90,22 +90,22 @@
     <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -118,6 +118,10 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p>Genome build.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -128,7 +132,7 @@
 
     <p>Other Gene Annotation Utilities: <code>annotable</code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>,
-  <code>ensemblVersion</code>, <code>gene2entrez</code>,
+  <code>gene2symbolFromGTF</code>,
   <code>tx2geneFromGTF</code>, <code>tx2gene</code></p>
     
 
