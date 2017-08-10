@@ -21,6 +21,8 @@ tx2geneFromGTF(object, ...)
 }
 \description{
 Generate tx2gene from GTF File
+
+Generate tx2gene from GTF File
 }
 \examples{
 # Mouse (Ensembl)
