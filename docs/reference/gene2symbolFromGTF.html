@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate tx2gene from GTF File — tx2geneFromGTF • basejump</title>
+<title>Generate gene2symbol from GTF File — gene2symbolFromGTF • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,17 +80,17 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate tx2gene from GTF File</h1>
+    <h1>Generate gene2symbol from GTF File</h1>
     </div>
 
     
-    <p>Generate tx2gene from GTF File</p>
+    <p>Generate gene2symbol from GTF File</p>
     
 
-    <pre class="usage"><span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>gene2symbolFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>gene2symbolFromGTF</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -112,14 +112,13 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Gene Annotation Utilities: <code>annotable</code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>,
-  <code>gene2symbolFromGTF</code>,
-  <code>gene2symbol</code>, <code>tx2gene</code></p>
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code>gene2symbol</code>,
+  <code>tx2geneFromGTF</code>, <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Mouse (Ensembl)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Ensembl GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='fu'>gene2symbolFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Ensembl GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  X1 = col_integer(),</span>
 #&gt; <span class='message'>  X2 = col_character(),</span>
@@ -130,29 +129,26 @@
 #&gt; <span class='message'>  X7 = col_character(),</span>
 #&gt; <span class='message'>  X8 = col_character(),</span>
 #&gt; <span class='message'>  X9 = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt;                                enstxp            ensgene
-#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ENSMUST00000159265 ENSMUST00000159265 ENSMUSG00000051951
-#&gt; ENSMUST00000161581 ENSMUST00000161581 ENSMUSG00000089699
-#&gt; ENSMUST00000162897 ENSMUST00000162897 ENSMUSG00000051951
-#&gt; ENSMUST00000192183 ENSMUST00000192183 ENSMUSG00000103147
-#&gt; ENSMUST00000192336 ENSMUST00000192336 ENSMUSG00000104017
-#&gt; ENSMUST00000192427 ENSMUST00000192427 ENSMUSG00000102343
-#&gt; ENSMUST00000192692 ENSMUST00000192692 ENSMUSG00000102331
-#&gt; ENSMUST00000192857 ENSMUST00000192857 ENSMUSG00000102851
-#&gt; ENSMUST00000192973 ENSMUST00000192973 ENSMUSG00000103201
-#&gt; ENSMUST00000193244 ENSMUST00000193244 ENSMUSG00000102348
-#&gt; ENSMUST00000193812 ENSMUST00000193812 ENSMUSG00000102693
-#&gt; ENSMUST00000194099 ENSMUST00000194099 ENSMUSG00000103025
-#&gt; ENSMUST00000194454 ENSMUST00000194454 ENSMUSG00000102592
-#&gt; ENSMUST00000194643 ENSMUST00000194643 ENSMUSG00000102343
-#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt;                               ensgene        symbol
+#&gt; ENSMUSG00000025900 ENSMUSG00000025900           Rp1
+#&gt; ENSMUSG00000051951 ENSMUSG00000051951          Xkr4
+#&gt; ENSMUSG00000064842 ENSMUSG00000064842       Gm26206
+#&gt; ENSMUSG00000088333 ENSMUSG00000088333       Gm27396
+#&gt; ENSMUSG00000089699 ENSMUSG00000089699        Gm1992
+#&gt; ENSMUSG00000102331 ENSMUSG00000102331       Gm19938
+#&gt; ENSMUSG00000102343 ENSMUSG00000102343       Gm37381
+#&gt; ENSMUSG00000102348 ENSMUSG00000102348       Gm10568
+#&gt; ENSMUSG00000102592 ENSMUSG00000102592       Gm38385
+#&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik
+#&gt; ENSMUSG00000102851 ENSMUSG00000102851       Gm18956
+#&gt; ENSMUSG00000103025 ENSMUSG00000103025       Gm37686
+#&gt; ENSMUSG00000103147 ENSMUSG00000103147        Gm7341
+#&gt; ENSMUSG00000103161 ENSMUSG00000103161       Gm38148
+#&gt; ENSMUSG00000103201 ENSMUSG00000103201       Gm37329
+#&gt; ENSMUSG00000103377 ENSMUSG00000103377       Gm37180
+#&gt; ENSMUSG00000104017 ENSMUSG00000104017       Gm37363</div><div class='input'>
 <span class='co'># Fruitfly (FlyBase)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>FlyBase GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='fu'>gene2symbolFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>FlyBase GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  X1 = col_character(),</span>
 #&gt; <span class='message'>  X2 = col_character(),</span>
@@ -163,14 +159,12 @@
 #&gt; <span class='message'>  X7 = col_character(),</span>
 #&gt; <span class='message'>  X8 = col_character(),</span>
 #&gt; <span class='message'>  X9 = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 7 transcripts, 5 genes</span></div><div class='output co'>#&gt;                  enstxp     ensgene
-#&gt; FBtr0070000 FBtr0070000 FBgn0031081
-#&gt; FBtr0070001 FBtr0070001 FBgn0052826
-#&gt; FBtr0070002 FBtr0070002 FBgn0031085
-#&gt; FBtr0070003 FBtr0070003 FBgn0062565
-#&gt; FBtr0301569 FBtr0301569 FBgn0031088
-#&gt; FBtr0307554 FBtr0307554 FBgn0031081
-#&gt; FBtr0307555 FBtr0307555 FBgn0031081</div></pre>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Renaming 'gene_symbol' to 'gene_name'</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 5 genes</span></div><div class='output co'>#&gt;                 ensgene           symbol
+#&gt; FBgn0031081 FBgn0031081             Nep3
+#&gt; FBgn0031085 FBgn0031085           CG9570
+#&gt; FBgn0031088 FBgn0031088          CG15322
+#&gt; FBgn0052826 FBgn0052826 tRNA:Pro-CGG-1-1
+#&gt; FBgn0062565 FBgn0062565            Or19b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

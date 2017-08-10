@@ -6,59 +6,61 @@
 #' @return [data.frame].
 #'
 #' @examples
+#' # Mouse (Ensembl)
 #' tx2geneFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+#'
+#' # Fruitfly (FlyBase)
+#' tx2geneFromGTF("http://steinbaugh.com/basejump/tests/dmelanogaster.gtf")
 NULL
 
 
 
 # Constructors ====
-.tx2geneFromGTF <- function(object) {
+.annotationsFromGTF <- function(object) {
     first <- read_lines(object, n_max = 1L)
     if (str_detect(first, "^#!genome-build")) {
         message("Ensembl GTF")
         # The first 5 lines are comments
-        gtf <- read_tsv(object, col_names = FALSE, skip = 5L)
-        anno <- gtf[["X9"]] %>%
-            unique %>%
-            # Check for transcript identifier
-            str_subset("ENS[A-Z]+T\\d{11}") %>%
-            # Check for gene identifier
-            str_subset("ENS.+G\\d{11}") %>%
-            unique
-        enstxp <- str_extract(anno, "ENS[A-Z]+T\\d{11}")
-        ensgene <- str_extract(anno, "ENS.+G\\d{11}")
+        gtf <- read_tsv(object, col_names = FALSE, progress = FALSE, skip = 5L)
     } else if (str_detect(first, "FlyBase")) {
         message("FlyBase GTF")
-        gtf <- read_tsv(object, col_names = FALSE)
-        anno <- gtf[["X9"]] %>%
-            unique %>%
-            # Check for transcript identifier
-            str_subset("FBtr\\d{7}") %>%
-            # Check for gene identifier
-            str_subset("FBgn\\d{7}") %>%
-            unique
-        enstxp <- str_extract(anno, "FBtr\\d{7}")
-        ensgene <- str_extract(anno, "FBgn\\d{7}")
-    } else {
-        stop("Unsupported GTF format")
+        gtf <- read_tsv(object, col_names = FALSE, progress = FALSE)
     }
+    gtf %>%
+        # Annotations are slotted in the 9th column of the GTF file
+        .[["X9"]] %>%
+        unique
+}
 
-    # Unload GTF from memory
-    rm(gtf)
+
+
+.tx2geneFromGTF <- function(object) {
+    anno <- .annotationsFromGTF(object) %>%
+        .[str_detect(., "transcript_id") & str_detect(., "gene_id")] %>%
+        unique
+
+    enstxp <- str_match(anno, "transcript_id \"([^\"]+)\"") %>%
+        .[, 2L]
+    ensgene <- str_match(anno, "gene_id \"([^\"]+)\"") %>%
+        .[, 2L]
 
     # Check identifier integrity
-    if (!length(enstxp)) {
-        stop("Unexpected transcript identifier match failure")
-    }
-    if (length(enstxp) != length(ensgene)) {
-        stop("Transcript/gene identifier mismatch")
+    if (!identical(length(enstxp), length(ensgene))) {
+        stop("Transcript/gene mismatch")
     }
 
-    cbind(enstxp, ensgene) %>%
+    df <- cbind(enstxp, ensgene) %>%
         as.data.frame %>%
         distinct %>%
         arrange(!!sym("enstxp")) %>%
         set_rownames(.[["enstxp"]])
+
+    message(paste(
+        "tx2gene mappings:",
+        nrow(df), "transcripts,",
+        length(unique(df[["ensgene"]])), "genes"))
+
+    df
 }
 
 
@@ -67,7 +69,7 @@ NULL
 #' @rdname tx2geneFromGTF
 #' @export
 setMethod("tx2geneFromGTF", "character", function(object) {
-    # Check for remote file. Does the pattern need escaping?
+    # Check for remote file
     if (str_detect(object, "://")) {
         # Save as temp file
         file <- tempfile()

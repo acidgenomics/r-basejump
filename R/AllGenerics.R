@@ -95,16 +95,6 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname ensemblVersion
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("ensemblVersion", function(object, ...) {
-    standardGeneric("ensemblVersion")
-})
-
-
-
 #' @rdname logRatio
 #' @family Math Utilities
 #' @inheritParams AllGenerics
@@ -135,22 +125,22 @@ setGeneric("fixNA", function(object) {
 
 
 
-#' @rdname gene2entrez
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("gene2entrez", function(object, ...) {
-    standardGeneric("gene2entrez")
-})
-
-
-
 #' @rdname gene2symbol
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbol", function(object, ...) {
     standardGeneric("gene2symbol")
+})
+
+
+
+#' @rdname gene2symbolFromGTF
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("gene2symbolFromGTF", function(object, ...) {
+    standardGeneric("gene2symbolFromGTF")
 })
 
 
