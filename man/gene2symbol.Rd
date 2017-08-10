@@ -14,22 +14,24 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object)
+\S4method{gene2symbol}{character}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{data.frame}(object)
+\S4method{gene2symbol}{data.frame}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{DataFrame}(object)
+\S4method{gene2symbol}{DataFrame}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{dgCMatrix}(object)
+\S4method{gene2symbol}{dgCMatrix}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{dgTMatrix}(object)
+\S4method{gene2symbol}{dgTMatrix}(object, genomeBuild = NULL)
 
-\S4method{gene2symbol}{matrix}(object)
+\S4method{gene2symbol}{matrix}(object, genomeBuild = NULL)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{genomeBuild}{Genome build.}
 }
 \value{
 Same class as original object.
@@ -56,6 +58,6 @@ matrix(
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{ensemblVersion}}, \code{\link{gene2entrez}},
+  \code{\link{gene2symbolFromGTF}},
   \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }

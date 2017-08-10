@@ -23,11 +23,15 @@ tx2geneFromGTF(object, ...)
 Generate tx2gene from GTF File
 }
 \examples{
+# Mouse (Ensembl)
 tx2geneFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+
+# Fruitfly (FlyBase)
+tx2geneFromGTF("http://steinbaugh.com/basejump/tests/dmelanogaster.gtf")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{ensemblVersion}}, \code{\link{gene2entrez}},
+  \code{\link{gene2symbolFromGTF}},
   \code{\link{gene2symbol}}, \code{\link{tx2gene}}
 }
