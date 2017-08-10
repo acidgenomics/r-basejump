@@ -39,10 +39,12 @@ NULL
         .[str_detect(., "transcript_id") & str_detect(., "gene_id")] %>%
         unique
 
+    # nolint begin
     enstxp <- str_match(anno, 'transcript_id \\\"([^\\"]+)\\\"') %>%
         .[, 2L]
     ensgene <- str_match(anno, 'gene_id \\\"([^\\"]+)\\\"') %>%
         .[, 2L]
+    # nolint end
 
     # Check identifier integrity
     if (!identical(length(enstxp), length(ensgene))) {

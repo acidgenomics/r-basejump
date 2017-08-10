@@ -135,6 +135,7 @@ setGeneric("gene2symbol", function(object, ...) {
 
 
 
+#' Generate gene2symbol from GTF File
 #' @rdname gene2symbolFromGTF
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
@@ -345,6 +346,7 @@ setGeneric("tx2gene", function(object) {
 
 
 
+#' Generate tx2gene from GTF File
 #' @rdname tx2geneFromGTF
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics

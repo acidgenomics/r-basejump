@@ -21,6 +21,8 @@ gene2symbolFromGTF(object, ...)
 }
 \description{
 Generate gene2symbol from GTF File
+
+Generate gene2symbol from GTF File
 }
 \examples{
 # Mouse (Ensembl)
