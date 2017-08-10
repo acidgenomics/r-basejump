@@ -30,9 +30,9 @@ NULL
         .[str_detect(., "gene_id") & str_detect(., "gene_name")] %>%
         unique
 
-    ensgene <- str_match(anno, "gene_id \"([^\"]+)\"") %>%
+    ensgene <- str_match(anno, 'gene_id \"([^\"]+)\"') %>%
         .[, 2L]
-    symbol <- str_match(anno, "gene_name \"([^\"]+)\"") %>%
+    symbol <- str_match(anno, 'gene_name \"([^\"]+)\"') %>%
         .[, 2L]
 
     # Check identifier integrity
