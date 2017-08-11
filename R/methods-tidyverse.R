@@ -1,0 +1,150 @@
+#' [tidyverse](http://tidyverse.org/) S4 Methods
+#'
+#' Avoid `NAMESPACE` collisions with
+#' [Bioconductor](https://www.bioconductor.org/) generics by using [setMethod()]
+#' to relevant `signature`.
+#'
+#' @rdname tidyverse
+#' @name tidyverse
+#'
+#' @inheritParams AllGenerics
+#' @param .data Data object.
+#'
+#' @return Tidy data.
+#'
+#' @note For tibble coercion with [as()], rownames are always moved to the
+#'   `rowname` column, using [rownames_to_column()] internally. This provides
+#'   more consistent behavior in the tidyverse, which can inadvertently strip
+#'   rownames during filtering operations.
+#'
+#' @seealso
+#' - [Bioconductor](https://www.bioconductor.org/):
+#'     Biobase, BiocGenerics, S4Vectors.
+#' - [tidyverse](http://tidyverse.org/):
+#'     dplyr, httr, tidyr.
+NULL
+
+
+
+# content ====
+#' @rdname tidyverse
+#' @export
+Biobase::content -> content
+
+#' @rdname tidyverse
+#' @export
+setMethod("content", "response", function(object) {
+    httr::content(object)
+})
+
+
+
+# expand ====
+#' @rdname tidyverse
+#' @export
+S4Vectors::expand -> expand
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "expand",
+    signature(x = "data.frame"),
+    function(x, ...) {
+        tidyr::expand(x, ...)
+    })
+
+
+
+# first ====
+#' @rdname tidyverse
+#' @export
+S4Vectors::first -> first
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "first",
+    signature(x = "data.frame"),
+    function(x, ...) {
+        dplyr::first(x, ...)
+    })
+
+
+
+# intersect ====
+#' @rdname tidyverse
+#' @export
+BiocGenerics::intersect -> intersect
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "intersect",
+    signature(x = "data.frame", y = "data.frame"),
+    function(x, y, ...) {
+        dplyr::intersect(x, y, ...)
+    })
+
+
+
+# rename ====
+#' @rdname tidyverse
+#' @export
+S4Vectors::rename -> rename
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "rename",
+    signature(x = "data.frame"),
+    function(x, ...) {
+        dplyr::rename(x, ...)
+    })
+
+
+
+# setdiff ====
+#' @rdname tidyverse
+#' @export
+BiocGenerics::setdiff -> setdiff
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "setdiff",
+    signature(x = "data.frame", y = "data.frame"),
+    function(x, y, ...) {
+        dplyr::setdiff(x, y, ...)
+    })
+
+
+
+# setequal ====
+#' @rdname tidyverse
+#' @export
+S4Vectors::setequal -> setequal
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "setequal",
+    signature(x = "data.frame", y = "data.frame"),
+    function(x, y) {
+        dplyr::setequal(x, y)
+    })
+
+
+
+# union ====
+#' @rdname tidyverse
+#' @export
+BiocGenerics::union -> union
+
+#' @rdname tidyverse
+#' @export
+setMethod(
+    "union",
+    signature(x = "data.frame", y = "data.frame"),
+    function(x, y, ...) {
+        dplyr::union(x, y, ...)
+    })
