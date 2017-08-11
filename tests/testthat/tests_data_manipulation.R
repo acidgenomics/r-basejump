@@ -20,5 +20,4 @@ test_that("collapse", {
         collapse(groceries, unique = FALSE, sort = FALSE) %>%
             as.character,
         "milk, eggs, eggs, veggies")
-
 })

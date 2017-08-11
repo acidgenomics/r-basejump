@@ -116,7 +116,7 @@ test_that("tx2geneFromGTF", {
         dim(mm),
         c(20L, 2L))
     expect_equal(
-        mm[1L, ],
+        mm[1L, , drop = FALSE],
         data.frame(
             enstxp = "ENSMUST00000070533",
             ensgene = "ENSMUSG00000051951",
@@ -132,7 +132,7 @@ test_that("tx2geneFromGTF", {
         dim(dm),
         c(7L, 2L))
     expect_equal(
-        dm[1L, ],
+        dm[1L, , drop = FALSE],
         data.frame(
             enstxp = "FBtr0070000",
             ensgene = "FBgn0031081",
