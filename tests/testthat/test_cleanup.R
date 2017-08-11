@@ -125,6 +125,31 @@ test_that("dotted", {
 
 
 
+# removeNA ====
+test_that("removeNA", {
+    # data.frame
+    expect_equal(
+        data.frame(a = c("A", NA, "C"),
+                   b = c(NA, NA, NA),
+                   c = c("B", NA, "D")) %>% removeNA,
+        data.frame(a = c("A", "C"),
+                   c = c("B", "D"),
+                   row.names = c(1L, 3L)))
+
+    # vector
+    #' # Support for vectors (using `stats::na.omit()`)
+    expect_equal(
+        removeNA(c("hello", "world", NA)) %>%
+            as.character,
+        c("hello", "world"))
+    expect_equal(
+        removeNA(c(1, 2, NA)) %>%
+            as.integer,
+        c(1L, 2L))
+})
+
+
+
 # sortUnique ====
 test_that("sortUnique", {
     expect_equal(
