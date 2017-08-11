@@ -1,29 +1,3 @@
-# Biobase ====
-#' @rdname tidyverse
-#' @inheritParams AllGenerics
-#' @export
-Biobase::content -> content
-
-
-
-# BiocGenerics ====
-#' @rdname tidyverse
-#' @inheritParams AllGenerics
-#' @export
-BiocGenerics::intersect -> intersect
-
-#' @rdname tidyverse
-#' @inheritParams AllGenerics
-#' @export
-BiocGenerics::setdiff -> setdiff
-
-#' @rdname tidyverse
-#' @inheritParams AllGenerics
-#' @export
-BiocGenerics::union -> union
-
-
-
 # cowplot ====
 #' @export
 cowplot::draw_plot
@@ -67,8 +41,10 @@ dplyr::distinct
 #' @export
 dplyr::everything
 
+#' @rdname AllGenerics
+#' @usage NULL
 #' @export
-dplyr::filter
+dplyr::filter -> tidy_filter  # nolint
 
 #' @export
 dplyr::full_join
@@ -103,7 +79,7 @@ dplyr::pull
 #' @export
 dplyr::right_join
 
-#' @rdname tidyverse
+#' @rdname AllGenerics
 #' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
@@ -408,23 +384,8 @@ stringr::str_subset
 #' @export
 S4Vectors::DataFrame
 
-#' @rdname tidyverse
-#' @inherit AllGenerics
-#' @export
-S4Vectors::expand -> expand
-
-#' @rdname tidyverse
-#' @inherit AllGenerics
-#' @export
-S4Vectors::first -> first
-
 #' @export
 S4Vectors::metadata
-
-#' @rdname tidyverse
-#' @inherit AllGenerics
-#' @export
-S4Vectors::rename -> rename
 
 #' @export
 S4Vectors::SimpleList

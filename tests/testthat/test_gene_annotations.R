@@ -35,6 +35,48 @@ test_that("gene2symbol", {
 
 
 
+test_that("gene2symbolFromGTF", {
+    # Mouse
+    mm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "mmusculus.gtf") %>%
+        gene2symbolFromGTF
+    expect_equal(
+        dim(mm),
+        c(17L, 2L))
+    expect_equal(
+        head(mm, 2L),
+        data.frame(
+            ensgene = c("ENSMUSG00000025900",
+                        "ENSMUSG00000051951"),
+            symbol = c("Rp1",
+                       "Xkr4"),
+            row.names = c("ENSMUSG00000025900",
+                          "ENSMUSG00000051951")))
+
+    # Fruitfly
+    dm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "dmelanogaster.gtf") %>%
+        gene2symbolFromGTF
+    expect_equal(
+        dim(dm),
+        c(5L, 2L))
+    expect_equal(
+        head(dm, 2L),
+        data.frame(
+            ensgene = c("FBgn0031081",
+                        "FBgn0031085"),
+            symbol = c("Nep3",
+                       "CG9570"),
+            row.names = c("FBgn0031081",
+                          "FBgn0031085")))
+})
+
+
+
 test_that("tx2gene", {
     # character
     expect_equal(
@@ -65,4 +107,46 @@ test_that("tx2gene", {
         c(ENSMUST00000000001 = "ENSMUSG00000000001",
           ENSMUST00000000003 = "ENSMUSG00000000003",
           ENSMUST00000114041 = "ENSMUSG00000000003"))
+})
+
+
+
+test_that("tx2geneFromGTF", {
+    # Mouse
+    mm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "mmusculus.gtf") %>%
+        tx2geneFromGTF
+    expect_equal(
+        dim(mm),
+        c(20L, 2L))
+    expect_equal(
+        head(mm, 2L),
+        data.frame(
+            enstxp = c("ENSMUST00000070533",
+                       "ENSMUST00000082908"),
+            ensgene = c("ENSMUSG00000051951",
+                        "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000070533",
+                          "ENSMUST00000082908")))
+
+    # Fruitfly
+    dm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "dmelanogaster.gtf") %>%
+        tx2geneFromGTF
+    expect_equal(
+        dim(dm),
+        c(7L, 2L))
+    expect_equal(
+        head(dm, 2L),
+        data.frame(
+            enstxp = c("FBtr0070000",
+                       "FBtr0070001"),
+            ensgene = c("FBgn0031081",
+                        "FBgn0052826"),
+            row.names = c("FBtr0070000",
+                          "FBtr0070001")))
 })
