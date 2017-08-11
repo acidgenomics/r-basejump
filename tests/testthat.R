@@ -1,3 +1,5 @@
+options(stringsAsFactors = FALSE)
+
 library(testthat)
 library(basejump)
 
