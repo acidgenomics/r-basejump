@@ -105,7 +105,6 @@ setMethod(
 
 # setdiff ====
 #' @rdname tidyverse
-#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::setdiff -> setdiff
 
@@ -138,7 +137,6 @@ setMethod(
 
 # union ====
 #' @rdname tidyverse
-#' @inheritParams AllGenerics
 #' @export
 BiocGenerics::union -> union
 
