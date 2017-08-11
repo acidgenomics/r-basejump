@@ -14,9 +14,9 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE,
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
 
-\item{compress}{Compression method, supporting \code{xz} (\strong{preferred}), \code{bzip2},
-or \code{gzip}. Compression can be disabled by setting as \code{FALSE}, although this
-is not generally recommended.}
+\item{compress}{Logical or character string specifying compression format.
+\code{TRUE} corresponds to gzip compression (\strong{default}), and character strings
+\code{gzip}, \code{bzip2} or \code{xz} specify the type of compression.}
 
 \item{env}{Destination environment.}
 }
