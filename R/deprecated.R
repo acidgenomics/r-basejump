@@ -12,6 +12,7 @@
 #' @return Varies by function.
 #'
 #' @examples
+#' \dontrun{
 #' # snake_case variants used in RMarkdown
 #' save_data()
 #' write_counts()
@@ -29,6 +30,7 @@
 #' sanitizeNames()
 #' saveDataRaw()
 #' wash()
+#' }
 NULL
 
 
