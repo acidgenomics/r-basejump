@@ -2,6 +2,8 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
+\alias{save_data}
+\alias{write_counts}
 \alias{dotNotation}
 \alias{grepToString}
 \alias{loadDataRaw}
@@ -11,34 +13,32 @@
 \alias{readDataRaw}
 \alias{sanitizeNames}
 \alias{saveDataRaw}
-\alias{save_data}
 \alias{wash}
-\alias{write_counts}
 \title{Deprecated Functions}
 \usage{
-dotNotation()
-
-grepToString()
-
-loadDataRaw()
-
-toStringSummarize()
-
-assignAsNewEnv()
-
-getObjsFromDots()
-
-readDataRaw()
-
-sanitizeNames()
-
-saveDataRaw()
-
 save_data(...)
 
-wash()
-
 write_counts(...)
+
+dotNotation(...)
+
+grepToString(...)
+
+loadDataRaw(...)
+
+toStringSummarize(...)
+
+assignAsNewEnv(...)
+
+getObjsFromDots(...)
+
+readDataRaw(...)
+
+sanitizeNames(...)
+
+saveDataRaw(...)
+
+wash(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
@@ -48,5 +48,26 @@ Varies by function.
 }
 \description{
 Deprecated Functions
+}
+\examples{
+\dontrun{
+# snake_case variants used in RMarkdown
+save_data()
+write_counts()
+
+# 0.0.19
+dotNotation()
+grepToString()
+loadDataRaw()
+toStringSummarize()
+
+# 0.0.20
+assignAsNewEnv()
+getObjsFromDots()
+readDataRaw()
+sanitizeNames()
+saveDataRaw()
+wash()
+}
 }
 \keyword{internal}

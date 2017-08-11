@@ -9,9 +9,9 @@
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.
-#' @param compress Compression method, supporting `xz` (**preferred**), `bzip2`,
-#'   or `gzip`. Compression can be disabled by setting as `FALSE`, although this
-#'   is not generally recommended.
+#' @param compress Logical or character string specifying compression format.
+#'   `TRUE` corresponds to gzip compression (**default**), and character strings
+#'   `gzip`, `bzip2` or `xz` specify the type of compression.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
@@ -36,10 +36,8 @@ NULL
 setMethod(
     "saveData",
     signature("..." = "ANY"),
-    function(..., dir, compress) {
-        if (!dir.exists(dir)) {
-            dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-        }
+    function(..., dir, compress = TRUE) {
+        dir.create(dir, recursive = TRUE, showWarnings = FALSE)
         names <- dots(..., character = TRUE)
         paths <- file.path(dir, paste0(names, ".rda"))
         message(paste("Saving", toString(names), "to", dir))

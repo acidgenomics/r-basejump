@@ -5,6 +5,10 @@ test_that("fixNA", {
     expect_equal(
         fixNA(c(1L, "x", "", "NA")),
         c("1", "x", NA, NA))
+    expect_warning(
+        fixNA(mtcars),
+        "'fixNA\\(\\)' only modifies a character vector")
+    expect_identical(suppressWarnings(fixNA(mtcars)), mtcars)
 })
 
 
@@ -117,4 +121,38 @@ test_that("dotted", {
         dotted(lst),
         list(item.a = c(1L, 2L),
              item.b = c(3L, 4L)))
+})
+
+
+
+# removeNA ====
+test_that("removeNA", {
+    # data.frame
+    expect_equal(
+        data.frame(a = c("A", NA, "C"),
+                   b = c(NA, NA, NA),
+                   c = c("B", NA, "D")) %>% removeNA,
+        data.frame(a = c("A", "C"),
+                   c = c("B", "D"),
+                   row.names = c(1L, 3L)))
+
+    # vector
+    #' # Support for vectors (using `stats::na.omit()`)
+    expect_equal(
+        removeNA(c("hello", "world", NA)) %>%
+            as.character,
+        c("hello", "world"))
+    expect_equal(
+        removeNA(c(1L, 2L, NA)) %>%
+            as.integer,
+        c(1L, 2L))
+})
+
+
+
+# sortUnique ====
+test_that("sortUnique", {
+    expect_equal(
+        sortUnique(c("milk", "eggs", "eggs", NA)),
+        c("eggs", "milk"))
 })
