@@ -66,3 +66,39 @@ test_that("tx2gene", {
           ENSMUST00000000003 = "ENSMUSG00000000003",
           ENSMUST00000114041 = "ENSMUSG00000000003"))
 })
+
+
+
+test_that("tx2geneFromGTF", {
+    # Mouse
+    mm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "mmusculus.gtf") %>%
+        tx2geneFromGTF
+    expect_equal(
+        dim(mm),
+        c(20L, 2L))
+    expect_equal(
+        mm[1L, ],
+        data.frame(
+            enstxp = "ENSMUST00000070533",
+            ensgene = "ENSMUSG00000051951",
+            row.names = "ENSMUST00000070533"))
+
+    # Fruitfly
+    dm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "dmelanogaster.gtf") %>%
+        tx2geneFromGTF
+    expect_equal(
+        dim(dm),
+        c(7L, 2L))
+    expect_equal(
+        dm[1L, ],
+        data.frame(
+            enstxp = "FBtr0070000",
+            ensgene = "FBgn0031081",
+            row.names = "FBtr0070000"))
+})
