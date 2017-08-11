@@ -50,6 +50,7 @@ Varies by function.
 Deprecated Functions
 }
 \examples{
+\dontrun{
 # snake_case variants used in RMarkdown
 save_data()
 write_counts()
@@ -67,5 +68,6 @@ readDataRaw()
 sanitizeNames()
 saveDataRaw()
 wash()
+}
 }
 \keyword{internal}
