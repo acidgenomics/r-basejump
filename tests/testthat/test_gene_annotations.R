@@ -46,11 +46,15 @@ test_that("gene2symbolFromGTF", {
         dim(mm),
         c(17L, 2L))
     expect_equal(
-        mm[1L, ],
+        mm %>%
+            head(2L),
         data.frame(
-            ensgene = "ENSMUSG00000025900",
-            symbol = "Rp1",
-            row.names = "ENSMUSG00000025900"))
+            ensgene = c("ENSMUSG00000025900",
+                        "ENSMUSG00000051951"),
+            symbol = c("Rp1",
+                       "Xkr4"),
+            row.names = c("ENSMUSG00000025900",
+                          "ENSMUSG00000051951")))
 
     # Fruitfly
     dm <- file.path("http://steinbaugh.com",
@@ -62,11 +66,15 @@ test_that("gene2symbolFromGTF", {
         dim(dm),
         c(5L, 2L))
     expect_equal(
-        dm[1L, ],
+        dm %>%
+            head(2L),
         data.frame(
-            ensgene = "FBgn0031081",
-            symbol = "Nep3",
-            row.names = "FBgn0031081"))
+            ensgene = c("FBgn0031081",
+                        "FBgn0031085"),
+            symbol = c("Nep3",
+                       "CG9570"),
+            row.names = c("FBgn0031081",
+                          "FBgn0031085")))
 })
 
 
