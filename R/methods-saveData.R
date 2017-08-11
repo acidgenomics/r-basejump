@@ -37,9 +37,7 @@ setMethod(
     "saveData",
     signature("..." = "ANY"),
     function(..., dir, compress) {
-        if (!dir.exists(dir)) {
-            dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-        }
+        dir.create(dir, recursive = TRUE, showWarnings = FALSE)
         names <- dots(..., character = TRUE)
         paths <- file.path(dir, paste0(names, ".rda"))
         message(paste("Saving", toString(names), "to", dir))
