@@ -122,3 +122,12 @@ test_that("dotted", {
         list(item.a = c(1L, 2L),
              item.b = c(3L, 4L)))
 })
+
+
+
+# sortUnique ====
+test_that("sortUnique", {
+    expect_equal(
+        sortUnique(c("milk", "eggs", "eggs", NA)),
+        c("eggs", "milk"))
+})
