@@ -46,8 +46,7 @@ test_that("gene2symbolFromGTF", {
         dim(mm),
         c(17L, 2L))
     expect_equal(
-        mm %>%
-            head(2L),
+        head(mm, 2L),
         data.frame(
             ensgene = c("ENSMUSG00000025900",
                         "ENSMUSG00000051951"),
@@ -66,8 +65,7 @@ test_that("gene2symbolFromGTF", {
         dim(dm),
         c(5L, 2L))
     expect_equal(
-        dm %>%
-            head(2L),
+        head(dm, 2L),
         data.frame(
             ensgene = c("FBgn0031081",
                         "FBgn0031085"),
@@ -124,11 +122,14 @@ test_that("tx2geneFromGTF", {
         dim(mm),
         c(20L, 2L))
     expect_equal(
-        mm[1L, , drop = FALSE],
+        head(mm, 2L),
         data.frame(
-            enstxp = "ENSMUST00000070533",
-            ensgene = "ENSMUSG00000051951",
-            row.names = "ENSMUST00000070533"))
+            enstxp = c("ENSMUST00000070533",
+                       "ENSMUST00000082908"),
+            ensgene = c("ENSMUSG00000051951",
+                        "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000070533",
+                          "ENSMUST00000082908")))
 
     # Fruitfly
     dm <- file.path("http://steinbaugh.com",
@@ -140,9 +141,12 @@ test_that("tx2geneFromGTF", {
         dim(dm),
         c(7L, 2L))
     expect_equal(
-        dm[1L, , drop = FALSE],
+        head(dm, 2L),
         data.frame(
-            enstxp = "FBtr0070000",
-            ensgene = "FBgn0031081",
-            row.names = "FBtr0070000"))
+            enstxp = c("FBtr0070000",
+                       "FBtr0070001"),
+            ensgene = c("FBgn0031081",
+                        "FBgn0052826"),
+            row.names = c("FBtr0070000",
+                          "FBtr0070001")))
 })
