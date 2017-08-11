@@ -143,7 +143,7 @@ test_that("removeNA", {
             as.character,
         c("hello", "world"))
     expect_equal(
-        removeNA(c(1, 2, NA)) %>%
+        removeNA(c(1L, 2L, NA)) %>%
             as.integer,
         c(1L, 2L))
 })
