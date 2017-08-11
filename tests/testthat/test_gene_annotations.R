@@ -35,6 +35,42 @@ test_that("gene2symbol", {
 
 
 
+test_that("gene2symbolFromGTF", {
+    # Mouse
+    mm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "mmusculus.gtf") %>%
+        gene2symbolFromGTF
+    expect_equal(
+        dim(mm),
+        c(17L, 2L))
+    expect_equal(
+        mm[1L, ],
+        data.frame(
+            ensgene = "ENSMUSG00000025900",
+            symbol = "Rp1",
+            row.names = "ENSMUSG00000025900"))
+
+    # Fruitfly
+    dm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "dmelanogaster.gtf") %>%
+        gene2symbolFromGTF
+    expect_equal(
+        dim(dm),
+        c(5L, 2L))
+    expect_equal(
+        dm[1L, ],
+        data.frame(
+            ensgene = "FBgn0031081",
+            symbol = "Nep3",
+            row.names = "FBgn0031081"))
+})
+
+
+
 test_that("tx2gene", {
     # character
     expect_equal(
