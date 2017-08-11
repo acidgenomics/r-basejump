@@ -23,8 +23,6 @@
 \alias{reexports}
 \alias{everything}
 \alias{reexports}
-\alias{filter}
-\alias{reexports}
 \alias{full_join}
 \alias{reexports}
 \alias{funs}
@@ -257,7 +255,7 @@ below to see their documentation.
 \describe{
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
-  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
 
   \item{graphics}{\code{\link[graphics]{hist}}}
 
