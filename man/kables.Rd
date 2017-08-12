@@ -8,7 +8,7 @@
 \usage{
 kables(object, ...)
 
-\S4method{kables}{list}(object, captions = NULL)
+\S4method{kables}{list}(object, captions = NULL, force = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -16,6 +16,8 @@ kables(object, ...)
 \item{...}{Additional arguments.}
 
 \item{captions}{Optional character vector of table captions.}
+
+\item{force}{Force kable output.}
 
 \item{list}{List of column data (e.g. \link{data.frame}, \link{matrix}).}
 }
@@ -26,9 +28,11 @@ Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
 Handle multiple kables in a single RMarkdown chunk.
 }
 \examples{
-list(starwars, head(mtcars)) \%>\% kables
+list(head(starwars), head(mtcars)) \%>\% kables
 }
 \seealso{
+https://stackoverflow.com/a/35149103/3911732.
+
 Other Report Utilities: \code{\link{mdHeader}},
   \code{\link{mdList}}
 }
