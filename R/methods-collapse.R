@@ -56,8 +56,6 @@ NULL
         }
     } else if (length(x) == 1L) {
         return(x)
-    } else {
-        return(NA)
     }
 
     # Sort, if desired
