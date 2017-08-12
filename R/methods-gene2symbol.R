@@ -3,7 +3,11 @@
 #' @rdname gene2symbol
 #' @name gene2symbol
 #'
-#' @param genomeBuild Genome build.
+#' @param genomeBuild *Optional*. Genome build. Normally this argument is
+#'  unnecessary and can be left `NULL`. If a count matrix starts with a
+#'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
+#'  first gene identifier will fail. In this case, the desired genome build
+#'  should be manually declared.
 #'
 #' @return Same class as original object.
 #' @export
@@ -29,9 +33,6 @@ NULL
 
 # Constructors ====
 .g2svec <- function(object, genomeBuild = NULL) {
-    if (!is.vector(object)) {
-        stop("Object must be vector", call. = FALSE)
-    }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
     }
