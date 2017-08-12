@@ -14,7 +14,6 @@ NULL
 #' @rdname fixNA
 #' @export
 setMethod("fixNA", "ANY", function(object) {
-    warning("'fixNA()' only modifies a character vector")
     object
 })
 
