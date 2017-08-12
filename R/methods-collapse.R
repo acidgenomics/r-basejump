@@ -7,6 +7,7 @@
 #' @param unique Unique values.
 #' @param sort Sort values.
 #' @param keepNA Keep `NA` values.
+#' @param ... Additional arguments, passed to [glue::collapse()].
 #'
 #' @return
 #' - For vector: String.
@@ -69,12 +70,28 @@ NULL
 
 
 
-.collapseCols <- function(object, ...) {
-    tbl <- as(object, "tibble")
-    tbl[["rowname"]] <- NULL
-    tbl %>%
+.collapseDim <- function(
+    object,
+    sep = ", ",
+    unique = TRUE,
+    sort = TRUE,
+    keepNA = FALSE,
+    ...) {
+    origClass <- class(object)[[1L]]
+    # Coerce to data.frame and perform manipulations
+    object %>%
+        as.data.frame %>%
         mutate_all(funs(fixNA)) %>%
-        summarise_all(funs(.collapseVec(., ...)))
+        summarise_all(funs(
+            .collapseVec(
+                object = .,
+                sep = sep,
+                unique = unique,
+                sort = sort,
+                keepNA = keepNA,
+                ...))) %>%
+        # Return as original class
+        as(origClass)
 }
 
 
@@ -94,34 +111,22 @@ setMethod("collapse", "integer", .collapseVec)
 
 #' @rdname collapse
 #' @export
-setMethod("collapse", "data.frame", function(object) {
-    object %>%
-        .collapseCols %>%
-        as.data.frame
-})
+setMethod("collapse", "data.frame", .collapseDim)
 
 
 
 #' @rdname collapse
 #' @export
-setMethod("collapse", "DataFrame", function(object) {
-    object %>%
-        .collapseCols %>%
-        as("DataFrame")
-})
+setMethod("collapse", "DataFrame", .collapseDim)
 
 
 
 #' @rdname collapse
 #' @export
-setMethod("collapse", "matrix", function(object) {
-    object %>%
-        .collapseCols %>%
-        as.matrix
-})
+setMethod("collapse", "matrix", .collapseDim)
 
 
 
 #' @rdname collapse
 #' @export
-setMethod("collapse", "tbl_df", .collapseCols)
+setMethod("collapse", "tbl_df", .collapseDim)
