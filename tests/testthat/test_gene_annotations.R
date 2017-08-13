@@ -1,5 +1,38 @@
 context("Gene Annotation Utilities")
 
+test_that("annotable", {
+    # Human
+    anno <- annotable("grch38")
+    expect_equal(
+        dim(anno),
+        c(63898L, 9L))
+    expect_equal(
+        rownames(anno)[[1L]],
+        "ENSG00000000003")
+
+    # Mouse
+    anno <- annotable("grcm38")
+    expect_equal(
+        dim(anno),
+        c(52386L, 9L))
+    expect_equal(
+        rownames(anno)[[1L]],
+        "ENSMUSG00000000001")
+
+    # Genome build aliases
+    expect_equal(
+        annotable("grch37"),
+        annotable("hg19"))
+    expect_equal(
+        annotable("grch38"),
+        annotable("hg38"))
+    expect_equal(
+        annotable("grcm38"),
+        annotable("mm10"))
+})
+
+
+
 test_that("gene2symbol", {
     # character
     expect_equal(

@@ -39,7 +39,7 @@ transmit("ftp://ftp.ensembl.org/pub/release-89",
          compress = TRUE)
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{packageSE}},
+Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
+  \code{\link{packageSE}},
   \code{\link{readFileByExtension}}, \code{\link{readYAML}}
 }

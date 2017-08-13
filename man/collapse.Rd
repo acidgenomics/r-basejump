@@ -20,18 +20,22 @@ collapse(object, ...)
 \S4method{collapse}{integer}(object, sep = ", ", unique = TRUE,
   sort = TRUE, keepNA = FALSE, ...)
 
-\S4method{collapse}{data.frame}(object)
+\S4method{collapse}{data.frame}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, keepNA = FALSE, ...)
 
-\S4method{collapse}{DataFrame}(object)
+\S4method{collapse}{DataFrame}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, keepNA = FALSE, ...)
 
-\S4method{collapse}{matrix}(object)
+\S4method{collapse}{matrix}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, keepNA = FALSE, ...)
 
-\S4method{collapse}{tbl_df}(object, ...)
+\S4method{collapse}{tbl_df}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, keepNA = FALSE, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{Additional arguments, passed to \code{\link[glue:collapse]{glue::collapse()}}.}
 
 \item{sep}{Separator. Defaults to comma.}
 

@@ -23,7 +23,7 @@ readYAML(object, ...)
 Read YAML File
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadData}},
-  \code{\link{loadRemoteData}}, \code{\link{packageSE}},
+Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
+  \code{\link{packageSE}},
   \code{\link{readFileByExtension}}, \code{\link{transmit}}
 }
