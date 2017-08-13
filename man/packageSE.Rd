@@ -76,8 +76,7 @@ packageSE(mat, colData, rowData)
 \item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
 }
 
-Other Data Import and Project Utilities: \code{\link{loadData}},
-  \code{\link{loadRemoteData}},
+Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
