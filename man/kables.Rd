@@ -8,7 +8,7 @@
 \usage{
 kables(object, ...)
 
-\S4method{kables}{list}(object, captions = NULL, force = TRUE)
+\S4method{kables}{list}(object, captions = NULL, force = FALSE)
 }
 \arguments{
 \item{object}{Object.}
