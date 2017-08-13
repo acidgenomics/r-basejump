@@ -24,8 +24,7 @@ Load a remote R binary file.
 loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadData}},
-  \code{\link{packageSE}},
+Other Data Import and Project Utilities: \code{\link{packageSE}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
