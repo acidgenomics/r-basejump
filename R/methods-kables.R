@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' list(head(starwars), head(mtcars)) %>% kables
-setMethod("kables", "list", function(object, captions = NULL, force = TRUE) {
+setMethod("kables", "list", function(object, captions = NULL, force = FALSE) {
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) | isTRUE(force)) {
         tables <- lapply(seq_along(object), function(a) {
