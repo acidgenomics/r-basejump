@@ -8,6 +8,9 @@ test_that("fixNA", {
     expect_equal(
         fixNA(mtcars),
         mtcars)
+    expect_equal(
+        fixNA(list(a = 1L)),
+        list(a = 1L))
 })
 
 

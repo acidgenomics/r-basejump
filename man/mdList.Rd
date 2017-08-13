@@ -25,8 +25,9 @@ Markdown format.}
 Markdown List
 }
 \examples{
-mdList(c("milk", "eggs"))
-mdList(c("milk", "eggs"), ordered = TRUE)
+groceries <- c("milk", "eggs")
+mdList(groceries)
+mdList(groceries, ordered = TRUE)
 }
 \seealso{
 Other Report Utilities: \code{\link{kables}},

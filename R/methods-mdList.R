@@ -9,8 +9,9 @@
 #' @export
 #'
 #' @examples
-#' mdList(c("milk", "eggs"))
-#' mdList(c("milk", "eggs"), ordered = TRUE)
+#' groceries <- c("milk", "eggs")
+#' mdList(groceries)
+#' mdList(groceries, ordered = TRUE)
 setMethod("mdList", "character", function(object, ordered = FALSE) {
     if (!is.character(object)) {
         stop("A character vector is required.")
@@ -24,5 +25,8 @@ setMethod("mdList", "character", function(object, ordered = FALSE) {
         paste(prefix, object[[a]])
     },
     character(1L))
-    writeLines(lines)
+    writeLines(c(
+        "",
+        lines,
+        ""))
 })
