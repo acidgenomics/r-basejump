@@ -5,10 +5,12 @@ test_that("fixNA", {
     expect_equal(
         fixNA(c(1L, "x", "", "NA")),
         c("1", "x", NA, NA))
-    expect_warning(
+    expect_equal(
         fixNA(mtcars),
-        "'fixNA\\(\\)' only modifies a character vector")
-    expect_identical(suppressWarnings(fixNA(mtcars)), mtcars)
+        mtcars)
+    expect_equal(
+        fixNA(list(a = 1L)),
+        list(a = 1L))
 })
 
 

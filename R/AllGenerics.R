@@ -173,16 +173,6 @@ setGeneric("kables", function(object, ...) {
 
 
 
-#' @rdname loadData
-#' @family Data Import and Project Utilities
-#' @inheritParams dots
-#' @export
-setGeneric("loadData", function(...) {
-    standardGeneric("loadData")
-})
-
-
-
 #' @rdname loadRemoteData
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics

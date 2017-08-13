@@ -6,15 +6,18 @@
 #'
 #' @param list List of column data (e.g. [data.frame], [matrix]).
 #' @param captions Optional character vector of table captions.
+#' @param force Force kable output.
 #'
 #' @return Knit tables, using [knitr::kable()].
 #' @export
 #'
+#' @seealso https://stackoverflow.com/a/35149103/3911732.
+#'
 #' @examples
-#' list(starwars, head(mtcars)) %>% kables
-setMethod("kables", "list", function(object, captions = NULL) {
+#' list(head(starwars), head(mtcars)) %>% kables
+setMethod("kables", "list", function(object, captions = NULL, force = FALSE) {
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
-    if (!is.null(output)) {
+    if (!is.null(output) | isTRUE(force)) {
         tables <- lapply(seq_along(object), function(a) {
             kable(object[a], caption = captions[a])
         })
