@@ -17,7 +17,7 @@ NULL
 
 # Constructors ====
 .gene2symbolFromGTF <- function(object) {
-    anno <- .annotationsFromGTF(object)
+    anno <- .gtfKeyValuePairs(object)
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
     # This fix is necessary for FlyBase GTF files.
@@ -30,9 +30,9 @@ NULL
         .[str_detect(., "gene_id") & str_detect(., "gene_name")] %>%
         unique
 
-    ensgene <- str_match(anno, 'gene_id \\\"([^\\"]+)\\\"') %>%
+    ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
-    symbol <- str_match(anno, 'gene_name \\\"([^\\"]+)\\\"') %>%
+    symbol <- str_match(anno, "gene_name ([^;]+);") %>%
         .[, 2L]
 
     # Check identifier integrity
@@ -47,11 +47,6 @@ NULL
         mutate(symbol = make.unique(as.character(.data[["symbol"]]))) %>%
         arrange(!!sym("ensgene")) %>%
         set_rownames(.[["ensgene"]])
-
-    # Ensure that symbols are unique
-    if (any(duplicated(df[["symbol"]]))) {
-        stop("Persistent duplicate symbols")
-    }
 
     message(paste("gene2symbol mappings:", nrow(df), "genes"))
 
@@ -72,5 +67,15 @@ setMethod("gene2symbolFromGTF", "character", function(object) {
     } else {
         file <- object
     }
-    .gene2symbolFromGTF(file)
+    file %>%
+        readGTF %>%
+        .gene2symbolFromGTF
+})
+
+
+
+#' @rdname gene2symbolFromGTF
+#' @export
+setMethod("gene2symbolFromGTF", "data.frame", function(object) {
+    .gene2symbolFromGTF(object)
 })
