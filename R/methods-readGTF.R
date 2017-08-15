@@ -11,7 +11,7 @@ NULL
 #' @export
 setMethod("readGTF", "character", function(object) {
     # http://www.gencodegenes.org/gencodeformat.html
-    read.delim(
+    gtf <- read.delim(
         object,
         col.names = c("chromosome",
                       "annotationSource",
@@ -24,4 +24,8 @@ setMethod("readGTF", "character", function(object) {
                       "keyValuePairs"),
         comment.char = "#",
         header = FALSE)
+    if (dim(gtf)[[2L]] != 9L) {
+        stop("GTF object must be data.frame with 9 columns")
+    }
+    gtf
 })
