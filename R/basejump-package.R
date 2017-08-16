@@ -32,7 +32,7 @@
 #' @importFrom tidyr expand_ nest nest_ separate separate_ unnest unnest_
 #' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file globalVariables object.size packageVersion
-#'   sessionInfo
+#'   read.delim sessionInfo
 #' @importFrom yaml yaml.load_file
 #' @importClassesFrom Matrix dgCMatrix dgTMatrix
 "_PACKAGE"
