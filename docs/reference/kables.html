@@ -90,7 +90,7 @@
     <pre class="usage"><span class='fu'>kables</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>kables</span>(<span class='no'>object</span>, <span class='kw'>captions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>kables</span>(<span class='no'>object</span>, <span class='kw'>captions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -108,6 +108,10 @@
       <td><p>Optional character vector of table captions.</p></td>
     </tr>
     <tr>
+      <th>force</th>
+      <td><p>Force kable output.</p></td>
+    </tr>
+    <tr>
       <th>list</th>
       <td><p>List of column data (e.g. data.frame, matrix).</p></td>
     </tr>
@@ -119,28 +123,24 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Report Utilities: <code><a href='mdHeader.html'>mdHeader</a></code>,
+    <p>https://stackoverflow.com/a/35149103/3911732.</p>
+<p>Other Report Utilities: <code><a href='mdHeader.html'>mdHeader</a></code>,
   <code><a href='mdList.html'>mdList</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>list</span>(<span class='no'>starwars</span>, <span class='fu'>head</span>(<span class='no'>mtcars</span>)) <span class='kw'>%&gt;%</span> <span class='no'>kables</span></div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 87 x 13
-#&gt;                  name height  mass    hair_color  skin_color eye_color
-#&gt;                 &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;         &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;
-#&gt;  1     Luke Skywalker    172    77         blond        fair      blue
-#&gt;  2              C-3PO    167    75          &lt;NA&gt;        gold    yellow
-#&gt;  3              R2-D2     96    32          &lt;NA&gt; white, blue       red
-#&gt;  4        Darth Vader    202   136          none       white    yellow
-#&gt;  5        Leia Organa    150    49         brown       light     brown
-#&gt;  6          Owen Lars    178   120   brown, grey       light      blue
-#&gt;  7 Beru Whitesun lars    165    75         brown       light      blue
-#&gt;  8              R5-D4     97    32          &lt;NA&gt;  white, red       red
-#&gt;  9  Biggs Darklighter    183    84         black       light     brown
-#&gt; 10     Obi-Wan Kenobi    182    77 auburn, white        fair blue-gray
-#&gt; # ... with 77 more rows, and 7 more variables: birth_year &lt;dbl&gt;, gender &lt;chr&gt;,
-#&gt; #   homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
-#&gt; #   starships &lt;list&gt;
+    <pre class="examples"><div class='input'><span class='fu'>list</span>(<span class='fu'>head</span>(<span class='no'>starwars</span>), <span class='fu'>head</span>(<span class='no'>mtcars</span>)) <span class='kw'>%&gt;%</span> <span class='no'>kables</span></div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 6 x 13
+#&gt;             name height  mass  hair_color  skin_color eye_color birth_year
+#&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
+#&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
+#&gt; 2          C-3PO    167    75        &lt;NA&gt;        gold    yellow      112.0
+#&gt; 3          R2-D2     96    32        &lt;NA&gt; white, blue       red       33.0
+#&gt; 4    Darth Vader    202   136        none       white    yellow       41.9
+#&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
+#&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
+#&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
+#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
 #&gt; 
 #&gt; [[2]]
 #&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb

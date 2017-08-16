@@ -90,6 +90,9 @@
     <pre class="usage"><span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
 <span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -119,18 +122,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Mouse (Ensembl)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Ensembl GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  X1 = col_integer(),</span>
-#&gt; <span class='message'>  X2 = col_character(),</span>
-#&gt; <span class='message'>  X3 = col_character(),</span>
-#&gt; <span class='message'>  X4 = col_integer(),</span>
-#&gt; <span class='message'>  X5 = col_integer(),</span>
-#&gt; <span class='message'>  X6 = col_character(),</span>
-#&gt; <span class='message'>  X7 = col_character(),</span>
-#&gt; <span class='message'>  X8 = col_character(),</span>
-#&gt; <span class='message'>  X9 = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt;                                enstxp            ensgene
+<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt;                                enstxp            ensgene
 #&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
 #&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
 #&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
@@ -152,18 +144,7 @@
 #&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
 #&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
 <span class='co'># Fruitfly (FlyBase)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>FlyBase GTF</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  X1 = col_character(),</span>
-#&gt; <span class='message'>  X2 = col_character(),</span>
-#&gt; <span class='message'>  X3 = col_character(),</span>
-#&gt; <span class='message'>  X4 = col_integer(),</span>
-#&gt; <span class='message'>  X5 = col_integer(),</span>
-#&gt; <span class='message'>  X6 = col_character(),</span>
-#&gt; <span class='message'>  X7 = col_character(),</span>
-#&gt; <span class='message'>  X8 = col_character(),</span>
-#&gt; <span class='message'>  X9 = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 7 transcripts, 5 genes</span></div><div class='output co'>#&gt;                  enstxp     ensgene
+<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 7 transcripts, 5 genes</span></div><div class='output co'>#&gt;                  enstxp     ensgene
 #&gt; FBtr0070000 FBtr0070000 FBgn0031081
 #&gt; FBtr0070001 FBtr0070001 FBgn0052826
 #&gt; FBtr0070002 FBtr0070002 FBgn0031085
