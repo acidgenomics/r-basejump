@@ -5,15 +5,15 @@ test_that("packageSE", {
         .[c("Mazda RX4", "Datsun 710"), ] %>%
         .[, c("mpg", "gear")] %>%
         as.matrix
-    colData <- data.frame(
+    coldata <- data.frame(
         description = c("Miles per gallon", "Number of gears"),
         abbreviation = c(TRUE, FALSE),
         row.names = colnames(mat))
-    rowData <- data.frame(
+    rowdata <- data.frame(
         manufacturer = c("Mazda", "Datsun"),
         model_number = c("RX4", "710"),
         row.names = rownames(mat))
-    se <- packageSE(mat, colData, rowData)
+    se <- packageSE(mat, colData = coldata, rowData = rowdata)
     expect_equal(
         dim(se),
         c(2L, 2L))

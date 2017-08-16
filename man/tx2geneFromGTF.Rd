@@ -5,11 +5,14 @@
 \alias{tx2geneFromGTF}
 \alias{tx2geneFromGTF}
 \alias{tx2geneFromGTF,character-method}
+\alias{tx2geneFromGTF,data.frame-method}
 \title{Generate tx2gene from GTF File}
 \usage{
 tx2geneFromGTF(object, ...)
 
 \S4method{tx2geneFromGTF}{character}(object)
+
+\S4method{tx2geneFromGTF}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object.}

@@ -44,7 +44,7 @@ NULL
     if (!all(object %in% names(gene))) {
         stop(paste(
             "Unmatched transcripts present.",
-            "Try using `tx2geneFromGTF()` instead."),
+            "Try using a GTF file instead."),
             call. = FALSE)
     }
     gene[object]

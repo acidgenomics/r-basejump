@@ -16,32 +16,23 @@ NULL
 
 
 # Constructors ====
-.annotationsFromGTF <- function(object) {
-    first <- read_lines(object, n_max = 1L)
-    if (str_detect(first, "^#!genome-build")) {
-        message("Ensembl GTF")
-        # The first 5 lines are comments
-        gtf <- read_tsv(object, col_names = FALSE, progress = FALSE, skip = 5L)
-    } else if (str_detect(first, "FlyBase")) {
-        message("FlyBase GTF")
-        gtf <- read_tsv(object, col_names = FALSE, progress = FALSE)
-    }
-    gtf %>%
-        # Annotations are slotted in the 9th column of the GTF file
-        .[["X9"]] %>%
+.gtfKeyValuePairs <- function(object) {
+    object %>%
+        .[[9L]] %>%
         unique
 }
 
 
 
 .tx2geneFromGTF <- function(object) {
-    anno <- .annotationsFromGTF(object) %>%
+    anno <- object %>%
+        .gtfKeyValuePairs %>%
         .[str_detect(., "transcript_id") & str_detect(., "gene_id")] %>%
         unique
 
-    enstxp <- str_match(anno, 'transcript_id \\\"([^\\"]+)\\\"') %>%
+    enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
         .[, 2L]
-    ensgene <- str_match(anno, 'gene_id \\\"([^\\"]+)\\\"') %>%
+    ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
 
     # Check identifier integrity
@@ -77,5 +68,18 @@ setMethod("tx2geneFromGTF", "character", function(object) {
     } else {
         file <- object
     }
-    .tx2geneFromGTF(file)
+    file %>%
+        readGTF %>%
+        .tx2geneFromGTF
+})
+
+
+
+#' @rdname tx2geneFromGTF
+#' @export
+setMethod("tx2geneFromGTF", "data.frame", function(object) {
+    if (dim(object)[[2L]] != 9L) {
+        stop("GTF object must be data.frame with 9 columns")
+    }
+    .tx2geneFromGTF(object)
 })
