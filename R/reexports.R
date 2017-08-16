@@ -457,4 +457,7 @@ utils::object.size
 utils::packageVersion
 
 #' @export
+utils::read.delim
+
+#' @export
 utils::sessionInfo

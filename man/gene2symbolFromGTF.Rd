@@ -5,11 +5,14 @@
 \alias{gene2symbolFromGTF}
 \alias{gene2symbolFromGTF}
 \alias{gene2symbolFromGTF,character-method}
+\alias{gene2symbolFromGTF,data.frame-method}
 \title{Generate gene2symbol from GTF File}
 \usage{
 gene2symbolFromGTF(object, ...)
 
 \S4method{gene2symbolFromGTF}{character}(object)
+
+\S4method{gene2symbolFromGTF}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object.}

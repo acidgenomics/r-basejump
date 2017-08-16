@@ -25,6 +25,6 @@ loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{packageSE}},
-  \code{\link{readFileByExtension}},
+  \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

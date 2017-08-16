@@ -25,5 +25,6 @@ Read YAML File
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{packageSE}},
-  \code{\link{readFileByExtension}}, \code{\link{transmit}}
+  \code{\link{readFileByExtension}}, \code{\link{readGTF}},
+  \code{\link{transmit}}
 }

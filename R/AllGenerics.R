@@ -242,6 +242,16 @@ setGeneric("readFileByExtension", function(object, ...) {
 
 
 
+#' @rdname readGTF
+#' @family Data Import and Project Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("readGTF", function(object, ...) {
+    standardGeneric("readGTF")
+})
+
+
+
 #' @rdname readYAML
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
