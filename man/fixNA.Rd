@@ -6,6 +6,9 @@
 \alias{fixNA}
 \alias{fixNA,ANY-method}
 \alias{fixNA,character-method}
+\alias{fixNA,data.frame-method}
+\alias{fixNA,DataFrame-method}
+\alias{fixNA,tbl_df-method}
 \title{Fix Character Strings Missing \code{NA}}
 \usage{
 fixNA(object)
@@ -13,6 +16,12 @@ fixNA(object)
 \S4method{fixNA}{ANY}(object)
 
 \S4method{fixNA}{character}(object)
+
+\S4method{fixNA}{data.frame}(object)
+
+\S4method{fixNA}{DataFrame}(object)
+
+\S4method{fixNA}{tbl_df}(object)
 }
 \arguments{
 \item{object}{Object.}
