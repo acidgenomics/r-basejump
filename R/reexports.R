@@ -378,6 +378,9 @@ stringr::str_sub
 #' @export
 stringr::str_subset
 
+#' @export
+stringr::str_trunc
+
 
 
 # S4Vectors ====
