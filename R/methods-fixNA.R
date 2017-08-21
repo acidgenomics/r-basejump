@@ -7,19 +7,30 @@
 #'
 #' @examples
 #' fixNA(c(1L, "x", "", "NA"))
+#'
+#' data.frame(a = c("foo", ""),
+#'            b = c(NA, "bar")) %>%
+#'     fixNA
 NULL
 
 
 
 # Constructors ====
 .fixNAVec <- function(object) {
-    gsub("^$|^\\s+$|^NA$", NA, object)
+    if (is.character(object)) {
+        gsub("^$|^\\s+$|^NA$", NA, object)
+    } else {
+        object
+    }
 }
 
 
 
-.fixNADim <- function(object) {
-    apply(object, 2L, .fixNAVec)
+.fixNATidy <- function(object) {
+    if (!is.data.frame(object)) {
+        stop("Object must be 'data.frame' class")
+    }
+    mutate_all(object, funs(.fixNAVec))
 }
 
 
@@ -41,16 +52,19 @@ setMethod("fixNA", "character", .fixNAVec)
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "data.frame", .fixNADim)
+setMethod("fixNA", "data.frame", .fixNATidy)
 
 
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "DataFrame", .fixNADim)
+setMethod("fixNA", "DataFrame", function(object) {
+    apply(object, 2L, .fixNAVec) %>%
+        as("DataFrame")
+})
 
 
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "tbl_df", .fixNADim)
+setMethod("fixNA", "tbl_df", .fixNATidy)
