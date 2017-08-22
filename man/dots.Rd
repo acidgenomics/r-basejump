@@ -3,6 +3,7 @@
 \docType{methods}
 \name{dots}
 \alias{dots}
+\alias{dots}
 \alias{dots,ANY-method}
 \title{Extract Dots from Function}
 \usage{

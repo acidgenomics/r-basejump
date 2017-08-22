@@ -3,6 +3,7 @@
 \docType{methods}
 \name{detectHPC}
 \alias{detectHPC}
+\alias{detectHPC}
 \alias{detectHPC,missing-method}
 \title{Detect HPC Environment}
 \usage{

@@ -20,10 +20,7 @@ readGTF(object, ...)
 Read GTF Annotations
 }
 \examples{
-file.path("http://steinbaugh.com",
-          "basejump",
-          "tests",
-          "mmusculus.gtf") \%>\%
+file.path(testDataURL, "mmusculus.gtf") \%>\%
     readGTF \%>\%
     glimpse
 }

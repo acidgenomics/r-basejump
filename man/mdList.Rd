@@ -3,6 +3,7 @@
 \docType{methods}
 \name{mdList}
 \alias{mdList}
+\alias{mdList}
 \alias{mdList,character-method}
 \title{Markdown List}
 \usage{

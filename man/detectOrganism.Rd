@@ -3,6 +3,7 @@
 \docType{methods}
 \name{detectOrganism}
 \alias{detectOrganism}
+\alias{detectOrganism}
 \alias{detectOrganism,character-method}
 \title{Detect Organism}
 \usage{

@@ -21,7 +21,7 @@ No value.
 Load a remote R binary file.
 }
 \examples{
-loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
+loadRemoteData(file.path(testDataURL, "mtcars.rda"))
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{packageSE}},
