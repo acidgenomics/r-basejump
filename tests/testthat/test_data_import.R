@@ -26,13 +26,19 @@ test_that("packageSE", {
 
 test_that("loadRemoteData", {
     expect_silent(
-        loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda"))
+        loadRemoteData(file.path(testDataURL, "mtcars.rda")))
     expect_error(
-        loadRemoteData("http://steinbaugh.com/basejump/tests/mmusculus.gtf"),
+        loadRemoteData(file.path(testDataURL, "mmusculus.gtf")),
         "Data file must contain '.rda' extension")
     expect_error(
         loadRemoteData("foobar.rda"),
         "Remote URL containing '://' required")
+})
+
+
+
+test_that("readFileByExtension", {
+    csv <- file.path(testDataURL, "mtcars.csv")
 })
 
 
