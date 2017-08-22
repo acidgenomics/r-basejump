@@ -28,3 +28,14 @@
 globalVariables(".")
 
 testDataDir <- normalizePath(file.path("docs", "tests"))
+
+#' Test Data URL
+#' @keywords internal
+#' @export
+testDataURL <- file.path(
+    "https://raw.githubusercontent.com",
+    "steinbaugh",
+    "basejump",
+    "dev",
+    "docs",
+    "tests")
