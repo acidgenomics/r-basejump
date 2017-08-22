@@ -110,6 +110,41 @@ test_that("gene2symbolFromGTF", {
 
 
 
+test_that("readGTF", {
+    mm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "mmusculus.gtf")
+    # Check for 9 columns
+    expect_equal(
+        readGTF(mm) %>%
+            dim %>%
+            .[[2L]],
+        9L)
+
+    dm <- file.path("http://steinbaugh.com",
+                    "basejump",
+                    "tests",
+                    "dmelanogaster.gtf")
+    # Check for 9 columns
+    expect_equal(
+        readGTF(dm) %>%
+            dim %>%
+            .[[2L]],
+        9L)
+
+    # Bad URL
+    expect_error(
+        file.path("http://steinbaugh.com",
+                  "basejump",
+                  "tests",
+                  "mtcars.rda") %>%
+            readGTF,
+        "GTF file failed to load. Check path.")
+})
+
+
+
 test_that("tx2gene", {
     # character
     expect_equal(
