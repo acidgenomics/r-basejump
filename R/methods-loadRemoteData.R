@@ -17,6 +17,14 @@ NULL
 #' @rdname loadRemoteData
 #' @export
 setMethod("loadRemoteData", "character", function(object) {
+    # Check for remote URL
+    if (!str_detect(object, "\\://")) {
+        stop("Remote URL containing '://' required")
+    }
+    # Check for '.rda' file
+    if (!str_detect(object, "\\.rda$")) {
+        stop("Data file must contain '.rda' extension")
+    }
     envir <- parent.frame()
     tempfile <- tempfile()
     download.file(object, get("tempfile"), quiet = TRUE)

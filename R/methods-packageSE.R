@@ -67,7 +67,7 @@ NULL
 
     # colData ====
     if (is.null(dim(colData))) {
-        stop("colData must support dim()", call. = FALSE)
+        stop("colData must support 'dim()'", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(colData)) {
@@ -83,7 +83,7 @@ NULL
 
     # rowData ====
     if (is.null(dim(rowData))) {
-        stop("rowData must support dim()", call. = FALSE)
+        stop("rowData must support 'dim()'", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(rowData)) {
@@ -105,10 +105,10 @@ NULL
         stop("Non-unique rownames in rowData", call. = FALSE)
     }
     if (!identical(colnames(assay), rownames(colData))) {
-        stop("Unexpected colData rowname mismatch", call. = FALSE)
+        stop("colData rowname mismatch", call. = FALSE)
     }
     if (!identical(rownames(assay), rownames(rowData))) {
-        stop("Unexpected rowData rowname mismatch", call. = FALSE)
+        stop("rowData rowname mismatch", call. = FALSE)
     }
 
     # Metadata
@@ -116,7 +116,7 @@ NULL
         metadata <- SimpleList()
     } else {
         if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("metadata must be `list` or `SimpleList` object")
+            stop("metadata must be 'list' or 'SimpleList' class")
         }
         metadata <- as(metadata, "SimpleList")
     }
@@ -164,7 +164,7 @@ setMethod("packageSE", "SimpleList", .packageSE)
 setMethod("packageSE", "ANY", function(
     object, colData, rowData, metadata = NULL) {
     if (is.null(dim(object))) {
-        stop("Object must support `dim()`", call. = FALSE)
+        stop("Object must support 'dim()'", call. = FALSE)
     }
     .packageSE(
         SimpleList(assay = object),
