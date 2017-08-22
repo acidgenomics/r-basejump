@@ -57,8 +57,9 @@ NULL
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
         warning(paste(
-            "Failed to match all gene IDs to symbols",
-            toString(nomatch)))
+            "Failed to match all gene IDs to symbols:",
+            toString(nomatch)),
+            call. = FALSE)
         symbol <- c(symbol, nomatch)
     }
     symbol <- symbol[object]
