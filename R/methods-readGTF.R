@@ -6,7 +6,11 @@
 #' @seealso http://www.gencodegenes.org/gencodeformat.html
 #'
 #' @examples
-#' readGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf") %>%
+#' file.path("http://steinbaugh.com"
+#'           "basejump",
+#'           "tests",
+#'           "mmusculus.gtf") %>%
+#'     readGTF %>%
 #'     glimpse
 NULL
 
@@ -24,17 +28,29 @@ setMethod("readGTF", "character", function(object) {
     } else {
         file <- object
     }
-    read.delim(
-        file,
-        col.names = c("chromosome",
-                      "annotationSource",
-                      "featureType",
-                      "start",
-                      "end",
-                      "score",
-                      "strand",
-                      "phase",
-                      "keyValuePairs"),
-        comment.char = "#",
-        header = FALSE)
+
+    gtf <- tryCatch(
+        read.delim(
+            file,
+            col.names = c("chromosome",
+                          "annotationSource",
+                          "featureType",
+                          "start",
+                          "end",
+                          "score",
+                          "strand",
+                          "phase",
+                          "keyValuePairs"),
+            comment.char = "#",
+            header = FALSE),
+        warning = function(w) {
+            stop("GTF file failed to load. Check path.", call. = FALSE)
+        })
+
+    # Integrity checks
+    if (dim(gtf)[[2L]] != 9L) {
+        stop("GTF object must be data.frame with 9 columns")
+    }
+
+    gtf
 })

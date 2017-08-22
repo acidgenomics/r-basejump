@@ -20,7 +20,11 @@ readGTF(object, ...)
 Read GTF Annotations
 }
 \examples{
-readGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf") \%>\%
+file.path("http://steinbaugh.com"
+          "basejump",
+          "tests",
+          "mmusculus.gtf") \%>\%
+    readGTF \%>\%
     glimpse
 }
 \seealso{
