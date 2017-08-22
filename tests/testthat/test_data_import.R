@@ -38,7 +38,21 @@ test_that("loadRemoteData", {
 
 
 test_that("readFileByExtension", {
-    csv <- file.path(testDataURL, "mtcars.csv")
+    # CSV file
+    csvFile <- file.path(testDataURL, "mtcars.csv")
+    csv <- readFileByExtension(csvFile)
+    expect_true(is_tibble(csv))
+
+    # MatrixMarket file
+    mmFile <- file.path(testDataURL, "sparse.mtx")
+    sparse <- readFileByExtension(mmFile)
+    expect_true(is(sparse, "ngTMatrix"))
+
+    # RData file (unsupported)
+    rdaFile <- file.path(testDataURL, "mtcars.rda")
+    expect_error(
+        readFileByExtension(rdaFile),
+        "Unsupported file type")
 })
 
 
