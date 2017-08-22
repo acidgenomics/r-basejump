@@ -35,4 +35,6 @@ detectHPC()
 \item \code{R.version}.
 \item \code{.Platform}.
 }
+
+Other Infrastructure Utilities: \code{\link{download}}
 }
