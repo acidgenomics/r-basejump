@@ -17,6 +17,7 @@ NULL
 
 
 
+# Methods ====
 #' @rdname dna
 #' @export
 setMethod("comp", "character", function(object) {

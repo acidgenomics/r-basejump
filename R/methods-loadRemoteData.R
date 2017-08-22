@@ -8,7 +8,7 @@
 #' @return No value.
 #'
 #' @examples
-#' loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
+#' loadRemoteData(file.path(testDataURL, "mtcars.rda"))
 NULL
 
 
@@ -26,8 +26,7 @@ setMethod("loadRemoteData", "character", function(object) {
         stop("Data file must contain '.rda' extension")
     }
     envir <- parent.frame()
-    tempfile <- tempfile()
-    download.file(object, get("tempfile"), quiet = TRUE)
-    get("tempfile") %>%
-        load(envir = envir)
+    tmp <- tempfile()
+    download.file(object, tmp)
+    load(tmp, envir = envir)
 })

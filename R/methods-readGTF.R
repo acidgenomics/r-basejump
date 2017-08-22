@@ -6,10 +6,7 @@
 #' @seealso http://www.gencodegenes.org/gencodeformat.html
 #'
 #' @examples
-#' file.path("http://steinbaugh.com",
-#'           "basejump",
-#'           "tests",
-#'           "mmusculus.gtf") %>%
+#' file.path(testDataURL, "mmusculus.gtf") %>%
 #'     readGTF %>%
 #'     glimpse
 NULL

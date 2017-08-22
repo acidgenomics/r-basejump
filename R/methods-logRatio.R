@@ -21,6 +21,7 @@ NULL
 
 
 
+# Methods ====
 #' @rdname logRatio
 setMethod("fc2lr", "numeric", function(object, base = 2L) {
     object <- ifelse(object < 0L, 1L / -object, object)
