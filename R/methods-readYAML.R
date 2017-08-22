@@ -29,6 +29,10 @@ NULL
 #' @rdname readYAML
 #' @export
 setMethod("readYAML", "character", function(object) {
+    if (!str_detect(object, "\\.ya?ml$")) {
+        stop("YAML file must have '.yaml' or '.yml' extension",
+             call. = FALSE)
+    }
     if (str_detect(object, "\\://")) {
         # Remote file
         filePath <- object
