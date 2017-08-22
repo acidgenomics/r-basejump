@@ -21,7 +21,7 @@ test_that("collapse", {
         mtcars %>%
             head %>%
             collapse %>%
-            pull("mpg") %>%
+            .[, "mpg"] %>%
             as.character,
         mpg)
 
