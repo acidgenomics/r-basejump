@@ -56,7 +56,7 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    lintr,
+    lintr (>= 1.0.1),
     testthat
 Remotes:
     hbc/annotables
