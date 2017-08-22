@@ -32,6 +32,7 @@ dplyr::bind_rows
 #' @export
 dplyr::case_when
 
+# Collision with IRanges::desc
 #' @export
 dplyr::desc
 
@@ -377,6 +378,9 @@ stringr::str_sub
 
 #' @export
 stringr::str_subset
+
+#' @export
+stringr::str_trunc
 
 
 
