@@ -24,4 +24,7 @@ S4Vectors::DataFrame
 S4Vectors::metadata
 
 #' @export
+tibble::is_tibble
+
+#' @export
 tibble::tibble
