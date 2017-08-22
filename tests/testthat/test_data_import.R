@@ -40,7 +40,7 @@ test_that("loadRemoteData", {
 test_that("readFileByExtension", {
     # CSV file
     csv <- file.path(testDataURL, "mtcars.csv") %>%
-        readFileByExtension(csvFile)
+        readFileByExtension
     expect_true(is_tibble(csv))
 
     # MatrixMarket file
@@ -50,8 +50,7 @@ test_that("readFileByExtension", {
 
     # RData file (unsupported)
     expect_error(
-        file.path(testDataURL, "mtcars.rda") %>%
-            readFileByExtension,
+        readFileByExtension(file.path(testDataURL, "mtcars.rda")),
         "Unsupported file type")
 })
 
