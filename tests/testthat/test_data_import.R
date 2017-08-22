@@ -24,6 +24,19 @@ test_that("packageSE", {
 
 
 
+test_that("loadRemoteData", {
+    expect_silent(
+        loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda"))
+    expect_errror(
+        loadRemoteData("http://steinbaugh.com/basejump/tests/mmusculus.gtf"),
+        "Data file must contain '.rda' extension")
+    expect_error(
+        loadRemoteData("foobar.rda"),
+        "Remote URL containing '://' required")
+})
+
+
+
 test_that("transmit", {
     expect_equal(
         transmit("ftp://ftp.ensembl.org/pub/release-89",
