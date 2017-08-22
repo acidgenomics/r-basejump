@@ -105,16 +105,6 @@ setGeneric("fc2lr", function(object, ...) {
 
 
 
-#' @rdname makeNames
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("firstCase", function(object, ...) {
-    standardGeneric("firstCase")
-})
-
-
-
 #' @rdname fixNA
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
@@ -311,16 +301,6 @@ setGeneric("snake", function(object, ...) {
 #' @export
 setGeneric("sortUnique", function(object) {
     standardGeneric("sortUnique")
-})
-
-
-
-#' @rdname makeNames
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("titleCase", function(object, ...) {
-    standardGeneric("titleCase")
 })
 
 

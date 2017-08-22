@@ -87,38 +87,6 @@ test_that("camel", {
 
 
 
-test_that("snake", {
-    # Unnamed character vector
-    expect_equal(snake("hello world"), "hello_world")
-    expect_equal(snake("HELLO WORLD"), "hello_world")
-    expect_equal(snake("RNAi clones"), "rnai_clones")
-    expect_equal(snake("worfdbHTMLRemap"), "worfdb_html_remap")
-    expect_equal(snake(123L), 123L)
-    expect_equal(snake(NA), NA)
-    expect_error(snake())
-
-    # Named character vector
-    expect_equal(
-        snake(named),
-        c(item_a = "hello world",
-          item_b = "HELLO WORLD"))
-
-    # Tibble
-    expect_equal(
-        tbl[, 1L:5L] %>%
-            snake %>%
-            colnames,
-        c("name", "height", "mass", "hair_color", "skin_color"))
-
-    # List
-    expect_equal(
-        snake(lst),
-        list(item_a = c(1L, 2L),
-             item_b = c(3L, 4L)))
-})
-
-
-
 test_that("dotted", {
     # Unnamed character vector
     expect_equal(dotted("hello world"), "hello.world")
@@ -147,6 +115,38 @@ test_that("dotted", {
         dotted(lst),
         list(item.a = c(1L, 2L),
              item.b = c(3L, 4L)))
+})
+
+
+
+test_that("snake", {
+    # Unnamed character vector
+    expect_equal(snake("hello world"), "hello_world")
+    expect_equal(snake("HELLO WORLD"), "hello_world")
+    expect_equal(snake("RNAi clones"), "rnai_clones")
+    expect_equal(snake("worfdbHTMLRemap"), "worfdb_html_remap")
+    expect_equal(snake(123L), 123L)
+    expect_equal(snake(NA), NA)
+    expect_error(snake())
+
+    # Named character vector
+    expect_equal(
+        snake(named),
+        c(item_a = "hello world",
+          item_b = "HELLO WORLD"))
+
+    # Tibble
+    expect_equal(
+        tbl[, 1L:5L] %>%
+            snake %>%
+            colnames,
+        c("name", "height", "mass", "hair_color", "skin_color"))
+
+    # List
+    expect_equal(
+        snake(lst),
+        list(item_a = c(1L, 2L),
+             item_b = c(3L, 4L)))
 })
 
 
