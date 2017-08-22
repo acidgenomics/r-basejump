@@ -132,7 +132,7 @@ NULL
 
 .setNamesDotted <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesDotted(names(object)))
+        object <- setNames(object, .makeNamesDotted(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesDotted(rownames(object)))
@@ -197,7 +197,7 @@ setMethod("dotted", "tbl_df", function(object) {
 
 .setNamesCamel <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesCamel(names(object)))
+        object <- setNames(object, .makeNamesCamel(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesCamel(rownames(object)))
@@ -264,7 +264,7 @@ setMethod("camel", "tbl_df", function(object) {
 
 .setNamesSnake <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesSnake(names(object)))
+        object <- setNames(object, .makeNamesSnake(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesSnake(rownames(object)))
