@@ -30,7 +30,6 @@
 #' - [SummarizedExperiment::SummarizedExperiment].
 #' - [base::Sys.Date()].
 #' - [base::getwd()].
-#' - [detectHPC()].
 #' - [utils::sessionInfo()].
 #'
 #' @return [SummarizedExperiment].
@@ -64,6 +63,9 @@ NULL
     # Assays ====
     assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
+    if (is.null(dim(assay))) {
+        stop("Assay object must support 'dim()'", call. = FALSE)
+    }
 
     # colData ====
     if (is.null(dim(colData))) {
@@ -122,7 +124,6 @@ NULL
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
-    metadata[["hpc"]] <- detectHPC()
     metadata[["sessionInfo"]] <- sessionInfo()
 
     # Check for retired Ensembl identifiers, which can happen when a more recent
@@ -163,9 +164,6 @@ setMethod("packageSE", "SimpleList", .packageSE)
 #' @export
 setMethod("packageSE", "ANY", function(
     object, colData, rowData, metadata = NULL) {
-    if (is.null(dim(object))) {
-        stop("Object must support 'dim()'", call. = FALSE)
-    }
     .packageSE(
         SimpleList(assay = object),
         colData,
