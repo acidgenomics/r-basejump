@@ -3,6 +3,7 @@
 \docType{methods}
 \name{kables}
 \alias{kables}
+\alias{kables}
 \alias{kables,list-method}
 \title{Create Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{

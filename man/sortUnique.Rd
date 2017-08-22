@@ -3,6 +3,7 @@
 \docType{methods}
 \name{sortUnique}
 \alias{sortUnique}
+\alias{sortUnique}
 \alias{sortUnique,character-method}
 \title{Quickly Perform Sort Unique on a Vector}
 \usage{

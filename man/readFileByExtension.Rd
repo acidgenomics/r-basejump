@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readFileByExtension}
 \alias{readFileByExtension}
+\alias{readFileByExtension}
 \alias{readFileByExtension,character-method}
 \title{Read File by Extension}
 \usage{
@@ -25,6 +26,9 @@ readFileByExtension(object, ...)
 Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}
 files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.colnames},
 and \code{.rownames} files.
+}
+\examples{
+readFileByExtension(file.path(testDataURL, "mtcars.csv"))
 }
 \seealso{
 \itemize{

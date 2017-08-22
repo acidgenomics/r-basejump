@@ -3,6 +3,7 @@
 \docType{methods}
 \name{transmit}
 \alias{transmit}
+\alias{transmit}
 \alias{transmit,character-method}
 \title{Transmit Files from a Remote FTP Server}
 \usage{

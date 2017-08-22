@@ -3,6 +3,7 @@
 \docType{methods}
 \name{grepString}
 \alias{grepString}
+\alias{grepString}
 \alias{grepString,character-method}
 \title{\code{grep} String Generator}
 \usage{

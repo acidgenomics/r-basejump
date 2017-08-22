@@ -3,6 +3,7 @@
 \docType{methods}
 \name{mdHeader}
 \alias{mdHeader}
+\alias{mdHeader}
 \alias{mdHeader,character-method}
 \title{Markdown Header}
 \usage{

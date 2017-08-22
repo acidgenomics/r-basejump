@@ -27,10 +27,7 @@ Generate gene2symbol from GTF File
 }
 \examples{
 # GTF URL
-url <- file.path("http://steinbaugh.com",
-                 "basejump",
-                 "tests",
-                 "mmusculus.gtf")
+url <- file.path(testDataURL, "mmusculus.gtf")
 gene2symbolFromGTF(url) \%>\%
     glimpse
 
