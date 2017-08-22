@@ -6,3 +6,4 @@ sparse <- Matrix(
 save(sparse,
      file = file.path(testDataDir, "sparse.rda"),
      compress = "xz")
+Matrix::writeMM(sparse, file.path(testDataDir, "sparse.mtx"))
