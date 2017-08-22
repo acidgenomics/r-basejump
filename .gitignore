@@ -4,3 +4,4 @@
 .Ruserdata
 docs/reference/*/
 tests/testthat/data/
+tests/testthat/data-raw/
