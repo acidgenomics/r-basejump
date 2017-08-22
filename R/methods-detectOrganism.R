@@ -3,6 +3,7 @@
 #' Supports organism detection from genome build or Ensembl identifier.
 #'
 #' @rdname detectOrganism
+#' @name detectOrganism
 #'
 #' @return Full latin scientific organism name.
 #' @export
@@ -30,6 +31,13 @@
 #' detectOrganism("BDGP6")
 #' detectOrganism("dm6")
 #' detectOrganism("FBgn0000003")
+NULL
+
+
+
+# Methods ====
+#' @rdname detectOrganism
+#' @export
 setMethod("detectOrganism", "character", function(object) {
     if (object %in% c("human",
                       "hsapiens",

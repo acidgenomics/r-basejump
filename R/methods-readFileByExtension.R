@@ -5,6 +5,7 @@
 #' and `.rownames` files.
 #'
 #' @rdname readFileByExtension
+#' @name readFileByExtension
 #'
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
@@ -17,15 +18,30 @@
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
 #' - [Matrix::readMM()]: Read a MatrixMarket file.
+#'
+#' @examples
+#' readFileByExtension(file.path(testDataURL, "mtcars.csv"))
+NULL
+
+
+
+# Methods ====
+#' @rdname readFileByExtension
+#' @export
 setMethod("readFileByExtension", "character", function(
     object,
     makeNames = "camel",
     ...) {
-    filePath <- normalizePath(object)
-    fileName <- basename(filePath)
-    if (!file.exists(filePath)) {
-        stop(paste(fileName, "not found"))
+    if (str_detect(object, "\\://")) {
+        # Remote file
+        filePath <- object
+        tempfile <- tempfile()
+        download.file(object, tempfile)
+    } else {
+        # Local file
+        filePath <- normalizePath(object)
     }
+    fileName <- basename(filePath)
 
     message(paste("Reading", fileName))
 

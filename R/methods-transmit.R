@@ -4,6 +4,7 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @rdname transmit
+#' @name transmit
 #'
 #' @param object Remote directory URL. Currently supports FTP.
 #' @param pattern Pattern to match against remote file names.
@@ -20,6 +21,13 @@
 #'          pattern = "README",
 #'          rename = "ensembl_readme.txt",
 #'          compress = TRUE)
+NULL
+
+
+
+# Methods ====
+#' @rdname transmit
+#' @export
 setMethod("transmit", "character", function(
     object,
     pattern = NULL,
