@@ -39,19 +39,19 @@ test_that("loadRemoteData", {
 
 test_that("readFileByExtension", {
     # CSV file
-    csvFile <- file.path(testDataURL, "mtcars.csv")
-    csv <- readFileByExtension(csvFile)
+    csv <- file.path(testDataURL, "mtcars.csv") %>%
+        readFileByExtension(csvFile)
     expect_true(is_tibble(csv))
 
     # MatrixMarket file
-    mmFile <- file.path(testDataURL, "sparse.mtx")
-    sparse <- readFileByExtension(mmFile)
+    sparse <- file.path(testDataURL, "sparse.mtx") %>%
+        readFileByExtension
     expect_true(is(sparse, "ngTMatrix"))
 
     # RData file (unsupported)
-    rdaFile <- file.path(testDataURL, "mtcars.rda")
     expect_error(
-        readFileByExtension(rdaFile),
+        file.path(testDataURL, "mtcars.rda") %>%
+            readFileByExtension,
         "Unsupported file type")
 })
 
@@ -59,7 +59,7 @@ test_that("readFileByExtension", {
 
 test_that("readYAML", {
     # bcbioRnaseq example YAML file
-    yamlFile <- file.path(
+    yaml <- readYAML(file.path(
         "https://raw.githubusercontent.com",
         "hbc",
         "bcbioRnaseq",
@@ -68,20 +68,18 @@ test_that("readYAML", {
         "extra",
         "bcbio",
         "2017-05-23_rnaseq",
-        "project-summary.yaml")
-    yaml <- readYAML(yamlFile)
+        "project-summary.yaml"))
     expect_equal(
         names(yaml),
         c("date", "upload", "bcbio_system", "samples"))
 
     # Check '.yml' file support
-    yamlFile <- file.path(
+    yaml <- readYAML(file.path(
         "https://raw.githubusercontent.com",
         "steinbaugh",
         "basejump",
         "master",
-        ".travis.yml")
-    yaml <- readYAML(yamlFile)
+        ".travis.yml"))
     expect_true("language" %in% names(yaml))
 
     # Unsupported file type
