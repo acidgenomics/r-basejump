@@ -74,6 +74,21 @@ test_that("readYAML", {
         names(yaml),
         c("date", "upload", "bcbio_system", "samples"))
 
+    # Check '.yml' file support
+    yamlFile <- file.path(
+        "https://raw.githubusercontent.com",
+        "steinbaugh",
+        "basejump",
+        "master",
+        ".travis.yml")
+    yaml <- readYAML(yamlFile)
+    expect_true("language" %in% names(yaml))
+
+    # Unsupported file type
+    expect_error(
+        readYAML(file.path(testDataDir, "mtcars.csv")),
+        "YAML file must have '.yaml' or '.yml' extension")
+
     # Missing file
     expect_error(
         readYAML("foobar.yaml"),
