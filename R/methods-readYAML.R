@@ -6,6 +6,21 @@
 #' @param object YAML file path.
 #'
 #' @return [list].
+#'
+#' @examples
+#' # bcbioRnaseq example project summary YAML
+#' yamlFile <- file.path(
+#'     "https://raw.githubusercontent.com",
+#'     "hbc",
+#'     "bcbioRnaseq",
+#'     "master",
+#'     "inst",
+#'     "extra",
+#'     "bcbio",
+#'     "2017-05-23_rnaseq",
+#'     "project-summary.yaml")
+#' yaml <- readYAML(yamlFile)
+#' names(yaml)
 NULL
 
 
@@ -14,10 +29,16 @@ NULL
 #' @rdname readYAML
 #' @export
 setMethod("readYAML", "character", function(object) {
-    if (file.exists(object)) {
-        message(paste("Reading", basename(object)))
-        yaml.load_file(object)
+    if (str_detect(object, "\\://")) {
+        # Remote file
+        filePath <- object
+        tempfile <- tempfile()
+        download.file(object, tempfile)
     } else {
-        NULL
+        # Local file
+        filePath <- normalizePath(object)
     }
+    fileName <- basename(filePath)
+    message(paste("Reading", fileName))
+    yaml.load_file(filePath)
 })
