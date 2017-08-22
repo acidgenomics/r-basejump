@@ -19,7 +19,7 @@ test_that("packageSE", {
         c(2L, 2L))
     expect_equal(
         names(metadata(se)),
-        c("date", "wd", "hpc", "sessionInfo"))
+        c("date", "wd", "sessionInfo"))
 })
 
 
@@ -27,7 +27,7 @@ test_that("packageSE", {
 test_that("loadRemoteData", {
     expect_silent(
         loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda"))
-    expect_errror(
+    expect_error(
         loadRemoteData("http://steinbaugh.com/basejump/tests/mmusculus.gtf"),
         "Data file must contain '.rda' extension")
     expect_error(
