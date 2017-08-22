@@ -22,6 +22,21 @@ readYAML(object, ...)
 \description{
 Read YAML File
 }
+\examples{
+# bcbioRnaseq example project summary YAML
+yamlFile <- file.path(
+    "https://raw.githubusercontent.com",
+    "hbc",
+    "bcbioRnaseq",
+    "master",
+    "inst",
+    "extra",
+    "bcbio",
+    "2017-05-23_rnaseq",
+    "project-summary.yaml")
+yaml <- readYAML(yamlFile)
+names(yaml)
+}
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{packageSE}},
