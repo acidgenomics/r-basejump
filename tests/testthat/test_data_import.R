@@ -57,6 +57,26 @@ test_that("readFileByExtension", {
 
 
 
+test_that("readYAML", {
+    # bcbioRnaseq example YAML file
+    yamlFile <- file.path(
+        "https://raw.githubusercontent.com",
+        "hbc",
+        "bcbioRnaseq",
+        "master",
+        "inst",
+        "extra",
+        "bcbio",
+        "2017-05-23_rnaseq",
+        "project-summary.yaml")
+    yaml <- readYAML(yamlFile)
+    expect_equal(
+        names(yaml),
+        c("date", "upload", "bcbio_system", "samples"))
+})
+
+
+
 test_that("transmit", {
     expect_equal(
         transmit("ftp://ftp.ensembl.org/pub/release-89",
