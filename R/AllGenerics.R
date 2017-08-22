@@ -95,6 +95,16 @@ setGeneric("dotted", function(object, ...) {
 
 
 
+#' @rdname download
+#' @family Infrastructure Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("download", function(object, ...) {
+    standardGeneric("download")
+})
+
+
+
 #' @rdname logRatio
 #' @family Math Utilities
 #' @inheritParams AllGenerics
