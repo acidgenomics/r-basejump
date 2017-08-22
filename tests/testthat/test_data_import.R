@@ -21,3 +21,16 @@ test_that("packageSE", {
         names(metadata(se)),
         c("date", "wd", "hpc", "sessionInfo"))
 })
+
+
+
+test_that("transmit", {
+    expect_equal(
+        transmit("ftp://ftp.ensembl.org/pub/release-89",
+                 pattern = "README",
+                 rename = "ensembl_readme.txt",
+                 compress = TRUE) %>%
+            .[["README"]] %>%
+            .[[1L]],
+        "data-raw/ensembl_readme.txt.gz")
+})
