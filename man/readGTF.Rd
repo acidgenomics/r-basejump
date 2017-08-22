@@ -19,7 +19,13 @@ readGTF(object, ...)
 \description{
 Read GTF Annotations
 }
+\examples{
+readGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf") \%>\%
+    glimpse
+}
 \seealso{
+http://www.gencodegenes.org/gencodeformat.html
+
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{packageSE}},
   \code{\link{readFileByExtension}},

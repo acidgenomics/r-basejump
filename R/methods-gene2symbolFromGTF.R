@@ -6,11 +6,18 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' # Mouse (Ensembl)
-#' gene2symbolFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+#' # GTF URL
+#' url <- file.path("http://steinbaugh.com",
+#'                  "basejump",
+#'                  "tests",
+#'                  "mmusculus.gtf") %>%
+#' gene2symbolFromGTF(url) %>%
+#'     glimpse
 #'
-#' # Fruitfly (FlyBase)
-#' gene2symbolFromGTF("http://steinbaugh.com/basejump/tests/dmelanogaster.gtf")
+#' # GTF data.frame
+#' gtf <- readGTF(url)
+#' gene2symbolFromGTF(gtf) %>%
+#'     glimpse
 NULL
 
 
@@ -59,15 +66,7 @@ NULL
 #' @rdname gene2symbolFromGTF
 #' @export
 setMethod("gene2symbolFromGTF", "character", function(object) {
-    # Check for remote file
-    if (str_detect(object, "://")) {
-        # Save as temp file
-        file <- tempfile()
-        download.file(object, file)
-    } else {
-        file <- object
-    }
-    file %>%
+    object %>%
         readGTF %>%
         .gene2symbolFromGTF
 })

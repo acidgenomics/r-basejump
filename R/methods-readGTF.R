@@ -2,6 +2,12 @@
 #'
 #' @rdname readGTF
 #' @name readGTF
+#'
+#' @seealso http://www.gencodegenes.org/gencodeformat.html
+#'
+#' @examples
+#' readGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf") %>%
+#'     glimpse
 NULL
 
 
@@ -10,9 +16,16 @@ NULL
 #' @rdname readGTF
 #' @export
 setMethod("readGTF", "character", function(object) {
-    # http://www.gencodegenes.org/gencodeformat.html
-    gtf <- read.delim(
-        object,
+    # Check for remote file
+    if (str_detect(object, "://")) {
+        # Save as temp file
+        file <- tempfile()
+        download.file(object, file)
+    } else {
+        file <- object
+    }
+    read.delim(
+        file,
         col.names = c("chromosome",
                       "annotationSource",
                       "featureType",
@@ -24,8 +37,4 @@ setMethod("readGTF", "character", function(object) {
                       "keyValuePairs"),
         comment.char = "#",
         header = FALSE)
-    if (dim(gtf)[[2L]] != 9L) {
-        stop("GTF object must be data.frame with 9 columns")
-    }
-    gtf
 })
