@@ -81,5 +81,5 @@ setMethod("transmit", "character", function(
 
         localFileName
     }) %>%
-        set_names(remoteFileName)
+        setNames(remoteFileName)
 })
