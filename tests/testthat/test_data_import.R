@@ -73,6 +73,11 @@ test_that("readYAML", {
     expect_equal(
         names(yaml),
         c("date", "upload", "bcbio_system", "samples"))
+
+    # Missing file
+    expect_error(
+        readYAML("foobar.yaml"),
+        "cannot open the connection")
 })
 
 
