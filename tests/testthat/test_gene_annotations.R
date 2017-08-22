@@ -70,10 +70,7 @@ test_that("gene2symbol", {
 
 test_that("gene2symbolFromGTF", {
     # Mouse
-    mm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "mmusculus.gtf") %>%
+    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
         gene2symbolFromGTF
     expect_equal(
         dim(mm),
@@ -89,10 +86,7 @@ test_that("gene2symbolFromGTF", {
                           "ENSMUSG00000051951")))
 
     # Fruitfly
-    dm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "dmelanogaster.gtf") %>%
+    dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
         gene2symbolFromGTF
     expect_equal(
         dim(dm),
@@ -111,10 +105,7 @@ test_that("gene2symbolFromGTF", {
 
 
 test_that("readGTF", {
-    mm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "mmusculus.gtf")
+    mm <- file.path(testDataURL, "mmusculus.gtf")
     # Check for 9 columns
     expect_equal(
         readGTF(mm) %>%
@@ -122,10 +113,7 @@ test_that("readGTF", {
             .[[2L]],
         9L)
 
-    dm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "dmelanogaster.gtf")
+    dm <- file.path(testDataURL, "dmelanogaster.gtf")
     # Check for 9 columns
     expect_equal(
         readGTF(dm) %>%
@@ -135,10 +123,7 @@ test_that("readGTF", {
 
     # Bad URL
     expect_error(
-        file.path("http://steinbaugh.com",
-                  "basejump",
-                  "tests",
-                  "mtcars.rda") %>%
+        file.path(testDataURL, "mtcars.rda") %>%
             readGTF,
         "GTF file failed to load. Check path.")
 })
@@ -181,10 +166,7 @@ test_that("tx2gene", {
 
 test_that("tx2geneFromGTF", {
     # Mouse
-    mm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "mmusculus.gtf") %>%
+    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
         tx2geneFromGTF
     expect_equal(
         dim(mm),
@@ -200,10 +182,7 @@ test_that("tx2geneFromGTF", {
                           "ENSMUST00000082908")))
 
     # Fruitfly
-    dm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "dmelanogaster.gtf") %>%
+    dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
         tx2geneFromGTF
     expect_equal(
         dim(dm),
