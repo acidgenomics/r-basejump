@@ -1,7 +1,7 @@
 # 0.0.21
 
-- NAMESPACE improvements.
-- Improved code coverage and unit testing with additional testthat checks.
+- NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.
+- Improved code coverage and unit testing with additional testthat checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.
 
 
 
