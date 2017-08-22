@@ -72,7 +72,6 @@ packageSE(mat, colData, rowData)
 \item \link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment}.
 \item \code{\link[base:Sys.Date]{base::Sys.Date()}}.
 \item \code{\link[base:getwd]{base::getwd()}}.
-\item \code{\link[=detectHPC]{detectHPC()}}.
 \item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
 }
 
