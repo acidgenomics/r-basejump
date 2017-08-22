@@ -6,7 +6,7 @@
 #' @seealso http://www.gencodegenes.org/gencodeformat.html
 #'
 #' @examples
-#' file.path("http://steinbaugh.com"
+#' file.path("http://steinbaugh.com",
 #'           "basejump",
 #'           "tests",
 #'           "mmusculus.gtf") %>%
@@ -22,7 +22,6 @@ NULL
 setMethod("readGTF", "character", function(object) {
     # Check for remote file
     if (str_detect(object, "://")) {
-        # Save as temp file
         file <- tempfile()
         download.file(object, file)
     } else {
