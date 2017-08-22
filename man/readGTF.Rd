@@ -20,7 +20,7 @@ readGTF(object, ...)
 Read GTF Annotations
 }
 \examples{
-file.path("http://steinbaugh.com"
+file.path("http://steinbaugh.com",
           "basejump",
           "tests",
           "mmusculus.gtf") \%>\%

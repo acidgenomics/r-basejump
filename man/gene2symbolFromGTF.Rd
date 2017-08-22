@@ -30,7 +30,7 @@ Generate gene2symbol from GTF File
 url <- file.path("http://steinbaugh.com",
                  "basejump",
                  "tests",
-                 "mmusculus.gtf") \%>\%
+                 "mmusculus.gtf")
 gene2symbolFromGTF(url) \%>\%
     glimpse
 
