@@ -32,11 +32,12 @@ NULL
 # Constructors ====
 .annotable <- function(object, format = "gene") {
     string <- object[1L]  # nolint
-
     if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
         stop("Unsupported format")
     }
-    envir <- as.environment("package:annotables")
+
+    # Load the annotables namespace
+    envir <- loadNamespace("annotables")
 
     supportedGenomes <-
         c(chicken = "galgal5",
