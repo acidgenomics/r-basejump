@@ -7,12 +7,14 @@
 \alias{pct,numeric-method}
 \title{Convert Numeric to Percentage}
 \usage{
-pct(object)
+pct(object, ...)
 
 \S4method{pct}{numeric}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Percentage.

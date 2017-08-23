@@ -7,12 +7,14 @@
 \alias{grepString,character-method}
 \title{\code{grep} String Generator}
 \usage{
-grepString(object)
+grepString(object, ...)
 
 \S4method{grepString}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Comma separated grep string.
