@@ -33,16 +33,7 @@ setMethod("readYAML", "character", function(object) {
         stop("YAML file must have '.yaml' or '.yml' extension",
              call. = FALSE)
     }
-    if (str_detect(object, "\\://")) {
-        # Remote file
-        filePath <- object
-        tempfile <- tempfile()
-        download.file(object, tempfile)
-    } else {
-        # Local file
-        filePath <- normalizePath(object)
-    }
-    fileName <- basename(filePath)
-    message(paste("Reading", fileName))
-    yaml.load_file(filePath)
+    file <- .localOrRemoteFile(object)
+    message(paste("Reading", names(file)))
+    yaml.load_file(file)
 })

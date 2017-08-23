@@ -17,14 +17,7 @@ NULL
 #' @rdname readGTF
 #' @export
 setMethod("readGTF", "character", function(object) {
-    # Check for remote file
-    if (str_detect(object, "://")) {
-        file <- tempfile()
-        download.file(object, file)
-    } else {
-        file <- object
-    }
-
+    file <- .localOrRemoteFile(object)
     gtf <- tryCatch(
         read.delim(
             file,
@@ -42,11 +35,9 @@ setMethod("readGTF", "character", function(object) {
         warning = function(w) {
             stop("GTF file failed to load. Check path.", call. = FALSE)
         })
-
     # Integrity checks
     if (dim(gtf)[[2L]] != 9L) {
         stop("GTF object must be data.frame with 9 columns")
     }
-
     gtf
 })
