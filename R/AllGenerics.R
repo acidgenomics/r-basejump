@@ -46,7 +46,7 @@ setGeneric("collapse", function(object, ...) {
 #' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("comp", function(object) {
+setGeneric("comp", function(object, ...) {
     standardGeneric("comp")
 })
 
@@ -66,7 +66,7 @@ setGeneric("detectHPC", function(object, ...) {
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("detectOrganism", function(object) {
+setGeneric("detectOrganism", function(object, ...) {
     standardGeneric("detectOrganism")
 })
 
@@ -95,12 +95,12 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname download
+#' @rdname externalFile
 #' @family Infrastructure Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("download", function(object, ...) {
-    standardGeneric("download")
+setGeneric("externalFile", function(object, ...) {
+    standardGeneric("externalFile")
 })
 
 
@@ -119,7 +119,7 @@ setGeneric("fc2lr", function(object, ...) {
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("fixNA", function(object) {
+setGeneric("fixNA", function(object, ...) {
     standardGeneric("fixNA")
 })
 
@@ -148,7 +148,7 @@ setGeneric("gene2symbolFromGTF", function(object, ...) {
 #' @rdname geomean
 #' @family Math Utilities
 #' @inheritParams AllGenerics
-setGeneric("geomean", function(object) {
+setGeneric("geomean", function(object, ...) {
     standardGeneric("geomean")
 })
 
@@ -157,7 +157,7 @@ setGeneric("geomean", function(object) {
 #' @rdname grepString
 #' @family String Utilities
 #' @inheritParams AllGenerics
-setGeneric("grepString", function(object) {
+setGeneric("grepString", function(object, ...) {
     standardGeneric("grepString")
 })
 
@@ -177,7 +177,7 @@ setGeneric("kables", function(object, ...) {
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("loadRemoteData", function(object) {
+setGeneric("loadRemoteData", function(object, ...) {
     standardGeneric("loadRemoteData")
 })
 
@@ -226,7 +226,7 @@ setGeneric("packageSE", function(object, ...) {
 #' @rdname pct
 #' @family Math Utilities
 #' @inheritParams AllGenerics
-setGeneric("pct", function(object) {
+setGeneric("pct", function(object, ...) {
     standardGeneric("pct")
 })
 
@@ -276,7 +276,7 @@ setGeneric("removeNA", function(object, ...) {
 #' @family DNA Sequence Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("revcomp", function(object) {
+setGeneric("revcomp", function(object, ...) {
     standardGeneric("revcomp")
 })
 
@@ -309,7 +309,7 @@ setGeneric("snake", function(object, ...) {
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("sortUnique", function(object) {
+setGeneric("sortUnique", function(object, ...) {
     standardGeneric("sortUnique")
 })
 
@@ -329,7 +329,7 @@ setGeneric("transmit", function(object, ...) {
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("tx2gene", function(object) {
+setGeneric("tx2gene", function(object, ...) {
     standardGeneric("tx2gene")
 })
 
