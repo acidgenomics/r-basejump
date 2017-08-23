@@ -12,7 +12,7 @@
 \alias{tx2gene,matrix-method}
 \title{Convert Ensembl Transcript to Gene}
 \usage{
-tx2gene(object)
+tx2gene(object, ...)
 
 \S4method{tx2gene}{character}(object)
 
@@ -28,6 +28,8 @@ tx2gene(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Same class as object.

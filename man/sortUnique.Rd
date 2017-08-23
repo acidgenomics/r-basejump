@@ -7,12 +7,14 @@
 \alias{sortUnique,character-method}
 \title{Quickly Perform Sort Unique on a Vector}
 \usage{
-sortUnique(object)
+sortUnique(object, ...)
 
 \S4method{sortUnique}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Unique vector.

@@ -7,12 +7,14 @@
 \alias{loadRemoteData,character-method}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(object)
+loadRemoteData(object, ...)
 
 \S4method{loadRemoteData}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 No value.

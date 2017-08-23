@@ -36,5 +36,5 @@ detectHPC()
 \item \code{.Platform}.
 }
 
-Other Infrastructure Utilities: \code{\link{download}}
+Other Infrastructure Utilities: \code{\link{externalFile}}
 }

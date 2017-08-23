@@ -7,12 +7,14 @@
 \alias{detectOrganism,character-method}
 \title{Detect Organism}
 \usage{
-detectOrganism(object)
+detectOrganism(object, ...)
 
 \S4method{detectOrganism}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Full latin scientific organism name.
