@@ -15,7 +15,9 @@
 #' @return No value.
 #'
 #' @examples
-#' download("setup.R")
+#' \dontrun{
+#' download("setup.R", package = "bcbioSinglecell")
+#' }
 NULL
 
 

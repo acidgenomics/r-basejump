@@ -33,7 +33,9 @@ the package website.
 File download utility for RMarkdown knit reports.
 }
 \examples{
-download("setup.R")
+\dontrun{
+download("setup.R", package = "bcbioSinglecell")
+}
 }
 \seealso{
 Other Infrastructure Utilities: \code{\link{detectHPC}}
