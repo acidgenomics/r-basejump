@@ -6,6 +6,9 @@
 \usage{
 .localOrRemoteFile(object)
 }
+\arguments{
+\item{object}{Object.}
+}
 \value{
 Named character vector containing the original file name as the
 name and local file path as the string.
