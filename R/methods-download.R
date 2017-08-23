@@ -10,6 +10,7 @@
 #'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
+#' @param package Package name.
 #'
 #' @return No value.
 #'
@@ -20,17 +21,25 @@ NULL
 
 
 # Constructors ====
-.download <- function(object, package = "basejump") {
-    website <- get("website",
-                   envir = as.environment(
-                       paste("package", package, sep = ":")))
+.download <- function(object, package) {
+    envir <- tryCatch(
+        loadNamespace(package),
+        error = function(a) {
+            stop(paste(package, "package not found"), call. = FALSE)
+        })
+    if (!"url" %in% names(envir)) {
+        stop(paste(package, "package doesn't export required 'url'"),
+             call. = FALSE)
+    }
+    url <- get("url", envir = envir)
     sapply(seq_along(object), function(a) {
         if (!file.exists(object[[a]])) {
             download.file(
-                file.path(website, "downloads", object[[a]]),
+                file.path(url, "downloads", object[[a]]),
                 destfile = object[[a]])
         }
-    }) %>% invisible
+    }) %>%
+        invisible
 }
 
 
@@ -38,7 +47,7 @@ NULL
 # Methods ====
 #' @rdname download
 #' @export
-setMethod("download", "missing", function(object, package = "basejump") {
+setMethod("download", "missing", function(object, package) {
     .download(
         c("_output.yaml",
           "_footer.Rmd",

@@ -43,4 +43,4 @@ testDataURL <- file.path(
 #' Package Website URL
 #' @keywords internal
 #' @export
-website <- "http://steinbaugh.com/basejump"
+url <- "http://steinbaugh.com/basejump"
