@@ -10,15 +10,17 @@
 \usage{
 download(object, ...)
 
-\S4method{download}{missing}(object, package = "basejump")
+\S4method{download}{missing}(object, package)
 
-\S4method{download}{character}(object, package = "basejump")
+\S4method{download}{character}(object, package)
 }
 \arguments{
 \item{object}{\emph{Optional}. File name. If \code{NULL} (default), download the
 default dependency files for a new experiment.}
 
 \item{...}{Additional arguments.}
+
+\item{package}{Package name.}
 }
 \value{
 No value.
