@@ -32,41 +32,32 @@ setMethod("readFileByExtension", "character", function(
     object,
     makeNames = "camel",
     ...) {
-    if (str_detect(object, "\\://")) {
-        # Remote file
-        filePath <- object
-        tempfile <- tempfile()
-        download.file(object, tempfile)
-    } else {
-        # Local file
-        filePath <- normalizePath(object)
-    }
-    fileName <- basename(filePath)
-
-    message(paste("Reading", fileName))
+    file <- .localOrRemoteFile(object)
+    message(paste("Reading", names(file)))
 
     # Detect file extension
-    if (grepl("\\.[a-z]+$", fileName)) {
-        ext <- str_match(fileName, "\\.([a-z]+)$")[[2L]]
-    } else {
+    extPattern <- "\\.([a-zA-Z0-9]+)$"
+    if (!grepl(extPattern, names(file))) {
         stop("File extension missing")
     }
+    ext <- str_match(names(file), extPattern) %>%
+            .[[2L]]
 
     # File import, based on extension
     if (ext == "csv") {
-        data <- read_csv(filePath, progress = FALSE, ...)
+        data <- read_csv(file, progress = FALSE, ...)
     } else if (ext == "mtx") {
-        data <- readMM(filePath, ...)
+        data <- readMM(file, ...)
     } else if (ext == "tsv") {
-        data <- read_tsv(filePath, progress = FALSE, ...)
+        data <- read_tsv(file, progress = FALSE, ...)
     } else if (ext == "txt") {
-        data <- read_delim(filePath, progress = FALSE, ...)
+        data <- read_delim(file, progress = FALSE, ...)
     } else if (ext == "xlsx") {
-        data <- read_excel(filePath, ...)
+        data <- read_excel(file, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(filePath, ...)
+        data <- read_lines(file, ...)
     } else if (ext == "counts") {
-        data <- read_tsv(filePath, progress = FALSE, ...)
+        data <- read_tsv(file, progress = FALSE, ...)
     } else {
         stop("Unsupported file type")
     }
