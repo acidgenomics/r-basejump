@@ -115,43 +115,26 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Gene Annotation Utilities: <code>annotable</code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>,
+  <code>detectOrganism</code>,
   <code>gene2symbolFromGTF</code>,
   <code>gene2symbol</code>, <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Mouse (Ensembl)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt;                                enstxp            ensgene
-#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
-#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
-#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
-#&gt; ENSMUST00000159265 ENSMUST00000159265 ENSMUSG00000051951
-#&gt; ENSMUST00000161581 ENSMUST00000161581 ENSMUSG00000089699
-#&gt; ENSMUST00000162897 ENSMUST00000162897 ENSMUSG00000051951
-#&gt; ENSMUST00000192183 ENSMUST00000192183 ENSMUSG00000103147
-#&gt; ENSMUST00000192336 ENSMUST00000192336 ENSMUSG00000104017
-#&gt; ENSMUST00000192427 ENSMUST00000192427 ENSMUSG00000102343
-#&gt; ENSMUST00000192692 ENSMUST00000192692 ENSMUSG00000102331
-#&gt; ENSMUST00000192857 ENSMUST00000192857 ENSMUSG00000102851
-#&gt; ENSMUST00000192973 ENSMUST00000192973 ENSMUSG00000103201
-#&gt; ENSMUST00000193244 ENSMUST00000193244 ENSMUSG00000102348
-#&gt; ENSMUST00000193812 ENSMUST00000193812 ENSMUSG00000102693
-#&gt; ENSMUST00000194099 ENSMUST00000194099 ENSMUSG00000103025
-#&gt; ENSMUST00000194454 ENSMUST00000194454 ENSMUSG00000102592
-#&gt; ENSMUST00000194643 ENSMUST00000194643 ENSMUSG00000102343
-#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
-#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
-#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
-<span class='co'># Fruitfly (FlyBase)</span>
-<span class='fu'>tx2geneFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 7 transcripts, 5 genes</span></div><div class='output co'>#&gt;                  enstxp     ensgene
-#&gt; FBtr0070000 FBtr0070000 FBgn0031081
-#&gt; FBtr0070001 FBtr0070001 FBgn0052826
-#&gt; FBtr0070002 FBtr0070002 FBgn0031085
-#&gt; FBtr0070003 FBtr0070003 FBgn0062565
-#&gt; FBtr0301569 FBtr0301569 FBgn0031088
-#&gt; FBtr0307554 FBtr0307554 FBgn0031081
-#&gt; FBtr0307555 FBtr0307555 FBgn0031081</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># GTF URL</span>
+<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>)
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span>
+    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+#&gt; Variables: 2
+#&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG0000008...</div><div class='input'>
+<span class='co'># GTF data.frame</span>
+<span class='no'>gtf</span> <span class='kw'>&lt;-</span> <span class='fu'>readGTF</span>(<span class='no'>url</span>)
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>gtf</span>) <span class='kw'>%&gt;%</span>
+    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+#&gt; Variables: 2
+#&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG0000008...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
