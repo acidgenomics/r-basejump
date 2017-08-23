@@ -1,12 +1,12 @@
-#' Download Dependency File
+#' Download External Dependency File
 #'
 #' If the required dependency file isn't present, download latest version from
 #' the package website.
 #'
 #' File download utility for RMarkdown knit reports.
 #'
-#' @rdname download
-#' @name download
+#' @rdname externalFile
+#' @name externalFile
 #'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
@@ -16,14 +16,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' download("setup.R", package = "bcbioSinglecell")
+#' externalFile("setup.R", package = "bcbioSinglecell")
 #' }
 NULL
 
 
 
 # Constructors ====
-.download <- function(object, package) {
+.externalFile <- function(object, package) {
     envir <- tryCatch(
         loadNamespace(package),
         error = function(a) {
@@ -47,10 +47,10 @@ NULL
 
 
 # Methods ====
-#' @rdname download
+#' @rdname externalFile
 #' @export
-setMethod("download", "missing", function(object, package) {
-    .download(
+setMethod("externalFile", "missing", function(object, package) {
+    .externalFile(
         c("_output.yaml",
           "_footer.Rmd",
           "_header.Rmd",
@@ -60,6 +60,6 @@ setMethod("download", "missing", function(object, package) {
 
 
 
-#' @rdname download
+#' @rdname externalFile
 #' @export
-setMethod("download", "character", .download)
+setMethod("externalFile", "character", .externalFile)
