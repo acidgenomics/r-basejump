@@ -8,9 +8,10 @@
 #'   name and local file path as the string.
 #'
 #' @examples
-#' # Remote
+#' \dontrun{
 #' file.path(testDataURL, "mtcars.csv") %>%
 #'     .localOrRemoteFile
+#' }
 .localOrRemoteFile <- function(object) {
     fileName <- basename(object)
     if (str_detect(object, "\\://")) {
