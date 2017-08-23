@@ -17,7 +17,8 @@ name and local file path as the string.
 Dynamically Handle a Local or Remote File Path
 }
 \examples{
-# Remote
+\dontrun{
 file.path(testDataURL, "mtcars.csv") \%>\%
     .localOrRemoteFile
+}
 }
