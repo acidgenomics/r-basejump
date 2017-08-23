@@ -213,21 +213,21 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname packageSE
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("packageSE", function(object, ...) {
-    standardGeneric("packageSE")
-})
-
-
-
 #' @rdname pct
 #' @family Math Utilities
 #' @inheritParams AllGenerics
 setGeneric("pct", function(object, ...) {
     standardGeneric("pct")
+})
+
+
+
+#' @rdname prepareSE
+#' @family Data Import and Project Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("prepareSE", function(object, ...) {
+    standardGeneric("prepareSE")
 })
 
 
