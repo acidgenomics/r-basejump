@@ -2,6 +2,8 @@
 #'
 #' @rdname internal-localOrRemoteFile
 #'
+#' @inheritParams AllGenerics
+#'
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string.
 #'
