@@ -28,7 +28,7 @@ file.path(testDataURL, "mmusculus.gtf") \%>\%
 http://www.gencodegenes.org/gencodeformat.html
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{packageSE}},
+  \code{\link{prepareSE}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

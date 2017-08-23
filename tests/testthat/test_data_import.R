@@ -1,6 +1,6 @@
 context("Data Import and Project Management Utilities")
 
-test_that("packageSE", {
+test_that("prepareSE", {
     mat <- mtcars %>%
         .[c("Mazda RX4", "Datsun 710"), ] %>%
         .[, c("mpg", "gear")] %>%
@@ -13,7 +13,7 @@ test_that("packageSE", {
         manufacturer = c("Mazda", "Datsun"),
         model_number = c("RX4", "710"),
         row.names = rownames(mat))
-    se <- packageSE(mat, colData = coldata, rowData = rowdata)
+    se <- prepareSE(mat, colData = coldata, rowData = rowdata)
     expect_equal(
         dim(se),
         c(2L, 2L))
