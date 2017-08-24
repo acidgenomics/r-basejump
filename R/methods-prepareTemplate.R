@@ -10,8 +10,8 @@
 #'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
-#' @param sourceDir Source directory, typically a URL, where the dependency files are
-#'   located.
+#' @param sourceDir Source directory, typically a URL, where the dependency
+#'   files are located.
 #'
 #' @return No value.
 #'

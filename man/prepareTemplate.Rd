@@ -20,8 +20,8 @@ default dependency files for a new experiment.}
 
 \item{...}{Additional arguments.}
 
-\item{sourceDir}{Source directory, typically a URL, where the dependency files are
-located.}
+\item{sourceDir}{Source directory, typically a URL, where the dependency
+files are located.}
 }
 \value{
 No value.
