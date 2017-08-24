@@ -95,16 +95,6 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname externalFile
-#' @family Infrastructure Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("externalFile", function(object, ...) {
-    standardGeneric("externalFile")
-})
-
-
-
 #' @rdname logRatio
 #' @family Math Utilities
 #' @inheritParams AllGenerics
@@ -228,6 +218,16 @@ setGeneric("pct", function(object, ...) {
 #' @export
 setGeneric("prepareSE", function(object, ...) {
     standardGeneric("prepareSE")
+})
+
+
+
+#' @rdname prepareTemplate
+#' @family Infrastructure Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("prepareTemplate", function(object, ...) {
+    standardGeneric("prepareTemplate")
 })
 
 

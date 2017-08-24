@@ -1,12 +1,12 @@
 #' Download External Dependency File
 #'
-#' If the required dependency file isn't present, download latest version from
-#' the package website.
+#' If the required template dependency files aren't present, download latest
+#' versions from the package website.
 #'
 #' File download utility for RMarkdown knit reports.
 #'
-#' @rdname externalFile
-#' @name externalFile
+#' @rdname prepareTemplate
+#' @name prepareTemplate
 #'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
@@ -16,14 +16,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' externalFile("setup.R", package = "bcbioSinglecell")
+#' prepareTemplate(package = "bcbioSinglecell")
+#' prepareTemplate("setup.R", package = "bcbioSinglecell")
 #' }
 NULL
 
 
 
 # Constructors ====
-.externalFile <- function(object, package) {
+.downloadPackageFile <- function(object, package) {
     envir <- tryCatch(
         loadNamespace(package),
         error = function(a) {
@@ -47,19 +48,19 @@ NULL
 
 
 # Methods ====
-#' @rdname externalFile
+#' @rdname prepareTemplate
 #' @export
-setMethod("externalFile", "missing", function(object, package) {
-    .externalFile(
+setMethod("prepareTemplate", "missing", function(object, package) {
+    .downloadPackageFile(
         c("_output.yaml",
           "_footer.Rmd",
           "_header.Rmd",
-          paste0(package, ".bib"),
+          "bibliography.bib",
           "setup.R"))
 })
 
 
 
-#' @rdname externalFile
+#' @rdname prepareTemplate
 #' @export
-setMethod("externalFile", "character", .externalFile)
+setMethod("prepareTemplate", "character", .downloadPackageFile)
