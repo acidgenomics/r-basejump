@@ -56,7 +56,8 @@ setMethod("prepareTemplate", "missing", function(object, package) {
           "_footer.Rmd",
           "_header.Rmd",
           "bibliography.bib",
-          "setup.R"))
+          "setup.R"),
+        package = package)
 })
 
 
