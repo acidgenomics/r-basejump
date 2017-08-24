@@ -36,5 +36,5 @@ detectHPC()
 \item \code{.Platform}.
 }
 
-Other Infrastructure Utilities: \code{\link{externalFile}}
+Other Infrastructure Utilities: \code{\link{prepareTemplate}}
 }
