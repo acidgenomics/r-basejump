@@ -4,12 +4,20 @@
 #' [base::toString()] output.
 #'
 #' @rdname grepString
+#' @name grepString
 #'
 #' @return Comma separated grep string.
 #' @export
 #'
 #' @examples
 #' grepString("gene")
+NULL
+
+
+
+# Methods ====
+#' @rdname grepString
+#' @export
 setMethod("grepString", "character", function(object) {
     object %>%
         as.character %>%

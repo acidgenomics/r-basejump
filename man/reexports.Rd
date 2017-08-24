@@ -3,253 +3,19 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{draw_plot}
-\alias{reexports}
-\alias{ggdraw}
-\alias{reexports}
-\alias{plot_grid}
-\alias{reexports}
-\alias{arrange}
-\alias{reexports}
-\alias{bind_cols}
-\alias{reexports}
-\alias{bind_rows}
-\alias{reexports}
-\alias{case_when}
-\alias{reexports}
-\alias{desc}
-\alias{reexports}
-\alias{distinct}
-\alias{reexports}
-\alias{everything}
-\alias{reexports}
-\alias{full_join}
-\alias{reexports}
-\alias{funs}
-\alias{reexports}
-\alias{group_by}
-\alias{reexports}
-\alias{inner_join}
-\alias{reexports}
-\alias{left_join}
-\alias{reexports}
-\alias{mutate}
-\alias{reexports}
-\alias{mutate_all}
-\alias{reexports}
-\alias{mutate_if}
-\alias{reexports}
-\alias{n}
-\alias{reexports}
-\alias{pull}
-\alias{reexports}
-\alias{right_join}
-\alias{reexports}
-\alias{summarize}
-\alias{reexports}
-\alias{summarize_all}
-\alias{reexports}
-\alias{summarize_if}
-\alias{reexports}
-\alias{top_n}
-\alias{reexports}
-\alias{ungroup}
-\alias{reexports}
-\alias{hist}
-\alias{reexports}
-\alias{content_type_json}
-\alias{reexports}
-\alias{GET}
-\alias{reexports}
-\alias{user_agent}
-\alias{reexports}
-\alias{asis_output}
-\alias{reexports}
-\alias{kable}
-\alias{reexports}
-\alias{knit}
-\alias{reexports}
-\alias{opts_chunk}
-\alias{reexports}
-\alias{opts_knit}
-\alias{reexports}
-\alias{\%$\%}
-\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
-\alias{set_colnames}
+\alias{Matrix}
 \alias{reexports}
-\alias{set_rownames}
-\alias{reexports}
-\alias{mclapply}
-\alias{reexports}
-\alias{mcmapply}
-\alias{reexports}
-\alias{pblapply}
-\alias{reexports}
-\alias{pbsapply}
-\alias{reexports}
-\alias{pbmclapply}
-\alias{reexports}
-\alias{gunzip}
-\alias{reexports}
-\alias{gzip}
-\alias{reexports}
-\alias{getURL}
-\alias{reexports}
-\alias{cols}
-\alias{reexports}
-\alias{read_csv}
-\alias{reexports}
-\alias{read_delim}
-\alias{reexports}
-\alias{read_lines}
-\alias{reexports}
-\alias{read_table}
-\alias{reexports}
-\alias{read_tsv}
-\alias{reexports}
-\alias{write_csv}
-\alias{reexports}
-\alias{write_lines}
-\alias{reexports}
-\alias{write_tsv}
-\alias{reexports}
-\alias{read_excel}
-\alias{reexports}
-\alias{melt}
-\alias{reexports}
-\alias{!!!}
-\alias{reexports}
-\alias{!!}
-\alias{reexports}
-\alias{.data}
-\alias{reexports}
-\alias{eval_bare}
-\alias{reexports}
-\alias{eval_tidy}
-\alias{reexports}
-\alias{is_atomic}
-\alias{reexports}
-\alias{is_bytes}
-\alias{reexports}
-\alias{is_character}
-\alias{reexports}
-\alias{is_double}
-\alias{reexports}
-\alias{is_integer}
-\alias{reexports}
-\alias{is_list}
-\alias{reexports}
-\alias{is_logical}
-\alias{reexports}
-\alias{is_null}
-\alias{reexports}
-\alias{is_raw}
-\alias{reexports}
-\alias{is_string}
-\alias{reexports}
-\alias{is_vector}
-\alias{reexports}
-\alias{quo}
-\alias{reexports}
-\alias{quos}
-\alias{reexports}
-\alias{set_names}
-\alias{reexports}
-\alias{sym}
-\alias{reexports}
-\alias{syms}
-\alias{reexports}
-\alias{UQ}
-\alias{reexports}
-\alias{render}
-\alias{reexports}
-\alias{render}
-\alias{reexports}
-\alias{formula}
-\alias{reexports}
-\alias{hclust}
-\alias{reexports}
-\alias{setNames}
-\alias{reexports}
-\alias{fixed}
-\alias{reexports}
-\alias{regex}
-\alias{reexports}
-\alias{str_c}
-\alias{reexports}
-\alias{str_detect}
-\alias{reexports}
-\alias{str_extract}
-\alias{reexports}
-\alias{str_extract_all}
-\alias{reexports}
-\alias{str_length}
-\alias{reexports}
-\alias{str_match}
-\alias{reexports}
-\alias{str_match_all}
-\alias{reexports}
-\alias{str_pad}
-\alias{reexports}
-\alias{str_replace}
-\alias{reexports}
-\alias{str_replace_all}
-\alias{reexports}
-\alias{str_split}
-\alias{reexports}
-\alias{str_sub}
-\alias{reexports}
-\alias{str_subset}
-\alias{reexports}
-\alias{str_trunc}
+\alias{glimpse}
 \alias{reexports}
 \alias{DataFrame}
 \alias{reexports}
 \alias{metadata}
 \alias{reexports}
-\alias{SimpleList}
-\alias{reexports}
-\alias{column_to_rownames}
-\alias{reexports}
-\alias{glimpse}
-\alias{reexports}
-\alias{has_rownames}
-\alias{reexports}
 \alias{is_tibble}
 \alias{reexports}
-\alias{remove_rownames}
-\alias{reexports}
-\alias{rownames_to_column}
-\alias{reexports}
 \alias{tibble}
-\alias{reexports}
-\alias{expand_}
-\alias{reexports}
-\alias{nest}
-\alias{reexports}
-\alias{nest_}
-\alias{reexports}
-\alias{separate_}
-\alias{reexports}
-\alias{unnest}
-\alias{reexports}
-\alias{unnest_}
-\alias{reexports}
-\alias{file_path_sans_ext}
-\alias{reexports}
-\alias{download.file}
-\alias{reexports}
-\alias{globalVariables}
-\alias{reexports}
-\alias{object.size}
-\alias{reexports}
-\alias{packageVersion}
-\alias{reexports}
-\alias{read.delim}
-\alias{reexports}
-\alias{sessionInfo}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -257,50 +23,12 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
-  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{bind_cols}}, \code{\link[dplyr]{bind_rows}}, \code{\link[dplyr]{case_when}}, \code{\link[dplyr]{desc}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{everything}}, \code{\link[dplyr]{full_join}}, \code{\link[dplyr]{funs}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{inner_join}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{n}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{right_join}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarize_all}}, \code{\link[dplyr]{summarize_if}}, \code{\link[dplyr]{top_n}}, \code{\link[dplyr]{ungroup}}}
+  \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{graphics}{\code{\link[graphics]{hist}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}}
 
-  \item{httr}{\code{\link[httr]{content_type_json}}, \code{\link[httr]{GET}}, \code{\link[httr]{user_agent}}}
-
-  \item{knitr}{\code{\link[knitr]{asis_output}}, \code{\link[knitr]{kable}}, \code{\link[knitr]{knit}}, \code{\link[knitr]{opts_chunk}}, \code{\link[knitr]{opts_knit}}}
-
-  \item{magrittr}{\code{\link[magrittr]{\%$\%}}, \code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
-
-  \item{parallel}{\code{\link[parallel]{mclapply}}, \code{\link[parallel]{mcmapply}}}
-
-  \item{pbapply}{\code{\link[pbapply]{pblapply}}, \code{\link[pbapply]{pbsapply}}}
-
-  \item{pbmcapply}{\code{\link[pbmcapply]{pbmclapply}}}
-
-  \item{R.utils}{\code{\link[R.utils]{gunzip}}, \code{\link[R.utils]{gzip}}}
-
-  \item{RCurl}{\code{\link[RCurl]{getURL}}}
-
-  \item{readr}{\code{\link[readr]{cols}}, \code{\link[readr]{read_csv}}, \code{\link[readr]{read_delim}}, \code{\link[readr]{read_lines}}, \code{\link[readr]{read_table}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}, \code{\link[readr]{write_lines}}, \code{\link[readr]{write_tsv}}}
-
-  \item{readxl}{\code{\link[readxl]{read_excel}}}
-
-  \item{reshape2}{\code{\link[reshape2]{melt}}}
-
-  \item{rlang}{\code{\link[rlang]{!!!}}, \code{\link[rlang]{!!}}, \code{\link[rlang]{.data}}, \code{\link[rlang]{eval_bare}}, \code{\link[rlang]{eval_tidy}}, \code{\link[rlang]{is_atomic}}, \code{\link[rlang]{is_bytes}}, \code{\link[rlang]{is_character}}, \code{\link[rlang]{is_double}}, \code{\link[rlang]{is_integer}}, \code{\link[rlang]{is_list}}, \code{\link[rlang]{is_logical}}, \code{\link[rlang]{is_null}}, \code{\link[rlang]{is_raw}}, \code{\link[rlang]{is_string}}, \code{\link[rlang]{is_vector}}, \code{\link[rlang]{quo}}, \code{\link[rlang]{quos}}, \code{\link[rlang]{set_names}}, \code{\link[rlang]{sym}}, \code{\link[rlang]{syms}}, \code{\link[rlang]{UQ}}}
-
-  \item{rmarkdown}{\code{\link[rmarkdown]{render}}, \code{\link[rmarkdown]{render}}}
-
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}, \code{\link[S4Vectors]{SimpleList}}}
-
-  \item{stats}{\code{\link[stats]{formula}}, \code{\link[stats]{hclust}}, \code{\link[stats]{setNames}}}
-
-  \item{stringr}{\code{\link[stringr]{fixed}}, \code{\link[stringr]{regex}}, \code{\link[stringr]{str_c}}, \code{\link[stringr]{str_detect}}, \code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_extract_all}}, \code{\link[stringr]{str_length}}, \code{\link[stringr]{str_match}}, \code{\link[stringr]{str_match_all}}, \code{\link[stringr]{str_pad}}, \code{\link[stringr]{str_replace}}, \code{\link[stringr]{str_replace_all}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_sub}}, \code{\link[stringr]{str_subset}}, \code{\link[stringr]{str_trunc}}}
-
-  \item{tibble}{\code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{has_rownames}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{remove_rownames}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
-
-  \item{tidyr}{\code{\link[tidyr]{expand_}}, \code{\link[tidyr]{nest}}, \code{\link[tidyr]{nest_}}, \code{\link[tidyr]{separate_}}, \code{\link[tidyr]{unnest}}, \code{\link[tidyr]{unnest_}}}
-
-  \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
-
-  \item{utils}{\code{\link[utils]{download.file}}, \code{\link[utils]{globalVariables}}, \code{\link[utils]{object.size}}, \code{\link[utils]{packageVersion}}, \code{\link[utils]{read.delim}}, \code{\link[utils]{sessionInfo}}}
+  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 }}
 

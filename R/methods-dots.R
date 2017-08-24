@@ -1,6 +1,7 @@
 #' Extract Dots from Function
 #'
 #' @rdname dots
+#' @name dots
 #'
 #' @param character Return `...` as character.
 #'
@@ -26,6 +27,13 @@
 #' @examples
 #' dots(mtcars, starwars)
 #' dots(mtcars, starwars, character = TRUE)
+NULL
+
+
+
+# Methods ====
+#' @rdname dots
+#' @export
 setMethod(
     "dots",
     signature("..." = "ANY"),

@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 docs/reference/*/
-tests/testthat/data/
+tests/testthat/*/

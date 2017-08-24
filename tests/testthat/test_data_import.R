@@ -1,6 +1,6 @@
 context("Data Import and Project Management Utilities")
 
-test_that("packageSE", {
+test_that("prepareSE", {
     mat <- mtcars %>%
         .[c("Mazda RX4", "Datsun 710"), ] %>%
         .[, c("mpg", "gear")] %>%
@@ -13,11 +13,94 @@ test_that("packageSE", {
         manufacturer = c("Mazda", "Datsun"),
         model_number = c("RX4", "710"),
         row.names = rownames(mat))
-    se <- packageSE(mat, colData = coldata, rowData = rowdata)
+    se <- prepareSE(mat, colData = coldata, rowData = rowdata)
     expect_equal(
         dim(se),
         c(2L, 2L))
     expect_equal(
         names(metadata(se)),
-        c("date", "wd", "hpc", "sessionInfo"))
+        c("date", "wd", "sessionInfo"))
+})
+
+
+
+test_that("loadRemoteData", {
+    expect_silent(
+        loadRemoteData(file.path(testDataURL, "mtcars.rda")))
+    expect_error(
+        loadRemoteData(file.path(testDataURL, "mmusculus.gtf")),
+        "Data file must contain '.rda' extension")
+    expect_error(
+        loadRemoteData("foobar.rda"),
+        "Remote URL containing '://' required")
+})
+
+
+
+test_that("readFileByExtension", {
+    # CSV file
+    csv <- file.path(testDataURL, "mtcars.csv") %>%
+        readFileByExtension
+    expect_true(is_tibble(csv))
+
+    # MatrixMarket file
+    sparse <- file.path(testDataURL, "sparse.mtx") %>%
+        readFileByExtension
+    expect_true(is(sparse, "ngTMatrix"))
+
+    # RData file (unsupported)
+    expect_error(
+        readFileByExtension(file.path(testDataURL, "mtcars.rda")),
+        "Unsupported file type")
+})
+
+
+
+test_that("readYAML", {
+    # bcbioRnaseq example YAML file
+    yaml <- readYAML(file.path(
+        "https://raw.githubusercontent.com",
+        "hbc",
+        "bcbioRnaseq",
+        "master",
+        "inst",
+        "extra",
+        "bcbio",
+        "2017-05-23_rnaseq",
+        "project-summary.yaml"))
+    expect_equal(
+        names(yaml),
+        c("date", "upload", "bcbio_system", "samples"))
+
+    # Check '.yml' file support
+    yaml <- readYAML(file.path(
+        "https://raw.githubusercontent.com",
+        "steinbaugh",
+        "basejump",
+        "master",
+        ".travis.yml"))
+    expect_true("language" %in% names(yaml))
+
+    # Unsupported file type
+    expect_error(
+        readYAML(file.path(testDataDir, "mtcars.csv")),
+        "YAML file must have '.yaml' or '.yml' extension")
+
+    # Missing file
+    expect_error(
+        readYAML("foobar.yaml"),
+        "cannot open the connection")
+})
+
+
+
+test_that("transmit", {
+    expect_equal(
+        transmit("ftp://ftp.ensembl.org/pub/release-89",
+                 pattern = "README",
+                 rename = "ensembl_readme.txt",
+                 compress = TRUE) %>%
+            .[["README"]] %>%
+            .[[1L]],
+        "data-raw/ensembl_readme.txt.gz")
 })

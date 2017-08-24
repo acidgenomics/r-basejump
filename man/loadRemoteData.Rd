@@ -7,12 +7,14 @@
 \alias{loadRemoteData,character-method}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(object)
+loadRemoteData(object, ...)
 
 \S4method{loadRemoteData}{character}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 No value.
@@ -21,10 +23,10 @@ No value.
 Load a remote R binary file.
 }
 \examples{
-loadRemoteData("http://steinbaugh.com/basejump/tests/mtcars.rda")
+loadRemoteData(file.path(testDataURL, "mtcars.rda"))
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{packageSE}},
+Other Data Import and Project Utilities: \code{\link{prepareSE}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

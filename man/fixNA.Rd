@@ -11,7 +11,7 @@
 \alias{fixNA,tbl_df-method}
 \title{Fix Character Strings Missing \code{NA}}
 \usage{
-fixNA(object)
+fixNA(object, ...)
 
 \S4method{fixNA}{ANY}(object)
 
@@ -25,6 +25,8 @@ fixNA(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Object containing proper \code{NA} values.

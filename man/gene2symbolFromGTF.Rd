@@ -26,11 +26,15 @@ gene2symbolFromGTF(object, ...)
 Generate gene2symbol from GTF File
 }
 \examples{
-# Mouse (Ensembl)
-gene2symbolFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+# GTF URL
+url <- file.path(testDataURL, "mmusculus.gtf")
+gene2symbolFromGTF(url) \%>\%
+    glimpse
 
-# Fruitfly (FlyBase)
-gene2symbolFromGTF("http://steinbaugh.com/basejump/tests/dmelanogaster.gtf")
+# GTF data.frame
+gtf <- readGTF(url)
+gene2symbolFromGTF(gtf) \%>\%
+    glimpse
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

@@ -36,10 +36,11 @@ test_that("annotable", {
 test_that("gene2symbol", {
     # character
     expect_equal(
-        gene2symbol("ENSMUSG00000000001"),
-        c(ENSMUSG00000000001 = "Gnai3"))
+        gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000003")),
+        c(ENSMUSG00000000001 = "Gnai3",
+          ENSMUSG00000000003 = "Pbsn"))
     expect_warning(
-        gene2symbol("ENSMUSG00000000000"),
+        gene2symbol(c("ENSMUSG00000000000", "ENSMUSG00000000001")),
         "Failed to match all gene IDs to symbols")
     expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
     expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
@@ -64,16 +65,18 @@ test_that("gene2symbol", {
             .[[1L]],
         c(ENSMUSG00000000001 = "Gnai3",
           ENSMUSG00000000003 = "Pbsn"))
+
+    # Prevent accidental `genomeBuild` pass in
+    expect_error(
+        gene2symbol("mm10"),
+        "gene2symbol conversion requires > 1 identifier")
 })
 
 
 
 test_that("gene2symbolFromGTF", {
     # Mouse
-    mm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "mmusculus.gtf") %>%
+    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
         gene2symbolFromGTF
     expect_equal(
         dim(mm),
@@ -89,10 +92,7 @@ test_that("gene2symbolFromGTF", {
                           "ENSMUSG00000051951")))
 
     # Fruitfly
-    dm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "dmelanogaster.gtf") %>%
+    dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
         gene2symbolFromGTF
     expect_equal(
         dim(dm),
@@ -110,11 +110,38 @@ test_that("gene2symbolFromGTF", {
 
 
 
+test_that("readGTF", {
+    mm <- file.path(testDataURL, "mmusculus.gtf")
+    # Check for 9 columns
+    expect_equal(
+        readGTF(mm) %>%
+            dim %>%
+            .[[2L]],
+        9L)
+
+    dm <- file.path(testDataURL, "dmelanogaster.gtf")
+    # Check for 9 columns
+    expect_equal(
+        readGTF(dm) %>%
+            dim %>%
+            .[[2L]],
+        9L)
+
+    # Bad URL
+    expect_error(
+        file.path(testDataURL, "mtcars.rda") %>%
+            readGTF,
+        "GTF file failed to load. Check path.")
+})
+
+
+
 test_that("tx2gene", {
     # character
     expect_equal(
-        tx2gene("ENSMUST00000000001"),
-        c(ENSMUST00000000001 = "ENSMUSG00000000001"))
+        tx2gene(c("ENSMUST00000000001", "ENSMUST00000000003")),
+        c(ENSMUST00000000001 = "ENSMUSG00000000001",
+          ENSMUST00000000003 = "ENSMUSG00000000003"))
     expect_error(
         tx2gene(c("ENSMUST00000000000", "ENSMUST00000000001")))
     expect_error(tx2gene(c("ENSMUSG00000000001", NA)))
@@ -140,16 +167,18 @@ test_that("tx2gene", {
         c(ENSMUST00000000001 = "ENSMUSG00000000001",
           ENSMUST00000000003 = "ENSMUSG00000000003",
           ENSMUST00000114041 = "ENSMUSG00000000003"))
+
+    # Prevent accidental `genomeBuild` pass in
+    expect_error(
+        tx2gene("mm10"),
+        "tx2gene conversion requires > 1 identifier")
 })
 
 
 
 test_that("tx2geneFromGTF", {
     # Mouse
-    mm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "mmusculus.gtf") %>%
+    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
         tx2geneFromGTF
     expect_equal(
         dim(mm),
@@ -165,10 +194,7 @@ test_that("tx2geneFromGTF", {
                           "ENSMUST00000082908")))
 
     # Fruitfly
-    dm <- file.path("http://steinbaugh.com",
-                    "basejump",
-                    "tests",
-                    "dmelanogaster.gtf") %>%
+    dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
         tx2geneFromGTF
     expect_equal(
         dim(dm),

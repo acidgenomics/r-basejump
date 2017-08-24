@@ -132,7 +132,7 @@ NULL
 
 .setNamesDotted <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesDotted(names(object)))
+        object <- setNames(object, .makeNamesDotted(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesDotted(rownames(object)))
@@ -197,7 +197,7 @@ setMethod("dotted", "tbl_df", function(object) {
 
 .setNamesCamel <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesCamel(names(object)))
+        object <- setNames(object, .makeNamesCamel(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesCamel(rownames(object)))
@@ -264,7 +264,7 @@ setMethod("camel", "tbl_df", function(object) {
 
 .setNamesSnake <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- set_names(object, .makeNamesSnake(names(object)))
+        object <- setNames(object, .makeNamesSnake(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(object, .makeNamesSnake(rownames(object)))
@@ -317,32 +317,3 @@ setMethod("snake", "matrix", .setNamesSnake)
 setMethod("snake", "tbl_df", function(object) {
     .setNamesSnake(object, rownames = FALSE)
 })
-
-
-
-# titleCase ====
-.makeTitleCase <- function(object) {
-    object %>%
-        gsub("\\b([a-z])", "\\U\\1", ., perl = TRUE)
-}
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("titleCase", "character", .makeTitleCase)
-
-
-
-# firstCase ====
-.makeFirstCase <- function(object) {
-    object %>%
-        .makeTitleCase %>%
-        gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE)
-}
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("firstCase", "character", .makeFirstCase)

@@ -1,5 +1,18 @@
 context("Data Manipulation Utilities")
 
+test_that("as", {
+    expect_true(
+        mtcars %>%
+            as("tibble") %>%
+            is_tibble)
+    expect_error(
+        c("foo", "bar") %>%
+            as("tibble"),
+        "Object must support 'dim'")
+})
+
+
+
 test_that("collapse", {
     mpg <- "18.1, 18.7, 21, 21.4, 22.8"
 
@@ -8,7 +21,7 @@ test_that("collapse", {
         mtcars %>%
             head %>%
             collapse %>%
-            pull("mpg") %>%
+            .[, "mpg"] %>%
             as.character,
         mpg)
 

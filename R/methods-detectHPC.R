@@ -2,10 +2,11 @@
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
+#' @rdname detectHPC
+#' @name detectHPC
+#'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
-#'
-#' @rdname detectHPC
 #'
 #' @return [logical].
 #' @export
@@ -17,6 +18,13 @@
 #'
 #' @examples
 #' detectHPC()
+NULL
+
+
+
+# Methods ====
+#' @rdname detectHPC
+#' @export
 setMethod("detectHPC", "missing", function() {
     if (Sys.info()[["login"]] == "root" &
         Sys.info()[["sysname"]] == "Linux" &

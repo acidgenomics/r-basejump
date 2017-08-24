@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readFileByExtension}
 \alias{readFileByExtension}
+\alias{readFileByExtension}
 \alias{readFileByExtension,character-method}
 \title{Read File by Extension}
 \usage{
@@ -26,6 +27,9 @@ Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, an
 files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.colnames},
 and \code{.rownames} files.
 }
+\examples{
+readFileByExtension(file.path(testDataURL, "mtcars.csv"))
+}
 \seealso{
 \itemize{
 \item \href{http://readr.tidyverse.org}{readr}.
@@ -34,6 +38,6 @@ and \code{.rownames} files.
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{packageSE}}, \code{\link{readGTF}},
+  \code{\link{prepareSE}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

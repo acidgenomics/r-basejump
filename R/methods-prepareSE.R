@@ -1,18 +1,17 @@
-#' Package Data into a `SummarizedExperiment`
+#' Prepare SummarizedExperiment
 #'
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.
 #'
-#' `packageSE()` also provides automatic metadata slotting of multiple useful
+#' `prepareSE()` also provides automatic metadata slotting of multiple useful
 #' environment parameters:
 #'
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
-#' - `hpc`: High-performance computing cluster detection.
 #' - `sessionInfo`: R session information.
 #'
-#' @rdname packageSE
-#' @name packageSE
+#' @rdname prepareSE
+#' @name prepareSE
 #'
 #' @param object Object supporting dimensions ([base::dim()]), or a list
 #'   containing valid objects. For NGS experiments, a counts matrix is
@@ -30,7 +29,6 @@
 #' - [SummarizedExperiment::SummarizedExperiment].
 #' - [base::Sys.Date()].
 #' - [base::getwd()].
-#' - [detectHPC()].
 #' - [utils::sessionInfo()].
 #'
 #' @return [SummarizedExperiment].
@@ -48,26 +46,29 @@
 #'     manufacturer = c("Mazda", "Datsun"),
 #'     model_number = c("RX4", "710"),
 #'     row.names = rownames(mat))
-#' packageSE(mat, colData, rowData)
+#' prepareSE(mat, colData, rowData)
 NULL
 
 
 
 # Constructors ====
-.packageSE <- function(
+.prepareSE <- function(
     object,
     colData,
     rowData,
     metadata = NULL) {
-    message("Packaging SummarizedExperiment")
+    message("Preparing SummarizedExperiment")
 
     # Assays ====
     assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
+    if (is.null(dim(assay))) {
+        stop("Assay object must support 'dim()'", call. = FALSE)
+    }
 
     # colData ====
     if (is.null(dim(colData))) {
-        stop("colData must support dim()", call. = FALSE)
+        stop("colData must support 'dim()'", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(colData)) {
@@ -83,7 +84,7 @@ NULL
 
     # rowData ====
     if (is.null(dim(rowData))) {
-        stop("rowData must support dim()", call. = FALSE)
+        stop("rowData must support 'dim()'", call. = FALSE)
     }
     # Ensure `tibble` class coercion to `data.frame`
     if (is_tibble(rowData)) {
@@ -105,10 +106,10 @@ NULL
         stop("Non-unique rownames in rowData", call. = FALSE)
     }
     if (!identical(colnames(assay), rownames(colData))) {
-        stop("Unexpected colData rowname mismatch", call. = FALSE)
+        stop("colData rowname mismatch", call. = FALSE)
     }
     if (!identical(rownames(assay), rownames(rowData))) {
-        stop("Unexpected rowData rowname mismatch", call. = FALSE)
+        stop("rowData rowname mismatch", call. = FALSE)
     }
 
     # Metadata
@@ -116,13 +117,12 @@ NULL
         metadata <- SimpleList()
     } else {
         if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("metadata must be `list` or `SimpleList` object")
+            stop("metadata must be 'list' or 'SimpleList' class")
         }
         metadata <- as(metadata, "SimpleList")
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
-    metadata[["hpc"]] <- detectHPC()
     metadata[["sessionInfo"]] <- sessionInfo()
 
     # Check for retired Ensembl identifiers, which can happen when a more recent
@@ -147,26 +147,23 @@ NULL
 
 
 # Methods ====
-#' @rdname packageSE
+#' @rdname prepareSE
 #' @export
-setMethod("packageSE", "list", .packageSE)
+setMethod("prepareSE", "list", .prepareSE)
 
 
 
-#' @rdname packageSE
+#' @rdname prepareSE
 #' @export
-setMethod("packageSE", "SimpleList", .packageSE)
+setMethod("prepareSE", "SimpleList", .prepareSE)
 
 
 
-#' @rdname packageSE
+#' @rdname prepareSE
 #' @export
-setMethod("packageSE", "ANY", function(
+setMethod("prepareSE", "ANY", function(
     object, colData, rowData, metadata = NULL) {
-    if (is.null(dim(object))) {
-        stop("Object must support `dim()`", call. = FALSE)
-    }
-    .packageSE(
+    .prepareSE(
         SimpleList(assay = object),
         colData,
         rowData,
