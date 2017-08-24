@@ -10,35 +10,27 @@
 #'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
-#' @param package Package name.
+#' @param sourceDir Source directory, typically a URL, where the dependency files are
+#'   located.
 #'
 #' @return No value.
 #'
 #' @examples
 #' \dontrun{
-#' prepareTemplate(package = "bcbioSinglecell")
-#' prepareTemplate("setup.R", package = "bcbioSinglecell")
+#' sourceDir <- "http://bioinformatics.sph.harvard.edu/bcbioRnaseq/downloads"
+#' prepareTemplate(sourceDir)
+#' prepareTemplate("setup.R", sourceDir)
 #' }
 NULL
 
 
 
 # Constructors ====
-.downloadPackageFile <- function(object, package) {
-    envir <- tryCatch(
-        loadNamespace(package),
-        error = function(a) {
-            stop(paste(package, "package not found"), call. = FALSE)
-        })
-    if (!"url" %in% names(envir)) {
-        stop(paste(package, "package doesn't export required 'url'"),
-             call. = FALSE)
-    }
-    url <- get("url", envir = envir)
+.downloadPackageFile <- function(object, sourceDir) {
     sapply(seq_along(object), function(a) {
         if (!file.exists(object[[a]])) {
             download.file(
-                file.path(url, "downloads", object[[a]]),
+                file.path(sourceDir, object[[a]]),
                 destfile = object[[a]])
         }
     }) %>%
@@ -50,14 +42,14 @@ NULL
 # Methods ====
 #' @rdname prepareTemplate
 #' @export
-setMethod("prepareTemplate", "missing", function(object, package) {
+setMethod("prepareTemplate", "missing", function(object, sourceDir) {
     .downloadPackageFile(
         c("_output.yaml",
           "_footer.Rmd",
           "_header.Rmd",
           "bibliography.bib",
           "setup.R"),
-        package = package)
+        sourceDir = sourceDir)
 })
 
 
