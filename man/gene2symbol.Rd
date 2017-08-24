@@ -4,7 +4,6 @@
 \name{gene2symbol}
 \alias{gene2symbol}
 \alias{gene2symbol}
-\alias{gene2symbol,missing-method}
 \alias{gene2symbol,character-method}
 \alias{gene2symbol,data.frame-method}
 \alias{gene2symbol,DataFrame-method}
@@ -14,8 +13,6 @@
 \title{Convert Ensembl Identifier to Gene Symbol}
 \usage{
 gene2symbol(object, ...)
-
-\S4method{gene2symbol}{missing}(object, genomeBuild = NULL)
 
 \S4method{gene2symbol}{character}(object, genomeBuild = NULL)
 
