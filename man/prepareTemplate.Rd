@@ -34,6 +34,7 @@ File download utility for RMarkdown knit reports.
 }
 \examples{
 \dontrun{
+prepareTemplate(package = "bcbioSinglecell")
 prepareTemplate("setup.R", package = "bcbioSinglecell")
 }
 }
