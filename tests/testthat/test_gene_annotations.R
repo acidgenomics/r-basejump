@@ -36,10 +36,11 @@ test_that("annotable", {
 test_that("gene2symbol", {
     # character
     expect_equal(
-        gene2symbol("ENSMUSG00000000001"),
-        c(ENSMUSG00000000001 = "Gnai3"))
+        gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000003")),
+        c(ENSMUSG00000000001 = "Gnai3",
+          ENSMUSG00000000003 = "Pbsn"))
     expect_warning(
-        gene2symbol("ENSMUSG00000000000"),
+        gene2symbol(c("ENSMUSG00000000000", "ENSMUSG00000000001")),
         "Failed to match all gene IDs to symbols")
     expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
     expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
@@ -138,8 +139,9 @@ test_that("readGTF", {
 test_that("tx2gene", {
     # character
     expect_equal(
-        tx2gene("ENSMUST00000000001"),
-        c(ENSMUST00000000001 = "ENSMUSG00000000001"))
+        tx2gene(c("ENSMUST00000000001", "ENSMUST00000000003")),
+        c(ENSMUST00000000001 = "ENSMUSG00000000001",
+          ENSMUST00000000003 = "ENSMUSG00000000003"))
     expect_error(
         tx2gene(c("ENSMUST00000000000", "ENSMUST00000000001")))
     expect_error(tx2gene(c("ENSMUSG00000000001", NA)))
