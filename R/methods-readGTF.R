@@ -18,7 +18,7 @@ NULL
 #' @export
 setMethod("readGTF", "character", function(object) {
     file <- .localOrRemoteFile(object)
-    message(paste("Reading GTF file:", names(file)))
+    message(paste("Reading GTF:", names(file)))
     gtf <- tryCatch(
         read.delim(
             file,
