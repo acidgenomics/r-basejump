@@ -64,6 +64,11 @@ test_that("gene2symbol", {
             .[[1L]],
         c(ENSMUSG00000000001 = "Gnai3",
           ENSMUSG00000000003 = "Pbsn"))
+
+    # Prevent accidental `genomeBuild` pass in
+    expect_error(
+        gene2symbol("mm10"),
+        "gene2symbol conversion requires > 1 identifier")
 })
 
 
@@ -160,6 +165,11 @@ test_that("tx2gene", {
         c(ENSMUST00000000001 = "ENSMUSG00000000001",
           ENSMUST00000000003 = "ENSMUSG00000000003",
           ENSMUST00000114041 = "ENSMUSG00000000003"))
+
+    # Prevent accidental `genomeBuild` pass in
+    expect_error(
+        tx2gene("mm10"),
+        "tx2gene conversion requires > 1 identifier")
 })
 
 
