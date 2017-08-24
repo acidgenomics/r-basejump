@@ -3,6 +3,7 @@
 \docType{methods}
 \name{transmit}
 \alias{transmit}
+\alias{transmit}
 \alias{transmit,character-method}
 \title{Transmit Files from a Remote FTP Server}
 \usage{
@@ -40,7 +41,7 @@ transmit("ftp://ftp.ensembl.org/pub/release-89",
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{packageSE}},
+  \code{\link{prepareSE}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}
 }

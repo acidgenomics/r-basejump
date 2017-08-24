@@ -6,11 +6,15 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' # Mouse (Ensembl)
-#' tx2geneFromGTF("http://steinbaugh.com/basejump/tests/mmusculus.gtf")
+#' # GTF URL
+#' url <- file.path(testDataURL, "mmusculus.gtf")
+#' tx2geneFromGTF(url) %>%
+#'     glimpse
 #'
-#' # Fruitfly (FlyBase)
-#' tx2geneFromGTF("http://steinbaugh.com/basejump/tests/dmelanogaster.gtf")
+#' # GTF data.frame
+#' gtf <- readGTF(url)
+#' tx2geneFromGTF(gtf) %>%
+#'     glimpse
 NULL
 
 
@@ -60,15 +64,7 @@ NULL
 #' @rdname tx2geneFromGTF
 #' @export
 setMethod("tx2geneFromGTF", "character", function(object) {
-    # Check for remote file
-    if (str_detect(object, "://")) {
-        # Save as temp file
-        file <- tempfile()
-        download.file(object, file)
-    } else {
-        file <- object
-    }
-    file %>%
+    object %>%
         readGTF %>%
         .tx2geneFromGTF
 })

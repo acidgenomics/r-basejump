@@ -80,7 +80,7 @@ NULL
     object %>%
         as.data.frame %>%
         mutate_all(funs(fixNA)) %>%
-        summarise_all(funs(
+        summarize_all(funs(
             .collapseVec(
                 object = .,
                 sep = sep,

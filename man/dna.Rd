@@ -9,9 +9,9 @@
 \alias{revcomp,character-method}
 \title{DNA Sequence Utilites}
 \usage{
-comp(object)
+comp(object, ...)
 
-revcomp(object)
+revcomp(object, ...)
 
 \S4method{comp}{character}(object)
 
@@ -19,6 +19,8 @@ revcomp(object)
 }
 \arguments{
 \item{object}{DNA sequence (\code{ATGC} nucleotides).}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Matching DNA sequence.

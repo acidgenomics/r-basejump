@@ -4,9 +4,7 @@
 \name{camel}
 \alias{camel}
 \alias{dotted}
-\alias{firstCase}
 \alias{snake}
-\alias{titleCase}
 \alias{makeNames}
 \alias{dotted,ANY-method}
 \alias{dotted,character-method}
@@ -26,19 +24,13 @@
 \alias{snake,list-method}
 \alias{snake,matrix-method}
 \alias{snake,tbl_df-method}
-\alias{titleCase,character-method}
-\alias{firstCase,character-method}
 \title{Make Syntactically Valid Names}
 \usage{
 camel(object, ...)
 
 dotted(object, ...)
 
-firstCase(object, ...)
-
 snake(object, ...)
-
-titleCase(object, ...)
 
 \S4method{dotted}{ANY}(object, rownames = FALSE)
 
@@ -75,10 +67,6 @@ titleCase(object, ...)
 \S4method{snake}{matrix}(object, rownames = FALSE)
 
 \S4method{snake}{tbl_df}(object)
-
-\S4method{titleCase}{character}(object)
-
-\S4method{firstCase}{character}(object)
 }
 \arguments{
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
@@ -158,12 +146,6 @@ dotted(tbl)
 dotted(lst)
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}}
-
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}}
-
 Other Cleanup Utilities: \code{\link{fixNA}},
   \code{\link{removeNA}}, \code{\link{sortUnique}}
 

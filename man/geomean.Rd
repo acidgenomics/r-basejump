@@ -10,7 +10,7 @@
 \alias{geomean,numeric-method}
 \title{Geometric Mean}
 \usage{
-geomean(object)
+geomean(object, ...)
 
 \S4method{geomean}{ANY}(object)
 
@@ -22,6 +22,8 @@ geomean(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Numeric containing geometric means.

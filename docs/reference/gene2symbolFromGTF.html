@@ -115,37 +115,24 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Gene Annotation Utilities: <code>annotable</code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code>gene2symbol</code>,
+  <code>detectOrganism</code>, <code>gene2symbol</code>,
   <code>tx2geneFromGTF</code>, <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Mouse (Ensembl)</span>
-<span class='fu'>gene2symbolFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/mmusculus.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt;                               ensgene        symbol
-#&gt; ENSMUSG00000025900 ENSMUSG00000025900           Rp1
-#&gt; ENSMUSG00000051951 ENSMUSG00000051951          Xkr4
-#&gt; ENSMUSG00000064842 ENSMUSG00000064842       Gm26206
-#&gt; ENSMUSG00000088333 ENSMUSG00000088333       Gm27396
-#&gt; ENSMUSG00000089699 ENSMUSG00000089699        Gm1992
-#&gt; ENSMUSG00000102331 ENSMUSG00000102331       Gm19938
-#&gt; ENSMUSG00000102343 ENSMUSG00000102343       Gm37381
-#&gt; ENSMUSG00000102348 ENSMUSG00000102348       Gm10568
-#&gt; ENSMUSG00000102592 ENSMUSG00000102592       Gm38385
-#&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik
-#&gt; ENSMUSG00000102851 ENSMUSG00000102851       Gm18956
-#&gt; ENSMUSG00000103025 ENSMUSG00000103025       Gm37686
-#&gt; ENSMUSG00000103147 ENSMUSG00000103147        Gm7341
-#&gt; ENSMUSG00000103161 ENSMUSG00000103161       Gm38148
-#&gt; ENSMUSG00000103201 ENSMUSG00000103201       Gm37329
-#&gt; ENSMUSG00000103377 ENSMUSG00000103377       Gm37180
-#&gt; ENSMUSG00000104017 ENSMUSG00000104017       Gm37363</div><div class='input'>
-<span class='co'># Fruitfly (FlyBase)</span>
-<span class='fu'>gene2symbolFromGTF</span>(<span class='st'>"http://steinbaugh.com/basejump/tests/dmelanogaster.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Renaming 'gene_symbol' to 'gene_name'</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 5 genes</span></div><div class='output co'>#&gt;                 ensgene           symbol
-#&gt; FBgn0031081 FBgn0031081             Nep3
-#&gt; FBgn0031085 FBgn0031085           CG9570
-#&gt; FBgn0031088 FBgn0031088          CG15322
-#&gt; FBgn0052826 FBgn0052826 tRNA:Pro-CGG-1-1
-#&gt; FBgn0062565 FBgn0062565            Or19b</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># GTF URL</span>
+<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>)
+<span class='fu'>gene2symbolFromGTF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span>
+    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>Reading GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; Observations: 17
+#&gt; Variables: 2
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG0000006...
+#&gt; $ symbol  &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938", "...</div><div class='input'>
+<span class='co'># GTF data.frame</span>
+<span class='no'>gtf</span> <span class='kw'>&lt;-</span> <span class='fu'>readGTF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>gene2symbolFromGTF</span>(<span class='no'>gtf</span>) <span class='kw'>%&gt;%</span>
+    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; Observations: 17
+#&gt; Variables: 2
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG0000006...
+#&gt; $ symbol  &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938", "...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

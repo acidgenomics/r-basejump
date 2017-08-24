@@ -19,9 +19,16 @@ readGTF(object, ...)
 \description{
 Read GTF Annotations
 }
+\examples{
+file.path(testDataURL, "mmusculus.gtf") \%>\%
+    readGTF \%>\%
+    glimpse
+}
 \seealso{
+http://www.gencodegenes.org/gencodeformat.html
+
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{packageSE}},
+  \code{\link{prepareSE}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

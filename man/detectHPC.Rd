@@ -3,6 +3,7 @@
 \docType{methods}
 \name{detectHPC}
 \alias{detectHPC}
+\alias{detectHPC}
 \alias{detectHPC,missing-method}
 \title{Detect HPC Environment}
 \usage{
@@ -34,4 +35,6 @@ detectHPC()
 \item \code{R.version}.
 \item \code{.Platform}.
 }
+
+Other Infrastructure Utilities: \code{\link{prepareTemplate}}
 }
