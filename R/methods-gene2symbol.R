@@ -33,6 +33,11 @@ NULL
 
 # Constructors ====
 .g2svec <- function(object, genomeBuild = NULL) {
+    # Prevent pass in of genomeBuild as primary object.
+    # Improve this in a future update.
+    if (is_string(object)) {
+        stop("gene2symbol conversion requires > 1 identifier")
+    }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
     }
@@ -91,21 +96,31 @@ NULL
 #' @export
 setMethod("gene2symbol", "character", .g2svec)
 
+
+
 #' @rdname gene2symbol
 #' @export
 setMethod("gene2symbol", "data.frame", .g2sdim)
+
+
 
 #' @rdname gene2symbol
 #' @export
 setMethod("gene2symbol", "DataFrame", .g2sdim)
 
+
+
 #' @rdname gene2symbol
 #' @export
 setMethod("gene2symbol", "dgCMatrix", .g2sdim)
 
+
+
 #' @rdname gene2symbol
 #' @export
 setMethod("gene2symbol", "dgTMatrix", .g2sdim)
+
+
 
 #' @rdname gene2symbol
 #' @export
