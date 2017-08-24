@@ -124,13 +124,12 @@
     <pre class="examples"><div class='input'><span class='co'># GTF URL</span>
 <span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>)
 <span class='fu'>tx2geneFromGTF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span>
-    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>Reading GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
 #&gt; Variables: 2
 #&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
 #&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG0000008...</div><div class='input'>
 <span class='co'># GTF data.frame</span>
-<span class='no'>gtf</span> <span class='kw'>&lt;-</span> <span class='fu'>readGTF</span>(<span class='no'>url</span>)
-<span class='fu'>tx2geneFromGTF</span>(<span class='no'>gtf</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>gtf</span> <span class='kw'>&lt;-</span> <span class='fu'>readGTF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>tx2geneFromGTF</span>(<span class='no'>gtf</span>) <span class='kw'>%&gt;%</span>
     <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
 #&gt; Variables: 2
 #&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
