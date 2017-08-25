@@ -3,13 +3,13 @@ context("Markdown Utilities")
 test_that("mdHeader", {
     expect_output(
         mdHeader("Header"),
-        "\\n\\n## Header\\n")
+        "\\n\\n\\#\\# Header\\n")
     expect_output(
         mdHeader("Header", level = 4L),
-        "\\n\\n#### Header\\n")
+        "\\n\\n\\#\\#\\#\\# Header\\n")
     expect_output(
         mdHeader("Header", tabset = TRUE),
-        "\\n\\n## Header \\{\\.tabset\\}\\n")
+        "\\n\\n\\#\\# Header \\{\\.tabset\\}\\n")
 })
 
 
