@@ -5,6 +5,10 @@
 \alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
+\alias{set_colnames}
+\alias{reexports}
+\alias{set_rownames}
+\alias{reexports}
 \alias{Matrix}
 \alias{reexports}
 \alias{read_csv}
@@ -27,7 +31,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 

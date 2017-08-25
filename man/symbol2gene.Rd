@@ -41,7 +41,7 @@ Convert Gene Symbol to Ensembl Identifier
 }
 \examples{
 # character
-symbol2gene(c("Gnai3", "Pbsn"))
+symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse")
 
 # matrix
 matrix(
@@ -51,7 +51,7 @@ matrix(
     ncol = 2L,
     dimnames = list(c("Gnai3", "Pbsn"),
                     c("sample1", "sample2"))) \%>\%
-    symbol2gene
+    symbol2gene(organism = "mouse")
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
