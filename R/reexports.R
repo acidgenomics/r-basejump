@@ -15,6 +15,12 @@ magrittr::`%>%`
 Matrix::Matrix
 
 #' @export
+readr::read_csv
+
+#' @export
+readr::write_csv
+
+#' @export
 tibble::glimpse
 
 #' @export
