@@ -7,6 +7,9 @@ test_that("mdHeader", {
     expect_output(
         mdHeader("Header", level = 4L),
         "\\n\\n#### Header\\n")
+    expect_output(
+        mdHeader("Header", tabset = TRUE),
+        "\\n\\n## Header \\{\\.tabset\\}\\n")
 })
 
 
