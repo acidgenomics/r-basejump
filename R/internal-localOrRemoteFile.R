@@ -1,6 +1,7 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
 #' @rdname internal-localOrRemoteFile
+#' @keywords internal
 #'
 #' @inheritParams AllGenerics
 #'
