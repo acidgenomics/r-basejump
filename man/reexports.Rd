@@ -7,6 +7,8 @@
 \alias{reexports}
 \alias{Matrix}
 \alias{reexports}
+\alias{read_csv}
+\alias{reexports}
 \alias{write_csv}
 \alias{reexports}
 \alias{glimpse}
@@ -29,7 +31,7 @@ below to see their documentation.
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{readr}{\code{\link[readr]{write_csv}}}
+  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{write_csv}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}}
 
