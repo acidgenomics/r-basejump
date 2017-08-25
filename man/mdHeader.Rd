@@ -9,7 +9,7 @@
 \usage{
 mdHeader(object, ...)
 
-\S4method{mdHeader}{character}(object, level = 2L)
+\S4method{mdHeader}{character}(object, level = 2L, tabset = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -17,6 +17,8 @@ mdHeader(object, ...)
 \item{...}{Additional arguments.}
 
 \item{level}{Header level (1-7).}
+
+\item{tabset}{Include tabset marker.}
 }
 \value{
 \code{\link[=writeLines]{writeLines()}}.
@@ -27,6 +29,7 @@ Markdown Header
 \examples{
 mdHeader("Header")
 mdHeader("Header", level = 4L)
+mdHeader("Header", tabset = TRUE)
 }
 \seealso{
 Other Report Utilities: \code{\link{kables}},

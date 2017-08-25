@@ -16,4 +16,10 @@ name and local file path as the string.
 \description{
 Dynamically Handle a Local or Remote File Path
 }
+\examples{
+\dontrun{
+file.path(testDataURL, "mtcars.csv") \%>\%
+    .localOrRemoteFile
+}
+}
 \keyword{internal}
