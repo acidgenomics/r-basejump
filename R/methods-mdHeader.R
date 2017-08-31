@@ -34,8 +34,8 @@ setMethod("mdHeader", "character", function(
     header %>%
         # Add the header level
         paste(str_dup("#", level), .) %>%
-        # Ensure line breaks
-        paste0("\n", ., "\n") %>%
+        # Ensure trailing line break
+        paste0("\n") %>%
         # Specify that output should be handled as Markdown text
         structure(format = "markdown") %>%
         asis_output
