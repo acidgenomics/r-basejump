@@ -26,14 +26,17 @@ setMethod("mdHeader", "character", function(
     tabset = FALSE) {
     header <- object
     if (!level %in% seq(1L:7L)) {
-        stop("Markdown supports 1-7 header levels")
+        stop("Markdown supports 1-7 header levels", call. = FALSE)
     }
     if (isTRUE(tabset)) {
         header <- paste(header, "{.tabset}")
     }
-    writeLines(c(
-        "",
-        "",
-        paste(str_dup("#", level), header),
-        ""))
+    header %>%
+        # Add the header level
+        paste(str_dup("#", level), .) %>%
+        # Ensure line breaks
+        paste0("\n", ., "\n") %>%
+        # Specify that output should be handled as Markdown text
+        structure(format = "markdown") %>%
+        asis_output
 })
