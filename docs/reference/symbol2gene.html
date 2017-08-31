@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Detect Organism — detectOrganism • basejump</title>
+<title>Convert Gene Symbol to Ensembl Identifier — symbol2gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,17 +80,32 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Detect Organism</h1>
+    <h1>Convert Gene Symbol to Ensembl Identifier</h1>
     </div>
 
     
-    <p>Supports organism detection from genome build or Ensembl identifier.</p>
+    <p>Convert Gene Symbol to Ensembl Identifier</p>
     
 
-    <pre class="usage"><span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)
+
+<span class='co'># S4 method for dgCMatrix</span>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)
+
+<span class='co'># S4 method for dgTMatrix</span>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>symbol2gene</span>(<span class='no'>object</span>, <span class='no'>organism</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -103,44 +118,41 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
+    <tr>
+      <th>organism</th>
+      <td><p>Organism name.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Full latin scientific organism name.</p>
+    <p>Same class as original object.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Gene Annotation Utilities: <code>annotable</code>,
+    <p><code>detectOrganism()</code>.</p>
+<p>Other Gene Annotation Utilities: <code>annotable</code>,
+  <code>detectOrganism</code>,
   <code>gene2symbolFromGTF</code>,
-  <code>gene2symbol</code>, <code>symbol2gene</code>,
-  <code>tx2geneFromGTF</code>, <code>tx2gene</code></p>
+  <code>gene2symbol</code>, <code>tx2geneFromGTF</code>,
+  <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># H. sapiens</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"human"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'>
-<span class='co'># M. musculus</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"GRCm38"</span>)</div><div class='output co'>#&gt;          mouse 
-#&gt; "Mus musculus" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"mm10"</span>)</div><div class='output co'>#&gt;          mouse 
-#&gt; "Mus musculus" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"ENSMUSG00000002459"</span>)</div><div class='output co'>#&gt;          mouse 
-#&gt; "Mus musculus" </div><div class='input'>
-<span class='co'># C. elegans</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"WBcel235"</span>)</div><div class='output co'>#&gt;                roundworm 
-#&gt; "Caenorhabditis elegans" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"ce11"</span>)</div><div class='output co'>#&gt;                roundworm 
-#&gt; "Caenorhabditis elegans" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"WBGene00000001"</span>)</div><div class='output co'>#&gt;                roundworm 
-#&gt; "Caenorhabditis elegans" </div><div class='input'>
-<span class='co'># D. melanogaster</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"BDGP6"</span>)</div><div class='output co'>#&gt;                  fruitfly 
-#&gt; "Drosophila melanogaster" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"dm6"</span>)</div><div class='output co'>#&gt;                  fruitfly 
-#&gt; "Drosophila melanogaster" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"FBgn0000003"</span>)</div><div class='output co'>#&gt;                  fruitfly 
-#&gt; "Drosophila melanogaster" </div></pre>
+    <pre class="examples"><div class='input'><span class='co'># character</span>
+<span class='fu'>symbol2gene</span>(<span class='fu'>c</span>(<span class='st'>"Gnai3"</span>, <span class='st'>"Pbsn"</span>), <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"mouse"</span>)</div><div class='output co'>#&gt;                Gnai3                 Pbsn 
+#&gt; "ENSMUSG00000000001" "ENSMUSG00000000003" </div><div class='input'>
+<span class='co'># matrix</span>
+<span class='fu'>matrix</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>4L</span>),
+    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='st'>"Gnai3"</span>, <span class='st'>"Pbsn"</span>),
+                    <span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span>
+    <span class='fu'>symbol2gene</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"mouse"</span>)</div><div class='output co'>#&gt;                    sample1 sample2
+#&gt; ENSMUSG00000000001       1       2
+#&gt; ENSMUSG00000000003       3       4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
