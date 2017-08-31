@@ -21,9 +21,6 @@ NULL
 #' @rdname mdList
 #' @export
 setMethod("mdList", "character", function(object, ordered = FALSE) {
-    if (!is.character(object)) {
-        stop("A character vector is required.")
-    }
     vapply(seq_along(object), function(a) {
         if (isTRUE(ordered)) {
             prefix <- paste0(a, ".")
