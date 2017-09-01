@@ -14,4 +14,7 @@ starwars
 \description{
 This data comes from SWAPI, the Star Wars API, \url{http://swapi.co/}
 }
+\examples{
+starwars
+}
 \keyword{internal}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{annotable}
 \alias{annotable}
-\alias{annotable}
 \alias{annotable,character-method}
 \title{\href{http://www.ensembl.org/}{Ensembl} Annotations}
 \usage{
@@ -50,3 +49,4 @@ Other Gene Annotation Utilities: \code{\link{detectOrganism}},
 \author{
 Broad class definitions by Rory Kirchner
 }
+\concept{Gene Annotation Utilities}
