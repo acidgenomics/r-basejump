@@ -3,7 +3,6 @@
 \docType{methods}
 \name{transmit}
 \alias{transmit}
-\alias{transmit}
 \alias{transmit,character-method}
 \title{Transmit Files from a Remote FTP Server}
 \usage{
@@ -45,3 +44,4 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}
 }
+\concept{Data Import and Project Utilities}

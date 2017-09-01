@@ -3,7 +3,6 @@
 \docType{methods}
 \name{grepString}
 \alias{grepString}
-\alias{grepString}
 \alias{grepString,character-method}
 \title{\code{grep} String Generator}
 \usage{
@@ -26,3 +25,4 @@ Generate a grep string for pattern matching against comma separated
 \examples{
 grepString("gene")
 }
+\concept{String Utilities}

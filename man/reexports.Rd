@@ -4,27 +4,40 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
 \alias{set_colnames}
-\alias{reexports}
 \alias{set_rownames}
-\alias{reexports}
 \alias{Matrix}
-\alias{reexports}
 \alias{read_csv}
-\alias{reexports}
 \alias{write_csv}
-\alias{reexports}
 \alias{glimpse}
-\alias{reexports}
 \alias{DataFrame}
-\alias{reexports}
 \alias{metadata}
-\alias{reexports}
 \alias{is_tibble}
-\alias{reexports}
 \alias{tibble}
 \title{Objects exported from other packages}
+\description{
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links
