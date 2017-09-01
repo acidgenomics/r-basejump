@@ -3,7 +3,6 @@
 \docType{methods}
 \name{loadRemoteData}
 \alias{loadRemoteData}
-\alias{loadRemoteData}
 \alias{loadRemoteData,character-method}
 \title{Load Remote Data}
 \usage{
@@ -30,3 +29,4 @@ Other Data Import and Project Utilities: \code{\link{prepareSE}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
+\concept{Data Import and Project Utilities}

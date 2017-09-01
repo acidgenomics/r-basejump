@@ -3,7 +3,6 @@
 \docType{methods}
 \name{prepareSE}
 \alias{prepareSE}
-\alias{prepareSE}
 \alias{prepareSE,list-method}
 \alias{prepareSE,SimpleList-method}
 \alias{prepareSE,ANY-method}
@@ -78,3 +77,4 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
+\concept{Data Import and Project Utilities}

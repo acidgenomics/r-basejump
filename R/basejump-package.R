@@ -7,7 +7,7 @@
 #'   mutate_all summarize_all
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
-#' @importFrom magrittr %>% set_rownames
+#' @importFrom magrittr %>% set_colnames set_rownames
 #' @importFrom Matrix Matrix readMM writeMM
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL

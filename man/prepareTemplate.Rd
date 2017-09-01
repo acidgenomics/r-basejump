@@ -3,7 +3,6 @@
 \docType{methods}
 \name{prepareTemplate}
 \alias{prepareTemplate}
-\alias{prepareTemplate}
 \alias{prepareTemplate,missing-method}
 \alias{prepareTemplate,character-method}
 \title{Download External Dependency File}
@@ -43,3 +42,4 @@ prepareTemplate("setup.R", sourceDir)
 \seealso{
 Other Infrastructure Utilities: \code{\link{detectHPC}}
 }
+\concept{Infrastructure Utilities}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{readGTF}
 \alias{readGTF}
-\alias{readGTF}
 \alias{readGTF,character-method}
 \title{Read GTF Annotations}
 \usage{
@@ -32,3 +31,4 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
+\concept{Data Import and Project Utilities}

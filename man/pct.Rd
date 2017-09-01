@@ -3,7 +3,6 @@
 \docType{methods}
 \name{pct}
 \alias{pct}
-\alias{pct}
 \alias{pct,numeric-method}
 \title{Convert Numeric to Percentage}
 \usage{
@@ -29,3 +28,4 @@ pct(0.1)
 Other Math Utilities: \code{\link{fc2lr}},
   \code{\link{geomean}}
 }
+\concept{Math Utilities}

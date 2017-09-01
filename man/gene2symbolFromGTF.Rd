@@ -3,7 +3,6 @@
 \docType{methods}
 \name{gene2symbolFromGTF}
 \alias{gene2symbolFromGTF}
-\alias{gene2symbolFromGTF}
 \alias{gene2symbolFromGTF,character-method}
 \alias{gene2symbolFromGTF,data.frame-method}
 \title{Generate gene2symbol from GTF File}
@@ -39,5 +38,7 @@ gene2symbolFromGTF(gtf) \%>\%
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
-  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
+  \code{\link{symbol2gene}}, \code{\link{tx2geneFromGTF}},
+  \code{\link{tx2gene}}
 }
+\concept{Gene Annotation Utilities}

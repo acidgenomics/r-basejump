@@ -3,7 +3,6 @@
 \docType{methods}
 \name{kables}
 \alias{kables}
-\alias{kables}
 \alias{kables,list-method}
 \title{Create Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
@@ -37,3 +36,4 @@ https://stackoverflow.com/a/35149103/3911732.
 Other Report Utilities: \code{\link{mdHeader}},
   \code{\link{mdList}}
 }
+\concept{Report Utilities}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{detectHPC}
 \alias{detectHPC}
-\alias{detectHPC}
 \alias{detectHPC,missing-method}
 \title{Detect HPC Environment}
 \usage{
@@ -38,3 +37,4 @@ detectHPC()
 
 Other Infrastructure Utilities: \code{\link{prepareTemplate}}
 }
+\concept{Infrastructure Utilities}

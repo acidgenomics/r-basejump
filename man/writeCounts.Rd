@@ -3,7 +3,6 @@
 \docType{methods}
 \name{writeCounts}
 \alias{writeCounts}
-\alias{writeCounts}
 \alias{writeCounts,ANY-method}
 \title{Write Counts}
 \usage{
@@ -41,3 +40,4 @@ Other Write Utilities: \code{\link{saveData}}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Write Utilities}

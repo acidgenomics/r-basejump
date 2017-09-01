@@ -12,6 +12,12 @@ dplyr::select -> tidy_select  # nolint
 magrittr::`%>%`
 
 #' @export
+magrittr::set_colnames
+
+#' @export
+magrittr::set_rownames
+
+#' @export
 Matrix::Matrix
 
 #' @export

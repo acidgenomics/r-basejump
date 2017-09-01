@@ -3,14 +3,15 @@
 #' @rdname gene2symbol
 #' @name gene2symbol
 #'
-#' @param genomeBuild *Optional*. Genome build. Normally this argument is
+#' @param organism *Optional*. Organism name. Normally this argument is
 #'  unnecessary and can be left `NULL`. If a count matrix starts with a
 #'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-#'  first gene identifier will fail. In this case, the desired genome build
-#'  should be manually declared.
+#'  first gene identifier will fail. In this case, the desired organism must be
+#'  manually declared.
 #'
 #' @return Same class as original object.
-#' @export
+#'
+#' @seealso [detectOrganism()].
 #'
 #' @examples
 #' # character
@@ -32,8 +33,8 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object, genomeBuild = NULL) {
-    # Prevent pass in of genomeBuild as primary object.
+.g2svec <- function(object, organism = NULL) {
+    # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
         stop("gene2symbol conversion requires > 1 identifier")
@@ -46,8 +47,8 @@ NULL
     }
 
     # Detect organism
-    if (!is.null(genomeBuild)) {
-        organism <- detectOrganism(genomeBuild)
+    if (!is.null(organism)) {
+        organism <- detectOrganism(organism)
     } else {
         organism <- detectOrganism(object[[1L]])
     }
@@ -83,9 +84,9 @@ NULL
 
 
 # Pass arguments to .g2svec
-.g2sdim <- function(object, genomeBuild = NULL) {
+.g2sdim <- function(object, organism = NULL) {
     rownames(object) <- rownames(object) %>%
-        .g2svec(genomeBuild = genomeBuild)
+        .g2svec(organism = organism)
     object
 }
 

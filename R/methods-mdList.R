@@ -21,10 +21,7 @@ NULL
 #' @rdname mdList
 #' @export
 setMethod("mdList", "character", function(object, ordered = FALSE) {
-    if (!is.character(object)) {
-        stop("A character vector is required.")
-    }
-    lines <- vapply(seq_along(object), function(a) {
+    vapply(seq_along(object), function(a) {
         if (isTRUE(ordered)) {
             prefix <- paste0(a, ".")
         } else {
@@ -32,9 +29,10 @@ setMethod("mdList", "character", function(object, ordered = FALSE) {
         }
         paste(prefix, object[[a]])
     },
-    character(1L))
-    writeLines(c(
-        "",
-        lines,
-        ""))
+    character(1L)) %>%
+        # Add a trailing line break
+        paste0("\n") %>%
+        # Specify that output should be handled as Markdown text
+        structure(format = "markdown") %>%
+        asis_output
 })

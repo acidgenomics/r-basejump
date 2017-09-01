@@ -5,7 +5,7 @@ test_that("annotable", {
     anno <- annotable("grch38")
     expect_equal(
         dim(anno),
-        c(63898L, 9L))
+        c(63967L, 9L))
     expect_equal(
         rownames(anno)[[1L]],
         "ENSG00000000003")
@@ -14,7 +14,7 @@ test_that("annotable", {
     anno <- annotable("grcm38")
     expect_equal(
         dim(anno),
-        c(52386L, 9L))
+        c(53110L, 9L))
     expect_equal(
         rownames(anno)[[1L]],
         "ENSMUSG00000000001")
