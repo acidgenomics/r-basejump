@@ -8,11 +8,11 @@ test_that("mdHeader", {
     expect_equal(
         mdHeader("Header", level = 4L) %>%
             as.character,
-        "#### Header\n")
+        "#### Header\n")  # nolint
     expect_equal(
         mdHeader("Header", tabset = TRUE) %>%
             as.character,
-        "## Header {.tabset}\n")
+        "## Header {.tabset}\n")  # nolint
 })
 
 
