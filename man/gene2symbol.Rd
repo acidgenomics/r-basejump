@@ -3,7 +3,6 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
-\alias{gene2symbol}
 \alias{gene2symbol,character-method}
 \alias{gene2symbol,data.frame-method}
 \alias{gene2symbol,DataFrame-method}
@@ -14,28 +13,28 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{character}(object, organism = NULL)
 
-\S4method{gene2symbol}{data.frame}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{data.frame}(object, organism = NULL)
 
-\S4method{gene2symbol}{DataFrame}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{DataFrame}(object, organism = NULL)
 
-\S4method{gene2symbol}{dgCMatrix}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{dgCMatrix}(object, organism = NULL)
 
-\S4method{gene2symbol}{dgTMatrix}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{dgTMatrix}(object, organism = NULL)
 
-\S4method{gene2symbol}{matrix}(object, genomeBuild = NULL)
+\S4method{gene2symbol}{matrix}(object, organism = NULL)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{genomeBuild}{\emph{Optional}. Genome build. Normally this argument is
+\item{organism}{\emph{Optional}. Organism name. Normally this argument is
 unnecessary and can be left \code{NULL}. If a count matrix starts with a
 FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-first gene identifier will fail. In this case, the desired genome build
-should be manually declared.}
+first gene identifier will fail. In this case, the desired organism must be
+manually declared.}
 }
 \value{
 Same class as original object.
@@ -60,8 +59,12 @@ matrix(
                       "sample2"))) \%>\% gene2symbol
 }
 \seealso{
+\code{\link[=detectOrganism]{detectOrganism()}}.
+
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGTF}},
-  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
+  \code{\link{symbol2gene}}, \code{\link{tx2geneFromGTF}},
+  \code{\link{tx2gene}}
 }
+\concept{Gene Annotation Utilities}

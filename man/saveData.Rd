@@ -3,7 +3,6 @@
 \docType{methods}
 \name{saveData}
 \alias{saveData}
-\alias{saveData}
 \alias{saveData,ANY-method}
 \title{Save Data}
 \usage{
@@ -45,3 +44,4 @@ saveData(mtcars, starwars)
 
 Other Write Utilities: \code{\link{writeCounts}}
 }
+\concept{Write Utilities}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{fixNA}
 \alias{fixNA}
-\alias{fixNA}
 \alias{fixNA,ANY-method}
 \alias{fixNA,character-method}
 \alias{fixNA,data.frame-method}
@@ -45,3 +44,4 @@ data.frame(a = c("foo", ""),
 Other Cleanup Utilities: \code{\link{camel}},
   \code{\link{removeNA}}, \code{\link{sortUnique}}
 }
+\concept{Cleanup Utilities}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{geomean}
 \alias{geomean}
-\alias{geomean}
 \alias{geomean,ANY-method}
 \alias{geomean,data.frame-method}
 \alias{geomean,matrix-method}
@@ -60,3 +59,4 @@ geomean(mat)
 Other Math Utilities: \code{\link{fc2lr}},
   \code{\link{pct}}
 }
+\concept{Math Utilities}

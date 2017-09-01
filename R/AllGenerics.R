@@ -315,6 +315,16 @@ setGeneric("sortUnique", function(object, ...) {
 
 
 
+#' @rdname symbol2gene
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("symbol2gene", function(object, ...) {
+    standardGeneric("symbol2gene")
+})
+
+
+
 #' @rdname transmit
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics

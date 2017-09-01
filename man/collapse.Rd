@@ -3,7 +3,6 @@
 \docType{methods}
 \name{collapse}
 \alias{collapse}
-\alias{collapse}
 \alias{collapse,character-method}
 \alias{collapse,integer-method}
 \alias{collapse,data.frame-method}
@@ -69,3 +68,4 @@ collapse(groceries, unique = FALSE, sort = FALSE)
 \item \code{\link[glue:collapse]{glue::collapse()}}.
 }
 }
+\concept{Data Manipulation Utilities}

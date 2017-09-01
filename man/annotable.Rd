@@ -3,7 +3,6 @@
 \docType{methods}
 \name{annotable}
 \alias{annotable}
-\alias{annotable}
 \alias{annotable,character-method}
 \title{\href{http://www.ensembl.org/}{Ensembl} Annotations}
 \usage{
@@ -44,9 +43,10 @@ for a list of currently supported genomes.
 
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGTF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGTF}},
-  \code{\link{tx2gene}}
+  \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
+  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
 }
 \author{
 Broad class definitions by Rory Kirchner
 }
+\concept{Gene Annotation Utilities}

@@ -4,21 +4,15 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
+\alias{set_colnames}
+\alias{set_rownames}
 \alias{Matrix}
-\alias{reexports}
 \alias{read_csv}
-\alias{reexports}
 \alias{write_csv}
-\alias{reexports}
 \alias{glimpse}
-\alias{reexports}
 \alias{DataFrame}
-\alias{reexports}
 \alias{metadata}
-\alias{reexports}
 \alias{is_tibble}
-\alias{reexports}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -27,7 +21,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_colnames}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
