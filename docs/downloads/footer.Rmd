@@ -1,0 +1,21 @@
+* * *
+
+
+
+# R session information
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+```{r params}
+# Print YAML parameters, if set
+if (exists("params") & is(params, "knit_param_list")) {
+    print(params)
+}
+```
+
+
+
+[basejump]: http://steinbaugh.com/basejump
+[steinbaugh.com]: http://steinbaugh.com
