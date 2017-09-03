@@ -19,9 +19,9 @@
 #'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
 #'   list, as long as they all have the same dimensions. List object can be
 #'   supplied as either class `list` or `SimpleList`.
-#' @param colData Object describing assay matrix columns. Must support
-#'   [base::dim()].
 #' @param rowData Object describing assay matrix rows. Must support
+#'   [base::dim()].
+#' @param colData Object describing assay matrix columns. Must support
 #'   [base::dim()].
 #' @param metadata *Optional*. Metadata list.
 #'
@@ -34,19 +34,25 @@
 #' @return [SummarizedExperiment].
 #'
 #' @examples
-#' mat <- mtcars %>%
-#'     snake(rownames = TRUE) %>%
-#'     .[c("mazda_rx4", "datsun_710"), ] %>%
-#'     .[, c("mpg", "gear")]
-#' colData <- data.frame(
-#'     description = c("Miles per gallon", "Number of gears"),
-#'     abbreviation = c(TRUE, FALSE),
-#'     row.names = colnames(mat))
+#' mat <- matrix(
+#'     seq(1L:16L),
+#'     nrow = 4L,
+#'     ncol = 4L,
+#'     dimnames = list(
+#'         c("gene_1", "gene_2", "gene_3", "gene_4"),
+#'         c("sample_1", "sample_2", "sample_3", "sample_4")))
 #' rowData <- data.frame(
-#'     manufacturer = c("Mazda", "Datsun"),
-#'     model_number = c("RX4", "710"),
+#'     ensgene = c("Aaa", "Bbb", "Ccc", "Ddd"),
+#'     biotype = c("coding", "coding", "coding", "pseudogene"),
 #'     row.names = rownames(mat))
-#' prepareSummarizedExperiment(mat, colData, rowData)
+#' colData <- data.frame(
+#'     genotype = c("wt", "wt", "ko", "ko"),
+#'     age = c(3L, 6L, 3L, 6L),
+#'     row.names = colnames(mat))
+#' prepareSummarizedExperiment(
+#'     mat,
+#'     rowData = rowData,
+#'     colData = colData)
 NULL
 
 
@@ -54,8 +60,8 @@ NULL
 # Constructors ====
 .prepareSEFromAssay <- function(
     object,
-    colData,
     rowData,
+    colData,
     metadata = NULL) {
     .prepareSEFromList(
         list(assay = object),
@@ -68,8 +74,8 @@ NULL
 
 .prepareSEFromList <- function(
     object,
-    colData,
     rowData,
+    colData,
     metadata = NULL) {
     # Assays ====
     assays <- as(object, "SimpleList")
@@ -77,8 +83,13 @@ NULL
     if (is.null(dim(assay))) {
         stop("Assay object must support 'dim()'")
     }
-
-    # Check for potential dim problems
+    # Check for potential dimnames problems
+    if (is.null(rownames(assay))) {
+        stop("Assay missing rownames")
+    }
+    if (is.null(colnames(assay))) {
+        stop("Assay missing colnames")
+    }
     if (any(duplicated(rownames(assay)))) {
         stop("Non-unique rownames")
     }
@@ -86,38 +97,13 @@ NULL
         stop("Non-unique colnames")
     }
     if (!identical(make.names(rownames(assay)), rownames(assay))) {
-        stop(paste("Row names are not valid.",
+        stop(paste("Rownames are not valid.",
                    "See 'base::make.names()' for more information."))
     }
     if (!identical(make.names(colnames(assay)), colnames(assay))) {
-        stop(paste("Column names are not valid.",
+        stop(paste("Colnames are not valid.",
                    "See 'base::make.names()' for more information."))
     }
-
-    # colData ====
-    if (is.null(dim(colData))) {
-        stop("colData must support 'dim()'")
-    }
-    colData <- as.data.frame(colData)
-    # Handle tibble rownames
-    if (!has_rownames(colData) &
-        "rowname" %in% colnames(colData)) {
-        colData <- column_to_rownames(colData)
-    }
-    if (!has_rownames(colData)) {
-        stop("colData missing rownames")
-    }
-    if (!all(colnames(assay) %in% rownames(colData))) {
-        missing <- setdiff(colnames(assay), rownames(colData))
-        stop(paste(
-            "colData mismatch with assay slot:",
-            toString(head(missing))
-        ))
-    }
-    colData <- colData %>%
-        .[colnames(assay), , drop = FALSE] %>%
-        set_rownames(colnames(assay)) %>%
-        as("DataFrame")
 
     # rowData ====
     if (is.null(dim(rowData))) {
@@ -146,12 +132,37 @@ NULL
         set_rownames(rownames(assay)) %>%
         as("DataFrame")
 
-    # Metadata
+    # colData ====
+    if (is.null(dim(colData))) {
+        stop("colData must support 'dim()'")
+    }
+    colData <- as.data.frame(colData)
+    # Handle tibble rownames
+    if (!has_rownames(colData) &
+        "rowname" %in% colnames(colData)) {
+        colData <- column_to_rownames(colData)
+    }
+    if (!has_rownames(colData)) {
+        stop("colData missing rownames")
+    }
+    if (!all(colnames(assay) %in% rownames(colData))) {
+        missing <- setdiff(colnames(assay), rownames(colData))
+        stop(paste(
+            "colData mismatch with assay slot:",
+            toString(head(missing))
+        ))
+    }
+    colData <- colData %>%
+        .[colnames(assay), , drop = FALSE] %>%
+        set_rownames(colnames(assay)) %>%
+        as("DataFrame")
+
+    # Metadata ====
     if (is.null(metadata)) {
         metadata <- list()
     } else {
         if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("metadata must be 'list' or 'SimpleList' class")
+            stop("Metadata must be 'list' or 'SimpleList' class object")
         }
     }
     metadata[["date"]] <- Sys.Date()
@@ -173,8 +184,8 @@ NULL
     message("Preparing SummarizedExperiment")
     SummarizedExperiment(
         assays = assays,
-        colData = colData,
         rowData = rowData,
+        colData = colData,
         metadata = metadata)
 }
 

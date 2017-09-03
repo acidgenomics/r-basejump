@@ -14,22 +14,22 @@
 \usage{
 prepareSummarizedExperiment(object, ...)
 
-\S4method{prepareSummarizedExperiment}{ANY}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{ANY}(object, rowData, colData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{data.frame}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{data.frame}(object, rowData, colData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{dgCMatrix}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{dgCMatrix}(object, rowData, colData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{list}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{list}(object, rowData, colData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{matrix}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{matrix}(object, rowData, colData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{SimpleList}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{SimpleList}(object, rowData, colData,
   metadata = NULL)
 }
 \arguments{
@@ -42,10 +42,10 @@ supplied as either class \code{list} or \code{SimpleList}.}
 
 \item{...}{Additional arguments.}
 
-\item{colData}{Object describing assay matrix columns. Must support
+\item{rowData}{Object describing assay matrix rows. Must support
 \code{\link[base:dim]{base::dim()}}.}
 
-\item{rowData}{Object describing assay matrix rows. Must support
+\item{colData}{Object describing assay matrix columns. Must support
 \code{\link[base:dim]{base::dim()}}.}
 
 \item{metadata}{\emph{Optional}. Metadata list.}
@@ -67,19 +67,25 @@ multiple useful environment parameters:
 }
 }
 \examples{
-mat <- mtcars \%>\%
-    snake(rownames = TRUE) \%>\%
-    .[c("mazda_rx4", "datsun_710"), ] \%>\%
-    .[, c("mpg", "gear")]
-colData <- data.frame(
-    description = c("Miles per gallon", "Number of gears"),
-    abbreviation = c(TRUE, FALSE),
-    row.names = colnames(mat))
+mat <- matrix(
+    seq(1L:16L),
+    nrow = 4L,
+    ncol = 4L,
+    dimnames = list(
+        c("gene_1", "gene_2", "gene_3", "gene_4"),
+        c("sample_1", "sample_2", "sample_3", "sample_4")))
 rowData <- data.frame(
-    manufacturer = c("Mazda", "Datsun"),
-    model_number = c("RX4", "710"),
+    ensgene = c("Aaa", "Bbb", "Ccc", "Ddd"),
+    biotype = c("coding", "coding", "coding", "pseudogene"),
     row.names = rownames(mat))
-prepareSummarizedExperiment(mat, colData, rowData)
+colData <- data.frame(
+    genotype = c("wt", "wt", "ko", "ko"),
+    age = c(3L, 6L, 3L, 6L),
+    row.names = colnames(mat))
+prepareSummarizedExperiment(
+    mat,
+    rowData = rowData,
+    colData = colData)
 }
 \seealso{
 \itemize{

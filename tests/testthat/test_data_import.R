@@ -1,83 +1,153 @@
 context("Data Import and Project Management Utilities")
 
 test_that("prepareSummarizedExperiment", {
-    mat <- mtcars %>%
-        .[c("Mazda RX4", "Datsun 710"), ] %>%
-        .[, c("mpg", "gear")] %>%
-        as.matrix
-    coldata <- data.frame(
-        description = c("Miles per gallon", "Number of gears"),
-        abbreviation = c(TRUE, FALSE),
-        row.names = colnames(mat))
+    # Create the matrix with invalid names. We'll sanitize these
+    # into snake_case later.
+    mat <- matrix(
+        seq(1L:16L),
+        nrow = 4L,
+        ncol = 4L,
+        dimnames = list(
+            c("gene_1", "gene_2", "gene_3", "gene_4"),
+            c("sample_1", "sample_2", "sample_3", "sample_4")))
+    # Set NA in rowdata here to test retired Ensembl identifier handling
     rowdata <- data.frame(
-        manufacturer = c("Mazda", "Datsun"),
-        model_number = c("RX4", "710"),
+        ensgene = c("Aaa", "Bbb", "Ccc", NA),
+        biotype = c("coding", "coding", "coding", "pseudogene"),
         row.names = rownames(mat))
+    coldata <- data.frame(
+        genotype = c("wt", "wt", "ko", "ko"),
+        age = c(3L, 6L, 3L, 6L),
+        row.names = colnames(mat))
+    se <- prepareSummarizedExperiment(
+        mat,
+        rowData = rowdata,
+        colData = coldata)
+
+    expect_equal(
+        dim(se),
+        c(4L, 4L))
+    expect_equal(
+        names(metadata(se)),
+        c("date", "wd", "sessionInfo", "missingGenes"))
+    expect_equal(
+        metadata(se)[["missingGenes"]],
+        "gene_4")
+
     # Enforce strict names
-    # @seealso [base::make.names()].
+    # @seealso [base::make.names()]
+    # This checks to see if there are any dashes (invalid) in the names
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_rownames(gsub("_", "-", rownames(mat))),
+            rowData = rowdata,
+            colData = coldata),
+        "Rownames are not valid.")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_colnames(gsub("_", "-", colnames(mat))),
+            rowData = rowdata,
+            colData = coldata),
+        "Colnames are not valid.")
+
+    # Missing rownames
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_rownames(NULL),
+            rowData = rowdata,
+            colData = coldata),
+        "Assay missing rownames")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_colnames(NULL),
+            rowData = rowdata,
+            colData = coldata),
+        "Assay missing colnames")
     expect_error(
         prepareSummarizedExperiment(
             mat,
-            colData = coldata,
-            rowData = rowdata),
-        "Row names are not valid.")
-    # After snake_case sanitization, it should now work
-    mat <- snake(mat, rownames = TRUE)
-    rowdata <- snake(rowdata, rownames = TRUE)
-    se <- prepareSummarizedExperiment(
-        mat,
-        colData = coldata,
-        rowData = rowdata)
-    expect_equal(
-        dim(se),
-        c(2L, 2L))
-    expect_equal(
-        names(metadata(se)),
-        c("date", "wd", "sessionInfo"))
+            rowData = rowdata %>%
+                set_rownames(NULL),
+            colData = coldata),
+        "rowData missing rownames")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat,
+            rowData = rowdata,
+            colData = coldata %>%
+                set_rownames(NULL)),
+        "colData missing rownames")
 
     # Check tibble rownames support
     expect_equal(
         prepareSummarizedExperiment(
             mat,
-            colData = as(coldata, "tibble"),
-            rowData = as(rowdata, "tibble")),
+            rowData = as(rowdata, "tibble"),
+            colData = as(coldata, "tibble")),
         se)
+
+    # Duplicate names
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_rownames(c("gene_1", "gene_1", "gene_2", "gene_2")),
+            rowData = rowdata,
+            colData = coldata),
+        "Non-unique rownames")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat %>%
+                set_colnames(c("sample_1", "sample_1", "sample_2", "sample_2")),
+            rowData = rowdata,
+            colData = coldata),
+        "Non-unique colnames")
 
     # Bad pass-in of objects not supporting `dim()`
     expect_error(
         prepareSummarizedExperiment(
             list(c(xxx = "yyy")),
-            coldata,
-            rowdata),
+            rowData = rowdata,
+            colData = coldata),
         "Assay object must support 'dim\\(\\)'")
     expect_error(
         prepareSummarizedExperiment(
             mat,
-            colData = c(xxx = "yyy"),
-            rowData = rowdata),
+            rowData = rowdata,
+            colData = c(xxx = "yyy")),
         "colData must support 'dim\\(\\)'")
     expect_error(
         prepareSummarizedExperiment(
             mat,
-            colData = coldata,
-            rowData = c(xxx = "yyy")),
+            rowData = c(xxx = "yyy"),
+            colData = coldata),
         "rowData must support 'dim\\(\\)'")
 
     # Dimension mismatch handling
-    matcolmismatch <- cbind(mat, "extra" = c("A", "B"))
     expect_error(
         prepareSummarizedExperiment(
-            matcolmismatch,
-            colData = coldata,
-            rowData = rowdata),
-        "colData mismatch with assay slot: extra")
-    matrowmismatch <- rbind(mat, "valiant" = c(18.1, 3L))
+            cbind(mat, "sample_5" = seq(17L, 20L)),
+            rowData = rowdata,
+            colData = coldata),
+        "colData mismatch with assay slot: sample_5")
     expect_warning(
         prepareSummarizedExperiment(
-            matrowmismatch,
+            rbind(mat, "gene_5" = seq(17L, 20L)),
+            rowData = rowdata,
+            colData = coldata),
+        "rowData mismatch with assay slot: gene_5")
+
+    # Bad metadata
+    expect_error(
+        prepareSummarizedExperiment(
+            mat,
+            rowData = rowdata,
             colData = coldata,
-            rowData = rowdata),
-        "rowData mismatch with assay slot: valiant")
+            metadata = Sys.Date()),
+        "Metadata must be 'list' or 'SimpleList' class object")
 
     # Deprecations
     expect_warning(
