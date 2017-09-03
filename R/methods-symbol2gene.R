@@ -58,17 +58,8 @@ NULL
             call. = FALSE)
         ensgene <- c(ensgene, nomatch)
     }
-    ensgene <- ensgene[object]
 
-    # Final integrity checks
-    if (any(is.na(ensgene))) {
-        stop("NA genes detected", call. = FALSE)
-    }
-    if (any(duplicated(ensgene))) {
-        stop("Duplicate genes detected", call. = FALSE)
-    }
-
-    ensgene
+    ensgene[object]
 }
 
 

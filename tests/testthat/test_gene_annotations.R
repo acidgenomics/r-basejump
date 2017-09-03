@@ -73,6 +73,19 @@ test_that("gene2symbol", {
     expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
     expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
 
+    # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
+    vec <- c("EGFP", "ENSMUSG00000000001")
+    expect_error(
+        gene2symbol(vec),
+        "Failed to detect supported organism")
+    expect_equal(
+        gene2symbol(vec, organism = "mouse"),
+        c(EGFP = "EGFP",
+          ENSMUSG00000000001 = "Gnai3"))
+    expect_warning(
+        gene2symbol(vec, organism = "mouse"),
+        "Failed to match all gene IDs to symbols: EGFP")
+
     # matrix
     mat <- matrix(
         data = seq(1L:6L),
@@ -104,8 +117,8 @@ test_that("gene2symbol", {
 
 test_that("gene2symbolFromGTF", {
     # Mouse
-    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
-        gene2symbolFromGTF
+    file <- file.path(testDataURL, "mmusculus.gtf")
+    mm <- gene2symbolFromGTF(file.path(file))
     expect_equal(
         dim(mm),
         c(17L, 2L))
@@ -118,6 +131,11 @@ test_that("gene2symbolFromGTF", {
                        "Xkr4"),
             row.names = c("ENSMUSG00000025900",
                           "ENSMUSG00000051951")))
+    # Test GTF data.frame input
+    gtf <- readGTF(file)
+    expect_equal(
+        gene2symbolFromGTF(gtf),
+        mm)
 
     # Fruitfly
     dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
@@ -157,9 +175,13 @@ test_that("readGTF", {
 
     # Bad URL
     expect_error(
-        file.path(testDataURL, "mtcars.rda") %>%
-            readGTF,
-        "GTF file failed to load. Check path.")
+        readGTF(file.path(testDataURL, "mtcars.rda")),
+        "GTF file failed to load")
+
+    # Bad GTF file
+    expect_error(
+        readGTF(file.path(testDataURL, "mtcars.tsv")),
+        "GTF file failed to load")
 })
 
 
@@ -253,8 +275,8 @@ test_that("tx2gene", {
 
 test_that("tx2geneFromGTF", {
     # Mouse
-    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
-        tx2geneFromGTF
+    file <- file.path(testDataURL, "mmusculus.gtf")
+    mm <- tx2geneFromGTF(file.path(file))
     expect_equal(
         dim(mm),
         c(20L, 2L))
@@ -267,6 +289,11 @@ test_that("tx2geneFromGTF", {
                         "ENSMUSG00000064842"),
             row.names = c("ENSMUST00000070533",
                           "ENSMUST00000082908")))
+    # Test GTF data.frame input
+    gtf <- readGTF(file)
+    expect_equal(
+        tx2geneFromGTF(gtf),
+        mm)
 
     # Fruitfly
     dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%

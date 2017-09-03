@@ -8,11 +8,7 @@ test_that("deprecated", {
 
 
 
-test_that("onLoad",  {
-    expect_equal(
-        loadNamespace("basejump") %>%
-            class,
-        "environment")
+test_that("onLoad", {
     expect_error(
         attachNamespace("annotables"),
         "namespace is already attached")
