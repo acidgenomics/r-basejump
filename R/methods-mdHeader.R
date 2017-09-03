@@ -38,12 +38,7 @@ setMethod("mdHeader", "character", function(
     # Add the header level
     header <- paste(str_dup("#", level), header)
     if (isTRUE(asis)) {
-        writeLines(c(
-            "",
-            "",
-            header,
-            ""
-        ))
+        writeLines(c("", "", header, ""))
     } else {
         header %>%
             # Ensure trailing line break
