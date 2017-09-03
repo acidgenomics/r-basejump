@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,7 +23,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
+  <link href="../extra.css" rel="stylesheet">
   
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -91,27 +91,27 @@ automatic subsetting for <code>colData</code> and <code>rowData</code>.</p>
     <pre class="usage"><span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for SimpleList</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>,
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>object</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
   <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -131,13 +131,13 @@ supplied as either class <code>list</code> or <code>SimpleList</code>.</p></td>
       <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
-      <th>colData</th>
-      <td><p>Object describing assay matrix columns. Must support
+      <th>rowData</th>
+      <td><p>Object describing assay matrix rows. Must support
 <code><a href='http://www.rdocumentation.org/packages/base/topics/dim'>base::dim()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>rowData</th>
-      <td><p>Object describing assay matrix rows. Must support
+      <th>colData</th>
+      <td><p>Object describing assay matrix columns. Must support
 <code><a href='http://www.rdocumentation.org/packages/base/topics/dim'>base::dim()</a></code>.</p></td>
     </tr>
     <tr>
@@ -173,26 +173,32 @@ multiple useful environment parameters:</p><ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='makeNames.html'>snake</a></span>(<span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span>
-    <span class='no'>.</span>[<span class='fu'>c</span>(<span class='st'>"mazda_rx4"</span>, <span class='st'>"datsun_710"</span>), ] <span class='kw'>%&gt;%</span>
-    <span class='no'>.</span>[, <span class='fu'>c</span>(<span class='st'>"mpg"</span>, <span class='st'>"gear"</span>)]
-<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='kw'>description</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Miles per gallon"</span>, <span class='st'>"Number of gears"</span>),
-    <span class='kw'>abbreviation</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>mat</span>))
+    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
+    <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>16L</span>),
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(
+        <span class='fu'>c</span>(<span class='st'>"gene_1"</span>, <span class='st'>"gene_2"</span>, <span class='st'>"gene_3"</span>, <span class='st'>"gene_4"</span>),
+        <span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>, <span class='st'>"sample_3"</span>, <span class='st'>"sample_4"</span>)))
 <span class='no'>rowData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='kw'>manufacturer</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Mazda"</span>, <span class='st'>"Datsun"</span>),
-    <span class='kw'>model_number</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"RX4"</span>, <span class='st'>"710"</span>),
+    <span class='kw'>ensgene</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Aaa"</span>, <span class='st'>"Bbb"</span>, <span class='st'>"Ccc"</span>, <span class='st'>"Ddd"</span>),
+    <span class='kw'>biotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"coding"</span>, <span class='st'>"coding"</span>, <span class='st'>"coding"</span>, <span class='st'>"pseudogene"</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>mat</span>))
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>mat</span>, <span class='no'>colData</span>, <span class='no'>rowData</span>)</div><div class='output co'>#&gt; <span class='message'>Preparing SummarizedExperiment</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 2 2 
+<span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"wt"</span>, <span class='st'>"wt"</span>, <span class='st'>"ko"</span>, <span class='st'>"ko"</span>),
+    <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>, <span class='fl'>3L</span>, <span class='fl'>6L</span>),
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>mat</span>))
+<span class='fu'>prepareSummarizedExperiment</span>(
+    <span class='no'>mat</span>,
+    <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='no'>rowData</span>,
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>)</div><div class='output co'>#&gt; <span class='message'>Preparing SummarizedExperiment</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 4 4 
 #&gt; metadata(3): date wd sessionInfo
 #&gt; assays(1): assay
-#&gt; rownames(2): mazda_rx4 datsun_710
-#&gt; rowData names(2): manufacturer model_number
-#&gt; colnames(2): mpg gear
-#&gt; colData names(2): description abbreviation</div></pre>
+#&gt; rownames(4): gene_1 gene_2 gene_3 gene_4
+#&gt; rowData names(2): ensgene biotype
+#&gt; colnames(4): sample_1 sample_2 sample_3 sample_4
+#&gt; colData names(2): genotype age</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
