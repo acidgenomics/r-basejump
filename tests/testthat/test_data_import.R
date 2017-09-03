@@ -165,7 +165,7 @@ test_that("readYAML", {
 
     # Unsupported file type
     expect_error(
-        readYAML(file.path(testDataDir, "mtcars.csv")),
+        readYAML(file.path(testDataURL, "mtcars.csv")),
         "YAML file must have '.yaml' or '.yml' extension")
 
     # Missing file
