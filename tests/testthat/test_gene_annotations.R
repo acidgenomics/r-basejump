@@ -70,8 +70,15 @@ test_that("gene2symbol", {
     expect_warning(
         gene2symbol(c("ENSMUSG00000000000", "ENSMUSG00000000001")),
         "Failed to match all gene IDs to symbols")
-    expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
-    expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", NA)),
+        "NA identifier detected")
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", "")),
+        "Empty string identifier detected")
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000001")),
+        "Duplicate gene identifiers detected")
 
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
     vec <- c("EGFP", "ENSMUSG00000000001")
@@ -203,7 +210,7 @@ test_that("symbol2gene", {
         "NA identifier detected")
     expect_error(
         symbol2gene(c("Gnai3", "Gnai3"), organism = "mouse"),
-        "Duplicate genes detected")
+        "Duplicate gene symbols detected")
 
     # Identifier mismatch
     expect_warning(
