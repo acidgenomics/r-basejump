@@ -90,7 +90,8 @@
     <pre class="usage"><span class='fu'>mdHeader</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>mdHeader</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>mdHeader</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -110,6 +111,11 @@
     <tr>
       <th>tabset</th>
       <td><p>Include tabset marker.</p></td>
+    </tr>
+    <tr>
+      <th>asis</th>
+      <td><p>Set this to <code>TRUE</code> when using the function inside a loop or
+inside an RMarkdown chunk with <code>results="asis"</code> enabled.</p></td>
     </tr>
     </table>
     
@@ -142,7 +148,10 @@
 #&gt; attr(,"class")
 #&gt; [1] "knit_asis"
 #&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div></pre>
+#&gt; [1] NA</div><div class='input'><span class='fu'>mdHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## Header
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

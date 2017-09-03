@@ -8,7 +8,7 @@
 \usage{
 transmit(object, ...)
 
-\S4method{transmit}{character}(object, pattern = NULL, rename = NULL,
+\S4method{transmit}{character}(object, pattern, rename = NULL,
   compress = FALSE, localDir = "data-raw")
 }
 \arguments{
