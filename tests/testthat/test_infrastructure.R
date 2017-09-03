@@ -83,3 +83,16 @@ test_that("dots", {
         dots(mtcars, mtcars, character = TRUE),
         "Duplicate dots: mtcars")
 })
+
+
+
+test_that("prepareTemplate", {
+    expect_silent(
+        prepareTemplate())
+    output <- capture.output(
+        prepareTemplate("setup.R", overwrite = TRUE),
+        type = "message")
+    expect_equal(
+        output[[1L]],
+        "trying URL 'http://steinbaugh.com/basejump/downloads/setup.R'")
+})
