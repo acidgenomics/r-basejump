@@ -125,4 +125,13 @@ test_that("transmit", {
         transmit("http://steinbaugh.com",
                  pattern = "README"),
         "FTP protocol not detected")
+    expect_error(
+        transmit(ensembl,
+                 pattern = "XXX"),
+        "Pattern didn't match any files")
+    expect_error(
+        transmit(ensembl,
+                 pattern = "README",
+                 rename = c("XXX", "YYY")),
+        "Rename vector doesn't match the number of remote files")
 })

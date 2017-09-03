@@ -33,7 +33,7 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object, organism = NULL) {
+.g2svec <- function(object, organism) {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -47,10 +47,10 @@ NULL
     }
 
     # Detect organism
-    if (!is.null(organism)) {
-        organism <- detectOrganism(organism)
-    } else {
+    if (missing(organism)) {
         organism <- detectOrganism(object[[1L]])
+    } else {
+        organism <- detectOrganism(organism)
     }
 
     g2s <- annotable(organism, format = "gene2symbol") %>%
@@ -68,17 +68,8 @@ NULL
             call. = FALSE)
         symbol <- c(symbol, nomatch)
     }
-    symbol <- symbol[object]
 
-    # Final integrity checks
-    if (any(is.na(symbol))) {
-        stop("NA symbols detected", call. = FALSE)
-    }
-    if (any(duplicated(symbol))) {
-        stop("Duplicate symbols detected", call. = FALSE)
-    }
-
-    symbol
+    symbol[object]
 }
 
 
