@@ -39,11 +39,6 @@ NULL
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
 
-    # Check identifier integrity
-    if (!identical(length(enstxp), length(ensgene))) {
-        stop("Transcript/gene mismatch")
-    }
-
     df <- cbind(enstxp, ensgene) %>%
         as.data.frame %>%
         distinct %>%
