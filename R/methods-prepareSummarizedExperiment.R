@@ -3,15 +3,15 @@
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.
 #'
-#' `prepareSE()` also provides automatic metadata slotting of multiple useful
-#' environment parameters:
+#' `prepareSummarizedExperiment()` also provides automatic metadata slotting of
+#' multiple useful environment parameters:
 #'
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
 #' - `sessionInfo`: R session information.
 #'
-#' @rdname prepareSE
-#' @name prepareSE
+#' @rdname prepareSummarizedExperiment
+#' @name prepareSummarizedExperiment
 #'
 #' @param object Object supporting dimensions ([base::dim()]), or a list
 #'   containing valid objects. For NGS experiments, a counts matrix is
@@ -19,14 +19,14 @@
 #'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
 #'   list, as long as they all have the same dimensions. List object can be
 #'   supplied as either class `list` or `SimpleList`.
-#' @param colData **Required**. Object describing assay matrix columns.
-#'   Must support [base::dim()].
-#' @param rowData **Required**. Object describing assay matrix rows.
-#'   Must support [base::dim()].
+#' @param colData Object describing assay matrix columns. Must support
+#'   [base::dim()].
+#' @param rowData Object describing assay matrix rows. Must support
+#'   [base::dim()].
 #' @param metadata *Optional*. Metadata list.
 #'
 #' @seealso
-#' - [SummarizedExperiment::SummarizedExperiment].
+#' - [SummarizedExperiment::SummarizedExperiment()].
 #' - [base::Sys.Date()].
 #' - [base::getwd()].
 #' - [utils::sessionInfo()].
@@ -46,13 +46,13 @@
 #'     manufacturer = c("Mazda", "Datsun"),
 #'     model_number = c("RX4", "710"),
 #'     row.names = rownames(mat))
-#' prepareSE(mat, colData, rowData)
+#' prepareSummarizedExperiment(mat, colData, rowData)
 NULL
 
 
 
 # Constructors ====
-.prepareSE <- function(
+.prepareSummarizedExperiment <- function(
     object,
     colData,
     rowData,
@@ -147,23 +147,27 @@ NULL
 
 
 # Methods ====
-#' @rdname prepareSE
+#' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSE", "list", .prepareSE)
+setMethod("prepareSummarizedExperiment",
+          "list",
+          .prepareSummarizedExperiment)
 
 
 
-#' @rdname prepareSE
+#' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSE", "SimpleList", .prepareSE)
+setMethod("prepareSummarizedExperiment",
+          "SimpleList",
+          .prepareSummarizedExperiment)
 
 
 
-#' @rdname prepareSE
+#' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSE", "ANY", function(
+setMethod("prepareSummarizedExperiment", "ANY", function(
     object, colData, rowData, metadata = NULL) {
-    .prepareSE(
+    .prepareSummarizedExperiment(
         SimpleList(assay = object),
         colData,
         rowData,

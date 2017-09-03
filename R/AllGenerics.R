@@ -212,12 +212,12 @@ setGeneric("pct", function(object, ...) {
 
 
 
-#' @rdname prepareSE
+#' @rdname prepareSummarizedExperiment
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("prepareSE", function(object, ...) {
-    standardGeneric("prepareSE")
+setGeneric("prepareSummarizedExperiment", function(object, ...) {
+    standardGeneric("prepareSummarizedExperiment")
 })
 
 
