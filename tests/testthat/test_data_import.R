@@ -105,16 +105,16 @@ test_that("readYAML", {
 
 
 test_that("transmit", {
-    ensembl_base_url <- "ftp://ftp.ensembl.org/pub/release-89"
+    ensembl <- "ftp://ftp.ensembl.org/pub/release-89"
     expect_equal(
-        transmit(ensembl_base_url,
+        transmit(ensembl,
                  pattern = "README",
                  compress = FALSE) %>%
             .[["README"]] %>%
             .[[1L]],
         "data-raw/README")
     expect_equal(
-        transmit(ensembl_base_url,
+        transmit(ensembl,
                  pattern = "README",
                  rename = "ensembl_readme.txt",
                  compress = TRUE) %>%
