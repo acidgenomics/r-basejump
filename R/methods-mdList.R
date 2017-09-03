@@ -13,6 +13,7 @@
 #' groceries <- c("milk", "eggs")
 #' mdList(groceries)
 #' mdList(groceries, ordered = TRUE)
+#' mdList(groceries, asis = TRUE)
 NULL
 
 
@@ -20,8 +21,11 @@ NULL
 # Methods ====
 #' @rdname mdList
 #' @export
-setMethod("mdList", "character", function(object, ordered = FALSE) {
-    vapply(seq_along(object), function(a) {
+setMethod("mdList", "character", function(
+    object,
+    ordered = FALSE,
+    asis = FALSE) {
+    lst <- vapply(seq_along(object), function(a) {
         if (isTRUE(ordered)) {
             prefix <- paste0(a, ".")
         } else {
@@ -29,10 +33,15 @@ setMethod("mdList", "character", function(object, ordered = FALSE) {
         }
         paste(prefix, object[[a]])
     },
-    character(1L)) %>%
-        # Add a trailing line break
-        paste0("\n") %>%
-        # Specify that output should be handled as Markdown text
-        structure(format = "markdown") %>%
-        asis_output
+    character(1L))
+    if (isTRUE(asis)) {
+        writeLines(c("", lst, ""))
+    } else {
+        lst %>%
+            # Add a trailing line break
+            paste0("\n") %>%
+            # Specify that output should be handled as Markdown text
+            structure(format = "markdown") %>%
+            asis_output
+    }
 })
