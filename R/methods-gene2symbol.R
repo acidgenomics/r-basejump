@@ -45,12 +45,15 @@ NULL
     if (any(object == "")) {
         stop("Empty string identifier detected", call. = FALSE)
     }
+    if (any(duplicated(object))) {
+        stop("Duplicate gene identifiers detected", call. = FALSE)
+    }
 
     # Detect organism
-    if (!is.null(organism)) {
-        organism <- detectOrganism(organism)
-    } else {
+    if (is.null(organism)) {
         organism <- detectOrganism(object[[1L]])
+    } else {
+        organism <- detectOrganism(organism)
     }
 
     g2s <- annotable(organism, format = "gene2symbol") %>%
@@ -68,22 +71,13 @@ NULL
             call. = FALSE)
         symbol <- c(symbol, nomatch)
     }
-    symbol <- symbol[object]
 
-    # Final integrity checks
-    if (any(is.na(symbol))) {
-        stop("NA symbols detected", call. = FALSE)
-    }
-    if (any(duplicated(symbol))) {
-        stop("Duplicate symbols detected", call. = FALSE)
-    }
-
-    symbol
+    symbol[object]
 }
 
 
 
-# Pass arguments to .g2svec
+# Pass arguments to `.g2svec()`
 .g2sdim <- function(object, organism = NULL) {
     rownames(object) <- rownames(object) %>%
         .g2svec(organism = organism)

@@ -19,16 +19,44 @@ test_that("annotable", {
         rownames(anno)[[1L]],
         "ENSMUSG00000000001")
 
-    # Genome build aliases
+    # gene2entrez
+    anno <- annotable("grcm38", format = "gene2entrez")
     expect_equal(
-        annotable("grch37"),
-        annotable("hg19"))
-    expect_equal(
-        annotable("grch38"),
-        annotable("hg38"))
+        anno[1L:2L, ],
+        tibble(
+            ensgene = c("ENSMUSG00000000001",
+                        "ENSMUSG00000000003"),
+            entrez = c(14679L,
+                       54192L)))
+
+    # Genome build alias
     expect_equal(
         annotable("grcm38"),
         annotable("mm10"))
+
+    # Bad input
+    expect_error(
+        annotable(c("human", "mouse")),
+        "Object must be a string")
+    expect_error(
+        annotable("grcm38", format = "XXX"),
+        "Unsupported format")
+    expect_error(
+        annotable("XXX"),
+        "String failed to match a supported genome")
+
+    # `detectOrganism()` support
+    organism <- detectOrganism("mouse")
+    expect_equal(
+        annotable(organism) %>%
+        rownames %>%
+        .[[1L]],
+        "ENSMUSG00000000001")
+    # Now make the organism vector malformed
+    names(organism) <- "XXX"
+    expect_error(
+        annotable(organism),
+        "Unsupported organism name")
 })
 
 
@@ -42,8 +70,28 @@ test_that("gene2symbol", {
     expect_warning(
         gene2symbol(c("ENSMUSG00000000000", "ENSMUSG00000000001")),
         "Failed to match all gene IDs to symbols")
-    expect_error(gene2symbol(c("ENSMUSG00000000001", NA)))
-    expect_error(gene2symbol(c("ENSMUSG00000000001", "")))
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", NA)),
+        "NA identifier detected")
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", "")),
+        "Empty string identifier detected")
+    expect_error(
+        gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000001")),
+        "Duplicate gene identifiers detected")
+
+    # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
+    vec <- c("EGFP", "ENSMUSG00000000001")
+    expect_error(
+        gene2symbol(vec),
+        "Failed to detect supported organism")
+    expect_equal(
+        gene2symbol(vec, organism = "mouse"),
+        c(EGFP = "EGFP",
+          ENSMUSG00000000001 = "Gnai3"))
+    expect_warning(
+        gene2symbol(vec, organism = "mouse"),
+        "Failed to match all gene IDs to symbols: EGFP")
 
     # matrix
     mat <- matrix(
@@ -76,8 +124,8 @@ test_that("gene2symbol", {
 
 test_that("gene2symbolFromGTF", {
     # Mouse
-    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
-        gene2symbolFromGTF
+    file <- file.path(testDataURL, "mmusculus.gtf")
+    mm <- gene2symbolFromGTF(file.path(file))
     expect_equal(
         dim(mm),
         c(17L, 2L))
@@ -90,6 +138,11 @@ test_that("gene2symbolFromGTF", {
                        "Xkr4"),
             row.names = c("ENSMUSG00000025900",
                           "ENSMUSG00000051951")))
+    # Test GTF data.frame input
+    gtf <- readGTF(file)
+    expect_equal(
+        gene2symbolFromGTF(gtf),
+        mm)
 
     # Fruitfly
     dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
@@ -129,9 +182,60 @@ test_that("readGTF", {
 
     # Bad URL
     expect_error(
-        file.path(testDataURL, "mtcars.rda") %>%
-            readGTF,
-        "GTF file failed to load. Check path.")
+        readGTF(file.path(testDataURL, "mtcars.rda")),
+        "GTF file failed to load")
+
+    # Bad GTF file
+    expect_error(
+        readGTF(file.path(testDataURL, "mtcars.tsv")),
+        "GTF file failed to load")
+})
+
+
+
+test_that("symbol2gene", {
+    # character
+    expect_equal(
+        symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse"),
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003"))
+    expect_error(
+        symbol2gene("Gnai3", organism = "mouse"),
+        "symbol2gene conversion requires > 1 identifier")
+    expect_error(
+        symbol2gene(c("Gnai3", "Pbsn", ""), organism = "mouse"),
+        "Empty string identifier detected")
+    expect_error(
+        symbol2gene(c("Gnai3", "Pbsn", NA), organism = "mouse"),
+        "NA identifier detected")
+    expect_error(
+        symbol2gene(c("Gnai3", "Gnai3"), organism = "mouse"),
+        "Duplicate gene symbols detected")
+
+    # Identifier mismatch
+    expect_warning(
+        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
+        "Failed to match all gene symbols to IDs: XXX")
+    expect_equal(
+        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003",
+          XXX = "XXX"))
+
+    # matrix
+    expect_equal(
+        matrix(
+            data = seq(1L:4L),
+            byrow = TRUE,
+            nrow = 2L,
+            ncol = 2L,
+            dimnames = list(c("Gnai3", "Pbsn"),
+                            c("sample1", "sample2"))) %>%
+            symbol2gene(organism = "mouse") %>%
+            dimnames %>%
+            .[[1L]],
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003"))
 })
 
 
@@ -178,8 +282,8 @@ test_that("tx2gene", {
 
 test_that("tx2geneFromGTF", {
     # Mouse
-    mm <- file.path(testDataURL, "mmusculus.gtf") %>%
-        tx2geneFromGTF
+    file <- file.path(testDataURL, "mmusculus.gtf")
+    mm <- tx2geneFromGTF(file.path(file))
     expect_equal(
         dim(mm),
         c(20L, 2L))
@@ -192,6 +296,11 @@ test_that("tx2geneFromGTF", {
                         "ENSMUSG00000064842"),
             row.names = c("ENSMUST00000070533",
                           "ENSMUST00000082908")))
+    # Test GTF data.frame input
+    gtf <- readGTF(file)
+    expect_equal(
+        tx2geneFromGTF(gtf),
+        mm)
 
     # Fruitfly
     dm <- file.path(testDataURL, "dmelanogaster.gtf") %>%
@@ -208,4 +317,9 @@ test_that("tx2geneFromGTF", {
                         "FBgn0052826"),
             row.names = c("FBtr0070000",
                           "FBtr0070001")))
+
+    # bad data.frame
+    expect_error(
+        tx2geneFromGTF(mtcars),
+        "GTF object must be data.frame with 9 columns")
 })

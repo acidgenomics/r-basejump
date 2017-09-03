@@ -33,12 +33,11 @@ setMethod("readGTF", "character", function(object) {
                           "keyValuePairs"),
             comment.char = "#",
             header = FALSE),
+        error = function(e) {
+            stop("GTF file failed to load", call. = FALSE)
+        },
         warning = function(w) {
-            stop("GTF file failed to load. Check path.", call. = FALSE)
+            stop("GTF file failed to load", call. = FALSE)
         })
-    # Integrity checks
-    if (dim(gtf)[[2L]] != 9L) {
-        stop("GTF object must be data.frame with 9 columns")
-    }
     gtf
 })

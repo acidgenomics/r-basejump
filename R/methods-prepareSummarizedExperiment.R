@@ -1,0 +1,227 @@
+#' Prepare SummarizedExperiment
+#'
+#' This is a utility wrapper for `SummarizedExperiment()` that provides
+#' automatic subsetting for `colData` and `rowData`.
+#'
+#' `prepareSummarizedExperiment()` also provides automatic metadata slotting of
+#' multiple useful environment parameters:
+#'
+#' - `date`: Today's date.
+#' - `wd`: Working directory.
+#' - `sessionInfo`: R session information.
+#'
+#' @rdname prepareSummarizedExperiment
+#' @name prepareSummarizedExperiment
+#'
+#' @param object Object supporting dimensions ([base::dim()]), or a list
+#'   containing valid objects. For NGS experiments, a counts matrix is
+#'   recommended, and can be passed in either dense (`matrix`) or sparse
+#'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
+#'   list, as long as they all have the same dimensions. List object can be
+#'   supplied as either class `list` or `SimpleList`.
+#' @param rowData Object describing assay matrix rows. Must support
+#'   [base::dim()].
+#' @param colData Object describing assay matrix columns. Must support
+#'   [base::dim()].
+#' @param metadata *Optional*. Metadata list.
+#'
+#' @seealso
+#' - [SummarizedExperiment::SummarizedExperiment()].
+#' - [base::Sys.Date()].
+#' - [base::getwd()].
+#' - [utils::sessionInfo()].
+#'
+#' @return [SummarizedExperiment].
+#'
+#' @examples
+#' mat <- matrix(
+#'     seq(1L:16L),
+#'     nrow = 4L,
+#'     ncol = 4L,
+#'     dimnames = list(
+#'         c("gene_1", "gene_2", "gene_3", "gene_4"),
+#'         c("sample_1", "sample_2", "sample_3", "sample_4")))
+#' rowData <- data.frame(
+#'     ensgene = c("Aaa", "Bbb", "Ccc", "Ddd"),
+#'     biotype = c("coding", "coding", "coding", "pseudogene"),
+#'     row.names = rownames(mat))
+#' colData <- data.frame(
+#'     genotype = c("wt", "wt", "ko", "ko"),
+#'     age = c(3L, 6L, 3L, 6L),
+#'     row.names = colnames(mat))
+#' prepareSummarizedExperiment(
+#'     mat,
+#'     rowData = rowData,
+#'     colData = colData)
+NULL
+
+
+
+# Constructors ====
+.prepareSEFromAssay <- function(
+    object,
+    rowData,
+    colData,
+    metadata = NULL) {
+    .prepareSEFromList(
+        list(assay = object),
+        colData = colData,
+        rowData = rowData,
+        metadata = metadata)
+}
+
+
+
+.prepareSEFromList <- function(
+    object,
+    rowData,
+    colData,
+    metadata = NULL) {
+    # Assays ====
+    assays <- as(object, "SimpleList")
+    assay <- assays[[1L]]
+    if (is.null(dim(assay))) {
+        stop("Assay object must support 'dim()'")
+    }
+    # Check for potential dimnames problems
+    if (is.null(rownames(assay))) {
+        stop("Assay missing rownames")
+    }
+    if (is.null(colnames(assay))) {
+        stop("Assay missing colnames")
+    }
+    if (any(duplicated(rownames(assay)))) {
+        stop("Non-unique rownames")
+    }
+    if (any(duplicated(colnames(assay)))) {
+        stop("Non-unique colnames")
+    }
+    if (!identical(make.names(rownames(assay)), rownames(assay))) {
+        stop(paste("Rownames are not valid.",
+                   "See 'base::make.names()' for more information."))
+    }
+    if (!identical(make.names(colnames(assay)), colnames(assay))) {
+        stop(paste("Colnames are not valid.",
+                   "See 'base::make.names()' for more information."))
+    }
+
+    # rowData ====
+    if (is.null(dim(rowData))) {
+        stop("rowData must support 'dim()'")
+    }
+    rowData <- as.data.frame(rowData)
+    # Handle tibble rownames
+    if (!has_rownames(rowData) &
+        "rowname" %in% colnames(rowData)) {
+        rowData <- column_to_rownames(rowData)
+    }
+    if (!has_rownames(rowData)) {
+        stop("rowData missing rownames")
+    }
+    if (!all(rownames(assay) %in% rownames(rowData))) {
+        missing <- setdiff(rownames(assay), rownames(rowData))
+        # Warn instead of stop here, for better handling of deprecated
+        # gene identifiers
+        warning(paste(
+            "rowData mismatch with assay slot:",
+            toString(head(missing))
+        ))
+    }
+    rowData <- rowData %>%
+        .[rownames(assay), , drop = FALSE] %>%
+        set_rownames(rownames(assay)) %>%
+        as("DataFrame")
+
+    # colData ====
+    if (is.null(dim(colData))) {
+        stop("colData must support 'dim()'")
+    }
+    colData <- as.data.frame(colData)
+    # Handle tibble rownames
+    if (!has_rownames(colData) &
+        "rowname" %in% colnames(colData)) {
+        colData <- column_to_rownames(colData)
+    }
+    if (!has_rownames(colData)) {
+        stop("colData missing rownames")
+    }
+    if (!all(colnames(assay) %in% rownames(colData))) {
+        missing <- setdiff(colnames(assay), rownames(colData))
+        stop(paste(
+            "colData mismatch with assay slot:",
+            toString(head(missing))
+        ))
+    }
+    colData <- colData %>%
+        .[colnames(assay), , drop = FALSE] %>%
+        set_rownames(colnames(assay)) %>%
+        as("DataFrame")
+
+    # Metadata ====
+    if (is.null(metadata)) {
+        metadata <- list()
+    } else {
+        if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
+            stop("Metadata must be 'list' or 'SimpleList' class object")
+        }
+    }
+    metadata[["date"]] <- Sys.Date()
+    metadata[["wd"]] <- getwd()
+    metadata[["sessionInfo"]] <- sessionInfo()
+
+    # Check for retired Ensembl identifiers, which can happen when a more recent
+    # annotable build is used than the genome build. If present, store these
+    # identifiers in the metadata.
+    if (!is.null(rowData[["ensgene"]])) {
+        if (any(is.na(rowData[["ensgene"]]))) {
+            metadata[["missingGenes"]] <- rowData %>%
+                .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
+                rownames %>%
+                sort
+        }
+    }
+
+    message("Preparing SummarizedExperiment")
+    SummarizedExperiment(
+        assays = assays,
+        rowData = rowData,
+        colData = colData,
+        metadata = metadata)
+}
+
+
+
+# Methods ====
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "ANY", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "data.frame", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "dgCMatrix", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "list", .prepareSEFromList)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "matrix", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "SimpleList", .prepareSEFromList)

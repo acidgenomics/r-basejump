@@ -9,7 +9,6 @@
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
 #' @param name Desired variable name.
-#' @param env Destination environment.
 #'
 #' @return Assigned object name as a string.
 #' @export
@@ -20,19 +19,15 @@ assignAndSaveData <- function(
     name,
     object,
     dir = "data",
-    compress = TRUE,
-    env = parent.frame()) {
+    compress = TRUE) {
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     dir <- normalizePath(dir)
-    if (!identical(environmentName(env), "")) {
-        message(paste("Assigning", name, "into", environmentName(env)))
-    }
-    assign(name, object, envir = env)
-    message(paste(
-        "Saving", name, "to", basename(dir)))
+    envir <- parent.frame()
+    assign(name, object, envir = envir)
+    message(paste("Saving", name, "to", basename(dir)))
     save(list = name,
          file = file.path(dir, paste0(name, ".rda")),
-         envir = env,
+         envir = envir,
          compress = compress)
     name
 }

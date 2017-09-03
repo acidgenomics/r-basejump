@@ -39,11 +39,6 @@ NULL
     symbol <- str_match(anno, "gene_name ([^;]+);") %>%
         .[, 2L]
 
-    # Check identifier integrity
-    if (!identical(length(ensgene), length(symbol))) {
-        stop("Gene/symbol mismatch")
-    }
-
     df <- cbind(ensgene, symbol) %>%
         as.data.frame %>%
         distinct %>%

@@ -13,6 +13,12 @@ test_that("mdHeader", {
         mdHeader("Header", tabset = TRUE) %>%
             as.character,
         "## Header {.tabset}\n")  # nolint
+    expect_output(
+        mdHeader("Header", asis = TRUE),
+        "\\n\\n## Header\\n")  # nolint
+    expect_error(
+        mdHeader("Header", level = 8L),
+        "Markdown supports 1-7 header levels")
 })
 
 
@@ -31,4 +37,7 @@ test_that("mdList", {
         mdList(groceries, ordered = TRUE) %>%
             as.character,
         c("1. milk\n", "2. eggs\n"))
+    expect_output(
+        mdList(groceries, asis = TRUE),
+        "\\n- milk\\n- eggs\\n")
 })
