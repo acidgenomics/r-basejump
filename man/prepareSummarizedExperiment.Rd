@@ -4,20 +4,32 @@
 \docType{methods}
 \name{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment}
-\alias{prepareSummarizedExperiment,list-method}
-\alias{prepareSummarizedExperiment,SimpleList-method}
 \alias{prepareSummarizedExperiment,ANY-method}
+\alias{prepareSummarizedExperiment,data.frame-method}
+\alias{prepareSummarizedExperiment,dgCMatrix-method}
+\alias{prepareSummarizedExperiment,list-method}
+\alias{prepareSummarizedExperiment,matrix-method}
+\alias{prepareSummarizedExperiment,SimpleList-method}
 \title{Prepare SummarizedExperiment}
 \usage{
 prepareSummarizedExperiment(object, ...)
 
+\S4method{prepareSummarizedExperiment}{ANY}(object, colData, rowData,
+  metadata = NULL)
+
+\S4method{prepareSummarizedExperiment}{data.frame}(object, colData, rowData,
+  metadata = NULL)
+
+\S4method{prepareSummarizedExperiment}{dgCMatrix}(object, colData, rowData,
+  metadata = NULL)
+
 \S4method{prepareSummarizedExperiment}{list}(object, colData, rowData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{SimpleList}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{matrix}(object, colData, rowData,
   metadata = NULL)
 
-\S4method{prepareSummarizedExperiment}{ANY}(object, colData, rowData,
+\S4method{prepareSummarizedExperiment}{SimpleList}(object, colData, rowData,
   metadata = NULL)
 }
 \arguments{
@@ -56,9 +68,9 @@ multiple useful environment parameters:
 }
 \examples{
 mat <- mtcars \%>\%
-    .[c("Mazda RX4", "Datsun 710"), ] \%>\%
-    .[, c("mpg", "gear")] \%>\%
-    as.matrix
+    snake(rownames = TRUE) \%>\%
+    .[c("mazda_rx4", "datsun_710"), ] \%>\%
+    .[, c("mpg", "gear")]
 colData <- data.frame(
     description = c("Miles per gallon", "Number of gears"),
     abbreviation = c(TRUE, FALSE),
