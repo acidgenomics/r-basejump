@@ -52,6 +52,16 @@ test_that("readFileByExtension", {
     expect_error(
         readFileByExtension(file.path(testDataURL, "mtcars.rda")),
         "Unsupported file type")
+
+    # Missing extension
+    expect_error(
+        file.path("https://cran.r-project.org",
+                  "web",
+                  "packages",
+                  "testthat",
+                  "LICENSE") %>%
+            readFileByExtension,
+        "File extension missing")
 })
 
 
