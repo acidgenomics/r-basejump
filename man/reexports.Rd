@@ -8,11 +8,15 @@
 \alias{set_rownames}
 \alias{Matrix}
 \alias{read_csv}
+\alias{read_tsv}
 \alias{write_csv}
-\alias{glimpse}
+\alias{write_tsv}
 \alias{DataFrame}
 \alias{metadata}
+\alias{column_to_rownames}
+\alias{glimpse}
 \alias{is_tibble}
+\alias{rownames_to_column}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -25,10 +29,10 @@ below to see their documentation.
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{write_csv}}}
+  \item{readr}{\code{\link[readr]{read_csv}}, \code{\link[readr]{read_tsv}}, \code{\link[readr]{write_csv}}, \code{\link[readr]{write_tsv}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}}
 
-  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{column_to_rownames}}, \code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{rownames_to_column}}, \code{\link[tibble]{tibble}}}
 }}
 
