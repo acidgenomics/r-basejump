@@ -62,11 +62,6 @@ setMethod("readFileByExtension", "character", function(
         stop("Unsupported file type")
     }
 
-    # Coerce data.frame to tibble
-    if (is.data.frame(data) & !is_tibble(data)) {
-        data <- as(data, "tibble")
-    }
-
     # Sanitize colnames, if desired
     if (!is.null(colnames(data)) &
         makeNames %in% c("camel", "snake")) {
