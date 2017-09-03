@@ -13,6 +13,17 @@ test_that("prepareSummarizedExperiment", {
         manufacturer = c("Mazda", "Datsun"),
         model_number = c("RX4", "710"),
         row.names = rownames(mat))
+    # Enforce strict names
+    # @seealso [base::make.names()].
+    expect_error(
+        prepareSummarizedExperiment(
+            mat,
+            colData = coldata,
+            rowData = rowdata),
+        "Row names are not valid.")
+    # After snake_case sanitization, it should now work
+    mat <- snake(mat, rownames = TRUE)
+    rowdata <- snake(rowdata, rownames = TRUE)
     se <- prepareSummarizedExperiment(
         mat,
         colData = coldata,
@@ -23,6 +34,50 @@ test_that("prepareSummarizedExperiment", {
     expect_equal(
         names(metadata(se)),
         c("date", "wd", "sessionInfo"))
+
+    # Check tibble rownames support
+    expect_equal(
+        prepareSummarizedExperiment(
+            mat,
+            colData = as(coldata, "tibble"),
+            rowData = as(rowdata, "tibble")),
+        se)
+
+    # Bad pass-in of objects not supporting `dim()`
+    expect_error(
+        prepareSummarizedExperiment(
+            list(c(xxx = "yyy")),
+            coldata,
+            rowdata),
+        "Assay object must support 'dim\\(\\)'")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat,
+            colData = c(xxx = "yyy"),
+            rowData = rowdata),
+        "colData must support 'dim\\(\\)'")
+    expect_error(
+        prepareSummarizedExperiment(
+            mat,
+            colData = coldata,
+            rowData = c(xxx = "yyy")),
+        "rowData must support 'dim\\(\\)'")
+
+    # Dimension mismatch handling
+    matcolmismatch <- cbind(mat, "extra" = c("A", "B"))
+    expect_error(
+        prepareSummarizedExperiment(
+            matcolmismatch,
+            colData = coldata,
+            rowData = rowdata),
+        "colData mismatch with assay slot: extra")
+    matrowmismatch <- rbind(mat, "valiant" = c(18.1, 3L))
+    expect_warning(
+        prepareSummarizedExperiment(
+            matrowmismatch,
+            colData = coldata,
+            rowData = rowdata),
+        "rowData mismatch with assay slot: valiant")
 
     # Deprecations
     expect_warning(
