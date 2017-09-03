@@ -11,6 +11,14 @@
 - Improved code coverage and unit testing with additional testthat checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.
 - Code coverage now above 90%!
 - Renamed `packageSE()` to `prepareSE()` for better semantic meaning.
+- Made multiple generics more flexible by inclusion of `…`.
+- Reduced the number of deprecated functions.
+- Initial commit of internal `localOrRemote()` utility function.
+- Initial commit of `prepareTemplate()` function.
+- Added additional `data-raw/` scripts.
+- Added `onLoad.R` script back to ensure proper attachment of annotables data package.
+- Removed tidyverse S4 method support.
+- Improved remote file handling for `readFileByExtension()`, `readGTF()`, and `readYAML()` functions.
 
 
 
