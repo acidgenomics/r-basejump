@@ -2,6 +2,7 @@
 
 - Improved unit testing coverage.
 - Renamed `prepareSE()` to `prepareSummarizedExperiment()`. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.
+- Reworked and simplified `detectHPC()` function to allow for unit testing.
 
 
 
