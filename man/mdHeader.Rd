@@ -24,7 +24,8 @@ mdHeader(object, ...)
 inside an RMarkdown chunk with \code{results="asis"} enabled.}
 }
 \value{
-\code{\link[=writeLines]{writeLines()}}.
+Markdown formatted code as \link[knitr:asis_output]{knitr::asis_output} or
+\code{\link[base:writeLines]{base::writeLines()}}.
 }
 \description{
 Markdown Header

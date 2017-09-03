@@ -158,7 +158,7 @@ test_that("symbol2gene", {
     # Identifier mismatch
     expect_warning(
         symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
-        "Failed to match all gene symbols to IDs: XXX, YYY")
+        "Failed to match all gene symbols to IDs: XXX")
     expect_equal(
         symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
         c(Gnai3 = "ENSMUSG00000000001",

@@ -17,9 +17,9 @@ mdList(object, ...)
 
 \item{ordered}{Ordered (\code{TRUE}; \code{1.}) or unordered (\code{FALSE}; \code{-}) list in
 Markdown format.}
-}
-\value{
-\code{\link[=writeLines]{writeLines()}}.
+
+\item{asis}{Set this to \code{TRUE} when using the function inside a loop or
+inside an RMarkdown chunk with \code{results="asis"} enabled.}
 }
 \description{
 Markdown List

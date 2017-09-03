@@ -110,7 +110,7 @@ test_that("transmit", {
         transmit(ftpBaseURL,
                  pattern = "README",
                  compress = FALSE) %>%
-            .[[pattern]] %>%
+            .[["README"]] %>%
             .[[1L]],
         "data-raw/README")
     expect_equal(
@@ -118,7 +118,7 @@ test_that("transmit", {
                  pattern = "README",
                  rename = "ensembl_readme.txt",
                  compress = TRUE) %>%
-            .[[pattern]] %>%
+            .[["README"]] %>%
             .[[1L]],
         "data-raw/ensembl_readme.txt.gz")
     expect_error(

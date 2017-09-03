@@ -8,8 +8,8 @@
 #' @param asis Set this to `TRUE` when using the function inside a loop or
 #'   inside an RMarkdown chunk with `results="asis"` enabled.
 #'
-#' @return [writeLines()].
-#' @export
+#' @return Markdown formatted code as [knitr::asis_output] or
+#'   [base::writeLines()].
 #'
 #' @examples
 #' mdHeader("Header")

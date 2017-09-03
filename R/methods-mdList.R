@@ -3,11 +3,9 @@
 #' @rdname mdList
 #' @name mdList
 #'
+#' @inheritParams mdHeader
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
 #'   Markdown format.
-#'
-#' @return [writeLines()].
-#' @export
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")
