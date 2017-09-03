@@ -19,16 +19,44 @@ test_that("annotable", {
         rownames(anno)[[1L]],
         "ENSMUSG00000000001")
 
-    # Genome build aliases
+    # gene2entrez
+    anno <- annotable("grcm38", format = "gene2entrez")
     expect_equal(
-        annotable("grch37"),
-        annotable("hg19"))
-    expect_equal(
-        annotable("grch38"),
-        annotable("hg38"))
+        anno[1L:2L, ],
+        tibble(
+            ensgene = c("ENSMUSG00000000001",
+                        "ENSMUSG00000000003"),
+            entrez = c(14679L,
+                       54192L)))
+
+    # Genome build alias
     expect_equal(
         annotable("grcm38"),
         annotable("mm10"))
+
+    # Bad input
+    expect_error(
+        annotable(c("human", "mouse")),
+        "Object must be a string")
+    expect_error(
+        annotable("grcm38", format = "XXX"),
+        "Unsupported format")
+    expect_error(
+        annotable("XXX"),
+        "String failed to match a supported genome")
+
+    # `detectOrganism()` support
+    organism <- detectOrganism("mouse")
+    expect_equal(
+        annotable(organism) %>%
+        rownames %>%
+        .[[1L]],
+        "ENSMUSG00000000001")
+    # Now make the organism vector malformed
+    names(organism) <- "XXX"
+    expect_error(
+        annotable(organism),
+        "Unsupported organism name")
 })
 
 
