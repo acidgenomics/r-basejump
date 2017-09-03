@@ -35,9 +35,9 @@
 #'
 #' @examples
 #' mat <- mtcars %>%
-#'     .[c("Mazda RX4", "Datsun 710"), ] %>%
-#'     .[, c("mpg", "gear")] %>%
-#'     as.matrix
+#'     snake(rownames = TRUE) %>%
+#'     .[c("mazda_rx4", "datsun_710"), ] %>%
+#'     .[, c("mpg", "gear")]
 #' colData <- data.frame(
 #'     description = c("Miles per gallon", "Number of gears"),
 #'     abbreviation = c(TRUE, FALSE),
@@ -52,74 +52,107 @@ NULL
 
 
 # Constructors ====
-.prepareSummarizedExperiment <- function(
+.prepareSEFromAssay <- function(
     object,
     colData,
     rowData,
     metadata = NULL) {
-    message("Preparing SummarizedExperiment")
+    .prepareSEFromList(
+        list(assay = object),
+        colData = colData,
+        rowData = rowData,
+        metadata = metadata)
+}
 
+
+
+.prepareSEFromList <- function(
+    object,
+    colData,
+    rowData,
+    metadata = NULL) {
     # Assays ====
     assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
-        stop("Assay object must support 'dim()'", call. = FALSE)
+        stop("Assay object must support 'dim()'")
+    }
+
+    # Check for potential dim problems
+    if (any(duplicated(rownames(assay)))) {
+        stop("Non-unique rownames")
+    }
+    if (any(duplicated(colnames(assay)))) {
+        stop("Non-unique colnames")
+    }
+    if (!identical(make.names(rownames(assay)), rownames(assay))) {
+        stop(paste("Row names are not valid.",
+                   "See 'base::make.names()' for more information."))
+    }
+    if (!identical(make.names(colnames(assay)), colnames(assay))) {
+        stop(paste("Column names are not valid.",
+                   "See 'base::make.names()' for more information."))
     }
 
     # colData ====
     if (is.null(dim(colData))) {
-        stop("colData must support 'dim()'", call. = FALSE)
+        stop("colData must support 'dim()'")
     }
-    # Ensure `tibble` class coercion to `data.frame`
-    if (is_tibble(colData)) {
-        colData <- as.data.frame(colData)
+    colData <- as.data.frame(colData)
+    # Handle tibble rownames
+    if (!has_rownames(colData) &
+        "rowname" %in% colnames(colData)) {
+        colData <- column_to_rownames(colData)
     }
-    # Attempt to use the first column for rownames, if unset
-    if (is.data.frame(colData) & !has_rownames(colData)) {
-        rownames(colData) <- colData[, 1L]
+    if (!has_rownames(colData)) {
+        stop("colData missing rownames")
     }
-    colData <- colData[colnames(assay), , drop = FALSE]
-    rownames(colData) <- colnames(assay)
-    colData <- as(colData, "DataFrame")
+    if (!all(colnames(assay) %in% rownames(colData))) {
+        missing <- setdiff(colnames(assay), rownames(colData))
+        stop(paste(
+            "colData mismatch with assay slot:",
+            toString(head(missing))
+        ))
+    }
+    colData <- colData %>%
+        .[colnames(assay), , drop = FALSE] %>%
+        set_rownames(colnames(assay)) %>%
+        as("DataFrame")
 
     # rowData ====
     if (is.null(dim(rowData))) {
-        stop("rowData must support 'dim()'", call. = FALSE)
+        stop("rowData must support 'dim()'")
     }
-    # Ensure `tibble` class coercion to `data.frame`
-    if (is_tibble(rowData)) {
-        rowData <- as.data.frame(rowData)
+    rowData <- as.data.frame(rowData)
+    # Handle tibble rownames
+    if (!has_rownames(rowData) &
+        "rowname" %in% colnames(rowData)) {
+        rowData <- column_to_rownames(rowData)
     }
-    # Attempt to use the first column for rownames, if unset
-    if (is.data.frame(rowData) & !has_rownames(rowData)) {
-        rownames(rowData) <- rowData[, 1L]
+    if (!has_rownames(rowData)) {
+        stop("rowData missing rownames")
     }
-    rowData <- rowData[rownames(assay), , drop = FALSE]
-    rownames(rowData) <- rownames(assay)
-    rowData <- as(rowData, "DataFrame")
-
-    # Check for name assignment problems
-    if (any(duplicated(rownames(colData)))) {
-        stop("Non-unique rownames in colData", call. = FALSE)
+    if (!all(rownames(assay) %in% rownames(rowData))) {
+        missing <- setdiff(rownames(assay), rownames(rowData))
+        # Warn instead of stop here, for better handling of deprecated
+        # gene identifiers
+        warning(paste(
+            "rowData mismatch with assay slot:",
+            toString(head(missing))
+        ))
     }
-    if (any(duplicated(rownames(rowData)))) {
-        stop("Non-unique rownames in rowData", call. = FALSE)
-    }
-    if (!identical(colnames(assay), rownames(colData))) {
-        stop("colData rowname mismatch", call. = FALSE)
-    }
-    if (!identical(rownames(assay), rownames(rowData))) {
-        stop("rowData rowname mismatch", call. = FALSE)
-    }
+    rowData <- rowData %>%
+        .[rownames(assay), , drop = FALSE] %>%
+        set_rownames(rownames(assay)) %>%
+        as("DataFrame")
 
     # Metadata
     if (is.null(metadata)) {
-        metadata <- SimpleList()
+        metadata <- list()
     } else {
         if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
             stop("metadata must be 'list' or 'SimpleList' class")
         }
-        metadata <- as(metadata, "SimpleList")
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
@@ -137,8 +170,9 @@ NULL
         }
     }
 
+    message("Preparing SummarizedExperiment")
     SummarizedExperiment(
-        assays,
+        assays = assays,
         colData = colData,
         rowData = rowData,
         metadata = metadata)
@@ -149,27 +183,34 @@ NULL
 # Methods ====
 #' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSummarizedExperiment",
-          "list",
-          .prepareSummarizedExperiment)
+setMethod("prepareSummarizedExperiment", "ANY", .prepareSEFromAssay)
 
 
 
 #' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSummarizedExperiment",
-          "SimpleList",
-          .prepareSummarizedExperiment)
+setMethod("prepareSummarizedExperiment", "data.frame", .prepareSEFromAssay)
 
 
 
 #' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSummarizedExperiment", "ANY", function(
-    object, colData, rowData, metadata = NULL) {
-    .prepareSummarizedExperiment(
-        SimpleList(assay = object),
-        colData,
-        rowData,
-        metadata)
-})
+setMethod("prepareSummarizedExperiment", "dgCMatrix", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "list", .prepareSEFromList)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "matrix", .prepareSEFromAssay)
+
+
+
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod("prepareSummarizedExperiment", "SimpleList", .prepareSEFromList)
