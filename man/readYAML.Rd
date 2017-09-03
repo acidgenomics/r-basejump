@@ -38,7 +38,7 @@ names(yaml)
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSE}},
+  \code{\link{prepareSummarizedExperiment}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{transmit}}
 }

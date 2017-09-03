@@ -13,7 +13,7 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, organism)
+\S4method{gene2symbol}{character}(object, organism = NULL)
 
 \S4method{gene2symbol}{data.frame}(object, organism = NULL)
 
