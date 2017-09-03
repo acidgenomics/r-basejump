@@ -136,6 +136,53 @@ test_that("readGTF", {
 
 
 
+test_that("symbol2gene", {
+    # character
+    expect_equal(
+        symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse"),
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003"))
+    expect_error(
+        symbol2gene("Gnai3", organism = "mouse"),
+        "symbol2gene conversion requires > 1 identifier")
+    expect_error(
+        symbol2gene(c("Gnai3", "Pbsn", ""), organism = "mouse"),
+        "Empty string identifier detected")
+    expect_error(
+        symbol2gene(c("Gnai3", "Pbsn", NA), organism = "mouse"),
+        "NA identifier detected")
+    expect_error(
+        symbol2gene(c("Gnai3", "Gnai3"), organism = "mouse"),
+        "Duplicate genes detected")
+
+    # Identifier mismatch
+    expect_warning(
+        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
+        "Failed to match all gene symbols to IDs: XXX, YYY")
+    expect_equal(
+        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003",
+          XXX = "XXX"))
+
+    # matrix
+    expect_equal(
+        matrix(
+            data = seq(1L:4L),
+            byrow = TRUE,
+            nrow = 2L,
+            ncol = 2L,
+            dimnames = list(c("Gnai3", "Pbsn"),
+                            c("sample1", "sample2"))) %>%
+            symbol2gene(organism = "mouse") %>%
+            dimnames %>%
+            .[[1L]],
+        c(Gnai3 = "ENSMUSG00000000001",
+          Pbsn = "ENSMUSG00000000003"))
+})
+
+
+
 test_that("tx2gene", {
     # character
     expect_equal(
@@ -208,4 +255,9 @@ test_that("tx2geneFromGTF", {
                         "FBgn0052826"),
             row.names = c("FBtr0070000",
                           "FBtr0070001")))
+
+    # bad data.frame
+    expect_error(
+        tx2geneFromGTF(mtcars),
+        "GTF object must be data.frame with 9 columns")
 })
