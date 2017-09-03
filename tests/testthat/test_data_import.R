@@ -1,6 +1,6 @@
 context("Data Import and Project Management Utilities")
 
-test_that("prepareSE", {
+test_that("prepareSummarizedExperiment", {
     mat <- mtcars %>%
         .[c("Mazda RX4", "Datsun 710"), ] %>%
         .[, c("mpg", "gear")] %>%
@@ -13,13 +13,30 @@ test_that("prepareSE", {
         manufacturer = c("Mazda", "Datsun"),
         model_number = c("RX4", "710"),
         row.names = rownames(mat))
-    se <- prepareSE(mat, colData = coldata, rowData = rowdata)
+    se <- prepareSummarizedExperiment(
+        mat,
+        colData = coldata,
+        rowData = rowdata)
     expect_equal(
         dim(se),
         c(2L, 2L))
     expect_equal(
         names(metadata(se)),
         c("date", "wd", "sessionInfo"))
+
+    # Deprecations
+    expect_warning(
+        packageSE(
+            mat,
+            colData = coldata,
+            rowData = rowdata),
+        "Use 'prepareSummarizedExperiment' instead")
+    expect_warning(
+        prepareSE(
+            mat,
+            colData = coldata,
+            rowData = rowdata),
+        "Use 'prepareSummarizedExperiment' instead")
 })
 
 
