@@ -8,7 +8,7 @@
 \usage{
 transmit(object, ...)
 
-\S4method{transmit}{character}(object, pattern = NULL, rename = NULL,
+\S4method{transmit}{character}(object, pattern, rename = NULL,
   compress = FALSE, localDir = "data-raw")
 }
 \arguments{
@@ -40,7 +40,7 @@ transmit("ftp://ftp.ensembl.org/pub/release-89",
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSE}},
+  \code{\link{prepareSummarizedExperiment}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}
 }

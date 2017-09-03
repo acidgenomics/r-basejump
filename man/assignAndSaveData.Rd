@@ -4,8 +4,7 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = "data", compress = TRUE,
-  env = parent.frame())
+assignAndSaveData(name, object, dir = "data", compress = TRUE)
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -17,8 +16,6 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE,
 \item{compress}{Logical or character string specifying compression format.
 \code{TRUE} corresponds to gzip compression (\strong{default}), and character strings
 \code{gzip}, \code{bzip2} or \code{xz} specify the type of compression.}
-
-\item{env}{Destination environment.}
 }
 \value{
 Assigned object name as a string.

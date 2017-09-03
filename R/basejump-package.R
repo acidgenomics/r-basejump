@@ -12,14 +12,15 @@
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_csv read_delim read_lines read_tsv write_csv
-#'   write_lines
+#'   write_lines write_tsv
 #' @importFrom readxl read_excel
 #' @importFrom rlang .data dots_list eval_bare is_string sym
 #' @importFrom stats setNames
 #' @importFrom stringr regex str_detect str_dup str_match str_replace_all
 #'   str_replace_na str_split str_subset
 #' @importFrom SummarizedExperiment SummarizedExperiment
-#' @importFrom tibble glimpse has_rownames is_tibble rownames_to_column tibble
+#' @importFrom tibble column_to_rownames glimpse has_rownames is_tibble
+#'   rownames_to_column tibble
 #' @importFrom utils download.file globalVariables read.delim sessionInfo
 #' @importFrom yaml yaml.load_file
 
@@ -27,7 +28,8 @@
 
 globalVariables(".")
 
-testDataDir <- normalizePath(file.path("docs", "tests"))
+# Use this for `data-raw/` scripts to define output path
+testDataDir <- file.path("docs", "tests")
 
 #' Test Data URL
 #' @keywords internal

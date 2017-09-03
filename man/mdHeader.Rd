@@ -8,7 +8,8 @@
 \usage{
 mdHeader(object, ...)
 
-\S4method{mdHeader}{character}(object, level = 2L, tabset = FALSE)
+\S4method{mdHeader}{character}(object, level = 2L, tabset = FALSE,
+  asis = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -18,9 +19,13 @@ mdHeader(object, ...)
 \item{level}{Header level (1-7).}
 
 \item{tabset}{Include tabset marker.}
+
+\item{asis}{Set this to \code{TRUE} when using the function inside a loop or
+inside an RMarkdown chunk with \code{results="asis"} enabled.}
 }
 \value{
-\code{\link[=writeLines]{writeLines()}}.
+Markdown formatted code as \link[knitr:asis_output]{knitr::asis_output} or
+\code{\link[base:writeLines]{base::writeLines()}}.
 }
 \description{
 Markdown Header
@@ -29,6 +34,7 @@ Markdown Header
 mdHeader("Header")
 mdHeader("Header", level = 4L)
 mdHeader("Header", tabset = TRUE)
+mdHeader("Header", asis = TRUE)
 }
 \seealso{
 Other Report Utilities: \code{\link{kables}},

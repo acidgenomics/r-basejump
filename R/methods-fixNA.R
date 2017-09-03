@@ -17,19 +17,12 @@ NULL
 
 # Constructors ====
 .fixNAVec <- function(object) {
-    if (is.character(object)) {
-        gsub("^$|^\\s+$|^NA$", NA, object)
-    } else {
-        object
-    }
+    gsub("^$|^\\s+$|^NA$", NA, object)
 }
 
 
 
 .fixNATidy <- function(object) {
-    if (!is.data.frame(object)) {
-        stop("Object must be 'data.frame' class")
-    }
     mutate_all(object, funs(.fixNAVec))
 }
 

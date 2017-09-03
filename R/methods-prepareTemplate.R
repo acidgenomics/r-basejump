@@ -12,6 +12,7 @@
 #'   default dependency files for a new experiment.
 #' @param sourceDir Source directory, typically a URL, where the dependency
 #'   files are located.
+#' @param overwrite Overwrite files if they already exist.
 #'
 #' @return No value.
 #'
@@ -26,9 +27,12 @@ NULL
 
 
 # Constructors ====
-.downloadPackageFile <- function(object, sourceDir) {
+.downloadPackageFile <- function(object, sourceDir, overwrite = FALSE) {
+    if (missing(sourceDir)) {
+        sourceDir <- file.path(url, "downloads")
+    }
     sapply(seq_along(object), function(a) {
-        if (!file.exists(object[[a]])) {
+        if (!file.exists(object[[a]]) | isTRUE(overwrite)) {
             download.file(
                 file.path(sourceDir, object[[a]]),
                 destfile = object[[a]])
@@ -42,7 +46,9 @@ NULL
 # Methods ====
 #' @rdname prepareTemplate
 #' @export
-setMethod("prepareTemplate", "missing", function(object, sourceDir) {
+setMethod("prepareTemplate", "missing", function(
+    object,
+    sourceDir) {
     .downloadPackageFile(
         c("_output.yaml",
           "_footer.Rmd",

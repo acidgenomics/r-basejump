@@ -8,7 +8,7 @@
 \usage{
 mdList(object, ...)
 
-\S4method{mdList}{character}(object, ordered = FALSE)
+\S4method{mdList}{character}(object, ordered = FALSE, asis = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -17,9 +17,9 @@ mdList(object, ...)
 
 \item{ordered}{Ordered (\code{TRUE}; \code{1.}) or unordered (\code{FALSE}; \code{-}) list in
 Markdown format.}
-}
-\value{
-\code{\link[=writeLines]{writeLines()}}.
+
+\item{asis}{Set this to \code{TRUE} when using the function inside a loop or
+inside an RMarkdown chunk with \code{results="asis"} enabled.}
 }
 \description{
 Markdown List
@@ -28,6 +28,7 @@ Markdown List
 groceries <- c("milk", "eggs")
 mdList(groceries)
 mdList(groceries, ordered = TRUE)
+mdList(groceries, asis = TRUE)
 }
 \seealso{
 Other Report Utilities: \code{\link{kables}},

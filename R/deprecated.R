@@ -14,6 +14,15 @@ NULL
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
-    .Deprecated("prepareSE")
-    prepareSE(...)
+    .Deprecated("prepareSummarizedExperiment")
+    prepareSummarizedExperiment(...)
+}
+
+
+
+#' @rdname deprecated
+#' @export
+prepareSE <- function(...) {
+    .Deprecated("prepareSummarizedExperiment")
+    prepareSummarizedExperiment(...)
 }

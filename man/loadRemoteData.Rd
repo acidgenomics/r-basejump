@@ -25,7 +25,7 @@ Load a remote R binary file.
 loadRemoteData(file.path(testDataURL, "mtcars.rda"))
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{prepareSE}},
+Other Data Import and Project Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readFileByExtension}}, \code{\link{readGTF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
