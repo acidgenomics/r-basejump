@@ -11,7 +11,7 @@ prepareTemplate(object, ...)
 
 \S4method{prepareTemplate}{missing}(object, sourceDir)
 
-\S4method{prepareTemplate}{character}(object, sourceDir)
+\S4method{prepareTemplate}{character}(object, sourceDir, overwrite = FALSE)
 }
 \arguments{
 \item{object}{\emph{Optional}. File name. If \code{NULL} (default), download the
@@ -21,6 +21,8 @@ default dependency files for a new experiment.}
 
 \item{sourceDir}{Source directory, typically a URL, where the dependency
 files are located.}
+
+\item{overwrite}{Overwrite files if they already exist.}
 }
 \value{
 No value.

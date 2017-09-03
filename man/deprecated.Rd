@@ -5,10 +5,7 @@
 \alias{packageSE}
 \title{Deprecated Functions}
 \usage{
-packageSE(...)
-}
-\arguments{
-\item{...}{Additional arguments.}
+packageSE()
 }
 \value{
 Deprecation warning.

@@ -8,7 +8,7 @@
 \usage{
 mdList(object, ...)
 
-\S4method{mdList}{character}(object, ordered = FALSE)
+\S4method{mdList}{character}(object, ordered = FALSE, asis = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -28,6 +28,7 @@ Markdown List
 groceries <- c("milk", "eggs")
 mdList(groceries)
 mdList(groceries, ordered = TRUE)
+mdList(groceries, asis = TRUE)
 }
 \seealso{
 Other Report Utilities: \code{\link{kables}},
