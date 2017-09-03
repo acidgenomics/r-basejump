@@ -16,7 +16,7 @@ detectHPC(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\link{logical}.
+Scheduler name if \code{TRUE} (e.g. LSF, SLURM), otherwise \code{FALSE}.
 }
 \description{
 Detect if R is running on a high-performance computing (HPC) cluster.
@@ -30,6 +30,7 @@ detectHPC()
 }
 \seealso{
 \itemize{
+\item \code{Sys.getenv()}.
 \item \code{Sys.info()}.
 \item \code{R.version}.
 \item \code{.Platform}.
