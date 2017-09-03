@@ -3,9 +3,15 @@
 \name{deprecated}
 \alias{deprecated}
 \alias{packageSE}
+\alias{prepareSE}
 \title{Deprecated Functions}
 \usage{
-packageSE()
+packageSE(...)
+
+prepareSE(...)
+}
+\arguments{
+\item{...}{Additional arguments.}
 }
 \value{
 Deprecation warning.
