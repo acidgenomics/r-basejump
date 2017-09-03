@@ -95,12 +95,24 @@ test_that("readYAML", {
 
 
 test_that("transmit", {
+    ftpBaseURL <- "ftp://ftp.ensembl.org/pub/release-89"
     expect_equal(
-        transmit("ftp://ftp.ensembl.org/pub/release-89",
+        transmit(ftpBaseURL,
+                 pattern = "README",
+                 compress = FALSE) %>%
+            .[[pattern]] %>%
+            .[[1L]],
+        "data-raw/README")
+    expect_equal(
+        transmit(ftpBaseURL,
                  pattern = "README",
                  rename = "ensembl_readme.txt",
                  compress = TRUE) %>%
-            .[["README"]] %>%
+            .[[pattern]] %>%
             .[[1L]],
         "data-raw/ensembl_readme.txt.gz")
+    expect_error(
+        transmit("http://steinbaugh.com",
+                 pattern = "README"),
+        "FTP protocol not detected")
 })
