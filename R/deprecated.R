@@ -13,7 +13,6 @@ NULL
 
 #' @rdname deprecated
 #' @export
-packageSE <- function(...) {
+packageSE <- function() {
     .Deprecated("prepareSE")
-    prepareSE(...)
 }
