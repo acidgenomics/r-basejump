@@ -30,7 +30,7 @@ NULL
 #' @export
 setMethod("transmit", "character", function(
     object,
-    pattern = NULL,
+    pattern,
     rename = NULL,
     compress = FALSE,
     localDir = "data-raw") {
@@ -51,11 +51,9 @@ setMethod("transmit", "character", function(
     }
 
     # Apply pattern matching
-    if (!is.null(pattern)) {
-        remoteFileName <- str_subset(remoteFileList, pattern)
-        if (!length(remoteFileName)) {
-            stop("Pattern didn't match any files")
-        }
+    remoteFileName <- str_subset(remoteFileList, pattern)
+    if (!length(remoteFileName)) {
+        stop("Pattern didn't match any files")
     }
 
     # Rename files, if desired
@@ -82,12 +80,10 @@ setMethod("transmit", "character", function(
 
         # Compress, if desired
         if (isTRUE(compress)) {
-            localFileName <- gzip(localFilePath, overwrite = TRUE)
-        } else {
-            localFileName <- remoteFileName
+            localFilePath <- gzip(localFilePath, overwrite = TRUE)
         }
 
-        localFileName
+        localFilePath
     }) %>%
         setNames(remoteFileName)
 })
