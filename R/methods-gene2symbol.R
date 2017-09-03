@@ -33,7 +33,7 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object, organism) {
+.g2svec <- function(object, organism = NULL) {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -45,9 +45,12 @@ NULL
     if (any(object == "")) {
         stop("Empty string identifier detected", call. = FALSE)
     }
+    if (any(duplicated(object))) {
+        stop("Duplicate gene identifiers detected", call. = FALSE)
+    }
 
     # Detect organism
-    if (missing(organism)) {
+    if (is.null(organism)) {
         organism <- detectOrganism(object[[1L]])
     } else {
         organism <- detectOrganism(organism)
@@ -74,7 +77,7 @@ NULL
 
 
 
-# Pass arguments to .g2svec
+# Pass arguments to `.g2svec()`
 .g2sdim <- function(object, organism = NULL) {
     rownames(object) <- rownames(object) %>%
         .g2svec(organism = organism)
