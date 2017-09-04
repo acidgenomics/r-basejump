@@ -202,9 +202,10 @@ test_that("readFileByExtension", {
         readFileByExtension
     expect_true(is_tibble(tsv))
 
-    # Delimited (.txt) file
-    delim <- file.path(testDataURL, "mtcars.txt") %>%
+    # Table format (.txt) file
+    txt <- file.path(testDataURL, "mtcars.txt") %>%
         readFileByExtension
+    expect_equal(txt, mtcars)
 
     # Excel (.xlsx) file
     xlsx <- file.path(testDataURL, "mtcars.xlsx") %>%
