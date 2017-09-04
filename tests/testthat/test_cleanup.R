@@ -93,8 +93,7 @@ test_that("camel", {
             set_rownames(NULL) %>%
             camel(rownames = TRUE) %>%
             rownames,
-        seq(1, nrow(mtcars)) %>%
-            as.character)
+        as.character(1L:nrow(mtcars)))
 
     # tibble
     expect_equal(
