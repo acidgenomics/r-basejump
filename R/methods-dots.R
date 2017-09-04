@@ -40,17 +40,17 @@ setMethod(
     function(..., character) {
         dots <- eval_bare(substitute(alist(...)))
         if (length(dots) == 0L) {
-            stop("No dot objects to return", call. = FALSE)
+            stop("No dot objects to return")
         }
         isName <- vapply(dots, is.symbol, logical(1L))
         if (any(!isName)) {
-            stop("Dot objects cannot contain arguments", call. = FALSE)
+            stop("Dot objects cannot contain arguments")
         }
         names <- vapply(dots, as.character, character(1L))
         dupes <- which(setNames(duplicated(names), names))
         if (length(dupes) > 0L) {
             names <- unique(names)
-            stop("Duplicate dots: ", toString(names(dupes)), call. = FALSE)
+            stop("Duplicate dots: ", toString(names(dupes)))
         }
         if (isTRUE(character)) {
             names
