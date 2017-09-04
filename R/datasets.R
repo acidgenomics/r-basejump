@@ -1,4 +1,4 @@
-#' @inherit datasets::mtcars
+#' Motor Trend Car Road Tests
 #' @keywords internal
 #' @return [data.frame].
 #' @export
@@ -6,7 +6,7 @@ datasets::mtcars -> mtcars
 
 
 
-#' @inherit dplyr::starwars
+#' Starwars Characters
 #' @keywords internal
 #' @return [tibble].
 #' @export

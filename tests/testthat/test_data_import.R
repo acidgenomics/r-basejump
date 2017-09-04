@@ -180,17 +180,39 @@ test_that("loadRemoteData", {
 
 
 test_that("readFileByExtension", {
-    # CSV file
+    # Comma separated value (.csv) file
     csv <- file.path(testDataURL, "mtcars.csv") %>%
         readFileByExtension
     expect_true(is_tibble(csv))
 
-    # MatrixMarket file
+    # MatrixMarket (.mtx) file
     sparse <- file.path(testDataURL, "sparse.mtx") %>%
         readFileByExtension
     expect_true(is(sparse, "ngTMatrix"))
 
-    # RData file (unsupported)
+    # MatrixMarket support file (.colnames)
+    colnames <- file.path(testDataURL, "test.colnames") %>%
+        readFileByExtension
+    expect_equal(
+        colnames,
+        c("foo", "bar"))
+
+    # Tab separated values (.tsv) file
+    tsv <- file.path(testDataURL, "mtcars.tsv") %>%
+        readFileByExtension
+    expect_true(is_tibble(tsv))
+
+    # Table format (.txt) file
+    txt <- file.path(testDataURL, "mtcars.txt") %>%
+        readFileByExtension
+    expect_equal(txt, mtcars)
+
+    # Excel (.xlsx) file
+    xlsx <- file.path(testDataURL, "mtcars.xlsx") %>%
+        readFileByExtension
+    expect_true(is_tibble(tsv))
+
+    # RData (.rda) file (unsupported)
     expect_error(
         readFileByExtension(file.path(testDataURL, "mtcars.rda")),
         "Unsupported file type")
@@ -267,6 +289,10 @@ test_that("transmit", {
         transmit("http://steinbaugh.com",
                  pattern = "README"),
         "FTP protocol not detected")
+    expect_error(
+        transmit("ftp://ftp.wormbase.org/pub/",
+                 pattern = "README"),
+        "No files listed on remote server")
     expect_error(
         transmit(ensembl,
                  pattern = "XXX"),
