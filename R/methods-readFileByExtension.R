@@ -58,7 +58,7 @@ setMethod("readFileByExtension", "character", function(
     } else if (ext == "tsv") {
         data <- read_tsv(file, progress = FALSE, ...)
     } else if (ext == "txt") {
-        data <- read_delim(file, progress = FALSE, ...)
+        data <- read.table(file, header = TRUE, ...)
     } else if (ext == "xlsx") {
         data <- read_excel(file, ...)
     } else if (ext %in% c("colnames", "rownames")) {
