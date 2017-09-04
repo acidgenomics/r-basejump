@@ -56,6 +56,11 @@ test_that("collapse", {
             as.character,
         "milk, eggs, eggs, veggies, NA")
 
+    # vector with only duplicates
+    expect_equal(
+        collapse(c("hello", "hello"), unique = TRUE),
+        "hello")
+
     # string
     expect_equal(
         collapse("hello"),
