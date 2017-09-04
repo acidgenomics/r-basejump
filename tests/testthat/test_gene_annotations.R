@@ -31,6 +31,12 @@ test_that("annotable", {
 
     # Genome build alias
     expect_equal(
+        annotable("grch37"),
+        annotable("hg19"))
+    expect_equal(
+        annotable("grch38"),
+        annotable("hg38"))
+    expect_equal(
         annotable("grcm38"),
         annotable("mm10"))
 
