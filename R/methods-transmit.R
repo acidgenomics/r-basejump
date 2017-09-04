@@ -43,9 +43,17 @@ setMethod("transmit", "character", function(
         remoteDir <- paste0(remoteDir, "/")
     }
 
-    remoteFileList <- remoteDir %>%
-        getURL(dirlistonly = TRUE) %>%
+    remoteList <- remoteDir %>%
+        getURL %>%
         read_lines
+    # `-rwxrwxr-x`: File
+    # `drwxrwxr-x`: Directory
+    remoteFileList <- remoteList %>%
+        # Match the `-` at begining for file
+        .[str_detect(., "^-")] %>%
+        # File name is at the end, not including a space
+        str_extract("[^\\s]+$")
+
     if (!length(remoteFileList)) {
         stop("No files listed on remote server")
     }
