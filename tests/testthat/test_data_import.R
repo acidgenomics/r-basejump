@@ -289,6 +289,10 @@ test_that("transmit", {
                  pattern = "README"),
         "FTP protocol not detected")
     expect_error(
+        transmit("ftp://ftp.wormbase.org/pub/",
+                 pattern = "README"),
+        "No files listed on remote server")
+    expect_error(
         transmit(ensembl,
                  pattern = "XXX"),
         "Pattern didn't match any files")
