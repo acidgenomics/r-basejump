@@ -15,6 +15,9 @@ readGTF(object, ...)
 
 \item{...}{Additional arguments.}
 }
+\value{
+\link{data.frame}.
+}
 \description{
 Read GTF Annotations
 }

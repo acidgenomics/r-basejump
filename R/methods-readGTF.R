@@ -5,6 +5,8 @@
 #'
 #' @seealso http://www.gencodegenes.org/gencodeformat.html
 #'
+#' @return [data.frame].
+#'
 #' @examples
 #' file.path(testDataURL, "mmusculus.gtf") %>%
 #'     readGTF %>%

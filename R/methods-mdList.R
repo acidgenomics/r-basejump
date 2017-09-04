@@ -2,8 +2,8 @@
 #'
 #' @rdname mdList
 #' @name mdList
+#' @inherit mdHeader
 #'
-#' @inheritParams mdHeader
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
 #'   Markdown format.
 #'
