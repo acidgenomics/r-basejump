@@ -1,3 +1,6 @@
 template:
   params:
     bootswatch: readable
+authors:
+  Michael J. Steinbaugh:
+    href: http://steinbaugh.com
