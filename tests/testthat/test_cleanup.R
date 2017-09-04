@@ -71,14 +71,39 @@ test_that("camel", {
         c(itemA = "hello world",
           itemB = "HELLO WORLD"))
 
-    # Tibble
+    # data.frame (with rownames coverage)
+    expect_equal(
+        camel(df, rownames = TRUE) %>%
+            rownames %>%
+            .[[1L]],
+        "mazdaRx4")
+    expect_equal(
+        snake(df, rownames = TRUE) %>%
+            rownames %>%
+            .[[1L]],
+        "mazda_rx4")
+    expect_equal(
+        dotted(df, rownames = TRUE) %>%
+            rownames %>%
+            .[[1L]],
+        "mazda.rx4")
+    # Unset rownames (ignore in `.checkRownames()`)
+    expect_equal(
+        mtcars %>%
+            set_rownames(NULL) %>%
+            camel(rownames = TRUE) %>%
+            rownames,
+        seq(1, nrow(mtcars)) %>%
+            as.character)
+
+    # tibble
     expect_equal(
         tbl[, 1L:5L] %>%
             camel %>%
             colnames,
         c("name", "height", "mass", "hairColor", "skinColor"))
 
-    # List
+    # list
     expect_equal(
         camel(lst),
         list(itemA = c(1L, 2L),
