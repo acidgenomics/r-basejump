@@ -33,17 +33,23 @@ setMethod("readFileByExtension", "character", function(
     makeNames = "camel",
     ...) {
     file <- .localOrRemoteFile(object)
-    message(paste("Reading", names(file)))
+    extPattern <- "\\.([a-zA-Z0-9]+)$"
+    # Rename tmpfile if necessary
+    if (!str_detect(file, extPattern)) {
+        newfile <- paste0(file, ".", ext)
+        file.rename(file, newfile)
+        file[[1L]] <- newfile
+    }
 
     # Detect file extension
-    extPattern <- "\\.([a-zA-Z0-9]+)$"
-    if (!grepl(extPattern, names(file))) {
+    if (!str_detect(file, extPattern)) {
         stop("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
             .[[2L]]
 
     # File import, based on extension
+    message(paste("Reading", names(file)))
     if (ext == "csv") {
         data <- read_csv(file, progress = FALSE, ...)
     } else if (ext == "mtx") {
