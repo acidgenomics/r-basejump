@@ -3,7 +3,7 @@
 \docType{data}
 \name{starwars}
 \alias{starwars}
-\title{Starwars characters}
+\title{Starwars Characters}
 \format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 87 rows and 13 columns.}
 \usage{
 starwars
@@ -12,9 +12,6 @@ starwars
 \link{tibble}.
 }
 \description{
-This data comes from SWAPI, the Star Wars API, \url{http://swapi.co/}
-}
-\examples{
-starwars
+Starwars Characters
 }
 \keyword{internal}
