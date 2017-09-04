@@ -33,20 +33,21 @@ setMethod("readFileByExtension", "character", function(
     makeNames = "camel",
     ...) {
     file <- .localOrRemoteFile(object)
+
+    # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
-    # Rename tmpfile if necessary
+    if (!str_detect(names(file), extPattern)) {
+        stop("File extension missing")
+    }
+    ext <- str_match(names(file), extPattern) %>%
+            .[[2L]]
+
+    # Rename tmpfile to include extension if necessary
     if (!str_detect(file, extPattern)) {
         newfile <- paste0(file, ".", ext)
         file.rename(file, newfile)
         file[[1L]] <- newfile
     }
-
-    # Detect file extension
-    if (!str_detect(file, extPattern)) {
-        stop("File extension missing")
-    }
-    ext <- str_match(names(file), extPattern) %>%
-            .[[2L]]
 
     # File import, based on extension
     message(paste("Reading", names(file)))
