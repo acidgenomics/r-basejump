@@ -89,10 +89,7 @@ symbols. This function saves each object into a separate <code>.rda</code> file 
 than combining into a single file.</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,9 +104,12 @@ than combining into a single file.</p>
     </tr>
     <tr>
       <th>compress</th>
-      <td><p>Logical or character string specifying compression format.
-<code>TRUE</code> corresponds to gzip compression (<strong>default</strong>), and character strings
-<code>gzip</code>, <code>bzip2</code> or <code>xz</code> specify the type of compression.</p></td>
+      <td><p>logical or character string specifying whether saving
+    to a named file is to use compression.  <code>TRUE</code> corresponds to
+    <code class='command'>gzip</code> compression, and character strings <code>"gzip"</code>,
+    <code>"bzip2"</code> or <code>"xz"</code> specify the type of
+    compression.  Ignored when <code>file</code> is a connection and
+    for workspace format version 1.</p></td>
     </tr>
     </table>
     
@@ -126,9 +126,9 @@ not overwrite by default if that behavior is preferred.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code></p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/usethis/topics/use_data'>usethis::use_data()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code>.</p></li>
-<li><p>https://github.com/hadley/devtools/blob/master/R/infrastructure.R</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
 </ul>
     <p>Other Write Utilities: <code><a href='writeCounts.html'>writeCounts</a></code></p>
     
