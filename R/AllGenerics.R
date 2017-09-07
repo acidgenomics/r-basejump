@@ -282,19 +282,6 @@ setGeneric("revcomp", function(object, ...) {
 
 
 
-#' @rdname saveData
-#' @family Write Utilities
-#' @inheritParams dots
-#' @export
-setGeneric(
-    "saveData",
-    signature = "...",
-    function(..., dir = "data", compress = TRUE) {
-        standardGeneric("saveData")
-    })
-
-
-
 #' @rdname makeNames
 #' @family Cleanup Utilities
 #' @inheritParams AllGenerics
