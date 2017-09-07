@@ -40,7 +40,7 @@ recommended, and can be passed in either dense (\code{matrix}) or sparse
 list, as long as they all have the same dimensions. List object can be
 supplied as either class \code{list} or \code{SimpleList}.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{rowData}{Object describing assay matrix rows. Must support
 \code{\link[base:dim]{base::dim()}}.}

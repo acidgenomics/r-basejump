@@ -72,7 +72,7 @@ snake(object, ...)
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
 will be meaningful.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{rownames}{Include row names.}
 }

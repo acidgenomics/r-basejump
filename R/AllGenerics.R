@@ -7,7 +7,7 @@
 #' @param object Object.
 #' @param x Primary object.
 #' @param y Secondary object.
-#' @param ... Additional arguments.
+#' @param ... *Additional arguments (for the S4 generic definition).*
 NULL
 
 

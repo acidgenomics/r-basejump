@@ -25,7 +25,7 @@ fixNA(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
 Object containing proper \code{NA} values.

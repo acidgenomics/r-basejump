@@ -21,7 +21,7 @@ lr2fc(object, ...)
 \item{object}{Numeric vector of log ratio (\code{lr}) or fold change (\code{fc})
 values.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}

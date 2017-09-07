@@ -17,7 +17,7 @@ prepareTemplate(object, ...)
 \item{object}{\emph{Optional}. File name. If \code{NULL} (default), download the
 default dependency files for a new experiment.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{sourceDir}{Source directory, typically a URL, where the dependency
 files are located.}
