@@ -13,7 +13,7 @@ readFileByExtension(object, ...)
 \arguments{
 \item{object}{File path.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{snake}, or \code{FALSE}.}

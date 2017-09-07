@@ -13,7 +13,7 @@ kables(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{captions}{Optional character vector of table captions.}
 

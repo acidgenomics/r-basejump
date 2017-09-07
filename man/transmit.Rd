@@ -14,7 +14,7 @@ transmit(object, ...)
 \arguments{
 \item{object}{Remote directory URL. Currently supports FTP.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{pattern}{Pattern to match against remote file names.}
 

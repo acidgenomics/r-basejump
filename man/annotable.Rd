@@ -14,7 +14,7 @@ annotable(object, ...)
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
 string.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{format}{Desired table format, either \strong{\code{gene}}, \code{tx2gene},
 \code{gene2symbol}, or \code{gene2entrez}.}

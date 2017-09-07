@@ -13,7 +13,7 @@ mdList(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{ordered}{Ordered (\code{TRUE}; \code{1.}) or unordered (\code{FALSE}; \code{-}) list in
 Markdown format.}
