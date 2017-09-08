@@ -126,7 +126,7 @@ NULL
             "rowData mismatch with assay slot:",
             toString(head(missing)),
             "...",
-            "These gene IDs are misisng in the current Ensembl release."
+            "These gene IDs are missing in the current Ensembl release."
         ))
     }
     rowData <- rowData %>%
