@@ -17,7 +17,6 @@
 #'   not overwrite by default if that behavior is preferred.
 #'
 #' @seealso
-#' - [usethis::use_data()].
 #' - [devtools::use_data()].
 #' - [base::save()].
 #'
