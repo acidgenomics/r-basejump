@@ -36,7 +36,6 @@ saveData(mtcars, starwars)
 }
 \seealso{
 \itemize{
-\item \code{\link[usethis:use_data]{usethis::use_data()}}.
 \item \code{\link[devtools:use_data]{devtools::use_data()}}.
 \item \code{\link[base:save]{base::save()}}.
 }
