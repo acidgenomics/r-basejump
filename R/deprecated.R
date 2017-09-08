@@ -6,23 +6,21 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @return Deprecation warning.
+#' @return Soft deprecation to new functions.
 NULL
 
 
 
 #' @rdname deprecated
 #' @export
-packageSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+packageSE <- function(object, ...) {
+    standardGeneric("prepareSummarizedExperiment")
 }
 
 
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+prepareSE <- function(object, ...) {
+    standardGeneric("prepareSummarizedExperiment")
 }
