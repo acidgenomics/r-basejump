@@ -28,7 +28,7 @@ symbol2gene(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{organism}{Organism name.}
 }

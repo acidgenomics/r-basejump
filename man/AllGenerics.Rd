@@ -6,7 +6,7 @@
 \alias{tidy_select}
 \title{S4 Generics}
 \arguments{
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{object}{Object.}
 

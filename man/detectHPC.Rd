@@ -13,7 +13,7 @@ detectHPC(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
 Scheduler name if \code{TRUE} (e.g. LSF, SLURM), otherwise \code{FALSE}.

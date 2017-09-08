@@ -20,7 +20,7 @@ revcomp(object, ...)
 \arguments{
 \item{object}{DNA sequence (\code{ATGC} nucleotides).}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
 Matching DNA sequence.
