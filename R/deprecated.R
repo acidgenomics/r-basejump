@@ -13,14 +13,14 @@ NULL
 
 #' @rdname deprecated
 #' @export
-packageSE <- function(object, ...) {
-    standardGeneric("prepareSummarizedExperiment")
+packageSE <- function(...) {
+    prepareSummarizedExperiment(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function(object, ...) {
-    standardGeneric("prepareSummarizedExperiment")
+prepareSE <- function(...) {
+    prepareSummarizedExperiment(...)
 }
