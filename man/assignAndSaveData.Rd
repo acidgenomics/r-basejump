@@ -13,9 +13,12 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE)
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
 
-\item{compress}{Logical or character string specifying compression format.
-\code{TRUE} corresponds to gzip compression (\strong{default}), and character strings
-\code{gzip}, \code{bzip2} or \code{xz} specify the type of compression.}
+\item{compress}{logical or character string specifying whether saving
+    to a named file is to use compression.  \code{TRUE} corresponds to
+    \command{gzip} compression, and character strings \code{"gzip"},
+    \code{"bzip2"} or \code{"xz"} specify the type of
+    compression.  Ignored when \code{file} is a connection and
+    for workspace format version 1.}
 }
 \value{
 Assigned object name as a string.

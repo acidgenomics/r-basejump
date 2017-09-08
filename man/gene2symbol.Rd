@@ -28,7 +28,7 @@ gene2symbol(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{organism}{\emph{Optional}. Organism name. Normally this argument is
 unnecessary and can be left \code{NULL}. If a count matrix starts with a

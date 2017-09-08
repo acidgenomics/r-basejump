@@ -13,7 +13,7 @@ readYAML(object, ...)
 \arguments{
 \item{object}{YAML file path.}
 
-\item{...}{Additional arguments.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
 \link{list}.

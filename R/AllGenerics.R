@@ -7,7 +7,7 @@
 #' @param object Object.
 #' @param x Primary object.
 #' @param y Secondary object.
-#' @param ... Additional arguments.
+#' @param ... *Additional arguments (for the S4 generic definition).*
 NULL
 
 
@@ -279,19 +279,6 @@ setGeneric("removeNA", function(object, ...) {
 setGeneric("revcomp", function(object, ...) {
     standardGeneric("revcomp")
 })
-
-
-
-#' @rdname saveData
-#' @family Write Utilities
-#' @inheritParams dots
-#' @export
-setGeneric(
-    "saveData",
-    signature = "...",
-    function(..., dir = "data", compress = TRUE) {
-        standardGeneric("saveData")
-    })
 
 
 
