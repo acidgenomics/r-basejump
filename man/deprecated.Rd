@@ -6,15 +6,17 @@
 \alias{prepareSE}
 \title{Deprecated Functions}
 \usage{
-packageSE(...)
+packageSE(object, ...)
 
-prepareSE(...)
+prepareSE(object, ...)
 }
 \arguments{
+\item{object}{Object.}
+
 \item{...}{Additional arguments.}
 }
 \value{
-Deprecation warning.
+Soft deprecation to new functions.
 }
 \description{
 Deprecated Functions
