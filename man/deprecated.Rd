@@ -6,13 +6,11 @@
 \alias{prepareSE}
 \title{Deprecated Functions}
 \usage{
-packageSE(object, ...)
+packageSE(...)
 
-prepareSE(object, ...)
+prepareSE(...)
 }
 \arguments{
-\item{object}{Object.}
-
 \item{...}{Additional arguments.}
 }
 \value{

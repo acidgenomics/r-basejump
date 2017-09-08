@@ -149,19 +149,19 @@ test_that("prepareSummarizedExperiment", {
             metadata = Sys.Date()),
         "Metadata must be 'list' or 'SimpleList' class object")
 
-    # Deprecations
-    expect_warning(
+    # Deprecated
+    expect_equal(
         packageSE(
             mat,
             colData = coldata,
             rowData = rowdata),
-        "Use 'prepareSummarizedExperiment' instead")
-    expect_warning(
+        se)
+    expect_equal(
         prepareSE(
             mat,
             colData = coldata,
             rowData = rowdata),
-        "Use 'prepareSummarizedExperiment' instead")
+        se)
 })
 
 
