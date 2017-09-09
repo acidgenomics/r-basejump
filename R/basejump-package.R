@@ -39,7 +39,7 @@ testDataURL <- file.path(
     "https://raw.githubusercontent.com",
     "steinbaugh",
     "basejump",
-    "dev",
+    "develop",
     "docs",
     "tests")
 
