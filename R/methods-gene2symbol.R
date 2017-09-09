@@ -18,6 +18,7 @@
 #' c("ENSMUSG00000000001",
 #'   "ENSMUSG00000000003") %>% gene2symbol
 #'
+#' \dontrun{
 #' # matrix
 #' matrix(
 #'     data = seq(1L:4L),
@@ -28,6 +29,7 @@
 #'                       "ENSMUSG00000000003"),
 #'                     c("sample1",
 #'                       "sample2"))) %>% gene2symbol
+#' }
 NULL
 
 
@@ -57,8 +59,8 @@ NULL
     }
 
     g2s <- annotable(organism, format = "gene2symbol") %>%
-        .[object, ] %>%
-        .[!is.na(.[["symbol"]]), ]
+        .[object, , drop = FALSE] %>%
+        .[!is.na(.[["symbol"]]), , drop = FALSE]
 
     symbol <- g2s[["symbol"]]
     names(symbol) <- g2s[["ensgene"]]

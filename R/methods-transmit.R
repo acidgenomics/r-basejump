@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' transmit("ftp://ftp.ensembl.org/pub/release-89",
+#' transmit("ftp://ftp.ensembl.org/pub/release-90",
 #'          pattern = "README",
 #'          rename = "ensembl_readme.txt",
 #'          compress = TRUE)
