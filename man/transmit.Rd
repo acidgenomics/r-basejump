@@ -33,7 +33,7 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
-transmit("ftp://ftp.ensembl.org/pub/release-89",
+transmit("ftp://ftp.ensembl.org/pub/release-90",
          pattern = "README",
          rename = "ensembl_readme.txt",
          compress = TRUE)
