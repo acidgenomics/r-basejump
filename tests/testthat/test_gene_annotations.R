@@ -2,67 +2,41 @@ context("Gene Annotation Utilities")
 
 test_that("annotable", {
     # Human
-    anno <- annotable("grch38")
+    anno <- annotable("Homo sapiens")
     expect_equal(
         dim(anno),
-        c(63967L, 9L))
+        c(64592L, 5L))
     expect_equal(
-        rownames(anno)[[1L]],
-        "ENSG00000000003")
+        rownames(anno)[1L:5L],
+        c("ENSG00000000003",
+          "ENSG00000000005",
+          "ENSG00000000419",
+          "ENSG00000000457",
+          "ENSG00000000460"))
 
     # Mouse
-    anno <- annotable("grcm38")
+    anno <- annotable("Mus musculus")
     expect_equal(
         dim(anno),
-        c(53110L, 9L))
+        c(51158L, 5L))
     expect_equal(
-        rownames(anno)[[1L]],
-        "ENSMUSG00000000001")
-
-    # gene2entrez
-    anno <- annotable("grcm38", format = "gene2entrez")
-    expect_equal(
-        anno[1L:2L, ],
-        tibble(
-            ensgene = c("ENSMUSG00000000001",
-                        "ENSMUSG00000000003"),
-            entrez = c(14679L,
-                       54192L)))
-
-    # Genome build alias
-    expect_equal(
-        annotable("grch37"),
-        annotable("hg19"))
-    expect_equal(
-        annotable("grch38"),
-        annotable("hg38"))
-    expect_equal(
-        annotable("grcm38"),
-        annotable("mm10"))
+        rownames(anno)[1L:5L],
+        c("ENSMUSG00000000001",
+          "ENSMUSG00000000003",
+          "ENSMUSG00000000028",
+          "ENSMUSG00000000031",
+          "ENSMUSG00000000037"))
 
     # Bad input
     expect_error(
         annotable(c("human", "mouse")),
         "Object must be a string")
     expect_error(
-        annotable("grcm38", format = "XXX"),
+        annotable("Homo sapiens", format = "XXX"),
         "Unsupported format")
     expect_error(
         annotable("XXX"),
-        "String failed to match a supported genome")
-
-    # `detectOrganism()` support
-    organism <- detectOrganism("mouse")
-    expect_equal(
-        annotable(organism) %>%
-        rownames %>%
-        .[[1L]],
-        "ENSMUSG00000000001")
-    # Now make the organism vector malformed
-    names(organism) <- "XXX"
-    expect_error(
-        annotable(organism),
-        "Unsupported organism name")
+        "Failed to detect supported organism")
 })
 
 
@@ -122,7 +96,7 @@ test_that("gene2symbol", {
 
     # Prevent accidental `genomeBuild` pass in
     expect_error(
-        gene2symbol("mm10"),
+        gene2symbol("Homo sapiens"),
         "gene2symbol conversion requires > 1 identifier")
 })
 
