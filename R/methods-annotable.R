@@ -45,9 +45,15 @@ NULL
     message(paste(organism, "Ensembl", release, "annotations"))
 
     # Download organism EnsDb package from AnnotationHub
-    ah <- AnnotationHub()
-    ahDb <- query(ah, pattern = c(organism, "EnsDb", release))
-    edb <- ahDb[[1L]]
+    ah <- suppressMessages(
+        AnnotationHub()
+    )
+    ahDb <- suppressMessages(
+        query(ah, pattern = c(organism, "EnsDb", release))
+    )
+    edb <- suppressMessages(
+        ahDb[[1L]]
+    )
 
     if (format == "gene") {
         genes(edb,
