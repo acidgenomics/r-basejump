@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Save Data — saveData • basejump</title>
+<title>Gene Symbol Synonyms — synonyms • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,74 +80,31 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Save Data</h1>
+    <h1>Gene Symbol Synonyms</h1>
     </div>
 
     
-    <p>Wrapper for <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code> supporting quick saving of object names passed as
-symbols. This function saves each object into a separate <code>.rda</code> file rather
-than combining into a single file.</p>
+    <p>Gene Symbol Synonyms</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Object names as symbols.</p></td>
-    </tr>
-    <tr>
-      <th>dir</th>
-      <td><p>Output directory. Defaults to <strong>data</strong>.</p></td>
-    </tr>
-    <tr>
-      <th>compress</th>
-      <td><p>logical or character string specifying whether saving
-    to a named file is to use compression.  <code>TRUE</code> corresponds to
-    <code class='command'>gzip</code> compression, and character strings <code>"gzip"</code>,
-    <code>"bzip2"</code> or <code>"xz"</code> specify the type of
-    compression.  Ignored when <code>file</code> is a connection and
-    for workspace format version 1.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>synonyms</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>No value.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>These function will <em>overwrite</em> existing saved data, following the
-same conventions as <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>. Conversely, <code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code> does
-not overwrite by default if that behavior is preferred.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
-</ul>
-    <p>Other Write Utilities: <code><a href='writeCounts.html'>writeCounts</a></code></p>
+    <p>An object of class <code>list</code> of length 4.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving mtcars, starwars to data</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
+          </ul>
 
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
