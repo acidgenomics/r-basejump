@@ -16,6 +16,7 @@ URL:
     http://steinbaugh.com/basejump,
     https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
+LazyData: TRUE
 Depends:
     R (>= 3.4.0),
     annotables (>= 0.1.3),
