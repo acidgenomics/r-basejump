@@ -14,83 +14,62 @@
 #'   string.
 #' @param format Desired table format, either **`gene`**, `tx2gene`,
 #'   `gene2symbol`, or `gene2entrez`.
+#' @param release Ensembl release version. This function defaults to using the
+#'   most recent annotations available on AnnotationHub.
 #'
 #' @note If the `format` argument is set to `gene2entrez`, [annotable()] returns
 #'   a [tibble] with non-unique rows grouped by `ensgene`, instead of a
 #'   [data.frame].
+#'
 #' @seealso Consult the annotables package documentation (`help("annotables")`)
 #'   for a list of currently supported genomes.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
 #' @examples
-#' annotable("hg38") %>% glimpse
+#' annotable("Mus musculus") %>% glimpse
 NULL
 
 
 
 # Constructors ====
-.annotable <- function(object, format = "gene") {
+.annotable <- function(object, format = "gene", release = 88L) {
     if (!is_string(object)) {
         stop("Object must be a string")
     }
-    string <- object
-
-    if (!format %in% c("gene", "tx2gene", "gene2symbol", "gene2entrez")) {
+    if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
         stop("Unsupported format")
     }
 
-    # Load the annotables namespace
-    envir <- loadNamespace("annotables")
+    organism <- detectOrganism(object)
+    message(paste(organism, "Ensembl", release, "annotations"))
 
-    supportedGenomes <-
-        c(chicken = "galgal5",
-          fruitfly = "bdgp6",
-          human = "grch38",
-          human37 = "grch37",
-          mouse = "grcm38",
-          rat = "rnor6",
-          roundworm = "wbcel235")
-
-    if (!is.null(names(string))) {
-        # `detectOrganism()` support
-        # Get genome build by organism name
-        string <- names(string)
-        if (string %in% names(supportedGenomes)) {
-            genome <- supportedGenomes[[string]]
-        } else {
-            stop("Unsupported organism name")
-        }
-    } else {
-        string <- tolower(string)
-        if (string == "hg19") {
-            genome <- "grch37"
-        } else if (string == "hg38") {
-            genome <- "grch38"
-        } else if (string == "mm10") {
-            genome <- "grcm38"
-        } else {
-            genome <- string
-        }
-        if (!genome %in% supportedGenomes) {
-            stop("String failed to match a supported genome")
-        }
-    }
+    # Download organism EnsDb package from AnnotationHub
+    ah <- AnnotationHub()
+    ahDb <- query(ah, pattern = c(organism, "EnsDb", release))
+    edb <- ahDb[[1L]]
 
     if (format == "gene") {
-        get(genome, envir = envir) %>%
-            mutate(entrez = NULL) %>%
-            distinct %>%
-            arrange(.data[["ensgene"]]) %>%
-            mutate(
-                # Ensure unique symbols
+        genes(edb,
+              columns = c("gene_id",
+                          "symbol",  # `gene_name` also works
+                          "description",
+                          "gene_biotype"),
+              return.type = "data.frame") %>%
+            dplyr::rename(ensgene = .data[["gene_id"]],
+                          biotype = .data[["gene_biotype"]]) %>%
+            dplyr::mutate(
+                # Ensure unique symbols (e.g. human, mouse)
                 symbol = make.unique(.data[["symbol"]]),
+                # Define the broad class
                 broadClass = case_when(
-                    # Chromosome
-                    str_detect(.data[["chr"]],
-                               regex("mito|mt",
-                                     ignore_case = TRUE)) ~ "mito",
-                    # Biotype
+                    str_detect(
+                        .data[["symbol"]],
+                        # Hsapiens: `MT-`,
+                        # Mmusculus: `mt-`
+                        # Dmelanogaster: `mt:`
+                        regex("^MT[\\:\\-]",
+                              ignore_case = TRUE)) ~ "mito",
                     .data[["biotype"]] == "protein_coding" ~ "coding",
                     .data[["biotype"]] %in%
                         c("known_ncrna",
@@ -115,28 +94,22 @@ NULL
                     str_detect(.data[["biotype"]],
                                regex("^tr_", ignore_case = TRUE)) ~ "tcr",
                     TRUE ~ "other")) %>%
-            as.data.frame %>%
+            set_rownames(.[["ensgene"]])
+    } else if (format == "gene2symbol") {
+        genes(edb,
+              columns = c("gene_id", "symbol"),
+              return.type = "data.frame") %>%
+            dplyr::rename(ensgene = .data[["gene_id"]]) %>%
+            # Ensure unique symbols (e.g. human, mouse)
+            dplyr::mutate(symbol = make.unique(.data[["symbol"]])) %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        paste(genome, "tx2gene", sep = "_") %>%
-            get(envir = envir) %>%
-            arrange(.data[["enstxp"]]) %>%
-            as.data.frame %>%
+        transcripts(edb,
+                    columns = c("tx_id", "gene_id"),
+                    return.type = "data.frame") %>%
+            dplyr::rename(enstxp = .data[["tx_id"]],
+                          ensgene = .data[["gene_id"]]) %>%
             set_rownames(.[["enstxp"]])
-    } else if (format == "gene2symbol") {
-        get(genome, envir = envir) %>%
-            tidy_select(c("ensgene", "symbol")) %>%
-            distinct %>%
-            arrange(.data[["ensgene"]]) %>%
-            mutate(symbol = make.unique(.data[["symbol"]])) %>%
-            as.data.frame %>%
-            set_rownames(.[["ensgene"]])
-    } else if (format == "gene2entrez") {
-        get(genome, envir = envir) %>%
-            tidy_select(c("ensgene", "entrez")) %>%
-            filter(!is.na(.data[["entrez"]])) %>%
-            group_by(.data[["ensgene"]]) %>%
-            arrange(.data[["entrez"]], .by_group = TRUE)
     }
 }
 

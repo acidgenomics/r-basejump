@@ -18,13 +18,14 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 LazyData: TRUE
 Depends:
-    R (>= 3.4.0),
-    annotables (>= 0.1.3),
+    R (>= 3.4.0)
 Imports:
+    AnnotationHub,
     Biobase (>= 2.36.2),
     BiocGenerics,
     datasets,
     dplyr (>= 0.7.2),
+    GenomicFeatures,
     glue,
     knitr (>= 1.17),
     magrittr (>= 1.5),
