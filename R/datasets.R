@@ -11,3 +11,11 @@ datasets::mtcars -> mtcars
 #' @return [tibble].
 #' @export
 dplyr::starwars -> starwars
+
+
+
+#' Gene Symbol Synonyms
+#'
+#' @author Michael Steinbaugh
+#' @keywords internal
+"synonyms"
