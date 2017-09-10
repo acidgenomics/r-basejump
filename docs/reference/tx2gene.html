@@ -60,6 +60,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -137,8 +140,9 @@
     <pre class="examples"><div class='input'><span class='co'># character</span>
 <span class='fu'>c</span>(<span class='st'>"ENSMUST00000000001"</span>,
   <span class='st'>"ENSMUST00000000003"</span>,
-  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
+  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus Ensembl 88 annotations</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
 #&gt; "ENSMUSG00000000001" "ENSMUSG00000000003" "ENSMUSG00000000003" </div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
 <span class='co'># matrix</span>
 <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>6L</span>),
@@ -149,10 +153,8 @@
                       <span class='st'>"ENSMUST00000000003"</span>,
                       <span class='st'>"ENSMUST00000114041"</span>),
                     <span class='fu'>c</span>(<span class='st'>"sample1"</span>,
-                      <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt;                    sample1 sample2
-#&gt; ENSMUSG00000000001       1       2
-#&gt; ENSMUSG00000000003       3       4
-#&gt; ENSMUSG00000000003       5       6</div></pre>
+                      <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
