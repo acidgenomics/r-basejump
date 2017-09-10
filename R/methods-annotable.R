@@ -12,8 +12,8 @@
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
 #'   string.
-#' @param format Desired table format, either **`gene`**, `tx2gene`,
-#'   `gene2symbol`, or `gene2entrez`.
+#' @param format Desired table format, either `gene`, `tx2gene`, or
+#'   `gene2symbol`.
 #' @param release Ensembl release version. This function defaults to using the
 #'   most recent annotations available on AnnotationHub.
 #'
