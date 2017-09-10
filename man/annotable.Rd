@@ -16,8 +16,8 @@ string.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{format}{Desired table format, either \strong{\code{gene}}, \code{tx2gene},
-\code{gene2symbol}, or \code{gene2entrez}.}
+\item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
+\code{gene2symbol}.}
 
 \item{release}{Ensembl release version. This function defaults to using the
 most recent annotations available on AnnotationHub.}
