@@ -47,6 +47,7 @@ Convert Ensembl Identifier to Gene Symbol
 c("ENSMUSG00000000001",
   "ENSMUSG00000000003") \%>\% gene2symbol
 
+\dontrun{
 # matrix
 matrix(
     data = seq(1L:4L),
@@ -57,6 +58,7 @@ matrix(
                       "ENSMUSG00000000003"),
                     c("sample1",
                       "sample2"))) \%>\% gene2symbol
+}
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

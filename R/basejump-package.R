@@ -2,9 +2,11 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' @import annotables Biobase BiocGenerics datasets methods S4Vectors
+#' @import Biobase BiocGenerics datasets methods S4Vectors
+#' @importFrom AnnotationHub AnnotationHub query
 #' @importFrom dplyr arrange case_when distinct filter funs group_by mutate
 #'   mutate_all summarize_all
+#' @importFrom ensembldb genes transcripts
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_rownames
@@ -24,8 +26,10 @@
 #' @importFrom utils download.file globalVariables read.delim read.table
 #'   sessionInfo
 #' @importFrom yaml yaml.load_file
-
 "_PACKAGE"
+
+# Import collisions
+# rename: dplyr, S4Vectors
 
 globalVariables(".")
 

@@ -13,6 +13,7 @@
 #' # character
 #' symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse")
 #'
+#' \dontrun{
 #' # matrix
 #' matrix(
 #'     data = seq(1L:4L),
@@ -22,6 +23,7 @@
 #'     dimnames = list(c("Gnai3", "Pbsn"),
 #'                     c("sample1", "sample2"))) %>%
 #'     symbol2gene(organism = "mouse")
+#' }
 NULL
 
 

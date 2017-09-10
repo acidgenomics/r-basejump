@@ -8,7 +8,7 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene")
+\S4method{annotable}{character}(object, format = "gene", release = 88L)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
@@ -16,8 +16,11 @@ string.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{format}{Desired table format, either \strong{\code{gene}}, \code{tx2gene},
-\code{gene2symbol}, or \code{gene2entrez}.}
+\item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
+\code{gene2symbol}.}
+
+\item{release}{Ensembl release version. This function defaults to using the
+most recent annotations available on AnnotationHub.}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.
@@ -35,7 +38,7 @@ a \link{tibble} with non-unique rows grouped by \code{ensgene}, instead of a
 \link{data.frame}.
 }
 \examples{
-annotable("hg38") \%>\% glimpse
+annotable("Mus musculus") \%>\% glimpse
 }
 \seealso{
 Consult the annotables package documentation (\code{help("annotables")})

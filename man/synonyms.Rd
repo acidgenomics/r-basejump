@@ -4,7 +4,7 @@
 \name{synonyms}
 \alias{synonyms}
 \title{Gene Symbol Synonyms}
-\format{An object of class \code{list} of length 4.}
+\format{An object of class \code{list} of length 3.}
 \usage{
 synonyms
 }
