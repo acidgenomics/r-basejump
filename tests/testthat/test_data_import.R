@@ -212,6 +212,18 @@ test_that("readFileByExtension", {
         readFileByExtension
     expect_true(is_tibble(tsv))
 
+    # Counts (.counts) file
+    counts <- file.path(testDataURL, "test.counts") %>%
+        readFileByExtension
+    expect_true(is.matrix(counts))
+    expect_equal(
+        rownames(counts)[1L:5L],
+        c("ENSMUSG00000102693",
+          "ENSMUSG00000064842",
+          "ENSMUSG00000051951",
+          "ENSMUSG00000102851",
+          "ENSMUSG00000103377"))
+
     # RData (.rda) file (unsupported)
     expect_error(
         readFileByExtension(file.path(testDataURL, "mtcars.rda")),
