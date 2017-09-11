@@ -48,7 +48,8 @@ Suggests:
     lintr (>= 1.0.1),
     testthat
 Remotes:
-    hbc/annotables
+    bioc::devel/AnnotationHub,
+    bioc::devel/ensembldb
 biocViews:
     DataImport,
     DifferentialExpression,
