@@ -48,8 +48,8 @@ Suggests:
     lintr (>= 1.0.1),
     testthat
 Remotes:
-    bioc::devel/AnnotationHub,
-    bioc::devel/ensembldb
+    git::https://git.bioconductor.org/packages/AnnotationHub,
+    git::https://git.bioconductor.org/packages/ensembldb
 biocViews:
     DataImport,
     DifferentialExpression,
