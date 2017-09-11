@@ -32,18 +32,10 @@ pre-compiled from \href{http://www.ensembl.org/}{Ensembl} with the
 package. For gene annotables, the Entrez identifier is removed, to allow
 for unique Ensembl gene identifiers.
 }
-\note{
-If the \code{format} argument is set to \code{gene2entrez}, \code{\link[=annotable]{annotable()}} returns
-a \link{tibble} with non-unique rows grouped by \code{ensgene}, instead of a
-\link{data.frame}.
-}
 \examples{
 annotable("Mus musculus") \%>\% glimpse
 }
 \seealso{
-Consult the annotables package documentation (\code{help("annotables")})
-for a list of currently supported genomes.
-
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGTF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
