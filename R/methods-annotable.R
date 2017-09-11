@@ -17,13 +17,6 @@
 #' @param release Ensembl release version. This function defaults to using the
 #'   most recent annotations available on AnnotationHub.
 #'
-#' @note If the `format` argument is set to `gene2entrez`, [annotable()] returns
-#'   a [tibble] with non-unique rows grouped by `ensgene`, instead of a
-#'   [data.frame].
-#'
-#' @seealso Consult the annotables package documentation (`help("annotables")`)
-#'   for a list of currently supported genomes.
-#'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
 #' @examples
