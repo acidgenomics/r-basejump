@@ -49,7 +49,12 @@ NULL
         AnnotationHub()
     )
     ahDb <- suppressMessages(
-        query(ah, pattern = c(organism, "EnsDb", release))
+        query(ah,
+              pattern = c(organism,
+                          "EnsDb",
+                          # Match against the version more specifically
+                          # (e.g. "v90")
+                          paste0("v", release)))
     )
     edb <- suppressMessages(
         ahDb[[1L]]
