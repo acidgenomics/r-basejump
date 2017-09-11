@@ -8,7 +8,7 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene", release = 88L)
+\S4method{annotable}{character}(object, format = "gene", release = 90L)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a

@@ -33,7 +33,7 @@ NULL
 
 
 # Constructors ====
-.annotable <- function(object, format = "gene", release = 88L) {
+.annotable <- function(object, format = "gene", release = 90L) {
     if (!is_string(object)) {
         stop("Object must be a string")
     }

@@ -20,12 +20,12 @@ LazyData: TRUE
 Depends:
     R (>= 3.4.0)
 Imports:
-    AnnotationHub,
+    AnnotationHub (>= 2.9.12),
     Biobase (>= 2.36.2),
     BiocGenerics,
     datasets,
     dplyr (>= 0.7.2),
-    ensembldb,
+    ensembldb (>= 2.1.11),
     glue,
     knitr (>= 1.17),
     magrittr (>= 1.5),
