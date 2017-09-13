@@ -17,7 +17,11 @@
 #'
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
-#' @param rownames Include row names.
+#' @param rownames Apply sanitization on row names. This is not recommended
+#'   by default, since rownames commonly contain gene identifiers that should
+#'   not be modified.
+#' @param strict Enforce strict rules for name sanitization. **Recommended**
+#'   and generally should not be set to `FALSE`.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [base::names()], the underlying data returns unchanged.
@@ -103,39 +107,48 @@ NULL
 
 
 # dotted.case ====
-.makeNamesDotted <- function(object) {
-    object %>%
+.makeNamesDotted <- function(object, strict = TRUE) {
+    x <- object %>%
         as.character %>%
         make.names %>%
-        # Convert non-alphanumeric characters
+        # Convert non-alphanumeric characters to dots
         str_replace_all("[^[:alnum:]]", ".") %>%
-        # Combine multiple underscores
+        # Combine multiple dots
         str_replace_all("[\\.]+", ".") %>%
         # Strip leading or trailing dots
-        str_replace_all("(^\\.|\\.$)", "") %>%
-        # Special acronym exceptions
-        str_replace_all("RNAi", "Rnai") %>%
-        # Handle snakeCase acronyms
-        # e.g. worfdbHTMLRemap -> worfdb.html.remap
-        gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
-             "\\1\\L\\2\\U\\3\\L\\4", ., perl = TRUE) %>%
-        # Convert remaining acronyms to mixed case
-        gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
-        # Make first letter lowercase
-        gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
-        # Convert camelCase
-        gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
-        tolower
+        str_replace_all("(^\\.|\\.$)", "")
+    if (isTRUE(strict)) {
+        x %>%
+            # Handle snakeCase acronyms
+            # (e.g. `worfdbHTMLRemap` -> `worfdb.html.remap`)
+            gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
+                 "\\1\\L\\2\\U\\3\\L\\4", ., perl = TRUE) %>%
+            # Convert remaining acronyms to mixed case
+            gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%
+            # Make first letter lowercase
+            gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
+            # Convert camelCase
+            gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
+            tolower
+    } else {
+        x
+    }
 }
 
 
 
-.setNamesDotted <- function(object, rownames = FALSE) {
+.setNamesDotted <- function(object, rownames = FALSE, strict = TRUE) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesDotted(names(object)))
+        object <- setNames(
+            object,
+            .makeNamesDotted(names(object),
+                             strict = strict))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(object, .makeNamesDotted(rownames(object)))
+        object <- set_rownames(
+            object,
+            .makeNamesDotted(rownames(object),
+                             strict = strict))
     }
     object
 }
@@ -150,11 +163,14 @@ setMethod("dotted", "ANY", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "character", function(object) {
+setMethod("dotted", "character", function(object, strict = TRUE) {
     if (isTRUE(.checkNames(object))) {
-        .setNamesDotted(object, rownames = FALSE)
+        .setNamesDotted(object,
+                        strict = strict,
+                        rownames = FALSE)
     } else {
-        .makeNamesDotted(object)
+        .makeNamesDotted(object,
+                         strict = strict)
     }
 })
 
@@ -168,8 +184,10 @@ setMethod("dotted", "data.frame", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "list", function(object) {
-    .setNamesDotted(object, rownames = FALSE)
+setMethod("dotted", "list", function(object, strict = TRUE) {
+    .setNamesDotted(object,
+                    strict = strict,
+                    rownames = FALSE)
 })
 
 
@@ -182,25 +200,31 @@ setMethod("dotted", "matrix", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "tbl_df", function(object) {
-    .setNamesDotted(object, rownames = FALSE)
+setMethod("dotted", "tbl_df", function(object, strict = TRUE) {
+    .setNamesDotted(object,
+                    strict = strict,
+                    rownames = FALSE)
 })
 
 
 
 # camelCase ====
-.makeNamesCamel <- function(object) {
+.makeNamesCamel <- function(object, strict = TRUE) {
     object %>%
-        .makeNamesDotted %>%
+        .makeNamesDotted(strict = strict) %>%
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }
 
-.setNamesCamel <- function(object, rownames = FALSE) {
+.setNamesCamel <- function(object, rownames = FALSE, strict = TRUE) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesCamel(names(object)))
+        object <- setNames(
+            object,
+            .makeNamesCamel(names(object), strict = strict))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(object, .makeNamesCamel(rownames(object)))
+        object <- set_rownames(
+            object,
+            .makeNamesCamel(rownames(object), strict = strict))
     }
     object
 }
@@ -215,11 +239,11 @@ setMethod("camel", "ANY", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "character", function(object) {
+setMethod("camel", "character", function(object, strict = TRUE) {
     if (isTRUE(.checkNames(object))) {
-        .setNamesCamel(object, rownames = FALSE)
+        .setNamesCamel(object, rownames = FALSE, strict = strict)
     } else {
-        .makeNamesCamel(object)
+        .makeNamesCamel(object, strict = strict)
     }
 })
 
@@ -233,8 +257,8 @@ setMethod("camel", "data.frame", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "list", function(object) {
-    .setNamesCamel(object, rownames = FALSE)
+setMethod("camel", "list", function(object, strict = TRUE) {
+    .setNamesCamel(object, rownames = FALSE, strict = strict)
 })
 
 
@@ -247,8 +271,8 @@ setMethod("camel", "matrix", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "tbl_df", function(object) {
-    .setNamesCamel(object, rownames = FALSE)
+setMethod("camel", "tbl_df", function(object, strict = TRUE) {
+    .setNamesCamel(object, rownames = FALSE, strict = strict)
 })
 
 
@@ -257,6 +281,7 @@ setMethod("camel", "tbl_df", function(object) {
 .makeNamesSnake <- function(object) {
     object %>%
         .makeNamesDotted %>%
+        tolower %>%
         str_replace_all("\\.", "_")
 }
 
