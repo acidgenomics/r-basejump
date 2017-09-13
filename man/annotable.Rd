@@ -8,7 +8,8 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene", release = 90L)
+\S4method{annotable}{character}(object, format = "gene",
+  release = "current")
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
@@ -20,7 +21,7 @@ string.}
 \code{gene2symbol}.}
 
 \item{release}{Ensembl release version. This function defaults to using the
-most recent annotations available on AnnotationHub.}
+most current release available on AnnotationHub (\code{current}).}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.

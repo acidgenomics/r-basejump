@@ -20,12 +20,12 @@ LazyData: TRUE
 Depends:
     R (>= 3.4.0)
 Imports:
-    AnnotationHub (>= 2.9.12),
+    AnnotationHub,
     Biobase (>= 2.36.2),
     BiocGenerics,
     datasets,
     dplyr (>= 0.7.2),
-    ensembldb (>= 2.1.11),
+    ensembldb,
     glue,
     knitr (>= 1.17),
     magrittr (>= 1.5),
@@ -46,10 +46,8 @@ Imports:
 Suggests:
     BiocStyle,
     lintr (>= 1.0.1),
-    testthat
-Remotes:
-    git::https://git.bioconductor.org/packages/AnnotationHub,
-    git::https://git.bioconductor.org/packages/ensembldb
+    testthat,
+    tidyverse
 biocViews:
     DataImport,
     DifferentialExpression,
