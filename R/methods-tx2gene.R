@@ -3,6 +3,8 @@
 #' @rdname tx2gene
 #' @name tx2gene
 #'
+#' @inheritParams annotable
+#'
 #' @return Same class as object.
 #' @export
 #'
@@ -30,7 +32,7 @@ NULL
 
 
 # Constructors ====
-.t2gvec <- function(object) {
+.t2gvec <- function(object, release = "current") {
     # Prevent pass in of genomeBuild as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -43,7 +45,7 @@ NULL
         stop("Empty string identifier detected", call. = FALSE)
     }
     organism <- detectOrganism(object[[1L]])
-    t2g <- annotable(organism, format = "tx2gene") %>%
+    t2g <- annotable(organism, format = "tx2gene", release = release) %>%
         .[object, ] %>%
         .[!is.na(.[["ensgene"]]), ]
     gene <- t2g[["ensgene"]]
@@ -59,8 +61,9 @@ NULL
 
 
 
-.t2gdim <- function(object) {
-    rownames(object) <- rownames(object) %>% .t2gvec
+.t2gdim <- function(object, release = "current") {
+    rownames(object) <- rownames(object) %>%
+        .t2gvec(release = release)
     object
 }
 
