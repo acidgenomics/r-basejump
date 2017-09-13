@@ -37,7 +37,7 @@ NULL
     organism <- detectOrganism(object)
 
     # Download organism EnsDb package from AnnotationHub
-    message("Obtaining Ensembl annotations")
+    message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
     ah <- AnnotationHub()
     if (release == "current") {
         ahDb <- query(
@@ -62,7 +62,10 @@ NULL
         edb <- suppressMessages(ahDb[[1L]])
     }
 
-    message(paste("Annotations:", organism, "Ensembl", release))
+    message(paste("EnsDB:",
+                  organism(edb),
+                  "Ensembl",
+                  ensemblVersion(edb)))
 
     if (format == "gene") {
         genes(edb,
