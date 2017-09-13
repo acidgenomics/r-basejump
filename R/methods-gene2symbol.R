@@ -3,6 +3,7 @@
 #' @rdname gene2symbol
 #' @name gene2symbol
 #'
+#' @inheritParams annotable
 #' @param organism *Optional*. Organism name. Normally this argument is
 #'  unnecessary and can be left `NULL`. If a count matrix starts with a
 #'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
@@ -35,7 +36,7 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object, organism = NULL) {
+.g2svec <- function(object, organism = NULL, release = "current") {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -58,7 +59,9 @@ NULL
         organism <- detectOrganism(organism)
     }
 
-    g2s <- annotable(organism, format = "gene2symbol") %>%
+    g2s <- annotable(organism,
+                     format = "gene2symbol",
+                     release = release) %>%
         .[object, , drop = FALSE] %>%
         .[!is.na(.[["symbol"]]), , drop = FALSE]
 
@@ -80,9 +83,10 @@ NULL
 
 
 # Pass arguments to `.g2svec()`
-.g2sdim <- function(object, organism = NULL) {
+.g2sdim <- function(object, organism = NULL, release = "current") {
     rownames(object) <- rownames(object) %>%
-        .g2svec(organism = organism)
+        .g2svec(organism = organism,
+                release = release)
     object
 }
 
