@@ -32,29 +32,29 @@ dotted(object, ...)
 
 snake(object, ...)
 
-\S4method{dotted}{ANY}(object, rownames = FALSE)
+\S4method{dotted}{ANY}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{dotted}{character}(object)
+\S4method{dotted}{character}(object, strict = TRUE)
 
-\S4method{dotted}{data.frame}(object, rownames = FALSE)
+\S4method{dotted}{data.frame}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{dotted}{list}(object)
+\S4method{dotted}{list}(object, strict = TRUE)
 
-\S4method{dotted}{matrix}(object, rownames = FALSE)
+\S4method{dotted}{matrix}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{dotted}{tbl_df}(object)
+\S4method{dotted}{tbl_df}(object, strict = TRUE)
 
-\S4method{camel}{ANY}(object, rownames = FALSE)
+\S4method{camel}{ANY}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{camel}{character}(object)
+\S4method{camel}{character}(object, strict = TRUE)
 
-\S4method{camel}{data.frame}(object, rownames = FALSE)
+\S4method{camel}{data.frame}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{camel}{list}(object)
+\S4method{camel}{list}(object, strict = TRUE)
 
-\S4method{camel}{matrix}(object, rownames = FALSE)
+\S4method{camel}{matrix}(object, rownames = FALSE, strict = TRUE)
 
-\S4method{camel}{tbl_df}(object)
+\S4method{camel}{tbl_df}(object, strict = TRUE)
 
 \S4method{snake}{ANY}(object, rownames = FALSE)
 
@@ -74,7 +74,12 @@ will be meaningful.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{rownames}{Include row names.}
+\item{rownames}{Apply sanitization on row names. This is not recommended
+by default, since rownames commonly contain gene identifiers that should
+not be modified.}
+
+\item{strict}{Enforce strict rules for name sanitization. \strong{Recommended}
+and generally should not be set to \code{FALSE}.}
 }
 \value{
 Object with syntatically valid names. For objects supporting

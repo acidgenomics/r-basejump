@@ -97,7 +97,8 @@ for unique Ensembl gene identifiers.</p>
     <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='fl'>88L</span>)</pre>
+<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -119,7 +120,7 @@ string.</p></td>
     <tr>
       <th>release</th>
       <td><p>Ensembl release version. This function defaults to using the
-most recent annotations available on AnnotationHub.</p></td>
+most current release available on AnnotationHub (<code>current</code>).</p></td>
     </tr>
     </table>
     
@@ -127,24 +128,16 @@ most recent annotations available on AnnotationHub.</p></td>
 
     <p>data.frame with unique rows per gene or transcript.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>If the <code>format</code> argument is set to <code>gene2entrez</code>, <code>annotable()</code> returns
-a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> with non-unique rows grouped by <code>ensgene</code>, instead of a
-data.frame.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Consult the annotables package documentation (<code>help("annotables")</code>)
-for a list of currently supported genomes.</p>
-<p>Other Gene Annotation Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code>,
+    <p>Other Gene Annotation Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code>,
   <code><a href='gene2symbolFromGTF.html'>gene2symbolFromGTF</a></code>,
   <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='symbol2gene.html'>symbol2gene</a></code>,
   <code><a href='tx2geneFromGTF.html'>tx2geneFromGTF</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>annotable</span>(<span class='st'>"Mus musculus"</span>) <span class='kw'>%&gt;%</span> <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus Ensembl 88 annotations</span></div><div class='output co'>#&gt; Observations: 51,158
+    <pre class="examples"><div class='input'><span class='fu'>annotable</span>(<span class='st'>"Mus musculus"</span>) <span class='kw'>%&gt;%</span> <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>Obtaining Ensembl annotations with AnnotationHub and ensembldb</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2017-04-25</span></div><div class='output co'>#&gt; <span class='message'>EnsDB: Mus musculus Ensembl 88</span></div><div class='output co'>#&gt; Observations: 51,158
 #&gt; Variables: 5
 #&gt; $ ensgene     &lt;chr&gt; "ENSMUSG00000000001", "ENSMUSG00000000003", "ENSMUSG000...
 #&gt; $ symbol      &lt;chr&gt; "Gnai3", "Pbsn", "Cdc45", "H19", "Scml2", "Apoh", "Narf...
@@ -158,8 +151,6 @@ for a list of currently supported genomes.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
