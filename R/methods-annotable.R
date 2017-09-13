@@ -15,7 +15,7 @@
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
 #' @param release Ensembl release version. This function defaults to using the
-#'   most recent annotations available on AnnotationHub.
+#'   most current release available on AnnotationHub (`current`).
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
@@ -26,7 +26,7 @@ NULL
 
 
 # Constructors ====
-.annotable <- function(object, format = "gene", release = 90L) {
+.annotable <- function(object, format = "gene", release = "current") {
     if (!is_string(object)) {
         stop("Object must be a string")
     }
@@ -35,23 +35,34 @@ NULL
     }
 
     organism <- detectOrganism(object)
-    message(paste(organism, "Ensembl", release, "annotations"))
 
     # Download organism EnsDb package from AnnotationHub
-    ah <- suppressMessages(
-        AnnotationHub()
-    )
-    ahDb <- suppressMessages(
-        query(ah,
-              pattern = c(organism,
-                          "EnsDb",
-                          # Match against the version more specifically
-                          # (e.g. "v90")
-                          paste0("v", release)))
-    )
-    edb <- suppressMessages(
-        ahDb[[1L]]
-    )
+    message("Obtaining Ensembl annotations")
+    ah <- AnnotationHub()
+    if (release == "current") {
+        ahDb <- query(
+            ah,
+            pattern = c(organism, "EnsDb"),
+            ignore.case = TRUE)
+        # Get the latest AnnotationHub dataset by identifier number
+        id <- ahDb %>%
+            mcols %>%
+            rownames %>%
+            tail(n = 1L)
+        edb <- suppressMessages(ah[[id]])
+    } else {
+        ahDb <- query(
+            ah,
+            pattern = c(organism,
+                        "EnsDb",
+                        # Match against the version more specifically
+                        # (e.g. "v90")
+                        paste0("v", release)),
+            ignore.case = TRUE)
+        edb <- suppressMessages(ahDb[[1L]])
+    }
+
+    message(paste("Annotations:", organism, "Ensembl", release))
 
     if (format == "gene") {
         genes(edb,
