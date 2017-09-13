@@ -43,7 +43,7 @@ NULL
         stop("Empty string identifier detected", call. = FALSE)
     }
     if (any(duplicated(object))) {
-        stop("Duplicate gene symbols detected", call. = FALSE)
+        warning("Duplicate gene symbols detected", call. = FALSE)
     }
 
     # Detect organism
