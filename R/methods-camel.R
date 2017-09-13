@@ -1,8 +1,6 @@
 # Constructors ====
 .makeNamesCamel <- function(object, strict = TRUE) {
     object %>%
-        # Special word exceptions
-        str_replace_all("RNAi", "Rnai") %>%
         .makeNamesDotted(strict = strict) %>%
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
 }

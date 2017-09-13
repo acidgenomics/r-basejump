@@ -119,6 +119,8 @@ NULL
         str_replace_all("(^\\.|\\.$)", "")
     if (isTRUE(strict)) {
         x %>%
+            # Special word exceptions
+            str_replace_all("RNAi", "Rnai") %>%
             # Handle snakeCase acronyms
             # (e.g. `worfdbHTMLRemap` -> `worfdb.html.remap`)
             gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
