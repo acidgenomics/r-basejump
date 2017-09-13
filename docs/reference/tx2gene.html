@@ -93,22 +93,22 @@
     <pre class="usage"><span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -120,6 +120,11 @@
     <tr>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p>Ensembl release version. This function defaults to using the
+most current release available on AnnotationHub (<code>current</code>).</p></td>
     </tr>
     </table>
     
@@ -140,7 +145,7 @@
     <pre class="examples"><div class='input'><span class='co'># character</span>
 <span class='fu'>c</span>(<span class='st'>"ENSMUST00000000001"</span>,
   <span class='st'>"ENSMUST00000000003"</span>,
-  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus Ensembl 88 annotations</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
+  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt; <span class='message'>Obtaining Ensembl annotations with AnnotationHub and ensembldb</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2017-04-25</span></div><div class='output co'>#&gt; <span class='message'>EnsDB: Mus musculus Ensembl 88</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
 #&gt; "ENSMUSG00000000001" "ENSMUSG00000000003" "ENSMUSG00000000003" </div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
 <span class='co'># matrix</span>

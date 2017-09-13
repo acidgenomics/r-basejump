@@ -98,40 +98,40 @@
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for tbl_df</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for tbl_df</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -165,7 +165,14 @@ will be meaningful.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p>Include row names.</p></td>
+      <td><p>Apply sanitization on row names. This is not recommended
+by default, since rownames commonly contain gene identifiers that should
+not be modified.</p></td>
+    </tr>
+    <tr>
+      <th>strict</th>
+      <td><p>Enforce strict rules for name sanitization. <strong>Recommended</strong>
+and generally should not be set to <code>FALSE</code>.</p></td>
     </tr>
     </table>
     
@@ -222,7 +229,7 @@ argument name assignments.</p>
 
 
 <span class='co'># camelCase</span>
-<span class='fu'>camel</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
+<span class='fu'>camel</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnAiClones"      "worfdbHtmlRemap"
 #&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -254,7 +261,7 @@ argument name assignments.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># snake_case</span>
-<span class='fu'>snake</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rnai_clones"      
+<span class='fu'>snake</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello_world"       "hello_world"       "rn_ai_clones"     
 #&gt; [4] "worfdb_html_remap" "x123"              "na"               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -286,7 +293,7 @@ argument name assignments.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># dotted.case</span>
-<span class='fu'>dotted</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
+<span class='fu'>dotted</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rn.ai.clones"     
 #&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4

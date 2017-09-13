@@ -13,22 +13,25 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object)
+\S4method{tx2gene}{character}(object, release = "current")
 
-\S4method{tx2gene}{data.frame}(object)
+\S4method{tx2gene}{data.frame}(object, release = "current")
 
-\S4method{tx2gene}{DataFrame}(object)
+\S4method{tx2gene}{DataFrame}(object, release = "current")
 
-\S4method{tx2gene}{dgCMatrix}(object)
+\S4method{tx2gene}{dgCMatrix}(object, release = "current")
 
-\S4method{tx2gene}{dgTMatrix}(object)
+\S4method{tx2gene}{dgTMatrix}(object, release = "current")
 
-\S4method{tx2gene}{matrix}(object)
+\S4method{tx2gene}{matrix}(object, release = "current")
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{release}{Ensembl release version. This function defaults to using the
+most current release available on AnnotationHub (\code{current}).}
 }
 \value{
 Same class as object.
