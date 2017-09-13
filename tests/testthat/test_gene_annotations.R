@@ -1,8 +1,10 @@
 context("Gene Annotation Utilities")
 
+release <- 88L  # current version on bioc-release
+
 test_that("annotable", {
     # Human
-    anno <- annotable("Homo sapiens")
+    anno <- annotable("Homo sapiens", release = release)
     expect_equal(
         dim(anno),
         c(64592L, 5L))
@@ -15,7 +17,7 @@ test_that("annotable", {
           "ENSG00000000460"))
 
     # Mouse
-    anno <- annotable("Mus musculus")
+    anno <- annotable("Mus musculus", release = release)
     expect_equal(
         dim(anno),
         c(51158L, 5L))
@@ -44,12 +46,17 @@ test_that("annotable", {
 test_that("gene2symbol", {
     # character
     expect_equal(
-        gene2symbol(c("ENSMUSG00000000001", "ENSMUSG00000000003")),
+        gene2symbol(
+            c("ENSMUSG00000000001", "ENSMUSG00000000003"),
+            release = release),
         c(ENSMUSG00000000001 = "Gnai3",
           ENSMUSG00000000003 = "Pbsn"))
     expect_warning(
-        gene2symbol(c("ENSMUSG00000000000", "ENSMUSG00000000001")),
+        gene2symbol(
+            c("ENSMUSG00000000000", "ENSMUSG00000000001"),
+            release = release),
         "Failed to match all gene IDs to symbols")
+
     expect_error(
         gene2symbol(c("ENSMUSG00000000001", NA)),
         "NA identifier detected")
@@ -66,11 +73,15 @@ test_that("gene2symbol", {
         gene2symbol(vec),
         "Failed to detect supported organism")
     expect_equal(
-        gene2symbol(vec, organism = "mouse"),
+        gene2symbol(vec,
+                    organism = "Mus musculus",
+                    release = release),
         c(EGFP = "EGFP",
           ENSMUSG00000000001 = "Gnai3"))
     expect_warning(
-        gene2symbol(vec, organism = "mouse"),
+        gene2symbol(vec,
+                    organism = "Mus musculus",
+                    release = release),
         "Failed to match all gene IDs to symbols: EGFP")
 
     # matrix
@@ -83,20 +94,20 @@ test_that("gene2symbol", {
                           "ENSMUSG00000000001",
                           "ENSMUSG00000000003"),
                         c("sample1", "sample2")))
-    expect_warning(
-        gene2symbol(mat),
-        "Failed to match all gene IDs to symbols")
     expect_equal(
         mat[2L:3L, ] %>%
-            gene2symbol %>%
+            gene2symbol(release = release) %>%
             dimnames %>%
             .[[1L]],
         c(ENSMUSG00000000001 = "Gnai3",
           ENSMUSG00000000003 = "Pbsn"))
+    expect_warning(
+        gene2symbol(mat, release = release),
+        "Failed to match all gene IDs to symbols")
 
     # Prevent accidental `genomeBuild` pass in
     expect_error(
-        gene2symbol("Homo sapiens"),
+        gene2symbol("mm10"),
         "gene2symbol conversion requires > 1 identifier")
 })
 
@@ -176,31 +187,40 @@ test_that("readGTF", {
 test_that("symbol2gene", {
     # character
     expect_equal(
-        symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse"),
+        symbol2gene(c("Gnai3", "Pbsn"),
+                    organism = "Mus musculus",
+                    release = release),
         c(Gnai3 = "ENSMUSG00000000001",
           Pbsn = "ENSMUSG00000000003"))
+
     expect_error(
-        symbol2gene("Gnai3", organism = "mouse"),
+        symbol2gene("Gnai3", organism = "Mus musculus"),
         "symbol2gene conversion requires > 1 identifier")
     expect_error(
-        symbol2gene(c("Gnai3", "Pbsn", ""), organism = "mouse"),
+        symbol2gene(c("Gnai3", "Pbsn", ""), organism = "Mus musculus"),
         "Empty string identifier detected")
     expect_error(
-        symbol2gene(c("Gnai3", "Pbsn", NA), organism = "mouse"),
+        symbol2gene(c("Gnai3", "Pbsn", NA), organism = "Mus musculus"),
         "NA identifier detected")
     expect_error(
-        symbol2gene(c("Gnai3", "Gnai3"), organism = "mouse"),
+        symbol2gene(c("Gnai3", "Gnai3"), organism = "Mus musculus"),
         "Duplicate gene symbols detected")
 
     # Identifier mismatch
-    expect_warning(
-        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
-        "Failed to match all gene symbols to IDs: XXX")
     expect_equal(
-        symbol2gene(c("Gnai3", "Pbsn", "XXX"), organism = "mouse"),
+        symbol2gene(
+            c("Gnai3", "Pbsn", "XXX"),
+            organism = "Mus musculus",
+            release = release),
         c(Gnai3 = "ENSMUSG00000000001",
           Pbsn = "ENSMUSG00000000003",
           XXX = "XXX"))
+    expect_warning(
+        symbol2gene(
+            c("Gnai3", "Pbsn", "XXX"),
+            organism = "Mus musculus",
+            release = release),
+        "Failed to match all gene symbols to IDs: XXX")
 
     # matrix
     expect_equal(
@@ -211,7 +231,7 @@ test_that("symbol2gene", {
             ncol = 2L,
             dimnames = list(c("Gnai3", "Pbsn"),
                             c("sample1", "sample2"))) %>%
-            symbol2gene(organism = "mouse") %>%
+            symbol2gene(organism = "Mus musculus", release = release) %>%
             dimnames %>%
             .[[1L]],
         c(Gnai3 = "ENSMUSG00000000001",
@@ -223,13 +243,22 @@ test_that("symbol2gene", {
 test_that("tx2gene", {
     # character
     expect_equal(
-        tx2gene(c("ENSMUST00000000001", "ENSMUST00000000003")),
+        tx2gene(
+            c("ENSMUST00000000001", "ENSMUST00000000003"),
+            release = release),
         c(ENSMUST00000000001 = "ENSMUSG00000000001",
           ENSMUST00000000003 = "ENSMUSG00000000003"))
     expect_error(
-        tx2gene(c("ENSMUST00000000000", "ENSMUST00000000001")))
-    expect_error(tx2gene(c("ENSMUSG00000000001", NA)))
-    expect_error(tx2gene(c("ENSMUSG00000000001", "")))
+        tx2gene(
+            c("ENSMUST00000000000", "ENSMUST00000000001"),
+            release = release),
+        "Unmatched transcripts present. Try using a GTF file instead.")
+    expect_error(
+        tx2gene(c("ENSMUSG00000000001", NA)),
+        "NA identifier detected")
+    expect_error(
+        tx2gene(c("ENSMUSG00000000001", "")),
+        "Empty string identifier detected")
 
     # matrix
     mat <- matrix(
@@ -242,7 +271,9 @@ test_that("tx2gene", {
                           "ENSMUST00000000003",
                           "ENSMUST00000114041"),
                         c("sample1", "sample2")))
-    expect_error(tx2gene(mat))
+    expect_error(
+        tx2gene(mat, release = release),
+        "Unmatched transcripts present. Try using a GTF file instead.")
     expect_equal(
         mat[2L:4L, ] %>%
             tx2gene %>%
