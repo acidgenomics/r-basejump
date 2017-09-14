@@ -47,8 +47,6 @@ Suggests:
     BiocStyle,
     lintr (>= 1.0.1),
     testthat
-Remotes:
-    hbc/annotables
 biocViews:
     DataImport,
     DifferentialExpression,
