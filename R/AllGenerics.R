@@ -12,8 +12,7 @@ NULL
 
 
 
-#' @rdname aggregateReplicates
-#' @inheritParams AllGenerics
+#' @rdname AllGenerics
 #' @export
 setGeneric("aggregateReplicates", function(object, ...) {
     standardGeneric("aggregateReplicates")
@@ -27,6 +26,22 @@ setGeneric("aggregateReplicates", function(object, ...) {
 #' @export
 setGeneric("annotable", function(object, ...) {
     standardGeneric("annotable")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric("bcbio", function(object, ...) {
+    standardGeneric("bcbio")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric("bcbio<-", function(object, ..., value) {
+    standardGeneric("bcbio<-")
 })
 
 
@@ -212,8 +227,7 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname metadataTable
-#' @inheritParams AllGenerics
+#' @rdname AllGenerics
 #' @export
 setGeneric("metadataTable", function(object, ...) {
     standardGeneric("metadataTable")
@@ -221,8 +235,7 @@ setGeneric("metadataTable", function(object, ...) {
 
 
 
-#' @rdname metrics
-#' @inheritParams AllGenerics
+#' @rdname AllGenerics
 #' @export
 setGeneric("metrics", function(object) {
     standardGeneric("metrics")
@@ -309,8 +322,7 @@ setGeneric("revcomp", function(object, ...) {
 
 
 
-#' @rdname sampleDirs
-#' @inheritParams AllGenerics
+#' @rdname AllGenerics
 #' @export
 setGeneric("sampleDirs", function(object) {
     standardGeneric("sampleDirs")
@@ -318,9 +330,7 @@ setGeneric("sampleDirs", function(object) {
 
 
 
-#' @rdname sampleMetadata
-#' @family Data Management Utilities
-#' @inheritParams AllGenerics
+#' @rdname AllGenerics
 #' @export
 setGeneric("sampleMetadata", function(object, ...) {
     standardGeneric("sampleMetadata")

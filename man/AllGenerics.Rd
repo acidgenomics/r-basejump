@@ -2,13 +2,35 @@
 % Please edit documentation in R/AllGenerics.R, R/reexports.R
 \name{AllGenerics}
 \alias{AllGenerics}
+\alias{aggregateReplicates}
+\alias{bcbio}
+\alias{bcbio<-}
+\alias{metadataTable}
+\alias{metrics}
+\alias{sampleDirs}
+\alias{sampleMetadata}
 \alias{tidy_filter}
 \alias{tidy_select}
 \title{S4 Generics}
-\arguments{
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\usage{
+aggregateReplicates(object, ...)
 
+bcbio(object, ...)
+
+bcbio(object, ...) <- value
+
+metadataTable(object, ...)
+
+metrics(object)
+
+sampleDirs(object)
+
+sampleMetadata(object, ...)
+}
+\arguments{
 \item{object}{Object.}
+
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{x}{Primary object.}
 
