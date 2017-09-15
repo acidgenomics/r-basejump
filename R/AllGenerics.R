@@ -12,6 +12,15 @@ NULL
 
 
 
+#' @rdname aggregateReplicates
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("aggregateReplicates", function(object, ...) {
+    standardGeneric("aggregateReplicates")
+})
+
+
+
 #' @rdname annotable
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
@@ -203,6 +212,24 @@ setGeneric("mdList", function(object, ...) {
 
 
 
+#' @rdname metadataTable
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("metadataTable", function(object, ...) {
+    standardGeneric("metadataTable")
+})
+
+
+
+#' @rdname metrics
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("metrics", function(object) {
+    standardGeneric("metrics")
+})
+
+
+
 #' @rdname pct
 #' @family Math Utilities
 #' @inheritParams AllGenerics
@@ -278,6 +305,25 @@ setGeneric("removeNA", function(object, ...) {
 #' @export
 setGeneric("revcomp", function(object, ...) {
     standardGeneric("revcomp")
+})
+
+
+
+#' @rdname sampleDirs
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("sampleDirs", function(object) {
+    standardGeneric("sampleDirs")
+})
+
+
+
+#' @rdname sampleMetadata
+#' @family Data Management Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("sampleMetadata", function(object, ...) {
+    standardGeneric("sampleMetadata")
 })
 
 
