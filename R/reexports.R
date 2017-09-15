@@ -4,9 +4,6 @@
 #' @export
 dplyr::filter -> tidy_filter  # nolint
 
-#' @export
-dplyr::pull
-
 #' @rdname AllGenerics
 #' @usage NULL
 #' @export
