@@ -20,6 +20,7 @@ setGeneric("aggregateReplicates", function(object, ...) {
 
 
 
+
 #' @rdname annotable
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
@@ -173,6 +174,14 @@ setGeneric("geomean", function(object, ...) {
 #' @inheritParams AllGenerics
 setGeneric("grepString", function(object, ...) {
     standardGeneric("grepString")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric("interestingGroups", function(object) {
+    standardGeneric("interestingGroups")
 })
 
 
@@ -334,6 +343,14 @@ setGeneric("sampleDirs", function(object) {
 #' @export
 setGeneric("sampleMetadata", function(object, ...) {
     standardGeneric("sampleMetadata")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric("selectSamples", function(object, ...) {
+    standardGeneric("selectSamples")
 })
 
 

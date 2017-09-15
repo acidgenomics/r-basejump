@@ -5,10 +5,12 @@
 \alias{aggregateReplicates}
 \alias{bcbio}
 \alias{bcbio<-}
+\alias{interestingGroups}
 \alias{metadataTable}
 \alias{metrics}
 \alias{sampleDirs}
 \alias{sampleMetadata}
+\alias{selectSamples}
 \alias{tidy_filter}
 \alias{tidy_select}
 \title{S4 Generics}
@@ -19,6 +21,8 @@ bcbio(object, ...)
 
 bcbio(object, ...) <- value
 
+interestingGroups(object)
+
 metadataTable(object, ...)
 
 metrics(object)
@@ -26,6 +30,8 @@ metrics(object)
 sampleDirs(object)
 
 sampleMetadata(object, ...)
+
+selectSamples(object, ...)
 }
 \arguments{
 \item{object}{Object.}
