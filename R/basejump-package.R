@@ -5,7 +5,7 @@
 #' @import Biobase BiocGenerics datasets methods S4Vectors
 #' @importFrom AnnotationHub AnnotationHub query
 #' @importFrom dplyr arrange case_when distinct filter funs group_by mutate
-#'   mutate_all summarize_all
+#'   mutate_all pull summarize_all
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
