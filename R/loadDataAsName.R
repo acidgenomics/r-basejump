@@ -13,6 +13,11 @@
 #' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 #' }
 loadDataAsName <- function(mappings, dir = "data") {
+    if (!is.character(mappings) |
+        is.null(names(mappings))) {
+        stop("mappings must be defined as a named character vector",
+             call. = FALSE)
+    }
     envir <- parent.frame()
     # Assign into a temporary environment rather than using `attach()`
     tmpenv <- new.env()
@@ -20,9 +25,13 @@ loadDataAsName <- function(mappings, dir = "data") {
         object <- mappings[a]
         name <- names(object)
         # Check to see if full file path was passed
+        fileExtPattern <- "\\.[A-Za-z0-9]+$"
         if (file.exists(object) &
-            str_detect(object, "\\.[A-Za-z0-9]+$")) {
+            str_detect(object, fileExtPattern)) {
             file <- object
+            # Extract the object name from the file name
+            object <- basename(object) %>%
+                str_replace(fileExtPattern, "")
         } else {
             file <- file.path(dir, paste0(object, ".rda"))
         }
