@@ -3,17 +3,17 @@
 \docType{methods}
 \name{geomean}
 \alias{geomean}
-\alias{geomean,ANY-method}
 \alias{geomean,data.frame-method}
+\alias{geomean,integer-method}
 \alias{geomean,matrix-method}
 \alias{geomean,numeric-method}
 \title{Geometric Mean}
 \usage{
 geomean(object, ...)
 
-\S4method{geomean}{ANY}(object)
-
 \S4method{geomean}{data.frame}(object)
+
+\S4method{geomean}{integer}(object, removeNA = TRUE, zeroPropagate = FALSE)
 
 \S4method{geomean}{matrix}(object)
 
