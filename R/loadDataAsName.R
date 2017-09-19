@@ -23,7 +23,7 @@ loadDataAsName <- function(mappings, dir = "data") {
         load(file, envir = tmpenv)
         assign(
             name,
-            get(object, envir = tmpenv),
+            get(object, envir = tmpenv, inherits = FALSE),
             envir = envir)
     }) %>%
         invisible
