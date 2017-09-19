@@ -72,13 +72,13 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
-setMethod("geomean", "ANY", .geomeanDim)
+setMethod("geomean", "data.frame", .geomeanDim)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "data.frame", .geomeanDim)
+setMethod("geomean", "integer", .geomean)
 
 
 
