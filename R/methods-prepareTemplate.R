@@ -41,7 +41,8 @@ NULL
         if (!file.exists(object[[a]])) {
             file.copy(
                 from = file.path(sourceDir, object[[a]]),
-                to = object[[a]])
+                to = object[[a]],
+                overwrite = FALSE)
         }
     }) %>%
         invisible
