@@ -1,7 +1,7 @@
 #' Load Local Data
 #'
-#' Dynamically [load()] data from `data/` directory or [source()] the
-#' corresponding script from the `data-raw/` directory.
+#' Load RData (`.rda`) files from a directory using symbols rather than complete
+#' file paths.
 #'
 #' @param dir Directory where the RData (`.rda`) files are located.
 #'
@@ -11,7 +11,6 @@
 #' @examples
 #' \dontrun{
 #' loadData(geneIDs, oligo)
-#' loadData(geneIDs, envir = "newenv")
 #' }
 loadData <- function(..., dir = "data") {
     envir <- parent.frame()

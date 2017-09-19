@@ -13,12 +13,11 @@ loadData(..., dir = "data")
 No value.
 }
 \description{
-Dynamically \code{\link[=load]{load()}} data from \code{data/} directory or \code{\link[=source]{source()}} the
-corresponding script from the \code{data-raw/} directory.
+Load RData (\code{.rda}) files from a directory using symbols rather than complete
+file paths.
 }
 \examples{
 \dontrun{
 loadData(geneIDs, oligo)
-loadData(geneIDs, envir = "newenv")
 }
 }
