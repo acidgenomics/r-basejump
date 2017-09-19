@@ -15,7 +15,7 @@
 #' }
 loadData <- function(..., dir = "data") {
     envir <- parent.frame()
-    names <- dots(..., character = TRUE)
+    names <- as.character(substitute(list(...)))[-1L]
     message(paste("Loading", toString(names), "from", dir))
     lapply(seq_along(names), function(a) {
         file <- file.path(dir, paste0(names[a], ".rda"))
