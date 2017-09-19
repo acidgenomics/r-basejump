@@ -7,7 +7,9 @@
 loadData(..., dir = "data")
 }
 \arguments{
-\item{dir}{Directory where the RData (\code{.rda}) files are located.}
+\item{...}{Object names as symbols.}
+
+\item{dir}{Output directory. Defaults to \strong{data}.}
 }
 \value{
 No value.

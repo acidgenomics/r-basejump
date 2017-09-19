@@ -3,7 +3,7 @@
 #' Load RData (`.rda`) files from a directory using symbols rather than complete
 #' file paths.
 #'
-#' @param dir Directory where the RData (`.rda`) files are located.
+#' @inheritParams saveData
 #'
 #' @return No value.
 #' @export
