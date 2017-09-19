@@ -27,6 +27,9 @@ Assigned object name as a string.
 Assigns a new object by name to the current working environment then saves
 the newly assigned object, specified by \code{dir}.
 }
+\note{
+This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
+}
 \examples{
 assignAndSaveData("test", mtcars)
 }
