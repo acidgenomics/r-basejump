@@ -4,14 +4,10 @@
 \alias{loadData}
 \title{Load Local Data}
 \usage{
-loadData(..., dir = "data", envir = parent.frame())
+loadData(..., dir = "data")
 }
 \arguments{
 \item{dir}{Directory where the RData (\code{.rda}) files are located.}
-
-\item{envir}{Environment where the objects will be loaded. Defaults to
-\code{parent.frame()}, also referred to as the calling environment. This
-argument supports new environment creation when a character string is used.}
 }
 \value{
 No value.
