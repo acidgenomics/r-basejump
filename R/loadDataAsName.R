@@ -21,7 +21,7 @@ loadDataAsName <- function(mappings, dir = "data") {
         name <- names(object)
         # Check to see if full file path was passed
         if (file.exists(object) &
-            str_detect("\\.[A-Za-z0-9]+$")) {
+            str_detect(object, "\\.[A-Za-z0-9]+$")) {
             file <- object
         } else {
             file <- file.path(dir, paste0(object, ".rda"))
