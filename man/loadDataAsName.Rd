@@ -12,6 +12,9 @@ the new name of the object in the environment, whereas the value in the
 vector denotes the original object name. This is designed to function
 like a key value pair.}
 }
+\value{
+No value.
+}
 \description{
 Load Data File as Name
 }
