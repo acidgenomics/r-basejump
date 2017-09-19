@@ -12,30 +12,36 @@
 #'   default dependency files for a new experiment.
 #' @param sourceDir Source directory, typically a URL, where the dependency
 #'   files are located.
-#' @param overwrite Overwrite files if they already exist.
 #'
 #' @return No value.
 #'
 #' @examples
 #' \dontrun{
-#' sourceDir <- "http://bioinformatics.sph.harvard.edu/bcbioRnaseq/downloads"
-#' prepareTemplate(sourceDir)
-#' prepareTemplate("setup.R", sourceDir)
+#' # Load the shared files from basejump
+#' prepareTemplate()
+#'
+#' # Request individual files
+#' prepareTemplate(c("setup.R", "_header.Rmd"))
+#'
+#' # Load the shared files from bcbioSingleCell
+#' prepareTemplate(
+#'     sourceDir = system.file("rmarkdown/shared",
+#'                             package = "bcbioSingleCell"))
 #' }
 NULL
 
 
 
 # Constructors ====
-.downloadPackageFile <- function(object, sourceDir, overwrite = FALSE) {
+.copyPackageFile <- function(object, sourceDir) {
     if (missing(sourceDir)) {
-        sourceDir <- file.path(url, "downloads")
+        sourceDir <- system.file("rmarkdown/shared", package = "basejump")
     }
     sapply(seq_along(object), function(a) {
-        if (!file.exists(object[[a]]) | isTRUE(overwrite)) {
-            download.file(
-                file.path(sourceDir, object[[a]]),
-                destfile = object[[a]])
+        if (!file.exists(object[[a]])) {
+            file.copy(
+                from = file.path(sourceDir, object[[a]]),
+                to = object[[a]])
         }
     }) %>%
         invisible
@@ -49,7 +55,7 @@ NULL
 setMethod("prepareTemplate", "missing", function(
     object,
     sourceDir) {
-    .downloadPackageFile(
+    .copyPackageFile(
         c("_output.yaml",
           "_footer.Rmd",
           "_header.Rmd",
@@ -62,4 +68,4 @@ setMethod("prepareTemplate", "missing", function(
 
 #' @rdname prepareTemplate
 #' @export
-setMethod("prepareTemplate", "character", .downloadPackageFile)
+setMethod("prepareTemplate", "character", .copyPackageFile)

@@ -11,7 +11,7 @@ prepareTemplate(object, ...)
 
 \S4method{prepareTemplate}{missing}(object, sourceDir)
 
-\S4method{prepareTemplate}{character}(object, sourceDir, overwrite = FALSE)
+\S4method{prepareTemplate}{character}(object, sourceDir)
 }
 \arguments{
 \item{object}{\emph{Optional}. File name. If \code{NULL} (default), download the
@@ -21,8 +21,6 @@ default dependency files for a new experiment.}
 
 \item{sourceDir}{Source directory, typically a URL, where the dependency
 files are located.}
-
-\item{overwrite}{Overwrite files if they already exist.}
 }
 \value{
 No value.
@@ -36,9 +34,16 @@ File download utility for RMarkdown knit reports.
 }
 \examples{
 \dontrun{
-sourceDir <- "http://bioinformatics.sph.harvard.edu/bcbioRnaseq/downloads"
-prepareTemplate(sourceDir)
-prepareTemplate("setup.R", sourceDir)
+# Load the shared files from basejump
+prepareTemplate()
+
+# Request individual files
+prepareTemplate(c("setup.R", "_header.Rmd"))
+
+# Load the shared files from bcbioSingleCell
+prepareTemplate(
+    sourceDir = system.file("rmarkdown/shared",
+                            package = "bcbioSingleCell"))
 }
 }
 \seealso{
