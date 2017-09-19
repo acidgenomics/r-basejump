@@ -17,12 +17,16 @@ geomean(object, ...)
 
 \S4method{geomean}{matrix}(object)
 
-\S4method{geomean}{numeric}(object)
+\S4method{geomean}{numeric}(object, removeNA = TRUE, zeroPropagate = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{removeNA}{Remove \code{NA} values from calculations.}
+
+\item{zeroPropagate}{Allow propagation of zeroes.}
 }
 \value{
 Numeric containing geometric means.
@@ -32,10 +36,13 @@ The geometric mean is the nth root of n products or e to the mean log of \code{x
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \details{
-Modified version of \code{psych::geometric.mean()}.
+Modified version of \code{psych::geometric.mean()} and/or Paul McMurdie's
+code.
 }
 \note{
-Not particularly useful if there are elements that are <= 0.
+This function should be fully zero- and \code{NA}-tolerant. This calculation
+is not particularly useful if there are elements that are <= 0 and will
+return \code{NaN}.
 }
 \examples{
 # Vector
@@ -56,6 +63,9 @@ mat <- as.matrix(df)
 geomean(mat)
 }
 \seealso{
+\href{https://stackoverflow.com/a/25555105}{Paul McMurdie's post} on
+Stack Overflow
+
 Other Math Utilities: \code{\link{fc2lr}},
   \code{\link{pct}}
 }
