@@ -18,10 +18,10 @@
 #' }
 loadData <- function(..., dir = "data", envir = parent.frame()) {
     dots <- dots(..., character = TRUE)
+    message(paste("Loading", toString(dots), "from", dir))
     lapply(seq_along(dots), function(a) {
         file <- file.path(dir, paste0(dots[a], ".rda"))
         if (file.exists(file)) {
-            message(paste("Loading", file, "from", dir))
             load(file, envir = envir)
         } else {
             # Skip and warn
