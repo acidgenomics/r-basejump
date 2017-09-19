@@ -1,6 +1,7 @@
+library(basejump)
 library(knitr)
 library(ggplot2)
-library(basejump)
+library(tidyverse)
 
 opts_chunk$set(
     audodep = TRUE,
