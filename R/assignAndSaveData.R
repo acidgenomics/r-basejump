@@ -13,6 +13,8 @@
 #' @return Assigned object name as a string.
 #' @export
 #'
+#' @note This function attempts to follow the same order as [base::assign()].
+#'
 #' @examples
 #' assignAndSaveData("test", mtcars)
 assignAndSaveData <- function(
