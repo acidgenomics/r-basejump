@@ -1,7 +1,8 @@
 .onLoad <- function(libname, pkgname) {
     # Order is important here
     pkgs <-
-        c("readxl",
+        c("knitr",
+          "readxl",
           "stringr",
           "tidyverse",
           "rlang")
