@@ -5,6 +5,9 @@
 #'   vector denotes the original object name. This is designed to function
 #'   like a key value pair.
 #'
+#' @return No value.
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
@@ -16,9 +19,12 @@ loadDataAsName <- function(mappings, dir = "data") {
     lapply(seq_along(mappings), function(a) {
         object <- mappings[a]
         name <- names(object)
-        file <- file.path(dir, paste0(object, ".rda"))
-        if (!file.exists(file)) {
-            stop(paste(object, "missing in", dir), call. = FALSE)
+        # Check to see if full file path was passed
+        if (file.exists(object) &
+            str_detect("\\.[A-Za-z0-9]+$")) {
+            file <- object
+        } else {
+            file <- file.path(dir, paste0(object, ".rda"))
         }
         load(file, envir = tmpenv)
         assign(
