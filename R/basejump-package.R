@@ -19,7 +19,7 @@
 #' @importFrom rlang .data dots_list eval_bare is_string sym
 #' @importFrom stats setNames
 #' @importFrom stringr regex str_detect str_dup str_extract str_match
-#'   str_replace_all str_replace_na str_split str_subset
+#'   str_replace str_replace_all str_replace_na str_split str_subset
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom tibble column_to_rownames glimpse has_rownames is_tibble
 #'   rownames_to_column tibble
