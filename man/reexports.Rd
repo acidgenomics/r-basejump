@@ -6,9 +6,17 @@
 \alias{\%>\%}
 \alias{Matrix}
 \alias{DataFrame}
-\alias{metadata}
 \alias{tibble}
 \title{Objects exported from other packages}
+\description{
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+
+Objects exported from other packages
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links
@@ -19,7 +27,7 @@ below to see their documentation.
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{metadata}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 }}
