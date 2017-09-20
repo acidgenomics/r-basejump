@@ -11,6 +11,8 @@ loadDataAsName(mappings, dir = "data")
 the new name of the object in the environment, whereas the value in the
 vector denotes the original object name. This is designed to function
 like a key value pair.}
+
+\item{dir}{Output directory. Defaults to \strong{data}.}
 }
 \value{
 No value.
