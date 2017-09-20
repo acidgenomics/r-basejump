@@ -9,12 +9,12 @@
 #' # GTF URL
 #' url <- file.path(testDataURL, "mmusculus.gtf")
 #' tx2geneFromGTF(url) %>%
-#'     glimpse
+#'     str
 #'
 #' # GTF data.frame
 #' gtf <- readGTF(url)
 #' tx2geneFromGTF(gtf) %>%
-#'     glimpse
+#'     str
 NULL
 
 
