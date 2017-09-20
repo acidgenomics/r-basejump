@@ -12,6 +12,8 @@
 #'   default dependency files for a new experiment.
 #' @param sourceDir Source directory, typically a URL, where the dependency
 #'   files are located.
+#' @param overwrite Overwrite files if they already exist. *This option is used
+#'   primarily for unit testing, and is not generally recommended.*
 #'
 #' @return No value.
 #'
@@ -33,7 +35,7 @@ NULL
 
 
 # Constructors ====
-.copyPackageFile <- function(object, sourceDir) {
+.copyPackageFile <- function(object, sourceDir, overwrite = FALSE) {
     if (missing(sourceDir)) {
         sourceDir <- system.file("rmarkdown/shared", package = "basejump")
     }
@@ -42,7 +44,7 @@ NULL
             file.copy(
                 from = file.path(sourceDir, object[[a]]),
                 to = object[[a]],
-                overwrite = FALSE)
+                overwrite = overwrite)
         }
     }) %>%
         invisible
@@ -62,7 +64,8 @@ setMethod("prepareTemplate", "missing", function(
           "_header.Rmd",
           "bibliography.bib",
           "setup.R"),
-        sourceDir = sourceDir)
+        sourceDir = sourceDir,
+        overwrite = FALSE)
 })
 
 
