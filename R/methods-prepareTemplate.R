@@ -39,6 +39,9 @@ NULL
     if (missing(sourceDir)) {
         sourceDir <- system.file("rmarkdown/shared", package = "basejump")
     }
+    if (isTRUE(overwrite)) {
+        message(paste("Overwriting", toString(object)))
+    }
     sapply(seq_along(object), function(a) {
         if (!file.exists(object[[a]])) {
             file.copy(
