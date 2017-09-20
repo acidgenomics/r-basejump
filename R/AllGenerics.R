@@ -261,6 +261,7 @@ setGeneric("pct", function(object, ...) {
 
 
 
+# Deprecate this function once changes are pushed to bcbio packages
 #' @rdname prepareSummarizedExperiment
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
