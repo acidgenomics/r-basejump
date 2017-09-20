@@ -20,7 +20,7 @@
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
 #' @examples
-#' annotable("Mus musculus") %>% glimpse
+#' annotable("Mus musculus") %>% str
 NULL
 
 

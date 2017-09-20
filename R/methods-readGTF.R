@@ -10,7 +10,7 @@
 #' @examples
 #' file.path(testDataURL, "mmusculus.gtf") %>%
 #'     readGTF %>%
-#'     glimpse
+#'     str
 NULL
 
 
