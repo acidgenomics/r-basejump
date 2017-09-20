@@ -28,12 +28,12 @@ Generate tx2gene from GTF File
 # GTF URL
 url <- file.path(testDataURL, "mmusculus.gtf")
 tx2geneFromGTF(url) \%>\%
-    glimpse
+    str
 
 # GTF data.frame
 gtf <- readGTF(url)
 tx2geneFromGTF(gtf) \%>\%
-    glimpse
+    str
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
