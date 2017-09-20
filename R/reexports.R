@@ -1,4 +1,5 @@
 # dplyr ====
+# ensembldb::filter
 #' @rdname AllGenerics
 #' @usage NULL
 #' @export
@@ -7,10 +8,17 @@ dplyr::filter -> tidy_filter  # nolint
 #' @export
 dplyr::pull
 
+# AnnotationDbi::select
 #' @rdname AllGenerics
 #' @usage NULL
 #' @export
 dplyr::select -> tidy_select  # nolint
+
+# S4Vectors::rename
+#' @rdname AllGenerics
+#' @usage NULL
+#' @export
+dplyr::rename -> tidy_rename  # nolint
 
 
 

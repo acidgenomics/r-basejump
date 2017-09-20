@@ -13,6 +13,7 @@
 \alias{selectSamples}
 \alias{tidy_filter}
 \alias{tidy_select}
+\alias{tidy_rename}
 \title{S4 Generics}
 \usage{
 aggregateReplicates(object, ...)
