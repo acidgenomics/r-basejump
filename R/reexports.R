@@ -8,7 +8,4 @@ Matrix::Matrix
 S4Vectors::DataFrame
 
 #' @export
-S4Vectors::metadata
-
-#' @export
 tibble::tibble
