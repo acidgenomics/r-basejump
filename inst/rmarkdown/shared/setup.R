@@ -3,7 +3,7 @@ library(knitr)
 library(ggplot2)
 library(tidyverse)
 
-opts_chunk$set(
+opts_chunk[["set"]](
     audodep = TRUE,
     cache = TRUE,
     cache.lazy = FALSE,
