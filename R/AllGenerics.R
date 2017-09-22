@@ -261,6 +261,14 @@ setGeneric("pct", function(object, ...) {
 
 
 
+#' @rdname AllGenerics
+#' @export
+setGeneric("plotGene", function(object, ...) {
+    standardGeneric("plotGene")
+})
+
+
+
 #' @rdname prepareSummarizedExperiment
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics

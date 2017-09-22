@@ -8,6 +8,7 @@
 \alias{interestingGroups}
 \alias{metadataTable}
 \alias{metrics}
+\alias{plotGene}
 \alias{sampleDirs}
 \alias{sampleMetadata}
 \alias{selectSamples}
@@ -26,6 +27,8 @@ interestingGroups(object)
 metadataTable(object, ...)
 
 metrics(object)
+
+plotGene(object, ...)
 
 sampleDirs(object)
 
