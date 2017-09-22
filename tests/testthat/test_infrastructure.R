@@ -102,10 +102,7 @@ test_that("dots", {
 test_that("prepareTemplate", {
     expect_silent(
         prepareTemplate())
-    output <- capture.output(
+    expect_message(
         prepareTemplate("setup.R", overwrite = TRUE),
-        type = "message")
-    expect_equal(
-        output[[1L]],
-        "trying URL 'http://steinbaugh.com/basejump/downloads/setup.R'")
+        "Overwriting setup.R")
 })

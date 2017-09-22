@@ -28,12 +28,12 @@ Generate gene2symbol from GTF File
 # GTF URL
 url <- file.path(testDataURL, "mmusculus.gtf")
 gene2symbolFromGTF(url) \%>\%
-    glimpse
+    str
 
 # GTF data.frame
 gtf <- readGTF(url)
 gene2symbolFromGTF(gtf) \%>\%
-    glimpse
+    str
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

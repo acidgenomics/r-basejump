@@ -34,7 +34,7 @@ package. For gene annotables, the Entrez identifier is removed, to allow
 for unique Ensembl gene identifiers.
 }
 \examples{
-annotable("Mus musculus") \%>\% glimpse
+annotable("Mus musculus") \%>\% str
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},

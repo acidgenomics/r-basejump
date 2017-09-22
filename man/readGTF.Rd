@@ -24,7 +24,7 @@ Read GTF Annotations
 \examples{
 file.path(testDataURL, "mmusculus.gtf") \%>\%
     readGTF \%>\%
-    glimpse
+    str
 }
 \seealso{
 http://www.gencodegenes.org/gencodeformat.html
