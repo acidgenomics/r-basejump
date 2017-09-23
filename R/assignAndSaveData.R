@@ -22,14 +22,17 @@ assignAndSaveData <- function(
     object,
     dir = "data",
     compress = TRUE) {
+    envir <- parent.frame()
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     dir <- normalizePath(dir)
-    envir <- parent.frame()
+    file <- file.path(dir, paste0(name, ".rda"))
+    names(file) <- name
     assign(name, object, envir = envir)
     message(paste("Saving", name, "to", basename(dir)))
     save(list = name,
-         file = file.path(dir, paste0(name, ".rda")),
+         file = file,
          envir = envir,
          compress = compress)
-    invisible(name)
+    # Silently return the file path as a named character vector
+    invisible(file)
 }
