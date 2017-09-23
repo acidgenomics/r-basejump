@@ -31,5 +31,5 @@ assignAndSaveData <- function(
          file = file.path(dir, paste0(name, ".rda")),
          envir = envir,
          compress = compress)
-    name
+    invisible(name)
 }
