@@ -1,8 +1,5 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' @rdname internal-localOrRemoteFile
-#' @keywords internal
-#'
 #' @inheritParams AllGenerics
 #'
 #' @return Named character vector containing the original file name as the
@@ -13,6 +10,8 @@
 #' file.path(testDataURL, "mtcars.csv") %>%
 #'     .localOrRemoteFile
 #' }
+#'
+#' @noRd
 .localOrRemoteFile <- function(object) {
     fileName <- basename(object)
     if (str_detect(object, "\\://")) {
