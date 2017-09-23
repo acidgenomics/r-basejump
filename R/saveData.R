@@ -35,5 +35,8 @@ saveData <- function(...,  dir = "data", compress = TRUE) {
            file = paths,
            MoreArgs = list(envir = parent.frame(),
                            compress = compress))
-    invisible()
+    # Silently return the file paths as a named character vector. This can be
+    # useful for piping commands.
+    names(paths) <- names
+    invisible(paths)
 }
