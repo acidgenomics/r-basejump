@@ -8,7 +8,7 @@
 #' @examples
 #' \dontrun{
 #' file.path(testDataURL, "mtcars.csv") %>%
-#'     .localOrRemoteFile
+#'     .localOrRemoteFile()
 #' }
 #'
 #' @noRd
