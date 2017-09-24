@@ -4,15 +4,18 @@
 \alias{loadData}
 \title{Load Local Data}
 \usage{
-loadData(..., dir = "data")
+loadData(..., dir = "data", envir = parent.frame())
 }
 \arguments{
 \item{...}{Object names as symbols.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
+
+\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
+which will assign into the calling environment.}
 }
 \value{
-No value.
+Silent named character vector of file paths.
 }
 \description{
 Load RData (\code{.rda}) files from a directory using symbols rather than complete
