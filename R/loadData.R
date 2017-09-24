@@ -23,21 +23,20 @@ loadData <- function(..., dir = "data", envir = parent.frame()) {
     }
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
-    names <- list(...) %>%
-        substitute() %>%
-        as.character() %>%
-        .[-1L]
+    names <- as.character(substitute(list(...)))[-1L]
     message(paste("Loading", toString(names), "from", dir))
     files <- sapply(seq_along(names), function(a) {
         name <- names[a]
         file <- file.path(dir, paste0(name, ".rda"))
         if (!file.exists(file)) {
-            return(warning(paste(name, "missing"), call. = FALSE))
+            paste(name, "missing") %>%
+                stop(call. = FALSE)
         }
         file <- normalizePath(file)
         loaded <- load(file, envir = envir)
         if (!identical(name, loaded)) {
-            stop(paste(name, "file and saved object names are not identical"))
+            paste(name, "file and saved object names are not identical") %>%
+                stop(call. = FALSE)
         }
         names(file) <- name
         file
