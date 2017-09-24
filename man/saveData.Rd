@@ -19,7 +19,7 @@ saveData(..., dir = "data", compress = TRUE)
     for workspace format version 1.}
 }
 \value{
-No value.
+Silent named character vector of file paths.
 }
 \description{
 Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object names passed as

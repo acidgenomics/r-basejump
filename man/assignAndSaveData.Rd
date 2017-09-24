@@ -21,7 +21,7 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE)
     for workspace format version 1.}
 }
 \value{
-Assigned object name as a string.
+Silent named character vector of file path.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
@@ -34,6 +34,6 @@ This function attempts to follow the same order as \code{\link[base:assign]{base
 assignAndSaveData("test", mtcars)
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{multiassignAsNewEnv}}
+Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
 }
 \concept{Object Assignment Utilities}
