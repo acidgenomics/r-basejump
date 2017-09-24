@@ -6,29 +6,32 @@
 #'   vector denotes the original object name. This is designed to function
 #'   like a key value pair.
 #'
-#' @return No value.
+#' @return Silently return named character vector of file paths.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 #' }
-loadDataAsName <- function(mappings, dir = "data") {
-    if (!is.character(mappings) |
-        is.null(names(mappings))) {
-        stop("mappings must be defined as a named character vector",
+loadDataAsName <- function(
+    mappings,
+    dir = "data",
+    envir = parent.frame()) {
+    if (!is.character(mappings) | is.null(names(mappings))) {
+        stop("'mappings' must be defined as a named character vector",
              call. = FALSE)
     }
-    envir <- parent.frame()
-    # Assign into a temporary environment rather than using `attach()`
+    if (!is.environment(envir)) {
+        stop("'envir' must be an environment")
+    }
+    # Assign into a temporary environment, rather than using `attach()`
     tmpenv <- new.env()
-    lapply(seq_along(mappings), function(a) {
+    loaded <- sapply(seq_along(mappings), function(a) {
         object <- mappings[a]
         name <- names(object)
         # Check to see if full file path was passed
         fileExtPattern <- "\\.[A-Za-z0-9]+$"
-        if (file.exists(object) &
-            str_detect(object, fileExtPattern)) {
+        if (str_detect(object, fileExtPattern)) {
             file <- object
             # Extract the object name from the file name
             object <- basename(object) %>%
@@ -36,11 +39,24 @@ loadDataAsName <- function(mappings, dir = "data") {
         } else {
             file <- file.path(dir, paste0(object, ".rda"))
         }
-        load(file, envir = tmpenv)
+        if (!file.exists(file)) {
+            paste(object, "missing") %>%
+                warning(call. = FALSE) %>%
+                return()
+        }
+        file <- normalizePath(file)
+        loaded <- load(file, envir = tmpenv)
+        if (!identical(as.character(object), loaded)) {
+            paste(name, "file and saved object names are not identical") %>%
+                stop(call. = FALSE)
+        }
         assign(
             name,
             get(object, envir = tmpenv, inherits = FALSE),
-            envir = envir)
-    }) %>%
-        invisible
+            envir = envir
+        )
+        names(file) <- name
+        file
+    })
+    invisible(loaded)
 }
