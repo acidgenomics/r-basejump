@@ -41,8 +41,7 @@ loadDataAsName <- function(
         }
         if (!file.exists(file)) {
             paste(object, "missing") %>%
-                warning(call. = FALSE) %>%
-                return()
+                stop(call. = FALSE)
         }
         file <- normalizePath(file)
         loaded <- load(file, envir = tmpenv)

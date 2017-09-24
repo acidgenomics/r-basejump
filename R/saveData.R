@@ -20,7 +20,7 @@
 #' - [devtools::use_data()].
 #' - [base::save()].
 #'
-#' @return No value.
+#' @return Silent named character vector of file paths.
 #' @export
 #'
 #' @examples
