@@ -10,7 +10,7 @@
 #' @inheritParams saveData
 #' @param name Desired variable name.
 #'
-#' @return Assigned object name as a string.
+#' @return Silent named character vector of file path.
 #' @export
 #'
 #' @note This function attempts to follow the same order as [base::assign()].
