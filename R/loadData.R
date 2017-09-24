@@ -15,9 +15,12 @@
 #' loadData(geneIDs, oligo)
 #' }
 loadData <- function(..., dir = "data", envir = parent.frame()) {
-    # The dots method will error at this step because the objects as symbols
-    # aren't present in the calling environment.
-    names <- as.character(substitute(list(...)))[-1L]
+    # The dots method will error at this step because the objects (as symbols)
+    # aren't present in the calling environment
+    names <- list(...) %>%
+        substitute() %>%
+        as.character() %>%
+        .[-1L]
     message(paste("Loading", toString(names), "from", dir))
     files <- sapply(seq_along(names), function(a) {
         file <- file.path(dir, paste0(names[a], ".rda"))
