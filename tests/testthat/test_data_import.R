@@ -16,6 +16,7 @@ test_that("loadData", {
 test_that("loadDataAsName", {
     x <- loadDataAsName(c(test = "mtcars"), dir = getwd())
     expect_equal(names(x), "test")
+    expect_equal(basename(x), "mtcars.rda")
     expect_error(
         loadDataAsName(c(test = "foobar")),
         "foobar missing")
