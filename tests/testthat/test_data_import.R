@@ -1,5 +1,28 @@
 context("Data Import and Project Management Utilities")
 
+download.file(
+    file.path(testDataURL, "mtcars.rda"),
+    "mtcars.rda")
+
+test_that("loadData", {
+    x <- loadData(mtcars, dir = getwd())
+    expect_equal(names(x), "mtcars")
+    expect_equal(basename(x), "mtcars.rda")
+    expect_error(loadData(foobar), "foobar missing")
+})
+
+
+
+test_that("loadDataAsName", {
+    x <- loadDataAsName(c(test = "mtcars"), dir = getwd())
+    expect_equal(names(x), "test")
+    expect_error(
+        loadDataAsName(c(test = "foobar")),
+        "foobar missing")
+})
+
+
+
 test_that("prepareSummarizedExperiment", {
     # Create the matrix with invalid names. We'll sanitize these
     # into snake_case later.
