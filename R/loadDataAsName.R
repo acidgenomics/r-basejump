@@ -5,6 +5,7 @@
 #'   the new name of the object in the environment, whereas the value in the
 #'   vector denotes the original object name. This is designed to function
 #'   like a key value pair.
+#' @param envir The environment where the data should be loaded.
 #'
 #' @return Silently return named character vector of file paths.
 #' @export
