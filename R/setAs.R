@@ -9,7 +9,7 @@
 #'
 #' @param from Class for which the coerce method will perform coercion.
 #'
-#' @seealso `help("coerce")`
+#' @seealso `help(topic = "coerce", package = "methods")`.
 #'
 #' @noRd
 .asTibble <- function(from) {
