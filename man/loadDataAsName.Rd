@@ -4,7 +4,7 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(mappings, dir = "data")
+loadDataAsName(mappings, dir = "data", envir = parent.frame())
 }
 \arguments{
 \item{mappings}{Named character vector to define mappings. The name defines
@@ -13,9 +13,11 @@ vector denotes the original object name. This is designed to function
 like a key value pair.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
+
+\item{envir}{The environment where the data should be loaded.}
 }
 \value{
-No value.
+Silently return named character vector of file paths.
 }
 \description{
 Load Data File as Name
