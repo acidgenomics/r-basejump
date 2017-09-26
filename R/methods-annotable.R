@@ -47,8 +47,8 @@ NULL
     if (is.numeric(release) & release < 87L) {
         warning(paste(
             "ensembldb only supports Ensembl releases 87 and newer.",
-            "Switching to current release."),
-            call. = FALSE)
+            "Using current release instead."
+        ))
         release <- "current"
     }
 
