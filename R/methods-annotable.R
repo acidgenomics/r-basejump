@@ -42,6 +42,16 @@ NULL
         normalizePath() %>%
         message()
     ah <- AnnotationHub()
+
+    # Check for unsupported Ensembl release request
+    if (is.numeric(release) & release < 87L) {
+        warning(paste(
+            "ensembldb only supports Ensembl releases 87 and newer.",
+            "Switching to current release."),
+            call. = FALSE)
+        release <- "current"
+    }
+
     if (release == "current") {
         ahDb <- query(
             ah,
@@ -65,10 +75,12 @@ NULL
         edb <- suppressMessages(ahDb[[1L]])
     }
 
-    message(paste("EnsDB:",
-                  organism(edb),
-                  "Ensembl",
-                  ensemblVersion(edb)))
+    message(paste(
+        "EnsDB:",
+        organism(edb),
+        "Ensembl",
+        ensemblVersion(edb)
+    ))
 
     if (format == "gene") {
         genes(edb,
