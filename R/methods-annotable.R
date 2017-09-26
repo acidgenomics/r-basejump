@@ -38,6 +38,11 @@ NULL
 
     # Download organism EnsDb package from AnnotationHub
     message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
+    # O2 locked database fix for AH 2.9.17
+    # "/home/USER//.AnnotationHub"
+    setAnnotationHubOption("CACHE", "~/.AnnotationHub")
+    getAnnotationHubOption("CACHE") %>%
+        message()
     ah <- AnnotationHub()
     if (release == "current") {
         ahDb <- query(
