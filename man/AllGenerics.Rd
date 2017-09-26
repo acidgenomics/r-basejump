@@ -20,15 +20,15 @@ bcbio(object, ...)
 
 bcbio(object, ...) <- value
 
-interestingGroups(object)
+interestingGroups(object, ...)
 
 metadataTable(object, ...)
 
-metrics(object)
+metrics(object, ...)
 
 plotGene(object, ...)
 
-sampleDirs(object)
+sampleDirs(object, ...)
 
 sampleMetadata(object, ...)
 

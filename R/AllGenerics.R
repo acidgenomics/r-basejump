@@ -180,7 +180,7 @@ setGeneric("grepString", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
-setGeneric("interestingGroups", function(object) {
+setGeneric("interestingGroups", function(object, ...) {
     standardGeneric("interestingGroups")
 })
 
@@ -246,7 +246,7 @@ setGeneric("metadataTable", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
-setGeneric("metrics", function(object) {
+setGeneric("metrics", function(object, ...) {
     standardGeneric("metrics")
 })
 
@@ -342,7 +342,7 @@ setGeneric("revcomp", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
-setGeneric("sampleDirs", function(object) {
+setGeneric("sampleDirs", function(object, ...) {
     standardGeneric("sampleDirs")
 })
 
