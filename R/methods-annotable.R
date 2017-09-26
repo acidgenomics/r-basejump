@@ -38,7 +38,9 @@ NULL
 
     # Download organism EnsDb package from AnnotationHub
     message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
-    message(getAnnotationHubOption("CACHE"))
+    getAnnotationHubOption("CACHE") %>%
+        normalizePath() %>%
+        message()
     ah <- AnnotationHub()
     if (release == "current") {
         ahDb <- query(
