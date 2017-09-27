@@ -1,9 +1,11 @@
+#' Homo sapiens PANTHER annotations
+#' Michael Steinbaugh
+#' 2017-09-27
+
 library(basejump)
 library(stringr)
 library(readr)
 library(tidyverse)
-
-
 
 # HGNC annotations ====
 hgncTXT <-
@@ -21,9 +23,8 @@ hgnc <- hgnc %>%
     dplyr::select(hgnc_id, ensembl_gene_id) %>%
     mutate(hgnc_id = str_replace(hgnc_id, "^HGNC\\:", ""))
 
-
-
 # PANTHER annotations ====
+organism <- "human"
 pantherFTP <-
     file.path("ftp://ftp.pantherdb.org",
               "sequence_classifications",
@@ -31,11 +32,11 @@ pantherFTP <-
               "PANTHER_Sequence_Classification_files")
 pantherFile <-
     transmit(pantherFTP,
-             pattern = "human",
+             pattern = organism,
              compress = TRUE,
              localDir = "annotations")
 panther <- pantherFile %>%
-    as.character %>%
+    as.character() %>%
     read_tsv(col_names = c(
         "id",
         "protein",
@@ -57,8 +58,6 @@ panther <- panther %>%
 # Add panther prefix to all columns
 colnames(panther) <- camel(paste("panther", colnames(panther), sep = "."))
 
-
-
 # Match by Ensembl ID and combine ====
 # First extract the annotations that match Ensembl
 ensemblMatched <- panther %>%
@@ -76,7 +75,7 @@ hgncMatched <- panther %>%
            hgnc_id = str_replace(hgnc_id, "^HGNC=", "")) %>%
     left_join(hgnc, by = "hgnc_id") %>%
     dplyr::filter(!is.na(ensembl_gene_id)) %>%
-    select(-hgnc_id) %>%
+    dplyr::select(-hgnc_id) %>%
     rename(ensgene = ensembl_gene_id)
 
 # Now combine PANTHER annotations that are matched to Ensembl ID
