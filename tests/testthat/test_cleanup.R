@@ -57,6 +57,7 @@ lst <- list(Item.A = c(1L, 2L),
 
 test_that("camel", {
     # Unnamed character vector
+    expect_equal(camel("G2MScore"), "g2mScore")
     expect_equal(camel("hello world"), "helloWorld")
     expect_equal(camel("HELLO WORLD"), "helloWorld")
     expect_equal(camel("RNAi clones"), "rnaiClones")
@@ -64,6 +65,10 @@ test_that("camel", {
     expect_equal(camel(123L), 123L)
     expect_equal(camel(NA), NA)
     expect_error(camel())
+
+    # Strict mode checks
+    expect_equal(camel("TX2GeneID", strict = TRUE), "tx2GeneId")
+    expect_equal(camel("TX2GeneID", strict = FALSE), "tx2GeneID")
 
     # Named character vector
     expect_equal(
@@ -120,6 +125,10 @@ test_that("dotted", {
     expect_equal(dotted(123L), 123L)
     expect_equal(dotted(NA), NA)
     expect_error(dotted())
+
+    # Mixed numerals
+    expect_equal(dotted("G2MScore", strict = TRUE), "g2m.score")
+    expect_equal(dotted("G2MScore", strict = FALSE), "G2MScore")
 
     # Named character vector
     expect_equal(
