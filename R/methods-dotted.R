@@ -123,7 +123,7 @@ NULL
             str_replace_all("RNAi", "Rnai") %>%
             # Handle snakeCase acronyms
             # (e.g. `worfdbHTMLRemap` -> `worfdb.html.remap`)
-            gsub("([A-Z])([A-Z]+)([A-Z])([a-z])",
+            gsub("([A-Z])([A-Z0-9]+)([A-Z])([a-z])",
                  "\\1\\L\\2\\U\\3\\L\\4", ., perl = TRUE) %>%
             # Convert remaining acronyms to mixed case
             gsub("([A-Z])([A-Z]+)", "\\1\\L\\2", ., perl = TRUE) %>%

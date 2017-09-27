@@ -1,8 +1,17 @@
 # Constructors ====
 .makeNamesCamel <- function(object, strict = TRUE) {
-    object %>%
+    object <- object %>%
         .makeNamesDotted(strict = strict) %>%
         gsub("\\.(\\w?)", "\\U\\1", ., perl = TRUE)
+    # Coerce string starting with capitalized acronym
+    if (str_detect(object, "^[A-Z0-9]+[a-z]")) {
+        object <- gsub("^([A-Z0-9]+)([A-Z])", "\\L\\1\\U\\2", object, perl = TRUE)
+    }
+    # Fix capitalization at beginning
+    if (str_detect(object, "^[A-Z0-9]+")) {
+        object <- gsub("^([A-Z0-9]+)", "\\L\\1", object, perl = TRUE)
+    }
+    object
 }
 
 
