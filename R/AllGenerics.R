@@ -150,12 +150,12 @@ setGeneric("gene2symbol", function(object, ...) {
 
 
 
-#' @rdname gene2symbolFromGTF
+#' @rdname gene2symbolFromGFF
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("gene2symbolFromGTF", function(object, ...) {
-    standardGeneric("gene2symbolFromGTF")
+setGeneric("gene2symbolFromGFF", function(object, ...) {
+    standardGeneric("gene2symbolFromGFF")
 })
 
 
@@ -292,12 +292,12 @@ setGeneric("readFileByExtension", function(object, ...) {
 
 
 
-#' @rdname readGTF
+#' @rdname readGFF
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("readGTF", function(object, ...) {
-    standardGeneric("readGTF")
+setGeneric("readGFF", function(object, ...) {
+    standardGeneric("readGFF")
 })
 
 
@@ -406,12 +406,12 @@ setGeneric("tx2gene", function(object, ...) {
 
 
 
-#' @rdname tx2geneFromGTF
+#' @rdname tx2geneFromGFF
 #' @family Gene Annotation Utilities
 #' @inheritParams AllGenerics
 #' @export
-setGeneric("tx2geneFromGTF", function(object, ...) {
-    standardGeneric("tx2geneFromGTF")
+setGeneric("tx2geneFromGFF", function(object, ...) {
+    standardGeneric("tx2geneFromGFF")
 })
 
 
