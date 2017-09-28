@@ -20,7 +20,7 @@ NULL
 #' @export
 setMethod("grepString", "character", function(object) {
     object %>%
-        as.character %>%
+        as.character() %>%
         paste0(
             # Unique
             "^", ., "$",

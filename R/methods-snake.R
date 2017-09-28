@@ -1,8 +1,8 @@
 # Constructors ====
 .makeNamesSnake <- function(object) {
     object %>%
-        .makeNamesDotted %>%
-        tolower %>%
+        dotted(strict = TRUE) %>%
+        tolower() %>%
         str_replace_all("\\.", "_")
 }
 

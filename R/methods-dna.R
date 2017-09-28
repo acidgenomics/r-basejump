@@ -25,7 +25,7 @@ setMethod("comp", "character", function(object) {
         stop("DNA string must only contain ACGT nucleotides")
     }
     object %>%
-        toupper %>%
+        toupper() %>%
         # AT base pair swap
         str_replace_all("A", "A1") %>%
         str_replace_all("T", "A") %>%

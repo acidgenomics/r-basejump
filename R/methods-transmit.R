@@ -44,12 +44,12 @@ setMethod("transmit", "character", function(
     }
 
     remoteList <- remoteDir %>%
-        getURL %>%
-        read_lines
-    # `-rwxrwxr-x`: File
-    # `drwxrwxr-x`: Directory
+        getURL() %>%
+        read_lines()
     remoteFileList <- remoteList %>%
         # Match the `-` at begining for file
+        # `-rwxrwxr-x`: File
+        # `drwxrwxr-x`: Directory
         .[str_detect(., "^-")] %>%
         # File name is at the end, not including a space
         str_extract("[^\\s]+$")

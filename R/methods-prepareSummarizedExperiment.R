@@ -178,8 +178,8 @@ NULL
         if (any(is.na(rowData[["ensgene"]]))) {
             metadata[["missingGenes"]] <- rowData %>%
                 .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
-                rownames %>%
-                sort
+                rownames() %>%
+                sort()
         }
     }
 

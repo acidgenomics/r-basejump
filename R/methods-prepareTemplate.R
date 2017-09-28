@@ -50,7 +50,7 @@ NULL
                 overwrite = overwrite)
         }
     }) %>%
-        invisible
+        invisible()
 }
 
 

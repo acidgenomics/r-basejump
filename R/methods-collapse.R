@@ -19,7 +19,10 @@
 #'
 #' @examples
 #' # Designed primarily for `dims` objects
-#' mtcars %>% head %>% collapse %>% t
+#' mtcars %>%
+#'     head() %>%
+#'     collapse() %>%
+#'     t()
 #'
 #' # Vectors are also supported
 #' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
@@ -78,7 +81,7 @@ NULL
     origClass <- class(object)[[1L]]
     # Coerce to data.frame and perform manipulations
     object %>%
-        as.data.frame %>%
+        as.data.frame() %>%
         mutate_all(funs(fixNA)) %>%
         summarize_all(funs(
             .collapseVec(
