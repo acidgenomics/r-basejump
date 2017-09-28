@@ -38,7 +38,7 @@ fixNA(c(1L, "x", "", "NA"))
 
 data.frame(a = c("foo", ""),
            b = c(NA, "bar")) \%>\%
-    fixNA
+    fixNA()
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{camel}},

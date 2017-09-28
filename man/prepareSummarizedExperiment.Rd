@@ -96,7 +96,7 @@ prepareSummarizedExperiment(
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGTF}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
 \concept{Data Import and Project Utilities}

@@ -43,7 +43,8 @@ Convert Ensembl Transcript to Gene
 # character
 c("ENSMUST00000000001",
   "ENSMUST00000000003",
-  "ENSMUST00000114041") \%>\% tx2gene
+  "ENSMUST00000114041") \%>\%
+  tx2gene()
 
 \dontrun{
 # matrix
@@ -56,14 +57,15 @@ matrix(
                       "ENSMUST00000000003",
                       "ENSMUST00000114041"),
                     c("sample1",
-                      "sample2"))) \%>\% tx2gene
+                      "sample2"))) \%>\%
+    tx2gene()
 }
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGTF}}
+  \code{\link{tx2geneFromGFF}}
 }
 \concept{Gene Annotation Utilities}
