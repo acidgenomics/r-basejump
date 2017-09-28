@@ -20,7 +20,8 @@
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
 #' @examples
-#' annotable("Mus musculus") %>% str
+#' annotable("Mus musculus") %>%
+#'     str()
 NULL
 
 
@@ -39,7 +40,6 @@ NULL
     # Download organism EnsDb package from AnnotationHub
     message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
     getAnnotationHubOption("CACHE") %>%
-        normalizePath() %>%
         message()
     ah <- AnnotationHub()
 
