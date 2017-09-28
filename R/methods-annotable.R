@@ -1,10 +1,8 @@
 #' [Ensembl](http://www.ensembl.org/) Annotations
 #'
-#' Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-#' pre-compiled from [Ensembl](http://www.ensembl.org/) with the
-#' [biomaRt](http://bioconductor.org/packages/release/bioc/html/biomaRt.html)
-#' package. For gene annotables, the Entrez identifier is removed, to allow
-#' for unique Ensembl gene identifiers.
+#' Fetch annotations from AnnotationHub using the ensembldb package. This
+#' function defaults to obtaining the latest annotations, unless the `release`
+#' argument is set to a numeric version (e.g. 88).
 #'
 #' @rdname annotable
 #' @name annotable
@@ -18,6 +16,10 @@
 #'   most current release available on AnnotationHub (`current`).
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
+#'
+#' @seealso
+#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
+#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
 #' annotable("Mus musculus") %>%
