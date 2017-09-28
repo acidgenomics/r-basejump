@@ -93,17 +93,17 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
 
     <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>)
-
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>geomean</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for integer</span>
+<span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>geomean</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for numeric</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,6 +116,14 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
+    <tr>
+      <th>removeNA</th>
+      <td><p>Remove <code>NA</code> values from calculations.</p></td>
+    </tr>
+    <tr>
+      <th>zeroPropagate</th>
+      <td><p>Allow propagation of zeroes.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -124,15 +132,20 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code>.</p>
+    <p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code> and/or Paul McMurdie's
+code.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Not particularly useful if there are elements that are &lt;= 0.</p>
+    <p>This function should be fully zero- and <code>NA</code>-tolerant. This calculation
+is not particularly useful if there are elements that are &lt;= 0 and will
+return <code>NaN</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Math Utilities: <code><a href='logRatio.html'>fc2lr</a></code>,
+    <p><a href='https://stackoverflow.com/a/25555105'>Paul McMurdie's post</a> on
+Stack Overflow</p>
+<p>Other Math Utilities: <code><a href='logRatio.html'>fc2lr</a></code>,
   <code><a href='pct.html'>pct</a></code></p>
     
 
