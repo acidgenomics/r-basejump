@@ -107,7 +107,7 @@ NULL
 
 
 # dotted.case ====
-.makeNamesDotted <- function(object, strict = TRUE) {
+.makeNamesDotted <- function(object, strict = FALSE) {
     x <- object %>%
         as.character %>%
         make.names %>%
@@ -139,7 +139,7 @@ NULL
 
 
 
-.setNamesDotted <- function(object, rownames = FALSE, strict = TRUE) {
+.setNamesDotted <- function(object, rownames = FALSE, strict = FALSE) {
     if (.checkNames(object)) {
         object <- setNames(
             object,
@@ -165,7 +165,7 @@ setMethod("dotted", "ANY", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "character", function(object, strict = TRUE) {
+setMethod("dotted", "character", function(object, strict = FALSE) {
     if (isTRUE(.checkNames(object))) {
         .setNamesDotted(object,
                         strict = strict,
@@ -186,7 +186,7 @@ setMethod("dotted", "data.frame", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "list", function(object, strict = TRUE) {
+setMethod("dotted", "list", function(object, strict = FALSE) {
     .setNamesDotted(object,
                     strict = strict,
                     rownames = FALSE)
@@ -202,7 +202,7 @@ setMethod("dotted", "matrix", .setNamesDotted)
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "tbl_df", function(object, strict = TRUE) {
+setMethod("dotted", "tbl_df", function(object, strict = FALSE) {
     .setNamesDotted(object,
                     strict = strict,
                     rownames = FALSE)
