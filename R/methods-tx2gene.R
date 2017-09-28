@@ -12,7 +12,8 @@
 #' # character
 #' c("ENSMUST00000000001",
 #'   "ENSMUST00000000003",
-#'   "ENSMUST00000114041") %>% tx2gene
+#'   "ENSMUST00000114041") %>%
+#'   tx2gene()
 #'
 #' \dontrun{
 #' # matrix
@@ -25,7 +26,8 @@
 #'                       "ENSMUST00000000003",
 #'                       "ENSMUST00000114041"),
 #'                     c("sample1",
-#'                       "sample2"))) %>% tx2gene
+#'                       "sample2"))) %>%
+#'     tx2gene()
 #' }
 NULL
 
@@ -53,7 +55,7 @@ NULL
     if (!all(object %in% names(gene))) {
         stop(paste(
             "Unmatched transcripts present.",
-            "Try using a GTF file instead."),
+            "Try using a GFF file instead."),
             call. = FALSE)
     }
     gene[object]

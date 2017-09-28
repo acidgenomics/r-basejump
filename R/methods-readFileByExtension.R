@@ -65,9 +65,9 @@ setMethod("readFileByExtension", "character", function(
         data <- read_lines(file, ...)
     } else if (ext == "counts") {
         data <- read_tsv(file, progress = FALSE, ...) %>%
-            as.data.frame %>%
+            as.data.frame() %>%
             column_to_rownames("id") %>%
-            as.matrix
+            as.matrix()
     } else {
         stop("Unsupported file type")
     }

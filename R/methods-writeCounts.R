@@ -84,5 +84,5 @@ setMethod(
                     write_csv(path = file.path(dir, fileName))
             }
         }) %>%
-            invisible
+            invisible()
     })

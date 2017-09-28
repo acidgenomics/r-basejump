@@ -45,6 +45,6 @@ setMethod("mdHeader", "character", function(
             paste0("\n") %>%
             # Specify that output should be handled as Markdown text
             structure(format = "markdown") %>%
-            asis_output
+            asis_output()
     }
 })

@@ -10,7 +10,7 @@
 #'
 #' data.frame(a = c("foo", ""),
 #'            b = c(NA, "bar")) %>%
-#'     fixNA
+#'     fixNA()
 NULL
 
 

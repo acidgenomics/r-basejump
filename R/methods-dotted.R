@@ -79,7 +79,7 @@ NULL
 
 
 
-# General Constructors ====
+# Constructors ====
 .checkNames <- function(object) {
     if (!is.null(names(object))) {
         TRUE
@@ -106,11 +106,10 @@ NULL
 
 
 
-# dotted.case ====
 .makeNamesDotted <- function(object, strict = FALSE) {
     x <- object %>%
-        as.character %>%
-        make.names %>%
+        as.character() %>%
+        make.names() %>%
         # Convert non-alphanumeric characters to dots
         str_replace_all("[^[:alnum:]]", ".") %>%
         # Combine multiple dots
@@ -131,7 +130,7 @@ NULL
             gsub("(^[A-Z]{1})", "\\L\\1", ., perl = TRUE) %>%
             # Convert camelCase
             gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
-            tolower
+            tolower()
     } else {
         x
     }
@@ -157,6 +156,7 @@ NULL
 
 
 
+# Methods ====
 #' @rdname makeNames
 #' @export
 setMethod("dotted", "ANY", .setNamesDotted)

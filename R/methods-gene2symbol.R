@@ -17,7 +17,8 @@
 #' @examples
 #' # character
 #' c("ENSMUSG00000000001",
-#'   "ENSMUSG00000000003") %>% gene2symbol
+#'   "ENSMUSG00000000003") %>%
+#'   gene2symbol()
 #'
 #' \dontrun{
 #' # matrix
@@ -29,7 +30,8 @@
 #'     dimnames = list(c("ENSMUSG00000000001",
 #'                       "ENSMUSG00000000003"),
 #'                     c("sample1",
-#'                       "sample2"))) %>% gene2symbol
+#'                       "sample2"))) %>%
+#'     gene2symbol()
 #' }
 NULL
 

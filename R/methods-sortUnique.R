@@ -20,7 +20,7 @@ NULL
 #' @export
 setMethod("sortUnique", "character", function(object) {
     object %>%
-        na.omit %>%
-        sort %>%
-        unique
+        na.omit() %>%
+        sort() %>%
+        unique()
 })

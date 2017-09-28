@@ -29,7 +29,7 @@ multiassignAsNewEnvir <- function(
     lapply(seq_along(dots), function(a) {
         assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
     }) %>%
-        invisible
+        invisible()
     message(paste("Assigning", toString(dotsNames), "as", envirName))
     assign(envirName, value = envir, envir = parentEnvir)
     # Silently return a list of the objects in the new environment
