@@ -4,11 +4,14 @@
 \alias{deprecated}
 \alias{packageSE}
 \alias{prepareSE}
+\alias{metadataTable}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
 
 prepareSE(...)
+
+metadataTable(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
