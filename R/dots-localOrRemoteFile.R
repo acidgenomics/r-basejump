@@ -4,14 +4,13 @@
 #'
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string.
+#' @noRd
 #'
 #' @examples
 #' \dontrun{
 #' file.path(testDataURL, "mtcars.csv") %>%
 #'     .localOrRemoteFile()
 #' }
-#'
-#' @noRd
 .localOrRemoteFile <- function(object) {
     fileName <- basename(object)
     if (str_detect(object, "\\://")) {
