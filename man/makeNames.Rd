@@ -33,29 +33,29 @@ dotted(object, ...)
 
 snake(object, ...)
 
-\S4method{camel}{ANY}(object, rownames = FALSE, strict = TRUE)
+\S4method{camel}{ANY}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{camel}{character}(object, strict = TRUE)
+\S4method{camel}{character}(object, strict = FALSE)
 
-\S4method{camel}{data.frame}(object, rownames = FALSE, strict = TRUE)
+\S4method{camel}{data.frame}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{camel}{list}(object, strict = TRUE)
+\S4method{camel}{list}(object, strict = FALSE)
 
-\S4method{camel}{matrix}(object, rownames = FALSE, strict = TRUE)
+\S4method{camel}{matrix}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{camel}{tbl_df}(object, strict = TRUE)
+\S4method{camel}{tbl_df}(object, strict = FALSE)
 
-\S4method{dotted}{ANY}(object, rownames = FALSE, strict = TRUE)
+\S4method{dotted}{ANY}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{dotted}{character}(object, strict = TRUE)
+\S4method{dotted}{character}(object, strict = FALSE)
 
-\S4method{dotted}{data.frame}(object, rownames = FALSE, strict = TRUE)
+\S4method{dotted}{data.frame}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{dotted}{list}(object, strict = TRUE)
+\S4method{dotted}{list}(object, strict = FALSE)
 
-\S4method{dotted}{matrix}(object, rownames = FALSE, strict = TRUE)
+\S4method{dotted}{matrix}(object, rownames = FALSE, strict = FALSE)
 
-\S4method{dotted}{tbl_df}(object, strict = TRUE)
+\S4method{dotted}{tbl_df}(object, strict = FALSE)
 
 \S4method{snake}{ANY}(object, rownames = FALSE)
 
