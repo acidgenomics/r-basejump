@@ -1,30 +1,30 @@
-#' Generate gene2symbol from GTF File
+#' Generate gene2symbol from GFF/GTF File
 #'
-#' @rdname gene2symbolFromGTF
-#' @name gene2symbolFromGTF
+#' @rdname gene2symbolFromGFF
+#' @name gene2symbolFromGFF
 #'
 #' @return [data.frame].
 #'
 #' @examples
-#' # GTF URL
+#' # From URL (recommended)
 #' url <- file.path(testDataURL, "mmusculus.gtf")
-#' gene2symbolFromGTF(url) %>%
-#'     str
+#' gene2symbolFromGFF(url) %>%
+#'     str()
 #'
-#' # GTF data.frame
-#' gtf <- readGTF(url)
-#' gene2symbolFromGTF(gtf) %>%
-#'     str
+#' # GFF data.frame
+#' gff <- readGFF(url)
+#' gene2symbolFromGFF(gff) %>%
+#'     str()
 NULL
 
 
 
 # Constructors ====
-.gene2symbolFromGTF <- function(object) {
-    anno <- .gtfKeyValuePairs(object)
+.gene2symbolFromGFF <- function(object) {
+    anno <- .gffKeyValuePairs(object)
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
-    # This fix is necessary for FlyBase GTF files.
+    # This fix is necessary for FlyBase GFF files.
     if (any(str_detect(anno, "gene_symbol"))) {
         message("Renaming 'gene_symbol' to 'gene_name'")
         anno <- str_replace_all(anno, "gene_symbol", "gene_name")
@@ -32,7 +32,7 @@ NULL
 
     anno <- anno %>%
         .[str_detect(., "gene_id") & str_detect(., "gene_name")] %>%
-        unique
+        unique()
 
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
@@ -40,8 +40,8 @@ NULL
         .[, 2L]
 
     df <- cbind(ensgene, symbol) %>%
-        as.data.frame %>%
-        distinct %>%
+        as.data.frame() %>%
+        distinct() %>%
         # Ensure unique symbols (not always the case -- e.g. human, mouse)
         mutate(symbol = make.unique(as.character(.data[["symbol"]]))) %>%
         arrange(!!sym("ensgene")) %>%
@@ -55,18 +55,25 @@ NULL
 
 
 # Methods ====
-#' @rdname gene2symbolFromGTF
+#' @rdname gene2symbolFromGFF
 #' @export
-setMethod("gene2symbolFromGTF", "character", function(object) {
+setMethod("gene2symbolFromGFF", "character", function(object) {
     object %>%
-        readGTF %>%
-        .gene2symbolFromGTF
+        readGFF() %>%
+        .gene2symbolFromGFF()
 })
 
 
 
-#' @rdname gene2symbolFromGTF
+#' @rdname gene2symbolFromGFF
 #' @export
-setMethod("gene2symbolFromGTF", "data.frame", function(object) {
-    .gene2symbolFromGTF(object)
+setMethod("gene2symbolFromGFF", "data.frame", function(object) {
+    .gene2symbolFromGFF(object)
 })
+
+
+
+# Aliases ====
+#' @rdname gene2symbolFromGFF
+#' @export
+gene2symbolFromGTF <- gene2symbolFromGFF
