@@ -1,5 +1,5 @@
 # Constructors ====
-.makeNamesCamel <- function(object, strict = TRUE) {
+.makeNamesCamel <- function(object, strict = FALSE) {
     object <- object %>%
         .makeNamesDotted(strict = strict) %>%
         gsub(pattern = "\\.(\\w?)",
@@ -20,7 +20,7 @@
 
 
 
-.setNamesCamel <- function(object, rownames = FALSE, strict = TRUE) {
+.setNamesCamel <- function(object, rownames = FALSE, strict = FALSE) {
     if (.checkNames(object)) {
         object <- setNames(
             object,
@@ -45,7 +45,7 @@ setMethod("camel", "ANY", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "character", function(object, strict = TRUE) {
+setMethod("camel", "character", function(object, strict = FALSE) {
     if (isTRUE(.checkNames(object))) {
         .setNamesCamel(object, rownames = FALSE, strict = strict)
     } else {
@@ -63,7 +63,7 @@ setMethod("camel", "data.frame", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "list", function(object, strict = TRUE) {
+setMethod("camel", "list", function(object, strict = FALSE) {
     .setNamesCamel(object, rownames = FALSE, strict = strict)
 })
 
@@ -77,6 +77,6 @@ setMethod("camel", "matrix", .setNamesCamel)
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "tbl_df", function(object, strict = TRUE) {
+setMethod("camel", "tbl_df", function(object, strict = FALSE) {
     .setNamesCamel(object, rownames = FALSE, strict = strict)
 })
