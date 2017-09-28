@@ -55,7 +55,10 @@ Collapse Utilities
 }
 \examples{
 # Designed primarily for `dims` objects
-mtcars \%>\% head \%>\% collapse \%>\% t
+mtcars \%>\%
+    head() \%>\%
+    collapse() \%>\%
+    t()
 
 # Vectors are also supported
 groceries <- c("milk", "eggs", "eggs", "veggies", NA)

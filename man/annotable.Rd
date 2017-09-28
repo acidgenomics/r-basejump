@@ -34,13 +34,14 @@ package. For gene annotables, the Entrez identifier is removed, to allow
 for unique Ensembl gene identifiers.
 }
 \examples{
-annotable("Mus musculus") \%>\% str
+annotable("Mus musculus") \%>\%
+    str()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
 \author{
 Broad class definitions by Rory Kirchner

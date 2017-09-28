@@ -53,7 +53,8 @@ Convert Ensembl Identifier to Gene Symbol
 \examples{
 # character
 c("ENSMUSG00000000001",
-  "ENSMUSG00000000003") \%>\% gene2symbol
+  "ENSMUSG00000000003") \%>\%
+  gene2symbol()
 
 \dontrun{
 # matrix
@@ -65,7 +66,8 @@ matrix(
     dimnames = list(c("ENSMUSG00000000001",
                       "ENSMUSG00000000003"),
                     c("sample1",
-                      "sample2"))) \%>\% gene2symbol
+                      "sample2"))) \%>\%
+    gene2symbol()
 }
 }
 \seealso{
@@ -73,8 +75,8 @@ matrix(
 
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
-  \code{\link{symbol2gene}}, \code{\link{tx2geneFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
+  \code{\link{symbol2gene}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }
 \concept{Gene Annotation Utilities}

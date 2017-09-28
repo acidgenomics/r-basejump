@@ -4,7 +4,8 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = "data", compress = TRUE)
+assignAndSaveData(name, object, dir = "data", compress = TRUE,
+  envir = parent.frame())
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -19,6 +20,9 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE)
     \code{"bzip2"} or \code{"xz"} specify the type of
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
+
+\item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
+the calling environment.}
 }
 \value{
 Silent named character vector of file path.
