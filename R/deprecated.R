@@ -11,6 +11,7 @@ NULL
 
 
 
+# 0.0.23 ====
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
@@ -23,4 +24,14 @@ packageSE <- function(...) {
 #' @export
 prepareSE <- function(...) {
     prepareSummarizedExperiment(...)
+}
+
+
+
+# 0.0.24 ====
+#' @rdname deprecated
+#' @export
+metadataTable <- function(...) {
+    .Deprecated("sampleMetadata")
+    sampleMetadata(...)
 }

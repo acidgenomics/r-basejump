@@ -238,14 +238,6 @@ setGeneric("mdList", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
-setGeneric("metadataTable", function(object, ...) {
-    standardGeneric("metadataTable")
-})
-
-
-
-#' @rdname AllGenerics
-#' @export
 setGeneric("metrics", function(object, ...) {
     standardGeneric("metrics")
 })

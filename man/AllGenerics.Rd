@@ -6,7 +6,6 @@
 \alias{bcbio}
 \alias{bcbio<-}
 \alias{interestingGroups}
-\alias{metadataTable}
 \alias{metrics}
 \alias{plotGene}
 \alias{sampleDirs}
@@ -21,8 +20,6 @@ bcbio(object, ...)
 bcbio(object, ...) <- value
 
 interestingGroups(object, ...)
-
-metadataTable(object, ...)
 
 metrics(object, ...)
 
