@@ -1,8 +1,13 @@
 # Constructors ====
 .makeNamesCamel <- function(object, strict = FALSE) {
-    object <- object %>%
-        .makeNamesDotted(strict = strict) %>%
-        gsub(pattern = "\\.(\\w?)",
+    object %>%
+        dotted(strict = strict) %>%
+        # First word must be lowercase
+        gsub(pattern = "^(\\w+)\\.",
+             replacement = "\\L\\1.",
+             x = .,
+             perl = TRUE) %>%
+        gsub(pattern = "\\.(\\w)",
              replacement = "\\U\\1",
              x = .,
              perl = TRUE) %>%
