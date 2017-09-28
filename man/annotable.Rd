@@ -27,17 +27,20 @@ most current release available on AnnotationHub (\code{current}).}
 \link{data.frame} with unique rows per gene or transcript.
 }
 \description{
-Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-pre-compiled from \href{http://www.ensembl.org/}{Ensembl} with the
-\href{http://bioconductor.org/packages/release/bioc/html/biomaRt.html}{biomaRt}
-package. For gene annotables, the Entrez identifier is removed, to allow
-for unique Ensembl gene identifiers.
+Fetch annotations from AnnotationHub using the ensembldb package. This
+function defaults to obtaining the latest annotations, unless the \code{release}
+argument is set to a numeric version (e.g. 88).
 }
 \examples{
 annotable("Mus musculus") \%>\%
     str()
 }
 \seealso{
+\itemize{
+\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
+\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
+}
+
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
