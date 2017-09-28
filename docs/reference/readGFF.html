@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fix Character Strings Missing <code>NA</code> — fixNA • basejump</title>
+<title>Read GFF Annotations — readGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,29 +83,19 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fix Character Strings Missing <code>NA</code></h1>
+    <h1>Read GFF Annotations</h1>
     </div>
 
     
-    <p>Fix Character Strings Missing <code>NA</code></p>
+    <p>Read GFF (General Feature Format) file.</p>
     
 
-    <pre class="usage"><span class='fu'>fixNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
+<span class='fu'>readGFF</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for tbl_df</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,21 +112,34 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object containing proper <code>NA</code> values.</p>
+    <p>data.frame.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Cleanup Utilities: <code><a href='makeNames.html'>camel</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sortUnique.html'>sortUnique</a></code></p>
+    <ul>
+<li><p>http://www.ensembl.org/info/website/upload/gff.html</p></li>
+<li><p>http://www.gencodegenes.org/gencodeformat.html</p></li>
+</ul>
+    <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='prepareSummarizedExperiment.html'>prepareSummarizedExperiment</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fixNA</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>))</div><div class='output co'>#&gt; [1] "1" "x" NA  NA </div><div class='input'>
-<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
-           <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;      a    b
-#&gt; 1  foo &lt;NA&gt;
-#&gt; 2 &lt;NA&gt;  bar</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># GTF is GFF-compatible</span>
+<span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>readGFF</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; 'data.frame':	95 obs. of  9 variables:
+#&gt;  $ chromosome      : int  1 1 1 1 1 1 1 1 1 1 ...
+#&gt;  $ annotationSource: chr  "havana" "havana" "havana" "ensembl" ...
+#&gt;  $ featureType     : chr  "gene" "transcript" "exon" "gene" ...
+#&gt;  $ start           : int  3073253 3073253 3073253 3102016 3102016 3102016 3205901 3205901 3213609 3205901 ...
+#&gt;  $ end             : int  3074322 3074322 3074322 3102125 3102125 3102125 3671498 3216344 3216344 3207317 ...
+#&gt;  $ score           : chr  "." "." "." "." ...
+#&gt;  $ strand          : chr  "+" "+" "+" "+" ...
+#&gt;  $ phase           : chr  "." "." "." "." ...
+#&gt;  $ keyValuePairs   : chr  "gene_id ENSMUSG00000102693; gene_version 1; gene_name 4933401J01Rik; gene_source havana; gene_biotype TEC;" "gene_id ENSMUSG00000102693; gene_version 1; transcript_id ENSMUST00000193812; transcript_version 1; gene_name 4"| __truncated__ "gene_id ENSMUSG00000102693; gene_version 1; transcript_id ENSMUST00000193812; transcript_version 1; exon_number"| __truncated__ "gene_id ENSMUSG00000064842; gene_version 1; gene_name Gm26206; gene_source ensembl; gene_biotype snRNA;" ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

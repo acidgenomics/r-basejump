@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fix Character Strings Missing <code>NA</code> — fixNA • basejump</title>
+<title>Assign Multiple Objects as a New Environment — multiassignAsNewEnvir • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,60 +83,44 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fix Character Strings Missing <code>NA</code></h1>
+    <h1>Assign Multiple Objects as a New Environment</h1>
     </div>
 
     
-    <p>Fix Character Strings Missing <code>NA</code></p>
+    <p>Assign Multiple Objects as a New Environment</p>
     
 
-    <pre class="usage"><span class='fu'>fixNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for tbl_df</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>...</span>, <span class='no'>envirName</span>, <span class='kw'>parentEnvir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>...</th>
+      <td><p>Objects as dots.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <th>envirName</th>
+      <td><p>New environment name (string).</p></td>
+    </tr>
+    <tr>
+      <th>parentEnvir</th>
+      <td><p>Parent environment of new environment.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object containing proper <code>NA</code> values.</p>
+    <p>Character vector of assigned objects in the new environment.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Cleanup Utilities: <code><a href='makeNames.html'>camel</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sortUnique.html'>sortUnique</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/Biobase/topics/multiassign'>Biobase::multiassign()</a></code>.</p>
+<p>Other Object Assignment Utilities: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fixNA</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>))</div><div class='output co'>#&gt; [1] "1" "x" NA  NA </div><div class='input'>
-<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
-           <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;      a    b
-#&gt; 1  foo &lt;NA&gt;
-#&gt; 2 &lt;NA&gt;  bar</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>envirName</span> <span class='kw'>=</span> <span class='st'>"test"</span>)</div><div class='output co'>#&gt; <span class='message'>Assigning mtcars, starwars as test</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

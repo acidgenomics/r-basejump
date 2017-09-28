@@ -91,7 +91,8 @@
 the newly assigned object, specified by <code>dir</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -117,19 +118,28 @@ the newly assigned object, specified by <code>dir</code>.</p>
     compression.  Ignored when <code>file</code> is a connection and
     for workspace format version 1.</p></td>
     </tr>
+    <tr>
+      <th>envir</th>
+      <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
+the calling environment.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Assigned object name as a string.</p>
+    <p>Silent named character vector of file path.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function attempts to follow the same order as <code><a href='http://www.rdocumentation.org/packages/base/topics/assign'>base::assign()</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Object Assignment Utilities: <code><a href='assignIntoNewEnv.html'>multiassignAsNewEnv</a></code></p>
+    <p>Other Object Assignment Utilities: <code><a href='multiassignAsNewEnvir.html'>multiassignAsNewEnvir</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='st'>"test"</span>, <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving test to data</span></div><div class='output co'>#&gt; [1] "test"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='st'>"test"</span>, <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving test to data</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -137,6 +147,8 @@ the newly assigned object, specified by <code>dir</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
