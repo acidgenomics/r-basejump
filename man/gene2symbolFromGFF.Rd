@@ -13,8 +13,6 @@ gene2symbolFromGFF(object, ...)
 \S4method{gene2symbolFromGFF}{character}(object)
 
 \S4method{gene2symbolFromGFF}{data.frame}(object)
-
-gene2symbolFromGFF(object, ...)
 }
 \arguments{
 \item{object}{Object.}

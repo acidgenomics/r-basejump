@@ -13,8 +13,6 @@ tx2geneFromGFF(object, ...)
 \S4method{tx2geneFromGFF}{character}(object)
 
 \S4method{tx2geneFromGFF}{data.frame}(object)
-
-tx2geneFromGFF(object, ...)
 }
 \arguments{
 \item{object}{Object.}

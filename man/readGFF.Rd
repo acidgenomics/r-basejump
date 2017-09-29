@@ -10,8 +10,6 @@
 readGFF(object, ...)
 
 \S4method{readGFF}{character}(object)
-
-readGFF(object, ...)
 }
 \arguments{
 \item{object}{Object.}

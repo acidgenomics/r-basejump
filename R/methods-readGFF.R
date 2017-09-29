@@ -58,5 +58,8 @@ setMethod("readGFF", "character", .readGFF)
 
 # Aliases ====
 #' @rdname readGFF
+#' @usage NULL
 #' @export
-readGTF <- readGFF
+readGTF <- function(...) {
+    readGFF(...)
+}
