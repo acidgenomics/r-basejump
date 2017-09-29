@@ -1,9 +1,11 @@
-#' Read GFF Annotations
-#'
-#' Read GFF (General Feature Format) file.
+#' Read GFF/GTF Annotations
 #'
 #' @rdname readGFF
 #' @name readGFF
+#'
+#' @details The GFF (General Feature Format) format consists of one line per
+#'   feature, each containing 9 columns of data, plus optional track definition
+#'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
 #'
 #' @seealso
 #' - http://www.ensembl.org/info/website/upload/gff.html
@@ -12,7 +14,6 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' # GTF is GFF-compatible
 #' file.path(testDataURL, "mmusculus.gtf") %>%
 #'     readGFF() %>%
 #'     str()
@@ -53,13 +54,3 @@ NULL
 #' @rdname readGFF
 #' @export
 setMethod("readGFF", "character", .readGFF)
-
-
-
-# Aliases ====
-#' @rdname readGFF
-#' @usage NULL
-#' @export
-readGTF <- function(...) {
-    readGFF(...)
-}

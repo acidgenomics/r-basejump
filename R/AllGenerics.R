@@ -160,6 +160,16 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 
 
 
+#' @rdname gene2symbolFromGFF
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("gene2symbolFromGTF", function(object, ...) {
+    standardGeneric("gene2symbolFromGTF")
+})
+
+
+
 #' @rdname geomean
 #' @family Math Utilities
 #' @inheritParams AllGenerics
@@ -302,6 +312,16 @@ setGeneric("readGFF", function(object, ...) {
 
 
 
+#' @rdname readGFF
+#' @family Data Import and Project Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("readGTF", function(object, ...) {
+    standardGeneric("readGTF")
+})
+
+
+
 #' @rdname readYAML
 #' @family Data Import and Project Utilities
 #' @inheritParams AllGenerics
@@ -412,6 +432,16 @@ setGeneric("tx2gene", function(object, ...) {
 #' @export
 setGeneric("tx2geneFromGFF", function(object, ...) {
     standardGeneric("tx2geneFromGFF")
+})
+
+
+
+#' @rdname tx2geneFromGFF
+#' @family Gene Annotation Utilities
+#' @inheritParams AllGenerics
+#' @export
+setGeneric("tx2geneFromGTF", function(object, ...) {
+    standardGeneric("tx2geneFromGTF")
 })
 
 

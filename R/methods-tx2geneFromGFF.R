@@ -3,6 +3,10 @@
 #' @rdname tx2geneFromGFF
 #' @name tx2geneFromGFF
 #'
+#' @details The GFF (General Feature Format) format consists of one line per
+#'   feature, each containing 9 columns of data, plus optional track definition
+#'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
+#'
 #' @return [data.frame].
 #'
 #' @examples
@@ -74,13 +78,3 @@ setMethod("tx2geneFromGFF", "data.frame", function(object) {
     }
     .tx2geneFromGFF(object)
 })
-
-
-
-# Aliases ====
-#' @rdname tx2geneFromGFF
-#' @usage NULL
-#' @export
-tx2geneFromGTF <- function(...) {
-    tx2geneFromGFF(...)
-}
