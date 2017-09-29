@@ -3,6 +3,10 @@
 #' @rdname gene2symbolFromGFF
 #' @name gene2symbolFromGFF
 #'
+#' @details The GFF (General Feature Format) format consists of one line per
+#'   feature, each containing 9 columns of data, plus optional track definition
+#'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
+#'
 #' @return [data.frame].
 #'
 #' @examples
@@ -70,13 +74,3 @@ setMethod("gene2symbolFromGFF", "character", function(object) {
 setMethod("gene2symbolFromGFF", "data.frame", function(object) {
     .gene2symbolFromGFF(object)
 })
-
-
-
-# Aliases ====
-#' @rdname gene2symbolFromGFF
-#' @usage NULL
-#' @export
-gene2symbolFromGTF <- function(...) {
-    gene2symbolFromGFF(...)
-}
