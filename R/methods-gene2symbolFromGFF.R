@@ -75,5 +75,8 @@ setMethod("gene2symbolFromGFF", "data.frame", function(object) {
 
 # Aliases ====
 #' @rdname gene2symbolFromGFF
+#' @usage NULL
 #' @export
-gene2symbolFromGTF <- gene2symbolFromGFF
+gene2symbolFromGTF <- function(...) {
+    gene2symbolFromGFF(...)
+}

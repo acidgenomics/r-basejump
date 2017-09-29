@@ -79,5 +79,8 @@ setMethod("tx2geneFromGFF", "data.frame", function(object) {
 
 # Aliases ====
 #' @rdname tx2geneFromGFF
+#' @usage NULL
 #' @export
-tx2geneFromGTF <- tx2geneFromGFF
+tx2geneFromGTF <- function(...) {
+    tx2geneFromGFF(...)
+}
