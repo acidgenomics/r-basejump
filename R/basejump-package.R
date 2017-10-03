@@ -4,8 +4,9 @@
 #'
 #' @import Biobase BiocGenerics datasets methods S4Vectors
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
-#' @importFrom dplyr arrange case_when distinct filter funs group_by mutate
-#'   mutate_all pull summarize_all
+#' @importFrom data.table rbindlist
+#' @importFrom dplyr arrange bind_cols case_when distinct filter funs group_by
+#'   left_join mutate mutate_all mutate_if pull summarize_all ungroup
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
@@ -16,11 +17,11 @@
 #' @importFrom readr read_csv read_delim read_lines read_tsv write_csv
 #'   write_lines write_tsv
 #' @importFrom readxl read_excel
-#' @importFrom rlang .data dots_list eval_bare is_string sym
+#' @importFrom rlang .data dots_list eval_bare is_string sym syms
 #' @importFrom stats setNames
-#' @importFrom stringr regex str_detect str_dup str_extract str_match
+#' @importFrom stringr regex str_detect str_dup str_extract str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_split str_subset
-#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @importFrom SummarizedExperiment colData SummarizedExperiment
 #' @importFrom tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column tibble
 #' @importFrom utils download.file globalVariables read.delim read.table
@@ -29,6 +30,8 @@
 "_PACKAGE"
 
 globalVariables(".")
+
+metaPriorityCols <- c("sampleID", "sampleName")
 
 # Use this for `data-raw/` scripts to define output path
 testDataDir <- file.path("docs", "tests")
