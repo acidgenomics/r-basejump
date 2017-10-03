@@ -37,6 +37,14 @@ setGeneric("interestingGroups", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
+setGeneric("metrics", function(object, ...) {
+    standardGeneric("metrics")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
 setGeneric("plotGene", function(object, ...) {
     standardGeneric("plotGene")
 })

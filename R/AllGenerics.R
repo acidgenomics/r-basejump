@@ -173,14 +173,6 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("metrics", function(object, ...) {
-    standardGeneric("metrics")
-})
-
-
-
 #' @rdname pct
 setGeneric("pct", function(object, ...) {
     standardGeneric("pct")
