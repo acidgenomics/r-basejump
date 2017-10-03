@@ -1,8 +1,6 @@
 #' Primary Interesting Group
 #'
-#' Constructor function.
-#'
-#' @family Internal Constructors
+#' @family Exported Constructor Functions
 #' @keywords internal
 #'
 #' @inheritParams AllGenerics
