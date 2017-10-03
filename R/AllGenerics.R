@@ -12,18 +12,7 @@ NULL
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("aggregateReplicates", function(object, ...) {
-    standardGeneric("aggregateReplicates")
-})
-
-
-
-
 #' @rdname annotable
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("annotable", function(object, ...) {
     standardGeneric("annotable")
@@ -31,25 +20,7 @@ setGeneric("annotable", function(object, ...) {
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("bcbio", function(object, ...) {
-    standardGeneric("bcbio")
-})
-
-
-
-#' @rdname AllGenerics
-#' @export
-setGeneric("bcbio<-", function(object, ..., value) {
-    standardGeneric("bcbio<-")
-})
-
-
-
 #' @rdname makeNames
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("camel", function(object, ...) {
     standardGeneric("camel")
@@ -58,8 +29,6 @@ setGeneric("camel", function(object, ...) {
 
 
 #' @rdname collapse
-#' @family Data Manipulation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("collapse", function(object, ...) {
     standardGeneric("collapse")
@@ -68,8 +37,6 @@ setGeneric("collapse", function(object, ...) {
 
 
 #' @rdname dna
-#' @family DNA Sequence Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("comp", function(object, ...) {
     standardGeneric("comp")
@@ -78,8 +45,6 @@ setGeneric("comp", function(object, ...) {
 
 
 #' @rdname detectHPC
-#' @family Infrastructure Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("detectHPC", function(object, ...) {
     standardGeneric("detectHPC")
@@ -88,8 +53,6 @@ setGeneric("detectHPC", function(object, ...) {
 
 
 #' @rdname detectOrganism
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("detectOrganism", function(object, ...) {
     standardGeneric("detectOrganism")
@@ -98,8 +61,6 @@ setGeneric("detectOrganism", function(object, ...) {
 
 
 #' @rdname dots
-#' @family Function Utilities
-#' @param ... Objects as dots.
 #' @export
 setGeneric(
     "dots",
@@ -111,8 +72,6 @@ setGeneric(
 
 
 #' @rdname makeNames
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
@@ -121,8 +80,6 @@ setGeneric("dotted", function(object, ...) {
 
 
 #' @rdname logRatio
-#' @family Math Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("fc2lr", function(object, ...) {
     standardGeneric("fc2lr")
@@ -131,8 +88,6 @@ setGeneric("fc2lr", function(object, ...) {
 
 
 #' @rdname fixNA
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("fixNA", function(object, ...) {
     standardGeneric("fixNA")
@@ -141,8 +96,6 @@ setGeneric("fixNA", function(object, ...) {
 
 
 #' @rdname gene2symbol
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbol", function(object, ...) {
     standardGeneric("gene2symbol")
@@ -151,8 +104,6 @@ setGeneric("gene2symbol", function(object, ...) {
 
 
 #' @rdname gene2symbolFromGFF
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbolFromGFF", function(object, ...) {
     standardGeneric("gene2symbolFromGFF")
@@ -161,8 +112,6 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 
 
 #' @rdname gene2symbolFromGFF
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("gene2symbolFromGTF", function(object, ...) {
     standardGeneric("gene2symbolFromGTF")
@@ -171,8 +120,6 @@ setGeneric("gene2symbolFromGTF", function(object, ...) {
 
 
 #' @rdname geomean
-#' @family Math Utilities
-#' @inheritParams AllGenerics
 setGeneric("geomean", function(object, ...) {
     standardGeneric("geomean")
 })
@@ -180,25 +127,13 @@ setGeneric("geomean", function(object, ...) {
 
 
 #' @rdname grepString
-#' @family String Utilities
-#' @inheritParams AllGenerics
 setGeneric("grepString", function(object, ...) {
     standardGeneric("grepString")
 })
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("interestingGroups", function(object, ...) {
-    standardGeneric("interestingGroups")
-})
-
-
-
 #' @rdname kables
-#' @family Report Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("kables", function(object, ...) {
     standardGeneric("kables")
@@ -207,8 +142,6 @@ setGeneric("kables", function(object, ...) {
 
 
 #' @rdname loadRemoteData
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("loadRemoteData", function(object, ...) {
     standardGeneric("loadRemoteData")
@@ -217,8 +150,6 @@ setGeneric("loadRemoteData", function(object, ...) {
 
 
 #' @rdname logRatio
-#' @family Math Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("lr2fc", function(object, ...) {
     standardGeneric("lr2fc")
@@ -227,8 +158,6 @@ setGeneric("lr2fc", function(object, ...) {
 
 
 #' @rdname mdHeader
-#' @family Report Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("mdHeader", function(object, ...) {
     standardGeneric("mdHeader")
@@ -237,8 +166,6 @@ setGeneric("mdHeader", function(object, ...) {
 
 
 #' @rdname mdList
-#' @family Report Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("mdList", function(object, ...) {
     standardGeneric("mdList")
@@ -255,36 +182,13 @@ setGeneric("metrics", function(object, ...) {
 
 
 #' @rdname pct
-#' @family Math Utilities
-#' @inheritParams AllGenerics
 setGeneric("pct", function(object, ...) {
     standardGeneric("pct")
 })
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("plotGene", function(object, ...) {
-    standardGeneric("plotGene")
-})
-
-
-
-# Deprecate this function once changes are pushed to bcbio packages
-#' @rdname prepareSummarizedExperiment
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
-#' @export
-setGeneric("prepareSummarizedExperiment", function(object, ...) {
-    standardGeneric("prepareSummarizedExperiment")
-})
-
-
-
 #' @rdname prepareTemplate
-#' @family Infrastructure Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("prepareTemplate", function(object, ...) {
     standardGeneric("prepareTemplate")
@@ -293,8 +197,6 @@ setGeneric("prepareTemplate", function(object, ...) {
 
 
 #' @rdname readFileByExtension
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("readFileByExtension", function(object, ...) {
     standardGeneric("readFileByExtension")
@@ -303,8 +205,6 @@ setGeneric("readFileByExtension", function(object, ...) {
 
 
 #' @rdname readGFF
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("readGFF", function(object, ...) {
     standardGeneric("readGFF")
@@ -313,8 +213,6 @@ setGeneric("readGFF", function(object, ...) {
 
 
 #' @rdname readGFF
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("readGTF", function(object, ...) {
     standardGeneric("readGTF")
@@ -322,9 +220,15 @@ setGeneric("readGTF", function(object, ...) {
 
 
 
+#' @rdname readSampleMetadataFile
+#' @export
+setGeneric("readSampleMetadataFile", function(object, ...) {
+    standardGeneric("readSampleMetadataFile")
+})
+
+
+
 #' @rdname readYAML
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("readYAML", function(object, ...) {
     standardGeneric("readYAML")
@@ -333,8 +237,6 @@ setGeneric("readYAML", function(object, ...) {
 
 
 #' @rdname removeNA
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("removeNA", function(object, ...) {
     standardGeneric("removeNA")
@@ -343,8 +245,6 @@ setGeneric("removeNA", function(object, ...) {
 
 
 #' @rdname dna
-#' @family DNA Sequence Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("revcomp", function(object, ...) {
     standardGeneric("revcomp")
@@ -352,33 +252,7 @@ setGeneric("revcomp", function(object, ...) {
 
 
 
-#' @rdname AllGenerics
-#' @export
-setGeneric("sampleDirs", function(object, ...) {
-    standardGeneric("sampleDirs")
-})
-
-
-
-#' @rdname AllGenerics
-#' @export
-setGeneric("sampleMetadata", function(object, ...) {
-    standardGeneric("sampleMetadata")
-})
-
-
-
-#' @rdname AllGenerics
-#' @export
-setGeneric("selectSamples", function(object, ...) {
-    standardGeneric("selectSamples")
-})
-
-
-
 #' @rdname makeNames
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("snake", function(object, ...) {
     standardGeneric("snake")
@@ -387,8 +261,6 @@ setGeneric("snake", function(object, ...) {
 
 
 #' @rdname sortUnique
-#' @family Cleanup Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("sortUnique", function(object, ...) {
     standardGeneric("sortUnique")
@@ -397,8 +269,6 @@ setGeneric("sortUnique", function(object, ...) {
 
 
 #' @rdname symbol2gene
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("symbol2gene", function(object, ...) {
     standardGeneric("symbol2gene")
@@ -407,8 +277,6 @@ setGeneric("symbol2gene", function(object, ...) {
 
 
 #' @rdname transmit
-#' @family Data Import and Project Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("transmit", function(object, ...) {
     standardGeneric("transmit")
@@ -417,8 +285,6 @@ setGeneric("transmit", function(object, ...) {
 
 
 #' @rdname tx2gene
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2gene", function(object, ...) {
     standardGeneric("tx2gene")
@@ -427,8 +293,6 @@ setGeneric("tx2gene", function(object, ...) {
 
 
 #' @rdname tx2geneFromGFF
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2geneFromGFF", function(object, ...) {
     standardGeneric("tx2geneFromGFF")
@@ -437,8 +301,6 @@ setGeneric("tx2geneFromGFF", function(object, ...) {
 
 
 #' @rdname tx2geneFromGFF
-#' @family Gene Annotation Utilities
-#' @inheritParams AllGenerics
 #' @export
 setGeneric("tx2geneFromGTF", function(object, ...) {
     standardGeneric("tx2geneFromGTF")
@@ -447,9 +309,6 @@ setGeneric("tx2geneFromGTF", function(object, ...) {
 
 
 #' @rdname writeCounts
-#' @family Write Utilities
-#' @author Michael Steinbaugh, Rory Kirchner
-#' @inheritParams dots
 #' @export
 setGeneric(
     "writeCounts",
