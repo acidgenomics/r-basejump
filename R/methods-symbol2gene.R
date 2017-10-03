@@ -2,7 +2,9 @@
 #'
 #' @rdname symbol2gene
 #' @name symbol2gene
+#' @family Gene Annotation Utilities
 #'
+#' @inheritParams AllGenerics
 #' @inheritParams annotable
 #' @param organism Organism name.
 #'

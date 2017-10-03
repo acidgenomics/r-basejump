@@ -5,7 +5,9 @@
 #'
 #' @rdname geomean
 #' @name geomean
+#' @family Math Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param removeNA Remove `NA` values from calculations.
 #' @param zeroPropagate Allow propagation of zeroes.
 #'

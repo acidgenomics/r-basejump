@@ -6,7 +6,9 @@
 #'
 #' @rdname readFileByExtension
 #' @name readFileByExtension
+#' @family Data Import and Project Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `snake`, or `FALSE`.

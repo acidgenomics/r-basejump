@@ -2,17 +2,19 @@
 #'
 #' @rdname readYAML
 #' @name readYAML
+#' @family Data Import and Project Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object YAML file path.
 #'
 #' @return [list].
 #'
 #' @examples
-#' # bcbioRnaseq example project summary YAML
+#' # bcbioRNASeq example project summary YAML
 #' yamlFile <- file.path(
 #'     "https://raw.githubusercontent.com",
 #'     "hbc",
-#'     "bcbioRnaseq",
+#'     "bcbioRNASeq",
 #'     "master",
 #'     "inst",
 #'     "extra",
