@@ -8,9 +8,6 @@
 #' @return [data.frame].
 #' @export
 .arrangeMetadataByPriorityCols <- function(meta) {
-    if (!exists(metaPriorityCols)) {
-        stop("'metaPriorityCols' character vector missing from environment")
-    }
     meta %>%
         as("tibble") %>%
         # Sanitize `sampleID` into valid names
