@@ -3,6 +3,7 @@
 export("%>%")
 export("bcbio<-")
 export(.SummarizedExperiment)
+export(.arrangeMetadataByPriorityCols)
 export(.interestingColData)
 export(.interestingGroup)
 export(.interestingGroups)

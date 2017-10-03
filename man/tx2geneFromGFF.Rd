@@ -56,11 +56,5 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2gene}}
-
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2gene}}
 }
 \concept{Gene Annotation Utilities}

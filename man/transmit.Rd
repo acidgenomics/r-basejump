@@ -40,8 +40,8 @@ transmit("ftp://ftp.ensembl.org/pub/release-90",
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSummarizedExperiment}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}
 }
 \concept{Data Import and Project Utilities}
