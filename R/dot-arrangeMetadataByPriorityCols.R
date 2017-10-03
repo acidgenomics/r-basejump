@@ -1,3 +1,12 @@
+#' Arrange Metadata by Priority Columns
+#'
+#' @family Exported Constructor Functions
+#' @keywords internal
+#'
+#' @param meta Sample metadata [data.frame].
+#'
+#' @return [data.frame].
+#' @export
 .arrangeMetadataByPriorityCols <- function(meta) {
     if (!exists(metaPriorityCols)) {
         stop("'metaPriorityCols' character vector missing from environment")

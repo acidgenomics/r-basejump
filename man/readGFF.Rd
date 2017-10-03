@@ -45,13 +45,8 @@ file.path(testDataURL, "mmusculus.gtf") \%>\%
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSummarizedExperiment}},
   \code{\link{readFileByExtension}},
-  \code{\link{readYAML}}, \code{\link{transmit}}
-
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSummarizedExperiment}},
-  \code{\link{readFileByExtension}},
+  \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
 \concept{Data Import and Project Utilities}
