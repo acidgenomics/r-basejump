@@ -8,9 +8,6 @@
 #' @return [data.frame].
 #' @export
 .setMetadataFactors <- function(meta) {
-    if (!exists(metaPriorityCols)) {
-        stop("'metaPriorityCols' character vector missing from environment")
-    }
     meta %>%
         mutate_if(!colnames(.) %in% metaPriorityCols, factor)
 }
