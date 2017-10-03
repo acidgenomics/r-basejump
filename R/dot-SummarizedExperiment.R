@@ -110,9 +110,8 @@
         # gene identifiers
         warning(paste(
             "rowData mismatch with assay slot:",
-            toString(head(missing)),
-            "...",
-            "These gene IDs are missing in the current Ensembl release."
+            toString(missing),
+            "These IDs are missing in the annotable."
         ))
     }
     rowData <- rowData %>%
