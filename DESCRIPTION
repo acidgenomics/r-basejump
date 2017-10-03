@@ -23,13 +23,14 @@ Imports:
     AnnotationHub (>= 2.8.2),
     Biobase (>= 2.36.2),
     BiocGenerics,
+    data.table (>= 1.10.4),
     datasets,
-    dplyr (>= 0.7.2),
+    dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
     glue,
     knitr (>= 1.17),
     magrittr (>= 1.5),
-    Matrix,
+    Matrix (>= 1.2),
     methods,
     RCurl,
     readr (>= 1.1.1),
@@ -40,14 +41,14 @@ Imports:
     SummarizedExperiment,
     stringr (>= 1.2.0),
     S4Vectors,
-    tibble (>= 1.3.3),
+    tibble (>= 1.3.4),
     utils,
     yaml
 Suggests:
     BiocStyle,
     lintr (>= 1.0.1),
-    testthat,
-    tidyverse
+    testthat (>= 1.0.2),
+    tidyverse (>= 1.1.1)
 biocViews:
     DataImport,
     DifferentialExpression,

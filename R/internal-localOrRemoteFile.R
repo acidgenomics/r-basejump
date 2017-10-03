@@ -1,10 +1,12 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
+#' @keywords internal
+#' @noRd
+#'
 #' @inheritParams AllGenerics
 #'
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string.
-#' @noRd
 #'
 #' @examples
 #' \dontrun{
