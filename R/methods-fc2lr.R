@@ -2,7 +2,9 @@
 #'
 #' @rdname logRatio
 #' @name logRatio
+#' @family Math Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
 #'   values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
@@ -26,15 +28,5 @@ NULL
 setMethod("fc2lr", "numeric", function(object, base = 2L) {
     object <- ifelse(object < 0L, 1L / -object, object)
     object <- log(object, base)
-    object
-})
-
-
-
-#' @rdname logRatio
-#' @export
-setMethod("lr2fc", "numeric", function(object, base = 2L) {
-    object <- base ^ object
-    object <- ifelse(object < 1L, -1L / object, object)
     object
 })
