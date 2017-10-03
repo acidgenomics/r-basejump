@@ -37,8 +37,8 @@ readFileByExtension(file.path(testDataURL, "mtcars.csv"))
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSummarizedExperiment}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+  \code{\link{readGFF}},
+  \code{\link{readSampleMetadataFile}},
+  \code{\link{readYAML}}, \code{\link{transmit}}
 }
 \concept{Data Import and Project Utilities}
