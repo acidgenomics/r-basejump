@@ -2,7 +2,9 @@
 #'
 #' @rdname mdHeader
 #' @name mdHeader
+#' @family Report Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or

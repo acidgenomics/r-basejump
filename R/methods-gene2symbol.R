@@ -2,7 +2,9 @@
 #'
 #' @rdname gene2symbol
 #' @name gene2symbol
+#' @family Gene Annotation Utilities
 #'
+#' @inheritParams AllGenerics
 #' @inheritParams annotable
 #' @param organism *Optional*. Organism name. Normally this argument is
 #'  unnecessary and can be left `NULL`. If a count matrix starts with a

@@ -2,7 +2,9 @@
 #'
 #' @rdname collapse
 #' @name collapse
+#' @family Data Manipulation Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.

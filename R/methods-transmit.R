@@ -5,7 +5,9 @@
 #'
 #' @rdname transmit
 #' @name transmit
+#' @family Data Import and Project Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object Remote directory URL. Currently supports FTP.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.

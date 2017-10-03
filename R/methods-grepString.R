@@ -5,6 +5,9 @@
 #'
 #' @rdname grepString
 #' @name grepString
+#' @family String Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Comma separated grep string.
 #' @export

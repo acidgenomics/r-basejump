@@ -2,6 +2,9 @@
 #'
 #' @rdname fixNA
 #' @name fixNA
+#' @family Cleanup Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Object containing proper `NA` values.
 #'
@@ -32,6 +35,7 @@ NULL
 #' @rdname fixNA
 #' @export
 setMethod("fixNA", "ANY", function(object) {
+    # Return unmodified by default
     object
 })
 

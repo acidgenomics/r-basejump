@@ -2,6 +2,8 @@
 #'
 #' @rdname mdList
 #' @name mdList
+#' @family Report Utilities
+#'
 #' @inherit mdHeader
 #'
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in

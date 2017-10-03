@@ -5,6 +5,9 @@
 #'
 #' @rdname sortUnique
 #' @name sortUnique
+#' @family Cleanup Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Unique vector.
 #' @export

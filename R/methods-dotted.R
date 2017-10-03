@@ -10,11 +10,13 @@
 #'
 #' @rdname makeNames
 #' @name makeNames
+#' @family Cleanup Utilities
 #'
 #' @note `dotted.case` support is provided for matching against base R
 #'   parameters, but we strongly advise against using it for object and/or
 #'   argument name assignments.
 #'
+#' @inheritParams AllGenerics
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
 #' @param rownames Apply sanitization on row names. This is not recommended

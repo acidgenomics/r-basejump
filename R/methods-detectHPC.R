@@ -4,11 +4,15 @@
 #'
 #' @rdname detectHPC
 #' @name detectHPC
+#' @family Infrastructure Utilities
 #'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
-#' @return Scheduler name if `TRUE` (e.g. LSF, SLURM), otherwise `FALSE`.
+#' @inheritParams AllGenerics
+#'
+#' @return Scheduler name if HPC is detected (e.g. LSF, SLURM), otherwise
+#'   `FALSE`.
 #'
 #' @seealso
 #' - `Sys.getenv()`.
