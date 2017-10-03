@@ -54,7 +54,7 @@
 #'     assays = list(assay = mat),
 #'     rowData = rowData,
 #'     colData = colData)
-.SummarizedExperiment <- function(
+.SummarizedExperiment <- function(  # nolint
     assays,
     rowData,
     colData,
