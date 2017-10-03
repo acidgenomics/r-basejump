@@ -5,6 +5,7 @@
 \alias{packageSE}
 \alias{prepareSE}
 \alias{metadataTable}
+\alias{prepareSummarizedExperiment}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
@@ -12,6 +13,8 @@ packageSE(...)
 prepareSE(...)
 
 metadataTable(...)
+
+prepareSummarizedExperiment(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

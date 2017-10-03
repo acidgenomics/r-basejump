@@ -67,8 +67,10 @@ colData <- data.frame(
 \item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
 }
 
-Other Exported Constructor Functions: \code{\link{.interestingColData}},
+Other Exported Constructor Functions: \code{\link{.arrangeMetadataByPriorityCols}},
+  \code{\link{.interestingColData}},
   \code{\link{.interestingGroups}},
+  \code{\link{.interestingGroup}},
   \code{\link{.sampleYAMLMetadata}},
   \code{\link{.sampleYAMLMetrics}},
   \code{\link{.sampleYAML}},

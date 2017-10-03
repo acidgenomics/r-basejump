@@ -13,7 +13,7 @@ annotable(object, ...)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
-string.}
+character string.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
@@ -47,6 +47,6 @@ Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
 \author{
-Broad class definitions by Rory Kirchner
+Broad class definitions by Rory Kirchner.
 }
 \concept{Gene Annotation Utilities}

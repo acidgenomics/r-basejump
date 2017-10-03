@@ -154,11 +154,5 @@ dotted(lst)
 \seealso{
 Other Cleanup Utilities: \code{\link{fixNA}},
   \code{\link{removeNA}}, \code{\link{sortUnique}}
-
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}}
-
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}}
 }
 \concept{Cleanup Utilities}
