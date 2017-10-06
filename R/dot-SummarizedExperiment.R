@@ -154,7 +154,8 @@
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
-    metadata[["sessionInfo"]] <- sessionInfo()
+    metadata[["utilsSessionInfo"]] <- utils::sessionInfo()
+    metadata[["devtoolsSessionInfo"]] <- devtools::session_info()
 
     # Check for retired Ensembl identifiers, which can happen when a more recent
     # annotable build is used than the genome build. If present, store these
