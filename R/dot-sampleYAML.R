@@ -56,8 +56,8 @@
         as("tibble") %>%
         camel(strict = FALSE) %>%
         removeNA() %>%
-        # Rename `description` to `sampleName`
-        dplyr::rename(sampleName = .data[["description"]]) %>%
+        # Copy `description` to `sampleName`
+        mutate(sampleName = .data[["description"]]) %>%
         # Sanitize `sampleID` into valid names
         mutate(sampleID = make.names(.data[["sampleName"]])) %>%
         .arrangeMetadataByPriorityCols()
