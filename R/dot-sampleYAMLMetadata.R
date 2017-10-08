@@ -9,5 +9,5 @@
 #' @export
 .sampleYAMLMetadata <- function(yaml) {
     .sampleYAML(yaml, metadata) %>%
-        .setMetadataFactors()
+        .sampleMetadata()
 }
