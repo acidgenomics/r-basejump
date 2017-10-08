@@ -6,8 +6,8 @@
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
 #' @importFrom data.table rbindlist
 #' @importFrom devtools session_info
-#' @importFrom dplyr arrange bind_cols case_when distinct filter funs group_by
-#'   left_join mutate mutate_all mutate_if pull summarize_all ungroup
+#' @importFrom dplyr arrange bind_cols case_when distinct everything filter funs
+#'   group_by left_join mutate mutate_all mutate_if pull summarize_all ungroup
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
