@@ -17,13 +17,12 @@ Interesting Groups
 }
 \seealso{
 Other Exported Constructor Functions: \code{\link{.SummarizedExperiment}},
-  \code{\link{.arrangeMetadataByPriorityCols}},
   \code{\link{.interestingColData}},
   \code{\link{.interestingGroup}},
+  \code{\link{.sampleMetadata}},
   \code{\link{.sampleYAMLMetadata}},
   \code{\link{.sampleYAMLMetrics}},
-  \code{\link{.sampleYAML}},
-  \code{\link{.setMetadataFactors}}
+  \code{\link{.sampleYAML}}
 }
 \concept{Exported Constructor Functions}
 \keyword{internal}

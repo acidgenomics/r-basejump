@@ -17,13 +17,12 @@ Sample Metadata from YAML
 }
 \seealso{
 Other Exported Constructor Functions: \code{\link{.SummarizedExperiment}},
-  \code{\link{.arrangeMetadataByPriorityCols}},
   \code{\link{.interestingColData}},
   \code{\link{.interestingGroups}},
   \code{\link{.interestingGroup}},
+  \code{\link{.sampleMetadata}},
   \code{\link{.sampleYAMLMetrics}},
-  \code{\link{.sampleYAML}},
-  \code{\link{.setMetadataFactors}}
+  \code{\link{.sampleYAML}}
 }
 \concept{Exported Constructor Functions}
 \keyword{internal}
