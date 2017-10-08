@@ -56,9 +56,12 @@
         as("tibble") %>%
         camel(strict = FALSE) %>%
         removeNA() %>%
-        # Copy `description` to `sampleName`
-        mutate(sampleName = .data[["description"]]) %>%
-        # Sanitize `sampleID` into valid names
-        mutate(sampleID = make.names(.data[["sampleName"]])) %>%
-        .arrangeMetadataByPriorityCols()
+        mutate(
+            # Copy `description` to `sampleName`
+            sampleName = .data[["description"]],
+            # Sanitize `sampleID` into valid names
+            sampleID = make.names(
+                str_replace_all(.data[["sampleID"]], "-", "_")
+            )
+        )
 }
