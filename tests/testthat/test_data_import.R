@@ -250,14 +250,6 @@ test_that(".SummarizedExperiment", {
                 set_rownames(NULL)),
         "colData missing rownames")
 
-    # Check tibble rownames support
-    expect_equal(
-        .SummarizedExperiment(
-            assays = list(mat),
-            rowData = as(rowdata, "tibble"),
-            colData = as(coldata, "tibble")),
-        se)
-
     # Duplicate names
     expect_error(
         .SummarizedExperiment(
