@@ -15,8 +15,8 @@ NULL
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
-    .Deprecated(".SummarizedExperiment")
-    .SummarizedExperiment(...)
+    .Deprecated("prepareSummarizedExperiment")
+    prepareSummarizedExperiment(...)
 }
 
 
@@ -24,8 +24,8 @@ packageSE <- function(...) {
 #' @rdname deprecated
 #' @export
 prepareSE <- function(...) {
-    .Deprecated(".SummarizedExperiment")
-    .SummarizedExperiment(...)
+    .Deprecated("prepareSummarizedExperiment")
+    prepareSummarizedExperiment(...)
 }
 
 
@@ -36,13 +36,4 @@ prepareSE <- function(...) {
 metadataTable <- function(...) {
     .Deprecated("sampleMetadata")
     sampleMetadata(...)
-}
-
-
-
-#' @rdname deprecated
-#' @export
-prepareSummarizedExperiment <- function(...) {
-    .Deprecated(".SummarizedExperiment")
-    .SummarizedExperiment(...)
 }
