@@ -36,6 +36,10 @@ setMethod("readYAML", "character", function(object) {
              call. = FALSE)
     }
     file <- .localOrRemoteFile(object)
+    if (is.null(file)) {
+        warning(paste(basename(object), "missing"), call. = FALSE)
+        return(NULL)
+    }
     message(paste("Reading", names(file)))
     yaml.load_file(file)
 })
