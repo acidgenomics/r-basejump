@@ -180,6 +180,14 @@ setGeneric("pct", function(object, ...) {
 
 
 
+#' @rdname prepareSummarizedExperiment
+#' @export
+setGeneric("prepareSummarizedExperiment", function(assays, ...) {
+    standardGeneric("prepareSummarizedExperiment")
+})
+
+
+
 #' @rdname prepareTemplate
 #' @export
 setGeneric("prepareTemplate", function(object, ...) {

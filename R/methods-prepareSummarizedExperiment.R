@@ -11,8 +11,8 @@
 #' - `utilsSessionInfo`: [utils::sessionInfo()] return.
 #' - `devtoolsSessionInfo`: [devtools::session_info()] return.
 #'
-#' @family Exported Constructor Functions
-#' @keywords internal
+#' @rdname prepareSummarizedExperiment
+#' @name prepareSummarizedExperiment
 #'
 #' @param assays List containing RNA-seq count matrices with matching
 #'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
@@ -52,7 +52,12 @@
 #'     assays = list(assay = mat),
 #'     rowData = rowData,
 #'     colData = colData)
-prepareSummarizedExperiment <- function(
+NULL
+
+
+
+# Constructors ====
+.prepareSummarizedExperiment <- function(
     assays,
     rowData,
     colData,
@@ -174,3 +179,13 @@ prepareSummarizedExperiment <- function(
         colData = colData,
         metadata = metadata)
 }
+
+
+
+# Methods ====
+#' @rdname prepareSummarizedExperiment
+#' @export
+setMethod(
+    "prepareSummarizedExperiment",
+    signature = "list",
+    definition = .prepareSummarizedExperiment)
