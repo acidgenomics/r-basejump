@@ -23,13 +23,13 @@ counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 output the same metrics into the YAML.
 }
 \seealso{
-Other Exported Constructor Functions: \code{\link{.SummarizedExperiment}},
-  \code{\link{.interestingColData}},
+Other Exported Constructor Functions: \code{\link{.interestingColData}},
   \code{\link{.interestingGroups}},
   \code{\link{.interestingGroup}},
   \code{\link{.sampleMetadata}},
   \code{\link{.sampleYAMLMetadata}},
-  \code{\link{.sampleYAMLMetrics}}
+  \code{\link{.sampleYAMLMetrics}},
+  \code{\link{prepareSummarizedExperiment}}
 }
 \concept{Exported Constructor Functions}
 \keyword{internal}

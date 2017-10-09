@@ -16,13 +16,13 @@
 Sample Metadata
 }
 \seealso{
-Other Exported Constructor Functions: \code{\link{.SummarizedExperiment}},
-  \code{\link{.interestingColData}},
+Other Exported Constructor Functions: \code{\link{.interestingColData}},
   \code{\link{.interestingGroups}},
   \code{\link{.interestingGroup}},
   \code{\link{.sampleYAMLMetadata}},
   \code{\link{.sampleYAMLMetrics}},
-  \code{\link{.sampleYAML}}
+  \code{\link{.sampleYAML}},
+  \code{\link{prepareSummarizedExperiment}}
 }
 \concept{Exported Constructor Functions}
 \keyword{internal}
