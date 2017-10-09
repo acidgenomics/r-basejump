@@ -143,7 +143,7 @@ test_that("readYAML", {
     # Missing file
     expect_error(
         readYAML("foobar.yaml"),
-        "cannot open the connection")
+        "foobar.yaml missing")
 })
 
 
