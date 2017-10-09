@@ -185,7 +185,11 @@ test_that(".SummarizedExperiment", {
         c(4L, 4L))
     expect_equal(
         names(metadata(se)),
-        c("date", "wd", "utilsSessionInfo", "devtoolsSessionInfo"))
+        c("date",
+          "wd",
+          "utilsSessionInfo",
+          "devtoolsSessionInfo",
+          "missingGenes"))
     expect_equal(
         metadata(se)[["missingGenes"]],
         "gene_4")
