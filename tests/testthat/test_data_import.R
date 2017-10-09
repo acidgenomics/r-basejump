@@ -148,7 +148,7 @@ test_that("readYAML", {
 
 
 
-test_that(".SummarizedExperiment", {
+test_that("prepareSummarizedExperiment", {
     # Create the matrix with invalid names. We'll sanitize these
     # into snake_case later.
     mat <- matrix(
@@ -167,14 +167,14 @@ test_that(".SummarizedExperiment", {
         genotype = c("wt", "wt", "ko", "ko"),
         age = c(3L, 6L, 3L, 6L),
         row.names = colnames(mat))
-    se <- .SummarizedExperiment(
+    se <- prepareSummarizedExperiment(
         assays = list(mat),
         rowData = rowdata,
         colData = coldata)
 
     # Ensure assays requires a list
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = mat,
             rowData = rowdata,
             colData = coldata),
@@ -198,7 +198,7 @@ test_that(".SummarizedExperiment", {
     # @seealso [base::make.names()]
     # This checks to see if there are any dashes (invalid) in the names
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_rownames(gsub("_", "-", rownames(mat)))
@@ -207,7 +207,7 @@ test_that(".SummarizedExperiment", {
             colData = coldata),
         "Rownames are not valid.")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_colnames(gsub("_", "-", colnames(mat)))
@@ -218,7 +218,7 @@ test_that(".SummarizedExperiment", {
 
     # Missing rownames
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_rownames(NULL)
@@ -227,7 +227,7 @@ test_that(".SummarizedExperiment", {
             colData = coldata),
         "Assay missing rownames")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_colnames(NULL)
@@ -236,14 +236,14 @@ test_that(".SummarizedExperiment", {
             colData = coldata),
         "Assay missing colnames")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(mat),
             rowData = rowdata %>%
                 set_rownames(NULL),
             colData = coldata),
         "rowData missing rownames")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(mat),
             rowData = rowdata,
             colData = coldata %>%
@@ -252,7 +252,7 @@ test_that(".SummarizedExperiment", {
 
     # Duplicate names
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_rownames(c("gene_1",
@@ -264,7 +264,7 @@ test_that(".SummarizedExperiment", {
             colData = coldata),
         "Non-unique rownames")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 mat %>%
                     set_colnames(c("sample_1",
@@ -278,19 +278,19 @@ test_that(".SummarizedExperiment", {
 
     # Bad pass-in of objects not supporting `dim()`
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(c(xxx = "yyy")),
             rowData = rowdata,
             colData = coldata),
         "Assay object must support 'dim\\(\\)'")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(mat),
             rowData = rowdata,
             colData = c(xxx = "yyy")),
         "colData must support 'dim\\(\\)'")
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(mat),
             rowData = c(xxx = "yyy"),
             colData = coldata),
@@ -298,7 +298,7 @@ test_that(".SummarizedExperiment", {
 
     # Dimension mismatch handling
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 cbind(mat, "sample_5" = seq(17L, 20L))
             ),
@@ -306,7 +306,7 @@ test_that(".SummarizedExperiment", {
             colData = coldata),
         "colData mismatch with assay slot: sample_5")
     expect_warning(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(
                 rbind(mat, "gene_5" = seq(17L, 20L))
             ),
@@ -316,7 +316,7 @@ test_that(".SummarizedExperiment", {
 
     # Bad metadata
     expect_error(
-        .SummarizedExperiment(
+        prepareSummarizedExperiment(
             assays = list(mat),
             rowData = rowdata,
             colData = coldata,
@@ -329,19 +329,19 @@ test_that(".SummarizedExperiment", {
             assays = list(mat),
             colData = coldata,
             rowData = rowdata),
-        "Use '.SummarizedExperiment' instead.")
+        "Use 'prepareSummarizedExperiment' instead.")
     expect_warning(
         prepareSE(
             assays = list(mat),
             colData = coldata,
             rowData = rowdata),
-        "Use '.SummarizedExperiment' instead.")
+        "Use 'prepareSummarizedExperiment' instead.")
     expect_warning(
         prepareSummarizedExperiment(
             assays = list(mat),
             colData = coldata,
             rowData = rowdata),
-        "Use '.SummarizedExperiment' instead.")
+        "Use 'prepareSummarizedExperiment' instead.")
 })
 
 
