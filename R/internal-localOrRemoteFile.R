@@ -21,7 +21,12 @@
         download.file(object, filePath)
     } else {
         # Local file
-        filePath <- normalizePath(object)
+        # Check to see if file exists, otherwise return `NULL`
+        if (file.exists(object)) {
+            filePath <- normalizePath(object)
+        } else {
+            return(NULL)
+        }
     }
     file <- filePath
     names(file) <- fileName
