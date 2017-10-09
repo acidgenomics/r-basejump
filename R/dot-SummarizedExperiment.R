@@ -1,4 +1,4 @@
-#' `SummarizedExperiment()` Wrapper
+#' Prepare `SummarizedExperiment()`
 #'
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.
@@ -8,17 +8,15 @@
 #'
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
-#' - `sessionInfo`: R session information.
+#' - `utilsSessionInfo`: [utils::sessionInfo()] return.
+#' - `devtoolsSessionInfo`: [devtools::session_info()] return.
 #'
 #' @family Exported Constructor Functions
 #' @keywords internal
 #'
-#' @param object Object supporting dimensions ([base::dim()]), or a list
-#'   containing valid objects. For NGS experiments, a counts matrix is
-#'   recommended, and can be passed in either dense (`matrix`) or sparse
-#'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
-#'   list, as long as they all have the same dimensions. List object can be
-#'   supplied as either class `list` or `SimpleList`.
+#' @param assays List containing RNA-seq count matrices with matching
+#'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
+#'   (`dgCMatrix`, `dgTMatrix`) format.
 #' @param rowData Object describing assay matrix rows. Must support
 #'   [base::dim()].
 #' @param colData Object describing assay matrix columns. Must support
