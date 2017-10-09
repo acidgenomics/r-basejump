@@ -85,11 +85,6 @@ setMethod("readSampleMetadataFile", "character", function(
         meta[["sampleName"]] <- meta[["description"]]
     }
 
-    # Check that sample names are unique
-    if (any(duplicated(meta[["sampleName"]]))) {
-        stop("Sample names are not unique", call. = FALSE)
-    }
-
     meta <- meta %>%
         # Valid rows must contain `description` and `sampleName`. Imported Excel
         # files can contain empty rows, so this helps correct that problem.
@@ -99,6 +94,11 @@ setMethod("readSampleMetadataFile", "character", function(
         removeNA() %>%
         # Make colnames camelCase
         camel(strict = FALSE)
+
+    # Check that sample names are unique
+    if (any(duplicated(meta[["sampleName"]]))) {
+        stop("Sample names are not unique", call. = FALSE)
+    }
 
     # Subset by pattern, if desired
     if (!is.null(pattern)) {
