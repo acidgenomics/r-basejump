@@ -27,7 +27,9 @@ NULL
     numericAsCharacter <- function(x) {
         all(str_detect(x, "^[0-9\\.]+$"))
     }
-    mutate_if(metrics, numericAsCharacter, as.numeric)
+    metrics %>%
+        mutate_if(numericAsCharacter, as.numeric) %>%
+        .prepareSampleMetadata()
 }
 
 

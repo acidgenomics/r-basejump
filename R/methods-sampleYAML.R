@@ -27,6 +27,7 @@ NULL
     # Check for nested keys, otherwise return NULL
     # Improve recursion method in a future update (lower priority)
     keys <- dots(..., character = TRUE)
+
     if (!keys[[1]] %in% names(samples[[1]])) {
         return(NULL)
     }
@@ -61,17 +62,7 @@ NULL
         rbindlist(fill = TRUE) %>%
         as("tibble") %>%
         camel(strict = FALSE) %>%
-        removeNA() %>%
-        mutate(
-            # Sanitize `sampleID` into valid names
-            sampleID = make.names(
-                str_replace_all(.data[["description"]], "-", "_")
-            ),
-            # Copy `description` to `sampleName`
-            sampleName = .data[["description"]]
-        ) %>%
-        # Put the priority columns first
-        dplyr::select(metadataPriorityCols, everything())
+        removeNA()
 }
 
 

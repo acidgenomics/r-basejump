@@ -13,8 +13,9 @@
         # beginning with numbers or containing hyphens for example, which aren't
         # valid names in R.
         mutate(
+            sampleName = .data[["description"]],
             sampleID = make.names(
-                str_replace_all(.data[["sampleID"]], "-", "_"))
+                str_replace_all(.data[["sampleName"]], "-", "_"))
         ) %>%
         # Set all non-priority columns as factor
         mutate_if(!colnames(.) %in% metadataPriorityCols, factor) %>%
