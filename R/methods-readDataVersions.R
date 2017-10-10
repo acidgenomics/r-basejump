@@ -12,22 +12,16 @@ NULL
 
 
 
-# Constructors ====
-.readDataVersions <- function(object) {
-    file <- file.path(object, "data_versions.csv")
-    if (!file.exists(file)) {
-        warning(paste(basename(file), "missing"))
-        return(NULL)
-    }
-    read_csv(file)
-}
-
-
-
 # Methods ====
 #' @rdname readDataVersions
 #' @export
 setMethod(
     "readDataVersions",
     signature = "character",
-    definition = .readDataVersions)
+    definition = function(object) {
+        if (!file.exists(object)) {
+            warning(paste(basename(object), "missing"))
+            return(NULL)
+        }
+        read_csv(object)
+    })
