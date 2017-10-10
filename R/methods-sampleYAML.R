@@ -63,12 +63,12 @@ NULL
         camel(strict = FALSE) %>%
         removeNA() %>%
         mutate(
-            # Copy `description` to `sampleName`
-            sampleName = .data[["description"]],
             # Sanitize `sampleID` into valid names
             sampleID = make.names(
-                str_replace_all(.data[["sampleID"]], "-", "_")
-            )
+                str_replace_all(.data[["description"]], "-", "_")
+            ),
+            # Copy `description` to `sampleName`
+            sampleName = .data[["description"]]
         )
 }
 
