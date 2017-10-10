@@ -65,9 +65,6 @@ NULL
     colData,
     metadata = NULL) {
     # Assays ====
-    if (!is.list(assays)) {
-        stop("'assays' must be a list")
-    }
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
         stop("Assay object must support 'dim()'")

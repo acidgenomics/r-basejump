@@ -97,7 +97,7 @@ metadataTable <- function(...) {
 # This is safe to remove once pushed to master
 #' @rdname deprecated
 #' @export
-.SummarizedExperiment <- function(...) {
+.SummarizedExperiment <- function(...) {  # nolint
     .Deprecated("prepareSummarizedExperiment")
     prepareSummarizedExperiment(...)
 }
