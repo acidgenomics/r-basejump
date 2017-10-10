@@ -1,14 +1,13 @@
 #' Sample Metadata Constructor
 #'
-#' @family bcbio Utilities
 #' @keywords internal
+#' @noRd
 #'
-#' @param meta Metadata [data.frame].
+#' @param metadata Metadata [data.frame].
 #'
 #' @return [data.frame].
-#' @export
-.sampleMetadata <- function(meta) {
-    meta %>%
+.prepareSampleMetadata <- function(metadata) {
+    metadata %>%
         as.data.frame() %>%
         # Ensure `sampleID` has valid names. This allows for input of samples
         # beginning with numbers or containing hyphens for example, which aren't
