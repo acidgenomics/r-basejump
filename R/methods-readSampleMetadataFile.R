@@ -126,5 +126,5 @@ setMethod("readSampleMetadataFile", "character", function(
         meta[["sampleID"]] <- meta[["description"]]
     }
 
-    .sampleMetadata(meta)
+    .prepareSampleMetadata(meta)
 })
