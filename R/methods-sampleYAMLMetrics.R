@@ -18,7 +18,7 @@ NULL
     yaml,
     characterCols) {
     # Here `summary` and `metrics` are keys passed in as symbols
-    metrics <- .sampleYAML(yaml, summary, metrics)
+    metrics <- sampleYAML(yaml, summary, metrics)
     # The fast mode RNA-seq pipeline doesn't report metrics generated from
     # STAR featureCounts output with MultiQC. Allow NULL return to handle
     # this pipeline output.
