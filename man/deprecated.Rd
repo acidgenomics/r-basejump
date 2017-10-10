@@ -11,28 +11,25 @@
 \alias{.sampleYAML}
 \alias{.sampleYAMLMetadata}
 \alias{.sampleYAMLMetrics}
-\alias{.SummarizedExperiment}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
 
 prepareSE(...)
 
-metadataTable(...)
+metadataTable()
 
-.dataVersions(...)
+.dataVersions()
 
-.logFile(...)
+.logFile()
 
-.programs(...)
+.programs()
 
 .sampleYAML(yaml, ...)
 
-.sampleYAMLMetadata(...)
+.sampleYAMLMetadata()
 
 .sampleYAMLMetrics(yaml)
-
-.SummarizedExperiment(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

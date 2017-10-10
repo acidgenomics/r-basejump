@@ -2,7 +2,6 @@
 
 export("%>%")
 export("bcbio<-")
-export(.SummarizedExperiment)
 export(.dataVersions)
 export(.logFile)
 export(.programs)
