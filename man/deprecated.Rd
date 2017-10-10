@@ -26,18 +26,16 @@ metadataTable(...)
 
 .programs(...)
 
-.sampleYAML(object, ...)
+.sampleYAML(yaml, ...)
 
 .sampleYAMLMetadata(...)
 
-.sampleYAMLMetrics(object, characterCols)
+.sampleYAMLMetrics(yaml, characterCols)
 
 .SummarizedExperiment(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
-
-\item{object}{Object.}
 }
 \value{
 Soft deprecation to new functions.

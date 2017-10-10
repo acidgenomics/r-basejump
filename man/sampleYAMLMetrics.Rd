@@ -6,12 +6,12 @@
 \alias{sampleYAMLMetrics,list-method}
 \title{Sample Metrics from YAML File}
 \usage{
-sampleYAMLMetrics(object, ...)
+sampleYAMLMetrics(yaml, ...)
 
-\S4method{sampleYAMLMetrics}{list}(object, characterCols)
+\S4method{sampleYAMLMetrics}{list}(yaml, characterCols)
 }
 \arguments{
-\item{object}{YAML \link{list}.}
+\item{yaml}{YAML \link{list}.}
 
 \item{characterCols}{Columns to set as character.}
 }
@@ -22,8 +22,7 @@ sampleYAMLMetrics(object, ...)
 Sample Metrics from YAML File
 }
 \seealso{
-Other bcbio Utilities: \code{\link{.sampleMetadata}},
-  \code{\link{prepareSummarizedExperiment}},
+Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},
   \code{\link{readProgramVersions}},
   \code{\link{sampleYAMLMetadata}},
