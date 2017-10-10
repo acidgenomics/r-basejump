@@ -278,7 +278,7 @@ setGeneric("revcomp", function(object, ...) {
 
 #' @rdname sampleYAML
 #' @export
-setGeneric("sampleYAML", function(object, ...) {
+setGeneric("sampleYAML", function(yaml, ...) {
     standardGeneric("sampleYAML")
 })
 
@@ -286,7 +286,7 @@ setGeneric("sampleYAML", function(object, ...) {
 
 #' @rdname sampleYAMLMetadata
 #' @export
-setGeneric("sampleYAMLMetadata", function(object, ...) {
+setGeneric("sampleYAMLMetadata", function(yaml, ...) {
     standardGeneric("sampleYAMLMetadata")
 })
 
@@ -294,7 +294,7 @@ setGeneric("sampleYAMLMetadata", function(object, ...) {
 
 #' @rdname sampleYAMLMetrics
 #' @export
-setGeneric("sampleYAMLMetrics", function(object, ...) {
+setGeneric("sampleYAMLMetrics", function(yaml, ...) {
     standardGeneric("sampleYAMLMetrics")
 })
 

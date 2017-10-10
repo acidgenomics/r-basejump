@@ -5,7 +5,7 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
-#' @param object YAML [list].
+#' @param yaml YAML [list].
 #'
 #' @return [data.frame].
 NULL
@@ -18,8 +18,8 @@ NULL
 setMethod(
     "sampleYAMLMetadata",
     signature = "list",
-    definition = function(object) {
+    definition = function(yaml) {
         # Here `metadata` is the key, passed in as a symbol
-        .sampleYAML(object, metadata) %>%
+        .sampleYAML(yaml, metadata) %>%
             .sampleMetadata()
     })

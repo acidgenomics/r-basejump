@@ -5,8 +5,8 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
-#' @param object Project summary YAML list.
-#' @param ... Nested operator keys supplied as dot objects.
+#' @param yaml Project summary YAML list.
+#' @param ... Nested operator keys supplied as symbols.
 #'
 #' @note Metrics are only generated for a standard RNA-seq run with aligned
 #'   counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
@@ -18,8 +18,8 @@ NULL
 
 
 # Constructors ====
-.sampleYAML <- function(object, ...) {
-    samples <- object[["samples"]]
+.sampleYAML <- function(yaml, ...) {
+    samples <- yaml[["samples"]]
     if (!length(samples)) {
         stop("No sample information in YAML")
     }
