@@ -37,7 +37,7 @@ setMethod("readYAML", "character", function(object) {
     }
     file <- .localOrRemoteFile(object)
     if (is.null(file)) {
-        warning(paste(basename(object), "missing"), call. = FALSE)
+        warning(paste(basename(object), "file missing"), call. = FALSE)
         return(NULL)
     }
     message(paste("Reading", names(file)))

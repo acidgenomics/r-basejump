@@ -141,7 +141,10 @@ test_that("readYAML", {
         "YAML file must have '.yaml' or '.yml' extension")
 
     # Missing file
-    expect_error(
+    expect_equal(
+        readYAML("foobar.yaml"),
+        NULL)
+    expect_warning(
         readYAML("foobar.yaml"),
         "foobar.yaml file missing")
 })
