@@ -69,7 +69,9 @@ NULL
             ),
             # Copy `description` to `sampleName`
             sampleName = .data[["description"]]
-        )
+        ) %>%
+        # Put the priority columns first
+        dplyr::select(metadataPriorityCols, everything())
 }
 
 

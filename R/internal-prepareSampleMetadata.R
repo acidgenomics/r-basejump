@@ -17,9 +17,9 @@
                 str_replace_all(.data[["sampleID"]], "-", "_"))
         ) %>%
         # Set all non-priority columns as factor
-        mutate_if(!colnames(.) %in% metaPriorityCols, factor) %>%
+        mutate_if(!colnames(.) %in% metadataPriorityCols, factor) %>%
         # Put the priority columns first and arrange rows
-        dplyr::select(metaPriorityCols, everything()) %>%
-        arrange(!!!syms(metaPriorityCols)) %>%
+        dplyr::select(metadataPriorityCols, everything()) %>%
+        arrange(!!!syms(metadataPriorityCols)) %>%
         set_rownames(.[["sampleID"]])
 }

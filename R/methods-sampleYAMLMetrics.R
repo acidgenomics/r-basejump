@@ -6,7 +6,6 @@
 #' @keywords internal
 #'
 #' @param yaml YAML [list].
-#' @param characterCols Columns to set as character.
 #'
 #' @return [data.frame].
 NULL
@@ -14,9 +13,7 @@ NULL
 
 
 # Constructors ====
-.sampleYAMLMetrics <- function(
-    yaml,
-    characterCols) {
+.sampleYAMLMetrics <- function(yaml) {
     # Here `summary` and `metrics` are keys passed in as symbols
     metrics <- sampleYAML(yaml, summary, metrics)
     # The fast mode RNA-seq pipeline doesn't report metrics generated from
@@ -26,13 +23,11 @@ NULL
         warning("No sample metrics were calculated", call. = FALSE)
         return(NULL)
     }
-    chr <- metrics %>%
-        .[, unique(c(metaPriorityCols, characterCols)), drop = FALSE]
-    num <- metrics %>%
-        .[, setdiff(colnames(metrics), colnames(chr)), drop = FALSE] %>%
-        mutate_if(is.character, as.numeric)
-    bind_cols(chr, num) %>%
-        .[, unique(c(metaPriorityCols, sort(colnames(.)))), drop = FALSE]
+    # Fix numerics set as characters
+    numericAsCharacter <- function(x) {
+        all(str_detect(x, "^[0-9\\.]+$"))
+    }
+    mutate_if(metrics, numericAsCharacter, as.numeric)
 }
 
 

@@ -8,12 +8,10 @@
 \usage{
 sampleYAMLMetrics(yaml, ...)
 
-\S4method{sampleYAMLMetrics}{list}(yaml, characterCols)
+\S4method{sampleYAMLMetrics}{list}(yaml)
 }
 \arguments{
 \item{yaml}{YAML \link{list}.}
-
-\item{characterCols}{Columns to set as character.}
 }
 \value{
 \link{data.frame}.
