@@ -5,7 +5,7 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
-#' @param object YAML [list].
+#' @param yaml YAML [list].
 #' @param characterCols Columns to set as character.
 #'
 #' @return [data.frame].
@@ -15,10 +15,10 @@ NULL
 
 # Constructors ====
 .sampleYAMLMetrics <- function(
-    object,
+    yaml,
     characterCols) {
     # Here `summary` and `metrics` are keys passed in as symbols
-    metrics <- .sampleYAML(object, summary, metrics)
+    metrics <- .sampleYAML(yaml, summary, metrics)
     # The fast mode RNA-seq pipeline doesn't report metrics generated from
     # STAR featureCounts output with MultiQC. Allow NULL return to handle
     # this pipeline output.
