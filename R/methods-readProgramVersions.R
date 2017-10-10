@@ -20,7 +20,7 @@ setMethod(
     signature = "character",
     definition = function(object) {
         if (!file.exists(object)) {
-            warning(paste(basename(object), "missing"))
+            warning(paste(basename(object), "file missing"), call. = FALSE)
             return(NULL)
         }
         read_delim(object, col_names = c("program", "version"), delim = ",")
