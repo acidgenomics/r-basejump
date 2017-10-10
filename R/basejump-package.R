@@ -32,7 +32,7 @@
 
 globalVariables(".")
 
-metaPriorityCols <- c("sampleID", "sampleName")
+metaPriorityCols <- c("sampleID", "sampleName", "description")
 
 # Use this for `data-raw/` scripts to define output path
 testDataDir <- file.path("docs", "tests")
