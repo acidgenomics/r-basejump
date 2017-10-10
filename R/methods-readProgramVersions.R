@@ -12,22 +12,16 @@ NULL
 
 
 
-# Constructors ====
-.readProgramVersions <- function(object) {
-    file <- file.path(object, "programs.txt")
-    if (!file.exists(file)) {
-        warning(paste(basename(file), "missing"))
-        return(NULL)
-    }
-    read_delim(file, col_names = c("program", "version"), delim = ",")
-}
-
-
-
 # Methods ====
 #' @rdname readProgramVersions
 #' @export
 setMethod(
     "readProgramVersions",
     signature = "character",
-    definition = .readProgramVersions)
+    definition = function(object) {
+        if (!file.exists(object)) {
+            warning(paste(basename(object), "missing"))
+            return(NULL)
+        }
+        read_delim(object, col_names = c("program", "version"), delim = ",")
+    })
