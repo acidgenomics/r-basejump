@@ -143,7 +143,7 @@ test_that("readYAML", {
     # Missing file
     expect_error(
         readYAML("foobar.yaml"),
-        "foobar.yaml missing")
+        "foobar.yaml file missing")
 })
 
 
@@ -178,7 +178,8 @@ test_that("prepareSummarizedExperiment", {
             assays = mat,
             rowData = rowdata,
             colData = coldata),
-        "'assays' must be a list")
+        paste("unable to find an inherited method for function",
+              "'prepareSummarizedExperiment' for signature '\"matrix\"'"))
 
     expect_equal(
         dim(se),
@@ -332,12 +333,6 @@ test_that("prepareSummarizedExperiment", {
         "Use 'prepareSummarizedExperiment' instead.")
     expect_warning(
         prepareSE(
-            assays = list(mat),
-            colData = coldata,
-            rowData = rowdata),
-        "Use 'prepareSummarizedExperiment' instead.")
-    expect_warning(
-        prepareSummarizedExperiment(
             assays = list(mat),
             colData = coldata,
             rowData = rowdata),
