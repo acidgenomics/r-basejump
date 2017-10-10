@@ -114,8 +114,7 @@ NULL
         # gene identifiers
         warning(paste(
             "rowData mismatch with assay slot:",
-            toString(missing),
-            "These IDs are missing in the annotable."
+            toString(missing)
             ), call. = FALSE)
     }
     rowData <- rowData %>%
