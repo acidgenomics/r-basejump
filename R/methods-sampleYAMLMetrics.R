@@ -29,7 +29,7 @@ NULL
     }
     metrics %>%
         mutate_if(numericAsCharacter, as.numeric) %>%
-        .prepareSampleMetadata()
+        .prepareSampleMetadata(factors = FALSE)
 }
 
 

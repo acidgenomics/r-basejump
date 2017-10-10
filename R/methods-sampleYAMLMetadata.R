@@ -21,5 +21,5 @@ setMethod(
     definition = function(yaml) {
         # Here `metadata` is the key, passed in as a symbol
         sampleYAML(yaml, metadata) %>%
-            .prepareSampleMetadata()
+            .prepareSampleMetadata(factors = TRUE)
     })
