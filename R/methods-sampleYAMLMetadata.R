@@ -20,6 +20,6 @@ setMethod(
     signature = "list",
     definition = function(yaml) {
         # Here `metadata` is the key, passed in as a symbol
-        .sampleYAML(yaml, metadata) %>%
+        sampleYAML(yaml, metadata) %>%
             .prepareSampleMetadata()
     })
