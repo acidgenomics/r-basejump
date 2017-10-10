@@ -5,6 +5,13 @@
 \alias{packageSE}
 \alias{prepareSE}
 \alias{metadataTable}
+\alias{.dataVersions}
+\alias{.logFile}
+\alias{.programs}
+\alias{.sampleYAML}
+\alias{.sampleYAMLMetadata}
+\alias{.sampleYAMLMetrics}
+\alias{.SummarizedExperiment}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
@@ -12,9 +19,25 @@ packageSE(...)
 prepareSE(...)
 
 metadataTable(...)
+
+.dataVersions(...)
+
+.logFile(...)
+
+.programs(...)
+
+.sampleYAML(object, ...)
+
+.sampleYAMLMetadata(...)
+
+.sampleYAMLMetrics(object, characterCols)
+
+.SummarizedExperiment(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{object}{Object.}
 }
 \value{
 Soft deprecation to new functions.

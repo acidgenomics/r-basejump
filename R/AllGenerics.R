@@ -196,6 +196,14 @@ setGeneric("prepareTemplate", function(object, ...) {
 
 
 
+#' @rdname readDataVersions
+#' @export
+setGeneric("readDataVersions", function(object, ...) {
+    standardGeneric("readDataVersions")
+})
+
+
+
 #' @rdname readFileByExtension
 #' @export
 setGeneric("readFileByExtension", function(object, ...) {
@@ -216,6 +224,22 @@ setGeneric("readGFF", function(object, ...) {
 #' @export
 setGeneric("readGTF", function(object, ...) {
     standardGeneric("readGTF")
+})
+
+
+
+#' @rdname readLogFile
+#' @export
+setGeneric("readLogFile", function(object, ...) {
+    standardGeneric("readLogFile")
+})
+
+
+
+#' @rdname readProgramVersions
+#' @export
+setGeneric("readProgramVersions", function(object, ...) {
+    standardGeneric("readProgramVersions")
 })
 
 
@@ -248,6 +272,30 @@ setGeneric("removeNA", function(object, ...) {
 #' @export
 setGeneric("revcomp", function(object, ...) {
     standardGeneric("revcomp")
+})
+
+
+
+#' @rdname sampleYAML
+#' @export
+setGeneric("sampleYAML", function(object, ...) {
+    standardGeneric("sampleYAML")
+})
+
+
+
+#' @rdname sampleYAMLMetadata
+#' @export
+setGeneric("sampleYAMLMetadata", function(object, ...) {
+    standardGeneric("sampleYAMLMetadata")
+})
+
+
+
+#' @rdname sampleYAMLMetrics
+#' @export
+setGeneric("sampleYAMLMetrics", function(object, ...) {
+    standardGeneric("sampleYAMLMetrics")
 })
 
 
