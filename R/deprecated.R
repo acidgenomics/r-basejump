@@ -33,54 +33,48 @@ prepareSE <- function(...) {
 # 0.0.24 ====
 #' @rdname deprecated
 #' @export
-metadataTable <- function(...) {
+metadataTable <- function() {
     .Deprecated("sampleMetadata")
-    sampleMetadata(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-.dataVersions <- function(...) {
+.dataVersions <- function() {
     .Deprecated("readDataVersions")
-    readDataVersions(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-.logFile <- function(...) {
+.logFile <- function() {
     .Deprecated("readLogFile")
-    readLogFile(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-.programs <- function(...) {
+.programs <- function() {
     .Deprecated("readProgramVersions")
-    readProgramVersions(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-.sampleYAML <- function(...) {
+.sampleYAML <- function() {
     .Deprecated("sampleYAML")
-    sampleYAML(...)
 }
 
 
 
 #' @rdname deprecated
 #' @export
-.sampleYAMLMetadata <- function(...) {
+.sampleYAMLMetadata <- function() {
     .Deprecated("sampleYAMLMetadata")
-    sampleYAMLMetadata(...)
 }
 
 
@@ -90,14 +84,4 @@ metadataTable <- function(...) {
 .sampleYAMLMetrics <- function(...) {
     .Deprecated("sampleYAMLMetrics")
     sampleYAMLMetrics(...)
-}
-
-
-
-# This is safe to remove once pushed to master
-#' @rdname deprecated
-#' @export
-.SummarizedExperiment <- function(...) {  # nolint
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
 }
