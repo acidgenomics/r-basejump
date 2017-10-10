@@ -20,8 +20,7 @@ readProgramVersions(object, ...)
 Read Program Versions
 }
 \seealso{
-Other bcbio Utilities: \code{\link{.sampleMetadata}},
-  \code{\link{prepareSummarizedExperiment}},
+Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}

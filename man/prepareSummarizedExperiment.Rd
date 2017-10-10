@@ -71,8 +71,7 @@ colData <- data.frame(
 \item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
 }
 
-Other bcbio Utilities: \code{\link{.sampleMetadata}},
-  \code{\link{readDataVersions}},
+Other bcbio Utilities: \code{\link{readDataVersions}},
   \code{\link{readProgramVersions}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}

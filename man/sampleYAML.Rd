@@ -6,14 +6,14 @@
 \alias{sampleYAML,list-method}
 \title{Sample YAML Metadata Utilities}
 \usage{
-sampleYAML(object, ...)
+sampleYAML(yaml, ...)
 
-\S4method{sampleYAML}{list}(object, ...)
+\S4method{sampleYAML}{list}(yaml, ...)
 }
 \arguments{
-\item{object}{Project summary YAML list.}
+\item{yaml}{Project summary YAML list.}
 
-\item{...}{Nested operator keys supplied as dot objects.}
+\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
 \link{tibble}.
@@ -27,8 +27,7 @@ counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 output the same metrics into the YAML.
 }
 \seealso{
-Other bcbio Utilities: \code{\link{.sampleMetadata}},
-  \code{\link{prepareSummarizedExperiment}},
+Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},
   \code{\link{readProgramVersions}},
   \code{\link{sampleYAMLMetadata}},

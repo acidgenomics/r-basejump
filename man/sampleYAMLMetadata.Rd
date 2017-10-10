@@ -6,12 +6,12 @@
 \alias{sampleYAMLMetadata,list-method}
 \title{Sample Metadata from YAML}
 \usage{
-sampleYAMLMetadata(object, ...)
+sampleYAMLMetadata(yaml, ...)
 
-\S4method{sampleYAMLMetadata}{list}(object)
+\S4method{sampleYAMLMetadata}{list}(yaml)
 }
 \arguments{
-\item{object}{YAML \link{list}.}
+\item{yaml}{YAML \link{list}.}
 }
 \value{
 \link{data.frame}.
@@ -20,8 +20,7 @@ sampleYAMLMetadata(object, ...)
 Sample Metadata from YAML
 }
 \seealso{
-Other bcbio Utilities: \code{\link{.sampleMetadata}},
-  \code{\link{prepareSummarizedExperiment}},
+Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},
   \code{\link{readProgramVersions}},
   \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}
