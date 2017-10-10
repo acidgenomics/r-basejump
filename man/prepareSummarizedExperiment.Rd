@@ -58,7 +58,7 @@ colData <- data.frame(
     genotype = c("wt", "wt", "ko", "ko"),
     age = c(3L, 6L, 3L, 6L),
     row.names = colnames(mat))
-.SummarizedExperiment(
+prepareSummarizedExperiment(
     assays = list(assay = mat),
     rowData = rowData,
     colData = colData)
