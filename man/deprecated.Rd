@@ -30,7 +30,7 @@ metadataTable(...)
 
 .sampleYAMLMetadata(...)
 
-.sampleYAMLMetrics(yaml, characterCols)
+.sampleYAMLMetrics(yaml)
 
 .SummarizedExperiment(...)
 }

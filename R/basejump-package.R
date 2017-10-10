@@ -7,7 +7,8 @@
 #' @importFrom data.table rbindlist
 #' @importFrom devtools session_info
 #' @importFrom dplyr arrange bind_cols case_when distinct everything filter funs
-#'   group_by left_join mutate mutate_all mutate_if pull summarize_all ungroup
+#'   group_by left_join mutate mutate_all mutate_if pull select_if summarize_all
+#'   ungroup
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom glue collapse
 #' @importFrom knitr asis_output kable opts_knit
@@ -32,7 +33,7 @@
 
 globalVariables(".")
 
-metaPriorityCols <- c("sampleID", "sampleName", "description")
+metadataPriorityCols <- c("sampleID", "sampleName", "description")
 
 # Use this for `data-raw/` scripts to define output path
 testDataDir <- file.path("docs", "tests")
