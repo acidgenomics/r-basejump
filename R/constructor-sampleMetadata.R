@@ -1,6 +1,6 @@
-#' Sample Metadata
+#' Sample Metadata Constructor
 #'
-#' @family Exported Constructor Functions
+#' @family bcbio Utilities
 #' @keywords internal
 #'
 #' @param meta Metadata [data.frame].

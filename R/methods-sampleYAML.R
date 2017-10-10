@@ -1,9 +1,11 @@
 #' Sample YAML Metadata Utilities
 #'
-#' @family Exported Constructor Functions
+#' @rdname sampleYAML
+#' @name sampleYAML
+#' @family bcbio Utilities
 #' @keywords internal
 #'
-#' @param yaml Project summary YAML.
+#' @param object Project summary YAML list.
 #' @param ... Nested operator keys supplied as dot objects.
 #'
 #' @note Metrics are only generated for a standard RNA-seq run with aligned
@@ -11,9 +13,13 @@
 #'   output the same metrics into the YAML.
 #'
 #' @return [tibble].
-#' @export
-.sampleYAML <- function(yaml, ...) {
-    samples <- yaml[["samples"]]
+NULL
+
+
+
+# Constructors ====
+.sampleYAML <- function(object, ...) {
+    samples <- object[["samples"]]
     if (!length(samples)) {
         stop("No sample information in YAML")
     }
@@ -65,3 +71,13 @@
             )
         )
 }
+
+
+
+# Methods ====
+#' @rdname sampleYAML
+#' @export
+setMethod(
+    "sampleYAML",
+    signature = "list",
+    definition = .sampleYAML)
