@@ -25,7 +25,13 @@
 #'
 #' @examples
 #' saveData(mtcars, starwars)
-saveData <- function(...,  dir = "data", compress = TRUE) {
+saveData <- function(
+    ...,
+    dir = "data",
+    compress = TRUE) {
+    if (!is_string(dir)) {
+        stop("'dir' must be a string", call. = FALSE)
+    }
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     names <- dots(..., character = TRUE)
     paths <- file.path(dir, paste0(names, ".rda"))
