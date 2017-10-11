@@ -34,7 +34,10 @@ NULL
 # Methods ====
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "ANY", function(object) {
+setMethod(
+    "fixNA",
+    signature("ANY"),
+    function(object) {
     # Return unmodified by default
     object
 })
@@ -43,25 +46,37 @@ setMethod("fixNA", "ANY", function(object) {
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "character", .fixNAVec)
+setMethod(
+    "fixNA",
+    signature("character"),
+    .fixNAVec)
 
 
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "data.frame", .fixNATidy)
+setMethod(
+    "fixNA",
+    signature("data.frame"),
+    .fixNATidy)
 
 
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "DataFrame", function(object) {
-    apply(object, 2L, .fixNAVec) %>%
-        as("DataFrame")
-})
+setMethod(
+    "fixNA",
+    signature("DataFrame"),
+    function(object) {
+        apply(object, 2L, .fixNAVec) %>%
+            as("DataFrame")
+    })
 
 
 
 #' @rdname fixNA
 #' @export
-setMethod("fixNA", "tbl_df", .fixNATidy)
+setMethod(
+    "fixNA",
+    signature("tbl_df"),
+    .fixNATidy)

@@ -109,7 +109,7 @@ NULL
 
 
 .makeNamesDotted <- function(object, strict = FALSE) {
-    x <- object %>%
+    object <- object %>%
         as.character() %>%
         make.names() %>%
         # Convert non-alphanumeric characters to dots
@@ -119,7 +119,7 @@ NULL
         # Strip leading or trailing dots
         str_replace_all("(^\\.|\\.$)", "")
     if (isTRUE(strict)) {
-        x %>%
+        object <- object %>%
             # Special word exceptions
             str_replace_all("RNAi", "Rnai") %>%
             # Handle snakeCase acronyms
@@ -133,9 +133,8 @@ NULL
             # Convert camelCase
             gsub("([a-z0-9])([A-Z])", "\\1.\\L\\2", ., perl = TRUE) %>%
             tolower()
-    } else {
-        x
     }
+    object
 }
 
 
@@ -161,51 +160,69 @@ NULL
 # Methods ====
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "ANY", .setNamesDotted)
+setMethod(
+    "dotted",
+    signature("ANY"),
+    .setNamesDotted)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "character", function(object, strict = FALSE) {
-    if (isTRUE(.checkNames(object))) {
+setMethod(
+    "dotted",
+    signature("character"),
+    function(object, strict = FALSE) {
+        if (isTRUE(.checkNames(object))) {
+            .setNamesDotted(object,
+                            strict = strict,
+                            rownames = FALSE)
+        } else {
+            .makeNamesDotted(object,
+                             strict = strict)
+        }
+    })
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "dotted",
+    signature("data.frame"),
+    .setNamesDotted)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "dotted",
+    signature("list"),
+    function(object, strict = FALSE) {
         .setNamesDotted(object,
                         strict = strict,
                         rownames = FALSE)
-    } else {
-        .makeNamesDotted(object,
-                         strict = strict)
-    }
-})
+    })
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "data.frame", .setNamesDotted)
+setMethod(
+    "dotted",
+    signature("matrix"),
+    .setNamesDotted)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("dotted", "list", function(object, strict = FALSE) {
-    .setNamesDotted(object,
-                    strict = strict,
-                    rownames = FALSE)
-})
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("dotted", "matrix", .setNamesDotted)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("dotted", "tbl_df", function(object, strict = FALSE) {
-    .setNamesDotted(object,
-                    strict = strict,
-                    rownames = FALSE)
-})
+setMethod(
+    "dotted",
+    signature("tbl_df"),
+    function(object, strict = FALSE) {
+        .setNamesDotted(object,
+                        strict = strict,
+                        rownames = FALSE)
+    })

@@ -5,9 +5,7 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
-#' @param yaml YAML [list].
-#'
-#' @return [data.frame].
+#' @inherit sampleYAML
 NULL
 
 
@@ -39,5 +37,5 @@ NULL
 #' @export
 setMethod(
     "sampleYAMLMetrics",
-    signature = "list",
-    definition = .sampleYAMLMetrics)
+    signature("list"),
+    .sampleYAMLMetrics)

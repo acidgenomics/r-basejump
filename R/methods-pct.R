@@ -18,6 +18,9 @@ NULL
 # Methods ====
 #' @rdname pct
 #' @export
-setMethod("pct", "numeric", function(object) {
-    sprintf("%1.1f%%", object * 100L)
-})
+setMethod(
+    "pct",
+    signature("numeric"),
+    function(object) {
+        sprintf("%1.1f%%", object * 100L)
+    })

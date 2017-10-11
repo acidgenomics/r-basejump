@@ -161,4 +161,7 @@ NULL
 # Methods ====
 #' @rdname annotable
 #' @export
-setMethod("annotable", "character", .annotable)
+setMethod(
+    "annotable",
+    signature("character"),
+    .annotable)

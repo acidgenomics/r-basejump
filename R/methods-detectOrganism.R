@@ -23,10 +23,8 @@ NULL
 
 
 
-# Methods ====
-#' @rdname detectOrganism
-#' @export
-setMethod("detectOrganism", "character", function(object) {
+# Constructors ====
+.detectOrganism <- function(object) {
     if (tolower(object) %in% c("human",
                                "hsapiens",
                                "homo sapiens") |
@@ -73,4 +71,14 @@ setMethod("detectOrganism", "character", function(object) {
     } else {
         stop("Failed to detect supported organism")
     }
-})
+}
+
+
+
+# Methods ====
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("character"),
+    .detectOrganism)

@@ -27,10 +27,8 @@ NULL
 
 
 
-# Methods ====
-#' @rdname readFileByExtension
-#' @export
-setMethod("readFileByExtension", "character", function(
+# Constructors ====
+.readFileByExtension <- function(
     object,
     makeNames = "camel",
     ...) {
@@ -42,7 +40,7 @@ setMethod("readFileByExtension", "character", function(
         stop("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
-            .[[2L]]
+        .[[2L]]
 
     # Rename tmpfile to include extension if necessary
     if (!str_detect(file, extPattern)) {
@@ -88,4 +86,14 @@ setMethod("readFileByExtension", "character", function(
     }
 
     data
-})
+}
+
+
+
+# Methods ====
+#' @rdname readFileByExtension
+#' @export
+setMethod(
+    "readFileByExtension",
+    signature("character"),
+    .readFileByExtension)

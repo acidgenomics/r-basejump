@@ -13,16 +13,18 @@
 #' matrix(c(1, NA, 3,
 #'          NA, NA, NA,
 #'          2, NA, 4),
-#'        nrow = 3, ncol = 3) %>% removeNA
+#'        nrow = 3, ncol = 3) %>%
+#'     removeNA()
 #'
 #' data.frame(a = c("A", NA, "C"),
 #'            b = c(NA, NA, NA),
-#'            c = c("B", NA, "D")) %>% removeNA
+#'            c = c("B", NA, "D"))
+#'     removeNA()
 #'
 #' tibble(a = c("A", NA, "C"),
 #'        b = c(NA, NA, NA),
-#'        c = c("B", NA, "D")) %>% removeNA
-#'
+#'        c = c("B", NA, "D")) %>%
+#'     removeNA()
 #'
 #' # Support for vectors (using `stats::na.omit()`)
 #' removeNA(c("hello", "world", NA))
@@ -32,10 +34,17 @@ NULL
 
 
 # Constructors ====
-.removeNA <- function(object) {
+.removeNAVec <- function(object) {
+    # Is this having a problem with `S4Vectors::na.omit()`?
+    stats::na.omit(object)
+}
+
+.removeNADim <- function(object) {
     object %>%
-        .[apply(., 1L, function(a) !all(is.na(a))), ] %>%  # rows
-        .[, apply(., 2L, function(a) !all(is.na(a)))]      # cols
+        # Remove all `NA` rows
+        .[apply(., 1L, function(a) !all(is.na(a))), ] %>%
+        # Remove all `NA` columns
+        .[, apply(., 2L, function(a) !all(is.na(a)))]
 }
 
 
@@ -43,47 +52,64 @@ NULL
 # Methods ====
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "character", function(object) {
-    stats::na.omit(object)
-})
+setMethod(
+    "removeNA",
+    signature("ANY"),
+    function(object) {
+        # Return unmodified by default
+        object
+    })
 
 
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "numeric", function(object) {
-    stats::na.omit(object)
-})
+setMethod(
+    "removeNA",
+    signature("character"),
+    .removeNAVec)
 
 
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "matrix", .removeNA)
+setMethod(
+    "removeNA",
+    signature("numeric"),
+    .removeNAVec)
 
 
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "data.frame", .removeNA)
+setMethod(
+    "removeNA",
+    signature("matrix"),
+    .removeNADim)
 
 
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "DataFrame", .removeNA)
+setMethod(
+    "removeNA",
+    signature("data.frame"),
+    .removeNADim)
 
 
 
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "tbl_df", .removeNA)
+setMethod(
+    "removeNA",
+    signature("DataFrame"),
+    .removeNADim)
 
 
 
-# Otherwise, simply return unmodified
 #' @rdname removeNA
 #' @export
-setMethod("removeNA", "ANY", function(object) {
-    object
-})
+setMethod(
+    "removeNA",
+    signature("tbl_df"),
+    .removeNADim)
