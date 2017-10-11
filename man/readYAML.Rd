@@ -23,16 +23,7 @@ Read YAML File
 }
 \examples{
 # bcbioRNASeq example project summary YAML
-yamlFile <- file.path(
-    "https://raw.githubusercontent.com",
-    "hbc",
-    "bcbioRNASeq",
-    "master",
-    "inst",
-    "extdata",
-    "bcbio",
-    "2017-05-23_rnaseq",
-    "project-summary.yaml")
+yamlFile <- file.path(testDataURL, "project-summary.yaml")
 yaml <- readYAML(yamlFile)
 names(yaml)
 }
