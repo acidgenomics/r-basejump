@@ -1,7 +1,7 @@
-#' Collapse Utilities
+#' Collapse to String
 #'
-#' @rdname collapse
-#' @name collapse
+#' @rdname collapseToString
+#' @name collapseToString
 #' @family Data Manipulation Utilities
 #'
 #' @inheritParams AllGenerics
@@ -23,13 +23,13 @@
 #' # Designed primarily for `dims` objects
 #' mtcars %>%
 #'     head() %>%
-#'     collapse() %>%
+#'     collapseToString() %>%
 #'     t()
 #'
 #' # Vectors are also supported
 #' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-#' collapse(groceries)
-#' collapse(groceries, unique = FALSE, sort = FALSE)
+#' collapseToString(groceries)
+#' collapseToString(groceries, unique = FALSE, sort = FALSE)
 NULL
 
 
@@ -100,36 +100,54 @@ NULL
 
 
 # Methods ====
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "character", .collapseVec)
+setMethod(
+    "collapseToString",
+    signature("character"),
+    .collapseVec)
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "integer", .collapseVec)
+setMethod(
+    "collapseToString",
+    signature("integer"),
+    .collapseVec)
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "data.frame", .collapseDim)
+setMethod(
+    "collapseToString",
+    signature("data.frame"),
+    .collapseDim)
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "DataFrame", .collapseDim)
+setMethod(
+    "collapseToString",
+    signature("DataFrame"),
+    .collapseDim)
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "matrix", .collapseDim)
+setMethod(
+    "collapseToString",
+    signature("matrix"),
+    .collapseDim)
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setMethod("collapse", "tbl_df", .collapseDim)
+setMethod(
+    "collapseToString",
+    signature("tbl_df"),
+    .collapseDim)

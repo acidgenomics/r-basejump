@@ -28,10 +28,10 @@ setGeneric("camel", function(object, ...) {
 
 
 
-#' @rdname collapse
+#' @rdname collapseToString
 #' @export
-setGeneric("collapse", function(object, ...) {
-    standardGeneric("collapse")
+setGeneric("collapseToString", function(object, ...) {
+    standardGeneric("collapseToString")
 })
 
 
