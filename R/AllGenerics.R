@@ -141,14 +141,6 @@ setGeneric("kables", function(object, ...) {
 
 
 
-#' @rdname loadRemoteData
-#' @export
-setGeneric("loadRemoteData", function(object, ...) {
-    standardGeneric("loadRemoteData")
-})
-
-
-
 #' @rdname logRatio
 #' @export
 setGeneric("lr2fc", function(object, ...) {
