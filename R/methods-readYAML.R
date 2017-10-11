@@ -17,7 +17,7 @@
 #'     "bcbioRNASeq",
 #'     "master",
 #'     "inst",
-#'     "extra",
+#'     "extdata",
 #'     "bcbio",
 #'     "2017-05-23_rnaseq",
 #'     "project-summary.yaml")
