@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read GFF Annotations — readGFF • basejump</title>
+<title>Read GFF/GTF Annotations — readGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,19 +83,22 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read GFF Annotations</h1>
+    <h1>Read GFF/GTF Annotations</h1>
     </div>
 
     
-    <p>Read GFF (General Feature Format) file.</p>
+    <p>Read GFF/GTF Annotations</p>
     
 
     <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='fu'>readGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for character</span>
 <span class='fu'>readGFF</span>(<span class='no'>object</span>)
 
-<span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='co'># S4 method for character</span>
+<span class='fu'>readGTF</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -114,6 +117,12 @@
 
     <p>data.frame.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The GFF (General Feature Format) format consists of one line per
+feature, each containing 9 columns of data, plus optional track definition
+lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
@@ -121,14 +130,13 @@
 <li><p>http://www.gencodegenes.org/gencodeformat.html</p></li>
 </ul>
     <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='prepareSummarizedExperiment.html'>prepareSummarizedExperiment</a></code>,
   <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
+  <code><a href='readSampleMetadataFile.html'>readSampleMetadataFile</a></code>,
   <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># GTF is GFF-compatible</span>
-<span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
+    <pre class="examples"><div class='input'><span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>readGFF</span>() <span class='kw'>%&gt;%</span>
     <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; 'data.frame':	95 obs. of  9 variables:
 #&gt;  $ chromosome      : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -147,6 +155,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
