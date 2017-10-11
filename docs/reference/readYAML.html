@@ -128,11 +128,11 @@
     <span class='st'>"bcbioRNASeq"</span>,
     <span class='st'>"master"</span>,
     <span class='st'>"inst"</span>,
-    <span class='st'>"extra"</span>,
+    <span class='st'>"extdata"</span>,
     <span class='st'>"bcbio"</span>,
     <span class='st'>"2017-05-23_rnaseq"</span>,
     <span class='st'>"project-summary.yaml"</span>)
-<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='no'>yamlFile</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'https://raw.githubusercontent.com/hbc/bcbioRNASeq/master/inst/extra/bcbio/2017-05-23_rnaseq/project-summary.yaml': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(object, filePath): cannot open URL 'https://raw.githubusercontent.com/hbc/bcbioRNASeq/master/inst/extra/bcbio/2017-05-23_rnaseq/project-summary.yaml'</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'yaml' not found</span></div></pre>
+<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='no'>yamlFile</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
