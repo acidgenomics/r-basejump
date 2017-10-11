@@ -14,12 +14,15 @@
 #' \dontrun{
 #' loadData(geneIDs, oligo)
 #' }
-loadData <- function(..., dir = "data", envir = parent.frame()) {
+loadData <- function(
+    ...,
+    dir = "data",
+    envir = parent.frame()) {
     if (!is_string(dir)) {
-        stop("'dir' must be a string")
+        stop("'dir' must be a string", call. = FALSE)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment")
+        stop("'envir' must be an environment", call. = FALSE)
     }
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
@@ -29,14 +32,14 @@ loadData <- function(..., dir = "data", envir = parent.frame()) {
         name <- names[a]
         file <- file.path(dir, paste0(name, ".rda"))
         if (!file.exists(file)) {
-            paste(name, "missing") %>%
-                stop(call. = FALSE)
+            stop(paste(name, "missing"), call. = FALSE)
         }
         file <- normalizePath(file)
         loaded <- load(file, envir = envir)
         if (!identical(name, loaded)) {
-            paste(name, "file and saved object names are not identical") %>%
-                stop(call. = FALSE)
+            stop(paste(
+                name, "file and saved object names are not identical"
+            ), call. = FALSE)
         }
         names(file) <- name
         file
