@@ -5,6 +5,7 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams loadData
 #'
 #' @return No value.
 #'
