@@ -8,6 +8,7 @@
 #' @inheritParams loadData
 #'
 #' @return No value.
+#' @export
 #'
 #' @examples
 #' loadRemoteData(file.path(testDataURL, "mtcars.rda"))
