@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Version: 0.0.24
 Authors@R: c(
-    person("Michael J.", "Steinbaugh",
+    person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
            role = c("aut", "cre")),
     person("Rory", "Kirchner",
