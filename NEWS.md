@@ -1,3 +1,10 @@
+# basejump 0.0.25
+
+- Improved consistency of `setMethod()` calls using `signature()`.
+- Converted `loadRemoteData()` to a standard function instead of using S4 dispatch, allowing the `envir` argument to be set properly.
+
+
+
 # basejump 0.0.24
 
 - Added additional package version requirements in `DESCRIPTION` file.
