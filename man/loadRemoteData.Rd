@@ -8,6 +8,9 @@ loadRemoteData(object, envir = parent.frame())
 }
 \arguments{
 \item{object}{Object.}
+
+\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
+which will assign into the calling environment.}
 }
 \value{
 No value.
