@@ -29,6 +29,14 @@ setGeneric("bcbio<-", function(object, ..., value) {
 
 #' @rdname AllGenerics
 #' @export
+setGeneric("flatFiles", function(object, ...) {
+    standardGeneric("flatFiles")
+})
+
+
+
+#' @rdname AllGenerics
+#' @export
 setGeneric("interestingGroups", function(object, ...) {
     standardGeneric("interestingGroups")
 })
