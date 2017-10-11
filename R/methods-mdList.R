@@ -2,6 +2,8 @@
 #'
 #' @rdname mdList
 #' @name mdList
+#' @family Report Utilities
+#'
 #' @inherit mdHeader
 #'
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
@@ -40,6 +42,6 @@ setMethod("mdList", "character", function(
             paste0("\n") %>%
             # Specify that output should be handled as Markdown text
             structure(format = "markdown") %>%
-            asis_output
+            asis_output()
     }
 })

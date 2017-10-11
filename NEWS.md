@@ -1,3 +1,33 @@
+# basejump 0.0.24
+
+- Added additional package version requirements in `DESCRIPTION` file.
+- Implicit integers are allowed.
+- Using GitHub version of covr package for unit tests.
+- Renamed `multiassignAsNewEnv()` to `multiassignAsNewEnvir()`
+- Added `*GFF()` function variants for `gene2symbolFromGTF()` and `tx2geneFromGTF()`.
+- Added shared bcbio generic functions: `aggregateReplicates()`, `bcbio()`, `bcbio<-()`, `interestingGroups()`, `metrics()`, `plotGene()`, `sampleDirs()`, `sampleMetadata()`, `selectSamples()`. These functions are saved in `bcbioGenerics.R` file.
+- Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: `readDataVersions()` (deprecated `.dataVersions()`), `readLogFile()` (deprecated `.logFile()`), `readProgramVersions()` (deprecated `.programs()`), `sampleYAML()` (deprecated `.sampleYAML()`), `sampleYAMLMetadata()` (deprecated `sampleYAMLMetadata()`), `sampleYAMLMetrics()` (deprecated .sampleYAMLMetrics()`).
+- Deprecated `metadataTable()` function.
+- Moved all roxygen documentation to `methods-*.R` files where applicable.
+- Now using `assays` in `prepareSummarizedExperiment()` generic definition as primary object.
+- Improved `assignAndSaveData()` to add silent return of file path.
+- Now consistently using clear function definitions (`()`) in chain operations with magrittr pipe (`%>%`).
+- Added `.prepareSampleMetadata()` utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.
+- Added `loadData()` functionality back to the package.
+- Initial commit of `loadDataAsName()` function.
+- Improved `annotable()` function documentation and support for Ensembl release versions.
+- Improved sanitization rules for `camel()`, `dotted()`, and `snake()` name functions. Added the `strict` argument to `camel()` and `dotted()`.
+- Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.
+- Improved S4 method support for the logRatio functions.
+- Added integer support for `geomean()` function. Also improved internal code of `geomean()` based on Paul McMurdie's Stack Overflow post. See function documentation for more information.
+- Added release support for `tx2gene` functions.
+- Reduced the number of reexported functions (for documentation) down to the magrittr pipe (`%>%`), `Matrix()`, `DataFrame()`, and `tibble()`.
+- Added silent return of file path to `saveData()` function.
+- Improved documentation for tibble coercion using `as(object, "tibble")`
+- Renamed `collapse()` function to `collapseToString()`, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).
+
+
+
 # basejump 0.0.23
 
 - Upgraded `annotable()` function to query Ensembl using the [ensembldb][] package rather than [annotables][].

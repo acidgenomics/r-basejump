@@ -5,6 +5,9 @@
 #'
 #' @rdname grepString
 #' @name grepString
+#' @family String Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Comma separated grep string.
 #' @export
@@ -20,7 +23,7 @@ NULL
 #' @export
 setMethod("grepString", "character", function(object) {
     object %>%
-        as.character %>%
+        as.character() %>%
         paste0(
             # Unique
             "^", ., "$",

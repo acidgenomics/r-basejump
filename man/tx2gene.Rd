@@ -13,22 +13,25 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object)
+\S4method{tx2gene}{character}(object, release = "current")
 
-\S4method{tx2gene}{data.frame}(object)
+\S4method{tx2gene}{data.frame}(object, release = "current")
 
-\S4method{tx2gene}{DataFrame}(object)
+\S4method{tx2gene}{DataFrame}(object, release = "current")
 
-\S4method{tx2gene}{dgCMatrix}(object)
+\S4method{tx2gene}{dgCMatrix}(object, release = "current")
 
-\S4method{tx2gene}{dgTMatrix}(object)
+\S4method{tx2gene}{dgTMatrix}(object, release = "current")
 
-\S4method{tx2gene}{matrix}(object)
+\S4method{tx2gene}{matrix}(object, release = "current")
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{release}{Ensembl release version. This function defaults to using the
+most current release available on AnnotationHub (\code{current}).}
 }
 \value{
 Same class as object.
@@ -40,7 +43,8 @@ Convert Ensembl Transcript to Gene
 # character
 c("ENSMUST00000000001",
   "ENSMUST00000000003",
-  "ENSMUST00000114041") \%>\% tx2gene
+  "ENSMUST00000114041") \%>\%
+  tx2gene()
 
 \dontrun{
 # matrix
@@ -53,14 +57,15 @@ matrix(
                       "ENSMUST00000000003",
                       "ENSMUST00000114041"),
                     c("sample1",
-                      "sample2"))) \%>\% tx2gene
+                      "sample2"))) \%>\%
+    tx2gene()
 }
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGTF}}
+  \code{\link{tx2geneFromGFF}}
 }
 \concept{Gene Annotation Utilities}

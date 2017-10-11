@@ -4,11 +4,32 @@
 \alias{deprecated}
 \alias{packageSE}
 \alias{prepareSE}
+\alias{metadataTable}
+\alias{.dataVersions}
+\alias{.logFile}
+\alias{.programs}
+\alias{.sampleYAML}
+\alias{.sampleYAMLMetadata}
+\alias{.sampleYAMLMetrics}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
 
 prepareSE(...)
+
+metadataTable()
+
+.dataVersions()
+
+.logFile()
+
+.programs()
+
+.sampleYAML(yaml, ...)
+
+.sampleYAMLMetadata()
+
+.sampleYAMLMetrics(yaml)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

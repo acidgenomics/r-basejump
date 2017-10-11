@@ -2,7 +2,9 @@
 #'
 #' @rdname mdHeader
 #' @name mdHeader
+#' @family Report Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or
@@ -45,6 +47,6 @@ setMethod("mdHeader", "character", function(
             paste0("\n") %>%
             # Specify that output should be handled as Markdown text
             structure(format = "markdown") %>%
-            asis_output
+            asis_output()
     }
 })

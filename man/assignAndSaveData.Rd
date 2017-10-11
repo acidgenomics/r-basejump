@@ -4,7 +4,8 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = "data", compress = TRUE)
+assignAndSaveData(name, object, dir = "data", compress = TRUE,
+  envir = parent.frame())
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -19,18 +20,24 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE)
     \code{"bzip2"} or \code{"xz"} specify the type of
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
+
+\item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
+the calling environment.}
 }
 \value{
-Assigned object name as a string.
+Silent named character vector of file path.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
 the newly assigned object, specified by \code{dir}.
 }
+\note{
+This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
+}
 \examples{
 assignAndSaveData("test", mtcars)
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{multiassignAsNewEnv}}
+Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
 }
 \concept{Object Assignment Utilities}

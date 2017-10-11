@@ -88,6 +88,39 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-0-24" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-0-24" class="anchor"></a>basejump 0.0.24</h1>
+<ul>
+<li>Added additional package version requirements in <code>DESCRIPTION</code> file.</li>
+<li>Implicit integers are allowed.</li>
+<li>Using GitHub version of covr package for unit tests.</li>
+<li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
+</li>
+<li>Added <code>*GFF()</code> function variants for <code><a href="../reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
+<li>Added shared bcbio generic functions: <code><a href="../reference/AllGenerics.html">aggregateReplicates()</a></code>, <code><a href="../reference/AllGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/AllGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">sampleDirs()</a></code>, <code><a href="../reference/AllGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/AllGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code><a href="../reference/readDataVersions.html">readDataVersions()</a></code> (deprecated <code><a href="../reference/deprecated.html">.dataVersions()</a></code>), <code><a href="../reference/readLogFile.html">readLogFile()</a></code> (deprecated <code><a href="../reference/deprecated.html">.logFile()</a></code>), <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> (deprecated <code><a href="../reference/deprecated.html">.programs()</a></code>), <code><a href="../reference/sampleYAML.html">sampleYAML()</a></code> (deprecated <code><a href="../reference/deprecated.html">.sampleYAML()</a></code>), <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code> (deprecated <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code>), <code><a href="../reference/sampleYAMLMetrics.html">sampleYAMLMetrics()</a></code> (deprecated .sampleYAMLMetrics()`).</li>
+<li>Deprecated <code><a href="../reference/deprecated.html">metadataTable()</a></code> function.</li>
+<li>Moved all roxygen documentation to <code>methods-*.R</code> files where applicable.</li>
+<li>Now using <code>assays</code> in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> generic definition as primary object.</li>
+<li>Improved <code><a href="../reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
+<li>Now consistently using clear function definitions (<code>()</code>) in chain operations with magrittr pipe (<code>%&gt;%</code>).</li>
+<li>Added <code>.prepareSampleMetadata()</code> utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.</li>
+<li>Added <code><a href="../reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
+<li>Initial commit of <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
+<li>Improved <code><a href="../reference/annotable.html">annotable()</a></code> function documentation and support for Ensembl release versions.</li>
+<li>Improved sanitization rules for <code><a href="../reference/makeNames.html">camel()</a></code>, <code><a href="../reference/makeNames.html">dotted()</a></code>, and <code><a href="../reference/makeNames.html">snake()</a></code> name functions. Added the <code>strict</code> argument to <code><a href="../reference/makeNames.html">camel()</a></code> and <code><a href="../reference/makeNames.html">dotted()</a></code>.</li>
+<li>Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.</li>
+<li>Improved S4 method support for the logRatio functions.</li>
+<li>Added integer support for <code><a href="../reference/geomean.html">geomean()</a></code> function. Also improved internal code of <code><a href="../reference/geomean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
+<li>Added release support for <code>tx2gene</code> functions.</li>
+<li>Reduced the number of reexported functions (for documentation) down to the magrittr pipe (<code>%&gt;%</code>), <code><a href="http://www.rdocumentation.org/packages/Matrix/topics/Matrix">Matrix()</a></code>, <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class">DataFrame()</a></code>, and <code><a href="http://www.rdocumentation.org/packages/tibble/topics/tibble">tibble()</a></code>.</li>
+<li>Added silent return of file path to <code><a href="../reference/saveData.html">saveData()</a></code> function.</li>
+<li>Improved documentation for tibble coercion using <code>as(object, "tibble")</code>
+</li>
+<li>Renamed <code>collapse()</code> function to <code><a href="../reference/collapseToString.html">collapseToString()</a></code>, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).</li>
+</ul>
+</div>
     <div id="basejump-0-0-23" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-0-23" class="anchor"></a>basejump 0.0.23</h1>
@@ -119,7 +152,7 @@
 <li>Added additional <code>data-raw/</code> scripts.</li>
 <li>Added <code>onLoad.R</code> script back to ensure proper attachment of <a href="https://github.com/stephenturner/annotables">annotables</a> data package.</li>
 <li>Removed <a href="http://www.tidyverse.org">tidyverse</a> S4 method support.</li>
-<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGTF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
+<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
 </ul>
 </div>
     <div id="basejump-0-0-20" class="section level1">
@@ -284,6 +317,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-0-24">0.0.24</a></li>
         <li><a href="#basejump-0-0-23">0.0.23</a></li>
         <li><a href="#basejump-0-0-22">0.0.22</a></li>
         <li><a href="#basejump-0-0-21">0.0.21</a></li>
@@ -315,7 +349,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael J. Steinbaugh</a>.</p>
+  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">

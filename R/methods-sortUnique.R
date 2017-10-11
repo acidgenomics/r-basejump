@@ -5,6 +5,9 @@
 #'
 #' @rdname sortUnique
 #' @name sortUnique
+#' @family Cleanup Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Unique vector.
 #' @export
@@ -20,7 +23,7 @@ NULL
 #' @export
 setMethod("sortUnique", "character", function(object) {
     object %>%
-        na.omit %>%
-        sort %>%
-        unique
+        na.omit() %>%
+        sort() %>%
+        unique()
 })

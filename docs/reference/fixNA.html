@@ -134,7 +134,7 @@
     <pre class="examples"><div class='input'><span class='fu'>fixNA</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>))</div><div class='output co'>#&gt; [1] "1" "x" NA  NA </div><div class='input'>
 <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
            <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)) <span class='kw'>%&gt;%</span>
-    <span class='no'>fixNA</span></div><div class='output co'>#&gt;      a    b
+    <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;      a    b
 #&gt; 1  foo &lt;NA&gt;
 #&gt; 2 &lt;NA&gt;  bar</div></pre>
   </div>
@@ -155,7 +155,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael J. Steinbaugh</a>.</p>
+  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -2,20 +2,22 @@
 #'
 #' @rdname readYAML
 #' @name readYAML
+#' @family Data Import and Project Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object YAML file path.
 #'
 #' @return [list].
 #'
 #' @examples
-#' # bcbioRnaseq example project summary YAML
+#' # bcbioRNASeq example project summary YAML
 #' yamlFile <- file.path(
 #'     "https://raw.githubusercontent.com",
 #'     "hbc",
-#'     "bcbioRnaseq",
+#'     "bcbioRNASeq",
 #'     "master",
 #'     "inst",
-#'     "extra",
+#'     "extdata",
 #'     "bcbio",
 #'     "2017-05-23_rnaseq",
 #'     "project-summary.yaml")
@@ -34,6 +36,10 @@ setMethod("readYAML", "character", function(object) {
              call. = FALSE)
     }
     file <- .localOrRemoteFile(object)
+    if (is.null(file)) {
+        warning(paste(basename(object), "file missing"), call. = FALSE)
+        return(NULL)
+    }
     message(paste("Reading", names(file)))
     yaml.load_file(file)
 })

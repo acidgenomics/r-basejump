@@ -2,7 +2,10 @@
 #'
 #' @rdname gene2symbol
 #' @name gene2symbol
+#' @family Gene Annotation Utilities
 #'
+#' @inheritParams AllGenerics
+#' @inheritParams annotable
 #' @param organism *Optional*. Organism name. Normally this argument is
 #'  unnecessary and can be left `NULL`. If a count matrix starts with a
 #'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
@@ -16,7 +19,8 @@
 #' @examples
 #' # character
 #' c("ENSMUSG00000000001",
-#'   "ENSMUSG00000000003") %>% gene2symbol
+#'   "ENSMUSG00000000003") %>%
+#'   gene2symbol()
 #'
 #' \dontrun{
 #' # matrix
@@ -28,14 +32,15 @@
 #'     dimnames = list(c("ENSMUSG00000000001",
 #'                       "ENSMUSG00000000003"),
 #'                     c("sample1",
-#'                       "sample2"))) %>% gene2symbol
+#'                       "sample2"))) %>%
+#'     gene2symbol()
 #' }
 NULL
 
 
 
 # Constructors ====
-.g2svec <- function(object, organism = NULL) {
+.g2svec <- function(object, organism = NULL, release = "current") {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -48,7 +53,7 @@ NULL
         stop("Empty string identifier detected", call. = FALSE)
     }
     if (any(duplicated(object))) {
-        stop("Duplicate gene identifiers detected", call. = FALSE)
+        warning("Duplicate gene identifiers detected", call. = FALSE)
     }
 
     # Detect organism
@@ -58,7 +63,9 @@ NULL
         organism <- detectOrganism(organism)
     }
 
-    g2s <- annotable(organism, format = "gene2symbol") %>%
+    g2s <- annotable(organism,
+                     format = "gene2symbol",
+                     release = release) %>%
         .[object, , drop = FALSE] %>%
         .[!is.na(.[["symbol"]]), , drop = FALSE]
 
@@ -80,9 +87,10 @@ NULL
 
 
 # Pass arguments to `.g2svec()`
-.g2sdim <- function(object, organism = NULL) {
+.g2sdim <- function(object, organism = NULL, release = "current") {
     rownames(object) <- rownames(object) %>%
-        .g2svec(organism = organism)
+        .g2svec(organism = organism,
+                release = release)
     object
 }
 

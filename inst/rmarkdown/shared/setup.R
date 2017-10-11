@@ -1,15 +1,16 @@
+library(basejump)
 library(knitr)
 library(ggplot2)
-library(basejump)
+library(tidyverse)
 
-opts_chunk$set(
+opts_chunk[["set"]](
     audodep = TRUE,
     cache = TRUE,
     cache.lazy = FALSE,
     error = FALSE,
-    fig.height = 8,
+    fig.height = 10,
     fig.retina = 2,
-    fig.width = 8,
+    fig.width = 10,
     message = FALSE,
     tidy = TRUE,
     warning = FALSE)

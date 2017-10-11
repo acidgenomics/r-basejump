@@ -1,24 +1,24 @@
-#' Prepare SummarizedExperiment
+#' Prepare `SummarizedExperiment()`
 #'
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.
 #'
-#' `prepareSummarizedExperiment()` also provides automatic metadata slotting of
-#' multiple useful environment parameters:
+#' This function also provides automatic metadata slotting of multiple useful
+#' environment parameters:
 #'
 #' - `date`: Today's date.
 #' - `wd`: Working directory.
-#' - `sessionInfo`: R session information.
+#' - `utilsSessionInfo`: [utils::sessionInfo()] return.
+#' - `devtoolsSessionInfo`: [devtools::session_info()] return.
 #'
 #' @rdname prepareSummarizedExperiment
 #' @name prepareSummarizedExperiment
+#' @family bcbio Utilities
+#' @keywords internal
 #'
-#' @param object Object supporting dimensions ([base::dim()]), or a list
-#'   containing valid objects. For NGS experiments, a counts matrix is
-#'   recommended, and can be passed in either dense (`matrix`) or sparse
-#'   (`dgCMatrix`, `dgTMatrix`) format. Multiple matrices can be supplied as a
-#'   list, as long as they all have the same dimensions. List object can be
-#'   supplied as either class `list` or `SimpleList`.
+#' @param assays List containing RNA-seq count matrices with matching
+#'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
+#'   (`dgCMatrix`, `dgTMatrix`) format.
 #' @param rowData Object describing assay matrix rows. Must support
 #'   [base::dim()].
 #' @param colData Object describing assay matrix columns. Must support
@@ -32,6 +32,7 @@
 #' - [utils::sessionInfo()].
 #'
 #' @return [SummarizedExperiment].
+#' @export
 #'
 #' @examples
 #' mat <- matrix(
@@ -50,7 +51,7 @@
 #'     age = c(3L, 6L, 3L, 6L),
 #'     row.names = colnames(mat))
 #' prepareSummarizedExperiment(
-#'     mat,
+#'     assays = list(assay = mat),
 #'     rowData = rowData,
 #'     colData = colData)
 NULL
@@ -58,56 +59,45 @@ NULL
 
 
 # Constructors ====
-.prepareSEFromAssay <- function(
-    object,
-    rowData,
-    colData,
-    metadata = NULL) {
-    .prepareSEFromList(
-        list(assay = object),
-        colData = colData,
-        rowData = rowData,
-        metadata = metadata)
-}
-
-
-
-.prepareSEFromList <- function(
-    object,
+.prepareSummarizedExperiment <- function(
+    assays,
     rowData,
     colData,
     metadata = NULL) {
     # Assays ====
-    assays <- as(object, "SimpleList")
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
         stop("Assay object must support 'dim()'")
     }
     # Check for potential dimnames problems
     if (is.null(rownames(assay))) {
-        stop("Assay missing rownames")
+        stop("Assay missing rownames", call. = FALSE)
     }
     if (is.null(colnames(assay))) {
-        stop("Assay missing colnames")
+        stop("Assay missing colnames", call. = FALSE)
     }
     if (any(duplicated(rownames(assay)))) {
-        stop("Non-unique rownames")
+        stop("Non-unique rownames", call. = FALSE)
     }
     if (any(duplicated(colnames(assay)))) {
-        stop("Non-unique colnames")
+        stop("Non-unique colnames", call. = FALSE)
     }
     if (!identical(make.names(rownames(assay)), rownames(assay))) {
-        stop(paste("Rownames are not valid.",
-                   "See 'base::make.names()' for more information."))
+        stop(paste(
+            "Rownames are not valid.",
+            "See 'base::make.names()' for more information."
+            ), call. = FALSE)
     }
     if (!identical(make.names(colnames(assay)), colnames(assay))) {
-        stop(paste("Colnames are not valid.",
-                   "See 'base::make.names()' for more information."))
+        stop(paste(
+            "Colnames are not valid.",
+            "See 'base::make.names()' for more information."
+            ), call. = FALSE)
     }
 
     # rowData ====
     if (is.null(dim(rowData))) {
-        stop("rowData must support 'dim()'")
+        stop("rowData must support 'dim()'", call. = FALSE)
     }
     rowData <- as.data.frame(rowData)
     # Handle tibble rownames
@@ -116,7 +106,7 @@ NULL
         rowData <- column_to_rownames(rowData)
     }
     if (!has_rownames(rowData)) {
-        stop("rowData missing rownames")
+        stop("rowData missing rownames", call. = FALSE)
     }
     if (!all(rownames(assay) %in% rownames(rowData))) {
         missing <- setdiff(rownames(assay), rownames(rowData))
@@ -124,10 +114,8 @@ NULL
         # gene identifiers
         warning(paste(
             "rowData mismatch with assay slot:",
-            toString(head(missing)),
-            "...",
-            "These gene IDs are missing in the current Ensembl release."
-        ))
+            toString(missing)
+            ), call. = FALSE)
     }
     rowData <- rowData %>%
         .[rownames(assay), , drop = FALSE] %>%
@@ -136,7 +124,7 @@ NULL
 
     # colData ====
     if (is.null(dim(colData))) {
-        stop("colData must support 'dim()'")
+        stop("colData must support 'dim()'", call. = FALSE)
     }
     colData <- as.data.frame(colData)
     # Handle tibble rownames
@@ -145,14 +133,14 @@ NULL
         colData <- column_to_rownames(colData)
     }
     if (!has_rownames(colData)) {
-        stop("colData missing rownames")
+        stop("colData missing rownames", call. = FALSE)
     }
     if (!all(colnames(assay) %in% rownames(colData))) {
         missing <- setdiff(colnames(assay), rownames(colData))
         stop(paste(
             "colData mismatch with assay slot:",
             toString(head(missing))
-        ))
+        ), call. = FALSE)
     }
     colData <- colData %>%
         .[colnames(assay), , drop = FALSE] %>%
@@ -164,12 +152,14 @@ NULL
         metadata <- list()
     } else {
         if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("Metadata must be 'list' or 'SimpleList' class object")
+            stop("Metadata must be 'list' or 'SimpleList' class object",
+                 call. = FALSE)
         }
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
-    metadata[["sessionInfo"]] <- sessionInfo()
+    metadata[["utilsSessionInfo"]] <- utils::sessionInfo()
+    metadata[["devtoolsSessionInfo"]] <- devtools::session_info()
 
     # Check for retired Ensembl identifiers, which can happen when a more recent
     # annotable build is used than the genome build. If present, store these
@@ -178,8 +168,8 @@ NULL
         if (any(is.na(rowData[["ensgene"]]))) {
             metadata[["missingGenes"]] <- rowData %>%
                 .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
-                rownames %>%
-                sort
+                rownames() %>%
+                sort()
         }
     }
 
@@ -196,34 +186,7 @@ NULL
 # Methods ====
 #' @rdname prepareSummarizedExperiment
 #' @export
-setMethod("prepareSummarizedExperiment", "ANY", .prepareSEFromAssay)
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setMethod("prepareSummarizedExperiment", "data.frame", .prepareSEFromAssay)
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setMethod("prepareSummarizedExperiment", "dgCMatrix", .prepareSEFromAssay)
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setMethod("prepareSummarizedExperiment", "list", .prepareSEFromList)
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setMethod("prepareSummarizedExperiment", "matrix", .prepareSEFromAssay)
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setMethod("prepareSummarizedExperiment", "SimpleList", .prepareSEFromList)
+setMethod(
+    "prepareSummarizedExperiment",
+    signature = "list",
+    definition = .prepareSummarizedExperiment)

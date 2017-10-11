@@ -2,6 +2,10 @@
 #'
 #' @rdname tx2gene
 #' @name tx2gene
+#' @family Gene Annotation Utilities
+#'
+#' @inheritParams AllGenerics
+#' @inheritParams annotable
 #'
 #' @return Same class as object.
 #' @export
@@ -10,7 +14,8 @@
 #' # character
 #' c("ENSMUST00000000001",
 #'   "ENSMUST00000000003",
-#'   "ENSMUST00000114041") %>% tx2gene
+#'   "ENSMUST00000114041") %>%
+#'   tx2gene()
 #'
 #' \dontrun{
 #' # matrix
@@ -23,14 +28,15 @@
 #'                       "ENSMUST00000000003",
 #'                       "ENSMUST00000114041"),
 #'                     c("sample1",
-#'                       "sample2"))) %>% tx2gene
+#'                       "sample2"))) %>%
+#'     tx2gene()
 #' }
 NULL
 
 
 
 # Constructors ====
-.t2gvec <- function(object) {
+.t2gvec <- function(object, release = "current") {
     # Prevent pass in of genomeBuild as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -43,7 +49,7 @@ NULL
         stop("Empty string identifier detected", call. = FALSE)
     }
     organism <- detectOrganism(object[[1L]])
-    t2g <- annotable(organism, format = "tx2gene") %>%
+    t2g <- annotable(organism, format = "tx2gene", release = release) %>%
         .[object, ] %>%
         .[!is.na(.[["ensgene"]]), ]
     gene <- t2g[["ensgene"]]
@@ -51,7 +57,7 @@ NULL
     if (!all(object %in% names(gene))) {
         stop(paste(
             "Unmatched transcripts present.",
-            "Try using a GTF file instead."),
+            "Try using a GFF file instead."),
             call. = FALSE)
     }
     gene[object]
@@ -59,8 +65,9 @@ NULL
 
 
 
-.t2gdim <- function(object) {
-    rownames(object) <- rownames(object) %>% .t2gvec
+.t2gdim <- function(object, release = "current") {
+    rownames(object) <- rownames(object) %>%
+        .t2gvec(release = release)
     object
 }
 

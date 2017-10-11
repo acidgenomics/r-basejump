@@ -93,22 +93,22 @@
     <pre class="usage"><span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -121,6 +121,11 @@
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
+    <tr>
+      <th>release</th>
+      <td><p>Ensembl release version. This function defaults to using the
+most current release available on AnnotationHub (<code>current</code>).</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -131,16 +136,17 @@
 
     <p>Other Gene Annotation Utilities: <code><a href='annotable.html'>annotable</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>,
-  <code><a href='gene2symbolFromGTF.html'>gene2symbolFromGTF</a></code>,
+  <code><a href='gene2symbolFromGFF.html'>gene2symbolFromGFF</a></code>,
   <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='symbol2gene.html'>symbol2gene</a></code>,
-  <code><a href='tx2geneFromGTF.html'>tx2geneFromGTF</a></code></p>
+  <code><a href='tx2geneFromGFF.html'>tx2geneFromGFF</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># character</span>
 <span class='fu'>c</span>(<span class='st'>"ENSMUST00000000001"</span>,
   <span class='st'>"ENSMUST00000000003"</span>,
-  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus Ensembl 88 annotations</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
+  <span class='st'>"ENSMUST00000114041"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>tx2gene</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining Ensembl annotations with AnnotationHub and ensembldb</span></div><div class='output co'>#&gt; <span class='message'>/Users/mike//.AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2017-09-07</span></div><div class='output co'>#&gt; <span class='message'>EnsDB: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
 #&gt; "ENSMUSG00000000001" "ENSMUSG00000000003" "ENSMUSG00000000003" </div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
 <span class='co'># matrix</span>
@@ -153,7 +159,8 @@
                       <span class='st'>"ENSMUST00000000003"</span>,
                       <span class='st'>"ENSMUST00000114041"</span>),
                     <span class='fu'>c</span>(<span class='st'>"sample1"</span>,
-                      <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span> <span class='no'>tx2gene</span>
+                      <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span>
+    <span class='fu'>tx2gene</span>()
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -173,7 +180,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael J. Steinbaugh</a>.</p>
+  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">

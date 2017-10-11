@@ -2,6 +2,9 @@
 #'
 #' @rdname pct
 #' @name pct
+#' @family Math Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Percentage.
 #' @export

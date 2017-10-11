@@ -2,6 +2,9 @@
 #'
 #' @rdname removeNA
 #' @name removeNA
+#' @family Cleanup Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Sanitized data.
 #'
