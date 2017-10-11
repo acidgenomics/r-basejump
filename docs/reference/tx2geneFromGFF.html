@@ -92,13 +92,19 @@
 
     <pre class="usage"><span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for character</span>
 <span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>)
 
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='co'># S4 method for character</span>
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>tx2geneFromGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,6 +122,12 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>data.frame.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The GFF (General Feature Format) format consists of one line per
+feature, each containing 9 columns of data, plus optional track definition
+lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -145,6 +157,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

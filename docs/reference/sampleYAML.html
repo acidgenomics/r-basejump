@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated Functions — deprecated • basejump</title>
+<title>Sample YAML Metadata Utilities — sampleYAML • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,43 +83,48 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated Functions</h1>
+    <h1>Sample YAML Metadata Utilities</h1>
     </div>
 
     
-    <p>Deprecated Functions</p>
+    <p>Sample YAML Metadata Utilities</p>
     
 
-    <pre class="usage"><span class='fu'>packageSE</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>sampleYAML</span>(<span class='no'>yaml</span>, <span class='no'>...</span>)
 
-<span class='fu'>prepareSE</span>(<span class='no'>...</span>)
-
-<span class='fu'>metadataTable</span>()
-
-<span class='fu'>.dataVersions</span>()
-
-<span class='fu'>.logFile</span>()
-
-<span class='fu'>.programs</span>()
-
-<span class='fu'>.sampleYAML</span>(<span class='no'>yaml</span>, <span class='no'>...</span>)
-
-<span class='fu'>.sampleYAMLMetadata</span>()
-
-<span class='fu'>.sampleYAMLMetrics</span>(<span class='no'>yaml</span>)</pre>
+<span class='co'># S4 method for list</span>
+<span class='fu'>sampleYAML</span>(<span class='no'>yaml</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>yaml</th>
+      <td><p>Project summary YAML list.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>Nested operator keys supplied as symbols.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Soft deprecation to new functions.</p>
+    <p><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Metrics are only generated for a standard RNA-seq run with aligned
+counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
+output the same metrics into the YAML.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other bcbio Utilities: <code><a href='prepareSummarizedExperiment.html'>prepareSummarizedExperiment</a></code>,
+  <code><a href='readDataVersions.html'>readDataVersions</a></code>,
+  <code><a href='readProgramVersions.html'>readProgramVersions</a></code>,
+  <code><a href='sampleYAMLMetadata.html'>sampleYAMLMetadata</a></code>,
+  <code><a href='sampleYAMLMetrics.html'>sampleYAMLMetrics</a></code></p>
     
 
   </div>
@@ -129,6 +134,10 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
