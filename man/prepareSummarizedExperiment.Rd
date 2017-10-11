@@ -4,43 +4,18 @@
 \docType{methods}
 \name{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment}
-\alias{prepareSummarizedExperiment,ANY-method}
-\alias{prepareSummarizedExperiment,data.frame-method}
-\alias{prepareSummarizedExperiment,dgCMatrix-method}
 \alias{prepareSummarizedExperiment,list-method}
-\alias{prepareSummarizedExperiment,matrix-method}
-\alias{prepareSummarizedExperiment,SimpleList-method}
-\title{Prepare SummarizedExperiment}
+\title{Prepare \code{SummarizedExperiment()}}
 \usage{
-prepareSummarizedExperiment(object, ...)
+prepareSummarizedExperiment(assays, ...)
 
-\S4method{prepareSummarizedExperiment}{ANY}(object, rowData, colData,
-  metadata = NULL)
-
-\S4method{prepareSummarizedExperiment}{data.frame}(object, rowData, colData,
-  metadata = NULL)
-
-\S4method{prepareSummarizedExperiment}{dgCMatrix}(object, rowData, colData,
-  metadata = NULL)
-
-\S4method{prepareSummarizedExperiment}{list}(object, rowData, colData,
-  metadata = NULL)
-
-\S4method{prepareSummarizedExperiment}{matrix}(object, rowData, colData,
-  metadata = NULL)
-
-\S4method{prepareSummarizedExperiment}{SimpleList}(object, rowData, colData,
+\S4method{prepareSummarizedExperiment}{list}(assays, rowData, colData,
   metadata = NULL)
 }
 \arguments{
-\item{object}{Object supporting dimensions (\code{\link[base:dim]{base::dim()}}), or a list
-containing valid objects. For NGS experiments, a counts matrix is
-recommended, and can be passed in either dense (\code{matrix}) or sparse
-(\code{dgCMatrix}, \code{dgTMatrix}) format. Multiple matrices can be supplied as a
-list, as long as they all have the same dimensions. List object can be
-supplied as either class \code{list} or \code{SimpleList}.}
-
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{assays}{List containing RNA-seq count matrices with matching
+dimensions. Counts can be passed in either dense (\code{matrix}) or sparse
+(\code{dgCMatrix}, \code{dgTMatrix}) format.}
 
 \item{rowData}{Object describing assay matrix rows. Must support
 \code{\link[base:dim]{base::dim()}}.}
@@ -58,12 +33,13 @@ This is a utility wrapper for \code{SummarizedExperiment()} that provides
 automatic subsetting for \code{colData} and \code{rowData}.
 }
 \details{
-\code{prepareSummarizedExperiment()} also provides automatic metadata slotting of
-multiple useful environment parameters:
+This function also provides automatic metadata slotting of multiple useful
+environment parameters:
 \itemize{
 \item \code{date}: Today's date.
 \item \code{wd}: Working directory.
-\item \code{sessionInfo}: R session information.
+\item \code{utilsSessionInfo}: \code{\link[utils:sessionInfo]{utils::sessionInfo()}} return.
+\item \code{devtoolsSessionInfo}: \code{\link[devtools:session_info]{devtools::session_info()}} return.
 }
 }
 \examples{
@@ -83,7 +59,7 @@ colData <- data.frame(
     age = c(3L, 6L, 3L, 6L),
     row.names = colnames(mat))
 prepareSummarizedExperiment(
-    mat,
+    assays = list(assay = mat),
     rowData = rowData,
     colData = colData)
 }
@@ -95,8 +71,10 @@ prepareSummarizedExperiment(
 \item \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
 }
 
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGTF}},
-  \code{\link{readYAML}}, \code{\link{transmit}}
+Other bcbio Utilities: \code{\link{readDataVersions}},
+  \code{\link{readProgramVersions}},
+  \code{\link{sampleYAMLMetadata}},
+  \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}
 }
-\concept{Data Import and Project Utilities}
+\concept{bcbio Utilities}
+\keyword{internal}

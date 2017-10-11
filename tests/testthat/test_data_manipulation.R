@@ -4,7 +4,7 @@ test_that("as", {
     expect_true(
         mtcars %>%
             as("tibble") %>%
-            is_tibble)
+            is_tibble())
     expect_error(
         c("foo", "bar") %>%
             as("tibble"),
@@ -13,56 +13,60 @@ test_that("as", {
 
 
 
-test_that("collapse", {
+test_that("collapseToString", {
     mpg <- "18.1, 18.7, 21, 21.4, 22.8"
 
     # data.frame
     expect_equal(
         mtcars %>%
-            head %>%
-            collapse %>%
+            head() %>%
+            collapseToString() %>%
             .[, "mpg"] %>%
-            as.character,
+            as.character(),
         mpg)
 
     # DataFrame
     expect_equal(
         mtcars %>%
             as("DataFrame") %>%
-            head %>%
-            collapse %>%
+            head() %>%
+            collapseToString() %>%
             .[, "mpg"] %>%
-            as.character,
+            as.character(),
         mpg)
 
     # matrix
     expect_equal(
         mtcars %>%
             as("matrix") %>%
-            head %>%
-            collapse %>%
+            head() %>%
+            collapseToString() %>%
             .[, "mpg"] %>%
-            as.character,
+            as.character(),
         mpg)
 
     # vector
     groceries <- c("milk", "eggs", "eggs", "veggies", NA)
     expect_equal(
-        collapse(groceries) %>%
-            as.character,
+        collapseToString(groceries) %>%
+            as.character(),
         "eggs, milk, veggies")
     expect_equal(
-        collapse(groceries, unique = FALSE, sort = FALSE, keepNA = TRUE) %>%
-            as.character,
+        collapseToString(
+            groceries,
+            unique = FALSE,
+            sort = FALSE,
+            keepNA = TRUE) %>%
+            as.character(),
         "milk, eggs, eggs, veggies, NA")
 
     # vector with only duplicates
     expect_equal(
-        collapse(c("hello", "hello"), unique = TRUE),
+        collapseToString(c("hello", "hello"), unique = TRUE),
         "hello")
 
     # string
     expect_equal(
-        collapse("hello"),
+        collapseToString("hello"),
         "hello")
 })

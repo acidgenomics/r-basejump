@@ -4,6 +4,9 @@
 #'
 #' @rdname loadRemoteData
 #' @name loadRemoteData
+#' @family Data Import and Project Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return No value.
 #'

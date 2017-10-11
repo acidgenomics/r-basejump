@@ -16,7 +16,8 @@ detectHPC(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
-Scheduler name if \code{TRUE} (e.g. LSF, SLURM), otherwise \code{FALSE}.
+Scheduler name if HPC is detected (e.g. LSF, SLURM), otherwise
+\code{FALSE}.
 }
 \description{
 Detect if R is running on a high-performance computing (HPC) cluster.

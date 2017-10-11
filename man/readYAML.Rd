@@ -22,14 +22,14 @@ readYAML(object, ...)
 Read YAML File
 }
 \examples{
-# bcbioRnaseq example project summary YAML
+# bcbioRNASeq example project summary YAML
 yamlFile <- file.path(
     "https://raw.githubusercontent.com",
     "hbc",
-    "bcbioRnaseq",
+    "bcbioRNASeq",
     "master",
     "inst",
-    "extra",
+    "extdata",
     "bcbio",
     "2017-05-23_rnaseq",
     "project-summary.yaml")
@@ -38,8 +38,8 @@ names(yaml)
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{prepareSummarizedExperiment}},
-  \code{\link{readFileByExtension}}, \code{\link{readGTF}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readSampleMetadataFile}},
   \code{\link{transmit}}
 }
 \concept{Data Import and Project Utilities}

@@ -13,17 +13,17 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism)
+\S4method{symbol2gene}{character}(object, organism, release = "current")
 
-\S4method{symbol2gene}{data.frame}(object, organism)
+\S4method{symbol2gene}{data.frame}(object, organism, release = "current")
 
-\S4method{symbol2gene}{DataFrame}(object, organism)
+\S4method{symbol2gene}{DataFrame}(object, organism, release = "current")
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism)
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current")
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism)
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current")
 
-\S4method{symbol2gene}{matrix}(object, organism)
+\S4method{symbol2gene}{matrix}(object, organism, release = "current")
 }
 \arguments{
 \item{object}{Object.}
@@ -31,6 +31,9 @@ symbol2gene(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{organism}{Organism name.}
+
+\item{release}{Ensembl release version. This function defaults to using the
+most current release available on AnnotationHub (\code{current}).}
 }
 \value{
 Same class as original object.
@@ -40,7 +43,7 @@ Convert Gene Symbol to Ensembl Identifier
 }
 \examples{
 # character
-symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse")
+symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 
 \dontrun{
 # matrix
@@ -51,7 +54,7 @@ matrix(
     ncol = 2L,
     dimnames = list(c("Gnai3", "Pbsn"),
                     c("sample1", "sample2"))) \%>\%
-    symbol2gene(organism = "mouse")
+    symbol2gene(organism = "Mus musculus")
 }
 }
 \seealso{
@@ -59,8 +62,8 @@ matrix(
 
 Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }
 \concept{Gene Annotation Utilities}

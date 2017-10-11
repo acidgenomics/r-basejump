@@ -22,7 +22,8 @@ default dependency files for a new experiment.}
 \item{sourceDir}{Source directory, typically a URL, where the dependency
 files are located.}
 
-\item{overwrite}{Overwrite files if they already exist.}
+\item{overwrite}{Overwrite files if they already exist. \emph{This option is used
+primarily for unit testing, and is not generally recommended.}}
 }
 \value{
 No value.
@@ -36,9 +37,16 @@ File download utility for RMarkdown knit reports.
 }
 \examples{
 \dontrun{
-sourceDir <- "http://bioinformatics.sph.harvard.edu/bcbioRnaseq/downloads"
-prepareTemplate(sourceDir)
-prepareTemplate("setup.R", sourceDir)
+# Load the shared files from basejump
+prepareTemplate()
+
+# Request individual files
+prepareTemplate(c("setup.R", "_header.Rmd"))
+
+# Load the shared files from bcbioSingleCell
+prepareTemplate(
+    sourceDir = system.file("rmarkdown/shared",
+                            package = "bcbioSingleCell"))
 }
 }
 \seealso{

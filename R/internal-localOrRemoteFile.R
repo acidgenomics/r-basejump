@@ -1,17 +1,18 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' @rdname internal-localOrRemoteFile
 #' @keywords internal
+#' @noRd
 #'
 #' @inheritParams AllGenerics
 #'
 #' @return Named character vector containing the original file name as the
-#'   name and local file path as the string.
+#'   name and local file path as the string. Returns `NULL` on a misisng
+#'   local file.
 #'
 #' @examples
 #' \dontrun{
 #' file.path(testDataURL, "mtcars.csv") %>%
-#'     .localOrRemoteFile
+#'     .localOrRemoteFile()
 #' }
 .localOrRemoteFile <- function(object) {
     fileName <- basename(object)
@@ -21,7 +22,12 @@
         download.file(object, filePath)
     } else {
         # Local file
-        filePath <- normalizePath(object)
+        # Check to see if file exists, otherwise return `NULL`
+        if (file.exists(object)) {
+            filePath <- normalizePath(object)
+        } else {
+            return(NULL)
+        }
     }
     file <- filePath
     names(file) <- fileName

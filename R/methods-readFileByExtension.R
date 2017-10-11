@@ -6,7 +6,9 @@
 #'
 #' @rdname readFileByExtension
 #' @name readFileByExtension
+#' @family Data Import and Project Utilities
 #'
+#' @inheritParams AllGenerics
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `snake`, or `FALSE`.
@@ -65,9 +67,9 @@ setMethod("readFileByExtension", "character", function(
         data <- read_lines(file, ...)
     } else if (ext == "counts") {
         data <- read_tsv(file, progress = FALSE, ...) %>%
-            as.data.frame %>%
+            as.data.frame() %>%
             column_to_rownames("id") %>%
-            as.matrix
+            as.matrix()
     } else {
         stop("Unsupported file type")
     }

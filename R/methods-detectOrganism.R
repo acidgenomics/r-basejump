@@ -4,6 +4,9 @@
 #'
 #' @rdname detectOrganism
 #' @name detectOrganism
+#' @family Gene Annotation Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Full latin scientific organism name.
 #' @export

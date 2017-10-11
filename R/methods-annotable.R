@@ -1,39 +1,42 @@
 #' [Ensembl](http://www.ensembl.org/) Annotations
 #'
-#' Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-#' pre-compiled from [Ensembl](http://www.ensembl.org/) with the
-#' [biomaRt](http://bioconductor.org/packages/release/bioc/html/biomaRt.html)
-#' package. For gene annotables, the Entrez identifier is removed, to allow
-#' for unique Ensembl gene identifiers.
+#' Fetch annotations from AnnotationHub using the ensembldb package. This
+#' function defaults to obtaining the latest annotations, unless the `release`
+#' argument is set to a numeric version (e.g. 88).
 #'
 #' @rdname annotable
 #' @name annotable
-#' @author Broad class definitions by Rory Kirchner
+#' @family Gene Annotation Utilities
+#'
+#' @author Broad class definitions by Rory Kirchner.
+#'
+#' @inheritParams AllGenerics
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
-#'   string.
+#'   character string.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
 #' @param release Ensembl release version. This function defaults to using the
-#'   most recent annotations available on AnnotationHub.
-#'
-#' @note If the `format` argument is set to `gene2entrez`, [annotable()] returns
-#'   a [tibble] with non-unique rows grouped by `ensgene`, instead of a
-#'   [data.frame].
-#'
-#' @seealso Consult the annotables package documentation (`help("annotables")`)
-#'   for a list of currently supported genomes.
+#'   most current release available on AnnotationHub (`current`).
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
+#' @seealso
+#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
+#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#'
 #' @examples
-#' annotable("Mus musculus") %>% glimpse
+#' annotable("Mus musculus") %>%
+#'     str()
 NULL
 
 
 
 # Constructors ====
-.annotable <- function(object, format = "gene", release = 88L) {
+.annotable <- function(
+    object,
+    format = "gene",
+    release = "current") {
     if (!is_string(object)) {
         stop("Object must be a string")
     }
@@ -42,18 +45,52 @@ NULL
     }
 
     organism <- detectOrganism(object)
-    message(paste(organism, "Ensembl", release, "annotations"))
 
     # Download organism EnsDb package from AnnotationHub
-    ah <- suppressMessages(
-        AnnotationHub()
-    )
-    ahDb <- suppressMessages(
-        query(ah, pattern = c(organism, "EnsDb", release))
-    )
-    edb <- suppressMessages(
-        ahDb[[1L]]
-    )
+    message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
+    getAnnotationHubOption("CACHE") %>%
+        message()
+    ah <- AnnotationHub()
+
+    # Check for unsupported Ensembl release request
+    if (is.numeric(release) & release < 87L) {
+        warning(paste(
+            "ensembldb only supports Ensembl releases 87 and newer.",
+            "Using current release instead."
+        ))
+        release <- "current"
+    }
+
+    if (release == "current") {
+        ahDb <- query(
+            ah,
+            pattern = c(organism, "EnsDb"),
+            ignore.case = TRUE)
+        # Get the latest AnnotationHub dataset by identifier number
+        id <- ahDb %>%
+            mcols %>%
+            rownames %>%
+            tail(n = 1L)
+        edb <- suppressMessages(ah[[id]])
+    } else {
+        ahDb <- query(
+            ah,
+            pattern = c(
+                organism,
+                "EnsDb",
+                # Match against the version more specifically
+                # (e.g. "v90")
+                paste0("v", release)),
+            ignore.case = TRUE)
+        edb <- suppressMessages(ahDb[[1L]])
+    }
+
+    message(paste(
+        "EnsDB:",
+        organism(edb),
+        "Ensembl",
+        ensemblVersion(edb)
+    ))
 
     if (format == "gene") {
         genes(edb,

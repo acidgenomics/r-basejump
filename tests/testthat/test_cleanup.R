@@ -11,7 +11,7 @@ test_that("fixNA", {
     expect_equal(
         data.frame(a = c("foo", ""),
                    b = c(NA, "bar")) %>%
-            fixNA,
+            fixNA(),
         data.frame(a = c("foo", NA),
                    b = c(NA, "bar")))
 
@@ -19,7 +19,7 @@ test_that("fixNA", {
     expect_equal(
         DataFrame(a = c("foo", ""),
                   b = c(NA, "bar")) %>%
-            fixNA,
+            fixNA(),
         DataFrame(a = c("foo", NA),
                   b = c(NA, "bar")))
 
@@ -27,7 +27,7 @@ test_that("fixNA", {
     expect_equal(
         tibble(a = c("foo", ""),
                b = c(NA, "bar")) %>%
-            fixNA,
+            fixNA(),
         tibble(a = c("foo", NA),
                b = c(NA, "bar")))
 
@@ -40,71 +40,90 @@ test_that("fixNA", {
 
 
 # makeNames ====
-# Named character vector
+# character vector
+vec <- c("G2MScore",
+         "hello world",
+         "HELLO WORLD",
+         "RNAi clones",
+         "tx2gene",
+         "TX2GeneID",
+         "worfdbHTMLRemap")
+
+# named character vector
 named <- c(Item.A = "hello world", Item.B = "HELLO WORLD")
 
-# Data frame
+# data.frame
 df <- head(mtcars)
 
-# Tibble
+# tibble
 tbl <- head(starwars)
 
-# List
+# list
 lst <- list(Item.A = c(1L, 2L),
             Item.B = c(3L, 4L))
 
 
 
 test_that("camel", {
-    # Unnamed character vector
-    expect_equal(camel("hello world"), "helloWorld")
-    expect_equal(camel("HELLO WORLD"), "helloWorld")
-    expect_equal(camel("RNAi clones"), "rnaiClones")
-    expect_equal(camel("worfdbHTMLRemap"), "worfdbHtmlRemap")
-    expect_equal(camel(123L), 123L)
-    expect_equal(camel(NA), NA)
+    expect_equal(
+        camel(123L),
+        123L)
+    expect_equal(
+        camel(NA),
+        NA)
     expect_error(camel())
 
-    # Named character vector
+    # character vector
     expect_equal(
-        camel(named),
+        camel(vec, strict = TRUE),
+        c("g2mScore",
+          "helloWorld",
+          "helloWorld",
+          "rnaiClones",
+          "tx2gene",
+          "tx2GeneId",
+          "worfdbHtmlRemap"))
+    expect_equal(
+        camel(vec, strict = FALSE),
+        c("g2mScore",
+          "helloWorld",
+          "helloWORLD",
+          "rnaiClones",
+          "tx2gene",
+          "tx2GeneID",
+          "worfdbHTMLRemap"))
+
+    # named character vector
+    expect_equal(
+        camel(named, strict = TRUE),
         c(itemA = "hello world",
           itemB = "HELLO WORLD"))
 
-    # data.frame (with rownames coverage)
+    # data.frame with rownames
     expect_equal(
-        camel(df, rownames = TRUE) %>%
-            rownames %>%
+        camel(df, rownames = TRUE, strict = TRUE) %>%
+            rownames() %>%
             .[[1L]],
         "mazdaRx4")
-    expect_equal(
-        snake(df, rownames = TRUE) %>%
-            rownames %>%
-            .[[1L]],
-        "mazda_rx4")
-    expect_equal(
-        dotted(df, rownames = TRUE) %>%
-            rownames %>%
-            .[[1L]],
-        "mazda.rx4")
-    # Unset rownames (ignore in `.checkRownames()`)
+
+    # data.frame with unset rownames (ignore in `.checkRownames()`)
     expect_equal(
         mtcars %>%
             set_rownames(NULL) %>%
-            camel(rownames = TRUE) %>%
-            rownames,
+            camel(rownames = TRUE, strict = TRUE) %>%
+            rownames(),
         as.character(1L:nrow(mtcars)))
 
     # tibble
     expect_equal(
         tbl[, 1L:5L] %>%
-            camel %>%
-            colnames,
+            camel(strict = TRUE) %>%
+            colnames(),
         c("name", "height", "mass", "hairColor", "skinColor"))
 
     # list
     expect_equal(
-        camel(lst),
+        camel(lst, strict = TRUE),
         list(itemA = c(1L, 2L),
              itemB = c(3L, 4L)))
 })
@@ -112,31 +131,57 @@ test_that("camel", {
 
 
 test_that("dotted", {
-    # Unnamed character vector
-    expect_equal(dotted("hello world"), "hello.world")
-    expect_equal(dotted("HELLO WORLD"), "hello.world")
-    expect_equal(dotted("RNAi clones"), "rnai.clones")
-    expect_equal(dotted("worfdbHTMLRemap"), "worfdb.html.remap")
-    expect_equal(dotted(123L), 123L)
-    expect_equal(dotted(NA), NA)
+    expect_equal(
+        dotted(123L),
+        123L)
+    expect_equal(
+        dotted(NA),
+        NA)
     expect_error(dotted())
 
-    # Named character vector
+    # character vector
     expect_equal(
-        dotted(named),
+        dotted(vec, strict = TRUE),
+        c("g2m.score",
+          "hello.world",
+          "hello.world",
+          "rnai.clones",
+          "tx2gene",
+          "tx2.gene.id",
+          "worfdb.html.remap"))
+    expect_equal(
+        dotted(vec, strict = FALSE),
+        c("G2MScore",
+        "hello.world",
+        "HELLO.WORLD",
+        "RNAi.clones",
+        "tx2gene",
+        "TX2GeneID",
+        "worfdbHTMLRemap"))
+
+    # named character vector
+    expect_equal(
+        dotted(named, strict = TRUE),
         c(item.a = "hello world",
           item.b = "HELLO WORLD"))
 
-    # Tibble
+    # data.frame with rownames
+    expect_equal(
+        dotted(df, rownames = TRUE, strict = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "mazda.rx4")
+
+    # tibble
     expect_equal(
         tbl[, 1L:5L] %>%
-            dotted %>%
-            colnames,
+            dotted(strict = TRUE) %>%
+            colnames(),
         c("name", "height", "mass", "hair.color", "skin.color"))
 
-    # List
+    # list
     expect_equal(
-        dotted(lst),
+        dotted(lst, strict = TRUE),
         list(item.a = c(1L, 2L),
              item.b = c(3L, 4L)))
 })
@@ -144,29 +189,46 @@ test_that("dotted", {
 
 
 test_that("snake", {
-    # Unnamed character vector
-    expect_equal(snake("hello world"), "hello_world")
-    expect_equal(snake("HELLO WORLD"), "hello_world")
-    expect_equal(snake("RNAi clones"), "rnai_clones")
-    expect_equal(snake("worfdbHTMLRemap"), "worfdb_html_remap")
-    expect_equal(snake(123L), 123L)
-    expect_equal(snake(NA), NA)
+    expect_equal(
+        snake(123L),
+        123L)
+    expect_equal(
+        snake(NA),
+        NA)
     expect_error(snake())
 
-    # Named character vector
+    # character vector
+    expect_equal(
+        snake(vec),
+        c("g2m_score",
+          "hello_world",
+          "hello_world",
+          "rnai_clones",
+          "tx2gene",
+          "tx2_gene_id",
+          "worfdb_html_remap"))
+
+    # named character vector
     expect_equal(
         snake(named),
         c(item_a = "hello world",
           item_b = "HELLO WORLD"))
 
-    # Tibble
+    # data.frame with rownames
+    expect_equal(
+        snake(df, rownames = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "mazda_rx4")
+
+    # tibble
     expect_equal(
         tbl[, 1L:5L] %>%
-            snake %>%
-            colnames,
+            snake() %>%
+            colnames(),
         c("name", "height", "mass", "hair_color", "skin_color"))
 
-    # List
+    # list
     expect_equal(
         snake(lst),
         list(item_a = c(1L, 2L),
@@ -181,7 +243,8 @@ test_that("removeNA", {
     expect_equal(
         data.frame(a = c("A", NA, "C"),
                    b = c(NA, NA, NA),
-                   c = c("B", NA, "D")) %>% removeNA,
+                   c = c("B", NA, "D")) %>%
+            removeNA(),
         data.frame(a = c("A", "C"),
                    c = c("B", "D"),
                    row.names = c(1L, 3L)))
@@ -190,11 +253,11 @@ test_that("removeNA", {
     #' # Support for vectors (using `stats::na.omit()`)
     expect_equal(
         removeNA(c("hello", "world", NA)) %>%
-            as.character,
+            as.character(),
         c("hello", "world"))
     expect_equal(
         removeNA(c(1L, 2L, NA)) %>%
-            as.integer,
+            as.integer(),
         c(1L, 2L))
 })
 

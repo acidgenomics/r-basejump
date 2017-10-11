@@ -2,6 +2,9 @@
 #'
 #' @rdname fixNA
 #' @name fixNA
+#' @family Cleanup Utilities
+#'
+#' @inheritParams AllGenerics
 #'
 #' @return Object containing proper `NA` values.
 #'
@@ -10,7 +13,7 @@
 #'
 #' data.frame(a = c("foo", ""),
 #'            b = c(NA, "bar")) %>%
-#'     fixNA
+#'     fixNA()
 NULL
 
 
@@ -32,6 +35,7 @@ NULL
 #' @rdname fixNA
 #' @export
 setMethod("fixNA", "ANY", function(object) {
+    # Return unmodified by default
     object
 })
 

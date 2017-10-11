@@ -8,13 +8,14 @@ test_that("assignAndSaveData", {
 
 
 
-test_that("multiassignAsNewEnv", {
+test_that("multiassignAsNewEnvir", {
     expect_message(
-        multiassignAsNewEnv(mtcars, starwars, newEnv = "test"),
+        multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
         "Assigning mtcars, starwars as test")
     expect_equal(
-        multiassignAsNewEnv(mtcars, starwars, newEnv = "test"),
+        multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
         c("mtcars", "starwars"))
     expect_error(
-        multiassignAsNewEnv(mtcars, newEnv = parent.frame()))
+        multiassignAsNewEnvir(mtcars, envirName = parent.frame()),
+        "'envirName' must be a string")
 })

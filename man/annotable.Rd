@@ -8,11 +8,12 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene", release = 88L)
+\S4method{annotable}{character}(object, format = "gene",
+  release = "current")
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
-string.}
+character string.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
@@ -20,36 +21,32 @@ string.}
 \code{gene2symbol}.}
 
 \item{release}{Ensembl release version. This function defaults to using the
-most recent annotations available on AnnotationHub.}
+most current release available on AnnotationHub (\code{current}).}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.
 }
 \description{
-Quickly access gene annotations and transcript-to-gene (tx2gene) mappings
-pre-compiled from \href{http://www.ensembl.org/}{Ensembl} with the
-\href{http://bioconductor.org/packages/release/bioc/html/biomaRt.html}{biomaRt}
-package. For gene annotables, the Entrez identifier is removed, to allow
-for unique Ensembl gene identifiers.
-}
-\note{
-If the \code{format} argument is set to \code{gene2entrez}, \code{\link[=annotable]{annotable()}} returns
-a \link{tibble} with non-unique rows grouped by \code{ensgene}, instead of a
-\link{data.frame}.
+Fetch annotations from AnnotationHub using the ensembldb package. This
+function defaults to obtaining the latest annotations, unless the \code{release}
+argument is set to a numeric version (e.g. 88).
 }
 \examples{
-annotable("Mus musculus") \%>\% glimpse
+annotable("Mus musculus") \%>\%
+    str()
 }
 \seealso{
-Consult the annotables package documentation (\code{help("annotables")})
-for a list of currently supported genomes.
+\itemize{
+\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
+\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
+}
 
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGTF}},
+  \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGTF}}, \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
 \author{
-Broad class definitions by Rory Kirchner
+Broad class definitions by Rory Kirchner.
 }
 \concept{Gene Annotation Utilities}

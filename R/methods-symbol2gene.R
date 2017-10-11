@@ -2,7 +2,10 @@
 #'
 #' @rdname symbol2gene
 #' @name symbol2gene
+#' @family Gene Annotation Utilities
 #'
+#' @inheritParams AllGenerics
+#' @inheritParams annotable
 #' @param organism Organism name.
 #'
 #' @return Same class as original object.
@@ -11,7 +14,7 @@
 #'
 #' @examples
 #' # character
-#' symbol2gene(c("Gnai3", "Pbsn"), organism = "mouse")
+#' symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 #'
 #' \dontrun{
 #' # matrix
@@ -22,14 +25,14 @@
 #'     ncol = 2L,
 #'     dimnames = list(c("Gnai3", "Pbsn"),
 #'                     c("sample1", "sample2"))) %>%
-#'     symbol2gene(organism = "mouse")
+#'     symbol2gene(organism = "Mus musculus")
 #' }
 NULL
 
 
 
 # Constructors ====
-.s2gvec <- function(object, organism) {
+.s2gvec <- function(object, organism, release = "current") {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -42,14 +45,16 @@ NULL
         stop("Empty string identifier detected", call. = FALSE)
     }
     if (any(duplicated(object))) {
-        stop("Duplicate gene symbols detected", call. = FALSE)
+        warning("Duplicate gene symbols detected", call. = FALSE)
     }
 
     # Detect organism
     organism <- detectOrganism(organism)
 
     # Get gene2symbol annotable
-    g2s <- annotable(organism, format = "gene2symbol") %>%
+    g2s <- annotable(organism,
+                     format = "gene2symbol",
+                     release = release) %>%
         .[.[["symbol"]] %in% object, , drop = FALSE]
 
     ensgene <- g2s[["ensgene"]]
@@ -70,9 +75,9 @@ NULL
 
 
 # Pass arguments to .s2gvec
-.s2gdim <- function(object, organism) {
+.s2gdim <- function(object, organism, release = "current") {
     rownames(object) <- rownames(object) %>%
-        .s2gvec(organism = organism)
+        .s2gvec(organism = organism, release = release)
     object
 }
 

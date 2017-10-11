@@ -5,10 +5,21 @@
 #'
 #' @rdname geomean
 #' @name geomean
+#' @family Math Utilities
 #'
-#' @details Modified version of `psych::geometric.mean()`.
+#' @inheritParams AllGenerics
+#' @param removeNA Remove `NA` values from calculations.
+#' @param zeroPropagate Allow propagation of zeroes.
 #'
-#' @note Not particularly useful if there are elements that are <= 0.
+#' @details Modified version of `psych::geometric.mean()` and/or Paul McMurdie's
+#'   code.
+#'
+#' @note This function should be fully zero- and `NA`-tolerant. This calculation
+#'   is not particularly useful if there are elements that are <= 0 and will
+#'   return `NaN`.
+#'
+#' @seealso [Paul McMurdie's post](https://stackoverflow.com/a/25555105) on
+#'   Stack Overflow
 #'
 #' @return Numeric containing geometric means.
 #'
@@ -34,14 +45,28 @@ NULL
 
 
 # Constructors ====
+.geomean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
+    # Check for any negative numbers and return `NaN`
+    if (any(object < 0L, na.rm = TRUE)) {
+        warning("'geomean()' returns 'NaN' when negative numbers are present")
+        return(NaN)
+    }
+    if (isTRUE(zeroPropagate)) {
+        if (any(object == 0L, na.rm = TRUE)) {
+            return(0L)
+        }
+        exp(mean(log(object), na.rm = removeNA))
+    } else {
+        exp(sum(log(object[object > 0L]), na.rm = removeNA) / length(object))
+    }
+}
+
 .geomeanDim <- function(object) {
     if (is.null(dim(object))) stop("Object must support dim()")
     object %>%
-        as.matrix %>%
-        log %>%
-        # `2` denotes columnwise calculation
-        apply(2L, mean, na.rm = TRUE) %>%
-        exp
+        as.matrix() %>%
+        # `2L` here denotes columnwise calculation
+        apply(2L, .geomean)
 }
 
 
@@ -49,13 +74,13 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
-setMethod("geomean", "ANY", .geomeanDim)
+setMethod("geomean", "data.frame", .geomeanDim)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "data.frame", .geomeanDim)
+setMethod("geomean", "integer", .geomean)
 
 
 
@@ -67,9 +92,4 @@ setMethod("geomean", "matrix", .geomeanDim)
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "numeric", function(object) {
-    object %>%
-        log %>%
-        mean(na.rm = TRUE) %>%
-        exp
-})
+setMethod("geomean", "numeric", .geomean)

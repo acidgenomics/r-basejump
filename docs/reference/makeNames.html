@@ -98,40 +98,40 @@
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for tbl_df</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for tbl_df</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -165,7 +165,14 @@ will be meaningful.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p>Include row names.</p></td>
+      <td><p>Apply sanitization on row names. This is not recommended
+by default, since rownames commonly contain gene identifiers that should
+not be modified.</p></td>
+    </tr>
+    <tr>
+      <th>strict</th>
+      <td><p>Enforce strict rules for name sanitization. <strong>Recommended</strong>
+and generally should not be set to <code>FALSE</code>.</p></td>
     </tr>
     </table>
     
@@ -190,10 +197,6 @@ argument name assignments.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Cleanup Utilities: <code><a href='fixNA.html'>fixNA</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sortUnique.html'>sortUnique</a></code></p>
-<p>Other Cleanup Utilities: <code><a href='fixNA.html'>fixNA</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sortUnique.html'>sortUnique</a></code></p>
-<p>Other Cleanup Utilities: <code><a href='fixNA.html'>fixNA</a></code>,
   <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sortUnique.html'>sortUnique</a></code></p>
     
 
@@ -222,7 +225,7 @@ argument name assignments.</p>
 
 
 <span class='co'># camelCase</span>
-<span class='fu'>camel</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWorld"      "rnaiClones"      "worfdbHtmlRemap"
+<span class='fu'>camel</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "helloWorld"      "helloWORLD"      "rnaiClones"      "worfdbHTMLRemap"
 #&gt; [5] "x123"            "na"             </div><div class='input'><span class='fu'>camel</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -231,8 +234,8 @@ argument name assignments.</p>
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>camel</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; mazdaRx4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; mazdaRx4Wag      21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; mazdaRX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; mazdaRX4Wag      21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #&gt; datsun710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; hornet4Drive     21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; hornetSportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
@@ -286,8 +289,8 @@ argument name assignments.</p>
 #&gt; </div><div class='input'>
 
 <span class='co'># dotted.case</span>
-<span class='fu'>dotted</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello.world"       "hello.world"       "rnai.clones"      
-#&gt; [4] "worfdb.html.remap" "x123"              "na"               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item.a        item.b 
+<span class='fu'>dotted</span>(<span class='no'>unnamedVec</span>)</div><div class='output co'>#&gt; [1] "hello.world"     "HELLO.WORLD"     "RNAi.clones"     "worfdbHTMLRemap"
+#&gt; [5] "X123"            "NA"             </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        Item.A        Item.B 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -295,12 +298,12 @@ argument name assignments.</p>
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; mazda.rx4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; mazda.rx4.wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-#&gt; datsun.710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-#&gt; hornet.4.drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; hornet.sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
+#&gt; Mazda.RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda.RX4.Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun.710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet.4.Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet.Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>tbl</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 13
 #&gt;             name height  mass  hair.color  skin.color eye.color birth.year
 #&gt;            &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
 #&gt; 1 Luke Skywalker    172    77       blond        fair      blue       19.0
@@ -310,10 +313,10 @@ argument name assignments.</p>
 #&gt; 5    Leia Organa    150    49       brown       light     brown       19.0
 #&gt; 6      Owen Lars    178   120 brown, grey       light      blue       52.0
 #&gt; # ... with 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
-#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>lst</span>)</div><div class='output co'>#&gt; $item.a
+#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>lst</span>)</div><div class='output co'>#&gt; $Item.A
 #&gt; [1] 1 2
 #&gt; 
-#&gt; $item.b
+#&gt; $Item.B
 #&gt; [1] 3 4
 #&gt; </div></pre>
   </div>
@@ -338,7 +341,7 @@ argument name assignments.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael J. Steinbaugh</a>.</p>
+  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">

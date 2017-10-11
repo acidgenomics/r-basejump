@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Michael J. Steinbaugh \email{mike@steinbaugh.com}
+\strong{Maintainer}: Michael Steinbaugh \email{mike@steinbaugh.com}
 
 Other contributors:
 \itemize{
