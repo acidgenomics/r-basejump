@@ -18,7 +18,7 @@
 #'
 #' data.frame(a = c("A", NA, "C"),
 #'            b = c(NA, NA, NA),
-#'            c = c("B", NA, "D"))
+#'            c = c("B", NA, "D")) %>%
 #'     removeNA()
 #'
 #' tibble(a = c("A", NA, "C"),
