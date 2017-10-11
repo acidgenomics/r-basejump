@@ -21,19 +21,22 @@ NULL
 # Methods ====
 #' @rdname grepString
 #' @export
-setMethod("grepString", "character", function(object) {
-    object %>%
-        as.character() %>%
-        paste0(
-            # Unique
-            "^", ., "$",
-            "|",
-            # Beginning of list
-            "^", ., ",",
-            "|",
-            # Middle of list
-            "\\s", ., ",",
-            "|",
-            # End of list
-            "\\s", ., "$")
-})
+setMethod(
+    "grepString",
+    signature("character"),
+    function(object) {
+        object %>%
+            as.character() %>%
+            paste0(
+                # Unique
+                "^", ., "$",
+                "|",
+                # Beginning of list
+                "^", ., ",",
+                "|",
+                # Middle of list
+                "\\s", ., ",",
+                "|",
+                # End of list
+                "\\s", ., "$")
+    })

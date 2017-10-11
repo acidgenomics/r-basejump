@@ -72,5 +72,5 @@ NULL
 #' @export
 setMethod(
     "sampleYAML",
-    signature = "list",
-    definition = .sampleYAML)
+    signature("list"),
+    .sampleYAML)

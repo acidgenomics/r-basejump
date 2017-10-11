@@ -27,10 +27,8 @@ NULL
 
 
 
-# Methods ====
-#' @rdname transmit
-#' @export
-setMethod("transmit", "character", function(
+# Constructors ====
+.transmit <- function(
     object,
     pattern,
     rename = NULL,
@@ -96,4 +94,14 @@ setMethod("transmit", "character", function(
         localFilePath
     }) %>%
         setNames(remoteFileName)
-})
+}
+
+
+
+# Methods ====
+#' @rdname transmit
+#' @export
+setMethod(
+    "transmit",
+    signature("character"),
+    .transmit)

@@ -17,8 +17,8 @@ NULL
 #' @export
 setMethod(
     "readDataVersions",
-    signature = "character",
-    definition = function(object) {
+    signature("character"),
+    function(object) {
         if (!file.exists(object)) {
             warning(paste(basename(object), "file missing"), call. = FALSE)
             return(NULL)

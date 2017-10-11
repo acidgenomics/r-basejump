@@ -65,19 +65,26 @@ NULL
 # Methods ====
 #' @rdname tx2geneFromGFF
 #' @export
-setMethod("tx2geneFromGFF", "character", function(object) {
-    object %>%
-        readGFF() %>%
-        .tx2geneFromGFF()
-})
+setMethod(
+    "tx2geneFromGFF",
+    signature("character"),
+    function(object) {
+        object %>%
+            readGFF() %>%
+            .tx2geneFromGFF()
+    })
 
 
 
 #' @rdname tx2geneFromGFF
 #' @export
-setMethod("tx2geneFromGFF", "data.frame", function(object) {
-    if (dim(object)[[2L]] != 9L) {
-        stop("GFF object must be data.frame with 9 columns")
-    }
-    .tx2geneFromGFF(object)
-})
+setMethod(
+    "tx2geneFromGFF",
+    signature("data.frame"),
+    function(object) {
+        if (dim(object)[[2L]] != 9L) {
+            stop("GFF object must be data.frame with 9 columns",
+                 call. = FALSE)
+        }
+        .tx2geneFromGFF(object)
+    })

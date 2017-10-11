@@ -1,6 +1,7 @@
 # Constructors ====
 .makeNamesSnake <- function(object) {
     object %>%
+        # snake_case must always be lower case, so enforce strict here
         dotted(strict = TRUE) %>%
         tolower() %>%
         str_replace_all("\\.", "_")
@@ -23,44 +24,62 @@
 # Methods ====
 #' @rdname makeNames
 #' @export
-setMethod("snake", "ANY", .setNamesSnake)
+setMethod(
+    "snake",
+    signature("ANY"),
+    .setNamesSnake)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("snake", "character", function(object) {
-    if (isTRUE(.checkNames(object))) {
+setMethod(
+    "snake",
+    signature("character"),
+    function(object) {
+        if (isTRUE(.checkNames(object))) {
+            .setNamesSnake(object, rownames = FALSE)
+        } else {
+            .makeNamesSnake(object)
+        }
+    })
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "snake",
+    signature("data.frame"),
+    .setNamesSnake)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "snake",
+    signature("list"),
+    function(object) {
         .setNamesSnake(object, rownames = FALSE)
-    } else {
-        .makeNamesSnake(object)
-    }
-})
+    })
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("snake", "data.frame", .setNamesSnake)
+setMethod(
+    "snake",
+    signature("matrix"),
+    .setNamesSnake)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("snake", "list", function(object) {
-    .setNamesSnake(object, rownames = FALSE)
-})
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("snake", "matrix", .setNamesSnake)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("snake", "tbl_df", function(object) {
-    .setNamesSnake(object, rownames = FALSE)
-})
+setMethod(
+    "snake",
+    signature("tbl_df"),
+    function(object) {
+        .setNamesSnake(object, rownames = FALSE)
+    })
