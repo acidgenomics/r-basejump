@@ -23,7 +23,7 @@ loadDataAsName <- function(
              call. = FALSE)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment")
+        stop("'envir' must be an environment", call. = FALSE)
     }
     # Assign into a temporary environment, rather than using `attach()`
     tmpenv <- new.env()
@@ -41,14 +41,14 @@ loadDataAsName <- function(
             file <- file.path(dir, paste0(object, ".rda"))
         }
         if (!file.exists(file)) {
-            paste(object, "missing") %>%
-                stop(call. = FALSE)
+            stop(paste(object, "missing"), call. = FALSE)
         }
         file <- normalizePath(file)
         loaded <- load(file, envir = tmpenv)
         if (!identical(as.character(object), loaded)) {
-            paste(name, "file and saved object names are not identical") %>%
-                stop(call. = FALSE)
+            stop(paste(
+                name, "file and saved object names are not identical"
+            ), call. = FALSE)
         }
         assign(
             name,
