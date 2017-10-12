@@ -1,11 +1,19 @@
+#' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
 
+#' @importFrom Matrix Matrix
 #' @export
 Matrix::Matrix
 
+#' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
 
+#' @importFrom tibble tibble
 #' @export
 tibble::tibble
+
+#' @importFrom tools file_path_sans_ext
+#' @export
+tools::file_path_sans_ext
