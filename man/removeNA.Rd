@@ -3,16 +3,18 @@
 \docType{methods}
 \name{removeNA}
 \alias{removeNA}
+\alias{removeNA,ANY-method}
 \alias{removeNA,character-method}
 \alias{removeNA,numeric-method}
 \alias{removeNA,matrix-method}
 \alias{removeNA,data.frame-method}
 \alias{removeNA,DataFrame-method}
 \alias{removeNA,tbl_df-method}
-\alias{removeNA,ANY-method}
 \title{Remove Rows and Columns Containing Only \code{NA} Values}
 \usage{
 removeNA(object, ...)
+
+\S4method{removeNA}{ANY}(object)
 
 \S4method{removeNA}{character}(object)
 
@@ -25,8 +27,6 @@ removeNA(object, ...)
 \S4method{removeNA}{DataFrame}(object)
 
 \S4method{removeNA}{tbl_df}(object)
-
-\S4method{removeNA}{ANY}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -44,16 +44,18 @@ Remove Rows and Columns Containing Only \code{NA} Values
 matrix(c(1, NA, 3,
          NA, NA, NA,
          2, NA, 4),
-       nrow = 3, ncol = 3) \%>\% removeNA
+       nrow = 3, ncol = 3) \%>\%
+    removeNA()
 
 data.frame(a = c("A", NA, "C"),
            b = c(NA, NA, NA),
-           c = c("B", NA, "D")) \%>\% removeNA
+           c = c("B", NA, "D")) \%>\%
+    removeNA()
 
 tibble(a = c("A", NA, "C"),
        b = c(NA, NA, NA),
-       c = c("B", NA, "D")) \%>\% removeNA
-
+       c = c("B", NA, "D")) \%>\%
+    removeNA()
 
 # Support for vectors (using `stats::na.omit()`)
 removeNA(c("hello", "world", NA))

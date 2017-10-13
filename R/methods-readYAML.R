@@ -11,16 +11,7 @@
 #'
 #' @examples
 #' # bcbioRNASeq example project summary YAML
-#' yamlFile <- file.path(
-#'     "https://raw.githubusercontent.com",
-#'     "hbc",
-#'     "bcbioRNASeq",
-#'     "master",
-#'     "inst",
-#'     "extdata",
-#'     "bcbio",
-#'     "2017-05-23_rnaseq",
-#'     "project-summary.yaml")
+#' yamlFile <- file.path(testDataURL, "project-summary.yaml")
 #' yaml <- readYAML(yamlFile)
 #' names(yaml)
 NULL
@@ -30,16 +21,21 @@ NULL
 # Methods ====
 #' @rdname readYAML
 #' @export
-setMethod("readYAML", "character", function(object) {
-    if (!str_detect(object, "\\.ya?ml$")) {
-        stop("YAML file must have '.yaml' or '.yml' extension",
-             call. = FALSE)
-    }
-    file <- .localOrRemoteFile(object)
-    if (is.null(file)) {
-        warning(paste(basename(object), "file missing"), call. = FALSE)
-        return(NULL)
-    }
-    message(paste("Reading", names(file)))
-    yaml.load_file(file)
-})
+setMethod(
+    "readYAML",
+    signature("character"),
+    function(object) {
+        if (!str_detect(object, "\\.ya?ml$")) {
+            stop("YAML file must have '.yaml' or '.yml' extension",
+                 call. = FALSE)
+        }
+        file <- .localOrRemoteFile(object)
+        if (is.null(file)) {
+            warning(paste(
+                basename(object), "file missing"
+            ), call. = FALSE)
+            return(NULL)
+        }
+        message(paste("Reading", names(file)))
+        yaml.load_file(file)
+    })

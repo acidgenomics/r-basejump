@@ -11,10 +11,12 @@ sampleYAMLMetadata(yaml, ...)
 \S4method{sampleYAMLMetadata}{list}(yaml)
 }
 \arguments{
-\item{yaml}{YAML \link{list}.}
+\item{yaml}{Project summary YAML list.}
+
+\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
-\link{data.frame}.
+\link{tibble}.
 }
 \description{
 Sample Metadata from YAML

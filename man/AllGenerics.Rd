@@ -5,6 +5,7 @@
 \alias{aggregateReplicates}
 \alias{bcbio}
 \alias{bcbio<-}
+\alias{flatFiles}
 \alias{interestingGroups}
 \alias{metrics}
 \alias{plotGene}
@@ -18,6 +19,8 @@ aggregateReplicates(object, ...)
 bcbio(object, ...)
 
 bcbio(object, ...) <- value
+
+flatFiles(object, ...)
 
 interestingGroups(object, ...)
 

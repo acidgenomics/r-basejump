@@ -188,5 +188,5 @@ NULL
 #' @export
 setMethod(
     "prepareSummarizedExperiment",
-    signature = "list",
-    definition = .prepareSummarizedExperiment)
+    signature("list"),
+    .prepareSummarizedExperiment)

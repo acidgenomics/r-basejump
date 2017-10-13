@@ -11,10 +11,12 @@ sampleYAMLMetrics(yaml, ...)
 \S4method{sampleYAMLMetrics}{list}(yaml)
 }
 \arguments{
-\item{yaml}{YAML \link{list}.}
+\item{yaml}{Project summary YAML list.}
+
+\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
-\link{data.frame}.
+\link{tibble}.
 }
 \description{
 Sample Metrics from YAML File

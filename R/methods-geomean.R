@@ -48,7 +48,8 @@ NULL
 .geomean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
-        warning("'geomean()' returns 'NaN' when negative numbers are present")
+        warning("'geomean()' returns 'NaN' when negative numbers are present",
+                call. = FALSE)
         return(NaN)
     }
     if (isTRUE(zeroPropagate)) {
@@ -62,7 +63,9 @@ NULL
 }
 
 .geomeanDim <- function(object) {
-    if (is.null(dim(object))) stop("Object must support dim()")
+    if (is.null(dim(object))) {
+        stop("'object' must support 'dim()'", call. = FALSE)
+    }
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
@@ -74,22 +77,34 @@ NULL
 # Methods ====
 #' @rdname geomean
 #' @export
-setMethod("geomean", "data.frame", .geomeanDim)
+setMethod(
+    "geomean",
+    signature("data.frame"),
+    .geomeanDim)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "integer", .geomean)
+setMethod(
+    "geomean",
+    signature("integer"),
+    .geomean)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "matrix", .geomeanDim)
+setMethod(
+    "geomean",
+    signature("matrix"),
+    .geomeanDim)
 
 
 
 #' @rdname geomean
 #' @export
-setMethod("geomean", "numeric", .geomean)
+setMethod(
+    "geomean",
+    signature("numeric"),
+    .geomean)

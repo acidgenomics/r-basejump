@@ -21,9 +21,12 @@ NULL
 # Methods ====
 #' @rdname sortUnique
 #' @export
-setMethod("sortUnique", "character", function(object) {
-    object %>%
-        na.omit() %>%
-        sort() %>%
-        unique()
-})
+setMethod(
+    "sortUnique",
+    signature("character"),
+    function(object) {
+        object %>%
+            na.omit() %>%
+            sort() %>%
+            unique()
+    })

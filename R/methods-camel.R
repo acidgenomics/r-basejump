@@ -44,44 +44,62 @@
 # Methods ====
 #' @rdname makeNames
 #' @export
-setMethod("camel", "ANY", .setNamesCamel)
+setMethod(
+    "camel",
+    signature("ANY"),
+    .setNamesCamel)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "character", function(object, strict = FALSE) {
-    if (isTRUE(.checkNames(object))) {
+setMethod(
+    "camel",
+    signature("character"),
+    function(object, strict = FALSE) {
+        if (isTRUE(.checkNames(object))) {
+            .setNamesCamel(object, rownames = FALSE, strict = strict)
+        } else {
+            .makeNamesCamel(object, strict = strict)
+        }
+    })
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "camel",
+    signature("data.frame"),
+    .setNamesCamel)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "camel",
+    signature("list"),
+    function(object, strict = FALSE) {
         .setNamesCamel(object, rownames = FALSE, strict = strict)
-    } else {
-        .makeNamesCamel(object, strict = strict)
-    }
-})
+    })
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "data.frame", .setNamesCamel)
+setMethod(
+    "camel",
+    signature("matrix"),
+    .setNamesCamel)
 
 
 
 #' @rdname makeNames
 #' @export
-setMethod("camel", "list", function(object, strict = FALSE) {
-    .setNamesCamel(object, rownames = FALSE, strict = strict)
-})
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("camel", "matrix", .setNamesCamel)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod("camel", "tbl_df", function(object, strict = FALSE) {
-    .setNamesCamel(object, rownames = FALSE, strict = strict)
-})
+setMethod(
+    "camel",
+    signature("tbl_df"),
+    function(object, strict = FALSE) {
+        .setNamesCamel(object, rownames = FALSE, strict = strict)
+    })

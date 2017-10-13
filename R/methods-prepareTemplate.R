@@ -60,21 +60,27 @@ NULL
 # Methods ====
 #' @rdname prepareTemplate
 #' @export
-setMethod("prepareTemplate", "missing", function(
-    object,
-    sourceDir) {
-    .copyPackageFile(
-        c("_output.yaml",
-          "_footer.Rmd",
-          "_header.Rmd",
-          "bibliography.bib",
-          "setup.R"),
-        sourceDir = sourceDir,
-        overwrite = FALSE)
-})
+setMethod(
+    "prepareTemplate",
+    signature("missing"),
+    function(
+        object,
+        sourceDir) {
+        .copyPackageFile(
+            c("_output.yaml",
+              "_footer.Rmd",
+              "_header.Rmd",
+              "bibliography.bib",
+              "setup.R"),
+            sourceDir = sourceDir,
+            overwrite = FALSE)
+    })
 
 
 
 #' @rdname prepareTemplate
 #' @export
-setMethod("prepareTemplate", "character", .copyPackageFile)
+setMethod(
+    "prepareTemplate",
+    signature("character"),
+    .copyPackageFile)

@@ -26,15 +26,21 @@ NULL
 # Methods ====
 #' @rdname kables
 #' @export
-setMethod("kables", "list", function(object, captions = NULL, force = FALSE) {
-    output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
-    if (!is.null(output) | isTRUE(force)) {
-        tables <- lapply(seq_along(object), function(a) {
-            kable(object[a], caption = captions[a])
-        })
-        asis_output(tables)
-    } else {
-        # Return the unmodified object if not in a knit call
-        object
-    }
-})
+setMethod(
+    "kables",
+    signature("list"),
+    function(
+        object,
+        captions = NULL,
+        force = FALSE) {
+        output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
+        if (!is.null(output) | isTRUE(force)) {
+            tables <- lapply(seq_along(object), function(a) {
+                kable(object[a], caption = captions[a])
+            })
+            asis_output(tables)
+        } else {
+            # Return the unmodified object if not in a knit call
+            object
+        }
+    })

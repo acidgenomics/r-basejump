@@ -15,10 +15,13 @@ NULL
 # Methods ====
 #' @rdname readLogFile
 #' @export
-setMethod("readLogFile", "character", function(object) {
-    if (!file.exists(object)) {
-        warning(paste(basename(object), "file missing"), call. = FALSE)
-        return(NULL)
-    }
-    read_lines(object)
-})
+setMethod(
+    "readLogFile",
+    signature("character"),
+    function(object) {
+        if (!file.exists(object)) {
+            warning(paste(basename(object), "file missing"), call. = FALSE)
+            return(NULL)
+        }
+        read_lines(object)
+    })

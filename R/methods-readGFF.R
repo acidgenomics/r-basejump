@@ -56,4 +56,7 @@ NULL
 # Methods ====
 #' @rdname readGFF
 #' @export
-setMethod("readGFF", "character", .readGFF)
+setMethod(
+    "readGFF",
+    signature("character"),
+    .readGFF)

@@ -1,3 +1,6 @@
 #' @rdname readGFF
 #' @export
-setMethod("readGTF", "character", .readGFF)
+setMethod(
+    "readGTF",
+    signature("character"),
+    .readGFF)
