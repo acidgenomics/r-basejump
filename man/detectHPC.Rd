@@ -8,7 +8,7 @@
 \usage{
 detectHPC(object, ...)
 
-\S4method{detectHPC}{missing}()
+\S4method{detectHPC}{missing}(object)
 }
 \arguments{
 \item{object}{Object.}

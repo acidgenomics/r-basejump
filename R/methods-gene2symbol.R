@@ -44,7 +44,8 @@ NULL
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
-        stop("gene2symbol conversion requires > 1 identifier")
+        stop("gene2symbol conversion requires > 1 identifier",
+             call. = FALSE)
     }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
@@ -76,8 +77,8 @@ NULL
         names(nomatch) <- nomatch
         warning(paste(
             "Failed to match all gene IDs to symbols:",
-            toString(nomatch)),
-            call. = FALSE)
+            toString(nomatch)
+            ), call. = FALSE)
         symbol <- c(symbol, nomatch)
     }
 
@@ -99,34 +100,52 @@ NULL
 # Methods ====
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "character", .g2svec)
+setMethod(
+    "gene2symbol",
+    signature("character"),
+    .g2svec)
 
 
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "data.frame", .g2sdim)
+setMethod(
+    "gene2symbol",
+    signature("data.frame"),
+    .g2sdim)
 
 
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "DataFrame", .g2sdim)
+setMethod(
+    "gene2symbol",
+    signature("DataFrame"),
+    .g2sdim)
 
 
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "dgCMatrix", .g2sdim)
+setMethod(
+    "gene2symbol",
+    signature("dgCMatrix"),
+    .g2sdim)
 
 
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "dgTMatrix", .g2sdim)
+setMethod(
+    "gene2symbol",
+    signature("dgTMatrix"),
+    .g2sdim)
 
 
 
 #' @rdname gene2symbol
 #' @export
-setMethod("gene2symbol", "matrix", .g2sdim)
+setMethod(
+    "gene2symbol",
+    signature("matrix"),
+    .g2sdim)

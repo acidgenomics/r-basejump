@@ -1,6 +1,11 @@
-.Rproj.user
-.Rhistory
 .RData
+.Rhistory
+.Rproj.user
 .Ruserdata
 docs/reference/*/
 tests/testthat/*/
+tests/textthat/*.bib
+tests/textthat/*.rda
+tests/textthat/*.Rmd
+tests/textthat/*.yaml
+tests/textthat/setup.R

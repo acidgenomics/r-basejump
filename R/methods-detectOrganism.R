@@ -23,10 +23,8 @@ NULL
 
 
 
-# Methods ====
-#' @rdname detectOrganism
-#' @export
-setMethod("detectOrganism", "character", function(object) {
+# Constructors ====
+.detectOrganism <- function(object) {
     if (tolower(object) %in% c("human",
                                "hsapiens",
                                "homo sapiens") |
@@ -70,7 +68,26 @@ setMethod("detectOrganism", "character", function(object) {
                                "rattus norvegicus") |
         str_detect(object, "^ENSRNO(G|T)\\d{11}$")) {
         c(rat = "Rattus norvegicus")
+    } else if (
+        tolower(object) %in% c("sheep",
+                               "oaries",
+                               "ovis aries") |
+        str_detect(
+            object,
+            regex("^(oar|oviAri)_v\\d+$", ignore_case = TRUE)) |
+        str_detect(object, "^ENSOAR(G|T)\\d{11}$")) {
+        c(sheep = "Ovis aries")
     } else {
-        stop("Failed to detect supported organism")
+        stop("Failed to detect supported organism", call. = FALSE)
     }
-})
+}
+
+
+
+# Methods ====
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("character"),
+    .detectOrganism)

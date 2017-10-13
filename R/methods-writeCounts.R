@@ -28,64 +28,69 @@ NULL
 
 
 
+# Constructors ====
+.writeCounts <- function(
+    ...,
+    dir = file.path("results", "counts"),
+    gzip = TRUE) {
+    dots <- dots_list(...)
+    hasDim <- dots %>%
+        sapply(dim) %>%
+        vapply(is.numeric, logical(1L))
+    if (any(!hasDim)) {
+        stop("Object must support dim()",
+             call. = FALSE)
+    }
+
+    # Create the counts output directory
+    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+
+    # Iterate across the dot objects and write to disk
+    names <- dots(..., character = TRUE)
+    message(paste("Writing", toString(names), "to", dir))
+    lapply(seq_along(dots), function(a) {
+        name <- names[[a]]
+        counts <- dots[[a]]
+        if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
+            # MatrixMarket file
+            matrixFile <- file.path(dir, paste0(name, ".mtx"))
+            writeMM(counts, matrixFile)
+
+            # Write barcodes (colnames)
+            barcodes <- colnames(counts)
+            barcodesFile <- paste0(matrixFile, ".colnames")
+            write_lines(barcodes, barcodesFile)
+
+            # Write gene names (rownames)
+            genes <- rownames(counts)
+            genesFile <- paste0(matrixFile, ".rownames")
+            write_lines(genes, genesFile)
+
+            # gzip the matrix, if desired
+            if (isTRUE(gzip)) {
+                gzip(matrixFile, overwrite = TRUE)
+            }
+        } else {
+            # Coerce to tibble use readr
+            ext <- ".csv"
+            if (isTRUE(gzip)) {
+                ext <- paste0(ext, ".gz")
+            }
+            fileName <- paste0(name, ext)
+            counts %>%
+                as("tibble") %>%
+                write_csv(path = file.path(dir, fileName))
+        }
+    }) %>%
+        invisible()
+}
+
+
+
 # Methods ====
 #' @rdname writeCounts
 #' @export
 setMethod(
     "writeCounts",
     signature("..." = "ANY"),
-    function(
-        ...,
-        dir = file.path("results", "counts"),
-        gzip = TRUE) {
-        dots <- dots_list(...)
-        hasDim <- dots %>%
-            sapply(dim) %>%
-            vapply(is.numeric, logical(1L))
-        if (any(!hasDim)) {
-            stop("Object must support dim()",
-                 call. = FALSE)
-        }
-
-        # Create the counts output directory
-        dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-
-        # Iterate across the dot objects and write to disk
-        names <- dots(..., character = TRUE)
-        message(paste("Writing", toString(names), "to", dir))
-        lapply(seq_along(dots), function(a) {
-            name <- names[[a]]
-            counts <- dots[[a]]
-            if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
-                # MatrixMarket file
-                matrixFile <- file.path(dir, paste0(name, ".mtx"))
-                writeMM(counts, matrixFile)
-
-                # Write barcodes (colnames)
-                barcodes <- colnames(counts)
-                barcodesFile <- paste0(matrixFile, ".colnames")
-                write_lines(barcodes, barcodesFile)
-
-                # Write gene names (rownames)
-                genes <- rownames(counts)
-                genesFile <- paste0(matrixFile, ".rownames")
-                write_lines(genes, genesFile)
-
-                # gzip the matrix, if desired
-                if (isTRUE(gzip)) {
-                    gzip(matrixFile, overwrite = TRUE)
-                }
-            } else {
-                # Coerce to tibble use readr
-                ext <- ".csv"
-                if (isTRUE(gzip)) {
-                    ext <- paste0(ext, ".gz")
-                }
-                fileName <- paste0(name, ext)
-                counts %>%
-                    as("tibble") %>%
-                    write_csv(path = file.path(dir, fileName))
-            }
-        }) %>%
-            invisible()
-    })
+    .writeCounts)

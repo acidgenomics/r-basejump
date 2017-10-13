@@ -86,34 +86,52 @@ NULL
 # Methods ====
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "character", .s2gvec)
+setMethod(
+    "symbol2gene",
+    signature("character"),
+    .s2gvec)
 
 
 
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "data.frame", .s2gdim)
+setMethod(
+    "symbol2gene",
+    signature("data.frame"),
+    .s2gdim)
 
 
 
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "DataFrame", .s2gdim)
+setMethod(
+    "symbol2gene",
+    signature("DataFrame"),
+    .s2gdim)
 
 
 
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "dgCMatrix", .s2gdim)
+setMethod(
+    "symbol2gene",
+    signature("dgCMatrix"),
+    .s2gdim)
 
 
 
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "dgTMatrix", .s2gdim)
+setMethod(
+    "symbol2gene",
+    signature("dgTMatrix"),
+    .s2gdim)
 
 
 
 #' @rdname symbol2gene
 #' @export
-setMethod("symbol2gene", "matrix", .s2gdim)
+setMethod(
+    "symbol2gene",
+    signature("matrix"),
+    .s2gdim)

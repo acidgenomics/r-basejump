@@ -17,10 +17,8 @@ NULL
 
 
 
-# Methods ====
-#' @rdname readSampleMetadataFile
-#' @export
-setMethod("readSampleMetadataFile", "character", function(
+# Constructors ====
+.readSampleMetadataFile <- function(
     object,
     pattern = NULL,
     patternCol = "sampleName",
@@ -127,4 +125,14 @@ setMethod("readSampleMetadataFile", "character", function(
     }
 
     .prepareSampleMetadata(meta)
-})
+}
+
+
+
+# Methods ====
+#' @rdname readSampleMetadataFile
+#' @export
+setMethod(
+    "readSampleMetadataFile",
+    signature("character"),
+    .readSampleMetadataFile)

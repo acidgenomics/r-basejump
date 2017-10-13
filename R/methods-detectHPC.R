@@ -29,12 +29,15 @@ NULL
 # Methods ====
 #' @rdname detectHPC
 #' @export
-setMethod("detectHPC", "missing", function() {
-    if (Sys.getenv("LSF_ENVDIR") != "") {
-        "LSF"
-    } else if (Sys.getenv("SLURM_CONF") != "") {
-        "SLURM"
-    } else {
-        FALSE
-    }
-})
+setMethod(
+    "detectHPC",
+    signature("missing"),
+    function(object) {
+        if (Sys.getenv("LSF_ENVDIR") != "") {
+            "LSF"
+        } else if (Sys.getenv("SLURM_CONF") != "") {
+            "SLURM"
+        } else {
+            FALSE
+        }
+    })

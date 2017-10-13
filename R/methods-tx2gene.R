@@ -75,34 +75,52 @@ NULL
 
 # Methods ====
 #' @rdname tx2gene
-setMethod("tx2gene", "character", .t2gvec)
+setMethod(
+    "tx2gene",
+    signature("character"),
+    .t2gvec)
 
 
 
 #' @rdname tx2gene
 #' @export
-setMethod("tx2gene", "data.frame", .t2gdim)
+setMethod(
+    "tx2gene",
+    signature("data.frame"),
+    .t2gdim)
 
 
 
 #' @rdname tx2gene
 #' @export
-setMethod("tx2gene", "DataFrame", .t2gdim)
+setMethod(
+    "tx2gene",
+    signature("DataFrame"),
+    .t2gdim)
 
 
 
 #' @rdname tx2gene
 #' @export
-setMethod("tx2gene", "dgCMatrix", .t2gdim)
+setMethod(
+    "tx2gene",
+    signature("dgCMatrix"),
+    .t2gdim)
 
 
 
 #' @rdname tx2gene
 #' @export
-setMethod("tx2gene", "dgTMatrix", .t2gdim)
+setMethod(
+    "tx2gene",
+    signature("dgTMatrix"),
+    .t2gdim)
 
 
 
 #' @rdname tx2gene
 #' @export
-setMethod("tx2gene", "matrix", .t2gdim)
+setMethod(
+    "tx2gene",
+    signature("matrix"),
+    .t2gdim)

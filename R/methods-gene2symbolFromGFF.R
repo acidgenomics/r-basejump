@@ -64,16 +64,22 @@ NULL
 # Methods ====
 #' @rdname gene2symbolFromGFF
 #' @export
-setMethod("gene2symbolFromGFF", "character", function(object) {
-    object %>%
-        readGFF() %>%
-        .gene2symbolFromGFF()
-})
+setMethod(
+    "gene2symbolFromGFF",
+    signature("character"),
+    function(object) {
+        object %>%
+            readGFF() %>%
+            .gene2symbolFromGFF()
+    })
 
 
 
 #' @rdname gene2symbolFromGFF
 #' @export
-setMethod("gene2symbolFromGFF", "data.frame", function(object) {
-    .gene2symbolFromGFF(object)
-})
+setMethod(
+    "gene2symbolFromGFF",
+    signature("data.frame"),
+    function(object) {
+        .gene2symbolFromGFF(object)
+    })
