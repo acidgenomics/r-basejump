@@ -68,8 +68,17 @@ NULL
                                "rattus norvegicus") |
         str_detect(object, "^ENSRNO(G|T)\\d{11}$")) {
         c(rat = "Rattus norvegicus")
+    } else if (
+        tolower(object) %in% c("sheep",
+                               "oaries",
+                               "ovis aries") |
+        str_detect(
+            object,
+            regex("^(oar|oviAri)_v\\d+$", ignore_case = TRUE)) |
+        str_detect(object, "^ENSOAR(G|T)\\d{11}$")) {
+        c(sheep = "Ovis aries")
     } else {
-        stop("Failed to detect supported organism")
+        stop("Failed to detect supported organism", call. = FALSE)
     }
 }
 
