@@ -28,6 +28,12 @@ NULL
 
 
 # Constructors ====
+#' @importFrom R.utils gzip
+#' @importFrom RCurl getURL
+#' @importFrom readr read_lines
+#' @importFrom stats setNames
+#' @importFrom stringr str_extract str_subset
+#' @importFrom utils download.file
 .transmit <- function(
     object,
     pattern,
@@ -35,11 +41,11 @@ NULL
     compress = FALSE,
     localDir = "data-raw") {
     remoteDir <- object
-    if (!str_detect(remoteDir, "ftp\\://")) {
-        stop("FTP protocol not detected")
+    if (!grepl(x = remoteDir, pattern = "ftp\\://")) {
+        stop("FTP protocol not detected", call. = FALSE)
     }
     # Fix trailing slash, if necessary
-    if (!str_detect(remoteDir, "/$")) {
+    if (!grepl(x = remoteDir, pattern = "/$")) {
         remoteDir <- paste0(remoteDir, "/")
     }
 
@@ -50,24 +56,25 @@ NULL
         # Match the `-` at begining for file
         # `-rwxrwxr-x`: File
         # `drwxrwxr-x`: Directory
-        .[str_detect(., "^-")] %>%
+        .[grepl(x = ., pattern = "^-")] %>%
         # File name is at the end, not including a space
-        str_extract("[^\\s]+$")
+        str_extract(pattern = "[^\\s]+$")
 
     if (!length(remoteFileList)) {
-        stop("No files listed on remote server")
+        stop("No files listed on remote server", call. = FALSE)
     }
 
     # Apply pattern matching
     remoteFileName <- str_subset(remoteFileList, pattern)
     if (!length(remoteFileName)) {
-        stop("Pattern didn't match any files")
+        stop("Pattern didn't match any files", call. = FALSE)
     }
 
     # Rename files, if desired
     if (!is.null(rename)) {
-        if (length(rename) != length(remoteFileName)) {
-            stop("Rename vector doesn't match the number of remote files")
+        if (!identical(length(rename), length(remoteFileName))) {
+            stop("Rename vector doesn't match the number of remote files",
+                 call. = FALSE)
         }
     }
 
