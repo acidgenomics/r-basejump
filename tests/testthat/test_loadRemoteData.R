@@ -1,8 +1,12 @@
 context("loadRemoteData")
 
 test_that("loadRemoteData", {
-    expect_silent(
-        loadRemoteData(file.path(testDataURL, "mtcars.rda"))
+    invisible <- loadRemoteData(
+        file.path(testDataURL, "mtcars.rda"),
+        quiet = TRUE)
+    expect_equal(
+        invisible,
+        "mtcars"
     )
     expect_error(
         loadRemoteData(file.path(testDataURL, "mmusculus.gtf")),
