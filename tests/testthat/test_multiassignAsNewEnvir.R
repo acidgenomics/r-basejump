@@ -1,12 +1,4 @@
-context("Object Assignment Utilities")
-
-test_that("assignAndSaveData", {
-    expect_message(
-        assignAndSaveData("test", mtcars),
-        "Saving test to data")
-})
-
-
+context("multiassignAsNewEnvir")
 
 test_that("multiassignAsNewEnvir", {
     expect_message(

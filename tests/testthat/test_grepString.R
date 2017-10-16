@@ -1,7 +1,8 @@
-context("String Utilities")
+context("grepString")
 
 test_that("grepString", {
     expect_equal(
         grepString("gene"),
-        "^gene$|^gene,|\\sgene,|\\sgene$")
+        "^gene$|^gene,|\\sgene,|\\sgene$"
+    )
 })
