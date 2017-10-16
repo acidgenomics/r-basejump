@@ -17,7 +17,9 @@ setMethod(
     "sampleYAMLMetadata",
     signature("list"),
     function(yaml) {
-        # Here `metadata` is the key, passed in as a symbol
-        sampleYAML(yaml, metadata) %>%
+        sampleYAML(
+            yaml = yaml,
+            keys = "metadata"
+        ) %>%
             .prepareSampleMetadata(factors = TRUE)
     })
