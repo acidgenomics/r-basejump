@@ -6,33 +6,32 @@ utils::download.file(
     quiet = TRUE)
 
 test_that("loadData", {
-    x <- loadData(mtcars, dir = getwd())
+    invisible <- loadData(mtcars, dir = getwd(), quiet = TRUE)
     expect_equal(
-        names(x),
-        "mtcars"
-    )
-    expect_equal(
-        basename(x),
+        basename(invisible),
         "mtcars.rda"
     )
+    expect_equal(
+        names(invisible),
+        "mtcars"
+    )
     expect_error(
-        loadData(foobar),
+        loadData(foobar, quiet = TRUE),
         "foobar missing"
     )
 })
 
 test_that("loadDataAsName", {
-    x <- loadDataAsName(
+    invisible <- loadDataAsName(
         mappings = c(test = "mtcars"),
-        dir = getwd()
-    )
+        dir = getwd())
     expect_equal(
-        names(x),
-        "test"
-    )
-    expect_equal(
-        basename(x),
+        basename(invisible),
         "mtcars.rda"
+    )
+    expect_equal(
+        names(invisible),
+        "test"
     )
     expect_error(
         loadDataAsName(
