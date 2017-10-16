@@ -32,7 +32,11 @@ NULL
 
 
 # Constructors ====
-.s2gvec <- function(object, organism, release = "current") {
+#' @importFrom rlang is_string
+.s2gvec <- function(
+    object,
+    organism,
+    release = "current") {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -52,9 +56,10 @@ NULL
     organism <- detectOrganism(organism)
 
     # Get gene2symbol annotable
-    g2s <- annotable(organism,
-                     format = "gene2symbol",
-                     release = release) %>%
+    g2s <- annotable(
+        organism,
+        format = "gene2symbol",
+        release = release) %>%
         .[.[["symbol"]] %in% object, , drop = FALSE]
 
     ensgene <- g2s[["ensgene"]]
