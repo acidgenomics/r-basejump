@@ -7,6 +7,7 @@ vec <- c(
     "TX2GeneID",
     "G2M.Score",
     "worfdbHTMLRemap",
+    "Mazda RX4",
     123,
     NA)
 
