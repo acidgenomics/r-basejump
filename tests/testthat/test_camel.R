@@ -10,10 +10,12 @@ test_that("character", {
         c("helloWorld",
           "helloWORLD",
           "rnaiClones",
+          "nCount",
           "tx2gene",
           "tx2GeneID",
           "g2mScore",
           "worfdbHTMLRemap",
+          "mazdaRX4",
           "x123",
           NA)
     )
@@ -22,10 +24,12 @@ test_that("character", {
         c("helloWorld",
           "helloWorld",
           "rnaiClones",
+          "nCount",
           "tx2gene",
           "tx2GeneId",
           "g2mScore",
           "worfdbHtmlRemap",
+          "mazdaRx4",
           "x123",
           NA)
     )

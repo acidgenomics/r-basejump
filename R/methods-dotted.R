@@ -39,6 +39,36 @@ NULL
 
 
 # Constructors ====
+.sanitizeAcronyms <- function(object) {
+    object %>%
+        # Ensure identifier is "ID"
+        gsub(x = .,
+             pattern = "\\b(id)\\b",
+             replacement = "ID",
+             ignore.case = TRUE) %>%
+        # Sanitize mixed case scientific acronyms
+        gsub(x = .,
+             pattern = "\\b(mRNA)\\b",
+             replacement = "MRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(miRNA)\\b",
+             replacement = "MIRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(ncRNA)\\b",
+             replacement = "NCRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(piRNA)\\b",
+             replacement = "PIRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(rRNA)\\b",
+             replacement = "RRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(RNAi)\\b",
+             replacement = "RNAI")
+}
+
+
+
 .checkNames <- function(object) {
     if (!is.null(names(object))) {
         TRUE
@@ -85,15 +115,16 @@ NULL
              replacement = "") %>%
         # Coerce `"NA"` back to `NA` after `make.names()`
         fixNA() %>%
+        .sanitizeAcronyms() %>%
         # Establish word boundaries for camelCase acronyms
         # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`)
         # Acronym following a word
         gsub(x = .,
-             pattern = "([a-z0-9]{3,})([A-Z])",
+             pattern = "([a-z0-9])([A-Z])",
              replacement = "\\1.\\2") %>%
         # Word following an acronym
         gsub(x = .,
-             pattern = "([A-Z0-9])([A-Z])([a-z0-9]{3,})",
+             pattern = "([A-Z0-9])([A-Z])([a-z])",
              replacement = "\\1.\\L\\2\\3",
              perl = TRUE)
 }
