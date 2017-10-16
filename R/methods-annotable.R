@@ -97,15 +97,17 @@ NULL
                 # (e.g. "v90")
                 paste0("v", release)),
             ignore.case = TRUE)
+        id <- ahDb %>%
+            mcols() %>%
+            rownames()
         edb <- suppressMessages(ahDb[[1L]])
     }
 
     if (!isTRUE(quiet)) {
         message(paste(
-            "EnsDB:",
+            "EnsDB", paste0(id, ":"),
             organism(edb),
-            "Ensembl",
-            ensemblVersion(edb)
+            "Ensembl", ensemblVersion(edb)
         ))
     }
 
@@ -120,6 +122,8 @@ NULL
             dplyr::rename(
                 ensgene = .data[["gene_id"]],
                 biotype = .data[["gene_biotype"]]) %>%
+            # Improve handling of `NA` uniques here
+            fixNA() %>%
             dplyr::mutate(
                 # Ensure unique symbols (e.g. human, mouse)
                 symbol = make.unique(.data[["symbol"]]),

@@ -31,6 +31,9 @@
 #' detectOrganism("Homo sapiens")
 #' detectOrganism("Hsapiens")
 #' detectOrganism("human")
+#'
+#' # Warn and return `NULL` on detection failure
+#' detectOrganism("unknown")
 NULL
 
 
@@ -143,7 +146,8 @@ NULL
     )) {
         c(sheep = "Ovis aries")
     } else {
-        stop("Failed to detect supported organism", call. = FALSE)
+        warning("Failed to detect supported organism", call. = FALSE)
+        NULL
     }
 }
 
