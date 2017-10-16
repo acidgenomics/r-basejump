@@ -14,6 +14,7 @@ test_that("character", {
           "TX2.gene.ID",
           "G2M.Score",
           "worfdb.HTML.remap",
+          "Mazda.RX4",
           "X123",
           NA)
     )
