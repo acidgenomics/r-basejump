@@ -19,9 +19,9 @@ tx2geneFromGTF(object, ...)
 
 \S4method{tx2geneFromGFF}{data.frame}(object, quiet = FALSE)
 
-\S4method{tx2geneFromGTF}{character}(object, ...)
+\S4method{tx2geneFromGTF}{character}(object, quiet = FALSE)
 
-\S4method{tx2geneFromGTF}{data.frame}(object, ...)
+\S4method{tx2geneFromGTF}{data.frame}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
