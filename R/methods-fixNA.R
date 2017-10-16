@@ -25,6 +25,7 @@ NULL
 
 
 
+#' @importFrom dplyr funs mutate_all
 .fixNATidy <- function(object) {
     mutate_all(object, funs(.fixNAVec))
 }

@@ -26,7 +26,7 @@
 #'        c = c("B", NA, "D")) %>%
 #'     removeNA()
 #'
-#' # Support for vectors (using `stats::na.omit()`)
+#' # Support for vectors
 #' removeNA(c("hello", "world", NA))
 #' removeNA(c(1, 2, NA))
 NULL
@@ -34,9 +34,9 @@ NULL
 
 
 # Constructors ====
+#' @importFrom stats na.omit
 .removeNAVec <- function(object) {
-    # Is this having a problem with `S4Vectors::na.omit()`?
-    stats::na.omit(object)
+    na.omit(object)
 }
 
 .removeNADim <- function(object) {

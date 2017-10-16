@@ -29,6 +29,10 @@ NULL
 
 
 # Constructors ====
+#' @importFrom Matrix writeMM
+#' @importFrom R.utils gzip
+#' @importFrom readr write_csv write_lines
+#' @importFrom rlang dots_list
 .writeCounts <- function(
     ...,
     dir = file.path("results", "counts"),
@@ -38,8 +42,7 @@ NULL
         sapply(dim) %>%
         vapply(is.numeric, logical(1L))
     if (any(!hasDim)) {
-        stop("Object must support dim()",
-             call. = FALSE)
+        stop("Object must support dim()", call. = FALSE)
     }
 
     # Create the counts output directory

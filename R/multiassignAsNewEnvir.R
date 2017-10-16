@@ -2,6 +2,8 @@
 #'
 #' @family Object Assignment Utilities
 #'
+#' @importFrom rlang is_string
+#'
 #' @inheritParams dots
 #' @param envirName New environment name (string).
 #' @param parentEnvir Parent environment of new environment.

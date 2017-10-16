@@ -14,6 +14,7 @@ NULL
 
 # Methods ====
 #' @rdname readProgramVersions
+#' @importFrom readr read_delim
 #' @export
 setMethod(
     "readProgramVersions",
@@ -23,5 +24,8 @@ setMethod(
             warning(paste(basename(object), "file missing"), call. = FALSE)
             return(NULL)
         }
-        read_delim(object, col_names = c("program", "version"), delim = ",")
+        read_delim(
+            object,
+            col_names = c("program", "version"),
+            delim = ",")
     })

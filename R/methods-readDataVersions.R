@@ -14,6 +14,7 @@ NULL
 
 # Methods ====
 #' @rdname readDataVersions
+#' @importFrom readr read_csv
 #' @export
 setMethod(
     "readDataVersions",
