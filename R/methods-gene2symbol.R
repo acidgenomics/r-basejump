@@ -6,6 +6,7 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams annotable
+#'
 #' @param organism *Optional*. Organism name. Normally this argument is
 #'  unnecessary and can be left `NULL`. If a count matrix starts with a
 #'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the

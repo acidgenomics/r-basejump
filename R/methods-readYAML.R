@@ -5,7 +5,8 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
-#' @inheritParams utils::download.file
+#' @inheritParams readFileByExtension
+#'
 #' @param object YAML file path.
 #'
 #' @return [list].

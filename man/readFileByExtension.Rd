@@ -18,6 +18,8 @@ readFileByExtension(object, ...)
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{snake}, or \code{FALSE}.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{tibble} by default, or a sparse matrix for \code{.mtx} files.

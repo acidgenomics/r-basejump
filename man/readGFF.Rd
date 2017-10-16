@@ -22,8 +22,7 @@ readGTF(object, ...)
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
-    the progress bar.}
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

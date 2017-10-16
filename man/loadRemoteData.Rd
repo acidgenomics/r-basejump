@@ -12,8 +12,7 @@ loadRemoteData(object, envir = parent.frame(), quiet = FALSE)
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
 
-\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
-    the progress bar.}
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silently return loaded object name.
