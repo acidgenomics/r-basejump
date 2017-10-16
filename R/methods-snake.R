@@ -1,20 +1,53 @@
+#' Snake Case
+#'
+#' @rdname snake
+#' @name snake
+#'
+#' @inherit dotted
+#'
+#' @examples
+#' loadRemoteData(file.path(testDataURL, "makeNames.rda"))
+#'
+#' # Character vector
+#' snake(makeNames$vec)
+#'
+#' # Named character vector
+#' snake(makeNames$namedVec)
+#'
+#' # data.frame
+#' snake(makeNames$df, rownames = TRUE)
+#'
+#' # Named list
+#' snake(makeNames$lst)
+NULL
+
+
+
 # Constructors ====
 .makeNamesSnake <- function(object) {
     object %>%
-        # snake_case must always be lower case, so enforce strict here
-        dotted(strict = TRUE) %>%
+        dotted() %>%
         tolower() %>%
-        str_replace_all("\\.", "_")
+        gsub(x = .,
+             pattern = "\\.",
+             replacement = "_")
 }
 
 
 
+#' @importFrom magrittr set_rownames
+#' @importFrom stats setNames
 .setNamesSnake <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesSnake(names(object)))
+        object <- setNames(
+            object,
+            .makeNamesSnake(names(object)))
     }
-    if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(object, .makeNamesSnake(rownames(object)))
+    if (isTRUE(rownames) &
+        .checkRownames(object)) {
+        object <- set_rownames(
+            object,
+            .makeNamesSnake(rownames(object)))
     }
     object
 }
@@ -22,7 +55,7 @@
 
 
 # Methods ====
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",
@@ -31,7 +64,7 @@ setMethod(
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",
@@ -46,7 +79,7 @@ setMethod(
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",
@@ -55,7 +88,7 @@ setMethod(
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",
@@ -66,7 +99,7 @@ setMethod(
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",
@@ -75,7 +108,7 @@ setMethod(
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setMethod(
     "snake",

@@ -1,40 +1,125 @@
+#' Camel Case
+#'
+#' @rdname camel
+#' @name camel
+#'
+#' @inherit dotted
+#'
+#' @param strict Enforce strict name sanitization. When `TRUE`, this does not
+#'   allow the return of any capitalized acronyms. "RNA" will become "Rna", for
+#'   example.
+#'
+#' @examples
+#' loadRemoteData(file.path(testDataURL, "makeNames.rda"))
+#'
+#' # Character vector
+#' print(makeNames$vec)
+#' camel(makeNames$vec)
+#' upperCamel(makeNames$vec)
+#'
+#' # Named character vector
+#' camel(makeNames$namedVec)
+#' upperCamel(makeNames$vec)
+#'
+#' # data.frame
+#' camel(makeNames$df)
+#' camel(makeNames$df, rownames = TRUE)
+#'
+#' # Named list
+#' camel(makeNames$lst)
+NULL
+
+
+
 # Constructors ====
-.makeNamesCamel <- function(object, strict = FALSE) {
+.camelAcronymsToUpper <- function(object) {
     object %>%
-        dotted(strict = strict) %>%
-        # First word must be lowercase
-        gsub(pattern = "^(\\w+)\\.",
-             replacement = "\\L\\1.",
-             x = .,
-             perl = TRUE) %>%
-        gsub(pattern = "\\.(\\w)",
+        # Ensure identifier is "ID"
+        gsub(x = .,
+             pattern = "\\b(id)\\b",
+             replacement = "ID",
+             ignore.case = TRUE) %>%
+        # Sanitize mixed case scientific acronyms
+        gsub(x = .,
+             pattern = "\\b(mRNA)\\b",
+             replacement = "MRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(miRNA)\\b",
+             replacement = "MIRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(ncRNA)\\b",
+             replacement = "NCRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(piRNA)\\b",
+             replacement = "PIRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(rRNA)\\b",
+             replacement = "RRNA") %>%
+        gsub(x = .,
+             pattern = "\\b(RNAi)\\b",
+             replacement = "RNAI")
+}
+
+
+
+.makeNamesCamel <- function(
+    object,
+    format = "lower",
+    strict = FALSE) {
+    object <- dotted(object)
+    object <- .camelAcronymsToUpper(object)
+    if (isTRUE(strict)) {
+        object <- tolower(object)
+    }
+    if (format == "lower") {
+        # lowerCamelCase
+        # Coerce first word to lower
+        object <- gsub(
+            object,
+            pattern = "^(\\w+)\\b",
+            replacement = "\\L\\1",
+            perl = TRUE)
+
+    } else if (format == "upper") {
+        # UpperCamelCase
+        # Capitalize the first letter
+        object <- gsub(
+            object,
+            pattern = "^([a-z])",
+            replacement = "\\U\\1",
+            perl = TRUE)
+    }
+    object %>%
+        # First letter of second plus words must be capitalized
+        gsub(x = .,
+             pattern = "\\.(\\w)",
              replacement = "\\U\\1",
-             x = .,
-             perl = TRUE) %>%
-        # Coerce string starting with capitalized acronym
-        gsub(pattern = "^([A-Z0-9]+)([A-Z])([a-z])",
-             replacement = "\\L\\1\\U\\2\\L\\3",
-             x = .,
-             perl = TRUE) %>%
-        # Fix capitalization at beginning
-        gsub(pattern = "^([A-Z0-9]+)",
-             replacement = "\\L\\1",
-             x = .,
              perl = TRUE)
 }
 
 
 
-.setNamesCamel <- function(object, rownames = FALSE, strict = FALSE) {
+#' @importFrom magrittr set_rownames
+.setNamesCamel <- function(
+    object,
+    format = "lower",
+    rownames = FALSE,
+    strict = FALSE) {
     if (.checkNames(object)) {
         object <- setNames(
             object,
-            .makeNamesCamel(names(object), strict = strict))
+            .makeNamesCamel(
+                names(object),
+                format = format,
+                strict = strict))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
         object <- set_rownames(
             object,
-            .makeNamesCamel(rownames(object), strict = strict))
+            .makeNamesCamel(
+                rownames(object),
+                format = format,
+                strict = strict))
     }
     object
 }
@@ -42,64 +127,104 @@
 
 
 # Methods ====
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("ANY"),
-    .setNamesCamel)
+    function(object, strict = FALSE) {
+        .setNamesCamel(
+            object,
+            format = "lower",
+            strict = strict)
+    })
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("character"),
-    function(object, strict = FALSE) {
+    function(
+        object,
+        strict = FALSE) {
         if (isTRUE(.checkNames(object))) {
-            .setNamesCamel(object, rownames = FALSE, strict = strict)
+            .setNamesCamel(
+                object,
+                format = "lower",
+                rownames = FALSE,
+                strict = strict)
         } else {
-            .makeNamesCamel(object, strict = strict)
+            .makeNamesCamel(
+                object,
+                format = "lower",
+                strict = strict)
         }
     })
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("data.frame"),
-    .setNamesCamel)
+    function(
+        object,
+        rownames = FALSE,
+        strict = FALSE) {
+        .setNamesCamel(
+            object,
+            format = "lower",
+            rownames = rownames,
+            strict = strict)
+    })
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("list"),
     function(object, strict = FALSE) {
-        .setNamesCamel(object, rownames = FALSE, strict = strict)
+        .setNamesCamel(
+            object,
+            format = "lower",
+            rownames = FALSE,
+            strict = strict)
     })
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("matrix"),
-    .setNamesCamel)
+    function(
+        object,
+        rownames = FALSE,
+        strict = FALSE) {
+        .setNamesCamel(
+            object,
+            format = "lower",
+            rownames = rownames,
+            strict = strict)
+    })
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("tbl_df"),
     function(object, strict = FALSE) {
-        .setNamesCamel(object, rownames = FALSE, strict = strict)
+        .setNamesCamel(
+            object,
+            format = "lower",
+            rownames = FALSE,
+            strict = strict)
     })
