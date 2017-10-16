@@ -3,7 +3,7 @@
 setMethod(
     "tx2geneFromGTF",
     signature("character"),
-    tx2geneFromGFF)
+    .tx2geneFromGFF)
 
 
 
@@ -12,4 +12,4 @@ setMethod(
 setMethod(
     "tx2geneFromGTF",
     signature("data.frame"),
-    tx2geneFromGFF)
+    .tx2geneFromGFF)
