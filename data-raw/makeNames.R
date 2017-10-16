@@ -2,6 +2,7 @@ vec <- c(
     "hello world",
     "HELLO WORLD",
     "RNAi clones",
+    "nCount",
     "tx2gene",
     "TX2GeneID",
     "G2M.Score",
