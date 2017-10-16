@@ -40,9 +40,12 @@ NULL
 
 
 # Constructors ====
-.g2svec <- function(object, organism = NULL, release = "current") {
-    # Prevent pass in of organism as primary object.
-    # Improve this in a future update.
+#' @importFrom rlang is_string
+.g2svec <- function(
+    object,
+    organism = NULL,
+    release = "current",
+    quiet = FALSE) {
     if (is_string(object)) {
         stop("gene2symbol conversion requires > 1 identifier",
              call. = FALSE)
@@ -64,9 +67,11 @@ NULL
         organism <- detectOrganism(organism)
     }
 
-    g2s <- annotable(organism,
-                     format = "gene2symbol",
-                     release = release) %>%
+    g2s <- annotable(
+        organism,
+        format = "gene2symbol",
+        release = release,
+        quiet = quiet) %>%
         .[object, , drop = FALSE] %>%
         .[!is.na(.[["symbol"]]), , drop = FALSE]
 
@@ -88,10 +93,15 @@ NULL
 
 
 # Pass arguments to `.g2svec()`
-.g2sdim <- function(object, organism = NULL, release = "current") {
+.g2sdim <- function(
+    object,
+    organism = NULL,
+    release = "current",
+    quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
         .g2svec(organism = organism,
-                release = release)
+                release = release,
+                quiet = quiet)
     object
 }
 
