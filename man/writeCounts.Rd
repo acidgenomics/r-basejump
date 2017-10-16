@@ -6,10 +6,11 @@
 \alias{writeCounts,ANY-method}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = file.path("results", "counts"), gzip = TRUE)
+writeCounts(..., dir = file.path("results", "counts"), gzip = TRUE,
+  quiet = FALSE)
 
 \S4method{writeCounts}{ANY}(..., dir = file.path("results", "counts"),
-  gzip = TRUE)
+  gzip = TRUE, quiet = FALSE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
@@ -17,6 +18,8 @@ writeCounts(..., dir = file.path("results", "counts"), gzip = TRUE)
 \item{dir}{Output directory.}
 
 \item{gzip}{Compress the counts file using gzip.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 No value.

@@ -2,8 +2,7 @@ context("camel")
 
 loadRemoteData(
     file.path(testDataURL, "makeNames.rda"),
-    quiet = TRUE
-)
+    quiet = TRUE)
 
 test_that("character", {
     expect_equal(

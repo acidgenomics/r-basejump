@@ -1,10 +1,8 @@
 context("gene2symbolFromGFF")
 
-mouse <- suppressMessages(
-    gene2symbolFromGFF(
-        file.path(testDataURL, "mmusculus.gtf"),
-        quiet = TRUE)
-)
+mouse <- gene2symbolFromGFF(
+    file.path(testDataURL, "mmusculus.gtf"),
+    quiet = TRUE)
 
 test_that("mouse", {
     expect_equal(
@@ -24,19 +22,18 @@ test_that("mouse", {
 })
 
 test_that("GFF data.frame input", {
-    gtf <- suppressMessages(
-        readGFF(file.path(testDataURL, "mmusculus.gtf"))
-    )
+    gtf <- readGFF(
+        file.path(testDataURL, "mmusculus.gtf"),
+        quiet = TRUE)
     expect_equal(
-        gene2symbolFromGFF(gtf),
+        gene2symbolFromGFF(gtf, quiet = TRUE),
         mouse
     )
 })
 
-fruitfly <- suppressMessages(
-    gene2symbolFromGFF(
-        file.path(testDataURL, "dmelanogaster.gtf"))
-)
+fruitfly <- gene2symbolFromGFF(
+    file.path(testDataURL, "dmelanogaster.gtf"),
+    quiet = TRUE)
 
 test_that("fruitfly", {
     expect_equal(

@@ -7,6 +7,7 @@
 #' @family DNA Sequence Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param object DNA sequence (`ATGC` nucleotides).
 #'
 #' @return Matching DNA sequence.

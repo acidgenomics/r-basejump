@@ -10,7 +10,7 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams AllGenerics
-#' @inheritParams readFileByExtension
+#' @inheritParams saveData
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
 #'   character string.

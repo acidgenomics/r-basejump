@@ -1,6 +1,7 @@
 #' Load Data File as Name
 #'
 #' @inheritParams loadData
+#'
 #' @param mappings Named character vector to define mappings. The name defines
 #'   the new name of the object in the environment, whereas the value in the
 #'   vector denotes the original object name. This is designed to function

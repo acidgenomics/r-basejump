@@ -14,6 +14,7 @@
 #' @family Make Names Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
 #' @param rownames Apply sanitization on row names. This is not recommended

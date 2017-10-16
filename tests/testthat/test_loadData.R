@@ -2,7 +2,8 @@ context("loadData")
 
 utils::download.file(
     url = file.path(testDataURL, "mtcars.rda"),
-    destfile = "mtcars.rda")
+    destfile = "mtcars.rda",
+    quiet = TRUE)
 
 test_that("loadData", {
     x <- loadData(mtcars, dir = getwd())

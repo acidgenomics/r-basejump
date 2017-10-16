@@ -175,7 +175,6 @@ NULL
         }
     }
 
-    message("Preparing SummarizedExperiment")
     SummarizedExperiment(
         assays = assays,
         rowData = rowData,

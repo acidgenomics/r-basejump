@@ -363,6 +363,7 @@ setGeneric(
     signature = "...",
     function(...,
              dir = file.path("results", "counts"),
-             gzip = TRUE) {
+             gzip = TRUE,
+             quiet = FALSE) {
         standardGeneric("writeCounts")
     })

@@ -1,8 +1,8 @@
 context("dotted")
 
-suppressMessages(
-    loadRemoteData(file.path(testDataURL, "makeNames.rda"))
-)
+loadRemoteData(
+    file.path(testDataURL, "makeNames.rda"),
+    quiet = TRUE)
 
 test_that("character", {
     expect_equal(

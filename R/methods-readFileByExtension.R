@@ -9,11 +9,11 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams saveData
 #'
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `snake`, or `FALSE`.
-#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return [tibble] by default, or a sparse matrix for `.mtx` files.
 #' @export

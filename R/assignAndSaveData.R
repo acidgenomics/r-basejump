@@ -8,6 +8,7 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
+#'
 #' @param name Desired variable name.
 #' @param envir Environment to use for assignment. Defaults to [parent.frame()],
 #'   the calling environment.
@@ -24,13 +25,16 @@ assignAndSaveData <- function(
     object,
     dir = "data",
     compress = TRUE,
-    envir = parent.frame()) {
+    envir = parent.frame(),
+    quiet = TRUE) {
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     dir <- normalizePath(dir)
     file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
     assign(name, object, envir = envir)
-    message(paste("Saving", name, "to", basename(dir)))
+    if (!isTRUE(quiet)) {
+        message(paste("Saving", name, "to", basename(dir)))
+    }
     save(list = name,
          file = file,
          envir = envir,
