@@ -3,7 +3,7 @@
 setMethod(
     "gene2symbolFromGTF",
     signature("character"),
-    gene2symbolFromGFF)
+    .gene2symbolFromGFF)
 
 
 
@@ -12,4 +12,4 @@ setMethod(
 setMethod(
     "gene2symbolFromGTF",
     signature("data.frame"),
-    gene2symbolFromGFF)
+    .gene2symbolFromGFF)
