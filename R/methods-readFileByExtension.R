@@ -28,43 +28,52 @@ NULL
 
 
 # Constructors ====
+#' @importFrom Matrix readMM
+#' @importFrom stringr str_match
+#' @importFrom readr read_csv read_lines read_tsv
+#' @importFrom readxl read_excel
+#' @importFrom tibble column_to_rownames
+#' @importFrom utils read.table
 .readFileByExtension <- function(
     object,
     makeNames = "camel",
+    quiet = FALSE,
     ...) {
-    file <- .localOrRemoteFile(object)
+    file <- .localOrRemoteFile(object, quiet = quiet)
 
     # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
-    if (!str_detect(names(file), extPattern)) {
+    if (!grepl(x = names(file), pattern = extPattern)) {
         stop("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
         .[[2L]]
 
     # Rename tmpfile to include extension if necessary
-    if (!str_detect(file, extPattern)) {
+    if (!grepl(x = file, pattern = extPattern)) {
         newfile <- paste0(file, ".", ext)
         file.rename(file, newfile)
         file[[1L]] <- newfile
     }
 
     # File import, based on extension
-    message(paste("Reading", names(file)))
+    if (!isTRUE(quiet)) {
+        message(paste("Reading", names(file)))
+    }
     if (ext == "csv") {
-        data <- read_csv(file, progress = FALSE, ...)
+        data <- readr::read_csv(file, progress = FALSE, ...)
     } else if (ext == "mtx") {
-        data <- readMM(file, ...)
+        data <- Matrix::readMM(file, ...)
     } else if (ext == "tsv") {
-        data <- read_tsv(file, progress = FALSE, ...)
+        data <- readr::read_tsv(file, progress = FALSE, ...)
     } else if (ext == "txt") {
-        data <- read.table(file, header = TRUE, ...)
+        data <- utils::read.table(file, header = TRUE, ...)
     } else if (ext == "xlsx") {
-        data <- read_excel(file, ...)
+        data <- readxl::read_excel(file, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(file, ...)
+        data <- readr::read_lines(file, ...)
     } else if (ext == "counts") {
-        data <- read_tsv(file, progress = FALSE, ...) %>%
+        data <- readr::read_tsv(file, progress = FALSE, ...) %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
@@ -76,7 +85,9 @@ NULL
     if (!is.null(colnames(data)) &
         makeNames %in% c("camel", "snake")) {
         makeNames <- get(makeNames)
-        if (!is.function(makeNames)) stop("makeNames function failure")
+        if (!is.function(makeNames)) {
+            stop("makeNames function failure")
+        }
         colnames(data) <- makeNames(colnames(data))
     }
 

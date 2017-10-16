@@ -26,20 +26,32 @@ setMethod(
     "comp",
     signature("character"),
     function(object) {
-        if (!str_detect(object, "^[ACGT]+$")) {
+        if (!grepl(x = object, pattern = "^[ACGT]+$")) {
             stop("DNA string must only contain ACGT nucleotides",
                  call. = FALSE)
         }
         object %>%
             toupper() %>%
             # AT base pair swap
-            str_replace_all("A", "A1") %>%
-            str_replace_all("T", "A") %>%
-            str_replace_all("A1", "T") %>%
+            gsub(x = .,
+                 pattern = "A",
+                 replacement = "A1") %>%
+            gsub(x = .,
+                 pattern = "T",
+                 replacement = "A") %>%
+            gsub(x = .,
+                 pattern = "A1",
+                 replacement = "T") %>%
             # GC base pair swap
-            str_replace_all("G", "G1") %>%
-            str_replace_all("C", "G") %>%
-            str_replace_all("G1", "C")
+            gsub(x = .,
+                 pattern = "G",
+                 replacement = "G1") %>%
+            gsub(x = .,
+                 pattern = "C",
+                 replacement = "G") %>%
+            gsub(x = .,
+                 pattern = "G1",
+                 replacement = "C")
     })
 
 
@@ -51,9 +63,8 @@ setMethod(
     signature("character"), function(object) {
         object <- toupper(object)
         comp <- comp(object)
-        revcomp <- str_split(comp, "") %>%
-            .[[1L]] %>%
+        strsplit(comp, split = "", fixed = TRUE) %>%
+            unlist() %>%
             .[order(seq_along(.), decreasing = TRUE)] %>%
             paste0(collapse = "")
-        revcomp
     })
