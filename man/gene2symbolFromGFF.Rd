@@ -19,9 +19,9 @@ gene2symbolFromGTF(object, ...)
 
 \S4method{gene2symbolFromGFF}{data.frame}(object, quiet = FALSE)
 
-\S4method{gene2symbolFromGTF}{character}(object, ...)
+\S4method{gene2symbolFromGTF}{character}(object, quiet = FALSE)
 
-\S4method{gene2symbolFromGTF}{data.frame}(object, ...)
+\S4method{gene2symbolFromGTF}{data.frame}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
