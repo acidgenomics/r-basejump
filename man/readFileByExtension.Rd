@@ -8,7 +8,8 @@
 \usage{
 readFileByExtension(object, ...)
 
-\S4method{readFileByExtension}{character}(object, makeNames = "camel", ...)
+\S4method{readFileByExtension}{character}(object, makeNames = "camel",
+  quiet = FALSE, ...)
 }
 \arguments{
 \item{object}{File path.}

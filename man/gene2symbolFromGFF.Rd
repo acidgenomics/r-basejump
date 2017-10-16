@@ -15,9 +15,9 @@ gene2symbolFromGFF(object, ...)
 
 gene2symbolFromGTF(object, ...)
 
-\S4method{gene2symbolFromGFF}{character}(object)
+\S4method{gene2symbolFromGFF}{character}(object, quiet = FALSE)
 
-\S4method{gene2symbolFromGFF}{data.frame}(object)
+\S4method{gene2symbolFromGFF}{data.frame}(object, quiet = FALSE)
 
 \S4method{gene2symbolFromGTF}{character}(object, ...)
 
@@ -27,6 +27,9 @@ gene2symbolFromGTF(object, ...)
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
+    the progress bar.}
 }
 \value{
 \link{data.frame}.
@@ -42,13 +45,11 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.
 \examples{
 # From URL (recommended)
 url <- file.path(testDataURL, "mmusculus.gtf")
-gene2symbolFromGFF(url) \%>\%
-    str()
+gene2symbolFromGFF(url) \%>\% str()
 
 # GFF data.frame
 gff <- readGFF(url)
-gene2symbolFromGFF(gff) \%>\%
-    str()
+gene2symbolFromGFF(gff) \%>\% str()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
