@@ -26,7 +26,7 @@ assignAndSaveData <- function(
     dir = "data",
     compress = TRUE,
     envir = parent.frame(),
-    quiet = TRUE) {
+    quiet = FALSE) {
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     dir <- normalizePath(dir)
     file <- file.path(dir, paste0(name, ".rda"))
