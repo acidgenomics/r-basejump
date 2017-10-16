@@ -120,13 +120,12 @@ NULL
         # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`)
         # Acronym following a word
         gsub(x = .,
-             pattern = "([a-z0-9])([A-Z])",
+             pattern = "([a-z])([A-Z])",
              replacement = "\\1.\\2") %>%
         # Word following an acronym
         gsub(x = .,
              pattern = "([A-Z0-9])([A-Z])([a-z])",
-             replacement = "\\1.\\L\\2\\3",
-             perl = TRUE)
+             replacement = "\\1.\\2\\3")
 }
 
 
