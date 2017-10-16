@@ -10,6 +10,8 @@
 #' @family Infrastructure Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams saveData
+#'
 #' @param object *Optional*. File name. If `NULL` (default), download the
 #'   default dependency files for a new experiment.
 #' @param sourceDir Source directory, typically a URL, where the dependency
@@ -37,11 +39,16 @@ NULL
 
 
 # Constructors ====
-.copyPackageFile <- function(object, sourceDir, overwrite = FALSE) {
+.copyPackageFile <- function(
+    object,
+    sourceDir,
+    overwrite = FALSE,
+    quiet = FALSE) {
     if (missing(sourceDir)) {
         sourceDir <- system.file("rmarkdown/shared", package = "basejump")
     }
-    if (isTRUE(overwrite)) {
+    if (isTRUE(overwrite) &
+        !isTRUE(quiet)) {
         message(paste("Overwriting", toString(object)))
     }
     sapply(seq_along(object), function(a) {
@@ -65,7 +72,8 @@ setMethod(
     signature("missing"),
     function(
         object,
-        sourceDir) {
+        sourceDir,
+        quiet = FALSE) {
         .copyPackageFile(
             c("_output.yaml",
               "_footer.Rmd",
@@ -73,6 +81,7 @@ setMethod(
               "bibliography.bib",
               "setup.R"),
             sourceDir = sourceDir,
+            quiet = quiet,
             overwrite = FALSE)
     })
 

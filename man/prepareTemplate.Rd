@@ -9,9 +9,10 @@
 \usage{
 prepareTemplate(object, ...)
 
-\S4method{prepareTemplate}{missing}(object, sourceDir)
+\S4method{prepareTemplate}{missing}(object, sourceDir, quiet = FALSE)
 
-\S4method{prepareTemplate}{character}(object, sourceDir, overwrite = FALSE)
+\S4method{prepareTemplate}{character}(object, sourceDir, overwrite = FALSE,
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{\emph{Optional}. File name. If \code{NULL} (default), download the
@@ -21,6 +22,8 @@ default dependency files for a new experiment.}
 
 \item{sourceDir}{Source directory, typically a URL, where the dependency
 files are located.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 
 \item{overwrite}{Overwrite files if they already exist. \emph{This option is used
 primarily for unit testing, and is not generally recommended.}}

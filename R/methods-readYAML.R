@@ -5,7 +5,7 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
-#' @inheritParams readFileByExtension
+#' @inheritParams saveData
 #'
 #' @param object YAML file path.
 #'

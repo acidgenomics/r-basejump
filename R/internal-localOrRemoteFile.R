@@ -5,7 +5,7 @@
 #' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics
-#' @inheritParams readFileByExtension
+#' @inheritParams saveData
 #'
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string. Returns `NULL` on a misisng

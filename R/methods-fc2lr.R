@@ -5,6 +5,7 @@
 #' @family Math Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
 #'   values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq

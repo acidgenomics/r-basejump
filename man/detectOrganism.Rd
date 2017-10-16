@@ -42,9 +42,6 @@ detectOrganism("ENSG00000000003")
 detectOrganism("Homo sapiens")
 detectOrganism("Hsapiens")
 detectOrganism("human")
-
-# Warn and return `NULL` on detection failure
-detectOrganism("unknown")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

@@ -5,6 +5,8 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
+#' @inheritParams saveData
+#'
 #' @param object Project directory path (character vector).
 #'
 #' @return [data.frame].

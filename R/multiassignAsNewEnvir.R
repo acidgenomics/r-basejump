@@ -5,6 +5,8 @@
 #' @importFrom rlang is_string
 #'
 #' @inheritParams dots
+#' @inheritParams saveData
+#'
 #' @param envirName New environment name (string).
 #' @param parentEnvir Parent environment of new environment.
 #'
@@ -18,7 +20,8 @@
 multiassignAsNewEnvir <- function(
     ...,
     envirName,
-    parentEnvir = parent.frame()) {
+    parentEnvir = parent.frame(),
+    quiet = FALSE) {
     if (!is_string(envirName)) {
         stop("'envirName' must be a string", call. = FALSE)
     }
@@ -32,7 +35,9 @@ multiassignAsNewEnvir <- function(
         assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
     }) %>%
         invisible()
-    message(paste("Assigning", toString(dotsNames), "as", envirName))
+    if (!isTRUE(quiet)) {
+        message(paste("Assigning", toString(dotsNames), "as", envirName))
+    }
     assign(envirName, value = envir, envir = parentEnvir)
     # Silently return a list of the objects in the new environment
     invisible(objects(envir))

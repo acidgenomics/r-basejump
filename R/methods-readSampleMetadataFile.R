@@ -5,6 +5,7 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param object Metadata file. Supports CSV and XLSX file formats.
 #' @param pattern *Optional*. Grep pattern to match against sample names.
 #' @param patternCol *Optional*. Column in data frame used for pattern

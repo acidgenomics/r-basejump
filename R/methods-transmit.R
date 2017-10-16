@@ -8,6 +8,8 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams saveData
+#'
 #' @param object Remote directory URL. Currently supports FTP.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
@@ -39,7 +41,8 @@ NULL
     pattern,
     rename = NULL,
     compress = FALSE,
-    localDir = "data-raw") {
+    localDir = "data-raw",
+    quiet = FALSE) {
     remoteDir <- object
     if (!grepl(x = remoteDir, pattern = "ftp\\://")) {
         stop("FTP protocol not detected", call. = FALSE)
@@ -80,7 +83,9 @@ NULL
 
     # Ensure the local directory exists
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
-    message(paste("Downloading", toString(remoteFileName)))
+    if (!isTRUE(quiet)) {
+        message(paste("Downloading", toString(remoteFileName)))
+    }
     lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
@@ -91,7 +96,10 @@ NULL
 
         remoteFilePath <- paste0(remoteDir, remoteFileName[a])
         localFilePath <- file.path(localDir, localFileName)
-        download.file(remoteFilePath, localFilePath)
+        download.file(
+            url = remoteFilePath,
+            destfile = localFilePath,
+            quiet = quiet)
 
         # Compress, if desired
         if (isTRUE(compress)) {

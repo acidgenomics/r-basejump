@@ -4,7 +4,7 @@
 \alias{loadData}
 \title{Load Local Data}
 \usage{
-loadData(..., dir = "data", envir = parent.frame())
+loadData(..., dir = "data", envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{...}{Object names as symbols.}
@@ -13,6 +13,8 @@ loadData(..., dir = "data", envir = parent.frame())
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silent named character vector of file paths.

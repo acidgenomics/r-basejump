@@ -37,16 +37,15 @@ test_that("matrix", {
 # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
 test_that("fasta spike-in support", {
     vec <- c("EGFP", "ENSMUSG00000000001")
-    expect_error(
-        gene2symbol(vec),
-        "Failed to detect supported organism"
-    )
-    expect_equal(
+    g2s <- suppressWarnings(
         gene2symbol(
             vec,
             organism = "Mus musculus",
             release = 88L,
-            quiet = TRUE),
+            quiet = TRUE)
+    )
+    expect_equal(
+        g2s,
         c(EGFP = "EGFP",
           ENSMUSG00000000001 = "Gnai3")
     )
@@ -57,6 +56,10 @@ test_that("fasta spike-in support", {
             release = 88L,
             quiet = TRUE),
         "Failed to match all gene IDs to symbols: EGFP"
+    )
+    expect_error(
+        gene2symbol(vec),
+        "Failed to detect supported organism"
     )
 })
 

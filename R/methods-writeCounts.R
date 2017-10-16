@@ -16,6 +16,8 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams dots
+#' @inheritParams saveData
+#'
 #' @param ... Count matrices, passed in as dots.
 #' @param dir Output directory.
 #' @param gzip Compress the counts file using gzip.
@@ -36,7 +38,8 @@ NULL
 .writeCounts <- function(
     ...,
     dir = file.path("results", "counts"),
-    gzip = TRUE) {
+    gzip = TRUE,
+    quiet = FALSE) {
     dots <- dots_list(...)
     hasDim <- dots %>%
         sapply(dim) %>%
@@ -50,7 +53,9 @@ NULL
 
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
-    message(paste("Writing", toString(names), "to", dir))
+    if (!isTRUE(quiet)) {
+        message(paste("Writing", toString(names), "to", dir))
+    }
     lapply(seq_along(dots), function(a) {
         name <- names[[a]]
         counts <- dots[[a]]

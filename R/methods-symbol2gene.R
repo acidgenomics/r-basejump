@@ -6,6 +6,7 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams annotable
+#'
 #' @param organism Organism name.
 #'
 #' @return Same class as original object.

@@ -7,6 +7,7 @@
 #' @family Report Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param list List of column data (e.g. [data.frame], [matrix]).
 #' @param captions Optional character vector of table captions.
 #' @param force Force kable output.

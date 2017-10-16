@@ -5,7 +5,7 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
-#' @inheritParams readFileByExtension
+#' @inheritParams saveData
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
 #'   feature, each containing 9 columns of data, plus optional track definition

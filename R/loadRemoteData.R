@@ -9,7 +9,6 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams loadData
-#' @inheritParams readFileByExtension
 #'
 #' @return Silently return loaded object name.
 #' @export

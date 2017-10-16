@@ -12,6 +12,8 @@ readProgramVersions(object, ...)
 }
 \arguments{
 \item{object}{Project directory path (character vector).}
+
+\item{...}{Object names as symbols.}
 }
 \value{
 \link{data.frame}.

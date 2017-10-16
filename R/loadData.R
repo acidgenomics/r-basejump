@@ -6,6 +6,7 @@
 #' @importFrom rlang is_string
 #'
 #' @inheritParams saveData
+#'
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #' which will assign into the calling environment.
 #'
@@ -19,7 +20,8 @@
 loadData <- function(
     ...,
     dir = "data",
-    envir = parent.frame()) {
+    envir = parent.frame(),
+    quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
     }
@@ -29,7 +31,10 @@ loadData <- function(
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
     names <- as.character(substitute(list(...)))[-1L]
-    message(paste("Loading", toString(names), "from", dir))
+    if (!isTRUE(quiet)) {
+        message(paste("Loading", toString(names), "from", dir))
+
+    }
     files <- sapply(seq_along(names), function(a) {
         name <- names[a]
         file <- file.path(dir, paste0(name, ".rda"))
