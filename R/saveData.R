@@ -8,6 +8,8 @@
 #' @name saveData
 #' @family Write Utilities
 #'
+#' @importFrom rlang is_string
+#'
 #' @inheritParams base::save
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.

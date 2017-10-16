@@ -35,6 +35,9 @@ NULL
 
 
 # Constructors ====
+#' @importFrom glue collapse
+#' @importFrom stats na.omit
+#' @importFrom stringr str_replace_na
 .collapseVec <- function(
     object,
     sep = ", ",
@@ -73,6 +76,7 @@ NULL
 
 
 
+#' @importFrom dplyr funs mutate_all summarize_all
 .collapseDim <- function(
     object,
     sep = ", ",

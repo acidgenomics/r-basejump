@@ -59,6 +59,9 @@ NULL
 
 
 # Constructors ====
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @importFrom tibble column_to_rownames has_rownames
+#' @importFrom utils head
 .prepareSummarizedExperiment <- function(
     assays,
     rowData,
@@ -151,9 +154,8 @@ NULL
     if (is.null(metadata)) {
         metadata <- list()
     } else {
-        if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("Metadata must be 'list' or 'SimpleList' class object",
-                 call. = FALSE)
+        if (!is(metadata, "list")) {
+            stop("Metadata must be 'list' class object", call. = FALSE)
         }
     }
     metadata[["date"]] <- Sys.Date()

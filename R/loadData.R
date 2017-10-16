@@ -3,6 +3,8 @@
 #' Load RData (`.rda`) files from a directory using symbols rather than complete
 #' file paths.
 #'
+#' @importFrom rlang is_string
+#'
 #' @inheritParams saveData
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #' which will assign into the calling environment.
