@@ -20,7 +20,7 @@ setGeneric("annotable", function(object, ...) {
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
     standardGeneric("camel")
@@ -71,7 +71,7 @@ setGeneric(
 
 
 
-#' @rdname makeNames
+#' @rdname dotted
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
@@ -270,7 +270,7 @@ setGeneric("revcomp", function(object, ...) {
 
 #' @rdname sampleYAML
 #' @export
-setGeneric("sampleYAML", function(yaml, ...) {
+setGeneric("sampleYAML", function(yaml, keys, ...) {
     standardGeneric("sampleYAML")
 })
 
@@ -292,7 +292,7 @@ setGeneric("sampleYAMLMetrics", function(yaml, ...) {
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setGeneric("snake", function(object, ...) {
     standardGeneric("snake")
@@ -344,6 +344,14 @@ setGeneric("tx2geneFromGFF", function(object, ...) {
 #' @export
 setGeneric("tx2geneFromGTF", function(object, ...) {
     standardGeneric("tx2geneFromGTF")
+})
+
+
+
+#' @rdname camel
+#' @export
+setGeneric("upperCamel", function(object, ...) {
+    standardGeneric("upperCamel")
 })
 
 
