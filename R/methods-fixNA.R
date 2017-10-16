@@ -9,7 +9,7 @@
 #' @return Object containing proper `NA` values.
 #'
 #' @examples
-#' fixNA(c(1L, "x", "", "NA"))
+#' fixNA(c(1L, "x", "", "NA", "NULL"))
 #'
 #' data.frame(a = c("foo", ""),
 #'            b = c(NA, "bar")) %>%
@@ -20,7 +20,14 @@ NULL
 
 # Constructors ====
 .fixNAVec <- function(object) {
-    gsub("^$|^\\s+$|^NA$", NA, object)
+    patterns <- c(
+        "^$",
+        "^\\s+$",
+        "^NA$",
+        "^NULL$")
+    gsub(x = object,
+         pattern = paste(patterns, collapse = "|"),
+         replacement = NA)
 }
 
 

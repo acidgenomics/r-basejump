@@ -34,7 +34,7 @@ Object containing proper \code{NA} values.
 Fix Character Strings Missing \code{NA}
 }
 \examples{
-fixNA(c(1L, "x", "", "NA"))
+fixNA(c(1L, "x", "", "NA", "NULL"))
 
 data.frame(a = c("foo", ""),
            b = c(NA, "bar")) \%>\%
