@@ -11,9 +11,12 @@ NULL
 
 
 # Constructors ====
+#' @importFrom dplyr mutate_if
 .sampleYAMLMetrics <- function(yaml) {
-    # Here `summary` and `metrics` are keys passed in as symbols
-    metrics <- sampleYAML(yaml, summary, metrics)
+    metrics <- sampleYAML(
+        yaml = yaml,
+        keys = c("summary", "metrics")
+    )
     # The fast mode RNA-seq pipeline doesn't report metrics generated from
     # STAR featureCounts output with MultiQC. Allow NULL return to handle
     # this pipeline output.
@@ -23,7 +26,7 @@ NULL
     }
     # Fix numerics set as characters
     numericAsCharacter <- function(x) {
-        all(str_detect(x, "^[0-9\\.]+$"))
+        all(grepl(x = x, pattern = "^[0-9\\.]+$"))
     }
     metrics %>%
         mutate_if(numericAsCharacter, as.numeric) %>%
