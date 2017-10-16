@@ -70,7 +70,7 @@ NULL
     # Assays ====
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
-        stop("Assay object must support 'dim()'")
+        stop("Assay object must support 'dim()'", call. = FALSE)
     }
     # Check for potential dimnames problems
     if (is.null(rownames(assay))) {
@@ -113,13 +113,15 @@ NULL
     }
     if (!all(rownames(assay) %in% rownames(rowData))) {
         missing <- setdiff(rownames(assay), rownames(rowData))
-        # Warn instead of stop here, for better handling of deprecated
-        # gene identifiers
+        # Warn instead of stop here, for more lenient handling of deprecated
+        # identifiers in a newer Ensembl release
         warning(paste(
-            "rowData mismatch with assay slot:",
-            toString(missing)
+            "rowData mismatch with assay",
+            paste0("(", pct(length(missing) / nrow(assay)), ")")
             ), call. = FALSE)
     }
+    # Fit the annotable annotations to match the number of rows
+    # (genes/transcripts) present in the counts matrix
     rowData <- rowData %>%
         .[rownames(assay), , drop = FALSE] %>%
         set_rownames(rownames(assay)) %>%
@@ -141,7 +143,7 @@ NULL
     if (!all(colnames(assay) %in% rownames(colData))) {
         missing <- setdiff(colnames(assay), rownames(colData))
         stop(paste(
-            "colData mismatch with assay slot:",
+            "colData mismatch with assay:",
             toString(head(missing))
         ), call. = FALSE)
     }
