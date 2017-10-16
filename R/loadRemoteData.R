@@ -9,7 +9,7 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams loadData
-#' @inheritParams utils::download.file
+#' @inheritParams readFileByExtension
 #'
 #' @return Silently return loaded object name.
 #' @export

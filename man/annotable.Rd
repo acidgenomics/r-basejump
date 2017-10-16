@@ -23,8 +23,7 @@ character string.}
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
 
-\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
-    the progress bar.}
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.

@@ -9,8 +9,7 @@
 \arguments{
 \item{object}{Object.}
 
-\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
-    the progress bar.}
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Named character vector containing the original file name as the
