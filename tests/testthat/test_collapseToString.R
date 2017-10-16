@@ -1,18 +1,3 @@
-context("Data Manipulation Utilities")
-
-test_that("as", {
-    expect_true(
-        mtcars %>%
-            as("tibble") %>%
-            is_tibble())
-    expect_error(
-        c("foo", "bar") %>%
-            as("tibble"),
-        "Object must support 'dim'")
-})
-
-
-
 test_that("collapseToString", {
     mpg <- "18.1, 18.7, 21, 21.4, 22.8"
 
@@ -23,7 +8,8 @@ test_that("collapseToString", {
             collapseToString() %>%
             .[, "mpg"] %>%
             as.character(),
-        mpg)
+        mpg
+    )
 
     # DataFrame
     expect_equal(
@@ -33,7 +19,8 @@ test_that("collapseToString", {
             collapseToString() %>%
             .[, "mpg"] %>%
             as.character(),
-        mpg)
+        mpg
+    )
 
     # matrix
     expect_equal(
@@ -43,14 +30,16 @@ test_that("collapseToString", {
             collapseToString() %>%
             .[, "mpg"] %>%
             as.character(),
-        mpg)
+        mpg
+    )
 
     # vector
     groceries <- c("milk", "eggs", "eggs", "veggies", NA)
     expect_equal(
         collapseToString(groceries) %>%
             as.character(),
-        "eggs, milk, veggies")
+        "eggs, milk, veggies"
+    )
     expect_equal(
         collapseToString(
             groceries,
@@ -58,15 +47,18 @@ test_that("collapseToString", {
             sort = FALSE,
             keepNA = TRUE) %>%
             as.character(),
-        "milk, eggs, eggs, veggies, NA")
+        "milk, eggs, eggs, veggies, NA"
+    )
 
     # vector with only duplicates
     expect_equal(
         collapseToString(c("hello", "hello"), unique = TRUE),
-        "hello")
+        "hello"
+    )
 
     # string
     expect_equal(
         collapseToString("hello"),
-        "hello")
+        "hello"
+    )
 })
