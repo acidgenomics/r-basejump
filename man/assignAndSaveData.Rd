@@ -5,7 +5,7 @@
 \title{Assign and Save Data}
 \usage{
 assignAndSaveData(name, object, dir = "data", compress = TRUE,
-  envir = parent.frame(), quiet = TRUE)
+  envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{name}{Desired variable name.}
