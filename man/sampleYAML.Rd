@@ -3,17 +3,17 @@
 \docType{methods}
 \name{sampleYAML}
 \alias{sampleYAML}
-\alias{sampleYAML,list-method}
+\alias{sampleYAML,list,character-method}
 \title{Sample YAML Metadata Utilities}
 \usage{
-sampleYAML(yaml, ...)
+sampleYAML(yaml, keys, ...)
 
-\S4method{sampleYAML}{list}(yaml, ...)
+\S4method{sampleYAML}{list,character}(yaml, keys)
 }
 \arguments{
 \item{yaml}{Project summary YAML list.}
 
-\item{...}{Nested operator keys supplied as symbols.}
+\item{keys}{Nested operator keys, supplied as a character vector.}
 }
 \value{
 \link{tibble}.

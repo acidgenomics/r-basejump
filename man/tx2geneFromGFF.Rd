@@ -15,9 +15,9 @@ tx2geneFromGFF(object, ...)
 
 tx2geneFromGTF(object, ...)
 
-\S4method{tx2geneFromGFF}{character}(object)
+\S4method{tx2geneFromGFF}{character}(object, quiet = FALSE)
 
-\S4method{tx2geneFromGFF}{data.frame}(object)
+\S4method{tx2geneFromGFF}{data.frame}(object, quiet = FALSE)
 
 \S4method{tx2geneFromGTF}{character}(object, ...)
 
@@ -27,6 +27,9 @@ tx2geneFromGTF(object, ...)
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
+    the progress bar.}
 }
 \value{
 \link{data.frame}.
@@ -42,13 +45,11 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.
 \examples{
 # From URL (recommended)
 url <- file.path(testDataURL, "mmusculus.gtf")
-tx2geneFromGFF(url) \%>\%
-    str()
+tx2geneFromGFF(url) \%>\% str()
 
 # GFF data.frame
 gff <- readGFF(url)
-tx2geneFromGFF(gff) \%>\%
-    str()
+tx2geneFromGFF(gff) \%>\% str()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

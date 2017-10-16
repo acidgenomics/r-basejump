@@ -57,12 +57,12 @@ tibble(a = c("A", NA, "C"),
        c = c("B", NA, "D")) \%>\%
     removeNA()
 
-# Support for vectors (using `stats::na.omit()`)
+# Support for vectors
 removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{fixNA}}, \code{\link{sortUnique}}
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{sortUnique}}
 }
 \concept{Cleanup Utilities}

@@ -16,10 +16,23 @@ detectOrganism(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
-Full latin scientific organism name.
+Full latin organism name.
 }
 \description{
 Supports organism detection from genome build or Ensembl identifier.
+}
+\details{
+Currently supported organisms:
+\itemize{
+\item \emph{Homo sapiens} (human)
+\item \emph{Mus musculus} (mouse)
+\item \emph{Rattus norvegicus} (rat)
+\item \emph{Drosophila melanogaster} (fruitfly)
+\item \emph{Caenorhabditis elegans} (roundworm)
+\item \emph{Saccharomyces cerevisiae} (yeast)
+\item \emph{Gallus gallus} (chicken)
+\item \emph{Ovis aries} (sheep)
+}
 }
 \examples{
 # H. sapiens

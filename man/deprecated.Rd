@@ -25,7 +25,7 @@ metadataTable()
 
 .programs()
 
-.sampleYAML(yaml, ...)
+.sampleYAML(yaml, keys)
 
 .sampleYAMLMetadata()
 

@@ -12,8 +12,6 @@ sampleYAMLMetrics(yaml, ...)
 }
 \arguments{
 \item{yaml}{Project summary YAML list.}
-
-\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
 \link{tibble}.

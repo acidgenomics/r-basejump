@@ -13,14 +13,17 @@ readGFF(object, ...)
 
 readGTF(object, ...)
 
-\S4method{readGFF}{character}(object)
+\S4method{readGFF}{character}(object, quiet = FALSE)
 
-\S4method{readGTF}{character}(object)
+\S4method{readGTF}{character}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
+    the progress bar.}
 }
 \value{
 \link{data.frame}.

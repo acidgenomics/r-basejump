@@ -4,16 +4,19 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(object, envir = parent.frame())
+loadRemoteData(object, envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
+
+\item{quiet}{If \code{TRUE}, suppress status messages (if any), and
+    the progress bar.}
 }
 \value{
-No value.
+Silently return loaded object name.
 }
 \description{
 Load a remote R binary file.

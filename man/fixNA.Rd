@@ -41,7 +41,7 @@ data.frame(a = c("foo", ""),
     fixNA()
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{removeNA}}, \code{\link{sortUnique}}
+Other Cleanup Utilities: \code{\link{removeNA}},
+  \code{\link{sortUnique}}
 }
 \concept{Cleanup Utilities}
