@@ -42,7 +42,7 @@ test_that("fruitfly", {
 
 test_that("GFF data.frame input", {
     # Test GFF data.frame input
-    gff <- readGFF(file, quiet = TRUE)
+    gff <- readGFF(mousefile, quiet = TRUE)
     expect_equal(
         tx2geneFromGFF(gff, quiet = TRUE),
         mouse
