@@ -13,17 +13,23 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism, release = "current")
+\S4method{symbol2gene}{character}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{data.frame}(object, organism, release = "current")
+\S4method{symbol2gene}{data.frame}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{DataFrame}(object, organism, release = "current")
+\S4method{symbol2gene}{DataFrame}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current")
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current")
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{matrix}(object, organism, release = "current")
+\S4method{symbol2gene}{matrix}(object, organism, release = "current",
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -34,6 +40,8 @@ symbol2gene(object, ...)
 
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as original object.
