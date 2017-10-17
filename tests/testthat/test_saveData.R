@@ -15,5 +15,4 @@ test_that("saveData", {
     )
 })
 
-unlink(file.path("data", "mtcars.rda"))
-unlink(file.path("data", "starwars.rda"))
+unlink("data", recursive = TRUE)

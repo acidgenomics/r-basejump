@@ -10,5 +10,6 @@ test_that("assignAndSaveData", {
         assignAndSaveData("test", mtcars),
         "Saving test to data"
     )
-    unlink(file.path("data", "test.rda"))
 })
+
+unlink("data", recursive = TRUE)
