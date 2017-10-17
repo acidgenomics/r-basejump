@@ -165,13 +165,6 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname pct
-setGeneric("pct", function(object, ...) {
-    standardGeneric("pct")
-})
-
-
-
 #' @rdname prepareSummarizedExperiment
 #' @export
 setGeneric("prepareSummarizedExperiment", function(assays, ...) {

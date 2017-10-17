@@ -66,7 +66,6 @@ geomean(mat)
 \href{https://stackoverflow.com/a/25555105}{Paul McMurdie's post} on
 Stack Overflow
 
-Other Math Utilities: \code{\link{fc2lr}},
-  \code{\link{pct}}
+Other Math Utilities: \code{\link{fc2lr}}
 }
 \concept{Math Utilities}

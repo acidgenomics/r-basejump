@@ -85,3 +85,13 @@ metadataTable <- function() {
     .Deprecated("sampleYAMLMetrics")
     sampleYAMLMetrics(...)
 }
+
+
+
+# 0.0.25 =====
+#' @rdname deprecated
+#' @importFrom scales percent
+#' @export
+pct <- function(...) {
+    scales::percent(...)
+}

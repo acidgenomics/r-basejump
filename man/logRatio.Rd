@@ -40,7 +40,6 @@ fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 \seealso{
 Modified variants of \code{gtools::foldchange2logratio()`` and}gtools::logratio2foldchange()`.
 
-Other Math Utilities: \code{\link{geomean}},
-  \code{\link{pct}}
+Other Math Utilities: \code{\link{geomean}}
 }
 \concept{Math Utilities}

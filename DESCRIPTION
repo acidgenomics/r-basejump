@@ -38,6 +38,7 @@ Imports:
     readxl (>= 1.0.0),
     rlang (>= 0.1.2),
     R.utils,
+    scales,
     stats,
     SummarizedExperiment,
     stringr (>= 1.2.0),
