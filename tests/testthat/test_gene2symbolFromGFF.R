@@ -40,11 +40,11 @@ test_that("fruitfly", {
 })
 
 test_that("GFF data.frame input", {
-    gtf <- readGFF(
+    gff <- readGFF(
         mousefile,
         quiet = TRUE)
     expect_equal(
-        gene2symbolFromGFF(gtf, quiet = TRUE),
+        gene2symbolFromGFF(gff, quiet = TRUE),
         mouse
     )
 })
