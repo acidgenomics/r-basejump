@@ -63,7 +63,7 @@ NULL
         message(paste(
             "Loading Ensembl annotations from AnnotationHub"
         ))
-        message(getAnnotationHubOption("CACHE"))
+        message(normalizePath(getAnnotationHubOption("CACHE")))
         message(snapshotDate(ah))
     }
 
