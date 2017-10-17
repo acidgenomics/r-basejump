@@ -101,3 +101,10 @@ setMethod(
         quiet = FALSE) {
         .gene2symbolFromGFF(object, quiet = quiet)
     })
+
+
+
+# Aliases ====
+#' @rdname gene2symbolFromGFF
+#' @export
+gene2symbolFromGTF <- gene2symbolFromGFF
