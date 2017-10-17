@@ -1,8 +1,7 @@
 context("gene2symbolFromGFF")
 
-mouse <- gene2symbolFromGFF(
-    file.path(testDataURL, "mmusculus.gtf"),
-    quiet = TRUE)
+mousefile <- file.path(testDataURL, "mmusculus.gtf")
+mouse <- gene2symbolFromGFF(mousefile, quiet = TRUE)
 
 test_that("mouse", {
     expect_equal(
@@ -21,21 +20,9 @@ test_that("mouse", {
     )
 })
 
-test_that("GFF data.frame input", {
-    gtf <- readGFF(
-        file.path(testDataURL, "mmusculus.gtf"),
-        quiet = TRUE)
-    expect_equal(
-        gene2symbolFromGFF(gtf, quiet = TRUE),
-        mouse
-    )
-})
-
-fruitfly <- gene2symbolFromGFF(
-    file.path(testDataURL, "dmelanogaster.gtf"),
-    quiet = TRUE)
-
 test_that("fruitfly", {
+    flyfile <- file.path(testDataURL, "dmelanogaster.gtf")
+    fruitfly <- gene2symbolFromGFF(flyfile, quiet = TRUE)
     expect_equal(
         dim(fruitfly),
         c(5L, 2L)
@@ -49,5 +36,22 @@ test_that("fruitfly", {
                        "CG9570"),
             row.names = c("FBgn0031081",
                           "FBgn0031085"))
+    )
+})
+
+test_that("GFF data.frame input", {
+    gtf <- readGFF(
+        mousefile,
+        quiet = TRUE)
+    expect_equal(
+        gene2symbolFromGFF(gtf, quiet = TRUE),
+        mouse
+    )
+})
+
+test_that("GTF alias", {
+    expect_equal(
+        gene2symbolFromGTF(mousefile, quiet = TRUE),
+        mouse
     )
 })
