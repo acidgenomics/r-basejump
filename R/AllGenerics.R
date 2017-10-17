@@ -111,14 +111,6 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 
 
 
-#' @rdname gene2symbolFromGFF
-#' @export
-setGeneric("gene2symbolFromGTF", function(object, ...) {
-    standardGeneric("gene2symbolFromGTF")
-})
-
-
-
 #' @rdname geomean
 setGeneric("geomean", function(object, ...) {
     standardGeneric("geomean")
@@ -201,14 +193,6 @@ setGeneric("readFileByExtension", function(object, ...) {
 #' @export
 setGeneric("readGFF", function(object, ...) {
     standardGeneric("readGFF")
-})
-
-
-
-#' @rdname readGFF
-#' @export
-setGeneric("readGTF", function(object, ...) {
-    standardGeneric("readGTF")
 })
 
 
@@ -329,14 +313,6 @@ setGeneric("tx2gene", function(object, ...) {
 #' @export
 setGeneric("tx2geneFromGFF", function(object, ...) {
     standardGeneric("tx2geneFromGFF")
-})
-
-
-
-#' @rdname tx2geneFromGFF
-#' @export
-setGeneric("tx2geneFromGTF", function(object, ...) {
-    standardGeneric("tx2geneFromGTF")
 })
 
 
