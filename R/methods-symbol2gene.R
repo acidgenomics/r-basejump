@@ -37,11 +37,12 @@ NULL
 .s2gvec <- function(
     object,
     organism,
-    release = "current") {
+    release = "current",
+    quiet = FALSE) {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
-        stop("symbol2gene conversion requires > 1 identifier")
+        stop("symbol2gene conversion requires > 1 identifier", call. = FALSE)
     }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
@@ -60,7 +61,8 @@ NULL
     g2s <- annotable(
         organism,
         format = "gene2symbol",
-        release = release) %>%
+        release = release,
+        quiet = quiet) %>%
         .[.[["symbol"]] %in% object, , drop = FALSE]
 
     ensgene <- g2s[["ensgene"]]
@@ -81,9 +83,15 @@ NULL
 
 
 # Pass arguments to .s2gvec
-.s2gdim <- function(object, organism, release = "current") {
+.s2gdim <- function(
+    object,
+    organism,
+    release = "current",
+    quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
-        .s2gvec(organism = organism, release = release)
+        .s2gvec(organism = organism,
+                release = release,
+                quiet = quiet)
     object
 }
 
