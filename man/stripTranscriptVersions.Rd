@@ -12,7 +12,9 @@ stripTranscriptVersions(object, ...)
 \S4method{stripTranscriptVersions}{character}(object)
 }
 \arguments{
-\item{sparseCounts}{Sparse counts matrix (\code{dgCMatrix}).}
+\item{object}{Object.}
+
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
 Transcript identifiers without version numbers.
