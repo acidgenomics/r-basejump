@@ -10,6 +10,9 @@
 #' @param object Project directory path (character vector).
 #'
 #' @return [data.frame].
+#'
+#' @examples
+#' readProgramVersions(file.path(testDataURL, "programs.txt"))
 NULL
 
 
@@ -21,13 +24,13 @@ NULL
 setMethod(
     "readProgramVersions",
     signature("character"),
-    function(object) {
-        if (!file.exists(object)) {
-            warning(paste(basename(object), "file missing"), call. = FALSE)
-            return(NULL)
-        }
-        read_delim(
-            object,
+    function(
+        object,
+        quiet = FALSE) {
+        file <- .localOrRemoteFile(object, quiet = quiet)
+        # programs.txt, but is comma separated
+        read_csv(
+            file,
             col_names = c("program", "version"),
-            delim = ",")
+            progress = FALSE)
     })
