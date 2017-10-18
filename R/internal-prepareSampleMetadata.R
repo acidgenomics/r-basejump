@@ -33,10 +33,11 @@
         # Ensure `sampleID` has valid names. This allows for input of samples
         # beginning with numbers or containing hyphens for example, which aren't
         # valid names in R.
-        mutate(sampleID = make.names(
-            gsub(x = .data[["sampleID"]],
-                 pattern = "-",
-                 replacement = "_"))) %>%
+        mutate(sampleID = gsub(
+            x = make.names(.data[["sampleID"]], unique = TRUE),
+            pattern = "\\.",
+            replacement = "_")
+        ) %>%
         # Put the priority columns first and arrange the rows by them
         select(metadataPriorityCols, everything()) %>%
         arrange(!!!syms(metadataPriorityCols)) %>%
