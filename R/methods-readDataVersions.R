@@ -8,6 +8,10 @@
 #' @param object Project directory path (character vector).
 #'
 #' @return [data.frame].
+#'
+#' @examples
+#' readDataVersions(
+#'     file.path(testDataURL, "data_versions.csv"))
 NULL
 
 
