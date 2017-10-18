@@ -19,7 +19,7 @@ NULL
 
 # Methods ====
 #' @rdname readProgramVersions
-#' @importFrom readr read_delim
+#' @importFrom readr read_csv
 #' @export
 setMethod(
     "readProgramVersions",
@@ -32,5 +32,7 @@ setMethod(
         read_csv(
             file,
             col_names = c("program", "version"),
+            # c = character
+            col_types = "cc",
             progress = FALSE)
     })
