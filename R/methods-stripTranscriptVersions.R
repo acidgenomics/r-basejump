@@ -1,11 +1,11 @@
 #' Strip Transcript Versions
-#' 
+#'
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @author Michael Steinbaugh
 #'
-#' @param sparseCounts Sparse counts matrix (`dgCMatrix`).
-#' 
+#' @inheritParams AllGenerics
+#'
 #' @return Transcript identifiers without version numbers.
 NULL
 
@@ -24,7 +24,8 @@ NULL
             replacement = "\\1")
     }
     if (any(grepl(x = object, pattern = "\\.\\d+$"))) {
-        stop("Transcript version removal failed", call. = FALSE)
+        stop("Failed to sanitize Ensembl transcript identifier",
+             call. = FALSE)
     }
     object
 }
