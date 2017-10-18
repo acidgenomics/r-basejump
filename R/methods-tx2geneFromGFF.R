@@ -100,10 +100,3 @@ setMethod(
         }
         .tx2geneFromGFF(object, quiet = quiet)
     })
-
-
-
-# Aliases ====
-#' @rdname tx2geneFromGFF
-#' @export
-tx2geneFromGTF <- tx2geneFromGFF
