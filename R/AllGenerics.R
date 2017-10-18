@@ -285,6 +285,14 @@ setGeneric("sortUnique", function(object, ...) {
 
 
 
+#' @rdname stripTranscriptVersions
+#' @export
+setGeneric("stripTranscriptVersions", function(object, ...) {
+    standardGeneric("stripTranscriptVersions")
+})
+
+
+
 #' @rdname symbol2gene
 #' @export
 setGeneric("symbol2gene", function(object, ...) {

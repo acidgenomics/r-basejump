@@ -8,16 +8,23 @@
 \usage{
 readLogFile(object, ...)
 
-\S4method{readLogFile}{character}(object)
+\S4method{readLogFile}{character}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Log file.}
+
+\item{...}{Object names as symbols.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Character vector.
 }
 \description{
 Read Log File
+}
+\examples{
+readLogFile(file.path(testDataURL, "bcbio-nextgen.log")) \%>\% head()
 }
 \concept{bcbio Project Directory File Utilities}
 \keyword{internal}
