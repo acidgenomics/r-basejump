@@ -100,7 +100,7 @@ NULL
 .makeNamesDotted <- function(object) {
     object %>%
         as.character() %>%
-        make.names() %>%
+        make.names(unique = FALSE, allow_ = FALSE) %>%
         # Convert non-alphanumeric characters to dots
         gsub(x = .,
              pattern = "[^[:alnum:]]",

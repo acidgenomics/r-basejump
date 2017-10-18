@@ -10,7 +10,7 @@
 readSampleMetadataFile(object, ...)
 
 \S4method{readSampleMetadataFile}{character}(object, pattern = NULL,
-  patternCol = "sampleName", lanes = 1)
+  patternCol = "sampleName", lanes = 1, quiet = FALSE)
 }
 \arguments{
 \item{object}{Metadata file. Supports CSV and XLSX file formats.}
@@ -24,12 +24,19 @@ subsetting.}
 
 \item{lanes}{\emph{Optional}. Number of lanes used to split the samples into
 technical replicates (\code{_LXXX}) suffix.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{tibble}, grouped by \code{sampleName}.
 }
 \description{
 Read Sample Metadata File
+}
+\examples{
+# Demultiplexed FASTQ
+readSampleMetadataFile(
+    file.path(testDataURL, "metadata_demultiplexed.xlsx"))
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},

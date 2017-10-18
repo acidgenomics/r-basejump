@@ -85,13 +85,19 @@ NULL
     if (any(duplicated(colnames(assay)))) {
         stop("Non-unique colnames", call. = FALSE)
     }
-    if (!identical(make.names(rownames(assay)), rownames(assay))) {
+    if (!identical(
+        make.names(rownames(assay), unique = TRUE, allow_ = TRUE),
+        rownames(assay)
+    )) {
         stop(paste(
             "Rownames are not valid.",
             "See 'base::make.names()' for more information."
             ), call. = FALSE)
     }
-    if (!identical(make.names(colnames(assay)), colnames(assay))) {
+    if (!identical(
+        make.names(colnames(assay), unique = TRUE, allow_ = TRUE),
+        colnames(assay)
+    )) {
         stop(paste(
             "Colnames are not valid.",
             "See 'base::make.names()' for more information."
