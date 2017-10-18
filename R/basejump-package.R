@@ -15,15 +15,4 @@ testDataDir <- file.path("docs", "tests")
 #' Test Data URL
 #' @keywords internal
 #' @export
-testDataURL <- file.path(
-    "https://raw.githubusercontent.com",
-    "steinbaugh",
-    "basejump",
-    "develop",
-    "docs",
-    "tests")
-
-#' Package Website URL
-#' @keywords internal
-#' @export
-url <- "http://steinbaugh.com/basejump"
+testDataURL <- "http://basejump.seq.cloud"
