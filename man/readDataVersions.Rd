@@ -8,10 +8,14 @@
 \usage{
 readDataVersions(object, ...)
 
-\S4method{readDataVersions}{character}(object)
+\S4method{readDataVersions}{character}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Project directory path (character vector).}
+
+\item{...}{Object names as symbols.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.
@@ -20,8 +24,7 @@ readDataVersions(object, ...)
 Read Data Versions
 }
 \examples{
-readDataVersions(
-    file.path(testDataURL, "data_versions.csv"))
+readDataVersions(file.path(testDataURL, "data_versions.csv"))
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
