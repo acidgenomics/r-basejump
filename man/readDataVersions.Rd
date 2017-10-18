@@ -19,6 +19,10 @@ readDataVersions(object, ...)
 \description{
 Read Data Versions
 }
+\examples{
+readDataVersions(
+    file.path(testDataURL, "data_versions.csv"))
+}
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readProgramVersions}},
