@@ -7,6 +7,7 @@
 \alias{bcbio<-}
 \alias{flatFiles}
 \alias{interestingGroups}
+\alias{interestingGroups<-}
 \alias{metrics}
 \alias{plotGene}
 \alias{sampleDirs}
@@ -23,6 +24,8 @@ bcbio(object, ...) <- value
 flatFiles(object, ...)
 
 interestingGroups(object, ...)
+
+interestingGroups(object, ...) <- value
 
 metrics(object, ...)
 
