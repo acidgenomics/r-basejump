@@ -8,18 +8,23 @@
 \usage{
 readProgramVersions(object, ...)
 
-\S4method{readProgramVersions}{character}(object)
+\S4method{readProgramVersions}{character}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Project directory path (character vector).}
 
 \item{...}{Object names as symbols.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.
 }
 \description{
 Read Program Versions
+}
+\examples{
+readProgramVersions(file.path(testDataURL, "programs.txt"))
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

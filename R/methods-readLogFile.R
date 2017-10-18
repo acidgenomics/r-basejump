@@ -5,9 +5,14 @@
 #' @family bcbio Project Directory File Utilities
 #' @keywords internal
 #'
+#' @inheritParams saveData
+#'
 #' @param object Log file.
 #'
 #' @return Character vector.
+#'
+#' @examples
+#' readLogFile(file.path(testDataURL, "bcbio-nextgen.log")) %>% head()
 NULL
 
 
@@ -19,10 +24,9 @@ NULL
 setMethod(
     "readLogFile",
     signature("character"),
-    function(object) {
-        if (!file.exists(object)) {
-            warning(paste(basename(object), "file missing"), call. = FALSE)
-            return(NULL)
-        }
-        read_lines(object)
+    function(
+        object,
+        quiet = FALSE) {
+        file <- .localOrRemoteFile(object, quiet = quiet)
+        read_lines(file)
     })
