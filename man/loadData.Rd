@@ -24,7 +24,8 @@ Load RData (\code{.rda}) files from a directory using symbols rather than comple
 file paths.
 }
 \examples{
+# Use symbols, separated by commas
 \dontrun{
-loadData(geneIDs, oligo)
+loadData(foo, bar)
 }
 }

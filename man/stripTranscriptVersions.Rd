@@ -22,6 +22,9 @@ Transcript identifiers without version numbers.
 \description{
 Strip Transcript Versions
 }
+\examples{
+stripTranscriptVersions("ENSMUST00000000001.1")
+}
 \author{
 Michael Steinbaugh
 }
