@@ -26,11 +26,13 @@
 #' @examples
 #' # H. sapiens
 #' detectOrganism("GRCh38")
+#' \dontrun{
 #' detectOrganism("hg38")
 #' detectOrganism("ENSG00000000003")
 #' detectOrganism("Homo sapiens")
 #' detectOrganism("Hsapiens")
 #' detectOrganism("human")
+#' }
 NULL
 
 
