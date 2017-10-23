@@ -37,11 +37,13 @@ Currently supported organisms:
 \examples{
 # H. sapiens
 detectOrganism("GRCh38")
+\dontrun{
 detectOrganism("hg38")
 detectOrganism("ENSG00000000003")
 detectOrganism("Homo sapiens")
 detectOrganism("Hsapiens")
 detectOrganism("human")
+}
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
