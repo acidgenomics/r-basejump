@@ -24,7 +24,7 @@ readProgramVersions(object, ...)
 Read Program Versions
 }
 \examples{
-readProgramVersions(file.path(testDataURL, "programs.txt"))
+readProgramVersions("http://basejump.seq.cloud/programs.txt")
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

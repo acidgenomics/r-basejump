@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' loadRemoteData(file.path(testDataURL, "mtcars.rda"))
+#' loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
 loadRemoteData <- function(
     object,
     envir = parent.frame(),

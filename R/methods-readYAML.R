@@ -13,8 +13,7 @@
 #'
 #' @examples
 #' # bcbioRNASeq example project summary YAML
-#' yamlFile <- file.path(testDataURL, "project-summary.yaml")
-#' yaml <- readYAML(yamlFile)
+#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 #' names(yaml)
 NULL
 

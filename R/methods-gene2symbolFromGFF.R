@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' # From URL (recommended)
-#' url <- file.path(testDataURL, "mmusculus.gtf")
+#' url <- "http://basejump.seq.cloud/mmusculus.gtf"
 #' gene2symbolFromGFF(url) %>% str()
 #'
 #' # GFF data.frame

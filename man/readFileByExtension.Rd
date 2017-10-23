@@ -30,7 +30,7 @@ files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.coln
 and \code{.rownames} files.
 }
 \examples{
-readFileByExtension(file.path(testDataURL, "mtcars.csv"))
+readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 }
 \seealso{
 \itemize{

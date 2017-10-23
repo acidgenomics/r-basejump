@@ -24,7 +24,7 @@
 #' - [Matrix::readMM()]: Read a MatrixMarket file.
 #'
 #' @examples
-#' readFileByExtension(file.path(testDataURL, "mtcars.csv"))
+#' readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 NULL
 
 

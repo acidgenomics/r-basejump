@@ -24,7 +24,7 @@ readDataVersions(object, ...)
 Read Data Versions
 }
 \examples{
-readDataVersions(file.path(testDataURL, "data_versions.csv"))
+readDataVersions("http://basejump.seq.cloud/data_versions.csv")
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

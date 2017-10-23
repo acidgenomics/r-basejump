@@ -12,7 +12,7 @@
 #' @return Character vector.
 #'
 #' @examples
-#' readLogFile(file.path(testDataURL, "bcbio-nextgen.log")) %>% head()
+#' readLogFile("http://basejump.seq.cloud/bcbio-nextgen.log") %>% head()
 NULL
 
 

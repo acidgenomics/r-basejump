@@ -18,9 +18,7 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' file.path(testDataURL, "mmusculus.gtf") %>%
-#'     readGFF() %>%
-#'     str()
+#' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% str()
 NULL
 
 
