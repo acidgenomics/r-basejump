@@ -15,5 +15,5 @@ opts_chunk[["set"]](
     tidy = TRUE,
     warning = FALSE)
 
-theme_set(theme_light(base_size = 14))
+theme_set(theme_gray(base_size = 14))
 theme_update(legend.position = "bottom")
