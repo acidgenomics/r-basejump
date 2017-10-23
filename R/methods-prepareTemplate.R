@@ -22,7 +22,6 @@
 #' @return No value.
 #'
 #' @examples
-#' \dontrun{
 #' # Load the shared files from basejump
 #' prepareTemplate()
 #'
@@ -33,7 +32,6 @@
 #' prepareTemplate(
 #'     sourceDir = system.file("rmarkdown/shared",
 #'                             package = "bcbioSingleCell"))
-#' }
 NULL
 
 
