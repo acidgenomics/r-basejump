@@ -23,6 +23,7 @@ Silently return named character vector of file paths.
 Load Data File as Name
 }
 \examples{
+# Use a named character vector as key value pair
 \dontrun{
 loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 }

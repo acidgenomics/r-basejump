@@ -20,6 +20,8 @@ local file.
 Dynamically Handle a Local or Remote File Path
 }
 \examples{
+\dontrun{
 .localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+}
 }
 \keyword{internal}
