@@ -28,11 +28,10 @@ Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
 Handle multiple kables in a single RMarkdown chunk.
 }
 \examples{
-list(head(starwars), head(mtcars)) \%>\%
-    kables()
+list(head(starwars), head(mtcars)) \%>\% kables()
 }
 \seealso{
-https://stackoverflow.com/a/35149103/3911732.
+\href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow}.
 
 Other Report Utilities: \code{\link{mdHeader}},
   \code{\link{mdList}}

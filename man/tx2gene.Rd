@@ -48,7 +48,6 @@ c("ENSMUST00000000001",
   "ENSMUST00000114041") \%>\%
   tx2gene()
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:6L),
@@ -61,7 +60,6 @@ matrix(
                     c("sample1",
                       "sample2"))) \%>\%
     tx2gene()
-}
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
