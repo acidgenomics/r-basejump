@@ -14,7 +14,6 @@
 #' @rdname prepareSummarizedExperiment
 #' @name prepareSummarizedExperiment
 #' @family bcbio Utilities
-#' @keywords internal
 #'
 #' @param assays List containing RNA-seq count matrices with matching
 #'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
@@ -40,15 +39,33 @@
 #'     nrow = 4L,
 #'     ncol = 4L,
 #'     dimnames = list(
-#'         c("gene_1", "gene_2", "gene_3", "gene_4"),
-#'         c("sample_1", "sample_2", "sample_3", "sample_4")))
+#'         c("ENSMUSG00000000001",
+#'           "ENSMUSG00000000003",
+#'           "ENSMUSG00000000028",
+#'           "ENSMUSG00000000031"),
+#'         c("sample_1",
+#'           "sample_2",
+#'           "sample_3",
+#'           "sample_4")))
 #' rowData <- data.frame(
-#'     ensgene = c("Aaa", "Bbb", "Ccc", "Ddd"),
-#'     biotype = c("coding", "coding", "coding", "pseudogene"),
+#'     ensgene = c(
+#'         "ENSMUSG00000000001",
+#'         "ENSMUSG00000000003",
+#'         "ENSMUSG00000000028",
+#'         "ENSMUSG00000000031"),
+#'     biotype = c(
+#'         "coding",
+#'         "coding",
+#'         "coding",
+#'         "coding"),
 #'     row.names = rownames(mat))
 #' colData <- data.frame(
-#'     genotype = c("wt", "wt", "ko", "ko"),
-#'     age = c(3L, 6L, 3L, 6L),
+#'     genotype = c(
+#'         "wildtype",
+#'         "wildtype",
+#'         "knockout",
+#'         "knockout"),
+#'     age = c(3, 6, 3, 6),
 #'     row.names = colnames(mat))
 #' prepareSummarizedExperiment(
 #'     assays = list(assay = mat),
