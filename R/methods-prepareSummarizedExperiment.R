@@ -15,6 +15,8 @@
 #' @name prepareSummarizedExperiment
 #' @family bcbio Utilities
 #'
+#' @inheritParams AllGenerics
+#'
 #' @param assays List containing RNA-seq count matrices with matching
 #'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
 #'   (`dgCMatrix`, `dgTMatrix`) format.
