@@ -92,13 +92,10 @@
 
     <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>readGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>readGTF</span>(<span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readGFF</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readGTF</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -110,6 +107,10 @@
     <tr>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     

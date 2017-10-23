@@ -95,7 +95,7 @@ FTP server. Also enables on-the-fly file renaming and compression.</p>
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>transmit</span>(<span class='no'>object</span>, <span class='no'>pattern</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>)</pre>
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,6 +124,10 @@ FTP server. Also enables on-the-fly file renaming and compression.</p>
     <tr>
       <th>localDir</th>
       <td><p>Directory where to save file locally.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     
