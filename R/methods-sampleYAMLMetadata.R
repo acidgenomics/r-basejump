@@ -6,6 +6,10 @@
 #' @keywords internal
 #'
 #' @inherit sampleYAML
+#'
+#' @examples
+#' yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+#' sampleYAMLMetadata(yaml)
 NULL
 
 

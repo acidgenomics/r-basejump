@@ -19,6 +19,10 @@ sampleYAMLMetrics(yaml, ...)
 \description{
 Sample Metrics from YAML File
 }
+\examples{
+yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+sampleYAMLMetrics(yaml) \%>\% str()
+}
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},

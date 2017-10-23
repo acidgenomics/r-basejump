@@ -13,6 +13,10 @@
 #'   output the same metrics into the YAML.
 #'
 #' @return [tibble].
+#'
+#' @examples
+#' yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+#' sampleYAML(yaml, "metadata")
 NULL
 
 

@@ -2,6 +2,7 @@
 
 export("%>%")
 export("bcbio<-")
+export("interestingGroups<-")
 export(.dataVersions)
 export(.logFile)
 export(.programs)

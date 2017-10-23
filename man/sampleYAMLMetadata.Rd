@@ -19,6 +19,10 @@ sampleYAMLMetadata(yaml, ...)
 \description{
 Sample Metadata from YAML
 }
+\examples{
+yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+sampleYAMLMetadata(yaml)
+}
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},

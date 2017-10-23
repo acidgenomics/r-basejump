@@ -18,12 +18,10 @@ test_that("generic definition", {
 
 test_that("no methods defined", {
     error <- "unable to find an inherited method"
+
+    # Missing signature
     expect_error(aggregateReplicates(), error)
     expect_error(bcbio(), error)
-    expect_error(
-        bcbio() <- "xxx",
-        "invalid \\(NULL\\) left side of assignment"
-    )
     expect_error(flatFiles(), error)
     expect_error(interestingGroups(), error)
     expect_error(metrics(), error)
@@ -31,4 +29,15 @@ test_that("no methods defined", {
     expect_error(sampleDirs(), error)
     expect_error(sampleMetadata(), error)
     expect_error(selectSamples(), error)
+
+    # Assignment without method
+    lst <- list()
+    expect_error(
+        bcbio(lst) <- "xxx",
+        error
+    )
+    expect_error(
+        interestingGroups(lst) <- "xxx",
+        error
+    )
 })
