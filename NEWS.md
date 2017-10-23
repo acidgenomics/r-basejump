@@ -1,3 +1,10 @@
+# basejump 0.1.0
+
+- Bump version to match bcbioRNASeq package.
+- Improved unit testing coverage of `prepareSummarizedExperiment()`.
+
+
+
 # basejump 0.0.25
 
 - Improved consistency of `setMethod()` calls using `signature()`.
