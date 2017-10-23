@@ -17,7 +17,10 @@
 #' `gtools::logratio2foldchange()`.
 #'
 #' @examples
+#' # Convert log ratio to fold change
 #' lr2fc(seq(-3, 3, 1))
+#'
+#' # Convert fold change to log ratio
 #' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 NULL
 
