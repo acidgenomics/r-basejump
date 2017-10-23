@@ -26,6 +26,10 @@ Metrics are only generated for a standard RNA-seq run with aligned
 counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 output the same metrics into the YAML.
 }
+\examples{
+yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+sampleYAML(yaml, "metadata")
+}
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{readDataVersions}},

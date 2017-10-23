@@ -28,5 +28,8 @@ setMethod(
         object,
         quiet = FALSE) {
         file <- .localOrRemoteFile(object, quiet = quiet)
+        if (is.null(file)) {
+            return(NULL)
+        }
         read_lines(file)
     })

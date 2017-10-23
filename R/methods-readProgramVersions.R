@@ -28,6 +28,9 @@ setMethod(
         object,
         quiet = FALSE) {
         file <- .localOrRemoteFile(object, quiet = quiet)
+        if (is.null(file)) {
+            return(NULL)
+        }
         # programs.txt, but is comma separated
         read_csv(
             file,
