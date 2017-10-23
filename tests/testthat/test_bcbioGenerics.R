@@ -9,7 +9,6 @@ test_that("generic definition", {
         interestingGroups,
         metrics,
         plotGene,
-        sampleDirs,
         sampleMetadata,
         selectSamples)
     classes <- vapply(generics, class, "character")
@@ -26,7 +25,6 @@ test_that("no methods defined", {
     expect_error(interestingGroups(), error)
     expect_error(metrics(), error)
     expect_error(plotGene(), error)
-    expect_error(sampleDirs(), error)
     expect_error(sampleMetadata(), error)
     expect_error(selectSamples(), error)
 
