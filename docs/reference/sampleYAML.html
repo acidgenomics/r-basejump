@@ -128,7 +128,7 @@ output the same metrics into the YAML.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readYAML.html'>readYAML</a></span>(<span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"project-summary.yaml"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>sampleYAML</span>(<span class='no'>yaml</span>, <span class='st'>"metadata"</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 2
+    <pre class="examples"><div class='input'><span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readYAML.html'>readYAML</a></span>(<span class='st'>"http://basejump.seq.cloud/project-summary.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>sampleYAML</span>(<span class='no'>yaml</span>, <span class='st'>"metadata"</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 2
 #&gt;   group description
 #&gt;   &lt;chr&gt;       &lt;chr&gt;
 #&gt; 1  ctrl    group1_1
