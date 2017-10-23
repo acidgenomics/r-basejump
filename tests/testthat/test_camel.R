@@ -1,7 +1,7 @@
 context("camel")
 
 loadRemoteData(
-    file.path(testDataURL, "makeNames.rda"),
+    "http://basejump.seq.cloud/makeNames.rda",
     quiet = TRUE)
 
 test_that("character", {
