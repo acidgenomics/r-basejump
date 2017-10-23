@@ -117,15 +117,20 @@ NULL
     if (!has_rownames(rowData)) {
         stop("rowData missing rownames", call. = FALSE)
     }
+    # Check for unannotated genes not found in annotable. This typically
+    # includes gene identifiers that are now deprecated on Ensembl and/or
+    # FASTA spike-in identifiers. Warn on detection rather than stopping.
     if (!all(rownames(assay) %in% rownames(rowData))) {
-        missing <- setdiff(rownames(assay), rownames(rowData))
-        # Warn instead of stop here, for more lenient handling of deprecated
-        # identifiers in a newer Ensembl release
+        unannotatedGenes <- setdiff(rownames(assay), rownames(rowData)) %>%
+            sort()
         warning(paste(
-            "rowData mismatch with assay",
-            paste0("(", pct(length(missing) / nrow(assay)), ")")
+            "Unannotated genes detected in counts matrix",
+            paste0("(", pct(length(unannotatedGenes) / nrow(assay)), ")")
             ), call. = FALSE)
+    } else {
+        unannotatedGenes <- NULL
     }
+
     # Fit the annotable annotations to match the number of rows
     # (genes/transcripts) present in the counts matrix
     rowData <- rowData %>%
@@ -147,10 +152,10 @@ NULL
         stop("colData missing rownames", call. = FALSE)
     }
     if (!all(colnames(assay) %in% rownames(colData))) {
-        missing <- setdiff(colnames(assay), rownames(colData))
+        missingSamples <- setdiff(colnames(assay), rownames(colData))
         stop(paste(
-            "colData mismatch with assay:",
-            toString(head(missing))
+            "Sample mismatch detected:",
+            toString(head(missingSamples))
         ), call. = FALSE)
     }
     colData <- colData %>%
@@ -170,18 +175,7 @@ NULL
     metadata[["wd"]] <- getwd()
     metadata[["utilsSessionInfo"]] <- utils::sessionInfo()
     metadata[["devtoolsSessionInfo"]] <- devtools::session_info()
-
-    # Check for retired Ensembl identifiers, which can happen when a more recent
-    # annotable build is used than the genome build. If present, store these
-    # identifiers in the metadata.
-    if (!is.null(rowData[["ensgene"]])) {
-        if (any(is.na(rowData[["ensgene"]]))) {
-            metadata[["missingGenes"]] <- rowData %>%
-                .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
-                rownames() %>%
-                sort()
-        }
-    }
+    metadata[["unannotatedGenes"]] <- unannotatedGenes
 
     SummarizedExperiment(
         assays = assays,
