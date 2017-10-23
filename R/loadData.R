@@ -15,7 +15,9 @@
 #'
 #' @examples
 #' # Use symbols, separated by commas
-#' loadData(synonyms)
+#' \dontrun{
+#' loadData(foo, bar)
+#' }
 loadData <- function(
     ...,
     dir = "data",

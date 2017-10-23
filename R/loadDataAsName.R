@@ -13,7 +13,9 @@
 #'
 #' @examples
 #' # Use a named character vector as key value pair
-#' loadDataAsName(c(newname = "synonyms"))
+#' \dontrun{
+#' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
+#' }
 loadDataAsName <- function(
     mappings,
     dir = "data",
