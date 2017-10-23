@@ -2,6 +2,16 @@
 
 - Bump version to match bcbioRNASeq package.
 - Improved unit testing coverage of `prepareSummarizedExperiment()`.
+- Added quiet mode support to functions that output messages, where applicable.
+- Moved roxygen function imports to each file from `basejump-package.R` file.
+- Deprecated `sampleDirs()` generic.
+- Improved organism detection in `detectOrganism()` and added support for chicken genome.
+- Clarified warning messages in `prepareSummarizedExperiment()` to make sample loading with `loadRNASeq()` and `loadSingleCell()` in the bcbio packages less confusing.
+- Improved `NULL` returns in `readDataVersions`, `readLogFile()`, and `readProgramVersions()` utility functions.
+- Fixed export of `*GTF()` alias functions to simply wrap the `*GFF()` functions with S4 methods support.
+- Improved lane split technical replicate handling in `readSampleMetadataFile()`.
+- Improved `camel()` syntax for both lax and strict modes. Added `upperCamel()` function.
+- Switched `str_()` to base `grep()` and `gsub()` in internal functions.
 
 
 
