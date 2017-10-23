@@ -12,6 +12,7 @@
 \alias{.sampleYAMLMetadata}
 \alias{.sampleYAMLMetrics}
 \alias{pct}
+\alias{sampleDirs}
 \title{Deprecated Functions}
 \usage{
 packageSE(...)
@@ -33,6 +34,8 @@ metadataTable()
 .sampleYAMLMetrics(yaml)
 
 pct(...)
+
+sampleDirs()
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

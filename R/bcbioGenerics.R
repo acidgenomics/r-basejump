@@ -69,14 +69,6 @@ setGeneric("plotGene", function(object, ...) {
 
 #' @rdname AllGenerics
 #' @export
-setGeneric("sampleDirs", function(object, ...) {
-    standardGeneric("sampleDirs")
-})
-
-
-
-#' @rdname AllGenerics
-#' @export
 setGeneric("sampleMetadata", function(object, ...) {
     standardGeneric("sampleMetadata")
 })
