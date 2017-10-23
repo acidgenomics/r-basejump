@@ -12,7 +12,9 @@
 #'   local file.
 #'
 #' @examples
+#' \dontrun{
 #' .localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+#' }
 .localOrRemoteFile <- function(
     object,
     quiet = FALSE) {
