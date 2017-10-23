@@ -1,8 +1,6 @@
 context("sampleYAML")
 
-yaml <- readYAML(
-    file.path(testDataURL, "project-summary.yaml"),
-    quiet = TRUE)
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml", quiet = TRUE)
 
 test_that("sampleYAML", {
     expect_equal(

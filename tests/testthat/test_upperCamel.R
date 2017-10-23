@@ -1,8 +1,6 @@
 context("upperCamel")
 
-loadRemoteData(
-    file.path(testDataURL, "makeNames.rda"),
-    quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/makeNames.rda", quiet = TRUE)
 
 test_that("character", {
     expect_equal(

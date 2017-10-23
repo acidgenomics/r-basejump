@@ -1,7 +1,7 @@
 context("readSampleMetadataFile")
 
 test_that("demultiplexed fastq", {
-    file <- file.path(testDataURL, "metadata_demultiplexed.xlsx")
+    file <- "http://basejump.seq.cloud/metadata_demultiplexed.xlsx"
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
     # Check that names are sanitized correctly
@@ -52,7 +52,7 @@ test_that("demultiplexed fastq", {
 })
 
 test_that("multiplexed fastq", {
-    file <- file.path(testDataURL, "metadata_multiplexed.xlsx")
+    file <- "http://basejump.seq.cloud/metadata_multiplexed.xlsx"
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
     expect_equal(

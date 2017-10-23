@@ -3,19 +3,19 @@ context("readFileByExtension")
 test_that("readFileByExtension", {
     # Comma separated value (.csv) file
     csv <- readFileByExtension(
-        file.path(testDataURL, "mtcars.csv"),
+        "http://basejump.seq.cloud/mtcars.csv",
         quiet = TRUE)
     expect_true(tibble::is_tibble(csv))
 
     # MatrixMarket (.mtx) file
     sparse <- readFileByExtension(
-        file.path(testDataURL, "sparse.mtx"),
+        "http://basejump.seq.cloud/sparse.mtx",
         quiet = TRUE)
     expect_true(is(sparse, "ngTMatrix"))
 
     # MatrixMarket support file (.colnames)
     colnames <- readFileByExtension(
-        file.path(testDataURL, "test.colnames"),
+        "http://basejump.seq.cloud/test.colnames",
         quiet = TRUE)
     expect_equal(
         colnames,
@@ -24,13 +24,13 @@ test_that("readFileByExtension", {
 
     # Tab separated values (.tsv) file
     tsv <- readFileByExtension(
-        file.path(testDataURL, "mtcars.tsv"),
+        "http://basejump.seq.cloud/mtcars.tsv",
         quiet = TRUE)
     expect_true(tibble::is_tibble(tsv))
 
     # Table format (.txt) file
     txt <- readFileByExtension(
-        file.path(testDataURL, "mtcars.txt"),
+        "http://basejump.seq.cloud/mtcars.txt",
         quiet = TRUE)
     expect_equal(
         txt,
@@ -39,13 +39,13 @@ test_that("readFileByExtension", {
 
     # Excel (.xlsx) file
     xlsx <- readFileByExtension(
-        file.path(testDataURL, "mtcars.xlsx"),
+        "http://basejump.seq.cloud/mtcars.xlsx",
         quiet = TRUE)
     expect_true(tibble::is_tibble(tsv))
 
     # Counts (.counts) file
     counts <- readFileByExtension(
-        file.path(testDataURL, "test.counts"),
+        "http://basejump.seq.cloud/test.counts",
         quiet = TRUE)
     expect_true(is.matrix(counts))
     expect_equal(
@@ -60,7 +60,7 @@ test_that("readFileByExtension", {
     # RData (.rda) file (unsupported)
     expect_error(
         readFileByExtension(
-            file.path(testDataURL, "mtcars.rda"),
+            "http://basejump.seq.cloud/mtcars.rda",
             quiet = TRUE),
         "Unsupported file type"
     )

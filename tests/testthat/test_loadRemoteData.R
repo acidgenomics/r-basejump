@@ -2,14 +2,14 @@ context("loadRemoteData")
 
 test_that("loadRemoteData", {
     invisible <- loadRemoteData(
-        file.path(testDataURL, "mtcars.rda"),
+        "http://basejump.seq.cloud/mtcars.rda",
         quiet = TRUE)
     expect_equal(
         invisible,
         "mtcars"
     )
     expect_error(
-        loadRemoteData(file.path(testDataURL, "mmusculus.gtf")),
+        loadRemoteData("http://basejump.seq.cloud/mmusculus.gtf"),
         "Data file must contain '.rda' extension"
     )
     expect_error(

@@ -1,7 +1,7 @@
 context("loadData")
 
 utils::download.file(
-    url = file.path(testDataURL, "mtcars.rda"),
+    url = "http://basejump.seq.cloud/mtcars.rda",
     destfile = "mtcars.rda",
     quiet = TRUE)
 
