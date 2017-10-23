@@ -7,15 +7,37 @@ mat <- matrix(
     nrow = 4L,
     ncol = 4L,
     dimnames = list(
-        c("gene_1", "gene_2", "gene_3", "gene_4"),
-        c("sample_1", "sample_2", "sample_3", "sample_4")))
-# Set NA in rowdata here to test retired Ensembl identifier handling
+        c("ENSMUSG00000000001",
+          "ENSMUSG00000000003",
+          "ENSMUSG00000000028",
+          "ENSMUSG00000000031"),
+        c("sample_1",
+          "sample_2",
+          "sample_3",
+          "sample_4")))
+# Check handling of rowData (annotable) mismatch
 rowdata <- data.frame(
-    ensgene = c("Aaa", "Bbb", "Ccc", NA),
-    biotype = c("coding", "coding", "coding", "pseudogene"),
-    row.names = rownames(mat))
+    ensgene = c(
+        "ENSMUSG00000000001",
+        "ENSMUSG00000000003",
+        "ENSMUSG00000000028",
+        "ENSMUSG00000000031"),
+    biotype = c(
+        "coding",
+        "coding",
+        "coding",
+        "coding"),
+    row.names = c(
+        "ENSMUSG00000000001",
+        "ENSMUSG00000000003",
+        "ENSMUSG00000000028",
+        "ENSMUSG00000000031"))
 coldata <- data.frame(
-    genotype = c("wt", "wt", "ko", "ko"),
+    genotype = c(
+        "wildtype",
+        "wildtype",
+        "knockout",
+        "knockout"),
     age = c(3L, 6L, 3L, 6L),
     row.names = colnames(mat))
 se <- prepareSummarizedExperiment(
@@ -32,11 +54,7 @@ test_that("valid summarizedexperiment", {
         c("date",
           "wd",
           "utilsSessionInfo",
-          "devtoolsSessionInfo",
-          "missingGenes"))
-    expect_equal(
-        metadata(se)[["missingGenes"]],
-        "gene_4")
+          "devtoolsSessionInfo"))
 })
 
 test_that("ensure assays requires a list", {
@@ -51,56 +69,46 @@ test_that("ensure assays requires a list", {
 
 # This checks to see if there are any dashes in the names
 test_that("enforce strict names", {
+    matbadrows <- mat
+    rownames(matbadrows) <- paste0(rownames(matbadrows), "-XXX")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_rownames(
-                        x = .,
-                        value = gsub("_", "-", rownames(mat)))
-            ),
+            assays = list(matbadrows),
             rowData = rowdata,
             colData = coldata),
-        "Rownames are not valid.")
+        "Rownames are not valid")
+    matbadcols <- mat
+    colnames(matbadcols) <- paste0(colnames(matbadcols), "-XXX")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_colnames(
-                        x = .,
-                        value = gsub("_", "-", colnames(mat)))
-            ),
+            assays = list(matbadcols),
             rowData = rowdata,
             colData = coldata),
-        "Colnames are not valid.")
+        "Colnames are not valid")
 })
 
 test_that("duplicate names", {
+    matduperows <- mat
+    rownames(matduperows) <- c(
+        "ENSMUSG00000000001",
+        "ENSMUSG00000000001",
+        "ENSMUSG00000000003",
+        "ENSMUSG00000000003")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_rownames(
-                        x = .,
-                        value = c("gene_1",
-                          "gene_1",
-                          "gene_2",
-                          "gene_2"))
-            ),
+            assays = list(matduperows),
             rowData = rowdata,
             colData = coldata),
         "Non-unique rownames")
+    matdupecols <- mat
+    colnames(matdupecols) <- c(
+        "sample_1",
+        "sample_1",
+        "sample_2",
+        "sample_2")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_colnames(
-                        x = .,
-                        value = c("sample_1",
-                          "sample_1",
-                          "sample_2",
-                          "sample_2"))
-            ),
+            assays = list(matdupecols),
             rowData = rowdata,
             colData = coldata),
         "Non-unique colnames")
@@ -139,65 +147,64 @@ test_that("invalid metadata", {
 })
 
 test_that("dimension mismatch", {
+    matextracol <- cbind(mat, "sample_5" = seq(17L, 20L))
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                cbind(mat, "sample_5" = seq(17L, 20L))
-            ),
+            assays = list(matextracol),
             rowData = rowdata,
             colData = coldata),
-        "colData mismatch with assay")
+        "Sample mismatch detected")
+    matextrarow <- rbind(mat, "ENSMUSG00000000037" = seq(17L, 20L))
     expect_warning(
         prepareSummarizedExperiment(
-            assays = list(
-                rbind(mat, "gene_5" = seq(17L, 20L))
-            ),
+            assays = list(matextrarow),
             rowData = rowdata,
             colData = coldata),
-        "rowData mismatch with assay")
+        "Unannotated genes detected in counts matrix")
+    seextrarow <- suppressWarnings(prepareSummarizedExperiment(
+        assays = list(matextrarow),
+        rowData = rowdata,
+        colData = coldata
+    ))
+    expect_equal(
+        metadata(seextrarow)[["unannotatedGenes"]],
+        "ENSMUSG00000000037"
+    )
 })
 
 test_that("missing rownames", {
     # Missing rownames
+    matnorownames <- mat
+    rownames(matnorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_rownames(
-                        x = .,
-                        value = NULL)
-            ),
+            assays = list(matnorownames),
             rowData = rowdata,
             colData = coldata),
         "Assay missing rownames")
+    matnocolnames <- mat
+    colnames(matnocolnames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(
-                mat %>%
-                    magrittr::set_colnames(
-                        x = .,
-                        value = NULL)
-            ),
+            assays = list(matnocolnames),
             rowData = rowdata,
             colData = coldata),
         "Assay missing colnames")
+    rowdatanorownames <- rowdata
+    rownames(rowdatanorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
             assays = list(mat),
-            rowData = rowdata %>%
-                magrittr::set_rownames(
-                    x = .,
-                    value = NULL),
+            rowData = rowdatanorownames,
             colData = coldata),
         "rowData missing rownames")
+    coldatanorownames <- coldata
+    rownames(coldatanorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
             assays = list(mat),
             rowData = rowdata,
-            colData = coldata %>%
-                magrittr::set_rownames(
-                    x = .,
-                    value = NULL)),
+            colData = coldatanorownames),
         "colData missing rownames")
 })
 
