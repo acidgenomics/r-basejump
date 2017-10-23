@@ -10,7 +10,6 @@
 \alias{interestingGroups<-}
 \alias{metrics}
 \alias{plotGene}
-\alias{sampleDirs}
 \alias{sampleMetadata}
 \alias{selectSamples}
 \title{S4 Generics}
@@ -30,8 +29,6 @@ interestingGroups(object, ...) <- value
 metrics(object, ...)
 
 plotGene(object, ...)
-
-sampleDirs(object, ...)
 
 sampleMetadata(object, ...)
 
