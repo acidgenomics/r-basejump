@@ -14,21 +14,22 @@
 gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object, organism = NULL,
-  release = "current")
+  release = "current", quiet = FALSE)
 
 \S4method{gene2symbol}{data.frame}(object, organism = NULL,
-  release = "current")
+  release = "current", quiet = FALSE)
 
 \S4method{gene2symbol}{DataFrame}(object, organism = NULL,
-  release = "current")
+  release = "current", quiet = FALSE)
 
 \S4method{gene2symbol}{dgCMatrix}(object, organism = NULL,
-  release = "current")
+  release = "current", quiet = FALSE)
 
 \S4method{gene2symbol}{dgTMatrix}(object, organism = NULL,
-  release = "current")
+  release = "current", quiet = FALSE)
 
-\S4method{gene2symbol}{matrix}(object, organism = NULL, release = "current")
+\S4method{gene2symbol}{matrix}(object, organism = NULL, release = "current",
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -43,6 +44,8 @@ manually declared.}
 
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as original object.
@@ -56,7 +59,6 @@ c("ENSMUSG00000000001",
   "ENSMUSG00000000003") \%>\%
   gene2symbol()
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:4L),
@@ -68,7 +70,6 @@ matrix(
                     c("sample1",
                       "sample2"))) \%>\%
     gene2symbol()
-}
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

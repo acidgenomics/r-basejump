@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.0.25
+Version: 0.1.0
 Authors@R: c(
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -38,11 +38,13 @@ Imports:
     readxl (>= 1.0.0),
     rlang (>= 0.1.2),
     R.utils,
+    scales,
     stats,
-    SummarizedExperiment,
+    SummarizedExperiment (>= 1.6.5),
     stringr (>= 1.2.0),
     S4Vectors,
     tibble (>= 1.3.4),
+    tidyr (>= 0.7.1),
     tools,
     utils,
     yaml

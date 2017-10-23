@@ -6,6 +6,7 @@
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams annotable
+#'
 #' @param organism Organism name.
 #'
 #' @return Same class as original object.
@@ -16,7 +17,6 @@
 #' # character
 #' symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 #'
-#' \dontrun{
 #' # matrix
 #' matrix(
 #'     data = seq(1L:4L),
@@ -26,17 +26,21 @@
 #'     dimnames = list(c("Gnai3", "Pbsn"),
 #'                     c("sample1", "sample2"))) %>%
 #'     symbol2gene(organism = "Mus musculus")
-#' }
 NULL
 
 
 
 # Constructors ====
-.s2gvec <- function(object, organism, release = "current") {
+#' @importFrom rlang is_string
+.s2gvec <- function(
+    object,
+    organism,
+    release = "current",
+    quiet = FALSE) {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
-        stop("symbol2gene conversion requires > 1 identifier")
+        stop("symbol2gene conversion requires > 1 identifier", call. = FALSE)
     }
     if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
@@ -52,9 +56,11 @@ NULL
     organism <- detectOrganism(organism)
 
     # Get gene2symbol annotable
-    g2s <- annotable(organism,
-                     format = "gene2symbol",
-                     release = release) %>%
+    g2s <- annotable(
+        organism,
+        format = "gene2symbol",
+        release = release,
+        quiet = quiet) %>%
         .[.[["symbol"]] %in% object, , drop = FALSE]
 
     ensgene <- g2s[["ensgene"]]
@@ -75,9 +81,15 @@ NULL
 
 
 # Pass arguments to .s2gvec
-.s2gdim <- function(object, organism, release = "current") {
+.s2gdim <- function(
+    object,
+    organism,
+    release = "current",
+    quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
-        .s2gvec(organism = organism, release = release)
+        .s2gvec(organism = organism,
+                release = release,
+                quiet = quiet)
     object
 }
 

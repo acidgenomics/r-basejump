@@ -20,7 +20,7 @@ setGeneric("annotable", function(object, ...) {
 
 
 
-#' @rdname makeNames
+#' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
     standardGeneric("camel")
@@ -71,7 +71,7 @@ setGeneric(
 
 
 
-#' @rdname makeNames
+#' @rdname dotted
 #' @export
 setGeneric("dotted", function(object, ...) {
     standardGeneric("dotted")
@@ -107,14 +107,6 @@ setGeneric("gene2symbol", function(object, ...) {
 #' @export
 setGeneric("gene2symbolFromGFF", function(object, ...) {
     standardGeneric("gene2symbolFromGFF")
-})
-
-
-
-#' @rdname gene2symbolFromGFF
-#' @export
-setGeneric("gene2symbolFromGTF", function(object, ...) {
-    standardGeneric("gene2symbolFromGTF")
 })
 
 
@@ -165,13 +157,6 @@ setGeneric("mdList", function(object, ...) {
 
 
 
-#' @rdname pct
-setGeneric("pct", function(object, ...) {
-    standardGeneric("pct")
-})
-
-
-
 #' @rdname prepareSummarizedExperiment
 #' @export
 setGeneric("prepareSummarizedExperiment", function(assays, ...) {
@@ -208,14 +193,6 @@ setGeneric("readFileByExtension", function(object, ...) {
 #' @export
 setGeneric("readGFF", function(object, ...) {
     standardGeneric("readGFF")
-})
-
-
-
-#' @rdname readGFF
-#' @export
-setGeneric("readGTF", function(object, ...) {
-    standardGeneric("readGTF")
 })
 
 
@@ -270,7 +247,7 @@ setGeneric("revcomp", function(object, ...) {
 
 #' @rdname sampleYAML
 #' @export
-setGeneric("sampleYAML", function(yaml, ...) {
+setGeneric("sampleYAML", function(yaml, keys, ...) {
     standardGeneric("sampleYAML")
 })
 
@@ -292,7 +269,7 @@ setGeneric("sampleYAMLMetrics", function(yaml, ...) {
 
 
 
-#' @rdname makeNames
+#' @rdname snake
 #' @export
 setGeneric("snake", function(object, ...) {
     standardGeneric("snake")
@@ -304,6 +281,14 @@ setGeneric("snake", function(object, ...) {
 #' @export
 setGeneric("sortUnique", function(object, ...) {
     standardGeneric("sortUnique")
+})
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setGeneric("stripTranscriptVersions", function(object, ...) {
+    standardGeneric("stripTranscriptVersions")
 })
 
 
@@ -340,10 +325,10 @@ setGeneric("tx2geneFromGFF", function(object, ...) {
 
 
 
-#' @rdname tx2geneFromGFF
+#' @rdname camel
 #' @export
-setGeneric("tx2geneFromGTF", function(object, ...) {
-    standardGeneric("tx2geneFromGTF")
+setGeneric("upperCamel", function(object, ...) {
+    standardGeneric("upperCamel")
 })
 
 
@@ -355,6 +340,7 @@ setGeneric(
     signature = "...",
     function(...,
              dir = file.path("results", "counts"),
-             gzip = TRUE) {
+             gzip = TRUE,
+             quiet = FALSE) {
         standardGeneric("writeCounts")
     })

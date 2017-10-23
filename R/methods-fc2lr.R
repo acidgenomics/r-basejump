@@ -5,6 +5,7 @@
 #' @family Math Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
 #'   values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
@@ -12,12 +13,14 @@
 #'
 #' @return Numeric vector.
 #'
-#' @seealso
-#' Modified variants of `gtools::foldchange2logratio()` and
+#' @seealso Modified variants of `gtools::foldchange2logratio()`` and
 #' `gtools::logratio2foldchange()`.
 #'
 #' @examples
+#' # Convert log ratio to fold change
 #' lr2fc(seq(-3, 3, 1))
+#'
+#' # Convert fold change to log ratio
 #' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 NULL
 

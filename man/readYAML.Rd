@@ -8,12 +8,14 @@
 \usage{
 readYAML(object, ...)
 
-\S4method{readYAML}{character}(object)
+\S4method{readYAML}{character}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{YAML file path.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{list}.
@@ -23,8 +25,7 @@ Read YAML File
 }
 \examples{
 # bcbioRNASeq example project summary YAML
-yamlFile <- file.path(testDataURL, "project-summary.yaml")
-yaml <- readYAML(yamlFile)
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 names(yaml)
 }
 \seealso{

@@ -95,7 +95,8 @@ and <code>.rownames</code> files.</p>
     <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -112,6 +113,10 @@ and <code>.rownames</code> files.</p>
       <th>makeNames</th>
       <td><p>Make syntactically valid names. Supports <strong><code>camel</code></strong>,
 <code>snake</code>, or <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     
@@ -133,7 +138,7 @@ and <code>.rownames</code> files.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>readFileByExtension</span>(<span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mtcars.csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+    <pre class="examples"><div class='input'><span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  mpg = col_double(),</span>
 #&gt; <span class='message'>  cyl = col_integer(),</span>

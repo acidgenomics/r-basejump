@@ -34,14 +34,15 @@ Numeric vector.
 Interconvert Log Ratio and Fold Change Values
 }
 \examples{
+# Convert log ratio to fold change
 lr2fc(seq(-3, 3, 1))
+
+# Convert fold change to log ratio
 fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
 }
 \seealso{
-Modified variants of \code{gtools::foldchange2logratio()} and
-\code{gtools::logratio2foldchange()}.
+Modified variants of \code{gtools::foldchange2logratio()`` and}gtools::logratio2foldchange()`.
 
-Other Math Utilities: \code{\link{geomean}},
-  \code{\link{pct}}
+Other Math Utilities: \code{\link{geomean}}
 }
 \concept{Math Utilities}

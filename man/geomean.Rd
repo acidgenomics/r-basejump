@@ -45,20 +45,17 @@ is not particularly useful if there are elements that are <= 0 and will
 return \code{NaN}.
 }
 \examples{
-# Vector
+# integer
 vec <- seq(1L, 5L, 1L)
 geomean(vec)
-
 vec2 <- vec ^ 2L
 geomean(vec2)
 
-
-# Data frame
+# data.frame
 df <- data.frame(vec, vec2)
 geomean(df)
 
-
-# Matrix
+# matrix
 mat <- as.matrix(df)
 geomean(mat)
 }
@@ -66,7 +63,6 @@ geomean(mat)
 \href{https://stackoverflow.com/a/25555105}{Paul McMurdie's post} on
 Stack Overflow
 
-Other Math Utilities: \code{\link{fc2lr}},
-  \code{\link{pct}}
+Other Math Utilities: \code{\link{fc2lr}}
 }
 \concept{Math Utilities}

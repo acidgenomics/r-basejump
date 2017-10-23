@@ -93,7 +93,7 @@
     <pre class="usage"><span class='fu'>readYAML</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readYAML</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readYAML</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,6 +105,10 @@
     <tr>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     
@@ -122,17 +126,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># bcbioRNASeq example project summary YAML</span>
-<span class='no'>yamlFile</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
-    <span class='st'>"https://raw.githubusercontent.com"</span>,
-    <span class='st'>"hbc"</span>,
-    <span class='st'>"bcbioRNASeq"</span>,
-    <span class='st'>"master"</span>,
-    <span class='st'>"inst"</span>,
-    <span class='st'>"extdata"</span>,
-    <span class='st'>"bcbio"</span>,
-    <span class='st'>"2017-05-23_rnaseq"</span>,
-    <span class='st'>"project-summary.yaml"</span>)
-<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='no'>yamlFile</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
+<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='st'>"http://basejump.seq.cloud/project-summary.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

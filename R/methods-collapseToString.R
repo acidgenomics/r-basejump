@@ -5,6 +5,7 @@
 #' @family Data Manipulation Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
@@ -35,6 +36,9 @@ NULL
 
 
 # Constructors ====
+#' @importFrom glue collapse
+#' @importFrom stats na.omit
+#' @importFrom stringr str_replace_na
 .collapseVec <- function(
     object,
     sep = ", ",
@@ -73,6 +77,7 @@ NULL
 
 
 
+#' @importFrom dplyr funs mutate_all summarize_all
 .collapseDim <- function(
     object,
     sep = ", ",

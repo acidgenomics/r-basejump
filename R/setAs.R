@@ -7,11 +7,19 @@
 #' table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
 #' [dplyr::mutate()].
 #'
+#' @rdname coerceToTibble
+#' @name coerceToTibble
+#' @keywords internal
+#'
 #' @param from Class for which the coerce method will perform coercion.
 #'
 #' @seealso `help(topic = "coerce", package = "methods")`.
-#'
-#' @noRd
+NULL
+
+
+
+# Constructors ====
+#' @importFrom tibble as_tibble has_rownames rownames_to_column
 .asTibble <- function(from) {
     if (is.null(dim(from))) {
         stop("Object must support 'dim'")
@@ -20,9 +28,12 @@
     if (has_rownames(from)) {
         from <- rownames_to_column(from)
     }
-    tibble::as_tibble(from)
+    as_tibble(from)
 }
 
+
+
+# setAs ====
 # We may want to manually define the classes here in a stricter manner in
 # the future (e.g. `DataFrame`, `data.frame`, `Matrix`, `matrix`, `dgCMatrix`).
 setAs("ANY", "tbl_df", .asTibble)

@@ -14,7 +14,8 @@
 #' @rdname prepareSummarizedExperiment
 #' @name prepareSummarizedExperiment
 #' @family bcbio Utilities
-#' @keywords internal
+#'
+#' @inheritParams AllGenerics
 #'
 #' @param assays List containing RNA-seq count matrices with matching
 #'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
@@ -40,15 +41,33 @@
 #'     nrow = 4L,
 #'     ncol = 4L,
 #'     dimnames = list(
-#'         c("gene_1", "gene_2", "gene_3", "gene_4"),
-#'         c("sample_1", "sample_2", "sample_3", "sample_4")))
+#'         c("ENSMUSG00000000001",
+#'           "ENSMUSG00000000003",
+#'           "ENSMUSG00000000028",
+#'           "ENSMUSG00000000031"),
+#'         c("sample_1",
+#'           "sample_2",
+#'           "sample_3",
+#'           "sample_4")))
 #' rowData <- data.frame(
-#'     ensgene = c("Aaa", "Bbb", "Ccc", "Ddd"),
-#'     biotype = c("coding", "coding", "coding", "pseudogene"),
+#'     ensgene = c(
+#'         "ENSMUSG00000000001",
+#'         "ENSMUSG00000000003",
+#'         "ENSMUSG00000000028",
+#'         "ENSMUSG00000000031"),
+#'     biotype = c(
+#'         "coding",
+#'         "coding",
+#'         "coding",
+#'         "coding"),
 #'     row.names = rownames(mat))
 #' colData <- data.frame(
-#'     genotype = c("wt", "wt", "ko", "ko"),
-#'     age = c(3L, 6L, 3L, 6L),
+#'     genotype = c(
+#'         "wildtype",
+#'         "wildtype",
+#'         "knockout",
+#'         "knockout"),
+#'     age = c(3, 6, 3, 6),
 #'     row.names = colnames(mat))
 #' prepareSummarizedExperiment(
 #'     assays = list(assay = mat),
@@ -59,6 +78,9 @@ NULL
 
 
 # Constructors ====
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @importFrom tibble column_to_rownames has_rownames
+#' @importFrom utils head
 .prepareSummarizedExperiment <- function(
     assays,
     rowData,
@@ -67,7 +89,7 @@ NULL
     # Assays ====
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
-        stop("Assay object must support 'dim()'")
+        stop("Assay object must support 'dim()'", call. = FALSE)
     }
     # Check for potential dimnames problems
     if (is.null(rownames(assay))) {
@@ -82,13 +104,19 @@ NULL
     if (any(duplicated(colnames(assay)))) {
         stop("Non-unique colnames", call. = FALSE)
     }
-    if (!identical(make.names(rownames(assay)), rownames(assay))) {
+    if (!identical(
+        make.names(rownames(assay), unique = TRUE, allow_ = TRUE),
+        rownames(assay)
+    )) {
         stop(paste(
             "Rownames are not valid.",
             "See 'base::make.names()' for more information."
             ), call. = FALSE)
     }
-    if (!identical(make.names(colnames(assay)), colnames(assay))) {
+    if (!identical(
+        make.names(colnames(assay), unique = TRUE, allow_ = TRUE),
+        colnames(assay)
+    )) {
         stop(paste(
             "Colnames are not valid.",
             "See 'base::make.names()' for more information."
@@ -108,15 +136,22 @@ NULL
     if (!has_rownames(rowData)) {
         stop("rowData missing rownames", call. = FALSE)
     }
+    # Check for unannotated genes not found in annotable. This typically
+    # includes gene identifiers that are now deprecated on Ensembl and/or
+    # FASTA spike-in identifiers. Warn on detection rather than stopping.
     if (!all(rownames(assay) %in% rownames(rowData))) {
-        missing <- setdiff(rownames(assay), rownames(rowData))
-        # Warn instead of stop here, for better handling of deprecated
-        # gene identifiers
+        unannotatedGenes <- setdiff(rownames(assay), rownames(rowData)) %>%
+            sort()
         warning(paste(
-            "rowData mismatch with assay slot:",
-            toString(missing)
+            "Unannotated genes detected in counts matrix",
+            paste0("(", pct(length(unannotatedGenes) / nrow(assay)), ")")
             ), call. = FALSE)
+    } else {
+        unannotatedGenes <- NULL
     }
+
+    # Fit the annotable annotations to match the number of rows
+    # (genes/transcripts) present in the counts matrix
     rowData <- rowData %>%
         .[rownames(assay), , drop = FALSE] %>%
         set_rownames(rownames(assay)) %>%
@@ -136,10 +171,10 @@ NULL
         stop("colData missing rownames", call. = FALSE)
     }
     if (!all(colnames(assay) %in% rownames(colData))) {
-        missing <- setdiff(colnames(assay), rownames(colData))
+        missingSamples <- setdiff(colnames(assay), rownames(colData))
         stop(paste(
-            "colData mismatch with assay slot:",
-            toString(head(missing))
+            "Sample mismatch detected:",
+            toString(head(missingSamples))
         ), call. = FALSE)
     }
     colData <- colData %>%
@@ -151,29 +186,16 @@ NULL
     if (is.null(metadata)) {
         metadata <- list()
     } else {
-        if (!any(is(metadata, "list") | is(metadata, "SimpleList"))) {
-            stop("Metadata must be 'list' or 'SimpleList' class object",
-                 call. = FALSE)
+        if (!is(metadata, "list")) {
+            stop("Metadata must be 'list' class object", call. = FALSE)
         }
     }
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- getwd()
     metadata[["utilsSessionInfo"]] <- utils::sessionInfo()
     metadata[["devtoolsSessionInfo"]] <- devtools::session_info()
+    metadata[["unannotatedGenes"]] <- unannotatedGenes
 
-    # Check for retired Ensembl identifiers, which can happen when a more recent
-    # annotable build is used than the genome build. If present, store these
-    # identifiers in the metadata.
-    if (!is.null(rowData[["ensgene"]])) {
-        if (any(is.na(rowData[["ensgene"]]))) {
-            metadata[["missingGenes"]] <- rowData %>%
-                .[is.na(.[["ensgene"]]), , drop = FALSE] %>%
-                rownames() %>%
-                sort()
-        }
-    }
-
-    message("Preparing SummarizedExperiment")
     SummarizedExperiment(
         assays = assays,
         rowData = rowData,

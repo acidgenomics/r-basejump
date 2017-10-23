@@ -5,23 +5,37 @@
 #' @family bcbio Utilities
 #' @keywords internal
 #'
+#' @inheritParams saveData
+#'
 #' @param object Project directory path (character vector).
 #'
 #' @return [data.frame].
+#'
+#' @examples
+#' readProgramVersions("http://basejump.seq.cloud/programs.txt")
 NULL
 
 
 
 # Methods ====
 #' @rdname readProgramVersions
+#' @importFrom readr read_csv
 #' @export
 setMethod(
     "readProgramVersions",
     signature("character"),
-    function(object) {
-        if (!file.exists(object)) {
-            warning(paste(basename(object), "file missing"), call. = FALSE)
+    function(
+        object,
+        quiet = FALSE) {
+        file <- .localOrRemoteFile(object, quiet = quiet)
+        if (is.null(file)) {
             return(NULL)
         }
-        read_delim(object, col_names = c("program", "version"), delim = ",")
+        # programs.txt, but is comma separated
+        read_csv(
+            file,
+            col_names = c("program", "version"),
+            # c = character
+            col_types = "cc",
+            progress = FALSE)
     })

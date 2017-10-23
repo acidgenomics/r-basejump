@@ -5,14 +5,15 @@
 #' @family Data Import and Project Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams saveData
+#'
 #' @param object YAML file path.
 #'
 #' @return [list].
 #'
 #' @examples
 #' # bcbioRNASeq example project summary YAML
-#' yamlFile <- file.path(testDataURL, "project-summary.yaml")
-#' yaml <- readYAML(yamlFile)
+#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 #' names(yaml)
 NULL
 
@@ -20,22 +21,27 @@ NULL
 
 # Methods ====
 #' @rdname readYAML
+#' @importFrom yaml yaml.load_file
 #' @export
 setMethod(
     "readYAML",
     signature("character"),
-    function(object) {
-        if (!str_detect(object, "\\.ya?ml$")) {
+    function(
+        object,
+        quiet = FALSE) {
+        if (!grepl(x = object, pattern = "\\.ya?ml$")) {
             stop("YAML file must have '.yaml' or '.yml' extension",
                  call. = FALSE)
         }
-        file <- .localOrRemoteFile(object)
+        file <- .localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
             warning(paste(
                 basename(object), "file missing"
             ), call. = FALSE)
             return(NULL)
         }
-        message(paste("Reading", names(file)))
+        if (!isTRUE(quiet)) {
+            message(paste("Reading", names(file)))
+        }
         yaml.load_file(file)
     })

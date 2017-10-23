@@ -156,24 +156,43 @@ environment parameters:</p><ul>
     <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
     <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
     <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(
-        <span class='fu'>c</span>(<span class='st'>"gene_1"</span>, <span class='st'>"gene_2"</span>, <span class='st'>"gene_3"</span>, <span class='st'>"gene_4"</span>),
-        <span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>, <span class='st'>"sample_3"</span>, <span class='st'>"sample_4"</span>)))
+        <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>,
+          <span class='st'>"ENSMUSG00000000003"</span>,
+          <span class='st'>"ENSMUSG00000000028"</span>,
+          <span class='st'>"ENSMUSG00000000031"</span>),
+        <span class='fu'>c</span>(<span class='st'>"sample_1"</span>,
+          <span class='st'>"sample_2"</span>,
+          <span class='st'>"sample_3"</span>,
+          <span class='st'>"sample_4"</span>)))
 <span class='no'>rowData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='kw'>ensgene</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Aaa"</span>, <span class='st'>"Bbb"</span>, <span class='st'>"Ccc"</span>, <span class='st'>"Ddd"</span>),
-    <span class='kw'>biotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"coding"</span>, <span class='st'>"coding"</span>, <span class='st'>"coding"</span>, <span class='st'>"pseudogene"</span>),
+    <span class='kw'>ensgene</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+        <span class='st'>"ENSMUSG00000000001"</span>,
+        <span class='st'>"ENSMUSG00000000003"</span>,
+        <span class='st'>"ENSMUSG00000000028"</span>,
+        <span class='st'>"ENSMUSG00000000031"</span>),
+    <span class='kw'>biotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+        <span class='st'>"coding"</span>,
+        <span class='st'>"coding"</span>,
+        <span class='st'>"coding"</span>,
+        <span class='st'>"coding"</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>mat</span>))
 <span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"wt"</span>, <span class='st'>"wt"</span>, <span class='st'>"ko"</span>, <span class='st'>"ko"</span>),
-    <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>6L</span>, <span class='fl'>3L</span>, <span class='fl'>6L</span>),
+    <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+        <span class='st'>"wildtype"</span>,
+        <span class='st'>"wildtype"</span>,
+        <span class='st'>"knockout"</span>,
+        <span class='st'>"knockout"</span>),
+    <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>6</span>, <span class='fl'>3</span>, <span class='fl'>6</span>),
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>mat</span>))
 <span class='fu'>prepareSummarizedExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>assay</span> <span class='kw'>=</span> <span class='no'>mat</span>),
     <span class='kw'>rowData</span> <span class='kw'>=</span> <span class='no'>rowData</span>,
-    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>)</div><div class='output co'>#&gt; <span class='message'>Preparing SummarizedExperiment</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+    <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>)</div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(4): date wd utilsSessionInfo devtoolsSessionInfo
 #&gt; assays(1): assay
-#&gt; rownames(4): gene_1 gene_2 gene_3 gene_4
+#&gt; rownames(4): ENSMUSG00000000001 ENSMUSG00000000003 ENSMUSG00000000028
+#&gt;   ENSMUSG00000000031
 #&gt; rowData names(2): ensgene biotype
 #&gt; colnames(4): sample_1 sample_2 sample_3 sample_4
 #&gt; colData names(2): genotype age</div></pre>

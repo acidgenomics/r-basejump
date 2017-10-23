@@ -4,22 +4,24 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(object, envir = parent.frame())
+loadRemoteData(object, envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-No value.
+Silently return loaded object name.
 }
 \description{
 Load a remote R binary file.
 }
 \examples{
-loadRemoteData(file.path(testDataURL, "mtcars.rda"))
+loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{readFileByExtension}},

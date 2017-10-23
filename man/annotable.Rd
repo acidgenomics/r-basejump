@@ -9,7 +9,7 @@
 annotable(object, ...)
 
 \S4method{annotable}{character}(object, format = "gene",
-  release = "current")
+  release = "current", quiet = FALSE)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
@@ -22,6 +22,8 @@ character string.}
 
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.
@@ -32,8 +34,7 @@ function defaults to obtaining the latest annotations, unless the \code{release}
 argument is set to a numeric version (e.g. 88).
 }
 \examples{
-annotable("Mus musculus") \%>\%
-    str()
+annotable("Mus musculus") \%>\% str()
 }
 \seealso{
 \itemize{
