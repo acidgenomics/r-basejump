@@ -12,14 +12,16 @@ sampleYAMLMetrics(yaml, ...)
 }
 \arguments{
 \item{yaml}{Project summary YAML list.}
-
-\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
 \link{tibble}.
 }
 \description{
 Sample Metrics from YAML File
+}
+\examples{
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
+sampleYAMLMetrics(yaml) \%>\% str()
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

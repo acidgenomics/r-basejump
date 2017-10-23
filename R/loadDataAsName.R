@@ -1,6 +1,7 @@
 #' Load Data File as Name
 #'
 #' @inheritParams loadData
+#'
 #' @param mappings Named character vector to define mappings. The name defines
 #'   the new name of the object in the environment, whereas the value in the
 #'   vector denotes the original object name. This is designed to function
@@ -11,6 +12,7 @@
 #' @export
 #'
 #' @examples
+#' # Use a named character vector as key value pair
 #' \dontrun{
 #' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 #' }
@@ -18,7 +20,8 @@ loadDataAsName <- function(
     mappings,
     dir = "data",
     envir = parent.frame()) {
-    if (!is.character(mappings) | is.null(names(mappings))) {
+    if (!is.character(mappings) |
+        is.null(names(mappings))) {
         stop("'mappings' must be defined as a named character vector",
              call. = FALSE)
     }
@@ -32,11 +35,13 @@ loadDataAsName <- function(
         name <- names(object)
         # Check to see if full file path was passed
         fileExtPattern <- "\\.[A-Za-z0-9]+$"
-        if (str_detect(object, fileExtPattern)) {
+        if (grepl(x = object, pattern = fileExtPattern)) {
             file <- object
             # Extract the object name from the file name
-            object <- basename(object) %>%
-                str_replace(fileExtPattern, "")
+            object <- gsub(
+                x = basename(object),
+                pattern = fileExtPattern,
+                replacement = "")
         } else {
             file <- file.path(dir, paste0(object, ".rda"))
         }
@@ -50,11 +55,11 @@ loadDataAsName <- function(
                 name, "file and saved object names are not identical"
             ), call. = FALSE)
         }
-        assign(
-            name,
-            get(object, envir = tmpenv, inherits = FALSE),
-            envir = envir
-        )
+        assign(x = name,
+               value = get(object,
+                           envir = tmpenv,
+                           inherits = FALSE),
+               envir = envir)
         names(file) <- name
         file
     })

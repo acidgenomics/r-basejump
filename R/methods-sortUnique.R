@@ -20,6 +20,7 @@ NULL
 
 # Methods ====
 #' @rdname sortUnique
+#' @importFrom stats na.omit
 #' @export
 setMethod(
     "sortUnique",

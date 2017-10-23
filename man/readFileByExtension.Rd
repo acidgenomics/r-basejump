@@ -8,7 +8,8 @@
 \usage{
 readFileByExtension(object, ...)
 
-\S4method{readFileByExtension}{character}(object, makeNames = "camel", ...)
+\S4method{readFileByExtension}{character}(object, makeNames = "camel",
+  quiet = FALSE, ...)
 }
 \arguments{
 \item{object}{File path.}
@@ -17,6 +18,8 @@ readFileByExtension(object, ...)
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{snake}, or \code{FALSE}.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{tibble} by default, or a sparse matrix for \code{.mtx} files.
@@ -27,7 +30,7 @@ files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.coln
 and \code{.rownames} files.
 }
 \examples{
-readFileByExtension(file.path(testDataURL, "mtcars.csv"))
+readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 }
 \seealso{
 \itemize{

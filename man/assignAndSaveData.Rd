@@ -5,7 +5,7 @@
 \title{Assign and Save Data}
 \usage{
 assignAndSaveData(name, object, dir = "data", compress = TRUE,
-  envir = parent.frame())
+  envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -23,6 +23,8 @@ assignAndSaveData(name, object, dir = "data", compress = TRUE,
 
 \item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
 the calling environment.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silent named character vector of file path.

@@ -26,7 +26,7 @@ queries, for example.
 sortUnique(c("milk", "eggs", "eggs", NA))
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{camel}},
-  \code{\link{fixNA}}, \code{\link{removeNA}}
+Other Cleanup Utilities: \code{\link{fixNA}},
+  \code{\link{removeNA}}
 }
 \concept{Cleanup Utilities}

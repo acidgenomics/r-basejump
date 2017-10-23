@@ -13,17 +13,23 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism, release = "current")
+\S4method{symbol2gene}{character}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{data.frame}(object, organism, release = "current")
+\S4method{symbol2gene}{data.frame}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{DataFrame}(object, organism, release = "current")
+\S4method{symbol2gene}{DataFrame}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current")
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current")
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current",
+  quiet = FALSE)
 
-\S4method{symbol2gene}{matrix}(object, organism, release = "current")
+\S4method{symbol2gene}{matrix}(object, organism, release = "current",
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -34,6 +40,8 @@ symbol2gene(object, ...)
 
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as original object.
@@ -45,7 +53,6 @@ Convert Gene Symbol to Ensembl Identifier
 # character
 symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:4L),
@@ -55,7 +62,6 @@ matrix(
     dimnames = list(c("Gnai3", "Pbsn"),
                     c("sample1", "sample2"))) \%>\%
     symbol2gene(organism = "Mus musculus")
-}
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

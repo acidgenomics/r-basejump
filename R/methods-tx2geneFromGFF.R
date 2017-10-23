@@ -5,6 +5,7 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams annotable
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
 #'   feature, each containing 9 columns of data, plus optional track definition
@@ -14,14 +15,12 @@
 #'
 #' @examples
 #' # From URL (recommended)
-#' url <- file.path(testDataURL, "mmusculus.gtf")
-#' tx2geneFromGFF(url) %>%
-#'     str()
+#' url <- "http://basejump.seq.cloud/mmusculus.gtf"
+#' tx2geneFromGFF(url) %>% str()
 #'
 #' # GFF data.frame
 #' gff <- readGFF(url)
-#' tx2geneFromGFF(gff) %>%
-#'     str()
+#' tx2geneFromGFF(gff) %>% str()
 NULL
 
 
@@ -35,10 +34,17 @@ NULL
 
 
 
-.tx2geneFromGFF <- function(object) {
+#' @importFrom dplyr arrange distinct
+#' @importFrom magrittr set_rownames
+#' @importFrom rlang sym !!
+#' @importFrom stringr str_match
+.tx2geneFromGFF <- function(
+    object,
+    quiet = FALSE) {
     anno <- object %>%
         .gffKeyValuePairs() %>%
-        .[str_detect(., "transcript_id") & str_detect(., "gene_id")] %>%
+        .[grepl(x = ., pattern = "transcript_id") &
+              grepl(x = ., pattern = "gene_id")] %>%
         unique()
 
     enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
@@ -52,10 +58,12 @@ NULL
         arrange(!!sym("enstxp")) %>%
         set_rownames(.[["enstxp"]])
 
-    message(paste(
-        "tx2gene mappings:",
-        nrow(df), "transcripts,",
-        length(unique(df[["ensgene"]])), "genes"))
+    if (!isTRUE(quiet)) {
+        message(paste(
+            "tx2gene mappings:",
+            nrow(df), "transcripts,",
+            length(unique(df[["ensgene"]])), "genes"))
+    }
 
     df
 }
@@ -68,10 +76,12 @@ NULL
 setMethod(
     "tx2geneFromGFF",
     signature("character"),
-    function(object) {
+    function(
+        object,
+        quiet = FALSE) {
         object %>%
-            readGFF() %>%
-            .tx2geneFromGFF()
+            readGFF(quiet = quiet) %>%
+            .tx2geneFromGFF(quiet = quiet)
     })
 
 
@@ -81,10 +91,12 @@ setMethod(
 setMethod(
     "tx2geneFromGFF",
     signature("data.frame"),
-    function(object) {
+    function(
+        object,
+        quiet = FALSE) {
         if (dim(object)[[2L]] != 9L) {
             stop("GFF object must be data.frame with 9 columns",
                  call. = FALSE)
         }
-        .tx2geneFromGFF(object)
+        .tx2geneFromGFF(object, quiet = quiet)
     })

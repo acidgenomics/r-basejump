@@ -88,6 +88,32 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-1-0" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-1-0" class="anchor"></a>basejump 0.1.0</h1>
+<ul>
+<li>Bump version to match bcbioRNASeq package.</li>
+<li>Improved unit testing coverage of <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code>.</li>
+<li>Added quiet mode support to functions that output messages, where applicable.</li>
+<li>Moved roxygen function imports to each file from <code>basejump-package.R</code> file.</li>
+<li>Deprecated <code><a href="../reference/deprecated.html">sampleDirs()</a></code> generic.</li>
+<li>Improved organism detection in <code><a href="../reference/detectOrganism.html">detectOrganism()</a></code> and added support for chicken genome.</li>
+<li>Clarified warning messages in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> to make sample loading with <code>loadRNASeq()</code> and <code>loadSingleCell()</code> in the bcbio packages less confusing.</li>
+<li>Improved <code>NULL</code> returns in <code>readDataVersions</code>, <code><a href="../reference/readLogFile.html">readLogFile()</a></code>, and <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> utility functions.</li>
+<li>Fixed export of <code>*GTF()</code> alias functions to simply wrap the <code>*GFF()</code> functions with S4 methods support.</li>
+<li>Improved lane split technical replicate handling in <code><a href="../reference/readSampleMetadataFile.html">readSampleMetadataFile()</a></code>.</li>
+<li>Improved <code><a href="../reference/camel.html">camel()</a></code> syntax for both lax and strict modes. Added <code><a href="../reference/camel.html">upperCamel()</a></code> function.</li>
+<li>Switched <code>str_()</code> to base <code>grep()</code> and <code>gsub()</code> in internal functions.</li>
+</ul>
+</div>
+    <div id="basejump-0-0-25" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-0-25" class="anchor"></a>basejump 0.0.25</h1>
+<ul>
+<li>Improved consistency of <code>setMethod()</code> calls using <code>signature()</code>.</li>
+<li>Converted <code><a href="../reference/loadRemoteData.html">loadRemoteData()</a></code> to a standard function instead of using S4 dispatch, allowing the <code>envir</code> argument to be set properly.</li>
+</ul>
+</div>
     <div id="basejump-0-0-24" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-0-24" class="anchor"></a>basejump 0.0.24</h1>
@@ -98,18 +124,18 @@
 <li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
 </li>
 <li>Added <code>*GFF()</code> function variants for <code><a href="../reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
-<li>Added shared bcbio generic functions: <code><a href="../reference/AllGenerics.html">aggregateReplicates()</a></code>, <code><a href="../reference/AllGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/AllGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">sampleDirs()</a></code>, <code><a href="../reference/AllGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/AllGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Added shared bcbio generic functions: <code><a href="../reference/AllGenerics.html">aggregateReplicates()</a></code>, <code><a href="../reference/AllGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/AllGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/deprecated.html">sampleDirs()</a></code>, <code><a href="../reference/AllGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/AllGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
 <li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code><a href="../reference/readDataVersions.html">readDataVersions()</a></code> (deprecated <code><a href="../reference/deprecated.html">.dataVersions()</a></code>), <code><a href="../reference/readLogFile.html">readLogFile()</a></code> (deprecated <code><a href="../reference/deprecated.html">.logFile()</a></code>), <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> (deprecated <code><a href="../reference/deprecated.html">.programs()</a></code>), <code><a href="../reference/sampleYAML.html">sampleYAML()</a></code> (deprecated <code><a href="../reference/deprecated.html">.sampleYAML()</a></code>), <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code> (deprecated <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code>), <code><a href="../reference/sampleYAMLMetrics.html">sampleYAMLMetrics()</a></code> (deprecated .sampleYAMLMetrics()`).</li>
 <li>Deprecated <code><a href="../reference/deprecated.html">metadataTable()</a></code> function.</li>
 <li>Moved all roxygen documentation to <code>methods-*.R</code> files where applicable.</li>
 <li>Now using <code>assays</code> in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> generic definition as primary object.</li>
 <li>Improved <code><a href="../reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
 <li>Now consistently using clear function definitions (<code>()</code>) in chain operations with magrittr pipe (<code>%&gt;%</code>).</li>
-<li>Added <code>.prepareSampleMetadata()</code> utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.</li>
+<li>Added <code><a href="../reference/dot-prepareSampleMetadata.html">.prepareSampleMetadata()</a></code> utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.</li>
 <li>Added <code><a href="../reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
 <li>Initial commit of <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
 <li>Improved <code><a href="../reference/annotable.html">annotable()</a></code> function documentation and support for Ensembl release versions.</li>
-<li>Improved sanitization rules for <code><a href="../reference/makeNames.html">camel()</a></code>, <code><a href="../reference/makeNames.html">dotted()</a></code>, and <code><a href="../reference/makeNames.html">snake()</a></code> name functions. Added the <code>strict</code> argument to <code><a href="../reference/makeNames.html">camel()</a></code> and <code><a href="../reference/makeNames.html">dotted()</a></code>.</li>
+<li>Improved sanitization rules for <code><a href="../reference/camel.html">camel()</a></code>, <code><a href="../reference/dotted.html">dotted()</a></code>, and <code><a href="../reference/snake.html">snake()</a></code> name functions. Added the <code>strict</code> argument to <code><a href="../reference/camel.html">camel()</a></code> and <code><a href="../reference/dotted.html">dotted()</a></code>.</li>
 <li>Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.</li>
 <li>Improved S4 method support for the logRatio functions.</li>
 <li>Added integer support for <code><a href="../reference/geomean.html">geomean()</a></code> function. Also improved internal code of <code><a href="../reference/geomean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
@@ -317,6 +343,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-1-0">0.1.0</a></li>
+        <li><a href="#basejump-0-0-25">0.0.25</a></li>
         <li><a href="#basejump-0-0-24">0.0.24</a></li>
         <li><a href="#basejump-0-0-23">0.0.23</a></li>
         <li><a href="#basejump-0-0-22">0.0.22</a></li>

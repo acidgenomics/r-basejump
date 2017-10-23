@@ -5,23 +5,31 @@
 #' @family bcbio Project Directory File Utilities
 #' @keywords internal
 #'
+#' @inheritParams saveData
+#'
 #' @param object Log file.
 #'
 #' @return Character vector.
+#'
+#' @examples
+#' readLogFile("http://basejump.seq.cloud/bcbio-nextgen.log") %>% head()
 NULL
 
 
 
 # Methods ====
 #' @rdname readLogFile
+#' @importFrom readr read_lines
 #' @export
 setMethod(
     "readLogFile",
     signature("character"),
-    function(object) {
-        if (!file.exists(object)) {
-            warning(paste(basename(object), "file missing"), call. = FALSE)
+    function(
+        object,
+        quiet = FALSE) {
+        file <- .localOrRemoteFile(object, quiet = quiet)
+        if (is.null(file)) {
             return(NULL)
         }
-        read_lines(object)
+        read_lines(file)
     })

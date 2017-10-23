@@ -5,6 +5,7 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams annotable
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
 #'   feature, each containing 9 columns of data, plus optional track definition
@@ -14,36 +15,47 @@
 #'
 #' @examples
 #' # From URL (recommended)
-#' url <- file.path(testDataURL, "mmusculus.gtf")
-#' gene2symbolFromGFF(url) %>%
-#'     str()
+#' url <- "http://basejump.seq.cloud/mmusculus.gtf"
+#' gene2symbolFromGFF(url) %>% str()
 #'
 #' # GFF data.frame
 #' gff <- readGFF(url)
-#' gene2symbolFromGFF(gff) %>%
-#'     str()
+#' gene2symbolFromGFF(gff) %>% str()
 NULL
 
 
 
 # Constructors ====
-.gene2symbolFromGFF <- function(object) {
+#' @importFrom dplyr arrange mutate
+#' @importFrom magrittr set_rownames
+#' @importFrom rlang .data sym !!
+#' @importFrom stringr str_match
+.gene2symbolFromGFF <- function(
+    object,
+    quiet = FALSE) {
     anno <- .gffKeyValuePairs(object)
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
     # This fix is necessary for FlyBase GFF files.
-    if (any(str_detect(anno, "gene_symbol"))) {
-        message("Renaming 'gene_symbol' to 'gene_name'")
-        anno <- str_replace_all(anno, "gene_symbol", "gene_name")
+    if (any(grepl(x = anno, pattern = "gene_symbol"))) {
+        anno <- gsub(
+            x = anno,
+            pattern = "gene_symbol",
+            replacement = "gene_name")
     }
 
     anno <- anno %>%
-        .[str_detect(., "gene_id") & str_detect(., "gene_name")] %>%
+        .[grepl(x = ., pattern = "gene_id") &
+              grepl(x = ., pattern = "gene_name")] %>%
         unique()
 
-    ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
+    ensgene <- str_match(
+        anno,
+        pattern = "gene_id ([^;]+);") %>%
         .[, 2L]
-    symbol <- str_match(anno, "gene_name ([^;]+);") %>%
+    symbol <- str_match(
+        anno,
+        pattern = "gene_name ([^;]+);") %>%
         .[, 2L]
 
     df <- cbind(ensgene, symbol) %>%
@@ -54,7 +66,9 @@ NULL
         arrange(!!sym("ensgene")) %>%
         set_rownames(.[["ensgene"]])
 
-    message(paste("gene2symbol mappings:", nrow(df), "genes"))
+    if (!isTRUE(quiet)) {
+        message(paste("gene2symbol mappings:", nrow(df), "genes"))
+    }
 
     df
 }
@@ -67,10 +81,12 @@ NULL
 setMethod(
     "gene2symbolFromGFF",
     signature("character"),
-    function(object) {
+    function(
+        object,
+        quiet = FALSE) {
         object %>%
-            readGFF() %>%
-            .gene2symbolFromGFF()
+            readGFF(quiet = quiet) %>%
+            .gene2symbolFromGFF(quiet = quiet)
     })
 
 
@@ -80,6 +96,8 @@ setMethod(
 setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
-    function(object) {
-        .gene2symbolFromGFF(object)
+    function(
+        object,
+        quiet = FALSE) {
+        .gene2symbolFromGFF(object, quiet = quiet)
     })

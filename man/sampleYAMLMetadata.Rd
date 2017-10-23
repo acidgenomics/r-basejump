@@ -12,14 +12,16 @@ sampleYAMLMetadata(yaml, ...)
 }
 \arguments{
 \item{yaml}{Project summary YAML list.}
-
-\item{...}{Nested operator keys supplied as symbols.}
 }
 \value{
 \link{tibble}.
 }
 \description{
 Sample Metadata from YAML
+}
+\examples{
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
+sampleYAMLMetadata(yaml)
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

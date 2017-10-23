@@ -6,11 +6,11 @@
 #'
 #' @rdname annotable
 #' @name annotable
+#' @author Broad class definitions by Rory Kirchner.
 #' @family Gene Annotation Utilities
 #'
-#' @author Broad class definitions by Rory Kirchner.
-#'
 #' @inheritParams AllGenerics
+#' @inheritParams saveData
 #'
 #' @param object Object. Default usage is to provide Ensembl genome build as a
 #'   character string.
@@ -26,38 +26,53 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' annotable("Mus musculus") %>%
-#'     str()
+#' annotable("Mus musculus") %>% str()
 NULL
 
 
 
 # Constructors ====
+#' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
+#'   snapshotDate
+#' @importFrom dplyr case_when mutate rename
+#' @importFrom ensembldb ensemblVersion genes transcripts
+#' @importFrom magrittr set_rownames
+#' @importFrom rlang .data is_string
+#' @importFrom S4Vectors mcols
+#' @importFrom utils tail
 .annotable <- function(
     object,
     format = "gene",
-    release = "current") {
+    release = "current",
+    quiet = FALSE) {
     if (!is_string(object)) {
-        stop("Object must be a string")
+        stop("Object must be a string", call. = FALSE)
     }
     if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
-        stop("Unsupported format")
+        stop("Unsupported format", call. = FALSE)
     }
 
     organism <- detectOrganism(object)
 
     # Download organism EnsDb package from AnnotationHub
-    message("Obtaining Ensembl annotations with AnnotationHub and ensembldb")
-    getAnnotationHubOption("CACHE") %>%
-        message()
-    ah <- AnnotationHub()
+    ah <- suppressMessages(
+        AnnotationHub()
+    )
+
+    if (!isTRUE(quiet)) {
+        message(paste(
+            "Loading Ensembl annotations from AnnotationHub"
+        ))
+        message(normalizePath(getAnnotationHubOption("CACHE")))
+        message(snapshotDate(ah))
+    }
 
     # Check for unsupported Ensembl release request
     if (is.numeric(release) & release < 87L) {
         warning(paste(
             "ensembldb only supports Ensembl releases 87 and newer.",
             "Using current release instead."
-        ))
+        ), call. = FALSE)
         release <- "current"
     }
 
@@ -68,8 +83,8 @@ NULL
             ignore.case = TRUE)
         # Get the latest AnnotationHub dataset by identifier number
         id <- ahDb %>%
-            mcols %>%
-            rownames %>%
+            mcols() %>%
+            rownames() %>%
             tail(n = 1L)
         edb <- suppressMessages(ah[[id]])
     } else {
@@ -82,43 +97,53 @@ NULL
                 # (e.g. "v90")
                 paste0("v", release)),
             ignore.case = TRUE)
+        id <- ahDb %>%
+            mcols() %>%
+            rownames()
         edb <- suppressMessages(ahDb[[1L]])
     }
 
-    message(paste(
-        "EnsDB:",
-        organism(edb),
-        "Ensembl",
-        ensemblVersion(edb)
-    ))
+    if (!isTRUE(quiet)) {
+        message(paste(
+            "EnsDB", paste0(id, ":"),
+            organism(edb),
+            "Ensembl", ensemblVersion(edb)
+        ))
+    }
 
     if (format == "gene") {
-        genes(edb,
-              columns = c("gene_id",
-                          "symbol",  # `gene_name` also works
-                          "description",
-                          "gene_biotype"),
-              return.type = "data.frame") %>%
-            dplyr::rename(ensgene = .data[["gene_id"]],
-                          biotype = .data[["gene_biotype"]]) %>%
+        genes(
+            edb,
+            columns = c("gene_id",
+                        "symbol",  # `gene_name` also works
+                        "description",
+                        "gene_biotype"),
+            return.type = "data.frame") %>%
+            dplyr::rename(
+                ensgene = .data[["gene_id"]],
+                biotype = .data[["gene_biotype"]]) %>%
+            # Improve handling of `NA` uniques here
+            fixNA() %>%
             dplyr::mutate(
                 # Ensure unique symbols (e.g. human, mouse)
                 symbol = make.unique(.data[["symbol"]]),
                 # Define the broad class
                 broadClass = case_when(
-                    str_detect(
-                        .data[["symbol"]],
+                    grepl(
+                        x = .data[["symbol"]],
                         # Hsapiens: `MT-`,
                         # Mmusculus: `mt-`
                         # Dmelanogaster: `mt:`
-                        regex("^MT[\\:\\-]",
-                              ignore_case = TRUE)) ~ "mito",
+                        pattern = "^mt[\\:\\-]",
+                        ignore.case = TRUE) ~ "mito",
                     .data[["biotype"]] == "protein_coding" ~ "coding",
                     .data[["biotype"]] %in%
                         c("known_ncrna",
                           "lincRNA",
                           "non_coding") ~ "noncoding",
-                    str_detect(.data[["biotype"]], "pseudo") ~ "pseudo",
+                    grepl(
+                        x = .data[["biotype"]],
+                        pattern = "pseudo") ~ "pseudo",
                     .data[["biotype"]] %in%
                         c("miRNA",
                           "misc_RNA",
@@ -132,26 +157,33 @@ NULL
                     .data[["biotype"]] %in%
                         c("non_stop_decay",
                           "nonsense_mediated_decay") ~ "decaying",
-                    str_detect(.data[["biotype"]],
-                               regex("^ig_", ignore_case = TRUE)) ~ "ig",
-                    str_detect(.data[["biotype"]],
-                               regex("^tr_", ignore_case = TRUE)) ~ "tcr",
+                    grepl(
+                        x = .data[["biotype"]],
+                        pattern = "^ig_",
+                        ignore.case = TRUE) ~ "ig",
+                    grepl(
+                        x = .data[["biotype"]],
+                        pattern = "^tr_",
+                        ignore.case = TRUE) ~ "tcr",
                     TRUE ~ "other")) %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "gene2symbol") {
-        genes(edb,
-              columns = c("gene_id", "symbol"),
-              return.type = "data.frame") %>%
+        genes(
+            edb,
+            columns = c("gene_id", "symbol"),
+            return.type = "data.frame") %>%
             dplyr::rename(ensgene = .data[["gene_id"]]) %>%
             # Ensure unique symbols (e.g. human, mouse)
             dplyr::mutate(symbol = make.unique(.data[["symbol"]])) %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        transcripts(edb,
-                    columns = c("tx_id", "gene_id"),
-                    return.type = "data.frame") %>%
-            dplyr::rename(enstxp = .data[["tx_id"]],
-                          ensgene = .data[["gene_id"]]) %>%
+        transcripts(
+            edb,
+            columns = c("tx_id", "gene_id"),
+            return.type = "data.frame") %>%
+            dplyr::rename(
+                enstxp = .data[["tx_id"]],
+                ensgene = .data[["gene_id"]]) %>%
             set_rownames(.[["enstxp"]])
     }
 }

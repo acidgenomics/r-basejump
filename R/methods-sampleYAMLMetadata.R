@@ -6,6 +6,10 @@
 #' @keywords internal
 #'
 #' @inherit sampleYAML
+#'
+#' @examples
+#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
+#' sampleYAMLMetadata(yaml)
 NULL
 
 
@@ -17,7 +21,9 @@ setMethod(
     "sampleYAMLMetadata",
     signature("list"),
     function(yaml) {
-        # Here `metadata` is the key, passed in as a symbol
-        sampleYAML(yaml, metadata) %>%
+        sampleYAML(
+            yaml = yaml,
+            keys = "metadata"
+        ) %>%
             .prepareSampleMetadata(factors = TRUE)
     })

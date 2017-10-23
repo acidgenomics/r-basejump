@@ -8,6 +8,7 @@
 #' @family Math Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param removeNA Remove `NA` values from calculations.
 #' @param zeroPropagate Allow propagation of zeroes.
 #'
@@ -24,20 +25,17 @@
 #' @return Numeric containing geometric means.
 #'
 #' @examples
-#' # Vector
+#' # integer
 #' vec <- seq(1L, 5L, 1L)
 #' geomean(vec)
-#'
 #' vec2 <- vec ^ 2L
 #' geomean(vec2)
 #'
-#'
-#' # Data frame
+#' # data.frame
 #' df <- data.frame(vec, vec2)
 #' geomean(df)
 #'
-#'
-#' # Matrix
+#' # matrix
 #' mat <- as.matrix(df)
 #' geomean(mat)
 NULL

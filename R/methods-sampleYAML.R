@@ -6,27 +6,28 @@
 #' @keywords internal
 #'
 #' @param yaml Project summary YAML list.
-#' @param ... Nested operator keys supplied as symbols.
+#' @param keys Nested operator keys, supplied as a character vector.
 #'
 #' @note Metrics are only generated for a standard RNA-seq run with aligned
 #'   counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 #'   output the same metrics into the YAML.
 #'
 #' @return [tibble].
+#'
+#' @examples
+#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
+#' sampleYAML(yaml, "metadata")
 NULL
 
 
 
 # Constructors ====
-.sampleYAML <- function(yaml, ...) {
+#' @importFrom data.table rbindlist
+.sampleYAML <- function(yaml, keys) {
     samples <- yaml[["samples"]]
     if (!length(samples)) {
-        stop("No sample information in YAML")
+        stop("No sample information in YAML", call. = FALSE)
     }
-
-    # Check for nested keys, otherwise return NULL
-    # Improve recursion method in a future update (lower priority)
-    keys <- dots(..., character = TRUE)
 
     if (!keys[[1]] %in% names(samples[[1]])) {
         return(NULL)
@@ -72,5 +73,6 @@ NULL
 #' @export
 setMethod(
     "sampleYAML",
-    signature("list"),
+    signature(yaml = "list",
+              keys = "character"),
     .sampleYAML)

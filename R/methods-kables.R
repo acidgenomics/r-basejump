@@ -7,6 +7,7 @@
 #' @family Report Utilities
 #'
 #' @inheritParams AllGenerics
+#'
 #' @param list List of column data (e.g. [data.frame], [matrix]).
 #' @param captions Optional character vector of table captions.
 #' @param force Force kable output.
@@ -14,17 +15,17 @@
 #' @return Knit tables, using [knitr::kable()].
 #' @export
 #'
-#' @seealso https://stackoverflow.com/a/35149103/3911732.
+#' @seealso [Stack Overflow](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' list(head(starwars), head(mtcars)) %>%
-#'     kables()
+#' list(head(starwars), head(mtcars)) %>% kables()
 NULL
 
 
 
 # Methods ====
 #' @rdname kables
+#' @importFrom knitr asis_output kable opts_knit
 #' @export
 setMethod(
     "kables",

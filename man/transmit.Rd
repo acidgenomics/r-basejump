@@ -9,7 +9,7 @@
 transmit(object, ...)
 
 \S4method{transmit}{character}(object, pattern, rename = NULL,
-  compress = FALSE, localDir = "data-raw")
+  compress = FALSE, localDir = "data-raw", quiet = FALSE)
 }
 \arguments{
 \item{object}{Remote directory URL. Currently supports FTP.}
@@ -24,6 +24,8 @@ transmit(object, ...)
 (\code{TRUE}/\code{FALSE})}
 
 \item{localDir}{Directory where to save file locally.}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 List of local files.

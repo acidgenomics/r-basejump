@@ -8,9 +8,13 @@
 #' @name saveData
 #' @family Write Utilities
 #'
+#' @importFrom rlang is_string
+#'
 #' @inheritParams base::save
+#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.
+#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
@@ -28,14 +32,17 @@
 saveData <- function(
     ...,
     dir = "data",
-    compress = TRUE) {
+    compress = TRUE,
+    quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
     }
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     names <- dots(..., character = TRUE)
     paths <- file.path(dir, paste0(names, ".rda"))
-    message(paste("Saving", toString(names), "to", dir))
+    if (!isTRUE(quiet)) {
+        message(paste("Saving", toString(names), "to", dir))
+    }
     mapply(save,
            list = names,
            file = paths,

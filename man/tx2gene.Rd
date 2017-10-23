@@ -13,17 +13,17 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object, release = "current")
+\S4method{tx2gene}{character}(object, release = "current", quiet = FALSE)
 
-\S4method{tx2gene}{data.frame}(object, release = "current")
+\S4method{tx2gene}{data.frame}(object, release = "current", quiet = FALSE)
 
-\S4method{tx2gene}{DataFrame}(object, release = "current")
+\S4method{tx2gene}{DataFrame}(object, release = "current", quiet = FALSE)
 
-\S4method{tx2gene}{dgCMatrix}(object, release = "current")
+\S4method{tx2gene}{dgCMatrix}(object, release = "current", quiet = FALSE)
 
-\S4method{tx2gene}{dgTMatrix}(object, release = "current")
+\S4method{tx2gene}{dgTMatrix}(object, release = "current", quiet = FALSE)
 
-\S4method{tx2gene}{matrix}(object, release = "current")
+\S4method{tx2gene}{matrix}(object, release = "current", quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -32,6 +32,8 @@ tx2gene(object, ...)
 
 \item{release}{Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (\code{current}).}
+
+\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as object.
@@ -46,7 +48,6 @@ c("ENSMUST00000000001",
   "ENSMUST00000114041") \%>\%
   tx2gene()
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:6L),
@@ -59,7 +60,6 @@ matrix(
                     c("sample1",
                       "sample2"))) \%>\%
     tx2gene()
-}
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
