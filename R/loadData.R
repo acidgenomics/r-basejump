@@ -14,9 +14,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' loadData(geneIDs, oligo)
-#' }
+#' # Use symbols, separated by commas
+#' loadData(synonyms)
 loadData <- function(
     ...,
     dir = "data",
