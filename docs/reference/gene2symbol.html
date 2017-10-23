@@ -94,26 +94,27 @@
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
 <span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
 <span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>)</pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='st'>"current"</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -139,6 +140,10 @@ manually declared.</p></td>
       <td><p>Ensembl release version. This function defaults to using the
 most current release available on AnnotationHub (<code>current</code>).</p></td>
     </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -159,9 +164,8 @@ most current release available on AnnotationHub (<code>current</code>).</p></td>
     <pre class="examples"><div class='input'><span class='co'># character</span>
 <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>,
   <span class='st'>"ENSMUSG00000000003"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>gene2symbol</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining Ensembl annotations with AnnotationHub and ensembldb</span></div><div class='output co'>#&gt; <span class='message'>/Users/mike//.AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2017-09-07</span></div><div class='output co'>#&gt; <span class='message'>EnsDB: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
+  <span class='fu'>gene2symbol</span>()</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>/Users/mike/.AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>2017-10-23</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57770: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
 #&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
 <span class='co'># matrix</span>
 <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>4L</span>),
@@ -172,8 +176,9 @@ most current release available on AnnotationHub (<code>current</code>).</p></td>
                       <span class='st'>"ENSMUSG00000000003"</span>),
                     <span class='fu'>c</span>(<span class='st'>"sample1"</span>,
                       <span class='st'>"sample2"</span>))) <span class='kw'>%&gt;%</span>
-    <span class='fu'>gene2symbol</span>()
-<span class='co'># }</span></pre>
+    <span class='fu'>gene2symbol</span>()</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>/Users/mike/.AnnotationHub</span></div><div class='output co'>#&gt; <span class='message'>2017-10-23</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57770: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt;       sample1 sample2
+#&gt; Gnai3       1       2
+#&gt; Pbsn        3       4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

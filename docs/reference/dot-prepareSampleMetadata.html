@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read Log File — readLogFile • basejump</title>
+<title>Sample Metadata Constructor — .prepareSampleMetadata • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,47 +83,33 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read Log File</h1>
+    <h1>Sample Metadata Constructor</h1>
     </div>
 
     
-    <p>Read Log File</p>
+    <p>Sample Metadata Constructor</p>
     
 
-    <pre class="usage"><span class='fu'>readLogFile</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readLogFile</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>.prepareSampleMetadata</span>(<span class='no'>metadata</span>, <span class='kw'>factors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Log file.</p></td>
+      <th>metadata</th>
+      <td><p>Metadata data.frame.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Object names as symbols.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+      <th>factors</th>
+      <td><p>Set columns that don't apply to sample names as factors.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Character vector.</p>
+    <p>data.frame.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>readLogFile</span>(<span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"bcbio-nextgen.log"</span>)) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; [1] "[2017-08-15T14:53Z] compute-a-16-44.o2.rc.hms.harvard.edu: System YAML configuration: /n/app/bcbio/dev/galaxy/bcbio_system.yaml"                       
-#&gt; [2] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Timing: organize samples"                                                                   
-#&gt; [3] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: ipython: organize_samples"                                                                  
-#&gt; [4] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Using input YAML configuration: /n/scratch2/XXX/indrop_rnaseq/config/indrop_rnaseq.yaml"    
-#&gt; [5] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Checking sample YAML configuration: /n/scratch2/XXX/indrop_rnaseq/config/indrop_rnaseq.yaml"
-#&gt; [6] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Testing minimum versions of installed programs"                                             </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -131,9 +117,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

@@ -110,7 +110,20 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Full latin scientific organism name.</p>
+    <p>Full latin organism name.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Currently supported organisms:</p><ul>
+<li><p><em>Homo sapiens</em> (human)</p></li>
+<li><p><em>Mus musculus</em> (mouse)</p></li>
+<li><p><em>Rattus norvegicus</em> (rat)</p></li>
+<li><p><em>Drosophila melanogaster</em> (fruitfly)</p></li>
+<li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
+<li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
+<li><p><em>Gallus gallus</em> (chicken)</p></li>
+<li><p><em>Ovis aries</em> (sheep)</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -123,12 +136,13 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># H. sapiens</span>
 <span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Hsapiens"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"human"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div></pre>
+#&gt; "Homo sapiens" </div><span class='co'># NOT RUN {</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)
+<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)
+<span class='fu'>detectOrganism</span>(<span class='st'>"Homo sapiens"</span>)
+<span class='fu'>detectOrganism</span>(<span class='st'>"Hsapiens"</span>)
+<span class='fu'>detectOrganism</span>(<span class='st'>"human"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -136,6 +150,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
