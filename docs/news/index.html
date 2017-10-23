@@ -88,6 +88,24 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-1-0" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-1-0" class="anchor"></a>basejump 0.1.0</h1>
+<ul>
+<li>Bump version to match bcbioRNASeq package.</li>
+<li>Improved unit testing coverage of <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code>.</li>
+<li>Added quiet mode support to functions that output messages, where applicable.</li>
+<li>Moved roxygen function imports to each file from <code>basejump-package.R</code> file.</li>
+<li>Deprecated <code><a href="../reference/deprecated.html">sampleDirs()</a></code> generic.</li>
+<li>Improved organism detection in <code><a href="../reference/detectOrganism.html">detectOrganism()</a></code> and added support for chicken genome.</li>
+<li>Clarified warning messages in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> to make sample loading with <code>loadRNASeq()</code> and <code>loadSingleCell()</code> in the bcbio packages less confusing.</li>
+<li>Improved <code>NULL</code> returns in <code>readDataVersions</code>, <code><a href="../reference/readLogFile.html">readLogFile()</a></code>, and <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> utility functions.</li>
+<li>Fixed export of <code>*GTF()</code> alias functions to simply wrap the <code>*GFF()</code> functions with S4 methods support.</li>
+<li>Improved lane split technical replicate handling in <code><a href="../reference/readSampleMetadataFile.html">readSampleMetadataFile()</a></code>.</li>
+<li>Improved <code><a href="../reference/camel.html">camel()</a></code> syntax for both lax and strict modes. Added <code><a href="../reference/camel.html">upperCamel()</a></code> function.</li>
+<li>Switched <code>str_()</code> to base <code>grep()</code> and <code>gsub()</code> in internal functions.</li>
+</ul>
+</div>
     <div id="basejump-0-0-25" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-0-25" class="anchor"></a>basejump 0.0.25</h1>
@@ -325,6 +343,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-1-0">0.1.0</a></li>
         <li><a href="#basejump-0-0-25">0.0.25</a></li>
         <li><a href="#basejump-0-0-24">0.0.24</a></li>
         <li><a href="#basejump-0-0-23">0.0.23</a></li>
