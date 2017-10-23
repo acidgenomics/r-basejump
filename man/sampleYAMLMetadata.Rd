@@ -20,7 +20,7 @@ sampleYAMLMetadata(yaml, ...)
 Sample Metadata from YAML
 }
 \examples{
-yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 sampleYAMLMetadata(yaml)
 }
 \seealso{

@@ -36,7 +36,7 @@ Read Sample Metadata File
 \examples{
 # Demultiplexed FASTQ
 readSampleMetadataFile(
-    file.path(testDataURL, "metadata_demultiplexed.xlsx"))
+    "http://basejump.seq.cloud/metadata_demultiplexed.xlsx")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},

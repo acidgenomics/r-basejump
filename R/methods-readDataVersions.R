@@ -12,7 +12,7 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' readDataVersions(file.path(testDataURL, "data_versions.csv"))
+#' readDataVersions("http://basejump.seq.cloud/data_versions.csv")
 NULL
 
 

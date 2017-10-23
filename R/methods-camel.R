@@ -10,7 +10,7 @@
 #'   example.
 #'
 #' @examples
-#' loadRemoteData(file.path(testDataURL, "makeNames.rda"))
+#' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
 #'
 #' # Character vector
 #' print(makeNames$vec)

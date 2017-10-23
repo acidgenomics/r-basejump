@@ -49,7 +49,7 @@ objects supporting name assignments. They return the object without
 modification of the underlying data.
 }
 \examples{
-loadRemoteData(file.path(testDataURL, "makeNames.rda"))
+loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
 
 # Character vector
 snake(makeNames$vec)

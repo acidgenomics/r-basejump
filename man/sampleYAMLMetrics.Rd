@@ -20,7 +20,7 @@ sampleYAMLMetrics(yaml, ...)
 Sample Metrics from YAML File
 }
 \examples{
-yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 sampleYAMLMetrics(yaml) \%>\% str()
 }
 \seealso{

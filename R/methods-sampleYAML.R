@@ -15,7 +15,7 @@
 #' @return [tibble].
 #'
 #' @examples
-#' yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 #' sampleYAML(yaml, "metadata")
 NULL
 

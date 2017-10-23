@@ -54,7 +54,7 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-loadRemoteData(file.path(testDataURL, "makeNames.rda"))
+loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
 
 # Character vector
 print(makeNames$vec)

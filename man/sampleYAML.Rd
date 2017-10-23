@@ -27,7 +27,7 @@ counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 output the same metrics into the YAML.
 }
 \examples{
-yaml <- readYAML(file.path(testDataURL, "project-summary.yaml"))
+yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
 sampleYAML(yaml, "metadata")
 }
 \seealso{
