@@ -17,6 +17,8 @@ prepareSummarizedExperiment(assays, ...)
 dimensions. Counts can be passed in either dense (\code{matrix}) or sparse
 (\code{dgCMatrix}, \code{dgTMatrix}) format.}
 
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
 \item{rowData}{Object describing assay matrix rows. Must support
 \code{\link[base:dim]{base::dim()}}.}
 
