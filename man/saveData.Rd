@@ -4,12 +4,15 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = "data", compress = TRUE, quiet = FALSE)
+saveData(..., dir = "data", overwrite = TRUE, compress = TRUE,
+  quiet = FALSE)
 }
 \arguments{
 \item{...}{Object names as symbols.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
+
+\item{overwrite}{Overwrite existing file.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to

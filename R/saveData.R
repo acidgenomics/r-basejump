@@ -14,6 +14,7 @@
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to **data**.
+#' @param overwrite Overwrite existing file.
 #' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @note These function will *overwrite* existing saved data, following the
@@ -32,24 +33,31 @@
 saveData <- function(
     ...,
     dir = "data",
+    overwrite = TRUE,
     compress = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
     }
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    names <- dots(..., character = TRUE)
-    paths <- file.path(dir, paste0(names, ".rda"))
+    objectNames <- dots(..., character = TRUE)
+    files <- file.path(dir, paste0(objectNames, ".rda"))
+    names(files) <- objectNames
+    # If overwrite = FALSE, message skipped files
+    if (identical(overwrite, FALSE) &
+        any(file.exists(files))) {
+        skip <- files[file.exists(files)]
+        message(paste("Skipping", toString(names(skip))))
+        files <- files[!file.exists(files)]
+    }
     if (!isTRUE(quiet)) {
-        message(paste("Saving", toString(names), "to", dir))
+        message(paste("Saving", toString(names(files)), "to", dir))
     }
     mapply(save,
-           list = names,
-           file = paths,
+           list = names(files),
+           file = files,
            MoreArgs = list(envir = parent.frame(),
                            compress = compress))
-    # Silently return the file paths as a named character vector. This can be
-    # useful for piping commands.
-    names(paths) <- names
-    invisible(paths)
+    # Silently return the file paths as a named character vector
+    invisible(files)
 }
