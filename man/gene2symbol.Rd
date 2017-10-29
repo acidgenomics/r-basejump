@@ -59,7 +59,6 @@ c("ENSMUSG00000000001",
   "ENSMUSG00000000003") \%>\%
   gene2symbol()
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:4L),
@@ -71,7 +70,6 @@ matrix(
                     c("sample1",
                       "sample2"))) \%>\%
     gene2symbol()
-}
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

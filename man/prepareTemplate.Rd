@@ -39,7 +39,6 @@ versions from the package website.
 File download utility for RMarkdown knit reports.
 }
 \examples{
-\dontrun{
 # Load the shared files from basejump
 prepareTemplate()
 
@@ -50,7 +49,6 @@ prepareTemplate(c("setup.R", "_header.Rmd"))
 prepareTemplate(
     sourceDir = system.file("rmarkdown/shared",
                             package = "bcbioSingleCell"))
-}
 }
 \seealso{
 Other Infrastructure Utilities: \code{\link{detectHPC}}

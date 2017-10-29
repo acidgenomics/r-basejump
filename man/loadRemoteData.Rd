@@ -21,7 +21,7 @@ Silently return loaded object name.
 Load a remote R binary file.
 }
 \examples{
-loadRemoteData(file.path(testDataURL, "mtcars.rda"))
+loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{readFileByExtension}},

@@ -7,6 +7,9 @@
 #' @inheritParams AllGenerics
 #'
 #' @return Transcript identifiers without version numbers.
+#'
+#' @examples
+#' stripTranscriptVersions("ENSMUST00000000001.1")
 NULL
 
 

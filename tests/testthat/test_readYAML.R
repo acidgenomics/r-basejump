@@ -1,7 +1,7 @@
 context("readYAML")
 
 test_that("bcbio project summary", {
-    yaml <- file.path(testDataURL, "project-summary.yaml") %>%
+    yaml <- "http://basejump.seq.cloud/project-summary.yaml" %>%
         readYAML(quiet = TRUE)
     expect_equal(
         class(yaml),
@@ -28,7 +28,7 @@ test_that("'.yml' file support", {
 
 test_that("unsupported file type", {
     expect_error(
-        readYAML(file.path(testDataURL, "mtcars.csv"), quiet = TRUE),
+        readYAML("http://basejump.seq.cloud/mtcars.csv", quiet = TRUE),
         "YAML file must have '.yaml' or '.yml' extension"
     )
 })

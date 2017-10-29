@@ -19,7 +19,7 @@
 #' @examples
 #' # Demultiplexed FASTQ
 #' readSampleMetadataFile(
-#'     file.path(testDataURL, "metadata_demultiplexed.xlsx"))
+#'     "http://basejump.seq.cloud/metadata_demultiplexed.xlsx")
 NULL
 
 

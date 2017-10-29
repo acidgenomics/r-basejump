@@ -93,7 +93,7 @@
     <pre class="usage"><span class='fu'>readLogFile</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readLogFile</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readLogFile</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -102,6 +102,14 @@
       <th>object</th>
       <td><p>Log file.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Object names as symbols.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -109,6 +117,13 @@
     <p>Character vector.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>readLogFile</span>(<span class='st'>"http://basejump.seq.cloud/bcbio-nextgen.log"</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; [1] "[2017-08-15T14:53Z] compute-a-16-44.o2.rc.hms.harvard.edu: System YAML configuration: /n/app/bcbio/dev/galaxy/bcbio_system.yaml"                       
+#&gt; [2] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Timing: organize samples"                                                                   
+#&gt; [3] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: ipython: organize_samples"                                                                  
+#&gt; [4] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Using input YAML configuration: /n/scratch2/XXX/indrop_rnaseq/config/indrop_rnaseq.yaml"    
+#&gt; [5] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Checking sample YAML configuration: /n/scratch2/XXX/indrop_rnaseq/config/indrop_rnaseq.yaml"
+#&gt; [6] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Testing minimum versions of installed programs"                                             </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -116,7 +131,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

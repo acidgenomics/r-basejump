@@ -2,7 +2,7 @@ context("readProgramVersions")
 
 test_that("readProgramVersions", {
     versions <- readProgramVersions(
-        file.path(testDataURL, "programs.txt"),
+        "http://basejump.seq.cloud/programs.txt",
         quiet = TRUE)
     expect_true(tibble::is_tibble(versions))
     expect_equal(

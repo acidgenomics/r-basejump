@@ -1,6 +1,6 @@
 context("readGFF")
 
-mousefile <- file.path(testDataURL, "mmusculus.gtf")
+mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
 mouse <- readGFF(mousefile, quiet = TRUE)
 
 test_that("mouse", {
@@ -12,9 +12,8 @@ test_that("mouse", {
 })
 
 test_that("fruitfly", {
-    fruitfly <- readGFF(
-        file.path(testDataURL, "dmelanogaster.gtf"),
-        quiet = TRUE)
+    fruitfly <- readGFF("http://basejump.seq.cloud/dmelanogaster.gtf",
+                        quiet = TRUE)
     # Check for 9 columns
     expect_equal(
          ncol(fruitfly),
@@ -25,17 +24,13 @@ test_that("fruitfly", {
 test_that("invalid files", {
     # Bad URL
     expect_error(
-        readGFF(
-            file.path(testDataURL, "mtcars.rda"),
-            quiet = TRUE),
+        readGFF("http://basejump.seq.cloud/mtcars.rda", quiet = TRUE),
         "GFF file failed to load"
     )
 
     # Bad GFF file
     expect_error(
-        readGFF(
-            file.path(testDataURL, "mtcars.tsv"),
-            quiet = TRUE),
+        readGFF("http://basejump.seq.cloud/mtcars.tsv", quiet = TRUE),
         "GFF file failed to load"
     )
 })

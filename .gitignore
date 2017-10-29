@@ -9,3 +9,8 @@ tests/textthat/*.rda
 tests/textthat/*.Rmd
 tests/textthat/*.yaml
 tests/textthat/setup.R
+/docs/reference/_footer.Rmd
+/docs/reference/_header.Rmd
+/docs/reference/_output.yaml
+/docs/reference/setup.R
+/docs/reference/bibliography.bib

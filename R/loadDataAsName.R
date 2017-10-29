@@ -12,6 +12,7 @@
 #' @export
 #'
 #' @examples
+#' # Use a named character vector as key value pair
 #' \dontrun{
 #' loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 #' }

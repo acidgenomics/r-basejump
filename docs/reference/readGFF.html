@@ -92,13 +92,10 @@
 
     <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>readGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>readGTF</span>(<span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readGFF</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readGTF</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -110,6 +107,10 @@
     <tr>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     
@@ -126,8 +127,8 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p>http://www.ensembl.org/info/website/upload/gff.html</p></li>
-<li><p>http://www.gencodegenes.org/gencodeformat.html</p></li>
+<li><p><a href='http://www.ensembl.org/info/website/upload/gff.html'>Ensembl</a></p></li>
+<li><p><a href='http://www.gencodegenes.org/gencodeformat.html'>Gencode</a></p></li>
 </ul>
     <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
   <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
@@ -136,9 +137,7 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>readGFF</span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; 'data.frame':	95 obs. of  9 variables:
+    <pre class="examples"><div class='input'><span class='fu'>readGFF</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; 'data.frame':	95 obs. of  9 variables:
 #&gt;  $ chromosome      : int  1 1 1 1 1 1 1 1 1 1 ...
 #&gt;  $ annotationSource: chr  "havana" "havana" "havana" "ensembl" ...
 #&gt;  $ featureType     : chr  "gene" "transcript" "exon" "gene" ...
