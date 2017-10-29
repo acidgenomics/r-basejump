@@ -13,8 +13,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' file.path(testDataURL, "mtcars.csv") %>%
-#'     .localOrRemoteFile()
+#' .localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
 #' }
 .localOrRemoteFile <- function(
     object,

@@ -1,8 +1,6 @@
 context("snake")
 
-loadRemoteData(
-    file.path(testDataURL, "makeNames.rda"),
-    quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/makeNames.rda", quiet = TRUE)
 
 test_that("character", {
     vec <- snake(makeNames[["vec"]])

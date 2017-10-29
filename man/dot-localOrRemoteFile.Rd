@@ -21,8 +21,7 @@ Dynamically Handle a Local or Remote File Path
 }
 \examples{
 \dontrun{
-file.path(testDataURL, "mtcars.csv") \%>\%
-    .localOrRemoteFile()
+.localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
 }
 }
 \keyword{internal}

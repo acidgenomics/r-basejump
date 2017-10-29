@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write Counts — writeCounts • basejump</title>
+<title>Snake Case — snake • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,60 +83,92 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write Counts</h1>
+    <h1>Snake Case</h1>
     </div>
 
     
-    <p>Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-written to disk as comma separated values (<code>.csv). Single-cell RNA-seq counts are written to disk in MatrixMarket format (</code>.mtx<code>), along with the sample barcodes (</code>.colnames<code>), and gene identifiers (</code>.rownames`).</p>
+    <p>Snake Case</p>
     
 
-    <pre class="usage"><span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>), <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>),
-  <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>object</th>
+      <td><p>Character vector or an object for which <code>names()</code> assignment
+will be meaningful.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Count matrices, passed in as dots.</p></td>
+      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
-      <th>dir</th>
-      <td><p>Output directory.</p></td>
-    </tr>
-    <tr>
-      <th>gzip</th>
-      <td><p>Compress the counts file using gzip.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+      <th>rownames</th>
+      <td><p>Apply sanitization on row names. This is not recommended
+by default, since rownames commonly contain gene identifiers that should
+not be modified.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>No value.</p>
+    <p>Object with syntatically valid names. For objects supporting
+<code><a href='http://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code>, the underlying data returns unchanged.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Automatic gzip compression is offered as a user-defined option. This setting
-is enabled by default to save disk space. Note that the
-<a href='http://readr.tidyverse.org/'>readr</a> package, built into
-<a href='https://www.rstudio.com/'>RStudio</a>, now natively supports compressed files.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other Write Utilities: <code><a href='saveData.html'>saveData</a></code></p>
+    <p>For unnamed character vectors, this function will sanitize the
+underlying values. Otherwise, it will set <code>names()</code> and/or <code>rownames()</code> on
+objects supporting name assignments. They return the object without
+modification of the underlying data.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>writeCounts</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Writing mtcars to results/counts</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/makeNames.rda"</span>)
+
+<span class='co'># Character vector</span>
+<span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] "hello_world"       "hello_world"       "rnai_clones"      
+#&gt;  [4] "n_count"           "tx2gene"           "tx2_gene_id"      
+#&gt;  [7] "g2m_score"         "worfdb_html_remap" "mazda_rx4"        
+#&gt; [10] "x123"              NA                 </div><div class='input'>
+<span class='co'># Named character vector</span>
+<span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
+#&gt; "hello world" "HELLO WORLD" </div><div class='input'>
+<span class='co'># data.frame</span>
+<span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; mazda_rx4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; mazda_rx4_wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; datsun_710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; hornet_4_drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; hornet_sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'>
+<span class='co'># Named list</span>
+<span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>lst</span>)</div><div class='output co'>#&gt; $item_a
+#&gt; [1] 1 2
+#&gt; 
+#&gt; $item_b
+#&gt; [1] 3 4
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -146,15 +178,9 @@ is enabled by default to save disk space. Note that the
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Michael Steinbaugh, Rory Kirchner
 
   </div>
 </div>

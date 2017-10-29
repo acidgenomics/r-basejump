@@ -53,7 +53,6 @@ Convert Gene Symbol to Ensembl Identifier
 # character
 symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 
-\dontrun{
 # matrix
 matrix(
     data = seq(1L:4L),
@@ -63,7 +62,6 @@ matrix(
     dimnames = list(c("Gnai3", "Pbsn"),
                     c("sample1", "sample2"))) \%>\%
     symbol2gene(organism = "Mus musculus")
-}
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

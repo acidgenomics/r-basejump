@@ -92,7 +92,7 @@ the newly assigned object, specified by <code>dir</code>.</p>
     
 
     <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
+  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,6 +122,10 @@ the newly assigned object, specified by <code>dir</code>.</p>
       <th>envir</th>
       <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
 the calling environment.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     

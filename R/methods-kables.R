@@ -15,11 +15,10 @@
 #' @return Knit tables, using [knitr::kable()].
 #' @export
 #'
-#' @seealso https://stackoverflow.com/a/35149103/3911732.
+#' @seealso [Stack Overflow](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' list(head(starwars), head(mtcars)) %>%
-#'     kables()
+#' list(head(starwars), head(mtcars)) %>% kables()
 NULL
 
 

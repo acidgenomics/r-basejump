@@ -12,15 +12,13 @@
 #'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
 #'
 #' @seealso
-#' - http://www.ensembl.org/info/website/upload/gff.html
-#' - http://www.gencodegenes.org/gencodeformat.html
+#' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
+#' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
 #'
 #' @return [data.frame].
 #'
 #' @examples
-#' file.path(testDataURL, "mmusculus.gtf") %>%
-#'     readGFF() %>%
-#'     str()
+#' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% str()
 NULL
 
 

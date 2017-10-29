@@ -32,14 +32,12 @@ feature, each containing 9 columns of data, plus optional track definition
 lines. The GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
-file.path(testDataURL, "mmusculus.gtf") \%>\%
-    readGFF() \%>\%
-    str()
+readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% str()
 }
 \seealso{
 \itemize{
-\item http://www.ensembl.org/info/website/upload/gff.html
-\item http://www.gencodegenes.org/gencodeformat.html
+\item \href{http://www.ensembl.org/info/website/upload/gff.html}{Ensembl}
+\item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},

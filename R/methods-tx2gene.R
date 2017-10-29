@@ -17,7 +17,6 @@
 #'   "ENSMUST00000114041") %>%
 #'   tx2gene()
 #'
-#' \dontrun{
 #' # matrix
 #' matrix(
 #'     data = seq(1L:6L),
@@ -30,7 +29,6 @@
 #'                     c("sample1",
 #'                       "sample2"))) %>%
 #'     tx2gene()
-#' }
 NULL
 
 

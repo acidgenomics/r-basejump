@@ -93,7 +93,7 @@
     <pre class="usage"><span class='fu'>readProgramVersions</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readProgramVersions</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>readProgramVersions</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -101,6 +101,14 @@
     <tr>
       <th>object</th>
       <td><p>Project directory path (character vector).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Object names as symbols.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
     </table>
     
@@ -116,6 +124,21 @@
   <code><a href='sampleYAMLMetrics.html'>sampleYAMLMetrics</a></code>, <code><a href='sampleYAML.html'>sampleYAML</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>readProgramVersions</span>(<span class='st'>"http://basejump.seq.cloud/programs.txt"</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 2
+#&gt;                    program         version
+#&gt;                      &lt;chr&gt;           &lt;chr&gt;
+#&gt;  1                bamtools           2.4.0
+#&gt;  2           bcbio-nextgen 1.0.4a0-06d3bb4
+#&gt;  3         bcbio-variation           0.2.6
+#&gt;  4                bcftools           1.4.1
+#&gt;  5                bedtools          2.26.0
+#&gt;  6               biobambam          2.0.72
+#&gt;  7 bioconductor-bubbletree           2.1.5
+#&gt;  8                 bowtie2           2.2.8
+#&gt;  9                     bwa          0.7.15
+#&gt; 10                  chanjo            &lt;NA&gt;
+#&gt; # ... with 41 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -125,7 +148,9 @@
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

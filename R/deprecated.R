@@ -95,3 +95,12 @@ metadataTable <- function() {
 pct <- function(...) {
     scales::percent(...)
 }
+
+
+
+# 0.1.0 ====
+#' @rdname deprecated
+#' @export
+sampleDirs <- function() {
+    .Deprecated()
+}

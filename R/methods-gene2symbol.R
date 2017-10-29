@@ -23,7 +23,6 @@
 #'   "ENSMUSG00000000003") %>%
 #'   gene2symbol()
 #'
-#' \dontrun{
 #' # matrix
 #' matrix(
 #'     data = seq(1L:4L),
@@ -35,7 +34,6 @@
 #'                     c("sample1",
 #'                       "sample2"))) %>%
 #'     gene2symbol()
-#' }
 NULL
 
 
