@@ -67,8 +67,11 @@ NULL
     }
 
     # Check for unsupported Ensembl release request
-    if (!is.null(release) & is.numeric(release)) {
-        if (release < 87L) {
+    if (!is.null(release)) {
+        if (release == "current") {
+            # Legacy code support (changed in 0.1.1)
+            release <- NULL
+        } else if (is.numeric(release) & release < 87L) {
             warning(paste(
                 "ensembldb only supports Ensembl releases 87 and newer.",
                 "Using current release instead."
