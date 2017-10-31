@@ -49,7 +49,7 @@ NULL
             "(e.g. 'control replicate 1', and 'sampleName' for multiplexed",
             "sample names (i.e. inDrop barcoded samples)."
         ), call. = FALSE)
-        metadata <- dplyr::rename(metadata, fileName = .data[["samplename"]])
+        metadata <- rename(metadata, fileName = .data[["samplename"]])
     }
 
     # Check for basic required columns
@@ -85,8 +85,8 @@ NULL
     metadata <- metadata %>%
         # Valid rows must contain `description` and `sampleName`. Imported Excel
         # files can contain empty rows, so this helps correct that problem.
-        dplyr::filter(!is.na(.data[["description"]])) %>%
-        dplyr::filter(!is.na(.data[["sampleName"]])) %>%
+        filter(!is.na(.data[["description"]])) %>%
+        filter(!is.na(.data[["sampleName"]])) %>%
         # Strip all NA rows and columns
         removeNA() %>%
         # Make colnames camelCase
@@ -100,7 +100,7 @@ NULL
     # Subset by pattern, if desired
     if (!is.null(pattern)) {
         metadata <- metadata %>%
-            dplyr::filter(grepl(x = .data[[patternCol]], pattern = pattern))
+            filter(grepl(x = .data[[patternCol]], pattern = pattern))
     }
 
     # Prepare metadata for lane split replicates. This step will expand rows
