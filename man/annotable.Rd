@@ -8,8 +8,8 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene",
-  release = "current", quiet = FALSE)
+\S4method{annotable}{character}(object, format = "gene", release = NULL,
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
@@ -20,8 +20,8 @@ character string.}
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
 \code{gene2symbol}.}
 
-\item{release}{Ensembl release version. This function defaults to using the
-most current release available on AnnotationHub (\code{current}).}
+\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
