@@ -13,22 +13,22 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism, release = "current",
+\S4method{symbol2gene}{character}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{symbol2gene}{data.frame}(object, organism, release = "current",
+\S4method{symbol2gene}{data.frame}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{symbol2gene}{DataFrame}(object, organism, release = "current",
+\S4method{symbol2gene}{DataFrame}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism, release = "current",
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism, release = "current",
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{symbol2gene}{matrix}(object, organism, release = "current",
+\S4method{symbol2gene}{matrix}(object, organism, release = NULL,
   quiet = FALSE)
 }
 \arguments{
@@ -38,8 +38,8 @@ symbol2gene(object, ...)
 
 \item{organism}{Organism name.}
 
-\item{release}{Ensembl release version. This function defaults to using the
-most current release available on AnnotationHub (\code{current}).}
+\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }

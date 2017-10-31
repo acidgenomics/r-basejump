@@ -15,8 +15,8 @@
 #'   character string.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
-#' @param release Ensembl release version. This function defaults to using the
-#'   most current release available on AnnotationHub (`current`).
+#' @param release Ensembl release version. If `NULL`, defaults to using the most
+#'   current release available on AnnotationHub.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
@@ -42,7 +42,7 @@ NULL
 .annotable <- function(
     object,
     format = "gene",
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -67,15 +67,17 @@ NULL
     }
 
     # Check for unsupported Ensembl release request
-    if (is.numeric(release) & release < 87L) {
-        warning(paste(
-            "ensembldb only supports Ensembl releases 87 and newer.",
-            "Using current release instead."
-        ), call. = FALSE)
-        release <- "current"
+    if (!is.null(release) & is.numeric(release)) {
+        if (release < 87L) {
+            warning(paste(
+                "ensembldb only supports Ensembl releases 87 and newer.",
+                "Using current release instead."
+            ), call. = FALSE)
+            release <- NULL
+        }
     }
 
-    if (release == "current") {
+    if (is.null(release)) {
         ahDb <- query(
             ah,
             pattern = c(organism, "EnsDb"),
