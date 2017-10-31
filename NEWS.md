@@ -4,6 +4,8 @@
 - Bug fix for `readDataVersions()`, which shouldn't have the column types defined, using `col_types = "ccT"`.
 - Improved key value pair method for `loadDataAsName()`. Now rather than using a named character vector for the `mappings` argument, the user can simply pass the key value pairs in as dots. For example, `newName1 = "oldName1", newName2 = "oldName2"`. The legacy `mappings` method will still work, as long as the dots argument is a length of 1.
 - Ensembl release version now defaults to `NULL` instead of `current` for `annotable()`, `gene2symbol()`, `symbol2gene()` and `tx2gene()` functions.
+- Allow rowData to be left unset in `prepareSummarizedExperiment()`. This is useful for setting
+up objects that don't contain gene annotations.
 
 
 

@@ -9,8 +9,7 @@
 \usage{
 prepareSummarizedExperiment(assays, ...)
 
-\S4method{prepareSummarizedExperiment}{list}(assays, rowData, colData,
-  metadata = NULL)
+\S4method{prepareSummarizedExperiment}{list}(assays, rowData, colData, metadata)
 }
 \arguments{
 \item{assays}{List containing RNA-seq count matrices with matching
