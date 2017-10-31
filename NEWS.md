@@ -1,3 +1,9 @@
+# basejump 0.1.1
+
+- Bug fix for `readDataVersions()`, which shouldn't have the column types defined, using `col_types = "ccT"`.
+
+
+
 # basejump 0.1.0
 
 - Bump version to match bcbioRNASeq package.
