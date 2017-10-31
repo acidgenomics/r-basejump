@@ -8,12 +8,14 @@
 \usage{
 prepareAnnotable(object, ...)
 
-\S4method{prepareAnnotable}{data.frame}(object)
+\S4method{prepareAnnotable}{data.frame}(object, dropExtraCols = TRUE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{dropExtraCols}{Drop extra columns.}
 }
 \value{
 \link{data.frame}.
@@ -30,4 +32,7 @@ useful for standardizing a user-defined annotable, such as the output
 from Stephen Turner's annotables package. The annotables package has support
 for Homo sapiens GRCh37/hg19, which currently isn't supported in
 AnnotationHub.
+}
+\author{
+Broad class definitions by Rory Kirchner.
 }

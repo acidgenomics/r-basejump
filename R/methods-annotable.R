@@ -6,7 +6,6 @@
 #'
 #' @rdname annotable
 #' @name annotable
-#' @author Broad class definitions by Rory Kirchner.
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams AllGenerics
@@ -114,10 +113,11 @@ NULL
     if (format == "gene") {
         genes(
             edb,
-            columns = c("gene_id",
-                        "symbol",  # `gene_name` also works
-                        "description",
-                        "gene_biotype"),
+            columns = c(
+                "gene_id",
+                "symbol",  # `gene_name` also works
+                "description",
+                "gene_biotype"),
             return.type = "data.frame") %>%
             rename(
                 ensgene = .data[["gene_id"]],
