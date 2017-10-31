@@ -1,5 +1,6 @@
 # basejump 0.1.1
 
+- Added overwrite support for `saveData()`. Now will skip on existing files when `overwrite = FALSE`.
 - Bug fix for `readDataVersions()`, which shouldn't have the column types defined, using `col_types = "ccT"`.
 
 
