@@ -47,7 +47,4 @@ Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
-\author{
-Broad class definitions by Rory Kirchner.
-}
 \concept{Gene Annotation Utilities}
