@@ -2,7 +2,7 @@
 #'
 #' @rdname prepareAnnotable
 #' @name prepareAnnotable
-#' @author Broad class definitions by Rory Kirchner.
+#' @author Broad class definitions by Rory Kirchner
 #'
 #' @description
 #' Standardize a user-defined annotable:
