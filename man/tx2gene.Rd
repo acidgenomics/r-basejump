@@ -13,25 +13,25 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{character}(object, release = NULL, quiet = FALSE)
 
-\S4method{tx2gene}{data.frame}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{data.frame}(object, release = NULL, quiet = FALSE)
 
-\S4method{tx2gene}{DataFrame}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{DataFrame}(object, release = NULL, quiet = FALSE)
 
-\S4method{tx2gene}{dgCMatrix}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{dgCMatrix}(object, release = NULL, quiet = FALSE)
 
-\S4method{tx2gene}{dgTMatrix}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{dgTMatrix}(object, release = NULL, quiet = FALSE)
 
-\S4method{tx2gene}{matrix}(object, release = "current", quiet = FALSE)
+\S4method{tx2gene}{matrix}(object, release = NULL, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{release}{Ensembl release version. This function defaults to using the
-most current release available on AnnotationHub (\code{current}).}
+\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }

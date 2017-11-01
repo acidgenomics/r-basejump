@@ -13,22 +13,22 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, organism = NULL,
-  release = "current", quiet = FALSE)
+\S4method{gene2symbol}{character}(object, organism = NULL, release = NULL,
+  quiet = FALSE)
 
-\S4method{gene2symbol}{data.frame}(object, organism = NULL,
-  release = "current", quiet = FALSE)
+\S4method{gene2symbol}{data.frame}(object, organism = NULL, release = NULL,
+  quiet = FALSE)
 
-\S4method{gene2symbol}{DataFrame}(object, organism = NULL,
-  release = "current", quiet = FALSE)
+\S4method{gene2symbol}{DataFrame}(object, organism = NULL, release = NULL,
+  quiet = FALSE)
 
-\S4method{gene2symbol}{dgCMatrix}(object, organism = NULL,
-  release = "current", quiet = FALSE)
+\S4method{gene2symbol}{dgCMatrix}(object, organism = NULL, release = NULL,
+  quiet = FALSE)
 
-\S4method{gene2symbol}{dgTMatrix}(object, organism = NULL,
-  release = "current", quiet = FALSE)
+\S4method{gene2symbol}{dgTMatrix}(object, organism = NULL, release = NULL,
+  quiet = FALSE)
 
-\S4method{gene2symbol}{matrix}(object, organism = NULL, release = "current",
+\S4method{gene2symbol}{matrix}(object, organism = NULL, release = NULL,
   quiet = FALSE)
 }
 \arguments{
@@ -42,8 +42,8 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{release}{Ensembl release version. This function defaults to using the
-most current release available on AnnotationHub (\code{current}).}
+\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }

@@ -4,13 +4,12 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(mappings, dir = "data", envir = parent.frame())
+loadDataAsName(..., dir = "data", envir = parent.frame())
 }
 \arguments{
-\item{mappings}{Named character vector to define mappings. The name defines
-the new name of the object in the environment, whereas the value in the
-vector denotes the original object name. This is designed to function
-like a key value pair.}
+\item{...}{Key value pairs, defining the name mappings. The argument name
+defines the new name of the object in the environment, whereas the value
+(string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
 
@@ -23,7 +22,12 @@ Silently return named character vector of file paths.
 Load Data File as Name
 }
 \examples{
-# Use a named character vector as key value pair
+# New dots method (>= 0.1.1)
+\dontrun{
+loadDataAsName(foo = "mtcars", bar = "starwars")
+}
+
+# Legacy named character vector mappings method
 \dontrun{
 loadDataAsName(c(foo = "mtcars", bar = "starwars"))
 }

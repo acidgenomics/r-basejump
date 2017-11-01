@@ -85,7 +85,7 @@ NULL
     assays,
     rowData,
     colData,
-    metadata = NULL) {
+    metadata) {
     # Assays ====
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
@@ -124,40 +124,51 @@ NULL
     }
 
     # rowData ====
-    if (is.null(dim(rowData))) {
-        stop("rowData must support 'dim()'", call. = FALSE)
+    # Alow rowData to be left unset
+    if (missing(rowData)) {
+        rowData <- NULL
     }
-    rowData <- as.data.frame(rowData)
-    # Handle tibble rownames
-    if (!has_rownames(rowData) &
-        "rowname" %in% colnames(rowData)) {
-        rowData <- column_to_rownames(rowData)
-    }
-    if (!has_rownames(rowData)) {
-        stop("rowData missing rownames", call. = FALSE)
-    }
-    # Check for unannotated genes not found in annotable. This typically
-    # includes gene identifiers that are now deprecated on Ensembl and/or
-    # FASTA spike-in identifiers. Warn on detection rather than stopping.
-    if (!all(rownames(assay) %in% rownames(rowData))) {
-        unannotatedGenes <- setdiff(rownames(assay), rownames(rowData)) %>%
-            sort()
-        warning(paste(
-            "Unannotated genes detected in counts matrix",
-            paste0("(", pct(length(unannotatedGenes) / nrow(assay)), ")")
-            ), call. = FALSE)
-    } else {
+    if (is.null(rowData)) {
         unannotatedGenes <- NULL
-    }
+    } else {
+        if (is.null(dim(rowData))) {
+            stop("rowData must support 'dim()'", call. = FALSE)
+        }
+        rowData <- as.data.frame(rowData)
+        # Handle tibble rownames
+        if (!has_rownames(rowData) &
+            "rowname" %in% colnames(rowData)) {
+            rowData <- column_to_rownames(rowData)
+        }
+        if (!has_rownames(rowData)) {
+            stop("rowData missing rownames", call. = FALSE)
+        }
+        # Check for unannotated genes not found in annotable. This typically
+        # includes gene identifiers that are now deprecated on Ensembl and/or
+        # FASTA spike-in identifiers. Warn on detection rather than stopping.
+        if (!all(rownames(assay) %in% rownames(rowData))) {
+            unannotatedGenes <- setdiff(rownames(assay), rownames(rowData)) %>%
+                sort()
+            warning(paste(
+                "Unannotated genes detected in counts matrix",
+                paste0("(", pct(length(unannotatedGenes) / nrow(assay)), ")")
+            ), call. = FALSE)
+        } else {
+            unannotatedGenes <- NULL
+        }
 
-    # Fit the annotable annotations to match the number of rows
-    # (genes/transcripts) present in the counts matrix
-    rowData <- rowData %>%
-        .[rownames(assay), , drop = FALSE] %>%
-        set_rownames(rownames(assay)) %>%
-        as("DataFrame")
+        # Fit the annotable annotations to match the number of rows
+        # (genes/transcripts) present in the counts matrix
+        rowData <- rowData %>%
+            .[rownames(assay), , drop = FALSE] %>%
+            set_rownames(rownames(assay)) %>%
+            as("DataFrame")
+    }
 
     # colData ====
+    if (missing(colData) | is.null(colData)) {
+        stop("colData is required", call. = FALSE)
+    }
     if (is.null(dim(colData))) {
         stop("colData must support 'dim()'", call. = FALSE)
     }
@@ -183,7 +194,7 @@ NULL
         as("DataFrame")
 
     # Metadata ====
-    if (is.null(metadata)) {
+    if (missing(metadata)) {
         metadata <- list()
     } else {
         if (!is(metadata, "list")) {

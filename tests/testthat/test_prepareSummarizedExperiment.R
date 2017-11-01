@@ -41,11 +41,11 @@ coldata <- data.frame(
     age = c(3L, 6L, 3L, 6L),
     row.names = colnames(mat))
 se <- prepareSummarizedExperiment(
-    assays = list(mat),
+    assays = list(assay = mat),
     rowData = rowdata,
     colData = coldata)
 
-test_that("valid summarizedexperiment", {
+test_that("Valid SummarizedExperiment", {
     expect_equal(
         dim(se),
         c(4L, 4L))
@@ -57,7 +57,40 @@ test_that("valid summarizedexperiment", {
           "devtoolsSessionInfo"))
 })
 
-test_that("ensure assays requires a list", {
+test_that("rowData missing", {
+    norowdata <- prepareSummarizedExperiment(
+        assays = list(assay = mat),
+        colData = coldata)
+    emptydf <- DataFrame(row.names = seq(1:4))
+    rownames(emptydf) <- NULL
+    expect_equal(
+        slot(norowdata, "elementMetadata"),
+        emptydf
+    )
+    # Rownames should still be set though
+    expect_equal(
+        slot(norowdata, "NAMES"),
+        c("ENSMUSG00000000001",
+          "ENSMUSG00000000003",
+          "ENSMUSG00000000028",
+          "ENSMUSG00000000031")
+    )
+})
+
+test_that("colData missing", {
+    expect_error(
+        prepareSummarizedExperiment(assays = list(assay = mat)),
+        "argument \"colData\" is missing, with no default"
+    )
+    expect_error(
+        prepareSummarizedExperiment(
+            assays = list(assay = mat),
+            colData = NULL),
+        "colData is required"
+    )
+})
+
+test_that("Ensure 'assays()' requires a list", {
     expect_error(
         prepareSummarizedExperiment(
             assays = mat,
@@ -68,12 +101,12 @@ test_that("ensure assays requires a list", {
 })
 
 # This checks to see if there are any dashes in the names
-test_that("enforce strict names", {
+test_that("Enforce strict names", {
     matbadrows <- mat
     rownames(matbadrows) <- paste0(rownames(matbadrows), "-XXX")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matbadrows),
+            assays = list(assay = matbadrows),
             rowData = rowdata,
             colData = coldata),
         "Rownames are not valid")
@@ -81,13 +114,13 @@ test_that("enforce strict names", {
     colnames(matbadcols) <- paste0(colnames(matbadcols), "-XXX")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matbadcols),
+            assays = list(assay = matbadcols),
             rowData = rowdata,
             colData = coldata),
         "Colnames are not valid")
 })
 
-test_that("duplicate names", {
+test_that("Duplicate names", {
     matduperows <- mat
     rownames(matduperows) <- c(
         "ENSMUSG00000000001",
@@ -96,7 +129,7 @@ test_that("duplicate names", {
         "ENSMUSG00000000003")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matduperows),
+            assays = list(assay = matduperows),
             rowData = rowdata,
             colData = coldata),
         "Non-unique rownames")
@@ -108,7 +141,7 @@ test_that("duplicate names", {
         "sample_2")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matdupecols),
+            assays = list(assay = matdupecols),
             rowData = rowdata,
             colData = coldata),
         "Non-unique colnames")
@@ -124,22 +157,22 @@ test_that("'dim' pass-in failure", {
         "Assay object must support 'dim\\(\\)'")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(mat),
+            assays = list(assay = mat),
             rowData = rowdata,
             colData = c(xxx = "yyy")),
         "colData must support 'dim\\(\\)'")
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(mat),
+            assays = list(assay = mat),
             rowData = c(xxx = "yyy"),
             colData = coldata),
         "rowData must support 'dim\\(\\)'")
 })
 
-test_that("invalid metadata", {
+test_that("Invalid metadata", {
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(mat),
+            assays = list(assay = mat),
             rowData = rowdata,
             colData = coldata,
             metadata = Sys.Date()),
@@ -150,19 +183,19 @@ test_that("dimension mismatch", {
     matextracol <- cbind(mat, "sample_5" = seq(17L, 20L))
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matextracol),
+            assays = list(assay = matextracol),
             rowData = rowdata,
             colData = coldata),
         "Sample mismatch detected")
     matextrarow <- rbind(mat, "ENSMUSG00000000037" = seq(17L, 20L))
     expect_warning(
         prepareSummarizedExperiment(
-            assays = list(matextrarow),
+            assays = list(assay = matextrarow),
             rowData = rowdata,
             colData = coldata),
         "Unannotated genes detected in counts matrix")
     seextrarow <- suppressWarnings(prepareSummarizedExperiment(
-        assays = list(matextrarow),
+        assays = list(assay = matextrarow),
         rowData = rowdata,
         colData = coldata
     ))
@@ -172,13 +205,13 @@ test_that("dimension mismatch", {
     )
 })
 
-test_that("missing rownames", {
+test_that("Missing rownames", {
     # Missing rownames
     matnorownames <- mat
     rownames(matnorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matnorownames),
+            assays = list(assay = matnorownames),
             rowData = rowdata,
             colData = coldata),
         "Assay missing rownames")
@@ -186,7 +219,7 @@ test_that("missing rownames", {
     colnames(matnocolnames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(matnocolnames),
+            assays = list(assay = matnocolnames),
             rowData = rowdata,
             colData = coldata),
         "Assay missing colnames")
@@ -194,7 +227,7 @@ test_that("missing rownames", {
     rownames(rowdatanorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(mat),
+            assays = list(assay = mat),
             rowData = rowdatanorownames,
             colData = coldata),
         "rowData missing rownames")
@@ -202,24 +235,23 @@ test_that("missing rownames", {
     rownames(coldatanorownames) <- NULL
     expect_error(
         prepareSummarizedExperiment(
-            assays = list(mat),
+            assays = list(assay = mat),
             rowData = rowdata,
             colData = coldatanorownames),
         "colData missing rownames")
 })
 
-test_that("deprecated", {
+test_that("Deprecated functions", {
     expect_warning(
         packageSE(
-            assays = list(mat),
+            assays = list(assay = mat),
             colData = coldata,
             rowData = rowdata),
         "Use 'prepareSummarizedExperiment' instead.")
     expect_warning(
         prepareSE(
-            assays = list(mat),
+            assays = list(assay = mat),
             colData = coldata,
             rowData = rowdata),
         "Use 'prepareSummarizedExperiment' instead.")
-
 })
