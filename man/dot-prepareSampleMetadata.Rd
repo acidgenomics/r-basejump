@@ -9,7 +9,8 @@
 \arguments{
 \item{metadata}{Metadata \link{data.frame}.}
 
-\item{factors}{Set columns that don't apply to sample names as factors.}
+\item{factors}{Set columns that don't apply to sample names as factors
+(\code{TRUE}/\code{FALSE}).}
 }
 \value{
 \link{data.frame}.
