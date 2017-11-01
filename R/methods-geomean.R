@@ -46,8 +46,6 @@ NULL
 .geomean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
-        warning("'geomean()' returns 'NaN' when negative numbers are present",
-                call. = FALSE)
         return(NaN)
     }
     if (isTRUE(zeroPropagate)) {
@@ -60,7 +58,18 @@ NULL
     }
 }
 
+
+
 .geomeanDim <- function(object) {
+    # Require that all columns are numeric (useful for data.frame)
+    numericCol <- vapply(object, is.numeric, FUN.VALUE = logical(1))
+    if (!all(numericCol)) {
+        # Return which columns aren't numeric
+        nonnumericCol <- colnames(object)[!numericCol]
+        stop(paste(
+            "Non-numeric columns:", toString(nonnumericCol)
+        ), call. = FALSE)
+    }
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
