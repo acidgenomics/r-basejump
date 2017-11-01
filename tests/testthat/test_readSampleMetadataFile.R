@@ -60,7 +60,9 @@ test_that("Demultiplexed FASTQ", {
             file.path(
                 "http://basejump.seq.cloud",
                 "sample_metadata",
-                "demultiplexed_with_sampleName.csv")
+                "demultiplexed_with_sampleName.csv"
+            ),
+            quiet = TRUE
         ),
         paste("Specify only 'description' and omit 'sampleName'",
               "for demultiplexed FASTQ file metadata")
