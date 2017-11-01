@@ -3,14 +3,20 @@
 #' Utility function that supports easy file matching and download from a remote
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
-#' @rdname transmit
-#' @name transmit
 #' @family Data Import and Project Utilities
+#'
+#' @importFrom R.utils gzip
+#' @importFrom RCurl getURL
+#' @importFrom readr read_lines
+#' @importFrom stats setNames
+#' @importFrom stringr str_extract str_subset
+#' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
 #'
-#' @param object Remote directory URL. Currently supports FTP.
+#' @param remoteDir Remote directory URL. Currently supports FTP. Works either
+#'   with or without the trailing slash.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
@@ -21,29 +27,18 @@
 #' @export
 #'
 #' @examples
-#' transmit("ftp://ftp.ensembl.org/pub/release-90",
-#'          pattern = "README",
-#'          rename = "ensembl_readme.txt",
-#'          compress = TRUE)
-NULL
-
-
-
-# Constructors ====
-#' @importFrom R.utils gzip
-#' @importFrom RCurl getURL
-#' @importFrom readr read_lines
-#' @importFrom stats setNames
-#' @importFrom stringr str_extract str_subset
-#' @importFrom utils download.file
-.transmit <- function(
-    object,
+#' transmit(
+#'     remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
+#'     pattern = "README",
+#'     rename = "ensembl_readme.txt",
+#'     compress = TRUE)
+transmit <- function(
+    remoteDir,
     pattern,
     rename = NULL,
     compress = FALSE,
     localDir = "data-raw",
     quiet = FALSE) {
-    remoteDir <- object
     if (!grepl(x = remoteDir, pattern = "ftp\\://")) {
         stop("FTP protocol not detected", call. = FALSE)
     }
@@ -110,13 +105,3 @@ NULL
     }) %>%
         setNames(remoteFileName)
 }
-
-
-
-# Methods ====
-#' @rdname transmit
-#' @export
-setMethod(
-    "transmit",
-    signature("character"),
-    .transmit)

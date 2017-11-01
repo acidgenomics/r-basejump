@@ -301,14 +301,6 @@ setGeneric("symbol2gene", function(object, ...) {
 
 
 
-#' @rdname transmit
-#' @export
-setGeneric("transmit", function(object, ...) {
-    standardGeneric("transmit")
-})
-
-
-
 #' @rdname tx2gene
 #' @export
 setGeneric("tx2gene", function(object, ...) {
