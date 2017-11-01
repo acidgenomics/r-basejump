@@ -149,6 +149,14 @@ setGeneric("mdList", function(object, ...) {
 
 
 
+#' @rdname prepareAnnotable
+#' @export
+setGeneric("prepareAnnotable", function(object, ...) {
+    standardGeneric("prepareAnnotable")
+})
+
+
+
 #' @rdname prepareSummarizedExperiment
 #' @export
 setGeneric("prepareSummarizedExperiment", function(assays, ...) {

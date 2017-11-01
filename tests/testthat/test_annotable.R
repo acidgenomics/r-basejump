@@ -1,9 +1,7 @@
 context("annotable")
 
 test_that("human", {
-    human <- annotable(
-        "Homo sapiens",
-        release = 88L)
+    human <- annotable("Homo sapiens", release = 88L)
     expect_equal(
         dim(human),
         c(64592L, 5L)
@@ -20,9 +18,7 @@ test_that("human", {
 
 test_that("mouse", {
     # Mouse
-    mouse <- annotable(
-        "Mus musculus",
-        release = 88L)
+    mouse <- annotable("Mus musculus", release = 88L)
     expect_equal(
         dim(mouse),
         c(51158L, 5L)
@@ -49,5 +45,13 @@ test_that("bad input", {
     expect_error(
         annotable("XXX"),
         "Failed to detect supported organism"
+    )
+})
+
+test_that("legacy", {
+    # Check for legacy code support using `release = "current"`
+    expect_equal(
+        annotable("Homo sapiens", release = "current", quiet = TRUE),
+        annotable("Homo sapiens", quiet = TRUE)
     )
 })

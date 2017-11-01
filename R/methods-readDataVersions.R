@@ -31,9 +31,5 @@ setMethod(
         if (is.null(file)) {
             return(NULL)
         }
-        read_csv(
-            file,
-            # c = character; T = datetime
-            col_types = "ccT",
-            progress = FALSE)
+        read_csv(file, progress = FALSE)
     })

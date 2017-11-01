@@ -37,7 +37,7 @@ NULL
 #' @importFrom rlang is_string
 .t2gvec <- function(
     object,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     # Prevent pass in of genomeBuild as primary object.
     # Improve this in a future update.
@@ -73,7 +73,7 @@ NULL
 
 .t2gdim <- function(
     object,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
         .t2gvec(

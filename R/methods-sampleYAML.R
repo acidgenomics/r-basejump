@@ -56,10 +56,9 @@ NULL
             camel(strict = FALSE) %>%
             .[unique(names(.))]
     }) %>%
-        # List can be coerced to data frame using [data.table::rbindlist()] or
-        # [dplyr::bind_rows()]. Some YAML files will cause [bind_rows()] to
-        # throw `Column XXX can't be converted from integer to character` errors
-        # on numeric data, whereas this doesn't happen with [rbindlist()].
+        # Some YAML files will cause `dplyr::bind_rows()` to throw
+        # `Column XXX can't be converted from integer to character` errors
+        # on numeric data, whereas this doesn't happen with `rbindlist()`.
         rbindlist(fill = TRUE) %>%
         as("tibble") %>%
         camel(strict = FALSE) %>%
