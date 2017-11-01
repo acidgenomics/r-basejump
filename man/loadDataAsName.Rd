@@ -4,7 +4,7 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(..., dir = "data", envir = parent.frame())
+loadDataAsName(..., dir = "data", ext = "rda", envir = parent.frame())
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. The argument name
@@ -12,6 +12,8 @@ defines the new name of the object in the environment, whereas the value
 (string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
 
 \item{dir}{Output directory. Defaults to \strong{data}.}
+
+\item{ext}{R data file extension. Defaults to \code{rda}.}
 
 \item{envir}{The environment where the data should be loaded.}
 }
@@ -23,12 +25,30 @@ Load Data File as Name
 }
 \examples{
 # New dots method (>= 0.1.1)
+# Simply specify the key-value pairs as arguments, and set the directory path
+# (`dir`) where the R data files saved. This example will load `mtcars.rda`
+# and `starwars.rda` files saved at `data/` as `newName1` and `newName2` in
+# the working environment.
 \dontrun{
-loadDataAsName(foo = "mtcars", bar = "starwars")
+loadDataAsName(
+    newName1 = "mtcars",
+    newName2 = "starwars",
+    dir = "data"
+)
 }
 
-# Legacy named character vector mappings method
+# Requesting the file path directly also works. In this case, the `dir`
+# argument wil be ignored.
 \dontrun{
-loadDataAsName(c(foo = "mtcars", bar = "starwars"))
+loadDataAsName(newName = "data/mtcars.rda")
+}
+
+# Legacy mappings method using a named character vector is still supported.
+\dontrun{
+loadDataAsName(
+    c(newName1 = "mtcars",
+      newName2 = "starwars"),
+    dir = "data"
+)
 }
 }
