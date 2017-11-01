@@ -43,7 +43,7 @@ NULL
 .g2svec <- function(
     object,
     organism = NULL,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     if (is_string(object)) {
         stop("gene2symbol conversion requires > 1 identifier",
@@ -95,7 +95,7 @@ NULL
 .g2sdim <- function(
     object,
     organism = NULL,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
         .g2svec(organism = organism,

@@ -35,7 +35,7 @@ NULL
 .s2gvec <- function(
     object,
     organism,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
@@ -84,7 +84,7 @@ NULL
 .s2gdim <- function(
     object,
     organism,
-    release = "current",
+    release = NULL,
     quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
         .s2gvec(organism = organism,
