@@ -1,6 +1,7 @@
 #' Sample Metadata Constructor
 #'
 #' @keywords internal
+#' @noRd
 #'
 #' @importFrom dplyr arrange everything mutate mutate_if select
 #' @importFrom magrittr set_rownames
