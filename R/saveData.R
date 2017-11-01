@@ -4,8 +4,6 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @rdname saveData
-#' @name saveData
 #' @family Write Utilities
 #'
 #' @importFrom rlang is_string
