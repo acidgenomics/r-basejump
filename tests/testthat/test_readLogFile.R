@@ -2,7 +2,9 @@ context("readLogFile")
 
 test_that("readLogFile", {
     log <- readLogFile(
-        "http://basejump.seq.cloud/bcbio-nextgen.log",
+        file.path("http://basejump.seq.cloud",
+                  "bcbio",
+                  "bcbio-nextgen.log"),
         quiet = TRUE)
     expect_true(is.character(log))
     expect_equal(
