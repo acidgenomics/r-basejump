@@ -1,12 +1,11 @@
 context("readYAML")
 
 test_that("bcbio project summary", {
-    yaml <- readYAML(
-        file.path(
-            "http://basejump.seq.cloud",
-            "bcbio",
-            "project-summary.yaml"),
-        quiet = TRUE)
+    url <- file.path(
+        "http://basejump.seq.cloud",
+        "bcbio",
+        "project-summary.yaml")
+    yaml <- readYAML(url, quiet = TRUE)
     expect_equal(
         class(yaml),
         "list"
@@ -14,6 +13,11 @@ test_that("bcbio project summary", {
     expect_equal(
         names(yaml),
         c("date", "upload", "bcbio_system", "samples")
+    )
+    # Check for message
+    expect_message(
+        readYAML(url),
+        "Reading project-summary.yaml"
     )
 })
 
