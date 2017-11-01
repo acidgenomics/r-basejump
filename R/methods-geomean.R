@@ -61,9 +61,6 @@ NULL
 }
 
 .geomeanDim <- function(object) {
-    if (is.null(dim(object))) {
-        stop("'object' must support 'dim()'", call. = FALSE)
-    }
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
