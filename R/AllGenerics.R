@@ -44,14 +44,6 @@ setGeneric("comp", function(object, ...) {
 
 
 
-#' @rdname detectHPC
-#' @export
-setGeneric("detectHPC", function(object, ...) {
-    standardGeneric("detectHPC")
-})
-
-
-
 #' @rdname detectOrganism
 #' @export
 setGeneric("detectOrganism", function(object, ...) {

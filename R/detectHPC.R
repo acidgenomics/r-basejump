@@ -2,17 +2,14 @@
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
-#' @rdname detectHPC
-#' @name detectHPC
 #' @family Infrastructure Utilities
 #'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
-#' @inheritParams AllGenerics
-#'
 #' @return Scheduler name if HPC is detected (e.g. LSF, SLURM), otherwise
 #'   `FALSE`.
+#' @export
 #'
 #' @seealso
 #' - `Sys.getenv()`.
@@ -22,22 +19,12 @@
 #'
 #' @examples
 #' detectHPC()
-NULL
-
-
-
-# Methods ====
-#' @rdname detectHPC
-#' @export
-setMethod(
-    "detectHPC",
-    signature("missing"),
-    function(object) {
-        if (!identical(Sys.getenv("LSF_ENVDIR"), "")) {
-            "LSF"
-        } else if (!identical(Sys.getenv("SLURM_CONF"), "")) {
-            "SLURM"
-        } else {
-            FALSE
-        }
-    })
+detectHPC <- function() {
+    if (!identical(Sys.getenv("LSF_ENVDIR"), "")) {
+        "LSF"
+    } else if (!identical(Sys.getenv("SLURM_CONF"), "")) {
+        "SLURM"
+    } else {
+        FALSE
+    }
+}
