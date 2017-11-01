@@ -10,10 +10,13 @@
 #' [readr](http://readr.tidyverse.org/) package, built into
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
-#' @rdname writeCounts
-#' @name writeCounts
 #' @family Write Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
+#'
+#' @importFrom Matrix writeMM
+#' @importFrom R.utils gzip
+#' @importFrom readr write_csv write_lines
+#' @importFrom rlang dots_list
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
@@ -26,16 +29,7 @@
 #'
 #' @examples
 #' writeCounts(mtcars)
-NULL
-
-
-
-# Constructors ====
-#' @importFrom Matrix writeMM
-#' @importFrom R.utils gzip
-#' @importFrom readr write_csv write_lines
-#' @importFrom rlang dots_list
-.writeCounts <- function(
+writeCounts <- function(
     ...,
     dir = file.path("results", "counts"),
     gzip = TRUE,
@@ -92,13 +86,3 @@ NULL
     }) %>%
         invisible()
 }
-
-
-
-# Methods ====
-#' @rdname writeCounts
-#' @export
-setMethod(
-    "writeCounts",
-    signature("..." = "ANY"),
-    .writeCounts)
