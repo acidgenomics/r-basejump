@@ -1,4 +1,4 @@
-#' Download External Dependency File
+#' Prepare R Markdown Template File
 #'
 #' If the required template dependency files aren't present, download latest
 #' versions from the package website.
