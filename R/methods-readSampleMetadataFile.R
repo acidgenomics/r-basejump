@@ -77,7 +77,7 @@ NULL
             stop(paste(
                 "Specify only 'description' and omit 'sampleName' for",
                 "demultiplexed FASTQ file metadata"
-            ))
+            ), call. = FALSE)
         }
         metadata[["sampleName"]] <- metadata[["description"]]
     }
