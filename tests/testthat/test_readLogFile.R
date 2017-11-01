@@ -15,3 +15,16 @@ test_that("readLogFile", {
               "/n/app/bcbio/dev/galaxy/bcbio_system.yaml")
     )
 })
+
+test_that("Missing file", {
+    expect_warning(
+        readLogFile("XXX.log"),
+        "XXX.log missing"
+    )
+    expect_equal(
+        suppressWarnings(
+            readLogFile("XXX.log")
+        ),
+        NULL
+    )
+})
