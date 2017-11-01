@@ -73,7 +73,7 @@ NULL
             release <- NULL
         } else if (is.numeric(release) & release < 87L) {
             warning(paste(
-                "ensembldb only supports Ensembl releases 87 and newer.",
+                "AnnotationHub only supports Ensembl releases 87 and newer.",
                 "Using current release instead."
             ), call. = FALSE)
             release <- NULL
