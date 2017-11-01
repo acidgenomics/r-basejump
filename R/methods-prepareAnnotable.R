@@ -54,11 +54,6 @@ NULL
         }
     }
 
-    # Now ensure that Ensembl identifiers are unique
-    if (any(duplicated(object[["ensgene"]]))) {
-        stop("Duplicate Ensembl identifiers detected", call. = FALSE)
-    }
-
     object %>%
         # Improve handling of `NA` uniques here
         fixNA() %>%
