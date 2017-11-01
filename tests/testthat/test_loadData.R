@@ -1,5 +1,10 @@
 context("loadData")
 
+utils::download.file(
+    url = "http://basejump.seq.cloud/mtcars.rda",
+    destfile = "mtcars.rda",
+    quiet = TRUE)
+
 test_that("loadData", {
     invisible <- loadData(mtcars, dir = getwd(), quiet = TRUE)
     expect_equal(
@@ -15,3 +20,5 @@ test_that("loadData", {
         "foobar missing"
     )
 })
+
+unlink("mtcars.rda")
