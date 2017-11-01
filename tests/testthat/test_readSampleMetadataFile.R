@@ -108,8 +108,14 @@ test_that("Legacy bcbio samplename column", {
         readSampleMetadataFile(file, quiet = TRUE)
     )
     expect_equal(
-        colnames(meta),
-        c("sampleID", "sampleName", "description", "fileName")
+        meta,
+        data.frame(
+            sampleID = "sample_1",           # sanitized
+            sampleName = "sample-1",         # matches description
+            description = "sample-1",        # unmodified
+            fileName = "sample-1.fastq.gz",  # renamed `samplename`
+            row.names = "sample_1"           # sanitized
+        )
     )
     expect_warning(
         readSampleMetadataFile(file, quiet = TRUE),
