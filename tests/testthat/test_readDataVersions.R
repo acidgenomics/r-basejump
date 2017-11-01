@@ -12,3 +12,16 @@ test_that("readDataVersions", {
         c("genome", "resource", "version")
     )
 })
+
+test_that("Missing file", {
+    expect_warning(
+        readDataVersions("XXX.csv"),
+        "XXX.csv missing"
+    )
+    expect_equal(
+        suppressWarnings(
+            readDataVersions("XXX.csv")
+        ),
+        NULL
+    )
+})
