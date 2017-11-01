@@ -56,4 +56,14 @@ test_that("Legacy named character method", {
     )
 })
 
+test_that("Bad environment", {
+    expect_error(
+        loadDataAsName(
+            newName = "mtcars.rda",
+            envir = "XXX"
+        ),
+        "'envir' must be an environment"
+    )
+})
+
 unlink(c("mtcars.rda", "starwars.rda"))
