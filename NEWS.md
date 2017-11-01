@@ -6,6 +6,7 @@
 - Ensembl release version now defaults to `NULL` instead of `current` for `annotable()`, `gene2symbol()`, `symbol2gene()` and `tx2gene()` functions.
 - Allow rowData to be left unset in `prepareSummarizedExperiment()`. This is useful for setting
 up objects that don't contain gene annotations.
+- Removed sample selection by pattern matching (`pattern`, `patternCol` arguments) in `readSampleMetadata()`. This feature wasn't fully baked and doesn't offer enough functionality to the user.
 
 
 
