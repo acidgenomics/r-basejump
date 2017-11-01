@@ -1,5 +1,14 @@
 context("loadDataAsName")
 
+utils::download.file(
+    url = "http://basejump.seq.cloud/mtcars.rda",
+    destfile = "mtcars.rda",
+    quiet = TRUE)
+utils::download.file(
+    url = "http://basejump.seq.cloud/starwars.rda",
+    destfile = "starwars.rda",
+    quiet = TRUE)
+
 test_that("Dot object key-value pair method", {
     # Short-hand method, using `dir` argument (preferred)
     loaded <- loadDataAsName(
@@ -46,3 +55,5 @@ test_that("Legacy named character method", {
         "foobar missing"
     )
 })
+
+unlink(c("mtcars.rda", "starwars.rda"))
