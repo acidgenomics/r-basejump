@@ -1,7 +1,11 @@
 context("readSampleMetadataFile")
 
 test_that("Demultiplexed FASTQ", {
-    file <- "http://basejump.seq.cloud/metadata_demultiplexed.xlsx"
+    file <- file.path(
+        "http://basejump.seq.cloud",
+        "sample_metadata",
+        "demultiplexed.xlsx"
+    )
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
     # Check that names are sanitized correctly
@@ -53,16 +57,47 @@ test_that("Demultiplexed FASTQ", {
     # Error on file containing redundant `description` and `sampleName` columns
     expect_error(
         readSampleMetadataFile(
-            file.path("http://basejump.seq.cloud",
-                      "demultiplexed_with_sampleName.csv")
+            file.path(
+                "http://basejump.seq.cloud",
+                "sample_metadata",
+                "demultiplexed_with_sampleName.csv")
         ),
         paste("Specify only 'description' and omit 'sampleName'",
               "for demultiplexed FASTQ file metadata")
     )
+
+    # Required column check failure
+    expect_error(
+        readSampleMetadataFile(
+            file.path(
+                "http://basejump.seq.cloud",
+                "sample_metadata",
+                "demultiplexed_missing_cols.csv"
+            ),
+            quiet = TRUE
+        ),
+        "Required columns: fileName, description"
+    )
+
+    # Duplicated description
+    expect_error(
+        readSampleMetadataFile(
+            file.path("http://basejump.seq.cloud",
+                      "sample_metadata",
+                      "demultiplexed_duplicated_description.csv"
+            ),
+            quiet = TRUE
+        ),
+        "'description' column must be unique for demultiplexed files"
+    )
 })
 
 test_that("Multiplexed FASTQ", {
-    file <- "http://basejump.seq.cloud/metadata_multiplexed.xlsx"
+    file <- file.path(
+        "http://basejump.seq.cloud",
+        "sample_metadata",
+        "multiplexed.xlsx"
+    )
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
     expect_equal(
@@ -109,11 +144,39 @@ test_that("Multiplexed FASTQ", {
           "run_2_L004_TCGCATAA",
           "run_2_L004_TCTTACGC")
     )
+
+    # Required column check failure
+    expect_error(
+        readSampleMetadataFile(
+            file.path(
+                "http://basejump.seq.cloud",
+                "sample_metadata",
+                "multiplexed_missing_cols.csv"
+            ),
+            quiet = TRUE
+        ),
+        "Required columns: fileName, description, sampleName, sequence"
+    )
+
+    # Duplicated sampleName
+    expect_error(
+        readSampleMetadataFile(
+            file.path("http://basejump.seq.cloud",
+                      "sample_metadata",
+                      "multiplexed_duplicated_sampleName.csv"
+            ),
+            quiet = TRUE
+        ),
+        "'sampleName' column must be unique for multiplexed samples"
+    )
 })
 
 test_that("Legacy bcbio samplename column", {
-    file <- file.path("http://basejump.seq.cloud",
-                      "bcbio_legacy_samplename.csv")
+    file <- file.path(
+        "http://basejump.seq.cloud",
+        "sample_metadata",
+        "bcbio_legacy_samplename.csv"
+    )
     meta <- suppressWarnings(
         readSampleMetadataFile(file, quiet = TRUE)
     )
