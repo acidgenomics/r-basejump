@@ -49,6 +49,16 @@ test_that("Demultiplexed FASTQ", {
             description = "sample 1_L001",
             row.names = "sample_1_L001")
     )
+
+    # Error on file containing redundant `description` and `sampleName` columns
+    expect_error(
+        readSampleMetadataFile(
+            file.path("http://basejump.seq.cloud",
+                      "demultiplexed_with_sampleName.csv")
+        ),
+        paste("Specify only 'description' and omit 'sampleName'",
+              "for demultiplexed FASTQ file metadata")
+    )
 })
 
 test_that("Multiplexed FASTQ", {
