@@ -26,7 +26,7 @@
             filePath <- normalizePath(object)
         } else {
             warning(paste(basename(object), "missing"), call. = FALSE)
-            return(NULL)
+            return(invisible())
         }
     }
     file <- filePath

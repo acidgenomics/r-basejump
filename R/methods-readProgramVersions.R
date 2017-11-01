@@ -33,7 +33,7 @@ setMethod(
         quiet = FALSE) {
         file <- .localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
-            return(NULL)
+            return(invisible())
         }
         # programs.txt, but is comma separated
         read_csv(
