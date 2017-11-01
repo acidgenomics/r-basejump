@@ -1,7 +1,7 @@
 context("prepareAnnotable")
 
 # Use the pre-compiled grch37 annotable from annotables package
-loadRemoteData("http://basejump.seq.cloud/grch37.rda")
+loadRemoteData("http://basejump.seq.cloud/grch37.rda", quiet = TRUE)
 
 test_that("Drop extra columns", {
     # This is fast but will drop extra columns
