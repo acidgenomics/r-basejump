@@ -1,6 +1,6 @@
 context("readSampleMetadataFile")
 
-test_that("demultiplexed fastq", {
+test_that("Demultiplexed FASTQ", {
     file <- "http://basejump.seq.cloud/metadata_demultiplexed.xlsx"
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
@@ -51,7 +51,7 @@ test_that("demultiplexed fastq", {
     )
 })
 
-test_that("multiplexed fastq", {
+test_that("Multiplexed FASTQ", {
     file <- "http://basejump.seq.cloud/metadata_multiplexed.xlsx"
     meta <- readSampleMetadataFile(file, quiet = TRUE)
 
@@ -98,5 +98,21 @@ test_that("multiplexed fastq", {
           "run_2_L004_TAAGGCTC",
           "run_2_L004_TCGCATAA",
           "run_2_L004_TCTTACGC")
+    )
+})
+
+test_that("Legacy bcbio samplename column", {
+    file <- file.path("http://basejump.seq.cloud",
+                      "bcbio_legacy_samplename.csv")
+    meta <- suppressWarnings(
+        readSampleMetadataFile(file, quiet = TRUE)
+    )
+    expect_equal(
+        colnames(meta),
+        c("sampleID", "sampleName", "description", "fileName")
+    )
+    expect_warning(
+        readSampleMetadataFile(file, quiet = TRUE),
+        "'samplename' is used in some bcbio examples for FASTQ file names"
     )
 })
