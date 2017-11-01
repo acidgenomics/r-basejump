@@ -12,3 +12,16 @@ test_that("readProgramVersions", {
         c("program", "version")
     )
 })
+
+test_that("Missing file", {
+    expect_warning(
+        readProgramVersions("XXX.txt"),
+        "XXX.txt missing"
+    )
+    expect_equal(
+        suppressWarnings(
+            readProgramVersions("XXX.txt")
+        ),
+        NULL
+    )
+})
