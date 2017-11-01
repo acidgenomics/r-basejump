@@ -109,7 +109,7 @@ NULL
         metadata <- metadata %>%
             group_by(!!sym("description")) %>%
             # Expand by lane (e.g. "L001")
-            tidyr::expand(
+            expand(
                 lane = paste0("L", str_pad(1:lanes, 3, pad = "0"))
             ) %>%
             left_join(metadata, by = "description") %>%
