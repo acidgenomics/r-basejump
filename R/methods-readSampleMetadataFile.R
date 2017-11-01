@@ -8,9 +8,6 @@
 #' @inheritParams saveData
 #'
 #' @param object Metadata file. Supports CSV and XLSX file formats.
-#' @param pattern *Optional*. Grep pattern to match against sample names.
-#' @param patternCol *Optional*. Column in data frame used for pattern
-#'   subsetting.
 #' @param lanes *Optional*. Number of lanes used to split the samples into
 #'   technical replicates (`_LXXX`) suffix.
 #'
@@ -18,8 +15,18 @@
 #'
 #' @examples
 #' # Demultiplexed FASTQ
-#' readSampleMetadataFile(
-#'     "http://basejump.seq.cloud/metadata_demultiplexed.xlsx")
+#' demultiplexed <- file.path(
+#'     "http://basejump.seq.cloud",
+#'     "sample_metadata",
+#'     "demultiplexed.xlsx")
+#' readSampleMetadataFile(demultiplexed)
+#'
+#' # Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)
+#' multiplexed <- file.path(
+#'     "http://basejump.seq.cloud",
+#'     "sample_metadata",
+#'     "multiplexed.xlsx")
+#' readSampleMetadataFile(multiplexed)
 NULL
 
 
@@ -31,8 +38,6 @@ NULL
 #' @importFrom tidyr expand
 .readSampleMetadataFile <- function(
     object,
-    pattern = NULL,
-    patternCol = "sampleName",
     lanes = 1,
     quiet = FALSE) {
     metadata <- readFileByExtension(object, quiet = quiet)
@@ -55,12 +60,14 @@ NULL
     # Check for basic required columns
     requiredCols <- c("fileName", "description")
     if (!all(requiredCols %in% colnames(metadata))) {
-        stop(paste("Required columns:", toString(requiredCols)))
+        stop(paste(
+            "Required columns:", toString(requiredCols)
+        ), call. = FALSE)
     }
 
     # Determine whether the samples are multiplexed, based on the presence
     # of duplicate values in the `description` column
-    if (any(duplicated(metadata[["description"]]))) {
+    if (any(duplicated(metadata[["fileName"]]))) {
         multiplexedFASTQ <- TRUE
     } else {
         multiplexedFASTQ <- FALSE
@@ -69,10 +76,22 @@ NULL
     if (isTRUE(multiplexedFASTQ)) {
         requiredCols <- c("fileName", "description", "sampleName", "sequence")
         if (!all(requiredCols %in% colnames(metadata))) {
-            stop(paste("Required columns:", toString(requiredCols)))
+            stop(paste(
+                "Required columns:", toString(requiredCols)
+            ), call. = FALSE)
+        }
+        # Ensure `sampleName` is unique
+        if (any(duplicated(metadata[["sampleName"]]))) {
+            stop("'sampleName' column must be unique for multiplexed samples",
+                 call. = FALSE)
         }
     } else {
-        # Check for duplicate `description` and `sampleName`
+        # Ensure `description` is unique
+        if (any(duplicated(metadata[["description"]]))) {
+            stop("'description' column must be unique for demultiplexed files",
+                 call. = FALSE)
+        }
+        # Check for user-defined `description` and `sampleName`
         if (all(c("description", "sampleName") %in% colnames(metadata))) {
             stop(paste(
                 "Specify only 'description' and omit 'sampleName' for",
@@ -91,17 +110,6 @@ NULL
         removeNA() %>%
         # Make colnames camelCase
         camel(strict = FALSE)
-
-    # Check that sample names are unique
-    if (any(duplicated(metadata[["sampleName"]]))) {
-        stop("Sample names are not unique", call. = FALSE)
-    }
-
-    # Subset by pattern, if desired
-    if (!is.null(pattern)) {
-        metadata <- metadata %>%
-            filter(grepl(x = .data[[patternCol]], pattern = pattern))
-    }
 
     # Prepare metadata for lane split replicates. This step will expand rows
     # into the number of desired replicates.
