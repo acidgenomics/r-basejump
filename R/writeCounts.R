@@ -26,6 +26,7 @@
 #' @param gzip Compress the counts file using gzip.
 #'
 #' @return No value.
+#' @export
 #'
 #' @examples
 #' writeCounts(mtcars)
