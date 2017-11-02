@@ -3,12 +3,27 @@
 #' Load RData (`.rda`) files from a directory using symbols rather than complete
 #' file paths.
 #'
+#' @details
+#' [loadData()] is opinionated about the format of R data files it will accept.
+#' [base::save()] allows for the saving of multiple objects into a single R data
+#' file. This can later result in unexpected accidental replacement of an
+#' existing object in the current environment. Additionally, since an R data
+#' file internally stores the name of an object, if the file is later renamed
+#' the object name will no longer match.
+#'
+#' To avoid any accidental replacements, [loadData()] will only load R data
+#' files that contain a single object, and the internal object name must match
+#' the file name exactly. These conventions match the recommendations of the
+#' RStudio team, which recommends saving single objects per file.
+#'
 #' @importFrom rlang is_string
 #'
-#' @inheritParams saveData
-#'
+#' @param ... Object names as symbols.
+#' @param dir Output directory. Defaults to **data**.
+#' @param ext R data file extension. Defaults to `rda`.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
-#' which will assign into the calling environment.
+#'   which will assign into the calling environment.
+#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
 #' @export
@@ -21,29 +36,40 @@
 loadData <- function(
     ...,
     dir = "data",
+    ext = "rda",
     envir = parent.frame(),
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
+    } else if (!dir.exists(dir)) {
+        stop(paste("No directory exists at", dir), call. = FALSE)
+    } else {
+        dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
         stop("'envir' must be an environment", call. = FALSE)
     }
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
-    names <- as.character(substitute(list(...)))[-1L]
+    dots <- as.character(substitute(list(...)))[-1L]
     if (!isTRUE(quiet)) {
-        message(paste("Loading", toString(names), "from", dir))
-
+        message(paste("Loading", toString(dots), "from", dir))
     }
-    files <- sapply(seq_along(names), function(a) {
-        name <- names[a]
-        file <- file.path(dir, paste0(name, ".rda"))
+    files <- sapply(seq_along(dots), function(a) {
+        name <- dots[[a]]
+        file <- file.path(dir, paste0(name, ".", ext))
         if (!file.exists(file)) {
             stop(paste(name, "missing"), call. = FALSE)
         }
-        file <- normalizePath(file)
         loaded <- load(file, envir = envir)
+        # Check for multiple saved objects
+        if (length(loaded > 1)) {
+            stop(paste(
+                basename(file), "contains multiple objects:",
+                toString(loaded)
+            ), call. = FALSE)
+        }
+
         if (!identical(name, loaded)) {
             stop(paste(
                 name, "file and saved object names are not identical"
