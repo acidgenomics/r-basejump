@@ -1,9 +1,9 @@
-devtools::load_all()
+library(Matrix)
 sparse <- Matrix(
     rbinom(1000L, size = 1L, prob = 0.5),
     ncol = 10L,
     sparse = TRUE)
 save(sparse,
-     file = file.path(testDataDir, "sparse.rda"),
+     file = "~/Desktop/sparse.rda",
      compress = "xz")
-Matrix::writeMM(sparse, file.path(testDataDir, "sparse.mtx"))
+writeMM(sparse, "~/Desktop/sparse.mtx")
