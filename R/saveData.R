@@ -35,8 +35,10 @@ saveData <- function(
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
+    } else if (!dir.exists(dir)) {
+        dir.create(dir, recursive = TRUE)
     }
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+    dir <- normalizePath(dir)
     objectNames <- dots(..., character = TRUE)
     files <- file.path(dir, paste0(objectNames, ".", ext))
     names(files) <- objectNames
@@ -44,7 +46,7 @@ saveData <- function(
     if (identical(overwrite, FALSE) &
         any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        message(paste("Skipping", toString(names(skip))))
+        message(paste0("Skipping", toString(names(skip))))
         files <- files[!file.exists(files)]
     }
     if (!isTRUE(quiet)) {
