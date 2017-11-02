@@ -18,6 +18,10 @@ test_that("mouse", {
             row.names = c("ENSMUST00000070533",
                           "ENSMUST00000082908"))
     )
+    expect_message(
+        tx2geneFromGFF(mousefile, quiet = FALSE),
+        "tx2gene mappings: 20 transcripts, 17 genes"
+    )
 })
 
 test_that("fruitfly", {
