@@ -14,13 +14,13 @@ test_that("Dot object key-value pair method", {
     loaded <- loadDataAsName(
         newName1 = "mtcars",
         newName2 = "starwars",
-        dir = getwd()
+        replace = FALSE
     )
     # Variable file paths (more flexible, but requires more typing)
     loaded2 <- loadDataAsName(
         newName1 = "mtcars.rda",
         newName2 = "starwars.rda",
-        dir = "XXX"  # ignored
+        replace = TRUE
     )
     expect_equal(
         loaded,
@@ -28,30 +28,30 @@ test_that("Dot object key-value pair method", {
           newName2 = file.path(getwd(), "starwars.rda"))
     )
     expect_identical(loaded, loaded2)
+    # Skip if exists
+    expect_warning(
+        loadDataAsName(newName1 = "mtcars", replace = FALSE),
+        "Skipping mtcars.rda... 'newName1' already exists"
+    )
     # Error on first missing file
     expect_error(
         loadDataAsName(
             newName1 = "XXXXXX",
             newName2 = "YYYYYY",
-            dir = getwd()
+            replace = TRUE
         ),
         "XXXXXX missing"
     )
 })
 
 test_that("Legacy named character method", {
-    loaded <- loadDataAsName(
-        mappings = c(test = "mtcars"),
-        dir = getwd())
+    loaded <- loadDataAsName(c(test = "mtcars"))
     expect_equal(
         loaded,
         c(test = file.path(getwd(), "mtcars.rda"))
     )
     expect_error(
-        loadDataAsName(
-            mappings = c(test = "foobar"),
-            dir = getwd()
-        ),
+        loadDataAsName(c(test = "foobar")),
         "foobar missing"
     )
 })

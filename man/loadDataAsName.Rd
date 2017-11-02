@@ -4,7 +4,8 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(..., dir = getwd(), ext = "rda", envir = parent.frame())
+loadDataAsName(..., dir = getwd(), ext = "rda", envir = parent.frame(),
+  replace = FALSE)
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. The argument name
@@ -16,7 +17,10 @@ defines the new name of the object in the environment, whereas the value
 \item{ext}{R data file extension. Defaults to \code{rda} and typically should not
 be changed.}
 
-\item{envir}{The environment where the data should be loaded.}
+\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
+which will assign into the calling environment.}
+
+\item{replace}{Replace existing object in destination environment.}
 }
 \value{
 Silently return named character vector of file paths.
