@@ -1,6 +1,10 @@
 context("loadDataAsName")
 
 utils::download.file(
+    url = "http://basejump.seq.cloud/multi.rda",
+    destfile = "multi.rda",
+    quiet = TRUE)
+utils::download.file(
     url = "http://basejump.seq.cloud/mtcars.rda",
     destfile = "mtcars.rda",
     quiet = TRUE)
@@ -56,7 +60,22 @@ test_that("Legacy named character method", {
     )
 })
 
-test_that("Bad environment", {
+test_that("Multiple objects in single file", {
+    expect_error(
+        loadDataAsName(newName = "multi"),
+        "multi.rda contains multiple objects: x, y"
+    )
+})
+
+test_that("Invalid arguments", {
+    expect_error(
+        loadDataAsName(newName = "mtcars", dir = NULL),
+        "'dir' must be a string"
+    )
+    expect_error(
+        loadDataAsName(newName = "mtcars", dir = "XXX"),
+        "No directory exists at XXX"
+    )
     expect_error(
         loadDataAsName(
             newName = "mtcars.rda",
@@ -66,4 +85,4 @@ test_that("Bad environment", {
     )
 })
 
-unlink(c("mtcars.rda", "starwars.rda"))
+unlink(c("multi.rda", "mtcars.rda", "starwars.rda"))
