@@ -84,14 +84,14 @@ loadData <- function(
         }
         # Warn on skipped files
         if (!isTRUE(replace) &
-            exists(loaded, envir = envir, inherits = FALSE)) {
+            exists(name, envir = envir, inherits = FALSE)) {
             return(warning(paste0(
                 "Skipping ", basename(file), "... already exists"
             ), call. = FALSE))
         }
         # Assign into the target environment
-        assign(name,
-               value = get(loaded, envir = tmpEnv),
+        assign(x = name,
+               value = get(name, envir = tmpEnv, inherits = FALSE),
                envir = envir)
         # Prepare named character vector for invisible return
         names(file) <- name

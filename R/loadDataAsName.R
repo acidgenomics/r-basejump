@@ -8,7 +8,6 @@
 #'   defines the new name of the object in the environment, whereas the value
 #'   (string) denotes the original object name. For example, `newName1 =
 #'   "oldName1", newName2 = "oldName2"`.
-#' @param envir The environment where the data should be loaded.
 #'
 #' @return Silently return named character vector of file paths.
 #' @export
@@ -45,21 +44,27 @@ loadDataAsName <- function(
     ...,
     dir = getwd(),
     ext = "rda",
-    envir = parent.frame()) {
-    mappings <- list(...)
+    envir = parent.frame(),
+    replace = FALSE) {
+    dots <- list(...)
     # Check for legacy mappings method, used prior to v0.1.1
-    if (length(mappings) == 1 & !is.null(names(mappings[[1]]))) {
+    if (length(dots) == 1 & !is.null(names(dots[[1]]))) {
         # Convert the named character vector to a named list, for consistency
-        mappings <- as.list(mappings[[1]])
+        dots <- as.list(dots[[1]])
     }
-    # Assign into a temporary environment, rather than using `attach()`
+    if (!is_string(dir)) {
+        stop("'dir' must be a string", call. = FALSE)
+    } else if (!dir.exists(dir)) {
+        stop(paste("No directory exists at", dir), call. = FALSE)
+    } else {
+        dir <- normalizePath(dir)
+    }
     if (!is.environment(envir)) {
         stop("'envir' must be an environment", call. = FALSE)
     }
-    tmpEnv <- new.env()
-    loaded <- sapply(seq_along(mappings), function(a) {
-        object <- mappings[[a]]
-        name <- names(mappings)[[a]]
+    files <- sapply(seq_along(dots), function(a) {
+        object <- dots[[a]]
+        name <- names(dots)[[a]]
         # Check to see if full file path was passed
         fileExtPattern <- paste0("\\.", ext, "$")
         if (grepl(x = object, pattern = fileExtPattern)) {
@@ -76,12 +81,30 @@ loadDataAsName <- function(
             stop(paste(object, "missing"), call. = FALSE)
         }
         file <- normalizePath(file)
-        tmpName <- load(file, envir = tmpEnv)
+        # Load into a temporary environment (safer)
+        tmpEnv <- new.env()
+        loaded <- load(file, envir = tmpEnv)
+        # Check for multiple saved objects
+        if (length(loaded) > 1) {
+            stop(paste(
+                basename(file), "contains multiple objects:",
+                toString(loaded)
+            ), call. = FALSE)
+        }
+        # Warn on skipped files
+        if (!isTRUE(replace) &
+            exists(name, envir = envir, inherits = FALSE)) {
+            return(warning(paste0(
+                "Skipping ", basename(file), "... '", name, "' already exists"
+            ), call. = FALSE))
+        }
+        # Assign into the target environment
         assign(x = name,
-               value = get(tmpName, envir = tmpEnv, inherits = FALSE),
+               value = get(loaded, envir = tmpEnv, inherits = FALSE),
                envir = envir)
+        # Prepare named character vector for invisible return
         names(file) <- name
         file
     })
-    invisible(loaded)
+    invisible(files)
 }
