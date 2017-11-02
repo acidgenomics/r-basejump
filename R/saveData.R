@@ -8,20 +8,18 @@
 #'
 #' @importFrom rlang is_string
 #'
+#' @inheritParams loadData
 #' @inheritParams base::save
 #'
-#' @param ... Object names as symbols.
-#' @param dir Output directory. Defaults to **data**.
 #' @param overwrite Overwrite existing file.
-#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
 #'   not overwrite by default if that behavior is preferred.
 #'
 #' @seealso
-#' - [devtools::use_data()].
 #' - [base::save()].
+#' - [usethis::use_data()].
 #'
 #' @return Silent named character vector of file paths.
 #' @export
@@ -32,7 +30,7 @@ saveData <- function(
     ...,
     dir = "data",
     overwrite = TRUE,
-    compress = TRUE,
+    compress = "bzip2",
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
