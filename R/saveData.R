@@ -42,15 +42,17 @@ saveData <- function(
     objectNames <- dots(..., character = TRUE)
     files <- file.path(dir, paste0(objectNames, ".", ext))
     names(files) <- objectNames
+    if (!isTRUE(quiet)) {
+        message(paste("Saving", toString(basename(files)), "to", dir))
+    }
     # If overwrite = FALSE, message skipped files
     if (identical(overwrite, FALSE) &
         any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        message(paste0("Skipping", toString(names(skip))))
+        if (!isTRUE(quiet)) {
+            message(paste("Skipping", toString(basename(skip))))
+        }
         files <- files[!file.exists(files)]
-    }
-    if (!isTRUE(quiet)) {
-        message(paste("Saving", toString(names(files)), "to", dir))
     }
     mapply(save,
            list = names(files),
@@ -58,5 +60,8 @@ saveData <- function(
            MoreArgs = list(envir = parent.frame(),
                            compress = compress))
     # Silently return the file paths as a named character vector
+    if (!length(files)) {
+        files <- NULL
+    }
     invisible(files)
 }
