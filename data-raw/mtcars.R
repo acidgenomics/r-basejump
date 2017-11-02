@@ -1,5 +1,5 @@
 save(mtcars,
-     file = file.path(testDataDir, "mtcars.rda"),
+     file = "~/Desktop/mtcars.rda",
      compress = "xz")
-readr::write_csv(mtcars, file.path(testDataDir, "mtcars.csv"))
-readr::write_csv(mtcars, file.path(testDataDir, "mtcars.csv.gz"))
+readr::write_csv(mtcars, "~/Desktop/mtcars.csv")
+readr::write_csv(mtcars, "~/Desktop/mtcars.csv.gz")
