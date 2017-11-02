@@ -28,7 +28,8 @@
 #' saveData(mtcars, starwars)
 saveData <- function(
     ...,
-    dir = "data",
+    dir = getwd(),
+    ext = "rda",
     overwrite = TRUE,
     compress = "bzip2",
     quiet = FALSE) {
@@ -37,7 +38,7 @@ saveData <- function(
     }
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     objectNames <- dots(..., character = TRUE)
-    files <- file.path(dir, paste0(objectNames, ".rda"))
+    files <- file.path(dir, paste0(objectNames, ".", ext))
     names(files) <- objectNames
     # If overwrite = FALSE, message skipped files
     if (identical(overwrite, FALSE) &
