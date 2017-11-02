@@ -4,16 +4,17 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(..., dir = "data", ext = "rda", envir = parent.frame())
+loadDataAsName(..., dir = getwd(), ext = "rda", envir = parent.frame())
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. The argument name
 defines the new name of the object in the environment, whereas the value
 (string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
 
-\item{dir}{Output directory. Defaults to \strong{data}.}
+\item{dir}{Output directory. Defaults to the current working directory.}
 
-\item{ext}{R data file extension. Defaults to \code{rda}.}
+\item{ext}{R data file extension. Defaults to \code{rda} and typically should not
+be changed.}
 
 \item{envir}{The environment where the data should be loaded.}
 }
