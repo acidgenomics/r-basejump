@@ -78,6 +78,7 @@ NULL
 
 
 # Constructors ====
+#' @importFrom scales percent
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom tibble column_to_rownames has_rownames
 #' @importFrom utils head
@@ -151,7 +152,7 @@ NULL
                 sort()
             warning(paste(
                 "Unannotated genes detected in counts matrix",
-                paste0("(", pct(length(unannotatedGenes) / nrow(assay)), ")")
+                paste0("(", percent(length(unannotatedGenes) / nrow(assay)), ")")
             ), call. = FALSE)
         } else {
             unannotatedGenes <- NULL
