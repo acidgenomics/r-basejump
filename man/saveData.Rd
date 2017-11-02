@@ -4,13 +4,16 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = "data", overwrite = TRUE, compress = TRUE,
-  quiet = FALSE)
+saveData(..., dir = getwd(), ext = "rda", overwrite = TRUE,
+  compress = "bzip2", quiet = FALSE)
 }
 \arguments{
 \item{...}{Object names as symbols.}
 
-\item{dir}{Output directory. Defaults to \strong{data}.}
+\item{dir}{Output directory. Defaults to the current working directory.}
+
+\item{ext}{R data file extension. Defaults to \code{rda} and typically should not
+be changed.}
 
 \item{overwrite}{Overwrite existing file.}
 
@@ -41,8 +44,8 @@ saveData(mtcars, starwars)
 }
 \seealso{
 \itemize{
-\item \code{\link[devtools:use_data]{devtools::use_data()}}.
 \item \code{\link[base:save]{base::save()}}.
+\item \code{\link[usethis:use_data]{usethis::use_data()}}.
 }
 
 Other Write Utilities: \code{\link{writeCounts}}

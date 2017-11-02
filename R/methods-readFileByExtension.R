@@ -87,9 +87,6 @@ NULL
     if (!is.null(colnames(data)) &
         makeNames %in% c("camel", "snake")) {
         makeNames <- get(makeNames)
-        if (!is.function(makeNames)) {
-            stop("makeNames function failure")
-        }
         colnames(data) <- makeNames(colnames(data))
     }
 

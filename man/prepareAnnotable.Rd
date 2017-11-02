@@ -34,5 +34,5 @@ for Homo sapiens GRCh37/hg19, which currently isn't supported in
 AnnotationHub.
 }
 \author{
-Broad class definitions by Rory Kirchner.
+Broad class definitions by Rory Kirchner
 }

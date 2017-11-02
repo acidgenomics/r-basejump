@@ -12,7 +12,11 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' readProgramVersions("http://basejump.seq.cloud/programs.txt")
+#' url <- file.path(
+#'     "http://basejump.seq.cloud",
+#'     "bcbio",
+#'     "programs.txt")
+#' readProgramVersions(url)
 NULL
 
 
@@ -29,7 +33,7 @@ setMethod(
         quiet = FALSE) {
         file <- .localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
-            return(NULL)
+            return(invisible())
         }
         # programs.txt, but is comma separated
         read_csv(

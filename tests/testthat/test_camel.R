@@ -44,21 +44,38 @@ test_that("named character", {
 })
 
 test_that("data.frame", {
-    # data.frame with rownames
+    # Sanitize rownames
     expect_equal(
         camel(makeNames[["df"]], rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "mazdaRx4"
     )
-
-    # data.frame with unset rownames (ignore in `.checkRownames()`)
+    # Unset rownames (ignore in `.checkRownames()`)
     expect_equal(
-        mtcars %>%
+        makeNames[["df"]] %>%
             magrittr::set_rownames(., NULL) %>%
             camel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
-        as.character(1L:nrow(mtcars))
+        as.character(1L:nrow(makeNames[["df"]]))
+    )
+})
+
+test_that("matrix", {
+    # Sanitize rownames
+    expect_equal(
+        camel(makeNames[["mat"]], rownames = TRUE, strict = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "mazdaRx4"
+    )
+    # Unset rownames (ignore in `.checkRownames()`)
+    expect_equal(
+        makeNames[["mat"]] %>%
+            magrittr::set_rownames(., NULL) %>%
+            camel(rownames = TRUE, strict = TRUE) %>%
+            rownames(),
+        NULL
     )
 })
 

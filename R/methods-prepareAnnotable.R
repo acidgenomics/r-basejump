@@ -2,7 +2,7 @@
 #'
 #' @rdname prepareAnnotable
 #' @name prepareAnnotable
-#' @author Broad class definitions by Rory Kirchner.
+#' @author Broad class definitions by Rory Kirchner
 #'
 #' @description
 #' Standardize a user-defined annotable:
@@ -52,11 +52,6 @@ NULL
                 nest(.key = "nestedData") %>%
                 ungroup()
         }
-    }
-
-    # Now ensure that Ensembl identifiers are unique
-    if (any(duplicated(object[["ensgene"]]))) {
-        stop("Duplicate Ensembl identifiers detected", call. = FALSE)
     }
 
     object %>%

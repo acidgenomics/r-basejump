@@ -9,18 +9,13 @@
 \usage{
 readSampleMetadataFile(object, ...)
 
-\S4method{readSampleMetadataFile}{character}(object, pattern = NULL,
-  patternCol = "sampleName", lanes = 1, quiet = FALSE)
+\S4method{readSampleMetadataFile}{character}(object, lanes = 1,
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Metadata file. Supports CSV and XLSX file formats.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
-
-\item{pattern}{\emph{Optional}. Grep pattern to match against sample names.}
-
-\item{patternCol}{\emph{Optional}. Column in data frame used for pattern
-subsetting.}
 
 \item{lanes}{\emph{Optional}. Number of lanes used to split the samples into
 technical replicates (\code{_LXXX}) suffix.}
@@ -35,8 +30,18 @@ Read Sample Metadata File
 }
 \examples{
 # Demultiplexed FASTQ
-readSampleMetadataFile(
-    "http://basejump.seq.cloud/metadata_demultiplexed.xlsx")
+demultiplexed <- file.path(
+    "http://basejump.seq.cloud",
+    "sample_metadata",
+    "demultiplexed.xlsx")
+readSampleMetadataFile(demultiplexed)
+
+# Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)
+multiplexed <- file.path(
+    "http://basejump.seq.cloud",
+    "sample_metadata",
+    "multiplexed.xlsx")
+readSampleMetadataFile(multiplexed)
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},

@@ -1,13 +1,15 @@
 #' Sample Metadata Constructor
 #'
 #' @keywords internal
+#' @noRd
 #'
 #' @importFrom dplyr arrange everything mutate mutate_if select
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data syms !!!
 #'
 #' @param metadata Metadata [data.frame].
-#' @param factors Set columns that don't apply to sample names as factors.
+#' @param factors Set columns that don't apply to sample names as factors
+#'   (`TRUE`/`FALSE`).
 #'
 #' @return [data.frame].
 .prepareSampleMetadata <- function(metadata, factors = TRUE) {
@@ -27,7 +29,9 @@
     if (isTRUE(factors)) {
         # Set all non-priority columns as factor
         metadata <- metadata %>%
-            mutate_if(!colnames(.) %in% metadataPriorityCols, factor)
+            mutate_if(!colnames(.) %in%
+                          c(metadataPriorityCols, "fileName"),
+                      factor)
     }
     metadata %>%
         # Ensure `sampleID` has valid names. This allows for input of samples

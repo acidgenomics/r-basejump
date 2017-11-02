@@ -25,13 +25,13 @@ test_that("invalid files", {
     # Bad URL
     expect_error(
         readGFF("http://basejump.seq.cloud/mtcars.rda", quiet = TRUE),
-        "GFF file failed to load"
+        "GFF/GTF file failed to load"
     )
 
     # Bad GFF file
     expect_error(
         readGFF("http://basejump.seq.cloud/mtcars.tsv", quiet = TRUE),
-        "GFF file failed to load"
+        "GFF/GTF file failed to load"
     )
 })
 

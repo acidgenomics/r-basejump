@@ -5,7 +5,7 @@
 \alias{prepareTemplate}
 \alias{prepareTemplate,missing-method}
 \alias{prepareTemplate,character-method}
-\title{Download External Dependency File}
+\title{Prepare R Markdown Template File}
 \usage{
 prepareTemplate(object, ...)
 

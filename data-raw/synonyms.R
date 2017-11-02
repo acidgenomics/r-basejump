@@ -1,4 +1,3 @@
-library(devtools)
 library(stringr)
 library(tidyverse)
 
@@ -9,14 +8,15 @@ genomes <- list(
     mmusculus = c("Mammalia", "Mus_musculus"))
 
 synonyms <- lapply(seq_along(genomes), function(a) {
-    tbl <- file.path("ftp://ftp.ncbi.nih.gov",
-              "gene",
-              "DATA",
-              "GENE_INFO",
-              genomes[[a]][[1L]],
-              paste0(genomes[[a]][[2L]], ".gene_info.gz")) %>%
-        read_tsv %>%
-        camel %>%
+    tbl <- file.path(
+        "ftp://ftp.ncbi.nih.gov",
+        "gene",
+        "DATA",
+        "GENE_INFO",
+        genomes[[a]][[1L]],
+        paste0(genomes[[a]][[2L]], ".gene_info.gz")) %>%
+        read_tsv() %>%
+        camel(strict = FALSE) %>%
         select(symbol, synonyms, dbXrefs) %>%
         filter(synonyms != "-",
                dbXrefs != "-") %>%
@@ -27,12 +27,16 @@ synonyms <- lapply(seq_along(genomes), function(a) {
     organism <- names(genomes)[[a]]
     if (organism == "dmelanogaster") {
         tbl <- tbl %>%
-            mutate(ensgene = str_extract(
-                .data[["dbXrefs"]], "\\bFBgn[0-9]{7}\\b"))
+            mutate(
+                ensgene = str_extract(
+                    dbXrefs,
+                    pattern = "\\bFBgn[0-9]{7}\\b"))
     } else if (organism %in% c("hsapiens", "mmusculus")) {
         tbl <- tbl %>%
-            mutate(ensgene = str_extract(
-                .data[["dbXrefs"]], "\\bENS[A-Z]+[0-9]{11}\\b"))
+            mutate(
+                ensgene = str_extract(
+                    dbXrefs,
+                    pattern = "\\bENS[A-Z]+[0-9]{11}\\b"))
     }
 
     tbl %>%
@@ -42,4 +46,6 @@ synonyms <- lapply(seq_along(genomes), function(a) {
 }) %>%
     set_names(names(genomes))
 
-use_data(synonyms, compress = "xz", overwrite = TRUE)
+save(synonyms,
+     file = "~/Desktop/synonyms.rda",
+     compress = "xz")
