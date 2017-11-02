@@ -5,12 +5,6 @@
 \alias{packageSE}
 \alias{prepareSE}
 \alias{metadataTable}
-\alias{.dataVersions}
-\alias{.logFile}
-\alias{.programs}
-\alias{.sampleYAML}
-\alias{.sampleYAMLMetadata}
-\alias{.sampleYAMLMetrics}
 \alias{pct}
 \alias{sampleDirs}
 \title{Deprecated Functions}
@@ -20,18 +14,6 @@ packageSE(...)
 prepareSE(...)
 
 metadataTable()
-
-.dataVersions()
-
-.logFile()
-
-.programs()
-
-.sampleYAML(yaml, keys)
-
-.sampleYAMLMetadata()
-
-.sampleYAMLMetrics(yaml)
 
 pct(...)
 

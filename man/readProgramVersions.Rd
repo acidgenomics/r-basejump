@@ -24,7 +24,11 @@ readProgramVersions(object, ...)
 Read Program Versions
 }
 \examples{
-readProgramVersions("http://basejump.seq.cloud/programs.txt")
+url <- file.path(
+    "http://basejump.seq.cloud",
+    "bcbio",
+    "programs.txt")
+readProgramVersions(url)
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

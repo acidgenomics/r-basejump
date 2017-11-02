@@ -1,6 +1,7 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
 #' @keywords internal
+#' @noRd
 #'
 #' @importFrom utils download.file
 #'
@@ -10,11 +11,6 @@
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string. Returns `NULL` on a misisng
 #'   local file.
-#'
-#' @examples
-#' \dontrun{
-#' .localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
-#' }
 .localOrRemoteFile <- function(
     object,
     quiet = FALSE) {
@@ -30,7 +26,7 @@
             filePath <- normalizePath(object)
         } else {
             warning(paste(basename(object), "missing"), call. = FALSE)
-            return(NULL)
+            return(invisible())
         }
     }
     file <- filePath

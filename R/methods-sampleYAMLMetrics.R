@@ -8,7 +8,11 @@
 #' @inherit sampleYAML
 #'
 #' @examples
-#' yaml <- readYAML("http://basejump.seq.cloud/project-summary.yaml")
+#' url <- file.path(
+#'     "http://basejump.seq.cloud",
+#'     "bcbio",
+#'     "project-summary.yaml")
+#' yaml <- readYAML(url)
 #' sampleYAMLMetrics(yaml) %>% str()
 NULL
 

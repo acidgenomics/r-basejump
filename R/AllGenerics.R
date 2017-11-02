@@ -44,14 +44,6 @@ setGeneric("comp", function(object, ...) {
 
 
 
-#' @rdname detectHPC
-#' @export
-setGeneric("detectHPC", function(object, ...) {
-    standardGeneric("detectHPC")
-})
-
-
-
 #' @rdname detectOrganism
 #' @export
 setGeneric("detectOrganism", function(object, ...) {
@@ -309,14 +301,6 @@ setGeneric("symbol2gene", function(object, ...) {
 
 
 
-#' @rdname transmit
-#' @export
-setGeneric("transmit", function(object, ...) {
-    standardGeneric("transmit")
-})
-
-
-
 #' @rdname tx2gene
 #' @export
 setGeneric("tx2gene", function(object, ...) {
@@ -338,17 +322,3 @@ setGeneric("tx2geneFromGFF", function(object, ...) {
 setGeneric("upperCamel", function(object, ...) {
     standardGeneric("upperCamel")
 })
-
-
-
-#' @rdname writeCounts
-#' @export
-setGeneric(
-    "writeCounts",
-    signature = "...",
-    function(...,
-             dir = file.path("results", "counts"),
-             gzip = TRUE,
-             quiet = FALSE) {
-        standardGeneric("writeCounts")
-    })

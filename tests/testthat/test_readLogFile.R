@@ -2,7 +2,9 @@ context("readLogFile")
 
 test_that("readLogFile", {
     log <- readLogFile(
-        "http://basejump.seq.cloud/bcbio-nextgen.log",
+        file.path("http://basejump.seq.cloud",
+                  "bcbio",
+                  "bcbio-nextgen.log"),
         quiet = TRUE)
     expect_true(is.character(log))
     expect_equal(
@@ -11,5 +13,18 @@ test_that("readLogFile", {
               "compute-a-16-44.o2.rc.hms.harvard.edu:",
               "System YAML configuration:",
               "/n/app/bcbio/dev/galaxy/bcbio_system.yaml")
+    )
+})
+
+test_that("Missing file", {
+    expect_warning(
+        readLogFile("XXX.log"),
+        "XXX.log missing"
+    )
+    expect_equal(
+        suppressWarnings(
+            readLogFile("XXX.log")
+        ),
+        NULL
     )
 })

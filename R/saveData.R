@@ -4,26 +4,22 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @rdname saveData
-#' @name saveData
 #' @family Write Utilities
 #'
 #' @importFrom rlang is_string
 #'
+#' @inheritParams loadData
 #' @inheritParams base::save
 #'
-#' @param ... Object names as symbols.
-#' @param dir Output directory. Defaults to **data**.
 #' @param overwrite Overwrite existing file.
-#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
 #'   not overwrite by default if that behavior is preferred.
 #'
 #' @seealso
-#' - [devtools::use_data()].
 #' - [base::save()].
+#' - [usethis::use_data()].
 #'
 #' @return Silent named character vector of file paths.
 #' @export
@@ -32,26 +28,31 @@
 #' saveData(mtcars, starwars)
 saveData <- function(
     ...,
-    dir = "data",
+    dir = getwd(),
+    ext = "rda",
     overwrite = TRUE,
-    compress = TRUE,
+    compress = "bzip2",
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
+    } else if (!dir.exists(dir)) {
+        dir.create(dir, recursive = TRUE)
     }
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+    dir <- normalizePath(dir)
     objectNames <- dots(..., character = TRUE)
-    files <- file.path(dir, paste0(objectNames, ".rda"))
+    files <- file.path(dir, paste0(objectNames, ".", ext))
     names(files) <- objectNames
+    if (!isTRUE(quiet)) {
+        message(paste("Saving", toString(basename(files)), "to", dir))
+    }
     # If overwrite = FALSE, message skipped files
     if (identical(overwrite, FALSE) &
         any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        message(paste("Skipping", toString(names(skip))))
+        if (!isTRUE(quiet)) {
+            message(paste("Skipping", toString(basename(skip))))
+        }
         files <- files[!file.exists(files)]
-    }
-    if (!isTRUE(quiet)) {
-        message(paste("Saving", toString(names(files)), "to", dir))
     }
     mapply(save,
            list = names(files),
@@ -59,5 +60,8 @@ saveData <- function(
            MoreArgs = list(envir = parent.frame(),
                            compress = compress))
     # Silently return the file paths as a named character vector
+    if (!length(files)) {
+        files <- NULL
+    }
     invisible(files)
 }

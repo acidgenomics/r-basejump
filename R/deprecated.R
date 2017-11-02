@@ -11,7 +11,7 @@ NULL
 
 
 
-# 0.0.23 ====
+# v0.0.23 ====
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
@@ -30,7 +30,7 @@ prepareSE <- function(...) {
 
 
 
-# 0.0.24 ====
+# v0.0.24 ====
 #' @rdname deprecated
 #' @export
 metadataTable <- function() {
@@ -39,66 +39,18 @@ metadataTable <- function() {
 
 
 
-#' @rdname deprecated
-#' @export
-.dataVersions <- function() {
-    .Deprecated("readDataVersions")
-}
-
-
-
-#' @rdname deprecated
-#' @export
-.logFile <- function() {
-    .Deprecated("readLogFile")
-}
-
-
-
-#' @rdname deprecated
-#' @export
-.programs <- function() {
-    .Deprecated("readProgramVersions")
-}
-
-
-
-#' @rdname deprecated
-#' @export
-.sampleYAML <- function() {
-    .Deprecated("sampleYAML")
-}
-
-
-
-#' @rdname deprecated
-#' @export
-.sampleYAMLMetadata <- function() {
-    .Deprecated("sampleYAMLMetadata")
-}
-
-
-
-#' @rdname deprecated
-#' @export
-.sampleYAMLMetrics <- function(...) {
-    .Deprecated("sampleYAMLMetrics")
-    sampleYAMLMetrics(...)
-}
-
-
-
-# 0.0.25 =====
+# v0.0.25 =====
 #' @rdname deprecated
 #' @importFrom scales percent
 #' @export
 pct <- function(...) {
+    .Deprecated("scales::percent")
     scales::percent(...)
 }
 
 
 
-# 0.1.0 ====
+# v0.1.0 ====
 #' @rdname deprecated
 #' @export
 sampleDirs <- function() {

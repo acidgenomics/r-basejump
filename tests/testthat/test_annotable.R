@@ -1,6 +1,6 @@
 context("annotable")
 
-test_that("human", {
+test_that("Human", {
     human <- annotable("Homo sapiens", release = 88L)
     expect_equal(
         dim(human),
@@ -16,7 +16,7 @@ test_that("human", {
     )
 })
 
-test_that("mouse", {
+test_that("Mouse", {
     # Mouse
     mouse <- annotable("Mus musculus", release = 88L)
     expect_equal(
@@ -33,7 +33,15 @@ test_that("mouse", {
     )
 })
 
-test_that("bad input", {
+test_that("Unsupported Ensembl release", {
+    expect_warning(
+        annotable("Mus musculus", release = 86L),
+        "AnnotationHub only supports Ensembl releases 87 and newer.",
+        "Using current release instead."
+    )
+})
+
+test_that("Bad input", {
     expect_error(
         annotable(c("human", "mouse")),
         "Object must be a string"
@@ -48,7 +56,7 @@ test_that("bad input", {
     )
 })
 
-test_that("legacy", {
+test_that("Legacy", {
     # Check for legacy code support using `release = "current"`
     expect_equal(
         annotable("Homo sapiens", release = "current", quiet = TRUE),

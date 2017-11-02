@@ -12,7 +12,11 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' readDataVersions("http://basejump.seq.cloud/data_versions.csv")
+#' url <- file.path(
+#'     "http://basejump.seq.cloud",
+#'     "bcbio",
+#'     "data_versions.csv")
+#' readDataVersions(url)
 NULL
 
 
@@ -29,7 +33,7 @@ setMethod(
         quiet = FALSE) {
         file <- .localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
-            return(NULL)
+            return(invisible())
         }
         read_csv(file, progress = FALSE)
     })

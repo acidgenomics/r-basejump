@@ -17,6 +17,8 @@ namedVec <- c(
 
 df <- head(mtcars)
 
+mat <- as.matrix(df)
+
 tbl <- head(starwars)
 
 lst <- list(
@@ -27,10 +29,11 @@ makeNames <- list(
     vec = vec,
     namedVec = namedVec,
     df = df,
+    mat = mat,
     tbl = tbl,
     lst = lst
 )
 
 save(makeNames,
-     file = file.path(testDataDir, "makeNames.rda"),
+     file = "~/Desktop/makeNames.rda",
      compress = "xz")

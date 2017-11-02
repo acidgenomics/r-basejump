@@ -24,7 +24,11 @@ Character vector.
 Read Log File
 }
 \examples{
-readLogFile("http://basejump.seq.cloud/bcbio-nextgen.log") \%>\% head()
+url <- file.path(
+    "http://basejump.seq.cloud",
+    "bcbio",
+    "bcbio-nextgen.log")
+readLogFile(url) \%>\% head()
 }
 \concept{bcbio Project Directory File Utilities}
 \keyword{internal}
