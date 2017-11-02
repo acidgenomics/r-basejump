@@ -42,21 +42,38 @@ test_that("named character", {
 })
 
 test_that("data.frame", {
-    # data.frame with rownames
+    # Sanitize rownames
     expect_equal(
         upperCamel(makeNames[["df"]], rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "MazdaRx4"
     )
-
-    # data.frame with unset rownames (ignore in `.checkRownames()`)
+    # Unset rownames (ignore in `.checkRownames()`)
     expect_equal(
         mtcars %>%
             magrittr::set_rownames(., NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
         as.character(1L:nrow(mtcars))
+    )
+})
+
+test_that("matrix", {
+    # Sanitize rownames
+    expect_equal(
+        upperCamel(makeNames[["mat"]], rownames = TRUE, strict = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "MazdaRx4"
+    )
+    # Unset rownames (ignore in `.checkRownames()`)
+    expect_equal(
+        makeNames[["mat"]] %>%
+            magrittr::set_rownames(., NULL) %>%
+            upperCamel(rownames = TRUE, strict = TRUE) %>%
+            rownames(),
+        NULL
     )
 })
 

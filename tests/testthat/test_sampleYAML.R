@@ -25,6 +25,22 @@ test_that("sampleYAML", {
     )
 })
 
+test_that("Invalid YAML list", {
+    empty <- list()
+    expect_error(
+        sampleYAML(empty, keys = "metadata")
+    )
+    # Fix this method in a future update
+    expect_equal(
+        sampleYAML(yaml, keys = "XXX"),
+        NULL
+    )
+    expect_equal(
+        sampleYAML(yaml, keys = c("XXX", "YYY")),
+        NULL
+    )
+})
+
 test_that("sampleYAMLMetadata", {
     expect_equal(
         sampleYAMLMetadata(yaml),
