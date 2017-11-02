@@ -8,7 +8,6 @@
 #'   defines the new name of the object in the environment, whereas the value
 #'   (string) denotes the original object name. For example, `newName1 =
 #'   "oldName1", newName2 = "oldName2"`.
-#' @param ext R data file extension. Defaults to `rda`.
 #' @param envir The environment where the data should be loaded.
 #'
 #' @return Silently return named character vector of file paths.
