@@ -43,7 +43,7 @@
 #' }
 loadDataAsName <- function(
     ...,
-    dir = "data",
+    dir = getwd(),
     ext = "rda",
     envir = parent.frame()) {
     mappings <- list(...)

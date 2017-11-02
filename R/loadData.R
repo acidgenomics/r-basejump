@@ -19,10 +19,12 @@
 #' @importFrom rlang is_string
 #'
 #' @param ... Object names as symbols.
-#' @param dir Output directory. Defaults to **data**.
-#' @param ext R data file extension. Defaults to `rda`.
+#' @param dir Output directory. Defaults to the current working directory.
+#' @param ext R data file extension. Defaults to `rda` and typically should not
+#'   be changed.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
+#' @param replace Replace existing object in destination environment.
 #' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
@@ -35,9 +37,10 @@
 #' }
 loadData <- function(
     ...,
-    dir = "data",
+    dir = getwd(),
     ext = "rda",
     envir = parent.frame(),
+    replace = FALSE,
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
@@ -58,23 +61,39 @@ loadData <- function(
     files <- sapply(seq_along(dots), function(a) {
         name <- dots[[a]]
         file <- file.path(dir, paste0(name, ".", ext))
+        # Error on missing file
         if (!file.exists(file)) {
             stop(paste(name, "missing"), call. = FALSE)
         }
-        loaded <- load(file, envir = envir)
+        # Load into a temporary environment (safer)
+        tmpEnv <- new.env()
+        loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
-        if (length(loaded > 1)) {
+        if (length(loaded) > 1) {
             stop(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
             ), call. = FALSE)
         }
-
+        # Check for file name and internal object name mismatch
         if (!identical(name, loaded)) {
-            stop(paste(
-                name, "file and saved object names are not identical"
+            stop(paste0(
+                "Name mismatch detected for '", basename(file), "'. ",
+                "Internal object is named '", loaded, "'."
             ), call. = FALSE)
         }
+        # Warn on skipped files
+        if (!isTRUE(replace) &
+            exists(loaded, envir = envir, inherits = FALSE)) {
+            return(warning(paste0(
+                "Skipping ", basename(file), "... already exists"
+            ), call. = FALSE))
+        }
+        # Assign into the target environment
+        assign(name,
+               value = get(loaded, envir = tmpEnv),
+               envir = envir)
+        # Prepare named character vector for invisible return
         names(file) <- name
         file
     })
