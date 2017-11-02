@@ -1,6 +1,10 @@
 context("loadData")
 
 utils::download.file(
+    url = "http://basejump.seq.cloud/multi.rda",
+    destfile = "multi.rda",
+    quiet = TRUE)
+utils::download.file(
     url = "http://basejump.seq.cloud/mtcars.rda",
     destfile = "mtcars.rda",
     quiet = TRUE)
@@ -25,10 +29,21 @@ test_that("loadData", {
     )
 })
 
-test_that("Bad arguments", {
+test_that("Multiple objects in single file", {
+    expect_error(
+        loadData(multi),
+        "multi.rda contains multiple objects: x, y"
+    )
+})
+
+test_that("Invalid arguments", {
     expect_error(
         loadData(mtcars, dir = NULL),
         "'dir' must be a string"
+    )
+    expect_error(
+        loadData(mtcars, dir = "XXX"),
+        "No directory exists at XXX"
     )
     expect_error(
         loadData(mtcars, envir = "XXX"),
@@ -51,4 +66,4 @@ test_that("Renamed file", {
     )
 })
 
-unlink(c("mtcars.rda", "renamed.rda"))
+unlink(c("multi.rda", "mtcars.rda", "renamed.rda"))
