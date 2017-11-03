@@ -72,7 +72,7 @@ NULL
         x <- sort(x)
     }
 
-    glue::collapse(x, sep, ...)
+    collapse(x, sep, ...)
 }
 
 
