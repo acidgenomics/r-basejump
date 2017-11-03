@@ -26,5 +26,7 @@ uniteInterestingGroups <- function(object, interestingGroups) {
     } else {
         object[["interestingGroups"]] <- object[[interestingGroups]]
     }
+    # Set the `interestingGroups` column as factor
+    object[["interestingGroups"]] <- as.factor(object[["interestingGroups"]])
     object
 }
