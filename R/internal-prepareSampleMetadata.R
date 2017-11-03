@@ -3,7 +3,7 @@
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr arrange everything mutate mutate_if select
+#' @importFrom dplyr arrange everything mutate mutate_all select
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data syms !!!
 #'
@@ -14,7 +14,7 @@
 #' @return [data.frame].
 .prepareSampleMetadata <- function(metadata, factors = TRUE) {
     metadata <- as.data.frame(metadata)
-    # `description` must already be defined
+    # `description` is required
     if (!"description" %in% colnames(metadata)) {
         stop("'description' column is required", .call = FALSE)
     }
@@ -26,23 +26,18 @@
     if (!"sampleID" %in% colnames(metadata)) {
         metadata[["sampleID"]] <- metadata[["sampleName"]]
     }
-    if (isTRUE(factors)) {
-        # Set all non-priority columns as factor
-        metadata <- metadata %>%
-            mutate_if(!colnames(.) %in%
-                          c(metadataPriorityCols, "fileName"),
-                      factor)
-    }
-    metadata %>%
-        # Ensure `sampleID` has valid names. This allows for input of samples
-        # beginning with numbers or containing hyphens for example, which aren't
-        # valid names in R.
-        mutate(sampleID = gsub(
-            x = make.names(.data[["sampleID"]], unique = TRUE),
+    # Ensure `sampleID` has valid names. This allows for input of samples
+    # beginning with numbers or containing hyphens for example, which aren't
+    # valid names in R.
+    metadata[["sampleID"]] <- gsub(
+            x = make.names(metadata[["sampleID"]], unique = TRUE),
             pattern = "\\.",
             replacement = "_")
-        ) %>%
-        # Put the priority columns first and arrange the rows by them
+    # Set all columns as factors, if desired (recommended)
+    if (isTRUE(factors)) {
+        metadata <- mutate_all(metadata, factor)
+    }
+    metadata %>%
         select(metadataPriorityCols, everything()) %>%
         arrange(!!!syms(metadataPriorityCols)) %>%
         set_rownames(.[["sampleID"]])
