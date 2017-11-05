@@ -9,7 +9,6 @@
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
-#' @param ... Additional arguments, passed to [glue::collapse()].
 #'
 #' @return
 #' - For vector: String.
@@ -17,21 +16,19 @@
 #'
 #' @seealso
 #' - [base::toString()].
-#' - [glue::collapse()].
 #'
 #' @examples
 #' # character
 #' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-#' collapseToString(groceries)
+#' collapseToString(groceries, unique = TRUE, sort = FALSE)
 #' collapseToString(groceries, unique = FALSE, sort = FALSE)
 #'
 #' # numeric
 #' collapseToString(seq(1:5))
-#' collapseToString(c(3.141593, 6.0221409e+23))
 #'
 #' # logical
 #' collapseToString(c(TRUE, FALSE))
-#' collapseToString(c(NA, NA))
+#' collapseToString(c(NA, NaN))
 #'
 #' # NULL
 #' collapseToString(NULL)
@@ -56,19 +53,24 @@ NULL
     unique = TRUE,
     sort = TRUE,
     ...) {
-    if (length(object) == 1L) {
-        return(object)
-    }
-    if (isTRUE(unique)) {
-        object <- unique(object)
-        if (length(object) == 1L) {
-            return(object)
+    if (length(object) > 1) {
+        if (isTRUE(unique)) {
+            if (!all(is.na(object))) {
+                object <- na.omit(object)
+            }
+            object <- unique(object)
+        } else {
+            if (all(is.na(object))) {
+                object <- str_replace_na(object)
+            }
         }
     }
     if (isTRUE(sort)) {
-        object <- sort(object)
+        object <- sort(object, na.last = TRUE)
     }
-    collapse(object, sep, ...)
+    object %>%
+        as.character() %>%
+        paste(collapse = sep)
 }
 
 
