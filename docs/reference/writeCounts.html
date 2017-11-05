@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -88,15 +88,13 @@
 
     
     <p>Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-written to disk as comma separated values (<code>.csv). Single-cell RNA-seq counts are written to disk in MatrixMarket format (</code>.mtx<code>), along with the sample barcodes (</code>.colnames<code>), and gene identifiers (</code>.rownames`).</p>
+written to disk as comma separated values (<code>.csv</code>). Single-cell RNA-seq counts
+are written to disk in MatrixMarket format (<code>.mtx</code>), along with the sample
+barcodes (<code>.colnames</code>), and gene identifiers (<code>.rownames</code>).</p>
     
 
     <pre class="usage"><span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>), <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>writeCounts</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"results"</span>, <span class='st'>"counts"</span>),
-  <span class='kw'>gzip</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
