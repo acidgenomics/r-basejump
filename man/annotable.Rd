@@ -4,12 +4,15 @@
 \name{annotable}
 \alias{annotable}
 \alias{annotable,character-method}
+\alias{annotable,data.frame-method}
 \title{\href{http://www.ensembl.org/}{Ensembl} Annotations}
 \usage{
 annotable(object, ...)
 
 \S4method{annotable}{character}(object, format = "gene", release,
   quiet = FALSE)
+
+\S4method{annotable}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object. Default usage is to provide Ensembl genome build as a
