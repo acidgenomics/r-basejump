@@ -35,7 +35,7 @@ NULL
 
 # Constructors ====
 #' @importFrom rlang is_string
-.t2gvec <- function(
+.tx2gene <- function(
     object,
     release = NULL,
     quiet = FALSE) {
@@ -71,12 +71,12 @@ NULL
 
 
 
-.t2gdim <- function(
+.tx2geneDim <- function(
     object,
     release = NULL,
     quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
-        .t2gvec(
+        .tx2gene(
             release = release,
             quiet = quiet)
     object
@@ -89,7 +89,7 @@ NULL
 setMethod(
     "tx2gene",
     signature("character"),
-    .t2gvec)
+    .tx2gene)
 
 
 
@@ -98,7 +98,7 @@ setMethod(
 setMethod(
     "tx2gene",
     signature("data.frame"),
-    .t2gdim)
+    .tx2geneDim)
 
 
 
@@ -107,7 +107,7 @@ setMethod(
 setMethod(
     "tx2gene",
     signature("DataFrame"),
-    .t2gdim)
+    .tx2geneDim)
 
 
 
@@ -116,7 +116,7 @@ setMethod(
 setMethod(
     "tx2gene",
     signature("dgCMatrix"),
-    .t2gdim)
+    .tx2geneDim)
 
 
 
@@ -125,7 +125,7 @@ setMethod(
 setMethod(
     "tx2gene",
     signature("dgTMatrix"),
-    .t2gdim)
+    .tx2geneDim)
 
 
 
@@ -134,4 +134,4 @@ setMethod(
 setMethod(
     "tx2gene",
     signature("matrix"),
-    .t2gdim)
+    .tx2geneDim)
