@@ -40,7 +40,7 @@ NULL
 
 # Constructors ====
 #' @importFrom rlang is_string
-.g2svec <- function(
+.gene2symbol <- function(
     object,
     organism = NULL,
     release = NULL,
@@ -91,14 +91,14 @@ NULL
 
 
 
-# Pass arguments to `.g2svec()`
-.g2sdim <- function(
+# Pass arguments to `.gene2symbol()`
+.gene2symbolDim <- function(
     object,
     organism = NULL,
     release = NULL,
     quiet = FALSE) {
     rownames(object) <- rownames(object) %>%
-        .g2svec(organism = organism,
+        .gene2symbol(organism = organism,
                 release = release,
                 quiet = quiet)
     object
@@ -112,7 +112,7 @@ NULL
 setMethod(
     "gene2symbol",
     signature("character"),
-    .g2svec)
+    .gene2symbol)
 
 
 
@@ -121,7 +121,7 @@ setMethod(
 setMethod(
     "gene2symbol",
     signature("data.frame"),
-    .g2sdim)
+    .gene2symbolDim)
 
 
 
@@ -130,7 +130,7 @@ setMethod(
 setMethod(
     "gene2symbol",
     signature("DataFrame"),
-    .g2sdim)
+    .gene2symbolDim)
 
 
 
@@ -139,7 +139,7 @@ setMethod(
 setMethod(
     "gene2symbol",
     signature("dgCMatrix"),
-    .g2sdim)
+    .gene2symbolDim)
 
 
 
@@ -148,7 +148,7 @@ setMethod(
 setMethod(
     "gene2symbol",
     signature("dgTMatrix"),
-    .g2sdim)
+    .gene2symbolDim)
 
 
 
@@ -157,4 +157,4 @@ setMethod(
 setMethod(
     "gene2symbol",
     signature("matrix"),
-    .g2sdim)
+    .gene2symbolDim)
