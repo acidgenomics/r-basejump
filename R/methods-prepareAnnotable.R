@@ -100,6 +100,7 @@ NULL
                     ignore.case = TRUE) ~ "tcr",
                 TRUE ~ "other")) %>%
         as.data.frame() %>%
+        select(c(requiredCols, "broadClass"), everything()) %>%
         set_rownames(.[["ensgene"]])
 }
 
