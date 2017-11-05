@@ -81,7 +81,6 @@ NULL
     if (!isTRUE(quiet)) {
         message(paste(
             "Loading Ensembl annotations from AnnotationHub",
-            normalizePath(getAnnotationHubOption("CACHE")),
             snapshotDate(ah),
             sep = "\n"
         ))
