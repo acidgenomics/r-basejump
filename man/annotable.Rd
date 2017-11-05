@@ -5,7 +5,7 @@
 \alias{annotable}
 \alias{annotable,character-method}
 \alias{annotable,data.frame-method}
-\title{\href{http://www.ensembl.org/}{Ensembl} Annotations}
+\title{Ensembl Annotations}
 \usage{
 annotable(object, ...)
 
@@ -15,8 +15,9 @@ annotable(object, ...)
 \S4method{annotable}{data.frame}(object)
 }
 \arguments{
-\item{object}{Object. Default usage is to provide Ensembl genome build as a
-character string.}
+\item{object}{Object. Default recommended usage is to provide full latin
+organism name as a string. Also supports input of pre-built tibbles from
+the annotables data package.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
@@ -32,12 +33,50 @@ current release available on AnnotationHub.}
 \link{data.frame} with unique rows per gene or transcript.
 }
 \description{
-Fetch annotations from AnnotationHub using the ensembldb package. This
-function defaults to obtaining the latest annotations, unless the \code{release}
-argument is set to a numeric version (e.g. 88).
+Quickly obtain gene annotations from \href{http://www.ensembl.org/}{Ensembl}.
 }
+\section{Using AnnotationHub}{
+
+The default recommended approach is to simply specify the desired organism,
+using the full latin name. For example, we can obtain human annotations with
+\code{Homo sapiens} and mouse annotations with \code{Mus musculus}. Under the hood, the
+function fetches these annotations from AnnotationHub using the ensembldb
+package. AnnotationHub supports versioned Ensembl releases, back to version
+87.
+}
+
+\section{Using Pre-Compiled Annotables}{
+
+Generally we' don't recommend this approach. However, pass-in of a tibble
+generated using \href{https://doi.org/doi:10.18129/B9.bioc.biomaRt}{biomaRt} in
+the \href{https://github.com/stephenturner/annotables}{annotables} data package is
+useful for adding support for the outdated (but still frequently used)
+GRCh37/hg19 human genome.
+}
+
+\section{Broad Class Definitions}{
+
+A \code{broadClass} column is added, which generalizes the gene types into a
+smaller number of semantically-meaningful groups:
+\itemize{
+\item \code{coding}
+\item \code{noncoding}
+\item \code{pseudo}
+\item \code{small}
+\item \code{decaying}
+\item \code{ig} (immunoglobulin)
+\item \code{tcr} (T cell receptor)
+\item \code{other}
+}
+}
+
 \examples{
 annotable("Mus musculus") \%>\% str()
+
+# Alternate approach, with pre-compiled tibble
+\dontrun{
+annotable(annotables::grch37)
+}
 }
 \seealso{
 \itemize{
