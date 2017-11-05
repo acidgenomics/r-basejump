@@ -1,7 +1,7 @@
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-#' written to disk as comma separated values (`.csv). Single-cell RNA-seq counts
+#' written to disk as comma separated values (`.csv`). Single-cell RNA-seq counts
 #' are written to disk in MatrixMarket format (`.mtx`), along with the sample
 #' barcodes (`.colnames`), and gene identifiers (`.rownames`).
 #'

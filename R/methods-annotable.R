@@ -1,8 +1,34 @@
-#' [Ensembl](http://www.ensembl.org/) Annotations
+#' Ensembl Annotations
 #'
-#' Fetch annotations from AnnotationHub using the ensembldb package. This
-#' function defaults to obtaining the latest annotations, unless the `release`
-#' argument is set to a numeric version (e.g. 88).
+#' Quickly obtain gene annotations from [Ensembl](http://www.ensembl.org/).
+#'
+#' @section Using AnnotationHub:
+#' The default recommended approach is to simply specify the desired organism,
+#' using the full latin name. For example, we can obtain human annotations with
+#' `Homo sapiens` and mouse annotations with `Mus musculus`. Under the hood, the
+#' function fetches these annotations from AnnotationHub using the ensembldb
+#' package. AnnotationHub supports versioned Ensembl releases, back to version
+#' 87.
+#'
+#' @section Using Pre-Compiled Annotables:
+#' Generally we' don't recommend this approach. However, pass-in of a tibble
+#' generated using [biomaRt](https://doi.org/doi:10.18129/B9.bioc.biomaRt) in
+#' the [annotables](https://github.com/stephenturner/annotables) data package is
+#' useful for adding support for the outdated (but still frequently used)
+#' GRCh37/hg19 human genome.
+#'
+#' @section Broad Class Definitions:
+#' A `broadClass` column is added, which generalizes the gene types into a
+#' smaller number of semantically-meaningful groups:
+#'
+#' - `coding`
+#' - `noncoding`
+#' - `pseudo`
+#' - `small`
+#' - `decaying`
+#' - `ig` (immunoglobulin)
+#' - `tcr` (T cell receptor)
+#' - `other`
 #'
 #' @rdname annotable
 #' @name annotable
@@ -11,8 +37,9 @@
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
 #'
-#' @param object Object. Default usage is to provide Ensembl genome build as a
-#'   character string.
+#' @param object Object. Default recommended usage is to provide full latin
+#'   organism name as a string. Also supports input of pre-built tibbles from
+#'   the annotables data package.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
 #' @param release *Optional*. Ensembl release version. Defaults to the most
@@ -26,6 +53,11 @@
 #'
 #' @examples
 #' annotable("Mus musculus") %>% str()
+#'
+#' # Alternate approach, with pre-compiled tibble
+#' \dontrun{
+#' annotable(annotables::grch37)
+#' }
 NULL
 
 
@@ -114,7 +146,7 @@ NULL
             rename(
                 ensgene = .data[["gene_id"]],
                 biotype = .data[["gene_biotype"]]) %>%
-            prepareAnnotable()
+            .prepareAnnotable()
     } else if (format == "gene2symbol") {
         annotable <- genes(
             edb,
@@ -139,6 +171,119 @@ NULL
 
 
 
+#' Define Broad Class
+#'
+#' @author Broad class definitions by Rory Kirchner
+#' @keywords internal
+#' @noRd
+#'
+#' @importFrom dplyr case_when mutate
+#'
+#' @return [data.frame] with `broadClass` column.
+.defineBroadClass <- function(object) {
+    requiredCols <- c("biotype", "symbol")
+    if (!all(requiredCols %in% colnames(object))) {
+        stop(paste(
+            "Required columns:", toString(object)
+        ), call. = FALSE)
+    }
+    mutate(
+        object,
+        # Ensure unique symbols (e.g. human, mouse)
+        symbol = make.unique(.data[["symbol"]]),
+        # Define the broad class
+        broadClass = case_when(
+            grepl(
+                x = .data[["symbol"]],
+                # Hsapiens: `MT-`,
+                # Mmusculus: `mt-`
+                # Dmelanogaster: `mt:`
+                pattern = "^mt[\\:\\-]",
+                ignore.case = TRUE) ~ "mito",
+            .data[["biotype"]] == "protein_coding" ~ "coding",
+            .data[["biotype"]] %in%
+                c("known_ncrna",
+                  "lincRNA",
+                  "non_coding") ~ "noncoding",
+            grepl(
+                x = .data[["biotype"]],
+                pattern = "pseudo") ~ "pseudo",
+            .data[["biotype"]] %in%
+                c("miRNA",
+                  "misc_RNA",
+                  "ribozyme",
+                  "rRNA",
+                  "scaRNA",
+                  "scRNA",
+                  "snoRNA",
+                  "snRNA",
+                  "sRNA") ~ "small",
+            .data[["biotype"]] %in%
+                c("non_stop_decay",
+                  "nonsense_mediated_decay") ~ "decaying",
+            grepl(
+                x = .data[["biotype"]],
+                pattern = "^ig_",
+                ignore.case = TRUE) ~ "ig",
+            grepl(
+                x = .data[["biotype"]],
+                pattern = "^tr_",
+                ignore.case = TRUE) ~ "tcr",
+            TRUE ~ "other")
+    )
+}
+
+
+
+#' Prepare Annotable
+#'
+
+#' @keywords internal
+#' @noRd
+#'
+#' @importFrom dplyr distinct group_by summarize_all ungroup
+#' @importFrom magrittr set_rownames
+#' @importFrom rlang !! !!! sym syms
+#'
+#' @inheritParams AllGenerics
+#'
+#' @return [data.frame].
+.prepareAnnotable <- function(object) {
+    # Check for required columns
+    requiredCols <- c("ensgene", "symbol", "description" , "biotype")
+    if (!all(requiredCols %in% colnames(object))) {
+        stop(paste(
+            "Required columns:", toString(requiredCols)
+        ), call. = FALSE)
+    }
+    # Drop the entrez identifiers, if detected
+    if (any(grepl(x = colnames(object), pattern = "entrez"))) {
+        object <- object %>%
+            .[, !grepl(x = colnames(.), pattern = "entrez")] %>%
+            distinct()
+    }
+    # Collapse remaining nondistinct columns, if necessary
+    if (anyDuplicated(object[["ensgene"]])) {
+        object <- object %>%
+            group_by(!!!syms(requiredCols)) %>%
+            summarize_all(funs(
+                collapseToString(object = ., unique = TRUE, sort = TRUE)
+            )) %>%
+            ungroup()
+    }
+    object %>%
+        camel(strict = FALSE) %>%
+        # Improve handling of `NA` uniques here
+        fixNA() %>%
+        .defineBroadClass() %>%
+        as.data.frame() %>%
+        select(c(requiredCols, "broadClass"), everything()) %>%
+        arrange(!!sym("ensgene")) %>%
+        set_rownames(.[["ensgene"]])
+}
+
+
+
 # Methods ====
 #' @rdname annotable
 #' @export
@@ -146,3 +291,12 @@ setMethod(
     "annotable",
     signature("character"),
     .annotable)
+
+
+
+#' @rdname annotable
+#' @export
+setMethod(
+    "annotable",
+    signature("data.frame"),
+    .prepareAnnotable)
