@@ -107,7 +107,7 @@ NULL
     }
 
     if (format == "gene") {
-        genes(
+        annotable <- genes(
             edb,
             return.type = "data.frame") %>%
             # Use `symbol` column instead
@@ -117,7 +117,7 @@ NULL
                 biotype = .data[["gene_biotype"]]) %>%
             prepareAnnotable()
     } else if (format == "gene2symbol") {
-        genes(
+        annotable <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = "data.frame") %>%
@@ -126,7 +126,7 @@ NULL
             mutate(symbol = make.unique(.data[["symbol"]])) %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        transcripts(
+        annotable <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = "data.frame") %>%
@@ -135,6 +135,7 @@ NULL
                 ensgene = .data[["gene_id"]]) %>%
             set_rownames(.[["enstxp"]])
     }
+    annotable
 }
 
 
