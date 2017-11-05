@@ -9,7 +9,7 @@
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene", release,
+\S4method{annotable}{character}(object, format = "gene", genomeBuild, release,
   quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
@@ -23,6 +23,9 @@ the annotables data package.}
 
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
 \code{gene2symbol}.}
+
+\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+supported.}
 
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
@@ -80,9 +83,11 @@ annotable(annotables::grch37)
 }
 \seealso{
 \itemize{
-\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
-\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
+\item 
 }
+
+\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}. -
+\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
