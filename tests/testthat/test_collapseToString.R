@@ -63,13 +63,6 @@ test_that("logical", {
     )
 })
 
-test_that("NULL", {
-    expect_equal(
-        collapseToString(NULL),
-        NULL
-    )
-})
-
 test_that("data.frame", {
     # data.frame
     expect_equal(

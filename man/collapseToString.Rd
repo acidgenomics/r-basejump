@@ -72,9 +72,6 @@ collapseToString(seq(1:5))
 collapseToString(c(TRUE, FALSE))
 collapseToString(c(NA, NaN))
 
-# NULL
-collapseToString(NULL)
-
 # data.frame
 # Objects supporting `dim` function similarly
 mtcars \%>\%

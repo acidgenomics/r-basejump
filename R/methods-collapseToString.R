@@ -30,9 +30,6 @@
 #' collapseToString(c(TRUE, FALSE))
 #' collapseToString(c(NA, NaN))
 #'
-#' # NULL
-#' collapseToString(NULL)
-#'
 #' # data.frame
 #' # Objects supporting `dim` function similarly
 #' mtcars %>%
@@ -152,15 +149,6 @@ setMethod(
     "collapseToString",
     signature("matrix"),
     .collapseRows)
-
-
-
-setMethod(
-    "collapseToString",
-    signature("NULL"),
-    function(object) {
-        object
-    })
 
 
 
