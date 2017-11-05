@@ -18,43 +18,43 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param dropExtraCols Drop extra columns.
-#'
 #' @return [data.frame].
 NULL
 
 
 
 # Constructors ====
-#' @importFrom dplyr case_when distinct group_by mutate ungroup
+#' @importFrom dplyr case_when distinct group_by mutate summarize_all ungroup
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang !!! syms
-#' @importFrom tidyr nest
-.prepareAnnotable <- function(object, dropExtraCols = TRUE) {
+#' @importFrom rlang !! !!! sym syms
+.prepareAnnotable <- function(object) {
     # Check for required columns
     requiredCols <- c("ensgene", "symbol", "description" , "biotype")
     if (!all(requiredCols %in% colnames(object))) {
         stop(paste(
-            "Required columns:",
-            toString(requiredCols)
+            "Required columns:", toString(requiredCols)
         ), call. = FALSE)
     }
 
-    # Handle non-standard extra columns
-    if (isTRUE(dropExtraCols)) {
-        object <- object[, requiredCols] %>%
+    # Drop the entrez identifiers, if detected
+    if (any(grepl(x = colnames(object), pattern = "entrez"))) {
+        object <- object %>%
+            .[, !grepl(x = colnames(.), pattern = "entrez")] %>%
             distinct()
-    } else {
-        # Attempt to make distinct by nesting if ensgene isn't unique
-        if (any(duplicated(object[["ensgene"]]))) {
-            object <- object %>%
-                group_by(!!!syms(requiredCols)) %>%
-                nest(.key = "nestedData") %>%
-                ungroup()
-        }
+    }
+
+    # Collapse remaining nondistinct columns, if necessary
+    if (anyDuplicated(object[["ensgene"]])) {
+        object <- object %>%
+            group_by(!!!syms(requiredCols)) %>%
+            summarize_all(funs(
+                collapseToString(object = ., unique = TRUE, sort = TRUE)
+            )) %>%
+            ungroup()
     }
 
     object %>%
+        camel(strict = FALSE) %>%
         # Improve handling of `NA` uniques here
         fixNA() %>%
         mutate(
@@ -100,6 +100,8 @@ NULL
                     ignore.case = TRUE) ~ "tcr",
                 TRUE ~ "other")) %>%
         as.data.frame() %>%
+        select(c(requiredCols, "broadClass"), everything()) %>%
+        arrange(!!sym("ensgene")) %>%
         set_rownames(.[["ensgene"]])
 }
 

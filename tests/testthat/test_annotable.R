@@ -4,7 +4,7 @@ test_that("Human", {
     human <- annotable("Homo sapiens", release = 88L)
     expect_equal(
         dim(human),
-        c(64592L, 5L)
+        c(64592L, 10L)
     )
     expect_equal(
         rownames(human)[1L:5L],
@@ -14,6 +14,21 @@ test_that("Human", {
           "ENSG00000000457",
           "ENSG00000000460")
     )
+    expect_equal(
+        lapply(human, class),
+        list(
+            ensgene = "character",
+            symbol = "character",
+            description = "character",
+            biotype = "character",
+            broadClass = "character",
+            geneSeqStart = "integer",
+            geneSeqEnd = "integer",
+            seqName = "character",
+            seqStrand = "integer",
+            seqCoordSystem = "character"
+        )
+    )
 })
 
 test_that("Mouse", {
@@ -21,7 +36,7 @@ test_that("Mouse", {
     mouse <- annotable("Mus musculus", release = 88L)
     expect_equal(
         dim(mouse),
-        c(51158L, 5L)
+        c(51158L, 10L)
     )
     expect_equal(
         rownames(mouse)[1L:5L],

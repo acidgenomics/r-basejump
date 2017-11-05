@@ -14,7 +14,7 @@ test_that("Demultiplexed FASTQ", {
               "sample_3",
               "sample_4")
     expect_equal(
-        meta[["sampleID"]],
+        as.character(meta[["sampleID"]]),
         rows
     )
     expect_equal(
@@ -48,9 +48,15 @@ test_that("Demultiplexed FASTQ", {
     expect_equal(
         meta[1, metadataPriorityCols],
         data.frame(
-            sampleID = "sample_1_L001",
-            sampleName = "sample 1_L001",
-            description = "sample 1_L001",
+            sampleID = factor(
+                "sample_1_L001",
+                levels = levels(meta[["sampleID"]])),
+            sampleName = factor(
+                "sample 1_L001",
+                levels = levels(meta[["sampleName"]])),
+            description = factor(
+                "sample 1_L001",
+                levels = levels(meta[["description"]])),
             row.names = "sample_1_L001")
     )
 
@@ -185,11 +191,20 @@ test_that("Legacy bcbio samplename column", {
     expect_equal(
         meta,
         data.frame(
-            sampleID = "sample_1",           # sanitized
-            sampleName = "sample-1",         # matches description
-            description = "sample-1",        # unmodified
-            fileName = "sample-1.fastq.gz",  # renamed `samplename`
-            row.names = "sample_1"           # sanitized
+            # sanitized
+            sampleID = factor("sample_1",
+                              levels = "sample_1"),
+            # matches description
+            sampleName = factor("sample-1",
+                                levels = "sample-1"),
+            # unmodified
+            description = factor("sample-1",
+                                 levels = "sample-1"),
+            # renamed `samplename`
+            fileName = factor("sample-1.fastq.gz",
+                              levels = "sample-1.fastq.gz"),
+            # sanitized
+            row.names = "sample_1"
         )
     )
     expect_warning(
