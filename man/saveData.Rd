@@ -45,7 +45,7 @@ saveData(mtcars, starwars)
 \seealso{
 \itemize{
 \item \code{\link[base:save]{base::save()}}.
-\item \code{\link[usethis:use_data]{usethis::use_data()}}.
+\item \code{usethis::use_data()}.
 }
 
 Other Write Utilities: \code{\link{writeCounts}}

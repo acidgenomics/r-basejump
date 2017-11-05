@@ -23,7 +23,7 @@ technical replicates (\code{_LXXX}) suffix.}
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-\link{tibble}, grouped by \code{sampleName}.
+\link{data.frame}.
 }
 \description{
 Read Sample Metadata File

@@ -15,7 +15,7 @@
 #'   character string.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
-#' @param release Ensembl release version. If `NULL`, defaults to using the most
+#' @param release *Optional*. Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
@@ -42,7 +42,7 @@ NULL
 .annotable <- function(
     object,
     format = "gene",
-    release = NULL,
+    release,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -51,61 +51,51 @@ NULL
         stop("Unsupported format", call. = FALSE)
     }
 
-    organism <- detectOrganism(object)
-
-    # Download organism EnsDb package from AnnotationHub
-    ah <- suppressMessages(
-        AnnotationHub()
-    )
-
-    if (!isTRUE(quiet)) {
-        message(paste(
-            "Loading Ensembl annotations from AnnotationHub"
-        ))
-        message(normalizePath(getAnnotationHubOption("CACHE")))
-        message(snapshotDate(ah))
+    # Sanitize the release version
+    if (missing(release)) {
+        release <- NULL
     }
-
-    # Check for unsupported Ensembl release request
-    if (!is.null(release)) {
-        if (release == "current") {
-            # Legacy code support (changed in 0.1.1)
-            release <- NULL
-        } else if (is.numeric(release) & release < 87L) {
+    if (is.numeric(release)) {
+        if (release < 87L) {
             warning(paste(
                 "AnnotationHub only supports Ensembl releases 87 and newer.",
                 "Using current release instead."
             ), call. = FALSE)
             release <- NULL
         }
+    } else {
+        # Legacy code support for "current" (changed in 0.1.1)
+        release <- NULL
+    }
+    if (is.null(release)) {
+        releasePattern <- NULL
+    } else {
+        releasePattern <- paste0("v", release)
     }
 
-    if (is.null(release)) {
-        ahDb <- query(
-            ah,
-            pattern = c(organism, "EnsDb"),
-            ignore.case = TRUE)
-        # Get the latest AnnotationHub dataset by identifier number
-        id <- ahDb %>%
-            mcols() %>%
-            rownames() %>%
-            tail(n = 1L)
-        edb <- suppressMessages(ah[[id]])
-    } else {
-        ahDb <- query(
-            ah,
-            pattern = c(
-                organism,
-                "EnsDb",
-                # Match against the version more specifically
-                # (e.g. "v90")
-                paste0("v", release)),
-            ignore.case = TRUE)
-        id <- ahDb %>%
-            mcols() %>%
-            rownames()
-        edb <- suppressMessages(ahDb[[1L]])
+    organism <- detectOrganism(object)
+
+    # Download organism EnsDb package from AnnotationHub
+    ah <- suppressMessages(AnnotationHub())
+
+    if (!isTRUE(quiet)) {
+        message(paste(
+            "Loading Ensembl annotations from AnnotationHub",
+            snapshotDate(ah),
+            sep = "\n"
+        ))
     }
+
+    # Get the AnnotationHub dataset by identifier number
+    ahDb <- query(
+        ah,
+        pattern = c(organism, "EnsDb", releasePattern),
+        ignore.case = TRUE)
+    id <- ahDb %>%
+        mcols() %>%
+        rownames() %>%
+        tail(n = 1L)
+    edb <- suppressMessages(ah[[id]])
 
     if (!isTRUE(quiet)) {
         message(paste(
@@ -116,20 +106,17 @@ NULL
     }
 
     if (format == "gene") {
-        genes(
+        annotable <- genes(
             edb,
-            columns = c(
-                "gene_id",
-                "symbol",  # `gene_name` also works
-                "description",
-                "gene_biotype"),
             return.type = "data.frame") %>%
+            # Use `symbol` column instead
+            mutate(gene_name = NULL) %>%
             rename(
                 ensgene = .data[["gene_id"]],
                 biotype = .data[["gene_biotype"]]) %>%
             prepareAnnotable()
     } else if (format == "gene2symbol") {
-        genes(
+        annotable <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = "data.frame") %>%
@@ -138,7 +125,7 @@ NULL
             mutate(symbol = make.unique(.data[["symbol"]])) %>%
             set_rownames(.[["ensgene"]])
     } else if (format == "tx2gene") {
-        transcripts(
+        annotable <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = "data.frame") %>%
@@ -147,6 +134,7 @@ NULL
                 ensgene = .data[["gene_id"]]) %>%
             set_rownames(.[["enstxp"]])
     }
+    annotable
 }
 
 

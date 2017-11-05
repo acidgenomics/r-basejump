@@ -42,34 +42,16 @@ test_that("Invalid YAML list", {
 })
 
 test_that("sampleYAMLMetadata", {
+    samples <- c("group1_1", "group1_2", "group2_1", "group2_2")
     expect_equal(
         sampleYAMLMetadata(yaml),
         data.frame(
-            sampleID = c(
-                "group1_1",
-                "group1_2",
-                "group2_1",
-                "group2_2"),
-            sampleName = c(
-                "group1_1",
-                "group1_2",
-                "group2_1",
-                "group2_2"),
-            description = c(
-                "group1_1",
-                "group1_2",
-                "group2_1",
-                "group2_2"),
-            group = as.factor(c(
-                "ctrl",
-                "ctrl",
-                "ko",
-                "ko")),
-            row.names = c(
-                "group1_1",
-                "group1_2",
-                "group2_1",
-                "group2_2")
+            sampleID = factor(samples, levels = samples),
+            sampleName = factor(samples, levels = samples),
+            description = factor(samples, levels = samples),
+            group = factor(c("ctrl", "ctrl", "ko", "ko"),
+                           levels = c("ctrl", "ko")),
+            row.names = samples
         )
     )
 })

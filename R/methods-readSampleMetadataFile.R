@@ -11,7 +11,7 @@
 #' @param lanes *Optional*. Number of lanes used to split the samples into
 #'   technical replicates (`_LXXX`) suffix.
 #'
-#' @return [tibble], grouped by `sampleName`.
+#' @return [data.frame].
 #'
 #' @examples
 #' # Demultiplexed FASTQ
