@@ -8,14 +8,12 @@
 \usage{
 prepareAnnotable(object, ...)
 
-\S4method{prepareAnnotable}{data.frame}(object, dropExtraCols = TRUE)
+\S4method{prepareAnnotable}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
-
-\item{dropExtraCols}{Drop extra columns.}
 }
 \value{
 \link{data.frame}.
