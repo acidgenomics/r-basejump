@@ -21,14 +21,14 @@
 #' A `broadClass` column is added, which generalizes the gene types into a
 #' smaller number of semantically-meaningful groups:
 #'
-#' - `coding`
-#' - `noncoding`
-#' - `pseudo`
-#' - `small`
-#' - `decaying`
-#' - `ig` (immunoglobulin)
-#' - `tcr` (T cell receptor)
-#' - `other`
+#'   - `coding`
+#'   - `noncoding`
+#'   - `pseudo`
+#'   - `small`
+#'   - `decaying`
+#'   - `ig` (immunoglobulin)
+#'   - `tcr` (T cell receptor)
+#'   - `other`
 #'
 #' @rdname annotable
 #' @name annotable
@@ -42,14 +42,16 @@
 #'   the annotables data package.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
+#' @param genomeBuild *Optional*. Check to see if a specific genome build is
+#'   supported.
 #' @param release *Optional*. Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
-#' @seealso
-#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
-#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#' @seealso -
+#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub). -
+#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
 #' annotable("Mus musculus") %>% str()
@@ -74,6 +76,7 @@ NULL
 .annotable <- function(
     object,
     format = "gene",
+    genomeBuild,
     release,
     quiet = FALSE) {
     if (!is_string(object)) {
@@ -106,6 +109,10 @@ NULL
     }
 
     organism <- detectOrganism(object)
+
+    if (!missing(genomeBuild)) {
+        .checkAnnotableBuildSupport(genomeBuild)
+    }
 
     # Download organism EnsDb package from AnnotationHub
     ah <- suppressMessages(AnnotationHub())
@@ -167,6 +174,20 @@ NULL
             set_rownames(.[["enstxp"]])
     }
     annotable
+}
+
+
+
+.checkAnnotableBuildSupport <- function(genomeBuild) {
+    # Require prebuilt grch37 annotable for GRCh37/hg19
+    if (grepl(x = genomeBuild,
+              pattern = paste("GRCh37", "hg19", sep = "|"),
+              ignore.case = TRUE)) {
+        stop(paste(
+            "GRCh37/hg19 detected.",
+            "'annotable' argument must be set to 'annotables::grch37'."
+        ), call. = FALSE)
+    }
 }
 
 
