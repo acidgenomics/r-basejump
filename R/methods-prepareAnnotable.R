@@ -24,7 +24,7 @@ NULL
 
 
 # Constructors ====
-#' @importFrom dplyr case_when distinct group_by mutate ungroup
+#' @importFrom dplyr case_when distinct group_by mutate summarize_all ungroup
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 .prepareAnnotable <- function(object) {
@@ -47,7 +47,7 @@ NULL
     if (anyDuplicated(object[["ensgene"]])) {
         object <- object %>%
             group_by(!!!syms(requiredCols)) %>%
-            summarise_all(funs(
+            summarize_all(funs(
                 collapseToString(object = ., unique = TRUE, sort = TRUE)
             )) %>%
             ungroup()
