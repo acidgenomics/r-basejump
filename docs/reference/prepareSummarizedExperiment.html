@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -94,8 +94,7 @@ automatic subsetting for <code>colData</code> and <code>rowData</code>.</p>
     <pre class="usage"><span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>assays</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for list</span>
-<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>assays</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>prepareSummarizedExperiment</span>(<span class='no'>assays</span>, <span class='no'>rowData</span>, <span class='no'>colData</span>, <span class='no'>metadata</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,6 +104,10 @@ automatic subsetting for <code>colData</code> and <code>rowData</code>.</p>
       <td><p>List containing RNA-seq count matrices with matching
 dimensions. Counts can be passed in either dense (<code>matrix</code>) or sparse
 (<code>dgCMatrix</code>, <code>dgTMatrix</code>) format.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
       <th>rowData</th>

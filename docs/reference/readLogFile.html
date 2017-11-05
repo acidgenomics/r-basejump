@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -118,7 +118,11 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>readLogFile</span>(<span class='st'>"http://basejump.seq.cloud/bcbio-nextgen.log"</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; [1] "[2017-08-15T14:53Z] compute-a-16-44.o2.rc.hms.harvard.edu: System YAML configuration: /n/app/bcbio/dev/galaxy/bcbio_system.yaml"                       
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='st'>"http://basejump.seq.cloud"</span>,
+    <span class='st'>"bcbio"</span>,
+    <span class='st'>"bcbio-nextgen.log"</span>)
+<span class='fu'>readLogFile</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; [1] "[2017-08-15T14:53Z] compute-a-16-44.o2.rc.hms.harvard.edu: System YAML configuration: /n/app/bcbio/dev/galaxy/bcbio_system.yaml"                       
 #&gt; [2] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Timing: organize samples"                                                                   
 #&gt; [3] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: ipython: organize_samples"                                                                  
 #&gt; [4] "[2017-08-15T14:54Z] compute-a-16-44.o2.rc.hms.harvard.edu: Using input YAML configuration: /n/scratch2/XXX/indrop_rnaseq/config/indrop_rnaseq.yaml"    

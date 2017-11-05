@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -125,7 +125,16 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>readDataVersions</span>(<span class='st'>"http://basejump.seq.cloud/data_versions.csv"</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='st'>"http://basejump.seq.cloud"</span>,
+    <span class='st'>"bcbio"</span>,
+    <span class='st'>"data_versions.csv"</span>)
+<span class='fu'>readDataVersions</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  genome = col_character(),</span>
+#&gt; <span class='message'>  resource = col_character(),</span>
+#&gt; <span class='message'>  version = col_datetime(format = "")</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;   genome        resource    version
 #&gt;    &lt;chr&gt;           &lt;chr&gt;     &lt;dttm&gt;
 #&gt; 1   mm10         sranseq 2015-10-14
