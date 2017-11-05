@@ -26,7 +26,7 @@ NULL
 # Constructors ====
 #' @importFrom dplyr case_when distinct group_by mutate ungroup
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang !!! syms
+#' @importFrom rlang !! !!! sym syms
 .prepareAnnotable <- function(object) {
     # Check for required columns
     requiredCols <- c("ensgene", "symbol", "description" , "biotype")
@@ -101,6 +101,7 @@ NULL
                 TRUE ~ "other")) %>%
         as.data.frame() %>%
         select(c(requiredCols, "broadClass"), everything()) %>%
+        arrange(!!sym("ensgene")) %>%
         set_rownames(.[["ensgene"]])
 }
 
