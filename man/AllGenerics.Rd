@@ -2,6 +2,7 @@
 % Please edit documentation in R/AllGenerics.R, R/bcbioGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
+\alias{aggregateFeatures}
 \alias{aggregateReplicates}
 \alias{bcbio}
 \alias{bcbio<-}
@@ -14,6 +15,8 @@
 \alias{selectSamples}
 \title{S4 Generics}
 \usage{
+aggregateFeatures(object, ...)
+
 aggregateReplicates(object, ...)
 
 bcbio(object, ...)
