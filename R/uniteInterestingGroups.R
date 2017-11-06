@@ -16,6 +16,7 @@
 uniteInterestingGroups <- function(object, interestingGroups) {
     # Set up the interesting groups column
     interestingGroups <- checkInterestingGroups(object, interestingGroups)
+    object[["interestingGroups"]] <- NULL
     if (length(interestingGroups) > 1) {
         object <- unite(
             data = object,
