@@ -19,6 +19,10 @@ NULL
 # Constructors ====
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateReplicatesSparse <- function(object, cells) {
+    if (!identical(length(cells), ncol(object))) {
+        stop("'cells' length must match the number of columns",
+             call. = FALSE)
+    }
     tsparse <- Matrix::t(object)
     rownames(tsparse) <- cells
     tsparse <- aggregate.Matrix(tsparse, groupings = cells, fun = "sum")
