@@ -3,7 +3,7 @@
 
 
 
-#' @rdname aggregateFeatures
+#' @rdname AllGenerics
 #' @export
 setGeneric("aggregateFeatures", function(object, ...) {
     standardGeneric("aggregateFeatures")
