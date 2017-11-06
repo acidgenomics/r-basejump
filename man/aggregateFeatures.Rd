@@ -14,6 +14,10 @@ aggregateFeatures(object, ...)
 \S4method{aggregateFeatures}{dgTMatrix}(object, features)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
 \item{features}{Feature identifiers (e.g. gene or transcript IDs). These are
 the rownames of the counts matrix.}
 }

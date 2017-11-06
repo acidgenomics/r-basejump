@@ -5,6 +5,8 @@
 #' @family Data Management Utilities
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
+#' @inheritParams AllGenerics
+#'
 #' @param features Feature identifiers (e.g. gene or transcript IDs). These are
 #'   the rownames of the counts matrix.
 #'
