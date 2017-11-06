@@ -16,6 +16,10 @@ NULL
 # Constructors ====
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateFeaturesSparse <- function(object, features) {
+    if (!identical(length(features), nrow(object))) {
+        stop("'features' length must match the number of rows",
+             call. = FALSE)
+    }
     rownames(object) <- features
     object <- object[!is.na(rownames(object)), , drop = FALSE]
     aggregate.Matrix(object, groupings = rownames(object), fun = "sum")
