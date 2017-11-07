@@ -38,7 +38,8 @@ NULL
     }
     metrics %>%
         mutate_if(numericAsCharacter, as.numeric) %>%
-        .prepareSampleMetadata(factors = FALSE)
+        mutate_if(is.character, as.factor) %>%
+        .prepareSampleMetadata()
 }
 
 
