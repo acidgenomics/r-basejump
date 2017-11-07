@@ -4,7 +4,7 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = "data", compress = TRUE,
+assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
   envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
