@@ -41,7 +41,6 @@ NULL
 
 
 # Constructors ====
-#' @importFrom glue collapse
 #' @importFrom stats na.omit
 #' @importFrom stringr str_replace_na
 .collapseToString <- function(
