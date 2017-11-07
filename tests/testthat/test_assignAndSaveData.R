@@ -8,8 +8,8 @@ test_that("assignAndSaveData", {
     )
     expect_message(
         assignAndSaveData("test", mtcars),
-        "Saving test to data"
+        paste("Saving test to", getwd())
     )
 })
 
-unlink("data", recursive = TRUE)
+unlink("test.rda")
