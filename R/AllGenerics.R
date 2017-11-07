@@ -12,10 +12,56 @@ NULL
 
 
 
+#' bcbio S4 Generics
+#'
+#' These generics are currently currently in use for both the bcbioRNASeq and
+#' bcbioSingleCell packages.
+#'
+#' @rdname bcbioGenerics
+#' @name bcbioGenerics
+#' @keywords internal
+#'
+#' @inheritParams AllGenerics
+NULL
+
+
+
+#' @rdname aggregateFeatures
+#' @export
+setGeneric("aggregateFeatures", function(object, ...) {
+    standardGeneric("aggregateFeatures")
+})
+
+
+
+#' @rdname aggregateReplicates
+#' @export
+setGeneric("aggregateReplicates", function(object, ...) {
+    standardGeneric("aggregateReplicates")
+})
+
+
+
 #' @rdname annotable
 #' @export
 setGeneric("annotable", function(object, ...) {
     standardGeneric("annotable")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("bcbio", function(object, ...) {
+    standardGeneric("bcbio")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("bcbio<-", function(object, ..., value) {
+    standardGeneric("bcbio<-")
 })
 
 
@@ -87,6 +133,14 @@ setGeneric("fixNA", function(object, ...) {
 
 
 
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("flatFiles", function(object, ...) {
+    standardGeneric("flatFiles")
+})
+
+
+
 #' @rdname gene2symbol
 #' @export
 setGeneric("gene2symbol", function(object, ...) {
@@ -113,6 +167,22 @@ setGeneric("geomean", function(object, ...) {
 #' @rdname grepString
 setGeneric("grepString", function(object, ...) {
     standardGeneric("grepString")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("interestingGroups", function(object, ...) {
+    standardGeneric("interestingGroups")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("interestingGroups<-", function(object, ..., value) {
+    standardGeneric("interestingGroups<-")
 })
 
 
@@ -145,6 +215,22 @@ setGeneric("mdHeader", function(object, ...) {
 #' @export
 setGeneric("mdList", function(object, ...) {
     standardGeneric("mdList")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("metrics", function(object, ...) {
+    standardGeneric("metrics")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("plotGene", function(object, ...) {
+    standardGeneric("plotGene")
 })
 
 
@@ -237,6 +323,14 @@ setGeneric("revcomp", function(object, ...) {
 
 
 
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("sampleMetadata", function(object, ...) {
+    standardGeneric("sampleMetadata")
+})
+
+
+
 #' @rdname sampleYAML
 #' @export
 setGeneric("sampleYAML", function(yaml, keys, ...) {
@@ -257,6 +351,14 @@ setGeneric("sampleYAMLMetadata", function(yaml, ...) {
 #' @export
 setGeneric("sampleYAMLMetrics", function(yaml, ...) {
     standardGeneric("sampleYAMLMetrics")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("selectSamples", function(object, ...) {
+    standardGeneric("selectSamples")
 })
 
 
