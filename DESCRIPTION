@@ -32,6 +32,7 @@ Imports:
     knitr (>= 1.17),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
+    Matrix.utils (>= 0.9.6),
     methods,
     RCurl (>= 1.95),
     readr (>= 1.1.1),
