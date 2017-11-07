@@ -23,7 +23,7 @@
 assignAndSaveData <- function(
     name,
     object,
-    dir = "data",
+    dir = getwd(),
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
@@ -33,7 +33,7 @@ assignAndSaveData <- function(
     names(file) <- name
     assign(name, object, envir = envir)
     if (!isTRUE(quiet)) {
-        message(paste("Saving", name, "to", basename(dir)))
+        message(paste("Saving", name, "to", dir))
     }
     save(list = name,
          file = file,
