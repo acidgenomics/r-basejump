@@ -32,7 +32,7 @@ NULL
 
 
 # Constructors ====
-#' @importFrom dplyr filter group_by left_join mutate rename ungroup
+#' @importFrom dplyr filter group_by left_join mutate mutate_all rename ungroup
 #' @importFrom rlang .data sym !!
 #' @importFrom stringr str_pad
 #' @importFrom tidyr expand
@@ -150,7 +150,9 @@ NULL
         metadata[["sampleID"]] <- metadata[["description"]]
     }
 
-    .prepareSampleMetadata(metadata)
+    metadata %>%
+        mutate_all(as.factor) %>%
+        .prepareSampleMetadata()
 }
 
 

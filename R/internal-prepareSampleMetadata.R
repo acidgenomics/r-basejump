@@ -3,16 +3,14 @@
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr arrange everything mutate mutate_all select
+#' @importFrom dplyr arrange everything mutate mutate_if select
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data syms !!!
 #'
 #' @param metadata Metadata [data.frame].
-#' @param factors Set columns that don't apply to sample names as factors
-#'   (`TRUE`/`FALSE`).
 #'
 #' @return [data.frame].
-.prepareSampleMetadata <- function(metadata, factors = TRUE) {
+.prepareSampleMetadata <- function(metadata) {
     metadata <- as.data.frame(metadata)
     # `description` is required
     if (!"description" %in% colnames(metadata)) {
@@ -33,11 +31,8 @@
             x = make.names(metadata[["sampleID"]], unique = TRUE),
             pattern = "\\.",
             replacement = "_")
-    # Set all columns as factors, if desired (recommended)
-    if (isTRUE(factors)) {
-        metadata <- mutate_all(metadata, factor)
-    }
     metadata %>%
+        mutate_if(is.character, as.factor) %>%
         select(metadataPriorityCols, everything()) %>%
         arrange(!!!syms(metadataPriorityCols)) %>%
         set_rownames(.[["sampleID"]])
