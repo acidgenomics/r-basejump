@@ -10,7 +10,7 @@ yaml <- readYAML(
 test_that("sampleYAML", {
     expect_equal(
         sampleYAML(yaml, "metadata"),
-        tibble(
+        data.frame(
             group = c(
                 "ctrl",
                 "ctrl",
