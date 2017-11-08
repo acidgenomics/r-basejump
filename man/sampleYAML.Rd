@@ -16,7 +16,7 @@ sampleYAML(yaml, keys, ...)
 \item{keys}{Nested operator keys, supplied as a character vector.}
 }
 \value{
-\link{tibble}.
+\link{data.frame}.
 }
 \description{
 Sample YAML Metadata Utilities
