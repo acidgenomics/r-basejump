@@ -14,7 +14,7 @@ sampleYAMLMetrics(yaml, ...)
 \item{yaml}{Project summary YAML list.}
 }
 \value{
-\link{tibble}.
+\link{data.frame}.
 }
 \description{
 Sample Metrics from YAML File

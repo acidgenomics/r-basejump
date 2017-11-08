@@ -12,7 +12,7 @@
 #'   counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 #'   output the same metrics into the YAML.
 #'
-#' @return [tibble].
+#' @return [data.frame].
 #'
 #' @examples
 #' url <- file.path(
