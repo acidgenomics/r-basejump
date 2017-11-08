@@ -9,8 +9,6 @@
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
-#' @param keepNA Keep `NA` values.
-#' @param ... Additional arguments, passed to [glue::collapse()].
 #'
 #' @return
 #' - For vector: String.
@@ -18,72 +16,67 @@
 #'
 #' @seealso
 #' - [base::toString()].
-#' - [glue::collapse()].
 #'
 #' @examples
-#' # Designed primarily for `dims` objects
+#' # character
+#' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
+#' collapseToString(groceries, unique = TRUE, sort = FALSE)
+#' collapseToString(groceries, unique = FALSE, sort = FALSE)
+#'
+#' # numeric
+#' collapseToString(seq(1:5))
+#'
+#' # logical
+#' collapseToString(c(TRUE, FALSE))
+#' collapseToString(c(NA, NaN))
+#'
+#' # data.frame
+#' # Objects supporting `dim` function similarly
 #' mtcars %>%
 #'     head() %>%
 #'     collapseToString() %>%
 #'     t()
-#'
-#' # Vectors are also supported
-#' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-#' collapseToString(groceries)
-#' collapseToString(groceries, unique = FALSE, sort = FALSE)
 NULL
 
 
 
 # Constructors ====
-#' @importFrom glue collapse
 #' @importFrom stats na.omit
 #' @importFrom stringr str_replace_na
-.collapseVec <- function(
+.collapseToString <- function(
     object,
     sep = ", ",
     unique = TRUE,
     sort = TRUE,
-    keepNA = FALSE,
     ...) {
-    x <- as.character(object)
-
-    # Handle NA values
-    if (isTRUE(keepNA)) {
-        x <- str_replace_na(x)
-    } else {
-        x <- na.omit(x)
-    }
-
-    # Extract uniques, if desired
-    if (length(x) > 1L) {
+    if (length(object) > 1) {
         if (isTRUE(unique)) {
-            x <- unique(x)
-            if (length(x) == 1L) {
-                return(x)
+            if (!all(is.na(object))) {
+                object <- na.omit(object)
+            }
+            object <- unique(object)
+        } else {
+            if (all(is.na(object))) {
+                object <- str_replace_na(object)
             }
         }
-    } else if (length(x) == 1L) {
-        return(x)
     }
-
-    # Sort, if desired
     if (isTRUE(sort)) {
-        x <- sort(x)
+        object <- sort(object, na.last = TRUE)
     }
-
-    collapse(x, sep, ...)
+    object %>%
+        as.character() %>%
+        paste(collapse = sep)
 }
 
 
 
 #' @importFrom dplyr funs mutate_all summarize_all
-.collapseDim <- function(
+.collapseRows <- function(
     object,
     sep = ", ",
     unique = TRUE,
     sort = TRUE,
-    keepNA = FALSE,
     ...) {
     origClass <- class(object)[[1L]]
     # Coerce to data.frame and perform manipulations
@@ -91,12 +84,11 @@ NULL
         as.data.frame() %>%
         mutate_all(funs(fixNA)) %>%
         summarize_all(funs(
-            .collapseVec(
+            .collapseToString(
                 object = .,
                 sep = sep,
                 unique = unique,
                 sort = sort,
-                keepNA = keepNA,
                 ...))) %>%
         # Return as original class
         as(origClass)
@@ -110,16 +102,7 @@ NULL
 setMethod(
     "collapseToString",
     signature("character"),
-    .collapseVec)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("integer"),
-    .collapseVec)
+    .collapseToString)
 
 
 
@@ -128,7 +111,7 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("data.frame"),
-    .collapseDim)
+    .collapseRows)
 
 
 
@@ -137,7 +120,25 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("DataFrame"),
-    .collapseDim)
+    .collapseRows)
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    "collapseToString",
+    signature("integer"),
+    .collapseToString)
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    "collapseToString",
+    signature("logical"),
+    .collapseToString)
 
 
 
@@ -146,7 +147,16 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("matrix"),
-    .collapseDim)
+    .collapseRows)
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    "collapseToString",
+    signature("numeric"),
+    .collapseToString)
 
 
 
@@ -155,4 +165,4 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("tbl_df"),
-    .collapseDim)
+    .collapseRows)

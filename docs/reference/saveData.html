@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -92,7 +92,8 @@ symbols. This function saves each object into a separate <code>.rda</code> file 
 than combining into a single file.</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>ext</span> <span class='kw'>=</span> <span class='st'>"rda"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"bzip2"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -103,7 +104,16 @@ than combining into a single file.</p>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p>Output directory. Defaults to <strong>data</strong>.</p></td>
+      <td><p>Output directory. Defaults to the current working directory.</p></td>
+    </tr>
+    <tr>
+      <th>ext</th>
+      <td><p>R data file extension. Defaults to <code>rda</code> and typically should not
+be changed.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Overwrite existing file.</p></td>
     </tr>
     <tr>
       <th>compress</th>
@@ -127,20 +137,20 @@ than combining into a single file.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>These function will <em>overwrite</em> existing saved data, following the
-same conventions as <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>. Conversely, <code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code> does
+same conventions as <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>. Conversely, <code><a href='http://www.rdocumentation.org/packages/devtools/topics/devtools-deprecated'>devtools::use_data()</a></code> does
 not overwrite by default if that behavior is preferred.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/devtools/topics/use_data'>devtools::use_data()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/usethis/topics/use_data'>usethis::use_data()</a></code>.</p></li>
 </ul>
     <p>Other Write Utilities: <code><a href='writeCounts.html'>writeCounts</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving mtcars, starwars to data</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving mtcars.rda, starwars.rda to /Users/mike/GitHub/steinbaugh/basejump/docs/reference</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

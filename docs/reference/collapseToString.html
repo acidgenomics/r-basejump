@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -94,27 +94,35 @@
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for integer</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for integer</span>
+<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for logical</span>
+<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for numeric</span>
+<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for tbl_df</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keepNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -125,7 +133,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments, passed to <code><a href='http://www.rdocumentation.org/packages/glue/topics/collapse'>glue::collapse()</a></code>.</p></td>
+      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
       <th>sep</th>
@@ -138,10 +146,6 @@
     <tr>
       <th>sort</th>
       <td><p>Sort values.</p></td>
-    </tr>
-    <tr>
-      <th>keepNA</th>
-      <td><p>Keep <code>NA</code> values.</p></td>
     </tr>
     </table>
     
@@ -158,12 +162,19 @@
 
     <ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/toString'>base::toString()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/glue/topics/collapse'>glue::collapse()</a></code>.</p></li>
 </ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Designed primarily for `dims` objects</span>
+    <pre class="examples"><div class='input'><span class='co'># character</span>
+<span class='no'>groceries</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='st'>"veggies"</span>, <span class='fl'>NA</span>)
+<span class='fu'>collapseToString</span>(<span class='no'>groceries</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "milk, eggs, veggies"</div><div class='input'><span class='fu'>collapseToString</span>(<span class='no'>groceries</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "milk, eggs, eggs, veggies, NA"</div><div class='input'>
+<span class='co'># numeric</span>
+<span class='fu'>collapseToString</span>(<span class='fu'>seq</span>(<span class='fl'>1</span>:<span class='fl'>5</span>))</div><div class='output co'>#&gt; [1] "1, 2, 3, 4, 5"</div><div class='input'>
+<span class='co'># logical</span>
+<span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [1] "FALSE, TRUE"</div><div class='input'><span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NaN</span>))</div><div class='output co'>#&gt; [1] "NA, NaN"</div><div class='input'>
+<span class='co'># data.frame</span>
+<span class='co'># Objects supporting `dim` function similarly</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
     <span class='fu'>head</span>() <span class='kw'>%&gt;%</span>
     <span class='fu'>collapseToString</span>() <span class='kw'>%&gt;%</span>
@@ -171,17 +182,14 @@
 #&gt; mpg  "18.1, 18.7, 21, 21.4, 22.8"          
 #&gt; cyl  "4, 6, 8"                             
 #&gt; disp "108, 160, 225, 258, 360"             
-#&gt; hp   "105, 110, 175, 93"                   
+#&gt; hp   "93, 105, 110, 175"                   
 #&gt; drat "2.76, 3.08, 3.15, 3.85, 3.9"         
 #&gt; wt   "2.32, 2.62, 2.875, 3.215, 3.44, 3.46"
 #&gt; qsec "16.46, 17.02, 18.61, 19.44, 20.22"   
 #&gt; vs   "0, 1"                                
 #&gt; am   "0, 1"                                
 #&gt; gear "3, 4"                                
-#&gt; carb "1, 2, 4"                             </div><div class='input'>
-<span class='co'># Vectors are also supported</span>
-<span class='no'>groceries</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='st'>"veggies"</span>, <span class='fl'>NA</span>)
-<span class='fu'>collapseToString</span>(<span class='no'>groceries</span>)</div><div class='output co'>#&gt; eggs, milk, veggies</div><div class='input'><span class='fu'>collapseToString</span>(<span class='no'>groceries</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; milk, eggs, eggs, veggies</div></pre>
+#&gt; carb "1, 2, 4"                             </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

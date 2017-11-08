@@ -4,45 +4,51 @@
 \name{collapseToString}
 \alias{collapseToString}
 \alias{collapseToString,character-method}
-\alias{collapseToString,integer-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
+\alias{collapseToString,integer-method}
+\alias{collapseToString,logical-method}
 \alias{collapseToString,matrix-method}
+\alias{collapseToString,numeric-method}
 \alias{collapseToString,tbl_df-method}
 \title{Collapse to String}
 \usage{
 collapseToString(object, ...)
 
 \S4method{collapseToString}{character}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
-
-\S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
+  sort = TRUE, ...)
 
 \S4method{collapseToString}{data.frame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
+  sort = TRUE, ...)
 
 \S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
+  sort = TRUE, ...)
+
+\S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, ...)
+
+\S4method{collapseToString}{logical}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, ...)
 
 \S4method{collapseToString}{matrix}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
+  sort = TRUE, ...)
+
+\S4method{collapseToString}{numeric}(object, sep = ", ", unique = TRUE,
+  sort = TRUE, ...)
 
 \S4method{collapseToString}{tbl_df}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, keepNA = FALSE, ...)
+  sort = TRUE, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments, passed to \code{\link[glue:collapse]{glue::collapse()}}.}
+\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{sep}{Separator. Defaults to comma.}
 
 \item{unique}{Unique values.}
 
 \item{sort}{Sort values.}
-
-\item{keepNA}{Keep \code{NA} values.}
 }
 \value{
 \itemize{
@@ -54,21 +60,28 @@ collapseToString(object, ...)
 Collapse to String
 }
 \examples{
-# Designed primarily for `dims` objects
+# character
+groceries <- c("milk", "eggs", "eggs", "veggies", NA)
+collapseToString(groceries, unique = TRUE, sort = FALSE)
+collapseToString(groceries, unique = FALSE, sort = FALSE)
+
+# numeric
+collapseToString(seq(1:5))
+
+# logical
+collapseToString(c(TRUE, FALSE))
+collapseToString(c(NA, NaN))
+
+# data.frame
+# Objects supporting `dim` function similarly
 mtcars \%>\%
     head() \%>\%
     collapseToString() \%>\%
     t()
-
-# Vectors are also supported
-groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-collapseToString(groceries)
-collapseToString(groceries, unique = FALSE, sort = FALSE)
 }
 \seealso{
 \itemize{
 \item \code{\link[base:toString]{base::toString()}}.
-\item \code{\link[glue:collapse]{glue::collapse()}}.
 }
 }
 \concept{Data Manipulation Utilities}

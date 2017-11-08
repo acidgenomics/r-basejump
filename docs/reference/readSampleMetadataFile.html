@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -93,8 +93,8 @@
     <pre class="usage"><span class='fu'>readSampleMetadataFile</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>readSampleMetadataFile</span>(<span class='no'>object</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>patternCol</span> <span class='kw'>=</span> <span class='st'>"sampleName"</span>, <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>readSampleMetadataFile</span>(<span class='no'>object</span>, <span class='kw'>lanes</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -106,15 +106,6 @@
     <tr>
       <th>...</th>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
-    </tr>
-    <tr>
-      <th>pattern</th>
-      <td><p><em>Optional</em>. Grep pattern to match against sample names.</p></td>
-    </tr>
-    <tr>
-      <th>patternCol</th>
-      <td><p><em>Optional</em>. Column in data frame used for pattern
-subsetting.</p></td>
     </tr>
     <tr>
       <th>lanes</th>
@@ -129,7 +120,7 @@ technical replicates (<code>_LXXX</code>) suffix.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a>, grouped by <code>sampleName</code>.</p>
+    <p>data.frame.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -140,12 +131,36 @@ technical replicates (<code>_LXXX</code>) suffix.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Demultiplexed FASTQ</span>
-<span class='fu'>readSampleMetadataFile</span>(
-    <span class='st'>"http://basejump.seq.cloud/metadata_demultiplexed.xlsx"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading metadata_demultiplexed.xlsx</span></div><div class='output co'>#&gt;          sampleID sampleName description            fileName genotype
+<span class='no'>demultiplexed</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='st'>"http://basejump.seq.cloud"</span>,
+    <span class='st'>"sample_metadata"</span>,
+    <span class='st'>"demultiplexed.xlsx"</span>)
+<span class='fu'>readSampleMetadataFile</span>(<span class='no'>demultiplexed</span>)</div><div class='output co'>#&gt; <span class='message'>Reading demultiplexed.xlsx</span></div><div class='output co'>#&gt;          sampleID sampleName description            fileName genotype
 #&gt; sample_1 sample_1   sample 1    sample 1 sample1_R1.fastq.gz wildtype
 #&gt; sample_2 sample_2   sample 2    sample 2 sample2_R1.fastq.gz wildtype
 #&gt; sample_3 sample_3   sample 3    sample 3 sample3_R1.fastq.gz   mutant
-#&gt; sample_4 sample_4   sample 4    sample 4 sample4_R1.fastq.gz   mutant</div></pre>
+#&gt; sample_4 sample_4   sample 4    sample 4 sample4_R1.fastq.gz   mutant</div><div class='input'>
+<span class='co'># Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)</span>
+<span class='no'>multiplexed</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='st'>"http://basejump.seq.cloud"</span>,
+    <span class='st'>"sample_metadata"</span>,
+    <span class='st'>"multiplexed.xlsx"</span>)
+<span class='fu'>readSampleMetadataFile</span>(<span class='no'>multiplexed</span>)</div><div class='output co'>#&gt; <span class='message'>Reading multiplexed.xlsx</span></div><div class='output co'>#&gt;                      sampleID sampleName description         fileName index
+#&gt; run_1_CAGTTATG run_1_CAGTTATG   sample 2       run 1 run1_R1.fastq.gz    18
+#&gt; run_1_TTACCTCC run_1_TTACCTCC   sample 1       run 1 run1_R1.fastq.gz    17
+#&gt; run_2_ATAGCCTT run_2_ATAGCCTT   sample 5       run 2 run2_R1.fastq.gz    14
+#&gt; run_2_CTTAATAG run_2_CTTAATAG   sample 4       run 2 run2_R1.fastq.gz    13
+#&gt; run_2_TAAGGCTC run_2_TAAGGCTC   sample 6       run 2 run2_R1.fastq.gz    15
+#&gt; run_2_TCGCATAA run_2_TCGCATAA   sample 7       run 2 run2_R1.fastq.gz    16
+#&gt; run_2_TCTTACGC run_2_TCTTACGC   sample 3       run 2 run2_R1.fastq.gz    12
+#&gt;                sequence  revcomp
+#&gt; run_1_CAGTTATG CATAACTG CAGTTATG
+#&gt; run_1_TTACCTCC GGAGGTAA TTACCTCC
+#&gt; run_2_ATAGCCTT AAGGCTAT ATAGCCTT
+#&gt; run_2_CTTAATAG CTATTAAG CTTAATAG
+#&gt; run_2_TAAGGCTC GAGCCTTA TAAGGCTC
+#&gt; run_2_TCGCATAA TTATGCGA TCGCATAA
+#&gt; run_2_TCTTACGC GCGTAAGA TCTTACGC</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

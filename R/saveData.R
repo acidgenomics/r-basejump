@@ -19,7 +19,7 @@
 #'
 #' @seealso
 #' - [base::save()].
-#' - [usethis::use_data()].
+#' - `usethis::use_data()`.
 #'
 #' @return Silent named character vector of file paths.
 #' @export

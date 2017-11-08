@@ -20,6 +20,7 @@ NULL
 
 # Methods ====
 #' @rdname sampleYAMLMetadata
+#' @importFrom dplyr mutate_all
 #' @export
 setMethod(
     "sampleYAMLMetadata",
@@ -29,5 +30,6 @@ setMethod(
             yaml = yaml,
             keys = "metadata"
         ) %>%
-            .prepareSampleMetadata(factors = TRUE)
+            mutate_all(as.factor) %>%
+            .prepareSampleMetadata()
     })

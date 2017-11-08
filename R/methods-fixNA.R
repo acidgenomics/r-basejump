@@ -19,7 +19,7 @@ NULL
 
 
 # Constructors ====
-.fixNAVec <- function(object) {
+.fixNAString <- function(object) {
     patterns <- c(
         "^$",
         "^\\s+$",
@@ -32,9 +32,9 @@ NULL
 
 
 
-#' @importFrom dplyr funs mutate_all
+#' @importFrom dplyr funs mutate_if
 .fixNATidy <- function(object) {
-    mutate_all(object, funs(.fixNAVec))
+    mutate_if(object, is.character, funs(.fixNAString))
 }
 
 
@@ -57,7 +57,7 @@ setMethod(
 setMethod(
     "fixNA",
     signature("character"),
-    .fixNAVec)
+    .fixNAString)
 
 
 
@@ -76,7 +76,9 @@ setMethod(
     "fixNA",
     signature("DataFrame"),
     function(object) {
-        apply(object, 2L, .fixNAVec) %>%
+        object %>%
+            as.data.frame() %>%
+            .fixNATidy() %>%
             as("DataFrame")
     })
 
