@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -118,7 +118,11 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readYAML.html'>readYAML</a></span>(<span class='st'>"http://basejump.seq.cloud/project-summary.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>sampleYAMLMetrics</span>(<span class='no'>yaml</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; 'data.frame':	4 obs. of  20 variables:
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='st'>"http://basejump.seq.cloud"</span>,
+    <span class='st'>"bcbio"</span>,
+    <span class='st'>"project-summary.yaml"</span>)
+<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readYAML.html'>readYAML</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>sampleYAMLMetrics</span>(<span class='no'>yaml</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; 'data.frame':	4 obs. of  20 variables:
 #&gt;  $ sampleID                     : chr  "group1_1" "group1_2" "group2_1" "group2_2"
 #&gt;  $ sampleName                   : chr  "group1_1" "group1_2" "group2_1" "group2_2"
 #&gt;  $ description                  : chr  "group1_1" "group1_2" "group2_1" "group2_2"

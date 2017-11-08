@@ -4,7 +4,7 @@ test_that("Human", {
     human <- annotable("Homo sapiens", release = 88L)
     expect_equal(
         dim(human),
-        c(64592L, 5L)
+        c(64592L, 10L)
     )
     expect_equal(
         rownames(human)[1L:5L],
@@ -14,6 +14,21 @@ test_that("Human", {
           "ENSG00000000457",
           "ENSG00000000460")
     )
+    expect_equal(
+        lapply(human, class),
+        list(
+            ensgene = "character",
+            symbol = "character",
+            description = "character",
+            biotype = "character",
+            broadClass = "character",
+            geneSeqStart = "integer",
+            geneSeqEnd = "integer",
+            seqName = "character",
+            seqStrand = "integer",
+            seqCoordSystem = "character"
+        )
+    )
 })
 
 test_that("Mouse", {
@@ -21,7 +36,7 @@ test_that("Mouse", {
     mouse <- annotable("Mus musculus", release = 88L)
     expect_equal(
         dim(mouse),
-        c(51158L, 5L)
+        c(51158L, 10L)
     )
     expect_equal(
         rownames(mouse)[1L:5L],
@@ -30,6 +45,38 @@ test_that("Mouse", {
           "ENSMUSG00000000028",
           "ENSMUSG00000000031",
           "ENSMUSG00000000037")
+    )
+})
+
+test_that("annotables data.frame", {
+    # Use the pre-compiled grch37 annotable from annotables package
+    loadRemoteData("http://basejump.seq.cloud/grch37.rda", quiet = TRUE)
+
+    # This is fast but will drop extra columns
+    human <- annotable(grch37)
+    expect_equal(
+        dim(human),
+        c(63677L, 9L)
+    )
+    expect_equal(
+        lapply(human, class),
+        list(
+            ensgene = "character",
+            symbol = "character",
+            description = "character",
+            biotype = "character",
+            broadClass = "character",
+            chr = "character",
+            start = "integer",
+            end = "integer",
+            strand = "integer"
+        )
+    )
+
+    malformed <- grch37[, c("ensgene", "symbol")]
+    expect_error(
+        annotable(malformed),
+        "Required columns: ensgene, symbol, description, biotype"
     )
 })
 

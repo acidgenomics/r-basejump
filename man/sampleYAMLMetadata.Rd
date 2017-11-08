@@ -14,7 +14,7 @@ sampleYAMLMetadata(yaml, ...)
 \item{yaml}{Project summary YAML list.}
 }
 \value{
-\link{tibble}.
+\link{data.frame}.
 }
 \description{
 Sample Metadata from YAML

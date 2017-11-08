@@ -12,7 +12,7 @@
 #'   counts. Fast RNA-seq mode with lightweight counts (pseudocounts) doesn't
 #'   output the same metrics into the YAML.
 #'
-#' @return [tibble].
+#' @return [data.frame].
 #'
 #' @examples
 #' url <- file.path(
@@ -26,7 +26,6 @@ NULL
 
 
 # Constructors ====
-#' @importFrom data.table rbindlist
 .sampleYAML <- function(yaml, keys) {
     samples <- yaml[["samples"]]
     if (!length(samples)) {
@@ -42,7 +41,7 @@ NULL
         }
     }
 
-    lapply(seq_along(samples), function(a) {
+    data <- lapply(seq_along(samples), function(a) {
         nested <- samples[[a]][[keys]]
         # Set the description
         nested[["description"]] <- samples[[a]][["description"]]
@@ -57,14 +56,15 @@ NULL
             }
         }
         nested %>%
-            camel(strict = FALSE) %>%
-            .[unique(names(.))]
-    }) %>%
-        # Some YAML files will cause `dplyr::bind_rows()` to throw
-        # `Column XXX can't be converted from integer to character` errors
-        # on numeric data, whereas this doesn't happen with `rbindlist()`.
-        rbindlist(fill = TRUE) %>%
-        as("tibble") %>%
+            .[unique(names(.))] %>%
+            unlist()
+    })
+
+    data %>%
+        as.data.frame.list() %>%
+        t() %>%
+        as.data.frame() %>%
+        set_rownames(NULL) %>%
         camel(strict = FALSE) %>%
         removeNA()
 }

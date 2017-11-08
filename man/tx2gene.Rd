@@ -30,7 +30,7 @@ tx2gene(object, ...)
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}

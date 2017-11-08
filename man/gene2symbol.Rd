@@ -42,7 +42,7 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{release}{Ensembl release version. If \code{NULL}, defaults to using the most
+\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
