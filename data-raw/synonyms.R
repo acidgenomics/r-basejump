@@ -1,5 +1,6 @@
-library(stringr)
+library(devtools)
 library(tidyverse)
+load_all()
 
 # Support for C. elegans is poor here. Use WormBase instead.
 genomes <- list(
@@ -43,9 +44,7 @@ synonyms <- lapply(seq_along(genomes), function(a) {
         filter(!is.na(ensgene)) %>%
         select(ensgene, symbol, synonyms) %>%
         arrange(ensgene)
-}) %>%
-    set_names(names(genomes))
+})
+names(synonyms) <- names(genomes)
 
-save(synonyms,
-     file = "~/Desktop/synonyms.rda",
-     compress = "xz")
+use_data(synonyms, overwrite = TRUE, compress = "xz")
