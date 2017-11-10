@@ -20,6 +20,11 @@ test_that("sampleYAML", {
                 "group1_1",
                 "group1_2",
                 "group2_1",
+                "group2_2"),
+            row.names = c(
+                "group1_1",
+                "group1_2",
+                "group2_1",
                 "group2_2")
         )
     )
@@ -58,30 +63,28 @@ test_that("sampleYAMLMetadata", {
 
 test_that("sampleYAMLMetrics", {
     metrics <- sampleYAMLMetrics(yaml)
-    structure <- c(
-        sampleID = "factor",
-        sampleName = "factor",
-        description = "factor",
-        xGC = "numeric",
-        x53Bias = "numeric",
-        averageInsertSize = "numeric",
-        duplicates = "numeric",
-        duplicationRateOfMapped = "numeric",
-        exonicRate = "numeric",
-        intergenicRate = "numeric",
-        intronicRate = "numeric",
-        mappedPairedReads = "numeric",
-        mappedReads = "numeric",
-        name = "factor",
-        qualityFormat = "factor",
-        sequenceLength = "factor",
-        sequencesFlaggedAsPoorQuality = "numeric",
-        totalReads = "numeric",
-        rrna = "numeric",
-        rrnaRate = "numeric")
     expect_equal(
         vapply(metrics, class, FUN.VALUE = "character"),
-        structure
+        c(sampleID = "factor",
+          sampleName = "factor",
+          description = "factor",
+          xGC = "numeric",
+          x53Bias = "numeric",
+          averageInsertSize = "numeric",
+          duplicates = "numeric",
+          duplicationRateOfMapped = "numeric",
+          exonicRate = "numeric",
+          intergenicRate = "numeric",
+          intronicRate = "numeric",
+          mappedPairedReads = "numeric",
+          mappedReads = "numeric",
+          name = "factor",
+          qualityFormat = "factor",
+          sequenceLength = "factor",
+          sequencesFlaggedAsPoorQuality = "numeric",
+          totalReads = "numeric",
+          rrna = "numeric",
+          rrnaRate = "numeric")
     )
 
     # Check for proper handling of metrics with mismatched number of values
@@ -94,6 +97,25 @@ test_that("sampleYAMLMetrics", {
     metrics2 <- sampleYAMLMetrics(yaml2)
     expect_equal(
         vapply(metrics2, class, FUN.VALUE = "character"),
-        structure
+        c(sampleID = "factor",
+          sampleName = "factor",
+          description = "factor",
+          xGC = "numeric",
+          x53Bias = "numeric",
+          averageInsertSize = "numeric",
+          duplicates = "numeric",
+          duplicationRateOfMapped = "numeric",
+          exonicRate = "numeric",
+          intergenicRate = "numeric",
+          intronicRate = "numeric",
+          mappedPairedReads = "numeric",
+          mappedReads = "numeric",
+          name = "factor",
+          qualityFormat = "factor",
+          sequenceLength = "numeric",  # factor in the main example
+          sequencesFlaggedAsPoorQuality = "numeric",
+          totalReads = "numeric",
+          rrna = "numeric",
+          rrnaRate = "numeric")
     )
 })
