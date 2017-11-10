@@ -27,6 +27,7 @@ NULL
 
 # Constructors ====
 #' @importFrom dplyr arrange bind_rows
+#' @importFrom magrittr set_rownames
 .sampleYAML <- function(yaml, keys) {
     samples <- yaml[["samples"]]
     if (!length(samples)) {
@@ -60,10 +61,10 @@ NULL
     dflist <- lapply(data, function(x) {
         as.data.frame(t(x))
     })
-    df <- bind_rows(dflist)
-    df <- arrange(df, .data[["description"]])
-    rownames(df) <- df[["description"]]
-    df
+    bind_rows(dflist) %>%
+        removeNA() %>%
+        arrange(.data[["description"]]) %>%
+        set_rownames(.[["description"]])
 }
 
 
