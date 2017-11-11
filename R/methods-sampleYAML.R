@@ -26,12 +26,13 @@ NULL
 
 
 # Constructors ====
+#' @importFrom dplyr arrange bind_rows
+#' @importFrom magrittr set_rownames
 .sampleYAML <- function(yaml, keys) {
     samples <- yaml[["samples"]]
     if (!length(samples)) {
         stop("No sample information in YAML", call. = FALSE)
     }
-
     if (!keys[[1]] %in% names(samples[[1]])) {
         return(NULL)
     }
@@ -40,7 +41,6 @@ NULL
             return(NULL)
         }
     }
-
     data <- lapply(seq_along(samples), function(a) {
         nested <- samples[[a]][[keys]]
         # Set the description
@@ -55,18 +55,16 @@ NULL
                 }
             }
         }
-        nested %>%
-            .[unique(names(.))] %>%
-            unlist()
+        vec <- unlist(nested)
+        camel(vec, strict = FALSE)
     })
-
-    data %>%
-        as.data.frame.list() %>%
-        t() %>%
-        as.data.frame() %>%
-        set_rownames(NULL) %>%
-        camel(strict = FALSE) %>%
-        removeNA()
+    dflist <- lapply(data, function(x) {
+        as.data.frame(t(x))
+    })
+    bind_rows(dflist) %>%
+        removeNA() %>%
+        arrange(.data[["description"]]) %>%
+        set_rownames(.[["description"]])
 }
 
 
