@@ -134,7 +134,18 @@ NULL
         mcols() %>%
         rownames() %>%
         tail(n = 1L)
+
+    # AnnotationHub will attach ensembldb at this step and mask dplyr!
+    if ("ensembldb" %in% .packages()) {
+        ensembldbUserAttached <- TRUE
+    } else {
+        ensembldbUserAttached <- FALSE
+    }
     edb <- suppressMessages(ah[[id]])
+    if ("ensembldb" %in% .packages() &
+        !isTRUE(ensembldbUserAttached)) {
+        detach("package:ensembldb", unload = TRUE)
+    }
 
     if (!isTRUE(quiet)) {
         message(paste(
