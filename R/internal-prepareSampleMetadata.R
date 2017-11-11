@@ -33,6 +33,7 @@
             replacement = "_")
     metadata %>%
         mutate_if(is.character, as.factor) %>%
+        mutate_if(is.factor, droplevels) %>%
         select(metadataPriorityCols, everything()) %>%
         arrange(!!!syms(metadataPriorityCols)) %>%
         set_rownames(.[["sampleID"]])

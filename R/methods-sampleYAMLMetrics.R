@@ -34,7 +34,7 @@ NULL
     }
     # Fix numerics set as characters
     numericAsCharacter <- function(x) {
-        all(grepl(x = x, pattern = "^[0-9\\.]+$"))
+        any(grepl(x = x, pattern = "^[0-9\\.]+$"))
     }
     metrics %>%
         mutate_if(numericAsCharacter, as.numeric) %>%
