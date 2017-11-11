@@ -144,7 +144,9 @@ NULL
     edb <- suppressMessages(ah[[id]])
     if ("ensembldb" %in% .packages() &
         !isTRUE(ensembldbUserAttached)) {
-        detach("package:ensembldb", unload = TRUE)
+        suppressWarnings(
+            detach("package:ensembldb", unload = TRUE, force = TRUE)
+        )
     }
 
     if (!isTRUE(quiet)) {
