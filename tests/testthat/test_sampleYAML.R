@@ -20,6 +20,11 @@ test_that("sampleYAML", {
                 "group1_1",
                 "group1_2",
                 "group2_1",
+                "group2_2"),
+            row.names = c(
+                "group1_1",
+                "group1_2",
+                "group2_1",
                 "group2_2")
         )
     )
@@ -58,31 +63,6 @@ test_that("sampleYAMLMetadata", {
 
 test_that("sampleYAMLMetrics", {
     metrics <- sampleYAMLMetrics(yaml)
-    # Column names
-    expect_equal(
-        colnames(metrics),
-        c("sampleID",
-          "sampleName",
-          "description",
-          "xGC",
-          "x53Bias",
-          "averageInsertSize",
-          "duplicates",
-          "duplicationRateOfMapped",
-          "exonicRate",
-          "intergenicRate",
-          "intronicRate",
-          "mappedPairedReads",
-          "mappedReads",
-          "name",
-          "qualityFormat",
-          "sequenceLength",
-          "sequencesFlaggedAsPoorQuality",
-          "totalReads",
-          "rrna",
-          "rrnaRate")
-    )
-    # Column classes
     expect_equal(
         vapply(metrics, class, FUN.VALUE = "character"),
         c(sampleID = "factor",
@@ -101,6 +81,38 @@ test_that("sampleYAMLMetrics", {
           name = "factor",
           qualityFormat = "factor",
           sequenceLength = "factor",
+          sequencesFlaggedAsPoorQuality = "numeric",
+          totalReads = "numeric",
+          rrna = "numeric",
+          rrnaRate = "numeric")
+    )
+
+    # Check for proper handling of metrics with mismatched number of values
+    yaml2 <- readYAML(
+        file.path(
+            "http://basejump.seq.cloud",
+            "bcbio",
+            "project-summary-metrics-mismatch.yaml"),
+        quiet = TRUE)
+    metrics2 <- sampleYAMLMetrics(yaml2)
+    expect_equal(
+        vapply(metrics2, class, FUN.VALUE = "character"),
+        c(sampleID = "factor",
+          sampleName = "factor",
+          description = "factor",
+          xGC = "numeric",
+          x53Bias = "numeric",
+          averageInsertSize = "numeric",
+          duplicates = "numeric",
+          duplicationRateOfMapped = "numeric",
+          exonicRate = "numeric",
+          intergenicRate = "numeric",
+          intronicRate = "numeric",
+          mappedPairedReads = "numeric",
+          mappedReads = "numeric",
+          name = "factor",
+          qualityFormat = "factor",
+          sequenceLength = "numeric",  # factor in the main example
           sequencesFlaggedAsPoorQuality = "numeric",
           totalReads = "numeric",
           rrna = "numeric",
