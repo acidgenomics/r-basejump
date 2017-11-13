@@ -1,6 +1,11 @@
-#' Mus musculus PANTHER annotations
-#' Michael Steinbaugh
-#' 2017-11-13
+# *Mus musculus* PANTHER annotations
+# Michael Steinbaugh
+# 2017-11-13
+# Latest version of this script is available here:
+# script <- system.file(
+#     file.path("R_scripts", "panther", "mmusculus.R"),
+#     package = "basejump")
+# file.edit(script)
 library(basejump)
 library(tidyverse)
 
