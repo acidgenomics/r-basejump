@@ -1,11 +1,7 @@
 #' Mus musculus PANTHER annotations
 #' Michael Steinbaugh
-#' 2017-09-27
-
+#' 2017-11-13
 library(basejump)
-library(magrittr)
-library(stringr)
-library(readr)
 library(tidyverse)
 
 # MGI annotations ====
@@ -59,16 +55,16 @@ colnames(panther) <- camel(paste("panther", colnames(panther), sep = "."))
 # First extract the annotations that match Ensembl
 ensemblMatched <- panther %>%
     # First extract the Ensembl ID
-    mutate(ensgene = str_extract(pantherId, "Ensembl=ENSMUSG[0-9]{11}"),
+    mutate(ensgene = str_extract(pantherID, "Ensembl=ENSMUSG[0-9]{11}"),
            ensgene = str_replace(ensgene, "^Ensembl=", "")) %>%
     filter(!is.na(ensgene))
 
 # Most of the annotations are mapped to HGNC for human
 mgiMatched <- panther %>%
-    filter(!pantherId %in% ensemblMatched[["pantherId"]]) %>%
+    filter(!pantherID %in% ensemblMatched[["pantherID"]]) %>%
     # Extract the HGNC ID, which we will use for join with HGNC annotations
     # to match the Ensembl ID.
-    mutate(mgi = str_extract(pantherId, "MGI=[0-9]+"),
+    mutate(mgi = str_extract(pantherID, "MGI=[0-9]+"),
            mgi = str_replace(mgi, "^MGI=", "")) %>%
     left_join(mgi, by = "mgi") %>%
     filter(!is.na(ensgene)) %>%
@@ -76,6 +72,6 @@ mgiMatched <- panther %>%
 
 # Now combine PANTHER annotations that are matched to Ensembl ID
 pantherWithEnsembl <- bind_rows(ensemblMatched, mgiMatched) %>%
-    select(-pantherId) %>%
+    select(-pantherID) %>%
     select(ensgene, everything())
 saveData(pantherWithEnsembl)
