@@ -33,9 +33,9 @@ pantherFile <-
              pattern = organism,
              compress = TRUE,
              localDir = "annotations")
-panther <- pantherFile %>%
-    as.character() %>%
-    read_tsv(col_names = c(
+panther <- read_tsv(
+    as.character(pantherFile),
+    col_names = c(
         "id",
         "protein",
         "subfamily",
