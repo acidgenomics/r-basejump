@@ -11,6 +11,21 @@ NULL
 
 
 
+# Legacy ====
+#' @rdname deprecated
+#' @export
+summarizeRows <- function() {
+    .Deprecated("collapseToString")
+}
+
+#' @rdname deprecated
+#' @export
+wash <- function() {
+    .Deprecated()
+}
+
+
+
 # v0.0.23 ====
 #' @rdname deprecated
 #' @export
