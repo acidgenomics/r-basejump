@@ -395,6 +395,14 @@ setGeneric("symbol2gene", function(object, ...) {
 
 
 
+#' @rdname toStringUnique
+#' @export
+setGeneric("toStringUnique", function(object, ...) {
+    standardGeneric("toStringUnique")
+})
+
+
+
 #' @rdname tx2gene
 #' @export
 setGeneric("tx2gene", function(object, ...) {
