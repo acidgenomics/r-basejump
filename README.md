@@ -24,8 +24,6 @@ biocLite(
 
 ### [devtools][] method
 
-[ensembldb][] must be installed, otherwise this step will currently fail.
-
 ```{r}
 install.packages("devtools")
 devtools::install_github(
