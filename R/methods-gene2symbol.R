@@ -94,16 +94,18 @@ NULL
 
 
 
-# Pass arguments to `.gene2symbol()`
 .gene2symbolDim <- function(
     object,
-    organism = NULL,
-    release = NULL,
+    organism,
+    release,
     quiet = FALSE) {
-    rownames(object) <- rownames(object) %>%
-        .gene2symbol(organism = organism,
-                release = release,
-                quiet = quiet)
+    x <- rownames(object)
+    x <- .gene2symbol(
+        object = x,
+        organism = organism,
+        release = release,
+        quiet = quiet)
+    rownames(object) <- x
     object
 }
 
