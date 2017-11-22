@@ -235,6 +235,14 @@ setGeneric("plotGene", function(object, ...) {
 
 
 
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("plotQC", function(object, ...) {
+    standardGeneric("plotQC")
+})
+
+
+
 #' @rdname prepareSummarizedExperiment
 #' @export
 setGeneric("prepareSummarizedExperiment", function(assays, ...) {
