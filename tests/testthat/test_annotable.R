@@ -88,6 +88,17 @@ test_that("Unsupported Ensembl release", {
     )
 })
 
+test_that("Unsupported organism", {
+    expect_warning(
+        annotable("XXX"),
+        "Failed to detect supported organism"
+    )
+    expect_equal(
+        suppressWarnings(annotable("XXX")),
+        NULL
+    )
+})
+
 test_that("Bad input", {
     expect_error(
         annotable(c("human", "mouse")),
@@ -96,10 +107,6 @@ test_that("Bad input", {
     expect_error(
         annotable("Homo sapiens", format = "XXX"),
         "Unsupported format"
-    )
-    expect_error(
-        annotable("XXX"),
-        "Failed to detect supported organism"
     )
 })
 
