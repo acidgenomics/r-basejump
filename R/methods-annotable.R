@@ -60,6 +60,9 @@
 #' \dontrun{
 #' annotable(annotables::grch37)
 #' }
+#'
+#' # Unsupported organism
+#' annotable("XXX")
 NULL
 
 
@@ -86,6 +89,15 @@ NULL
         stop("Unsupported format", call. = FALSE)
     }
 
+    organism <- detectOrganism(object)
+    if (is.null(organism)) {
+        return(NULL)
+    }
+
+    if (!missing(genomeBuild)) {
+        .checkAnnotableBuildSupport(genomeBuild)
+    }
+
     # Sanitize the release version
     if (missing(release)) {
         release <- NULL
@@ -106,12 +118,6 @@ NULL
         releasePattern <- NULL
     } else {
         releasePattern <- paste0("v", release)
-    }
-
-    organism <- detectOrganism(object)
-
-    if (!missing(genomeBuild)) {
-        .checkAnnotableBuildSupport(genomeBuild)
     }
 
     # Download organism EnsDb package from AnnotationHub
