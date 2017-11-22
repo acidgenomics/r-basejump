@@ -19,9 +19,11 @@ test_that("matrix", {
         byrow = TRUE,
         nrow = 2L,
         ncol = 2L,
-        dimnames = list(c("ENSMUSG00000000001",
-                          "ENSMUSG00000000003"),
-                        c("sample1", "sample2"))
+        dimnames = list(
+            c("ENSMUSG00000000001",
+              "ENSMUSG00000000003"),
+            c("sample1", "sample2")
+        )
     )
     g2s <- gene2symbol(
         mat,
@@ -35,7 +37,7 @@ test_that("matrix", {
 })
 
 # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
-test_that("fasta spike-in support", {
+test_that("FASTA spike-in support", {
     vec <- c("EGFP", "ENSMUSG00000000001")
     g2s <- suppressWarnings(
         gene2symbol(
@@ -49,6 +51,7 @@ test_that("fasta spike-in support", {
         c(EGFP = "EGFP",
           ENSMUSG00000000001 = "Gnai3")
     )
+
     expect_warning(
         gene2symbol(
             vec,
@@ -57,9 +60,19 @@ test_that("fasta spike-in support", {
             quiet = TRUE),
         "Failed to match all gene IDs to symbols: EGFP"
     )
-    expect_error(
+
+    expect_warning(
         gene2symbol(vec),
         "Failed to detect supported organism"
+    )
+    expect_warning(
+        gene2symbol(vec),
+        "Returning unmodified gene identifiers"
+    )
+    expect_equal(
+        suppressWarnings(gene2symbol(vec)),
+        c(EGFP = "EGFP",
+          ENSMUSG00000000001 = "ENSMUSG00000000001")
     )
 })
 

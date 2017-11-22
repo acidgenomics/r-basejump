@@ -59,18 +59,22 @@ test_that("symbol2gene", {
     )
 
     # matrix
+    mat <- matrix(
+        data = seq(1L:4L),
+        byrow = TRUE,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("Gnai3", "Pbsn"),
+            c("sample1", "sample2")
+        )
+    )
     expect_equal(
-        matrix(
-            data = seq(1L:4L),
-            byrow = TRUE,
-            nrow = 2L,
-            ncol = 2L,
-            dimnames = list(c("Gnai3", "Pbsn"),
-                            c("sample1", "sample2"))) %>%
-            symbol2gene(
-                organism = "Mus musculus",
-                release = 88L,
-                quiet = TRUE) %>%
+        symbol2gene(
+            mat,
+            organism = "Mus musculus",
+            release = 88L,
+            quiet = TRUE) %>%
             dimnames() %>%
             .[[1L]],
         c(Gnai3 = "ENSMUSG00000000001",
