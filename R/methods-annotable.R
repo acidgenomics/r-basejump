@@ -284,7 +284,7 @@ NULL
 #' @return [data.frame].
 .prepareAnnotable <- function(object) {
     # Check for required columns
-    requiredCols <- c("ensgene", "symbol", "description" , "biotype")
+    requiredCols <- c("ensgene", "symbol", "description", "biotype")
     if (!all(requiredCols %in% colnames(object))) {
         stop(paste(
             "Required columns:", toString(requiredCols)
