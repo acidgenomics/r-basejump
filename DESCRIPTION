@@ -50,10 +50,12 @@ Imports:
 Suggests:
     BiocStyle,
     lintr,
+    pkgdown,
     roxygen2,
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
 Remotes:
+    hadley/pkgdown,
     jimhester/lintr,
     jotsetung/ensembldb,
     klutometis/roxygen
