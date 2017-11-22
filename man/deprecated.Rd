@@ -2,6 +2,8 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
+\alias{summarizeRows}
+\alias{wash}
 \alias{packageSE}
 \alias{prepareSE}
 \alias{metadataTable}
@@ -9,6 +11,10 @@
 \alias{sampleDirs}
 \title{Deprecated Functions}
 \usage{
+summarizeRows()
+
+wash()
+
 packageSE(...)
 
 prepareSE(...)

@@ -1,27 +1,30 @@
-#' Homo sapiens PANTHER annotations
-#' Michael Steinbaugh
-#' 2017-09-27
-
+# *Homo sapiens* PANTHER annotations
+# Michael Steinbaugh
+# 2017-11-13
+# Latest version of this script is available here:
+# script <- system.file(
+#     file.path("R_scripts", "panther", "hsapiens.R"),
+#     package = "basejump")
+# file.edit(script)
 library(basejump)
-library(stringr)
-library(readr)
+library(magrittr)
 library(tidyverse)
 
 # HGNC annotations ====
-hgncTXT <-
-    file.path("ftp://ftp.ebi.ac.uk",
-              "pub",
-              "databases",
-              "genenames",
-              "new",
-              "tsv",
-              "hgnc_complete_set.txt")
-hgnc <- read_tsv(hgncTXT)
+hgncFile <- file.path(
+    "ftp://ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "genenames",
+    "new",
+    "tsv",
+    "hgnc_complete_set.txt")
+hgnc <- read_tsv(hgncFile)
 saveData(hgnc)
-
 hgnc <- hgnc %>%
-    select(hgnc_id, ensembl_gene_id) %>%
-    mutate(hgnc_id = str_replace(hgnc_id, "^HGNC\\:", ""))
+    camel() %>%
+    select(hgncID, ensemblGeneID) %>%
+    mutate(hgncID = str_replace(hgncID, "^HGNC\\:", ""))
 
 # PANTHER annotations ====
 organism <- "human"
@@ -30,14 +33,14 @@ pantherFTP <-
               "sequence_classifications",
               "current_release",
               "PANTHER_Sequence_Classification_files")
-pantherFile <-
-    transmit(pantherFTP,
-             pattern = organism,
-             compress = TRUE,
-             localDir = "annotations")
-panther <- pantherFile %>%
-    as.character() %>%
-    read_tsv(col_names = c(
+pantherFile <- transmit(
+    pantherFTP,
+    pattern = organism,
+    compress = TRUE,
+    localDir = "annotations")
+panther <-  read_tsv(
+    as.character(pantherFile),
+    col_names = c(
         "id",
         "protein",
         "subfamily",
@@ -62,24 +65,33 @@ colnames(panther) <- camel(paste("panther", colnames(panther), sep = "."))
 # First extract the annotations that match Ensembl
 ensemblMatched <- panther %>%
     # First extract the Ensembl ID
-    mutate(ensgene = str_extract(pantherId, "Ensembl=ENSG[0-9]{11}"),
+    mutate(ensgene = str_extract(pantherID, "Ensembl=ENSG[0-9]{11}"),
            ensgene = str_replace(ensgene, "^Ensembl=", "")) %>%
-    filter(!is.na(ensgene))
+    filter(!is.na(ensgene)) %>%
+    distinct()
 
 # Most of the annotations are mapped to HGNC for human
 hgncMatched <- panther %>%
-    filter(!pantherId %in% ensemblMatched[["pantherId"]]) %>%
+    filter(!pantherID %in% ensemblMatched[["pantherID"]]) %>%
     # Extract the HGNC ID, which we will use for join with HGNC annotations
     # to match the Ensembl ID.
-    mutate(hgnc_id = str_extract(pantherId, "HGNC=[0-9]+"),
-           hgnc_id = str_replace(hgnc_id, "^HGNC=", "")) %>%
-    left_join(hgnc, by = "hgnc_id") %>%
-    filter(!is.na(ensembl_gene_id)) %>%
-    select(-hgnc_id) %>%
-    rename(ensgene = ensembl_gene_id)
+    mutate(hgncID = str_extract(pantherID, "HGNC=[0-9]+"),
+           hgncID = str_replace(hgncID, "^HGNC=", "")) %>%
+    left_join(hgnc, by = "hgncID") %>%
+    filter(!is.na(ensemblGeneID)) %>%
+    select(-hgncID) %>%
+    rename(ensgene = ensemblGeneID) %>%
+    # Drop any duplicate Ensembl matches.
+    # PANTHER matches by Ensembl ID take priority.
+    # For example: ensgene = ENSG00000262481; hgnc = 49186
+    filter(!ensgene %in% ensemblMatched[["ensgene"]]) %>%
+    distinct()
 
 # Now combine PANTHER annotations that are matched to Ensembl ID
 pantherWithEnsembl <- bind_rows(ensemblMatched, hgncMatched) %>%
-    select(-pantherId) %>%
-    select(ensgene, everything())
+    select(-pantherID) %>%
+    distinct() %>%
+    select(ensgene, everything()) %>%
+    as.data.frame() %>%
+    set_rownames(.[["ensgene"]])
 saveData(pantherWithEnsembl)

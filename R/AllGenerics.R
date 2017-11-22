@@ -235,6 +235,14 @@ setGeneric("plotGene", function(object, ...) {
 
 
 
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("plotQC", function(object, ...) {
+    standardGeneric("plotQC")
+})
+
+
+
 #' @rdname prepareSummarizedExperiment
 #' @export
 setGeneric("prepareSummarizedExperiment", function(assays, ...) {
@@ -391,6 +399,14 @@ setGeneric("stripTranscriptVersions", function(object, ...) {
 #' @export
 setGeneric("symbol2gene", function(object, ...) {
     standardGeneric("symbol2gene")
+})
+
+
+
+#' @rdname toStringUnique
+#' @export
+setGeneric("toStringUnique", function(object, ...) {
+    standardGeneric("toStringUnique")
 })
 
 
