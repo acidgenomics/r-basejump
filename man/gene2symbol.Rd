@@ -49,21 +49,23 @@ Convert Ensembl Identifier to Gene Symbol
 }
 \examples{
 # character
-c("ENSMUSG00000000001",
-  "ENSMUSG00000000003") \%>\%
-  gene2symbol()
+vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+gene2symbol(vec)
 
 # matrix
-matrix(
+mat <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
     nrow = 2L,
     ncol = 2L,
-    dimnames = list(c("ENSMUSG00000000001",
-                      "ENSMUSG00000000003"),
-                    c("sample1",
-                      "sample2"))) \%>\%
-    gene2symbol()
+    dimnames = list(
+        c("ENSMUSG00000000001",
+          "ENSMUSG00000000003"),
+        c("sample1",
+          "sample2")
+    )
+)
+gene2symbol(mat)
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
