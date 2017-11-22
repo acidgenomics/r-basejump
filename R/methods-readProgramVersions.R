@@ -39,7 +39,7 @@ setMethod(
         read_csv(
             file,
             col_names = c("program", "version"),
-            # c = character
+            # `c` denotes character here
             col_types = "cc",
             progress = FALSE)
     })
