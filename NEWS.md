@@ -6,6 +6,7 @@
 - Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.
 - Now suggesting that the user installs suggested packages in the README.
 - Updated PANTHER annotation scripts.
+- Bug fix for `detectOrganism()`. Now allowing `NULL` return for unsupported organism, with a warning.
 
 
 

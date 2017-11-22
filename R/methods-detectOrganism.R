@@ -33,6 +33,9 @@
 #' detectOrganism("Hsapiens")
 #' detectOrganism("human")
 #' }
+#'
+#' # Unsupported organism
+#' detectOrganism("XXX")
 NULL
 
 
@@ -147,7 +150,8 @@ NULL
     )) {
         c(sheep = "Ovis aries")
     } else {
-        stop("Failed to detect supported organism", call. = FALSE)
+        warning("Failed to detect supported organism", call. = FALSE)
+        NULL
     }
 }
 
@@ -160,3 +164,15 @@ setMethod(
     "detectOrganism",
     signature("character"),
     .detectOrganism)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("NULL"),
+    function(object) {
+        warning("'NULL' input to 'detectOrganism()'", call. = FALSE)
+        NULL
+    })

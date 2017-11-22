@@ -4,11 +4,14 @@
 \name{detectOrganism}
 \alias{detectOrganism}
 \alias{detectOrganism,character-method}
+\alias{detectOrganism,NULL-method}
 \title{Detect Organism}
 \usage{
 detectOrganism(object, ...)
 
 \S4method{detectOrganism}{character}(object)
+
+\S4method{detectOrganism}{`NULL`}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -44,6 +47,9 @@ detectOrganism("Homo sapiens")
 detectOrganism("Hsapiens")
 detectOrganism("human")
 }
+
+# Unsupported organism
+detectOrganism("XXX")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
