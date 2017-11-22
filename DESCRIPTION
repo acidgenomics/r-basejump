@@ -49,9 +49,10 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    lintr (>= 1.0.2),
-    testthat (>= 1.0.2),
-    tidyverse (>= 1.2.0)
+    GenomeInfoDbData,
+    lintr,
+    testthat,
+    tidyverse
 biocViews:
     DataImport,
     DifferentialExpression,
