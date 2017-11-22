@@ -50,7 +50,7 @@ Imports:
 Suggests:
     BiocStyle,
     lintr,
-    roxygen,
+    roxygen2,
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
 Remotes:
