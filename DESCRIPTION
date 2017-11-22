@@ -50,10 +50,13 @@ Imports:
 Suggests:
     BiocStyle,
     lintr,
-    testthat,
-    tidyverse
+    roxygen,
+    testthat (>= 1.0.2),
+    tidyverse (>= 1.2.1)
 Remotes:
-    jotsetung/ensembldb
+    jimhester/lintr,
+    jotsetung/ensembldb,
+    klutometis/roxygen
 biocViews:
     DataImport,
     DifferentialExpression,
