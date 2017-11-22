@@ -15,20 +15,15 @@ gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{data.frame}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{data.frame}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{DataFrame}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{DataFrame}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{dgCMatrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{dgCMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{dgTMatrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{dgTMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{matrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{matrix}(object, organism, release, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}

@@ -32,11 +32,13 @@ NULL
 
 # Constructors ====
 #' @importFrom rlang is_string
-.s2gvec <- function(
+.symbol2gene <- function(
     object,
     organism,
-    release = NULL,
+    release,
     quiet = FALSE) {
+    if (missing(release)) release <- NULL
+
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
@@ -80,16 +82,18 @@ NULL
 
 
 
-# Pass arguments to .s2gvec
-.s2gdim <- function(
+.symbol2geneDim <- function(
     object,
     organism,
-    release = NULL,
+    release,
     quiet = FALSE) {
-    rownames(object) <- rownames(object) %>%
-        .s2gvec(organism = organism,
-                release = release,
-                quiet = quiet)
+    x <- rownames(object)
+    x <- .symbol2gene(
+        object = x,
+        organism = organism,
+        release = release,
+        quiet = quiet)
+    rownames(object) <- x
     object
 }
 
@@ -101,7 +105,7 @@ NULL
 setMethod(
     "symbol2gene",
     signature("character"),
-    .s2gvec)
+    .symbol2gene)
 
 
 
@@ -110,7 +114,7 @@ setMethod(
 setMethod(
     "symbol2gene",
     signature("data.frame"),
-    .s2gdim)
+    .symbol2geneDim)
 
 
 
@@ -119,7 +123,7 @@ setMethod(
 setMethod(
     "symbol2gene",
     signature("DataFrame"),
-    .s2gdim)
+    .symbol2geneDim)
 
 
 
@@ -128,7 +132,7 @@ setMethod(
 setMethod(
     "symbol2gene",
     signature("dgCMatrix"),
-    .s2gdim)
+    .symbol2geneDim)
 
 
 
@@ -137,7 +141,7 @@ setMethod(
 setMethod(
     "symbol2gene",
     signature("dgTMatrix"),
-    .s2gdim)
+    .symbol2geneDim)
 
 
 
@@ -146,4 +150,4 @@ setMethod(
 setMethod(
     "symbol2gene",
     signature("matrix"),
-    .s2gdim)
+    .symbol2geneDim)

@@ -13,23 +13,17 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{character}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{data.frame}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{data.frame}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{DataFrame}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{DataFrame}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{matrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{matrix}(object, organism, release, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
