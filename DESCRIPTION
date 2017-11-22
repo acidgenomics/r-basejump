@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -49,9 +49,16 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    lintr (>= 1.0.2),
+    lintr,
+    pkgdown,
+    roxygen2,
     testthat (>= 1.0.2),
-    tidyverse (>= 1.2.0)
+    tidyverse (>= 1.2.1)
+Remotes:
+    hadley/pkgdown,
+    jimhester/lintr,
+    jotsetung/ensembldb,
+    klutometis/roxygen
 biocViews:
     DataImport,
     DifferentialExpression,

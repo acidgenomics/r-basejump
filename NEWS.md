@@ -1,3 +1,14 @@
+# basejump 0.1.2
+
+- Added bcbio `plotQC()` generic.
+- Added back `toStringUnique()` code, which is still in use in the worminfo package.
+- Added deprecations for `summarizeRows()` (now `collapseToString()`) and `wash()` functions.
+- Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.
+- Now suggesting that the user installs suggested packages in the README.
+- Updated PANTHER annotation scripts.
+
+
+
 # basejump 0.1.1
 
 - Added overwrite support for `saveData()`. Now will skip on existing files when `overwrite = FALSE`.

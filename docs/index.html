@@ -60,20 +60,28 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-    <section class="level1"><div class="page-header"><h1>basejump</h1></div>
+    <div id="basejump" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#basejump" class="anchor"></a>basejump</h1></div>
 
 <p>Base functions for bioinformatics and <a href="https://www.r-project.org">R</a> package development.</p>
-<section class="level2"><h2>Installation</h2>
-<section class="level3"><h3>
-<a href="https://bioconductor.org">Bioconductor</a> method</h3>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>There is currently an issue with <a href="https://bioconductor.org/packages/release/data/annotation/html/GenomeInfoDbData.html">GenomeInfoDbData</a>, a dependency of <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a>, not installing automatically. To resolve this issue, we are recommending users install <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> prior to installation of basejump.</p>
+<div id="bioconductor-method" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bioconductor-method" class="anchor"></a><a href="https://bioconductor.org">Bioconductor</a> method</h3>
 <pre class="{r}"><code>source("https://bioconductor.org/biocLite.R")
-biocLite("steinbaugh/basejump")</code></pre>
-</section><section class="level3"><h3>
-<a href="https://cran.r-project.org/package=devtools">devtools</a> method</h3>
-<pre class="{r}"><code>install.packages("devtools")
-devtools::install_github("steinbaugh/basejump")</code></pre>
-</section></section></section>
+biocLite("ensembldb")
+biocLite(
+    "steinbaugh/basejump",
+    dependencies = c("Depends", "Imports", "Suggests")
+)</code></pre>
 </div>
+</div>
+</div>
+  </div>
 
   <div class="col-md-3" id="sidebar">
     <h2>Links</h2>
