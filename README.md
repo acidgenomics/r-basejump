@@ -15,9 +15,9 @@ There is currently an issue with [GenomeInfoDbData][], a dependency of [ensembld
 
 ```{r}
 source("https://bioconductor.org/biocLite.R")
+biocLite("ensembldb")
 biocLite(
-    c("ensembldb",
-      "steinbaugh/basejump"),
+    "steinbaugh/basejump"),
     dependencies = c("Depends", "Imports", "Suggests")
 )
 ```
