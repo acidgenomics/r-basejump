@@ -19,9 +19,11 @@ test_that("matrix", {
         byrow = TRUE,
         nrow = 2L,
         ncol = 2L,
-        dimnames = list(c("ENSMUSG00000000001",
-                          "ENSMUSG00000000003"),
-                        c("sample1", "sample2"))
+        dimnames = list(
+            c("ENSMUSG00000000001",
+              "ENSMUSG00000000003"),
+            c("sample1", "sample2")
+        )
     )
     g2s <- gene2symbol(
         mat,
