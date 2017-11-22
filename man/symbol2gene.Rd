@@ -13,23 +13,17 @@
 \usage{
 symbol2gene(object, ...)
 
-\S4method{symbol2gene}{character}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{character}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{data.frame}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{data.frame}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{DataFrame}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{DataFrame}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{dgCMatrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{dgCMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{dgTMatrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{dgTMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{symbol2gene}{matrix}(object, organism, release = NULL,
-  quiet = FALSE)
+\S4method{symbol2gene}{matrix}(object, organism, release, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -54,14 +48,17 @@ Convert Gene Symbol to Ensembl Identifier
 symbol2gene(c("Gnai3", "Pbsn"), organism = "Mus musculus")
 
 # matrix
-matrix(
+mat <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
     nrow = 2L,
     ncol = 2L,
-    dimnames = list(c("Gnai3", "Pbsn"),
-                    c("sample1", "sample2"))) \%>\%
-    symbol2gene(organism = "Mus musculus")
+    dimnames = list(
+        c("Gnai3", "Pbsn"),
+        c("sample1", "sample2")
+    )
+)
+symbol2gene(mat, organism = "Mus musculus")
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

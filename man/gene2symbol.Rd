@@ -13,23 +13,17 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{character}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{data.frame}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{data.frame}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{DataFrame}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{DataFrame}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{dgCMatrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{dgCMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{dgTMatrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{dgTMatrix}(object, organism, release, quiet = FALSE)
 
-\S4method{gene2symbol}{matrix}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{matrix}(object, organism, release, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -37,7 +31,7 @@ gene2symbol(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{organism}{\emph{Optional}. Organism name. Normally this argument is
-unnecessary and can be left \code{NULL}. If a count matrix starts with a
+unnecessary and can be left unset. If a count matrix starts with a
 FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
@@ -55,21 +49,23 @@ Convert Ensembl Identifier to Gene Symbol
 }
 \examples{
 # character
-c("ENSMUSG00000000001",
-  "ENSMUSG00000000003") \%>\%
-  gene2symbol()
+vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+gene2symbol(vec)
 
 # matrix
-matrix(
+mat <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
     nrow = 2L,
     ncol = 2L,
-    dimnames = list(c("ENSMUSG00000000001",
-                      "ENSMUSG00000000003"),
-                    c("sample1",
-                      "sample2"))) \%>\%
-    gene2symbol()
+    dimnames = list(
+        c("ENSMUSG00000000001",
+          "ENSMUSG00000000003"),
+        c("sample1",
+          "sample2")
+    )
+)
+gene2symbol(mat)
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.

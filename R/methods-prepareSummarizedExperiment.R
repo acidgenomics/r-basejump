@@ -152,7 +152,11 @@ NULL
                 sort()
             warning(paste(
                 "Unannotated genes detected in counts matrix",
-                paste0("(", percent(length(unannotatedGenes) / nrow(assay)), ")")
+                paste0("(",
+                       percent(length(unannotatedGenes)),
+                       " / ",
+                       nrow(assay),
+                       ")")
             ), call. = FALSE)
         } else {
             unannotatedGenes <- NULL
