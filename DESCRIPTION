@@ -49,10 +49,11 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    GenomeInfoDbData,
     lintr,
     testthat,
     tidyverse
+Remotes:
+    jotsetung/ensembldb
 biocViews:
     DataImport,
     DifferentialExpression,
