@@ -8,7 +8,7 @@
 #' @inheritParams annotable
 #'
 #' @param organism *Optional*. Organism name. Normally this argument is
-#'  unnecessary and can be left `NULL`. If a count matrix starts with a
+#'  unnecessary and can be left unset. If a count matrix starts with a
 #'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 #'  first gene identifier will fail. In this case, the desired organism must be
 #'  manually declared.
@@ -42,28 +42,31 @@ NULL
 #' @importFrom rlang is_string
 .gene2symbol <- function(
     object,
-    organism = NULL,
-    release = NULL,
+    organism,
+    release,
     quiet = FALSE) {
+    if (missing(release)) release <- NULL
+
     if (is_string(object)) {
-        stop("gene2symbol conversion requires > 1 identifier",
-             call. = FALSE)
-    }
-    if (any(is.na(object))) {
+        stop("gene2symbol conversion requires > 1 identifier", call. = FALSE)
+    } else if (any(is.na(object))) {
         stop("NA identifier detected", call. = FALSE)
-    }
-    if (any(object == "")) {
+    } else if (any(object == "")) {
         stop("Empty string identifier detected", call. = FALSE)
-    }
-    if (any(duplicated(object))) {
+    } else if (any(duplicated(object))) {
         warning("Duplicate gene identifiers detected", call. = FALSE)
     }
 
     # Detect organism
-    if (is.null(organism)) {
+    if (missing(organism)) {
         organism <- detectOrganism(object[[1L]])
     } else {
         organism <- detectOrganism(organism)
+    }
+    if (is.null(organism)) {
+        warning("Returning unmodified gene identifiers", call. = FALSE)
+        names(object) <- object
+        return(object)
     }
 
     g2s <- annotable(
