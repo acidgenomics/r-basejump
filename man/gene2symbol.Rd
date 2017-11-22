@@ -13,8 +13,7 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, organism = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{gene2symbol}{character}(object, organism, release, quiet = FALSE)
 
 \S4method{gene2symbol}{data.frame}(object, organism = NULL, release = NULL,
   quiet = FALSE)
@@ -37,7 +36,7 @@ gene2symbol(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
 \item{organism}{\emph{Optional}. Organism name. Normally this argument is
-unnecessary and can be left \code{NULL}. If a count matrix starts with a
+unnecessary and can be left unset. If a count matrix starts with a
 FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}

@@ -80,6 +80,9 @@ annotable("Mus musculus") \%>\% str()
 \dontrun{
 annotable(annotables::grch37)
 }
+
+# Unsupported organism
+annotable("XXX")
 }
 \seealso{
 \itemize{
