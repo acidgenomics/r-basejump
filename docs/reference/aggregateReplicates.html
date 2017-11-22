@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sample Metrics from YAML File — sampleYAMLMetrics • basejump</title>
+<title>Aggregate Replicates — aggregateReplicates • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,66 +83,49 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sample Metrics from YAML File</h1>
+    <h1>Aggregate Replicates</h1>
     </div>
 
     
-    <p>Sample Metrics from YAML File</p>
+    <p>Aggregate Replicates</p>
     
 
-    <pre class="usage"><span class='fu'>sampleYAMLMetrics</span>(<span class='no'>yaml</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for list</span>
-<span class='fu'>sampleYAMLMetrics</span>(<span class='no'>yaml</span>)</pre>
+<span class='co'># S4 method for dgCMatrix</span>
+<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>cells</span>)
+
+<span class='co'># S4 method for dgTMatrix</span>
+<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>cells</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>yaml</th>
-      <td><p>Project summary YAML list.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+    </tr>
+    <tr>
+      <th>cells</th>
+      <td><p>Cellular barcode identifiers. These are the colnames of the
+counts matrix.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame.</p>
+    <p>Object of same class with aggregated counts per pooled sample
+(columns).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other bcbio Utilities: <code><a href='prepareSummarizedExperiment.html'>prepareSummarizedExperiment</a></code>,
-  <code><a href='readDataVersions.html'>readDataVersions</a></code>,
-  <code><a href='readProgramVersions.html'>readProgramVersions</a></code>,
-  <code><a href='sampleYAMLMetadata.html'>sampleYAMLMetadata</a></code>,
-  <code><a href='sampleYAML.html'>sampleYAML</a></code></p>
+    <p>Other Data Management Utilities: <code><a href='aggregateFeatures.html'>aggregateFeatures</a></code></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
-    <span class='st'>"http://basejump.seq.cloud"</span>,
-    <span class='st'>"bcbio"</span>,
-    <span class='st'>"project-summary.yaml"</span>)
-<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readYAML.html'>readYAML</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>sampleYAMLMetrics</span>(<span class='no'>yaml</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; 'data.frame':	4 obs. of  20 variables:
-#&gt;  $ sampleID                     : Factor w/ 4 levels "group1_1","group1_2",..: 1 2 3 4
-#&gt;  $ sampleName                   : Factor w/ 4 levels "group1_1","group1_2",..: 1 2 3 4
-#&gt;  $ description                  : Factor w/ 4 levels "group1_1","group1_2",..: 1 2 3 4
-#&gt;  $ xGC                          : num  48 48 47 48
-#&gt;  $ x53Bias                      : num  1.01 1.04 1 0.98
-#&gt;  $ averageInsertSize            : num  0 0 0 0
-#&gt;  $ duplicates                   : num  0 0 0 0
-#&gt;  $ duplicationRateOfMapped      : num  0.557 0.589 0.577 0.583
-#&gt;  $ exonicRate                   : num  0.859 0.882 0.863 0.871
-#&gt;  $ intergenicRate               : num  0.0663 0.0599 0.0661 0.0635
-#&gt;  $ intronicRate                 : num  0.0747 0.0581 0.0707 0.0652
-#&gt;  $ mappedPairedReads            : num  0 0 0 0
-#&gt;  $ mappedReads                  : num  22062337 25852621 25172084 25100941
-#&gt;  $ name                         : Factor w/ 4 levels "ctrl_f_1","ctrl_f_4",..: 1 2 3 4
-#&gt;  $ qualityFormat                : Factor w/ 1 level "standard": 1 1 1 1
-#&gt;  $ sequenceLength               : Factor w/ 1 level "25-75": 1 1 1 1
-#&gt;  $ sequencesFlaggedAsPoorQuality: num  0 0 0 0
-#&gt;  $ totalReads                   : num  22339941 26168288 25490090 25399483
-#&gt;  $ rrna                         : num  42219 48275 38894 40832
-#&gt;  $ rrnaRate                     : num  0.00207 0.00197 0.00167 0.00174</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -152,9 +135,11 @@
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh, Rory Kirchner
 
   </div>
 </div>
