@@ -11,7 +11,7 @@ Base functions for bioinformatics and [R][] package development.
 
 There is currently an issue with [GenomeInfoDbData][], a dependency of [ensembldb][], not installing automatically. To resolve this issue, we are recommending users install [ensembldb][] prior to installation of basejump.
 
-### [Bioconductor][] method
+### [Bioconductor][] method (recommended)
 
 ```{r}
 source("https://bioconductor.org/biocLite.R")
