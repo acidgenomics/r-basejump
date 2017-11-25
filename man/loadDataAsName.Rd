@@ -5,7 +5,7 @@
 \title{Load Data File as Name}
 \usage{
 loadDataAsName(..., dir = getwd(), ext = "rda", envir = parent.frame(),
-  replace = FALSE)
+  replace = TRUE)
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. The argument name
