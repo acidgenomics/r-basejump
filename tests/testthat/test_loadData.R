@@ -23,9 +23,15 @@ test_that("loadData", {
         loadData(mtcars, replace = TRUE),
         paste("Loading mtcars from", getwd())
     )
+
+    # Replace argument
+    expect_warning(
+        loadData(mtcars, replace = TRUE),
+        paste("Replacing mtcars with the contents of mtcars.rda")
+    )
     expect_warning(
         loadData(mtcars, replace = FALSE, quiet = TRUE),
-        "Skipping mtcars.rda... already exists"
+        "Skipping mtcars.rda because mtcars already exists"
     )
 })
 
