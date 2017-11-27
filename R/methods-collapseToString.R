@@ -78,20 +78,29 @@ NULL
     unique = TRUE,
     sort = TRUE,
     ...) {
-    origClass <- class(object)[[1L]]
-    # Coerce to data.frame and perform manipulations
-    object %>%
-        as.data.frame() %>%
+    # Stash original class and coerce to data.frame, if necessary
+    if (!is.data.frame(object)) {
+        class <- class(object)[[1L]]
+        object <- as.data.frame(object)
+    } else {
+        class <- NULL
+    }
+
+    collapse <- object %>%
         mutate_all(funs(fixNA)) %>%
         summarize_all(funs(
             .collapseToString(
                 object = .,
                 sep = sep,
                 unique = unique,
-                sort = sort,
-                ...))) %>%
-        # Return as original class
-        as(origClass)
+                sort = sort)
+        ))
+
+    if (!is.null(class)) {
+        as(collapse, class)
+    } else {
+        collapse
+    }
 }
 
 
@@ -120,6 +129,15 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("DataFrame"),
+    .collapseRows)
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    "collapseToString",
+    signature("grouped_df"),
     .collapseRows)
 
 
