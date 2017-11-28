@@ -137,15 +137,6 @@ setMethod(
 #' @export
 setMethod(
     "collapseToString",
-    signature("grouped_df"),
-    .collapseRows)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
     signature("integer"),
     .collapseToString)
 
@@ -175,12 +166,3 @@ setMethod(
     "collapseToString",
     signature("numeric"),
     .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("tbl_df"),
-    .collapseRows)
