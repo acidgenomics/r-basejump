@@ -61,6 +61,17 @@ setMethod(
 #' @export
 setMethod(
     "comp",
+    signature("integer"),
+    function(object) {
+        NULL
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
+    "comp",
     signature("numeric"),
     function(object) {
         NULL
@@ -80,6 +91,17 @@ setMethod(
             unlist() %>%
             .[order(seq_along(.), decreasing = TRUE)] %>%
             paste0(collapse = "")
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
+    "revcomp",
+    signature("integer"),
+    function(object) {
+        NULL
     })
 
 
