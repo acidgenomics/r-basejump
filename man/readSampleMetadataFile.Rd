@@ -29,14 +29,14 @@ technical replicates (\code{_LXXX}) suffix.}
 Read Sample Metadata File
 }
 \examples{
-# Demultiplexed FASTQ
+# Demultiplexed
 demultiplexed <- file.path(
     "http://basejump.seq.cloud",
     "sample_metadata",
     "demultiplexed.xlsx")
 readSampleMetadataFile(demultiplexed)
 
-# Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)
+# Multiplexed (e.g. inDrop single-cell RNA-seq)
 multiplexed <- file.path(
     "http://basejump.seq.cloud",
     "sample_metadata",
