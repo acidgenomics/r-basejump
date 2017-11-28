@@ -6,12 +6,10 @@
 \alias{collapseToString,character-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
-\alias{collapseToString,grouped_df-method}
 \alias{collapseToString,integer-method}
 \alias{collapseToString,logical-method}
 \alias{collapseToString,matrix-method}
 \alias{collapseToString,numeric-method}
-\alias{collapseToString,tbl_df-method}
 \title{Collapse to String}
 \usage{
 collapseToString(object, ...)
@@ -25,9 +23,6 @@ collapseToString(object, ...)
 \S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = TRUE,
   sort = TRUE, ...)
 
-\S4method{collapseToString}{grouped_df}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
-
 \S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
   sort = TRUE, ...)
 
@@ -38,9 +33,6 @@ collapseToString(object, ...)
   sort = TRUE, ...)
 
 \S4method{collapseToString}{numeric}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
-
-\S4method{collapseToString}{tbl_df}(object, sep = ", ", unique = TRUE,
   sort = TRUE, ...)
 }
 \arguments{

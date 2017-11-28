@@ -1,1 +1,1 @@
-setOldClass(Classes = c("grouped_df", "tbl_df", "tibble"))
+setOldClass(Classes = c("tbl_df", "tibble"))
