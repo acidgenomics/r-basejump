@@ -15,25 +15,25 @@
 collapseToString(object, ...)
 
 \S4method{collapseToString}{character}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{data.frame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{logical}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{matrix}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{numeric}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 }
 \arguments{
 \item{object}{Object.}

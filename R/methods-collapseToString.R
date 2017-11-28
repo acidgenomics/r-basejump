@@ -47,8 +47,7 @@ NULL
     object,
     sep = ", ",
     unique = TRUE,
-    sort = TRUE,
-    ...) {
+    sort = TRUE) {
     if (length(object) > 1) {
         if (isTRUE(unique)) {
             if (!all(is.na(object))) {
@@ -76,8 +75,7 @@ NULL
     object,
     sep = ", ",
     unique = TRUE,
-    sort = TRUE,
-    ...) {
+    sort = TRUE) {
     # Stash original class and coerce to data.frame, if necessary
     if (!is.data.frame(object)) {
         class <- class(object)[[1L]]
