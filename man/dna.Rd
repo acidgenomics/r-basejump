@@ -6,7 +6,9 @@
 \alias{revcomp}
 \alias{dna}
 \alias{comp,character-method}
+\alias{comp,numeric-method}
 \alias{revcomp,character-method}
+\alias{revcomp,numeric-method}
 \title{DNA Sequence Utilites}
 \usage{
 comp(object, ...)
@@ -15,7 +17,11 @@ revcomp(object, ...)
 
 \S4method{comp}{character}(object)
 
+\S4method{comp}{numeric}(object)
+
 \S4method{revcomp}{character}(object)
+
+\S4method{revcomp}{numeric}(object)
 }
 \arguments{
 \item{object}{DNA sequence (\code{ATGC} nucleotides).}
