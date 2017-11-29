@@ -20,7 +20,9 @@ test_that("loadData", {
         c(mtcars = file.path(getwd(), "mtcars.rda"))
     )
     expect_message(
-        loadData(mtcars, replace = TRUE),
+        suppressWarnings(
+            loadData(mtcars, replace = TRUE)
+        ),
         paste("Loading mtcars from", getwd())
     )
 
