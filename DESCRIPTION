@@ -26,7 +26,7 @@ Imports:
     datasets,
     devtools (>= 1.13.3),
     dplyr (>= 0.7.4),
-    ensembldb (>= 2.0.4),
+    ensembldb (>= 2.2.0),
     knitr (>= 1.17),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
@@ -50,14 +50,11 @@ Imports:
 Suggests:
     BiocStyle,
     lintr,
-    pkgdown,
     roxygen2,
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
 Remotes:
-    hadley/pkgdown,
     jimhester/lintr,
-    jotsetung/ensembldb,
     klutometis/roxygen
 biocViews:
     DataImport,
