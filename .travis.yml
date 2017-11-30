@@ -4,6 +4,8 @@ language: r
 sudo: false
 cache: packages
 dist: trusty
+# Temporarily enable when caching Bioconductor packages
+script: true
 r:
   - bioc-release
   - bioc-devel
