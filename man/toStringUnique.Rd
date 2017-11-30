@@ -3,6 +3,7 @@
 \docType{methods}
 \name{toStringUnique}
 \alias{toStringUnique}
+\alias{toStringUnique}
 \alias{toStringUnique,character-method}
 \title{toString Call that Only Outputs Uniques.}
 \usage{

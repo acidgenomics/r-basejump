@@ -3,6 +3,7 @@
 \docType{methods}
 \name{removeNA}
 \alias{removeNA}
+\alias{removeNA}
 \alias{removeNA,ANY-method}
 \alias{removeNA,character-method}
 \alias{removeNA,numeric-method}
@@ -65,4 +66,3 @@ removeNA(c(1, 2, NA))
 Other Cleanup Utilities: \code{\link{fixNA}},
   \code{\link{sortUnique}}
 }
-\concept{Cleanup Utilities}

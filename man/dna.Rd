@@ -45,4 +45,3 @@ dna <- "ATGCATGC"
 comp(dna)
 revcomp(dna)
 }
-\concept{DNA Sequence Utilities}

@@ -42,4 +42,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}
 }
-\concept{Data Import and Project Utilities}

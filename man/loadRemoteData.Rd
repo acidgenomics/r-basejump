@@ -29,4 +29,3 @@ Other Data Import and Project Utilities: \code{\link{readFileByExtension}},
   \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}

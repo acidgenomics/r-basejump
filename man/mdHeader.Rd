@@ -3,6 +3,7 @@
 \docType{methods}
 \name{mdHeader}
 \alias{mdHeader}
+\alias{mdHeader}
 \alias{mdHeader,character-method}
 \title{Markdown Header}
 \usage{
@@ -40,4 +41,3 @@ mdHeader("Header", asis = TRUE)
 Other Report Utilities: \code{\link{kables}},
   \code{\link{mdList}}
 }
-\concept{Report Utilities}

@@ -4,6 +4,7 @@
 \docType{methods}
 \name{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment}
+\alias{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment,list-method}
 \title{Prepare \code{SummarizedExperiment()}}
 \usage{
@@ -95,4 +96,3 @@ Other bcbio Utilities: \code{\link{readDataVersions}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}
 }
-\concept{bcbio Utilities}

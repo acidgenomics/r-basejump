@@ -3,6 +3,7 @@
 \docType{methods}
 \name{dotted}
 \alias{dotted}
+\alias{dotted}
 \alias{dotted,ANY-method}
 \alias{dotted,character-method}
 \alias{dotted,data.frame-method}
@@ -64,4 +65,3 @@ dotted(makeNames$vec)
 print(makeNames$df)
 dotted(makeNames$df, rownames = TRUE)
 }
-\concept{Make Names Utilities}

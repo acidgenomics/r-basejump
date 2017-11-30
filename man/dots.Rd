@@ -3,6 +3,7 @@
 \docType{methods}
 \name{dots}
 \alias{dots}
+\alias{dots}
 \alias{dots,ANY-method}
 \title{Extract Dots from Function}
 \usage{
@@ -44,4 +45,3 @@ dots(mtcars, starwars, character = TRUE)
 \href{https://goo.gl/bM5TrP}{devtools infrastructure}
 }
 }
-\concept{Function Utilities}
