@@ -20,12 +20,20 @@ test_that("loadData", {
         c(mtcars = file.path(getwd(), "mtcars.rda"))
     )
     expect_message(
-        loadData(mtcars, replace = TRUE),
+        suppressWarnings(
+            loadData(mtcars, replace = TRUE)
+        ),
         paste("Loading mtcars from", getwd())
+    )
+
+    # Replace argument
+    expect_warning(
+        loadData(mtcars, replace = TRUE),
+        paste("Replacing mtcars with the contents of mtcars.rda")
     )
     expect_warning(
         loadData(mtcars, replace = FALSE, quiet = TRUE),
-        "Skipping mtcars.rda... already exists"
+        "Skipping mtcars.rda because mtcars already exists"
     )
 })
 

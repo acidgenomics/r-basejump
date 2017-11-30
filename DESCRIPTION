@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -26,7 +26,7 @@ Imports:
     datasets,
     devtools (>= 1.13.3),
     dplyr (>= 0.7.4),
-    ensembldb (>= 2.0.4),
+    ensembldb (>= 2.2.0),
     knitr (>= 1.17),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
@@ -49,16 +49,10 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    lintr,
-    pkgdown,
-    roxygen2,
+    lintr (>= 1.0.1),
+    roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
-Remotes:
-    hadley/pkgdown,
-    jimhester/lintr,
-    jotsetung/ensembldb,
-    klutometis/roxygen
 biocViews:
     DataImport,
     DifferentialExpression,
@@ -67,5 +61,5 @@ biocViews:
     RNASeq,
     Visualization
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
 VignetteBuilder: knitr

@@ -5,6 +5,7 @@
 \name{camel}
 \alias{camel}
 \alias{upperCamel}
+\alias{camel}
 \alias{camel,ANY-method}
 \alias{camel,character-method}
 \alias{camel,data.frame-method}

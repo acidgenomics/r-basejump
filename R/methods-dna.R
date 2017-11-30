@@ -60,12 +60,57 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
+    "comp",
+    signature("integer"),
+    function(object) {
+        NULL
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
+    "comp",
+    signature("numeric"),
+    function(object) {
+        NULL
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
     "revcomp",
-    signature("character"), function(object) {
+    signature("character"),
+    function(object) {
         object <- toupper(object)
         comp <- comp(object)
         strsplit(comp, split = "", fixed = TRUE) %>%
             unlist() %>%
             .[order(seq_along(.), decreasing = TRUE)] %>%
             paste0(collapse = "")
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
+    "revcomp",
+    signature("integer"),
+    function(object) {
+        NULL
+    })
+
+
+
+#' @rdname dna
+#' @export
+setMethod(
+    "revcomp",
+    signature("numeric"),
+    function(object) {
+        NULL
     })

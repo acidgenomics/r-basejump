@@ -3,6 +3,7 @@
 \docType{methods}
 \name{geomean}
 \alias{geomean}
+\alias{geomean}
 \alias{geomean,data.frame-method}
 \alias{geomean,integer-method}
 \alias{geomean,matrix-method}
@@ -65,4 +66,3 @@ Stack Overflow
 
 Other Math Utilities: \code{\link{fc2lr}}
 }
-\concept{Math Utilities}

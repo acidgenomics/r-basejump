@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readLogFile}
 \alias{readLogFile}
+\alias{readLogFile}
 \alias{readLogFile,character-method}
 \title{Read Log File}
 \usage{
@@ -30,5 +31,4 @@ url <- file.path(
     "bcbio-nextgen.log")
 readLogFile(url) \%>\% head()
 }
-\concept{bcbio Project Directory File Utilities}
 \keyword{internal}

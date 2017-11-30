@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readDataVersions}
 \alias{readDataVersions}
+\alias{readDataVersions}
 \alias{readDataVersions,character-method}
 \title{Read Data Versions}
 \usage{
@@ -36,5 +37,4 @@ Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAMLMetrics}}, \code{\link{sampleYAML}}
 }
-\concept{bcbio Utilities}
 \keyword{internal}

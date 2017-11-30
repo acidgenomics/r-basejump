@@ -3,6 +3,7 @@
 \docType{methods}
 \name{sampleYAML}
 \alias{sampleYAML}
+\alias{sampleYAML}
 \alias{sampleYAML,list,character-method}
 \title{Sample YAML Metadata Utilities}
 \usage{
@@ -41,5 +42,4 @@ Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAMLMetrics}}
 }
-\concept{bcbio Utilities}
 \keyword{internal}

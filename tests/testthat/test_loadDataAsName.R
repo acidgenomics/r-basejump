@@ -21,10 +21,11 @@ test_that("Dot object key-value pair method", {
         replace = FALSE
     )
     # Variable file paths (more flexible, but requires more typing)
-    loaded2 <- loadDataAsName(
-        newName1 = "mtcars.rda",
-        newName2 = "starwars.rda",
-        replace = TRUE
+    loaded2 <- suppressWarnings(
+        loadDataAsName(
+            newName1 = "mtcars.rda",
+            newName2 = "starwars.rda",
+            replace = TRUE)
     )
     expect_equal(
         loaded,
@@ -32,11 +33,17 @@ test_that("Dot object key-value pair method", {
           newName2 = file.path(getwd(), "starwars.rda"))
     )
     expect_identical(loaded, loaded2)
-    # Skip if exists
+
+    # Replace argument
     expect_warning(
         loadDataAsName(newName1 = "mtcars", replace = FALSE),
-        "Skipping mtcars.rda... 'newName1' already exists"
+        "Skipping mtcars.rda because newName1 already exists"
     )
+    expect_warning(
+        loadDataAsName(newName1 = "mtcars", replace = TRUE),
+        "Replacing newName1 with the contents of mtcars.rda"
+    )
+
     # Error on first missing file
     expect_error(
         loadDataAsName(

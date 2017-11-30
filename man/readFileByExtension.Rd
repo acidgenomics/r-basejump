@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readFileByExtension}
 \alias{readFileByExtension}
+\alias{readFileByExtension}
 \alias{readFileByExtension,character-method}
 \title{Read File by Extension}
 \usage{
@@ -44,4 +45,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}

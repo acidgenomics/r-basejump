@@ -42,4 +42,3 @@ assignAndSaveData("test", mtcars)
 \seealso{
 Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
 }
-\concept{Object Assignment Utilities}

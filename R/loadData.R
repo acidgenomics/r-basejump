@@ -40,7 +40,7 @@ loadData <- function(
     dir = getwd(),
     ext = "rda",
     envir = parent.frame(),
-    replace = FALSE,
+    replace = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
@@ -61,6 +61,20 @@ loadData <- function(
     files <- sapply(seq_along(dots), function(a) {
         name <- dots[[a]]
         file <- file.path(dir, paste0(name, ".", ext))
+        # Check to see if object is present in environment
+        if (exists(name, envir = envir, inherits = FALSE)) {
+            if (isTRUE(replace)) {
+                warning(paste(
+                    "Replacing", name,
+                    "with the contents of", basename(file)
+                ), call. = FALSE)
+            } else {
+                return(warning(paste(
+                    "Skipping", basename(file),
+                    "because", name, "already exists"
+                ), call. = FALSE))
+            }
+        }
         # Error on missing file
         if (!file.exists(file)) {
             stop(paste(name, "missing"), call. = FALSE)
@@ -81,13 +95,6 @@ loadData <- function(
                 "Name mismatch detected for '", basename(file), "'. ",
                 "Internal object is named '", loaded, "'."
             ), call. = FALSE)
-        }
-        # Warn on skipped files
-        if (!isTRUE(replace) &
-            exists(name, envir = envir, inherits = FALSE)) {
-            return(warning(paste0(
-                "Skipping ", basename(file), "... already exists"
-            ), call. = FALSE))
         }
         # Assign into the target environment
         assign(x = name,

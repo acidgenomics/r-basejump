@@ -3,6 +3,7 @@
 \docType{methods}
 \name{collapseToString}
 \alias{collapseToString}
+\alias{collapseToString}
 \alias{collapseToString,character-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
@@ -10,34 +11,30 @@
 \alias{collapseToString,logical-method}
 \alias{collapseToString,matrix-method}
 \alias{collapseToString,numeric-method}
-\alias{collapseToString,tbl_df-method}
 \title{Collapse to String}
 \usage{
 collapseToString(object, ...)
 
 \S4method{collapseToString}{character}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{data.frame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{logical}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{matrix}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 
 \S4method{collapseToString}{numeric}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
-
-\S4method{collapseToString}{tbl_df}(object, sep = ", ", unique = TRUE,
-  sort = TRUE, ...)
+  sort = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -84,4 +81,3 @@ mtcars \%>\%
 \item \code{\link[base:toString]{base::toString()}}.
 }
 }
-\concept{Data Manipulation Utilities}

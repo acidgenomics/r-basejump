@@ -4,6 +4,7 @@
 \name{readGFF}
 \alias{readGFF}
 \alias{readGTF}
+\alias{readGFF}
 \alias{readGFF,character-method}
 \title{Read GFF/GTF Annotations}
 \usage{
@@ -45,4 +46,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}
