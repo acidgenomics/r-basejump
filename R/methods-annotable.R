@@ -49,9 +49,9 @@
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
-#' @seealso -
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub). -
-#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#' @seealso
+#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
+#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
 #' annotable("Mus musculus") %>% str()
