@@ -3,6 +3,7 @@
 \docType{methods}
 \name{readYAML}
 \alias{readYAML}
+\alias{readYAML}
 \alias{readYAML,character-method}
 \title{Read YAML File}
 \usage{
@@ -38,4 +39,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readSampleMetadataFile}},
   \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}

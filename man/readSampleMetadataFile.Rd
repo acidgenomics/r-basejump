@@ -4,6 +4,7 @@
 \docType{methods}
 \name{readSampleMetadataFile}
 \alias{readSampleMetadataFile}
+\alias{readSampleMetadataFile}
 \alias{readSampleMetadataFile,character-method}
 \title{Read Sample Metadata File}
 \usage{
@@ -48,4 +49,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}

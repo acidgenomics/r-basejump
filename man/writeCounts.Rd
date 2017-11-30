@@ -40,4 +40,3 @@ Other Write Utilities: \code{\link{saveData}}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Write Utilities}

@@ -3,6 +3,7 @@
 \docType{methods}
 \name{snake}
 \alias{snake}
+\alias{snake}
 \alias{snake,ANY-method}
 \alias{snake,character-method}
 \alias{snake,data.frame-method}

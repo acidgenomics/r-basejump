@@ -3,6 +3,7 @@
 \docType{methods}
 \name{mdList}
 \alias{mdList}
+\alias{mdList}
 \alias{mdList,character-method}
 \title{Markdown List}
 \usage{
@@ -38,4 +39,3 @@ mdList(groceries, asis = TRUE)
 Other Report Utilities: \code{\link{kables}},
   \code{\link{mdHeader}}
 }
-\concept{Report Utilities}

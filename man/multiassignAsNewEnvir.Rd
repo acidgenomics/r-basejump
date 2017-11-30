@@ -30,4 +30,3 @@ multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 
 Other Object Assignment Utilities: \code{\link{assignAndSaveData}}
 }
-\concept{Object Assignment Utilities}

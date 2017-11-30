@@ -5,6 +5,7 @@
 \name{tx2geneFromGFF}
 \alias{tx2geneFromGFF}
 \alias{tx2geneFromGTF}
+\alias{tx2geneFromGFF}
 \alias{tx2geneFromGFF,character-method}
 \alias{tx2geneFromGFF,data.frame-method}
 \title{Generate tx2gene from GFF/GTF File}
@@ -51,4 +52,3 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2gene}}
 }
-\concept{Gene Annotation Utilities}

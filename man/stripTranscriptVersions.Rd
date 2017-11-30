@@ -4,6 +4,7 @@
 \docType{methods}
 \name{stripTranscriptVersions}
 \alias{stripTranscriptVersions}
+\alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
 \title{Strip Transcript Versions}
 \usage{

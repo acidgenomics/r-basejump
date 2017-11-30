@@ -3,6 +3,7 @@
 \docType{methods}
 \name{sortUnique}
 \alias{sortUnique}
+\alias{sortUnique}
 \alias{sortUnique,character-method}
 \title{Quickly Perform Sort Unique on a Vector}
 \usage{
@@ -29,4 +30,3 @@ sortUnique(c("milk", "eggs", "eggs", NA))
 Other Cleanup Utilities: \code{\link{fixNA}},
   \code{\link{removeNA}}
 }
-\concept{Cleanup Utilities}

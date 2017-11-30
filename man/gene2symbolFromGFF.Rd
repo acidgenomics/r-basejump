@@ -5,6 +5,7 @@
 \name{gene2symbolFromGFF}
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGTF}
+\alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGFF,character-method}
 \alias{gene2symbolFromGFF,data.frame-method}
 \title{Generate gene2symbol from GFF/GTF File}
@@ -50,4 +51,3 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{symbol2gene}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }
-\concept{Gene Annotation Utilities}

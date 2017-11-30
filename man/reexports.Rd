@@ -4,9 +4,13 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
+\alias{reexports}
 \alias{Matrix}
+\alias{reexports}
 \alias{DataFrame}
+\alias{reexports}
 \alias{tibble}
+\alias{reexports}
 \alias{file_path_sans_ext}
 \title{Objects exported from other packages}
 \keyword{internal}

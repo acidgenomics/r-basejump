@@ -3,6 +3,7 @@
 \docType{methods}
 \name{collapseToString}
 \alias{collapseToString}
+\alias{collapseToString}
 \alias{collapseToString,character-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
@@ -80,4 +81,3 @@ mtcars \%>\%
 \item \code{\link[base:toString]{base::toString()}}.
 }
 }
-\concept{Data Manipulation Utilities}
