@@ -13,8 +13,11 @@ r:
   - bioc-release
   - bioc-devel
 r_packages:
+  - callr
   - covr
   - rlang
+  - roxygen2
+  - xml2
 r_github_packages:
   - jimhester/lintr
 
