@@ -21,10 +21,11 @@ test_that("Dot object key-value pair method", {
         replace = FALSE
     )
     # Variable file paths (more flexible, but requires more typing)
-    loaded2 <- loadDataAsName(
-        newName1 = "mtcars.rda",
-        newName2 = "starwars.rda",
-        replace = TRUE
+    loaded2 <- suppressWarnings(
+        loadDataAsName(
+            newName1 = "mtcars.rda",
+            newName2 = "starwars.rda",
+            replace = TRUE)
     )
     expect_equal(
         loaded,

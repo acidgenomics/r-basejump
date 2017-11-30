@@ -88,6 +88,9 @@ NULL
     colData,
     metadata) {
     # Assays ====
+    # Drop any `NULL` items from list. Otherwise we'll get a dimension
+    # mismatch error.
+    assays <- Filter(Negate(is.null), assays)
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
         stop("Assay object must support 'dim()'", call. = FALSE)
