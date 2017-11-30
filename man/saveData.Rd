@@ -50,4 +50,3 @@ saveData(mtcars, starwars)
 
 Other Write Utilities: \code{\link{writeCounts}}
 }
-\concept{Write Utilities}

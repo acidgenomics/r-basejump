@@ -3,6 +3,7 @@
 \docType{methods}
 \name{detectOrganism}
 \alias{detectOrganism}
+\alias{detectOrganism}
 \alias{detectOrganism,character-method}
 \alias{detectOrganism,NULL-method}
 \title{Detect Organism}
@@ -57,4 +58,3 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
-\concept{Gene Annotation Utilities}

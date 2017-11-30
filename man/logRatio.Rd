@@ -45,4 +45,3 @@ Modified variants of \code{gtools::foldchange2logratio()`` and}gtools::logratio2
 
 Other Math Utilities: \code{\link{geomean}}
 }
-\concept{Math Utilities}

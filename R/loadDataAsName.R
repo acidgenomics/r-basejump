@@ -45,7 +45,7 @@ loadDataAsName <- function(
     dir = getwd(),
     ext = "rda",
     envir = parent.frame(),
-    replace = FALSE) {
+    replace = TRUE) {
     dots <- list(...)
     # Check for legacy mappings method, used prior to v0.1.1
     if (length(dots) == 1 & !is.null(names(dots[[1]]))) {
@@ -81,6 +81,20 @@ loadDataAsName <- function(
             stop(paste(object, "missing"), call. = FALSE)
         }
         file <- normalizePath(file)
+        # Check to see if object is present in environment
+        if (exists(name, envir = envir, inherits = FALSE)) {
+            if (isTRUE(replace)) {
+                warning(paste(
+                    "Replacing", name,
+                    "with the contents of", basename(file)
+                ), call. = FALSE)
+            } else {
+                return(warning(paste(
+                    "Skipping", basename(file),
+                    "because", name, "already exists"
+                ), call. = FALSE))
+            }
+        }
         # Load into a temporary environment (safer)
         tmpEnv <- new.env()
         loaded <- load(file, envir = tmpEnv)
@@ -90,13 +104,6 @@ loadDataAsName <- function(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
             ), call. = FALSE)
-        }
-        # Warn on skipped files
-        if (!isTRUE(replace) &
-            exists(name, envir = envir, inherits = FALSE)) {
-            return(warning(paste0(
-                "Skipping ", basename(file), "... '", name, "' already exists"
-            ), call. = FALSE))
         }
         # Assign into the target environment
         assign(x = name,

@@ -3,6 +3,7 @@
 \docType{methods}
 \name{aggregateFeatures}
 \alias{aggregateFeatures}
+\alias{aggregateFeatures}
 \alias{aggregateFeatures,dgCMatrix-method}
 \alias{aggregateFeatures,dgTMatrix-method}
 \title{Aggregate Features}
@@ -33,4 +34,3 @@ Other Data Management Utilities: \code{\link{aggregateReplicates}}
 \author{
 Rory Kirchner, Michael Steinbaugh
 }
-\concept{Data Management Utilities}

@@ -3,6 +3,7 @@
 \docType{methods}
 \name{prepareTemplate}
 \alias{prepareTemplate}
+\alias{prepareTemplate}
 \alias{prepareTemplate,missing-method}
 \alias{prepareTemplate,character-method}
 \title{Prepare R Markdown Template File}
@@ -53,4 +54,3 @@ prepareTemplate(
 \seealso{
 Other Infrastructure Utilities: \code{\link{detectHPC}}
 }
-\concept{Infrastructure Utilities}

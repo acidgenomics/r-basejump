@@ -49,9 +49,9 @@
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
-#' @seealso -
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub). -
-#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#' @seealso
+#' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
+#' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
 #' annotable("Mus musculus") %>% str()
@@ -79,8 +79,8 @@ NULL
 .annotable <- function(
     object,
     format = "gene",
-    genomeBuild,
-    release,
+    genomeBuild = NULL,
+    release = NULL,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -94,14 +94,11 @@ NULL
         return(NULL)
     }
 
-    if (!missing(genomeBuild)) {
+    if (!is.null(genomeBuild)) {
         .checkAnnotableBuildSupport(genomeBuild)
     }
 
     # Sanitize the release version
-    if (missing(release)) {
-        release <- NULL
-    }
     if (is.numeric(release)) {
         if (release < 87L) {
             warning(paste(
@@ -120,8 +117,13 @@ NULL
         releasePattern <- paste0("v", release)
     }
 
-    # Download organism EnsDb package from AnnotationHub
-    ah <- suppressMessages(AnnotationHub())
+    # Initialize AnnotationHub. On a fresh install this will print a
+    # txProgressBar to the console. We're using `capture.output()` here
+    # to suppress the console output, since it's not very informative and
+    # can cluster R Markdown reports.
+    invisible(capture.output(
+        ah <- suppressMessages(AnnotationHub())
+    ))
 
     if (!isTRUE(quiet)) {
         message(paste(
@@ -147,7 +149,13 @@ NULL
     } else {
         ensembldbUserAttached <- FALSE
     }
-    edb <- suppressMessages(ah[[id]])
+
+    # This step will also output a txProgressBar on a fresh install. Using
+    # `capture.output()` here again to suppress console output.
+    invisible(capture.output(
+        edb <- suppressMessages(ah[[id]])
+    ))
+
     if ("ensembldb" %in% .packages() &
         !isTRUE(ensembldbUserAttached)) {
         suppressWarnings(

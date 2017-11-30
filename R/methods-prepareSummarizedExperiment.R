@@ -88,6 +88,9 @@ NULL
     colData,
     metadata) {
     # Assays ====
+    # Drop any `NULL` items from list. Otherwise we'll get a dimension
+    # mismatch error.
+    assays <- Filter(Negate(is.null), assays)
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
         stop("Assay object must support 'dim()'", call. = FALSE)
@@ -152,11 +155,9 @@ NULL
                 sort()
             warning(paste(
                 "Unannotated genes detected in counts matrix",
-                paste0("(",
-                       percent(length(unannotatedGenes)),
-                       " / ",
-                       nrow(assay),
-                       ")")
+                paste0(
+                    "(", percent(length(unannotatedGenes) / nrow(assay)), ")"
+                )
             ), call. = FALSE)
         } else {
             unannotatedGenes <- NULL

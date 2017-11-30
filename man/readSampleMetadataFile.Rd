@@ -4,6 +4,7 @@
 \docType{methods}
 \name{readSampleMetadataFile}
 \alias{readSampleMetadataFile}
+\alias{readSampleMetadataFile}
 \alias{readSampleMetadataFile,character-method}
 \title{Read Sample Metadata File}
 \usage{
@@ -29,14 +30,14 @@ technical replicates (\code{_LXXX}) suffix.}
 Read Sample Metadata File
 }
 \examples{
-# Demultiplexed FASTQ
+# Demultiplexed
 demultiplexed <- file.path(
     "http://basejump.seq.cloud",
     "sample_metadata",
     "demultiplexed.xlsx")
 readSampleMetadataFile(demultiplexed)
 
-# Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)
+# Multiplexed (e.g. inDrop single-cell RNA-seq)
 multiplexed <- file.path(
     "http://basejump.seq.cloud",
     "sample_metadata",
@@ -48,4 +49,3 @@ Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }
-\concept{Data Import and Project Utilities}

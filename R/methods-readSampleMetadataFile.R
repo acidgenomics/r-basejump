@@ -14,14 +14,14 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' # Demultiplexed FASTQ
+#' # Demultiplexed
 #' demultiplexed <- file.path(
 #'     "http://basejump.seq.cloud",
 #'     "sample_metadata",
 #'     "demultiplexed.xlsx")
 #' readSampleMetadataFile(demultiplexed)
 #'
-#' # Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)
+#' # Multiplexed (e.g. inDrop single-cell RNA-seq)
 #' multiplexed <- file.path(
 #'     "http://basejump.seq.cloud",
 #'     "sample_metadata",
@@ -32,7 +32,7 @@ NULL
 
 
 # Constructors ====
-#' @importFrom dplyr filter group_by left_join mutate mutate_all mutate_if
+#' @importFrom dplyr group_by left_join mutate mutate_all mutate_if
 #'   rename ungroup
 #' @importFrom rlang .data sym !!
 #' @importFrom stringr str_pad
@@ -42,6 +42,15 @@ NULL
     lanes = 1,
     quiet = FALSE) {
     metadata <- readFileByExtension(object, quiet = quiet)
+
+    # Check for manually defined `sampleID`. Warn and remove if present.
+    if ("sampleID" %in% colnames(metadata)) {
+        warning(paste(
+            "'sampleID' should not be manually defined",
+            "in the sample metadata file"
+        ), call. = FALSE)
+        metadata[["sampleID"]] <- NULL
+    }
 
     # Warn on legacy `samplename` column. We need to work on improving the
     # consistency in examples or the internal handlng of file and sample
@@ -69,12 +78,12 @@ NULL
     # Determine whether the samples are multiplexed, based on the presence
     # of duplicate values in the `description` column
     if (any(duplicated(metadata[["fileName"]]))) {
-        multiplexedFASTQ <- TRUE
+        multiplexed <- TRUE
     } else {
-        multiplexedFASTQ <- FALSE
+        multiplexed <- FALSE
     }
 
-    if (isTRUE(multiplexedFASTQ)) {
+    if (isTRUE(multiplexed)) {
         requiredCols <- c("fileName", "description", "sampleName", "sequence")
         if (!all(requiredCols %in% colnames(metadata))) {
             stop(paste(
@@ -105,8 +114,8 @@ NULL
     metadata <- metadata %>%
         # Valid rows must contain `description` and `sampleName`. Imported Excel
         # files can contain empty rows, so this helps correct that problem.
-        filter(!is.na(.data[["description"]])) %>%
-        filter(!is.na(.data[["sampleName"]])) %>%
+        .[!is.na(.[["description"]]), , drop = FALSE] %>%
+        .[!is.na(.[["sampleName"]]), , drop = FALSE] %>%
         # Strip all NA rows and columns
         removeNA() %>%
         # Make colnames camelCase
@@ -131,24 +140,34 @@ NULL
             )
     }
 
-    # Set the `sampleID` column
-    if (isTRUE(multiplexedFASTQ)) {
-        # The per sample directories are created by combining the
-        # `sampleName` column with the reverse complement (`revcomp`) of the
-        # index barcode sequence (`sequence`)
-        metadata <- metadata %>%
-            mutate(
-                revcomp = vapply(.data[["sequence"]], revcomp, character(1)),
-                # Match the sample directories exactly here, using the hyphen.
-                # We'll sanitize into valid names using `make.names()` in
-                # the final return chain.
-                sampleID = paste(
-                    .data[["description"]],
-                    .data[["revcomp"]],
-                    sep = "-"))
-    } else {
-        # For demultiplexed samples, we can just use the `description`
-        metadata[["sampleID"]] <- metadata[["description"]]
+    # This code is only applicable to multiplexed files used for single-cell
+    # RNA-seq analysis. For bcbio single-cell RNA-seq, the multiplexed per
+    # sample directories are created by combining the `sampleName` column
+    # with the reverse complement (`revcomp`) of the index barcode sequence
+    # (`sequence`). This is the current behavior for the inDrop pipeline.
+    # Let's check for an ACGT sequence and use the revcomp if there's a
+    # match. Otherwise just return the `sampleName` as the `sampleID`.
+    if (isTRUE(multiplexed)) {
+        detectIndex <-
+            grepl(x = metadata[["sequence"]],
+                  pattern = "^[ACGT]{6,}") %>%
+            all()
+        if (isTRUE(detectIndex)) {
+            metadata[["revcomp"]] <-
+                vapply(metadata[["sequence"]], revcomp, character(1))
+            # Match the sample directories exactly here, using the hyphen.
+            # We'll sanitize into valid names using `make.names()` in
+            # the final return chain.
+            metadata[["sampleID"]] <-
+                paste(metadata[["description"]],
+                      metadata[["revcomp"]],
+                      sep = "-")
+        }
+    }
+
+    # Default to sanitized `sampleName` column for `sampleID`
+    if (!"sampleID" %in% colnames(metadata)) {
+        metadata[["sampleID"]] <- metadata[["sampleName"]]
     }
 
     metadata %>%

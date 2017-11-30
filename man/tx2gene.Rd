@@ -3,6 +3,7 @@
 \docType{methods}
 \name{tx2gene}
 \alias{tx2gene}
+\alias{tx2gene}
 \alias{tx2gene,character-method}
 \alias{tx2gene,data.frame-method}
 \alias{tx2gene,DataFrame-method}
@@ -68,4 +69,3 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}
 }
-\concept{Gene Annotation Utilities}

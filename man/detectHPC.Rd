@@ -30,4 +30,3 @@ detectHPC()
 
 Other Infrastructure Utilities: \code{\link{prepareTemplate}}
 }
-\concept{Infrastructure Utilities}

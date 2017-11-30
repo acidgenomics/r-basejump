@@ -5,7 +5,7 @@
 \title{Load Local Data}
 \usage{
 loadData(..., dir = getwd(), ext = "rda", envir = parent.frame(),
-  replace = FALSE, quiet = FALSE)
+  replace = TRUE, quiet = FALSE)
 }
 \arguments{
 \item{...}{Object names as symbols.}

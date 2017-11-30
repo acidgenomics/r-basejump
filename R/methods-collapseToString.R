@@ -47,8 +47,7 @@ NULL
     object,
     sep = ", ",
     unique = TRUE,
-    sort = TRUE,
-    ...) {
+    sort = TRUE) {
     if (length(object) > 1) {
         if (isTRUE(unique)) {
             if (!all(is.na(object))) {
@@ -76,22 +75,30 @@ NULL
     object,
     sep = ", ",
     unique = TRUE,
-    sort = TRUE,
-    ...) {
-    origClass <- class(object)[[1L]]
-    # Coerce to data.frame and perform manipulations
-    object %>%
-        as.data.frame() %>%
+    sort = TRUE) {
+    # Stash original class and coerce to data.frame, if necessary
+    if (!is.data.frame(object)) {
+        class <- class(object)[[1L]]
+        object <- as.data.frame(object)
+    } else {
+        class <- NULL
+    }
+
+    collapse <- object %>%
         mutate_all(funs(fixNA)) %>%
         summarize_all(funs(
             .collapseToString(
                 object = .,
                 sep = sep,
                 unique = unique,
-                sort = sort,
-                ...))) %>%
-        # Return as original class
-        as(origClass)
+                sort = sort)
+        ))
+
+    if (!is.null(class)) {
+        as(collapse, class)
+    } else {
+        collapse
+    }
 }
 
 
@@ -157,12 +164,3 @@ setMethod(
     "collapseToString",
     signature("numeric"),
     .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("tbl_df"),
-    .collapseRows)

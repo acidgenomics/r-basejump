@@ -3,6 +3,7 @@
 \docType{methods}
 \name{sampleYAMLMetrics}
 \alias{sampleYAMLMetrics}
+\alias{sampleYAMLMetrics}
 \alias{sampleYAMLMetrics,list-method}
 \title{Sample Metrics from YAML File}
 \usage{
@@ -34,5 +35,4 @@ Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},
   \code{\link{sampleYAMLMetadata}},
   \code{\link{sampleYAML}}
 }
-\concept{bcbio Utilities}
 \keyword{internal}

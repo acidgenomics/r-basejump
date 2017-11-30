@@ -3,14 +3,15 @@
 \docType{methods}
 \name{annotable}
 \alias{annotable}
+\alias{annotable}
 \alias{annotable,character-method}
 \alias{annotable,data.frame-method}
 \title{Ensembl Annotations}
 \usage{
 annotable(object, ...)
 
-\S4method{annotable}{character}(object, format = "gene", genomeBuild, release,
-  quiet = FALSE)
+\S4method{annotable}{character}(object, format = "gene", genomeBuild = NULL,
+  release = NULL, quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
 }
@@ -86,15 +87,12 @@ annotable("XXX")
 }
 \seealso{
 \itemize{
-\item 
+\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
+\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
-
-\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}. -
-\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
-\concept{Gene Annotation Utilities}

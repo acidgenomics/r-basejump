@@ -93,8 +93,8 @@
     <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='no'>genomeBuild</span>, <span class='no'>release</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)</pre>
@@ -174,13 +174,13 @@ smaller number of semantically-meaningful groups:</p><ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <ul>
-<li><p></p></li>
-</ul><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>. -
-<a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
-<p>Other Gene Annotation Utilities: <code><a href='detectOrganism.html'>detectOrganism</a></code>,
-  <code><a href='gene2symbolFromGFF.html'>gene2symbolFromGFF</a></code>,
-  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='symbol2gene.html'>symbol2gene</a></code>,
-  <code><a href='tx2geneFromGFF.html'>tx2geneFromGFF</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
+</ul>
+    <p>Other Gene Annotation Utilities: <code>detectOrganism</code>,
+  <code>gene2symbolFromGFF</code>,
+  <code>gene2symbol</code>, <code>symbol2gene</code>,
+  <code>tx2geneFromGFF</code>, <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -198,8 +198,10 @@ smaller number of semantically-meaningful groups:</p><ul>
 #&gt;  $ seqCoordSystem: chr  "chromosome" "chromosome" "chromosome" "chromosome" ...</div><div class='input'>
 # Alternate approach, with pre-compiled tibble
 </div><span class='co'># NOT RUN {</span>
-<span class='fu'>annotable</span>(<span class='kw pkg'>annotables</span><span class='kw ns'>::</span><span class='no'>grch37</span>)
-<span class='co'># }</span></pre>
+<span class='fu'>annotable</span>(<span class='kw pkg'>annotables</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/annotables/topics/grch37'>grch37</a></span>)
+<span class='co'># }</span><div class='input'>
+<span class='co'># Unsupported organism</span>
+<span class='fu'>annotable</span>(<span class='st'>"XXX"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Failed to detect supported organism</span></div><div class='output co'>#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
