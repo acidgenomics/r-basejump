@@ -87,11 +87,9 @@ annotable("XXX")
 }
 \seealso{
 \itemize{
-\item 
+\item \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
+\item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
-
-\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}. -
-\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 
 Other Gene Annotation Utilities: \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
