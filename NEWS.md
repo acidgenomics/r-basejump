@@ -1,3 +1,13 @@
+# basejump 0.1.3
+
+`loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
+- `collapseToString()` only attempts to dynamically return the original object class on objects that aren't class `data.frame`. I updated this code to behave more nicely with grouped tibbles (`grouped_df`), which are a virtual class of `data.frame` and therefore can't be coerced using `as(object, "grouped_df")`.
+- DNA sequence utility functions `comp()` and `revcomp()` now return `NULL` for integers and numerics.
+- For `prepareSummarizedExperiment()`, added support for dropping `NULL` objects in assays list. This is useful for handling output from bcbioRNASeq when `transformLimit` is reached. In this case, the `rlog` and `vst` matrices aren't generated and set `NULL` in the assays list. Using `Filter(Negate(is.null), assays)` we can drop these `NULL` objects and prevent a downstream dimension mismatch in the `SummarizedExperiment()` call.
+- Improved support for multiplexed files in `readSampleMetadataFile()`. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the `revcomp` column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.
+
+
+
 # basejump 0.1.2
 
 - Added bcbio `plotQC()` generic.
