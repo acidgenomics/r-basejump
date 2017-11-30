@@ -88,16 +88,30 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-1-3" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-1-3" class="anchor"></a>basejump 0.1.3</h1>
+<ul>
+<li>
+<code><a href="../reference/loadData.html">loadData()</a></code> and <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
+<li>
+<code>collapseToString()</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code>as(object, "grouped_df")</code>.</li>
+<li>DNA sequence utility functions <code><a href="../reference/dna.html">comp()</a></code> and <code><a href="../reference/dna.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
+<li>For <code>prepareSummarizedExperiment()</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from bcbioRNASeq when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code>SummarizedExperiment()</code> call.</li>
+<li>Improved support for multiplexed files in <code>readSampleMetadataFile()</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.</li>
+</ul>
+</div>
     <div id="basejump-0-1-2" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-1-2" class="anchor"></a>basejump 0.1.2</h1>
 <ul>
 <li>Added bcbio <code><a href="../reference/bcbioGenerics.html">plotQC()</a></code> generic.</li>
-<li>Added back <code><a href="../reference/toStringUnique.html">toStringUnique()</a></code> code, which is still in use in the worminfo package.</li>
-<li>Added deprecations for <code><a href="../reference/deprecated.html">summarizeRows()</a></code> (now <code><a href="../reference/collapseToString.html">collapseToString()</a></code>) and <code><a href="../reference/deprecated.html">wash()</a></code> functions.</li>
+<li>Added back <code>toStringUnique()</code> code, which is still in use in the worminfo package.</li>
+<li>Added deprecations for <code><a href="../reference/deprecated.html">summarizeRows()</a></code> (now <code>collapseToString()</code>) and <code><a href="../reference/deprecated.html">wash()</a></code> functions.</li>
 <li>Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.</li>
 <li>Now suggesting that the user installs suggested packages in the README.</li>
 <li>Updated PANTHER annotation scripts.</li>
+<li>Bug fix for <code>detectOrganism()</code>. Now allowing <code>NULL</code> return for unsupported organism, with a warning.</li>
 </ul>
 </div>
     <div id="basejump-0-1-1" class="section level1">
@@ -105,10 +119,10 @@
 <a href="#basejump-0-1-1" class="anchor"></a>basejump 0.1.1</h1>
 <ul>
 <li>Added overwrite support for <code><a href="../reference/saveData.html">saveData()</a></code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
-<li>Bug fix for <code><a href="../reference/readDataVersions.html">readDataVersions()</a></code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
+<li>Bug fix for <code>readDataVersions()</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
 <li>Improved key value pair method for <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
-<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/annotable.html">annotable()</a></code>, <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/symbol2gene.html">symbol2gene()</a></code> and <code><a href="../reference/tx2gene.html">tx2gene()</a></code> functions.</li>
-<li>Allow rowData to be left unset in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code>. This is useful for setting up objects that don’t contain gene annotations.</li>
+<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code>annotable()</code>, <code>gene2symbol()</code>, <code>symbol2gene()</code> and <code>tx2gene()</code> functions.</li>
+<li>Allow rowData to be left unset in <code>prepareSummarizedExperiment()</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata()</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
 </div>
@@ -117,16 +131,16 @@
 <a href="#basejump-0-1-0" class="anchor"></a>basejump 0.1.0</h1>
 <ul>
 <li>Bump version to match bcbioRNASeq package.</li>
-<li>Improved unit testing coverage of <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code>.</li>
+<li>Improved unit testing coverage of <code>prepareSummarizedExperiment()</code>.</li>
 <li>Added quiet mode support to functions that output messages, where applicable.</li>
 <li>Moved roxygen function imports to each file from <code>basejump-package.R</code> file.</li>
 <li>Deprecated <code><a href="../reference/deprecated.html">sampleDirs()</a></code> generic.</li>
-<li>Improved organism detection in <code><a href="../reference/detectOrganism.html">detectOrganism()</a></code> and added support for chicken genome.</li>
-<li>Clarified warning messages in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> to make sample loading with <code>loadRNASeq()</code> and <code>loadSingleCell()</code> in the bcbio packages less confusing.</li>
-<li>Improved <code>NULL</code> returns in <code>readDataVersions</code>, <code><a href="../reference/readLogFile.html">readLogFile()</a></code>, and <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> utility functions.</li>
+<li>Improved organism detection in <code>detectOrganism()</code> and added support for chicken genome.</li>
+<li>Clarified warning messages in <code>prepareSummarizedExperiment()</code> to make sample loading with <code>loadRNASeq()</code> and <code>loadSingleCell()</code> in the bcbio packages less confusing.</li>
+<li>Improved <code>NULL</code> returns in <code>readDataVersions</code>, <code>readLogFile()</code>, and <code>readProgramVersions()</code> utility functions.</li>
 <li>Fixed export of <code>*GTF()</code> alias functions to simply wrap the <code>*GFF()</code> functions with S4 methods support.</li>
-<li>Improved lane split technical replicate handling in <code><a href="../reference/readSampleMetadataFile.html">readSampleMetadataFile()</a></code>.</li>
-<li>Improved <code><a href="../reference/camel.html">camel()</a></code> syntax for both lax and strict modes. Added <code><a href="../reference/camel.html">upperCamel()</a></code> function.</li>
+<li>Improved lane split technical replicate handling in <code>readSampleMetadataFile()</code>.</li>
+<li>Improved <code>camel()</code> syntax for both lax and strict modes. Added <code><a href="../reference/camel.html">upperCamel()</a></code> function.</li>
 <li>Switched <code>str_()</code> to base <code>grep()</code> and <code>gsub()</code> in internal functions.</li>
 </ul>
 </div>
@@ -148,34 +162,34 @@
 <li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
 </li>
 <li>Added <code>*GFF()</code> function variants for <code><a href="../reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
-<li>Added shared bcbio generic functions: <code><a href="../reference/aggregateReplicates.html">aggregateReplicates()</a></code>, <code><a href="../reference/bcbioGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/bcbioGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/bcbioGenerics.html">metrics()</a></code>, <code><a href="../reference/bcbioGenerics.html">plotGene()</a></code>, <code><a href="../reference/deprecated.html">sampleDirs()</a></code>, <code><a href="../reference/bcbioGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/bcbioGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
-<li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code><a href="../reference/readDataVersions.html">readDataVersions()</a></code> (deprecated <code>.dataVersions()</code>), <code><a href="../reference/readLogFile.html">readLogFile()</a></code> (deprecated <code>.logFile()</code>), <code><a href="../reference/readProgramVersions.html">readProgramVersions()</a></code> (deprecated <code>.programs()</code>), <code><a href="../reference/sampleYAML.html">sampleYAML()</a></code> (deprecated <code>.sampleYAML()</code>), <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code> (deprecated <code><a href="../reference/sampleYAMLMetadata.html">sampleYAMLMetadata()</a></code>), <code><a href="../reference/sampleYAMLMetrics.html">sampleYAMLMetrics()</a></code> (deprecated .sampleYAMLMetrics()`).</li>
+<li>Added shared bcbio generic functions: <code>aggregateReplicates()</code>, <code><a href="../reference/bcbioGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/bcbioGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/bcbioGenerics.html">metrics()</a></code>, <code><a href="../reference/bcbioGenerics.html">plotGene()</a></code>, <code><a href="../reference/deprecated.html">sampleDirs()</a></code>, <code><a href="../reference/bcbioGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/bcbioGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code>readDataVersions()</code> (deprecated <code>.dataVersions()</code>), <code>readLogFile()</code> (deprecated <code>.logFile()</code>), <code>readProgramVersions()</code> (deprecated <code>.programs()</code>), <code>sampleYAML()</code> (deprecated <code>.sampleYAML()</code>), <code>sampleYAMLMetadata()</code> (deprecated <code>sampleYAMLMetadata()</code>), <code>sampleYAMLMetrics()</code> (deprecated .sampleYAMLMetrics()`).</li>
 <li>Deprecated <code><a href="../reference/deprecated.html">metadataTable()</a></code> function.</li>
 <li>Moved all roxygen documentation to <code>methods-*.R</code> files where applicable.</li>
-<li>Now using <code>assays</code> in <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code> generic definition as primary object.</li>
+<li>Now using <code>assays</code> in <code>prepareSummarizedExperiment()</code> generic definition as primary object.</li>
 <li>Improved <code><a href="../reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
 <li>Now consistently using clear function definitions (<code>()</code>) in chain operations with magrittr pipe (<code>%&gt;%</code>).</li>
 <li>Added <code>.prepareSampleMetadata()</code> utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.</li>
 <li>Added <code><a href="../reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
 <li>Initial commit of <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
-<li>Improved <code><a href="../reference/annotable.html">annotable()</a></code> function documentation and support for Ensembl release versions.</li>
-<li>Improved sanitization rules for <code><a href="../reference/camel.html">camel()</a></code>, <code><a href="../reference/dotted.html">dotted()</a></code>, and <code><a href="../reference/snake.html">snake()</a></code> name functions. Added the <code>strict</code> argument to <code><a href="../reference/camel.html">camel()</a></code> and <code><a href="../reference/dotted.html">dotted()</a></code>.</li>
+<li>Improved <code>annotable()</code> function documentation and support for Ensembl release versions.</li>
+<li>Improved sanitization rules for <code>camel()</code>, <code>dotted()</code>, and <code>snake()</code> name functions. Added the <code>strict</code> argument to <code>camel()</code> and <code>dotted()</code>.</li>
 <li>Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.</li>
 <li>Improved S4 method support for the logRatio functions.</li>
-<li>Added integer support for <code><a href="../reference/geomean.html">geomean()</a></code> function. Also improved internal code of <code><a href="../reference/geomean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
+<li>Added integer support for <code>geomean()</code> function. Also improved internal code of <code>geomean()</code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
 <li>Added release support for <code>tx2gene</code> functions.</li>
 <li>Reduced the number of reexported functions (for documentation) down to the magrittr pipe (<code>%&gt;%</code>), <code><a href="http://www.rdocumentation.org/packages/Matrix/topics/Matrix">Matrix()</a></code>, <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class">DataFrame()</a></code>, and <code><a href="http://www.rdocumentation.org/packages/tibble/topics/tibble">tibble()</a></code>.</li>
 <li>Added silent return of file path to <code><a href="../reference/saveData.html">saveData()</a></code> function.</li>
 <li>Improved documentation for tibble coercion using <code>as(object, "tibble")</code>
 </li>
-<li>Renamed <code>collapse()</code> function to <code><a href="../reference/collapseToString.html">collapseToString()</a></code>, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).</li>
+<li>Renamed <code>collapse()</code> function to <code>collapseToString()</code>, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).</li>
 </ul>
 </div>
     <div id="basejump-0-0-23" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-0-23" class="anchor"></a>basejump 0.0.23</h1>
 <ul>
-<li>Upgraded <code><a href="../reference/annotable.html">annotable()</a></code> function to query Ensembl using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
+<li>Upgraded <code>annotable()</code> function to query Ensembl using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
 </ul>
 </div>
     <div id="basejump-0-0-22" class="section level1">
@@ -183,7 +197,7 @@
 <a href="#basejump-0-0-22" class="anchor"></a>basejump 0.0.22</h1>
 <ul>
 <li>Improved unit testing coverage.</li>
-<li>Renamed <code><a href="../reference/deprecated.html">prepareSE()</a></code> to <code><a href="../reference/prepareSummarizedExperiment.html">prepareSummarizedExperiment()</a></code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
+<li>Renamed <code><a href="../reference/deprecated.html">prepareSE()</a></code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
 <li>Reworked and simplified <code><a href="../reference/detectHPC.html">detectHPC()</a></code> function to allow for unit testing.</li>
 </ul>
 </div>
@@ -198,11 +212,11 @@
 <li>Made multiple generics more flexible by inclusion of <code>…</code>.</li>
 <li>Reduced the number of deprecated functions.</li>
 <li>Initial commit of internal <code>localOrRemote()</code> utility function.</li>
-<li>Initial commit of <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code> function.</li>
+<li>Initial commit of <code>prepareTemplate()</code> function.</li>
 <li>Added additional <code>data-raw/</code> scripts.</li>
 <li>Added <code>onLoad.R</code> script back to ensure proper attachment of <a href="https://github.com/stephenturner/annotables">annotables</a> data package.</li>
 <li>Removed <a href="http://www.tidyverse.org">tidyverse</a> S4 method support.</li>
-<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
+<li>Improved remote file handling for <code>readFileByExtension()</code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code>readYAML()</code> functions.</li>
 </ul>
 </div>
     <div id="basejump-0-0-20" class="section level1">
@@ -285,7 +299,7 @@
 <a href="#basejump-0-0-11" class="anchor"></a>basejump 0.0.11</h1>
 <ul>
 <li>Improved naming functions to dynamically handle character vectors and objects that support naming assignments.</li>
-<li>Added <code><a href="../reference/removeNA.html">removeNA()</a></code> utility function.</li>
+<li>Added <code>removeNA()</code> utility function.</li>
 </ul>
 </div>
     <div id="basejump-0-0-10" class="section level1">
@@ -367,6 +381,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-1-3">0.1.3</a></li>
         <li><a href="#basejump-0-1-2">0.1.2</a></li>
         <li><a href="#basejump-0-1-1">0.1.1</a></li>
         <li><a href="#basejump-0-1-0">0.1.0</a></li>
