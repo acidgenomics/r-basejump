@@ -129,10 +129,10 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Gene Annotation Utilities: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='symbol2gene.html'>symbol2gene</a></code>, <code><a href='tx2geneFromGFF.html'>tx2geneFromGFF</a></code>,
-  <code><a href='tx2gene.html'>tx2gene</a></code></p>
+    <p>Other Gene Annotation Utilities: <code>annotable</code>,
+  <code>detectOrganism</code>, <code>gene2symbol</code>,
+  <code>symbol2gene</code>, <code>tx2geneFromGFF</code>,
+  <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -142,7 +142,7 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
 #&gt;  $ ensgene: chr  "ENSMUSG00000025900" "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" ...
 #&gt;  $ symbol : chr  "Rp1" "Xkr4" "Gm26206" "Gm27396" ...</div><div class='input'>
 <span class='co'># GFF data.frame</span>
-<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readGFF.html'>readGFF</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>gene2symbolFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	17 obs. of  2 variables:
+<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>gene2symbolFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	17 obs. of  2 variables:
 #&gt;  $ ensgene: chr  "ENSMUSG00000025900" "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" ...
 #&gt;  $ symbol : chr  "Rp1" "Xkr4" "Gm26206" "Gm27396" ...</div></pre>
   </div>

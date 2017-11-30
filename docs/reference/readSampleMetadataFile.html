@@ -125,12 +125,12 @@ technical replicates (<code>_LXXX</code>) suffix.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
+  <code>readFileByExtension</code>, <code>readGFF</code>,
+  <code>readYAML</code>, <code><a href='transmit.html'>transmit</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Demultiplexed FASTQ</span>
+    <pre class="examples"><div class='input'><span class='co'># Demultiplexed</span>
 <span class='no'>demultiplexed</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
     <span class='st'>"http://basejump.seq.cloud"</span>,
     <span class='st'>"sample_metadata"</span>,
@@ -140,7 +140,7 @@ technical replicates (<code>_LXXX</code>) suffix.</p></td>
 #&gt; sample_2 sample_2   sample 2    sample 2 sample2_R1.fastq.gz wildtype
 #&gt; sample_3 sample_3   sample 3    sample 3 sample3_R1.fastq.gz   mutant
 #&gt; sample_4 sample_4   sample 4    sample 4 sample4_R1.fastq.gz   mutant</div><div class='input'>
-<span class='co'># Multiplexed FASTQ (e.g. inDrop single-cell RNA-seq)</span>
+<span class='co'># Multiplexed (e.g. inDrop single-cell RNA-seq)</span>
 <span class='no'>multiplexed</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
     <span class='st'>"http://basejump.seq.cloud"</span>,
     <span class='st'>"sample_metadata"</span>,
