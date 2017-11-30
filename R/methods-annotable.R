@@ -79,8 +79,8 @@ NULL
 .annotable <- function(
     object,
     format = "gene",
-    genomeBuild,
-    release,
+    genomeBuild = NULL,
+    release = NULL,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -94,14 +94,11 @@ NULL
         return(NULL)
     }
 
-    if (!missing(genomeBuild)) {
+    if (!is.null(genomeBuild)) {
         .checkAnnotableBuildSupport(genomeBuild)
     }
 
     # Sanitize the release version
-    if (missing(release)) {
-        release <- NULL
-    }
     if (is.numeric(release)) {
         if (release < 87L) {
             warning(paste(
@@ -152,7 +149,13 @@ NULL
     } else {
         ensembldbUserAttached <- FALSE
     }
-    edb <- suppressMessages(ah[[id]])
+
+    # This step will also output a txProgressBar on a fresh install. Using
+    # `capture.output()` here again to suppress console output.
+    invisible(capture.output(
+        edb <- suppressMessages(ah[[id]])
+    ))
+
     if ("ensembldb" %in% .packages() &
         !isTRUE(ensembldbUserAttached)) {
         suppressWarnings(
