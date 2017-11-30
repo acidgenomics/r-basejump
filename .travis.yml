@@ -6,7 +6,7 @@ sudo: false
 cache: packages
 
 # Temporarily enable to cache R packages
-script: true
+# script: true
 
 r:
   - bioc-release
