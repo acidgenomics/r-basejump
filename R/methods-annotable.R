@@ -120,8 +120,13 @@ NULL
         releasePattern <- paste0("v", release)
     }
 
-    # Download organism EnsDb package from AnnotationHub
-    ah <- suppressMessages(AnnotationHub())
+    # Initialize AnnotationHub. On a fresh install this will print a
+    # txProgressBar to the console. We're using `capture.output()` here
+    # to suppress the console output, since it's not very informative and
+    # can cluster R Markdown reports.
+    invisible(capture.output(
+        ah <- suppressMessages(AnnotationHub())
+    ))
 
     if (!isTRUE(quiet)) {
         message(paste(
