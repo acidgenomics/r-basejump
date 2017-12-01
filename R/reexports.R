@@ -10,6 +10,10 @@ Matrix::Matrix
 #' @export
 S4Vectors::DataFrame
 
+#' @importFrom tibble glimpse
+#' @export
+tibble::glimpse
+
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
