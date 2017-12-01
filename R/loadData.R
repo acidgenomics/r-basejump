@@ -83,7 +83,7 @@ loadData <- function(
         tmpEnv <- new.env()
         loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
-        if (length(loaded) > 1) {
+        if (length(loaded) > 1L) {
             stop(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
