@@ -1,9 +1,3 @@
-# basejump 0.1.4
-
-- Updated `annotable()` function to include nested Entrez identifiers in the `entrez` column. This is useful for downstream functional analysis.
-
-
-
 # basejump 0.1.3
 
 - `loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
@@ -11,6 +5,7 @@
 - DNA sequence utility functions `comp()` and `revcomp()` now return `NULL` for integers and numerics.
 - For `prepareSummarizedExperiment()`, added support for dropping `NULL` objects in assays list. This is useful for handling output from bcbioRNASeq when `transformLimit` is reached. In this case, the `rlog` and `vst` matrices aren't generated and set `NULL` in the assays list. Using `Filter(Negate(is.null), assays)` we can drop these `NULL` objects and prevent a downstream dimension mismatch in the `SummarizedExperiment()` call.
 - Improved support for multiplexed files in `readSampleMetadataFile()`. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the `revcomp` column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.
+- Updated `annotable()` function to include nested Entrez identifiers in the `entrez` column. This is useful for downstream functional analysis.
 
 
 
