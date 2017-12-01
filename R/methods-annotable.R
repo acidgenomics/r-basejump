@@ -54,11 +54,13 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' annotable("Mus musculus") %>% str()
+#' annotable("Mus musculus") %>%
+#'     glimpse()
 #'
 #' # Alternate approach, with pre-compiled tibble
 #' \dontrun{
-#' annotable(annotables::grch37)
+#' annotable(annotables::grch37) %>%
+#'     glimpse()
 #' }
 #'
 #' # Unsupported organism
@@ -289,9 +291,11 @@ NULL
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr distinct group_by summarize_all ungroup
+#' @importFrom dplyr distinct group_by left_join mutate rename summarize
+#'   summarize_all ungroup
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
+#' @importFrom S4Vectors aggregate
 #'
 #' @inheritParams AllGenerics
 #'
@@ -304,14 +308,33 @@ NULL
             "Required columns:", toString(requiredCols)
         ), call. = FALSE)
     }
-    # Drop the entrez identifiers, if detected
-    if (any(grepl(x = colnames(object), pattern = "entrez"))) {
-        object <- object %>%
-            .[, !grepl(x = colnames(.), pattern = "entrez")] %>%
-            distinct()
+    # Check for Entrez identifier column and nest into a list, if necessary
+    entrezCol <- colnames(object) %>%
+        .[grepl(x = ., pattern = "entrez")]
+    if (length(entrezCol) & entrezCol != "entrez") {
+        # Standard to `entrez`. ensembldb outputs as `entrezid`.
+        object <- rename(object, entrez = !!sym(entrezCol))
+        rm(entrezCol)
     }
-    # Collapse remaining nondistinct columns, if necessary
-    if (anyDuplicated(object[["ensgene"]])) {
+    # Check for annotable that needs the Entrez IDs nested (e.g. biomaRt output)
+    if (!is.null(object[["entrez"]]) &
+        !is.list(object[["entrez"]]) &
+        any(duplicated(object[["ensgene"]]))) {
+        # Alternatively can use `tidyr::nest()` approach here instead but
+        # the output structure won't be consistent with the ensembl return.
+        entrez <- aggregate(
+            formula = formula("entrez~ensgene"),
+            data = object,
+            FUN = list
+        )
+        # Now drop the `entrez` column and add the aggregated list version
+        object <- object %>%
+            mutate(entrez = NULL) %>%
+            distinct() %>%
+            left_join(entrez, by = "ensgene")
+    }
+    # Collapse rows by Ensembl ID, if necessary
+    if (any(duplicated(object[["ensgene"]]))) {
         object <- object %>%
             group_by(!!!syms(requiredCols)) %>%
             summarize_all(funs(
@@ -321,12 +344,11 @@ NULL
     }
     object %>%
         camel(strict = FALSE) %>%
-        # Improve handling of `NA` uniques here
         fixNA() %>%
         .defineBroadClass() %>%
-        as.data.frame() %>%
         select(c(requiredCols, "broadClass"), everything()) %>%
         arrange(!!sym("ensgene")) %>%
+        as.data.frame() %>%
         set_rownames(.[["ensgene"]])
 }
 
