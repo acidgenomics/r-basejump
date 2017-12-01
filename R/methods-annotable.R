@@ -287,12 +287,11 @@ NULL
 
 #' Prepare Annotable
 #'
-
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr distinct group_by left_join mutate rename summarize
-#'   summarize_all ungroup
+#' @importFrom dplyr distinct group_by left_join mutate rename summarize_all
+#'   ungroup
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
