@@ -1,3 +1,9 @@
+# basejump 0.1.4
+
+- Updated `annotable()` function to include nested Entrez identifiers in the `entrez` column. This is useful for downstream functional analysis.
+
+
+
 # basejump 0.1.3
 
 - `loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
