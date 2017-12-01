@@ -99,6 +99,7 @@
 <li>DNA sequence utility functions <code><a href="../reference/dna.html">comp()</a></code> and <code><a href="../reference/dna.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment()</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from bcbioRNASeq when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code>SummarizedExperiment()</code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile()</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.</li>
+<li>Updated <code>annotable()</code> function to include nested Entrez identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
 </ul>
 </div>
     <div id="basejump-0-1-2" class="section level1">
