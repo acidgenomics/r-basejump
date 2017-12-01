@@ -36,7 +36,7 @@ test_that("NaN on negative numbers", {
 })
 
 test_that("Zero propagation", {
-    vec <- seq(from = 0, to = 5L, by = 1L)
+    vec <- seq(from = 0L, to = 5L, by = 1L)
     expect_equal(
         geomean(vec, zeroPropagate = TRUE),
         0L

@@ -8,7 +8,7 @@ test_that("readLogFile", {
         quiet = TRUE)
     expect_true(is.character(log))
     expect_equal(
-        log[[1]],
+        log[[1L]],
         paste("[2017-08-15T14:53Z]",
               "compute-a-16-44.o2.rc.hms.harvard.edu:",
               "System YAML configuration:",

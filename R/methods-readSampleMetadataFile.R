@@ -39,7 +39,7 @@ NULL
 #' @importFrom tidyr expand
 .readSampleMetadataFile <- function(
     object,
-    lanes = 1,
+    lanes = 1L,
     quiet = FALSE) {
     metadata <- readFileByExtension(object, quiet = quiet)
 
@@ -123,12 +123,12 @@ NULL
 
     # Prepare metadata for lane split replicates. This step will expand rows
     # into the number of desired replicates.
-    if (lanes > 1) {
+    if (lanes > 1L) {
         metadata <- metadata %>%
             group_by(!!sym("description")) %>%
             # Expand by lane (e.g. "L001")
             expand(
-                lane = paste0("L", str_pad(1:lanes, 3, pad = "0"))
+                lane = paste0("L", str_pad(1L:lanes, 3L, pad = "0"))
             ) %>%
             left_join(metadata, by = "description") %>%
             ungroup() %>%
@@ -154,7 +154,7 @@ NULL
             all()
         if (isTRUE(detectIndex)) {
             metadata[["revcomp"]] <-
-                vapply(metadata[["sequence"]], revcomp, character(1))
+                vapply(metadata[["sequence"]], revcomp, character(1L))
             # Match the sample directories exactly here, using the hyphen.
             # We'll sanitize into valid names using `make.names()` in
             # the final return chain.
