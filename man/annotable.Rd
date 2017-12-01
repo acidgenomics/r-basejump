@@ -75,15 +75,14 @@ smaller number of semantically-meaningful groups:
 }
 
 \examples{
-annotable("Mus musculus") \%>\% str()
+annotable("Mus musculus") \%>\%
+    glimpse()
 
 # Alternate approach, with pre-compiled tibble
 \dontrun{
-annotable(annotables::grch37)
+annotable(annotables::grch37) \%>\%
+    glimpse()
 }
-
-# Unsupported organism
-annotable("XXX")
 }
 \seealso{
 \itemize{

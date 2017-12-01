@@ -36,7 +36,7 @@ test_that("character", {
 
 test_that("integer", {
     expect_equal(
-        collapseToString(seq(1:5)),
+        collapseToString(seq(1L:5L)),
         "1, 2, 3, 4, 5"
     )
 })
@@ -91,7 +91,7 @@ test_that("matrix", {
             as("matrix") %>%
             head() %>%
             collapseToString() %>%
-            .[1, "mpg"] %>%
+            .[1L, "mpg"] %>%
             as.character(),
         mpg
     )

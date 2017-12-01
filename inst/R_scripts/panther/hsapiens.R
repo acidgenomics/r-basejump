@@ -1,11 +1,17 @@
+# nolint start
+#
 # *Homo sapiens* PANTHER annotations
 # Michael Steinbaugh
 # 2017-11-13
+
 # Latest version of this script is available here:
 # script <- system.file(
 #     file.path("R_scripts", "panther", "hsapiens.R"),
 #     package = "basejump")
 # file.edit(script)
+#
+# nolint end
+
 library(basejump)
 library(magrittr)
 library(tidyverse)

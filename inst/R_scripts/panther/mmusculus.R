@@ -1,11 +1,17 @@
+# nolint start
+#
 # *Mus musculus* PANTHER annotations
 # Michael Steinbaugh
 # 2017-11-13
+#
 # Latest version of this script is available here:
 # script <- system.file(
 #     file.path("R_scripts", "panther", "mmusculus.R"),
 #     package = "basejump")
 # file.edit(script)
+#
+# nolint end
+
 library(basejump)
 library(tidyverse)
 
@@ -15,8 +21,8 @@ mgi <- file.path(
     "downloads",
     "reports",
     "MGI_Gene_Model_Coord.rpt") %>%
-    read_tsv(col_names = FALSE, skip = 1) %>%
-    .[, c(1, 11)] %>%
+    read_tsv(col_names = FALSE, skip = 1L) %>%
+    .[, c(1L, 11L)] %>%
     set_colnames(c("mgi", "ensgene")) %>%
     mutate(mgi = str_replace(mgi, "^MGI\\:", ""))
 saveData(mgi)

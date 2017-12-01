@@ -4,7 +4,7 @@ test_that("Human", {
     human <- annotable("Homo sapiens", release = 88L)
     expect_equal(
         dim(human),
-        c(64592L, 10L)
+        c(64592L, 11L)
     )
     expect_equal(
         rownames(human)[1L:5L],
@@ -26,7 +26,8 @@ test_that("Human", {
             geneSeqEnd = "integer",
             seqName = "character",
             seqStrand = "integer",
-            seqCoordSystem = "character"
+            seqCoordSystem = "character",
+            entrez = "list"
         )
     )
 })
@@ -36,7 +37,7 @@ test_that("Mouse", {
     mouse <- annotable("Mus musculus", release = 88L)
     expect_equal(
         dim(mouse),
-        c(51158L, 10L)
+        c(51158L, 11L)
     )
     expect_equal(
         rownames(mouse)[1L:5L],
@@ -56,7 +57,7 @@ test_that("annotables data.frame", {
     human <- annotable(grch37)
     expect_equal(
         dim(human),
-        c(63677L, 9L)
+        c(63677L, 10L)
     )
     expect_equal(
         lapply(human, class),
@@ -69,7 +70,8 @@ test_that("annotables data.frame", {
             chr = "character",
             start = "integer",
             end = "integer",
-            strand = "integer"
+            strand = "integer",
+            entrez = "list"
         )
     )
 

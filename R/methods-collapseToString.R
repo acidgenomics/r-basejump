@@ -48,7 +48,7 @@ NULL
     sep = ", ",
     unique = TRUE,
     sort = TRUE) {
-    if (length(object) > 1) {
+    if (length(object) > 1L) {
         if (isTRUE(unique)) {
             if (!all(is.na(object))) {
                 object <- na.omit(object)

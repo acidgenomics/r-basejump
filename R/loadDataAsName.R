@@ -48,9 +48,9 @@ loadDataAsName <- function(
     replace = TRUE) {
     dots <- list(...)
     # Check for legacy mappings method, used prior to v0.1.1
-    if (length(dots) == 1 & !is.null(names(dots[[1]]))) {
+    if (length(dots) == 1L & !is.null(names(dots[[1L]]))) {
         # Convert the named character vector to a named list, for consistency
-        dots <- as.list(dots[[1]])
+        dots <- as.list(dots[[1L]])
     }
     if (!is_string(dir)) {
         stop("'dir' must be a string", call. = FALSE)
@@ -99,7 +99,7 @@ loadDataAsName <- function(
         tmpEnv <- new.env()
         loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
-        if (length(loaded) > 1) {
+        if (length(loaded) > 1L) {
             stop(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)

@@ -61,7 +61,7 @@ test_that("rowData missing", {
     norowdata <- prepareSummarizedExperiment(
         assays = list(assay = mat),
         colData = coldata)
-    emptydf <- DataFrame(row.names = seq(1:4))
+    emptydf <- DataFrame(row.names = seq(1L:4L))
     rownames(emptydf) <- NULL
     expect_equal(
         slot(norowdata, "elementMetadata"),

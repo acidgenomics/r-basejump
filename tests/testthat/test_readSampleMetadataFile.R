@@ -33,7 +33,7 @@ test_that("Demultiplexed FASTQ", {
     )
 
     # Lane-split technical replicate support
-    meta <- readSampleMetadataFile(file, lanes = 4, quiet = TRUE)
+    meta <- readSampleMetadataFile(file, lanes = 4L, quiet = TRUE)
     expect_equal(
         rownames(meta)[1L:8L],
         c("sample_1_L001",
@@ -46,7 +46,7 @@ test_that("Demultiplexed FASTQ", {
           "sample_2_L004")
     )
     expect_equal(
-        meta[1, metadataPriorityCols],
+        meta[1L, metadataPriorityCols],
         data.frame(
             sampleID = factor(
                 "sample_1_L001",
@@ -120,7 +120,7 @@ test_that("Multiplexed FASTQ", {
     )
 
     # Lane-split technical replicate support
-    meta <- readSampleMetadataFile(file, lanes = 4, quiet = TRUE)
+    meta <- readSampleMetadataFile(file, lanes = 4L, quiet = TRUE)
     expect_equal(
         rownames(meta),
         c("run_1_L001_CAGTTATG",
