@@ -10,7 +10,7 @@
 \usage{
 readSampleMetadataFile(object, ...)
 
-\S4method{readSampleMetadataFile}{character}(object, lanes = 1,
+\S4method{readSampleMetadataFile}{character}(object, lanes = 1L,
   quiet = FALSE)
 }
 \arguments{

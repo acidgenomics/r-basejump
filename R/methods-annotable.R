@@ -62,9 +62,6 @@
 #' annotable(annotables::grch37) %>%
 #'     glimpse()
 #' }
-#'
-#' # Unsupported organism
-#' annotable("XXX")
 NULL
 
 

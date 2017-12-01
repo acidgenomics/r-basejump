@@ -83,9 +83,6 @@ annotable("Mus musculus") \%>\%
 annotable(annotables::grch37) \%>\%
     glimpse()
 }
-
-# Unsupported organism
-annotable("XXX")
 }
 \seealso{
 \itemize{
