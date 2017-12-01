@@ -43,7 +43,7 @@ NULL
 # Constructors ====
 .detectOrganism <- function(object) {
     # Just use the first item in vector for detection
-    object <- object[[1]]
+    object <- object[[1L]]
     if (grepl(
         # Homo sapiens ====
         x = object,
