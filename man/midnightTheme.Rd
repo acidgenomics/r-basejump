@@ -2,7 +2,7 @@
 % Please edit documentation in R/midnightTheme.R
 \name{midnightTheme}
 \alias{midnightTheme}
-\title{Midnight Theme for \code{ggplot} Objects}
+\title{Midnight Theme}
 \usage{
 midnightTheme(...)
 }
@@ -10,7 +10,7 @@ midnightTheme(...)
 \item{...}{Passthrough arguments to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
-ggplot2 theme.
+ggplot theme.
 }
 \description{
 Blackout palette that sets the plot background as black, with white text.
@@ -18,6 +18,6 @@ Blackout palette that sets the plot background as black, with white text.
 \seealso{
 \itemize{
 \item \code{\link[ggplot2:theme]{ggplot2::theme()}}.
-\item \code{Seurat::DarkTheme()}.
+\item Inspired by \code{Seurat::DarkTheme()}, with some modifications.
 }
 }
