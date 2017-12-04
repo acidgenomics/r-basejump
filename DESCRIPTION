@@ -27,6 +27,7 @@ Imports:
     devtools (>= 1.13.3),
     dplyr (>= 0.7.4),
     ensembldb (>= 2.2.0),
+    ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
