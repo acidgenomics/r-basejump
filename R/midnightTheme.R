@@ -1,4 +1,4 @@
-#' Midnight Theme for `ggplot` Objects
+#' Midnight Theme
 #'
 #' Blackout palette that sets the plot background as black, with white text.
 #'
@@ -9,9 +9,9 @@
 #'
 #' @seealso
 #' - [ggplot2::theme()].
-#' - `Seurat::DarkTheme()`.
+#' - Inspired by `Seurat::DarkTheme()`, with some modifications.
 #'
-#' @return ggplot2 theme.
+#' @return ggplot theme.
 #' @export
 midnightTheme <- function(...) {
     gray <- "gray12"
