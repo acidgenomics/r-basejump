@@ -2,8 +2,8 @@
 #'
 #' Blackout palette that sets the plot background as black, with white text.
 #'
-#' @importFrom ggplot2 alpha element_blank element_line element_rect
-#'   element_text margin theme theme_minimal
+#' @importFrom ggplot2 element_blank element_line element_rect element_text
+#'   theme theme_minimal
 #'
 #' @param ... Passthrough arguments to [ggplot2::theme()].
 #'
