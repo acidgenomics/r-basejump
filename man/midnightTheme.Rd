@@ -15,6 +15,12 @@ ggplot theme.
 \description{
 Blackout palette that sets the plot background as black, with white text.
 }
+\examples{
+library(ggplot2)
+p <- ggplot(mtcars) +
+    geom_point(aes(x = wt, y = mpg, colour = factor(gear)))
+p + midnightTheme()
+}
 \seealso{
 \itemize{
 \item \code{\link[ggplot2:theme]{ggplot2::theme()}}.
