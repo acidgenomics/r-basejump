@@ -292,7 +292,7 @@ NULL
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
-#' @importFrom utils formula
+#' @importFrom stats formula
 #'
 #' @inheritParams AllGenerics
 #'

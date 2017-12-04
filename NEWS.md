@@ -1,7 +1,7 @@
 # basejump 0.1.4
 
 - Added `midnightTheme()` ggplot theme. Originally this was defined as `darkTheme()` in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely dark gray axes without white axis lines.
-- Improve NAMESPACE imports to include `utils::capture.output()` and `utils::formula()`.
+- Improve NAMESPACE imports to include `stats::formula()` and `utils::capture.output()`.
 
 
 
