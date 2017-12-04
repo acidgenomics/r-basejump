@@ -74,7 +74,7 @@ NULL
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data is_string
 #' @importFrom S4Vectors mcols
-#' @importFrom utils tail
+#' @importFrom utils capture.output tail
 .annotable <- function(
     object,
     format = "gene",
@@ -292,6 +292,7 @@ NULL
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
+#' @importFrom stats formula
 #'
 #' @inheritParams AllGenerics
 #'
