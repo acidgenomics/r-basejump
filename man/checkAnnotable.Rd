@@ -17,5 +17,12 @@ Silent on pass, stop on error.
 Check Ensembl Annotations
 }
 \examples{
+# Success
+annotable <- annotable("Homo sapiens")
+checkAnnotable(annotable)
+
+# Failure
+\dontrun{
 checkAnnotable(mtcars)
+}
 }

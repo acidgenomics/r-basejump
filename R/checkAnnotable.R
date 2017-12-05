@@ -7,7 +7,14 @@
 #' @export
 #'
 #' @examples
+#' # Success
+#' annotable <- annotable("Homo sapiens")
+#' checkAnnotable(annotable)
+#'
+#' # Failure
+#' \dontrun{
 #' checkAnnotable(mtcars)
+#' }
 checkAnnotable <- function(object) {
     if (!is.data.frame(object)) {
         stop("annotable must be 'data.frame' class object",
