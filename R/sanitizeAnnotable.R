@@ -1,7 +1,5 @@
 #' Sanitize Ensembl Annotations
 #'
-#' @keywords internal
-#'
 #' @inheritParams checkAnnotable
 #'
 #' @return Annotable without nested list items (e.g. Entrez IDs).
