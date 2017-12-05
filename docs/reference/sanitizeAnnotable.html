@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert to a Unique Character String — toStringUnique • basejump</title>
+<title>Sanitize Ensembl Annotations — sanitizeAnnotable • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,40 +83,44 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert to a Unique Character String</h1>
+    <h1>Sanitize Ensembl Annotations</h1>
     </div>
 
     
-    <p>Convert to a Unique Character String</p>
+    <p>Sanitize Ensembl Annotations</p>
     
 
-    <pre class="usage"><span class='fu'>toStringUnique</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>toStringUnique</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>sanitizeAnnotable</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>data.frame containing Ensembl gene annotations returned
+from the <code>annotable()</code> function.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>string.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/toString'>base::toString()</a></code>.</p>
+    <p>Annotable without nested list items (e.g. Entrez IDs).</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>human</span> <span class='kw'>&lt;-</span> <span class='fu'>annotable</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
+#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57757: Homo sapiens Ensembl 90</span></div><div class='input'><span class='fu'>sanitizeAnnotable</span>(<span class='no'>human</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 64,661
+#&gt; Variables: 10
+#&gt; $ ensgene        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
+#&gt; $ symbol         &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR"...
+#&gt; $ description    &lt;chr&gt; "tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858]",...
+#&gt; $ biotype        &lt;chr&gt; "protein_coding", "protein_coding", "protein_coding"...
+#&gt; $ broadClass     &lt;chr&gt; "coding", "coding", "coding", "coding", "coding", "c...
+#&gt; $ geneSeqStart   &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 169662007...
+#&gt; $ geneSeqEnd     &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 169854080...
+#&gt; $ seqName        &lt;chr&gt; "X", "X", "20", "1", "1", "1", "1", "6", "6", "6", "...
+#&gt; $ seqStrand      &lt;int&gt; -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1,...
+#&gt; $ seqCoordSystem &lt;chr&gt; "chromosome", "chromosome", "chromosome", "chromosom...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -124,9 +128,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

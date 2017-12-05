@@ -20,4 +20,3 @@ Sanitize Ensembl Annotations
 human <- annotable("Homo sapiens")
 sanitizeAnnotable(human) \%>\% glimpse()
 }
-\keyword{internal}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate gene2symbol from GFF/GTF File — gene2symbolFromGFF • basejump</title>
+<title>Define Gene to Symbol Mappings from GFF/GTF File — gene2symbolFromGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,11 +83,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate gene2symbol from GFF/GTF File</h1>
+    <h1>Define Gene to Symbol Mappings from GFF/GTF File</h1>
     </div>
 
     
-    <p>Generate gene2symbol from GFF/GTF File</p>
+    <p>Define Gene to Symbol Mappings from GFF/GTF File</p>
     
 
     <pre class="usage"><span class='fu'>gene2symbolFromGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
@@ -138,13 +138,15 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># From URL (recommended)</span>
 <span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>
-<span class='fu'>gene2symbolFromGFF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	17 obs. of  2 variables:
-#&gt;  $ ensgene: chr  "ENSMUSG00000025900" "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" ...
-#&gt;  $ symbol : chr  "Rp1" "Xkr4" "Gm26206" "Gm27396" ...</div><div class='input'>
+<span class='fu'>gene2symbolFromGFF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; Observations: 17
+#&gt; Variables: 2
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG0000006...
+#&gt; $ symbol  &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938", "...</div><div class='input'>
 <span class='co'># GFF data.frame</span>
-<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>gene2symbolFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	17 obs. of  2 variables:
-#&gt;  $ ensgene: chr  "ENSMUSG00000025900" "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" ...
-#&gt;  $ symbol : chr  "Rp1" "Xkr4" "Gm26206" "Gm27396" ...</div></pre>
+<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>gene2symbolFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>gene2symbol mappings: 17 genes</span></div><div class='output co'>#&gt; Observations: 17
+#&gt; Variables: 2
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG0000006...
+#&gt; $ symbol  &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938", "...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
