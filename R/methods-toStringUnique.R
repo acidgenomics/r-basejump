@@ -1,9 +1,11 @@
-#' toString Call that Only Outputs Uniques.
+#' Convert to a Unique Character String
 #'
 #' @rdname toStringUnique
 #' @name toStringUnique
 #'
 #' @inheritParams AllGenerics
+#'
+#' @seealso [base::toString()].
 #'
 #' @return string.
 NULL
