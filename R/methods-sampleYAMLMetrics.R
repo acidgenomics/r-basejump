@@ -13,7 +13,7 @@
 #'     "bcbio",
 #'     "project-summary.yaml")
 #' yaml <- readYAML(url)
-#' sampleYAMLMetrics(yaml) %>% str()
+#' sampleYAMLMetrics(yaml) %>% glimpse()
 NULL
 
 

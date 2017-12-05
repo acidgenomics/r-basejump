@@ -1,4 +1,4 @@
-#' Generate gene2symbol from GFF/GTF File
+#' Define Gene to Symbol Mappings from GFF/GTF File
 #'
 #' @rdname gene2symbolFromGFF
 #' @name gene2symbolFromGFF
@@ -16,11 +16,11 @@
 #' @examples
 #' # From URL (recommended)
 #' url <- "http://basejump.seq.cloud/mmusculus.gtf"
-#' gene2symbolFromGFF(url) %>% str()
+#' gene2symbolFromGFF(url) %>% glimpse()
 #'
 #' # GFF data.frame
 #' gff <- readGFF(url)
-#' gene2symbolFromGFF(gff) %>% str()
+#' gene2symbolFromGFF(gff) %>% glimpse()
 NULL
 
 

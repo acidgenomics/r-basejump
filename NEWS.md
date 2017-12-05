@@ -1,3 +1,9 @@
+# basejump 0.1.5
+
+- Added `checkAnnotable()`, `checkGene2symbol()`, `checkTx2gene()`, and `sanitizeAnnotable()` utility functions that will be used in the bcbio R packages.
+
+
+
 # basejump 0.1.4
 
 - Added `midnightTheme()` ggplot theme. Originally this was defined as `darkTheme()` in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely dark gray axes without white axis lines.
