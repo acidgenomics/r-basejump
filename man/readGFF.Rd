@@ -33,7 +33,7 @@ feature, each containing 9 columns of data, plus optional track definition
 lines. The GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
-readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% str()
+readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 }
 \seealso{
 \itemize{

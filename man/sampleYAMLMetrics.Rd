@@ -26,7 +26,7 @@ url <- file.path(
     "bcbio",
     "project-summary.yaml")
 yaml <- readYAML(url)
-sampleYAMLMetrics(yaml) \%>\% str()
+sampleYAMLMetrics(yaml) \%>\% glimpse()
 }
 \seealso{
 Other bcbio Utilities: \code{\link{prepareSummarizedExperiment}},

@@ -8,7 +8,7 @@
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGFF,character-method}
 \alias{gene2symbolFromGFF,data.frame-method}
-\title{Generate gene2symbol from GFF/GTF File}
+\title{Define Gene to Symbol Mappings from GFF/GTF File}
 \usage{
 gene2symbolFromGFF(object, ...)
 
@@ -29,7 +29,7 @@ gene2symbolFromGTF(...)
 \link{data.frame}.
 }
 \description{
-Generate gene2symbol from GFF/GTF File
+Define Gene to Symbol Mappings from GFF/GTF File
 }
 \details{
 The GFF (General Feature Format) format consists of one line per
@@ -39,11 +39,11 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.
 \examples{
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
-gene2symbolFromGFF(url) \%>\% str()
+gene2symbolFromGFF(url) \%>\% glimpse()
 
 # GFF data.frame
 gff <- readGFF(url)
-gene2symbolFromGFF(gff) \%>\% str()
+gene2symbolFromGFF(gff) \%>\% glimpse()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},

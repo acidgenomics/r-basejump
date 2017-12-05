@@ -5,7 +5,7 @@
 \alias{toStringUnique}
 \alias{toStringUnique}
 \alias{toStringUnique,character-method}
-\title{toString Call that Only Outputs Uniques.}
+\title{Convert to a Unique Character String}
 \usage{
 toStringUnique(object, ...)
 
@@ -20,5 +20,8 @@ toStringUnique(object, ...)
 string.
 }
 \description{
-toString Call that Only Outputs Uniques.
+Convert to a Unique Character String
+}
+\seealso{
+\code{\link[base:toString]{base::toString()}}.
 }

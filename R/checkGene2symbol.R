@@ -1,0 +1,30 @@
+#' Check Gene to Symbol Mapping Data
+#'
+#' @param object [data.frame] containing Ensembl gene identifier to gene symbol
+#'   mappings. Must be structured as a two column [data.frame] with "ensgene"
+#'   and "symbol" columns.
+#'
+#' @return Silent on pass, stop on error.
+#' @export
+#'
+#' @examples
+#' # Success
+#' gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
+#' checkGene2symbol(gene2symbol)
+#'
+#' # Failure
+#' \dontrun{
+#' checkGene2symbol(mtcars)
+#' }
+checkGene2symbol <- function(object) {
+    if (!is.data.frame(object)) {
+        stop("gene2symbol must be 'data.frame' class object",
+             call. = FALSE)
+    }
+    colnames <- c("ensgene", "symbol")
+    if (!identical(colnames(object), colnames)) {
+        stop(paste(
+            "gene2symbol must contain:", toString(colnames)
+        ), call. = FALSE)
+    }
+}
