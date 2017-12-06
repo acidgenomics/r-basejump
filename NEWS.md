@@ -1,4 +1,10 @@
-# basejump 0.1.5
+# basejump 0.1.6 (2017-12-06)
+
+- Moved `microplate()` code from the worminfo package here, since it's of general interest.
+
+
+
+# basejump 0.1.5 (2017-12-05)
 
 - Added `checkAnnotable()`, `checkGene2symbol()`, `checkTx2gene()`, and `sanitizeAnnotable()` utility functions that will be used in the bcbio R packages.
 
