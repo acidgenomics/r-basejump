@@ -20,13 +20,13 @@ LazyData: TRUE
 Depends:
     R (>= 3.4.0)
 Imports:
-    AnnotationHub (>= 2.10.0),
-    Biobase (>= 2.38.0),
-    BiocGenerics (>= 0.24.0),
+    AnnotationHub (>= 2.8.3),
+    Biobase (>= 2.36.2),
+    BiocGenerics (>= 0.22.1),
     datasets,
-    devtools (>= 1.13.3),
+    devtools (>= 1.13.4),
     dplyr (>= 0.7.4),
-    ensembldb (>= 2.2.0),
+    ensembldb (>= 2.0.4),
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
     magrittr (>= 1.5),
@@ -40,16 +40,16 @@ Imports:
     R.utils,
     scales,
     stats,
-    SummarizedExperiment (>= 1.8.0),
+    SummarizedExperiment (>= 1.6.5),
     stringr (>= 1.2.0),
-    S4Vectors (>= 0.16.0),
+    S4Vectors (>= 0.14.7),
     tibble (>= 1.3.4),
     tidyr (>= 0.7.2),
     tools,
     utils,
     yaml
 Suggests:
-    BiocStyle,
+    BiocStyle (>= 2.4.1),
     lintr (>= 1.0.1),
     roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
