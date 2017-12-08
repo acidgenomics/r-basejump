@@ -5,6 +5,7 @@
 #' @import methods
 "_PACKAGE"
 
+#' @importFrom utils globalVariables
 globalVariables(".")
 
 metadataPriorityCols <- c("sampleID", "sampleName", "description")
