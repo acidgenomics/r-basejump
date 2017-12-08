@@ -24,7 +24,6 @@ biocLite(
 
 
 [Bioconductor]: https://bioconductor.org
-[devtools]: https://cran.r-project.org/package=devtools
 [ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
 [GenomeInfoDbData]: https://bioconductor.org/packages/release/data/annotation/html/GenomeInfoDbData.html
 [R]: https://www.r-project.org
