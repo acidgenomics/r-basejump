@@ -229,6 +229,14 @@ setGeneric("metrics", function(object, ...) {
 
 #' @rdname bcbioGenerics
 #' @export
+setGeneric("plotDot", function(object, ...) {
+    standardGeneric("plotDot")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
 setGeneric("plotGene", function(object, ...) {
     standardGeneric("plotGene")
 })
@@ -239,6 +247,14 @@ setGeneric("plotGene", function(object, ...) {
 #' @export
 setGeneric("plotQC", function(object, ...) {
     standardGeneric("plotQC")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("plotViolin", function(object, ...) {
+    standardGeneric("plotViolin")
 })
 
 
