@@ -119,8 +119,8 @@ setGeneric("dotted", function(object, ...) {
 
 #' @rdname logRatio
 #' @export
-setGeneric("fc2lr", function(object, ...) {
-    standardGeneric("fc2lr")
+setGeneric("foldChangeToLogRatio", function(object, ...) {
+    standardGeneric("foldChangeToLogRatio")
 })
 
 
@@ -197,8 +197,8 @@ setGeneric("kables", function(object, ...) {
 
 #' @rdname logRatio
 #' @export
-setGeneric("lr2fc", function(object, ...) {
-    standardGeneric("lr2fc")
+setGeneric("logRatioToFoldChange", function(object, ...) {
+    standardGeneric("logRatioToFoldChange")
 })
 
 

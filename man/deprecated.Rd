@@ -9,6 +9,8 @@
 \alias{metadataTable}
 \alias{pct}
 \alias{sampleDirs}
+\alias{fc2lr}
+\alias{lr2fc}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -24,6 +26,10 @@ metadataTable()
 pct(...)
 
 sampleDirs()
+
+fc2lr(...)
+
+lr2fc(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
