@@ -8,10 +8,8 @@
 \alias{interestingGroups}
 \alias{interestingGroups<-}
 \alias{metrics}
-\alias{plotDot}
 \alias{plotGene}
 \alias{plotQC}
-\alias{plotViolin}
 \alias{sampleMetadata}
 \alias{selectSamples}
 \title{bcbio S4 Generics}
@@ -28,13 +26,9 @@ interestingGroups(object, ...) <- value
 
 metrics(object, ...)
 
-plotDot(object, ...)
-
 plotGene(object, ...)
 
 plotQC(object, ...)
-
-plotViolin(object, ...)
 
 sampleMetadata(object, ...)
 
