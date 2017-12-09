@@ -19,14 +19,16 @@ BugReports: https://github.com/steinbaugh/basejump/issues
 LazyData: TRUE
 Depends:
     R (>= 3.4.0)
+Remotes:
+    Bioconductor/GenomeInfoDbData
 Imports:
+    GenomeInfoDbData (>= 0.99.2),
     AnnotationHub (>= 2.8.3),
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
     datasets,
     devtools (>= 1.13.4),
     dplyr (>= 0.7.4),
-    GenomeInfoDbData,
     ensembldb (>= 2.0.4),
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
@@ -55,8 +57,6 @@ Suggests:
     roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
-Remotes:
-    Bioconductor/GenomeInfoDbData
 biocViews:
     DataImport,
     DifferentialExpression,
