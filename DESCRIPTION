@@ -27,7 +27,6 @@ Imports:
     devtools (>= 1.13.4),
     dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
-    GenomeInfoDb,
     GenomeInfoDbData,
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
@@ -56,6 +55,8 @@ Suggests:
     roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
+Remotes:
+    Bioconductor/GenomeInfoDbData
 biocViews:
     DataImport,
     DifferentialExpression,
