@@ -27,6 +27,7 @@ Imports:
     devtools (>= 1.13.4),
     dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
+    GenomeInfoDbData,
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
     magrittr (>= 1.5),
@@ -50,7 +51,6 @@ Imports:
     yaml
 Suggests:
     BiocStyle (>= 2.4.1),
-    GenomeInfoDbData,
     lintr (>= 1.0.1),
     roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
