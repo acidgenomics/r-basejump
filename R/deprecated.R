@@ -71,3 +71,20 @@ pct <- function(...) {
 sampleDirs <- function() {
     .Deprecated()
 }
+
+
+
+# v 0.1.6 ====
+#' @rdname deprecated
+#' @export
+fc2lr <- function(...) {
+    .Deprecated("foldChangeToLogRatio")
+    foldChangeToLogRatio(...)
+}
+
+#' @rdname deprecated
+#' @export
+lr2fc <- function(...) {
+    .Deprecated("logRatioToFoldChange")
+    logRatioToFoldChange(...)
+}
