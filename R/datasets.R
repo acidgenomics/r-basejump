@@ -1,3 +1,11 @@
+#' GRCh37 (hg19) Genome Annotations
+#'
+#' @author Michael Steinbaugh
+#' @keywords internal
+"grch37"
+
+
+
 #' Motor Trend Car Road Tests
 #'
 #' @import datasets

@@ -6,22 +6,21 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param object Numeric vector of log ratio (`lr`) or fold change (`fc`)
-#'   values.
+#' @param object Numeric of log ratio or fold change values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
-#' @return Numeric vector.
+#' @return [numeric].
 #'
-#' @seealso Modified variants of `gtools::foldchange2logratio()`` and
+#' @seealso Modified variants of `gtools::foldchange2logratio()` and
 #' `gtools::logratio2foldchange()`.
 #'
 #' @examples
 #' # Convert log ratio to fold change
-#' lr2fc(seq(-3, 3, 1))
+#' logRatioToFoldChange(seq(-3, 3, 1))
 #'
 #' # Convert fold change to log ratio
-#' fc2lr(c(-8, -4, -2, 1, 2, 4, 8))
+#' foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 NULL
 
 
@@ -29,7 +28,7 @@ NULL
 # Methods ====
 #' @rdname logRatio
 setMethod(
-    "fc2lr",
+    "foldChangeToLogRatio",
     signature("numeric"),
     function(object, base = 2L) {
         object <- ifelse(object < 0L, 1L / -object, object)

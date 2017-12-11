@@ -1,3 +1,11 @@
+# basejump 0.1.7 (2017-12-11)
+
+- Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and `logRatioToFoldChange()`.
+- Moved `plotDot()` and `plotViolin()` generics here from bcbioSingleCell.
+- Added internal GRCh37 gene annotations.
+
+
+
 # basejump 0.1.6 (2017-12-06)
 
 - Moved `microplate()` code from the worminfo package here, since it's of general interest.

@@ -119,8 +119,8 @@ setGeneric("dotted", function(object, ...) {
 
 #' @rdname logRatio
 #' @export
-setGeneric("fc2lr", function(object, ...) {
-    standardGeneric("fc2lr")
+setGeneric("foldChangeToLogRatio", function(object, ...) {
+    standardGeneric("foldChangeToLogRatio")
 })
 
 
@@ -197,8 +197,8 @@ setGeneric("kables", function(object, ...) {
 
 #' @rdname logRatio
 #' @export
-setGeneric("lr2fc", function(object, ...) {
-    standardGeneric("lr2fc")
+setGeneric("logRatioToFoldChange", function(object, ...) {
+    standardGeneric("logRatioToFoldChange")
 })
 
 
@@ -229,6 +229,14 @@ setGeneric("metrics", function(object, ...) {
 
 #' @rdname bcbioGenerics
 #' @export
+setGeneric("plotDot", function(object, ...) {
+    standardGeneric("plotDot")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
 setGeneric("plotGene", function(object, ...) {
     standardGeneric("plotGene")
 })
@@ -239,6 +247,14 @@ setGeneric("plotGene", function(object, ...) {
 #' @export
 setGeneric("plotQC", function(object, ...) {
     standardGeneric("plotQC")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("plotViolin", function(object, ...) {
+    standardGeneric("plotViolin")
 })
 
 

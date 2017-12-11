@@ -9,13 +9,12 @@ Base functions for bioinformatics and [R][] package development.
 
 ## Installation
 
-There is currently an issue with [GenomeInfoDbData][], a dependency of [ensembldb][], not installing automatically. To resolve this issue, we are recommending users install [ensembldb][] prior to installation of basejump.
+This is an [R][] package.
 
 ### [Bioconductor][] method
 
 ```{r}
 source("https://bioconductor.org/biocLite.R")
-biocLite("ensembldb")
 biocLite(
     "steinbaugh/basejump",
     dependencies = c("Depends", "Imports", "Suggests")
@@ -24,6 +23,4 @@ biocLite(
 
 
 [Bioconductor]: https://bioconductor.org
-[ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
-[GenomeInfoDbData]: https://bioconductor.org/packages/release/data/annotation/html/GenomeInfoDbData.html
 [R]: https://www.r-project.org
