@@ -75,13 +75,14 @@ smaller number of semantically-meaningful groups:
 }
 
 \examples{
-annotable("Mus musculus") \%>\%
-    glimpse()
+annotable("Mus musculus") \%>\% glimpse()
 
-# Alternate approach, with pre-compiled tibble
+# Legacy GRCh37/hg19 genome build support
+annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
+
+# Convert pre-compiled annotables tibble (advanced)
 \dontrun{
-annotable(annotables::grch37) \%>\%
-    glimpse()
+annotable(annotables::grch38) \%>\% glimpse()
 }
 }
 \seealso{
