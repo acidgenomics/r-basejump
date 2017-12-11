@@ -75,7 +75,7 @@ smaller number of semantically-meaningful groups:
 }
 
 \examples{
-annotable("Mus musculus") \%>\% glimpse()
+annotable("Homo sapiens") \%>\% glimpse()
 
 # Legacy GRCh37/hg19 genome build support
 annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()

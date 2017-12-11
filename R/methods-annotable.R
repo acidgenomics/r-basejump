@@ -54,7 +54,7 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' annotable("Mus musculus") %>% glimpse()
+#' annotable("Homo sapiens") %>% glimpse()
 #'
 #' # Legacy GRCh37/hg19 genome build support
 #' annotable("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
