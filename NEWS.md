@@ -2,6 +2,7 @@
 
 - Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and `logRatioToFoldChange()`.
 - Moved `plotDot()` and `plotViolin()` generics here from bcbioSingleCell.
+- Added internal GRCh37 gene annotations.
 
 
 
