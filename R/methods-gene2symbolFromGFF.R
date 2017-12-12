@@ -59,7 +59,7 @@ NULL
         .[, 2L]
 
     df <- cbind(ensgene, symbol) %>%
-        as.data.frame() %>%
+        as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         # Ensure unique symbols (not always the case -- e.g. human, mouse)
         mutate(symbol = make.unique(as.character(.data[["symbol"]]))) %>%
