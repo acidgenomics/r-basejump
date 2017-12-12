@@ -190,6 +190,7 @@ NULL
     }
 
     warning("Failed to detect supported organism")
+    NULL
 }
 
 
