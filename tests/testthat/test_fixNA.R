@@ -8,11 +8,16 @@ test_that("fixNA", {
 
     # data.frame
     expect_equal(
-        data.frame(a = c("foo", ""),
-                   b = c(NA, "bar")) %>%
+        data.frame(
+            "a" = c("foo", ""),
+            "b" = c(NA, "bar"),
+            stringsAsFactors = FALSE) %>%
             fixNA(),
-        data.frame(a = c("foo", NA),
-                   b = c(NA, "bar")))
+        data.frame(
+            "a" = c("foo", NA),
+            "b" = c(NA, "bar"),
+            stringsAsFactors = FALSE)
+    )
 
     # DataFrame
     expect_equal(

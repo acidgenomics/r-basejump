@@ -24,6 +24,17 @@ test_that("mouse", {
     expect_equal(mouse, detectOrganism("ENSMUST00000000001"))
 })
 
+test_that("zebrafish", {
+    zebrafish <- detectOrganism("zebrafish")
+    expect_identical(zebrafish, c(zebrafish = "Danio rerio"))
+    expect_equal(zebrafish, detectOrganism("drerio"))
+    expect_equal(zebrafish, detectOrganism("zebrafish"))
+    expect_equal(zebrafish, detectOrganism("GRCz10"))
+    expect_equal(zebrafish, detectOrganism("danRer10"))
+    expect_equal(zebrafish, detectOrganism("ENSDARG00000000001"))
+    expect_equal(zebrafish, detectOrganism("ENSDART00000000001"))
+})
+
 test_that("fruitfly", {
     fruitfly <- detectOrganism("fruitfly")
     expect_identical(fruitfly, c(fruitfly = "Drosophila melanogaster"))
