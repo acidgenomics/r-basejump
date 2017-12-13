@@ -7,54 +7,60 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param cells Cellular barcode identifiers. These are the colnames of the
-#'   counts matrix.
+#' @param groupings Factor that defines the aggregation groupings. The new
+#'   aggregation names are defined as the factor levels, and the original
+#'   replicates are defined as the names of the factor.
 #'
-#' @return Object of same class with aggregated counts per pooled sample
-#'   (columns).
+#' @return Object with aggregated counts per pooled sample (columns).
+#'
+#' @examples
+#' counts <- data.frame(
+#'     sample1_rep1 = c(0, 0, 0, 1, 2),
+#'     sample1_rep2 = c(0, 0, 0, 3, 4),
+#'     sample2_rep1 = c(1, 2, 0, 0, 0),
+#'     sample2_rep2 = c(3, 4, 0, 0, 0)
+#' )
+#'
+#' groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
+#' names(groupings) <- colnames(counts)
+#'
+#' # matrix
+#' mat <- as(counts, "matrix")
+#' aggregateReplicates(mat, groupings = groupings)
+#'
+#' # dgCMatrix
+#' dgc <- as(mat, "dgCMatrix")
+#' aggregateReplicates(dgc, groupings = groupings)
 NULL
 
 
 
 # Constructors =================================================================
 #' @importFrom stats setNames
-.aggregateReplicatesDenseMatrix <- function(
-    object,
-    pattern = "_L\\d+") {
-    # Obtain the unique pooled sample names
-    if (!all(grepl(pattern, colnames(object)))) {
-        stop("Lane pattern didn't match all samples")
+.aggregateReplicatesDenseMatrix <- function(object, groupings) {
+    if (!identical(length(groupings), ncol(object))) {
+        stop("'groupings' length must match the number of columns",
+             call. = FALSE)
     }
-    stem <- gsub(x = colnames(object),
-                 pattern = pattern,
-                 replacement = "") %>%
-        unique() %>%
-        sort()
-    # Perform [rowSums()] on the matching columns per sample
-    lapply(seq_along(stem), function(a) {
-        object %>%
-            .[, grepl(paste0("^", stem[a], pattern), colnames(.))] %>%
-            rowSums()
-    }) %>%
-        setNames(stem) %>%
-        do.call(cbind, .) %>%
-        # Need to round here, otherwise DESeq2 will fail
-        round()
+    t <- t(object)
+    tagg <- rowsum(x = t, group = groupings, reorder = TRUE)
+    agg <- t(tagg)
+    agg
 }
 
 
 
 #' @importFrom Matrix.utils aggregate.Matrix
-.aggregateReplicatesSparseMatrix <- function(object, cells) {
-    if (!identical(length(cells), ncol(object))) {
-        stop("'cells' length must match the number of columns",
+.aggregateReplicatesSparseMatrix <- function(object, groupings) {
+    if (!identical(length(groupings), ncol(object))) {
+        stop("'groupings' length must match the number of columns",
              call. = FALSE)
     }
-    tsparse <- Matrix::t(object)
-    rownames(tsparse) <- cells
-    tsparse <- aggregate.Matrix(tsparse, groupings = cells, fun = "sum")
-    sparse <- Matrix::t(tsparse)
-    sparse
+    t <- Matrix::t(object)
+    rownames(t) <- groupings
+    tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
+    agg <- Matrix::t(tagg)
+    agg
 }
 
 
@@ -65,15 +71,6 @@ NULL
 setMethod(
     "aggregateReplicates",
     signature("dgCMatrix"),
-    .aggregateReplicatesSparseMatrix)
-
-
-
-#' @rdname aggregateReplicates
-#' @export
-setMethod(
-    "aggregateReplicates",
-    signature("dgTMatrix"),
     .aggregateReplicatesSparseMatrix)
 
 
