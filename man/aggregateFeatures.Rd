@@ -5,28 +5,47 @@
 \alias{aggregateFeatures}
 \alias{aggregateFeatures}
 \alias{aggregateFeatures,dgCMatrix-method}
-\alias{aggregateFeatures,dgTMatrix-method}
+\alias{aggregateFeatures,matrix-method}
 \title{Aggregate Features}
 \usage{
 aggregateFeatures(object, ...)
 
-\S4method{aggregateFeatures}{dgCMatrix}(object, features)
+\S4method{aggregateFeatures}{dgCMatrix}(object, groupings)
 
-\S4method{aggregateFeatures}{dgTMatrix}(object, features)
+\S4method{aggregateFeatures}{matrix}(object, groupings)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{features}{Feature identifiers (e.g. gene or transcript IDs). These are
-the rownames of the counts matrix.}
+\item{groupings}{Feature groupings (e.g. gene or transcript IDs), defined as
+a named factor. The pooled features must be defined as the factor levels,
+and the original features as the names of the factor.}
 }
 \value{
 Object of same class with aggregated features (rows).
 }
 \description{
 Aggregate Features
+}
+\examples{
+counts <- data.frame(
+    "sample1" = c(0, 1, 2, 3),
+    "sample2" = c(1, 2, 3, 4),
+    row.names = c("gene1.1", "gene1.2", "gene2.1", "gene2.2")
+)
+
+groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
+names(groupings) <- rownames(counts)
+
+# matrix
+mat <- as(counts, "matrix")
+aggregateFeatures(mat, groupings = groupings)
+
+# dgCMatrix
+dgc <- as(mat, "dgCMatrix")
+aggregateFeatures(dgc, groupings = groupings)
 }
 \seealso{
 Other Data Management Utilities: \code{\link{aggregateReplicates}}
