@@ -16,9 +16,36 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
+#' @importFrom stats setNames
+.aggregateReplicatesDenseMatrix <- function(
+    object,
+    pattern = "_L\\d+") {
+    # Obtain the unique pooled sample names
+    if (!all(grepl(pattern, colnames(object)))) {
+        stop("Lane pattern didn't match all samples")
+    }
+    stem <- gsub(x = colnames(object),
+                 pattern = pattern,
+                 replacement = "") %>%
+        unique() %>%
+        sort()
+    # Perform [rowSums()] on the matching columns per sample
+    lapply(seq_along(stem), function(a) {
+        object %>%
+            .[, grepl(paste0("^", stem[a], pattern), colnames(.))] %>%
+            rowSums()
+    }) %>%
+        setNames(stem) %>%
+        do.call(cbind, .) %>%
+        # Need to round here, otherwise DESeq2 will fail
+        round()
+}
+
+
+
 #' @importFrom Matrix.utils aggregate.Matrix
-.aggregateReplicatesSparse <- function(object, cells) {
+.aggregateReplicatesSparseMatrix <- function(object, cells) {
     if (!identical(length(cells), ncol(object))) {
         stop("'cells' length must match the number of columns",
              call. = FALSE)
@@ -32,13 +59,13 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname aggregateReplicates
 #' @export
 setMethod(
     "aggregateReplicates",
     signature("dgCMatrix"),
-    .aggregateReplicatesSparse)
+    .aggregateReplicatesSparseMatrix)
 
 
 
@@ -47,4 +74,13 @@ setMethod(
 setMethod(
     "aggregateReplicates",
     signature("dgTMatrix"),
-    .aggregateReplicatesSparse)
+    .aggregateReplicatesSparseMatrix)
+
+
+
+#' @rdname aggregateReplicates
+#' @export
+setMethod(
+    "aggregateReplicates",
+    signature("matrix"),
+    .aggregateReplicatesDenseMatrix)
