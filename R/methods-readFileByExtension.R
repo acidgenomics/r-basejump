@@ -66,6 +66,7 @@ NULL
     if (ext == "csv") {
         data <- readr::read_csv(
             file = file,
+            na = na,
             progress = FALSE,
             ...)
     } else if (ext == "mtx") {
