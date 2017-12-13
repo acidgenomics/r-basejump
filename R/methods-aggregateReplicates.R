@@ -38,8 +38,11 @@ NULL
 # Constructors =================================================================
 #' @importFrom stats setNames
 .aggregateReplicatesDenseMatrix <- function(object, groupings) {
-    if (!identical(length(groupings), ncol(object))) {
-        stop("'groupings' length must match the number of columns",
+    if (!is.factor(groupings)) {
+        stop("'groupings' must be factor")
+    }
+    if (!identical(names(groupings), colnames(object))) {
+        stop("'groupings' doesn't match column names",
              call. = FALSE)
     }
     t <- t(object)
