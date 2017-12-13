@@ -11,12 +11,13 @@ test_that("mouse", {
     expect_equal(
         head(mouse, 2L),
         data.frame(
-            ensgene = c("ENSMUSG00000025900",
-                        "ENSMUSG00000051951"),
-            symbol = c("Rp1",
-                       "Xkr4"),
+            "ensgene" = c("ENSMUSG00000025900",
+                          "ENSMUSG00000051951"),
+            "symbol" = c("Rp1",
+                         "Xkr4"),
             row.names = c("ENSMUSG00000025900",
-                          "ENSMUSG00000051951"))
+                          "ENSMUSG00000051951"),
+            stringsAsFactors = FALSE)
     )
 })
 
@@ -35,7 +36,8 @@ test_that("fruitfly", {
             symbol = c("Nep3",
                        "CG9570"),
             row.names = c("FBgn0031081",
-                          "FBgn0031085"))
+                          "FBgn0031085"),
+            stringsAsFactors = FALSE)
     )
 })
 
