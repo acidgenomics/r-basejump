@@ -53,7 +53,7 @@ NULL
         .[, 2L]
 
     df <- cbind(enstxp, ensgene) %>%
-        as.data.frame() %>%
+        as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         arrange(!!sym("enstxp")) %>%
         set_rownames(.[["enstxp"]])

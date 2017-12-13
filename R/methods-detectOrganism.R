@@ -8,6 +8,7 @@
 #' - *Homo sapiens* (human)
 #' - *Mus musculus* (mouse)
 #' - *Rattus norvegicus* (rat)
+#' - *Danio rerio* (zebrafish)
 #' - *Drosophila melanogaster* (fruitfly)
 #' - *Caenorhabditis elegans* (roundworm)
 #' - *Saccharomyces cerevisiae* (yeast)
@@ -40,119 +41,156 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .detectOrganism <- function(object) {
-    # Just use the first item in vector for detection
+    # Use the first item in vector for detection
     object <- object[[1L]]
+    # Homo sapiens =============================================================
+    grep <- c(
+        "^H(omo )?sapiens$",
+        "^human$",
+        # Ensembl
+        "^ENS(G|T)(\\d{11})$",
+        "^GRCh(\\d{2})(\\.p\\d+)?$",
+        # UCSC
+        "^hg(\\d{2})$"
+    )
     if (grepl(
-        # Homo sapiens ====
         x = object,
-        pattern = paste(c(
-            "^H(omo )?sapiens$",
-            "^human$",
-            # Ensembl
-            "^ENS(G|T)(\\d{11})$",
-            "^GRCh(\\d{2})(\\.p\\d+)?$",
-            # UCSC
-            "^hg(\\d{2})$"
-        ), collapse = "|"),
+        pattern = paste(grep, collapse = "|"),
         ignore.case = TRUE
     )) {
-        c(human = "Homo sapiens")
-    } else if (grepl(
-        # Mus musculus ====
-        x = object,
-        pattern = paste(c(
-            "^M(us )?musculus$",
-            "^mouse$",
-            # Ensembl
-            "^ENSMUS(G|T)(\\d{11})$",
-            "^GRCm(\\d{2})(\\.p\\d+)?$",
-            # UCSC
-            "^mm(\\d{2})$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(mouse = "Mus musculus")
-    } else if (grepl(
-        # Rattus norvegicus ====
-        x = object,
-        pattern = paste(c(
-            "^R(attus )?norvegicus$",
-            "^rat$",
-            # Ensembl
-            "^ENSRNO(G|T)(\\d{11})$",
-            "Rnor_([0-9\\.]+)",
-            # UCSC
-            "^rn(\\d+)$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(rat = "Rattus norvegicus")
-    } else if (grepl(
-        # Drosophila melanogaster ====
-        x = object,
-        pattern = paste(c(
-            "^D(rosophila )?melanogaster$",
-            "^fruitfly$",
-            # Ensembl
-            "^FB(gn|tr)(\\d{7})$",
-            "^BDGP(\\d+)$",
-            # UCSC
-            "^dm(\\d+)$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(fruitfly = "Drosophila melanogaster")
-    } else if (grepl(
-        # Caenorhabditis elegans ====
-        x = object,
-        pattern = paste(c(
-            "^C(aenorhabditis )?elegans$",
-            "^roundworm$",
-            # Ensembl
-            "^WBGene(\\d{8})$",
-            "^WBcel(\\d{3})$",
-            # UCSC
-            "^ce(\\d{2})$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(roundworm = "Caenorhabditis elegans")
-    } else if (grepl(
-        # Gallus gallus ====
-        x = object,
-        pattern = paste(c(
-            "G(allus )?gallus$",
-            "chicken$",
-            # Ensembl
-            "^ENSGAL(G|T)(\\d{11})$",
-            "^Gallus_gallus-([0-9\\.]+)$",
-            # UCSC
-            "^galGal(\\d+)$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(chicken = "Gallus gallus")
-    } else if (grepl(
-        # Ovis aries ====
-        x = object,
-        pattern = paste(c(
-            "^O(vis )?aries$",
-            "^sheep$",
-            # Ensembl
-            "^ENSOAR(G|T)\\d{11}$",
-            "^Oar_v([0-9\\.]+)$",
-            # UCSC
-            "^oviAri(\\d+)$"
-        ), collapse = "|"),
-        ignore.case = TRUE
-    )) {
-        c(sheep = "Ovis aries")
-    } else {
-        warning("Failed to detect supported organism", call. = FALSE)
-        NULL
+        return(c(human = "Homo sapiens"))
     }
+
+    # Mus musculus =============================================================
+    grep <- c(
+        "^M(us )?musculus$",
+        "^mouse$",
+        # Ensembl
+        "^ENSMUS(G|T)(\\d{11})$",
+        "^GRCm(\\d{2})(\\.p\\d+)?$",
+        # UCSC
+        "^mm(\\d{2})$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(mouse = "Mus musculus"))
+    }
+
+    # Rattus norvegicus ====================================================
+    grep <- c(
+        "^R(attus )?norvegicus$",
+        "^rat$",
+        # Ensembl
+        "^ENSRNO(G|T)(\\d{11})$",
+        "Rnor_([0-9\\.]+)",
+        # UCSC
+        "^rn(\\d+)$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(rat = "Rattus norvegicus"))
+    }
+
+    # Danio rerio ==============================================================
+    grep <- c(
+        "^D(anio )?rerio$",
+        "^zebrafish$",
+        # Ensembl
+        "^ENSDAR(G|T)(\\d{11})$",
+        "GRCz(\\d+)",
+        # UCSC
+        "^danRer(\\d+)$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(zebrafish = "Danio rerio"))
+    }
+
+    # Drosophila melanogaster ==================================================
+    grep <- c(
+        "^D(rosophila )?melanogaster$",
+        "^fruitfly$",
+        # Ensembl
+        "^FB(gn|tr)(\\d{7})$",
+        "^BDGP(\\d+)$",
+        # UCSC
+        "^dm(\\d+)$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(fruitfly = "Drosophila melanogaster"))
+    }
+
+    # Caenorhabditis elegans ===================================================
+    grep <- c(
+        "^C(aenorhabditis )?elegans$",
+        "^roundworm$",
+        # Ensembl
+        "^WBGene(\\d{8})$",
+        "^WBcel(\\d{3})$",
+        # UCSC
+        "^ce(\\d{2})$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(roundworm = "Caenorhabditis elegans"))
+    }
+
+    # Gallus gallus ============================================================
+    grep <- c(
+        "G(allus )?gallus$",
+        "chicken$",
+        # Ensembl
+        "^ENSGAL(G|T)(\\d{11})$",
+        "^Gallus_gallus-([0-9\\.]+)$",
+        # UCSC
+        "^galGal(\\d+)$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(chicken = "Gallus gallus"))
+    }
+
+    # Ovis aries ===============================================================
+    grep <- c(
+        "^O(vis )?aries$",
+        "^sheep$",
+        # Ensembl
+        "^ENSOAR(G|T)\\d{11}$",
+        "^Oar_v([0-9\\.]+)$",
+        # UCSC
+        "^oviAri(\\d+)$"
+    )
+    if (grepl(
+        x = object,
+        pattern = paste(grep, collapse = "|"),
+        ignore.case = TRUE
+    )) {
+        return(c(sheep = "Ovis aries"))
+    }
+
+    warning("Failed to detect supported organism")
+    NULL
 }
 
 

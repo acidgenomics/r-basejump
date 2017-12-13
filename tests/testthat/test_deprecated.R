@@ -1,4 +1,4 @@
-context("Deprecated")
+context("deprecated")
 
 test_that("v0.0.24", {
     expect_warning(
