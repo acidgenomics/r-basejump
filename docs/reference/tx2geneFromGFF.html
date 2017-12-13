@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate tx2gene from GFF/GTF File — tx2geneFromGFF • basejump</title>
+<title>Define Transcript to Gene Mappings from GFF/GTF File — tx2geneFromGFF • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,11 +83,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate tx2gene from GFF/GTF File</h1>
+    <h1>Define Transcript to Gene Mappings from GFF/GTF File</h1>
     </div>
 
     
-    <p>Generate tx2gene from GFF/GTF File</p>
+    <p>Define Transcript to Gene Mappings from GFF/GTF File</p>
     
 
     <pre class="usage"><span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
@@ -139,13 +139,15 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># From URL (recommended)</span>
 <span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	20 obs. of  2 variables:
-#&gt;  $ enstxp : chr  "ENSMUST00000070533" "ENSMUST00000082908" "ENSMUST00000157708" "ENSMUST00000159265" ...
-#&gt;  $ ensgene: chr  "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" "ENSMUSG00000051951" ...</div><div class='input'>
+<span class='fu'>tx2geneFromGFF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+#&gt; Variables: 2
+#&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG0000008...</div><div class='input'>
 <span class='co'># GFF data.frame</span>
-<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>tx2geneFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'>str</span>()</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; 'data.frame':	20 obs. of  2 variables:
-#&gt;  $ enstxp : chr  "ENSMUST00000070533" "ENSMUST00000082908" "ENSMUST00000157708" "ENSMUST00000159265" ...
-#&gt;  $ ensgene: chr  "ENSMUSG00000051951" "ENSMUSG00000064842" "ENSMUSG00000088333" "ENSMUSG00000051951" ...</div></pre>
+<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>tx2geneFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+#&gt; Variables: 2
+#&gt; $ enstxp  &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST0000015...
+#&gt; $ ensgene &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG0000008...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -54,13 +54,14 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' annotable("Mus musculus") %>%
-#'     glimpse()
+#' annotable("Homo sapiens") %>% glimpse()
 #'
-#' # Alternate approach, with pre-compiled tibble
+#' # Legacy GRCh37/hg19 genome build support
+#' annotable("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
+#'
+#' # Convert pre-compiled annotables tibble (advanced)
 #' \dontrun{
-#' annotable(annotables::grch37) %>%
-#'     glimpse()
+#' annotable(annotables::grch38) %>% glimpse()
 #' }
 NULL
 
@@ -74,7 +75,7 @@ NULL
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data is_string
 #' @importFrom S4Vectors mcols
-#' @importFrom utils tail
+#' @importFrom utils capture.output tail
 .annotable <- function(
     object,
     format = "gene",
@@ -94,7 +95,17 @@ NULL
     }
 
     if (!is.null(genomeBuild)) {
-        .checkAnnotableBuildSupport(genomeBuild)
+        # Warn and early return pre-built GRCh37, if detected
+        if (organism == "Homo sapiens" &
+            grepl(x = genomeBuild,
+                  pattern = paste("GRCh37", "hg19", sep = "|"),
+                  ignore.case = TRUE)) {
+            warning(paste(
+                "GRCh37/hg19 genome build detected.",
+                "Use GRCh38/hg38 genome build instead, if possible."
+            ), call. = FALSE)
+            return(basejump::grch37)
+        }
     }
 
     # Sanitize the release version
@@ -204,20 +215,6 @@ NULL
 
 
 
-.checkAnnotableBuildSupport <- function(genomeBuild) {
-    # Require prebuilt grch37 annotable for GRCh37/hg19
-    if (grepl(x = genomeBuild,
-              pattern = paste("GRCh37", "hg19", sep = "|"),
-              ignore.case = TRUE)) {
-        stop(paste(
-            "GRCh37/hg19 detected.",
-            "'annotable' argument must be set to 'annotables::grch37'."
-        ), call. = FALSE)
-    }
-}
-
-
-
 #' Define Broad Class
 #'
 #' @author Broad class definitions by Rory Kirchner
@@ -292,6 +289,7 @@ NULL
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
+#' @importFrom stats formula
 #'
 #' @inheritParams AllGenerics
 #'

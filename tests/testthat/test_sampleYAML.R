@@ -11,12 +11,12 @@ test_that("sampleYAML", {
     expect_equal(
         sampleYAML(yaml, "metadata"),
         data.frame(
-            group = c(
+            "group" = c(
                 "ctrl",
                 "ctrl",
                 "ko",
                 "ko"),
-            description = c(
+            "description" = c(
                 "group1_1",
                 "group1_2",
                 "group2_1",
@@ -25,7 +25,8 @@ test_that("sampleYAML", {
                 "group1_1",
                 "group1_2",
                 "group2_1",
-                "group2_2")
+                "group2_2"),
+            stringsAsFactors = FALSE
         )
     )
 })

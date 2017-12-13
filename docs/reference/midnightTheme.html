@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read GTF Annotations — readGTF • basejump</title>
+<title>Midnight Theme — midnightTheme • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -83,58 +83,41 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read GTF Annotations</h1>
+    <h1>Midnight Theme</h1>
     </div>
 
     
-    <p>Read GTF Annotations</p>
+    <p>Blackout palette that sets the plot background as black, with white text.</p>
     
 
-    <pre class="usage"><span class='fu'>readGTF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readGTF</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>midnightTheme</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>Passthrough arguments to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>ggplot2::theme()</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame.</p>
+    <p>ggplot theme.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>http://www.gencodegenes.org/gencodeformat.html</p>
-<p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='prepareSummarizedExperiment.html'>prepareSummarizedExperiment</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code>, <code><a href='transmit.html'>transmit</a></code></p>
+    <ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>ggplot2::theme()</a></code>.</p></li>
+<li><p>Inspired by <code><a href='http://www.rdocumentation.org/packages/Seurat/topics/DarkTheme'>Seurat::DarkTheme()</a></code>, with some modifications.</p></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>file.path</span>(<span class='no'>testDataURL</span>, <span class='st'>"mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
-    <span class='no'>readGTF</span> <span class='kw'>%&gt;%</span>
-    <span class='no'>glimpse</span></div><div class='output co'>#&gt; <span class='message'>Reading GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; Observations: 95
-#&gt; Variables: 9
-#&gt; $ chromosome       &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-#&gt; $ annotationSource &lt;chr&gt; "havana", "havana", "havana", "ensembl", "ensembl"...
-#&gt; $ featureType      &lt;chr&gt; "gene", "transcript", "exon", "gene", "transcript"...
-#&gt; $ start            &lt;int&gt; 3073253, 3073253, 3073253, 3102016, 3102016, 31020...
-#&gt; $ end              &lt;int&gt; 3074322, 3074322, 3074322, 3102125, 3102125, 31021...
-#&gt; $ score            &lt;chr&gt; ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ...
-#&gt; $ strand           &lt;chr&gt; "+", "+", "+", "+", "+", "+", "-", "-", "-", "-", ...
-#&gt; $ phase            &lt;chr&gt; ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ...
-#&gt; $ keyValuePairs    &lt;chr&gt; "gene_id ENSMUSG00000102693; gene_version 1; gene_...</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='message'>Want to understand how all the pieces fit together? Buy the ggplot2</span>
+#&gt; <span class='message'>book: http://ggplot2.org/book/</span></div><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>mtcars</span>) +
+    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>wt</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>mpg</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>factor</span>(<span class='no'>gear</span>)))
+<span class='no'>p</span> + <span class='fu'>midnightTheme</span>()</div><div class='img'><img src='midnightTheme-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +136,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael J. Steinbaugh</a>.</p>
+  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">

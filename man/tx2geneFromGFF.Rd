@@ -8,7 +8,7 @@
 \alias{tx2geneFromGFF}
 \alias{tx2geneFromGFF,character-method}
 \alias{tx2geneFromGFF,data.frame-method}
-\title{Generate tx2gene from GFF/GTF File}
+\title{Define Transcript to Gene Mappings from GFF/GTF File}
 \usage{
 tx2geneFromGFF(object, ...)
 
@@ -29,7 +29,7 @@ tx2geneFromGTF(...)
 \link{data.frame}.
 }
 \description{
-Generate tx2gene from GFF/GTF File
+Define Transcript to Gene Mappings from GFF/GTF File
 }
 \details{
 The GFF (General Feature Format) format consists of one line per
@@ -39,11 +39,11 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.
 \examples{
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
-tx2geneFromGFF(url) \%>\% str()
+tx2geneFromGFF(url) \%>\% glimpse()
 
 # GFF data.frame
 gff <- readGFF(url)
-tx2geneFromGFF(gff) \%>\% str()
+tx2geneFromGFF(gff) \%>\% glimpse()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
