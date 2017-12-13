@@ -59,7 +59,7 @@ NULL
         camel(vec, strict = FALSE)
     })
     dflist <- lapply(data, function(x) {
-        as.data.frame(t(x))
+        as.data.frame(t(x), stringsAsFactors = FALSE)
     })
     bind_rows(dflist) %>%
         removeNA() %>%

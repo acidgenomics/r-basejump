@@ -18,7 +18,7 @@
 #' @return [data.frame].
 #'
 #' @examples
-#' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% str()
+#' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
 NULL
 
 

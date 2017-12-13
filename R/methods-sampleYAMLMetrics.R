@@ -13,7 +13,7 @@
 #'     "bcbio",
 #'     "project-summary.yaml")
 #' yaml <- readYAML(url)
-#' sampleYAMLMetrics(yaml) %>% str()
+#' sampleYAMLMetrics(yaml) %>% glimpse()
 NULL
 
 
@@ -37,6 +37,7 @@ NULL
         any(grepl(x = x, pattern = "^[0-9\\.]+$"))
     }
     metrics %>%
+        mutate_if(is.factor, as.character) %>% 
         mutate_if(numericAsCharacter, as.numeric) %>%
         mutate_if(is.character, as.factor) %>%
         .prepareSampleMetadata()

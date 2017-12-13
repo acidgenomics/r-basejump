@@ -1,4 +1,4 @@
-#' Prepare `SummarizedExperiment()`
+#' Prepare Summarized Experiment
 #'
 #' This is a utility wrapper for `SummarizedExperiment()` that provides
 #' automatic subsetting for `colData` and `rowData`.

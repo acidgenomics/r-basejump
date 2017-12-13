@@ -1,7 +1,7 @@
 #' @rdname logRatio
 #' @export
 setMethod(
-    "lr2fc",
+    "logRatioToFoldChange",
     signature("numeric"),
     function(object, base = 2L) {
         object <- base ^ object

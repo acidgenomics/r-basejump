@@ -6,7 +6,7 @@
 \alias{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment}
 \alias{prepareSummarizedExperiment,list-method}
-\title{Prepare \code{SummarizedExperiment()}}
+\title{Prepare Summarized Experiment}
 \usage{
 prepareSummarizedExperiment(assays, ...)
 

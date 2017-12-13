@@ -1,3 +1,30 @@
+# basejump 0.1.7 (2017-12-11)
+
+- Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and `logRatioToFoldChange()`.
+- Moved `plotDot()` and `plotViolin()` generics here from bcbioSingleCell.
+- Added internal GRCh37 gene annotations.
+
+
+
+# basejump 0.1.6 (2017-12-06)
+
+- Moved `microplate()` code from the worminfo package here, since it's of general interest.
+
+
+
+# basejump 0.1.5 (2017-12-05)
+
+- Added `checkAnnotable()`, `checkGene2symbol()`, `checkTx2gene()`, and `sanitizeAnnotable()` utility functions that will be used in the bcbio R packages.
+
+
+
+# basejump 0.1.4
+
+- Added `midnightTheme()` ggplot theme. Originally this was defined as `darkTheme()` in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely dark gray axes without white axis lines.
+- Improve NAMESPACE imports to include `stats::formula()` and `utils::capture.output()`.
+
+
+
 # basejump 0.1.3
 
 - `loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
