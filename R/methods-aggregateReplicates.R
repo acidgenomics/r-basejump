@@ -46,7 +46,7 @@ NULL
              call. = FALSE)
     }
     t <- t(object)
-    tagg <- rowsum(x = t, group = groupings, reorder = TRUE)
+    tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
     agg <- t(tagg)
     agg
 }
