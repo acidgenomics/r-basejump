@@ -137,8 +137,19 @@ NULL
         object <- setNames(object, .makeNamesDotted(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(object, .makeNamesDotted(rownames(object)))
+        rownames(object) <- .makeNamesDotted(rownames(object))
     }
+    object
+}
+
+
+
+.dottedVector <- function(object) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesDotted(names(object))
+    }
+    object <- .makeNamesDotted(object)
+    names(object) <- names
     object
 }
 
@@ -159,13 +170,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    function(object) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesDotted(object, rownames = FALSE)
-        } else {
-            .makeNamesDotted(object)
-        }
-    })
+    .dottedVector)
 
 
 
@@ -175,6 +180,24 @@ setMethod(
     "dotted",
     signature("data.frame"),
     .setNamesDotted)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("DataFrame"),
+    .setNamesDotted)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("factor"),
+    .dottedVector)
 
 
 
