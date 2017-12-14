@@ -39,6 +39,34 @@ NULL
 
 
 # Constructors =================================================================
+.checkNames <- function(object) {
+    if (!is.null(names(object))) {
+        TRUE
+    } else {
+        FALSE
+    }
+}
+
+
+
+.checkRownames <- function(object) {
+    if (!is.null(rownames(object))) {
+        # Ignore numbered rownames
+        if (!identical(
+            rownames(object),
+            as.character(seq_len(nrow(object)))
+        )) {
+            TRUE
+        } else {
+            FALSE
+        }
+    } else {
+        FALSE
+    }
+}
+
+
+
 .sanitizeAcronyms <- function(object) {
     object %>%
         # Ensure identifier is "ID"
@@ -65,34 +93,6 @@ NULL
         gsub(x = .,
              pattern = "\\b(RNAi)\\b",
              replacement = "RNAI")
-}
-
-
-
-.checkNames <- function(object) {
-    if (!is.null(names(object))) {
-        TRUE
-    } else {
-        FALSE
-    }
-}
-
-
-
-.checkRownames <- function(object) {
-    if (!is.null(rownames(object))) {
-        # Ignore numbered rownames
-        if (!identical(
-            rownames(object),
-            as.character(seq_len(nrow(object)))
-        )) {
-            TRUE
-        } else {
-            FALSE
-        }
-    } else {
-        FALSE
-    }
 }
 
 
@@ -140,6 +140,12 @@ NULL
         rownames(object) <- .makeNamesDotted(rownames(object))
     }
     object
+}
+
+
+
+.setNamesDottedNoRownames <- function(object) {
+    .setNamesDotted(object, rownames = FALSE)
 }
 
 
@@ -208,9 +214,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("list"),
-    function(object) {
-        .setNamesDotted(object, rownames = FALSE)
-    })
+    .setNamesDottedNoRownames)
 
 
 
@@ -228,6 +232,4 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    function(object) {
-        .setNamesDotted(object, rownames = FALSE)
-    })
+    .setNamesDottedNoRownames)

@@ -23,7 +23,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .makeNamesSnake <- function(object) {
     object %>%
         dotted() %>%
@@ -39,43 +39,43 @@ NULL
 #' @importFrom stats setNames
 .setNamesSnake <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- setNames(
-            object,
-            .makeNamesSnake(names(object)))
+        object <- setNames(object, .makeNamesSnake(names(object)))
     }
     if (isTRUE(rownames) &
         .checkRownames(object)) {
-        object <- set_rownames(
-            object,
-            .makeNamesSnake(rownames(object)))
+        rownames(object) <- .makeNamesSnake(rownames(object))
     }
     object
 }
 
 
 
-# Methods ====
-#' @rdname snake
-#' @export
-setMethod(
-    "snake",
-    signature("ANY"),
-    .setNamesSnake)
+.setNamesSnakeNoRownames <- function(object) {
+    .setNamesSnake(object, rownames = FALSE)
+}
 
 
 
+.snakeVector <- function(object) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesSnake(names(object))
+    } else {
+        names <- NULL
+    }
+    object <- .makeNamesSnake(object)
+    names(object) <- names
+    object
+}
+
+
+
+# Methods ======================================================================
 #' @rdname snake
 #' @export
 setMethod(
     "snake",
     signature("character"),
-    function(object) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesSnake(object, rownames = FALSE)
-        } else {
-            .makeNamesSnake(object)
-        }
-    })
+    .snakeVector)
 
 
 
@@ -92,10 +92,26 @@ setMethod(
 #' @export
 setMethod(
     "snake",
+    signature("DataFrame"),
+    .setNamesSnake)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("factor"),
+    .snakeVector)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
     signature("list"),
-    function(object) {
-        .setNamesSnake(object, rownames = FALSE)
-    })
+    .setNamesSnakeNoRownames)
 
 
 
@@ -113,6 +129,4 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    function(object) {
-        .setNamesSnake(object, rownames = FALSE)
-    })
+    .setNamesSnakeNoRownames)

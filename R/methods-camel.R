@@ -31,7 +31,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .makeNamesCamel <- function(
     object,
     format = "lower",
@@ -68,6 +68,17 @@ NULL
 
 
 
+.makeNamesLowerCamel <- function(
+    object,
+    strict = FALSE) {
+    .makeNamesCamel(
+        object,
+        format = "lower",
+        strict = strict)
+}
+
+
+
 #' @importFrom magrittr set_rownames
 .setNamesCamel <- function(
     object,
@@ -95,18 +106,50 @@ NULL
 
 
 
-# Methods ====
+.setNamesLowerCamel <- function(
+    object,
+    rownames = FALSE,
+    strict = FALSE) {
+    .setNamesCamel(
+        object,
+        format = "lower",
+        rownames = rownames,
+        strict = strict)
+}
+
+
+
+.setNamesLowerCamelNoRownames <- function(object, strict = FALSE) {
+    .setNamesLowerCamel(
+        object,
+        rownames = FALSE,
+        strict = strict)
+}
+
+
+
+.camelVector <- function(
+    object,
+    strict = FALSE) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesLowerCamel(names(object), strict = strict)
+    } else {
+        names <- NULL
+    }
+    object <- .makeNamesLowerCamel(object, strict = strict)
+    names(object) <- names
+    object
+}
+
+
+
+# Methods ======================================================================
 #' @rdname camel
 #' @export
 setMethod(
     "camel",
     signature("ANY"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "lower",
-            strict = strict)
-    })
+    .setNamesLowerCamel)
 
 
 
@@ -115,22 +158,7 @@ setMethod(
 setMethod(
     "camel",
     signature("character"),
-    function(
-        object,
-        strict = FALSE) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesCamel(
-                object,
-                format = "lower",
-                rownames = FALSE,
-                strict = strict)
-        } else {
-            .makeNamesCamel(
-                object,
-                format = "lower",
-                strict = strict)
-        }
-    })
+    .camelVector)
 
 
 
@@ -139,16 +167,25 @@ setMethod(
 setMethod(
     "camel",
     signature("data.frame"),
-    function(
-        object,
-        rownames = FALSE,
-        strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "lower",
-            rownames = rownames,
-            strict = strict)
-    })
+    .setNamesLowerCamel)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("DataFrame"),
+    .setNamesLowerCamel)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("factor"),
+    .camelVector)
 
 
 
@@ -157,13 +194,7 @@ setMethod(
 setMethod(
     "camel",
     signature("list"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "lower",
-            rownames = FALSE,
-            strict = strict)
-    })
+    .setNamesLowerCamelNoRownames)
 
 
 
@@ -172,16 +203,7 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    function(
-        object,
-        rownames = FALSE,
-        strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "lower",
-            rownames = rownames,
-            strict = strict)
-    })
+    .setNamesLowerCamel)
 
 
 
@@ -190,10 +212,4 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "lower",
-            rownames = FALSE,
-            strict = strict)
-    })
+    .setNamesLowerCamelNoRownames)
