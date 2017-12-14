@@ -23,7 +23,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom utils read.delim
 .readGFF <- function(
     object,
@@ -59,7 +59,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readGFF
 #' @export
 setMethod(

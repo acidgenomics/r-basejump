@@ -18,7 +18,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname sampleYAMLMetadata
 #' @importFrom dplyr mutate_all
 #' @export

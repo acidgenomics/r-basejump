@@ -18,7 +18,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .fixNAString <- function(object) {
     patterns <- c(
         "^$",
@@ -39,7 +39,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname fixNA
 #' @export
 setMethod(

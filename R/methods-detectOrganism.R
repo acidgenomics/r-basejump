@@ -195,7 +195,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname detectOrganism
 #' @export
 setMethod(
