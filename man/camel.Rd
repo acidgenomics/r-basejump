@@ -9,12 +9,16 @@
 \alias{camel,ANY-method}
 \alias{camel,character-method}
 \alias{camel,data.frame-method}
+\alias{camel,DataFrame-method}
+\alias{camel,factor-method}
 \alias{camel,list-method}
 \alias{camel,matrix-method}
 \alias{camel,tbl_df-method}
 \alias{upperCamel,ANY-method}
 \alias{upperCamel,character-method}
 \alias{upperCamel,data.frame-method}
+\alias{upperCamel,DataFrame-method}
+\alias{upperCamel,factor-method}
 \alias{upperCamel,list-method}
 \alias{upperCamel,matrix-method}
 \alias{upperCamel,tbl_df-method}
@@ -24,11 +28,15 @@ camel(object, ...)
 
 upperCamel(object, ...)
 
-\S4method{camel}{ANY}(object, strict = FALSE)
+\S4method{camel}{ANY}(object, rownames = FALSE, strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
 \S4method{camel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+
+\S4method{camel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+
+\S4method{camel}{factor}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
@@ -36,11 +44,15 @@ upperCamel(object, ...)
 
 \S4method{camel}{tbl_df}(object, strict = FALSE)
 
-\S4method{upperCamel}{ANY}(object, strict = FALSE)
+\S4method{upperCamel}{ANY}(object, rownames = FALSE, strict = FALSE)
 
 \S4method{upperCamel}{character}(object, strict = FALSE)
 
 \S4method{upperCamel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+
+\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+
+\S4method{upperCamel}{factor}(object, strict = FALSE)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
@@ -54,13 +66,13 @@ will be meaningful.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
-allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-example.}
-
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
+allow the return of any capitalized acronyms. "RNA" will become "Rna", for
+example.}
 }
 \value{
 Object with syntatically valid names. For objects supporting

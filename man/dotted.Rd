@@ -7,6 +7,8 @@
 \alias{dotted,ANY-method}
 \alias{dotted,character-method}
 \alias{dotted,data.frame-method}
+\alias{dotted,DataFrame-method}
+\alias{dotted,factor-method}
 \alias{dotted,list-method}
 \alias{dotted,matrix-method}
 \alias{dotted,tbl_df-method}
@@ -19,6 +21,10 @@ dotted(object, ...)
 \S4method{dotted}{character}(object)
 
 \S4method{dotted}{data.frame}(object, rownames = FALSE)
+
+\S4method{dotted}{DataFrame}(object, rownames = FALSE)
+
+\S4method{dotted}{factor}(object)
 
 \S4method{dotted}{list}(object)
 
