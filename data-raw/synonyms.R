@@ -1,22 +1,33 @@
-library(devtools)
+devtools::load_all()
 library(tidyverse)
-load_all()
 
 # Support for C. elegans is poor here. Use WormBase instead.
 genomes <- list(
-    dmelanogaster = c("Invertebrates", "Drosophila_melanogaster"),
-    hsapiens = c("Mammalia", "Homo_sapiens"),
-    mmusculus = c("Mammalia", "Mus_musculus"))
+    "drosophila_melanogaster" = c(
+        "Invertebrates",
+        "Drosophila_melanogaster"),
+    "homo_sapiens" = c(
+        "Mammalia",
+        "Homo_sapiens"),
+    "mus_musculus" = c(
+        "Mammalia",
+        "Mus_musculus")
+)
 
 synonyms <- lapply(seq_along(genomes), function(a) {
-    tbl <- file.path(
+    data <- file.path(
         "ftp://ftp.ncbi.nih.gov",
         "gene",
         "DATA",
         "GENE_INFO",
         genomes[[a]][[1L]],
         paste0(genomes[[a]][[2L]], ".gene_info.gz")) %>%
-        read_tsv() %>%
+        read_tsv()
+    if (!is_tibble(data)) {
+        stop(paste("Download failure:", genomes[[a]][[2L]]))
+    }
+
+    data <- data %>%
         camel(strict = FALSE) %>%
         select(symbol, synonyms, dbXrefs) %>%
         filter(synonyms != "-",
@@ -26,25 +37,25 @@ synonyms <- lapply(seq_along(genomes), function(a) {
 
     # Extract the gene identifiers
     organism <- names(genomes)[[a]]
-    if (organism == "dmelanogaster") {
-        tbl <- tbl %>%
+    if (organism == "drosophila_melanogaster") {
+        data <- data %>%
             mutate(
                 ensgene = str_extract(
                     dbXrefs,
                     pattern = "\\bFBgn[0-9]{7}\\b"))
-    } else if (organism %in% c("hsapiens", "mmusculus")) {
-        tbl <- tbl %>%
+    } else if (organism %in% c("homo_sapiens", "mus_musculus")) {
+        data <- data %>%
             mutate(
                 ensgene = str_extract(
                     dbXrefs,
                     pattern = "\\bENS[A-Z]+[0-9]{11}\\b"))
     }
 
-    tbl %>%
+    data %>%
         filter(!is.na(ensgene)) %>%
         select(ensgene, symbol, synonyms) %>%
         arrange(ensgene)
 })
 names(synonyms) <- names(genomes)
 
-use_data(synonyms, overwrite = TRUE, compress = "xz")
+devtools::use_data(synonyms, overwrite = TRUE, compress = "xz")
