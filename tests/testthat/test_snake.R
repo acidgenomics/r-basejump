@@ -23,7 +23,7 @@ test_that("character", {
 })
 
 test_that("named character", {
-    vec <- snake(makeNames[["namedVector"]])
+    vec <- snake(makeNames[["namedCharacter"]])
     expect_identical(
         vec,
         c("item_a" = "hello_world",
