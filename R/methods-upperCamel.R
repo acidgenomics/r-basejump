@@ -24,7 +24,7 @@
 
 
 .setNamesUpperCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesLowerCamel(
+    .setNamesUpperCamel(
         object,
         rownames = FALSE,
         strict = strict)
