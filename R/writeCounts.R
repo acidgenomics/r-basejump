@@ -16,7 +16,7 @@
 #' @importFrom Matrix writeMM
 #' @importFrom R.utils gzip
 #' @importFrom readr write_csv write_lines
-#' @importFrom rlang dots_list
+#' @importFrom rlang dots_list is_string
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
@@ -35,7 +35,15 @@ writeCounts <- function(
     dir = file.path("results", "counts"),
     gzip = TRUE,
     quiet = FALSE) {
+    if (!is_string(dir)) {
+        stop("'dir' must be a string", call. = FALSE)
+    } else if (!dir.exists(dir)) {
+        dir.create(dir, recursive = TRUE)
+    }
+    dir <- normalizePath(dir)
+
     dots <- dots_list(...)
+
     hasDim <- dots %>%
         sapply(dim) %>%
         vapply(is.numeric, logical(1L))
@@ -43,11 +51,9 @@ writeCounts <- function(
         stop("Object must support dim()", call. = FALSE)
     }
 
-    # Create the counts output directory
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
+
     if (!isTRUE(quiet)) {
         message(paste("Writing", toString(names), "to", dir))
     }
