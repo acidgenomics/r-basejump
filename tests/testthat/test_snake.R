@@ -26,8 +26,8 @@ test_that("named character", {
     vec <- snake(makeNames[["namedVector"]])
     expect_identical(
         vec,
-        c("item_a" = "hello world",
-          "item_b" = "HELLO WORLD")
+        c("item_a" = "hello_world",
+          "item_b" = "hello_world")
     )
 })
 
@@ -77,3 +77,4 @@ test_that("missing", {
         "argument \"object\" is missing, with no default"
     )
 })
+
