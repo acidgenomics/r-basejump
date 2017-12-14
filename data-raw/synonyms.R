@@ -3,13 +3,13 @@ library(tidyverse)
 
 # Support for C. elegans is poor here. Use WormBase instead.
 genomes <- list(
-    "drosophila_melanogaster" = c(
+    "drosophilaMelanogaster" = c(
         "Invertebrates",
         "Drosophila_melanogaster"),
-    "homo_sapiens" = c(
+    "homoSapiens" = c(
         "Mammalia",
         "Homo_sapiens"),
-    "mus_musculus" = c(
+    "musMusculus" = c(
         "Mammalia",
         "Mus_musculus")
 )
@@ -37,13 +37,13 @@ synonyms <- lapply(seq_along(genomes), function(a) {
 
     # Extract the gene identifiers
     organism <- names(genomes)[[a]]
-    if (organism == "drosophila_melanogaster") {
+    if (organism == "drosophilaMelanogaster") {
         data <- data %>%
             mutate(
                 ensgene = str_extract(
                     dbXrefs,
                     pattern = "\\bFBgn[0-9]{7}\\b"))
-    } else if (organism %in% c("homo_sapiens", "mus_musculus")) {
+    } else if (organism %in% c("homoSapiens", "musMusculus")) {
         data <- data %>%
             mutate(
                 ensgene = str_extract(
