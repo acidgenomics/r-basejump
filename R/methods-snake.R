@@ -74,6 +74,15 @@ NULL
 #' @export
 setMethod(
     "snake",
+    signature("ANY"),
+    .setNamesSnake)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
     signature("character"),
     .snakeVector)
 
