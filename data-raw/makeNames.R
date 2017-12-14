@@ -1,7 +1,7 @@
 extdataDir <- file.path("inst", "extdata")
 dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
 
-vector <- c(
+character <- c(
     "hello world",
     "HELLO WORLD",
     "RNAi clones",
@@ -14,7 +14,7 @@ vector <- c(
     123L,
     NA)
 
-namedVector <- c(
+namedCharacter <- c(
     "Item.A" = "hello world",
     "Item.B" = "HELLO WORLD")
 
@@ -35,8 +35,8 @@ list <- list(
     "Item.B" = c(3L, 4L))
 
 makeNames <- list(
-    "vector" = vector,
-    "namedVector" = namedVector,
+    "character" = character,
+    "namedCharacter" = namedCharacter,
     "factor" = factor,
     "dataFrame" = dataFrame,
     "matrix" = matrix,
