@@ -1,32 +1,32 @@
 context("aggregateReplicates")
 
 rownames <- c("gene1", "gene2", "gene3", "gene4", "gene5")
-counts <- data.frame(
-    "sample1_rep1" = c(0, 0, 0, 1.1, 2.2),
-    "sample1_rep2" = c(0, 0, 0, 3.3, 4.4),
-    "sample2_rep1" = c(1.1, 2.2, 0, 0, 0),
-    "sample2_rep2" = c(3.3, 4.4, 0, 0, 0),
+mat <- data.frame(
+    "sample1_rep1" = c(0L, 0L, 0L, 1L, 2L),
+    "sample1_rep2" = c(0L, 0L, 0L, 3L, 4L),
+    "sample2_rep1" = c(1L, 2L, 0L, 0L, 0L),
+    "sample2_rep2" = c(3L, 4L, 0L, 0L, 0L),
     row.names = rownames) %>%
     as.matrix()
-aggcounts <- data.frame(
-    "sample1" = c(0, 0, 0, 4.4, 6.6),
-    "sample2" = c(4.4, 6.6, 0, 0, 0),
+aggmat <- data.frame(
+    "sample1" = c(0L, 0L, 0L, 4L, 6L),
+    "sample2" = c(4L, 6L, 0L, 0L, 0L),
     row.names = rownames) %>%
     as.matrix()
 
 groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
-names(groupings) <- colnames(counts)
+names(groupings) <- colnames(mat)
 
 test_that("matrix", {
    data <- aggregateReplicates(mat, groupings = groupings)
    expect_is(data, "matrix")
-   expect_equal(data, aggcounts)
+   expect_identical(data, aggmat)
 })
 
 test_that("dgCMatrix", {
     dgc <- as(mat, "dgCMatrix")
-    aggdgc <- as(aggcounts, "dgCMatrix")
+    aggdgc <- as(aggmat, "dgCMatrix")
     data <- aggregateReplicates(dgc, groupings = groupings)
     expect_is(data, "dgCMatrix")
-    expect_equal(data, aggdgc)
+    expect_identical(data, aggdgc)
 })
