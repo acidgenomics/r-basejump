@@ -27,13 +27,14 @@
 #' @examples
 #' # H. sapiens
 #' detectOrganism("GRCh38")
-#' \dontrun{
 #' detectOrganism("hg38")
 #' detectOrganism("ENSG00000000003")
 #' detectOrganism("Homo sapiens")
+#' detectOrganism("Homo_sapiens")
+#' detectOrganism("H sapiens")
+#' detectOrganism("H. sapiens")
 #' detectOrganism("Hsapiens")
 #' detectOrganism("human")
-#' }
 #'
 #' # Unsupported organism
 #' detectOrganism("XXX")
@@ -47,7 +48,7 @@ NULL
     object <- object[[1L]]
     # Homo sapiens =============================================================
     grep <- c(
-        "^H(omo )?sapiens$",
+        "^H(omo)?([._[:space:]]+)?sapiens$",
         "^human$",
         # Ensembl
         "^ENS(G|T)(\\d{11})$",
@@ -65,7 +66,7 @@ NULL
 
     # Mus musculus =============================================================
     grep <- c(
-        "^M(us )?musculus$",
+        "^M(us)?([._[:space:]]+)?musculus$",
         "^mouse$",
         # Ensembl
         "^ENSMUS(G|T)(\\d{11})$",
@@ -83,7 +84,7 @@ NULL
 
     # Rattus norvegicus ====================================================
     grep <- c(
-        "^R(attus )?norvegicus$",
+        "^R(attus)?([._[:space:]]+)?norvegicus$",
         "^rat$",
         # Ensembl
         "^ENSRNO(G|T)(\\d{11})$",
@@ -101,7 +102,7 @@ NULL
 
     # Danio rerio ==============================================================
     grep <- c(
-        "^D(anio )?rerio$",
+        "^D(anio)?([._[:space:]]+)?rerio$",
         "^zebrafish$",
         # Ensembl
         "^ENSDAR(G|T)(\\d{11})$",
@@ -119,7 +120,7 @@ NULL
 
     # Drosophila melanogaster ==================================================
     grep <- c(
-        "^D(rosophila )?melanogaster$",
+        "^D(rosophila)?([._[:space:]]+)?melanogaster$",
         "^fruitfly$",
         # Ensembl
         "^FB(gn|tr)(\\d{7})$",
@@ -137,7 +138,7 @@ NULL
 
     # Caenorhabditis elegans ===================================================
     grep <- c(
-        "^C(aenorhabditis )?elegans$",
+        "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
         "^roundworm$",
         # Ensembl
         "^WBGene(\\d{8})$",
@@ -155,7 +156,7 @@ NULL
 
     # Gallus gallus ============================================================
     grep <- c(
-        "G(allus )?gallus$",
+        "G(allus)?([._[:space:]]+)?gallus$",
         "chicken$",
         # Ensembl
         "^ENSGAL(G|T)(\\d{11})$",
@@ -173,7 +174,7 @@ NULL
 
     # Ovis aries ===============================================================
     grep <- c(
-        "^O(vis )?aries$",
+        "^O(vis)?([._[:space:]]+)?aries$",
         "^sheep$",
         # Ensembl
         "^ENSOAR(G|T)\\d{11}$",

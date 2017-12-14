@@ -2,6 +2,7 @@
 
 - Improved `matrix` and `dgCMatrix` method support in `aggregateReplicates()` and `aggregateFeatures()` functions. Both of these functions now use a consistent `groupings` parameter, which uses a named factor to define the mappings of either samples (columns) for `aggregateReplicates()` or genes/transcripts (rows) for `aggregateFeatures()`.
 - Update for makeNames sanitization functions. Now they will work on `names(x)` for vectors by default.
+- Improved `detectOrganism()` to match against "H. sapiens" and "Homo_sapiens".
 
 
 
