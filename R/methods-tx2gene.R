@@ -33,7 +33,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom rlang is_string
 .tx2gene <- function(
     object,
@@ -84,7 +84,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname tx2gene
 setMethod(
     "tx2gene",

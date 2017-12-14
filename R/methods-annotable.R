@@ -67,7 +67,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
 #'   snapshotDate
 #' @importFrom dplyr mutate rename
@@ -348,7 +348,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname annotable
 #' @export
 setMethod(

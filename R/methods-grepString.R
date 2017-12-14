@@ -18,7 +18,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname grepString
 #' @export
 setMethod(

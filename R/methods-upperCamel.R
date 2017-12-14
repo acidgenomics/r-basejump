@@ -1,19 +1,4 @@
-# Methods ====
-#' @rdname camel
-#' @export
-setMethod(
-    "upperCamel",
-    signature("ANY"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            strict = strict)
-    }
-)
-
-
-
+# Methods ======================================================================
 #' @rdname camel
 #' @export
 setMethod(
@@ -53,6 +38,21 @@ setMethod(
             rownames = rownames,
             strict = strict)
     })
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("DataFrame"),
+    function(object, strict = FALSE) {
+        .setNamesCamel(
+            object,
+            format = "upper",
+            strict = strict)
+    }
+)
 
 
 

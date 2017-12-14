@@ -21,7 +21,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readDataVersions
 #' @importFrom readr read_csv
 #' @export

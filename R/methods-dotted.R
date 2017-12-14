@@ -38,7 +38,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .sanitizeAcronyms <- function(object) {
     object %>%
         # Ensure identifier is "ID"
@@ -155,7 +155,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname dotted
 #' @export
 setMethod(
