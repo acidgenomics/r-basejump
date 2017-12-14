@@ -7,6 +7,8 @@
 \alias{snake,ANY-method}
 \alias{snake,character-method}
 \alias{snake,data.frame-method}
+\alias{snake,DataFrame-method}
+\alias{snake,factor-method}
 \alias{snake,list-method}
 \alias{snake,matrix-method}
 \alias{snake,tbl_df-method}
@@ -19,6 +21,10 @@ snake(object, ...)
 \S4method{snake}{character}(object)
 
 \S4method{snake}{data.frame}(object, rownames = FALSE)
+
+\S4method{snake}{DataFrame}(object, rownames = FALSE)
+
+\S4method{snake}{factor}(object)
 
 \S4method{snake}{list}(object)
 
