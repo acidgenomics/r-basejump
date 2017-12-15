@@ -28,12 +28,29 @@
 #' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
 #'
 #' # Character vector
-#' print(makeNames$vec)
-#' dotted(makeNames$vec)
+#' vector <- makeNames$vector
+#' print(vector)
+#' dotted(vector)
+#'
+#' # Named character vector
+#' namedVector <- makeNames$namedVector
+#' dotted(namedVector)
+#'
+#' # Factor
+#' factor <- makeNames$factor
+#' print(factor)
+#' dotted(factor)
 #'
 #' # data.frame
-#' print(makeNames$df)
-#' dotted(makeNames$df, rownames = TRUE)
+#' dataFrame <- makeNames$dataFrame
+#' print(dataFrame)
+#' dotted(dataFrame, rownames = FALSE)
+#' dotted(dataFrame, rownames = TRUE)
+#'
+#' # Named list
+#' list <- makeNames$list
+#' print(list)
+#' dotted(list)
 NULL
 
 
