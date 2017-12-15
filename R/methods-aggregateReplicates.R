@@ -36,7 +36,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom stats setNames
 .aggregateReplicatesDenseMatrix <- function(object, groupings) {
     if (!is.factor(groupings)) {
         stop("'groupings' must be factor")
@@ -46,6 +45,7 @@ NULL
              call. = FALSE)
     }
     t <- t(object)
+    rownames(t) <- groupings
     tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
     agg <- t(tagg)
     agg
