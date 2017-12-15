@@ -15,15 +15,15 @@
 #'     package = "basejump"))
 #'
 #' # Character vector
-#' vector <- makeNames$vector
-#' print(vector)
-#' camel(vector)
-#' upperCamel(vector)
+#' character <- makeNames$character
+#' print(character)
+#' camel(character)
+#' upperCamel(character)
 #'
 #' # Named character vector
-#' namedVector <- makeNames$namedVector
-#' camel(namedVector)
-#' upperCamel(namedVector)
+#' namedCharacter <- makeNames$namedCharacter
+#' camel(namedCharacter)
+#' upperCamel(namedCharacter)
 #'
 #' # Factor
 #' factor <- makeNames$factor

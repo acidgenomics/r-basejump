@@ -11,14 +11,14 @@
 #'     package = "basejump"))
 #'
 #' # Character vector
-#' vector <- makeNames$vector
-#' print(vector)
-#' snake(vector)
+#' character <- makeNames$character
+#' print(character)
+#' snake(character)
 #'
 #' # Named character vector
-#' namedVector <- makeNames$namedVector
-#' print(namedVector)
-#' snake(namedVector)
+#' namedCharacter <- makeNames$namedCharacter
+#' print(namedCharacter)
+#' snake(namedCharacter)
 #'
 #' # Factor
 #' factor <- makeNames$factor
