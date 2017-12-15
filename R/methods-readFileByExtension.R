@@ -29,7 +29,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom Matrix readMM
 #' @importFrom stringr str_match
 #' @importFrom readr read_csv read_lines read_tsv
@@ -123,7 +123,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readFileByExtension
 #' @export
 setMethod(

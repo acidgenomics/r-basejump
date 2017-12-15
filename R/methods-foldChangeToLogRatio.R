@@ -25,7 +25,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname logRatio
 setMethod(
     "foldChangeToLogRatio",

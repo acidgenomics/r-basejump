@@ -21,7 +21,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readLogFile
 #' @importFrom readr read_lines
 #' @export

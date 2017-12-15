@@ -101,6 +101,12 @@
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for list</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>)
 
@@ -150,29 +156,62 @@ argument name assignments.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/makeNames.rda"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>load</span>(<span class='fu'>system.file</span>(
+    <span class='fu'>file.path</span>(<span class='st'>"extdata"</span>, <span class='st'>"makeNames.rda"</span>),
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))
 
 <span class='co'># Character vector</span>
-<span class='fu'>print</span>(<span class='no'>makeNames</span>$<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         
+<span class='no'>character</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>character</span>
+<span class='fu'>print</span>(<span class='no'>character</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         
 #&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M.Score"       "worfdbHTMLRemap"
-#&gt;  [9] "Mazda RX4"       "123"             NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>makeNames</span>$<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] "hello.world"       "HELLO.WORLD"       "RNAI.clones"      
+#&gt;  [9] "Mazda RX4"       "123"             NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>character</span>)</div><div class='output co'>#&gt;  [1] "hello.world"       "HELLO.WORLD"       "RNAI.clones"      
 #&gt;  [4] "n.Count"           "tx2gene"           "TX2.Gene.ID"      
 #&gt;  [7] "G2M.Score"         "worfdb.HTML.Remap" "Mazda.RX4"        
 #&gt; [10] "X123"              NA                 </div><div class='input'>
+<span class='co'># Named character vector</span>
+<span class='no'>namedCharacter</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>namedCharacter</span>
+<span class='fu'>dotted</span>(<span class='no'>namedCharacter</span>)</div><div class='output co'>#&gt;        Item.A        Item.B 
+#&gt; "hello.world" "HELLO.WORLD" </div><div class='input'>
+<span class='co'># Factor</span>
+<span class='no'>factor</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>factor</span>
+<span class='fu'>print</span>(<span class='no'>factor</span>)</div><div class='output co'>#&gt; sample 1 sample 2 sample 3 sample 4 
+#&gt;  group 1  group 1  group 2  group 2 
+#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>factor</span>)</div><div class='output co'>#&gt;  sample.1  sample.2  sample.3  sample.4 
+#&gt; "group.1" "group.1" "group.2" "group.2" </div><div class='input'>
 <span class='co'># data.frame</span>
-<span class='fu'>print</span>(<span class='no'>makeNames</span>$<span class='no'>df</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+<span class='no'>dataFrame</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>dataFrame</span>
+<span class='fu'>print</span>(<span class='no'>dataFrame</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>makeNames</span>$<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>dataFrame</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>dataFrame</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda.RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda.RX4.Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #&gt; Datsun.710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; Hornet.4.Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet.Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div></pre>
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'>
+<span class='co'># Named list</span>
+<span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>list</span>
+<span class='fu'>print</span>(<span class='no'>list</span>)</div><div class='output co'>#&gt; $Item.A
+#&gt; [1] 1 2
+#&gt; 
+#&gt; $Item.B
+#&gt; [1] 3 4
+#&gt; </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>list</span>)</div><div class='output co'>#&gt; $Item.A
+#&gt; [1] 1 2
+#&gt; 
+#&gt; $Item.B
+#&gt; [1] 3 4
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

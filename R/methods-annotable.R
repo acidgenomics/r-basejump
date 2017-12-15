@@ -67,7 +67,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
 #'   snapshotDate
 #' @importFrom dplyr mutate rename
@@ -95,16 +95,18 @@ NULL
     }
 
     if (!is.null(genomeBuild)) {
-        # Warn and early return pre-built GRCh37, if detected
+        # GRCh37/hg19 support
         if (organism == "Homo sapiens" &
             grepl(x = genomeBuild,
                   pattern = paste("GRCh37", "hg19", sep = "|"),
                   ignore.case = TRUE)) {
-            warning(paste(
-                "GRCh37/hg19 genome build detected.",
-                "Use GRCh38/hg38 genome build instead, if possible."
-            ), call. = FALSE)
-            return(basejump::grch37)
+            if (format == "gene") {
+                return(basejump::grch37)
+            } else if (format == "gene2symbol") {
+                return(basejump::grch37[, c("ensgene", "symbol")])
+            } else if (format == "tx2gene") {
+                return(basejump::grch37Tx2gene)
+            }
         }
     }
 
@@ -348,7 +350,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname annotable
 #' @export
 setMethod(

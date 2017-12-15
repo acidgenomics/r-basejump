@@ -25,7 +25,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom dplyr arrange bind_rows
 #' @importFrom magrittr set_rownames
 .sampleYAML <- function(yaml, keys) {
@@ -55,8 +55,9 @@ NULL
                 }
             }
         }
-        vec <- unlist(nested)
-        camel(vec, strict = FALSE)
+        unlist <- unlist(nested)
+        names(unlist) <- camel(names(unlist), strict = FALSE)
+        unlist
     })
     dflist <- lapply(data, function(x) {
         as.data.frame(t(x), stringsAsFactors = FALSE)
@@ -69,7 +70,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname sampleYAML
 #' @export
 setMethod(

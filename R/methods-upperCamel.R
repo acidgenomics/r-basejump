@@ -1,16 +1,59 @@
-# Methods ====
+# Constructors =================================================================
+.makeNamesUpperCamel <- function(
+    object,
+    strict = FALSE) {
+    .makeNamesCamel(
+        object,
+        format = "upper",
+        strict = strict)
+}
+
+
+
+.setNamesUpperCamel <- function(
+    object,
+    rownames = FALSE,
+    strict = FALSE) {
+    .setNamesCamel(
+        object,
+        format = "upper",
+        rownames = rownames,
+        strict = strict)
+}
+
+
+
+.setNamesUpperCamelNoRownames <- function(object, strict = FALSE) {
+    .setNamesUpperCamel(
+        object,
+        rownames = FALSE,
+        strict = strict)
+}
+
+
+
+.upperCamelVector <- function(
+    object,
+    strict = FALSE) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesUpperCamel(names(object), strict = strict)
+    } else {
+        names <- NULL
+    }
+    object <- .makeNamesUpperCamel(object, strict = strict)
+    names(object) <- names
+    object
+}
+
+
+
+# Methods ======================================================================
 #' @rdname camel
 #' @export
 setMethod(
     "upperCamel",
     signature("ANY"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            strict = strict)
-    }
-)
+    .setNamesUpperCamel)
 
 
 
@@ -19,22 +62,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("character"),
-    function(
-        object,
-        strict = FALSE) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesCamel(
-                object,
-                format = "upper",
-                rownames = FALSE,
-                strict = strict)
-        } else {
-            .makeNamesCamel(
-                object,
-                format = "upper",
-                strict = strict)
-        }
-    })
+    .upperCamelVector)
 
 
 
@@ -43,16 +71,25 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("data.frame"),
-    function(
-        object,
-        rownames = FALSE,
-        strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            rownames = rownames,
-            strict = strict)
-    })
+    .setNamesUpperCamel)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("DataFrame"),
+    .setNamesUpperCamel)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("factor"),
+    .upperCamelVector)
 
 
 
@@ -61,13 +98,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("list"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            rownames = FALSE,
-            strict = strict)
-    })
+    .setNamesUpperCamelNoRownames)
 
 
 
@@ -76,16 +107,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("matrix"),
-    function(
-        object,
-        rownames = FALSE,
-        strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            rownames = rownames,
-            strict = strict)
-    })
+    .setNamesUpperCamel)
 
 
 
@@ -94,10 +116,4 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("tbl_df"),
-    function(object, strict = FALSE) {
-        .setNamesCamel(
-            object,
-            format = "upper",
-            rownames = FALSE,
-            strict = strict)
-    })
+    .setNamesUpperCamelNoRownames)

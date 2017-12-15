@@ -1,10 +1,12 @@
 context("upperCamel")
 
-loadRemoteData("http://basejump.seq.cloud/makeNames.rda", quiet = TRUE)
+load(system.file(
+    file.path("extdata", "makeNames.rda"),
+    package = "basejump"))
 
 test_that("character", {
-    expect_equal(
-        upperCamel(makeNames[["vec"]], strict = FALSE),
+    expect_identical(
+        upperCamel(makeNames[["character"]], strict = FALSE),
         c("HelloWorld",
           "HELLOWORLD",  # improve this?
           "RNAIClones",
@@ -17,8 +19,8 @@ test_that("character", {
           "X123",
           NA)
     )
-    expect_equal(
-        upperCamel(makeNames[["vec"]], strict = TRUE),
+    expect_identical(
+        upperCamel(makeNames[["character"]], strict = TRUE),
         c("HelloWorld",
           "HelloWorld",
           "RnaiClones",
@@ -34,23 +36,24 @@ test_that("character", {
 })
 
 test_that("named character", {
-    expect_equal(
-        upperCamel(makeNames[["namedVec"]], strict = TRUE),
-        c(ItemA = "hello world",
-          ItemB = "HELLO WORLD")
+    expect_identical(
+        upperCamel(makeNames[["namedCharacter"]], strict = TRUE),
+        c("ItemA" = "HelloWorld",
+          "ItemB" = "HelloWorld")
     )
 })
 
 test_that("data.frame", {
     # Sanitize rownames
-    expect_equal(
-        upperCamel(makeNames[["df"]], rownames = TRUE, strict = TRUE) %>%
+    expect_identical(
+        upperCamel(makeNames[["dataFrame"]],
+                   rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "MazdaRx4"
     )
     # Unset rownames (ignore in `.checkRownames()`)
-    expect_equal(
+    expect_identical(
         mtcars %>%
             magrittr::set_rownames(., NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
@@ -61,15 +64,16 @@ test_that("data.frame", {
 
 test_that("matrix", {
     # Sanitize rownames
-    expect_equal(
-        upperCamel(makeNames[["mat"]], rownames = TRUE, strict = TRUE) %>%
+    expect_identical(
+        upperCamel(makeNames[["matrix"]],
+                   rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "MazdaRx4"
     )
     # Unset rownames (ignore in `.checkRownames()`)
-    expect_equal(
-        makeNames[["mat"]] %>%
+    expect_identical(
+        makeNames[["matrix"]] %>%
             magrittr::set_rownames(., NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
@@ -78,8 +82,8 @@ test_that("matrix", {
 })
 
 test_that("tibble", {
-    expect_equal(
-        makeNames[["tbl"]] %>%
+    expect_identical(
+        makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
             upperCamel(strict = TRUE) %>%
             colnames(),
@@ -88,10 +92,10 @@ test_that("tibble", {
 })
 
 test_that("named list", {
-    expect_equal(
-        upperCamel(makeNames[["lst"]], strict = TRUE),
-        list(ItemA = c(1L, 2L),
-             ItemB = c(3L, 4L))
+    expect_identical(
+        upperCamel(makeNames[["list"]], strict = TRUE),
+        list("ItemA" = c(1L, 2L),
+             "ItemB" = c(3L, 4L))
     )
 })
 

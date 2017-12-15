@@ -6,24 +6,40 @@
 #' @inherit dotted
 #'
 #' @examples
-#' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
+#' load(system.file(
+#'     file.path("extdata", "makeNames.rda"),
+#'     package = "basejump"))
 #'
 #' # Character vector
-#' snake(makeNames$vec)
+#' character <- makeNames$character
+#' print(character)
+#' snake(character)
 #'
 #' # Named character vector
-#' snake(makeNames$namedVec)
+#' namedCharacter <- makeNames$namedCharacter
+#' print(namedCharacter)
+#' snake(namedCharacter)
+#'
+#' # Factor
+#' factor <- makeNames$factor
+#' print(factor)
+#' snake(factor)
 #'
 #' # data.frame
-#' snake(makeNames$df, rownames = TRUE)
+#' dataFrame <- makeNames$dataFrame
+#' print(dataFrame)
+#' snake(dataFrame, rownames = FALSE)
+#' snake(dataFrame, rownames = TRUE)
 #'
 #' # Named list
-#' snake(makeNames$lst)
+#' list <- makeNames$list
+#' print(list)
+#' snake(list)
 NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .makeNamesSnake <- function(object) {
     object %>%
         dotted() %>%
@@ -39,22 +55,37 @@ NULL
 #' @importFrom stats setNames
 .setNamesSnake <- function(object, rownames = FALSE) {
     if (.checkNames(object)) {
-        object <- setNames(
-            object,
-            .makeNamesSnake(names(object)))
+        object <- setNames(object, .makeNamesSnake(names(object)))
     }
     if (isTRUE(rownames) &
         .checkRownames(object)) {
-        object <- set_rownames(
-            object,
-            .makeNamesSnake(rownames(object)))
+        rownames(object) <- .makeNamesSnake(rownames(object))
     }
     object
 }
 
 
 
-# Methods ====
+.setNamesSnakeNoRownames <- function(object) {
+    .setNamesSnake(object, rownames = FALSE)
+}
+
+
+
+.snakeVector <- function(object) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesSnake(names(object))
+    } else {
+        names <- NULL
+    }
+    object <- .makeNamesSnake(object)
+    names(object) <- names
+    object
+}
+
+
+
+# Methods ======================================================================
 #' @rdname snake
 #' @export
 setMethod(
@@ -69,13 +100,7 @@ setMethod(
 setMethod(
     "snake",
     signature("character"),
-    function(object) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesSnake(object, rownames = FALSE)
-        } else {
-            .makeNamesSnake(object)
-        }
-    })
+    .snakeVector)
 
 
 
@@ -92,10 +117,26 @@ setMethod(
 #' @export
 setMethod(
     "snake",
+    signature("DataFrame"),
+    .setNamesSnake)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("factor"),
+    .snakeVector)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
     signature("list"),
-    function(object) {
-        .setNamesSnake(object, rownames = FALSE)
-    })
+    .setNamesSnakeNoRownames)
 
 
 
@@ -113,6 +154,4 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    function(object) {
-        .setNamesSnake(object, rownames = FALSE)
-    })
+    .setNamesSnakeNoRownames)

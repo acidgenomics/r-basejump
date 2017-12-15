@@ -33,7 +33,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom stats na.omit
 .removeNAVec <- function(object) {
     na.omit(object)
@@ -49,7 +49,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname removeNA
 #' @export
 setMethod(
