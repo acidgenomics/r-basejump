@@ -10,7 +10,9 @@
 #'   example.
 #'
 #' @examples
-#' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
+#' load(system.file(
+#'     file.path("extdata", "makeNames.rda"),
+#'     package = "basejump"))
 #'
 #' # Character vector
 #' vector <- makeNames$vector
