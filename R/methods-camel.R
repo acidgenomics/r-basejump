@@ -13,20 +13,32 @@
 #' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
 #'
 #' # Character vector
-#' print(makeNames$vec)
-#' camel(makeNames$vec)
-#' upperCamel(makeNames$vec)
+#' vector <- makeNames$vector
+#' print(vector)
+#' camel(vector)
+#' upperCamel(vector)
 #'
 #' # Named character vector
-#' camel(makeNames$namedVec)
-#' upperCamel(makeNames$vec)
+#' namedVector <- makeNames$namedVector
+#' camel(namedVector)
+#' upperCamel(namedVector)
+#'
+#' # Factor
+#' factor <- makeNames$factor
+#' print(factor)
+#' camel(factor)
+#' upperCamel(factor)
 #'
 #' # data.frame
-#' camel(makeNames$df)
-#' camel(makeNames$df, rownames = TRUE)
+#' dataFrame <- makeNames$dataFrame
+#' print(dataFrame)
+#' camel(dataFrame, rownames = FALSE)
+#' camel(dataFrame, rownames = TRUE)
 #'
 #' # Named list
-#' camel(makeNames$lst)
+#' list <- makeNames$list
+#' print(list)
+#' camel(list)
 NULL
 
 
