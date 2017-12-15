@@ -95,13 +95,19 @@
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for list</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -113,13 +119,19 @@
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for list</span>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -143,16 +155,16 @@ will be meaningful.</p></td>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
-      <th>strict</th>
-      <td><p>Enforce strict name sanitization. When <code>TRUE</code>, this does not
-allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-example.</p></td>
-    </tr>
-    <tr>
       <th>rownames</th>
       <td><p>Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.</p></td>
+    </tr>
+    <tr>
+      <th>strict</th>
+      <td><p>Enforce strict name sanitization. When <code>TRUE</code>, this does not
+allow the return of any capitalized acronyms. "RNA" will become "Rna", for
+example.</p></td>
     </tr>
     </table>
     
@@ -181,8 +193,8 @@ modification of the underlying data.</p>
 #&gt;  [5] "Tx2gene"         "TX2GeneID"       "G2MScore"        "WorfdbHTMLRemap"
 #&gt;  [9] "MazdaRX4"        "X123"            NA               </div><div class='input'>
 <span class='co'># Named character vector</span>
-<span class='fu'>camel</span>(<span class='no'>makeNames</span>$<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;         itemA         itemB 
-#&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>makeNames</span>$<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] "HelloWorld"      "HELLOWORLD"      "RNAIClones"      "NCount"         
+<span class='fu'>camel</span>(<span class='no'>makeNames</span>$<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        itemA        itemB 
+#&gt; "helloWorld" "helloWORLD" </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>makeNames</span>$<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] "HelloWorld"      "HELLOWORLD"      "RNAIClones"      "NCount"         
 #&gt;  [5] "Tx2gene"         "TX2GeneID"       "G2MScore"        "WorfdbHTMLRemap"
 #&gt;  [9] "MazdaRX4"        "X123"            NA               </div><div class='input'>
 <span class='co'># data.frame</span>
