@@ -119,3 +119,30 @@ test_that("Legacy", {
         annotable("Homo sapiens", quiet = TRUE)
     )
 })
+
+test_that("GRCh37/hg19", {
+    grch37 <- annotable("Homo sapiens", genomeBuild = "GRCh37")
+    hg19 <- annotable("Homo sapiens", genomeBuild = "hg19")
+    expect_identical(grch37, hg19)
+    expect_identical(grch37, basejump::grch37)
+
+    # gene2symbol
+    gene2symbol <- annotable(
+        "Homo sapiens",
+        genomeBuild = "GRCh37",
+        format = "gene2symbol")
+    expect_identical(
+        basejump::grch37[, c("ensgene", "symbol")],
+        gene2symbol
+    )
+
+    # tx2gene
+    tx2gene <- annotable(
+        "Homo sapiens",
+        genomeBuild = "GRCh37",
+        format = "tx2gene")
+    expect_identical(
+        basejump::grch37Tx2gene,
+        tx2gene
+    )
+})
