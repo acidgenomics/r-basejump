@@ -30,13 +30,13 @@
 #'     package = "basejump"))
 #'
 #' # Character vector
-#' vector <- makeNames$vector
-#' print(vector)
-#' dotted(vector)
+#' character <- makeNames$character
+#' print(character)
+#' dotted(character)
 #'
 #' # Named character vector
-#' namedVector <- makeNames$namedVector
-#' dotted(namedVector)
+#' namedCharacter <- makeNames$namedCharacter
+#' dotted(namedCharacter)
 #'
 #' # Factor
 #' factor <- makeNames$factor
