@@ -33,6 +33,7 @@ Imports:
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9.6),
     methods,
+    pheatmap (>= 1.0.8),
     RCurl (>= 1.95),
     readr (>= 1.1.1),
     readxl (>= 1.0.0),
