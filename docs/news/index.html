@@ -88,6 +88,19 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-1-8-2017-12-14" class="section level1">
+<h1 class="hasAnchor">
+<a href="#basejump-0-1-8-2017-12-14" class="anchor"></a>basejump 0.1.8 (2017-12-14)</h1>
+<ul>
+<li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code>aggregateReplicates()</code> and <code>aggregateFeatures()</code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code>aggregateReplicates()</code> or genes/transcripts (rows) for <code>aggregateFeatures()</code>.</li>
+<li>Update for makeNames sanitization functions. Now they will work on <code>names(x)</code> for vectors by default.</li>
+<li>Improved <code>detectOrganism()</code> to match against “H. sapiens” and “Homo_sapiens”.</li>
+<li>Added internal GRCh37 transcript to gene mapping.</li>
+<li>Improved organism matching to detect “Homo_sapiens” and “H. sapiens”.</li>
+<li>Factors are now supported in the makeNames utilities: <code>camel()</code>, <code>dotted()</code>, <code>snake()</code>, and <code><a href="../reference/camel.html">upperCamel()</a></code>.</li>
+<li>Improved handling of <code>NA</code> values from LibreOffice and Microsoft Excel output in <code>readFileByExtension()</code>.. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
+</ul>
+</div>
     <div id="basejump-0-1-7-2017-12-11" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basejump-0-1-7-2017-12-11" class="anchor"></a>basejump 0.1.7 (2017-12-11)</h1>
@@ -413,6 +426,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-1-8-2017-12-14">0.1.8</a></li>
         <li><a href="#basejump-0-1-7-2017-12-11">0.1.7</a></li>
         <li><a href="#basejump-0-1-6-2017-12-06">0.1.6</a></li>
         <li><a href="#basejump-0-1-5-2017-12-05">0.1.5</a></li>

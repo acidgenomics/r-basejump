@@ -101,6 +101,12 @@
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for list</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>)
 
@@ -153,7 +159,7 @@ modification of the underlying data.</p>
 #&gt; [10] "x123"              NA                 </div><div class='input'>
 <span class='co'># Named character vector</span>
 <span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>namedVec</span>)</div><div class='output co'>#&gt;        item_a        item_b 
-#&gt; "hello world" "HELLO WORLD" </div><div class='input'>
+#&gt; "hello_world" "hello_world" </div><div class='input'>
 <span class='co'># data.frame</span>
 <span class='fu'>snake</span>(<span class='no'>makeNames</span>$<span class='no'>df</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; mazda_rx4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
