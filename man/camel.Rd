@@ -88,21 +88,35 @@ objects supporting name assignments. They return the object without
 modification of the underlying data.
 }
 \examples{
-loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
+load(system.file(
+    file.path("extdata", "makeNames.rda"),
+    package = "basejump"))
 
 # Character vector
-print(makeNames$vec)
-camel(makeNames$vec)
-upperCamel(makeNames$vec)
+character <- makeNames$character
+print(character)
+camel(character)
+upperCamel(character)
 
 # Named character vector
-camel(makeNames$namedVec)
-upperCamel(makeNames$vec)
+namedCharacter <- makeNames$namedCharacter
+camel(namedCharacter)
+upperCamel(namedCharacter)
+
+# Factor
+factor <- makeNames$factor
+print(factor)
+camel(factor)
+upperCamel(factor)
 
 # data.frame
-camel(makeNames$df)
-camel(makeNames$df, rownames = TRUE)
+dataFrame <- makeNames$dataFrame
+print(dataFrame)
+camel(dataFrame, rownames = FALSE)
+camel(dataFrame, rownames = TRUE)
 
 # Named list
-camel(makeNames$lst)
+list <- makeNames$list
+print(list)
+camel(list)
 }
