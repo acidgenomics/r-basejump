@@ -23,7 +23,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname kables
 #' @importFrom knitr asis_output kable opts_knit
 #' @export

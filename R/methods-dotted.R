@@ -25,20 +25,67 @@
 #'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
-#' loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
+#' load(system.file(
+#'     file.path("extdata", "makeNames.rda"),
+#'     package = "basejump"))
 #'
 #' # Character vector
-#' print(makeNames$vec)
-#' dotted(makeNames$vec)
+#' character <- makeNames$character
+#' print(character)
+#' dotted(character)
+#'
+#' # Named character vector
+#' namedCharacter <- makeNames$namedCharacter
+#' dotted(namedCharacter)
+#'
+#' # Factor
+#' factor <- makeNames$factor
+#' print(factor)
+#' dotted(factor)
 #'
 #' # data.frame
-#' print(makeNames$df)
-#' dotted(makeNames$df, rownames = TRUE)
+#' dataFrame <- makeNames$dataFrame
+#' print(dataFrame)
+#' dotted(dataFrame, rownames = FALSE)
+#' dotted(dataFrame, rownames = TRUE)
+#'
+#' # Named list
+#' list <- makeNames$list
+#' print(list)
+#' dotted(list)
 NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
+.checkNames <- function(object) {
+    if (!is.null(names(object))) {
+        TRUE
+    } else {
+        FALSE
+    }
+}
+
+
+
+.checkRownames <- function(object) {
+    if (!is.null(rownames(object))) {
+        # Ignore numbered rownames
+        if (!identical(
+            rownames(object),
+            as.character(seq_len(nrow(object)))
+        )) {
+            TRUE
+        } else {
+            FALSE
+        }
+    } else {
+        FALSE
+    }
+}
+
+
+
 .sanitizeAcronyms <- function(object) {
     object %>%
         # Ensure identifier is "ID"
@@ -65,34 +112,6 @@ NULL
         gsub(x = .,
              pattern = "\\b(RNAi)\\b",
              replacement = "RNAI")
-}
-
-
-
-.checkNames <- function(object) {
-    if (!is.null(names(object))) {
-        TRUE
-    } else {
-        FALSE
-    }
-}
-
-
-
-.checkRownames <- function(object) {
-    if (!is.null(rownames(object))) {
-        # Ignore numbered rownames
-        if (!identical(
-            rownames(object),
-            as.character(seq_len(nrow(object)))
-        )) {
-            TRUE
-        } else {
-            FALSE
-        }
-    } else {
-        FALSE
-    }
 }
 
 
@@ -137,14 +156,33 @@ NULL
         object <- setNames(object, .makeNamesDotted(names(object)))
     }
     if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(object, .makeNamesDotted(rownames(object)))
+        rownames(object) <- .makeNamesDotted(rownames(object))
     }
     object
 }
 
 
 
-# Methods ====
+.setNamesDottedNoRownames <- function(object) {
+    .setNamesDotted(object, rownames = FALSE)
+}
+
+
+
+.dottedVector <- function(object) {
+    if (isTRUE(.checkNames(object))) {
+        names <- .makeNamesDotted(names(object))
+    } else {
+        names <- NULL
+    }
+    object <- .makeNamesDotted(object)
+    names(object) <- names
+    object
+}
+
+
+
+# Methods ======================================================================
 #' @rdname dotted
 #' @export
 setMethod(
@@ -159,13 +197,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    function(object) {
-        if (isTRUE(.checkNames(object))) {
-            .setNamesDotted(object, rownames = FALSE)
-        } else {
-            .makeNamesDotted(object)
-        }
-    })
+    .dottedVector)
 
 
 
@@ -182,10 +214,26 @@ setMethod(
 #' @export
 setMethod(
     "dotted",
+    signature("DataFrame"),
+    .setNamesDotted)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("factor"),
+    .dottedVector)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
     signature("list"),
-    function(object) {
-        .setNamesDotted(object, rownames = FALSE)
-    })
+    .setNamesDottedNoRownames)
 
 
 
@@ -203,6 +251,4 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    function(object) {
-        .setNamesDotted(object, rownames = FALSE)
-    })
+    .setNamesDottedNoRownames)

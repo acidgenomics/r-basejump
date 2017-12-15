@@ -1,12 +1,12 @@
 context("dotted")
 
-loadRemoteData(
-    "http://basejump.seq.cloud/makeNames.rda",
-    quiet = TRUE)
+load(system.file(
+    file.path("extdata", "makeNames.rda"),
+    package = "basejump"))
 
 test_that("character", {
-    expect_equal(
-        dotted(makeNames[["vec"]]),
+    expect_identical(
+        dotted(makeNames[["character"]]),
         c("hello.world",
           "HELLO.WORLD",
           "RNAI.clones",
@@ -22,16 +22,16 @@ test_that("character", {
 })
 
 test_that("named_character", {
-    expect_equal(
-        dotted(makeNames[["namedVec"]]),
-        c(Item.A = "hello world",
-          Item.B = "HELLO WORLD")
+    expect_identical(
+        dotted(makeNames[["namedCharacter"]]),
+        c("Item.A" = "hello.world",
+          "Item.B" = "HELLO.WORLD")
     )
 })
 
 test_that("data.frame", {
-    expect_equal(
-        dotted(makeNames[["df"]], rownames = TRUE) %>%
+    expect_identical(
+        dotted(makeNames[["dataFrame"]], rownames = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
@@ -39,8 +39,8 @@ test_that("data.frame", {
 })
 
 test_that("tibble", {
-    expect_equal(
-        makeNames[["tbl"]] %>%
+    expect_identical(
+        makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
             dotted() %>%
             colnames(),
@@ -52,13 +52,12 @@ test_that("tibble", {
     )
 })
 
-test_that("named list", {
-    expect_equal(
-        dotted(makeNames[["lst"]]),
+test_that("list", {
+    expect_identical(
+        dotted(makeNames[["list"]]),
         list(Item.A = c(1L, 2L),
              Item.B = c(3L, 4L))
     )
-
 })
 
 test_that("missing", {

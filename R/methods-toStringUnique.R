@@ -12,7 +12,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname toStringUnique
 #' @export
 setMethod(

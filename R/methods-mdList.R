@@ -18,7 +18,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom knitr asis_output
 .mdList <- function(
     object,
@@ -47,7 +47,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname mdList
 #' @export
 setMethod(

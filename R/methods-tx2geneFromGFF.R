@@ -25,7 +25,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .gffKeyValuePairs <- function(object) {
     object %>%
         .[[9L]] %>%
@@ -70,7 +70,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname tx2geneFromGFF
 #' @export
 setMethod(

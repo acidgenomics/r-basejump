@@ -7,6 +7,8 @@
 \alias{dotted,ANY-method}
 \alias{dotted,character-method}
 \alias{dotted,data.frame-method}
+\alias{dotted,DataFrame-method}
+\alias{dotted,factor-method}
 \alias{dotted,list-method}
 \alias{dotted,matrix-method}
 \alias{dotted,tbl_df-method}
@@ -19,6 +21,10 @@ dotted(object, ...)
 \S4method{dotted}{character}(object)
 
 \S4method{dotted}{data.frame}(object, rownames = FALSE)
+
+\S4method{dotted}{DataFrame}(object, rownames = FALSE)
+
+\S4method{dotted}{factor}(object)
 
 \S4method{dotted}{list}(object)
 
@@ -55,13 +61,32 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-loadRemoteData("http://basejump.seq.cloud/makeNames.rda")
+load(system.file(
+    file.path("extdata", "makeNames.rda"),
+    package = "basejump"))
 
 # Character vector
-print(makeNames$vec)
-dotted(makeNames$vec)
+character <- makeNames$character
+print(character)
+dotted(character)
+
+# Named character vector
+namedCharacter <- makeNames$namedCharacter
+dotted(namedCharacter)
+
+# Factor
+factor <- makeNames$factor
+print(factor)
+dotted(factor)
 
 # data.frame
-print(makeNames$df)
-dotted(makeNames$df, rownames = TRUE)
+dataFrame <- makeNames$dataFrame
+print(dataFrame)
+dotted(dataFrame, rownames = FALSE)
+dotted(dataFrame, rownames = TRUE)
+
+# Named list
+list <- makeNames$list
+print(list)
+dotted(list)
 }

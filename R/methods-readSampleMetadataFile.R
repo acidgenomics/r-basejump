@@ -31,7 +31,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom dplyr group_by left_join mutate mutate_all mutate_if
 #'   rename ungroup
 #' @importFrom rlang .data sym !!
@@ -179,7 +179,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readSampleMetadataFile
 #' @export
 setMethod(

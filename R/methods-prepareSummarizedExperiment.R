@@ -77,7 +77,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom scales percent
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom tibble column_to_rownames has_rownames
@@ -87,9 +87,9 @@ NULL
     rowData,
     colData,
     metadata) {
-    # Assays ====
-    # Drop any `NULL` items from list. Otherwise we'll get a dimension
-    # mismatch error.
+    # Assays ===================================================================
+    # Drop any `NULL` items from list. Otherwise we'll get a dimension mismatch
+    # error.
     assays <- Filter(Negate(is.null), assays)
     assay <- assays[[1L]]
     if (is.null(dim(assay))) {
@@ -127,7 +127,7 @@ NULL
             ), call. = FALSE)
     }
 
-    # rowData ====
+    # Row data =================================================================
     # Alow rowData to be left unset
     if (missing(rowData)) {
         rowData <- NULL
@@ -171,7 +171,7 @@ NULL
             as("DataFrame")
     }
 
-    # colData ====
+    # Column data ==============================================================
     if (missing(colData) | is.null(colData)) {
         stop("colData is required", call. = FALSE)
     }
@@ -199,7 +199,7 @@ NULL
         set_rownames(colnames(assay)) %>%
         as("DataFrame")
 
-    # Metadata ====
+    # Metadata =================================================================
     if (missing(metadata)) {
         metadata <- list()
     } else {
@@ -213,6 +213,7 @@ NULL
     metadata[["devtoolsSessionInfo"]] <- devtools::session_info()
     metadata[["unannotatedGenes"]] <- unannotatedGenes
 
+    # Return ===================================================================
     SummarizedExperiment(
         assays = assays,
         rowData = rowData,
@@ -222,7 +223,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname prepareSummarizedExperiment
 #' @export
 setMethod(

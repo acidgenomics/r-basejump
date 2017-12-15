@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: c(
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -34,6 +34,7 @@ Imports:
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9.6),
     methods,
+    pheatmap (>= 1.0.8),
     RCurl (>= 1.95),
     readr (>= 1.1.1),
     readxl (>= 1.0.0),

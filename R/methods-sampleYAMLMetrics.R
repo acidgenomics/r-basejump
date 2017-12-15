@@ -18,7 +18,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom dplyr mutate_if
 .sampleYAMLMetrics <- function(yaml) {
     metrics <- sampleYAML(
@@ -45,7 +45,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname sampleYAMLMetrics
 #' @export
 setMethod(

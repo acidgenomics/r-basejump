@@ -40,7 +40,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom stats na.omit
 #' @importFrom stringr str_replace_na
 .collapseToString <- function(
@@ -103,7 +103,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname collapseToString
 #' @export
 setMethod(
