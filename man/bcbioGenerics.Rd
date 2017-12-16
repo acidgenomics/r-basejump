@@ -52,4 +52,3 @@ tpm(object)
 These generics are currently currently in use for both the bcbioRNASeq and
 bcbioSingleCell packages.
 }
-\keyword{internal}
