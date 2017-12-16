@@ -18,7 +18,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname sortUnique
 #' @importFrom stats na.omit
 #' @export

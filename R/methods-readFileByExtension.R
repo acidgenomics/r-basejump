@@ -29,7 +29,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom Matrix readMM
 #' @importFrom stringr str_match
 #' @importFrom readr read_csv read_lines read_tsv
@@ -62,20 +62,43 @@ NULL
     if (!isTRUE(quiet)) {
         message(paste("Reading", names(file)))
     }
+    na <- c("", "NA", "#N/A")
     if (ext == "csv") {
-        data <- readr::read_csv(file, progress = FALSE, ...)
+        data <- readr::read_csv(
+            file = file,
+            na = na,
+            progress = FALSE,
+            ...)
     } else if (ext == "mtx") {
-        data <- Matrix::readMM(file, ...)
+        data <- Matrix::readMM(file = file, ...)
     } else if (ext == "tsv") {
-        data <- readr::read_tsv(file, progress = FALSE, ...)
+        data <- readr::read_tsv(
+            file = file,
+            na = na,
+            progress = FALSE,
+            ...)
     } else if (ext == "txt") {
-        data <- utils::read.table(file, header = TRUE, ...)
+        data <- utils::read.table(
+            file = file,
+            header = TRUE,
+            na.strings = na,
+            ...)
     } else if (ext == "xlsx") {
-        data <- readxl::read_excel(file, ...)
+        data <- readxl::read_excel(
+            path = file,
+            na = na,
+            ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- readr::read_lines(file, ...)
+        data <- readr::read_lines(
+            file = file,
+            na = na,
+            ...)
     } else if (ext == "counts") {
-        data <- readr::read_tsv(file, progress = FALSE, ...) %>%
+        data <- readr::read_tsv(
+            file = file,
+            na = na,
+            progress = FALSE,
+            ...) %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
@@ -100,7 +123,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readFileByExtension
 #' @export
 setMethod(

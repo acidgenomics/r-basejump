@@ -14,7 +14,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .stripTranscriptVersions <- function(object) {
     # Pattern matching against Ensembl transcript IDs
     # http://www.ensembl.org/info/genome/stable_ids/index.html
@@ -35,7 +35,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(

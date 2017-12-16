@@ -7,35 +7,69 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param features Feature identifiers (e.g. gene or transcript IDs). These are
-#'   the rownames of the counts matrix.
+#' @param groupings Feature groupings (e.g. gene or transcript IDs), defined as
+#'   a named factor. The pooled features must be defined as the factor levels,
+#'   and the original features as the names of the factor.
 #'
 #' @return Object of same class with aggregated features (rows).
+#'
+#' @examples
+#' counts <- data.frame(
+#'     "sample1" = c(0, 1, 2, 3),
+#'     "sample2" = c(1, 2, 3, 4),
+#'     row.names = c("gene1.1", "gene1.2", "gene2.1", "gene2.2")
+#' )
+#'
+#' groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
+#' names(groupings) <- rownames(counts)
+#'
+#' # matrix
+#' mat <- as(counts, "matrix")
+#' aggregateFeatures(mat, groupings = groupings)
+#'
+#' # dgCMatrix
+#' dgc <- as(mat, "dgCMatrix")
+#' aggregateFeatures(dgc, groupings = groupings)
 NULL
 
 
 
-# Constructors ====
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateFeaturesSparse <- function(object, features) {
-    if (!identical(length(features), nrow(object))) {
-        stop("'features' length must match the number of rows",
+# Constructors =================================================================
+.aggregateFeaturesDenseMatrix <- function(object, groupings) {
+    if (!is.factor(groupings)) {
+        stop("'groupings' must be factor")
+    }
+    if (!identical(names(groupings), rownames(object))) {
+        stop("'groupings' doesn't match row names",
              call. = FALSE)
     }
-    rownames(object) <- features
-    object <- object[!is.na(rownames(object)), , drop = FALSE]
-    aggregate.Matrix(object, groupings = rownames(object), fun = "sum")
+    rowsum(object, group = groupings, reorder = FALSE)
 }
 
 
 
-# Methods ====
+#' @importFrom Matrix.utils aggregate.Matrix
+.aggregateFeaturesSparseMatrix <- function(object, groupings) {
+    if (!is.factor(groupings)) {
+        stop("'groupings' must be factor")
+    }
+    if (!identical(names(groupings), rownames(object))) {
+        stop("'groupings' doesn't match row names",
+             call. = FALSE)
+    }
+    rownames(object) <- groupings
+    aggregate.Matrix(object, groupings = groupings, fun = "sum")
+}
+
+
+
+# Methods ======================================================================
 #' @rdname aggregateFeatures
 #' @export
 setMethod(
     "aggregateFeatures",
     signature("dgCMatrix"),
-    .aggregateFeaturesSparse)
+    .aggregateFeaturesSparseMatrix)
 
 
 
@@ -43,5 +77,5 @@ setMethod(
 #' @export
 setMethod(
     "aggregateFeatures",
-    signature("dgTMatrix"),
-    .aggregateFeaturesSparse)
+    signature("matrix"),
+    .aggregateFeaturesDenseMatrix)

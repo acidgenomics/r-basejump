@@ -36,7 +36,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 .copyPackageFile <- function(
     object,
     sourceDir,
@@ -62,7 +62,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname prepareTemplate
 #' @export
 setMethod(

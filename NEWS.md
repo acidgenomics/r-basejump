@@ -1,3 +1,15 @@
+# basejump 0.1.8 (2017-12-14)
+
+- Improved `matrix` and `dgCMatrix` method support in `aggregateReplicates()` and `aggregateFeatures()` functions. Both of these functions now use a consistent `groupings` parameter, which uses a named factor to define the mappings of either samples (columns) for `aggregateReplicates()` or genes/transcripts (rows) for `aggregateFeatures()`.
+- Update for makeNames sanitization functions. Now they will work on `names(x)` for vectors by default.
+- Improved `detectOrganism()` to match against "H. sapiens" and "Homo_sapiens".
+- Added internal GRCh37 transcript to gene mapping.
+- Improved organism matching to detect "Homo_sapiens" and "H. sapiens".
+- Factors are now supported in the makeNames utilities: `camel()`, `dotted()`, `snake()`, and `upperCamel()`.
+- Improved handling of `NA` values from LibreOffice and Microsoft Excel output in `readFileByExtension()`.. This function now sets `""`, `NA`, and `#N/A` strings as `NA` correctly.
+
+
+
 # basejump 0.1.7 (2017-12-11)
 
 - Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and `logRatioToFoldChange()`.

@@ -40,7 +40,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom rlang is_string
 .gene2symbol <- function(
     object,
@@ -113,7 +113,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname gene2symbol
 #' @export
 setMethod(

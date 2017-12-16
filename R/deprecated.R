@@ -11,7 +11,7 @@ NULL
 
 
 
-# Legacy ====
+# Legacy =======================================================================
 #' @rdname deprecated
 #' @export
 summarizeRows <- function() {
@@ -26,7 +26,7 @@ wash <- function() {
 
 
 
-# v0.0.23 ====
+# v0.0.23 ======================================================================
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
@@ -45,7 +45,7 @@ prepareSE <- function(...) {
 
 
 
-# v0.0.24 ====
+# v0.0.24 ======================================================================
 #' @rdname deprecated
 #' @export
 metadataTable <- function() {
@@ -54,7 +54,7 @@ metadataTable <- function() {
 
 
 
-# v0.0.25 =====
+# v0.0.25 ======================================================================
 #' @rdname deprecated
 #' @importFrom scales percent
 #' @export
@@ -65,7 +65,7 @@ pct <- function(...) {
 
 
 
-# v0.1.0 ====
+# v0.1.0 =======================================================================
 #' @rdname deprecated
 #' @export
 sampleDirs <- function() {
@@ -74,7 +74,7 @@ sampleDirs <- function() {
 
 
 
-# v 0.1.6 ====
+# v 0.1.6 ======================================================================
 #' @rdname deprecated
 #' @export
 fc2lr <- function(...) {
