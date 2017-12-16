@@ -243,6 +243,14 @@ setGeneric("plotGene", function(object, ...) {
 
 
 
+#' @rdname plotHeatmap
+#' @export
+setGeneric("plotHeatmap", function(object, ...) {
+    standardGeneric("plotHeatmap")
+})
+
+
+
 #' @rdname bcbioGenerics
 #' @export
 setGeneric("plotQC", function(object, ...) {
