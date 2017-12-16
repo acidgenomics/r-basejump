@@ -33,7 +33,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname dots
 #' @importFrom rlang eval_bare
 #' @export

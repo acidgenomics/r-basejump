@@ -1,4 +1,7 @@
-vec <- c(
+extdataDir <- file.path("inst", "extdata")
+dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
+
+character <- c(
     "hello world",
     "HELLO WORLD",
     "RNAi clones",
@@ -8,32 +11,39 @@ vec <- c(
     "G2M.Score",
     "worfdbHTMLRemap",
     "Mazda RX4",
-    123,
+    123L,
     NA)
 
-namedVec <- c(
-    Item.A = "hello world",
-    Item.B = "HELLO WORLD")
+namedCharacter <- c(
+    "Item.A" = "hello world",
+    "Item.B" = "HELLO WORLD")
 
-df <- head(mtcars)
+factor <- factor(
+    c("sample 1" = "group 1",
+      "sample 2" = "group 1",
+      "sample 3" = "group 2",
+      "sample 4" = "group 2"))
 
-mat <- as.matrix(df)
+dataFrame <- head(mtcars)
 
-tbl <- head(starwars)
+matrix <- as.matrix(dataFrame)
 
-lst <- list(
-    Item.A = c(1, 2),
-    Item.B = c(3, 4))
+tibble <- head(starwars)
+
+list <- list(
+    "Item.A" = c(1L, 2L),
+    "Item.B" = c(3L, 4L))
 
 makeNames <- list(
-    vec = vec,
-    namedVec = namedVec,
-    df = df,
-    mat = mat,
-    tbl = tbl,
-    lst = lst
-)
+    "character" = character,
+    "namedCharacter" = namedCharacter,
+    "factor" = factor,
+    "dataFrame" = dataFrame,
+    "matrix" = matrix,
+    "tibble" = tibble,
+    "list" = list)
+lapply(makeNames, class)
 
 save(makeNames,
-     file = "~/Desktop/makeNames.rda",
+     file = file.path(extdataDir, "makeNames.rda"),
      compress = "xz")

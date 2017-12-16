@@ -121,6 +121,7 @@
 <li><p><em>Homo sapiens</em> (human)</p></li>
 <li><p><em>Mus musculus</em> (mouse)</p></li>
 <li><p><em>Rattus norvegicus</em> (rat)</p></li>
+<li><p><em>Danio rerio</em> (zebrafish)</p></li>
 <li><p><em>Drosophila melanogaster</em> (fruitfly)</p></li>
 <li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
 <li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
@@ -139,13 +140,15 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># H. sapiens</span>
 <span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)</div><div class='output co'>#&gt;          human 
-#&gt; "Homo sapiens" </div><span class='co'># NOT RUN {</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)
-<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)
-<span class='fu'>detectOrganism</span>(<span class='st'>"Homo sapiens"</span>)
-<span class='fu'>detectOrganism</span>(<span class='st'>"Hsapiens"</span>)
-<span class='fu'>detectOrganism</span>(<span class='st'>"human"</span>)
-<span class='co'># }</span><div class='input'>
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Homo_sapiens"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"H sapiens"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"Hsapiens"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"human"</span>)</div><div class='output co'>#&gt;          human 
+#&gt; "Homo sapiens" </div><div class='input'>
 <span class='co'># Unsupported organism</span>
 <span class='fu'>detectOrganism</span>(<span class='st'>"XXX"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Failed to detect supported organism</span></div><div class='output co'>#&gt; NULL</div></pre>
   </div>

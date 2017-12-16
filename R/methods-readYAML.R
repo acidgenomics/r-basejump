@@ -23,7 +23,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname readYAML
 #' @importFrom yaml yaml.load_file
 #' @export

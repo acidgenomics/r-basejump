@@ -23,7 +23,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom knitr asis_output
 #' @importFrom stringr str_dup
 .mdHeader <- function(
@@ -54,7 +54,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname mdHeader
 #' @export
 setMethod(

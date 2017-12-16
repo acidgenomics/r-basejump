@@ -7,38 +7,77 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param cells Cellular barcode identifiers. These are the colnames of the
-#'   counts matrix.
+#' @param groupings Factor that defines the aggregation groupings. The new
+#'   aggregation names are defined as the factor levels, and the original
+#'   replicates are defined as the names of the factor.
 #'
-#' @return Object of same class with aggregated counts per pooled sample
-#'   (columns).
+#' @return Object with aggregated counts per pooled sample (columns).
+#'
+#' @examples
+#' counts <- data.frame(
+#'     sample1_rep1 = c(0, 0, 0, 1, 2),
+#'     sample1_rep2 = c(0, 0, 0, 3, 4),
+#'     sample2_rep1 = c(1, 2, 0, 0, 0),
+#'     sample2_rep2 = c(3, 4, 0, 0, 0)
+#' )
+#'
+#' groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
+#' names(groupings) <- colnames(counts)
+#'
+#' # matrix
+#' mat <- as(counts, "matrix")
+#' aggregateReplicates(mat, groupings = groupings)
+#'
+#' # dgCMatrix
+#' dgc <- as(mat, "dgCMatrix")
+#' aggregateReplicates(dgc, groupings = groupings)
 NULL
 
 
 
-# Constructors ====
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateReplicatesSparse <- function(object, cells) {
-    if (!identical(length(cells), ncol(object))) {
-        stop("'cells' length must match the number of columns",
+# Constructors =================================================================
+.aggregateReplicatesDenseMatrix <- function(object, groupings) {
+    if (!is.factor(groupings)) {
+        stop("'groupings' must be factor")
+    }
+    if (!identical(names(groupings), colnames(object))) {
+        stop("'groupings' doesn't match column names",
              call. = FALSE)
     }
-    tsparse <- Matrix::t(object)
-    rownames(tsparse) <- cells
-    tsparse <- aggregate.Matrix(tsparse, groupings = cells, fun = "sum")
-    sparse <- Matrix::t(tsparse)
-    sparse
+    t <- t(object)
+    rownames(t) <- groupings
+    tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
+    agg <- t(tagg)
+    agg
 }
 
 
 
-# Methods ====
+#' @importFrom Matrix.utils aggregate.Matrix
+.aggregateReplicatesSparseMatrix <- function(object, groupings) {
+    if (!is.factor(groupings)) {
+        stop("'groupings' must be factor")
+    }
+    if (!identical(names(groupings), colnames(object))) {
+        stop("'groupings' doesn't match column names",
+             call. = FALSE)
+    }
+    t <- Matrix::t(object)
+    rownames(t) <- groupings
+    tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
+    agg <- Matrix::t(tagg)
+    agg
+}
+
+
+
+# Methods ======================================================================
 #' @rdname aggregateReplicates
 #' @export
 setMethod(
     "aggregateReplicates",
     signature("dgCMatrix"),
-    .aggregateReplicatesSparse)
+    .aggregateReplicatesSparseMatrix)
 
 
 
@@ -46,5 +85,5 @@ setMethod(
 #' @export
 setMethod(
     "aggregateReplicates",
-    signature("dgTMatrix"),
-    .aggregateReplicatesSparse)
+    signature("matrix"),
+    .aggregateReplicatesDenseMatrix)

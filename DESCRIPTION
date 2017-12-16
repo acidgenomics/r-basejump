@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: c(
     person("Michael", "Steinbaugh",
            email = "mike@steinbaugh.com",
@@ -24,6 +24,7 @@ Imports:
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
     datasets,
+    dendsort,
     devtools (>= 1.13.4),
     dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
@@ -33,6 +34,7 @@ Imports:
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9.6),
     methods,
+    pheatmap (>= 1.0.8),
     RCurl (>= 1.95),
     readr (>= 1.1.1),
     readxl (>= 1.0.0),
@@ -47,6 +49,7 @@ Imports:
     tidyr (>= 0.7.2),
     tools,
     utils,
+    viridis,
     yaml
 Suggests:
     BiocStyle (>= 2.4.1),

@@ -25,7 +25,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom dplyr arrange mutate
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data sym !!
@@ -75,7 +75,7 @@ NULL
 
 
 
-# Methods ====
+# Methods ======================================================================
 #' @rdname gene2symbolFromGFF
 #' @export
 setMethod(

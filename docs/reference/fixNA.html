@@ -134,9 +134,9 @@
     <pre class="examples"><div class='input'><span class='fu'>fixNA</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>))</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
 <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
            <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)) <span class='kw'>%&gt;%</span>
-    <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;      a    b
-#&gt; 1  foo &lt;NA&gt;
-#&gt; 2 &lt;NA&gt;  bar</div></pre>
+    <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;     a    b
+#&gt; 1 foo &lt;NA&gt;
+#&gt; 2      bar</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

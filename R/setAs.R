@@ -18,7 +18,7 @@ NULL
 
 
 
-# Constructors ====
+# Constructors =================================================================
 #' @importFrom tibble as_tibble has_rownames rownames_to_column
 .asTibble <- function(from) {
     if (is.null(dim(from))) {
@@ -33,7 +33,7 @@ NULL
 
 
 
-# setAs ====
+# Methods ======================================================================
 # We may want to manually define the classes here in a stricter manner in
 # the future (e.g. `DataFrame`, `data.frame`, `Matrix`, `matrix`, `dgCMatrix`).
 setAs("ANY", "tbl_df", .asTibble)

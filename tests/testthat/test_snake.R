@@ -1,10 +1,12 @@
 context("snake")
 
-loadRemoteData("http://basejump.seq.cloud/makeNames.rda", quiet = TRUE)
+load(system.file(
+    file.path("extdata", "makeNames.rda"),
+    package = "basejump"))
 
 test_that("character", {
-    vec <- snake(makeNames[["vec"]])
-    expect_equal(
+    vec <- snake(makeNames[["character"]])
+    expect_identical(
         vec,
         c("hello_world",
           "hello_world",
@@ -21,30 +23,30 @@ test_that("character", {
 })
 
 test_that("named character", {
-    vec <- snake(makeNames[["namedVec"]])
-    expect_equal(
+    vec <- snake(makeNames[["namedCharacter"]])
+    expect_identical(
         vec,
-        c(item_a = "hello world",
-          item_b = "HELLO WORLD")
+        c("item_a" = "hello_world",
+          "item_b" = "hello_world")
     )
 })
 
 test_that("data.frame", {
-    string <- snake(makeNames[["df"]], rownames = TRUE) %>%
+    string <- snake(makeNames[["dataFrame"]], rownames = TRUE) %>%
         rownames() %>%
         .[[1L]]
-    expect_equal(
+    expect_identical(
         string,
         "mazda_rx4"
     )
 })
 
 test_that("tibble", {
-    vec <- makeNames[["tbl"]] %>%
+    vec <- makeNames[["tibble"]] %>%
         .[, 1L:5L] %>%
         snake() %>%
         colnames()
-    expect_equal(
+    expect_identical(
         vec,
         c("name",
           "height",
@@ -55,11 +57,11 @@ test_that("tibble", {
 })
 
 test_that("named list", {
-    lst <- snake(makeNames[["lst"]])
-    expect_equal(
+    lst <- snake(makeNames[["list"]])
+    expect_identical(
         lst,
-        list(item_a = c(1L, 2L),
-             item_b = c(3L, 4L))
+        list("item_a" = c(1L, 2L),
+             "item_b" = c(3L, 4L))
     )
 })
 
@@ -70,8 +72,9 @@ test_that("missing", {
             e[["message"]]
         }
     )
-    expect_equal(
+    expect_identical(
         message,
         "argument \"object\" is missing, with no default"
     )
 })
+
