@@ -443,6 +443,14 @@ setGeneric("toStringUnique", function(object, ...) {
 
 
 
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("tpm", function(object) {
+    standardGeneric("tpm")
+})
+
+
+
 #' @rdname tx2gene
 #' @export
 setGeneric("tx2gene", function(object, ...) {
