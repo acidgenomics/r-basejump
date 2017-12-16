@@ -14,6 +14,7 @@
 \alias{plotViolin}
 \alias{sampleMetadata}
 \alias{selectSamples}
+\alias{tpm}
 \title{bcbio S4 Generics}
 \usage{
 bcbio(object, ...)
@@ -39,6 +40,8 @@ plotViolin(object, ...)
 sampleMetadata(object, ...)
 
 selectSamples(object, ...)
+
+tpm(object)
 }
 \arguments{
 \item{object}{Object.}
