@@ -19,7 +19,6 @@ NULL
 #'
 #' @rdname bcbioGenerics
 #' @name bcbioGenerics
-#' @keywords internal
 #'
 #' @inheritParams AllGenerics
 NULL
