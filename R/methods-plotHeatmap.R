@@ -49,6 +49,11 @@ NULL
     ...) {
     counts <- as.matrix(object)
 
+    # Drop rows that are all zero, when row scaling is applied
+    if (scale == "row") {
+        counts <- counts[rowSums(counts) > 0, , drop = FALSE]
+    }
+
     if (nrow(counts) < 2) {
         stop("Need at least 2 rows to plot heatmap", call. = FALSE)
     }
