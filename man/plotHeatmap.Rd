@@ -11,7 +11,7 @@ plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{matrix}(object, annotationCol = NULL, scale = "row",
   color = viridis::viridis(256), legendColor = viridis::viridis,
-  title = NULL, quiet = FALSE, ...)
+  title = NULL, ...)
 }
 \arguments{
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
