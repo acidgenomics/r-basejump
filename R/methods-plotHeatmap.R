@@ -47,22 +47,21 @@ NULL
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
-    counts <- as.matrix(object)
-
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
-        counts <- counts[rowSums(counts) > 0, , drop = FALSE]
+        object <- object %>%
+            .[rowSums(.) > 0, , drop = FALSE]
     }
 
-    if (nrow(counts) < 2) {
+    if (nrow(object) < 2) {
         stop("Need at least 2 rows to plot heatmap", call. = FALSE)
     }
-    if (ncol(counts) < 2) {
+    if (ncol(object) < 2) {
         stop("Need at least 2 columns to plot heatmap", call. = FALSE)
     }
 
     # Convert Ensembl gene identifiers to symbol names, if necessary
-    if (nrow(counts) <= 100) {
+    if (nrow(object) <= 100) {
         showRownames <- TRUE
     } else {
         showRownames <- FALSE
@@ -72,7 +71,7 @@ NULL
     if (!is.null(annotationCol)) {
         annotationCol <- annotationCol %>%
             as.data.frame() %>%
-            .[rownames(counts), , drop = FALSE] %>%
+            .[colnames(object), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
@@ -107,7 +106,7 @@ NULL
     }
 
     pheatmap(
-        mat = counts,
+        mat = object,
         annotation_col = annotationCol,
         annotation_colors = annotationColors,
         border_color = NA,
