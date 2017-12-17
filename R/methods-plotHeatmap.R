@@ -46,7 +46,6 @@ NULL
     color = viridis::viridis(256),
     legendColor = viridis::viridis,
     title = NULL,
-    quiet = FALSE,
     ...) {
     counts <- as.matrix(object)
 
