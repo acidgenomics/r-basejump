@@ -68,17 +68,11 @@ NULL
         showRownames <- FALSE
     }
 
-    # Prepare the annotation columns
+    # Prepare the annotation columns, if necessary
     if (!is.null(annotationCol)) {
-        # Check for colnames mismatch
-        if (!identical(rownames(annotationCol), colnames(counts))) {
-            stop(paste(
-                "Name mismatch between counts matrix colnames",
-                "and 'annotationCol' rownames."
-            ), call. = FALSE)
-        }
         annotationCol <- annotationCol %>%
             as.data.frame() %>%
+            .[rownames(counts), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
