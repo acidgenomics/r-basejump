@@ -9,26 +9,12 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{matrix}(object, genes = NULL, gene2symbol = TRUE,
-  annotationCol = NULL, scale = "row", color = viridis::viridis(256),
-  legendColor = viridis::viridis, title = NULL, quiet = FALSE, ...)
+\S4method{plotHeatmap}{matrix}(object, annotationCol = NULL, scale = "row",
+  color = viridis::viridis(256), legendColor = viridis::viridis,
+  title = NULL, quiet = FALSE, ...)
 }
 \arguments{
-\item{object}{Object.}
-
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
-
-\item{genes}{\emph{Optional}. Character vector of gene identifiers to plot. These
-must be the stable identifiers (e.g. ENSG00000000003) used on Ensembl and
-not the gene symbols.}
-
-\item{gene2symbol}{Apply gene identifier to symbol mappings. If set \code{TRUE},
-the function will attempt to automatically map gene identifiers to symbols
-from Ensembl using \code{\link[=annotable]{annotable()}}. If set \code{FALSE}/\code{NULL}, then gene2symbol
-mapping will be disabled. This is useful when working with a poorly
-annotated genome. Alternatively, a gene2symbol \link{data.frame} can be passed
-in, and must contain the columns \code{ensgene} and \code{symbol}. then the Ensembl
-gene identifiers will be labeled in place of gene symbols.}
 
 \item{annotationCol}{\emph{Optional}. \link{data.frame} that specifies the annotations
 shown on the right side of the heatmap. Each row of this \link{data.frame}
@@ -45,17 +31,18 @@ palette.}
 \code{\link[viridis:viridis]{viridis::viridis()}} palette.}
 
 \item{title}{\emph{Optional}. Plot title.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Graphical output only.
+\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} return \link{list}, containing \code{gtable}.
 }
 \description{
-Construct a heatmap by plotting of a specified set of genes. By default, row-
-and column-wise hierarchical clustering is performed using the Ward method,
-but this behavior can be overrided by setting \code{cluster_rows} or
-\code{cluster_cols} to \code{FALSE}.
+Construct a simple heatmap. By default, row- and column-wise hierarchical
+clustering is performed using the Ward method, but this behavior can be
+overrided by setting \code{cluster_rows} or \code{cluster_cols} to \code{FALSE}.
+}
+\examples{
+mat <- as.matrix(mtcars)
+plotHeatmap(mat)
 }
 \seealso{
 \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
