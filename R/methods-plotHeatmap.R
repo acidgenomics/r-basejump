@@ -42,7 +42,9 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom dplyr mutate_all
+#' @importFrom grDevices colorRampPalette
 #' @importFrom pheatmap pheatmap
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom stats setNames
 #' @importFrom tibble column_to_rownames rownames_to_column
 #' @importFrom viridis viridis
