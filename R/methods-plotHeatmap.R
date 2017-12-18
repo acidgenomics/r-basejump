@@ -7,6 +7,8 @@
 #' @rdname plotHeatmap
 #' @name plotHeatmap
 #'
+#' @inheritParams AllGenerics
+#'
 #' @param annotationCol *Optional*. [data.frame] that specifies the annotations
 #'   shown on the right side of the heatmap. Each row of this [data.frame]
 #'   defines the features of the heatmap columns.

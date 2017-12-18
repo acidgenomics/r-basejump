@@ -47,6 +47,8 @@ tpm(object)
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{value}{Value to assign.}
 }
 \description{
 These generics are currently currently in use for both the bcbioRNASeq and
