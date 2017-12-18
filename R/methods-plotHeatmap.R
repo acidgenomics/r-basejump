@@ -9,9 +9,8 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param annotationCol *Optional*. [data.frame] that specifies the annotations
-#'   shown on the right side of the heatmap. Each row of this [data.frame]
-#'   defines the features of the heatmap columns.
+#' @param annotationCol *Optional*. [data.frame] that defines annotation
+#'   mappings for the columns.
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding
 #'   values are "row", "column" and "none".
@@ -43,7 +42,7 @@ NULL
 #' @importFrom viridis viridis
 .plotHeatmap <- function(
     object,
-    annotationCol = NULL,
+    annotationCol = NA,
     scale = "row",
     color = viridis::viridis(256),
     legendColor = viridis::viridis,
@@ -62,21 +61,17 @@ NULL
         stop("Need at least 2 columns to plot heatmap", call. = FALSE)
     }
 
-    # Convert Ensembl gene identifiers to symbol names, if necessary
-    if (nrow(object) <= 100) {
-        showRownames <- TRUE
-    } else {
-        showRownames <- FALSE
-    }
-
-    # Prepare the annotation columns, if necessary
-    if (!is.null(annotationCol)) {
+    # Prepare the annotation columns, if necessary. Check for `dim()` here
+    # so we can support input of `DataFrame` class objects.
+    if (!is.null(dim(annotationCol))) {
         annotationCol <- annotationCol %>%
             as.data.frame() %>%
             .[colnames(object), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
+    } else {
+        annotationCol <- NA
     }
 
     # Define colors for each annotation column, if desired
@@ -97,14 +92,26 @@ NULL
         annotationColors <- NULL
     }
 
-    # pheatmap will error if `NULL` title is passed as `main`
-    if (is.null(title)) {
-        title <- ""
-    }
-
     # If `color = NULL`, use the pheatmap default
     if (!is.character(color)) {
         color <- colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(100)
+    }
+
+    # Dynamic column and row labeling
+    if (ncol(object) <= 50) {
+        showColnames <- TRUE
+    } else{
+        showColnames <- FALSE
+    }
+    if (nrow(object) <= 50) {
+        showRownames <- TRUE
+    } else {
+        showRownames = FALSE
+    }
+
+    # pheatmap will error if `NULL` title is passed as `main`
+    if (is.null(title)) {
+        title <- ""
     }
 
     pheatmap(
