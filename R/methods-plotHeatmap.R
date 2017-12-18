@@ -9,11 +9,15 @@
 #'
 #' @inheritParams AllGenerics
 #'
-#' @param annotationCol *Optional*. [data.frame] that defines annotation
-#'   mappings for the columns.
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding
 #'   values are "row", "column" and "none".
+#' @param annotationCol *Optional*. [data.frame] that defines annotation
+#'   mappings for the columns.
+#' @param clusterCols Logical determining if columns should be arranged with
+#'   hierarchical clustering. Alternatively, can define an `hclust` object.
+#' @param clusterRows Logical determining if rows should be arranged with
+#'   hierarchical clustering. Alternatively, can define an `hclust` object.
 #' @param color Colors to use for plot. Defaults to the [viridis::viridis()]
 #'   palette.
 #' @param legendColor Colors to use for legend labels. Defaults to the
@@ -42,8 +46,10 @@ NULL
 #' @importFrom viridis viridis
 .plotHeatmap <- function(
     object,
-    annotationCol = NA,
     scale = "row",
+    annotationCol = NA,
+    clusterCols = TRUE,
+    clusterRows = TRUE,
     color = viridis::viridis(256),
     legendColor = viridis::viridis,
     title = NULL,
@@ -119,6 +125,8 @@ NULL
         annotation_col = annotationCol,
         annotation_colors = annotationColors,
         border_color = NA,
+        cluster_cols = clusterCols,
+        cluster_rows = clusterRows,
         color = color,
         main = title,
         scale = scale,
