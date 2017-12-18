@@ -28,6 +28,12 @@ plotQuantileHeatmap(object, ...)
 \item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
 mappings for the columns.}
 
+\item{clusterCols}{Logical determining if columns should be arranged with
+hierarchical clustering. Alternatively, can define an \code{hclust} object.}
+
+\item{clusterRows}{Logical determining if rows should be arranged with
+hierarchical clustering. Alternatively, can define an \code{hclust} object.}
+
 \item{color}{Colors to use for plot. Defaults to the \code{\link[viridis:viridis]{viridis::viridis()}}
 palette.}
 

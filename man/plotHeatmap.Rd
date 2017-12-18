@@ -9,21 +9,27 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{matrix}(object, annotationCol = NA, scale = "row",
-  color = viridis::viridis(256), legendColor = viridis::viridis,
-  title = NULL, ...)
+\S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NA,
+  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis(256),
+  legendColor = viridis::viridis, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
 
-\item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
-mappings for the columns.}
-
 \item{scale}{Character indicating if the values should be centered and scaled
 in either the row direction or the column direction, or none. Corresponding
 values are "row", "column" and "none".}
+
+\item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
+mappings for the columns.}
+
+\item{clusterCols}{Logical determining if columns should be arranged with
+hierarchical clustering. Alternatively, can define an \code{hclust} object.}
+
+\item{clusterRows}{Logical determining if rows should be arranged with
+hierarchical clustering. Alternatively, can define an \code{hclust} object.}
 
 \item{color}{Colors to use for plot. Defaults to the \code{\link[viridis:viridis]{viridis::viridis()}}
 palette.}
