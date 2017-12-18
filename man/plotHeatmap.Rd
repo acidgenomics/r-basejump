@@ -9,7 +9,7 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{matrix}(object, annotationCol = NULL, scale = "row",
+\S4method{plotHeatmap}{matrix}(object, annotationCol = NA, scale = "row",
   color = viridis::viridis(256), legendColor = viridis::viridis,
   title = NULL, ...)
 }
@@ -18,9 +18,8 @@ plotHeatmap(object, ...)
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
 
-\item{annotationCol}{\emph{Optional}. \link{data.frame} that specifies the annotations
-shown on the right side of the heatmap. Each row of this \link{data.frame}
-defines the features of the heatmap columns.}
+\item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
+mappings for the columns.}
 
 \item{scale}{Character indicating if the values should be centered and scaled
 in either the row direction or the column direction, or none. Corresponding
