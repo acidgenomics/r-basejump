@@ -14,6 +14,8 @@ plotHeatmap(object, ...)
   title = NULL, ...)
 }
 \arguments{
+\item{object}{Object.}
+
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
 
 \item{annotationCol}{\emph{Optional}. \link{data.frame} that specifies the annotations
