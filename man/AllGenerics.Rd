@@ -10,6 +10,8 @@
 
 \item{y}{Secondary object.}
 
+\item{value}{Value to assign.}
+
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \description{
