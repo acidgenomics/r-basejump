@@ -219,6 +219,14 @@ setGeneric("mdList", function(object, ...) {
 
 
 
+#' @rdname mdPlotlist
+#' @export
+setGeneric("mdPlotlist", function(object, ...) {
+    standardGeneric("mdPlotlist")
+})
+
+
+
 #' @rdname bcbioGenerics
 #' @export
 setGeneric("metrics", function(object, ...) {
