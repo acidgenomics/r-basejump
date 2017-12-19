@@ -11,7 +11,7 @@
 annotable(object, ...)
 
 \S4method{annotable}{character}(object, format = "gene", genomeBuild = NULL,
-  release = NULL, quiet = FALSE)
+  release = NULL, uniqueSymbols = TRUE, quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
 }
@@ -30,6 +30,8 @@ supported.}
 
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
+
+\item{uniqueSymbols}{Make gene symbols unique. Recommended by default.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
