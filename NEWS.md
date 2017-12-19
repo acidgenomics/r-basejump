@@ -1,3 +1,12 @@
+# basejump 0.1.9 (2017-12-18)
+
+- Added `plotHeatmap()` functionality.
+- Migrated `tpm()` generic from bcbioRNASeq, for future use in bcbioSingleCell.
+- Added matrix method support for `plotHeatmap()`.
+- Added matrix method support for `plotQuantileHeatmap()`, which works similarly as `plotHeatmap()`.
+
+
+
 # basejump 0.1.8 (2017-12-14)
 
 - Improved `matrix` and `dgCMatrix` method support in `aggregateReplicates()` and `aggregateFeatures()` functions. Both of these functions now use a consistent `groupings` parameter, which uses a named factor to define the mappings of either samples (columns) for `aggregateReplicates()` or genes/transcripts (rows) for `aggregateFeatures()`.
