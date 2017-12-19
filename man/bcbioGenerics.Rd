@@ -14,6 +14,7 @@
 \alias{plotViolin}
 \alias{sampleMetadata}
 \alias{selectSamples}
+\alias{tpm}
 \title{bcbio S4 Generics}
 \usage{
 bcbio(object, ...)
@@ -39,14 +40,17 @@ plotViolin(object, ...)
 sampleMetadata(object, ...)
 
 selectSamples(object, ...)
+
+tpm(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{value}{Value to assign.}
 }
 \description{
 These generics are currently currently in use for both the bcbioRNASeq and
 bcbioSingleCell packages.
 }
-\keyword{internal}
