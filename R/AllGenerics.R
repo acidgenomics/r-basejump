@@ -117,6 +117,14 @@ setGeneric("dotted", function(object, ...) {
 
 
 
+#' @rdname dynamicPlotlist
+#' @export
+setGeneric("dynamicPlotlist", function(object, ...) {
+    standardGeneric("dynamicPlotlist")
+})
+
+
+
 #' @rdname logRatio
 #' @export
 setGeneric("foldChangeToLogRatio", function(object, ...) {
