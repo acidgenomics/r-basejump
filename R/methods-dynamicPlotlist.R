@@ -29,11 +29,11 @@ NULL
     }
 
     if (return == "grid") {
-        plot_grid(plotlist = plotlist)
+        plot_grid(plotlist = object)
     } else if (return == "list") {
-        plotlist
+        object
     } else if (return == "markdown") {
-        mdPlotlist(plotlist, headerLevel = headerLevel)
+        mdPlotlist(object, headerLevel = headerLevel)
     }
 }
 
