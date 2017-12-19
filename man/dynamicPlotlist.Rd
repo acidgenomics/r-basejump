@@ -13,7 +13,7 @@ dynamicPlotlist(object, ...)
 }
 \arguments{
 \item{headerLevel}{Markdown header level. Only applicable when
-\code{return = "markdown}.}
+\code{return = "markdown"}.}
 }
 \value{
 \itemize{

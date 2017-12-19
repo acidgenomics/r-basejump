@@ -5,7 +5,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @param headerLevel Markdown header level. Only applicable when
-#'   `return = "markdown`.
+#'   `return = "markdown"`.
 #'
 #' @return
 #' - `grid`: [cowplot::plot_grid()].
@@ -21,6 +21,13 @@ NULL
     object,
     return = "grid",
     headerLevel = 2L) {
+    validReturn <- c("grid", "list", "markdown")
+    if (!return %in% validReturn) {
+        stop(paste(
+            "'return' must contain:", toString(validReturn)
+        ), call. = FALSE)
+    }
+
     if (return == "grid") {
         plot_grid(plotlist = plotlist)
     } else if (return == "list") {
