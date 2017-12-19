@@ -78,7 +78,7 @@ NULL
     # Determine whether the samples are multiplexed, based on the presence
     # of duplicate values in the `description` column
     if (any(duplicated(metadata[["fileName"]])) |
-        "index" %in% colnames(metadata)) {
+        "sequence" %in% colnames(metadata)) {
         multiplexed <- TRUE
     } else {
         multiplexed <- FALSE
