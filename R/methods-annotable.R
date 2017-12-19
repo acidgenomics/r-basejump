@@ -46,6 +46,7 @@
 #'   supported.
 #' @param release *Optional*. Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
+#' @param uniqueSymbols Make gene symbols unique. Recommended by default.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
@@ -81,6 +82,7 @@ NULL
     format = "gene",
     genomeBuild = NULL,
     release = NULL,
+    uniqueSymbols = TRUE,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -184,7 +186,7 @@ NULL
     }
 
     if (format == "gene") {
-        annotable <- genes(
+        data <- genes(
             edb,
             return.type = "data.frame") %>%
             # Use `symbol` column instead
@@ -194,16 +196,18 @@ NULL
                 biotype = .data[["gene_biotype"]]) %>%
             .prepareAnnotable()
     } else if (format == "gene2symbol") {
-        annotable <- genes(
+        data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = "data.frame") %>%
-            rename(ensgene = .data[["gene_id"]]) %>%
+            rename(ensgene = .data[["gene_id"]])
+        if (isTRUE(uniqueSymbols)) {
             # Ensure unique symbols (e.g. human, mouse)
-            mutate(symbol = make.unique(.data[["symbol"]])) %>%
-            set_rownames(.[["ensgene"]])
+            data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
+        }
+        rownames(data) <- data[["ensgene"]]
     } else if (format == "tx2gene") {
-        annotable <- transcripts(
+        data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = "data.frame") %>%
@@ -212,7 +216,7 @@ NULL
                 ensgene = .data[["gene_id"]]) %>%
             set_rownames(.[["enstxp"]])
     }
-    annotable
+    data
 }
 
 
