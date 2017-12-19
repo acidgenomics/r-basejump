@@ -7,6 +7,7 @@
 #' @param object Object.
 #' @param x Primary object.
 #' @param y Secondary object.
+#' @param value Value to assign.
 #' @param ... *Additional arguments (for the S4 generic definition).*
 NULL
 
@@ -19,7 +20,6 @@ NULL
 #'
 #' @rdname bcbioGenerics
 #' @name bcbioGenerics
-#' @keywords internal
 #'
 #' @inheritParams AllGenerics
 NULL
@@ -243,6 +243,14 @@ setGeneric("plotGene", function(object, ...) {
 
 
 
+#' @rdname plotHeatmap
+#' @export
+setGeneric("plotHeatmap", function(object, ...) {
+    standardGeneric("plotHeatmap")
+})
+
+
+
 #' @rdname bcbioGenerics
 #' @export
 setGeneric("plotQC", function(object, ...) {
@@ -431,6 +439,14 @@ setGeneric("symbol2gene", function(object, ...) {
 #' @export
 setGeneric("toStringUnique", function(object, ...) {
     standardGeneric("toStringUnique")
+})
+
+
+
+#' @rdname bcbioGenerics
+#' @export
+setGeneric("tpm", function(object) {
+    standardGeneric("tpm")
 })
 
 

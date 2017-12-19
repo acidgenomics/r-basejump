@@ -5,15 +5,12 @@
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @inheritParams AllGenerics
+#' @inheritParams plotHeatmap
 #'
-#' @param object Matrix of data.
 #' @param n The number of breaks to create.
-#' @param annotationCol Column annotations [data.frame].
-#' @param clusterRows Perform row clustering.
-#' @param clusterCols Perform column clustering.
-#' @param color Color palette function.
 #'
-#' @return [pheatmap::pheatmap()].
+#' @return Show heatmap. Invisibly return [list] containing breaks and
+#'   [pheatmap::pheatmap()] `gtable`.
 NULL
 
 
@@ -28,15 +25,11 @@ NULL
 #'
 #' @param x Numeric vector.
 #' @param n The number of breaks to create.
-#' @param unique Only return unique quantiles.
 #'
 #' @return A vector of `n` quantile breaks.
-.quantileBreaks <- function(x, n = 10, unique = TRUE) {
+.quantileBreaks <- function(x, n = 5) {
     q <- quantile(x, probs = seq(0, 1, length.out = n))
-    if (isTRUE(unique)) {
-        q <- q[!duplicated(q)]
-    }
-    q
+    q[!duplicated(q)]
 }
 
 
@@ -47,44 +40,106 @@ NULL
 #' @noRd
 #'
 #' @importFrom dendsort dendsort
+#' @importFrom grDevices colorRampPalette
 #' @importFrom pheatmap pheatmap
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom stats dist hclust
 #' @importFrom viridis viridis
 .plotQuantileHeatmap <- function(
     object,
-    n = 10,
+    n = 5,
     annotationCol = NA,
-    clusterRows = FALSE,
-    clusterCols = FALSE,
-    color = viridis::viridis) {
-    if (!is.function(color)) {
-        stop("'color' argument must contain a color palette function",
-             call. = FALSE)
-    }
-    mat <- as.matrix(object)
-    breaks <- .quantileBreaks(mat, n = n)
+    clusterCols = TRUE,
+    clusterRows = TRUE,
+    color = viridis::viridis,
+    legendColor = viridis::viridis,
+    title = NULL) {
+    object <- as.matrix(object)
 
-    # Dendrogram sorting can take a long time on large datasets
-    if (isTRUE(clusterRows)) {
-        clusterRows <- dendsort(hclust(dist(mat)))
-    } else {
-        clusterRows <- FALSE
+    if (nrow(object) < 2) {
+        stop("Need at least 2 rows to plot heatmap", call. = FALSE)
     }
-    if (isTRUE(clusterCols)) {
-        clusterCols <- dendsort(hclust(dist(t(mat))))
-    } else {
-        clusterCols <- FALSE
+    if (ncol(object) < 2) {
+        stop("Need at least 2 columns to plot heatmap", call. = FALSE)
     }
 
-    pheatmap(
-        mat,
+    # Calculate the quantile breaks
+    breaks <- .quantileBreaks(object, n = n)
+    print(format(breaks, digits = 3))
+
+    # Prepare the annotation columns, if necessary. Check for `dim()` here
+    # so we can support input of `DataFrame` class objects.
+    if (!is.null(dim(annotationCol))) {
+        annotationCol <- annotationCol %>%
+            as.data.frame() %>%
+            .[colnames(object), , drop = FALSE] %>%
+            rownames_to_column() %>%
+            mutate_all(factor) %>%
+            column_to_rownames()
+    } else {
+        annotationCol <- NA
+    }
+
+    # Define colors for each annotation column, if desired
+    if (is.data.frame(annotationCol) & is.function(legendColor)) {
+        annotationColors <- lapply(
+            seq_along(colnames(annotationCol)), function(a) {
+                col <- annotationCol[[a]] %>%
+                    levels()
+                colors <- annotationCol[[a]] %>%
+                    levels() %>%
+                    length() %>%
+                    legendColor
+                names(colors) <- col
+                colors
+            }) %>%
+            setNames(colnames(annotationCol))
+    } else {
+        annotationColors <- NULL
+    }
+
+    if (is.function(color)) {
+        color <- color(length(breaks) - 1)
+    } else {
+        color <- rev(brewer.pal(n = 7, name = "RdYlBu"))
+        color <- colorRampPalette(color)(length(breaks) - 1)
+    }
+
+    # Dynamic column and row labeling
+    if (ncol(object) <= 50) {
+        showColnames <- TRUE
+    } else{
+        showColnames <- FALSE
+    }
+    if (nrow(object) <= 50) {
+        showRownames <- TRUE
+    } else {
+        showRownames = FALSE
+    }
+
+    if (!is.character(title)) {
+        title <- ""
+    }
+
+    p <- pheatmap(
+        mat = object,
         annotation_col = annotationCol,
+        annotation_colors = annotationColors,
+        border_color = NA,
+        breaks = breaks,
         cluster_cols = clusterCols,
         cluster_rows = clusterRows,
-        breaks = breaks,
-        color = color(length(breaks)),
-        show_colnames = FALSE,
-        show_rownames = FALSE)
+        color = color,
+        main = title,
+        show_colnames = showColnames,
+        show_rownames = showRownames)
+    p
+
+    list <- list(
+        quantiles = breaks,
+        plot = p
+    )
+    invisible(list)
 }
 
 
