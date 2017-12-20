@@ -1,3 +1,10 @@
+# basejump 0.1.10 (2017-12-20)
+
+- Bug fix for multiplexed sample input into `readSampleMetadataFile()`. We were detecting the presence of `index` column but should instead check against `sequence` column.
+- Added `dynamicPlotlist()` and `mdPlotlist()` plotting utilities.
+
+
+
 # basejump 0.1.9 (2017-12-18)
 
 - Added `plotHeatmap()` functionality.
