@@ -94,7 +94,7 @@
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)</pre>
@@ -126,6 +126,10 @@ supported.</p></td>
       <th>release</th>
       <td><p><em>Optional</em>. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.</p></td>
+    </tr>
+    <tr>
+      <th>uniqueSymbols</th>
+      <td><p>Make gene symbols unique. Recommended by default.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
