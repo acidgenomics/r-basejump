@@ -12,6 +12,8 @@ dynamicPlotlist(object, ...)
 \S4method{dynamicPlotlist}{list}(object, return = "grid", headerLevel = 2L)
 }
 \arguments{
+\item{return}{Return type. "grid", "list", and "markdown" are supported.}
+
 \item{headerLevel}{Markdown header level. Only applicable when
 \code{return = "markdown"}.}
 }
