@@ -2,6 +2,7 @@
 
 - Bug fix for multiplexed sample input into `readSampleMetadataFile()`. We were detecting the presence of `index` column but should instead check against `sequence` column.
 - Added `dynamicPlotlist()` and `mdPlotlist()` plotting utilities.
+- Added `uniqueSymbols` parameter to `annotable()` function.
 
 
 
