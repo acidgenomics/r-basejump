@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>bcbio S4 Generics — bcbioGenerics • basejump</title>
+<title>Dynamic Plotlist — dynamicPlotlist • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,56 +83,41 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>bcbio S4 Generics</h1>
+    <h1>Dynamic Plotlist</h1>
     </div>
 
     
-    <p>These generics are currently currently in use for both the bcbioRNASeq and
-bcbioSingleCell packages.</p>
+    <p>Dynamic Plotlist</p>
     
 
-    <pre class="usage"><span class='fu'>bcbio</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>dynamicPlotlist</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>bcbio</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>interestingGroups</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>interestingGroups</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='fu'>metrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>plotDot</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>plotQC</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>plotViolin</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>sampleMetadata</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>selectSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>tpm</span>(<span class='no'>object</span>)</pre>
+<span class='co'># S4 method for list</span>
+<span class='fu'>dynamicPlotlist</span>(<span class='no'>object</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='st'>"grid"</span>, <span class='kw'>headerLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>return</th>
+      <td><p>Return type. "grid", "list", and "markdown" are supported.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Value to assign.</p></td>
+      <th>headerLevel</th>
+      <td><p>Markdown header level. Only applicable when
+<code>return = "markdown"</code>.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+<ul>
+<li><p><code>grid</code>: <code><a href='http://www.rdocumentation.org/packages/cowplot/topics/plot_grid'>cowplot::plot_grid()</a></code>.</p></li>
+<li><p><code>list</code>: list.</p></li>
+<li><p><code>markdown</code>: Markdown output, with headers for each plot.</p></li>
+</ul>
+
     
 
   </div>
@@ -140,7 +125,13 @@ bcbioSingleCell packages.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
