@@ -46,7 +46,7 @@
 #'   supported.
 #' @param release *Optional*. Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
-#' @param uniqueSymbols Make gene symbols unique. Recommended by default.
+#' @param uniqueSymbol Make gene symbols unique.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
@@ -82,7 +82,7 @@ NULL
     format = "gene",
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbols = TRUE,
+    uniqueSymbol = FALSE,
     quiet = FALSE) {
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
@@ -152,6 +152,7 @@ NULL
         ah,
         pattern = c(organism, "EnsDb", releasePattern),
         ignore.case = TRUE)
+    # Get the latest build version
     id <- ahDb %>%
         mcols() %>%
         rownames() %>%
@@ -186,22 +187,28 @@ NULL
     }
 
     if (format == "gene") {
-        data <- genes(
-            edb,
-            return.type = "data.frame") %>%
-            # Use `symbol` column instead
-            mutate(gene_name = NULL) %>%
+        data <- genes(edb, return.type = "data.frame") %>%
             rename(
                 ensgene = .data[["gene_id"]],
                 biotype = .data[["gene_biotype"]]) %>%
-            .prepareAnnotable()
+            # Use `symbol` column instead of duplicate `gene_name`
+            mutate(gene_name = NULL) %>%
+            # Ensure rows are sorted by gene ID
+            arrange(!!sym("ensgene"))
+        if (isTRUE(uniqueSymbol)) {
+            # Ensure unique symbols (e.g. human, mouse)
+            data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
+        }
+        data <- .prepareAnnotable(data)
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = "data.frame") %>%
-            rename(ensgene = .data[["gene_id"]])
-        if (isTRUE(uniqueSymbols)) {
+            rename(ensgene = .data[["gene_id"]]) %>%
+            # Ensure rows are sorted by gene ID
+            arrange(!!sym("ensgene"))
+        if (isTRUE(uniqueSymbol)) {
             # Ensure unique symbols (e.g. human, mouse)
             data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
         }
@@ -214,6 +221,7 @@ NULL
             rename(
                 enstxp = .data[["tx_id"]],
                 ensgene = .data[["gene_id"]]) %>%
+            arrange(!!sym("enstxp")) %>%
             set_rownames(.[["enstxp"]])
     }
     data
@@ -239,9 +247,6 @@ NULL
     }
     mutate(
         object,
-        # Ensure unique symbols (e.g. human, mouse)
-        symbol = make.unique(.data[["symbol"]]),
-        # Define the broad class
         broadClass = case_when(
             grepl(
                 x = .data[["symbol"]],
