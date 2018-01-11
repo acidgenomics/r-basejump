@@ -3,7 +3,7 @@ context("deprecated")
 test_that("v0.0.24", {
     expect_warning(
         metadataTable(),
-        "Use 'sampleMetadata' instead."
+        "Use 'bcbioBase::sampleMetadata' instead."
     )
 })
 
