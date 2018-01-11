@@ -1,8 +1,5 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' @keywords internal
-#' @noRd
-#'
 #' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics
@@ -11,7 +8,8 @@
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string. Returns `NULL` on a misisng
 #'   local file.
-.localOrRemoteFile <- function(
+#' @export
+localOrRemoteFile <- function(
     object,
     quiet = FALSE) {
     fileName <- basename(object)
