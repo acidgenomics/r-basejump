@@ -158,37 +158,28 @@ NULL
         rownames() %>%
         tail(n = 1L)
 
-    # AnnotationHub will attach ensembldb at this step and mask dplyr!
-    if ("ensembldb" %in% .packages()) {
-        ensembldbUserAttached <- TRUE
-    } else {
-        ensembldbUserAttached <- FALSE
-    }
-
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
 
-    # Attempt to unload ensembldb and dependencies that mask tidyverse
-    # FIXME Need to employ a cleaner method for this
-    if ("ensembldb" %in% .packages() &
-        !isTRUE(ensembldbUserAttached)) {
-        pkg <- c("ensembldb", "AnnotationDbi")
+    # Ensure `dplyr::select()` isn't masked by AnnotationHub/ensembldb
+    pkg <- find("select")
+    # Note that this will return a character vector for multiple matches,
+    # and we want to exclude dplyr from the detach loop
+    pkg <- setdiff(pkg, "package:dplyr")
+    if (length(pkg)) {
+        message("Unmasking 'select()'")
         lapply(seq_along(pkg), function(a) {
             suppressWarnings(detach(
-                name = paste0("package:", pkg[[a]]),
+                name = pkg[[a]],
                 character.only = TRUE,
                 unload = TRUE,
                 force = TRUE
             ))
         }) %>%
             invisible()
-        # Check that ensembldb doesn't mask `dplyr::select()`
-        if (!identical(select, dplyr::select)) {
-            stop("'dplyr::select()' masked by ensembldb", call. = FALSE)
-        }
     }
 
     if (!isTRUE(quiet)) {
