@@ -37,7 +37,7 @@ setMethod(
             stop("YAML file must have '.yaml' or '.yml' extension",
                  call. = FALSE)
         }
-        file <- .localOrRemoteFile(object, quiet = quiet)
+        file <- localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
             warning(paste(
                 basename(object), "file missing"
