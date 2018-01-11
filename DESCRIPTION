@@ -59,8 +59,6 @@ Suggests:
     roxygen2 (>= 6.0.1),
     testthat (>= 1.0.2),
     tidyverse (>= 1.2.1)
-Remotes:
-    hbc/bcbioBase
 biocViews:
     DataImport,
     DifferentialExpression,
