@@ -171,16 +171,24 @@ NULL
         edb <- suppressMessages(ah[[id]])
     ))
 
+    # Attempt to unload ensembldb and dependencies that mask tidyverse
+    # FIXME Need to employ a cleaner method for this
     if ("ensembldb" %in% .packages() &
         !isTRUE(ensembldbUserAttached)) {
-        suppressWarnings(
-            detach("package:ensembldb", unload = TRUE, force = TRUE)
-        )
-    }
-
-    # Check that ensembldb doesn't mask `dplyr::select()`
-    if (!identical(select, dplyr::select)) {
-        stop("dplyr::select masked by ensembldb", call. = FALSE)
+        pkg <- c("ensembldb", "AnnotationDbi")
+        lapply(seq_along(pkg), function(a) {
+            detach(
+                name = paste0("package:", pkg[[a]]),
+                character.only = TRUE,
+                unload = TRUE,
+                force = TRUE
+            )
+        }) %>%
+            invisible()
+        # Check that ensembldb doesn't mask `dplyr::select()`
+        if (!identical(select, dplyr::select)) {
+            stop("'dplyr::select()' masked by ensembldb", call. = FALSE)
+        }
     }
 
     if (!isTRUE(quiet)) {
@@ -229,6 +237,7 @@ NULL
             arrange(!!sym("enstxp")) %>%
             set_rownames(.[["enstxp"]])
     }
+
     data
 }
 
