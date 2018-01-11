@@ -41,7 +41,7 @@ NULL
     makeNames = "camel",
     quiet = FALSE,
     ...) {
-    file <- .localOrRemoteFile(object, quiet = quiet)
+    file <- localOrRemoteFile(object, quiet = quiet)
 
     # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"

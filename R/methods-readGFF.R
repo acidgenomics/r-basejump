@@ -28,7 +28,7 @@ NULL
 .readGFF <- function(
     object,
     quiet = FALSE) {
-    file <- .localOrRemoteFile(object, quiet = quiet)
+    file <- localOrRemoteFile(object, quiet = quiet)
     if (!isTRUE(quiet)) {
         message(paste("Reading GFF/GTF:", names(file)))
     }
