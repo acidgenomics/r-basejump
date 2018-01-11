@@ -17,9 +17,9 @@ summarizeRows()
 
 wash()
 
-packageSE(...)
+packageSE()
 
-prepareSE(...)
+prepareSE()
 
 metadataTable()
 

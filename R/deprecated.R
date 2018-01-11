@@ -29,18 +29,16 @@ wash <- function() {
 # v0.0.23 ======================================================================
 #' @rdname deprecated
 #' @export
-packageSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+packageSE <- function() {
+    .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
 
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+prepareSE <- function() {
+    .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
 
@@ -49,7 +47,7 @@ prepareSE <- function(...) {
 #' @rdname deprecated
 #' @export
 metadataTable <- function() {
-    .Deprecated("sampleMetadata")
+    .Deprecated("bcbioBase::sampleMetadata")
 }
 
 
