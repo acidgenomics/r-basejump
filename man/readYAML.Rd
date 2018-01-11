@@ -36,6 +36,5 @@ names(yaml)
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readSampleMetadataFile}},
   \code{\link{transmit}}
 }

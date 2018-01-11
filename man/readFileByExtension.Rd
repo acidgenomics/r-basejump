@@ -41,7 +41,6 @@ readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 }
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readGFF}},
-  \code{\link{readSampleMetadataFile}},
-  \code{\link{readYAML}}, \code{\link{transmit}}
+  \code{\link{readGFF}}, \code{\link{readYAML}},
+  \code{\link{transmit}}
 }

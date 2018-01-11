@@ -25,7 +25,6 @@ loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{readFileByExtension}},
-  \code{\link{readGFF}},
-  \code{\link{readSampleMetadataFile}},
-  \code{\link{readYAML}}, \code{\link{transmit}}
+  \code{\link{readGFF}}, \code{\link{readYAML}},
+  \code{\link{transmit}}
 }
