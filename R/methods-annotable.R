@@ -165,7 +165,7 @@ NULL
         ensembldbUserAttached <- FALSE
     }
 
-    # This step will also output a txProgressBar on a fresh install. Using
+    # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
@@ -176,6 +176,11 @@ NULL
         suppressWarnings(
             detach("package:ensembldb", unload = TRUE, force = TRUE)
         )
+    }
+
+    # Check that ensembldb doesn't mask `dplyr::select()`
+    if (!identical(select, dplyr::select)) {
+        stop("dplyr::select masked by ensembldb", call. = FALSE)
     }
 
     if (!isTRUE(quiet)) {
@@ -295,8 +300,8 @@ NULL
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr distinct group_by left_join mutate rename summarize_all
-#'   ungroup
+#' @importFrom dplyr distinct everything group_by left_join mutate rename select
+#'   summarize_all ungroup
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
