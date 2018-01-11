@@ -177,12 +177,12 @@ NULL
         !isTRUE(ensembldbUserAttached)) {
         pkg <- c("ensembldb", "AnnotationDbi")
         lapply(seq_along(pkg), function(a) {
-            detach(
+            suppressWarnings(detach(
                 name = paste0("package:", pkg[[a]]),
                 character.only = TRUE,
                 unload = TRUE,
                 force = TRUE
-            )
+            ))
         }) %>%
             invisible()
         # Check that ensembldb doesn't mask `dplyr::select()`
