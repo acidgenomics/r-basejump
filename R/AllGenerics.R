@@ -55,8 +55,8 @@ setGeneric("collapseToString", function(object, ...) {
 
 #' @rdname dna
 #' @export
-setGeneric("comp", function(object, ...) {
-    standardGeneric("comp")
+setGeneric("complement", function(object, ...) {
+    standardGeneric("complement")
 })
 
 
@@ -232,8 +232,8 @@ setGeneric("removeNA", function(object, ...) {
 
 #' @rdname dna
 #' @export
-setGeneric("revcomp", function(object, ...) {
-    standardGeneric("revcomp")
+setGeneric("reverseComplement", function(object, ...) {
+    standardGeneric("reverseComplement")
 })
 
 
