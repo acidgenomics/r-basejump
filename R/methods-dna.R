@@ -14,8 +14,8 @@
 #'
 #' @examples
 #' dna <- "ATGCATGC"
-#' comp(dna)
-#' revcomp(dna)
+#' complement(dna)
+#' reverseComplement(dna)
 NULL
 
 
@@ -24,7 +24,7 @@ NULL
 #' @rdname dna
 #' @export
 setMethod(
-    "comp",
+    "complement",
     signature("character"),
     function(object) {
         if (!grepl(x = object, pattern = "^[ACGT]+$")) {
@@ -60,7 +60,7 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
-    "comp",
+    "complement",
     signature("integer"),
     function(object) {
         NULL
@@ -71,7 +71,7 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
-    "comp",
+    "complement",
     signature("numeric"),
     function(object) {
         NULL
@@ -82,12 +82,12 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
-    "revcomp",
+    "reverseComplement",
     signature("character"),
     function(object) {
         object <- toupper(object)
-        comp <- comp(object)
-        strsplit(comp, split = "", fixed = TRUE) %>%
+        complement <- complement(object)
+        strsplit(complement, split = "", fixed = TRUE) %>%
             unlist() %>%
             .[order(seq_along(.), decreasing = TRUE)] %>%
             paste0(collapse = "")
@@ -98,7 +98,7 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
-    "revcomp",
+    "reverseComplement",
     signature("integer"),
     function(object) {
         NULL
@@ -109,7 +109,7 @@ setMethod(
 #' @rdname dna
 #' @export
 setMethod(
-    "revcomp",
+    "reverseComplement",
     signature("numeric"),
     function(object) {
         NULL
