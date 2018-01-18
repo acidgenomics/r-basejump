@@ -370,3 +370,14 @@ setMethod(
     "annotable",
     signature("data.frame"),
     .prepareAnnotable)
+
+
+
+#' @rdname annotable
+#' @export
+setMethod(
+    "annotable",
+    signature("NULL"),
+    function(object) {
+        NULL
+    })
