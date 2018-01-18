@@ -6,6 +6,7 @@
 \alias{annotable}
 \alias{annotable,character-method}
 \alias{annotable,data.frame-method}
+\alias{annotable,NULL-method}
 \title{Ensembl Annotations}
 \usage{
 annotable(object, ...)
@@ -14,6 +15,8 @@ annotable(object, ...)
   release = NULL, uniqueSymbols = TRUE, quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
+
+\S4method{annotable}{`NULL`}(object)
 }
 \arguments{
 \item{object}{Object. Default recommended usage is to provide full latin

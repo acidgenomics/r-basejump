@@ -146,3 +146,10 @@ test_that("GRCh37/hg19", {
         tx2gene
     )
 })
+
+test_that("NULL", {
+    expect_identical(
+        annotable(NULL),
+        NULL
+    )
+})
