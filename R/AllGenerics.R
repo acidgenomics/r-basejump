@@ -53,14 +53,6 @@ setGeneric("collapseToString", function(object, ...) {
 
 
 
-#' @rdname dna
-#' @export
-setGeneric("complement", function(object, ...) {
-    standardGeneric("complement")
-})
-
-
-
 #' @rdname detectOrganism
 #' @export
 setGeneric("detectOrganism", function(object, ...) {
@@ -226,14 +218,6 @@ setGeneric("readYAML", function(object, ...) {
 #' @export
 setGeneric("removeNA", function(object, ...) {
     standardGeneric("removeNA")
-})
-
-
-
-#' @rdname dna
-#' @export
-setGeneric("reverseComplement", function(object, ...) {
-    standardGeneric("reverseComplement")
 })
 
 

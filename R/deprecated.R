@@ -72,7 +72,7 @@ sampleDirs <- function() {
 
 
 
-# v 0.1.6 ======================================================================
+# v0.1.6 ======================================================================
 #' @rdname deprecated
 #' @export
 fc2lr <- function(...) {
@@ -85,4 +85,19 @@ fc2lr <- function(...) {
 lr2fc <- function(...) {
     .Deprecated("logRatioToFoldChange")
     logRatioToFoldChange(...)
+}
+
+
+
+# v0.1.1 =======================================================================
+#' @rdname deprecated
+#' @export
+comp <- function(...) {
+    .Deprecated("Biostrings::complement")
+}
+
+#' @rdname deprecated
+#' @export
+revcomp <- function(...) {
+    .Deprecated("Biostrings::reverseComplement")
 }

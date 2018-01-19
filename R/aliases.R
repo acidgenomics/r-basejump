@@ -1,11 +1,3 @@
-#' @rdname dna
-#' @export
-comp <- function(...) {
-    complement(...)
-}
-
-
-
 #' @rdname gene2symbolFromGFF
 #' @export
 gene2symbolFromGTF <- function(...) {
@@ -18,14 +10,6 @@ gene2symbolFromGTF <- function(...) {
 #' @export
 readGTF <- function(...) {
     readGFF(...)
-}
-
-
-
-#' @rdname dna
-#' @export
-revcomp <- function(...) {
-    reverseComplement(...)
 }
 
 
