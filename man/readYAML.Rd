@@ -27,7 +27,7 @@ Read YAML File
 \examples{
 # bcbioRNASeq example project summary YAML
 url <- file.path(
-    "http://basejump.seq.cloud",
+    "http://bcbiobase.seq.cloud",
     "bcbio",
     "project-summary.yaml")
 yaml <- readYAML(url)
