@@ -93,7 +93,7 @@ test_that("Unsupported Ensembl release", {
 test_that("Unsupported organism", {
     expect_warning(
         annotable("XXX"),
-        "Failed to detect supported organism"
+        "XXX is not supported in AnnotationHub"
     )
     expect_equal(
         suppressWarnings(annotable("XXX")),
