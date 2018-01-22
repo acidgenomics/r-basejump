@@ -159,7 +159,9 @@ NULL
 
     # Early return `NULL` with warning on organism failure
     if (!length(id)) {
-        warning(paste("Failed to detect organism:", object), call. = FALSE)
+        warning(paste(
+            object, "is not supported in AnnotationHub"
+        ), call. = FALSE)
         return(NULL)
     }
 
