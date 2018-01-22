@@ -190,7 +190,7 @@ NULL
         return(c(sheep = "Ovis aries"))
     }
 
-    warning("Failed to detect supported organism")
+    warning("Failed to detect supported organism", call. = FALSE)
     NULL
 }
 
