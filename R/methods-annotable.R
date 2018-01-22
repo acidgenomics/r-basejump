@@ -84,21 +84,20 @@ NULL
     release = NULL,
     uniqueSymbol = FALSE,
     quiet = FALSE) {
+    # object (organism)
     if (!is_string(object)) {
         stop("Object must be a string", call. = FALSE)
+    } else if (is.null(object)) {
+        return(NULL)
     }
+    # format
     if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
         stop("Unsupported format", call. = FALSE)
     }
 
-    organism <- detectOrganism(object)
-    if (is.null(organism)) {
-        return(NULL)
-    }
-
     if (!is.null(genomeBuild)) {
         # GRCh37/hg19 support
-        if (organism == "Homo sapiens" &
+        if (object == "Homo sapiens" &
             grepl(x = genomeBuild,
                   pattern = paste("GRCh37", "hg19", sep = "|"),
                   ignore.case = TRUE)) {
@@ -150,13 +149,19 @@ NULL
     # Get the AnnotationHub dataset by identifier number
     ahDb <- query(
         ah,
-        pattern = c(organism, "EnsDb", releasePattern),
+        pattern = c(object, "EnsDb", releasePattern),
         ignore.case = TRUE)
     # Get the latest build version
     id <- ahDb %>%
         mcols() %>%
         rownames() %>%
         tail(n = 1L)
+
+    # Early return `NULL` with warning on organism failure
+    if (!length(id)) {
+        warning(paste("Failed to detect organism:", object), call. = FALSE)
+        return(NULL)
+    }
 
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output.
