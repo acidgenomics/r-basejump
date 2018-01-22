@@ -71,12 +71,13 @@ NULL
 # Constructors =================================================================
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
 #'   snapshotDate
+#' @importFrom BiocGenerics organism
 #' @importFrom dplyr mutate rename
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom magrittr set_rownames
 #' @importFrom rlang .data is_string
 #' @importFrom S4Vectors mcols
-#' @importFrom utils capture.output tail
+#' @importFrom utils capture.output find tail
 .annotable <- function(
     object,
     format = "gene",
