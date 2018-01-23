@@ -32,7 +32,7 @@
 #' writeCounts(mtcars)
 writeCounts <- function(
     ...,
-    dir = file.path("results", "counts"),
+    dir = file.path("results", Sys.Date(), "counts"),
     gzip = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
