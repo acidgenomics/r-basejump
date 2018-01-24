@@ -37,7 +37,7 @@ test_that("`.yml` file support", {
 test_that("Unsupported file type", {
     expect_error(
         readYAML("http://basejump.seq.cloud/mtcars.csv", quiet = TRUE),
-        "YAML file must have `.yaml` or `.yml` extension"
+        "YAML file must contain `.yaml` or `.yml` extension"
     )
 })
 
