@@ -23,10 +23,10 @@ multiassignAsNewEnvir <- function(
     parentEnvir = parent.frame(),
     quiet = FALSE) {
     if (!is_string(envirName)) {
-        abort("'envirName' must be a string")
+        abort("`envirName` must be a string")
     }
     if (!is.environment(parentEnvir)) {
-        abort("'parentEnvir' must be an environment")
+        abort("`parentEnvir` must be an environment")
     }
     dots <- dots(...)
     dotsNames <- dots(..., character = TRUE)
