@@ -18,13 +18,12 @@
 #' }
 checkGene2symbol <- function(object) {
     if (!is.data.frame(object)) {
-        stop("gene2symbol must be 'data.frame' class object",
-             call. = FALSE)
+        abort("gene2symbol must be data.frame")
     }
     colnames <- c("ensgene", "symbol")
     if (!identical(colnames(object), colnames)) {
-        stop(paste(
+        abort(paste(
             "gene2symbol must contain:", toString(colnames)
-        ), call. = FALSE)
+        ))
     }
 }

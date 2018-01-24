@@ -53,14 +53,14 @@ loadDataAsName <- function(
         dots <- as.list(dots[[1L]])
     }
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("'dir' must be a string")
     } else if (!dir.exists(dir)) {
-        stop(paste("No directory exists at", dir), call. = FALSE)
+        abort(paste("No directory exists at", dir))
     } else {
         dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment", call. = FALSE)
+        abort("'envir' must be an environment")
     }
     files <- sapply(seq_along(dots), function(a) {
         object <- dots[[a]]
@@ -78,21 +78,21 @@ loadDataAsName <- function(
             file <- file.path(dir, paste0(object, paste0(".", ext)))
         }
         if (!file.exists(file)) {
-            stop(paste(object, "missing"), call. = FALSE)
+            abort(paste(object, "missing"))
         }
         file <- normalizePath(file)
         # Check to see if object is present in environment
         if (exists(name, envir = envir, inherits = FALSE)) {
             if (isTRUE(replace)) {
-                warning(paste(
+                warn(paste(
                     "Replacing", name,
                     "with the contents of", basename(file)
-                ), call. = FALSE)
+                ))
             } else {
-                return(warning(paste(
+                return(warn(paste(
                     "Skipping", basename(file),
                     "because", name, "already exists"
-                ), call. = FALSE))
+                )))
             }
         }
         # Load into a temporary environment (safer)
@@ -100,10 +100,10 @@ loadDataAsName <- function(
         loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
         if (length(loaded) > 1L) {
-            stop(paste(
+            abort(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
-            ), call. = FALSE)
+            ))
         }
         # Assign into the target environment
         assign(x = name,

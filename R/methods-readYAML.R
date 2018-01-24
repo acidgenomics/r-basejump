@@ -34,18 +34,17 @@ setMethod(
         object,
         quiet = FALSE) {
         if (!grepl(x = object, pattern = "\\.ya?ml$")) {
-            stop("YAML file must have '.yaml' or '.yml' extension",
-                 call. = FALSE)
+            abort("YAML file must contain `.yaml` or `.yml` extension")
         }
         file <- localOrRemoteFile(object, quiet = quiet)
         if (is.null(file)) {
-            warning(paste(
+            warn(paste(
                 basename(object), "file missing"
-            ), call. = FALSE)
+            ))
             return(NULL)
         }
         if (!isTRUE(quiet)) {
-            message(paste("Reading", names(file)))
+            inform(paste("Reading", names(file)))
         }
         yaml.load_file(file)
     })

@@ -27,8 +27,7 @@ NULL
             replacement = "\\1")
     }
     if (any(grepl(x = object, pattern = "\\.\\d+$"))) {
-        stop("Failed to sanitize Ensembl transcript identifier",
-             call. = FALSE)
+        abort("Failed to sanitize Ensembl transcript identifier")
     }
     object
 }

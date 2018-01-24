@@ -61,10 +61,10 @@ NULL
     }
 
     if (nrow(object) < 2L) {
-        stop("Need at least 2 rows to plot heatmap", call. = FALSE)
+        abort("Need at least 2 rows to plot heatmap")
     }
     if (ncol(object) < 2L) {
-        stop("Need at least 2 columns to plot heatmap", call. = FALSE)
+        abort("Need at least 2 columns to plot heatmap")
     }
 
     # Prepare the annotation columns, if necessary. Check for `dim()` here

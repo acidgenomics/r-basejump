@@ -37,11 +37,10 @@ NULL
 # Constructors =================================================================
 .aggregateFeaturesDenseMatrix <- function(object, groupings) {
     if (!is.factor(groupings)) {
-        stop("'groupings' must be factor")
+        abort("`groupings` must be factor")
     }
     if (!identical(names(groupings), rownames(object))) {
-        stop("'groupings' doesn't match row names",
-             call. = FALSE)
+        abort("`groupings` doesn't match rownames")
     }
     rowsum(object, group = groupings, reorder = FALSE)
 }
@@ -51,11 +50,10 @@ NULL
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateFeaturesSparseMatrix <- function(object, groupings) {
     if (!is.factor(groupings)) {
-        stop("'groupings' must be factor")
+        abort("`groupings` must be factor")
     }
     if (!identical(names(groupings), rownames(object))) {
-        stop("'groupings' doesn't match row names",
-             call. = FALSE)
+        abort("`groupings` doesn't match rownames")
     }
     rownames(object) <- groupings
     aggregate.Matrix(object, groupings = groupings, fun = "sum")

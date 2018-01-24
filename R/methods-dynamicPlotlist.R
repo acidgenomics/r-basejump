@@ -26,9 +26,9 @@ NULL
     headerLevel = 2L) {
     validReturn <- c("grid", "list", "markdown")
     if (!return %in% validReturn) {
-        stop(paste(
+        abort(paste(
             "'return' must contain:", toString(validReturn)
-        ), call. = FALSE)
+        ))
     }
 
     if (return == "grid") {

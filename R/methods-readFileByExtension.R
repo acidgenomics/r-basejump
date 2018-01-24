@@ -46,7 +46,7 @@ NULL
     # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
     if (!grepl(x = names(file), pattern = extPattern)) {
-        stop("File extension missing")
+        abort("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
         .[[2L]]
@@ -60,7 +60,7 @@ NULL
 
     # File import, based on extension
     if (!isTRUE(quiet)) {
-        message(paste("Reading", names(file)))
+        inform(paste("Reading", names(file)))
     }
     na <- c("", "NA", "#N/A")
     if (ext == "csv") {
@@ -103,7 +103,7 @@ NULL
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        stop("Unsupported file type")
+        abort("Unsupported file type")
     }
 
     # Sanitize colnames, if desired

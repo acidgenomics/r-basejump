@@ -18,12 +18,12 @@
 #' }
 checkTx2gene <- function(object) {
     if (!is.data.frame(object)) {
-        stop("tx2gene must be 'data.frame' class object", call. = FALSE)
+        abort("tx2gene must be data.frame")
     }
     colnames <- c("enstxp", "ensgene")
     if (!identical(colnames(object), colnames)) {
-        stop(paste(
+        abort(paste(
             "tx2gene must contain:", toString(colnames)
-        ), call. = FALSE)
+        ))
     }
 }

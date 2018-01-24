@@ -40,7 +40,7 @@ transmit <- function(
     localDir = "data-raw",
     quiet = FALSE) {
     if (!grepl(x = remoteDir, pattern = "ftp\\://")) {
-        stop("FTP protocol not detected", call. = FALSE)
+        abort("FTP protocol not detected")
     }
     # Fix trailing slash, if necessary
     if (!grepl(x = remoteDir, pattern = "/$")) {
@@ -59,27 +59,26 @@ transmit <- function(
         str_extract(pattern = "[^\\s]+$")
 
     if (!length(remoteFileList)) {
-        stop("No files listed on remote server", call. = FALSE)
+        abort("No files listed on remote server")
     }
 
     # Apply pattern matching
     remoteFileName <- str_subset(remoteFileList, pattern)
     if (!length(remoteFileName)) {
-        stop("Pattern didn't match any files", call. = FALSE)
+        abort("Pattern didn't match any files")
     }
 
     # Rename files, if desired
     if (!is.null(rename)) {
         if (!identical(length(rename), length(remoteFileName))) {
-            stop("Rename vector doesn't match the number of remote files",
-                 call. = FALSE)
+            abort("Rename vector doesn't match the number of remote files")
         }
     }
 
     # Ensure the local directory exists
     dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
     if (!isTRUE(quiet)) {
-        message(paste("Downloading", toString(remoteFileName)))
+        inform(paste("Downloading", toString(remoteFileName)))
     }
     lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
