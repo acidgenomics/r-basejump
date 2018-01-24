@@ -40,7 +40,7 @@ NULL
 setMethod(
     "dots",
     signature("..." = "ANY"),
-    function(..., character) {
+    function(..., character = FALSE) {
         dots <- eval_bare(substitute(alist(...)))
         if (length(dots) == 0L) {
             abort("No dots to return")
@@ -50,10 +50,9 @@ setMethod(
             abort("Dots cannot contain arguments")
         }
         names <- vapply(dots, as.character, character(1L))
-        dupes <- which(setNames(duplicated(names), names))
+        dupes <- names[which(setNames(duplicated(names), names))]
         if (length(dupes) > 0L) {
-            names <- unique(names)
-            abort("Duplicate dots: ", toString(names(dupes)))
+            abort(paste("Duplicate dots:", toString(dupes)))
         }
         if (isTRUE(character)) {
             names
