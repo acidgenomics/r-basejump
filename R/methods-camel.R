@@ -54,6 +54,8 @@ NULL
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
+
+    # lowerCamelCase or UpperCamelCase
     if (format == "lower") {
         # lowerCamelCase
         # Coerce first word to lower
@@ -72,6 +74,22 @@ NULL
             replacement = "\\U\\1",
             perl = TRUE)
     }
+
+    # Check for the presence of delimited numbers (e.g. 1,000,000)
+    pattern <- "([0-9])\\.([0-9])"
+    replacement <- "\\1x\\2"
+    if (grepl(pattern, object)) {
+        object <- object %>%
+            # Escape number separators (useful for keeping decimals, etc.)
+            gsub(x = .,
+                 pattern = pattern,
+                 replacement = replacement) %>%
+            # Have to run twice here otherwise it will miss some matches
+            gsub(x = .,
+                 pattern = pattern,
+                 replacement = replacement)
+    }
+
     object %>%
         # First letter of second plus words must be capitalized
         gsub(x = .,
