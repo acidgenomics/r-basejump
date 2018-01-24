@@ -35,6 +35,21 @@ test_that("character", {
     )
 })
 
+test_that("Delimited numbers", {
+    expect_identical(
+        upperCamel("2018-01-01"),
+        "X2018x01x01"
+    )
+    expect_identical(
+        upperCamel("0.01"),
+        "X0x01"
+    )
+    expect_identical(
+        upperCamel("1,000,000"),
+        "X1x000x000"
+    )
+})
+
 test_that("named character", {
     expect_identical(
         upperCamel(makeNames[["namedCharacter"]], strict = TRUE),
