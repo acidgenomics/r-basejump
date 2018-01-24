@@ -53,14 +53,14 @@ loadDataAsName <- function(
         dots <- as.list(dots[[1L]])
     }
     if (!is_string(dir)) {
-        abort("'dir' must be a string")
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
         abort(paste("No directory exists at", dir))
     } else {
         dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
-        abort("'envir' must be an environment")
+        abort("`envir` must be an environment")
     }
     files <- sapply(seq_along(dots), function(a) {
         object <- dots[[a]]

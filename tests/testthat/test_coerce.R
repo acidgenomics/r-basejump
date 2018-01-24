@@ -8,6 +8,6 @@ test_that("coerce", {
     expect_error(
         c("foo", "bar") %>%
             as("tibble"),
-        "Object must support 'dim'"
+        "Object must support `dim\\(\\)`"
     )
 })

@@ -26,7 +26,7 @@ loadRemoteData <- function(
     if (!grepl(x = object, pattern = "\\://")) {
         abort("Remote URL containing `://` required")
     }
-    # Check for '.rda' file
+    # Check for `.rda` file
     if (!grepl(x = object, pattern = "\\.rda$")) {
         abort("Data file must contain `.rda` extension")
     }

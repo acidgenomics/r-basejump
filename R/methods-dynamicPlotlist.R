@@ -27,7 +27,7 @@ NULL
     validReturn <- c("grid", "list", "markdown")
     if (!return %in% validReturn) {
         abort(paste(
-            "'return' must contain:", toString(validReturn)
+            "`return` must contain:", toString(validReturn)
         ))
     }
 
