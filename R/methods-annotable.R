@@ -178,7 +178,6 @@ NULL
     # and we want to exclude dplyr from the detach loop
     pkg <- setdiff(pkg, "package:dplyr")
     if (length(pkg)) {
-        inform("Unmasking 'select()'")
         lapply(seq_along(pkg), function(a) {
             suppressWarnings(detach(
                 name = pkg[[a]],
