@@ -43,20 +43,20 @@ loadData <- function(
     replace = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
-        stop(paste("No directory exists at", dir), call. = FALSE)
+        abort(paste("No directory exists at", dir))
     } else {
         dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment", call. = FALSE)
+        abort("`envir` must be an environment")
     }
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
     dots <- as.character(substitute(list(...)))[-1L]
     if (!isTRUE(quiet)) {
-        message(paste("Loading", toString(dots), "from", dir))
+        inform(paste("Loading", toString(dots), "from", dir))
     }
     files <- sapply(seq_along(dots), function(a) {
         name <- dots[[a]]
@@ -64,37 +64,37 @@ loadData <- function(
         # Check to see if object is present in environment
         if (exists(name, envir = envir, inherits = FALSE)) {
             if (isTRUE(replace)) {
-                warning(paste(
+                warn(paste(
                     "Replacing", name,
                     "with the contents of", basename(file)
-                ), call. = FALSE)
+                ))
             } else {
-                return(warning(paste(
+                return(warn(paste(
                     "Skipping", basename(file),
                     "because", name, "already exists"
-                ), call. = FALSE))
+                )))
             }
         }
         # Error on missing file
         if (!file.exists(file)) {
-            stop(paste(name, "missing"), call. = FALSE)
+            abort(paste(name, "missing"))
         }
         # Load into a temporary environment (safer)
         tmpEnv <- new.env()
         loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
         if (length(loaded) > 1L) {
-            stop(paste(
+            abort(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
-            ), call. = FALSE)
+            ))
         }
         # Check for file name and internal object name mismatch
         if (!identical(name, loaded)) {
-            stop(paste0(
+            abort(paste0(
                 "Name mismatch detected for '", basename(file), "'. ",
                 "Internal object is named '", loaded, "'."
-            ), call. = FALSE)
+            ))
         }
         # Assign into the target environment
         assign(x = name,

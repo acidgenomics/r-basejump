@@ -190,7 +190,7 @@ NULL
         return(c(sheep = "Ovis aries"))
     }
 
-    warning("Failed to detect supported organism", call. = FALSE)
+    warn("Failed to detect supported organism")
     NULL
 }
 
@@ -212,6 +212,6 @@ setMethod(
     "detectOrganism",
     signature("NULL"),
     function(object) {
-        warning("'NULL' input to 'detectOrganism()'", call. = FALSE)
+        warn("'NULL' input to 'detectOrganism()'")
         NULL
     })

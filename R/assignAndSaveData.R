@@ -33,7 +33,7 @@ assignAndSaveData <- function(
     names(file) <- name
     assign(name, object, envir = envir)
     if (!isTRUE(quiet)) {
-        message(paste("Saving", name, "to", dir))
+        inform(paste("Saving", name, "to", dir))
     }
     save(list = name,
          file = file,

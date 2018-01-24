@@ -23,10 +23,10 @@ multiassignAsNewEnvir <- function(
     parentEnvir = parent.frame(),
     quiet = FALSE) {
     if (!is_string(envirName)) {
-        stop("'envirName' must be a string", call. = FALSE)
+        abort("'envirName' must be a string")
     }
     if (!is.environment(parentEnvir)) {
-        stop("'parentEnvir' must be an environment", call. = FALSE)
+        abort("'parentEnvir' must be an environment")
     }
     dots <- dots(...)
     dotsNames <- dots(..., character = TRUE)
@@ -36,7 +36,7 @@ multiassignAsNewEnvir <- function(
     }) %>%
         invisible()
     if (!isTRUE(quiet)) {
-        message(paste("Assigning", toString(dotsNames), "as", envirName))
+        inform(paste("Assigning", toString(dotsNames), "as", envirName))
     }
     assign(envirName, value = envir, envir = parentEnvir)
     # Silently return a list of the objects in the new environment

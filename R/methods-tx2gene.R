@@ -42,13 +42,13 @@ NULL
     # Prevent pass in of genomeBuild as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
-        stop("tx2gene conversion requires > 1 identifier")
+        abort("tx2gene conversion requires > 1 identifier")
     }
     if (any(is.na(object))) {
-        stop("NA identifier detected", call. = FALSE)
+        abort("NA identifier detected")
     }
     if (any(object == "")) {
-        stop("Empty string identifier detected", call. = FALSE)
+        abort("Empty string identifier detected")
     }
     organism <- detectOrganism(object[[1L]])
     t2g <- annotable(
@@ -61,10 +61,10 @@ NULL
     gene <- t2g[["ensgene"]]
     names(gene) <- t2g[["enstxp"]]
     if (!all(object %in% names(gene))) {
-        stop(paste(
+        abort(paste(
             "Unmatched transcripts present.",
-            "Try using a GFF file instead."),
-            call. = FALSE)
+            "Try using a GFF file instead."
+        ))
     }
     gene[object]
 }

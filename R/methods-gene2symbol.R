@@ -50,13 +50,13 @@ NULL
     if (missing(release)) release <- NULL
 
     if (is_string(object)) {
-        stop("gene2symbol conversion requires > 1 identifier", call. = FALSE)
+        abort("gene2symbol conversion requires > 1 identifier")
     } else if (any(is.na(object))) {
-        stop("NA identifier detected", call. = FALSE)
+        abort("NA identifier detected")
     } else if (any(object == "")) {
-        stop("Empty string identifier detected", call. = FALSE)
+        abort("Empty string identifier detected")
     } else if (any(duplicated(object))) {
-        warning("Duplicate gene identifiers detected", call. = FALSE)
+        warn("Duplicate gene identifiers detected")
     }
 
     # Detect organism
@@ -66,7 +66,7 @@ NULL
         organism <- detectOrganism(organism)
     }
     if (is.null(organism)) {
-        warning("Returning unmodified gene identifiers", call. = FALSE)
+        warn("Returning unmodified gene identifiers")
         names(object) <- object
         return(object)
     }
@@ -84,10 +84,10 @@ NULL
     if (!all(object %in% names(symbol))) {
         nomatch <- setdiff(object, rownames(g2s))
         names(nomatch) <- nomatch
-        warning(paste(
+        warn(paste(
             "Failed to match all gene IDs to symbols:",
             toString(nomatch)
-            ), call. = FALSE)
+            ))
         symbol <- c(symbol, nomatch)
     }
 

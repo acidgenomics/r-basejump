@@ -67,7 +67,7 @@ NULL
         set_rownames(.[["ensgene"]])
 
     if (!isTRUE(quiet)) {
-        message(paste("gene2symbol mappings:", nrow(df), "genes"))
+        inform(paste("gene2symbol mappings:", nrow(df), "genes"))
     }
 
     df

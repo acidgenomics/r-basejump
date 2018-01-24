@@ -59,7 +59,7 @@ NULL
         set_rownames(.[["enstxp"]])
 
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "tx2gene mappings:",
             nrow(df), "transcripts,",
             length(unique(df[["ensgene"]])), "genes"))
@@ -95,8 +95,7 @@ setMethod(
         object,
         quiet = FALSE) {
         if (dim(object)[[2L]] != 9L) {
-            stop("GFF object must be data.frame with 9 columns",
-                 call. = FALSE)
+            abort("GFF object must be data.frame with 9 columns")
         }
         .tx2geneFromGFF(object, quiet = quiet)
     })

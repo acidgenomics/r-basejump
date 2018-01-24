@@ -34,7 +34,7 @@ saveData <- function(
     compress = "bzip2",
     quiet = FALSE) {
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("'dir' must be a string")
     } else if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE)
     }
@@ -43,14 +43,14 @@ saveData <- function(
     files <- file.path(dir, paste0(objectNames, ".", ext))
     names(files) <- objectNames
     if (!isTRUE(quiet)) {
-        message(paste("Saving", toString(basename(files)), "to", dir))
+        inform(paste("Saving", toString(basename(files)), "to", dir))
     }
     # If overwrite = FALSE, message skipped files
     if (identical(overwrite, FALSE) &
         any(file.exists(files))) {
         skip <- files[file.exists(files)]
         if (!isTRUE(quiet)) {
-            message(paste("Skipping", toString(basename(skip))))
+            inform(paste("Skipping", toString(basename(skip))))
         }
         files <- files[!file.exists(files)]
     }

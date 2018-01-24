@@ -66,9 +66,9 @@ NULL
     if (!all(numericCol)) {
         # Return which columns aren't numeric
         nonnumericCol <- colnames(object)[!numericCol]
-        stop(paste(
+        abort(paste(
             "Non-numeric columns:", toString(nonnumericCol)
-        ), call. = FALSE)
+        ))
     }
     object %>%
         as.matrix() %>%

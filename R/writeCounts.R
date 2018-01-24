@@ -36,7 +36,7 @@ writeCounts <- function(
     gzip = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("'dir' must be a string")
     } else if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE)
     }
@@ -48,14 +48,14 @@ writeCounts <- function(
         sapply(dim) %>%
         vapply(is.numeric, logical(1L))
     if (any(!hasDim)) {
-        stop("Object must support dim()", call. = FALSE)
+        abort("Object must support dim()")
     }
 
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
 
     if (!isTRUE(quiet)) {
-        message(paste("Writing", toString(names), "to", dir))
+        inform(paste("Writing", toString(names), "to", dir))
     }
     lapply(seq_along(dots), function(a) {
         name <- names[[a]]

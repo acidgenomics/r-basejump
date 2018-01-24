@@ -23,7 +23,7 @@ localOrRemoteFile <- function(
         if (file.exists(object)) {
             filePath <- normalizePath(object)
         } else {
-            warning(paste(basename(object), "missing"), call. = FALSE)
+            warn(paste(basename(object), "missing"))
             return(invisible())
         }
     }

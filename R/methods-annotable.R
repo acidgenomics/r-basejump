@@ -87,13 +87,13 @@ NULL
     quiet = FALSE) {
     # object (organism)
     if (!is_string(object)) {
-        stop("Object must be a string", call. = FALSE)
+        abort("Object must be a string")
     } else if (is.null(object)) {
         return(NULL)
     }
     # format
     if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
-        stop("Unsupported format", call. = FALSE)
+        abort("Unsupported format")
     }
 
     if (!is.null(genomeBuild)) {
@@ -115,10 +115,10 @@ NULL
     # Sanitize the release version
     if (is.numeric(release)) {
         if (release < 87L) {
-            warning(paste(
+            warn(paste(
                 "AnnotationHub only supports Ensembl releases 87 and newer.",
                 "Using current release instead."
-            ), call. = FALSE)
+            ))
             release <- NULL
         }
     } else {
@@ -140,7 +140,7 @@ NULL
     ))
 
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "Loading Ensembl annotations from AnnotationHub",
             snapshotDate(ah),
             sep = "\n"
@@ -160,9 +160,9 @@ NULL
 
     # Early return `NULL` with warning on organism failure
     if (!length(id)) {
-        warning(paste(
+        warn(paste(
             object, "is not supported in AnnotationHub"
-        ), call. = FALSE)
+        ))
         return(NULL)
     }
 
@@ -178,7 +178,7 @@ NULL
     # and we want to exclude dplyr from the detach loop
     pkg <- setdiff(pkg, "package:dplyr")
     if (length(pkg)) {
-        message("Unmasking 'select()'")
+        inform("Unmasking 'select()'")
         lapply(seq_along(pkg), function(a) {
             suppressWarnings(detach(
                 name = pkg[[a]],
@@ -191,7 +191,7 @@ NULL
     }
 
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "EnsDB", paste0(id, ":"),
             organism(edb),
             "Ensembl", ensemblVersion(edb)
@@ -254,9 +254,9 @@ NULL
 .defineBroadClass <- function(object) {
     requiredCols <- c("biotype", "symbol")
     if (!all(requiredCols %in% colnames(object))) {
-        stop(paste(
+        abort(paste(
             "Required columns:", toString(object)
-        ), call. = FALSE)
+        ))
     }
     mutate(
         object,
@@ -322,9 +322,9 @@ NULL
     # Check for required columns
     requiredCols <- c("ensgene", "symbol", "description", "biotype")
     if (!all(requiredCols %in% colnames(object))) {
-        stop(paste(
+        abort(paste(
             "Required columns:", toString(requiredCols)
-        ), call. = FALSE)
+        ))
     }
     # Check for Entrez identifier column and nest into a list, if necessary
     entrezCol <- colnames(object) %>%
