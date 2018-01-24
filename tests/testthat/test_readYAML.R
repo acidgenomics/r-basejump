@@ -21,7 +21,7 @@ test_that("bcbio project summary", {
     )
 })
 
-test_that("'.yml' file support", {
+test_that("`.yml` file support", {
     # Use the package `.travis.yml` configuration as an example
     yaml <- readYAML(
         file.path(
@@ -34,15 +34,15 @@ test_that("'.yml' file support", {
     expect_true("language" %in% names(yaml))
 })
 
-test_that("unsupported file type", {
+test_that("Unsupported file type", {
     expect_error(
         readYAML("http://basejump.seq.cloud/mtcars.csv", quiet = TRUE),
-        "YAML file must have '.yaml' or '.yml' extension"
+        "YAML file must have `.yaml` or `.yml` extension"
     )
 })
 
 # Warn and return `NULL` on missing file
-test_that("missing file", {
+test_that("Missing file", {
     yaml <- suppressWarnings(
         readYAML("foobar.yaml", quiet = TRUE)
     )

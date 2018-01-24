@@ -92,8 +92,8 @@ loadData <- function(
         # Check for file name and internal object name mismatch
         if (!identical(name, loaded)) {
             abort(paste0(
-                "Name mismatch detected for '", basename(file), "'. ",
-                "Internal object is named '", loaded, "'."
+                "Name mismatch detected for `", basename(file), "`. ",
+                "Internal object is named `", loaded, "`."
             ))
         }
         # Assign into the target environment
