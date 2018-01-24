@@ -78,7 +78,7 @@ NULL
     # Check for the presence of delimited numbers (e.g. 1,000,000)
     pattern <- "([0-9])\\.([0-9])"
     replacement <- "\\1x\\2"
-    if (grepl(pattern, object)) {
+    if (any(grepl(pattern, object))) {
         object <- object %>%
             # Escape number separators (useful for keeping decimals, etc.)
             gsub(x = .,
