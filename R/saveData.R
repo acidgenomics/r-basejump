@@ -34,7 +34,7 @@ saveData <- function(
     compress = "bzip2",
     quiet = FALSE) {
     if (!is_string(dir)) {
-        abort("'dir' must be a string")
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE)
     }

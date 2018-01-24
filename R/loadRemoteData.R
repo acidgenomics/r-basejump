@@ -20,18 +20,18 @@ loadRemoteData <- function(
     envir = parent.frame(),
     quiet = FALSE) {
     if (!is_string(object)) {
-        abort("'object' must be a string")
+        abort("`object` must be a string")
     }
     # Check for remote URL
     if (!grepl(x = object, pattern = "\\://")) {
-        abort("Remote URL containing '://' required")
+        abort("Remote URL containing `://` required")
     }
     # Check for '.rda' file
     if (!grepl(x = object, pattern = "\\.rda$")) {
-        abort("Data file must contain '.rda' extension")
+        abort("Data file must contain `.rda` extension")
     }
     if (!is.environment(envir)) {
-        abort("'envir' must be an environment")
+        abort("`envir` must be an environment")
     }
     tmp <- tempfile()
     download.file(
