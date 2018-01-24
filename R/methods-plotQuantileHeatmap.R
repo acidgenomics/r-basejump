@@ -27,8 +27,8 @@ NULL
 #' @param n The number of breaks to create.
 #'
 #' @return A vector of `n` quantile breaks.
-.quantileBreaks <- function(x, n = 5) {
-    q <- quantile(x, probs = seq(0, 1, length.out = n))
+.quantileBreaks <- function(x, n = 5L) {
+    q <- quantile(x, probs = seq(0L, 1L, length.out = n))
     q[!duplicated(q)]
 }
 
@@ -47,7 +47,7 @@ NULL
 #' @importFrom viridis viridis
 .plotQuantileHeatmap <- function(
     object,
-    n = 5,
+    n = 5L,
     annotationCol = NA,
     clusterCols = TRUE,
     clusterRows = TRUE,
@@ -56,16 +56,16 @@ NULL
     title = NULL) {
     object <- as.matrix(object)
 
-    if (nrow(object) < 2) {
+    if (nrow(object) < 2L) {
         stop("Need at least 2 rows to plot heatmap", call. = FALSE)
     }
-    if (ncol(object) < 2) {
+    if (ncol(object) < 2L) {
         stop("Need at least 2 columns to plot heatmap", call. = FALSE)
     }
 
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
-    print(format(breaks, digits = 3))
+    print(format(breaks, digits = 3L))
 
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
@@ -99,22 +99,22 @@ NULL
     }
 
     if (is.function(color)) {
-        color <- color(length(breaks) - 1)
+        color <- color(length(breaks) - 1L)
     } else {
-        color <- rev(brewer.pal(n = 7, name = "RdYlBu"))
-        color <- colorRampPalette(color)(length(breaks) - 1)
+        color <- rev(brewer.pal(n = 7L, name = "RdYlBu"))
+        color <- colorRampPalette(color)(length(breaks) - 1L)
     }
 
     # Dynamic column and row labeling
-    if (ncol(object) <= 50) {
+    if (ncol(object) <= 50L) {
         showColnames <- TRUE
     } else{
         showColnames <- FALSE
     }
-    if (nrow(object) <= 50) {
+    if (nrow(object) <= 50L) {
         showRownames <- TRUE
     } else {
-        showRownames = FALSE
+        showRownames <- FALSE
     }
 
     if (!is.character(title)) {
