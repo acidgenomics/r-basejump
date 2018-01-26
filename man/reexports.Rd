@@ -3,6 +3,8 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{pull}
+\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{Matrix}
@@ -27,6 +29,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{dplyr}{\code{\link[dplyr]{pull}}}
+
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
