@@ -36,7 +36,7 @@ writeCounts <- function(
     gzip = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
-        abort("'dir' must be a string")
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE)
     }
@@ -48,7 +48,7 @@ writeCounts <- function(
         sapply(dim) %>%
         vapply(is.numeric, logical(1L))
     if (any(!hasDim)) {
-        abort("Object must support dim()")
+        abort("Object must support `dim()`")
     }
 
     # Iterate across the dot objects and write to disk

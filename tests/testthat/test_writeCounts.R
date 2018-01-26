@@ -11,7 +11,7 @@ test_that("writeCounts", {
     )
     expect_error(
         writeCounts(seq(1L:10L)),
-        "Object must support dim()"
+        "Object must support `dim\\(\\)`"
     )
 })
 

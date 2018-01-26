@@ -49,6 +49,10 @@ Show heatmap. Invisibly return \link{list} containing breaks and
 \description{
 Plot Heatmap with Quantile Breaks
 }
+\examples{
+mat <- matrix(1:10000, nrow = 100, ncol = 100)
+plotQuantileHeatmap(mat)
+}
 \author{
 Rory Kirchner, Michael Steinbaugh
 }
