@@ -29,7 +29,7 @@ microplate <- function(
     controls = 0L,
     prefix) {
     if (!is.numeric(plates) | plates < 1L) {
-        abort("Invalid 'plates' argument")
+        abort("Invalid `plates` argument")
     }
     if (wells == 96L) {
         col <- 12L
@@ -38,7 +38,7 @@ microplate <- function(
         col <- 24L
         row <- 16L
     } else {
-        abort("Invalid 'wells' argument")
+        abort("Invalid `wells` argument")
     }
     col <- 1L:col %>%
         str_pad(max(str_length(.)), pad = "0")
@@ -50,7 +50,7 @@ microplate <- function(
         sort()
     # Remove control wells from vector:
     if (!is.numeric(controls) | !controls %in% 0L:12L) {
-        abort("'controls' argument supports 0:12")
+        abort("`controls` parameter supports 0:12")
     }
     if (controls > 0L) {
         # Create a grep string matching the control wells

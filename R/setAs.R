@@ -22,7 +22,7 @@ NULL
 #' @importFrom tibble as_tibble has_rownames rownames_to_column
 .asTibble <- function(from) {
     if (is.null(dim(from))) {
-        abort("Object must support 'dim'")
+        abort("Object must support `dim()`")
     }
     from <- as.data.frame(from)
     if (has_rownames(from)) {
