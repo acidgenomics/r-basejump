@@ -1,3 +1,9 @@
+#' @importFrom dplyr pull
+#' @export
+dplyr::pull
+
+
+
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
