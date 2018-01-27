@@ -43,8 +43,6 @@ the file name exactly. These conventions match the recommendations of the
 RStudio team, which recommends saving single objects per file.
 }
 \examples{
-# Use symbols, separated by commas
-\dontrun{
-loadData(foo, bar)
-}
+# Load the internal synonyms data
+loadData(synonyms, dir = system.file("data", package = "basejump"))
 }
