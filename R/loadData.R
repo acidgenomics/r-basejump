@@ -16,8 +16,6 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
-#' @importFrom rlang is_string
-#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param ext R data file extension. Defaults to `rda` and typically should not

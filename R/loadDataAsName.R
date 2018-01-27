@@ -1,7 +1,5 @@
 #' Load Data File as Name
 #'
-#' @importFrom rlang eval_bare
-#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. The argument name

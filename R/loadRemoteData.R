@@ -4,7 +4,6 @@
 #'
 #' @family Data Import and Project Utilities
 #'
-#' @importFrom rlang is_string
 #' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics

@@ -1,6 +1,5 @@
 #' Microtiter Plate Well Identifiers
 #'
-#' @importFrom rlang is_string
 #' @importFrom stringr str_length str_pad
 #'
 #' @param plates Number of plates.

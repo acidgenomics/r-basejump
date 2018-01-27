@@ -28,7 +28,6 @@ NULL
 # Constructors =================================================================
 #' @importFrom dplyr arrange mutate
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang .data sym !!
 #' @importFrom stringr str_match
 .gene2symbolFromGFF <- function(
     object,

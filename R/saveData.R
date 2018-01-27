@@ -6,8 +6,6 @@
 #'
 #' @family Write Utilities
 #'
-#' @importFrom rlang is_string
-#'
 #' @inheritParams loadData
 #' @inheritParams base::save
 #'
