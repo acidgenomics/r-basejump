@@ -55,9 +55,8 @@ loadData <- function(
         inform(paste("Loading", toString(dots), "from", dir))
     }
     files <- vapply(
-        X = seq_along(dots),
-        FUN = function(a) {
-            name <- dots[[a]]
+        X = dots,
+        FUN = function(name) {
             file <- file.path(dir, paste0(name, ".", ext))
             # Check to see if object is present in environment
             if (exists(name, envir = envir, inherits = FALSE)) {
