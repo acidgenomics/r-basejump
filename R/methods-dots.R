@@ -35,7 +35,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname dots
-#' @importFrom rlang eval_bare
 #' @export
 setMethod(
     "dots",

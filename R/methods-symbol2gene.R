@@ -34,7 +34,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom rlang is_string
 .symbol2gene <- function(
     object,
     organism,

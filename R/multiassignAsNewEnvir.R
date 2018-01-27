@@ -2,8 +2,6 @@
 #'
 #' @family Object Assignment Utilities
 #'
-#' @importFrom rlang is_string
-#'
 #' @inheritParams dots
 #' @inheritParams saveData
 #'

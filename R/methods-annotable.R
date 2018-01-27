@@ -75,7 +75,6 @@ NULL
 #' @importFrom dplyr mutate rename
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang .data is_string
 #' @importFrom S4Vectors mcols
 #' @importFrom utils capture.output find tail
 .annotable <- function(
@@ -310,7 +309,6 @@ NULL
 #' @importFrom dplyr distinct everything group_by left_join mutate rename select
 #'   summarize_all ungroup
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
 #'

@@ -34,7 +34,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom rlang is_string
 .tx2gene <- function(
     object,
     release = NULL,
