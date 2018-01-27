@@ -9,12 +9,6 @@
 \alias{reexports}
 \alias{Matrix}
 \alias{reexports}
-\alias{abort}
-\alias{reexports}
-\alias{inform}
-\alias{reexports}
-\alias{warn}
-\alias{reexports}
 \alias{DataFrame}
 \alias{reexports}
 \alias{glimpse}
@@ -34,8 +28,6 @@ below to see their documentation.
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
-
-  \item{rlang}{\code{\link[rlang]{abort}}, \code{\link[rlang]{inform}}, \code{\link[rlang]{warn}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
