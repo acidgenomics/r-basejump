@@ -29,10 +29,8 @@
 #' @export
 #'
 #' @examples
-#' # Use symbols, separated by commas
-#' \dontrun{
-#' loadData(foo, bar)
-#' }
+#' # Load the internal synonyms data
+#' loadData(synonyms, dir = system.file("data", package = "basejump"))
 loadData <- function(
     ...,
     dir = getwd(),
@@ -56,51 +54,54 @@ loadData <- function(
     if (!isTRUE(quiet)) {
         inform(paste("Loading", toString(dots), "from", dir))
     }
-    files <- sapply(seq_along(dots), function(a) {
-        name <- dots[[a]]
-        file <- file.path(dir, paste0(name, ".", ext))
-        # Check to see if object is present in environment
-        if (exists(name, envir = envir, inherits = FALSE)) {
-            if (isTRUE(replace)) {
-                warn(paste(
-                    "Replacing", name,
-                    "with the contents of", basename(file)
-                ))
-            } else {
-                return(warn(paste(
-                    "Skipping", basename(file),
-                    "because", name, "already exists"
-                )))
+    files <- vapply(
+        X = seq_along(dots),
+        FUN = function(a) {
+            name <- dots[[a]]
+            file <- file.path(dir, paste0(name, ".", ext))
+            # Check to see if object is present in environment
+            if (exists(name, envir = envir, inherits = FALSE)) {
+                if (isTRUE(replace)) {
+                    warn(paste(
+                        "Replacing", name,
+                        "with the contents of", basename(file)
+                    ))
+                } else {
+                    return(warn(paste(
+                        "Skipping", basename(file),
+                        "because", name, "already exists"
+                    )))
+                }
             }
-        }
-        # Error on missing file
-        if (!file.exists(file)) {
-            abort(paste(name, "missing"))
-        }
-        # Load into a temporary environment (safer)
-        tmpEnv <- new.env()
-        loaded <- load(file, envir = tmpEnv)
-        # Check for multiple saved objects
-        if (length(loaded) > 1L) {
-            abort(paste(
-                basename(file), "contains multiple objects:",
-                toString(loaded)
-            ))
-        }
-        # Check for file name and internal object name mismatch
-        if (!identical(name, loaded)) {
-            abort(paste0(
-                "Name mismatch detected for `", basename(file), "`. ",
-                "Internal object is named `", loaded, "`."
-            ))
-        }
-        # Assign into the target environment
-        assign(x = name,
-               value = get(name, envir = tmpEnv, inherits = FALSE),
-               envir = envir)
-        # Prepare named character vector for invisible return
-        names(file) <- name
-        file
-    })
+            # Error on missing file
+            if (!file.exists(file)) {
+                abort(paste(name, "missing"))
+            }
+            # Load into a temporary environment (safer)
+            tmpEnv <- new.env()
+            loaded <- load(file, envir = tmpEnv)
+            # Check for multiple saved objects
+            if (length(loaded) > 1L) {
+                abort(paste(
+                    basename(file), "contains multiple objects:",
+                    toString(loaded)
+                ))
+            }
+            # Check for file name and internal object name mismatch
+            if (!identical(name, loaded)) {
+                abort(paste0(
+                    "Name mismatch detected for `", basename(file), "`. ",
+                    "Internal object is named `", loaded, "`."
+                ))
+            }
+            # Assign into the target environment
+            assign(x = name,
+                   value = get(name, envir = tmpEnv, inherits = FALSE),
+                   envir = envir)
+            # Prepare named character vector for invisible return
+            names(file) <- name
+            file
+        },
+        FUN.VALUE = "character")
     invisible(files)
 }
