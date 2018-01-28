@@ -293,6 +293,7 @@ up objects that don't contain gene annotations.
 [bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase
 [bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq
 [bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell
+[Bioconductor]: https://bioconductor.org
 [Biostrings]: http://bioconductor.org/packages/release/bioc/html/Biostrings.html
 [devtools]: https://github.com/hadley/devtools
 [dplyr]: http://dplyr.tidyverse.org
