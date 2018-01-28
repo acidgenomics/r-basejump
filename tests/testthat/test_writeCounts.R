@@ -2,8 +2,8 @@ context("writeCounts")
 
 test_that("writeCounts", {
     df <- as.data.frame(mtcars)
-    dgc <- as(mat, "dgCMatrix")
     mat <- as.matrix(mtcars)
+    dgc <- as(mat, "dgCMatrix")
     expect_message(
         writeCounts(df, dgc, mat, dir = "counts"),
         "Writing df, dgc, mat"
