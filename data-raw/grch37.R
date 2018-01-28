@@ -1,14 +1,17 @@
-# devtools::install_github("stephenturner/annotables")
+extdataDir <- file.path("inst", "extdata")
+dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
 
-devtools::load_all()
-library(magrittr)
+devtools::install_github("stephenturner/annotables")
 
 grch37 <- annotable(annotables::grch37)
-lapply(grch37, class)
+save(
+    grch37,
+    file = file.path(extdataDir, "grch37.rda"),
+    compress = "xz")
 
-grch37Tx2gene <- annotables::grch37_tx2gene %>%
-    as.data.frame() %>%
-    set_rownames(.[["enstxp"]])
-lapply(grch37Tx2gene, class)
-
-devtools::use_data(grch37, grch37Tx2gene, compress = "xz", overwrite = TRUE)
+grch37Tx2gene <- as.data.frame(annotables::grch37_tx2gene)
+rownames(grch37Tx2gene) <- grch37Tx2gene[["enstxp"]]
+save(
+    grch37Tx2gene,
+    file = file.path(extdataDir, "grch37Tx2gene.rda"),
+    compress = "xz")
