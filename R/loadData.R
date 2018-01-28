@@ -94,9 +94,11 @@ loadData <- function(
                 ))
             }
             # Assign into the target environment
-            assign(x = name,
-                   value = get(name, envir = tmpEnv, inherits = FALSE),
-                   envir = envir)
+            assign(
+                x = name,
+                value = get(name, envir = tmpEnv, inherits = FALSE),
+                envir = envir
+            )
             # Prepare named character vector for invisible return
             names(file) <- name
             file

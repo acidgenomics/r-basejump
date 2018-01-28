@@ -98,9 +98,11 @@ NULL
     if (!is.null(genomeBuild)) {
         # GRCh37/hg19 support
         if (object == "Homo sapiens" &
-            grepl(x = genomeBuild,
-                  pattern = paste("GRCh37", "hg19", sep = "|"),
-                  ignore.case = TRUE)) {
+            grepl(
+                pattern = paste("GRCh37", "hg19", sep = "|"),
+                x = genomeBuild,
+                ignore.case = TRUE)
+        ) {
             if (format == "gene") {
                 return(basejump::grch37)
             } else if (format == "gene2symbol") {
@@ -265,36 +267,43 @@ NULL
                 # Mmusculus: `mt-`
                 # Dmelanogaster: `mt:`
                 pattern = "^mt[\\:\\-]",
-                ignore.case = TRUE) ~ "mito",
+                ignore.case = TRUE
+            ) ~ "mito",
             .data[["biotype"]] == "protein_coding" ~ "coding",
-            .data[["biotype"]] %in%
-                c("known_ncrna",
-                  "lincRNA",
-                  "non_coding") ~ "noncoding",
+            .data[["biotype"]] %in% c(
+                "known_ncrna",
+                "lincRNA",
+                "non_coding"
+            ) ~ "noncoding",
             grepl(
-                x = .data[["biotype"]],
-                pattern = "pseudo") ~ "pseudo",
-            .data[["biotype"]] %in%
-                c("miRNA",
-                  "misc_RNA",
-                  "ribozyme",
-                  "rRNA",
-                  "scaRNA",
-                  "scRNA",
-                  "snoRNA",
-                  "snRNA",
-                  "sRNA") ~ "small",
-            .data[["biotype"]] %in%
-                c("non_stop_decay",
-                  "nonsense_mediated_decay") ~ "decaying",
+                pattern = "pseudo",
+                x = .data[["biotype"]]
+            ) ~ "pseudo",
+            .data[["biotype"]] %in% c(
+                "miRNA",
+                "misc_RNA",
+                "ribozyme",
+                "rRNA",
+                "scaRNA",
+                "scRNA",
+                "snoRNA",
+                "snRNA",
+                "sRNA"
+            ) ~ "small",
+            .data[["biotype"]] %in% c(
+                "non_stop_decay",
+                "nonsense_mediated_decay"
+            ) ~ "decaying",
             grepl(
-                x = .data[["biotype"]],
                 pattern = "^ig_",
-                ignore.case = TRUE) ~ "ig",
-            grepl(
                 x = .data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "ig",
+            grepl(
                 pattern = "^tr_",
-                ignore.case = TRUE) ~ "tcr",
+                x = .data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "tcr",
             TRUE ~ "other")
     )
 }

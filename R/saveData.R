@@ -52,11 +52,15 @@ saveData <- function(
         }
         files <- files[!file.exists(files)]
     }
-    mapply(save,
-           list = names(files),
-           file = files,
-           MoreArgs = list(envir = parent.frame(),
-                           compress = compress))
+    mapply(
+        FUN = save,
+        list = names(files),
+        file = files,
+        MoreArgs = list(
+            envir = parent.frame(),
+            compress = compress
+        )
+    )
     # Silently return the file paths as a named character vector
     if (!length(files)) {
         files <- NULL

@@ -44,9 +44,7 @@ NULL
     object %>%
         dotted() %>%
         tolower() %>%
-        gsub(x = .,
-             pattern = "\\.",
-             replacement = "_")
+        gsub("\\.", "_", .)
 }
 
 

@@ -35,10 +35,12 @@ assignAndSaveData <- function(
     if (!isTRUE(quiet)) {
         inform(paste("Saving", name, "to", dir))
     }
-    save(list = name,
-         file = file,
-         envir = envir,
-         compress = compress)
+    save(
+        list = name,
+        file = file,
+        envir = envir,
+        compress = compress
+    )
     # Silently return the file path as a named character vector
     invisible(file)
 }
