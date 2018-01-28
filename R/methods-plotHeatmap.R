@@ -83,7 +83,8 @@ NULL
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(
-            seq_along(colnames(annotationCol)), function(a) {
+            X = seq_along(colnames(annotationCol)),
+            FUN = function(a) {
                 col <- annotationCol[[a]] %>%
                     levels()
                 colors <- annotationCol[[a]] %>%
