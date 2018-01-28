@@ -59,16 +59,6 @@ NULL
 
 
 # Constructors =================================================================
-.checkNames <- function(object) {
-    if (!is.null(names(object))) {
-        TRUE
-    } else {
-        FALSE
-    }
-}
-
-
-
 .checkRownames <- function(object) {
     if (!is.null(rownames(object))) {
         # Ignore numbered rownames
@@ -125,14 +115,18 @@ NULL
 
 
 
-.setNamesDotted <- function(
-    object,
-    rownames = FALSE) {
-    if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesDotted(names(object)))
-    }
-    if (isTRUE(rownames) & .checkRownames(object)) {
-        rownames(object) <- .makeNamesDotted(rownames(object))
+.setNamesDotted <- function(object, rownames = FALSE) {
+    if (!is.null(dimnames(object))) {
+        # Colnames
+        if (!is.null(colnames(object))) {
+            colnames(object) <- .makeNamesDotted(colnames(object))
+        }
+        # Rownames
+        if (isTRUE(rownames) & .checkRownames(object)) {
+            rownames(object) <- .makeNamesDotted(rownames(object))
+        }
+    } else if (!is.null(names(object))) {
+        names(object) <- .makeNamesDotted(names(object))
     }
     object
 }
@@ -146,10 +140,8 @@ NULL
 
 
 .dottedVector <- function(object) {
-    if (isTRUE(.checkNames(object))) {
+    if (!is.null(names(object))) {
         names <- .makeNamesDotted(names(object))
-    } else {
-        names <- NULL
     }
     object <- .makeNamesDotted(object)
     names(object) <- names
