@@ -7,12 +7,18 @@
 #' @inheritParams AllGenerics
 #'
 #' @param headerLevel Header level.
+#'
+#' @seealso [cowplot::plot_grid()].
+#'
+#' @examples
+#' loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+#' mdPlotlist(plotlist)
 NULL
 
 
 
 # Constructors =================================================================
-.mdPlotlist <- function(object, headerLevel) {
+.mdPlotlist <- function(object, headerLevel = 2L) {
     if (is.null(names(object))) {
         warn("Object does not contain names")
     }
