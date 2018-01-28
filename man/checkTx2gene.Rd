@@ -18,12 +18,6 @@ Silent on pass, stop on error.
 Check Transcript to Gene Mapping Data
 }
 \examples{
-# Success
 tx2gene <- annotable("Homo sapiens", format = "tx2gene")
 checkTx2gene(tx2gene)
-
-# Failure
-\dontrun{
-checkTx2gene(mtcars)
-}
 }

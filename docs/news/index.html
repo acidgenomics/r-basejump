@@ -102,7 +102,7 @@
 <a href="#basejump-0-1-9-2017-12-18" class="anchor"></a>basejump 0.1.9 (2017-12-18)</h1>
 <ul>
 <li>Added <code>plotHeatmap()</code> functionality.</li>
-<li>Migrated <code><a href="../reference/bcbioGenerics.html">tpm()</a></code> generic from bcbioRNASeq, for future use in bcbioSingleCell.</li>
+<li>Migrated <code>tpm()</code> generic from bcbioRNASeq, for future use in bcbioSingleCell.</li>
 <li>Added matrix method support for <code>plotHeatmap()</code>.</li>
 <li>Added matrix method support for <code>plotQuantileHeatmap()</code>, which works similarly as <code>plotHeatmap()</code>.</li>
 </ul>
@@ -125,7 +125,7 @@
 <a href="#basejump-0-1-7-2017-12-11" class="anchor"></a>basejump 0.1.7 (2017-12-11)</h1>
 <ul>
 <li>Renamed <code><a href="../reference/deprecated.html">fc2lr()</a></code> to <code><a href="../reference/logRatio.html">foldChangeToLogRatio()</a></code> and <code><a href="../reference/deprecated.html">lr2fc()</a></code> and <code><a href="../reference/logRatio.html">logRatioToFoldChange()</a></code>.</li>
-<li>Moved <code><a href="../reference/bcbioGenerics.html">plotDot()</a></code> and <code><a href="../reference/bcbioGenerics.html">plotViolin()</a></code> generics here from bcbioSingleCell.</li>
+<li>Moved <code>plotDot()</code> and <code>plotViolin()</code> generics here from bcbioSingleCell.</li>
 <li>Added internal GRCh37 gene annotations.</li>
 </ul>
 </div>
@@ -159,7 +159,7 @@
 <code><a href="../reference/loadData.html">loadData()</a></code> and <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
 <li>
 <code>collapseToString()</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code>as(object, "grouped_df")</code>.</li>
-<li>DNA sequence utility functions <code><a href="../reference/dna.html">comp()</a></code> and <code><a href="../reference/dna.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
+<li>DNA sequence utility functions <code><a href="../reference/deprecated.html">comp()</a></code> and <code><a href="../reference/deprecated.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment()</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from bcbioRNASeq when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code>SummarizedExperiment()</code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile()</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.</li>
 <li>Updated <code>annotable()</code> function to include nested Entrez identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
@@ -169,7 +169,7 @@
 <h1 class="hasAnchor">
 <a href="#basejump-0-1-2" class="anchor"></a>basejump 0.1.2</h1>
 <ul>
-<li>Added bcbio <code><a href="../reference/bcbioGenerics.html">plotQC()</a></code> generic.</li>
+<li>Added bcbio <code>plotQC()</code> generic.</li>
 <li>Added back <code>toStringUnique()</code> code, which is still in use in the worminfo package.</li>
 <li>Added deprecations for <code><a href="../reference/deprecated.html">summarizeRows()</a></code> (now <code>collapseToString()</code>) and <code><a href="../reference/deprecated.html">wash()</a></code> functions.</li>
 <li>Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.</li>
@@ -226,7 +226,7 @@
 <li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
 </li>
 <li>Added <code>*GFF()</code> function variants for <code><a href="../reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
-<li>Added shared bcbio generic functions: <code>aggregateReplicates()</code>, <code><a href="../reference/bcbioGenerics.html">bcbio()</a></code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/bcbioGenerics.html">interestingGroups()</a></code>, <code><a href="../reference/bcbioGenerics.html">metrics()</a></code>, <code><a href="../reference/bcbioGenerics.html">plotGene()</a></code>, <code><a href="../reference/deprecated.html">sampleDirs()</a></code>, <code><a href="../reference/bcbioGenerics.html">sampleMetadata()</a></code>, <code><a href="../reference/bcbioGenerics.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Added shared bcbio generic functions: <code>aggregateReplicates()</code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code>interestingGroups()</code>, <code>metrics()</code>, <code>plotGene()</code>, <code><a href="../reference/deprecated.html">sampleDirs()</a></code>, <code>sampleMetadata()</code>, <code>selectSamples()</code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
 <li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code>readDataVersions()</code> (deprecated <code>.dataVersions()</code>), <code>readLogFile()</code> (deprecated <code>.logFile()</code>), <code>readProgramVersions()</code> (deprecated <code>.programs()</code>), <code>sampleYAML()</code> (deprecated <code>.sampleYAML()</code>), <code>sampleYAMLMetadata()</code> (deprecated <code>sampleYAMLMetadata()</code>), <code>sampleYAMLMetrics()</code> (deprecated .sampleYAMLMetrics()`).</li>
 <li>Deprecated <code><a href="../reference/deprecated.html">metadataTable()</a></code> function.</li>
 <li>Moved all roxygen documentation to <code>methods-*.R</code> files where applicable.</li>
@@ -493,7 +493,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

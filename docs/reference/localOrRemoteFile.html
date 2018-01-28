@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read Data Versions — readDataVersions • basejump</title>
+<title>Dynamically Handle a Local or Remote File Path — localOrRemoteFile • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,28 +83,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read Data Versions</h1>
+    <h1>Dynamically Handle a Local or Remote File Path</h1>
     </div>
 
     
-    <p>Read Data Versions</p>
+    <p>Dynamically Handle a Local or Remote File Path</p>
     
 
-    <pre class="usage"><span class='fu'>readDataVersions</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readDataVersions</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>localOrRemoteFile</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Project directory path (character vector).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Object names as symbols.</p></td>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -114,34 +107,11 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other bcbio Utilities: <code>prepareSummarizedExperiment</code>,
-  <code>readProgramVersions</code>,
-  <code>sampleYAMLMetadata</code>,
-  <code>sampleYAMLMetrics</code>, <code>sampleYAML</code></p>
+    <p>Named character vector containing the original file name as the
+name and local file path as the string. Returns <code>NULL</code> on a misisng
+local file.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
-    <span class='st'>"http://basejump.seq.cloud"</span>,
-    <span class='st'>"bcbio"</span>,
-    <span class='st'>"data_versions.csv"</span>)
-<span class='fu'>readDataVersions</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  genome = col_character(),</span>
-#&gt; <span class='message'>  resource = col_character(),</span>
-#&gt; <span class='message'>  version = col_datetime(format = "")</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;   genome        resource    version
-#&gt;    &lt;chr&gt;           &lt;chr&gt;     &lt;dttm&gt;
-#&gt; 1   mm10         sranseq 2015-10-14
-#&gt; 2   mm10         srnaseq 2016-11-21
-#&gt; 3   mm10 problem_regions 2015-10-28
-#&gt; 4   mm10           dbsnp 2013-09-12
-#&gt; 5   mm10     transcripts 2014-07-14</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -149,11 +119,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>
@@ -164,7 +130,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
