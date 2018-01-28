@@ -11,7 +11,7 @@ checkAnnotable(object)
 from the \code{\link[=annotable]{annotable()}} function.}
 }
 \value{
-Silent on pass, stop on error.
+\code{TRUE} on pass, \code{\link[=stop]{stop()}} on error.
 }
 \description{
 Check Ensembl Annotations

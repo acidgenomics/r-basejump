@@ -12,7 +12,7 @@ mappings. Must be structured as a two column \link{data.frame} with "ensgene"
 and "symbol" columns.}
 }
 \value{
-Silent on pass, stop on error.
+\code{TRUE} on pass, \code{\link[=stop]{stop()}} on error.
 }
 \description{
 Check Gene to Symbol Mapping Data
