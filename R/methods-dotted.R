@@ -142,6 +142,8 @@ NULL
 .dottedVector <- function(object) {
     if (!is.null(names(object))) {
         names <- .makeNamesDotted(names(object))
+    } else {
+        names <- NULL
     }
     object <- .makeNamesDotted(object)
     names(object) <- names
