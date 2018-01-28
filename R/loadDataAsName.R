@@ -68,10 +68,7 @@ loadDataAsName <- function(
         if (grepl(x = object, pattern = fileExtPattern)) {
             file <- object
             # Extract the object name from the file name
-            object <- gsub(
-                x = basename(object),
-                pattern = fileExtPattern,
-                replacement = "")
+            object <- gsub(fileExtPattern, "", basename(object))
         } else {
             file <- file.path(dir, paste0(object, paste0(".", ext)))
         }
