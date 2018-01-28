@@ -37,15 +37,11 @@ NULL
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
     # This fix is necessary for FlyBase GFF files.
     if (any(grepl(x = anno, pattern = "gene_symbol"))) {
-        anno <- gsub(
-            x = anno,
-            pattern = "gene_symbol",
-            replacement = "gene_name")
+        anno <- gsub("gene_symbol", "gene_name", anno)
     }
 
     anno <- anno %>%
-        .[grepl(x = ., pattern = "gene_id") &
-              grepl(x = ., pattern = "gene_name")] %>%
+        .[grepl("gene_id", .) & grepl("gene_name", .)] %>%
         unique()
 
     ensgene <- str_match(

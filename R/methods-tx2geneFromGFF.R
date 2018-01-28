@@ -42,8 +42,7 @@ NULL
     quiet = FALSE) {
     anno <- object %>%
         .gffKeyValuePairs() %>%
-        .[grepl(x = ., pattern = "transcript_id") &
-              grepl(x = ., pattern = "gene_id")] %>%
+        .[grepl("transcript_id", .) && grepl("gene_id", .)] %>%
         unique()
 
     enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%

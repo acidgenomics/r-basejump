@@ -11,8 +11,10 @@
 #' @examples
 #' fixNA(c(1L, "x", "", "NA", "NULL"))
 #'
-#' data.frame(a = c("foo", ""),
-#'            b = c(NA, "bar")) %>%
+#' data.frame(
+#'     a = c("foo", ""),
+#'     b = c(NA, "bar")
+#' ) %>%
 #'     fixNA()
 NULL
 
@@ -25,9 +27,7 @@ NULL
         "^\\s+$",
         "^NA$",
         "^NULL$")
-    gsub(x = object,
-         pattern = paste(patterns, collapse = "|"),
-         replacement = NA)
+    gsub(paste(patterns, collapse = "|"), NA, object)
 }
 
 
