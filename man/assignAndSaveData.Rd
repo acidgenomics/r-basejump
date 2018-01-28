@@ -37,7 +37,9 @@ the newly assigned object, specified by \code{dir}.
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
 }
 \examples{
-assignAndSaveData("test", mtcars)
+assignAndSaveData(name = "test", object = mtcars)
+
+unlink("test.rda")
 }
 \seealso{
 Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}

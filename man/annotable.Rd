@@ -81,9 +81,6 @@ annotable("Homo sapiens") \%>\% glimpse()
 
 # Legacy GRCh37/hg19 genome build support
 annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
-
-# Convert pre-compiled annotables tibble (advanced)
-annotable(annotables::grch38) \%>\% glimpse()
 }
 \seealso{
 \itemize{
