@@ -12,9 +12,10 @@
 #'
 #' @examples
 #' loadDataAsName(
-#'     newName = "synonyms",
-#'     dir = system.file("data", package = "basejump")
+#'     annotable = "grch37",
+#'     dir = system.file("extdata", package = "basejump")
 #' )
+#' glimpse(annotable)
 loadDataAsName <- function(
     ...,
     dir = getwd(),
