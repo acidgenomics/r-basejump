@@ -32,6 +32,47 @@ test_that("Human", {
     )
 })
 
+test_that("Human GRCh37/hg19 genome build support", {
+    # Load up the internal data
+    load(system.file(
+        file.path("extdata", "grch37.rda"),
+        package = "basejump"
+    ))
+    load(system.file(
+        file.path("extdata", "grch37Tx2gene.rda"),
+        package = "basejump"
+    ))
+
+    expect_identical(
+        annotable("Homo sapiens", genomeBuild = "GRCh37"),
+        grch37
+    )
+
+    # Also support `hg19` as genomeBuild name
+    expect_identical(
+        annotable("Homo sapiens", genomeBuild = "hg19"),
+        grch37
+    )
+
+    # gene2symbol
+    expect_identical(
+        annotable(
+            "Homo sapiens",
+            genomeBuild = "GRCh37",
+            format = "gene2symbol"),
+        grch37[, c("ensgene", "symbol")]
+    )
+
+    # tx2gene
+    expect_identical(
+        annotable(
+            "Homo sapiens",
+            genomeBuild = "GRCh37",
+            format = "tx2gene"),
+        grch37Tx2gene
+    )
+})
+
 test_that("Mouse", {
     # Mouse
     mouse <- annotable("Mus musculus", release = 88L)
@@ -49,7 +90,7 @@ test_that("Mouse", {
     )
 })
 
-test_that("annotables data.frame", {
+test_that("annotables package data.frame input", {
     # Use the pre-compiled grch37 annotable from annotables package
     loadRemoteData("http://basejump.seq.cloud/grch37.rda", quiet = TRUE)
 
@@ -112,37 +153,10 @@ test_that("Bad input", {
     )
 })
 
-test_that("Legacy", {
+test_that("Legacy release parameter support", {
     # Check for legacy code support using `release = "current"`
     expect_equal(
         annotable("Homo sapiens", release = "current", quiet = TRUE),
         annotable("Homo sapiens", quiet = TRUE)
-    )
-})
-
-test_that("GRCh37/hg19", {
-    grch37 <- annotable("Homo sapiens", genomeBuild = "GRCh37")
-    hg19 <- annotable("Homo sapiens", genomeBuild = "hg19")
-    expect_identical(grch37, hg19)
-    expect_identical(grch37, basejump::grch37)
-
-    # gene2symbol
-    gene2symbol <- annotable(
-        "Homo sapiens",
-        genomeBuild = "GRCh37",
-        format = "gene2symbol")
-    expect_identical(
-        basejump::grch37[, c("ensgene", "symbol")],
-        gene2symbol
-    )
-
-    # tx2gene
-    tx2gene <- annotable(
-        "Homo sapiens",
-        genomeBuild = "GRCh37",
-        format = "tx2gene")
-    expect_identical(
-        basejump::grch37Tx2gene,
-        tx2gene
     )
 })
