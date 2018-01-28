@@ -8,14 +8,8 @@
 #' @export
 #'
 #' @examples
-#' # Success
 #' gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
 #' checkGene2symbol(gene2symbol)
-#'
-#' # Failure
-#' \dontrun{
-#' checkGene2symbol(mtcars)
-#' }
 checkGene2symbol <- function(object) {
     if (!is.data.frame(object)) {
         abort("gene2symbol must be data.frame")

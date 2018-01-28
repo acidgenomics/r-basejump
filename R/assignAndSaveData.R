@@ -19,7 +19,9 @@
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
-#' assignAndSaveData("test", mtcars)
+#' assignAndSaveData(name = "test", object = mtcars)
+#'
+#' unlink("test.rda")
 assignAndSaveData <- function(
     name,
     object,
