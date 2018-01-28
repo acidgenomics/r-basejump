@@ -43,6 +43,7 @@ the file name exactly. These conventions match the recommendations of the
 RStudio team, which recommends saving single objects per file.
 }
 \examples{
-# Load the internal synonyms data
-loadData(synonyms, dir = system.file("data", package = "basejump"))
+# Load the internal GRCh37 gene annotations data
+loadData(grch37, dir = system.file("extdata", package = "basejump"))
+glimpse(grch37)
 }

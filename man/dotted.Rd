@@ -63,7 +63,8 @@ argument name assignments.
 \examples{
 load(system.file(
     file.path("extdata", "makeNames.rda"),
-    package = "basejump"))
+    package = "basejump"
+))
 
 # Character vector
 character <- makeNames$character
