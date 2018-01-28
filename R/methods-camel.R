@@ -116,7 +116,6 @@ NULL
             format = format,
             strict = strict)
     }
-
     object
 }
 
