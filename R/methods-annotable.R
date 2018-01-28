@@ -86,8 +86,6 @@ NULL
     # object (organism)
     if (!is_string(object)) {
         abort("Object must be a string")
-    } else if (is.null(object)) {
-        return(NULL)
     }
     # format
     if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
