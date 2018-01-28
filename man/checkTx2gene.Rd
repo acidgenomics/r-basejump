@@ -12,7 +12,7 @@ mappings. Must be structured as a two column \link{data.frame} with "enstxp" and
 "ensgene" columns.}
 }
 \value{
-Silent on pass, stop on error.
+\code{TRUE} on pass, stop on error.
 }
 \description{
 Check Transcript to Gene Mapping Data

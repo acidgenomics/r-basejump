@@ -4,7 +4,7 @@
 #'   mappings. Must be structured as a two column [data.frame] with "ensgene"
 #'   and "symbol" columns.
 #'
-#' @return Silent on pass, stop on error.
+#' @return `TRUE` on pass, [stop()] on error.
 #' @export
 #'
 #' @examples
@@ -20,4 +20,5 @@ checkGene2symbol <- function(object) {
             "gene2symbol must contain:", toString(colnames)
         ))
     }
+    TRUE
 }

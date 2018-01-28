@@ -4,7 +4,7 @@
 #'   mappings. Must be structured as a two column [data.frame] with "enstxp" and
 #'   "ensgene" columns.
 #'
-#' @return Silent on pass, stop on error.
+#' @return `TRUE` on pass, stop on error.
 #' @export
 #'
 #' @examples
@@ -20,4 +20,5 @@ checkTx2gene <- function(object) {
             "tx2gene must contain:", toString(colnames)
         ))
     }
+    TRUE
 }

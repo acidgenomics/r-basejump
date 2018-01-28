@@ -3,7 +3,7 @@
 #' @param object [data.frame] containing Ensembl gene annotations returned
 #'   from the [annotable()] function.
 #'
-#' @return Silent on pass, stop on error.
+#' @return `TRUE` on pass, [stop()] on error.
 #' @export
 #'
 #' @examples
@@ -20,4 +20,5 @@ checkAnnotable <- function(object) {
             "annotable must contain:", toString(colnames)
         ))
     }
+    TRUE
 }

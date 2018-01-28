@@ -31,6 +31,22 @@ dynamicPlotlist(object, ...)
 \description{
 Dynamic Plotlist
 }
+\examples{
+loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+
+# Grid
+dynamicPlotlist(plotlist, return = "grid")
+
+# List
+list <- dynamicPlotlist(plotlist, return = "list")
+names(list)
+
+# Markdown
+dynamicPlotlist(plotlist, return = "markdown")
+}
+\seealso{
+\link{mdPlotlist}.
+}
 \author{
 Michael Steinbaugh
 }
