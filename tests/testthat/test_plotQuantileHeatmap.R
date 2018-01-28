@@ -12,3 +12,9 @@ test_that("Simple matrix", {
         c("tree_row", "tree_col", "kmeans", "gtable")
     )
 })
+
+test_that("Annotation columns support", {
+
+
+
+})

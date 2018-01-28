@@ -22,7 +22,7 @@ test_that("character", {
     )
 })
 
-test_that("named character", {
+test_that("Named character", {
     vec <- snake(makeNames[["namedCharacter"]])
     expect_identical(
         vec,
@@ -41,6 +41,37 @@ test_that("data.frame", {
     )
 })
 
+test_that("Counts matrix", {
+    loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
+    counts <- snake(counts)
+    expect_identical(
+        rownames(counts)[[1L]],
+        "ENSMUSG00000002459"
+    )
+    expect_identical(
+        colnames(counts),
+        c("group1_1", "group1_2", "group2_1", "group2_2")
+    )
+})
+
+test_that("matrix rownames", {
+    # Sanitize rownames
+    expect_identical(
+        snake(makeNames[["matrix"]], rownames = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "mazda_rx4"
+    )
+    # Unset rownames (ignore in `.checkRownames()`)
+    expect_identical(
+        makeNames[["matrix"]] %>%
+            set_rownames(NULL) %>%
+            snake(rownames = TRUE) %>%
+            rownames(),
+        NULL
+    )
+})
+
 test_that("tibble", {
     vec <- makeNames[["tibble"]] %>%
         .[, 1L:5L] %>%
@@ -56,7 +87,7 @@ test_that("tibble", {
     )
 })
 
-test_that("named list", {
+test_that("Named list", {
     lst <- snake(makeNames[["list"]])
     expect_identical(
         lst,

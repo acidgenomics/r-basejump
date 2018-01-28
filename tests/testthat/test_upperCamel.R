@@ -70,14 +70,27 @@ test_that("data.frame", {
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
         mtcars %>%
-            magrittr::set_rownames(., NULL) %>%
+            set_rownames(NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
         as.character(1L:nrow(mtcars))
     )
 })
 
-test_that("matrix", {
+test_that("Counts matrix", {
+    loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
+    counts <- upperCamel(counts)
+    expect_identical(
+        rownames(counts)[[1L]],
+        "ENSMUSG00000002459"
+    )
+    expect_identical(
+        colnames(counts),
+        c("Group1x1", "Group1x2", "Group2x1", "Group2x2")
+    )
+})
+
+test_that("matrix rownames", {
     # Sanitize rownames
     expect_identical(
         upperCamel(makeNames[["matrix"]],
@@ -89,7 +102,7 @@ test_that("matrix", {
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
         makeNames[["matrix"]] %>%
-            magrittr::set_rownames(., NULL) %>%
+            set_rownames(NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
         NULL
