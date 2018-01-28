@@ -29,9 +29,12 @@
 #'
 #' @examples
 #' writeCounts(mtcars)
+#'
+#' # Clean up
+#' unlink("mtcars.csv.gz")
 writeCounts <- function(
     ...,
-    dir = file.path("results", Sys.Date(), "counts"),
+    dir = getwd(),
     gzip = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
