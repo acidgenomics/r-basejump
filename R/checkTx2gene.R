@@ -8,14 +8,8 @@
 #' @export
 #'
 #' @examples
-#' # Success
 #' tx2gene <- annotable("Homo sapiens", format = "tx2gene")
 #' checkTx2gene(tx2gene)
-#'
-#' # Failure
-#' \dontrun{
-#' checkTx2gene(mtcars)
-#' }
 checkTx2gene <- function(object) {
     if (!is.data.frame(object)) {
         abort("tx2gene must be data.frame")
