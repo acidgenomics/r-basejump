@@ -1,4 +1,5 @@
 library(testthat)
+library(ggplot2)
 library(magrittr)
 library(basejump)
 
