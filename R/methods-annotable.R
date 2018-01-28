@@ -174,14 +174,14 @@ NULL
     ))
 
     # Ensure `dplyr::select()` isn't masked by AnnotationHub/ensembldb
-    pkg <- find("select")
+    packages <- find("select")
     # Note that this will return a character vector for multiple matches,
     # and we want to exclude dplyr from the detach loop
-    pkg <- setdiff(pkg, "package:dplyr")
-    if (length(pkg)) {
-        lapply(seq_along(pkg), function(a) {
+    packages <- setdiff(packages, "package:dplyr")
+    if (length(packages)) {
+        lapply(packages, function(name) {
             suppressWarnings(detach(
-                name = pkg[[a]],
+                name = name,
                 character.only = TRUE,
                 unload = TRUE,
                 force = TRUE
