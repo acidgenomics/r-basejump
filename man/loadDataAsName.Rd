@@ -29,31 +29,8 @@ Silently return named character vector of file paths.
 Load Data File as Name
 }
 \examples{
-# New dots method (>= 0.1.1)
-# Simply specify the key-value pairs as arguments, and set the directory path
-# (`dir`) where the R data files saved. This example will load `mtcars.rda`
-# and `starwars.rda` files saved at `data/` as `newName1` and `newName2` in
-# the working environment.
-\dontrun{
 loadDataAsName(
-    newName1 = "mtcars",
-    newName2 = "starwars",
-    dir = "data"
+    newName = "synonyms",
+    dir = system.file("data", package = "basejump")
 )
-}
-
-# Requesting the file path directly also works. In this case, the `dir`
-# argument wil be ignored.
-\dontrun{
-loadDataAsName(newName = "data/mtcars.rda")
-}
-
-# Legacy mappings method using a named character vector is still supported.
-\dontrun{
-loadDataAsName(
-    c(newName1 = "mtcars",
-      newName2 = "starwars"),
-    dir = "data"
-)
-}
 }
