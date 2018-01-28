@@ -104,11 +104,23 @@ NULL
                 ignore.case = TRUE)
         ) {
             if (format == "gene") {
-                return(basejump::grch37)
+                load(system.file(
+                    file.path("extdata", "grch37.rda"),
+                    package = "basejump"
+                ))
+                return(grch37)
             } else if (format == "gene2symbol") {
-                return(basejump::grch37[, c("ensgene", "symbol")])
+                load(system.file(
+                    file.path("extdata", "grch37.rda"),
+                    package = "basejump"
+                ))
+                return(grch37[, c("ensgene", "symbol")])
             } else if (format == "tx2gene") {
-                return(basejump::grch37Tx2gene)
+                load(system.file(
+                    file.path("extdata", "grch37Tx2gene.rda"),
+                    package = "basejump"
+                ))
+                return(grch37Tx2gene)
             }
         }
     }
