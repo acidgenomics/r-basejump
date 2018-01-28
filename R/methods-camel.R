@@ -122,10 +122,7 @@ NULL
 
 
 
-.setNamesLowerCamel <- function(
-    object,
-    rownames = FALSE,
-    strict = FALSE) {
+.setNamesLowerCamel <- function(object, rownames = FALSE, strict = FALSE) {
     .setNamesCamel(
         object,
         format = "lower",
