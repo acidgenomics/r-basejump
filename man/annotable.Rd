@@ -83,9 +83,7 @@ annotable("Homo sapiens") \%>\% glimpse()
 annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
 
 # Convert pre-compiled annotables tibble (advanced)
-\dontrun{
 annotable(annotables::grch38) \%>\% glimpse()
-}
 }
 \seealso{
 \itemize{

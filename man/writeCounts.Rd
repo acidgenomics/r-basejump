@@ -32,6 +32,9 @@ is enabled by default to save disk space. Note that the
 }
 \examples{
 writeCounts(mtcars)
+
+# Clean up
+unlink("mtcars.csv.gz")
 }
 \seealso{
 Other Write Utilities: \code{\link{saveData}}
