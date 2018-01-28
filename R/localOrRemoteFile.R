@@ -13,7 +13,7 @@ localOrRemoteFile <- function(
     object,
     quiet = FALSE) {
     fileName <- basename(object)
-    if (grepl(x = object, pattern = "\\://")) {
+    if (grepl("\\://", object)) {
         # Remote file
         filePath <- tempfile()
         download.file(object, filePath, quiet = quiet)

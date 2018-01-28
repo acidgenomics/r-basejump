@@ -45,14 +45,14 @@ NULL
 
     # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
-    if (!grepl(x = names(file), pattern = extPattern)) {
+    if (!grepl(extPattern, names(file))) {
         abort("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
         .[[2L]]
 
     # Rename tmpfile to include extension if necessary
-    if (!grepl(x = file, pattern = extPattern)) {
+    if (!grepl(extPattern, file)) {
         newfile <- paste0(file, ".", ext)
         file.rename(file, newfile)
         file[[1L]] <- newfile

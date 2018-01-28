@@ -56,11 +56,7 @@ NULL
         # UCSC
         "^hg(\\d{2})$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(human = "Homo sapiens"))
     }
 
@@ -74,11 +70,7 @@ NULL
         # UCSC
         "^mm(\\d{2})$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(mouse = "Mus musculus"))
     }
 
@@ -92,11 +84,7 @@ NULL
         # UCSC
         "^rn(\\d+)$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(rat = "Rattus norvegicus"))
     }
 
@@ -110,11 +98,7 @@ NULL
         # UCSC
         "^danRer(\\d+)$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(zebrafish = "Danio rerio"))
     }
 
@@ -128,11 +112,7 @@ NULL
         # UCSC
         "^dm(\\d+)$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(fruitfly = "Drosophila melanogaster"))
     }
 
@@ -146,11 +126,7 @@ NULL
         # UCSC
         "^ce(\\d{2})$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(roundworm = "Caenorhabditis elegans"))
     }
 
@@ -164,11 +140,7 @@ NULL
         # UCSC
         "^galGal(\\d+)$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(chicken = "Gallus gallus"))
     }
 
@@ -182,11 +154,7 @@ NULL
         # UCSC
         "^oviAri(\\d+)$"
     )
-    if (grepl(
-        x = object,
-        pattern = paste(grep, collapse = "|"),
-        ignore.case = TRUE
-    )) {
+    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
         return(c(sheep = "Ovis aries"))
     }
 

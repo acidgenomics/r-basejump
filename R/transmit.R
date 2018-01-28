@@ -39,11 +39,11 @@ transmit <- function(
     compress = FALSE,
     localDir = "data-raw",
     quiet = FALSE) {
-    if (!grepl(x = remoteDir, pattern = "ftp\\://")) {
+    if (!grepl("ftp\\://", remoteDir)) {
         abort("FTP protocol not detected")
     }
     # Fix trailing slash, if necessary
-    if (!grepl(x = remoteDir, pattern = "/$")) {
+    if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }
 
@@ -54,7 +54,7 @@ transmit <- function(
         # Match the `-` at begining for file
         # `-rwxrwxr-x`: File
         # `drwxrwxr-x`: Directory
-        .[grepl(x = ., pattern = "^-")] %>%
+        .[grepl("^-", .)] %>%
         # File name is at the end, not including a space
         str_extract(pattern = "[^\\s]+$")
 
