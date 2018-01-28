@@ -77,4 +77,3 @@ test_that("missing", {
         "argument \"object\" is missing, with no default"
     )
 })
-

@@ -1,7 +1,5 @@
 #' Load Data File as Name
 #'
-#' @importFrom rlang eval_bare
-#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. The argument name
@@ -13,33 +11,11 @@
 #' @export
 #'
 #' @examples
-#' # New dots method (>= 0.1.1)
-#' # Simply specify the key-value pairs as arguments, and set the directory path
-#' # (`dir`) where the R data files saved. This example will load `mtcars.rda`
-#' # and `starwars.rda` files saved at `data/` as `newName1` and `newName2` in
-#' # the working environment.
-#' \dontrun{
 #' loadDataAsName(
-#'     newName1 = "mtcars",
-#'     newName2 = "starwars",
-#'     dir = "data"
+#'     annotable = "grch37",
+#'     dir = system.file("extdata", package = "basejump")
 #' )
-#' }
-#'
-#' # Requesting the file path directly also works. In this case, the `dir`
-#' # argument wil be ignored.
-#' \dontrun{
-#' loadDataAsName(newName = "data/mtcars.rda")
-#' }
-#'
-#' # Legacy mappings method using a named character vector is still supported.
-#' \dontrun{
-#' loadDataAsName(
-#'     c(newName1 = "mtcars",
-#'       newName2 = "starwars"),
-#'     dir = "data"
-#' )
-#' }
+#' glimpse(annotable)
 loadDataAsName <- function(
     ...,
     dir = getwd(),
@@ -53,46 +29,43 @@ loadDataAsName <- function(
         dots <- as.list(dots[[1L]])
     }
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
-        stop(paste("No directory exists at", dir), call. = FALSE)
+        abort(paste("No directory exists at", dir))
     } else {
         dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment", call. = FALSE)
+        abort("`envir` must be an environment")
     }
     files <- sapply(seq_along(dots), function(a) {
         object <- dots[[a]]
         name <- names(dots)[[a]]
         # Check to see if full file path was passed
         fileExtPattern <- paste0("\\.", ext, "$")
-        if (grepl(x = object, pattern = fileExtPattern)) {
+        if (grepl(fileExtPattern, object)) {
             file <- object
             # Extract the object name from the file name
-            object <- gsub(
-                x = basename(object),
-                pattern = fileExtPattern,
-                replacement = "")
+            object <- gsub(fileExtPattern, "", basename(object))
         } else {
             file <- file.path(dir, paste0(object, paste0(".", ext)))
         }
         if (!file.exists(file)) {
-            stop(paste(object, "missing"), call. = FALSE)
+            abort(paste(object, "missing"))
         }
         file <- normalizePath(file)
         # Check to see if object is present in environment
         if (exists(name, envir = envir, inherits = FALSE)) {
             if (isTRUE(replace)) {
-                warning(paste(
+                warn(paste(
                     "Replacing", name,
                     "with the contents of", basename(file)
-                ), call. = FALSE)
+                ))
             } else {
-                return(warning(paste(
+                return(warn(paste(
                     "Skipping", basename(file),
                     "because", name, "already exists"
-                ), call. = FALSE))
+                )))
             }
         }
         # Load into a temporary environment (safer)
@@ -100,15 +73,17 @@ loadDataAsName <- function(
         loaded <- load(file, envir = tmpEnv)
         # Check for multiple saved objects
         if (length(loaded) > 1L) {
-            stop(paste(
+            abort(paste(
                 basename(file), "contains multiple objects:",
                 toString(loaded)
-            ), call. = FALSE)
+            ))
         }
         # Assign into the target environment
-        assign(x = name,
-               value = get(loaded, envir = tmpEnv, inherits = FALSE),
-               envir = envir)
+        assign(
+            x = name,
+            value = get(loaded, envir = tmpEnv, inherits = FALSE),
+            envir = envir
+        )
         # Prepare named character vector for invisible return
         names(file) <- name
         file

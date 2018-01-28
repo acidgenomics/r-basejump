@@ -20,6 +20,6 @@ test_that("dots", {
     )
     expect_error(
         dots(),
-        "No dot objects to return"
+        "No dots to return"
     )
 })

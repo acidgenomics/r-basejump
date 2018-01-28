@@ -12,7 +12,7 @@
 annotable(object, ...)
 
 \S4method{annotable}{character}(object, format = "gene", genomeBuild = NULL,
-  release = NULL, uniqueSymbols = TRUE, quiet = FALSE)
+  release = NULL, uniqueSymbol = FALSE, quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
 
@@ -34,7 +34,7 @@ supported.}
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
-\item{uniqueSymbols}{Make gene symbols unique. Recommended by default.}
+\item{uniqueSymbol}{Make gene symbols unique.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
@@ -84,11 +84,6 @@ annotable("Homo sapiens") \%>\% glimpse()
 
 # Legacy GRCh37/hg19 genome build support
 annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
-
-# Convert pre-compiled annotables tibble (advanced)
-\dontrun{
-annotable(annotables::grch38) \%>\% glimpse()
-}
 }
 \seealso{
 \itemize{

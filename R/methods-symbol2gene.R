@@ -34,7 +34,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom rlang is_string
 .symbol2gene <- function(
     object,
     organism,
@@ -45,16 +44,16 @@ NULL
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
     if (is_string(object)) {
-        stop("symbol2gene conversion requires > 1 identifier", call. = FALSE)
+        abort("symbol2gene conversion requires > 1 identifier")
     }
     if (any(is.na(object))) {
-        stop("NA identifier detected", call. = FALSE)
+        abort("NA identifier detected")
     }
     if (any(object == "")) {
-        stop("Empty string identifier detected", call. = FALSE)
+        abort("Empty string identifier detected")
     }
     if (any(duplicated(object))) {
-        warning("Duplicate gene symbols detected", call. = FALSE)
+        warn("Duplicate gene symbols detected")
     }
 
     # Detect organism
@@ -73,10 +72,10 @@ NULL
     if (!all(object %in% names(ensgene))) {
         nomatch <- setdiff(object, g2s[["symbol"]])
         names(nomatch) <- nomatch
-        warning(paste(
+        warn(paste(
             "Failed to match all gene symbols to IDs:",
-            toString(nomatch)),
-            call. = FALSE)
+            toString(nomatch)
+        ))
         ensgene <- c(ensgene, nomatch)
     }
 

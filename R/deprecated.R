@@ -29,18 +29,16 @@ wash <- function() {
 # v0.0.23 ======================================================================
 #' @rdname deprecated
 #' @export
-packageSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+packageSE <- function() {
+    .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
 
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function(...) {
-    .Deprecated("prepareSummarizedExperiment")
-    prepareSummarizedExperiment(...)
+prepareSE <- function() {
+    .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
 
@@ -49,7 +47,7 @@ prepareSE <- function(...) {
 #' @rdname deprecated
 #' @export
 metadataTable <- function() {
-    .Deprecated("sampleMetadata")
+    .Deprecated("bcbioBase::sampleMetadata")
 }
 
 
@@ -74,7 +72,7 @@ sampleDirs <- function() {
 
 
 
-# v 0.1.6 ======================================================================
+# v0.1.6 ======================================================================
 #' @rdname deprecated
 #' @export
 fc2lr <- function(...) {
@@ -87,4 +85,19 @@ fc2lr <- function(...) {
 lr2fc <- function(...) {
     .Deprecated("logRatioToFoldChange")
     logRatioToFoldChange(...)
+}
+
+
+
+# v0.1.1 =======================================================================
+#' @rdname deprecated
+#' @export
+comp <- function(...) {
+    .Deprecated("Biostrings::complement")
+}
+
+#' @rdname deprecated
+#' @export
+revcomp <- function(...) {
+    .Deprecated("Biostrings::reverseComplement")
 }

@@ -27,14 +27,14 @@ test_that("saveData", {
     # Improve this error message
     expect_error(
         saveData("mtcars"),
-        "Dot objects cannot contain arguments"
+        "Dots cannot contain arguments"
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
         saveData(mtcars, dir = NULL),
-        "'dir' must be a string"
+        "`dir` must be a string"
     )
 })
 

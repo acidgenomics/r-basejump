@@ -1,13 +1,16 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.1.10
+Version: 0.2.0
 Authors@R: c(
-    person("Michael", "Steinbaugh",
-           email = "mike@steinbaugh.com",
-           role = c("aut", "cre")),
-    person("Rory", "Kirchner",
-           email = "roryk@alum.mit.edu",
-           role = "ctb"))
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre")),
+    person(
+        "Rory", "Kirchner",
+        email = "roryk@alum.mit.edu",
+        role = "ctb")
+    )
 Description: Helper functions for bioinformatics, package development, and
     RMarkdown reports.
 License: MIT + file LICENSE
@@ -45,7 +48,6 @@ Imports:
     R.utils,
     scales,
     stats,
-    SummarizedExperiment (>= 1.6.5),
     stringr (>= 1.2.0),
     S4Vectors (>= 0.14.7),
     tibble (>= 1.3.4),

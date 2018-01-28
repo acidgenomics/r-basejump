@@ -4,6 +4,8 @@
 #' @name dynamicPlotlist
 #' @author Michael Steinbaugh
 #'
+#' @inheritParams AllGenerics
+#'
 #' @param return Return type. "grid", "list", and "markdown" are supported.
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.
@@ -24,9 +26,9 @@ NULL
     headerLevel = 2L) {
     validReturn <- c("grid", "list", "markdown")
     if (!return %in% validReturn) {
-        stop(paste(
-            "'return' must contain:", toString(validReturn)
-        ), call. = FALSE)
+        abort(paste(
+            "`return` must contain:", toString(validReturn)
+        ))
     }
 
     if (return == "grid") {

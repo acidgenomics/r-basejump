@@ -28,9 +28,9 @@ NULL
 .readGFF <- function(
     object,
     quiet = FALSE) {
-    file <- .localOrRemoteFile(object, quiet = quiet)
+    file <- localOrRemoteFile(object, quiet = quiet)
     if (!isTRUE(quiet)) {
-        message(paste("Reading GFF/GTF:", names(file)))
+        inform(paste("Reading GFF/GTF:", names(file)))
     }
     gff <- tryCatch(
         read.delim(
@@ -49,10 +49,10 @@ NULL
             comment.char = "#",
             header = FALSE),
         error = function(e) {
-            stop("GFF/GTF file failed to load", call. = FALSE)
+            abort("GFF/GTF file failed to load")
         },
         warning = function(w) {
-            stop("GFF/GTF file failed to load", call. = FALSE)
+            abort("GFF/GTF file failed to load")
         })
     gff
 }

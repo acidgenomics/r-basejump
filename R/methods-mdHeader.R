@@ -33,7 +33,7 @@ NULL
     asis = FALSE) {
     header <- object
     if (!level %in% seq(1L:7L)) {
-        stop("Markdown supports 1-7 header levels", call. = FALSE)
+        abort("Markdown supports 1-7 header levels")
     }
     if (isTRUE(tabset)) {
         header <- paste(header, "{.tabset}")

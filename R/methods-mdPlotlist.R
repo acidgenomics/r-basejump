@@ -14,7 +14,7 @@ NULL
 # Constructors =================================================================
 .mdPlotlist <- function(object, headerLevel) {
     if (is.null(names(object))) {
-        warning("Object does not contain names")
+        warn("Object does not contain names")
     }
     return <- lapply(seq_along(object), function(a) {
         name <- names(object)[[a]]

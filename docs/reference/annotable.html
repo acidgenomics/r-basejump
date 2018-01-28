@@ -94,7 +94,7 @@
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)</pre>
@@ -128,8 +128,8 @@ supported.</p></td>
 current release available on AnnotationHub.</p></td>
     </tr>
     <tr>
-      <th>uniqueSymbols</th>
-      <td><p>Make gene symbols unique. Recommended by default.</p></td>
+      <th>uniqueSymbol</th>
+      <td><p>Make gene symbols unique.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -214,11 +214,7 @@ smaller number of semantically-meaningful groups:</p><ul>
 #&gt; $ start       &lt;int&gt; 99883667, 99839799, 49551404, 169818772, 169631245, 279...
 #&gt; $ end         &lt;int&gt; 99894988, 99854882, 49575092, 169863408, 169823221, 279...
 #&gt; $ strand      &lt;int&gt; -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1,...
-#&gt; $ entrez      &lt;list&gt; [7105, 64102, 8813, 57147, 55732, 2268, 3075, 2519, 27...</div><div class='input'>
-# Convert pre-compiled annotables tibble (advanced)
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>annotable</span>(<span class='kw pkg'>annotables</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/annotables/topics/grch38'>grch38</a></span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()
-<span class='co'># }</span></pre>
+#&gt; $ entrez      &lt;list&gt; [7105, 64102, 8813, 57147, 55732, 2268, 3075, 2519, 27...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -247,7 +243,7 @@ smaller number of semantically-meaningful groups:</p><ul>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
