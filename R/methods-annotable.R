@@ -79,6 +79,10 @@ NULL
     release = NULL,
     uniqueSymbol = FALSE,
     quiet = FALSE) {
+    # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
+    userAttached <- .packages()
+
+    # Parameter integrity checks ===============================================
     # object (organism)
     if (!is_string(object)) {
         abort("Object must be a string")
@@ -90,6 +94,7 @@ NULL
         abort("Unsupported format")
     }
 
+    # Genome build =============================================================
     if (!is.null(genomeBuild)) {
         # GRCh37/hg19 support
         if (object == "Homo sapiens" &
@@ -108,7 +113,7 @@ NULL
         }
     }
 
-    # Sanitize the release version
+    # Release version ==========================================================
     if (is.numeric(release)) {
         if (release < 87L) {
             warn(paste(
@@ -127,7 +132,8 @@ NULL
         releasePattern <- paste0("v", release)
     }
 
-    # Initialize AnnotationHub. On a fresh install this will print a
+    # AnnotationHub ============================================================
+    # Connect to AnnotationHub. On a fresh install this will print a
     # txProgressBar to the console. We're using `capture.output()` here
     # to suppress the console output, since it's not very informative and
     # can cluster R Markdown reports.
@@ -162,16 +168,28 @@ NULL
         return(NULL)
     }
 
+    # ensembldb ================================================================
     # This step will also output `txProgressBar()` on a fresh install. Using
-    # `capture.output()` here again to suppress console output.
+    # `capture.output()` here again to suppress console output. Additionally, it
+    # attaches ensembldb and other Bioconductor dependency packages, which will
+    # mask some tidyverse functions (e.g. `select()`).
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
 
-    # Ensure `select()` isn't masked by AnnotationDbi (via ensembldb)
-    packages <- c("ensembldb", "AnnotationDbi")
+    if (!isTRUE(quiet)) {
+        inform(paste(
+            "EnsDB", paste0(id, ":"),
+            organism(edb),
+            "Ensembl", ensemblVersion(edb)
+        ))
+    }
+
+    # Now we can force detach ensembldb and other unwanted dependendcies from
+    # the search path
+    ensembldbAttached <- setdiff(.packages(), userAttached)
     invisible(lapply(
-        X = packages,
+        X = ensembldbAttached,
         FUN = function(name) {
             if (name %in% .packages()) {
                 suppressWarnings(detach(
@@ -184,14 +202,7 @@ NULL
         }
     ))
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "EnsDB", paste0(id, ":"),
-            organism(edb),
-            "Ensembl", ensemblVersion(edb)
-        ))
-    }
-
+    # Sanitize return ==========================================================
     if (format == "gene") {
         data <- genes(edb, return.type = "data.frame") %>%
             rename(
