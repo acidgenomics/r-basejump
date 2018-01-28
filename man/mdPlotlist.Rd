@@ -9,7 +9,7 @@
 \usage{
 mdPlotlist(object, ...)
 
-\S4method{mdPlotlist}{list}(object, headerLevel)
+\S4method{mdPlotlist}{list}(object, headerLevel = 2L)
 }
 \arguments{
 \item{object}{Object.}
@@ -20,6 +20,13 @@ mdPlotlist(object, ...)
 }
 \description{
 Markdown Plotlist
+}
+\examples{
+loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+mdPlotlist(plotlist)
+}
+\seealso{
+\code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
 }
 \author{
 Michael Steinbaugh
