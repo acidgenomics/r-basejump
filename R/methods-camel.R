@@ -60,7 +60,6 @@ NULL
         # lowerCamelCase
         # Coerce first word to lower
         object <- gsub("^(\\w+)\\b", "\\L\\1", object, perl = TRUE)
-
     } else if (format == "upper") {
         # UpperCamelCase
         # Capitalize the first letter
@@ -85,39 +84,39 @@ NULL
 
 
 
-.makeNamesLowerCamel <- function(
-    object,
-    strict = FALSE) {
-    .makeNamesCamel(
-        object,
-        format = "lower",
-        strict = strict)
+.makeNamesLowerCamel <- function(object, strict = FALSE) {
+    .makeNamesCamel(object, format = "lower", strict = strict)
 }
 
 
 
-#' @importFrom magrittr set_rownames
 .setNamesCamel <- function(
     object,
     format = "lower",
     rownames = FALSE,
     strict = FALSE) {
-    if (.checkNames(object)) {
-        object <- setNames(
-            object,
-            .makeNamesCamel(
-                names(object),
+    if (!is.null(dimnames(object))) {
+        # Colnames
+        if (!is.null(colnames(object))) {
+            colnames(object) <- .makeNamesCamel(
+                colnames(object),
                 format = format,
-                strict = strict))
-    }
-    if (isTRUE(rownames) & .checkRownames(object)) {
-        object <- set_rownames(
-            object,
-            .makeNamesCamel(
+                strict = strict)
+        }
+        # Rownames
+        if (isTRUE(rownames) & .checkRownames(object)) {
+            rownames(object) <- .makeNamesCamel(
                 rownames(object),
                 format = format,
-                strict = strict))
+                strict = strict)
+        }
+    } else if (!is.null(names(object))) {
+        names(object) <- .makeNamesCamel(
+            names(object),
+            format = format,
+            strict = strict)
     }
+
     object
 }
 
@@ -137,18 +136,13 @@ NULL
 
 
 .setNamesLowerCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesLowerCamel(
-        object,
-        rownames = FALSE,
-        strict = strict)
+    .setNamesLowerCamel(object, rownames = FALSE, strict = strict)
 }
 
 
 
-.camelVector <- function(
-    object,
-    strict = FALSE) {
-    if (isTRUE(.checkNames(object))) {
+.camelVector <- function(object, strict = FALSE) {
+    if (!is.null(names(object))) {
         names <- .makeNamesLowerCamel(names(object), strict = strict)
     } else {
         names <- NULL
