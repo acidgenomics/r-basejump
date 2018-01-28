@@ -1,12 +1,26 @@
-# basejump 0.1.10 (2017-12-20)
+## basejump 0.2.0 (2018-01-28)
+
+- Offloaded internal bcbio-specific code to new package named [bcbioBase][]. Consequently, this makes the basejump package leaner, meaner, and easier to manage. The following functions are now exported in that package: `bcbio()`, `checkInterestingGroups()`, `flatFiles()`, `interestingGroups()`, `metrics()`, `plotDot()`, `plotGene()`, `plotQC()`, `plotViolin()`, `prepareSummarizedExperiment()`, `prepareTemplate()`, `readDataVersions()`, `readLogFile()`, `readProgramVersions()`, `readSampleMetadataFile()`, `sampleMetadata()`, `sampleYAML()`, `sampleYAMLMetadata()`, `sampleYAMLMetrics()`, and `selectSamples()`. These functions are now deprecated here in basejump (see `deprecated.R` file for more information).
+- `comp()` and `revcomp()` have been deprecated in favor of `complement()` and `reverseComplement()` from the [Biostrings][] package.
+- Internally, errors, messages, and warnings now use methods from the [rlang][] package: `abort()`, `inform()`, and `warn()`, in place of `stop()`, `message()`, and `warning()`, respectively.
+- Improved error handing for missing files in `loadData()`. Additionally, the file name must match the internal name in the RData file, otherwise `loadData()` will warn the user. This is more strict than the default behavior of `base::load()`, but helps prevent accidental overwrite in the current working environment.
+- `localOrRemoteFile()`, previously an internal function, is now exported.
+- `annotable()` now uses internal GRCh37 annotations from the [annotables][] package, which is saved in the `extdata/` directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the `data/` directory of the package repository.
+- `annotables()` now checks for all packages attached by [ensembldb][] and [AnnotationHub][] and forces detachment at the end of the function call. Otherwise, this can result in the unwanted effect of [ensembldb][] masking other user-loaded functions, such as the [tidyverse][] suite (e.g. `dplyr::select()`).
+- Consistently reformatted code indents to be a multple of 4 spaces, as recommended by [Bioconductor][].
+- `camel()` now handles delimited numbers a little differently. Previously, delimiters in between numbers (e.g. the commas in "1,000,000") were stripped. Sometimes this can result in confusing names. For example, if we have a column formatted in dotted case containing a decimal (e.g. "resolution.1.6"), the decimal would be stripped (e.g. "resolution16" in camel). Now, we sanitize a numeric delimiter as a lower case "x" character (e.g. "resolution1x6"). This ensures that numbers containing decimals remain semantically meaningful when sanitized with `camel()`.
+- Internally, `gsub()` (and `grepl()`) calls have been simplified to use the default order of "pattern, replacement, x".
+- Internally, all implicit integers have been converted to explicit integers, where applicable.
+
+
+## basejump 0.1.10 (2017-12-20)
 
 - Bug fix for multiplexed sample input into `readSampleMetadataFile()`. We were detecting the presence of `index` column but should instead check against `sequence` column.
 - Added `dynamicPlotlist()` and `mdPlotlist()` plotting utilities.
 - Added `uniqueSymbols` parameter to `annotable()` function.
 
 
-
-# basejump 0.1.9 (2017-12-18)
+## basejump 0.1.9 (2017-12-18)
 
 - Added `plotHeatmap()` functionality.
 - Migrated `tpm()` generic from bcbioRNASeq, for future use in bcbioSingleCell.
@@ -14,8 +28,7 @@
 - Added matrix method support for `plotQuantileHeatmap()`, which works similarly as `plotHeatmap()`.
 
 
-
-# basejump 0.1.8 (2017-12-14)
+## basejump 0.1.8 (2017-12-14)
 
 - Improved `matrix` and `dgCMatrix` method support in `aggregateReplicates()` and `aggregateFeatures()` functions. Both of these functions now use a consistent `groupings` parameter, which uses a named factor to define the mappings of either samples (columns) for `aggregateReplicates()` or genes/transcripts (rows) for `aggregateFeatures()`.
 - Update for makeNames sanitization functions. Now they will work on `names(x)` for vectors by default.
@@ -26,35 +39,30 @@
 - Improved handling of `NA` values from LibreOffice and Microsoft Excel output in `readFileByExtension()`.. This function now sets `""`, `NA`, and `#N/A` strings as `NA` correctly.
 
 
-
-# basejump 0.1.7 (2017-12-11)
+## basejump 0.1.7 (2017-12-11)
 
 - Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and `logRatioToFoldChange()`.
 - Moved `plotDot()` and `plotViolin()` generics here from bcbioSingleCell.
 - Added internal GRCh37 gene annotations.
 
 
-
-# basejump 0.1.6 (2017-12-06)
+## basejump 0.1.6 (2017-12-06)
 
 - Moved `microplate()` code from the worminfo package here, since it's of general interest.
 
 
-
-# basejump 0.1.5 (2017-12-05)
+## basejump 0.1.5 (2017-12-05)
 
 - Added `checkAnnotable()`, `checkGene2symbol()`, `checkTx2gene()`, and `sanitizeAnnotable()` utility functions that will be used in the bcbio R packages.
 
 
-
-# basejump 0.1.4
+## basejump 0.1.4
 
 - Added `midnightTheme()` ggplot theme. Originally this was defined as `darkTheme()` in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely dark gray axes without white axis lines.
 - Improve NAMESPACE imports to include `stats::formula()` and `utils::capture.output()`.
 
 
-
-# basejump 0.1.3
+## basejump 0.1.3
 
 - `loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
 - `collapseToString()` only attempts to dynamically return the original object class on objects that aren't class `data.frame`. I updated this code to behave more nicely with grouped tibbles (`grouped_df`), which are a virtual class of `data.frame` and therefore can't be coerced using `as(object, "grouped_df")`.
@@ -64,8 +72,7 @@
 - Updated `annotable()` function to include nested Entrez identifiers in the `entrez` column. This is useful for downstream functional analysis.
 
 
-
-# basejump 0.1.2
+## basejump 0.1.2
 
 - Added bcbio `plotQC()` generic.
 - Added back `toStringUnique()` code, which is still in use in the worminfo package.
@@ -76,8 +83,7 @@
 - Bug fix for `detectOrganism()`. Now allowing `NULL` return for unsupported organism, with a warning.
 
 
-
-# basejump 0.1.1
+## basejump 0.1.1
 
 - Added overwrite support for `saveData()`. Now will skip on existing files when `overwrite = FALSE`.
 - Bug fix for `readDataVersions()`, which shouldn't have the column types defined, using `col_types = "ccT"`.
@@ -88,8 +94,7 @@ up objects that don't contain gene annotations.
 - Removed sample selection by pattern matching (`pattern`, `patternCol` arguments) in `readSampleMetadata()`. This feature wasn't fully baked and doesn't offer enough functionality to the user.
 
 
-
-# basejump 0.1.0
+## basejump 0.1.0
 
 - Bump version to match bcbioRNASeq package.
 - Improved unit testing coverage of `prepareSummarizedExperiment()`.
@@ -105,15 +110,13 @@ up objects that don't contain gene annotations.
 - Switched `str_()` to base `grep()` and `gsub()` in internal functions.
 
 
-
-# basejump 0.0.25
+## basejump 0.0.25
 
 - Improved consistency of `setMethod()` calls using `signature()`.
 - Converted `loadRemoteData()` to a standard function instead of using S4 dispatch, allowing the `envir` argument to be set properly.
 
 
-
-# basejump 0.0.24
+## basejump 0.0.24
 
 - Added additional package version requirements in `DESCRIPTION` file.
 - Implicit integers are allowed.
@@ -142,22 +145,19 @@ up objects that don't contain gene annotations.
 - Renamed `collapse()` function to `collapseToString()`, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).
 
 
-
-# basejump 0.0.23
+## basejump 0.0.23
 
 - Upgraded `annotable()` function to query Ensembl using the [ensembldb][] package rather than [annotables][].
 
 
-
-# basejump 0.0.22
+## basejump 0.0.22
 
 - Improved unit testing coverage.
 - Renamed `prepareSE()` to `prepareSummarizedExperiment()`. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.
 - Reworked and simplified `detectHPC()` function to allow for unit testing.
 
 
-
-# basejump 0.0.21
+## basejump 0.0.21
 
 - NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.
 - Improved code coverage and unit testing with additional [testthat][] checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.
@@ -173,8 +173,7 @@ up objects that don't contain gene annotations.
 - Improved remote file handling for `readFileByExtension()`, `readGTF()`, and `readYAML()` functions.
 
 
-
-# basejump 0.0.20
+## basejump 0.0.20
 
 - Offloaded [devtools][] functions to personal package.
 - Upgraded all functions to S4 functions where possible.
@@ -184,21 +183,18 @@ up objects that don't contain gene annotations.
 - Added unit testing for [annotables][] functions.
 
 
-
-# basejump 0.0.19
+## basejump 0.0.19
 
 - Improved documentation and consistency with [bcbio][] packages.
 - Improved integration of gene annotation calls using [annotables][] package.
 
 
-
-# basejump 0.0.18
+## basejump 0.0.18
 
 - Initial support for [SummarizedExperiment][] creation with `packageSE()`.
 
 
-
-# basejump 0.0.17
+## basejump 0.0.17
 
 - Added [annotables][] common code from bcbio packages.
 - Added automatic file reading using [readr][] package.
@@ -206,112 +202,98 @@ up objects that don't contain gene annotations.
 - Initial commit of `assign_data()` for use in [bcbioSingleCell][] sample loops.
 
 
-
-# basejump 0.0.16
+## basejump 0.0.16
 
 - Minor NAMESPACE updates while working on [bcbio][] packages.
 - Tweaks for [tidyverse][] S4 generic verbs. In particular, `as_tibble()` now provides better consistency for rowname conversion.
 
 
-
-# basejump 0.0.15
+## basejump 0.0.15
 
 - Added [testthat][] support for [lintr][] checks.
 - Added S4 generic for `as_tibble()`.
 
 
-
-# basejump 0.0.14
+## basejump 0.0.14
 
 - [dplyr][] 0.7 NAMESPACE fixes and function tweaks.
 
 
-
-# basejump 0.0.13
+## basejump 0.0.13
 
 - setMethod on tidyverse NAMESPACE collisons ([dplyr][], [tidyr][]) using `signature("data.frame").
 
 
-
-# basejump 0.0.12
+## basejump 0.0.12
 
 - Updated exports based on [worminfo][] package.
 
 
-
-# basejump 0.0.11
+## basejump 0.0.11
 
 - Improved naming functions to dynamically handle character vectors and objects that support naming assignments.
 - Added `removeNA()` utility function.
 
 
-
-# basejump 0.0.10
+## basejump 0.0.10
 
 - Added NAMESPACE utilities to deal with [tidyverse][] generic verbs.
 - Switched package documentation method to use [roxygen][] with pkgapi.
 
 
-
-# basejump 0.0.9
+## basejump 0.0.9
 
 - Added snake_case function variants.
 
 
-
-# basejump 0.0.8
+## basejump 0.0.8
 
 - Added back `saveData()` utility functions.
 
 
-
-# basejump 0.0.7
+## basejump 0.0.7
 
 - Bug fixes for [dplyr][] 0.6.0 update and improved kable handling.
 
 
-
-# basejump 0.0.6
+## basejump 0.0.6
 
 - Dependency fix for successful compilation on the [HMS RC][] Orchestra cluster.
 
 
-
-# basejump 0.0.5
+## basejump 0.0.5
 
 - Consolidated functions in the documentation.
 
 
-
-# basejump 0.0.4
+## basejump 0.0.4
 
 - Improved documentation.
 
 
-
-# basejump 0.0.3
+## basejump 0.0.3
 
 - Removed dependencies and transfer functions to [bcbioRNASeq][].
 
 
-
-# basejump 0.0.2
+## basejump 0.0.2
 
 - Added [bcbio][] data import functions.
 - Added [ggplot2][] wrapper functions for quality control.
 
 
-
-# basejump 0.0.1
+## basejump 0.0.1
 
 - Initial draft release.
 
 
-
+[AnnotationHub]: https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html
 [annotables]: https://github.com/stephenturner/annotables
 [bcbio]: https://github.com/chapmanb/bcbio-nextgen
+[bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase
 [bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq
 [bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell
+[Biostrings]: http://bioconductor.org/packages/release/bioc/html/Biostrings.html
 [devtools]: https://github.com/hadley/devtools
 [dplyr]: http://dplyr.tidyverse.org
 [ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
@@ -319,6 +301,7 @@ up objects that don't contain gene annotations.
 [HMS RC]: https://rc.hms.harvard.edu
 [lintr]: https://github.com/jimhester/lintr
 [readr]: http://readr.tidyverse.org
+[rlang]: http://rlang.tidyverse.org
 [roxygen]: https://github.com/klutometis/roxygen
 [SummarizedExperiment]: https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
 [testthat]: https://github.com/hadley/testthat
