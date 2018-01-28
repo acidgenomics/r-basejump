@@ -59,9 +59,6 @@
 #'
 #' # Legacy GRCh37/hg19 genome build support
 #' annotable("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
-#'
-#' # Convert pre-compiled annotables tibble (advanced)
-#' annotable(annotables::grch38) %>% glimpse()
 NULL
 
 
@@ -171,22 +168,21 @@ NULL
         edb <- suppressMessages(ah[[id]])
     ))
 
-    # Ensure `dplyr::select()` isn't masked by AnnotationHub/ensembldb
-    packages <- find("select")
-    # Note that this will return a character vector for multiple matches,
-    # and we want to exclude dplyr from the detach loop
-    packages <- setdiff(packages, "package:dplyr")
-    if (length(packages)) {
-        lapply(packages, function(name) {
-            suppressWarnings(detach(
-                name = name,
-                character.only = TRUE,
-                unload = TRUE,
-                force = TRUE
-            ))
-        }) %>%
-            invisible()
-    }
+    # Ensure `select()` isn't masked by AnnotationDbi (via ensembldb)
+    packages <- c("ensembldb", "AnnotationDbi")
+    invisible(lapply(
+        X = packages,
+        FUN = function(name) {
+            if (name %in% .packages()) {
+                suppressWarnings(detach(
+                    name = paste0("package:", name),
+                    unload = TRUE,
+                    force = TRUE,
+                    character.only = TRUE
+                ))
+            }
+        }
+    ))
 
     if (!isTRUE(quiet)) {
         inform(paste(
