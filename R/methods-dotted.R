@@ -89,43 +89,14 @@ NULL
 .sanitizeAcronyms <- function(object) {
     object %>%
         # Ensure identifier is "ID"
-        gsub(
-            pattern = "\\b(id)\\b",
-            replacement = "ID",
-            x = .,
-            ignore.case = TRUE
-        ) %>%
+        gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
         # Sanitize mixed case scientific acronyms
-        gsub(
-            pattern = "\\b(mRNA)\\b",
-            replacement = "MRNA",
-            x = .
-        ) %>%
-        gsub(
-            pattern = "\\b(miRNA)\\b",
-            replacement = "MIRNA",
-            x = .
-        ) %>%
-        gsub(
-            pattern = "\\b(ncRNA)\\b",
-            replacement = "NCRNA",
-            x = .
-        ) %>%
-        gsub(
-            pattern = "\\b(piRNA)\\b",
-            replacement = "PIRNA",
-            x = .
-        ) %>%
-        gsub(
-            pattern = "\\b(rRNA)\\b",
-            replacement = "RRNA",
-            x = .
-        ) %>%
-        gsub(
-            pattern = "\\b(RNAi)\\b",
-            replacement = "RNAI",
-            x = .
-        )
+        gsub("\\b(mRNA)\\b", "MRNA", .) %>%
+        gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
+        gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
+        gsub("\\b(piRNA)\\b", "PIRNA", .) %>%
+        gsub("\\b(rRNA)\\b", "RRNA", .) %>%
+        gsub("\\b(RNAi)\\b", "RNAI", .)
 }
 
 
@@ -135,40 +106,20 @@ NULL
         as.character() %>%
         make.names(unique = FALSE, allow_ = FALSE) %>%
         # Convert non-alphanumeric characters to dots
-        gsub(
-            pattern = "[^[:alnum:]]",
-            replacement = ".",
-            x = .
-        ) %>%
+        gsub("[^[:alnum:]]", ".", .) %>%
         # Combine multiple dots
-        gsub(
-            pattern = "[\\.]+",
-            replacement = ".",
-            x = .
-        ) %>%
+        gsub("[\\.]+", ".", .) %>%
         # Strip leading or trailing dots
-        gsub(
-            pattern = "(^\\.|\\.$)",
-            replacement = "",
-            x = .
-        ) %>%
+        gsub("(^\\.|\\.$)", "", .) %>%
         # Coerce `"NA"` back to `NA` after `make.names()`
         fixNA() %>%
         .sanitizeAcronyms() %>%
         # Establish word boundaries for camelCase acronyms
         # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`)
         # Acronym following a word
-        gsub(
-            pattern = "([a-z])([A-Z])",
-            replacement = "\\1.\\2",
-            x = .
-        ) %>%
+        gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
         # Word following an acronym
-        gsub(
-            pattern = "([A-Z0-9])([A-Z])([a-z])",
-            replacement = "\\1.\\2\\3",
-            x = .
-        )
+        gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
 }
 
 
