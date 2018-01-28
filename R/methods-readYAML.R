@@ -33,7 +33,7 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
-        if (!grepl(x = object, pattern = "\\.ya?ml$")) {
+        if (!grepl("\\.ya?ml$", object)) {
             abort("YAML file must contain `.yaml` or `.yml` extension")
         }
         file <- localOrRemoteFile(object, quiet = quiet)

@@ -36,7 +36,7 @@ NULL
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
     # This fix is necessary for FlyBase GFF files.
-    if (any(grepl(x = anno, pattern = "gene_symbol"))) {
+    if (any(grepl("gene_symbol", anno))) {
         anno <- gsub("gene_symbol", "gene_name", anno)
     }
 

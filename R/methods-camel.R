@@ -75,7 +75,7 @@ NULL
             # Escape number separators (useful for keeping decimals, etc.)
             gsub(pattern, replacement, .) %>%
             # Have to run twice here otherwise it will miss some matches
-            gsub(pattern, replacement, x = .)
+            gsub(pattern, replacement, .)
     }
 
     object %>%

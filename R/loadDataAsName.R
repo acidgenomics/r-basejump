@@ -65,7 +65,7 @@ loadDataAsName <- function(
         name <- names(dots)[[a]]
         # Check to see if full file path was passed
         fileExtPattern <- paste0("\\.", ext, "$")
-        if (grepl(x = object, pattern = fileExtPattern)) {
+        if (grepl(fileExtPattern, object)) {
             file <- object
             # Extract the object name from the file name
             object <- gsub(fileExtPattern, "", basename(object))
