@@ -20,15 +20,11 @@ NULL
     # http://www.ensembl.org/info/genome/stable_ids/index.html
     # Examples: ENST (human); ENSMUST (mouse)
     enstxpPattern <- "^(ENS.*T\\d{11})\\.\\d+$"
-    if (any(grepl(x = object, pattern = enstxpPattern))) {
-        object <- gsub(
-            x = object,
-            pattern = enstxpPattern,
-            replacement = "\\1")
+    if (any(grepl(enstxpPattern, object))) {
+        object <- gsub(enstxpPattern, "\\1", object)
     }
-    if (any(grepl(x = object, pattern = "\\.\\d+$"))) {
-        stop("Failed to sanitize Ensembl transcript identifier",
-             call. = FALSE)
+    if (any(grepl("\\.\\d+$", object))) {
+        abort("Failed to sanitize Ensembl transcript identifier")
     }
     object
 }

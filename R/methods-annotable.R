@@ -46,7 +46,7 @@
 #'   supported.
 #' @param release *Optional*. Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
-#' @param uniqueSymbols Make gene symbols unique. Recommended by default.
+#' @param uniqueSymbol Make gene symbols unique.
 #'
 #' @return [data.frame] with unique rows per gene or transcript.
 #'
@@ -59,11 +59,6 @@
 #'
 #' # Legacy GRCh37/hg19 genome build support
 #' annotable("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
-#'
-#' # Convert pre-compiled annotables tibble (advanced)
-#' \dontrun{
-#' annotable(annotables::grch38) %>% glimpse()
-#' }
 NULL
 
 
@@ -71,54 +66,76 @@ NULL
 # Constructors =================================================================
 #' @importFrom AnnotationHub AnnotationHub getAnnotationHubOption query
 #'   snapshotDate
+#' @importFrom BiocGenerics organism
 #' @importFrom dplyr mutate rename
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang .data is_string
 #' @importFrom S4Vectors mcols
-#' @importFrom utils capture.output tail
+#' @importFrom utils capture.output find tail
 .annotable <- function(
     object,
     format = "gene",
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbols = TRUE,
+    uniqueSymbol = FALSE,
     quiet = FALSE) {
-    if (!is_string(object)) {
-        stop("Object must be a string", call. = FALSE)
-    }
-    if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
-        stop("Unsupported format", call. = FALSE)
-    }
+    # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
+    userAttached <- .packages()
 
-    organism <- detectOrganism(object)
-    if (is.null(organism)) {
+    # Parameter integrity checks ===============================================
+    # object (organism)
+    if (!is_string(object)) {
+        abort("Object must be a string")
+    } else if (is.null(object)) {
         return(NULL)
     }
+    # format
+    if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
+        abort("Unsupported format")
+    }
 
+    # Genome build =============================================================
     if (!is.null(genomeBuild)) {
         # GRCh37/hg19 support
-        if (organism == "Homo sapiens" &
-            grepl(x = genomeBuild,
-                  pattern = paste("GRCh37", "hg19", sep = "|"),
-                  ignore.case = TRUE)) {
+        if (object == "Homo sapiens" &
+            grepl(
+                pattern = paste("GRCh37", "hg19", sep = "|"),
+                x = genomeBuild,
+                ignore.case = TRUE)
+        ) {
             if (format == "gene") {
-                return(basejump::grch37)
+                data <- load(system.file(
+                    file.path("extdata", "grch37.rda"),
+                    package = "basejump"
+                ))
+                data <- get(data, inherits = FALSE)
+                return(data)
             } else if (format == "gene2symbol") {
-                return(basejump::grch37[, c("ensgene", "symbol")])
+                data <- load(system.file(
+                    file.path("extdata", "grch37.rda"),
+                    package = "basejump"
+                ))
+                data <- get(data, inherits = FALSE)
+                data <- data[, c("ensgene", "symbol")]
+                return(data)
             } else if (format == "tx2gene") {
-                return(basejump::grch37Tx2gene)
+                data <- load(system.file(
+                    file.path("extdata", "grch37Tx2gene.rda"),
+                    package = "basejump"
+                ))
+                data <- get(data, inherits = FALSE)
+                return(data)
             }
         }
     }
 
-    # Sanitize the release version
+    # Release version ==========================================================
     if (is.numeric(release)) {
         if (release < 87L) {
-            warning(paste(
+            warn(paste(
                 "AnnotationHub only supports Ensembl releases 87 and newer.",
                 "Using current release instead."
-            ), call. = FALSE)
+            ))
             release <- NULL
         }
     } else {
@@ -131,7 +148,8 @@ NULL
         releasePattern <- paste0("v", release)
     }
 
-    # Initialize AnnotationHub. On a fresh install this will print a
+    # AnnotationHub ============================================================
+    # Connect to AnnotationHub. On a fresh install this will print a
     # txProgressBar to the console. We're using `capture.output()` here
     # to suppress the console output, since it's not very informative and
     # can cluster R Markdown reports.
@@ -140,7 +158,7 @@ NULL
     ))
 
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "Loading Ensembl annotations from AnnotationHub",
             snapshotDate(ah),
             sep = "\n"
@@ -150,58 +168,80 @@ NULL
     # Get the AnnotationHub dataset by identifier number
     ahDb <- query(
         ah,
-        pattern = c(organism, "EnsDb", releasePattern),
+        pattern = c(object, "EnsDb", releasePattern),
         ignore.case = TRUE)
+    # Get the latest build version
     id <- ahDb %>%
         mcols() %>%
         rownames() %>%
         tail(n = 1L)
 
-    # AnnotationHub will attach ensembldb at this step and mask dplyr!
-    if ("ensembldb" %in% .packages()) {
-        ensembldbUserAttached <- TRUE
-    } else {
-        ensembldbUserAttached <- FALSE
+    # Early return `NULL` with warning on organism failure
+    if (!length(id)) {
+        warn(paste(
+            object, "is not supported in AnnotationHub"
+        ))
+        return(NULL)
     }
 
-    # This step will also output a txProgressBar on a fresh install. Using
-    # `capture.output()` here again to suppress console output.
+    # ensembldb ================================================================
+    # This step will also output `txProgressBar()` on a fresh install. Using
+    # `capture.output()` here again to suppress console output. Additionally, it
+    # attaches ensembldb and other Bioconductor dependency packages, which will
+    # mask some tidyverse functions (e.g. `select()`).
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
 
-    if ("ensembldb" %in% .packages() &
-        !isTRUE(ensembldbUserAttached)) {
-        suppressWarnings(
-            detach("package:ensembldb", unload = TRUE, force = TRUE)
-        )
-    }
-
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "EnsDB", paste0(id, ":"),
             organism(edb),
             "Ensembl", ensemblVersion(edb)
         ))
     }
 
+    # Now we can force detach ensembldb and other unwanted dependendcies from
+    # the search path
+    ensembldbAttached <- setdiff(.packages(), userAttached)
+    invisible(lapply(
+        X = ensembldbAttached,
+        FUN = function(name) {
+            if (name %in% .packages()) {
+                suppressWarnings(detach(
+                    name = paste0("package:", name),
+                    unload = TRUE,
+                    force = TRUE,
+                    character.only = TRUE
+                ))
+            }
+        }
+    ))
+
+    # Sanitize return ==========================================================
     if (format == "gene") {
-        data <- genes(
-            edb,
-            return.type = "data.frame") %>%
-            # Use `symbol` column instead
-            mutate(gene_name = NULL) %>%
+        data <- genes(edb, return.type = "data.frame") %>%
             rename(
                 ensgene = .data[["gene_id"]],
                 biotype = .data[["gene_biotype"]]) %>%
-            .prepareAnnotable()
+            # Use `symbol` column instead of duplicate `gene_name`
+            mutate(gene_name = NULL) %>%
+            # Ensure rows are sorted by gene ID
+            arrange(!!sym("ensgene"))
+        if (isTRUE(uniqueSymbol)) {
+            # Ensure unique symbols (e.g. human, mouse)
+            data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
+        }
+        data <- .prepareAnnotable(data)
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = "data.frame") %>%
-            rename(ensgene = .data[["gene_id"]])
-        if (isTRUE(uniqueSymbols)) {
+            rename(ensgene = .data[["gene_id"]]) %>%
+            # Ensure rows are sorted by gene ID
+            arrange(!!sym("ensgene"))
+        if (isTRUE(uniqueSymbol)) {
             # Ensure unique symbols (e.g. human, mouse)
             data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
         }
@@ -214,8 +254,10 @@ NULL
             rename(
                 enstxp = .data[["tx_id"]],
                 ensgene = .data[["gene_id"]]) %>%
+            arrange(!!sym("enstxp")) %>%
             set_rownames(.[["enstxp"]])
     }
+
     data
 }
 
@@ -233,15 +275,12 @@ NULL
 .defineBroadClass <- function(object) {
     requiredCols <- c("biotype", "symbol")
     if (!all(requiredCols %in% colnames(object))) {
-        stop(paste(
+        abort(paste(
             "Required columns:", toString(object)
-        ), call. = FALSE)
+        ))
     }
     mutate(
         object,
-        # Ensure unique symbols (e.g. human, mouse)
-        symbol = make.unique(.data[["symbol"]]),
-        # Define the broad class
         broadClass = case_when(
             grepl(
                 x = .data[["symbol"]],
@@ -249,36 +288,43 @@ NULL
                 # Mmusculus: `mt-`
                 # Dmelanogaster: `mt:`
                 pattern = "^mt[\\:\\-]",
-                ignore.case = TRUE) ~ "mito",
+                ignore.case = TRUE
+            ) ~ "mito",
             .data[["biotype"]] == "protein_coding" ~ "coding",
-            .data[["biotype"]] %in%
-                c("known_ncrna",
-                  "lincRNA",
-                  "non_coding") ~ "noncoding",
+            .data[["biotype"]] %in% c(
+                "known_ncrna",
+                "lincRNA",
+                "non_coding"
+            ) ~ "noncoding",
             grepl(
-                x = .data[["biotype"]],
-                pattern = "pseudo") ~ "pseudo",
-            .data[["biotype"]] %in%
-                c("miRNA",
-                  "misc_RNA",
-                  "ribozyme",
-                  "rRNA",
-                  "scaRNA",
-                  "scRNA",
-                  "snoRNA",
-                  "snRNA",
-                  "sRNA") ~ "small",
-            .data[["biotype"]] %in%
-                c("non_stop_decay",
-                  "nonsense_mediated_decay") ~ "decaying",
+                pattern = "pseudo",
+                x = .data[["biotype"]]
+            ) ~ "pseudo",
+            .data[["biotype"]] %in% c(
+                "miRNA",
+                "misc_RNA",
+                "ribozyme",
+                "rRNA",
+                "scaRNA",
+                "scRNA",
+                "snoRNA",
+                "snRNA",
+                "sRNA"
+            ) ~ "small",
+            .data[["biotype"]] %in% c(
+                "non_stop_decay",
+                "nonsense_mediated_decay"
+            ) ~ "decaying",
             grepl(
-                x = .data[["biotype"]],
                 pattern = "^ig_",
-                ignore.case = TRUE) ~ "ig",
-            grepl(
                 x = .data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "ig",
+            grepl(
                 pattern = "^tr_",
-                ignore.case = TRUE) ~ "tcr",
+                x = .data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "tcr",
             TRUE ~ "other")
     )
 }
@@ -290,10 +336,9 @@ NULL
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr distinct group_by left_join mutate rename summarize_all
-#'   ungroup
+#' @importFrom dplyr distinct everything group_by left_join mutate rename select
+#'   summarize_all ungroup
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
 #'
@@ -304,9 +349,9 @@ NULL
     # Check for required columns
     requiredCols <- c("ensgene", "symbol", "description", "biotype")
     if (!all(requiredCols %in% colnames(object))) {
-        stop(paste(
+        abort(paste(
             "Required columns:", toString(requiredCols)
-        ), call. = FALSE)
+        ))
     }
     # Check for Entrez identifier column and nest into a list, if necessary
     entrezCol <- colnames(object) %>%

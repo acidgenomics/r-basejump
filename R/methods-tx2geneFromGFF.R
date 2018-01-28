@@ -36,15 +36,13 @@ NULL
 
 #' @importFrom dplyr arrange distinct
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang sym !!
 #' @importFrom stringr str_match
 .tx2geneFromGFF <- function(
     object,
     quiet = FALSE) {
     anno <- object %>%
         .gffKeyValuePairs() %>%
-        .[grepl(x = ., pattern = "transcript_id") &
-              grepl(x = ., pattern = "gene_id")] %>%
+        .[grepl("transcript_id", .) & grepl("gene_id", .)] %>%
         unique()
 
     enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
@@ -59,7 +57,7 @@ NULL
         set_rownames(.[["enstxp"]])
 
     if (!isTRUE(quiet)) {
-        message(paste(
+        inform(paste(
             "tx2gene mappings:",
             nrow(df), "transcripts,",
             length(unique(df[["ensgene"]])), "genes"))
@@ -95,8 +93,7 @@ setMethod(
         object,
         quiet = FALSE) {
         if (dim(object)[[2L]] != 9L) {
-            stop("GFF object must be data.frame with 9 columns",
-                 call. = FALSE)
+            abort("GFF object must be data.frame with 9 columns")
         }
         .tx2geneFromGFF(object, quiet = quiet)
     })

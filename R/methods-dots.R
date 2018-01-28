@@ -35,26 +35,23 @@ NULL
 
 # Methods ======================================================================
 #' @rdname dots
-#' @importFrom rlang eval_bare
 #' @export
 setMethod(
     "dots",
     signature("..." = "ANY"),
-    function(..., character) {
+    function(..., character = FALSE) {
         dots <- eval_bare(substitute(alist(...)))
         if (length(dots) == 0L) {
-            stop("No dot objects to return", call. = FALSE)
+            abort("No dots to return")
         }
         isName <- vapply(dots, is.symbol, logical(1L))
         if (any(!isName)) {
-            stop("Dot objects cannot contain arguments", call. = FALSE)
+            abort("Dots cannot contain arguments")
         }
         names <- vapply(dots, as.character, character(1L))
-        dupes <- which(setNames(duplicated(names), names))
+        dupes <- names[which(setNames(duplicated(names), names))]
         if (length(dupes) > 0L) {
-            names <- unique(names)
-            stop("Duplicate dots: ", toString(names(dupes)),
-                 call. = FALSE)
+            abort(paste("Duplicate dots:", toString(dupes)))
         }
         if (isTRUE(character)) {
             names

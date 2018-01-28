@@ -18,12 +18,6 @@ Silent on pass, stop on error.
 Check Gene to Symbol Mapping Data
 }
 \examples{
-# Success
 gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
 checkGene2symbol(gene2symbol)
-
-# Failure
-\dontrun{
-checkGene2symbol(mtcars)
-}
 }

@@ -10,11 +10,11 @@
 \usage{
 plotQuantileHeatmap(object, ...)
 
-\S4method{plotQuantileHeatmap}{dgCMatrix}(object, n = 5, annotationCol = NA,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
-  legendColor = viridis::viridis, title = NULL)
+\S4method{plotQuantileHeatmap}{dgCMatrix}(object, n = 5L,
+  annotationCol = NA, clusterCols = TRUE, clusterRows = TRUE,
+  color = viridis::viridis, legendColor = viridis::viridis, title = NULL)
 
-\S4method{plotQuantileHeatmap}{matrix}(object, n = 5, annotationCol = NA,
+\S4method{plotQuantileHeatmap}{matrix}(object, n = 5L, annotationCol = NA,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
   legendColor = viridis::viridis, title = NULL)
 }
@@ -48,6 +48,10 @@ Show heatmap. Invisibly return \link{list} containing breaks and
 }
 \description{
 Plot Heatmap with Quantile Breaks
+}
+\examples{
+mat <- matrix(1:10000, nrow = 100, ncol = 100)
+plotQuantileHeatmap(mat)
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

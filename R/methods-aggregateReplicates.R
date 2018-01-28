@@ -38,11 +38,10 @@ NULL
 # Constructors =================================================================
 .aggregateReplicatesDenseMatrix <- function(object, groupings) {
     if (!is.factor(groupings)) {
-        stop("'groupings' must be factor")
+        abort("`groupings` must be factor")
     }
     if (!identical(names(groupings), colnames(object))) {
-        stop("'groupings' doesn't match column names",
-             call. = FALSE)
+        abort("`groupings` doesn't match colnames")
     }
     t <- t(object)
     rownames(t) <- groupings
@@ -56,11 +55,10 @@ NULL
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateReplicatesSparseMatrix <- function(object, groupings) {
     if (!is.factor(groupings)) {
-        stop("'groupings' must be factor")
+        abort("`groupings` must be factor")
     }
     if (!identical(names(groupings), colnames(object))) {
-        stop("'groupings' doesn't match column names",
-             call. = FALSE)
+        abort("`groupings` doesn't match colnames")
     }
     t <- Matrix::t(object)
     rownames(t) <- groupings

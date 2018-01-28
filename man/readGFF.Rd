@@ -43,6 +43,5 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}},
-  \code{\link{readSampleMetadataFile}},
   \code{\link{readYAML}}, \code{\link{transmit}}
 }

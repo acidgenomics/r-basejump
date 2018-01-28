@@ -50,21 +50,21 @@ NULL
     annotationCol = NA,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis(256),
+    color = viridis::viridis(256L),
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
         object <- object %>%
-            .[rowSums(.) > 0, , drop = FALSE]
+            .[rowSums(.) > 0L, , drop = FALSE]
     }
 
-    if (nrow(object) < 2) {
-        stop("Need at least 2 rows to plot heatmap", call. = FALSE)
+    if (nrow(object) < 2L) {
+        abort("Need at least 2 rows to plot heatmap")
     }
-    if (ncol(object) < 2) {
-        stop("Need at least 2 columns to plot heatmap", call. = FALSE)
+    if (ncol(object) < 2L) {
+        abort("Need at least 2 columns to plot heatmap")
     }
 
     # Prepare the annotation columns, if necessary. Check for `dim()` here
@@ -83,7 +83,8 @@ NULL
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(
-            seq_along(colnames(annotationCol)), function(a) {
+            X = seq_along(colnames(annotationCol)),
+            FUN = function(a) {
                 col <- annotationCol[[a]] %>%
                     levels()
                 colors <- annotationCol[[a]] %>%
@@ -100,19 +101,21 @@ NULL
 
     # If `color = NULL`, use the pheatmap default
     if (!is.character(color)) {
-        color <- colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(100)
+        color <- colorRampPalette(rev(
+            brewer.pal(n = 7L, name = "RdYlBu")
+        ))(100L)
     }
 
     # Dynamic column and row labeling
-    if (ncol(object) <= 50) {
+    if (ncol(object) <= 50L) {
         showColnames <- TRUE
     } else{
         showColnames <- FALSE
     }
-    if (nrow(object) <= 50) {
+    if (nrow(object) <= 50L) {
         showRownames <- TRUE
     } else {
-        showRownames = FALSE
+        showRownames <- FALSE
     }
 
     # pheatmap will error if `NULL` title is passed as `main`
@@ -130,6 +133,7 @@ NULL
         color = color,
         main = title,
         scale = scale,
+        show_colnames = showColnames,
         show_rownames = showRownames,
         ...)
 }

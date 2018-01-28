@@ -7,24 +7,17 @@
 #' @export
 #'
 #' @examples
-#' # Success
 #' annotable <- annotable("Homo sapiens")
 #' checkAnnotable(annotable)
-#'
-#' # Failure
-#' \dontrun{
-#' checkAnnotable(mtcars)
-#' }
 checkAnnotable <- function(object) {
     if (!is.data.frame(object)) {
-        stop("annotable must be 'data.frame' class object",
-             call. = FALSE)
+        abort("annotable must be data.frame")
     }
     # Just check for the minimal set of required columns
     colnames <- c("ensgene", "symbol", "description", "biotype", "broadClass")
     if (!all(colnames %in% colnames(object))) {
-        stop(paste(
+        abort(paste(
             "annotable must contain:", toString(colnames)
-        ), call. = FALSE)
+        ))
     }
 }

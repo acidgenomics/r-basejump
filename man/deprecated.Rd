@@ -11,15 +11,17 @@
 \alias{sampleDirs}
 \alias{fc2lr}
 \alias{lr2fc}
+\alias{comp}
+\alias{revcomp}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
 
 wash()
 
-packageSE(...)
+packageSE()
 
-prepareSE(...)
+prepareSE()
 
 metadataTable()
 
@@ -30,6 +32,10 @@ sampleDirs()
 fc2lr(...)
 
 lr2fc(...)
+
+comp(...)
+
+revcomp(...)
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

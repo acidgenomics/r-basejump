@@ -19,7 +19,9 @@
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
-#' assignAndSaveData("test", mtcars)
+#' assignAndSaveData(name = "test", object = mtcars)
+#'
+#' unlink("test.rda")
 assignAndSaveData <- function(
     name,
     object,
@@ -33,12 +35,14 @@ assignAndSaveData <- function(
     names(file) <- name
     assign(name, object, envir = envir)
     if (!isTRUE(quiet)) {
-        message(paste("Saving", name, "to", dir))
+        inform(paste("Saving", name, "to", dir))
     }
-    save(list = name,
-         file = file,
-         envir = envir,
-         compress = compress)
+    save(
+        list = name,
+        file = file,
+        envir = envir,
+        compress = compress
+    )
     # Silently return the file path as a named character vector
     invisible(file)
 }

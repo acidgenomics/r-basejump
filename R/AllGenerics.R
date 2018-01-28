@@ -13,19 +13,6 @@ NULL
 
 
 
-#' bcbio S4 Generics
-#'
-#' These generics are currently currently in use for both the bcbioRNASeq and
-#' bcbioSingleCell packages.
-#'
-#' @rdname bcbioGenerics
-#' @name bcbioGenerics
-#'
-#' @inheritParams AllGenerics
-NULL
-
-
-
 #' @rdname aggregateFeatures
 #' @export
 setGeneric("aggregateFeatures", function(object, ...) {
@@ -50,22 +37,6 @@ setGeneric("annotable", function(object, ...) {
 
 
 
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("bcbio", function(object, ...) {
-    standardGeneric("bcbio")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("bcbio<-", function(object, ..., value) {
-    standardGeneric("bcbio<-")
-})
-
-
-
 #' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
@@ -78,14 +49,6 @@ setGeneric("camel", function(object, ...) {
 #' @export
 setGeneric("collapseToString", function(object, ...) {
     standardGeneric("collapseToString")
-})
-
-
-
-#' @rdname dna
-#' @export
-setGeneric("comp", function(object, ...) {
-    standardGeneric("comp")
 })
 
 
@@ -141,14 +104,6 @@ setGeneric("fixNA", function(object, ...) {
 
 
 
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("flatFiles", function(object, ...) {
-    standardGeneric("flatFiles")
-})
-
-
-
 #' @rdname gene2symbol
 #' @export
 setGeneric("gene2symbol", function(object, ...) {
@@ -175,22 +130,6 @@ setGeneric("geomean", function(object, ...) {
 #' @rdname grepString
 setGeneric("grepString", function(object, ...) {
     standardGeneric("grepString")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("interestingGroups", function(object, ...) {
-    standardGeneric("interestingGroups")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("interestingGroups<-", function(object, ..., value) {
-    standardGeneric("interestingGroups<-")
 })
 
 
@@ -235,30 +174,6 @@ setGeneric("mdPlotlist", function(object, ...) {
 
 
 
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("metrics", function(object, ...) {
-    standardGeneric("metrics")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("plotDot", function(object, ...) {
-    standardGeneric("plotDot")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("plotGene", function(object, ...) {
-    standardGeneric("plotGene")
-})
-
-
-
 #' @rdname plotHeatmap
 #' @export
 setGeneric("plotHeatmap", function(object, ...) {
@@ -267,50 +182,10 @@ setGeneric("plotHeatmap", function(object, ...) {
 
 
 
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("plotQC", function(object, ...) {
-    standardGeneric("plotQC")
-})
-
-
-
 #' @rdname plotQuantileHeatmap
 #' @export
 setGeneric("plotQuantileHeatmap", function(object, ...) {
     standardGeneric("plotQuantileHeatmap")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("plotViolin", function(object, ...) {
-    standardGeneric("plotViolin")
-})
-
-
-
-#' @rdname prepareSummarizedExperiment
-#' @export
-setGeneric("prepareSummarizedExperiment", function(assays, ...) {
-    standardGeneric("prepareSummarizedExperiment")
-})
-
-
-
-#' @rdname prepareTemplate
-#' @export
-setGeneric("prepareTemplate", function(object, ...) {
-    standardGeneric("prepareTemplate")
-})
-
-
-
-#' @rdname readDataVersions
-#' @export
-setGeneric("readDataVersions", function(object, ...) {
-    standardGeneric("readDataVersions")
 })
 
 
@@ -331,30 +206,6 @@ setGeneric("readGFF", function(object, ...) {
 
 
 
-#' @rdname readLogFile
-#' @export
-setGeneric("readLogFile", function(object, ...) {
-    standardGeneric("readLogFile")
-})
-
-
-
-#' @rdname readProgramVersions
-#' @export
-setGeneric("readProgramVersions", function(object, ...) {
-    standardGeneric("readProgramVersions")
-})
-
-
-
-#' @rdname readSampleMetadataFile
-#' @export
-setGeneric("readSampleMetadataFile", function(object, ...) {
-    standardGeneric("readSampleMetadataFile")
-})
-
-
-
 #' @rdname readYAML
 #' @export
 setGeneric("readYAML", function(object, ...) {
@@ -367,54 +218,6 @@ setGeneric("readYAML", function(object, ...) {
 #' @export
 setGeneric("removeNA", function(object, ...) {
     standardGeneric("removeNA")
-})
-
-
-
-#' @rdname dna
-#' @export
-setGeneric("revcomp", function(object, ...) {
-    standardGeneric("revcomp")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("sampleMetadata", function(object, ...) {
-    standardGeneric("sampleMetadata")
-})
-
-
-
-#' @rdname sampleYAML
-#' @export
-setGeneric("sampleYAML", function(yaml, keys, ...) {
-    standardGeneric("sampleYAML")
-})
-
-
-
-#' @rdname sampleYAMLMetadata
-#' @export
-setGeneric("sampleYAMLMetadata", function(yaml, ...) {
-    standardGeneric("sampleYAMLMetadata")
-})
-
-
-
-#' @rdname sampleYAMLMetrics
-#' @export
-setGeneric("sampleYAMLMetrics", function(yaml, ...) {
-    standardGeneric("sampleYAMLMetrics")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("selectSamples", function(object, ...) {
-    standardGeneric("selectSamples")
 })
 
 
@@ -455,14 +258,6 @@ setGeneric("symbol2gene", function(object, ...) {
 #' @export
 setGeneric("toStringUnique", function(object, ...) {
     standardGeneric("toStringUnique")
-})
-
-
-
-#' @rdname bcbioGenerics
-#' @export
-setGeneric("tpm", function(object) {
-    standardGeneric("tpm")
 })
 
 

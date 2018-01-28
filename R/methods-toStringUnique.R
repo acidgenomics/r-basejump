@@ -22,7 +22,5 @@ setMethod(
         object %>%
             unique() %>%
             toString() %>%
-            gsub(x = .,
-                 pattern = "NA,\\s|,\\sNA",
-                 replacement = "")
+            gsub("NA,\\s|,\\sNA", "", .)
     })

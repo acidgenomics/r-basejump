@@ -77,7 +77,7 @@ test_that("Multiple objects in single file", {
 test_that("Invalid arguments", {
     expect_error(
         loadDataAsName(newName = "mtcars", dir = NULL),
-        "'dir' must be a string"
+        "`dir` must be a string"
     )
     expect_error(
         loadDataAsName(newName = "mtcars", dir = "XXX"),
@@ -88,7 +88,7 @@ test_that("Invalid arguments", {
             newName = "mtcars.rda",
             envir = "XXX"
         ),
-        "'envir' must be an environment"
+        "`envir` must be an environment"
     )
 })
 

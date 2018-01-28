@@ -16,8 +16,6 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
-#' @importFrom rlang is_string
-#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param ext R data file extension. Defaults to `rda` and typically should not
@@ -31,10 +29,9 @@
 #' @export
 #'
 #' @examples
-#' # Use symbols, separated by commas
-#' \dontrun{
-#' loadData(foo, bar)
-#' }
+#' # Load the internal GRCh37 gene annotations data
+#' loadData(grch37, dir = system.file("extdata", package = "basejump"))
+#' glimpse(grch37)
 loadData <- function(
     ...,
     dir = getwd(),
@@ -43,66 +40,70 @@ loadData <- function(
     replace = TRUE,
     quiet = FALSE) {
     if (!is_string(dir)) {
-        stop("'dir' must be a string", call. = FALSE)
+        abort("`dir` must be a string")
     } else if (!dir.exists(dir)) {
-        stop(paste("No directory exists at", dir), call. = FALSE)
+        abort(paste("No directory exists at", dir))
     } else {
         dir <- normalizePath(dir)
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment", call. = FALSE)
+        abort("`envir` must be an environment")
     }
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
     dots <- as.character(substitute(list(...)))[-1L]
     if (!isTRUE(quiet)) {
-        message(paste("Loading", toString(dots), "from", dir))
+        inform(paste("Loading", toString(dots), "from", dir))
     }
-    files <- sapply(seq_along(dots), function(a) {
-        name <- dots[[a]]
-        file <- file.path(dir, paste0(name, ".", ext))
-        # Check to see if object is present in environment
-        if (exists(name, envir = envir, inherits = FALSE)) {
-            if (isTRUE(replace)) {
-                warning(paste(
-                    "Replacing", name,
-                    "with the contents of", basename(file)
-                ), call. = FALSE)
-            } else {
-                return(warning(paste(
-                    "Skipping", basename(file),
-                    "because", name, "already exists"
-                ), call. = FALSE))
+    files <- vapply(
+        X = dots,
+        FUN = function(name) {
+            file <- file.path(dir, paste0(name, ".", ext))
+            # Check to see if object is present in environment
+            if (exists(name, envir = envir, inherits = FALSE)) {
+                if (isTRUE(replace)) {
+                    warn(paste(
+                        "Replacing", name,
+                        "with the contents of", basename(file)
+                    ))
+                } else {
+                    return(warn(paste(
+                        "Skipping", basename(file),
+                        "because", name, "already exists"
+                    )))
+                }
             }
-        }
-        # Error on missing file
-        if (!file.exists(file)) {
-            stop(paste(name, "missing"), call. = FALSE)
-        }
-        # Load into a temporary environment (safer)
-        tmpEnv <- new.env()
-        loaded <- load(file, envir = tmpEnv)
-        # Check for multiple saved objects
-        if (length(loaded) > 1L) {
-            stop(paste(
-                basename(file), "contains multiple objects:",
-                toString(loaded)
-            ), call. = FALSE)
-        }
-        # Check for file name and internal object name mismatch
-        if (!identical(name, loaded)) {
-            stop(paste0(
-                "Name mismatch detected for '", basename(file), "'. ",
-                "Internal object is named '", loaded, "'."
-            ), call. = FALSE)
-        }
-        # Assign into the target environment
-        assign(x = name,
-               value = get(name, envir = tmpEnv, inherits = FALSE),
-               envir = envir)
-        # Prepare named character vector for invisible return
-        names(file) <- name
-        file
-    })
+            # Error on missing file
+            if (!file.exists(file)) {
+                abort(paste(name, "missing"))
+            }
+            # Load into a temporary environment (safer)
+            tmpEnv <- new.env()
+            loaded <- load(file, envir = tmpEnv)
+            # Check for multiple saved objects
+            if (length(loaded) > 1L) {
+                abort(paste(
+                    basename(file), "contains multiple objects:",
+                    toString(loaded)
+                ))
+            }
+            # Check for file name and internal object name mismatch
+            if (!identical(name, loaded)) {
+                abort(paste0(
+                    "Name mismatch detected for `", basename(file), "`. ",
+                    "Internal object is named `", loaded, "`."
+                ))
+            }
+            # Assign into the target environment
+            assign(
+                x = name,
+                value = get(name, envir = tmpEnv, inherits = FALSE),
+                envir = envir
+            )
+            # Prepare named character vector for invisible return
+            names(file) <- name
+            file
+        },
+        FUN.VALUE = "character")
     invisible(files)
 }

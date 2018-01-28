@@ -4,7 +4,6 @@
 #'
 #' @family Data Import and Project Utilities
 #'
-#' @importFrom rlang is_string
 #' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics
@@ -20,18 +19,18 @@ loadRemoteData <- function(
     envir = parent.frame(),
     quiet = FALSE) {
     if (!is_string(object)) {
-        stop("'object' must be a string", call. = FALSE)
+        abort("`object` must be a string")
     }
     # Check for remote URL
-    if (!grepl(x = object, pattern = "\\://")) {
-        stop("Remote URL containing '://' required", call. = FALSE)
+    if (!grepl("\\://", object)) {
+        abort("Remote URL containing `://` required")
     }
-    # Check for '.rda' file
-    if (!grepl(x = object, pattern = "\\.rda$")) {
-        stop("Data file must contain '.rda' extension", call. = FALSE)
+    # Check for `.rda` file
+    if (!grepl("\\.rda$", object)) {
+        abort("Data file must contain `.rda` extension")
     }
     if (!is.environment(envir)) {
-        stop("'envir' must be an environment", call. = FALSE)
+        abort("`envir` must be an environment")
     }
     tmp <- tempfile()
     download.file(

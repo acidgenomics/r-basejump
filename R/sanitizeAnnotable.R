@@ -14,7 +14,7 @@ sanitizeAnnotable <- function(object) {
     nestedCols <- vapply(
         X = object,
         FUN = is.list,
-        FUN.VALUE = logical(1))
+        FUN.VALUE = logical(1L))
     if (any(nestedCols)) {
         object <- object[, which(!nestedCols)]
     }

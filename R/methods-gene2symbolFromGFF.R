@@ -28,7 +28,6 @@ NULL
 # Constructors =================================================================
 #' @importFrom dplyr arrange mutate
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang .data sym !!
 #' @importFrom stringr str_match
 .gene2symbolFromGFF <- function(
     object,
@@ -37,16 +36,12 @@ NULL
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
     # This fix is necessary for FlyBase GFF files.
-    if (any(grepl(x = anno, pattern = "gene_symbol"))) {
-        anno <- gsub(
-            x = anno,
-            pattern = "gene_symbol",
-            replacement = "gene_name")
+    if (any(grepl("gene_symbol", anno))) {
+        anno <- gsub("gene_symbol", "gene_name", anno)
     }
 
     anno <- anno %>%
-        .[grepl(x = ., pattern = "gene_id") &
-              grepl(x = ., pattern = "gene_name")] %>%
+        .[grepl("gene_id", .) & grepl("gene_name", .)] %>%
         unique()
 
     ensgene <- str_match(
@@ -67,7 +62,7 @@ NULL
         set_rownames(.[["ensgene"]])
 
     if (!isTRUE(quiet)) {
-        message(paste("gene2symbol mappings:", nrow(df), "genes"))
+        inform(paste("gene2symbol mappings:", nrow(df), "genes"))
     }
 
     df

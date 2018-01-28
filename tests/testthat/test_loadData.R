@@ -47,7 +47,7 @@ test_that("Multiple objects in single file", {
 test_that("Invalid arguments", {
     expect_error(
         loadData(mtcars, dir = NULL),
-        "'dir' must be a string"
+        "`dir` must be a string"
     )
     expect_error(
         loadData(mtcars, dir = "XXX"),
@@ -55,7 +55,7 @@ test_that("Invalid arguments", {
     )
     expect_error(
         loadData(mtcars, envir = "XXX"),
-        "'envir' must be an environment"
+        "`envir` must be an environment"
     )
 })
 
@@ -69,8 +69,8 @@ test_that("Missing file", {
 test_that("Renamed file", {
     expect_error(
         loadData(renamed),
-        paste("Name mismatch detected for 'renamed.rda'.",
-              "Internal object is named 'x'.")
+        paste("Name mismatch detected for `renamed.rda`.",
+              "Internal object is named `x`.")
     )
 })
 

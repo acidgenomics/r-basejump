@@ -35,6 +35,21 @@ test_that("character", {
     )
 })
 
+test_that("Delimited numbers", {
+    expect_identical(
+        camel("2018-01-01"),
+        "x2018x01x01"
+    )
+    expect_identical(
+        camel("0.01"),
+        "x0x01"
+    )
+    expect_identical(
+        camel("1,000,000"),
+        "x1x000x000"
+    )
+})
+
 test_that("named character", {
     expect_identical(
         camel(makeNames[["namedCharacter"]], strict = TRUE),

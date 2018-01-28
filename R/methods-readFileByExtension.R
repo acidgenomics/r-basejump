@@ -41,18 +41,18 @@ NULL
     makeNames = "camel",
     quiet = FALSE,
     ...) {
-    file <- .localOrRemoteFile(object, quiet = quiet)
+    file <- localOrRemoteFile(object, quiet = quiet)
 
     # Detect file extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
-    if (!grepl(x = names(file), pattern = extPattern)) {
-        stop("File extension missing")
+    if (!grepl(extPattern, names(file))) {
+        abort("File extension missing")
     }
     ext <- str_match(names(file), extPattern) %>%
         .[[2L]]
 
     # Rename tmpfile to include extension if necessary
-    if (!grepl(x = file, pattern = extPattern)) {
+    if (!grepl(extPattern, file)) {
         newfile <- paste0(file, ".", ext)
         file.rename(file, newfile)
         file[[1L]] <- newfile
@@ -60,7 +60,7 @@ NULL
 
     # File import, based on extension
     if (!isTRUE(quiet)) {
-        message(paste("Reading", names(file)))
+        inform(paste("Reading", names(file)))
     }
     na <- c("", "NA", "#N/A")
     if (ext == "csv") {
@@ -103,7 +103,7 @@ NULL
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        stop("Unsupported file type")
+        abort("Unsupported file type")
     }
 
     # Sanitize colnames, if desired
