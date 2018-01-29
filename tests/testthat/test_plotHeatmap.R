@@ -35,3 +35,14 @@ test_that("Turn off columns for many samples", {
     expect_identical(names(p), plotNames)
     expect_length(p[["gtable"]], 5L)
 })
+
+test_that("Matrix dimensions are too small", {
+    expect_error(
+        plotHeatmap(matrix(seq(1L:10L), ncol = 1L)),
+        "Need at least 2 columns to plot heatmap"
+    )
+    expect_error(
+        plotHeatmap(matrix(seq(1L:10L), nrow = 1L)),
+        "Need at least 2 rows to plot heatmap"
+    )
+})
