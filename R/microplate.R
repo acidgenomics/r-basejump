@@ -26,7 +26,7 @@ microplate <- function(
     plates = 1L,
     wells = 96L,
     controls = 0L,
-    prefix) {
+    prefix = NULL) {
     if (!is.numeric(plates) | plates < 1L) {
         abort("Invalid `plates` argument")
     }
@@ -61,11 +61,10 @@ microplate <- function(
         vector <- vector[!grepl(grep, vector)]
     }
     # Add a prefix, if desired:
-    if (!missing(prefix)) {
-        if (!is_string(prefix)) {
-            abort("Prefix must be a string")
-        }
+    if (is_string(prefix)) {
         vector <- paste0(prefix, "-", vector)
+    } else if (!is.null(prefix)) {
+        abort("`prefix` must be a string")
     }
     return(vector)
 }
