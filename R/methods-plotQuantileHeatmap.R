@@ -69,7 +69,6 @@ NULL
 
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
-    print(format(breaks, digits = 3L))
 
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
