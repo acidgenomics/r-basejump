@@ -1,19 +1,11 @@
 # Constructors =================================================================
-.makeNamesUpperCamel <- function(
-    object,
-    strict = FALSE) {
-    .makeNamesCamel(
-        object,
-        format = "upper",
-        strict = strict)
+.makeNamesUpperCamel <- function(object, strict = FALSE) {
+    .makeNamesCamel(object, format = "upper", strict = strict)
 }
 
 
 
-.setNamesUpperCamel <- function(
-    object,
-    rownames = FALSE,
-    strict = FALSE) {
+.setNamesUpperCamel <- function(object, rownames = FALSE, strict = FALSE) {
     .setNamesCamel(
         object,
         format = "upper",
@@ -24,18 +16,13 @@
 
 
 .setNamesUpperCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesUpperCamel(
-        object,
-        rownames = FALSE,
-        strict = strict)
+    .setNamesUpperCamel(object, rownames = FALSE, strict = strict)
 }
 
 
 
-.upperCamelVector <- function(
-    object,
-    strict = FALSE) {
-    if (isTRUE(.checkNames(object))) {
+.upperCamelVector <- function(object, strict = FALSE) {
+    if (!is.null(names(object))) {
         names <- .makeNamesUpperCamel(names(object), strict = strict)
     } else {
         names <- NULL

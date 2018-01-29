@@ -61,3 +61,30 @@ test_that("Control wells", {
         "1-A04"
     )
 })
+
+test_that("Prefix", {
+    plates <- microplate(prefix = "cherrypick")
+    expect_identical(
+        plates[[1L]],
+        "cherrypick-1-A01"
+    )
+})
+
+test_that("Invalid parameters", {
+    expect_error(
+        microplate(plates = -1L),
+        "Invalid `plates` argument"
+    )
+    expect_error(
+        microplate(wells = -1L),
+        "Invalid `wells` argument"
+    )
+    expect_error(
+        microplate(controls = -1L),
+        "`controls` parameter supports 0:12"
+    )
+    expect_error(
+        microplate(prefix = c("a", "b")),
+        "`prefix` must be a string"
+    )
+})

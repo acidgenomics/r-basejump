@@ -21,7 +21,7 @@ test_that("character", {
     )
 })
 
-test_that("named_character", {
+test_that("Named character", {
     expect_identical(
         dotted(makeNames[["namedCharacter"]]),
         c("Item.A" = "hello.world",
@@ -35,6 +35,37 @@ test_that("data.frame", {
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
+    )
+})
+
+test_that("Counts matrix", {
+    loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
+    counts <- dotted(counts)
+    expect_identical(
+        rownames(counts)[[1L]],
+        "ENSMUSG00000002459"
+    )
+    expect_identical(
+        colnames(counts),
+        c("group1.1", "group1.2", "group2.1", "group2.2")
+    )
+})
+
+test_that("matrix rownames", {
+    # Sanitize rownames
+    expect_identical(
+        dotted(makeNames[["matrix"]], rownames = TRUE) %>%
+            rownames() %>%
+            .[[1L]],
+        "Mazda.RX4"
+    )
+    # Unset rownames (ignore in `.checkRownames()`)
+    expect_identical(
+        makeNames[["matrix"]] %>%
+            set_rownames(NULL) %>%
+            dotted(rownames = TRUE) %>%
+            rownames(),
+        NULL
     )
 })
 
