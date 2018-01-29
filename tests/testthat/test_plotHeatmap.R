@@ -1,5 +1,6 @@
 context("plotHeatmap")
 
+loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
 plotNames <- c("tree_row", "tree_col", "kmeans", "gtable")
 
 test_that("matrix", {
@@ -10,7 +11,6 @@ test_that("matrix", {
 })
 
 test_that("Annotation columns support", {
-    loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
     annotationCol <- data.frame(
         genotype = c(
             "wildtype",
@@ -22,6 +22,16 @@ test_that("Annotation columns support", {
     )
     p <- plotHeatmap(counts, annotationCol = annotationCol)
     expect_identical(names(p), plotNames)
-    # TODO Add a method here to extract the annotation columns from the gtable
-    # grobs. Not sure how to do this yet.
+    expect_length(p[["gtable"]], 9L)
+})
+
+test_that("Default color palette", {
+    expect_silent(plotHeatmap(counts, color = NULL))
+})
+
+test_that("Turn off columns for many samples", {
+    matrix <- matrix(seq(1L:1000L), ncol = 100L)
+    p <- plotHeatmap(matrix)
+    expect_identical(names(p), plotNames)
+    expect_length(p[["gtable"]], 5L)
 })
