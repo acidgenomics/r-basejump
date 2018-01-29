@@ -1,4 +1,4 @@
-contest("sanitizeAnnotable")
+context("sanitizeAnnotable")
 
 test_that("Human", {
     human <- annotable("Homo sapiens", quiet = TRUE)
