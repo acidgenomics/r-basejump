@@ -10,10 +10,25 @@
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.
 #'
+#' @seealso [mdPlotlist].
+#'
 #' @return
 #' - `grid`: [cowplot::plot_grid()].
 #' - `list`: [list].
 #' - `markdown`: Markdown output, with headers for each plot.
+#'
+#' @examples
+#' loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+#'
+#' # Grid
+#' dynamicPlotlist(plotlist, return = "grid")
+#'
+#' # List
+#' list <- dynamicPlotlist(plotlist, return = "list")
+#' names(list)
+#'
+#' # Markdown
+#' dynamicPlotlist(plotlist, return = "markdown")
 NULL
 
 

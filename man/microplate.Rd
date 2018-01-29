@@ -4,7 +4,7 @@
 \alias{microplate}
 \title{Microtiter Plate Well Identifiers}
 \usage{
-microplate(plates = 1L, wells = 96L, controls = 0L, prefix)
+microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 }
 \arguments{
 \item{plates}{Number of plates.}

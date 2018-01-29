@@ -50,15 +50,18 @@ NULL
 
 
 
-#' @importFrom magrittr set_rownames
-#' @importFrom stats setNames
 .setNamesSnake <- function(object, rownames = FALSE) {
-    if (.checkNames(object)) {
-        object <- setNames(object, .makeNamesSnake(names(object)))
-    }
-    if (isTRUE(rownames) &
-        .checkRownames(object)) {
-        rownames(object) <- .makeNamesSnake(rownames(object))
+    if (!is.null(dimnames(object))) {
+        # Colnames
+        if (!is.null(colnames(object))) {
+            colnames(object) <- .makeNamesSnake(colnames(object))
+        }
+        # Rownames
+        if (isTRUE(rownames) & .checkRownames(object)) {
+            rownames(object) <- .makeNamesSnake(rownames(object))
+        }
+    } else if (!is.null(names(object))) {
+        names(object) <- .makeNamesSnake(names(object))
     }
     object
 }
@@ -72,7 +75,7 @@ NULL
 
 
 .snakeVector <- function(object) {
-    if (isTRUE(.checkNames(object))) {
+    if (!is.null(names(object))) {
         names <- .makeNamesSnake(names(object))
     } else {
         names <- NULL
