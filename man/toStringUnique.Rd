@@ -22,6 +22,10 @@ string.
 \description{
 Convert to a Unique Character String
 }
+\examples{
+vec <- c("hello", "world", NA, "hello", "world", NA)
+toStringUnique(vec)
+}
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
 }
