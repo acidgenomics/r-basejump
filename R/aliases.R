@@ -14,6 +14,30 @@ geomean <- function(...) {
 
 
 
+#' @rdname markdownHeader
+#' @export
+mdHeader <- function(...) {
+    markdownHeader(...)
+}
+
+
+
+#' @rdname markdownList
+#' @export
+mdList <- function(...) {
+    markdownList(...)
+}
+
+
+
+#' @rdname markdownPlotlist
+#' @export
+mdPlotlist <- function(...) {
+    markdownPlotlist(...)
+}
+
+
+
 #' @rdname readGFF
 #' @export
 readGTF <- function(...) {

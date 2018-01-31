@@ -150,26 +150,26 @@ setGeneric("logRatioToFoldChange", function(object, ...) {
 
 
 
-#' @rdname mdHeader
+#' @rdname markdownHeader
 #' @export
-setGeneric("mdHeader", function(object, ...) {
-    standardGeneric("mdHeader")
+setGeneric("markdownHeader", function(object, ...) {
+    standardGeneric("markdownHeader")
 })
 
 
 
-#' @rdname mdList
+#' @rdname markdownList
 #' @export
-setGeneric("mdList", function(object, ...) {
-    standardGeneric("mdList")
+setGeneric("markdownList", function(object, ...) {
+    standardGeneric("markdownList")
 })
 
 
 
-#' @rdname mdPlotlist
+#' @rdname markdownPlotlist
 #' @export
-setGeneric("mdPlotlist", function(object, ...) {
-    standardGeneric("mdPlotlist")
+setGeneric("markdownPlotlist", function(object, ...) {
+    standardGeneric("markdownPlotlist")
 })
 
 
