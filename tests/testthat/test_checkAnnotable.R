@@ -8,6 +8,13 @@ test_that("Success", {
 test_that("Failure", {
     expect_error(
         checkAnnotable(mtcars),
-        "annotable must contain:"
+        "Annotable must contain:"
+    )
+})
+
+test_that("Object isn't a data.frame", {
+    expect_error(
+        checkAnnotable(NULL),
+        "Annotable must be a data.frame"
     )
 })

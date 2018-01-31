@@ -12,7 +12,7 @@
 #' checkGene2symbol(gene2symbol)
 checkGene2symbol <- function(object) {
     if (!is.data.frame(object)) {
-        abort("gene2symbol must be data.frame")
+        abort("gene2symbol must be a data.frame")
     }
     colnames <- c("ensgene", "symbol")
     if (!identical(colnames(object), colnames)) {

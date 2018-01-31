@@ -14,3 +14,10 @@ test_that("Failure", {
         "gene2symbol must contain:"
     )
 })
+
+test_that("Object isn't a data.frame", {
+    expect_error(
+        checkGene2symbol(NULL),
+        "gene2symbol must be a data.frame"
+    )
+})

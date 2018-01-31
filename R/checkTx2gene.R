@@ -12,7 +12,7 @@
 #' checkTx2gene(tx2gene)
 checkTx2gene <- function(object) {
     if (!is.data.frame(object)) {
-        abort("tx2gene must be data.frame")
+        abort("tx2gene must be a data.frame")
     }
     colnames <- c("enstxp", "ensgene")
     if (!identical(colnames(object), colnames)) {
