@@ -160,3 +160,7 @@ test_that("Legacy release parameter support", {
         annotable("Homo sapiens", quiet = TRUE)
     )
 })
+
+test_that("NULL input", {
+    expect_identical(annotable(NULL), NULL)
+})
