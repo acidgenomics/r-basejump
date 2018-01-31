@@ -92,12 +92,12 @@ lr2fc <- function(...) {
 # v0.1.1 =======================================================================
 #' @rdname deprecated
 #' @export
-comp <- function(...) {
+comp <- function() {
     .Deprecated("Biostrings::complement")
 }
 
 #' @rdname deprecated
 #' @export
-revcomp <- function(...) {
+revcomp <- function() {
     .Deprecated("Biostrings::reverseComplement")
 }
