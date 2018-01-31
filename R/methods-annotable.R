@@ -274,7 +274,8 @@ NULL
     requiredCols <- c("biotype", "symbol")
     if (!all(requiredCols %in% colnames(object))) {
         abort(paste(
-            "Required columns:", toString(object)
+            "Missing columns:",
+            toString(setdiff(requiredCols, colnames(object)))
         ))
     }
     mutate(

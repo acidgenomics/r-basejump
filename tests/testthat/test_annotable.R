@@ -198,3 +198,10 @@ test_that("Collapse annotables tibble", {
     annotable <- annotable(grch38)
     expect_true(!any(duplicated(annotable[["ensgene"]])))
 })
+
+test_that("Internal broadClass integrity", {
+    expect_error(
+        .defineBroadClass(mtcars),
+        "Missing columns: biotype, symbol"
+    )
+})
