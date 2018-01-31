@@ -180,6 +180,5 @@ setMethod(
     "detectOrganism",
     signature("NULL"),
     function(object) {
-        warn("NULL input to `detectOrganism()`")
         NULL
     })
