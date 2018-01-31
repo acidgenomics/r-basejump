@@ -43,5 +43,5 @@ foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 Modified variants of \code{gtools::foldchange2logratio()} and
 \code{gtools::logratio2foldchange()}.
 
-Other Math Utilities: \code{\link{geomean}}
+Other Math Utilities: \code{\link{geometricMean}}
 }
