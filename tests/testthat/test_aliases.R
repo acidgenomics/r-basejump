@@ -4,6 +4,9 @@ test_that("aliases", {
     aliases <- c(
         "gene2symbolFromGTF" = "gene2symbolFromGFF",
         "geomean" = "geometricMean",
+        "mdHeader" = "markdownHeader",
+        "mdList" = "markdownList",
+        "mdPlotlist" = "markdownPlotlist",
         "readGTF" = "readGFF",
         "tx2geneFromGTF" = "tx2geneFromGFF"
     )
