@@ -120,9 +120,9 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 
 
 
-#' @rdname geomean
-setGeneric("geomean", function(object, ...) {
-    standardGeneric("geomean")
+#' @rdname geometricMean
+setGeneric("geometricMean", function(object, ...) {
+    standardGeneric("geometricMean")
 })
 
 
