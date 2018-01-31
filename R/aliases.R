@@ -6,6 +6,14 @@ gene2symbolFromGTF <- function(...) {
 
 
 
+#' @rdname geometricMean
+#' @export
+geomean <- function(...) {
+    geometricMean(...)
+}
+
+
+
 #' @rdname readGFF
 #' @export
 readGTF <- function(...) {
