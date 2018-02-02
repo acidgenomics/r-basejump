@@ -56,13 +56,13 @@
 - Added `checkAnnotable()`, `checkGene2symbol()`, `checkTx2gene()`, and `sanitizeAnnotable()` utility functions that will be used in the bcbio R packages.
 
 
-## basejump 0.1.4
+## basejump 0.1.4 (2017-12-04)
 
 - Added `midnightTheme()` ggplot theme. Originally this was defined as `darkTheme()` in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely dark gray axes without white axis lines.
 - Improve NAMESPACE imports to include `stats::formula()` and `utils::capture.output()`.
 
 
-## basejump 0.1.3
+## basejump 0.1.3 (2017-12-01)
 
 - `loadData()` and `loadDataAsName()` now default to `replace = TRUE`. If an object with the same name exists in the destination environment, then a warning is generated.
 - `collapseToString()` only attempts to dynamically return the original object class on objects that aren't class `data.frame`. I updated this code to behave more nicely with grouped tibbles (`grouped_df`), which are a virtual class of `data.frame` and therefore can't be coerced using `as(object, "grouped_df")`.
@@ -72,7 +72,7 @@
 - Updated `annotable()` function to include nested Entrez identifiers in the `entrez` column. This is useful for downstream functional analysis.
 
 
-## basejump 0.1.2
+## basejump 0.1.2 (2017-11-30)
 
 - Added bcbio `plotQC()` generic.
 - Added back `toStringUnique()` code, which is still in use in the worminfo package.
@@ -83,7 +83,7 @@
 - Bug fix for `detectOrganism()`. Now allowing `NULL` return for unsupported organism, with a warning.
 
 
-## basejump 0.1.1
+## basejump 0.1.1 (2017-11-11)
 
 - Added overwrite support for `saveData()`. Now will skip on existing files when `overwrite = FALSE`.
 - Bug fix for `readDataVersions()`, which shouldn't have the column types defined, using `col_types = "ccT"`.
@@ -94,7 +94,7 @@ up objects that don't contain gene annotations.
 - Removed sample selection by pattern matching (`pattern`, `patternCol` arguments) in `readSampleMetadata()`. This feature wasn't fully baked and doesn't offer enough functionality to the user.
 
 
-## basejump 0.1.0
+## basejump 0.1.0 (2017-10-23)
 
 - Bump version to match bcbioRNASeq package.
 - Improved unit testing coverage of `prepareSummarizedExperiment()`.
@@ -110,13 +110,13 @@ up objects that don't contain gene annotations.
 - Switched `str_()` to base `grep()` and `gsub()` in internal functions.
 
 
-## basejump 0.0.25
+## basejump 0.0.25 (2017-10-13)
 
 - Improved consistency of `setMethod()` calls using `signature()`.
 - Converted `loadRemoteData()` to a standard function instead of using S4 dispatch, allowing the `envir` argument to be set properly.
 
 
-## basejump 0.0.24
+## basejump 0.0.24 (2017-10-10)
 
 - Added additional package version requirements in `DESCRIPTION` file.
 - Implicit integers are allowed.
@@ -145,19 +145,19 @@ up objects that don't contain gene annotations.
 - Renamed `collapse()` function to `collapseToString()`, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).
 
 
-## basejump 0.0.23
+## basejump 0.0.23 (2017-09-14)
 
 - Upgraded `annotable()` function to query Ensembl using the [ensembldb][] package rather than [annotables][].
 
 
-## basejump 0.0.22
+## basejump 0.0.22 (2017-09-08)
 
 - Improved unit testing coverage.
 - Renamed `prepareSE()` to `prepareSummarizedExperiment()`. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.
 - Reworked and simplified `detectHPC()` function to allow for unit testing.
 
 
-## basejump 0.0.21
+## basejump 0.0.21 (2017-09-01)
 
 - NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.
 - Improved code coverage and unit testing with additional [testthat][] checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.
@@ -173,7 +173,7 @@ up objects that don't contain gene annotations.
 - Improved remote file handling for `readFileByExtension()`, `readGTF()`, and `readYAML()` functions.
 
 
-## basejump 0.0.20
+## basejump 0.0.20 (2017-08-16)
 
 - Offloaded [devtools][] functions to personal package.
 - Upgraded all functions to S4 functions where possible.
@@ -183,18 +183,18 @@ up objects that don't contain gene annotations.
 - Added unit testing for [annotables][] functions.
 
 
-## basejump 0.0.19
+## basejump 0.0.19 (2017-07-24)
 
 - Improved documentation and consistency with [bcbio][] packages.
 - Improved integration of gene annotation calls using [annotables][] package.
 
 
-## basejump 0.0.18
+## basejump 0.0.18 (2017-07-24)
 
 - Initial support for [SummarizedExperiment][] creation with `packageSE()`.
 
 
-## basejump 0.0.17
+## basejump 0.0.17 (2017-07-11)
 
 - Added [annotables][] common code from bcbio packages.
 - Added automatic file reading using [readr][] package.
@@ -202,87 +202,87 @@ up objects that don't contain gene annotations.
 - Initial commit of `assign_data()` for use in [bcbioSingleCell][] sample loops.
 
 
-## basejump 0.0.16
+## basejump 0.0.16 (2017-06-28)
 
 - Minor NAMESPACE updates while working on [bcbio][] packages.
 - Tweaks for [tidyverse][] S4 generic verbs. In particular, `as_tibble()` now provides better consistency for rowname conversion.
 
 
-## basejump 0.0.15
+## basejump 0.0.15 (2017-06-18)
 
 - Added [testthat][] support for [lintr][] checks.
 - Added S4 generic for `as_tibble()`.
 
 
-## basejump 0.0.14
+## basejump 0.0.14 (2017-06-13)
 
 - [dplyr][] 0.7 NAMESPACE fixes and function tweaks.
 
 
-## basejump 0.0.13
+## basejump 0.0.13 (2017-06-12)
 
 - setMethod on tidyverse NAMESPACE collisons ([dplyr][], [tidyr][]) using `signature("data.frame").
 
 
-## basejump 0.0.12
+## basejump 0.0.12 (2017-05-25)
 
 - Updated exports based on [worminfo][] package.
 
 
-## basejump 0.0.11
+## basejump 0.0.11 (2017-05-18)
 
 - Improved naming functions to dynamically handle character vectors and objects that support naming assignments.
 - Added `removeNA()` utility function.
 
 
-## basejump 0.0.10
+## basejump 0.0.10 (2017-05-14)
 
 - Added NAMESPACE utilities to deal with [tidyverse][] generic verbs.
 - Switched package documentation method to use [roxygen][] with pkgapi.
 
 
-## basejump 0.0.9
+## basejump 0.0.9 (2017-05-13)
 
 - Added snake_case function variants.
 
 
-## basejump 0.0.8
+## basejump 0.0.8 (2017-05-13)
 
 - Added back `saveData()` utility functions.
 
 
-## basejump 0.0.7
+## basejump 0.0.7 (2017-0422)
 
 - Bug fixes for [dplyr][] 0.6.0 update and improved kable handling.
 
 
-## basejump 0.0.6
+## basejump 0.0.6 (2017-04-14)
 
 - Dependency fix for successful compilation on the [HMS RC][] Orchestra cluster.
 
 
-## basejump 0.0.5
+## basejump 0.0.5 (2017-04-12)
 
 - Consolidated functions in the documentation.
 
 
-## basejump 0.0.4
+## basejump 0.0.4 (2017-04-07)
 
 - Improved documentation.
 
 
-## basejump 0.0.3
+## basejump 0.0.3 (2017-03-22)
 
 - Removed dependencies and transfer functions to [bcbioRNASeq][].
 
 
-## basejump 0.0.2
+## basejump 0.0.2 (2017-03-22)
 
 - Added [bcbio][] data import functions.
 - Added [ggplot2][] wrapper functions for quality control.
 
 
-## basejump 0.0.1
+## basejump 0.0.1 (2017-03-17)
 
 - Initial draft release.
 
