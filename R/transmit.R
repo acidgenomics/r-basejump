@@ -23,7 +23,7 @@
 #'   (`TRUE`/`FALSE`)
 #' @param localDir Directory where to save file locally.
 #'
-#' @return List of local files.
+#' @return Invisibly return a list of the files downloaded.
 #' @export
 #'
 #' @examples
@@ -37,7 +37,7 @@ transmit <- function(
     pattern,
     rename = NULL,
     compress = FALSE,
-    localDir = "data-raw",
+    localDir = getwd(),
     quiet = FALSE) {
     if (!grepl("ftp\\://", remoteDir)) {
         abort("FTP protocol not detected")
@@ -80,7 +80,7 @@ transmit <- function(
     if (!isTRUE(quiet)) {
         inform(paste("Downloading", toString(remoteFileName)))
     }
-    lapply(seq_along(remoteFileName), function(a) {
+    list <- lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
             localFileName <- rename[a]
@@ -101,6 +101,7 @@ transmit <- function(
         }
 
         localFilePath
-    }) %>%
-        setNames(remoteFileName)
+    })
+    names(list) <- remoteFileName
+    invisible(list)
 }
