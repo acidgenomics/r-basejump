@@ -17,11 +17,11 @@
 #'
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
+#' @param localDir Directory where to save file locally.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
 #'   (`TRUE`/`FALSE`)
-#' @param localDir Directory where to save file locally.
 #'
 #' @return Invisibly return a list of the files downloaded.
 #' @export
@@ -34,10 +34,10 @@
 #'     compress = TRUE)
 transmit <- function(
     remoteDir,
+    localDir = getwd(),
     pattern,
     rename = NULL,
     compress = FALSE,
-    localDir = getwd(),
     quiet = FALSE) {
     if (!grepl("ftp\\://", remoteDir)) {
         abort("FTP protocol not detected")
