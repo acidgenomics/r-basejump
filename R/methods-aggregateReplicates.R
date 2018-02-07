@@ -63,8 +63,8 @@ NULL
     if (!is.factor(groupings)) {
         abort("`groupings` must be a factor")
     }
-    if (!identical(names(groupings), rownames(object))) {
-        abort("`groupings` must match object rownames")
+    if (!identical(names(groupings), colnames(object))) {
+        abort("`groupings` must match object colnames")
     }
 }
 
