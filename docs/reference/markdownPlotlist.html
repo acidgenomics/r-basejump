@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Geometric Mean — geomean • basejump</title>
+<title>Markdown Plotlist — markdownPlotlist • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,27 +83,19 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Geometric Mean</h1>
+    <h1>Markdown Plotlist</h1>
     </div>
 
     
-    <p>The geometric mean is the nth root of n products or e to the mean log of <code>x</code>.
-Useful for describing non-normal (i.e. geometric) distributions.</p>
+    <p>Markdown Plotlist</p>
     
 
-    <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>markdownPlotlist</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>)
+<span class='fu'>mdPlotlist</span>(<span class='no'>...</span>)
 
-<span class='co'># S4 method for integer</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for numeric</span>
-<span class='fu'>geomean</span>(<span class='no'>object</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='co'># S4 method for list</span>
+<span class='fu'>markdownPlotlist</span>(<span class='no'>object</span>, <span class='kw'>headerLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -117,66 +109,39 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
-      <th>removeNA</th>
-      <td><p>Remove <code>NA</code> values from calculations.</p></td>
-    </tr>
-    <tr>
-      <th>zeroPropagate</th>
-      <td><p>Allow propagation of zeroes.</p></td>
+      <th>headerLevel</th>
+      <td><p>Header level.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Numeric containing geometric means.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code> and/or Paul McMurdie's
-code.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>This function should be fully zero- and <code>NA</code>-tolerant. This calculation
-is not particularly useful if there are elements that are &lt;= 0 and will
-return <code>NaN</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='https://stackoverflow.com/a/25555105'>Paul McMurdie's post</a> on
-Stack Overflow</p>
-<p>Other Math Utilities: <code><a href='logRatio.html'>foldChangeToLogRatio</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/cowplot/topics/plot_grid'>cowplot::plot_grid()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># integer</span>
-<span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
-<span class='fu'>geomean</span>(<span class='no'>vec</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'><span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec</span> ^ <span class='fl'>2L</span>
-<span class='fu'>geomean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
-<span class='co'># data.frame</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='no'>vec</span>, <span class='no'>vec2</span>)
-<span class='fu'>geomean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;      vec     vec2 
-#&gt; 2.605171 6.786916 </div><div class='input'>
-<span class='co'># matrix</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>df</span>)
-<span class='fu'>geomean</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;      vec     vec2 
-#&gt; 2.605171 6.786916 </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)
+<span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## continuous
+#&gt; </div><div class='img'><img src='markdownPlotlist-1.png' alt='' width='700' height='432.632880098887' /></div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## discrete
+#&gt; </div><div class='img'><img src='markdownPlotlist-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#note">Note</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

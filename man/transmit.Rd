@@ -35,6 +35,9 @@ transmit(
     pattern = "README",
     rename = "ensembl_readme.txt",
     compress = TRUE)
+
+# Clean up
+unlink("ensembl_readme.txt.gz")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},

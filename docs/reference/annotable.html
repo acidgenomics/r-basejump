@@ -97,6 +97,9 @@
   <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
+<span class='fu'>annotable</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for `NULL`</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -181,7 +184,9 @@ smaller number of semantically-meaningful groups:</p><ul>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
 </ul>
-    <p>Other Gene Annotation Utilities: <code>detectOrganism</code>,
+    <p>Other Gene Annotation Utilities: <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
+  <code>detectOrganism</code>,
   <code>gene2symbolFromGFF</code>,
   <code>gene2symbol</code>, <code>symbol2gene</code>,
   <code>tx2geneFromGFF</code>, <code>tx2gene</code></p>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert Ensembl Identifier to Gene Symbol — gene2symbol • basejump</title>
+<title>Ensembl Gene to Symbol Mappings — gene2symbol • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,32 +83,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert Ensembl Identifier to Gene Symbol</h1>
+    <h1>Ensembl Gene to Symbol Mappings</h1>
     </div>
 
     
-    <p>Convert Ensembl Identifier to Gene Symbol</p>
+    <p>Ensembl Gene to Symbol Mappings</p>
     
 
     <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>organism</span>, <span class='no'>release</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,17 +108,18 @@
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
-      <th>organism</th>
-      <td><p><em>Optional</em>. Organism name. Normally this argument is
-unnecessary and can be left unset. If a count matrix starts with a
-FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-first gene identifier will fail. In this case, the desired organism must be
-manually declared.</p></td>
+      <th>genomeBuild</th>
+      <td><p><em>Optional</em>. Check to see if a specific genome build is
+supported.</p></td>
     </tr>
     <tr>
       <th>release</th>
       <td><p><em>Optional</em>. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.</p></td>
+    </tr>
+    <tr>
+      <th>uniqueSymbol</th>
+      <td><p>Make gene symbols unique.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -142,12 +129,13 @@ current release available on AnnotationHub.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Same class as original object.</p>
+    <p>data.frame.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>detectOrganism()</code>.</p>
-<p>Other Gene Annotation Utilities: <code>annotable</code>,
+    <p>Other Gene Annotation Utilities: <code>annotable</code>,
+  <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
   <code>detectOrganism</code>,
   <code>gene2symbolFromGFF</code>,
   <code>symbol2gene</code>, <code>tx2geneFromGFF</code>,
@@ -155,28 +143,11 @@ current release available on AnnotationHub.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># character</span>
-<span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>)
-<span class='fu'>gene2symbol</span>(<span class='no'>vec</span>)</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
-#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57770: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
-#&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
-<span class='co'># matrix</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>4L</span>),
-    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(
-        <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>,
-          <span class='st'>"ENSMUSG00000000003"</span>),
-        <span class='fu'>c</span>(<span class='st'>"sample1"</span>,
-          <span class='st'>"sample2"</span>)
-    )
-)
-<span class='fu'>gene2symbol</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
-#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57770: Mus musculus Ensembl 90</span></div><div class='output co'>#&gt;       sample1 sample2
-#&gt; Gnai3       1       2
-#&gt; Pbsn        3       4</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>gene2symbol</span>(<span class='st'>"Homo sapiens"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
+#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57757: Homo sapiens Ensembl 90</span></div><div class='output co'>#&gt; Observations: 64,661
+#&gt; Variables: 2
+#&gt; $ ensgene &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "E...
+#&gt; $ symbol  &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "CFH"...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
