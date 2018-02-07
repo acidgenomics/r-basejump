@@ -35,18 +35,29 @@ NULL
 
 
 # Constructors =================================================================
-.aggregateFeaturesDenseMatrix <- function(object, groupings) {
-    .checkGroupings(object, groupings = groupings)
+#' @importFrom Matrix.utils aggregate.Matrix
+.aggregateFeatures.dgCMatrix <- function(object, groupings) {  # nolint
+    .checkFeatureGroupings(object, groupings)
+    rownames(object) <- groupings
+    aggregate.Matrix(object, groupings = groupings, fun = "sum")
+}
+
+
+
+.aggregateFeatures.matrix <- function(object, groupings) {  # nolint
+    .checkFeatureGroupings(object, groupings)
     rowsum(object, group = groupings, reorder = FALSE)
 }
 
 
 
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateFeaturesSparseMatrix <- function(object, groupings) {
-    .checkGroupings(object, groupings = groupings)
-    rownames(object) <- groupings
-    aggregate.Matrix(object, groupings = groupings, fun = "sum")
+.checkFeatureGroupings <- function(object, groupings) {
+    if (!is.factor(groupings)) {
+        abort("`groupings` must be a factor")
+    }
+    if (!identical(names(groupings), rownames(object))) {
+        abort("`groupings` must match object rownames")
+    }
 }
 
 
@@ -57,7 +68,7 @@ NULL
 setMethod(
     "aggregateFeatures",
     signature("dgCMatrix"),
-    .aggregateFeaturesSparseMatrix)
+    .aggregateFeatures.dgCMatrix)
 
 
 
@@ -66,4 +77,4 @@ setMethod(
 setMethod(
     "aggregateFeatures",
     signature("matrix"),
-    .aggregateFeaturesDenseMatrix)
+    .aggregateFeatures.matrix)

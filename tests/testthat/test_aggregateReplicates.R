@@ -38,6 +38,6 @@ test_that("Check groupings failure", {
     )
     expect_error(
         aggregateReplicates(mat, groupings = factor(c("XXX", "YYY"))),
-        "`groupings` must match object rownames"
+        "`groupings` must match object colnames"
     )
 })

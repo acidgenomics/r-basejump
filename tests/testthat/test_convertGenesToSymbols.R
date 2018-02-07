@@ -25,10 +25,7 @@ test_that("matrix", {
             c("sample1", "sample2")
         )
     )
-    g2s <- convertGenesToSymbols(
-        mat,
-        release = 88L,
-        quiet = TRUE)
+    g2s <- convertGenesToSymbols(mat, release = 88L, quiet = TRUE)
     expect_identical(
         rownames(g2s),
         c(ENSMUSG00000000001 = "Gnai3",
