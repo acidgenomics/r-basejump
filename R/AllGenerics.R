@@ -53,6 +53,22 @@ setGeneric("collapseToString", function(object, ...) {
 
 
 
+#' @rdname convertGenesToSymbols
+#' @export
+setGeneric("convertGenesToSymbols", function(object, ...) {
+    standardGeneric("convertGenesToSymbols")
+})
+
+
+
+#' @rdname convertTranscriptsToGenes
+#' @export
+setGeneric("convertTranscriptsToGenes", function(object, ...) {
+    standardGeneric("convertTranscriptsToGenes")
+})
+
+
+
 #' @rdname detectOrganism
 #' @export
 setGeneric("detectOrganism", function(object, ...) {

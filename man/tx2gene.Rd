@@ -5,31 +5,20 @@
 \alias{tx2gene}
 \alias{tx2gene}
 \alias{tx2gene,character-method}
-\alias{tx2gene,data.frame-method}
-\alias{tx2gene,DataFrame-method}
-\alias{tx2gene,dgCMatrix-method}
-\alias{tx2gene,dgTMatrix-method}
-\alias{tx2gene,matrix-method}
-\title{Convert Ensembl Transcript to Gene}
+\title{Transcript to Gene Mappings}
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object, release = NULL, quiet = FALSE)
-
-\S4method{tx2gene}{data.frame}(object, release = NULL, quiet = FALSE)
-
-\S4method{tx2gene}{DataFrame}(object, release = NULL, quiet = FALSE)
-
-\S4method{tx2gene}{dgCMatrix}(object, release = NULL, quiet = FALSE)
-
-\S4method{tx2gene}{dgTMatrix}(object, release = NULL, quiet = FALSE)
-
-\S4method{tx2gene}{matrix}(object, release = NULL, quiet = FALSE)
+\S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL,
+  quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+supported.}
 
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
@@ -37,33 +26,18 @@ current release available on AnnotationHub.}
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Same class as object.
+\link{data.frame}.
 }
 \description{
-Convert Ensembl Transcript to Gene
+Transcript to Gene Mappings
 }
 \examples{
-# character
-c("ENSMUST00000000001",
-  "ENSMUST00000000003",
-  "ENSMUST00000114041") \%>\%
-  tx2gene()
-
-# matrix
-matrix(
-    data = seq(1L:6L),
-    byrow = TRUE,
-    nrow = 3L,
-    ncol = 2L,
-    dimnames = list(c("ENSMUST00000000001",
-                      "ENSMUST00000000003",
-                      "ENSMUST00000114041"),
-                    c("sample1",
-                      "sample2"))) \%>\%
-    tx2gene()
+tx2gene("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
