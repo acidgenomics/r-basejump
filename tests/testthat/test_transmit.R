@@ -8,7 +8,8 @@ test_that("transmit", {
             pattern = "README",
             compress = FALSE,
             quiet = TRUE) %>%
-            .[["README"]],
+            .[["README"]] %>%
+            .[[1L]],
         file.path(getwd(), "README")
     )
     unlink("README")
@@ -19,7 +20,8 @@ test_that("transmit", {
             rename = "ensembl_readme.txt",
             compress = TRUE,
             quiet = TRUE) %>%
-            .[["README"]],
+            .[["README"]] %>%
+            .[[1L]],
         file.path(getwd(), "ensembl_readme.txt.gz")
     )
     unlink("ensembl_readme.txt.gz")
