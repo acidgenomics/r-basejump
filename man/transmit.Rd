@@ -4,12 +4,14 @@
 \alias{transmit}
 \title{Transmit Files from a Remote FTP Server}
 \usage{
-transmit(remoteDir, pattern, rename = NULL, compress = FALSE,
-  localDir = "data-raw", quiet = FALSE)
+transmit(remoteDir, localDir = getwd(), pattern, rename = NULL,
+  compress = FALSE, quiet = FALSE)
 }
 \arguments{
 \item{remoteDir}{Remote directory URL. Currently supports FTP. Works either
 with or without the trailing slash.}
+
+\item{localDir}{Directory where to save file locally.}
 
 \item{pattern}{Pattern to match against remote file names.}
 
@@ -18,12 +20,10 @@ with or without the trailing slash.}
 \item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
 
-\item{localDir}{Directory where to save file locally.}
-
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-List of local files.
+Invisibly return a list of the files downloaded.
 }
 \description{
 Utility function that supports easy file matching and download from a remote
