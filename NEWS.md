@@ -1,3 +1,11 @@
+## basejump 0.2.1 (2018-02-07)
+
+- Added `convertGenesToSymbols()` and `convertTranscriptsToGenes()` functions. Previously some of this functionality was contained within the `gene2symbol()` and `tx2gene()` generics for the character method. This behavior was inconsistent with `gene2symbol()` and `tx2gene()` usage in the bcbio R packages, so I decided to split these out into separate functions. Now `gene2symbol()` and `tx2gene()` work consistently with the `annotable()` function to return gene-to-symbol and transcript-to-gene identifier mappings in a `data.frame`.
+- `markdownHeader()`, `markdownList()`, and `markdownPlotlist()` are now exported as S4 generics. The `md*()` function variants are now exported as aliases.
+- `geomean()` has been renamed to `geometricMean()`.
+- Miscellaneous improvements to error messages and warnings.
+
+
 ## basejump 0.2.0 (2018-01-28)
 
 - Offloaded internal bcbio-specific code to new package named [bcbioBase][]. Consequently, this makes the basejump package leaner, meaner, and easier to manage. The following functions are now exported in that package: `bcbio()`, `checkInterestingGroups()`, `flatFiles()`, `interestingGroups()`, `metrics()`, `plotDot()`, `plotGene()`, `plotQC()`, `plotViolin()`, `prepareSummarizedExperiment()`, `prepareTemplate()`, `readDataVersions()`, `readLogFile()`, `readProgramVersions()`, `readSampleMetadataFile()`, `sampleMetadata()`, `sampleYAML()`, `sampleYAMLMetadata()`, `sampleYAMLMetrics()`, and `selectSamples()`. These functions are now deprecated here in basejump (see `deprecated.R` file for more information).

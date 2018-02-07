@@ -32,6 +32,9 @@
 #'     pattern = "README",
 #'     rename = "ensembl_readme.txt",
 #'     compress = TRUE)
+#'
+#' # Clean up
+#' unlink("ensembl_readme.txt.gz")
 transmit <- function(
     remoteDir,
     localDir = getwd(),

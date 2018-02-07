@@ -12,7 +12,7 @@ Authors@R: c(
         role = "ctb")
     )
 Description: Helper functions for bioinformatics, package development, and
-    RMarkdown reports.
+    R Markdown reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL:
