@@ -34,7 +34,7 @@ Imports:
     ensembldb (>= 2.0.4),
     ggplot2 (>= 2.2.1),
     grDevices,
-    knitr (>= 1.17),
+    knitr (>= 1.16),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9.6),
