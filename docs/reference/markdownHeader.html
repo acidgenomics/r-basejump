@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Markdown Plotlist — mdPlotlist • basejump</title>
+<title>Markdown Header — markdownHeader • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,17 +83,20 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Markdown Plotlist</h1>
+    <h1>Markdown Header</h1>
     </div>
 
     
-    <p>Markdown Plotlist</p>
+    <p>Markdown Header</p>
     
 
-    <pre class="usage"><span class='fu'>mdPlotlist</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>markdownHeader</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for list</span>
-<span class='fu'>mdPlotlist</span>(<span class='no'>object</span>, <span class='no'>headerLevel</span>)</pre>
+<span class='fu'>mdHeader</span>(<span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>markdownHeader</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,22 +110,66 @@
       <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
     </tr>
     <tr>
-      <th>headerLevel</th>
-      <td><p>Header level.</p></td>
+      <th>level</th>
+      <td><p>Header level (1-7).</p></td>
+    </tr>
+    <tr>
+      <th>tabset</th>
+      <td><p>Include tabset marker.</p></td>
+    </tr>
+    <tr>
+      <th>asis</th>
+      <td><p>Set this to <code>TRUE</code> when using the function inside a loop or
+inside an RMarkdown chunk with <code>results="asis"</code> enabled.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Markdown formatted code as <a href='http://www.rdocumentation.org/packages/knitr/topics/asis_output'>knitr::asis_output</a> or
+<code><a href='http://www.rdocumentation.org/packages/base/topics/writeLines'>base::writeLines()</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Report Utilities: <code>kables</code>,
+  <code>markdownList</code></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>)</div><div class='output co'>#&gt; [1] "## Header\n"
+#&gt; attr(,"format")
+#&gt; [1] "markdown"
+#&gt; attr(,"class")
+#&gt; [1] "knit_asis"
+#&gt; attr(,"knit_cacheable")
+#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>4L</span>)</div><div class='output co'>#&gt; [1] "#### Header\n"
+#&gt; attr(,"format")
+#&gt; [1] "markdown"
+#&gt; attr(,"class")
+#&gt; [1] "knit_asis"
+#&gt; attr(,"knit_cacheable")
+#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "## Header {.tabset}\n"
+#&gt; attr(,"format")
+#&gt; [1] "markdown"
+#&gt; attr(,"class")
+#&gt; [1] "knit_asis"
+#&gt; attr(,"knit_cacheable")
+#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
+#&gt; 
+#&gt; ## Header
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
 
-    <h2>Author</h2>
-    
-Michael Steinbaugh
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

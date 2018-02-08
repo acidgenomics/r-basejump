@@ -3,8 +3,8 @@
 #' The geometric mean is the nth root of n products or e to the mean log of `x`.
 #' Useful for describing non-normal (i.e. geometric) distributions.
 #'
-#' @rdname geomean
-#' @name geomean
+#' @rdname geometricMean
+#' @name geometricMean
 #' @family Math Utilities
 #'
 #' @inheritParams AllGenerics
@@ -27,23 +27,23 @@
 #' @examples
 #' # integer
 #' vec <- seq(1L, 5L, 1L)
-#' geomean(vec)
+#' geometricMean(vec)
 #' vec2 <- vec ^ 2L
-#' geomean(vec2)
+#' geometricMean(vec2)
 #'
 #' # data.frame
 #' df <- data.frame(vec, vec2)
-#' geomean(df)
+#' geometricMean(df)
 #'
 #' # matrix
 #' mat <- as.matrix(df)
-#' geomean(mat)
+#' geometricMean(mat)
 NULL
 
 
 
 # Constructors =================================================================
-.geomean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
+.geometricMean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
         return(NaN)
@@ -60,7 +60,7 @@ NULL
 
 
 
-.geomeanDim <- function(object) {
+.geometricMeanDim <- function(object) {
     # Require that all columns are numeric (useful for data.frame)
     numericCol <- vapply(object, is.numeric, FUN.VALUE = logical(1L))
     if (!all(numericCol)) {
@@ -73,42 +73,42 @@ NULL
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
-        apply(2L, .geomean)
+        apply(2L, .geometricMean)
 }
 
 
 
 # Methods ======================================================================
-#' @rdname geomean
+#' @rdname geometricMean
 #' @export
 setMethod(
-    "geomean",
+    "geometricMean",
     signature("data.frame"),
-    .geomeanDim)
+    .geometricMeanDim)
 
 
 
-#' @rdname geomean
+#' @rdname geometricMean
 #' @export
 setMethod(
-    "geomean",
+    "geometricMean",
     signature("integer"),
-    .geomean)
+    .geometricMean)
 
 
 
-#' @rdname geomean
+#' @rdname geometricMean
 #' @export
 setMethod(
-    "geomean",
+    "geometricMean",
     signature("matrix"),
-    .geomeanDim)
+    .geometricMeanDim)
 
 
 
-#' @rdname geomean
+#' @rdname geometricMean
 #' @export
 setMethod(
-    "geomean",
+    "geometricMean",
     signature("numeric"),
-    .geomean)
+    .geometricMean)

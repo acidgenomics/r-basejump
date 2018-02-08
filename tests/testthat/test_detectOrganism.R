@@ -1,85 +1,101 @@
 context("detectOrganism")
 
-test_that("human", {
-    human <- detectOrganism("Homo sapiens")
-    expect_identical(human, c(human = "Homo sapiens"))
-    expect_equal(human, detectOrganism("hsapiens"))
-    expect_equal(human, detectOrganism("human"))
-    expect_equal(human, detectOrganism("GRCh38"))
-    expect_equal(human, detectOrganism("grch38"))
-    expect_equal(human, detectOrganism("hg38"))
-    expect_equal(human, detectOrganism("ENSG00000000001"))
-    expect_equal(human, detectOrganism("ENST00000000001"))
+test_that("Homo sapiens", {
+    x <- c(human = "Homo sapiens")
+    expect_identical(x, detectOrganism("Homo sapiens"))
+    expect_identical(x, detectOrganism("hsapiens"))
+    expect_identical(x, detectOrganism("human"))
+    expect_identical(x, detectOrganism("GRCh38"))
+    expect_identical(x, detectOrganism("grch38"))
+    expect_identical(x, detectOrganism("hg38"))
+    expect_identical(x, detectOrganism("ENSG00000000001"))
+    expect_identical(x, detectOrganism("ENST00000000001"))
 })
 
-test_that("mouse", {
-    mouse <- detectOrganism("mouse")
-    expect_identical(mouse, c(mouse = "Mus musculus"))
-    expect_equal(mouse, detectOrganism("mmusculus"))
-    expect_equal(mouse, detectOrganism("mouse"))
-    expect_equal(mouse, detectOrganism("GRCm38"))
-    expect_equal(mouse, detectOrganism("grcm38"))
-    expect_equal(mouse, detectOrganism("mm10"))
-    expect_equal(mouse, detectOrganism("ENSMUSG00000000001"))
-    expect_equal(mouse, detectOrganism("ENSMUST00000000001"))
+test_that("Mus musculus", {
+    x <- c(mouse = "Mus musculus")
+    expect_identical(x, detectOrganism("Mus musculus"))
+    expect_identical(x, detectOrganism("mmusculus"))
+    expect_identical(x, detectOrganism("mouse"))
+    expect_identical(x, detectOrganism("GRCm38"))
+    expect_identical(x, detectOrganism("grcm38"))
+    expect_identical(x, detectOrganism("mm10"))
+    expect_identical(x, detectOrganism("ENSMUSG00000000001"))
+    expect_identical(x, detectOrganism("ENSMUST00000000001"))
 })
 
-test_that("zebrafish", {
-    zebrafish <- detectOrganism("zebrafish")
-    expect_identical(zebrafish, c(zebrafish = "Danio rerio"))
-    expect_equal(zebrafish, detectOrganism("drerio"))
-    expect_equal(zebrafish, detectOrganism("zebrafish"))
-    expect_equal(zebrafish, detectOrganism("GRCz10"))
-    expect_equal(zebrafish, detectOrganism("danRer10"))
-    expect_equal(zebrafish, detectOrganism("ENSDARG00000000001"))
-    expect_equal(zebrafish, detectOrganism("ENSDART00000000001"))
+test_that("Rattus norvegicus", {
+    x <- c(rat = "Rattus norvegicus")
+    expect_identical(x, detectOrganism("Rattus norvegicus"))
+    expect_identical(x, detectOrganism("rnorvegicus"))
+    expect_identical(x, detectOrganism("rat"))
+    expect_identical(x, detectOrganism("ENSRNOG00000000001"))
+    expect_identical(x, detectOrganism("ENSRNOT00000000001"))
 })
 
-test_that("fruitfly", {
-    fruitfly <- detectOrganism("fruitfly")
-    expect_identical(fruitfly, c(fruitfly = "Drosophila melanogaster"))
-    expect_equal(fruitfly, detectOrganism("dmelanogaster"))
-    expect_equal(fruitfly, detectOrganism("fruitfly"))
-    expect_equal(fruitfly, detectOrganism("BDGP6"))
-    expect_equal(fruitfly, detectOrganism("dm6"))
-    expect_equal(fruitfly, detectOrganism("FBgn0000001"))
-    expect_equal(fruitfly, detectOrganism("FBtr0000001"))
+test_that("Danio rerio", {
+    x <- c(zebrafish = "Danio rerio")
+    expect_identical(x, detectOrganism("Danio rerio"))
+    expect_identical(x, detectOrganism("drerio"))
+    expect_identical(x, detectOrganism("zebrafish"))
+    expect_identical(x, detectOrganism("GRCz10"))
+    expect_identical(x, detectOrganism("danRer10"))
+    expect_identical(x, detectOrganism("ENSDARG00000000001"))
+    expect_identical(x, detectOrganism("ENSDART00000000001"))
+})
+
+test_that("Drosophila melanogaster", {
+    x <- c(fruitfly = "Drosophila melanogaster")
+    expect_identical(x, detectOrganism("Drosophila melanogaster"))
+    expect_identical(x, detectOrganism("dmelanogaster"))
+    expect_identical(x, detectOrganism("fruitfly"))
+    expect_identical(x, detectOrganism("BDGP6"))
+    expect_identical(x, detectOrganism("dm6"))
+    expect_identical(x, detectOrganism("FBgn0000001"))
+    expect_identical(x, detectOrganism("FBtr0000001"))
 
 })
 
-test_that("roundworm", {
-    roundworm <- detectOrganism("roundworm")
-    expect_identical(roundworm, c(roundworm = "Caenorhabditis elegans"))
-    expect_equal(roundworm, detectOrganism("celegans"))
-    expect_equal(roundworm, detectOrganism("roundworm"))
-    expect_equal(roundworm, detectOrganism("WBcel235"))
-    expect_equal(roundworm, detectOrganism("ce11"))
-    expect_equal(roundworm, detectOrganism("WBGene00000001"))
+test_that("Caenorhabditis elegans", {
+    x <- c(roundworm = "Caenorhabditis elegans")
+    expect_identical(x, detectOrganism("Caenorhabditis elegans"))
+    expect_identical(x, detectOrganism("celegans"))
+    expect_identical(x, detectOrganism("roundworm"))
+    expect_identical(x, detectOrganism("WBcel235"))
+    expect_identical(x, detectOrganism("ce11"))
+    expect_identical(x, detectOrganism("WBGene00000001"))
 })
 
-test_that("chicken", {
-    chicken <- detectOrganism("chicken")
-    expect_identical(chicken, c(chicken = "Gallus gallus"))
-    expect_equal(chicken, detectOrganism("ggallus"))
-    expect_equal(chicken, detectOrganism("chicken"))
-    expect_equal(chicken, detectOrganism("ENSGALG00000000001"))
-    expect_equal(chicken, detectOrganism("ENSGALT00000000001"))
+test_that("Gallus gallus", {
+    x <- c(chicken = "Gallus gallus")
+    expect_identical(x, detectOrganism("Gallus gallus"))
+    expect_identical(x, detectOrganism("ggallus"))
+    expect_identical(x, detectOrganism("chicken"))
+    expect_identical(x, detectOrganism("ENSGALG00000000001"))
+    expect_identical(x, detectOrganism("ENSGALT00000000001"))
 })
 
-test_that("rat", {
-    rat <- detectOrganism("rat")
-    expect_identical(rat, c(rat = "Rattus norvegicus"))
-    expect_equal(rat, detectOrganism("rnorvegicus"))
-    expect_equal(rat, detectOrganism("rat"))
-    expect_equal(rat, detectOrganism("ENSRNOG00000000001"))
-    expect_equal(rat, detectOrganism("ENSRNOT00000000001"))
+test_that("Ovis aries", {
+    x <- c(sheep = "Ovis aries")
+    expect_identical(x, detectOrganism("Ovis aries"))
+    expect_identical(x, detectOrganism("oaries"))
+    expect_identical(x, detectOrganism("sheep"))
+    expect_identical(x, detectOrganism("ENSOARG00000000001"))
+    expect_identical(x, detectOrganism("ENSOART00000000001"))
 })
 
-test_that("unsupported", {
+test_that("Unsupported organism", {
     x <- suppressWarnings(detectOrganism("XXX"))
-    expect_equal(x, NULL)
+    expect_identical(x, NULL)
     expect_warning(
         detectOrganism("XXX"),
         "Failed to detect supported organism"
+    )
+})
+
+test_that("NULL input", {
+    expect_identical(
+        detectOrganism(NULL),
+        NULL
     )
 })

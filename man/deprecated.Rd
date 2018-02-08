@@ -33,9 +33,9 @@ fc2lr(...)
 
 lr2fc(...)
 
-comp(...)
+comp()
 
-revcomp(...)
+revcomp()
 }
 \arguments{
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}

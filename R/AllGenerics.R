@@ -53,6 +53,22 @@ setGeneric("collapseToString", function(object, ...) {
 
 
 
+#' @rdname convertGenesToSymbols
+#' @export
+setGeneric("convertGenesToSymbols", function(object, ...) {
+    standardGeneric("convertGenesToSymbols")
+})
+
+
+
+#' @rdname convertTranscriptsToGenes
+#' @export
+setGeneric("convertTranscriptsToGenes", function(object, ...) {
+    standardGeneric("convertTranscriptsToGenes")
+})
+
+
+
 #' @rdname detectOrganism
 #' @export
 setGeneric("detectOrganism", function(object, ...) {
@@ -120,9 +136,9 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 
 
 
-#' @rdname geomean
-setGeneric("geomean", function(object, ...) {
-    standardGeneric("geomean")
+#' @rdname geometricMean
+setGeneric("geometricMean", function(object, ...) {
+    standardGeneric("geometricMean")
 })
 
 
@@ -150,26 +166,26 @@ setGeneric("logRatioToFoldChange", function(object, ...) {
 
 
 
-#' @rdname mdHeader
+#' @rdname markdownHeader
 #' @export
-setGeneric("mdHeader", function(object, ...) {
-    standardGeneric("mdHeader")
+setGeneric("markdownHeader", function(object, ...) {
+    standardGeneric("markdownHeader")
 })
 
 
 
-#' @rdname mdList
+#' @rdname markdownList
 #' @export
-setGeneric("mdList", function(object, ...) {
-    standardGeneric("mdList")
+setGeneric("markdownList", function(object, ...) {
+    standardGeneric("markdownList")
 })
 
 
 
-#' @rdname mdPlotlist
+#' @rdname markdownPlotlist
 #' @export
-setGeneric("mdPlotlist", function(object, ...) {
-    standardGeneric("mdPlotlist")
+setGeneric("markdownPlotlist", function(object, ...) {
+    standardGeneric("markdownPlotlist")
 })
 
 
