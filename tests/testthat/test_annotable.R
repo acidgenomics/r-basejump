@@ -160,3 +160,48 @@ test_that("Legacy release parameter support", {
         annotable("Homo sapiens", quiet = TRUE)
     )
 })
+
+test_that("NULL input", {
+    expect_identical(annotable(NULL), NULL)
+})
+
+test_that("Unique symbols", {
+    anno <- annotable(
+        "Homo sapiens",
+        uniqueSymbol = TRUE,
+        quiet = TRUE)
+    g2s <- annotable(
+        "Homo sapiens",
+        format = "gene2symbol",
+        uniqueSymbol = TRUE,
+        quiet = TRUE)
+    # Check for `.1` in `symbol` column
+    expect_true(any(grepl("\\.1$", anno[["symbol"]])))
+    expect_true(any(grepl("\\.1$", g2s[["symbol"]])))
+    # Ensure that symbols aren't duplicated
+    expect_true(!any(duplicated(anno[["symbol"]])))
+    expect_true(!any(duplicated(g2s[["symbol"]])))
+})
+
+test_that("Collapse annotables tibble", {
+    loadRemoteData(
+        file.path(
+            "https://github.com",
+            "stephenturner",
+            "annotables",
+            "raw",
+            "master",
+            "data",
+            "grch38.rda"),
+        quiet = TRUE)
+    expect_true(any(duplicated(grch38[["ensgene"]])))
+    annotable <- annotable(grch38)
+    expect_true(!any(duplicated(annotable[["ensgene"]])))
+})
+
+test_that("Internal broadClass integrity", {
+    expect_error(
+        .defineBroadClass(mtcars),
+        "Missing columns: biotype, symbol"
+    )
+})

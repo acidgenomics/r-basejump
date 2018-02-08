@@ -88,6 +88,18 @@
     </div>
 
     <div class="contents">
+    <div id="basejump-0-2-1-2018-02-07" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basejump-0-2-1-2018-02-07" class="anchor"></a>basejump 0.2.1 (2018-02-07)</h2>
+<ul>
+<li>Added <code>convertGenesToSymbols()</code> and <code>convertTranscriptsToGenes()</code> functions. Previously some of this functionality was contained within the <code>gene2symbol()</code> and <code>tx2gene()</code> generics for the character method. This behavior was inconsistent with <code>gene2symbol()</code> and <code>tx2gene()</code> usage in the bcbio R packages, so I decided to split these out into separate functions. Now <code>gene2symbol()</code> and <code>tx2gene()</code> work consistently with the <code>annotable()</code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
+<li>
+<code>markdownHeader()</code>, <code>markdownList()</code>, and <code>markdownPlotlist()</code> are now exported as S4 generics. The <code>md*()</code> function variants are now exported as aliases.</li>
+<li>
+<code><a href="../reference/geometricMean.html">geomean()</a></code> has been renamed to <code>geometricMean()</code>.</li>
+<li>Miscellaneous improvements to error messages and warnings.</li>
+</ul>
+</div>
     <div id="basejump-0-2-0-2018-01-28" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-2-0-2018-01-28" class="anchor"></a>basejump 0.2.0 (2018-01-28)</h2>
@@ -103,7 +115,7 @@
 <code>annotable()</code> now uses internal GRCh37 annotations from the <a href="https://github.com/stephenturner/annotables">annotables</a> package, which is saved in the <code>extdata/</code> directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the <code>data/</code> directory of the package repository.</li>
 <li>
 <code>annotables()</code> now checks for all packages attached by <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> and <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and forces detachment at the end of the function call. Otherwise, this can result in the unwanted effect of <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> masking other user-loaded functions, such as the <a href="http://www.tidyverse.org">tidyverse</a> suite (e.g. <code><a href="http://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code>).</li>
-<li>Consistently reformatted code indents to be a multple of 4 spaces, as recommended by [Bioconductor][].</li>
+<li>Consistently reformatted code indents to be a multple of 4 spaces, as recommended by <a href="https://bioconductor.org">Bioconductor</a>.</li>
 <li>
 <code>camel()</code> now handles delimited numbers a little differently. Previously, delimiters in between numbers (e.g. the commas in “1,000,000”) were stripped. Sometimes this can result in confusing names. For example, if we have a column formatted in dotted case containing a decimal (e.g. “resolution.1.6”), the decimal would be stripped (e.g. “resolution16” in camel). Now, we sanitize a numeric delimiter as a lower case “x” character (e.g. “resolution1x6”). This ensures that numbers containing decimals remain semantically meaningful when sanitized with <code>camel()</code>.</li>
 <li>Internally, <code>gsub()</code> (and <code>grepl()</code>) calls have been simplified to use the default order of “pattern, replacement, x”.</li>
@@ -115,7 +127,7 @@
 <a href="#basejump-0-1-10-2017-12-20" class="anchor"></a>basejump 0.1.10 (2017-12-20)</h2>
 <ul>
 <li>Bug fix for multiplexed sample input into <code>readSampleMetadataFile()</code>. We were detecting the presence of <code>index</code> column but should instead check against <code>sequence</code> column.</li>
-<li>Added <code>dynamicPlotlist()</code> and <code>mdPlotlist()</code> plotting utilities.</li>
+<li>Added <code>dynamicPlotlist()</code> and <code><a href="../reference/markdownPlotlist.html">mdPlotlist()</a></code> plotting utilities.</li>
 <li>Added <code>uniqueSymbols</code> parameter to <code>annotable()</code> function.</li>
 </ul>
 </div>
@@ -262,7 +274,7 @@
 <li>Improved sanitization rules for <code>camel()</code>, <code>dotted()</code>, and <code>snake()</code> name functions. Added the <code>strict</code> argument to <code>camel()</code> and <code>dotted()</code>.</li>
 <li>Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.</li>
 <li>Improved S4 method support for the logRatio functions.</li>
-<li>Added integer support for <code>geomean()</code> function. Also improved internal code of <code>geomean()</code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
+<li>Added integer support for <code><a href="../reference/geometricMean.html">geomean()</a></code> function. Also improved internal code of <code><a href="../reference/geometricMean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
 <li>Added release support for <code>tx2gene</code> functions.</li>
 <li>Reduced the number of reexported functions (for documentation) down to the magrittr pipe (<code>%&gt;%</code>), <code><a href="http://www.rdocumentation.org/packages/Matrix/topics/Matrix">Matrix()</a></code>, <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class">DataFrame()</a></code>, and <code><a href="http://www.rdocumentation.org/packages/tibble/topics/tibble">tibble()</a></code>.</li>
 <li>Added silent return of file path to <code><a href="../reference/saveData.html">saveData()</a></code> function.</li>
@@ -467,6 +479,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-2-1-2018-02-07">0.2.1</a></li>
         <li><a href="#basejump-0-2-0-2018-01-28">0.2.0</a></li>
         <li><a href="#basejump-0-1-10-2017-12-20">0.1.10</a></li>
         <li><a href="#basejump-0-1-9-2017-12-18">0.1.9</a></li>

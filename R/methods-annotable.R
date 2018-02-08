@@ -274,7 +274,8 @@ NULL
     requiredCols <- c("biotype", "symbol")
     if (!all(requiredCols %in% colnames(object))) {
         abort(paste(
-            "Required columns:", toString(object)
+            "Missing columns:",
+            toString(setdiff(requiredCols, colnames(object)))
         ))
     }
     mutate(
@@ -376,7 +377,7 @@ NULL
             distinct() %>%
             left_join(entrez, by = "ensgene")
     }
-    # Collapse rows by Ensembl ID, if necessary
+    # Collapse any remaining duplicated rows by Ensembl ID, if necessary
     if (any(duplicated(object[["ensgene"]]))) {
         object <- object %>%
             group_by(!!!syms(requiredCols)) %>%

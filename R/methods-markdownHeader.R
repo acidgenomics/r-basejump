@@ -1,7 +1,7 @@
 #' Markdown Header
 #'
-#' @rdname mdHeader
-#' @name mdHeader
+#' @rdname markdownHeader
+#' @name markdownHeader
 #' @family Report Utilities
 #'
 #' @inheritParams AllGenerics
@@ -15,10 +15,10 @@
 #'   [base::writeLines()].
 #'
 #' @examples
-#' mdHeader("Header")
-#' mdHeader("Header", level = 4L)
-#' mdHeader("Header", tabset = TRUE)
-#' mdHeader("Header", asis = TRUE)
+#' markdownHeader("Header")
+#' markdownHeader("Header", level = 4L)
+#' markdownHeader("Header", tabset = TRUE)
+#' markdownHeader("Header", asis = TRUE)
 NULL
 
 
@@ -26,7 +26,7 @@ NULL
 # Constructors =================================================================
 #' @importFrom knitr asis_output
 #' @importFrom stringr str_dup
-.mdHeader <- function(
+.markdownHeader <- function(
     object,
     level = 2L,
     tabset = FALSE,
@@ -55,9 +55,9 @@ NULL
 
 
 # Methods ======================================================================
-#' @rdname mdHeader
+#' @rdname markdownHeader
 #' @export
 setMethod(
-    "mdHeader",
+    "markdownHeader",
     signature("character"),
-    .mdHeader)
+    .markdownHeader)

@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -12,7 +12,7 @@ Authors@R: c(
         role = "ctb")
     )
 Description: Helper functions for bioinformatics, package development, and
-    RMarkdown reports.
+    R Markdown reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL:

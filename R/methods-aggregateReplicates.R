@@ -36,13 +36,20 @@ NULL
 
 
 # Constructors =================================================================
-.aggregateReplicatesDenseMatrix <- function(object, groupings) {
-    if (!is.factor(groupings)) {
-        abort("`groupings` must be factor")
-    }
-    if (!identical(names(groupings), colnames(object))) {
-        abort("`groupings` doesn't match colnames")
-    }
+#' @importFrom Matrix.utils aggregate.Matrix
+.aggregateReplicates.dgCMatrix <- function(object, groupings) {
+    .checkReplicateGroupings(object, groupings)
+    t <- Matrix::t(object)
+    rownames(t) <- groupings
+    tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
+    agg <- Matrix::t(tagg)
+    agg
+}
+
+
+
+.aggregateReplicates.matrix <- function(object, groupings) {
+    .checkReplicateGroupings(object, groupings)
     t <- t(object)
     rownames(t) <- groupings
     tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
@@ -52,19 +59,13 @@ NULL
 
 
 
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateReplicatesSparseMatrix <- function(object, groupings) {
+.checkReplicateGroupings <- function(object, groupings) {
     if (!is.factor(groupings)) {
-        abort("`groupings` must be factor")
+        abort("`groupings` must be a factor")
     }
     if (!identical(names(groupings), colnames(object))) {
-        abort("`groupings` doesn't match colnames")
+        abort("`groupings` must match object colnames")
     }
-    t <- Matrix::t(object)
-    rownames(t) <- groupings
-    tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
-    agg <- Matrix::t(tagg)
-    agg
 }
 
 
@@ -75,7 +76,7 @@ NULL
 setMethod(
     "aggregateReplicates",
     signature("dgCMatrix"),
-    .aggregateReplicatesSparseMatrix)
+    .aggregateReplicates.dgCMatrix)
 
 
 
@@ -84,4 +85,4 @@ setMethod(
 setMethod(
     "aggregateReplicates",
     signature("matrix"),
-    .aggregateReplicatesDenseMatrix)
+    .aggregateReplicates.matrix)

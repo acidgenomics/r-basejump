@@ -34,6 +34,6 @@ list(head(starwars), head(mtcars)) \%>\% kables()
 \seealso{
 \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow}.
 
-Other Report Utilities: \code{\link{mdHeader}},
-  \code{\link{mdList}}
+Other Report Utilities: \code{\link{markdownHeader}},
+  \code{\link{markdownList}}
 }

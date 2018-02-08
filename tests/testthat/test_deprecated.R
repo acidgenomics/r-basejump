@@ -1,22 +1,36 @@
 context("deprecated")
 
-test_that("v0.0.24", {
-    expect_warning(
-        metadataTable(),
-        "Use 'bcbioBase::sampleMetadata' instead."
+test_that("Hard deprecations", {
+    hard <- c(
+        "comp",
+        "metadataTable",
+        "packageSE",
+        "prepareSE",
+        "revcomp",
+        "sampleDirs",
+        "summarizeRows",
+        "wash"
     )
+    invisible(lapply(
+        X = hard,
+        FUN = function(name) {
+            fun <- get(name)
+            expect_warning(fun(), "'fun' is deprecated.")
+        }
+    ))
 })
 
-test_that("v0.0.25", {
-    expect_warning(
-        pct(0.5),
-        "Use 'scales::percent' instead."
+test_that("Soft deprecations", {
+    soft <- c(
+        "fc2lr",
+        "lr2fc",
+        "pct"
     )
-})
-
-test_that("v0.1.0", {
-    expect_warning(
-        sampleDirs(),
-        "'sampleDirs' is deprecated."
-    )
+    invisible(lapply(
+        X = soft,
+        FUN = function(name) {
+            fun <- get(name)
+            expect_error(suppressWarnings(fun()))
+        }
+    ))
 })

@@ -8,6 +8,10 @@
 #' @seealso [base::toString()].
 #'
 #' @return string.
+#'
+#' @examples
+#' vec <- c("hello", "world", NA, "hello", "world", NA)
+#' toStringUnique(vec)
 NULL
 
 

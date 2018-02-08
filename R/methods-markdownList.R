@@ -1,26 +1,26 @@
 #' Markdown List
 #'
-#' @rdname mdList
-#' @name mdList
+#' @rdname markdownList
+#' @name markdownList
 #' @family Report Utilities
 #'
-#' @inherit mdHeader
+#' @inherit markdownHeader
 #'
 #' @param ordered Ordered (`TRUE`; `1.`) or unordered (`FALSE`; `-`) list in
 #'   Markdown format.
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")
-#' mdList(groceries)
-#' mdList(groceries, ordered = TRUE)
-#' mdList(groceries, asis = TRUE)
+#' markdownList(groceries)
+#' markdownList(groceries, ordered = TRUE)
+#' markdownList(groceries, asis = TRUE)
 NULL
 
 
 
 # Constructors =================================================================
 #' @importFrom knitr asis_output
-.mdList <- function(
+.markdownList <- function(
     object,
     ordered = FALSE,
     asis = FALSE) {
@@ -48,9 +48,9 @@ NULL
 
 
 # Methods ======================================================================
-#' @rdname mdList
+#' @rdname markdownList
 #' @export
 setMethod(
-    "mdList",
+    "markdownList",
     signature("character"),
-    .mdList)
+    .markdownList)
