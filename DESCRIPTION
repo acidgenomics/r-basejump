@@ -9,7 +9,12 @@ Authors@R: c(
     person(
         "Rory", "Kirchner",
         email = "roryk@alum.mit.edu",
-        role = "ctb")
+        role = "ctb"),
+    person(
+        given = "Mary",
+        family = "Piper",
+        email = "mary.piper@gmail.com",
+        role = "aut"),
     )
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
