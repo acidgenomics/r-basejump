@@ -112,8 +112,8 @@ upperCamel(factor)
 # data.frame
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
-camel(dataFrame, rownames = FALSE)
 camel(dataFrame, rownames = TRUE)
+camel(dataFrame, rownames = FALSE)
 
 # Named list
 list <- makeNames$list

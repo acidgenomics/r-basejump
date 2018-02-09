@@ -29,8 +29,8 @@
 #' # data.frame
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
-#' snake(dataFrame, rownames = FALSE)
 #' snake(dataFrame, rownames = TRUE)
+#' snake(dataFrame, rownames = FALSE)
 #'
 #' # Named list
 #' list <- makeNames$list

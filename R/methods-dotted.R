@@ -47,8 +47,8 @@
 #' # data.frame
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
-#' dotted(dataFrame, rownames = FALSE)
 #' dotted(dataFrame, rownames = TRUE)
+#' dotted(dataFrame, rownames = FALSE)
 #'
 #' # Named list
 #' list <- makeNames$list
