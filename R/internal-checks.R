@@ -219,7 +219,7 @@
 
 
 .checkTitle <- function(title) {
-    if (!(is.string(title) || is.null(title))) {
+    if (!(is_string(title) || is.null(title))) {
         abort("`title` must contain a string or NULL")
     }
 }
