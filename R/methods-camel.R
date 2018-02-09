@@ -50,9 +50,7 @@ NULL
     object,
     format = "lower",
     strict = FALSE) {
-    if (!is_string(object)) {
-        abort("`object` must be a string")
-    }
+    .checkCharacter(object)
     validFormats <- c("lower", "upper")
     if (!format %in% validFormats) {
         abort(paste(
