@@ -65,7 +65,7 @@
     }
     if (is_string(compress)) {
         validStrings <- c("bzip2", "gzip", "xz")
-        if (!compress %in% validString) {
+        if (!compress %in% validStrings) {
             abort(paste(
                 "Valid strings for `compress`:",
                 toString(validStrings)
