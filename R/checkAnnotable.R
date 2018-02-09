@@ -10,20 +10,10 @@
 #' annotable <- annotable("Homo sapiens")
 #' checkAnnotable(annotable)
 checkAnnotable <- function(object) {
-    assert_that(is.data.frame(object))
-    # Just check for the minimal set of required columns
-    requiredCols <- c(
-        "ensgene",
-        "symbol",
-        "description",
-        "biotype",
-        "broadClass"
+    assert_is_data.frame(object)
+    assert_is_subset(
+        c("ensgene", "symbol", "description", "biotype", "broadClass"),
+        colnames(object)
     )
-    if (!all(requiredCols %in% colnames(object))) {
-        abort(paste(
-            paste0("`", deparse(substitute(object)), "`"),
-            "must contain:", toString(requiredCols)
-        ))
-    }
     TRUE
 }

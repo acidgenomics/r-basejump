@@ -46,10 +46,11 @@ NULL
 
 
 # Constructors =================================================================
-.camel <- function(
+.camel <- function(  # nolint
     object,
     format = "lower",
     strict = FALSE) {
+    .checkCharacterOrFactor(object)
     validFormats <- c("lower", "upper")
     if (!format %in% validFormats) {
         abort(paste(
@@ -100,9 +101,7 @@ NULL
     rownames = FALSE,
     strict = FALSE) {
     # Passthrough: format, strict
-    if (!is.logical(rownames)) {
-        abort("`rownames` must be logical")
-    }
+    assert_is_a_boolean(rownames) {
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
@@ -153,11 +152,17 @@ NULL
 .lowerCamel.vector <- function(object, strict = FALSE) {  # nolint
     # Passthrough: strict
     if (!is.null(names(object))) {
-        names <- .camel(names(object), format = "lower", strict = strict)
+        names <- .camel(
+            names(object),
+            format = "lower",
+            strict = strict)
     } else {
         names <- NULL
     }
-    object <- .camel(object, format = "lower", strict = strict)
+    object <- .camel(
+        object,
+        format = "lower",
+        strict = strict)
     names(object) <- names
     object
 }

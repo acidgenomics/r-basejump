@@ -29,10 +29,10 @@ assignAndSaveData <- function(
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
-    dir <- .sanitizeDir(dir)
-    .checkCompress(compress)
-    .checkEnvir(envir)
-    .checkQuiet(quiet)
+    dir <- initializeDirectory(dir)
+    assert_is_a_bool(compress)
+    assert_is_environment(envir)
+    assert_is_a_bool(quiet)
     file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
     assign(name, object, envir = envir)
@@ -45,6 +45,5 @@ assignAndSaveData <- function(
         envir = envir,
         compress = compress
     )
-    # Silently return the file path as a named character vector
     invisible(file)
 }
