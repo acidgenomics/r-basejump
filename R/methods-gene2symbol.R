@@ -27,6 +27,7 @@ setMethod(
         release = NULL,
         uniqueSymbol = FALSE,
         quiet = FALSE) {
+        # Passthrough: genomeBuild, release, uniqueSymbol, quiet
         annotable(
             object,
             format = "gene2symbol",

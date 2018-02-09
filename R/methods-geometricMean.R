@@ -44,6 +44,13 @@ NULL
 
 # Constructors =================================================================
 .geometricMean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
+    if (!is.logical(removeNA)) {
+        abort("`removeNA` must be logical")
+    }
+    if (!is.logical(zeroPropagate)) {
+        abort("`zeroPropagate` must be logical")
+    }
+
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
         return(NaN)
@@ -60,7 +67,7 @@ NULL
 
 
 
-.geometricMeanDim <- function(object) {
+.geometricMean.dim <- function(object) {  # nolint
     # Require that all columns are numeric (useful for data.frame)
     numericCol <- vapply(object, is.numeric, FUN.VALUE = logical(1L))
     if (!all(numericCol)) {
@@ -84,7 +91,7 @@ NULL
 setMethod(
     "geometricMean",
     signature("data.frame"),
-    .geometricMeanDim)
+    .geometricMean.dim)
 
 
 
@@ -102,7 +109,7 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("matrix"),
-    .geometricMeanDim)
+    .geometricMean.dim)
 
 
 

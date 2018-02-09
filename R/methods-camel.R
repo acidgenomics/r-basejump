@@ -50,7 +50,20 @@ NULL
     object,
     format = "lower",
     strict = FALSE) {
+    if (!is_string(object)) {
+        abort("`object` must be a string")
+    }
+    validFormats <- c("lower", "upper")
+    if (!format %in% validFormats) {
+        abort(paste(
+            "Valid formats:",
+            toString(validFormats)
+        ))
+    }
+    .checkStrict(strict)
+
     object <- dotted(object)
+
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
@@ -85,6 +98,7 @@ NULL
 
 
 .makeNamesLowerCamel <- function(object, strict = FALSE) {
+    # Passthrough: strict
     .makeNamesCamel(object, format = "lower", strict = strict)
 }
 
@@ -95,6 +109,10 @@ NULL
     format = "lower",
     rownames = FALSE,
     strict = FALSE) {
+    # Passthrough: format, strict
+    if (!is.logical(rownames)) {
+        abort("`rownames` must be logical")
+    }
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
@@ -122,6 +140,7 @@ NULL
 
 
 .setNamesLowerCamel <- function(object, rownames = FALSE, strict = FALSE) {
+    # Passthrough: rownames, strict
     .setNamesCamel(
         object,
         format = "lower",
@@ -132,12 +151,14 @@ NULL
 
 
 .setNamesLowerCamelNoRownames <- function(object, strict = FALSE) {
+    # Passthrough: strict
     .setNamesLowerCamel(object, rownames = FALSE, strict = strict)
 }
 
 
 
 .camelVector <- function(object, strict = FALSE) {
+    # Passthrough: strict
     if (!is.null(names(object))) {
         names <- .makeNamesLowerCamel(names(object), strict = strict)
     } else {

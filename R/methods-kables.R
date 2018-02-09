@@ -34,6 +34,12 @@ setMethod(
         object,
         captions = NULL,
         force = FALSE) {
+        if (!(is.character(captions) || is.null(captions))) {
+            abort("`captions` must be a character vector or NULL")
+        }
+        if (!is.logical(force)) {
+            abort("`force` must be logical")
+        }
         output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
         if (!is.null(output) | isTRUE(force)) {
             tables <- lapply(seq_along(object), function(a) {

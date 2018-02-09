@@ -24,19 +24,26 @@ NULL
     object,
     ordered = FALSE,
     asis = FALSE) {
-    lst <- vapply(seq_along(object), function(a) {
-        if (isTRUE(ordered)) {
-            prefix <- paste0(a, ".")
-        } else {
-            prefix <- "-"
-        }
-        paste(prefix, object[[a]])
-    },
-    character(1L))
+    .checkOrdered(ordered)
+    .checkAsis(asis)
+
+    list <- vapply(
+        X = seq_along(object),
+        FUN = function(a) {
+            if (isTRUE(ordered)) {
+                prefix <- paste0(a, ".")
+            } else {
+                prefix <- "-"
+            }
+            paste(prefix, object[[a]])
+        },
+        FUN.VALUE = character(1L)
+    )
+
     if (isTRUE(asis)) {
-        writeLines(c("", lst, ""))
+        writeLines(c("", list, ""))
     } else {
-        lst %>%
+        list %>%
             # Add a trailing line break
             paste0("\n") %>%
             # Specify that output should be handled as Markdown text

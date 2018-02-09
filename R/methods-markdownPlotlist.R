@@ -19,9 +19,12 @@ NULL
 
 # Constructors =================================================================
 .markdownPlotlist <- function(object, headerLevel = 2L) {
+    # object
     if (is.null(names(object))) {
         warn("Object does not contain names")
     }
+    # headerLevel
+    .checkLevel(headerLevel)
     return <- lapply(seq_along(object), function(a) {
         name <- names(object)[[a]]
         if (is.character(name) && is.numeric(headerLevel)) {

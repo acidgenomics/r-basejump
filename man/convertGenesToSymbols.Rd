@@ -15,7 +15,7 @@
 \usage{
 convertGenesToSymbols(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, organism, release,
+\S4method{convertGenesToSymbols}{character}(object, organism, release = NULL,
   quiet = FALSE)
 
 \S4method{convertGenesToSymbols}{data.frame}(object, organism, release,
