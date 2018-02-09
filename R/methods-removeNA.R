@@ -43,9 +43,9 @@ NULL
 .removeNA.dim <- function(object) {  # nolint
     object %>%
         # Remove all `NA` rows
-        .[apply(., 1L, function(a) !all(is.na(a))), ] %>%
+        .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
         # Remove all `NA` columns
-        .[, apply(., 2L, function(a) !all(is.na(a)))]
+        .[, apply(., 2L, function(a) !all(is.na(a))), drop = FALSE]
 }
 
 
