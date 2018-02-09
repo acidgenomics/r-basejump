@@ -149,7 +149,7 @@ test_that("Bad input", {
     )
     expect_error(
         annotable("Homo sapiens", format = "XXX"),
-        "Unsupported format"
+        "`format` must contain: gene, gene2symbol, tx2gene"
     )
 })
 

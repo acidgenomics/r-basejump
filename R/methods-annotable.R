@@ -91,7 +91,7 @@ NULL
     validFormats <- c("gene", "gene2symbol", "tx2gene")
     if (!format %in% validFormats) {
         abort(paste(
-            "Valid formats:",
+            "`format` must contain:",
             toString(validFormats)
         ))
     }
