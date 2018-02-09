@@ -78,7 +78,7 @@
 
 .checkEnvir <- function(envir) {
     if (!is.environment(envir)) {
-        abort("`envir` must contain an environment")
+        abort("`envir` must be an environment")
     }
 }
 
@@ -97,7 +97,7 @@
 
 .checkExt <- function(ext) {
     if (!is_string(ext)) {
-        abort("`ext` must contain a string")
+        abort("`ext` must be a string")
     }
 }
 
@@ -105,7 +105,7 @@
 
 .checkGenomeBuild <- function(genomeBuild) {
     if (!(is_string(genomeBuild) || is.null(genomeBuild))) {
-        abort("`genomeBuild` must contain a string or NULL")
+        abort("`genomeBuild` must be a string or NULL")
     }
 }
 
@@ -220,7 +220,7 @@
 
 .checkTitle <- function(title) {
     if (!(is_string(title) || is.null(title))) {
-        abort("`title` must contain a string or NULL")
+        abort("`title` must be a string or NULL")
     }
 }
 
