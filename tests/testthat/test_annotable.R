@@ -155,9 +155,9 @@ test_that("Bad input", {
 
 test_that("Legacy release parameter support", {
     # Check for legacy code support using `release = "current"`
-    expect_equal(
+    expect_warning(
         annotable("Homo sapiens", release = "current", quiet = TRUE),
-        annotable("Homo sapiens", quiet = TRUE)
+        "`release = NULL` is now recommended"
     )
 })
 
