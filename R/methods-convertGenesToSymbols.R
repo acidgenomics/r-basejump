@@ -39,7 +39,7 @@ NULL
 
 
 # Constructors =================================================================
-.convertGenesToSymbols <- function(
+.convertGenesToSymbols.character <- function(  # nolint
     object,
     organism,
     release = NULL,
@@ -95,11 +95,11 @@ NULL
 .convertGenesToSymbols.dim <- function(  # nolint
     object,
     organism,
-    release,
+    release = NULL,
     quiet = FALSE) {
     # Passthrough: organism, release, quiet
     x <- rownames(object)
-    x <- .convertGenesToSymbols(
+    x <- .convertGenesToSymbols.character(
         object = x,
         organism = organism,
         release = release,
@@ -116,7 +116,7 @@ NULL
 setMethod(
     "convertGenesToSymbols",
     signature("character"),
-    .convertGenesToSymbols)
+    .convertGenesToSymbols.character)
 
 
 

@@ -48,13 +48,9 @@ NULL
     sep = ", ",
     unique = TRUE,
     sort = TRUE) {
-    .checkSep(sep)
-    if (!is.logical(unique)) {
-        abort("`unique` must be logical")
-    }
-    if (!is.logical(sort)) {
-        abort("`sort` must be logical")
-    }
+    assert_is_a_string(sep)
+    assert_is_a_boolean(unique)
+    assert_is_a_boolean(sort)
 
     if (length(object) > 1L) {
         if (isTRUE(unique)) {

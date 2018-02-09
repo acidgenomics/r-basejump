@@ -18,19 +18,19 @@ convertGenesToSymbols(object, ...)
 \S4method{convertGenesToSymbols}{character}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{data.frame}(object, organism, release,
+\S4method{convertGenesToSymbols}{data.frame}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{DataFrame}(object, organism, release,
+\S4method{convertGenesToSymbols}{DataFrame}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, organism, release,
+\S4method{convertGenesToSymbols}{dgCMatrix}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, organism, release,
+\S4method{convertGenesToSymbols}{dgTMatrix}(object, organism, release = NULL,
   quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{matrix}(object, organism, release,
+\S4method{convertGenesToSymbols}{matrix}(object, organism, release = NULL,
   quiet = FALSE)
 }
 \arguments{

@@ -101,9 +101,7 @@ NULL
 
 
 .dotted.dim <- function(object, rownames = FALSE) {
-    if (!is.logical(rownames)) {
-        abort("`rownames` must be logical")
-    }
+    assert_is_a_boolean(rownames)
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
