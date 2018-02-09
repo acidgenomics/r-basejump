@@ -10,14 +10,19 @@
 #' annotable <- annotable("Homo sapiens")
 #' checkAnnotable(annotable)
 checkAnnotable <- function(object) {
-    if (!is.data.frame(object)) {
-        abort("Annotable must be a data.frame")
-    }
+    assert_that(is.data.frame(object))
     # Just check for the minimal set of required columns
-    colnames <- c("ensgene", "symbol", "description", "biotype", "broadClass")
-    if (!all(colnames %in% colnames(object))) {
+    requiredCols <- c(
+        "ensgene",
+        "symbol",
+        "description",
+        "biotype",
+        "broadClass"
+    )
+    if (!all(requiredCols %in% colnames(object))) {
         abort(paste(
-            "Annotable must contain:", toString(colnames)
+            paste0("`", deparse(substitute(object)), "`"),
+            "must contain:", toString(requiredCols)
         ))
     }
     TRUE
