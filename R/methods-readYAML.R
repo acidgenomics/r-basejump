@@ -33,6 +33,7 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
+        .checkQuiet(quiet)
         if (!grepl("\\.ya?ml$", object)) {
             abort("YAML file must contain `.yaml` or `.yml` extension")
         }

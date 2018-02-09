@@ -116,6 +116,9 @@ NULL
 
 
 .setNamesDotted <- function(object, rownames = FALSE) {
+    if (!is.logical(rownames)) {
+        abort("`rownames` must be logical")
+    }
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {

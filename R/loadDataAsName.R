@@ -23,20 +23,14 @@ loadDataAsName <- function(
     envir = parent.frame(),
     replace = TRUE) {
     dots <- list(...)
+    dir <- .sanitizeDir(dir)
+    .checkExt(ext)
+    .checkEnvir(envir)
+    .checkReplace(replace)
     # Check for legacy mappings method, used prior to v0.1.1
     if (length(dots) == 1L & !is.null(names(dots[[1L]]))) {
         # Convert the named character vector to a named list, for consistency
         dots <- as.list(dots[[1L]])
-    }
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
     }
     files <- sapply(seq_along(dots), function(a) {
         object <- dots[[a]]

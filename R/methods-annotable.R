@@ -88,9 +88,17 @@ NULL
         abort("Object must be a string")
     }
     # format
-    if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
-        abort("Unsupported format")
+    validFormats <- c("gene", "gene2symbol", "tx2gene")
+    if (!format %in% validFormats) {
+        abort(paste(
+            "Valid formats:",
+            toString(validFormats)
+        ))
     }
+    .checkGenomeBuild(genomeBuild)
+    .checkRelease(release)
+    .checkUniqueSymbol(uniqueSymbol)
+    .checkQuiet(quiet)
 
     # Genome build =============================================================
     if (!is.null(genomeBuild)) {

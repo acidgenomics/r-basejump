@@ -29,8 +29,10 @@ assignAndSaveData <- function(
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    dir <- normalizePath(dir)
+    dir <- .sanitizeDir(dir)
+    .checkCompress(compress)
+    .checkEnvir(envir)
+    .checkQuiet(quiet)
     file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
     assign(name, object, envir = envir)

@@ -10,20 +10,21 @@
 #'
 #' @examples
 #' # Remove NA only rows and columns
-#' matrix(c(1, NA, 3,
-#'          NA, NA, NA,
-#'          2, NA, 4),
-#'        nrow = 3, ncol = 3) %>%
+#' matrix(
+#'     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
+#'     nrow = 3, ncol = 3) %>%
 #'     removeNA()
 #'
-#' data.frame(a = c("A", NA, "C"),
-#'            b = c(NA, NA, NA),
-#'            c = c("B", NA, "D")) %>%
+#' data.frame(
+#'     a = c("A", NA, "C"),
+#'     b = c(NA, NA, NA),
+#'     c = c("B", NA, "D")) %>%
 #'     removeNA()
 #'
-#' tibble(a = c("A", NA, "C"),
-#'        b = c(NA, NA, NA),
-#'        c = c("B", NA, "D")) %>%
+#' tibble(
+#'     a = c("A", NA, "C"),
+#'     b = c(NA, NA, NA),
+#'     c = c("B", NA, "D")) %>%
 #'     removeNA()
 #'
 #' # Support for vectors
@@ -35,11 +36,11 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom stats na.omit
-.removeNAVec <- function(object) {
+.removeNA.vec <- function(object) {  # nolint
     na.omit(object)
 }
 
-.removeNADim <- function(object) {
+.removeNA.dim <- function(object) {  # nolint
     object %>%
         # Remove all `NA` rows
         .[apply(., 1L, function(a) !all(is.na(a))), ] %>%
@@ -67,7 +68,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("character"),
-    .removeNAVec)
+    .removeNA.vec)
 
 
 
@@ -76,7 +77,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("numeric"),
-    .removeNAVec)
+    .removeNA.vec)
 
 
 
@@ -85,7 +86,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("matrix"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -94,7 +95,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("data.frame"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -103,7 +104,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("DataFrame"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -112,4 +113,4 @@ setMethod(
 setMethod(
     "removeNA",
     signature("tbl_df"),
-    .removeNADim)
+    .removeNA.dim)

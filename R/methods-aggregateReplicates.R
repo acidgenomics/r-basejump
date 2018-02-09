@@ -59,17 +59,6 @@ NULL
 
 
 
-.checkReplicateGroupings <- function(object, groupings) {
-    if (!is.factor(groupings)) {
-        abort("`groupings` must be a factor")
-    }
-    if (!identical(names(groupings), colnames(object))) {
-        abort("`groupings` must match object colnames")
-    }
-}
-
-
-
 # Methods ======================================================================
 #' @rdname aggregateReplicates
 #' @export

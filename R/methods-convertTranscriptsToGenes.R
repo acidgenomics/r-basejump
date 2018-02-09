@@ -35,6 +35,8 @@ NULL
     object,
     release = NULL,
     quiet = FALSE) {
+    # Passthrough: release, quiet
+
     # Prevent pass in of genomeBuild as primary object.
     # Improve this in a future update.
     if (any(is.na(object))) {
@@ -43,6 +45,7 @@ NULL
     if (any(object == "")) {
         abort("Empty string identifier detected")
     }
+
     organism <- detectOrganism(object[[1L]])
     tx2gene <- annotable(
         organism,
@@ -68,6 +71,7 @@ NULL
     object,
     release = NULL,
     quiet = FALSE) {
+    # Passthrough: release, quiet
     rownames(object) <- rownames(object) %>%
         .convertTranscriptsToGenes(
             release = release,

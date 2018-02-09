@@ -39,16 +39,11 @@ loadData <- function(
     envir = parent.frame(),
     replace = TRUE,
     quiet = FALSE) {
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
+    dir <- .sanitizeDir(dir)
+    .checkExt(ext)
+    .checkEnvir(envir)
+    .checkReplace(replace)
+    .checkQuiet(quiet)
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
     dots <- as.character(substitute(list(...)))[-1L]

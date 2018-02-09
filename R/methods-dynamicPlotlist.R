@@ -45,6 +45,7 @@ NULL
             "`return` must contain:", toString(validReturn)
         ))
     }
+    .checkLevel(headerLevel)
 
     if (return == "grid") {
         plot_grid(plotlist = object)

@@ -51,17 +51,6 @@ NULL
 
 
 
-.checkFeatureGroupings <- function(object, groupings) {
-    if (!is.factor(groupings)) {
-        abort("`groupings` must be a factor")
-    }
-    if (!identical(names(groupings), rownames(object))) {
-        abort("`groupings` must match object rownames")
-    }
-}
-
-
-
 # Methods ======================================================================
 #' @rdname aggregateFeatures
 #' @export

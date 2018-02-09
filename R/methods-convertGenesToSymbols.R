@@ -42,9 +42,10 @@ NULL
 .convertGenesToSymbols <- function(
     object,
     organism,
-    release,
+    release = NULL,
     quiet = FALSE) {
-    if (missing(release)) release <- NULL
+    .checkRelease(release)
+    .checkQuiet(quiet)
 
     if (any(is.na(object))) {
         abort("NA identifier detected")
@@ -96,6 +97,7 @@ NULL
     organism,
     release,
     quiet = FALSE) {
+    # Passthrough: organism, release, quiet
     x <- rownames(object)
     x <- .convertGenesToSymbols(
         object = x,
