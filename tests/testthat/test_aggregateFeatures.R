@@ -31,3 +31,14 @@ test_that("dgCMatrix", {
         as.matrix(aggdgc)
     )
 })
+
+test_that("Check groupings failure", {
+    expect_error(
+        aggregateFeatures(mat, groupings = "XXX"),
+        "`groupings` must be a factor"
+    )
+    expect_error(
+        aggregateFeatures(mat, groupings = factor(c("XXX", "YYY"))),
+        "`groupings` must match rownames"
+    )
+})
