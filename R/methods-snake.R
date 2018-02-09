@@ -42,6 +42,7 @@ NULL
 
 # Constructors =================================================================
 .makeNamesSnake <- function(object) {
+    .checkCharacter(object)
     object %>%
         dotted() %>%
         tolower() %>%
@@ -51,6 +52,9 @@ NULL
 
 
 .setNamesSnake <- function(object, rownames = FALSE) {
+    if (!is.logical(rownames)) {
+        abort("`rownames` must be logical")
+    }
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {

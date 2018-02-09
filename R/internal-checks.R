@@ -22,10 +22,21 @@
 
 
 
-.checkColorFunction <- function(x) {
-    if (!(is(x, "function") || is.null(x))) {
+.checkCharacter <- function(object) {
+    if (!is.character(object)) {
         abort(paste(
-            paste0("`", deparse(substitute(x)), "`"),
+            deparse(substitute(object)),
+            "must be a character vector"
+        ))
+    }
+}
+
+
+
+.checkColorFunction <- function(object) {
+    if (!(is(object, "function") || is.null(object))) {
+        abort(paste(
+            paste0("`", deparse(substitute(object)), "`"),
             "must be a color palette function or NULL"
         ))
     }
@@ -119,10 +130,10 @@
 
 
 
-.checkNumericString <- function(x) {
-    if (!(is.numeric(x) && length(x) == 1L)) {
+.checkNumericString <- function(object) {
+    if (!(is.numeric(object) && length(object) == 1L)) {
         abort(paste(
-            deparse(substitute(x)),
+            deparse(substitute(object)),
             "must be a numeric string"
         ))
     }
