@@ -149,10 +149,18 @@
 
 
 
-.checkRelease <- function(release) {
+.checkRelease <- function(object) {
+    # Legacy support for "current"
+    if (identical(object, "current")) {
+        return(warn(paste(
+            "`release = NULL` is now recommended instead of",
+            "`release = \"current\"`"
+        )))
+    }
+
     if (!(
-        (is.numeric(release) && length(release) == 1L) ||
-        is.null(release)
+        (is.numeric(object) && length(object) == 1L) ||
+        is.null(object)
     )) {
         abort("`release` must be a numeric string or NULL")
     }
