@@ -29,6 +29,7 @@ Depends:
     R (>= 3.4.0)
 Imports:
     AnnotationHub (>= 2.8.3),
+    assertive (>= 0.3),
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
     cowplot (>= 0.9.2),
