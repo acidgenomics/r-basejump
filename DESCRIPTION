@@ -14,7 +14,7 @@ Authors@R: c(
         given = "Mary",
         family = "Piper",
         email = "mary.piper@gmail.com",
-        role = "aut")
+        role = "ctb")
     )
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
