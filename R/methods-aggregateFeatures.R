@@ -3,7 +3,7 @@
 #' @rdname aggregateFeatures
 #' @name aggregateFeatures
 #' @family Data Management Utilities
-#' @author Rory Kirchner, Michael Steinbaugh
+#' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams AllGenerics
 #'
@@ -37,7 +37,8 @@ NULL
 # Constructors =================================================================
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateFeatures.dgCMatrix <- function(object, groupings) {  # nolint
-    .checkFeatureGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(rownames(object), names(groupings))
     rownames(object) <- groupings
     aggregate.Matrix(object, groupings = groupings, fun = "sum")
 }
@@ -45,7 +46,8 @@ NULL
 
 
 .aggregateFeatures.matrix <- function(object, groupings) {  # nolint
-    .checkFeatureGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(rownames(object), names(groupings))
     rowsum(object, group = groupings, reorder = FALSE)
 }
 

@@ -29,21 +29,27 @@ assignAndSaveData <- function(
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
+    assert_is_a_string(name)
+    assert_is_not_null(object)
     dir <- initializeDirectory(dir)
     assert_is_a_bool(compress)
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
+
     file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
+
     assign(name, object, envir = envir)
     if (!isTRUE(quiet)) {
         inform(paste("Saving", name, "to", dir))
     }
+
     save(
         list = name,
         file = file,
         envir = envir,
         compress = compress
     )
+
     invisible(file)
 }

@@ -46,19 +46,14 @@ NULL
 
 
 # Constructors =================================================================
-.camel <- function(  # nolint
+.camel <- function(
     object,
     format = "lower",
     strict = FALSE) {
-    .checkCharacterOrFactor(object)
-    validFormats <- c("lower", "upper")
-    if (!format %in% validFormats) {
-        abort(paste(
-            "Valid formats:",
-            toString(validFormats)
-        ))
-    }
-    .checkStrict(strict)
+    assert_is_any_of(object, c("character", "factor"))
+    assert_is_a_string(format)
+    assert_is_subset(format, c("lower", "upper"))
+    assert_is_a_bool(strict)
 
     object <- dotted(object)
 
@@ -101,7 +96,9 @@ NULL
     rownames = FALSE,
     strict = FALSE) {
     # Passthrough: format, strict
-    assert_is_a_boolean(rownames) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
@@ -123,6 +120,7 @@ NULL
             format = format,
             strict = strict)
     }
+
     object
 }
 
@@ -132,7 +130,7 @@ NULL
     object,
     rownames = FALSE,
     strict = FALSE) {
-    # Passthrough: rownames, strict
+    # Passthrough: object, rownames, strict
     .camel.dim(
         object,
         format = "lower",
@@ -143,13 +141,14 @@ NULL
 
 
 .lowerCamel.names <- function(object, strict = FALSE) {  # nolint
-    # Passthrough: strict
+    # Passthrough: object, strict
     .lowerCamel.dim(object, rownames = FALSE, strict = strict)
 }
 
 
 
 .lowerCamel.vector <- function(object, strict = FALSE) {  # nolint
+    assert_is_any_of(object, c("character", "vector"))
     # Passthrough: strict
     if (!is.null(names(object))) {
         names <- .camel(

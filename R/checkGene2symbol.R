@@ -4,7 +4,7 @@
 #'   mappings. Must be structured as a two column [data.frame] with "ensgene"
 #'   and "symbol" columns.
 #'
-#' @return `TRUE` on pass, [stop()] on error.
+#' @return Invisible `TRUE` on pass, [stop()] on error.
 #' @export
 #'
 #' @examples
@@ -16,5 +16,5 @@ checkGene2symbol <- function(object) {
         colnames(object),
         c("ensgene", "symbol")
     )
-    TRUE
+    invisible(TRUE)
 }
