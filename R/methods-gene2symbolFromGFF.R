@@ -32,6 +32,8 @@ NULL
 .gene2symbolFromGFF <- function(
     object,
     quiet = FALSE) {
+    .checkQuiet(quiet)
+
     anno <- .gffKeyValuePairs(object)
 
     # Standard `gene_symbol` to `gene_name` (Ensembl format).
@@ -79,6 +81,7 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
+        # Passthrough: quiet
         object %>%
             readGFF(quiet = quiet) %>%
             .gene2symbolFromGFF(quiet = quiet)
@@ -94,5 +97,6 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
+        # Passthrough: quiet
         .gene2symbolFromGFF(object, quiet = quiet)
     })

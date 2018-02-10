@@ -47,8 +47,8 @@
 #' # data.frame
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
-#' dotted(dataFrame, rownames = FALSE)
 #' dotted(dataFrame, rownames = TRUE)
+#' dotted(dataFrame, rownames = FALSE)
 #'
 #' # Named list
 #' list <- makeNames$list
@@ -77,22 +77,7 @@ NULL
 
 
 
-.sanitizeAcronyms <- function(object) {
-    object %>%
-        # Ensure identifier is "ID"
-        gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
-        # Sanitize mixed case scientific acronyms
-        gsub("\\b(mRNA)\\b", "MRNA", .) %>%
-        gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
-        gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
-        gsub("\\b(piRNA)\\b", "PIRNA", .) %>%
-        gsub("\\b(rRNA)\\b", "RRNA", .) %>%
-        gsub("\\b(RNAi)\\b", "RNAI", .)
-}
-
-
-
-.makeNamesDotted <- function(object) {
+.dotted <- function(object) {
     object %>%
         as.character() %>%
         make.names(unique = FALSE, allow_ = FALSE) %>%
@@ -115,39 +100,55 @@ NULL
 
 
 
-.setNamesDotted <- function(object, rownames = FALSE) {
+.dotted.dim <- function(object, rownames = FALSE) {
+    assert_is_a_boolean(rownames)
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
-            colnames(object) <- .makeNamesDotted(colnames(object))
+            colnames(object) <- .dotted(colnames(object))
         }
         # Rownames
         if (isTRUE(rownames) & .checkRownames(object)) {
-            rownames(object) <- .makeNamesDotted(rownames(object))
+            rownames(object) <- .dotted(rownames(object))
         }
     } else if (!is.null(names(object))) {
-        names(object) <- .makeNamesDotted(names(object))
+        names(object) <- .dotted(names(object))
     }
     object
 }
 
 
 
-.setNamesDottedNoRownames <- function(object) {
-    .setNamesDotted(object, rownames = FALSE)
+.dotted.names <- function(object) {
+    .dotted.dim(object, rownames = FALSE)
 }
 
 
 
-.dottedVector <- function(object) {
+.dotted.vector <- function(object) {  # no lint
     if (!is.null(names(object))) {
-        names <- .makeNamesDotted(names(object))
+        names <- .dotted(names(object))
     } else {
         names <- NULL
     }
-    object <- .makeNamesDotted(object)
+    object <- .dotted(object)
     names(object) <- names
     object
+}
+
+
+
+.sanitizeAcronyms <- function(object) {
+    object %>%
+        # Ensure identifier is "ID"
+        gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
+        # Sanitize mixed case scientific acronyms
+        gsub("\\b(mRNA)\\b", "MRNA", .) %>%
+        gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
+        gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
+        gsub("\\b(piRNA)\\b", "PIRNA", .) %>%
+        gsub("\\b(rRNA)\\b", "RRNA", .) %>%
+        gsub("\\b(RNAi)\\b", "RNAI", .)
 }
 
 
@@ -158,7 +159,7 @@ NULL
 setMethod(
     "dotted",
     signature("ANY"),
-    .setNamesDotted)
+    .dotted.dim)
 
 
 
@@ -167,7 +168,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    .dottedVector)
+    .dotted.vector)
 
 
 
@@ -176,7 +177,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("data.frame"),
-    .setNamesDotted)
+    .dotted.dim)
 
 
 
@@ -185,7 +186,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("DataFrame"),
-    .setNamesDotted)
+    .dotted.dim)
 
 
 
@@ -194,7 +195,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("factor"),
-    .dottedVector)
+    .dotted.vector)
 
 
 
@@ -203,7 +204,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("list"),
-    .setNamesDottedNoRownames)
+    .dotted.names)
 
 
 
@@ -212,7 +213,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("matrix"),
-    .setNamesDotted)
+    .dotted.dim)
 
 
 
@@ -221,4 +222,4 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    .setNamesDottedNoRownames)
+    .dotted.names)

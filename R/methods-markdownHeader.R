@@ -32,14 +32,19 @@ NULL
     tabset = FALSE,
     asis = FALSE) {
     header <- object
-    if (!level %in% seq(1L:7L)) {
-        abort("Markdown supports 1-7 header levels")
-    }
+    .checkLevel(level)
+    .checkTabset(tabset)
+    .checkAsis(asis)
+
+    # Add the header level
+    header <- paste(str_dup("#", level), header)
+
+    # Append tabset label
     if (isTRUE(tabset)) {
         header <- paste(header, "{.tabset}")
     }
-    # Add the header level
-    header <- paste(str_dup("#", level), header)
+
+    # Return
     if (isTRUE(asis)) {
         writeLines(c("", "", header, ""))
     } else {

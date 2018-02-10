@@ -17,13 +17,13 @@
 #'
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
+#' @param localDir Directory where to save file locally.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local file (including suffix), if desired.
 #' @param compress Compress the file with [gzip()] after download.
 #'   (`TRUE`/`FALSE`)
-#' @param localDir Directory where to save file locally.
 #'
-#' @return List of local files.
+#' @return Invisibly return a list of the files downloaded.
 #' @export
 #'
 #' @examples
@@ -32,12 +32,15 @@
 #'     pattern = "README",
 #'     rename = "ensembl_readme.txt",
 #'     compress = TRUE)
+#'
+#' # Clean up
+#' unlink("ensembl_readme.txt.gz")
 transmit <- function(
     remoteDir,
+    localDir = getwd(),
     pattern,
     rename = NULL,
     compress = FALSE,
-    localDir = "data-raw",
     quiet = FALSE) {
     if (!grepl("ftp\\://", remoteDir)) {
         abort("FTP protocol not detected")
@@ -80,7 +83,7 @@ transmit <- function(
     if (!isTRUE(quiet)) {
         inform(paste("Downloading", toString(remoteFileName)))
     }
-    lapply(seq_along(remoteFileName), function(a) {
+    list <- lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
         if (!is.null(rename)) {
             localFileName <- rename[a]
@@ -101,6 +104,7 @@ transmit <- function(
         }
 
         localFilePath
-    }) %>%
-        setNames(remoteFileName)
+    })
+    names(list) <- remoteFileName
+    invisible(list)
 }

@@ -11,14 +11,10 @@
 #' tx2gene <- annotable("Homo sapiens", format = "tx2gene")
 #' checkTx2gene(tx2gene)
 checkTx2gene <- function(object) {
-    if (!is.data.frame(object)) {
-        abort("tx2gene must be a data.frame")
-    }
-    colnames <- c("enstxp", "ensgene")
-    if (!identical(colnames(object), colnames)) {
-        abort(paste(
-            "tx2gene must contain:", toString(colnames)
-        ))
-    }
+    assert_is_data.frame(object)
+    assert_are_identical(
+        colnames(object),
+        c("enstxp", "ensgene")
+    )
     TRUE
 }

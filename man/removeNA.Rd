@@ -42,20 +42,21 @@ Remove Rows and Columns Containing Only \code{NA} Values
 }
 \examples{
 # Remove NA only rows and columns
-matrix(c(1, NA, 3,
-         NA, NA, NA,
-         2, NA, 4),
-       nrow = 3, ncol = 3) \%>\%
+matrix(
+    c(1, NA, 3, NA, NA, NA, 2, NA, 4),
+    nrow = 3, ncol = 3) \%>\%
     removeNA()
 
-data.frame(a = c("A", NA, "C"),
-           b = c(NA, NA, NA),
-           c = c("B", NA, "D")) \%>\%
+data.frame(
+    a = c("A", NA, "C"),
+    b = c(NA, NA, NA),
+    c = c("B", NA, "D")) \%>\%
     removeNA()
 
-tibble(a = c("A", NA, "C"),
-       b = c(NA, NA, NA),
-       c = c("B", NA, "D")) \%>\%
+tibble(
+    a = c("A", NA, "C"),
+    b = c(NA, NA, NA),
+    c = c("B", NA, "D")) \%>\%
     removeNA()
 
 # Support for vectors

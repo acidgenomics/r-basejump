@@ -5,73 +5,41 @@
 \alias{gene2symbol}
 \alias{gene2symbol}
 \alias{gene2symbol,character-method}
-\alias{gene2symbol,data.frame-method}
-\alias{gene2symbol,DataFrame-method}
-\alias{gene2symbol,dgCMatrix-method}
-\alias{gene2symbol,dgTMatrix-method}
-\alias{gene2symbol,matrix-method}
-\title{Convert Ensembl Identifier to Gene Symbol}
+\title{Ensembl Gene to Symbol Mappings}
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{character}(object, organism, release, quiet = FALSE)
-
-\S4method{gene2symbol}{data.frame}(object, organism, release, quiet = FALSE)
-
-\S4method{gene2symbol}{DataFrame}(object, organism, release, quiet = FALSE)
-
-\S4method{gene2symbol}{dgCMatrix}(object, organism, release, quiet = FALSE)
-
-\S4method{gene2symbol}{dgTMatrix}(object, organism, release, quiet = FALSE)
-
-\S4method{gene2symbol}{matrix}(object, organism, release, quiet = FALSE)
+\S4method{gene2symbol}{character}(object, genomeBuild = NULL,
+  release = NULL, uniqueSymbol = FALSE, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 
-\item{organism}{\emph{Optional}. Organism name. Normally this argument is
-unnecessary and can be left unset. If a count matrix starts with a
-FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-first gene identifier will fail. In this case, the desired organism must be
-manually declared.}
+\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+supported.}
 
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
+\item{uniqueSymbol}{Make gene symbols unique.}
+
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Same class as original object.
+\link{data.frame}.
 }
 \description{
-Convert Ensembl Identifier to Gene Symbol
+Ensembl Gene to Symbol Mappings
 }
 \examples{
-# character
-vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-gene2symbol(vec)
-
-# matrix
-mat <- matrix(
-    data = seq(1L:4L),
-    byrow = TRUE,
-    nrow = 2L,
-    ncol = 2L,
-    dimnames = list(
-        c("ENSMUSG00000000001",
-          "ENSMUSG00000000003"),
-        c("sample1",
-          "sample2")
-    )
-)
-gene2symbol(mat)
+gene2symbol("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
-\code{\link[=detectOrganism]{detectOrganism()}}.
-
 Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{symbol2gene}}, \code{\link{tx2geneFromGFF}},

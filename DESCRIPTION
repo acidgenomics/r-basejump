@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -9,10 +9,15 @@ Authors@R: c(
     person(
         "Rory", "Kirchner",
         email = "roryk@alum.mit.edu",
+        role = "ctb"),
+    person(
+        given = "Mary",
+        family = "Piper",
+        email = "mary.piper@gmail.com",
         role = "ctb")
     )
 Description: Helper functions for bioinformatics, package development, and
-    RMarkdown reports.
+    R Markdown reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 URL:
@@ -24,6 +29,7 @@ Depends:
     R (>= 3.4.0)
 Imports:
     AnnotationHub (>= 2.8.3),
+    assertive (>= 0.3),
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
     cowplot (>= 0.9.2),
@@ -34,7 +40,7 @@ Imports:
     ensembldb (>= 2.0.4),
     ggplot2 (>= 2.2.1),
     grDevices,
-    knitr (>= 1.17),
+    knitr (>= 1.16),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9.6),

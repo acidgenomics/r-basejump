@@ -41,6 +41,15 @@ NULL
     makeNames = "camel",
     quiet = FALSE,
     ...) {
+    validMakeNames <- c("camel", "snake")
+    if (!makeNames %in% validMakeNames) {
+        abort(paste(
+            "`makeNames` must contain:",
+            toString(validMakeNames)
+        ))
+    }
+    .checkQuiet(quiet)
+
     file <- localOrRemoteFile(object, quiet = quiet)
 
     # Detect file extension
@@ -106,9 +115,8 @@ NULL
         abort("Unsupported file type")
     }
 
-    # Sanitize colnames, if desired
-    if (!is.null(colnames(data)) &
-        makeNames %in% c("camel", "snake")) {
+    # Sanitize colnames
+    if (!is.null(colnames(data))) {
         makeNames <- get(makeNames)
         colnames(data) <- makeNames(colnames(data))
     }
