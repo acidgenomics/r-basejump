@@ -1,6 +1,6 @@
 #' Load Local Data
 #'
-#' Load RData (`.rda`) files from a directory using symbols rather than complete
+#' Load R data (`.rda`) files from a directory using symbols rather than complete
 #' file paths.
 #'
 #' @details
@@ -18,8 +18,6 @@
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
-#' @param ext R data file extension. Defaults to `rda` and typically should not
-#'   be changed.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
 #' @param replace Replace existing object in destination environment.
@@ -35,15 +33,13 @@
 loadData <- function(
     ...,
     dir = getwd(),
-    ext = "rda",
     envir = parent.frame(),
     replace = TRUE,
     quiet = FALSE) {
     dir <- initializeDirectory(dir)
-    assert_is_a_string(ext)
     assert_is_environment(envir)
-    assert_is_a_boolean(replace)
-    assert_is_a_boolean(quiet)
+    assert_is_a_bool(replace)
+    assert_is_a_bool(quiet)
 
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
@@ -56,7 +52,7 @@ loadData <- function(
     files <- vapply(
         X = dots,
         FUN = function(name) {
-            file <- file.path(dir, paste0(name, ".", ext))
+            file <- file.path(dir, paste0(name, ".rda"))
             # Check to see if object is present in environment
             if (exists(name, envir = envir, inherits = FALSE)) {
                 if (isTRUE(replace)) {
@@ -96,5 +92,6 @@ loadData <- function(
             file
         },
         FUN.VALUE = "character")
+
     invisible(files)
 }
