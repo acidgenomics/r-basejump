@@ -12,7 +12,7 @@
 #' @param url Remote URL file path to R Data file. Supports multiple URLs
 #'   passed in as a character vector.
 #'
-#' @return Silently return loaded object name(s).
+#' @return Silently return a character matrix containing URL and tempfile paths.
 #' @export
 #'
 #' @examples
@@ -93,5 +93,6 @@ loadRemoteData <- function(
         USE.NAMES = TRUE
     )
 
-    invisible(objects)
+    return <- files[names(objects), , drop = FALSE]
+    invisible(return)
 }
