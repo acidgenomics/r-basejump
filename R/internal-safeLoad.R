@@ -1,25 +1,30 @@
 .safeLoad <- function(
     file,
+    name = NULL,
     envir = parent.frame(),
     replace = FALSE) {
     assert_is_a_string(file)
+    assert_is_any_of(name, c("character", "NULL"))
     assert_all_are_existing_files(file)
     assert_is_environment(envir)
     assert_is_a_bool(replace)
 
-    name <- gsub("\\.rda$", "", basename(file))
+    # Get the name from the file stem
+    if (is.null(name)) {
+        extPattern <- "\\.rda$"
+        assert_all_are_matching_regex(name, extPattern)
+        name <- gsub(extPattern, "", basename(file))
+    }
 
     # Check to see if object is present in environment
     if (exists(name, envir = envir, inherits = FALSE)) {
         if (isTRUE(replace)) {
             warn(paste(
-                "Replacing", name, "in", deparse(substitute(envir)),
-                "with the contents of", basename(file)
+                "Replacing", name, "in", deparse(substitute(envir))
             ))
         } else {
             warn(paste(
-                "Skipping", basename(file),
-                "because", name, "already exists in",
+                "Skipping", name, "because it already exists in",
                 deparse(substitute(envir))
             ))
             return(NULL)
