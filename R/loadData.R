@@ -53,9 +53,12 @@ loadData <- function(
     objects <- mapply(
         FUN = .safeLoad,
         files,
-        MoreArgs = list(envir = envir)
+        MoreArgs = list(envir = envir),
+        SIMPLIFY = TRUE,
+        USE.NAMES = FALSE
     )
     names(objects) <- names
 
+    assert_is_character(objects)
     invisible(objects)
 }
