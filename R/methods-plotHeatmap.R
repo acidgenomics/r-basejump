@@ -54,6 +54,14 @@ NULL
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
+    # Parameter integrity checks ===============================================
+    # Passthrough: clusterCols, clusterRows
+    .checkScale(scale)
+    .checkAnnotationCol(annotationCol)
+    .checkColorVector(color)
+    .checkColorFunction(legendColor)
+    .checkTitle(title)
+
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
         object <- object %>%

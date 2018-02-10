@@ -29,8 +29,8 @@
 #' # data.frame
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
-#' snake(dataFrame, rownames = FALSE)
 #' snake(dataFrame, rownames = TRUE)
+#' snake(dataFrame, rownames = FALSE)
 #'
 #' # Named list
 #' list <- makeNames$list
@@ -41,7 +41,8 @@ NULL
 
 
 # Constructors =================================================================
-.makeNamesSnake <- function(object) {
+.snake <- function(object) {
+    .checkCharacter(object)
     object %>%
         dotted() %>%
         tolower() %>%
@@ -50,37 +51,38 @@ NULL
 
 
 
-.setNamesSnake <- function(object, rownames = FALSE) {
+.snake.dim <- function(object, rownames = FALSE) {  # nolint
+    assert_is_a_boolean(rownames)
     if (!is.null(dimnames(object))) {
         # Colnames
         if (!is.null(colnames(object))) {
-            colnames(object) <- .makeNamesSnake(colnames(object))
+            colnames(object) <- .snake(colnames(object))
         }
         # Rownames
         if (isTRUE(rownames) & .checkRownames(object)) {
-            rownames(object) <- .makeNamesSnake(rownames(object))
+            rownames(object) <- .snake(rownames(object))
         }
     } else if (!is.null(names(object))) {
-        names(object) <- .makeNamesSnake(names(object))
+        names(object) <- .snake(names(object))
     }
     object
 }
 
 
 
-.setNamesSnakeNoRownames <- function(object) {
-    .setNamesSnake(object, rownames = FALSE)
+.snake.names <- function(object) {  # nolint
+    .snake.dim(object, rownames = FALSE)
 }
 
 
 
-.snakeVector <- function(object) {
+.snake.vector <- function(object) {  # nolint
     if (!is.null(names(object))) {
-        names <- .makeNamesSnake(names(object))
+        names <- .snake(names(object))
     } else {
         names <- NULL
     }
-    object <- .makeNamesSnake(object)
+    object <- .snake(object)
     names(object) <- names
     object
 }
@@ -93,7 +95,7 @@ NULL
 setMethod(
     "snake",
     signature("ANY"),
-    .setNamesSnake)
+    .snake.dim)
 
 
 
@@ -102,7 +104,7 @@ setMethod(
 setMethod(
     "snake",
     signature("character"),
-    .snakeVector)
+    .snake.vector)
 
 
 
@@ -111,7 +113,7 @@ setMethod(
 setMethod(
     "snake",
     signature("data.frame"),
-    .setNamesSnake)
+    .snake.dim)
 
 
 
@@ -120,7 +122,7 @@ setMethod(
 setMethod(
     "snake",
     signature("DataFrame"),
-    .setNamesSnake)
+    .snake.dim)
 
 
 
@@ -129,7 +131,7 @@ setMethod(
 setMethod(
     "snake",
     signature("factor"),
-    .snakeVector)
+    .snake.vector)
 
 
 
@@ -138,7 +140,7 @@ setMethod(
 setMethod(
     "snake",
     signature("list"),
-    .setNamesSnakeNoRownames)
+    .snake.names)
 
 
 
@@ -147,7 +149,7 @@ setMethod(
 setMethod(
     "snake",
     signature("matrix"),
-    .setNamesSnake)
+    .snake.dim)
 
 
 
@@ -156,4 +158,4 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    .setNamesSnakeNoRownames)
+    .snake.names)

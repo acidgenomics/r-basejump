@@ -18,6 +18,8 @@ loadRemoteData <- function(
     object,
     envir = parent.frame(),
     quiet = FALSE) {
+    .checkEnvir(envir)
+    .checkQuiet(quiet)
     if (!is_string(object)) {
         abort("`object` must be a string")
     }
@@ -28,9 +30,6 @@ loadRemoteData <- function(
     # Check for `.rda` file
     if (!grepl("\\.rda$", object)) {
         abort("Data file must contain `.rda` extension")
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
     }
     tmp <- tempfile()
     download.file(

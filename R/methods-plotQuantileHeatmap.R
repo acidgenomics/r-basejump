@@ -58,6 +58,13 @@ NULL
     color = viridis::viridis,
     legendColor = viridis::viridis,
     title = NULL) {
+    # Passthrough: clusterCols, clusterRows
+    .checkNumericString(n)
+    .checkAnnotationCol(annotationCol)
+    .checkColorFunction(color)
+    .checkColorFunction(legendColor)
+    .checkTitle(title)
+
     object <- as.matrix(object)
 
     if (nrow(object) < 2L) {

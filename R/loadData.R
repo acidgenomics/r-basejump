@@ -39,22 +39,20 @@ loadData <- function(
     envir = parent.frame(),
     replace = TRUE,
     quiet = FALSE) {
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
+    dir <- initializeDirectory(dir)
+    assert_is_a_string(ext)
+    assert_is_environment(envir)
+    assert_is_a_boolean(replace)
+    assert_is_a_boolean(quiet)
+
     # The dots method will error at this step because the objects (as symbols)
     # aren't present in the calling environment
     dots <- as.character(substitute(list(...)))[-1L]
+
     if (!isTRUE(quiet)) {
         inform(paste("Loading", toString(dots), "from", dir))
     }
+
     files <- vapply(
         X = dots,
         FUN = function(name) {
@@ -74,9 +72,7 @@ loadData <- function(
                 }
             }
             # Error on missing file
-            if (!file.exists(file)) {
-                abort(paste(name, "missing"))
-            }
+            assert_all_are_existing_files(file)
             # Load into a temporary environment (safer)
             tmpEnv <- new.env()
             loaded <- load(file, envir = tmpEnv)
@@ -88,12 +84,7 @@ loadData <- function(
                 ))
             }
             # Check for file name and internal object name mismatch
-            if (!identical(name, loaded)) {
-                abort(paste0(
-                    "Name mismatch detected for `", basename(file), "`. ",
-                    "Internal object is named `", loaded, "`."
-                ))
-            }
+            assert_are_identical(name, loaded)
             # Assign into the target environment
             assign(
                 x = name,

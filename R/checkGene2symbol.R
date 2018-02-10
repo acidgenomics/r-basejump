@@ -11,14 +11,10 @@
 #' gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
 #' checkGene2symbol(gene2symbol)
 checkGene2symbol <- function(object) {
-    if (!is.data.frame(object)) {
-        abort("gene2symbol must be a data.frame")
-    }
-    colnames <- c("ensgene", "symbol")
-    if (!identical(colnames(object), colnames)) {
-        abort(paste(
-            "gene2symbol must contain:", toString(colnames)
-        ))
-    }
+    assert_is_data.frame(object)
+    assert_are_identical(
+        colnames(object),
+        c("ensgene", "symbol")
+    )
     TRUE
 }

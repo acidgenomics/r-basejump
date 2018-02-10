@@ -105,12 +105,12 @@ mappings. Must be structured as a two column data.frame with "enstxp" and
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silent on pass, stop on error.</p>
+    <p><code>TRUE</code> on pass, stop on error.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>tx2gene</span> <span class='kw'>&lt;-</span> <span class='fu'>annotable</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"tx2gene"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
-#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57757: Homo sapiens Ensembl 90</span></div><div class='input'><span class='fu'>checkTx2gene</span>(<span class='no'>tx2gene</span>)</div></pre>
+#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57757: Homo sapiens Ensembl 90</span></div><div class='input'><span class='fu'>checkTx2gene</span>(<span class='no'>tx2gene</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

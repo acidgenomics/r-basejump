@@ -48,6 +48,10 @@ NULL
     sep = ", ",
     unique = TRUE,
     sort = TRUE) {
+    assert_is_a_string(sep)
+    assert_is_a_boolean(unique)
+    assert_is_a_boolean(sort)
+
     if (length(object) > 1L) {
         if (isTRUE(unique)) {
             if (!all(is.na(object))) {
@@ -60,9 +64,11 @@ NULL
             }
         }
     }
+
     if (isTRUE(sort)) {
         object <- sort(object, na.last = TRUE)
     }
+
     object %>%
         as.character() %>%
         paste(collapse = sep)
@@ -76,6 +82,8 @@ NULL
     sep = ", ",
     unique = TRUE,
     sort = TRUE) {
+    # Passthrough: sep, unique, sort
+
     # Stash original class and coerce to data.frame, if necessary
     if (!is.data.frame(object)) {
         class <- class(object)[[1L]]

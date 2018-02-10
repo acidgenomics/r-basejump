@@ -23,21 +23,17 @@ loadDataAsName <- function(
     envir = parent.frame(),
     replace = TRUE) {
     dots <- list(...)
+    dir <- initializeDirectory(dir)
+    assert_is_a_string(ext)
+    assert_is_environment(envir)
+    assert_is_a_boolean(replace)
+
     # Check for legacy mappings method, used prior to v0.1.1
     if (length(dots) == 1L & !is.null(names(dots[[1L]]))) {
         # Convert the named character vector to a named list, for consistency
         dots <- as.list(dots[[1L]])
     }
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
+
     files <- sapply(seq_along(dots), function(a) {
         object <- dots[[a]]
         name <- names(dots)[[a]]
@@ -50,9 +46,7 @@ loadDataAsName <- function(
         } else {
             file <- file.path(dir, paste0(object, paste0(".", ext)))
         }
-        if (!file.exists(file)) {
-            abort(paste(object, "missing"))
-        }
+        assert_all_are_existing_files(file)
         file <- normalizePath(file)
         # Check to see if object is present in environment
         if (exists(name, envir = envir, inherits = FALSE)) {

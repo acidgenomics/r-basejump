@@ -91,8 +91,8 @@
 FTP server. Also enables on-the-fly file renaming and compression.</p>
     
 
-    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>remoteDir</span>, <span class='no'>pattern</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='st'>"data-raw"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>transmit</span>(<span class='no'>remoteDir</span>, <span class='kw'>localDir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='no'>pattern</span>, <span class='kw'>rename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -101,6 +101,10 @@ FTP server. Also enables on-the-fly file renaming and compression.</p>
       <th>remoteDir</th>
       <td><p>Remote directory URL. Currently supports FTP. Works either
 with or without the trailing slash.</p></td>
+    </tr>
+    <tr>
+      <th>localDir</th>
+      <td><p>Directory where to save file locally.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
@@ -116,10 +120,6 @@ with or without the trailing slash.</p></td>
 (<code>TRUE</code>/<code>FALSE</code>)</p></td>
     </tr>
     <tr>
-      <th>localDir</th>
-      <td><p>Directory where to save file locally.</p></td>
-    </tr>
-    <tr>
       <th>quiet</th>
       <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
     </tr>
@@ -127,7 +127,7 @@ with or without the trailing slash.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of local files.</p>
+    <p>Invisibly return a list of the files downloaded.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -141,11 +141,7 @@ with or without the trailing slash.</p></td>
     <span class='kw'>remoteDir</span> <span class='kw'>=</span> <span class='st'>"ftp://ftp.ensembl.org/pub/release-90"</span>,
     <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
     <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"ensembl_readme.txt"</span>,
-    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading README</span></div><div class='output co'>#&gt; $README
-#&gt; [1] "data-raw/ensembl_readme.txt.gz"
-#&gt; attr(,"nbrOfBytes")
-#&gt; [1] 5034
-#&gt; </div></pre>
+    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading README</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

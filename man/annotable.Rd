@@ -91,7 +91,9 @@ annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
 \item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 
-Other Gene Annotation Utilities: \code{\link{detectOrganism}},
+Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}

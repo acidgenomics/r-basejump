@@ -1,12 +1,9 @@
 # Constructors =================================================================
-.makeNamesUpperCamel <- function(object, strict = FALSE) {
-    .makeNamesCamel(object, format = "upper", strict = strict)
-}
-
-
-
-.setNamesUpperCamel <- function(object, rownames = FALSE, strict = FALSE) {
-    .setNamesCamel(
+.upperCamel.dim <- function(  # nolint
+    object,
+    rownames = FALSE,
+    strict = FALSE) {
+    .camel.dim(
         object,
         format = "upper",
         rownames = rownames,
@@ -15,19 +12,19 @@
 
 
 
-.setNamesUpperCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesUpperCamel(object, rownames = FALSE, strict = strict)
+.upperCamel.names <- function(object, strict = FALSE) {
+    .upperCamel.dim(object, rownames = FALSE, strict = strict)
 }
 
 
 
-.upperCamelVector <- function(object, strict = FALSE) {
+.upperCamel.vector <- function(object, strict = FALSE) {  # nolint
     if (!is.null(names(object))) {
-        names <- .makeNamesUpperCamel(names(object), strict = strict)
+        names <- .camel(names(object), format = "upper", strict = strict)
     } else {
         names <- NULL
     }
-    object <- .makeNamesUpperCamel(object, strict = strict)
+    object <- .camel(object, format = "upper", strict = strict)
     names(object) <- names
     object
 }
@@ -40,7 +37,7 @@
 setMethod(
     "upperCamel",
     signature("ANY"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -49,7 +46,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("character"),
-    .upperCamelVector)
+    .upperCamel.vector)
 
 
 
@@ -58,7 +55,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("data.frame"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -67,7 +64,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("DataFrame"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -76,7 +73,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("factor"),
-    .upperCamelVector)
+    .upperCamel.vector)
 
 
 
@@ -85,7 +82,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("list"),
-    .setNamesUpperCamelNoRownames)
+    .upperCamel.names)
 
 
 
@@ -94,7 +91,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("matrix"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -103,4 +100,4 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("tbl_df"),
-    .setNamesUpperCamelNoRownames)
+    .upperCamel.names)

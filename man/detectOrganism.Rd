@@ -56,6 +56,8 @@ detectOrganism("XXX")
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
