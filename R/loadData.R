@@ -20,7 +20,6 @@
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
-#' @param replace Replace existing object in destination environment.
 #' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
@@ -34,18 +33,16 @@ loadData <- function(
     ...,
     dir = getwd(),
     envir = parent.frame(),
-    replace = FALSE,
     quiet = FALSE) {
     dir <- initializeDirectory(dir)
     assert_is_environment(envir)
-    assert_is_a_bool(replace)
     assert_is_a_bool(quiet)
 
     # `dots()` method will fail here because the objects aren't present
     dots <- as.list(substitute(list(...)))[-1L]
     invisible(lapply(dots, assert_is_name))
-    names <- as.character(dots)
 
+    names <- as.character(dots)
     files <- file.path(dir, paste0(names, ".rda"))
     assert_all_are_existing_files(files)
 
@@ -56,7 +53,7 @@ loadData <- function(
     objects <- mapply(
         FUN = .safeLoad,
         files,
-        MoreArgs = list(envir = envir, replace = replace)
+        MoreArgs = list(envir = envir)
     )
     names(objects) <- names
 
