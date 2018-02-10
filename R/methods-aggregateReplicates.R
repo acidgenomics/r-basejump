@@ -38,7 +38,8 @@ NULL
 # Constructors =================================================================
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateReplicates.dgCMatrix <- function(object, groupings) {
-    .checkReplicateGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(colnames(object), names(groupings))
     t <- Matrix::t(object)
     rownames(t) <- groupings
     tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
@@ -49,7 +50,8 @@ NULL
 
 
 .aggregateReplicates.matrix <- function(object, groupings) {
-    .checkReplicateGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(colnames(object), names(groupings))
     t <- t(object)
     rownames(t) <- groupings
     tagg <- rowsum(x = t, group = groupings, reorder = FALSE)

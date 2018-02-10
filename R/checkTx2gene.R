@@ -4,7 +4,7 @@
 #'   mappings. Must be structured as a two column [data.frame] with "enstxp" and
 #'   "ensgene" columns.
 #'
-#' @return `TRUE` on pass, stop on error.
+#' @return Invisible `TRUE` on pass, [stop()] on error.
 #' @export
 #'
 #' @examples
@@ -16,5 +16,5 @@ checkTx2gene <- function(object) {
         colnames(object),
         c("enstxp", "ensgene")
     )
-    TRUE
+    invisible(TRUE)
 }

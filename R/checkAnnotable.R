@@ -3,7 +3,7 @@
 #' @param object [data.frame] containing Ensembl gene annotations returned
 #'   from the [annotable()] function.
 #'
-#' @return `TRUE` on pass, [stop()] on error.
+#' @return Invisible `TRUE` on pass, [stop()] on error.
 #' @export
 #'
 #' @examples
@@ -15,5 +15,5 @@ checkAnnotable <- function(object) {
         c("ensgene", "symbol", "description", "biotype", "broadClass"),
         colnames(object)
     )
-    TRUE
+    invisible(TRUE)
 }
