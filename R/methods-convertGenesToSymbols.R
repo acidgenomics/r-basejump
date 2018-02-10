@@ -39,13 +39,14 @@ NULL
 
 
 # Constructors =================================================================
-.convertGenesToSymbols.character <- function(  # nolint
+.convertGenesToSymbols <- function(  # nolint
     object,
     organism,
     release = NULL,
     quiet = FALSE) {
-    .checkRelease(release)
-    .checkQuiet(quiet)
+    assert_is_character(object)
+    .assert_is_numeric_scalar_or_null(release)
+    assert_is_a_bool(quiet)
 
     if (any(is.na(object))) {
         abort("NA identifier detected")
@@ -61,11 +62,7 @@ NULL
     } else {
         organism <- detectOrganism(organism)
     }
-    if (is.null(organism)) {
-        warn("Returning unmodified gene identifiers")
-        names(object) <- object
-        return(object)
-    }
+    assert_is_a_string(organism)
 
     gene2symbol <- annotable(
         organism,
@@ -77,16 +74,19 @@ NULL
 
     symbol <- gene2symbol[["symbol"]]
     names(symbol) <- gene2symbol[["ensgene"]]
+
     if (!all(object %in% names(symbol))) {
         nomatch <- setdiff(object, rownames(gene2symbol))
         names(nomatch) <- nomatch
         warn(paste(
-            "Failed to match all gene IDs to symbols:",
+            "Failed to match all genes to symbols:",
             toString(nomatch)
-            ))
+        ))
         symbol <- c(symbol, nomatch)
     }
 
+    assert_is_character(symbol)
+    assert_has_names(symbol)
     symbol[object]
 }
 
@@ -98,13 +98,14 @@ NULL
     release = NULL,
     quiet = FALSE) {
     # Passthrough: organism, release, quiet
-    x <- rownames(object)
-    x <- .convertGenesToSymbols.character(
-        object = x,
+    assert_has_rownames(object)
+    rownames <- rownames(object)
+    rownames <- .convertGenesToSymbols(
+        object = rownames,
         organism = organism,
         release = release,
         quiet = quiet)
-    rownames(object) <- x
+    rownames(object) <- rownames
     object
 }
 
@@ -116,7 +117,7 @@ NULL
 setMethod(
     "convertGenesToSymbols",
     signature("character"),
-    .convertGenesToSymbols.character)
+    .convertGenesToSymbols)
 
 
 
