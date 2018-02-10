@@ -3,13 +3,13 @@
     name = NULL,
     envir = parent.frame()) {
     assert_is_a_string(file)
-    assert_all_are_matching_regex(file, "\\.rda$")
     assert_all_are_existing_files(file)
     assert_is_any_of(name, c("character", "NULL"))
     assert_is_environment(envir)
 
     # Get the name from the file stem
     if (is.null(name)) {
+        assert_all_are_matching_regex(file, "\\.rda$")
         name <- gsub("\\.rda$", "", basename(file))
     }
 
