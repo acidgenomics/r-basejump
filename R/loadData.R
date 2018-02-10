@@ -34,64 +34,31 @@ loadData <- function(
     ...,
     dir = getwd(),
     envir = parent.frame(),
-    replace = TRUE,
+    replace = FALSE,
     quiet = FALSE) {
     dir <- initializeDirectory(dir)
     assert_is_environment(envir)
     assert_is_a_bool(replace)
     assert_is_a_bool(quiet)
 
-    # The dots method will error at this step because the objects (as symbols)
-    # aren't present in the calling environment
-    dots <- as.character(substitute(list(...)))[-1L]
+    # `dots()` method will fail here because the objects aren't present
+    dots <- as.list(substitute(list(...)))[-1L]
+    invisible(lapply(dots, assert_is_name))
+    names <- as.character(dots)
+
+    files <- file.path(dir, paste0(names, ".rda"))
+    assert_all_are_existing_files(files)
 
     if (!isTRUE(quiet)) {
-        inform(paste("Loading", toString(dots), "from", dir))
+        inform(paste("Loading", toString(basename(files)), "from", dir))
     }
 
-    files <- vapply(
-        X = dots,
-        FUN = function(name) {
-            file <- file.path(dir, paste0(name, ".rda"))
-            # Check to see if object is present in environment
-            if (exists(name, envir = envir, inherits = FALSE)) {
-                if (isTRUE(replace)) {
-                    warn(paste(
-                        "Replacing", name,
-                        "with the contents of", basename(file)
-                    ))
-                } else {
-                    return(warn(paste(
-                        "Skipping", basename(file),
-                        "because", name, "already exists"
-                    )))
-                }
-            }
-            # Error on missing file
-            assert_all_are_existing_files(file)
-            # Load into a temporary environment (safer)
-            tmpEnv <- new.env()
-            loaded <- load(file, envir = tmpEnv)
-            # Check for multiple saved objects
-            if (length(loaded) > 1L) {
-                abort(paste(
-                    basename(file), "contains multiple objects:",
-                    toString(loaded)
-                ))
-            }
-            # Check for file name and internal object name mismatch
-            assert_are_identical(name, loaded)
-            # Assign into the target environment
-            assign(
-                x = name,
-                value = get(name, envir = tmpEnv, inherits = FALSE),
-                envir = envir
-            )
-            # Prepare named character vector for invisible return
-            names(file) <- name
-            file
-        },
-        FUN.VALUE = "character")
+    objects <- mapply(
+        FUN = .safeLoad,
+        files,
+        MoreArgs = list(envir = envir, replace = replace)
+    )
+    names(objects) <- names
 
-    invisible(files)
+    invisible(objects)
 }
