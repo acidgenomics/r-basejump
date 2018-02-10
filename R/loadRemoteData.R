@@ -82,7 +82,7 @@ loadRemoteData <- function(
     rownames(files) <- gsub(extPattern, "", basename(files[, "url"]))
 
     names <- rownames(files)
-    tempfiles <- files[, "tempfile"]
+    tempfiles <- files[, "tempfile", drop = TRUE]
 
     # Now we're ready to load safely from the tempdir
     objects <- mapply(
