@@ -70,6 +70,7 @@ NULL
 #' @importFrom dplyr mutate rename
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom magrittr set_rownames
+#' @importFrom rlang .data
 #' @importFrom S4Vectors mcols
 #' @importFrom utils capture.output find tail
 .annotable <- function(
@@ -267,6 +268,7 @@ NULL
 #' @noRd
 #'
 #' @importFrom dplyr case_when mutate
+#' @importFrom rlang .data
 #'
 #' @return [data.frame] with `broadClass` column.
 .defineBroadClass <- function(object) {
@@ -335,6 +337,7 @@ NULL
 #' @importFrom dplyr distinct everything group_by left_join mutate rename select
 #'   summarize_all ungroup
 #' @importFrom magrittr set_rownames
+#' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
 #'

@@ -37,7 +37,7 @@
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_scalar
 #'
-#' @importFrom rlang !! !!! .data abort inform sym syms warn
+#' @importFrom rlang abort inform warn
 "_PACKAGE"
 
 
