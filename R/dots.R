@@ -31,12 +31,7 @@
 #' @examples
 #' dots(mtcars, starwars)
 #' dots(mtcars, starwars, character = TRUE)
-NULL
-
-
-
-# Constructors =================================================================
-.dots <- function(..., character = FALSE) {
+dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))
     assert_is_list(dots)
     assert_is_non_empty(dots)
@@ -57,13 +52,3 @@ NULL
         dots
     }
 }
-
-
-
-# Methods ======================================================================
-#' @rdname dots
-#' @export
-setMethod(
-    "dots",
-    signature("..." = "ANY"),
-    .dots)

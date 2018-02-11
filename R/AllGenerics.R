@@ -77,17 +77,6 @@ setGeneric("detectOrganism", function(object, ...) {
 
 
 
-#' @rdname dots
-#' @export
-setGeneric(
-    "dots",
-    signature = "...",
-    function(..., character = FALSE) {
-    standardGeneric("dots")
-})
-
-
-
 #' @rdname dotted
 #' @export
 setGeneric("dotted", function(object, ...) {
