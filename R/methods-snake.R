@@ -67,18 +67,17 @@ NULL
 
 
 
+#' @importFrom assertive has_colnames has_rownames
 .snake.dim <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames)) {
-        assert_has_rownames(object)
+    if (isTRUE(rownames) && has_rownames(object)) {
         rownames(object) <- .snake(rownames(object))
     }
-    if (isTRUE(colnames)) {
-        assert_has_colnames(object)
+    if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .snake(colnames(object))
     }
     object

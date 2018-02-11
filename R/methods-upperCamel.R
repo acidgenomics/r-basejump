@@ -27,6 +27,7 @@
 
 
 
+#' @importFrom assertive has_colnames has_rownames
 .upperCamel.dim <- function(  # nolint
     object,
     rownames = FALSE,
@@ -35,12 +36,10 @@
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames)) {
-        assert_has_rownames(object)
+    if (isTRUE(rownames) && has_rownames(object)) {
         rownames(object) <- .upperCamel(rownames(object), strict = strict)
     }
-    if (isTRUE(colnames)) {
-        assert_has_colnames(object)
+    if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .upperCamel(colnames(object), strict = strict)
     }
     object
