@@ -23,6 +23,21 @@ NULL
 
 
 
+# Constructors =================================================================
+.readYAML <- function(
+    object,
+    quiet = FALSE) {
+    assert_is_a_string(object)
+    assert_all_are_matching_regex(object, "\\.ya?ml$")
+    assert_is_a_bool(quiet)
+    file <- localOrRemoteFile(object, quiet = quiet)
+    if (!isTRUE(quiet)) {
+        inform(paste("Reading", names(file)))
+    }
+    yaml.load_file(file)
+}
+
+
 # Methods ======================================================================
 #' @rdname readYAML
 #' @importFrom yaml yaml.load_file
@@ -30,22 +45,4 @@ NULL
 setMethod(
     "readYAML",
     signature("character"),
-    function(
-        object,
-        quiet = FALSE) {
-        .checkQuiet(quiet)
-        if (!grepl("\\.ya?ml$", object)) {
-            abort("YAML file must contain `.yaml` or `.yml` extension")
-        }
-        file <- localOrRemoteFile(object, quiet = quiet)
-        if (is.null(file)) {
-            warn(paste(
-                basename(object), "file missing"
-            ))
-            return(NULL)
-        }
-        if (!isTRUE(quiet)) {
-            inform(paste("Reading", names(file)))
-        }
-        yaml.load_file(file)
-    })
+    .readYAML)
