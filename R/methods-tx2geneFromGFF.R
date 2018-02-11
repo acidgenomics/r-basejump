@@ -33,9 +33,13 @@ NULL
 .tx2geneFromGFF <- function(
     object,
     quiet = FALSE) {
+    assert_is_data.frame(object)
+    assert_is_a_bool(quiet)
+
     anno <- object %>%
         .gffKeyValuePairs() %>%
-        .[grepl("transcript_id", .) & grepl("gene_id", .)] %>%
+        .[grepl("transcript_id", .)] %>%
+        .[grepl("gene_id", .)] %>%
         unique()
 
     enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
@@ -43,20 +47,23 @@ NULL
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
 
-    df <- cbind(enstxp, ensgene) %>%
-        as.data.frame(stringsAsFactors = FALSE) %>%
-        distinct() %>%
-        arrange(!!sym("enstxp")) %>%
-        set_rownames(.[["enstxp"]])
+    assert_all_are_non_empty_character(enstxp)
+    assert_all_are_non_empty_character(ensgene)
+    assert_are_same_length(enstxp, ensgene)
 
     if (!isTRUE(quiet)) {
         inform(paste(
             "tx2gene mappings:",
-            nrow(df), "transcripts,",
-            length(unique(df[["ensgene"]])), "genes"))
+            length(enstxp), "transcripts,",
+            length(unique(ensgene)), "genes"
+        ))
     }
 
-    df
+    cbind(enstxp, ensgene) %>%
+        as.data.frame(stringsAsFactors = FALSE) %>%
+        distinct() %>%
+        arrange(!!sym("enstxp")) %>%
+        set_rownames(.[["enstxp"]])
 }
 
 

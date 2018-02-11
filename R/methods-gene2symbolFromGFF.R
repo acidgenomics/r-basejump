@@ -48,7 +48,8 @@ NULL
     }
 
     anno <- anno %>%
-        .[grepl("gene_id", .) && grepl("gene_name", .)] %>%
+        .[grepl("gene_id", .)] %>%
+        .[grepl("gene_name", .)] %>%
         unique()
 
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
@@ -56,14 +57,18 @@ NULL
     symbol <- str_match(anno, "gene_name ([^;]+);") %>%
         .[, 2L]
 
+    assert_all_are_non_empty_character(ensgene)
+    assert_all_are_non_empty_character(symbol)
+    assert_are_same_length(ensgene, symbol)
+
+    if (!isTRUE(quiet)) {
+        inform(paste("gene2symbol mappings:", length(ensgene), "genes"))
+    }
+
     data <- cbind(ensgene, symbol) %>%
         as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         arrange(!!sym("ensgene"))
-
-    if (!isTRUE(quiet)) {
-        inform(paste("gene2symbol mappings:", nrow(data), "genes"))
-    }
 
     if (isTRUE(uniqueSymbol)) {
         data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
