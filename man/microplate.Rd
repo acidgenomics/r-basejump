@@ -16,7 +16,7 @@ microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 \item{prefix}{\emph{Optional}. Plate name prefix.}
 }
 \value{
-\link{data.frame}.
+Character vector containing well identifiers.
 }
 \description{
 Microtiter Plate Well Identifiers
