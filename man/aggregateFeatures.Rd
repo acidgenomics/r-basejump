@@ -17,7 +17,7 @@ aggregateFeatures(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{groupings}{Feature groupings (e.g. gene or transcript IDs), defined as
 a named factor. The pooled features must be defined as the factor levels,

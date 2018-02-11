@@ -42,7 +42,7 @@ convertGenesToSymbols(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{organism}{\emph{Optional}. Organism name. Normally this argument is
 unnecessary and can be left unset. If a count matrix starts with a

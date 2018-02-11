@@ -21,7 +21,7 @@ logRatioToFoldChange(object, ...)
 \arguments{
 \item{object}{Numeric of log ratio or fold change values.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}
