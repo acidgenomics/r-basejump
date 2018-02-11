@@ -42,17 +42,24 @@ transmit <- function(
     rename = NULL,
     compress = FALSE,
     quiet = FALSE) {
-    if (!grepl("ftp\\://", remoteDir)) {
-        abort("FTP protocol not detected")
-    }
-    # Fix trailing slash, if necessary
+    assert_is_a_string(remoteDir)
+    # Check for public FTP protocol
+    assert_all_are_matching_regex(remoteDir, "^ftp\\://")
+    # Append trailing slash, if necessary
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }
+    localDir <- initializeDirectory(localDir)
+    assert_is_a_string(pattern)
+    .assert_is_a_string_or_null(rename)
+    assert_is_a_bool(compress)
+    assert_is_a_bool(quiet)
 
     remoteList <- remoteDir %>%
         getURL() %>%
         read_lines()
+    assert_is_non_empty(remoteList)
+
     remoteFileList <- remoteList %>%
         # Match the `-` at begining for file
         # `-rwxrwxr-x`: File
@@ -60,51 +67,42 @@ transmit <- function(
         .[grepl("^-", .)] %>%
         # File name is at the end, not including a space
         str_extract(pattern = "[^\\s]+$")
-
-    if (!length(remoteFileList)) {
-        abort("No files listed on remote server")
-    }
+    assert_is_non_empty(remoteFileList)
 
     # Apply pattern matching
     remoteFileName <- str_subset(remoteFileList, pattern)
-    if (!length(remoteFileName)) {
-        abort("Pattern didn't match any files")
-    }
+    assert_is_non_empty(remoteFileName)
 
     # Rename files, if desired
-    if (!is.null(rename)) {
-        if (!identical(length(rename), length(remoteFileName))) {
-            abort("Rename vector doesn't match the number of remote files")
-        }
+    if (is.character(rename)) {
+        assert_are_identical(length(rename), length(remoteFileName)
+        )
     }
 
-    # Ensure the local directory exists
-    dir.create(localDir, recursive = TRUE, showWarnings = FALSE)
     if (!isTRUE(quiet)) {
         inform(paste("Downloading", toString(remoteFileName)))
     }
+
     list <- lapply(seq_along(remoteFileName), function(a) {
         # Rename file, if desired
-        if (!is.null(rename)) {
+        if (is.character(rename)) {
             localFileName <- rename[a]
         } else {
             localFileName <- remoteFileName[a]
         }
-
         remoteFilePath <- paste0(remoteDir, remoteFileName[a])
         localFilePath <- file.path(localDir, localFileName)
         download.file(
             url = remoteFilePath,
             destfile = localFilePath,
             quiet = quiet)
-
         # Compress, if desired
         if (isTRUE(compress)) {
             localFilePath <- gzip(localFilePath, overwrite = TRUE)
         }
-
         localFilePath
     })
     names(list) <- remoteFileName
+
     invisible(list)
 }
