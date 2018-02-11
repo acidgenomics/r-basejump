@@ -6,7 +6,7 @@
     assert_is_any_of(x, c("character", "logical"))
     if (is.character(x)) {
         assert_is_a_string(x)
-        assert_is_subset(x, c("bzip", "gzip", "xz"))
+        assert_is_subset(x, c("bzip2", "gzip", "xz"))
     }
 }
 
