@@ -61,7 +61,7 @@ microplate <- function(
         vector <- vector[!grepl(grep, vector)]
     }
     # Add a prefix, if desired:
-    if (is_string(prefix)) {
+    if (is_a_string(prefix)) {
         vector <- paste0(prefix, "-", vector)
     } else if (!is.null(prefix)) {
         abort("`prefix` must be a string")
