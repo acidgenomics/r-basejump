@@ -26,14 +26,6 @@ NULL
 
 
 # Constructors =================================================================
-.gffKeyValuePairs <- function(object) {
-    object %>%
-        .[[9L]] %>%
-        unique()
-}
-
-
-
 #' @importFrom dplyr arrange distinct
 #' @importFrom magrittr set_rownames
 #' @importFrom stringr str_match
