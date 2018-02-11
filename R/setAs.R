@@ -19,15 +19,15 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom assertive has_rownames
 #' @importFrom tibble as_tibble rownames_to_column
 .as.tibble <- function(from) {  # nolint
     assert_has_dims(from)
     from <- as.data.frame(from)
-    if (has_rownames(from)) {
+    # Don't use `assertive::has_rownames()` here
+    if (tibble::has_rownames(from)) {
         from <- rownames_to_column(from)
     }
-    tibble::as_tibble(from)
+    as_tibble(from)
 }
 
 
