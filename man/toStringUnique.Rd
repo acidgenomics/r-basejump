@@ -4,12 +4,15 @@
 \name{toStringUnique}
 \alias{toStringUnique}
 \alias{toStringUnique}
-\alias{toStringUnique,character-method}
+\alias{toStringUnique,factor-method}
+\alias{toStringUnique,vector-method}
 \title{Convert to a Unique Character String}
 \usage{
 toStringUnique(object, ...)
 
-\S4method{toStringUnique}{character}(object)
+\S4method{toStringUnique}{factor}(object)
+
+\S4method{toStringUnique}{vector}(object)
 }
 \arguments{
 \item{object}{Object.}

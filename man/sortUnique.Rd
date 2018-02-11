@@ -4,10 +4,13 @@
 \name{sortUnique}
 \alias{sortUnique}
 \alias{sortUnique}
+\alias{sortUnique,factor-method}
 \alias{sortUnique,vector-method}
 \title{Quickly Perform Sort Unique on a Vector}
 \usage{
 sortUnique(object, ...)
+
+\S4method{sortUnique}{factor}(object)
 
 \S4method{sortUnique}{vector}(object)
 }
