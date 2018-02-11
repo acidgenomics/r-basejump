@@ -109,21 +109,14 @@ test_that("annotables package data.frame input", {
     malformed <- grch37[, c("ensgene", "symbol")]
     expect_error(
         annotable(malformed),
-        paste(
-            "is_subset :",
-            "The elements 'description', 'biotype' in annotableCols",
-            "are not in colnames\\(object\\)."
-        )
+        "is_subset"
     )
 })
 
 test_that("Unsupported Ensembl release", {
     expect_error(
         annotable("Mus musculus", release = 86L),
-        paste(
-            "is_greater_than_or_equal_to :",
-            "release are not all greater than or equal to 87L."
-        )
+        "is_greater_than_or_equal_to"
     )
 })
 
@@ -137,15 +130,11 @@ test_that("Unsupported organism", {
 test_that("Bad input", {
     expect_error(
         annotable(c("human", "mouse")),
-        "is_a_string : object has length 2, not 1"
+        "is_a_string"
     )
     expect_error(
         annotable("Homo sapiens", format = "XXX"),
-        paste(
-            "is_subset :",
-            "The element 'XXX' in format is not in",
-            "c\\(\"gene\", \"gene2symbol\", \"tx2gene\"\\)."
-        )
+        "is_subset"
     )
 })
 
@@ -186,11 +175,6 @@ test_that("Collapse annotables tibble", {
 test_that("Internal `broadClass` column integrity", {
     expect_error(
         .defineBroadClass(mtcars),
-        paste(
-            "is_subset :",
-            "The elements 'biotype', 'symbol' in",
-            "c\\(\"biotype\", \"symbol\"\\)",
-            "are not in colnames\\(object\\)."
-        )
+        "is_subset"
     )
 })

@@ -35,17 +35,10 @@ test_that("dgCMatrix", {
 test_that("Invalid `groupings`", {
     expect_error(
         aggregateFeatures(mat, groupings = "XXX"),
-        paste(
-            "is_factor :",
-            "groupings is not of class 'factor';",
-            "it has class 'character'."
-        )
+        "is_factor"
     )
     expect_error(
         aggregateFeatures(mat, groupings = factor(c("XXX", "YYY"))),
-        paste(
-            "are_identical :",
-            "rownames\\(object\\) and names\\(groupings\\) are not identical."
-        )
+        "are_identical"
     )
 })
