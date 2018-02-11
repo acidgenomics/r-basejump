@@ -1,3 +1,4 @@
+devtools::load_all()
 library(tidyverse)
 
 # Support for C. elegans is poor here. Use WormBase instead.
@@ -55,5 +56,8 @@ synonyms <- lapply(genomes, function(genome) {
         arrange(ensgene)
 })
 names(synonyms) <- names(genomes)
+
+synonyms$date <- Sys.Date()
+synonyms$sessionInfo <- sessionInfo()
 
 devtools::use_data(synonyms, overwrite = TRUE, compress = "xz")
