@@ -3,7 +3,7 @@
 #' @rdname toStringUnique
 #' @name toStringUnique
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @seealso [base::toString()].
 #'

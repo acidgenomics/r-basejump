@@ -4,7 +4,7 @@
 #' @name dynamicPlotlist
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param return Return type. "grid", "list", and "markdown" are supported.
 #' @param headerLevel Markdown header level. Only applicable when

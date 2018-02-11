@@ -5,7 +5,7 @@
 #' @family Data Management Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param groupings Feature groupings (e.g. gene or transcript IDs), defined as
 #'   a named factor. The pooled features must be defined as the factor levels,

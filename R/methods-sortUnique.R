@@ -7,7 +7,7 @@
 #' @name sortUnique
 #' @family Cleanup Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Unique vector.
 #' @export

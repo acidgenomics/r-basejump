@@ -6,7 +6,7 @@
 #' @rdname assignAndSaveData
 #' @family Object Assignment Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param name Desired variable name.

@@ -1,18 +1,3 @@
-#' S4 Generics
-#'
-#' @rdname AllGenerics
-#' @name AllGenerics
-#' @keywords internal
-#'
-#' @param object Object.
-#' @param x Primary object.
-#' @param y Secondary object.
-#' @param value Value to assign.
-#' @param ... Additional arguments.
-NULL
-
-
-
 #' @rdname aggregateFeatures
 #' @export
 setGeneric("aggregateFeatures", function(object, ...) {

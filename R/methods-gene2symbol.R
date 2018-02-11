@@ -4,7 +4,7 @@
 #' @name gene2symbol
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @return [data.frame].

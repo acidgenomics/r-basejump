@@ -12,7 +12,7 @@
 #' @importFrom stringr str_extract str_subset
 #' @importFrom utils download.file
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either

@@ -4,7 +4,7 @@
 #' @name convertTranscriptsToGenes
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @return Same class as object.

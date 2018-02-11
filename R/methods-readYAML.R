@@ -4,7 +4,7 @@
 #' @name readYAML
 #' @family Data Import and Project Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param object YAML file path.

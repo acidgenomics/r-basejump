@@ -4,7 +4,7 @@
 #' @name readGFF
 #' @family Data Import and Project Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @details The GFF (General Feature Format) format consists of one line per

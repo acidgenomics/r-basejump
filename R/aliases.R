@@ -1,5 +1,5 @@
 #' @rdname gene2symbolFromGFF
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 gene2symbolFromGTF <- function(...) {
     gene2symbolFromGFF(...)
@@ -8,7 +8,7 @@ gene2symbolFromGTF <- function(...) {
 
 
 #' @rdname geometricMean
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 geomean <- function(...) {
     geometricMean(...)
@@ -17,7 +17,7 @@ geomean <- function(...) {
 
 
 #' @rdname initializeDirectory
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 initializeDir <- function(...) {
     initializeDirectory(...)
@@ -26,7 +26,7 @@ initializeDir <- function(...) {
 
 
 #' @rdname markdownHeader
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 mdHeader <- function(...) {
     markdownHeader(...)
@@ -35,7 +35,7 @@ mdHeader <- function(...) {
 
 
 #' @rdname markdownList
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 mdList <- function(...) {
     markdownList(...)
@@ -44,7 +44,7 @@ mdList <- function(...) {
 
 
 #' @rdname markdownPlotlist
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 mdPlotlist <- function(...) {
     markdownPlotlist(...)
@@ -53,7 +53,7 @@ mdPlotlist <- function(...) {
 
 
 #' @rdname readGFF
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 readGTF <- function(...) {
     readGFF(...)
@@ -62,7 +62,7 @@ readGTF <- function(...) {
 
 
 #' @rdname tx2geneFromGFF
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @export
 tx2geneFromGTF <- function(...) {
     tx2geneFromGFF(...)

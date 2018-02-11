@@ -4,7 +4,7 @@
 #' @name markdownPlotlist
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param headerLevel Header level.
 #'

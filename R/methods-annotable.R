@@ -34,7 +34,7 @@
 #' @name annotable
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param object Object. Default recommended usage is to provide full latin
@@ -341,7 +341,7 @@ NULL
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return [data.frame].
 .prepareAnnotable <- function(object) {

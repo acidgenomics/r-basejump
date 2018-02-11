@@ -4,7 +4,7 @@
 #' @name fixNA
 #' @family Cleanup Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Object containing proper `NA` values.
 #'

@@ -4,7 +4,7 @@
 #' @name tx2gene
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @return [data.frame].

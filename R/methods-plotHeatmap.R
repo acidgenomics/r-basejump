@@ -7,7 +7,7 @@
 #' @rdname plotHeatmap
 #' @name plotHeatmap
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding

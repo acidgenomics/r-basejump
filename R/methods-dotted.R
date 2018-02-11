@@ -13,7 +13,7 @@
 #' @name dotted
 #' @family Make Names Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.

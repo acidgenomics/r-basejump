@@ -4,7 +4,7 @@
 #' @name plotQuantileHeatmap
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams plotHeatmap
 #'
 #' @param n The number of breaks to create.

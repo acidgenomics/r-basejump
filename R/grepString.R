@@ -5,7 +5,7 @@
 #'
 #' @family String Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Comma separated grep string.
 #' @export

@@ -4,7 +4,7 @@
 #' @name logRatio
 #' @family Math Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param object Numeric of log ratio or fold change values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
