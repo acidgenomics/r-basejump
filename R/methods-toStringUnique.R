@@ -17,8 +17,10 @@ NULL
 
 
 # Constructors =================================================================
+#' @importFrom stats na.omit
 .toStringUnique <- function(object) {
     object %>%
+        as.character() %>%
         na.omit() %>%
         unique() %>%
         toString()
@@ -31,5 +33,14 @@ NULL
 #' @export
 setMethod(
     "toStringUnique",
-    signature("character"),
+    signature("factor"),
+    .toStringUnique)
+
+
+
+#' @rdname toStringUnique
+#' @export
+setMethod(
+    "toStringUnique",
+    signature("vector"),
     .toStringUnique)
