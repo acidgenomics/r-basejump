@@ -24,8 +24,11 @@ NULL
     object,
     ordered = FALSE,
     asis = FALSE) {
-    .checkOrdered(ordered)
-    .checkAsis(asis)
+    assert_is_character(object)
+    assert_all_are_not_na(object)
+    assert_all_are_non_empty_character(object)
+    assert_is_a_bool(ordered)
+    assert_is_a_bool(asis)
 
     list <- vapply(
         X = seq_along(object),
