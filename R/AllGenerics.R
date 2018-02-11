@@ -262,14 +262,6 @@ setGeneric("stripTranscriptVersions", function(object, ...) {
 
 
 
-#' @rdname symbol2gene
-#' @export
-setGeneric("symbol2gene", function(object, ...) {
-    standardGeneric("symbol2gene")
-})
-
-
-
 #' @rdname toStringUnique
 #' @export
 setGeneric("toStringUnique", function(object, ...) {
