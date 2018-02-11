@@ -8,6 +8,13 @@
 #' @name readFileByExtension
 #' @family Data Import and Project Utilities
 #'
+#' @importFrom Matrix readMM
+#' @importFrom stringr str_match
+#' @importFrom readr read_csv read_lines read_tsv
+#' @importFrom readxl read_excel
+#' @importFrom tibble column_to_rownames
+#' @importFrom utils read.table
+#'
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
 #'
@@ -25,18 +32,7 @@
 #'
 #' @examples
 #' readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
-NULL
-
-
-
-# Constructors =================================================================
-#' @importFrom Matrix readMM
-#' @importFrom stringr str_match
-#' @importFrom readr read_csv read_lines read_tsv
-#' @importFrom readxl read_excel
-#' @importFrom tibble column_to_rownames
-#' @importFrom utils read.table
-.readFileByExtension <- function(
+readFileByExtension <- function(
     object,
     makeNames = "camel",
     quiet = FALSE,
@@ -116,13 +112,3 @@ NULL
 
     data
 }
-
-
-
-# Methods ======================================================================
-#' @rdname readFileByExtension
-#' @export
-setMethod(
-    "readFileByExtension",
-    signature("character"),
-    .readFileByExtension)
