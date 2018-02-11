@@ -14,6 +14,14 @@ geomean <- function(...) {
 
 
 
+#' @rdname initializeDirectory
+#' @export
+initializeDir <- function(...) {
+    initializeDirectory(...)
+}
+
+
+
 #' @rdname markdownHeader
 #' @export
 mdHeader <- function(...) {
