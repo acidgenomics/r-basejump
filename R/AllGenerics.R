@@ -199,14 +199,6 @@ setGeneric("plotQuantileHeatmap", function(object, ...) {
 
 
 
-#' @rdname readFileByExtension
-#' @export
-setGeneric("readFileByExtension", function(object, ...) {
-    standardGeneric("readFileByExtension")
-})
-
-
-
 #' @rdname readGFF
 #' @export
 setGeneric("readGFF", function(object, ...) {
