@@ -9,9 +9,19 @@
 #' @return Object containing proper `NA` values.
 #'
 #' @examples
+#' # character
 #' fixNA(c(1L, "x", "", "NA", "NULL"))
 #'
+#' # data.frame
 #' data.frame(
+#'     a = c("foo", ""),
+#'     b = c(NA, "bar"),
+#'     stringsAsFactors = FALSE
+#' ) %>%
+#'     fixNA()
+#'
+#' # tibble
+#' tibble(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar")
 #' ) %>%
@@ -21,7 +31,8 @@ NULL
 
 
 # Constructors =================================================================
-.fixNAString <- function(object) {
+.fixNA.character <- function(object) {
+    assert_is_character(object)
     patterns <- c(
         "^$",
         "^\\s+$",
@@ -33,8 +44,8 @@ NULL
 
 
 #' @importFrom dplyr funs mutate_if
-.fixNATidy <- function(object) {
-    mutate_if(object, is.character, funs(.fixNAString))
+.fixNA.tidy <- function(object) {  # nolint
+    mutate_if(object, is.character, funs(fixNA))
 }
 
 
@@ -57,7 +68,7 @@ setMethod(
 setMethod(
     "fixNA",
     signature("character"),
-    .fixNAString)
+    .fixNA.character)
 
 
 
@@ -66,7 +77,7 @@ setMethod(
 setMethod(
     "fixNA",
     signature("data.frame"),
-    .fixNATidy)
+    .fixNA.tidy)
 
 
 
@@ -78,7 +89,7 @@ setMethod(
     function(object) {
         object %>%
             as.data.frame() %>%
-            .fixNATidy() %>%
+            fixNA() %>%
             as("DataFrame")
     })
 
@@ -89,4 +100,4 @@ setMethod(
 setMethod(
     "fixNA",
     signature("tbl_df"),
-    .fixNATidy)
+    .fixNA.tidy)
