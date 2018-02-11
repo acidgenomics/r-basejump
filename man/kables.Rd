@@ -18,7 +18,8 @@ kables(object, ...)
 
 \item{captions}{Optional character vector of table captions.}
 
-\item{force}{Force kable output.}
+\item{force}{Force kable output. \emph{Recommended for development and unit
+testing only.}}
 
 \item{list}{List of column data (e.g. \link{data.frame}, \link{matrix}).}
 }

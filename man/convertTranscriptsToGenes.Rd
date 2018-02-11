@@ -15,28 +15,31 @@
 \usage{
 convertTranscriptsToGenes(object, ...)
 
-\S4method{convertTranscriptsToGenes}{character}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 
-\S4method{convertTranscriptsToGenes}{data.frame}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 
-\S4method{convertTranscriptsToGenes}{DataFrame}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 
-\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 
-\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 
-\S4method{convertTranscriptsToGenes}{matrix}(object, release = NULL,
-  quiet = FALSE)
+\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+
+\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+supported.}
 
 \item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
@@ -72,6 +75,6 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

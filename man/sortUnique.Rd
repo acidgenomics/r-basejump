@@ -4,12 +4,12 @@
 \name{sortUnique}
 \alias{sortUnique}
 \alias{sortUnique}
-\alias{sortUnique,character-method}
+\alias{sortUnique,vector-method}
 \title{Quickly Perform Sort Unique on a Vector}
 \usage{
 sortUnique(object, ...)
 
-\S4method{sortUnique}{character}(object)
+\S4method{sortUnique}{vector}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -24,7 +24,7 @@ The function also strips \code{NA} values. This is useful for gene list server
 queries, for example.
 }
 \examples{
-sortUnique(c("milk", "eggs", "eggs", NA))
+sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
 \seealso{
 Other Cleanup Utilities: \code{\link{fixNA}},

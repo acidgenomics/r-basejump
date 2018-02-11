@@ -28,35 +28,43 @@ camel(object, ...)
 
 upperCamel(object, ...)
 
-\S4method{camel}{ANY}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
-\S4method{camel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
-\S4method{camel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{factor}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
-\S4method{camel}{matrix}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{matrix}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{tbl_df}(object, strict = FALSE)
 
-\S4method{upperCamel}{ANY}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{upperCamel}{character}(object, strict = FALSE)
 
-\S4method{upperCamel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
-\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{upperCamel}{factor}(object, strict = FALSE)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
-\S4method{upperCamel}{matrix}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{matrix}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{upperCamel}{tbl_df}(object, strict = FALSE)
 }

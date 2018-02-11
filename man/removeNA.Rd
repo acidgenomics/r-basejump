@@ -44,13 +44,15 @@ Remove Rows and Columns Containing Only \code{NA} Values
 # Remove NA only rows and columns
 matrix(
     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
-    nrow = 3, ncol = 3) \%>\%
+    nrow = 3,
+    ncol = 3) \%>\%
     removeNA()
 
 data.frame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
-    c = c("B", NA, "D")) \%>\%
+    c = c("B", NA, "D"),
+    stringsAsFactors = FALSE) \%>\%
     removeNA()
 
 tibble(

@@ -45,7 +45,7 @@ names(list)
 dynamicPlotlist(plotlist, return = "markdown")
 }
 \seealso{
-\link{mdPlotlist}.
+\link{markdownPlotlist}.
 }
 \author{
 Michael Steinbaugh
