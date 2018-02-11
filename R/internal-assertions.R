@@ -8,8 +8,7 @@
     assert_is_any_of(x, c("data.frame", "logical"))
     if (is.data.frame(x)) {
         assert_has_colnames(x)
-        assert_has_rownames(x)
-
+        .assert_has_rownames_strict(x)
     }
     if (is.logical(x)) {
         assert_is_identical_to_na(x)
