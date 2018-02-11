@@ -50,7 +50,7 @@ NULL
     annotationCol = NA,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis(256L),
+    color = viridis::viridis,
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
@@ -59,9 +59,10 @@ NULL
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
     .assert_formal_annotation_col(annotationCol)
-    .checkColorVector(color)
-    .checkColorFunction(legendColor)
-    .checkTitle(title)
+    assert_is_any_of(color, c("character", "NULL"))
+    .assert_formal_color_function(color)
+    .assert_formal_color_function(legendColor)
+    .assert_is_a_string_or_null(title)
 
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
@@ -90,7 +91,7 @@ NULL
     }
 
     # Define colors for each annotation column, if desired
-    if (is.data.frame(annotationCol) & is.function(legendColor)) {
+    if (is.data.frame(annotationCol) && is.function(legendColor)) {
         annotationColors <- lapply(
             X = seq_along(colnames(annotationCol)),
             FUN = function(a) {
@@ -109,10 +110,13 @@ NULL
     }
 
     # If `color = NULL`, use the pheatmap default
-    if (!is.character(color)) {
+    nColor <- 256L
+    if (!is.function(color)) {
         color <- colorRampPalette(rev(
             brewer.pal(n = 7L, name = "RdYlBu")
-        ))(100L)
+        ))(nColor)
+    } else {
+        color <- color(nColor)
     }
 
     # Dynamic column and row labeling
