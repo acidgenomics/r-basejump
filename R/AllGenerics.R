@@ -205,26 +205,10 @@ setGeneric("snake", function(object, ...) {
 
 
 
-#' @rdname sortUnique
-#' @export
-setGeneric("sortUnique", function(object, ...) {
-    standardGeneric("sortUnique")
-})
-
-
-
 #' @rdname stripTranscriptVersions
 #' @export
 setGeneric("stripTranscriptVersions", function(object, ...) {
     standardGeneric("stripTranscriptVersions")
-})
-
-
-
-#' @rdname toStringUnique
-#' @export
-setGeneric("toStringUnique", function(object, ...) {
-    standardGeneric("toStringUnique")
 })
 
 

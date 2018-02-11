@@ -3,7 +3,6 @@
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by `dir`.
 #'
-#' @rdname assignAndSaveData
 #' @family Object Assignment Utilities
 #'
 #' @inheritParams general
