@@ -37,14 +37,23 @@ writeCounts <- function(
     dir = getwd(),
     gzip = TRUE,
     quiet = FALSE) {
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        dir.create(dir, recursive = TRUE)
-    }
-    dir <- normalizePath(dir)
-
     dots <- dots_list(...)
+    assert_is_list(dots)
+    invisible(lapply(dots, assert_has_dims))
+    invisible(lapply(dots, function(x) {
+        assert_is_any_of(
+            x,
+            c(
+                "data.frame",
+                "dgCMatrix",
+                "dgTMatrix",
+                "matrix"
+            )
+        )
+    }))
+    dir <- initializeDirectory(dir)
+    .assert_compress(compress)
+
 
     hasDim <- dots %>%
         sapply(dim) %>%

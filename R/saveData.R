@@ -30,31 +30,31 @@
 saveData <- function(
     ...,
     dir = getwd(),
-    ext = "rda",
     overwrite = TRUE,
     compress = "bzip2",
     quiet = FALSE) {
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        dir.create(dir, recursive = TRUE)
-    }
-    dir <- normalizePath(dir)
+    dir <- initializeDirectory(dir)
+    assert_is_a_bool(overwrite)
+    .assert_compress(compress)
+    assert_is_a_bool(quiet)
+
     objectNames <- dots(..., character = TRUE)
-    files <- file.path(dir, paste0(objectNames, ".", ext))
+    files <- file.path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
+
     if (!isTRUE(quiet)) {
         inform(paste("Saving", toString(basename(files)), "to", dir))
     }
-    # If overwrite = FALSE, message skipped files
-    if (identical(overwrite, FALSE) &
-        any(file.exists(files))) {
+
+    # If `overwrite = FALSE`, inform the user which files were skipped
+    if (identical(overwrite, FALSE) & any(file.exists(files))) {
         skip <- files[file.exists(files)]
         if (!isTRUE(quiet)) {
             inform(paste("Skipping", toString(basename(skip))))
         }
         files <- files[!file.exists(files)]
     }
+
     mapply(
         FUN = save,
         list = names(files),
@@ -64,9 +64,11 @@ saveData <- function(
             compress = compress
         )
     )
+
     # Silently return the file paths as a named character vector
     if (!length(files)) {
         files <- NULL
     }
+
     invisible(files)
 }
