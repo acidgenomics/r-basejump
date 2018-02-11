@@ -29,7 +29,15 @@ NULL
 
 # Methods ======================================================================
 #' @rdname sortUnique
-#' @importFrom stats na.omit
+#' @export
+setMethod(
+    "sortUnique",
+    signature("factor"),
+    .sortUnique)
+
+
+
+#' @rdname sortUnique
 #' @export
 setMethod(
     "sortUnique",
