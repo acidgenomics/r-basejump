@@ -1,7 +1,5 @@
 #' Extract Dots from Function
 #'
-#' @rdname dots
-#' @name dots
 #' @family Function Utilities
 #'
 #' @importFrom rlang eval_bare

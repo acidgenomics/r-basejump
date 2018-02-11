@@ -14,9 +14,15 @@ initializeDirectory(dir)
 
 \item{dir}{Directory path.}
 }
+\value{
+Directory path string.
+}
 \description{
-Initialize Directory
+Checks and creates a directory recursively automatically. Useful for setting
+up functions that require writes to a user-specified directory.
 }
 \examples{
-initializeDirectory(getwd())
+initializeDirectory("testdir")
+dir.exists("testdir")
+unlink("testdir")
 }

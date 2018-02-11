@@ -4,8 +4,6 @@
 #' files. Also supports bcbio-nextgen pipeline-specific `.counts`, `.colnames`,
 #' and `.rownames` files.
 #'
-#' @rdname readFileByExtension
-#' @name readFileByExtension
 #' @family Data Import and Project Utilities
 #'
 #' @importFrom Matrix readMM
