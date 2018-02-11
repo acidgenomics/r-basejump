@@ -16,6 +16,7 @@
 #' @importFrom Matrix writeMM
 #' @importFrom R.utils gzip
 #' @importFrom readr write_csv write_lines
+#' @importFrom rlang dots_list
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
