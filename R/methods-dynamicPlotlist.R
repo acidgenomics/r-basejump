@@ -10,7 +10,7 @@
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.
 #'
-#' @seealso [mdPlotlist].
+#' @seealso [markdownPlotlist].
 #'
 #' @return
 #' - `grid`: [cowplot::plot_grid()].
@@ -39,14 +39,9 @@ NULL
     object,
     return = "grid",
     headerLevel = 2L) {
-    validReturn <- c("grid", "list", "markdown")
-    if (!return %in% validReturn) {
-        abort(paste(
-            "`return` must contain:", toString(validReturn)
-        ))
-    }
-    .checkLevel(headerLevel)
-
+    assert_is_a_string(return)
+    assert_is_subset(return, c("grid", "list", "markdown"))
+    .assert_markdown_header_level(headerLevel)
     if (return == "grid") {
         plot_grid(plotlist = object)
     } else if (return == "list") {
