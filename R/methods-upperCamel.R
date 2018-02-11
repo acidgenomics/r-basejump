@@ -12,15 +12,15 @@
     strict = FALSE) {
     # Passthrough: rownames, colnames, strict
     if (!is.null(dimnames(object))) {
-        upperCamel.dim(
+        .upperCamel.dim(
             object,
             rownames = rownames,
             colnames = colnames,
             strict = strict)
     } else if (!is.null(names(object))) {
-        upperCamel.names(object, strict = strict)
+        .upperCamel.names(object, strict = strict)
     } else {
-        warn("Returning without UpperCamelCase sanitization applied")
+        warn("Returning without upper camel case sanitization applied")
         object
     }
 }
