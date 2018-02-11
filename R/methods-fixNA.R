@@ -16,15 +16,13 @@
 #' data.frame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
-#'     stringsAsFactors = FALSE
-#' ) %>%
+#'     stringsAsFactors = FALSE) %>%
 #'     fixNA()
 #'
 #' # tibble
 #' tibble(
 #'     a = c("foo", ""),
-#'     b = c(NA, "bar")
-#' ) %>%
+#'     b = c(NA, "bar")) %>%
 #'     fixNA()
 NULL
 
