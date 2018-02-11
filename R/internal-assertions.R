@@ -4,7 +4,7 @@
 #' @importFrom assertive assert_has_rownames
 #' @importFrom assertive assert_is_any_of
 #' @importFrom assertive assert_is_identical_to_na
-.assert_arg_annotation_col <- function(x) {
+.assert_formal_annotation_col <- function(x) {
     assert_is_any_of(x, c("data.frame", "logical"))
     if (is.data.frame(x)) {
         assert_has_colnames(x)

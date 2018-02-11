@@ -56,8 +56,9 @@ NULL
     ...) {
     # Parameter integrity checks ===============================================
     # Passthrough: clusterCols, clusterRows
-    .checkScale(scale)
-    .checkAnnotationCol(annotationCol)
+    assert_is_a_string(scale)
+    assert_is_subset(scale, c("row", "column", "none"))
+    .assert_formal_annotation_col(annotationCol)
     .checkColorVector(color)
     .checkColorFunction(legendColor)
     .checkTitle(title)

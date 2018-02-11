@@ -60,7 +60,7 @@ NULL
     title = NULL) {
     # Passthrough: clusterCols, clusterRows
     .checkNumericString(n)
-    .checkAnnotationCol(annotationCol)
+    .assert_formal_annotation_col(annotationCol)
     .checkColorFunction(color)
     .checkColorFunction(legendColor)
     .checkTitle(title)

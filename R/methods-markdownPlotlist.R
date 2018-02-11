@@ -21,7 +21,7 @@ NULL
 .markdownPlotlist <- function(object, headerLevel = 2L) {
     assert_is_list(object)
     assert_has_names(object)
-    .assert_markdown_header_level(level)
+    .assert_formal_header_level(level)
     invisible(lapply(seq_along(object), function(a) {
         name <- names(object)[[a]]
         if (is.character(name) && is.numeric(headerLevel)) {
