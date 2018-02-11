@@ -55,7 +55,7 @@ dotted(object, ...)
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
 will be meaningful.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should

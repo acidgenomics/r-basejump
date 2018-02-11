@@ -41,7 +41,7 @@ revcomp()
 symbol2gene()
 }
 \arguments{
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 }
 \value{
 Soft deprecation to new functions.

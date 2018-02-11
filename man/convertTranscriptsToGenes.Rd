@@ -36,7 +36,7 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
 supported.}

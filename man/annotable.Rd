@@ -23,7 +23,7 @@ annotable(object, ...)
 organism name as a string. Also supports input of pre-built tibbles from
 the annotables data package.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
 \code{gene2symbol}.}

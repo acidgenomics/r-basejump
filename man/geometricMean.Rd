@@ -29,7 +29,7 @@ geomean(...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{removeNA}{Remove \code{NA} values from calculations.}
 

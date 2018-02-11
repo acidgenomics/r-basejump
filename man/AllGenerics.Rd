@@ -12,7 +12,7 @@
 
 \item{value}{Value to assign.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 }
 \description{
 S4 Generics

@@ -17,7 +17,7 @@ aggregateReplicates(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{groupings}{Factor that defines the aggregation groupings. The new
 aggregation names are defined as the factor levels, and the original

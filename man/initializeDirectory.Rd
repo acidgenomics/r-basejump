@@ -10,6 +10,8 @@ initializeDir(...)
 initializeDirectory(dir)
 }
 \arguments{
+\item{...}{Additional arguments.}
+
 \item{dir}{Directory path.}
 }
 \description{

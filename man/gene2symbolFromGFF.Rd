@@ -21,7 +21,7 @@ gene2symbolFromGTF(...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
