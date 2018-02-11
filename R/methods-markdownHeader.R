@@ -31,13 +31,15 @@ NULL
     level = 2L,
     tabset = FALSE,
     asis = FALSE) {
-    header <- object
-    .checkLevel(level)
-    .checkTabset(tabset)
-    .checkAsis(asis)
+    assert_is_a_string(object)
+    assert_all_are_not_na(object)
+    assert_all_are_non_empty_character(object)
+    .assert_markdown_header_level(level)
+    assert_is_a_bool(tabset)
+    assert_is_a_bool(asis)
 
     # Add the header level
-    header <- paste(str_dup("#", level), header)
+    header <- paste(str_dup("#", level), object)
 
     # Append tabset label
     if (isTRUE(tabset)) {
