@@ -26,7 +26,6 @@ setMethod(
     signature("character"),
     function(object) {
         object %>%
-            as.character() %>%
             paste0(
                 # Unique
                 "^", ., "$",
