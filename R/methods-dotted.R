@@ -87,12 +87,13 @@ NULL
     object,
     rownames = FALSE,
     colnames = TRUE) {
+    # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
         dotted.dim(object, rownames = rownames, colnames = colnames)
     } else if (!is.null(names(object))) {
         dotted.names(object)
     } else {
-        warn("Returning without dotted case sanitization applied")
+        warn("Returning without dotted.case sanitization applied")
         object
     }
 }

@@ -50,12 +50,10 @@ NULL
     object,
     format = "lower",
     strict = FALSE) {
-    assert_is_any_of(object, c("character", "factor"))
+    object <- dotted(object)
     assert_is_a_string(format)
     assert_is_subset(format, c("lower", "upper"))
     assert_is_a_bool(strict)
-
-    object <- dotted(object)
 
     if (isTRUE(strict)) {
         object <- tolower(object)
@@ -90,78 +88,64 @@ NULL
 
 
 
+.camel.ANY <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE) {
+    # Passthrough: rownames, colnames, strict
+    if (!is.null(dimnames(object))) {
+        camel.dim(
+            object,
+            rownames = rownames,
+            colnames = colnames,
+            strict = strict)
+    } else if (!is.null(names(object))) {
+        camel.names(object, strict = strict)
+    } else {
+        warn("Returning without lowerCamelCase sanitization applied")
+        object
+    }
+}
+
+
 .camel.dim <- function(  # nolint
     object,
-    format = "lower",
     rownames = FALSE,
+    colnames = TRUE,
     strict = FALSE) {
-    # Passthrough: format, strict
+    # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-
-    if (!is.null(dimnames(object))) {
-        # Colnames
-        if (!is.null(colnames(object))) {
-            colnames(object) <- .camel(
-                colnames(object),
-                format = format,
-                strict = strict)
-        }
-        # Rownames
-        if (isTRUE(rownames) & .checkRownames(object)) {
-            rownames(object) <- .camel(
-                rownames(object),
-                format = format,
-                strict = strict)
-        }
-    } else if (!is.null(names(object))) {
-        names(object) <- .camel(
-            names(object),
-            format = format,
-            strict = strict)
+    if (isTRUE(rownames)) {
+        assert_has_rownames(object)
+        rownames(object) <- .camel(rownames(object), strict = strict)
     }
-
+    if (isTRUE(colnames)) {
+        assert_has_colnames(object)
+        colnames(object) <- .camel(colnames(object), strict = strict)
+    }
     object
 }
 
 
 
-.lowerCamel.dim <- function(  # nolint
-    object,
-    rownames = FALSE,
-    strict = FALSE) {
-    # Passthrough: object, rownames, strict
-    .camel.dim(
-        object,
-        format = "lower",
-        rownames = rownames,
-        strict = strict)
+.camel.names <- function(object, strict = FALSE) {  # nolint
+    # Passthrough: strict
+    assert_has_names(object)
+    names(object) <- .camel(names(object), strict = strict)
 }
 
 
 
-.lowerCamel.names <- function(object, strict = FALSE) {  # nolint
-    # Passthrough: object, strict
-    .lowerCamel.dim(object, rownames = FALSE, strict = strict)
-}
-
-
-
-.lowerCamel.vector <- function(object, strict = FALSE) {  # nolint
-    assert_is_any_of(object, c("character", "vector"))
+.camel.vector <- function(object, strict = FALSE) {  # nolint
     # Passthrough: strict
     if (!is.null(names(object))) {
-        names <- .camel(
-            names(object),
-            format = "lower",
-            strict = strict)
+        names <- .camel(names(object), strict = strict)
     } else {
         names <- NULL
     }
-    object <- .camel(
-        object,
-        format = "lower",
-        strict = strict)
+    object <- .camel(object, strict = strict)
     names(object) <- names
     object
 }
@@ -174,7 +158,7 @@ NULL
 setMethod(
     "camel",
     signature("ANY"),
-    .lowerCamel.dim)
+    .camel.ANY)
 
 
 
@@ -183,7 +167,7 @@ setMethod(
 setMethod(
     "camel",
     signature("character"),
-    .lowerCamel.vector)
+    .camel.vector)
 
 
 
@@ -192,7 +176,7 @@ setMethod(
 setMethod(
     "camel",
     signature("data.frame"),
-    .lowerCamel.dim)
+    .camel.dim)
 
 
 
@@ -201,7 +185,7 @@ setMethod(
 setMethod(
     "camel",
     signature("DataFrame"),
-    .lowerCamel.dim)
+    .camel.dim)
 
 
 
@@ -210,7 +194,7 @@ setMethod(
 setMethod(
     "camel",
     signature("factor"),
-    .lowerCamel.vector)
+    .camel.vector)
 
 
 
@@ -219,7 +203,16 @@ setMethod(
 setMethod(
     "camel",
     signature("list"),
-    .lowerCamel.names)
+    .camel.names)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "camel",
+    signature("List"),
+    .camel.names)
 
 
 
@@ -228,7 +221,16 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    .lowerCamel.dim)
+    .camel.dim)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "camel",
+    signature("SimpleList"),
+    .camel.names)
 
 
 
@@ -237,4 +239,4 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    .lowerCamel.names)
+    .camel.names)
