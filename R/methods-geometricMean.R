@@ -44,8 +44,8 @@ NULL
 
 # Constructors =================================================================
 .geometricMean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
-    assert_is_a_boolean(removeNA)
-    assert_is_a_boolean(zeroPropagate)
+    assert_is_a_bool(removeNA)
+    assert_is_a_bool(zeroPropagate)
 
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
