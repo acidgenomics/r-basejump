@@ -9,6 +9,7 @@
     if (is.data.frame(x)) {
         assert_has_colnames(x)
         assert_has_rownames(x)
+
     }
     if (is.logical(x)) {
         assert_is_identical_to_na(x)
@@ -60,6 +61,19 @@
     assert_is_numeric(x)
     assert_is_scalar(x)
     assert_is_subset(as.integer(x), seq(1L:7L))
+}
+
+
+
+#' @importFrom assertive assert_are_disjoint_sets
+#' @importFrom assertive assert_has_rownames
+.assert_has_rownames_strict <- function(x) {
+    assert_has_rownames(x)
+    stopifnot(tibble::has_rownames(x))
+    assert_are_disjoint_sets(
+        rownames(x),
+        as.character(seq_len(nrow(x)))
+    )
 }
 
 
