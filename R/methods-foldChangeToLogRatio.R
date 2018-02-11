@@ -31,7 +31,6 @@ setMethod(
     "foldChangeToLogRatio",
     signature("numeric"),
     function(object, base = 2L) {
-        .checkBase(base)
         object <- ifelse(object < 0L, 1L / -object, object)
         object <- log(object, base)
         object
