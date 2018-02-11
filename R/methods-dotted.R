@@ -127,6 +127,12 @@ NULL
 
 
 
+.dotted.tibble <- function(object) {  # nolint
+    .dotted.dim(object, rownames = FALSE, colnames = TRUE)
+}
+
+
+
 .dotted.vector <- function(object) {  # no lint
     if (!is.null(names(object))) {
         names <- .dotted(names(object))
@@ -243,4 +249,4 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    .dotted.names)
+    .dotted.tibble)

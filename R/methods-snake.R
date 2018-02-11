@@ -93,6 +93,11 @@ NULL
 }
 
 
+.snake.tibble <- function(object) {  # nolint
+    .snake.dim(object, rownames = FALSE, colnames = TRUE)
+}
+
+
 
 .snake.vector <- function(object) {  # nolint
     if (!is.null(names(object))) {
@@ -194,4 +199,4 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    .snake.names)
+    .snake.tibble)

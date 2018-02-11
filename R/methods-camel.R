@@ -138,6 +138,16 @@ NULL
 
 
 
+.camel.tibble <- function(object, strict = FALSE) {  # nolint
+    .camel.dim(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = strict)
+}
+
+
+
 .camel.vector <- function(object, strict = FALSE) {  # nolint
     # Passthrough: strict
     if (!is.null(names(object))) {
@@ -239,4 +249,4 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    .camel.names)
+    .camel.tibble)

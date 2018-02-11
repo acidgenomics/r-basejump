@@ -56,6 +56,16 @@
 
 
 
+.upperCamel.tibble <- function(object, strict = FALSE) {  # nolint
+    .upperCamel.dim(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = strict)
+}
+
+
+
 .upperCamel.vector <- function(object, strict = FALSE) {  # nolint
     if (!is.null(names(object))) {
         names <- .upperCamel(names(object), strict = strict)
@@ -156,4 +166,4 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("tbl_df"),
-    .upperCamel.names)
+    .upperCamel.tibble)
