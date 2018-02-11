@@ -4,7 +4,7 @@
 #' @name markdownHeader
 #' @family Report Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.

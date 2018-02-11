@@ -2,7 +2,7 @@
 #'
 #' @importFrom utils download.file
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @return Named character vector containing the original file name as the

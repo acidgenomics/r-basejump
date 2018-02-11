@@ -5,7 +5,7 @@
 #' @family Data Management Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param groupings Factor that defines the aggregation groupings. The new
 #'   aggregation names are defined as the factor levels, and the original

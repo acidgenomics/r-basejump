@@ -4,7 +4,7 @@
 #' @name convertGenesToSymbols
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @param organism *Optional*. Organism name. Normally this argument is

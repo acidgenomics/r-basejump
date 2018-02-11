@@ -15,7 +15,7 @@
 #' @importFrom tibble column_to_rownames
 #' @importFrom utils read.table
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param object File path.

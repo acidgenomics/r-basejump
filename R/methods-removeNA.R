@@ -4,7 +4,7 @@
 #' @name removeNA
 #' @family Cleanup Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Sanitized data.
 #'

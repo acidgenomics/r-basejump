@@ -7,7 +7,7 @@
 #' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams loadData
 #'
 #' @param url Remote URL file path to R Data file. Supports multiple URLs

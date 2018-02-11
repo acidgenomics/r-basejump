@@ -4,7 +4,7 @@
 #' @name stripTranscriptVersions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Transcript identifiers without version numbers.
 #'

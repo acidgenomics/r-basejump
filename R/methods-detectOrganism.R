@@ -19,7 +19,7 @@
 #' @name detectOrganism
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Full latin organism name.
 #' @export

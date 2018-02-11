@@ -7,7 +7,7 @@
 #' @name geometricMean
 #' @family Math Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param removeNA Remove `NA` values from calculations.
 #' @param zeroPropagate Allow propagation of zeroes.

@@ -4,7 +4,7 @@
 #' @name gene2symbolFromGFF
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams gene2symbol
 #'
 #' @details The GFF (General Feature Format) format consists of one line per

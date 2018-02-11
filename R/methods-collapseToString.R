@@ -4,7 +4,7 @@
 #' @name collapseToString
 #' @family Data Manipulation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
