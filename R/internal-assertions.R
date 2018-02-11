@@ -12,6 +12,14 @@
 
 
 
+.assert_markdown_header_level <- function(x) {
+    assert_is_numeric(x)
+    assert_is_scalar(x)
+    assert_is_subset(as.integer(x), seq(1L:7L))
+}
+
+
+
 .assert_is_a_string_or_null <- function(x) {
     assert_is_any_of(x, c("character", "NULL"))
     if (is.character(x)) {
