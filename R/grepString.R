@@ -3,8 +3,6 @@
 #' Generate a grep string for pattern matching against comma separated
 #' [base::toString()] output.
 #'
-#' @rdname grepString
-#' @name grepString
 #' @family String Utilities
 #'
 #' @inheritParams AllGenerics
@@ -14,12 +12,7 @@
 #'
 #' @examples
 #' grepString("gene")
-NULL
-
-
-
-# Constructors =================================================================
-.grepString <- function(object) {
+grepString <- function(object) {
     assert_is_a_string(object)
     object %>%
         paste0(
@@ -35,13 +28,3 @@ NULL
             # End of list
             "\\s", ., "$")
 }
-
-
-
-# Methods ======================================================================
-#' @rdname grepString
-#' @export
-setMethod(
-    "grepString",
-    signature("character"),
-    .grepString)
