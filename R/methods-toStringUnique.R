@@ -7,12 +7,22 @@
 #'
 #' @seealso [base::toString()].
 #'
-#' @return string.
+#' @return String.
 #'
 #' @examples
 #' vec <- c("hello", "world", NA, "hello", "world", NA)
 #' toStringUnique(vec)
 NULL
+
+
+
+# Constructors =================================================================
+.toStringUnique <- function(object) {
+    object %>%
+        na.omit() %>%
+        unique() %>%
+        toString()
+}
 
 
 
@@ -22,9 +32,4 @@ NULL
 setMethod(
     "toStringUnique",
     signature("character"),
-    function(object) {
-        object %>%
-            na.omit() %>%
-            unique() %>%
-            toString()
-    })
+    .toStringUnique)
