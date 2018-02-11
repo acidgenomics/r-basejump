@@ -7,7 +7,7 @@
 #' @param controls Number of control wells.
 #' @param prefix *Optional*. Plate name prefix.
 #'
-#' @return [data.frame].
+#' @return Character vector containing well identifiers.
 #' @export
 #'
 #' @examples
@@ -27,44 +27,50 @@ microplate <- function(
     wells = 96L,
     controls = 0L,
     prefix = NULL) {
-    if (!is.numeric(plates) | plates < 1L) {
-        abort("Invalid `plates` argument")
-    }
+    assert_is_integer(plates)
+    assert_is_scalar(plates)
+    assert_is_integer(wells)
+    assert_is_scalar(wells)
+    assert_is_subset(wells, c(96L, 384L))
+    assert_is_integer(controls)
+    assert_is_scalar(controls)
+    assert_is_subset(controls, 0L:12L)
+    .assert_is_a_string_or_null(prefix)
+
     if (wells == 96L) {
-        col <- 12L
         row <- 8L
+        col <- 12L
     } else if (wells == 384L) {
-        col <- 24L
         row <- 16L
-    } else {
-        abort("Invalid `wells` argument")
+        col <- 24L
     }
-    col <- 1L:col %>%
-        str_pad(max(str_length(.)), pad = "0")
+
     row <- LETTERS[1L:row]
+    col <- 1L:col %>%
+        str_pad(width = max(str_length(.)), pad = "0")
     plates <- 1L:plates %>%
-        str_pad(max(str_length(.)), pad = "0")
+        str_pad(width = max(str_length(.)), pad = "0")
+
     df <- expand.grid(plates, row, col)
-    vector <- paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]) %>%
-        sort()
-    # Remove control wells from vector:
-    if (!is.numeric(controls) | !controls %in% 0L:12L) {
-        abort("`controls` parameter supports 0:12")
-    }
+    vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
+
+    # Prepare control wells
     if (controls > 0L) {
         # Create a grep string matching the control wells
-        grep <- 1L:controls %>%
-            str_pad(max(str_length(col)), pad = "0") %>%
+        grep <- str_pad(
+            1L:controls,
+            width = max(str_length(col)),
+            pad = "0") %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
         # Remove the control wells using `grepl()`:
         vector <- vector[!grepl(grep, vector)]
     }
+
     # Add a prefix, if desired:
     if (is_a_string(prefix)) {
         vector <- paste0(prefix, "-", vector)
-    } else if (!is.null(prefix)) {
-        abort("`prefix` must be a string")
     }
-    return(vector)
+
+    vector
 }
