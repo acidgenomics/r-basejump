@@ -5,6 +5,7 @@
 #' @import methods
 #'
 #' @importFrom assertive assert_all_are_existing_files
+#' @importFrom assertive assert_all_are_hex_colors
 #' @importFrom assertive assert_all_are_matching_regex
 #' @importFrom assertive assert_all_are_non_empty_character
 #' @importFrom assertive assert_all_are_not_na
@@ -13,7 +14,6 @@
 #' @importFrom assertive assert_has_colnames
 #' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_dims
-#' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_no_duplicates
 #' @importFrom assertive assert_has_rownames
@@ -24,7 +24,7 @@
 #' @importFrom assertive assert_is_data.frame
 #' @importFrom assertive assert_is_environment
 #' @importFrom assertive assert_is_factor
-#' @importFrom assertive assert_is_factor
+#' @importFrom assertive assert_is_integer
 #' @importFrom assertive assert_is_list
 #' @importFrom assertive assert_is_matrix
 #' @importFrom assertive assert_is_name

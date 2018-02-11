@@ -10,7 +10,7 @@
 plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NA,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis(256L),
+  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
   legendColor = viridis::viridis, title = NULL, ...)
 }
 \arguments{
