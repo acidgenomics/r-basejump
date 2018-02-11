@@ -31,13 +31,20 @@ test_that("dgCMatrix", {
     expect_identical(data, aggdgc)
 })
 
-test_that("Check groupings failure", {
+test_that("Invalid `groupings`", {
     expect_error(
         aggregateReplicates(mat, groupings = "XXX"),
-        "`groupings` must be a factor"
+        paste(
+            "is_factor :",
+            "groupings is not of class 'factor';",
+            "it has class 'character'."
+        )
     )
     expect_error(
         aggregateReplicates(mat, groupings = factor(c("XXX", "YYY"))),
-        "`groupings` must match colnames"
+        paste(
+            "are_identical :",
+            "colnames\\(object\\) and names\\(groupings\\) are not identical."
+        )
     )
 })
