@@ -4,6 +4,8 @@
 #' @name dots
 #' @family Function Utilities
 #'
+#' @importFrom rlang eval_bare
+#'
 #' @param ... Objects as dots.
 #' @param character Return dots (`...`) as character vector.
 #'
