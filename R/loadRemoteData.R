@@ -4,6 +4,7 @@
 #'
 #' @family Data Import and Project Utilities
 #'
+#' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file
 #'
 #' @inheritParams AllGenerics
@@ -35,7 +36,7 @@ loadRemoteData <- function(
         assert_is_a_string(url)
         assert_is_environment(envir)
         assert_is_a_bool(quiet)
-        name <- gsub("\\.rda$", "", basename(url))
+        name <- file_path_sans_ext(basename(url))
         # Check to see if object is present in environment
         if (exists(name, envir = envir, inherits = FALSE)) {
             abort(paste(name, "already exists in environment"))
@@ -57,10 +58,7 @@ loadRemoteData <- function(
         USE.NAMES = FALSE
     )
     map <- do.call(cbind, map)
-    colnames(map) <- gsub(
-        pattern = "\\.rda$",
-        replacement = "",
-        x = basename(map["url", , drop = TRUE]))
+    colnames(map) <- file_path_sans_ext(basename(map["url", , drop = TRUE]))
     assert_is_matrix(map)
 
     # Now we're ready to load safely from the tempdir

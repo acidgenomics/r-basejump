@@ -1,3 +1,4 @@
+#' @importFrom tools file_path_sans_ext
 .safeLoad <- function(
     file,
     name = NULL,
@@ -10,7 +11,7 @@
     # Get the name from the file stem
     if (is.null(name)) {
         assert_all_are_matching_regex(file, "\\.rda$")
-        name <- gsub("\\.rda$", "", basename(file))
+        name <- file_path_sans_ext(basename(file))
     }
 
     # Fail on attempt to load on top of an existing object
