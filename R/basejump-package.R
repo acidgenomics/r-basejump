@@ -5,6 +5,7 @@
 #' @import methods
 #'
 #' @importFrom assertive assert_all_are_existing_files
+#' @importFrom assertive assert_all_are_greater_than_or_equal_to
 #' @importFrom assertive assert_all_are_hex_colors
 #' @importFrom assertive assert_all_are_matching_regex
 #' @importFrom assertive assert_all_are_non_empty_character
