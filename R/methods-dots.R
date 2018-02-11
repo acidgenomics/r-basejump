@@ -33,29 +33,35 @@ NULL
 
 
 
+# Constructors =================================================================
+.dots <- function(..., character = FALSE) {
+    dots <- eval_bare(substitute(alist(...)))
+    assert_is_list(dots)
+    assert_is_non_empty(dots)
+    invisible(lapply(dots, assert_is_name))
+
+    # Convert names (symbols) to character vector
+    names <- vapply(dots, as.character, character(1L))
+
+    # Abort on duplicate detection
+    dupes <- names[which(setNames(duplicated(names), names))]
+    if (length(dupes) > 0L) {
+        abort(paste("Duplicate dots:", toString(dupes)))
+    }
+
+    if (isTRUE(character)) {
+        names
+    } else {
+        dots
+    }
+}
+
+
+
 # Methods ======================================================================
 #' @rdname dots
 #' @export
 setMethod(
     "dots",
     signature("..." = "ANY"),
-    function(..., character = FALSE) {
-        dots <- eval_bare(substitute(alist(...)))
-        if (length(dots) == 0L) {
-            abort("No dots to return")
-        }
-        isName <- vapply(dots, is.symbol, logical(1L))
-        if (any(!isName)) {
-            abort("Dots cannot contain arguments")
-        }
-        names <- vapply(dots, as.character, character(1L))
-        dupes <- names[which(setNames(duplicated(names), names))]
-        if (length(dupes) > 0L) {
-            abort(paste("Duplicate dots:", toString(dupes)))
-        }
-        if (isTRUE(character)) {
-            names
-        } else {
-            dots
-        }
-    })
+    .dots)
