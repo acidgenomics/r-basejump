@@ -48,3 +48,8 @@
 #' @importFrom utils globalVariables
 globalVariables(".")
 annotableCols <- c("ensgene", "symbol", "description", "biotype")
+
+
+
+# `tibble::has_rownames()` works better than `assertive::has_rownames()` for
+# data frames and tibbles
