@@ -10,7 +10,8 @@
 #'
 #' @param list List of column data (e.g. [data.frame], [matrix]).
 #' @param captions Optional character vector of table captions.
-#' @param force Force kable output.
+#' @param force Force kable output. *Recommended for development and unit
+#'   testing only.*
 #'
 #' @return Knit tables, using [knitr::kable()].
 #' @export
@@ -34,12 +35,18 @@ setMethod(
         object,
         captions = NULL,
         force = FALSE) {
-        if (!(is.character(captions) || is.null(captions))) {
-            abort("`captions` must be a character vector or NULL")
+        assert_is_any_of(captions, c("character", "NULL"))
+        if (is.character(captions)) {
+            assert_are_identical(
+                length(object),
+                length(captions)
+            )
         }
-        assert_is_a_boolean(force)
+        assert_is_a_bool(force)
+
         output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
-        if (!is.null(output) | isTRUE(force)) {
+
+        if (!is.null(output) || isTRUE(force)) {
             tables <- lapply(seq_along(object), function(a) {
                 kable(object[a], caption = captions[a])
             })
