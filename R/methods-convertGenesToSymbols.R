@@ -41,34 +41,44 @@ NULL
 # Constructors =================================================================
 .convertGenesToSymbols <- function(  # nolint
     object,
-    organism,
+    gene2symbol = NULL,
+    organism = NULL,
+    genomeBuild = NULL,
     release = NULL,
+    uniqueSymbol = FALSE,
     quiet = FALSE) {
+    # Passthrough: genomeBuild, release, quiet
     assert_is_character(object)
-    .assert_is_numeric_scalar_or_null(release)
-    assert_is_a_bool(quiet)
+    assert_all_are_non_empty_character(object)
+    assert_has_no_duplicates(object)
+    assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
+    .assert_is_a_string_or_null(organism)
+    assert_is_a_bool(uniqueSymbol)
 
-    if (any(is.na(object))) {
-        abort("NA identifier detected")
-    } else if (any(object == "")) {
-        abort("Empty string identifier detected")
-    } else if (any(duplicated(object))) {
-        warn("Duplicate gene identifiers detected")
-    }
-
-    # Detect organism
-    if (missing(organism)) {
-        organism <- detectOrganism(object[[1L]])
+    # If no gene2symbol is provided, fall back to using Ensembl annotations
+    if (!is.data.frame(gene2symbol)) {
+        # Generate gene2symbol from Ensembl
+        inform("Obtaining gene-to-symbol mappings from Ensembl")
+        if (is.null(organism)) {
+            organism <- detectOrganism(object[[1L]])
+        } else if (is_a_string(organism)) {
+            organism <- detectOrganism(organism)
+        }
+        assert_is_a_string(organism)
+        gene2symbol <- gene2symbol(
+            object = organism,
+            genomeBuild = genomeBuild,
+            release = release,
+            uniqueSymbol = uniqueSymbol,
+            quiet = quiet)
     } else {
-        organism <- detectOrganism(organism)
+        checkGene2symbol(gene2symbol)
+        if (isTRUE(uniqueSymbols)) {
+            gene2symbol[["symbol"]] <- make.unique(gene2symbol[["symbol"]])
+        }
     }
-    assert_is_a_string(organism)
 
-    gene2symbol <- annotable(
-        organism,
-        format = "gene2symbol",
-        release = release,
-        quiet = quiet) %>%
+    gene2symbol <- gene2symbol %>%
         .[object, , drop = FALSE] %>%
         .[!is.na(.[["symbol"]]), , drop = FALSE]
 
@@ -94,14 +104,18 @@ NULL
 
 .convertGenesToSymbols.dim <- function(  # nolint
     object,
-    organism,
+    gene2symbol = NULL,
+    genomeBuild = NULL,
+    organism = NULL,
     release = NULL,
     quiet = FALSE) {
-    # Passthrough: organism, release, quiet
+    # Passthrough: gene2symbol, organism, release, quiet
     assert_has_rownames(object)
     rownames <- rownames(object)
     rownames <- .convertGenesToSymbols(
         object = rownames,
+        gene2symbol = gene2symbol,
+        genomeBuild = genomeBuild,
         organism = organism,
         release = release,
         quiet = quiet)
