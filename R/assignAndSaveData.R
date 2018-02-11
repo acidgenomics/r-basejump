@@ -6,6 +6,11 @@
 #' @rdname assignAndSaveData
 #' @family Object Assignment Utilities
 #'
+#' @importFrom assertive assert_is_a_bool
+#' @importFrom assertive assert_is_a_string
+#' @importFrom assertive assert_is_environment
+#' @importFrom assertive assert_is_not_null
+#'
 #' @inheritParams AllGenerics
 #' @inheritParams saveData
 #'
