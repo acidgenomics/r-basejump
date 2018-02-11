@@ -59,13 +59,12 @@ NULL
     legendColor = viridis::viridis,
     title = NULL) {
     # Passthrough: clusterCols, clusterRows
-    .checkNumericString(n)
-    .assert_formal_annotation_col(annotationCol)
-    .checkColorFunction(color)
-    .checkColorFunction(legendColor)
-    .checkTitle(title)
-
     object <- as.matrix(object)
+    assert_is_integer(n)
+    .assert_formal_annotation_col(annotationCol)
+    .assert_formal_color_function(color)
+    .assert_formal_color_function(legendColor)
+    .assert_is_a_string_or_null(title)
 
     if (nrow(object) < 2L) {
         abort("Need at least 2 rows to plot heatmap")
