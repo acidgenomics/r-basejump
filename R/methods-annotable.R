@@ -85,6 +85,10 @@ NULL
     assert_is_subset(format, c("gene", "gene2symbol", "tx2gene"))
     .assert_is_a_string_or_null(genomeBuild)
     .assert_is_numeric_scalar_or_null(release)
+    if (is.numeric(release)) {
+        # AnnotableHub only supports releases 87 and above
+        assert_all_are_greater_than_or_equal_to(release, 87L)
+    }
     assert_is_a_bool(uniqueSymbol)
     assert_is_a_bool(quiet)
 
@@ -127,16 +131,6 @@ NULL
     }
 
     # Release version ==========================================================
-    if (is.numeric(release)) {
-        if (release < 87L) {
-            abort(paste(
-                "AnnotationHub only supports Ensembl releases 87 and above"
-            ))
-        }
-    } else {
-        # Legacy code support for "current" (changed in 0.1.1)
-        release <- NULL
-    }
     # Define the `releasePattern` to query with ensembldb
     if (is.null(release)) {
         releasePattern <- NULL
@@ -175,7 +169,8 @@ NULL
     # Abort on organism failure
     if (!length(id)) {
         abort(paste(
-            object, "is not supported in AnnotationHub"
+            "Full latin organism name", object,
+            "is not supported in AnnotationHub"
         ))
     }
 
@@ -413,14 +408,3 @@ setMethod(
     "annotable",
     signature("data.frame"),
     .prepareAnnotable)
-
-
-
-#' @rdname annotable
-#' @export
-setMethod(
-    "annotable",
-    signature("NULL"),
-    function(object) {
-        NULL
-    })

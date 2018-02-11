@@ -1,19 +1,28 @@
 context("annotable")
 
-test_that("Human", {
-    human <- annotable("Homo sapiens", release = 88L)
+test_that("Ensembl versioned release", {
+    release <- 88L
+    human <- suppressMessages(annotable("Homo sapiens", release = release))
+    mouse <- suppressMessages(annotable("Mus musculus", release = release))
+
     expect_equal(
         dim(human),
         c(64592L, 11L)
     )
     expect_equal(
-        rownames(human)[1L:5L],
-        c("ENSG00000000003",
-          "ENSG00000000005",
-          "ENSG00000000419",
-          "ENSG00000000457",
-          "ENSG00000000460")
+        dim(mouse),
+        c(51158L, 11L)
     )
+
+    expect_equal(
+        rownames(human)[1L:3L],
+        c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
+    )
+    expect_equal(
+        rownames(mouse)[1L:3L],
+        c("ENSMUSG00000000001", "ENSMUSG00000000003", "ENSMUSG00000000028")
+    )
+
     expect_equal(
         lapply(human, class),
         list(
@@ -33,7 +42,7 @@ test_that("Human", {
 })
 
 test_that("Human GRCh37/hg19 genome build support", {
-    # Load up the internal data
+    # Compare against the internally stashed data
     load(system.file(
         file.path("extdata", "grch37.rda"),
         package = "basejump"
@@ -47,8 +56,6 @@ test_that("Human GRCh37/hg19 genome build support", {
         annotable("Homo sapiens", genomeBuild = "GRCh37"),
         grch37
     )
-
-    # Also support `hg19` as genomeBuild name
     expect_identical(
         annotable("Homo sapiens", genomeBuild = "hg19"),
         grch37
@@ -70,23 +77,6 @@ test_that("Human GRCh37/hg19 genome build support", {
             genomeBuild = "GRCh37",
             format = "tx2gene"),
         grch37Tx2gene
-    )
-})
-
-test_that("Mouse", {
-    # Mouse
-    mouse <- annotable("Mus musculus", release = 88L)
-    expect_equal(
-        dim(mouse),
-        c(51158L, 11L)
-    )
-    expect_equal(
-        rownames(mouse)[1L:5L],
-        c("ENSMUSG00000000001",
-          "ENSMUSG00000000003",
-          "ENSMUSG00000000028",
-          "ENSMUSG00000000031",
-          "ENSMUSG00000000037")
     )
 })
 
@@ -119,50 +109,44 @@ test_that("annotables package data.frame input", {
     malformed <- grch37[, c("ensgene", "symbol")]
     expect_error(
         annotable(malformed),
-        "Required columns: ensgene, symbol, description, biotype"
+        paste(
+            "is_subset :",
+            "The elements 'description', 'biotype' in annotableCols",
+            "are not in colnames\\(object\\)."
+        )
     )
 })
 
 test_that("Unsupported Ensembl release", {
-    expect_warning(
+    expect_error(
         annotable("Mus musculus", release = 86L),
-        "AnnotationHub only supports Ensembl releases 87 and newer.",
-        "Using current release instead."
+        paste(
+            "is_greater_than_or_equal_to :",
+            "release are not all greater than or equal to 87L."
+        )
     )
 })
 
 test_that("Unsupported organism", {
-    expect_warning(
+    expect_error(
         annotable("XXX"),
-        "XXX is not supported in AnnotationHub"
-    )
-    expect_equal(
-        suppressWarnings(annotable("XXX")),
-        NULL
+        "Full latin organism name XXX is not supported in AnnotationHub"
     )
 })
 
 test_that("Bad input", {
     expect_error(
         annotable(c("human", "mouse")),
-        "Object must be a string"
+        "is_a_string : object has length 2, not 1"
     )
     expect_error(
         annotable("Homo sapiens", format = "XXX"),
-        "`format` must contain: gene, gene2symbol, tx2gene"
+        paste(
+            "is_subset :",
+            "The element 'XXX' in format is not in",
+            "c\\(\"gene\", \"gene2symbol\", \"tx2gene\"\\)."
+        )
     )
-})
-
-test_that("Legacy release parameter support", {
-    # Check for legacy code support using `release = "current"`
-    expect_warning(
-        annotable("Homo sapiens", release = "current", quiet = TRUE),
-        "`release = NULL` is now recommended"
-    )
-})
-
-test_that("NULL input", {
-    expect_identical(annotable(NULL), NULL)
 })
 
 test_that("Unique symbols", {
@@ -199,9 +183,14 @@ test_that("Collapse annotables tibble", {
     expect_true(!any(duplicated(annotable[["ensgene"]])))
 })
 
-test_that("Internal broadClass integrity", {
+test_that("Internal `broadClass` column integrity", {
     expect_error(
         .defineBroadClass(mtcars),
-        "Missing columns: biotype, symbol"
+        paste(
+            "is_subset :",
+            "The elements 'biotype', 'symbol' in",
+            "c\\(\"biotype\", \"symbol\"\\)",
+            "are not in colnames\\(object\\)."
+        )
     )
 })
