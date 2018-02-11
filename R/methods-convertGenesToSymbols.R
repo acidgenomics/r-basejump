@@ -108,6 +108,7 @@ NULL
     genomeBuild = NULL,
     organism = NULL,
     release = NULL,
+    uniqueSymbol = FALSE,
     quiet = FALSE) {
     # Passthrough: gene2symbol, organism, release, quiet
     assert_has_rownames(object)
@@ -118,6 +119,7 @@ NULL
         genomeBuild = genomeBuild,
         organism = organism,
         release = release,
+        uniqueSymbol = uniqueSymbol,
         quiet = quiet)
     rownames(object) <- rownames
     object
