@@ -24,7 +24,7 @@ setMethod(
     signature("character"),
     function(object) {
         object %>%
+            na.omit() %>%
             unique() %>%
-            toString() %>%
-            gsub("NA,\\s|,\\sNA", "", .)
+            toString()
     })
