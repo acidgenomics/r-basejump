@@ -101,3 +101,11 @@ comp <- function() {
 revcomp <- function() {
     .Deprecated("Biostrings::reverseComplement")
 }
+
+
+
+# v0.2.2 =======================================================================
+#' @rdname deprecated
+symbol2gene <- function() {
+    .Deprecated()
+}
