@@ -42,7 +42,6 @@ NULL
 
 # Constructors =================================================================
 .snake <- function(object) {
-    .checkCharacter(object)
     object %>%
         dotted() %>%
         tolower() %>%
@@ -51,19 +50,36 @@ NULL
 
 
 
-.snake.dim <- function(object, rownames = FALSE) {  # nolint
-    assert_is_a_boolean(rownames)
+.snake.ANY <- function(
+    object,
+    rownames = FALSE,
+    colnames = TRUE) {
+    # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
-        # Colnames
-        if (!is.null(colnames(object))) {
-            colnames(object) <- .snake(colnames(object))
-        }
-        # Rownames
-        if (isTRUE(rownames) & .checkRownames(object)) {
-            rownames(object) <- .snake(rownames(object))
-        }
+        snake.dim(object, rownames = rownames, colnames = colnames)
     } else if (!is.null(names(object))) {
-        names(object) <- .snake(names(object))
+        snake.names(object)
+    } else {
+        warn("Returning without snake_case sanitization applied")
+        object
+    }
+}
+
+
+
+.snake.dim <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames)) {
+        assert_has_rownames(object)
+        rownames(object) <- .snake(rownames(object))
+    }
+    if (isTRUE(colnames)) {
+        assert_has_colnames(object)
+        colnames(object) <- .snake(colnames(object))
     }
     object
 }
@@ -71,7 +87,9 @@ NULL
 
 
 .snake.names <- function(object) {  # nolint
-    .snake.dim(object, rownames = FALSE)
+    assert_has_names(object)
+    names(object) <- .snake(names(object))
+    object
 }
 
 
@@ -95,7 +113,7 @@ NULL
 setMethod(
     "snake",
     signature("ANY"),
-    .snake.dim)
+    .snake.ANY)
 
 
 
@@ -148,8 +166,26 @@ setMethod(
 #' @export
 setMethod(
     "snake",
+    signature("List"),
+    .snake.names)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
     signature("matrix"),
     .snake.dim)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("SimpleList"),
+    .snake.names)
 
 
 
