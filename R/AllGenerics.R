@@ -143,13 +143,6 @@ setGeneric("geometricMean", function(object, ...) {
 
 
 
-#' @rdname grepString
-setGeneric("grepString", function(object, ...) {
-    standardGeneric("grepString")
-})
-
-
-
 #' @rdname kables
 #' @export
 setGeneric("kables", function(object, ...) {
