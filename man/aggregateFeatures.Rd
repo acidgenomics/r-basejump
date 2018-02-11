@@ -51,5 +51,5 @@ aggregateFeatures(dgc, groupings = groupings)
 Other Data Management Utilities: \code{\link{aggregateReplicates}}
 }
 \author{
-Rory Kirchner, Michael Steinbaugh
+Michael Steinbaugh, Rory Kirchner
 }

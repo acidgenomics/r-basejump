@@ -17,7 +17,7 @@ toStringUnique(object, ...)
 \item{...}{\emph{Additional arguments (for the S4 generic definition).}}
 }
 \value{
-string.
+String.
 }
 \description{
 Convert to a Unique Character String

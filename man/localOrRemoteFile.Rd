@@ -13,9 +13,11 @@ localOrRemoteFile(object, quiet = FALSE)
 }
 \value{
 Named character vector containing the original file name as the
-name and local file path as the string. Returns \code{NULL} on a misisng
-local file.
+name and local file path as the string. Aborts on a missing file.
 }
 \description{
 Dynamically Handle a Local or Remote File Path
+}
+\examples{
+localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
 }

@@ -7,6 +7,7 @@
 \alias{collapseToString,character-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
+\alias{collapseToString,factor-method}
 \alias{collapseToString,integer-method}
 \alias{collapseToString,logical-method}
 \alias{collapseToString,matrix-method}
@@ -15,26 +16,29 @@
 \usage{
 collapseToString(object, ...)
 
-\S4method{collapseToString}{character}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{character}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{data.frame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{data.frame}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{DataFrame}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{integer}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{factor}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{logical}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{integer}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{matrix}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{logical}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 
-\S4method{collapseToString}{numeric}(object, sep = ", ", unique = TRUE,
-  sort = TRUE)
+\S4method{collapseToString}{matrix}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
+
+\S4method{collapseToString}{numeric}(object, sep = ", ", unique = FALSE,
+  sort = FALSE, removeNA = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -46,6 +50,8 @@ collapseToString(object, ...)
 \item{unique}{Unique values.}
 
 \item{sort}{Sort values.}
+
+\item{removeNA}{Remove NA values.}
 }
 \value{
 \itemize{
@@ -59,8 +65,16 @@ Collapse to String
 \examples{
 # character
 groceries <- c("milk", "eggs", "eggs", "veggies", NA)
-collapseToString(groceries, unique = TRUE, sort = FALSE)
-collapseToString(groceries, unique = FALSE, sort = FALSE)
+collapseToString(
+    groceries,
+    unique = TRUE,
+    sort = TRUE,
+    removeNA = TRUE)
+collapseToString(
+    groceries,
+    unique = FALSE,
+    sort = FALSE,
+    removeNA = FALSE)
 
 # numeric
 collapseToString(seq(1:5))

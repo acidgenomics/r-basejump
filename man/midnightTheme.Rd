@@ -4,10 +4,7 @@
 \alias{midnightTheme}
 \title{Midnight Theme}
 \usage{
-midnightTheme(...)
-}
-\arguments{
-\item{...}{Passthrough arguments to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
+midnightTheme()
 }
 \value{
 ggplot theme.

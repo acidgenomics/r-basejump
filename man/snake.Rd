@@ -10,25 +10,31 @@
 \alias{snake,DataFrame-method}
 \alias{snake,factor-method}
 \alias{snake,list-method}
+\alias{snake,List-method}
 \alias{snake,matrix-method}
+\alias{snake,SimpleList-method}
 \alias{snake,tbl_df-method}
 \title{Snake Case}
 \usage{
 snake(object, ...)
 
-\S4method{snake}{ANY}(object, rownames = FALSE)
+\S4method{snake}{ANY}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{character}(object)
 
-\S4method{snake}{data.frame}(object, rownames = FALSE)
+\S4method{snake}{data.frame}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{snake}{DataFrame}(object, rownames = FALSE)
+\S4method{snake}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{factor}(object)
 
 \S4method{snake}{list}(object)
 
-\S4method{snake}{matrix}(object, rownames = FALSE)
+\S4method{snake}{List}(object)
+
+\S4method{snake}{matrix}(object, rownames = FALSE, colnames = TRUE)
+
+\S4method{snake}{SimpleList}(object)
 
 \S4method{snake}{tbl_df}(object)
 }
