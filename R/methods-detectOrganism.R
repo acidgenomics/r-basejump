@@ -44,8 +44,8 @@ NULL
 
 # Constructors =================================================================
 .detectOrganism <- function(object) {
-    # Use the first item in vector for detection
-    object <- object[[1L]]
+    assert_is_a_string(object)
+
     # Homo sapiens =============================================================
     grep <- c(
         "^H(omo)?([._[:space:]]+)?sapiens$",
