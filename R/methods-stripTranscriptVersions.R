@@ -19,14 +19,9 @@ NULL
     # Pattern matching against Ensembl transcript IDs
     # http://www.ensembl.org/info/genome/stable_ids/index.html
     # Examples: ENST (human); ENSMUST (mouse)
-    enstxpPattern <- "^(ENS.*T\\d{11})\\.\\d+$"
-    if (any(grepl(enstxpPattern, object))) {
-        object <- gsub(enstxpPattern, "\\1", object)
-    }
-    if (any(grepl("\\.\\d+$", object))) {
-        abort("Failed to sanitize Ensembl transcript identifier")
-    }
-    object
+    assert_is_character(object)
+    assert_any_are_matching_regex(object, "^(ENS.*T\\d{11})\\.\\d+$")
+    gsub("\\.\\d+$", "", object)
 }
 
 
