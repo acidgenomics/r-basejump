@@ -5,14 +5,26 @@
 \alias{detectOrganism}
 \alias{detectOrganism}
 \alias{detectOrganism,character-method}
-\alias{detectOrganism,NULL-method}
+\alias{detectOrganism,data.frame-method}
+\alias{detectOrganism,DataFrame-method}
+\alias{detectOrganism,dgCMatrix-method}
+\alias{detectOrganism,matrix-method}
+\alias{detectOrganism,tbl_df-method}
 \title{Detect Organism}
 \usage{
 detectOrganism(object, ...)
 
 \S4method{detectOrganism}{character}(object)
 
-\S4method{detectOrganism}{`NULL`}(object)
+\S4method{detectOrganism}{data.frame}(object)
+
+\S4method{detectOrganism}{DataFrame}(object)
+
+\S4method{detectOrganism}{dgCMatrix}(object)
+
+\S4method{detectOrganism}{matrix}(object)
+
+\S4method{detectOrganism}{tbl_df}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -20,7 +32,13 @@ detectOrganism(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Full latin organism name.
+Full latin organism name. Always aborts on detection failure.
+\itemize{
+\item Vector: Named character vector containing organism name or \code{NA} for
+individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
+\item Dim: Unique character vector of the organism(s) detected.  Warns if
+multiple organisms are detected.
+}
 }
 \description{
 Supports organism detection from genome build or Ensembl identifier.
@@ -40,19 +58,23 @@ Currently supported organisms:
 }
 }
 \examples{
-# H. sapiens
+loadRemoteData("http://basejump.seq.cloud/counts.rda")
+
+# String
+detectOrganism("ENSG00000000003")
 detectOrganism("GRCh38")
 detectOrganism("hg38")
-detectOrganism("ENSG00000000003")
-detectOrganism("Homo sapiens")
-detectOrganism("Homo_sapiens")
-detectOrganism("H sapiens")
 detectOrganism("H. sapiens")
-detectOrganism("Hsapiens")
-detectOrganism("human")
 
-# Unsupported organism
-detectOrganism("XXX")
+# Character vector with spike-ins
+detectOrganism(c("ENSG00000000003", "EGFP", "TDTOMATO"))
+
+# Matrix
+detectOrganism(counts)
+
+# Tibble
+tibble <- as(counts, "tibble")
+detectOrganism(tibble)
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{annotable}},
