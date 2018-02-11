@@ -342,12 +342,8 @@ NULL
 #'
 #' @return [data.frame].
 .prepareAnnotable <- function(object) {
-    requiredCols <- c("ensgene", "symbol", "description", "biotype")
     assert_is_data.frame(object)
-    assert_is_subset(
-        requiredCols,
-        colnames(object)
-    )
+    assert_is_subset(annotableCols, colnames(object))
 
     # Check for Entrez identifier column and nest into a list, if necessary
     entrezCol <- colnames(object) %>%
@@ -379,7 +375,7 @@ NULL
     # Collapse any remaining duplicated rows by Ensembl ID, if necessary
     if (any(duplicated(object[["ensgene"]]))) {
         object <- object %>%
-            group_by(!!!syms(requiredCols)) %>%
+            group_by(!!!syms(annotableCols)) %>%
             summarize_all(funs(
                 collapseToString(object = ., unique = TRUE, sort = TRUE)
             )) %>%
@@ -390,7 +386,7 @@ NULL
         camel(strict = FALSE) %>%
         fixNA() %>%
         .defineBroadClass() %>%
-        select(c(requiredCols, "broadClass"), everything()) %>%
+        select(c(annotableCols, "broadClass"), everything()) %>%
         arrange(!!sym("ensgene")) %>%
         as.data.frame() %>%
         set_rownames(.[["ensgene"]])
