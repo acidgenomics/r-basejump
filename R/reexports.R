@@ -29,9 +29,3 @@ tibble::glimpse
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
-
-
-
-#' @importFrom tools file_path_sans_ext
-#' @export
-tools::file_path_sans_ext

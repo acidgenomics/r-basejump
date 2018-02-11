@@ -14,8 +14,6 @@
 \alias{glimpse}
 \alias{reexports}
 \alias{tibble}
-\alias{reexports}
-\alias{file_path_sans_ext}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -32,7 +30,5 @@ below to see their documentation.
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{tibble}}}
-
-  \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
 }}
 
