@@ -28,14 +28,15 @@ NULL
 .readGFF <- function(
     object,
     quiet = FALSE) {
-    .checkQuiet(quiet)
+    assert_is_a_string(object)
+    assert_is_a_bool(quiet)
     file <- localOrRemoteFile(object, quiet = quiet)
     if (!isTRUE(quiet)) {
         inform(paste("Reading GFF/GTF:", names(file)))
     }
     gff <- tryCatch(
         read.delim(
-            file,
+            file = file,
             col.names = c(
                 "chromosome",
                 "annotationSource",
