@@ -13,8 +13,17 @@
 #' @export
 #'
 #' @examples
-#' sortUnique(c("milk", "eggs", "eggs", NA))
+#' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 NULL
+
+
+
+# Constructors =================================================================
+.sortUnique <- function(object) {
+    object %>%
+        sort(na.last = TRUE) %>%
+        unique()
+}
 
 
 
@@ -24,10 +33,5 @@ NULL
 #' @export
 setMethod(
     "sortUnique",
-    signature("character"),
-    function(object) {
-        object %>%
-            na.omit() %>%
-            sort() %>%
-            unique()
-    })
+    signature("vector"),
+    .sortUnique)
