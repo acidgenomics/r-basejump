@@ -61,6 +61,7 @@ NULL
     # Passthrough: clusterCols, clusterRows
     object <- as.matrix(object)
     assert_is_integer(n)
+    assert_is_scalar(n)
     .assert_formal_annotation_col(annotationCol)
     .assert_formal_color_function(color)
     .assert_formal_color_function(legendColor)
