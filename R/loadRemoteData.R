@@ -53,9 +53,10 @@ loadRemoteData <- function(
         FUN = .urlToTempfile,
         url = url,
         MoreArgs = list(envir = envir, quiet = quiet),
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = FALSE
     )
+    map <- do.call(cbind, map)
     colnames(map) <- gsub(
         pattern = "\\.rda$",
         replacement = "",
@@ -63,16 +64,18 @@ loadRemoteData <- function(
     assert_is_matrix(map)
 
     # Now we're ready to load safely from the tempdir
-    files <- map["tempfile", ]
+    files <- map["tempfile", , drop = FALSE]
     names <- colnames(map)
     objects <- mapply(
         FUN = .safeLoad,
         file = files,
         name = names,
         MoreArgs = list(envir = envir),
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = TRUE
     )
+    objects <- do.call(cbind, objects)
+    colnames(objects) <- names
 
     return <- map[, names(objects), drop = FALSE]
     assert_is_matrix(return)
