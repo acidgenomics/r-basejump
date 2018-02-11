@@ -31,6 +31,7 @@ setMethod(
     "foldChangeToLogRatio",
     signature("numeric"),
     function(object, base = 2L) {
+        assert_is_numeric(base)
         object <- ifelse(object < 0L, 1L / -object, object)
         object <- log(object, base)
         object
