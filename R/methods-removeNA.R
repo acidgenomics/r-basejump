@@ -12,13 +12,15 @@
 #' # Remove NA only rows and columns
 #' matrix(
 #'     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
-#'     nrow = 3, ncol = 3) %>%
+#'     nrow = 3,
+#'     ncol = 3) %>%
 #'     removeNA()
 #'
 #' data.frame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
-#'     c = c("B", NA, "D")) %>%
+#'     c = c("B", NA, "D"),
+#'     stringsAsFactors = FALSE) %>%
 #'     removeNA()
 #'
 #' tibble(
@@ -36,11 +38,13 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom stats na.omit
-.removeNA.vec <- function(object) {  # nolint
+.removeNA.vector <- function(object) {  # nolint
+    assert_is_vector(object)
     na.omit(object)
 }
 
 .removeNA.dim <- function(object) {  # nolint
+    assert_has_dims(object)
     object %>%
         # Remove all `NA` rows
         .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
@@ -68,7 +72,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("character"),
-    .removeNA.vec)
+    .removeNA.vector)
 
 
 
@@ -77,7 +81,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("numeric"),
-    .removeNA.vec)
+    .removeNA.vector)
 
 
 
