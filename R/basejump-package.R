@@ -36,9 +36,10 @@
 #' @importFrom assertive assert_is_scalar
 #' @importFrom assertive assert_is_subset
 #' @importFrom assertive assert_is_vector
+#' @importFrom assertive has_colnames
+#' @importFrom assertive has_rownames
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_scalar
-#'
 #' @importFrom rlang abort inform warn
 "_PACKAGE"
 
