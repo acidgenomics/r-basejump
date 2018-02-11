@@ -56,11 +56,11 @@ NULL
     colnames = TRUE) {
     # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
-        snake.dim(object, rownames = rownames, colnames = colnames)
+        .snake.dim(object, rownames = rownames, colnames = colnames)
     } else if (!is.null(names(object))) {
-        snake.names(object)
+        .snake.names(object)
     } else {
-        warn("Returning without snake_case sanitization applied")
+        warn("Returning without snake case sanitization applied")
         object
     }
 }

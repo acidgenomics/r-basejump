@@ -95,15 +95,15 @@ NULL
     strict = FALSE) {
     # Passthrough: rownames, colnames, strict
     if (!is.null(dimnames(object))) {
-        camel.dim(
+        .camel.dim(
             object,
             rownames = rownames,
             colnames = colnames,
             strict = strict)
     } else if (!is.null(names(object))) {
-        camel.names(object, strict = strict)
+        .camel.names(object, strict = strict)
     } else {
-        warn("Returning without lowerCamelCase sanitization applied")
+        warn("Returning without lower camel case sanitization applied")
         object
     }
 }
