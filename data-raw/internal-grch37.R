@@ -1,7 +1,7 @@
+devtools::install_github("stephenturner/annotables")
+
 extdataDir <- file.path("inst", "extdata")
 dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
-
-devtools::install_github("stephenturner/annotables")
 
 grch37 <- annotable(annotables::grch37)
 save(
