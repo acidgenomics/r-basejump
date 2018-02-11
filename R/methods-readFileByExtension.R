@@ -13,7 +13,7 @@
 #'
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
-#'   `snake`, or `FALSE`.
+#'   `dotted`, `snake`, or `upperCamel`. This is always enforced.
 #'
 #' @return [tibble] by default, or a sparse matrix for `.mtx` files.
 #' @export
@@ -41,37 +41,25 @@ NULL
     makeNames = "camel",
     quiet = FALSE,
     ...) {
-    validMakeNames <- c("camel", "snake")
-    if (!makeNames %in% validMakeNames) {
-        abort(paste(
-            "`makeNames` must contain:",
-            toString(validMakeNames)
-        ))
-    }
-    .checkQuiet(quiet)
+    assert_is_a_string(object)
+    # Require that input string contains an extension
+    extPattern <- "\\.([a-zA-Z0-9]+)$"
+    assert_all_are_matching_regex(object, extPattern)
+    assert_is_a_string(makeNames)
+    assert_is_subset(makeNames, c("camel", "dotted", "snake" , "upperCamel"))
+    assert_is_a_bool(quiet)
 
     file <- localOrRemoteFile(object, quiet = quiet)
-
-    # Detect file extension
-    extPattern <- "\\.([a-zA-Z0-9]+)$"
-    if (!grepl(extPattern, names(file))) {
-        abort("File extension missing")
-    }
-    ext <- str_match(names(file), extPattern) %>%
-        .[[2L]]
-
-    # Rename tmpfile to include extension if necessary
-    if (!grepl(extPattern, file)) {
-        newfile <- paste0(file, ".", ext)
-        file.rename(file, newfile)
-        file[[1L]] <- newfile
-    }
+    basename <- names(file)
+    ext <- str_match(basename, extPattern)[[2L]]
 
     # File import, based on extension
     if (!isTRUE(quiet)) {
         inform(paste("Reading", names(file)))
     }
+
     na <- c("", "NA", "#N/A")
+
     if (ext == "csv") {
         data <- readr::read_csv(
             file = file,
