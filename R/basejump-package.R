@@ -11,6 +11,7 @@
 #' @importFrom assertive assert_all_are_not_na
 #' @importFrom assertive assert_any_are_matching_regex
 #' @importFrom assertive assert_are_identical
+#' @importFrom assertive assert_are_same_length
 #' @importFrom assertive assert_has_colnames
 #' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_dims
