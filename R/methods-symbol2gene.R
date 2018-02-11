@@ -43,7 +43,7 @@ NULL
 
     # Prevent pass in of organism as primary object.
     # Improve this in a future update.
-    if (is_string(object)) {
+    if (is_a_string(object)) {
         abort("symbol2gene conversion requires > 1 identifier")
     }
     if (any(is.na(object))) {

@@ -20,7 +20,7 @@ multiassignAsNewEnvir <- function(
     envirName,
     parentEnvir = parent.frame(),
     quiet = FALSE) {
-    if (!is_string(envirName)) {
+    if (!is_a_string(envirName)) {
         abort("`envirName` must be a string")
     }
     if (!is.environment(parentEnvir)) {
