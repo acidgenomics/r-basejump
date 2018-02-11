@@ -32,13 +32,20 @@ test_that("dgCMatrix", {
     )
 })
 
-test_that("Check groupings failure", {
+test_that("Invalid `groupings`", {
     expect_error(
         aggregateFeatures(mat, groupings = "XXX"),
-        "`groupings` must be a factor"
+        paste(
+            "is_factor :",
+            "groupings is not of class 'factor';",
+            "it has class 'character'."
+        )
     )
     expect_error(
         aggregateFeatures(mat, groupings = factor(c("XXX", "YYY"))),
-        "`groupings` must match rownames"
+        paste(
+            "are_identical :",
+            "rownames\\(object\\) and names\\(groupings\\) are not identical."
+        )
     )
 })
