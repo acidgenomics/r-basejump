@@ -160,11 +160,6 @@ assert_is_numeric_scalar_or_null <- function(x) {
 
 
 
-
-
-
-
-
 #' @rdname assert
 #' @note `tibble::has_rownames()` works better than `assertive::has_rownames()`
 #'   for data frames and tibbles.

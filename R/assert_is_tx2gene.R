@@ -9,12 +9,11 @@
 #'
 #' @examples
 #' tx2gene <- annotable("Homo sapiens", format = "tx2gene")
-#' checkTx2gene(tx2gene)
-checkTx2gene <- function(object) {
+#' assert_is_tx2gene(tx2gene)
+assert_is_tx2gene <- function(object) {
     assert_is_data.frame(object)
     assert_are_identical(
         colnames(object),
         c("enstxp", "ensgene")
     )
-    invisible(TRUE)
 }
