@@ -48,7 +48,6 @@ test_that("FASTA spike-in support", {
         c(EGFP = "EGFP",
           ENSMUSG00000000001 = "Gnai3")
     )
-
     expect_warning(
         convertGenesToSymbols(
             vec,
@@ -56,20 +55,6 @@ test_that("FASTA spike-in support", {
             release = 88L,
             quiet = TRUE),
         "Failed to match all genes to symbols: EGFP"
-    )
-
-    expect_warning(
-        convertGenesToSymbols(vec),
-        "Failed to detect organism"
-    )
-    expect_warning(
-        convertGenesToSymbols(vec),
-        "Returning unmodified gene identifiers"
-    )
-    expect_identical(
-        suppressWarnings(convertGenesToSymbols(vec)),
-        c(EGFP = "EGFP",
-          ENSMUSG00000000001 = "ENSMUSG00000000001")
     )
 })
 
