@@ -1,7 +1,6 @@
 context("convertTranscriptsToGenes")
 
-test_that("convertTranscriptsToGenes", {
-    # character
+test_that("character", {
     expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
@@ -20,14 +19,15 @@ test_that("convertTranscriptsToGenes", {
     )
     expect_error(
         convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
-        "NA identifier detected"
+        "is_non_missing_nor_empty_character"
     )
     expect_error(
         convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
-        "Empty string identifier detected"
+        "is_non_missing_nor_empty_character"
     )
+})
 
-    # matrix
+test_that("matrix", {
     mat <- matrix(
         data = seq(1L:8L),
         byrow = TRUE,
@@ -51,8 +51,7 @@ test_that("convertTranscriptsToGenes", {
     expect_identical(
         mat[2L:4L, ] %>%
             convertTranscriptsToGenes(quiet = TRUE) %>%
-            dimnames() %>%
-            .[[1L]],
+            rownames(),
         c("ENSMUST00000000001" = "ENSMUSG00000000001",
           "ENSMUST00000000003" = "ENSMUSG00000000003",
           "ENSMUST00000114041" = "ENSMUSG00000000003")
