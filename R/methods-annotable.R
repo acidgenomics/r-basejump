@@ -42,9 +42,9 @@
 #'   the annotables data package.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
-#' @param genomeBuild *Optional*. Check to see if a specific genome build is
+#' @param genomeBuild *Optional.* Check to see if a specific genome build is
 #'   supported.
-#' @param release *Optional*. Ensembl release version. Defaults to the most
+#' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #' @param uniqueSymbol Make gene symbols unique.
 #'

@@ -38,10 +38,14 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+\item{tx2gene}{\emph{Optional.} Transcript-to-gene mappings. If \code{NULL}, will
+attempt to download from Ensembl using the desired \code{organism},
+\code{genomeBuild}, and \code{release} arguments.}
+
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}

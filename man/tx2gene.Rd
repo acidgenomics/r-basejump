@@ -17,10 +17,10 @@ tx2gene(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
