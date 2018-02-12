@@ -23,24 +23,18 @@ test_that("Column data", {
 test_that("Non-numeric column data", {
     expect_error(
         geometricMean(starwars),
-        paste("Non-numeric columns: name, hair_color,")
+        "is_numeric"
     )
 })
 
 test_that("NaN on negative numbers", {
     vec <- seq(from = -5L, to = 5L, by = 1L)
-    expect_identical(
-        geometricMean(vec),
-        NaN
-    )
+    expect_identical(geometricMean(vec), NaN)
 })
 
 test_that("Zero propagation", {
     vec <- seq(from = 0L, to = 5L, by = 1L)
-    expect_identical(
-        geometricMean(vec, zeroPropagate = TRUE),
-        0L
-    )
+    expect_identical(geometricMean(vec, zeroPropagate = TRUE), 0L)
     expect_identical(
         round(geometricMean(vec, zeroPropagate = FALSE), digits = 6L),
         2.220906
