@@ -35,19 +35,10 @@
 #' @importFrom assertive is_hex_color
 #' @importFrom assertive is_scalar
 #' @importFrom rlang abort inform warn
-#' @importFrom tibble has_rownames
 "_PACKAGE"
-
-# @importFrom assertive assert_has_rownames  # internal fix
-# @importFrom assertive has_rownames  # use tibble version
 
 
 
 #' @importFrom utils globalVariables
 globalVariables(".")
 annotableCols <- c("ensgene", "symbol", "description", "biotype")
-
-
-
-# `tibble::has_rownames()` works better than `assertive::has_rownames()` for
-# data frames and tibbles
