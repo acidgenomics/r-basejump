@@ -62,7 +62,7 @@ NULL
             inform("Obtaining gene-to-symbol mappings from Ensembl")
         }
         if (is.null(organism)) {
-            organism <- detectOrganism(object[[1L]])
+            organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
             organism <- detectOrganism(organism)
         }

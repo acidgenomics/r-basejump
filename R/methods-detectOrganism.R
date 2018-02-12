@@ -164,7 +164,8 @@ NULL
 
 
 # detectOrganism(c("ENSG00000000001", "ENSG00000000003"))
-.detectOrganism.character <- function(object) {
+.detectOrganism.character <- function(object, unique = FALSE) {
+    assert_is_a_bool(unique)
     x <- vapply(
         X = object,
         FUN = .detectOrganism,
@@ -175,6 +176,12 @@ NULL
     }
     if (is_a_string(x)) {
         names(x) <- NULL
+    }
+    if (isTRUE(unique)) {
+        x <- x %>%
+            as.character() %>%
+            na.omit() %>%
+            unique()
     }
     x
 }

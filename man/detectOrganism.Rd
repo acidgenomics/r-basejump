@@ -14,7 +14,7 @@
 \usage{
 detectOrganism(object, ...)
 
-\S4method{detectOrganism}{character}(object)
+\S4method{detectOrganism}{character}(object, unique = FALSE)
 
 \S4method{detectOrganism}{data.frame}(object)
 

@@ -54,7 +54,7 @@ NULL
             inform("Obtaining transcript-to-gene mappings from Ensembl")
         }
         if (is.null(organism)) {
-            organism <- detectOrganism(object[[1L]])
+            organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
             organism <- detectOrganism(organism)
         }
