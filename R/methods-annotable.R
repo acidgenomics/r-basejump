@@ -376,7 +376,7 @@ NULL
     }
 
     object %>%
-        camel(strict = FALSE) %>%
+        camel() %>%
         fixNA() %>%
         .defineBroadClass() %>%
         select(c(annotableCols, "broadClass"), everything()) %>%

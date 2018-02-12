@@ -47,6 +47,9 @@ will be meaningful.}
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{colnames}{Apply sanitization on column names. This is generally
+recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting

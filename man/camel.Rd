@@ -12,7 +12,9 @@
 \alias{camel,DataFrame-method}
 \alias{camel,factor-method}
 \alias{camel,list-method}
+\alias{camel,List-method}
 \alias{camel,matrix-method}
+\alias{camel,SimpleList-method}
 \alias{camel,tbl_df-method}
 \alias{upperCamel,ANY-method}
 \alias{upperCamel,character-method}
@@ -43,8 +45,12 @@ upperCamel(object, ...)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
+\S4method{camel}{List}(object, strict = FALSE)
+
 \S4method{camel}{matrix}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
+
+\S4method{camel}{SimpleList}(object, strict = FALSE)
 
 \S4method{camel}{tbl_df}(object, strict = FALSE)
 
@@ -77,6 +83,9 @@ will be meaningful.}
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{colnames}{Apply sanitization on column names. This is generally
+recommended by default.}
 
 \item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
 allow the return of any capitalized acronyms. "RNA" will become "Rna", for

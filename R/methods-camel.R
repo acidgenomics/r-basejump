@@ -218,7 +218,7 @@ setMethod(
 
 
 
-#' @rdname dotted
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
@@ -236,7 +236,7 @@ setMethod(
 
 
 
-#' @rdname dotted
+#' @rdname camel
 #' @export
 setMethod(
     "camel",
