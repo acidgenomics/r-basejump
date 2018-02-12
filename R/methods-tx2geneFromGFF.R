@@ -47,8 +47,8 @@ NULL
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
 
-    assert_all_are_non_empty_character(enstxp)
-    assert_all_are_non_empty_character(ensgene)
+    assert_all_are_non_missing_nor_empty_character(enstxp)
+    assert_all_are_non_missing_nor_empty_character(ensgene)
     assert_are_same_length(enstxp, ensgene)
 
     if (!isTRUE(quiet)) {
