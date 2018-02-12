@@ -50,19 +50,24 @@ NULL
     assert_all_are_non_missing_nor_empty_character(ensgene)
     assert_are_same_length(enstxp, ensgene)
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "tx2gene mappings:",
-            length(enstxp), "transcripts,",
-            length(unique(ensgene)), "genes"
-        ))
-    }
-
-    cbind(enstxp, ensgene) %>%
+    data <- cbind(enstxp, ensgene) %>%
         as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         arrange(!!sym("enstxp")) %>%
         set_rownames(.[["enstxp"]])
+
+    # Check that all transcripts are unique
+    assert_has_no_duplicates(data[["enstxp"]])
+
+    if (!isTRUE(quiet)) {
+        inform(paste(
+            "tx2gene mappings:",
+            length(unique(data[["enstxp"]])), "transcripts,",
+            length(unique(data[["ensgene"]])), "genes"
+        ))
+    }
+
+    data
 }
 
 

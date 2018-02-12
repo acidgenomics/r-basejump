@@ -60,14 +60,20 @@ NULL
     assert_all_are_non_missing_nor_empty_character(symbol)
     assert_are_same_length(ensgene, symbol)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("gene2symbol mappings:", length(ensgene), "genes"))
-    }
-
     data <- cbind(ensgene, symbol) %>%
         as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         arrange(!!sym("ensgene"))
+
+    # Check that all transcripts are unique
+    assert_has_no_duplicates(data[["ensgene"]])
+
+    if (!isTRUE(quiet)) {
+        inform(paste(
+            "gene2symbol mappings:",
+            length(unique(data[["ensgene"]])), "genes"
+        ))
+    }
 
     if (isTRUE(uniqueSymbol)) {
         data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
