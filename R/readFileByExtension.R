@@ -54,6 +54,13 @@ readFileByExtension <- function(
 
     na <- c("", "NA", "#N/A")
 
+    # Add extension to tempfile, if necessary
+    if (!grepl(extPattern, file)) {
+        # tempfile needs an extension or `read_excel()` call will abort
+        file.rename(from = file, to = paste0(file, ".", ext))
+        file <- paste0(file, ".", ext)
+    }
+
     if (ext == "csv") {
         data <- readr::read_csv(
             file = file,
@@ -94,8 +101,10 @@ readFileByExtension <- function(
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        abort("Unsupported file type")
+        abort("Unsupported file extension")
     }
+
+    unlink(file)
 
     # Sanitize colnames
     if (!is.null(colnames(data))) {
