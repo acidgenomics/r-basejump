@@ -69,7 +69,7 @@ NULL
             release = release,
             quiet = quiet)
     } else {
-        checkTx2gene(tx2gene)
+        assert_is_tx2gene(tx2gene)
     }
 
     tx2gene <- tx2gene %>%

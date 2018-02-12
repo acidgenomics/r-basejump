@@ -77,7 +77,7 @@ NULL
             uniqueSymbol = uniqueSymbol,
             quiet = quiet)
     } else {
-        checkGene2symbol(gene2symbol)
+        assert_is_gene2symbol(gene2symbol)
         if (isTRUE(uniqueSymbol)) {
             gene2symbol[["symbol"]] <- make.unique(gene2symbol[["symbol"]])
         }
