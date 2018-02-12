@@ -1,23 +1,23 @@
-context("checkGene2symbol")
+context("assert_is_tx2gene")
 
 test_that("Success", {
-    gene2symbol <- annotable(
+    tx2gene <- annotable(
         "Homo sapiens",
-        format = "gene2symbol",
+        format = "tx2gene",
         quiet = TRUE)
-    expect_true(checkGene2symbol(gene2symbol))
+    expect_silent(assert_is_tx2gene(tx2gene))
 })
 
 test_that("Failure", {
     expect_error(
-        checkGene2symbol(mtcars),
+        assert_is_tx2gene(mtcars),
         "are_identical"
     )
 })
 
 test_that("Object isn't a data.frame", {
     expect_error(
-        checkGene2symbol(NULL),
+        assert_is_tx2gene(NULL),
         "is_data.frame"
     )
 })

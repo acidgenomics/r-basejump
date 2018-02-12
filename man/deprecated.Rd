@@ -14,6 +14,9 @@
 \alias{comp}
 \alias{revcomp}
 \alias{symbol2gene}
+\alias{checkAnnotable}
+\alias{checkGene2symbol}
+\alias{checkTx2gene}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -39,6 +42,12 @@ comp()
 revcomp()
 
 symbol2gene()
+
+checkAnnotable(...)
+
+checkGene2symbol(...)
+
+checkTx2gene(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

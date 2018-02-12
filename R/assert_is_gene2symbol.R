@@ -9,12 +9,11 @@
 #'
 #' @examples
 #' gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
-#' checkGene2symbol(gene2symbol)
-checkGene2symbol <- function(object) {
+#' assert_is_gene2symbol(gene2symbol)
+assert_is_gene2symbol <- function(object) {
     assert_is_data.frame(object)
     assert_are_identical(
         colnames(object),
         c("ensgene", "symbol")
     )
-    invisible(TRUE)
 }
