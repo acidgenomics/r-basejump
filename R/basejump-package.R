@@ -21,6 +21,7 @@
 #' @importFrom assertive assert_is_a_bool
 #' @importFrom assertive assert_is_a_string
 #' @importFrom assertive assert_is_any_of
+#' @importFrom assertive assert_is_character
 #' @importFrom assertive assert_is_data.frame
 #' @importFrom assertive assert_is_environment
 #' @importFrom assertive assert_is_factor

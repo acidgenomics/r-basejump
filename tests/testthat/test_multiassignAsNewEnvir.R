@@ -9,5 +9,5 @@ test_that("multiassignAsNewEnvir", {
         c("mtcars", "starwars"))
     expect_error(
         multiassignAsNewEnvir(mtcars, envirName = parent.frame()),
-        "`envirName` must be a string")
+        "is_a_string")
 })
