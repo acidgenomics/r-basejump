@@ -51,7 +51,7 @@ transmit <- function(
     }
     localDir <- initializeDirectory(localDir)
     assert_is_a_string(pattern)
-    .assert_is_a_string_or_null(rename)
+    assert_is_a_string_or_null(rename)
     assert_is_a_bool(compress)
     assert_is_a_bool(quiet)
 

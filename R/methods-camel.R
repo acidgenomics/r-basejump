@@ -110,7 +110,6 @@ NULL
 
 
 
-#' @importFrom assertive has_colnames has_rownames
 .camel.dim <- function(  # nolint
     object,
     rownames = FALSE,
@@ -119,7 +118,7 @@ NULL
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
+    if (isTRUE(rownames) && tibble::has_rownames(object)) {
         rownames(object) <- .camel(rownames(object), strict = strict)
     }
     if (isTRUE(colnames) && has_colnames(object)) {

@@ -58,11 +58,10 @@ NULL
     # Passthrough: clusterCols, clusterRows
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
-    .assert_formal_annotation_col(annotationCol)
-    assert_is_any_of(color, c("character", "NULL"))
-    .assert_formal_color_function(color)
-    .assert_formal_color_function(legendColor)
-    .assert_is_a_string_or_null(title)
+    assert_formal_annotation_col(object, annotationCol)
+    assert_formal_color_function(color)
+    assert_formal_color_function(legendColor)
+    assert_is_a_string_or_null(title)
 
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
