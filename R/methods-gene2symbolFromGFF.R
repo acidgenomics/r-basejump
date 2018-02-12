@@ -57,8 +57,8 @@ NULL
     symbol <- str_match(anno, "gene_name ([^;]+);") %>%
         .[, 2L]
 
-    assert_all_are_non_empty_character(ensgene)
-    assert_all_are_non_empty_character(symbol)
+    assert_all_are_non_missing_nor_empty_character(ensgene)
+    assert_all_are_non_missing_nor_empty_character(symbol)
     assert_are_same_length(ensgene, symbol)
 
     if (!isTRUE(quiet)) {

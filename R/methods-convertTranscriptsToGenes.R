@@ -40,7 +40,7 @@ NULL
     quiet = FALSE) {
     # Passthrough: genomeBuild, release, quiet
     assert_is_character(object)
-    assert_all_are_non_empty_character(object)
+    assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
     assert_is_any_of(tx2gene, c("data.frame", "NULL"))
     assert_is_a_string_or_null(organism)
