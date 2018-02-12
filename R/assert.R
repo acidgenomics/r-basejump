@@ -58,7 +58,7 @@ NULL
 #' @param colData Column data.
 #' @export
 assert_formal_annotation_col <- function(object, colData) {
-    assert_has_colnames(object)
+    assert_has_dims(object)
     assert_is_any_of(colData, c("data.frame", "logical"))
     if (is.data.frame(colData)) {
         assert_has_colnames(colData)
