@@ -6,6 +6,9 @@
 \usage{
 sanitizeAnnotable(object)
 }
+\arguments{
+\item{object}{Object.}
+}
 \value{
 Annotable without nested list items (e.g. Entrez IDs).
 }

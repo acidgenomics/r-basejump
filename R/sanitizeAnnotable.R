@@ -1,6 +1,6 @@
 #' Sanitize Ensembl Annotations
 #'
-#' @inheritParams checkAnnotable
+#' @inheritParams general
 #'
 #' @return Annotable without nested list items (e.g. Entrez IDs).
 #' @export
