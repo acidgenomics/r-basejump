@@ -57,6 +57,7 @@ saveData <- function(
     }
 
     if (!length(files)) {
+        warn("No files to save")
         return(invisible())
     }
 
