@@ -55,12 +55,12 @@ test_that("FASTA spike-in support", {
             organism = "Mus musculus",
             release = 88L,
             quiet = TRUE),
-        "Failed to match all gene IDs to symbols: EGFP"
+        "Failed to match all genes to symbols: EGFP"
     )
 
     expect_warning(
         convertGenesToSymbols(vec),
-        "Failed to detect supported organism"
+        "Failed to detect organism"
     )
     expect_warning(
         convertGenesToSymbols(vec),
