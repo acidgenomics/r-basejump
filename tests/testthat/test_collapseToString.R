@@ -3,34 +3,30 @@ context("collapseToString")
 mpg <- "18.1, 18.7, 21, 21.4, 22.8"
 
 test_that("character", {
-    groceries <- c(NA, "milk", "eggs", "eggs", "veggies")
+    groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
     expect_identical(
         collapseToString(
             groceries,
-            unique = TRUE,
-            sort = TRUE),
+            sort = TRUE,
+            removeNA = FALSE,
+            unique = FALSE),
+        "eggs, eggs, milk, veggies, NA, NA"
+    )
+    expect_identical(
+        collapseToString(
+            groceries,
+            sort = TRUE,
+            removeNA = TRUE,
+            unique = FALSE),
+        "eggs, eggs, milk, veggies"
+    )
+    expect_identical(
+        collapseToString(
+            groceries,
+            sort = TRUE,
+            removeNA = TRUE,
+            unique = TRUE),
         "eggs, milk, veggies"
-    )
-    expect_identical(
-        collapseToString(
-            groceries,
-            unique = TRUE,
-            sort = FALSE),
-        "milk, eggs, veggies"
-    )
-    expect_identical(
-        collapseToString(
-            groceries,
-            unique = FALSE,
-            sort = FALSE),
-        "NA, milk, eggs, eggs, veggies"
-    )
-    expect_identical(
-        collapseToString(
-            groceries,
-            unique = FALSE,
-            sort = TRUE),
-        "eggs, eggs, milk, veggies, NA"
     )
 })
 
@@ -53,6 +49,7 @@ test_that("logical", {
         collapseToString(c(TRUE, FALSE), sort = TRUE),
         "FALSE, TRUE"
     )
+    # NA and NaN should stay fixed even when sorting is enabled
     expect_identical(
         collapseToString(c(NA, NaN), sort = TRUE),
         "NA, NaN"
@@ -68,8 +65,8 @@ test_that("data.frame", {
     expect_identical(
         mtcars %>%
             head() %>%
-            collapseToString() %>%
-            .[, "mpg"],
+            collapseToString(sort = TRUE, unique = TRUE) %>%
+            .[, "mpg", drop = TRUE],
         mpg
     )
 })
@@ -79,7 +76,7 @@ test_that("DataFrame", {
         mtcars %>%
             as("DataFrame") %>%
             head() %>%
-            collapseToString() %>%
+            collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg"],
         mpg
     )
@@ -90,8 +87,8 @@ test_that("matrix", {
         mtcars %>%
             as("matrix") %>%
             head() %>%
-            collapseToString() %>%
-            .[1L, "mpg"] %>%
+            collapseToString(sort = TRUE, unique = TRUE) %>%
+            .[1L, "mpg", drop = TRUE] %>%
             as.character(),
         mpg
     )
