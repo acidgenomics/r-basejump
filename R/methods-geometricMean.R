@@ -64,15 +64,8 @@ NULL
 
 
 .geometricMean.dim <- function(object) {  # nolint
-    # Require that all columns are numeric (useful for data.frame)
-    numericCol <- vapply(object, is.numeric, FUN.VALUE = logical(1L))
-    if (!all(numericCol)) {
-        # Return which columns aren't numeric
-        nonnumericCol <- colnames(object)[!numericCol]
-        abort(paste(
-            "Non-numeric columns:", toString(nonnumericCol)
-        ))
-    }
+    assert_has_dimnames(object)
+    invisible(lapply(object, assert_is_numeric))
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
