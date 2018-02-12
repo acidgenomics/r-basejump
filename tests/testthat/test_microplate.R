@@ -73,18 +73,18 @@ test_that("Prefix", {
 test_that("Invalid parameters", {
     expect_error(
         microplate(plates = -1L),
-        "Invalid `plates` argument"
+        "is_positive"
     )
     expect_error(
-        microplate(wells = -1L),
-        "Invalid `wells` argument"
+        microplate(wells = 4L),
+        "is_subset"
     )
     expect_error(
         microplate(controls = -1L),
-        "`controls` parameter supports 0:12"
+        "is_non_negative"
     )
     expect_error(
         microplate(prefix = c("a", "b")),
-        "`prefix` must be a string"
+        "is_a_string"
     )
 })
