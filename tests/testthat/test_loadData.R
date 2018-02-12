@@ -14,63 +14,51 @@ utils::download.file(
     quiet = TRUE)
 
 test_that("loadData", {
-    loaded <- loadData(mtcars, replace = TRUE, quiet = TRUE)
+    loaded <- loadData(mtcars, quiet = TRUE)
+    rm(mtcars)
     expect_identical(
         loaded,
         c(mtcars = file.path(getwd(), "mtcars.rda"))
     )
+
     expect_message(
-        suppressWarnings(
-            loadData(mtcars, replace = TRUE)
-        ),
-        paste("Loading mtcars from", getwd())
+        suppressWarnings(loadData(mtcars)),
+        paste("Loading mtcars.rda from", getwd())
     )
 
-    # Replace argument
-    expect_warning(
-        loadData(mtcars, replace = TRUE),
-        paste("Replacing mtcars with the contents of mtcars.rda")
-    )
-    expect_warning(
-        loadData(mtcars, replace = FALSE, quiet = TRUE),
-        "Skipping mtcars.rda because mtcars already exists"
+    # Abort on existing
+    expect_error(
+        loadData(mtcars, quiet = TRUE),
+        "mtcars already exists in environment"
     )
 })
 
 test_that("Multiple objects in single file", {
     expect_error(
-        loadData(multi),
-        "multi.rda contains multiple objects: x, y"
+        loadData(multi, quiet = TRUE),
+        "is_a_string"
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
         loadData(mtcars, dir = NULL),
-        "`dir` must be a string"
+        "is_a_string"
     )
     expect_error(
         loadData(mtcars, dir = "XXX"),
-        "No directory exists at XXX"
+        "is_existing_file"
     )
     expect_error(
         loadData(mtcars, envir = "XXX"),
-        "`envir` must be an environment"
-    )
-})
-
-test_that("Missing file", {
-    expect_error(
-        loadData(foobar, quiet = TRUE),
-        "foobar missing"
+        "is_environment"
     )
 })
 
 test_that("Renamed file", {
     expect_error(
         loadData(renamed),
-        paste("Name mismatch detected for `renamed.rda`.",
-              "Internal object is named `x`.")
+        "are_identical"
     )
 })
 
