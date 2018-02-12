@@ -54,11 +54,14 @@ NULL
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
-    # Parameter integrity checks ===============================================
-    # Passthrough: clusterCols, clusterRows
+    assert_has_dims(object)
+    assert_all_are_greater_than(nrow(object), 1L)
+    assert_all_are_greater_than(ncol(object), 1L)
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
     assert_formal_annotation_col(object, annotationCol)
+    assert_is_a_bool(clusterCols)
+    assert_is_a_bool(clusterRows)
     assert_formal_color_function(color)
     assert_formal_color_function(legendColor)
     assert_is_a_string_or_null(title)
