@@ -42,3 +42,13 @@ setMethod(
     "markdownPlotlist",
     signature("list"),
     .markdownPlotlist)
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownPlotlist
+#' @inheritParams general
+#' @export
+mdPlotlist <- function(...) {
+    markdownPlotlist(...)
+}

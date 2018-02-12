@@ -108,3 +108,13 @@ setMethod(
     "geometricMean",
     signature("numeric"),
     .geometricMean)
+
+
+
+# Aliases ======================================================================
+#' @rdname geometricMean
+#' @inheritParams general
+#' @export
+geomean <- function(...) {
+    geometricMean(...)
+}

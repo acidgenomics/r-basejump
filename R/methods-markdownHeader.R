@@ -68,3 +68,13 @@ setMethod(
     "markdownHeader",
     signature("character"),
     .markdownHeader)
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownHeader
+#' @inheritParams general
+#' @export
+mdHeader <- function(...) {
+    markdownHeader(...)
+}
