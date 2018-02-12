@@ -2,10 +2,7 @@ context("markdownHeader")
 
 test_that("String", {
     md <- markdownHeader("Header")
-    expect_identical(
-        class(md),
-        "knit_asis"
-    )
+    expect_is(md, "knit_asis")
     md <- markdownHeader("Header", level = 4L) %>%
         as.character()
     expect_identical(
@@ -24,6 +21,6 @@ test_that("String", {
     )
     expect_error(
         markdownHeader("Header", level = 8L),
-        "Markdown supports 1-7 header levels"
+        "is_subset"
     )
 })
