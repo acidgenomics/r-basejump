@@ -20,6 +20,8 @@
 #' @param rownames Apply sanitization on row names. This is not recommended
 #'   by default, since rownames commonly contain gene identifiers that should
 #'   not be modified.
+#' @param colnames Apply sanitization on column names. This is generally
+#'   recommended by default.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [base::names()], the underlying data returns unchanged.
