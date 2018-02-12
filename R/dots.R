@@ -33,6 +33,7 @@ dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))
     assert_is_list(dots)
     assert_is_non_empty(dots)
+    assert_has_no_duplicates(dots)
     invisible(lapply(dots, assert_is_name))
 
     # Convert names (symbols) to character vector
