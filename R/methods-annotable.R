@@ -268,7 +268,7 @@ NULL
 .defineBroadClass <- function(object) {
     assert_is_data.frame(object)
     assert_is_subset(c("biotype", "symbol"), colnames(object))
-    object <- mutate(
+    mutate(
         object,
         broadClass = case_when(
             grepl(
@@ -316,9 +316,6 @@ NULL
             ) ~ "tcr",
             TRUE ~ "other")
     )
-    assert_is_data.frame(object)
-    assert_has_rownames(object)
-    object
 }
 
 
