@@ -11,5 +11,3 @@ test_that("Simple plot", {
         "black"
     )
 })
-
-
