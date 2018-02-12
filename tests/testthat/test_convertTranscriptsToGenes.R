@@ -2,7 +2,7 @@ context("convertTranscriptsToGenes")
 
 test_that("convertTranscriptsToGenes", {
     # character
-    expect_equal(
+    expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
             release = 88L,
@@ -48,7 +48,7 @@ test_that("convertTranscriptsToGenes", {
             quiet = TRUE),
         "Unmatched transcripts present. Try using a GFF file instead."
     )
-    expect_equal(
+    expect_identical(
         mat[2L:4L, ] %>%
             convertTranscriptsToGenes(quiet = TRUE) %>%
             dimnames() %>%

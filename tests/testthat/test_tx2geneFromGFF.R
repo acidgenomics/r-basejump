@@ -4,11 +4,11 @@ mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
 mouse <- tx2geneFromGFF(mousefile, quiet = TRUE)
 
 test_that("mouse", {
-    expect_equal(
+    expect_identical(
         dim(mouse),
         c(20L, 2L)
     )
-    expect_equal(
+    expect_identical(
         head(mouse, 2L),
         data.frame(
             "enstxp" = c("ENSMUST00000070533",
@@ -29,11 +29,11 @@ test_that("fruitfly", {
     fruitfly <- tx2geneFromGFF(
         "http://basejump.seq.cloud/dmelanogaster.gtf",
         quiet = TRUE)
-    expect_equal(
+    expect_identical(
         dim(fruitfly),
         c(7L, 2L)
     )
-    expect_equal(
+    expect_identical(
         head(fruitfly, 2L),
         data.frame(
             "enstxp" = c("FBtr0070000",
@@ -49,7 +49,7 @@ test_that("fruitfly", {
 test_that("GFF data.frame input", {
     # Test GFF data.frame input
     gff <- readGFF(mousefile, quiet = TRUE)
-    expect_equal(
+    expect_identical(
         tx2geneFromGFF(gff, quiet = TRUE),
         mouse
     )
@@ -63,7 +63,7 @@ test_that("bad data.frame", {
 })
 
 test_that("GTF alias", {
-    expect_equal(
+    expect_identical(
         tx2geneFromGTF(mousefile, quiet = TRUE),
         mouse
     )

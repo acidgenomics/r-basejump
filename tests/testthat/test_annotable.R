@@ -5,25 +5,25 @@ test_that("Ensembl versioned release", {
     human <- suppressMessages(annotable("Homo sapiens", release = release))
     mouse <- suppressMessages(annotable("Mus musculus", release = release))
 
-    expect_equal(
+    expect_identical(
         dim(human),
         c(64592L, 11L)
     )
-    expect_equal(
+    expect_identical(
         dim(mouse),
         c(51158L, 11L)
     )
 
-    expect_equal(
+    expect_identical(
         rownames(human)[1L:3L],
         c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
     )
-    expect_equal(
+    expect_identical(
         rownames(mouse)[1L:3L],
         c("ENSMUSG00000000001", "ENSMUSG00000000003", "ENSMUSG00000000028")
     )
 
-    expect_equal(
+    expect_identical(
         lapply(human, class),
         list(
             ensgene = "character",
@@ -86,11 +86,11 @@ test_that("annotables package data.frame input", {
 
     # This is fast but will drop extra columns
     human <- annotable(grch37)
-    expect_equal(
+    expect_identical(
         dim(human),
         c(63677L, 10L)
     )
-    expect_equal(
+    expect_identical(
         lapply(human, class),
         list(
             ensgene = "character",

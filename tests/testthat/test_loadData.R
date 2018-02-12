@@ -15,7 +15,7 @@ utils::download.file(
 
 test_that("loadData", {
     loaded <- loadData(mtcars, replace = TRUE, quiet = TRUE)
-    expect_equal(
+    expect_identical(
         loaded,
         c(mtcars = file.path(getwd(), "mtcars.rda"))
     )

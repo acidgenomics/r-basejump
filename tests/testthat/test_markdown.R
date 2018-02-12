@@ -2,19 +2,19 @@ context("markdown")
 
 test_that("mdHeader", {
     md <- mdHeader("Header")
-    expect_equal(
+    expect_identical(
         class(md),
         "knit_asis"
     )
     md <- mdHeader("Header", level = 4L) %>%
         as.character()
-    expect_equal(
+    expect_identical(
         md,
         "#### Header\n"  # nolint
     )
     md <- mdHeader("Header", tabset = TRUE) %>%
         as.character()
-    expect_equal(
+    expect_identical(
          md,
         "## Header {.tabset}\n"  # nolint
     )
@@ -33,19 +33,19 @@ test_that("mdHeader", {
 test_that("mdList", {
     groceries <- c("milk", "eggs")
     md <- mdList(groceries)
-    expect_equal(
+    expect_identical(
         class(md),
         "knit_asis"
     )
     md <- mdList(groceries) %>%
         as.character()
-    expect_equal(
+    expect_identical(
         md,
         c("- milk\n", "- eggs\n")
     )
     md <- mdList(groceries, ordered = TRUE) %>%
         as.character()
-    expect_equal(
+    expect_identical(
         md,
         c("1. milk\n", "2. eggs\n")
     )

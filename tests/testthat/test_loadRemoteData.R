@@ -4,7 +4,7 @@ test_that("loadRemoteData", {
     loaded <- loadRemoteData(
         "http://basejump.seq.cloud/mtcars.rda",
         quiet = TRUE)
-    expect_equal(loaded, "mtcars")
+    expect_identical(loaded, "mtcars")
     expect_error(
         loadRemoteData("http://basejump.seq.cloud/mmusculus.gtf"),
         "Data file must contain `.rda` extension"

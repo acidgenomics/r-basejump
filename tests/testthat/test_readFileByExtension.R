@@ -17,7 +17,7 @@ test_that("readFileByExtension", {
     colnames <- readFileByExtension(
         "http://basejump.seq.cloud/test.colnames",
         quiet = TRUE)
-    expect_equal(
+    expect_identical(
         colnames,
         c("foo", "bar")
     )
@@ -32,7 +32,7 @@ test_that("readFileByExtension", {
     txt <- readFileByExtension(
         "http://basejump.seq.cloud/mtcars.txt",
         quiet = TRUE)
-    expect_equal(
+    expect_identical(
         txt,
         mtcars
     )
@@ -48,7 +48,7 @@ test_that("readFileByExtension", {
         "http://basejump.seq.cloud/test.counts",
         quiet = TRUE)
     expect_true(is.matrix(counts))
-    expect_equal(
+    expect_identical(
         rownames(counts)[1L:5L],
         c("ENSMUSG00000102693",
           "ENSMUSG00000064842",

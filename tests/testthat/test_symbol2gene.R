@@ -2,7 +2,7 @@ context("symbol2gene")
 
 test_that("symbol2gene", {
     # character
-    expect_equal(
+    expect_identical(
         symbol2gene(
             c("Gnai3", "Pbsn"),
             organism = "Mus musculus",
@@ -39,7 +39,7 @@ test_that("symbol2gene", {
     )
 
     # Identifier mismatch
-    expect_equal(
+    expect_identical(
         suppressWarnings(symbol2gene(
             c("Gnai3", "Pbsn", "XXX"),
             organism = "Mus musculus",
@@ -69,7 +69,7 @@ test_that("symbol2gene", {
             c("sample1", "sample2")
         )
     )
-    expect_equal(
+    expect_identical(
         symbol2gene(
             mat,
             organism = "Mus musculus",

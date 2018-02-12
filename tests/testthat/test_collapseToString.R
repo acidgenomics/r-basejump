@@ -4,28 +4,28 @@ mpg <- "18.1, 18.7, 21, 21.4, 22.8"
 
 test_that("character", {
     groceries <- c(NA, "milk", "eggs", "eggs", "veggies")
-    expect_equal(
+    expect_identical(
         collapseToString(
             groceries,
             unique = TRUE,
             sort = TRUE),
         "eggs, milk, veggies"
     )
-    expect_equal(
+    expect_identical(
         collapseToString(
             groceries,
             unique = TRUE,
             sort = FALSE),
         "milk, eggs, veggies"
     )
-    expect_equal(
+    expect_identical(
         collapseToString(
             groceries,
             unique = FALSE,
             sort = FALSE),
         "NA, milk, eggs, eggs, veggies"
     )
-    expect_equal(
+    expect_identical(
         collapseToString(
             groceries,
             unique = FALSE,
@@ -35,29 +35,29 @@ test_that("character", {
 })
 
 test_that("integer", {
-    expect_equal(
+    expect_identical(
         collapseToString(seq(1L:5L)),
         "1, 2, 3, 4, 5"
     )
 })
 
 test_that("numeric", {
-    expect_equal(
+    expect_identical(
         collapseToString(c(3.141593, 6.0221409e+23)),
         "3.141593, 6.0221409e+23"
     )
 })
 
 test_that("logical", {
-    expect_equal(
+    expect_identical(
         collapseToString(c(TRUE, FALSE), sort = TRUE),
         "FALSE, TRUE"
     )
-    expect_equal(
+    expect_identical(
         collapseToString(c(NA, NaN), sort = TRUE),
         "NA, NaN"
     )
-    expect_equal(
+    expect_identical(
         collapseToString(c(NaN, NA), sort = TRUE),
         "NaN, NA"
     )
@@ -65,7 +65,7 @@ test_that("logical", {
 
 test_that("data.frame", {
     # data.frame
-    expect_equal(
+    expect_identical(
         mtcars %>%
             head() %>%
             collapseToString() %>%
@@ -75,7 +75,7 @@ test_that("data.frame", {
 })
 
 test_that("DataFrame", {
-    expect_equal(
+    expect_identical(
         mtcars %>%
             as("DataFrame") %>%
             head() %>%
@@ -86,7 +86,7 @@ test_that("DataFrame", {
 })
 
 test_that("matrix", {
-    expect_equal(
+    expect_identical(
         mtcars %>%
             as("matrix") %>%
             head() %>%

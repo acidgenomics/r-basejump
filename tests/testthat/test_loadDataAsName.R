@@ -27,7 +27,7 @@ test_that("Dot object key-value pair method", {
             newName2 = "starwars.rda",
             replace = TRUE)
     )
-    expect_equal(
+    expect_identical(
         loaded,
         c(newName1 = file.path(getwd(), "mtcars.rda"),
           newName2 = file.path(getwd(), "starwars.rda"))
@@ -57,7 +57,7 @@ test_that("Dot object key-value pair method", {
 
 test_that("Legacy named character method", {
     loaded <- loadDataAsName(c(test = "mtcars"))
-    expect_equal(
+    expect_identical(
         loaded,
         c(test = file.path(getwd(), "mtcars.rda"))
     )

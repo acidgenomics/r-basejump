@@ -5,7 +5,7 @@ mouse <- readGFF(mousefile, quiet = TRUE)
 
 test_that("mouse", {
     # Check for 9 columns
-    expect_equal(
+    expect_identical(
         ncol(mouse),
         9L
     )
@@ -15,7 +15,7 @@ test_that("fruitfly", {
     fruitfly <- readGFF("http://basejump.seq.cloud/dmelanogaster.gtf",
                         quiet = TRUE)
     # Check for 9 columns
-    expect_equal(
+    expect_identical(
          ncol(fruitfly),
         9L
     )
@@ -36,7 +36,7 @@ test_that("invalid files", {
 })
 
 test_that("GTF alias", {
-    expect_equal(
+    expect_identical(
         readGTF(mousefile, quiet = TRUE),
         mouse
     )
