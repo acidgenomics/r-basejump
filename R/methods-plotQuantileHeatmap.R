@@ -35,6 +35,7 @@ NULL
     assert_is_matrix(object)
     assert_is_integer(n)
     assert_is_scalar(n)
+    assert_all_are_positive(n)
     q <- quantile(object, probs = seq(0L, 1L, length.out = n))
     q[!duplicated(q)]
 }
@@ -61,13 +62,11 @@ NULL
     color = viridis::viridis,
     legendColor = viridis::viridis,
     title = NULL) {
+    # Passthrough: n
     assert_has_dims(object)
     assert_all_are_greater_than(nrow(object), 1L)
     assert_all_are_greater_than(ncol(object), 1L)
     object <- as.matrix(object)
-    assert_is_integer(n)
-    assert_is_scalar(n)
-    assert_all_are_positive(n)
     assert_formal_annotation_col(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
