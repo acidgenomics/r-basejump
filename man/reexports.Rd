@@ -5,7 +5,13 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{aes}
+\alias{reexports}
+\alias{ggplot}
+\alias{reexports}
 \alias{\%>\%}
+\alias{reexports}
+\alias{set_rownames}
 \alias{reexports}
 \alias{Matrix}
 \alias{reexports}
@@ -23,7 +29,9 @@ below to see their documentation.
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
+
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
