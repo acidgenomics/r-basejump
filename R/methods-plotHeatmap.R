@@ -57,6 +57,7 @@ NULL
     assert_has_dims(object)
     assert_all_are_greater_than(nrow(object), 1L)
     assert_all_are_greater_than(ncol(object), 1L)
+    object <- as.matrix(object)
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
     assert_formal_annotation_col(object, annotationCol)
@@ -72,24 +73,14 @@ NULL
             .[rowSums(.) > 0L, , drop = FALSE]
     }
 
-    if (nrow(object) < 2L) {
-        abort("Need at least 2 rows to plot heatmap")
-    }
-    if (ncol(object) < 2L) {
-        abort("Need at least 2 columns to plot heatmap")
-    }
-
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
-    if (!is.null(dim(annotationCol))) {
+    if (is.data.frame(annotationCol)) {
         annotationCol <- annotationCol %>%
-            as.data.frame() %>%
             .[colnames(object), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
-    } else {
-        annotationCol <- NA
     }
 
     # Define colors for each annotation column, if desired
@@ -156,6 +147,15 @@ NULL
 
 
 # Methods ======================================================================
+#' @rdname plotQuantileHeatmap
+#' @export
+setMethod(
+    "plotHeatmap",
+    signature("dgCMatrix"),
+    .plotHeatmap)
+
+
+
 #' @rdname plotHeatmap
 #' @importFrom viridis viridis
 #' @export
