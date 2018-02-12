@@ -1,10 +1,10 @@
-context("mdPlotlist")
+context("markdownPlotlist")
 
 loadRemoteData("http://basejump.seq.cloud/plotlist.rda", quiet = TRUE)
 
-test_that("Capture output", {
+test_that("List", {
     output <- capture.output(
-        mdPlotlist(plotlist)
+        markdownPlotlist(plotlist)
     )
     expect_identical(
         output,
