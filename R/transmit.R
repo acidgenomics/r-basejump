@@ -75,7 +75,7 @@ transmit <- function(
 
     # Rename files, if desired
     if (is.character(rename)) {
-        assert_all_are_same_length(remoteFileName, rename)
+        assert_are_same_length(remoteFileName, rename)
     }
 
     if (!isTRUE(quiet)) {
