@@ -11,13 +11,13 @@ test_that("Success", {
 test_that("Failure", {
     expect_error(
         checkTx2gene(mtcars),
-        "tx2gene must contain:"
+        "are_identical"
     )
 })
 
 test_that("Object isn't a data.frame", {
     expect_error(
         checkTx2gene(NULL),
-        "tx2gene must be a data.frame"
+        "is_data.frame"
     )
 })
