@@ -42,6 +42,12 @@ convertTranscriptsToGenes(object, ...)
 attempt to download from Ensembl using the desired \code{organism},
 \code{genomeBuild}, and \code{release} arguments.}
 
+\item{organism}{\emph{Optional.} Organism name. Normally this argument is
+unnecessary and can be left unset. If a count matrix starts with a
+FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
+first gene identifier will fail. In this case, the desired organism must be
+manually declared.}
+
 \item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
