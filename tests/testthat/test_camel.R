@@ -66,7 +66,7 @@ test_that("data.frame", {
             .[[1L]],
         "mazdaRx4"
     )
-    # Unset rownames (ignore in `.checkRownames()`)
+    # Unset rownames should be skipped, even when `rownames = TRUE`
     expect_identical(
         makeNames[["dataFrame"]] %>%
             set_rownames(NULL) %>%
@@ -122,12 +122,5 @@ test_that("Named list", {
         camel(makeNames[["list"]], strict = TRUE),
         list("itemA" = c(1L, 2L),
              "itemB" = c(3L, 4L))
-    )
-})
-
-test_that("missing", {
-    expect_error(
-        camel(),
-        "argument \"object\" is missing, with no default"
     )
 })

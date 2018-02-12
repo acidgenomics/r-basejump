@@ -37,7 +37,7 @@ saveData <- function(
     assert_is_character(objectNames)
     dir <- initializeDirectory(dir)
     assert_is_a_bool(overwrite)
-    .assert_formal_compress(compress)
+    assert_formal_compress(compress)
     assert_is_a_bool(quiet)
 
     files <- file.path(dir, paste0(objectNames, ".rda"))

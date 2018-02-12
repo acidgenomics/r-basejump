@@ -31,7 +31,7 @@ assignAndSaveData <- function(
     assert_is_a_string(name)
     assert_is_not_null(object)
     dir <- initializeDirectory(dir)
-    .assert_formal_compress(compress)
+    assert_formal_compress(compress)
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
 

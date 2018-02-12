@@ -43,8 +43,8 @@ NULL
     assert_all_are_non_empty_character(object)
     assert_has_no_duplicates(object)
     assert_is_any_of(tx2gene, c("data.frame", "NULL"))
-    .assert_is_a_string_or_null(organism)
-    .assert_is_numeric_scalar_or_null(release)
+    assert_is_a_string_or_null(organism)
+    assert_is_numeric_scalar_or_null(release)
     assert_is_a_bool(quiet)
 
     # If no tx2gene is provided, fall back to using Ensembl annotations

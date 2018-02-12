@@ -100,14 +100,13 @@ NULL
 
 
 
-#' @importFrom assertive has_colnames has_rownames
 .dotted.dim <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
+    if (isTRUE(rownames) && tibble::has_rownames(object)) {
         assert_has_rownames(object)
         rownames(object) <- .dotted(rownames(object))
     }

@@ -62,10 +62,10 @@ NULL
     object <- as.matrix(object)
     assert_is_integer(n)
     assert_is_scalar(n)
-    .assert_formal_annotation_col(annotationCol)
-    .assert_formal_color_function(color)
-    .assert_formal_color_function(legendColor)
-    .assert_is_a_string_or_null(title)
+    assert_formal_annotation_col(annotationCol)
+    assert_formal_color_function(color)
+    assert_formal_color_function(legendColor)
+    assert_is_a_string_or_null(title)
 
     if (nrow(object) < 2L) {
         abort("Need at least 2 rows to plot heatmap")

@@ -35,7 +35,7 @@ microplate <- function(
     assert_is_integer(controls)
     assert_is_scalar(controls)
     assert_is_subset(controls, 0L:12L)
-    .assert_is_a_string_or_null(prefix)
+    assert_is_a_string_or_null(prefix)
 
     if (wells == 96L) {
         row <- 8L
