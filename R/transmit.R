@@ -51,7 +51,7 @@ transmit <- function(
     }
     localDir <- initializeDirectory(localDir)
     assert_is_a_string(pattern)
-    assert_is_a_string_or_null(rename)
+    assert_is_character_or_null(rename)
     assert_is_a_bool(compress)
     assert_is_a_bool(quiet)
 
@@ -75,8 +75,7 @@ transmit <- function(
 
     # Rename files, if desired
     if (is.character(rename)) {
-        assert_are_identical(length(rename), length(remoteFileName)
-        )
+        assert_all_are_same_length(remoteFileName, rename)
     }
 
     if (!isTRUE(quiet)) {

@@ -13,7 +13,7 @@
 #' vec <- c("hello", "world", NA, "hello", "world", NA)
 #' toStringUnique(vec)
 toStringUnique <- function(object) {
-    assert_is_any_of(c("factor", "vector"))
+    assert_is_atomic(object)
     object %>%
         as.character() %>%
         na.omit() %>%
