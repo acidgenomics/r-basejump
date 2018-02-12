@@ -40,6 +40,7 @@
 #' @importFrom assertive assert_is_name
 #' @importFrom assertive assert_is_non_empty
 #' @importFrom assertive assert_is_not_null
+#' @importFrom assertive assert_is_numeric
 #' @importFrom assertive assert_is_scalar
 #' @importFrom assertive assert_is_subset
 #' @importFrom assertive assert_is_vector
