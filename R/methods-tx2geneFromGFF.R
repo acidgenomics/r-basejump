@@ -27,7 +27,6 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom dplyr arrange distinct
-#' @importFrom magrittr set_rownames
 #' @importFrom rlang !! sym
 #' @importFrom stringr str_match
 .tx2geneFromGFF <- function(
