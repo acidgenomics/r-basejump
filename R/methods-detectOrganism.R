@@ -20,6 +20,8 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
+#' @param unique Only return unique matching organisms. Applies to character
+#'   vector input.
 #'
 #' @return Full latin organism name. Always aborts on detection failure.
 #'

@@ -133,7 +133,7 @@ setMethod(
 
 
 
-#' @rdname dotted
+#' @rdname camel
 #' @export
 setMethod(
     "upperCamel",
@@ -151,7 +151,7 @@ setMethod(
 
 
 
-#' @rdname dotted
+#' @rdname camel
 #' @export
 setMethod(
     "upperCamel",

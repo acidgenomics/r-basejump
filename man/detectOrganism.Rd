@@ -30,6 +30,9 @@ detectOrganism(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{unique}{Only return unique matching organisms. Applies to character
+vector input.}
 }
 \value{
 Full latin organism name. Always aborts on detection failure.

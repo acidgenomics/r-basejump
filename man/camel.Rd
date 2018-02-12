@@ -22,7 +22,9 @@
 \alias{upperCamel,DataFrame-method}
 \alias{upperCamel,factor-method}
 \alias{upperCamel,list-method}
+\alias{upperCamel,List-method}
 \alias{upperCamel,matrix-method}
+\alias{upperCamel,SimpleList-method}
 \alias{upperCamel,tbl_df-method}
 \title{Camel Case}
 \usage{
@@ -69,8 +71,12 @@ upperCamel(object, ...)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
+\S4method{upperCamel}{List}(object, strict = FALSE)
+
 \S4method{upperCamel}{matrix}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
+
+\S4method{upperCamel}{SimpleList}(object, strict = FALSE)
 
 \S4method{upperCamel}{tbl_df}(object, strict = FALSE)
 }

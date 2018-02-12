@@ -5,7 +5,7 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
-#' @inheritParams annotable
+#' @inheritParams convertGenesToSymbols
 #'
 #' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
