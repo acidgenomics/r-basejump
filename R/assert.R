@@ -78,8 +78,7 @@ assert_formal_header_level <- function(x) {
 #'   version that works properply with data frames.
 #' @export
 assert_has_rownames <- function(x) {
-    assertive::assert_has_rownames(x)
-    stopifnot(tibble::has_rownames(x))
+    stopifnot(has_rownames(x))
     assert_are_disjoint_sets(
         rownames(x),
         as.character(seq_len(nrow(x)))
@@ -105,6 +104,20 @@ assert_is_numeric_scalar_or_null <- function(x) {
     assert_is_any_of(x, c("numeric", "NULL"))
     if (is.numeric(x)) {
         assert_is_scalar(x)
+    }
+}
+
+
+
+#' @rdname assert
+#' @note `tibble::has_rownames()` works better than `assertive::has_rownames()`
+#'   for data frames and tibbles.
+#' @export
+has_rownames <- function(x) {
+    if (is.data.frame(x)) {
+        tibble::has_rownames(x)
+    } else {
+        assertive::has_rownames(x)
     }
 }
 

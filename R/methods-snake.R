@@ -73,7 +73,7 @@ NULL
     colnames = TRUE) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && tibble::has_rownames(object)) {
+    if (isTRUE(rownames) && has_rownames(object)) {
         rownames(object) <- .snake(rownames(object))
     }
     if (isTRUE(colnames) && has_colnames(object)) {

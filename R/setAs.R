@@ -23,7 +23,6 @@ NULL
 .as.tibble <- function(from) {  # nolint
     assert_has_dims(from)
     from <- as.data.frame(from)
-    # Don't use `assertive::has_rownames()` here
     if (tibble::has_rownames(from)) {
         from <- rownames_to_column(from)
     }

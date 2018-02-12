@@ -9,6 +9,7 @@
 \alias{assert_has_rownames}
 \alias{assert_is_a_string_or_null}
 \alias{assert_is_numeric_scalar_or_null}
+\alias{has_rownames}
 \title{Assert Check Functions}
 \usage{
 assert_formal_annotation_col(object, colData)
@@ -24,6 +25,8 @@ assert_has_rownames(x)
 assert_is_a_string_or_null(x)
 
 assert_is_numeric_scalar_or_null(x)
+
+has_rownames(x)
 }
 \arguments{
 \item{object}{Object.}
@@ -39,5 +42,8 @@ assertive package.
 \note{
 \code{\link[=assert_has_rownames]{assert_has_rownames()}} is a stricter alternative to the assertive
 version that works properply with data frames.
+
+\code{tibble::has_rownames()} works better than \code{assertive::has_rownames()}
+for data frames and tibbles.
 }
 \keyword{internal}
