@@ -1,6 +1,6 @@
 context("convertTranscriptsToGenes")
 
-test_that("character", {
+test_that("Character", {
     expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
@@ -27,7 +27,7 @@ test_that("character", {
     )
 })
 
-test_that("matrix", {
+test_that("Matrix", {
     mat <- matrix(
         data = seq(1L:8L),
         byrow = TRUE,

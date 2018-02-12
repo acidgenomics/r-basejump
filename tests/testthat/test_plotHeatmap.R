@@ -3,7 +3,7 @@ context("plotHeatmap")
 loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
 plotNames <- c("tree_row", "tree_col", "kmeans", "gtable")
 
-test_that("matrix", {
+test_that("Matrix", {
     mat <- as.matrix(mtcars)
     p <- plotHeatmap(mat)
     expect_is(p, "list")

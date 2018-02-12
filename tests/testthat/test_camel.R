@@ -4,7 +4,7 @@ load(system.file(
     file.path("extdata", "makeNames.rda"),
     package = "basejump"))
 
-test_that("character", {
+test_that("Character", {
     expect_identical(
         camel(makeNames[["character"]], strict = FALSE),
         c("helloWorld",
@@ -58,7 +58,7 @@ test_that("Named character", {
     )
 })
 
-test_that("data.frame", {
+test_that("Data frame", {
     # Sanitize rownames
     expect_identical(
         camel(makeNames[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
@@ -89,7 +89,7 @@ test_that("Counts matrix", {
     )
 })
 
-test_that("matrix rownames", {
+test_that("Matrix rownames", {
     # Sanitize rownames
     expect_identical(
         camel(makeNames[["matrix"]], rownames = TRUE, strict = TRUE) %>%
@@ -107,7 +107,7 @@ test_that("matrix rownames", {
     )
 })
 
-test_that("tibble", {
+test_that("Tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%

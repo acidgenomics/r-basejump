@@ -1,6 +1,6 @@
 context("kables")
 
-test_that("kables", {
+test_that("List", {
     # Check for knit_asis if kables are forced
     expect_identical(
         list(head(starwars),

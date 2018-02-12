@@ -3,7 +3,7 @@ context("tx2geneFromGFF")
 mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
 mouse <- tx2geneFromGFF(mousefile, quiet = TRUE)
 
-test_that("mouse", {
+test_that("Mouse", {
     expect_identical(
         dim(mouse),
         c(20L, 2L)
@@ -25,7 +25,7 @@ test_that("mouse", {
     )
 })
 
-test_that("fruitfly", {
+test_that("Fruitfly", {
     fruitfly <- tx2geneFromGFF(
         "http://basejump.seq.cloud/dmelanogaster.gtf",
         quiet = TRUE)
@@ -55,7 +55,7 @@ test_that("GFF data.frame input", {
     )
 })
 
-test_that("bad data.frame", {
+test_that("Bad data.frame", {
     expect_error(
         tx2geneFromGFF(mtcars),
         "GFF object must be data.frame with 9 columns"

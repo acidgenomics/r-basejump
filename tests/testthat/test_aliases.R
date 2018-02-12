@@ -1,6 +1,6 @@
 context("aliases")
 
-test_that("aliases", {
+test_that("Aliases", {
     aliases <- c(
         "gene2symbolFromGTF" = "gene2symbolFromGFF",
         "geomean" = "geometricMean",

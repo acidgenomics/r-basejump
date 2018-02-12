@@ -80,7 +80,7 @@ test_that("Human GRCh37/hg19 genome build support", {
     )
 })
 
-test_that("annotables package data.frame input", {
+test_that("Annotables package data frame input", {
     # Use the pre-compiled grch37 annotable from annotables package
     loadRemoteData("http://basejump.seq.cloud/grch37.rda", quiet = TRUE)
 
