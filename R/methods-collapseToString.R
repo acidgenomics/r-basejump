@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' # character
-#' groceries <- c("milk", "eggs", "eggs", "veggies", NA)
+#' groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 #' collapseToString(
 #'     groceries,
 #'     unique = TRUE,
@@ -55,17 +55,21 @@ NULL
 .collapseToString <- function(
     object,
     sep = ", ",
-    unique = FALSE,
     sort = FALSE,
-    removeNA = FALSE) {
+    removeNA = FALSE,
+    unique = FALSE) {
     assert_is_any_of(object, c("factor", "vector"))
+    # Early return unmodified if scalar
+    if (is_scalar(object)) {
+        return(object)
+    }
     assert_is_a_string(sep)
     assert_is_a_bool(unique)
     assert_is_a_bool(sort)
 
-    # Early return unmodified if scalar
-    if (is_scalar(object)) {
-        return(object)
+    # Sort, if desired
+    if (isTRUE(sort)) {
+        object <- sort(object, na.last = TRUE)
     }
 
     # Remove NA values, if desired
@@ -82,11 +86,6 @@ NULL
         object <- unique(object)
     }
 
-    # Sort, if desired
-    if (isTRUE(sort)) {
-        object <- sort(object, na.last = TRUE)
-    }
-
     object %>%
         as.character() %>%
         paste(collapse = sep)
@@ -98,9 +97,9 @@ NULL
 .collapseToString.dim <- function(  # nolint
     object,
     sep = ", ",
-    unique = FALSE,
     sort = FALSE,
-    removeNA = FALSE) {
+    removeNA = FALSE,
+    unique = FALSE) {
     # Passthrough: sep, unique, sort
     assert_has_dims(object)
 
@@ -118,9 +117,9 @@ NULL
             .collapseToString(
                 object = .,
                 sep = sep,
-                unique = unique,
                 sort = sort,
-                removeNA = removeNA)
+                removeNA = removeNA,
+                unique = unique)
         ))
 
     if (!is.null(class)) {
