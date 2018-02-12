@@ -47,7 +47,7 @@ NULL
     } else if (return == "list") {
         object
     } else if (return == "markdown") {
-        mdPlotlist(object, headerLevel = headerLevel)
+        markdownPlotlist(object, headerLevel = headerLevel)
     }
 }
 
