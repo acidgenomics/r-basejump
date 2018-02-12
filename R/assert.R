@@ -26,8 +26,8 @@ assert_formal_annotation_col <- function(object, colData) {
         assert_are_identical(colnames(object), rownames(colData))
         # TODO Ensure that all columns are factors?
     }
-    if (is.logical(x)) {
-        assert_is_identical_to_na(x)
+    if (is.logical(colData)) {
+        assert_is_identical_to_na(colData)
     }
 }
 
