@@ -8,6 +8,7 @@
 \alias{assert_formal_header_level}
 \alias{assert_has_rownames}
 \alias{assert_is_a_string_or_null}
+\alias{assert_is_character_or_null}
 \alias{assert_is_numeric_scalar_or_null}
 \alias{has_rownames}
 \title{Assert Check Functions}
@@ -23,6 +24,8 @@ assert_formal_header_level(x)
 assert_has_rownames(x)
 
 assert_is_a_string_or_null(x)
+
+assert_is_character_or_null(x)
 
 assert_is_numeric_scalar_or_null(x)
 

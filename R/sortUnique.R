@@ -13,7 +13,7 @@
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 sortUnique <- function(object) {
-    assert_is_any_of(object, c("factor", "vector"))
+    assert_is_atomic(object)
     object %>%
         sort(na.last = TRUE) %>%
         unique()

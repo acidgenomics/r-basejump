@@ -18,6 +18,7 @@
 #' @importFrom assertive assert_all_are_non_negative
 #' @importFrom assertive assert_all_are_not_na
 #' @importFrom assertive assert_all_are_positive
+#' @importFrom assertive assert_all_are_same_length
 #' @importFrom assertive assert_any_are_matching_regex
 #' @importFrom assertive assert_are_disjoint_sets
 #' @importFrom assertive assert_are_intersecting_sets
@@ -31,6 +32,7 @@
 #' @importFrom assertive assert_is_a_bool
 #' @importFrom assertive assert_is_a_string
 #' @importFrom assertive assert_is_any_of
+#' @importFrom assertive assert_is_atomic
 #' @importFrom assertive assert_is_character
 #' @importFrom assertive assert_is_data.frame
 #' @importFrom assertive assert_is_environment
@@ -66,14 +68,12 @@ assert_formal_annotation_col <- function(object, colData) {
         assert_has_colnames(colData)
         assert_has_rownames(colData)
         assert_are_identical(colnames(object), rownames(colData))
-        # TODO Ensure that all columns are factors?
+        lapply(colData, assert_is_factor)
     }
     if (is.logical(colData)) {
         assert_is_identical_to_na(colData)
     }
 }
-
-# TODO Add assertive check for annotation_row
 
 
 
@@ -134,10 +134,18 @@ assert_has_rownames <- function(x) {
 #' @rdname assert
 #' @export
 assert_is_a_string_or_null <- function(x) {
-    assert_is_any_of(x, c("character", "NULL"))
+    assert_is_character_or_null(x)
     if (is.character(x)) {
         assert_is_a_string(x)
     }
+}
+
+
+
+#' @rdname assert
+#' @export
+assert_is_character_or_null <- function(x) {
+    assert_is_any_of(x, c("character", "NULL"))
 }
 
 
@@ -150,6 +158,11 @@ assert_is_numeric_scalar_or_null <- function(x) {
         assert_is_scalar(x)
     }
 }
+
+
+
+
+
 
 
 
