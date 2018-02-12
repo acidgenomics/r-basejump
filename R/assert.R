@@ -70,6 +70,8 @@ assert_formal_annotation_col <- function(object, colData) {
     }
 }
 
+# TODO Add assertive check for annotation_row
+
 
 
 #' @rdname assert

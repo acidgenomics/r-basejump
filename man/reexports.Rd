@@ -19,6 +19,8 @@
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
+\alias{is_tibble}
+\alias{reexports}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -37,6 +39,6 @@ below to see their documentation.
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
-  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{tibble}}}
+  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 }}
 
