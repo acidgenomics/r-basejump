@@ -52,6 +52,13 @@ test_that("GFF data.frame input", {
     )
 })
 
+test_that("Invalid number of columns", {
+    expect_error(
+        gene2symbolFromGFF(mtcars),
+        "are_identical : ncol\\(object\\) and 9L are not identical."
+    )
+})
+
 test_that("GTF alias", {
     expect_identical(
         gene2symbolFromGTF(mousefile, quiet = TRUE),

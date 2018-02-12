@@ -33,6 +33,7 @@ NULL
     object,
     quiet = FALSE) {
     assert_is_data.frame(object)
+    assert_are_identical(ncol(object), 9L)
     assert_is_a_bool(quiet)
 
     anno <- object %>%
@@ -96,8 +97,5 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
-        if (dim(object)[[2L]] != 9L) {
-            abort("GFF object must be data.frame with 9 columns")
-        }
         .tx2geneFromGFF(object, quiet = quiet)
     })
