@@ -50,6 +50,7 @@
     # Passthrough: strict
     assert_has_names(object)
     names(object) <- .upperCamel(names(object), strict = strict)
+    object
 }
 
 

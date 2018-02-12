@@ -134,6 +134,7 @@ NULL
     # Passthrough: strict
     assert_has_names(object)
     names(object) <- .camel(names(object), strict = strict)
+    object
 }
 
 
