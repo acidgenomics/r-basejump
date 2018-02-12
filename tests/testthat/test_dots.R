@@ -1,6 +1,6 @@
 context("dots")
 
-test_that("dots", {
+test_that("Dots", {
     expect_identical(
         dots(mtcars, starwars),
         list(rlang::sym("mtcars"),

@@ -1,6 +1,6 @@
 context("gene2symbol")
 
-test_that("character", {
+test_that("Character", {
     organism <- "Homo sapiens"
     expect_identical(
         gene2symbol(organism),

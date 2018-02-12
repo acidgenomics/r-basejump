@@ -3,7 +3,7 @@ context("gene2symbolFromGFF")
 mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
 mouse <- gene2symbolFromGFF(mousefile, quiet = TRUE)
 
-test_that("mouse", {
+test_that("Mouse", {
     expect_identical(
         dim(mouse),
         c(17L, 2L)
@@ -21,7 +21,7 @@ test_that("mouse", {
     )
 })
 
-test_that("fruitfly", {
+test_that("Fruitfly", {
     flyfile <- "http://basejump.seq.cloud/dmelanogaster.gtf"
     fruitfly <- gene2symbolFromGFF(flyfile, quiet = TRUE)
     expect_identical(

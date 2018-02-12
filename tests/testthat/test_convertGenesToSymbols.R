@@ -1,6 +1,6 @@
 context("convertGenesToSymbols")
 
-test_that("character", {
+test_that("Character", {
     g2s <- convertGenesToSymbols(
         c("ENSMUSG00000000001",
           "ENSMUSG00000000003"),
@@ -13,7 +13,7 @@ test_that("character", {
     )
 })
 
-test_that("matrix", {
+test_that("Matrix", {
     mat <- matrix(
         data = seq(1L:4L),
         byrow = TRUE,
@@ -73,7 +73,7 @@ test_that("FASTA spike-in support", {
     )
 })
 
-test_that("invalid identifiers", {
+test_that("Invalid identifiers", {
     expect_warning(
         convertGenesToSymbols(
             c("ENSMUSG00000000000",

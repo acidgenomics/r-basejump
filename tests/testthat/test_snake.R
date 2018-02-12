@@ -4,7 +4,7 @@ load(system.file(
     file.path("extdata", "makeNames.rda"),
     package = "basejump"))
 
-test_that("character", {
+test_that("Character", {
     vec <- snake(makeNames[["character"]])
     expect_identical(
         vec,
@@ -31,7 +31,7 @@ test_that("Named character", {
     )
 })
 
-test_that("data.frame", {
+test_that("Data frame", {
     string <- snake(makeNames[["dataFrame"]], rownames = TRUE) %>%
         rownames() %>%
         .[[1L]]
@@ -54,7 +54,7 @@ test_that("Counts matrix", {
     )
 })
 
-test_that("matrix rownames", {
+test_that("Matrix rownames", {
     # Sanitize rownames
     expect_identical(
         snake(makeNames[["matrix"]], rownames = TRUE) %>%
@@ -72,7 +72,7 @@ test_that("matrix rownames", {
     )
 })
 
-test_that("tibble", {
+test_that("Tibble", {
     vec <- makeNames[["tibble"]] %>%
         .[, 1L:5L] %>%
         snake() %>%
@@ -96,7 +96,7 @@ test_that("Named list", {
     )
 })
 
-test_that("missing", {
+test_that("Missing", {
     message <- tryCatch(
         snake(),
         error = function(e) {
