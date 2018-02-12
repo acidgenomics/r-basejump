@@ -173,6 +173,9 @@ NULL
     if (all(is.na(x))) {
         abort("Failed to detect organism")
     }
+    if (is_a_string(x)) {
+        names(x) <- NULL
+    }
     x
 }
 
