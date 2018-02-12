@@ -41,7 +41,8 @@ test_that("transmit", {
         transmit(
             ensembl,
             pattern = "README",
-            rename = c("XXX", "YYY")),
-        "is_a_string"
+            rename = c("XXX", "YYY")
+        ),
+        "are_same_length : remoteFileName has length 1 but rename has length 2."
     )
 })
