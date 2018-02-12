@@ -19,3 +19,13 @@ initializeDirectory <- function(dir) {
     }
     normalizePath(dir)
 }
+
+
+
+# Aliases ======================================================================
+#' @rdname initializeDirectory
+#' @inheritParams general
+#' @export
+initializeDir <- function(...) {
+    initializeDirectory(...)
+}

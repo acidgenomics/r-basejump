@@ -64,3 +64,13 @@ setMethod(
     "markdownList",
     signature("character"),
     .markdownList)
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownList
+#' @inheritParams general
+#' @export
+mdList <- function(...) {
+    markdownList(...)
+}

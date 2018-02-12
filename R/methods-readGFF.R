@@ -68,3 +68,13 @@ setMethod(
     "readGFF",
     signature("character"),
     .readGFF)
+
+
+
+# Aliases ======================================================================
+#' @rdname readGFF
+#' @inheritParams general
+#' @export
+readGTF <- function(...) {
+    readGFF(...)
+}

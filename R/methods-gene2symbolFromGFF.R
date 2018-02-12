@@ -109,3 +109,13 @@ setMethod(
         # Passthrough: quiet
         .gene2symbolFromGFF(object, quiet = quiet)
     })
+
+
+
+# Aliases ======================================================================
+#' @rdname gene2symbolFromGFF
+#' @inheritParams general
+#' @export
+gene2symbolFromGTF <- function(...) {
+    gene2symbolFromGFF(...)
+}
