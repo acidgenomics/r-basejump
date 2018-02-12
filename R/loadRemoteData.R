@@ -75,7 +75,7 @@ loadRemoteData <- function(
     objects <- do.call(cbind, objects)
     colnames(objects) <- names
 
-    return <- map[, names(objects), drop = FALSE]
+    return <- map[, colnames(objects), drop = FALSE]
     assert_is_matrix(return)
     invisible(return)
 }

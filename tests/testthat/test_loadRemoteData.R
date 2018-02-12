@@ -1,27 +1,26 @@
 context("loadRemoteData")
 
-test_that("loadRemoteData", {
-    loaded <- loadRemoteData(
-        "http://basejump.seq.cloud/mtcars.rda",
-        quiet = TRUE)
-    expect_identical(loaded, "mtcars")
-    expect_error(
-        loadRemoteData("http://basejump.seq.cloud/mmusculus.gtf"),
-        "Data file must contain `.rda` extension"
-    )
-    expect_error(
-        loadRemoteData("foobar.rda"),
-        "Remote URL containing `://` required"
+test_that("Valid URL", {
+    url <- "http://basejump.seq.cloud/mtcars.rda"
+    loaded <- loadRemoteData(url = url, quiet = TRUE)
+    expect_is(loaded, "matrix")
+    expect_identical(
+        loaded["url", "mtcars", drop = TRUE],
+        url
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
-        loadRemoteData(c("XXX", "YYY")),
-        "`object` must be a string"
+        loadRemoteData("http://basejump.seq.cloud/mmusculus.gtf"),
+        "is_matching_regex : url does not match"
+    )
+    expect_error(
+        loadRemoteData("foobar.rda"),
+        "is_matching_regex : url does not match"
     )
     expect_error(
         loadData("http://basejump.seq.cloud/mtcars.rda", envir = "XXX"),
-        "`envir` must be an environment"
+        "is_environment : envir"
     )
 })
