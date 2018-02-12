@@ -33,7 +33,7 @@ plotQuantileHeatmap(object, ...)
 in either the row direction or the column direction, or none. Corresponding
 values are "row", "column" and "none".}
 
-\item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
+\item{annotationCol}{\emph{Optional.} \link{data.frame} that defines annotation
 mappings for the columns.}
 
 \item{clusterCols}{Logical determining if columns should be arranged with
@@ -48,7 +48,7 @@ palette.}
 \item{legendColor}{Colors to use for legend labels. Defaults to the
 \code{\link[viridis:viridis]{viridis::viridis()}} palette.}
 
-\item{title}{\emph{Optional}. Plot title.}
+\item{title}{\emph{Optional.} Plot title.}
 
 \item{n}{The number of breaks to create.}
 }

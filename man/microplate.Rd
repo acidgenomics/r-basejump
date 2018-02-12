@@ -13,7 +13,7 @@ microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 
 \item{controls}{Number of control wells.}
 
-\item{prefix}{\emph{Optional}. Plate name prefix.}
+\item{prefix}{\emph{Optional.} Plate name prefix.}
 }
 \value{
 Character vector containing well identifiers.

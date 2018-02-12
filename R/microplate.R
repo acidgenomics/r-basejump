@@ -5,7 +5,7 @@
 #' @param plates Number of plates.
 #' @param wells Number of wells (`96`, `384`).
 #' @param controls Number of control wells.
-#' @param prefix *Optional*. Plate name prefix.
+#' @param prefix *Optional.* Plate name prefix.
 #'
 #' @return Character vector containing well identifiers.
 #' @export

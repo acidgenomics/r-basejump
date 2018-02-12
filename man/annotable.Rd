@@ -25,10 +25,10 @@ the annotables data package.}
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
 \code{gene2symbol}.}
 
-\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
