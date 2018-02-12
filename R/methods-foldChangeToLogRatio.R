@@ -27,7 +27,9 @@ NULL
 
 # Constructors =================================================================
 .foldChangeToLogRatio <- function(object, base = 2L) {
-    assert_is_numeric(base)
+    assert_is_integer(base)
+    assert_is_scalar(base)
+    assert_all_are_positive(base)
     object <- ifelse(object < 0L, 1L / -object, object)
     object <- log(object, base)
     object
