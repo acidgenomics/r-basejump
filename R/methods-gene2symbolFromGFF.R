@@ -34,6 +34,7 @@ NULL
     uniqueSymbol = FALSE,
     quiet = FALSE) {
     assert_is_data.frame(object)
+    assert_are_identical(ncol(object), 9L)
     assert_is_a_bool(uniqueSymbol)
     assert_is_a_bool(quiet)
 

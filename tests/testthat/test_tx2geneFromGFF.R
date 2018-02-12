@@ -11,12 +11,15 @@ test_that("Mouse", {
     expect_identical(
         head(mouse, 2L),
         data.frame(
-            "enstxp" = c("ENSMUST00000070533",
-                         "ENSMUST00000082908"),
-            "ensgene" = c("ENSMUSG00000051951",
-                          "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000070533",
-                          "ENSMUST00000082908"),
+            "enstxp" = c(
+                "ENSMUST00000070533",
+                "ENSMUST00000082908"),
+            "ensgene" = c(
+                "ENSMUSG00000051951",
+                "ENSMUSG00000064842"),
+            row.names = c(
+                "ENSMUST00000070533",
+                "ENSMUST00000082908"),
             stringsAsFactors = FALSE)
     )
     expect_message(
@@ -36,12 +39,15 @@ test_that("Fruitfly", {
     expect_identical(
         head(fruitfly, 2L),
         data.frame(
-            "enstxp" = c("FBtr0070000",
-                         "FBtr0070001"),
-            "ensgene" = c("FBgn0031081",
-                          "FBgn0052826"),
-            row.names = c("FBtr0070000",
-                          "FBtr0070001"),
+            "enstxp" = c(
+                "FBtr0070000",
+                "FBtr0070001"),
+            "ensgene" = c(
+                "FBgn0031081",
+                "FBgn0052826"),
+            row.names = c(
+                "FBtr0070000",
+                "FBtr0070001"),
             stringsAsFactors = FALSE)
     )
 })
@@ -55,10 +61,10 @@ test_that("GFF data.frame input", {
     )
 })
 
-test_that("Bad data.frame", {
+test_that("Invalid number of columns", {
     expect_error(
         tx2geneFromGFF(mtcars),
-        "GFF object must be data.frame with 9 columns"
+        "are_identical : ncol\\(object\\) and 9L are not identical."
     )
 })
 
