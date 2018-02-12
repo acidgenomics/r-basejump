@@ -2,14 +2,15 @@ context("deprecated")
 
 test_that("Hard deprecations", {
     hard <- c(
-        "comp",
-        "metadataTable",
+        "summarizeRows",
+        "wash",
         "packageSE",
         "prepareSE",
-        "revcomp",
+        "metadataTable",
         "sampleDirs",
-        "summarizeRows",
-        "wash"
+        "comp",
+        "revcomp",
+        "symbol2gene"
     )
     invisible(lapply(
         X = hard,
@@ -22,9 +23,9 @@ test_that("Hard deprecations", {
 
 test_that("Soft deprecations", {
     soft <- c(
+        "pct",
         "fc2lr",
-        "lr2fc",
-        "pct"
+        "lr2fc"
     )
     invisible(lapply(
         X = soft,
