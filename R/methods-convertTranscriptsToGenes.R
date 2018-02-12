@@ -50,7 +50,9 @@ NULL
     # If no tx2gene is provided, fall back to using Ensembl annotations
     if (!is.data.frame(tx2gene)) {
         # Generate tx2gene from Ensembl
-        inform("Obtaining transcript-to-gene mappings from Ensembl")
+        if (!isTRUE(quiet)) {
+            inform("Obtaining transcript-to-gene mappings from Ensembl")
+        }
         if (is.null(organism)) {
             organism <- detectOrganism(object[[1L]])
         } else if (is_a_string(organism)) {

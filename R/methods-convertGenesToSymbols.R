@@ -58,7 +58,9 @@ NULL
     # If no gene2symbol is provided, fall back to using Ensembl annotations
     if (!is.data.frame(gene2symbol)) {
         # Generate gene2symbol from Ensembl
-        inform("Obtaining gene-to-symbol mappings from Ensembl")
+        if (isTRUE(quiet)) {
+            inform("Obtaining gene-to-symbol mappings from Ensembl")
+        }
         if (is.null(organism)) {
             organism <- detectOrganism(object[[1L]])
         } else if (is_a_string(organism)) {
