@@ -67,6 +67,7 @@ NULL
     object <- as.matrix(object)
     assert_is_integer(n)
     assert_is_scalar(n)
+    assert_all_are_positive(n)
     assert_formal_annotation_col(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
