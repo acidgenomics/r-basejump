@@ -6,11 +6,11 @@ test_that("bcbio project summary", {
         "bcbio",
         "project-summary.yaml")
     yaml <- readYAML(url, quiet = TRUE)
-    expect_equal(
+    expect_identical(
         class(yaml),
         "list"
     )
-    expect_equal(
+    expect_identical(
         names(yaml),
         c("date", "upload", "bcbio_system", "samples")
     )
@@ -50,5 +50,5 @@ test_that("Missing file", {
         readYAML("foobar.yaml", quiet = TRUE),
         "foobar.yaml file missing"
     )
-    expect_equal(yaml, NULL)
+    expect_identical(yaml, NULL)
 })

@@ -1,7 +1,7 @@
 context("saveData")
 
 test_that("saveData", {
-    expect_equal(
+    expect_identical(
         saveData(mtcars, starwars, dir = "data",
                  overwrite = TRUE, quiet = TRUE),
         c(mtcars = file.path(getwd(), "data", "mtcars.rda"),
@@ -11,7 +11,7 @@ test_that("saveData", {
         saveData(mtcars, starwars, dir = "data", overwrite = TRUE),
         paste("Saving mtcars.rda, starwars.rda to", file.path(getwd(), "data"))
     )
-    expect_equal(
+    expect_identical(
         saveData(mtcars, starwars, dir = "data",
                  overwrite = FALSE, quiet = TRUE),
         NULL

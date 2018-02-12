@@ -4,11 +4,11 @@ mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
 mouse <- gene2symbolFromGFF(mousefile, quiet = TRUE)
 
 test_that("mouse", {
-    expect_equal(
+    expect_identical(
         dim(mouse),
         c(17L, 2L)
     )
-    expect_equal(
+    expect_identical(
         head(mouse, 2L),
         data.frame(
             "ensgene" = c("ENSMUSG00000025900",
@@ -24,11 +24,11 @@ test_that("mouse", {
 test_that("fruitfly", {
     flyfile <- "http://basejump.seq.cloud/dmelanogaster.gtf"
     fruitfly <- gene2symbolFromGFF(flyfile, quiet = TRUE)
-    expect_equal(
+    expect_identical(
         dim(fruitfly),
         c(5L, 2L)
     )
-    expect_equal(
+    expect_identical(
         head(fruitfly, 2L),
         data.frame(
             ensgene = c("FBgn0031081",
@@ -45,14 +45,14 @@ test_that("GFF data.frame input", {
     gff <- readGFF(
         mousefile,
         quiet = TRUE)
-    expect_equal(
+    expect_identical(
         gene2symbolFromGFF(gff, quiet = TRUE),
         mouse
     )
 })
 
 test_that("GTF alias", {
-    expect_equal(
+    expect_identical(
         gene2symbolFromGTF(mousefile, quiet = TRUE),
         mouse
     )

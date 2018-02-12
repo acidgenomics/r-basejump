@@ -4,7 +4,7 @@ test_that("multiassignAsNewEnvir", {
     expect_message(
         multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
         "Assigning mtcars, starwars as test")
-    expect_equal(
+    expect_identical(
         multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
         c("mtcars", "starwars"))
     expect_error(

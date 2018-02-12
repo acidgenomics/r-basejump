@@ -2,12 +2,12 @@ context("fixNA")
 
 test_that("fixNA", {
     # character vector
-    expect_equal(
+    expect_identical(
         fixNA(c(1L, "x", "", "NA")),
         c("1", "x", NA, NA))
 
     # data.frame
-    expect_equal(
+    expect_identical(
         data.frame(
             "a" = c("foo", ""),
             "b" = c(NA, "bar"),
@@ -20,7 +20,7 @@ test_that("fixNA", {
     )
 
     # DataFrame
-    expect_equal(
+    expect_identical(
         DataFrame(a = c("foo", ""),
                   b = c(NA, "bar")) %>%
             fixNA(),
@@ -28,7 +28,7 @@ test_that("fixNA", {
                   b = c(NA, "bar")))
 
     # tbl_df
-    expect_equal(
+    expect_identical(
         tibble(a = c("foo", ""),
                b = c(NA, "bar")) %>%
             fixNA(),
@@ -36,7 +36,7 @@ test_that("fixNA", {
                b = c(NA, "bar")))
 
     # ANY (list)
-    expect_equal(
+    expect_identical(
         fixNA(list(a = 1L)),
         list(a = 1L))
 })

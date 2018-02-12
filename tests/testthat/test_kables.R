@@ -2,7 +2,7 @@ context("kables")
 
 test_that("kables", {
     # Check for knit_asis if kables are forced
-    expect_equal(
+    expect_identical(
         list(head(starwars),
              head(mtcars)) %>%
             kables(force = TRUE) %>%

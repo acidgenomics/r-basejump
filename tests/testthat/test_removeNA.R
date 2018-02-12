@@ -2,7 +2,7 @@ context("removeNA")
 
 test_that("data.frame", {
     # data.frame
-    expect_equal(
+    expect_identical(
         data.frame(a = c("A", NA, "C"),
                    b = c(NA, NA, NA),
                    c = c("B", NA, "D")) %>%
@@ -15,12 +15,12 @@ test_that("data.frame", {
 
 # Support for vectors (using `stats::na.omit()`)
 test_that("vector", {
-    expect_equal(
+    expect_identical(
         removeNA(c("hello", "world", NA)) %>%
             as.character(),
         c("hello", "world")
     )
-    expect_equal(
+    expect_identical(
         removeNA(c(1L, 2L, NA)) %>%
             as.integer(),
         c(1L, 2L)

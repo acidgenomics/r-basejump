@@ -1,7 +1,7 @@
 context("stripTranscriptVersions")
 
 test_that("stripTranscriptVersions", {
-    expect_equal(
+    expect_identical(
         stripTranscriptVersions("ENSMUST00000119854.7"),
         "ENSMUST00000119854"
     )
