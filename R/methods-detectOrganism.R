@@ -179,6 +179,9 @@ NULL
     if (is_a_string(x)) {
         names(x) <- NULL
     }
+    if (length(unique(x)) > 1L) {
+        warn("Multiple organisms detected")
+    }
     if (isTRUE(unique)) {
         x <- x %>%
             as.character() %>%
@@ -215,9 +218,6 @@ NULL
     assert_is_character(object)
     x <- detectOrganism(object)
     x <- sort(unique(na.omit(x)))
-    if (length(x) > 1L) {
-        warn("Multiple organisms detected")
-    }
     x
 }
 

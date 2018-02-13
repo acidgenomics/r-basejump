@@ -1,6 +1,6 @@
 context("detectOrganism")
 
-# TODO Improve support for character vectors and objects with dims
+loadRemoteData("http://basejump.seq.cloud/counts.rda")
 
 test_that("Homo sapiens", {
     x <- "Homo sapiens"
@@ -77,9 +77,51 @@ test_that("Ovis aries", {
     expect_identical(x, detectOrganism("ENSOART00000000001"))
 })
 
+test_that("Multiple organisms", {
+    multi <- c(
+        "ENSG00000000001",
+        "ENSG00000000002",
+        "ENSMUSG00000000001",
+        "ENSMUSG00000000002"
+    )
+    expect_identical(
+        suppressWarnings(detectOrganism(multi, unique = FALSE)),
+        c(
+            "ENSG00000000001" = "Homo sapiens",
+            "ENSG00000000002" = "Homo sapiens",
+            "ENSMUSG00000000001" = "Mus musculus",
+            "ENSMUSG00000000002" = "Mus musculus"
+        )
+    )
+    expect_identical(
+        suppressWarnings(detectOrganism(multi, unique = TRUE)),
+        c("Homo sapiens", "Mus musculus")
+    )
+    expect_warning(
+        detectOrganism(multi),
+        "Multiple organisms detected"
+    )
+})
+
 test_that("Detection failure", {
     expect_error(
         detectOrganism("XXX"),
         "Failed to detect organism"
+    )
+})
+
+test_that("Matrix", {
+    expect_identical(
+        detectOrganism(counts),
+        "Mus musculus"
+    )
+})
+
+test_that("Tibble", {
+    tibble <- as(counts, "tibble")
+    expect_true("rowname" %in% colnames(tibble))
+    expect_identical(
+        detectOrganism(tibble),
+        "Mus musculus"
     )
 })
