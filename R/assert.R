@@ -151,6 +151,14 @@ assert_is_character_or_null <- function(x) {
 
 #' @rdname assert
 #' @export
+assert_is_implicit_integer <- function(x) {
+    stopifnot(is_implicit_integer(x))
+}
+
+
+
+#' @rdname assert
+#' @export
 assert_is_numeric_scalar_or_null <- function(x) {
     assert_is_any_of(x, c("numeric", "NULL"))
     if (is.numeric(x)) {

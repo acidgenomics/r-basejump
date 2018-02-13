@@ -9,6 +9,7 @@
 \alias{assert_has_rownames}
 \alias{assert_is_a_string_or_null}
 \alias{assert_is_character_or_null}
+\alias{assert_is_implicit_integer}
 \alias{assert_is_numeric_scalar_or_null}
 \alias{has_rownames}
 \alias{is_implicit_integer}
@@ -27,6 +28,8 @@ assert_has_rownames(x)
 assert_is_a_string_or_null(x)
 
 assert_is_character_or_null(x)
+
+assert_is_implicit_integer(x)
 
 assert_is_numeric_scalar_or_null(x)
 
