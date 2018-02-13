@@ -172,4 +172,19 @@ has_rownames <- function(x) {
     }
 }
 
+
+
+#' @rdname assert
+#' @seealso [base::all.equal()] `tolerance` parameter.
+#' @export
+is_implicit_integer <- function(x) {
+    if (!is.numeric(x)) {
+        return(FALSE)
+    }
+    if (is.integer(x)) {
+        return(TRUE)
+    }
+    isTRUE(all.equal(x, as.integer(x), tolerance = .Machine[["double.eps"]]))
+}
+
 # nolint end
