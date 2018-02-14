@@ -6,6 +6,9 @@
 \usage{
 assert_is_a_string_or_null(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

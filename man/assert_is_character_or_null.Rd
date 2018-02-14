@@ -6,6 +6,9 @@
 \usage{
 assert_is_character_or_null(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

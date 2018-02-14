@@ -1,7 +1,9 @@
 #' Annotation Column Formal Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @param colData Column data.
 #'

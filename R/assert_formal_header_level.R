@@ -1,7 +1,9 @@
 #' Markdown Header Level Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_formal_header_level <- function(x) {

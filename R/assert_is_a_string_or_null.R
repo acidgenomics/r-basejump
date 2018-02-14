@@ -1,7 +1,9 @@
 #' Is a String or NULL
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_is_a_string_or_null <- function(x) {  # nolint

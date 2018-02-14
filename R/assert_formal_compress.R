@@ -1,7 +1,9 @@
 #' Compression Formal Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_formal_compress <- function(x) {  # nolint

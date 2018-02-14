@@ -6,6 +6,9 @@
 \usage{
 assert_formal_color_function(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

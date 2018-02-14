@@ -1,7 +1,9 @@
 #' Ensembl Annotations Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @param x [data.frame] containing Ensembl gene annotations returned
 #'   from the [annotable()] function.

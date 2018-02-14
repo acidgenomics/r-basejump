@@ -6,6 +6,9 @@
 \usage{
 assert_formal_compress(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }
