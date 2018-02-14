@@ -5,7 +5,7 @@
 #' @family Data Management Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param groupings Factor that defines the aggregation groupings. The new
 #'   aggregation names are defined as the factor levels, and the original
@@ -38,7 +38,8 @@ NULL
 # Constructors =================================================================
 #' @importFrom Matrix.utils aggregate.Matrix
 .aggregateReplicates.dgCMatrix <- function(object, groupings) {
-    .checkReplicateGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(colnames(object), names(groupings))
     t <- Matrix::t(object)
     rownames(t) <- groupings
     tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
@@ -49,23 +50,13 @@ NULL
 
 
 .aggregateReplicates.matrix <- function(object, groupings) {
-    .checkReplicateGroupings(object, groupings)
+    assert_is_factor(groupings)
+    assert_are_identical(colnames(object), names(groupings))
     t <- t(object)
     rownames(t) <- groupings
     tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
     agg <- t(tagg)
     agg
-}
-
-
-
-.checkReplicateGroupings <- function(object, groupings) {
-    if (!is.factor(groupings)) {
-        abort("`groupings` must be a factor")
-    }
-    if (!identical(names(groupings), colnames(object))) {
-        abort("`groupings` must match object colnames")
-    }
 }
 
 

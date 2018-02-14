@@ -97,9 +97,6 @@
   <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>uniqueSymbol</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>annotable</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for `NULL`</span>
 <span class='fu'>annotable</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -113,7 +110,7 @@ the annotables data package.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>format</th>
@@ -122,12 +119,12 @@ the annotables data package.</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional</em>. Check to see if a specific genome build is
+      <td><p><em>Optional.</em> Check to see if a specific genome build is
 supported.</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><em>Optional</em>. Ensembl release version. Defaults to the most
+      <td><p><em>Optional.</em> Ensembl release version. Defaults to the most
 current release available on AnnotationHub.</p></td>
     </tr>
     <tr>
@@ -188,8 +185,8 @@ smaller number of semantically-meaningful groups:</p><ul>
   <code>convertTranscriptsToGenes</code>,
   <code>detectOrganism</code>,
   <code>gene2symbolFromGFF</code>,
-  <code>gene2symbol</code>, <code>symbol2gene</code>,
-  <code>tx2geneFromGFF</code>, <code>tx2gene</code></p>
+  <code>gene2symbol</code>, <code>tx2geneFromGFF</code>,
+  <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

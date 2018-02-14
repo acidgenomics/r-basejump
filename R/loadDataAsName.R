@@ -19,74 +19,51 @@
 loadDataAsName <- function(
     ...,
     dir = getwd(),
-    ext = "rda",
-    envir = parent.frame(),
-    replace = TRUE) {
+    envir = parent.frame()) {
     dots <- list(...)
+    dir <- initializeDirectory(dir)
+    assert_is_environment(envir)
+
     # Check for legacy mappings method, used prior to v0.1.1
     if (length(dots) == 1L & !is.null(names(dots[[1L]]))) {
         # Convert the named character vector to a named list, for consistency
         dots <- as.list(dots[[1L]])
     }
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
-    files <- sapply(seq_along(dots), function(a) {
-        object <- dots[[a]]
-        name <- names(dots)[[a]]
-        # Check to see if full file path was passed
-        fileExtPattern <- paste0("\\.", ext, "$")
-        if (grepl(fileExtPattern, object)) {
-            file <- object
-            # Extract the object name from the file name
-            object <- gsub(fileExtPattern, "", basename(object))
-        } else {
-            file <- file.path(dir, paste0(object, paste0(".", ext)))
+
+    assert_is_list(dots)
+    assert_has_names(dots)
+    invisible(lapply(dots, assert_is_a_string))
+
+    fileNames <- as.character(dots)
+    objectNames <- names(dots)
+
+    files <- file.path(dir, paste0(fileNames, ".rda"))
+    names(files) <- objectNames
+
+    # Check to see if any of the new names already exist in environment
+    invisible(lapply(objectNames, function(x) {
+        if (exists(x, envir = envir, inherits = FALSE)) {
+            abort(paste(x, "already exists in environment"))
         }
-        if (!file.exists(file)) {
-            abort(paste(object, "missing"))
-        }
-        file <- normalizePath(file)
-        # Check to see if object is present in environment
-        if (exists(name, envir = envir, inherits = FALSE)) {
-            if (isTRUE(replace)) {
-                warn(paste(
-                    "Replacing", name,
-                    "with the contents of", basename(file)
-                ))
-            } else {
-                return(warn(paste(
-                    "Skipping", basename(file),
-                    "because", name, "already exists"
-                )))
-            }
-        }
-        # Load into a temporary environment (safer)
-        tmpEnv <- new.env()
-        loaded <- load(file, envir = tmpEnv)
-        # Check for multiple saved objects
-        if (length(loaded) > 1L) {
-            abort(paste(
-                basename(file), "contains multiple objects:",
-                toString(loaded)
-            ))
-        }
-        # Assign into the target environment
+    }))
+
+    tmpEnvir <- new.env()
+    mapply(
+        .safeLoad,
+        file = files,
+        MoreArgs = list(envir = tmpEnvir),
+        SIMPLIFY = FALSE,
+        USE.NAMES = FALSE
+    )
+    assert_are_identical(fileNames, ls(tmpEnvir))
+
+    invisible(lapply(seq_along(fileNames), function(a) {
         assign(
-            x = name,
-            value = get(loaded, envir = tmpEnv, inherits = FALSE),
+            x = objectNames[[a]],
+            value = get(fileNames[[a]], envir = tmpEnvir, inherits = FALSE),
             envir = envir
         )
-        # Prepare named character vector for invisible return
-        names(file) <- name
-        file
-    })
+    }))
+
     invisible(files)
 }

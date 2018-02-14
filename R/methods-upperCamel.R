@@ -1,33 +1,77 @@
 # Constructors =================================================================
-.makeNamesUpperCamel <- function(object, strict = FALSE) {
-    .makeNamesCamel(object, format = "upper", strict = strict)
+.upperCamel <- function(object, strict = FALSE) {
+    .camel(object, format = "upper", strict = strict)
 }
 
 
 
-.setNamesUpperCamel <- function(object, rownames = FALSE, strict = FALSE) {
-    .setNamesCamel(
+.upperCamel.ANY <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE) {
+    # Passthrough: rownames, colnames, strict
+    if (!is.null(dimnames(object))) {
+        .upperCamel.dim(
+            object,
+            rownames = rownames,
+            colnames = colnames,
+            strict = strict)
+    } else if (!is.null(names(object))) {
+        .upperCamel.names(object, strict = strict)
+    } else {
+        warn("Returning without upper camel case sanitization applied")
+        object
+    }
+}
+
+
+
+.upperCamel.dim <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE) {
+    # Passthrough: strict
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && has_rownames(object)) {
+        rownames(object) <- .upperCamel(rownames(object), strict = strict)
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        colnames(object) <- .upperCamel(colnames(object), strict = strict)
+    }
+    object
+}
+
+
+
+.upperCamel.names <- function(object, strict = FALSE) {
+    # Passthrough: strict
+    assert_has_names(object)
+    names(object) <- .upperCamel(names(object), strict = strict)
+    object
+}
+
+
+
+.upperCamel.tibble <- function(object, strict = FALSE) {  # nolint
+    .upperCamel.dim(
         object,
-        format = "upper",
-        rownames = rownames,
+        rownames = FALSE,
+        colnames = TRUE,
         strict = strict)
 }
 
 
 
-.setNamesUpperCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesUpperCamel(object, rownames = FALSE, strict = strict)
-}
-
-
-
-.upperCamelVector <- function(object, strict = FALSE) {
+.upperCamel.vector <- function(object, strict = FALSE) {  # nolint
     if (!is.null(names(object))) {
-        names <- .makeNamesUpperCamel(names(object), strict = strict)
+        names <- .upperCamel(names(object), strict = strict)
     } else {
         names <- NULL
     }
-    object <- .makeNamesUpperCamel(object, strict = strict)
+    object <- .upperCamel(object, strict = strict)
     names(object) <- names
     object
 }
@@ -40,7 +84,7 @@
 setMethod(
     "upperCamel",
     signature("ANY"),
-    .setNamesUpperCamel)
+    .upperCamel.ANY)
 
 
 
@@ -49,7 +93,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("character"),
-    .upperCamelVector)
+    .upperCamel.vector)
 
 
 
@@ -58,7 +102,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("data.frame"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -67,7 +111,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("DataFrame"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
 
 
 
@@ -76,7 +120,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("factor"),
-    .upperCamelVector)
+    .upperCamel.vector)
 
 
 
@@ -85,7 +129,16 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("list"),
-    .setNamesUpperCamelNoRownames)
+    .upperCamel.names)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("List"),
+    .upperCamel.names)
 
 
 
@@ -94,7 +147,16 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("matrix"),
-    .setNamesUpperCamel)
+    .upperCamel.dim)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("SimpleList"),
+    .upperCamel.names)
 
 
 
@@ -103,4 +165,4 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("tbl_df"),
-    .setNamesUpperCamelNoRownames)
+    .upperCamel.tibble)

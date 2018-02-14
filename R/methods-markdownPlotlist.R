@@ -4,7 +4,7 @@
 #' @name markdownPlotlist
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param headerLevel Header level.
 #'
@@ -19,10 +19,10 @@ NULL
 
 # Constructors =================================================================
 .markdownPlotlist <- function(object, headerLevel = 2L) {
-    if (is.null(names(object))) {
-        warn("Object does not contain names")
-    }
-    return <- lapply(seq_along(object), function(a) {
+    assert_is_list(object)
+    assert_has_names(object)
+    assert_formal_header_level(headerLevel)
+    invisible(lapply(seq_along(object), function(a) {
         name <- names(object)[[a]]
         if (is.character(name) && is.numeric(headerLevel)) {
             markdownHeader(name, level = headerLevel, asis = TRUE)
@@ -30,8 +30,7 @@ NULL
         p <- object[[a]]
         show(p)
         p
-    })
-    invisible(return)
+    }))
 }
 
 
@@ -43,3 +42,13 @@ setMethod(
     "markdownPlotlist",
     signature("list"),
     .markdownPlotlist)
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownPlotlist
+#' @inheritParams general
+#' @export
+mdPlotlist <- function(...) {
+    markdownPlotlist(...)
+}

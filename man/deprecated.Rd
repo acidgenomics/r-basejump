@@ -13,6 +13,10 @@
 \alias{lr2fc}
 \alias{comp}
 \alias{revcomp}
+\alias{symbol2gene}
+\alias{checkAnnotable}
+\alias{checkGene2symbol}
+\alias{checkTx2gene}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -36,9 +40,17 @@ lr2fc(...)
 comp()
 
 revcomp()
+
+symbol2gene()
+
+checkAnnotable(...)
+
+checkGene2symbol(...)
+
+checkTx2gene(...)
 }
 \arguments{
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 }
 \value{
 Soft deprecation to new functions.

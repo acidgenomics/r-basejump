@@ -3,7 +3,7 @@ context("plotHeatmap")
 loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
 plotNames <- c("tree_row", "tree_col", "kmeans", "gtable")
 
-test_that("matrix", {
+test_that("Matrix", {
     mat <- as.matrix(mtcars)
     p <- plotHeatmap(mat)
     expect_is(p, "list")
@@ -39,10 +39,10 @@ test_that("Turn off columns for many samples", {
 test_that("Matrix dimensions are too small", {
     expect_error(
         plotHeatmap(matrix(seq(1L:10L), ncol = 1L)),
-        "Need at least 2 columns to plot heatmap"
+        "is_greater_than : ncol"
     )
     expect_error(
         plotHeatmap(matrix(seq(1L:10L), nrow = 1L)),
-        "Need at least 2 rows to plot heatmap"
+        "is_greater_than : nrow"
     )
 })

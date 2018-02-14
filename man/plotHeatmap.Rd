@@ -10,7 +10,7 @@
 plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NA,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis(256L),
+  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
   legendColor = viridis::viridis, title = NULL, ...)
 }
 \arguments{
@@ -22,7 +22,7 @@ plotHeatmap(object, ...)
 in either the row direction or the column direction, or none. Corresponding
 values are "row", "column" and "none".}
 
-\item{annotationCol}{\emph{Optional}. \link{data.frame} that defines annotation
+\item{annotationCol}{\emph{Optional.} \link{data.frame} that defines annotation
 mappings for the columns.}
 
 \item{clusterCols}{Logical determining if columns should be arranged with
@@ -37,7 +37,7 @@ palette.}
 \item{legendColor}{Colors to use for legend labels. Defaults to the
 \code{\link[viridis:viridis]{viridis::viridis()}} palette.}
 
-\item{title}{\emph{Optional}. Plot title.}
+\item{title}{\emph{Optional.} Plot title.}
 }
 \value{
 \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} return \link{list}, containing \code{gtable}.

@@ -18,13 +18,14 @@ test_that("writeCounts", {
             "mat.csv.gz"
         )
     )
+    # Check that `eval_bare()` call errors on missing object
     expect_error(
         writeCounts(XXX),
         "object 'XXX' not found"
     )
     expect_error(
         writeCounts(seq(1L:10L)),
-        "Object must support `dim\\(\\)`"
+        "has_dims"
     )
     unlink("counts", recursive = TRUE)
 })

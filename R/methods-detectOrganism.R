@@ -19,37 +19,46 @@
 #' @name detectOrganism
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
+#' @param unique Only return unique matching organisms. Applies to character
+#'   vector input.
 #'
-#' @return Full latin organism name.
-#' @export
+#' @return Full latin organism name. Always aborts on detection failure.
+#'
+#' - Vector: Named character vector containing organism name or `NA` for
+#'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
+#' - Dim: Unique character vector of the organism(s) detected.  Warns if
+#'   multiple organisms are detected.
 #'
 #' @examples
-#' # H. sapiens
+#' loadRemoteData("http://basejump.seq.cloud/counts.rda")
+#'
+#' # String
+#' detectOrganism("ENSG00000000003")
 #' detectOrganism("GRCh38")
 #' detectOrganism("hg38")
-#' detectOrganism("ENSG00000000003")
-#' detectOrganism("Homo sapiens")
-#' detectOrganism("Homo_sapiens")
-#' detectOrganism("H sapiens")
 #' detectOrganism("H. sapiens")
-#' detectOrganism("Hsapiens")
-#' detectOrganism("human")
 #'
-#' # Unsupported organism
-#' detectOrganism("XXX")
+#' # Character vector with spike-ins
+#' detectOrganism(c("ENSG00000000003", "EGFP", "TDTOMATO"))
+#'
+#' # Matrix
+#' detectOrganism(counts)
+#'
+#' # Tibble
+#' tibble <- as(counts, "tibble")
+#' detectOrganism(tibble)
 NULL
 
 
 
 # Constructors =================================================================
 .detectOrganism <- function(object) {
-    # Use the first item in vector for detection
-    object <- object[[1L]]
+    assert_is_a_string(object)
+
     # Homo sapiens =============================================================
     grep <- c(
         "^H(omo)?([._[:space:]]+)?sapiens$",
-        "^human$",
         # Ensembl
         "^ENS(G|T)(\\d{11})$",
         "^GRCh(\\d{2})(\\.p\\d+)?$",
@@ -57,13 +66,12 @@ NULL
         "^hg(\\d{2})$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(human = "Homo sapiens"))
+        return("Homo sapiens")
     }
 
     # Mus musculus =============================================================
     grep <- c(
         "^M(us)?([._[:space:]]+)?musculus$",
-        "^mouse$",
         # Ensembl
         "^ENSMUS(G|T)(\\d{11})$",
         "^GRCm(\\d{2})(\\.p\\d+)?$",
@@ -71,13 +79,12 @@ NULL
         "^mm(\\d{2})$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(mouse = "Mus musculus"))
+        return("Mus musculus")
     }
 
     # Rattus norvegicus ====================================================
     grep <- c(
         "^R(attus)?([._[:space:]]+)?norvegicus$",
-        "^rat$",
         # Ensembl
         "^ENSRNO(G|T)(\\d{11})$",
         "Rnor_([0-9\\.]+)",
@@ -85,13 +92,12 @@ NULL
         "^rn(\\d+)$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(rat = "Rattus norvegicus"))
+        return("Rattus norvegicus")
     }
 
     # Danio rerio ==============================================================
     grep <- c(
         "^D(anio)?([._[:space:]]+)?rerio$",
-        "^zebrafish$",
         # Ensembl
         "^ENSDAR(G|T)(\\d{11})$",
         "GRCz(\\d+)",
@@ -99,13 +105,12 @@ NULL
         "^danRer(\\d+)$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(zebrafish = "Danio rerio"))
+        return("Danio rerio")
     }
 
     # Drosophila melanogaster ==================================================
     grep <- c(
         "^D(rosophila)?([._[:space:]]+)?melanogaster$",
-        "^fruitfly$",
         # Ensembl
         "^FB(gn|tr)(\\d{7})$",
         "^BDGP(\\d+)$",
@@ -113,13 +118,12 @@ NULL
         "^dm(\\d+)$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(fruitfly = "Drosophila melanogaster"))
+        return("Drosophila melanogaster")
     }
 
     # Caenorhabditis elegans ===================================================
     grep <- c(
         "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
-        "^roundworm$",
         # Ensembl
         "^WBGene(\\d{8})$",
         "^WBcel(\\d{3})$",
@@ -127,13 +131,12 @@ NULL
         "^ce(\\d{2})$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(roundworm = "Caenorhabditis elegans"))
+        return("Caenorhabditis elegans")
     }
 
     # Gallus gallus ============================================================
     grep <- c(
         "G(allus)?([._[:space:]]+)?gallus$",
-        "chicken$",
         # Ensembl
         "^ENSGAL(G|T)(\\d{11})$",
         "^Gallus_gallus-([0-9\\.]+)$",
@@ -141,13 +144,12 @@ NULL
         "^galGal(\\d+)$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(chicken = "Gallus gallus"))
+        return("Gallus gallus")
     }
 
     # Ovis aries ===============================================================
     grep <- c(
         "^O(vis)?([._[:space:]]+)?aries$",
-        "^sheep$",
         # Ensembl
         "^ENSOAR(G|T)\\d{11}$",
         "^Oar_v([0-9\\.]+)$",
@@ -155,11 +157,68 @@ NULL
         "^oviAri(\\d+)$"
     )
     if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return(c(sheep = "Ovis aries"))
+        return("Ovis aries")
     }
 
-    warn("Failed to detect supported organism")
-    NULL
+    NA_character_
+}
+
+
+
+# detectOrganism(c("ENSG00000000001", "ENSG00000000003"))
+.detectOrganism.character <- function(object, unique = FALSE) {
+    assert_is_a_bool(unique)
+    x <- vapply(
+        X = object,
+        FUN = .detectOrganism,
+        FUN.VALUE = character(1L)
+    )
+    if (all(is.na(x))) {
+        abort("Failed to detect organism")
+    }
+    if (is_a_string(x)) {
+        names(x) <- NULL
+    }
+    if (length(unique(x)) > 1L) {
+        warn("Multiple organisms detected")
+    }
+    if (isTRUE(unique)) {
+        x <- x %>%
+            as.character() %>%
+            na.omit() %>%
+            unique()
+    }
+    x
+}
+
+
+
+.detectOrganism.dim <- function(object) {  # nolint
+    # Assume gene identifiers are defined in the rownames
+    assert_has_rownames(object)
+    .returnUniqueOrganism(rownames(object))
+}
+
+
+
+.detectOrganism.tibble <- function(object) {  # nolint
+    assert_has_colnames(object)
+    object <- snake(object)
+    # Look for Ensembl gene column
+    geneCol <- c("rowname", "ensgene", "ensembl_gene_id")
+    assert_are_intersecting_sets(colnames(object), geneCol)
+    object %>%
+        .[, which(colnames(.) %in% geneCol)[[1L]], drop = TRUE] %>%
+        .returnUniqueOrganism()
+}
+
+
+
+.returnUniqueOrganism <- function(object) {
+    assert_is_character(object)
+    x <- detectOrganism(object)
+    x <- sort(unique(na.omit(x)))
+    x
 }
 
 
@@ -170,7 +229,7 @@ NULL
 setMethod(
     "detectOrganism",
     signature("character"),
-    .detectOrganism)
+    .detectOrganism.character)
 
 
 
@@ -178,7 +237,41 @@ setMethod(
 #' @export
 setMethod(
     "detectOrganism",
-    signature("NULL"),
-    function(object) {
-        NULL
-    })
+    signature("data.frame"),
+    .detectOrganism.dim)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("DataFrame"),
+    .detectOrganism.dim)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("dgCMatrix"),
+    .detectOrganism.dim)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("matrix"),
+    .detectOrganism.dim)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("tbl_df"),
+    .detectOrganism.tibble)

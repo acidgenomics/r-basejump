@@ -2,7 +2,7 @@ context("midnightTheme")
 
 test_that("Simple plot", {
     p <- ggplot(mpg, aes(cty, hwy)) +
-        geom_point(color = "orange") +
+        ggplot2::geom_point(color = "orange") +
         midnightTheme()
     expect_is(p, "ggplot")
     # Check for the black plot background
@@ -11,5 +11,3 @@ test_that("Simple plot", {
         "black"
     )
 })
-
-

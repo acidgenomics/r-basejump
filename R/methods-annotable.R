@@ -34,7 +34,7 @@
 #' @name annotable
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param object Object. Default recommended usage is to provide full latin
@@ -42,9 +42,9 @@
 #'   the annotables data package.
 #' @param format Desired table format, either `gene`, `tx2gene`, or
 #'   `gene2symbol`.
-#' @param genomeBuild *Optional*. Check to see if a specific genome build is
+#' @param genomeBuild *Optional.* Check to see if a specific genome build is
 #'   supported.
-#' @param release *Optional*. Ensembl release version. Defaults to the most
+#' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #' @param uniqueSymbol Make gene symbols unique.
 #'
@@ -69,7 +69,7 @@ NULL
 #' @importFrom BiocGenerics organism
 #' @importFrom dplyr mutate rename
 #' @importFrom ensembldb ensemblVersion genes transcripts
-#' @importFrom magrittr set_rownames
+#' @importFrom rlang .data
 #' @importFrom S4Vectors mcols
 #' @importFrom utils capture.output find tail
 .annotable <- function(
@@ -79,23 +79,25 @@ NULL
     release = NULL,
     uniqueSymbol = FALSE,
     quiet = FALSE) {
+    assert_is_a_string(object)
+    assert_is_a_string(format)
+    assert_is_subset(format, c("gene", "gene2symbol", "tx2gene"))
+    assert_is_a_string_or_null(genomeBuild)
+    assert_is_numeric_scalar_or_null(release)
+    if (is.numeric(release)) {
+        # AnnotableHub only supports releases 87 and above
+        assert_all_are_greater_than_or_equal_to(release, 87L)
+    }
+    assert_is_a_bool(uniqueSymbol)
+    assert_is_a_bool(quiet)
+
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
 
-    # Parameter integrity checks ===============================================
-    # object (organism)
-    if (!is_string(object)) {
-        abort("Object must be a string")
-    }
-    # format
-    if (!format %in% c("gene", "gene2symbol", "tx2gene")) {
-        abort("Unsupported format")
-    }
-
     # Genome build =============================================================
-    if (!is.null(genomeBuild)) {
-        # GRCh37/hg19 support
-        if (object == "Homo sapiens" &
+    if (is_a_string(genomeBuild)) {
+        # GRCh37/hg19 legacy support
+        if (object == "Homo sapiens" &&
             grepl(
                 pattern = paste("GRCh37", "hg19", sep = "|"),
                 x = genomeBuild,
@@ -128,18 +130,7 @@ NULL
     }
 
     # Release version ==========================================================
-    if (is.numeric(release)) {
-        if (release < 87L) {
-            warn(paste(
-                "AnnotationHub only supports Ensembl releases 87 and newer.",
-                "Using current release instead."
-            ))
-            release <- NULL
-        }
-    } else {
-        # Legacy code support for "current" (changed in 0.1.1)
-        release <- NULL
-    }
+    # Define the `releasePattern` to query with ensembldb
     if (is.null(release)) {
         releasePattern <- NULL
     } else {
@@ -174,12 +165,12 @@ NULL
         rownames() %>%
         tail(n = 1L)
 
-    # Early return `NULL` with warning on organism failure
+    # Abort on organism failure
     if (!length(id)) {
-        warn(paste(
-            object, "is not supported in AnnotationHub"
+        abort(paste(
+            "Full latin organism name", object,
+            "is not supported in AnnotationHub"
         ))
-        return(NULL)
     }
 
     # ensembldb ================================================================
@@ -215,6 +206,8 @@ NULL
             }
         }
     ))
+    # Assert that all AnnotationHub/ensembldb packages must detach
+    assert_are_identical(.packages(), userAttached)
 
     # Sanitize return ==========================================================
     if (format == "gene") {
@@ -255,7 +248,8 @@ NULL
             arrange(!!sym("enstxp")) %>%
             set_rownames(.[["enstxp"]])
     }
-
+    assert_is_data.frame(data)
+    assert_has_rownames(data)
     data
 }
 
@@ -268,16 +262,12 @@ NULL
 #' @noRd
 #'
 #' @importFrom dplyr case_when mutate
+#' @importFrom rlang .data
 #'
 #' @return [data.frame] with `broadClass` column.
 .defineBroadClass <- function(object) {
-    requiredCols <- c("biotype", "symbol")
-    if (!all(requiredCols %in% colnames(object))) {
-        abort(paste(
-            "Missing columns:",
-            toString(setdiff(requiredCols, colnames(object)))
-        ))
-    }
+    assert_is_data.frame(object)
+    assert_is_subset(c("biotype", "symbol"), colnames(object))
     mutate(
         object,
         broadClass = case_when(
@@ -337,32 +327,29 @@ NULL
 #'
 #' @importFrom dplyr distinct everything group_by left_join mutate rename select
 #'   summarize_all ungroup
-#' @importFrom magrittr set_rownames
+#' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return [data.frame].
 .prepareAnnotable <- function(object) {
-    # Check for required columns
-    requiredCols <- c("ensgene", "symbol", "description", "biotype")
-    if (!all(requiredCols %in% colnames(object))) {
-        abort(paste(
-            "Required columns:", toString(requiredCols)
-        ))
-    }
+    assert_is_data.frame(object)
+    assert_is_subset(annotableCols, colnames(object))
+
     # Check for Entrez identifier column and nest into a list, if necessary
     entrezCol <- colnames(object) %>%
         .[grepl(x = ., pattern = "entrez")]
-    if (length(entrezCol) & entrezCol != "entrez") {
-        # Standard to `entrez`. ensembldb outputs as `entrezid`.
+    if (length(entrezCol) && entrezCol != "entrez") {
+        # Standardize to `entrez`. ensembldb outputs as `entrezid`.
         object <- rename(object, entrez = !!sym(entrezCol))
         rm(entrezCol)
     }
+
     # Check for annotable that needs the Entrez IDs nested (e.g. biomaRt output)
-    if (!is.null(object[["entrez"]]) &
-        !is.list(object[["entrez"]]) &
+    if (!is.null(object[["entrez"]]) &&
+        !is.list(object[["entrez"]]) &&
         any(duplicated(object[["ensgene"]]))) {
         # Alternatively can use `tidyr::nest()` approach here instead but
         # the output structure won't be consistent with the ensembl return.
@@ -377,20 +364,22 @@ NULL
             distinct() %>%
             left_join(entrez, by = "ensgene")
     }
+
     # Collapse any remaining duplicated rows by Ensembl ID, if necessary
     if (any(duplicated(object[["ensgene"]]))) {
         object <- object %>%
-            group_by(!!!syms(requiredCols)) %>%
+            group_by(!!!syms(annotableCols)) %>%
             summarize_all(funs(
                 collapseToString(object = ., unique = TRUE, sort = TRUE)
             )) %>%
             ungroup()
     }
+
     object %>%
-        camel(strict = FALSE) %>%
+        camel() %>%
         fixNA() %>%
         .defineBroadClass() %>%
-        select(c(requiredCols, "broadClass"), everything()) %>%
+        select(c(annotableCols, "broadClass"), everything()) %>%
         arrange(!!sym("ensgene")) %>%
         as.data.frame() %>%
         set_rownames(.[["ensgene"]])
@@ -414,14 +403,3 @@ setMethod(
     "annotable",
     signature("data.frame"),
     .prepareAnnotable)
-
-
-
-#' @rdname annotable
-#' @export
-setMethod(
-    "annotable",
-    signature("NULL"),
-    function(object) {
-        NULL
-    })

@@ -15,12 +15,12 @@ gene2symbol(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
-\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
@@ -42,6 +42,5 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{symbol2gene}}, \code{\link{tx2geneFromGFF}},
-  \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }

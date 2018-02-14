@@ -26,7 +26,7 @@ fixNA(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 }
 \value{
 Object containing proper \code{NA} values.
@@ -35,12 +35,20 @@ Object containing proper \code{NA} values.
 Fix Character Strings Missing \code{NA}
 }
 \examples{
+# character
 fixNA(c(1L, "x", "", "NA", "NULL"))
 
+# data.frame
 data.frame(
     a = c("foo", ""),
-    b = c(NA, "bar")
-) \%>\%
+    b = c(NA, "bar"),
+    stringsAsFactors = FALSE) \%>\%
+    fixNA()
+
+# tibble
+tibble(
+    a = c("foo", ""),
+    b = c(NA, "bar")) \%>\%
     fixNA()
 }
 \seealso{

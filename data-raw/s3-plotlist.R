@@ -1,5 +1,3 @@
-devtools::load_all()
-
 library(ggplot2)
 library(cowplot)
 
@@ -18,4 +16,4 @@ plotlist <- list(
 # Plotting example using the plotlist with cowplot
 plot_grid(plotlist = plotlist)
 
-saveData(plotlist, dir = "~/Desktop")
+save(plotlist, file = "~/Desktop/plotlist.rda", compress = "xz")

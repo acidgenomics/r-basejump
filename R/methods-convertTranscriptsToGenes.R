@@ -4,8 +4,12 @@
 #' @name convertTranscriptsToGenes
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
-#' @inheritParams annotable
+#' @inheritParams general
+#' @inheritParams convertGenesToSymbols
+#'
+#' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
+#'   attempt to download from Ensembl using the desired `organism`,
+#'   `genomeBuild`, and `release` arguments.
 #'
 #' @return Same class as object.
 #'
@@ -33,32 +37,57 @@ NULL
 # Constructors =================================================================
 .convertTranscriptsToGenes <- function(
     object,
+    tx2gene = NULL,
+    organism = NULL,
+    genomeBuild = NULL,
     release = NULL,
     quiet = FALSE) {
-    # Prevent pass in of genomeBuild as primary object.
-    # Improve this in a future update.
-    if (any(is.na(object))) {
-        abort("NA identifier detected")
+    # Passthrough: genomeBuild, release, quiet
+    assert_is_character(object)
+    assert_all_are_non_missing_nor_empty_character(object)
+    assert_has_no_duplicates(object)
+    assert_is_any_of(tx2gene, c("data.frame", "NULL"))
+    assert_is_a_string_or_null(organism)
+    assert_is_numeric_scalar_or_null(release)
+    assert_is_a_bool(quiet)
+
+    # If no tx2gene is provided, fall back to using Ensembl annotations
+    if (!is.data.frame(tx2gene)) {
+        # Generate tx2gene from Ensembl
+        if (!isTRUE(quiet)) {
+            inform("Obtaining transcript-to-gene mappings from Ensembl")
+        }
+        if (is.null(organism)) {
+            organism <- detectOrganism(object, unique = TRUE)
+        } else if (is_a_string(organism)) {
+            organism <- detectOrganism(organism)
+        }
+        assert_is_a_string(organism)
+        tx2gene <- tx2gene(
+            object = organism,
+            genomeBuild = genomeBuild,
+            release = release,
+            quiet = quiet)
+    } else {
+        assert_is_tx2gene(tx2gene)
     }
-    if (any(object == "")) {
-        abort("Empty string identifier detected")
-    }
-    organism <- detectOrganism(object[[1L]])
-    tx2gene <- annotable(
-        organism,
-        format = "tx2gene",
-        release = release,
-        quiet = quiet) %>%
+
+    tx2gene <- tx2gene %>%
         .[object, , drop = FALSE] %>%
         .[!is.na(.[["ensgene"]]), , drop = FALSE]
+
     gene <- tx2gene[["ensgene"]]
     names(gene) <- tx2gene[["enstxp"]]
+
     if (!all(object %in% names(gene))) {
         abort(paste(
             "Unmatched transcripts present.",
             "Try using a GFF file instead."
         ))
     }
+
+    assert_is_character(gene)
+    assert_has_names(gene)
     gene[object]
 }
 
@@ -66,12 +95,19 @@ NULL
 
 .convertTranscriptsToGenes.dim <- function(  # nolint
     object,
+    tx2gene = NULL,
+    organism = NULL,
+    genomeBuild = NULL,
     release = NULL,
     quiet = FALSE) {
-    rownames(object) <- rownames(object) %>%
-        .convertTranscriptsToGenes(
-            release = release,
-            quiet = quiet)
+    # Passthrough: tx2gene, organism, genomeBuild, release, quiet
+    rownames(object) <- .convertTranscriptsToGenes(
+        object = rownames(object),
+        tx2gene = tx2gene,
+        organism = organism,
+        genomeBuild = genomeBuild,
+        release = release,
+        quiet = quiet)
     object
 }
 

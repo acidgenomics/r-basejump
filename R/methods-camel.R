@@ -34,8 +34,8 @@
 #' # data.frame
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
-#' camel(dataFrame, rownames = FALSE)
 #' camel(dataFrame, rownames = TRUE)
+#' camel(dataFrame, rownames = FALSE)
 #'
 #' # Named list
 #' list <- makeNames$list
@@ -46,11 +46,15 @@ NULL
 
 
 # Constructors =================================================================
-.makeNamesCamel <- function(
+.camel <- function(
     object,
     format = "lower",
     strict = FALSE) {
     object <- dotted(object)
+    assert_is_a_string(format)
+    assert_is_subset(format, c("lower", "upper"))
+    assert_is_a_bool(strict)
+
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
@@ -84,66 +88,75 @@ NULL
 
 
 
-.makeNamesLowerCamel <- function(object, strict = FALSE) {
-    .makeNamesCamel(object, format = "lower", strict = strict)
+.camel.ANY <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE) {
+    # Passthrough: rownames, colnames, strict
+    if (!is.null(dimnames(object))) {
+        .camel.dim(
+            object,
+            rownames = rownames,
+            colnames = colnames,
+            strict = strict)
+    } else if (!is.null(names(object))) {
+        .camel.names(object, strict = strict)
+    } else {
+        warn("Returning without lower camel case sanitization applied")
+        object
+    }
 }
 
 
 
-.setNamesCamel <- function(
+.camel.dim <- function(  # nolint
     object,
-    format = "lower",
     rownames = FALSE,
+    colnames = TRUE,
     strict = FALSE) {
-    if (!is.null(dimnames(object))) {
-        # Colnames
-        if (!is.null(colnames(object))) {
-            colnames(object) <- .makeNamesCamel(
-                colnames(object),
-                format = format,
-                strict = strict)
-        }
-        # Rownames
-        if (isTRUE(rownames) & .checkRownames(object)) {
-            rownames(object) <- .makeNamesCamel(
-                rownames(object),
-                format = format,
-                strict = strict)
-        }
-    } else if (!is.null(names(object))) {
-        names(object) <- .makeNamesCamel(
-            names(object),
-            format = format,
-            strict = strict)
+    # Passthrough: strict
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && has_rownames(object)) {
+        rownames(object) <- .camel(rownames(object), strict = strict)
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        assert_has_colnames(object)
+        colnames(object) <- .camel(colnames(object), strict = strict)
     }
     object
 }
 
 
 
-.setNamesLowerCamel <- function(object, rownames = FALSE, strict = FALSE) {
-    .setNamesCamel(
+.camel.names <- function(object, strict = FALSE) {  # nolint
+    # Passthrough: strict
+    assert_has_names(object)
+    names(object) <- .camel(names(object), strict = strict)
+    object
+}
+
+
+
+.camel.tibble <- function(object, strict = FALSE) {  # nolint
+    .camel.dim(
         object,
-        format = "lower",
-        rownames = rownames,
+        rownames = FALSE,
+        colnames = TRUE,
         strict = strict)
 }
 
 
 
-.setNamesLowerCamelNoRownames <- function(object, strict = FALSE) {
-    .setNamesLowerCamel(object, rownames = FALSE, strict = strict)
-}
-
-
-
-.camelVector <- function(object, strict = FALSE) {
+.camel.vector <- function(object, strict = FALSE) {  # nolint
+    # Passthrough: strict
     if (!is.null(names(object))) {
-        names <- .makeNamesLowerCamel(names(object), strict = strict)
+        names <- .camel(names(object), strict = strict)
     } else {
         names <- NULL
     }
-    object <- .makeNamesLowerCamel(object, strict = strict)
+    object <- .camel(object, strict = strict)
     names(object) <- names
     object
 }
@@ -156,7 +169,7 @@ NULL
 setMethod(
     "camel",
     signature("ANY"),
-    .setNamesLowerCamel)
+    .camel.ANY)
 
 
 
@@ -165,7 +178,7 @@ setMethod(
 setMethod(
     "camel",
     signature("character"),
-    .camelVector)
+    .camel.vector)
 
 
 
@@ -174,7 +187,7 @@ setMethod(
 setMethod(
     "camel",
     signature("data.frame"),
-    .setNamesLowerCamel)
+    .camel.dim)
 
 
 
@@ -183,7 +196,7 @@ setMethod(
 setMethod(
     "camel",
     signature("DataFrame"),
-    .setNamesLowerCamel)
+    .camel.dim)
 
 
 
@@ -192,7 +205,7 @@ setMethod(
 setMethod(
     "camel",
     signature("factor"),
-    .camelVector)
+    .camel.vector)
 
 
 
@@ -201,7 +214,16 @@ setMethod(
 setMethod(
     "camel",
     signature("list"),
-    .setNamesLowerCamelNoRownames)
+    .camel.names)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("List"),
+    .camel.names)
 
 
 
@@ -210,7 +232,16 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    .setNamesLowerCamel)
+    .camel.dim)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("SimpleList"),
+    .camel.names)
 
 
 
@@ -219,4 +250,4 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    .setNamesLowerCamelNoRownames)
+    .camel.tibble)

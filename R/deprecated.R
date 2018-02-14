@@ -4,7 +4,7 @@
 #' @name deprecated
 #' @keywords internal
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Soft deprecation to new functions.
 NULL
@@ -100,4 +100,36 @@ comp <- function() {
 #' @export
 revcomp <- function() {
     .Deprecated("Biostrings::reverseComplement")
+}
+
+
+
+# v0.2.2 =======================================================================
+#' @rdname deprecated
+symbol2gene <- function() {
+    .Deprecated()
+}
+
+
+
+# v0.3.0 =======================================================================
+#' @rdname deprecated
+#' @export
+checkAnnotable <- function(...) {
+    .Deprecated("assert_is_annotable")
+    assert_is_annotable(...)
+}
+
+#' @rdname deprecated
+#' @export
+checkGene2symbol <- function(...) {
+    .Deprecated("assert_is_gene2symbol")
+    assert_is_gene2symbol(...)
+}
+
+#' @rdname deprecated
+#' @export
+checkTx2gene <- function(...) {
+    .Deprecated("assert_is_tx2gene")
+    assert_is_tx2gene(...)
 }

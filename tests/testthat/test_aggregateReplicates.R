@@ -17,13 +17,13 @@ aggmat <- data.frame(
 groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
 names(groupings) <- colnames(mat)
 
-test_that("matrix", {
+test_that("Matrix", {
    data <- aggregateReplicates(mat, groupings = groupings)
    expect_is(data, "matrix")
    expect_identical(data, aggmat)
 })
 
-test_that("dgCMatrix", {
+test_that("DgCMatrix", {
     dgc <- as(mat, "dgCMatrix")
     aggdgc <- as(aggmat, "dgCMatrix")
     data <- aggregateReplicates(dgc, groupings = groupings)
@@ -31,13 +31,13 @@ test_that("dgCMatrix", {
     expect_identical(data, aggdgc)
 })
 
-test_that("Check groupings failure", {
+test_that("Invalid `groupings`", {
     expect_error(
         aggregateReplicates(mat, groupings = "XXX"),
-        "`groupings` must be a factor"
+        "is_factor"
     )
     expect_error(
         aggregateReplicates(mat, groupings = factor(c("XXX", "YYY"))),
-        "`groupings` must match object colnames"
+        "are_identical"
     )
 })

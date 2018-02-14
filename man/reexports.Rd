@@ -5,7 +5,13 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{aes}
+\alias{reexports}
+\alias{ggplot}
+\alias{reexports}
 \alias{\%>\%}
+\alias{reexports}
+\alias{set_rownames}
 \alias{reexports}
 \alias{Matrix}
 \alias{reexports}
@@ -13,9 +19,9 @@
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
-\alias{tibble}
+\alias{is_tibble}
 \alias{reexports}
-\alias{file_path_sans_ext}
+\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -25,14 +31,14 @@ below to see their documentation.
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
+
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
-  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{tibble}}}
-
-  \item{tools}{\code{\link[tools]{file_path_sans_ext}}}
+  \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 }}
 

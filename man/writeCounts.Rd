@@ -16,7 +16,8 @@ writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-No value.
+Invisible named character vector containing file paths to count
+matrices written to disk.
 }
 \description{
 Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
@@ -31,7 +32,7 @@ is enabled by default to save disk space. Note that the
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
 \examples{
-writeCounts(mtcars)
+writeCounts(mtcars, gzip = TRUE)
 
 # Clean up
 unlink("mtcars.csv.gz")

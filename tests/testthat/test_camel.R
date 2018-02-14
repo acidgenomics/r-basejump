@@ -4,7 +4,18 @@ load(system.file(
     file.path("extdata", "makeNames.rda"),
     package = "basejump"))
 
-test_that("character", {
+test_that("ALL", {
+    # Integer (atomic)
+    expect_warning(
+        camel(1L),
+        "Returning without lower camel case sanitization applied")
+    expect_identical(
+        camel(c("hello.world" = 1L)),
+        c("helloWorld" = 1L)
+    )
+})
+
+test_that("Character", {
     expect_identical(
         camel(makeNames[["character"]], strict = FALSE),
         c("helloWorld",
@@ -58,7 +69,7 @@ test_that("Named character", {
     )
 })
 
-test_that("data.frame", {
+test_that("Data frame", {
     # Sanitize rownames
     expect_identical(
         camel(makeNames[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
@@ -66,7 +77,7 @@ test_that("data.frame", {
             .[[1L]],
         "mazdaRx4"
     )
-    # Unset rownames (ignore in `.checkRownames()`)
+    # Unset rownames should be skipped, even when `rownames = TRUE`
     expect_identical(
         makeNames[["dataFrame"]] %>%
             set_rownames(NULL) %>%
@@ -89,7 +100,7 @@ test_that("Counts matrix", {
     )
 })
 
-test_that("matrix rownames", {
+test_that("Matrix rownames", {
     # Sanitize rownames
     expect_identical(
         camel(makeNames[["matrix"]], rownames = TRUE, strict = TRUE) %>%
@@ -107,7 +118,7 @@ test_that("matrix rownames", {
     )
 })
 
-test_that("tibble", {
+test_that("Tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -122,12 +133,5 @@ test_that("Named list", {
         camel(makeNames[["list"]], strict = TRUE),
         list("itemA" = c(1L, 2L),
              "itemB" = c(3L, 4L))
-    )
-})
-
-test_that("missing", {
-    expect_error(
-        camel(),
-        "argument \"object\" is missing, with no default"
     )
 })

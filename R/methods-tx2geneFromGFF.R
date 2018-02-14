@@ -4,7 +4,7 @@
 #' @name tx2geneFromGFF
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
@@ -26,23 +26,20 @@ NULL
 
 
 # Constructors =================================================================
-.gffKeyValuePairs <- function(object) {
-    object %>%
-        .[[9L]] %>%
-        unique()
-}
-
-
-
 #' @importFrom dplyr arrange distinct
-#' @importFrom magrittr set_rownames
+#' @importFrom rlang !! sym
 #' @importFrom stringr str_match
 .tx2geneFromGFF <- function(
     object,
     quiet = FALSE) {
+    assert_is_data.frame(object)
+    assert_are_identical(ncol(object), 9L)
+    assert_is_a_bool(quiet)
+
     anno <- object %>%
         .gffKeyValuePairs() %>%
-        .[grepl("transcript_id", .) & grepl("gene_id", .)] %>%
+        .[grepl("transcript_id", .)] %>%
+        .[grepl("gene_id", .)] %>%
         unique()
 
     enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
@@ -50,20 +47,28 @@ NULL
     ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
         .[, 2L]
 
-    df <- cbind(enstxp, ensgene) %>%
+    assert_all_are_non_missing_nor_empty_character(enstxp)
+    assert_all_are_non_missing_nor_empty_character(ensgene)
+    assert_are_same_length(enstxp, ensgene)
+
+    data <- cbind(enstxp, ensgene) %>%
         as.data.frame(stringsAsFactors = FALSE) %>%
         distinct() %>%
         arrange(!!sym("enstxp")) %>%
         set_rownames(.[["enstxp"]])
 
+    # Check that all transcripts are unique
+    assert_has_no_duplicates(data[["enstxp"]])
+
     if (!isTRUE(quiet)) {
         inform(paste(
             "tx2gene mappings:",
-            nrow(df), "transcripts,",
-            length(unique(df[["ensgene"]])), "genes"))
+            length(unique(data[["enstxp"]])), "transcripts,",
+            length(unique(data[["ensgene"]])), "genes"
+        ))
     }
 
-    df
+    data
 }
 
 
@@ -92,8 +97,15 @@ setMethod(
     function(
         object,
         quiet = FALSE) {
-        if (dim(object)[[2L]] != 9L) {
-            abort("GFF object must be data.frame with 9 columns")
-        }
         .tx2geneFromGFF(object, quiet = quiet)
     })
+
+
+
+# Aliases ======================================================================
+#' @rdname tx2geneFromGFF
+#' @inheritParams general
+#' @export
+tx2geneFromGTF <- function(...) {
+    tx2geneFromGFF(...)
+}

@@ -4,13 +4,13 @@
 #' @name dynamicPlotlist
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param return Return type. "grid", "list", and "markdown" are supported.
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.
 #'
-#' @seealso [mdPlotlist].
+#' @seealso [markdownPlotlist].
 #'
 #' @return
 #' - `grid`: [cowplot::plot_grid()].
@@ -39,19 +39,15 @@ NULL
     object,
     return = "grid",
     headerLevel = 2L) {
-    validReturn <- c("grid", "list", "markdown")
-    if (!return %in% validReturn) {
-        abort(paste(
-            "`return` must contain:", toString(validReturn)
-        ))
-    }
-
+    assert_is_a_string(return)
+    assert_is_subset(return, c("grid", "list", "markdown"))
+    assert_formal_header_level(headerLevel)
     if (return == "grid") {
         plot_grid(plotlist = object)
     } else if (return == "list") {
         object
     } else if (return == "markdown") {
-        mdPlotlist(object, headerLevel = headerLevel)
+        markdownPlotlist(object, headerLevel = headerLevel)
     }
 }
 

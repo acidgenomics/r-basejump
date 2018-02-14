@@ -19,13 +19,11 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom tibble as_tibble has_rownames rownames_to_column
-.asTibble <- function(from) {
-    if (is.null(dim(from))) {
-        abort("Object must support `dim()`")
-    }
+#' @importFrom tibble as_tibble rownames_to_column
+.as.tibble <- function(from) {  # nolint
+    assert_has_dims(from)
     from <- as.data.frame(from)
-    if (has_rownames(from)) {
+    if (tibble::has_rownames(from)) {
         from <- rownames_to_column(from)
     }
     as_tibble(from)
@@ -36,5 +34,5 @@ NULL
 # Methods ======================================================================
 # We may want to manually define the classes here in a stricter manner in
 # the future (e.g. `DataFrame`, `data.frame`, `Matrix`, `matrix`, `dgCMatrix`).
-setAs("ANY", "tbl_df", .asTibble)
-setAs("ANY", "tibble", .asTibble)
+setAs("ANY", "tbl_df", .as.tibble)
+setAs("ANY", "tibble", .as.tibble)

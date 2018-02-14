@@ -4,7 +4,7 @@
 #' @name readGFF
 #' @family Data Import and Project Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
@@ -28,13 +28,15 @@ NULL
 .readGFF <- function(
     object,
     quiet = FALSE) {
+    assert_is_a_string(object)
+    assert_is_a_bool(quiet)
     file <- localOrRemoteFile(object, quiet = quiet)
     if (!isTRUE(quiet)) {
         inform(paste("Reading GFF/GTF:", names(file)))
     }
     gff <- tryCatch(
         read.delim(
-            file,
+            file = file,
             col.names = c(
                 "chromosome",
                 "annotationSource",
@@ -66,3 +68,13 @@ setMethod(
     "readGFF",
     signature("character"),
     .readGFF)
+
+
+
+# Aliases ======================================================================
+#' @rdname readGFF
+#' @inheritParams general
+#' @export
+readGTF <- function(...) {
+    readGFF(...)
+}

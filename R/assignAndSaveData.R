@@ -3,10 +3,9 @@
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by `dir`.
 #'
-#' @rdname assignAndSaveData
 #' @family Object Assignment Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams saveData
 #'
 #' @param name Desired variable name.
@@ -29,20 +28,27 @@ assignAndSaveData <- function(
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    dir <- normalizePath(dir)
+    assert_is_a_string(name)
+    assert_is_not_null(object)
+    dir <- initializeDirectory(dir)
+    assert_formal_compress(compress)
+    assert_is_environment(envir)
+    assert_is_a_bool(quiet)
+
     file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
+
     assign(name, object, envir = envir)
     if (!isTRUE(quiet)) {
         inform(paste("Saving", name, "to", dir))
     }
+
     save(
         list = name,
         file = file,
         envir = envir,
         compress = compress
     )
-    # Silently return the file path as a named character vector
+
     invisible(file)
 }

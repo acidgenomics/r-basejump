@@ -5,8 +5,6 @@
 #' @importFrom ggplot2 element_blank element_line element_rect element_text
 #'   theme theme_minimal
 #'
-#' @param ... Passthrough arguments to [ggplot2::theme()].
-#'
 #' @seealso
 #' - [ggplot2::theme()].
 #' - Inspired by `Seurat::DarkTheme()`, with some modifications.
@@ -19,7 +17,7 @@
 #' p <- ggplot(mtcars) +
 #'     geom_point(aes(x = wt, y = mpg, colour = factor(gear)))
 #' p + midnightTheme()
-midnightTheme <- function(...) {
+midnightTheme <- function() {
     gray <- "gray12"
     blackBackground <- element_rect(color = NA, fill = "black")
     grayBackground <- element_rect(color = NA, fill = gray)
@@ -35,6 +33,6 @@ midnightTheme <- function(...) {
             plot.background = blackBackground,
             strip.text = whiteText,
             complete = TRUE,
-            validate = TRUE,
-            ...)
+            validate = TRUE
+        )
 }

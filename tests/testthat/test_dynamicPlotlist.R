@@ -2,17 +2,17 @@ context("dynamicPlotlist")
 
 loadRemoteData("http://basejump.seq.cloud/plotlist.rda", quiet = TRUE)
 
-test_that("grid", {
+test_that("Grid", {
     p <- dynamicPlotlist(plotlist, return = "grid")
     expect_s3_class(p, "ggplot")
 })
 
-test_that("list", {
+test_that("List", {
     list <- dynamicPlotlist(plotlist, return = "list")
     expect_is(list, "list")
 })
 
-test_that("markdown", {
+test_that("Markdown", {
     output <- capture.output(
         dynamicPlotlist(plotlist, return = "markdown")
     )

@@ -14,81 +14,52 @@ utils::download.file(
     quiet = TRUE)
 
 test_that("Dot object key-value pair method", {
-    # Short-hand method, using `dir` argument (preferred)
     loaded <- loadDataAsName(
         newName1 = "mtcars",
         newName2 = "starwars",
-        replace = FALSE
+        dir = getwd()
     )
-    # Variable file paths (more flexible, but requires more typing)
-    loaded2 <- suppressWarnings(
-        loadDataAsName(
-            newName1 = "mtcars.rda",
-            newName2 = "starwars.rda",
-            replace = TRUE)
-    )
-    expect_equal(
-        loaded,
-        c(newName1 = file.path(getwd(), "mtcars.rda"),
-          newName2 = file.path(getwd(), "starwars.rda"))
-    )
-    expect_identical(loaded, loaded2)
+    expect_is(loaded, "character")
+    expect_true(exists("newName1", inherits = FALSE))
+    expect_true(exists("newName2", inherits = FALSE))
+})
 
-    # Replace argument
-    expect_warning(
-        loadDataAsName(newName1 = "mtcars", replace = FALSE),
-        "Skipping mtcars.rda because newName1 already exists"
-    )
-    expect_warning(
-        loadDataAsName(newName1 = "mtcars", replace = TRUE),
-        "Replacing newName1 with the contents of mtcars.rda"
-    )
-
-    # Error on first missing file
+test_that("Missing files", {
     expect_error(
-        loadDataAsName(
-            newName1 = "XXXXXX",
-            newName2 = "YYYYYY",
-            replace = TRUE
-        ),
-        "XXXXXX missing"
+        loadDataAsName(newName = "mtcars.rda"),
+        "is_existing_file"
+    )
+    expect_error(
+        loadDataAsName(newName = "XXXXXX"),
+        "is_existing_file"
     )
 })
 
 test_that("Legacy named character method", {
     loaded <- loadDataAsName(c(test = "mtcars"))
-    expect_equal(
-        loaded,
-        c(test = file.path(getwd(), "mtcars.rda"))
-    )
-    expect_error(
-        loadDataAsName(c(test = "foobar")),
-        "foobar missing"
-    )
+    expect_is(loaded, "character")
+    expect_true(exists("test", inherits = FALSE))
 })
 
 test_that("Multiple objects in single file", {
     expect_error(
         loadDataAsName(newName = "multi"),
-        "multi.rda contains multiple objects: x, y"
+        "is_a_string : loaded has length 2, not 1."
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
         loadDataAsName(newName = "mtcars", dir = NULL),
-        "`dir` must be a string"
+        "is_a_string"
     )
     expect_error(
         loadDataAsName(newName = "mtcars", dir = "XXX"),
-        "No directory exists at XXX"
+        "is_existing_file"
     )
     expect_error(
-        loadDataAsName(
-            newName = "mtcars.rda",
-            envir = "XXX"
-        ),
-        "`envir` must be an environment"
+        loadDataAsName(newName = "mtcars", envir = "XXX"),
+        "is_environment"
     )
 })
 

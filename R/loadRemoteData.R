@@ -4,39 +4,78 @@
 #'
 #' @family Data Import and Project Utilities
 #'
+#' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams loadData
 #'
-#' @return Silently return loaded object name.
+#' @param url Remote URL file path to R Data file. Supports multiple URLs
+#'   passed in as a character vector.
+#'
+#' @return Silently return a character matrix containing URL and tempfile paths.
 #' @export
 #'
 #' @examples
-#' loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
+#' objects <- loadRemoteData(c(
+#'     "http://basejump.seq.cloud/mtcars.rda",
+#'     "http://basejump.seq.cloud/starwars.rda"
+#' ))
+#' objects
 loadRemoteData <- function(
-    object,
+    url,
     envir = parent.frame(),
     quiet = FALSE) {
-    if (!is_string(object)) {
-        abort("`object` must be a string")
+    assert_is_character(url)
+    # Check for remote URL containing `.rda` file
+    assert_all_are_matching_regex(url, "^http(s)?\\://.+\\.rda$")
+    assert_is_environment(envir)
+    assert_is_a_bool(quiet)
+
+    .urlToTempfile <- function(url, envir = parent.frame(), quiet = FALSE) {
+        assert_is_a_string(url)
+        assert_is_environment(envir)
+        assert_is_a_bool(quiet)
+        name <- file_path_sans_ext(basename(url))
+        # Check to see if object is present in environment
+        if (exists(name, envir = envir, inherits = FALSE)) {
+            abort(paste(name, "already exists in environment"))
+        }
+        tempfile <- tempfile()
+        download.file(
+            url = url,
+            destfile = tempfile,
+            quiet = quiet)
+        c(url = url, tempfile = tempfile)
     }
-    # Check for remote URL
-    if (!grepl("\\://", object)) {
-        abort("Remote URL containing `://` required")
-    }
-    # Check for `.rda` file
-    if (!grepl("\\.rda$", object)) {
-        abort("Data file must contain `.rda` extension")
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
-    tmp <- tempfile()
-    download.file(
-        url = object,
-        destfile = tmp,
-        quiet = quiet)
-    return <- load(file = tmp, envir = envir)
+
+    # Download the files to tempdir and return a character matrix of mappings
+    map <- mapply(
+        FUN = .urlToTempfile,
+        url = url,
+        MoreArgs = list(envir = envir, quiet = quiet),
+        SIMPLIFY = FALSE,
+        USE.NAMES = FALSE
+    )
+    map <- do.call(cbind, map)
+    colnames(map) <- file_path_sans_ext(basename(map["url", , drop = TRUE]))
+    assert_is_matrix(map)
+
+    # Now we're ready to load safely from the tempdir
+    files <- map["tempfile", , drop = FALSE]
+    names <- colnames(map)
+    objects <- mapply(
+        FUN = .safeLoad,
+        file = files,
+        name = names,
+        MoreArgs = list(envir = envir),
+        SIMPLIFY = FALSE,
+        USE.NAMES = TRUE
+    )
+    objects <- do.call(cbind, objects)
+    colnames(objects) <- names
+
+    return <- map[, colnames(objects), drop = FALSE]
+    assert_is_matrix(return)
     invisible(return)
 }

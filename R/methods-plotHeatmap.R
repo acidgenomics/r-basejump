@@ -7,12 +7,12 @@
 #' @rdname plotHeatmap
 #' @name plotHeatmap
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding
 #'   values are "row", "column" and "none".
-#' @param annotationCol *Optional*. [data.frame] that defines annotation
+#' @param annotationCol *Optional.* [data.frame] that defines annotation
 #'   mappings for the columns.
 #' @param clusterCols Logical determining if columns should be arranged with
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
@@ -22,7 +22,7 @@
 #'   palette.
 #' @param legendColor Colors to use for legend labels. Defaults to the
 #'   [viridis::viridis()] palette.
-#' @param title *Optional*. Plot title.
+#' @param title *Optional.* Plot title.
 #' @param ... Passthrough arguments to [pheatmap::pheatmap()].
 #'
 #' @seealso [pheatmap::pheatmap()].
@@ -50,38 +50,41 @@ NULL
     annotationCol = NA,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis(256L),
+    color = viridis::viridis,
     legendColor = viridis::viridis,
     title = NULL,
     ...) {
+    assert_has_dims(object)
+    assert_all_are_greater_than(nrow(object), 1L)
+    assert_all_are_greater_than(ncol(object), 1L)
+    object <- as.matrix(object)
+    assert_is_a_string(scale)
+    assert_is_subset(scale, c("row", "column", "none"))
+    assert_formal_annotation_col(object, annotationCol)
+    assert_is_a_bool(clusterCols)
+    assert_is_a_bool(clusterRows)
+    assert_formal_color_function(color)
+    assert_formal_color_function(legendColor)
+    assert_is_a_string_or_null(title)
+
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
         object <- object %>%
             .[rowSums(.) > 0L, , drop = FALSE]
     }
 
-    if (nrow(object) < 2L) {
-        abort("Need at least 2 rows to plot heatmap")
-    }
-    if (ncol(object) < 2L) {
-        abort("Need at least 2 columns to plot heatmap")
-    }
-
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
-    if (!is.null(dim(annotationCol))) {
+    if (is.data.frame(annotationCol)) {
         annotationCol <- annotationCol %>%
-            as.data.frame() %>%
             .[colnames(object), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
-    } else {
-        annotationCol <- NA
     }
 
     # Define colors for each annotation column, if desired
-    if (is.data.frame(annotationCol) & is.function(legendColor)) {
+    if (is.data.frame(annotationCol) && is.function(legendColor)) {
         annotationColors <- lapply(
             X = seq_along(colnames(annotationCol)),
             FUN = function(a) {
@@ -100,10 +103,13 @@ NULL
     }
 
     # If `color = NULL`, use the pheatmap default
-    if (!is.character(color)) {
+    nColor <- 256L
+    if (!is.function(color)) {
         color <- colorRampPalette(rev(
             brewer.pal(n = 7L, name = "RdYlBu")
-        ))(100L)
+        ))(nColor)
+    } else {
+        color <- color(nColor)
     }
 
     # Dynamic column and row labeling
@@ -141,6 +147,15 @@ NULL
 
 
 # Methods ======================================================================
+#' @rdname plotQuantileHeatmap
+#' @export
+setMethod(
+    "plotHeatmap",
+    signature("dgCMatrix"),
+    .plotHeatmap)
+
+
+
 #' @rdname plotHeatmap
 #' @importFrom viridis viridis
 #' @export

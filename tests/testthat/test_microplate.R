@@ -3,11 +3,11 @@ context("microplate")
 test_that("96-well plate format", {
     plate <- microplate(plates = 1L, wells = 96L)
     expect_is(plate, "character")
-    expect_equal(
+    expect_identical(
         length(plate),
         96L
     )
-    expect_equal(
+    expect_identical(
         head(plate),
         c("1-A01",
           "1-A02",
@@ -16,7 +16,7 @@ test_that("96-well plate format", {
           "1-A05",
           "1-A06")
     )
-    expect_equal(
+    expect_identical(
         tail(plate),
         c("1-H07",
           "1-H08",
@@ -30,7 +30,7 @@ test_that("96-well plate format", {
 test_that("384-well plate format", {
     plate <- microplate(plates = 1L, wells = 384L)
     expect_is(plate, "character")
-    expect_equal(
+    expect_identical(
         tail(plate),
         c("1-P19",
           "1-P20",
@@ -42,12 +42,12 @@ test_that("384-well plate format", {
 })
 
 test_that("Multiple plates", {
-    expect_equal(
+    expect_identical(
         microplate(plates = 2L, wells = 96L) %>%
             length(),
         192L
     )
-    expect_equal(
+    expect_identical(
         microplate(plates = 2L, wells = 384L) %>%
             length(),
         768L
@@ -56,7 +56,7 @@ test_that("Multiple plates", {
 
 test_that("Control wells", {
     plate <- microplate(controls = 3L)
-    expect_equal(
+    expect_identical(
         plate[[1L]],
         "1-A04"
     )
@@ -73,18 +73,18 @@ test_that("Prefix", {
 test_that("Invalid parameters", {
     expect_error(
         microplate(plates = -1L),
-        "Invalid `plates` argument"
+        "is_positive"
     )
     expect_error(
-        microplate(wells = -1L),
-        "Invalid `wells` argument"
+        microplate(wells = 4L),
+        "is_subset"
     )
     expect_error(
         microplate(controls = -1L),
-        "`controls` parameter supports 0:12"
+        "is_non_negative"
     )
     expect_error(
         microplate(prefix = c("a", "b")),
-        "`prefix` must be a string"
+        "is_a_string"
     )
 })
