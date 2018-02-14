@@ -4,10 +4,13 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, quiet = FALSE)
+localOrRemoteFile(object, severity = "stop", quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
+doesn't exist.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }

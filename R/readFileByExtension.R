@@ -14,6 +14,7 @@
 #' @importFrom utils read.table
 #'
 #' @inheritParams general
+#' @inheritParams localOrRemoteFile
 #' @inheritParams saveData
 #'
 #' @param object File path.
@@ -33,6 +34,7 @@
 readFileByExtension <- function(
     object,
     makeNames = "camel",
+    severity = "stop",
     quiet = FALSE,
     ...) {
     assert_is_a_string(object)
@@ -42,8 +44,14 @@ readFileByExtension <- function(
     assert_is_a_string(makeNames)
     assert_is_subset(makeNames, c("camel", "dotted", "snake" , "upperCamel"))
     assert_is_a_bool(quiet)
+    assert_is_a_string(severity)
+    assert_is_subset(severity, c("stop", "warning"))
 
-    file <- localOrRemoteFile(object, quiet = quiet)
+    file <- localOrRemoteFile(object, severity = severity, quiet = quiet)
+    if (is.null(file)) {
+        return(invisible())
+    }
+
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 

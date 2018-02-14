@@ -5,14 +5,22 @@
 #' @inheritParams general
 #' @inheritParams saveData
 #'
+#' @param severity Return `stop` (default), `warning`, or `message` if file
+#'   doesn't exist.
+#'
 #' @return Named character vector containing the original file name as the
 #'   name and local file path as the string. Aborts on a missing file.
 #' @export
 #'
 #' @examples
 #' localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
-localOrRemoteFile <- function(object, quiet = FALSE) {
+localOrRemoteFile <- function(
+    object,
+    severity = "stop",
+    quiet = FALSE) {
     assert_is_a_string(object)
+    assert_is_a_string(severity)
+    assert_is_subset(severity, c("message", "stop", "warning"))
     assert_is_a_bool(quiet)
     basename <- basename(object)
 
@@ -25,7 +33,11 @@ localOrRemoteFile <- function(object, quiet = FALSE) {
         file <- object
     }
 
-    assert_all_are_existing_files(file)
+    assert_all_are_existing_files(file, severity = severity)
+    if (!file.exists(file)) {
+        return(invisible())
+    }
+
     file <- normalizePath(file)
     names(file) <- basename
     file
