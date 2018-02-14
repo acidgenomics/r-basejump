@@ -93,16 +93,16 @@
     <pre class="usage"><span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for factor</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>)
@@ -110,8 +110,14 @@
 <span class='co'># S4 method for list</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>)
 
+<span class='co'># S4 method for List</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for tbl_df</span>
 <span class='fu'>dotted</span>(<span class='no'>object</span>)</pre>
@@ -126,13 +132,18 @@ will be meaningful.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
       <td><p>Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.</p></td>
+    </tr>
+    <tr>
+      <th>colnames</th>
+      <td><p>Apply sanitization on column names. This is generally
+recommended by default.</p></td>
     </tr>
     </table>
     
@@ -187,18 +198,18 @@ argument name assignments.</p>
 #&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>dataFrame</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>dataFrame</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda.RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda.RX4.Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #&gt; Datsun.710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; Hornet.4.Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt; Hornet.Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>dataFrame</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 #&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'>
 <span class='co'># Named list</span>
 <span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>list</span>

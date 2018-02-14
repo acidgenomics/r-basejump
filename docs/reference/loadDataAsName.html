@@ -90,8 +90,7 @@
     <p>Load Data File as Name</p>
     
 
-    <pre class="usage"><span class='fu'>loadDataAsName</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>ext</span> <span class='kw'>=</span> <span class='st'>"rda"</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(),
-  <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>loadDataAsName</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,18 +106,9 @@ defines the new name of the object in the environment, whereas the value
       <td><p>Output directory. Defaults to the current working directory.</p></td>
     </tr>
     <tr>
-      <th>ext</th>
-      <td><p>R data file extension. Defaults to <code>rda</code> and typically should not
-be changed.</p></td>
-    </tr>
-    <tr>
       <th>envir</th>
       <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
 which will assign into the calling environment.</p></td>
-    </tr>
-    <tr>
-      <th>replace</th>
-      <td><p>Replace existing object in destination environment.</p></td>
     </tr>
     </table>
     
