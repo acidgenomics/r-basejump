@@ -19,6 +19,7 @@ Markdown Header Level Assert Check
 Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
+  \code{\link{assert_formal_gene2symbol}},
   \code{\link{assert_has_rownames}},
   \code{\link{assert_is_a_string_or_null}},
   \code{\link{assert_is_annotable}},
