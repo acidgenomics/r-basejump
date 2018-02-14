@@ -40,10 +40,7 @@ dots <- function(..., character = FALSE) {
     names <- vapply(dots, as.character, character(1L))
 
     # Abort on duplicate detection
-    dupes <- names[which(setNames(duplicated(names), names))]
-    if (length(dupes) > 0L) {
-        abort(paste("Duplicate dots:", toString(dupes)))
-    }
+    assert_is_empty(names[which(setNames(duplicated(names), names))])
 
     if (isTRUE(character)) {
         names
