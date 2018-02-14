@@ -12,15 +12,16 @@
 \usage{
 plotQuantileHeatmap(object, ...)
 
-\S4method{plotHeatmap}{dgCMatrix}(object, scale = "row", annotationCol = NA,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
-  legendColor = viridis::viridis, title = NULL, ...)
+\S4method{plotHeatmap}{dgCMatrix}(object, scale = "row",
+  annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
+  color = viridis::viridis, legendColor = viridis::viridis, title = NULL,
+  ...)
 
 \S4method{plotQuantileHeatmap}{dgCMatrix}(object, n = 5L,
-  annotationCol = NA, clusterCols = TRUE, clusterRows = TRUE,
+  annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
   color = viridis::viridis, legendColor = viridis::viridis, title = NULL)
 
-\S4method{plotQuantileHeatmap}{matrix}(object, n = 5L, annotationCol = NA,
+\S4method{plotQuantileHeatmap}{matrix}(object, n = 5L, annotationCol = NULL,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
   legendColor = viridis::viridis, title = NULL)
 }

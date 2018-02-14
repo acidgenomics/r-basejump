@@ -9,7 +9,7 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NA,
+\S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NULL,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
   legendColor = viridis::viridis, title = NULL, ...)
 }
