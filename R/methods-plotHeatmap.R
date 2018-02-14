@@ -47,7 +47,7 @@ NULL
 .plotHeatmap <- function(
     object,
     scale = "row",
-    annotationCol = NA,
+    annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
     color = viridis::viridis,
@@ -81,6 +81,8 @@ NULL
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
+    } else {
+        annotationCol <- NA
     }
 
     # Define colors for each annotation column, if desired

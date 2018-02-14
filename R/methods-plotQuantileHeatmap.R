@@ -56,7 +56,7 @@ NULL
 .plotQuantileHeatmap <- function(
     object,
     n = 5L,
-    annotationCol = NA,
+    annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
     color = viridis::viridis,
@@ -86,6 +86,8 @@ NULL
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
+    } else {
+        annotationCol <- NA
     }
 
     # FIXME This code can also be generalized...
