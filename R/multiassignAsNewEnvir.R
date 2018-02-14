@@ -20,23 +20,24 @@ multiassignAsNewEnvir <- function(
     envirName,
     parentEnvir = parent.frame(),
     quiet = FALSE) {
-    if (!is_string(envirName)) {
-        abort("`envirName` must be a string")
-    }
-    if (!is.environment(parentEnvir)) {
-        abort("`parentEnvir` must be an environment")
-    }
     dots <- dots(...)
+    assert_is_list(dots)
     dotsNames <- dots(..., character = TRUE)
+    assert_is_character(dotsNames)
+    assert_is_a_string(envirName)
+    assert_is_environment(parentEnvir)
+
     envir <- new.env(parent = parentEnvir)
-    lapply(seq_along(dots), function(a) {
+    invisible(lapply(seq_along(dots), function(a) {
         assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
-    }) %>%
-        invisible()
+    }))
+
     if (!isTRUE(quiet)) {
         inform(paste("Assigning", toString(dotsNames), "as", envirName))
     }
+
     assign(envirName, value = envir, envir = parentEnvir)
+
     # Silently return a list of the objects in the new environment
     invisible(objects(envir))
 }

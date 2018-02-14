@@ -1,18 +1,3 @@
-#' S4 Generics
-#'
-#' @rdname AllGenerics
-#' @name AllGenerics
-#' @keywords internal
-#'
-#' @param object Object.
-#' @param x Primary object.
-#' @param y Secondary object.
-#' @param value Value to assign.
-#' @param ... *Additional arguments (for the S4 generic definition).*
-NULL
-
-
-
 #' @rdname aggregateFeatures
 #' @export
 setGeneric("aggregateFeatures", function(object, ...) {
@@ -77,17 +62,6 @@ setGeneric("detectOrganism", function(object, ...) {
 
 
 
-#' @rdname dots
-#' @export
-setGeneric(
-    "dots",
-    signature = "...",
-    function(..., character = FALSE) {
-    standardGeneric("dots")
-})
-
-
-
 #' @rdname dotted
 #' @export
 setGeneric("dotted", function(object, ...) {
@@ -139,13 +113,6 @@ setGeneric("gene2symbolFromGFF", function(object, ...) {
 #' @rdname geometricMean
 setGeneric("geometricMean", function(object, ...) {
     standardGeneric("geometricMean")
-})
-
-
-
-#' @rdname grepString
-setGeneric("grepString", function(object, ...) {
-    standardGeneric("grepString")
 })
 
 
@@ -206,14 +173,6 @@ setGeneric("plotQuantileHeatmap", function(object, ...) {
 
 
 
-#' @rdname readFileByExtension
-#' @export
-setGeneric("readFileByExtension", function(object, ...) {
-    standardGeneric("readFileByExtension")
-})
-
-
-
 #' @rdname readGFF
 #' @export
 setGeneric("readGFF", function(object, ...) {
@@ -246,34 +205,10 @@ setGeneric("snake", function(object, ...) {
 
 
 
-#' @rdname sortUnique
-#' @export
-setGeneric("sortUnique", function(object, ...) {
-    standardGeneric("sortUnique")
-})
-
-
-
 #' @rdname stripTranscriptVersions
 #' @export
 setGeneric("stripTranscriptVersions", function(object, ...) {
     standardGeneric("stripTranscriptVersions")
-})
-
-
-
-#' @rdname symbol2gene
-#' @export
-setGeneric("symbol2gene", function(object, ...) {
-    standardGeneric("symbol2gene")
-})
-
-
-
-#' @rdname toStringUnique
-#' @export
-setGeneric("toStringUnique", function(object, ...) {
-    standardGeneric("toStringUnique")
 })
 
 

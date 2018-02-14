@@ -4,10 +4,11 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(object, envir = parent.frame(), quiet = FALSE)
+loadRemoteData(url, envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
-\item{object}{Object.}
+\item{url}{Remote URL file path to R Data file. Supports multiple URLs
+passed in as a character vector.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
@@ -15,13 +16,17 @@ which will assign into the calling environment.}
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Silently return loaded object name.
+Silently return a character matrix containing URL and tempfile paths.
 }
 \description{
 Load a remote R binary file.
 }
 \examples{
-loadRemoteData("http://basejump.seq.cloud/mtcars.rda")
+objects <- loadRemoteData(c(
+    "http://basejump.seq.cloud/mtcars.rda",
+    "http://basejump.seq.cloud/starwars.rda"
+))
+objects
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{readFileByExtension}},

@@ -151,7 +151,7 @@
 <li>Added internal GRCh37 transcript to gene mapping.</li>
 <li>Improved organism matching to detect “Homo_sapiens” and “H. sapiens”.</li>
 <li>Factors are now supported in the makeNames utilities: <code>camel()</code>, <code>dotted()</code>, <code>snake()</code>, and <code><a href="../reference/camel.html">upperCamel()</a></code>.</li>
-<li>Improved handling of <code>NA</code> values from LibreOffice and Microsoft Excel output in <code>readFileByExtension()</code>.. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
+<li>Improved handling of <code>NA</code> values from LibreOffice and Microsoft Excel output in <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>.. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
 </ul>
 </div>
     <div id="basejump-0-1-7-2017-12-11" class="section level2">
@@ -174,20 +174,20 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-1-5-2017-12-05" class="anchor"></a>basejump 0.1.5 (2017-12-05)</h2>
 <ul>
-<li>Added <code><a href="../reference/checkAnnotable.html">checkAnnotable()</a></code>, <code><a href="../reference/checkGene2symbol.html">checkGene2symbol()</a></code>, <code><a href="../reference/checkTx2gene.html">checkTx2gene()</a></code>, and <code><a href="../reference/sanitizeAnnotable.html">sanitizeAnnotable()</a></code> utility functions that will be used in the bcbio R packages.</li>
+<li>Added <code><a href="../reference/deprecated.html">checkAnnotable()</a></code>, <code><a href="../reference/deprecated.html">checkGene2symbol()</a></code>, <code><a href="../reference/deprecated.html">checkTx2gene()</a></code>, and <code><a href="../reference/sanitizeAnnotable.html">sanitizeAnnotable()</a></code> utility functions that will be used in the bcbio R packages.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-4" class="section level2">
+    <div id="basejump-0-1-4-2017-12-04" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-4" class="anchor"></a>basejump 0.1.4</h2>
+<a href="#basejump-0-1-4-2017-12-04" class="anchor"></a>basejump 0.1.4 (2017-12-04)</h2>
 <ul>
 <li>Added <code><a href="../reference/midnightTheme.html">midnightTheme()</a></code> ggplot theme. Originally this was defined as <code>darkTheme()</code> in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_minimal()</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
 <li>Improve NAMESPACE imports to include <code><a href="http://www.rdocumentation.org/packages/stats/topics/formula">stats::formula()</a></code> and <code><a href="http://www.rdocumentation.org/packages/utils/topics/capture.output">utils::capture.output()</a></code>.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-3" class="section level2">
+    <div id="basejump-0-1-3-2017-12-01" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-3" class="anchor"></a>basejump 0.1.3</h2>
+<a href="#basejump-0-1-3-2017-12-01" class="anchor"></a>basejump 0.1.3 (2017-12-01)</h2>
 <ul>
 <li>
 <code><a href="../reference/loadData.html">loadData()</a></code> and <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
@@ -199,12 +199,12 @@
 <li>Updated <code>annotable()</code> function to include nested Entrez identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-2" class="section level2">
+    <div id="basejump-0-1-2-2017-11-30" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-2" class="anchor"></a>basejump 0.1.2</h2>
+<a href="#basejump-0-1-2-2017-11-30" class="anchor"></a>basejump 0.1.2 (2017-11-30)</h2>
 <ul>
 <li>Added bcbio <code>plotQC()</code> generic.</li>
-<li>Added back <code>toStringUnique()</code> code, which is still in use in the worminfo package.</li>
+<li>Added back <code><a href="../reference/toStringUnique.html">toStringUnique()</a></code> code, which is still in use in the worminfo package.</li>
 <li>Added deprecations for <code><a href="../reference/deprecated.html">summarizeRows()</a></code> (now <code>collapseToString()</code>) and <code><a href="../reference/deprecated.html">wash()</a></code> functions.</li>
 <li>Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.</li>
 <li>Now suggesting that the user installs suggested packages in the README.</li>
@@ -212,21 +212,21 @@
 <li>Bug fix for <code>detectOrganism()</code>. Now allowing <code>NULL</code> return for unsupported organism, with a warning.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-1" class="section level2">
+    <div id="basejump-0-1-1-2017-11-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-1" class="anchor"></a>basejump 0.1.1</h2>
+<a href="#basejump-0-1-1-2017-11-11" class="anchor"></a>basejump 0.1.1 (2017-11-11)</h2>
 <ul>
 <li>Added overwrite support for <code><a href="../reference/saveData.html">saveData()</a></code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
 <li>Bug fix for <code>readDataVersions()</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
 <li>Improved key value pair method for <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
-<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code>annotable()</code>, <code>gene2symbol()</code>, <code>symbol2gene()</code> and <code>tx2gene()</code> functions.</li>
+<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code>annotable()</code>, <code>gene2symbol()</code>, <code><a href="../reference/deprecated.html">symbol2gene()</a></code> and <code>tx2gene()</code> functions.</li>
 <li>Allow rowData to be left unset in <code>prepareSummarizedExperiment()</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata()</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
 </div>
-    <div id="basejump-0-1-0" class="section level2">
+    <div id="basejump-0-1-0-2017-10-23" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-1-0" class="anchor"></a>basejump 0.1.0</h2>
+<a href="#basejump-0-1-0-2017-10-23" class="anchor"></a>basejump 0.1.0 (2017-10-23)</h2>
 <ul>
 <li>Bump version to match bcbioRNASeq package.</li>
 <li>Improved unit testing coverage of <code>prepareSummarizedExperiment()</code>.</li>
@@ -242,17 +242,17 @@
 <li>Switched <code>str_()</code> to base <code>grep()</code> and <code>gsub()</code> in internal functions.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-25" class="section level2">
+    <div id="basejump-0-0-25-2017-10-13" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-25" class="anchor"></a>basejump 0.0.25</h2>
+<a href="#basejump-0-0-25-2017-10-13" class="anchor"></a>basejump 0.0.25 (2017-10-13)</h2>
 <ul>
 <li>Improved consistency of <code>setMethod()</code> calls using <code>signature()</code>.</li>
 <li>Converted <code><a href="../reference/loadRemoteData.html">loadRemoteData()</a></code> to a standard function instead of using S4 dispatch, allowing the <code>envir</code> argument to be set properly.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-24" class="section level2">
+    <div id="basejump-0-0-24-2017-10-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-24" class="anchor"></a>basejump 0.0.24</h2>
+<a href="#basejump-0-0-24-2017-10-10" class="anchor"></a>basejump 0.0.24 (2017-10-10)</h2>
 <ul>
 <li>Added additional package version requirements in <code>DESCRIPTION</code> file.</li>
 <li>Implicit integers are allowed.</li>
@@ -283,25 +283,25 @@
 <li>Renamed <code>collapse()</code> function to <code>collapseToString()</code>, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).</li>
 </ul>
 </div>
-    <div id="basejump-0-0-23" class="section level2">
+    <div id="basejump-0-0-23-2017-09-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-23" class="anchor"></a>basejump 0.0.23</h2>
+<a href="#basejump-0-0-23-2017-09-14" class="anchor"></a>basejump 0.0.23 (2017-09-14)</h2>
 <ul>
 <li>Upgraded <code>annotable()</code> function to query Ensembl using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-22" class="section level2">
+    <div id="basejump-0-0-22-2017-09-08" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-22" class="anchor"></a>basejump 0.0.22</h2>
+<a href="#basejump-0-0-22-2017-09-08" class="anchor"></a>basejump 0.0.22 (2017-09-08)</h2>
 <ul>
 <li>Improved unit testing coverage.</li>
 <li>Renamed <code><a href="../reference/deprecated.html">prepareSE()</a></code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
 <li>Reworked and simplified <code><a href="../reference/detectHPC.html">detectHPC()</a></code> function to allow for unit testing.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-21" class="section level2">
+    <div id="basejump-0-0-21-2017-09-01" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-21" class="anchor"></a>basejump 0.0.21</h2>
+<a href="#basejump-0-0-21-2017-09-01" class="anchor"></a>basejump 0.0.21 (2017-09-01)</h2>
 <ul>
 <li>NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.</li>
 <li>Improved code coverage and unit testing with additional <a href="https://github.com/hadley/testthat">testthat</a> checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.</li>
@@ -314,12 +314,12 @@
 <li>Added additional <code>data-raw/</code> scripts.</li>
 <li>Added <code>onLoad.R</code> script back to ensure proper attachment of <a href="https://github.com/stephenturner/annotables">annotables</a> data package.</li>
 <li>Removed <a href="http://www.tidyverse.org">tidyverse</a> S4 method support.</li>
-<li>Improved remote file handling for <code>readFileByExtension()</code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code>readYAML()</code> functions.</li>
+<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code>readYAML()</code> functions.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-20" class="section level2">
+    <div id="basejump-0-0-20-2017-08-16" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-20" class="anchor"></a>basejump 0.0.20</h2>
+<a href="#basejump-0-0-20-2017-08-16" class="anchor"></a>basejump 0.0.20 (2017-08-16)</h2>
 <ul>
 <li>Offloaded <a href="https://github.com/hadley/devtools">devtools</a> functions to personal package.</li>
 <li>Upgraded all functions to S4 functions where possible.</li>
@@ -329,24 +329,24 @@
 <li>Added unit testing for <a href="https://github.com/stephenturner/annotables">annotables</a> functions.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-19" class="section level2">
+    <div id="basejump-0-0-19-2017-07-24" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-19" class="anchor"></a>basejump 0.0.19</h2>
+<a href="#basejump-0-0-19-2017-07-24" class="anchor"></a>basejump 0.0.19 (2017-07-24)</h2>
 <ul>
 <li>Improved documentation and consistency with <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> packages.</li>
 <li>Improved integration of gene annotation calls using <a href="https://github.com/stephenturner/annotables">annotables</a> package.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-18" class="section level2">
+    <div id="basejump-0-0-18-2017-07-24" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-18" class="anchor"></a>basejump 0.0.18</h2>
+<a href="#basejump-0-0-18-2017-07-24" class="anchor"></a>basejump 0.0.18 (2017-07-24)</h2>
 <ul>
 <li>Initial support for <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> creation with <code><a href="../reference/deprecated.html">packageSE()</a></code>.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-17" class="section level2">
+    <div id="basejump-0-0-17-2017-07-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-17" class="anchor"></a>basejump 0.0.17</h2>
+<a href="#basejump-0-0-17-2017-07-11" class="anchor"></a>basejump 0.0.17 (2017-07-11)</h2>
 <ul>
 <li>Added <a href="https://github.com/stephenturner/annotables">annotables</a> common code from bcbio packages.</li>
 <li>Added automatic file reading using <a href="http://readr.tidyverse.org">readr</a> package.</li>
@@ -354,120 +354,120 @@
 <li>Initial commit of <code>assign_data()</code> for use in <a href="http://bioinformatics.sph.harvard.edu/bcbioSingleCell">bcbioSingleCell</a> sample loops.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-16" class="section level2">
+    <div id="basejump-0-0-16-2017-06-28" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-16" class="anchor"></a>basejump 0.0.16</h2>
+<a href="#basejump-0-0-16-2017-06-28" class="anchor"></a>basejump 0.0.16 (2017-06-28)</h2>
 <ul>
 <li>Minor NAMESPACE updates while working on <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> packages.</li>
 <li>Tweaks for <a href="http://www.tidyverse.org">tidyverse</a> S4 generic verbs. In particular, <code>as_tibble()</code> now provides better consistency for rowname conversion.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-15" class="section level2">
+    <div id="basejump-0-0-15-2017-06-18" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-15" class="anchor"></a>basejump 0.0.15</h2>
+<a href="#basejump-0-0-15-2017-06-18" class="anchor"></a>basejump 0.0.15 (2017-06-18)</h2>
 <ul>
 <li>Added <a href="https://github.com/hadley/testthat">testthat</a> support for <a href="https://github.com/jimhester/lintr">lintr</a> checks.</li>
 <li>Added S4 generic for <code>as_tibble()</code>.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-14" class="section level2">
+    <div id="basejump-0-0-14-2017-06-13" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-14" class="anchor"></a>basejump 0.0.14</h2>
+<a href="#basejump-0-0-14-2017-06-13" class="anchor"></a>basejump 0.0.14 (2017-06-13)</h2>
 <ul>
 <li>
 <a href="http://dplyr.tidyverse.org">dplyr</a> 0.7 NAMESPACE fixes and function tweaks.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-13" class="section level2">
+    <div id="basejump-0-0-13-2017-06-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-13" class="anchor"></a>basejump 0.0.13</h2>
+<a href="#basejump-0-0-13-2017-06-12" class="anchor"></a>basejump 0.0.13 (2017-06-12)</h2>
 <ul>
 <li>setMethod on tidyverse NAMESPACE collisons (<a href="http://dplyr.tidyverse.org">dplyr</a>, <a href="http://tidyr.tidyverse.org">tidyr</a>) using `signature(“data.frame”).</li>
 </ul>
 </div>
-    <div id="basejump-0-0-12" class="section level2">
+    <div id="basejump-0-0-12-2017-05-25" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-12" class="anchor"></a>basejump 0.0.12</h2>
+<a href="#basejump-0-0-12-2017-05-25" class="anchor"></a>basejump 0.0.12 (2017-05-25)</h2>
 <ul>
 <li>Updated exports based on <a href="http://steinbaugh.com/worminfo">worminfo</a> package.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-11" class="section level2">
+    <div id="basejump-0-0-11-2017-05-18" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-11" class="anchor"></a>basejump 0.0.11</h2>
+<a href="#basejump-0-0-11-2017-05-18" class="anchor"></a>basejump 0.0.11 (2017-05-18)</h2>
 <ul>
 <li>Improved naming functions to dynamically handle character vectors and objects that support naming assignments.</li>
 <li>Added <code>removeNA()</code> utility function.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-10" class="section level2">
+    <div id="basejump-0-0-10-2017-05-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-10" class="anchor"></a>basejump 0.0.10</h2>
+<a href="#basejump-0-0-10-2017-05-14" class="anchor"></a>basejump 0.0.10 (2017-05-14)</h2>
 <ul>
 <li>Added NAMESPACE utilities to deal with <a href="http://www.tidyverse.org">tidyverse</a> generic verbs.</li>
 <li>Switched package documentation method to use <a href="https://github.com/klutometis/roxygen">roxygen</a> with pkgapi.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-9" class="section level2">
+    <div id="basejump-0-0-9-2017-05-13" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-9" class="anchor"></a>basejump 0.0.9</h2>
+<a href="#basejump-0-0-9-2017-05-13" class="anchor"></a>basejump 0.0.9 (2017-05-13)</h2>
 <ul>
 <li>Added snake_case function variants.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-8" class="section level2">
+    <div id="basejump-0-0-8-2017-05-13" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-8" class="anchor"></a>basejump 0.0.8</h2>
+<a href="#basejump-0-0-8-2017-05-13" class="anchor"></a>basejump 0.0.8 (2017-05-13)</h2>
 <ul>
 <li>Added back <code><a href="../reference/saveData.html">saveData()</a></code> utility functions.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-7" class="section level2">
+    <div id="basejump-0-0-7-2017-0422" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-7" class="anchor"></a>basejump 0.0.7</h2>
+<a href="#basejump-0-0-7-2017-0422" class="anchor"></a>basejump 0.0.7 (2017-0422)</h2>
 <ul>
 <li>Bug fixes for <a href="http://dplyr.tidyverse.org">dplyr</a> 0.6.0 update and improved kable handling.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-6" class="section level2">
+    <div id="basejump-0-0-6-2017-04-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-6" class="anchor"></a>basejump 0.0.6</h2>
+<a href="#basejump-0-0-6-2017-04-14" class="anchor"></a>basejump 0.0.6 (2017-04-14)</h2>
 <ul>
 <li>Dependency fix for successful compilation on the <a href="https://rc.hms.harvard.edu">HMS RC</a> Orchestra cluster.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-5" class="section level2">
+    <div id="basejump-0-0-5-2017-04-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-5" class="anchor"></a>basejump 0.0.5</h2>
+<a href="#basejump-0-0-5-2017-04-12" class="anchor"></a>basejump 0.0.5 (2017-04-12)</h2>
 <ul>
 <li>Consolidated functions in the documentation.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-4" class="section level2">
+    <div id="basejump-0-0-4-2017-04-07" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-4" class="anchor"></a>basejump 0.0.4</h2>
+<a href="#basejump-0-0-4-2017-04-07" class="anchor"></a>basejump 0.0.4 (2017-04-07)</h2>
 <ul>
 <li>Improved documentation.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-3" class="section level2">
+    <div id="basejump-0-0-3-2017-03-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-3" class="anchor"></a>basejump 0.0.3</h2>
+<a href="#basejump-0-0-3-2017-03-22" class="anchor"></a>basejump 0.0.3 (2017-03-22)</h2>
 <ul>
 <li>Removed dependencies and transfer functions to <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a>.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-2" class="section level2">
+    <div id="basejump-0-0-2-2017-03-22" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-2" class="anchor"></a>basejump 0.0.2</h2>
+<a href="#basejump-0-0-2-2017-03-22" class="anchor"></a>basejump 0.0.2 (2017-03-22)</h2>
 <ul>
 <li>Added <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> data import functions.</li>
 <li>Added <a href="http://ggplot2.tidyverse.org">ggplot2</a> wrapper functions for quality control.</li>
 </ul>
 </div>
-    <div id="basejump-0-0-1" class="section level2">
+    <div id="basejump-0-0-1-2017-03-17" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-0-1" class="anchor"></a>basejump 0.0.1</h2>
+<a href="#basejump-0-0-1-2017-03-17" class="anchor"></a>basejump 0.0.1 (2017-03-17)</h2>
 <ul>
 <li>Initial draft release.</li>
 </ul>
@@ -487,36 +487,36 @@
         <li><a href="#basejump-0-1-7-2017-12-11">0.1.7</a></li>
         <li><a href="#basejump-0-1-6-2017-12-06">0.1.6</a></li>
         <li><a href="#basejump-0-1-5-2017-12-05">0.1.5</a></li>
-        <li><a href="#basejump-0-1-4">0.1.4</a></li>
-        <li><a href="#basejump-0-1-3">0.1.3</a></li>
-        <li><a href="#basejump-0-1-2">0.1.2</a></li>
-        <li><a href="#basejump-0-1-1">0.1.1</a></li>
-        <li><a href="#basejump-0-1-0">0.1.0</a></li>
-        <li><a href="#basejump-0-0-25">0.0.25</a></li>
-        <li><a href="#basejump-0-0-24">0.0.24</a></li>
-        <li><a href="#basejump-0-0-23">0.0.23</a></li>
-        <li><a href="#basejump-0-0-22">0.0.22</a></li>
-        <li><a href="#basejump-0-0-21">0.0.21</a></li>
-        <li><a href="#basejump-0-0-20">0.0.20</a></li>
-        <li><a href="#basejump-0-0-19">0.0.19</a></li>
-        <li><a href="#basejump-0-0-18">0.0.18</a></li>
-        <li><a href="#basejump-0-0-17">0.0.17</a></li>
-        <li><a href="#basejump-0-0-16">0.0.16</a></li>
-        <li><a href="#basejump-0-0-15">0.0.15</a></li>
-        <li><a href="#basejump-0-0-14">0.0.14</a></li>
-        <li><a href="#basejump-0-0-13">0.0.13</a></li>
-        <li><a href="#basejump-0-0-12">0.0.12</a></li>
-        <li><a href="#basejump-0-0-11">0.0.11</a></li>
-        <li><a href="#basejump-0-0-10">0.0.10</a></li>
-        <li><a href="#basejump-0-0-9">0.0.9</a></li>
-        <li><a href="#basejump-0-0-8">0.0.8</a></li>
-        <li><a href="#basejump-0-0-7">0.0.7</a></li>
-        <li><a href="#basejump-0-0-6">0.0.6</a></li>
-        <li><a href="#basejump-0-0-5">0.0.5</a></li>
-        <li><a href="#basejump-0-0-4">0.0.4</a></li>
-        <li><a href="#basejump-0-0-3">0.0.3</a></li>
-        <li><a href="#basejump-0-0-2">0.0.2</a></li>
-        <li><a href="#basejump-0-0-1">0.0.1</a></li>
+        <li><a href="#basejump-0-1-4-2017-12-04">0.1.4</a></li>
+        <li><a href="#basejump-0-1-3-2017-12-01">0.1.3</a></li>
+        <li><a href="#basejump-0-1-2-2017-11-30">0.1.2</a></li>
+        <li><a href="#basejump-0-1-1-2017-11-11">0.1.1</a></li>
+        <li><a href="#basejump-0-1-0-2017-10-23">0.1.0</a></li>
+        <li><a href="#basejump-0-0-25-2017-10-13">0.0.25</a></li>
+        <li><a href="#basejump-0-0-24-2017-10-10">0.0.24</a></li>
+        <li><a href="#basejump-0-0-23-2017-09-14">0.0.23</a></li>
+        <li><a href="#basejump-0-0-22-2017-09-08">0.0.22</a></li>
+        <li><a href="#basejump-0-0-21-2017-09-01">0.0.21</a></li>
+        <li><a href="#basejump-0-0-20-2017-08-16">0.0.20</a></li>
+        <li><a href="#basejump-0-0-19-2017-07-24">0.0.19</a></li>
+        <li><a href="#basejump-0-0-18-2017-07-24">0.0.18</a></li>
+        <li><a href="#basejump-0-0-17-2017-07-11">0.0.17</a></li>
+        <li><a href="#basejump-0-0-16-2017-06-28">0.0.16</a></li>
+        <li><a href="#basejump-0-0-15-2017-06-18">0.0.15</a></li>
+        <li><a href="#basejump-0-0-14-2017-06-13">0.0.14</a></li>
+        <li><a href="#basejump-0-0-13-2017-06-12">0.0.13</a></li>
+        <li><a href="#basejump-0-0-12-2017-05-25">0.0.12</a></li>
+        <li><a href="#basejump-0-0-11-2017-05-18">0.0.11</a></li>
+        <li><a href="#basejump-0-0-10-2017-05-14">0.0.10</a></li>
+        <li><a href="#basejump-0-0-9-2017-05-13">0.0.9</a></li>
+        <li><a href="#basejump-0-0-8-2017-05-13">0.0.8</a></li>
+        <li><a href="#basejump-0-0-7-2017-0422">0.0.7</a></li>
+        <li><a href="#basejump-0-0-6-2017-04-14">0.0.6</a></li>
+        <li><a href="#basejump-0-0-5-2017-04-12">0.0.5</a></li>
+        <li><a href="#basejump-0-0-4-2017-04-07">0.0.4</a></li>
+        <li><a href="#basejump-0-0-3-2017-03-22">0.0.3</a></li>
+        <li><a href="#basejump-0-0-2-2017-03-22">0.0.2</a></li>
+        <li><a href="#basejump-0-0-1-2017-03-17">0.0.1</a></li>
       </ul>
     </div>
   </div>

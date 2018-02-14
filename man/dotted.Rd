@@ -10,25 +10,31 @@
 \alias{dotted,DataFrame-method}
 \alias{dotted,factor-method}
 \alias{dotted,list-method}
+\alias{dotted,List-method}
 \alias{dotted,matrix-method}
+\alias{dotted,SimpleList-method}
 \alias{dotted,tbl_df-method}
 \title{Dotted Case}
 \usage{
 dotted(object, ...)
 
-\S4method{dotted}{ANY}(object, rownames = FALSE)
+\S4method{dotted}{ANY}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{character}(object)
 
-\S4method{dotted}{data.frame}(object, rownames = FALSE)
+\S4method{dotted}{data.frame}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{dotted}{DataFrame}(object, rownames = FALSE)
+\S4method{dotted}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{factor}(object)
 
 \S4method{dotted}{list}(object)
 
-\S4method{dotted}{matrix}(object, rownames = FALSE)
+\S4method{dotted}{List}(object)
+
+\S4method{dotted}{matrix}(object, rownames = FALSE, colnames = TRUE)
+
+\S4method{dotted}{SimpleList}(object)
 
 \S4method{dotted}{tbl_df}(object)
 }
@@ -36,11 +42,14 @@ dotted(object, ...)
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
 will be meaningful.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{colnames}{Apply sanitization on column names. This is generally
+recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
@@ -83,8 +92,8 @@ dotted(factor)
 # data.frame
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
-dotted(dataFrame, rownames = FALSE)
 dotted(dataFrame, rownames = TRUE)
+dotted(dataFrame, rownames = FALSE)
 
 # Named list
 list <- makeNames$list

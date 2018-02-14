@@ -12,7 +12,9 @@
 \alias{camel,DataFrame-method}
 \alias{camel,factor-method}
 \alias{camel,list-method}
+\alias{camel,List-method}
 \alias{camel,matrix-method}
+\alias{camel,SimpleList-method}
 \alias{camel,tbl_df-method}
 \alias{upperCamel,ANY-method}
 \alias{upperCamel,character-method}
@@ -20,7 +22,9 @@
 \alias{upperCamel,DataFrame-method}
 \alias{upperCamel,factor-method}
 \alias{upperCamel,list-method}
+\alias{upperCamel,List-method}
 \alias{upperCamel,matrix-method}
+\alias{upperCamel,SimpleList-method}
 \alias{upperCamel,tbl_df-method}
 \title{Camel Case}
 \usage{
@@ -28,35 +32,51 @@ camel(object, ...)
 
 upperCamel(object, ...)
 
-\S4method{camel}{ANY}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
-\S4method{camel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
-\S4method{camel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{factor}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
-\S4method{camel}{matrix}(object, rownames = FALSE, strict = FALSE)
+\S4method{camel}{List}(object, strict = FALSE)
+
+\S4method{camel}{matrix}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
+
+\S4method{camel}{SimpleList}(object, strict = FALSE)
 
 \S4method{camel}{tbl_df}(object, strict = FALSE)
 
-\S4method{upperCamel}{ANY}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{upperCamel}{character}(object, strict = FALSE)
 
-\S4method{upperCamel}{data.frame}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
-\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{upperCamel}{factor}(object, strict = FALSE)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
-\S4method{upperCamel}{matrix}(object, rownames = FALSE, strict = FALSE)
+\S4method{upperCamel}{List}(object, strict = FALSE)
+
+\S4method{upperCamel}{matrix}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
+
+\S4method{upperCamel}{SimpleList}(object, strict = FALSE)
 
 \S4method{upperCamel}{tbl_df}(object, strict = FALSE)
 }
@@ -64,11 +84,14 @@ upperCamel(object, ...)
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
 will be meaningful.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{colnames}{Apply sanitization on column names. This is generally
+recommended by default.}
 
 \item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
 allow the return of any capitalized acronyms. "RNA" will become "Rna", for
@@ -112,8 +135,8 @@ upperCamel(factor)
 # data.frame
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
-camel(dataFrame, rownames = FALSE)
 camel(dataFrame, rownames = TRUE)
+camel(dataFrame, rownames = FALSE)
 
 # Named list
 list <- makeNames$list

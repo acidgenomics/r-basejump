@@ -1,6 +1,6 @@
 context("dots")
 
-test_that("dots", {
+test_that("Dots", {
     expect_identical(
         dots(mtcars, starwars),
         list(rlang::sym("mtcars"),
@@ -12,14 +12,10 @@ test_that("dots", {
     )
     expect_error(
         dots(mtcars, mtcars),
-        "Duplicate dots: mtcars"
-    )
-    expect_error(
-        dots(mtcars, mtcars, character = TRUE),
-        "Duplicate dots: mtcars"
+        "has_no_duplicates"
     )
     expect_error(
         dots(),
-        "No dots to return"
+        "is_non_empty"
     )
 })

@@ -6,11 +6,11 @@ test_that("bcbio project summary", {
         "bcbio",
         "project-summary.yaml")
     yaml <- readYAML(url, quiet = TRUE)
-    expect_equal(
+    expect_identical(
         class(yaml),
         "list"
     )
-    expect_equal(
+    expect_identical(
         names(yaml),
         c("date", "upload", "bcbio_system", "samples")
     )
@@ -37,18 +37,13 @@ test_that("`.yml` file support", {
 test_that("Unsupported file type", {
     expect_error(
         readYAML("http://basejump.seq.cloud/mtcars.csv", quiet = TRUE),
-        "YAML file must contain `.yaml` or `.yml` extension"
+        "is_matching_regex : object"
     )
 })
 
-# Warn and return `NULL` on missing file
 test_that("Missing file", {
-    yaml <- suppressWarnings(
-        readYAML("foobar.yaml", quiet = TRUE)
+    expect_error(
+        readYAML("foobar.yaml"),
+        "is_existing_file"
     )
-    expect_warning(
-        readYAML("foobar.yaml", quiet = TRUE),
-        "foobar.yaml file missing"
-    )
-    expect_equal(yaml, NULL)
 })

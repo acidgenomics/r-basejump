@@ -4,7 +4,7 @@ load(system.file(
     file.path("extdata", "makeNames.rda"),
     package = "basejump"))
 
-test_that("character", {
+test_that("Character", {
     expect_identical(
         upperCamel(makeNames[["character"]], strict = FALSE),
         c("HelloWorld",
@@ -50,7 +50,7 @@ test_that("Delimited numbers", {
     )
 })
 
-test_that("named character", {
+test_that("Named character", {
     expect_identical(
         upperCamel(makeNames[["namedCharacter"]], strict = TRUE),
         c("ItemA" = "HelloWorld",
@@ -58,7 +58,7 @@ test_that("named character", {
     )
 })
 
-test_that("data.frame", {
+test_that("Data frame", {
     # Sanitize rownames
     expect_identical(
         upperCamel(makeNames[["dataFrame"]],
@@ -90,7 +90,7 @@ test_that("Counts matrix", {
     )
 })
 
-test_that("matrix rownames", {
+test_that("Matrix rownames", {
     # Sanitize rownames
     expect_identical(
         upperCamel(makeNames[["matrix"]],
@@ -109,7 +109,7 @@ test_that("matrix rownames", {
     )
 })
 
-test_that("tibble", {
+test_that("Tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -119,7 +119,7 @@ test_that("tibble", {
     )
 })
 
-test_that("named list", {
+test_that("Named list", {
     expect_identical(
         upperCamel(makeNames[["list"]], strict = TRUE),
         list("ItemA" = c(1L, 2L),
@@ -127,7 +127,7 @@ test_that("named list", {
     )
 })
 
-test_that("missing", {
+test_that("Missing", {
     expect_error(
         upperCamel(),
         "argument \"object\" is missing, with no default"

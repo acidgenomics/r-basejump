@@ -6,7 +6,9 @@
 \alias{foldChangeToLogRatio}
 \alias{logRatioToFoldChange}
 \alias{logRatio}
+\alias{foldChangeToLogRatio,integer-method}
 \alias{foldChangeToLogRatio,numeric-method}
+\alias{logRatioToFoldChange,integer-method}
 \alias{logRatioToFoldChange,numeric-method}
 \title{Interconvert Log Ratio and Fold Change Values}
 \usage{
@@ -14,14 +16,18 @@ foldChangeToLogRatio(object, ...)
 
 logRatioToFoldChange(object, ...)
 
+\S4method{foldChangeToLogRatio}{integer}(object, base = 2L)
+
 \S4method{foldChangeToLogRatio}{numeric}(object, base = 2L)
+
+\S4method{logRatioToFoldChange}{integer}(object, base = 2L)
 
 \S4method{logRatioToFoldChange}{numeric}(object, base = 2L)
 }
 \arguments{
 \item{object}{Numeric of log ratio or fold change values.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{base}{Logarithm base. Defaults to \code{2}, for compatibility with RNA-Seq
 differential expression output.}

@@ -4,7 +4,7 @@
 #' @name gene2symbol
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams annotable
 #'
 #' @return [data.frame].
@@ -15,23 +15,30 @@ NULL
 
 
 
+# Constructors =================================================================
+.gene2symbol <- function(
+    object,
+    genomeBuild = NULL,
+    release = NULL,
+    uniqueSymbol = FALSE,
+    quiet = FALSE) {
+    # Passthrough: genomeBuild, release, uniqueSymbol, quiet
+    assert_is_a_string(object)
+    annotable(
+        object,
+        format = "gene2symbol",
+        genomeBuild = genomeBuild,
+        release = release,
+        uniqueSymbol = uniqueSymbol,
+        quiet = quiet)
+}
+
+
+
 # Methods ======================================================================
 #' @rdname gene2symbol
 #' @export
 setMethod(
     "gene2symbol",
     signature("character"),
-    function(
-        object,
-        genomeBuild = NULL,
-        release = NULL,
-        uniqueSymbol = FALSE,
-        quiet = FALSE) {
-        annotable(
-            object,
-            format = "gene2symbol",
-            genomeBuild = genomeBuild,
-            release = release,
-            uniqueSymbol = uniqueSymbol,
-            quiet = quiet)
-    })
+    .gene2symbol)

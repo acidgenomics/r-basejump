@@ -7,7 +7,7 @@
 #' @name geometricMean
 #' @family Math Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param removeNA Remove `NA` values from calculations.
 #' @param zeroPropagate Allow propagation of zeroes.
@@ -44,6 +44,9 @@ NULL
 
 # Constructors =================================================================
 .geometricMean <- function(object, removeNA = TRUE, zeroPropagate = FALSE) {
+    assert_is_a_bool(removeNA)
+    assert_is_a_bool(zeroPropagate)
+
     # Check for any negative numbers and return `NaN`
     if (any(object < 0L, na.rm = TRUE)) {
         return(NaN)
@@ -60,16 +63,9 @@ NULL
 
 
 
-.geometricMeanDim <- function(object) {
-    # Require that all columns are numeric (useful for data.frame)
-    numericCol <- vapply(object, is.numeric, FUN.VALUE = logical(1L))
-    if (!all(numericCol)) {
-        # Return which columns aren't numeric
-        nonnumericCol <- colnames(object)[!numericCol]
-        abort(paste(
-            "Non-numeric columns:", toString(nonnumericCol)
-        ))
-    }
+.geometricMean.dim <- function(object) {  # nolint
+    assert_has_dimnames(object)
+    invisible(lapply(object, assert_is_numeric))
     object %>%
         as.matrix() %>%
         # `2L` here denotes columnwise calculation
@@ -84,7 +80,7 @@ NULL
 setMethod(
     "geometricMean",
     signature("data.frame"),
-    .geometricMeanDim)
+    .geometricMean.dim)
 
 
 
@@ -102,7 +98,7 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("matrix"),
-    .geometricMeanDim)
+    .geometricMean.dim)
 
 
 
@@ -112,3 +108,13 @@ setMethod(
     "geometricMean",
     signature("numeric"),
     .geometricMean)
+
+
+
+# Aliases ======================================================================
+#' @rdname geometricMean
+#' @inheritParams general
+#' @export
+geomean <- function(...) {
+    geometricMean(...)
+}

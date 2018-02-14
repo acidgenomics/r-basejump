@@ -4,7 +4,7 @@
 #' @name plotQuantileHeatmap
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #' @inheritParams plotHeatmap
 #'
 #' @param n The number of breaks to create.
@@ -31,8 +31,12 @@ NULL
 #' @param n The number of breaks to create.
 #'
 #' @return A vector of `n` quantile breaks.
-.quantileBreaks <- function(x, n = 5L) {
-    q <- quantile(x, probs = seq(0L, 1L, length.out = n))
+.quantileBreaks <- function(object, n = 5L) {
+    assert_is_matrix(object)
+    assert_is_integer(n)
+    assert_is_scalar(n)
+    assert_all_are_positive(n)
+    q <- quantile(object, probs = seq(0L, 1L, length.out = n))
     q[!duplicated(q)]
 }
 
@@ -58,31 +62,33 @@ NULL
     color = viridis::viridis,
     legendColor = viridis::viridis,
     title = NULL) {
+    # Passthrough: n
+    assert_has_dims(object)
+    assert_all_are_greater_than(nrow(object), 1L)
+    assert_all_are_greater_than(ncol(object), 1L)
     object <- as.matrix(object)
-
-    if (nrow(object) < 2L) {
-        abort("Need at least 2 rows to plot heatmap")
-    }
-    if (ncol(object) < 2L) {
-        abort("Need at least 2 columns to plot heatmap")
-    }
+    assert_formal_annotation_col(object, annotationCol)
+    assert_is_a_bool(clusterCols)
+    assert_is_a_bool(clusterRows)
+    assert_formal_color_function(color)
+    assert_formal_color_function(legendColor)
+    assert_is_a_string_or_null(title)
 
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
 
+    # FIXME This code is shared with `plotHeatmap()`...generalize
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
-    if (!is.null(dim(annotationCol))) {
+    if (is.data.frame(annotationCol)) {
         annotationCol <- annotationCol %>%
-            as.data.frame() %>%
             .[colnames(object), , drop = FALSE] %>%
             rownames_to_column() %>%
             mutate_all(factor) %>%
             column_to_rownames()
-    } else {
-        annotationCol <- NA
     }
 
+    # FIXME This code can also be generalized...
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(

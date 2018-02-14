@@ -15,37 +15,52 @@
 \usage{
 convertGenesToSymbols(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{data.frame}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
+  genomeBuild = NULL, organism = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{DataFrame}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
+  genomeBuild = NULL, organism = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
+  genomeBuild = NULL, organism = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
+  genomeBuild = NULL, organism = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{matrix}(object, organism, release,
-  quiet = FALSE)
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
+  genomeBuild = NULL, organism = NULL, release = NULL,
+  uniqueSymbol = FALSE, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
-\item{organism}{\emph{Optional}. Organism name. Normally this argument is
+\item{gene2symbol}{\emph{Optional.} Gene-to-symbol mappings. If \code{NULL}, will
+attempt to download from Ensembl using the desired \code{organism},
+\code{genomeBuild}, and \code{release} arguments.}
+
+\item{organism}{\emph{Optional.} Organism name. Normally this argument is
 unnecessary and can be left unset. If a count matrix starts with a
 FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
+supported.}
+
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
+
+\item{uniqueSymbol}{Make gene symbols unique.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
@@ -80,6 +95,6 @@ Other Gene Annotation Utilities: \code{\link{annotable}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

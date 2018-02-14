@@ -1,6 +1,6 @@
 context("convertGenesToSymbols")
 
-test_that("character", {
+test_that("Character", {
     g2s <- convertGenesToSymbols(
         c("ENSMUSG00000000001",
           "ENSMUSG00000000003"),
@@ -13,7 +13,7 @@ test_that("character", {
     )
 })
 
-test_that("matrix", {
+test_that("Matrix", {
     mat <- matrix(
         data = seq(1L:4L),
         byrow = TRUE,
@@ -48,54 +48,39 @@ test_that("FASTA spike-in support", {
         c(EGFP = "EGFP",
           ENSMUSG00000000001 = "Gnai3")
     )
-
     expect_warning(
         convertGenesToSymbols(
             vec,
             organism = "Mus musculus",
             release = 88L,
             quiet = TRUE),
-        "Failed to match all gene IDs to symbols: EGFP"
-    )
-
-    expect_warning(
-        convertGenesToSymbols(vec),
-        "Failed to detect supported organism"
-    )
-    expect_warning(
-        convertGenesToSymbols(vec),
-        "Returning unmodified gene identifiers"
-    )
-    expect_identical(
-        suppressWarnings(convertGenesToSymbols(vec)),
-        c(EGFP = "EGFP",
-          ENSMUSG00000000001 = "ENSMUSG00000000001")
+        "Failed to match all genes to symbols: EGFP"
     )
 })
 
-test_that("invalid identifiers", {
+test_that("Invalid identifiers", {
     expect_warning(
         convertGenesToSymbols(
             c("ENSMUSG00000000000",
               "ENSMUSG00000000001"),
             release = 88L,
             quiet = TRUE),
-        "Failed to match all gene IDs to symbols"
+        "Failed to match all genes to symbols: ENSMUSG00000000000"
     )
-    expect_warning(
+    expect_error(
         convertGenesToSymbols(
             c("ENSMUSG00000000001",
               "ENSMUSG00000000001"),
             release = 88L,
             quiet = TRUE),
-        "Duplicate gene identifiers detected"
+        "has_no_duplicates"
     )
     expect_error(
         convertGenesToSymbols(c("ENSMUSG00000000001", NA)),
-        "NA identifier detected"
+        "is_non_missing_nor_empty_character"
     )
     expect_error(
         convertGenesToSymbols(c("ENSMUSG00000000001", "")),
-        "Empty string identifier detected"
+        "is_non_missing_nor_empty_character"
     )
 })

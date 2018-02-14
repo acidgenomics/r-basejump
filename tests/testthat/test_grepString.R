@@ -1,7 +1,7 @@
 context("grepString")
 
 test_that("grepString", {
-    expect_equal(
+    expect_identical(
         grepString("gene"),
         "^gene$|^gene,|\\sgene,|\\sgene$"
     )

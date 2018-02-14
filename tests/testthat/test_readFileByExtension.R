@@ -1,54 +1,53 @@
 context("readFileByExtension")
 
-test_that("readFileByExtension", {
-    # Comma separated value (.csv) file
+test_that("Comma separated value (.csv) file", {
     csv <- readFileByExtension(
         "http://basejump.seq.cloud/mtcars.csv",
         quiet = TRUE)
-    expect_true(tibble::is_tibble(csv))
+    expect_is(csv, "tbl_df")
+})
 
-    # MatrixMarket (.mtx) file
+test_that("MatrixMarket (.mtx) file", {
     sparse <- readFileByExtension(
         "http://basejump.seq.cloud/sparse.mtx",
         quiet = TRUE)
-    expect_true(is(sparse, "ngTMatrix"))
+    expect_is(sparse, "ngTMatrix")
 
-    # MatrixMarket support file (.colnames)
     colnames <- readFileByExtension(
         "http://basejump.seq.cloud/test.colnames",
         quiet = TRUE)
-    expect_equal(
-        colnames,
-        c("foo", "bar")
-    )
+    expect_identical(colnames, c("foo", "bar"))
+    # rownames use the same code base as colnames
+})
 
-    # Tab separated values (.tsv) file
+test_that("Tab separated values (.tsv) file", {
     tsv <- readFileByExtension(
         "http://basejump.seq.cloud/mtcars.tsv",
         quiet = TRUE)
-    expect_true(tibble::is_tibble(tsv))
+    expect_is(tsv, "tbl_df")
+})
 
-    # Table format (.txt) file
+test_that("Table format (.txt) file", {
     txt <- readFileByExtension(
         "http://basejump.seq.cloud/mtcars.txt",
         quiet = TRUE)
-    expect_equal(
-        txt,
-        mtcars
-    )
+    expect_is(txt, "data.frame")
+    # txt has integer columns whereas mtcars doesn't
+    expect_equal(txt, mtcars)
+})
 
-    # Excel (.xlsx) file
+test_that("Excel (.xlsx) file", {
     xlsx <- readFileByExtension(
         "http://basejump.seq.cloud/mtcars.xlsx",
         quiet = TRUE)
-    expect_true(tibble::is_tibble(tsv))
+    expect_is(xlsx, "tbl_df")
 
     # Counts (.counts) file
     counts <- readFileByExtension(
         "http://basejump.seq.cloud/test.counts",
         quiet = TRUE)
-    expect_true(is.matrix(counts))
-    expect_equal(
+    expect_is(counts, "matrix")
+    expect_identical(
         rownames(counts)[1L:5L],
         c("ENSMUSG00000102693",
           "ENSMUSG00000064842",
@@ -56,13 +55,14 @@ test_that("readFileByExtension", {
           "ENSMUSG00000102851",
           "ENSMUSG00000103377")
     )
+})
 
-    # RData (.rda) file (unsupported)
+test_that("R Data (.rda) file (unsupported)", {
     expect_error(
         readFileByExtension(
             "http://basejump.seq.cloud/mtcars.rda",
             quiet = TRUE),
-        "Unsupported file type"
+        "Unsupported file extension"
     )
 
     # Missing extension
@@ -75,6 +75,6 @@ test_that("readFileByExtension", {
                 "testthat",
                 "LICENSE"),
             quiet = TRUE),
-        "File extension missing"
+        "is_matching_regex"
     )
 })

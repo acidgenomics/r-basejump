@@ -90,14 +90,15 @@
     <p>Load a remote R binary file.</p>
     
 
-    <pre class="usage"><span class='fu'>loadRemoteData</span>(<span class='no'>object</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>loadRemoteData</span>(<span class='no'>url</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>url</th>
+      <td><p>Remote URL file path to R Data file. Supports multiple URLs
+passed in as a character vector.</p></td>
     </tr>
     <tr>
       <th>envir</th>
@@ -112,17 +113,26 @@ which will assign into the calling environment.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silently return loaded object name.</p>
+    <p>Silently return a character matrix containing URL and tempfile paths.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Data Import and Project Utilities: <code>readFileByExtension</code>,
+    <p>Other Data Import and Project Utilities: <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
   <code>readGFF</code>, <code>readYAML</code>,
   <code><a href='transmit.html'>transmit</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>objects</span> <span class='kw'>&lt;-</span> <span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
+    <span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>,
+    <span class='st'>"http://basejump.seq.cloud/starwars.rda"</span>
+))
+<span class='no'>objects</span></div><div class='output co'>#&gt;          mtcars                                                                         
+#&gt; url      "http://basejump.seq.cloud/mtcars.rda"                                         
+#&gt; tempfile "/var/folders/j1/hw6j14mj3wq381x7mynwfbp00000gn/T//Rtmp4zr4fy/file637737af3104"
+#&gt;          starwars                                                                       
+#&gt; url      "http://basejump.seq.cloud/starwars.rda"                                       
+#&gt; tempfile "/var/folders/j1/hw6j14mj3wq381x7mynwfbp00000gn/T//Rtmp4zr4fy/file63774ebb1a2b"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

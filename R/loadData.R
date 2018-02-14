@@ -1,6 +1,6 @@
 #' Load Local Data
 #'
-#' Load RData (`.rda`) files from a directory using symbols rather than complete
+#' Load R data (`.rda`) files from a directory using symbols rather than complete
 #' file paths.
 #'
 #' @details
@@ -18,11 +18,8 @@
 #'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
-#' @param ext R data file extension. Defaults to `rda` and typically should not
-#'   be changed.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
-#' @param replace Replace existing object in destination environment.
 #' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
@@ -35,75 +32,33 @@
 loadData <- function(
     ...,
     dir = getwd(),
-    ext = "rda",
     envir = parent.frame(),
-    replace = TRUE,
     quiet = FALSE) {
-    if (!is_string(dir)) {
-        abort("`dir` must be a string")
-    } else if (!dir.exists(dir)) {
-        abort(paste("No directory exists at", dir))
-    } else {
-        dir <- normalizePath(dir)
-    }
-    if (!is.environment(envir)) {
-        abort("`envir` must be an environment")
-    }
-    # The dots method will error at this step because the objects (as symbols)
-    # aren't present in the calling environment
-    dots <- as.character(substitute(list(...)))[-1L]
+    dir <- initializeDirectory(dir)
+    assert_is_environment(envir)
+    assert_is_a_bool(quiet)
+
+    # `dots()` method will fail here because the objects aren't present
+    dots <- as.list(substitute(list(...)))[-1L]
+    invisible(lapply(dots, assert_is_name))
+
+    names <- as.character(dots)
+    files <- file.path(dir, paste0(names, ".rda"))
+    assert_all_are_existing_files(files)
+
     if (!isTRUE(quiet)) {
-        inform(paste("Loading", toString(dots), "from", dir))
+        inform(paste("Loading", toString(basename(files)), "from", dir))
     }
-    files <- vapply(
-        X = dots,
-        FUN = function(name) {
-            file <- file.path(dir, paste0(name, ".", ext))
-            # Check to see if object is present in environment
-            if (exists(name, envir = envir, inherits = FALSE)) {
-                if (isTRUE(replace)) {
-                    warn(paste(
-                        "Replacing", name,
-                        "with the contents of", basename(file)
-                    ))
-                } else {
-                    return(warn(paste(
-                        "Skipping", basename(file),
-                        "because", name, "already exists"
-                    )))
-                }
-            }
-            # Error on missing file
-            if (!file.exists(file)) {
-                abort(paste(name, "missing"))
-            }
-            # Load into a temporary environment (safer)
-            tmpEnv <- new.env()
-            loaded <- load(file, envir = tmpEnv)
-            # Check for multiple saved objects
-            if (length(loaded) > 1L) {
-                abort(paste(
-                    basename(file), "contains multiple objects:",
-                    toString(loaded)
-                ))
-            }
-            # Check for file name and internal object name mismatch
-            if (!identical(name, loaded)) {
-                abort(paste0(
-                    "Name mismatch detected for `", basename(file), "`. ",
-                    "Internal object is named `", loaded, "`."
-                ))
-            }
-            # Assign into the target environment
-            assign(
-                x = name,
-                value = get(name, envir = tmpEnv, inherits = FALSE),
-                envir = envir
-            )
-            # Prepare named character vector for invisible return
-            names(file) <- name
-            file
-        },
-        FUN.VALUE = "character")
-    invisible(files)
+
+    objects <- mapply(
+        FUN = .safeLoad,
+        files,
+        MoreArgs = list(envir = envir),
+        SIMPLIFY = TRUE,
+        USE.NAMES = FALSE
+    )
+    names(objects) <- names
+
+    assert_is_character(objects)
+    invisible(objects)
 }

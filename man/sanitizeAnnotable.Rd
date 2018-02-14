@@ -7,8 +7,7 @@
 sanitizeAnnotable(object)
 }
 \arguments{
-\item{object}{\link{data.frame} containing Ensembl gene annotations returned
-from the \code{\link[=annotable]{annotable()}} function.}
+\item{object}{Object.}
 }
 \value{
 Annotable without nested list items (e.g. Entrez IDs).

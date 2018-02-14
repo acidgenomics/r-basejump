@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -9,6 +9,11 @@ Authors@R: c(
     person(
         "Rory", "Kirchner",
         email = "roryk@alum.mit.edu",
+        role = "ctb"),
+    person(
+        given = "Mary",
+        family = "Piper",
+        email = "mary.piper@gmail.com",
         role = "ctb")
     )
 Description: Helper functions for bioinformatics, package development, and
@@ -24,6 +29,7 @@ Depends:
     R (>= 3.4.0)
 Imports:
     AnnotationHub (>= 2.8.3),
+    assertive (>= 0.3),
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
     cowplot (>= 0.9.1),

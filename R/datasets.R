@@ -17,6 +17,15 @@ dplyr::starwars -> starwars
 
 
 
+#' Miles per Gallon
+#'
+#' @keywords internal
+#' @return [tibble].
+#' @export
+ggplot2::mpg -> mpg
+
+
+
 #' Gene Symbol Synonyms
 #'
 #' @author Michael Steinbaugh

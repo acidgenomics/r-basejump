@@ -1,7 +1,7 @@
 context("assignAndSaveData")
 
 test_that("assignAndSaveData", {
-    expect_equal(
+    expect_identical(
         assignAndSaveData("test", mtcars) %>%
             basename(),
         "test.rda"

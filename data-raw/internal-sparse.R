@@ -1,7 +1,8 @@
+library(Matrix)
+
 extdataDir <- file.path("inst", "extdata")
 dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
 
-library(Matrix)
 sparse <- Matrix(
     rbinom(1000L, size = 1L, prob = 0.5),
     ncol = 10L,

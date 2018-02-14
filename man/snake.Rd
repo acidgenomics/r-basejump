@@ -10,25 +10,31 @@
 \alias{snake,DataFrame-method}
 \alias{snake,factor-method}
 \alias{snake,list-method}
+\alias{snake,List-method}
 \alias{snake,matrix-method}
+\alias{snake,SimpleList-method}
 \alias{snake,tbl_df-method}
 \title{Snake Case}
 \usage{
 snake(object, ...)
 
-\S4method{snake}{ANY}(object, rownames = FALSE)
+\S4method{snake}{ANY}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{character}(object)
 
-\S4method{snake}{data.frame}(object, rownames = FALSE)
+\S4method{snake}{data.frame}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{snake}{DataFrame}(object, rownames = FALSE)
+\S4method{snake}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{factor}(object)
 
 \S4method{snake}{list}(object)
 
-\S4method{snake}{matrix}(object, rownames = FALSE)
+\S4method{snake}{List}(object)
+
+\S4method{snake}{matrix}(object, rownames = FALSE, colnames = TRUE)
+
+\S4method{snake}{SimpleList}(object)
 
 \S4method{snake}{tbl_df}(object)
 }
@@ -36,11 +42,14 @@ snake(object, ...)
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
 will be meaningful.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
+
+\item{colnames}{Apply sanitization on column names. This is generally
+recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
@@ -79,8 +88,8 @@ snake(factor)
 # data.frame
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
-snake(dataFrame, rownames = FALSE)
 snake(dataFrame, rownames = TRUE)
+snake(dataFrame, rownames = FALSE)
 
 # Named list
 list <- makeNames$list

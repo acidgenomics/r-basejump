@@ -27,21 +27,22 @@ test_that("transmit", {
     unlink("ensembl_readme.txt.gz")
     expect_error(
         transmit("http://steinbaugh.com", pattern = "README"),
-        "FTP protocol not detected"
+        "is_matching_regex : remoteDir"
     )
     expect_error(
         transmit("ftp://ftp.wormbase.org/pub/", pattern = "README"),
-        "No files listed on remote server"
+        "is_non_empty : remoteFileList"
     )
     expect_error(
         transmit(ensembl, pattern = "XXX"),
-        "Pattern didn't match any files"
+        "is_non_empty : remoteFileName"
     )
     expect_error(
         transmit(
             ensembl,
             pattern = "README",
-            rename = c("XXX", "YYY")),
-        "Rename vector doesn't match the number of remote files"
+            rename = c("XXX", "YYY")
+        ),
+        "are_same_length : remoteFileName has length 1 but rename has length 2."
     )
 })

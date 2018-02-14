@@ -6,7 +6,6 @@
 \alias{annotable}
 \alias{annotable,character-method}
 \alias{annotable,data.frame-method}
-\alias{annotable,NULL-method}
 \title{Ensembl Annotations}
 \usage{
 annotable(object, ...)
@@ -15,23 +14,21 @@ annotable(object, ...)
   release = NULL, uniqueSymbol = FALSE, quiet = FALSE)
 
 \S4method{annotable}{data.frame}(object)
-
-\S4method{annotable}{`NULL`}(object)
 }
 \arguments{
 \item{object}{Object. Default recommended usage is to provide full latin
 organism name as a string. Also supports input of pre-built tibbles from
 the annotables data package.}
 
-\item{...}{\emph{Additional arguments (for the S4 generic definition).}}
+\item{...}{Additional arguments.}
 
 \item{format}{Desired table format, either \code{gene}, \code{tx2gene}, or
 \code{gene2symbol}.}
 
-\item{genomeBuild}{\emph{Optional}. Check to see if a specific genome build is
+\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
 supported.}
 
-\item{release}{\emph{Optional}. Ensembl release version. Defaults to the most
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
@@ -95,6 +92,6 @@ Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{symbol2gene}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

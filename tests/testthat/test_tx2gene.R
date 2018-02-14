@@ -1,6 +1,6 @@
 context("tx2gene")
 
-test_that("character", {
+test_that("Character", {
     organism <- "Homo sapiens"
     expect_identical(
         tx2gene(organism),

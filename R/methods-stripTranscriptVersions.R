@@ -4,7 +4,7 @@
 #' @name stripTranscriptVersions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Transcript identifiers without version numbers.
 #'
@@ -19,14 +19,11 @@ NULL
     # Pattern matching against Ensembl transcript IDs
     # http://www.ensembl.org/info/genome/stable_ids/index.html
     # Examples: ENST (human); ENSMUST (mouse)
-    enstxpPattern <- "^(ENS.*T\\d{11})\\.\\d+$"
-    if (any(grepl(enstxpPattern, object))) {
-        object <- gsub(enstxpPattern, "\\1", object)
-    }
-    if (any(grepl("\\.\\d+$", object))) {
-        abort("Failed to sanitize Ensembl transcript identifier")
-    }
-    object
+    assert_is_character(object)
+    assert_all_are_not_na(object)
+    assert_all_are_non_missing_nor_empty_character(object)
+    assert_any_are_matching_regex(object, "^(ENS.*T\\d{11})\\.\\d+$")
+    gsub("\\.\\d+$", "", object)
 }
 
 

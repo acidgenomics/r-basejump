@@ -3,11 +3,11 @@
 #' Base functions for bioinformatics and R package development.
 #'
 #' @import methods
-#' @importFrom rlang !! !!! .data abort dots_list eval_bare inform is_string sym
-#'   syms warn
+#' @importFrom rlang abort inform warn
 "_PACKAGE"
+
+
 
 #' @importFrom utils globalVariables
 globalVariables(".")
-
-metadataPriorityCols <- c("sampleID", "sampleName", "description")
+annotableCols <- c("ensgene", "symbol", "description", "biotype")

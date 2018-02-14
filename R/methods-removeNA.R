@@ -4,26 +4,29 @@
 #' @name removeNA
 #' @family Cleanup Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @return Sanitized data.
 #'
 #' @examples
 #' # Remove NA only rows and columns
-#' matrix(c(1, NA, 3,
-#'          NA, NA, NA,
-#'          2, NA, 4),
-#'        nrow = 3, ncol = 3) %>%
+#' matrix(
+#'     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
+#'     nrow = 3,
+#'     ncol = 3) %>%
 #'     removeNA()
 #'
-#' data.frame(a = c("A", NA, "C"),
-#'            b = c(NA, NA, NA),
-#'            c = c("B", NA, "D")) %>%
+#' data.frame(
+#'     a = c("A", NA, "C"),
+#'     b = c(NA, NA, NA),
+#'     c = c("B", NA, "D"),
+#'     stringsAsFactors = FALSE) %>%
 #'     removeNA()
 #'
-#' tibble(a = c("A", NA, "C"),
-#'        b = c(NA, NA, NA),
-#'        c = c("B", NA, "D")) %>%
+#' tibble(
+#'     a = c("A", NA, "C"),
+#'     b = c(NA, NA, NA),
+#'     c = c("B", NA, "D")) %>%
 #'     removeNA()
 #'
 #' # Support for vectors
@@ -35,11 +38,13 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom stats na.omit
-.removeNAVec <- function(object) {
+.removeNA.vector <- function(object) {  # nolint
+    assert_is_vector(object)
     na.omit(object)
 }
 
-.removeNADim <- function(object) {
+.removeNA.dim <- function(object) {  # nolint
+    assert_has_dims(object)
     object %>%
         # Remove all `NA` rows
         .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
@@ -67,7 +72,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("character"),
-    .removeNAVec)
+    .removeNA.vector)
 
 
 
@@ -76,7 +81,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("numeric"),
-    .removeNAVec)
+    .removeNA.vector)
 
 
 
@@ -85,7 +90,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("matrix"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -94,7 +99,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("data.frame"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -103,7 +108,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("DataFrame"),
-    .removeNADim)
+    .removeNA.dim)
 
 
 
@@ -112,4 +117,4 @@ setMethod(
 setMethod(
     "removeNA",
     signature("tbl_df"),
-    .removeNADim)
+    .removeNA.dim)

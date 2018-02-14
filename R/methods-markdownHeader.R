@@ -4,7 +4,7 @@
 #' @name markdownHeader
 #' @family Report Utilities
 #'
-#' @inheritParams AllGenerics
+#' @inheritParams general
 #'
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
@@ -31,15 +31,22 @@ NULL
     level = 2L,
     tabset = FALSE,
     asis = FALSE) {
-    header <- object
-    if (!level %in% seq(1L:7L)) {
-        abort("Markdown supports 1-7 header levels")
-    }
+    assert_is_a_string(object)
+    assert_all_are_not_na(object)
+    assert_all_are_non_missing_nor_empty_character(object)
+    assert_formal_header_level(level)
+    assert_is_a_bool(tabset)
+    assert_is_a_bool(asis)
+
+    # Add the header level
+    header <- paste(str_dup("#", level), object)
+
+    # Append tabset label
     if (isTRUE(tabset)) {
         header <- paste(header, "{.tabset}")
     }
-    # Add the header level
-    header <- paste(str_dup("#", level), header)
+
+    # Return
     if (isTRUE(asis)) {
         writeLines(c("", "", header, ""))
     } else {
@@ -61,3 +68,13 @@ setMethod(
     "markdownHeader",
     signature("character"),
     .markdownHeader)
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownHeader
+#' @inheritParams general
+#' @export
+mdHeader <- function(...) {
+    markdownHeader(...)
+}
