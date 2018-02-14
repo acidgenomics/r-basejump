@@ -32,7 +32,7 @@ Imports:
     assertive (>= 0.3),
     Biobase (>= 2.36.2),
     BiocGenerics (>= 0.22.1),
-    cowplot (>= 0.9.2),
+    cowplot (>= 0.9.1),
     datasets,
     dendsort,
     devtools (>= 1.13.4),
