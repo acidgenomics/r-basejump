@@ -32,10 +32,7 @@ NULL
     force = FALSE) {
     assert_is_any_of(captions, c("character", "NULL"))
     if (is.character(captions)) {
-        assert_are_identical(
-            length(object),
-            length(captions)
-        )
+        assert_are_identical(length(object), length(captions))
     }
     assert_is_a_bool(force)
 
