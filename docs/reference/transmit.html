@@ -132,7 +132,7 @@ with or without the trailing slash.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code>readFileByExtension</code>, <code>readGFF</code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code>readGFF</code>,
   <code>readYAML</code></p>
     
 
@@ -141,7 +141,9 @@ with or without the trailing slash.</p></td>
     <span class='kw'>remoteDir</span> <span class='kw'>=</span> <span class='st'>"ftp://ftp.ensembl.org/pub/release-90"</span>,
     <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"README"</span>,
     <span class='kw'>rename</span> <span class='kw'>=</span> <span class='st'>"ensembl_readme.txt"</span>,
-    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading README</span></div></pre>
+    <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Downloading README</span></div><div class='input'>
+<span class='co'># Clean up</span>
+<span class='fu'>unlink</span>(<span class='st'>"ensembl_readme.txt.gz"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

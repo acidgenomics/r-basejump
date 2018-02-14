@@ -92,8 +92,8 @@ symbols. This function saves each object into a separate <code>.rda</code> file 
 than combining into a single file.</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>ext</span> <span class='kw'>=</span> <span class='st'>"rda"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"bzip2"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>"bzip2"</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,11 +105,6 @@ than combining into a single file.</p>
     <tr>
       <th>dir</th>
       <td><p>Output directory. Defaults to the current working directory.</p></td>
-    </tr>
-    <tr>
-      <th>ext</th>
-      <td><p>R data file extension. Defaults to <code>rda</code> and typically should not
-be changed.</p></td>
     </tr>
     <tr>
       <th>overwrite</th>

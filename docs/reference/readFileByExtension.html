@@ -92,11 +92,7 @@ files. Also supports bcbio-nextgen pipeline-specific <code>.counts</code>, <code
 and <code>.rownames</code> files.</p>
     
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -106,17 +102,17 @@ and <code>.rownames</code> files.</p>
       <td><p>File path.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
-    </tr>
-    <tr>
       <th>makeNames</th>
       <td><p>Make syntactically valid names. Supports <strong><code>camel</code></strong>,
-<code>snake</code>, or <code>FALSE</code>.</p></td>
+<code>dotted</code>, <code>snake</code>, or <code>upperCamel</code>. This is always enforced.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
       <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
@@ -139,6 +135,7 @@ and <code>.rownames</code> files.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  rowname = col_character(),</span>
 #&gt; <span class='message'>  mpg = col_double(),</span>
 #&gt; <span class='message'>  cyl = col_integer(),</span>
 #&gt; <span class='message'>  disp = col_double(),</span>
@@ -150,19 +147,19 @@ and <code>.rownames</code> files.</p>
 #&gt; <span class='message'>  am = col_integer(),</span>
 #&gt; <span class='message'>  gear = col_integer(),</span>
 #&gt; <span class='message'>  carb = col_integer()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 32 x 11
-#&gt;      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-#&gt;    &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
-#&gt;  1  21.0     6   160   110  3.90  2.62  16.5     0     1     4     4
-#&gt;  2  21.0     6   160   110  3.90  2.88  17.0     0     1     4     4
-#&gt;  3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1
-#&gt;  4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1
-#&gt;  5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2
-#&gt;  6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1
-#&gt;  7  14.3     8   360   245  3.21  3.57  15.8     0     0     3     4
-#&gt;  8  24.4     4   147    62  3.69  3.19  20.0     1     0     4     2
-#&gt;  9  22.8     4   141    95  3.92  3.15  22.9     1     0     4     2
-#&gt; 10  19.2     6   168   123  3.92  3.44  18.3     1     0     4     4
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 32 x 12
+#&gt;    rowname      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt;  1 Mazda RX4   21.0     6   160   110  3.90  2.62  16.5     0     1     4     4
+#&gt;  2 Mazda RX4…  21.0     6   160   110  3.90  2.88  17.0     0     1     4     4
+#&gt;  3 Datsun 710  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1
+#&gt;  4 Hornet 4 …  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1
+#&gt;  5 Hornet Sp…  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2
+#&gt;  6 Valiant     18.1     6   225   105  2.76  3.46  20.2     1     0     3     1
+#&gt;  7 Duster 360  14.3     8   360   245  3.21  3.57  15.8     0     0     3     4
+#&gt;  8 Merc 240D   24.4     4   147    62  3.69  3.19  20.0     1     0     4     2
+#&gt;  9 Merc 230    22.8     4   141    95  3.92  3.15  22.9     1     0     4     2
+#&gt; 10 Merc 280    19.2     6   168   123  3.92  3.44  18.3     1     0     4     4
 #&gt; # ... with 22 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

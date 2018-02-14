@@ -122,7 +122,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p><em>Additional arguments (for the S4 generic definition).</em></p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
@@ -133,27 +133,30 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Cleanup Utilities: <code>fixNA</code>,
-  <code>sortUnique</code></p>
+  <code><a href='sortUnique.html'>sortUnique</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Remove NA only rows and columns</span>
-<span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>,
-         <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>,
-         <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
-       <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>) <span class='kw'>%&gt;%</span>
+<span class='fu'>matrix</span>(
+    <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]    1    2
 #&gt; [2,]    3    4</div><div class='input'>
-<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
-           <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-           <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span>
+<span class='fu'>data.frame</span>(
+    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
+    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>),
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;   a c
 #&gt; 1 A B
 #&gt; 3 C D</div><div class='input'>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
-       <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-       <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
+    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
+    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;   a     c    
 #&gt;   &lt;chr&gt; &lt;chr&gt;
