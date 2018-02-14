@@ -19,6 +19,7 @@ Is a String or NULL
 Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
+  \code{\link{assert_formal_gene2symbol}},
   \code{\link{assert_formal_header_level}},
   \code{\link{assert_has_rownames}},
   \code{\link{assert_is_annotable}},
