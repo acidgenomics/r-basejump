@@ -10,7 +10,7 @@
 #' @export
 assert_formal_annotation_col <- function(object, colData) {
     assert_has_dims(object)
-    assert_is_any_of(colData, c("data.frame", "logical"))
+    assert_is_any_of(colData, c("data.frame", "logical", "NULL"))
     if (is.data.frame(colData)) {
         assert_has_colnames(colData)
         assert_has_rownames(colData)

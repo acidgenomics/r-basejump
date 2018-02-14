@@ -116,20 +116,20 @@ symbol2gene <- function() {
 #' @rdname deprecated
 #' @export
 checkAnnotable <- function(...) {
-    .Deprecated("assert_is_annotable")
+    # .Deprecated("assert_is_annotable")
     assert_is_annotable(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkGene2symbol <- function(...) {
-    .Deprecated("assert_is_gene2symbol")
+    # .Deprecated("assert_is_gene2symbol")
     assert_is_gene2symbol(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkTx2gene <- function(...) {
-    .Deprecated("assert_is_tx2gene")
+    # .Deprecated("assert_is_tx2gene")
     assert_is_tx2gene(...)
 }
