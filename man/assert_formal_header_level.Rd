@@ -6,6 +6,9 @@
 \usage{
 assert_formal_header_level(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

@@ -1,7 +1,9 @@
 #' Implict Integer Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_is_implicit_integer <- function(x) {  # nolint

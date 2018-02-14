@@ -9,6 +9,9 @@ assert_is_implicit_integer(x)
 
 is_implicit_integer(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

@@ -1,7 +1,9 @@
 #' Color Function Formal Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_formal_color_function <- function(x) {  # nolint

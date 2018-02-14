@@ -1,7 +1,9 @@
 #' Is Numeric Scalar or NULL Assert Check
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_is_numeric_scalar_or_null <- function(x) {

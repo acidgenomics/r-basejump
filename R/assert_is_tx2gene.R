@@ -1,7 +1,9 @@
 #' Check Transcript to Gene Mapping Data
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @param object [data.frame] containing Ensembl transcript to gene identifier
 #'   mappings. Must be structured as a two column [data.frame] with "enstxp" and

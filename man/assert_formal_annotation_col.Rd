@@ -7,6 +7,8 @@
 assert_formal_annotation_col(object, colData)
 }
 \arguments{
+\item{object}{Object.}
+
 \item{colData}{Column data.}
 }
 \value{

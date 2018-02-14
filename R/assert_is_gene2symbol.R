@@ -1,7 +1,9 @@
 #' Check Gene to Symbol Mapping Data
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @param object [data.frame] containing Ensembl gene identifier to gene symbol
 #'   mappings. Must be structured as a two column [data.frame] with "ensgene"

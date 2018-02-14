@@ -9,6 +9,9 @@ assert_has_rownames(x)
 
 has_rownames(x)
 }
+\arguments{
+\item{x}{Primary object.}
+}
 \value{
 Abort on mismatch.
 }

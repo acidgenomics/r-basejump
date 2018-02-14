@@ -7,7 +7,9 @@
 #'   for data frames and tibbles.
 #'
 #' @family Assert Checks
+#'
 #' @inherit assert
+#' @inheritParams general
 #'
 #' @export
 assert_has_rownames <- function(x) {  # nolint
