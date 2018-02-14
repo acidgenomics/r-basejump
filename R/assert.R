@@ -30,6 +30,7 @@
 #' @importFrom assertive assert_is_atomic
 #' @importFrom assertive assert_is_character
 #' @importFrom assertive assert_is_data.frame
+#' @importFrom assertive assert_is_empty
 #' @importFrom assertive assert_is_environment
 #' @importFrom assertive assert_is_factor
 #' @importFrom assertive assert_is_identical_to_na
