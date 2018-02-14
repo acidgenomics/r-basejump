@@ -4,13 +4,17 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = "camel", quiet = FALSE, ...)
+readFileByExtension(object, makeNames = "camel", severity = "stop",
+  quiet = FALSE, ...)
 }
 \arguments{
 \item{object}{File path.}
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{dotted}, \code{snake}, or \code{upperCamel}. This is always enforced.}
+
+\item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
+doesn't exist.}
 
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 
