@@ -13,23 +13,6 @@ test_that("ALL", {
         camel(c("hello.world" = 1L)),
         c("helloWorld" = 1L)
     )
-
-    # SummarizedExperiment (dims)
-    assay <- matrix(
-        data = 1L:4L,
-        nrow = 2L,
-        ncol = 2L,
-        dimnames = list(c("row.1", "row.2"), c("col.1", "col.2"))
-    )
-    se <- SummarizedExperiment(assay = assay)
-    se <- camel(se, rownames = TRUE, colnames = TRUE)
-    expect_identical(
-        dimnames(se),
-        list(
-            c("row1", "row2"),
-            c("col1", "col2")
-        )
-    )
 })
 
 test_that("Character", {
