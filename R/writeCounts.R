@@ -78,11 +78,10 @@ writeCounts <- function(
             genes <- rownames(counts)
             genesFile <- paste0(matrixFile, ".rownames")
             write_lines(genes, genesFile)
+            returnPath <- matrixFile
             # gzip the matrix, if desired
             if (isTRUE(gzip)) {
                 returnPath <- gzip(matrixFile, overwrite = TRUE)
-            } else {
-                returnPath <- matrixFile
             }
         } else {
             # Coerce to tibble use readr
