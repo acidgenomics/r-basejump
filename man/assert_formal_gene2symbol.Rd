@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_formal_gene2symbol.R
 \name{assert_formal_gene2symbol}
 \alias{assert_formal_gene2symbol}
-\title{Formal \code{gene2symbol} Assert Check}
+\title{Formal Gene to Symbol Mappings Assert Check}
 \usage{
 assert_formal_gene2symbol(object, genes, gene2symbol)
 }
@@ -17,7 +17,7 @@ assert_formal_gene2symbol(object, genes, gene2symbol)
 Abort on mismatch.
 }
 \description{
-Formal \code{gene2symbol} Assert Check
+Formal Gene to Symbol Mappings Assert Check
 }
 \seealso{
 Other Assert Checks: \code{\link{assert_formal_annotation_col}},
@@ -25,11 +25,11 @@ Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_compress}},
   \code{\link{assert_formal_header_level}},
   \code{\link{assert_has_rownames}},
+  \code{\link{assert_is_a_number_or_null}},
   \code{\link{assert_is_a_string_or_null}},
   \code{\link{assert_is_annotable}},
   \code{\link{assert_is_character_or_null}},
   \code{\link{assert_is_gene2symbol}},
-  \code{\link{assert_is_implicit_integer}},
-  \code{\link{assert_is_numeric_scalar_or_null}},
+  \code{\link{assert_is_implicit integer}},
   \code{\link{assert_is_tx2gene}}, \code{\link{assert}}
 }
