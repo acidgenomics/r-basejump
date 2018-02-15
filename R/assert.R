@@ -69,10 +69,10 @@ NULL
 #'
 #' @export
 assert_formal_annotation_col <- function(  # nolint
-    object,
+    x,
     colData,
     severity = "stop") {
-    assert_has_dims(object, severity = severity)
+    assert_has_dims(x, severity = severity)
     assert_is_any_of(
         x = colData,
         classes = c("data.frame", "logical", "NULL"),
@@ -81,7 +81,7 @@ assert_formal_annotation_col <- function(  # nolint
         assert_has_colnames(colData, severity = severity)
         assert_has_rownames(colData, severity = severity)
         assert_are_identical(
-            x = colnames(object),
+            x = colnames(x),
             y = rownames(colData),
             severity = severity)
         lapply(colData, assert_is_factor)
@@ -147,24 +147,24 @@ assert_formal_compress <- function(  # nolint
 #' @family Assert Checks
 #' @inherit assert
 #'
-#' @param object Object containing gene identifiers in the rownames.
+#' @param x Object containing gene identifiers in the rownames.
 #' @param genes Character vector of gene identifiers.
 #' @param gene2symbol Gene-to-symbol mappings data frame.
 #'
 #' @export
 assert_formal_gene2symbol <- function(  # nolint
-    object,
+    x,
     genes,
     gene2symbol,
     severity = "stop") {
     assert_is_any_of(genes, c("character", "NULL"))
     if (is.character(genes)) {
-        assert_is_subset(genes, rownames(object))
+        assert_is_subset(genes, rownames(x))
     }
     assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
     if (is.data.frame(gene2symbol)) {
         assert_is_gene2symbol(gene2symbol)
-        assert_is_subset(rownames(object), rownames(gene2symbol))
+        assert_is_subset(rownames(x), rownames(gene2symbol))
     }
 }
 
@@ -364,7 +364,7 @@ assert_is_gene2symbol <- function(  # nolint
     severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
-        x = colnames(object),
+        x = colnames(x),
         y = c("ensgene", "symbol"),
         severity = severity)
 }
@@ -399,7 +399,7 @@ assert_is_implicit_integer_or_null <- function(  # nolint
 #' @family Assert Checks
 #' @inherit assert
 #'
-#' @param object [data.frame] containing Ensembl transcript to gene identifier
+#' @param x [data.frame] containing Ensembl transcript to gene identifier
 #'   mappings. Must be structured as a two column [data.frame] with "enstxp" and
 #'   "ensgene" columns.
 #'
@@ -409,11 +409,11 @@ assert_is_implicit_integer_or_null <- function(  # nolint
 #' tx2gene <- annotable("Homo sapiens", format = "tx2gene")
 #' assert_is_tx2gene(tx2gene)
 assert_is_tx2gene <- function(  # nolint
-    object,
+    x,
     severity = "stop") {
-    assert_is_data.frame(object, severity = severity)
+    assert_is_data.frame(x, severity = severity)
     assert_are_identical(
-        x = colnames(object),
+        x = colnames(x),
         y = c("enstxp", "ensgene"),
         severity = severity)
 }

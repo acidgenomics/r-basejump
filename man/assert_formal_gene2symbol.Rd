@@ -4,10 +4,10 @@
 \alias{assert_formal_gene2symbol}
 \title{Gene to Symbol Mappings Formal Assert Check}
 \usage{
-assert_formal_gene2symbol(object, genes, gene2symbol, severity = "stop")
+assert_formal_gene2symbol(x, genes, gene2symbol, severity = "stop")
 }
 \arguments{
-\item{object}{Object containing gene identifiers in the rownames.}
+\item{x}{Object containing gene identifiers in the rownames.}
 
 \item{genes}{Character vector of gene identifiers.}
 

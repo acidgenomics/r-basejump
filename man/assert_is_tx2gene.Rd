@@ -4,10 +4,10 @@
 \alias{assert_is_tx2gene}
 \title{Check Transcript to Gene Mapping Data}
 \usage{
-assert_is_tx2gene(object, severity = "stop")
+assert_is_tx2gene(x, severity = "stop")
 }
 \arguments{
-\item{object}{\link{data.frame} containing Ensembl transcript to gene identifier
+\item{x}{\link{data.frame} containing Ensembl transcript to gene identifier
 mappings. Must be structured as a two column \link{data.frame} with "enstxp" and
 "ensgene" columns.}
 
