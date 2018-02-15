@@ -4,9 +4,11 @@
 \alias{assert_formal_annotation_col}
 \title{Annotation Column Formal Assert Check}
 \usage{
-assert_formal_annotation_col(object, colData, severity = "stop")
+assert_formal_annotation_col(x, colData, severity = "stop")
 }
 \arguments{
+\item{x}{Object.}
+
 \item{colData}{Column data.}
 
 \item{severity}{How severe should the consequences of the assertion be?
