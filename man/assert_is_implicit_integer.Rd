@@ -2,10 +2,19 @@
 % Please edit documentation in R/assert_is_implicit_integer.R
 \name{assert_is_implicit_integer}
 \alias{assert_is_implicit_integer}
+\alias{assert_is_implicit_integer_or_null}
+\alias{assert_is_implicit_integer_scalar}
+\alias{assert_is_implicit_integer_scalar_or_null}
 \alias{is_implicit_integer}
 \title{Implict Integer Assert Check}
 \usage{
 assert_is_implicit_integer(x)
+
+assert_is_implicit_integer_or_null(x)
+
+assert_is_implicit_integer_scalar(x)
+
+assert_is_implicit_integer_scalar_or_null(x)
 
 is_implicit_integer(x)
 }
