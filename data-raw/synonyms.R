@@ -57,7 +57,7 @@ synonyms <- lapply(genomes, function(genome) {
 })
 names(synonyms) <- names(genomes)
 
-synonyms$date <- Sys.Date()
-synonyms$sessionInfo <- sessionInfo()
+synonyms[["date"]] <- Sys.Date()
+synonyms[["sessionInfo"]] <- sessionInfo()
 
 devtools::use_data(synonyms, overwrite = TRUE, compress = "xz")
