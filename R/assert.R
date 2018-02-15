@@ -330,6 +330,21 @@ assert_is_character_or_null <- function(  # nolint
 
 
 
+#' Data Frame or NULL Assert Check
+#'
+#' @family Assert Checks
+#' @inherit assert
+#' @export
+assert_is_data.frame_or_null <- function(  # nolint
+    x, severity = "stop") {
+    assert_is_any_of(
+        x = x,
+        classes = c("data.frame", "NULL"),
+        severity = severity)
+}
+
+
+
 #' Check Gene to Symbol Mapping Data
 #'
 #' @family Assert Checks

@@ -54,7 +54,7 @@ NULL
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
+    assert_is_data.frame_or_null(gene2symbol)
     assert_is_a_string_or_null(organism)
     assert_is_a_bool(uniqueSymbol)
 
