@@ -27,6 +27,7 @@
 #' @importFrom assertive assert_is_a_bool
 #' @importFrom assertive assert_is_a_number
 #' @importFrom assertive assert_is_a_string
+#' @importFrom assertive assert_is_an_integer
 #' @importFrom assertive assert_is_any_of
 #' @importFrom assertive assert_is_atomic
 #' @importFrom assertive assert_is_character
@@ -265,27 +266,6 @@ assert_is_an_implicit_integer_or_null <- function(
     if (is_implicit_integer(x)) {
         assert_is_a_number(x)
     }
-}
-
-
-
-#' Is an Integer Assert Check
-#'
-#' @family Assert Checks
-#' @inherit assert
-#' @export
-#'
-#' @examples
-#' # Explicit integer
-#' assert_is_an_integer(1L)
-#'
-#' # Implicit integer
-#' assert_is_an_integer(1, severity = "message")
-assert_is_an_integer <- function(  # nolint
-    x,
-    severity = "stop") {
-    assert_is_a_number(x, severity = severity)
-    assert_is_integer(x, severity = severity)
 }
 
 
