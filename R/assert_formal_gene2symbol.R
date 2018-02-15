@@ -1,4 +1,4 @@
-#' Formal `gene2symbol` Assert Check
+#' Formal Gene to Symbol Mappings Assert Check
 #'
 #' @family Assert Checks
 #' @inherit assert

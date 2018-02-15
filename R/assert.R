@@ -25,6 +25,7 @@
 #' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_no_duplicates
 #' @importFrom assertive assert_is_a_bool
+#' @importFrom assertive assert_is_a_number
 #' @importFrom assertive assert_is_a_string
 #' @importFrom assertive assert_is_any_of
 #' @importFrom assertive assert_is_atomic
