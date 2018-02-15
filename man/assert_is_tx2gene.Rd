@@ -37,5 +37,6 @@ Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_is_an_integer_or_null}},
   \code{\link{assert_is_annotable}},
   \code{\link{assert_is_character_or_null}},
+  \code{\link{assert_is_data.frame_or_null}},
   \code{\link{assert_is_gene2symbol}}, \code{\link{assert}}
 }
