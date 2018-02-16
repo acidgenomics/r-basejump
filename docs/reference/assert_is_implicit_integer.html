@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Implict Integer Assert Check — assert_is_implicit_integer • basejump</title>
+<title>Implicit Integer Assert Check — assert_is_an_implicit_integer • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,14 +83,20 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Implict Integer Assert Check</h1>
+    <h1>Implicit Integer Assert Check</h1>
     </div>
 
     
-    <p>Implict Integer Assert Check</p>
+    <p>Implicit Integer Assert Check</p>
     
 
-    <pre class="usage"><span class='fu'>assert_is_implicit_integer</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>assert_is_an_implicit_integer</span>(<span class='no'>x</span>)
+
+<span class='fu'>assert_is_an_implicit_integer_or_null</span>(<span class='no'>x</span>)
+
+<span class='fu'>assert_is_implicit_integer</span>(<span class='no'>x</span>)
+
+<span class='fu'>assert_is_implicit_integer_or_null</span>(<span class='no'>x</span>)
 
 <span class='fu'>is_implicit_integer</span>(<span class='no'>x</span>)</pre>
     
@@ -99,7 +105,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Primary object.</p></td>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
@@ -109,17 +115,19 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/all.equal'>base::all.equal()</a></code> <code>tolerance</code> parameter.</p>
-<p>Other Assert Checks: <code><a href='assert_formal_annotation_col.html'>assert_formal_annotation_col</a></code>,
+    <p>Other Assert Checks: <code><a href='assert_formal_annotation_col.html'>assert_formal_annotation_col</a></code>,
   <code><a href='assert_formal_color_function.html'>assert_formal_color_function</a></code>,
   <code><a href='assert_formal_compress.html'>assert_formal_compress</a></code>,
+  <code><a href='assert_formal_gene2symbol.html'>assert_formal_gene2symbol</a></code>,
   <code><a href='assert_formal_header_level.html'>assert_formal_header_level</a></code>,
   <code><a href='assert_has_rownames.html'>assert_has_rownames</a></code>,
+  <code><a href='assert_is_a_number_or_null.html'>assert_is_a_number_or_null</a></code>,
   <code><a href='assert_is_a_string_or_null.html'>assert_is_a_string_or_null</a></code>,
+  <code><a href='assert_is_an_integer_or_null.html'>assert_is_an_integer_or_null</a></code>,
   <code><a href='assert_is_annotable.html'>assert_is_annotable</a></code>,
   <code><a href='assert_is_character_or_null.html'>assert_is_character_or_null</a></code>,
+  <code><a href='assert_is_data.frame_or_null.html'>assert_is_data.frame_or_null</a></code>,
   <code><a href='assert_is_gene2symbol.html'>assert_is_gene2symbol</a></code>,
-  <code><a href='assert_is_numeric_scalar_or_null.html'>assert_is_numeric_scalar_or_null</a></code>,
   <code><a href='assert_is_tx2gene.html'>assert_is_tx2gene</a></code>, <code><a href='assert.html'>assert</a></code></p>
     
 

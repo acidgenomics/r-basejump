@@ -92,7 +92,8 @@ files. Also supports bcbio-nextgen pipeline-specific <code>.counts</code>, <code
 and <code>.rownames</code> files.</p>
     
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,6 +106,11 @@ and <code>.rownames</code> files.</p>
       <th>makeNames</th>
       <td><p>Make syntactically valid names. Supports <strong><code>camel</code></strong>,
 <code>dotted</code>, <code>snake</code>, or <code>upperCamel</code>. This is always enforced.</p></td>
+    </tr>
+    <tr>
+      <th>severity</th>
+      <td><p>Return <code>stop</code> (default), <code>warning</code>, or <code>message</code> if file
+doesn't exist.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
