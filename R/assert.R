@@ -64,6 +64,7 @@ NULL
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
 #'
 #' @param colData Column data.
 #'
@@ -97,6 +98,8 @@ assert_formal_annotation_col <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_formal_color_function <- function(  # nolint
     x,
@@ -123,6 +126,8 @@ assert_formal_color_function <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_formal_compress <- function(  # nolint
     x,
@@ -146,6 +151,7 @@ assert_formal_compress <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
 #'
 #' @param x Object containing gene identifiers in the rownames.
 #' @param genes Character vector of gene identifiers.
@@ -174,6 +180,8 @@ assert_formal_gene2symbol <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_formal_header_level <- function(  # nolint
     x,
@@ -199,6 +207,8 @@ assert_formal_header_level <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_has_rownames <- function(  # nolint
     x,
@@ -217,6 +227,8 @@ assert_has_rownames <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_a_number_or_null <- function(  # nolint
     x,
@@ -236,6 +248,8 @@ assert_is_a_number_or_null <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_a_string_or_null <- function(  # nolint
     x,
@@ -274,6 +288,8 @@ assert_is_an_implicit_integer_or_null <- function(
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_an_integer_or_null <- function(  # nolint
     x,
@@ -293,6 +309,7 @@ assert_is_an_integer_or_null <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
 #'
 #' @param x [data.frame] containing Ensembl gene annotations returned
 #'   from the [annotable()] function.
@@ -318,6 +335,8 @@ assert_is_annotable <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_character_or_null <- function(  # nolint
     x,
@@ -334,6 +353,8 @@ assert_is_character_or_null <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_data.frame_or_null <- function(  # nolint
     x, severity = "stop") {
@@ -349,6 +370,7 @@ assert_is_data.frame_or_null <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
 #'
 #' @param x [data.frame] containing Ensembl gene identifier to gene symbol
 #'   mappings. Must be structured as a two column [data.frame] with "ensgene"
@@ -376,6 +398,8 @@ assert_is_gene2symbol <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
+#'
 #' @export
 assert_is_implicit_integer <- function(  # nolint
     x) {
@@ -398,6 +422,7 @@ assert_is_implicit_integer_or_null <- function(  # nolint
 #'
 #' @family Assert Checks
 #' @inherit assert
+#' @keywords internal
 #'
 #' @param x [data.frame] containing Ensembl transcript to gene identifier
 #'   mappings. Must be structured as a two column [data.frame] with "enstxp" and
@@ -434,7 +459,6 @@ has_rownames <- function(x) {  # nolint
 
 # TODO Use assert engine
 #' @rdname assert_is_implicit_integer
-#' @seealso [base::all.equal()] `tolerance` parameter.
 #' @export
 is_implicit_integer <- function(  # nolint
     x) {

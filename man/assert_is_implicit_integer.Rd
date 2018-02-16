@@ -28,8 +28,6 @@ Abort on mismatch.
 Implicit Integer Assert Check
 }
 \seealso{
-\code{\link[base:all.equal]{base::all.equal()}} \code{tolerance} parameter.
-
 Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
@@ -45,3 +43,4 @@ Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_is_gene2symbol}},
   \code{\link{assert_is_tx2gene}}, \code{\link{assert}}
 }
+\keyword{internal}
