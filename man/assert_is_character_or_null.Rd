@@ -34,3 +34,4 @@ Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_is_gene2symbol}},
   \code{\link{assert_is_tx2gene}}, \code{\link{assert}}
 }
+\keyword{internal}
