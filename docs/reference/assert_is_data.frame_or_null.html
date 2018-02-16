@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is Numeric Scalar or NULL Assert Check — assert_is_numeric_scalar_or_null • basejump</title>
+<title>Data Frame or NULL Assert Check — assert_is_data.frame_or_null • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,21 +83,26 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is Numeric Scalar or NULL Assert Check</h1>
+    <h1>Data Frame or NULL Assert Check</h1>
     </div>
 
     
-    <p>Is Numeric Scalar or NULL Assert Check</p>
+    <p>Data Frame or NULL Assert Check</p>
     
 
-    <pre class="usage"><span class='fu'>assert_is_numeric_scalar_or_null</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>assert_is_data.frame_or_null</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Primary object.</p></td>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>severity</th>
+      <td><p>How severe should the consequences of the assertion be?
+Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
     </tr>
     </table>
     
@@ -110,13 +115,16 @@
     <p>Other Assert Checks: <code><a href='assert_formal_annotation_col.html'>assert_formal_annotation_col</a></code>,
   <code><a href='assert_formal_color_function.html'>assert_formal_color_function</a></code>,
   <code><a href='assert_formal_compress.html'>assert_formal_compress</a></code>,
+  <code><a href='assert_formal_gene2symbol.html'>assert_formal_gene2symbol</a></code>,
   <code><a href='assert_formal_header_level.html'>assert_formal_header_level</a></code>,
   <code><a href='assert_has_rownames.html'>assert_has_rownames</a></code>,
+  <code><a href='assert_is_a_number_or_null.html'>assert_is_a_number_or_null</a></code>,
   <code><a href='assert_is_a_string_or_null.html'>assert_is_a_string_or_null</a></code>,
+  <code><a href='assert_is_implicit_integer.html'>assert_is_an_implicit_integer</a></code>,
+  <code><a href='assert_is_an_integer_or_null.html'>assert_is_an_integer_or_null</a></code>,
   <code><a href='assert_is_annotable.html'>assert_is_annotable</a></code>,
   <code><a href='assert_is_character_or_null.html'>assert_is_character_or_null</a></code>,
   <code><a href='assert_is_gene2symbol.html'>assert_is_gene2symbol</a></code>,
-  <code><a href='assert_is_implicit_integer.html'>assert_is_implicit_integer</a></code>,
   <code><a href='assert_is_tx2gene.html'>assert_is_tx2gene</a></code>, <code><a href='assert.html'>assert</a></code></p>
     
 
