@@ -64,7 +64,6 @@ readFileByExtension <- function(
 
     # Add extension to tempfile, if necessary
     if (!grepl(extPattern, file)) {
-        message("Renaming temporary file")
         # tempfile needs an extension or `read_excel()` call will abort
         file.rename(from = file, to = paste0(file, ".", ext))
         file <- paste0(file, ".", ext)
