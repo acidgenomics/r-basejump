@@ -3,6 +3,12 @@
 \name{assert}
 \alias{assert}
 \title{Assert Checks}
+\arguments{
+\item{x}{Object.}
+
+\item{severity}{How severe should the consequences of the assertion be?
+Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+}
 \value{
 Abort on mismatch.
 }
@@ -13,14 +19,17 @@ Assert Checks
 Other Assert Checks: \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
+  \code{\link{assert_formal_gene2symbol}},
   \code{\link{assert_formal_header_level}},
   \code{\link{assert_has_rownames}},
+  \code{\link{assert_is_a_number_or_null}},
   \code{\link{assert_is_a_string_or_null}},
+  \code{\link{assert_is_an_implicit_integer}},
+  \code{\link{assert_is_an_integer_or_null}},
   \code{\link{assert_is_annotable}},
   \code{\link{assert_is_character_or_null}},
+  \code{\link{assert_is_data.frame_or_null}},
   \code{\link{assert_is_gene2symbol}},
-  \code{\link{assert_is_implicit_integer}},
-  \code{\link{assert_is_numeric_scalar_or_null}},
   \code{\link{assert_is_tx2gene}}
 }
 \keyword{internal}

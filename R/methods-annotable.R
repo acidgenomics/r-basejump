@@ -83,7 +83,7 @@ NULL
     assert_is_a_string(format)
     assert_is_subset(format, c("gene", "gene2symbol", "tx2gene"))
     assert_is_a_string_or_null(genomeBuild)
-    assert_is_numeric_scalar_or_null(release)
+    assert_is_an_implicit_integer_or_null(release)
     if (is.numeric(release)) {
         # AnnotableHub only supports releases 87 and above
         assert_all_are_greater_than_or_equal_to(release, 87L)
