@@ -16,6 +16,7 @@
 #' sanitizeColData(colData)
 sanitizeColData <- function(object) {
     assert_is_all_of(object, "DataFrame")
+    assert_is_non_empty(object)
     list <- lapply(
         X = object,
         FUN = function(x) {
