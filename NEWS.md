@@ -1,3 +1,8 @@
+## basejump 0.3.1 (2018-02-17)
+
+- Added `sanitizeColData()` function.
+
+
 ## basejump 0.3.0 (2018-02-16)
 
 - Switch to using assertive internally for assert checks.
