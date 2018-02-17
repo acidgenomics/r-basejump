@@ -1,3 +1,11 @@
+## basejump 0.3.0 (2018-02-16)
+
+- Switch to using assertive internally for assert checks.
+- Now exporting these assert check functions: `assert_formal_annotation_col()`, `assert_formal_color_function()`, `assert_formal_compress()`, `assert_formal_gene2symbol()`, `assert_formal_header_level()`, `assert_has_rownames()`, `assert_is_a_number_or_null()`, `assert_is_a_string_or_null()`, `assert_is_an_implicit_integer()`, `assert_is_an_implicit_integer_or_null()`
+`assert_is_an_integer_or_null()`, `assert_is_annotable()`, `assert_is_character_or_null()`, `assert_is_data.frame_or_null()`, `assert_is_gene2symbol()`, `assert_is_implicit_integer()`, `assert_is_implicit_integer_or_null()`, `assert_is_tx2gene()`, `has_rownames()`, `initializeDirectory()`, `is_implicit_integer()`.
+- Renamed `md*()` functions to `markdown*()`.
+
+
 ## basejump 0.2.1 (2018-02-07)
 
 - Added `convertGenesToSymbols()` and `convertTranscriptsToGenes()` functions. Previously some of this functionality was contained within the `gene2symbol()` and `tx2gene()` generics for the character method. This behavior was inconsistent with `gene2symbol()` and `tx2gene()` usage in the bcbio R packages, so I decided to split these out into separate functions. Now `gene2symbol()` and `tx2gene()` work consistently with the `annotable()` function to return gene-to-symbol and transcript-to-gene identifier mappings in a `data.frame`.
