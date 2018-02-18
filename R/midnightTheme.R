@@ -36,3 +36,10 @@ midnightTheme <- function() {
             validate = TRUE
         )
 }
+
+
+
+# Aliases ======================================================================
+#' @rdname midnightTheme
+#' @export
+midnightTheme -> theme_midnight
