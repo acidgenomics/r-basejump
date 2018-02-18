@@ -2,9 +2,12 @@
 % Please edit documentation in R/midnightTheme.R
 \name{midnightTheme}
 \alias{midnightTheme}
+\alias{theme_midnight}
 \title{Midnight Theme}
 \usage{
 midnightTheme()
+
+theme_midnight()
 }
 \value{
 ggplot theme.
