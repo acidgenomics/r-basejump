@@ -72,7 +72,7 @@ NULL
 #' @importFrom rlang .data
 #' @importFrom S4Vectors mcols
 #' @importFrom utils capture.output find tail
-.annotable <- function(
+.annotable.character <- function(  # nolint
     object,
     format = "gene",
     genomeBuild = NULL,
@@ -223,7 +223,8 @@ NULL
             # Ensure unique symbols (e.g. human, mouse)
             data[["symbol"]] <- make.unique(data[["symbol"]], sep = ".")
         }
-        data <- .prepareAnnotable(data)
+        # Sanitize using data frame method
+        data <- annotable(data)
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
@@ -330,50 +331,95 @@ NULL
 #' @importFrom rlang !! !!! sym syms
 #' @importFrom S4Vectors aggregate
 #' @importFrom stats formula
+#' @importFrom tibble as_tibble
 #'
 #' @inheritParams general
 #'
 #' @return [data.frame].
-.prepareAnnotable <- function(object) {
+.annotable.data.frame <- function(object) {  # nolint
     assert_is_data.frame(object)
     assert_is_subset(annotableCols, colnames(object))
 
-    # Check for Entrez identifier column and nest into a list, if necessary
+    # Inform the user if NA gene rows are present
+    if (has_rownames(object)) {
+        if (!identical(rownames(object), object[["ensgene"]])) {
+            setdiff <- setdiff(rownames(object), object[["ensgene"]])
+            warn(paste(
+                "Genes without annotations:", toString(sort(setdiff))
+            ))
+            object[["ensgene"]] <- rownames(object)
+        }
+    }
+    assert_all_are_not_na(object[["ensgene"]])
+
+    # Now safe to coerce to tibble
+    object <- as_tibble(object)
+
+    # Fix any `AsIs` columns resulting from DataFrame to data frame coercion
+    is.AsIs <- function(x) is(x, "AsIs")  # nolint
+    asIsCol <- any(vapply(
+        X = object,
+        FUN = is.AsIs,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    ))
+    if (isTRUE(asIsCol)) {
+        as.list <- function(x) as(x, "list")  # nolint
+        object <- mutate_if(object, is.AsIs, as.list)
+        rm(as.list)
+    }
+    rm(is.AsIs)
+
+    # Check for Entrez identifier column rename to `entrez`.
+    # ensembldb outputs as `entrezid`.
     entrezCol <- colnames(object) %>%
         .[grepl(x = ., pattern = "entrez")]
     if (length(entrezCol) && entrezCol != "entrez") {
-        # Standardize to `entrez`. ensembldb outputs as `entrezid`.
+        assert_is_a_string(entrezCol)
+        inform(paste(
+            "Renaming", entrezCol, "to entrez"
+        ))
         object <- rename(object, entrez = !!sym(entrezCol))
-        rm(entrezCol)
     }
 
-    # Check for annotable that needs the Entrez IDs nested (e.g. biomaRt output)
-    if (!is.null(object[["entrez"]]) &&
-        !is.list(object[["entrez"]]) &&
-        any(duplicated(object[["ensgene"]]))) {
-        # Alternatively can use `tidyr::nest()` approach here instead but
-        # the output structure won't be consistent with the ensembl return.
-        entrez <- aggregate(
-            formula = formula("entrez~ensgene"),
-            data = object,
-            FUN = list
-        )
-        # Now drop the `entrez` column and add the aggregated list version
-        object <- object %>%
-            mutate(entrez = NULL) %>%
-            distinct() %>%
-            left_join(entrez, by = "ensgene")
-    }
-
-    # Collapse any remaining duplicated rows by Ensembl ID, if necessary
+    # Detect if we need to attempt to collapse the rows per gene
     if (any(duplicated(object[["ensgene"]]))) {
-        object <- object %>%
-            group_by(!!!syms(annotableCols)) %>%
-            summarize_all(funs(
-                collapseToString(object = ., unique = TRUE, sort = TRUE)
-            )) %>%
-            ungroup()
+        inform(paste(
+            "Duplicate gene identifier rows detected.",
+            "Attempting to collapse."
+        ))
+
+        # First, check and see if the dupes are due to Entrez. This happens
+        # with biomaRt output, and the presaved annotables tibbles.
+        if (
+            !is.null(object[["entrez"]]) &&
+            !is.list(object[["entrez"]])
+        ) {
+            # Alternatively can use `tidyr::nest()` approach here instead but
+            # the output structure won't be consistent with the ensembl return.
+            entrez <- aggregate(
+                formula = formula("entrez~ensgene"),
+                data = object,
+                FUN = list
+            )
+            # Now drop the `entrez` column and add the aggregated list version
+            object <- object %>%
+                mutate(entrez = NULL) %>%
+                distinct() %>%
+                left_join(entrez, by = "ensgene")
+        }
+
+        if (any(duplicated(object[["ensgene"]]))) {
+            object <- object %>%
+                group_by(!!!syms(annotableCols)) %>%
+                summarize_all(funs(
+                    collapseToString(object = ., unique = TRUE, sort = TRUE)
+                )) %>%
+                ungroup()
+        }
     }
+
+    assert_has_no_duplicates(object[["ensgene"]])
 
     object %>%
         camel() %>%
@@ -393,7 +439,7 @@ NULL
 setMethod(
     "annotable",
     signature("character"),
-    .annotable)
+    .annotable.character)
 
 
 
@@ -402,4 +448,4 @@ setMethod(
 setMethod(
     "annotable",
     signature("data.frame"),
-    .prepareAnnotable)
+    .annotable.data.frame)
