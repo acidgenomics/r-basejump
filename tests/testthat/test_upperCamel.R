@@ -1,8 +1,6 @@
 context("upperCamel")
 
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 test_that("Character", {
     expect_identical(
