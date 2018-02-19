@@ -379,41 +379,25 @@ NULL
         object <- rename(object, entrez = !!sym(entrezCol))
     }
 
-    # Detect if we need to attempt to collapse the rows per gene
-    if (any(duplicated(object[["ensgene"]]))) {
-        inform(paste(
-            "Duplicate gene identifier rows detected.",
-            "Attempting to collapse."
-        ))
-
-        # First, check and see if the dupes are due to Entrez. This happens
-        # with biomaRt output, and the presaved annotables tibbles.
-        if (
-            !is.null(object[["entrez"]]) &&
-            !is.list(object[["entrez"]])
-        ) {
-            # Alternatively can use `tidyr::nest()` approach here instead but
-            # the output structure won't be consistent with the ensembl return.
-            entrez <- aggregate(
-                formula = formula("entrez~ensgene"),
-                data = object,
-                FUN = list
-            )
-            # Now drop the `entrez` column and add the aggregated list version
-            object <- object %>%
-                mutate(entrez = NULL) %>%
-                distinct() %>%
-                left_join(entrez, by = "ensgene")
-        }
-
-        if (any(duplicated(object[["ensgene"]]))) {
-            object <- object %>%
-                group_by(!!!syms(annotableCols)) %>%
-                summarize_all(funs(
-                    collapseToString(object = ., unique = TRUE, sort = TRUE)
-                )) %>%
-                ungroup()
-        }
+    # Collapse (nest) Entrez identifiers from long format, if necessary
+    if (
+        any(duplicated(object[["ensgene"]])) &&
+        !is.null(object[["entrez"]]) &&
+        !is.list(object[["entrez"]])
+    ) {
+        inform("Nesting Entrez identifiers")
+        # Alternatively can use `tidyr::nest()` approach here instead but
+        # the output structure won't be consistent with the ensembl return.
+        entrez <- aggregate(
+            formula = formula("entrez~ensgene"),
+            data = object,
+            FUN = list
+        )
+        # Now drop the `entrez` column and add the aggregated list version
+        object <- object %>%
+            mutate(entrez = NULL) %>%
+            distinct() %>%
+            left_join(entrez, by = "ensgene")
     }
 
     assert_has_no_duplicates(object[["ensgene"]])
