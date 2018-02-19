@@ -24,10 +24,3 @@ assertIsAnnotable <- function(x, severity = "stop") {
         y = colnames(x),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsAnnotable
-#' @export
-assertIsAnnotable -> assert_is_annotable

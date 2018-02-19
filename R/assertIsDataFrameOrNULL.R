@@ -20,10 +20,3 @@ assertIsDataFrameOrNULL <- function(x, severity = "stop") {
         classes = c("data.frame", "NULL"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsDataFrameOrNULL
-#' @export
-assertIsDataFrameOrNULL -> assert_is_data.frame_or_null

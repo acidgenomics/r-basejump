@@ -139,16 +139,14 @@ checkTx2gene <- function(...) {
 # v0.3.1 =======================================================================
 #' @rdname deprecated
 #' @export
-assertIsAHeaderLevel -> assertFormalHeaderLevel
+assertFormalHeaderLevel <- function(...) {
+    .Deprecated("assertIsAHeaderLevel")
+    assertIsAHeaderLevel(...)
+}
 
 #' @rdname deprecated
 #' @export
-assertFormalHeaderLevel -> assert_formal_header_level
-
-#' @rdname deprecated
-#' @export
-assertIsHexColorFunctionOrNULL -> assertFormalColorFunction
-
-#' @rdname deprecated
-#' @export
-assertFormalColorFunction -> assert_formal_color_function
+ assertFormalColorFunction <- function(...) {
+     .Deprecated("assertIsHexColorFunctionOrNULL")
+     assertIsHexColorFunctionOrNULL(...)
+ }

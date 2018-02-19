@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsAnnotable.R
 \name{assertIsAnnotable}
 \alias{assertIsAnnotable}
-\alias{assert_is_annotable}
 \title{Ensembl Annotations Assert Check}
 \usage{
 assertIsAnnotable(x, severity = "stop")
-
-assert_is_annotable(x, severity = "stop")
 }
 \arguments{
 \item{x}{\link{data.frame} containing Ensembl gene annotations returned

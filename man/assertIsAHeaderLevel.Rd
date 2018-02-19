@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsAHeaderLevel.R
 \name{assertIsAHeaderLevel}
 \alias{assertIsAHeaderLevel}
-\alias{assert_is_a_header_level}
 \title{Is a Markdown Header Level Assert Check}
 \usage{
 assertIsAHeaderLevel(x, severity = "stop")
-
-assert_is_a_header_level(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

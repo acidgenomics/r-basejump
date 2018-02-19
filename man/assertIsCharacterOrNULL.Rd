@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsCharacterOrNULL.R
 \name{assertIsCharacterOrNULL}
 \alias{assertIsCharacterOrNULL}
-\alias{assert_is_character_or_null}
 \title{Character Vector or NULL Assert Check}
 \usage{
 assertIsCharacterOrNULL(x, severity = "stop")
-
-assert_is_character_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

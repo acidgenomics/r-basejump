@@ -27,10 +27,3 @@ assertAllAreNonExisting <- function(
         ))
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertAllAreNonExisting
-#' @export
-assertAllAreNonExisting -> assert_all_are_non_existing

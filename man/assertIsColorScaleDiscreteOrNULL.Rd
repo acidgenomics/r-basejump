@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsColorScaleDiscreteOrNULL.R
 \name{assertIsColorScaleDiscreteOrNULL}
 \alias{assertIsColorScaleDiscreteOrNULL}
-\alias{assert_is_color_scale_discrete_or_null}
 \title{Is Color Palette Scale Discrete or NULL Assert Check}
 \usage{
 assertIsColorScaleDiscreteOrNULL(x, severity = "stop")
-
-assert_is_color_scale_discrete_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

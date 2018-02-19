@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsFillScaleDiscreteOrNULL.R
 \name{assertIsFillScaleDiscreteOrNULL}
 \alias{assertIsFillScaleDiscreteOrNULL}
-\alias{assert_is_fill_scale_discrete_or_null}
 \title{Is Fill Palette Scale Discrete or NULL Assert Check}
 \usage{
 assertIsFillScaleDiscreteOrNULL(x, severity = "stop")
-
-assert_is_fill_scale_discrete_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

@@ -32,10 +32,3 @@ assertIsFillScaleContinuousOrNULL <- function(x, severity = "stop") {
             severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsFillScaleContinuousOrNULL
-#' @export
-assertIsFillScaleContinuousOrNULL -> assert_is_fill_scale_continuous_or_null

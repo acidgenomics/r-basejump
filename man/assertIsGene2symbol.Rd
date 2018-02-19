@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsGene2symbol.R
 \name{assertIsGene2symbol}
 \alias{assertIsGene2symbol}
-\alias{assert_is_gene2symbol}
 \title{Check Gene to Symbol Mapping Data}
 \usage{
 assertIsGene2symbol(x, severity = "stop")
-
-assert_is_gene2symbol(x, severity = "stop")
 }
 \arguments{
 \item{x}{\link{data.frame} containing Ensembl gene identifier to gene symbol

@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertAllAreNonExisting.R
 \name{assertAllAreNonExisting}
 \alias{assertAllAreNonExisting}
-\alias{assert_all_are_non_existing}
 \title{All Variables Do Not Exist Assert Check}
 \usage{
 assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
-
-assert_all_are_non_existing(x, envir = parent.frame(), inherits = FALSE)
 }
 \arguments{
 \item{x}{Character vector of variable names to check in environment.}

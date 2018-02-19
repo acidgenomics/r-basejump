@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsHexColorFunctionOrNULL.R
 \name{assertIsHexColorFunctionOrNULL}
 \alias{assertIsHexColorFunctionOrNULL}
-\alias{assert_is_hex_color_function_or_null}
 \title{Is Hex Color Function or NULL Assert Check}
 \usage{
 assertIsHexColorFunctionOrNULL(x, severity = "stop")
-
-assert_is_hex_color_function_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

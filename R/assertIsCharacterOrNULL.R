@@ -20,10 +20,3 @@ assertIsCharacterOrNULL <- function(x, severity = "stop") {
         classes = c("character", "NULL"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsCharacterOrNULL
-#' @export
-assertIsCharacterOrNULL -> assert_is_character_or_null

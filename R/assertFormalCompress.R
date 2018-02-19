@@ -20,10 +20,3 @@ assertFormalCompress <- function(x, severity = "stop") {
             severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertFormalCompress
-#' @export
-assertFormalCompress -> assert_formal_compress
