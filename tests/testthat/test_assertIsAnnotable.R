@@ -8,13 +8,10 @@ test_that("Success", {
 test_that("Failure", {
     expect_error(
         assertIsAnnotable(mtcars),
-        "is_subset"
+        "is_subset : "
     )
-})
-
-test_that("Object isn't a data.frame", {
     expect_error(
         assertIsAnnotable(NULL),
-        "is_data.frame"
+        "is_data.frame : x"
     )
 })
