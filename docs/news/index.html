@@ -92,8 +92,12 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-3-1-2018-02-17" class="anchor"></a>basejump 0.3.1 (2018-02-17)</h2>
 <ul>
+<li>Now exporting all assert checks primarily named in camel case. Snake case aliases are also exported to match the syntax for the assertive package.</li>
 <li>Added <code><a href="../reference/sanitizeColData.html">sanitizeColData()</a></code> function.</li>
-<li>Added <code><a href="../reference/assertAllAreNonExisting.html">assert_all_are_non_existing()</a></code> function.</li>
+<li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
+<li>Now exporting <code><a href="../reference/midnightTheme.html">midnightTheme()</a></code> as a <code><a href="../reference/midnightTheme.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
+<li>Added working examples and code coverage for all assert check functions.</li>
+<li>Simplified the internal collapse code for <code>annotable()</code> to simply work on the Entrez identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code>collapseToString()</code>.</li>
 </ul>
 </div>
     <div id="basejump-0-3-0-2018-02-16" class="section level2">

@@ -14,4 +14,7 @@ mpg
 \description{
 Miles per Gallon
 }
+\examples{
+glimpse(mpg)
+}
 \keyword{internal}

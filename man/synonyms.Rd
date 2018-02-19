@@ -11,6 +11,10 @@ synonyms
 \description{
 Gene Symbol Synonyms
 }
+\examples{
+names(synonyms)
+glimpse(synonyms[["homoSapiens"]])
+}
 \author{
 Michael Steinbaugh
 }

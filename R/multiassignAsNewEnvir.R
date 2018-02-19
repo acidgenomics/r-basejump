@@ -11,8 +11,6 @@
 #' @return Character vector of assigned objects in the new environment.
 #' @export
 #'
-#' @seealso [Biobase::multiassign()].
-#'
 #' @examples
 #' multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 multiassignAsNewEnvir <- function(
