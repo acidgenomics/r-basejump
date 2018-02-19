@@ -36,7 +36,6 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},
@@ -51,6 +50,7 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

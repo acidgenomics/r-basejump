@@ -3,7 +3,7 @@
 \name{assertIsFillScaleContinuousOrNULL}
 \alias{assertIsFillScaleContinuousOrNULL}
 \alias{assert_is_fill_scale_continuous_or_null}
-\title{Is Fill Palette Scale Continuous Assert Check}
+\title{Is Fill Palette Scale Continuous or NULL Assert Check}
 \usage{
 assertIsFillScaleContinuousOrNULL(x, severity = "stop")
 
@@ -19,7 +19,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Fill Palette Scale Continuous Assert Check
+Is Fill Palette Scale Continuous or NULL Assert Check
 }
 \examples{
 # Success
@@ -38,7 +38,6 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},
@@ -53,6 +52,7 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

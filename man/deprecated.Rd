@@ -19,6 +19,8 @@
 \alias{checkTx2gene}
 \alias{assertFormalHeaderLevel}
 \alias{assert_formal_header_level}
+\alias{assertFormalColorFunction}
+\alias{assert_formal_color_function}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -54,6 +56,10 @@ checkTx2gene(...)
 assertFormalHeaderLevel(x, severity = "stop")
 
 assert_formal_header_level(x, severity = "stop")
+
+assertFormalColorFunction(x, severity = "stop")
+
+assert_formal_color_function(x, severity = "stop")
 }
 \arguments{
 \item{...}{Additional arguments.}

@@ -57,7 +57,6 @@ isImplicitInteger(1L)
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},
@@ -73,5 +72,6 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }
