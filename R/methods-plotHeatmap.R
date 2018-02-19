@@ -18,10 +18,10 @@
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
 #' @param clusterRows Logical determining if rows should be arranged with
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
-#' @param color Colors to use for plot. Defaults to the [viridis::viridis()]
+#' @param color Colors to use for plot. Defaults to the [viridis()]
 #'   palette.
 #' @param legendColor Colors to use for legend labels. Defaults to the
-#'   [viridis::viridis()] palette.
+#'   [viridis()] palette.
 #' @param title *Optional.* Plot title.
 #' @param ... Passthrough arguments to [pheatmap::pheatmap()].
 #'
@@ -39,19 +39,18 @@ NULL
 # Constructors =================================================================
 #' @importFrom dplyr mutate_all
 #' @importFrom grDevices colorRampPalette
+#' @importFrom magrittr set_names
 #' @importFrom pheatmap pheatmap
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom stats setNames
 #' @importFrom tibble column_to_rownames rownames_to_column
-#' @importFrom viridis viridis
 .plotHeatmap <- function(
     object,
     scale = "row",
     annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis,
-    legendColor = viridis::viridis,
+    color = viridis,
+    legendColor = viridis,
     title = NULL,
     ...) {
     assert_has_dims(object)
@@ -60,12 +59,12 @@ NULL
     object <- as.matrix(object)
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
-    assert_formal_annotation_col(object, annotationCol)
+    assertFormalAnnotationCol(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
-    assert_formal_color_function(color)
-    assert_formal_color_function(legendColor)
-    assert_is_a_string_or_null(title)
+    assertFormalColorFunction(color)
+    assertFormalColorFunction(legendColor)
+    assertIsAStringOrNULL(title)
 
     # Drop rows that are all zero, when row scaling is applied
     if (scale == "row") {
@@ -99,7 +98,7 @@ NULL
                 names(colors) <- col
                 colors
             }) %>%
-            setNames(colnames(annotationCol))
+            set_names(colnames(annotationCol))
     } else {
         annotationColors <- NULL
     }
@@ -159,7 +158,6 @@ setMethod(
 
 
 #' @rdname plotHeatmap
-#' @importFrom viridis viridis
 #' @export
 setMethod(
     "plotHeatmap",

@@ -27,18 +27,15 @@ microplate <- function(
     wells = 96L,
     controls = 0L,
     prefix = NULL) {
-    assert_is_integer(plates)
-    assert_is_scalar(plates)
+    assert_is_an_integer(plates)
     assert_all_are_positive(plates)
-    assert_is_integer(wells)
-    assert_is_scalar(wells)
+    assert_is_an_integer(wells)
     assert_all_are_positive(wells)
     assert_is_subset(wells, c(96L, 384L))
-    assert_is_integer(controls)
-    assert_is_scalar(controls)
+    assert_is_an_integer(controls)
     assert_all_are_non_negative(controls)
     assert_is_subset(controls, 0L:12L)
-    assert_is_a_string_or_null(prefix)
+    assertIsAStringOrNULL(prefix)
 
     if (wells == 96L) {
         row <- 8L

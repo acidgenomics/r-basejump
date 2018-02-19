@@ -95,7 +95,6 @@ NULL
     } else if (!is.null(names(object))) {
         .dotted.names(object)
     } else {
-        warn("Returning without dotted case sanitization applied")
         object
     }
 }
@@ -108,8 +107,7 @@ NULL
     colnames = TRUE) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
-        assert_has_rownames(object)
+    if (isTRUE(rownames) && hasRownames(object)) {
         rownames(object) <- .dotted(rownames(object))
     }
     if (isTRUE(colnames) && has_colnames(object)) {

@@ -195,7 +195,7 @@ NULL
 
 .detectOrganism.dim <- function(object) {  # nolint
     # Assume gene identifiers are defined in the rownames
-    assert_has_rownames(object)
+    assertHasRownames(object)
     .returnUniqueOrganism(rownames(object))
 }
 

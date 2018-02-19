@@ -54,8 +54,8 @@ NULL
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assert_is_data.frame_or_null(gene2symbol)
-    assert_is_a_string_or_null(organism)
+    assertIsDataFrameOrNULL(gene2symbol)
+    assertIsAStringOrNULL(organism)
     assert_is_a_bool(uniqueSymbol)
 
     # If no gene2symbol is provided, fall back to using Ensembl annotations
@@ -77,7 +77,7 @@ NULL
             uniqueSymbol = uniqueSymbol,
             quiet = quiet)
     } else {
-        assert_is_gene2symbol(gene2symbol)
+        assertIsGene2symbol(gene2symbol)
         if (isTRUE(uniqueSymbol)) {
             gene2symbol[["symbol"]] <- make.unique(gene2symbol[["symbol"]])
         }
@@ -116,7 +116,7 @@ NULL
     uniqueSymbol = FALSE,
     quiet = FALSE) {
     # Passthrough: gene2symbol, organism, release, quiet
-    assert_has_rownames(object)
+    assertHasRownames(object)
     rownames <- rownames(object)
     rownames <- .convertGenesToSymbols(
         object = rownames,
