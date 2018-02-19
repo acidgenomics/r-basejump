@@ -82,8 +82,8 @@ NULL
     assert_is_a_string(object)
     assert_is_a_string(format)
     assert_is_subset(format, c("gene", "gene2symbol", "tx2gene"))
-    assert_is_a_string_or_null(genomeBuild)
-    assert_is_an_implicit_integer_or_null(release)
+    assertIsAStringOrNULL(genomeBuild)
+    assertIsAnImplicitIntegerOrNULL(release)
     if (is.numeric(release)) {
         # AnnotableHub only supports releases 87 and above
         assert_all_are_greater_than_or_equal_to(release, 87L)
@@ -250,7 +250,7 @@ NULL
             set_rownames(.[["enstxp"]])
     }
     assert_is_data.frame(data)
-    assert_has_rownames(data)
+    assertHasRownames(data)
     data
 }
 
@@ -341,7 +341,7 @@ NULL
     assert_is_subset(annotableCols, colnames(object))
 
     # Inform the user if NA gene rows are present
-    if (has_rownames(object)) {
+    if (hasRownames(object)) {
         if (!identical(rownames(object), object[["ensgene"]])) {
             setdiff <- setdiff(rownames(object), object[["ensgene"]])
             warn(paste(

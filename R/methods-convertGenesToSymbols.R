@@ -116,7 +116,7 @@ NULL
     uniqueSymbol = FALSE,
     quiet = FALSE) {
     # Passthrough: gene2symbol, organism, release, quiet
-    assert_has_rownames(object)
+    assertHasRownames(object)
     rownames <- rownames(object)
     rownames <- .convertGenesToSymbols(
         object = rownames,

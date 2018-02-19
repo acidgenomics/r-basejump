@@ -14,7 +14,7 @@ assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
         severity = severity)
     if (is.data.frame(colData)) {
         assert_has_colnames(colData, severity = severity)
-        assert_has_rownames(colData, severity = severity)
+        assertHasRownames(colData, severity = severity)
         assert_are_identical(
             x = colnames(x),
             y = rownames(colData),
