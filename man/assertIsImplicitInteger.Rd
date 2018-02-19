@@ -11,6 +11,7 @@
 \alias{assert_is_an_implicit_integer_or_null}
 \alias{assert_is_implicit_integer}
 \alias{assert_is_implicit_integer_or_null}
+\alias{is_implicit_integer}
 \title{Implicit Integer Assert Check}
 \usage{
 assertIsAnImplicitInteger(x)
@@ -30,6 +31,8 @@ assert_is_an_implicit_integer_or_null(x)
 assert_is_implicit_integer(x)
 
 assert_is_implicit_integer_or_null(x)
+
+is_implicit_integer(x)
 }
 \arguments{
 \item{x}{Object.}

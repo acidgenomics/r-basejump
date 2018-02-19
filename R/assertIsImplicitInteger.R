@@ -80,6 +80,6 @@ assertIsImplicitInteger -> assert_is_implicit_integer
 #' @export
 assertIsImplicitIntegerOrNULL -> assert_is_implicit_integer_or_null
 
-#' @rdname isImplicitInteger
+#' @rdname assertIsImplicitInteger
 #' @export
 isImplicitInteger -> is_implicit_integer
