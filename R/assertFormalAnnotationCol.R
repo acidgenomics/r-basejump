@@ -1,0 +1,34 @@
+#' Annotation Column Formal Assert Check
+#'
+#' @family Assert Checks
+#' @inherit assert
+#'
+#' @param colData Column data.
+#'
+#' @export
+assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
+    assert_has_dims(x, severity = severity)
+    assert_is_any_of(
+        x = colData,
+        classes = c("data.frame", "logical", "NULL"),
+        severity = severity)
+    if (is.data.frame(colData)) {
+        assert_has_colnames(colData, severity = severity)
+        assert_has_rownames(colData, severity = severity)
+        assert_are_identical(
+            x = colnames(x),
+            y = rownames(colData),
+            severity = severity)
+        lapply(colData, assert_is_factor)
+    }
+    if (is.logical(colData)) {
+        assert_is_identical_to_na(colData, severity = severity)
+    }
+}
+
+
+
+# Aliases ======================================================================
+#' @rdname assertFormalAnnotationCol
+#' @export
+assertFormalAnnotationCol -> assert_formal_annotation_col
