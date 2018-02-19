@@ -25,6 +25,16 @@ Abort on mismatch.
 \description{
 Gene to Symbol Mappings Formal Assert Check
 }
+\examples{
+gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+genes <- head(rownames(gene2symbol), 2L)
+x <- data.frame(
+    sample1 = c(1L, 2L),
+    saple2 = c(3L, 4L),
+    row.names = genes,
+    stringsAsFactors = FALSE)
+assertFormalGene2symbol(x, genes, gene2symbol)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},

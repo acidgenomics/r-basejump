@@ -43,6 +43,17 @@ Abort on mismatch.
 \description{
 Implicit Integer Assert Check
 }
+\examples{
+assertIsAnImplicitInteger(1)
+assertIsAnImplicitIntegerOrNULL(1)
+assertIsAnImplicitIntegerOrNULL(NULL)
+assertIsImplicitInteger(c(1, 2))
+assertIsImplicitIntegerOrNULL(c(1, 2))
+assertIsImplicitIntegerOrNULL(NULL)
+isImplicitInteger(1)
+# Also returns `TRUE` for explicit integers
+isImplicitInteger(1L)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},

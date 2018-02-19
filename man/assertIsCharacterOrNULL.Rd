@@ -21,6 +21,16 @@ Abort on mismatch.
 \description{
 Character Vector or NULL Assert Check
 }
+\examples{
+# Success
+assertIsCharacterOrNULL(c("hello", "world"))
+assertIsCharacterOrNULL(NULL)
+
+# Failure
+tryCatch(
+    assertIsCharacterOrNULL(1L),
+    error = function(e) e)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},

@@ -24,8 +24,9 @@ Is an Integer or NULL Assert Check
 \examples{
 # Success
 assertIsAnIntegerOrNULL(1L)
+assertIsAnIntegerOrNULL(NULL)
 
-# Failure (not scalar)
+# Failure
 tryCatch(
     assertIsAnIntegerOrNULL(c(1L, 2L)),
     error = function(e) e)

@@ -4,6 +4,16 @@
 #' @inherit assert
 #'
 #' @export
+#'
+#' @examples
+#' # Success
+#' assertIsANumberOrNULL(1.1)
+#' assertIsANumberOrNULL(NULL)
+#'
+#' # Failure
+#' tryCatch(
+#'     assertIsANumberOrNULL(c(1.1, 1.2)),
+#'     error = function(e) e)
 assertIsANumberOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,

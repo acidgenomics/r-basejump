@@ -4,6 +4,9 @@
 #' @inherit assert
 #'
 #' @export
+#'
+#' @examples
+#' assertFormalCompress("xz")
 assertFormalCompress <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,

@@ -26,6 +26,28 @@ data frames.
 \code{tibble::has_rownames()} works better than \code{assertive::has_rownames()}
 for data frames and tibbles.
 }
+\examples{
+data <- data.frame(
+    sample1 = c(1L, 2L),
+    sample2 = c(3L, 4L),
+    row.names = c("gene1", "gene2"),
+    stringsAsFactors = FALSE)
+assertHasRownames(data)
+
+# Now set the rownames as NULL
+rownames(data) <- NULL
+tryCatch(
+    assertHasRownames(data),
+    error = function(e) e)
+
+tibble <- tibble(
+    sample1 = c(1L, 2L),
+    sample2 = c(3L, 4L)
+)
+tryCatch(
+    assertHasRownames(tibble),
+    error = function(e) e)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
