@@ -24,6 +24,7 @@ Data Frame or NULL Assert Check
 \examples{
 # Success
 assertIsDataFrameOrNULL(mtcars)
+assertIsDataFrameOrNULL(NULL)
 
 # Failure
 tryCatch(

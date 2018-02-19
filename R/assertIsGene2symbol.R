@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' # Success
-#' gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
+#' gene2symbol <- gene2symbol("Homo sapiens")
 #' assertIsGene2symbol(gene2symbol)
 #'
 #' # Failure

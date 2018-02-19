@@ -8,11 +8,22 @@
 #' @param gene2symbol Gene-to-symbol mappings data frame.
 #'
 #' @export
+#'
+#' @examples
+#' gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+#' genes <- head(rownames(gene2symbol), 2L)
+#' x <- data.frame(
+#'     sample1 = c(1L, 2L),
+#'     saple2 = c(3L, 4L),
+#'     row.names = genes,
+#'     stringsAsFactors = FALSE)
+#' assertFormalGene2symbol(x, genes, gene2symbol)
 assertFormalGene2symbol <- function(
     x,
     genes,
     gene2symbol,
     severity = "stop") {
+    assertHasRownames(x)
     assert_is_any_of(genes, c("character", "NULL"))
     if (is.character(genes)) {
         assert_is_subset(genes, rownames(x))

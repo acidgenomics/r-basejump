@@ -21,6 +21,9 @@ Abort on mismatch.
 \description{
 Compression Formal Assert Check
 }
+\examples{
+assertFormalCompress("xz")
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},

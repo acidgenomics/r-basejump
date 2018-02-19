@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # Success
-#' tx2gene <- annotable("Homo sapiens", format = "tx2gene")
+#' tx2gene <- tx2gene("Homo sapiens")
 #' assertIsTx2gene(tx2gene)
 #'
 #' # Failure

@@ -8,6 +8,7 @@
 #' @examples
 #' # Success
 #' assertIsDataFrameOrNULL(mtcars)
+#' assertIsDataFrameOrNULL(NULL)
 #'
 #' # Failure
 #' tryCatch(

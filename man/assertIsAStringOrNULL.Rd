@@ -21,6 +21,16 @@ Abort on mismatch.
 \description{
 Is a String or NULL Assert Check
 }
+\examples{
+# Success
+assertIsAStringOrNULL("hello world")
+assertIsAStringOrNULL(NULL)
+
+# Failure
+tryCatch(
+    assertIsAStringOrNULL(c("hello", "world")),
+    error = function(e) e)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
