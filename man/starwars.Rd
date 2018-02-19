@@ -14,4 +14,7 @@ starwars
 \description{
 Starwars Characters
 }
+\examples{
+glimpse(starwars)
+}
 \keyword{internal}

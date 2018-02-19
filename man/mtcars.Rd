@@ -14,4 +14,7 @@ mtcars
 \description{
 Motor Trend Car Road Tests
 }
+\examples{
+glimpse(mtcars)
+}
 \keyword{internal}

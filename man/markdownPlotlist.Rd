@@ -21,6 +21,9 @@ mdPlotlist(...)
 
 \item{headerLevel}{Header level.}
 }
+\value{
+Graphical output of plots, separated by Markdown headers.
+}
 \description{
 Markdown Plotlist
 }
