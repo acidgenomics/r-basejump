@@ -144,3 +144,11 @@ assertIsAHeaderLevel -> assertFormalHeaderLevel
 #' @rdname deprecated
 #' @export
 assertFormalHeaderLevel -> assert_formal_header_level
+
+#' @rdname deprecated
+#' @export
+assertIsHexColorFunctionOrNULL -> assertFormalColorFunction
+
+#' @rdname deprecated
+#' @export
+assertFormalColorFunction -> assert_formal_color_function

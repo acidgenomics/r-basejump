@@ -1,4 +1,4 @@
-#' Color Function Formal Assert Check
+#' Is Hex Color Function or NULL Assert Check
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -6,8 +6,8 @@
 #' @export
 #'
 #' @examples
-#' assertFormalColorFunction(viridis)
-assertFormalColorFunction <- function(x, severity = "stop") {
+#' assertIsHexColorFunctionOrNULL(viridis)
+assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
         classes = c("function", "NULL"),
@@ -27,6 +27,6 @@ assertFormalColorFunction <- function(x, severity = "stop") {
 
 
 # Aliases ======================================================================
-#' @rdname assertFormalColorFunction
+#' @rdname assertIsHexColorFunctionOrNULL
 #' @export
-assertFormalColorFunction -> assert_formal_color_function
+assertIsHexColorFunctionOrNULL -> assert_is_hex_color_function_or_null
