@@ -47,8 +47,8 @@ NULL
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
     assert_is_any_of(tx2gene, c("data.frame", "NULL"))
-    assert_is_a_string_or_null(organism)
-    assert_is_an_implicit_integer_or_null(release)
+    assertIsAStringOrNULL(organism)
+    assertIsAnImplicitIntegerOrNULL(release)
     assert_is_a_bool(quiet)
 
     # If no tx2gene is provided, fall back to using Ensembl annotations
@@ -69,7 +69,7 @@ NULL
             release = release,
             quiet = quiet)
     } else {
-        assert_is_tx2gene(tx2gene)
+        assertIsTx2gene(tx2gene)
     }
 
     tx2gene <- tx2gene %>%

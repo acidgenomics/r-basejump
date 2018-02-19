@@ -16,8 +16,8 @@ NULL
 #' @rdname assertIsImplicitInteger
 #' @export
 assertIsAnImplicitInteger <- function(x) {
+    assert_is_a_number(x)
     assert_is_implicit_integer(x)
-    assert_is_scalar(x)
 }
 
 
@@ -25,8 +25,8 @@ assertIsAnImplicitInteger <- function(x) {
 #' @rdname assertIsImplicitInteger
 #' @export
 assertIsAnImplicitIntegerOrNULL <- function(x) {
-    assert_is_implicit_integer_or_null(x)
-    if (is_implicit_integer(x)) {
+    assertIsImplicitIntegerOrNULL(x)
+    if (isImplicitInteger(x)) {
         assert_is_a_number(x)
     }
 }
@@ -36,7 +36,7 @@ assertIsAnImplicitIntegerOrNULL <- function(x) {
 #' @rdname assertIsImplicitInteger
 #' @export
 assertIsImplicitInteger <- function(x) {
-    stopifnot(is_implicit_integer(x))
+    stopifnot(isImplicitInteger(x))
 }
 
 
@@ -44,7 +44,7 @@ assertIsImplicitInteger <- function(x) {
 #' @rdname assertIsImplicitInteger
 #' @export
 assertIsImplicitIntegerOrNULL <- function(x) {
-    stopifnot(any(is_implicit_integer(x), is.null(x)))
+    stopifnot(any(isImplicitInteger(x), is.null(x)))
 }
 
 

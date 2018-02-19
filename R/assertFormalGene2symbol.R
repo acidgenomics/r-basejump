@@ -19,7 +19,7 @@ assertFormalGene2symbol <- function(
     }
     assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
     if (is.data.frame(gene2symbol)) {
-        assert_is_gene2symbol(gene2symbol)
+        assertIsGene2symbol(gene2symbol)
         assert_is_subset(rownames(x), rownames(gene2symbol))
     }
 }
