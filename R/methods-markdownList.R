@@ -72,5 +72,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 mdList <- function(...) {
-    markdownList(...)
+    markdownList(...)  # nocov
 }

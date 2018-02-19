@@ -51,5 +51,5 @@ setMethod(
 #' @rdname markdownPlotlist
 #' @export
 mdPlotlist <- function(...) {
-    markdownPlotlist(...)
+    markdownPlotlist(...)  # nocov
 }

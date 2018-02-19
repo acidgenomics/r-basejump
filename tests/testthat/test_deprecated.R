@@ -25,7 +25,13 @@ test_that("Soft deprecations", {
     soft <- c(
         "pct",
         "fc2lr",
-        "lr2fc"
+        "lr2fc",
+        "checkAnnotable",
+        "checkGene2symbol",
+        "checkTx2gene",
+        "assertFormalHeaderLevel",
+        "assertFormalColorFunction",
+        "initializeDir"
     )
     invisible(lapply(
         X = soft,
