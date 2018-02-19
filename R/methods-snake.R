@@ -60,7 +60,6 @@ NULL
     } else if (!is.null(names(object))) {
         .snake.names(object)
     } else {
-        warn("Returning without snake case sanitization applied")
         object
     }
 }
@@ -73,7 +72,7 @@ NULL
     colnames = TRUE) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
+    if (isTRUE(rownames) && hasRownames(object)) {
         rownames(object) <- .snake(rownames(object))
     }
     if (isTRUE(colnames) && has_colnames(object)) {

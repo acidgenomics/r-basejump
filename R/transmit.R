@@ -8,7 +8,6 @@
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines
-#' @importFrom stats setNames
 #' @importFrom stringr str_extract str_subset
 #' @importFrom utils download.file
 #'
@@ -51,7 +50,7 @@ transmit <- function(
     }
     localDir <- initializeDirectory(localDir)
     assert_is_a_string(pattern)
-    assert_is_character_or_null(rename)
+    assertIsCharacterOrNULL(rename)
     assert_is_a_bool(compress)
     assert_is_a_bool(quiet)
 

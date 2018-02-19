@@ -6,6 +6,10 @@
 \arguments{
 \item{x}{Object.}
 
+\item{envir}{Environment.}
+
+\item{inherits}{Should the enclosing frames of the environment be searched?}
+
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
@@ -16,20 +20,21 @@ Abort on mismatch.
 Assert Checks
 }
 \seealso{
-Other Assert Checks: \code{\link{assert_formal_annotation_col}},
-  \code{\link{assert_formal_color_function}},
-  \code{\link{assert_formal_compress}},
-  \code{\link{assert_formal_gene2symbol}},
-  \code{\link{assert_formal_header_level}},
-  \code{\link{assert_has_rownames}},
-  \code{\link{assert_is_a_number_or_null}},
-  \code{\link{assert_is_a_string_or_null}},
-  \code{\link{assert_is_an_implicit_integer}},
-  \code{\link{assert_is_an_integer_or_null}},
-  \code{\link{assert_is_annotable}},
-  \code{\link{assert_is_character_or_null}},
-  \code{\link{assert_is_data.frame_or_null}},
-  \code{\link{assert_is_gene2symbol}},
-  \code{\link{assert_is_tx2gene}}
+Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertFormalAnnotationCol}},
+  \code{\link{assertFormalColorFunction}},
+  \code{\link{assertFormalCompress}},
+  \code{\link{assertFormalGene2symbol}},
+  \code{\link{assertFormalHeaderLevel}},
+  \code{\link{assertHasRownames}},
+  \code{\link{assertIsANumberOrNULL}},
+  \code{\link{assertIsAStringOrNULL}},
+  \code{\link{assertIsAnIntegerOrNULL}},
+  \code{\link{assertIsAnnotable}},
+  \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsImplicitInteger}},
+  \code{\link{assertIsTx2gene}}
 }
 \keyword{internal}

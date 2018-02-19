@@ -10,8 +10,8 @@
 plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NULL,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
-  legendColor = viridis::viridis, title = NULL, ...)
+  clusterCols = TRUE, clusterRows = TRUE, color = viridis,
+  legendColor = viridis, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -31,11 +31,11 @@ hierarchical clustering. Alternatively, can define an \code{hclust} object.}
 \item{clusterRows}{Logical determining if rows should be arranged with
 hierarchical clustering. Alternatively, can define an \code{hclust} object.}
 
-\item{color}{Colors to use for plot. Defaults to the \code{\link[viridis:viridis]{viridis::viridis()}}
+\item{color}{Colors to use for plot. Defaults to the \code{\link[=viridis]{viridis()}}
 palette.}
 
 \item{legendColor}{Colors to use for legend labels. Defaults to the
-\code{\link[viridis:viridis]{viridis::viridis()}} palette.}
+\code{\link[=viridis]{viridis()}} palette.}
 
 \item{title}{\emph{Optional.} Plot title.}
 }

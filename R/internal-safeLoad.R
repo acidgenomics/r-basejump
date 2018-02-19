@@ -15,9 +15,7 @@
     }
 
     # Fail on attempt to load on top of an existing object
-    if (exists(name, envir = envir, inherits = FALSE)) {
-        abort(paste(name, "already exists in environment"))
-    }
+    assert_all_are_non_existing(name, envir = envir, inherits = FALSE)
 
     # Load into a temporary environment
     tmpEnvir <- new.env()

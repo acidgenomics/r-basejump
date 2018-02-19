@@ -95,18 +95,17 @@
 <span class='co'># S4 method for dgCMatrix</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
   <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
 <span class='fu'>plotQuantileHeatmap</span>(<span class='no'>object</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>,
   <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>plotQuantileHeatmap</span>(<span class='no'>object</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>,
-  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>,
+  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -142,13 +141,13 @@ hierarchical clustering. Alternatively, can define an <code>hclust</code> object
     </tr>
     <tr>
       <th>color</th>
-      <td><p>Colors to use for plot. Defaults to the <code><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::viridis()</a></code>
+      <td><p>Colors to use for plot. Defaults to the <code><a href='http://www.rdocumentation.org/packages/viridisLite/topics/viridis'>viridis()</a></code>
 palette.</p></td>
     </tr>
     <tr>
       <th>legendColor</th>
       <td><p>Colors to use for legend labels. Defaults to the
-<code><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::viridis()</a></code> palette.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/viridisLite/topics/viridis'>viridis()</a></code> palette.</p></td>
     </tr>
     <tr>
       <th>title</th>

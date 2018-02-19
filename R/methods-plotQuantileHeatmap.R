@@ -33,8 +33,7 @@ NULL
 #' @return A vector of `n` quantile breaks.
 .quantileBreaks <- function(object, n = 5L) {
     assert_is_matrix(object)
-    assert_is_integer(n)
-    assert_is_scalar(n)
+    assert_is_an_integer(n)
     assert_all_are_positive(n)
     q <- quantile(object, probs = seq(0L, 1L, length.out = n))
     q[!duplicated(q)]
@@ -49,35 +48,35 @@ NULL
 #'
 #' @importFrom dendsort dendsort
 #' @importFrom grDevices colorRampPalette
+#' @importFrom magrittr set_names
 #' @importFrom pheatmap pheatmap
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom stats dist hclust
-#' @importFrom viridis viridis
 .plotQuantileHeatmap <- function(
     object,
     n = 5L,
     annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis,
-    legendColor = viridis::viridis,
+    color = viridis,
+    legendColor = viridis,
     title = NULL) {
     # Passthrough: n
     assert_has_dims(object)
     assert_all_are_greater_than(nrow(object), 1L)
     assert_all_are_greater_than(ncol(object), 1L)
     object <- as.matrix(object)
-    assert_formal_annotation_col(object, annotationCol)
+    assertFormalAnnotationCol(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
-    assert_formal_color_function(color)
-    assert_formal_color_function(legendColor)
-    assert_is_a_string_or_null(title)
+    assertFormalColorFunction(color)
+    assertFormalColorFunction(legendColor)
+    assertIsAStringOrNULL(title)
 
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
 
-    # FIXME This code is shared with `plotHeatmap()`...generalize
+    # TODO This code is shared with `plotHeatmap()`...generalize
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
     if (is.data.frame(annotationCol)) {
@@ -105,7 +104,7 @@ NULL
                 names(colors) <- col
                 colors
             }) %>%
-            setNames(colnames(annotationCol))
+            set_names(colnames(annotationCol))
     } else {
         annotationColors <- NULL
     }

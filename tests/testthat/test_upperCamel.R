@@ -2,6 +2,33 @@ context("upperCamel")
 
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
+test_that("ANY", {
+    # Integer (atomic)
+    expect_identical(upperCamel(1L), 1L)
+    expect_identical(
+        upperCamel(c("hello.world" = 1L)),
+        c("HelloWorld" = 1L)
+    )
+
+    # Matrix (dimnames)
+    data <- Matrix(
+        data = 1L:4L,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("gene.id.1", "gene.id.2"),
+            c("sample.id.1", "sample.id.2")
+        )
+    )
+    expect_identical(
+        dimnames(upperCamel(data, rownames = TRUE, colnames = TRUE)),
+        list(
+            c("GeneID1", "GeneID2"),
+            c("SampleID1", "SampleID2")
+        )
+    )
+})
+
 test_that("Character", {
     expect_identical(
         upperCamel(makeNames[["character"]], strict = FALSE),

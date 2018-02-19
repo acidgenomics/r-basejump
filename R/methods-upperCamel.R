@@ -20,7 +20,6 @@
     } else if (!is.null(names(object))) {
         .upperCamel.names(object, strict = strict)
     } else {
-        warn("Returning without upper camel case sanitization applied")
         object
     }
 }
@@ -35,7 +34,7 @@
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
+    if (isTRUE(rownames) && hasRownames(object)) {
         rownames(object) <- .upperCamel(rownames(object), strict = strict)
     }
     if (isTRUE(colnames) && has_colnames(object)) {

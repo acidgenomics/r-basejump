@@ -10,6 +10,8 @@
 #'
 #' @seealso [cowplot::plot_grid()].
 #'
+#' @return Graphical output of plots, separated by Markdown headers.
+#'
 #' @examples
 #' loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
 #' markdownPlotlist(plotlist)

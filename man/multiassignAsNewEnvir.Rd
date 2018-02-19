@@ -26,7 +26,5 @@ Assign Multiple Objects as a New Environment
 multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
 \seealso{
-\code{\link[Biobase:multiassign]{Biobase::multiassign()}}.
-
 Other Object Assignment Utilities: \code{\link{assignAndSaveData}}
 }

@@ -24,5 +24,5 @@ up functions that require writes to a user-specified directory.
 \examples{
 initializeDirectory("testdir")
 dir.exists("testdir")
-unlink("testdir")
+unlink("testdir", recursive = TRUE)
 }

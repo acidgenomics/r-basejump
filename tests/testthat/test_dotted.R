@@ -2,6 +2,33 @@ context("dotted")
 
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
+test_that("ANY", {
+    # Integer (atomic)
+    expect_identical(dotted(1L), 1L)
+    expect_identical(
+        dotted(c("helloWorld" = 1L)),
+        c("hello.World" = 1L)
+    )
+
+    # Matrix (dimnames)
+    data <- Matrix(
+        data = 1L:4L,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("gene_id_1", "gene_id_2"),
+            c("sample_id_1", "sample_id_2")
+        )
+    )
+    expect_identical(
+        dimnames(dotted(data, rownames = TRUE, colnames = TRUE)),
+        list(
+            c("gene.ID.1", "gene.ID.2"),
+            c("sample.ID.1", "sample.ID.2")
+        )
+    )
+})
+
 test_that("Character", {
     expect_identical(
         dotted(makeNames[["character"]]),
