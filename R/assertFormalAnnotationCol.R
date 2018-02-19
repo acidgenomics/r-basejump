@@ -17,7 +17,14 @@
 #'     genotype = c("wt", "ko"),
 #'     row.names = c("sample1", "sample2"),
 #'     stringsAsFactors = TRUE)
+#'
+#' # Success
 #' assertFormalAnnotationCol(x, colData)
+#'
+#' # Failure
+#' tryCatch(
+#'     assertFormalAnnotationCol(mtcars, colData),
+#'     error = function(e) e)
 assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
     assert_has_dims(x, severity = severity)
     assert_is_any_of(

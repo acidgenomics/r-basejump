@@ -1,23 +1,21 @@
 context("assertIsTx2gene")
 
 test_that("Success", {
-    tx2gene <- annotable(
-        "Homo sapiens",
-        format = "tx2gene",
-        quiet = TRUE)
+    tx2gene <- tx2gene("Homo sapiens", quiet = TRUE)
     expect_silent(assertIsTx2gene(tx2gene))
 })
 
 test_that("Failure", {
     expect_error(
         assertIsTx2gene(mtcars),
-        "are_identical"
+        paste(
+            "are_identical :",
+            "colnames\\(x\\) and c\\(\"enstxp\", \"ensgene\"\\)",
+            "are not identical."
+        )
     )
-})
-
-test_that("Object isn't a data.frame", {
     expect_error(
         assertIsTx2gene(NULL),
-        "is_data.frame"
+        "is_data.frame : x"
     )
 })

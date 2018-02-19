@@ -33,7 +33,14 @@ colData <- data.frame(
     genotype = c("wt", "ko"),
     row.names = c("sample1", "sample2"),
     stringsAsFactors = TRUE)
+
+# Success
 assertFormalAnnotationCol(x, colData)
+
+# Failure
+tryCatch(
+    assertFormalAnnotationCol(mtcars, colData),
+    error = function(e) e)
 }
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
