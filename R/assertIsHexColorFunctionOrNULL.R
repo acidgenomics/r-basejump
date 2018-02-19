@@ -23,10 +23,3 @@ assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
         assert_all_are_hex_colors(colors, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsHexColorFunctionOrNULL
-#' @export
-assertIsHexColorFunctionOrNULL -> assert_is_hex_color_function_or_null

@@ -32,10 +32,3 @@ assertIsColorScaleContinuousOrNULL <- function(x, severity = "stop") {
             severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsColorScaleContinuousOrNULL
-#' @export
-assertIsColorScaleContinuousOrNULL -> assert_is_color_scale_continuous_or_null

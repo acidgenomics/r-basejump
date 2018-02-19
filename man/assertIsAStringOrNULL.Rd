@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsAStringOrNULL.R
 \name{assertIsAStringOrNULL}
 \alias{assertIsAStringOrNULL}
-\alias{assert_is_a_string_or_null}
 \title{Is a String or NULL Assert Check}
 \usage{
 assertIsAStringOrNULL(x, severity = "stop")
-
-assert_is_a_string_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

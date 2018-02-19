@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalAnnotationCol.R
 \name{assertFormalAnnotationCol}
 \alias{assertFormalAnnotationCol}
-\alias{assert_formal_annotation_col}
 \title{Annotation Column Formal Assert Check}
 \usage{
 assertFormalAnnotationCol(x, colData, severity = "stop")
-
-assert_formal_annotation_col(x, colData, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

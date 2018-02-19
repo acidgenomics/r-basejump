@@ -25,10 +25,3 @@ assertIsGene2symbol <- function(x, severity = "stop") {
         y = c("ensgene", "symbol"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsGene2symbol
-#' @export
-assertIsGene2symbol -> assert_is_gene2symbol

@@ -23,10 +23,3 @@ assertIsANumberOrNULL <- function(x, severity = "stop") {
         assert_is_a_number(x, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsANumberOrNULL
-#' @export
-assertIsANumberOrNULL -> assert_is_a_number_or_null

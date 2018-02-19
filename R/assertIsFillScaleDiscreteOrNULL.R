@@ -32,10 +32,3 @@ assertIsFillScaleDiscreteOrNULL <- function(x, severity = "stop") {
             severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsFillScaleDiscreteOrNULL
-#' @export
-assertIsFillScaleDiscreteOrNULL -> assert_is_fill_scale_discrete_or_null

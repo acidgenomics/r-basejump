@@ -72,26 +72,3 @@ isImplicitInteger <- function(x) {
     }
     isTRUE(all.equal(x, as.integer(x), tolerance = .Machine[["double.eps"]]))
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsImplicitInteger
-#' @export
-assertIsAnImplicitInteger -> assert_is_an_implicit_integer
-
-#' @rdname assertIsImplicitInteger
-#' @export
-assertIsAnImplicitIntegerOrNULL -> assert_is_an_implicit_integer_or_null
-
-#' @rdname assertIsImplicitInteger
-#' @export
-assertIsImplicitInteger -> assert_is_implicit_integer
-
-#' @rdname assertIsImplicitInteger
-#' @export
-assertIsImplicitIntegerOrNULL -> assert_is_implicit_integer_or_null
-
-#' @rdname assertIsImplicitInteger
-#' @export
-isImplicitInteger -> is_implicit_integer

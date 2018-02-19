@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalGene2symbol.R
 \name{assertFormalGene2symbol}
 \alias{assertFormalGene2symbol}
-\alias{assert_formal_gene2symbol}
 \title{Gene to Symbol Mappings Formal Assert Check}
 \usage{
 assertFormalGene2symbol(x, genes, gene2symbol, severity = "stop")
-
-assert_formal_gene2symbol(x, genes, gene2symbol, severity = "stop")
 }
 \arguments{
 \item{x}{Object containing gene identifiers in the rownames.}

@@ -23,10 +23,3 @@ assertIsAnIntegerOrNULL <- function(x, severity = "stop") {
         assert_is_an_integer(x, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsAnIntegerOrNULL
-#' @export
-assertIsAnIntegerOrNULL -> assert_is_an_integer_or_null

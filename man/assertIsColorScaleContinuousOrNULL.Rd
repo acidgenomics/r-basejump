@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsColorScaleContinuousOrNULL.R
 \name{assertIsColorScaleContinuousOrNULL}
 \alias{assertIsColorScaleContinuousOrNULL}
-\alias{assert_is_color_scale_continuous_or_null}
 \title{Is Color Palette Scale Continuous or NULL Assert Check}
 \usage{
 assertIsColorScaleContinuousOrNULL(x, severity = "stop")
-
-assert_is_color_scale_continuous_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

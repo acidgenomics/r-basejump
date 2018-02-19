@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsANumberOrNULL.R
 \name{assertIsANumberOrNULL}
 \alias{assertIsANumberOrNULL}
-\alias{assert_is_a_number_or_null}
 \title{Is a Number or NULL Assert Check}
 \usage{
 assertIsANumberOrNULL(x, severity = "stop")
-
-assert_is_a_number_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

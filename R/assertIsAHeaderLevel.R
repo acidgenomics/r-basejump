@@ -18,10 +18,3 @@ assertIsAHeaderLevel <- function(x, severity = "stop") {
         y = seq(1L:7L),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsAHeaderLevel
-#' @export
-assertIsAHeaderLevel -> assert_is_a_header_level

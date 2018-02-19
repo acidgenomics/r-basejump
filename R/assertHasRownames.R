@@ -54,9 +54,3 @@ hasRownames <- function(x) {  # nolint
         assertive::has_rownames(x)
     }
 }
-
-
-
-# Aliases ======================================================================
-# Don't mask `assert_has_rownames()`
-# Don't mask `has_rownames()`

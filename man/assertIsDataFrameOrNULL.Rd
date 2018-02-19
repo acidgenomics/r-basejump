@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsDataFrameOrNULL.R
 \name{assertIsDataFrameOrNULL}
 \alias{assertIsDataFrameOrNULL}
-\alias{assert_is_data.frame_or_null}
 \title{Data Frame or NULL Assert Check}
 \usage{
 assertIsDataFrameOrNULL(x, severity = "stop")
-
-assert_is_data.frame_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

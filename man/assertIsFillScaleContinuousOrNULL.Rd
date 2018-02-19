@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsFillScaleContinuousOrNULL.R
 \name{assertIsFillScaleContinuousOrNULL}
 \alias{assertIsFillScaleContinuousOrNULL}
-\alias{assert_is_fill_scale_continuous_or_null}
 \title{Is Fill Palette Scale Continuous or NULL Assert Check}
 \usage{
 assertIsFillScaleContinuousOrNULL(x, severity = "stop")
-
-assert_is_fill_scale_continuous_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

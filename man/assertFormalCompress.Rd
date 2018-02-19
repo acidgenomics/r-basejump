@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalCompress.R
 \name{assertFormalCompress}
 \alias{assertFormalCompress}
-\alias{assert_formal_compress}
 \title{Compression Formal Assert Check}
 \usage{
 assertFormalCompress(x, severity = "stop")
-
-assert_formal_compress(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}

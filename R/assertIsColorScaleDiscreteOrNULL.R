@@ -32,10 +32,3 @@ assertIsColorScaleDiscreteOrNULL <- function(x, severity = "stop") {
             severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsColorScaleDiscreteOrNULL
-#' @export
-assertIsColorScaleDiscreteOrNULL -> assert_is_color_scale_discrete_or_null
