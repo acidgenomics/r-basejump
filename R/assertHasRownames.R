@@ -13,7 +13,7 @@
 #'
 #' @export
 assertHasRownames <- function(x, severity = "stop") {
-    stopifnot(has_rownames(x))
+    stopifnot(hasRownames(x))
     assert_are_disjoint_sets(
         x = rownames(x),
         y = as.character(seq_len(nrow(x))),
