@@ -52,6 +52,13 @@ test_that("GFF data.frame input", {
     )
 })
 
+test_that("Unique symbol mode", {
+    gff <- suppressMessages(
+        gene2symbolFromGFF(mousefile, uniqueSymbol = TRUE, quiet = FALSE)
+    )
+    expect_false(any(duplicated(gff[["symbol"]])))
+})
+
 test_that("Invalid number of columns", {
     expect_error(
         gene2symbolFromGFF(mtcars),

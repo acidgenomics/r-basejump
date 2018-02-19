@@ -91,11 +91,10 @@ NULL
 setMethod(
     "gene2symbolFromGFF",
     signature("character"),
-    function(object, quiet = FALSE) {
-        # Passthrough: quiet
+    function(object, uniqueSymbol = FALSE, quiet = FALSE) {
         object %>%
             readGFF(quiet = quiet) %>%
-            .gene2symbolFromGFF(quiet = quiet)
+            .gene2symbolFromGFF(uniqueSymbol = uniqueSymbol, quiet = quiet)
     })
 
 
@@ -105,9 +104,8 @@ setMethod(
 setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
-    function(object, quiet = FALSE) {
-        # Passthrough: quiet
-        .gene2symbolFromGFF(object, quiet = quiet)
+    function(object, uniqueSymbol = FALSE, quiet = FALSE) {
+        .gene2symbolFromGFF(object, uniqueSymbol = uniqueSymbol, quiet = quiet)
     })
 
 
