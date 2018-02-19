@@ -1,8 +1,6 @@
 context("snake")
 
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 test_that("Character", {
     vec <- snake(makeNames[["character"]])
