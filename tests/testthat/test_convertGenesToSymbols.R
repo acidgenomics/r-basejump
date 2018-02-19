@@ -33,6 +33,21 @@ test_that("Matrix", {
     )
 })
 
+test_that("Unique symbol mode", {
+    gene2symbol <- gene2symbol(
+        "Homo sapiens",
+        uniqueSymbol = FALSE,
+        quiet = TRUE)
+    expect_true(any(duplicated(gene2symbol[["symbol"]])))
+    dupes <- gene2symbol %>%
+        .[which(duplicated(.[["symbol"]])), "ensgene", drop = TRUE]
+    map <- convertGenesToSymbols(
+        dupes,
+        gene2symbol = gene2symbol,
+        uniqueSymbol = TRUE)
+    expect_false(any(duplicated(map)))
+})
+
 # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
 test_that("FASTA spike-in support", {
     vec <- c("EGFP", "ENSMUSG00000000001")
