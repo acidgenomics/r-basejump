@@ -1,7 +1,11 @@
 ## basejump 0.3.1 (2018-02-17)
 
+- Now exporting all assert checks primarily named in camel case. Snake case aliases are also exported to match the syntax for the assertive package.
 - Added `sanitizeColData()` function.
-- Added `assert_all_are_non_existing()` function.
+- Added `assertAllAreNonExisting()` function.
+- Now exporting `midnightTheme()` as a `theme_midnight()` alias to match the syntax in the ggplot2 package.
+- Added working examples and code coverage for all assert check functions.
+- Simplified the internal collapse code for `annotable()` to simply work on the Entrez identifier column (`entrez`). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use `collapseToString()`.
 
 
 ## basejump 0.3.0 (2018-02-16)
