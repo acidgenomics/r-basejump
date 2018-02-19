@@ -49,15 +49,48 @@
 #' @importFrom assertive assert_is_vector
 #' @importFrom assertive has_colnames
 #' @importFrom assertive is_a_string
+#' @importFrom assertive is_existing
 #' @importFrom assertive is_hex_color
 #' @importFrom assertive is_scalar
 #'
 #' @param x Object.
+#' @param envir Environment.
+#' @param inherits Should the enclosing frames of the environment be searched?
 #' @param severity How severe should the consequences of the assertion be?
 #'   Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
 #' @return Abort on mismatch.
 NULL
+
+
+
+# TODO Use assert engine and add severity
+#' All Variables Do Not Exist Assert Check
+#'
+#' @family Assert Checks
+#' @inherit assert
+#' @keywords internal
+#'
+#' @param x Character vector of variable names to check in environment.
+#'
+#' @export
+#'
+#' @examples
+#' a <- 1L
+#' b <- 2L
+#' assert_all_are_non_existing(c("a", "b", "c"))
+assert_all_are_non_existing <- function(  # nolint
+    x,
+    envir = parent.frame(),
+    inherits = FALSE) {
+    exists <- is_existing(x, envir = envir, inherits = inherits)
+    if (any(exists)) {
+        abort(paste(
+            "Already exists in environment:",
+            toString(x[exists])
+        ))
+    }
+}
 
 
 
