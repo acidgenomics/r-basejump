@@ -5,7 +5,7 @@
 #'
 #' @export
 assertIsAStringOrNULL <- function(x, severity = "stop") {
-    assert_is_character_or_null(x, severity = severity)
+    assertIsCharacterOrNull(x, severity = severity)
     if (is.character(x)) {
         assert_is_a_string(x, severity = severity)
     }
