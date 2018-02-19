@@ -376,9 +376,6 @@ NULL
         .[grepl(x = ., pattern = "entrez")]
     if (length(entrezCol) && entrezCol != "entrez") {
         assert_is_a_string(entrezCol)
-        inform(paste(
-            "Renaming", entrezCol, "to entrez"
-        ))
         object <- rename(object, entrez = !!sym(entrezCol))
     }
 
