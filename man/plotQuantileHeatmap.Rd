@@ -18,11 +18,11 @@ plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{dgCMatrix}(object, n = 5L,
   annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
-  color = viridis::viridis, legendColor = viridis::viridis, title = NULL)
+  color = viridis, legendColor = viridis, title = NULL)
 
 \S4method{plotQuantileHeatmap}{matrix}(object, n = 5L, annotationCol = NULL,
-  clusterCols = TRUE, clusterRows = TRUE, color = viridis::viridis,
-  legendColor = viridis::viridis, title = NULL)
+  clusterCols = TRUE, clusterRows = TRUE, color = viridis,
+  legendColor = viridis, title = NULL)
 }
 \arguments{
 \item{object}{Object.}
