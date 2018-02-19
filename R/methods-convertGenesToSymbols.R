@@ -54,7 +54,7 @@ NULL
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assertIsDataFrameOrNull(gene2symbol)
+    assertIsDataFrameOrNULL(gene2symbol)
     assertIsAStringOrNULL(organism)
     assert_is_a_bool(uniqueSymbol)
 
