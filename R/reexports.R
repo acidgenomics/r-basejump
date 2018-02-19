@@ -51,3 +51,9 @@ tibble::is_tibble
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
+
+
+
+#' @importFrom viridis viridis
+#' @export
+viridis::viridis
