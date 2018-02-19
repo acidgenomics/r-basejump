@@ -113,29 +113,34 @@ test_that("Annotables package data frame input", {
     )
 })
 
-test_that("Unsupported Ensembl release", {
-    expect_error(
-        annotable("Mus musculus", release = 86L),
-        "is_greater_than_or_equal_to"
+test_that("DataFrame coercion AsIs list", {
+    loadRemoteData("http://basejump.seq.cloud/annotable_AsIs.rda", quiet = TRUE)
+    expect_warning(
+        annotable(annotable_AsIs),
+        paste(
+            "Genes without annotations:",
+            "ENSMUSG00000101738, ENSMUSG00000104475, ENSMUSG00000109048"
+        )
     )
+    # Check to ensure AsIs list is coerced to list
+    annotable <- suppressWarnings(annotable(annotable_AsIs))
+    expect_is(annotable[["entrez"]], "list")
 })
 
-test_that("Unsupported organism", {
-    expect_error(
-        annotable("XXX"),
-        "Full latin organism name XXX is not supported in AnnotationHub"
-    )
-})
-
-test_that("Bad input", {
-    expect_error(
-        annotable(c("human", "mouse")),
-        "is_a_string"
-    )
-    expect_error(
-        annotable("Homo sapiens", format = "XXX"),
-        "is_subset"
-    )
+test_that("Collapse annotables tibble", {
+    loadRemoteData(
+        file.path(
+            "https://github.com",
+            "stephenturner",
+            "annotables",
+            "raw",
+            "master",
+            "data",
+            "grch38.rda"),
+        quiet = TRUE)
+    expect_true(any(duplicated(grch38[["ensgene"]])))
+    annotable <- annotable(grch38)
+    expect_true(!any(duplicated(annotable[["ensgene"]])))
 })
 
 test_that("Unique symbols", {
@@ -156,25 +161,34 @@ test_that("Unique symbols", {
     expect_true(!any(duplicated(g2s[["symbol"]])))
 })
 
-test_that("Collapse annotables tibble", {
-    loadRemoteData(
-        file.path(
-            "https://github.com",
-            "stephenturner",
-            "annotables",
-            "raw",
-            "master",
-            "data",
-            "grch38.rda"),
-        quiet = TRUE)
-    expect_true(any(duplicated(grch38[["ensgene"]])))
-    annotable <- annotable(grch38)
-    expect_true(!any(duplicated(annotable[["ensgene"]])))
+test_that("Unsupported Ensembl release", {
+    expect_error(
+        annotable("Mus musculus", release = 86L),
+        "is_greater_than_or_equal_to : "
+    )
+})
+
+test_that("Unsupported organism", {
+    expect_error(
+        annotable("XXX"),
+        "Full latin organism name XXX is not supported in AnnotationHub"
+    )
+})
+
+test_that("Bad input", {
+    expect_error(
+        annotable(c("human", "mouse")),
+        "is_a_string : "
+    )
+    expect_error(
+        annotable("Homo sapiens", format = "XXX"),
+        "is_subset : "
+    )
 })
 
 test_that("Internal `broadClass` column integrity", {
     expect_error(
         .defineBroadClass(mtcars),
-        "is_subset"
+        "is_subset : "
     )
 })
