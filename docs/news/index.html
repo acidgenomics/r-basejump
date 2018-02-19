@@ -88,16 +88,17 @@
     </div>
 
     <div class="contents">
-    <div id="basejump-0-3-1-2018-02-17" class="section level2">
+    <div id="basejump-0-3-1-2018-02-19" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-3-1-2018-02-17" class="anchor"></a>basejump 0.3.1 (2018-02-17)</h2>
+<a href="#basejump-0-3-1-2018-02-19" class="anchor"></a>basejump 0.3.1 (2018-02-19)</h2>
 <ul>
-<li>Now exporting all assert checks primarily named in camel case. Snake case aliases are also exported to match the syntax for the assertive package.</li>
+<li>Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.</li>
 <li>Added <code><a href="../reference/sanitizeColData.html">sanitizeColData()</a></code> function.</li>
 <li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
 <li>Now exporting <code><a href="../reference/midnightTheme.html">midnightTheme()</a></code> as a <code><a href="../reference/midnightTheme.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
 <li>Added working examples and code coverage for all assert check functions.</li>
 <li>Simplified the internal collapse code for <code>annotable()</code> to simply work on the Entrez identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code>collapseToString()</code>.</li>
+<li>Added ggplot color palette assert checks: <code>assertColorScaleContinuousOrNULL()</code>, <code>assertColorScaleDiscreteOrNULL()</code>, <code>assertFillScaleContinuousOrNULL()</code>, <code>assertFillScaleDiscreteOrNULL()</code>.</li>
 </ul>
 </div>
     <div id="basejump-0-3-0-2018-02-16" class="section level2">
@@ -105,7 +106,7 @@
 <a href="#basejump-0-3-0-2018-02-16" class="anchor"></a>basejump 0.3.0 (2018-02-16)</h2>
 <ul>
 <li>Switch to using assertive internally for assert checks.</li>
-<li>Now exporting these assert check functions: <code><a href="../reference/assertFormalAnnotationCol.html">assert_formal_annotation_col()</a></code>, <code><a href="../reference/assertFormalColorFunction.html">assert_formal_color_function()</a></code>, <code><a href="../reference/assertFormalCompress.html">assert_formal_compress()</a></code>, <code><a href="../reference/assertFormalGene2symbol.html">assert_formal_gene2symbol()</a></code>, <code><a href="../reference/assertFormalHeaderLevel.html">assert_formal_header_level()</a></code>, <code>assert_has_rownames()</code>, <code><a href="../reference/assertIsANumberOrNULL.html">assert_is_a_number_or_null()</a></code>, <code><a href="../reference/assertIsAStringOrNULL.html">assert_is_a_string_or_null()</a></code>, <code><a href="../reference/assertIsImplicitInteger.html">assert_is_an_implicit_integer()</a></code>, <code><a href="../reference/assertIsImplicitInteger.html">assert_is_an_implicit_integer_or_null()</a></code> <code><a href="../reference/assertIsAnIntegerOrNULL.html">assert_is_an_integer_or_null()</a></code>, <code><a href="../reference/assertIsAnnotable.html">assert_is_annotable()</a></code>, <code><a href="../reference/assertIsCharacterOrNULL.html">assert_is_character_or_null()</a></code>, <code><a href="../reference/assertIsDataFrameOrNULL.html">assert_is_data.frame_or_null()</a></code>, <code><a href="../reference/assertIsGene2symbol.html">assert_is_gene2symbol()</a></code>, <code><a href="../reference/assertIsImplicitInteger.html">assert_is_implicit_integer()</a></code>, <code><a href="../reference/assertIsImplicitInteger.html">assert_is_implicit_integer_or_null()</a></code>, <code><a href="../reference/assertIsTx2gene.html">assert_is_tx2gene()</a></code>, <code>has_rownames()</code>, <code><a href="../reference/initializeDirectory.html">initializeDirectory()</a></code>, <code><a href="../reference/assertIsImplicitInteger.html">is_implicit_integer()</a></code>.</li>
+<li>Now exporting these assert check functions: <code>assert_formal_annotation_col()</code>, <code>assert_formal_color_function()</code>, <code>assert_formal_compress()</code>, <code>assert_formal_gene2symbol()</code>, <code>assert_formal_header_level()</code>, <code>assert_has_rownames()</code>, <code>assert_is_a_number_or_null()</code>, <code>assert_is_a_string_or_null()</code>, <code>assert_is_an_implicit_integer()</code>, <code>assert_is_an_implicit_integer_or_null()</code> <code>assert_is_an_integer_or_null()</code>, <code>assert_is_annotable()</code>, <code>assert_is_character_or_null()</code>, <code>assert_is_data.frame_or_null()</code>, <code>assert_is_gene2symbol()</code>, <code>assert_is_implicit_integer()</code>, <code>assert_is_implicit_integer_or_null()</code>, <code>assert_is_tx2gene()</code>, <code>has_rownames()</code>, <code><a href="../reference/initializeDirectory.html">initializeDirectory()</a></code>, <code>is_implicit_integer()</code>.</li>
 <li>Renamed <code>md*()</code> functions to <code>markdown*()</code>.</li>
 </ul>
 </div>
@@ -500,7 +501,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-3-1-2018-02-17">0.3.1</a></li>
+        <li><a href="#basejump-0-3-1-2018-02-19">0.3.1</a></li>
         <li><a href="#basejump-0-3-0-2018-02-16">0.3.0</a></li>
         <li><a href="#basejump-0-2-1-2018-02-07">0.2.1</a></li>
         <li><a href="#basejump-0-2-0-2018-01-28">0.2.0</a></li>

@@ -1,4 +1,4 @@
-#' Data Frame or NULL Assert Check
+#' Assert Is Data Frame or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert

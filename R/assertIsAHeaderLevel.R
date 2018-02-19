@@ -1,4 +1,4 @@
-#' Is a Markdown Header Level Assert Check
+#' Assert Is a Header Level
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -7,9 +7,9 @@
 #'
 #' @examples
 #' # Markdown supports levels 1-7
-#' assertFormalHeaderLevel(1L)
+#' assertIsAHeaderLevel(1L)
 #' tryCatch(
-#'     assertFormalHeaderLevel(8L),
+#'     assertIsAHeaderLevel(8L),
 #'     error = function(e) e)
 assertIsAHeaderLevel <- function(x, severity = "stop") {
     assert_is_a_number(x, severity = severity)

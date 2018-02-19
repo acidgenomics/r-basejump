@@ -1,4 +1,4 @@
-#' Annotation Column Formal Assert Check
+#' Assert Formal Annotation Column
 #'
 #' @family Assert Checks
 #' @inherit assert

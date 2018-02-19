@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsFillScaleDiscreteOrNULL.R
 \name{assertIsFillScaleDiscreteOrNULL}
 \alias{assertIsFillScaleDiscreteOrNULL}
-\title{Is Fill Palette Scale Discrete or NULL Assert Check}
+\title{Assert Is Fill Palette Scale Discrete or NULL}
 \usage{
 assertIsFillScaleDiscreteOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Fill Palette Scale Discrete or NULL Assert Check
+Assert Is Fill Palette Scale Discrete or NULL
 }
 \examples{
 # Success

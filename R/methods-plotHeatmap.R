@@ -62,8 +62,8 @@ NULL
     assertFormalAnnotationCol(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
-    assertFormalColorFunction(color)
-    assertFormalColorFunction(legendColor)
+    assertIsHexColorFunctionOrNULL(color)
+    assertIsHexColorFunctionOrNULL(legendColor)
     assertIsAStringOrNULL(title)
 
     # Drop rows that are all zero, when row scaling is applied
@@ -148,7 +148,7 @@ NULL
 
 
 # Methods ======================================================================
-#' @rdname plotQuantileHeatmap
+#' @rdname plotHeatmap
 #' @export
 setMethod(
     "plotHeatmap",

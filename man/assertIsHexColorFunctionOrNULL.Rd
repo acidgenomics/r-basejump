@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsHexColorFunctionOrNULL.R
 \name{assertIsHexColorFunctionOrNULL}
 \alias{assertIsHexColorFunctionOrNULL}
-\title{Is Hex Color Function or NULL Assert Check}
+\title{Assert Is Hex Color Function or NULL}
 \usage{
 assertIsHexColorFunctionOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Hex Color Function or NULL Assert Check
+Assert Is Hex Color Function or NULL
 }
 \examples{
 assertIsHexColorFunctionOrNULL(viridis)

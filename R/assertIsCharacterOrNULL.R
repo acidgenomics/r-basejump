@@ -1,4 +1,4 @@
-#' Character Vector or NULL Assert Check
+#' Assert Is Character Vector or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert

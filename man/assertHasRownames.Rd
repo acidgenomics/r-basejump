@@ -3,7 +3,7 @@
 \name{assertHasRownames}
 \alias{assertHasRownames}
 \alias{hasRownames}
-\title{Has Rownames Assert Check}
+\title{Assert Has Rownames}
 \usage{
 assertHasRownames(x, severity = "stop")
 

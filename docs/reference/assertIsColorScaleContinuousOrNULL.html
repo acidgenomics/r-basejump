@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assert Is Character Vector or NULL — assertIsCharacterOrNULL • basejump</title>
+<title>Assert Is Color Palette Scale Continuous or NULL — assertIsColorScaleContinuousOrNULL • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,14 +83,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assert Is Character Vector or NULL</h1>
+    <h1>Assert Is Color Palette Scale Continuous or NULL</h1>
     </div>
 
     
-    <p>Assert Is Character Vector or NULL</p>
+    <p>Assert Is Color Palette Scale Continuous or NULL</p>
     
 
-    <pre class="usage"><span class='fu'>assertIsCharacterOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
+    <pre class="usage"><span class='fu'>assertIsColorScaleContinuousOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -122,7 +122,7 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
   <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
   <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
   <code><a href='assertIsAnnotable.html'>assertIsAnnotable</a></code>,
-  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
   <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
   <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
@@ -135,17 +135,22 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Success</span>
-<span class='fu'>assertIsCharacterOrNULL</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))
-<span class='fu'>assertIsCharacterOrNULL</span>(<span class='kw'>NULL</span>)
+<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>class</span>(<span class='no'>color</span>)</div><div class='output co'>#&gt; [1] "ScaleContinuous" "Scale"           "ggproto"        </div><div class='input'><span class='fu'>assertIsColorScaleContinuousOrNULL</span>(<span class='no'>color</span>)
+<span class='fu'>assertIsColorScaleContinuousOrNULL</span>(<span class='kw'>NULL</span>)
 
 <span class='co'># Failure</span>
-<span class='fu'>tryCatch</span>(
-    <span class='fu'>assertIsCharacterOrNULL</span>(<span class='fl'>1L</span>),
-    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>)</div><div class='output co'>#&gt; &lt;assertionError in assertIsCharacterOrNULL(1L): is2 : x is not in any of the classes 'character', 'NULL'.
+<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>class</span>(<span class='no'>color</span>)</div><div class='output co'>#&gt; [1] "ScaleDiscrete" "Scale"         "ggproto"      </div><div class='input'><span class='fu'>tryCatch</span>(
+    <span class='fu'>assertIsColorScaleContinuousOrNULL</span>(<span class='no'>color</span>),
+    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>)</div><div class='output co'>#&gt; &lt;assertionError in assertIsColorScaleContinuousOrNULL(color): is2 : x is not in any of the classes 'ScaleContinuous', 'NULL'.
 #&gt; There were 2 failures:
-#&gt;   Position     Value                              Cause
-#&gt; 1        1 character class 'integer' is not 'character'
-#&gt; 2        2      NULL      class 'integer' is not 'NULL'&gt;</div></pre>
+#&gt;   Position           Value
+#&gt; 1        1 ScaleContinuous
+#&gt; 2        2            NULL
+#&gt;                                                            Cause
+#&gt; 1 class 'ScaleDiscrete, Scale, ggproto' is not 'ScaleContinuous'
+#&gt; 2            class 'ScaleDiscrete, Scale, ggproto' is not 'NULL'&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

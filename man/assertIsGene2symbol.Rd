@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsGene2symbol.R
 \name{assertIsGene2symbol}
 \alias{assertIsGene2symbol}
-\title{Check Gene to Symbol Mapping Data}
+\title{Assert Is Gene to Symbol Mapping Data Frame}
 \usage{
 assertIsGene2symbol(x, severity = "stop")
 }
@@ -18,7 +18,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Check Gene to Symbol Mapping Data
+Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
 # Success

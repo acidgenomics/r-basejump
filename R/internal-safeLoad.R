@@ -15,7 +15,7 @@
     }
 
     # Fail on attempt to load on top of an existing object
-    assert_all_are_non_existing(name, envir = envir, inherits = FALSE)
+    assertAllAreNonExisting(name, envir = envir, inherits = FALSE)
 
     # Load into a temporary environment
     tmpEnvir <- new.env()

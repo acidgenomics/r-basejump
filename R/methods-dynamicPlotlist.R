@@ -41,7 +41,7 @@ NULL
     headerLevel = 2L) {
     assert_is_a_string(return)
     assert_is_subset(return, c("grid", "list", "markdown"))
-    assertFormalHeaderLevel(headerLevel)
+    assertIsAHeaderLevel(headerLevel)
     if (return == "grid") {
         plot_grid(plotlist = object)
     } else if (return == "list") {

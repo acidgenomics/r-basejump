@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertFormalCompress.R
 \name{assertFormalCompress}
 \alias{assertFormalCompress}
-\title{Compression Formal Assert Check}
+\title{Assert Formal Compression}
 \usage{
 assertFormalCompress(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Compression Formal Assert Check
+Assert Formal Compression
 }
 \examples{
 assertFormalCompress("xz")

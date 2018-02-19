@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsFillScaleContinuousOrNULL.R
 \name{assertIsFillScaleContinuousOrNULL}
 \alias{assertIsFillScaleContinuousOrNULL}
-\title{Is Fill Palette Scale Continuous or NULL Assert Check}
+\title{Assert Is Fill Palette Scale Continuous or NULL}
 \usage{
 assertIsFillScaleContinuousOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Fill Palette Scale Continuous or NULL Assert Check
+Assert Is Fill Palette Scale Continuous or NULL
 }
 \examples{
 # Success

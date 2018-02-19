@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertFormalAnnotationCol.R
 \name{assertFormalAnnotationCol}
 \alias{assertFormalAnnotationCol}
-\title{Annotation Column Formal Assert Check}
+\title{Assert Formal Annotation Column}
 \usage{
 assertFormalAnnotationCol(x, colData, severity = "stop")
 }
@@ -18,7 +18,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Annotation Column Formal Assert Check
+Assert Formal Annotation Column
 }
 \examples{
 x <- data.frame(

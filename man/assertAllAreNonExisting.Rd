@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertAllAreNonExisting.R
 \name{assertAllAreNonExisting}
 \alias{assertAllAreNonExisting}
-\title{All Variables Do Not Exist Assert Check}
+\title{Assert All Variables Are Non-Existing}
 \usage{
 assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
 }
@@ -17,7 +17,7 @@ assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
 Abort on mismatch.
 }
 \description{
-All Variables Do Not Exist Assert Check
+Assert All Variables Are Non-Existing
 }
 \examples{
 a <- 1L

@@ -1,6 +1,6 @@
 # TODO Use assert engine
 
-#' Has Rownames Assert Check
+#' Assert Has Rownames
 #'
 #' A stricter alternative to the assertive version that works properply with
 #' data frames.

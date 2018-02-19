@@ -1,4 +1,4 @@
-#' Is a String or NULL Assert Check
+#' Assert Is a String or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert

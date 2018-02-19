@@ -1,4 +1,4 @@
-#' Compression Formal Assert Check
+#' Assert Formal Compression
 #'
 #' @family Assert Checks
 #' @inherit assert

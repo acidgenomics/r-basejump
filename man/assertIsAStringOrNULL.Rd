@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsAStringOrNULL.R
 \name{assertIsAStringOrNULL}
 \alias{assertIsAStringOrNULL}
-\title{Is a String or NULL Assert Check}
+\title{Assert Is a String or NULL}
 \usage{
 assertIsAStringOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is a String or NULL Assert Check
+Assert Is a String or NULL
 }
 \examples{
 # Success

@@ -1,6 +1,6 @@
 # TODO Use assert engine
 
-#' Implicit Integer Assert Check
+#' Assert Is Implicit Integer
 #'
 #' @rdname assertIsImplicitInteger
 #' @name assertIsImplicitInteger
@@ -17,7 +17,7 @@ NULL
 #' assertIsAnImplicitInteger(1)
 assertIsAnImplicitInteger <- function(x) {
     assert_is_a_number(x)
-    assert_is_implicit_integer(x)
+    assertIsImplicitInteger(x)
 }
 
 
