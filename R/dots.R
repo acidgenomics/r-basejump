@@ -38,9 +38,7 @@ dots <- function(..., character = FALSE) {
 
     # Convert names (symbols) to character vector
     names <- vapply(dots, as.character, character(1L))
-
-    # Abort on duplicate detection
-    assert_is_empty(names[which(setNames(duplicated(names), names))])
+    assert_has_no_duplicates(names)
 
     if (isTRUE(character)) {
         names
