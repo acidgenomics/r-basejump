@@ -23,13 +23,13 @@ Is Fill Palette Scale Continuous or NULL Assert Check
 }
 \examples{
 # Success
-fill <- scale_fill_viridis(discrete = TRUE)
+fill <- scale_fill_viridis(discrete = FALSE)
 class(fill)
 assertIsFillScaleContinuousOrNULL(fill)
 assertIsFillScaleContinuousOrNULL(NULL)
 
 # Failure
-fill <- scale_color_viridis(discrete = FALSE)
+fill <- scale_color_viridis(discrete = TRUE)
 class(fill)
 tryCatch(
     assertIsFillScaleContinuousOrNULL(color),
