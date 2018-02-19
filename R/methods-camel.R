@@ -101,7 +101,6 @@ NULL
     } else if (!is.null(names(object))) {
         .camel.names(object, strict = strict)
     } else {
-        warn("Returning without lower camel case sanitization applied")
         object
     }
 }

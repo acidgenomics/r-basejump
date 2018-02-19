@@ -95,7 +95,6 @@ NULL
     } else if (!is.null(names(object))) {
         .dotted.names(object)
     } else {
-        warn("Returning without dotted case sanitization applied")
         object
     }
 }

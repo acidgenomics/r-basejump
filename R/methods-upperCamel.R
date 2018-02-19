@@ -20,7 +20,6 @@
     } else if (!is.null(names(object))) {
         .upperCamel.names(object, strict = strict)
     } else {
-        warn("Returning without upper camel case sanitization applied")
         object
     }
 }
