@@ -2,7 +2,6 @@
 #'
 #' @family Assert Checks
 #' @inherit assert
-#' @keywords internal
 #'
 #' @param x [data.frame] containing Ensembl gene identifier to gene symbol
 #'   mappings. Must be structured as a two column [data.frame] with "ensgene"
