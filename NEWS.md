@@ -1,6 +1,7 @@
 ## basejump 0.3.1 (2018-02-17)
 
 - Added `sanitizeColData()` function.
+- Added `assert_all_are_non_existing()` function.
 
 
 ## basejump 0.3.0 (2018-02-16)

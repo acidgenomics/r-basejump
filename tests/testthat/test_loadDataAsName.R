@@ -27,11 +27,11 @@ test_that("Dot object key-value pair method", {
 test_that("Missing files", {
     expect_error(
         loadDataAsName(newName = "mtcars.rda"),
-        "is_existing_file"
+        "is_existing_file : "
     )
     expect_error(
         loadDataAsName(newName = "XXXXXX"),
-        "is_existing_file"
+        "is_existing_file : "
     )
 })
 
@@ -51,15 +51,15 @@ test_that("Multiple objects in single file", {
 test_that("Invalid arguments", {
     expect_error(
         loadDataAsName(newName = "mtcars", dir = NULL),
-        "is_a_string"
+        "is_a_string : dir"
     )
     expect_error(
         loadDataAsName(newName = "mtcars", dir = "XXX"),
-        "is_existing_file"
+        "is_dir : "
     )
     expect_error(
         loadDataAsName(newName = "mtcars", envir = "XXX"),
-        "is_environment"
+        "is_environment : envir"
     )
 })
 

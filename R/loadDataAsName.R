@@ -21,7 +21,8 @@ loadDataAsName <- function(
     dir = getwd(),
     envir = parent.frame()) {
     dots <- list(...)
-    dir <- initializeDirectory(dir)
+    assert_all_are_dirs(dir)
+    dir <- normalizePath(dir)
     assert_is_environment(envir)
 
     # Check for legacy mappings method, used prior to v0.1.1
@@ -41,11 +42,7 @@ loadDataAsName <- function(
     names(files) <- objectNames
 
     # Check to see if any of the new names already exist in environment
-    invisible(lapply(objectNames, function(x) {
-        if (exists(x, envir = envir, inherits = FALSE)) {
-            abort(paste(x, "already exists in environment"))
-        }
-    }))
+    assert_all_are_non_existing(objectNames, envir = envir, inherits = FALSE)
 
     tmpEnvir <- new.env()
     mapply(

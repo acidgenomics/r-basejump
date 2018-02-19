@@ -21,7 +21,8 @@ Abort on mismatch.
 Annotation Column Formal Assert Check
 }
 \seealso{
-Other Assert Checks: \code{\link{assert_formal_color_function}},
+Other Assert Checks: \code{\link{assert_all_are_non_existing}},
+  \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
   \code{\link{assert_formal_gene2symbol}},
   \code{\link{assert_formal_header_level}},
