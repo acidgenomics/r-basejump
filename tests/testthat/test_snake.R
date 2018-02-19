@@ -2,6 +2,18 @@ context("snake")
 
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
+test_that("ANY", {
+    # Integer (atomic)
+    expect_warning(
+        snake(1L),
+        "Returning without snake case sanitization applied"
+    )
+    expect_identical(
+        snake(c("hello.world" = 1L)),
+        c("hello_world" = 1L)
+    )
+})
+
 test_that("Character", {
     vec <- snake(makeNames[["character"]])
     expect_identical(

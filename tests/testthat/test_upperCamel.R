@@ -2,6 +2,18 @@ context("upperCamel")
 
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
+test_that("ANY", {
+    # Integer (atomic)
+    expect_warning(
+        upperCamel(1L),
+        "Returning without upper camel case sanitization applied"
+    )
+    expect_identical(
+        upperCamel(c("hello.world" = 1L)),
+        c("HelloWorld" = 1L)
+    )
+})
+
 test_that("Character", {
     expect_identical(
         upperCamel(makeNames[["character"]], strict = FALSE),
