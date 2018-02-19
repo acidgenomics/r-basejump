@@ -1,4 +1,4 @@
-#' Is Hex Color Function or NULL Assert Check
+#' Assert Is Hex Color Function or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert

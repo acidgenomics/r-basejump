@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsANumberOrNULL.R
 \name{assertIsANumberOrNULL}
 \alias{assertIsANumberOrNULL}
-\title{Is a Number or NULL Assert Check}
+\title{Assert Is a Number or NULL}
 \usage{
 assertIsANumberOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is a Number or NULL Assert Check
+Assert Is a Number or NULL
 }
 \examples{
 # Success

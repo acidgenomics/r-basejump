@@ -1,4 +1,4 @@
-#' Ensembl Annotations Assert Check
+#' Assert Is Ensembl Annotations Data Frame
 #'
 #' @family Assert Checks
 #' @inherit assert

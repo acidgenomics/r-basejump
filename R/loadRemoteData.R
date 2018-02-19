@@ -35,7 +35,7 @@ loadRemoteData <- function(
     # Check to make sure the objects don't already exist
     basename(url) %>%
         file_path_sans_ext() %>%
-        assert_all_are_non_existing(envir = envir, inherits = FALSE)
+        assertAllAreNonExisting(envir = envir, inherits = FALSE)
 
     .urlToTempfile <- function(url, envir = parent.frame(), quiet = FALSE) {
         assert_is_a_string(url)

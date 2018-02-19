@@ -23,7 +23,7 @@ NULL
 .markdownPlotlist <- function(object, headerLevel = 2L) {
     assert_is_list(object)
     assert_has_names(object)
-    assert_formal_header_level(headerLevel)
+    assertIsAHeaderLevel(headerLevel)
     invisible(lapply(seq_along(object), function(a) {
         name <- names(object)[[a]]
         if (is.character(name) && is.numeric(headerLevel)) {
@@ -49,7 +49,6 @@ setMethod(
 
 # Aliases ======================================================================
 #' @rdname markdownPlotlist
-#' @inheritParams general
 #' @export
 mdPlotlist <- function(...) {
     markdownPlotlist(...)

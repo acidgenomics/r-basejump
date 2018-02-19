@@ -1,4 +1,4 @@
-#' Check Gene to Symbol Mapping Data
+#' Assert Is Gene to Symbol Mapping Data Frame
 #'
 #' @family Assert Checks
 #' @inherit assert

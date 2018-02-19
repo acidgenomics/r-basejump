@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsCharacterOrNULL.R
 \name{assertIsCharacterOrNULL}
 \alias{assertIsCharacterOrNULL}
-\title{Character Vector or NULL Assert Check}
+\title{Assert Is Character Vector or NULL}
 \usage{
 assertIsCharacterOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Character Vector or NULL Assert Check
+Assert Is Character Vector or NULL
 }
 \examples{
 # Success

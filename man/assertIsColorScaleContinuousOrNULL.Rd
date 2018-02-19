@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsColorScaleContinuousOrNULL.R
 \name{assertIsColorScaleContinuousOrNULL}
 \alias{assertIsColorScaleContinuousOrNULL}
-\title{Is Color Palette Scale Continuous or NULL Assert Check}
+\title{Assert Is Color Palette Scale Continuous or NULL}
 \usage{
 assertIsColorScaleContinuousOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Color Palette Scale Continuous or NULL Assert Check
+Assert Is Color Palette Scale Continuous or NULL
 }
 \examples{
 # Success

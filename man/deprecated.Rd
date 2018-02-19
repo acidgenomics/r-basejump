@@ -19,6 +19,7 @@
 \alias{checkTx2gene}
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
+\alias{initializeDir}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -54,6 +55,8 @@ checkTx2gene(...)
 assertFormalHeaderLevel(...)
 
 assertFormalColorFunction(...)
+
+initializeDir(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

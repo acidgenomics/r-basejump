@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsAHeaderLevel.R
 \name{assertIsAHeaderLevel}
 \alias{assertIsAHeaderLevel}
-\title{Is a Markdown Header Level Assert Check}
+\title{Assert Is a Header Level}
 \usage{
 assertIsAHeaderLevel(x, severity = "stop")
 }
@@ -16,13 +16,13 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is a Markdown Header Level Assert Check
+Assert Is a Header Level
 }
 \examples{
 # Markdown supports levels 1-7
-assertFormalHeaderLevel(1L)
+assertIsAHeaderLevel(1L)
 tryCatch(
-    assertFormalHeaderLevel(8L),
+    assertIsAHeaderLevel(8L),
     error = function(e) e)
 }
 \seealso{

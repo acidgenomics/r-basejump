@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertFormalGene2symbol.R
 \name{assertFormalGene2symbol}
 \alias{assertFormalGene2symbol}
-\title{Gene to Symbol Mappings Formal Assert Check}
+\title{Assert Formal Gene to Symbol Mappings}
 \usage{
 assertFormalGene2symbol(x, genes, gene2symbol, severity = "stop")
 }
@@ -20,7 +20,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Gene to Symbol Mappings Formal Assert Check
+Assert Formal Gene to Symbol Mappings
 }
 \examples{
 gene2symbol <- gene2symbol("Homo sapiens", release = 90L)

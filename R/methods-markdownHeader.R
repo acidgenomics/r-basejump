@@ -34,7 +34,7 @@ NULL
     assert_is_a_string(object)
     assert_all_are_not_na(object)
     assert_all_are_non_missing_nor_empty_character(object)
-    assertFormalHeaderLevel(level)
+    assertIsAHeaderLevel(level)
     assert_is_a_bool(tabset)
     assert_is_a_bool(asis)
 

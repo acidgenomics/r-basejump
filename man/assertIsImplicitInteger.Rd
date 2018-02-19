@@ -7,7 +7,7 @@
 \alias{assertIsImplicitInteger}
 \alias{assertIsImplicitIntegerOrNULL}
 \alias{isImplicitInteger}
-\title{Implicit Integer Assert Check}
+\title{Assert Is Implicit Integer}
 \usage{
 assertIsAnImplicitInteger(x)
 
@@ -26,7 +26,7 @@ isImplicitInteger(x)
 Abort on mismatch.
 }
 \description{
-Implicit Integer Assert Check
+Assert Is Implicit Integer
 }
 \examples{
 assertIsAnImplicitInteger(1)

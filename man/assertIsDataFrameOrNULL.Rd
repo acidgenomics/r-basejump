@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsDataFrameOrNULL.R
 \name{assertIsDataFrameOrNULL}
 \alias{assertIsDataFrameOrNULL}
-\title{Data Frame or NULL Assert Check}
+\title{Assert Is Data Frame or NULL}
 \usage{
 assertIsDataFrameOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Data Frame or NULL Assert Check
+Assert Is Data Frame or NULL
 }
 \examples{
 # Success

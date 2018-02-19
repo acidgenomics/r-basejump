@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsColorScaleDiscreteOrNULL.R
 \name{assertIsColorScaleDiscreteOrNULL}
 \alias{assertIsColorScaleDiscreteOrNULL}
-\title{Is Color Palette Scale Discrete or NULL Assert Check}
+\title{Assert Is Color Palette Scale Discrete or NULL}
 \usage{
 assertIsColorScaleDiscreteOrNULL(x, severity = "stop")
 }
@@ -16,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Is Color Palette Scale Discrete or NULL Assert Check
+Assert Is Color Palette Scale Discrete or NULL
 }
 \examples{
 # Success

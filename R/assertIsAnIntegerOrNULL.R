@@ -1,4 +1,4 @@
-#' Is an Integer or NULL Assert Check
+#' Assert Is an Integer or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert

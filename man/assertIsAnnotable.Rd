@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsAnnotable.R
 \name{assertIsAnnotable}
 \alias{assertIsAnnotable}
-\title{Ensembl Annotations Assert Check}
+\title{Assert Is Ensembl Annotations Data Frame}
 \usage{
 assertIsAnnotable(x, severity = "stop")
 }
@@ -17,7 +17,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Ensembl Annotations Assert Check
+Assert Is Ensembl Annotations Data Frame
 }
 \examples{
 # Success
