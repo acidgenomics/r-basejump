@@ -43,10 +43,6 @@ test_that("Already exists", {
 
 test_that("Invalid arguments", {
     expect_error(
-        loadData(mtcars, dir = NULL),
-        "is_a_string : dir"
-    )
-    expect_error(
         loadData(mtcars, dir = "XXX"),
         "is_dir : "
     )
