@@ -50,10 +50,6 @@ test_that("Multiple objects in single file", {
 
 test_that("Invalid arguments", {
     expect_error(
-        loadDataAsName(newName = "mtcars", dir = NULL),
-        "is_a_string : dir"
-    )
-    expect_error(
         loadDataAsName(newName = "mtcars", dir = "XXX"),
         "is_dir : "
     )
