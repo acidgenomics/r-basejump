@@ -23,7 +23,8 @@ Abort on mismatch.
 Gene to Symbol Mappings Formal Assert Check
 }
 \seealso{
-Other Assert Checks: \code{\link{assert_formal_annotation_col}},
+Other Assert Checks: \code{\link{assert_all_are_non_existing}},
+  \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
   \code{\link{assert_formal_header_level}},

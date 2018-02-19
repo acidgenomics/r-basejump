@@ -20,45 +20,46 @@ test_that("loadData", {
         loaded,
         c(mtcars = file.path(getwd(), "mtcars.rda"))
     )
-
     expect_message(
         suppressWarnings(loadData(mtcars)),
         paste("Loading mtcars.rda from", getwd())
-    )
-
-    # Abort on existing
-    expect_error(
-        loadData(mtcars, quiet = TRUE),
-        "mtcars already exists in environment"
     )
 })
 
 test_that("Multiple objects in single file", {
     expect_error(
         loadData(multi, quiet = TRUE),
-        "is_a_string"
+        "is_a_string : loaded has length 2, not 1."
+    )
+})
+
+test_that("Already exists", {
+    mtcars <- datasets::mtcars
+    expect_error(
+        loadData(mtcars, quiet = TRUE),
+        "Already exists in environment: mtcars"
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
         loadData(mtcars, dir = NULL),
-        "is_a_string"
+        "is_a_string : dir"
     )
     expect_error(
         loadData(mtcars, dir = "XXX"),
-        "is_existing_file"
+        "is_dir : "
     )
     expect_error(
         loadData(mtcars, envir = "XXX"),
-        "is_environment"
+        "is_environment : envir"
     )
 })
 
 test_that("Renamed file", {
     expect_error(
         loadData(renamed),
-        "are_identical"
+        "are_identical : name and loaded are not identical."
     )
 })
 

@@ -25,7 +25,8 @@ gene2symbol <- annotable("Homo sapiens", format = "gene2symbol")
 assert_is_gene2symbol(gene2symbol)
 }
 \seealso{
-Other Assert Checks: \code{\link{assert_formal_annotation_col}},
+Other Assert Checks: \code{\link{assert_all_are_non_existing}},
+  \code{\link{assert_formal_annotation_col}},
   \code{\link{assert_formal_color_function}},
   \code{\link{assert_formal_compress}},
   \code{\link{assert_formal_gene2symbol}},

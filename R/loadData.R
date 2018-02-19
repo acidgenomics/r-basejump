@@ -34,7 +34,8 @@ loadData <- function(
     dir = getwd(),
     envir = parent.frame(),
     quiet = FALSE) {
-    dir <- initializeDirectory(dir)
+    assert_all_are_dirs(dir)
+    dir <- normalizePath(dir)
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
 
