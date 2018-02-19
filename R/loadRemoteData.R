@@ -32,15 +32,15 @@ loadRemoteData <- function(
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
 
+    # Check to make sure the objects don't already exist
+    basename(url) %>%
+        file_path_sans_ext() %>%
+        assert_all_are_non_existing(envir = envir, inherits = FALSE)
+
     .urlToTempfile <- function(url, envir = parent.frame(), quiet = FALSE) {
         assert_is_a_string(url)
         assert_is_environment(envir)
         assert_is_a_bool(quiet)
-        name <- file_path_sans_ext(basename(url))
-        # Check to see if object is present in environment
-        if (exists(name, envir = envir, inherits = FALSE)) {
-            abort(paste(name, "already exists in environment"))
-        }
         tempfile <- tempfile()
         download.file(
             url = url,
