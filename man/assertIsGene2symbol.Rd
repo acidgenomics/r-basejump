@@ -50,4 +50,3 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }
-\keyword{internal}
