@@ -1,4 +1,4 @@
-#' Markdown Header Level Formal Assert Check
+#' Is a Markdown Header Level Assert Check
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -11,7 +11,7 @@
 #' tryCatch(
 #'     assertFormalHeaderLevel(8L),
 #'     error = function(e) e)
-assertFormalHeaderLevel <- function(x, severity = "stop") {
+assertIsAHeaderLevel <- function(x, severity = "stop") {
     assert_is_a_number(x, severity = severity)
     assert_is_subset(
         x = as.integer(x),
@@ -22,6 +22,6 @@ assertFormalHeaderLevel <- function(x, severity = "stop") {
 
 
 # Aliases ======================================================================
-#' @rdname assertFormalHeaderLevel
+#' @rdname assertIsAHeaderLevel
 #' @export
-assertFormalHeaderLevel -> assert_formal_header_level
+assertIsAHeaderLevel -> assert_is_a_header_level

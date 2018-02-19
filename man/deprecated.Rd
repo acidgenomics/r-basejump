@@ -17,6 +17,8 @@
 \alias{checkAnnotable}
 \alias{checkGene2symbol}
 \alias{checkTx2gene}
+\alias{assertFormalHeaderLevel}
+\alias{assert_formal_header_level}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -48,9 +50,15 @@ checkAnnotable(...)
 checkGene2symbol(...)
 
 checkTx2gene(...)
+
+assertFormalHeaderLevel(x, severity = "stop")
+
+assert_formal_header_level(x, severity = "stop")
 }
 \arguments{
 \item{...}{Additional arguments.}
+
+\item{x}{Primary object.}
 }
 \value{
 Soft deprecation to new functions.

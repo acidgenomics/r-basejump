@@ -133,3 +133,14 @@ checkTx2gene <- function(...) {
     # .Deprecated("assert_is_tx2gene")
     assert_is_tx2gene(...)
 }
+
+
+
+# v0.3.1 =======================================================================
+#' @rdname deprecated
+#' @export
+assertIsAHeaderLevel -> assertFormalHeaderLevel
+
+#' @rdname deprecated
+#' @export
+assertFormalHeaderLevel -> assert_formal_header_level
