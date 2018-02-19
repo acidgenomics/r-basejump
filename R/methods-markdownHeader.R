@@ -76,5 +76,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 mdHeader <- function(...) {
-    markdownHeader(...)
+    markdownHeader(...)  # nocov
 }
