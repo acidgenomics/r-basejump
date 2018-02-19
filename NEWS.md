@@ -1,6 +1,6 @@
 ## basejump 0.3.1 (2018-02-19)
 
-- Now exporting all assert checks primarily named in camel case. Snake case aliases are also exported to match the syntax for the assertive package.
+- Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.
 - Added `sanitizeColData()` function.
 - Added `assertAllAreNonExisting()` function.
 - Now exporting `midnightTheme()` as a `theme_midnight()` alias to match the syntax in the ggplot2 package.
