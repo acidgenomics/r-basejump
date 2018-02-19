@@ -4,10 +4,7 @@ load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 test_that("ANY", {
     # Integer (atomic)
-    expect_warning(
-        dotted(1L),
-        "Returning without dotted case sanitization applied"
-    )
+    expect_identical(dotted(1L), 1L)
     expect_identical(
         dotted(c("helloWorld" = 1L)),
         c("hello.World" = 1L)

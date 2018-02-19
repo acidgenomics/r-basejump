@@ -60,7 +60,6 @@ NULL
     } else if (!is.null(names(object))) {
         .snake.names(object)
     } else {
-        warn("Returning without snake case sanitization applied")
         object
     }
 }

@@ -4,10 +4,7 @@ load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 test_that("ANY", {
     # Integer (atomic)
-    expect_warning(
-        camel(1L),
-        "Returning without lower camel case sanitization applied"
-    )
+    expect_identical(camel(1L), 1L)
     expect_identical(
         camel(c("hello.world" = 1L)),
         c("helloWorld" = 1L)
