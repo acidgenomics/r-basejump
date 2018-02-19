@@ -23,13 +23,13 @@ Is Color Palette Scale Continuous or NULL Assert Check
 }
 \examples{
 # Success
-color <- scale_color_viridis(discrete = TRUE)
+color <- scale_color_viridis(discrete = FALSE)
 class(color)
 assertIsColorScaleContinuousOrNULL(color)
 assertIsColorScaleContinuousOrNULL(NULL)
 
 # Failure
-color <- scale_color_viridis(discrete = FALSE)
+color <- scale_color_viridis(discrete = TRUE)
 class(color)
 tryCatch(
     assertIsColorScaleContinuousOrNULL(color),
