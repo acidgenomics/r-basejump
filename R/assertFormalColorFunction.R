@@ -4,6 +4,9 @@
 #' @inherit assert
 #'
 #' @export
+#'
+#' @examples
+#' assertFormalColorFunction(viridis)
 assertFormalColorFunction <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
