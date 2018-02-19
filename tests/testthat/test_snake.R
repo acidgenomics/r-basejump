@@ -9,6 +9,24 @@ test_that("ANY", {
         snake(c("hello.world" = 1L)),
         c("hello_world" = 1L)
     )
+
+    # Matrix (dimnames)
+    data <- Matrix(
+        data = 1L:4L,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("gene.id.1", "gene.id.2"),
+            c("sample.id.1", "sample.id.2")
+        )
+    )
+    expect_identical(
+        dimnames(snake(data, rownames = TRUE, colnames = TRUE)),
+        list(
+            c("gene_id_1", "gene_id_2"),
+            c("sample_id_1", "sample_id_2")
+        )
+    )
 })
 
 test_that("Character", {

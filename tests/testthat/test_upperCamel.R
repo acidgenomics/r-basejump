@@ -9,6 +9,24 @@ test_that("ANY", {
         upperCamel(c("hello.world" = 1L)),
         c("HelloWorld" = 1L)
     )
+
+    # Matrix (dimnames)
+    data <- Matrix(
+        data = 1L:4L,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("gene.id.1", "gene.id.2"),
+            c("sample.id.1", "sample.id.2")
+        )
+    )
+    expect_identical(
+        dimnames(upperCamel(data, rownames = TRUE, colnames = TRUE)),
+        list(
+            c("GeneID1", "GeneID2"),
+            c("SampleID1", "SampleID2")
+        )
+    )
 })
 
 test_that("Character", {

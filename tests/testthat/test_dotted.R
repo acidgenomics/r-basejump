@@ -9,6 +9,24 @@ test_that("ANY", {
         dotted(c("helloWorld" = 1L)),
         c("hello.World" = 1L)
     )
+
+    # Matrix (dimnames)
+    data <- Matrix(
+        data = 1L:4L,
+        nrow = 2L,
+        ncol = 2L,
+        dimnames = list(
+            c("gene_id_1", "gene_id_2"),
+            c("sample_id_1", "sample_id_2")
+        )
+    )
+    expect_identical(
+        dimnames(dotted(data, rownames = TRUE, colnames = TRUE)),
+        list(
+            c("gene.ID.1", "gene.ID.2"),
+            c("sample.ID.1", "sample.ID.2")
+        )
+    )
 })
 
 test_that("Character", {
