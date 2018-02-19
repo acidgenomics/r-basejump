@@ -6,6 +6,18 @@
 #' @param colData Column data.
 #'
 #' @export
+#'
+#' @examples
+#' x <- data.frame(
+#'     sample1 = c(1L, 2L),
+#'     sample2 = c(3L, 4L),
+#'     row.names = c("gene1", "gene2"),
+#'     stringsAsFactors = FALSE)
+#' colData <- data.frame(
+#'     genotype = c("wt", "ko"),
+#'     row.names = c("sample1", "sample2"),
+#'     stringsAsFactors = TRUE)
+#' assertFormalAnnotationCol(x, colData)
 assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
     assert_has_dims(x, severity = severity)
     assert_is_any_of(

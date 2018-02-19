@@ -21,6 +21,9 @@ Abort on mismatch.
 \description{
 Color Function Formal Assert Check
 }
+\examples{
+assertFormalColorFunction(viridis)
+}
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
