@@ -115,7 +115,7 @@ NULL
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && has_rownames(object)) {
+    if (isTRUE(rownames) && hasRownames(object)) {
         rownames(object) <- .camel(rownames(object), strict = strict)
     }
     if (isTRUE(colnames) && has_colnames(object)) {
