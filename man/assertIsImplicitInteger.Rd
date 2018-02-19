@@ -67,7 +67,11 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }
