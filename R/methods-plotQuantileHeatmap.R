@@ -52,15 +52,14 @@ NULL
 #' @importFrom pheatmap pheatmap
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom stats dist hclust
-#' @importFrom viridis viridis
 .plotQuantileHeatmap <- function(
     object,
     n = 5L,
     annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis,
-    legendColor = viridis::viridis,
+    color = viridis,
+    legendColor = viridis,
     title = NULL) {
     # Passthrough: n
     assert_has_dims(object)

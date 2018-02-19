@@ -22,6 +22,8 @@
 \alias{is_tibble}
 \alias{reexports}
 \alias{tibble}
+\alias{reexports}
+\alias{viridis}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -40,5 +42,7 @@ below to see their documentation.
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{viridis}{\code{\link[viridis]{viridis}}}
 }}
 

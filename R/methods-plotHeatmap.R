@@ -18,10 +18,10 @@
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
 #' @param clusterRows Logical determining if rows should be arranged with
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
-#' @param color Colors to use for plot. Defaults to the [viridis::viridis()]
+#' @param color Colors to use for plot. Defaults to the [viridis()]
 #'   palette.
 #' @param legendColor Colors to use for legend labels. Defaults to the
-#'   [viridis::viridis()] palette.
+#'   [viridis()] palette.
 #' @param title *Optional.* Plot title.
 #' @param ... Passthrough arguments to [pheatmap::pheatmap()].
 #'
@@ -43,15 +43,14 @@ NULL
 #' @importFrom pheatmap pheatmap
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom tibble column_to_rownames rownames_to_column
-#' @importFrom viridis viridis
 .plotHeatmap <- function(
     object,
     scale = "row",
     annotationCol = NULL,
     clusterCols = TRUE,
     clusterRows = TRUE,
-    color = viridis::viridis,
-    legendColor = viridis::viridis,
+    color = viridis,
+    legendColor = viridis,
     title = NULL,
     ...) {
     assert_has_dims(object)
@@ -159,7 +158,6 @@ setMethod(
 
 
 #' @rdname plotHeatmap
-#' @importFrom viridis viridis
 #' @export
 setMethod(
     "plotHeatmap",
