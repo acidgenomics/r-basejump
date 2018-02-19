@@ -150,3 +150,10 @@ assertFormalHeaderLevel <- function(...) {
      .Deprecated("assertIsHexColorFunctionOrNULL")
      assertIsHexColorFunctionOrNULL(...)
  }
+
+ #' @rdname deprecated
+ #' @export
+ initializeDir <- function(...) {
+     .Deprecated("initializeDirectory")
+     initializeDirectory(...)
+ }
