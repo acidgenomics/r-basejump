@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalCompress.R
 \name{assertFormalCompress}
 \alias{assertFormalCompress}
-\alias{assert_formal_compress}
-\title{Compression Formal Assert Check}
+\title{Assert Formal Compression}
 \usage{
 assertFormalCompress(x, severity = "stop")
-
-assert_formal_compress(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}
@@ -19,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Compression Formal Assert Check
+Assert Formal Compression
 }
 \examples{
 assertFormalCompress("xz")
@@ -27,17 +24,21 @@ assertFormalCompress("xz")
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

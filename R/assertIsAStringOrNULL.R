@@ -1,4 +1,4 @@
-#' Is a String or NULL Assert Check
+#' Assert Is a String or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -20,10 +20,3 @@ assertIsAStringOrNULL <- function(x, severity = "stop") {
         assert_is_a_string(x, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsAStringOrNULL
-#' @export
-assertIsAStringOrNULL -> assert_is_a_string_or_null

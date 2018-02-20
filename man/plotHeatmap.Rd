@@ -4,10 +4,15 @@
 \name{plotHeatmap}
 \alias{plotHeatmap}
 \alias{plotHeatmap}
+\alias{plotHeatmap,dgCMatrix-method}
 \alias{plotHeatmap,matrix-method}
 \title{Plot Heatmap}
 \usage{
 plotHeatmap(object, ...)
+
+\S4method{plotHeatmap}{dgCMatrix}(object, scale = "row",
+  annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
+  color = viridis, legendColor = viridis, title = NULL, ...)
 
 \S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NULL,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis,

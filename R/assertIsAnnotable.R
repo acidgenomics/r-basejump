@@ -1,4 +1,4 @@
-#' Ensembl Annotations Assert Check
+#' Assert Is Ensembl Annotations Data Frame
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -24,10 +24,3 @@ assertIsAnnotable <- function(x, severity = "stop") {
         y = colnames(x),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsAnnotable
-#' @export
-assertIsAnnotable -> assert_is_annotable

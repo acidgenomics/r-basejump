@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalAnnotationCol.R
 \name{assertFormalAnnotationCol}
 \alias{assertFormalAnnotationCol}
-\alias{assert_formal_annotation_col}
-\title{Annotation Column Formal Assert Check}
+\title{Assert Formal Annotation Column}
 \usage{
 assertFormalAnnotationCol(x, colData, severity = "stop")
-
-assert_formal_annotation_col(x, colData, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}
@@ -21,7 +18,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Annotation Column Formal Assert Check
+Assert Formal Annotation Column
 }
 \examples{
 x <- data.frame(
@@ -44,18 +41,22 @@ tryCatch(
 }
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

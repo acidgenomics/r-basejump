@@ -7,12 +7,7 @@
 \alias{assertIsImplicitInteger}
 \alias{assertIsImplicitIntegerOrNULL}
 \alias{isImplicitInteger}
-\alias{assert_is_an_implicit_integer}
-\alias{assert_is_an_implicit_integer_or_null}
-\alias{assert_is_implicit_integer}
-\alias{assert_is_implicit_integer_or_null}
-\alias{is_implicit_integer}
-\title{Implicit Integer Assert Check}
+\title{Assert Is Implicit Integer}
 \usage{
 assertIsAnImplicitInteger(x)
 
@@ -23,16 +18,6 @@ assertIsImplicitInteger(x)
 assertIsImplicitIntegerOrNULL(x)
 
 isImplicitInteger(x)
-
-assert_is_an_implicit_integer(x)
-
-assert_is_an_implicit_integer_or_null(x)
-
-assert_is_implicit_integer(x)
-
-assert_is_implicit_integer_or_null(x)
-
-is_implicit_integer(x)
 }
 \arguments{
 \item{x}{Object.}
@@ -41,7 +26,7 @@ is_implicit_integer(x)
 Abort on mismatch.
 }
 \description{
-Implicit Integer Assert Check
+Assert Is Implicit Integer
 }
 \examples{
 assertIsAnImplicitInteger(1)
@@ -57,17 +42,21 @@ isImplicitInteger(1L)
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

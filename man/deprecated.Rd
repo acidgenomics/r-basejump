@@ -17,6 +17,9 @@
 \alias{checkAnnotable}
 \alias{checkGene2symbol}
 \alias{checkTx2gene}
+\alias{assertFormalHeaderLevel}
+\alias{assertFormalColorFunction}
+\alias{initializeDir}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -48,6 +51,12 @@ checkAnnotable(...)
 checkGene2symbol(...)
 
 checkTx2gene(...)
+
+assertFormalHeaderLevel(...)
+
+assertFormalColorFunction(...)
+
+initializeDir(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

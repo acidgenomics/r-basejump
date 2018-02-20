@@ -3,7 +3,7 @@
 \name{assertHasRownames}
 \alias{assertHasRownames}
 \alias{hasRownames}
-\title{Has Rownames Assert Check}
+\title{Assert Has Rownames}
 \usage{
 assertHasRownames(x, severity = "stop")
 
@@ -51,17 +51,21 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

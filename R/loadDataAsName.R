@@ -42,7 +42,7 @@ loadDataAsName <- function(
     names(files) <- objectNames
 
     # Check to see if any of the new names already exist in environment
-    assert_all_are_non_existing(objectNames, envir = envir, inherits = FALSE)
+    assertAllAreNonExisting(objectNames, envir = envir, inherits = FALSE)
 
     tmpEnvir <- new.env()
     mapply(

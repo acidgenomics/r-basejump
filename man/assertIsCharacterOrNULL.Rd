@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsCharacterOrNULL.R
 \name{assertIsCharacterOrNULL}
 \alias{assertIsCharacterOrNULL}
-\alias{assert_is_character_or_null}
-\title{Character Vector or NULL Assert Check}
+\title{Assert Is Character Vector or NULL}
 \usage{
 assertIsCharacterOrNULL(x, severity = "stop")
-
-assert_is_character_or_null(x, severity = "stop")
 }
 \arguments{
 \item{x}{Object.}
@@ -19,7 +16,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Character Vector or NULL Assert Check
+Assert Is Character Vector or NULL
 }
 \examples{
 # Success
@@ -34,17 +31,21 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

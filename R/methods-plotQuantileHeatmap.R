@@ -69,8 +69,8 @@ NULL
     assertFormalAnnotationCol(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
-    assertFormalColorFunction(color)
-    assertFormalColorFunction(legendColor)
+    assertIsHexColorFunctionOrNULL(color)
+    assertIsHexColorFunctionOrNULL(legendColor)
     assertIsAStringOrNULL(title)
 
     # Calculate the quantile breaks
@@ -89,7 +89,7 @@ NULL
         annotationCol <- NA
     }
 
-    # FIXME This code can also be generalized...
+    # TODO This code can also be generalized...
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(

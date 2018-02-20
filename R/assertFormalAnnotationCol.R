@@ -1,4 +1,4 @@
-#' Annotation Column Formal Assert Check
+#' Assert Formal Annotation Column
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -44,10 +44,3 @@ assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
         assert_is_identical_to_na(colData, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertFormalAnnotationCol
-#' @export
-assertFormalAnnotationCol -> assert_formal_annotation_col

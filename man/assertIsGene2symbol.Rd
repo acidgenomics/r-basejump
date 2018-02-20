@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsGene2symbol.R
 \name{assertIsGene2symbol}
 \alias{assertIsGene2symbol}
-\alias{assert_is_gene2symbol}
-\title{Check Gene to Symbol Mapping Data}
+\title{Assert Is Gene to Symbol Mapping Data Frame}
 \usage{
 assertIsGene2symbol(x, severity = "stop")
-
-assert_is_gene2symbol(x, severity = "stop")
 }
 \arguments{
 \item{x}{\link{data.frame} containing Ensembl gene identifier to gene symbol
@@ -21,7 +18,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Check Gene to Symbol Mapping Data
+Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
 # Success
@@ -36,17 +33,21 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

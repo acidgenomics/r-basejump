@@ -25,10 +25,3 @@ assertIsTx2gene <- function(x, severity = "stop") {
         y = c("enstxp", "ensgene"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsTx2gene
-#' @export
-assertIsTx2gene -> assert_is_tx2gene

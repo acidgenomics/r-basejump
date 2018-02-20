@@ -1,4 +1,4 @@
-#' Check Gene to Symbol Mapping Data
+#' Assert Is Gene to Symbol Mapping Data Frame
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -25,10 +25,3 @@ assertIsGene2symbol <- function(x, severity = "stop") {
         y = c("ensgene", "symbol"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsGene2symbol
-#' @export
-assertIsGene2symbol -> assert_is_gene2symbol
