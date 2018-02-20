@@ -1,4 +1,4 @@
-#' Character Vector or NULL Assert Check
+#' Assert Is Character Vector or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -20,10 +20,3 @@ assertIsCharacterOrNULL <- function(x, severity = "stop") {
         classes = c("character", "NULL"),
         severity = severity)
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsCharacterOrNULL
-#' @export
-assertIsCharacterOrNULL -> assert_is_character_or_null

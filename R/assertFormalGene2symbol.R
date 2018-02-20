@@ -1,4 +1,4 @@
-#' Gene to Symbol Mappings Formal Assert Check
+#' Assert Formal Gene to Symbol Mappings
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -34,10 +34,3 @@ assertFormalGene2symbol <- function(
         assert_is_subset(rownames(x), rownames(gene2symbol))
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertFormalGene2symbol
-#' @export
-assertFormalGene2symbol -> assert_formal_gene2symbol

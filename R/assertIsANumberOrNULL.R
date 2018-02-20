@@ -1,4 +1,4 @@
-#' Is a Number or NULL Assert Check
+#' Assert Is a Number or NULL
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -23,10 +23,3 @@ assertIsANumberOrNULL <- function(x, severity = "stop") {
         assert_is_a_number(x, severity = severity)
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertIsANumberOrNULL
-#' @export
-assertIsANumberOrNULL -> assert_is_a_number_or_null

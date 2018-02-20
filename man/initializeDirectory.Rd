@@ -2,17 +2,12 @@
 % Please edit documentation in R/initializeDirectory.R
 \name{initializeDirectory}
 \alias{initializeDirectory}
-\alias{initializeDir}
 \title{Initialize Directory}
 \usage{
 initializeDirectory(dir)
-
-initializeDir(...)
 }
 \arguments{
 \item{dir}{Directory path.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Directory path string.

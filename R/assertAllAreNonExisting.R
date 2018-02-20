@@ -1,6 +1,6 @@
 # TODO Use assert engine and add severity
 
-#' All Variables Do Not Exist Assert Check
+#' Assert All Variables Are Non-Existing
 #'
 #' @family Assert Checks
 #' @inherit assert
@@ -27,10 +27,3 @@ assertAllAreNonExisting <- function(
         ))
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname assertAllAreNonExisting
-#' @export
-assertAllAreNonExisting -> assert_all_are_non_existing

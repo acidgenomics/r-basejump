@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertIsAnnotable.R
 \name{assertIsAnnotable}
 \alias{assertIsAnnotable}
-\alias{assert_is_annotable}
-\title{Ensembl Annotations Assert Check}
+\title{Assert Is Ensembl Annotations Data Frame}
 \usage{
 assertIsAnnotable(x, severity = "stop")
-
-assert_is_annotable(x, severity = "stop")
 }
 \arguments{
 \item{x}{\link{data.frame} containing Ensembl gene annotations returned
@@ -20,7 +17,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Ensembl Annotations Assert Check
+Assert Is Ensembl Annotations Data Frame
 }
 \examples{
 # Success
@@ -35,17 +32,21 @@ tryCatch(
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

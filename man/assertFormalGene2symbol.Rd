@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertFormalGene2symbol.R
 \name{assertFormalGene2symbol}
 \alias{assertFormalGene2symbol}
-\alias{assert_formal_gene2symbol}
-\title{Gene to Symbol Mappings Formal Assert Check}
+\title{Assert Formal Gene to Symbol Mappings}
 \usage{
 assertFormalGene2symbol(x, genes, gene2symbol, severity = "stop")
-
-assert_formal_gene2symbol(x, genes, gene2symbol, severity = "stop")
 }
 \arguments{
 \item{x}{Object containing gene identifiers in the rownames.}
@@ -23,7 +20,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Gene to Symbol Mappings Formal Assert Check
+Assert Formal Gene to Symbol Mappings
 }
 \examples{
 gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
@@ -38,17 +35,21 @@ assertFormalGene2symbol(x, genes, gene2symbol)
 \seealso{
 Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }

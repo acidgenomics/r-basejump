@@ -116,20 +116,44 @@ symbol2gene <- function() {
 #' @rdname deprecated
 #' @export
 checkAnnotable <- function(...) {
-    # .Deprecated("assert_is_annotable")
-    assert_is_annotable(...)
+    # .Deprecated("assertIsAnnotable")
+    assertIsAnnotable(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkGene2symbol <- function(...) {
-    # .Deprecated("assert_is_gene2symbol")
-    assert_is_gene2symbol(...)
+    # .Deprecated("assertIsGene2symbol")
+    assertIsGene2symbol(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkTx2gene <- function(...) {
-    # .Deprecated("assert_is_tx2gene")
-    assert_is_tx2gene(...)
+    # .Deprecated("assertIsTx2gene")
+    assertIsTx2gene(...)
 }
+
+
+
+# v0.3.1 =======================================================================
+#' @rdname deprecated
+#' @export
+assertFormalHeaderLevel <- function(...) {
+    .Deprecated("assertIsAHeaderLevel")
+    assertIsAHeaderLevel(...)
+}
+
+#' @rdname deprecated
+#' @export
+ assertFormalColorFunction <- function(...) {
+     .Deprecated("assertIsHexColorFunctionOrNULL")
+     assertIsHexColorFunctionOrNULL(...)
+ }
+
+ #' @rdname deprecated
+ #' @export
+ initializeDir <- function(...) {
+     .Deprecated("initializeDirectory")
+     initializeDirectory(...)
+ }

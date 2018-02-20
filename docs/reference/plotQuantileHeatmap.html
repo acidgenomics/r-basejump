@@ -93,11 +93,6 @@
     <pre class="usage"><span class='fu'>plotQuantileHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
-  <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for dgCMatrix</span>
 <span class='fu'>plotQuantileHeatmap</span>(<span class='no'>object</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>,
   <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
@@ -119,10 +114,8 @@
       <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>Character indicating if the values should be centered and scaled
-in either the row direction or the column direction, or none. Corresponding
-values are "row", "column" and "none".</p></td>
+      <th>n</th>
+      <td><p>The number of breaks to create.</p></td>
     </tr>
     <tr>
       <th>annotationCol</th>
@@ -152,10 +145,6 @@ palette.</p></td>
     <tr>
       <th>title</th>
       <td><p><em>Optional.</em> Plot title.</p></td>
-    </tr>
-    <tr>
-      <th>n</th>
-      <td><p>The number of breaks to create.</p></td>
     </tr>
     </table>
     

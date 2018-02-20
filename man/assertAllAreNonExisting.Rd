@@ -2,12 +2,9 @@
 % Please edit documentation in R/assertAllAreNonExisting.R
 \name{assertAllAreNonExisting}
 \alias{assertAllAreNonExisting}
-\alias{assert_all_are_non_existing}
-\title{All Variables Do Not Exist Assert Check}
+\title{Assert All Variables Are Non-Existing}
 \usage{
 assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
-
-assert_all_are_non_existing(x, envir = parent.frame(), inherits = FALSE)
 }
 \arguments{
 \item{x}{Character vector of variable names to check in environment.}
@@ -20,7 +17,7 @@ assert_all_are_non_existing(x, envir = parent.frame(), inherits = FALSE)
 Abort on mismatch.
 }
 \description{
-All Variables Do Not Exist Assert Check
+Assert All Variables Are Non-Existing
 }
 \examples{
 a <- 1L
@@ -31,18 +28,22 @@ tryCatch(
 }
 \seealso{
 Other Assert Checks: \code{\link{assertFormalAnnotationCol}},
-  \code{\link{assertFormalColorFunction}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
-  \code{\link{assertFormalHeaderLevel}},
   \code{\link{assertHasRownames}},
+  \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
   \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
+  \code{\link{assertIsColorScaleContinuousOrNULL}},
+  \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
+  \code{\link{assertIsFillScaleContinuousOrNULL}},
+  \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
+  \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }
