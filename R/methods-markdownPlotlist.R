@@ -24,15 +24,19 @@ NULL
     assert_is_list(object)
     assert_has_names(object)
     assertIsAHeaderLevel(headerLevel)
-    invisible(lapply(seq_along(object), function(a) {
-        name <- names(object)[[a]]
-        if (is.character(name) && is.numeric(headerLevel)) {
+    invisible(mapply(
+        name = names(object),
+        plot = object,
+        MoreArgs = list(headerLevel = headerLevel),
+        FUN = function(name, plot, headerLevel) {
+            assert_is_a_string(name)
             markdownHeader(name, level = headerLevel, asis = TRUE)
-        }
-        p <- object[[a]]
-        show(p)
-        p
-    }))
+            show(plot)
+            plot
+        },
+        SIMPLIFY = FALSE,
+        USE.NAMES = TRUE
+    ))
 }
 
 
