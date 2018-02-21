@@ -1,5 +1,6 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
+#' @importFrom fs path_real
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
@@ -38,7 +39,7 @@ localOrRemoteFile <- function(
         return(invisible())
     }
 
-    file <- normalizePath(file)
+    file <- path_real(file)
     names(file) <- basename
     file
 }

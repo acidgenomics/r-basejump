@@ -1,5 +1,7 @@
 #' Load Data File as Name
 #'
+#' @importFrom fs path_real
+#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. The argument name
@@ -22,7 +24,7 @@ loadDataAsName <- function(
     envir = parent.frame()) {
     dots <- list(...)
     assert_all_are_dirs(dir)
-    dir <- normalizePath(dir)
+    dir <- path_real(dir)
     assert_is_environment(envir)
 
     # Check for legacy mappings method, used prior to v0.1.1
