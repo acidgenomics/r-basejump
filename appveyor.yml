@@ -17,6 +17,8 @@ cache:
 
 build_script:
   - travis-tool.sh install_github Bioconductor/GenomeInfoDbData
+  - travis-tool.sh install_github Bioconductor/AnnotationHub
+  - travis-tool.sh install_github jotsetung/ensembldb
   - travis-tool.sh install_deps
 
 test_script:
