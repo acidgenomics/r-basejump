@@ -36,6 +36,7 @@ Imports:
     dendsort,
     dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
+    fs (>= 1.0.0),
     ggplot2 (>= 2.2.1),
     grDevices,
     knitr (>= 1.16),

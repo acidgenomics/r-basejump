@@ -16,6 +16,8 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
+#' @importFrom fs path_real
+#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
@@ -35,7 +37,7 @@ loadData <- function(
     envir = parent.frame(),
     quiet = FALSE) {
     assert_all_are_dirs(dir)
-    dir <- normalizePath(dir)
+    dir <- path_real(dir)
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
 
