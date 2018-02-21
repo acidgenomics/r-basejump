@@ -10,7 +10,7 @@ test_that("transmit", {
             quiet = TRUE) %>%
             .[["README"]] %>%
             .[[1L]],
-        file.path(getwd(), "README")
+        path_join(c(path_real("."), "README"))
     )
     unlink("README")
     expect_identical(
@@ -22,7 +22,7 @@ test_that("transmit", {
             quiet = TRUE) %>%
             .[["README"]] %>%
             .[[1L]],
-        file.path(getwd(), "ensembl_readme.txt.gz")
+        path_join(c(path_real("."), "ensembl_readme.txt.gz"))
     )
     unlink("ensembl_readme.txt.gz")
     expect_error(

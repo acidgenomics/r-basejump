@@ -6,13 +6,16 @@ test_that("saveData", {
             mtcars, starwars, dir = "data",
             overwrite = TRUE, quiet = TRUE),
         c(
-            mtcars = file.path(getwd(), "data", "mtcars.rda"),
-            starwars = file.path(getwd(), "data", "starwars.rda")
+            mtcars = path_join(c(path_real("."), "data", "mtcars.rda")),
+            starwars = path_join(c(path_real("."), "data", "starwars.rda"))
         )
     )
     expect_message(
         saveData(mtcars, starwars, dir = "data", overwrite = TRUE),
-        paste("Saving mtcars.rda, starwars.rda to", file.path(getwd(), "data"))
+        paste(
+            "Saving mtcars.rda, starwars.rda to",
+            path_join(c(path_real("."), "data"))
+        )
     )
     expect_warning(
         saveData(

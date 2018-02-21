@@ -29,7 +29,7 @@
 #' unlink(c("mtcars.rda", "starwars.rda"))
 saveData <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     overwrite = TRUE,
     compress = "bzip2",
     quiet = FALSE) {
@@ -40,7 +40,7 @@ saveData <- function(
     assertFormalCompress(compress)
     assert_is_a_bool(quiet)
 
-    files <- file.path(dir, paste0(objectNames, ".rda"))
+    files <- path_join(c(dir, paste0(objectNames, ".rda")))
     names(files) <- objectNames
 
     if (!isTRUE(quiet)) {

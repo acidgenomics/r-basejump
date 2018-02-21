@@ -36,7 +36,7 @@
 #' unlink("mtcars.csv.gz")
 writeCounts <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     gzip = TRUE,
     quiet = FALSE) {
     dots <- dots_list(...)
@@ -68,7 +68,7 @@ writeCounts <- function(
         counts <- dots[[a]]
         if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
             # MatrixMarket file
-            matrixFile <- file.path(dir, paste0(name, ".mtx"))
+            matrixFile <- path_join(c(dir, paste0(name, ".mtx")))
             writeMM(counts, matrixFile)
             # Write barcodes (colnames)
             barcodes <- colnames(counts)
@@ -90,7 +90,7 @@ writeCounts <- function(
                 ext <- paste0(ext, ".gz")
             }
             fileName <- paste0(name, ext)
-            filePath <- file.path(dir, fileName)
+            filePath <- path_join(c(dir, fileName))
             # See `setAs.R` file for documentation on tibble coercion method
             write_csv(
                 x = as(counts, "tibble"),

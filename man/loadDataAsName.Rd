@@ -4,7 +4,7 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(..., dir = getwd(), envir = parent.frame())
+loadDataAsName(..., dir = ".", envir = parent.frame())
 }
 \arguments{
 \item{...}{Key value pairs, defining the name mappings. The argument name

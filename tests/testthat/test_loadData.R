@@ -18,11 +18,11 @@ test_that("loadData", {
     rm(mtcars)
     expect_identical(
         loaded,
-        c(mtcars = file.path(getwd(), "mtcars.rda"))
+        c(mtcars = path_join(c(path_real("."), "mtcars.rda")))
     )
     expect_message(
         suppressWarnings(loadData(mtcars)),
-        paste("Loading mtcars.rda from", getwd())
+        paste("Loading mtcars.rda from", path_real("."))
     )
 })
 

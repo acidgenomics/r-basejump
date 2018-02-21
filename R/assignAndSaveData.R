@@ -35,7 +35,7 @@ assignAndSaveData <- function(
     assert_is_environment(envir)
     assert_is_a_bool(quiet)
 
-    file <- file.path(dir, paste0(name, ".rda"))
+    file <- path_join(c(dir, paste0(name, ".rda")))
     names(file) <- name
 
     assign(name, object, envir = envir)

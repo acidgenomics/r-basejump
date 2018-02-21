@@ -17,7 +17,7 @@ test_that("Dot object key-value pair method", {
     loaded <- loadDataAsName(
         newName1 = "mtcars",
         newName2 = "starwars",
-        dir = getwd()
+        dir = "."
     )
     expect_is(loaded, "character")
     expect_true(exists("newName1", inherits = FALSE))

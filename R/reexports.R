@@ -8,6 +8,14 @@ dplyr::pull
 
 
 
+#' @importFrom fs path_expand
+#' @export
+fs::path_expand
+
+#' @importFrom fs path_join
+#' @export
+fs::path_join
+
 #' @importFrom fs path_real
 #' @export
 fs::path_real

@@ -4,7 +4,7 @@
 \alias{loadData}
 \title{Load Local Data}
 \usage{
-loadData(..., dir = getwd(), envir = parent.frame(), quiet = FALSE)
+loadData(..., dir = ".", envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{...}{Object names as symbols.}

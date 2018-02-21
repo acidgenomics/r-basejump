@@ -16,8 +16,6 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
-#' @importFrom fs path_real
-#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
@@ -33,7 +31,7 @@
 #' glimpse(grch37)
 loadData <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     envir = parent.frame(),
     quiet = FALSE) {
     assert_all_are_dirs(dir)
@@ -46,7 +44,7 @@ loadData <- function(
     invisible(lapply(dots, assert_is_name))
 
     names <- as.character(dots)
-    files <- file.path(dir, paste0(names, ".rda"))
+    files <- path_join(c(dir, paste0(names, ".rda")))
     assert_all_are_existing_files(files)
 
     if (!isTRUE(quiet)) {

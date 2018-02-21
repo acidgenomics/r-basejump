@@ -65,10 +65,7 @@ objects supporting name assignments. They return the object without
 modification of the underlying data.
 }
 \examples{
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"
-))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 # Character vector
 character <- makeNames$character

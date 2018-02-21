@@ -4,7 +4,7 @@
 \alias{transmit}
 \title{Transmit Files from a Remote FTP Server}
 \usage{
-transmit(remoteDir, localDir = getwd(), pattern, rename = NULL,
+transmit(remoteDir, localDir = ".", pattern, rename = NULL,
   compress = FALSE, quiet = FALSE)
 }
 \arguments{

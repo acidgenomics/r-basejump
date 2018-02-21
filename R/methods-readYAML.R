@@ -13,10 +13,11 @@
 #'
 #' @examples
 #' # bcbioRNASeq example project summary YAML
-#' url <- file.path(
+#' url <- paste(c(
 #'     "http://bcbiobase.seq.cloud",
 #'     "bcbio",
-#'     "project-summary.yaml")
+#'     "project-summary.yaml"),
+#'     collapse = "/")
 #' yaml <- readYAML(url)
 #' names(yaml)
 NULL
