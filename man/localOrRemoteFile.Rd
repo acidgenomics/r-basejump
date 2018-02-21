@@ -22,9 +22,14 @@ file path (i.e. tempfile) as the string. Aborts on a missing file.
 This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
+# Single file
+file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+names(file)
+
+# Vectorized
 files <- localOrRemoteFile(c(
     "http://basejump.seq.cloud/mtcars.csv",
     "http://basejump.seq.cloud/mtcars.rda"
 ))
-glimpse(files)
+names(files)
 }
