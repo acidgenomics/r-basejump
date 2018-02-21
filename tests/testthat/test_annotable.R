@@ -1,17 +1,17 @@
 context("annotable")
 
 test_that("Ensembl versioned release", {
-    release <- 88L
+    release <- 87L
     human <- suppressMessages(annotable("Homo sapiens", release = release))
     mouse <- suppressMessages(annotable("Mus musculus", release = release))
 
     expect_identical(
         dim(human),
-        c(64592L, 11L)
+        c(63970L, 11L)
     )
     expect_identical(
         dim(mouse),
-        c(51158L, 11L)
+        c(50143L, 11L)
     )
 
     expect_identical(
@@ -43,14 +43,8 @@ test_that("Ensembl versioned release", {
 
 test_that("Human GRCh37/hg19 genome build support", {
     # Compare against the internally stashed data
-    load(system.file(
-        file.path("extdata", "grch37.rda"),
-        package = "basejump"
-    ))
-    load(system.file(
-        file.path("extdata", "grch37Tx2gene.rda"),
-        package = "basejump"
-    ))
+    load(system.file("extdata/grch37.rda", package = "basejump"))
+    load(system.file("extdata/grch37Tx2gene.rda", package = "basejump"))
 
     expect_identical(
         annotable("Homo sapiens", genomeBuild = "GRCh37"),
@@ -171,7 +165,7 @@ test_that("Unsupported Ensembl release", {
 test_that("Unsupported organism", {
     expect_error(
         annotable("XXX"),
-        "Full latin organism name XXX is not supported in AnnotationHub"
+        "XXX is not supported in AnnotationHub"
     )
 })
 
