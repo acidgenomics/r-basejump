@@ -14,6 +14,8 @@ r:
   - bioc-devel
 r_packages:
   - covr
+bioc_packages:
+  - GenomeInfoDbData
 
 after_success:
   - Rscript -e 'covr::codecov()'
