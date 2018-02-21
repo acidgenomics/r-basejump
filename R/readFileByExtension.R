@@ -30,7 +30,12 @@
 #' - [Matrix::readMM()]: Read a MatrixMarket file.
 #'
 #' @examples
-#' readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' # Comma separated values
+#' csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' glimpse(csv)
+#'
+#' # Microsoft Excel Worksheet
+#' xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 readFileByExtension <- function(
     object,
     makeNames = "camel",
@@ -47,7 +52,8 @@ readFileByExtension <- function(
     assert_is_a_string(severity)
     assert_is_subset(severity, c("stop", "warning"))
 
-    file <- localOrRemoteFile(object, severity = severity, quiet = quiet)
+    file <- localOrRemoteFile(object, severity = severity, quiet = quiet) %>%
+        unlist()
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
@@ -61,7 +67,7 @@ readFileByExtension <- function(
     # Add extension to tempfile, if necessary
     if (!grepl(extPattern, file)) {
         # tempfile needs an extension or `read_excel()` call will abort
-        file.rename(from = file, to = paste0(file, ".", ext))
+        file_move(path = file, new_path = paste0(file, ".", ext))
         file <- paste0(file, ".", ext)
     }
 
