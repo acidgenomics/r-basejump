@@ -28,14 +28,14 @@ LazyData: TRUE
 Depends:
     R (>= 3.4.0)
 Imports:
-    AnnotationHub (>= 2.8.3),
+    AnnotationHub (>= 2.10.1),
     assertive (>= 0.3),
     BiocGenerics (>= 0.22.1),
     cowplot,
     datasets,
     dendsort,
     dplyr (>= 0.7.4),
-    ensembldb (>= 2.0.0),
+    ensembldb (>= 2.2.2),
     ggplot2 (>= 2.2.1),
     grDevices,
     knitr (>= 1.16),
@@ -48,7 +48,7 @@ Imports:
     RCurl (>= 1.95),
     readr (>= 1.1.1),
     readxl (>= 1.0.0),
-    rlang (>= 0.1.2),
+    rlang (>= 0.2.0),
     R.utils,
     scales,
     stats,
