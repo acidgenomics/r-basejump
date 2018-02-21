@@ -25,6 +25,7 @@ Load Data File as Name
 \examples{
 loadDataAsName(
     annotable = "grch37",
+    tx2gene = "grch37Tx2gene",
     dir = system.file("extdata", package = "basejump")
 )
 glimpse(annotable)

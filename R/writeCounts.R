@@ -13,6 +13,7 @@
 #' @family Write Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
+#' @importFrom fs path_join
 #' @importFrom Matrix writeMM
 #' @importFrom R.utils gzip
 #' @importFrom readr write_csv write_lines

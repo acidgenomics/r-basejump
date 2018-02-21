@@ -16,6 +16,8 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
+#' @importFrom fs path_join path_real
+#'
 #' @param ... Object names as symbols.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,

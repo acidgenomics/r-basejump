@@ -5,6 +5,7 @@
 #'
 #' @family Data Import and Project Utilities
 #'
+#' @importFrom fs file_temp
 #' @importFrom utils download.file
 #'
 #' @inheritParams general

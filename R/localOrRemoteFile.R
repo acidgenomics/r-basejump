@@ -2,6 +2,7 @@
 #'
 #' This function is vectorized and supports mixed local and remote paths.
 #'
+#' @importFrom fs file_temp path_real
 #' @importFrom utils download.file
 #'
 #' @inheritParams general

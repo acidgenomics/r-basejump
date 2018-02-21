@@ -5,6 +5,7 @@
 #'
 #' @family Data Import and Project Utilities
 #'
+#' @importFrom fs path_join
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines
