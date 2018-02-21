@@ -13,6 +13,7 @@
 #' @examples
 #' loadDataAsName(
 #'     annotable = "grch37",
+#'     tx2gene = "grch37Tx2gene",
 #'     dir = system.file("extdata", package = "basejump")
 #' )
 #' glimpse(annotable)
@@ -35,32 +36,37 @@ loadDataAsName <- function(
     assert_has_names(dots)
     invisible(lapply(dots, assert_is_a_string))
 
+    # Load into a temporary environment
     fileNames <- as.character(dots)
-    objectNames <- names(dots)
-
-    files <- path_join(c(dir, paste0(fileNames, ".rda")))
-    names(files) <- objectNames
-
-    # Check to see if any of the new names already exist in environment
-    assertAllAreNonExisting(objectNames, envir = envir, inherits = FALSE)
-
+    filePaths <- path(dir, paste0(fileNames, ".rda"))
+    assert_all_are_existing_files(filePaths)
     tmpEnvir <- new.env()
-    mapply(
-        .safeLoad,
-        file = files,
+    invisible(mapply(
+        FUN = .safeLoad,
+        file = filePaths,
         MoreArgs = list(envir = tmpEnvir),
         SIMPLIFY = FALSE,
-        USE.NAMES = FALSE
-    )
-    assert_are_identical(fileNames, ls(tmpEnvir))
+        USE.NAMES = FALSE))
+    # Check to ensure everything loaded up correctly
+    assert_are_set_equal(fileNames, ls(tmpEnvir))
 
-    invisible(lapply(seq_along(fileNames), function(a) {
+    # Now assign to the desired object names
+    objectNames <- names(dots)
+    # Check to see if any of the new names already exist in environment
+    assertAllAreNonExisting(objectNames, envir = envir, inherits = FALSE)
+    invisible(mapply(
+        FUN = function(old, new, tmpEnvir, envir) {
         assign(
-            x = objectNames[[a]],
-            value = get(fileNames[[a]], envir = tmpEnvir, inherits = FALSE),
-            envir = envir
-        )
-    }))
+            x = new,
+            value = get(old, envir = tmpEnvir, inherits = FALSE),
+            envir = envir)
+        },
+        new = objectNames,
+        old = fileNames,
+        MoreArgs = list(tmpEnvir = tmpEnvir, envir = envir),
+        SIMPLIFY = FALSE,
+        USE.NAMES = FALSE
+    ))
 
-    invisible(files)
+    invisible(filePaths)
 }
