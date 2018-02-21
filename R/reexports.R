@@ -8,6 +8,12 @@ dplyr::pull
 
 
 
+#' @importFrom fs path_real
+#' @export
+fs::path_real
+
+
+
 #' @importFrom ggplot2 aes
 #' @export
 ggplot2::aes
