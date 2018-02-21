@@ -88,7 +88,7 @@ transmit <- function(
     localPath <- path(localDir, name)
 
     if (!isTRUE(quiet)) {
-        inform(paste("Downloading", toString(remoteFileName)))
+        inform(paste("Downloading", toString(match)))
     }
 
     list <- mapply(
