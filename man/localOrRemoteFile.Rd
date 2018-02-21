@@ -15,12 +15,16 @@ doesn't exist.}
 \item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Named character vector containing the original file name as the
-name and local file path as the string. Aborts on a missing file.
+Named list containing the original basename as the name and local
+file path (i.e. tempfile) as the string. Aborts on a missing file.
 }
 \description{
 Dynamically Handle a Local or Remote File Path
 }
 \examples{
-localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
+files <- localOrRemoteFile(c(
+    "http://basejump.seq.cloud/mtcars.csv",
+    "http://basejump.seq.cloud/mtcars.rda"
+))
+glimpse(files)
 }
