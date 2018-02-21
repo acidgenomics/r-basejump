@@ -7,6 +7,14 @@
 \alias{reexports}
 \alias{dir_create}
 \alias{reexports}
+\alias{dir_delete}
+\alias{reexports}
+\alias{dir_exists}
+\alias{reexports}
+\alias{file_delete}
+\alias{reexports}
+\alias{file_exists}
+\alias{reexports}
 \alias{path}
 \alias{reexports}
 \alias{path_join}
@@ -45,7 +53,7 @@ below to see their documentation.
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
-  \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
+  \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{dir_delete}}, \code{\link[fs]{dir_exists}}, \code{\link[fs]{file_delete}}, \code{\link[fs]{file_exists}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
 
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 

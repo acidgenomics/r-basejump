@@ -4,7 +4,7 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
+assignAndSaveData(name, object, dir = ".", compress = TRUE,
   envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
@@ -38,8 +38,12 @@ This function attempts to follow the same order as \code{\link[base:assign]{base
 }
 \examples{
 assignAndSaveData(name = "test", object = mtcars)
+exists("test", inherits = FALSE)
+file_exists("test.rda")
 
-unlink("test.rda")
+# Clean up
+rm(test)
+file_delete("test.rda")
 }
 \seealso{
 Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
