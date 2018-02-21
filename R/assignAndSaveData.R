@@ -21,12 +21,16 @@
 #'
 #' @examples
 #' assignAndSaveData(name = "test", object = mtcars)
+#' exists("test", inherits = FALSE)
+#' file_exists("test.rda")
 #'
-#' unlink("test.rda")
+#' # Clean up
+#' rm(test)
+#' file_delete("test.rda")
 assignAndSaveData <- function(
     name,
     object,
-    dir = getwd(),
+    dir = ".",
     compress = TRUE,
     envir = parent.frame(),
     quiet = FALSE) {
