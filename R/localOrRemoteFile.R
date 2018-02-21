@@ -37,7 +37,7 @@ localOrRemoteFile <- function(
             } else {
                 file <- path
             }
-            file
+            path_real(file)
         },
         path = object,
         MoreArgs = list(quiet = quiet),
@@ -45,6 +45,6 @@ localOrRemoteFile <- function(
         USE.NAMES = FALSE)
     names(files) <- basename(object)
 
-    assert_all_are_existing_files(files, severity = severity)
+    assert_all_are_existing_files(as.character(files), severity = severity)
     files
 }
