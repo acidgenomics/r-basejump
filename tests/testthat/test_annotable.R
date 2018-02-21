@@ -123,15 +123,15 @@ test_that("DataFrame coercion AsIs list", {
 
 test_that("Collapse annotables tibble", {
     loadRemoteData(
-        paste(c(
+        paste(
             "https://github.com",
             "stephenturner",
             "annotables",
             "raw",
             "master",
             "data",
-            "grch38.rda"
-        ), collapse = "/"),
+            "grch38.rda",
+            sep = "/"),
         quiet = TRUE)
     expect_true(any(duplicated(grch38[["ensgene"]])))
     annotable <- annotable(grch38)
