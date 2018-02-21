@@ -5,6 +5,8 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{path_real}
+\alias{reexports}
 \alias{aes}
 \alias{reexports}
 \alias{ggplot}
@@ -36,6 +38,8 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
+
+  \item{fs}{\code{\link[fs]{path_real}}}
 
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 

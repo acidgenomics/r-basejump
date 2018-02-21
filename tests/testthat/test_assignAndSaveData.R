@@ -8,7 +8,7 @@ test_that("assignAndSaveData", {
     )
     expect_message(
         assignAndSaveData("test", mtcars),
-        paste("Saving test to", getwd())
+        paste("Saving test to", path_real("."))
     )
 })
 
