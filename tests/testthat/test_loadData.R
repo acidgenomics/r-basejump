@@ -42,6 +42,7 @@ test_that("Already exists", {
 })
 
 test_that("Invalid arguments", {
+    unlink("XXX", recursive = TRUE)
     expect_error(
         loadData(mtcars, dir = "XXX"),
         "is_dir : "

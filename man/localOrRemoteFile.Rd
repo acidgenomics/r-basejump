@@ -19,7 +19,7 @@ Named list containing the original basename as the name and local
 file path (i.e. tempfile) as the string. Aborts on a missing file.
 }
 \description{
-Dynamically Handle a Local or Remote File Path
+This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
 files <- localOrRemoteFile(c(

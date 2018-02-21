@@ -3,6 +3,8 @@
 #' Checks and creates a directory recursively automatically. Useful for setting
 #' up functions that require writes to a user-specified directory.
 #'
+#' @importFrom fs dir_create dir_exists path_real
+#'
 #' @param dir Directory path.
 #'
 #' @return Directory path string.
@@ -14,8 +16,8 @@
 #' unlink("testdir", recursive = TRUE)
 initializeDirectory <- function(dir) {
     assert_is_a_string(dir)
-    if (!dir.exists(dir)) {
-        dir.create(dir, recursive = TRUE)
+    if (!dir_exists(dir)) {
+        dir_create(dir, recursive = TRUE)
     }
     path_real(dir)
 }

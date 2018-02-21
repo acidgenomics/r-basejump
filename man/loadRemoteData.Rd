@@ -19,7 +19,8 @@ which will assign into the calling environment.}
 Silently return a character matrix containing URL and tempfile paths.
 }
 \description{
-Load a remote R binary file.
+Load a remote R binary file. This function is vectorized and supports
+multiple URLs in a single call.
 }
 \examples{
 objects <- loadRemoteData(c(

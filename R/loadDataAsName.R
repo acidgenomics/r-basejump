@@ -1,5 +1,7 @@
 #' Load Data File as Name
 #'
+#' @importFrom fs path path_real
+#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. The argument name

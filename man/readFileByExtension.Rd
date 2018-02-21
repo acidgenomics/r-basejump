@@ -29,7 +29,12 @@ files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.coln
 and \code{.rownames} files.
 }
 \examples{
-readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+# Comma separated values
+csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+glimpse(csv)
+
+# Microsoft Excel Worksheet
+xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 }
 \seealso{
 \itemize{
