@@ -18,6 +18,6 @@ up functions that require writes to a user-specified directory.
 }
 \examples{
 initializeDirectory("testdir")
-dir.exists("testdir")
-unlink("testdir", recursive = TRUE)
+dir_exists("testdir")
+dir_delete("testdir", recursive = TRUE)
 }

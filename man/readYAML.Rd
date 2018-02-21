@@ -26,11 +26,11 @@ Read YAML File
 }
 \examples{
 # bcbioRNASeq example project summary YAML
-url <- paste(c(
+url <- paste(
     "http://bcbiobase.seq.cloud",
     "bcbio",
-    "project-summary.yaml"),
-    collapse = "/")
+    "project-summary.yaml",
+    sep = "/")
 yaml <- readYAML(url)
 names(yaml)
 }

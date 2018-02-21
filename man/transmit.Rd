@@ -30,14 +30,16 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
-transmit(
+readme <- transmit(
     remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
     pattern = "README",
     rename = "ensembl_readme.txt",
     compress = TRUE)
+basename(readme)
+file_exists(readme)
 
 # Clean up
-unlink("ensembl_readme.txt.gz")
+file_delete("ensembl_readme.txt.gz")
 }
 \seealso{
 Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
