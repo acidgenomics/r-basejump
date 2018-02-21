@@ -12,6 +12,22 @@ dplyr::pull
 #' @export
 fs::dir_create
 
+#' @importFrom fs dir_delete
+#' @export
+fs::dir_delete
+
+#' @importFrom fs dir_exists
+#' @export
+fs::dir_exists
+
+#' @importFrom fs file_delete
+#' @export
+fs::file_delete
+
+#' @importFrom fs file_exists
+#' @export
+fs::file_exists
+
 #' @importFrom fs path
 #' @export
 fs::path
