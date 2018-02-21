@@ -71,7 +71,7 @@ NULL
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom rlang .data
 #' @importFrom S4Vectors mcols
-#' @importFrom utils capture.output find tail
+#' @importFrom utils capture.output find packageVersion tail
 .annotable.character <- function(  # nolint
     object,
     format = "gene",
@@ -167,10 +167,16 @@ NULL
 
     # Abort on organism failure
     if (!length(id)) {
-        abort(paste(
-            "Full latin organism name", object,
-            "is not supported in AnnotationHub"
-        ))
+        msg <- object
+        if (!is.null(release)) {
+            msg <- paste0(msg, " (Ensembl release ", release, ")")
+        }
+        msg <- paste(
+            msg,
+            "is not supported in AnnotationHub",
+            packageVersion("AnnotationHub")
+        )
+        abort(msg)
     }
 
     # ensembldb ================================================================
