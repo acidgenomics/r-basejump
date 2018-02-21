@@ -6,7 +6,7 @@
 #'
 #' @family Write Utilities
 #'
-#' @importFrom fs path_join
+#' @importFrom fs path
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
@@ -42,7 +42,7 @@ saveData <- function(
     assertFormalCompress(compress)
     assert_is_a_bool(quiet)
 
-    files <- path_join(c(dir, paste0(objectNames, ".rda")))
+    files <- path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
 
     if (!isTRUE(quiet)) {
