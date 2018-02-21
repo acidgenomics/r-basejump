@@ -8,9 +8,13 @@ dplyr::pull
 
 
 
-#' @importFrom fs path_expand
+#' @importFrom fs dir_create
 #' @export
-fs::path_expand
+fs::dir_create
+
+#' @importFrom fs path
+#' @export
+fs::path
 
 #' @importFrom fs path_join
 #' @export
