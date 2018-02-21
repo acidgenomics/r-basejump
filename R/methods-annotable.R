@@ -105,24 +105,18 @@ NULL
         ) {
             if (format == "gene") {
                 data <- load(system.file(
-                    file.path("extdata", "grch37.rda"),
-                    package = "basejump"
-                ))
+                    "extdata/grch37.rda", package = "basejump"))
                 data <- get(data, inherits = FALSE)
                 return(data)
             } else if (format == "gene2symbol") {
                 data <- load(system.file(
-                    file.path("extdata", "grch37.rda"),
-                    package = "basejump"
-                ))
+                    "extdata/grch37.rda", package = "basejump"))
                 data <- get(data, inherits = FALSE)
                 data <- data[, c("ensgene", "symbol")]
                 return(data)
             } else if (format == "tx2gene") {
                 data <- load(system.file(
-                    file.path("extdata", "grch37Tx2gene.rda"),
-                    package = "basejump"
-                ))
+                    "extdata/grch37Tx2gene.rda", package = "basejump"))
                 data <- get(data, inherits = FALSE)
                 return(data)
             }

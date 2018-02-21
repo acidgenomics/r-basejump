@@ -4,7 +4,7 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = getwd(), overwrite = TRUE, compress = "bzip2",
+saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2",
   quiet = FALSE)
 }
 \arguments{

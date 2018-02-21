@@ -70,10 +70,7 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"
-))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 # Character vector
 character <- makeNames$character

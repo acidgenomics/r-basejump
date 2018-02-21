@@ -1,6 +1,5 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' @importFrom fs path_real
 #' @importFrom utils download.file
 #'
 #' @inheritParams general

@@ -1,7 +1,5 @@
 #' Load Data File as Name
 #'
-#' @importFrom fs path_real
-#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. The argument name
@@ -20,7 +18,7 @@
 #' glimpse(annotable)
 loadDataAsName <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     envir = parent.frame()) {
     dots <- list(...)
     assert_all_are_dirs(dir)
@@ -40,7 +38,7 @@ loadDataAsName <- function(
     fileNames <- as.character(dots)
     objectNames <- names(dots)
 
-    files <- file.path(dir, paste0(fileNames, ".rda"))
+    files <- path_join(c(dir, paste0(fileNames, ".rda")))
     names(files) <- objectNames
 
     # Check to see if any of the new names already exist in environment

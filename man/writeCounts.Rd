@@ -4,7 +4,7 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
+writeCounts(..., dir = ".", gzip = TRUE, quiet = FALSE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}

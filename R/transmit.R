@@ -36,7 +36,7 @@
 #' unlink("ensembl_readme.txt.gz")
 transmit <- function(
     remoteDir,
-    localDir = getwd(),
+    localDir = ".",
     pattern,
     rename = NULL,
     compress = FALSE,
@@ -89,7 +89,7 @@ transmit <- function(
             localFileName <- remoteFileName[a]
         }
         remoteFilePath <- paste0(remoteDir, remoteFileName[a])
-        localFilePath <- file.path(localDir, localFileName)
+        localFilePath <- path_join(c(localDir, localFileName))
         download.file(
             url = remoteFilePath,
             destfile = localFilePath,
