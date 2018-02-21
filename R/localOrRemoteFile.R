@@ -16,11 +16,16 @@
 #' @export
 #'
 #' @examples
+#' # Single file
+#' file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+#' names(file)
+#'
+#' # Vectorized
 #' files <- localOrRemoteFile(c(
 #'     "http://basejump.seq.cloud/mtcars.csv",
 #'     "http://basejump.seq.cloud/mtcars.rda"
 #' ))
-#' glimpse(files)
+#' names(files)
 localOrRemoteFile <- function(
     object,
     severity = "stop",
@@ -44,8 +49,9 @@ localOrRemoteFile <- function(
         },
         path = object,
         MoreArgs = list(quiet = quiet),
-        SIMPLIFY = FALSE,
+        SIMPLIFY = TRUE,
         USE.NAMES = FALSE)
+    assert_is_character(files)
     names(files) <- basename(object)
 
     assert_all_are_existing_files(as.character(files), severity = severity)
