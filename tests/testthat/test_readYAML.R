@@ -1,11 +1,11 @@
 context("readYAML")
 
 test_that("bcbio project summary", {
-    url <- paste(c(
+    url <- paste(
         "http://bcbiobase.seq.cloud",
         "bcbio",
-        "project-summary.yaml"
-    ), collapse = "/")
+        "project-summary.yaml",
+        sep = "/")
     yaml <- readYAML(url, quiet = TRUE)
     expect_identical(
         class(yaml),
@@ -25,13 +25,13 @@ test_that("bcbio project summary", {
 test_that("`.yml` file support", {
     # Use the package `.travis.yml` configuration as an example
     yaml <- readYAML(
-        paste(c(
+        paste(
             "https://raw.githubusercontent.com",
             "steinbaugh",
             "basejump",
             "master",
-            ".travis.yml"
-        ), collapse = "/"),
+            ".travis.yml",
+            sep = "/"),
         quiet = TRUE)
     expect_true("language" %in% names(yaml))
 })

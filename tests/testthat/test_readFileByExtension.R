@@ -68,13 +68,13 @@ test_that("R Data (.rda) file (unsupported)", {
     # Missing extension
     expect_error(
         readFileByExtension(
-            paste(c(
+            paste(
                 "https://cran.r-project.org",
                 "web",
                 "packages",
                 "testthat",
-                "LICENSE"
-            ), collapse = "/"),
+                "LICENSE",
+                sep = "/"),
             quiet = TRUE),
         "is_matching_regex"
     )
