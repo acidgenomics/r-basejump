@@ -19,5 +19,7 @@ up functions that require writes to a user-specified directory.
 \examples{
 initializeDirectory("testdir")
 dir_exists("testdir")
-dir_delete("testdir", recursive = TRUE)
+
+# Clean up
+dir_delete("testdir")
 }

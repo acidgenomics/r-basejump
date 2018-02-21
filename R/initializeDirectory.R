@@ -13,7 +13,9 @@
 #' @examples
 #' initializeDirectory("testdir")
 #' dir_exists("testdir")
-#' dir_delete("testdir", recursive = TRUE)
+#'
+#' # Clean up
+#' dir_delete("testdir")
 initializeDirectory <- function(dir) {
     assert_is_a_string(dir)
     if (!dir_exists(dir)) {
