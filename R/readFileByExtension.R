@@ -53,8 +53,7 @@ readFileByExtension <- function(
     assert_is_a_string(severity)
     assert_is_subset(severity, c("stop", "warning"))
 
-    file <- localOrRemoteFile(object, severity = severity, quiet = quiet) %>%
-        unlist()
+    file <- localOrRemoteFile(object, severity = severity, quiet = quiet)
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
