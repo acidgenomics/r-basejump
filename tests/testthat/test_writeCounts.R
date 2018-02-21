@@ -27,5 +27,5 @@ test_that("writeCounts", {
         writeCounts(seq(1L:10L)),
         "has_dims"
     )
-    unlink("counts", recursive = TRUE)
+    dir_delete("counts")
 })

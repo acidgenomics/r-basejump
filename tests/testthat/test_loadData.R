@@ -42,7 +42,6 @@ test_that("Already exists", {
 })
 
 test_that("Invalid arguments", {
-    unlink("XXX", recursive = TRUE)
     expect_error(
         loadData(mtcars, dir = "XXX"),
         "is_dir : "
@@ -60,4 +59,4 @@ test_that("Renamed file", {
     )
 })
 
-unlink(c("multi.rda", "mtcars.rda", "renamed.rda"))
+file_delete(c("multi.rda", "mtcars.rda", "renamed.rda"))

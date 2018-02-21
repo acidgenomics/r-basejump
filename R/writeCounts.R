@@ -34,7 +34,7 @@
 #' writeCounts(mtcars, gzip = TRUE)
 #'
 #' # Clean up
-#' unlink("mtcars.csv.gz")
+#' file_delete("mtcars.csv.gz")
 writeCounts <- function(
     ...,
     dir = ".",
