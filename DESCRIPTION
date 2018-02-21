@@ -62,7 +62,6 @@ Imports:
 Suggests:
     BiocStyle,
     devtools,
-    GenomeInfoDbData,
     lintr,
     roxygen2,
     testthat,
