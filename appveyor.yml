@@ -18,6 +18,7 @@ cache:
 build_script:
   - travis-tool.sh install_github Bioconductor/GenomeInfoDbData
   - travis-tool.sh install_deps
+  - travis-tool.sh install_github tidyverse/readxl
 
 test_script:
   - travis-tool.sh run_tests
