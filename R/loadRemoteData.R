@@ -1,10 +1,10 @@
 #' Load Remote Data
 #'
-#' Load a remote R binary file.
+#' Load a remote R binary file. This function is vectorized and supports
+#' multiple URLs in a single call.
 #'
 #' @family Data Import and Project Utilities
 #'
-#' @importFrom tools file_path_sans_ext
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
@@ -34,19 +34,19 @@ loadRemoteData <- function(
 
     # Check to make sure the objects don't already exist
     basename(url) %>%
-        file_path_sans_ext() %>%
+        gsub("\\.rda$", "", .) %>%
         assertAllAreNonExisting(envir = envir, inherits = FALSE)
 
     .urlToTempfile <- function(url, envir = parent.frame(), quiet = FALSE) {
         assert_is_a_string(url)
         assert_is_environment(envir)
         assert_is_a_bool(quiet)
-        tempfile <- tempfile()
+        tempfile <- file_temp()
         download.file(
             url = url,
             destfile = tempfile,
             quiet = quiet)
-        c(url = url, tempfile = tempfile)
+        c(url = url, tempfile = as.character(tempfile))
     }
 
     # Download the files to tempdir and return a character matrix of mappings
@@ -55,10 +55,9 @@ loadRemoteData <- function(
         url = url,
         MoreArgs = list(envir = envir, quiet = quiet),
         SIMPLIFY = FALSE,
-        USE.NAMES = FALSE
-    )
+        USE.NAMES = FALSE)
     map <- do.call(cbind, map)
-    colnames(map) <- file_path_sans_ext(basename(map["url", , drop = TRUE]))
+    colnames(map) <- gsub("\\.rda$", "", basename(map["url", , drop = TRUE]))
     assert_is_matrix(map)
 
     # Now we're ready to load safely from the tempdir
@@ -70,8 +69,7 @@ loadRemoteData <- function(
         name = names,
         MoreArgs = list(envir = envir),
         SIMPLIFY = FALSE,
-        USE.NAMES = TRUE
-    )
+        USE.NAMES = TRUE)
     objects <- do.call(cbind, objects)
     colnames(objects) <- names
 
