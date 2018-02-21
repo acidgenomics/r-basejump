@@ -45,6 +45,7 @@ localOrRemoteFile <- function(
             } else {
                 file <- path
             }
+            assert_all_are_existing_files(file)
             path_real(file)
         },
         path = object,
