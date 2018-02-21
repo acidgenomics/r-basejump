@@ -1,30 +1,33 @@
 context("transmit")
 
-test_that("transmit", {
-    ensembl <- "ftp://ftp.ensembl.org/pub/release-89"
-    expect_identical(
-        transmit(
-            ensembl,
-            pattern = "README",
-            compress = FALSE,
-            quiet = TRUE) %>%
-            .[["README"]] %>%
-            .[[1L]],
-        path_join(c(path_real("."), "README"))
-    )
+ensembl <- "ftp://ftp.ensembl.org/pub/release-89"
+
+test_that("Standard", {
+    readme <- transmit(
+        ensembl,
+        pattern = "README",
+        compress = FALSE,
+        quiet = TRUE)
+    expected <- path_join(c(path_real("."), "README"))
+    names(expected) <- "README"
+    expect_identical(readme, expected)
     file_delete("README")
-    expect_identical(
-        transmit(
-            ensembl,
-            pattern = "README",
-            rename = "ensembl_readme.txt",
-            compress = TRUE,
-            quiet = TRUE) %>%
-            .[["README"]] %>%
-            .[[1L]],
-        path_join(c(path_real("."), "ensembl_readme.txt.gz"))
-    )
+})
+
+test_that("Rename and compress", {
+    readme <- transmit(
+        ensembl,
+        pattern = "README",
+        rename = "ensembl_readme.txt",
+        compress = TRUE,
+        quiet = TRUE)
+    expected <- path_join(c(path_real("."), "ensembl_readme.txt.gz"))
+    names(expected) <- "README"
+    expect_identical(readme, expected)
     file_delete("ensembl_readme.txt.gz")
+})
+
+test_that("Invalid parameters", {
     expect_error(
         transmit("http://steinbaugh.com", pattern = "README"),
         "is_matching_regex : remoteDir"
@@ -35,14 +38,10 @@ test_that("transmit", {
     )
     expect_error(
         transmit(ensembl, pattern = "XXX"),
-        "is_non_empty : remoteFileName"
+        "is_non_empty : match"
     )
     expect_error(
-        transmit(
-            ensembl,
-            pattern = "README",
-            rename = c("XXX", "YYY")
-        ),
-        "are_same_length : remoteFileName has length 1 but rename has length 2."
+        transmit(ensembl, pattern = "README", rename = c("XXX", "YYY")),
+        "are_same_length : match has length 1 but rename has length 2."
     )
 })

@@ -5,7 +5,7 @@
 #'
 #' @family Data Import and Project Utilities
 #'
-#' @importFrom fs path_join
+#' @importFrom fs path_join path_real
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines
@@ -91,7 +91,7 @@ transmit <- function(
         inform(paste("Downloading", toString(match)))
     }
 
-    list <- mapply(
+    files <- mapply(
         FUN = function(url, destfile, compress, quiet) {
             download.file(url = url, destfile = destfile, quiet = quiet)
             # Compress, if desired
@@ -105,7 +105,9 @@ transmit <- function(
         MoreArgs = list(compress = compress, quiet = quiet),
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE)
-    names(list) <- match
 
-    invisible(list)
+    files <- path_real(files)
+    names(files) <- match
+
+    invisible(files)
 }

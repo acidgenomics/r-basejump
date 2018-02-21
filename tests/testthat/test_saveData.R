@@ -1,14 +1,13 @@
 context("saveData")
 
 test_that("saveData", {
+    paths <- path(path_real("."), "data", c("mtcars.rda", "starwars.rda"))
+    names(paths) <- c("mtcars", "starwars")
     expect_identical(
         saveData(
             mtcars, starwars, dir = "data",
             overwrite = TRUE, quiet = TRUE),
-        c(
-            mtcars = path_join(c(path_real("."), "data", "mtcars.rda")),
-            starwars = path_join(c(path_real("."), "data", "starwars.rda"))
-        )
+        paths
     )
     expect_message(
         saveData(mtcars, starwars, dir = "data", overwrite = TRUE),
