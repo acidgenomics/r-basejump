@@ -23,7 +23,7 @@ Abort on mismatch.
 Assert Formal Gene to Symbol Mappings
 }
 \examples{
-gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+gene2symbol <- gene2symbol("Homo sapiens")
 genes <- head(rownames(gene2symbol), 2L)
 x <- data.frame(
     sample1 = c(1L, 2L),
