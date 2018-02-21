@@ -40,4 +40,4 @@ test_that("Invalid arguments", {
     )
 })
 
-unlink("data", recursive = TRUE)
+dir_delete("data")

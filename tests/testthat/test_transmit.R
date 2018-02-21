@@ -12,7 +12,7 @@ test_that("transmit", {
             .[[1L]],
         path_join(c(path_real("."), "README"))
     )
-    unlink("README")
+    file_delete("README")
     expect_identical(
         transmit(
             ensembl,
@@ -24,7 +24,7 @@ test_that("transmit", {
             .[[1L]],
         path_join(c(path_real("."), "ensembl_readme.txt.gz"))
     )
-    unlink("ensembl_readme.txt.gz")
+    file_delete("ensembl_readme.txt.gz")
     expect_error(
         transmit("http://steinbaugh.com", pattern = "README"),
         "is_matching_regex : remoteDir"

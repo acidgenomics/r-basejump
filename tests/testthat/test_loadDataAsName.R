@@ -59,4 +59,4 @@ test_that("Invalid arguments", {
     )
 })
 
-unlink(c("multi.rda", "mtcars.rda", "starwars.rda"))
+file_delete(c("multi.rda", "mtcars.rda", "starwars.rda"))

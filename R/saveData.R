@@ -28,7 +28,7 @@
 #' saveData(mtcars, starwars)
 #'
 #' # Clean up
-#' unlink(c("mtcars.rda", "starwars.rda"))
+#' file_delete(c("mtcars.rda", "starwars.rda"))
 saveData <- function(
     ...,
     dir = ".",

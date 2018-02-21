@@ -12,4 +12,4 @@ test_that("assignAndSaveData", {
     )
 })
 
-unlink("test.rda")
+file_delete("test.rda")
