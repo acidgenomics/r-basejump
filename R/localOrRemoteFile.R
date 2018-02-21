@@ -1,5 +1,7 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
+#' This function is vectorized and supports mixed local and remote paths.
+#'
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
