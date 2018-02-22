@@ -39,13 +39,17 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' ensemblAnnotations("Homo sapiens") %>% glimpse()
+#' genes <- ensemblAnnotations("Homo sapiens", format = "genes")
+#' summary(genes)
+#'
+#' transcripts <- ensemblAnnotations("Homo sapiens", format = "transcripts")
+#' summary(transcripts)
 ensemblAnnotations <- function(
     organism,
     format = "genes",
     genomeBuild = NULL,
     release = NULL,
-    return = "data.frame") {
+    return = "GRanges") {
     assert_is_a_string(organism)
     assert_is_a_string(format)
     assert_is_subset(
