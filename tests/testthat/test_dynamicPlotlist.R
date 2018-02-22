@@ -1,6 +1,6 @@
 context("dynamicPlotlist")
 
-loadRemoteData("http://basejump.seq.cloud/plotlist.rda", quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
 
 test_that("Grid", {
     p <- dynamicPlotlist(plotlist, return = "grid")

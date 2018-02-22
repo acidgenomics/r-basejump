@@ -1,6 +1,6 @@
 context("markdownPlotlist")
 
-loadRemoteData("http://basejump.seq.cloud/plotlist.rda", quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
 
 test_that("List", {
     output <- capture.output(

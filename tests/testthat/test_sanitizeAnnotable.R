@@ -1,7 +1,7 @@
 context("sanitizeAnnotable")
 
 test_that("Human", {
-    human <- annotable("Homo sapiens", quiet = TRUE)
+    human <- annotable("Homo sapiens")
     sanitized <- sanitizeAnnotable(human)
     expect_identical(
         lapply(sanitized, class),

@@ -1,10 +1,10 @@
 context("gene2symbolFromGFF")
 
 mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
-mouse <- gene2symbolFromGFF(mousefile, quiet = TRUE)
+mouse <- gene2symbolFromGFF(mousefile)
 
 flyfile <- "http://basejump.seq.cloud/dmelanogaster.gtf"
-fruitfly <- gene2symbolFromGFF(flyfile, quiet = TRUE)
+fruitfly <- gene2symbolFromGFF(flyfile)
 
 test_that("Mouse", {
     expect_identical(
@@ -43,19 +43,15 @@ test_that("Fruitfly", {
 })
 
 test_that("GFF data.frame input", {
-    gff <- readGFF(
-        mousefile,
-        quiet = TRUE)
+    gff <- readGFF(mousefile)
     expect_identical(
-        gene2symbolFromGFF(gff, quiet = TRUE),
+        gene2symbolFromGFF(gff),
         mouse
     )
 })
 
 test_that("Unique symbol mode", {
-    gff <- suppressMessages(
-        gene2symbolFromGFF(mousefile, uniqueSymbol = TRUE, quiet = FALSE)
-    )
+    gff <- gene2symbolFromGFF(mousefile, uniqueSymbol = TRUE)
     expect_false(any(duplicated(gff[["symbol"]])))
 })
 
@@ -68,7 +64,7 @@ test_that("Invalid number of columns", {
 
 test_that("GTF alias", {
     expect_identical(
-        gene2symbolFromGTF(mousefile, quiet = TRUE),
+        gene2symbolFromGTF(mousefile),
         mouse
     )
 })

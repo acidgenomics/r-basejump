@@ -1,7 +1,7 @@
 context("assertIsTx2gene")
 
 test_that("Success", {
-    tx2gene <- tx2gene("Homo sapiens", quiet = TRUE)
+    tx2gene <- tx2gene("Homo sapiens")
     expect_silent(assertIsTx2gene(tx2gene))
 })
 

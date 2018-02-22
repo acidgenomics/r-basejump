@@ -1,7 +1,7 @@
 context("tx2geneFromGFF")
 
 mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
-mouse <- tx2geneFromGFF(mousefile, quiet = TRUE)
+mouse <- tx2geneFromGFF(mousefile)
 
 test_that("Mouse", {
     expect_identical(
@@ -23,15 +23,13 @@ test_that("Mouse", {
             stringsAsFactors = FALSE)
     )
     expect_message(
-        tx2geneFromGFF(mousefile, quiet = FALSE),
+        tx2geneFromGFF(mousefile),
         "tx2gene mappings: 20 transcripts, 17 genes"
     )
 })
 
 test_that("Fruitfly", {
-    fruitfly <- tx2geneFromGFF(
-        "http://basejump.seq.cloud/dmelanogaster.gtf",
-        quiet = TRUE)
+    fruitfly <- tx2geneFromGFF("http://basejump.seq.cloud/dmelanogaster.gtf")
     expect_identical(
         dim(fruitfly),
         c(7L, 2L)
@@ -54,9 +52,9 @@ test_that("Fruitfly", {
 
 test_that("GFF data.frame input", {
     # Test GFF data.frame input
-    gff <- readGFF(mousefile, quiet = TRUE)
+    gff <- readGFF(mousefile)
     expect_identical(
-        tx2geneFromGFF(gff, quiet = TRUE),
+        tx2geneFromGFF(gff),
         mouse
     )
 })
@@ -70,7 +68,7 @@ test_that("Invalid number of columns", {
 
 test_that("GTF alias", {
     expect_identical(
-        tx2geneFromGTF(mousefile, quiet = TRUE),
+        tx2geneFromGTF(mousefile),
         mouse
     )
 })

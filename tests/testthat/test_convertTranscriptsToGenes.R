@@ -4,8 +4,7 @@ test_that("Character", {
     expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
-            release = 88L,
-            quiet = TRUE),
+            release = 88L),
         c("ENSMUST00000000001" = "ENSMUSG00000000001",
           "ENSMUST00000000003" = "ENSMUSG00000000003")
     )
@@ -13,8 +12,7 @@ test_that("Character", {
         convertTranscriptsToGenes(
             c("ENSMUST00000000000",
               "ENSMUST00000000001"),
-            release = 88L,
-            quiet = TRUE),
+            release = 88L),
         "Unmatched transcripts present. Try using a GFF file instead."
     )
     expect_error(
@@ -44,13 +42,12 @@ test_that("Matrix", {
     expect_error(
         convertTranscriptsToGenes(
             mat,
-            release = 88L,
-            quiet = TRUE),
+            release = 88L),
         "Unmatched transcripts present. Try using a GFF file instead."
     )
     expect_identical(
         mat[2L:4L, ] %>%
-            convertTranscriptsToGenes(quiet = TRUE) %>%
+            convertTranscriptsToGenes() %>%
             rownames(),
         c("ENSMUST00000000001" = "ENSMUSG00000000001",
           "ENSMUST00000000003" = "ENSMUSG00000000003",

@@ -3,7 +3,7 @@ context("loadRemoteData")
 url <- "http://basejump.seq.cloud/mtcars.rda"
 
 test_that("Valid URL", {
-    loaded <- loadRemoteData(url = url, quiet = TRUE)
+    loaded <- loadRemoteData(url = url)
     expect_is(loaded, "matrix")
     expect_identical(
         loaded["url", "mtcars", drop = TRUE],

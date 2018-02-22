@@ -1,6 +1,6 @@
 context("plotHeatmap")
 
-loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/counts.rda")
 plotNames <- c("tree_row", "tree_col", "kmeans", "gtable")
 
 test_that("Matrix", {

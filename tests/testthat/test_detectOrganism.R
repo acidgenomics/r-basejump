@@ -1,6 +1,6 @@
 context("detectOrganism")
 
-loadRemoteData("http://basejump.seq.cloud/counts.rda", quiet = TRUE)
+loadRemoteData("http://basejump.seq.cloud/counts.rda")
 
 test_that("Homo sapiens", {
     x <- "Homo sapiens"
