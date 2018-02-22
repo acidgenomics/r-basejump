@@ -45,7 +45,7 @@ localOrRemoteFile <- function(
                 # Fix for Excel files on Windows
                 # https://github.com/tidyverse/readxl/issues/374
                 # Otherwise, `read_excel()` errors in `readFileByExtension()`
-                if (grepl("\\.xlsx$")) {
+                if (grepl("\\.xlsx$", path)) {
                     # Write binary
                     mode <- "wb"
                 } else {
