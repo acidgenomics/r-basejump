@@ -10,6 +10,7 @@
 #' @param object YAML file path.
 #'
 #' @return [list].
+#' @export
 #'
 #' @examples
 #' # bcbioRNASeq example project summary YAML

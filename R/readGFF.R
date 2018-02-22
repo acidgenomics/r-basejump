@@ -16,6 +16,7 @@
 #' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
 #'
 #' @return [data.frame].
+#' @export
 #'
 #' @examples
 #' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
