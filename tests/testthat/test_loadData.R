@@ -2,19 +2,16 @@ context("loadData")
 
 utils::download.file(
     url = "http://basejump.seq.cloud/multi.rda",
-    destfile = "multi.rda",
-    quiet = TRUE)
+    destfile = "multi.rda")
 utils::download.file(
     url = "http://basejump.seq.cloud/mtcars.rda",
-    destfile = "mtcars.rda",
-    quiet = TRUE)
+    destfile = "mtcars.rda")
 utils::download.file(
     url = "http://basejump.seq.cloud/renamed.rda",
-    destfile = "renamed.rda",
-    quiet = TRUE)
+    destfile = "renamed.rda")
 
 test_that("loadData", {
-    loaded <- loadData(mtcars, quiet = TRUE)
+    loaded <- loadData(mtcars)
     rm(mtcars)
     expect_identical(
         loaded,
@@ -28,7 +25,7 @@ test_that("loadData", {
 
 test_that("Multiple objects in single file", {
     expect_error(
-        loadData(multi, quiet = TRUE),
+        loadData(multi),
         "is_a_string : loaded has length 2, not 1."
     )
 })
@@ -36,7 +33,7 @@ test_that("Multiple objects in single file", {
 test_that("Already exists", {
     mtcars <- datasets::mtcars
     expect_error(
-        loadData(mtcars, quiet = TRUE),
+        loadData(mtcars),
         "Already exists in environment: mtcars"
     )
 })

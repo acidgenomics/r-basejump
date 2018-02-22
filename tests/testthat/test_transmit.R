@@ -6,8 +6,7 @@ test_that("Standard", {
     readme <- transmit(
         ensembl,
         pattern = "README",
-        compress = FALSE,
-        quiet = TRUE)
+        compress = FALSE)
     expected <- path_join(c(path_real("."), "README"))
     names(expected) <- "README"
     expect_identical(readme, expected)
@@ -19,8 +18,7 @@ test_that("Rename and compress", {
         ensembl,
         pattern = "README",
         rename = "ensembl_readme.txt",
-        compress = TRUE,
-        quiet = TRUE)
+        compress = TRUE)
     expected <- path_join(c(path_real("."), "ensembl_readme.txt.gz"))
     names(expected) <- "README"
     expect_identical(readme, expected)

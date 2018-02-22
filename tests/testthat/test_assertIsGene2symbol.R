@@ -1,7 +1,7 @@
 context("assertIsGene2symbol")
 
 test_that("Success", {
-    gene2symbol <- gene2symbol("Homo sapiens", quiet = TRUE)
+    gene2symbol <- gene2symbol("Homo sapiens")
     expect_silent(assertIsGene2symbol(gene2symbol))
 })
 

@@ -1,7 +1,7 @@
 context("assertIsAnnotable")
 
 test_that("Success", {
-    annotable <- annotable("Homo sapiens", quiet = TRUE)
+    annotable <- annotable("Homo sapiens")
     expect_silent(assertIsAnnotable(annotable))
 })
 

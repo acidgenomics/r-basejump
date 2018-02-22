@@ -6,7 +6,7 @@ test_that("saveData", {
     expect_identical(
         saveData(
             mtcars, starwars, dir = "data",
-            overwrite = TRUE, quiet = TRUE),
+            overwrite = TRUE),
         paths
     )
     expect_message(
@@ -19,11 +19,11 @@ test_that("saveData", {
     expect_warning(
         saveData(
             mtcars, starwars, dir = "data",
-            overwrite = FALSE, quiet = TRUE),
+            overwrite = FALSE),
         "No files were saved"
     )
     expect_error(
-        saveData(XXX, quiet = TRUE),
+        saveData(XXX),
         "object 'XXX' not found"
     )
     expect_error(

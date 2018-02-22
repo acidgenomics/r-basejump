@@ -2,8 +2,8 @@ context("annotable")
 
 test_that("Ensembl versioned release", {
     release <- 87L
-    human <- suppressMessages(annotable("Homo sapiens", release = release))
-    mouse <- suppressMessages(annotable("Mus musculus", release = release))
+    human <- annotable("Homo sapiens", release = release)
+    mouse <- annotable("Mus musculus", release = release)
 
     expect_identical(
         dim(human),
@@ -76,7 +76,7 @@ test_that("Human GRCh37/hg19 genome build support", {
 
 test_that("Annotables package data frame input", {
     # Use the pre-compiled grch37 annotable from annotables package
-    loadRemoteData("http://basejump.seq.cloud/grch37.rda", quiet = TRUE)
+    loadRemoteData("http://basejump.seq.cloud/grch37.rda")
 
     # This is fast but will drop extra columns
     human <- annotable(grch37)
@@ -108,7 +108,7 @@ test_that("Annotables package data frame input", {
 })
 
 test_that("DataFrame coercion AsIs list", {
-    loadRemoteData("http://basejump.seq.cloud/annotable_AsIs.rda", quiet = TRUE)
+    loadRemoteData("http://basejump.seq.cloud/annotable_AsIs.rda")
     expect_warning(
         annotable(annotable_AsIs),
         paste(
@@ -131,23 +131,18 @@ test_that("Collapse annotables tibble", {
             "master",
             "data",
             "grch38.rda",
-            sep = "/"),
-        quiet = TRUE)
+            sep = "/"))
     expect_true(any(duplicated(grch38[["ensgene"]])))
     annotable <- annotable(grch38)
     expect_true(!any(duplicated(annotable[["ensgene"]])))
 })
 
 test_that("Unique symbols", {
-    anno <- annotable(
-        "Homo sapiens",
-        uniqueSymbol = TRUE,
-        quiet = TRUE)
+    anno <- annotable("Homo sapiens", uniqueSymbol = TRUE)
     g2s <- annotable(
-        "Homo sapiens",
+        object = "Homo sapiens",
         format = "gene2symbol",
-        uniqueSymbol = TRUE,
-        quiet = TRUE)
+        uniqueSymbol = TRUE)
     # Check for `.1` in `symbol` column
     expect_true(any(grepl("\\.1$", anno[["symbol"]])))
     expect_true(any(grepl("\\.1$", g2s[["symbol"]])))

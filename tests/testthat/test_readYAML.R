@@ -6,7 +6,7 @@ test_that("bcbio project summary", {
         "bcbio",
         "project-summary.yaml",
         sep = "/")
-    yaml <- readYAML(url, quiet = TRUE)
+    yaml <- readYAML(url)
     expect_identical(
         class(yaml),
         "list"
@@ -31,14 +31,13 @@ test_that("`.yml` file support", {
             "basejump",
             "master",
             ".travis.yml",
-            sep = "/"),
-        quiet = TRUE)
+            sep = "/"))
     expect_true("language" %in% names(yaml))
 })
 
 test_that("Unsupported file type", {
     expect_error(
-        readYAML("http://basejump.seq.cloud/mtcars.csv", quiet = TRUE),
+        readYAML("http://basejump.seq.cloud/mtcars.csv"),
         "is_matching_regex : object"
     )
 })
