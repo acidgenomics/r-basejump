@@ -13,8 +13,10 @@ localOrRemoteFile(object, severity = "stop")
 doesn't exist.}
 }
 \value{
-Named list containing the original basename as the name and local
-file path (i.e. tempfile) as the string. Aborts on a missing file.
+Named character vector containing the original basename as the name
+and local file path (i.e. tempfile) as the string. Aborts on a missing
+file by default. Returns \code{NULL} when \code{severity = "warning"} and a missing
+file is detected.
 }
 \description{
 This function is vectorized and supports mixed local and remote paths.

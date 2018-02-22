@@ -11,8 +11,10 @@
 #' @param severity Return `stop` (default), `warning`, or `message` if file
 #'   doesn't exist.
 #'
-#' @return Named list containing the original basename as the name and local
-#'   file path (i.e. tempfile) as the string. Aborts on a missing file.
+#' @return Named character vector containing the original basename as the name
+#'   and local file path (i.e. tempfile) as the string. Aborts on a missing
+#'   file by default. Returns `NULL` when `severity = "warning"` and a missing
+#'   file is detected.
 #' @export
 #'
 #' @examples
@@ -48,20 +50,22 @@ localOrRemoteFile <- function(object, severity = "stop") {
                     mode <- "w"
                 }
                 download.file(url = path, destfile = file, mode = mode)
-            } else if (!file_exists(path)) {
-                assert_all_are_existing_files(path, severity = severity)
-                return(NULL)
             } else {
                 file <- path
             }
-            path_real(file)
+            file
         },
         path = object,
-        SIMPLIFY = FALSE,
+        SIMPLIFY = TRUE,
         USE.NAMES = FALSE)
-    names(files) <- basename(object)
-    if (length(files) == 1L) {
-        files <- unlist(files)
+
+    assert_all_are_existing_files(files, severity = severity)
+    # Return NULL when severity isn't stop and not all files exist
+    if (!all(file_exists(files))) {
+        return(NULL)
     }
+
+    files <- path_real(files)
+    names(files) <- basename(object)
     files
 }
