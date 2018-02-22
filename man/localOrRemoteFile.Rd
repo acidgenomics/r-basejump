@@ -4,15 +4,13 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, severity = "stop", quiet = FALSE)
+localOrRemoteFile(object, severity = "stop")
 }
 \arguments{
 \item{object}{Object.}
 
 \item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
 doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Named list containing the original basename as the name and local
