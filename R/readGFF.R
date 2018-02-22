@@ -1,8 +1,8 @@
 #' Read GFF/GTF Annotations
 #'
-#' @rdname readGFF
-#' @name readGFF
 #' @family Data Import and Project Utilities
+#'
+#' @importFrom utils read.delim
 #'
 #' @inheritParams general
 #' @inheritParams saveData
@@ -19,13 +19,7 @@
 #'
 #' @examples
 #' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
-NULL
-
-
-
-# Constructors =================================================================
-#' @importFrom utils read.delim
-.readGFF <- function(object) {
+readGFF <- function(object) {
     assert_is_a_string(object)
     file <- localOrRemoteFile(object)
     inform(paste("Reading GFF/GTF:", names(file)))
@@ -56,20 +50,7 @@ NULL
 
 
 
-# Methods ======================================================================
-#' @rdname readGFF
-#' @export
-setMethod(
-    "readGFF",
-    signature("character"),
-    .readGFF)
-
-
-
 # Aliases ======================================================================
 #' @rdname readGFF
-#' @inheritParams general
 #' @export
-readGTF <- function(...) {
-    readGFF(...)
-}
+readGFF -> readGTF
