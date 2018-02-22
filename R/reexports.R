@@ -88,6 +88,12 @@ tibble::tibble
 
 
 
+#' @importFrom utils download.file
+#' @export
+utils::download.file
+
+
+
 #' @importFrom viridis viridis
 #' @export
 viridis::viridis

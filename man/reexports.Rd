@@ -39,6 +39,8 @@
 \alias{reexports}
 \alias{tibble}
 \alias{reexports}
+\alias{download.file}
+\alias{reexports}
 \alias{viridis}
 \alias{reexports}
 \alias{scale_color_viridis}
@@ -64,6 +66,8 @@ below to see their documentation.
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{utils}{\code{\link[utils]{download.file}}}
 
   \item{viridis}{\code{\link[viridis]{viridis}}, \code{\link[viridis]{scale_color_viridis}}, \code{\link[viridis]{scale_fill_viridis}}}
 }}

@@ -1,12 +1,12 @@
 context("loadDataAsName")
 
-utils::download.file(
+download.file(
     url = "http://basejump.seq.cloud/multi.rda",
     destfile = "multi.rda")
-utils::download.file(
+download.file(
     url = "http://basejump.seq.cloud/mtcars.rda",
     destfile = "mtcars.rda")
-utils::download.file(
+download.file(
     url = "http://basejump.seq.cloud/starwars.rda",
     destfile = "starwars.rda")
 
