@@ -5,7 +5,6 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
-#' @inheritParams annotable
 #'
 #' @return [data.frame].
 #'

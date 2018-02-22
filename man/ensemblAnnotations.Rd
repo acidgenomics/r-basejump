@@ -23,26 +23,38 @@ current release available on AnnotationHub.}
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
 "\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
 additional information.}
+
+\item{sanitize}{Sanitize the return data into camel case and remove
+duplicate columns.}
 }
 \value{
 Gene or transcript annotations.
 }
 \description{
 Quickly obtain gene and transcript annotations from
-\href{http://www.ensembl.org/}{Ensembl} using \link{AnnotationHub}.
+\href{http://www.ensembl.org/}{Ensembl} using
+\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
 }
-\section{Using AnnotationHub}{
-
+\details{
 The default recommended approach is to simply specify the desired organism,
 using the full latin name. For example, we can obtain human annotations with
-\code{Homo sapiens} and mouse annotations with \code{Mus musculus}. Under the hood, the
-function fetches these annotations from AnnotationHub using the ensembldb
-package. AnnotationHub supports versioned Ensembl releases, back to version
-87.
-}
+\code{Homo sapiens} and mouse annotations with \code{Mus musculus}.
 
+Under the hood, the function fetches these annotations from AnnotationHub
+using the ensembldb package. AnnotationHub supports versioned Ensembl
+releases, back to version 87.
+}
+\note{
+Use GRCh38 instead of hg38 for the genome build, since we're
+querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
+suported on AnnotationHub.
+}
 \examples{
-ensemblAnnotations("Homo sapiens") \%>\% glimpse()
+genes <- ensemblAnnotations("Homo sapiens", format = "genes")
+summary(genes)
+
+transcripts <- ensemblAnnotations("Homo sapiens", format = "transcripts")
+summary(transcripts)
 }
 \seealso{
 \itemize{

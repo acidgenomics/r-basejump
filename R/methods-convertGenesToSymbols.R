@@ -5,7 +5,6 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
-#' @inheritParams annotable
 #'
 #' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,

@@ -47,12 +47,6 @@ unnecessary and can be left unset. If a count matrix starts with a
 FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
-
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
-
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
 }
 \value{
 Same class as object.
@@ -79,9 +73,9 @@ matrix(
     convertTranscriptsToGenes()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{detectOrganism}},
+  \code{\link{ensemblAnnotations}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}

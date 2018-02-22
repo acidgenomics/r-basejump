@@ -11,6 +11,7 @@
 \alias{camel,data.frame-method}
 \alias{camel,DataFrame-method}
 \alias{camel,factor-method}
+\alias{camel,GRanges-method}
 \alias{camel,list-method}
 \alias{camel,List-method}
 \alias{camel,matrix-method}
@@ -44,6 +45,8 @@ upperCamel(object, ...)
   strict = FALSE)
 
 \S4method{camel}{factor}(object, strict = FALSE)
+
+\S4method{camel}{GRanges}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
