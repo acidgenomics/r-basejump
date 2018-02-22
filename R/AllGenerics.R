@@ -173,22 +173,6 @@ setGeneric("plotQuantileHeatmap", function(object, ...) {
 
 
 
-#' @rdname readGFF
-#' @export
-setGeneric("readGFF", function(object, ...) {
-    standardGeneric("readGFF")
-})
-
-
-
-#' @rdname readYAML
-#' @export
-setGeneric("readYAML", function(object, ...) {
-    standardGeneric("readYAML")
-})
-
-
-
 #' @rdname removeNA
 #' @export
 setGeneric("removeNA", function(object, ...) {
