@@ -5,7 +5,7 @@ test_that("Vectorized", {
         "http://basejump.seq.cloud/mtcars.csv",
         "http://basejump.seq.cloud/mtcars.rda")
     files <- localOrRemoteFile(urls)
-    expect_is(files, "character")
+    expect_is(files, "list")
     expect_identical(names(files), basename(urls))
 })
 
