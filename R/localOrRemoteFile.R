@@ -26,22 +26,17 @@
 #'     "http://basejump.seq.cloud/mtcars.rda"
 #' ))
 #' names(files)
-localOrRemoteFile <- function(
-    object,
-    severity = "stop",
-    quiet = FALSE) {
+localOrRemoteFile <- function(object, severity = "stop") {
     assert_is_character(object)
     assert_is_a_string(severity)
     assert_is_subset(severity, c("message", "stop", "warning"))
-    assert_is_a_bool(quiet)
 
     files <- mapply(
-        FUN = function(path, quiet) {
+        FUN = function(path) {
             # Download remote file, if necessary
             if (grepl("\\://", path)) {
                 # Remote file
                 file <- file_temp()
-
                 # Fix for Excel files on Windows
                 # https://github.com/tidyverse/readxl/issues/374
                 # Otherwise, `read_excel()` errors in `readFileByExtension()`
@@ -52,25 +47,21 @@ localOrRemoteFile <- function(
                     # Write (default)
                     mode <- "w"
                 }
-
-                download.file(
-                    url = path,
-                    destfile = file,
-                    quiet = quiet,
-                    mode = mode)
+                download.file(url = path, destfile = file, mode = mode)
+            } else if (!file_exists(path)) {
+                assert_all_are_existing_files(path, severity = severity)
+                return(NULL)
             } else {
                 file <- path
             }
-            assert_all_are_existing_files(file)
             path_real(file)
         },
         path = object,
-        MoreArgs = list(quiet = quiet),
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = FALSE)
-    assert_is_character(files)
     names(files) <- basename(object)
-
-    assert_all_are_existing_files(as.character(files), severity = severity)
+    if (length(files) == 1L) {
+        files <- unlist(files)
+    }
     files
 }
