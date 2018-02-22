@@ -4,7 +4,6 @@ test_that("S4 generics", {
     names <- c(
         "aggregateFeatures",
         "aggregateReplicates",
-        "annotable",
         "camel",
         "collapseToString",
         "convertGenesToSymbols",
