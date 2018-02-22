@@ -24,8 +24,6 @@ test_that("S4 generics", {
         "markdownPlotlist",
         "plotHeatmap",
         "plotQuantileHeatmap",
-        "readGFF",
-        "readYAML",
         "removeNA",
         "snake",
         "stripTranscriptVersions",
