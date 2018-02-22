@@ -16,14 +16,6 @@ gene2symbol(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
-
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique.}
 }
 \value{
 \link{data.frame}.
@@ -35,10 +27,10 @@ Ensembl Gene to Symbol Mappings
 gene2symbol("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
+  \code{\link{ensemblAnnotations}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }

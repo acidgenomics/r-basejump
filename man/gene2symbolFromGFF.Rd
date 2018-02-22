@@ -21,8 +21,6 @@ gene2symbolFromGTF(...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{uniqueSymbol}{Make gene symbols unique.}
 }
 \value{
 \link{data.frame}.
@@ -45,9 +43,10 @@ gff <- readGFF(url)
 gene2symbolFromGFF(gff) \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{detectOrganism}},
+  \code{\link{ensemblAnnotations}},
+  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

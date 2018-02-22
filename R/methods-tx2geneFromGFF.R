@@ -5,7 +5,6 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
-#' @inheritParams annotable
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
 #'   feature, each containing 9 columns of data, plus optional track definition
