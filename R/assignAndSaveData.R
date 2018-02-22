@@ -32,29 +32,25 @@ assignAndSaveData <- function(
     object,
     dir = ".",
     compress = TRUE,
-    envir = parent.frame(),
-    quiet = FALSE) {
+    envir = parent.frame()) {
     assert_is_a_string(name)
     assert_is_not_null(object)
     dir <- initializeDirectory(dir)
     assertFormalCompress(compress)
     assert_is_environment(envir)
-    assert_is_a_bool(quiet)
 
+    # Assign
     file <- path_join(c(dir, paste0(name, ".rda")))
     names(file) <- name
-
     assign(name, object, envir = envir)
-    if (!isTRUE(quiet)) {
-        inform(paste("Saving", name, "to", dir))
-    }
 
+    # Save
+    inform(paste("Saving", name, "to", dir))
     save(
         list = name,
         file = file,
         envir = envir,
-        compress = compress
-    )
+        compress = compress)
 
     invisible(file)
 }
