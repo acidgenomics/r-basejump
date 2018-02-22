@@ -4,7 +4,7 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = ".", gzip = TRUE, quiet = FALSE)
+writeCounts(..., dir = ".", gzip = TRUE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
@@ -12,8 +12,6 @@ writeCounts(..., dir = ".", gzip = TRUE, quiet = FALSE)
 \item{dir}{Output directory.}
 
 \item{gzip}{Compress the counts file using gzip.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Invisible named character vector containing file paths to count

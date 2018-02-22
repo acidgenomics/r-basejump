@@ -19,16 +19,13 @@ NULL
 .tx2gene <- function(
     object,
     genomeBuild = NULL,
-    release = NULL,
-    quiet = FALSE) {
-    # Passthrough: genomeBuild, release, quiet
+    release = NULL) {
     assert_is_a_string(object)
     annotable(
         object,
         format = "tx2gene",
         genomeBuild = genomeBuild,
-        release = release,
-        quiet = quiet)
+        release = release)
 }
 
 

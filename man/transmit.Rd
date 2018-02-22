@@ -5,7 +5,7 @@
 \title{Transmit Files from a Remote FTP Server}
 \usage{
 transmit(remoteDir, localDir = ".", pattern, rename = NULL,
-  compress = FALSE, quiet = FALSE)
+  compress = FALSE)
 }
 \arguments{
 \item{remoteDir}{Remote directory URL. Currently supports FTP. Works either
@@ -19,8 +19,6 @@ with or without the trailing slash.}
 
 \item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Invisibly return a list of the files downloaded.

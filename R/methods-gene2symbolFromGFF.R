@@ -29,14 +29,10 @@ NULL
 #' @importFrom dplyr arrange mutate
 #' @importFrom rlang !! .data sym
 #' @importFrom stringr str_match
-.gene2symbolFromGFF <- function(
-    object,
-    uniqueSymbol = FALSE,
-    quiet = FALSE) {
+.gene2symbolFromGFF <- function(object, uniqueSymbol = FALSE) {
     assert_is_data.frame(object)
     assert_are_identical(ncol(object), 9L)
     assert_is_a_bool(uniqueSymbol)
-    assert_is_a_bool(quiet)
 
     anno <- .gffKeyValuePairs(object)
     assert_is_character(anno)
@@ -69,12 +65,10 @@ NULL
     # Check that all transcripts are unique
     assert_has_no_duplicates(data[["ensgene"]])
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "gene2symbol mappings:",
-            length(unique(data[["ensgene"]])), "genes"
-        ))
-    }
+    inform(paste(
+        "gene2symbol mappings:",
+        length(unique(data[["ensgene"]])), "genes"
+    ))
 
     if (isTRUE(uniqueSymbol)) {
         data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
@@ -91,10 +85,10 @@ NULL
 setMethod(
     "gene2symbolFromGFF",
     signature("character"),
-    function(object, uniqueSymbol = FALSE, quiet = FALSE) {
+    function(object, uniqueSymbol = FALSE) {
         object %>%
-            readGFF(quiet = quiet) %>%
-            .gene2symbolFromGFF(uniqueSymbol = uniqueSymbol, quiet = quiet)
+            readGFF() %>%
+            .gene2symbolFromGFF(uniqueSymbol = uniqueSymbol)
     })
 
 
@@ -104,8 +98,8 @@ setMethod(
 setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
-    function(object, uniqueSymbol = FALSE, quiet = FALSE) {
-        .gene2symbolFromGFF(object, uniqueSymbol = uniqueSymbol, quiet = quiet)
+    function(object, uniqueSymbol = FALSE) {
+        .gene2symbolFromGFF(object, uniqueSymbol = uniqueSymbol)
     })
 
 

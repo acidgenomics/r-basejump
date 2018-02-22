@@ -4,7 +4,7 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(url, envir = parent.frame(), quiet = FALSE)
+loadRemoteData(url, envir = parent.frame())
 }
 \arguments{
 \item{url}{Remote URL file path to R Data file. Supports multiple URLs
@@ -12,8 +12,6 @@ passed in as a character vector.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silently return a character matrix containing URL and tempfile paths.

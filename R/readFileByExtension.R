@@ -41,7 +41,6 @@ readFileByExtension <- function(
     object,
     makeNames = "camel",
     severity = "stop",
-    quiet = FALSE,
     ...) {
     assert_is_a_string(object)
     # Require that input string contains an extension
@@ -49,18 +48,15 @@ readFileByExtension <- function(
     assert_all_are_matching_regex(object, extPattern)
     assert_is_a_string(makeNames)
     assert_is_subset(makeNames, c("camel", "dotted", "snake" , "upperCamel"))
-    assert_is_a_bool(quiet)
     assert_is_a_string(severity)
     assert_is_subset(severity, c("stop", "warning"))
 
-    file <- localOrRemoteFile(object, severity = severity, quiet = quiet)
+    file <- localOrRemoteFile(object, severity = severity)
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
     # File import, based on extension
-    if (!isTRUE(quiet)) {
-        inform(paste("Reading", names(file)))
-    }
+    inform(paste("Reading", names(file)))
 
     na <- c("", "NA", "#N/A")
 

@@ -11,9 +11,9 @@
 \usage{
 tx2geneFromGFF(object, ...)
 
-\S4method{tx2geneFromGFF}{character}(object, quiet = FALSE)
+\S4method{tx2geneFromGFF}{character}(object)
 
-\S4method{tx2geneFromGFF}{data.frame}(object, quiet = FALSE)
+\S4method{tx2geneFromGFF}{data.frame}(object)
 
 tx2geneFromGTF(...)
 }
@@ -21,8 +21,6 @@ tx2geneFromGTF(...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

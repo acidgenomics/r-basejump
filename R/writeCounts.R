@@ -38,8 +38,7 @@
 writeCounts <- function(
     ...,
     dir = ".",
-    gzip = TRUE,
-    quiet = FALSE) {
+    gzip = TRUE) {
     dots <- dots_list(...)
     assert_is_list(dots)
     invisible(lapply(dots, assert_has_dims))
@@ -60,9 +59,7 @@ writeCounts <- function(
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Writing", toString(names), "to", dir))
-    }
+    inform(paste("Writing", toString(names), "to", dir))
 
     files <- lapply(seq_along(dots), function(a) {
         name <- names[[a]]

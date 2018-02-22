@@ -9,14 +9,12 @@
 \usage{
 readYAML(object, ...)
 
-\S4method{readYAML}{character}(object, quiet = FALSE)
+\S4method{readYAML}{character}(object)
 }
 \arguments{
 \item{object}{YAML file path.}
 
 \item{...}{Additional arguments.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{list}.

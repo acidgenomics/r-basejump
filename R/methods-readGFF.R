@@ -25,15 +25,10 @@ NULL
 
 # Constructors =================================================================
 #' @importFrom utils read.delim
-.readGFF <- function(
-    object,
-    quiet = FALSE) {
+.readGFF <- function(object) {
     assert_is_a_string(object)
-    assert_is_a_bool(quiet)
-    file <- localOrRemoteFile(object, quiet = quiet)
-    if (!isTRUE(quiet)) {
-        inform(paste("Reading GFF/GTF:", names(file)))
-    }
+    file <- localOrRemoteFile(object)
+    inform(paste("Reading GFF/GTF:", names(file)))
     gff <- tryCatch(
         read.delim(
             file = file,
