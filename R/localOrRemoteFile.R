@@ -41,7 +41,23 @@ localOrRemoteFile <- function(
             if (grepl("\\://", path)) {
                 # Remote file
                 file <- file_temp()
-                download.file(url = path, destfile = file, quiet = quiet)
+
+                # Fix for Excel files on Windows
+                # https://github.com/tidyverse/readxl/issues/374
+                # Otherwise, `read_excel()` errors in `readFileByExtension()`
+                if (grepl("\\.xlsx$")) {
+                    # Write binary
+                    mode <- "wb"
+                } else {
+                    # Write (default)
+                    mode <- "w"
+                }
+
+                download.file(
+                    url = path,
+                    destfile = file,
+                    quiet = quiet,
+                    mode = mode)
             } else {
                 file <- path
             }
