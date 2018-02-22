@@ -10,7 +10,7 @@
 gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object, genomeBuild = NULL,
-  release = NULL, uniqueSymbol = FALSE, quiet = FALSE)
+  release = NULL, uniqueSymbol = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -24,8 +24,6 @@ supported.}
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

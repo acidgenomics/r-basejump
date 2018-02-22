@@ -4,8 +4,7 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2",
-  quiet = FALSE)
+saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2")
 }
 \arguments{
 \item{...}{Object names as symbols.}
@@ -20,8 +19,6 @@ saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2",
     \code{"bzip2"} or \code{"xz"} specify the type of
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silent named character vector of file paths.

@@ -77,8 +77,7 @@ NULL
     format = "gene",
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbol = FALSE,
-    quiet = FALSE) {
+    uniqueSymbol = FALSE) {
     assert_is_a_string(object)
     assert_is_a_string(format)
     assert_is_subset(format, c("gene", "gene2symbol", "tx2gene"))
@@ -89,7 +88,6 @@ NULL
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
     assert_is_a_bool(uniqueSymbol)
-    assert_is_a_bool(quiet)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -140,13 +138,11 @@ NULL
         ah <- suppressMessages(AnnotationHub())
     ))
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "Loading Ensembl annotations from AnnotationHub",
-            snapshotDate(ah),
-            sep = "\n"
-        ))
-    }
+    inform(paste(
+        "Loading Ensembl annotations from AnnotationHub",
+        snapshotDate(ah),
+        sep = "\n"
+    ))
 
     # Get the AnnotationHub dataset by identifier number
     ahDb <- query(
@@ -182,13 +178,11 @@ NULL
         edb <- suppressMessages(ah[[id]])
     ))
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "EnsDB", paste0(id, ":"),
-            organism(edb),
-            "Ensembl", ensemblVersion(edb)
-        ))
-    }
+    inform(paste(
+        "EnsDB", paste0(id, ":"),
+        organism(edb),
+        "Ensembl", ensemblVersion(edb)
+    ))
 
     # Now we can force detach ensembldb and other unwanted dependendcies from
     # the search path

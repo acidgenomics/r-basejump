@@ -33,28 +33,22 @@ saveData <- function(
     ...,
     dir = ".",
     overwrite = TRUE,
-    compress = "bzip2",
-    quiet = FALSE) {
+    compress = "bzip2") {
     objectNames <- dots(..., character = TRUE)
     assert_is_character(objectNames)
     dir <- initializeDirectory(dir)
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
-    assert_is_a_bool(quiet)
 
     files <- path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Saving", toString(basename(files)), "to", dir))
-    }
+    inform(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        if (!isTRUE(quiet)) {
-            inform(paste("Skipping", toString(basename(skip))))
-        }
+        inform(paste("Skipping", toString(basename(skip))))
         files <- files[!file.exists(files)]
     }
 

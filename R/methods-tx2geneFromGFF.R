@@ -29,12 +29,9 @@ NULL
 #' @importFrom dplyr arrange distinct
 #' @importFrom rlang !! sym
 #' @importFrom stringr str_match
-.tx2geneFromGFF <- function(
-    object,
-    quiet = FALSE) {
+.tx2geneFromGFF <- function(object) {
     assert_is_data.frame(object)
     assert_are_identical(ncol(object), 9L)
-    assert_is_a_bool(quiet)
 
     anno <- object %>%
         .gffKeyValuePairs() %>%
@@ -60,13 +57,11 @@ NULL
     # Check that all transcripts are unique
     assert_has_no_duplicates(data[["enstxp"]])
 
-    if (!isTRUE(quiet)) {
-        inform(paste(
-            "tx2gene mappings:",
-            length(unique(data[["enstxp"]])), "transcripts,",
-            length(unique(data[["ensgene"]])), "genes"
-        ))
-    }
+    inform(paste(
+        "tx2gene mappings:",
+        length(unique(data[["enstxp"]])), "transcripts,",
+        length(unique(data[["ensgene"]])), "genes"
+    ))
 
     data
 }
@@ -80,11 +75,10 @@ setMethod(
     "tx2geneFromGFF",
     signature("character"),
     function(
-        object,
-        quiet = FALSE) {
+        object) {
         object %>%
-            readGFF(quiet = quiet) %>%
-            .tx2geneFromGFF(quiet = quiet)
+            readGFF() %>%
+            .tx2geneFromGFF()
     })
 
 
@@ -94,10 +88,8 @@ setMethod(
 setMethod(
     "tx2geneFromGFF",
     signature("data.frame"),
-    function(
-        object,
-        quiet = FALSE) {
-        .tx2geneFromGFF(object, quiet = quiet)
+    function(object) {
+        .tx2geneFromGFF(object)
     })
 
 

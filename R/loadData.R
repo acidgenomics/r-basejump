@@ -22,7 +22,6 @@
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
-#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
 #' @export
@@ -34,12 +33,10 @@
 loadData <- function(
     ...,
     dir = ".",
-    envir = parent.frame(),
-    quiet = FALSE) {
+    envir = parent.frame()) {
     assert_all_are_dirs(dir)
     dir <- path_real(dir)
     assert_is_environment(envir)
-    assert_is_a_bool(quiet)
 
     # `dots()` method will fail here because the objects aren't present
     dots <- as.list(substitute(list(...)))[-1L]
@@ -49,19 +46,14 @@ loadData <- function(
     files <- path_join(c(dir, paste0(names, ".rda")))
     assert_all_are_existing_files(files)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Loading", toString(basename(files)), "from", dir))
-    }
-
+    inform(paste("Loading", toString(basename(files)), "from", dir))
     objects <- mapply(
         FUN = .safeLoad,
-        files,
+        file = files,
         MoreArgs = list(envir = envir),
         SIMPLIFY = TRUE,
-        USE.NAMES = FALSE
-    )
+        USE.NAMES = FALSE)
     names(objects) <- names
 
-    assert_is_character(objects)
     invisible(objects)
 }

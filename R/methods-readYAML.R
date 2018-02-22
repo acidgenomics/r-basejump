@@ -25,16 +25,11 @@ NULL
 
 
 # Constructors =================================================================
-.readYAML <- function(
-    object,
-    quiet = FALSE) {
+.readYAML <- function(object) {
     assert_is_a_string(object)
     assert_all_are_matching_regex(object, "\\.ya?ml$")
-    assert_is_a_bool(quiet)
-    file <- localOrRemoteFile(object, quiet = quiet)
-    if (!isTRUE(quiet)) {
-        inform(paste("Reading", names(file)))
-    }
+    file <- localOrRemoteFile(object)
+    inform(paste("Reading", names(file)))
     yaml.load_file(file)
 }
 

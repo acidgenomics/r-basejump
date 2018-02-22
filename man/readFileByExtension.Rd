@@ -4,8 +4,7 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = "camel", severity = "stop",
-  quiet = FALSE, ...)
+readFileByExtension(object, makeNames = "camel", severity = "stop", ...)
 }
 \arguments{
 \item{object}{File path.}
@@ -15,8 +14,6 @@ readFileByExtension(object, makeNames = "camel", severity = "stop",
 
 \item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
 doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 
 \item{...}{Additional arguments.}
 }

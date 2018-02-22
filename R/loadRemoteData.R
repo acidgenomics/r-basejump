@@ -23,30 +23,22 @@
 #'     "http://basejump.seq.cloud/starwars.rda"
 #' ))
 #' objects
-loadRemoteData <- function(
-    url,
-    envir = parent.frame(),
-    quiet = FALSE) {
+loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_character(url)
     # Check for remote URL containing `.rda` file
     assert_all_are_matching_regex(url, "^http(s)?\\://.+\\.rda$")
     assert_is_environment(envir)
-    assert_is_a_bool(quiet)
 
     # Check to make sure the objects don't already exist
     basename(url) %>%
         gsub("\\.rda$", "", .) %>%
         assertAllAreNonExisting(envir = envir, inherits = FALSE)
 
-    .urlToTempfile <- function(url, envir = parent.frame(), quiet = FALSE) {
+    .urlToTempfile <- function(url, envir = parent.frame()) {
         assert_is_a_string(url)
         assert_is_environment(envir)
-        assert_is_a_bool(quiet)
         tempfile <- file_temp()
-        download.file(
-            url = url,
-            destfile = tempfile,
-            quiet = quiet)
+        download.file(url = url, destfile = tempfile)
         c(url = url, tempfile = as.character(tempfile))
     }
 
@@ -54,7 +46,7 @@ loadRemoteData <- function(
     map <- mapply(
         FUN = .urlToTempfile,
         url = url,
-        MoreArgs = list(envir = envir, quiet = quiet),
+        MoreArgs = list(envir = envir),
         SIMPLIFY = FALSE,
         USE.NAMES = FALSE)
     map <- do.call(cbind, map)

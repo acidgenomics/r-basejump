@@ -9,8 +9,7 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -22,8 +21,6 @@ supported.}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

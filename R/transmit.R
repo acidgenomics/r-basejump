@@ -42,8 +42,7 @@ transmit <- function(
     localDir = ".",
     pattern,
     rename = NULL,
-    compress = FALSE,
-    quiet = FALSE) {
+    compress = FALSE) {
     assert_is_a_string(remoteDir)
     # Check for public FTP protocol
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
@@ -55,7 +54,6 @@ transmit <- function(
     assert_is_a_string(pattern)
     assertIsCharacterOrNULL(rename)
     assert_is_a_bool(compress)
-    assert_is_a_bool(quiet)
 
     remoteList <- remoteDir %>%
         getURL() %>%
@@ -87,13 +85,11 @@ transmit <- function(
     }
     localPath <- path(localDir, name)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Downloading", toString(match)))
-    }
+    inform(paste("Downloading", toString(match)))
 
     files <- mapply(
-        FUN = function(url, destfile, compress, quiet) {
-            download.file(url = url, destfile = destfile, quiet = quiet)
+        FUN = function(url, destfile, compress) {
+            download.file(url = url, destfile = destfile)
             # Compress, if desired
             if (isTRUE(compress)) {
                 destfile <- gzip(destfile, overwrite = TRUE)
@@ -102,7 +98,7 @@ transmit <- function(
         },
         url = remotePath,
         destfile = localPath,
-        MoreArgs = list(compress = compress, quiet = quiet),
+        MoreArgs = list(compress = compress),
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE)
 

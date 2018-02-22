@@ -11,7 +11,7 @@
 annotable(object, ...)
 
 \S4method{annotable}{character}(object, format = "gene", genomeBuild = NULL,
-  release = NULL, uniqueSymbol = FALSE, quiet = FALSE)
+  release = NULL, uniqueSymbol = FALSE)
 
 \S4method{annotable}{data.frame}(object)
 }
@@ -32,8 +32,6 @@ supported.}
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame} with unique rows per gene or transcript.

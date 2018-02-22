@@ -16,22 +16,22 @@
 convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -53,8 +53,6 @@ supported.}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as object.

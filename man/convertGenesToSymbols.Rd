@@ -17,27 +17,27 @@ convertGenesToSymbols(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
   organism = NULL, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -61,8 +61,6 @@ supported.}
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Same class as original object.

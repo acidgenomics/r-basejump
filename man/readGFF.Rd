@@ -10,7 +10,7 @@
 \usage{
 readGFF(object, ...)
 
-\S4method{readGFF}{character}(object, quiet = FALSE)
+\S4method{readGFF}{character}(object)
 
 readGTF(...)
 }
@@ -18,8 +18,6 @@ readGTF(...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

@@ -11,11 +11,9 @@
 \usage{
 gene2symbolFromGFF(object, ...)
 
-\S4method{gene2symbolFromGFF}{character}(object, uniqueSymbol = FALSE,
-  quiet = FALSE)
+\S4method{gene2symbolFromGFF}{character}(object, uniqueSymbol = FALSE)
 
-\S4method{gene2symbolFromGFF}{data.frame}(object, uniqueSymbol = FALSE,
-  quiet = FALSE)
+\S4method{gene2symbolFromGFF}{data.frame}(object, uniqueSymbol = FALSE)
 
 gene2symbolFromGTF(...)
 }
@@ -25,8 +23,6 @@ gene2symbolFromGTF(...)
 \item{...}{Additional arguments.}
 
 \item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.

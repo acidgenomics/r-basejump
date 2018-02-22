@@ -20,17 +20,15 @@ NULL
     object,
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbol = FALSE,
-    quiet = FALSE) {
-    # Passthrough: genomeBuild, release, uniqueSymbol, quiet
+    uniqueSymbol = FALSE) {
+    # Passthrough: genomeBuild, release, uniqueSymbol
     assert_is_a_string(object)
     annotable(
         object,
         format = "gene2symbol",
         genomeBuild = genomeBuild,
         release = release,
-        uniqueSymbol = uniqueSymbol,
-        quiet = quiet)
+        uniqueSymbol = uniqueSymbol)
 }
 
 
