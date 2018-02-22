@@ -1,7 +1,8 @@
 #' Ensembl Annotations
 #'
 #' Quickly obtain gene and transcript annotations from
-#' [Ensembl](http://www.ensembl.org/) using [AnnotationHub].
+#' [Ensembl](http://www.ensembl.org/) using
+#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
 #'
 #' The default recommended approach is to simply specify the desired organism,
 #' using the full latin name. For example, we can obtain human annotations with
@@ -152,20 +153,21 @@ ensemblAnnotations <- function(
     # Assert that all AnnotationHub/ensembldb packages must detach
     assert_are_identical(.packages(), userAttached)
 
-    # Sanitize return ==========================================================
+    # Return ==========================================================
     if (format == "genes") {
-        genes(edb, return.type = return)
+        data <- genes(edb, return.type = return)
     } else if (format == "transcripts") {
-        transcripts(edb, return.type = return)
+        data <- transcripts(edb, return.type = return)
     } else if (format == "gene2symbol") {
-        genes(
+        data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = return)
     } else if (format == "tx2gene") {
-        transcripts(
+        data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = return)
     }
+    data
 }
