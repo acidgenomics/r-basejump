@@ -89,14 +89,13 @@ test_that("Annotables package data frame input", {
             start = "integer",
             end = "integer",
             strand = "integer",
-            entrez = "list",
+            entrez = "list"
         )
     )
-
     malformed <- grch37[, c("ensgene", "symbol")]
     expect_error(
         annotable(malformed),
-        "is_subset"
+        "is_subset :"
     )
 })
 
