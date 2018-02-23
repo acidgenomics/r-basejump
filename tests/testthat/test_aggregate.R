@@ -1,22 +1,21 @@
 context("Aggregation Utilities")
 
-# aggregateFeatures ============================================================
-test_that("aggregateFeatures : matrix", {
-   data <- aggregateFeatures(mat, groupings = featureGroupings)
-   expect_is(data, "matrix")
-   expect_identical(data, aggMatFeatures)
-})
+test_that("aggregateFeatures", {
+    groupings <- factor(c("gene_1", "gene_1", "gene_2", "gene_2"))
+    names(groupings) <- rownames(df)
 
-test_that("aggregateFeatures : dgCMatrix", {
-    dgc <- as(mat, "dgCMatrix")
-    aggdgc <- as(aggMatFeatures, "dgCMatrix")
-    data <- aggregateFeatures(dgc, groupings = featureGroupings)
-    expect_is(data, "dgCMatrix")
-    # FIXME This test is failing on dgCMatrix class unless we coerce to matrix
-    expect_identical(as.matrix(data), as.matrix(aggdgc))
-})
+    # matrix ===================================================================
+    x <- aggregateFeatures(mat, groupings = groupings)
+    expect_is(x, "matrix")
+    expect_identical(x, matAggFeat)
 
-test_that("aggregateFeatures : Invalid `groupings`", {
+    # dgCMatrix ================================================================
+    x <- aggregateFeatures(dgc, groupings = groupings)
+    y <- as(matAggFeat, "dgCMatrix")
+    expect_is(x, "dgCMatrix")
+    expect_identical(as.matrix(x), as.matrix(y))
+
+    # Invalid groupings ========================================================
     expect_error(
         aggregateFeatures(mat, groupings = "XXX"),
         "is_factor"
@@ -27,24 +26,22 @@ test_that("aggregateFeatures : Invalid `groupings`", {
     )
 })
 
+test_that("aggregateReplicates", {
+    groupings <- factor(c("sample_1", "sample_1", "sample_2", "sample_2"))
+    names(groupings) <- colnames(df)
 
+    # matrix ===================================================================
+    x <- aggregateReplicates(mat, groupings = groupings)
+    expect_is(x, "matrix")
+    expect_identical(x, matAggRep)
 
-# aggregateReplicates ==========================================================
-test_that("aggregateReplicates : matrix", {
-    data <- aggregateReplicates(mat, groupings = replicateGroupings)
-    expect_is(data, "matrix")
-    expect_identical(data, aggMatReplicates)
-})
+    # dgCMatrix ================================================================
+    x <- aggregateReplicates(dgc, groupings = groupings)
+    y <- as(matAggRep, "dgCMatrix")
+    expect_is(x, "dgCMatrix")
+    expect_identical(x, y)
 
-test_that("aggregateReplicates : dgCMatrix", {
-    dgc <- as(mat, "dgCMatrix")
-    aggdgc <- as(aggMatReplicates, "dgCMatrix")
-    data <- aggregateReplicates(dgc, groupings = replicateGroupings)
-    expect_is(data, "dgCMatrix")
-    expect_identical(data, aggdgc)
-})
-
-test_that("aggregateReplicates : Invalid `groupings`", {
+    # Invalid groupings ========================================================
     expect_error(
         aggregateReplicates(mat, groupings = "XXX"),
         "is_factor"
