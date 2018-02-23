@@ -3,26 +3,17 @@
 #' @rdname genes
 #' @name genes
 #'
-#' @importFrom GenomicFeatures genes
+#' @importFrom ensembldb genes
 #'
-#' @section Broad Class Definitions:
-#' A `broadClass` column is added, which generalizes the gene types into a
-#' smaller number of semantically-meaningful groups:
-#'
-#'   - `coding`
-#'   - `noncoding`
-#'   - `pseudo`
-#'   - `small`
-#'   - `decaying`
-#'   - `ig` (immunoglobulin)
-#'   - `tcr` (T cell receptor)
-#'   - `other`
-
+#' @inherit ensemblAnnotations
 #' @param uniqueSymbol Make gene symbols unique.
 #'
-#' @return `GRanges`, `data.frame`, or `DataFrame`.
-#'
 #' @examples
+#' # GRanges return
+#' data <- genes("Homo sapiens")
+#' summary(data)
+#' colnames(mcols(data))
+#'
 #' # Legacy GRCh37/hg19 genome build support
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
 NULL
