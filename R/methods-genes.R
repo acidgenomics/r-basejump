@@ -30,71 +30,7 @@ NULL
 
 
 # Constructors =================================================================
-#' Define Broad Class
-#'
-#' @author Broad class definitions by Rory Kirchner
-#' @keywords internal
-#' @noRd
-#'
-#' @importFrom dplyr case_when mutate
-#' @importFrom rlang .data
-#' @importFrom tibble column_to_rownames rownames_to_column
-#'
-#' @return Data frame containing `broadClass` column.
-.defineBroadClass <- function(object) {
-    assert_is_data.frame(object)
-    assert_is_subset(c("biotype", "symbol"), colnames(object))
-    object %>%
-        rownames_to_column() %>%
-        mutate(
-            broadClass = case_when(
-                grepl(
-                    x = .data[["symbol"]],
-                    # Hsapiens: `MT-`,
-                    # Mmusculus: `mt-`
-                    # Dmelanogaster: `mt:`
-                    pattern = "^mt[\\:\\-]",
-                    ignore.case = TRUE
-                ) ~ "mito",
-                .data[["biotype"]] == "protein_coding" ~ "coding",
-                .data[["biotype"]] %in% c(
-                    "known_ncrna",
-                    "lincRNA",
-                    "non_coding"
-                ) ~ "noncoding",
-                grepl(
-                    pattern = "pseudo",
-                    x = .data[["biotype"]]
-                ) ~ "pseudo",
-                .data[["biotype"]] %in% c(
-                    "miRNA",
-                    "misc_RNA",
-                    "ribozyme",
-                    "rRNA",
-                    "scaRNA",
-                    "scRNA",
-                    "snoRNA",
-                    "snRNA",
-                    "sRNA"
-                ) ~ "small",
-                .data[["biotype"]] %in% c(
-                    "non_stop_decay",
-                    "nonsense_mediated_decay"
-                ) ~ "decaying",
-                grepl(
-                    pattern = "^ig_",
-                    x = .data[["biotype"]],
-                    ignore.case = TRUE
-                ) ~ "ig",
-                grepl(
-                    pattern = "^tr_",
-                    x = .data[["biotype"]],
-                    ignore.case = TRUE
-                ) ~ "tcr",
-                TRUE ~ "other")
-        ) %>%
-        column_to_rownames()
-}
+
 
 
 
@@ -104,6 +40,7 @@ NULL
 .genes.dataFrame <- function(x, uniqueSymbol = FALSE) {  # nolint
     assert_is_data.frame(x)
     assert_are_identical(colnames(x), ensembldbGeneCols)
+    # FIXME These are duplicated
     x %>%
         rename(
             ensgene = .data[["gene_id"]],
@@ -113,7 +50,7 @@ NULL
         # Use `symbol` column instead of duplicate `gene_name` column
         mutate(gene_name = NULL) %>%
         camel(colnames = TRUE, rownames = FALSE) %>%
-        .defineBroadClass() %>%
+        .broadClass() %>%
         # Ensure rows are sorted by gene ID
         arrange(!!sym("ensgene")) %>%
         set_rownames(.[["ensgene"]])
@@ -154,10 +91,3 @@ setMethod(
 
 
 
-# Aliases ======================================================================
-# Changed to an aliases in v0.3.2
-#' @rdname genes
-#' @export
-annotable <- function(object, ...) {
-    genes(x = object, ...)
-}

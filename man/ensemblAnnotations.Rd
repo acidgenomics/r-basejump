@@ -5,7 +5,8 @@
 \title{Ensembl Annotations}
 \usage{
 ensemblAnnotations(organism, format = "genes", genomeBuild = NULL,
-  release = NULL, return = "GRanges")
+  release = NULL, broadClass = TRUE, makeNames = "camel",
+  sanitize = TRUE, return = "GRanges")
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -20,12 +21,25 @@ supported.}
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
+\item{broadClass}{Include broad class definitions, based on \code{biotype} and/or
+gene \code{symbol} annotations.}
+
+\item{makeNames}{Convert column names in into "\code{camel}", "\code{dotted}", or
+"\code{snake}" case.}
+
+\item{sanitize}{Improve column names and drop duplicated columns:
+\itemize{
+\item Rename \code{gene_id} to \code{ensgene}.
+\item Rename \code{tx_id} to \code{enstxp}.
+\item Rename \code{gene_biotype} or \code{tx_biotype} to \code{biotype}.
+\item Rename \code{entrezid} to \code{entrez}.
+\item Drop duplicate \code{gene_name} for only \code{symbol}.
+\item Drop duplicate \code{tx_name} for only \code{enstxp}.
+}}
+
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
 "\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
 additional information.}
-
-\item{sanitize}{Sanitize the return data into camel case and remove
-duplicate columns.}
 }
 \value{
 Gene or transcript annotations.
@@ -36,13 +50,14 @@ Quickly obtain gene and transcript annotations from
 \href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
 }
 \details{
-The default recommended approach is to simply specify the desired organism,
-using the full latin name. For example, we can obtain human annotations with
-\code{Homo sapiens} and mouse annotations with \code{Mus musculus}.
+Simply specify the desired organism, using the full latin name. For example,
+we can obtain human annotations with \code{Homo sapiens}. Optionally, specific
+Ensembl genome builds (e.g. \code{GRCh38}) and release versions (e.g. \code{87}) are
+supported.
 
-Under the hood, the function fetches these annotations from AnnotationHub
-using the ensembldb package. AnnotationHub supports versioned Ensembl
-releases, back to version 87.
+Under the hood, this function fetches annotations from AnnotationHub using
+the ensembldb package. AnnotationHub supports versioned Ensembl releases,
+back to version 87.
 }
 \note{
 Use GRCh38 instead of hg38 for the genome build, since we're
