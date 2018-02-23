@@ -14,28 +14,27 @@ NULL
 
 
 
-# Constructors =================================================================
-.gene2symbol <- function(
-    object,
-    genomeBuild = NULL,
-    release = NULL,
-    uniqueSymbol = FALSE) {
-    # Passthrough: genomeBuild, release, uniqueSymbol
-    assert_is_a_string(object)
-    annotable(
-        object,
-        format = "gene2symbol",
-        genomeBuild = genomeBuild,
-        release = release,
-        uniqueSymbol = uniqueSymbol)
-}
-
-
-
 # Methods ======================================================================
 #' @rdname gene2symbol
 #' @export
 setMethod(
     "gene2symbol",
     signature("character"),
-    .gene2symbol)
+    function(
+        object,
+        genomeBuild = NULL,
+        release = NULL,
+        uniqueSymbol = FALSE) {
+        assert_is_a_string(object)
+        assert_is_a_bool(uniqueSymbol)
+        data <- ensemblAnnotations(
+            object,
+            format = "gene2symbol",
+            genomeBuild = genomeBuild,
+            release = release,
+            return = "data.frame")
+        if (isTRUE(uniqueSymbol)) {
+            data <- .uniqueSymbol(data)
+        }
+        data
+    })
