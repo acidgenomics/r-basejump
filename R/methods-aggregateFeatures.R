@@ -34,32 +34,19 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateFeatures.dgCMatrix <- function(object, groupings) {  # nolint
-    assert_is_factor(groupings)
-    assert_are_identical(rownames(object), names(groupings))
-    rownames(object) <- groupings
-    aggregate.Matrix(object, groupings = groupings, fun = "sum")
-}
-
-
-
-.aggregateFeatures.matrix <- function(object, groupings) {  # nolint
-    assert_is_factor(groupings)
-    assert_are_identical(rownames(object), names(groupings))
-    rowsum(object, group = groupings, reorder = FALSE)
-}
-
-
-
 # Methods ======================================================================
 #' @rdname aggregateFeatures
+#' @importFrom Matrix.utils aggregate.Matrix
 #' @export
 setMethod(
     "aggregateFeatures",
     signature("dgCMatrix"),
-    .aggregateFeatures.dgCMatrix)
+    function(object, groupings) {
+        assert_is_factor(groupings)
+        assert_are_identical(rownames(object), names(groupings))
+        rownames(object) <- groupings
+        aggregate.Matrix(object, groupings = groupings, fun = "sum")
+    })
 
 
 
@@ -68,4 +55,8 @@ setMethod(
 setMethod(
     "aggregateFeatures",
     signature("matrix"),
-    .aggregateFeatures.matrix)
+    function(object, groupings) {
+        assert_is_factor(groupings)
+        assert_are_identical(rownames(object), names(groupings))
+        rowsum(object, group = groupings, reorder = FALSE)
+    })

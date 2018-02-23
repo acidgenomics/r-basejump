@@ -25,60 +25,6 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom dplyr arrange mutate
-#' @importFrom rlang !! .data sym
-#' @importFrom stringr str_match
-.gene2symbolFromGFF <- function(object, uniqueSymbol = FALSE) {
-    assert_is_data.frame(object)
-    assert_are_identical(ncol(object), 9L)
-    assert_is_a_bool(uniqueSymbol)
-
-    anno <- .gffKeyValuePairs(object)
-    assert_is_character(anno)
-
-    # Standard `gene_symbol` to `gene_name` (Ensembl format).
-    # This fix is necessary for FlyBase GFF files.
-    if (any(grepl("gene_symbol", anno))) {
-        anno <- gsub("gene_symbol", "gene_name", anno)
-    }
-
-    anno <- anno %>%
-        .[grepl("gene_id", .)] %>%
-        .[grepl("gene_name", .)] %>%
-        unique()
-
-    ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
-        .[, 2L]
-    symbol <- str_match(anno, "gene_name ([^;]+);") %>%
-        .[, 2L]
-
-    assert_all_are_non_missing_nor_empty_character(ensgene)
-    assert_all_are_non_missing_nor_empty_character(symbol)
-    assert_are_same_length(ensgene, symbol)
-
-    data <- cbind(ensgene, symbol) %>%
-        as.data.frame(stringsAsFactors = FALSE) %>%
-        distinct() %>%
-        arrange(!!sym("ensgene"))
-
-    # Check that all transcripts are unique
-    assert_has_no_duplicates(data[["ensgene"]])
-
-    inform(paste(
-        "gene2symbol mappings:",
-        length(unique(data[["ensgene"]])), "genes"
-    ))
-
-    if (isTRUE(uniqueSymbol)) {
-        data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
-    }
-
-    set_rownames(data, data[["ensgene"]])
-}
-
-
-
 # Methods ======================================================================
 #' @rdname gene2symbolFromGFF
 #' @export
@@ -88,18 +34,65 @@ setMethod(
     function(object, uniqueSymbol = FALSE) {
         object %>%
             readGFF() %>%
-            .gene2symbolFromGFF(uniqueSymbol = uniqueSymbol)
+            gene2symbolFromGFF(uniqueSymbol = uniqueSymbol)
     })
 
 
 
 #' @rdname gene2symbolFromGFF
+#' @importFrom dplyr arrange mutate
+#' @importFrom rlang !! .data sym
+#' @importFrom stringr str_match
 #' @export
 setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
     function(object, uniqueSymbol = FALSE) {
-        .gene2symbolFromGFF(object, uniqueSymbol = uniqueSymbol)
+        assert_is_data.frame(object)
+        assert_are_identical(ncol(object), 9L)
+        assert_is_a_bool(uniqueSymbol)
+
+        anno <- .gffKeyValuePairs(object)
+        assert_is_character(anno)
+
+        # Standard `gene_symbol` to `gene_name` (Ensembl format).
+        # This fix is necessary for FlyBase GFF files.
+        if (any(grepl("gene_symbol", anno))) {
+            anno <- gsub("gene_symbol", "gene_name", anno)
+        }
+
+        anno <- anno %>%
+            .[grepl("gene_id", .)] %>%
+            .[grepl("gene_name", .)] %>%
+            unique()
+
+        ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
+            .[, 2L]
+        symbol <- str_match(anno, "gene_name ([^;]+);") %>%
+            .[, 2L]
+
+        assert_all_are_non_missing_nor_empty_character(ensgene)
+        assert_all_are_non_missing_nor_empty_character(symbol)
+        assert_are_same_length(ensgene, symbol)
+
+        data <- cbind(ensgene, symbol) %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            distinct() %>%
+            arrange(!!sym("ensgene"))
+
+        # Check that all transcripts are unique
+        assert_has_no_duplicates(data[["ensgene"]])
+
+        inform(paste(
+            "gene2symbol mappings:",
+            length(unique(data[["ensgene"]])), "genes"
+        ))
+
+        if (isTRUE(uniqueSymbol)) {
+            data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
+        }
+
+        set_rownames(data, data[["ensgene"]])
     })
 
 
