@@ -64,7 +64,7 @@ setMethod(
     "annotable",
     signature("data.frame"),
     function(object) {
-        assert_is_subset(annotableCols, colnames(object))
+        assert_is_subset(geneAnnotationCols, colnames(object))
 
         # Inform the user if NA gene rows are present
         if (hasRownames(object)) {
@@ -128,10 +128,10 @@ setMethod(
         assert_has_no_duplicates(object[["ensgene"]])
 
         object %>%
-            camel() %>%
             fixNA() %>%
             .addBroadClassCol() %>%
-            select(c(annotableCols, "broadClass"), everything()) %>%
+            camel() %>%
+            select(c(geneAnnotationCols, "broadClass"), everything()) %>%
             arrange(!!sym("ensgene")) %>%
             as.data.frame() %>%
             set_rownames(.[["ensgene"]])

@@ -1,5 +1,9 @@
-.addBroadClassCol <- function(object) {
+# Default to snake case, to match unmodified ensembldb output
+.addBroadClassCol <- function(object, makeNames = "snake") {
     assert_is_any_of(object, c("data.frame", "DataFrame", "GRanges"))
+    makeNames <- .getMakeNamesFunction(makeNames)
+
+    # Metadata
     if (is(object, "GRanges")) {
         data <- mcols(object)
     } else {
@@ -32,8 +36,7 @@
         symbol = symbol,
         row.names = rownames,
         stringsAsFactors = FALSE)
-    # ensembldb currently only outputs character, so match
-    broad <- as.character(.broadClass(df))
+    broad <- .broadClass(df)
 
     if (is(object, "GRanges")) {
         mcols(object)[["broad_class"]] <- broad
@@ -41,7 +44,7 @@
         object[["broad_class"]] <- broad
     }
 
-    object
+    makeNames(object)
 }
 
 
@@ -58,7 +61,7 @@
 #' @param param Gene or transcript biotype.
 #' @param symbol *Optional*. Gene symbol.
 #'
-#' @return Named factor containing broad class definitions.
+#' @return Named character vector containing broad class definitions.
 .broadClass <- function(object) {
     assert_is_data.frame(object)
     assertHasRownames(object)
@@ -111,8 +114,7 @@
                 ) ~ "tcr",
                 TRUE ~ "other")
         ) %>%
-        pull("broad") %>%
-        as.factor()
+        pull("broad")
     names(broad) <- rownames(object)
     broad
 }
