@@ -10,6 +10,5 @@ test_that("assignAndSaveData", {
         assignAndSaveData("test", mtcars),
         paste("Saving test to", path_real("."))
     )
+    file_delete("test.rda")
 })
-
-file_delete("test.rda")

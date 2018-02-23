@@ -5,11 +5,11 @@ test_that("writeCounts", {
     mat <- as.matrix(mtcars)
     dgc <- as(mat, "dgCMatrix")
     expect_message(
-        writeCounts(df, dgc, mat, dir = "counts"),
+        writeCounts(df, dgc, mat, dir = "testcounts"),
         "Writing df, dgc, mat"
     )
     expect_identical(
-        dir("counts"),
+        dir("testcounts"),
         c(
             "df.csv.gz",
             "dgc.mtx.colnames",
@@ -27,5 +27,5 @@ test_that("writeCounts", {
         writeCounts(seq(1L:10L)),
         "has_dims"
     )
-    dir_delete("counts")
+    dir_delete("testcounts")
 })
