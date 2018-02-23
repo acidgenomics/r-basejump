@@ -65,7 +65,7 @@ test_that("Data frame", {
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg", drop = TRUE],
-        mpg
+        mpgString
     )
 })
 
@@ -76,7 +76,7 @@ test_that("DataFrame", {
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg"],
-        mpg
+        mpgString
     )
 })
 
@@ -88,6 +88,6 @@ test_that("Matrix", {
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[1L, "mpg", drop = TRUE] %>%
             as.character(),
-        mpg
+        mpgString
     )
 })

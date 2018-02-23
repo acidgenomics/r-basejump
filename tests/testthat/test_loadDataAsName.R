@@ -45,5 +45,3 @@ test_that("Invalid arguments", {
         "is_environment : envir"
     )
 })
-
-file_delete(c("multi.rda", "mtcars.rda", "starwars.rda"))
