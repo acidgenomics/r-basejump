@@ -11,6 +11,7 @@
 
 
 globalVariables(".")
+url <- "http://basejump.seq.cloud"
 geneAnnotationCols <- c(
     "ensgene",
     "symbol",
