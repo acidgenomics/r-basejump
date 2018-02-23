@@ -10,10 +10,11 @@ sanitizeAnnotable(object)
 \item{object}{Object.}
 }
 \value{
-Annotable without nested list items (e.g. Entrez IDs).
+Data frame without nested list columns.
 }
 \description{
-Sanitize Ensembl Annotations
+Drops any nested list columns (e.g. \code{entrez}) that prevents an annotable
+data frame from being written to disk as a CSV.
 }
 \examples{
 human <- annotable("Homo sapiens")
