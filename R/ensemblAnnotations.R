@@ -51,12 +51,10 @@
 #'   current release available on AnnotationHub.
 #' @param broadClass Include broad class definitions, based on `biotype` and/or
 #'   gene `symbol` annotations.
-#' @param makeNames Convert column names in into "`camel`", "`dotted`", or
-#'   "`snake`" case.
 #' @param sanitizeColnames Improve column names and drop duplicated columns:
-#'   - Rename `gene_id` to `ensgene`.
-#'   - Rename `tx_id` to `enstxp`.
-#'   - Rename `gene_biotype` or `tx_biotype` to `biotype`.
+#'   - Rename `geneID` to `ensgene`.
+#'   - Rename `txID` to `enstxp`.
+#'   - Rename `geneBiotype` or `txBiotype` to simply `biotype`.
 #'   - Rename `entrezid` to `entrez`.
 #' @param return Class of the returned object. Can be "`data.frame`",
 #'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
@@ -81,7 +79,6 @@ ensemblAnnotations <- function(
     genomeBuild = NULL,
     release = NULL,
     broadClass = TRUE,
-    makeNames = "camel",
     sanitizeColnames = TRUE,
     return = "GRanges") {
     assert_is_a_string(organism)
@@ -96,7 +93,6 @@ ensemblAnnotations <- function(
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
     .assertFormalEnsembldbReturn(return)
-    makeNames <- .getMakeNamesFunction(makeNames)
     assert_is_a_bool(sanitizeColnames)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
@@ -243,7 +239,7 @@ ensemblAnnotations <- function(
                 "seq_coord_system",
                 "entrezid"),
             return.type = return)
-        idCol <- "gene_id"
+        rownamesCol <- "gene_id"
     } else if (format == "transcripts") {
         data <- transcripts(
             edb,
@@ -255,30 +251,32 @@ ensemblAnnotations <- function(
                 "tx_support_level",
                 "gene_id"),
             return.type = return)
-        idCol <- "tx_id"
+        rownamesCol <- "tx_id"
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = return)
-        idCol <- "gene_id"
+        rownamesCol <- "gene_id"
     } else if (format == "tx2gene") {
         data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = return)
-        idCol <- "tx_id"
+        rownamesCol <- "tx_id"
     }
 
+    # Convert column names into desired convention
+    data <- camel(data)
+
     # Broad class definitions (only for full gene/transcript annotables)
-    if (format %in% c("genes", "transcripts") && isTRUE(broadClass)
-    ) {
+    if (format %in% c("genes", "transcripts") && isTRUE(broadClass)) {
         data <- .addBroadClassCol(data)
     }
 
     # Add rownames
     if (!is(data, "GRanges")) {
-        rownames(data) <- data[[idCol]]
+        rownames(data) <- data[[camel(rownamesCol)]]
         data <- data %>%
             .[order(rownames(.)), , drop = FALSE]
     }
@@ -288,8 +286,7 @@ ensemblAnnotations <- function(
         data <- .sanitizeAnnotationCols(data, format = format)
     }
 
-    # Convert column names into desired convention
-    makeNames(data)
+    data
 }
 
 
@@ -303,14 +300,11 @@ ensemblAnnotations <- function(
 
     # Rename the columns
     colnames(data) <- colnames(data) %>%
+        camel() %>%
         gsub("^entrezid", "entrez", .) %>%
-        gsub("^gene_id$", "ensgene", .) %>%
-        gsub("^(gene|tx)_biotype", "biotype", .) %>%
-        gsub("^tx_id$", "enstxp", .)
-
-    # Drop duplicated columns
-    data <- data %>%
-        .[, setdiff(colnames(.), c("gene_name", "tx_name")), drop = FALSE]
+        gsub("^geneID$", "ensgene", .) %>%
+        gsub("^(gene|tx)Biotype", "biotype", .) %>%
+        gsub("^txID$", "enstxp", .)
 
     # Reorder priority columns for genes and transcripts
     if (format %in% c("genes", "transcripts")) {
@@ -319,10 +313,11 @@ ensemblAnnotations <- function(
         } else if (format == "transcripts") {
             priorityCols <- transcriptAnnotationCols
         }
-        # Add the `broad_class` column, if present
-        if ("broad_class" %in% colnames(data)) {
-            priorityCols <- c(priorityCols, "broad_class")
+        # Add the `broadClass` column, if present
+        if ("broadClass" %in% colnames(data)) {
+            priorityCols <- c(priorityCols, "broadClass")
         }
+        assert_is_subset(priorityCols, colnames(data))
         data <- data %>%
             .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
               drop = FALSE]

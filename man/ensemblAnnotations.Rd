@@ -5,8 +5,8 @@
 \title{Ensembl Annotations}
 \usage{
 ensemblAnnotations(organism, format = "genes", genomeBuild = NULL,
-  release = NULL, broadClass = TRUE, makeNames = "camel",
-  sanitizeColnames = TRUE, return = "GRanges")
+  release = NULL, broadClass = TRUE, sanitizeColnames = TRUE,
+  return = "GRanges")
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -23,14 +23,11 @@ current release available on AnnotationHub.}
 \item{broadClass}{Include broad class definitions, based on \code{biotype} and/or
 gene \code{symbol} annotations.}
 
-\item{makeNames}{Convert column names in into "\code{camel}", "\code{dotted}", or
-"\code{snake}" case.}
-
 \item{sanitizeColnames}{Improve column names and drop duplicated columns:
 \itemize{
-\item Rename \code{gene_id} to \code{ensgene}.
-\item Rename \code{tx_id} to \code{enstxp}.
-\item Rename \code{gene_biotype} or \code{tx_biotype} to \code{biotype}.
+\item Rename \code{geneID} to \code{ensgene}.
+\item Rename \code{txID} to \code{enstxp}.
+\item Rename \code{geneBiotype} or \code{txBiotype} to simply \code{biotype}.
 \item Rename \code{entrezid} to \code{entrez}.
 }}
 

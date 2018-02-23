@@ -1,7 +1,5 @@
-# Default to snake case, to match unmodified ensembldb output
-.addBroadClassCol <- function(object, makeNames = "snake") {
+.addBroadClassCol <- function(object) {
     assert_is_any_of(object, c("data.frame", "DataFrame", "GRanges"))
-    makeNames <- .getMakeNamesFunction(makeNames)
 
     # Metadata
     if (is(object, "GRanges")) {
@@ -12,8 +10,12 @@
     assert_has_colnames(data)
 
     # Biotype
-    assert_any_are_matching_regex(colnames(data), "biotype")
-    biotypeCol <- grep("biotype", colnames(data), value = TRUE)
+    assert_any_are_matching_regex(colnames(data), "[Bb]iotype$")
+    biotypeCol <- grep(
+        pattern = "biotype",
+        x = colnames(data),
+        ignore.case = TRUE,
+        value = TRUE)
     assert_is_a_string(biotypeCol)
     biotype <- data[, biotypeCol, drop = TRUE]
 
@@ -24,15 +26,18 @@
         symbol <- NA
     }
 
-    # Gene/transcript ID (rownames)
-    # Transcript ID takes priority (e.g. for tx2gene)
-    if ("tx_id" %in% colnames(data)) {
-        idCol <- "tx_id"
-    } else if ("gene_id" %in% colnames(data)) {
-        idCol <- "gene_id"
+    # Rownames from gene or transcript IDs
+    # Note that transcript ID takes priority
+    txCol <- grep("enstxp|txID", colnames(data), value = TRUE)
+    geneCol <- grep("ensgene|geneID", colnames(data), value = TRUE)
+    if (length(txCol)) {
+        idCol <- txCol[[1L]]
+    } else if (length(geneCol)) {
+        idCol <- geneCol[[1L]]
     } else {
         idCol <- NA
     }
+    assert_is_a_string(idCol)
     assert_is_subset(idCol, colnames(data))
     rownames <- data[, idCol, drop = TRUE]
 
@@ -44,12 +49,12 @@
     broad <- .broadClass(df)
 
     if (is(object, "GRanges")) {
-        mcols(object)[["broad_class"]] <- broad
+        mcols(object)[["broadClass"]] <- broad
     } else {
-        object[["broad_class"]] <- broad
+        object[["broadClass"]] <- broad
     }
 
-    makeNames(object)
+    object
 }
 
 
