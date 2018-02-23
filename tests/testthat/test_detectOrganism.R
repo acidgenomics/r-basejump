@@ -1,7 +1,5 @@
 context("detectOrganism")
 
-loadRemoteData("http://basejump.seq.cloud/counts.rda")
-
 test_that("Homo sapiens", {
     x <- "Homo sapiens"
     expect_identical(x, detectOrganism("Homo sapiens"))

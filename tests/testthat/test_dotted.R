@@ -1,7 +1,5 @@
 context("dotted")
 
-load(system.file("extdata/makeNames.rda", package = "basejump"))
-
 test_that("ANY", {
     # Integer (atomic)
     expect_identical(dotted(1L), 1L)

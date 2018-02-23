@@ -1,15 +1,5 @@
 context("loadDataAsName")
 
-download.file(
-    url = "http://basejump.seq.cloud/multi.rda",
-    destfile = "multi.rda")
-download.file(
-    url = "http://basejump.seq.cloud/mtcars.rda",
-    destfile = "mtcars.rda")
-download.file(
-    url = "http://basejump.seq.cloud/starwars.rda",
-    destfile = "starwars.rda")
-
 test_that("Dot object key-value pair method", {
     loaded <- loadDataAsName(
         newName1 = "mtcars",

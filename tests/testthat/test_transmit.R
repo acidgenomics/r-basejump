@@ -1,7 +1,5 @@
 context("transmit")
 
-ensembl <- "ftp://ftp.ensembl.org/pub/release-89"
-
 test_that("Standard", {
     readme <- transmit(
         ensembl,

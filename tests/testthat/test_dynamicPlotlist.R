@@ -1,7 +1,5 @@
 context("dynamicPlotlist")
 
-loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
-
 test_that("Grid", {
     p <- dynamicPlotlist(plotlist, return = "grid")
     expect_s3_class(p, "ggplot")

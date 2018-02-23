@@ -6,7 +6,6 @@ test_that("Atomic", {
         toStringUnique(vec),
         "hello, world"
     )
-
     expect_error(
         toStringUnique(mtcars),
         "is_atomic"

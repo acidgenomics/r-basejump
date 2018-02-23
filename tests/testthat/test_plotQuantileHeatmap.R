@@ -1,8 +1,5 @@
 context("plotQuantileHeatmap")
 
-loadRemoteData("http://basejump.seq.cloud/counts.rda")
-plotNames <- c("tree_row", "tree_col", "kmeans", "gtable")
-
 test_that("Simple matrix", {
     mat <- matrix(1:10000, nrow = 100, ncol = 100)
     p <- plotQuantileHeatmap(mat)
