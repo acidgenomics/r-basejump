@@ -42,10 +42,6 @@ test_that("Ensembl versioned release", {
 })
 
 test_that("Human GRCh37/hg19 genome build support", {
-    # Compare against the internally stashed data
-    load(system.file("extdata/grch37.rda", package = "basejump"))
-    load(system.file("extdata/grch37Tx2gene.rda", package = "basejump"))
-
     expect_identical(
         annotable("Homo sapiens", genomeBuild = "GRCh37"),
         grch37
@@ -75,9 +71,6 @@ test_that("Human GRCh37/hg19 genome build support", {
 })
 
 test_that("Annotables package data frame input", {
-    # Use the pre-compiled grch37 annotable from annotables package
-    loadRemoteData("http://basejump.seq.cloud/grch37.rda")
-
     # This is fast but will drop extra columns
     human <- annotable(grch37)
     expect_identical(
@@ -108,7 +101,6 @@ test_that("Annotables package data frame input", {
 })
 
 test_that("DataFrame coercion AsIs list", {
-    loadRemoteData("http://basejump.seq.cloud/annotable_AsIs.rda")
     expect_warning(
         annotable(annotable_AsIs),
         paste(
@@ -122,16 +114,6 @@ test_that("DataFrame coercion AsIs list", {
 })
 
 test_that("Collapse annotables tibble", {
-    loadRemoteData(
-        paste(
-            "https://github.com",
-            "stephenturner",
-            "annotables",
-            "raw",
-            "master",
-            "data",
-            "grch38.rda",
-            sep = "/"))
     expect_true(any(duplicated(grch38[["ensgene"]])))
     annotable <- annotable(grch38)
     expect_true(!any(duplicated(annotable[["ensgene"]])))

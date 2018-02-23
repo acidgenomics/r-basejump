@@ -1,0 +1,6 @@
+load("annotable_AsIs.rda")
+load("counts.rda")
+load("grch38.rda")
+load(system.file("extdata/makeNames.rda", package = "basejump"))
+load(system.file("extdata/grch37.rda", package = "basejump"))
+load(system.file("extdata/grch37Tx2gene.rda", package = "basejump"))

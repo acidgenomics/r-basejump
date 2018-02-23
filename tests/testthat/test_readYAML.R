@@ -37,7 +37,7 @@ test_that("`.yml` file support", {
 
 test_that("Unsupported file type", {
     expect_error(
-        readYAML("http://basejump.seq.cloud/mtcars.csv"),
+        readYAML("mtcars.csv"),
         "is_matching_regex : object"
     )
 })

@@ -62,7 +62,6 @@ test_that("Data frame", {
 })
 
 test_that("Counts matrix", {
-    loadRemoteData("http://basejump.seq.cloud/counts.rda")
     counts <- dotted(counts)
     expect_identical(
         rownames(counts)[[1L]],

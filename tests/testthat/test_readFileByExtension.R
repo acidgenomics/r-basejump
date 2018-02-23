@@ -1,37 +1,37 @@
 context("readFileByExtension")
 
 test_that("Comma separated value (.csv) file", {
-    csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+    csv <- readFileByExtension("mtcars.csv")
     expect_is(csv, "tbl_df")
 })
 
 test_that("MatrixMarket (.mtx) file", {
-    sparse <- readFileByExtension("http://basejump.seq.cloud/sparse.mtx")
+    sparse <- readFileByExtension("sparse.mtx")
     expect_is(sparse, "ngTMatrix")
 
-    colnames <- readFileByExtension("http://basejump.seq.cloud/test.colnames")
+    colnames <- readFileByExtension("test.colnames")
     expect_identical(colnames, c("foo", "bar"))
     # rownames use the same code base as colnames
 })
 
 test_that("Tab separated values (.tsv) file", {
-    tsv <- readFileByExtension("http://basejump.seq.cloud/mtcars.tsv")
+    tsv <- readFileByExtension("mtcars.tsv")
     expect_is(tsv, "tbl_df")
 })
 
 test_that("Table format (.txt) file", {
-    txt <- readFileByExtension("http://basejump.seq.cloud/mtcars.txt")
+    txt <- readFileByExtension("mtcars.txt")
     expect_is(txt, "data.frame")
     # txt has integer columns whereas mtcars doesn't
     expect_equal(txt, mtcars)
 })
 
 test_that("Excel (.xlsx) file", {
-    xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+    xlsx <- readFileByExtension("mtcars.xlsx")
     expect_is(xlsx, "tbl_df")
 
     # Counts (.counts) file
-    counts <- readFileByExtension("http://basejump.seq.cloud/test.counts")
+    counts <- readFileByExtension("test.counts")
     expect_is(counts, "matrix")
     expect_identical(
         rownames(counts)[1L:5L],
@@ -45,7 +45,7 @@ test_that("Excel (.xlsx) file", {
 
 test_that("R Data (.rda) file (unsupported)", {
     expect_error(
-        readFileByExtension("http://basejump.seq.cloud/mtcars.rda"),
+        readFileByExtension("mtcars.rda"),
         "Unsupported file extension"
     )
 
