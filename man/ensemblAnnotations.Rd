@@ -41,7 +41,7 @@ gene \code{symbol} annotations.}
 additional information.}
 }
 \value{
-Gene or transcript annotations.
+\code{GRanges}, \code{data.frame}, or \code{DataFrame}.
 }
 \description{
 Quickly obtain gene and transcript annotations from
@@ -63,6 +63,23 @@ Use GRCh38 instead of hg38 for the genome build, since we're
 querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
 suported on AnnotationHub.
 }
+\section{Broad Class Definitions}{
+
+For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
+column is added, which generalizes the gene types into a smaller number of
+semantically-meaningful groups:
+\itemize{
+\item \code{coding}
+\item \code{noncoding}
+\item \code{pseudo}
+\item \code{small}
+\item \code{decaying}
+\item \code{ig} (immunoglobulin)
+\item \code{tcr} (T cell receptor)
+\item \code{other}
+}
+}
+
 \examples{
 genes <- ensemblAnnotations("Homo sapiens", format = "genes")
 summary(genes)
