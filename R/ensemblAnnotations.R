@@ -279,54 +279,6 @@ ensemblAnnotations <- function(
 
 
 
-.addBroadClassCol <- function(object) {
-    assert_is_any_of(object, c("data.frame", "DataFrame", "GRanges"))
-    if (is(object, "GRanges")) {
-        data <- mcols(object)
-    } else {
-        data <- object
-    }
-    assert_has_colnames(data)
-
-    # Biotype
-    assert_any_are_matching_regex(colnames(data), "_biotype$")
-    biotypeCol <- grep("_biotype$", colnames(data), value = TRUE)
-    assert_is_a_string(biotypeCol)
-    biotype <- data[, biotypeCol, drop = TRUE]
-
-    # Symbol
-    if ("symbol" %in% colnames(data)) {
-        symbol <- data[, "symbol", drop = TRUE]
-    } else {
-        symbol <- NA
-    }
-
-    # Gene/transcript ID (rownames)
-    idCol <- biotypeCol %>%
-        gsub("_biotype$", "", .) %>%
-        paste0(., "_id")
-    assert_is_subset(idCol, colnames(data))
-    rownames <- data[, idCol, drop = TRUE]
-
-    df <- data.frame(
-        biotype = biotype,
-        symbol = symbol,
-        row.names = rownames,
-        stringsAsFactors = FALSE)
-    # ensembldb currently only outputs character, so match
-    broad <- as.character(.broadClass(df))
-
-    if (is(object, "GRanges")) {
-        mcols(object)[["broad_class"]] <- broad
-    } else {
-        object[["broad_class"]] <- broad
-    }
-
-    object
-}
-
-
-
 .sanitizeAnnotationCols <- function(object) {
     if (is(object, "GRanges")) {
         colnames <- colnames(mcols(object))
