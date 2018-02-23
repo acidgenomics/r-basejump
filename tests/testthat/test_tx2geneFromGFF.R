@@ -1,8 +1,5 @@
 context("tx2geneFromGFF")
 
-mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
-mouse <- tx2geneFromGFF(mousefile)
-
 test_that("Mouse", {
     expect_identical(
         dim(mouse),

@@ -1,7 +1,5 @@
 context("camel")
 
-load(system.file("extdata/makeNames.rda", package = "basejump"))
-
 test_that("ANY", {
     # Integer (atomic)
     expect_identical(camel(1L), 1L)

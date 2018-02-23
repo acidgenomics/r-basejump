@@ -1,20 +1,18 @@
 context("loadRemoteData")
 
-url <- "http://basejump.seq.cloud/mtcars.rda"
-
 test_that("Valid URL", {
-    loaded <- loadRemoteData(url = url)
+    loaded <- loadRemoteData(url = "http://basejump.seq.cloud/mtcars.rda")
     expect_is(loaded, "matrix")
     expect_identical(
         loaded["url", "mtcars", drop = TRUE],
-        url
+        "http://basejump.seq.cloud/mtcars.rda"
     )
 })
 
 test_that("Already exists", {
     mtcars <- datasets::mtcars
     expect_error(
-        loadRemoteData(url),
+        loadRemoteData("http://basejump.seq.cloud/mtcars.rda"),
         "Already exists in environment: mtcars"
     )
 })

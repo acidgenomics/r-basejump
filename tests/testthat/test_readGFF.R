@@ -1,8 +1,5 @@
 context("readGFF")
 
-mousefile <- "http://basejump.seq.cloud/mmusculus.gtf"
-mouse <- readGFF(mousefile)
-
 test_that("Mouse", {
     # Check for 9 columns
     expect_identical(
