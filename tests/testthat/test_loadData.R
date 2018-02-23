@@ -45,5 +45,3 @@ test_that("Renamed file", {
         "are_identical : name and loaded are not identical."
     )
 })
-
-file_delete(c("multi.rda", "mtcars.rda", "renamed.rda"))
