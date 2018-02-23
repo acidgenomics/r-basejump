@@ -117,8 +117,7 @@ setMethod(
             entrez <- aggregate(
                 formula = formula("entrez~ensgene"),
                 data = object,
-                FUN = list
-            )
+                FUN = list)
             # Now drop the `entrez` column and add the aggregated list version
             object <- object %>%
                 mutate(entrez = NULL) %>%
@@ -131,7 +130,7 @@ setMethod(
         object %>%
             camel() %>%
             fixNA() %>%
-            .defineBroadClass() %>%
+            .addBroadClassCol() %>%
             select(c(annotableCols, "broadClass"), everything()) %>%
             arrange(!!sym("ensgene")) %>%
             as.data.frame() %>%

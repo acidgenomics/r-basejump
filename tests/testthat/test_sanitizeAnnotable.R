@@ -10,12 +10,12 @@ test_that("Human", {
             "symbol" = "character",
             "description" = "character",
             "biotype" = "character",
-            "broadClass" = "character",
             "geneSeqStart" = "integer",
             "geneSeqEnd" = "integer",
             "seqName" = "character",
             "seqStrand" = "integer",
-            "seqCoordSystem" = "character"
+            "seqCoordSystem" = "character",
+            "broadClass" = "character"
         )
     )
 })

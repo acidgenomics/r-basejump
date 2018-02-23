@@ -30,13 +30,13 @@ test_that("Ensembl versioned release", {
             symbol = "character",
             description = "character",
             biotype = "character",
-            broadClass = "character",
             geneSeqStart = "integer",
             geneSeqEnd = "integer",
             seqName = "character",
             seqStrand = "integer",
             seqCoordSystem = "character",
-            entrez = "list"
+            entrez = "list",
+            broadClass = "character"
         )
     )
 })
@@ -91,12 +91,12 @@ test_that("Annotables package data frame input", {
             symbol = "character",
             description = "character",
             biotype = "character",
-            broadClass = "character",
             chr = "character",
             start = "integer",
             end = "integer",
             strand = "integer",
-            entrez = "list"
+            entrez = "list",
+            broadClass = "character"
         )
     )
 
@@ -161,7 +161,7 @@ test_that("Unsupported Ensembl release", {
 test_that("Unsupported organism", {
     expect_error(
         annotable("XXX"),
-        "XXX is not supported in AnnotationHub"
+        "Ensembl annotations for XXX were not found in AnnotationHub"
     )
 })
 
