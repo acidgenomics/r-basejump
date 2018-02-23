@@ -219,6 +219,8 @@ ensemblAnnotations <- function(
     # Add rownames
     if (!is(data, "GRanges")) {
         rownames(data) <- data[[idCol]]
+        data <- data %>%
+            .[order(rownames(.)), , drop = FALSE]
     }
 
     # Sanitize columns
@@ -305,14 +307,4 @@ ensemblAnnotations <- function(
         object <- object[, setdiff(colnames, drop), drop = FALSE]
     }
     object
-}
-
-
-
-# Aliases ======================================================================
-# Changed to an alias in v0.3.2
-#' @rdname genes
-#' @export
-annotable <- function(object, ..., return = "data.frame") {
-    ensemblAnnotations(organism = object, ..., return = return)
 }

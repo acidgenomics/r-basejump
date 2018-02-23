@@ -30,30 +30,20 @@ NULL
 
 
 # Constructors =================================================================
-
-
-
-
-#' @importFrom dplyr distinct everything group_by left_join mutate rename select
-#'   summarize_all ungroup
-#' @importFrom rlang !! sym
-.genes.dataFrame <- function(x, uniqueSymbol = FALSE) {  # nolint
-    assert_is_data.frame(x)
-    assert_are_identical(colnames(x), ensembldbGeneCols)
-    # FIXME These are duplicated
-    x %>%
-        rename(
-            ensgene = .data[["gene_id"]],
-            biotype = .data[["gene_biotype"]],
-            entrez = .data[["entrezid"]]
-        ) %>%
-        # Use `symbol` column instead of duplicate `gene_name` column
-        mutate(gene_name = NULL) %>%
-        camel(colnames = TRUE, rownames = FALSE) %>%
-        .broadClass() %>%
-        # Ensure rows are sorted by gene ID
-        arrange(!!sym("ensgene")) %>%
-        set_rownames(.[["ensgene"]])
+.uniqueSymbol <- function(object) {
+    if (is(object, "GRanges")) {
+        data <- mcols(object)
+    } else {
+        data <- object
+    }
+    assert_is_subset("symbol", colnames(data))
+    data[["symbol"]] <- make.unique(data[["symbol"]])
+    if (is(object, "GRanges")) {
+        mcols(object) <- data
+    } else {
+        object <- data
+    }
+    object
 }
 
 
@@ -69,25 +59,27 @@ setMethod(
         genomeBuild = NULL,
         release = NULL,
         uniqueSymbol = FALSE,
-        return = "data.frame") {
+        return = "GRanges") {
+        assert_is_a_bool(uniqueSymbol)
         data <- ensemblAnnotations(
             organism = x,
             format = "genes",
             genomeBuild = genomeBuild,
             release = release,
             return = return)
-        genes(data, uniqueSymbol = uniqueSymbol)
+        if (isTRUE(uniqueSymbol)) {
+            data <- .uniqueSymbol(data)
+        }
+        data
     }
 )
 
 
 
+# Aliases ======================================================================
+# Changed to an alias in v0.3.2
 #' @rdname genes
 #' @export
-setMethod(
-    "genes",
-    signature("data.frame"),
-    .genes.dataFrame)
-
-
-
+annotable <- function(object, ..., return = "data.frame") {
+    genes(x = object, ..., return = return)
+}
