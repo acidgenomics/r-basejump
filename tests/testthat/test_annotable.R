@@ -175,10 +175,3 @@ test_that("Bad input", {
         "is_subset : "
     )
 })
-
-test_that("Internal `broadClass` column integrity", {
-    expect_error(
-        .defineBroadClass(mtcars),
-        "is_subset : "
-    )
-})

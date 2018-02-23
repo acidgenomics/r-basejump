@@ -45,13 +45,3 @@ setMethod(
         data
     }
 )
-
-
-
-# Aliases ======================================================================
-# Changed to an alias in v0.3.2
-#' @rdname genes
-#' @export
-annotable <- function(object, ..., return = "data.frame") {
-    genes(x = object, ..., return = return)
-}

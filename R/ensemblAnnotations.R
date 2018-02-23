@@ -31,6 +31,7 @@
 #'   querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
 #'   suported on AnnotationHub.
 #'
+#' @name ensemblAnnotations
 #' @family Gene Annotation Utilities
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
