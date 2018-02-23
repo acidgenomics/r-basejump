@@ -9,6 +9,7 @@
 \alias{snake,data.frame-method}
 \alias{snake,DataFrame-method}
 \alias{snake,factor-method}
+\alias{snake,GRanges-method}
 \alias{snake,list-method}
 \alias{snake,List-method}
 \alias{snake,matrix-method}
@@ -27,6 +28,8 @@ snake(object, ...)
 \S4method{snake}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{factor}(object)
+
+\S4method{snake}{GRanges}(object)
 
 \S4method{snake}{list}(object)
 

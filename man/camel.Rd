@@ -22,6 +22,7 @@
 \alias{upperCamel,data.frame-method}
 \alias{upperCamel,DataFrame-method}
 \alias{upperCamel,factor-method}
+\alias{upperCamel,GRanges-method}
 \alias{upperCamel,list-method}
 \alias{upperCamel,List-method}
 \alias{upperCamel,matrix-method}
@@ -71,6 +72,8 @@ upperCamel(object, ...)
   strict = FALSE)
 
 \S4method{upperCamel}{factor}(object, strict = FALSE)
+
+\S4method{upperCamel}{GRanges}(object, strict = FALSE)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
