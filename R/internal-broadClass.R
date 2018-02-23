@@ -7,7 +7,6 @@
     } else {
         data <- object
     }
-    assert_has_colnames(data)
 
     # Biotype
     assert_any_are_matching_regex(colnames(data), "[Bb]iotype$")
@@ -39,14 +38,13 @@
     }
     assert_is_a_string(idCol)
     assert_is_subset(idCol, colnames(data))
-    rownames <- data[, idCol, drop = TRUE]
+    id <- data[, idCol, drop = TRUE]
 
-    df <- data.frame(
+    tibble <- tibble(
+        id = id,
         biotype = biotype,
-        symbol = symbol,
-        row.names = rownames,
-        stringsAsFactors = FALSE)
-    broad <- .broadClass(df)
+        symbol = symbol)
+    broad <- .broadClass(tibble)
 
     if (is(object, "GRanges")) {
         mcols(object)[["broadClass"]] <- broad
@@ -74,7 +72,6 @@
 #' @return Named character vector containing broad class definitions.
 .broadClass <- function(object) {
     assert_is_data.frame(object)
-    assertHasRownames(object)
     assert_is_subset(c("biotype", "symbol"), colnames(object))
     broad <- object %>%
         mutate(
@@ -125,6 +122,4 @@
                 TRUE ~ "other")
         ) %>%
         pull("broad")
-    names(broad) <- rownames(object)
-    broad
 }

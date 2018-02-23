@@ -78,15 +78,6 @@ setMethod(
         }
         assert_all_are_not_na(object[["ensgene"]])
 
-        # Now safe to coerce to tibble
-        object <- object %>%
-            as_tibble() %>%
-            camel() %>%
-            fixNA() %>%
-            .addBroadClassCol() %>%
-            select(c(geneAnnotationCols, "broadClass"), everything()) %>%
-            arrange(!!sym("ensgene"))
-
         # Fix any `AsIs` columns resulting from DataFrame to data frame coercion
         is.AsIs <- function(x) is(x, "AsIs")  # nolint
         asIsCol <- any(vapply(
@@ -104,9 +95,8 @@ setMethod(
 
         # Check for Entrez identifier column rename to `entrez`.
         # ensembldb outputs as `entrezid`.
-        entrezCol <- colnames(object) %>%
-            .[grepl(x = ., pattern = "entrez")]
-        if (length(entrezCol) && entrezCol != "entrez") {
+        entrezCol <- grep("entrez", colnames(object), value = TRUE)
+        if (length(entrezCol) && !identical(entrezCol, "entrez")) {
             assert_is_a_string(entrezCol)
             object <- rename(object, entrez = !!sym(entrezCol))
         }
@@ -130,10 +120,12 @@ setMethod(
                 distinct() %>%
                 left_join(entrez, by = "ensgene")
         }
-
         assert_has_no_duplicates(object[["ensgene"]])
 
         object %>%
+            .addBroadClassCol() %>%
+            select(c(geneAnnotationCols, "broadClass"), everything()) %>%
+            arrange(!!sym("ensgene")) %>%
             as.data.frame() %>%
             set_rownames(.[["ensgene"]])
     })
