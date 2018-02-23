@@ -30,8 +30,7 @@
 #'   organism name as a string.
 #' @param format Desired annotation data format, either "`genes`",
 #'   "`transcripts`", "`gene2symbol`"., or "`tx2gene`".
-#' @param genomeBuild *Optional.* Check to see if a specific genome build is
-#'   supported.
+#' @param genomeBuild *Optional.* Genome assembly name (e.g. GRCh38).
 #' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #' @param broadClass Include broad class definitions, based on `biotype` and/or
@@ -102,14 +101,6 @@ ensemblAnnotations <- function(
         }
     }
 
-    # Release version ==========================================================
-    # Define the `releasePattern` to query with ensembldb
-    if (is.null(release)) {
-        releasePattern <- NULL
-    } else {
-        releasePattern <- paste0("v", release)
-    }
-
     # AnnotationHub ============================================================
     # Connect to AnnotationHub. On a fresh install this will print a
     # txProgressBar to the console. We're using `capture.output()` here
@@ -121,23 +112,29 @@ ensemblAnnotations <- function(
 
     inform(paste(
         "Fetching Ensembl annotations from AnnotationHub",
-        snapshotDate(ah),
-        sep = "\n"
+        packageVersion("AnnotationHub"),
+        paste0("(", snapshotDate(ah), ")")
     ))
 
     # Get the AnnotationHub dataset by identifier number
     ahDb <- query(
         ah,
-        pattern = c(organism, "EnsDb", releasePattern, genomeBuild),
+        pattern = c("EnsDb", organism, release, genomeBuild),
         ignore.case = TRUE)
-    # Get the latest build version
-    id <- ahDb %>%
-        mcols() %>%
-        rownames() %>%
-        tail(n = 1L)
+    mcols <- mcols(ahDb)
+    if (!is.null(genomeBuild)) {
+        mcols <- mcols %>%
+            .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE), , drop = FALSE]
+    }
+    if (!is.null(release)) {
+        mcols <- mcols %>%
+            .[grep(release, .[["tags"]]), , drop = FALSE]
+    }
+    # Always pick the latest release by AH identifier
+    match <- tail(mcols, n = 1L)
 
     # Abort on organism failure
-    if (!length(id)) {
+    if (!nrow(match)) {
         msg <- paste("Ensembl annotations for", organism)
         if (!is.null(genomeBuild)) {
             msg <- paste(msg, genomeBuild, sep = " : ")
@@ -152,6 +149,10 @@ ensemblAnnotations <- function(
         abort(msg)
     }
 
+    id <- rownames(match)
+    genomeBuild <- match[["genome"]]
+    dataDate <- match[["rdatadateadded"]]
+
     # ensembldb ================================================================
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output. Additionally, it
@@ -162,9 +163,11 @@ ensemblAnnotations <- function(
     ))
 
     inform(paste(
-        "EnsDB", paste0(id, ":"),
+        paste0(id, ":"),
         organism(edb),
-        "Ensembl", ensemblVersion(edb)
+        genomeBuild,
+        "Ensembl", ensemblVersion(edb),
+        paste0("(", dataDate, ")")
     ))
 
     # Now we can force detach ensembldb and other unwanted dependendcies from
@@ -189,30 +192,46 @@ ensemblAnnotations <- function(
     # Return ==========================================================
     if (format == "genes") {
         data <- genes(edb, return.type = return)
+        idCol <- "gene_id"
     } else if (format == "transcripts") {
         data <- transcripts(edb, return.type = return)
+        idCol <- "tx_id"
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = return)
+        idCol <- "gene_id"
     } else if (format == "tx2gene") {
         data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = return)
+        idCol <- "tx_id"
     }
 
-    # Broad class definitions
-    if (isTRUE(broadClass)) {
+    # Broad class definitions (only for full gene/transcript annotables)
+    if (format %in% c("genes", "transcripts") && isTRUE(broadClass)
+    ) {
         data <- .addBroadClassCol(data)
+    }
+
+    # Add rownames
+    if (!is(data, "GRanges")) {
+        rownames(data) <- data[[idCol]]
     }
 
     # Sanitize columns
     if (isTRUE(sanitize)) {
         data <- .sanitizeAnnotationCols(data)
+        # Reorder priority columns for gene annotable
+        if (format == "genes" && !is(data, "GRanges")) {
+            data <- data %>%
+                .[, c(annotableCols, setdiff(colnames(.), annotableCols))]
+        }
     }
 
+    # Convert column names into desired convention
     makeNames(data)
 }
 
@@ -291,15 +310,9 @@ ensemblAnnotations <- function(
 
 
 # Aliases ======================================================================
-# Changed to an aliases in v0.3.2
+# Changed to an alias in v0.3.2
 #' @rdname genes
 #' @export
-annotable <- function(
-    object,
-    ...,
-    return = "data.frame") {
-    ensemblAnnotations(
-        organism = object,
-        ...,
-        return = return)
+annotable <- function(object, ..., return = "data.frame") {
+    ensemblAnnotations(organism = object, ..., return = return)
 }

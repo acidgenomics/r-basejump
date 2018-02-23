@@ -15,8 +15,7 @@ organism name as a string.}
 \item{format}{Desired annotation data format, either "\code{genes}",
 "\code{transcripts}", "\code{gene2symbol}"., or "\code{tx2gene}".}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
