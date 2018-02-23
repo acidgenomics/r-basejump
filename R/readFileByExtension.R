@@ -46,7 +46,6 @@ readFileByExtension <- function(
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
     assert_all_are_matching_regex(object, extPattern)
-    .assertFormalMakeNames(makeNames)
     makeNames <- .getMakeNamesFunction(makeNames)
     .assertFormalSeverity(severity)
 
