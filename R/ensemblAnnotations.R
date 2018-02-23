@@ -53,13 +53,11 @@
 #'   gene `symbol` annotations.
 #' @param makeNames Convert column names in into "`camel`", "`dotted`", or
 #'   "`snake`" case.
-#' @param sanitize Improve column names and drop duplicated columns:
+#' @param sanitizeColnames Improve column names and drop duplicated columns:
 #'   - Rename `gene_id` to `ensgene`.
 #'   - Rename `tx_id` to `enstxp`.
 #'   - Rename `gene_biotype` or `tx_biotype` to `biotype`.
 #'   - Rename `entrezid` to `entrez`.
-#'   - Drop duplicate `gene_name` for only `symbol`.
-#'   - Drop duplicate `tx_name` for only `enstxp`.
 #' @param return Class of the returned object. Can be "`data.frame`",
 #'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
 #'   additional information.
@@ -84,7 +82,7 @@ ensemblAnnotations <- function(
     release = NULL,
     broadClass = TRUE,
     makeNames = "camel",
-    sanitize = TRUE,
+    sanitizeColnames = TRUE,
     return = "GRanges") {
     assert_is_a_string(organism)
     assert_is_a_string(format)
@@ -99,7 +97,7 @@ ensemblAnnotations <- function(
     }
     .assertFormalEnsembldbReturn(return)
     makeNames <- .getMakeNamesFunction(makeNames)
-    assert_is_a_bool(sanitize)
+    assert_is_a_bool(sanitizeColnames)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -231,10 +229,32 @@ ensemblAnnotations <- function(
 
     # Return ==========================================================
     if (format == "genes") {
-        data <- genes(edb, return.type = return)
+        data <- genes(
+            edb,
+            columns = c(
+                "gene_id",
+                "symbol",  # `gene_name` is duplicate
+                "description",
+                "gene_biotype",
+                "gene_seq_start",
+                "gene_seq_end",
+                "seq_name",
+                "seq_strand",
+                "seq_coord_system",
+                "entrezid"),
+            return.type = return)
         idCol <- "gene_id"
     } else if (format == "transcripts") {
-        data <- transcripts(edb, return.type = return)
+        data <- transcripts(
+            edb,
+            columns = c(
+                "tx_id",  # `tx_name` is duplicate
+                "tx_biotype",
+                "tx_cds_seq_start",
+                "tx_cds_seq_end",
+                "tx_support_level",
+                "gene_id"),
+            return.type = return)
         idCol <- "tx_id"
     } else if (format == "gene2symbol") {
         data <- genes(
@@ -264,7 +284,7 @@ ensemblAnnotations <- function(
     }
 
     # Sanitize columns
-    if (isTRUE(sanitize)) {
+    if (isTRUE(sanitizeColnames)) {
         data <- .sanitizeAnnotationCols(data, format = format)
     }
 
@@ -293,8 +313,6 @@ ensemblAnnotations <- function(
         .[, setdiff(colnames(.), c("gene_name", "tx_name")), drop = FALSE]
 
     # Reorder priority columns for genes and transcripts
-    # FIXME A simpler way is to just select the columns during the
-    # `genes()` and `transcripts()` call
     if (format %in% c("genes", "transcripts")) {
         if (format == "genes") {
             priorityCols <- geneAnnotationCols
@@ -309,10 +327,12 @@ ensemblAnnotations <- function(
             .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
               drop = FALSE]
     }
+
     if (is(object, "GRanges")) {
         mcols(object) <- data
     } else {
         object <- data
     }
+
     object
 }
