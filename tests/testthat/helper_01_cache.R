@@ -1,7 +1,8 @@
+cacheURL <- "http://basejump.seq.cloud"
 mapply(
-    FUN = function(url, file) {
+    FUN = function(cacheURL, file) {
         if (!file_exists(file)) {
-            download.file(url = paste(url, file, sep = "/"), destfile = file)
+            download.file(url = paste(cacheURL, file, sep = "/"), destfile = file)
         }
     },
     file = c(
@@ -23,8 +24,9 @@ mapply(
         "renamed.rda",
         "sparse.mtx",
         "starwars.rda",
+        "summary.yaml",
         "test.colnames",
         "test.counts"
     ),
-    MoreArgs = list(url = url)
+    MoreArgs = list(cacheURL = cacheURL)
 )
