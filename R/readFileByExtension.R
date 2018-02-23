@@ -46,10 +46,9 @@ readFileByExtension <- function(
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
     assert_all_are_matching_regex(object, extPattern)
-    assert_is_a_string(makeNames)
-    assert_is_subset(makeNames, c("camel", "dotted", "snake" , "upperCamel"))
-    assert_is_a_string(severity)
-    assert_is_subset(severity, c("stop", "warning"))
+    .assertFormalMakeNames(makeNames)
+    makeNames <- .getMakeNamesFunction(makeNames)
+    .assertFormalSeverity(severity)
 
     file <- localOrRemoteFile(object, severity = severity)
     basename <- names(file)
@@ -112,7 +111,6 @@ readFileByExtension <- function(
 
     # Sanitize colnames
     if (!is.null(colnames(data))) {
-        makeNames <- get(makeNames)
         colnames(data) <- makeNames(colnames(data))
     }
 
