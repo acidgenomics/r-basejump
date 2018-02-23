@@ -8,10 +8,10 @@ test_that("Numeric", {
 })
 
 test_that("Column data", {
-    df <- data.frame(vec1, vec2)
-    geo1 <- round(geometricMean(df), digits = 6L)
+    data <- data.frame(vec1, vec2)
+    geo1 <- round(geometricMean(data), digits = 6L)
     expect_identical(geo1, means)
-    mat <- as.matrix(df)
+    mat <- as.matrix(data)
     geo2 <- round(geometricMean(mat), digits = 6L)
     expect_identical(geo2, means)
 })

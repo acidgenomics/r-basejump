@@ -2,7 +2,7 @@ context("transmit")
 
 test_that("Standard", {
     readme <- transmit(
-        ensembl,
+        remoteDir = ensemblURL,
         pattern = "README",
         compress = FALSE)
     expected <- path_join(c(path_real("."), "README"))
@@ -13,7 +13,7 @@ test_that("Standard", {
 
 test_that("Rename and compress", {
     readme <- transmit(
-        ensembl,
+        remoteDir = ensemblURL,
         pattern = "README",
         rename = "ensembl_readme.txt",
         compress = TRUE)
@@ -33,11 +33,11 @@ test_that("Invalid parameters", {
         "is_non_empty : remoteFileList"
     )
     expect_error(
-        transmit(ensembl, pattern = "XXX"),
+        transmit(ensemblURL, pattern = "XXX"),
         "is_non_empty : match"
     )
     expect_error(
-        transmit(ensembl, pattern = "README", rename = c("XXX", "YYY")),
+        transmit(ensemblURL, pattern = "README", rename = c("XXX", "YYY")),
         "are_same_length : match has length 1 but rename has length 2."
     )
 })

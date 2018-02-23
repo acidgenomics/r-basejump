@@ -1,12 +1,7 @@
 context("readYAML")
 
 test_that("bcbio project summary", {
-    url <- paste(
-        "http://bcbiobase.seq.cloud",
-        "bcbio",
-        "project-summary.yaml",
-        sep = "/")
-    yaml <- readYAML(url)
+    yaml <- readYAML("summary.yaml")
     expect_identical(
         class(yaml),
         "list"
@@ -15,24 +10,6 @@ test_that("bcbio project summary", {
         names(yaml),
         c("date", "upload", "bcbio_system", "samples")
     )
-    # Check for message
-    expect_message(
-        readYAML(url),
-        "Reading project-summary.yaml"
-    )
-})
-
-test_that("`.yml` file support", {
-    # Use the package `.travis.yml` configuration as an example
-    yaml <- readYAML(
-        paste(
-            "https://raw.githubusercontent.com",
-            "steinbaugh",
-            "basejump",
-            "master",
-            ".travis.yml",
-            sep = "/"))
-    expect_true("language" %in% names(yaml))
 })
 
 test_that("Unsupported file type", {

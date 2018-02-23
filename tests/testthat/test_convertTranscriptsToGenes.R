@@ -40,9 +40,7 @@ test_that("Matrix", {
         )
     )
     expect_error(
-        convertTranscriptsToGenes(
-            mat,
-            release = 88L),
+        convertTranscriptsToGenes(mat, release = 88L),
         "Unmatched transcripts present. Try using a GFF file instead."
     )
     expect_identical(

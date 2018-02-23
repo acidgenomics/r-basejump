@@ -4,7 +4,7 @@ test_that("Matrix", {
     mat <- as.matrix(mtcars)
     p <- plotHeatmap(mat)
     expect_is(p, "list")
-    expect_identical(names(p), plotNames)
+    expect_identical(names(p), heatmapList)
 })
 
 test_that("Annotation columns support", {
@@ -18,7 +18,7 @@ test_that("Annotation columns support", {
         row.names = colnames(counts)
     )
     p <- plotHeatmap(counts, annotationCol = annotationCol)
-    expect_identical(names(p), plotNames)
+    expect_identical(names(p), heatmapList)
     expect_length(p[["gtable"]], 9L)
 })
 
@@ -27,9 +27,9 @@ test_that("Default color palette", {
 })
 
 test_that("Turn off columns for many samples", {
-    matrix <- matrix(seq(1L:1000L), ncol = 100L)
-    p <- plotHeatmap(matrix)
-    expect_identical(names(p), plotNames)
+    mat <- matrix(seq(1L:1000L), ncol = 100L)
+    p <- plotHeatmap(mat)
+    expect_identical(names(p), heatmapList)
     expect_length(p[["gtable"]], 5L)
 })
 
