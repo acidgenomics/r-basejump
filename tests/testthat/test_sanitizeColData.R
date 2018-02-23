@@ -1,17 +1,11 @@
 context("sanitizeColData")
 
 test_that("DataFrame", {
-    data <- sanitizeColData(colData)
+    x <- sanitizeColData(coldata)
+    expect_is(x, "DataFrame")
+    expect_identical(dimnames(x), dimnames(coldata))
     expect_true(all(vapply(
-        X = data,
+        X = x,
         FUN = is.factor,
         FUN.VALUE = logical(1L))))
-    expect_identical(
-        data,
-        DataFrame(
-            row.names = rownames,
-            genotype = as.factor(genotype),
-            batch = as.factor(batch)
-        )
-    )
 })
