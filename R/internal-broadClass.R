@@ -25,9 +25,14 @@
     }
 
     # Gene/transcript ID (rownames)
-    idCol <- biotypeCol %>%
-        gsub("_biotype$", "", .) %>%
-        paste0(., "_id")
+    # Transcript ID takes priority (e.g. for tx2gene)
+    if ("tx_id" %in% colnames(data)) {
+        idCol <- "tx_id"
+    } else if ("gene_id" %in% colnames(data)) {
+        idCol <- "gene_id"
+    } else {
+        idCol <- NA
+    }
     assert_is_subset(idCol, colnames(data))
     rownames <- data[, idCol, drop = TRUE]
 
