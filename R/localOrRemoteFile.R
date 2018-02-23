@@ -30,8 +30,7 @@
 #' names(files)
 localOrRemoteFile <- function(object, severity = "stop") {
     assert_is_character(object)
-    assert_is_a_string(severity)
-    assert_is_subset(severity, c("message", "stop", "warning"))
+    .assertFormalSeverity(severity)
 
     files <- mapply(
         FUN = function(path) {
