@@ -9,7 +9,7 @@ test_that("ANY", {
     )
 
     # Matrix (dimnames)
-    data <- Matrix(
+    x <- Matrix(
         data = 1L:4L,
         nrow = 2L,
         ncol = 2L,
@@ -19,7 +19,7 @@ test_that("ANY", {
         )
     )
     expect_identical(
-        dimnames(upperCamel(data, rownames = TRUE, colnames = TRUE)),
+        dimnames(upperCamel(x, rownames = TRUE, colnames = TRUE)),
         list(
             c("GeneID1", "GeneID2"),
             c("SampleID1", "SampleID2")

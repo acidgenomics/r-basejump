@@ -1,7 +1,7 @@
 context("localOrRemoteFile")
 
 test_that("Vectorized", {
-    urls <- paste(url, c("mtcars.csv", "mtcars.rda"), sep = "/")
+    urls <- paste(cacheURL, c("mtcars.csv", "mtcars.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
     expect_is(files, "fs_path")
     expect_identical(names(files), basename(urls))

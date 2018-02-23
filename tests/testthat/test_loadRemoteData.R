@@ -1,7 +1,7 @@
 context("loadRemoteData")
 
 test_that("Valid URL", {
-    loaded <- loadRemoteData(url = paste(url, "mtcars.rda", sep = "/"))
+    loaded <- loadRemoteData(url = paste(cacheURL, "mtcars.rda", sep = "/"))
     expect_is(loaded, "matrix")
     expect_identical(
         loaded["url", "mtcars", drop = TRUE],
@@ -12,14 +12,14 @@ test_that("Valid URL", {
 test_that("Already exists", {
     mtcars <- datasets::mtcars
     expect_error(
-        loadRemoteData(paste(url, "mtcars.rda", sep = "/")),
+        loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/")),
         "Already exists in environment: mtcars"
     )
 })
 
 test_that("Invalid arguments", {
     expect_error(
-        loadRemoteData(paste(url, "mmusculus.gtf", sep = "/")),
+        loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
         "is_matching_regex : url does not match"
     )
     expect_error(
@@ -27,7 +27,7 @@ test_that("Invalid arguments", {
         "is_matching_regex : url does not match"
     )
     expect_error(
-        loadRemoteData(paste(url, "mtcars.rda", sep = "/"), envir = "XXX"),
+        loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"), envir = "XXX"),
         "is_environment : envir"
     )
 })

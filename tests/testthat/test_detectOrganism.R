@@ -116,10 +116,10 @@ test_that("Matrix", {
 })
 
 test_that("Tibble", {
-    tibble <- as(counts, "tibble")
-    expect_true("rowname" %in% colnames(tibble))
+    tbl <- as(counts, "tibble")
+    expect_true("rowname" %in% colnames(tbl))
     expect_identical(
-        detectOrganism(tibble),
+        detectOrganism(tbl),
         "Mus musculus"
     )
 })

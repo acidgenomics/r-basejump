@@ -1,4 +1,17 @@
-context("saveData")
+context("Save Utilities")
+
+test_that("assignAndSaveData", {
+    expect_identical(
+        assignAndSaveData("test", mtcars) %>%
+            basename(),
+        "test.rda"
+    )
+    expect_message(
+        assignAndSaveData("test", mtcars),
+        paste("Saving test to", path_real("."))
+    )
+    file_delete("test.rda")
+})
 
 test_that("saveData", {
     paths <- path(path_real("."), "savetest", c("mtcars.rda", "starwars.rda"))

@@ -5,7 +5,7 @@ test_that("Simple matrix", {
     p <- plotQuantileHeatmap(mat)
     expect_is(p, "list")
     expect_identical(names(p), c("quantiles", "plot"))
-    expect_identical(names(p[["plot"]]), plotNames)
+    expect_identical(names(p[["plot"]]), heatmapList)
     expect_length(p[["plot"]][["gtable"]], 5L)
 })
 
@@ -20,7 +20,7 @@ test_that("Annotation columns support", {
         row.names = colnames(counts)
     )
     p <- plotQuantileHeatmap(counts, annotationCol = annotationCol)
-    expect_identical(names(p[["plot"]]), plotNames)
+    expect_identical(names(p[["plot"]]), heatmapList)
     expect_length(p[["plot"]][["gtable"]], 9L)
 })
 
