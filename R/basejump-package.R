@@ -4,16 +4,20 @@
 #'
 #' @import methods
 #' @importFrom rlang abort inform warn
-#' @importFrom S4Vectors mcols tail
+#' @importFrom S4Vectors mcols mcols<- tail
 #' @importFrom utils capture.output globalVariables
 "_PACKAGE"
 
 
 
 globalVariables(".")
-annotableCols <- c(
+geneAnnotationCols <- c(
     "ensgene",
     "symbol",
+    "description",
+    "biotype")
+transcriptAnnotationCols <- c(
+    "enstxp",
     "description",
     "biotype")
 ensembldbGeneCols <- c(
