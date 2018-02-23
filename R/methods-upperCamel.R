@@ -45,6 +45,15 @@
 
 
 
+.upperCamel.mcols <- function(object, strict = FALSE) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- upperCamel(colnames, strict = strict)
+    colnames(mcols(object)) <- colnames
+    object
+}
+
+
+
 .upperCamel.names <- function(object, strict = FALSE) {
     # Passthrough: strict
     assert_has_names(object)
@@ -120,6 +129,15 @@ setMethod(
     "upperCamel",
     signature("factor"),
     .upperCamel.vector)
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("GRanges"),
+    .upperCamel.mcols)
 
 
 
