@@ -1,6 +1,6 @@
-context("AllGenerics")
+context("Generics")
 
-test_that("S4 generics", {
+test_that("S4 Generics", {
     names <- c(
         "aggregateFeatures",
         "aggregateReplicates",
