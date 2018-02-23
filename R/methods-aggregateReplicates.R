@@ -2,7 +2,7 @@
 #'
 #' @rdname aggregateReplicates
 #' @name aggregateReplicates
-#' @family Data Management Utilities
+#' @family Aggregation Utilities
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
