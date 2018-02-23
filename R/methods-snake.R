@@ -80,6 +80,15 @@ NULL
 
 
 
+.snake.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- snake(colnames)
+    colnames(mcols(object)) <- colnames
+    object
+}
+
+
+
 .snake.names <- function(object) {  # nolint
     assert_has_names(object)
     names(object) <- .snake(names(object))
@@ -149,6 +158,15 @@ setMethod(
     "snake",
     signature("factor"),
     .snake.vector)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("GRanges"),
+    .snake.mcols)
 
 
 

@@ -115,6 +115,15 @@ NULL
 
 
 
+.dotted.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- dotted(colnames)
+    colnames(mcols(object)) <- colnames
+    object
+}
+
+
+
 .dotted.names <- function(object) {  # nolint
     assert_has_names(object)
     names(object) <- .dotted(names(object))
@@ -201,6 +210,15 @@ setMethod(
     "dotted",
     signature("factor"),
     .dotted.vector)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("GRanges"),
+    .dotted.mcols)
 
 
 
