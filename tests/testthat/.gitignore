@@ -1,1 +1,9 @@
+*.colnames
+*.counts
+*.csv
+*.gtf
+*.mtx
 *.rda
+*.tsv
+*.txt
+*.xlsx
