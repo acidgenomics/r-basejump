@@ -37,6 +37,7 @@
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics organism
 #' @importFrom ensembldb ensemblVersion genes transcripts
+#' @importFrom utils packageVersion
 #'
 #' @inheritParams general
 #' @inheritParams saveData
