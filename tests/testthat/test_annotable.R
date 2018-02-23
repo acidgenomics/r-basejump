@@ -30,13 +30,13 @@ test_that("Ensembl versioned release", {
             symbol = "character",
             description = "character",
             biotype = "character",
+            broadClass = "character",
             geneSeqStart = "integer",
             geneSeqEnd = "integer",
             seqName = "character",
             seqStrand = "integer",
             seqCoordSystem = "character",
-            entrez = "list",
-            broadClass = "character"
+            entrez = "list"
         )
     )
 })
@@ -91,12 +91,12 @@ test_that("Annotables package data frame input", {
             symbol = "character",
             description = "character",
             biotype = "character",
+            broadClass = "character",
             chr = "character",
             start = "integer",
             end = "integer",
             strand = "integer",
             entrez = "list",
-            broadClass = "character"
         )
     )
 
