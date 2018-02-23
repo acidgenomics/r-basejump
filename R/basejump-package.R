@@ -19,7 +19,6 @@ geneAnnotationCols <- c(
     "biotype")
 transcriptAnnotationCols <- c(
     "enstxp",
-    "description",
     "biotype")
 ensembldbGeneCols <- c(
     "gene_id",

@@ -6,7 +6,7 @@
 \usage{
 ensemblAnnotations(organism, format = "genes", genomeBuild = NULL,
   release = NULL, broadClass = TRUE, makeNames = "camel",
-  sanitize = TRUE, return = "GRanges")
+  sanitizeColnames = TRUE, return = "GRanges")
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -26,14 +26,12 @@ gene \code{symbol} annotations.}
 \item{makeNames}{Convert column names in into "\code{camel}", "\code{dotted}", or
 "\code{snake}" case.}
 
-\item{sanitize}{Improve column names and drop duplicated columns:
+\item{sanitizeColnames}{Improve column names and drop duplicated columns:
 \itemize{
 \item Rename \code{gene_id} to \code{ensgene}.
 \item Rename \code{tx_id} to \code{enstxp}.
 \item Rename \code{gene_biotype} or \code{tx_biotype} to \code{biotype}.
 \item Rename \code{entrezid} to \code{entrez}.
-\item Drop duplicate \code{gene_name} for only \code{symbol}.
-\item Drop duplicate \code{tx_name} for only \code{enstxp}.
 }}
 
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
