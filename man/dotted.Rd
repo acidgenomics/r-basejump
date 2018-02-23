@@ -9,6 +9,7 @@
 \alias{dotted,data.frame-method}
 \alias{dotted,DataFrame-method}
 \alias{dotted,factor-method}
+\alias{dotted,GRanges-method}
 \alias{dotted,list-method}
 \alias{dotted,List-method}
 \alias{dotted,matrix-method}
@@ -27,6 +28,8 @@ dotted(object, ...)
 \S4method{dotted}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{factor}(object)
+
+\S4method{dotted}{GRanges}(object)
 
 \S4method{dotted}{list}(object)
 
