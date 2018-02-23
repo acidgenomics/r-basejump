@@ -282,7 +282,7 @@ ensemblAnnotations <- function(
         colnames(mcols(object)) <- colnames
         mcols(object) <- mcols(object)[setdiff(colnames, drop)]
     } else {
-        colnames <- colnames(object)
+        colnames(object) <- colnames
         object <- object[, setdiff(colnames, drop), drop = FALSE]
     }
     object
