@@ -4,13 +4,13 @@
 #'
 #' @import methods
 #' @importFrom rlang abort inform warn
+#' @importFrom S4Vectors mcols tail
+#' @importFrom utils capture.output globalVariables
 "_PACKAGE"
 
 
 
-#' @importFrom utils globalVariables
 globalVariables(".")
-# FIXME Rework this?
 annotableCols <- c(
     "ensgene",
     "symbol",
