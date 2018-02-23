@@ -97,7 +97,6 @@ ensemblAnnotations <- function(
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
     .assertFormalEnsembldbReturn(return)
-    .assertFormalMakeNames(makeNames)
     makeNames <- .getMakeNamesFunction(makeNames)
     assert_is_a_bool(sanitize)
 
@@ -265,12 +264,7 @@ ensemblAnnotations <- function(
 
     # Sanitize columns
     if (isTRUE(sanitize)) {
-        data <- .sanitizeAnnotationCols(data)
-        # Reorder priority columns for gene annotable
-        if (format == "genes" && !is(data, "GRanges")) {
-            data <- data %>%
-                .[, c(annotableCols, setdiff(colnames(.), annotableCols))]
-        }
+        data <- .sanitizeAnnotationCols(data, format = format)
     }
 
     # Convert column names into desired convention
@@ -279,24 +273,45 @@ ensemblAnnotations <- function(
 
 
 
-.sanitizeAnnotationCols <- function(object) {
+.sanitizeAnnotationCols <- function(object, format = "genes") {
     if (is(object, "GRanges")) {
-        colnames <- colnames(mcols(object))
+        data <- mcols(object)
     } else {
-        colnames <- colnames(object)
+        data <- object
     }
-    colnames <- colnames %>%
+
+    # Rename the columns
+    colnames(data) <- colnames(data) %>%
         gsub("^entrezid", "entrez", .) %>%
         gsub("^gene_id$", "ensgene", .) %>%
         gsub("^(gene|tx)_biotype", "biotype", .) %>%
         gsub("^tx_id$", "enstxp", .)
-    drop <- c("gene_name", "tx_name")
+
+    # Drop duplicated columns
+    data <- data %>%
+        .[, setdiff(colnames(.), c("gene_name", "tx_name")), drop = FALSE]
+
+    # Reorder priority columns for genes and transcripts
+    # FIXME A simpler way is to just select the columns during the
+    # `genes()` and `transcripts()` call
+    if (format %in% c("genes", "transcripts")) {
+        if (format == "genes") {
+            priorityCols <- geneAnnotationCols
+        } else if (format == "transcripts") {
+            priorityCols <- transcriptAnnotationCols
+        }
+        # Add the `broad_class` column, if present
+        if ("broad_class" %in% colnames(data)) {
+            priorityCols <- c(priorityCols, "broad_class")
+        }
+        data <- data %>%
+            .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
+              drop = FALSE]
+    }
     if (is(object, "GRanges")) {
-        colnames(mcols(object)) <- colnames
-        mcols(object) <- mcols(object)[setdiff(colnames, drop)]
+        mcols(object) <- data
     } else {
-        colnames(object) <- colnames
-        object <- object[, setdiff(colnames, drop), drop = FALSE]
+        object <- data
     }
     object
 }
