@@ -13,6 +13,20 @@
 #' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 #' back to version 87.
 #'
+#' @section Broad Class Definitions:
+#' For gene and transcript tables, when `broadClass = TRUE`, a `broadClass`
+#' column is added, which generalizes the gene types into a smaller number of
+#' semantically-meaningful groups:
+#'
+#'   - `coding`
+#'   - `noncoding`
+#'   - `pseudo`
+#'   - `small`
+#'   - `decaying`
+#'   - `ig` (immunoglobulin)
+#'   - `tcr` (T cell receptor)
+#'   - `other`
+#'
 #' @note Use GRCh38 instead of hg38 for the genome build, since we're
 #'   querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
 #'   suported on AnnotationHub.
@@ -48,7 +62,8 @@
 #'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
 #'   additional information.
 #'
-#' @return Gene or transcript annotations.
+#' @return `GRanges`, `data.frame`, or `DataFrame`.
+#' @export
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
@@ -97,7 +112,31 @@ ensemblAnnotations <- function(
         if (genomeBuild %in% names(map)) {
             map <- map[match(genomeBuild, names(map))]
             inform(paste("Remapping genome build", names(map), "to", map))
-            genomeBuild <- map
+            genomeBuild <- as.character(map)
+        }
+    }
+
+    # # GRCh37 legacy support ==================================================
+    if (
+        identical(tolower(organism), "homo sapiens") &&
+        identical(tolower(genomeBuild), "grch37")
+    ) {
+        if (format == "genes") {
+            data <- load(system.file(
+                "extdata/grch37.rda", package = "basejump"))
+            data <- get(data, inherits = FALSE)
+            return(data)
+        } else if (format == "gene2symbol") {
+            data <- load(system.file(
+                "extdata/grch37.rda", package = "basejump"))
+            data <- get(data, inherits = FALSE)
+            data <- data[, c("ensgene", "symbol")]
+            return(data)
+        } else if (format == "tx2gene") {
+            data <- load(system.file(
+                "extdata/grch37Tx2gene.rda", package = "basejump"))
+            data <- get(data, inherits = FALSE)
+            return(data)
         }
     }
 
