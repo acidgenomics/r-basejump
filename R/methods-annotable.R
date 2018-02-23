@@ -64,7 +64,7 @@ setMethod(
     "annotable",
     signature("data.frame"),
     function(object) {
-        assert_is_subset(geneAnnotationCols, colnames(object))
+        object <- .sanitizeAnnotationCols(object)
 
         # Inform the user if NA gene rows are present
         if (hasRownames(object)) {
@@ -79,7 +79,13 @@ setMethod(
         assert_all_are_not_na(object[["ensgene"]])
 
         # Now safe to coerce to tibble
-        object <- as_tibble(object)
+        object <- object %>%
+            as_tibble() %>%
+            camel() %>%
+            fixNA() %>%
+            .addBroadClassCol() %>%
+            select(c(geneAnnotationCols, "broadClass"), everything()) %>%
+            arrange(!!sym("ensgene"))
 
         # Fix any `AsIs` columns resulting from DataFrame to data frame coercion
         is.AsIs <- function(x) is(x, "AsIs")  # nolint
@@ -128,11 +134,6 @@ setMethod(
         assert_has_no_duplicates(object[["ensgene"]])
 
         object %>%
-            fixNA() %>%
-            .addBroadClassCol() %>%
-            camel() %>%
-            select(c(geneAnnotationCols, "broadClass"), everything()) %>%
-            arrange(!!sym("ensgene")) %>%
             as.data.frame() %>%
             set_rownames(.[["ensgene"]])
     })
