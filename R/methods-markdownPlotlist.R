@@ -19,35 +19,30 @@ NULL
 
 
 
-# Constructors =================================================================
-.markdownPlotlist <- function(object, headerLevel = 2L) {
-    assert_is_list(object)
-    assert_has_names(object)
-    assertIsAHeaderLevel(headerLevel)
-    invisible(mapply(
-        name = names(object),
-        plot = object,
-        MoreArgs = list(headerLevel = headerLevel),
-        FUN = function(name, plot, headerLevel) {
-            assert_is_a_string(name)
-            markdownHeader(name, level = headerLevel, asis = TRUE)
-            show(plot)
-            plot
-        },
-        SIMPLIFY = FALSE,
-        USE.NAMES = TRUE
-    ))
-}
-
-
-
 # Methods ======================================================================
 #' @rdname markdownPlotlist
 #' @export
 setMethod(
     "markdownPlotlist",
     signature("list"),
-    .markdownPlotlist)
+    function(object, headerLevel = 2L) {
+        assert_is_list(object)
+        assert_has_names(object)
+        assertIsAHeaderLevel(headerLevel)
+        invisible(mapply(
+            name = names(object),
+            plot = object,
+            MoreArgs = list(headerLevel = headerLevel),
+            FUN = function(name, plot, headerLevel) {
+                assert_is_a_string(name)
+                markdownHeader(name, level = headerLevel, asis = TRUE)
+                show(plot)
+                plot
+            },
+            SIMPLIFY = FALSE,
+            USE.NAMES = TRUE
+        ))
+    })
 
 
 

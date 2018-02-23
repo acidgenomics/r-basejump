@@ -24,71 +24,63 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom dplyr arrange distinct
-#' @importFrom rlang !! sym
-#' @importFrom stringr str_match
-.tx2geneFromGFF <- function(object) {
-    assert_is_data.frame(object)
-    assert_are_identical(ncol(object), 9L)
-
-    anno <- object %>%
-        .gffKeyValuePairs() %>%
-        .[grepl("transcript_id", .)] %>%
-        .[grepl("gene_id", .)] %>%
-        unique()
-
-    enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
-        .[, 2L]
-    ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
-        .[, 2L]
-
-    assert_all_are_non_missing_nor_empty_character(enstxp)
-    assert_all_are_non_missing_nor_empty_character(ensgene)
-    assert_are_same_length(enstxp, ensgene)
-
-    data <- cbind(enstxp, ensgene) %>%
-        as.data.frame(stringsAsFactors = FALSE) %>%
-        distinct() %>%
-        arrange(!!sym("enstxp")) %>%
-        set_rownames(.[["enstxp"]])
-
-    # Check that all transcripts are unique
-    assert_has_no_duplicates(data[["enstxp"]])
-
-    inform(paste(
-        "tx2gene mappings:",
-        length(unique(data[["enstxp"]])), "transcripts,",
-        length(unique(data[["ensgene"]])), "genes"
-    ))
-
-    data
-}
-
-
-
 # Methods ======================================================================
 #' @rdname tx2geneFromGFF
 #' @export
 setMethod(
     "tx2geneFromGFF",
     signature("character"),
-    function(
-        object) {
+    function(object) {
         object %>%
             readGFF() %>%
-            .tx2geneFromGFF()
+            tx2geneFromGFF()
     })
 
 
 
 #' @rdname tx2geneFromGFF
+#' @importFrom dplyr arrange distinct
+#' @importFrom rlang !! sym
+#' @importFrom stringr str_match
 #' @export
 setMethod(
     "tx2geneFromGFF",
     signature("data.frame"),
     function(object) {
-        .tx2geneFromGFF(object)
+        assert_is_data.frame(object)
+        assert_are_identical(ncol(object), 9L)
+
+        anno <- object %>%
+            .gffKeyValuePairs() %>%
+            .[grepl("transcript_id", .)] %>%
+            .[grepl("gene_id", .)] %>%
+            unique()
+
+        enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
+            .[, 2L]
+        ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
+            .[, 2L]
+
+        assert_all_are_non_missing_nor_empty_character(enstxp)
+        assert_all_are_non_missing_nor_empty_character(ensgene)
+        assert_are_same_length(enstxp, ensgene)
+
+        data <- cbind(enstxp, ensgene) %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            distinct() %>%
+            arrange(!!sym("enstxp")) %>%
+            set_rownames(.[["enstxp"]])
+
+        # Check that all transcripts are unique
+        assert_has_no_duplicates(data[["enstxp"]])
+
+        inform(paste(
+            "tx2gene mappings:",
+            length(unique(data[["enstxp"]])), "transcripts,",
+            length(unique(data[["ensgene"]])), "genes"
+        ))
+
+        data
     })
 
 
