@@ -14,6 +14,14 @@ setGeneric("aggregateReplicates", function(object, ...) {
 
 
 
+#' @rdname annotable
+#' @export
+setGeneric("annotable", function(object, ...) {
+    standardGeneric("annotable")
+})
+
+
+
 #' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
