@@ -68,6 +68,12 @@ Matrix::Matrix
 
 
 
+#' @importFrom rlang sym
+#' @export
+rlang::sym
+
+
+
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
