@@ -17,6 +17,9 @@ gene2symbol(object, ...)
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
+
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
 }
 \value{
 \link{data.frame}.

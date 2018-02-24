@@ -5,7 +5,8 @@
 \title{Ensembl Annotations}
 \usage{
 ensembl(organism, format = "genes", genomeBuild = NULL, release = NULL,
-  broadClass = TRUE, sanitizeColnames = TRUE, return = "GRanges")
+  uniqueSymbol = FALSE, broadClass = TRUE, sanitizeColnames = TRUE,
+  return = "GRanges")
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -19,8 +20,12 @@ organism name as a string.}
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
+
 \item{broadClass}{Include broad class definitions, based on \code{biotype} and/or
-gene \code{symbol} annotations.}
+gene \code{symbol} annotations. Only applies to \code{genes} and \code{transcripts}
+output.}
 
 \item{sanitizeColnames}{Improve column names and drop duplicated columns:
 \itemize{

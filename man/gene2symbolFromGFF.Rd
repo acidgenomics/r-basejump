@@ -21,6 +21,9 @@ gene2symbolFromGTF(...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
 }
 \value{
 \link{data.frame}.
