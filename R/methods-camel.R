@@ -2,6 +2,7 @@
 #'
 #' @rdname camel
 #' @name camel
+#' @family Make Names Utilities
 #'
 #' @inherit dotted
 #'

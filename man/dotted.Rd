@@ -100,3 +100,7 @@ list <- makeNames$list
 print(list)
 dotted(list)
 }
+\seealso{
+Other Make Names Utilities: \code{\link{camel}},
+  \code{\link{snake}}
+}

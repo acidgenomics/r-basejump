@@ -2,6 +2,7 @@
 #'
 #' @rdname snake
 #' @name snake
+#' @family Make Names Utilities
 #'
 #' @inherit dotted
 #'

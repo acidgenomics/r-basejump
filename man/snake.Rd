@@ -96,3 +96,7 @@ list <- makeNames$list
 print(list)
 snake(list)
 }
+\seealso{
+Other Make Names Utilities: \code{\link{camel}},
+  \code{\link{dotted}}
+}
