@@ -4,8 +4,7 @@
 #' @name plotQuantileHeatmap
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
-#' @inheritParams general
-#' @inheritParams plotHeatmap
+#' @inherit plotHeatmap
 #'
 #' @param n The number of breaks to create.
 #'
@@ -41,11 +40,6 @@ NULL
 
 
 
-#' Quantile Heatmap Constructor
-#'
-#' @keywords internal
-#' @noRd
-#'
 #' @importFrom dendsort dendsort
 #' @importFrom grDevices colorRampPalette
 #' @importFrom magrittr set_names
@@ -60,12 +54,14 @@ NULL
     clusterRows = TRUE,
     color = viridis,
     legendColor = viridis,
-    title = NULL) {
-    # Passthrough: n
+    borderColor = NULL,
+    title = NULL,
+    ...) {
     assert_has_dims(object)
     assert_all_are_greater_than(nrow(object), 1L)
     assert_all_are_greater_than(ncol(object), 1L)
     object <- as.matrix(object)
+    assertIsAnImplicitInteger(n)
     assertFormalAnnotationCol(object, annotationCol)
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
@@ -76,7 +72,7 @@ NULL
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
 
-    # TODO This code is shared with `plotHeatmap()`...generalize
+    # TODO Merge with plotHeatmap
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
     if (is.data.frame(annotationCol)) {
@@ -89,7 +85,7 @@ NULL
         annotationCol <- NA
     }
 
-    # TODO This code can also be generalized...
+    # TODO Merge with plotHeatmap
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(
@@ -116,6 +112,10 @@ NULL
         color <- colorRampPalette(color)(length(breaks) - 1L)
     }
 
+    if (is.null(borderColor)) {
+        borderColor <- NA
+    }
+
     # Dynamic column and row labeling
     if (ncol(object) <= 50L) {
         showColnames <- TRUE
@@ -132,25 +132,30 @@ NULL
         title <- ""
     }
 
-    p <- pheatmap(
-        mat = object,
-        annotation_col = annotationCol,
-        annotation_colors = annotationColors,
-        border_color = NA,
-        breaks = breaks,
-        cluster_cols = clusterCols,
-        cluster_rows = clusterRows,
-        color = color,
-        main = title,
-        show_colnames = showColnames,
-        show_rownames = showRownames)
+    # Return pretty heatmap with modified defaults
+    args <- list(
+        "mat" = object,
+        "annotationCol" = annotationCol,
+        "annotationColors" = annotationColors,
+        "borderColor" = borderColor,
+        "breaks" = breaks,
+        "clusterCols" = clusterCols,
+        "clusterRows" = clusterRows,
+        "color" = color,
+        "main" = title,
+        "showColnames" = showColnames,
+        "showRownames" = showRownames,
+        ...)
+    # Sanitize all argument names into snake case
+    names(args) <- snake(names(args))
+    assert_is_subset(names(args), formalArgs(pheatmap))
+    p <- do.call(pheatmap, args)
     p
 
-    list <- list(
+    invisible(list(
         quantiles = breaks,
         plot = p
-    )
-    invisible(list)
+    ))
 }
 
 
