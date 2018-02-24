@@ -13,9 +13,10 @@ gene2symbol(object, ...)
   release = NULL, uniqueSymbol = FALSE)
 }
 \arguments{
-\item{object}{Object.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
-\item{...}{Additional arguments.}
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
+current release available on AnnotationHub.}
 }
 \value{
 \link{data.frame}.
@@ -23,14 +24,40 @@ gene2symbol(object, ...)
 \description{
 Ensembl Gene to Symbol Mappings
 }
+\details{
+Simply specify the desired organism, using the full latin name. For example,
+we can obtain human annotations with \code{Homo sapiens}. Optionally, specific
+Ensembl genome builds (e.g. \code{GRCh38}) and release versions (e.g. \code{87}) are
+supported.
+
+Under the hood, this function fetches annotations from AnnotationHub using
+the ensembldb package. AnnotationHub supports versioned Ensembl releases,
+back to version 87.
+}
+\section{Broad Class Definitions}{
+
+For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
+column is added, which generalizes the gene types into a smaller number of
+semantically-meaningful groups:
+\itemize{
+\item \code{coding}
+\item \code{noncoding}
+\item \code{pseudo}
+\item \code{small}
+\item \code{decaying}
+\item \code{ig} (immunoglobulin)
+\item \code{tcr} (T cell receptor)
+\item \code{other}
+}
+}
+
 \examples{
 gene2symbol("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
 Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
-  \code{\link{ensemblAnnotations}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }

@@ -4,13 +4,11 @@
 #' @name tx2geneFromGFF
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams general
+#' @inherit tx2gene
 #'
 #' @details The GFF (General Feature Format) format consists of one line per
 #'   feature, each containing 9 columns of data, plus optional track definition
 #'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
-#'
-#' @return [data.frame].
 #'
 #' @examples
 #' # From URL (recommended)
