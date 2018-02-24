@@ -12,11 +12,12 @@ plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{dgCMatrix}(object, scale = "row",
   annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
-  color = viridis, legendColor = viridis, title = NULL, ...)
+  color = viridis, legendColor = viridis, borderColor = NULL,
+  title = NULL, ...)
 
 \S4method{plotHeatmap}{matrix}(object, scale = "row", annotationCol = NULL,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis,
-  legendColor = viridis, title = NULL, ...)
+  legendColor = viridis, borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -41,6 +42,8 @@ palette.}
 
 \item{legendColor}{Colors to use for legend labels. Defaults to the
 \code{\link[=viridis]{viridis()}} palette.}
+
+\item{borderColor}{Border color.}
 
 \item{title}{\emph{Optional.} Plot title.}
 }

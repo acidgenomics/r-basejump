@@ -22,6 +22,3 @@ Assign Multiple Objects as a New Environment
 \examples{
 multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
-\seealso{
-Other Object Assignment Utilities: \code{\link{assignAndSaveData}}
-}
