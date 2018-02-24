@@ -1,5 +1,3 @@
-# TODO Use assert engine
-
 #' Assert Is Implicit Integer
 #'
 #' @rdname assertIsImplicitInteger
@@ -16,8 +14,7 @@ NULL
 #' @examples
 #' assertIsAnImplicitInteger(1)
 assertIsAnImplicitInteger <- function(x) {
-    assert_is_a_number(x)
-    assertIsImplicitInteger(x)
+    stopifnot(isAnImplicitInteger(x))
 }
 
 
@@ -28,10 +25,7 @@ assertIsAnImplicitInteger <- function(x) {
 #' assertIsAnImplicitIntegerOrNULL(1)
 #' assertIsAnImplicitIntegerOrNULL(NULL)
 assertIsAnImplicitIntegerOrNULL <- function(x) {
-    assertIsImplicitIntegerOrNULL(x)
-    if (isImplicitInteger(x)) {
-        assert_is_a_number(x)
-    }
+    stopifnot(any(isAnImplicitInteger(x), is.null(x)))
 }
 
 
@@ -60,15 +54,36 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @rdname assertIsImplicitInteger
 #' @export
 #' @examples
-#' isImplicitInteger(1)
-#' # Also returns `TRUE` for explicit integers
-#' isImplicitInteger(1L)
-isImplicitInteger <- function(x) {
-    if (!is.numeric(x)) {
+#' isAnImplicitInteger(1)
+isAnImplicitInteger <- function(x) {
+    if (!is_a_number(x)) {
         return(FALSE)
     }
-    if (is.integer(x)) {
-        return(TRUE)
-    }
-    isTRUE(all.equal(x, as.integer(x), tolerance = .Machine[["double.eps"]]))
+    isImplicitInteger(x)
+}
+
+
+
+#' @rdname assertIsImplicitInteger
+#' @export
+#' @examples
+#' isImplicitInteger(list(1, 1L, 1.1, "XXX"))
+isImplicitInteger <- function(x) {
+    mapply(
+        x = x,
+        FUN = function(x) {
+        if (!is.numeric(x)) {
+            return(FALSE)
+        }
+        if (is.integer(x)) {
+            return(TRUE)
+        }
+        isTRUE(all.equal(
+            target = as.integer(x),
+            current = x,
+            tolerance = .Machine[["double.eps"]]
+        ))
+    },
+    SIMPLIFY = TRUE,
+    USE.NAMES = FALSE)
 }
