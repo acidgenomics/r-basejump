@@ -17,7 +17,8 @@
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
-\item{uniqueSymbol}{Make gene symbols unique.}
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
 
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
 "\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
