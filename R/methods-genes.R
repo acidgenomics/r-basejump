@@ -11,6 +11,8 @@
 #'
 #' @param uniqueSymbol Make gene symbols unique.
 #'
+#' @export
+#'
 #' @examples
 #' # GRanges return
 #' data <- genes("Homo sapiens")
@@ -19,7 +21,7 @@
 #'
 #' # Legacy GRCh37/hg19 genome build support
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
-NULL
+ensembldb::genes
 
 
 
