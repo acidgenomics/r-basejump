@@ -10,6 +10,8 @@
   return = "GRanges")
 }
 \arguments{
+\item{x}{Primary object.}
+
 \item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
