@@ -6,6 +6,7 @@
 #' @importFrom ensembldb transcripts
 #'
 #' @inherit ensembl
+#' @inheritParams general
 #'
 #' @examples
 #' data <- transcripts("Homo sapiens")
