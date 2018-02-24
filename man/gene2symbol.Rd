@@ -55,9 +55,13 @@ semantically-meaningful groups:
 gene2symbol("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
-  \code{\link{gene2symbolFromGFF}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{gene2symbolFromGFF}}, \code{\link{genes}},
+  \code{\link{sanitizeAnnotable}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

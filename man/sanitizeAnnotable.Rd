@@ -20,3 +20,14 @@ data frame from being written to disk as a CSV.
 human <- annotable("Homo sapiens")
 sanitizeAnnotable(human) \%>\% glimpse()
 }
+\seealso{
+Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
+  \code{\link{gene2symbolFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
+}

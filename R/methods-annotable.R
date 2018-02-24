@@ -2,6 +2,7 @@
 #'
 #' @rdname annotable
 #' @name annotable
+#' @family Gene Annotation Utilities
 #'
 #' @inherit ensembl
 #'
