@@ -1,7 +1,10 @@
 context("collapseToString")
 
-test_that("Character", {
+test_that("collapseToString", {
     groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
+    mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
+
+    # character ================================================================
     expect_identical(
         collapseToString(
             groceries,
@@ -26,23 +29,33 @@ test_that("Character", {
             unique = TRUE),
         "eggs, milk, veggies"
     )
-})
 
-test_that("Integer", {
+    # data.frame ===============================================================
+    expect_identical(
+        mtcars %>%
+            head() %>%
+            collapseToString(sort = TRUE, unique = TRUE) %>%
+            .[, "mpg", drop = TRUE],
+        mpgString
+    )
+
+    # DataFrame ================================================================
+    expect_identical(
+        mtcars %>%
+            as("DataFrame") %>%
+            head() %>%
+            collapseToString(sort = TRUE, unique = TRUE) %>%
+            .[, "mpg"],
+        mpgString
+    )
+
+    # integer ==================================================================
     expect_identical(
         collapseToString(seq(1L:5L)),
         "1, 2, 3, 4, 5"
     )
-})
 
-test_that("Numeric", {
-    expect_identical(
-        collapseToString(c(3.141593, 6.0221409e+23)),
-        "3.141593, 6.0221409e+23"
-    )
-})
-
-test_that("Logical", {
+    # logical ==================================================================
     expect_identical(
         collapseToString(c(TRUE, FALSE), sort = TRUE),
         "FALSE, TRUE"
@@ -56,31 +69,8 @@ test_that("Logical", {
         collapseToString(c(NaN, NA), sort = TRUE),
         "NaN, NA"
     )
-})
 
-test_that("Data frame", {
-    # data.frame
-    expect_identical(
-        mtcars %>%
-            head() %>%
-            collapseToString(sort = TRUE, unique = TRUE) %>%
-            .[, "mpg", drop = TRUE],
-        mpgString
-    )
-})
-
-test_that("DataFrame", {
-    expect_identical(
-        mtcars %>%
-            as("DataFrame") %>%
-            head() %>%
-            collapseToString(sort = TRUE, unique = TRUE) %>%
-            .[, "mpg"],
-        mpgString
-    )
-})
-
-test_that("Matrix", {
+    # matrix ===================================================================
     expect_identical(
         mtcars %>%
             as("matrix") %>%
@@ -89,5 +79,11 @@ test_that("Matrix", {
             .[1L, "mpg", drop = TRUE] %>%
             as.character(),
         mpgString
+    )
+
+    # numeric ==================================================================
+    expect_identical(
+        collapseToString(c(3.141593, 6.0221409e+23)),
+        "3.141593, 6.0221409e+23"
     )
 })
