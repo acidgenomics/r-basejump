@@ -48,11 +48,11 @@ NULL
     object,
     scale = "row",
     annotationCol = NULL,
-    borderColor = NA,
     clusterCols = TRUE,
     clusterRows = TRUE,
     color = viridis,
     legendColor = viridis,
+    borderColor = NULL,
     title = NULL,
     ...) {
     assert_has_dims(object)
@@ -66,6 +66,7 @@ NULL
     assert_is_a_bool(clusterRows)
     assertIsHexColorFunctionOrNULL(color)
     assertIsHexColorFunctionOrNULL(legendColor)
+    assertIsAStringOrNULL(borderColor)
     assertIsAStringOrNULL(title)
 
     # Drop rows that are all zero, when row scaling is applied
@@ -113,6 +114,10 @@ NULL
         ))(nColor)
     } else {
         color <- color(nColor)
+    }
+
+    if (is.null(borderColor)) {
+        borderColor <- NA
     }
 
     # Dynamic column and row labeling
