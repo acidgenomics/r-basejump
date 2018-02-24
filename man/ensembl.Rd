@@ -87,10 +87,14 @@ summary(transcripts)
 \item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 
-Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{sanitizeAnnotable}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }

@@ -2,7 +2,7 @@
 #'
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
-#' @author Michael Steinbaugh
+#' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
 #'

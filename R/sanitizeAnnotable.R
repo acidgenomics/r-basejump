@@ -3,6 +3,8 @@
 #' Drops any nested list columns (e.g. `entrez`) that prevents an annotable
 #' data frame from being written to disk as a CSV.
 #'
+#' @family Gene Annotation Utilities
+#'
 #' @inheritParams general
 #'
 #' @return Data frame without nested list columns.

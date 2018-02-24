@@ -78,9 +78,13 @@ matrix(
     convertTranscriptsToGenes()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Utilities: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{sanitizeAnnotable}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }

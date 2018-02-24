@@ -2,6 +2,7 @@
 #'
 #' @rdname genes
 #' @name genes
+#' @family Gene Annotation Utilities
 #'
 #' @importFrom ensembldb genes
 #'
