@@ -9,11 +9,13 @@
 #' @inherit ensembl
 #' @inheritParams general
 #'
+#' @export
+#'
 #' @examples
 #' data <- transcripts("Homo sapiens")
 #' summary(data)
 #' colnames(mcols(data))
-NULL
+ensembldb::transcripts
 
 
 
