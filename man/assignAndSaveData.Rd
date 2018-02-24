@@ -44,5 +44,5 @@ rm(test)
 file_delete("test.rda")
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
+Other Save Utilities: \code{\link{saveData}}
 }

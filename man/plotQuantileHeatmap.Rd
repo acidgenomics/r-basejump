@@ -12,16 +12,17 @@ plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{dgCMatrix}(object, n = 5L,
   annotationCol = NULL, clusterCols = TRUE, clusterRows = TRUE,
-  color = viridis, legendColor = viridis, title = NULL)
+  color = viridis, legendColor = viridis, borderColor = NULL,
+  title = NULL, ...)
 
 \S4method{plotQuantileHeatmap}{matrix}(object, n = 5L, annotationCol = NULL,
   clusterCols = TRUE, clusterRows = TRUE, color = viridis,
-  legendColor = viridis, title = NULL)
+  legendColor = viridis, borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.}
 
 \item{n}{The number of breaks to create.}
 
@@ -40,6 +41,8 @@ palette.}
 \item{legendColor}{Colors to use for legend labels. Defaults to the
 \code{\link[=viridis]{viridis()}} palette.}
 
+\item{borderColor}{Border color.}
+
 \item{title}{\emph{Optional.} Plot title.}
 }
 \value{
@@ -52,6 +55,9 @@ Plot Heatmap with Quantile Breaks
 \examples{
 mat <- matrix(1:10000, nrow = 100, ncol = 100)
 plotQuantileHeatmap(mat)
+}
+\seealso{
+\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

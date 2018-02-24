@@ -35,9 +35,6 @@ writeCounts(mtcars, gzip = TRUE)
 # Clean up
 file_delete("mtcars.csv.gz")
 }
-\seealso{
-Other Write Utilities: \code{\link{saveData}}
-}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }

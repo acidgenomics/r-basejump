@@ -33,6 +33,8 @@
 \alias{reexports}
 \alias{DataFrame}
 \alias{reexports}
+\alias{mcols}
+\alias{reexports}
 \alias{glimpse}
 \alias{reexports}
 \alias{is_tibble}
@@ -63,7 +65,7 @@ below to see their documentation.
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 
