@@ -31,7 +31,7 @@
 #'   querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
 #'   suported on AnnotationHub.
 #'
-#' @name ensemblAnnotations
+#' @name ensembl
 #' @family Gene Annotation Utilities
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
@@ -68,12 +68,12 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' genes <- ensemblAnnotations("Homo sapiens", format = "genes")
+#' genes <- ensembl("Homo sapiens", format = "genes")
 #' summary(genes)
 #'
-#' transcripts <- ensemblAnnotations("Homo sapiens", format = "transcripts")
+#' transcripts <- ensembl("Homo sapiens", format = "transcripts")
 #' summary(transcripts)
-ensemblAnnotations <- function(
+ensembl <- function(
     organism,
     format = "genes",
     genomeBuild = NULL,
