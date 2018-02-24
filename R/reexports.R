@@ -72,6 +72,10 @@ Matrix::Matrix
 #' @export
 S4Vectors::DataFrame
 
+#' @importFrom S4Vectors mcols
+#' @export
+S4Vectors::mcols
+
 
 
 #' @importFrom tibble glimpse
