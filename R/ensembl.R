@@ -49,8 +49,11 @@
 #' @param genomeBuild *Optional.* Genome assembly name (e.g. GRCh38).
 #' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
+#' @param uniqueSymbol Make gene symbols unique. Only applies to `genes` and
+#'   `gene2symbol` output.
 #' @param broadClass Include broad class definitions, based on `biotype` and/or
-#'   gene `symbol` annotations.
+#'   gene `symbol` annotations. Only applies to `genes` and `transcripts`
+#'   output.
 #' @param sanitizeColnames Improve column names and drop duplicated columns:
 #'   - Rename `geneID` to `ensgene`.
 #'   - Rename `txID` to `enstxp`.
@@ -78,6 +81,7 @@ ensembl <- function(
     format = "genes",
     genomeBuild = NULL,
     release = NULL,
+    uniqueSymbol = FALSE,
     broadClass = TRUE,
     sanitizeColnames = TRUE,
     return = "GRanges") {
@@ -88,12 +92,14 @@ ensembl <- function(
         y = c("genes", "transcripts", "gene2symbol", "tx2gene"))
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)
-    if (is.numeric(release)) {
+    if (isAnImplicitInteger(release)) {
         # AnnotableHub only supports releases 87 and above
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
-    .assertFormalEnsembldbReturn(return)
+    assert_is_a_bool(uniqueSymbol)
+    assert_is_a_bool(broadClass)
     assert_is_a_bool(sanitizeColnames)
+    .assertFormalEnsembldbReturn(return)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -111,7 +117,7 @@ ensembl <- function(
         }
     }
 
-    # # GRCh37 legacy support ==================================================
+    # GRCh37 legacy support ====================================================
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
@@ -269,7 +275,12 @@ ensembl <- function(
     # Convert column names into desired convention
     data <- camel(data)
 
-    # Broad class definitions (only for full gene/transcript annotables)
+    # Unique symbol mode
+    if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
+        data <- .uniqueSymbol(data)
+    }
+
+    # Broad class definitions
     if (format %in% c("genes", "transcripts") && isTRUE(broadClass)) {
         data <- .addBroadClassCol(data)
     }
