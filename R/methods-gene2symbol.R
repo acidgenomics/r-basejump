@@ -4,7 +4,7 @@
 #' @name gene2symbol
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams general
+#' @inherit ensembl
 #'
 #' @return [data.frame].
 #'
@@ -27,8 +27,8 @@ setMethod(
         uniqueSymbol = FALSE) {
         assert_is_a_string(object)
         assert_is_a_bool(uniqueSymbol)
-        data <- ensemblAnnotations(
-            object,
+        data <- ensembl(
+            organism = object,
             format = "gene2symbol",
             genomeBuild = genomeBuild,
             release = release,

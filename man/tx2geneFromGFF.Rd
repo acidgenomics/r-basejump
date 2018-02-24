@@ -45,8 +45,7 @@ tx2geneFromGFF(gff) \%>\% glimpse()
 \seealso{
 Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
-  \code{\link{ensemblAnnotations}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{tx2gene}}
 }

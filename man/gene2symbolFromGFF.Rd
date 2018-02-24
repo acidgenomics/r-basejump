@@ -33,6 +33,23 @@ The GFF (General Feature Format) format consists of one line per
 feature, each containing 9 columns of data, plus optional track definition
 lines. The GTF (General Transfer Format) is identical to GFF version 2.
 }
+\section{Broad Class Definitions}{
+
+For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
+column is added, which generalizes the gene types into a smaller number of
+semantically-meaningful groups:
+\itemize{
+\item \code{coding}
+\item \code{noncoding}
+\item \code{pseudo}
+\item \code{small}
+\item \code{decaying}
+\item \code{ig} (immunoglobulin)
+\item \code{tcr} (T cell receptor)
+\item \code{other}
+}
+}
+
 \examples{
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
@@ -45,8 +62,7 @@ gene2symbolFromGFF(gff) \%>\% glimpse()
 \seealso{
 Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
-  \code{\link{ensemblAnnotations}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }

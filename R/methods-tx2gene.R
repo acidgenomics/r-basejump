@@ -4,7 +4,7 @@
 #' @name tx2gene
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams general
+#' @inheritParams ensembl
 #'
 #' @return [data.frame].
 #'
@@ -25,7 +25,7 @@ setMethod(
         genomeBuild = NULL,
         release = NULL) {
         assert_is_a_string(object)
-        ensemblAnnotations(
+        ensembl(
             object,
             format = "tx2gene",
             genomeBuild = genomeBuild,

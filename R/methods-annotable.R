@@ -3,7 +3,7 @@
 #' @rdname annotable
 #' @name annotable
 #'
-#' @inherit ensemblAnnotations
+#' @inherit ensembl
 #'
 #' @return [data.frame].
 #'
@@ -38,7 +38,7 @@ setMethod(
         assertIsAStringOrNULL(genomeBuild)
         assertIsAnImplicitIntegerOrNULL(release)
         assert_is_a_bool(uniqueSymbol)
-        data <- ensemblAnnotations(
+        data <- ensembl(
             organism = object,
             format = format,
             genomeBuild = genomeBuild,

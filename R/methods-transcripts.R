@@ -5,7 +5,7 @@
 #'
 #' @importFrom ensembldb transcripts
 #'
-#' @inherit ensemblAnnotations
+#' @inherit ensembl
 #'
 #' @examples
 #' data <- transcripts("Homo sapiens")
@@ -26,7 +26,7 @@ setMethod(
         genomeBuild = NULL,
         release = NULL,
         return = "GRanges") {
-        ensemblAnnotations(
+        ensembl(
             organism = x,
             format = "transcripts",
             genomeBuild = genomeBuild,

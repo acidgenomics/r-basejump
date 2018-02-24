@@ -5,7 +5,8 @@
 #'
 #' @importFrom ensembldb genes
 #'
-#' @inherit ensemblAnnotations
+#' @inherit ensembl
+#'
 #' @param uniqueSymbol Make gene symbols unique.
 #'
 #' @examples
@@ -33,7 +34,7 @@ setMethod(
         uniqueSymbol = FALSE,
         return = "GRanges") {
         assert_is_a_bool(uniqueSymbol)
-        data <- ensemblAnnotations(
+        data <- ensembl(
             organism = x,
             format = "genes",
             genomeBuild = genomeBuild,

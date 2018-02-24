@@ -4,14 +4,11 @@
 #' @name convertTranscriptsToGenes
 #' @family Gene Annotation Utilities
 #'
-#' @inheritParams general
-#' @inheritParams convertGenesToSymbols
+#' @inherit convertGenesToSymbols
 #'
 #' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
-#'
-#' @return Same class as object.
 #'
 #' @examples
 #' # character

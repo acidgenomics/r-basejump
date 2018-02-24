@@ -5,6 +5,7 @@
 #' @family Gene Annotation Utilities
 #'
 #' @inheritParams general
+#' @inheritParams genes
 #'
 #' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
@@ -41,7 +42,7 @@ NULL
 
 
 # Constructors =================================================================
-.convertGenesToSymbols <- function(  # nolint
+.convertGenesToSymbols <- function(
     object,
     gene2symbol = NULL,
     organism = NULL,

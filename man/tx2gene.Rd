@@ -12,9 +12,10 @@ tx2gene(object, ...)
 \S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL)
 }
 \arguments{
-\item{object}{Object.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
-\item{...}{Additional arguments.}
+\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
+current release available on AnnotationHub.}
 }
 \value{
 \link{data.frame}.
@@ -28,8 +29,7 @@ tx2gene("Homo sapiens") \%>\% glimpse()
 \seealso{
 Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
-  \code{\link{ensemblAnnotations}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}}
 }
