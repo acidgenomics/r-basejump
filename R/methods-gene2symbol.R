@@ -25,16 +25,12 @@ setMethod(
         genomeBuild = NULL,
         release = NULL,
         uniqueSymbol = FALSE) {
-        assert_is_a_string(object)
-        assert_is_a_bool(uniqueSymbol)
-        data <- ensembl(
+        ensembl(
             organism = object,
             format = "gene2symbol",
             genomeBuild = genomeBuild,
             release = release,
+            uniqueSymbol = uniqueSymbol,
+            sanitizeColnames = TRUE,
             return = "data.frame")
-        if (isTRUE(uniqueSymbol)) {
-            data <- .uniqueSymbol(data)
-        }
-        data
     })
