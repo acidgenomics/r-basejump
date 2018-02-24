@@ -24,11 +24,11 @@ setMethod(
         object,
         genomeBuild = NULL,
         release = NULL) {
-        assert_is_a_string(object)
         ensembl(
             object,
             format = "tx2gene",
             genomeBuild = genomeBuild,
             release = release,
+            sanitizeColnames = TRUE,
             return = "data.frame")
     })

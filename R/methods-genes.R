@@ -9,7 +9,7 @@
 #' @inherit ensembl
 #' @inheritParams general
 #'
-#' @param uniqueSymbol Make gene symbols unique.
+
 #'
 #' @export
 #'

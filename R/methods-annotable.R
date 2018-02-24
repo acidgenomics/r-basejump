@@ -29,26 +29,20 @@ setMethod(
         genomeBuild = NULL,
         release = NULL,
         uniqueSymbol = FALSE) {
-        assert_is_a_string(object)
-        assert_is_a_string(format)
-        # Now using `genes` instead of `gene` for format
+        # LEGACY Now using `genes` instead of `gene` for format
         if (format == "gene") {
+            warning("Use 'genes' instead of 'gene' for `format` argument")
             format <- "genes"
         }
-        assert_is_subset(format, c("genes", "gene2symbol", "tx2gene"))
-        assertIsAStringOrNULL(genomeBuild)
-        assertIsAnImplicitIntegerOrNULL(release)
-        assert_is_a_bool(uniqueSymbol)
-        data <- ensembl(
+        ensembl(
             organism = object,
             format = format,
             genomeBuild = genomeBuild,
             release = release,
+            uniqueSymbol = uniqueSymbol,
+            broadClass = TRUE,
+            sanitizeColnames = TRUE,
             return = "data.frame")
-        if (isTRUE(uniqueSymbol)) {
-            data <- .uniqueSymbol(data)
-        }
-        data
     })
 
 
