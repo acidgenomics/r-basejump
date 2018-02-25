@@ -46,7 +46,7 @@ test_that("saveData", {
 
 
 # transmit =====================================================================
-test_that("Standard", {
+test_that("transmit : Standard", {
     readme <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
@@ -57,7 +57,7 @@ test_that("Standard", {
     file_delete("README")
 })
 
-test_that("Rename and compress", {
+test_that("transmit : Rename and compress", {
     readme <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
@@ -69,7 +69,7 @@ test_that("Rename and compress", {
     file_delete("ensembl_readme.txt.gz")
 })
 
-test_that("Invalid parameters", {
+test_that("transmit : Invalid parameters", {
     expect_error(
         transmit("http://steinbaugh.com", pattern = "README"),
         "is_matching_regex : remoteDir"
