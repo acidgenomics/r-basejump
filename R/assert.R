@@ -50,6 +50,7 @@
 #' @importFrom assertive assert_is_subset
 #' @importFrom assertive assert_is_vector
 #' @importFrom assertive has_colnames
+#' @importFrom assertive is_a_number
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_existing
 #' @importFrom assertive is_hex_color
