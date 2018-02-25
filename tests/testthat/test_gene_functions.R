@@ -77,14 +77,14 @@ test_that("detectOrganism : Ovis aries", {
 })
 
 test_that("detectOrganism : Multiple organisms", {
-    multi <- c(
+    x <- c(
         "ENSG00000000001",
         "ENSG00000000002",
         "ENSMUSG00000000001",
         "ENSMUSG00000000002"
     )
     expect_identical(
-        suppressWarnings(detectOrganism(multi, unique = FALSE)),
+        suppressWarnings(detectOrganism(x, unique = FALSE)),
         c(
             "ENSG00000000001" = "Homo sapiens",
             "ENSG00000000002" = "Homo sapiens",
@@ -93,11 +93,11 @@ test_that("detectOrganism : Multiple organisms", {
         )
     )
     expect_identical(
-        suppressWarnings(detectOrganism(multi, unique = TRUE)),
+        suppressWarnings(detectOrganism(x, unique = TRUE)),
         c("Homo sapiens", "Mus musculus")
     )
     expect_warning(
-        detectOrganism(multi),
+        detectOrganism(x),
         "Multiple organisms detected"
     )
 })
@@ -117,11 +117,60 @@ test_that("detectOrganism : matrix", {
 })
 
 test_that("detectOrganism : tbl_df", {
-    tbl <- as(counts, "tibble")
-    expect_true("rowname" %in% colnames(tbl))
+    x <- as(counts, "tibble")
+    expect_true("rowname" %in% colnames(x))
     expect_identical(
-        detectOrganism(tbl),
+        detectOrganism(x),
         "Mus musculus"
+    )
+})
+
+
+
+# gene2symbolFromGFF ===========================================================
+test_that("gene2symbolFromGFF : Mouse", {
+    x <- gene2symbolFromGFF("mmusculus.gtf")
+    expect_identical(dim(x), c(17L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            "ensgene" = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            "symbol" = c("Rp1", "Xkr4"),
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            stringsAsFactors = FALSE)
+    )
+})
+
+test_that("gene2symbolFromGFF : Fruitfly", {
+    x <- gene2symbolFromGFF("dmelanogaster.gtf")
+    expect_identical(dim(x), c(5L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            "ensgene" = c("FBgn0031081", "FBgn0031085"),
+            "symbol" = c("Nep3", "CG9570"),
+            row.names = c("FBgn0031081", "FBgn0031085"),
+            stringsAsFactors = FALSE)
+    )
+})
+
+test_that("gene2symbolFromGFF : data.frame", {
+    x <- readGFF("mmusculus.gtf")
+    expect_identical(
+        gene2symbolFromGFF(x),
+        gene2symbolFromGFF("mmusculus.gtf")
+    )
+})
+
+test_that("gene2symbolFromGFF : Unique symbol mode", {
+    x <- gene2symbolFromGFF("mmusculus.gtf", uniqueSymbol = TRUE)
+    expect_false(any(duplicated(x[["symbol"]])))
+})
+
+test_that("gene2symbolFromGFF : Invalid number of columns", {
+    expect_error(
+        gene2symbolFromGFF(mtcars),
+        "are_identical : ncol\\(object\\) and 9L are not identical."
     )
 })
 
