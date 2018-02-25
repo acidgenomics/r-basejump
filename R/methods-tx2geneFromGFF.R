@@ -2,7 +2,7 @@
 #'
 #' @rdname tx2geneFromGFF
 #' @name tx2geneFromGFF
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inherit tx2gene
 #'

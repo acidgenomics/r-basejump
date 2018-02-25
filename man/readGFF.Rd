@@ -32,7 +32,8 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 \item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}},
-  \code{\link{readYAML}}, \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
 }

@@ -32,7 +32,7 @@
 #'   suported on AnnotationHub.
 #'
 #' @name ensembl
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom BiocGenerics organism

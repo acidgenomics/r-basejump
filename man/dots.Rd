@@ -39,4 +39,7 @@ dots(mtcars, starwars, character = TRUE)
 \href{https://goo.gl/fhAuak}{dplyr utils},
 \href{https://goo.gl/bM5TrP}{devtools infrastructure}
 }
+
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{multiassignAsNewEnvir}}
 }

@@ -27,7 +27,7 @@ tryCatch(
     error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertFormalAnnotationCol}},
+Other Assert Check Functions: \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},

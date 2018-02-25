@@ -5,7 +5,7 @@
 #'
 #' @rdname geometricMean
 #' @name geometricMean
-#' @family Math Utilities
+#' @family Math Functions
 #'
 #' @inheritParams general
 #'

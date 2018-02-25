@@ -1,6 +1,6 @@
 #' Extract Dots from Function
 #'
-#' @family Function Utilities
+#' @family Developer Functions
 #'
 #' @importFrom rlang eval_bare
 #'

@@ -69,5 +69,8 @@ geometricMean(mat)
 \href{https://stackoverflow.com/a/25555105}{Paul McMurdie's post} on
 Stack Overflow
 
-Other Math Utilities: \code{\link{foldChangeToLogRatio}}
+Other Math Functions: \code{\link{aggregateFeatures}},
+  \code{\link{aggregateReplicates}},
+  \code{\link{foldChangeToLogRatio}},
+  \code{\link{microplate}}
 }

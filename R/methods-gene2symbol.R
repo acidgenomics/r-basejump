@@ -2,7 +2,7 @@
 #'
 #' @rdname gene2symbol
 #' @name gene2symbol
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inherit ensembl
 #'

@@ -1,6 +1,6 @@
 #' Read YAML File
 #'
-#' @family Data Import and Project Utilities
+#' @family Read Functions
 #'
 #' @importFrom yaml yaml.load_file
 #'

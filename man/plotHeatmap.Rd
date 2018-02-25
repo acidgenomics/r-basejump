@@ -61,4 +61,8 @@ plotHeatmap(mat)
 }
 \seealso{
 \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
+
+Other Plot Functions: \code{\link{dynamicPlotlist}},
+  \code{\link{midnightTheme}},
+  \code{\link{plotQuantileHeatmap}}
 }

@@ -10,7 +10,7 @@
 #' [readr](http://readr.tidyverse.org/) package, built into
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
-#' @family Write Utilities
+#' @family Write Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @importFrom fs path_join

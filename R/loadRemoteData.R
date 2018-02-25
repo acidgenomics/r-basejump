@@ -3,7 +3,7 @@
 #' Load a remote R binary file. This function is vectorized and supports
 #' multiple URLs in a single call.
 #'
-#' @family Data Import and Project Utilities
+#' @family Read Functions
 #'
 #' @importFrom fs file_temp
 #' @importFrom utils download.file

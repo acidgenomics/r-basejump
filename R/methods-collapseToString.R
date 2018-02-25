@@ -2,7 +2,7 @@
 #'
 #' @rdname collapseToString
 #' @name collapseToString
-#' @family Data Manipulation Utilities
+#' @family Vector Functions
 #'
 #' @inheritParams general
 #'

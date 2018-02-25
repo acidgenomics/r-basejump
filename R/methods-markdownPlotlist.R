@@ -2,7 +2,7 @@
 #'
 #' @rdname markdownPlotlist
 #' @name markdownPlotlist
-#' @author Michael Steinbaugh
+#' @family R Markdown Functions
 #'
 #' @inheritParams general
 #'

@@ -94,4 +94,7 @@ mtcars \%>\%
 \itemize{
 \item \code{\link[base:toString]{base::toString()}}.
 }
+
+Other Vector Functions: \code{\link{grepString}},
+  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
 }

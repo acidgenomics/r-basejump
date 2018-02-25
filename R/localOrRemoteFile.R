@@ -2,6 +2,8 @@
 #'
 #' This function is vectorized and supports mixed local and remote paths.
 #'
+#' @family Read Functions
+#'
 #' @importFrom fs file_temp path_real
 #' @importFrom utils download.file
 #'

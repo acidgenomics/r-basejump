@@ -33,7 +33,7 @@ markdownPlotlist(plotlist)
 }
 \seealso{
 \code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
-}
-\author{
-Michael Steinbaugh
+
+Other R Markdown Functions: \code{\link{kables}},
+  \code{\link{markdownHeader}}, \code{\link{markdownList}}
 }

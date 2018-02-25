@@ -3,6 +3,8 @@
 #' Checks and creates a directory recursively automatically. Useful for setting
 #' up functions that require writes to a user-specified directory.
 #'
+#' @family Write Functions
+#'
 #' @importFrom fs dir_create dir_exists path_real
 #'
 #' @param dir Directory path.

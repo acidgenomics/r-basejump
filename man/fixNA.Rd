@@ -52,6 +52,8 @@ tibble(
     fixNA()
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{removeNA}},
-  \code{\link{sortUnique}}
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{dotted}}, \code{\link{removeNA}},
+  \code{\link{sanitizeAnnotable}},
+  \code{\link{sanitizeColData}}, \code{\link{snake}}
 }

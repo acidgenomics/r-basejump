@@ -34,3 +34,9 @@ microplate(wells = 384L)
 # 2 96-well plates with 6 control wells per plate
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
+\seealso{
+Other Math Functions: \code{\link{aggregateFeatures}},
+  \code{\link{aggregateReplicates}},
+  \code{\link{foldChangeToLogRatio}},
+  \code{\link{geometricMean}}
+}

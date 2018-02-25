@@ -2,7 +2,7 @@
 #'
 #' @rdname gene2symbolFromGFF
 #' @name gene2symbolFromGFF
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inherit gene2symbol
 #'

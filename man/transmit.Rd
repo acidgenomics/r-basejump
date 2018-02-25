@@ -40,7 +40,7 @@ file_exists(readme)
 file_delete("ensembl_readme.txt.gz")
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readYAML}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{writeCounts}}
 }

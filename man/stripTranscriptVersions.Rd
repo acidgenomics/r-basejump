@@ -27,13 +27,12 @@ Strip Transcript Versions
 stripTranscriptVersions("ENSMUST00000000001.1")
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
+Other Gene Functions: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{genes}},
-  \code{\link{sanitizeAnnotable}},
   \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }

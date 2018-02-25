@@ -1,6 +1,6 @@
 #' Read GFF/GTF Annotations
 #'
-#' @family Data Import and Project Utilities
+#' @family Read Functions
 #'
 #' @importFrom utils read.delim
 #'

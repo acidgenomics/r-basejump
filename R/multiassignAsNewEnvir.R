@@ -1,6 +1,6 @@
 #' Assign Multiple Objects as a New Environment
 #'
-#' @family Object Assignment Utilities
+#' @family Developer Functions
 #'
 #' @inheritParams dots
 #' @inheritParams saveData

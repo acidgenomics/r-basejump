@@ -2,6 +2,7 @@
 #'
 #' @rdname plotQuantileHeatmap
 #' @name plotQuantileHeatmap
+#' @family Plot Functions
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
 #' @inherit plotHeatmap

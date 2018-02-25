@@ -2,7 +2,7 @@
 #'
 #' @rdname markdownHeader
 #' @name markdownHeader
-#' @family Report Utilities
+#' @family R Markdown Functions
 #'
 #' @inheritParams general
 #'
