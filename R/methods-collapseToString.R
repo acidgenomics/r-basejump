@@ -2,7 +2,7 @@
 #'
 #' @rdname collapseToString
 #' @name collapseToString
-#' @family Vector Functions
+#' @family Sanitization Functions
 #'
 #' @inheritParams general
 #'
@@ -136,7 +136,7 @@ NULL
 #' @export
 setMethod(
     "collapseToString",
-    signature("character"),
+    signature("atomic"),
     .collapseToString)
 
 
@@ -163,41 +163,5 @@ setMethod(
 #' @export
 setMethod(
     "collapseToString",
-    signature("factor"),
-    .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("integer"),
-    .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("logical"),
-    .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
     signature("matrix"),
     .collapseToString.dim)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("numeric"),
-    .collapseToString)
