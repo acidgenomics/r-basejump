@@ -52,8 +52,7 @@ tibble(
     fixNA()
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{dotted}}, \code{\link{removeNA}},
+Other Sanitization Functions: \code{\link{removeNA}},
   \code{\link{sanitizeAnnotable}},
-  \code{\link{sanitizeColData}}, \code{\link{snake}}
+  \code{\link{sanitizeColData}}
 }

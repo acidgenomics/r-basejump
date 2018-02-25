@@ -148,8 +148,6 @@ print(list)
 camel(list)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{dotted}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{sanitizeAnnotable}},
-  \code{\link{sanitizeColData}}, \code{\link{snake}}
+Other Name Functions: \code{\link{dotted}},
+  \code{\link{snake}}
 }
