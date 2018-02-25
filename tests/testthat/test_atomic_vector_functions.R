@@ -22,13 +22,8 @@ test_that("sortUnique", {
 
 # toStringUnique ===============================================================
 test_that("toStringUnique", {
-    vec <- c("hello", "world", NA, "hello", "world", NA)
     expect_identical(
-        toStringUnique(vec),
+        toStringUnique(c("hello", "world", NA, "hello", "world", NA)),
         "hello, world"
-    )
-    expect_error(
-        toStringUnique(mtcars),
-        "is_atomic"
     )
 })
