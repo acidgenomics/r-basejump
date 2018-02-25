@@ -52,7 +52,7 @@ tibble(
     fixNA()
 }
 \seealso{
-Other Sanitization Functions: \code{\link{removeNA}},
-  \code{\link{sanitizeAnnotable}},
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
   \code{\link{sanitizeColData}}
 }
