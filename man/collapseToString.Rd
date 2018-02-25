@@ -4,19 +4,15 @@
 \name{collapseToString}
 \alias{collapseToString}
 \alias{collapseToString}
-\alias{collapseToString,character-method}
+\alias{collapseToString,atomic-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
-\alias{collapseToString,factor-method}
-\alias{collapseToString,integer-method}
-\alias{collapseToString,logical-method}
 \alias{collapseToString,matrix-method}
-\alias{collapseToString,numeric-method}
 \title{Collapse to String}
 \usage{
 collapseToString(object, ...)
 
-\S4method{collapseToString}{character}(object, sep = ", ", sort = FALSE,
+\S4method{collapseToString}{atomic}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 
 \S4method{collapseToString}{data.frame}(object, sep = ", ", sort = FALSE,
@@ -25,19 +21,7 @@ collapseToString(object, ...)
 \S4method{collapseToString}{DataFrame}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 
-\S4method{collapseToString}{factor}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
-
-\S4method{collapseToString}{integer}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
-
-\S4method{collapseToString}{logical}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
-
 \S4method{collapseToString}{matrix}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
-
-\S4method{collapseToString}{numeric}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 }
 \arguments{
@@ -95,6 +79,7 @@ mtcars \%>\%
 \item \code{\link[base:toString]{base::toString()}}.
 }
 
-Other Vector Functions: \code{\link{grepString}},
-  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
+Other Sanitization Functions: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
+  \code{\link{sanitizeColData}}
 }

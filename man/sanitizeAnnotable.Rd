@@ -21,6 +21,7 @@ human <- annotable("Homo sapiens")
 sanitizeAnnotable(human) \%>\% glimpse()
 }
 \seealso{
-Other Sanitization Functions: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeColData}}
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeColData}}
 }

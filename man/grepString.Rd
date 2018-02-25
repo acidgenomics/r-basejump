@@ -20,6 +20,6 @@ Generate a grep string for pattern matching against comma separated
 grepString("gene")
 }
 \seealso{
-Other Vector Functions: \code{\link{collapseToString}},
-  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
+Other Atomic Vector Functions: \code{\link{sortUnique}},
+  \code{\link{toStringUnique}}
 }
