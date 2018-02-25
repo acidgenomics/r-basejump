@@ -97,8 +97,6 @@ print(list)
 snake(list)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{dotted}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
-  \code{\link{sanitizeColData}}
+Other Name Functions: \code{\link{camel}},
+  \code{\link{dotted}}
 }

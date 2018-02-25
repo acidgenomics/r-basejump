@@ -66,8 +66,7 @@ removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{dotted}}, \code{\link{fixNA}},
+Other Sanitization Functions: \code{\link{fixNA}},
   \code{\link{sanitizeAnnotable}},
-  \code{\link{sanitizeColData}}, \code{\link{snake}}
+  \code{\link{sanitizeColData}}
 }

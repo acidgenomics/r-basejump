@@ -26,8 +26,6 @@ colData
 sanitizeColData(colData)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{dotted}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
-  \code{\link{snake}}
+Other Sanitization Functions: \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}}
 }
