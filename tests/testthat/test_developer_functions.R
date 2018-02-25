@@ -29,11 +29,11 @@ test_that("dots", {
     )
     expect_error(
         dots(mtcars, mtcars),
-        "has_no_duplicates :"
+        "has_no_duplicates : dots has a duplicate at position 2"
     )
     expect_error(
         dots(),
-        "is_non_empty :"
+        "is_non_empty : dots has length 0"
     )
 })
 
@@ -41,13 +41,11 @@ test_that("dots", {
 
 # multiassignAsNewEnvir ========================================================
 test_that("multiassignAsNewEnvir", {
-    expect_message(
-        multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
-        "Assigning mtcars, starwars as test")
-    expect_identical(
-        multiassignAsNewEnvir(mtcars, starwars, envirName = "test"),
-        c("mtcars", "starwars"))
+    x <- multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
+    expect_identical(x, c("mtcars", "starwars"))
+    expect_identical(x, ls(test))
     expect_error(
         multiassignAsNewEnvir(mtcars, envirName = parent.frame()),
-        "is_a_string")
+        "is_a_string : envirName"
+    )
 })
