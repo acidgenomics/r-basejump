@@ -1,7 +1,7 @@
 context("Name Functions")
 
-test_that("camel", {
-    # ANY ======================================================================
+# camel ========================================================================
+test_that("camel : ANY", {
     # Integer (atomic)
     expect_identical(camel(1L), 1L)
     expect_identical(
@@ -26,8 +26,9 @@ test_that("camel", {
             c("sampleID1", "sampleID2")
         )
     )
+})
 
-    # character ================================================================
+test_that("camel : character", {
     expect_identical(
         camel(makeNames[["character"]], strict = FALSE),
         c("helloWorld",
@@ -77,8 +78,9 @@ test_that("camel", {
         c("itemA" = "helloWorld",
           "itemB" = "helloWorld")
     )
+})
 
-    # data.frame ===============================================================
+test_that("camel : data.frame", {
     # Sanitize rownames
     expect_identical(
         camel(makeNames[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
@@ -94,15 +96,17 @@ test_that("camel", {
             rownames(),
         as.character(1L:nrow(makeNames[["dataFrame"]]))
     )
+})
 
-    # list =====================================================================
+test_that("camel : list", {
     expect_identical(
         camel(makeNames[["list"]], strict = TRUE),
         list("itemA" = c(1L, 2L),
              "itemB" = c(3L, 4L))
     )
+})
 
-    # matrix ===================================================================
+test_that("camel : matrix", {
     x <- camel(counts)
     expect_identical(
         rownames(x)[[1L]],
@@ -129,8 +133,9 @@ test_that("camel", {
             rownames(),
         NULL
     )
+})
 
-    # tibble ===================================================================
+test_that("camel : tbl_df", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -140,8 +145,10 @@ test_that("camel", {
     )
 })
 
-test_that("dotted", {
-    # ANY ======================================================================
+
+
+# dotted =======================================================================
+test_that("dotted : ANY", {
     # Integer (atomic)
     expect_identical(dotted(1L), 1L)
     expect_identical(
@@ -166,8 +173,9 @@ test_that("dotted", {
             c("sample.ID.1", "sample.ID.2")
         )
     )
+})
 
-    # character ================================================================
+test_that("dotted : character", {
     expect_identical(
         dotted(makeNames[["character"]]),
         c("hello.world",
@@ -189,23 +197,26 @@ test_that("dotted", {
         c("Item.A" = "hello.world",
           "Item.B" = "HELLO.WORLD")
     )
+})
 
-    # data.frame ===============================================================
+test_that("dotted : data.frame", {
     expect_identical(
         dotted(makeNames[["dataFrame"]], rownames = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
     )
+})
 
-    # list =====================================================================
+test_that("dotted : list", {
     expect_identical(
         dotted(makeNames[["list"]]),
         list(Item.A = c(1L, 2L),
              Item.B = c(3L, 4L))
     )
+})
 
-    # matrix ===================================================================
+test_that("dotted : matrix", {
     x <- dotted(counts)
     expect_identical(
         rownames(x)[[1L]],
@@ -232,8 +243,9 @@ test_that("dotted", {
             rownames(),
         NULL
     )
+})
 
-    # tibble ===================================================================
+test_that("dotted : tbl_df", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -247,8 +259,10 @@ test_that("dotted", {
     )
 })
 
-test_that("snake", {
-    # ANY ======================================================================
+
+
+# snake ========================================================================
+test_that("snake : ANY", {
     # Integer (atomic)
     expect_identical(snake(1L), 1L)
     expect_identical(
@@ -273,8 +287,9 @@ test_that("snake", {
             c("sample_id_1", "sample_id_2")
         )
     )
+})
 
-    # character ================================================================
+test_that("snake : character", {
     x <- snake(makeNames[["character"]])
     expect_identical(
         x,
@@ -298,8 +313,9 @@ test_that("snake", {
         c("item_a" = "hello_world",
           "item_b" = "hello_world")
     )
+})
 
-    # data.frame ===============================================================
+test_that("snake : data.frame", {
     x <- snake(makeNames[["dataFrame"]], rownames = TRUE) %>%
         rownames() %>%
         .[[1L]]
@@ -307,16 +323,18 @@ test_that("snake", {
         x,
         "mazda_rx4"
     )
+})
 
-    # list =====================================================================
+test_that("snake : list", {
     x <- snake(makeNames[["list"]])
     expect_identical(
         x,
         list("item_a" = c(1L, 2L),
              "item_b" = c(3L, 4L))
     )
+})
 
-    # matrix ===================================================================
+test_that("snake : matrix", {
     x <- snake(counts)
     expect_identical(
         rownames(x)[[1L]],
@@ -343,8 +361,9 @@ test_that("snake", {
             rownames(),
         NULL
     )
+})
 
-    # tibble ===================================================================
+test_that("snake : tbl_df", {
     x <- makeNames[["tibble"]] %>%
         .[, 1L:5L] %>%
         snake() %>%
@@ -359,8 +378,10 @@ test_that("snake", {
     )
 })
 
-test_that("upperCamel", {
-    # ANY ======================================================================
+
+
+# upperCamel ===================================================================
+test_that("upperCamel : ANY", {
     # Integer (atomic)
     expect_identical(upperCamel(1L), 1L)
     expect_identical(
@@ -385,8 +406,9 @@ test_that("upperCamel", {
             c("SampleID1", "SampleID2")
         )
     )
+})
 
-    # character ================================================================
+test_that("upperCamel : character", {
     expect_identical(
         upperCamel(makeNames[["character"]], strict = FALSE),
         c("HelloWorld",
@@ -436,8 +458,9 @@ test_that("upperCamel", {
         c("ItemA" = "HelloWorld",
           "ItemB" = "HelloWorld")
     )
+})
 
-    # data.frame ===============================================================
+test_that("upperCamel : data.frame", {
     # Sanitize rownames
     expect_identical(
         upperCamel(makeNames[["dataFrame"]],
@@ -454,15 +477,17 @@ test_that("upperCamel", {
             rownames(),
         as.character(1L:nrow(mtcars))
     )
+})
 
-    # list =====================================================================
+test_that("upperCamel : list", {
     expect_identical(
         upperCamel(makeNames[["list"]], strict = TRUE),
         list("ItemA" = c(1L, 2L),
              "ItemB" = c(3L, 4L))
     )
+})
 
-    # matrix ===================================================================
+test_that("upperCamel : matrix", {
     x <- upperCamel(counts)
     expect_identical(
         rownames(x)[[1L]],
@@ -490,8 +515,9 @@ test_that("upperCamel", {
             rownames(),
         NULL
     )
+})
 
-    # tibble ===================================================================
+test_that("upperCamel : tbl_df", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
