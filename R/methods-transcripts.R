@@ -2,7 +2,7 @@
 #'
 #' @rdname transcripts
 #' @name transcripts
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @importFrom ensembldb transcripts
 #'

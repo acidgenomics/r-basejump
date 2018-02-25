@@ -2,7 +2,7 @@
 #'
 #' @rdname camel
 #' @name camel
-#' @family Make Names Utilities
+#' @family Sanitization Functions
 #'
 #' @inherit dotted
 #'

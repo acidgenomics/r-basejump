@@ -22,3 +22,7 @@ Assign Multiple Objects as a New Environment
 \examples{
 multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
+\seealso{
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}
+}

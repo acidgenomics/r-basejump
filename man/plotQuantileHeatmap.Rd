@@ -57,7 +57,8 @@ mat <- matrix(1:10000, nrow = 100, ncol = 100)
 plotQuantileHeatmap(mat)
 }
 \seealso{
-\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
+Other Plot Functions: \code{\link{dynamicPlotlist}},
+  \code{\link{midnightTheme}}, \code{\link{plotHeatmap}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

@@ -2,7 +2,7 @@
 #'
 #' @rdname removeNA
 #' @name removeNA
-#' @family Cleanup Utilities
+#' @family Sanitization Functions
 #'
 #' @inheritParams general
 #'

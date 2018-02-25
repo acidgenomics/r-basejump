@@ -2,7 +2,7 @@
 #'
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inherit convertGenesToSymbols
 #'

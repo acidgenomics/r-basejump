@@ -27,4 +27,7 @@ detectHPC()
 \item \code{R.version}.
 \item \code{.Platform}.
 }
+
+Other Developer Functions: \code{\link{dots}},
+  \code{\link{multiassignAsNewEnvir}}
 }

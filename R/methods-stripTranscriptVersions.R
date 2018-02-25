@@ -2,7 +2,7 @@
 #'
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inheritParams general
 #'

@@ -1,6 +1,6 @@
 #' Assert Is Ensembl Annotations Data Frame
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x [data.frame] containing Ensembl gene annotations returned

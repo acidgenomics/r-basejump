@@ -4,7 +4,7 @@
 #' files. Also supports bcbio-nextgen pipeline-specific `.counts`, `.colnames`,
 #' and `.rownames` files.
 #'
-#' @family Data Import and Project Utilities
+#' @family Read Functions
 #'
 #' @importFrom fs file_move
 #' @importFrom Matrix readMM

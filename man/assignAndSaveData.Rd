@@ -44,5 +44,7 @@ rm(test)
 file_delete("test.rda")
 }
 \seealso{
-Other Save Utilities: \code{\link{saveData}}
+Other Write Functions: \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }

@@ -3,7 +3,7 @@
 #' Utility function that supports easy file matching and download from a remote
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
-#' @family Data Import and Project Utilities
+#' @family Write Functions
 #'
 #' @importFrom fs path_join path_real
 #' @importFrom R.utils gzip

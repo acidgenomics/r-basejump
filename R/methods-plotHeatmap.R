@@ -6,6 +6,7 @@
 #'
 #' @rdname plotHeatmap
 #' @name plotHeatmap
+#' @family Plot Functions
 #'
 #' @inheritParams general
 #'

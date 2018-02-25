@@ -16,6 +16,8 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
+#' @family Read Functions
+#'
 #' @importFrom fs path_join path_real
 #'
 #' @param ... Object names as symbols.

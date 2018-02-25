@@ -2,7 +2,7 @@
 
 #' Assert All Variables Are Non-Existing
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x Character vector of variable names to check in environment.

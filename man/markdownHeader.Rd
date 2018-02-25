@@ -41,6 +41,7 @@ markdownHeader("Header", tabset = TRUE)
 markdownHeader("Header", asis = TRUE)
 }
 \seealso{
-Other Report Utilities: \code{\link{kables}},
-  \code{\link{markdownList}}
+Other R Markdown Functions: \code{\link{kables}},
+  \code{\link{markdownList}},
+  \code{\link{markdownPlotlist}}
 }

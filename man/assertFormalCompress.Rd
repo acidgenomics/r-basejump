@@ -22,7 +22,7 @@ Assert Formal Compression
 assertFormalCompress("xz")
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},

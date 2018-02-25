@@ -1,6 +1,6 @@
 #' Check Transcript to Gene Mapping Data
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x [data.frame] containing Ensembl transcript to gene identifier

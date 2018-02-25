@@ -1,5 +1,7 @@
 #' Load Data File as Name
 #'
+#' @family Read Functions
+#'
 #' @importFrom fs path path_real
 #'
 #' @inheritParams loadData

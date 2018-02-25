@@ -4,7 +4,7 @@
 #'
 #' @rdname kables
 #' @name kables
-#' @family Report Utilities
+#' @family R Markdown Functions
 #'
 #' @inheritParams general
 #'

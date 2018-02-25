@@ -33,7 +33,7 @@ x <- data.frame(
 assertFormalGene2symbol(x, genes, gene2symbol)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertHasRownames}},

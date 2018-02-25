@@ -28,7 +28,8 @@ objects <- loadRemoteData(c(
 objects
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{readFileByExtension}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

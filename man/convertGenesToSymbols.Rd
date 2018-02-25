@@ -89,12 +89,11 @@ convertGenesToSymbols(mat)
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
 
-Other Gene Annotation Utilities: \code{\link{annotable}},
+Other Gene Functions: \code{\link{annotable}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{genes}},
-  \code{\link{sanitizeAnnotable}},
   \code{\link{stripTranscriptVersions}},
   \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}

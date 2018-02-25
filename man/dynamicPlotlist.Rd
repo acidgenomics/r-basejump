@@ -46,7 +46,8 @@ dynamicPlotlist(plotlist, return = "markdown")
 }
 \seealso{
 \link{markdownPlotlist}.
-}
-\author{
-Michael Steinbaugh
+
+Other Plot Functions: \code{\link{midnightTheme}},
+  \code{\link{plotHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }

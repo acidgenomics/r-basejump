@@ -3,7 +3,7 @@
 #' @rdname assertIsImplicitInteger
 #' @name assertIsImplicitInteger
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 NULL
 

@@ -39,6 +39,7 @@ markdownList(groceries, ordered = TRUE)
 markdownList(groceries, asis = TRUE)
 }
 \seealso{
-Other Report Utilities: \code{\link{kables}},
-  \code{\link{markdownHeader}}
+Other R Markdown Functions: \code{\link{kables}},
+  \code{\link{markdownHeader}},
+  \code{\link{markdownPlotlist}}
 }

@@ -1,5 +1,7 @@
 #' Convert to a Unique Character String
 #'
+#' @family Vector Functions
+#'
 #' @importFrom stats na.omit
 #'
 #' @inheritParams general

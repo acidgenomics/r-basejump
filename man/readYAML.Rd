@@ -26,7 +26,8 @@ yaml <- readYAML(url)
 names(yaml)
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}}
 }

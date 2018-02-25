@@ -2,7 +2,7 @@
 #'
 #' @rdname assert
 #' @name assert
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @keywords internal
 #'
 #' @importFrom assertive assert_all_are_dirs

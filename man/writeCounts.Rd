@@ -35,6 +35,11 @@ writeCounts(mtcars, gzip = TRUE)
 # Clean up
 file_delete("mtcars.csv.gz")
 }
+\seealso{
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}}
+}
 \author{
 Michael Steinbaugh, Rory Kirchner
 }

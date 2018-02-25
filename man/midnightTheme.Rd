@@ -26,4 +26,8 @@ p + midnightTheme()
 \item \code{\link[ggplot2:theme]{ggplot2::theme()}}.
 \item Inspired by \code{Seurat::DarkTheme()}, with some modifications.
 }
+
+Other Plot Functions: \code{\link{dynamicPlotlist}},
+  \code{\link{plotHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }

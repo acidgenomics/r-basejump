@@ -19,3 +19,7 @@ Generate a grep string for pattern matching against comma separated
 \examples{
 grepString("gene")
 }
+\seealso{
+Other Vector Functions: \code{\link{collapseToString}},
+  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
+}

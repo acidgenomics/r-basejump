@@ -39,3 +39,10 @@ RStudio team, which recommends saving single objects per file.
 loadData(grch37, dir = system.file("extdata", package = "basejump"))
 glimpse(grch37)
 }
+\seealso{
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
+}

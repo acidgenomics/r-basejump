@@ -1,5 +1,7 @@
 #' Sanitize Column Data Frame
 #'
+#' @family Sanitization Functions
+#'
 #' @inheritParams general
 #'
 #' @return [DataFrame].

@@ -30,3 +30,10 @@ loadDataAsName(
 )
 glimpse(annotable)
 }
+\seealso{
+Other Read Functions: \code{\link{loadData}},
+  \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
+}

@@ -2,7 +2,7 @@
 #'
 #' @rdname dynamicPlotlist
 #' @name dynamicPlotlist
-#' @author Michael Steinbaugh
+#' @family Plot Functions
 #'
 #' @inheritParams general
 #'

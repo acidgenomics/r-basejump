@@ -40,7 +40,8 @@ xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 \item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
 }
 
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

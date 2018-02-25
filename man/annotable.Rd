@@ -67,12 +67,11 @@ annotable("Homo sapiens") \%>\% glimpse()
 annotable("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
   \code{\link{gene2symbol}}, \code{\link{genes}},
-  \code{\link{sanitizeAnnotable}},
   \code{\link{stripTranscriptVersions}},
   \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}

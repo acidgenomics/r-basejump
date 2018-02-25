@@ -4,7 +4,7 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @family Save Utilities
+#' @family Write Functions
 #'
 #' @importFrom fs path
 #'

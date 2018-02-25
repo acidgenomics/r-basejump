@@ -101,6 +101,8 @@ print(list)
 dotted(list)
 }
 \seealso{
-Other Make Names Utilities: \code{\link{camel}},
-  \code{\link{snake}}
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeAnnotable}},
+  \code{\link{sanitizeColData}}, \code{\link{snake}}
 }

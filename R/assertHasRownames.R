@@ -8,7 +8,7 @@
 #' @note `tibble::has_rownames()` works better than `assertive::has_rownames()`
 #'   for data frames and tibbles.
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @export

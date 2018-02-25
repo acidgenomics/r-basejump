@@ -45,5 +45,7 @@ file_delete(c("mtcars.rda", "starwars.rda"))
 \item \code{usethis::use_data()}.
 }
 
-Other Save Utilities: \code{\link{assignAndSaveData}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{transmit}}, \code{\link{writeCounts}}
 }

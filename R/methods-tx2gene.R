@@ -2,7 +2,7 @@
 #'
 #' @rdname tx2gene
 #' @name tx2gene
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inheritParams ensembl
 #'

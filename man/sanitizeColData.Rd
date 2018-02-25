@@ -25,3 +25,9 @@ colData
 # Note that all columns will be sanitized to factor
 sanitizeColData(colData)
 }
+\seealso{
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{dotted}}, \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
+  \code{\link{snake}}
+}

@@ -1,6 +1,6 @@
 #' Assert Formal Gene to Symbol Mappings
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x Object containing gene identifiers in the rownames.
