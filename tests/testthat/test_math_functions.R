@@ -153,27 +153,14 @@ test_that("logRatio", {
 test_that("microplate : 96-well plate format", {
     plate <- microplate(plates = 1L, wells = 96L)
     expect_is(plate, "character")
-    expect_identical(
-        length(plate),
-        96L
-    )
+    expect_identical(length(plate), 96L)
     expect_identical(
         head(plate),
-        c("1-A01",
-          "1-A02",
-          "1-A03",
-          "1-A04",
-          "1-A05",
-          "1-A06")
+        c("1-A01", "1-A02", "1-A03", "1-A04", "1-A05", "1-A06")
     )
     expect_identical(
         tail(plate),
-        c("1-H07",
-          "1-H08",
-          "1-H09",
-          "1-H10",
-          "1-H11",
-          "1-H12")
+        c("1-H07", "1-H08", "1-H09", "1-H10", "1-H11", "1-H12")
     )
 })
 
@@ -182,12 +169,7 @@ test_that("microplate : 384-well plate format", {
     expect_is(plate, "character")
     expect_identical(
         tail(plate),
-        c("1-P19",
-          "1-P20",
-          "1-P21",
-          "1-P22",
-          "1-P23",
-          "1-P24")
+        c("1-P19", "1-P20", "1-P21", "1-P22", "1-P23", "1-P24")
     )
 })
 
@@ -206,35 +188,29 @@ test_that("microplate : Multiple plates", {
 
 test_that("microplate : Control wells", {
     plate <- microplate(controls = 3L)
-    expect_identical(
-        plate[[1L]],
-        "1-A04"
-    )
+    expect_identical(plate[[1L]], "1-A04")
 })
 
 test_that("microplate : Prefix", {
     plates <- microplate(prefix = "cherrypick")
-    expect_identical(
-        plates[[1L]],
-        "cherrypick-1-A01"
-    )
+    expect_identical(plates[[1L]], "cherrypick-1-A01")
 })
 
 test_that("microplate : Invalid parameters", {
     expect_error(
         microplate(plates = -1L),
-        "is_positive"
+        "is_positive : plates"
     )
     expect_error(
         microplate(wells = 4L),
-        "is_subset"
+        "is_subset : The element '4' in wells is not in c\\(96L, 384L\\)."
     )
     expect_error(
         microplate(controls = -1L),
-        "is_non_negative"
+        "is_non_negative : controls"
     )
     expect_error(
         microplate(prefix = c("a", "b")),
-        "is_a_string"
+        "is_a_string :"
     )
 })
