@@ -116,7 +116,7 @@ test_that("detectOrganism : matrix", {
     )
 })
 
-test_that("detectOrganism : tibble", {
+test_that("detectOrganism : tbl_df", {
     tbl <- as(counts, "tibble")
     expect_true("rowname" %in% colnames(tbl))
     expect_identical(
@@ -149,20 +149,14 @@ test_that("stripTranscriptVersions", {
 
 # tx2geneFromGFF ===============================================================
 test_that("tx2geneFromGFF : Mouse", {
-    mouse <- tx2geneFromGFF("mmusculus.gtf")
-    expect_identical(dim(mouse), c(20L, 2L))
+    x <- tx2geneFromGFF("mmusculus.gtf")
+    expect_identical(dim(x), c(20L, 2L))
     expect_identical(
-        head(mouse, 2L),
+        head(x, 2L),
         data.frame(
-            "enstxp" = c(
-                "ENSMUST00000070533",
-                "ENSMUST00000082908"),
-            "ensgene" = c(
-                "ENSMUSG00000051951",
-                "ENSMUSG00000064842"),
-            row.names = c(
-                "ENSMUST00000070533",
-                "ENSMUST00000082908"),
+            "enstxp" = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            "ensgene" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
             stringsAsFactors = FALSE)
     )
     expect_message(
@@ -172,33 +166,24 @@ test_that("tx2geneFromGFF : Mouse", {
 })
 
 test_that("tx2geneFromGFF : Fruitfly", {
-    fruitfly <- tx2geneFromGFF("dmelanogaster.gtf")
-    expect_identical(dim(fruitfly), c(7L, 2L))
+    x <- tx2geneFromGFF("dmelanogaster.gtf")
+    expect_identical(dim(x), c(7L, 2L))
     expect_identical(
-        head(fruitfly, 2L),
+        head(x, 2L),
         data.frame(
-            "enstxp" = c(
-                "FBtr0070000",
-                "FBtr0070001"),
-            "ensgene" = c(
-                "FBgn0031081",
-                "FBgn0052826"),
-            row.names = c(
-                "FBtr0070000",
-                "FBtr0070001"),
+            "enstxp" = c("FBtr0070000", "FBtr0070001"),
+            "ensgene" = c("FBgn0031081", "FBgn0052826"),
+            row.names = c("FBtr0070000", "FBtr0070001"),
             stringsAsFactors = FALSE)
     )
 })
 
 test_that("tx2geneFromGFF : data.frame", {
-    gff <- readGFF("mmusculus.gtf")
+    x <- readGFF("mmusculus.gtf")
     expect_identical(
         tx2geneFromGFF("mmusculus.gtf"),
-        tx2geneFromGFF(gff)
+        tx2geneFromGFF(x)
     )
-})
-
-test_that("tx2geneFromGFF : Invalid number of columns", {
     expect_error(
         tx2geneFromGFF(mtcars),
         "are_identical : ncol\\(object\\) and 9L are not identical."
