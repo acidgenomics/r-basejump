@@ -1,6 +1,6 @@
 #' Convert to a Unique Character String
 #'
-#' @family Vector Functions
+#' @family Atomic Vector Functions
 #'
 #' @importFrom stats na.omit
 #'
