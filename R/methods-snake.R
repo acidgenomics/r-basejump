@@ -2,7 +2,7 @@
 #'
 #' @rdname snake
 #' @name snake
-#' @family Sanitization Functions
+#' @family Name Functions
 #'
 #' @inherit dotted
 #'

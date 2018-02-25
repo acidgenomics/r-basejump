@@ -11,7 +11,7 @@
 #'
 #' @rdname dotted
 #' @name dotted
-#' @family Sanitization Functions
+#' @family Name Functions
 #'
 #' @inheritParams general
 #'
