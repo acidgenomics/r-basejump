@@ -1,7 +1,7 @@
 context("R Markdown Functions")
 
 # kables =======================================================================
-test_that("List", {
+test_that("kables : list", {
     # Check for knit_asis if kables are forced
     expect_identical(
         list(head(starwars), head(mtcars)) %>%
@@ -19,7 +19,7 @@ test_that("List", {
 })
 
 # TODO Need to improve capture of knitr kable captions
-test_that("Captions", {
+test_that("kables : captions argument", {
     expect_identical(
         kables(
             list(head(starwars), head(mtcars)),
@@ -33,7 +33,7 @@ test_that("Captions", {
 
 
 # markdownHeader ===============================================================
-test_that("String", {
+test_that("markdownHeader ", {
     md <- markdownHeader("Header")
     expect_is(md, "knit_asis")
     md <- markdownHeader("Header", level = 4L) %>%
@@ -54,7 +54,7 @@ test_that("String", {
     )
     expect_error(
         markdownHeader("Header", level = 8L),
-        "is_subset"
+        "is_subset : The element '8'"
     )
 })
 
