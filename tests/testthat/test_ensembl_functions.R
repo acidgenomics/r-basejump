@@ -29,7 +29,7 @@ test_that("genes", {
         vapply(
             X = x,
             FUN = class,
-            FUN.VALUE = character(1L),
+            FUN.VALUE = "character",
             SIMPLIFY = TRUE,
             USE.NAMES = FALSE),
         ensemblReturn
