@@ -151,7 +151,7 @@ ensembl <- function(
     ))
 
     inform(paste(
-        "Fetching Ensembl annotations from AnnotationHub",
+        "Fetching Ensembl", format, "from AnnotationHub",
         packageVersion("AnnotationHub"),
         paste0("(", snapshotDate(ah), ")")
     ))
