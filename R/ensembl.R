@@ -35,7 +35,7 @@
 #' @family Gene Functions
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom BiocGenerics organism
+#' @importFrom BiocGenerics organism start
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom utils packageVersion
 #'
@@ -245,7 +245,7 @@ ensembl <- function(
                 "seq_coord_system",
                 "entrezid"),
             return.type = return)
-        rownamesCol <- "gene_id"
+        idCol <- "gene_id"
     } else if (format == "transcripts") {
         data <- transcripts(
             edb,
@@ -257,23 +257,24 @@ ensembl <- function(
                 "tx_support_level",
                 "gene_id"),
             return.type = return)
-        rownamesCol <- "tx_id"
+        idCol <- "tx_id"
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = return)
-        rownamesCol <- "gene_id"
+        idCol <- "gene_id"
     } else if (format == "tx2gene") {
         data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = return)
-        rownamesCol <- "tx_id"
+        idCol <- "tx_id"
     }
 
     # Convert column names into desired convention
     data <- camel(data)
+    idCol <- camel(idCol)
 
     # Unique symbol mode
     if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
@@ -285,9 +286,13 @@ ensembl <- function(
         data <- .addBroadClassCol(data)
     }
 
-    # Add rownames
-    if (!is(data, "GRanges")) {
-        rownames(data) <- data[[camel(rownamesCol)]]
+    # Sort by identifier
+    if (is(data, "GRanges")) {
+        data <- data %>%
+            .[order(mcols(.)[[idCol]], start(.))]
+    } else {
+        # Add rownames
+        rownames(data) <- data[[idCol]]
         data <- data %>%
             .[order(rownames(.)), , drop = FALSE]
     }
