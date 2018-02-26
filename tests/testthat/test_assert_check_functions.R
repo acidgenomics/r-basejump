@@ -30,7 +30,7 @@ test_that("assertFormalCompress", {
 })
 
 test_that("assertFormalGene2symbol", {
-    gene2symbol <- gene2symbol("Homo sapiens", release = ensemblRelease)
+    gene2symbol <- gene2symbol(human, release = ensemblRelease)
     genes <- head(rownames(gene2symbol), 2L)
     x <- data.frame(
         sample1 = c(1L, 2L),
@@ -103,7 +103,7 @@ test_that("assertIsAnIntegerOrNULL", {
 })
 
 test_that("assertIsAnnotable", {
-    annotable <- annotable("Homo sapiens")
+    annotable <- annotable(human)
     expect_silent(assertIsAnnotable(annotable))
     expect_error(
         assertIsAnnotable(mtcars),
@@ -199,7 +199,7 @@ test_that("assertIsFillScaleDiscreteOrNULL", {
 })
 
 test_that("assertIsGene2symbol", {
-    gene2symbol <- gene2symbol("Homo sapiens")
+    gene2symbol <- gene2symbol(human)
     expect_silent(assertIsGene2symbol(gene2symbol))
     expect_error(
         assertIsGene2symbol(mtcars),
@@ -243,7 +243,7 @@ test_that("isImplicitInteger", {
 })
 
 test_that("assertIsTx2gene", {
-    tx2gene <- tx2gene("Homo sapiens")
+    tx2gene <- tx2gene(human)
     expect_silent(assertIsTx2gene(tx2gene))
     expect_error(
         assertIsTx2gene(mtcars),

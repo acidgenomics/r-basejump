@@ -22,9 +22,7 @@ test_that("genes", {
     x <- mapply(
         FUN = ensembl,
         return = ensemblReturn,
-        MoreArgs = list(
-            organism = organism,
-            release = ensemblRelease),
+        MoreArgs = list(organism = human, release = ensemblRelease),
         SIMPLIFY = FALSE,
         USE.NAMES = TRUE)
     expect_identical(
@@ -84,36 +82,30 @@ test_that("genes", {
 test_that("GRCh37 legacy genome build", {
     # genes
     expect_identical(
-        annotable(organism, genomeBuild = "GRCh37"),
+        annotable(human, genomeBuild = "GRCh37"),
         grch37
     )
     expect_identical(
-        annotable(organism, genomeBuild = "hg19"),
+        annotable(human, genomeBuild = "hg19"),
         grch37
     )
 
     # gene2symbol
     expect_identical(
-        annotable(
-            organism,
-            genomeBuild = "GRCh37",
-            format = "gene2symbol"),
+        annotable(human, genomeBuild = "GRCh37", format = "gene2symbol"),
         grch37[, c("ensgene", "symbol")]
     )
 
     # transcripts
     # TODO Add support for this in future update
     expect_error(
-        annotable(organism, format = "transcripts", genomeBuild = "GRCh37"),
+        annotable(human, format = "transcripts", genomeBuild = "GRCh37"),
         "Ensembl annotations for Homo sapiens : GRCh37 were not found"
     )
 
     # tx2gene
     expect_identical(
-        annotable(
-            organism,
-            genomeBuild = "GRCh37",
-            format = "tx2gene"),
+        annotable(human, genomeBuild = "GRCh37", format = "tx2gene"),
         grch37Tx2gene
     )
 })
@@ -121,8 +113,8 @@ test_that("GRCh37 legacy genome build", {
 test_that("annotable", {
     # Legacy `annotable()` returns data.frame
     expect_identical(
-        annotable(organism, release = ensemblRelease),
-        genes(organism, release = ensemblRelease, return = "data.frame")
+        annotable(human, release = ensemblRelease),
+        genes(human, release = ensemblRelease, return = "data.frame")
     )
 
     # data.frame
@@ -173,11 +165,8 @@ test_that("Annotable tibble with duplicate ID rows", {
 })
 
 test_that("annotable : Unique symbol mode", {
-    anno <- annotable(organism, uniqueSymbol = TRUE)
-    g2s <- annotable(
-        object = "Homo sapiens",
-        format = "gene2symbol",
-        uniqueSymbol = TRUE)
+    anno <- annotable(human, uniqueSymbol = TRUE)
+    g2s <- annotable(human, format = "gene2symbol", uniqueSymbol = TRUE)
     # Check for `.1` in `symbol` column
     expect_true(any(grepl("\\.1$", anno[["symbol"]])))
     expect_true(any(grepl("\\.1$", g2s[["symbol"]])))
@@ -191,7 +180,7 @@ test_that("annotable : Unique symbol mode", {
 # General ======================================================================
 test_that("Unsupported Ensembl release", {
     expect_error(
-        ensembl(organism, release = 86L),
+        ensembl(human, release = 86L),
         "is_greater_than_or_equal_to : "
     )
 })
@@ -205,11 +194,11 @@ test_that("Unsupported organism", {
 
 test_that("Bad input", {
     expect_error(
-        ensembl(c("human", "mouse")),
+        ensembl(c(human, mouse)),
         "is_a_string : "
     )
     expect_error(
-        ensembl(organism, format = "XXX"),
+        ensembl(human, format = "XXX"),
         "is_subset : The element 'XXX' in format is not in"
     )
 })
@@ -252,15 +241,12 @@ test_that("convertGenesToSymbols : matrix", {
 })
 
 test_that("convertGenesToSymbols : Unique symbol mode", {
-    g2s <- gene2symbol("Homo sapiens", uniqueSymbol = FALSE)
+    g2s <- gene2symbol(human, uniqueSymbol = FALSE)
     expect_true(any(duplicated(g2s[["symbol"]])))
     # Get the duplicate gene identifiers
     dupes <- g2s %>%
         .[which(duplicated(.[["symbol"]])), "ensgene", drop = TRUE]
-    x <- convertGenesToSymbols(
-        object = dupes,
-        gene2symbol = g2s,
-        uniqueSymbol = TRUE)
+    x <- convertGenesToSymbols(dupes, gene2symbol = g2s, uniqueSymbol = TRUE)
     expect_false(any(duplicated(x)))
 })
 
@@ -268,15 +254,11 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
     vec <- c("EGFP", "ENSMUSG00000000001")
     g2s <- suppressWarnings(
-        convertGenesToSymbols(
-            object = vec,
-            organism = "Mus musculus", release = ensemblRelease)
+        convertGenesToSymbols(vec, organism = mouse, release = ensemblRelease)
     )
     expect_identical(g2s, c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3"))
     expect_warning(
-        convertGenesToSymbols(
-            object = vec,
-            organism = "Mus musculus", release = ensemblRelease),
+        convertGenesToSymbols(vec, organism = mouse, release = ensemblRelease),
         "Failed to match all genes to symbols: EGFP"
     )
 })
@@ -362,10 +344,10 @@ test_that("Matrix", {
 
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
-    x <- gene2symbol(organism)
+    x <- gene2symbol(human)
     expect_identical(
         x,
-        ensembl(organism, format = "gene2symbol", return = "data.frame")
+        ensembl(human, format = "gene2symbol", return = "data.frame")
     )
     expect_identical(
         colnames(x),
@@ -377,9 +359,9 @@ test_that("gene2symbol", {
 
 # tx2gene ======================================================================
 test_that("tx2gene", {
-    x <- tx2gene(organism)
+    x <- tx2gene(human)
     expect_identical(
         x,
-        ensembl(organism, format = "tx2gene", return = "data.frame")
+        ensembl(human, format = "tx2gene", return = "data.frame")
     )
 })
