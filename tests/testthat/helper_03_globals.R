@@ -20,5 +20,6 @@ ensemblReturn <- c("data.frame", "DataFrame", "GRanges")
 ensemblURL <- "ftp://ftp.ensembl.org/pub/release-89"
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 heatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
+human <- "Homo sapiens"
+mouse <- "Mus musculus"
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
-organism <- "Homo sapiens"

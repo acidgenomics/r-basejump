@@ -169,10 +169,10 @@ test_that("removeNA : character", {
 
 # sanitizeAnnotable ============================================================
 test_that("sanitizeAnnotable", {
-    human <- annotable("Homo sapiens")
-    sanitized <- sanitizeAnnotable(human)
+    x <- annotable(human) %>%
+        sanitizeAnnotable()
     expect_identical(
-        lapply(sanitized, class),
+        lapply(x, class),
         list(
             "ensgene" = "character",
             "symbol" = "character",
