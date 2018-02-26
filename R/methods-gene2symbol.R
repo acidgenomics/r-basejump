@@ -5,6 +5,7 @@
 #' @family Gene Functions
 #'
 #' @inherit ensembl
+#' @inheritParams general
 #'
 #' @return [data.frame].
 #'

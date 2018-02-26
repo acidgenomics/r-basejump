@@ -13,6 +13,10 @@ gene2symbol(object, ...)
   release = NULL, uniqueSymbol = FALSE)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
