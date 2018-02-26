@@ -1,209 +1,5 @@
 context("Ensembl Functions")
 
-# annotable
-# ensembl
-# genes
-#
-# gene2symbol
-# gene2symbolFromGFF
-#
-# transcripts
-#
-# tx2gene
-# tx2geneFromGFF
-
-# genes ========================================================================
-test_that("genes", {
-    nGene <- 63970L
-    nMeta <- 11L
-    dim <- c(nGene, nMeta)
-
-    # Loop across the different returns
-    x <- mapply(
-        FUN = ensembl,
-        return = ensemblReturn,
-        MoreArgs = list(organism = human, release = ensemblRelease),
-        SIMPLIFY = FALSE,
-        USE.NAMES = TRUE)
-    expect_identical(
-        vapply(
-            X = x,
-            FUN = class,
-            FUN.VALUE = character(1L),
-            USE.NAMES = FALSE),
-        ensemblReturn
-    )
-
-    # Dimensions
-    expect_identical(dim(x[["data.frame"]]), dim)
-    expect_identical(dim(x[["DataFrame"]]), dim)
-    expect_identical(length(x[["GRanges"]]), nGene)
-
-    # Gene identifiers
-    head <- c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
-    expect_identical(head(rownames(x[["data.frame"]]), 3L), head)
-    expect_identical(head(rownames(x[["DataFrame"]]), 3L), head)
-    expect_identical(head(names(x[["GRanges"]]), 3L), head)
-    expect_identical(
-        rownames(x[["data.frame"]]),
-        names(x[["GRanges"]])
-    )
-
-    # Metadata columns
-    mcols <- list(
-        "ensgene" = "character",
-        "symbol" = "character",
-        "description" = "character",
-        "biotype" = "character",
-        "broadClass" = "character",
-        "geneSeqStart" = "integer",
-        "geneSeqEnd" = "integer",
-        "seqName" = "character",
-        "seqStrand" = "integer",
-        "seqCoordSystem" = "character",
-        "entrez" = "list")
-    expect_identical(lapply(x[["data.frame"]], class), mcols)
-    expect_identical(lapply(x[["DataFrame"]], class), mcols)
-    expect_identical(
-        lapply(mcols(x[["GRanges"]]), class),
-        mcols[c(
-            "ensgene",
-            "symbol",
-            "description",
-            "biotype",
-            "broadClass",
-            "seqCoordSystem",
-            "entrez"
-        )]
-    )
-})
-
-test_that("GRCh37 legacy genome build", {
-    # genes
-    expect_identical(
-        annotable(human, genomeBuild = "GRCh37"),
-        grch37
-    )
-    expect_identical(
-        annotable(human, genomeBuild = "hg19"),
-        grch37
-    )
-
-    # gene2symbol
-    expect_identical(
-        annotable(human, genomeBuild = "GRCh37", format = "gene2symbol"),
-        grch37[, c("ensgene", "symbol")]
-    )
-
-    # transcripts
-    # TODO Add support for this in future update
-    expect_error(
-        annotable(human, format = "transcripts", genomeBuild = "GRCh37"),
-        "Ensembl annotations for Homo sapiens : GRCh37 were not found"
-    )
-
-    # tx2gene
-    expect_identical(
-        annotable(human, genomeBuild = "GRCh37", format = "tx2gene"),
-        grch37Tx2gene
-    )
-})
-
-test_that("annotable", {
-    # Legacy `annotable()` returns data.frame
-    expect_identical(
-        annotable(human, release = ensemblRelease),
-        genes(human, release = ensemblRelease, return = "data.frame")
-    )
-
-    # data.frame
-    x <- annotable(grch37)
-    expect_identical(dim(x), c(63677L, 10L))
-    expect_identical(
-        lapply(x, class),
-        list(
-            ensgene = "character",
-            symbol = "character",
-            description = "character",
-            biotype = "character",
-            broadClass = "character",
-            chr = "character",
-            start = "integer",
-            end = "integer",
-            strand = "integer",
-            entrez = "list"
-        )
-    )
-
-    # Only full gene annotables are supported
-    expect_error(
-        annotable(grch37[, c("ensgene", "symbol")]),
-        "is_subset :"
-    )
-})
-
-test_that("DataFrame AsIs coercion", {
-    # `rowData()` will output `entrez` column as `AsIs` instead of `list`
-    # TODO Add support and testing for DataFrame class
-    expect_warning(
-        annotable(annotable_AsIs),
-        paste(
-            "Genes without annotations:",
-            "ENSMUSG00000101738, ENSMUSG00000104475, ENSMUSG00000109048"
-        )
-    )
-    x <- suppressWarnings(annotable(annotable_AsIs))
-    expect_is(x[["entrez"]], "list")
-})
-
-test_that("Annotable tibble with duplicate ID rows", {
-    # GRCh38 tibble from annotables package
-    expect_true(any(duplicated(grch38[["ensgene"]])))
-    x <- annotable(grch38)
-    expect_true(!any(duplicated(x[["ensgene"]])))
-})
-
-test_that("annotable : Unique symbol mode", {
-    anno <- annotable(human, uniqueSymbol = TRUE)
-    g2s <- annotable(human, format = "gene2symbol", uniqueSymbol = TRUE)
-    # Check for `.1` in `symbol` column
-    expect_true(any(grepl("\\.1$", anno[["symbol"]])))
-    expect_true(any(grepl("\\.1$", g2s[["symbol"]])))
-    # Ensure that symbols aren't duplicated
-    expect_true(!any(duplicated(anno[["symbol"]])))
-    expect_true(!any(duplicated(g2s[["symbol"]])))
-})
-
-
-
-# General ======================================================================
-test_that("Unsupported Ensembl release", {
-    expect_error(
-        ensembl(human, release = 86L),
-        "is_greater_than_or_equal_to : "
-    )
-})
-
-test_that("Unsupported organism", {
-    expect_error(
-        ensembl("XXX"),
-        "Ensembl annotations for XXX were not found in AnnotationHub"
-    )
-})
-
-test_that("Bad input", {
-    expect_error(
-        ensembl(c(human, mouse)),
-        "is_a_string : "
-    )
-    expect_error(
-        ensembl(human, format = "XXX"),
-        "is_subset : The element 'XXX' in format is not in"
-    )
-})
-
-
-
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : character", {
     x <- convertGenesToSymbols(
@@ -341,6 +137,123 @@ test_that("Matrix", {
 
 
 
+# genes ========================================================================
+test_that("genes", {
+    # Loop across the different returns
+    x <- mapply(
+        FUN = genes,
+        return = ensemblReturn,
+        MoreArgs = list(x = human, release = ensemblRelease),
+        SIMPLIFY = FALSE,
+        USE.NAMES = TRUE)
+    expect_identical(
+        vapply(
+            X = x,
+            FUN = class,
+            FUN.VALUE = character(1L),
+            USE.NAMES = FALSE),
+        ensemblReturn
+    )
+
+    # Dimensions
+    n <- 63970L
+    dim <- c(n, 11L)
+    expect_identical(dim(x[["data.frame"]]), dim)
+    expect_identical(dim(x[["DataFrame"]]), dim)
+    expect_identical(length(x[["GRanges"]]), n)
+
+    # Gene identifiers
+    head <- c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
+    expect_identical(head(rownames(x[["data.frame"]]), 3L), head)
+    expect_identical(head(rownames(x[["DataFrame"]]), 3L), head)
+    expect_identical(head(names(x[["GRanges"]]), 3L), head)
+    expect_identical(
+        rownames(x[["data.frame"]]),
+        names(x[["GRanges"]])
+    )
+
+    # Metadata columns
+    mcols <- list(
+        "ensgene" = "character",
+        "symbol" = "character",
+        "description" = "character",
+        "biotype" = "character",
+        "broadClass" = "character",
+        "geneSeqStart" = "integer",
+        "geneSeqEnd" = "integer",
+        "seqName" = "character",
+        "seqStrand" = "integer",
+        "seqCoordSystem" = "character",
+        "entrez" = "list")
+    expect_identical(lapply(x[["data.frame"]], class), mcols)
+    expect_identical(lapply(x[["DataFrame"]], class), mcols)
+    expect_identical(
+        lapply(mcols(x[["GRanges"]]), class),
+        mcols[c(
+            "ensgene",
+            "symbol",
+            "description",
+            "biotype",
+            "broadClass",
+            "seqCoordSystem",
+            "entrez"
+        )]
+    )
+})
+
+
+
+# transcripts ==================================================================
+test_that("transcripts", {
+    # Loop across the different returns
+    x <- mapply(
+        FUN = transcripts,
+        return = ensemblReturn,
+        MoreArgs = list(x = human, release = ensemblRelease),
+        SIMPLIFY = FALSE,
+        USE.NAMES = TRUE)
+    expect_identical(
+        vapply(
+            X = x,
+            FUN = class,
+            FUN.VALUE = character(1L),
+            USE.NAMES = FALSE),
+        ensemblReturn
+    )
+
+    # Dimensions
+    n <- 216741L
+    dim <- c(n, 7L)
+    expect_identical(dim(x[["data.frame"]]), dim)
+    expect_identical(dim(x[["DataFrame"]]), dim)
+    expect_identical(length(x[["GRanges"]]), n)
+
+    # Transcript identifiers
+    head <- c("ENST00000000233", "ENST00000000412", "ENST00000000442")
+    expect_identical(head(rownames(x[["data.frame"]]), 3L), head)
+    expect_identical(head(rownames(x[["DataFrame"]]), 3L), head)
+    expect_identical(head(names(x[["GRanges"]]), 3L), head)
+    expect_identical(
+        rownames(x[["data.frame"]]),
+        names(x[["GRanges"]])
+    )
+
+    # Metadata columns
+    mcols <- list(
+        "enstxp" = "character",
+        "biotype" = "character",
+        "broadClass" = "character",
+        "txCdsSeqStart" = "integer",
+        "txCdsSeqEnd" = "integer",
+        "txSupportLevel" = "integer",
+        "ensgene" = "character")
+    expect_identical(lapply(x[["data.frame"]], class), mcols)
+    expect_identical(lapply(x[["DataFrame"]], class), mcols)
+    expect_identical(lapply(mcols(x[["GRanges"]]), class), mcols)
+})
+
+
+
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
     x <- gene2symbol(human)
@@ -362,5 +275,135 @@ test_that("tx2gene", {
     expect_identical(
         x,
         ensembl(human, format = "tx2gene", return = "data.frame")
+    )
+})
+
+
+
+# annotable (legacy) ===========================================================
+test_that("annotable : character", {
+    # Legacy `annotable()` returns data.frame
+    expect_identical(
+        annotable(human, release = ensemblRelease),
+        genes(human, release = ensemblRelease, return = "data.frame")
+    )
+})
+
+test_that("annotable : data.frame", {
+    x <- annotable(grch37)
+    expect_identical(dim(x), c(63677L, 10L))
+    expect_identical(
+        lapply(x, class),
+        list(
+            ensgene = "character",
+            symbol = "character",
+            description = "character",
+            biotype = "character",
+            broadClass = "character",
+            chr = "character",
+            start = "integer",
+            end = "integer",
+            strand = "integer",
+            entrez = "list"
+        )
+    )
+    # Only full gene annotables are supported
+    expect_error(
+        annotable(grch37[, c("ensgene", "symbol")]),
+        "is_subset :"
+    )
+})
+
+test_that("annotable : DataFrame AsIs coercion", {
+    # `rowData()` will output `entrez` column as `AsIs` instead of `list`
+    # TODO Add support and testing for DataFrame class
+    expect_warning(
+        annotable(annotable_AsIs),
+        paste(
+            "Genes without annotations:",
+            "ENSMUSG00000101738, ENSMUSG00000104475, ENSMUSG00000109048"
+        )
+    )
+    x <- suppressWarnings(annotable(annotable_AsIs))
+    expect_is(x[["entrez"]], "list")
+})
+
+test_that("annotable : tibble with duplicate ID rows", {
+    # GRCh38 tibble from annotables package
+    expect_true(any(duplicated(grch38[["ensgene"]])))
+    x <- annotable(grch38)
+    expect_true(!any(duplicated(x[["ensgene"]])))
+})
+
+test_that("annotable : Unique symbol mode", {
+    anno <- annotable(human, uniqueSymbol = TRUE)
+    g2s <- annotable(human, format = "gene2symbol", uniqueSymbol = TRUE)
+    # Check for `.1` in `symbol` column
+    expect_true(any(grepl("\\.1$", anno[["symbol"]])))
+    expect_true(any(grepl("\\.1$", g2s[["symbol"]])))
+    # Ensure that symbols aren't duplicated
+    expect_true(!any(duplicated(anno[["symbol"]])))
+    expect_true(!any(duplicated(g2s[["symbol"]])))
+})
+
+
+
+# GRCh37 =======================================================================
+test_that("GRCh37 genome build", {
+    # genes
+    expect_identical(
+        annotable(human, genomeBuild = "GRCh37"),
+        grch37
+    )
+    expect_identical(
+        annotable(human, genomeBuild = "hg19"),
+        grch37
+    )
+
+    # gene2symbol
+    expect_identical(
+        annotable(human, genomeBuild = "GRCh37", format = "gene2symbol"),
+        grch37[, c("ensgene", "symbol")]
+    )
+
+    # transcripts
+    # TODO Add support for this in future update
+    expect_error(
+        annotable(human, format = "transcripts", genomeBuild = "GRCh37"),
+        "Ensembl annotations for Homo sapiens : GRCh37 were not found"
+    )
+
+    # tx2gene
+    expect_identical(
+        annotable(human, genomeBuild = "GRCh37", format = "tx2gene"),
+        grch37Tx2gene
+    )
+})
+
+
+
+# General ======================================================================
+test_that("Unsupported Ensembl release", {
+    expect_error(
+        ensembl(human, release = 86L),
+        "is_greater_than_or_equal_to : "
+    )
+})
+
+test_that("Unsupported organism", {
+    expect_error(
+        ensembl("XXX", genomeBuild = "YYY", release = ensemblRelease),
+        "Ensembl annotations for XXX : YYY : 87 were not found"
+    )
+})
+
+test_that("Multiple genomes input", {
+    expect_error(
+        ensembl(c(human, mouse)),
+        "is_a_string : "
+    )
+    expect_error(
+        ensembl(human, format = "XXX"),
+        "is_subset : The element 'XXX' in format is not in"
     )
 })
