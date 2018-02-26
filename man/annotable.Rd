@@ -16,6 +16,10 @@ annotable(object, ...)
 \S4method{annotable}{data.frame}(object)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{format}{Desired annotation data format, either "\code{genes}",
 "\code{transcripts}", "\code{gene2symbol}"., or "\code{tx2gene}".}
 

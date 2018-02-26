@@ -12,6 +12,10 @@ tx2gene(object, ...)
 \S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
 \item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
