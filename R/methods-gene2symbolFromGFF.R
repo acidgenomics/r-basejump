@@ -99,5 +99,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 gene2symbolFromGTF <- function(...) {
-    gene2symbolFromGFF(...)
+    gene2symbolFromGFF(...)  # nocov
 }
