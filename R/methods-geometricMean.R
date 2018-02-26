@@ -116,5 +116,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 geomean <- function(...) {
-    geometricMean(...)
+    geometricMean(...)  # nocov
 }
