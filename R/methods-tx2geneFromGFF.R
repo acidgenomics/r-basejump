@@ -88,5 +88,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 tx2geneFromGTF <- function(...) {
-    tx2geneFromGFF(...)
+    tx2geneFromGFF(...)  # nocov
 }
