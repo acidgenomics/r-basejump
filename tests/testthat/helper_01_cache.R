@@ -30,7 +30,7 @@ mapply(
         }
         # Load R Data file
         if (grepl("\\.rda$", file)) {
-            inform(paste("Loading", file))
+            message(paste("Loading", file))
             load(file, envir = envir)
         }
     },
