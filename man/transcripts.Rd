@@ -6,11 +6,15 @@
 \alias{transcripts,character-method}
 \title{Transcript Annotations}
 \usage{
+transcripts(x, ...)
+
 \S4method{transcripts}{character}(x, genomeBuild = NULL, release = NULL,
   return = "GRanges")
 }
 \arguments{
 \item{x}{Primary object.}
+
+\item{...}{Additional arguments.}
 
 \item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
