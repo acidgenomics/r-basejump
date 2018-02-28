@@ -187,7 +187,10 @@ test_that("readFileByExtension : Table format file (.txt)", {
 })
 
 test_that("readFileByExtension : Excel file (.xlsx)", {
-    xlsx <- readFileByExtension("mtcars.xlsx")
+    # Use remote file to check Windows support. Excel files need to be
+    # written as binary on Windows to load properly. See `localOrRemoteFile()`
+    # for more information.
+    xlsx <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
     expect_is(xlsx, "tbl_df")
 })
 
