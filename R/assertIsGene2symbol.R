@@ -24,4 +24,5 @@ assertIsGene2symbol <- function(x, severity = "stop") {
         x = colnames(x),
         y = c("ensgene", "symbol"),
         severity = severity)
+    assert_has_rows(x, severity = severity)
 }

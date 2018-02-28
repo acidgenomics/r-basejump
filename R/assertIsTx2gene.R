@@ -24,4 +24,5 @@ assertIsTx2gene <- function(x, severity = "stop") {
         x = colnames(x),
         y = c("enstxp", "ensgene"),
         severity = severity)
+    assert_has_rows(x, severity = severity)
 }
