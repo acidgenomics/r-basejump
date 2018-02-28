@@ -13,6 +13,10 @@
 #' colnames(mcols(data))
 NULL
 
+#' @importFrom ensembldb transcripts
+#' @export
+ensembldb::transcripts
+
 
 
 # Methods ======================================================================

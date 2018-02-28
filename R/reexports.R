@@ -6,16 +6,6 @@ dplyr::pull
 
 
 
-#' @importFrom ensembldb genes
-#' @export
-ensembldb::genes
-
-#' @importFrom ensembldb transcripts
-#' @export
-ensembldb::transcripts
-
-
-
 #' @importFrom fs dir_create
 #' @export
 fs::dir_create
