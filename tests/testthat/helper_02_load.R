@@ -1,7 +1,0 @@
-load("annotable_AsIs.rda")
-load("counts.rda")
-load("grch37.rda")
-load("grch37Tx2gene.rda")
-load("grch38.rda")
-load("makeNames.rda")
-load("plotlist.rda")
