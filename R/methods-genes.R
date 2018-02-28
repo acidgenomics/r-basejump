@@ -4,14 +4,8 @@
 #' @name genes
 #' @family Gene Functions
 #'
-#' @importFrom ensembldb genes
-#'
 #' @inherit ensembl
 #' @inheritParams general
-#'
-
-#'
-#' @export
 #'
 #' @examples
 #' # GRanges return
@@ -21,7 +15,7 @@
 #'
 #' # Legacy GRCh37/hg19 genome build support
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
-ensembldb::genes
+NULL
 
 
 

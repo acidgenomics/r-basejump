@@ -5,6 +5,10 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{genes}
+\alias{reexports}
+\alias{transcripts}
+\alias{reexports}
 \alias{dir_create}
 \alias{reexports}
 \alias{dir_delete}
@@ -58,6 +62,8 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
+
+  \item{ensembldb}{\code{\link[ensembldb]{genes}}, \code{\link[ensembldb]{transcripts}}}
 
   \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{dir_delete}}, \code{\link[fs]{dir_exists}}, \code{\link[fs]{file_delete}}, \code{\link[fs]{file_exists}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
 

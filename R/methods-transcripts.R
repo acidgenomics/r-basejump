@@ -4,18 +4,14 @@
 #' @name transcripts
 #' @family Gene Functions
 #'
-#' @importFrom ensembldb transcripts
-#'
 #' @inherit ensembl
 #' @inheritParams general
-#'
-#' @export
 #'
 #' @examples
 #' data <- transcripts("Homo sapiens")
 #' summary(data)
 #' colnames(mcols(data))
-ensembldb::transcripts
+NULL
 
 
 
