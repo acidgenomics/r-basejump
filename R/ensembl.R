@@ -62,6 +62,9 @@
 #' @param return Class of the returned object. Can be "`data.frame`",
 #'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
 #'   additional information.
+#' @param metadata Include the AnnotationHub metadata inside a list. Useful
+#'   for documenting where the annotations were sourced from inside
+#'   AnnotationHub.
 #'
 #' @return `GRanges`, `data.frame`, or `DataFrame`.
 #' @export
@@ -71,11 +74,19 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
+#' # Genes
 #' genes <- ensembl("Homo sapiens", format = "genes")
 #' summary(genes)
 #'
+#' # Transcripts
 #' transcripts <- ensembl("Homo sapiens", format = "transcripts")
 #' summary(transcripts)
+#'
+#' # Include AnnotationHub metadata
+#' x <- ensembl("Homo sapiens", metadata = TRUE)
+#' class(x)
+#' names(x)
+#' glimpse(x[["metadata"]])
 ensembl <- function(
     organism,
     format = "genes",
@@ -84,7 +95,8 @@ ensembl <- function(
     uniqueSymbol = FALSE,
     broadClass = TRUE,
     sanitizeColnames = TRUE,
-    return = "GRanges") {
+    return = "GRanges",
+    metadata = FALSE) {
     assert_is_a_string(organism)
     assert_is_a_string(format)
     assert_is_subset(
@@ -100,6 +112,7 @@ ensembl <- function(
     assert_is_a_bool(broadClass)
     assert_is_a_bool(sanitizeColnames)
     .assertFormalEnsembldbReturn(return)
+    assert_is_a_bool(metadata)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -164,17 +177,15 @@ ensembl <- function(
     mcols <- mcols(ahDb)
     if (!is.null(genomeBuild)) {
         mcols <- mcols %>%
-            .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE), , drop = FALSE]
+            .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE), ,
+              drop = FALSE]
     }
     if (!is.null(release)) {
         mcols <- mcols %>%
             .[grep(release, .[["tags"]]), , drop = FALSE]
     }
-    # Always pick the latest release by AH identifier
-    match <- tail(mcols, n = 1L)
-
-    # Abort on organism failure
-    if (!nrow(match)) {
+    # Abort on match failure
+    if (!nrow(mcols)) {
         msg <- paste("Ensembl annotations for", organism)
         if (!is.null(genomeBuild)) {
             msg <- paste(msg, genomeBuild, sep = " : ")
@@ -189,9 +200,12 @@ ensembl <- function(
         abort(msg)
     }
 
+    # Always pick the latest release by AH identifier
+    match <- tail(mcols, 1L)
     id <- rownames(match)
-    genomeBuild <- match[["genome"]]
-    dataDate <- match[["rdatadateadded"]]
+    meta <- as.list(match)
+    # Put the AnnotationHub ID first in the lists
+    meta <- c("id" = id, meta)
 
     # ensembldb ================================================================
     # This step will also output `txProgressBar()` on a fresh install. Using
@@ -205,9 +219,9 @@ ensembl <- function(
     inform(paste(
         paste0(id, ":"),
         organism(edb),
-        genomeBuild,
+        meta[["genome"]],
         "Ensembl", ensemblVersion(edb),
-        paste0("(", dataDate, ")")
+        paste0("(", meta[["rdatadateadded"]], ")")
     ))
 
     # Now we can force detach ensembldb and other unwanted dependendcies from
@@ -300,6 +314,11 @@ ensembl <- function(
     # Sanitize columns
     if (isTRUE(sanitizeColnames)) {
         data <- .sanitizeAnnotationCols(data, format = format)
+    }
+
+    # Stash the AnnotationHub metadata inside a list, if desired
+    if (isTRUE(metadata)) {
+        data <- list(data = data, metadata = meta)
     }
 
     data

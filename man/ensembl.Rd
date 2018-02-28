@@ -6,7 +6,7 @@
 \usage{
 ensembl(organism, format = "genes", genomeBuild = NULL, release = NULL,
   uniqueSymbol = FALSE, broadClass = TRUE, sanitizeColnames = TRUE,
-  return = "GRanges")
+  return = "GRanges", metadata = FALSE)
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -38,6 +38,10 @@ output.}
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
 "\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
 additional information.}
+
+\item{metadata}{Include the AnnotationHub metadata inside a list. Useful
+for documenting where the annotations were sourced from inside
+AnnotationHub.}
 }
 \value{
 \code{GRanges}, \code{data.frame}, or \code{DataFrame}.
@@ -80,11 +84,19 @@ semantically-meaningful groups:
 }
 
 \examples{
+# Genes
 genes <- ensembl("Homo sapiens", format = "genes")
 summary(genes)
 
+# Transcripts
 transcripts <- ensembl("Homo sapiens", format = "transcripts")
 summary(transcripts)
+
+# Include AnnotationHub metadata
+x <- ensembl("Homo sapiens", metadata = TRUE)
+class(x)
+names(x)
+glimpse(x[["metadata"]])
 }
 \seealso{
 \itemize{
