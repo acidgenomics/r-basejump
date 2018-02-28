@@ -12,7 +12,6 @@ files <- c(
     "mtcars.rda",
     "mtcars.tsv",
     "mtcars.txt",
-    "mtcars.xlsx",
     "multi.rda",
     "plotlist.rda",
     "renamed.rda",
