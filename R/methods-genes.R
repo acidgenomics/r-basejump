@@ -17,6 +17,10 @@
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
 NULL
 
+#' @importFrom ensembldb genes
+#' @export
+ensembldb::genes
+
 
 
 # Methods ======================================================================
