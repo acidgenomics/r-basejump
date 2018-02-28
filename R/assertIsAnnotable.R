@@ -23,4 +23,5 @@ assertIsAnnotable <- function(x, severity = "stop") {
         x = c("ensgene", "symbol", "description", "biotype", "broadClass"),
         y = colnames(x),
         severity = severity)
+    assert_has_rows(x, severity = severity)
 }
