@@ -34,6 +34,10 @@ files that contain a single object, and the internal object name must match
 the file name exactly. These conventions match the recommendations of the
 RStudio team, which recommends saving single objects per file.
 }
+\note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+}
 \examples{
 # Load the internal GRCh37 gene annotations data
 loadData(grch37, dir = system.file("extdata", package = "basejump"))

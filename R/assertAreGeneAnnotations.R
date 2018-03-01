@@ -1,4 +1,6 @@
-#' Assert Is Ensembl Annotations Data Frame
+# TODO Add support for GRanges
+
+#' Assert Are Ensembl Gene Annotations
 #'
 #' @family Assert Check Functions
 #' @inherit assert
@@ -17,7 +19,7 @@
 #' tryCatch(
 #'     assertIsAnnotable(mtcars),
 #'     error = function(e) e)
-assertIsAnnotable <- function(x, severity = "stop") {
+assertAreGeneAnnotations <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_is_subset(
         x = c("ensgene", "symbol", "description", "biotype", "broadClass"),

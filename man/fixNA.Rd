@@ -53,6 +53,6 @@ tibble(
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{removeNA}}, \code{\link{sanitizeAnnotable}},
-  \code{\link{sanitizeColData}}
+  \code{\link{removeNA}}, \code{\link{sanitizeColData}},
+  \code{\link{sanitizeGeneAnnotations}}
 }

@@ -104,8 +104,7 @@ glimpse(x[["metadata"]])
 \item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 
-Other Gene Functions: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
   \code{\link{gene2symbolFromGFF}},

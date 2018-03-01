@@ -22,13 +22,17 @@ Silently return named character vector of file paths.
 \description{
 Load Data File as Name
 }
+\note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+}
 \examples{
 loadDataAsName(
-    annotable = "grch37",
-    tx2gene = "grch37Tx2gene",
+    hg19 = grch37,
+    hg19_tx2gene = grch37Tx2gene,
     dir = system.file("extdata", package = "basejump")
 )
-glimpse(annotable)
+glimpse(hg19)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},

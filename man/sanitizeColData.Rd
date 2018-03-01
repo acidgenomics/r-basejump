@@ -28,5 +28,5 @@ sanitizeColData(colData)
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{sanitizeAnnotable}}
+  \code{\link{sanitizeGeneAnnotations}}
 }
