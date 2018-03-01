@@ -16,6 +16,9 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
 #' @family Read Functions
 #'
 #' @importFrom fs path_join path_real
@@ -41,11 +44,8 @@ loadData <- function(
     assert_is_environment(envir)
 
     # `dots()` method will fail here because the objects aren't present
-    dots <- as.list(substitute(list(...)))[-1L]
-    invisible(lapply(dots, assert_is_name))
-
-    names <- as.character(dots)
-    files <- path_join(c(dir, paste0(names, ".rda")))
+    dots <- dots(..., character = TRUE)
+    files <- path_join(c(dir, paste0(dots, ".rda")))
     assert_all_are_existing_files(files)
 
     inform(paste("Loading", toString(basename(files)), "from", dir))
@@ -55,7 +55,7 @@ loadData <- function(
         MoreArgs = list(envir = envir),
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE)
-    names(objects) <- names
+    names(objects) <- dots
 
     invisible(objects)
 }
