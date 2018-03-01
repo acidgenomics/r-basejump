@@ -27,8 +27,7 @@ Strip Transcript Versions
 stripTranscriptVersions("ENSMUST00000000001.1")
 }
 \seealso{
-Other Gene Functions: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
