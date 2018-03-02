@@ -98,6 +98,18 @@ test_that("camel : data.frame", {
     )
 })
 
+test_that("camel : GRanges", {
+    # gr object is already camel formatted
+    colnames <- colnames(mcols(gr))
+    x <- snake(gr)
+    expect_identical(
+        camel(x) %>%
+            mcols() %>%
+            colnames(),
+        colnames
+    )
+})
+
 test_that("camel : list", {
     expect_identical(
         camel(makeNames[["list"]], strict = TRUE),
@@ -205,6 +217,22 @@ test_that("dotted : data.frame", {
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
+    )
+})
+
+test_that("dotted : GRanges", {
+    x <- dotted(gr)
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "ensgene",
+            "symbol",
+            "description",
+            "biotype",
+            "broad.Class",
+            "seq.Coord.System",
+            "entrez"
+        )
     )
 })
 
@@ -322,6 +350,22 @@ test_that("snake : data.frame", {
     expect_identical(
         x,
         "mazda_rx4"
+    )
+})
+
+test_that("snake : GRanges", {
+    x <- snake(gr)
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "ensgene",
+            "symbol",
+            "description",
+            "biotype",
+            "broad_class",
+            "seq_coord_system",
+            "entrez"
+        )
     )
 })
 
@@ -476,6 +520,22 @@ test_that("upperCamel : data.frame", {
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
         as.character(1L:nrow(mtcars))
+    )
+})
+
+test_that("upperCamel : GRanges", {
+    x <- upperCamel(gr)
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "Ensgene",
+            "Symbol",
+            "Description",
+            "Biotype",
+            "BroadClass",
+            "SeqCoordSystem",
+            "Entrez"
+        )
     )
 })
 
