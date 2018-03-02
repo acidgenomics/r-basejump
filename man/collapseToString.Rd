@@ -81,5 +81,5 @@ mtcars \%>\%
 
 Other Sanitization Functions: \code{\link{fixNA}},
   \code{\link{removeNA}}, \code{\link{sanitizeColData}},
-  \code{\link{sanitizeGeneAnnotations}}
+  \code{\link{sanitizeRowData}}
 }
