@@ -30,6 +30,9 @@ symbols. This function saves each object into a separate \code{.rda} file rather
 than combining into a single file.
 }
 \note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+
 These function will \emph{overwrite} existing saved data, following the
 same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\link[devtools:use_data]{devtools::use_data()}} does
 not overwrite by default if that behavior is preferred.
