@@ -172,29 +172,6 @@ test_that("removeNA : character", {
 
 
 
-# sanitizeAnnotable ============================================================
-test_that("sanitizeAnnotable", {
-    x <- annotable(human) %>%
-        sanitizeAnnotable()
-    expect_identical(
-        lapply(x, class),
-        list(
-            "ensgene" = "character",
-            "symbol" = "character",
-            "description" = "character",
-            "biotype" = "character",
-            "broadClass" = "character",
-            "geneSeqStart" = "integer",
-            "geneSeqEnd" = "integer",
-            "seqName" = "character",
-            "seqStrand" = "integer",
-            "seqCoordSystem" = "character"
-        )
-    )
-})
-
-
-
 # sanitizeColData ==============================================================
 test_that("sanitizeColData", {
     x <- coldata
@@ -206,4 +183,28 @@ test_that("sanitizeColData", {
         X = x,
         FUN = is.factor,
         FUN.VALUE = logical(1L))))
+})
+
+
+
+# sanitizeRowData ==============================================================
+test_that("sanitizeRowData", {
+    x <- genes(human) %>%
+        sanitizeRowData()
+    expect_identical(
+        lapply(x, class),
+        list(
+            "seqnames" = "factor",
+            "start" = "integer",
+            "end" = "integer",
+            "width" = "integer",
+            "strand" = "factor",
+            "ensgene" = "character",
+            "symbol" = "character",
+            "description" = "character",
+            "biotype" = "character",
+            "broadClass" = "character",
+            "seqCoordSystem" = "character"
+        )
+    )
 })
