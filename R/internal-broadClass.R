@@ -8,6 +8,10 @@
         data <- object
     }
 
+    # ID column
+    id <- data %>%
+        .[, .detectIDCol(.), drop = TRUE]
+
     # Biotype
     assert_any_are_matching_regex(colnames(data), "[Bb]iotype$")
     biotypeCol <- grep(
@@ -25,8 +29,6 @@
         symbol <- NA
     }
 
-    id <- data %>%
-        .[, .detectIDCol(.), drop = TRUE]
     tibble <- tibble(
         id = id,
         biotype = biotype,
