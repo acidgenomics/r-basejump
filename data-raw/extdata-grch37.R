@@ -9,5 +9,5 @@ rownames(grch37Tx2gene) <- grch37Tx2gene[["enstxp"]]
 saveData(
     grch37,
     grch37Tx2gene,
-    dir = file.path("inst", "extdata"),
+    dir = "inst/extdata",
     compress = "xz")

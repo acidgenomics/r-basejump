@@ -16,4 +16,4 @@ plotlist <- list(
 # Plotting example using the plotlist with cowplot
 plot_grid(plotlist = plotlist)
 
-save(plotlist, file = "~/Desktop/plotlist.rda", compress = "xz")
+saveData(plotlist, dir = "tests/testthat", compress = "xz")
