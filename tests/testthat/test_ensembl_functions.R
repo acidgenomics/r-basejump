@@ -82,7 +82,7 @@ test_that("convertGenesToSymbols : Invalid identifiers", {
 
 
 # convertTranscriptsToGenes ====================================================
-test_that("Character", {
+test_that("convertTranscriptsToGenes : character", {
     expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
@@ -107,7 +107,7 @@ test_that("Character", {
     )
 })
 
-test_that("Matrix", {
+test_that("convertTranscriptsToGenes : matrix", {
     mat <- matrix(
         data = seq(1L:8L),
         byrow = TRUE,
@@ -138,7 +138,7 @@ test_that("Matrix", {
 
 
 # genes ========================================================================
-test_that("genes", {
+test_that("genes : character", {
     # Loop across the different returns
     x <- mapply(
         FUN = genes,
@@ -203,8 +203,51 @@ test_that("genes", {
 
 
 
+# gene2symbol ==================================================================
+test_that("gene2symbol : character", {
+    x <- gene2symbol(human)
+    expect_identical(
+        x,
+        ensembl(human, format = "gene2symbol", return = "data.frame")
+    )
+    expect_identical(
+        colnames(x),
+        c("ensgene", "symbol")
+    )
+})
+
+
+
+# ensembl (general) ============================================================
+test_that("ensembl : Unsupported Ensembl release", {
+    expect_error(
+        ensembl(human, release = 86L),
+        "is_greater_than_or_equal_to : "
+    )
+})
+
+test_that("ensembl : Unsupported organism", {
+    expect_error(
+        ensembl("XXX", genomeBuild = "YYY", release = ensemblRelease),
+        "Ensembl annotations for XXX : YYY : 87 were not found"
+    )
+})
+
+test_that("ensembl : Multiple organisms", {
+    expect_error(
+        ensembl(c(human, mouse)),
+        "is_a_string : "
+    )
+    expect_error(
+        ensembl(human, format = "XXX"),
+        "is_subset : The element 'XXX' in format is not in"
+    )
+})
+
+
+
 # transcripts ==================================================================
-test_that("transcripts", {
+test_that("transcripts : character", {
     # Loop across the different returns
     x <- mapply(
         FUN = transcripts,
@@ -254,23 +297,8 @@ test_that("transcripts", {
 
 
 
-# gene2symbol ==================================================================
-test_that("gene2symbol", {
-    x <- gene2symbol(human)
-    expect_identical(
-        x,
-        ensembl(human, format = "gene2symbol", return = "data.frame")
-    )
-    expect_identical(
-        colnames(x),
-        c("ensgene", "symbol")
-    )
-})
-
-
-
 # tx2gene ======================================================================
-test_that("tx2gene", {
+test_that("tx2gene : character", {
     x <- tx2gene(human)
     expect_identical(
         x,
@@ -280,76 +308,8 @@ test_that("tx2gene", {
 
 
 
-# annotable (legacy) ===========================================================
-test_that("annotable : character", {
-    # Legacy `annotable()` returns data.frame
-    expect_identical(
-        annotable(human, release = ensemblRelease),
-        genes(human, release = ensemblRelease, return = "data.frame")
-    )
-})
-
-test_that("annotable : data.frame", {
-    x <- annotable(grch37)
-    expect_identical(dim(x), c(63677L, 10L))
-    expect_identical(
-        lapply(x, class),
-        list(
-            ensgene = "character",
-            symbol = "character",
-            description = "character",
-            biotype = "character",
-            broadClass = "character",
-            chr = "character",
-            start = "integer",
-            end = "integer",
-            strand = "integer",
-            entrez = "list"
-        )
-    )
-    # Only full gene annotables are supported
-    expect_error(
-        annotable(grch37[, c("ensgene", "symbol")]),
-        "is_subset :"
-    )
-})
-
-test_that("annotable : DataFrame AsIs coercion", {
-    # `rowData()` will output `entrez` column as `AsIs` instead of `list`
-    # TODO Add support and testing for DataFrame class
-    expect_warning(
-        annotable(annotable_AsIs),
-        paste(
-            "Genes without annotations:",
-            "ENSMUSG00000101738, ENSMUSG00000104475, ENSMUSG00000109048"
-        )
-    )
-    x <- suppressWarnings(annotable(annotable_AsIs))
-    expect_is(x[["entrez"]], "list")
-})
-
-test_that("annotable : tibble with duplicate ID rows", {
-    # GRCh38 tibble from annotables package
-    expect_true(any(duplicated(grch38[["ensgene"]])))
-    x <- annotable(grch38)
-    expect_true(!any(duplicated(x[["ensgene"]])))
-})
-
-test_that("annotable : Unique symbol mode", {
-    anno <- annotable(human, uniqueSymbol = TRUE)
-    g2s <- annotable(human, format = "gene2symbol", uniqueSymbol = TRUE)
-    # Check for `.1` in `symbol` column
-    expect_true(any(grepl("\\.1$", anno[["symbol"]])))
-    expect_true(any(grepl("\\.1$", g2s[["symbol"]])))
-    # Ensure that symbols aren't duplicated
-    expect_true(!any(duplicated(anno[["symbol"]])))
-    expect_true(!any(duplicated(g2s[["symbol"]])))
-})
-
-
-
 # GRCh37 =======================================================================
-test_that("GRCh37 genome build", {
+test_that("GRCh37 genome build support", {
     # genes
     expect_identical(
         annotable(human, genomeBuild = "GRCh37"),
@@ -377,33 +337,5 @@ test_that("GRCh37 genome build", {
     expect_identical(
         annotable(human, genomeBuild = "GRCh37", format = "tx2gene"),
         grch37Tx2gene
-    )
-})
-
-
-
-# General ======================================================================
-test_that("Unsupported Ensembl release", {
-    expect_error(
-        ensembl(human, release = 86L),
-        "is_greater_than_or_equal_to : "
-    )
-})
-
-test_that("Unsupported organism", {
-    expect_error(
-        ensembl("XXX", genomeBuild = "YYY", release = ensemblRelease),
-        "Ensembl annotations for XXX : YYY : 87 were not found"
-    )
-})
-
-test_that("Multiple genomes input", {
-    expect_error(
-        ensembl(c(human, mouse)),
-        "is_a_string : "
-    )
-    expect_error(
-        ensembl(human, format = "XXX"),
-        "is_subset : The element 'XXX' in format is not in"
     )
 })
