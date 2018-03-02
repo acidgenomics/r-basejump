@@ -2,16 +2,13 @@
 #'
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
-#' @inheritParams general
-#' @inheritParams convertGenesToSymbols
+#' @inherit convertGenesToSymbols
 #'
 #' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
-#'
-#' @return Same class as object.
 #'
 #' @examples
 #' # character
@@ -40,23 +37,19 @@ NULL
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL,
-    quiet = FALSE) {
-    # Passthrough: genomeBuild, release, quiet
+    release = NULL) {
+    # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
     assert_is_any_of(tx2gene, c("data.frame", "NULL"))
     assertIsAStringOrNULL(organism)
     assertIsAnImplicitIntegerOrNULL(release)
-    assert_is_a_bool(quiet)
 
     # If no tx2gene is provided, fall back to using Ensembl annotations
     if (!is.data.frame(tx2gene)) {
         # Generate tx2gene from Ensembl
-        if (!isTRUE(quiet)) {
-            inform("Obtaining transcript-to-gene mappings from Ensembl")
-        }
+        inform("Obtaining transcript-to-gene mappings from Ensembl")
         if (is.null(organism)) {
             organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
@@ -66,8 +59,7 @@ NULL
         tx2gene <- tx2gene(
             object = organism,
             genomeBuild = genomeBuild,
-            release = release,
-            quiet = quiet)
+            release = release)
     } else {
         assertIsTx2gene(tx2gene)
     }
@@ -98,16 +90,14 @@ NULL
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL,
-    quiet = FALSE) {
-    # Passthrough: tx2gene, organism, genomeBuild, release, quiet
+    release = NULL) {
+    # Passthrough: tx2gene, organism, genomeBuild, release
     rownames(object) <- .convertTranscriptsToGenes(
         object = rownames(object),
         tx2gene = tx2gene,
         organism = organism,
         genomeBuild = genomeBuild,
-        release = release,
-        quiet = quiet)
+        release = release)
     object
 }
 

@@ -20,6 +20,6 @@ queries, for example.
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}
+Other Atomic Vector Functions: \code{\link{grepString}},
+  \code{\link{toStringUnique}}
 }

@@ -4,8 +4,8 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
-  envir = parent.frame(), quiet = FALSE)
+assignAndSaveData(name, object, dir = ".", compress = TRUE,
+  envir = parent.frame())
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -23,8 +23,6 @@ assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
 
 \item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
 the calling environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silent named character vector of file path.
@@ -38,9 +36,15 @@ This function attempts to follow the same order as \code{\link[base:assign]{base
 }
 \examples{
 assignAndSaveData(name = "test", object = mtcars)
+exists("test", inherits = FALSE)
+file_exists("test.rda")
 
-unlink("test.rda")
+# Clean up
+rm(test)
+file_delete("test.rda")
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
+Other Write Functions: \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
 }

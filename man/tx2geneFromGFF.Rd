@@ -11,9 +11,9 @@
 \usage{
 tx2geneFromGFF(object, ...)
 
-\S4method{tx2geneFromGFF}{character}(object, quiet = FALSE)
+\S4method{tx2geneFromGFF}{character}(object)
 
-\S4method{tx2geneFromGFF}{data.frame}(object, quiet = FALSE)
+\S4method{tx2geneFromGFF}{data.frame}(object)
 
 tx2geneFromGTF(...)
 }
@@ -21,8 +21,6 @@ tx2geneFromGTF(...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.
@@ -45,10 +43,11 @@ gff <- readGFF(url)
 tx2geneFromGFF(gff) \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2gene}}
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2gene}}
 }

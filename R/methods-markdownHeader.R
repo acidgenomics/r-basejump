@@ -2,7 +2,7 @@
 #'
 #' @rdname markdownHeader
 #' @name markdownHeader
-#' @family Report Utilities
+#' @family R Markdown Functions
 #'
 #' @inheritParams general
 #'
@@ -23,51 +23,46 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom knitr asis_output
-#' @importFrom stringr str_dup
-.markdownHeader <- function(
-    object,
-    level = 2L,
-    tabset = FALSE,
-    asis = FALSE) {
-    assert_is_a_string(object)
-    assert_all_are_not_na(object)
-    assert_all_are_non_missing_nor_empty_character(object)
-    assertIsAHeaderLevel(level)
-    assert_is_a_bool(tabset)
-    assert_is_a_bool(asis)
-
-    # Add the header level
-    header <- paste(str_dup("#", level), object)
-
-    # Append tabset label
-    if (isTRUE(tabset)) {
-        header <- paste(header, "{.tabset}")
-    }
-
-    # Return
-    if (isTRUE(asis)) {
-        writeLines(c("", "", header, ""))
-    } else {
-        header %>%
-            # Ensure trailing line break
-            paste0("\n") %>%
-            # Specify that output should be handled as Markdown text
-            structure(format = "markdown") %>%
-            asis_output()
-    }
-}
-
-
-
 # Methods ======================================================================
 #' @rdname markdownHeader
+#' @importFrom knitr asis_output
+#' @importFrom stringr str_dup
 #' @export
 setMethod(
     "markdownHeader",
     signature("character"),
-    .markdownHeader)
+    function(
+        object,
+        level = 2L,
+        tabset = FALSE,
+        asis = FALSE) {
+        assert_is_a_string(object)
+        assert_all_are_not_na(object)
+        assert_all_are_non_missing_nor_empty_character(object)
+        assertIsAHeaderLevel(level)
+        assert_is_a_bool(tabset)
+        assert_is_a_bool(asis)
+
+        # Add the header level
+        header <- paste(str_dup("#", level), object)
+
+        # Append tabset label
+        if (isTRUE(tabset)) {
+            header <- paste(header, "{.tabset}")
+        }
+
+        # Return
+        if (isTRUE(asis)) {
+            writeLines(c("", "", header, ""))
+        } else {
+            header %>%
+                # Ensure trailing line break
+                paste0("\n") %>%
+                # Specify that output should be handled as Markdown text
+                structure(format = "markdown") %>%
+                asis_output()
+        }
+    })
 
 
 

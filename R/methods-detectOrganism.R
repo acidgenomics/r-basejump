@@ -17,7 +17,7 @@
 #'
 #' @rdname detectOrganism
 #' @name detectOrganism
-#' @family Gene Annotation Utilities
+#' @family Gene Functions
 #'
 #' @inheritParams general
 #' @param unique Only return unique matching organisms. Applies to character

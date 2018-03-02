@@ -2,7 +2,7 @@
 #'
 #' @rdname logRatio
 #' @name logRatio
-#' @family Math Utilities
+#' @family Math Functions
 #'
 #' @inheritParams general
 #'

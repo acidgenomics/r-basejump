@@ -4,8 +4,9 @@
 #' files. Also supports bcbio-nextgen pipeline-specific `.counts`, `.colnames`,
 #' and `.rownames` files.
 #'
-#' @family Data Import and Project Utilities
+#' @family Read Functions
 #'
+#' @importFrom fs file_move
 #' @importFrom Matrix readMM
 #' @importFrom stringr str_match
 #' @importFrom readr read_csv read_lines read_tsv
@@ -30,38 +31,37 @@
 #' - [Matrix::readMM()]: Read a MatrixMarket file.
 #'
 #' @examples
-#' readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' # Comma separated values
+#' csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' glimpse(csv)
+#'
+#' # Microsoft Excel Worksheet
+#' xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 readFileByExtension <- function(
     object,
     makeNames = "camel",
     severity = "stop",
-    quiet = FALSE,
     ...) {
     assert_is_a_string(object)
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
     assert_all_are_matching_regex(object, extPattern)
-    assert_is_a_string(makeNames)
-    assert_is_subset(makeNames, c("camel", "dotted", "snake" , "upperCamel"))
-    assert_is_a_bool(quiet)
-    assert_is_a_string(severity)
-    assert_is_subset(severity, c("stop", "warning"))
+    makeNames <- .getMakeNamesFunction(makeNames)
+    .assertFormalSeverity(severity)
 
-    file <- localOrRemoteFile(object, severity = severity, quiet = quiet)
+    file <- localOrRemoteFile(object, severity = severity)
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
     # File import, based on extension
-    if (!isTRUE(quiet)) {
-        inform(paste("Reading", names(file)))
-    }
+    inform(paste("Reading", names(file)))
 
     na <- c("", "NA", "#N/A")
 
     # Add extension to tempfile, if necessary
     if (!grepl(extPattern, file)) {
         # tempfile needs an extension or `read_excel()` call will abort
-        file.rename(from = file, to = paste0(file, ".", ext))
+        file_move(path = file, new_path = paste0(file, ".", ext))
         file <- paste0(file, ".", ext)
     }
 
@@ -105,12 +105,14 @@ readFileByExtension <- function(
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        abort("Unsupported file extension")
+        abort(paste(
+            "Unsupported file extension:",
+            basename(file)
+        ))
     }
 
     # Sanitize colnames
     if (!is.null(colnames(data))) {
-        makeNames <- get(makeNames)
         colnames(data) <- makeNames(colnames(data))
     }
 

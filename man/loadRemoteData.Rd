@@ -4,7 +4,7 @@
 \alias{loadRemoteData}
 \title{Load Remote Data}
 \usage{
-loadRemoteData(url, envir = parent.frame(), quiet = FALSE)
+loadRemoteData(url, envir = parent.frame())
 }
 \arguments{
 \item{url}{Remote URL file path to R Data file. Supports multiple URLs
@@ -12,14 +12,13 @@ passed in as a character vector.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silently return a character matrix containing URL and tempfile paths.
 }
 \description{
-Load a remote R binary file.
+Load a remote R binary file. This function is vectorized and supports
+multiple URLs in a single call.
 }
 \examples{
 objects <- loadRemoteData(c(
@@ -29,7 +28,8 @@ objects <- loadRemoteData(c(
 objects
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{readFileByExtension}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

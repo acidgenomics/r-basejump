@@ -11,7 +11,7 @@
 #'
 #' @rdname dotted
 #' @name dotted
-#' @family Make Names Utilities
+#' @family Name Functions
 #'
 #' @inheritParams general
 #'
@@ -27,10 +27,7 @@
 #'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
-#' load(system.file(
-#'     file.path("extdata", "makeNames.rda"),
-#'     package = "basejump"
-#' ))
+#' load(system.file("extdata/makeNames.rda", package = "basejump"))
 #'
 #' # Character vector
 #' character <- makeNames$character
@@ -113,6 +110,15 @@ NULL
     if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .dotted(colnames(object))
     }
+    object
+}
+
+
+
+.dotted.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- dotted(colnames)
+    colnames(mcols(object)) <- colnames
     object
 }
 
@@ -204,6 +210,15 @@ setMethod(
     "dotted",
     signature("factor"),
     .dotted.vector)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("GRanges"),
+    .dotted.mcols)
 
 
 

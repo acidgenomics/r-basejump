@@ -4,8 +4,8 @@
 \alias{transmit}
 \title{Transmit Files from a Remote FTP Server}
 \usage{
-transmit(remoteDir, localDir = getwd(), pattern, rename = NULL,
-  compress = FALSE, quiet = FALSE)
+transmit(remoteDir, localDir = ".", pattern, rename = NULL,
+  compress = FALSE)
 }
 \arguments{
 \item{remoteDir}{Remote directory URL. Currently supports FTP. Works either
@@ -19,8 +19,6 @@ with or without the trailing slash.}
 
 \item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Invisibly return a list of the files downloaded.
@@ -30,17 +28,19 @@ Utility function that supports easy file matching and download from a remote
 FTP server. Also enables on-the-fly file renaming and compression.
 }
 \examples{
-transmit(
+readme <- transmit(
     remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
     pattern = "README",
     rename = "ensembl_readme.txt",
     compress = TRUE)
+basename(readme)
+file_exists(readme)
 
 # Clean up
-unlink("ensembl_readme.txt.gz")
+file_delete("ensembl_readme.txt.gz")
 }
 \seealso{
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readYAML}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{writeCounts}}
 }

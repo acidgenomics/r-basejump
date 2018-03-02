@@ -10,9 +10,10 @@
 #' [readr](http://readr.tidyverse.org/) package, built into
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
-#' @family Write Utilities
+#' @family Write Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
+#' @importFrom fs path_join
 #' @importFrom Matrix writeMM
 #' @importFrom R.utils gzip
 #' @importFrom readr write_csv write_lines
@@ -33,12 +34,11 @@
 #' writeCounts(mtcars, gzip = TRUE)
 #'
 #' # Clean up
-#' unlink("mtcars.csv.gz")
+#' file_delete("mtcars.csv.gz")
 writeCounts <- function(
     ...,
-    dir = getwd(),
-    gzip = TRUE,
-    quiet = FALSE) {
+    dir = ".",
+    gzip = TRUE) {
     dots <- dots_list(...)
     assert_is_list(dots)
     invisible(lapply(dots, assert_has_dims))
@@ -59,16 +59,14 @@ writeCounts <- function(
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Writing", toString(names), "to", dir))
-    }
+    inform(paste("Writing", toString(names), "to", dir))
 
     files <- lapply(seq_along(dots), function(a) {
         name <- names[[a]]
         counts <- dots[[a]]
         if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
             # MatrixMarket file
-            matrixFile <- file.path(dir, paste0(name, ".mtx"))
+            matrixFile <- path_join(c(dir, paste0(name, ".mtx")))
             writeMM(counts, matrixFile)
             # Write barcodes (colnames)
             barcodes <- colnames(counts)
@@ -90,7 +88,7 @@ writeCounts <- function(
                 ext <- paste0(ext, ".gz")
             }
             fileName <- paste0(name, ext)
-            filePath <- file.path(dir, fileName)
+            filePath <- path_join(c(dir, fileName))
             # See `setAs.R` file for documentation on tibble coercion method
             write_csv(
                 x = as(counts, "tibble"),

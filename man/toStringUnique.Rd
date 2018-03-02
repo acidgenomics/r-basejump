@@ -21,4 +21,7 @@ toStringUnique(vec)
 }
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
+
+Other Atomic Vector Functions: \code{\link{grepString}},
+  \code{\link{sortUnique}}
 }

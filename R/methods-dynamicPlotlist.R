@@ -2,7 +2,7 @@
 #'
 #' @rdname dynamicPlotlist
 #' @name dynamicPlotlist
-#' @author Michael Steinbaugh
+#' @family Plot Functions
 #'
 #' @inheritParams general
 #'
@@ -33,30 +33,25 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom cowplot plot_grid
-.dynamicPlotlist <- function(
-    object,
-    return = "grid",
-    headerLevel = 2L) {
-    assert_is_a_string(return)
-    assert_is_subset(return, c("grid", "list", "markdown"))
-    assertIsAHeaderLevel(headerLevel)
-    if (return == "grid") {
-        plot_grid(plotlist = object)
-    } else if (return == "list") {
-        object
-    } else if (return == "markdown") {
-        markdownPlotlist(object, headerLevel = headerLevel)
-    }
-}
-
-
-
 # Methods ======================================================================
 #' @rdname dynamicPlotlist
+#' @importFrom cowplot plot_grid
 #' @export
 setMethod(
     "dynamicPlotlist",
     signature("list"),
-    .dynamicPlotlist)
+    function(
+        object,
+        return = "grid",
+        headerLevel = 2L) {
+        assert_is_a_string(return)
+        assert_is_subset(return, c("grid", "list", "markdown"))
+        assertIsAHeaderLevel(headerLevel)
+        if (return == "grid") {
+            plot_grid(plotlist = object)
+        } else if (return == "list") {
+            object
+        } else if (return == "markdown") {
+            markdownPlotlist(object, headerLevel = headerLevel)
+        }
+    })

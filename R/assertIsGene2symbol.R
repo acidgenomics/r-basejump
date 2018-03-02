@@ -1,6 +1,6 @@
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x [data.frame] containing Ensembl gene identifier to gene symbol
@@ -24,4 +24,5 @@ assertIsGene2symbol <- function(x, severity = "stop") {
         x = colnames(x),
         y = c("ensgene", "symbol"),
         severity = severity)
+    assert_has_rows(x, severity = severity)
 }

@@ -52,6 +52,7 @@ tibble(
     fixNA()
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{removeNA}},
-  \code{\link{sortUnique}}
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{removeNA}}, \code{\link{sanitizeColData}},
+  \code{\link{sanitizeRowData}}
 }

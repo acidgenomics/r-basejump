@@ -6,6 +6,7 @@
 #'
 #' @rdname plotHeatmap
 #' @name plotHeatmap
+#' @family Plot Functions
 #'
 #' @inheritParams general
 #'
@@ -14,6 +15,7 @@
 #'   values are "row", "column" and "none".
 #' @param annotationCol *Optional.* [data.frame] that defines annotation
 #'   mappings for the columns.
+#' @param borderColor Border color.
 #' @param clusterCols Logical determining if columns should be arranged with
 #'   hierarchical clustering. Alternatively, can define an `hclust` object.
 #' @param clusterRows Logical determining if rows should be arranged with
@@ -51,6 +53,7 @@ NULL
     clusterRows = TRUE,
     color = viridis,
     legendColor = viridis,
+    borderColor = NULL,
     title = NULL,
     ...) {
     assert_has_dims(object)
@@ -64,6 +67,7 @@ NULL
     assert_is_a_bool(clusterRows)
     assertIsHexColorFunctionOrNULL(color)
     assertIsHexColorFunctionOrNULL(legendColor)
+    assertIsAStringOrNULL(borderColor)
     assertIsAStringOrNULL(title)
 
     # Drop rows that are all zero, when row scaling is applied
@@ -113,6 +117,10 @@ NULL
         color <- color(nColor)
     }
 
+    if (is.null(borderColor)) {
+        borderColor <- NA
+    }
+
     # Dynamic column and row labeling
     if (ncol(object) <= 50L) {
         showColnames <- TRUE
@@ -130,19 +138,24 @@ NULL
         title <- ""
     }
 
-    pheatmap(
-        mat = object,
-        annotation_col = annotationCol,
-        annotation_colors = annotationColors,
-        border_color = NA,
-        cluster_cols = clusterCols,
-        cluster_rows = clusterRows,
-        color = color,
-        main = title,
-        scale = scale,
-        show_colnames = showColnames,
-        show_rownames = showRownames,
+    # Return pretty heatmap with modified defaults
+    args <- list(
+        "mat" = object,
+        "annotationCol" = annotationCol,
+        "annotationColors" = annotationColors,
+        "borderColor" = borderColor,
+        "clusterCols" = clusterCols,
+        "clusterRows" = clusterRows,
+        "color" = color,
+        "main" = title,
+        "scale" = scale,
+        "showColnames" = showColnames,
+        "showRownames" = showRownames,
         ...)
+    # Sanitize all argument names into snake case
+    names(args) <- snake(names(args))
+    assert_is_subset(names(args), formalArgs(pheatmap))
+    do.call(pheatmap, args)
 }
 
 

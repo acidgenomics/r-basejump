@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -31,11 +31,12 @@ Imports:
     AnnotationHub (>= 2.8.3),
     assertive (>= 0.3),
     BiocGenerics (>= 0.22.1),
-    cowplot (>= 0.9.1),
+    cowplot,
     datasets,
     dendsort,
     dplyr (>= 0.7.4),
     ensembldb (>= 2.0.4),
+    fs (>= 1.0.0),
     ggplot2 (>= 2.2.1),
     grDevices,
     knitr (>= 1.16),
@@ -60,11 +61,12 @@ Imports:
     viridis (>= 0.4.0),
     yaml
 Suggests:
-    BiocStyle (>= 2.4.1),
-    devtools (>= 1.13.4),
-    lintr (>= 1.0.1),
-    roxygen2 (>= 6.0.1),
-    testthat (>= 1.0.2),
+    BiocStyle,
+    devtools,
+    lintr,
+    roxygen2,
+    testthat,
+    tidyr,
     tidyverse (>= 1.2.1)
 biocViews:
     DataImport,

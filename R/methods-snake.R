@@ -2,14 +2,12 @@
 #'
 #' @rdname snake
 #' @name snake
+#' @family Name Functions
 #'
 #' @inherit dotted
 #'
 #' @examples
-#' load(system.file(
-#'     file.path("extdata", "makeNames.rda"),
-#'     package = "basejump"
-#' ))
+#' load(system.file("extdata/makeNames.rda", package = "basejump"))
 #'
 #' # Character vector
 #' character <- makeNames$character
@@ -78,6 +76,15 @@ NULL
     if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .snake(colnames(object))
     }
+    object
+}
+
+
+
+.snake.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- snake(colnames)
+    colnames(mcols(object)) <- colnames
     object
 }
 
@@ -152,6 +159,15 @@ setMethod(
     "snake",
     signature("factor"),
     .snake.vector)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("GRanges"),
+    .snake.mcols)
 
 
 

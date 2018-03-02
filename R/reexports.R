@@ -1,10 +1,42 @@
 # Only reexport functions needed for working examples and vignette
 
-
-
 #' @importFrom dplyr pull
 #' @export
 dplyr::pull
+
+
+
+#' @importFrom fs dir_create
+#' @export
+fs::dir_create
+
+#' @importFrom fs dir_delete
+#' @export
+fs::dir_delete
+
+#' @importFrom fs dir_exists
+#' @export
+fs::dir_exists
+
+#' @importFrom fs file_delete
+#' @export
+fs::file_delete
+
+#' @importFrom fs file_exists
+#' @export
+fs::file_exists
+
+#' @importFrom fs path
+#' @export
+fs::path
+
+#' @importFrom fs path_join
+#' @export
+fs::path_join
+
+#' @importFrom fs path_real
+#' @export
+fs::path_real
 
 
 
@@ -34,9 +66,19 @@ Matrix::Matrix
 
 
 
+#' @importFrom rlang sym
+#' @export
+rlang::sym
+
+
+
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
+
+#' @importFrom S4Vectors mcols
+#' @export
+S4Vectors::mcols
 
 
 
@@ -51,6 +93,12 @@ tibble::is_tibble
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
+
+
+
+#' @importFrom utils download.file
+#' @export
+utils::download.file
 
 
 

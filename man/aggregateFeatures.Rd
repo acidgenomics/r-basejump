@@ -48,7 +48,9 @@ dgc <- as(mat, "dgCMatrix")
 aggregateFeatures(dgc, groupings = groupings)
 }
 \seealso{
-Other Data Management Utilities: \code{\link{aggregateReplicates}}
+Other Math Functions: \code{\link{aggregateReplicates}},
+  \code{\link{foldChangeToLogRatio}},
+  \code{\link{geometricMean}}, \code{\link{microplate}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

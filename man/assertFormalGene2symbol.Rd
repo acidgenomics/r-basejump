@@ -23,7 +23,7 @@ Abort on mismatch.
 Assert Formal Gene to Symbol Mappings
 }
 \examples{
-gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+gene2symbol <- gene2symbol("Homo sapiens")
 genes <- head(rownames(gene2symbol), 2L)
 x <- data.frame(
     sample1 = c(1L, 2L),
@@ -33,7 +33,9 @@ x <- data.frame(
 assertFormalGene2symbol(x, genes, gene2symbol)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertHasRownames}},
@@ -41,7 +43,6 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},

@@ -11,11 +11,9 @@
 \usage{
 gene2symbolFromGFF(object, ...)
 
-\S4method{gene2symbolFromGFF}{character}(object, uniqueSymbol = FALSE,
-  quiet = FALSE)
+\S4method{gene2symbolFromGFF}{character}(object, uniqueSymbol = FALSE)
 
-\S4method{gene2symbolFromGFF}{data.frame}(object, uniqueSymbol = FALSE,
-  quiet = FALSE)
+\S4method{gene2symbolFromGFF}{data.frame}(object, uniqueSymbol = FALSE)
 
 gene2symbolFromGTF(...)
 }
@@ -24,9 +22,8 @@ gene2symbolFromGTF(...)
 
 \item{...}{Additional arguments.}
 
-\item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
 }
 \value{
 \link{data.frame}.
@@ -39,6 +36,23 @@ The GFF (General Feature Format) format consists of one line per
 feature, each containing 9 columns of data, plus optional track definition
 lines. The GTF (General Transfer Format) is identical to GFF version 2.
 }
+\section{Broad Class Definitions}{
+
+For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
+column is added, which generalizes the gene types into a smaller number of
+semantically-meaningful groups:
+\itemize{
+\item \code{coding}
+\item \code{noncoding}
+\item \code{pseudo}
+\item \code{small}
+\item \code{decaying}
+\item \code{ig} (immunoglobulin)
+\item \code{tcr} (T cell receptor)
+\item \code{other}
+}
+}
+
 \examples{
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
@@ -49,9 +63,11 @@ gff <- readGFF(url)
 gene2symbolFromGFF(gff) \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{tx2gene}}
 }

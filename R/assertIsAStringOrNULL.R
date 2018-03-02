@@ -1,6 +1,6 @@
 #' Assert Is a String or NULL
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @export

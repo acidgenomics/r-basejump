@@ -4,23 +4,38 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, severity = "stop", quiet = FALSE)
+localOrRemoteFile(object, severity = "stop")
 }
 \arguments{
 \item{object}{Object.}
 
 \item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
 doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Named character vector containing the original file name as the
-name and local file path as the string. Aborts on a missing file.
+Named character vector containing the original basename as the name
+and local file path (i.e. tempfile) as the string. Aborts on a missing
+file by default. Returns \code{NULL} when \code{severity = "warning"} and a missing
+file is detected.
 }
 \description{
-Dynamically Handle a Local or Remote File Path
+This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
-localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
+# Single file
+file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+names(file)
+
+# Vectorized
+files <- localOrRemoteFile(c(
+    "http://basejump.seq.cloud/mtcars.csv",
+    "http://basejump.seq.cloud/mtcars.rda"
+))
+names(files)
+}
+\seealso{
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

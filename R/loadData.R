@@ -16,11 +16,18 @@
 #' the file name exactly. These conventions match the recommendations of the
 #' RStudio team, which recommends saving single objects per file.
 #'
-#' @param ... Object names as symbols.
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
+#' @family Read Functions
+#'
+#' @importFrom fs path_join path_real
+#'
+#' @param ... Object names. Note that these arguments are interpreted using
+#'   non-standard evaluation, and *should not be quoted*.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
-#' @param quiet If `TRUE`, suppress any status messages and/or progress bars.
 #'
 #' @return Silent named character vector of file paths.
 #' @export
@@ -31,35 +38,25 @@
 #' glimpse(grch37)
 loadData <- function(
     ...,
-    dir = getwd(),
-    envir = parent.frame(),
-    quiet = FALSE) {
+    dir = ".",
+    envir = parent.frame()) {
     assert_all_are_dirs(dir)
-    dir <- normalizePath(dir)
+    dir <- path_real(dir)
     assert_is_environment(envir)
-    assert_is_a_bool(quiet)
 
     # `dots()` method will fail here because the objects aren't present
-    dots <- as.list(substitute(list(...)))[-1L]
-    invisible(lapply(dots, assert_is_name))
-
-    names <- as.character(dots)
-    files <- file.path(dir, paste0(names, ".rda"))
+    dots <- dots(..., character = TRUE)
+    files <- path_join(c(dir, paste0(dots, ".rda")))
     assert_all_are_existing_files(files)
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Loading", toString(basename(files)), "from", dir))
-    }
-
+    inform(paste("Loading", toString(basename(files)), "from", dir))
     objects <- mapply(
         FUN = .safeLoad,
-        files,
+        file = files,
         MoreArgs = list(envir = envir),
         SIMPLIFY = TRUE,
-        USE.NAMES = FALSE
-    )
-    names(objects) <- names
+        USE.NAMES = FALSE)
+    names(objects) <- dots
 
-    assert_is_character(objects)
     invisible(objects)
 }

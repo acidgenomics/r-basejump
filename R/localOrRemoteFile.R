@@ -1,5 +1,10 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
+#' This function is vectorized and supports mixed local and remote paths.
+#'
+#' @family Read Functions
+#'
+#' @importFrom fs file_temp path_real
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
@@ -8,37 +13,60 @@
 #' @param severity Return `stop` (default), `warning`, or `message` if file
 #'   doesn't exist.
 #'
-#' @return Named character vector containing the original file name as the
-#'   name and local file path as the string. Aborts on a missing file.
+#' @return Named character vector containing the original basename as the name
+#'   and local file path (i.e. tempfile) as the string. Aborts on a missing
+#'   file by default. Returns `NULL` when `severity = "warning"` and a missing
+#'   file is detected.
 #' @export
 #'
 #' @examples
-#' localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
-localOrRemoteFile <- function(
-    object,
-    severity = "stop",
-    quiet = FALSE) {
-    assert_is_a_string(object)
-    assert_is_a_string(severity)
-    assert_is_subset(severity, c("message", "stop", "warning"))
-    assert_is_a_bool(quiet)
-    basename <- basename(object)
+#' # Single file
+#' file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+#' names(file)
+#'
+#' # Vectorized
+#' files <- localOrRemoteFile(c(
+#'     "http://basejump.seq.cloud/mtcars.csv",
+#'     "http://basejump.seq.cloud/mtcars.rda"
+#' ))
+#' names(files)
+localOrRemoteFile <- function(object, severity = "stop") {
+    assert_is_character(object)
+    .assertFormalSeverity(severity)
 
-    # Download remote file, if necessary
-    if (grepl("\\://", object)) {
-        # Remote file
-        file <- tempfile()
-        download.file(url = object, destfile = file, quiet = quiet)
-    } else {
-        file <- object
+    files <- mapply(
+        FUN = function(path) {
+            # Download remote file, if necessary
+            if (grepl("\\://", path)) {
+                # Remote file
+                file <- file_temp()
+                # Fix for Excel files on Windows
+                # https://github.com/tidyverse/readxl/issues/374
+                # Otherwise, `read_excel()` errors in `readFileByExtension()`
+                if (grepl("\\.xlsx$", path)) {
+                    # Write binary
+                    mode <- "wb"
+                } else {
+                    # Write (default)
+                    mode <- "w"
+                }
+                download.file(url = path, destfile = file, mode = mode)
+            } else {
+                file <- path
+            }
+            file
+        },
+        path = object,
+        SIMPLIFY = TRUE,
+        USE.NAMES = FALSE)
+
+    assert_all_are_existing_files(files, severity = severity)
+    # Return NULL when severity isn't stop and not all files exist
+    if (!all(file_exists(files))) {
+        return(NULL)
     }
 
-    assert_all_are_existing_files(file, severity = severity)
-    if (!file.exists(file)) {
-        return(invisible())
-    }
-
-    file <- normalizePath(file)
-    names(file) <- basename
-    file
+    files <- path_real(files)
+    names(files) <- basename(object)
+    files
 }

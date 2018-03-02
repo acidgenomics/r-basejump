@@ -3,7 +3,7 @@
 #' The function also strips `NA` values. This is useful for gene list server
 #' queries, for example.
 #'
-#' @family Cleanup Utilities
+#' @family Atomic Vector Functions
 #'
 #' @inheritParams general
 #'

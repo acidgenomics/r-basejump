@@ -2,7 +2,7 @@
 #'
 #' @rdname assert
 #' @name assert
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @keywords internal
 #'
 #' @importFrom assertive assert_all_are_dirs
@@ -20,11 +20,13 @@
 #' @importFrom assertive assert_are_intersecting_sets
 #' @importFrom assertive assert_are_identical
 #' @importFrom assertive assert_are_same_length
+#' @importFrom assertive assert_are_set_equal
 #' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_colnames
 #' @importFrom assertive assert_has_dims
 #' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_no_duplicates
+#' @importFrom assertive assert_has_rows
 #' @importFrom assertive assert_is_a_bool
 #' @importFrom assertive assert_is_a_number
 #' @importFrom assertive assert_is_a_string
@@ -49,6 +51,7 @@
 #' @importFrom assertive assert_is_subset
 #' @importFrom assertive assert_is_vector
 #' @importFrom assertive has_colnames
+#' @importFrom assertive is_a_number
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_existing
 #' @importFrom assertive is_hex_color
@@ -62,3 +65,32 @@
 #'
 #' @return Abort on mismatch.
 NULL
+
+
+
+.assertFormalEnsembldbReturn <- function(x, severity = "stop") {
+    assert_is_a_string(x, severity = severity)
+    assert_is_subset(
+        x = x,
+        y = ensemblReturn,
+        severity = severity)
+}
+
+
+
+.assertFormalMakeNames <- function(x, severity = "stop") {
+    assert_is_a_string(x, severity = severity)
+    assert_is_subset(
+        x = x,
+        y = c("camel", "dotted", "snake" , "upperCamel"),
+        severity = severity)
+}
+
+
+
+.assertFormalSeverity <- function(x, severity = "stop") {
+    assert_is_a_string(x, severity = severity)
+    assert_is_subset(
+        x = x,
+        y = c("stop", "warning", "message", "none"))
+}

@@ -4,12 +4,13 @@
 \alias{loadDataAsName}
 \title{Load Data File as Name}
 \usage{
-loadDataAsName(..., dir = getwd(), envir = parent.frame())
+loadDataAsName(..., dir = ".", envir = parent.frame())
 }
 \arguments{
-\item{...}{Key value pairs, defining the name mappings. The argument name
-defines the new name of the object in the environment, whereas the value
-(string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
+\item{...}{Key value pairs, defining the name mappings. For example,
+\code{newName1} = \code{oldName1}, \code{newName2} = \code{oldName2}. Note that these
+arguments are interpreted using non-standard evaluation, and \emph{should not
+be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
@@ -22,10 +23,22 @@ Silently return named character vector of file paths.
 \description{
 Load Data File as Name
 }
+\note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+}
 \examples{
 loadDataAsName(
-    annotable = "grch37",
+    hg19 = grch37,
+    hg19_tx2gene = grch37Tx2gene,
     dir = system.file("extdata", package = "basejump")
 )
-glimpse(annotable)
+glimpse(hg19)
+}
+\seealso{
+Other Read Functions: \code{\link{loadData}},
+  \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

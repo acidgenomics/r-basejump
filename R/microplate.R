@@ -1,5 +1,7 @@
 #' Microtiter Plate Well Identifiers
 #'
+#' @family Math Functions
+#'
 #' @importFrom stringr str_length str_pad
 #'
 #' @param plates Number of plates.

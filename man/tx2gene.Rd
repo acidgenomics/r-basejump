@@ -9,21 +9,17 @@
 \usage{
 tx2gene(object, ...)
 
-\S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL,
-  quiet = FALSE)
+\S4method{tx2gene}{character}(object, genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 \link{data.frame}.
@@ -35,10 +31,11 @@ Transcript to Gene Mappings
 tx2gene("Homo sapiens") \%>\% glimpse()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}}
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}}
 }

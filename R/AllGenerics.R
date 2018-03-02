@@ -14,14 +14,6 @@ setGeneric("aggregateReplicates", function(object, ...) {
 
 
 
-#' @rdname annotable
-#' @export
-setGeneric("annotable", function(object, ...) {
-    standardGeneric("annotable")
-})
-
-
-
 #' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
@@ -169,22 +161,6 @@ setGeneric("plotHeatmap", function(object, ...) {
 #' @export
 setGeneric("plotQuantileHeatmap", function(object, ...) {
     standardGeneric("plotQuantileHeatmap")
-})
-
-
-
-#' @rdname readGFF
-#' @export
-setGeneric("readGFF", function(object, ...) {
-    standardGeneric("readGFF")
-})
-
-
-
-#' @rdname readYAML
-#' @export
-setGeneric("readYAML", function(object, ...) {
-    standardGeneric("readYAML")
 })
 
 

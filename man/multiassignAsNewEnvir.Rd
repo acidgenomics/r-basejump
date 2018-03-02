@@ -4,8 +4,7 @@
 \alias{multiassignAsNewEnvir}
 \title{Assign Multiple Objects as a New Environment}
 \usage{
-multiassignAsNewEnvir(..., envirName, parentEnvir = parent.frame(),
-  quiet = FALSE)
+multiassignAsNewEnvir(..., envirName, parentEnvir = parent.frame())
 }
 \arguments{
 \item{...}{Objects as dots.}
@@ -13,8 +12,6 @@ multiassignAsNewEnvir(..., envirName, parentEnvir = parent.frame(),
 \item{envirName}{New environment name (string).}
 
 \item{parentEnvir}{Parent environment of new environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Character vector of assigned objects in the new environment.
@@ -26,5 +23,6 @@ Assign Multiple Objects as a New Environment
 multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{assignAndSaveData}}
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}
 }

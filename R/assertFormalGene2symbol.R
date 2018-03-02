@@ -1,6 +1,6 @@
 #' Assert Formal Gene to Symbol Mappings
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x Object containing gene identifiers in the rownames.
@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+#' gene2symbol <- gene2symbol("Homo sapiens")
 #' genes <- head(rownames(gene2symbol), 2L)
 #' x <- data.frame(
 #'     sample1 = c(1L, 2L),

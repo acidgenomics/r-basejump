@@ -9,6 +9,7 @@
 \alias{dotted,data.frame-method}
 \alias{dotted,DataFrame-method}
 \alias{dotted,factor-method}
+\alias{dotted,GRanges-method}
 \alias{dotted,list-method}
 \alias{dotted,List-method}
 \alias{dotted,matrix-method}
@@ -27,6 +28,8 @@ dotted(object, ...)
 \S4method{dotted}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{factor}(object)
+
+\S4method{dotted}{GRanges}(object)
 
 \S4method{dotted}{list}(object)
 
@@ -70,10 +73,7 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"
-))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 # Character vector
 character <- makeNames$character
@@ -99,4 +99,8 @@ dotted(dataFrame, rownames = FALSE)
 list <- makeNames$list
 print(list)
 dotted(list)
+}
+\seealso{
+Other Name Functions: \code{\link{camel}},
+  \code{\link{snake}}
 }

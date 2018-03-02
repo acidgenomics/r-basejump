@@ -2,7 +2,7 @@
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
-#' @family Infrastructure Utilities
+#' @family Developer Functions
 #'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).

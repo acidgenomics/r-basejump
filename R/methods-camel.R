@@ -2,6 +2,7 @@
 #'
 #' @rdname camel
 #' @name camel
+#' @family Name Functions
 #'
 #' @inherit dotted
 #'
@@ -127,6 +128,15 @@ NULL
 
 
 
+.camel.mcols <- function(object, strict = FALSE) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- camel(colnames, strict = strict)
+    colnames(mcols(object)) <- colnames
+    object
+}
+
+
+
 .camel.names <- function(object, strict = FALSE) {  # nolint
     # Passthrough: strict
     assert_has_names(object)
@@ -203,6 +213,16 @@ setMethod(
     "camel",
     signature("factor"),
     .camel.vector)
+
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("GRanges"),
+    .camel.mcols)
 
 
 

@@ -2,7 +2,7 @@
 #'
 #' @rdname aggregateReplicates
 #' @name aggregateReplicates
-#' @family Data Management Utilities
+#' @family Math Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
@@ -35,39 +35,22 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom Matrix.utils aggregate.Matrix
-.aggregateReplicates.dgCMatrix <- function(object, groupings) {
-    assert_is_factor(groupings)
-    assert_are_identical(colnames(object), names(groupings))
-    t <- Matrix::t(object)
-    rownames(t) <- groupings
-    tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
-    agg <- Matrix::t(tagg)
-    agg
-}
-
-
-
-.aggregateReplicates.matrix <- function(object, groupings) {
-    assert_is_factor(groupings)
-    assert_are_identical(colnames(object), names(groupings))
-    t <- t(object)
-    rownames(t) <- groupings
-    tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
-    agg <- t(tagg)
-    agg
-}
-
-
-
 # Methods ======================================================================
 #' @rdname aggregateReplicates
+#' @importFrom Matrix.utils aggregate.Matrix
 #' @export
 setMethod(
     "aggregateReplicates",
     signature("dgCMatrix"),
-    .aggregateReplicates.dgCMatrix)
+    function(object, groupings) {
+        assert_is_factor(groupings)
+        assert_are_identical(colnames(object), names(groupings))
+        t <- Matrix::t(object)
+        rownames(t) <- groupings
+        tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
+        agg <- Matrix::t(tagg)
+        agg
+    })
 
 
 
@@ -76,4 +59,12 @@ setMethod(
 setMethod(
     "aggregateReplicates",
     signature("matrix"),
-    .aggregateReplicates.matrix)
+    function(object, groupings) {
+        assert_is_factor(groupings)
+        assert_are_identical(colnames(object), names(groupings))
+        t <- t(object)
+        rownames(t) <- groupings
+        tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
+        agg <- t(tagg)
+        agg
+    })

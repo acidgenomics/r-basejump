@@ -4,7 +4,7 @@
 #'
 #' @rdname kables
 #' @name kables
-#' @family Report Utilities
+#' @family R Markdown Functions
 #'
 #' @inheritParams general
 #'
@@ -24,36 +24,32 @@ NULL
 
 
 
-# Constructors =================================================================
-#' @importFrom knitr asis_output kable opts_knit
-.kables <- function(
-    object,
-    captions = NULL,
-    force = FALSE) {
-    assert_is_any_of(captions, c("character", "NULL"))
-    if (is.character(captions)) {
-        assert_are_identical(length(object), length(captions))
-    }
-    assert_is_a_bool(force)
-
-    output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
-
-    if (!is.null(output) || isTRUE(force)) {
-        tables <- lapply(seq_along(object), function(a) {
-            kable(object[a], caption = captions[a])
-        })
-        asis_output(tables)
-    } else {
-        # Return the unmodified object if not in a knit call
-        object
-    }
-}
-
-
 # Methods ======================================================================
 #' @rdname kables
+#' @importFrom knitr asis_output kable opts_knit
 #' @export
 setMethod(
     "kables",
     signature("list"),
-    .kables)
+    function(
+        object,
+        captions = NULL,
+        force = FALSE) {
+        assert_is_any_of(captions, c("character", "NULL"))
+        if (is.character(captions)) {
+            assert_are_identical(length(object), length(captions))
+        }
+        assert_is_a_bool(force)
+
+        output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
+
+        if (!is.null(output) || isTRUE(force)) {
+            tables <- lapply(seq_along(object), function(a) {
+                kable(object[a], caption = captions[a])
+            })
+            asis_output(tables)
+        } else {
+            # Return the unmodified object if not in a knit call
+            object
+        }
+    })

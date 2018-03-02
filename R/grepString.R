@@ -3,7 +3,7 @@
 #' Generate a grep string for pattern matching against comma separated
 #' [base::toString()] output.
 #'
-#' @family String Utilities
+#' @family Atomic Vector Functions
 #'
 #' @inheritParams general
 #'

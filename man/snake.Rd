@@ -9,6 +9,7 @@
 \alias{snake,data.frame-method}
 \alias{snake,DataFrame-method}
 \alias{snake,factor-method}
+\alias{snake,GRanges-method}
 \alias{snake,list-method}
 \alias{snake,List-method}
 \alias{snake,matrix-method}
@@ -27,6 +28,8 @@ snake(object, ...)
 \S4method{snake}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{snake}{factor}(object)
+
+\S4method{snake}{GRanges}(object)
 
 \S4method{snake}{list}(object)
 
@@ -65,10 +68,7 @@ objects supporting name assignments. They return the object without
 modification of the underlying data.
 }
 \examples{
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"
-))
+load(system.file("extdata/makeNames.rda", package = "basejump"))
 
 # Character vector
 character <- makeNames$character
@@ -95,4 +95,8 @@ snake(dataFrame, rownames = FALSE)
 list <- makeNames$list
 print(list)
 snake(list)
+}
+\seealso{
+Other Name Functions: \code{\link{camel}},
+  \code{\link{dotted}}
 }

@@ -17,27 +17,27 @@ convertGenesToSymbols(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
   organism = NULL, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
   genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  uniqueSymbol = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -54,15 +54,13 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
-\item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
+\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
+\code{gene2symbol} output.}
 }
 \value{
 Same class as original object.
@@ -91,10 +89,11 @@ convertGenesToSymbols(mat)
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
 
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
+Other Gene Functions: \code{\link{convertTranscriptsToGenes}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }

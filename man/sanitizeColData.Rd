@@ -2,7 +2,7 @@
 % Please edit documentation in R/sanitizeColData.R
 \name{sanitizeColData}
 \alias{sanitizeColData}
-\title{Sanitize Column Data Frame}
+\title{Sanitize Column Data}
 \usage{
 sanitizeColData(object)
 }
@@ -13,7 +13,7 @@ sanitizeColData(object)
 \link{DataFrame}.
 }
 \description{
-Sanitize Column Data Frame
+Sanitize Column Data
 }
 \examples{
 colData <- DataFrame(
@@ -24,4 +24,9 @@ colData <- DataFrame(
 colData
 # Note that all columns will be sanitized to factor
 sanitizeColData(colData)
+}
+\seealso{
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}}
 }

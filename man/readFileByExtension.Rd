@@ -4,8 +4,7 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = "camel", severity = "stop",
-  quiet = FALSE, ...)
+readFileByExtension(object, makeNames = "camel", severity = "stop", ...)
 }
 \arguments{
 \item{object}{File path.}
@@ -15,8 +14,6 @@ readFileByExtension(object, makeNames = "camel", severity = "stop",
 
 \item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
 doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 
 \item{...}{Additional arguments.}
 }
@@ -29,7 +26,12 @@ files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.coln
 and \code{.rownames} files.
 }
 \examples{
-readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+# Comma separated values
+csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+glimpse(csv)
+
+# Microsoft Excel Worksheet
+xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 }
 \seealso{
 \itemize{
@@ -38,7 +40,8 @@ readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 \item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
 }
 
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{localOrRemoteFile}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
 }

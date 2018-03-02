@@ -157,3 +157,22 @@ assertFormalHeaderLevel <- function(...) {
      .Deprecated("initializeDirectory")
      initializeDirectory(...)
  }
+
+
+
+ # v0.3.2 ======================================================================
+ #' @rdname deprecated
+ #' @export
+ annotable <- function() {
+     .Deprecated("genes or transcripts")
+ }
+
+ assertIsAnnotable <- function(...) {
+     .Deprecated("assertAreGeneAnnotations")
+     assertAreGeneAnnotations(...)
+ }
+
+ sanitizeAnnotable <- function(...) {
+     .Deprecated("sanitizeRowData")
+     sanitizeRowData(...)
+ }

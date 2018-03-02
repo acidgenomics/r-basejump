@@ -20,6 +20,7 @@
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
 \alias{initializeDir}
+\alias{annotable}
 \title{Deprecated Functions}
 \usage{
 summarizeRows()
@@ -57,6 +58,8 @@ assertFormalHeaderLevel(...)
 assertFormalColorFunction(...)
 
 initializeDir(...)
+
+annotable()
 }
 \arguments{
 \item{...}{Additional arguments.}

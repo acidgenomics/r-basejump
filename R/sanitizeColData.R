@@ -1,4 +1,6 @@
-#' Sanitize Column Data Frame
+#' Sanitize Column Data
+#'
+#' @family Sanitization Functions
 #'
 #' @inheritParams general
 #'
@@ -17,6 +19,8 @@
 sanitizeColData <- function(object) {
     assert_is_all_of(object, "DataFrame")
     assert_is_non_empty(object)
+    assert_has_colnames(object)
+    object <- camel(object)
     list <- lapply(
         X = object,
         FUN = function(x) {

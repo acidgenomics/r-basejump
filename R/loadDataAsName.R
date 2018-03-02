@@ -1,66 +1,71 @@
 #' Load Data File as Name
 #'
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
+#' @family Read Functions
+#'
+#' @importFrom fs path path_real
+#'
 #' @inheritParams loadData
 #'
-#' @param ... Key value pairs, defining the name mappings. The argument name
-#'   defines the new name of the object in the environment, whereas the value
-#'   (string) denotes the original object name. For example, `newName1 =
-#'   "oldName1", newName2 = "oldName2"`.
+#' @param ... Key value pairs, defining the name mappings. For example,
+#'   `newName1` = `oldName1`, `newName2` = `oldName2`. Note that these
+#'   arguments are interpreted using non-standard evaluation, and *should not
+#'   be quoted*.
 #'
 #' @return Silently return named character vector of file paths.
 #' @export
 #'
 #' @examples
 #' loadDataAsName(
-#'     annotable = "grch37",
+#'     hg19 = grch37,
+#'     hg19_tx2gene = grch37Tx2gene,
 #'     dir = system.file("extdata", package = "basejump")
 #' )
-#' glimpse(annotable)
+#' glimpse(hg19)
 loadDataAsName <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     envir = parent.frame()) {
-    dots <- list(...)
-    assert_all_are_dirs(dir)
-    dir <- normalizePath(dir)
-    assert_is_environment(envir)
-
-    # Check for legacy mappings method, used prior to v0.1.1
-    if (length(dots) == 1L & !is.null(names(dots[[1L]]))) {
-        # Convert the named character vector to a named list, for consistency
-        dots <- as.list(dots[[1L]])
-    }
-
-    assert_is_list(dots)
+    dots <- dots(..., character = TRUE)
+    assert_is_character(dots)
     assert_has_names(dots)
     invisible(lapply(dots, assert_is_a_string))
+    assert_all_are_dirs(dir)
+    dir <- path_real(dir)
+    assert_is_environment(envir)
 
-    fileNames <- as.character(dots)
-    objectNames <- names(dots)
+    files <- path(dir, paste0(dots, ".rda"))
+    names(files) <- dots
+    assert_all_are_existing_files(files)
 
-    files <- file.path(dir, paste0(fileNames, ".rda"))
-    names(files) <- objectNames
-
-    # Check to see if any of the new names already exist in environment
-    assertAllAreNonExisting(objectNames, envir = envir, inherits = FALSE)
-
+    # Load into a temporary environment
     tmpEnvir <- new.env()
-    mapply(
-        .safeLoad,
+    invisible(mapply(
+        FUN = .safeLoad,
         file = files,
         MoreArgs = list(envir = tmpEnvir),
         SIMPLIFY = FALSE,
-        USE.NAMES = FALSE
-    )
-    assert_are_identical(fileNames, ls(tmpEnvir))
+        USE.NAMES = FALSE))
+    assert_are_set_equal(dots, ls(tmpEnvir))
 
-    invisible(lapply(seq_along(fileNames), function(a) {
+    # Now assign to the desired object names
+    # Check to see if any of the new names already exist in environment
+    assertAllAreNonExisting(names(dots), envir = envir, inherits = FALSE)
+    invisible(mapply(
+        FUN = function(old, new, tmpEnvir, envir) {
         assign(
-            x = objectNames[[a]],
-            value = get(fileNames[[a]], envir = tmpEnvir, inherits = FALSE),
-            envir = envir
-        )
-    }))
+            x = new,
+            value = get(old, envir = tmpEnvir, inherits = FALSE),
+            envir = envir)
+        },
+        new = names(dots),
+        old = dots,
+        MoreArgs = list(tmpEnvir = tmpEnvir, envir = envir),
+        SIMPLIFY = FALSE,
+        USE.NAMES = FALSE
+    ))
 
     invisible(files)
 }

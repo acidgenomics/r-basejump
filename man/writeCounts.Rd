@@ -4,7 +4,7 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
+writeCounts(..., dir = ".", gzip = TRUE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
@@ -12,8 +12,6 @@ writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
 \item{dir}{Output directory.}
 
 \item{gzip}{Compress the counts file using gzip.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Invisible named character vector containing file paths to count
@@ -35,10 +33,12 @@ is enabled by default to save disk space. Note that the
 writeCounts(mtcars, gzip = TRUE)
 
 # Clean up
-unlink("mtcars.csv.gz")
+file_delete("mtcars.csv.gz")
 }
 \seealso{
-Other Write Utilities: \code{\link{saveData}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

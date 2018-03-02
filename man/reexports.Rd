@@ -5,6 +5,22 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{dir_create}
+\alias{reexports}
+\alias{dir_delete}
+\alias{reexports}
+\alias{dir_exists}
+\alias{reexports}
+\alias{file_delete}
+\alias{reexports}
+\alias{file_exists}
+\alias{reexports}
+\alias{path}
+\alias{reexports}
+\alias{path_join}
+\alias{reexports}
+\alias{path_real}
+\alias{reexports}
 \alias{aes}
 \alias{reexports}
 \alias{ggplot}
@@ -15,13 +31,19 @@
 \alias{reexports}
 \alias{Matrix}
 \alias{reexports}
+\alias{sym}
+\alias{reexports}
 \alias{DataFrame}
+\alias{reexports}
+\alias{mcols}
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
 \alias{is_tibble}
 \alias{reexports}
 \alias{tibble}
+\alias{reexports}
+\alias{download.file}
 \alias{reexports}
 \alias{viridis}
 \alias{reexports}
@@ -37,15 +59,21 @@ below to see their documentation.
 \describe{
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
+  \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{dir_delete}}, \code{\link[fs]{dir_exists}}, \code{\link[fs]{file_delete}}, \code{\link[fs]{file_exists}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
+
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
+  \item{rlang}{\code{\link[rlang]{sym}}}
+
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
+
+  \item{utils}{\code{\link[utils]{download.file}}}
 
   \item{viridis}{\code{\link[viridis]{viridis}}, \code{\link[viridis]{scale_color_viridis}}, \code{\link[viridis]{scale_fill_viridis}}}
 }}

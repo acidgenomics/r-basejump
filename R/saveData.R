@@ -4,7 +4,12 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @family Write Utilities
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
+#' @family Write Functions
+#'
+#' @importFrom fs path
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
@@ -26,33 +31,27 @@
 #' saveData(mtcars, starwars)
 #'
 #' # Clean up
-#' unlink(c("mtcars.rda", "starwars.rda"))
+#' file_delete(c("mtcars.rda", "starwars.rda"))
 saveData <- function(
     ...,
-    dir = getwd(),
+    dir = ".",
     overwrite = TRUE,
-    compress = "bzip2",
-    quiet = FALSE) {
+    compress = "bzip2") {
     objectNames <- dots(..., character = TRUE)
     assert_is_character(objectNames)
     dir <- initializeDirectory(dir)
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
-    assert_is_a_bool(quiet)
 
-    files <- file.path(dir, paste0(objectNames, ".rda"))
+    files <- path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Saving", toString(basename(files)), "to", dir))
-    }
+    inform(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        if (!isTRUE(quiet)) {
-            inform(paste("Skipping", toString(basename(skip))))
-        }
+        warn(paste("Skipping", toString(basename(skip))))
         files <- files[!file.exists(files)]
     }
 

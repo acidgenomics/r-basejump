@@ -5,7 +5,7 @@
 #'
 #' @rdname geometricMean
 #' @name geometricMean
-#' @family Math Utilities
+#' @family Math Functions
 #'
 #' @inheritParams general
 #'
@@ -116,5 +116,5 @@ setMethod(
 #' @inheritParams general
 #' @export
 geomean <- function(...) {
-    geometricMean(...)
+    geometricMean(...)  # nocov
 }

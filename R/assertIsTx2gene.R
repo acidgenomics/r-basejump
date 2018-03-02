@@ -1,6 +1,6 @@
 #' Check Transcript to Gene Mapping Data
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
 #' @inherit assert
 #'
 #' @param x [data.frame] containing Ensembl transcript to gene identifier
@@ -24,4 +24,5 @@ assertIsTx2gene <- function(x, severity = "stop") {
         x = colnames(x),
         y = c("enstxp", "ensgene"),
         severity = severity)
+    assert_has_rows(x, severity = severity)
 }

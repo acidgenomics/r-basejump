@@ -16,22 +16,22 @@
 convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -48,16 +48,13 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Same class as object.
+Same class as original object.
 }
 \description{
 Convert Ensembl Transcripts to Genes
@@ -81,10 +78,11 @@ matrix(
     convertTranscriptsToGenes()
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{detectOrganism}},
+Other Gene Functions: \code{\link{convertGenesToSymbols}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
+  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{stripTranscriptVersions}},
+  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
   \code{\link{tx2gene}}
 }
