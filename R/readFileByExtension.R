@@ -105,7 +105,10 @@ readFileByExtension <- function(
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        abort("Unsupported file extension")
+        abort(paste(
+            "Unsupported file extension:",
+            basename(file)
+        ))
     }
 
     # Sanitize colnames
