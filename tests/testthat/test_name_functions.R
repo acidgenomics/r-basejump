@@ -135,7 +135,7 @@ test_that("camel : matrix", {
     )
 })
 
-test_that("camel : tbl_df", {
+test_that("camel : tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -245,7 +245,7 @@ test_that("dotted : matrix", {
     )
 })
 
-test_that("dotted : tbl_df", {
+test_that("dotted : tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
@@ -363,7 +363,7 @@ test_that("snake : matrix", {
     )
 })
 
-test_that("snake : tbl_df", {
+test_that("snake : tibble", {
     x <- makeNames[["tibble"]] %>%
         .[, 1L:5L] %>%
         snake() %>%
@@ -517,7 +517,7 @@ test_that("upperCamel : matrix", {
     )
 })
 
-test_that("upperCamel : tbl_df", {
+test_that("upperCamel : tibble", {
     expect_identical(
         makeNames[["tibble"]] %>%
             .[, 1L:5L] %>%
