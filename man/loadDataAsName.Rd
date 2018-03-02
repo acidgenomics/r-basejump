@@ -7,9 +7,10 @@
 loadDataAsName(..., dir = ".", envir = parent.frame())
 }
 \arguments{
-\item{...}{Key value pairs, defining the name mappings. The argument name
-defines the new name of the object in the environment, whereas the value
-(string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
+\item{...}{Key value pairs, defining the name mappings. For example,
+\code{newName1} = \code{oldName1}, \code{newName2} = \code{oldName2}. Note that these
+arguments are interpreted using non-standard evaluation, and \emph{should not
+be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 

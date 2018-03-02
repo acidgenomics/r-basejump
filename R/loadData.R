@@ -23,7 +23,8 @@
 #'
 #' @importFrom fs path_join path_real
 #'
-#' @param ... Object names as symbols.
+#' @param ... Object names. Note that these arguments are interpreted using
+#'   non-standard evaluation, and *should not be quoted*.
 #' @param dir Output directory. Defaults to the current working directory.
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.

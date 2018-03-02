@@ -9,10 +9,10 @@
 #'
 #' @inheritParams loadData
 #'
-#' @param ... Key value pairs, defining the name mappings. The argument name
-#'   defines the new name of the object in the environment, whereas the value
-#'   (string) denotes the original object name. For example, `newName1 =
-#'   "oldName1", newName2 = "oldName2"`.
+#' @param ... Key value pairs, defining the name mappings. For example,
+#'   `newName1` = `oldName1`, `newName2` = `oldName2`. Note that these
+#'   arguments are interpreted using non-standard evaluation, and *should not
+#'   be quoted*.
 #'
 #' @return Silently return named character vector of file paths.
 #' @export

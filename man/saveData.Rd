@@ -7,7 +7,8 @@
 saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2")
 }
 \arguments{
-\item{...}{Object names as symbols.}
+\item{...}{Object names. Note that these arguments are interpreted using
+non-standard evaluation, and \emph{should not be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
