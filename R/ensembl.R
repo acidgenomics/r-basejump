@@ -105,7 +105,7 @@ ensembl <- function(
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
-        # AnnotableHub only supports releases 87 and above
+        # AnnotationHub only supports releases 87 and above
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
     assert_is_a_bool(uniqueSymbol)
@@ -117,7 +117,7 @@ ensembl <- function(
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
 
-    # Catch UCSC Genome Build IDs ==============================================
+    # Catch UCSC genome build IDs ==============================================
     if (is_a_string(genomeBuild)) {
         map <- c(
             "hg19" = "GRCh37",
@@ -130,7 +130,7 @@ ensembl <- function(
         }
     }
 
-    # GRCh37 legacy support ====================================================
+    # GRCh37 genome support ====================================================
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
@@ -322,47 +322,4 @@ ensembl <- function(
     }
 
     data
-}
-
-
-
-.sanitizeAnnotationCols <- function(object, format = "genes") {
-    if (is(object, "GRanges")) {
-        data <- mcols(object)
-    } else {
-        data <- object
-    }
-
-    # Rename the columns
-    colnames(data) <- colnames(data) %>%
-        camel() %>%
-        gsub("^entrezid", "entrez", .) %>%
-        gsub("^geneID$", "ensgene", .) %>%
-        gsub("^(gene|tx)Biotype", "biotype", .) %>%
-        gsub("^txID$", "enstxp", .)
-
-    # Reorder priority columns for genes and transcripts
-    if (format %in% c("genes", "transcripts")) {
-        if (format == "genes") {
-            priorityCols <- geneAnnotationCols
-        } else if (format == "transcripts") {
-            priorityCols <- transcriptAnnotationCols
-        }
-        # Add the `broadClass` column, if present
-        if ("broadClass" %in% colnames(data)) {
-            priorityCols <- c(priorityCols, "broadClass")
-        }
-        assert_is_subset(priorityCols, colnames(data))
-        data <- data %>%
-            .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
-              drop = FALSE]
-    }
-
-    if (is(object, "GRanges")) {
-        mcols(object) <- data
-    } else {
-        object <- data
-    }
-
-    object
 }
