@@ -30,6 +30,5 @@ setMethod(
             format = "tx2gene",
             genomeBuild = genomeBuild,
             release = release,
-            sanitizeColnames = TRUE,
             return = "data.frame")
     })
