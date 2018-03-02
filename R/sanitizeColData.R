@@ -1,4 +1,4 @@
-#' Sanitize Column Data Frame
+#' Sanitize Column Data
 #'
 #' @family Sanitization Functions
 #'

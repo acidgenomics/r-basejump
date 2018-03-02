@@ -72,7 +72,7 @@ NULL
     assert_is_a_string(x, severity = severity)
     assert_is_subset(
         x = x,
-        y = c("data.frame", "DataFrame", "GRanges"),
+        y = ensemblReturn,
         severity = severity)
 }
 

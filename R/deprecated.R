@@ -173,6 +173,6 @@ assertFormalHeaderLevel <- function(...) {
  }
 
  sanitizeAnnotable <- function(...) {
-     .Deprecated("sanitizeGeneAnnotations")
-     sanitizeGeneAnnotations(...)
+     .Deprecated("sanitizeRowData")
+     sanitizeRowData(...)
  }
