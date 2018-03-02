@@ -5,9 +5,9 @@
 #'
 #' @noRd
 .detectIDCol <- function(object) {
-    assert_has_colnames(object)
-    txCol <- grep("enstxp|txID", colnames(data), value = TRUE)
-    geneCol <- grep("ensgene|geneID", colnames(data), value = TRUE)
+    object <- as.data.frame(object)
+    txCol <- grep("enstxp|txID", colnames(object), value = TRUE)
+    geneCol <- grep("ensgene|geneID", colnames(object), value = TRUE)
     if (length(txCol)) {
         txCol[[1L]]
     } else if (length(geneCol)) {
