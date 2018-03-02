@@ -1,16 +1,24 @@
 context("Read Functions")
 
 # loadData =====================================================================
-test_that("loadData", {
-    loaded <- loadData(mtcars)
-    rm(mtcars)
+test_that("loadData : Non-standard evaluation", {
+    x <- loadData(counts)
     expect_identical(
-        loaded,
-        c(mtcars = path_join(c(path_real("."), "mtcars.rda")))
+        x,
+        c(counts = path_join(c(path_real("."), "counts.rda")))
     )
-    expect_message(
-        suppressWarnings(loadData(mtcars)),
-        paste("Loading mtcars.rda from", path_real("."))
+    # Now that "counts" is loaded, let's check to make sure we can't
+    # accidentally overwrite in the current environment
+    expect_error(
+        loadData(counts),
+        "Already exists in environment: counts"
+    )
+})
+
+test_that("loadData : Standard evaluation", {
+    expect_error(
+        loadData("counts.rda"),
+        "is_name :"
     )
 })
 
@@ -21,25 +29,6 @@ test_that("loadData : Multiple objects in single file", {
     )
 })
 
-test_that("loadData : Already exists", {
-    mtcars <- datasets::mtcars
-    expect_error(
-        loadData(mtcars),
-        "Already exists in environment: mtcars"
-    )
-})
-
-test_that("loadData : Invalid arguments", {
-    expect_error(
-        loadData(mtcars, dir = "XXX"),
-        "is_dir : "
-    )
-    expect_error(
-        loadData(mtcars, envir = "XXX"),
-        "is_environment : envir"
-    )
-})
-
 test_that("loadData : Renamed file", {
     expect_error(
         loadData(renamed),
@@ -47,51 +36,65 @@ test_that("loadData : Renamed file", {
     )
 })
 
+test_that("loadData : Invalid arguments", {
+    expect_error(
+        loadData(counts, dir = "XXX"),
+        "is_dir :"
+    )
+    expect_error(
+        loadData(counts, envir = "XXX"),
+        "is_environment : envir"
+    )
+})
+
 
 
 # loadDataAsName ===============================================================
-test_that("loadDataAsName : Dot object key-value pair method", {
-    loaded <- loadDataAsName(
-        newName1 = "mtcars",
-        newName2 = "starwars",
-        dir = "."
+test_that("loadDataAsName : Non-standard evaluation", {
+    x <- loadDataAsName(hg19 = grch37, hg38 = grch38)
+    expect_is(x, "fs_path")
+    expect_identical(
+        names(x),
+        c("grch37", "grch38")
     )
-    expect_is(loaded, "character")
-    expect_true(exists("newName1", inherits = FALSE))
-    expect_true(exists("newName2", inherits = FALSE))
+    expect_true(exists("hg19", inherits = FALSE))
+    expect_true(exists("hg38", inherits = FALSE))
+    # Now that the objects are loaded, let's check to make sure we can't
+    # accidentally overwrite in the current environment
+    expect_error(
+        loadDataAsName(hg19 = grch37, hg38 = grch38),
+        "Already exists in environment: hg19, hg38"
+    )
+})
+
+test_that("loadData : Standard evaluation", {
+    expect_error(
+        loadDataAsName(hg19 = "grch37.rda"),
+        "is_name :"
+    )
 })
 
 test_that("loadDataAsName : Missing files", {
     expect_error(
-        loadDataAsName(newName = "mtcars.rda"),
-        "is_existing_file : "
+        loadDataAsName(counts = XXX),
+        "is_existing_file :"
     )
-    expect_error(
-        loadDataAsName(newName = "XXXXXX"),
-        "is_existing_file : "
-    )
-})
-
-test_that("loadDataAsName : Legacy named character method", {
-    loaded <- loadDataAsName(c(test = "mtcars"))
-    expect_is(loaded, "character")
-    expect_true(exists("test", inherits = FALSE))
 })
 
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
-        loadDataAsName(newName = "multi"),
+        loadDataAsName(newName = multi),
         "is_a_string : loaded has length 2, not 1."
     )
 })
 
 test_that("loadDataAsName : Invalid arguments", {
     expect_error(
-        loadDataAsName(newName = "mtcars", dir = "XXX"),
+        loadDataAsName(hg19 = grch37, dir = "XXX"),
         "is_dir : "
     )
     expect_error(
-        loadDataAsName(newName = "mtcars", envir = "XXX"),
+        loadDataAsName(hg19 = grch37, envir = "XXX"),
         "is_environment : envir"
     )
 })
