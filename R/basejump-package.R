@@ -11,6 +11,7 @@
 
 
 globalVariables(".")
+ensemblReturn <- c("GRanges", "data.frame", "DataFrame")
 geneAnnotationCols <- c(
     "ensgene",
     "symbol",
