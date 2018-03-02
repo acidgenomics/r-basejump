@@ -1,5 +1,5 @@
 .addBroadClassCol <- function(object) {
-    assert_is_any_of(object, c("data.frame", "DataFrame", "GRanges"))
+    assert_is_any_of(object, ensemblReturn)
 
     # Metadata
     if (is(object, "GRanges")) {
@@ -25,21 +25,8 @@
         symbol <- NA
     }
 
-    # Rownames from gene or transcript IDs
-    # Note that transcript ID takes priority
-    txCol <- grep("enstxp|txID", colnames(data), value = TRUE)
-    geneCol <- grep("ensgene|geneID", colnames(data), value = TRUE)
-    if (length(txCol)) {
-        idCol <- txCol[[1L]]
-    } else if (length(geneCol)) {
-        idCol <- geneCol[[1L]]
-    } else {
-        idCol <- NA
-    }
-    assert_is_a_string(idCol)
-    assert_is_subset(idCol, colnames(data))
-    id <- data[, idCol, drop = TRUE]
-
+    id <- data %>%
+        .[, .detectIDCol(.), drop = TRUE]
     tibble <- tibble(
         id = id,
         biotype = biotype,
@@ -73,7 +60,7 @@
 .broadClass <- function(object) {
     assert_is_data.frame(object)
     assert_is_subset(c("biotype", "symbol"), colnames(object))
-    broad <- object %>%
+    object %>%
         mutate(
             broad = case_when(
                 grepl(
