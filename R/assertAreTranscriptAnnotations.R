@@ -1,27 +1,27 @@
-#' Assert Are Ensembl Gene Annotations
+#' Assert Are Ensembl Transcript Annotations
 #'
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x [data.frame] containing Ensembl gene annotations returned
-#'   by the [genes()] function.
+#' @param x [data.frame] containing Ensembl transcript annotations returned
+#'   by the [transcripts()] function.
 #'
 #' @export
 #'
 #' @examples
 #' # Success
-#' genes <- genes("Homo sapiens")
-#' assertAreGeneAnnotations(genes)
+#' transcripts <- transcripts("Homo sapiens")
+#' assertAreTranscriptAnnotations(transcripts)
 #'
 #' # Failure
-#' transcripts <- transcripts("Homo sapiens")
+#' genes <- genes("Homo sapiens")
 #' tryCatch(
-#'     assertAreGeneAnnotations(transcripts),
+#'     assertAreTranscriptAnnotations(genes),
 #'     error = function(e) e)
 assertAreGeneAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(
-        x = geneAnnotationCols,
+        x = transcriptAnnotationCols,
         y = colnames(x),
         severity = severity)
     assert_has_rows(x, severity = severity)
