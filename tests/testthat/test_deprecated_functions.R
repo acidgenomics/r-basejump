@@ -1,6 +1,6 @@
-context("deprecated")
+context("Deprecated Functions")
 
-test_that("Hard deprecations", {
+test_that("Hard", {
     hard <- c(
         "summarizeRows",
         "wash",
@@ -21,7 +21,7 @@ test_that("Hard deprecations", {
     ))
 })
 
-test_that("Soft deprecations", {
+test_that("Soft", {
     soft <- c(
         "pct",
         "fc2lr",
