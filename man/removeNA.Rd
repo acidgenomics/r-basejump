@@ -68,5 +68,5 @@ removeNA(c(1, 2, NA))
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{fixNA}}, \code{\link{sanitizeColData}},
-  \code{\link{sanitizeGeneAnnotations}}
+  \code{\link{sanitizeRowData}}
 }

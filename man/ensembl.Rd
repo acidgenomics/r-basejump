@@ -5,8 +5,7 @@
 \title{Ensembl Annotations}
 \usage{
 ensembl(organism, format = "genes", genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, broadClass = TRUE, sanitizeColnames = TRUE,
-  return = "GRanges", metadata = FALSE)
+  uniqueSymbol = FALSE, return = "GRanges", metadata = FALSE)
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -22,18 +21,6 @@ current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
 \code{gene2symbol} output.}
-
-\item{broadClass}{Include broad class definitions, based on \code{biotype} and/or
-gene \code{symbol} annotations. Only applies to \code{genes} and \code{transcripts}
-output.}
-
-\item{sanitizeColnames}{Improve column names and drop duplicated columns:
-\itemize{
-\item Rename \code{geneID} to \code{ensgene}.
-\item Rename \code{txID} to \code{enstxp}.
-\item Rename \code{geneBiotype} or \code{txBiotype} to simply \code{biotype}.
-\item Rename \code{entrezid} to \code{entrez}.
-}}
 
 \item{return}{Class of the returned object. Can be "\code{data.frame}",
 "\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for

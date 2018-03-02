@@ -54,5 +54,5 @@ tibble(
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{removeNA}}, \code{\link{sanitizeColData}},
-  \code{\link{sanitizeGeneAnnotations}}
+  \code{\link{sanitizeRowData}}
 }
