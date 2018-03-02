@@ -273,17 +273,17 @@ ensembl <- function(
     # Convert column names into desired convention
     data <- camel(data)
 
+    # Broad class definitions
+    if (format %in% c("genes", "transcripts")) {
+        data <- .addBroadClassCol(data)
+    }
+
     # Sanitize columns
     data <- .sanitizeAnnotationCols(data, format = format)
 
     # Unique symbol mode
     if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
         data <- .uniqueSymbol(data)
-    }
-
-    # Broad class definitions
-    if (format %in% c("genes", "transcripts")) {
-        data <- .addBroadClassCol(data)
     }
 
     # Sort by identifier
