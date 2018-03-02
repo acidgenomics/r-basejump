@@ -51,14 +51,6 @@
 #'   current release available on AnnotationHub.
 #' @param uniqueSymbol Make gene symbols unique. Only applies to `genes` and
 #'   `gene2symbol` output.
-#' @param broadClass Include broad class definitions, based on `biotype` and/or
-#'   gene `symbol` annotations. Only applies to `genes` and `transcripts`
-#'   output.
-#' @param sanitizeColnames Improve column names and drop duplicated columns:
-#'   - Rename `geneID` to `ensgene`.
-#'   - Rename `txID` to `enstxp`.
-#'   - Rename `geneBiotype` or `txBiotype` to simply `biotype`.
-#'   - Rename `entrezid` to `entrez`.
 #' @param return Class of the returned object. Can be "`data.frame`",
 #'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
 #'   additional information.
@@ -93,8 +85,6 @@ ensembl <- function(
     genomeBuild = NULL,
     release = NULL,
     uniqueSymbol = FALSE,
-    broadClass = TRUE,
-    sanitizeColnames = TRUE,
     return = "GRanges",
     metadata = FALSE) {
     assert_is_a_string(organism)
@@ -109,8 +99,6 @@ ensembl <- function(
         assert_all_are_greater_than_or_equal_to(release, 87L)
     }
     assert_is_a_bool(uniqueSymbol)
-    assert_is_a_bool(broadClass)
-    assert_is_a_bool(sanitizeColnames)
     .assertFormalEnsembldbReturn(return)
     assert_is_a_bool(metadata)
 
@@ -259,7 +247,6 @@ ensembl <- function(
                 "seq_coord_system",
                 "entrezid"),
             return.type = return)
-        idCol <- "gene_id"
     } else if (format == "transcripts") {
         data <- transcripts(
             edb,
@@ -271,24 +258,23 @@ ensembl <- function(
                 "tx_support_level",
                 "gene_id"),
             return.type = return)
-        idCol <- "tx_id"
     } else if (format == "gene2symbol") {
         data <- genes(
             edb,
             columns = c("gene_id", "symbol"),
             return.type = return)
-        idCol <- "gene_id"
     } else if (format == "tx2gene") {
         data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
             return.type = return)
-        idCol <- "tx_id"
     }
 
     # Convert column names into desired convention
     data <- camel(data)
-    idCol <- camel(idCol)
+
+    # Sanitize columns
+    data <- .sanitizeAnnotationCols(data, format = format)
 
     # Unique symbol mode
     if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
@@ -296,11 +282,12 @@ ensembl <- function(
     }
 
     # Broad class definitions
-    if (format %in% c("genes", "transcripts") && isTRUE(broadClass)) {
+    if (format %in% c("genes", "transcripts")) {
         data <- .addBroadClassCol(data)
     }
 
     # Sort by identifier
+    idCol <- .detectIDCol(data)
     if (is(data, "GRanges")) {
         data <- data %>%
             .[order(mcols(.)[[idCol]], start(.))]
@@ -309,11 +296,6 @@ ensembl <- function(
         rownames(data) <- data[[idCol]]
         data <- data %>%
             .[order(rownames(.)), , drop = FALSE]
-    }
-
-    # Sanitize columns
-    if (isTRUE(sanitizeColnames)) {
-        data <- .sanitizeAnnotationCols(data, format = format)
     }
 
     # Stash the AnnotationHub metadata inside a list, if desired
