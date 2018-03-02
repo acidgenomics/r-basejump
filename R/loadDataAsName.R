@@ -37,7 +37,7 @@ loadDataAsName <- function(
     assert_is_environment(envir)
 
     files <- path(dir, paste0(dots, ".rda"))
-    names(files) <- dots
+    names(files) <- names(dots)
     assert_all_are_existing_files(files)
 
     # Load into a temporary environment

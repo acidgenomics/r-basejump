@@ -51,50 +51,47 @@ test_that("loadData : Invalid arguments", {
 
 # loadDataAsName ===============================================================
 test_that("loadDataAsName : Non-standard evaluation", {
-    x <- loadDataAsName(hg19 = grch37, hg38 = grch38)
+    x <- loadDataAsName(data1 = counts, data2 = gr)
     expect_is(x, "fs_path")
-    expect_identical(
-        names(x),
-        c("grch37", "grch38")
-    )
-    expect_true(exists("hg19", inherits = FALSE))
-    expect_true(exists("hg38", inherits = FALSE))
+    expect_identical(names(x), c("data1", "data2"))
+    expect_true(exists("data1", inherits = FALSE))
+    expect_true(exists("data2", inherits = FALSE))
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment
     expect_error(
-        loadDataAsName(hg19 = grch37, hg38 = grch38),
-        "Already exists in environment: hg19, hg38"
+        loadDataAsName(data1 = counts, data2 = gr),
+        "Already exists in environment: data1, data2"
     )
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
-        loadDataAsName(hg19 = "grch37.rda"),
+        loadDataAsName(data = "counts.rda"),
         "is_name :"
     )
 })
 
 test_that("loadDataAsName : Missing files", {
     expect_error(
-        loadDataAsName(counts = XXX),
+        loadDataAsName(data = XXX),
         "is_existing_file :"
     )
 })
 
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
-        loadDataAsName(newName = multi),
+        loadDataAsName(data = multi),
         "is_a_string : loaded has length 2, not 1."
     )
 })
 
 test_that("loadDataAsName : Invalid arguments", {
     expect_error(
-        loadDataAsName(hg19 = grch37, dir = "XXX"),
+        loadDataAsName(data = counts, dir = "XXX"),
         "is_dir : "
     )
     expect_error(
-        loadDataAsName(hg19 = grch37, envir = "XXX"),
+        loadDataAsName(data = counts, envir = "XXX"),
         "is_environment : envir"
     )
 })
