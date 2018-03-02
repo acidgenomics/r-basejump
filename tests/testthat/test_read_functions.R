@@ -240,12 +240,8 @@ test_that("readGFF : Fruitfly", {
 
 test_that("readGFF : Unsupported file type", {
     expect_error(
-        readGFF("mtcars.rda"),
-        "GFF/GTF file failed to load"
-    )
-    expect_error(
-        readGFF("mtcars.tsv"),
-        "GFF/GTF file failed to load"
+        readGFF("counts.rda"),
+        "is_matching_regex :"
     )
 })
 
