@@ -102,16 +102,21 @@ test_that("assertIsAnIntegerOrNULL", {
     )
 })
 
-test_that("assertIsAnnotable", {
-    annotable <- annotable(human)
-    expect_silent(assertIsAnnotable(annotable))
+test_that("assertAreGeneAnnotations", {
+    x <- genes(human)
+    expect_silent(assertAreGeneAnnotations(x))
     expect_error(
-        assertIsAnnotable(mtcars),
+        assertAreGeneAnnotations(mtcars),
         "is_subset : "
     )
+})
+
+test_that("assertAreTranscriptAnnotations", {
+    x <- transcripts(human)
+    expect_silent(assertAreTranscriptAnnotations(x))
     expect_error(
-        assertIsAnnotable(NULL),
-        "is_data.frame : x"
+        assertAreTranscriptAnnotations(mtcars),
+        "is_subset : "
     )
 })
 

@@ -312,30 +312,30 @@ test_that("tx2gene : character", {
 test_that("GRCh37 genome build support", {
     # genes
     expect_identical(
-        annotable(human, genomeBuild = "GRCh37"),
+        genes(human, genomeBuild = "GRCh37"),
         grch37
     )
     expect_identical(
-        annotable(human, genomeBuild = "hg19"),
+        genes(human, genomeBuild = "hg19"),
         grch37
     )
 
     # gene2symbol
     expect_identical(
-        annotable(human, genomeBuild = "GRCh37", format = "gene2symbol"),
+        gene2symbol(human, genomeBuild = "GRCh37"),
         grch37[, c("ensgene", "symbol")]
     )
 
     # transcripts
     # TODO Add support for this in future update
     expect_error(
-        annotable(human, format = "transcripts", genomeBuild = "GRCh37"),
+        transcripts(human, genomeBuild = "GRCh37"),
         "Ensembl annotations for Homo sapiens : GRCh37 were not found"
     )
 
     # tx2gene
     expect_identical(
-        annotable(human, genomeBuild = "GRCh37", format = "tx2gene"),
+        tx2gene(human, genomeBuild = "GRCh37"),
         grch37Tx2gene
     )
 })
