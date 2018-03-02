@@ -4,6 +4,9 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
 #' @family Write Functions
 #'
 #' @importFrom fs path
