@@ -32,6 +32,5 @@ setMethod(
             genomeBuild = genomeBuild,
             release = release,
             uniqueSymbol = uniqueSymbol,
-            sanitizeColnames = TRUE,
             return = "data.frame")
     })
