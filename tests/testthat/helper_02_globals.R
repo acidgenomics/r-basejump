@@ -16,7 +16,6 @@ coldata <- DataFrame(
     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"))
 
 ensemblRelease <- 87L
-ensemblReturn <- c("data.frame", "DataFrame", "GRanges")
 ensemblURL <- "ftp://ftp.ensembl.org/pub/release-89"
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 heatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
