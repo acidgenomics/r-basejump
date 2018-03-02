@@ -1,6 +1,3 @@
-extdataDir <- file.path("inst", "extdata")
-dir.create(extdataDir, recursive = TRUE, showWarnings = FALSE)
-
 character <- c(
     "hello world",
     "HELLO WORLD",
@@ -44,6 +41,4 @@ makeNames <- list(
     "list" = list)
 lapply(makeNames, class)
 
-save(makeNames,
-     file = file.path(extdataDir, "makeNames.rda"),
-     compress = "xz")
+saveData(makeNames, dir = "inst/extdata", compress = "xz")
