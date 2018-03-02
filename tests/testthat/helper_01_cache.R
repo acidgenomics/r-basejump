@@ -1,6 +1,5 @@
 cacheURL <- "http://basejump.seq.cloud"
 files <- c(
-    "annotable_AsIs.rda",
     "counts.rda",
     "dmelanogaster.gtf",
     "grch37.rda",
@@ -9,14 +8,12 @@ files <- c(
     "makeNames.rda",
     "mmusculus.gtf",
     "mtcars.csv",
-    "mtcars.rda",
     "mtcars.tsv",
     "mtcars.txt",
     "multi.rda",
     "plotlist.rda",
     "renamed.rda",
     "sparse.mtx",
-    "starwars.rda",
     "summary.yaml",
     "test.colnames",
     "test.counts")
