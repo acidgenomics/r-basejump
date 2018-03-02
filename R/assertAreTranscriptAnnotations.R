@@ -18,7 +18,7 @@
 #' tryCatch(
 #'     assertAreTranscriptAnnotations(genes),
 #'     error = function(e) e)
-assertAreGeneAnnotations <- function(x, severity = "stop") {
+assertAreTranscriptAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(
         x = transcriptAnnotationCols,
