@@ -103,11 +103,11 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"))
+    loaded <- loadRemoteData(paste(cacheURL, "counts.rda", sep = "/"))
     expect_is(loaded, "matrix")
     expect_identical(
-        loaded["url", "mtcars", drop = TRUE],
-        paste(cacheURL, "mtcars.rda", sep = "/")
+        loaded["url", "counts", drop = TRUE],
+        paste(cacheURL, "counts.rda", sep = "/")
     )
 })
 
@@ -218,8 +218,8 @@ test_that("readFileByExtension : Unsupported file type", {
     )
     # R Data
     expect_error(
-        readFileByExtension("mtcars.rda"),
-        "Unsupported file extension"
+        readFileByExtension("counts.rda"),
+        "Unsupported file extension: counts.rda"
     )
 })
 
