@@ -2,6 +2,7 @@ cacheURL <- "http://basejump.seq.cloud"
 files <- c(
     "counts.rda",
     "dmelanogaster.gtf",
+    "gr.rda",
     "grch37.rda",
     "grch37Tx2gene.rda",
     "grch38.rda",
