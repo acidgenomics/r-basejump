@@ -1,6 +1,6 @@
 #' Gene Annotations
 #'
-#' @rdname genes-method
+#' @rdname genes
 #' @name genes-method
 #' @family Gene Functions
 #'
@@ -20,7 +20,7 @@ NULL
 
 
 # Methods ======================================================================
-#' @rdname genes-method
+#' @rdname genes
 #' @export
 setMethod(
     "genes",

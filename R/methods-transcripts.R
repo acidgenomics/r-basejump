@@ -1,6 +1,6 @@
 #' Transcript Annotations
 #'
-#' @rdname transcripts-method
+#' @rdname transcripts
 #' @name transcripts-method
 #' @family Gene Functions
 #'
@@ -16,7 +16,7 @@ NULL
 
 
 # Methods ======================================================================
-#' @rdname transcripts-method
+#' @rdname transcripts
 #' @export
 setMethod(
     "transcripts",
