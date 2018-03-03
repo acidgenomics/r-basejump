@@ -32,7 +32,8 @@ readme <- transmit(
     remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
     pattern = "README",
     rename = "ensembl_readme.txt",
-    compress = TRUE)
+    compress = TRUE
+)
 basename(readme)
 file_exists(readme)
 

@@ -81,8 +81,8 @@ matrix(
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{detectOrganism}}, \code{\link{ensembl}},
   \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{genes}},
+  \code{\link{gene2symbol}}, \code{\link{genes-method}},
   \code{\link{stripTranscriptVersions}},
-  \code{\link{transcripts}}, \code{\link{tx2geneFromGFF}},
-  \code{\link{tx2gene}}
+  \code{\link{transcripts-method}},
+  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }

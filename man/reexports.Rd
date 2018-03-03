@@ -5,6 +5,10 @@
 \alias{reexports}
 \alias{pull}
 \alias{reexports}
+\alias{genes}
+\alias{reexports}
+\alias{transcripts}
+\alias{reexports}
 \alias{dir_create}
 \alias{reexports}
 \alias{dir_delete}
@@ -60,6 +64,8 @@ below to see their documentation.
   \item{dplyr}{\code{\link[dplyr]{pull}}}
 
   \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{dir_delete}}, \code{\link[fs]{dir_exists}}, \code{\link[fs]{file_delete}}, \code{\link[fs]{file_exists}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
+
+  \item{GenomicFeatures}{\code{\link[GenomicFeatures]{genes}}, \code{\link[GenomicFeatures]{transcripts}}}
 
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 

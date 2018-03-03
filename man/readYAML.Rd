@@ -21,7 +21,8 @@ url <- paste(
     "http://bcbiobase.seq.cloud",
     "bcbio",
     "project-summary.yaml",
-    sep = "/")
+    sep = "/"
+)
 yaml <- readYAML(url)
 names(yaml)
 }

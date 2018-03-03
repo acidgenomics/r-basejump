@@ -32,6 +32,7 @@ glimpse(csv)
 
 # Microsoft Excel Worksheet
 xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+glimpse(xlsx)
 }
 \seealso{
 \itemize{
