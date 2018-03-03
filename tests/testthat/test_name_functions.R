@@ -31,31 +31,35 @@ test_that("camel : ANY", {
 test_that("camel : character", {
     expect_identical(
         camel(makeNames[["character"]], strict = FALSE),
-        c("helloWorld",
-          "helloWORLD",
-          "rnaiClones",
-          "nCount",
-          "tx2gene",
-          "tx2GeneID",
-          "g2mScore",
-          "worfdbHTMLRemap",
-          "mazdaRX4",
-          "x123",
-          NA)
+        c(
+            "helloWorld",
+            "helloWORLD",
+            "rnaiClones",
+            "nCount",
+            "tx2gene",
+            "tx2GeneID",
+            "g2mScore",
+            "worfdbHTMLRemap",
+            "mazdaRX4",
+            "x123",
+            NA
+        )
     )
     expect_identical(
         camel(makeNames[["character"]], strict = TRUE),
-        c("helloWorld",
-          "helloWorld",
-          "rnaiClones",
-          "nCount",
-          "tx2gene",
-          "tx2GeneId",
-          "g2mScore",
-          "worfdbHtmlRemap",
-          "mazdaRx4",
-          "x123",
-          NA)
+        c(
+            "helloWorld",
+            "helloWorld",
+            "rnaiClones",
+            "nCount",
+            "tx2gene",
+            "tx2GeneId",
+            "g2mScore",
+            "worfdbHtmlRemap",
+            "mazdaRx4",
+            "x123",
+            NA
+        )
     )
 
     # Delimited numbers in strings
@@ -75,8 +79,7 @@ test_that("camel : character", {
     # Named
     expect_identical(
         camel(makeNames[["namedCharacter"]], strict = TRUE),
-        c("itemA" = "helloWorld",
-          "itemB" = "helloWorld")
+        c("itemA" = "helloWorld", "itemB" = "helloWorld")
     )
 })
 
@@ -113,8 +116,7 @@ test_that("camel : GRanges", {
 test_that("camel : list", {
     expect_identical(
         camel(makeNames[["list"]], strict = TRUE),
-        list("itemA" = c(1L, 2L),
-             "itemB" = c(3L, 4L))
+        list("itemA" = c(1L, 2L), "itemB" = c(3L, 4L))
     )
 })
 
@@ -190,24 +192,25 @@ test_that("dotted : ANY", {
 test_that("dotted : character", {
     expect_identical(
         dotted(makeNames[["character"]]),
-        c("hello.world",
-          "HELLO.WORLD",
-          "RNAI.clones",
-          "n.Count",
-          "tx2gene",
-          "TX2.Gene.ID",
-          "G2M.Score",
-          "worfdb.HTML.Remap",
-          "Mazda.RX4",
-          "X123",
-          NA)
+        c(
+            "hello.world",
+            "HELLO.WORLD",
+            "RNAI.clones",
+            "n.Count",
+            "tx2gene",
+            "TX2.Gene.ID",
+            "G2M.Score",
+            "worfdb.HTML.Remap",
+            "Mazda.RX4",
+            "X123",
+            NA
+        )
     )
 
     # Named
     expect_identical(
         dotted(makeNames[["namedCharacter"]]),
-        c("Item.A" = "hello.world",
-          "Item.B" = "HELLO.WORLD")
+        c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD")
     )
 })
 
@@ -239,8 +242,7 @@ test_that("dotted : GRanges", {
 test_that("dotted : list", {
     expect_identical(
         dotted(makeNames[["list"]]),
-        list(Item.A = c(1L, 2L),
-             Item.B = c(3L, 4L))
+        list("Item.A" = c(1L, 2L), "Item.B" = c(3L, 4L))
     )
 })
 
@@ -279,11 +281,13 @@ test_that("dotted : tibble", {
             .[, 1L:5L] %>%
             dotted() %>%
             colnames(),
-        c("name",
-          "height",
-          "mass",
-          "hair.color",
-          "skin.color")
+        c(
+            "name",
+            "height",
+            "mass",
+            "hair.color",
+            "skin.color"
+        )
     )
 })
 
@@ -321,25 +325,26 @@ test_that("snake : character", {
     x <- snake(makeNames[["character"]])
     expect_identical(
         x,
-        c("hello_world",
-          "hello_world",
-          "rnai_clones",
-          "n_count",
-          "tx2gene",
-          "tx2_gene_id",
-          "g2m_score",
-          "worfdb_html_remap",
-          "mazda_rx4",
-          "x123",
-          NA)
+        c(
+            "hello_world",
+            "hello_world",
+            "rnai_clones",
+            "n_count",
+            "tx2gene",
+            "tx2_gene_id",
+            "g2m_score",
+            "worfdb_html_remap",
+            "mazda_rx4",
+            "x123",
+            NA
+        )
     )
 
     # Named
     x <- snake(makeNames[["namedCharacter"]])
     expect_identical(
         x,
-        c("item_a" = "hello_world",
-          "item_b" = "hello_world")
+        c("item_a" = "hello_world", "item_b" = "hello_world")
     )
 })
 
@@ -373,8 +378,7 @@ test_that("snake : list", {
     x <- snake(makeNames[["list"]])
     expect_identical(
         x,
-        list("item_a" = c(1L, 2L),
-             "item_b" = c(3L, 4L))
+        list("item_a" = c(1L, 2L), "item_b" = c(3L, 4L))
     )
 })
 
@@ -414,11 +418,13 @@ test_that("snake : tibble", {
         colnames()
     expect_identical(
         x,
-        c("name",
-          "height",
-          "mass",
-          "hair_color",
-          "skin_color")
+        c(
+            "name",
+            "height",
+            "mass",
+            "hair_color",
+            "skin_color"
+        )
     )
 })
 
@@ -455,31 +461,35 @@ test_that("upperCamel : ANY", {
 test_that("upperCamel : character", {
     expect_identical(
         upperCamel(makeNames[["character"]], strict = FALSE),
-        c("HelloWorld",
-          "HELLOWORLD",  # improve this?
-          "RNAIClones",
-          "NCount",
-          "Tx2gene",
-          "TX2GeneID",
-          "G2MScore",
-          "WorfdbHTMLRemap",
-          "MazdaRX4",
-          "X123",
-          NA)
+        c(
+            "HelloWorld",
+            "HELLOWORLD",  # improve this?
+            "RNAIClones",
+            "NCount",
+            "Tx2gene",
+            "TX2GeneID",
+            "G2MScore",
+            "WorfdbHTMLRemap",
+            "MazdaRX4",
+            "X123",
+            NA
+        )
     )
     expect_identical(
         upperCamel(makeNames[["character"]], strict = TRUE),
-        c("HelloWorld",
-          "HelloWorld",
-          "RnaiClones",
-          "NCount",
-          "Tx2gene",
-          "Tx2GeneId",
-          "G2mScore",
-          "WorfdbHtmlRemap",
-          "MazdaRx4",
-          "X123",
-          NA)
+        c(
+            "HelloWorld",
+            "HelloWorld",
+            "RnaiClones",
+            "NCount",
+            "Tx2gene",
+            "Tx2GeneId",
+            "G2mScore",
+            "WorfdbHtmlRemap",
+            "MazdaRx4",
+            "X123",
+            NA
+        )
     )
 
     # Delimited numbers as strings
@@ -499,8 +509,7 @@ test_that("upperCamel : character", {
     # Named
     expect_identical(
         upperCamel(makeNames[["namedCharacter"]], strict = TRUE),
-        c("ItemA" = "HelloWorld",
-          "ItemB" = "HelloWorld")
+        c("ItemA" = "HelloWorld", "ItemB" = "HelloWorld")
     )
 })
 
@@ -542,8 +551,7 @@ test_that("upperCamel : GRanges", {
 test_that("upperCamel : list", {
     expect_identical(
         upperCamel(makeNames[["list"]], strict = TRUE),
-        list("ItemA" = c(1L, 2L),
-             "ItemB" = c(3L, 4L))
+        list("ItemA" = c(1L, 2L), "ItemB" = c(3L, 4L))
     )
 })
 
@@ -560,8 +568,10 @@ test_that("upperCamel : matrix", {
 
     # Sanitize rownames
     expect_identical(
-        upperCamel(makeNames[["matrix"]],
-                   rownames = TRUE, strict = TRUE) %>%
+        upperCamel(
+            makeNames[["matrix"]],
+            rownames = TRUE, strict = TRUE
+        ) %>%
             rownames() %>%
             .[[1L]],
         "MazdaRx4"

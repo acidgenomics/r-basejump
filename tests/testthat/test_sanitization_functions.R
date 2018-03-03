@@ -7,7 +7,8 @@ test_that("collapseToString : atomic", {
             groceries,
             sort = TRUE,
             removeNA = FALSE,
-            unique = FALSE),
+            unique = FALSE
+        ),
         "eggs, eggs, milk, veggies, NA, NA"
     )
     expect_identical(
@@ -15,7 +16,8 @@ test_that("collapseToString : atomic", {
             groceries,
             sort = TRUE,
             removeNA = TRUE,
-            unique = FALSE),
+            unique = FALSE
+        ),
         "eggs, eggs, milk, veggies"
     )
     expect_identical(
@@ -23,7 +25,8 @@ test_that("collapseToString : atomic", {
             groceries,
             sort = TRUE,
             removeNA = TRUE,
-            unique = TRUE),
+            unique = TRUE
+        ),
         "eggs, milk, veggies"
     )
 })
@@ -110,34 +113,47 @@ test_that("fixNA", {
         data.frame(
             "a" = c("foo", ""),
             "b" = c(NA, "bar"),
-            stringsAsFactors = FALSE) %>%
+            stringsAsFactors = FALSE
+        ) %>%
             fixNA(),
         data.frame(
             "a" = c("foo", NA),
             "b" = c(NA, "bar"),
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE
+        )
     )
 
     # DataFrame
     expect_identical(
-        DataFrame(a = c("foo", ""),
-                  b = c(NA, "bar")) %>%
+        DataFrame(
+            "a" = c("foo", ""),
+            "b" = c(NA, "bar")
+        ) %>%
             fixNA(),
-        DataFrame(a = c("foo", NA),
-                  b = c(NA, "bar")))
+        DataFrame(
+            "a" = c("foo", NA),
+            "b" = c(NA, "bar")
+        )
+    )
 
     # tbl_df
     expect_identical(
-        tibble(a = c("foo", ""),
-               b = c(NA, "bar")) %>%
+        tibble(
+            "a" = c("foo", ""),
+            "b" = c(NA, "bar")
+        ) %>%
             fixNA(),
-        tibble(a = c("foo", NA),
-               b = c(NA, "bar")))
+        tibble(
+            "a" = c("foo", NA),
+            "b" = c(NA, "bar")
+        )
+    )
 
     # ANY (list)
     expect_identical(
-        fixNA(list(a = 1L)),
-        list(a = 1L))
+        fixNA(list("a" = 1L)),
+        list("a" = 1L)
+    )
 })
 
 
@@ -146,13 +162,17 @@ test_that("fixNA", {
 test_that("removeNA : data.frame", {
     # data.frame
     expect_identical(
-        data.frame(a = c("A", NA, "C"),
-                   b = c(NA, NA, NA),
-                   c = c("B", NA, "D")) %>%
+        data.frame(
+            "a" = c("A", NA, "C"),
+            "b" = c(NA, NA, NA),
+            "c" = c("B", NA, "D")
+        ) %>%
             removeNA(),
-        data.frame(a = c("A", "C"),
-                   c = c("B", "D"),
-                   row.names = c(1L, 3L))
+        data.frame(
+            "a" = c("A", "C"),
+            "c" = c("B", "D"),
+            row.names = c(1L, 3L)
+        )
     )
 })
 
@@ -182,7 +202,8 @@ test_that("sanitizeColData", {
     expect_true(all(vapply(
         X = x,
         FUN = is.factor,
-        FUN.VALUE = logical(1L))))
+        FUN.VALUE = logical(1L)
+    )))
 })
 
 

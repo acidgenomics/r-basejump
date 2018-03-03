@@ -28,11 +28,11 @@ test_that("aggregateFeatures", {
     # Invalid groupings ========================================================
     expect_error(
         aggregateFeatures(mat, groupings = "XXX"),
-        "is_factor"
+        "is_factor :"
     )
     expect_error(
         aggregateFeatures(mat, groupings = factor(c("XXX", "YYY"))),
-        "are_identical"
+        "are_identical :"
     )
 })
 
@@ -64,11 +64,11 @@ test_that("aggregateReplicates", {
     # Invalid groupings ========================================================
     expect_error(
         aggregateReplicates(mat, groupings = "XXX"),
-        "is_factor"
+        "is_factor :"
     )
     expect_error(
         aggregateReplicates(mat, groupings = factor(c("XXX", "YYY"))),
-        "are_identical"
+        "are_identical :"
     )
 })
 

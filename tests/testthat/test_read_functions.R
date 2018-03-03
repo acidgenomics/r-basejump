@@ -199,11 +199,13 @@ test_that("readFileByExtension : Counts file (.counts)", {
     expect_is(counts, "matrix")
     expect_identical(
         rownames(counts)[1L:5L],
-        c("ENSMUSG00000102693",
-          "ENSMUSG00000064842",
-          "ENSMUSG00000051951",
-          "ENSMUSG00000102851",
-          "ENSMUSG00000103377")
+        c(
+            "ENSMUSG00000102693",
+            "ENSMUSG00000064842",
+            "ENSMUSG00000051951",
+            "ENSMUSG00000102851",
+            "ENSMUSG00000103377"
+        )
     )
 })
 
