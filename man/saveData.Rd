@@ -4,7 +4,7 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = ".", overwrite = TRUE, compress = "bzip2")
+saveData(..., dir = ".", overwrite = TRUE, compress = TRUE)
 }
 \arguments{
 \item{...}{Object names. Note that these arguments are interpreted using
