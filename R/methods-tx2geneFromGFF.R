@@ -86,7 +86,6 @@ setMethod(
 
 # Aliases ======================================================================
 #' @rdname tx2geneFromGFF
-#' @inheritParams general
 #' @export
 tx2geneFromGTF <- function(...) {
     tx2geneFromGFF(...)  # nocov

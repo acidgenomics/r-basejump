@@ -64,7 +64,6 @@ setMethod(
 
 # Aliases ======================================================================
 #' @rdname markdownList
-#' @inheritParams general
 #' @export
 mdList <- function(...) {
     markdownList(...)  # nocov

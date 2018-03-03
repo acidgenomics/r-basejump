@@ -117,7 +117,6 @@ setMethod(
 
 # Aliases ======================================================================
 #' @rdname geometricMean
-#' @inheritParams general
 #' @export
 geomean <- function(...) {
     geometricMean(...)  # nocov
