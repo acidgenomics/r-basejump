@@ -10,6 +10,6 @@ test_that("Coerce to tibble", {
     )
     expect_error(
          as(list("foo", "bar"), "tibble"),
-        "has_dims"
+        "has_dims :"
     )
 })

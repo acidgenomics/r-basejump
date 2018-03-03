@@ -50,7 +50,8 @@ test_that("transmit : Standard", {
     readme <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
-        compress = FALSE)
+        compress = FALSE
+    )
     expected <- path_join(c(path_real("."), "README"))
     names(expected) <- "README"
     expect_identical(readme, expected)
@@ -62,7 +63,8 @@ test_that("transmit : Rename and compress", {
         remoteDir = ensemblURL,
         pattern = "README",
         rename = "ensembl_readme.txt",
-        compress = TRUE)
+        compress = TRUE
+    )
     expected <- path_join(c(path_real("."), "ensembl_readme.txt.gz"))
     names(expected) <- "README"
     expect_identical(readme, expected)
@@ -115,7 +117,7 @@ test_that("writeCounts", {
     )
     expect_error(
         writeCounts(seq(1L:10L)),
-        "has_dims"
+        "has_dims :"
     )
     dir_delete("testcounts")
 })

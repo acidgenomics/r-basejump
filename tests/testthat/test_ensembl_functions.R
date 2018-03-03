@@ -4,7 +4,8 @@ context("Ensembl Functions")
 test_that("convertGenesToSymbols : character", {
     x <- convertGenesToSymbols(
         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-        release = ensemblRelease)
+        release = ensemblRelease
+    )
     expect_identical(
         x,
         c(
@@ -86,24 +87,27 @@ test_that("convertTranscriptsToGenes : character", {
     expect_identical(
         convertTranscriptsToGenes(
             c("ENSMUST00000000001", "ENSMUST00000000003"),
-            release = ensemblRelease),
-        c("ENSMUST00000000001" = "ENSMUSG00000000001",
-          "ENSMUST00000000003" = "ENSMUSG00000000003")
+            release = ensemblRelease
+        ),
+        c(
+            "ENSMUST00000000001" = "ENSMUSG00000000001",
+            "ENSMUST00000000003" = "ENSMUSG00000000003"
+        )
     )
     expect_error(
         convertTranscriptsToGenes(
-            c("ENSMUST00000000000",
-              "ENSMUST00000000001"),
-            release = ensemblRelease),
+            c("ENSMUST00000000000", "ENSMUST00000000001"),
+            release = ensemblRelease
+        ),
         "Unmatched transcripts present. Try using a GFF file instead."
     )
     expect_error(
         convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
-        "is_non_missing_nor_empty_character"
+        "is_non_missing_nor_empty_character :"
     )
     expect_error(
         convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
-        "is_non_missing_nor_empty_character"
+        "is_non_missing_nor_empty_character :"
     )
 })
 
@@ -114,10 +118,12 @@ test_that("convertTranscriptsToGenes : matrix", {
         nrow = 4L,
         ncol = 2L,
         dimnames = list(
-            c("ENSMUST00000000000",
-              "ENSMUST00000000001",
-              "ENSMUST00000000003",
-              "ENSMUST00000114041"),
+            c(
+                "ENSMUST00000000000",
+                "ENSMUST00000000001",
+                "ENSMUST00000000003",
+                "ENSMUST00000114041"
+            ),
             c("sample1", "sample2")
         )
     )
@@ -129,9 +135,11 @@ test_that("convertTranscriptsToGenes : matrix", {
         mat[2L:4L, ] %>%
             convertTranscriptsToGenes() %>%
             rownames(),
-        c("ENSMUST00000000001" = "ENSMUSG00000000001",
-          "ENSMUST00000000003" = "ENSMUSG00000000003",
-          "ENSMUST00000114041" = "ENSMUSG00000000003")
+        c(
+            "ENSMUST00000000001" = "ENSMUSG00000000001",
+            "ENSMUST00000000003" = "ENSMUSG00000000003",
+            "ENSMUST00000114041" = "ENSMUSG00000000003"
+        )
     )
 })
 
@@ -145,13 +153,15 @@ test_that("genes : character", {
         return = ensemblReturn,
         MoreArgs = list(x = human, release = ensemblRelease),
         SIMPLIFY = FALSE,
-        USE.NAMES = TRUE)
+        USE.NAMES = TRUE
+    )
     expect_identical(
         vapply(
             X = x,
             FUN = class,
             FUN.VALUE = character(1L),
-            USE.NAMES = FALSE),
+            USE.NAMES = FALSE
+        ),
         ensemblReturn
     )
 
@@ -184,7 +194,8 @@ test_that("genes : character", {
         "seqName" = "character",
         "seqStrand" = "integer",
         "seqCoordSystem" = "character",
-        "entrez" = "list")
+        "entrez" = "list"
+    )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
     expect_identical(
@@ -254,13 +265,15 @@ test_that("transcripts : character", {
         return = ensemblReturn,
         MoreArgs = list(x = human, release = ensemblRelease),
         SIMPLIFY = FALSE,
-        USE.NAMES = TRUE)
+        USE.NAMES = TRUE
+    )
     expect_identical(
         vapply(
             X = x,
             FUN = class,
             FUN.VALUE = character(1L),
-            USE.NAMES = FALSE),
+            USE.NAMES = FALSE
+        ),
         ensemblReturn
     )
 
@@ -289,7 +302,8 @@ test_that("transcripts : character", {
         "txCdsSeqStart" = "integer",
         "txCdsSeqEnd" = "integer",
         "txSupportLevel" = "integer",
-        "ensgene" = "character")
+        "ensgene" = "character"
+    )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
     expect_identical(lapply(mcols(x[["GRanges"]]), class), mcols)

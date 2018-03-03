@@ -36,7 +36,8 @@ test_that("assertFormalGene2symbol", {
         sample1 = c(1L, 2L),
         saple2 = c(3L, 4L),
         row.names = genes,
-        stringsAsFactors = FALSE)
+        stringsAsFactors = FALSE
+    )
     expect_silent(assertFormalGene2symbol(x, genes, gene2symbol))
     expect_error(
         assertFormalGene2symbol(mtcars, genes, gene2symbol),

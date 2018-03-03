@@ -137,7 +137,8 @@ test_that("gene2symbolFromGFF : Mouse", {
             "ensgene" = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
             "symbol" = c("Rp1", "Xkr4"),
             row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE
+        )
     )
 })
 
@@ -150,7 +151,8 @@ test_that("gene2symbolFromGFF : Fruitfly", {
             "ensgene" = c("FBgn0031081", "FBgn0031085"),
             "symbol" = c("Nep3", "CG9570"),
             row.names = c("FBgn0031081", "FBgn0031085"),
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE
+        )
     )
 })
 
@@ -185,7 +187,7 @@ test_that("stripTranscriptVersions", {
     # Require detectinon of Ensembl transcript (ENS*T)
     expect_error(
         stripTranscriptVersions("EGFP.1"),
-        "is_matching_regex"
+        "is_matching_regex :"
     )
     # Theoretical spike-in containing a transcript version
     expect_identical(
@@ -206,7 +208,8 @@ test_that("tx2geneFromGFF : Mouse", {
             "enstxp" = c("ENSMUST00000070533", "ENSMUST00000082908"),
             "ensgene" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
             row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE
+        )
     )
     expect_message(
         tx2geneFromGFF("mmusculus.gtf"),
@@ -223,7 +226,8 @@ test_that("tx2geneFromGFF : Fruitfly", {
             "enstxp" = c("FBtr0070000", "FBtr0070001"),
             "ensgene" = c("FBgn0031081", "FBgn0052826"),
             row.names = c("FBtr0070000", "FBtr0070001"),
-            stringsAsFactors = FALSE)
+            stringsAsFactors = FALSE
+        )
     )
 })
 
