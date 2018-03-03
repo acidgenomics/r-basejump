@@ -14,11 +14,13 @@
 #' b <- 2L
 #' tryCatch(
 #'     assertAllAreNonExisting(c("a", "b", "c")),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertAllAreNonExisting <- function(
     x,
     envir = parent.frame(),
-    inherits = FALSE) {
+    inherits = FALSE
+) {
     exists <- is_existing(x, envir = envir, inherits = inherits)
     if (any(exists)) {
         abort(paste(

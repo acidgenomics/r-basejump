@@ -25,12 +25,14 @@
 #'     groceries,
 #'     unique = TRUE,
 #'     sort = TRUE,
-#'     removeNA = TRUE)
+#'     removeNA = TRUE
+#' )
 #' collapseToString(
 #'     groceries,
 #'     unique = FALSE,
 #'     sort = FALSE,
-#'     removeNA = FALSE)
+#'     removeNA = FALSE
+#' )
 #'
 #' # numeric
 #' collapseToString(seq(1:5))
@@ -57,7 +59,8 @@ NULL
     sep = ", ",
     sort = FALSE,
     removeNA = FALSE,
-    unique = FALSE) {
+    unique = FALSE
+) {
     assert_is_any_of(object, c("factor", "vector"))
     # Early return unmodified if scalar
     if (is_scalar(object)) {
@@ -99,7 +102,8 @@ NULL
     sep = ", ",
     sort = FALSE,
     removeNA = FALSE,
-    unique = FALSE) {
+    unique = FALSE
+) {
     # Passthrough: sep, unique, sort
     assert_has_dims(object)
 
@@ -119,7 +123,8 @@ NULL
                 sep = sep,
                 sort = sort,
                 removeNA = removeNA,
-                unique = unique)
+                unique = unique
+            )
         ))
 
     if (!is.null(class)) {
@@ -137,7 +142,8 @@ NULL
 setMethod(
     "collapseToString",
     signature("atomic"),
-    .collapseToString)
+    .collapseToString
+)
 
 
 
@@ -146,7 +152,8 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("data.frame"),
-    .collapseToString.dim)
+    .collapseToString.dim
+)
 
 
 
@@ -155,7 +162,8 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("DataFrame"),
-    .collapseToString.dim)
+    .collapseToString.dim
+)
 
 
 
@@ -164,4 +172,5 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("matrix"),
-    .collapseToString.dim)
+    .collapseToString.dim
+)

@@ -13,12 +13,14 @@
 #' # Failure
 #' tryCatch(
 #'     assertIsAnIntegerOrNULL(c(1L, 2L)),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsAnIntegerOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
         classes = c("integer", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (is.integer(x)) {
         assert_is_an_integer(x, severity = severity)
     }

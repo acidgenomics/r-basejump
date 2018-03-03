@@ -43,7 +43,8 @@ NULL
 setMethod(
     "foldChangeToLogRatio",
     signature("integer"),
-    .foldChangeToLogRatio)
+    .foldChangeToLogRatio
+)
 
 
 
@@ -52,4 +53,5 @@ setMethod(
 setMethod(
     "foldChangeToLogRatio",
     signature("numeric"),
-    .foldChangeToLogRatio)
+    .foldChangeToLogRatio
+)

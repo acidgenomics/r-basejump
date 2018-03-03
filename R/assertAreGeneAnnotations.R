@@ -17,12 +17,14 @@
 #' transcripts <- transcripts("Homo sapiens")
 #' tryCatch(
 #'     assertAreGeneAnnotations(transcripts),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertAreGeneAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(
         x = geneAnnotationCols,
         y = colnames(x),
-        severity = severity)
+        severity = severity
+    )
     assert_has_rows(x, severity = severity)
 }

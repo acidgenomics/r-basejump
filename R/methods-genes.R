@@ -35,17 +35,15 @@ setMethod(
         genomeBuild = NULL,
         release = NULL,
         uniqueSymbol = FALSE,
-        return = "GRanges") {
-        assert_is_a_bool(uniqueSymbol)
-        data <- ensembl(
+        return = c("GRanges", "DataFrame", "data.frame")
+    ) {
+        ensembl(
             organism = x,
             format = "genes",
             genomeBuild = genomeBuild,
             release = release,
-            return = return)
-        if (isTRUE(uniqueSymbol)) {
-            data <- .uniqueSymbol(data)
-        }
-        data
+            uniqueSymbol = uniqueSymbol,
+            return = return
+        )
     }
 )

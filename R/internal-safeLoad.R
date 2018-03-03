@@ -1,7 +1,8 @@
 .safeLoad <- function(
     file,
     name = NULL,
-    envir = parent.frame()) {
+    envir = parent.frame()
+) {
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
     assert_is_any_of(name, c("character", "NULL"))

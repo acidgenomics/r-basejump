@@ -27,7 +27,10 @@
 #'       [devtools infrastructure](https://goo.gl/bM5TrP)
 #'
 #' @examples
+#' # names
 #' dots(mtcars, starwars)
+#'
+#' # character
 #' dots(mtcars, starwars, character = TRUE)
 dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))

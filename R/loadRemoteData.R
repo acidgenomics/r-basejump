@@ -18,11 +18,10 @@
 #' @export
 #'
 #' @examples
-#' objects <- loadRemoteData(c(
+#' loadRemoteData(c(
 #'     "http://basejump.seq.cloud/mtcars.rda",
 #'     "http://basejump.seq.cloud/starwars.rda"
 #' ))
-#' objects
 loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_character(url)
     # Check for remote URL containing `.rda` file
@@ -48,7 +47,8 @@ loadRemoteData <- function(url, envir = parent.frame()) {
         url = url,
         MoreArgs = list(envir = envir),
         SIMPLIFY = FALSE,
-        USE.NAMES = FALSE)
+        USE.NAMES = FALSE
+    )
     map <- do.call(cbind, map)
     colnames(map) <- gsub("\\.rda$", "", basename(map["url", , drop = TRUE]))
     assert_is_matrix(map)
@@ -62,7 +62,8 @@ loadRemoteData <- function(url, envir = parent.frame()) {
         name = names,
         MoreArgs = list(envir = envir),
         SIMPLIFY = FALSE,
-        USE.NAMES = TRUE)
+        USE.NAMES = TRUE
+    )
     objects <- do.call(cbind, objects)
     colnames(objects) <- names
 

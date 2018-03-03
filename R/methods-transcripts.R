@@ -15,6 +15,7 @@
 #' data <- transcripts("Homo sapiens")
 #' summary(data)
 #' colnames(mcols(data))
+NULL
 ensembldb::transcripts -> transcripts
 
 
@@ -35,6 +36,7 @@ setMethod(
             format = "transcripts",
             genomeBuild = genomeBuild,
             release = release,
-            return = return)
+            return = return
+        )
     }
 )

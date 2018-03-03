@@ -18,7 +18,8 @@
         pattern = "biotype",
         x = colnames(data),
         ignore.case = TRUE,
-        value = TRUE)
+        value = TRUE
+    )
     assert_is_a_string(biotypeCol)
     biotype <- data[, biotypeCol, drop = TRUE]
 
@@ -32,7 +33,8 @@
     tibble <- tibble(
         id = id,
         biotype = biotype,
-        symbol = symbol)
+        symbol = symbol
+    )
     broad <- .broadClass(tibble)
 
     if (is(object, "GRanges")) {
@@ -108,7 +110,8 @@
                     x = .data[["biotype"]],
                     ignore.case = TRUE
                 ) ~ "tcr",
-                TRUE ~ "other")
+                TRUE ~ "other"
+            )
         ) %>%
         pull("broad")
 }

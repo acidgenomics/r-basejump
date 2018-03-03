@@ -16,13 +16,15 @@
 #'     sample1 = c(1L, 2L),
 #'     saple2 = c(3L, 4L),
 #'     row.names = genes,
-#'     stringsAsFactors = FALSE)
+#'     stringsAsFactors = FALSE
+#' )
 #' assertFormalGene2symbol(x, genes, gene2symbol)
 assertFormalGene2symbol <- function(
     x,
     genes,
     gene2symbol,
-    severity = "stop") {
+    severity = "stop"
+) {
     assertHasRownames(x)
     assert_is_any_of(genes, c("character", "NULL"))
     if (is.character(genes)) {

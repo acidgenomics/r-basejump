@@ -1,4 +1,4 @@
-#' Load Data File as Name
+#' Load Data as Name
 #'
 #' @note This function is desired for interactive use and interprets object
 #' names using non-standard evaluation.
@@ -27,7 +27,8 @@
 loadDataAsName <- function(
     ...,
     dir = ".",
-    envir = parent.frame()) {
+    envir = parent.frame()
+) {
     dots <- dots(..., character = TRUE)
     assert_is_character(dots)
     assert_has_names(dots)
@@ -47,7 +48,8 @@ loadDataAsName <- function(
         file = files,
         MoreArgs = list(envir = tmpEnvir),
         SIMPLIFY = FALSE,
-        USE.NAMES = FALSE))
+        USE.NAMES = FALSE
+    ))
     assert_are_set_equal(dots, ls(tmpEnvir))
 
     # Now assign to the desired object names
@@ -55,10 +57,11 @@ loadDataAsName <- function(
     assertAllAreNonExisting(names(dots), envir = envir, inherits = FALSE)
     invisible(mapply(
         FUN = function(old, new, tmpEnvir, envir) {
-        assign(
-            x = new,
-            value = get(old, envir = tmpEnvir, inherits = FALSE),
-            envir = envir)
+            assign(
+                x = new,
+                value = get(old, envir = tmpEnvir, inherits = FALSE),
+                envir = envir
+            )
         },
         new = names(dots),
         old = dots,

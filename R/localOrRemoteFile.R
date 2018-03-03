@@ -58,7 +58,8 @@ localOrRemoteFile <- function(object, severity = "stop") {
         },
         path = object,
         SIMPLIFY = TRUE,
-        USE.NAMES = FALSE)
+        USE.NAMES = FALSE
+    )
 
     assert_all_are_existing_files(files, severity = severity)
     # Return NULL when severity isn't stop and not all files exist

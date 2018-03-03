@@ -17,12 +17,14 @@
 #' # Failure
 #' tryCatch(
 #'     assertIsGene2symbol(mtcars),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsGene2symbol <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
         y = c("ensgene", "symbol"),
-        severity = severity)
+        severity = severity
+    )
     assert_has_rows(x, severity = severity)
 }

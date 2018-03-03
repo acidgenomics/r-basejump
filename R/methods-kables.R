@@ -34,7 +34,8 @@ setMethod(
     function(
         object,
         captions = NULL,
-        force = FALSE) {
+        force = FALSE
+    ) {
         assert_is_any_of(captions, c("character", "NULL"))
         if (is.character(captions)) {
             assert_are_identical(length(object), length(captions))
@@ -52,4 +53,5 @@ setMethod(
             # Return the unmodified object if not in a knit call
             object
         }
-    })
+    }
+)

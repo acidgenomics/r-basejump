@@ -54,4 +54,5 @@ setMethod(
         } else if (return == "markdown") {
             markdownPlotlist(object, headerLevel = headerLevel)
         }
-    })
+    }
+)
