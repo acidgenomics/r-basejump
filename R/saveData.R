@@ -36,7 +36,8 @@ saveData <- function(
     ...,
     dir = ".",
     overwrite = TRUE,
-    compress = "bzip2") {
+    compress = TRUE
+) {
     objectNames <- dots(..., character = TRUE)
     assert_is_character(objectNames)
     dir <- initializeDirectory(dir)

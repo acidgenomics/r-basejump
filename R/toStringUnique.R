@@ -8,7 +8,7 @@
 #'
 #' @seealso [base::toString()].
 #'
-#' @return String.
+#' @return string.
 #' @export
 #'
 #' @examples

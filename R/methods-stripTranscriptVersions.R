@@ -29,4 +29,5 @@ setMethod(
         assert_all_are_non_missing_nor_empty_character(object)
         assert_any_are_matching_regex(object, "^(ENS.*T\\d{11})\\.\\d+$")
         gsub("\\.\\d+$", "", object)
-    })
+    }
+)

@@ -28,7 +28,8 @@ microplate <- function(
     plates = 1L,
     wells = 96L,
     controls = 0L,
-    prefix = NULL) {
+    prefix = NULL
+) {
     assert_is_an_integer(plates)
     assert_all_are_positive(plates)
     assert_is_an_integer(wells)
@@ -62,7 +63,8 @@ microplate <- function(
         grep <- str_pad(
             1L:controls,
             width = max(str_length(col)),
-            pad = "0") %>%
+            pad = "0"
+        ) %>%
             paste(collapse = "|") %>%
             paste0("A(", ., ")$")
         # Remove the control wells using `grepl()`:

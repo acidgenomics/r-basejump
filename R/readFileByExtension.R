@@ -37,11 +37,13 @@
 #'
 #' # Microsoft Excel Worksheet
 #' xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+#' glimpse(xlsx)
 readFileByExtension <- function(
     object,
     makeNames = "camel",
     severity = "stop",
-    ...) {
+    ...
+) {
     assert_is_a_string(object)
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
@@ -70,7 +72,8 @@ readFileByExtension <- function(
             file = file,
             na = na,
             progress = FALSE,
-            ...)
+            ...
+        )
     } else if (ext == "mtx") {
         data <- Matrix::readMM(file = file, ...)
     } else if (ext == "tsv") {
@@ -78,37 +81,39 @@ readFileByExtension <- function(
             file = file,
             na = na,
             progress = FALSE,
-            ...)
+            ...
+        )
     } else if (ext == "txt") {
         data <- utils::read.table(
             file = file,
             header = TRUE,
             na.strings = na,
-            ...)
+            ...
+        )
     } else if (ext == "xlsx") {
         data <- readxl::read_excel(
             path = file,
             na = na,
-            ...)
+            ...
+        )
     } else if (ext %in% c("colnames", "rownames")) {
         data <- readr::read_lines(
             file = file,
             na = na,
-            ...)
+            ...
+        )
     } else if (ext == "counts") {
         data <- readr::read_tsv(
             file = file,
             na = na,
             progress = FALSE,
-            ...) %>%
+            ...
+        ) %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        abort(paste(
-            "Unsupported file extension:",
-            basename(file)
-        ))
+        abort(paste("Unsupported file extension:", basename(file)))
     }
 
     # Sanitize colnames

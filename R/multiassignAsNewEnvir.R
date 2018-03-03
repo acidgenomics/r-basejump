@@ -16,7 +16,8 @@
 multiassignAsNewEnvir <- function(
     ...,
     envirName,
-    parentEnvir = parent.frame()) {
+    parentEnvir = parent.frame()
+) {
     dots <- dots(...)
     assert_is_list(dots)
     dotsNames <- dots(..., character = TRUE)

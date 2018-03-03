@@ -26,7 +26,7 @@ NULL
     if (tibble::has_rownames(from)) {
         from <- rownames_to_column(from)
     }
-    as_tibble(from)
+    tibble::as_tibble(from)
 }
 
 

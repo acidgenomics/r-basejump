@@ -42,7 +42,8 @@ setMethod(
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         ))
-    })
+    }
+)
 
 
 

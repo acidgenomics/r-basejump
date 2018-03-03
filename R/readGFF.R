@@ -40,13 +40,15 @@ readGFF <- function(object) {
                 "keyValuePairs"
             ),
             comment.char = "#",
-            header = FALSE),
+            header = FALSE
+        ),
         error = function(e) {
             abort("GFF/GTF file failed to load")
         },
         warning = function(w) {
             abort("GFF/GTF file failed to load")
-        })
+        }
+    )
     gff
 }
 

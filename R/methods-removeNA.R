@@ -13,20 +13,23 @@
 #' matrix(
 #'     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
 #'     nrow = 3,
-#'     ncol = 3) %>%
+#'     ncol = 3
+#' ) %>%
 #'     removeNA()
 #'
 #' data.frame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
 #'     c = c("B", NA, "D"),
-#'     stringsAsFactors = FALSE) %>%
+#'     stringsAsFactors = FALSE
+#' ) %>%
 #'     removeNA()
 #'
 #' tibble(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
-#'     c = c("B", NA, "D")) %>%
+#'     c = c("B", NA, "D")
+#' ) %>%
 #'     removeNA()
 #'
 #' # Support for vectors
@@ -63,7 +66,8 @@ setMethod(
     function(object) {
         # Return unmodified by default
         object
-    })
+    }
+)
 
 
 
@@ -72,7 +76,8 @@ setMethod(
 setMethod(
     "removeNA",
     signature("character"),
-    .removeNA.vector)
+    .removeNA.vector
+)
 
 
 
@@ -81,7 +86,8 @@ setMethod(
 setMethod(
     "removeNA",
     signature("numeric"),
-    .removeNA.vector)
+    .removeNA.vector
+)
 
 
 
@@ -90,7 +96,8 @@ setMethod(
 setMethod(
     "removeNA",
     signature("matrix"),
-    .removeNA.dim)
+    .removeNA.dim
+)
 
 
 
@@ -99,7 +106,8 @@ setMethod(
 setMethod(
     "removeNA",
     signature("data.frame"),
-    .removeNA.dim)
+    .removeNA.dim
+)
 
 
 
@@ -108,7 +116,8 @@ setMethod(
 setMethod(
     "removeNA",
     signature("DataFrame"),
-    .removeNA.dim)
+    .removeNA.dim
+)
 
 
 
@@ -117,4 +126,5 @@ setMethod(
 setMethod(
     "removeNA",
     signature("tbl_df"),
-    .removeNA.dim)
+    .removeNA.dim
+)
