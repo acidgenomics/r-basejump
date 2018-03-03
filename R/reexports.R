@@ -6,6 +6,16 @@ dplyr::pull
 
 
 
+#' @importFrom GenomicFeatures genes
+#' @export
+GenomicFeatures::genes
+
+#' @importFrom GenomicFeatures transcripts
+#' @export
+GenomicFeatures::transcripts
+
+
+
 #' @importFrom fs dir_create
 #' @export
 fs::dir_create
