@@ -30,7 +30,8 @@ color <- scale_color_viridis(discrete = FALSE)
 class(color)
 tryCatch(
     assertIsColorScaleDiscreteOrNULL(color),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

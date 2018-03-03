@@ -7,7 +7,7 @@
 \title{Gene Annotations}
 \usage{
 \S4method{genes}{character}(x, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, return = "GRanges")
+  uniqueSymbol = FALSE, return = c("GRanges", "DataFrame", "data.frame"))
 }
 \arguments{
 \item{x}{Primary object.}
@@ -18,14 +18,15 @@
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output.}
+\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 
-\item{return}{Class of the returned object. Can be "\code{data.frame}",
-"\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
+\item{return}{Class of the returned object. Can be "\code{GRanges}" (default),
+"\code{DataFrame}", or "\code{data.frame}". See \code{help("genes", "ensembldb")} for
 additional information.}
 }
 \value{
-\code{GRanges}, \code{data.frame}, or \code{DataFrame}.
+\code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or
+transcript annotations.
 }
 \description{
 Gene Annotations

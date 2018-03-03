@@ -26,7 +26,8 @@ assertIsAStringOrNULL(NULL)
 # Failure
 tryCatch(
     assertIsAStringOrNULL(c("hello", "world")),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

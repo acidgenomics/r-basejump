@@ -22,7 +22,10 @@ object from the stored \link{name} class with \code{\link[=eval]{eval()}}.
 Extract Dots from Function
 }
 \examples{
+# names
 dots(mtcars, starwars)
+
+# character
 dots(mtcars, starwars, character = TRUE)
 }
 \seealso{

@@ -23,7 +23,7 @@ gene2symbol(object, ...)
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output.}
+\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 }
 \value{
 \link{data.frame}.

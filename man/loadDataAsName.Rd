@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadDataAsName.R
 \name{loadDataAsName}
 \alias{loadDataAsName}
-\title{Load Data File as Name}
+\title{Load Data as Name}
 \usage{
 loadDataAsName(..., dir = ".", envir = parent.frame())
 }
@@ -21,7 +21,7 @@ which will assign into the calling environment.}
 Silently return named character vector of file paths.
 }
 \description{
-Load Data File as Name
+Load Data as Name
 }
 \note{
 This function is desired for interactive use and interprets object

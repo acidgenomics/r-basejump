@@ -4,8 +4,9 @@
 \alias{ensembl}
 \title{Ensembl Annotations}
 \usage{
-ensembl(organism, format = "genes", genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, return = "GRanges", metadata = FALSE)
+ensembl(organism, format = c("genes", "transcripts", "gene2symbol",
+  "tx2gene"), genomeBuild = NULL, release = NULL, uniqueSymbol = FALSE,
+  metadata = FALSE, return = c("GRanges", "DataFrame", "data.frame"))
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -20,18 +21,19 @@ organism name as a string.}
 current release available on AnnotationHub.}
 
 \item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output.}
-
-\item{return}{Class of the returned object. Can be "\code{data.frame}",
-"\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
-additional information.}
+\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 
 \item{metadata}{Include the AnnotationHub metadata inside a list. Useful
 for documenting where the annotations were sourced from inside
 AnnotationHub.}
+
+\item{return}{Class of the returned object. Can be "\code{GRanges}" (default),
+"\code{DataFrame}", or "\code{data.frame}". See \code{help("genes", "ensembldb")} for
+additional information.}
 }
 \value{
-\code{GRanges}, \code{data.frame}, or \code{DataFrame}.
+\code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or
+transcript annotations.
 }
 \description{
 Quickly obtain gene and transcript annotations from

@@ -24,7 +24,8 @@ a <- 1L
 b <- 2L
 tryCatch(
     assertAllAreNonExisting(c("a", "b", "c")),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAreGeneAnnotations}},

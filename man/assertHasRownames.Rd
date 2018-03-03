@@ -31,14 +31,16 @@ data <- data.frame(
     sample1 = c(1L, 2L),
     sample2 = c(3L, 4L),
     row.names = c("gene1", "gene2"),
-    stringsAsFactors = FALSE)
+    stringsAsFactors = FALSE
+)
 assertHasRownames(data)
 
 # Now set the rownames as NULL
 rownames(data) <- NULL
 tryCatch(
     assertHasRownames(data),
-    error = function(e) e)
+    error = function(e) e
+)
 
 tibble <- tibble(
     sample1 = c(1L, 2L),
@@ -46,7 +48,8 @@ tibble <- tibble(
 )
 tryCatch(
     assertHasRownames(tibble),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

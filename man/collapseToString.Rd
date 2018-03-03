@@ -53,12 +53,14 @@ collapseToString(
     groceries,
     unique = TRUE,
     sort = TRUE,
-    removeNA = TRUE)
+    removeNA = TRUE
+)
 collapseToString(
     groceries,
     unique = FALSE,
     sort = FALSE,
-    removeNA = FALSE)
+    removeNA = FALSE
+)
 
 # numeric
 collapseToString(seq(1:5))

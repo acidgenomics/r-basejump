@@ -28,7 +28,8 @@ assertIsTx2gene(tx2gene)
 # Failure
 tryCatch(
     assertIsTx2gene(mtcars),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
