@@ -50,15 +50,16 @@
 #' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
 #' @param uniqueSymbol Make gene symbols unique. Only applies to `genes` and
-#'   `gene2symbol` output.
-#' @param return Class of the returned object. Can be "`data.frame`",
-#'   "`DataFrame`" or "`GRanges`. See `help("genes", "ensembldb")` for
-#'   additional information.
+#'   `gene2symbol` output. *Generally this is not recommended.*
 #' @param metadata Include the AnnotationHub metadata inside a list. Useful
 #'   for documenting where the annotations were sourced from inside
 #'   AnnotationHub.
+#' @param return Class of the returned object. Can be "`GRanges`" (default),
+#'   "`DataFrame`", or "`data.frame`". See `help("genes", "ensembldb")` for
+#'   additional information.
 #'
-#' @return `GRanges`, `data.frame`, or `DataFrame`.
+#' @return `GRanges`, `DataFrame`, or `data.frame` containing gene or
+#'   transcript annotations.
 #' @export
 #'
 #' @seealso
@@ -81,26 +82,24 @@
 #' glimpse(x[["metadata"]])
 ensembl <- function(
     organism,
-    format = "genes",
+    format = c("genes", "transcripts", "gene2symbol", "tx2gene"),
     genomeBuild = NULL,
     release = NULL,
     uniqueSymbol = FALSE,
-    return = "GRanges",
-    metadata = FALSE) {
+    metadata = FALSE,
+    return = c("GRanges", "DataFrame", "data.frame")
+) {
     assert_is_a_string(organism)
-    assert_is_a_string(format)
-    assert_is_subset(
-        x = format,
-        y = c("genes", "transcripts", "gene2symbol", "tx2gene"))
+    format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
-        # AnnotationHub only supports releases 87 and above
-        assert_all_are_greater_than_or_equal_to(release, 87L)
+        # Note that ensembldb currently only supports >= 87
+        assert_all_are_positive(release)
     }
     assert_is_a_bool(uniqueSymbol)
-    .assertFormalEnsembldbReturn(return)
     assert_is_a_bool(metadata)
+    return <- match.arg(return)
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -110,35 +109,12 @@ ensembl <- function(
         map <- c(
             "hg19" = "GRCh37",
             "hg38" = "GRCh38",
-            "mm10" = "GRCm38")
+            "mm10" = "GRCm38"
+        )
         if (genomeBuild %in% names(map)) {
             map <- map[match(genomeBuild, names(map))]
             inform(paste("Remapping genome build", names(map), "to", map))
             genomeBuild <- as.character(map)
-        }
-    }
-
-    # GRCh37 genome support ====================================================
-    if (
-        identical(tolower(organism), "homo sapiens") &&
-        identical(tolower(genomeBuild), "grch37")
-    ) {
-        if (format == "genes") {
-            data <- load(system.file(
-                "extdata/grch37.rda", package = "basejump"))
-            data <- get(data, inherits = FALSE)
-            return(data)
-        } else if (format == "gene2symbol") {
-            data <- load(system.file(
-                "extdata/grch37.rda", package = "basejump"))
-            data <- get(data, inherits = FALSE)
-            data <- data[, c("ensgene", "symbol")]
-            return(data)
-        } else if (format == "tx2gene") {
-            data <- load(system.file(
-                "extdata/grch37Tx2gene.rda", package = "basejump"))
-            data <- get(data, inherits = FALSE)
-            return(data)
         }
     }
 
@@ -157,23 +133,40 @@ ensembl <- function(
         paste0("(", snapshotDate(ah), ")")
     ))
 
+    # Use ensembldb annotations by default
+    rdataclass <- "EnsDb"
+
+    # GRCh37 support
+    if (
+        identical(tolower(organism), "homo sapiens") &&
+        identical(tolower(genomeBuild), "grch37")
+    ) {
+        rdataclass <- "GRanges"
+        release <- 75L
+    }
+
     # Get the AnnotationHub dataset by identifier number
-    ahDb <- query(
+    ahdb <- query(
         ah,
-        pattern = c("EnsDb", organism, release, genomeBuild),
-        ignore.case = TRUE)
-    mcols <- mcols(ahDb)
-    if (!is.null(genomeBuild)) {
-        mcols <- mcols %>%
-            .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE), ,
-              drop = FALSE]
-    }
-    if (!is.null(release)) {
-        mcols <- mcols %>%
-            .[grep(release, .[["tags"]]), , drop = FALSE]
-    }
-    # Abort on match failure
-    if (!nrow(mcols)) {
+        pattern = c("Ensembl", organism, release, genomeBuild, rdataclass),
+        ignore.case = TRUE
+    )
+    mcols <- mcols(ahdb)
+
+    if (nrow(mcols) > 1L) {
+        if (!is.null(genomeBuild)) {
+            mcols <- mcols %>%
+                .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE),
+                    , drop = FALSE]
+        }
+        if (!is.null(release)) {
+            mcols <- mcols %>%
+                .[grep(release, .[["tags"]]), , drop = FALSE]
+        }
+        # Pick the latest release by AH identifier
+        mcols <- tail(mcols, 1L)
+    } else if (!nrow(mcols)) {
+        # Abort on match failure
         msg <- paste("Ensembl annotations for", organism)
         if (!is.null(genomeBuild)) {
             msg <- paste(msg, genomeBuild, sep = " : ")
@@ -187,11 +180,8 @@ ensembl <- function(
         )
         abort(msg)
     }
-
-    # Always pick the latest release by AH identifier
-    match <- tail(mcols, 1L)
-    id <- rownames(match)
-    meta <- as.list(match)
+    id <- rownames(mcols)
+    meta <- as.list(mcols)
     # Put the AnnotationHub ID first in the lists
     meta <- c("id" = id, meta)
 
@@ -203,6 +193,7 @@ ensembl <- function(
     invisible(capture.output(
         edb <- suppressMessages(ah[[id]])
     ))
+    assert_is_all_of(edb, "EnsDb")
 
     inform(paste(
         paste0(id, ":"),
@@ -245,8 +236,18 @@ ensembl <- function(
                 "seq_name",
                 "seq_strand",
                 "seq_coord_system",
-                "entrezid"),
-            return.type = return)
+                "entrezid"
+            ),
+            order.by = "gene_id",
+            return.type = return
+        )
+    } else if (format == "gene2symbol") {
+        data <- genes(
+            edb,
+            columns = c("gene_id", "symbol"),
+            order.by = "gene_id",
+            return.type = return
+        )
     } else if (format == "transcripts") {
         data <- transcripts(
             edb,
@@ -256,18 +257,18 @@ ensembl <- function(
                 "tx_cds_seq_start",
                 "tx_cds_seq_end",
                 "tx_support_level",
-                "gene_id"),
-            return.type = return)
-    } else if (format == "gene2symbol") {
-        data <- genes(
-            edb,
-            columns = c("gene_id", "symbol"),
-            return.type = return)
+                "gene_id"
+            ),
+            order.by = "tx_id",
+            return.type = return
+        )
     } else if (format == "tx2gene") {
         data <- transcripts(
             edb,
             columns = c("tx_id", "gene_id"),
-            return.type = return)
+            order.by = "tx_id",
+            return.type = return
+        )
     }
 
     # Convert column names into desired convention
@@ -284,18 +285,6 @@ ensembl <- function(
     # Unique symbol mode
     if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
         data <- .uniqueSymbol(data)
-    }
-
-    # Sort by identifier
-    idCol <- .detectIDCol(data)
-    if (is(data, "GRanges")) {
-        data <- data %>%
-            .[order(mcols(.)[[idCol]], start(.))]
-    } else {
-        # Add rownames
-        rownames(data) <- data[[idCol]]
-        data <- data %>%
-            .[order(rownames(.)), , drop = FALSE]
     }
 
     # Stash the AnnotationHub metadata inside a list, if desired
