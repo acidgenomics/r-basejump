@@ -37,7 +37,8 @@ NULL
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL) {
+    release = NULL
+) {
     # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
@@ -59,7 +60,8 @@ NULL
         tx2gene <- tx2gene(
             object = organism,
             genomeBuild = genomeBuild,
-            release = release)
+            release = release
+        )
     } else {
         assertIsTx2gene(tx2gene)
     }
@@ -90,14 +92,16 @@ NULL
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL) {
+    release = NULL
+) {
     # Passthrough: tx2gene, organism, genomeBuild, release
     rownames(object) <- .convertTranscriptsToGenes(
         object = rownames(object),
         tx2gene = tx2gene,
         organism = organism,
         genomeBuild = genomeBuild,
-        release = release)
+        release = release
+    )
     object
 }
 
@@ -108,7 +112,8 @@ NULL
 setMethod(
     "convertTranscriptsToGenes",
     signature("character"),
-    .convertTranscriptsToGenes)
+    .convertTranscriptsToGenes
+)
 
 
 
@@ -117,7 +122,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("data.frame"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -126,7 +132,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("DataFrame"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -135,7 +142,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("dgCMatrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -144,7 +152,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("dgTMatrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -153,4 +162,5 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("matrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)

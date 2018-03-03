@@ -1,7 +1,7 @@
-#' Load Local Data
+#' Load Data
 #'
-#' Load R data (`.rda`) files from a directory using symbols rather than complete
-#' file paths.
+#' Load R data (`.rda`) files from a directory using symbols rather than
+#' complete file paths.
 #'
 #' @details
 #' [loadData()] is opinionated about the format of R data files it will accept.
@@ -39,7 +39,8 @@
 loadData <- function(
     ...,
     dir = ".",
-    envir = parent.frame()) {
+    envir = parent.frame()
+) {
     assert_all_are_dirs(dir)
     dir <- path_real(dir)
     assert_is_environment(envir)
@@ -55,7 +56,8 @@ loadData <- function(
         file = files,
         MoreArgs = list(envir = envir),
         SIMPLIFY = TRUE,
-        USE.NAMES = FALSE)
+        USE.NAMES = FALSE
+    )
     names(objects) <- dots
 
     invisible(objects)

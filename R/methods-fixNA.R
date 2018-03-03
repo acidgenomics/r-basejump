@@ -16,13 +16,15 @@
 #' data.frame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
-#'     stringsAsFactors = FALSE) %>%
+#'     stringsAsFactors = FALSE
+#' ) %>%
 #'     fixNA()
 #'
 #' # tibble
 #' tibble(
 #'     a = c("foo", ""),
-#'     b = c(NA, "bar")) %>%
+#'     b = c(NA, "bar")
+#' ) %>%
 #'     fixNA()
 NULL
 
@@ -35,7 +37,8 @@ NULL
         "^$",
         "^\\s+$",
         "^NA$",
-        "^NULL$")
+        "^NULL$"
+    )
     gsub(paste(patterns, collapse = "|"), NA, object)
 }
 
@@ -55,9 +58,10 @@ setMethod(
     "fixNA",
     signature("ANY"),
     function(object) {
-    # Return unmodified by default
-    object
-})
+        # Return unmodified by default
+        object
+    }
+)
 
 
 
@@ -66,7 +70,8 @@ setMethod(
 setMethod(
     "fixNA",
     signature("character"),
-    .fixNA.character)
+    .fixNA.character
+)
 
 
 
@@ -75,7 +80,8 @@ setMethod(
 setMethod(
     "fixNA",
     signature("data.frame"),
-    .fixNA.tidy)
+    .fixNA.tidy
+)
 
 
 
@@ -89,7 +95,8 @@ setMethod(
             as.data.frame() %>%
             fixNA() %>%
             as("DataFrame")
-    })
+    }
+)
 
 
 
@@ -98,4 +105,5 @@ setMethod(
 setMethod(
     "fixNA",
     signature("tbl_df"),
-    .fixNA.tidy)
+    .fixNA.tidy
+)

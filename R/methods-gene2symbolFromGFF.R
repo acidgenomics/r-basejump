@@ -32,7 +32,8 @@ setMethod(
         object %>%
             readGFF() %>%
             gene2symbolFromGFF(uniqueSymbol = uniqueSymbol)
-    })
+    }
+)
 
 
 
@@ -89,14 +90,15 @@ setMethod(
             data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
         }
 
-        set_rownames(data, data[["ensgene"]])
-    })
+        rownames(data) <- data[["ensgene"]]
+        data
+    }
+)
 
 
 
 # Aliases ======================================================================
 #' @rdname gene2symbolFromGFF
-#' @inheritParams general
 #' @export
 gene2symbolFromGTF <- function(...) {
     gene2symbolFromGFF(...)  # nocov

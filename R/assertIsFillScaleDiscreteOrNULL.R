@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Success
-#' fill <- scale_fill_viridis(discrete = TRUE)
+#' fill <-
 #' class(fill)
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)
@@ -19,16 +19,19 @@
 #' class(fill)
 #' tryCatch(
 #'     assertIsFillScaleDiscreteOrNULL(color),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsFillScaleDiscreteOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
         classes = c("ScaleDiscrete", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (!is.null(x)) {
         assert_is_all_of(
             x = x,
             classes = c("ggproto", "Scale", "ScaleDiscrete"),
-            severity = severity)
+            severity = severity
+        )
     }
 }

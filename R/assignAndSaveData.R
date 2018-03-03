@@ -32,7 +32,8 @@ assignAndSaveData <- function(
     object,
     dir = ".",
     compress = TRUE,
-    envir = parent.frame()) {
+    envir = parent.frame()
+) {
     assert_is_a_string(name)
     assert_is_not_null(object)
     dir <- initializeDirectory(dir)
@@ -50,7 +51,8 @@ assignAndSaveData <- function(
         list = name,
         file = file,
         envir = envir,
-        compress = compress)
+        compress = compress
+    )
 
     invisible(file)
 }

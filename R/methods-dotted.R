@@ -85,7 +85,8 @@ NULL
 .dotted.ANY <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
         .dotted.dim(object, rownames = rownames, colnames = colnames)
@@ -101,7 +102,8 @@ NULL
 .dotted.dim <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
     if (isTRUE(rownames) && hasRownames(object)) {
@@ -173,7 +175,8 @@ NULL
 setMethod(
     "dotted",
     signature("ANY"),
-    .dotted.ANY)
+    .dotted.ANY
+)
 
 
 
@@ -182,7 +185,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    .dotted.vector)
+    .dotted.vector
+)
 
 
 
@@ -191,7 +195,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("data.frame"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -200,7 +205,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("DataFrame"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -209,7 +215,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("factor"),
-    .dotted.vector)
+    .dotted.vector
+)
 
 
 
@@ -218,7 +225,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("GRanges"),
-    .dotted.mcols)
+    .dotted.mcols
+)
 
 
 
@@ -227,7 +235,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("list"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -236,7 +245,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("List"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -245,7 +255,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("matrix"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -254,7 +265,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("SimpleList"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -263,4 +275,5 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    .dotted.tibble)
+    .dotted.tibble
+)

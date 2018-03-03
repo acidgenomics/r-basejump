@@ -1,4 +1,9 @@
-.sanitizeAnnotationCols <- function(object, format = "genes") {
+.sanitizeAnnotationCols <- function(
+    object,
+    format = c("genes", "transcripts")
+) {
+    format <- match.arg(format)
+
     if (is(object, "GRanges")) {
         data <- mcols(object)
     } else {
@@ -27,7 +32,7 @@
         assert_is_subset(priorityCols, colnames(data))
         data <- data %>%
             .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
-              drop = FALSE]
+                drop = FALSE]
     }
 
     if (is(object, "GRanges")) {

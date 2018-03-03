@@ -6,12 +6,21 @@
 #' @export
 #'
 #' @examples
+#' # Success
 #' assertIsHexColorFunctionOrNULL(viridis)
+#' assertIsHexColorFunctionOrNULL(NULL)
+#'
+#' # Failure
+#' tryCatch(
+#'     assertIsHexColorFunctionOrNULL(scale_color_viridis),
+#'     error = function(e) e
+#' )
 assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
         classes = c("function", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (is.function(x)) {
         colors <- x(2L)
         assert_is_character(colors, severity = severity)

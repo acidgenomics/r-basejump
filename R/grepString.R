@@ -26,5 +26,6 @@ grepString <- function(object) {
             "\\s", ., ",",
             "|",
             # End of list
-            "\\s", ., "$")
+            "\\s", ., "$"
+        )
 }

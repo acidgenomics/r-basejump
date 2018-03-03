@@ -48,7 +48,8 @@ NULL
 .camel <- function(
     object,
     format = "lower",
-    strict = FALSE) {
+    strict = FALSE
+) {
     object <- dotted(object)
     assert_is_a_string(format)
     assert_is_subset(format, c("lower", "upper"))
@@ -91,7 +92,8 @@ NULL
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: rownames, colnames, strict
     if (!is.null(dimnames(object))) {
         .camel.dim(
@@ -112,7 +114,8 @@ NULL
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
@@ -151,7 +154,8 @@ NULL
         object,
         rownames = FALSE,
         colnames = TRUE,
-        strict = strict)
+        strict = strict
+    )
 }
 
 
@@ -176,7 +180,8 @@ NULL
 setMethod(
     "camel",
     signature("ANY"),
-    .camel.ANY)
+    .camel.ANY
+)
 
 
 
@@ -185,7 +190,8 @@ setMethod(
 setMethod(
     "camel",
     signature("character"),
-    .camel.vector)
+    .camel.vector
+)
 
 
 
@@ -194,7 +200,8 @@ setMethod(
 setMethod(
     "camel",
     signature("data.frame"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -203,7 +210,8 @@ setMethod(
 setMethod(
     "camel",
     signature("DataFrame"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -212,7 +220,8 @@ setMethod(
 setMethod(
     "camel",
     signature("factor"),
-    .camel.vector)
+    .camel.vector
+)
 
 
 
@@ -222,7 +231,8 @@ setMethod(
 setMethod(
     "camel",
     signature("GRanges"),
-    .camel.mcols)
+    .camel.mcols
+)
 
 
 
@@ -231,7 +241,8 @@ setMethod(
 setMethod(
     "camel",
     signature("list"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -240,7 +251,8 @@ setMethod(
 setMethod(
     "camel",
     signature("List"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -249,7 +261,8 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -258,7 +271,8 @@ setMethod(
 setMethod(
     "camel",
     signature("SimpleList"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -267,4 +281,5 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    .camel.tibble)
+    .camel.tibble
+)

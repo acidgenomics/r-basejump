@@ -32,5 +32,7 @@ setMethod(
             genomeBuild = genomeBuild,
             release = release,
             uniqueSymbol = uniqueSymbol,
-            return = "data.frame")
-    })
+            return = "data.frame"
+        )
+    }
+)

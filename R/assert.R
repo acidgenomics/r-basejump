@@ -73,7 +73,8 @@ NULL
     assert_is_subset(
         x = x,
         y = ensemblReturn,
-        severity = severity)
+        severity = severity
+    )
 }
 
 
@@ -83,7 +84,8 @@ NULL
     assert_is_subset(
         x = x,
         y = c("camel", "dotted", "snake" , "upperCamel"),
-        severity = severity)
+        severity = severity
+    )
 }
 
 
@@ -92,5 +94,6 @@ NULL
     assert_is_a_string(x, severity = severity)
     assert_is_subset(
         x = x,
-        y = c("stop", "warning", "message", "none"))
+        y = c("stop", "warning", "message", "none")
+    )
 }

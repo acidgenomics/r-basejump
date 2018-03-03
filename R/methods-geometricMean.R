@@ -80,7 +80,8 @@ NULL
 setMethod(
     "geometricMean",
     signature("data.frame"),
-    .geometricMean.dim)
+    .geometricMean.dim
+)
 
 
 
@@ -89,7 +90,8 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("integer"),
-    .geometricMean)
+    .geometricMean
+)
 
 
 
@@ -98,7 +100,8 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("matrix"),
-    .geometricMean.dim)
+    .geometricMean.dim
+)
 
 
 
@@ -107,7 +110,8 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("numeric"),
-    .geometricMean)
+    .geometricMean
+)
 
 
 

@@ -62,13 +62,13 @@ setMethod(
                 structure(format = "markdown") %>%
                 asis_output()
         }
-    })
+    }
+)
 
 
 
 # Aliases ======================================================================
 #' @rdname markdownHeader
-#' @inheritParams general
 #' @export
 mdHeader <- function(...) {
     markdownHeader(...)  # nocov

@@ -17,12 +17,14 @@
 #' # Failure
 #' tryCatch(
 #'     assertIsTx2gene(mtcars),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsTx2gene <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
         y = c("enstxp", "ensgene"),
-        severity = severity)
+        severity = severity
+    )
     assert_has_rows(x, severity = severity)
 }

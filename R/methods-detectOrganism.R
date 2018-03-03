@@ -229,7 +229,8 @@ NULL
 setMethod(
     "detectOrganism",
     signature("character"),
-    .detectOrganism.character)
+    .detectOrganism.character
+)
 
 
 
@@ -238,7 +239,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("data.frame"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -247,7 +249,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("DataFrame"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -256,7 +259,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("dgCMatrix"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -265,7 +269,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("matrix"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -274,4 +279,5 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("tbl_df"),
-    .detectOrganism.tibble)
+    .detectOrganism.tibble
+)

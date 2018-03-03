@@ -48,7 +48,8 @@ NULL
     organism = NULL,
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbol = FALSE) {
+    uniqueSymbol = FALSE
+) {
     # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
@@ -71,7 +72,8 @@ NULL
             object = organism,
             genomeBuild = genomeBuild,
             release = release,
-            uniqueSymbol = uniqueSymbol)
+            uniqueSymbol = uniqueSymbol
+        )
     } else {
         assertIsGene2symbol(gene2symbol)
         if (isTRUE(uniqueSymbol)) {
@@ -109,7 +111,8 @@ NULL
     genomeBuild = NULL,
     organism = NULL,
     release = NULL,
-    uniqueSymbol = FALSE) {
+    uniqueSymbol = FALSE
+) {
     # Passthrough: gene2symbol, organism, release
     assertHasRownames(object)
     rownames <- rownames(object)
@@ -119,7 +122,8 @@ NULL
         genomeBuild = genomeBuild,
         organism = organism,
         release = release,
-        uniqueSymbol = uniqueSymbol)
+        uniqueSymbol = uniqueSymbol
+    )
     rownames(object) <- rownames
     object
 }
@@ -132,7 +136,8 @@ NULL
 setMethod(
     "convertGenesToSymbols",
     signature("character"),
-    .convertGenesToSymbols)
+    .convertGenesToSymbols
+)
 
 
 
@@ -141,7 +146,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("data.frame"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -150,7 +156,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("DataFrame"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -159,7 +166,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("dgCMatrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -168,7 +176,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("dgTMatrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -177,4 +186,5 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("matrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)

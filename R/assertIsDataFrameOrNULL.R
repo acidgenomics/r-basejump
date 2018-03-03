@@ -13,10 +13,12 @@
 #' # Failure
 #' tryCatch(
 #'     assertIsDataFrameOrNULL(1L),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsDataFrameOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,
         classes = c("data.frame", "NULL"),
-        severity = severity)
+        severity = severity
+    )
 }

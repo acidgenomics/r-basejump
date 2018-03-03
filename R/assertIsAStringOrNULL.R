@@ -13,7 +13,8 @@
 #' # Failure
 #' tryCatch(
 #'     assertIsAStringOrNULL(c("hello", "world")),
-#'     error = function(e) e)
+#'     error = function(e) e
+#' )
 assertIsAStringOrNULL <- function(x, severity = "stop") {
     assertIsCharacterOrNULL(x, severity = severity)
     if (is.character(x)) {
