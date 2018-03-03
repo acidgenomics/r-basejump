@@ -1,27 +1,22 @@
 #' Transcript Annotations
 #'
-#' @rdname transcripts
-#' @name transcripts
+#' @rdname transcripts-method
+#' @name transcripts-method
 #' @family Gene Functions
-#'
-#' @importFrom ensembldb transcripts
 #'
 #' @inherit ensembl
 #' @inheritParams general
-#'
-#' @export
 #'
 #' @examples
 #' data <- transcripts("Homo sapiens")
 #' summary(data)
 #' colnames(mcols(data))
 NULL
-ensembldb::transcripts -> transcripts
 
 
 
 # Methods ======================================================================
-#' @rdname transcripts
+#' @rdname transcripts-method
 #' @export
 setMethod(
     "transcripts",

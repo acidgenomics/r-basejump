@@ -1,15 +1,11 @@
 #' Gene Annotations
 #'
-#' @rdname genes
-#' @name genes
+#' @rdname genes-method
+#' @name genes-method
 #' @family Gene Functions
-#'
-#' @importFrom ensembldb genes
 #'
 #' @inherit ensembl
 #' @inheritParams general
-#'
-#' @export
 #'
 #' @examples
 #' # GRanges return
@@ -20,12 +16,11 @@
 #' # Legacy GRCh37/hg19 genome build support
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
 NULL
-ensembldb::genes -> genes
 
 
 
 # Methods ======================================================================
-#' @rdname genes
+#' @rdname genes-method
 #' @export
 setMethod(
     "genes",
