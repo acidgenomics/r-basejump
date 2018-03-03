@@ -9,14 +9,16 @@
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: rownames, colnames, strict
     if (!is.null(dimnames(object))) {
         .upperCamel.dim(
             object,
             rownames = rownames,
             colnames = colnames,
-            strict = strict)
+            strict = strict
+        )
     } else if (!is.null(names(object))) {
         .upperCamel.names(object, strict = strict)
     } else {
@@ -30,7 +32,8 @@
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
@@ -68,7 +71,8 @@
         object,
         rownames = FALSE,
         colnames = TRUE,
-        strict = strict)
+        strict = strict
+    )
 }
 
 
@@ -92,7 +96,8 @@
 setMethod(
     "upperCamel",
     signature("ANY"),
-    .upperCamel.ANY)
+    .upperCamel.ANY
+)
 
 
 
@@ -101,7 +106,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("character"),
-    .upperCamel.vector)
+    .upperCamel.vector
+)
 
 
 
@@ -110,7 +116,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("data.frame"),
-    .upperCamel.dim)
+    .upperCamel.dim
+)
 
 
 
@@ -119,7 +126,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("DataFrame"),
-    .upperCamel.dim)
+    .upperCamel.dim
+)
 
 
 
@@ -128,7 +136,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("factor"),
-    .upperCamel.vector)
+    .upperCamel.vector
+)
 
 
 
@@ -137,7 +146,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("GRanges"),
-    .upperCamel.mcols)
+    .upperCamel.mcols
+)
 
 
 
@@ -146,7 +156,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("list"),
-    .upperCamel.names)
+    .upperCamel.names
+)
 
 
 
@@ -155,7 +166,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("List"),
-    .upperCamel.names)
+    .upperCamel.names
+)
 
 
 
@@ -164,7 +176,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("matrix"),
-    .upperCamel.dim)
+    .upperCamel.dim
+)
 
 
 
@@ -173,7 +186,8 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("SimpleList"),
-    .upperCamel.names)
+    .upperCamel.names
+)
 
 
 
@@ -182,4 +196,5 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("tbl_df"),
-    .upperCamel.tibble)
+    .upperCamel.tibble
+)

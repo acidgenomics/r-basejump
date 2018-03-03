@@ -31,7 +31,8 @@
 #'     remoteDir = "ftp://ftp.ensembl.org/pub/release-90",
 #'     pattern = "README",
 #'     rename = "ensembl_readme.txt",
-#'     compress = TRUE)
+#'     compress = TRUE
+#' )
 #' basename(readme)
 #' file_exists(readme)
 #'
@@ -42,7 +43,8 @@ transmit <- function(
     localDir = ".",
     pattern,
     rename = NULL,
-    compress = FALSE) {
+    compress = FALSE
+) {
     assert_is_a_string(remoteDir)
     # Check for public FTP protocol
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
@@ -100,7 +102,8 @@ transmit <- function(
         destfile = localPath,
         MoreArgs = list(compress = compress),
         SIMPLIFY = TRUE,
-        USE.NAMES = FALSE)
+        USE.NAMES = FALSE
+    )
 
     files <- path_real(files)
     names(files) <- match

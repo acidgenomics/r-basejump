@@ -57,7 +57,8 @@ NULL
     legendColor = viridis,
     borderColor = NULL,
     title = NULL,
-    ...) {
+    ...
+) {
     assert_has_dims(object)
     assert_all_are_greater_than(nrow(object), 1L)
     assert_all_are_greater_than(ncol(object), 1L)
@@ -73,7 +74,7 @@ NULL
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
 
-    # TODO Merge with plotHeatmap
+    # TODO Merge code with plotHeatmap
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
     if (is.data.frame(annotationCol)) {
@@ -100,7 +101,8 @@ NULL
                     legendColor
                 names(colors) <- col
                 colors
-            }) %>%
+            }
+        ) %>%
             set_names(colnames(annotationCol))
     } else {
         annotationColors <- NULL
@@ -146,7 +148,8 @@ NULL
         "main" = title,
         "showColnames" = showColnames,
         "showRownames" = showRownames,
-        ...)
+        ...
+    )
     # Sanitize all argument names into snake case
     names(args) <- snake(names(args))
     assert_is_subset(names(args), formalArgs(pheatmap))
@@ -167,7 +170,8 @@ NULL
 setMethod(
     "plotQuantileHeatmap",
     signature("dgCMatrix"),
-    .plotQuantileHeatmap)
+    .plotQuantileHeatmap
+)
 
 
 
@@ -176,4 +180,5 @@ setMethod(
 setMethod(
     "plotQuantileHeatmap",
     signature("matrix"),
-    .plotQuantileHeatmap)
+    .plotQuantileHeatmap
+)

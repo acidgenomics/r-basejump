@@ -28,7 +28,8 @@ setMethod(
     function(
         object,
         ordered = FALSE,
-        asis = FALSE) {
+        asis = FALSE
+    ) {
         assert_is_character(object)
         assert_all_are_not_na(object)
         assert_all_are_non_missing_nor_empty_character(object)
@@ -58,7 +59,8 @@ setMethod(
                 structure(format = "markdown") %>%
                 asis_output()
         }
-    })
+    }
+)
 
 
 

@@ -41,7 +41,8 @@ sanitizeRowData <- function(object, dropNested = TRUE) {
         nestedCols <- vapply(
             X = object,
             FUN = is.list,
-            FUN.VALUE = logical(1L))
+            FUN.VALUE = logical(1L)
+        )
         if (any(nestedCols)) {
             object <- object[, which(!nestedCols), drop = FALSE]
         }

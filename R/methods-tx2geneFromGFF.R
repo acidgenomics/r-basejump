@@ -32,7 +32,8 @@ setMethod(
         object %>%
             readGFF() %>%
             tx2geneFromGFF()
-    })
+    }
+)
 
 
 
@@ -80,7 +81,8 @@ setMethod(
         ))
 
         data
-    })
+    }
+)
 
 
 

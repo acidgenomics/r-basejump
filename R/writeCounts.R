@@ -38,7 +38,8 @@
 writeCounts <- function(
     ...,
     dir = ".",
-    gzip = TRUE) {
+    gzip = TRUE
+) {
     dots <- dots_list(...)
     assert_is_list(dots)
     invisible(lapply(dots, assert_has_dims))

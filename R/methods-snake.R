@@ -51,7 +51,8 @@ NULL
 .snake.ANY <- function(
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
         .snake.dim(object, rownames = rownames, colnames = colnames)
@@ -67,7 +68,8 @@ NULL
 .snake.dim <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
     if (isTRUE(rownames) && hasRownames(object)) {
@@ -122,7 +124,8 @@ NULL
 setMethod(
     "snake",
     signature("ANY"),
-    .snake.ANY)
+    .snake.ANY
+)
 
 
 
@@ -131,7 +134,8 @@ setMethod(
 setMethod(
     "snake",
     signature("character"),
-    .snake.vector)
+    .snake.vector
+)
 
 
 
@@ -140,7 +144,8 @@ setMethod(
 setMethod(
     "snake",
     signature("data.frame"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -149,7 +154,8 @@ setMethod(
 setMethod(
     "snake",
     signature("DataFrame"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -158,7 +164,8 @@ setMethod(
 setMethod(
     "snake",
     signature("factor"),
-    .snake.vector)
+    .snake.vector
+)
 
 
 
@@ -167,7 +174,8 @@ setMethod(
 setMethod(
     "snake",
     signature("GRanges"),
-    .snake.mcols)
+    .snake.mcols
+)
 
 
 
@@ -176,7 +184,8 @@ setMethod(
 setMethod(
     "snake",
     signature("list"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -185,7 +194,8 @@ setMethod(
 setMethod(
     "snake",
     signature("List"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -194,7 +204,8 @@ setMethod(
 setMethod(
     "snake",
     signature("matrix"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -203,7 +214,8 @@ setMethod(
 setMethod(
     "snake",
     signature("SimpleList"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -212,4 +224,5 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    .snake.tibble)
+    .snake.tibble
+)

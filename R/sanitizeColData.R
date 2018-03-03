@@ -13,7 +13,7 @@
 #'     genotype = c("wt", "ko", "wt", "ko"),
 #'     batch = c(1L, 1L, 2L, 2L)
 #' )
-#' colData
+#' print(colData)
 #' # Note that all columns will be sanitized to factor
 #' sanitizeColData(colData)
 sanitizeColData <- function(object) {
