@@ -21,11 +21,10 @@ Load a remote R binary file. This function is vectorized and supports
 multiple URLs in a single call.
 }
 \examples{
-objects <- loadRemoteData(c(
+loadRemoteData(c(
     "http://basejump.seq.cloud/mtcars.rda",
     "http://basejump.seq.cloud/starwars.rda"
 ))
-objects
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},

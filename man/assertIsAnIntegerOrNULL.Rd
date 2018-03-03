@@ -26,7 +26,8 @@ assertIsAnIntegerOrNULL(NULL)
 # Failure
 tryCatch(
     assertIsAnIntegerOrNULL(c(1L, 2L)),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

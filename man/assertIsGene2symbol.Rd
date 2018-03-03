@@ -28,7 +28,8 @@ assertIsGene2symbol(gene2symbol)
 # Failure
 tryCatch(
     assertIsGene2symbol(mtcars),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

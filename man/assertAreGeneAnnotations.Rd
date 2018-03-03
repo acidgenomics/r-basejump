@@ -28,7 +28,8 @@ assertAreGeneAnnotations(genes)
 transcripts <- transcripts("Homo sapiens")
 tryCatch(
     assertAreGeneAnnotations(transcripts),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

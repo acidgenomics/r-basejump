@@ -23,7 +23,8 @@ Assert Is a Header Level
 assertIsAHeaderLevel(1L)
 tryCatch(
     assertIsAHeaderLevel(8L),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

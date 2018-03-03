@@ -26,7 +26,8 @@ assertIsANumberOrNULL(NULL)
 # Failure
 tryCatch(
     assertIsANumberOrNULL(c(1.1, 1.2)),
-    error = function(e) e)
+    error = function(e) e
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

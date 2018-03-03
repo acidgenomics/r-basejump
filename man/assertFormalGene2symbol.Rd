@@ -29,7 +29,8 @@ x <- data.frame(
     sample1 = c(1L, 2L),
     saple2 = c(3L, 4L),
     row.names = genes,
-    stringsAsFactors = FALSE)
+    stringsAsFactors = FALSE
+)
 assertFormalGene2symbol(x, genes, gene2symbol)
 }
 \seealso{

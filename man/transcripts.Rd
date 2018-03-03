@@ -6,27 +6,24 @@
 \alias{transcripts,character-method}
 \title{Transcript Annotations}
 \usage{
-transcripts(x, ...)
-
 \S4method{transcripts}{character}(x, genomeBuild = NULL, release = NULL,
   return = "GRanges")
 }
 \arguments{
 \item{x}{Primary object.}
 
-\item{...}{Additional arguments.}
-
 \item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
 
-\item{return}{Class of the returned object. Can be "\code{data.frame}",
-"\code{DataFrame}" or "\code{GRanges}. See \code{help("genes", "ensembldb")} for
+\item{return}{Class of the returned object. Can be "\code{GRanges}" (default),
+"\code{DataFrame}", or "\code{data.frame}". See \code{help("genes", "ensembldb")} for
 additional information.}
 }
 \value{
-\code{GRanges}, \code{data.frame}, or \code{DataFrame}.
+\code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or
+transcript annotations.
 }
 \description{
 Transcript Annotations

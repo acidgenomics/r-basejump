@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadData.R
 \name{loadData}
 \alias{loadData}
-\title{Load Local Data}
+\title{Load Data}
 \usage{
 loadData(..., dir = ".", envir = parent.frame())
 }
@@ -19,8 +19,8 @@ which will assign into the calling environment.}
 Silent named character vector of file paths.
 }
 \description{
-Load R data (\code{.rda}) files from a directory using symbols rather than complete
-file paths.
+Load R data (\code{.rda}) files from a directory using symbols rather than
+complete file paths.
 }
 \details{
 \code{\link[=loadData]{loadData()}} is opinionated about the format of R data files it will accept.
