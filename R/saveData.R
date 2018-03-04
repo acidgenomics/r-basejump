@@ -9,7 +9,7 @@
 #'
 #' @family Write Functions
 #'
-#' @importFrom fs path
+#' @importFrom fs file_exists path
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
@@ -50,10 +50,10 @@ saveData <- function(
     inform(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
-    if (identical(overwrite, FALSE) && any(file.exists(files))) {
-        skip <- files[file.exists(files)]
+    if (identical(overwrite, FALSE) && any(file_exists(files))) {
+        skip <- files[file_exists(files)]
         warn(paste("Skipping", toString(basename(skip))))
-        files <- files[!file.exists(files)]
+        files <- files[!file_exists(files)]
     }
 
     if (!length(files)) {
