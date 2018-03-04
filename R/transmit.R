@@ -17,13 +17,13 @@
 #'
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
-#' @param localDir Directory where to save file locally.
+#' @param localDir Directory where to save files locally.
 #' @param pattern Pattern to match against remote file names.
-#' @param rename Rename the local file (including suffix), if desired.
-#' @param compress Compress the file with [gzip()] after download.
+#' @param rename Rename the local files (including suffix), if desired.
+#' @param compress Compress the files with [gzip()] after download.
 #'   (`TRUE`/`FALSE`)
 #'
-#' @return Invisibly return a list of the files downloaded.
+#' @return Invisible vector of local file paths.
 #' @export
 #'
 #' @examples
@@ -62,21 +62,21 @@ transmit <- function(
         read_lines()
     assert_is_non_empty(remoteList)
 
-    remoteFileList <- remoteList %>%
-        # Match the `-` at begining for file
-        # `-rwxrwxr-x`: File
-        # `drwxrwxr-x`: Directory
+    # Match the `-` at begining for file
+    # `-rwxrwxr-x`: File
+    # `drwxrwxr-x`: Directory
+    remoteFiles <- remoteList %>%
         .[grepl("^-", .)] %>%
         # File name is at the end, not including a space
         str_extract(pattern = "[^\\s]+$")
-    assert_is_non_empty(remoteFileList)
+    assert_is_non_empty(remoteFiles)
 
     # Apply pattern matching
-    match <- str_subset(remoteFileList, pattern)
+    match <- str_subset(remoteFiles, pattern)
     assert_is_non_empty(match)
 
     # Concatenate using paste but strip the trailing slash (see above)
-    remotePath <- paste(gsub("/$", "", remoteDir), match, sep = "/")
+    remotePaths <- paste(gsub("/$", "", remoteDir), match, sep = "/")
 
     # Rename files, if desired
     if (is.character(rename)) {
@@ -85,28 +85,46 @@ transmit <- function(
     } else {
         name <- match
     }
-    localPath <- path(localDir, name)
 
-    inform(paste("Downloading", toString(match)))
+    localPaths <- path(localDir, name)
 
+    if (isTRUE(compress)) {
+        files <- paste(localPaths, "gz", sep = ".")
+    } else {
+        files <- localPaths
+    }
+
+    # Check for existing files and skip, if necessary
+    if (any(file_exists(files))) {
+        exists <- which(file_exists(files))
+        if (identical(length(exists), length(files))) {
+            inform("All files already downloaded")
+            files <- path_real(files)
+            names(files) <- match
+            return(invisible(files))
+        } else {
+            skip <- files[exists]
+            inform(paste("Skipping", toString(basename(skip))))
+            localPaths <- localPaths[!exists]
+        }
+    }
+
+    inform(paste("Downloading", toString(basename(files))))
     files <- mapply(
-        FUN = function(url, destfile, compress) {
+        FUN = function(url, destfile, compress = FALSE) {
             download.file(url = url, destfile = destfile)
-            # Compress, if desired
             if (isTRUE(compress)) {
                 destfile <- gzip(destfile, overwrite = TRUE)
             }
-            destfile
+            path_real(destfile)
         },
-        url = remotePath,
-        destfile = localPath,
+        url = remotePaths,
+        destfile = localPaths,
         MoreArgs = list(compress = compress),
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
-
     files <- path_real(files)
     names(files) <- match
-
     invisible(files)
 }

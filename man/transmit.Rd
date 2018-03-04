@@ -11,17 +11,17 @@ transmit(remoteDir, localDir = ".", pattern, rename = NULL,
 \item{remoteDir}{Remote directory URL. Currently supports FTP. Works either
 with or without the trailing slash.}
 
-\item{localDir}{Directory where to save file locally.}
+\item{localDir}{Directory where to save files locally.}
 
 \item{pattern}{Pattern to match against remote file names.}
 
-\item{rename}{Rename the local file (including suffix), if desired.}
+\item{rename}{Rename the local files (including suffix), if desired.}
 
-\item{compress}{Compress the file with \code{\link[=gzip]{gzip()}} after download.
+\item{compress}{Compress the files with \code{\link[=gzip]{gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
 }
 \value{
-Invisibly return a list of the files downloaded.
+Invisible vector of local file paths.
 }
 \description{
 Utility function that supports easy file matching and download from a remote
