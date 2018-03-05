@@ -33,9 +33,11 @@
 #' @export
 #'
 #' @examples
-#' # Load the internal GRCh37 gene annotations data
-#' loadData(grch37, dir = system.file("extdata", package = "basejump"))
-#' glimpse(grch37)
+#' loadData(
+#'     makeNames,
+#'     dir = system.file("extdata", package = "basejump")
+#' )
+#' class(makeNames)
 loadData <- function(
     ...,
     dir = ".",

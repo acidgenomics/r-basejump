@@ -65,7 +65,9 @@ summary(data)
 colnames(mcols(data))
 
 # Legacy GRCh37/hg19 genome build support
+\dontrun{
 genes("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
+}
 }
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},

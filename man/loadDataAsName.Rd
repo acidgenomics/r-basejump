@@ -29,11 +29,10 @@ names using non-standard evaluation.
 }
 \examples{
 loadDataAsName(
-    hg19 = grch37,
-    hg19_tx2gene = grch37Tx2gene,
+    XXX = makeNames,
     dir = system.file("extdata", package = "basejump")
 )
-glimpse(hg19)
+class(XXX)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},
