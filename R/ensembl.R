@@ -118,6 +118,16 @@ ensembl <- function(
         }
     }
 
+    # GRCh37 / 75 ==============================================================
+    if (
+        identical(tolower(organism), "homo sapiens") &&
+        identical(tolower(genomeBuild), "grch37")
+    ) {
+        # TODO Replace with Homo_sapiens.GRCh37.75 annotation package
+        release <- 75L
+        abort("Request Homo_sapiens.GRCh37.75 support update")
+    }
+
     # AnnotationHub ============================================================
     # Connect to AnnotationHub. On a fresh install this will print a
     # txProgressBar to the console. We're using `capture.output()` here
@@ -136,15 +146,7 @@ ensembl <- function(
     # Use ensembldb annotations by default
     rdataclass <- "EnsDb"
 
-    # GRCh37 support
-    # TODO Replace with Homo_sapiens.GRCh37.75 annotation package
-    if (
-        identical(tolower(organism), "homo sapiens") &&
-        identical(tolower(genomeBuild), "grch37")
-    ) {
-        rdataclass <- "GRanges"
-        release <- 75L
-    }
+
 
     # Get the AnnotationHub dataset by identifier number
     ahdb <- query(
@@ -193,71 +195,62 @@ ensembl <- function(
     invisible(capture.output(
         data <- suppressMessages(ah[[id]])
     ))
+    assert_is_all_of(data, "EnsDb")
 
     # ensembldb (EnsDb) ========================================================
-    if (is(data, "EnsDb")) {
-        inform(paste(
-            paste0(id, ":"),
-            organism(data),
-            meta[["genome"]],
-            "Ensembl", ensemblVersion(data),
-            paste0("(", meta[["rdatadateadded"]], ")")
-        ))
-        if (format == "genes") {
-            data <- genes(
-                x = data,
-                columns = c(
-                    "gene_id",
-                    "gene_name",  # `symbol` is duplicate
-                    "description",
-                    "gene_biotype",
-                    "gene_seq_start",
-                    "gene_seq_end",
-                    "seq_name",
-                    "seq_strand",
-                    "seq_coord_system",
-                    "entrezid"
-                ),
-                order.by = "gene_id",
-                return.type = return
-            )
-        } else if (format == "gene2symbol") {
-            data <- genes(
-                x = data,
-                columns = c("gene_id", "symbol"),
-                order.by = "gene_id",
-                return.type = return
-            )
-        } else if (format == "transcripts") {
-            data <- transcripts(
-                x = data,
-                columns = c(
-                    "tx_id",  # `tx_name` is duplicate
-                    "tx_biotype",
-                    "tx_cds_seq_start",
-                    "tx_cds_seq_end",
-                    "tx_support_level",
-                    "gene_id"
-                ),
-                order.by = "tx_id",
-                return.type = return
-            )
-        } else if (format == "tx2gene") {
-            data <- transcripts(
-                x = data,
-                columns = c("tx_id", "gene_id"),
-                order.by = "tx_id",
-                return.type = return
-            )
-        }
-    } else {
-        # TODO Update GRCh37/75 to use new EnsDb package
-        warn(paste("Using", class(data), "object instead of EnsDb"))
-        if (return == "data.frame") {
-            data <- as.data.frame(data)
-        } else if (return == "DataFrame") {
-            data <- as(data, "DataFrame")
-        }
+    inform(paste(
+        paste0(id, ":"),
+        organism(data),
+        meta[["genome"]],
+        "Ensembl", ensemblVersion(data),
+        paste0("(", meta[["rdatadateadded"]], ")")
+    ))
+    if (format == "genes") {
+        data <- genes(
+            x = data,
+            columns = c(
+                "gene_id",
+                "gene_name",  # `symbol` is duplicate
+                "description",
+                "gene_biotype",
+                "gene_seq_start",
+                "gene_seq_end",
+                "seq_name",
+                "seq_strand",
+                "seq_coord_system",
+                "entrezid"
+            ),
+            order.by = "gene_id",
+            return.type = return
+        )
+    } else if (format == "gene2symbol") {
+        data <- genes(
+            x = data,
+            columns = c("gene_id", "symbol"),
+            order.by = "gene_id",
+            return.type = return
+        )
+    } else if (format == "transcripts") {
+        data <- transcripts(
+            x = data,
+            columns = c(
+                "tx_id",  # `tx_name` is duplicate
+                "tx_biotype",
+                "tx_cds_seq_start",
+                "tx_cds_seq_end",
+                "tx_support_level",
+                "gene_id"
+            ),
+            order.by = "tx_id",
+            return.type = return
+        )
+    } else if (format == "tx2gene") {
+        data <- transcripts(
+            x = data,
+            columns = c("tx_id", "gene_id"),
+            order.by = "tx_id",
+            return.type = return
+        )
     }
 
     # Force detach =============================================================
