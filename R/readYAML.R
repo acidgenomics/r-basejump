@@ -9,7 +9,7 @@
 #'
 #' @param object YAML file path.
 #'
-#' @return [list].
+#' @return `list`.
 #' @export
 #'
 #' @examples

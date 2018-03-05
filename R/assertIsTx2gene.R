@@ -3,8 +3,8 @@
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x [data.frame] containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column [data.frame] with "enstxp" and
+#' @param x `data.frame` containing Ensembl transcript to gene identifier
+#'   mappings. Must be structured as a two column `data.frame` with "enstxp" and
 #'   "ensgene" columns.
 #'
 #' @export

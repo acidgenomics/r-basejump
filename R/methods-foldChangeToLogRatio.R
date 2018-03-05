@@ -10,7 +10,7 @@
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
-#' @return [numeric].
+#' @return `numeric`.
 #'
 #' @seealso Modified variants of `gtools::foldchange2logratio()` and
 #' `gtools::logratio2foldchange()`.

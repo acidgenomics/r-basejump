@@ -3,7 +3,7 @@
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x [data.frame] containing Ensembl transcript annotations returned
+#' @param x `data.frame` containing Ensembl transcript annotations returned
 #'   by the [transcripts()] function.
 #'
 #' @export

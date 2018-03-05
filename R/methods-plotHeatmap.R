@@ -13,7 +13,7 @@
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding
 #'   values are "row", "column" and "none".
-#' @param annotationCol *Optional.* [data.frame] that defines annotation
+#' @param annotationCol *Optional.* `data.frame` that defines annotation
 #'   mappings for the columns.
 #' @param borderColor Border color.
 #' @param clusterCols Logical determining if columns should be arranged with
@@ -29,7 +29,7 @@
 #'
 #' @seealso [pheatmap::pheatmap()].
 #'
-#' @return [pheatmap::pheatmap()] return [list], containing `gtable`.
+#' @return [pheatmap::pheatmap()] return `list`, containing `gtable`.
 #'
 #' @examples
 #' mat <- as.matrix(mtcars)

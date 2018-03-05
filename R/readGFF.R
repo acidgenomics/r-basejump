@@ -15,7 +15,7 @@
 #' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
 #' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
 #'
-#' @return [data.frame].
+#' @return `data.frame`.
 #' @export
 #'
 #' @examples

@@ -7,7 +7,7 @@
 #' @inheritParams ensembl
 #' @inheritParams general
 #'
-#' @return [data.frame].
+#' @return `data.frame`.
 #'
 #' @examples
 #' tx2gene("Homo sapiens") %>% glimpse()

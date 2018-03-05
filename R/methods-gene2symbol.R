@@ -7,7 +7,7 @@
 #' @inherit ensembl
 #' @inheritParams general
 #'
-#' @return [data.frame].
+#' @return `data.frame`.
 #'
 #' @examples
 #' gene2symbol("Homo sapiens") %>% glimpse()

@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Success
-#' fill <-
+#' fill <- scale_color_viridis(discrete = TRUE)
 #' class(fill)
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)

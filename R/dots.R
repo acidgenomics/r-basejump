@@ -8,8 +8,8 @@
 #' @param character Return dots (`...`) as character vector.
 #'
 #' @return
-#' - For `character = FALSE`: [list] containing objects as names. Can return
-#'   object from the stored [name] class with [eval()].
+#' - For `character = FALSE`: `list` containing objects as names. Can return
+#'   object from the stored `name` class with [eval()].
 #' - For `character = TRUE`: Character vector.
 #' @export
 #'

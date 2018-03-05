@@ -9,7 +9,7 @@
 #'
 #' @param n The number of breaks to create.
 #'
-#' @return Show heatmap. Invisibly return [list] containing breaks and
+#' @return Show heatmap. Invisibly return `list` containing breaks and
 #'   [pheatmap::pheatmap()] `gtable`.
 #'
 #' @examples

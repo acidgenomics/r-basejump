@@ -3,7 +3,7 @@
 #' @import datasets
 #' @keywords internal
 #'
-#' @return [data.frame].
+#' @return `data.frame`.
 #' @export
 #'
 #' @examples
@@ -16,7 +16,7 @@ datasets::mtcars -> mtcars
 #'
 #' @keywords internal
 #'
-#' @return [tibble].
+#' @return `tibble`.
 #' @export
 #'
 #' @examples
@@ -29,7 +29,7 @@ dplyr::starwars -> starwars
 #'
 #' @keywords internal
 #'
-#' @return [tibble].
+#' @return `tibble`.
 #' @export
 #'
 #' @examples
