@@ -7,8 +7,8 @@
 assertIsTx2gene(x, severity = "stop")
 }
 \arguments{
-\item{x}{\link{data.frame} containing Ensembl transcript to gene identifier
-mappings. Must be structured as a two column \link{data.frame} with "enstxp" and
+\item{x}{\code{data.frame} containing Ensembl transcript to gene identifier
+mappings. Must be structured as a two column \code{data.frame} with "enstxp" and
 "ensgene" columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?

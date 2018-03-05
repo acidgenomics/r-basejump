@@ -18,7 +18,7 @@ doesn't exist.}
 \item{...}{Additional arguments.}
 }
 \value{
-\link{tibble} by default, or a sparse matrix for \code{.mtx} files.
+\code{tibble} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
 Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}

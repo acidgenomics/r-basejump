@@ -26,7 +26,7 @@ plotQuantileHeatmap(object, ...)
 
 \item{n}{The number of breaks to create.}
 
-\item{annotationCol}{\emph{Optional.} \link{data.frame} that defines annotation
+\item{annotationCol}{\emph{Optional.} \code{data.frame} that defines annotation
 mappings for the columns.}
 
 \item{clusterCols}{Logical determining if columns should be arranged with
@@ -46,7 +46,7 @@ palette.}
 \item{title}{\emph{Optional.} Plot title.}
 }
 \value{
-Show heatmap. Invisibly return \link{list} containing breaks and
+Show heatmap. Invisibly return \code{list} containing breaks and
 \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} \code{gtable}.
 }
 \description{

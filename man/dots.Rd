@@ -13,8 +13,8 @@ dots(..., character = FALSE)
 }
 \value{
 \itemize{
-\item For \code{character = FALSE}: \link{list} containing objects as names. Can return
-object from the stored \link{name} class with \code{\link[=eval]{eval()}}.
+\item For \code{character = FALSE}: \code{list} containing objects as names. Can return
+object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
 \item For \code{character = TRUE}: Character vector.
 }
 }

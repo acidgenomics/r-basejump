@@ -23,7 +23,7 @@ tx2geneFromGTF(...)
 \item{...}{Additional arguments.}
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Define Transcript to Gene Mappings from GFF/GTF File

@@ -21,7 +21,7 @@ kables(object, ...)
 \item{force}{Force kable output. \emph{Recommended for development and unit
 testing only.}}
 
-\item{list}{List of column data (e.g. \link{data.frame}, \link{matrix}).}
+\item{list}{List of column data (e.g. \code{data.frame}, \code{matrix}).}
 }
 \value{
 Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.

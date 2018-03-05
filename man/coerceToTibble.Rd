@@ -2,14 +2,14 @@
 % Please edit documentation in R/setAs.R
 \name{coerceToTibble}
 \alias{coerceToTibble}
-\title{Coerce to \link{tibble} Class Object}
+\title{Coerce to \code{tibble} Class Object}
 \arguments{
 \item{from}{Class for which the coerce method will perform coercion.}
 }
 \description{
-Coerce an object to a \link{tibble} \link{data.frame}. Tibbles don't support rowname
+Coerce an object to a \code{tibble} \code{data.frame}. Tibbles don't support rowname
 assignemnt, so here we are ensuring they are kept by converting the rownames
-to a standard \link{data.frame} column named \code{rowname} upon coercion. This helps
+to a standard \code{data.frame} column named \code{rowname} upon coercion. This helps
 avoid downstream unexpected data loss when using the dplyr chain of single
 table verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or
 \code{\link[dplyr:mutate]{dplyr::mutate()}}.

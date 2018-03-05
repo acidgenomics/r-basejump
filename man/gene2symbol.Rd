@@ -26,7 +26,7 @@ current release available on AnnotationHub.}
 \code{gene2symbol} output. \emph{Generally this is not recommended.}}
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Ensembl Gene to Symbol Mappings

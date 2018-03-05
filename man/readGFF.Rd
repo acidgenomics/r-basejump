@@ -13,7 +13,7 @@ readGTF(object)
 \item{object}{Object.}
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Read GFF/GTF Annotations

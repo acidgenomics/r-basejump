@@ -17,7 +17,7 @@ with or without the trailing slash.}
 
 \item{rename}{Rename the local files (including suffix), if desired.}
 
-\item{compress}{Compress the files with \code{\link[=gzip]{gzip()}} after download.
+\item{compress}{Compress the files with \code{\link[R.utils:gzip]{R.utils::gzip()}} after download.
 (\code{TRUE}/\code{FALSE})}
 }
 \value{

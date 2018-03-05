@@ -10,7 +10,7 @@ readYAML(object)
 \item{object}{YAML file path.}
 }
 \value{
-\link{list}.
+\code{list}.
 }
 \description{
 Read YAML File

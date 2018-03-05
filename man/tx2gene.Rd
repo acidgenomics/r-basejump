@@ -22,7 +22,7 @@ tx2gene(object, ...)
 current release available on AnnotationHub.}
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Transcript to Gene Mappings
