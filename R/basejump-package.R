@@ -24,12 +24,6 @@ ensembldbGeneCols <- c(
     "symbol",
     "entrezid"
 )
-ensemblFormat <- c(
-    "genes",
-    "gene2symbol",
-    "transcripts",
-    "tx2gene"
-)
 ensemblReturn <- c(
     "GRanges",
     "data.frame",
