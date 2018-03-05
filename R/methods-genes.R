@@ -17,6 +17,10 @@
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
 NULL
 
+#' @importFrom GenomicFeatures genes
+#' @export
+GenomicFeatures::genes
+
 
 
 # Methods ======================================================================

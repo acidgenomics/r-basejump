@@ -18,7 +18,7 @@ files <- c(
 mapply(
     FUN = function(cacheURL, file, envir) {
         if (!file.exists(file)) {
-            download.file(
+            utils::download.file(
                 url = paste(cacheURL, file, sep = "/"),
                 destfile = file)
         }

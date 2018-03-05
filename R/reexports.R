@@ -1,21 +1,5 @@
 # Only reexport functions needed for working examples and vignette
 
-#' @importFrom dplyr pull
-#' @export
-dplyr::pull
-
-
-
-#' @importFrom GenomicFeatures genes
-#' @export
-GenomicFeatures::genes
-
-#' @importFrom GenomicFeatures transcripts
-#' @export
-GenomicFeatures::transcripts
-
-
-
 #' @importFrom fs dir_create
 #' @export
 fs::dir_create
@@ -103,12 +87,6 @@ tibble::is_tibble
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
-
-
-
-#' @importFrom utils download.file
-#' @export
-utils::download.file
 
 
 
