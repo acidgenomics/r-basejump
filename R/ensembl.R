@@ -92,7 +92,7 @@ ensembl <- function(
     assert_is_a_string(organism)
     format <- match.arg(
         arg = format,
-        choices = c("genes", "gene2symbol", "transcripts", "tx2gene")
+        choices = ensemblFormat
     )
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)

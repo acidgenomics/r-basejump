@@ -11,15 +11,6 @@
 
 
 globalVariables(".")
-ensemblReturn <- c("GRanges", "data.frame", "DataFrame")
-geneAnnotationCols <- c(
-    "ensgene",
-    "symbol",
-    "description",
-    "biotype")
-transcriptAnnotationCols <- c(
-    "enstxp",
-    "biotype")
 ensembldbGeneCols <- c(
     "gene_id",
     "gene_name",
@@ -31,4 +22,26 @@ ensembldbGeneCols <- c(
     "seq_coord_system",
     "description",
     "symbol",
-    "entrezid")
+    "entrezid"
+)
+ensemblFormat <- c(
+    "genes",
+    "gene2symbol",
+    "transcripts",
+    "tx2gene"
+)
+ensemblReturn <- c(
+    "GRanges",
+    "data.frame",
+    "DataFrame"
+)
+geneAnnotationCols <- c(
+    "ensgene",
+    "symbol",
+    "description",
+    "biotype"
+)
+transcriptAnnotationCols <- c(
+    "enstxp",
+    "biotype"
+)
