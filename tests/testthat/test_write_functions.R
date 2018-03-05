@@ -78,7 +78,7 @@ test_that("transmit : Invalid parameters", {
     )
     expect_error(
         transmit("ftp://ftp.wormbase.org/pub/", pattern = "README"),
-        "is_non_empty : remoteFileList"
+        "is_non_empty : remoteFiles"
     )
     expect_error(
         transmit(ensemblURL, pattern = "XXX"),
