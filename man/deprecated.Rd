@@ -21,7 +21,7 @@
 \alias{assertFormalColorFunction}
 \alias{initializeDir}
 \alias{annotable}
-\title{Deprecated Functions}
+\title{Defunct or Deprecated Functions}
 \usage{
 summarizeRows(...)
 
@@ -65,9 +65,9 @@ annotable(...)
 \item{...}{Additional arguments.}
 }
 \value{
-Soft deprecation to new functions.
+\code{\link[=.Defunct]{.Defunct()}} or \code{\link[=.Deprecated]{.Deprecated()}} calls.
 }
 \description{
-Deprecated Functions
+Defunct or Deprecated Functions
 }
 \keyword{internal}

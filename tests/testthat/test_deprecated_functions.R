@@ -1,7 +1,7 @@
 context("Deprecated Functions")
 
-test_that("Hard", {
-    hard <- c(
+test_that("Defunct", {
+    x <- c(
         "summarizeRows",
         "wash",
         "packageSE",
@@ -13,16 +13,16 @@ test_that("Hard", {
         "symbol2gene"
     )
     invisible(lapply(
-        X = hard,
-        FUN = function(name) {
-            fun <- get(name)
-            expect_warning(fun(), "'fun' is deprecated.")
+        X = x,
+        FUN = function(x) {
+            fun <- get(x)
+            expect_error(fun(), "'fun' is defunct.")
         }
     ))
 })
 
-test_that("Soft", {
-    soft <- c(
+test_that("Deprecated", {
+    x <- c(
         "pct",
         "fc2lr",
         "lr2fc",
@@ -34,10 +34,14 @@ test_that("Soft", {
         "initializeDir"
     )
     invisible(lapply(
-        X = soft,
-        FUN = function(name) {
-            fun <- get(name)
-            expect_error(suppressWarnings(fun()))
+        X = x,
+        FUN = function(x) {
+            fun <- get(x)
+            output <- tryCatch(
+                fun(),
+                warning = function(w) w
+            )
+            expect_true(grepl("deprecated", output))
         }
     ))
 })

@@ -1,12 +1,11 @@
-#' Deprecated Functions
+#' Defunct or Deprecated Functions
 #'
-#' @rdname deprecated
 #' @name deprecated
 #' @keywords internal
 #'
 #' @inheritParams general
 #'
-#' @return Soft deprecation to new functions.
+#' @return [.Defunct()] or [.Deprecated()] calls.
 NULL
 
 
@@ -15,13 +14,13 @@ NULL
 #' @rdname deprecated
 #' @export
 summarizeRows <- function(...) {
-    .Deprecated("collapseToString")
+    .Defunct("collapseToString")
 }
 
 #' @rdname deprecated
 #' @export
 wash <- function(...) {
-    .Deprecated()
+    .Defunct()
 }
 
 
@@ -30,7 +29,7 @@ wash <- function(...) {
 #' @rdname deprecated
 #' @export
 packageSE <- function(...) {
-    .Deprecated("bcbioBase::prepareSummarizedExperiment")
+    .Defunct("bcbioBase::prepareSummarizedExperiment")
 }
 
 
@@ -38,7 +37,7 @@ packageSE <- function(...) {
 #' @rdname deprecated
 #' @export
 prepareSE <- function(...) {
-    .Deprecated("bcbioBase::prepareSummarizedExperiment")
+    .Defunct("bcbioBase::prepareSummarizedExperiment")
 }
 
 
@@ -47,7 +46,7 @@ prepareSE <- function(...) {
 #' @rdname deprecated
 #' @export
 metadataTable <- function(...) {
-    .Deprecated("bcbioBase::sampleMetadata")
+    .Defunct("bcbioBase::sampleData")
 }
 
 
@@ -67,7 +66,7 @@ pct <- function(...) {
 #' @rdname deprecated
 #' @export
 sampleDirs <- function(...) {
-    .Deprecated()
+    .Defunct()
 }
 
 
@@ -93,13 +92,13 @@ lr2fc <- function(...) {
 #' @rdname deprecated
 #' @export
 comp <- function() {
-    .Deprecated("Biostrings::complement")
+    .Defunct("Biostrings::complement")
 }
 
 #' @rdname deprecated
 #' @export
 revcomp <- function() {
-    .Deprecated("Biostrings::reverseComplement")
+    .Defunct("Biostrings::reverseComplement")
 }
 
 
@@ -107,7 +106,7 @@ revcomp <- function() {
 # v0.2.2 =======================================================================
 #' @rdname deprecated
 symbol2gene <- function() {
-    .Deprecated()
+    .Defunct()
 }
 
 
@@ -116,21 +115,21 @@ symbol2gene <- function() {
 #' @rdname deprecated
 #' @export
 checkAnnotable <- function(...) {
-    # .Deprecated("assertIsAnnotable")
+    .Deprecated("assertIsAnnotable")
     assertIsAnnotable(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkGene2symbol <- function(...) {
-    # .Deprecated("assertIsGene2symbol")
+    .Deprecated("assertIsGene2symbol")
     assertIsGene2symbol(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkTx2gene <- function(...) {
-    # .Deprecated("assertIsTx2gene")
+    .Deprecated("assertIsTx2gene")
     assertIsTx2gene(...)
 }
 
@@ -164,7 +163,7 @@ assertFormalHeaderLevel <- function(...) {
  #' @rdname deprecated
  #' @export
  annotable <- function(...) {
-     .Deprecated("genes or transcripts")
+     .Defunct("genes or transcripts")
  }
 
  assertIsAnnotable <- function(...) {
