@@ -90,10 +90,7 @@ ensembl <- function(
     return = c("GRanges", "DataFrame", "data.frame")
 ) {
     assert_is_a_string(organism)
-    format <- match.arg(
-        arg = format,
-        choices = ensemblFormat
-    )
+    format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
@@ -140,6 +137,7 @@ ensembl <- function(
     rdataclass <- "EnsDb"
 
     # GRCh37 support
+    # TODO Replace with Homo_sapiens.GRCh37.75 annotation package
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
@@ -188,29 +186,84 @@ ensembl <- function(
     # Put the AnnotationHub ID first in the lists
     meta <- c("id" = id, meta)
 
-    # ensembldb ================================================================
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output. Additionally, it
     # attaches ensembldb and other Bioconductor dependency packages, which will
     # mask some tidyverse functions (e.g. `select()`).
     invisible(capture.output(
-        edb <- suppressMessages(ah[[id]])
-    ))
-    assert_is_all_of(edb, "EnsDb")
-
-    inform(paste(
-        paste0(id, ":"),
-        organism(edb),
-        meta[["genome"]],
-        "Ensembl", ensemblVersion(edb),
-        paste0("(", meta[["rdatadateadded"]], ")")
+        data <- suppressMessages(ah[[id]])
     ))
 
-    # Now we can force detach ensembldb and other unwanted dependendcies from
-    # the search path
-    ensembldbAttached <- setdiff(.packages(), userAttached)
+    # ensembldb (EnsDb) ========================================================
+    if (is(data, "EnsDb")) {
+        inform(paste(
+            paste0(id, ":"),
+            organism(data),
+            meta[["genome"]],
+            "Ensembl", ensemblVersion(data),
+            paste0("(", meta[["rdatadateadded"]], ")")
+        ))
+        if (format == "genes") {
+            data <- genes(
+                x = data,
+                columns = c(
+                    "gene_id",
+                    "gene_name",  # `symbol` is duplicate
+                    "description",
+                    "gene_biotype",
+                    "gene_seq_start",
+                    "gene_seq_end",
+                    "seq_name",
+                    "seq_strand",
+                    "seq_coord_system",
+                    "entrezid"
+                ),
+                order.by = "gene_id",
+                return.type = return
+            )
+        } else if (format == "gene2symbol") {
+            data <- genes(
+                x = data,
+                columns = c("gene_id", "symbol"),
+                order.by = "gene_id",
+                return.type = return
+            )
+        } else if (format == "transcripts") {
+            data <- transcripts(
+                x = data,
+                columns = c(
+                    "tx_id",  # `tx_name` is duplicate
+                    "tx_biotype",
+                    "tx_cds_seq_start",
+                    "tx_cds_seq_end",
+                    "tx_support_level",
+                    "gene_id"
+                ),
+                order.by = "tx_id",
+                return.type = return
+            )
+        } else if (format == "tx2gene") {
+            data <- transcripts(
+                x = data,
+                columns = c("tx_id", "gene_id"),
+                order.by = "tx_id",
+                return.type = return
+            )
+        }
+    } else {
+        # TODO Update GRCh37/75 to use new EnsDb package
+        warn(paste("Using", class(data), "object instead of EnsDb"))
+        if (return == "data.frame") {
+            data <- as.data.frame(data)
+        } else if (return == "DataFrame") {
+            data <- as(data, "DataFrame")
+        }
+    }
+
+    # Force detach =============================================================
+    fxnAttached <- setdiff(.packages(), userAttached)
     invisible(lapply(
-        X = ensembldbAttached,
+        X = fxnAttached,
         FUN = function(name) {
             if (name %in% .packages()) {
                 suppressWarnings(detach(
@@ -222,58 +275,9 @@ ensembl <- function(
             }
         }
     ))
-    # Assert that all AnnotationHub/ensembldb packages must detach
     assert_are_identical(.packages(), userAttached)
 
-    # Return ==========================================================
-    if (format == "genes") {
-        data <- genes(
-            edb,
-            columns = c(
-                "gene_id",
-                "symbol",  # `gene_name` is duplicate
-                "description",
-                "gene_biotype",
-                "gene_seq_start",
-                "gene_seq_end",
-                "seq_name",
-                "seq_strand",
-                "seq_coord_system",
-                "entrezid"
-            ),
-            order.by = "gene_id",
-            return.type = return
-        )
-    } else if (format == "gene2symbol") {
-        data <- genes(
-            edb,
-            columns = c("gene_id", "symbol"),
-            order.by = "gene_id",
-            return.type = return
-        )
-    } else if (format == "transcripts") {
-        data <- transcripts(
-            edb,
-            columns = c(
-                "tx_id",  # `tx_name` is duplicate
-                "tx_biotype",
-                "tx_cds_seq_start",
-                "tx_cds_seq_end",
-                "tx_support_level",
-                "gene_id"
-            ),
-            order.by = "tx_id",
-            return.type = return
-        )
-    } else if (format == "tx2gene") {
-        data <- transcripts(
-            edb,
-            columns = c("tx_id", "gene_id"),
-            order.by = "tx_id",
-            return.type = return
-        )
-    }
-
+    # Return ===================================================================
     # Convert column names into desired convention
     data <- camel(data)
 
