@@ -295,5 +295,11 @@ ensembl <- function(
         data <- list(data = data, metadata = meta)
     }
 
+    # Set the rownames (if return is data frame)
+    if (has_rows(data)) {
+        idCol <- .detectIDCol(data)
+        rownames(data) <- data[[idCol]]
+    }
+
     data
 }
