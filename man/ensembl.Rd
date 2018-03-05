@@ -4,7 +4,7 @@
 \alias{ensembl}
 \title{Ensembl Annotations}
 \usage{
-ensembl(organism, format = c("genes", "transcripts", "gene2symbol",
+ensembl(organism, format = c("genes", "gene2symbol", "transcripts",
   "tx2gene"), genomeBuild = NULL, release = NULL, uniqueSymbol = FALSE,
   metadata = FALSE, return = c("GRanges", "DataFrame", "data.frame"))
 }
