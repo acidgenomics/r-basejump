@@ -82,7 +82,7 @@
 #' glimpse(x[["metadata"]])
 ensembl <- function(
     organism,
-    format = c("genes", "transcripts", "gene2symbol", "tx2gene"),
+    format = c("genes", "gene2symbol", "transcripts", "tx2gene"),
     genomeBuild = NULL,
     release = NULL,
     uniqueSymbol = FALSE,
@@ -90,7 +90,10 @@ ensembl <- function(
     return = c("GRanges", "DataFrame", "data.frame")
 ) {
     assert_is_a_string(organism)
-    format <- match.arg(format)
+    format <- match.arg(
+        arg = format,
+        choices = c("genes", "gene2symbol", "transcripts", "tx2gene")
+    )
     assertIsAStringOrNULL(genomeBuild)
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
