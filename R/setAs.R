@@ -1,8 +1,8 @@
-#' Coerce to [tibble] Class Object
+#' Coerce to `tibble` Class Object
 #'
-#' Coerce an object to a [tibble] [data.frame]. Tibbles don't support rowname
+#' Coerce an object to a `tibble` `data.frame`. Tibbles don't support rowname
 #' assignemnt, so here we are ensuring they are kept by converting the rownames
-#' to a standard [data.frame] column named `rowname` upon coercion. This helps
+#' to a standard `data.frame` column named `rowname` upon coercion. This helps
 #' avoid downstream unexpected data loss when using the dplyr chain of single
 #' table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
 #' [dplyr::mutate()].

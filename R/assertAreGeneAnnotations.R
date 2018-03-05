@@ -3,7 +3,7 @@
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x [data.frame] containing Ensembl gene annotations returned
+#' @param x `data.frame` containing Ensembl gene annotations returned
 #'   by the [genes()] function.
 #'
 #' @export

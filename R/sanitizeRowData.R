@@ -4,7 +4,7 @@
 #' functions to a data frame, and drop any nested list columns (e.g. `entrez`),
 #' if desired.
 #'
-#' Supports [GRanges], [data.frame], and [DataFrame] objects.
+#' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
 #'
 #' @family Sanitization Functions
 #'
@@ -13,7 +13,7 @@
 #' @param dropNested Drop any nested list columns (e.g. `entrez`). Otherwise, a
 #'   user may run into issues attempting to write results to flat CSV files.
 #'
-#' @return Data frame, without nested list columns.
+#' @return `data.frame`, without nested list columns.
 #' @export
 #'
 #' @examples

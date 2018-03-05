@@ -10,11 +10,11 @@
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.
 #'
-#' @seealso [markdownPlotlist].
+#' @seealso [markdownPlotlist()].
 #'
 #' @return
 #' - `grid`: [cowplot::plot_grid()].
-#' - `list`: [list].
+#' - `list`: `list`.
 #' - `markdown`: Markdown output, with headers for each plot.
 #'
 #' @examples
