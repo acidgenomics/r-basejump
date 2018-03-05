@@ -1,8 +1,8 @@
 .sanitizeAnnotationCols <- function(
     object,
-    format = c("genes", "transcripts")
+    format = ensemblFormat
 ) {
-    format <- match.arg(format)
+    format <- match.arg(format, ensemblFormat)
 
     if (is(object, "GRanges")) {
         data <- mcols(object)
