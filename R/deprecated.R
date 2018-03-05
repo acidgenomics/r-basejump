@@ -14,13 +14,13 @@ NULL
 # Legacy =======================================================================
 #' @rdname deprecated
 #' @export
-summarizeRows <- function() {
+summarizeRows <- function(...) {
     .Deprecated("collapseToString")
 }
 
 #' @rdname deprecated
 #' @export
-wash <- function() {
+wash <- function(...) {
     .Deprecated()
 }
 
@@ -29,7 +29,7 @@ wash <- function() {
 # v0.0.23 ======================================================================
 #' @rdname deprecated
 #' @export
-packageSE <- function() {
+packageSE <- function(...) {
     .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
@@ -37,7 +37,7 @@ packageSE <- function() {
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function() {
+prepareSE <- function(...) {
     .Deprecated("bcbioBase::prepareSummarizedExperiment")
 }
 
@@ -46,7 +46,7 @@ prepareSE <- function() {
 # v0.0.24 ======================================================================
 #' @rdname deprecated
 #' @export
-metadataTable <- function() {
+metadataTable <- function(...) {
     .Deprecated("bcbioBase::sampleMetadata")
 }
 
@@ -66,7 +66,7 @@ pct <- function(...) {
 # v0.1.0 =======================================================================
 #' @rdname deprecated
 #' @export
-sampleDirs <- function() {
+sampleDirs <- function(...) {
     .Deprecated()
 }
 
@@ -163,7 +163,7 @@ assertFormalHeaderLevel <- function(...) {
  # v0.3.2 ======================================================================
  #' @rdname deprecated
  #' @export
- annotable <- function() {
+ annotable <- function(...) {
      .Deprecated("genes or transcripts")
  }
 
