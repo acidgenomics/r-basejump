@@ -229,11 +229,11 @@ test_that("gene2symbol : character", {
 
 
 
-# ensembl (general) ============================================================
+# ensembl ======================================================================
 test_that("ensembl : Unsupported Ensembl release", {
     expect_error(
         ensembl(human, release = 86L),
-        "is_greater_than_or_equal_to : "
+        "Ensembl annotations for Homo sapiens : 86 were not found"
     )
 })
 
@@ -251,7 +251,10 @@ test_that("ensembl : Multiple organisms", {
     )
     expect_error(
         ensembl(human, format = "XXX"),
-        "is_subset : The element 'XXX' in format is not in"
+        paste(
+            "'arg' should be one of \"genes\", \"gene2symbol\",",
+            "\"transcripts\", \"tx2gene\""
+        )
     )
 })
 
