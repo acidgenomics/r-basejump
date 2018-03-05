@@ -7,7 +7,7 @@
 assertAreTranscriptAnnotations(x, severity = "stop")
 }
 \arguments{
-\item{x}{\link{data.frame} containing Ensembl transcript annotations returned
+\item{x}{\code{data.frame} containing Ensembl transcript annotations returned
 by the \code{\link[=transcripts]{transcripts()}} function.}
 
 \item{severity}{How severe should the consequences of the assertion be?

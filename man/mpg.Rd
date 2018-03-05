@@ -9,7 +9,7 @@
 mpg
 }
 \value{
-\link{tibble}.
+\code{tibble}.
 }
 \description{
 Miles per Gallon

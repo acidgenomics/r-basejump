@@ -33,7 +33,7 @@ logRatioToFoldChange(object, ...)
 differential expression output.}
 }
 \value{
-\link{numeric}.
+\code{numeric}.
 }
 \description{
 Interconvert Log Ratio and Fold Change Values

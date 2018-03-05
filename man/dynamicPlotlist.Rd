@@ -24,7 +24,7 @@ dynamicPlotlist(object, ...)
 \value{
 \itemize{
 \item \code{grid}: \code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
-\item \code{list}: \link{list}.
+\item \code{list}: \code{list}.
 \item \code{markdown}: Markdown output, with headers for each plot.
 }
 }
@@ -45,7 +45,7 @@ names(list)
 dynamicPlotlist(plotlist, return = "markdown")
 }
 \seealso{
-\link{markdownPlotlist}.
+\code{\link[=markdownPlotlist]{markdownPlotlist()}}.
 
 Other Plot Functions: \code{\link{midnightTheme}},
   \code{\link{plotHeatmap}},

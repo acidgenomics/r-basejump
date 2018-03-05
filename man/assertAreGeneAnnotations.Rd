@@ -7,7 +7,7 @@
 assertAreGeneAnnotations(x, severity = "stop")
 }
 \arguments{
-\item{x}{\link{data.frame} containing Ensembl gene annotations returned
+\item{x}{\code{data.frame} containing Ensembl gene annotations returned
 by the \code{\link[=genes]{genes()}} function.}
 
 \item{severity}{How severe should the consequences of the assertion be?

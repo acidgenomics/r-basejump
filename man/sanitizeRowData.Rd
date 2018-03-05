@@ -13,7 +13,7 @@ sanitizeRowData(object, dropNested = TRUE)
 user may run into issues attempting to write results to flat CSV files.}
 }
 \value{
-Data frame, without nested list columns.
+\code{data.frame}, without nested list columns.
 }
 \description{
 Coerce Ensembl \code{rowData} returned from the \code{\link[=genes]{genes()}} or \code{\link[=transcripts]{transcripts()}}
@@ -21,7 +21,7 @@ functions to a data frame, and drop any nested list columns (e.g. \code{entrez})
 if desired.
 }
 \details{
-Supports \link{GRanges}, \link{data.frame}, and \link{DataFrame} objects.
+Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
 }
 \examples{
 # Gene annotations

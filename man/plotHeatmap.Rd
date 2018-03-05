@@ -28,7 +28,7 @@ plotHeatmap(object, ...)
 in either the row direction or the column direction, or none. Corresponding
 values are "row", "column" and "none".}
 
-\item{annotationCol}{\emph{Optional.} \link{data.frame} that defines annotation
+\item{annotationCol}{\emph{Optional.} \code{data.frame} that defines annotation
 mappings for the columns.}
 
 \item{clusterCols}{Logical determining if columns should be arranged with
@@ -48,7 +48,7 @@ palette.}
 \item{title}{\emph{Optional.} Plot title.}
 }
 \value{
-\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} return \link{list}, containing \code{gtable}.
+\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} return \code{list}, containing \code{gtable}.
 }
 \description{
 Construct a simple heatmap. By default, row- and column-wise hierarchical

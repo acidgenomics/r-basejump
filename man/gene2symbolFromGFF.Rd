@@ -26,7 +26,7 @@ gene2symbolFromGTF(...)
 \code{gene2symbol} output. \emph{Generally this is not recommended.}}
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Define Gene to Symbol Mappings from GFF/GTF File

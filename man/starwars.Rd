@@ -9,7 +9,7 @@
 starwars
 }
 \value{
-\link{tibble}.
+\code{tibble}.
 }
 \description{
 Starwars Characters

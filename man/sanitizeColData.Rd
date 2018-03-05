@@ -10,7 +10,7 @@ sanitizeColData(object)
 \item{object}{Object.}
 }
 \value{
-\link{DataFrame}.
+\code{DataFrame}.
 }
 \description{
 Sanitize Column Data
