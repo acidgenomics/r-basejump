@@ -1,8 +1,8 @@
 .sanitizeAnnotationCols <- function(
     object,
-    format = ensemblFormat
+    format = c("genes", "gene2symbol", "transcripts", "tx2gene")
 ) {
-    format <- match.arg(format, ensemblFormat)
+    format <- match.arg(format)
 
     if (is(object, "GRanges")) {
         data <- mcols(object)
@@ -15,6 +15,7 @@
         camel() %>%
         gsub("^entrezid", "entrez", .) %>%
         gsub("^geneID$", "ensgene", .) %>%
+        gsub("^geneName$", "symbol", .) %>%
         gsub("^(gene|tx)Biotype", "biotype", .) %>%
         gsub("^txID$", "enstxp", .)
 
@@ -29,7 +30,8 @@
         if ("broadClass" %in% colnames(data)) {
             priorityCols <- c(priorityCols, "broadClass")
         }
-        assert_is_subset(priorityCols, colnames(data))
+        assert_are_intersecting_sets(priorityCols, colnames(data))
+        priorityCols <- intersect(priorityCols, colnames(data))
         data <- data %>%
             .[, c(priorityCols, setdiff(colnames(.), priorityCols)),
                 drop = FALSE]
