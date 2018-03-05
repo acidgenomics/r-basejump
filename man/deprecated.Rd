@@ -23,19 +23,19 @@
 \alias{annotable}
 \title{Deprecated Functions}
 \usage{
-summarizeRows()
+summarizeRows(...)
 
-wash()
+wash(...)
 
-packageSE()
+packageSE(...)
 
-prepareSE()
+prepareSE(...)
 
-metadataTable()
+metadataTable(...)
 
 pct(...)
 
-sampleDirs()
+sampleDirs(...)
 
 fc2lr(...)
 
@@ -59,7 +59,7 @@ assertFormalColorFunction(...)
 
 initializeDir(...)
 
-annotable()
+annotable(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
