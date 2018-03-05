@@ -13,6 +13,10 @@
 #' colnames(mcols(data))
 NULL
 
+#' @importFrom GenomicFeatures transcripts
+#' @export
+GenomicFeatures::transcripts
+
 
 
 # Methods ======================================================================
