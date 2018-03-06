@@ -85,7 +85,7 @@ transmit <- function(
         name <- match
     }
 
-    localPaths <- path(localDir, name)
+    localPaths <- file.path(localDir, name)
 
     if (isTRUE(compress)) {
         files <- paste(localPaths, "gz", sep = ".")

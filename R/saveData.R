@@ -42,7 +42,7 @@ saveData <- function(
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
 
-    files <- path(dir, paste0(objectNames, ".rda"))
+    files <- file.path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
 
     inform(paste("Saving", toString(basename(files)), "to", dir))
