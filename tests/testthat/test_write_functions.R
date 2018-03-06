@@ -9,16 +9,16 @@ test_that("assignAndSaveData", {
     )
     expect_message(
         assignAndSaveData("test", mtcars),
-        paste("Saving test to", path_real("."))
+        paste("Saving test to", normalizePath("."))
     )
-    file_delete("test.rda")
+    unlink("test.rda")
 })
 
 
 
 # saveData =====================================================================
 test_that("saveData", {
-    paths <- path(path_real("."), "savetest", c("mtcars.rda", "starwars.rda"))
+    paths <- file.path(normalizePath("."), c("mtcars.rda", "starwars.rda"))
     names(paths) <- c("mtcars", "starwars")
     expect_identical(
         saveData(mtcars, starwars, dir = "savetest", overwrite = TRUE),
@@ -52,10 +52,10 @@ test_that("transmit : Standard", {
         pattern = "README",
         compress = FALSE
     )
-    expected <- path_join(c(path_real("."), "README"))
+    expected <- file.path(normalizePath("."), "README")
     names(expected) <- "README"
     expect_identical(readme, expected)
-    file_delete("README")
+    unlink("README")
 })
 
 test_that("transmit : Rename and compress", {
@@ -65,10 +65,10 @@ test_that("transmit : Rename and compress", {
         rename = "ensembl_readme.txt",
         compress = TRUE
     )
-    expected <- path_join(c(path_real("."), "ensembl_readme.txt.gz"))
+    expected <- file.path(normalizePath("."), "ensembl_readme.txt.gz")
     names(expected) <- "README"
     expect_identical(readme, expected)
-    file_delete("ensembl_readme.txt.gz")
+    unlink("ensembl_readme.txt.gz")
 })
 
 test_that("transmit : Invalid parameters", {
