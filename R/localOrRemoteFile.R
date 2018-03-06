@@ -4,7 +4,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom fs file_temp path_real
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
@@ -39,7 +38,7 @@ localOrRemoteFile <- function(object, severity = "stop") {
             # Download remote file, if necessary
             if (grepl("\\://", path)) {
                 # Remote file
-                file <- file_temp()
+                file <- tempfile()
                 # Fix for Excel files on Windows
                 # https://github.com/tidyverse/readxl/issues/374
                 # Otherwise, `read_excel()` errors in `readFileByExtension()`
@@ -63,11 +62,11 @@ localOrRemoteFile <- function(object, severity = "stop") {
 
     assert_all_are_existing_files(files, severity = severity)
     # Return NULL when severity isn't stop and not all files exist
-    if (!all(file_exists(files))) {
+    if (!all(file.exists(files))) {
         return(NULL)
     }
 
-    files <- path_real(files)
+    files <- normalizePath(files)
     names(files) <- basename(object)
     files
 }

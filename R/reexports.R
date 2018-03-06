@@ -1,37 +1,5 @@
 # Only reexport functions needed for working examples and vignette
 
-#' @importFrom fs dir_create
-#' @export
-fs::dir_create
-
-#' @importFrom fs dir_delete
-#' @export
-fs::dir_delete
-
-#' @importFrom fs dir_exists
-#' @export
-fs::dir_exists
-
-#' @importFrom fs file_delete
-#' @export
-fs::file_delete
-
-#' @importFrom fs file_exists
-#' @export
-fs::file_exists
-
-#' @importFrom fs path
-#' @export
-fs::path
-
-#' @importFrom fs path_join
-#' @export
-fs::path_join
-
-#' @importFrom fs path_real
-#' @export
-fs::path_real
-
 
 
 #' @importFrom ggplot2 aes

@@ -9,8 +9,6 @@
 #'
 #' @family Write Functions
 #'
-#' @importFrom fs file_exists path
-#'
 #' @inheritParams loadData
 #' @inheritParams base::save
 #'
@@ -31,7 +29,7 @@
 #' saveData(mtcars, starwars)
 #'
 #' # Clean up
-#' file_delete(c("mtcars.rda", "starwars.rda"))
+#' unlink(c("mtcars.rda", "starwars.rda"))
 saveData <- function(
     ...,
     dir = ".",
@@ -50,10 +48,10 @@ saveData <- function(
     inform(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
-    if (identical(overwrite, FALSE) && any(file_exists(files))) {
-        skip <- files[file_exists(files)]
+    if (identical(overwrite, FALSE) && any(file.exists(files))) {
+        skip <- files[file.exists(files)]
         warn(paste("Skipping", toString(basename(skip))))
-        files <- files[!file_exists(files)]
+        files <- files[!file.exists(files)]
     }
 
     if (!length(files)) {

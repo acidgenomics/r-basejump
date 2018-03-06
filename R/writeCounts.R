@@ -13,7 +13,6 @@
 #' @family Write Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
-#' @importFrom fs path_join
 #' @importFrom Matrix writeMM
 #' @importFrom R.utils gzip
 #' @importFrom readr write_csv write_lines
@@ -34,7 +33,7 @@
 #' writeCounts(mtcars, gzip = TRUE)
 #'
 #' # Clean up
-#' file_delete("mtcars.csv.gz")
+#' unlink("mtcars.csv.gz")
 writeCounts <- function(
     ...,
     dir = ".",
@@ -67,7 +66,7 @@ writeCounts <- function(
         counts <- dots[[a]]
         if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
             # MatrixMarket file
-            matrixFile <- path_join(c(dir, paste0(name, ".mtx")))
+            matrixFile <- file.path(dir, paste0(name, ".mtx"))
             writeMM(counts, matrixFile)
             # Write barcodes (colnames)
             barcodes <- colnames(counts)
@@ -89,7 +88,7 @@ writeCounts <- function(
                 ext <- paste0(ext, ".gz")
             }
             fileName <- paste0(name, ext)
-            filePath <- path_join(c(dir, fileName))
+            filePath <- file.path(dir, fileName)
             # See `setAs.R` file for documentation on tibble coercion method
             write_csv(
                 x = as(counts, "tibble"),

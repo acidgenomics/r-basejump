@@ -6,7 +6,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom fs file_move
 #' @importFrom Matrix readMM
 #' @importFrom stringr str_match
 #' @importFrom readr read_csv read_lines read_tsv
@@ -63,7 +62,7 @@ readFileByExtension <- function(
     # Add extension to tempfile, if necessary
     if (!grepl(extPattern, file)) {
         # tempfile needs an extension or `read_excel()` call will abort
-        file_move(path = file, new_path = paste0(file, ".", ext))
+        file.rename(from = file, to = paste0(file, ".", ext))
         file <- paste0(file, ".", ext)
     }
 

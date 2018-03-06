@@ -3,8 +3,6 @@
 #' Assigns a new object by name to the current working environment then saves
 #' the newly assigned object, specified by `dir`.
 #'
-#' @importFrom fs path_join
-#'
 #' @family Write Functions
 #'
 #' @inheritParams general
@@ -22,11 +20,11 @@
 #' @examples
 #' assignAndSaveData(name = "test", object = mtcars)
 #' exists("test", inherits = FALSE)
-#' file_exists("test.rda")
+#' file.exists("test.rda")
 #'
 #' # Clean up
 #' rm(test)
-#' file_delete("test.rda")
+#' unlink("test.rda")
 assignAndSaveData <- function(
     name,
     object,
@@ -41,7 +39,7 @@ assignAndSaveData <- function(
     assert_is_environment(envir)
 
     # Assign
-    file <- path_join(c(dir, paste0(name, ".rda")))
+    file <- file.path(dir, paste0(name, ".rda"))
     names(file) <- name
     assign(name, object, envir = envir)
 

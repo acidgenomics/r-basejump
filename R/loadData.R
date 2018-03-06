@@ -21,8 +21,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom fs path_join path_real
-#'
 #' @param ... Object names. Note that these arguments are interpreted using
 #'   non-standard evaluation, and *should not be quoted*.
 #' @param dir Output directory. Defaults to the current working directory.
@@ -43,13 +41,12 @@ loadData <- function(
     dir = ".",
     envir = parent.frame()
 ) {
-    assert_all_are_dirs(dir)
-    dir <- path_real(dir)
+    dir <- inititalizeDirectory(dir)
     assert_is_environment(envir)
 
     # `dots()` method will fail here because the objects aren't present
     dots <- dots(..., character = TRUE)
-    files <- path_join(c(dir, paste0(dots, ".rda")))
+    files <- file.path(dir, paste0(dots, ".rda"))
     assert_all_are_existing_files(files)
 
     inform(paste("Loading", toString(basename(files)), "from", dir))

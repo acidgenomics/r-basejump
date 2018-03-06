@@ -5,7 +5,6 @@
 #'
 #' @family Write Functions
 #'
-#' @importFrom fs path_join path_real
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines
@@ -34,10 +33,10 @@
 #'     compress = TRUE
 #' )
 #' basename(readme)
-#' file_exists(readme)
+#' file.exists(readme)
 #'
 #' # Clean up
-#' file_delete("ensembl_readme.txt.gz")
+#' unlink("ensembl_readme.txt.gz")
 transmit <- function(
     remoteDir,
     localDir = ".",
@@ -95,11 +94,11 @@ transmit <- function(
     }
 
     # Check for existing files and skip, if necessary
-    if (any(file_exists(files))) {
-        exists <- which(file_exists(files))
+    if (any(file.exists(files))) {
+        exists <- which(file.exists(files))
         if (identical(length(exists), length(files))) {
             inform("All files already downloaded")
-            files <- path_real(files)
+            files <- normalizePath(files)
             names(files) <- match
             return(invisible(files))
         } else {
@@ -116,7 +115,7 @@ transmit <- function(
             if (isTRUE(compress)) {
                 destfile <- gzip(destfile, overwrite = TRUE)
             }
-            path_real(destfile)
+            normalizePath(destfile)
         },
         url = remotePaths,
         destfile = localPaths,
@@ -124,7 +123,6 @@ transmit <- function(
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
-    files <- path_real(files)
     names(files) <- match
     invisible(files)
 }

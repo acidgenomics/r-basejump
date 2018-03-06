@@ -5,8 +5,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom fs path path_real
-#'
 #' @inheritParams loadData
 #'
 #' @param ... Key value pairs, defining the name mappings. For example,
@@ -32,11 +30,10 @@ loadDataAsName <- function(
     assert_is_character(dots)
     assert_has_names(dots)
     invisible(lapply(dots, assert_is_a_string))
-    assert_all_are_dirs(dir)
-    dir <- path_real(dir)
+    dir <- inititalizeDirectory(dir)
     assert_is_environment(envir)
 
-    files <- path(dir, paste0(dots, ".rda"))
+    files <- file.path(dir, paste0(dots, ".rda"))
     names(files) <- names(dots)
     assert_all_are_existing_files(files)
 
