@@ -33,7 +33,7 @@ is enabled by default to save disk space. Note that the
 writeCounts(mtcars, gzip = TRUE)
 
 # Clean up
-file_delete("mtcars.csv.gz")
+unlink("mtcars.csv.gz")
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},

@@ -35,10 +35,10 @@ readme <- transmit(
     compress = TRUE
 )
 basename(readme)
-file_exists(readme)
+file.exists(readme)
 
 # Clean up
-file_delete("ensembl_readme.txt.gz")
+unlink("ensembl_readme.txt.gz")
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},

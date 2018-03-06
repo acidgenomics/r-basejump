@@ -41,7 +41,7 @@ not overwrite by default if that behavior is preferred.
 saveData(mtcars, starwars)
 
 # Clean up
-file_delete(c("mtcars.rda", "starwars.rda"))
+unlink(c("mtcars.rda", "starwars.rda"))
 }
 \seealso{
 \itemize{

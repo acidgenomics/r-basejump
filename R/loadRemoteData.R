@@ -5,7 +5,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom fs file_temp
 #' @importFrom utils download.file
 #'
 #' @inheritParams general
@@ -36,7 +35,7 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     .urlToTempfile <- function(url, envir = parent.frame()) {
         assert_is_a_string(url)
         assert_is_environment(envir)
-        tempfile <- file_temp()
+        tempfile <- tempfile()
         download.file(url = url, destfile = tempfile)
         c(url = url, tempfile = as.character(tempfile))
     }

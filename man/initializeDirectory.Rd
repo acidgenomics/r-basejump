@@ -18,10 +18,10 @@ up functions that require writes to a user-specified directory.
 }
 \examples{
 initializeDirectory("testdir")
-dir_exists("testdir")
+dir.exists("testdir")
 
 # Clean up
-dir_delete("testdir")
+unlink("testdir", recursive = TRUE)
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},

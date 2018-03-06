@@ -8,22 +8,6 @@
 \alias{reexports}
 \alias{transcripts}
 \alias{reexports}
-\alias{dir_create}
-\alias{reexports}
-\alias{dir_delete}
-\alias{reexports}
-\alias{dir_exists}
-\alias{reexports}
-\alias{file_delete}
-\alias{reexports}
-\alias{file_exists}
-\alias{reexports}
-\alias{path}
-\alias{reexports}
-\alias{path_join}
-\alias{reexports}
-\alias{path_real}
-\alias{reexports}
 \alias{aes}
 \alias{reexports}
 \alias{ggplot}
@@ -58,8 +42,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{fs}{\code{\link[fs]{dir_create}}, \code{\link[fs]{dir_delete}}, \code{\link[fs]{dir_exists}}, \code{\link[fs]{file_delete}}, \code{\link[fs]{file_exists}}, \code{\link[fs]{path}}, \code{\link[fs]{path_join}}, \code{\link[fs]{path_real}}}
-
   \item{GenomicFeatures}{\code{\link[GenomicFeatures]{genes}}, \code{\link[GenomicFeatures]{transcripts}}}
 
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
