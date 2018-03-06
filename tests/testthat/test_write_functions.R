@@ -18,7 +18,11 @@ test_that("assignAndSaveData", {
 
 # saveData =====================================================================
 test_that("saveData", {
-    paths <- file.path(normalizePath("."), c("mtcars.rda", "starwars.rda"))
+    paths <- file.path(
+        normalizePath("."),
+        "savetest",
+        c("mtcars.rda", "starwars.rda")
+    )
     names(paths) <- c("mtcars", "starwars")
     expect_identical(
         saveData(mtcars, starwars, dir = "savetest", overwrite = TRUE),
@@ -28,7 +32,7 @@ test_that("saveData", {
         saveData(mtcars, starwars, dir = "savetest", overwrite = FALSE),
         "Skipping"
     )
-    dir_delete("savetest")
+    unlink("savetest", recursive = TRUE)
     expect_error(
         saveData(XXX),
         "object 'XXX' not found"
@@ -119,5 +123,5 @@ test_that("writeCounts", {
         writeCounts(seq(1L:10L)),
         "has_dims :"
     )
-    dir_delete("testcounts")
+    unlink("testcounts", recursive = TRUE)
 })
