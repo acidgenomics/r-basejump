@@ -5,7 +5,7 @@ test_that("loadData : Non-standard evaluation", {
     x <- loadData(counts)
     expect_identical(
         x,
-        c(counts = path_join(c(path_real("."), "counts.rda")))
+        c(counts = normalizePath("counts.rda"))
     )
     # Now that "counts" is loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment
@@ -52,7 +52,7 @@ test_that("loadData : Invalid arguments", {
 # loadDataAsName ===============================================================
 test_that("loadDataAsName : Non-standard evaluation", {
     x <- loadDataAsName(data1 = counts, data2 = gr)
-    expect_is(x, "fs_path")
+    expect_is(x, "character")
     expect_identical(names(x), c("data1", "data2"))
     expect_true(exists("data1", inherits = FALSE))
     expect_true(exists("data2", inherits = FALSE))
@@ -137,7 +137,7 @@ test_that("loadRemoteData : Invalid arguments", {
 test_that("localOrRemoteFile : Vectorized", {
     urls <- paste(cacheURL, c("mtcars.csv", "mtcars.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
-    expect_is(files, "fs_path")
+    expect_is(files, "character")
     expect_identical(names(files), basename(urls))
 })
 
