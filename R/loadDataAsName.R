@@ -30,7 +30,7 @@ loadDataAsName <- function(
     assert_is_character(dots)
     assert_has_names(dots)
     invisible(lapply(dots, assert_is_a_string))
-    dir <- inititalizeDirectory(dir)
+    dir <- initializeDirectory(dir)
     assert_is_environment(envir)
 
     files <- file.path(dir, paste0(dots, ".rda"))

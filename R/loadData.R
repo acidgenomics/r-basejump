@@ -41,7 +41,7 @@ loadData <- function(
     dir = ".",
     envir = parent.frame()
 ) {
-    dir <- inititalizeDirectory(dir)
+    dir <- initializeDirectory(dir)
     assert_is_environment(envir)
 
     # `dots()` method will fail here because the objects aren't present
