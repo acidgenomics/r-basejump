@@ -58,7 +58,6 @@ Imports:
     stringr (>= 1.2),
     S4Vectors,
     tibble (>= 1.3),
-    tools,
     utils,
     viridis (>= 0.4),
     yaml
