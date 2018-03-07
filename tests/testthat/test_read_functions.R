@@ -5,7 +5,7 @@ test_that("loadData : Non-standard evaluation", {
     x <- loadData(counts)
     expect_identical(
         x,
-        c(counts = normalizePath("counts.rda"))
+        c(counts = normalizePath("counts.rda", winslash = "/"))
     )
     # Now that "counts" is loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment

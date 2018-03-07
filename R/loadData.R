@@ -43,13 +43,15 @@ loadData <- function(
 ) {
     assert_all_are_dirs(dir)
     assert_is_a_string(dir)
-    dir <- normalizePath(dir)
+    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
     assert_is_environment(envir)
 
-    # `dots()` method will fail here because the objects aren't present
     dots <- dots(..., character = TRUE)
-    files <- file.path(dir, paste0(dots, ".rda"))
-    assert_all_are_existing_files(files)
+    files <- normalizePath(
+        path = file.path(dir, paste0(dots, ".rda")),
+        winslash = "/",
+        mustWork = TRUE
+    )
 
     inform(paste("Loading", toString(basename(files)), "from", dir))
     objects <- mapply(

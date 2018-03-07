@@ -32,7 +32,7 @@ loadDataAsName <- function(
     invisible(lapply(dots, assert_is_a_string))
     assert_all_are_dirs(dir)
     assert_is_a_string(dir)
-    dir <- normalizePath(dir)
+    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
     assert_is_environment(envir)
 
     files <- file.path(dir, paste0(dots, ".rda"))

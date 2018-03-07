@@ -66,7 +66,7 @@ localOrRemoteFile <- function(object, severity = "stop") {
         return(NULL)
     }
 
-    files <- normalizePath(files)
+    files <- normalizePath(files, winslash = "/", mustWork = TRUE)
     names(files) <- basename(object)
     files
 }
