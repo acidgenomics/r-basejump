@@ -39,18 +39,19 @@ assignAndSaveData <- function(
     assert_is_environment(envir)
 
     # Assign
-    file <- file.path(dir, paste0(name, ".rda"))
-    names(file) <- name
     assign(name, object, envir = envir)
 
     # Save
     inform(paste("Saving", name, "to", dir))
+    file <- file.path(dir, paste0(name, ".rda"))
     save(
         list = name,
         file = file,
         envir = envir,
         compress = compress
     )
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    names(file) <- name
 
     invisible(file)
 }

@@ -21,5 +21,5 @@ initializeDirectory <- function(dir) {
     if (!dir.exists(dir)) {
         dir.create(dir, recursive = TRUE, showWarnings = FALSE)
     }
-    normalizePath(dir, mustWork = TRUE)
+    normalizePath(dir, winslash = "/", mustWork = TRUE)
 }

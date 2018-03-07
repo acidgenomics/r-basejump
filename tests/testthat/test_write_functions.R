@@ -9,7 +9,7 @@ test_that("assignAndSaveData", {
     )
     expect_message(
         assignAndSaveData("test", mtcars),
-        paste("Saving test to", normalizePath("."))
+        paste("Saving test to", getwd())
     )
     unlink("test.rda")
 })
@@ -18,11 +18,7 @@ test_that("assignAndSaveData", {
 
 # saveData =====================================================================
 test_that("saveData", {
-    paths <- file.path(
-        normalizePath("."),
-        "savetest",
-        c("mtcars.rda", "starwars.rda")
-    )
+    paths <- file.path(getwd(), "savetest", c("mtcars.rda", "starwars.rda"))
     names(paths) <- c("mtcars", "starwars")
     expect_identical(
         saveData(mtcars, starwars, dir = "savetest", overwrite = TRUE),
@@ -56,7 +52,7 @@ test_that("transmit : Standard", {
         pattern = "README",
         compress = FALSE
     )
-    expected <- file.path(normalizePath("."), "README")
+    expected <- file.path(getwd(), "README")
     names(expected) <- "README"
     expect_identical(readme, expected)
     unlink("README")
@@ -69,7 +65,7 @@ test_that("transmit : Rename and compress", {
         rename = "ensembl_readme.txt",
         compress = TRUE
     )
-    expected <- file.path(normalizePath("."), "ensembl_readme.txt.gz")
+    expected <- file.path(getwd(), "ensembl_readme.txt.gz")
     names(expected) <- "README"
     expect_identical(readme, expected)
     unlink("ensembl_readme.txt.gz")
