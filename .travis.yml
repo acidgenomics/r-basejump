@@ -2,20 +2,26 @@
 # https://docs.travis-ci.com/user/languages/r
 
 language: r
-sudo: false
 cache: packages
-warnings_are_errors: false
+warnings_are_errors: true
 
 # Temporarily enable to cache R packages
-# script: true
+script: true
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
 
 r:
   - bioc-release
-  # - bioc-devel
+  - bioc-devel
+
 r_packages:
   - covr
 bioc_packages:
-  - GenomeInfoDbData
+  - BiocCheck
 
 after_success:
   - Rscript -e 'covr::codecov()'
+  - R CMD BiocCheck .
