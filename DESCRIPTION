@@ -5,17 +5,19 @@ Authors@R: c(
     person(
         "Michael", "Steinbaugh",
         email = "mike@steinbaugh.com",
-        role = c("aut", "cre")),
+        role = c("aut", "cre")
+    ),
     person(
         "Rory", "Kirchner",
         email = "roryk@alum.mit.edu",
-        role = "ctb"),
+        role = "ctb"
+    ),
     person(
         given = "Mary",
         family = "Piper",
         email = "mary.piper@gmail.com",
-        role = "ctb")
-    )
+        role = "ctb"
+    ))
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
 License: MIT + file LICENSE
@@ -26,40 +28,39 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 LazyData: TRUE
 Depends:
-    R (>= 3.4.0)
+    R (>= 3.4)
 Imports:
-    AnnotationHub (>= 2.8.3),
+    AnnotationHub,
     assertive (>= 0.3),
-    BiocGenerics (>= 0.22.1),
+    BiocGenerics,
     cowplot,
     datasets,
     dendsort,
-    dplyr (>= 0.7.4),
-    ensembldb (>= 2.0.4),
-    fs (>= 1.0.0),
+    dplyr (>= 0.7),
+    ensembldb (>= 2.0),
     GenomicFeatures,
     ggplot2 (>= 2.2.1),
     grDevices,
     knitr (>= 1.16),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
-    Matrix.utils (>= 0.9.6),
+    Matrix.utils (>= 0.9),
     methods,
-    pheatmap (>= 1.0.8),
+    pheatmap (>= 1.0),
     RColorBrewer,
     RCurl (>= 1.95),
-    readr (>= 1.1.1),
-    readxl (>= 1.0.0),
-    rlang (>= 0.1.2),
+    readr (>= 1.1),
+    readxl (>= 1.0),
+    rlang (>= 0.1),
     R.utils,
     scales,
     stats,
-    stringr (>= 1.2.0),
-    S4Vectors (>= 0.14.7),
-    tibble (>= 1.3.4),
+    stringr (>= 1.2),
+    S4Vectors,
+    tibble (>= 1.3),
     tools,
     utils,
-    viridis (>= 0.4.0),
+    viridis (>= 0.4),
     yaml
 Suggests:
     BiocStyle,
@@ -67,8 +68,8 @@ Suggests:
     lintr,
     roxygen2,
     testthat,
-    tidyr,
-    tidyverse (>= 1.2.1)
+    tidyr (>= 0.8),
+    tidyverse (>= 1.2)
 biocViews:
     DataImport,
     DifferentialExpression,
