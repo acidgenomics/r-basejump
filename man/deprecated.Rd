@@ -8,7 +8,6 @@
 \alias{prepareSE}
 \alias{metadataTable}
 \alias{pct}
-\alias{sampleDirs}
 \alias{fc2lr}
 \alias{lr2fc}
 \alias{comp}
@@ -34,8 +33,6 @@ prepareSE(...)
 metadataTable(...)
 
 pct(...)
-
-sampleDirs(...)
 
 fc2lr(...)
 
@@ -69,5 +66,11 @@ annotable(...)
 }
 \description{
 Defunct or Deprecated Functions
+
+#' @rdname deprecated
+#' @export
+sampleDirs <- function(...) {
+.Defunct()
+}
 }
 \keyword{internal}

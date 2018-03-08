@@ -63,11 +63,11 @@ pct <- function(...) {
 
 
 # v0.1.0 =======================================================================
-#' @rdname deprecated
-#' @export
-sampleDirs <- function(...) {
-    .Defunct()
-}
+#' #' @rdname deprecated
+#' #' @export
+#' sampleDirs <- function(...) {
+#'     .Defunct()
+#' }
 
 
 
