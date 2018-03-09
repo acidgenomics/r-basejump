@@ -7,10 +7,10 @@ test_that("Defunct", {
         "packageSE",
         "prepareSE",
         "metadataTable",
-        "sampleDirs",
         "comp",
         "revcomp",
-        "symbol2gene"
+        "symbol2gene",
+        "annotable"
     )
     invisible(lapply(
         X = x,
