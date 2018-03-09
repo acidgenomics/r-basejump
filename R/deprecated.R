@@ -163,7 +163,7 @@ assertFormalHeaderLevel <- function(...) {
  #' @rdname deprecated
  #' @export
  annotable <- function(...) {
-     .Defunct("rowData, genes, or transcripts")
+     .Defunct("genes, transcripts, ensembl, rowRanges, or rowData")
  }
 
  assertIsAnnotable <- function(...) {
