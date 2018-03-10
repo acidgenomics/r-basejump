@@ -1,19 +1,12 @@
 .addBroadClassCol <- function(object) {
     assert_is_any_of(object, ensemblReturn)
-
-    # Metadata
     if (is(object, "GRanges")) {
         data <- mcols(object)
     } else {
         data <- object
     }
 
-    # ID column
-    id <- data %>%
-        .[, .detectIDCol(.), drop = TRUE]
-
-    # Biotype
-    assert_any_are_matching_regex(colnames(data), "[Bb]iotype$")
+    # Biotype (genes or transcripts)
     biotypeCol <- grep(
         pattern = "biotype",
         x = colnames(data),
@@ -21,26 +14,28 @@
         value = TRUE
     )
     assert_is_a_string(biotypeCol)
-    biotype <- data[, biotypeCol, drop = TRUE]
+    biotype <- data[[biotypeCol]]
 
-    # Symbol
-    if ("symbol" %in% colnames(data)) {
-        symbol <- data[, "symbol", drop = TRUE]
-    } else {
-        symbol <- NA
-    }
+    # Symbol (not present for transcripts)
+    assert_is_subset("symbol", colnames(data), severity = "warning")
+    symbol <- data[["symbol"]]
+
+    # Seqname (chromosome)
+    assert_is_subset("seqName", colnames(data), severity = "warning")
+    seqName <- data[["seqName"]]
 
     tibble <- tibble(
-        id = id,
+        symbol = symbol,
         biotype = biotype,
-        symbol = symbol
+        seqName = seqName
     )
-    broad <- .broadClass(tibble)
+
+    data[["broadClass"]] <- .broadClass(tibble)
 
     if (is(object, "GRanges")) {
-        mcols(object)[["broadClass"]] <- broad
+        mcols(object) <- data
     } else {
-        object[["broadClass"]] <- broad
+        object <- data
     }
 
     object
@@ -54,7 +49,7 @@
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr case_when mutate pull
+#' @importFrom dplyr case_when
 #' @importFrom rlang .data
 #'
 #' @param param Gene or transcript biotype.
@@ -62,56 +57,55 @@
 #'
 #' @return Named character vector containing broad class definitions.
 .broadClass <- function(object) {
-    assert_is_data.frame(object)
-    assert_is_subset(c("biotype", "symbol"), colnames(object))
-    object %>%
-        mutate(
-            broad = case_when(
-                grepl(
-                    x = .data[["symbol"]],
-                    # Hsapiens: `MT-`,
-                    # Mmusculus: `mt-`
-                    # Dmelanogaster: `mt:`
-                    pattern = "^mt[\\:\\-]",
-                    ignore.case = TRUE
-                ) ~ "mito",
-                .data[["biotype"]] == "protein_coding" ~ "coding",
-                .data[["biotype"]] %in% c(
-                    "known_ncrna",
-                    "lincRNA",
-                    "non_coding"
-                ) ~ "noncoding",
-                grepl(
-                    pattern = "pseudo",
-                    x = .data[["biotype"]]
-                ) ~ "pseudo",
-                .data[["biotype"]] %in% c(
-                    "miRNA",
-                    "misc_RNA",
-                    "ribozyme",
-                    "rRNA",
-                    "scaRNA",
-                    "scRNA",
-                    "snoRNA",
-                    "snRNA",
-                    "sRNA"
-                ) ~ "small",
-                .data[["biotype"]] %in% c(
-                    "non_stop_decay",
-                    "nonsense_mediated_decay"
-                ) ~ "decaying",
-                grepl(
-                    pattern = "^ig_",
-                    x = .data[["biotype"]],
-                    ignore.case = TRUE
-                ) ~ "ig",
-                grepl(
-                    pattern = "^tr_",
-                    x = .data[["biotype"]],
-                    ignore.case = TRUE
-                ) ~ "tcr",
-                TRUE ~ "other"
-            )
-        ) %>%
-        pull("broad")
+    stopifnot(identical(
+        x = colnames(object),
+        y = c("symbol", "biotype", "seqName")
+    ))
+    case_when(
+        object[["seqName"]] == "MT" ~ "mito",
+        grepl(
+            # Hsapiens: "MT-*",
+            # Mmusculus: "mt-*"
+            # Dmelanogaster: "mt:*"
+            pattern = "^mt[\\:\\-]",
+            x = object[["symbol"]],
+            ignore.case = TRUE
+        ) ~ "mito",
+        object[["biotype"]] == "protein_coding" ~ "coding",
+        object[["biotype"]] %in% c(
+            "known_ncrna",
+            "lincRNA",
+            "non_coding"
+        ) ~ "noncoding",
+        grepl(
+            pattern = "pseudo",
+            x = object[["biotype"]]
+        ) ~ "pseudo",
+        object[["biotype"]] %in% c(
+            "miRNA",
+            "misc_RNA",
+            "ribozyme",
+            "rRNA",
+            "scaRNA",
+            "scRNA",
+            "snoRNA",
+            "snRNA",
+            "sRNA"
+        ) ~ "small",
+        object[["biotype"]] %in% c(
+            "non_stop_decay",
+            "nonsense_mediated_decay"
+        ) ~ "decaying",
+        grepl(
+            pattern = "^ig_",
+            x = object[["biotype"]],
+            ignore.case = TRUE
+        ) ~ "ig",
+        grepl(
+            pattern = "^tr_",
+            x = object[["biotype"]],
+            ignore.case = TRUE
+        ) ~ "tcr",
+        TRUE ~ "other"
+    )
 }
