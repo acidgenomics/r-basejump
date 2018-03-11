@@ -24,9 +24,11 @@ current release available on AnnotationHub.}
 for documenting where the annotations were sourced from inside
 AnnotationHub.}
 
-\item{return}{Class of the returned object. Can be "\code{GRanges}" (default),
-"\code{DataFrame}", or "\code{data.frame}". See \code{help("genes", "ensembldb")} for
-additional information.}
+\item{return}{Class of the returned object. Only applies when \code{format} equals
+"\code{genes}" or "\code{transcripts}". Can be "\code{GRanges}" (default), "\code{DataFrame}",
+or "\code{data.frame}". See \code{help("genes", "ensembldb")} for additional
+information. "\code{gene2symbol}" and "\code{tx2gene}" are always returned as
+\code{data.frame}.}
 }
 \value{
 \code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or

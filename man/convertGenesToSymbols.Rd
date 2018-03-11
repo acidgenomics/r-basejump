@@ -60,11 +60,11 @@ Same class as original object.
 Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
-# character
-vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-convertGenesToSymbols(vec)
+# character ====
+genes <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+convertGenesToSymbols(genes)
 
-# matrix
+# matrix ====
 mat <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
@@ -75,7 +75,10 @@ mat <- matrix(
         c("sample1", "sample2")
     )
 )
-convertGenesToSymbols(mat)
+print(mat)
+mat <- convertGenesToSymbols(mat)
+print(mat)
+rownames(mat)
 }
 \seealso{
 \code{\link[=detectOrganism]{detectOrganism()}}.
