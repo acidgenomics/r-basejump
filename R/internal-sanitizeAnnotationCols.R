@@ -22,9 +22,23 @@
         data[["symbol"]] <- NULL
     }
 
+    # Set strings as factors
+    if (is.character(data[["txBiotype"]])) {
+        inform("Setting txBiotype as factor")
+        data[["txBiotype"]] <- as.factor(data[["txBiotype"]])
+    }
+    if (is.integer(data[["txSupportLevel"]])) {
+        inform("Setting txSupportLevel as factor")
+        data[["txSupportLevel"]] <- as.factor(data[["txSupportLevel"]])
+    }
+    if (is.character(data[["geneBiotype"]])) {
+        inform("Setting geneBiotype as factor")
+        data[["geneBiotype"]] <- as.factor(data[["geneBiotype"]])
+    }
+
+    # Put the priority columns first
     assert_are_intersecting_sets(annotationCols, colnames(data))
     priorityCols <- intersect(annotationCols, colnames(data))
-
     data <- data %>%
         .[, unique(c(priorityCols, colnames(.))), drop = FALSE]
 
