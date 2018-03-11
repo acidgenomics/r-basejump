@@ -5,38 +5,36 @@
     } else {
         data <- object
     }
+    assertHasRownames(data)
 
-    # Biotype (genes or transcripts)
+    # Biotype (prioritize transcript over gene, if present)
     biotypeCol <- grep(
         pattern = "biotype",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    assert_is_a_string(biotypeCol)
+    assert_is_non_empty(biotypeCol)
+    biotypeCol <- biotypeCol[[1L]]
+    inform(paste("Generating broadClass using", biotypeCol))
     biotype <- data[[biotypeCol]]
 
-    # Symbol (not present for transcripts)
-    assert_is_subset("symbol", colnames(data))
-    symbol <- data[["symbol"]]
+    # geneName (symbol)
+    assert_is_subset("geneName", colnames(data))
+    geneName <- data[["geneName"]]
 
-    # Seqname (chromosome): seqnames, seqName
-    seqnamesCol <- grep(
-        pattern = "seqname",
-        x = colnames(data),
-        ignore.case = TRUE,
-        value = TRUE
-    )
-    assert_is_a_string(seqnamesCol)
-    seqnames <- data[[seqnamesCol]]
+    # seqnames (chromosome)
+    assert_is_subset("seqnames", colnames(data))
+    seqnames <- data[["seqnames"]]
 
-    tibble <- tibble(
-        symbol = symbol,
-        biotype = biotype,
-        seqnames = seqnames
-    )
-
-    broadClass <- .broadClass(tibble)
+    broadClass <- data.frame(
+        "geneName" = geneName,
+        "biotype" = biotype,
+        "seqnames" = seqnames,
+        row.names = rownames(data),
+        stringsAsFactors = TRUE
+    ) %>%
+        .broadClass()
 
     if (is(object, "GRanges")) {
         mcols(object)[["broadClass"]] <- broadClass
@@ -58,23 +56,21 @@
 #' @importFrom dplyr case_when
 #' @importFrom rlang .data
 #'
-#' @param param Gene or transcript biotype.
-#' @param symbol *Optional*. Gene symbol.
-#'
-#' @return Named `character` containing broad class definitions.
+#' @return Named `factor` containing broad class definitions.
 .broadClass <- function(object) {
-    stopifnot(identical(
-        x = colnames(object),
-        y = c("symbol", "biotype", "seqnames")
-    ))
-    case_when(
+    assertHasRownames(object)
+    assert_is_subset(
+        x = c("geneName", "biotype", "seqnames"),
+        y = colnames(object)
+    )
+    broad <- case_when(
         object[["seqnames"]] == "MT" ~ "mito",
         grepl(
             # Hsapiens: "MT-*",
             # Mmusculus: "mt-*"
             # Dmelanogaster: "mt:*"
             pattern = "^mt[\\:\\-]",
-            x = object[["symbol"]],
+            x = object[["geneName"]],
             ignore.case = TRUE
         ) ~ "mito",
         object[["biotype"]] == "protein_coding" ~ "coding",
@@ -114,4 +110,7 @@
         ) ~ "tcr",
         TRUE ~ "other"
     )
+    broad <- as.factor(broad)
+    names(broad) <- rownames(object)
+    broad
 }
