@@ -37,9 +37,7 @@ setMethod(
 
 
 #' @rdname tx2geneFromGFF
-#' @importFrom dplyr arrange distinct
 #' @importFrom magrittr set_rownames
-#' @importFrom rlang !! sym
 #' @importFrom stringr str_match
 #' @export
 setMethod(
@@ -55,28 +53,26 @@ setMethod(
             .[grepl("gene_id", .)] %>%
             unique()
 
-        enstxp <- str_match(anno, "transcript_id ([^;]+);") %>%
+        txID <- str_match(anno, "transcript_id ([^;]+);") %>%
             .[, 2L]
-        ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
+        assert_all_are_non_missing_nor_empty_character(txID)
+        geneID <- str_match(anno, "gene_id ([^;]+);") %>%
             .[, 2L]
-
-        assert_all_are_non_missing_nor_empty_character(enstxp)
-        assert_all_are_non_missing_nor_empty_character(ensgene)
-        assert_are_same_length(enstxp, ensgene)
-
-        data <- cbind(enstxp, ensgene) %>%
+        assert_all_are_non_missing_nor_empty_character(geneID)
+        assert_are_same_length(txID, geneID)
+        data <- cbind(txID, geneID) %>%
             as.data.frame(stringsAsFactors = FALSE) %>%
-            distinct() %>%
-            arrange(!!sym("enstxp")) %>%
-            set_rownames(.[["enstxp"]])
+            unique() %>%
+            .[order(.[["txID"]]), , drop = FALSE] %>%
+            set_rownames(.[["txID"]])
 
         # Check that all transcripts are unique
-        assert_has_no_duplicates(data[["enstxp"]])
+        assert_has_no_duplicates(data[["txID"]])
 
         inform(paste(
             "tx2gene mappings:",
-            length(unique(data[["enstxp"]])), "transcripts,",
-            length(unique(data[["ensgene"]])), "genes"
+            length(unique(data[["txID"]])), "transcripts,",
+            length(unique(data[["geneID"]])), "genes"
         ))
 
         data

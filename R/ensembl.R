@@ -243,6 +243,7 @@ ensembl <- function(
             order.by = "gene_id",
             return.type = "data.frame"
         )
+        # TODO Add summary of duplicate symbols
     } else if (format == "tx2gene") {
         data <- transcripts(
             x = edb,
