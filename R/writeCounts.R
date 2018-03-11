@@ -20,7 +20,6 @@
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
-#'
 #' @param ... Count matrices, passed in as dots.
 #' @param dir Output directory.
 #' @param gzip Compress the counts file using gzip.

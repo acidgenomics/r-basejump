@@ -9,11 +9,10 @@
 #'
 #' @inheritParams general
 #' @inheritParams loadData
-#'
 #' @param url Remote URL file path to R Data file. Supports multiple URLs
 #'   passed in as a character vector.
 #'
-#' @return Silently return a character matrix containing URL and tempfile paths.
+#' @return Invisible character `matrix` containing URL and tempfile paths.
 #' @export
 #'
 #' @examples

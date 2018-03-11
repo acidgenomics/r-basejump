@@ -3,6 +3,7 @@
 #' Utility function for automatically setting rownames. Note that the transcript
 #' ID column takes priority over the gene ID column.
 #'
+#' @keywords internal
 #' @noRd
 .detectIDCol <- function(object) {
     object <- as.data.frame(object)

@@ -10,7 +10,7 @@ midnightTheme()
 theme_midnight()
 }
 \value{
-ggplot theme.
+ggplot \code{theme}.
 }
 \description{
 Blackout palette that sets the plot background as black, with white text.

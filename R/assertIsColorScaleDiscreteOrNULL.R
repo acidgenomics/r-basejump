@@ -1,7 +1,5 @@
 # TODO Need to add a check to distinguish `color/fill`
 
-
-
 #' Assert Is Color Palette Scale Discrete or NULL
 #'
 #' @family Assert Check Functions

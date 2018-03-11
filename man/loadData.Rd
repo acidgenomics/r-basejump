@@ -16,7 +16,7 @@ non-standard evaluation, and \emph{should not be quoted}.}
 which will assign into the calling environment.}
 }
 \value{
-Silent named character vector of file paths.
+Invisible \code{character} containing file paths.
 }
 \description{
 Load R data (\code{.rda}) files from a directory using symbols rather than

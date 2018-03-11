@@ -18,13 +18,13 @@ be quoted}.}
 which will assign into the calling environment.}
 }
 \value{
-Silently return named character vector of file paths.
+Invisible named \code{character} containing file paths.
 }
 \description{
 Load Data as Name
 }
 \note{
-This function is desired for interactive use and interprets object
+This function is intended for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{

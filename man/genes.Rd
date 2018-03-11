@@ -7,7 +7,7 @@
 \title{Gene Annotations}
 \usage{
 \S4method{genes}{character}(x, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, return = c("GRanges", "DataFrame", "data.frame"))
+  return = c("GRanges", "DataFrame", "data.frame"))
 }
 \arguments{
 \item{x}{Primary object.}
@@ -16,9 +16,6 @@
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 
 \item{return}{Class of the returned object. Can be "\code{GRanges}" (default),
 "\code{DataFrame}", or "\code{data.frame}". See \code{help("genes", "ensembldb")} for
@@ -64,7 +61,7 @@ data <- genes("Homo sapiens")
 summary(data)
 colnames(mcols(data))
 
-# Legacy GRCh37/hg19 genome build support
+# Legacy GRCh37 (release 75) genome build support
 \dontrun{
 genes("Homo sapiens", genomeBuild = "GRCh37") \%>\% glimpse()
 }

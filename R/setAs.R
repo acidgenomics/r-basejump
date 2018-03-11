@@ -7,7 +7,6 @@
 #' table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
 #' [dplyr::mutate()].
 #'
-#' @rdname coerceToTibble
 #' @name coerceToTibble
 #' @keywords internal
 #'

@@ -35,15 +35,15 @@ geomean(...)
 \item{zeroPropagate}{Allow propagation of zeroes.}
 }
 \value{
-Numeric containing geometric means.
+\code{numeric} containing geometric means.
 }
 \description{
 The geometric mean is the nth root of n products or e to the mean log of \code{x}.
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \details{
-Modified version of \code{psych::geometric.mean()} and/or Paul McMurdie's
-code.
+Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
+\href{https://stackoverflow.com/a/25555105}{code}.
 }
 \note{
 This function should be fully zero- and \code{NA}-tolerant. This calculation
@@ -66,9 +66,6 @@ mat <- as.matrix(df)
 geometricMean(mat)
 }
 \seealso{
-\href{https://stackoverflow.com/a/25555105}{Paul McMurdie's post} on
-Stack Overflow
-
 Other Math Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}},
   \code{\link{foldChangeToLogRatio}},

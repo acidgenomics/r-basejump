@@ -1,6 +1,5 @@
 #' Convert Ensembl Transcripts to Genes
 #'
-#' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
 #' @family Gene Functions
 #'

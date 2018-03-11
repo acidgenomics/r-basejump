@@ -39,11 +39,11 @@ counts <- data.frame(
 groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
 names(groupings) <- rownames(counts)
 
-# matrix
+# matrix ====
 mat <- as(counts, "matrix")
 aggregateFeatures(mat, groupings = groupings)
 
-# dgCMatrix
+# dgCMatrix ====
 dgc <- as(mat, "dgCMatrix")
 aggregateFeatures(dgc, groupings = groupings)
 }

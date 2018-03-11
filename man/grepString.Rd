@@ -10,7 +10,7 @@ grepString(object)
 \item{object}{Object.}
 }
 \value{
-Comma separated grep string.
+Comma delimited grep string.
 }
 \description{
 Generate a grep string for pattern matching against comma separated

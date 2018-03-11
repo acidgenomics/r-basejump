@@ -1,6 +1,5 @@
 #' Transcript to Gene Mappings
 #'
-#' @rdname tx2gene
 #' @name tx2gene
 #' @family Gene Functions
 #'

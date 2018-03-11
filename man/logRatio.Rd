@@ -46,8 +46,11 @@ logRatioToFoldChange(seq(-3, 3, 1))
 foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 }
 \seealso{
-Modified variants of \code{gtools::foldchange2logratio()} and
-\code{gtools::logratio2foldchange()}.
+Modified variants of:
+\itemize{
+\item \code{gtools::foldchange2logratio()}.
+\item \code{gtools::logratio2foldchange()}.
+}
 
 Other Math Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}},

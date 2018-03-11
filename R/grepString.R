@@ -7,7 +7,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return Comma separated grep string.
+#' @return Comma delimited grep string.
 #' @export
 #'
 #' @examples

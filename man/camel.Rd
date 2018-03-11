@@ -110,39 +110,32 @@ Object with syntatically valid names. For objects supporting
 \description{
 Camel Case
 }
-\details{
-For unnamed character vectors, this function will sanitize the
-underlying values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
-objects supporting name assignments. They return the object without
-modification of the underlying data.
-}
 \examples{
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
-# Character vector
+# character ====
 character <- makeNames$character
 print(character)
 camel(character)
 upperCamel(character)
 
-# Named character vector
 namedCharacter <- makeNames$namedCharacter
 camel(namedCharacter)
 upperCamel(namedCharacter)
 
-# Factor
+# factor ====
 factor <- makeNames$factor
 print(factor)
 camel(factor)
 upperCamel(factor)
 
-# data.frame
+# data.frame ====
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
 camel(dataFrame, rownames = TRUE)
 camel(dataFrame, rownames = FALSE)
 
-# Named list
+# list ====
 list <- makeNames$list
 print(list)
 camel(list)

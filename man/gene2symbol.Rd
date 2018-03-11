@@ -10,7 +10,7 @@
 gene2symbol(object, ...)
 
 \S4method{gene2symbol}{character}(object, genomeBuild = NULL,
-  release = NULL, uniqueSymbol = FALSE)
+  release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -21,9 +21,6 @@ gene2symbol(object, ...)
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 }
 \value{
 \code{data.frame}.

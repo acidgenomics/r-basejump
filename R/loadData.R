@@ -3,7 +3,6 @@
 #' Load R data (`.rda`) files from a directory using symbols rather than
 #' complete file paths.
 #'
-#' @details
 #' [loadData()] is opinionated about the format of R data files it will accept.
 #' [base::save()] allows for the saving of multiple objects into a single R data
 #' file. This can later result in unexpected accidental replacement of an
@@ -27,7 +26,7 @@
 #' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
 #'   which will assign into the calling environment.
 #'
-#' @return Silent named character vector of file paths.
+#' @return Invisible `character` containing file paths.
 #' @export
 #'
 #' @examples

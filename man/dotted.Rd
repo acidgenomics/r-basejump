@@ -59,13 +59,10 @@ Object with syntatically valid names. For objects supporting
 \code{\link[base:names]{base::names()}}, the underlying data returns unchanged.
 }
 \description{
-Dotted Case
-}
-\details{
-For unnamed character vectors, this function will sanitize the
-underlying values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
-objects supporting name assignments. They return the object without
-modification of the underlying data.
+For unnamed character vectors, this function will sanitize the underlying
+values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on objects
+supporting name assignments. They return the object without modification of
+the underlying data.
 }
 \note{
 \code{dotted.case} support is provided for matching against base R
@@ -75,27 +72,26 @@ argument name assignments.
 \examples{
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
-# Character vector
+# character ====
 character <- makeNames$character
 print(character)
 dotted(character)
 
-# Named character vector
 namedCharacter <- makeNames$namedCharacter
 dotted(namedCharacter)
 
-# Factor
+# factor ====
 factor <- makeNames$factor
 print(factor)
 dotted(factor)
 
-# data.frame
+# data.frame ====
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
 dotted(dataFrame, rownames = TRUE)
 dotted(dataFrame, rownames = FALSE)
 
-# Named list
+# list ====
 list <- makeNames$list
 print(list)
 dotted(list)

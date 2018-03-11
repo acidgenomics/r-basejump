@@ -1,14 +1,13 @@
 #' Define Transcript to Gene Mappings from GFF/GTF File
 #'
-#' @rdname tx2geneFromGFF
+#' The GFF (General Feature Format) format consists of one line per feature,
+#' each containing 9 columns of data, plus optional track definition lines. The
+#' GTF (General Transfer Format) is identical to GFF version 2.
+#'
 #' @name tx2geneFromGFF
 #' @family Gene Functions
 #'
 #' @inherit tx2gene
-#'
-#' @details The GFF (General Feature Format) format consists of one line per
-#'   feature, each containing 9 columns of data, plus optional track definition
-#'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
 #'
 #' @examples
 #' # From URL (recommended)

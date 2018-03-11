@@ -10,7 +10,7 @@ initializeDirectory(dir)
 \item{dir}{Directory path.}
 }
 \value{
-Directory path string.
+Path.
 }
 \description{
 Checks and creates a directory recursively automatically. Useful for setting

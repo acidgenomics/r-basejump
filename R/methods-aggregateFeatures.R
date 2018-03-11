@@ -1,12 +1,10 @@
 #' Aggregate Features
 #'
-#' @rdname aggregateFeatures
 #' @name aggregateFeatures
 #' @family Math Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
-#'
 #' @param groupings Feature groupings (e.g. gene or transcript IDs), defined as
 #'   a named factor. The pooled features must be defined as the factor levels,
 #'   and the original features as the names of the factor.
@@ -23,11 +21,11 @@
 #' groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
 #' names(groupings) <- rownames(counts)
 #'
-#' # matrix
+#' # matrix ====
 #' mat <- as(counts, "matrix")
 #' aggregateFeatures(mat, groupings = groupings)
 #'
-#' # dgCMatrix
+#' # dgCMatrix ====
 #' dgc <- as(mat, "dgCMatrix")
 #' aggregateFeatures(dgc, groupings = groupings)
 NULL

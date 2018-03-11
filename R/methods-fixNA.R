@@ -1,6 +1,5 @@
 #' Fix Character Strings Missing `NA`
 #'
-#' @rdname fixNA
 #' @name fixNA
 #' @family Sanitization Functions
 #'

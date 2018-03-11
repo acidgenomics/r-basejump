@@ -9,7 +9,6 @@
 #' @family Sanitization Functions
 #'
 #' @inheritParams general
-#'
 #' @param dropNested Drop any nested list columns (e.g. `entrez`). Otherwise, a
 #'   user may run into issues attempting to write results to flat CSV files.
 #'
