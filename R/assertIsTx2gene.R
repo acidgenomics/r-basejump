@@ -4,8 +4,8 @@
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column `data.frame` with "enstxp" and
-#'   "ensgene" columns.
+#'   mappings. Must be structured as a two column `data.frame` with "txID" and
+#'   "geneID" columns.
 #'
 #' @export
 #'
@@ -23,7 +23,7 @@ assertIsTx2gene <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
-        y = c("enstxp", "ensgene"),
+        y = c("txID", "geneID"),
         severity = severity
     )
     assert_has_rows(x, severity = severity)

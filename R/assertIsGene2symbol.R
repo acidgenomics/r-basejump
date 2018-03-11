@@ -4,8 +4,8 @@
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl gene identifier to gene symbol
-#'   mappings. Must be structured as a two column `data.frame` with "ensgene"
-#'   and "symbol" columns.
+#'   mappings. Must be structured as a two column `data.frame` with "geneID"
+#'   and "geneName" columns.
 #'
 #' @export
 #'
@@ -23,7 +23,7 @@ assertIsGene2symbol <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
-        y = c("ensgene", "symbol"),
+        y = c("geneID", "geneName"),
         severity = severity
     )
     assert_has_rows(x, severity = severity)

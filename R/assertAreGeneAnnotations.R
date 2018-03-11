@@ -22,7 +22,7 @@
 assertAreGeneAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(
-        x = geneAnnotationCols,
+        x = c("geneID", "geneName"),
         y = colnames(x),
         severity = severity
     )
