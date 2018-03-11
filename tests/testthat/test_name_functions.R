@@ -102,7 +102,7 @@ test_that("camel : data.frame", {
 })
 
 test_that("camel : GRanges", {
-    # gr object is already camel formatted
+    # gr object is already camel formatted!
     colnames <- colnames(mcols(gr))
     x <- snake(gr)
     expect_identical(
@@ -228,13 +228,13 @@ test_that("dotted : GRanges", {
     expect_identical(
         colnames(mcols(x)),
         c(
-            "ensgene",
-            "symbol",
+            "gene.ID",
+            "gene.Name",
+            "gene.Biotype",
             "description",
-            "biotype",
-            "broad.Class",
             "seq.Coord.System",
-            "entrez"
+            "entrez.ID",
+            "broad.Class"
         )
     )
 })
@@ -363,13 +363,13 @@ test_that("snake : GRanges", {
     expect_identical(
         colnames(mcols(x)),
         c(
-            "ensgene",
-            "symbol",
+            "gene_id",
+            "gene_name",
+            "gene_biotype",
             "description",
-            "biotype",
-            "broad_class",
             "seq_coord_system",
-            "entrez"
+            "entrez_id",
+            "broad_class"
         )
     )
 })
@@ -537,13 +537,13 @@ test_that("upperCamel : GRanges", {
     expect_identical(
         colnames(mcols(x)),
         c(
-            "Ensgene",
-            "Symbol",
+            "GeneID",
+            "GeneName",
             "Description",
-            "Biotype",
+            "GeneBiotype",
             "BroadClass",
             "SeqCoordSystem",
-            "Entrez"
+            "EntrezID"
         )
     )
 })

@@ -272,7 +272,7 @@ test_that("transcripts : character", {
 
     # Dimensions
     n <- 216741L
-    dim <- c(n, 7L)
+    dim <- c(n, 14L)
     expect_identical(dim(x[["data.frame"]]), dim)
     expect_identical(dim(x[["DataFrame"]]), dim)
     expect_identical(length(x[["GRanges"]]), n)
@@ -290,17 +290,25 @@ test_that("transcripts : character", {
     # Metadata columns
     mcols <- list(
         "txID" = "character",
-        "txBiotype" = "character",
+        "txName" = "character",
+        "txBiotype" = "factor",
         "geneID" = "character",
         "geneName" = "character",
-        "geneBiotype = "factor",
-        "broadClass" = "factor",
+        "geneBiotype" = "factor",
+        "description" = "character",
+        "txSeqStart" = "integer",
+        "txSeqEnd" = "integer",
         "txCdsSeqStart" = "integer",
         "txCdsSeqEnd" = "integer",
-        "txSupportLevel" = "factor"
+        "txSupportLevel" = "factor",
+        "entrezID" = "list",  # AsIs
+        "broadClass" = "factor"
     )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
+    mcols[["entrezID"]] <- "AsIs"
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
+    mcols[["txSeqStart"]] <- NULL
+    mcols[["txSeqEnd"]] <- NULL
     expect_identical(lapply(mcols(x[["GRanges"]]), class), mcols)
 })
 
@@ -318,28 +326,24 @@ test_that("tx2gene : character", {
 
 
 # GRCh37 =======================================================================
-# FIXME Need to use EnsDb instead of GRanges from GTF
 test_that("GRCh37 genome build support", {
+    # FIXME Need to use EnsDb instead of GRanges from GTF
     tmpmsg <- "Request Homo_sapiens.GRCh37.75 support update"
-
     # genes
     expect_error(
         genes(human, genomeBuild = "GRCh37"),
         tmpmsg
     )
-
     # gene2symbol
     expect_error(
         gene2symbol(human, genomeBuild = "GRCh37"),
         tmpmsg
     )
-
     # transcripts
     expect_error(
         transcripts(human, genomeBuild = "GRCh37"),
         tmpmsg
     )
-
     # tx2gene
     expect_error(
         tx2gene(human, genomeBuild = "GRCh37"),
