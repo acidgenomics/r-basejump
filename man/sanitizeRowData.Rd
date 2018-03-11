@@ -4,21 +4,18 @@
 \alias{sanitizeRowData}
 \title{Sanitize Row Data}
 \usage{
-sanitizeRowData(object, dropNested = TRUE)
+sanitizeRowData(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{dropNested}{Drop any nested list columns (e.g. \code{entrez}). Otherwise, a
-user may run into issues attempting to write results to flat CSV files.}
 }
 \value{
-\code{data.frame}, without nested list columns.
+\code{data.frame}, without any nested list columns.
 }
 \description{
 Coerce Ensembl \code{rowData} returned from the \code{\link[=genes]{genes()}} or \code{\link[=transcripts]{transcripts()}}
-functions to a data frame, and drop any nested list columns (e.g. \code{entrez}),
-if desired.
+functions to a \code{data.frame}, and drop any nested list columns (e.g.
+\code{entrez}). Nested columns will fail to write to disk as CSVs.
 }
 \details{
 Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.

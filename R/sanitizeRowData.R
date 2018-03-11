@@ -1,18 +1,18 @@
+# TODO Include `.sanitizeAnnotationCols()` call here?
+
 #' Sanitize Row Data
 #'
 #' Coerce Ensembl `rowData` returned from the [genes()] or [transcripts()]
-#' functions to a data frame, and drop any nested list columns (e.g. `entrez`),
-#' if desired.
+#' functions to a `data.frame`, and drop any nested list columns (e.g.
+#' `entrez`). Nested columns will fail to write to disk as CSVs.
 #'
 #' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
 #'
 #' @family Sanitization Functions
 #'
 #' @inheritParams general
-#' @param dropNested Drop any nested list columns (e.g. `entrez`). Otherwise, a
-#'   user may run into issues attempting to write results to flat CSV files.
 #'
-#' @return `data.frame`, without nested list columns.
+#' @return `data.frame`, without any nested list columns.
 #' @export
 #'
 #' @examples
@@ -23,29 +23,26 @@
 #' # Transcript annotations
 #' transcripts <- transcripts("Homo sapiens")
 #' sanitizeRowData(transcripts) %>% glimpse()
-sanitizeRowData <- function(object, dropNested = TRUE) {
+sanitizeRowData <- function(object) {
     assert_is_any_of(object, ensemblReturn)
-    object <- as.data.frame(object)
-    assert_is_a_bool(dropNested)
+    data <- as.data.frame(object)
 
     # Set the rownames, if they're missing
-    if (!hasRownames(object)) {
-        idCol <- .detectIDCol(object)
-        rownames(object) <- object[[idCol]]
+    if (!hasRownames(data)) {
+        idCol <- .detectIDCol(data)
+        rownames(data) <- data[[idCol]]
     }
 
     # Drop any nested list columns (e.g. `entrez`). These's don't play
     # nicely with downstream R Markdown functions.
-    if (isTRUE(dropNested)) {
-        nestedCols <- vapply(
-            X = object,
-            FUN = is.list,
-            FUN.VALUE = logical(1L)
-        )
-        if (any(nestedCols)) {
-            object <- object[, which(!nestedCols), drop = FALSE]
-        }
+    nestedCols <- vapply(
+        X = data,
+        FUN = is.list,
+        FUN.VALUE = logical(1L)
+    )
+    if (any(nestedCols)) {
+        data <- data[, which(!nestedCols), drop = FALSE]
     }
 
-    object
+    data
 }
