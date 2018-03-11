@@ -6,7 +6,6 @@
 #' @keywords internal
 #' @noRd
 .detectIDCol <- function(object) {
-    return(object)
     object <- as.data.frame(object)
     assert_are_intersecting_sets(
         x = c("txID", "geneID"),
