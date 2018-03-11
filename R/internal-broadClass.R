@@ -58,7 +58,6 @@
 #' @noRd
 #'
 #' @importFrom dplyr case_when
-#' @importFrom rlang .data
 #'
 #' @return Named `factor` containing broad class definitions.
 .broadClass <- function(object) {
