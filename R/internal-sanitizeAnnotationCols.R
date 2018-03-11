@@ -27,6 +27,10 @@
         inform("Setting geneBiotype as factor")
         data[["geneBiotype"]] <- as.factor(data[["geneBiotype"]])
     }
+    if (is.character(data[["seqCoordSystem"]])) {
+        inform("Setting seqCoordSystem as factor")
+        data[["seqCoordSystem"]] <- as.factor(data[["seqCoordSystem"]])
+    }
     if (is.character(data[["seqName"]])) {
         inform("Setting seqName as factor")
         data[["seqName"]] <- as.factor(data[["seqName"]])
