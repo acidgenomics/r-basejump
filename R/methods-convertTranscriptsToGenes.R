@@ -68,21 +68,21 @@ NULL
 
     tx2gene <- tx2gene %>%
         .[object, , drop = FALSE] %>%
-        .[!is.na(.[["ensgene"]]), , drop = FALSE]
+        .[!is.na(.[["geneID"]]), , drop = FALSE]
 
-    gene <- tx2gene[["ensgene"]]
-    names(gene) <- tx2gene[["enstxp"]]
+    geneID <- tx2gene[["geneID"]]
+    names(geneID) <- tx2gene[["txID"]]
 
-    if (!all(object %in% names(gene))) {
+    if (!all(object %in% names(geneID))) {
         abort(paste(
             "Unmatched transcripts present.",
             "Try using a GFF file instead."
         ))
     }
 
-    assert_is_character(gene)
-    assert_has_names(gene)
-    gene[object]
+    assert_is_character(geneID)
+    assert_has_names(geneID)
+    geneID[object]
 }
 
 
