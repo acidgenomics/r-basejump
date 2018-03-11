@@ -182,7 +182,7 @@ test_that("genes : character", {
         "geneSeqEnd" = "integer",
         "seqName" = "factor",
         "seqStrand" = "factor",
-        "seqCoordSystem" = "character",
+        "seqCoordSystem" = "factor",
         "entrezID" = "list",
         "broadClass" = "factor"
     )
