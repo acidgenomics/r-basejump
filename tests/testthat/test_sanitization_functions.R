@@ -220,12 +220,12 @@ test_that("sanitizeRowData", {
             "end" = "integer",
             "width" = "integer",
             "strand" = "factor",
-            "ensgene" = "character",
-            "symbol" = "character",
+            "geneID" = "character",
+            "geneName" = "character",
+            "geneBiotype" = "factor",
             "description" = "character",
-            "biotype" = "character",
-            "broadClass" = "character",
-            "seqCoordSystem" = "character"
+            "seqCoordSystem" = "factor",
+            "broadClass" = "factor"
         )
     )
 })

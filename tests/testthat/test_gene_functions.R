@@ -134,8 +134,8 @@ test_that("gene2symbolFromGFF : Mouse", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "ensgene" = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
-            "symbol" = c("Rp1", "Xkr4"),
+            "geneID" = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            "geneName" = c("Rp1", "Xkr4"),
             row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
             stringsAsFactors = FALSE
         )
@@ -148,8 +148,8 @@ test_that("gene2symbolFromGFF : Fruitfly", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "ensgene" = c("FBgn0031081", "FBgn0031085"),
-            "symbol" = c("Nep3", "CG9570"),
+            "geneID" = c("FBgn0031081", "FBgn0031085"),
+            "geneName" = c("Nep3", "CG9570"),
             row.names = c("FBgn0031081", "FBgn0031085"),
             stringsAsFactors = FALSE
         )
@@ -162,11 +162,6 @@ test_that("gene2symbolFromGFF : data.frame", {
         gene2symbolFromGFF(x),
         gene2symbolFromGFF("mmusculus.gtf")
     )
-})
-
-test_that("gene2symbolFromGFF : Unique symbol mode", {
-    x <- gene2symbolFromGFF("mmusculus.gtf", uniqueSymbol = TRUE)
-    expect_false(any(duplicated(x[["symbol"]])))
 })
 
 test_that("gene2symbolFromGFF : Invalid number of columns", {
@@ -205,8 +200,8 @@ test_that("tx2geneFromGFF : Mouse", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "enstxp" = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            "ensgene" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
+            "txID" = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            "geneID" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
             row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
             stringsAsFactors = FALSE
         )
@@ -223,8 +218,8 @@ test_that("tx2geneFromGFF : Fruitfly", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "enstxp" = c("FBtr0070000", "FBtr0070001"),
-            "ensgene" = c("FBgn0031081", "FBgn0052826"),
+            "txID" = c("FBtr0070000", "FBtr0070001"),
+            "geneID" = c("FBgn0031081", "FBgn0052826"),
             row.names = c("FBtr0070000", "FBtr0070001"),
             stringsAsFactors = FALSE
         )
