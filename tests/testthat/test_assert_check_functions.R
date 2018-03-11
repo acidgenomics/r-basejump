@@ -34,8 +34,8 @@ test_that("assertFormalGene2symbol", {
     genes <- head(rownames(gene2symbol), 2L)
     expect_true(is.character(genes))
     x <- data.frame(
-        sample1 = c(1L, 2L),
-        saple2 = c(3L, 4L),
+        "sample_1" = c(1L, 2L),
+        "sample_2" = c(3L, 4L),
         row.names = genes,
         stringsAsFactors = FALSE
     )
