@@ -40,11 +40,11 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
     vec <- c("EGFP", "ENSMUSG00000000001")
     g2s <- suppressWarnings(
-        convertGenesToSymbols(vec, organism = mouse, release = ensemblRelease)
+        convertGenesToSymbols(vec, organism = "Mus musculus", release = ensemblRelease)
     )
     expect_identical(g2s, c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3"))
     expect_warning(
-        convertGenesToSymbols(vec, organism = mouse, release = ensemblRelease),
+        convertGenesToSymbols(vec, organism = "Mus musculus", release = ensemblRelease),
         "Failed to match all genes to symbols: EGFP"
     )
 })
@@ -141,7 +141,7 @@ test_that("genes : character", {
     x <- mapply(
         FUN = genes,
         return = ensemblReturn,
-        MoreArgs = list(x = human, release = ensemblRelease),
+        MoreArgs = list(x = "Homo sapiens", release = ensemblRelease),
         SIMPLIFY = FALSE,
         USE.NAMES = TRUE
     )
@@ -206,10 +206,10 @@ test_that("genes : character", {
 
 # gene2symbol ==================================================================
 test_that("gene2symbol : character", {
-    x <- gene2symbol(human)
+    x <- gene2symbol("Homo sapiens")
     expect_identical(
         x,
-        ensembl(human, format = "gene2symbol")
+        ensembl("Homo sapiens", format = "gene2symbol")
     )
     expect_identical(
         colnames(x),
@@ -222,7 +222,7 @@ test_that("gene2symbol : character", {
 # ensembl ======================================================================
 test_that("ensembl : Unsupported Ensembl release", {
     expect_error(
-        ensembl(human, release = 86L),
+        ensembl("Homo sapiens", release = 86L),
         "Ensembl annotations for Homo sapiens : 86 were not found"
     )
 })
@@ -236,11 +236,11 @@ test_that("ensembl : Unsupported organism", {
 
 test_that("ensembl : Multiple organisms", {
     expect_error(
-        ensembl(c(human, mouse)),
+        ensembl(c("Homo sapiens", "Mus musculus")),
         "is_a_string : "
     )
     expect_error(
-        ensembl(human, format = "XXX"),
+        ensembl("Homo sapiens", format = "XXX"),
         paste(
             "'arg' should be one of \"genes\", \"gene2symbol\",",
             "\"transcripts\", \"tx2gene\""
@@ -256,7 +256,7 @@ test_that("transcripts : character", {
     x <- mapply(
         FUN = transcripts,
         return = ensemblReturn,
-        MoreArgs = list(x = human, release = ensemblRelease),
+        MoreArgs = list(x = "Homo sapiens", release = ensemblRelease),
         SIMPLIFY = FALSE,
         USE.NAMES = TRUE
     )
@@ -316,10 +316,10 @@ test_that("transcripts : character", {
 
 # tx2gene ======================================================================
 test_that("tx2gene : character", {
-    x <- tx2gene(human)
+    x <- tx2gene("Homo sapiens")
     expect_identical(
         x,
-        ensembl(human, format = "tx2gene")
+        ensembl("Homo sapiens", format = "tx2gene")
     )
 })
 
@@ -331,22 +331,22 @@ test_that("GRCh37 genome build support", {
     tmpmsg <- "Request Homo_sapiens.GRCh37.75 support update"
     # genes
     expect_error(
-        genes(human, genomeBuild = "GRCh37"),
+        genes("Homo sapiens", genomeBuild = "GRCh37"),
         tmpmsg
     )
     # gene2symbol
     expect_error(
-        gene2symbol(human, genomeBuild = "GRCh37"),
+        gene2symbol("Homo sapiens", genomeBuild = "GRCh37"),
         tmpmsg
     )
     # transcripts
     expect_error(
-        transcripts(human, genomeBuild = "GRCh37"),
+        transcripts("Homo sapiens", genomeBuild = "GRCh37"),
         tmpmsg
     )
     # tx2gene
     expect_error(
-        tx2gene(human, genomeBuild = "GRCh37"),
+        tx2gene("Homo sapiens", genomeBuild = "GRCh37"),
         tmpmsg
     )
 })
