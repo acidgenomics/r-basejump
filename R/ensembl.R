@@ -254,7 +254,7 @@ ensembl <- function(
         rownames(data) <- data[["tx_id"]]
     }
     if (format %in% c("genes", "transcripts")) {
-        data <- as(gr, return)
+        data <- as(gr, "data.frame")
         rownames(data) <- names(gr)
     }
     assertHasRownames(data)
