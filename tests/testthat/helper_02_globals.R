@@ -26,9 +26,6 @@ coldata <- DataFrame(
 ensemblRelease <- 87L
 ensemblURL <- "ftp://ftp.ensembl.org/pub/release-89"
 
-human <- "Homo sapiens"
-mouse <- "Mus musculus"
-
 heatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
 
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
