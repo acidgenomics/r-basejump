@@ -191,7 +191,6 @@ ensembl <- function(
         edb <- suppressMessages(ah[[id]])
     ))
     assert_is_all_of(edb, "EnsDb")
-    return(edb)
 
     inform(paste(
         paste0(id, ":"),
