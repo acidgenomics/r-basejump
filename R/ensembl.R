@@ -49,8 +49,6 @@
 #' @param genomeBuild *Optional.* Genome assembly name (e.g. GRCh38).
 #' @param release *Optional.* Ensembl release version. Defaults to the most
 #'   current release available on AnnotationHub.
-#' @param uniqueSymbol Make gene symbols unique. Only applies to `genes` and
-#'   `gene2symbol` output. *Generally this is not recommended.*
 #' @param metadata Include the AnnotationHub metadata inside a list. Useful
 #'   for documenting where the annotations were sourced from inside
 #'   AnnotationHub.
@@ -85,7 +83,6 @@ ensembl <- function(
     format = c("genes", "gene2symbol", "transcripts", "tx2gene"),
     genomeBuild = NULL,
     release = NULL,
-    uniqueSymbol = FALSE,
     metadata = FALSE,
     return = c("GRanges", "DataFrame", "data.frame")
 ) {
@@ -97,7 +94,6 @@ ensembl <- function(
         # Note that ensembldb currently only supports >= 87
         assert_all_are_positive(release)
     }
-    assert_is_a_bool(uniqueSymbol)
     assert_is_a_bool(metadata)
     return <- match.arg(return)
 
@@ -186,70 +182,80 @@ ensembl <- function(
     # Put the AnnotationHub ID first in the lists
     meta <- c("id" = id, meta)
 
+    # ensembldb (EnsDb) ========================================================
     # This step will also output `txProgressBar()` on a fresh install. Using
     # `capture.output()` here again to suppress console output. Additionally, it
     # attaches ensembldb and other Bioconductor dependency packages, which will
     # mask some tidyverse functions (e.g. `select()`).
     invisible(capture.output(
-        data <- suppressMessages(ah[[id]])
+        edb <- suppressMessages(ah[[id]])
     ))
-    assert_is_all_of(data, "EnsDb")
+    assert_is_all_of(edb, "EnsDb")
+    return(edb)
 
-    # ensembldb (EnsDb) ========================================================
     inform(paste(
         paste0(id, ":"),
-        organism(data),
+        organism(edb),
         meta[["genome"]],
-        "Ensembl", ensemblVersion(data),
+        "Ensembl", ensemblVersion(edb),
         paste0("(", meta[["rdatadateadded"]], ")")
     ))
+
     if (format == "genes") {
-        data <- genes(
-            x = data,
+        gr <- genes(
+            x = edb,
+            order.by = "gene_id",
+            return.type = "GRanges"
+        )
+    } else if (format == "transcripts") {
+        gr <- transcripts(
+            x = edb,
+            order.by = "tx_id",
+            return.type = "GRanges"
+        )
+        mcols <- mcols(gr)
+        # Get additional mcols of interest from gene annotations
+        geneCols <- genes(
+            x = edb,
             columns = c(
                 "gene_id",
-                "gene_name",  # `symbol` is duplicate
-                "description",
+                "gene_name",
                 "gene_biotype",
-                "gene_seq_start",
-                "gene_seq_end",
-                "seq_name",
-                "seq_strand",
-                "seq_coord_system",
+                "description",
                 "entrezid"
             ),
             order.by = "gene_id",
-            return.type = return
+            return.type = "DataFrame"
         )
+        mcols <- merge(
+            x = mcols,
+            y = geneCols,
+            by = "gene_id",
+            all.x = TRUE,
+            sort = FALSE
+        )
+        mcols <- mcols[order(mcols[["tx_id"]]), , drop = FALSE]
+        mcols(gr) <- mcols
     } else if (format == "gene2symbol") {
         data <- genes(
-            x = data,
-            columns = c("gene_id", "symbol"),
+            x = edb,
+            columns = c("gene_id", "gene_name"),
             order.by = "gene_id",
-            return.type = return
-        )
-    } else if (format == "transcripts") {
-        data <- transcripts(
-            x = data,
-            columns = c(
-                "tx_id",  # `tx_name` is duplicate
-                "tx_biotype",
-                "tx_cds_seq_start",
-                "tx_cds_seq_end",
-                "tx_support_level",
-                "gene_id"
-            ),
-            order.by = "tx_id",
-            return.type = return
+            return.type = "data.frame"
         )
     } else if (format == "tx2gene") {
         data <- transcripts(
-            x = data,
+            x = edb,
             columns = c("tx_id", "gene_id"),
             order.by = "tx_id",
-            return.type = return
+            return.type = "data.frame"
         )
     }
+    if (format %in% c("genes", "transcripts")) {
+        data <- as(gr, return)
+        rownames(data) <- names(gr)
+    }
+    assertHasRownames(data)
 
     # Force detach =============================================================
     fxnAttached <- setdiff(.packages(), userAttached)
@@ -269,20 +275,12 @@ ensembl <- function(
     assert_are_identical(.packages(), userAttached)
 
     # Return ===================================================================
-    # Convert column names into desired convention
-    data <- camel(data)
-
     # Sanitize columns
-    data <- .sanitizeAnnotationCols(data, format = format)
+    data <- .sanitizeAnnotationCols(data)
 
     # Broad class definitions
     if (format %in% c("genes", "transcripts")) {
         data <- .addBroadClassCol(data)
-    }
-
-    # Unique symbol mode
-    if (format %in% c("genes", "gene2symbol") && isTRUE(uniqueSymbol)) {
-        data <- .uniqueSymbol(data)
     }
 
     # Stash the AnnotationHub metadata inside a list, if desired
