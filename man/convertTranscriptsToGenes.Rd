@@ -60,12 +60,16 @@ Same class as original object.
 Convert Ensembl Transcripts to Genes
 }
 \examples{
-# character
-c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041") \%>\%
-    convertTranscriptsToGenes()
+# character ====
+transcripts <- c(
+    "ENSMUST00000000001",
+    "ENSMUST00000000003",
+    "ENSMUST00000114041"
+)
+convertTranscriptsToGenes(transcripts)
 
-# matrix
-matrix(
+# matrix ====
+mat <- matrix(
     data = seq(1L:6L),
     byrow = TRUE,
     nrow = 3L,
@@ -74,8 +78,11 @@ matrix(
         c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
         c("sample1", "sample2")
     )
-) \%>\%
-    convertTranscriptsToGenes()
+)
+print(mat)
+mat <- convertTranscriptsToGenes(mat)
+print(mat)
+rownames(mat)
 }
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
