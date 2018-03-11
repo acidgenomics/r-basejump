@@ -118,7 +118,7 @@ ensembl <- function(
         }
     }
 
-    # GRCh37 / 75 ==============================================================
+    # GRCh37 (release 75) ======================================================
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
@@ -145,8 +145,6 @@ ensembl <- function(
 
     # Use ensembldb annotations by default
     rdataclass <- "EnsDb"
-
-
 
     # Get the AnnotationHub dataset by identifier number
     ahdb <- query(
