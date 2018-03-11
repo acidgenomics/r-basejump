@@ -2,7 +2,7 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' @import methods
+#' @import BiocGenerics methods S4Vectors
 #' @importFrom assertive assert_all_are_dirs
 #' @importFrom assertive assert_all_are_existing_files
 #' @importFrom assertive assert_all_are_greater_than
@@ -56,7 +56,6 @@
 #' @importFrom assertive is_hex_color
 #' @importFrom assertive is_scalar
 #' @importFrom rlang abort inform warn
-#' @importFrom S4Vectors mcols mcols<- na.omit tail
 #' @importFrom utils capture.output globalVariables
 "_PACKAGE"
 

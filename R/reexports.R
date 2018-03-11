@@ -34,11 +34,9 @@ rlang::sym
 
 
 
-#' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
 
-#' @importFrom S4Vectors mcols
 #' @export
 S4Vectors::mcols
 

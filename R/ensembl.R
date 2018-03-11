@@ -35,7 +35,6 @@
 #' @family Gene Functions
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom BiocGenerics organism start
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom utils packageVersion
 #'
@@ -99,6 +98,8 @@ ensembl <- function(
     assert_is_a_bool(metadata)
     if (format %in% c("genes", "transcripts")) {
         return <- match.arg(return)
+    } else {
+        return <- "data.frame"
     }
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
@@ -249,6 +250,8 @@ ensembl <- function(
             sort = FALSE
         ) %>%
             .[order(.[["tx_id"]]), , drop = FALSE]
+        # Check that we're using S4Vectors method here
+        assert_is_all_of(mergeData, "DataFrame")
         assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
         if (is(tx, "GRanges")) {
             mcols(tx) <- mergeData
@@ -262,22 +265,25 @@ ensembl <- function(
             rownames(data) <- data[["tx_id"]]
         }
     } else if (format == "gene2symbol") {
+        # Always return data.frame
         data <- genes(
             x = edb,
             columns = c("gene_id", "gene_name"),
             order.by = "gene_id",
-            return.type = "data.frame"
+            return.type = return
         )
         rownames(data) <- data[["gene_id"]]
     } else if (format == "tx2gene") {
+        # Always return data.frame
         data <- transcripts(
             x = edb,
             columns = c("tx_id", "gene_id"),
             order.by = "tx_id",
-            return.type = "data.frame"
+            return.type = return
         )
         rownames(data) <- data[["tx_id"]]
     }
+    assert_is_all_of(data, return)
 
     # Force detach =============================================================
     fxnAttached <- setdiff(.packages(), userAttached)
@@ -299,11 +305,13 @@ ensembl <- function(
     # Return ===================================================================
     # Sanitize columns
     data <- .sanitizeAnnotationCols(data)
+    assert_is_all_of(data, return)
 
     # Broad class definitions
     if (format %in% c("genes", "transcripts")) {
         data <- .addBroadClassCol(data)
     }
+    assert_is_all_of(data, return)
 
     # Double check that names are set correctly
     if (has_rows(data)) {
