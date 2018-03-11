@@ -37,8 +37,6 @@ setMethod(
 
 
 #' @rdname gene2symbolFromGFF
-#' @importFrom dplyr arrange mutate
-#' @importFrom rlang !! .data sym
 #' @importFrom stringr str_match
 #' @export
 setMethod(
@@ -62,29 +60,29 @@ setMethod(
             .[grepl("gene_name", .)] %>%
             unique()
 
-        ensgene <- str_match(anno, "gene_id ([^;]+);") %>%
+        geneID <- str_match(anno, "gene_id ([^;]+);") %>%
             .[, 2L]
-        symbol <- str_match(anno, "gene_name ([^;]+);") %>%
+        assert_all_are_non_missing_nor_empty_character(geneID)
+        geneName <- str_match(anno, "gene_name ([^;]+);") %>%
             .[, 2L]
-
-        assert_all_are_non_missing_nor_empty_character(ensgene)
-        assert_all_are_non_missing_nor_empty_character(symbol)
-        assert_are_same_length(ensgene, symbol)
-
-        data <- cbind(ensgene, symbol) %>%
+        assert_all_are_non_missing_nor_empty_character(geneName)
+        assert_are_same_length(geneID, geneName)
+        data <- cbind(geneID, geneName) %>%
             as.data.frame(stringsAsFactors = FALSE) %>%
-            distinct() %>%
-            arrange(!!sym("ensgene"))
+            unique() %>%
+            .[order(.[["geneID"]]), , drop = FALSE]
 
         # Check that all transcripts are unique
-        assert_has_no_duplicates(data[["ensgene"]])
+        assert_has_no_duplicates(data[["geneID"]])
 
         inform(paste(
             "gene2symbol mappings:",
-            length(unique(data[["ensgene"]])), "genes"
+            length(unique(data[["geneID"]])), "genes"
         ))
 
-        rownames(data) <- data[["ensgene"]]
+        # TODO Add summary of duplicate symbols
+
+        rownames(data) <- data[["geneID"]]
         data
     }
 )

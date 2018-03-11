@@ -3,9 +3,9 @@
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x `data.frame` containing Ensembl gene identifier to gene symbol
-#'   mappings. Must be structured as a two column `data.frame` with "geneID"
-#'   and "geneName" columns.
+#' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be
+#'   structured as a two column `data.frame` with "geneID" and "geneName"
+#'   columns.
 #'
 #' @export
 #'

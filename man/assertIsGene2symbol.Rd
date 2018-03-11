@@ -7,9 +7,9 @@
 assertIsGene2symbol(x, severity = "stop")
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl gene identifier to gene symbol
-mappings. Must be structured as a two column \code{data.frame} with "geneID"
-and "geneName" columns.}
+\item{x}{\code{data.frame} containing Ensembl gene-to-symbol mappings. Must be
+structured as a two column \code{data.frame} with "geneID" and "geneName"
+columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
