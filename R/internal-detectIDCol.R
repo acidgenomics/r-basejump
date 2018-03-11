@@ -6,13 +6,13 @@
 #' @noRd
 .detectIDCol <- function(object) {
     object <- as.data.frame(object)
-    txCol <- grep("enstxp|txID", colnames(object), value = TRUE)
-    geneCol <- grep("ensgene|geneID", colnames(object), value = TRUE)
+    txCol <- match("txID", colnames(object))
+    geneCol <- match("geneID", colnames(object))
     if (length(txCol)) {
         txCol[[1L]]
     } else if (length(geneCol)) {
         geneCol[[1L]]
     } else {
-        abort("Failed to detect ID column")
+        abort("Failed to detect transcript or gene ID column")
     }
 }
