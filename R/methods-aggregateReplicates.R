@@ -13,13 +13,13 @@
 #'
 #' @examples
 #' counts <- data.frame(
-#'     sample1_rep1 = c(0, 0, 0, 1, 2),
-#'     sample1_rep2 = c(0, 0, 0, 3, 4),
-#'     sample2_rep1 = c(1, 2, 0, 0, 0),
-#'     sample2_rep2 = c(3, 4, 0, 0, 0)
+#'     "sample_1.1" = as.integer(c(0, 0, 0, 1, 2)),
+#'     "sample_1.2" = as.integer(c(0, 0, 0, 3, 4)),
+#'     "sample_2.1" = as.integer(c(1, 2, 0, 0, 0)),
+#'     "sample_2.2" = as.integer(c(3, 4, 0, 0, 0))
 #' )
 #'
-#' groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
+#' groupings <- factor(c("sample_1", "sample_1", "sample_2", "sample_2"))
 #' names(groupings) <- colnames(counts)
 #'
 #' # matrix ====

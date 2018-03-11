@@ -31,12 +31,12 @@ Aggregate Features
 }
 \examples{
 counts <- data.frame(
-    "sample1" = c(0, 1, 2, 3),
-    "sample2" = c(1, 2, 3, 4),
-    row.names = c("gene1.1", "gene1.2", "gene2.1", "gene2.2")
+    "sample_1" = as.integer(c(0, 1, 2, 3)),
+    "sample_2" = as.integer(c(1, 2, 3, 4)),
+    row.names = c("gene_1.1", "gene_1.2", "gene_2.1", "gene_2.2")
 )
 
-groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
+groupings <- factor(c("gene_1", "gene_1", "gene_2", "gene_2"))
 names(groupings) <- rownames(counts)
 
 # matrix ====

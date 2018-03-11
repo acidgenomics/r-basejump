@@ -76,7 +76,7 @@ mat <- matrix(
     ncol = 2L,
     dimnames = list(
         c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
-        c("sample1", "sample2")
+        c("sample_1", "sample_2")
     )
 )
 print(mat)
