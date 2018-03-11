@@ -13,7 +13,7 @@
 #' summary(data)
 #' colnames(mcols(data))
 #'
-#' # Legacy GRCh37/hg19 genome build support
+#' # Legacy GRCh37 (release 75) genome build support
 #' \dontrun{
 #' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
 #' }
@@ -35,7 +35,6 @@ setMethod(
         x,
         genomeBuild = NULL,
         release = NULL,
-        uniqueSymbol = FALSE,
         return = c("GRanges", "DataFrame", "data.frame")
     ) {
         ensembl(
@@ -43,7 +42,6 @@ setMethod(
             format = "genes",
             genomeBuild = genomeBuild,
             release = release,
-            uniqueSymbol = uniqueSymbol,
             return = return
         )
     }
