@@ -1,5 +1,9 @@
 context("Name Functions")
 
+mat <- mat
+colnames(mat) <- c("sample_1_1", "sample_1_2", "sample_2_1", "sample_2_2")
+rownames(mat) <- c("gene_1", "gene_2", "gene_3", "gene_4")
+
 # camel ========================================================================
 test_that("camel : ANY", {
     # Integer (atomic)
@@ -124,11 +128,11 @@ test_that("camel : matrix", {
     x <- camel(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSG00000000001"
+        "gene_1"
     )
     expect_identical(
         colnames(x),
-        c("group1x1", "group1x2", "group2x1", "group2x2")
+        c("sample1x1", "sample1x2", "sample2x1", "sample2x2")
     )
 
     # Sanitize rownames
@@ -250,11 +254,11 @@ test_that("dotted : matrix", {
     x <- dotted(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSG00000000001"
+        "gene_1"
     )
     expect_identical(
         colnames(x),
-        c("group1.1", "group1.2", "group2.1", "group2.2")
+        c("sample.1.1", "sample.1.2", "sample.2.1", "sample.2.2")
     )
 
     # Sanitize rownames
@@ -383,14 +387,15 @@ test_that("snake : list", {
 })
 
 test_that("snake : matrix", {
+    # Already formatted in snake case
     x <- snake(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSG00000000001"
+        rownames(mat)[[1L]]
     )
     expect_identical(
         colnames(x),
-        c("group1_1", "group1_2", "group2_1", "group2_2")
+        colnames(mat)
     )
 
     # Sanitize rownames
@@ -559,11 +564,11 @@ test_that("upperCamel : matrix", {
     x <- upperCamel(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSG00000000001"
+        "gene_1"
     )
     expect_identical(
         colnames(x),
-        c("Group1x1", "Group1x2", "Group2x1", "Group2x2")
+        c("Sample1x1", "Sample1x2", "Sample2x1", "Sample2x2")
     )
 
     # Sanitize rownames
