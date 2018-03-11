@@ -12,13 +12,13 @@
         # Ensure "ID" is capitalized (e.g. entrezid)
         gsub("id$", "ID", .)
 
-    # Always use `geneID` instead of `symbol`
-    if (all(c("geneID", "symbol") %in% colnames(data))) {
-        inform("Using `geneID` instead of `symbol`")
+    # Always use geneName instead of symbol
+    if (all(c("geneName", "symbol") %in% colnames(data))) {
+        inform("Using geneName instead of symbol")
         data[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(data)) {
-        inform("Renaming `symbol` to `geneID`")
-        data[["geneID"]] <- data[["symbol"]]
+        inform("Renaming symbol to geneName")
+        data[["geneName"]] <- data[["symbol"]]
         data[["symbol"]] <- NULL
     }
 
