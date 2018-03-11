@@ -3,6 +3,9 @@
     # Note that DataFrame class nests the GRanges containing seqnames. When we
     # coerce to data.frame here, it gets coerced to `x.*` columns.
     data <- as.data.frame(object)
+    if (is(object, "GRanges")) {
+        rownames(data) <- names(object)
+    }
     assertHasRownames(data)
 
     # geneName (aka symbol)
@@ -21,20 +24,21 @@
     biotype <- data[[biotypeCol]]
 
     # seqnames (aka chromosome)
+    # This doesn't get returned for transcripts by ensembldb
     seqnamesCol <- grep(
         pattern = "seqnames$",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    assert_is_non_empty(seqnamesCol)
-    seqnamesCol <- seqnamesCol[[1L]]
-    seqnames <- data[[seqnamesCol]]
+    if (length(seqnamesCol)) {
+        seqnamesCol <- seqnamesCol[[1L]]
+        seqnames <- data[[seqnamesCol]]
+    } else {
+        seqnames <- NA
+    }
 
-    inform(paste(
-        "Defining broadClass using:",
-        toString(c("geneName", biotypeCol, "seqnames"))
-    ))
+    inform(paste("Defining broadClass using", biotypeCol))
     broadClass <- data.frame(
         "geneName" = geneName,
         "biotype" = biotype,
