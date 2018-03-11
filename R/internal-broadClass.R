@@ -1,7 +1,7 @@
 .addBroadClassCol <- function(object) {
     assert_is_any_of(object, ensemblReturn)
     if (is(object, "GRanges")) {
-        data <- mcols(object)
+        data <- as.data.frame(object)
     } else {
         data <- object
     }
@@ -17,17 +17,23 @@
     biotype <- data[[biotypeCol]]
 
     # Symbol (not present for transcripts)
-    assert_is_subset("symbol", colnames(data), severity = "warning")
+    assert_is_subset("symbol", colnames(data))
     symbol <- data[["symbol"]]
 
-    # Seqname (chromosome)
-    assert_is_subset("seqName", colnames(data), severity = "warning")
-    seqName <- data[["seqName"]]
+    # Seqname (chromosome): seqnames, seqName
+    seqnamesCol <- grep(
+        pattern = "seqname",
+        x = colnames(data),
+        ignore.case = TRUE,
+        value = TRUE
+    )
+    assert_is_a_string(seqnamesCol)
+    seqnames <- data[[seqnamesCol]]
 
     tibble <- tibble(
         symbol = symbol,
         biotype = biotype,
-        seqName = seqName
+        seqnames = seqnames
     )
 
     data[["broadClass"]] <- .broadClass(tibble)
@@ -55,14 +61,14 @@
 #' @param param Gene or transcript biotype.
 #' @param symbol *Optional*. Gene symbol.
 #'
-#' @return Named character vector containing broad class definitions.
+#' @return Named `character` containing broad class definitions.
 .broadClass <- function(object) {
     stopifnot(identical(
         x = colnames(object),
-        y = c("symbol", "biotype", "seqName")
+        y = c("symbol", "biotype", "seqnames")
     ))
     case_when(
-        object[["seqName"]] == "MT" ~ "mito",
+        object[["seqnames"]] == "MT" ~ "mito",
         grepl(
             # Hsapiens: "MT-*",
             # Mmusculus: "mt-*"
