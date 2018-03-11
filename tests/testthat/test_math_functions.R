@@ -43,7 +43,7 @@ test_that("aggregateReplicates", {
     aggMat <- data.frame(
         "sample_1" = c(6L, 8L, 10L, 12L),
         "sample_2" = c(22L, 24L, 26L, 28L),
-        row.names = c("gene_1", "gene_2", "gene_3", "gene_4")
+        row.names = rownames(mat)
     ) %>%
         as.matrix()
 
