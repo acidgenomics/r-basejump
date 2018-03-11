@@ -1,6 +1,5 @@
 #' Ensembl Gene to Symbol Mappings
 #'
-#' @rdname gene2symbol
 #' @name gene2symbol
 #' @family Gene Functions
 #'
@@ -24,14 +23,13 @@ setMethod(
     function(
         object,
         genomeBuild = NULL,
-        release = NULL,
-        uniqueSymbol = FALSE) {
+        release = NULL
+    ) {
         ensembl(
             organism = object,
             format = "gene2symbol",
             genomeBuild = genomeBuild,
             release = release,
-            uniqueSymbol = uniqueSymbol,
             return = "data.frame"
         )
     }

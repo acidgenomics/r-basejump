@@ -1,6 +1,5 @@
 #' Define Gene to Symbol Mappings from GFF/GTF File
 #'
-#' @rdname gene2symbolFromGFF
 #' @name gene2symbolFromGFF
 #' @family Gene Functions
 #'
@@ -28,10 +27,10 @@ NULL
 setMethod(
     "gene2symbolFromGFF",
     signature("character"),
-    function(object, uniqueSymbol = FALSE) {
+    function(object) {
         object %>%
             readGFF() %>%
-            gene2symbolFromGFF(uniqueSymbol = uniqueSymbol)
+            gene2symbolFromGFF()
     }
 )
 
@@ -45,10 +44,9 @@ setMethod(
 setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
-    function(object, uniqueSymbol = FALSE) {
+    function(object) {
         assert_is_data.frame(object)
         assert_are_identical(ncol(object), 9L)
-        assert_is_a_bool(uniqueSymbol)
 
         anno <- .gffKeyValuePairs(object)
         assert_is_character(anno)
@@ -85,10 +83,6 @@ setMethod(
             "gene2symbol mappings:",
             length(unique(data[["ensgene"]])), "genes"
         ))
-
-        if (isTRUE(uniqueSymbol)) {
-            data <- mutate(data, symbol = make.unique(.data[["symbol"]]))
-        }
 
         rownames(data) <- data[["ensgene"]]
         data
