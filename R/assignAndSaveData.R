@@ -7,12 +7,11 @@
 #'
 #' @inheritParams general
 #' @inheritParams saveData
-#'
 #' @param name Desired variable name.
 #' @param envir Environment to use for assignment. Defaults to [parent.frame()],
 #'   the calling environment.
 #'
-#' @return Silent named character vector of file path.
+#' @return Silent named `character` containing file paths.
 #' @export
 #'
 #' @note This function attempts to follow the same order as [base::assign()].

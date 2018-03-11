@@ -13,7 +13,6 @@
 #'
 #' @inheritParams general
 #' @inheritParams saveData
-#'
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
 #' @param localDir Directory where to save files locally.

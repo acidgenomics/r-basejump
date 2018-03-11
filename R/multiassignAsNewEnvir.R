@@ -4,7 +4,6 @@
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
-#'
 #' @param envirName New environment name (string).
 #' @param parentEnvir Parent environment of new environment.
 #'

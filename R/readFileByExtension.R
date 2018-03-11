@@ -16,7 +16,6 @@
 #' @inheritParams general
 #' @inheritParams localOrRemoteFile
 #' @inheritParams saveData
-#'
 #' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `dotted`, `snake`, or `upperCamel`. This is always enforced.

@@ -1,16 +1,14 @@
 #' Markdown Plotlist
 #'
-#' @rdname markdownPlotlist
 #' @name markdownPlotlist
 #' @family R Markdown Functions
 #'
 #' @inheritParams general
-#'
 #' @param headerLevel Header level.
 #'
-#' @seealso [cowplot::plot_grid()].
-#'
 #' @return Graphical output of plots, separated by Markdown headers.
+#'
+#' @seealso [cowplot::plot_grid()].
 #'
 #' @examples
 #' loadRemoteData("http://basejump.seq.cloud/plotlist.rda")

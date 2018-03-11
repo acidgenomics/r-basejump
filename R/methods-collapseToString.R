@@ -4,7 +4,6 @@
 #' @family Sanitization Functions
 #'
 #' @inheritParams general
-#'
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
@@ -18,7 +17,7 @@
 #' - [base::toString()].
 #'
 #' @examples
-#' # character
+#' # character ====
 #' groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 #' collapseToString(
 #'     groceries,
@@ -33,14 +32,14 @@
 #'     removeNA = FALSE
 #' )
 #'
-#' # numeric
+#' # numeric ====
 #' collapseToString(seq(1:5))
 #'
-#' # logical
+#' # logical ====
 #' collapseToString(c(TRUE, FALSE))
 #' collapseToString(c(NA, NaN))
 #'
-#' # data.frame
+#' # data.frame ====
 #' # Objects supporting `dim` function similarly
 #' mtcars %>%
 #'     head() %>%
@@ -51,7 +50,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom stats na.omit
 #' @importFrom stringr str_replace_na
 .collapseToString <- function(
     object,

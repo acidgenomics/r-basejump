@@ -1,5 +1,9 @@
 #' Read GFF/GTF Annotations
 #'
+#' The GFF (General Feature Format) format consists of one line per feature,
+#' each containing 9 columns of data, plus optional track definition lines. The
+#' GTF (General Transfer Format) is identical to GFF version 2.
+#'
 #' @family Read Functions
 #'
 #' @importFrom utils read.delim
@@ -7,16 +11,12 @@
 #' @inheritParams general
 #' @inheritParams saveData
 #'
-#' @details The GFF (General Feature Format) format consists of one line per
-#'   feature, each containing 9 columns of data, plus optional track definition
-#'   lines. The GTF (General Transfer Format) is identical to GFF version 2.
+#' @return `data.frame`.
+#' @export
 #'
 #' @seealso
 #' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
 #' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
-#'
-#' @return `data.frame`.
-#' @export
 #'
 #' @examples
 #' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()

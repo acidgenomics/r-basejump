@@ -4,12 +4,10 @@
 #' clustering is performed using the Ward method, but this behavior can be
 #' overrided by setting `cluster_rows` or `cluster_cols` to `FALSE`.
 #'
-#' @rdname plotHeatmap
 #' @name plotHeatmap
 #' @family Plot Functions
 #'
 #' @inheritParams general
-#'
 #' @param scale Character indicating if the values should be centered and scaled
 #'   in either the row direction or the column direction, or none. Corresponding
 #'   values are "row", "column" and "none".

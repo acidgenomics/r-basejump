@@ -2,7 +2,6 @@
 #'
 #' Supports organism detection from genome build or Ensembl identifier.
 #'
-#' @details
 #' Currently supported organisms:
 #'
 #' - *Homo sapiens* (human)
@@ -15,7 +14,6 @@
 #' - *Gallus gallus* (chicken)
 #' - *Ovis aries* (sheep)
 #'
-#' @rdname detectOrganism
 #' @name detectOrganism
 #' @family Gene Functions
 #'

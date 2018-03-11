@@ -5,8 +5,8 @@
 \title{Ensembl Annotations}
 \usage{
 ensembl(organism, format = c("genes", "gene2symbol", "transcripts",
-  "tx2gene"), genomeBuild = NULL, release = NULL, uniqueSymbol = FALSE,
-  metadata = FALSE, return = c("GRanges", "DataFrame", "data.frame"))
+  "tx2gene"), genomeBuild = NULL, release = NULL, metadata = FALSE,
+  return = c("GRanges", "DataFrame", "data.frame"))
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin
@@ -19,9 +19,6 @@ organism name as a string.}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 
 \item{metadata}{Include the AnnotationHub metadata inside a list. Useful
 for documenting where the annotations were sourced from inside

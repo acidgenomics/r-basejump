@@ -11,7 +11,6 @@
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
-#'
 #' @param overwrite Overwrite existing file.
 #'
 #' @note These function will *overwrite* existing saved data, following the

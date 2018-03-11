@@ -1,6 +1,5 @@
 #' Snake Case
 #'
-#' @rdname snake
 #' @name snake
 #' @family Name Functions
 #'
@@ -9,28 +8,27 @@
 #' @examples
 #' load(system.file("extdata/makeNames.rda", package = "basejump"))
 #'
-#' # Character vector
+#' # character ====
 #' character <- makeNames$character
 #' print(character)
 #' snake(character)
 #'
-#' # Named character vector
 #' namedCharacter <- makeNames$namedCharacter
 #' print(namedCharacter)
 #' snake(namedCharacter)
 #'
-#' # Factor
+#' # factor ====
 #' factor <- makeNames$factor
 #' print(factor)
 #' snake(factor)
 #'
-#' # data.frame
+#' # data.frame ====
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
 #' snake(dataFrame, rownames = TRUE)
 #' snake(dataFrame, rownames = FALSE)
 #'
-#' # Named list
+#' # list ====
 #' list <- makeNames$list
 #' print(list)
 #' snake(list)

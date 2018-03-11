@@ -7,7 +7,7 @@
 #'
 #' @param dir Directory path.
 #'
-#' @return Directory path string.
+#' @return Path.
 #' @export
 #'
 #' @examples

@@ -56,7 +56,7 @@
 #' @importFrom assertive is_hex_color
 #' @importFrom assertive is_scalar
 #' @importFrom rlang abort inform warn
-#' @importFrom S4Vectors mcols mcols<- tail
+#' @importFrom S4Vectors mcols mcols<- na.omit tail
 #' @importFrom utils capture.output globalVariables
 "_PACKAGE"
 

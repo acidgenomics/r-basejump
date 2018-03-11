@@ -40,11 +40,11 @@ counts <- data.frame(
 groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
 names(groupings) <- colnames(counts)
 
-# matrix
+# matrix ====
 mat <- as(counts, "matrix")
 aggregateReplicates(mat, groupings = groupings)
 
-# dgCMatrix
+# dgCMatrix ====
 dgc <- as(mat, "dgCMatrix")
 aggregateReplicates(dgc, groupings = groupings)
 }

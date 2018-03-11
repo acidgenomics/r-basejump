@@ -1,6 +1,5 @@
 #' Remove Rows and Columns Containing Only `NA` Values
 #'
-#' @rdname removeNA
 #' @name removeNA
 #' @family Sanitization Functions
 #'
@@ -40,7 +39,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom stats na.omit
 .removeNA.vector <- function(object) {  # nolint
     assert_is_vector(object)
     na.omit(object)

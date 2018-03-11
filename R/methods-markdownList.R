@@ -1,6 +1,5 @@
 #' Markdown List
 #'
-#' @rdname markdownList
 #' @name markdownList
 #' @family R Markdown Functions
 #'

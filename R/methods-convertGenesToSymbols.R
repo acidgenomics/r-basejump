@@ -1,12 +1,10 @@
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
-#' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
 #' @family Gene Functions
 #'
 #' @inheritParams general
 #' @inheritParams genes-method
-#'
 #' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.

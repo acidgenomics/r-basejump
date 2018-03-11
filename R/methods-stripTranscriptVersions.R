@@ -1,6 +1,5 @@
 #' Strip Transcript Versions
 #'
-#' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @family Gene Functions
 #'

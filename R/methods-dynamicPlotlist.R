@@ -1,11 +1,9 @@
 #' Dynamic Plotlist
 #'
-#' @rdname dynamicPlotlist
 #' @name dynamicPlotlist
 #' @family Plot Functions
 #'
 #' @inheritParams general
-#'
 #' @param return Return type. "grid", "list", and "markdown" are supported.
 #' @param headerLevel Markdown header level. Only applicable when
 #'   `return = "markdown"`.

@@ -2,8 +2,6 @@
 #'
 #' @family Atomic Vector Functions
 #'
-#' @importFrom stats na.omit
-#'
 #' @inheritParams general
 #'
 #' @seealso [base::toString()].

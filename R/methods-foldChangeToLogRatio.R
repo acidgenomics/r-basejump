@@ -1,19 +1,18 @@
 #' Interconvert Log Ratio and Fold Change Values
 #'
-#' @rdname logRatio
 #' @name logRatio
 #' @family Math Functions
 #'
 #' @inheritParams general
-#'
 #' @param object Numeric of log ratio or fold change values.
 #' @param base Logarithm base. Defaults to `2`, for compatibility with RNA-Seq
 #'   differential expression output.
 #'
 #' @return `numeric`.
 #'
-#' @seealso Modified variants of `gtools::foldchange2logratio()` and
-#' `gtools::logratio2foldchange()`.
+#' @seealso Modified variants of:
+#' - `gtools::foldchange2logratio()`.
+#' - `gtools::logratio2foldchange()`.
 #'
 #' @examples
 #' # Convert log ratio to fold change

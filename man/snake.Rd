@@ -61,37 +61,30 @@ Object with syntatically valid names. For objects supporting
 \description{
 Snake Case
 }
-\details{
-For unnamed character vectors, this function will sanitize the
-underlying values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
-objects supporting name assignments. They return the object without
-modification of the underlying data.
-}
 \examples{
 load(system.file("extdata/makeNames.rda", package = "basejump"))
 
-# Character vector
+# character ====
 character <- makeNames$character
 print(character)
 snake(character)
 
-# Named character vector
 namedCharacter <- makeNames$namedCharacter
 print(namedCharacter)
 snake(namedCharacter)
 
-# Factor
+# factor ====
 factor <- makeNames$factor
 print(factor)
 snake(factor)
 
-# data.frame
+# data.frame ====
 dataFrame <- makeNames$dataFrame
 print(dataFrame)
 snake(dataFrame, rownames = TRUE)
 snake(dataFrame, rownames = FALSE)
 
-# Named list
+# list ====
 list <- makeNames$list
 print(list)
 snake(list)

@@ -11,33 +11,27 @@
 \alias{convertGenesToSymbols,dgCMatrix-method}
 \alias{convertGenesToSymbols,dgTMatrix-method}
 \alias{convertGenesToSymbols,matrix-method}
-\title{Convert Ensembl Identifier to Gene Symbol}
+\title{Convert Ensembl Identifiers to Gene Symbols}
 \usage{
 convertGenesToSymbols(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -58,15 +52,12 @@ manually declared.}
 
 \item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
 current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique. Only applies to \code{genes} and
-\code{gene2symbol} output. \emph{Generally this is not recommended.}}
 }
 \value{
 Same class as original object.
 }
 \description{
-Convert Ensembl Identifier to Gene Symbol
+Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
 # character

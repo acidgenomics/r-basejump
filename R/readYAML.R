@@ -6,7 +6,6 @@
 #'
 #' @inheritParams general
 #' @inheritParams saveData
-#'
 #' @param object YAML file path.
 #'
 #' @return `list`.

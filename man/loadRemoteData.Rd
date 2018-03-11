@@ -14,7 +14,7 @@ passed in as a character vector.}
 which will assign into the calling environment.}
 }
 \value{
-Silently return a character matrix containing URL and tempfile paths.
+Invisible character \code{matrix} containing URL and tempfile paths.
 }
 \description{
 Load a remote R binary file. This function is vectorized and supports

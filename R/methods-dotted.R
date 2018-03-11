@@ -1,20 +1,18 @@
 #' Dotted Case
 #'
-#' @details For unnamed character vectors, this function will sanitize the
-#' underlying values. Otherwise, it will set [names()] and/or [rownames()] on
-#' objects supporting name assignments. They return the object without
-#' modification of the underlying data.
+#' For unnamed character vectors, this function will sanitize the underlying
+#' values. Otherwise, it will set [names()] and/or [rownames()] on objects
+#' supporting name assignments. They return the object without modification of
+#' the underlying data.
 #'
 #' @note `dotted.case` support is provided for matching against base R
 #'   parameters, but we strongly advise against using it for object and/or
 #'   argument name assignments.
 #'
-#' @rdname dotted
 #' @name dotted
 #' @family Name Functions
 #'
 #' @inheritParams general
-#'
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
 #' @param rownames Apply sanitization on row names. This is not recommended
@@ -29,27 +27,26 @@
 #' @examples
 #' load(system.file("extdata/makeNames.rda", package = "basejump"))
 #'
-#' # Character vector
+#' # character ====
 #' character <- makeNames$character
 #' print(character)
 #' dotted(character)
 #'
-#' # Named character vector
 #' namedCharacter <- makeNames$namedCharacter
 #' dotted(namedCharacter)
 #'
-#' # Factor
+#' # factor ====
 #' factor <- makeNames$factor
 #' print(factor)
 #' dotted(factor)
 #'
-#' # data.frame
+#' # data.frame ====
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
 #' dotted(dataFrame, rownames = TRUE)
 #' dotted(dataFrame, rownames = FALSE)
 #'
-#' # Named list
+#' # list ====
 #' list <- makeNames$list
 #' print(list)
 #' dotted(list)

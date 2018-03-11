@@ -1,12 +1,10 @@
 #' Aggregate Replicates
 #'
-#' @rdname aggregateReplicates
 #' @name aggregateReplicates
 #' @family Math Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
-#'
 #' @param groupings Factor that defines the aggregation groupings. The new
 #'   aggregation names are defined as the factor levels, and the original
 #'   replicates are defined as the names of the factor.
@@ -24,11 +22,11 @@
 #' groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
 #' names(groupings) <- colnames(counts)
 #'
-#' # matrix
+#' # matrix ====
 #' mat <- as(counts, "matrix")
 #' aggregateReplicates(mat, groupings = groupings)
 #'
-#' # dgCMatrix
+#' # dgCMatrix ====
 #' dgc <- as(mat, "dgCMatrix")
 #' aggregateReplicates(dgc, groupings = groupings)
 NULL

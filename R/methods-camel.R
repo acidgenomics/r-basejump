@@ -1,6 +1,5 @@
 #' Camel Case
 #'
-#' @rdname camel
 #' @name camel
 #' @family Name Functions
 #'
@@ -13,30 +12,29 @@
 #' @examples
 #' load(system.file("extdata/makeNames.rda", package = "basejump"))
 #'
-#' # Character vector
+#' # character ====
 #' character <- makeNames$character
 #' print(character)
 #' camel(character)
 #' upperCamel(character)
 #'
-#' # Named character vector
 #' namedCharacter <- makeNames$namedCharacter
 #' camel(namedCharacter)
 #' upperCamel(namedCharacter)
 #'
-#' # Factor
+#' # factor ====
 #' factor <- makeNames$factor
 #' print(factor)
 #' camel(factor)
 #' upperCamel(factor)
 #'
-#' # data.frame
+#' # data.frame ====
 #' dataFrame <- makeNames$dataFrame
 #' print(dataFrame)
 #' camel(dataFrame, rownames = TRUE)
 #' camel(dataFrame, rownames = FALSE)
 #'
-#' # Named list
+#' # list ====
 #' list <- makeNames$list
 #' print(list)
 #' camel(list)
