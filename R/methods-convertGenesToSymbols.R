@@ -19,11 +19,11 @@
 #' @seealso [detectOrganism()].
 #'
 #' @examples
-#' # character
-#' vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' convertGenesToSymbols(vec)
+#' # character ====
+#' genes <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+#' convertGenesToSymbols(genes)
 #'
-#' # matrix
+#' # matrix ====
 #' mat <- matrix(
 #'     data = seq(1L:4L),
 #'     byrow = TRUE,
@@ -34,7 +34,10 @@
 #'         c("sample1", "sample2")
 #'     )
 #' )
-#' convertGenesToSymbols(mat)
+#' print(mat)
+#' mat <- convertGenesToSymbols(mat)
+#' print(mat)
+#' rownames(mat)
 NULL
 
 
@@ -67,7 +70,7 @@ NULL
         gene2symbol <- gene2symbol(
             object = organism,
             genomeBuild = genomeBuild,
-            release = release,
+            release = release
         )
     }
     assertIsGene2symbol(gene2symbol)
