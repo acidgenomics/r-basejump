@@ -121,10 +121,10 @@ test_that("camel : list", {
 })
 
 test_that("camel : matrix", {
-    x <- camel(counts)
+    x <- camel(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSMUSG00000002459"
+        "ENSG00000000001"
     )
     expect_identical(
         colnames(x),
@@ -247,10 +247,10 @@ test_that("dotted : list", {
 })
 
 test_that("dotted : matrix", {
-    x <- dotted(counts)
+    x <- dotted(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSMUSG00000002459"
+        "ENSG00000000001"
     )
     expect_identical(
         colnames(x),
@@ -383,10 +383,10 @@ test_that("snake : list", {
 })
 
 test_that("snake : matrix", {
-    x <- snake(counts)
+    x <- snake(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSMUSG00000002459"
+        "ENSG00000000001"
     )
     expect_identical(
         colnames(x),
@@ -556,10 +556,10 @@ test_that("upperCamel : list", {
 })
 
 test_that("upperCamel : matrix", {
-    x <- upperCamel(counts)
+    x <- upperCamel(mat)
     expect_identical(
         rownames(x)[[1L]],
-        "ENSMUSG00000002459"
+        "ENSG00000000001"
     )
     expect_identical(
         colnames(x),

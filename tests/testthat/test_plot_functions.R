@@ -62,15 +62,15 @@ test_that("Annotation columns support", {
             "mutant",
             "mutant"
         ),
-        row.names = colnames(counts)
+        row.names = colnames(mat)
     )
-    p <- plotHeatmap(counts, annotationCol = annotationCol)
+    p <- plotHeatmap(mat, annotationCol = annotationCol)
     expect_identical(names(p), heatmapList)
     expect_length(p[["gtable"]], 9L)
 })
 
 test_that("plotHeatmap : Default color palette", {
-    expect_silent(plotHeatmap(counts, color = NULL))
+    expect_silent(plotHeatmap(mat, color = NULL))
 })
 
 test_that("plotHeatmap : Turn off columns for many samples", {
@@ -111,15 +111,15 @@ test_that("plotQuantileHeatmap : Annotation columns support", {
             "mutant",
             "mutant"
         ),
-        row.names = colnames(counts)
+        row.names = colnames(mat)
     )
-    p <- plotQuantileHeatmap(counts, annotationCol = annotationCol)
+    p <- plotQuantileHeatmap(mat, annotationCol = annotationCol)
     expect_identical(names(p[["plot"]]), heatmapList)
     expect_length(p[["plot"]][["gtable"]], 9L)
 })
 
 test_that("plotQuantileHeatmap : Default color palette", {
-    p <- plotQuantileHeatmap(counts, color = NULL)
+    p <- plotQuantileHeatmap(mat, color = NULL)
     expect_is(p, "list")
 })
 
