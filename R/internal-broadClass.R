@@ -24,14 +24,13 @@
     biotype <- data[[biotypeCol]]
 
     # seqnames (aka chromosome)
-    # FIXME This doesn't get returned for transcript data frames by ensembldb
     seqnamesCol <- grep(
         pattern = "seqname",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    assert_is_non_empty(seqnamesCol, severity = "warning")
+    # NOTE This doesn't get returned for transcript data frames
     if (length(seqnamesCol)) {
         seqnamesCol <- seqnamesCol[[1L]]
         seqnames <- data[[seqnamesCol]]
