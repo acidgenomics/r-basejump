@@ -224,13 +224,13 @@ test_that("readFileByExtension : Unsupported file type", {
 
 
 # readGFF ======================================================================
-test_that("readGFF : "Mus musculus"", {
+test_that("readGFF : Mus musculus", {
     "Mus musculus" <- readGFF("mmusculus.gtf")
     # Check for 9 columns
     expect_identical(ncol("Mus musculus"), 9L)
 })
 
-test_that("readGFF : Fruitfly", {
+test_that("readGFF : Drosophila melanogaster", {
     fruitfly <- readGFF("dmelanogaster.gtf")
     # Check for 9 columns
     expect_identical(ncol(fruitfly), 9L)
