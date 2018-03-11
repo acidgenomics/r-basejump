@@ -242,6 +242,7 @@ ensembl <- function(
             order.by = "gene_id",
             return.type = "data.frame"
         )
+        rownames(data) <- data[["gene_id"]]
         # TODO Add summary of duplicate symbols
     } else if (format == "tx2gene") {
         data <- transcripts(
@@ -250,6 +251,7 @@ ensembl <- function(
             order.by = "tx_id",
             return.type = "data.frame"
         )
+        rownames(data) <- data[["tx_id"]]
     }
     if (format %in% c("genes", "transcripts")) {
         data <- as(gr, return)
@@ -283,15 +285,16 @@ ensembl <- function(
         data <- .addBroadClassCol(data)
     }
 
+    # Double check that names are set correctly
+    if (has_rows(data)) {
+        assertHasRownames(data)
+    } else {
+        assert_has_names(data)
+    }
+
     # Stash the AnnotationHub metadata inside a list, if desired
     if (isTRUE(metadata)) {
         data <- list(data = data, metadata = meta)
-    }
-
-    # Set the rownames (if return is data frame)
-    if (has_rows(data)) {
-        idCol <- .detectIDCol(data)
-        rownames(data) <- data[[idCol]]
     }
 
     data
