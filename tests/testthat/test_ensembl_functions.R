@@ -36,16 +36,6 @@ test_that("convertGenesToSymbols : matrix", {
     )
 })
 
-test_that("convertGenesToSymbols : Unique symbol mode", {
-    g2s <- gene2symbol(human, uniqueSymbol = FALSE)
-    expect_true(any(duplicated(g2s[["symbol"]])))
-    # Get the duplicate gene identifiers
-    dupes <- g2s %>%
-        .[which(duplicated(.[["symbol"]])), "ensgene", drop = TRUE]
-    x <- convertGenesToSymbols(dupes, gene2symbol = g2s, uniqueSymbol = TRUE)
-    expect_false(any(duplicated(x)))
-})
-
 test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
     vec <- c("EGFP", "ENSMUSG00000000001")
@@ -124,7 +114,7 @@ test_that("convertTranscriptsToGenes : matrix", {
                 "ENSMUST00000000003",
                 "ENSMUST00000114041"
             ),
-            c("sample1", "sample2")
+            c("sample_1", "sample_2")
         )
     )
     expect_error(
@@ -184,30 +174,30 @@ test_that("genes : character", {
 
     # Metadata columns
     mcols <- list(
-        "ensgene" = "character",
-        "symbol" = "character",
+        "geneID" = "character",
+        "geneName" = "character",
+        "geneBiotype" = "factor",
         "description" = "character",
-        "biotype" = "character",
-        "broadClass" = "character",
         "geneSeqStart" = "integer",
         "geneSeqEnd" = "integer",
-        "seqName" = "character",
-        "seqStrand" = "integer",
+        "seqName" = "factor",
+        "seqStrand" = "factor",
         "seqCoordSystem" = "character",
-        "entrez" = "list"
+        "entrezID" = "list",
+        "broadClass" = "factor"
     )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
     expect_identical(
         lapply(mcols(x[["GRanges"]]), class),
         mcols[c(
-            "ensgene",
-            "symbol",
+            "geneID",
+            "geneName",
+            "geneBiotype",
             "description",
-            "biotype",
-            "broadClass",
             "seqCoordSystem",
-            "entrez"
+            "entrezID",
+            "broadClass"
         )]
     )
 })
@@ -219,11 +209,11 @@ test_that("gene2symbol : character", {
     x <- gene2symbol(human)
     expect_identical(
         x,
-        ensembl(human, format = "gene2symbol", return = "data.frame")
+        ensembl(human, format = "gene2symbol")
     )
     expect_identical(
         colnames(x),
-        c("ensgene", "symbol")
+        c("geneID", "geneName")
     )
 })
 
@@ -299,13 +289,15 @@ test_that("transcripts : character", {
 
     # Metadata columns
     mcols <- list(
-        "enstxp" = "character",
-        "biotype" = "character",
-        "broadClass" = "character",
+        "txID" = "character",
+        "txBiotype" = "character",
+        "geneID" = "character",
+        "geneName" = "character",
+        "geneBiotype = "factor",
+        "broadClass" = "factor",
         "txCdsSeqStart" = "integer",
         "txCdsSeqEnd" = "integer",
-        "txSupportLevel" = "integer",
-        "ensgene" = "character"
+        "txSupportLevel" = "factor"
     )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
@@ -319,7 +311,7 @@ test_that("tx2gene : character", {
     x <- tx2gene(human)
     expect_identical(
         x,
-        ensembl(human, format = "tx2gene", return = "data.frame")
+        ensembl(human, format = "tx2gene")
     )
 })
 
