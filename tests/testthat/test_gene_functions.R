@@ -112,7 +112,7 @@ test_that("detectOrganism : Detection failure", {
 test_that("detectOrganism : matrix", {
     expect_identical(
         detectOrganism(mat),
-        "Mus musculus"
+        "Homo sapiens"
     )
 })
 
@@ -121,14 +121,14 @@ test_that("detectOrganism : tbl_df", {
     expect_true("rowname" %in% colnames(x))
     expect_identical(
         detectOrganism(x),
-        "Mus musculus"
+        "Homo sapiens"
     )
 })
 
 
 
 # gene2symbolFromGFF ===========================================================
-test_that("gene2symbolFromGFF : Mouse", {
+test_that("gene2symbolFromGFF : "Mus musculus"", {
     x <- gene2symbolFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(17L, 2L))
     expect_identical(
@@ -194,7 +194,7 @@ test_that("stripTranscriptVersions", {
 
 
 # tx2geneFromGFF ===============================================================
-test_that("tx2geneFromGFF : Mouse", {
+test_that("tx2geneFromGFF : "Mus musculus"", {
     x <- tx2geneFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(20L, 2L))
     expect_identical(

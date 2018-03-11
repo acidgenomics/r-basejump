@@ -210,7 +210,7 @@ test_that("sanitizeColData", {
 
 # sanitizeRowData ==============================================================
 test_that("sanitizeRowData", {
-    x <- genes(human) %>%
+    x <- genes("Homo sapiens") %>%
         sanitizeRowData()
     expect_identical(
         lapply(x, class),
