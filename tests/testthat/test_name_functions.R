@@ -539,11 +539,11 @@ test_that("upperCamel : GRanges", {
         c(
             "GeneID",
             "GeneName",
-            "Description",
             "GeneBiotype",
-            "BroadClass",
+            "Description",
             "SeqCoordSystem",
-            "EntrezID"
+            "EntrezID",
+            "BroadClass"
         )
     )
 })
