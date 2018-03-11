@@ -1,6 +1,5 @@
 #' Assert Checks
 #'
-#' @rdname assert
 #' @name assert
 #' @family Assert Check Functions
 #' @keywords internal
