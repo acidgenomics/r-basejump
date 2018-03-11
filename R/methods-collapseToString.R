@@ -1,6 +1,5 @@
 #' Collapse to String
 #'
-#' @rdname collapseToString
 #' @name collapseToString
 #' @family Sanitization Functions
 #'
