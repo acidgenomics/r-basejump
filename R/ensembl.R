@@ -52,9 +52,11 @@
 #' @param metadata Include the AnnotationHub metadata inside a list. Useful
 #'   for documenting where the annotations were sourced from inside
 #'   AnnotationHub.
-#' @param return Class of the returned object. Can be "`GRanges`" (default),
-#'   "`DataFrame`", or "`data.frame`". See `help("genes", "ensembldb")` for
-#'   additional information.
+#' @param return Class of the returned object. Only applies when `format` equals
+#'   "`genes`" or "`transcripts`". Can be "`GRanges`" (default), "`DataFrame`",
+#'   or "`data.frame`". See `help("genes", "ensembldb")` for additional
+#'   information. "`gene2symbol`" and "`tx2gene`" are always returned as
+#'   `data.frame`.
 #'
 #' @return `GRanges`, `DataFrame`, or `data.frame` containing gene or
 #'   transcript annotations.
@@ -95,7 +97,11 @@ ensembl <- function(
         assert_all_are_positive(release)
     }
     assert_is_a_bool(metadata)
-    return <- match.arg(return)
+    if (format %in% c("genes", "transcripts")) {
+        return <- match.arg(return)
+    } else {
+        return <- "data.frame"
+    }
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -240,7 +246,7 @@ ensembl <- function(
             x = edb,
             columns = c("gene_id", "gene_name"),
             order.by = "gene_id",
-            return.type = "data.frame"
+            return.type = return
         )
         rownames(data) <- data[["gene_id"]]
         # TODO Add summary of duplicate symbols
@@ -249,7 +255,7 @@ ensembl <- function(
             x = edb,
             columns = c("tx_id", "gene_id"),
             order.by = "tx_id",
-            return.type = "data.frame"
+            return.type = return
         )
         rownames(data) <- data[["tx_id"]]
     }
