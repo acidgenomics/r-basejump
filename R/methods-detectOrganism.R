@@ -203,13 +203,16 @@ NULL
 
 .detectOrganism.tibble <- function(object) {  # nolint
     assert_has_colnames(object)
-    object <- snake(object)
-    # Look for Ensembl gene column
-    geneCol <- c("rowname", "ensgene", "ensembl_gene_id")
-    assert_are_intersecting_sets(colnames(object), geneCol)
-    object %>%
-        .[, which(colnames(.) %in% geneCol)[[1L]], drop = TRUE] %>%
-        .returnUniqueOrganism()
+    object <- camel(object)
+    idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
+    assert_are_intersecting_sets(idCols, colnames(object))
+    idCol <- match(
+        x = idCols,
+        table = colnames(object)
+    ) %>%
+        na.omit() %>%
+        .[[1L]]
+    .returnUniqueOrganism(object[, idCol, drop = TRUE])
 }
 
 
