@@ -18,7 +18,6 @@
     )
     assert_is_non_empty(biotypeCol)
     biotypeCol <- biotypeCol[[1L]]
-    inform(paste("Generating broadClass using", biotypeCol))
     biotype <- data[[biotypeCol]]
 
     # seqnames (aka chromosome)
@@ -32,6 +31,10 @@
     seqnamesCol <- seqnamesCol[[1L]]
     seqnames <- data[[seqnamesCol]]
 
+    inform(paste(
+        "Defining broadClass using:",
+        toString(c("geneName", biotypeCol, "seqnames"))
+    ))
     broadClass <- data.frame(
         "geneName" = geneName,
         "biotype" = biotype,
