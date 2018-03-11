@@ -4,7 +4,7 @@
 #'
 #' Coerce Ensembl `rowData` returned from the [genes()] or [transcripts()]
 #' functions to a `data.frame`, and drop any nested list columns (e.g.
-#' `entrez`). Nested columns will fail to write to disk as CSVs.
+#' `entrezID`). Nested columns will fail to write to disk as CSVs.
 #'
 #' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
 #'
@@ -33,7 +33,7 @@ sanitizeRowData <- function(object) {
         rownames(data) <- data[[idCol]]
     }
 
-    # Drop any nested list columns (e.g. `entrez`). These's don't play
+    # Drop any nested list columns (e.g. `entrezID`). These's don't play
     # nicely with downstream R Markdown functions.
     nestedCols <- vapply(
         X = data,
