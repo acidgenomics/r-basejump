@@ -23,6 +23,18 @@
     }
 
     # Set strings as factors
+    if (is.character(data[["geneBiotype"]])) {
+        inform("Setting geneBiotype as factor")
+        data[["geneBiotype"]] <- as.factor(data[["geneBiotype"]])
+    }
+    if (is.character(data[["seqName"]])) {
+        inform("Setting seqName as factor")
+        data[["seqName"]] <- as.factor(data[["seqName"]])
+    }
+    if (is.integer(data[["seqStrand"]])) {
+        inform("Setting seqStrand as factor")
+        data[["seqStrand"]] <- as.factor(data[["seqStrand"]])
+    }
     if (is.character(data[["txBiotype"]])) {
         inform("Setting txBiotype as factor")
         data[["txBiotype"]] <- as.factor(data[["txBiotype"]])
@@ -30,10 +42,6 @@
     if (is.integer(data[["txSupportLevel"]])) {
         inform("Setting txSupportLevel as factor")
         data[["txSupportLevel"]] <- as.factor(data[["txSupportLevel"]])
-    }
-    if (is.character(data[["geneBiotype"]])) {
-        inform("Setting geneBiotype as factor")
-        data[["geneBiotype"]] <- as.factor(data[["geneBiotype"]])
     }
 
     # Put the priority columns first
