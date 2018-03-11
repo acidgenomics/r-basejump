@@ -13,17 +13,16 @@
 globalVariables(".")
 ensemblReturn <- c(
     "GRanges",
-    "data.frame",
-    "DataFrame"
+    "DataFrame",
+    "data.frame"
 )
-geneAnnotationCols <- c(
+annotationCols <- c(
+    "txID",
+    "txName",
+    "txBiotype",
     "geneID",
     "geneName",
-    "description",
-    "geneBiotype"
-)
-transcriptAnnotationCols <- c(
-    "txID",
-    geneAnnotationCols,
-    "txBiotype"
+    "geneBiotype",
+    "broadClass",
+    "description"
 )
