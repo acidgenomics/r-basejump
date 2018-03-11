@@ -128,7 +128,7 @@ test_that("detectOrganism : tbl_df", {
 
 
 # gene2symbolFromGFF ===========================================================
-test_that("gene2symbolFromGFF : "Mus musculus"", {
+test_that("gene2symbolFromGFF : Mus musculus", {
     x <- gene2symbolFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(17L, 2L))
     expect_identical(
@@ -142,7 +142,7 @@ test_that("gene2symbolFromGFF : "Mus musculus"", {
     )
 })
 
-test_that("gene2symbolFromGFF : Fruitfly", {
+test_that("gene2symbolFromGFF : Drosophila melanogaster", {
     x <- gene2symbolFromGFF("dmelanogaster.gtf")
     expect_identical(dim(x), c(5L, 2L))
     expect_identical(
@@ -194,7 +194,7 @@ test_that("stripTranscriptVersions", {
 
 
 # tx2geneFromGFF ===============================================================
-test_that("tx2geneFromGFF : "Mus musculus"", {
+test_that("tx2geneFromGFF : Mus musculus", {
     x <- tx2geneFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(20L, 2L))
     expect_identical(
@@ -212,7 +212,7 @@ test_that("tx2geneFromGFF : "Mus musculus"", {
     )
 })
 
-test_that("tx2geneFromGFF : Fruitfly", {
+test_that("tx2geneFromGFF : Drosophila melanogaster", {
     x <- tx2geneFromGFF("dmelanogaster.gtf")
     expect_identical(dim(x), c(7L, 2L))
     expect_identical(

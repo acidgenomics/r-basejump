@@ -48,7 +48,6 @@ test_that("midnightTheme", {
 
 # plotHeatmap ==================================================================
 test_that("plotHeatmap : matrix", {
-    mat <- as.matrix(mtcars)
     p <- plotHeatmap(mat)
     expect_is(p, "list")
     expect_identical(names(p), heatmapList)
@@ -66,7 +65,7 @@ test_that("Annotation columns support", {
     )
     p <- plotHeatmap(mat, annotationCol = annotationCol)
     expect_identical(names(p), heatmapList)
-    expect_length(p[["gtable"]], 9L)
+    expect_length(p[["gtable"]], 10L)
 })
 
 test_that("plotHeatmap : Default color palette", {
@@ -115,7 +114,7 @@ test_that("plotQuantileHeatmap : Annotation columns support", {
     )
     p <- plotQuantileHeatmap(mat, annotationCol = annotationCol)
     expect_identical(names(p[["plot"]]), heatmapList)
-    expect_length(p[["plot"]][["gtable"]], 9L)
+    expect_length(p[["plot"]][["gtable"]], 10L)
 })
 
 test_that("plotQuantileHeatmap : Default color palette", {
