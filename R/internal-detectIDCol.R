@@ -7,13 +7,16 @@
 #' @noRd
 .detectIDCol <- function(object) {
     object <- as.data.frame(object)
-    txCol <- match("txID", colnames(object))
-    geneCol <- match("geneID", colnames(object))
+    txCol <- match("txID", colnames(object)) %>%
+        na.omit()
+    geneCol <- match("geneID", colnames(object)) %>%
+        na.omit()
     if (length(txCol)) {
-        txCol[[1L]]
+        index <- txCol[[1L]]
     } else if (length(geneCol)) {
-        geneCol[[1L]]
+        index <- geneCol[[1L]]
     } else {
         abort("Failed to detect transcript or gene ID column")
     }
+    colnames(object)[[index]]
 }
