@@ -24,13 +24,14 @@
     biotype <- data[[biotypeCol]]
 
     # seqnames (aka chromosome)
-    # This doesn't get returned for transcripts by ensembldb
+    # FIXME This doesn't get returned for transcript data frames by ensembldb
     seqnamesCol <- grep(
-        pattern = "seqnames$",
+        pattern = "seqname",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
+    assert_is_non_empty(seqnamesCol, severity = "warning")
     if (length(seqnamesCol)) {
         seqnamesCol <- seqnamesCol[[1L]]
         seqnames <- data[[seqnamesCol]]
@@ -38,7 +39,11 @@
         seqnames <- NA
     }
 
-    inform(paste("Defining broadClass using", biotypeCol))
+    inform(paste(
+        "Defining broadClass using:",
+        toString(c("geneName", biotypeCol, "seqnames"))
+    ))
+
     broadClass <- data.frame(
         "geneName" = geneName,
         "biotype" = biotype,
