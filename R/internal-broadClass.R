@@ -36,12 +36,12 @@
         seqnames = seqnames
     )
 
-    data[["broadClass"]] <- .broadClass(tibble)
+    broadClass <- .broadClass(tibble)
 
     if (is(object, "GRanges")) {
-        mcols(object) <- data
+        mcols(object)[["broadClass"]] <- broadClass
     } else {
-        object <- data
+        object[["broadClass"]] <- broadClass
     }
 
     object
