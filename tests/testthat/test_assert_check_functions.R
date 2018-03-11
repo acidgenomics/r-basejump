@@ -32,6 +32,7 @@ test_that("assertFormalCompress", {
 test_that("assertFormalGene2symbol", {
     gene2symbol <- gene2symbol(human, release = ensemblRelease)
     genes <- head(rownames(gene2symbol), 2L)
+    expect_true(is.character(genes))
     x <- data.frame(
         sample1 = c(1L, 2L),
         saple2 = c(3L, 4L),
@@ -211,7 +212,7 @@ test_that("assertIsGene2symbol", {
         assertIsGene2symbol(mtcars),
         paste(
             "are_identical :",
-            "colnames\\(x\\) and c\\(\"ensgene\", \"symbol\"\\)",
+            "colnames\\(x\\) and c\\(\"geneID\", \"geneName\"\\)",
             "are not identical."
         )
     )
@@ -255,7 +256,7 @@ test_that("assertIsTx2gene", {
         assertIsTx2gene(mtcars),
         paste(
             "are_identical :",
-            "colnames\\(x\\) and c\\(\"enstxp\", \"ensgene\"\\)",
+            "colnames\\(x\\) and c\\(\"txID\", \"geneID\"\\)",
             "are not identical."
         )
     )
