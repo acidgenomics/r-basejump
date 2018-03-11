@@ -1,15 +1,17 @@
 .addBroadClassCol <- function(object) {
     assert_is_any_of(object, ensemblReturn)
-    if (is(object, "GRanges")) {
-        data <- as.data.frame(object)
-    } else {
-        data <- object
-    }
+    # Note that DataFrame class nests the GRanges containing seqnames. When we
+    # coerce to data.frame here, it gets coerced to `x.*` columns.
+    data <- as.data.frame(object)
     assertHasRownames(data)
+
+    # geneName (aka symbol)
+    assert_is_subset("geneName", colnames(data))
+    geneName <- data[["geneName"]]
 
     # Biotype (prioritize transcript over gene, if present)
     biotypeCol <- grep(
-        pattern = "biotype",
+        pattern = "biotype$",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
@@ -19,20 +21,22 @@
     inform(paste("Generating broadClass using", biotypeCol))
     biotype <- data[[biotypeCol]]
 
-    # geneName (symbol)
-    assert_is_subset("geneName", colnames(data))
-    geneName <- data[["geneName"]]
-
-    # seqnames (chromosome)
-    assert_is_subset("seqnames", colnames(data))
-    seqnames <- data[["seqnames"]]
+    # seqnames (aka chromosome)
+    seqnamesCol <- grep(
+        pattern = "seqnames$",
+        x = colnames(data),
+        ignore.case = TRUE,
+        value = TRUE
+    )
+    assert_is_non_empty(seqnamesCol)
+    seqnamesCol <- seqnamesCol[[1L]]
+    seqnames <- data[[seqnamesCol]]
 
     broadClass <- data.frame(
         "geneName" = geneName,
         "biotype" = biotype,
         "seqnames" = seqnames,
-        row.names = rownames(data),
-        stringsAsFactors = TRUE
+        row.names = rownames(data)
     ) %>%
         .broadClass()
 
