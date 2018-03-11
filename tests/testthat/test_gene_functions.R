@@ -111,13 +111,13 @@ test_that("detectOrganism : Detection failure", {
 
 test_that("detectOrganism : matrix", {
     expect_identical(
-        detectOrganism(counts),
+        detectOrganism(mat),
         "Mus musculus"
     )
 })
 
 test_that("detectOrganism : tbl_df", {
-    x <- as(counts, "tibble")
+    x <- as(mat, "tibble")
     expect_true("rowname" %in% colnames(x))
     expect_identical(
         detectOrganism(x),

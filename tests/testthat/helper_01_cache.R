@@ -1,6 +1,5 @@
 cacheURL <- "http://basejump.seq.cloud"
 files <- c(
-    "counts.rda",
     "dmelanogaster.gtf",
     "gr.rda",
     "makeNames.rda",
@@ -14,7 +13,8 @@ files <- c(
     "sparse.mtx",
     "summary.yaml",
     "test.colnames",
-    "test.counts")
+    "test.counts"
+)
 mapply(
     FUN = function(cacheURL, file, envir) {
         if (!file.exists(file)) {

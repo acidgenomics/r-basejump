@@ -2,22 +2,21 @@ context("Read Functions")
 
 # loadData =====================================================================
 test_that("loadData : Non-standard evaluation", {
-    x <- loadData(counts)
+    x <- loadData(gr)
     expect_identical(
         x,
-        c(counts = normalizePath("counts.rda", winslash = "/"))
+        c("gr" = normalizePath("gr.rda", winslash = "/"))
     )
-    # Now that "counts" is loaded, let's check to make sure we can't
-    # accidentally overwrite in the current environment
+    # Avoid accidentally overwrites in the current environment
     expect_error(
-        loadData(counts),
-        "Already exists in environment: counts"
+        loadData(gr),
+        "Already exists in environment: gr"
     )
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
-        loadData("counts.rda"),
+        loadData("gr.rda"),
         "is_name :"
     )
 })
@@ -38,11 +37,11 @@ test_that("loadData : Renamed file", {
 
 test_that("loadData : Invalid arguments", {
     expect_error(
-        loadData(counts, dir = "XXX"),
+        loadData(gr, dir = "XXX"),
         "is_dir :"
     )
     expect_error(
-        loadData(counts, envir = "XXX"),
+        loadData(gr, envir = "XXX"),
         "is_environment : envir"
     )
 })
@@ -51,22 +50,22 @@ test_that("loadData : Invalid arguments", {
 
 # loadDataAsName ===============================================================
 test_that("loadDataAsName : Non-standard evaluation", {
-    x <- loadDataAsName(data1 = counts, data2 = gr)
+    x <- loadDataAsName(data_1 = gr, data_2 = makeNames)
     expect_is(x, "character")
-    expect_identical(names(x), c("data1", "data2"))
-    expect_true(exists("data1", inherits = FALSE))
-    expect_true(exists("data2", inherits = FALSE))
+    expect_identical(names(x), c("data_1", "data_2"))
+    expect_true(exists("data_1", inherits = FALSE))
+    expect_true(exists("data_2", inherits = FALSE))
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment
     expect_error(
-        loadDataAsName(data1 = counts, data2 = gr),
-        "Already exists in environment: data1, data2"
+        loadDataAsName(data_1 = gr, data_2 = makeNames),
+        "Already exists in environment: data_1, data_2"
     )
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
-        loadDataAsName(data = "counts.rda"),
+        loadDataAsName(data = "gr.rda"),
         "is_name :"
     )
 })
@@ -87,11 +86,11 @@ test_that("loadDataAsName : Multiple objects in single file", {
 
 test_that("loadDataAsName : Invalid arguments", {
     expect_error(
-        loadDataAsName(data = counts, dir = "XXX"),
+        loadDataAsName(data = gr, dir = "XXX"),
         "is_dir : "
     )
     expect_error(
-        loadDataAsName(data = counts, envir = "XXX"),
+        loadDataAsName(data = gr, envir = "XXX"),
         "is_environment : envir"
     )
 })
@@ -100,11 +99,11 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "counts.rda", sep = "/"))
-    expect_is(loaded, "matrix")
+    loaded <- loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"))
+    expect_is(loaded, "data.frame")
     expect_identical(
-        loaded["url", "counts", drop = TRUE],
-        paste(cacheURL, "counts.rda", sep = "/")
+        loaded["url", "mtcars", drop = TRUE],
+        paste(cacheURL, "mtcars.rda", sep = "/")
     )
 })
 
@@ -195,10 +194,10 @@ test_that("readFileByExtension : Excel file (.xlsx)", {
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
-    counts <- readFileByExtension("test.counts")
-    expect_is(counts, "matrix")
+    x <- readFileByExtension("test.counts")
+    expect_is(x, "matrix")
     expect_identical(
-        rownames(counts)[1L:5L],
+        rownames(x)[1L:5L],
         c(
             "ENSMUSG00000102693",
             "ENSMUSG00000064842",
@@ -217,8 +216,8 @@ test_that("readFileByExtension : Unsupported file type", {
     )
     # R Data
     expect_error(
-        readFileByExtension("counts.rda"),
-        "Unsupported file extension: counts.rda"
+        readFileByExtension("gr.rda"),
+        "Unsupported file extension: gr.rda"
     )
 })
 
