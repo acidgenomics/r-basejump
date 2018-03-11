@@ -99,8 +99,8 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"))
-    expect_is(loaded, "data.frame")
+    loaded <- loadRemoteData(paste(cacheURL, "sparse.rda", sep = "/"))
+    expect_is(loaded, "dgCMatrix")
     expect_identical(
         loaded["url", "mtcars", drop = TRUE],
         paste(cacheURL, "mtcars.rda", sep = "/")
@@ -225,20 +225,20 @@ test_that("readFileByExtension : Unsupported file type", {
 
 # readGFF ======================================================================
 test_that("readGFF : Mus musculus", {
-    "Mus musculus" <- readGFF("mmusculus.gtf")
+    x <- readGFF("mmusculus.gtf")
     # Check for 9 columns
-    expect_identical(ncol("Mus musculus"), 9L)
+    expect_identical(ncol(x), 9L)
 })
 
 test_that("readGFF : Drosophila melanogaster", {
-    fruitfly <- readGFF("dmelanogaster.gtf")
+    x <- readGFF("dmelanogaster.gtf")
     # Check for 9 columns
-    expect_identical(ncol(fruitfly), 9L)
+    expect_identical(ncol(x), 9L)
 })
 
 test_that("readGFF : Unsupported file type", {
     expect_error(
-        readGFF("counts.rda"),
+        readGFF("XXX.rda"),
         "is_matching_regex :"
     )
 })
