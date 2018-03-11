@@ -99,8 +99,6 @@ ensembl <- function(
     assert_is_a_bool(metadata)
     if (format %in% c("genes", "transcripts")) {
         return <- match.arg(return)
-    } else {
-        return <- "data.frame"
     }
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
@@ -207,20 +205,24 @@ ensembl <- function(
     ))
 
     if (format == "genes") {
-        gr <- genes(
+        data <- genes(
             x = edb,
             order.by = "gene_id",
-            return.type = "GRanges"
+            return.type = return
         )
+        if (return == "GRanges") {
+            assert_has_names(data)
+        } else {
+            rownames(data) <- data[["gene_id"]]
+        }
     } else if (format == "transcripts") {
-        gr <- transcripts(
+        tx <- transcripts(
             x = edb,
             order.by = "tx_id",
-            return.type = "GRanges"
+            return.type = return
         )
-        mcols <- mcols(gr)
-        # Get additional mcols of interest from gene annotations
-        geneCols <- genes(
+        # Merge additional mcols of interest from gene annotations
+        gene <- genes(
             x = edb,
             columns = c(
                 "gene_id",
@@ -230,40 +232,52 @@ ensembl <- function(
                 "entrezid"
             ),
             order.by = "gene_id",
-            return.type = "DataFrame"
+            return.type = return
         )
-        mcols <- merge(
-            x = mcols,
-            y = geneCols,
+        if (is(tx, "GRanges")) {
+            txData <- mcols(tx)
+            geneData <- mcols(gene)
+        } else {
+            txData <- tx
+            geneData <- gene
+        }
+        mergeData <- merge(
+            x = txData,
+            y = geneData,
             by = "gene_id",
             all.x = TRUE,
             sort = FALSE
-        )
-        mcols <- mcols[order(mcols[["tx_id"]]), , drop = FALSE]
-        mcols(gr) <- mcols
+        ) %>%
+            .[order(.[["tx_id"]]), , drop = FALSE]
+        assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
+        if (is(tx, "GRanges")) {
+            mcols(tx) <- mergeData
+        } else {
+            tx <- mergeData
+        }
+        data <- tx
+        if (return == "GRanges") {
+            assert_has_names(data)
+        } else {
+            rownames(data) <- data[["tx_id"]]
+        }
     } else if (format == "gene2symbol") {
         data <- genes(
             x = edb,
             columns = c("gene_id", "gene_name"),
             order.by = "gene_id",
-            return.type = return
+            return.type = "data.frame"
         )
         rownames(data) <- data[["gene_id"]]
-        # TODO Add summary of duplicate symbols
     } else if (format == "tx2gene") {
         data <- transcripts(
             x = edb,
             columns = c("tx_id", "gene_id"),
             order.by = "tx_id",
-            return.type = return
+            return.type = "data.frame"
         )
         rownames(data) <- data[["tx_id"]]
     }
-    if (format %in% c("genes", "transcripts")) {
-        data <- as(gr, "data.frame")
-        rownames(data) <- names(gr)
-    }
-    assertHasRownames(data)
 
     # Force detach =============================================================
     fxnAttached <- setdiff(.packages(), userAttached)
@@ -300,7 +314,7 @@ ensembl <- function(
 
     # Stash the AnnotationHub metadata inside a list, if desired
     if (isTRUE(metadata)) {
-        data <- list(data = data, metadata = meta)
+        data <- list("data" = data, "metadata" = meta)
     }
 
     data

@@ -75,6 +75,5 @@ annotationCols <- c(
     "geneID",
     "geneName",
     "geneBiotype",
-    "broadClass",
     "description"
 )
