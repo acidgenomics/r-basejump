@@ -250,8 +250,6 @@ ensembl <- function(
             sort = FALSE
         ) %>%
             .[order(.[["tx_id"]]), , drop = FALSE]
-        # Check that we're using S4Vectors method here
-        assert_is_all_of(mergeData, "DataFrame")
         assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
         if (is(tx, "GRanges")) {
             mcols(tx) <- mergeData
