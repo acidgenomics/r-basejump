@@ -15,7 +15,7 @@ sanitizeRowData(object)
 \description{
 Coerce Ensembl \code{rowData} returned from the \code{\link[=genes]{genes()}} or \code{\link[=transcripts]{transcripts()}}
 functions to a \code{data.frame}, and drop any nested list columns (e.g.
-\code{entrez}). Nested columns will fail to write to disk as CSVs.
+\code{entrezID}). Nested columns will fail to write to disk as CSVs.
 }
 \details{
 Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
