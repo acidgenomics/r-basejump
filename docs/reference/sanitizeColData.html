@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sanitize Column Data Frame — sanitizeColData • basejump</title>
+<title>Sanitize Column Data — sanitizeColData • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Sanitize Column Data — sanitizeColData" />
+
+<meta property="og:description" content="Sanitize Column Data" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,11 +89,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sanitize Column Data Frame</h1>
+    <h1>Sanitize Column Data</h1>
     </div>
 
     
-    <p>Sanitize Column Data Frame</p>
+    <p>Sanitize Column Data</p>
     
 
     <pre class="usage"><span class='fu'>sanitizeColData</span>(<span class='no'>object</span>)</pre>
@@ -103,7 +109,13 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a>.</p>
+    <p><code>DataFrame</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Sanitization Functions: <code>collapseToString</code>,
+  <code>fixNA</code>, <code>removeNA</code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -112,7 +124,7 @@
     <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"wt"</span>, <span class='st'>"ko"</span>, <span class='st'>"wt"</span>, <span class='st'>"ko"</span>),
     <span class='kw'>batch</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>)
 )
-<span class='no'>colData</span></div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+<span class='fu'>print</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
 #&gt;             genotype     batch
 #&gt;          &lt;character&gt; &lt;integer&gt;
 #&gt; sample_1          wt         1
@@ -133,6 +145,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -154,3 +168,4 @@
 
   </body>
 </html>
+

@@ -18,13 +18,20 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Assign and Save Data — assignAndSaveData" />
+
+<meta property="og:description" content="Assigns a new object by name to the current working environment then saves
+the newly assigned object, specified by dir." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -91,8 +98,8 @@
 the newly assigned object, specified by <code>dir</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -123,15 +130,11 @@ the newly assigned object, specified by <code>dir</code>.</p>
       <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
 the calling environment.</p></td>
     </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silent named character vector of file path.</p>
+    <p>Silent named <code>character</code> containing file paths.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -139,11 +142,15 @@ the calling environment.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Object Assignment Utilities: <code><a href='multiassignAsNewEnvir.html'>multiassignAsNewEnvir</a></code></p>
+    <p>Other Write Functions: <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
+  <code><a href='saveData.html'>saveData</a></code>, <code><a href='transmit.html'>transmit</a></code>,
+  <code><a href='writeCounts.html'>writeCounts</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"test"</span>, <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving test to /Users/mike/GitHub/steinbaugh/basejump/docs/reference</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"test"</span>, <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving test to /Users/mike/GitHub/steinbaugh/basejump/docs/reference</span></div><div class='input'><span class='fu'>exists</span>(<span class='st'>"test"</span>, <span class='kw'>inherits</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>file.exists</span>(<span class='st'>"test.rda"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'># Clean up</span>
+<span class='fu'>rm</span>(<span class='no'>test</span>)
 <span class='fu'>unlink</span>(<span class='st'>"test.rda"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -177,3 +184,4 @@ the calling environment.</p></td>
 
   </body>
 </html>
+

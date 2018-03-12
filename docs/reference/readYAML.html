@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Read YAML File — readYAML" />
+
+<meta property="og:description" content="Read YAML File" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -90,10 +96,7 @@
     <p>Read YAML File</p>
     
 
-    <pre class="usage"><span class='fu'>readYAML</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>readYAML</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>readYAML</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -102,34 +105,22 @@
       <th>object</th>
       <td><p>YAML file path.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list.</p>
+    <p><code>list</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code>readGFF</code>,
-  <code><a href='transmit.html'>transmit</a></code></p>
+    <p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># bcbioRNASeq example project summary YAML</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
-    <span class='st'>"http://bcbiobase.seq.cloud"</span>,
-    <span class='st'>"bcbio"</span>,
-    <span class='st'>"project-summary.yaml"</span>)
-<span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading project-summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='st'>"http://basejump.seq.cloud/summary.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,3 +151,4 @@
 
   </body>
 </html>
+

@@ -18,13 +18,21 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Read GFF/GTF Annotations — readGFF" />
+
+<meta property="og:description" content="The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines. The
+GTF (General Transfer Format) is identical to GFF version 2." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -87,15 +95,14 @@
     </div>
 
     
-    <p>Read GFF/GTF Annotations</p>
+    <p>The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines. The
+GTF (General Transfer Format) is identical to GFF version 2.</p>
     
 
-    <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>readGFF</span>(<span class='no'>object</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>readGTF</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>readGTF</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -104,25 +111,11 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The GFF (General Feature Format) format consists of one line per
-feature, each containing 9 columns of data, plus optional track definition
-lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
+    <p><code>data.frame</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -130,9 +123,10 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
 <li><p><a href='http://www.ensembl.org/info/website/upload/gff.html'>Ensembl</a></p></li>
 <li><p><a href='http://www.gencodegenes.org/gencodeformat.html'>Gencode</a></p></li>
 </ul>
-    <p>Other Data Import and Project Utilities: <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
-  <code>readYAML</code>, <code><a href='transmit.html'>transmit</a></code></p>
+    <p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -154,8 +148,6 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
@@ -179,3 +171,4 @@ lines. The GTF (General Transfer Format) is identical to GFF version 2.</p>
 
   </body>
 </html>
+

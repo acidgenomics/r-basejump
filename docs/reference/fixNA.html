@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Fix Character Strings Missing <code>NA</code> — fixNA" />
+
+<meta property="og:description" content="Fix Character Strings Missing NA" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -126,8 +132,9 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Cleanup Utilities: <code>removeNA</code>,
-  <code><a href='sortUnique.html'>sortUnique</a></code></p>
+    <p>Other Sanitization Functions: <code>collapseToString</code>,
+  <code>removeNA</code>, <code><a href='sanitizeColData.html'>sanitizeColData</a></code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -137,14 +144,16 @@
 <span class='fu'>data.frame</span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
-    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+) <span class='kw'>%&gt;%</span>
     <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt;      a    b
 #&gt; 1  foo &lt;NA&gt;
 #&gt; 2 &lt;NA&gt;  bar</div><div class='input'>
 <span class='co'># tibble</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
-    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)) <span class='kw'>%&gt;%</span>
+    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>)
+) <span class='kw'>%&gt;%</span>
     <span class='fu'>fixNA</span>()</div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;   a     b    
 #&gt;   &lt;chr&gt; &lt;chr&gt;
@@ -180,3 +189,4 @@
 
   </body>
 </html>
+

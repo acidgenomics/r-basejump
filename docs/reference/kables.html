@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Create Tables in LaTeX, HTML, Markdown and reStructuredText — kables" />
+
+<meta property="og:description" content="Handle multiple kables in a single RMarkdown chunk." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -117,7 +123,7 @@ testing only.</em></p></td>
     </tr>
     <tr>
       <th>list</th>
-      <td><p>List of column data (e.g. data.frame, matrix).</p></td>
+      <td><p>List of column data (e.g. <code>data.frame</code>, <code>matrix</code>).</p></td>
     </tr>
     </table>
     
@@ -128,8 +134,9 @@ testing only.</em></p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><a href='https://stackoverflow.com/a/35149103/3911732'>Stack Overflow</a>.</p>
-<p>Other Report Utilities: <code>markdownHeader</code>,
-  <code>markdownList</code></p>
+<p>Other R Markdown Functions: <code>markdownHeader</code>,
+  <code>markdownList</code>,
+  <code>markdownPlotlist</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -137,12 +144,12 @@ testing only.</em></p></td>
 #&gt; # A tibble: 6 x 13
 #&gt;   name          height  mass hair_color  skin_color eye_color birth_year gender
 #&gt;   &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1 Luke Skywalk…    172  77.0 blond       fair       blue            19.0 male  
-#&gt; 2 C-3PO            167  75.0 &lt;NA&gt;        gold       yellow         112   &lt;NA&gt;  
-#&gt; 3 R2-D2             96  32.0 &lt;NA&gt;        white, bl… red             33.0 &lt;NA&gt;  
-#&gt; 4 Darth Vader      202 136   none        white      yellow          41.9 male  
-#&gt; 5 Leia Organa      150  49.0 brown       light      brown           19.0 female
-#&gt; 6 Owen Lars        178 120   brown, grey light      blue            52.0 male  
+#&gt; 1 Luke Skywalk…    172   77. blond       fair       blue            19.0 male  
+#&gt; 2 C-3PO            167   75. &lt;NA&gt;        gold       yellow         112.  &lt;NA&gt;  
+#&gt; 3 R2-D2             96   32. &lt;NA&gt;        white, bl… red             33.0 &lt;NA&gt;  
+#&gt; 4 Darth Vader      202  136. none        white      yellow          41.9 male  
+#&gt; 5 Leia Organa      150   49. brown       light      brown           19.0 female
+#&gt; 6 Owen Lars        178  120. brown, grey light      blue            52.0 male  
 #&gt; # ... with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
 #&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;
 #&gt; 
@@ -152,8 +159,7 @@ testing only.</em></p></td>
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
 #&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+#&gt;  [ reached getOption("max.print") -- omitted 2 rows ]
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -185,3 +191,4 @@ testing only.</em></p></td>
 
   </body>
 </html>
+

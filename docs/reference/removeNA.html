@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Remove Rows and Columns Containing Only <code>NA</code> Values — removeNA" />
+
+<meta property="og:description" content="Remove Rows and Columns Containing Only NA Values" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -132,8 +138,9 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Cleanup Utilities: <code>fixNA</code>,
-  <code><a href='sortUnique.html'>sortUnique</a></code></p>
+    <p>Other Sanitization Functions: <code>collapseToString</code>,
+  <code>fixNA</code>, <code><a href='sanitizeColData.html'>sanitizeColData</a></code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -141,7 +148,8 @@
 <span class='fu'>matrix</span>(
     <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
     <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>) <span class='kw'>%&gt;%</span>
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>
+) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]    1    2
 #&gt; [2,]    3    4</div><div class='input'>
@@ -149,14 +157,16 @@
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
     <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>),
-    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;   a c
 #&gt; 1 A B
 #&gt; 3 C D</div><div class='input'>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)) <span class='kw'>%&gt;%</span>
+    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)
+) <span class='kw'>%&gt;%</span>
     <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;   a     c    
 #&gt;   &lt;chr&gt; &lt;chr&gt;
@@ -202,3 +212,4 @@
 
   </body>
 </html>
+

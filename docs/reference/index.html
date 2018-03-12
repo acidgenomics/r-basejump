@@ -18,13 +18,16 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -85,7 +88,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.3.1</small>
+        <small>version&nbsp;0.4.0</small>
       </h1>
     </div>
 
@@ -119,15 +122,21 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="annotable.html">annotable</a></code> </p>
-          </td>
-          <td><p>Ensembl Annotations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="assertAllAreNonExisting.html">assertAllAreNonExisting</a></code> </p>
           </td>
           <td><p>Assert All Variables Are Non-Existing</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assertAreGeneAnnotations.html">assertAreGeneAnnotations</a></code> </p>
+          </td>
+          <td><p>Assert Are Ensembl Gene Annotations</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assertAreTranscriptAnnotations.html">assertAreTranscriptAnnotations</a></code> </p>
+          </td>
+          <td><p>Assert Are Ensembl Transcript Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -161,18 +170,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsAnIntegerOrNULL.html">assertIsAnIntegerOrNULL</a></code> </p>
-          </td>
-          <td><p>Assert Is an Integer or NULL</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="assertIsAnnotable.html">assertIsAnnotable</a></code> </p>
-          </td>
-          <td><p>Assert Is Ensembl Annotations Data Frame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="assertIsANumberOrNULL.html">assertIsANumberOrNULL</a></code> </p>
           </td>
           <td><p>Assert Is a Number or NULL</p></td>
@@ -182,6 +179,12 @@
             <p><code><a href="assertIsAStringOrNULL.html">assertIsAStringOrNULL</a></code> </p>
           </td>
           <td><p>Assert Is a String or NULL</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assertIsAnIntegerOrNULL.html">assertIsAnIntegerOrNULL</a></code> </p>
+          </td>
+          <td><p>Assert Is an Integer or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -233,7 +236,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsImplicitInteger.html">assertIsAnImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsAnImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">isImplicitInteger</a></code> </p>
+            <p><code><a href="assertIsImplicitInteger.html">assertIsAnImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsAnImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">isAnImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">isImplicitInteger</a></code> </p>
           </td>
           <td><p>Assert Is Implicit Integer</p></td>
         </tr><tr>
@@ -271,7 +274,7 @@
           <td>
             <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols</a></code> </p>
           </td>
-          <td><p>Convert Ensembl Identifier to Gene Symbol</p></td>
+          <td><p>Convert Ensembl Identifiers to Gene Symbols</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -311,15 +314,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="fixNA.html">fixNA</a></code> </p>
+            <p><code><a href="ensembl.html">gene2symbol</a></code> <code><a href="ensembl.html">tx2gene</a></code> <code><a href="ensembl.html">ensembl</a></code> </p>
           </td>
-          <td><p>Fix Character Strings Missing <code>NA</code></p></td>
+          <td><p>Ensembl Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="gene2symbol.html">gene2symbol</a></code> </p>
+            <p><code><a href="fixNA.html">fixNA</a></code> </p>
           </td>
-          <td><p>Ensembl Gene to Symbol Mappings</p></td>
+          <td><p>Fix Character Strings Missing <code>NA</code></p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -355,13 +358,13 @@
           <td>
             <p><code><a href="loadData.html">loadData</a></code> </p>
           </td>
-          <td><p>Load Local Data</p></td>
+          <td><p>Load Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="loadDataAsName.html">loadDataAsName</a></code> </p>
           </td>
-          <td><p>Load Data File as Name</p></td>
+          <td><p>Load Data as Name</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -455,15 +458,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sanitizeAnnotable.html">sanitizeAnnotable</a></code> </p>
+            <p><code><a href="sanitizeColData.html">sanitizeColData</a></code> </p>
           </td>
-          <td><p>Sanitize Ensembl Annotations</p></td>
+          <td><p>Sanitize Column Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sanitizeColData.html">sanitizeColData</a></code> </p>
+            <p><code><a href="sanitizeRowData.html">sanitizeRowData</a></code> </p>
           </td>
-          <td><p>Sanitize Column Data Frame</p></td>
+          <td><p>Sanitize Row Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -500,12 +503,6 @@
             <p><code><a href="transmit.html">transmit</a></code> </p>
           </td>
           <td><p>Transmit Files from a Remote FTP Server</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tx2gene.html">tx2gene</a></code> </p>
-          </td>
-          <td><p>Transcript to Gene Mappings</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -546,3 +543,4 @@
 
   </body>
 </html>
+

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated Functions — deprecated • basejump</title>
+<title>Defunct or Deprecated Functions — deprecated • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Defunct or Deprecated Functions — deprecated" />
+
+<meta property="og:description" content="Defunct or Deprecated Functions
+#' @rdname deprecated
+#' @export
+sampleDirs &lt;- function(...) 
+.Defunct()" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,26 +93,28 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated Functions</h1>
+    <h1>Defunct or Deprecated Functions</h1>
     </div>
 
     
-    <p>Deprecated Functions</p>
+    <p>Defunct or Deprecated Functions</p>
+<p>#' @rdname deprecated
+#' @export
+sampleDirs &lt;- function(...) 
+.Defunct()</p>
     
 
-    <pre class="usage"><span class='fu'>summarizeRows</span>()
+    <pre class="usage"><span class='fu'>summarizeRows</span>(<span class='no'>...</span>)
 
-<span class='fu'>wash</span>()
+<span class='fu'>wash</span>(<span class='no'>...</span>)
 
-<span class='fu'>packageSE</span>()
+<span class='fu'>packageSE</span>(<span class='no'>...</span>)
 
-<span class='fu'>prepareSE</span>()
+<span class='fu'>prepareSE</span>(<span class='no'>...</span>)
 
-<span class='fu'>metadataTable</span>()
+<span class='fu'>metadataTable</span>(<span class='no'>...</span>)
 
 <span class='fu'>pct</span>(<span class='no'>...</span>)
-
-<span class='fu'>sampleDirs</span>()
 
 <span class='fu'>fc2lr</span>(<span class='no'>...</span>)
 
@@ -124,7 +136,9 @@
 
 <span class='fu'>assertFormalColorFunction</span>(<span class='no'>...</span>)
 
-<span class='fu'>initializeDir</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>initializeDir</span>(<span class='no'>...</span>)
+
+<span class='fu'>annotable</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -137,7 +151,7 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Soft deprecation to new functions.</p>
+    <p><code>.Defunct()</code> or <code>.Deprecated()</code> calls.</p>
     
 
   </div>
@@ -166,3 +180,4 @@
 
   </body>
 </html>
+

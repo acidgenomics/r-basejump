@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Define Transcript to Gene Mappings from GFF/GTF File — tx2geneFromGFF • basejump</title>
+<title>Ensembl Annotations — gene2symbol • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,11 +27,11 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Define Transcript to Gene Mappings from GFF/GTF File — tx2geneFromGFF" />
+<meta property="og:title" content="Ensembl Annotations — gene2symbol" />
 
-<meta property="og:description" content="The GFF (General Feature Format) format consists of one line per feature,
-each containing 9 columns of data, plus optional track definition lines. The
-GTF (General Transfer Format) is identical to GFF version 2." />
+<meta property="og:description" content="Quickly obtain gene and transcript annotations from
+Ensembl using
+AnnotationHub." />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -91,24 +91,22 @@ GTF (General Transfer Format) is identical to GFF version 2." />
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Define Transcript to Gene Mappings from GFF/GTF File</h1>
+    <h1>Ensembl Annotations</h1>
     </div>
 
     
-    <p>The GFF (General Feature Format) format consists of one line per feature,
-each containing 9 columns of data, plus optional track definition lines. The
-GTF (General Transfer Format) is identical to GFF version 2.</p>
+    <p>Quickly obtain gene and transcript annotations from
+<a href='http://www.ensembl.org/'>Ensembl</a> using
+<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p>
     
 
-    <pre class="usage"><span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>)
+<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>object</span>)
-
-<span class='fu'>tx2geneFromGTF</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>ensembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"gene2symbol"</span>, <span class='st'>"transcripts"</span>,
+  <span class='st'>"tx2gene"</span>), <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"GRanges"</span>, <span class='st'>"DataFrame"</span>, <span class='st'>"data.frame"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -120,6 +118,43 @@ GTF (General Transfer Format) is identical to GFF version 2.</p>
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>organism</th>
+      <td><p>Default recommended usage is to provide the full latin
+organism name as a string.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Desired annotation data format, either "<code>genes</code>",
+"<code>transcripts</code>", "<code>gene2symbol</code>"., or "<code>tx2gene</code>".</p></td>
+    </tr>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p><em>Optional.</em> Genome assembly name (e.g. GRCh38).</p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p><em>Optional.</em> Ensembl release version. Defaults to the most
+current release available on AnnotationHub.</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p>Include the AnnotationHub metadata inside a list. Useful
+for documenting where the annotations were sourced from inside
+AnnotationHub.</p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>Class of the returned object. Only applies when <code>format</code> equals
+"<code>genes</code>" or "<code>transcripts</code>". Can be "<code>GRanges</code>" (default), "<code>DataFrame</code>",
+or "<code>data.frame</code>". See <code>help("genes", "ensembldb")</code> for additional
+information. "<code>gene2symbol</code>" and "<code>tx2gene</code>" are always returned as
+<code>data.frame</code>.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>Primary object.</p></td>
     </tr>
     </table>
     
@@ -137,6 +172,12 @@ supported.</p>
 <p>Under the hood, this function fetches annotations from AnnotationHub using
 the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 back to version 87.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Use GRCh38 instead of hg38 for the genome build, since we're
+querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
+suported on AnnotationHub.</p>
     
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad Class Definitions</h2>
 
@@ -156,25 +197,12 @@ semantically-meaningful groups:</p><ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Gene Functions: <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
-  <code>detectOrganism</code>,
-  <code>gene2symbolFromGFF</code>,
-  <code>stripTranscriptVersions</code></p>
+    <ul>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
+</ul>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># From URL (recommended)</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>
-<span class='fu'>tx2geneFromGFF</span>(<span class='no'>url</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 2
-#&gt; $ txID   &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST00000157...
-#&gt; $ geneID &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG00000088...</div><div class='input'>
-<span class='co'># GFF data.frame</span>
-<span class='no'>gff</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='readGFF.html'>readGFF</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading GFF/GTF: mmusculus.gtf</span></div><div class='input'><span class='fu'>tx2geneFromGFF</span>(<span class='no'>gff</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 2
-#&gt; $ txID   &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST00000157...
-#&gt; $ geneID &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG00000088...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -185,12 +213,12 @@ semantically-meaningful groups:</p><ul>
 
       <li><a href="#details">Details</a></li>
 
+      <li><a href="#note">Note</a></li>
+
       <li><a href="#broad-class-definitions">Broad Class Definitions</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

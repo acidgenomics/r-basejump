@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load Local Data — loadData • basejump</title>
+<title>Load Data — loadData • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,20 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Load Data — loadData" />
+
+<meta property="og:description" content="Load R data (.rda) files from a directory using symbols rather than
+complete file paths." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,22 +90,23 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load Local Data</h1>
+    <h1>Load Data</h1>
     </div>
 
     
-    <p>Load R data (<code>.rda</code>) files from a directory using symbols rather than complete
-file paths.</p>
+    <p>Load R data (<code>.rda</code>) files from a directory using symbols rather than
+complete file paths.</p>
     
 
-    <pre class="usage"><span class='fu'>loadData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>loadData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Object names as symbols.</p></td>
+      <td><p>Object names. Note that these arguments are interpreted using
+non-standard evaluation, and <em>should not be quoted</em>.</p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -109,15 +117,11 @@ file paths.</p>
       <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
 which will assign into the calling environment.</p></td>
     </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silent named character vector of file paths.</p>
+    <p>Invisible <code>character</code> containing file paths.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -132,21 +136,25 @@ files that contain a single object, and the internal object name must match
 the file name exactly. These conventions match the recommendations of the
 RStudio team, which recommends saving single objects per file.</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function is desired for interactive use and interprets object
+names using non-standard evaluation.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
+  <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code></p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Load the internal GRCh37 gene annotations data</span>
-<span class='fu'>loadData</span>(<span class='no'>grch37</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))</div><div class='output co'>#&gt; <span class='message'>Loading grch37.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>grch37</span>)</div><div class='output co'>#&gt; Observations: 63,677
-#&gt; Variables: 10
-#&gt; $ ensgene     &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419"...
-#&gt; $ symbol      &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "...
-#&gt; $ description &lt;chr&gt; "tetraspanin 6 [Source:HGNC Symbol;Acc:11858]", "tenomo...
-#&gt; $ biotype     &lt;chr&gt; "protein_coding", "protein_coding", "protein_coding", "...
-#&gt; $ broadClass  &lt;chr&gt; "coding", "coding", "coding", "coding", "coding", "codi...
-#&gt; $ chr         &lt;chr&gt; "X", "X", "20", "1", "1", "1", "1", "6", "6", "6", "1",...
-#&gt; $ start       &lt;int&gt; 99883667, 99839799, 49551404, 169818772, 169631245, 279...
-#&gt; $ end         &lt;int&gt; 99894988, 99854882, 49575092, 169863408, 169823221, 279...
-#&gt; $ strand      &lt;int&gt; -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1,...
-#&gt; $ entrez      &lt;list&gt; [7105, 64102, 8813, 57147, 55732, 2268, 3075, 2519, 27...</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>loadData</span>(
+    <span class='no'>makeNames</span>,
+    <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>)
+)</div><div class='output co'>#&gt; <span class='message'>Loading makeNames.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>makeNames</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -156,6 +164,10 @@ RStudio team, which recommends saving single objects per file.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -177,3 +189,4 @@ RStudio team, which recommends saving single objects per file.</p>
 
   </body>
 </html>
+
