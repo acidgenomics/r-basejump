@@ -1,34 +1,5 @@
-#' Gene Annotations
-#'
-#' @name genes
-#' @family Gene Functions
-#'
-#' @inherit ensembl
-#' @inheritParams general
-#'
-#' @examples
-#' # GRanges return
-#' data <- genes("Homo sapiens")
-#' summary(data)
-#' colnames(mcols(data))
-#'
-#' # Legacy GRCh37 (release 75) genome build support
-#' \dontrun{
-#' genes("Homo sapiens", genomeBuild = "GRCh37") %>% glimpse()
-#' }
-NULL
-
-
-
-#' @rdname genes
+#' @rdname ensembl
 #' @importFrom GenomicFeatures genes
-#' @export
-GenomicFeatures::genes -> genes
-
-
-
-# Methods ======================================================================
-#' @rdname genes
 #' @export
 setMethod(
     "genes",

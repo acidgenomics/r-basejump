@@ -66,17 +66,16 @@
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' @examples
-#' # Genes
+#' # Genes ====
 #' genes <- ensembl("Homo sapiens", format = "genes")
 #' summary(genes)
 #'
-#' # Transcripts
+#' # Transcripts ====
 #' transcripts <- ensembl("Homo sapiens", format = "transcripts")
 #' summary(transcripts)
 #'
 #' # Include AnnotationHub metadata
 #' x <- ensembl("Homo sapiens", metadata = TRUE)
-#' class(x)
 #' names(x)
 #' glimpse(x[["metadata"]])
 ensembl <- function(
