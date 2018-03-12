@@ -12,14 +12,7 @@
 #' @export
 #'
 #' @examples
-#' # bcbioRNASeq example project summary YAML
-#' url <- paste(
-#'     "http://bcbiobase.seq.cloud",
-#'     "bcbio",
-#'     "project-summary.yaml",
-#'     sep = "/"
-#' )
-#' yaml <- readYAML(url)
+#' yaml <- readYAML("http://basejump.seq.cloud/summary.yaml")
 #' names(yaml)
 readYAML <- function(object) {
     assert_is_a_string(object)
