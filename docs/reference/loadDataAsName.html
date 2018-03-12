@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load Data File as Name — loadDataAsName • basejump</title>
+<title>Load Data as Name — loadDataAsName • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Load Data as Name — loadDataAsName" />
+
+<meta property="og:description" content="Load Data as Name" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,23 +89,24 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load Data File as Name</h1>
+    <h1>Load Data as Name</h1>
     </div>
 
     
-    <p>Load Data File as Name</p>
+    <p>Load Data as Name</p>
     
 
-    <pre class="usage"><span class='fu'>loadDataAsName</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getwd</span>(), <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
+    <pre class="usage"><span class='fu'>loadDataAsName</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Key value pairs, defining the name mappings. The argument name
-defines the new name of the object in the environment, whereas the value
-(string) denotes the original object name. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>.</p></td>
+      <td><p>Key value pairs, defining the name mappings. For example,
+<code>newName1</code> = <code>oldName1</code>, <code>newName2</code> = <code>oldName2</code>. Note that these
+arguments are interpreted using non-standard evaluation, and <em>should not
+be quoted</em>.</p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -114,26 +121,28 @@ which will assign into the calling environment.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silently return named character vector of file paths.</p>
+    <p>Invisible named <code>character</code> containing file paths.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function is intended for interactive use and interprets object
+names using non-standard evaluation.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other Read Functions: <code><a href='loadData.html'>loadData</a></code>,
+  <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>loadDataAsName</span>(
-    <span class='kw'>annotable</span> <span class='kw'>=</span> <span class='st'>"grch37"</span>,
+    <span class='kw'>XXX</span> <span class='kw'>=</span> <span class='no'>makeNames</span>,
     <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>)
 )
-<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>annotable</span>)</div><div class='output co'>#&gt; Observations: 63,677
-#&gt; Variables: 10
-#&gt; $ ensgene     &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419"...
-#&gt; $ symbol      &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "...
-#&gt; $ description &lt;chr&gt; "tetraspanin 6 [Source:HGNC Symbol;Acc:11858]", "tenomo...
-#&gt; $ biotype     &lt;chr&gt; "protein_coding", "protein_coding", "protein_coding", "...
-#&gt; $ broadClass  &lt;chr&gt; "coding", "coding", "coding", "coding", "coding", "codi...
-#&gt; $ chr         &lt;chr&gt; "X", "X", "20", "1", "1", "1", "1", "6", "6", "6", "1",...
-#&gt; $ start       &lt;int&gt; 99883667, 99839799, 49551404, 169818772, 169631245, 279...
-#&gt; $ end         &lt;int&gt; 99894988, 99854882, 49575092, 169863408, 169823221, 279...
-#&gt; $ strand      &lt;int&gt; -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1,...
-#&gt; $ entrez      &lt;list&gt; [7105, 64102, 8813, 57147, 55732, 2268, 3075, 2519, 27...</div></pre>
+<span class='fu'>class</span>(<span class='no'>XXX</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -141,6 +150,10 @@ which will assign into the calling environment.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -162,3 +175,4 @@ which will assign into the calling environment.</p></td>
 
   </body>
 </html>
+

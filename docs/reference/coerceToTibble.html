@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> Class Object — coerceToTibble • basejump</title>
+<title>Coerce to <code>tibble</code> Class Object — coerceToTibble • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,24 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Coerce to <code>tibble</code> Class Object — coerceToTibble" />
+
+<meta property="og:description" content="Coerce an object to a tibble data.frame. Tibbles don't support rowname
+assignemnt, so here we are ensuring they are kept by converting the rownames
+to a standard data.frame column named rowname upon coercion. This helps
+avoid downstream unexpected data loss when using the dplyr chain of single
+table verbs, such as dplyr::arrange(), dplyr::filter(), or
+dplyr::mutate()." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,13 +94,13 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> Class Object</h1>
+    <h1>Coerce to <code>tibble</code> Class Object</h1>
     </div>
 
     
-    <p>Coerce an object to a <a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a> data.frame. Tibbles don't support rowname
+    <p>Coerce an object to a <code>tibble</code> <code>data.frame</code>. Tibbles don't support rowname
 assignemnt, so here we are ensuring they are kept by converting the rownames
-to a standard data.frame column named <code>rowname</code> upon coercion. This helps
+to a standard <code>data.frame</code> column named <code>rowname</code> upon coercion. This helps
 avoid downstream unexpected data loss when using the dplyr chain of single
 table verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or
 <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
@@ -136,3 +147,4 @@ table verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange
 
   </body>
 </html>
+

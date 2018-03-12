@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Extract Dots from Function — dots" />
+
+<meta property="og:description" content="Extract Dots from Function" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -109,8 +115,8 @@
 
     
 <ul>
-<li><p>For <code>character = FALSE</code>: list containing objects as names. Can return
-object from the stored name class with <code>eval()</code>.</p></li>
+<li><p>For <code>character = FALSE</code>: <code>list</code> containing objects as names. Can return
+object from the stored <code>name</code> class with <code>eval()</code>.</p></li>
 <li><p>For <code>character = TRUE</code>: Character vector.</p></li>
 </ul>
 
@@ -121,8 +127,8 @@ object from the stored name class with <code>eval()</code>.</p></li>
 <li><p><code>help("dotsMethods", "methods")</code></p></li>
 <li><p><code>browseVignettes("rlang")</code>.</p></li>
 <li><p><a href='http://rlang.tidyverse.org'>rlang</a> functions:
-<code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosures'>rlang::quos()</a></code>,
-<code><a href='http://www.rdocumentation.org/packages/rlang/topics/quosures'>rlang::dots_definitions()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/quotation'>rlang::quos()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/dots_definitions'>rlang::dots_definitions()</a></code>,
 <code><a href='http://www.rdocumentation.org/packages/rlang/topics/dots_values'>rlang::dots_values()</a></code>,
 <code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_tidy'>rlang::eval_tidy()</a></code>,
 <code><a href='http://www.rdocumentation.org/packages/rlang/topics/eval_bare'>rlang::eval_bare()</a></code>.</p></li>
@@ -130,15 +136,20 @@ object from the stored name class with <code>eval()</code>.</p></li>
 <a href='https://goo.gl/fhAuak'>dplyr utils</a>,
 <a href='https://goo.gl/bM5TrP'>devtools infrastructure</a></p></li>
 </ul>
+    <p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
+  <code><a href='multiassignAsNewEnvir.html'>multiassignAsNewEnvir</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='co'># names</span>
+<span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; mtcars
 #&gt; 
 #&gt; [[2]]
 #&gt; starwars
-#&gt; </div><div class='input'><span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "mtcars"   "starwars"</div></pre>
+#&gt; </div><div class='input'>
+<span class='co'># character</span>
+<span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "mtcars"   "starwars"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -169,3 +180,4 @@ object from the stored name class with <code>eval()</code>.</p></li>
 
   </body>
 </html>
+

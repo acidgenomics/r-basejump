@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • basejump</title>
+<title>/Users/mike/GitHub/steinbaugh/basejump/NEWS.md • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,12 +22,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script>
+<script src="pkgdown.js"></script>
   
   
-<meta property="og:title" content="All news" />
+<meta property="og:title" content="/Users/mike/GitHub/steinbaugh/basejump/NEWS.md" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -40,7 +40,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -50,21 +50,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">basejump</a>
+      <a class="navbar-brand" href="index.html">basejump</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="news/index.html">News</a>
 </li>
       </ul>
       
@@ -84,56 +84,55 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="contents col-md-12">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>/Users/mike/GitHub/steinbaugh/basejump/NEWS.md</h1>
     </div>
 
-    <div class="contents">
-    <div class="section level2">
+
+<div class="section level2">
 <h2>basejump 0.3.1 (2018-02-19)</h2>
 <ul>
 <li>Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.</li>
-<li>Added <code><a href="../reference/sanitizeColData.html">sanitizeColData()</a></code> function.</li>
-<li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
-<li>Now exporting <code><a href="../reference/midnightTheme.html">midnightTheme()</a></code> as a <code><a href="../reference/midnightTheme.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
+<li>Added <code><a href="reference/sanitizeColData.html">sanitizeColData()</a></code> function.</li>
+<li>Added <code><a href="reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
+<li>Now exporting <code><a href="reference/midnightTheme.html">midnightTheme()</a></code> as a <code><a href="reference/midnightTheme.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
 <li>Added working examples and code coverage for all assert check functions.</li>
-<li>Simplified the internal collapse code for <code><a href="../reference/deprecated.html">annotable()</a></code> to simply work on the Entrez identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code>collapseToString()</code>.</li>
+<li>Simplified the internal collapse code for <code><a href="reference/deprecated.html">annotable()</a></code> to simply work on the Entrez identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code>collapseToString()</code>.</li>
 <li>Added ggplot color palette assert checks: <code>assertColorScaleContinuousOrNULL()</code>, <code>assertColorScaleDiscreteOrNULL()</code>, <code>assertFillScaleContinuousOrNULL()</code>, <code>assertFillScaleDiscreteOrNULL()</code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.3.0 (2018-02-16)</h2>
 <ul>
 <li>Switch to using assertive internally for assert checks.</li>
-<li>Now exporting these assert check functions: <code>assert_formal_annotation_col()</code>, <code>assert_formal_color_function()</code>, <code>assert_formal_compress()</code>, <code>assert_formal_gene2symbol()</code>, <code>assert_formal_header_level()</code>, <code>assert_has_rownames()</code>, <code>assert_is_a_number_or_null()</code>, <code>assert_is_a_string_or_null()</code>, <code>assert_is_an_implicit_integer()</code>, <code>assert_is_an_implicit_integer_or_null()</code> <code>assert_is_an_integer_or_null()</code>, <code>assert_is_annotable()</code>, <code>assert_is_character_or_null()</code>, <code>assert_is_data.frame_or_null()</code>, <code>assert_is_gene2symbol()</code>, <code>assert_is_implicit_integer()</code>, <code>assert_is_implicit_integer_or_null()</code>, <code>assert_is_tx2gene()</code>, <code>has_rownames()</code>, <code><a href="../reference/initializeDirectory.html">initializeDirectory()</a></code>, <code>is_implicit_integer()</code>.</li>
+<li>Now exporting these assert check functions: <code>assert_formal_annotation_col()</code>, <code>assert_formal_color_function()</code>, <code>assert_formal_compress()</code>, <code>assert_formal_gene2symbol()</code>, <code>assert_formal_header_level()</code>, <code>assert_has_rownames()</code>, <code>assert_is_a_number_or_null()</code>, <code>assert_is_a_string_or_null()</code>, <code>assert_is_an_implicit_integer()</code>, <code>assert_is_an_implicit_integer_or_null()</code> <code>assert_is_an_integer_or_null()</code>, <code>assert_is_annotable()</code>, <code>assert_is_character_or_null()</code>, <code>assert_is_data.frame_or_null()</code>, <code>assert_is_gene2symbol()</code>, <code>assert_is_implicit_integer()</code>, <code>assert_is_implicit_integer_or_null()</code>, <code>assert_is_tx2gene()</code>, <code>has_rownames()</code>, <code><a href="reference/initializeDirectory.html">initializeDirectory()</a></code>, <code>is_implicit_integer()</code>.</li>
 <li>Renamed <code>md*()</code> functions to <code>markdown*()</code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.2.1 (2018-02-07)</h2>
 <ul>
-<li>Added <code>convertGenesToSymbols()</code> and <code>convertTranscriptsToGenes()</code> functions. Previously some of this functionality was contained within the <code><a href="../reference/ensembl.html">gene2symbol()</a></code> and <code><a href="../reference/ensembl.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="../reference/ensembl.html">gene2symbol()</a></code> and <code><a href="../reference/ensembl.html">tx2gene()</a></code> usage in the bcbio R packages, so I decided to split these out into separate functions. Now <code><a href="../reference/ensembl.html">gene2symbol()</a></code> and <code><a href="../reference/ensembl.html">tx2gene()</a></code> work consistently with the <code><a href="../reference/deprecated.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
+<li>Added <code>convertGenesToSymbols()</code> and <code>convertTranscriptsToGenes()</code> functions. Previously some of this functionality was contained within the <code><a href="reference/ensembl.html">gene2symbol()</a></code> and <code><a href="reference/ensembl.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="reference/ensembl.html">gene2symbol()</a></code> and <code><a href="reference/ensembl.html">tx2gene()</a></code> usage in the bcbio R packages, so I decided to split these out into separate functions. Now <code><a href="reference/ensembl.html">gene2symbol()</a></code> and <code><a href="reference/ensembl.html">tx2gene()</a></code> work consistently with the <code><a href="reference/deprecated.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
 <li>
 <code>markdownHeader()</code>, <code>markdownList()</code>, and <code>markdownPlotlist()</code> are now exported as S4 generics. The <code>md*()</code> function variants are now exported as aliases.</li>
 <li>
-<code><a href="../reference/geometricMean.html">geomean()</a></code> has been renamed to <code>geometricMean()</code>.</li>
+<code><a href="reference/geometricMean.html">geomean()</a></code> has been renamed to <code>geometricMean()</code>.</li>
 <li>Miscellaneous improvements to error messages and warnings.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.2.0 (2018-01-28)</h2>
 <ul>
 <li>Offloaded internal bcbio-specific code to new package named <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>. Consequently, this makes the basejump package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio()</code>, <code>checkInterestingGroups()</code>, <code>flatFiles()</code>, <code>interestingGroups()</code>, <code>metrics()</code>, <code>plotDot()</code>, <code>plotGene()</code>, <code>plotQC()</code>, <code>plotViolin()</code>, <code>prepareSummarizedExperiment()</code>, <code>prepareTemplate()</code>, <code>readDataVersions()</code>, <code>readLogFile()</code>, <code>readProgramVersions()</code>, <code>readSampleMetadataFile()</code>, <code>sampleMetadata()</code>, <code>sampleYAML()</code>, <code>sampleYAMLMetadata()</code>, <code>sampleYAMLMetrics()</code>, and <code>selectSamples()</code>. These functions are now deprecated here in basejump (see <code>deprecated.R</code> file for more information).</li>
 <li>
-<code><a href="../reference/deprecated.html">comp()</a></code> and <code><a href="../reference/deprecated.html">revcomp()</a></code> have been deprecated in favor of <code>complement()</code> and <code>reverseComplement()</code> from the <a href="http://bioconductor.org/packages/release/bioc/html/Biostrings.html">Biostrings</a> package.</li>
+<code><a href="reference/deprecated.html">comp()</a></code> and <code><a href="reference/deprecated.html">revcomp()</a></code> have been deprecated in favor of <code>complement()</code> and <code>reverseComplement()</code> from the <a href="http://bioconductor.org/packages/release/bioc/html/Biostrings.html">Biostrings</a> package.</li>
 <li>Internally, errors, messages, and warnings now use methods from the <a href="http://rlang.tidyverse.org">rlang</a> package: <code>abort()</code>, <code>inform()</code>, and <code>warn()</code>, in place of <code>stop()</code>, <code>message()</code>, and <code>warning()</code>, respectively.</li>
-<li>Improved error handing for missing files in <code><a href="../reference/loadData.html">loadData()</a></code>. Additionally, the file name must match the internal name in the RData file, otherwise <code><a href="../reference/loadData.html">loadData()</a></code> will warn the user. This is more strict than the default behavior of <code><a href="http://www.rdocumentation.org/packages/base/topics/load">base::load()</a></code>, but helps prevent accidental overwrite in the current working environment.</li>
+<li>Improved error handing for missing files in <code><a href="reference/loadData.html">loadData()</a></code>. Additionally, the file name must match the internal name in the RData file, otherwise <code><a href="reference/loadData.html">loadData()</a></code> will warn the user. This is more strict than the default behavior of <code><a href="http://www.rdocumentation.org/packages/base/topics/load">base::load()</a></code>, but helps prevent accidental overwrite in the current working environment.</li>
 <li>
-<code><a href="../reference/localOrRemoteFile.html">localOrRemoteFile()</a></code>, previously an internal function, is now exported.</li>
+<code><a href="reference/localOrRemoteFile.html">localOrRemoteFile()</a></code>, previously an internal function, is now exported.</li>
 <li>
-<code><a href="../reference/deprecated.html">annotable()</a></code> now uses internal GRCh37 annotations from the <a href="https://github.com/stephenturner/annotables">annotables</a> package, which is saved in the <code>extdata/</code> directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the <code>data/</code> directory of the package repository.</li>
+<code><a href="reference/deprecated.html">annotable()</a></code> now uses internal GRCh37 annotations from the <a href="https://github.com/stephenturner/annotables">annotables</a> package, which is saved in the <code>extdata/</code> directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the <code>data/</code> directory of the package repository.</li>
 <li>
 <code>annotables()</code> now checks for all packages attached by <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> and <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and forces detachment at the end of the function call. Otherwise, this can result in the unwanted effect of <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> masking other user-loaded functions, such as the <a href="http://www.tidyverse.org">tidyverse</a> suite (e.g. <code><a href="http://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code>).</li>
 <li>Consistently reformatted code indents to be a multple of 4 spaces, as recommended by <a href="https://bioconductor.org">Bioconductor</a>.</li>
@@ -143,15 +142,15 @@
 <li>Internally, all implicit integers have been converted to explicit integers, where applicable.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.10 (2017-12-20)</h2>
 <ul>
 <li>Bug fix for multiplexed sample input into <code>readSampleMetadataFile()</code>. We were detecting the presence of <code>index</code> column but should instead check against <code>sequence</code> column.</li>
-<li>Added <code>dynamicPlotlist()</code> and <code><a href="../reference/markdownPlotlist.html">mdPlotlist()</a></code> plotting utilities.</li>
-<li>Added <code>uniqueSymbols</code> parameter to <code><a href="../reference/deprecated.html">annotable()</a></code> function.</li>
+<li>Added <code>dynamicPlotlist()</code> and <code><a href="reference/markdownPlotlist.html">mdPlotlist()</a></code> plotting utilities.</li>
+<li>Added <code>uniqueSymbols</code> parameter to <code><a href="reference/deprecated.html">annotable()</a></code> function.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.9 (2017-12-18)</h2>
 <ul>
 <li>Added <code>plotHeatmap()</code> functionality.</li>
@@ -160,7 +159,7 @@
 <li>Added matrix method support for <code>plotQuantileHeatmap()</code>, which works similarly as <code>plotHeatmap()</code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.8 (2017-12-14)</h2>
 <ul>
 <li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code>aggregateReplicates()</code> and <code>aggregateFeatures()</code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code>aggregateReplicates()</code> or genes/transcripts (rows) for <code>aggregateFeatures()</code>.</li>
@@ -168,74 +167,74 @@
 <li>Improved <code>detectOrganism()</code> to match against “H. sapiens” and “Homo_sapiens”.</li>
 <li>Added internal GRCh37 transcript to gene mapping.</li>
 <li>Improved organism matching to detect “Homo_sapiens” and “H. sapiens”.</li>
-<li>Factors are now supported in the makeNames utilities: <code>camel()</code>, <code>dotted()</code>, <code>snake()</code>, and <code><a href="../reference/camel.html">upperCamel()</a></code>.</li>
-<li>Improved handling of <code>NA</code> values from LibreOffice and Microsoft Excel output in <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>.. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
+<li>Factors are now supported in the makeNames utilities: <code>camel()</code>, <code>dotted()</code>, <code>snake()</code>, and <code><a href="reference/camel.html">upperCamel()</a></code>.</li>
+<li>Improved handling of <code>NA</code> values from LibreOffice and Microsoft Excel output in <code><a href="reference/readFileByExtension.html">readFileByExtension()</a></code>.. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.7 (2017-12-11)</h2>
 <ul>
-<li>Renamed <code><a href="../reference/deprecated.html">fc2lr()</a></code> to <code><a href="../reference/logRatio.html">foldChangeToLogRatio()</a></code> and <code><a href="../reference/deprecated.html">lr2fc()</a></code> and <code><a href="../reference/logRatio.html">logRatioToFoldChange()</a></code>.</li>
+<li>Renamed <code><a href="reference/deprecated.html">fc2lr()</a></code> to <code><a href="reference/logRatio.html">foldChangeToLogRatio()</a></code> and <code><a href="reference/deprecated.html">lr2fc()</a></code> and <code><a href="reference/logRatio.html">logRatioToFoldChange()</a></code>.</li>
 <li>Moved <code>plotDot()</code> and <code>plotViolin()</code> generics here from bcbioSingleCell.</li>
 <li>Added internal GRCh37 gene annotations.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.6 (2017-12-06)</h2>
 <ul>
-<li>Moved <code><a href="../reference/microplate.html">microplate()</a></code> code from the worminfo package here, since it’s of general interest.</li>
+<li>Moved <code><a href="reference/microplate.html">microplate()</a></code> code from the worminfo package here, since it’s of general interest.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.5 (2017-12-05)</h2>
 <ul>
-<li>Added <code><a href="../reference/deprecated.html">checkAnnotable()</a></code>, <code><a href="../reference/deprecated.html">checkGene2symbol()</a></code>, <code><a href="../reference/deprecated.html">checkTx2gene()</a></code>, and <code>sanitizeAnnotable()</code> utility functions that will be used in the bcbio R packages.</li>
+<li>Added <code><a href="reference/deprecated.html">checkAnnotable()</a></code>, <code><a href="reference/deprecated.html">checkGene2symbol()</a></code>, <code><a href="reference/deprecated.html">checkTx2gene()</a></code>, and <code>sanitizeAnnotable()</code> utility functions that will be used in the bcbio R packages.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.4 (2017-12-04)</h2>
 <ul>
-<li>Added <code><a href="../reference/midnightTheme.html">midnightTheme()</a></code> ggplot theme. Originally this was defined as <code>darkTheme()</code> in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_minimal()</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
+<li>Added <code><a href="reference/midnightTheme.html">midnightTheme()</a></code> ggplot theme. Originally this was defined as <code>darkTheme()</code> in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_minimal()</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
 <li>Improve NAMESPACE imports to include <code><a href="http://www.rdocumentation.org/packages/stats/topics/formula">stats::formula()</a></code> and <code><a href="http://www.rdocumentation.org/packages/utils/topics/capture.output">utils::capture.output()</a></code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.3 (2017-12-01)</h2>
 <ul>
 <li>
-<code><a href="../reference/loadData.html">loadData()</a></code> and <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
+<code><a href="reference/loadData.html">loadData()</a></code> and <code><a href="reference/loadDataAsName.html">loadDataAsName()</a></code> now default to <code>replace = TRUE</code>. If an object with the same name exists in the destination environment, then a warning is generated.</li>
 <li>
 <code>collapseToString()</code> only attempts to dynamically return the original object class on objects that aren’t class <code>data.frame</code>. I updated this code to behave more nicely with grouped tibbles (<code>grouped_df</code>), which are a virtual class of <code>data.frame</code> and therefore can’t be coerced using <code>as(object, "grouped_df")</code>.</li>
-<li>DNA sequence utility functions <code><a href="../reference/deprecated.html">comp()</a></code> and <code><a href="../reference/deprecated.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
+<li>DNA sequence utility functions <code><a href="reference/deprecated.html">comp()</a></code> and <code><a href="reference/deprecated.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment()</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from bcbioRNASeq when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code>SummarizedExperiment()</code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile()</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics CellRanger single-cell RNA-seq samples.</li>
-<li>Updated <code><a href="../reference/deprecated.html">annotable()</a></code> function to include nested Entrez identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
+<li>Updated <code><a href="reference/deprecated.html">annotable()</a></code> function to include nested Entrez identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.2 (2017-11-30)</h2>
 <ul>
 <li>Added bcbio <code>plotQC()</code> generic.</li>
-<li>Added back <code><a href="../reference/toStringUnique.html">toStringUnique()</a></code> code, which is still in use in the worminfo package.</li>
-<li>Added deprecations for <code><a href="../reference/deprecated.html">summarizeRows()</a></code> (now <code>collapseToString()</code>) and <code><a href="../reference/deprecated.html">wash()</a></code> functions.</li>
+<li>Added back <code><a href="reference/toStringUnique.html">toStringUnique()</a></code> code, which is still in use in the worminfo package.</li>
+<li>Added deprecations for <code><a href="reference/deprecated.html">summarizeRows()</a></code> (now <code>collapseToString()</code>) and <code><a href="reference/deprecated.html">wash()</a></code> functions.</li>
 <li>Updated installation method to include manual installation of ensembldb. Otherwise, basejump installation fails due to GenomeInfoDb and GenomeInfoDbData not getting installed completely.</li>
 <li>Now suggesting that the user installs suggested packages in the README.</li>
 <li>Updated PANTHER annotation scripts.</li>
 <li>Bug fix for <code>detectOrganism()</code>. Now allowing <code>NULL</code> return for unsupported organism, with a warning.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.1 (2017-11-11)</h2>
 <ul>
-<li>Added overwrite support for <code><a href="../reference/saveData.html">saveData()</a></code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
+<li>Added overwrite support for <code><a href="reference/saveData.html">saveData()</a></code>. Now will skip on existing files when <code>overwrite = FALSE</code>.</li>
 <li>Bug fix for <code>readDataVersions()</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
-<li>Improved key value pair method for <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
-<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/deprecated.html">annotable()</a></code>, <code><a href="../reference/ensembl.html">gene2symbol()</a></code>, <code><a href="../reference/deprecated.html">symbol2gene()</a></code> and <code><a href="../reference/ensembl.html">tx2gene()</a></code> functions.</li>
+<li>Improved key value pair method for <code><a href="reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 = "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
+<li>Ensembl release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="reference/deprecated.html">annotable()</a></code>, <code><a href="reference/ensembl.html">gene2symbol()</a></code>, <code><a href="reference/deprecated.html">symbol2gene()</a></code> and <code><a href="reference/ensembl.html">tx2gene()</a></code> functions.</li>
 <li>Allow rowData to be left unset in <code>prepareSummarizedExperiment()</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata()</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.1.0 (2017-10-23)</h2>
 <ul>
 <li>Bump version to match bcbioRNASeq package.</li>
@@ -248,70 +247,70 @@
 <li>Improved <code>NULL</code> returns in <code>readDataVersions</code>, <code>readLogFile()</code>, and <code>readProgramVersions()</code> utility functions.</li>
 <li>Fixed export of <code>*GTF()</code> alias functions to simply wrap the <code>*GFF()</code> functions with S4 methods support.</li>
 <li>Improved lane split technical replicate handling in <code>readSampleMetadataFile()</code>.</li>
-<li>Improved <code>camel()</code> syntax for both lax and strict modes. Added <code><a href="../reference/camel.html">upperCamel()</a></code> function.</li>
+<li>Improved <code>camel()</code> syntax for both lax and strict modes. Added <code><a href="reference/camel.html">upperCamel()</a></code> function.</li>
 <li>Switched <code>str_()</code> to base <code>grep()</code> and <code>gsub()</code> in internal functions.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.25 (2017-10-13)</h2>
 <ul>
 <li>Improved consistency of <code>setMethod()</code> calls using <code>signature()</code>.</li>
-<li>Converted <code><a href="../reference/loadRemoteData.html">loadRemoteData()</a></code> to a standard function instead of using S4 dispatch, allowing the <code>envir</code> argument to be set properly.</li>
+<li>Converted <code><a href="reference/loadRemoteData.html">loadRemoteData()</a></code> to a standard function instead of using S4 dispatch, allowing the <code>envir</code> argument to be set properly.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.24 (2017-10-10)</h2>
 <ul>
 <li>Added additional package version requirements in <code>DESCRIPTION</code> file.</li>
 <li>Implicit integers are allowed.</li>
 <li>Using GitHub version of covr package for unit tests.</li>
-<li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
+<li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="reference/multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code>
 </li>
-<li>Added <code>*GFF()</code> function variants for <code><a href="../reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
+<li>Added <code>*GFF()</code> function variants for <code><a href="reference/gene2symbolFromGFF.html">gene2symbolFromGTF()</a></code> and <code><a href="reference/tx2geneFromGFF.html">tx2geneFromGTF()</a></code>.</li>
 <li>Added shared bcbio generic functions: <code>aggregateReplicates()</code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code>interestingGroups()</code>, <code>metrics()</code>, <code>plotGene()</code>, <code>sampleDirs()</code>, <code>sampleMetadata()</code>, <code>selectSamples()</code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
 <li>Incorporated bcbio utility functions shared across bcbioRNASeq and bcbioSingleCell: <code>readDataVersions()</code> (deprecated <code>.dataVersions()</code>), <code>readLogFile()</code> (deprecated <code>.logFile()</code>), <code>readProgramVersions()</code> (deprecated <code>.programs()</code>), <code>sampleYAML()</code> (deprecated <code>.sampleYAML()</code>), <code>sampleYAMLMetadata()</code> (deprecated <code>sampleYAMLMetadata()</code>), <code>sampleYAMLMetrics()</code> (deprecated .sampleYAMLMetrics()`).</li>
-<li>Deprecated <code><a href="../reference/deprecated.html">metadataTable()</a></code> function.</li>
+<li>Deprecated <code><a href="reference/deprecated.html">metadataTable()</a></code> function.</li>
 <li>Moved all roxygen documentation to <code>methods-*.R</code> files where applicable.</li>
 <li>Now using <code>assays</code> in <code>prepareSummarizedExperiment()</code> generic definition as primary object.</li>
-<li>Improved <code><a href="../reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
+<li>Improved <code><a href="reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
 <li>Now consistently using clear function definitions (<code>()</code>) in chain operations with magrittr pipe (<code>%&gt;%</code>).</li>
 <li>Added <code>.prepareSampleMetadata()</code> utility function, for use with loading sample metadata from an external CSV, Excel, or YAML file.</li>
-<li>Added <code><a href="../reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
-<li>Initial commit of <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
-<li>Improved <code><a href="../reference/deprecated.html">annotable()</a></code> function documentation and support for Ensembl release versions.</li>
+<li>Added <code><a href="reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
+<li>Initial commit of <code><a href="reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
+<li>Improved <code><a href="reference/deprecated.html">annotable()</a></code> function documentation and support for Ensembl release versions.</li>
 <li>Improved sanitization rules for <code>camel()</code>, <code>dotted()</code>, and <code>snake()</code> name functions. Added the <code>strict</code> argument to <code>camel()</code> and <code>dotted()</code>.</li>
 <li>Improved the documentation for the makeNames functions, by splitting each into their own separate methods file.</li>
 <li>Improved S4 method support for the logRatio functions.</li>
-<li>Added integer support for <code><a href="../reference/geometricMean.html">geomean()</a></code> function. Also improved internal code of <code><a href="../reference/geometricMean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
+<li>Added integer support for <code><a href="reference/geometricMean.html">geomean()</a></code> function. Also improved internal code of <code><a href="reference/geometricMean.html">geomean()</a></code> based on Paul McMurdie’s Stack Overflow post. See function documentation for more information.</li>
 <li>Added release support for <code>tx2gene</code> functions.</li>
 <li>Reduced the number of reexported functions (for documentation) down to the magrittr pipe (<code>%&gt;%</code>), <code><a href="http://www.rdocumentation.org/packages/Matrix/topics/Matrix">Matrix()</a></code>, <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class">DataFrame()</a></code>, and <code><a href="http://www.rdocumentation.org/packages/tibble/topics/tibble">tibble()</a></code>.</li>
-<li>Added silent return of file path to <code><a href="../reference/saveData.html">saveData()</a></code> function.</li>
+<li>Added silent return of file path to <code><a href="reference/saveData.html">saveData()</a></code> function.</li>
 <li>Improved documentation for tibble coercion using <code>as(object, "tibble")</code>
 </li>
 <li>Renamed <code>collapse()</code> function to <code>collapseToString()</code>, to avoid NAMESPACE collisions with tidyverse packages (dplyr, glue).</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.23 (2017-09-14)</h2>
 <ul>
-<li>Upgraded <code><a href="../reference/deprecated.html">annotable()</a></code> function to query Ensembl using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
+<li>Upgraded <code><a href="reference/deprecated.html">annotable()</a></code> function to query Ensembl using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.22 (2017-09-08)</h2>
 <ul>
 <li>Improved unit testing coverage.</li>
-<li>Renamed <code><a href="../reference/deprecated.html">prepareSE()</a></code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
-<li>Reworked and simplified <code><a href="../reference/detectHPC.html">detectHPC()</a></code> function to allow for unit testing.</li>
+<li>Renamed <code><a href="reference/deprecated.html">prepareSE()</a></code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
+<li>Reworked and simplified <code><a href="reference/detectHPC.html">detectHPC()</a></code> function to allow for unit testing.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.21 (2017-09-01)</h2>
 <ul>
 <li>NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.</li>
 <li>Improved code coverage and unit testing with additional <a href="https://github.com/hadley/testthat">testthat</a> checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.</li>
 <li>Code coverage now above 90%!</li>
-<li>Renamed <code><a href="../reference/deprecated.html">packageSE()</a></code> to <code><a href="../reference/deprecated.html">prepareSE()</a></code> for better semantic meaning.</li>
+<li>Renamed <code><a href="reference/deprecated.html">packageSE()</a></code> to <code><a href="reference/deprecated.html">prepareSE()</a></code> for better semantic meaning.</li>
 <li>Made multiple generics more flexible by inclusion of <code>…</code>.</li>
 <li>Reduced the number of deprecated functions.</li>
 <li>Initial commit of internal <code>localOrRemote()</code> utility function.</li>
@@ -319,10 +318,10 @@
 <li>Added additional <code>data-raw/</code> scripts.</li>
 <li>Added <code>onLoad.R</code> script back to ensure proper attachment of <a href="https://github.com/stephenturner/annotables">annotables</a> data package.</li>
 <li>Removed <a href="http://www.tidyverse.org">tidyverse</a> S4 method support.</li>
-<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
+<li>Improved remote file handling for <code><a href="reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="reference/readGFF.html">readGTF()</a></code>, and <code><a href="reference/readYAML.html">readYAML()</a></code> functions.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.20 (2017-08-16)</h2>
 <ul>
 <li>Offloaded <a href="https://github.com/hadley/devtools">devtools</a> functions to personal package.</li>
@@ -333,20 +332,20 @@
 <li>Added unit testing for <a href="https://github.com/stephenturner/annotables">annotables</a> functions.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.19 (2017-07-24)</h2>
 <ul>
 <li>Improved documentation and consistency with <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> packages.</li>
 <li>Improved integration of gene annotation calls using <a href="https://github.com/stephenturner/annotables">annotables</a> package.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.18 (2017-07-24)</h2>
 <ul>
-<li>Initial support for <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> creation with <code><a href="../reference/deprecated.html">packageSE()</a></code>.</li>
+<li>Initial support for <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> creation with <code><a href="reference/deprecated.html">packageSE()</a></code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.17 (2017-07-11)</h2>
 <ul>
 <li>Added <a href="https://github.com/stephenturner/annotables">annotables</a> common code from bcbio packages.</li>
@@ -355,160 +354,114 @@
 <li>Initial commit of <code>assign_data()</code> for use in <a href="http://bioinformatics.sph.harvard.edu/bcbioSingleCell">bcbioSingleCell</a> sample loops.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.16 (2017-06-28)</h2>
 <ul>
 <li>Minor NAMESPACE updates while working on <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> packages.</li>
 <li>Tweaks for <a href="http://www.tidyverse.org">tidyverse</a> S4 generic verbs. In particular, <code>as_tibble()</code> now provides better consistency for rowname conversion.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.15 (2017-06-18)</h2>
 <ul>
 <li>Added <a href="https://github.com/hadley/testthat">testthat</a> support for <a href="https://github.com/jimhester/lintr">lintr</a> checks.</li>
 <li>Added S4 generic for <code>as_tibble()</code>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.14 (2017-06-13)</h2>
 <ul>
 <li>
 <a href="http://dplyr.tidyverse.org">dplyr</a> 0.7 NAMESPACE fixes and function tweaks.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.13 (2017-06-12)</h2>
 <ul>
 <li>setMethod on tidyverse NAMESPACE collisons (<a href="http://dplyr.tidyverse.org">dplyr</a>, <a href="http://tidyr.tidyverse.org">tidyr</a>) using `signature(“data.frame”).</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.12 (2017-05-25)</h2>
 <ul>
 <li>Updated exports based on <a href="http://steinbaugh.com/worminfo">worminfo</a> package.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.11 (2017-05-18)</h2>
 <ul>
 <li>Improved naming functions to dynamically handle character vectors and objects that support naming assignments.</li>
 <li>Added <code>removeNA()</code> utility function.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.10 (2017-05-14)</h2>
 <ul>
 <li>Added NAMESPACE utilities to deal with <a href="http://www.tidyverse.org">tidyverse</a> generic verbs.</li>
 <li>Switched package documentation method to use <a href="https://github.com/klutometis/roxygen">roxygen</a> with pkgapi.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.9 (2017-05-13)</h2>
 <ul>
 <li>Added snake_case function variants.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.8 (2017-05-13)</h2>
 <ul>
-<li>Added back <code><a href="../reference/saveData.html">saveData()</a></code> utility functions.</li>
+<li>Added back <code><a href="reference/saveData.html">saveData()</a></code> utility functions.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.7 (2017-0422)</h2>
 <ul>
 <li>Bug fixes for <a href="http://dplyr.tidyverse.org">dplyr</a> 0.6.0 update and improved kable handling.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.6 (2017-04-14)</h2>
 <ul>
 <li>Dependency fix for successful compilation on the <a href="https://rc.hms.harvard.edu">HMS RC</a> Orchestra cluster.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.5 (2017-04-12)</h2>
 <ul>
 <li>Consolidated functions in the documentation.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.4 (2017-04-07)</h2>
 <ul>
 <li>Improved documentation.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.3 (2017-03-22)</h2>
 <ul>
 <li>Removed dependencies and transfer functions to <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a>.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.2 (2017-03-22)</h2>
 <ul>
 <li>Added <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> data import functions.</li>
 <li>Added <a href="http://ggplot2.tidyverse.org">ggplot2</a> wrapper functions for quality control.</li>
 </ul>
 </div>
-    <div class="section level2">
+<div class="section level2">
 <h2>basejump 0.0.1 (2017-03-17)</h2>
 <ul>
 <li>Initial draft release.</li>
 </ul>
 </div>
-    </div>
-  </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#NA">0.3.1</a></li>
-        <li><a href="#NA">0.3.0</a></li>
-        <li><a href="#NA">0.2.1</a></li>
-        <li><a href="#NA">0.2.0</a></li>
-        <li><a href="#NA">0.1.10</a></li>
-        <li><a href="#NA">0.1.9</a></li>
-        <li><a href="#NA">0.1.8</a></li>
-        <li><a href="#NA">0.1.7</a></li>
-        <li><a href="#NA">0.1.6</a></li>
-        <li><a href="#NA">0.1.5</a></li>
-        <li><a href="#NA">0.1.4</a></li>
-        <li><a href="#NA">0.1.3</a></li>
-        <li><a href="#NA">0.1.2</a></li>
-        <li><a href="#NA">0.1.1</a></li>
-        <li><a href="#NA">0.1.0</a></li>
-        <li><a href="#NA">0.0.25</a></li>
-        <li><a href="#NA">0.0.24</a></li>
-        <li><a href="#NA">0.0.23</a></li>
-        <li><a href="#NA">0.0.22</a></li>
-        <li><a href="#NA">0.0.21</a></li>
-        <li><a href="#NA">0.0.20</a></li>
-        <li><a href="#NA">0.0.19</a></li>
-        <li><a href="#NA">0.0.18</a></li>
-        <li><a href="#NA">0.0.17</a></li>
-        <li><a href="#NA">0.0.16</a></li>
-        <li><a href="#NA">0.0.15</a></li>
-        <li><a href="#NA">0.0.14</a></li>
-        <li><a href="#NA">0.0.13</a></li>
-        <li><a href="#NA">0.0.12</a></li>
-        <li><a href="#NA">0.0.11</a></li>
-        <li><a href="#NA">0.0.10</a></li>
-        <li><a href="#NA">0.0.9</a></li>
-        <li><a href="#NA">0.0.8</a></li>
-        <li><a href="#NA">0.0.7</a></li>
-        <li><a href="#NA">0.0.6</a></li>
-        <li><a href="#NA">0.0.5</a></li>
-        <li><a href="#NA">0.0.4</a></li>
-        <li><a href="#NA">0.0.3</a></li>
-        <li><a href="#NA">0.0.2</a></li>
-        <li><a href="#NA">0.0.1</a></li>
-      </ul>
-    </div>
+
   </div>
 
 </div>
+
 
       <footer>
       <div class="copyright">

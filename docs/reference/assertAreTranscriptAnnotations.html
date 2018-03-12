@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assert Is Ensembl Annotations Data Frame — assertIsAnnotable • basejump</title>
+<title>Assert Are Ensembl Transcript Annotations — assertAreTranscriptAnnotations • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Assert Are Ensembl Transcript Annotations — assertAreTranscriptAnnotations" />
+
+<meta property="og:description" content="Assert Are Ensembl Transcript Annotations" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,22 +89,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assert Is Ensembl Annotations Data Frame</h1>
+    <h1>Assert Are Ensembl Transcript Annotations</h1>
     </div>
 
     
-    <p>Assert Is Ensembl Annotations Data Frame</p>
+    <p>Assert Are Ensembl Transcript Annotations</p>
     
 
-    <pre class="usage"><span class='fu'>assertIsAnnotable</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
+    <pre class="usage"><span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>data.frame containing Ensembl gene annotations returned
-from the <code>annotable()</code> function.</p></td>
+      <td><p><code>data.frame</code> containing Ensembl transcript annotations.</p></td>
     </tr>
     <tr>
       <th>severity</th>
@@ -113,7 +118,8 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Assert Checks: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+    <p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
   <code><a href='assertFormalAnnotationCol.html'>assertFormalAnnotationCol</a></code>,
   <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
   <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
@@ -135,14 +141,14 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Success</span>
-<span class='no'>annotable</span> <span class='kw'>&lt;-</span> <span class='fu'>annotable</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading Ensembl annotations from AnnotationHub</span>
-#&gt; <span class='message'>2017-10-27</span></div><div class='output co'>#&gt; <span class='message'>EnsDB AH57757: Homo sapiens Ensembl 90</span></div><div class='input'><span class='fu'>assertIsAnnotable</span>(<span class='no'>annotable</span>)
+    <pre class="examples"><div class='input'><span class='co'># Success ====</span>
+<span class='no'>transcripts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>GenomicFeatures</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/GenomicFeatures/topics/transcripts'>transcripts</a></span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Fetching Ensembl transcripts from AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>AH57757: Homo sapiens GRCh38 Ensembl 90 (2017-08-31)</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>transcripts</span>)
 
-<span class='co'># Failure</span>
-<span class='fu'>tryCatch</span>(
-    <span class='fu'>assertIsAnnotable</span>(<span class='no'>mtcars</span>),
-    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>)</div><div class='output co'>#&gt; &lt;assertionError in assertIsAnnotable(mtcars): is_subset : The elements 'ensgene', 'symbol', 'description', 'biotype', 'broadClass' in c("ensgene", "symbol", "description", "biotype", "broadClass") are not in colnames(x).&gt;</div></pre>
+<span class='co'># Failure ====</span>
+<span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>GenomicFeatures</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/GenomicFeatures/topics/transcripts'>genes</a></span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Fetching Ensembl genes from AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>AH57757: Homo sapiens GRCh38 Ensembl 90 (2017-08-31)</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>tryCatch</span>(
+    <span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>genes</span>),
+    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>
+)</div><div class='output co'>#&gt; &lt;assertionError in assertAreTranscriptAnnotations(genes): is_subset : The element 'txID' in c("txID", "geneID") is not in colnames(x).&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -173,3 +179,4 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
 
   </body>
 </html>
+

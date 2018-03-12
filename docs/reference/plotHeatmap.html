@@ -18,13 +18,21 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Plot Heatmap — plotHeatmap" />
+
+<meta property="og:description" content="Construct a simple heatmap. By default, row- and column-wise hierarchical
+clustering is performed using the Ward method, but this behavior can be
+overrided by setting cluster_rows or cluster_cols to FALSE." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -97,12 +105,13 @@ overrided by setting <code>cluster_rows</code> or <code>cluster_cols</code> to <
 <span class='co'># S4 method for dgCMatrix</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
   <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>, <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>,
-  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -123,7 +132,7 @@ values are "row", "column" and "none".</p></td>
     </tr>
     <tr>
       <th>annotationCol</th>
-      <td><p><em>Optional.</em> data.frame that defines annotation
+      <td><p><em>Optional.</em> <code>data.frame</code> that defines annotation
 mappings for the columns.</p></td>
     </tr>
     <tr>
@@ -147,6 +156,10 @@ palette.</p></td>
 <code><a href='http://www.rdocumentation.org/packages/viridisLite/topics/viridis'>viridis()</a></code> palette.</p></td>
     </tr>
     <tr>
+      <th>borderColor</th>
+      <td><p>Border color.</p></td>
+    </tr>
+    <tr>
       <th>title</th>
       <td><p><em>Optional.</em> Plot title.</p></td>
     </tr>
@@ -154,11 +167,14 @@ palette.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code> return list, containing <code>gtable</code>.</p>
+    <p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code> return <code>list</code>, containing <code>gtable</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p>
+<p>Other Plot Functions: <code>dynamicPlotlist</code>,
+  <code><a href='midnightTheme.html'>midnightTheme</a></code>,
+  <code>plotQuantileHeatmap</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -194,3 +210,4 @@ palette.</p></td>
 
   </body>
 </html>
+

@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  <link href="../extra.css" rel="stylesheet">
   
+  
+<meta property="og:title" content="Collapse to String — collapseToString" />
+
+<meta property="og:description" content="Collapse to String" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -92,7 +98,7 @@
 
     <pre class="usage"><span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for character</span>
+<span class='co'># S4 method for atomic</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
@@ -104,23 +110,7 @@
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='co'># S4 method for factor</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for integer</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for logical</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'># S4 method for numeric</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
@@ -167,25 +157,30 @@
     <ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/toString'>base::toString()</a></code>.</p></li>
 </ul>
+    <p>Other Sanitization Functions: <code>fixNA</code>,
+  <code>removeNA</code>, <code><a href='sanitizeColData.html'>sanitizeColData</a></code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># character</span>
+    <pre class="examples"><div class='input'><span class='co'># character ====</span>
 <span class='no'>groceries</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>, <span class='st'>"veggies"</span>)
 <span class='fu'>collapseToString</span>(
     <span class='no'>groceries</span>,
     <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
     <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "eggs, milk, veggies"</div><div class='input'><span class='fu'>collapseToString</span>(
+    <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; [1] "eggs, milk, veggies"</div><div class='input'><span class='fu'>collapseToString</span>(
     <span class='no'>groceries</span>,
     <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
     <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-    <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "NA, NA, milk, eggs, eggs, veggies"</div><div class='input'>
-<span class='co'># numeric</span>
+    <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; [1] "NA, NA, milk, eggs, eggs, veggies"</div><div class='input'>
+<span class='co'># numeric ====</span>
 <span class='fu'>collapseToString</span>(<span class='fu'>seq</span>(<span class='fl'>1</span>:<span class='fl'>5</span>))</div><div class='output co'>#&gt; [1] "1, 2, 3, 4, 5"</div><div class='input'>
-<span class='co'># logical</span>
+<span class='co'># logical ====</span>
 <span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [1] "TRUE, FALSE"</div><div class='input'><span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NaN</span>))</div><div class='output co'>#&gt; [1] "NA, NaN"</div><div class='input'>
-<span class='co'># data.frame</span>
+<span class='co'># data.frame ====</span>
 <span class='co'># Objects supporting `dim` function similarly</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
     <span class='fu'>head</span>() <span class='kw'>%&gt;%</span>
@@ -232,3 +227,4 @@
 
   </body>
 </html>
+
