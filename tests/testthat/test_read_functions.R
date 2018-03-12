@@ -102,8 +102,8 @@ test_that("loadRemoteData", {
     loaded <- loadRemoteData(paste(cacheURL, "sparse.rda", sep = "/"))
     expect_is(loaded, "dgCMatrix")
     expect_identical(
-        loaded["url", "mtcars", drop = TRUE],
-        paste(cacheURL, "mtcars.rda", sep = "/")
+        loaded["url", "sparse", drop = TRUE],
+        paste(cacheURL, "sparse.rda", sep = "/")
     )
 })
 
