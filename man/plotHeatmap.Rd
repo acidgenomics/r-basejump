@@ -56,7 +56,8 @@ clustering is performed using the Ward method, but this behavior can be
 overrided by setting \code{cluster_rows} or \code{cluster_cols} to \code{FALSE}.
 }
 \examples{
-mat <- as.matrix(mtcars)
+mat <- mtcars[, c("disp", "hp", "mpg")] \%>\%
+    as.matrix()
 plotHeatmap(mat)
 }
 \seealso{

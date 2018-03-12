@@ -15,10 +15,11 @@
 #' @export
 #'
 #' @examples
-#' loadDataAsName(
+#' loaded <- loadDataAsName(
 #'     XXX = makeNames,
 #'     dir = system.file("extdata", package = "basejump")
 #' )
+#' print(loaded)
 #' class(XXX)
 loadDataAsName <- function(
     ...,

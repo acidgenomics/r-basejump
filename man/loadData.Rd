@@ -40,10 +40,11 @@ This function is desired for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-loadData(
+loaded <- loadData(
     makeNames,
     dir = system.file("extdata", package = "basejump")
 )
+print(loaded)
 class(makeNames)
 }
 \seealso{
