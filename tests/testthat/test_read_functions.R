@@ -107,7 +107,7 @@ test_that("loadRemoteData", {
     )
 })
 
-test_that("loadRemoteData : Already exists", {
+test_that("loadRemoteData : Already loaded", {
     mtcars <- datasets::mtcars
     expect_error(
         loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/")),
