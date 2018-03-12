@@ -2,9 +2,8 @@
 
 #' Sanitize Row Data
 #'
-#' Coerce Ensembl `rowData` returned from the [genes()] or [transcripts()]
-#' functions to a `data.frame`, and drop any nested list columns (e.g.
-#' `entrezID`). Nested columns will fail to write to disk as CSVs.
+#' Coerce Ensembl `rowData` to a `data.frame`, and drop any nested list columns
+#' (e.g. `entrezID`). Nested columns will fail to write to disk as CSVs.
 #'
 #' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
 #'
@@ -16,13 +15,13 @@
 #' @export
 #'
 #' @examples
-#' # Gene annotations
-#' genes <- genes("Homo sapiens")
-#' sanitizeRowData(genes) %>% glimpse()
+#' # Genes ====
+#' data <- genes("Homo sapiens")
+#' sanitizeRowData(data) %>% glimpse()
 #'
-#' # Transcript annotations
-#' transcripts <- transcripts("Homo sapiens")
-#' sanitizeRowData(transcripts) %>% glimpse()
+#' # Transcripts ====
+#' data <- transcripts("Homo sapiens")
+#' sanitizeRowData(data) %>% glimpse()
 sanitizeRowData <- function(object) {
     assert_is_any_of(object, ensemblReturn)
     data <- as.data.frame(object)

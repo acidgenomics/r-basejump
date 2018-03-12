@@ -1,7 +1,6 @@
 #' Transcript Annotations
 #'
-#' @rdname transcripts
-#' @name transcripts-method
+#' @name transcripts
 #' @family Gene Functions
 #'
 #' @inherit ensembl
@@ -13,9 +12,12 @@
 #' colnames(mcols(data))
 NULL
 
+
+
+#' @rdname transcripts
 #' @importFrom GenomicFeatures transcripts
 #' @export
-GenomicFeatures::transcripts
+GenomicFeatures::transcripts -> transcripts
 
 
 
