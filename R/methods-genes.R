@@ -1,7 +1,6 @@
 #' Gene Annotations
 #'
-#' @rdname genes
-#' @name genes-method
+#' @name genes
 #' @family Gene Functions
 #'
 #' @inherit ensembl
@@ -19,9 +18,12 @@
 #' }
 NULL
 
+
+
+#' @rdname genes
 #' @importFrom GenomicFeatures genes
 #' @export
-GenomicFeatures::genes
+GenomicFeatures::genes -> genes
 
 
 

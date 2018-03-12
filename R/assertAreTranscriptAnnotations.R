@@ -9,11 +9,11 @@
 #'
 #' @examples
 #' # Success ====
-#' transcripts <- GenomicFeatures::transcripts("Homo sapiens")
+#' transcripts <- transcripts("Homo sapiens")
 #' assertAreTranscriptAnnotations(transcripts)
 #'
 #' # Failure ====
-#' genes <- GenomicFeatures::genes("Homo sapiens")
+#' genes <- genes("Homo sapiens")
 #' tryCatch(
 #'     assertAreTranscriptAnnotations(genes),
 #'     error = function(e) e

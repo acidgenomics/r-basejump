@@ -4,7 +4,7 @@
 #' @family Gene Functions
 #'
 #' @inheritParams general
-#' @inheritParams genes-method
+#' @inheritParams genes
 #' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
