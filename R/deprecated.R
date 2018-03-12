@@ -1,3 +1,5 @@
+# nocov start
+
 #' Defunct or Deprecated Functions
 #'
 #' @name deprecated
@@ -173,3 +175,5 @@ sanitizeAnnotable <- function(...) {
     .Deprecated("sanitizeRowData")
     sanitizeRowData(...)
 }
+
+# nocov end
