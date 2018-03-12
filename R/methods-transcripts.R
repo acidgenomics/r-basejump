@@ -1,28 +1,5 @@
-#' Transcript Annotations
-#'
-#' @name transcripts
-#' @family Gene Functions
-#'
-#' @inherit ensembl
-#' @inheritParams general
-#'
-#' @examples
-#' data <- transcripts("Homo sapiens")
-#' summary(data)
-#' colnames(mcols(data))
-NULL
-
-
-
-#' @rdname transcripts
+#' @rdname ensembl
 #' @importFrom GenomicFeatures transcripts
-#' @export
-GenomicFeatures::transcripts -> transcripts
-
-
-
-# Methods ======================================================================
-#' @rdname transcripts
 #' @export
 setMethod(
     "transcripts",
