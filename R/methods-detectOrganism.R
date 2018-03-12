@@ -177,7 +177,7 @@ NULL
     if (is_a_string(x)) {
         names(x) <- NULL
     }
-    if (length(unique(x)) > 1L) {
+    if (length(na.omit(unique(x))) > 1L) {
         warn("Multiple organisms detected")
     }
     if (isTRUE(unique)) {
