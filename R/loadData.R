@@ -30,10 +30,11 @@
 #' @export
 #'
 #' @examples
-#' loadData(
+#' loaded <- loadData(
 #'     makeNames,
 #'     dir = system.file("extdata", package = "basejump")
 #' )
+#' print(loaded)
 #' class(makeNames)
 loadData <- function(
     ...,

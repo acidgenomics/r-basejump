@@ -28,10 +28,11 @@ This function is intended for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-loadDataAsName(
+loaded <- loadDataAsName(
     XXX = makeNames,
     dir = system.file("extdata", package = "basejump")
 )
+print(loaded)
 class(XXX)
 }
 \seealso{

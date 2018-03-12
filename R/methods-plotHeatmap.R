@@ -30,7 +30,8 @@
 #' @return [pheatmap::pheatmap()] return `list`, containing `gtable`.
 #'
 #' @examples
-#' mat <- as.matrix(mtcars)
+#' mat <- mtcars[, c("disp", "hp", "mpg")] %>%
+#'     as.matrix()
 #' plotHeatmap(mat)
 NULL
 
