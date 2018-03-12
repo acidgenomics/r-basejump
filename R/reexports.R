@@ -1,5 +1,13 @@
 # Only reexport functions needed for working examples and vignette
 
+#' @importFrom GenomicFeatures genes
+#' @export
+GenomicFeatures::genes
+
+#' @importFrom GenomicFeatures transcripts
+#' @export
+GenomicFeatures::transcripts
+
 
 
 #' @importFrom ggplot2 aes
