@@ -16,11 +16,11 @@
 #'
 #' @examples
 #' # Genes ====
-#' data <- genes("Homo sapiens")
+#' data <- ensembl("Homo sapiens", format = "genes")
 #' sanitizeRowData(data) %>% glimpse()
 #'
 #' # Transcripts ====
-#' data <- transcripts("Homo sapiens")
+#' data <- ensembl("Homo sapiens", format = "transcripts")
 #' sanitizeRowData(data) %>% glimpse()
 sanitizeRowData <- function(object) {
     assert_is_any_of(object, ensemblReturn)
