@@ -23,41 +23,13 @@ gene2symbolFromGTF(...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or
-transcript annotations.
+\code{data.frame}.
 }
 \description{
 The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
-\details{
-Simply specify the desired organism, using the full latin name. For example,
-we can obtain human annotations with \code{Homo sapiens}. Optionally, specific
-Ensembl genome builds (e.g. \code{GRCh38}) and release versions (e.g. \code{87}) are
-supported.
-
-Under the hood, this function fetches annotations from AnnotationHub using
-the ensembldb package. AnnotationHub supports versioned Ensembl releases,
-back to version 87.
-}
-\section{Broad Class Definitions}{
-
-For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
-column is added, which generalizes the gene types into a smaller number of
-semantically-meaningful groups:
-\itemize{
-\item \code{coding}
-\item \code{noncoding}
-\item \code{pseudo}
-\item \code{small}
-\item \code{decaying}
-\item \code{ig} (immunoglobulin)
-\item \code{tcr} (T cell receptor)
-\item \code{other}
-}
-}
-
 \examples{
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
@@ -70,7 +42,8 @@ gene2symbolFromGFF(gff) \%>\% glimpse()
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
+  \code{\link{detectOrganism}}, \code{\link{ensembl}},
+  \code{\link{gene2symbol}},
   \code{\link{stripTranscriptVersions}},
-  \code{\link{tx2geneFromGFF}}
+  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
 }
