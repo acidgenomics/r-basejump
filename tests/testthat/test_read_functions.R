@@ -100,11 +100,14 @@ test_that("loadDataAsName : Invalid arguments", {
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
     loaded <- loadRemoteData(paste(cacheURL, "sparse.rda", sep = "/"))
-    expect_is(loaded, "dgCMatrix")
+    # Character matrix of loaded files
+    expect_is(loaded, "matrix")
     expect_identical(
         loaded["url", "sparse", drop = TRUE],
         paste(cacheURL, "sparse.rda", sep = "/")
     )
+    # Check that the object loaded correctly
+    expect_is(sparse, "dgCMatrix")
 })
 
 test_that("loadRemoteData : Already loaded", {
