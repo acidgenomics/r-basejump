@@ -1,3 +1,5 @@
+# nocov start
+
 #' @rdname deprecated
 #' @export
 setGeneric("annotable", function(object, ...) {
@@ -24,3 +26,5 @@ setMethod(
         .Defunct()
     }
 )
+
+# nocov end
