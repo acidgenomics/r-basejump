@@ -1,4 +1,7 @@
+# FIXME This is breaking pkgdown
+
 #' @rdname ensembl
+#' @usage NULL
 #' @importFrom GenomicFeatures genes
 #' @export
 setMethod(

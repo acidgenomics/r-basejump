@@ -39,8 +39,6 @@
 #' @importFrom utils packageVersion
 #'
 #' @inheritParams general
-#' @inheritParams saveData
-#'
 #' @param organism Default recommended usage is to provide the full latin
 #'   organism name as a string.
 #' @param format Desired annotation data format, either "`genes`",
@@ -67,17 +65,12 @@
 #'
 #' @examples
 #' # Genes ====
-#' genes <- ensembl("Homo sapiens", format = "genes")
-#' summary(genes)
+#' data <- ensembl("Homo sapiens", format = "genes")
+#' summary(data)
 #'
 #' # Transcripts ====
-#' transcripts <- ensembl("Homo sapiens", format = "transcripts")
-#' summary(transcripts)
-#'
-#' # Include AnnotationHub metadata
-#' x <- ensembl("Homo sapiens", metadata = TRUE)
-#' names(x)
-#' glimpse(x[["metadata"]])
+#' data <- ensembl("Homo sapiens", format = "transcripts")
+#' summary(data)
 ensembl <- function(
     organism,
     format = c("genes", "gene2symbol", "transcripts", "tx2gene"),
