@@ -146,32 +146,30 @@ assertFormalHeaderLevel <- function(...) {
 #' @rdname deprecated
 #' @export
  assertFormalColorFunction <- function(...) {
-     .Deprecated("assertIsHexColorFunctionOrNULL")
-     assertIsHexColorFunctionOrNULL(...)
- }
+    .Deprecated("assertIsHexColorFunctionOrNULL")
+    assertIsHexColorFunctionOrNULL(...)
+}
 
- #' @rdname deprecated
- #' @export
- initializeDir <- function(...) {
-     .Deprecated("initializeDirectory")
-     initializeDirectory(...)
- }
+#' @rdname deprecated
+#' @export
+initializeDir <- function(...) {
+    .Deprecated("initializeDirectory")
+    initializeDirectory(...)
+}
 
 
 
- # v0.3.2 ======================================================================
- #' @rdname deprecated
- #' @export
- annotable <- function(...) {
-     .Defunct("genes, transcripts, ensembl, rowRanges, or rowData")
- }
-
- assertIsAnnotable <- function(...) {
+ # v0.4.0 ======================================================================
+#' @rdname deprecated
+#' @export
+assertIsAnnotable <- function(...) {
      .Deprecated("assertAreGeneAnnotations")
      assertAreGeneAnnotations(...)
- }
+}
 
- sanitizeAnnotable <- function(...) {
-     .Deprecated("sanitizeRowData")
-     sanitizeRowData(...)
- }
+#' @rdname deprecated
+#' @export
+sanitizeAnnotable <- function(...) {
+    .Deprecated("sanitizeRowData")
+    sanitizeRowData(...)
+}
