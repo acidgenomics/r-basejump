@@ -3,18 +3,17 @@
 #' @family Assert Check Functions
 #' @inherit assert
 #'
-#' @param x `data.frame` containing Ensembl transcript annotations returned
-#'   by the [transcripts()] function.
+#' @param x `data.frame` containing Ensembl transcript annotations.
 #'
 #' @export
 #'
 #' @examples
-#' # Success
-#' transcripts <- transcripts("Homo sapiens")
+#' # Success ====
+#' transcripts <- GenomicFeatures::transcripts("Homo sapiens")
 #' assertAreTranscriptAnnotations(transcripts)
 #'
-#' # Failure
-#' genes <- genes("Homo sapiens")
+#' # Failure ====
+#' genes <- GenomicFeatures::genes("Homo sapiens")
 #' tryCatch(
 #'     assertAreTranscriptAnnotations(genes),
 #'     error = function(e) e
