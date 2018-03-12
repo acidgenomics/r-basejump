@@ -7,8 +7,7 @@
 assertAreTranscriptAnnotations(x, severity = "stop")
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl transcript annotations returned
-by the \code{\link[=transcripts]{transcripts()}} function.}
+\item{x}{\code{data.frame} containing Ensembl transcript annotations.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -20,12 +19,12 @@ Abort on mismatch.
 Assert Are Ensembl Transcript Annotations
 }
 \examples{
-# Success
-transcripts <- transcripts("Homo sapiens")
+# Success ====
+transcripts <- GenomicFeatures::transcripts("Homo sapiens")
 assertAreTranscriptAnnotations(transcripts)
 
-# Failure
-genes <- genes("Homo sapiens")
+# Failure ====
+genes <- GenomicFeatures::genes("Homo sapiens")
 tryCatch(
     assertAreTranscriptAnnotations(genes),
     error = function(e) e

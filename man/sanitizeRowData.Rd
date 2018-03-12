@@ -13,21 +13,20 @@ sanitizeRowData(object)
 \code{data.frame}, without any nested list columns.
 }
 \description{
-Coerce Ensembl \code{rowData} returned from the \code{\link[=genes]{genes()}} or \code{\link[=transcripts]{transcripts()}}
-functions to a \code{data.frame}, and drop any nested list columns (e.g.
-\code{entrezID}). Nested columns will fail to write to disk as CSVs.
+Coerce Ensembl \code{rowData} to a \code{data.frame}, and drop any nested list columns
+(e.g. \code{entrezID}). Nested columns will fail to write to disk as CSVs.
 }
 \details{
 Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
 }
 \examples{
-# Gene annotations
-genes <- genes("Homo sapiens")
-sanitizeRowData(genes) \%>\% glimpse()
+# Genes ====
+data <- ensembl("Homo sapiens", format = "genes")
+sanitizeRowData(data) \%>\% glimpse()
 
-# Transcript annotations
-transcripts <- transcripts("Homo sapiens")
-sanitizeRowData(transcripts) \%>\% glimpse()
+# Transcripts ====
+data <- ensembl("Homo sapiens", format = "transcripts")
+sanitizeRowData(data) \%>\% glimpse()
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
