@@ -38,7 +38,6 @@
 #' @importFrom ensembldb ensemblVersion genes transcripts
 #' @importFrom utils packageVersion
 #'
-#' @inheritParams general
 #' @param organism Default recommended usage is to provide the full latin
 #'   organism name as a string.
 #' @param format Desired annotation data format, either "`genes`",

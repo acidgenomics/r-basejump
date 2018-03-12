@@ -86,7 +86,7 @@ setGeneric("fixNA", function(object, ...) {
 
 
 
-#' @rdname ensembl
+#' @rdname gene2symbol
 #' @export
 setGeneric("gene2symbol", function(object, ...) {
     standardGeneric("gene2symbol")
@@ -189,7 +189,7 @@ setGeneric("stripTranscriptVersions", function(object, ...) {
 
 
 
-#' @rdname ensembl
+#' @rdname tx2gene
 #' @export
 setGeneric("tx2gene", function(object, ...) {
     standardGeneric("tx2gene")

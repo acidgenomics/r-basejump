@@ -7,7 +7,9 @@
 #' @name gene2symbolFromGFF
 #' @family Gene Functions
 #'
-#' @inherit gene2symbol
+#' @inheritParams general
+#'
+#' @return `data.frame`.
 #'
 #' @examples
 #' # From URL (recommended)

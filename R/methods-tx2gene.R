@@ -1,4 +1,21 @@
-#' @rdname ensembl
+#' Transcript to Gene Mappings
+#'
+#' @name tx2gene
+#' @family Gene Functions
+#'
+#' @inheritParams general
+#' @inheritParams ensembl
+#'
+#' @return `data.frame`.
+#'
+#' @examples
+#' tx2gene("Homo sapiens") %>% glimpse()
+NULL
+
+
+
+# Methods ======================================================================
+#' @rdname tx2gene
 #' @export
 setMethod(
     "tx2gene",

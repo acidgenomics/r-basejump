@@ -7,7 +7,9 @@
 #' @name tx2geneFromGFF
 #' @family Gene Functions
 #'
-#' @inherit tx2gene
+#' @inheritParams general
+#'
+#' @return `data.frame`.
 #'
 #' @examples
 #' # From URL (recommended)

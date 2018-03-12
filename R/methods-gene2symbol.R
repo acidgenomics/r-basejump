@@ -1,4 +1,21 @@
-#' @rdname ensembl
+#' Gene to Symbol Mappings
+#'
+#' @name gene2symbol
+#' @family Gene Functions
+#'
+#' @inheritParams general
+#' @inheritParams ensembl
+#'
+#' @return `data.frame`.
+#'
+#' @examples
+#' gene2symbol("Homo sapiens") %>% glimpse()
+NULL
+
+
+
+# Methods ======================================================================
+#' @rdname gene2symbol
 #' @export
 setMethod(
     "gene2symbol",
