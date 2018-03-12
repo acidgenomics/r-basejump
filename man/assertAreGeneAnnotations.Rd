@@ -7,8 +7,7 @@
 assertAreGeneAnnotations(x, severity = "stop")
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl gene annotations returned
-by the \code{\link[=genes]{genes()}} function.}
+\item{x}{\code{data.frame} containing Ensembl gene annotations.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -20,14 +19,14 @@ Abort on mismatch.
 Assert Are Ensembl Gene Annotations
 }
 \examples{
-# Success
-genes <- genes("Homo sapiens")
-assertAreGeneAnnotations(genes)
+# Success ====
+data <- ensembl("Homo sapiens", format = "genes")
+assertAreGeneAnnotations(data)
 
-# Failure
-transcripts <- transcripts("Homo sapiens")
+# Failure ====
+data <- ensembl("Homo sapiens", format = "transcripts")
 tryCatch(
-    assertAreGeneAnnotations(transcripts),
+    assertAreGeneAnnotations(data),
     error = function(e) e
 )
 }

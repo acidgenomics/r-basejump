@@ -23,7 +23,8 @@ gene2symbolFromGTF(...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{data.frame}.
+\code{GRanges}, \code{DataFrame}, or \code{data.frame} containing gene or
+transcript annotations.
 }
 \description{
 The GFF (General Feature Format) format consists of one line per feature,
@@ -69,9 +70,7 @@ gene2symbolFromGFF(gff) \%>\% glimpse()
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{ensembl}},
-  \code{\link{gene2symbol}}, \code{\link{genes-method}},
+  \code{\link{detectOrganism}}, \code{\link{gene2symbol}},
   \code{\link{stripTranscriptVersions}},
-  \code{\link{transcripts-method}},
-  \code{\link{tx2geneFromGFF}}, \code{\link{tx2gene}}
+  \code{\link{tx2geneFromGFF}}
 }
