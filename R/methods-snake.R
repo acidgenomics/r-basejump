@@ -81,6 +81,14 @@ NULL
 
 
 
+.snake.factor <- function(object) {
+    object %>%
+        .snake.vector() %>%
+        factor()
+}
+
+
+
 .snake.mcols <- function(object) {  # nolint
     colnames <- colnames(mcols(object))
     colnames <- snake(colnames)
@@ -162,7 +170,7 @@ setMethod(
 setMethod(
     "snake",
     signature("factor"),
-    .snake.vector
+    .snake.factor
 )
 
 

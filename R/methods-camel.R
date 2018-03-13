@@ -129,6 +129,14 @@ NULL
 
 
 
+.camel.factor <- function(object, strict = FALSE) {
+    object %>%
+        .camel.vector(strict = strict) %>%
+        factor()
+}
+
+
+
 .camel.mcols <- function(object, strict = FALSE) {  # nolint
     colnames <- colnames(mcols(object))
     colnames <- camel(colnames, strict = strict)
@@ -218,7 +226,7 @@ setMethod(
 setMethod(
     "camel",
     signature("factor"),
-    .camel.vector
+    .camel.factor
 )
 
 
