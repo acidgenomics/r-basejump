@@ -204,9 +204,11 @@ ensembl <- function(
 
     meta <- metadata(edb)
     assert_is_data.frame(meta)
-    # Stash the AnnotationHub ID
     meta <- rbind(c("id", id), meta)
-    genomeBuild <- meta[meta[["name"]] == "genome_build", "value"]
+    meta <- as(meta, "tibble")
+
+    # Stash the AnnotationHub ID
+    genomeBuild <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
     assert_is_a_string(genomeBuild)
 
     inform(paste(
