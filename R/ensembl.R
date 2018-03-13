@@ -85,7 +85,6 @@ ensembl <- function(
     if (isAnImplicitInteger(release)) {
         # Note that ensembldb currently only supports >= 87
         assert_all_are_positive(release)
-        release <- as.integer(release)
     }
     assert_is_a_bool(metadata)
     if (format %in% c("genes", "transcripts")) {
@@ -111,18 +110,42 @@ ensembl <- function(
         }
     }
 
-    # Legacy genome build and release support ==================================
+    # Fetch annotations from AnnotationHub/ensembldb ===========================
+    # ah = AnnotationHub
+    # edb = Ensembl database
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
     ) {
-        # GRCh37 (release 75)
-        # TODO Replace with Homo_sapiens.GRCh37.75 annotation package
-        abort("Request Homo_sapiens.GRCh37.75 support update")
-        release <- 75L
-    } else if (is.integer(release)) {
-        # For legacy release requests, use the oldest version available
-        if (release < 87L) {
+        # GRCh37 release 75 ====================================================
+        if (!"EnsDb.Hsapiens.v75" %in% installed.packages()[, "Package"]) {
+            devtools::install_url(
+                "http://basejump.seq.cloud/EnsDb.Hsapiens.v75_1.0.0.tar.gz"
+            )
+        }
+        edb <- EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75
+        id <- "EnsDb.Hsapiens.v75"
+    } else {
+        # AnnotationHub ========================================================
+        # Connect to AnnotationHub. On a fresh install this will print a
+        # txProgressBar to the console. We're using `capture.output()` here
+        # to suppress the console output, since it's not very informative and
+        # can cluster R Markdown reports.
+        invisible(capture.output(
+            ah <- suppressMessages(AnnotationHub())
+        ))
+
+        inform(paste(
+            "Fetching Ensembl", format, "from AnnotationHub",
+            packageVersion("AnnotationHub"),
+            paste0("(", snapshotDate(ah), ")")
+        ))
+
+        # Use ensembldb annotations by default
+        rdataclass <- "EnsDb"
+
+        # For legacy release requests, switch to newest version available
+        if (!is.null(release) && release < 87L) {
             warn(paste(
                 "ensembldb currently only supports Ensembl releases >= 87.",
                 "Switching to current release instead.",
@@ -130,79 +153,67 @@ ensembl <- function(
             ))
             release <- NULL
         }
-    }
 
-    # AnnotationHub ============================================================
-    # Connect to AnnotationHub. On a fresh install this will print a
-    # txProgressBar to the console. We're using `capture.output()` here
-    # to suppress the console output, since it's not very informative and
-    # can cluster R Markdown reports.
-    invisible(capture.output(
-        ah <- suppressMessages(AnnotationHub())
-    ))
+        # Query AnnotationHub
+        ahdb <- query(
+            ah,
+            pattern = c("Ensembl", organism, release, genomeBuild, rdataclass),
+            ignore.case = TRUE
+        )
 
-    inform(paste(
-        "Fetching Ensembl", format, "from AnnotationHub",
-        packageVersion("AnnotationHub"),
-        paste0("(", snapshotDate(ah), ")")
-    ))
-
-    # Use ensembldb annotations by default
-    rdataclass <- "EnsDb"
-
-    # Get the AnnotationHub dataset by identifier number
-    ahdb <- query(
-        ah,
-        pattern = c("Ensembl", organism, release, genomeBuild, rdataclass),
-        ignore.case = TRUE
-    )
-    mcols <- mcols(ahdb)
-
-    if (nrow(mcols) > 1L) {
-        if (!is.null(genomeBuild)) {
-            mcols <- mcols %>%
-                .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE),
-                    , drop = FALSE]
+        # Pick the newest EnsDb that matches
+        mcols <- mcols(ahdb)
+        if (nrow(mcols) > 1L) {
+            if (!is.null(genomeBuild)) {
+                mcols <- mcols %>%
+                    .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE),
+                      , drop = FALSE]
+            }
+            if (!is.null(release)) {
+                mcols <- mcols %>%
+                    .[grep(release, .[["tags"]]), , drop = FALSE]
+            }
+            # Pick the latest release by AH identifier
+            mcols <- tail(mcols, 1L)
+        } else if (!nrow(mcols)) {
+            abort(paste(
+                paste(
+                    "Ensembl annotations were not found on AnnotationHub",
+                    packageVersion("AnnotationHub")
+                ),
+                paste("organism:", deparse(organism)),
+                paste("genomeBuild:", deparse(genomeBuild)),
+                paste("release:", deparse(release)),
+                sep = "\n"
+            ))
         }
-        if (!is.null(release)) {
-            mcols <- mcols %>%
-                .[grep(release, .[["tags"]]), , drop = FALSE]
-        }
-        # Pick the latest release by AH identifier
-        mcols <- tail(mcols, 1L)
-    } else if (!nrow(mcols)) {
-        abort(paste(
-            paste(
-                "Ensembl annotations were not found on AnnotationHub",
-                packageVersion("AnnotationHub")
-            ),
-            paste("organism:", deparse(organism)),
-            paste("genomeBuild:", deparse(genomeBuild)),
-            paste("release:", deparse(release)),
-            sep = "\n"
+        id <- rownames(mcols)
+
+        # This step will also output `txProgressBar()` on a fresh install. Using
+        # `capture.output()` here again to suppress console output.
+        # Additionally, it attaches ensembldb and other Bioconductor dependency
+        # packages, which will mask some tidyverse functions (e.g. `select()`).
+        invisible(capture.output(
+            edb <- suppressMessages(ah[[id]])
         ))
     }
-    id <- rownames(mcols)
-    meta <- as.list(mcols)
-    # Put the AnnotationHub ID first in the lists
-    meta <- c("id" = id, meta)
 
-    # ensembldb (EnsDb) ========================================================
-    # This step will also output `txProgressBar()` on a fresh install. Using
-    # `capture.output()` here again to suppress console output. Additionally, it
-    # attaches ensembldb and other Bioconductor dependency packages, which will
-    # mask some tidyverse functions (e.g. `select()`).
-    invisible(capture.output(
-        edb <- suppressMessages(ah[[id]])
-    ))
+    # Get annotations from EnsDb ===============================================
     assert_is_all_of(edb, "EnsDb")
 
+    meta <- metadata(edb)
+    assert_is_data.frame(meta)
+    # Stash the AnnotationHub ID
+    meta <- rbind(c("id", id), meta)
+    genomeBuild <- meta[meta[["name"]] == "genome_build", "value"]
+    assert_is_a_string(genomeBuild)
+
     inform(paste(
-        paste0(id, ":"),
-        organism(edb),
-        meta[["genome"]],
-        "Ensembl", ensemblVersion(edb),
-        paste0("(", meta[["rdatadateadded"]], ")")
+        id,
+        paste("organism:", organism(edb)),
+        paste("genome build:", genomeBuild),
+        paste("release version:", ensemblVersion(edb)),
+        sep = "\n"
     ))
 
     if (format == "genes") {
@@ -318,7 +329,7 @@ ensembl <- function(
         assert_has_names(data)
     }
 
-    # Stash the AnnotationHub metadata inside a list, if desired
+    # Include the EnsDB metadata inside a list, if desired
     if (isTRUE(metadata)) {
         data <- list("data" = data, "metadata" = meta)
     }
