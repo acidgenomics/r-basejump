@@ -327,26 +327,31 @@ test_that("tx2gene : character", {
 
 # GRCh37 =======================================================================
 test_that("GRCh37 genome build support", {
-    # FIXME Need to use EnsDb instead of GRanges from GTF
-    tmpmsg <- "Request Homo_sapiens.GRCh37.75 support update"
     # genes
-    expect_error(
-        genes("Homo sapiens", genomeBuild = "GRCh37"),
-        tmpmsg
-    )
+    x <- genes("Homo sapiens", genomeBuild = "GRCh37")
+    expect_is(x, "GRanges")
+    expect_identical(length(x), 64102L)
+    expect_identical(head(names(x), 1L), "ENSG00000000003")
+
     # gene2symbol
-    expect_error(
-        gene2symbol("Homo sapiens", genomeBuild = "GRCh37"),
-        tmpmsg
+    x <- gene2symbol("Homo sapiens", genomeBuild = "GRCh37")
+    expect_is(x, "data.frame")
+    expect_identical(
+        dim(x),
+        c(64102L, 2L)
     )
+
     # transcripts
-    expect_error(
-        transcripts("Homo sapiens", genomeBuild = "GRCh37"),
-        tmpmsg
-    )
+    x <- transcripts("Homo sapiens", genomeBuild = "GRCh37")
+    expect_is(x, "GRanges")
+    expect_identical(length(x), 215647L)
+    expect_identical(head(names(x), 1L), "ENST00000000233")
+
     # tx2gene
-    expect_error(
-        tx2gene("Homo sapiens", genomeBuild = "GRCh37"),
-        tmpmsg
+    x <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
+    expect_is(x, "data.frame")
+    expect_identical(
+        dim(x),
+        c(215647L, 2L)
     )
 })
