@@ -36,7 +36,7 @@
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom ensembldb ensemblVersion genes transcripts
-#' @importFrom utils packageVersion
+#' @importFrom utils installed.packages packageVersion
 #'
 #' @param organism Default recommended usage is to provide the full latin
 #'   organism name as a string.
@@ -118,13 +118,14 @@ ensembl <- function(
         identical(tolower(genomeBuild), "grch37")
     ) {
         # GRCh37 release 75 ====================================================
-        if (!"EnsDb.Hsapiens.v75" %in% installed.packages()[, "Package"]) {
+        id <- "EnsDb.Hsapiens.v75"
+        if (!id %in% installed.packages()[, "Package"]) {
             devtools::install_url(
-                "http://basejump.seq.cloud/EnsDb.Hsapiens.v75_1.0.0.tar.gz"
+                paste0("http://basejump.seq.cloud/", id, "_1.0.0.tar.gz")
             )
         }
-        edb <- EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75
-        id <- "EnsDb.Hsapiens.v75"
+        require(id, character.only = TRUE)
+        edb <- get(id, inherits = TRUE)
     } else {
         # AnnotationHub ========================================================
         # Connect to AnnotationHub. On a fresh install this will print a
