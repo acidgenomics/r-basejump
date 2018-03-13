@@ -114,6 +114,14 @@ NULL
 
 
 
+.dotted.factor <- function(object) {
+    object %>%
+        .dotted.vector() %>%
+        factor()
+}
+
+
+
 .dotted.mcols <- function(object) {  # nolint
     colnames <- colnames(mcols(object))
     colnames <- dotted(colnames)
@@ -212,7 +220,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("factor"),
-    .dotted.vector
+    .dotted.factor
 )
 
 

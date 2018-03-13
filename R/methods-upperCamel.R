@@ -48,6 +48,14 @@
 
 
 
+.upperCamel.factor <- function(object, strict = FALSE) {
+    object %>%
+        .upperCamel.vector(strict = strict) %>%
+        factor()
+}
+
+
+
 .upperCamel.mcols <- function(object, strict = FALSE) {  # nolint
     colnames <- colnames(mcols(object))
     colnames <- upperCamel(colnames, strict = strict)
@@ -136,7 +144,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("factor"),
-    .upperCamel.vector
+    .upperCamel.factor
 )
 
 
