@@ -85,6 +85,7 @@ ensembl <- function(
     if (isAnImplicitInteger(release)) {
         # Note that ensembldb currently only supports >= 87
         assert_all_are_positive(release)
+        release <- as.integer(release)
     }
     assert_is_a_bool(metadata)
     if (format %in% c("genes", "transcripts")) {
@@ -96,7 +97,7 @@ ensembl <- function(
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
 
-    # Catch UCSC genome build IDs ==============================================
+    # Remap UCSC genome build names ============================================
     if (is_a_string(genomeBuild)) {
         map <- c(
             "hg19" = "GRCh37",
@@ -110,14 +111,25 @@ ensembl <- function(
         }
     }
 
-    # GRCh37 (release 75) ======================================================
+    # Legacy genome build and release support ==================================
     if (
         identical(tolower(organism), "homo sapiens") &&
         identical(tolower(genomeBuild), "grch37")
     ) {
+        # GRCh37 (release 75)
         # TODO Replace with Homo_sapiens.GRCh37.75 annotation package
-        release <- 75L
         abort("Request Homo_sapiens.GRCh37.75 support update")
+        release <- 75L
+    } else if (is.integer(release)) {
+        # For legacy release requests, use the oldest version available
+        if (release < 87L) {
+            warn(paste(
+                "ensembldb currently only supports Ensembl releases >= 87.",
+                paste("Switched to 87 instead of", release, "for annotations."),
+                sep = "\n"
+            ))
+            release <- 87L
+        }
     }
 
     # AnnotationHub ============================================================
