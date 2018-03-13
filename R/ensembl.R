@@ -125,10 +125,10 @@ ensembl <- function(
         if (release < 87L) {
             warn(paste(
                 "ensembldb currently only supports Ensembl releases >= 87.",
-                paste("Switched to 87 instead of", release, "for annotations."),
+                "Switching to current release instead.",
                 sep = "\n"
             ))
-            release <- 87L
+            release <- NULL
         }
     }
 
@@ -171,19 +171,16 @@ ensembl <- function(
         # Pick the latest release by AH identifier
         mcols <- tail(mcols, 1L)
     } else if (!nrow(mcols)) {
-        # Abort on match failure
-        msg <- paste("Ensembl annotations for", organism)
-        if (!is.null(genomeBuild)) {
-            msg <- paste(msg, genomeBuild, sep = " : ")
-        }
-        if (!is.null(release)) {
-            msg <- paste(msg, release, sep = " : ")
-        }
-        msg <- paste(
-            msg, "were not found in AnnotationHub",
-            packageVersion("AnnotationHub")
-        )
-        abort(msg)
+        abort(paste(
+            paste(
+                "Ensembl annotations were not found on AnnotationHub",
+                packageVersion("AnnotationHub")
+            ),
+            paste("organism:", deparse(organism)),
+            paste("genomeBuild:", deparse(genomeBuild)),
+            paste("release:", deparse(release)),
+            sep = "\n"
+        ))
     }
     id <- rownames(mcols)
     meta <- as.list(mcols)

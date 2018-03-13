@@ -220,17 +220,17 @@ test_that("gene2symbol : character", {
 
 
 # ensembl ======================================================================
-test_that("ensembl : Unsupported Ensembl release", {
-    expect_error(
+test_that("ensembl : Unsupported release version", {
+    expect_warning(
         ensembl("Homo sapiens", release = 86L),
-        "Ensembl annotations for Homo sapiens : 86 were not found"
+        "Switching to current release instead."
     )
 })
 
 test_that("ensembl : Unsupported organism", {
     expect_error(
-        ensembl("XXX", genomeBuild = "YYY", release = ensemblRelease),
-        "Ensembl annotations for XXX : YYY : 87 were not found"
+        ensembl(organism = "AAA", genomeBuild = "BBB"),
+        "Ensembl annotations were not found on AnnotationHub"
     )
 })
 
