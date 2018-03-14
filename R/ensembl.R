@@ -107,16 +107,16 @@ ensembl <- function(
     # ah = AnnotationHub
     # edb = Ensembl database
     if (
-        identical(tolower(organism), "homo sapiens") &&
-        identical(tolower(genomeBuild), "grch37")
+        tolower(organism) == "homo sapiens" &&
+        (tolower(genomeBuild) == "grch37" || release == 75L)
     ) {
         # GRCh37 release 75 ====================================================
         id <- "EnsDb.Hsapiens.v75"
         .biocLite(id)
         edb <- get(id, inherits = TRUE)
     } else if (
-        identical(tolower(organism), "mus musculus") &&
-        identical(tolower(genomeBuild), "grcm37")
+        tolower(organism) == "mus musculus" &&
+        (tolower(genomeBuild) == "grcm37" || release == 75L)
     ) {
         # GRCm37 release 75 ====================================================
         id <- "EnsDb.Mmusculus.v75"
