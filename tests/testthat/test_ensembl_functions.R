@@ -272,7 +272,7 @@ test_that("transcripts : character", {
 
     # Dimensions
     n <- 216741L
-    dim <- c(n, 14L)
+    dim <- c(n, 19L)
     expect_identical(dim(x[["data.frame"]]), dim)
     expect_identical(dim(x[["DataFrame"]]), dim)
     expect_identical(length(x[["GRanges"]]), n)
@@ -296,12 +296,17 @@ test_that("transcripts : character", {
         "geneName" = "character",
         "geneBiotype" = "factor",
         "description" = "character",
-        "txSeqStart" = "integer",
-        "txSeqEnd" = "integer",
+        "txSeqStart" = "integer",  # Not in GRanges
+        "txSeqEnd" = "integer",  # Not in GRanges
         "txCdsSeqStart" = "integer",
         "txCdsSeqEnd" = "integer",
         "txSupportLevel" = "factor",
-        "entrezID" = "list",  # AsIs
+        "geneSeqStart" = "integer",  # Not in GRanges
+        "geneSeqEnd" = "integer",  # Not in GRanges
+        "seqName" = "factor",
+        "seqStrand" = "factor",
+        "seqCoordSystem" = "factor",  # Not in GRanges
+        "entrezID" = "list",  # AsIs in DataFrame, GRanges
         "broadClass" = "factor"
     )
     expect_identical(lapply(x[["data.frame"]], class), mcols)
@@ -309,6 +314,10 @@ test_that("transcripts : character", {
     expect_identical(lapply(x[["DataFrame"]], class), mcols)
     mcols[["txSeqStart"]] <- NULL
     mcols[["txSeqEnd"]] <- NULL
+    mcols[["geneSeqStart"]] <- NULL
+    mcols[["geneSeqEnd"]] <- NULL
+    mcols[["seqName"]] <- NULL
+    mcols[["seqStrand"]] <- NULL
     expect_identical(lapply(mcols(x[["GRanges"]]), class), mcols)
 })
 
