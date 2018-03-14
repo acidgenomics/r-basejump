@@ -1,3 +1,6 @@
+# TODO Add a `try()` call to check for Internet connection
+# Consider re-running with 'localHub = TRUE'
+
 #' Ensembl Annotations
 #'
 #' Quickly obtain gene and transcript annotations from
