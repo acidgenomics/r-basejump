@@ -81,6 +81,13 @@ ensembl <- function(
     assert_is_a_string(organism)
     format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
+    # Stop on UCSC genome build
+    if (
+        is_a_string(genomeBuild) &&
+        grepl("^[a-z]{2}\\d{2}$", genomeBuild)
+    ) {
+        abort("Use Ensembl genome build name instead of UCSC name")
+    }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
         # Note that ensembldb currently only supports >= 87
@@ -96,20 +103,6 @@ ensembl <- function(
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
 
-    # Remap UCSC genome build names ============================================
-    if (is_a_string(genomeBuild)) {
-        map <- c(
-            "hg19" = "GRCh37",
-            "hg38" = "GRCh38",
-            "mm10" = "GRCm38"
-        )
-        if (genomeBuild %in% names(map)) {
-            map <- map[match(genomeBuild, names(map))]
-            inform(paste("Remapping genome build", names(map), "to", map))
-            genomeBuild <- as.character(map)
-        }
-    }
-
     # Fetch annotations from AnnotationHub/ensembldb ===========================
     # ah = AnnotationHub
     # edb = Ensembl database
@@ -120,9 +113,18 @@ ensembl <- function(
         # GRCh37 release 75 ====================================================
         id <- "EnsDb.Hsapiens.v75"
         if (!id %in% installed.packages()[, "Package"]) {
-            devtools::install_url(
-                paste0("http://basejump.seq.cloud/", id, "_1.0.0.tar.gz")
-            )
+            BiocInstaller::biocLite(id)
+        }
+        require(id, character.only = TRUE)
+        edb <- get(id, inherits = TRUE)
+    } else if (
+        identical(tolower(organism), "mus musculus") &&
+        identical(tolower(genomeBuild), "grcm37")
+    ) {
+        # GRCm37 release 75 ====================================================
+        id <- "EnsDb.Mmusculus.v75"
+        if (!id %in% installed.packages()[, "Package"]) {
+            BiocInstaller::biocLite(id)
         }
         require(id, character.only = TRUE)
         edb <- get(id, inherits = TRUE)
