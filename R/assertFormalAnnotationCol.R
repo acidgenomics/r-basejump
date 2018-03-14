@@ -35,7 +35,7 @@ assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
         classes = c("data.frame", "DataFrame", "logical", "NULL"),
         severity = severity
     )
-    if (is.data.frame(colData)) {
+    if (has_dims(colData)) {
         assert_has_colnames(colData, severity = severity)
         assertHasRownames(colData, severity = severity)
         assert_are_identical(

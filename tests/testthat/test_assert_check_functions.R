@@ -13,7 +13,8 @@ test_that("assertFormalAnnotationCol", {
     expect_silent(assertFormalAnnotationCol(x, y))
     expect_silent(assertFormalAnnotationCol(x, NA))
     expect_silent(assertFormalAnnotationCol(x, NULL))
-    expect_error(assertFormalAnnotationCol(x, coldata))
+    # Support DataFrame
+    expect_silent(assertFormalAnnotationCol(x, coldata))
     expect_error(assertFormalAnnotationCol(mtcars, y))
 })
 
