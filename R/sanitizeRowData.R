@@ -16,12 +16,20 @@
 #'
 #' @examples
 #' # Genes ====
-#' data <- ensembl("Homo sapiens", format = "genes")
-#' sanitizeRowData(data) %>% glimpse()
+#' x <- ensembl(
+#'     organism = "Homo sapiens",
+#'     format = "genes",
+#'     genomeBuild = "GRCh37"
+#' )
+#' sanitizeRowData(x) %>% glimpse()
 #'
 #' # Transcripts ====
-#' data <- ensembl("Homo sapiens", format = "transcripts")
-#' sanitizeRowData(data) %>% glimpse()
+#' x <- ensembl(
+#'     organism = "Homo sapiens",
+#'     format = "transcripts",
+#'     genomeBuild = "GRCh37"
+#' )
+#' sanitizeRowData(x) %>% glimpse()
 sanitizeRowData <- function(object) {
     assert_is_any_of(object, ensemblReturn)
     data <- as.data.frame(object)

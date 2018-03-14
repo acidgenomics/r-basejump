@@ -21,12 +21,20 @@ Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
 }
 \examples{
 # Genes ====
-data <- ensembl("Homo sapiens", format = "genes")
-sanitizeRowData(data) \%>\% glimpse()
+x <- ensembl(
+    organism = "Homo sapiens",
+    format = "genes",
+    genomeBuild = "GRCh37"
+)
+sanitizeRowData(x) \%>\% glimpse()
 
 # Transcripts ====
-data <- ensembl("Homo sapiens", format = "transcripts")
-sanitizeRowData(data) \%>\% glimpse()
+x <- ensembl(
+    organism = "Homo sapiens",
+    format = "transcripts",
+    genomeBuild = "GRCh37"
+)
+sanitizeRowData(x) \%>\% glimpse()
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
