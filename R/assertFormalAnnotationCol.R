@@ -32,7 +32,7 @@ assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
     assert_has_dims(x, severity = severity)
     assert_is_any_of(
         x = colData,
-        classes = c("data.frame", "logical", "NULL"),
+        classes = c("data.frame", "DataFrame", "logical", "NULL"),
         severity = severity
     )
     if (is.data.frame(colData)) {
