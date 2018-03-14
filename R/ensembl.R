@@ -36,7 +36,7 @@
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom ensembldb ensemblVersion genes transcripts
-#' @importFrom utils installed.packages packageVersion
+#' @importFrom utils packageVersion
 #'
 #' @param organism Default recommended usage is to provide the full latin
 #'   organism name as a string.
@@ -112,10 +112,7 @@ ensembl <- function(
     ) {
         # GRCh37 release 75 ====================================================
         id <- "EnsDb.Hsapiens.v75"
-        if (!id %in% installed.packages()[, "Package"]) {
-            BiocInstaller::biocLite(id)
-        }
-        require(id, character.only = TRUE)
+        .biocLite(id)
         edb <- get(id, inherits = TRUE)
     } else if (
         identical(tolower(organism), "mus musculus") &&
@@ -123,10 +120,7 @@ ensembl <- function(
     ) {
         # GRCm37 release 75 ====================================================
         id <- "EnsDb.Mmusculus.v75"
-        if (!id %in% installed.packages()[, "Package"]) {
-            BiocInstaller::biocLite(id)
-        }
-        require(id, character.only = TRUE)
+        .biocLite(id)
         edb <- get(id, inherits = TRUE)
     } else {
         # AnnotationHub ========================================================
