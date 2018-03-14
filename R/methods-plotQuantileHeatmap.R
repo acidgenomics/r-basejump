@@ -64,7 +64,7 @@ NULL
     object <- as.matrix(object)
     assertIsAnImplicitInteger(n)
     assertFormalAnnotationCol(object, annotationCol)
-    if (dims(annotationCol)) {
+    if (has_dims(annotationCol)) {
         annotationCol <- as.data.frame(annotationCol)
     }
     assert_is_a_bool(clusterCols)
