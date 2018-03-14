@@ -63,6 +63,9 @@ NULL
     assert_is_a_string(scale)
     assert_is_subset(scale, c("row", "column", "none"))
     assertFormalAnnotationCol(object, annotationCol)
+    if (dims(annotationCol)) {
+        annotationCol <- as.data.frame(annotationCol)
+    }
     assert_is_a_bool(clusterCols)
     assert_is_a_bool(clusterRows)
     assertIsHexColorFunctionOrNULL(color)
