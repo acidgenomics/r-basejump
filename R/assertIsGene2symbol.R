@@ -10,15 +10,8 @@
 #' @export
 #'
 #' @examples
-#' # Success
-#' gene2symbol <- gene2symbol("Homo sapiens")
+#' gene2symbol <- gene2symbol("Homo sapiens", genomeBuild = "GRCh37")
 #' assertIsGene2symbol(gene2symbol)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsGene2symbol(mtcars),
-#'     error = function(e) e
-#' )
 assertIsGene2symbol <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(

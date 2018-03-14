@@ -19,15 +19,8 @@ Abort on mismatch.
 Assert Is Hex Color Function or NULL
 }
 \examples{
-# Success
 assertIsHexColorFunctionOrNULL(viridis)
 assertIsHexColorFunctionOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsHexColorFunctionOrNULL(scale_color_viridis),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

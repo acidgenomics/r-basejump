@@ -8,16 +8,8 @@
 #' @export
 #'
 #' @examples
-#' # Success ====
-#' data <- ensembl("Homo sapiens", format = "genes")
-#' assertAreGeneAnnotations(data)
-#'
-#' # Failure ====
-#' data <- ensembl("Homo sapiens", format = "transcripts")
-#' tryCatch(
-#'     assertAreGeneAnnotations(data),
-#'     error = function(e) e
-#' )
+#' x <- ensembl("Homo sapiens", format = "genes", genomeBuild = "GRCh37")
+#' assertAreGeneAnnotations(x)
 assertAreGeneAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(

@@ -19,15 +19,8 @@ Abort on mismatch.
 Assert Is Character Vector or NULL
 }
 \examples{
-# Success
 assertIsCharacterOrNULL(c("hello", "world"))
 assertIsCharacterOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsCharacterOrNULL(1L),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

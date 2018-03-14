@@ -19,19 +19,10 @@ Abort on mismatch.
 Assert Is Fill Palette Scale Discrete or NULL
 }
 \examples{
-# Success
 fill <- scale_color_viridis(discrete = TRUE)
 class(fill)
 assertIsFillScaleDiscreteOrNULL(fill)
 assertIsFillScaleDiscreteOrNULL(NULL)
-
-# Failure
-fill <- scale_color_viridis(discrete = FALSE)
-class(fill)
-tryCatch(
-    assertIsFillScaleDiscreteOrNULL(color),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

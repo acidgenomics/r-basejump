@@ -8,16 +8,8 @@
 #' @export
 #'
 #' @examples
-#' # Success ====
-#' transcripts <- GenomicFeatures::transcripts("Homo sapiens")
-#' assertAreTranscriptAnnotations(transcripts)
-#'
-#' # Failure ====
-#' genes <- GenomicFeatures::genes("Homo sapiens")
-#' tryCatch(
-#'     assertAreTranscriptAnnotations(genes),
-#'     error = function(e) e
-#' )
+#' x <- ensembl("Homo sapiens", format = "transcripts", genomeBuild = "GRCh37")
+#' assertAreTranscriptAnnotations(x)
 assertAreTranscriptAnnotations <- function(x, severity = "stop") {
     x <- as.data.frame(x)
     assert_is_subset(

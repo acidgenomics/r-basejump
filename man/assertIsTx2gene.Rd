@@ -21,15 +21,8 @@ Abort on mismatch.
 Check Transcript to Gene Mapping Data
 }
 \examples{
-# Success
-tx2gene <- tx2gene("Homo sapiens")
+tx2gene <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
 assertIsTx2gene(tx2gene)
-
-# Failure
-tryCatch(
-    assertIsTx2gene(mtcars),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
