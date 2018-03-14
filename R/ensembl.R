@@ -235,13 +235,6 @@ ensembl <- function(
         # Merge additional mcols of interest from gene annotations
         gene <- genes(
             x = edb,
-            columns = c(
-                "gene_id",
-                "gene_name",
-                "gene_biotype",
-                "description",
-                "entrezid"
-            ),
             order.by = "gene_id",
             return.type = return
         )
