@@ -92,6 +92,7 @@ ensembl <- function(
     if (isAnImplicitInteger(release)) {
         # Note that ensembldb currently only supports >= 87
         assert_all_are_positive(release)
+        release <- as.integer(release)
     }
     assert_is_a_bool(metadata)
     if (format %in% c("genes", "transcripts")) {
@@ -108,7 +109,10 @@ ensembl <- function(
     # edb = Ensembl database
     if (
         tolower(organism) == "homo sapiens" &&
-        (tolower(genomeBuild) == "grch37" || release == 75L)
+        (
+            identical(tolower(genomeBuild), "grch37") ||
+            identical(release, 75L)
+        )
     ) {
         # GRCh37 release 75 ====================================================
         id <- "EnsDb.Hsapiens.v75"
@@ -116,7 +120,10 @@ ensembl <- function(
         edb <- get(id, inherits = TRUE)
     } else if (
         tolower(organism) == "mus musculus" &&
-        (tolower(genomeBuild) == "grcm37" || release == 75L)
+        (
+            identical(tolower(genomeBuild), "grcm37") ||
+            identical(release, 75L)
+        )
     ) {
         # GRCm37 release 75 ====================================================
         id <- "EnsDb.Mmusculus.v75"
