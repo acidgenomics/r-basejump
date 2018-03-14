@@ -19,15 +19,8 @@ Abort on mismatch.
 Assert Is an Integer or NULL
 }
 \examples{
-# Success
 assertIsAnIntegerOrNULL(1L)
 assertIsAnIntegerOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsAnIntegerOrNULL(c(1L, 2L)),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

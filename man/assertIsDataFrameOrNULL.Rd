@@ -18,16 +18,12 @@ Abort on mismatch.
 \description{
 Assert Is Data Frame or NULL
 }
+\note{
+This checks for \code{data.frame} and will stop for \code{DataFrame} class.
+}
 \examples{
-# Success
 assertIsDataFrameOrNULL(mtcars)
 assertIsDataFrameOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsDataFrameOrNULL(1L),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

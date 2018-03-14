@@ -19,15 +19,8 @@ Abort on mismatch.
 Assert Is a Number or NULL
 }
 \examples{
-# Success
 assertIsANumberOrNULL(1.1)
 assertIsANumberOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsANumberOrNULL(c(1.1, 1.2)),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

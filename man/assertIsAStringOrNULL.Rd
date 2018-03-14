@@ -19,15 +19,8 @@ Abort on mismatch.
 Assert Is a String or NULL
 }
 \examples{
-# Success
 assertIsAStringOrNULL("hello world")
 assertIsAStringOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsAStringOrNULL(c("hello", "world")),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

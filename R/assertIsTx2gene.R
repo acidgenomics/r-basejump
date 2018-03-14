@@ -10,15 +10,8 @@
 #' @export
 #'
 #' @examples
-#' # Success
-#' tx2gene <- tx2gene("Homo sapiens")
+#' tx2gene <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
 #' assertIsTx2gene(tx2gene)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsTx2gene(mtcars),
-#'     error = function(e) e
-#' )
 assertIsTx2gene <- function(x, severity = "stop") {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(

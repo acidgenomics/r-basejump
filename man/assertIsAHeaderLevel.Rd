@@ -16,15 +16,10 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Assert Is a Header Level
+Markdown supports header levels 1-7 (\code{<H1>}-\code{<H7>}).
 }
 \examples{
-# Markdown supports levels 1-7
 assertIsAHeaderLevel(1L)
-tryCatch(
-    assertIsAHeaderLevel(8L),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

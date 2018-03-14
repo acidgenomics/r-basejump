@@ -8,19 +8,10 @@
 #' @export
 #'
 #' @examples
-#' # Success
 #' color <- scale_color_viridis(discrete = TRUE)
 #' class(color)
 #' assertIsColorScaleDiscreteOrNULL(color)
 #' assertIsColorScaleDiscreteOrNULL(NULL)
-#'
-#' # Failure
-#' color <- scale_color_viridis(discrete = FALSE)
-#' class(color)
-#' tryCatch(
-#'     assertIsColorScaleDiscreteOrNULL(color),
-#'     error = function(e) e
-#' )
 assertIsColorScaleDiscreteOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,

@@ -10,12 +10,7 @@
 #' @export
 #'
 #' @examples
-#' a <- 1L
-#' b <- 2L
-#' tryCatch(
-#'     assertAllAreNonExisting(c("a", "b", "c")),
-#'     error = function(e) e
-#' )
+#' assertAllAreNonExisting(c("XXX", "YYY"))
 assertAllAreNonExisting <- function(
     x,
     envir = parent.frame(),

@@ -21,22 +21,6 @@
 #'     stringsAsFactors = FALSE
 #' )
 #' assertHasRownames(data)
-#'
-#' # Now set the rownames as NULL
-#' rownames(data) <- NULL
-#' tryCatch(
-#'     assertHasRownames(data),
-#'     error = function(e) e
-#' )
-#'
-#' tibble <- tibble(
-#'     "sample_1" = c(1L, 2L),
-#'     "sample_2" = c(3L, 4L)
-#' )
-#' tryCatch(
-#'     assertHasRownames(tibble),
-#'     error = function(e) e
-#' )
 assertHasRownames <- function(x, severity = "stop") {
     stopifnot(hasRownames(x))
     assert_are_disjoint_sets(

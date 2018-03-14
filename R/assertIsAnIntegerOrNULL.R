@@ -6,15 +6,8 @@
 #' @export
 #'
 #' @examples
-#' # Success
 #' assertIsAnIntegerOrNULL(1L)
 #' assertIsAnIntegerOrNULL(NULL)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsAnIntegerOrNULL(c(1L, 2L)),
-#'     error = function(e) e
-#' )
 assertIsAnIntegerOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
         x = x,

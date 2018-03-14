@@ -32,15 +32,7 @@ colData <- data.frame(
     row.names = c("sample_1", "sample_2"),
     stringsAsFactors = TRUE
 )
-
-# Success
 assertFormalAnnotationCol(x, colData)
-
-# Failure
-tryCatch(
-    assertFormalAnnotationCol(mtcars, colData),
-    error = function(e) e
-)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
