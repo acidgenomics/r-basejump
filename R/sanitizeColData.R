@@ -33,6 +33,7 @@ sanitizeColData <- function(object) {
     assert_is_non_empty(object)
     assert_has_colnames(object)
     class <- class(object)[[1L]]
+    object <- as(object, "DataFrame")
     object <- camel(object)
     list <- lapply(
         X = object,
@@ -40,7 +41,8 @@ sanitizeColData <- function(object) {
             droplevels(as.factor(x))
         }
     )
-    data <- do.call(cbind, list)
+    # DataFrame class supports coercion from list; data.frame does not
+    data <- as(list, "DataFrame")
     data <- as(data, class)
     rownames(data) <- rownames(object)
     data
