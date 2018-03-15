@@ -8,14 +8,26 @@
 #' @export
 #'
 #' @examples
-#' colData <- DataFrame(
+#' # data.frame ====
+#' from <- data.frame(
+#'     "genotype" = c("wt", "ko", "wt", "ko"),
+#'     "batch" = c(1L, 1L, 2L, 2L),
 #'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
-#'     genotype = c("wt", "ko", "wt", "ko"),
-#'     batch = c(1L, 1L, 2L, 2L)
+#'     stringsAsFactors = FALSE
 #' )
-#' print(colData)
-#' # Note that all columns will be sanitized to factor
-#' sanitizeColData(colData)
+#' glimpse(from)
+#' to <- sanitizeColData(from)
+#' glimpse(to)
+#'
+#' # DataFrame ====
+#' from <- DataFrame(
+#'     "genotype" = c("wt", "ko", "wt", "ko"),
+#'     "batch" = c(1L, 1L, 2L, 2L),
+#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+#' )
+#' glimpse(from)
+#' to <- sanitizeColData(from)
+#' glimpse(to)
 sanitizeColData <- function(object) {
     assert_is_any_of(object, c("data.frame", "DataFrame"))
     assert_is_non_empty(object)
