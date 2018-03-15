@@ -17,9 +17,10 @@
 #' # Note that all columns will be sanitized to factor
 #' sanitizeColData(colData)
 sanitizeColData <- function(object) {
-    assert_is_all_of(object, "DataFrame")
+    assert_is_any_of(object, c("data.frame", "DataFrame"))
     assert_is_non_empty(object)
     assert_has_colnames(object)
+    class <- class(object)[[1L]]
     object <- camel(object)
     list <- lapply(
         X = object,
@@ -27,7 +28,8 @@ sanitizeColData <- function(object) {
             droplevels(as.factor(x))
         }
     )
-    data <- as(list, "DataFrame")
+    data <- do.call(cbind, list)
+    data <- as(data, class)
     rownames(data) <- rownames(object)
     data
 }
