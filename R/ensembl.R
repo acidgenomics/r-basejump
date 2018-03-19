@@ -117,19 +117,8 @@ ensembl <- function(
             identical(release, 75L)
         )
     ) {
-        # GRCh37 release 75 ====================================================
+        # GRCh37 release 75
         id <- "EnsDb.Hsapiens.v75"
-        .biocLite(id)
-        edb <- get(id, inherits = TRUE)
-    } else if (
-        tolower(organism) == "mus musculus" &&
-        (
-            identical(tolower(genomeBuild), "grcm37") ||
-            identical(release, 75L)
-        )
-    ) {
-        # GRCm37 release 75 ====================================================
-        id <- "EnsDb.Mmusculus.v75"
         .biocLite(id)
         edb <- get(id, inherits = TRUE)
     } else {
