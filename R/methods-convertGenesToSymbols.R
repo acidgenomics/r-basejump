@@ -51,7 +51,6 @@ NULL
     # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
-    assert_has_no_duplicates(object)
     assertIsDataFrameOrNULL(gene2symbol)
     assertIsAStringOrNULL(organism)
 
