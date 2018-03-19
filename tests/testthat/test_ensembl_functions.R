@@ -55,12 +55,6 @@ test_that("convertGenesToSymbols : Invalid identifiers", {
         "Failed to match all genes to symbols: ENSMUSG00000000000"
     )
     expect_error(
-        convertGenesToSymbols(
-            object = c("ENSMUSG00000000001", "ENSMUSG00000000001"),
-            release = ensemblRelease),
-        "has_no_duplicates :"
-    )
-    expect_error(
         convertGenesToSymbols(c("ENSMUSG00000000001", NA)),
         "is_non_missing_nor_empty_character :"
     )
