@@ -70,6 +70,6 @@ removeNA(c(1, 2, NA))
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{sanitizeColData}},
-  \code{\link{sanitizeRowData}}
+  \code{\link{fixNA}}, \code{\link{sanitizeRowData}},
+  \code{\link{sanitizeSampleData}}
 }

@@ -1,4 +1,4 @@
-#' Sanitize Column Data
+#' Sanitize Sample Data
 #'
 #' @family Sanitization Functions
 #'
@@ -16,7 +16,7 @@
 #'     stringsAsFactors = FALSE
 #' )
 #' glimpse(from)
-#' to <- sanitizeColData(from)
+#' to <- sanitizeSampleData(from)
 #' glimpse(to)
 #'
 #' # DataFrame ====
@@ -26,9 +26,9 @@
 #'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
 #' )
 #' glimpse(from)
-#' to <- sanitizeColData(from)
+#' to <- sanitizeSampleData(from)
 #' glimpse(to)
-sanitizeColData <- function(object) {
+sanitizeSampleData <- function(object) {
     assert_is_any_of(object, c("data.frame", "DataFrame"))
     assert_is_non_empty(object)
     assert_has_colnames(object)
