@@ -65,7 +65,6 @@ Suggests:
     BiocStyle,
     devtools,
     EnsDb.Hsapiens.v75,
-    EnsDb.Mmusculus.v75,
     lintr,
     roxygen2,
     testthat,
