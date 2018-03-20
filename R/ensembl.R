@@ -231,12 +231,14 @@ ensembl <- function(
             order.by = "tx_id",
             return.type = return
         )
-        # Merge additional mcols of interest from gene annotations
+        # Get additional mcols of interest from gene annotations
         gene <- genes(
             x = edb,
             order.by = "gene_id",
             return.type = return
         )
+
+        # Prepare the merged data
         if (is(tx, "GRanges")) {
             txData <- mcols(tx)
             geneData <- mcols(gene)
@@ -244,21 +246,28 @@ ensembl <- function(
             txData <- tx
             geneData <- gene
         }
+        rownames(txData) <- txData[["tx_id"]]
+        rownames(geneData) <- geneData[["gene_id"]]
         mergeData <- merge(
             x = txData,
             y = geneData,
             by = "gene_id",
             all.x = TRUE,
             sort = FALSE
-        ) %>%
-            .[order(.[["tx_id"]]), , drop = FALSE]
-        assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
+        )
+        rownames(mergeData) <- mergeData[["tx_id"]]
+        assert_are_set_equal(rownames(txData), rownames(mergeData))
+        mergeData <- mergeData[rownames(txData), , drop = FALSE]
+        assert_are_identical(rownames(txData), rownames(mergeData))
+
+        # Now we can slot back into the transcript mcols
         if (is(tx, "GRanges")) {
             mcols(tx) <- mergeData
         } else {
             tx <- mergeData
         }
         data <- tx
+
         if (return == "GRanges") {
             assert_has_names(data)
         } else {
