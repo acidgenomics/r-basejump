@@ -207,10 +207,10 @@ ensembl <- function(
     assert_is_a_string(genomeBuild)
 
     inform(paste(
-        id,
-        paste("organism:", organism(edb)),
-        paste("genome build:", genomeBuild),
-        paste("release version:", ensemblVersion(edb)),
+        paste("hub id:", deparse(id)),
+        paste("organism:", deparse(organism(edb))),
+        paste("genome build:", deparse(genomeBuild)),
+        paste("release version:", deparse(ensemblVersion(edb))),
         sep = "\n"
     ))
 
