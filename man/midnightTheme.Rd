@@ -28,6 +28,7 @@ p + midnightTheme()
 }
 
 Other Plot Functions: \code{\link{dynamicPlotlist}},
+  \code{\link{plotCorrelationHeatmap}},
   \code{\link{plotHeatmap}},
   \code{\link{plotQuantileHeatmap}}
 }

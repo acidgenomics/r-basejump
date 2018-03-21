@@ -58,7 +58,9 @@ plotQuantileHeatmap(mat)
 }
 \seealso{
 Other Plot Functions: \code{\link{dynamicPlotlist}},
-  \code{\link{midnightTheme}}, \code{\link{plotHeatmap}}
+  \code{\link{midnightTheme}},
+  \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotHeatmap}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

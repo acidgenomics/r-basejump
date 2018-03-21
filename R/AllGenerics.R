@@ -157,6 +157,14 @@ setGeneric("plotHeatmap", function(object, ...) {
 
 
 
+#' @rdname plotCorrelationHeatmap
+#' @export
+setGeneric("plotCorrelationHeatmap", function(object, ...) {
+    standardGeneric("plotCorrelationHeatmap")
+})
+
+
+
 #' @rdname plotQuantileHeatmap
 #' @export
 setGeneric("plotQuantileHeatmap", function(object, ...) {
