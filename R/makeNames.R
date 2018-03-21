@@ -1,6 +1,9 @@
-#' Make Names
+#' Make Syntactically Valid Names
 #'
 #' @note Sanitizes names using "`_`" instead of "`.`".
+#'
+#' @author Michael Steinbaugh
+#' @keywords internal
 #'
 #' @inherit base::make.names
 #'
