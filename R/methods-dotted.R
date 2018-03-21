@@ -114,7 +114,7 @@ NULL
 
 
 
-.dotted.factor <- function(object) {
+.dotted.factor <- function(object) {  # nolint
     object %>%
         .dotted.vector() %>%
         factor()
@@ -145,7 +145,7 @@ NULL
 
 
 
-.dotted.vector <- function(object) {  # no lint
+.dotted.vector <- function(object) {  # nolint
     if (!is.null(names(object))) {
         names <- .dotted(names(object))
     } else {

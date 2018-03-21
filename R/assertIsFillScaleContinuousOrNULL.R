@@ -1,5 +1,3 @@
-# TODO Need to add a check to distinguish `color/fill`
-
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'
 #' @family Assert Check Functions

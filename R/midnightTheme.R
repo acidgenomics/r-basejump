@@ -44,4 +44,4 @@ midnightTheme <- function() {
 # Aliases ======================================================================
 #' @rdname midnightTheme
 #' @export
-midnightTheme -> theme_midnight
+midnightTheme -> theme_midnight  # nolint

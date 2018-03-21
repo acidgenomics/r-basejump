@@ -30,7 +30,7 @@ NULL
     assert_is_a_string(x, severity = severity)
     assert_is_subset(
         x = x,
-        y = c("camel", "dotted", "snake" , "upperCamel"),
+        y = c("camel", "dotted", "snake", "upperCamel"),
         severity = severity
     )
 }

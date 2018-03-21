@@ -75,7 +75,6 @@ NULL
     # Calculate the quantile breaks
     breaks <- .quantileBreaks(object, n = n)
 
-    # TODO Merge code with plotHeatmap
     # Prepare the annotation columns, if necessary. Check for `dim()` here
     # so we can support input of `DataFrame` class objects.
     if (is.data.frame(annotationCol)) {
@@ -88,7 +87,6 @@ NULL
         annotationCol <- NA
     }
 
-    # TODO Merge with plotHeatmap
     # Define colors for each annotation column, if desired
     if (is.data.frame(annotationCol) & is.function(legendColor)) {
         annotationColors <- lapply(

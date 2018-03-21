@@ -82,8 +82,6 @@ setMethod(
             length(unique(data[["geneID"]])), "genes"
         ))
 
-        # TODO Add summary of duplicate symbols
-
         rownames(data) <- data[["geneID"]]
         data
     }

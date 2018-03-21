@@ -30,7 +30,7 @@ NULL
 
 
 # Constructors =================================================================
-.fixNA.character <- function(object) {
+.fixNA.character <- function(object) {  # nolint
     assert_is_character(object)
     patterns <- c(
         "^$",

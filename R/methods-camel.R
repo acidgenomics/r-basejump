@@ -129,7 +129,7 @@ NULL
 
 
 
-.camel.factor <- function(object, strict = FALSE) {
+.camel.factor <- function(object, strict = FALSE) {  # nolint
     object %>%
         .camel.vector(strict = strict) %>%
         factor()

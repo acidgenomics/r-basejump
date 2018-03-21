@@ -40,11 +40,19 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
     vec <- c("EGFP", "ENSMUSG00000000001")
     g2s <- suppressWarnings(
-        convertGenesToSymbols(vec, organism = "Mus musculus", release = ensemblRelease)
+        convertGenesToSymbols(
+            object = vec,
+            organism = "Mus musculus",
+            release = ensemblRelease
+        )
     )
     expect_identical(g2s, c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3"))
     expect_warning(
-        convertGenesToSymbols(vec, organism = "Mus musculus", release = ensemblRelease),
+        convertGenesToSymbols(
+            object = vec,
+            organism = "Mus musculus",
+            release = ensemblRelease
+        ),
         "Failed to match all genes to symbols: EGFP"
     )
 })
