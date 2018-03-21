@@ -48,7 +48,7 @@ palette.}
 \item{title}{\emph{Optional.} Plot title.}
 }
 \value{
-Plot heatmap and return \code{list}, containing \code{gtable}.
+Show heatmap and return \code{list}, containing \code{gtable}.
 }
 \description{
 Construct a simple heatmap. By default, row- and column-wise hierarchical

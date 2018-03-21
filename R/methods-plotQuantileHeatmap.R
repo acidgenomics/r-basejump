@@ -8,8 +8,7 @@
 #'
 #' @param n The number of breaks to create.
 #'
-#' @return Show heatmap. Invisibly return `list` containing breaks and
-#'   [pheatmap::pheatmap()] `gtable`.
+#' @return Show heatmap. Invisibly return `list` containing breaks and `gtable`.
 #'
 #' @examples
 #' mat <- matrix(1:10000, nrow = 100, ncol = 100)

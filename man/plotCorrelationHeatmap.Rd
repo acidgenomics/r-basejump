@@ -40,6 +40,9 @@ palette.}
 
 \item{title}{\emph{Optional.} Plot title.}
 }
+\value{
+Show heatmap and return \code{list}, containing \code{gtable}.
+}
 \description{
 Construct a correlation heatmap comparing the columns of the matrix.
 }
@@ -48,6 +51,12 @@ mat <- as.matrix(mtcars)
 plotCorrelationHeatmap(mat)
 }
 \seealso{
+\itemize{
+\item \code{\link[stats:cor]{stats::cor()}}.
+\item \code{\link[stats:hclust]{stats::hclust()}}.
+\item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
+}
+
 Other Plot Functions: \code{\link{dynamicPlotlist}},
   \code{\link{midnightTheme}}, \code{\link{plotHeatmap}},
   \code{\link{plotQuantileHeatmap}}
