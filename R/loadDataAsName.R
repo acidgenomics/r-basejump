@@ -16,11 +16,11 @@
 #'
 #' @examples
 #' loaded <- loadDataAsName(
-#'     XXX = makeNames,
+#'     makeNames = mn,
 #'     dir = system.file("extdata", package = "basejump")
 #' )
 #' print(loaded)
-#' class(XXX)
+#' class(makeNames)
 loadDataAsName <- function(
     ...,
     dir = ".",

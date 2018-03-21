@@ -50,7 +50,7 @@ test_that("loadData : Invalid arguments", {
 
 # loadDataAsName ===============================================================
 test_that("loadDataAsName : Non-standard evaluation", {
-    x <- loadDataAsName(data_1 = gr, data_2 = makeNames)
+    x <- loadDataAsName(data_1 = gr, data_2 = mn)
     expect_is(x, "character")
     expect_identical(names(x), c("data_1", "data_2"))
     expect_true(exists("data_1", inherits = FALSE))
@@ -58,7 +58,7 @@ test_that("loadDataAsName : Non-standard evaluation", {
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment
     expect_error(
-        loadDataAsName(data_1 = gr, data_2 = makeNames),
+        loadDataAsName(data_1 = gr, data_2 = mn),
         "Already exists in environment: data_1, data_2"
     )
 })

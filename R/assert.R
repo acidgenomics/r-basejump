@@ -12,35 +12,3 @@
 #'
 #' @return Abort on mismatch.
 NULL
-
-
-
-.assertFormalEnsembldbReturn <- function(x, severity = "stop") {
-    assert_is_a_string(x, severity = severity)
-    assert_is_subset(
-        x = x,
-        y = ensemblReturn,
-        severity = severity
-    )
-}
-
-
-
-.assertFormalMakeNames <- function(x, severity = "stop") {
-    assert_is_a_string(x, severity = severity)
-    assert_is_subset(
-        x = x,
-        y = c("camel", "dotted", "snake", "upperCamel"),
-        severity = severity
-    )
-}
-
-
-
-.assertFormalSeverity <- function(x, severity = "stop") {
-    assert_is_a_string(x, severity = severity)
-    assert_is_subset(
-        x = x,
-        y = c("stop", "warning", "message", "none")
-    )
-}

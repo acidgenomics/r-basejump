@@ -111,32 +111,32 @@ Object with syntatically valid names. For objects supporting
 Camel Case
 }
 \examples{
-load(system.file("extdata/makeNames.rda", package = "basejump"))
+load(system.file("extdata/mn.rda", package = "basejump"))
 
 # character ====
-character <- makeNames$character
+character <- mn$character
 print(character)
 camel(character)
 upperCamel(character)
 
-namedCharacter <- makeNames$namedCharacter
+namedCharacter <- mn$namedCharacter
 camel(namedCharacter)
 upperCamel(namedCharacter)
 
 # factor ====
-factor <- makeNames$factor
+factor <- mn$factor
 print(factor)
 camel(factor)
 upperCamel(factor)
 
 # data.frame ====
-dataFrame <- makeNames$dataFrame
+dataFrame <- mn$dataFrame
 print(dataFrame)
 camel(dataFrame, rownames = TRUE)
 camel(dataFrame, rownames = FALSE)
 
 # list ====
-list <- makeNames$list
+list <- mn$list
 print(list)
 camel(list)
 }

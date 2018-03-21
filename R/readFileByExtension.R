@@ -38,16 +38,21 @@
 #' glimpse(xlsx)
 readFileByExtension <- function(
     object,
-    makeNames = "camel",
-    severity = "stop",
+    makeNames = c("camel", "snake", "upperCamel", "dotted"),
+    severity = c("stop", "warning", "message", "none"),
     ...
 ) {
     assert_is_a_string(object)
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
     assert_all_are_matching_regex(object, extPattern)
-    makeNames <- .getMakeNamesFunction(makeNames)
-    .assertFormalSeverity(severity)
+    makeNames <- match.arg(makeNames)
+    makeNames <- get(
+        x = makeNames,
+        envir = asNamespace("basejump"),
+        inherits = FALSE
+    )
+    severity <- match.arg(severity)
 
     file <- localOrRemoteFile(object, severity = severity)
     basename <- names(file)

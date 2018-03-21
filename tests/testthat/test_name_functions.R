@@ -34,7 +34,7 @@ test_that("camel : ANY", {
 
 test_that("camel : character", {
     expect_identical(
-        camel(makeNames[["character"]], strict = FALSE),
+        camel(mn[["character"]], strict = FALSE),
         c(
             "helloWorld",
             "helloWORLD",
@@ -50,7 +50,7 @@ test_that("camel : character", {
         )
     )
     expect_identical(
-        camel(makeNames[["character"]], strict = TRUE),
+        camel(mn[["character"]], strict = TRUE),
         c(
             "helloWorld",
             "helloWorld",
@@ -82,7 +82,7 @@ test_that("camel : character", {
 
     # Named
     expect_identical(
-        camel(makeNames[["namedCharacter"]], strict = TRUE),
+        camel(mn[["namedCharacter"]], strict = TRUE),
         c("itemA" = "helloWorld", "itemB" = "helloWorld")
     )
 })
@@ -90,18 +90,18 @@ test_that("camel : character", {
 test_that("camel : data.frame", {
     # Sanitize rownames
     expect_identical(
-        camel(makeNames[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
+        camel(mn[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "mazdaRx4"
     )
     # Unset rownames should be skipped, even when `rownames = TRUE`
     expect_identical(
-        makeNames[["dataFrame"]] %>%
+        mn[["dataFrame"]] %>%
             set_rownames(NULL) %>%
             camel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
-        as.character(1L:nrow(makeNames[["dataFrame"]]))
+        as.character(1L:nrow(mn[["dataFrame"]]))
     )
 })
 
@@ -119,7 +119,7 @@ test_that("camel : GRanges", {
 
 test_that("camel : list", {
     expect_identical(
-        camel(makeNames[["list"]], strict = TRUE),
+        camel(mn[["list"]], strict = TRUE),
         list("itemA" = c(1L, 2L), "itemB" = c(3L, 4L))
     )
 })
@@ -137,7 +137,7 @@ test_that("camel : matrix", {
 
     # Sanitize rownames
     expect_identical(
-        camel(makeNames[["matrix"]], rownames = TRUE, strict = TRUE) %>%
+        camel(mn[["matrix"]], rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "mazdaRx4"
@@ -145,7 +145,7 @@ test_that("camel : matrix", {
 
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
-        makeNames[["matrix"]] %>%
+        mn[["matrix"]] %>%
             set_rownames(NULL) %>%
             camel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
@@ -155,7 +155,7 @@ test_that("camel : matrix", {
 
 test_that("camel : tibble", {
     expect_identical(
-        makeNames[["tibble"]] %>%
+        mn[["tibble"]] %>%
             .[, 1L:5L] %>%
             camel(strict = TRUE) %>%
             colnames(),
@@ -195,7 +195,7 @@ test_that("dotted : ANY", {
 
 test_that("dotted : character", {
     expect_identical(
-        dotted(makeNames[["character"]]),
+        dotted(mn[["character"]]),
         c(
             "hello.world",
             "HELLO.WORLD",
@@ -213,14 +213,14 @@ test_that("dotted : character", {
 
     # Named
     expect_identical(
-        dotted(makeNames[["namedCharacter"]]),
+        dotted(mn[["namedCharacter"]]),
         c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD")
     )
 })
 
 test_that("dotted : data.frame", {
     expect_identical(
-        dotted(makeNames[["dataFrame"]], rownames = TRUE) %>%
+        dotted(mn[["dataFrame"]], rownames = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
@@ -245,7 +245,7 @@ test_that("dotted : GRanges", {
 
 test_that("dotted : list", {
     expect_identical(
-        dotted(makeNames[["list"]]),
+        dotted(mn[["list"]]),
         list("Item.A" = c(1L, 2L), "Item.B" = c(3L, 4L))
     )
 })
@@ -263,7 +263,7 @@ test_that("dotted : matrix", {
 
     # Sanitize rownames
     expect_identical(
-        dotted(makeNames[["matrix"]], rownames = TRUE) %>%
+        dotted(mn[["matrix"]], rownames = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "Mazda.RX4"
@@ -271,7 +271,7 @@ test_that("dotted : matrix", {
 
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
-        makeNames[["matrix"]] %>%
+        mn[["matrix"]] %>%
             set_rownames(NULL) %>%
             dotted(rownames = TRUE) %>%
             rownames(),
@@ -281,7 +281,7 @@ test_that("dotted : matrix", {
 
 test_that("dotted : tibble", {
     expect_identical(
-        makeNames[["tibble"]] %>%
+        mn[["tibble"]] %>%
             .[, 1L:5L] %>%
             dotted() %>%
             colnames(),
@@ -326,7 +326,7 @@ test_that("snake : ANY", {
 })
 
 test_that("snake : character", {
-    x <- snake(makeNames[["character"]])
+    x <- snake(mn[["character"]])
     expect_identical(
         x,
         c(
@@ -345,7 +345,7 @@ test_that("snake : character", {
     )
 
     # Named
-    x <- snake(makeNames[["namedCharacter"]])
+    x <- snake(mn[["namedCharacter"]])
     expect_identical(
         x,
         c("item_a" = "hello_world", "item_b" = "hello_world")
@@ -353,7 +353,7 @@ test_that("snake : character", {
 })
 
 test_that("snake : data.frame", {
-    x <- snake(makeNames[["dataFrame"]], rownames = TRUE) %>%
+    x <- snake(mn[["dataFrame"]], rownames = TRUE) %>%
         rownames() %>%
         .[[1L]]
     expect_identical(
@@ -379,7 +379,7 @@ test_that("snake : GRanges", {
 })
 
 test_that("snake : list", {
-    x <- snake(makeNames[["list"]])
+    x <- snake(mn[["list"]])
     expect_identical(
         x,
         list("item_a" = c(1L, 2L), "item_b" = c(3L, 4L))
@@ -400,7 +400,7 @@ test_that("snake : matrix", {
 
     # Sanitize rownames
     expect_identical(
-        snake(makeNames[["matrix"]], rownames = TRUE) %>%
+        snake(mn[["matrix"]], rownames = TRUE) %>%
             rownames() %>%
             .[[1L]],
         "mazda_rx4"
@@ -408,7 +408,7 @@ test_that("snake : matrix", {
 
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
-        makeNames[["matrix"]] %>%
+        mn[["matrix"]] %>%
             set_rownames(NULL) %>%
             snake(rownames = TRUE) %>%
             rownames(),
@@ -417,7 +417,7 @@ test_that("snake : matrix", {
 })
 
 test_that("snake : tibble", {
-    x <- makeNames[["tibble"]] %>%
+    x <- mn[["tibble"]] %>%
         .[, 1L:5L] %>%
         snake() %>%
         colnames()
@@ -465,7 +465,7 @@ test_that("upperCamel : ANY", {
 
 test_that("upperCamel : character", {
     expect_identical(
-        upperCamel(makeNames[["character"]], strict = FALSE),
+        upperCamel(mn[["character"]], strict = FALSE),
         c(
             "HelloWorld",
             "HELLOWORLD",  # improve this?
@@ -481,7 +481,7 @@ test_that("upperCamel : character", {
         )
     )
     expect_identical(
-        upperCamel(makeNames[["character"]], strict = TRUE),
+        upperCamel(mn[["character"]], strict = TRUE),
         c(
             "HelloWorld",
             "HelloWorld",
@@ -513,7 +513,7 @@ test_that("upperCamel : character", {
 
     # Named
     expect_identical(
-        upperCamel(makeNames[["namedCharacter"]], strict = TRUE),
+        upperCamel(mn[["namedCharacter"]], strict = TRUE),
         c("ItemA" = "HelloWorld", "ItemB" = "HelloWorld")
     )
 })
@@ -521,7 +521,7 @@ test_that("upperCamel : character", {
 test_that("upperCamel : data.frame", {
     # Sanitize rownames
     expect_identical(
-        upperCamel(makeNames[["dataFrame"]],
+        upperCamel(mn[["dataFrame"]],
                    rownames = TRUE, strict = TRUE) %>%
             rownames() %>%
             .[[1L]],
@@ -555,7 +555,7 @@ test_that("upperCamel : GRanges", {
 
 test_that("upperCamel : list", {
     expect_identical(
-        upperCamel(makeNames[["list"]], strict = TRUE),
+        upperCamel(mn[["list"]], strict = TRUE),
         list("ItemA" = c(1L, 2L), "ItemB" = c(3L, 4L))
     )
 })
@@ -574,7 +574,7 @@ test_that("upperCamel : matrix", {
     # Sanitize rownames
     expect_identical(
         upperCamel(
-            makeNames[["matrix"]],
+            mn[["matrix"]],
             rownames = TRUE, strict = TRUE
         ) %>%
             rownames() %>%
@@ -584,7 +584,7 @@ test_that("upperCamel : matrix", {
 
     # Unset rownames (ignore in `.checkRownames()`)
     expect_identical(
-        makeNames[["matrix"]] %>%
+        mn[["matrix"]] %>%
             set_rownames(NULL) %>%
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
@@ -594,7 +594,7 @@ test_that("upperCamel : matrix", {
 
 test_that("upperCamel : tibble", {
     expect_identical(
-        makeNames[["tibble"]] %>%
+        mn[["tibble"]] %>%
             .[, 1L:5L] %>%
             upperCamel(strict = TRUE) %>%
             colnames(),

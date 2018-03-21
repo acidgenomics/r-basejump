@@ -4,7 +4,8 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = "camel", severity = "stop", ...)
+readFileByExtension(object, makeNames = c("camel", "snake", "upperCamel",
+  "dotted"), severity = c("stop", "warning", "message", "none"), ...)
 }
 \arguments{
 \item{object}{File path.}
