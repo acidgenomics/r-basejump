@@ -7,11 +7,19 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams plotHeatmap
+#'
 #' @param method Correlation coefficient (or covariance) method to be computed.
 #'   Defaults to "`pearson`" but "`spearman`" can also be used. Consult the
 #'   [stats::cor()] documentation for more information.
 #' @param clusteringMethod Clustering method. Accepts the same values as
 #'   [stats::hclust()].
+#'
+#' @seealso
+#' - [stats::cor()].
+#' - [stats::hclust()].
+#' - [pheatmap::pheatmap()].
+#'
+#' @return Show heatmap and return `list`, containing `gtable`.
 #'
 #' @examples
 #' mat <- as.matrix(mtcars)

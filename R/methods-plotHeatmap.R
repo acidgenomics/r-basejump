@@ -27,7 +27,7 @@
 #'
 #' @seealso [pheatmap::pheatmap()].
 #'
-#' @return Plot heatmap and return `list`, containing `gtable`.
+#' @return Show heatmap and return `list`, containing `gtable`.
 #'
 #' @examples
 #' mat <- as.matrix(mtcars[, c("disp", "hp", "mpg")])
