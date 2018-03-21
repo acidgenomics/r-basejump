@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeNames.R
 \name{makeNames}
 \alias{makeNames}
-\title{Make Names}
+\title{Make Syntactically Valid Names}
 \usage{
 makeNames(names, unique = FALSE)
 }
@@ -17,7 +17,7 @@ makeNames(names, unique = FALSE)
 Character vector.
 }
 \description{
-Make Names
+Make Syntactically Valid Names
 }
 \details{
 A syntactically valid name consists of letters, numbers and the dot or
@@ -52,3 +52,7 @@ Sanitizes names using "\code{_}" instead of "\code{.}".
   \code{\link{character}},
   \code{\link{data.frame}}.
 }
+\author{
+Michael Steinbaugh
+}
+\keyword{internal}
