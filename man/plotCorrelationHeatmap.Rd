@@ -24,8 +24,8 @@ plotCorrelationHeatmap(object, ...)
 Defaults to "\code{pearson}" but "\code{spearman}" can also be used. Consult the
 \code{\link[stats:cor]{stats::cor()}} documentation for more information.}
 
-\item{clusteringMethod}{Clustering method. Consult the \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}
-documentation for more information.}
+\item{clusteringMethod}{Clustering method. Accepts the same values as
+\code{\link[stats:hclust]{stats::hclust()}}.}
 
 \item{annotationCol}{\emph{Optional.} \code{data.frame} that defines annotation
 mappings for the columns.}
@@ -41,10 +41,10 @@ palette.}
 \item{title}{\emph{Optional.} Plot title.}
 }
 \description{
-Construct a correlation heatmap.
+Construct a correlation heatmap comparing the columns of the matrix.
 }
 \examples{
-mat <- as.matrix(mtcars[, c("disp", "hp", "mpg")])
+mat <- as.matrix(mtcars)
 plotCorrelationHeatmap(mat)
 }
 \seealso{
