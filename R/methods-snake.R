@@ -6,30 +6,30 @@
 #' @inherit dotted
 #'
 #' @examples
-#' load(system.file("extdata/makeNames.rda", package = "basejump"))
+#' load(system.file("extdata/mn.rda", package = "basejump"))
 #'
 #' # character ====
-#' character <- makeNames$character
+#' character <- mn$character
 #' print(character)
 #' snake(character)
 #'
-#' namedCharacter <- makeNames$namedCharacter
+#' namedCharacter <- mn$namedCharacter
 #' print(namedCharacter)
 #' snake(namedCharacter)
 #'
 #' # factor ====
-#' factor <- makeNames$factor
+#' factor <- mn$factor
 #' print(factor)
 #' snake(factor)
 #'
 #' # data.frame ====
-#' dataFrame <- makeNames$dataFrame
+#' dataFrame <- mn$dataFrame
 #' print(dataFrame)
 #' snake(dataFrame, rownames = TRUE)
 #' snake(dataFrame, rownames = FALSE)
 #'
 #' # list ====
-#' list <- makeNames$list
+#' list <- mn$list
 #' print(list)
 #' snake(list)
 NULL

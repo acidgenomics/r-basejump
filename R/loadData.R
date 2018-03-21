@@ -31,11 +31,11 @@
 #'
 #' @examples
 #' loaded <- loadData(
-#'     makeNames,
+#'     mn,
 #'     dir = system.file("extdata", package = "basejump")
 #' )
 #' print(loaded)
-#' class(makeNames)
+#' class(mn)
 loadData <- function(
     ...,
     dir = ".",

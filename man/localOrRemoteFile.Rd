@@ -4,7 +4,7 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, severity = "stop")
+localOrRemoteFile(object, severity = c("stop", "warning", "message", "none"))
 }
 \arguments{
 \item{object}{Object.}

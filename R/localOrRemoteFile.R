@@ -28,9 +28,12 @@
 #'     "http://basejump.seq.cloud/mtcars.rda"
 #' ))
 #' names(files)
-localOrRemoteFile <- function(object, severity = "stop") {
+localOrRemoteFile <- function(
+    object,
+    severity = c("stop", "warning", "message", "none")
+) {
     assert_is_character(object)
-    .assertFormalSeverity(severity)
+    severity <- match.arg(severity)
 
     files <- mapply(
         FUN = function(path) {

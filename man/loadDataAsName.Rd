@@ -29,11 +29,11 @@ names using non-standard evaluation.
 }
 \examples{
 loaded <- loadDataAsName(
-    XXX = makeNames,
+    makeNames = mn,
     dir = system.file("extdata", package = "basejump")
 )
 print(loaded)
-class(XXX)
+class(makeNames)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},
