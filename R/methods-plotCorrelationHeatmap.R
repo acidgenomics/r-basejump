@@ -1,8 +1,6 @@
-# FIXME Improve description and `clusteringMethod` documentation
-
 #' Plot Correlation Heatmap
 #'
-#' Construct a correlation heatmap.
+#' Construct a correlation heatmap comparing the columns of the matrix.
 #'
 #' @name plotCorrelationHeatmap
 #' @family Plot Functions
@@ -12,11 +10,11 @@
 #' @param method Correlation coefficient (or covariance) method to be computed.
 #'   Defaults to "`pearson`" but "`spearman`" can also be used. Consult the
 #'   [stats::cor()] documentation for more information.
-#' @param clusteringMethod Clustering method. Consult the [pheatmap::pheatmap()]
-#'   documentation for more information.
+#' @param clusteringMethod Clustering method. Accepts the same values as
+#'   [stats::hclust()].
 #'
 #' @examples
-#' mat <- as.matrix(mtcars[, c("disp", "hp", "mpg")])
+#' mat <- as.matrix(mtcars)
 #' plotCorrelationHeatmap(mat)
 NULL
 
@@ -57,6 +55,9 @@ NULL
     } else if (!is_a_string(title)) {
         title <- NULL
     }
+
+    # Correlation matrix
+    mat <- cor(object, method = method)
 
     # Prepare the annotation columns
     if (is.data.frame(annotationCol)) {
@@ -99,7 +100,7 @@ NULL
 
     # Return pretty heatmap with modified defaults
     args <- list(
-        "mat" = object,
+        "mat" = mat,
         "annotationCol" = annotationCol,
         "annotationColors" = annotationColors,
         "borderColor" = borderColor,
