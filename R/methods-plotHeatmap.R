@@ -2,7 +2,7 @@
 #'
 #' Construct a simple heatmap. By default, row- and column-wise hierarchical
 #' clustering is performed using the Ward method, but this behavior can be
-#' overrided by setting `cluster_rows` or `cluster_cols` to `FALSE`.
+#' overrided by setting `clusterRows` or `clusterCols` to `FALSE`.
 #'
 #' @name plotHeatmap
 #' @family Plot Functions
@@ -27,11 +27,10 @@
 #'
 #' @seealso [pheatmap::pheatmap()].
 #'
-#' @return [pheatmap::pheatmap()] return `list`, containing `gtable`.
+#' @return Plot heatmap and return `list`, containing `gtable`.
 #'
 #' @examples
-#' mat <- mtcars[, c("disp", "hp", "mpg")] %>%
-#'     as.matrix()
+#' mat <- as.matrix(mtcars[, c("disp", "hp", "mpg")])
 #' plotHeatmap(mat)
 NULL
 

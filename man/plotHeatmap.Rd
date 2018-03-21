@@ -48,16 +48,15 @@ palette.}
 \item{title}{\emph{Optional.} Plot title.}
 }
 \value{
-\code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}} return \code{list}, containing \code{gtable}.
+Plot heatmap and return \code{list}, containing \code{gtable}.
 }
 \description{
 Construct a simple heatmap. By default, row- and column-wise hierarchical
 clustering is performed using the Ward method, but this behavior can be
-overrided by setting \code{cluster_rows} or \code{cluster_cols} to \code{FALSE}.
+overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 }
 \examples{
-mat <- mtcars[, c("disp", "hp", "mpg")] \%>\%
-    as.matrix()
+mat <- as.matrix(mtcars[, c("disp", "hp", "mpg")])
 plotHeatmap(mat)
 }
 \seealso{
@@ -65,5 +64,6 @@ plotHeatmap(mat)
 
 Other Plot Functions: \code{\link{dynamicPlotlist}},
   \code{\link{midnightTheme}},
+  \code{\link{plotCorrelationHeatmap}},
   \code{\link{plotQuantileHeatmap}}
 }
