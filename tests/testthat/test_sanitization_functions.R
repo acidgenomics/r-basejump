@@ -95,7 +95,6 @@ test_that("collapseToString : numeric", {
 })
 
 test_that("collapseToString : scalar early return", {
-    # TODO Coerce to string?
     expect_identical(collapseToString(1L), 1L)
 })
 

@@ -48,7 +48,7 @@
 
 
 
-.upperCamel.factor <- function(object, strict = FALSE) {
+.upperCamel.factor <- function(object, strict = FALSE) {  # nolint
     object %>%
         .upperCamel.vector(strict = strict) %>%
         factor()
@@ -65,7 +65,7 @@
 
 
 
-.upperCamel.names <- function(object, strict = FALSE) {
+.upperCamel.names <- function(object, strict = FALSE) {  # nolint
     # Passthrough: strict
     assert_has_names(object)
     names(object) <- .upperCamel(names(object), strict = strict)

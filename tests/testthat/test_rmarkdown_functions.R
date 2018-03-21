@@ -18,7 +18,6 @@ test_that("kables : list", {
     )
 })
 
-# TODO Need to improve capture of knitr kable captions
 test_that("kables : captions argument", {
     expect_identical(
         kables(

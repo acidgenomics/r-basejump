@@ -1,5 +1,3 @@
-# TODO Include `.sanitizeAnnotationCols()` call here?
-
 #' Sanitize Row Data
 #'
 #' Coerce Ensembl `rowData` to a `data.frame`, and drop any nested list columns

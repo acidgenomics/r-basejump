@@ -1,5 +1,3 @@
-# TODO Use assert engine and add severity
-
 #' Assert All Variables Are Non-Existing
 #'
 #' @family Assert Check Functions

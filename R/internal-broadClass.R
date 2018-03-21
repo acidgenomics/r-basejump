@@ -80,9 +80,6 @@
     broad <- case_when(
         object[["seqnames"]] == "MT" ~ "mito",
         grepl(
-            # Hsapiens: "MT-*",
-            # Mmusculus: "mt-*"
-            # Dmelanogaster: "mt:*"
             pattern = "^mt[\\:\\-]",
             x = object[["geneName"]],
             ignore.case = TRUE

@@ -46,7 +46,7 @@ NULL
 
 
 
-.snake.ANY <- function(
+.snake.ANY <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE
@@ -81,7 +81,7 @@ NULL
 
 
 
-.snake.factor <- function(object) {
+.snake.factor <- function(object) {  # nolint
     object %>%
         .snake.vector() %>%
         factor()

@@ -94,7 +94,7 @@ test_that("plotHeatmap : Matrix dimensions are too small", {
 
 # plotQuantileHeatmap ==========================================================
 test_that("plotQuantileHeatmap : matrix", {
-    mat <- matrix(1:10000, nrow = 100, ncol = 100)
+    mat <- matrix(seq_len(10000L), nrow = 100L, ncol = 100L)
     p <- plotQuantileHeatmap(mat)
     expect_is(p, "list")
     expect_identical(names(p), c("quantiles", "plot"))

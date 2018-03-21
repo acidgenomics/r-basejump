@@ -1,6 +1,3 @@
-# TODO Add a `try()` call to check for Internet connection
-# Consider re-running with 'localHub = TRUE'
-
 #' Ensembl Annotations
 #'
 #' Quickly obtain gene and transcript annotations from
@@ -108,8 +105,8 @@ ensembl <- function(
     userAttached <- .packages()
 
     # Fetch annotations from AnnotationHub/ensembldb ===========================
-    # ah = AnnotationHub
-    # edb = Ensembl database
+    # ah: AnnotationHub
+    # edb: Ensembl database
     if (
         tolower(organism) == "homo sapiens" &&
         (

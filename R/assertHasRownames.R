@@ -1,5 +1,3 @@
-# TODO Use assert engine
-
 #' Assert Has Rownames
 #'
 #' A stricter alternative to the assertive version that works properply with

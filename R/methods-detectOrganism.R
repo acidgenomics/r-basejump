@@ -163,8 +163,7 @@ NULL
 
 
 
-# detectOrganism(c("ENSG00000000001", "ENSG00000000003"))
-.detectOrganism.character <- function(object, unique = FALSE) {
+.detectOrganism.character <- function(object, unique = FALSE) {  # nolint
     assert_is_a_bool(unique)
     x <- vapply(
         X = object,
