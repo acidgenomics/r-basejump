@@ -1,5 +1,3 @@
-# FIXME Look for files in extdata...(e.g. mn)
-
 cacheURL <- "http://basejump.seq.cloud"
 files <- c(
     "dmelanogaster.gtf",
