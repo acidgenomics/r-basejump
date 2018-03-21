@@ -1,3 +1,5 @@
+# mn: make names
+
 character <- c(
     "hello world",
     "HELLO WORLD",
@@ -9,17 +11,22 @@ character <- c(
     "worfdbHTMLRemap",
     "Mazda RX4",
     123L,
-    NA)
+    NA
+)
 
 namedCharacter <- c(
     "Item.A" = "hello world",
-    "Item.B" = "HELLO WORLD")
+    "Item.B" = "HELLO WORLD"
+)
 
 factor <- factor(
-    c("sample 1" = "group 1",
-      "sample 2" = "group 1",
-      "sample 3" = "group 2",
-      "sample 4" = "group 2"))
+    c(
+        "sample 1" = "group 1",
+        "sample 2" = "group 1",
+        "sample 3" = "group 2",
+        "sample 4" = "group 2"
+    )
+)
 
 dataFrame <- head(mtcars)
 
@@ -29,16 +36,16 @@ tibble <- head(starwars)
 
 list <- list(
     "Item.A" = c(1L, 2L),
-    "Item.B" = c(3L, 4L))
+    "Item.B" = c(3L, 4L)
+)
 
-makeNames <- list(
+mn <- list(
     "character" = character,
     "namedCharacter" = namedCharacter,
     "factor" = factor,
     "dataFrame" = dataFrame,
     "matrix" = matrix,
     "tibble" = tibble,
-    "list" = list)
-lapply(makeNames, class)
-
-saveData(makeNames, dir = "inst/extdata", compress = "xz")
+    "list" = list
+)
+saveData(mn, dir = "inst/extdata", compress = "xz")
