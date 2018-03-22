@@ -68,8 +68,6 @@
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom dplyr case_when
-#'
 #' @return Named `factor` containing broad class definitions.
 .broadClass <- function(object) {
     assertHasRownames(object)

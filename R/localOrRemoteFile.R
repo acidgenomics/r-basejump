@@ -4,8 +4,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom utils download.file
-#'
 #' @inheritParams general
 #' @inheritParams saveData
 #' @param severity Return `stop` (default), `warning`, or `message` if file

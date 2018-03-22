@@ -5,12 +5,6 @@
 #'
 #' @family Write Functions
 #'
-#' @importFrom R.utils gzip
-#' @importFrom RCurl getURL
-#' @importFrom readr read_lines
-#' @importFrom stringr str_extract str_subset
-#' @importFrom utils download.file
-#'
 #' @inheritParams general
 #' @inheritParams saveData
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either

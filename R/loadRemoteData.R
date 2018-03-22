@@ -5,8 +5,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom utils download.file
-#'
 #' @inheritParams general
 #' @inheritParams loadData
 #' @param url Remote URL file path to R Data file. Supports multiple URLs

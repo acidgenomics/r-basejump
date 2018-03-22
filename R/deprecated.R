@@ -55,11 +55,9 @@ metadataTable <- function(...) {
 
 # v0.0.25 ======================================================================
 #' @rdname deprecated
-#' @importFrom scales percent
 #' @export
 pct <- function(...) {
-    .Deprecated("scales::percent")
-    scales::percent(...)
+    .Defunct("scales::percent")
 }
 
 
@@ -68,15 +66,13 @@ pct <- function(...) {
 #' @rdname deprecated
 #' @export
 fc2lr <- function(...) {
-    .Deprecated("foldChangeToLogRatio")
-    foldChangeToLogRatio(...)
+    .Defunct("foldChangeToLogRatio")
 }
 
 #' @rdname deprecated
 #' @export
 lr2fc <- function(...) {
-    .Deprecated("logRatioToFoldChange")
-    logRatioToFoldChange(...)
+    .Defunct("logRatioToFoldChange")
 }
 
 

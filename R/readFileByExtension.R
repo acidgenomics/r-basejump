@@ -6,13 +6,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom Matrix readMM
-#' @importFrom stringr str_match
-#' @importFrom readr read_csv read_lines read_tsv
-#' @importFrom readxl read_excel
-#' @importFrom tibble column_to_rownames
-#' @importFrom utils read.table
-#'
 #' @inheritParams general
 #' @inheritParams localOrRemoteFile
 #' @inheritParams saveData

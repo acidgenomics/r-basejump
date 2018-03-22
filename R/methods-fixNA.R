@@ -43,7 +43,6 @@ NULL
 
 
 
-#' @importFrom dplyr funs mutate_if
 .fixNA.tidy <- function(object) {  # nolint
     mutate_if(object, is.character, funs(fixNA))
 }

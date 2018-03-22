@@ -1,6 +1,5 @@
 globalVariables("biocLite")
 
-#' @importFrom utils installed.packages
 .biocLite <- function(pkgs, ...) {
     assert_is_character(pkgs)
     install <- setdiff(pkgs, installed.packages()[, "Package"])
