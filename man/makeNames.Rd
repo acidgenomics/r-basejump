@@ -47,10 +47,7 @@ Sanitizes names using "\code{_}" instead of "\code{.}".
 }
 
 \seealso{
-\code{\link{make.unique}},
-  \code{\link{names}},
-  \code{\link{character}},
-  \code{\link{data.frame}}.
+\code{\link[=make.names]{make.names()}}.
 }
 \author{
 Michael Steinbaugh
