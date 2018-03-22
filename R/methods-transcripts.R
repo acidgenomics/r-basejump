@@ -1,6 +1,12 @@
+#' @importFrom GenomicFeatures transcripts
+#' @export
+GenomicFeatures::transcripts
+
+
+
+# Methods ======================================================================
 #' @rdname ensembl
 #' @usage NULL
-#' @importFrom GenomicFeatures transcripts
 #' @export
 setMethod(
     "transcripts",
