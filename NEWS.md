@@ -1,3 +1,33 @@
+## basejump 0.4.0 (2018-03-22)
+
+### Major changes
+
+- Introducing new functions for the acquistion of gene and transcript annotations from [Ensembl][]: `ensembl()`, `genes()`, and `transcripts()`. These functions allow the return of `GRanges`, `DataFrame`, and `data.frame` class objects from [AnnotationHub][] using [ensembldb][].
+- Improved internal `broadClass` definition code to match against chromosome from [Ensembl][] if available.
+- `loadDataAsName()` now works with unquoted names, improving consistency with `loadData()` (non-standard evaluation).
+
+### Minor changes
+
+- Added new `convertUCSCBuildToEnsembl()` function, for easy remapping of [UCSC][] to [Ensembl][] genome build names (e.g. `hg38` to `GRCh38`).
+- Migrated matrix methods for `plotCorrelationHeatmap()` here from bcbioRNASeq, for improved consistency with other heatmap functions.
+- Exporting `makeNames()` variant of `base::make.names()` that sanitizes using underscores ("_") rather than dots (".").
+- Converted `readYAML()` from a generic to standard function.
+- Added support for AppVeyor CI code testing on Windows.
+- Made Travis CI build checks stricter, adding support for `BiocCheck()`.
+- Added new assert checks: `assertAreGeneAnnotations()`, `assertAreTranscriptAnnotations()`, `isAnImplicitInteger()`.
+- Simplified working examples for assert checks to just show successes.
+
+### Deprecations
+
+- `annotable()` function has been deprecated in favor of the new `ensembl()` function.
+- `checkAnnotable()` deprecated in favor of `assertIsAnnotable()`.
+- `checkGene2symbol()` deprecated in favor of `assertIsGene2symbol()`.
+- `checkTx2gene()` deprecated in favor of `assertIsTx2gene()`.
+- `assertFormalColorFunction()` deprecated in favor of `assertIsHexColorFunctionOrNULL()`.
+- `initializeDir()` deprecated in favor of `initializeDirectory()`.
+- Defunct: `summarizeRows()`, `wash()`, `packageSE()`, `prepareSE()`, `metadataTable()`, `comp()`, `revcomp()`, `symbol2gene()`.
+
+
 ## basejump 0.3.1 (2018-02-19)
 
 - Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.
@@ -324,6 +354,7 @@ up objects that don't contain gene annotations.
 [Biostrings]: http://bioconductor.org/packages/release/bioc/html/Biostrings.html
 [devtools]: https://github.com/hadley/devtools
 [dplyr]: http://dplyr.tidyverse.org
+[Ensembl]: https://www.ensembl.org
 [ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
 [ggplot2]: http://ggplot2.tidyverse.org
 [HMS RC]: https://rc.hms.harvard.edu
@@ -335,4 +366,5 @@ up objects that don't contain gene annotations.
 [testthat]: https://github.com/hadley/testthat
 [tidyr]: http://tidyr.tidyverse.org
 [tidyverse]: http://www.tidyverse.org
+[UCSC]: https://genome.ucsc.edu
 [worminfo]: http://steinbaugh.com/worminfo
