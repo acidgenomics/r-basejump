@@ -81,11 +81,5 @@ sanitizeAnnotable(...)
 }
 \description{
 Defunct or Deprecated Functions
-
-#' @rdname deprecated
-#' @export
-sampleDirs <- function(...) {
-.Defunct()
-}
 }
 \keyword{internal}
