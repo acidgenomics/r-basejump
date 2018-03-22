@@ -33,7 +33,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname dynamicPlotlist
-#' @importFrom cowplot plot_grid
 #' @export
 setMethod(
     "dynamicPlotlist",

@@ -39,8 +39,6 @@ setMethod(
 
 
 #' @rdname tx2geneFromGFF
-#' @importFrom magrittr set_rownames
-#' @importFrom stringr str_match
 #' @export
 setMethod(
     "tx2geneFromGFF",

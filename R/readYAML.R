@@ -2,8 +2,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom yaml yaml.load_file
-#'
 #' @inheritParams general
 #' @inheritParams saveData
 #' @param object YAML file path.

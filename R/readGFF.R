@@ -6,8 +6,6 @@
 #'
 #' @family Read Functions
 #'
-#' @importFrom utils read.delim
-#'
 #' @inheritParams general
 #' @inheritParams saveData
 #'

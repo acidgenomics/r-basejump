@@ -29,12 +29,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom RColorBrewer brewer.pal
-#' @importFrom dplyr mutate_all
-#' @importFrom grDevices colorRampPalette
-#' @importFrom magrittr set_names
-#' @importFrom pheatmap pheatmap
-#' @importFrom tibble column_to_rownames rownames_to_column
 .plotCorrelationHeatmap <- function(
     object,
     method = c("pearson", "spearman"),

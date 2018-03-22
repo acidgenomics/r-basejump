@@ -4,9 +4,6 @@
 #'
 #' @family Plot Functions
 #'
-#' @importFrom ggplot2 element_blank element_line element_rect element_text
-#'   theme theme_minimal
-#'
 #' @return ggplot `theme`.
 #' @export
 #'

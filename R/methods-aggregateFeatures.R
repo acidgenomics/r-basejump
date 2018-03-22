@@ -34,7 +34,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname aggregateFeatures
-#' @importFrom Matrix.utils aggregate.Matrix
 #' @export
 setMethod(
     "aggregateFeatures",

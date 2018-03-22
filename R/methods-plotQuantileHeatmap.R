@@ -23,8 +23,6 @@ NULL
 #' @keywords internal
 #' @noRd
 #'
-#' @importFrom stats quantile
-#'
 #' @param x Numeric vector.
 #' @param n The number of breaks to create.
 #'
@@ -39,12 +37,6 @@ NULL
 
 
 
-#' @importFrom dendsort dendsort
-#' @importFrom grDevices colorRampPalette
-#' @importFrom magrittr set_names
-#' @importFrom pheatmap pheatmap
-#' @importFrom RColorBrewer brewer.pal
-#' @importFrom stats dist hclust
 .plotQuantileHeatmap <- function(
     object,
     n = 5L,

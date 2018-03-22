@@ -24,7 +24,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname kables
-#' @importFrom knitr asis_output kable opts_knit
 #' @export
 setMethod(
     "kables",
@@ -39,9 +38,7 @@ setMethod(
             assert_are_identical(length(object), length(captions))
         }
         assert_is_a_bool(force)
-
         output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
-
         if (!is.null(output) || isTRUE(force)) {
             tables <- lapply(seq_along(object), function(a) {
                 kable(object[a], caption = captions[a])

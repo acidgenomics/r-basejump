@@ -34,10 +34,6 @@
 #' @name ensembl
 #' @family Gene Functions
 #'
-#' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom ensembldb ensemblVersion genes transcripts
-#' @importFrom utils packageVersion
-#'
 #' @param organism Default recommended usage is to provide the full latin
 #'   organism name as a string.
 #' @param format Desired annotation data format, either "`genes`",

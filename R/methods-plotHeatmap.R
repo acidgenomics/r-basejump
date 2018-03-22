@@ -37,12 +37,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom dplyr mutate_all
-#' @importFrom grDevices colorRampPalette
-#' @importFrom magrittr set_names
-#' @importFrom pheatmap pheatmap
-#' @importFrom RColorBrewer brewer.pal
-#' @importFrom tibble column_to_rownames rownames_to_column
 .plotHeatmap <- function(
     object,
     scale = "row",

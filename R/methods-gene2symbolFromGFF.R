@@ -39,7 +39,6 @@ setMethod(
 
 
 #' @rdname gene2symbolFromGFF
-#' @importFrom stringr str_match
 #' @export
 setMethod(
     "gene2symbolFromGFF",

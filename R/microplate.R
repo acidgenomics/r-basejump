@@ -2,8 +2,6 @@
 #'
 #' @family Math Functions
 #'
-#' @importFrom stringr str_length str_pad
-#'
 #' @param plates Number of plates.
 #' @param wells Number of wells (`96`, `384`).
 #' @param controls Number of control wells.

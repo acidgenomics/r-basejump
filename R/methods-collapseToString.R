@@ -50,7 +50,6 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom stringr str_replace_na
 .collapseToString <- function(
     object,
     sep = ", ",
@@ -93,7 +92,6 @@ NULL
 
 
 
-#' @importFrom dplyr funs mutate_all summarize_all
 .collapseToString.dim <- function(  # nolint
     object,
     sep = ", ",

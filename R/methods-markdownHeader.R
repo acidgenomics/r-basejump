@@ -23,8 +23,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname markdownHeader
-#' @importFrom knitr asis_output
-#' @importFrom stringr str_dup
 #' @export
 setMethod(
     "markdownHeader",

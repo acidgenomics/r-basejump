@@ -35,7 +35,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname aggregateReplicates
-#' @importFrom Matrix.utils aggregate.Matrix
 #' @export
 setMethod(
     "aggregateReplicates",

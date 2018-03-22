@@ -7,6 +7,12 @@
 \alias{reexports}
 \alias{transcripts}
 \alias{reexports}
+\alias{Matrix}
+\alias{reexports}
+\alias{DataFrame}
+\alias{reexports}
+\alias{mcols}
+\alias{reexports}
 \alias{aes}
 \alias{reexports}
 \alias{ggplot}
@@ -15,13 +21,7 @@
 \alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
-\alias{Matrix}
-\alias{reexports}
 \alias{sym}
-\alias{reexports}
-\alias{DataFrame}
-\alias{reexports}
-\alias{mcols}
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
@@ -29,11 +29,11 @@
 \alias{reexports}
 \alias{tibble}
 \alias{reexports}
-\alias{viridis}
-\alias{reexports}
 \alias{scale_color_viridis}
 \alias{reexports}
 \alias{scale_fill_viridis}
+\alias{reexports}
+\alias{viridis}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -55,6 +55,6 @@ below to see their documentation.
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 
-  \item{viridis}{\code{\link[viridis]{viridis}}, \code{\link[viridis]{scale_color_viridis}}, \code{\link[viridis]{scale_fill_viridis}}}
+  \item{viridis}{\code{\link[viridis]{scale_color_viridis}}, \code{\link[viridis]{scale_fill_viridis}}, \code{\link[viridis]{viridis}}}
 }}
 

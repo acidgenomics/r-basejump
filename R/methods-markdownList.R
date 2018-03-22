@@ -19,7 +19,6 @@ NULL
 
 # Methods ======================================================================
 #' @rdname markdownList
-#' @importFrom knitr asis_output
 #' @export
 setMethod(
     "markdownList",
