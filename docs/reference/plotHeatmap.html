@@ -18,21 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Plot Heatmap — plotHeatmap" />
-
-<meta property="og:description" content="Construct a simple heatmap. By default, row- and column-wise hierarchical
-clustering is performed using the Ward method, but this behavior can be
-overrided by setting cluster_rows or cluster_cols to FALSE." />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -68,9 +60,6 @@ overrided by setting cluster_rows or cluster_cols to FALSE." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -97,7 +86,7 @@ overrided by setting cluster_rows or cluster_cols to FALSE." />
     
     <p>Construct a simple heatmap. By default, row- and column-wise hierarchical
 clustering is performed using the Ward method, but this behavior can be
-overrided by setting <code>cluster_rows</code> or <code>cluster_cols</code> to <code>FALSE</code>.</p>
+overrided by setting <code>clusterRows</code> or <code>clusterCols</code> to <code>FALSE</code>.</p>
     
 
     <pre class="usage"><span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
@@ -167,18 +156,19 @@ palette.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code> return <code>list</code>, containing <code>gtable</code>.</p>
+    <p>Show heatmap and return <code>list</code>, containing <code>gtable</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p>
 <p>Other Plot Functions: <code>dynamicPlotlist</code>,
   <code><a href='midnightTheme.html'>midnightTheme</a></code>,
+  <code>plotCorrelationHeatmap</code>,
   <code>plotQuantileHeatmap</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>mtcars</span>[, <span class='fu'>c</span>(<span class='st'>"disp"</span>, <span class='st'>"hp"</span>, <span class='st'>"mpg"</span>)])
 <span class='fu'>plotHeatmap</span>(<span class='no'>mat</span>)</div><div class='img'><img src='plotHeatmap-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -210,4 +200,3 @@ palette.</p></td>
 
   </body>
 </html>
-

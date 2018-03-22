@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quickly Perform Sort Unique on a Vector — sortUnique • basejump</title>
+<title>Plot Correlation Heatmap — plotCorrelationHeatmap • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,15 +80,20 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Quickly Perform Sort Unique on a Vector</h1>
+    <h1>Plot Correlation Heatmap</h1>
     </div>
 
     
-    <p>The function also strips <code>NA</code> values. This is useful for gene list server
-queries, for example.</p>
+    <p>Construct a correlation heatmap comparing the columns of the matrix.</p>
     
 
-    <pre class="usage"><span class='fu'>sortUnique</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"pearson"</span>,
+  <span class='st'>"spearman"</span>), <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>, <span class='kw'>annotationCol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='no'>viridis</span>, <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -97,20 +102,65 @@ queries, for example.</p>
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Passthrough arguments to <code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>Correlation coefficient (or covariance) method to be computed.
+Defaults to "<code>pearson</code>" but "<code>spearman</code>" can also be used. Consult the
+<code><a href='http://www.rdocumentation.org/packages/stats/topics/cor'>stats::cor()</a></code> documentation for more information.</p></td>
+    </tr>
+    <tr>
+      <th>clusteringMethod</th>
+      <td><p>Clustering method. Accepts the same values as
+<code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>annotationCol</th>
+      <td><p><em>Optional.</em> <code>data.frame</code> that defines annotation
+mappings for the columns.</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>Colors to use for plot. Defaults to the <code><a href='http://www.rdocumentation.org/packages/viridisLite/topics/viridis'>viridis()</a></code>
+palette.</p></td>
+    </tr>
+    <tr>
+      <th>legendColor</th>
+      <td><p>Colors to use for legend labels. Defaults to the
+<code><a href='http://www.rdocumentation.org/packages/viridisLite/topics/viridis'>viridis()</a></code> palette.</p></td>
+    </tr>
+    <tr>
+      <th>borderColor</th>
+      <td><p>Border color.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p><em>Optional.</em> Plot title.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Unique vector.</p>
+    <p>Show heatmap and return <code>list</code>, containing <code>gtable</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Atomic Vector Functions: <code><a href='grepString.html'>grepString</a></code>,
-  <code><a href='toStringUnique.html'>toStringUnique</a></code></p>
+    <ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/stats/topics/cor'>stats::cor()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p></li>
+</ul>
+    <p>Other Plot Functions: <code>dynamicPlotlist</code>,
+  <code><a href='midnightTheme.html'>midnightTheme</a></code>, <code>plotHeatmap</code>,
+  <code>plotQuantileHeatmap</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sortUnique</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>))</div><div class='output co'>#&gt; [1] "eggs" "milk" NA    </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>mtcars</span>)
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>mat</span>)</div><div class='img'><img src='plotCorrelationHeatmap-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -123,6 +173,10 @@ queries, for example.</p>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

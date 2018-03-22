@@ -18,20 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Load Data — loadData" />
-
-<meta property="og:description" content="Load R data (.rda) files from a directory using symbols rather than
-complete file paths." />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -66,9 +59,6 @@ complete file paths." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -151,10 +141,11 @@ names using non-standard evaluation.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>loadData</span>(
-    <span class='no'>makeNames</span>,
+    <pre class="examples"><div class='input'><span class='no'>loaded</span> <span class='kw'>&lt;-</span> <span class='fu'>loadData</span>(
+    <span class='no'>mn</span>,
     <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>)
-)</div><div class='output co'>#&gt; <span class='message'>Loading makeNames.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>makeNames</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
+)</div><div class='output co'>#&gt; <span class='message'>Loading mn.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>loaded</span>)</div><div class='output co'>#&gt;                                                           mn 
+#&gt; "/Users/mike/GitHub/steinbaugh/basejump/inst/extdata/mn.rda" </div><div class='input'><span class='fu'>class</span>(<span class='no'>mn</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -189,4 +180,3 @@ names using non-standard evaluation.</p>
 
   </body>
 </html>
-

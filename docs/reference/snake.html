@@ -18,19 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Snake Case — snake" />
-
-<meta property="og:description" content="Snake Case" />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -65,9 +59,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -168,28 +159,29 @@ recommended by default.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>load</span>(<span class='fu'>system.file</span>(<span class='st'>"extdata/makeNames.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))
+    <pre class="examples"><div class='input'><span class='fu'>load</span>(<span class='fu'>system.file</span>(<span class='st'>"extdata/mn.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>))
 
 <span class='co'># character ====</span>
-<span class='no'>character</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>character</span>
+<span class='no'>character</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>character</span>
 <span class='fu'>print</span>(<span class='no'>character</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         
 #&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M.Score"       "worfdbHTMLRemap"
 #&gt;  [9] "Mazda RX4"       "123"             NA               </div><div class='input'><span class='fu'>snake</span>(<span class='no'>character</span>)</div><div class='output co'>#&gt;  [1] "hello_world"       "hello_world"       "rnai_clones"      
 #&gt;  [4] "n_count"           "tx2gene"           "tx2_gene_id"      
 #&gt;  [7] "g2m_score"         "worfdb_html_remap" "mazda_rx4"        
 #&gt; [10] "x123"              NA                 </div><div class='input'>
-<span class='no'>namedCharacter</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>namedCharacter</span>
+<span class='no'>namedCharacter</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>namedCharacter</span>
 <span class='fu'>print</span>(<span class='no'>namedCharacter</span>)</div><div class='output co'>#&gt;        Item.A        Item.B 
 #&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>namedCharacter</span>)</div><div class='output co'>#&gt;        item_a        item_b 
 #&gt; "hello_world" "hello_world" </div><div class='input'>
 <span class='co'># factor ====</span>
-<span class='no'>factor</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>factor</span>
+<span class='no'>factor</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>factor</span>
 <span class='fu'>print</span>(<span class='no'>factor</span>)</div><div class='output co'>#&gt; sample 1 sample 2 sample 3 sample 4 
 #&gt;  group 1  group 1  group 2  group 2 
-#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>snake</span>(<span class='no'>factor</span>)</div><div class='output co'>#&gt;  sample_1  sample_2  sample_3  sample_4 
-#&gt; "group_1" "group_1" "group_2" "group_2" </div><div class='input'>
+#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>snake</span>(<span class='no'>factor</span>)</div><div class='output co'>#&gt; sample_1 sample_2 sample_3 sample_4 
+#&gt;  group_1  group_1  group_2  group_2 
+#&gt; Levels: group_1 group_2</div><div class='input'>
 <span class='co'># data.frame ====</span>
-<span class='no'>dataFrame</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>dataFrame</span>
+<span class='no'>dataFrame</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>dataFrame</span>
 <span class='fu'>print</span>(<span class='no'>dataFrame</span>)</div><div class='output co'>#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 #&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -207,7 +199,7 @@ recommended by default.</p></td>
 #&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 #&gt;  [ reached getOption("max.print") -- omitted 2 rows ]</div><div class='input'>
 <span class='co'># list ====</span>
-<span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='no'>makeNames</span>$<span class='no'>list</span>
+<span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>list</span>
 <span class='fu'>print</span>(<span class='no'>list</span>)</div><div class='output co'>#&gt; $Item.A
 #&gt; [1] 1 2
 #&gt; 
@@ -249,4 +241,3 @@ recommended by default.</p></td>
 
   </body>
 </html>
-

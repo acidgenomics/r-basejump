@@ -18,23 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Defunct or Deprecated Functions — deprecated" />
-
-<meta property="og:description" content="Defunct or Deprecated Functions
-#' @rdname deprecated
-#' @export
-sampleDirs &lt;- function(...) 
-.Defunct()" />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -70,9 +60,6 @@ sampleDirs &lt;- function(...)
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -98,10 +85,6 @@ sampleDirs &lt;- function(...)
 
     
     <p>Defunct or Deprecated Functions</p>
-<p>#' @rdname deprecated
-#' @export
-sampleDirs &lt;- function(...) 
-.Defunct()</p>
     
 
     <pre class="usage"><span class='fu'>summarizeRows</span>(<span class='no'>...</span>)
@@ -138,7 +121,17 @@ sampleDirs &lt;- function(...)
 
 <span class='fu'>initializeDir</span>(<span class='no'>...</span>)
 
-<span class='fu'>annotable</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>annotable</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>annotable</span>(<span class='no'>object</span>)
+
+<span class='fu'>assertIsAnnotable</span>(<span class='no'>...</span>)
+
+<span class='fu'>sanitizeAnnotable</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +139,10 @@ sampleDirs &lt;- function(...)
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
@@ -180,4 +177,3 @@ sampleDirs &lt;- function(...)
 
   </body>
 </html>
-

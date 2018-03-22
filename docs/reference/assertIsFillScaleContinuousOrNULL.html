@@ -18,19 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Assert Is Fill Palette Scale Continuous or NULL — assertIsFillScaleContinuousOrNULL" />
-
-<meta property="og:description" content="Assert Is Fill Palette Scale Continuous or NULL" />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -65,9 +59,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -141,17 +132,9 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Success</span>
-<span class='no'>fill</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_fill_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="examples"><div class='input'><span class='no'>fill</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_fill_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='fu'>class</span>(<span class='no'>fill</span>)</div><div class='output co'>#&gt; [1] "ScaleContinuous" "Scale"           "ggproto"        </div><div class='input'><span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='no'>fill</span>)
-<span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='kw'>NULL</span>)
-
-<span class='co'># Failure</span>
-<span class='no'>fill</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>class</span>(<span class='no'>fill</span>)</div><div class='output co'>#&gt; [1] "ScaleDiscrete" "Scale"         "ggproto"      </div><div class='input'><span class='fu'>tryCatch</span>(
-    <span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='no'>color</span>),
-    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>
-)</div><div class='output co'>#&gt; &lt;simpleError in assert_engine(is2, x, class = classes, msg = msg, what = "any",     severity = severity): object 'color' not found&gt;</div></pre>
+<span class='fu'>assertIsFillScaleContinuousOrNULL</span>(<span class='kw'>NULL</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -182,4 +165,3 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
 
   </body>
 </html>
-
