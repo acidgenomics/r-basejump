@@ -18,20 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Assert Has Rownames — assertHasRownames" />
-
-<meta property="og:description" content="A stricter alternative to the assertive version that works properply with
-data frames." />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -66,9 +59,6 @@ data frames." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -156,22 +146,7 @@ for data frames and tibbles.</p>
     <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gene_1"</span>, <span class='st'>"gene_2"</span>),
     <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
-<span class='fu'>assertHasRownames</span>(<span class='no'>data</span>)
-
-<span class='co'># Now set the rownames as NULL</span>
-<span class='fu'>rownames</span>(<span class='no'>data</span>) <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='fu'>tryCatch</span>(
-    <span class='fu'>assertHasRownames</span>(<span class='no'>data</span>),
-    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>
-)</div><div class='output co'>#&gt; &lt;simpleError: hasRownames(x) is not TRUE&gt;</div><div class='input'>
-<span class='no'>tibble</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
-    <span class='st'>"sample_1"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='fl'>2L</span>),
-    <span class='st'>"sample_2"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>4L</span>)
-)
-<span class='fu'>tryCatch</span>(
-    <span class='fu'>assertHasRownames</span>(<span class='no'>tibble</span>),
-    <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>e</span>) <span class='no'>e</span>
-)</div><div class='output co'>#&gt; &lt;simpleError: hasRownames(x) is not TRUE&gt;</div></pre>
+<span class='fu'>assertHasRownames</span>(<span class='no'>data</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -204,4 +179,3 @@ for data frames and tibbles.</p>
 
   </body>
 </html>
-

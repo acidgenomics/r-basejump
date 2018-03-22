@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ensembl Annotations — gene2symbol • basejump</title>
+<title>Ensembl Annotations — ensembl • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,21 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Ensembl Annotations — gene2symbol" />
-
-<meta property="og:description" content="Quickly obtain gene and transcript annotations from
-Ensembl using
-AnnotationHub." />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -68,9 +60,6 @@ AnnotationHub." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -100,25 +89,13 @@ AnnotationHub." />
 <a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p>
     
 
-    <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>tx2gene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='fu'>ensembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"gene2symbol"</span>, <span class='st'>"transcripts"</span>,
+    <pre class="usage"><span class='fu'>ensembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"gene2symbol"</span>, <span class='st'>"transcripts"</span>,
   <span class='st'>"tx2gene"</span>), <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"GRanges"</span>, <span class='st'>"DataFrame"</span>, <span class='st'>"data.frame"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
     <tr>
       <th>organism</th>
       <td><p>Default recommended usage is to provide the full latin
@@ -151,10 +128,6 @@ AnnotationHub.</p></td>
 or "<code>data.frame</code>". See <code>help("genes", "ensembldb")</code> for additional
 information. "<code>gene2symbol</code>" and "<code>tx2gene</code>" are always returned as
 <code>data.frame</code>.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>Primary object.</p></td>
     </tr>
     </table>
     
@@ -201,8 +174,26 @@ semantically-meaningful groups:</p><ul>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
 </ul>
+    <p>Other Gene Functions: <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
+  <code>detectOrganism</code>,
+  <code>gene2symbolFromGFF</code>,
+  <code>gene2symbol</code>,
+  <code>stripTranscriptVersions</code>,
+  <code>tx2geneFromGFF</code>, <code>tx2gene</code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>ensembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Fetching Ensembl genes from AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>hub id: "AH57757"</span>
+#&gt; <span class='message'>organism: "Homo sapiens"</span>
+#&gt; <span class='message'>genome build: "GRCh38"</span>
+#&gt; <span class='message'>release version: "90"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 64661 ranges and 7 metadata columns"</div><div class='input'>
+<span class='co'># Transcripts ====</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>ensembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Fetching Ensembl transcripts from AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>hub id: "AH57757"</span>
+#&gt; <span class='message'>organism: "Homo sapiens"</span>
+#&gt; <span class='message'>genome build: "GRCh38"</span>
+#&gt; <span class='message'>release version: "90"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 220144 ranges and 13 metadata columns"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -218,7 +209,9 @@ semantically-meaningful groups:</p><ul>
       <li><a href="#broad-class-definitions">Broad Class Definitions</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
@@ -237,4 +230,3 @@ semantically-meaningful groups:</p><ul>
 
   </body>
 </html>
-

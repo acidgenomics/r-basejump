@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>General Arguments — general • basejump</title>
+<title>Make Syntactically Valid Names — makeNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -80,38 +80,63 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>General Arguments</h1>
+    <h1>Make Syntactically Valid Names</h1>
     </div>
 
     
-    <p>General Arguments</p>
+    <p>Make Syntactically Valid Names</p>
     
 
+    <pre class="usage"><span class='fu'>makeNames</span>(<span class='no'>names</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>names</th>
+      <td><p>character vector to be coerced to syntactically valid
+   names.  This is coerced to character if necessary.</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>Primary object.</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>Secondary object.</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Value to assign.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>unique</th>
+      <td><p>logical; if <code>TRUE</code>, the resulting elements are
+     unique.  This may be desired for, e.g., column names.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Character vector.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A syntactically valid name consists of letters, numbers and the dot or
+  underline characters and starts with a letter or the dot not followed
+  by a number.  Names such as <code>".2way"</code> are not valid, and neither
+  are the reserved words.</p>
+<p>The definition of a <em>letter</em> depends on the current locale, but
+  only ASCII digits are considered to be digits.</p>
+<p>The character <code>"X"</code> is prepended if necessary.
+  All invalid characters are translated to <code>"."</code>.  A missing value
+  is translated to <code>"NA"</code>.  Names which match <span style="R">R</span> keywords have a dot
+  appended to them.  Duplicated values are altered by
+  <code>make.unique</code>.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Sanitizes names using "<code>_</code>" instead of "<code>.</code>".</p>
+    
+    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
+
+    
+    <p>Some OSes, notably FreeBSD, report extremely incorrect information about
+  which characters are alphabetic in some locales (typically, all
+  multi-byte locales including UTF-8 locales).  However, <span style="R">R</span> provides
+  substitutes on Windows, macOS and AIX.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code>make.names()</code>.</p>
     
 
   </div>
@@ -119,7 +144,21 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#warning">Warning</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>

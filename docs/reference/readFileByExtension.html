@@ -18,21 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Read File by Extension — readFileByExtension" />
-
-<meta property="og:description" content="Supports automatic loading of standard .csv, .mtx, .tsv, and .xlsx
-files. Also supports bcbio-nextgen pipeline-specific .counts, .colnames,
-and .rownames files." />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -68,9 +60,6 @@ and .rownames files." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -100,7 +89,8 @@ files. Also supports bcbio-nextgen pipeline-specific <code>.counts</code>, <code
 and <code>.rownames</code> files.</p>
     
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='st'>"camel"</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>object</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"camel"</span>, <span class='st'>"snake"</span>, <span class='st'>"upperCamel"</span>,
+  <span class='st'>"dotted"</span>), <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"stop"</span>, <span class='st'>"warning"</span>, <span class='st'>"message"</span>, <span class='st'>"none"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -217,4 +207,3 @@ doesn't exist.</p></td>
 
   </body>
 </html>
-

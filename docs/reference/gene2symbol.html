@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sanitize Column Data — sanitizeColData • basejump</title>
+<title>Gene to Symbol Mappings — gene2symbol • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,19 +18,13 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
-<meta property="og:title" content="Sanitize Column Data — sanitizeColData" />
-
-<meta property="og:description" content="Sanitize Column Data" />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -66,9 +60,6 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -89,14 +80,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sanitize Column Data</h1>
+    <h1>Gene to Symbol Mappings</h1>
     </div>
 
     
-    <p>Sanitize Column Data</p>
+    <p>Gene to Symbol Mappings</p>
     
 
-    <pre class="usage"><span class='fu'>sanitizeColData</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,39 +100,43 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>genomeBuild</th>
+      <td><p><em>Optional.</em> Genome assembly name (e.g. GRCh38).</p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p><em>Optional.</em> Ensembl release version. Defaults to the most
+current release available on AnnotationHub.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>.</p>
+    <p><code>data.frame</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other Sanitization Functions: <code>collapseToString</code>,
-  <code>fixNA</code>, <code>removeNA</code>,
-  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p>
+    <p>Other Gene Functions: <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
+  <code>detectOrganism</code>, <code><a href='ensembl.html'>ensembl</a></code>,
+  <code>gene2symbolFromGFF</code>,
+  <code>stripTranscriptVersions</code>,
+  <code>tx2geneFromGFF</code>, <code>tx2gene</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>colData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>, <span class='st'>"sample_3"</span>, <span class='st'>"sample_4"</span>),
-    <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"wt"</span>, <span class='st'>"ko"</span>, <span class='st'>"wt"</span>, <span class='st'>"ko"</span>),
-    <span class='kw'>batch</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>)
-)
-<span class='fu'>print</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;             genotype     batch
-#&gt;          &lt;character&gt; &lt;integer&gt;
-#&gt; sample_1          wt         1
-#&gt; sample_2          ko         1
-#&gt; sample_3          wt         2
-#&gt; sample_4          ko         2</div><div class='input'><span class='co'># Note that all columns will be sanitized to factor</span>
-<span class='fu'>sanitizeColData</span>(<span class='no'>colData</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;          genotype    batch
-#&gt;          &lt;factor&gt; &lt;factor&gt;
-#&gt; sample_1       wt        1
-#&gt; sample_2       ko        1
-#&gt; sample_3       wt        2
-#&gt; sample_4       ko        2</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>gene2symbol</span>(<span class='st'>"Homo sapiens"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Fetching Ensembl gene2symbol from AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>hub id: "AH57757"</span>
+#&gt; <span class='message'>organism: "Homo sapiens"</span>
+#&gt; <span class='message'>genome build: "GRCh38"</span>
+#&gt; <span class='message'>release version: "90"</span></div><div class='output co'>#&gt; Observations: 64,661
+#&gt; Variables: 2
+#&gt; $ geneID   &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
+#&gt; $ geneName &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "CFH...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -168,4 +167,3 @@
 
   </body>
 </html>
-
