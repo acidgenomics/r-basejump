@@ -1,12 +1,6 @@
 # Only reexport functions needed for working examples and vignette
 
 #' @export
-GenomicFeatures::genes
-
-#' @export
-GenomicFeatures::transcripts
-
-#' @export
 Matrix::Matrix
 
 #' @export

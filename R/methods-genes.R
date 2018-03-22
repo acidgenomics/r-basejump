@@ -1,6 +1,12 @@
+#' @importFrom GenomicFeatures genes
+#' @export
+GenomicFeatures::genes
+
+
+
+# Methods ======================================================================
 #' @rdname ensembl
 #' @usage NULL
-#' @importFrom GenomicFeatures genes
 #' @export
 setMethod(
     "genes",
