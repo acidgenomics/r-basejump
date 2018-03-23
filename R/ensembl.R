@@ -75,6 +75,8 @@ ensembl <- function(
     return = c("GRanges", "DataFrame", "data.frame")
 ) {
     assert_is_a_string(organism)
+    # Standard organism query, if necessary
+    organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
     # Stop on UCSC genome build
