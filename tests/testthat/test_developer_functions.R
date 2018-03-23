@@ -21,7 +21,7 @@ test_that("detectHPC", {
 test_that("dots", {
     expect_identical(
         dots(mtcars, starwars),
-        list(sym("mtcars"), sym("starwars"))
+        list(as.name("mtcars"), as.name("starwars"))
     )
     expect_identical(
         dots(mtcars, starwars, character = TRUE),

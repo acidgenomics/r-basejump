@@ -22,8 +22,6 @@
 \alias{reexports}
 \alias{set_rownames}
 \alias{reexports}
-\alias{sym}
-\alias{reexports}
 \alias{glimpse}
 \alias{reexports}
 \alias{is_tibble}
@@ -49,8 +47,6 @@ below to see their documentation.
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
-
-  \item{rlang}{\code{\link[rlang]{sym}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
 
