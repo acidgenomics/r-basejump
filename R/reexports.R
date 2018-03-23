@@ -22,9 +22,6 @@ magrittr::`%>%`
 magrittr::set_rownames
 
 #' @export
-rlang::sym
-
-#' @export
 tibble::glimpse
 
 #' @export
