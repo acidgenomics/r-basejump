@@ -29,12 +29,3 @@ tibble::is_tibble
 
 #' @export
 tibble::tibble
-
-#' @export
-viridis::scale_color_viridis
-
-#' @export
-viridis::scale_fill_viridis
-
-#' @export
-viridis::viridis
