@@ -47,8 +47,5 @@ dynamicPlotlist(plotlist, return = "markdown")
 \seealso{
 \code{\link[=markdownPlotlist]{markdownPlotlist()}}.
 
-Other Plot Functions: \code{\link{midnightTheme}},
-  \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}}
+Other Plot Functions: \code{\link{midnightTheme}}
 }

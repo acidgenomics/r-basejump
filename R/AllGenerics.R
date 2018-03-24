@@ -149,30 +149,6 @@ setGeneric("markdownPlotlist", function(object, ...) {
 
 
 
-#' @rdname plotHeatmap
-#' @export
-setGeneric("plotHeatmap", function(object, ...) {
-    standardGeneric("plotHeatmap")
-})
-
-
-
-#' @rdname plotCorrelationHeatmap
-#' @export
-setGeneric("plotCorrelationHeatmap", function(object, ...) {
-    standardGeneric("plotCorrelationHeatmap")
-})
-
-
-
-#' @rdname plotQuantileHeatmap
-#' @export
-setGeneric("plotQuantileHeatmap", function(object, ...) {
-    standardGeneric("plotQuantileHeatmap")
-})
-
-
-
 #' @rdname removeNA
 #' @export
 setGeneric("removeNA", function(object, ...) {
