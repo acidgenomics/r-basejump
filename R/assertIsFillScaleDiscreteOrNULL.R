@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' fill <- scale_color_viridis(discrete = TRUE)
+#' fill <- ggplot2::scale_fill_manual(values = c("red", "blue"))
 #' class(fill)
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)
@@ -22,5 +22,6 @@ assertIsFillScaleDiscreteOrNULL <- function(x, severity = "stop") {
             classes = c("ggproto", "Scale", "ScaleDiscrete"),
             severity = severity
         )
+        assert_are_identical(x[["aesthetics"]], "fill")
     }
 }

@@ -19,7 +19,7 @@ Abort on mismatch.
 Assert Is Fill Palette Scale Discrete or NULL
 }
 \examples{
-fill <- scale_color_viridis(discrete = TRUE)
+fill <- ggplot2::scale_fill_manual(values = c("red", "blue"))
 class(fill)
 assertIsFillScaleDiscreteOrNULL(fill)
 assertIsFillScaleDiscreteOrNULL(NULL)
