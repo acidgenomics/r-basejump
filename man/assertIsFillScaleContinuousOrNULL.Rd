@@ -4,7 +4,8 @@
 \alias{assertIsFillScaleContinuousOrNULL}
 \title{Assert Is Fill Palette Scale Continuous or NULL}
 \usage{
-assertIsFillScaleContinuousOrNULL(x, severity = "stop")
+assertIsFillScaleContinuousOrNULL(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,7 +20,7 @@ Abort on mismatch.
 Assert Is Fill Palette Scale Continuous or NULL
 }
 \examples{
-fill <- scale_fill_viridis(discrete = FALSE)
+fill <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
 class(fill)
 assertIsFillScaleContinuousOrNULL(fill)
 assertIsFillScaleContinuousOrNULL(NULL)

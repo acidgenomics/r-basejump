@@ -4,7 +4,8 @@
 \alias{assertIsColorScaleDiscreteOrNULL}
 \title{Assert Is Color Palette Scale Discrete or NULL}
 \usage{
-assertIsColorScaleDiscreteOrNULL(x, severity = "stop")
+assertIsColorScaleDiscreteOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,7 +20,7 @@ Abort on mismatch.
 Assert Is Color Palette Scale Discrete or NULL
 }
 \examples{
-color <- scale_color_viridis(discrete = TRUE)
+color <- ggplot2::scale_color_manual(values = c("red", "blue"))
 class(color)
 assertIsColorScaleDiscreteOrNULL(color)
 assertIsColorScaleDiscreteOrNULL(NULL)

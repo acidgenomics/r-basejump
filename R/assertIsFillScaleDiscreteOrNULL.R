@@ -10,7 +10,10 @@
 #' class(fill)
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)
-assertIsFillScaleDiscreteOrNULL <- function(x, severity = "stop") {
+assertIsFillScaleDiscreteOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("ScaleDiscrete", "NULL"),
@@ -22,6 +25,10 @@ assertIsFillScaleDiscreteOrNULL <- function(x, severity = "stop") {
             classes = c("ggproto", "Scale", "ScaleDiscrete"),
             severity = severity
         )
-        assert_are_identical(x[["aesthetics"]], "fill")
+        assert_are_identical(
+            x = x[["aesthetics"]],
+            y = "fill",
+            severity = severity
+        )
     }
 }
