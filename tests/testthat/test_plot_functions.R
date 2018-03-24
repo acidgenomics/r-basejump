@@ -33,7 +33,10 @@ test_that("dynamicPlotlist", {
 
 # midnightTheme ================================================================
 test_that("midnightTheme", {
-    p <- ggplot(mpg, aes(cty, hwy)) +
+    p <- ggplot2::ggplot(
+        data = mpg,
+        mapping = ggplot2::aes(cty, hwy)
+    ) +
         ggplot2::geom_point(color = "orange") +
         midnightTheme()
     expect_is(p, "ggplot")

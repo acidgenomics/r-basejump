@@ -21,8 +21,11 @@ Abort on mismatch.
 Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
-gene2symbol <- gene2symbol("Homo sapiens", genomeBuild = "GRCh37")
-assertIsGene2symbol(gene2symbol)
+x <- data.frame(
+    "geneID" = "ENSG00000000003",
+    "geneName" = "TSPAN6"
+)
+assertIsGene2symbol(x)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

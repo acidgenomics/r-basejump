@@ -21,8 +21,11 @@ Abort on mismatch.
 Check Transcript to Gene Mapping Data
 }
 \examples{
-tx2gene <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
-assertIsTx2gene(tx2gene)
+x <- data.frame(
+    "txID" = "ENST00000000233",
+    "geneID" = "ENSG00000004059"
+)
+assertIsTx2gene(x)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
