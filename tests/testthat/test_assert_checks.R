@@ -224,8 +224,15 @@ test_that("assertIsGene2symbol", {
 })
 
 test_that("assertIsHexColorFunctionOrNULL", {
-    expect_silent(assertIsHexColorFunctionOrNULL(viridis))
-    expect_error(assertIsHexColorFunctionOrNULL(viridis(256L)))
+    x <- function(n) {
+        colors <- c("#FFFFFF", "#000000")
+        colors[seq_len(n)]
+    }
+    expect_silent(assertIsHexColorFunctionOrNULL(x))
+    expect_error(
+        assertIsHexColorFunctionOrNULL(x(2L)),
+        "is2 :"
+    )
 })
 
 test_that("assertIsImplicitInteger", {
