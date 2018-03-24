@@ -248,10 +248,11 @@ ensembl <- function(
             all.x = TRUE,
             sort = FALSE
         )
-        assert_are_set_equal(mergeData[["tx_id"]], txData[["tx_id"]])
-        match <- match(x = mergeData[["tx_id"]], table = txData[["tx_id"]])
+        assert_are_set_equal(txData[["tx_id"]], mergeData[["tx_id"]])
+        match <- match(x = txData[["tx_id"]], table = mergeData[["tx_id"]])
         stopifnot(!any(is.na(match)))
         mergeData <- mergeData[match, , drop = FALSE]
+        assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
 
         # Now we can slot back into the transcript mcols
         if (is(tx, "GRanges")) {
