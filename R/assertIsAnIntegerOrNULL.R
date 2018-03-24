@@ -8,7 +8,10 @@
 #' @examples
 #' assertIsAnIntegerOrNULL(1L)
 #' assertIsAnIntegerOrNULL(NULL)
-assertIsAnIntegerOrNULL <- function(x, severity = "stop") {
+assertIsAnIntegerOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("integer", "NULL"),

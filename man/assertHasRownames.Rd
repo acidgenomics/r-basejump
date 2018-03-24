@@ -5,7 +5,7 @@
 \alias{hasRownames}
 \title{Assert Has Rownames}
 \usage{
-assertHasRownames(x, severity = "stop")
+assertHasRownames(x, severity = getOption("assertive.severity", "stop"))
 
 hasRownames(x)
 }

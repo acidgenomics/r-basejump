@@ -10,7 +10,10 @@
 #' @examples
 #' assertIsDataFrameOrNULL(mtcars)
 #' assertIsDataFrameOrNULL(NULL)
-assertIsDataFrameOrNULL <- function(x, severity = "stop") {
+assertIsDataFrameOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("data.frame", "NULL"),

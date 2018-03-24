@@ -4,7 +4,7 @@
 \alias{assertIsAHeaderLevel}
 \title{Assert Is a Header Level}
 \usage{
-assertIsAHeaderLevel(x, severity = "stop")
+assertIsAHeaderLevel(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

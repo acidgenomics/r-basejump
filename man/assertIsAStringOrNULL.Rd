@@ -4,7 +4,7 @@
 \alias{assertIsAStringOrNULL}
 \title{Assert Is a String or NULL}
 \usage{
-assertIsAStringOrNULL(x, severity = "stop")
+assertIsAStringOrNULL(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

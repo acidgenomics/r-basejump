@@ -8,7 +8,10 @@
 #' @examples
 #' assertIsCharacterOrNULL(c("hello", "world"))
 #' assertIsCharacterOrNULL(NULL)
-assertIsCharacterOrNULL <- function(x, severity = "stop") {
+assertIsCharacterOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("character", "NULL"),

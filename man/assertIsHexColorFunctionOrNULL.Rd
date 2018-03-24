@@ -4,7 +4,8 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \title{Assert Is Hex Color Function or NULL}
 \usage{
-assertIsHexColorFunctionOrNULL(x, severity = "stop")
+assertIsHexColorFunctionOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -20,7 +21,8 @@ Assert Is Hex Color Function or NULL
 }
 \examples{
 hex <- function(n) {
-    c("#FFFFFF", "#000000")
+    colors <- c("#FFFFFF", "#000000")
+    colors[seq_len(n)]
 }
 assertIsHexColorFunctionOrNULL(hex)
 assertIsHexColorFunctionOrNULL(NULL)

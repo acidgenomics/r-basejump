@@ -4,7 +4,8 @@
 \alias{assertFormalGene2symbol}
 \title{Assert Formal Gene to Symbol Mappings}
 \usage{
-assertFormalGene2symbol(x, genes, gene2symbol, severity = "stop")
+assertFormalGene2symbol(x, genes, gene2symbol,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object containing gene identifiers in the rownames.}

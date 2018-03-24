@@ -4,7 +4,7 @@
 \alias{assertIsCharacterOrNULL}
 \title{Assert Is Character Vector or NULL}
 \usage{
-assertIsCharacterOrNULL(x, severity = "stop")
+assertIsCharacterOrNULL(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

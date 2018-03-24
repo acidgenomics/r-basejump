@@ -19,7 +19,10 @@
 #'     stringsAsFactors = FALSE
 #' )
 #' assertHasRownames(data)
-assertHasRownames <- function(x, severity = "stop") {
+assertHasRownames <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     stopifnot(hasRownames(x))
     assert_are_disjoint_sets(
         x = rownames(x),

@@ -4,7 +4,7 @@
 \alias{assertIsANumberOrNULL}
 \title{Assert Is a Number or NULL}
 \usage{
-assertIsANumberOrNULL(x, severity = "stop")
+assertIsANumberOrNULL(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

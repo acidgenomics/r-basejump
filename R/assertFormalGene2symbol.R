@@ -23,7 +23,7 @@ assertFormalGene2symbol <- function(
     x,
     genes,
     gene2symbol,
-    severity = "stop"
+    severity = getOption("assertive.severity", "stop")
 ) {
     assertHasRownames(x)
     assert_is_any_of(genes, c("character", "NULL"))
