@@ -19,7 +19,10 @@ Abort on mismatch.
 Assert Is Hex Color Function or NULL
 }
 \examples{
-assertIsHexColorFunctionOrNULL(viridis)
+hex <- function(n) {
+    c("#FFFFFF", "#000000")
+}
+assertIsHexColorFunctionOrNULL(hex)
 assertIsHexColorFunctionOrNULL(NULL)
 }
 \seealso{

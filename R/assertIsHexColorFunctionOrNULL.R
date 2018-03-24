@@ -6,7 +6,11 @@
 #' @export
 #'
 #' @examples
-#' assertIsHexColorFunctionOrNULL(viridis)
+#' hex <- function(n) {
+#'     colors <- c("#FFFFFF", "#000000")
+#'     colors[seq_len(n)]
+#' }
+#' assertIsHexColorFunctionOrNULL(hex)
 #' assertIsHexColorFunctionOrNULL(NULL)
 assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
     assert_is_any_of(
