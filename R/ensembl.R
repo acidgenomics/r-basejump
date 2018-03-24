@@ -241,8 +241,6 @@ ensembl <- function(
             txData <- tx
             geneData <- gene
         }
-        rownames(txData) <- txData[["tx_id"]]
-        rownames(geneData) <- geneData[["gene_id"]]
         mergeData <- merge(
             x = txData,
             y = geneData,
@@ -250,9 +248,10 @@ ensembl <- function(
             all.x = TRUE,
             sort = FALSE
         )
-        rownames(mergeData) <- mergeData[["tx_id"]]
-        assert_are_set_equal(rownames(txData), rownames(mergeData))
-        mergeData <- mergeData[rownames(txData), , drop = FALSE]
+        assert_are_set_equal(mergeData[["tx_id"]], txData[["tx_id"]])
+        match <- match(x = mergeData[["tx_id"]], table = txData[["tx_id"]])
+        stopifnot(!any(is.na(match)))
+        mergeData <- mergeData[match, , drop = FALSE]
         assert_are_identical(rownames(txData), rownames(mergeData))
 
         # Now we can slot back into the transcript mcols
