@@ -12,7 +12,10 @@
 #' @examples
 #' gene2symbol <- gene2symbol("Homo sapiens", genomeBuild = "GRCh37")
 #' assertIsGene2symbol(gene2symbol)
-assertIsGene2symbol <- function(x, severity = "stop") {
+assertIsGene2symbol <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),

@@ -12,7 +12,10 @@
 #' }
 #' assertIsHexColorFunctionOrNULL(hex)
 #' assertIsHexColorFunctionOrNULL(NULL)
-assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
+assertIsHexColorFunctionOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("function", "NULL"),

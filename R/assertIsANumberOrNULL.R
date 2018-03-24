@@ -8,7 +8,10 @@
 #' @examples
 #' assertIsANumberOrNULL(1.1)
 #' assertIsANumberOrNULL(NULL)
-assertIsANumberOrNULL <- function(x, severity = "stop") {
+assertIsANumberOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("numeric", "NULL"),

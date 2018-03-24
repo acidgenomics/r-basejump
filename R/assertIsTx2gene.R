@@ -12,7 +12,10 @@
 #' @examples
 #' tx2gene <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
 #' assertIsTx2gene(tx2gene)
-assertIsTx2gene <- function(x, severity = "stop") {
+assertIsTx2gene <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),

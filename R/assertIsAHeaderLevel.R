@@ -9,7 +9,10 @@
 #'
 #' @examples
 #' assertIsAHeaderLevel(1L)
-assertIsAHeaderLevel <- function(x, severity = "stop") {
+assertIsAHeaderLevel <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_a_number(x, severity = severity)
     assert_is_subset(
         x = as.integer(x),

@@ -4,7 +4,8 @@
 \alias{assertFormalAnnotationCol}
 \title{Assert Formal Annotation Column}
 \usage{
-assertFormalAnnotationCol(x, colData, severity = "stop")
+assertFormalAnnotationCol(x, colData,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

@@ -8,7 +8,10 @@
 #' @examples
 #' assertIsAStringOrNULL("hello world")
 #' assertIsAStringOrNULL(NULL)
-assertIsAStringOrNULL <- function(x, severity = "stop") {
+assertIsAStringOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assertIsCharacterOrNULL(x, severity = severity)
     if (is.character(x)) {
         assert_is_a_string(x, severity = severity)

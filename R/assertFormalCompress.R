@@ -7,7 +7,10 @@
 #'
 #' @examples
 #' assertFormalCompress("xz")
-assertFormalCompress <- function(x, severity = "stop") {
+assertFormalCompress <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("character", "logical"),

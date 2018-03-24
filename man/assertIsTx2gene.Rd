@@ -4,7 +4,7 @@
 \alias{assertIsTx2gene}
 \title{Check Transcript to Gene Mapping Data}
 \usage{
-assertIsTx2gene(x, severity = "stop")
+assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript to gene identifier

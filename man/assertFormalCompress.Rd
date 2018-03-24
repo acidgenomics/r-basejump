@@ -4,7 +4,7 @@
 \alias{assertFormalCompress}
 \title{Assert Formal Compression}
 \usage{
-assertFormalCompress(x, severity = "stop")
+assertFormalCompress(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}

@@ -20,7 +20,11 @@
 #'     stringsAsFactors = TRUE
 #' )
 #' assertFormalAnnotationCol(x, colData)
-assertFormalAnnotationCol <- function(x, colData, severity = "stop") {
+assertFormalAnnotationCol <- function(
+    x,
+    colData,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_has_dims(x, severity = severity)
     assert_is_any_of(
         x = colData,
