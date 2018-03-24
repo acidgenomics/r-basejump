@@ -4,7 +4,8 @@
 \alias{assertAreTranscriptAnnotations}
 \title{Assert Are Ensembl Transcript Annotations}
 \usage{
-assertAreTranscriptAnnotations(x, severity = "stop")
+assertAreTranscriptAnnotations(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript annotations.}
@@ -19,7 +20,10 @@ Abort on mismatch.
 Assert Are Ensembl Transcript Annotations
 }
 \examples{
-x <- ensembl("Homo sapiens", format = "transcripts", genomeBuild = "GRCh37")
+x <- data.frame(
+    "txID" = "ENST00000000233",
+    "geneID" = "ENSG00000004059"
+)
 assertAreTranscriptAnnotations(x)
 }
 \seealso{

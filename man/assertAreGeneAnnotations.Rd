@@ -4,7 +4,8 @@
 \alias{assertAreGeneAnnotations}
 \title{Assert Are Ensembl Gene Annotations}
 \usage{
-assertAreGeneAnnotations(x, severity = "stop")
+assertAreGeneAnnotations(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl gene annotations.}
@@ -19,7 +20,10 @@ Abort on mismatch.
 Assert Are Ensembl Gene Annotations
 }
 \examples{
-x <- ensembl("Homo sapiens", format = "genes", genomeBuild = "GRCh37")
+x <- data.frame(
+    "geneID" = "ENSG00000000003",
+    "geneName" = "TSPAN6"
+)
 assertAreGeneAnnotations(x)
 }
 \seealso{

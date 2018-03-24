@@ -8,9 +8,15 @@
 #' @export
 #'
 #' @examples
-#' x <- ensembl("Homo sapiens", format = "genes", genomeBuild = "GRCh37")
+#' x <- data.frame(
+#'     "geneID" = "ENSG00000000003",
+#'     "geneName" = "TSPAN6"
+#' )
 #' assertAreGeneAnnotations(x)
-assertAreGeneAnnotations <- function(x, severity = "stop") {
+assertAreGeneAnnotations <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     x <- as.data.frame(x)
     assert_is_subset(
         x = c("geneID", "geneName"),
