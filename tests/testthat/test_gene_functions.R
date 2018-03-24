@@ -179,15 +179,15 @@ test_that("stripTranscriptVersions", {
         stripTranscriptVersions("ENSMUST00000119854.7"),
         "ENSMUST00000119854"
     )
-    # Require detectinon of Ensembl transcript (ENS*T)
-    expect_error(
+    # Return unmodified if not Ensembl transcript (ENS*T)
+    expect_identical(
         stripTranscriptVersions("EGFP.1"),
-        "is_matching_regex :"
+        "EGFP.1"
     )
     # Theoretical spike-in containing a transcript version
     expect_identical(
         stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
-        c("ENSMUST00000119854", "EGFP")
+        c("ENSMUST00000119854", "EGFP.1")
     )
 })
 
