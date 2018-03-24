@@ -14,10 +14,6 @@
 \alias{reexports}
 \alias{mcols}
 \alias{reexports}
-\alias{aes}
-\alias{reexports}
-\alias{ggplot}
-\alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{set_rownames}
@@ -35,8 +31,6 @@ below to see their documentation.
 
 \describe{
   \item{GenomicFeatures}{\code{\link[GenomicFeatures]{genes}}, \code{\link[GenomicFeatures]{transcripts}}}
-
-  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 

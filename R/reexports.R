@@ -10,12 +10,6 @@ S4Vectors::DataFrame
 S4Vectors::mcols
 
 #' @export
-ggplot2::aes
-
-#' @export
-ggplot2::ggplot
-
-#' @export
 magrittr::`%>%`
 
 #' @export
