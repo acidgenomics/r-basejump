@@ -26,7 +26,5 @@ coldata <- DataFrame(
 ensemblRelease <- 87L
 ensemblURL <- "ftp://ftp.ensembl.org/pub/release-89"
 
-heatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
-
 groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
