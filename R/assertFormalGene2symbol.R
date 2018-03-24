@@ -10,7 +10,11 @@
 #' @export
 #'
 #' @examples
-#' gene2symbol <- gene2symbol("Homo sapiens")
+#' gene2symbol <- data.frame(
+#'     "geneID" = c("ENSG00000000003", "ENSG00000000005"),
+#'     "geneName" = c("TSPAN6", "TNMD"),
+#'     row.names = c("ENSG00000000003", "ENSG00000000005")
+#' )
 #' genes <- head(rownames(gene2symbol), 2L)
 #' x <- data.frame(
 #'     "sample_1" = c(1L, 2L),
