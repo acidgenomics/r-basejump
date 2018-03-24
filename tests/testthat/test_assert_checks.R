@@ -151,12 +151,12 @@ test_that("assertIsCharacterOrNULL", {
 })
 
 test_that("assertIsColorScaleContinuousOrNULL", {
-    color <- scale_color_viridis(discrete = FALSE)
-    expect_silent(assertIsColorScaleContinuousOrNULL(color))
+    x <- ggplot2::scale_color_gradient(low = "red", high = "blue")
+    expect_silent(assertIsColorScaleContinuousOrNULL(x))
     expect_silent(assertIsColorScaleContinuousOrNULL(NULL))
-    color <- scale_color_viridis(discrete = TRUE)
+    x <- ggplot2::scale_color_manual(values = "red")
     expect_error(
-        assertIsColorScaleContinuousOrNULL(color),
+        assertIsColorScaleContinuousOrNULL(x),
         paste(
             "is2 :",
             "x is not in any of the classes 'ScaleContinuous', 'NULL'."
@@ -165,12 +165,12 @@ test_that("assertIsColorScaleContinuousOrNULL", {
 })
 
 test_that("assertIsColorScaleDiscreteOrNULL", {
-    color <- scale_color_viridis(discrete = TRUE)
-    expect_silent(assertIsColorScaleDiscreteOrNULL(color))
+    x <- ggplot2::scale_color_manual(values = "red")
+    expect_silent(assertIsColorScaleDiscreteOrNULL(x))
     expect_silent(assertIsColorScaleDiscreteOrNULL(NULL))
-    color <- scale_color_viridis(discrete = FALSE)
+    x <- ggplot2::scale_color_gradient(low = "red", high = "blue")
     expect_error(
-        assertIsColorScaleDiscreteOrNULL(color),
+        assertIsColorScaleDiscreteOrNULL(x),
         paste(
             "is2 :",
             "x is not in any of the classes 'ScaleDiscrete', 'NULL'."
@@ -179,12 +179,12 @@ test_that("assertIsColorScaleDiscreteOrNULL", {
 })
 
 test_that("assertIsFillScaleContinuousOrNULL", {
-    fill <- scale_fill_viridis(discrete = FALSE)
-    expect_silent(assertIsFillScaleContinuousOrNULL(fill))
+    x <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
+    expect_silent(assertIsFillScaleContinuousOrNULL(x))
     expect_silent(assertIsFillScaleContinuousOrNULL(NULL))
-    fill <- scale_fill_viridis(discrete = TRUE)
+    x <- ggplot2::scale_fill_manual(values = "red")
     expect_error(
-        assertIsFillScaleContinuousOrNULL(fill),
+        assertIsFillScaleContinuousOrNULL(x),
         paste(
             "is2 :",
             "x is not in any of the classes 'ScaleContinuous', 'NULL'."
@@ -193,12 +193,12 @@ test_that("assertIsFillScaleContinuousOrNULL", {
 })
 
 test_that("assertIsFillScaleDiscreteOrNULL", {
-    fill <- scale_fill_viridis(discrete = TRUE)
-    expect_silent(assertIsFillScaleDiscreteOrNULL(fill))
+    x <- ggplot2::scale_fill_manual(values = "red")
+    expect_silent(assertIsFillScaleDiscreteOrNULL(x))
     expect_silent(assertIsFillScaleDiscreteOrNULL(NULL))
-    fill <- scale_fill_viridis(discrete = FALSE)
+    x <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
     expect_error(
-        assertIsFillScaleDiscreteOrNULL(fill),
+        assertIsFillScaleDiscreteOrNULL(x),
         paste(
             "is2 :",
             "x is not in any of the classes 'ScaleDiscrete', 'NULL'."

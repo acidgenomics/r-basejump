@@ -1,5 +1,8 @@
-context("setAs")
+context("Coercion Methods")
 
+
+
+# tibble =======================================================================
 test_that("Coerce to tibble", {
     x <- as(df, "tibble")
     expect_is(x, "tbl_df")
