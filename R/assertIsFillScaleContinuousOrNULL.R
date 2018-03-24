@@ -6,11 +6,14 @@
 #' @export
 #'
 #' @examples
-#' fill <- scale_fill_viridis(discrete = FALSE)
+#' fill <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
 #' class(fill)
 #' assertIsFillScaleContinuousOrNULL(fill)
 #' assertIsFillScaleContinuousOrNULL(NULL)
-assertIsFillScaleContinuousOrNULL <- function(x, severity = "stop") {
+assertIsFillScaleContinuousOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("ScaleContinuous", "NULL"),
@@ -20,6 +23,11 @@ assertIsFillScaleContinuousOrNULL <- function(x, severity = "stop") {
         assert_is_all_of(
             x = x,
             classes = c("ggproto", "Scale", "ScaleContinuous"),
+            severity = severity
+        )
+        assert_are_identical(
+            x = x[["aesthetics"]],
+            y = "fill",
             severity = severity
         )
     }

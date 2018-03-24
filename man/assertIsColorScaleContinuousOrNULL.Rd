@@ -4,7 +4,8 @@
 \alias{assertIsColorScaleContinuousOrNULL}
 \title{Assert Is Color Palette Scale Continuous or NULL}
 \usage{
-assertIsColorScaleContinuousOrNULL(x, severity = "stop")
+assertIsColorScaleContinuousOrNULL(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,7 +20,7 @@ Abort on mismatch.
 Assert Is Color Palette Scale Continuous or NULL
 }
 \examples{
-color <- scale_color_viridis(discrete = FALSE)
+color <- ggplot2::scale_color_gradient(low = "red", high = "blue")
 class(color)
 assertIsColorScaleContinuousOrNULL(color)
 assertIsColorScaleContinuousOrNULL(NULL)

@@ -4,7 +4,8 @@
 \alias{assertIsFillScaleDiscreteOrNULL}
 \title{Assert Is Fill Palette Scale Discrete or NULL}
 \usage{
-assertIsFillScaleDiscreteOrNULL(x, severity = "stop")
+assertIsFillScaleDiscreteOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
