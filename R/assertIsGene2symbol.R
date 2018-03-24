@@ -10,8 +10,11 @@
 #' @export
 #'
 #' @examples
-#' gene2symbol <- gene2symbol("Homo sapiens", genomeBuild = "GRCh37")
-#' assertIsGene2symbol(gene2symbol)
+#' x <- data.frame(
+#'     "geneID" = "ENSG00000000003",
+#'     "geneName" = "TSPAN6"
+#' )
+#' assertIsGene2symbol(x)
 assertIsGene2symbol <- function(
     x,
     severity = getOption("assertive.severity", "stop")

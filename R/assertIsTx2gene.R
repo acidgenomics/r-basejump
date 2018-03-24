@@ -10,8 +10,11 @@
 #' @export
 #'
 #' @examples
-#' tx2gene <- tx2gene("Homo sapiens", genomeBuild = "GRCh37")
-#' assertIsTx2gene(tx2gene)
+#' x <- data.frame(
+#'     "txID" = "ENST00000000233",
+#'     "geneID" = "ENSG00000004059"
+#' )
+#' assertIsTx2gene(x)
 assertIsTx2gene <- function(
     x,
     severity = getOption("assertive.severity", "stop")
