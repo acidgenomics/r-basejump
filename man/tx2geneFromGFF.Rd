@@ -31,11 +31,12 @@ each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
+# character ====
 # From URL (recommended)
 url <- "http://basejump.seq.cloud/mmusculus.gtf"
 tx2geneFromGFF(url) \%>\% glimpse()
 
-# GFF data.frame
+# data.frame ====
 gff <- readGFF(url)
 tx2geneFromGFF(gff) \%>\% glimpse()
 }
