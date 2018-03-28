@@ -49,6 +49,8 @@ Imports:
     knitr (>= 1.16),
     magrittr (>= 1.5),
     methods,
+    parallel,
+    plyr,
     readr (>= 1.1),
     readxl (>= 1.0),
     rlang (>= 0.2),

@@ -12,11 +12,12 @@
 #' @return `data.frame`.
 #'
 #' @examples
+#' # character ====
 #' # From URL (recommended)
 #' url <- "http://basejump.seq.cloud/mmusculus.gtf"
 #' tx2geneFromGFF(url) %>% glimpse()
 #'
-#' # GFF data.frame
+#' # data.frame ====
 #' gff <- readGFF(url)
 #' tx2geneFromGFF(gff) %>% glimpse()
 NULL
@@ -50,6 +51,7 @@ setMethod(
         # Rename `transcriptID` to `txID`
         colnames(data)[[1L]] <- "txID"
         data <- data %>%
+            mutate_if(is.factor, as.character) %>%
             .[!is.na(.[["txID"]]), , drop = FALSE] %>%
             .[!is.na(.[["geneID"]]), , drop = FALSE] %>%
             unique() %>%
