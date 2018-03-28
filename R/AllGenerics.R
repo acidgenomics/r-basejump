@@ -94,14 +94,6 @@ setGeneric("gene2symbol", function(object, ...) {
 
 
 
-#' @rdname gene2symbolFromGFF
-#' @export
-setGeneric("gene2symbolFromGFF", function(object, ...) {
-    standardGeneric("gene2symbolFromGFF")
-})
-
-
-
 #' @rdname geometricMean
 setGeneric("geometricMean", function(object, ...) {
     standardGeneric("geometricMean")
@@ -177,14 +169,6 @@ setGeneric("stripTranscriptVersions", function(object, ...) {
 #' @export
 setGeneric("tx2gene", function(object, ...) {
     standardGeneric("tx2gene")
-})
-
-
-
-#' @rdname tx2geneFromGFF
-#' @export
-setGeneric("tx2geneFromGFF", function(object, ...) {
-    standardGeneric("tx2geneFromGFF")
 })
 
 
