@@ -14,32 +14,27 @@
 #'
 #' @examples
 #' # Single file
-#' file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
-#' names(file)
+#' x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+#' names(x)
 #'
 #' # Vectorized
-#' files <- localOrRemoteFile(c(
+#' x <- localOrRemoteFile(c(
 #'     "http://basejump.seq.cloud/mtcars.csv",
 #'     "http://basejump.seq.cloud/mtcars.rda"
 #' ))
-#' names(files)
-localOrRemoteFile <- function(object) {
-    assert_is_character(object)
+#' names(x)
+localOrRemoteFile <- function(file) {
+    assert_is_character(file)
 
-    # Vectorized support
-    files <- mapply(
-        FUN = function(path) {
-            if (file.exists(path)) {
-                # Local file mode
-                path
-            } else if (grepl("\\://", path)) {
-                # Remote file mode
-                tempfile <- tempfile()
-
+    local <- mapply(
+        file = file,
+        FUN = function(file) {
+            # Remote file mode
+            if (grepl("\\://", file)) {
                 # Make sure local tempfile always has an extension
                 extPattern <- "\\.([A-Za-z0-9]+)$"
-                assert_all_are_matching_regex(path, extPattern)
-                ext <- str_match(path, extPattern)[, 2L]
+                assert_all_are_matching_regex(file, extPattern)
+                ext <- str_match(file, extPattern)[, 2L]
 
                 # Fix for Excel files on Windows
                 # https://github.com/tidyverse/readxl/issues/374
@@ -52,20 +47,19 @@ localOrRemoteFile <- function(object) {
                     mode <- "w"
                 }
 
-                destfile <- paste(tempfile, ext, sep = ".")
-                download.file(url = path, destfile = destfile, mode = mode)
+                destfile <- paste(tempfile(), ext, sep = ".")
+                download.file(url = file, destfile = destfile, mode = mode)
                 destfile
             } else {
-                abort(paste("Invalid path:", path))
+                file
             }
         },
-        path = object,
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
+    assert_all_are_existing_files(local)
 
-    assert_all_are_existing_files(files)
-    files <- normalizePath(files, winslash = "/", mustWork = TRUE)
-    names(files) <- basename(object)
-    files
+    local <- normalizePath(local, winslash = "/", mustWork = TRUE)
+    names(local) <- basename(file)
+    local
 }

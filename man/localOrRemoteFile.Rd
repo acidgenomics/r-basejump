@@ -4,10 +4,10 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object)
+localOrRemoteFile(file)
 }
 \arguments{
-\item{object}{Object.}
+\item{file}{File path.}
 }
 \value{
 Named character vector containing the original basename as the name
