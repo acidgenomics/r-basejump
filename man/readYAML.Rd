@@ -23,5 +23,5 @@ names(yaml)
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
   \code{\link{localOrRemoteFile}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}}
+  \code{\link{readFileByExtension}}
 }

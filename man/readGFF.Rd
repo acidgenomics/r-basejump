@@ -29,8 +29,7 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 \item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
+Other GFF Functions: \code{\link{gene2symbolFromGFF}},
+  \code{\link{rowRangesFromGFF}},
+  \code{\link{tx2geneFromGFF}}
 }

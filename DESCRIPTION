@@ -50,6 +50,7 @@ Imports:
     magrittr (>= 1.5),
     methods,
     parallel,
+    pbapply,
     plyr,
     readr (>= 1.1),
     readxl (>= 1.0),

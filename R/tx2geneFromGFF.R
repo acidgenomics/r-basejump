@@ -17,10 +17,9 @@
 #' @examples
 #' tx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
 tx2geneFromGFF <- function(file) {
-    inform("Preparing tx2gene using `GenomicFeatures::makeTxDbFromGFF()`")
     file <- localOrRemoteFile(file)
     txdb <- suppressWarnings(makeTxDbFromGFF(file))
-    # `tx_id` doesn't work well for some GFF files
+    # `tx_id` returns as integer, so use `tx_name` instead and rename
     tx <- transcripts(txdb, columns = c("tx_name", "gene_id"))
     data <- mcols(tx) %>%
         as.data.frame() %>%

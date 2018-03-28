@@ -10,13 +10,15 @@
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr case_when funs mutate_all mutate_if summarize_all
+#' @importFrom dplyr all_vars case_when funs filter_all mutate_all mutate_if
+#'   summarize_all
 #' @importFrom ensembldb ensemblVersion
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_minimal
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_names set_rownames
 #' @importFrom parallel mclapply
+#' @importFrom pbapply pblapply
 #' @importFrom plyr ldply
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
