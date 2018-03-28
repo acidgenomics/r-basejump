@@ -9,6 +9,9 @@ gene2symbolFromGFF(file)
 
 gene2symbolFromGTF(file)
 }
+\arguments{
+\item{file}{File path.}
+}
 \value{
 \code{data.frame}.
 }

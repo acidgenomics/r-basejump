@@ -9,6 +9,11 @@ rowRangesFromGFF(file, level = c("genes", "transcripts"))
 
 rowRangesFromGTF(file, level = c("genes", "transcripts"))
 }
+\arguments{
+\item{file}{File path.}
+
+\item{level}{Choose "\code{genes} or "\code{transcripts}".}
+}
 \value{
 \code{data.frame}.
 }

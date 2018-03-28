@@ -4,6 +4,7 @@
 #' @name general
 #' @keywords internal
 #'
+#' @param file File path.
 #' @param object Object.
 #' @param x Primary object.
 #' @param y Secondary object.

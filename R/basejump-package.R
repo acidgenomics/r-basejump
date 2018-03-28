@@ -5,6 +5,7 @@
 #' @import BiocGenerics S4Vectors datasets methods
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
+#' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom Matrix Matrix readMM writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip

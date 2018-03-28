@@ -4,11 +4,11 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = c("camel", "snake", "upperCamel",
+readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
   "dotted"), ...)
 }
 \arguments{
-\item{object}{File path.}
+\item{file}{File path.}
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{dotted}, \code{snake}, or \code{upperCamel}. This is always enforced.}

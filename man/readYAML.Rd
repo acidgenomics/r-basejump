@@ -4,10 +4,10 @@
 \alias{readYAML}
 \title{Read YAML File}
 \usage{
-readYAML(object)
+readYAML(file)
 }
 \arguments{
-\item{object}{YAML file path.}
+\item{file}{File path.}
 }
 \value{
 \code{list}.
