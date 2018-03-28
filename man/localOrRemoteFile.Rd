@@ -19,15 +19,15 @@ This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
 # Single file
-file <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
-names(file)
+x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+names(x)
 
 # Vectorized
-files <- localOrRemoteFile(c(
+x <- localOrRemoteFile(c(
     "http://basejump.seq.cloud/mtcars.csv",
     "http://basejump.seq.cloud/mtcars.rda"
 ))
-names(files)
+names(x)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},

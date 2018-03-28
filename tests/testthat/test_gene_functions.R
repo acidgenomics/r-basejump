@@ -156,21 +156,6 @@ test_that("gene2symbolFromGFF : Drosophila melanogaster", {
     )
 })
 
-test_that("gene2symbolFromGFF : data.frame", {
-    x <- readGFF("mmusculus.gtf")
-    expect_identical(
-        gene2symbolFromGFF(x),
-        gene2symbolFromGFF("mmusculus.gtf")
-    )
-})
-
-test_that("gene2symbolFromGFF : Invalid number of columns", {
-    expect_error(
-        gene2symbolFromGFF(mtcars),
-        "are_identical : ncol\\(object\\) and 9L are not identical."
-    )
-})
-
 
 
 # stripTranscriptVersions ======================================================
@@ -194,6 +179,20 @@ test_that("stripTranscriptVersions", {
 
 
 # tx2geneFromGFF ===============================================================
+test_that("tx2geneFromGFF : Drosophila melanogaster", {
+    x <- tx2geneFromGFF("dmelanogaster.gtf")
+    expect_identical(dim(x), c(7L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            "txID" = c("FBtr0070000", "FBtr0070001"),
+            "geneID" = c("FBgn0031081", "FBgn0052826"),
+            row.names = c("FBtr0070000", "FBtr0070001"),
+            stringsAsFactors = FALSE
+        )
+    )
+})
+
 test_that("tx2geneFromGFF : Mus musculus", {
     x <- tx2geneFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(20L, 2L))
@@ -209,31 +208,5 @@ test_that("tx2geneFromGFF : Mus musculus", {
     expect_message(
         tx2geneFromGFF("mmusculus.gtf"),
         "tx2gene mappings: 20 transcripts, 17 genes"
-    )
-})
-
-test_that("tx2geneFromGFF : Drosophila melanogaster", {
-    x <- tx2geneFromGFF("dmelanogaster.gtf")
-    expect_identical(dim(x), c(7L, 2L))
-    expect_identical(
-        head(x, 2L),
-        data.frame(
-            "txID" = c("FBtr0070000", "FBtr0070001"),
-            "geneID" = c("FBgn0031081", "FBgn0052826"),
-            row.names = c("FBtr0070000", "FBtr0070001"),
-            stringsAsFactors = FALSE
-        )
-    )
-})
-
-test_that("tx2geneFromGFF : data.frame", {
-    x <- readGFF("mmusculus.gtf")
-    expect_identical(
-        tx2geneFromGFF("mmusculus.gtf"),
-        tx2geneFromGFF(x)
-    )
-    expect_error(
-        tx2geneFromGFF(mtcars),
-        "are_identical : ncol\\(object\\) and 9L are not identical."
     )
 })
