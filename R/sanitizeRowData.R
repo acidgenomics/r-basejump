@@ -32,6 +32,9 @@ sanitizeRowData <- function(object) {
     assert_is_any_of(object, ensemblReturn)
     data <- as.data.frame(object)
 
+    # Enforce camel case
+    data <- camel(data)
+
     # Set the rownames, if they're missing
     if (!hasRownames(data)) {
         idCol <- .detectIDCol(data)
