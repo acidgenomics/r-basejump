@@ -4,15 +4,12 @@
 #'
 #' @family Read Functions
 #'
-#' @inheritParams general
 #' @inheritParams saveData
-#' @param severity Return `stop` (default), `warning`, or `message` if file
-#'   doesn't exist.
+#' @inheritParams general
 #'
 #' @return Named character vector containing the original basename as the name
 #'   and local file path (i.e. tempfile) as the string. Aborts on a missing
-#'   file by default. Returns `NULL` when `severity = "warning"` and a missing
-#'   file is detected.
+#'   file.
 #' @export
 #'
 #' @examples
@@ -26,13 +23,10 @@
 #'     "http://basejump.seq.cloud/mtcars.rda"
 #' ))
 #' names(files)
-localOrRemoteFile <- function(
-    object,
-    severity = c("stop", "warning", "message", "none")
-) {
+localOrRemoteFile <- function(object) {
     assert_is_character(object)
-    severity <- match.arg(severity)
 
+    # Vectorized support
     files <- mapply(
         FUN = function(path) {
             if (file.exists(path)) {
@@ -70,12 +64,7 @@ localOrRemoteFile <- function(
         USE.NAMES = FALSE
     )
 
-    assert_all_are_existing_files(files, severity = severity)
-    # Return NULL when severity isn't stop and not all files exist
-    if (!all(file.exists(files))) {
-        return(NULL)
-    }
-
+    assert_all_are_existing_files(files)
     files <- normalizePath(files, winslash = "/", mustWork = TRUE)
     names(files) <- basename(object)
     files
