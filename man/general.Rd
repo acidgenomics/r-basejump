@@ -4,6 +4,8 @@
 \alias{general}
 \title{General Arguments}
 \arguments{
+\item{file}{File path.}
+
 \item{object}{Object.}
 
 \item{x}{Primary object.}

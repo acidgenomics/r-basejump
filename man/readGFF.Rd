@@ -5,12 +5,12 @@
 \alias{readGTF}
 \title{Read GFF/GTF Annotations}
 \usage{
-readGFF(object)
+readGFF(file)
 
-readGTF(object)
+readGTF(file)
 }
 \arguments{
-\item{object}{Object.}
+\item{file}{File path.}
 }
 \value{
 \code{data.frame}.

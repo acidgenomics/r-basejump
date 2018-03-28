@@ -7,6 +7,7 @@
 #' @family GFF Functions
 #'
 #' @inheritParams general
+#' @param level Choose "`genes` or "`transcripts`".
 #'
 #' @return `data.frame`.
 #' @export
@@ -65,6 +66,10 @@ rowRangesFromGFF <- function(
             all.x = TRUE
         )
         mcols(gr) <- merge
+        assert_are_identical(
+            x = names(gr),
+            y = mcols(gr)[["geneID"]]
+        )
     } else if (level == "transcripts") {
         # `tx_id` returns as integer, so use `tx_name` instead and rename
         gr <- transcripts(txdb, columns = c("tx_name", "gene_id"))
@@ -87,8 +92,11 @@ rowRangesFromGFF <- function(
             by = "txID",
             all.x = TRUE
         )
-        assert_are_identical(names(gr), merge[["txID"]])
         mcols(gr) <- merge
+        assert_are_identical(
+            x = names(gr),
+            y = mcols(gr)[["txID"]]
+        )
     }
 
     assert_are_identical(names(gr), sort(names(gr)))

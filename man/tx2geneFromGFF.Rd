@@ -9,6 +9,9 @@ tx2geneFromGFF(file)
 
 tx2geneFromGTF(file)
 }
+\arguments{
+\item{file}{File path.}
+}
 \value{
 \code{data.frame}.
 }

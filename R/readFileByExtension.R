@@ -7,9 +7,6 @@
 #' @family Read Functions
 #'
 #' @inheritParams general
-#' @inheritParams localOrRemoteFile
-#' @inheritParams saveData
-#' @param object File path.
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `dotted`, `snake`, or `upperCamel`. This is always enforced.
 #'
@@ -30,14 +27,14 @@
 #' xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 #' glimpse(xlsx)
 readFileByExtension <- function(
-    object,
+    file,
     makeNames = c("camel", "snake", "upperCamel", "dotted"),
     ...
 ) {
-    assert_is_a_string(object)
+    assert_is_a_string(file)
     # Require that input string contains an extension
     extPattern <- "\\.([a-zA-Z0-9]+)$"
-    assert_all_are_matching_regex(object, extPattern)
+    assert_all_are_matching_regex(file, extPattern)
     makeNames <- match.arg(makeNames)
     makeNames <- get(
         x = makeNames,
@@ -45,13 +42,12 @@ readFileByExtension <- function(
         inherits = FALSE
     )
 
-    file <- localOrRemoteFile(object)
+    file <- localOrRemoteFile(file)
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
     # File import, based on extension
     inform(paste("Reading", names(file)))
-
     na <- c("", "NA", "#N/A")
 
     # Add extension to tempfile, if necessary

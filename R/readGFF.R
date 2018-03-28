@@ -21,7 +21,6 @@ gffCols <- c(
 #' @family GFF Functions
 #'
 #' @inheritParams general
-#' @inheritParams saveData
 #'
 #' @return `data.frame`.
 #' @export
@@ -32,10 +31,10 @@ gffCols <- c(
 #'
 #' @examples
 #' readGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
-readGFF <- function(object) {
-    assert_is_a_string(object)
-    assert_all_are_matching_regex(object, "\\.g(f|t)f(\\d)?$")
-    file <- localOrRemoteFile(object)
+readGFF <- function(file) {
+    assert_is_a_string(file)
+    assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?$")
+    file <- localOrRemoteFile(file)
     inform(paste("Reading GFF/GTF:", names(file)))
     gff <- tryCatch(
         read.delim(
