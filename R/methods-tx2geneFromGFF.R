@@ -46,8 +46,8 @@ setMethod(
     signature("data.frame"),
     function(object) {
         assertIsGFF(object)
-        values <- .gffKeyValuePairs(object, unique = TRUE)
-        data <- values[, c("transcriptID", "geneID")]
+        data <- .gffKeyValuePairs(object, unique = TRUE) %>%
+            .[, c("transcriptID", "geneID")]
         # Rename `transcriptID` to `txID`
         colnames(data)[[1L]] <- "txID"
         data <- data %>%

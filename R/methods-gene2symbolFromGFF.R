@@ -12,11 +12,12 @@
 #' @return `data.frame`.
 #'
 #' @examples
+#' # character ====
 #' # From URL (recommended)
 #' url <- "http://basejump.seq.cloud/mmusculus.gtf"
 #' gene2symbolFromGFF(url) %>% glimpse()
 #'
-#' # GFF data.frame
+#' # data.frame ====
 #' gff <- readGFF(url)
 #' gene2symbolFromGFF(gff) %>% glimpse()
 NULL
@@ -44,36 +45,22 @@ setMethod(
     "gene2symbolFromGFF",
     signature("data.frame"),
     function(object) {
-        assert_is_data.frame(object)
-        assert_are_identical(ncol(object), 9L)
+        assertIsGFF(object)
+        data <- .gffKeyValuePairs(object, unique = TRUE)
 
-        anno <- .gffKeyValuePairs(object)
-        assert_is_character(anno)
-
-        # Standard `gene_symbol` to `gene_name` (Ensembl format).
+        # Standardize `geneName` column (Ensembl format).
         # This fix is necessary for FlyBase GFF files.
-        if (any(grepl("gene_symbol", anno))) {
-            anno <- gsub("gene_symbol", "gene_name", anno)
+        if ("geneSymbol" %in% colnames(data)) {
+            data[["geneName"]] <- data[["geneSymbol"]]
         }
 
-        anno <- anno %>%
-            .[grepl("gene_id", .)] %>%
-            .[grepl("gene_name", .)] %>%
-            unique()
-
-        geneID <- str_match(anno, "gene_id ([^;]+);") %>%
-            .[, 2L]
-        assert_all_are_non_missing_nor_empty_character(geneID)
-        geneName <- str_match(anno, "gene_name ([^;]+);") %>%
-            .[, 2L]
-        assert_all_are_non_missing_nor_empty_character(geneName)
-        assert_are_same_length(geneID, geneName)
-        data <- cbind(geneID, geneName) %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
+        data <- data[, c("geneID", "geneName")] %>%
+            mutate_if(is.factor, as.character) %>%
+            .[!is.na(.[["geneID"]]), , drop = FALSE] %>%
+            .[!is.na(.[["geneName"]]), , drop = FALSE] %>%
             unique() %>%
-            .[order(.[["geneID"]]), , drop = FALSE]
-
-        # Check that all transcripts are unique
+            .[order(.[["geneID"]]), , drop = FALSE] %>%
+            set_rownames(.[["geneID"]])
         assert_has_no_duplicates(data[["geneID"]])
 
         inform(paste(
@@ -81,7 +68,6 @@ setMethod(
             length(unique(data[["geneID"]])), "genes"
         ))
 
-        rownames(data) <- data[["geneID"]]
         data
     }
 )
