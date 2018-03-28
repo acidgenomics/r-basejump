@@ -4,19 +4,15 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, severity = c("stop", "warning", "message", "none"))
+localOrRemoteFile(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
-doesn't exist.}
 }
 \value{
 Named character vector containing the original basename as the name
 and local file path (i.e. tempfile) as the string. Aborts on a missing
-file by default. Returns \code{NULL} when \code{severity = "warning"} and a missing
-file is detected.
+file.
 }
 \description{
 This function is vectorized and supports mixed local and remote paths.

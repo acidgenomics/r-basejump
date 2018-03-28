@@ -32,7 +32,6 @@
 readFileByExtension <- function(
     object,
     makeNames = c("camel", "snake", "upperCamel", "dotted"),
-    severity = c("stop", "warning", "message", "none"),
     ...
 ) {
     assert_is_a_string(object)
@@ -45,9 +44,8 @@ readFileByExtension <- function(
         envir = asNamespace("basejump"),
         inherits = FALSE
     )
-    severity <- match.arg(severity)
 
-    file <- localOrRemoteFile(object, severity = severity)
+    file <- localOrRemoteFile(object)
     basename <- names(file)
     ext <- str_match(basename, extPattern)[[2L]]
 
