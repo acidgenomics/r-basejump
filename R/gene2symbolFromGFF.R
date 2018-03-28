@@ -17,8 +17,7 @@ gene2symbolFromGFF <- function(file) {
     gff <- readGFF(file)
     data <- .gffKeyValuePairs(gff, unique = TRUE)
 
-    # Standardize `geneName` column (Ensembl format).
-    # This fix is necessary for FlyBase GFF files.
+    # Standardize columns into Ensembl format
     if ("geneSymbol" %in% colnames(data)) {
         data[["geneName"]] <- data[["geneSymbol"]]
     }

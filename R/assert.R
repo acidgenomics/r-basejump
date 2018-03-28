@@ -68,5 +68,6 @@ NULL
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_existing
 #' @importFrom assertive is_hex_color
+#' @importFrom assertive is_not_na
 #' @importFrom assertive is_scalar
 NULL
