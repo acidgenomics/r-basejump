@@ -23,7 +23,5 @@
         values
     })
 
-    list %>%
-        ldply(rbind) %>%
-        as.data.frame(stringsAsFactors = TRUE)
+    ldply(list, rbind)
 }
