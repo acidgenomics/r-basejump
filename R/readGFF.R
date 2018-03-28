@@ -1,3 +1,17 @@
+gffCols <- c(
+    "chromosome",
+    "annotationSource",
+    "featureType",
+    "start",
+    "end",
+    "score",
+    "strand",
+    "phase",
+    "keyValuePairs"
+)
+
+
+
 #' Read GFF/GTF Annotations
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
@@ -26,19 +40,10 @@ readGFF <- function(object) {
     gff <- tryCatch(
         read.delim(
             file = file,
-            col.names = c(
-                "chromosome",
-                "annotationSource",
-                "featureType",
-                "start",
-                "end",
-                "score",
-                "strand",
-                "phase",
-                "keyValuePairs"
-            ),
+            col.names = gffCols,
             comment.char = "#",
-            header = FALSE
+            header = FALSE,
+            stringsAsFactors = FALSE
         ),
         error = function(e) {
             abort("GFF/GTF file failed to load")
