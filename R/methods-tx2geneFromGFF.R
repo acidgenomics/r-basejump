@@ -44,29 +44,17 @@ setMethod(
     "tx2geneFromGFF",
     signature("data.frame"),
     function(object) {
-        assert_is_data.frame(object)
-        assert_are_identical(ncol(object), 9L)
-
-        anno <- object %>%
-            .gffKeyValuePairs() %>%
-            .[grepl("transcript_id", .)] %>%
-            .[grepl("gene_id", .)] %>%
-            unique()
-
-        txID <- str_match(anno, "transcript_id ([^;]+);") %>%
-            .[, 2L]
-        assert_all_are_non_missing_nor_empty_character(txID)
-        geneID <- str_match(anno, "gene_id ([^;]+);") %>%
-            .[, 2L]
-        assert_all_are_non_missing_nor_empty_character(geneID)
-        assert_are_same_length(txID, geneID)
-        data <- cbind(txID, geneID) %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
+        assertIsGFF(object)
+        values <- .gffKeyValuePairs(object, unique = TRUE)
+        data <- values[, c("transcriptID", "geneID")]
+        # Rename `transcriptID` to `txID`
+        colnames(data)[[1L]] <- "txID"
+        data <- data %>%
+            .[!is.na(.[["txID"]]), , drop = FALSE] %>%
+            .[!is.na(.[["geneID"]]), , drop = FALSE] %>%
             unique() %>%
             .[order(.[["txID"]]), , drop = FALSE] %>%
             set_rownames(.[["txID"]])
-
-        # Check that all transcripts are unique
         assert_has_no_duplicates(data[["txID"]])
 
         inform(paste(
