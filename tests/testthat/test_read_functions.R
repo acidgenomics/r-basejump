@@ -148,16 +148,6 @@ test_that("localOrRemoteFile : Missing file", {
         localOrRemoteFile("XXX.csv"),
         "is_existing_file :"
     )
-    expect_warning(
-        localOrRemoteFile("XXX.csv", severity = "warning"),
-        "is_existing_file :"
-    )
-    expect_identical(
-        suppressWarnings(
-            localOrRemoteFile("XXX.csv", severity = "warning")
-        ),
-        NULL
-    )
 })
 
 
@@ -227,14 +217,14 @@ test_that("readFileByExtension : Unsupported file type", {
 
 
 # readGFF ======================================================================
-test_that("readGFF : Mus musculus", {
-    x <- readGFF("mmusculus.gtf")
+test_that("readGFF : Drosophila melanogaster", {
+    x <- readGFF("dmelanogaster.gtf")
     # Check for 9 columns
     expect_identical(ncol(x), 9L)
 })
 
-test_that("readGFF : Drosophila melanogaster", {
-    x <- readGFF("dmelanogaster.gtf")
+test_that("readGFF : Mus musculus", {
+    x <- readGFF("mmusculus.gtf")
     # Check for 9 columns
     expect_identical(ncol(x), 9L)
 })
@@ -264,7 +254,7 @@ test_that("readYAML : bcbio project summary", {
 test_that("readYAML : Unsupported file type", {
     expect_error(
         readYAML("mtcars.csv"),
-        "is_matching_regex : object"
+        "is_matching_regex : file"
     )
 })
 
