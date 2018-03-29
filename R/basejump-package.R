@@ -18,7 +18,6 @@
 #'   ggplot theme theme_minimal
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr %>% set_colnames set_names set_rownames
-#' @importFrom parallel mclapply
 #' @importFrom pbapply pblapply
 #' @importFrom plyr ldply
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
