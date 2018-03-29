@@ -22,7 +22,7 @@
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
 #' @importFrom rlang abort dots_list eval_bare inform warn
-#' @importFrom stats complete.cases dist
+#' @importFrom stats dist
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
 #'   str_replace_na str_subset
 #' @importFrom tibble as_tibble column_to_rownames glimpse is_tibble
