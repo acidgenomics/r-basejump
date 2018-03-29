@@ -44,16 +44,22 @@ rowRangesFromGFF <- function(
     colnames(extra) <- colnames(extra) %>%
         gsub("^transcript", "tx", .) %>%
         gsub("Symbol$", "Name", .)
-    requiredCols <- c("txID", "txName", "geneID", "geneName")
+    requiredCols <- c(
+        "txID",
+        "txName",
+        "txBiotype",
+        "geneID",
+        "geneName",
+        "geneBiotype"
+    )
     assert_is_subset(requiredCols, colnames(extra))
-    extra <- extra[, requiredCols]
 
     if (level == "genes") {
         gr <- genes(txdb, columns = "gene_id")
         colnames(mcols(gr)) <- "geneID"
-        # Merge only the `geneID` and `geneName` columns into mcols
         extra <- extra %>%
-            .[, c("geneID", "geneName")] %>%
+            # Merge only the `gene*` columns
+            .[, grep("^gene", colnames(.))] %>%
             # Drop rows containing an NA value
             filter_all(all_vars(is_not_na(.))) %>%
             unique() %>%
@@ -72,15 +78,16 @@ rowRangesFromGFF <- function(
         )
     } else if (level == "transcripts") {
         # `tx_id` returns as integer, so use `tx_name` instead and rename
-        gr <- transcripts(txdb, columns = c("tx_name", "gene_id"))
-        colnames(mcols(gr)) <- c("txID", "geneID")
+        gr <- transcripts(txdb, columns = c("tx_name"))
+        colnames(mcols(gr)) <- "txID"
         # Need to set the names on the GRanges object manually
         names(gr) <- mcols(gr)[["txID"]]
         # Order GRanges by `txID`
         gr <- gr[sort(names(gr))]
         # Merge the extra columns
         extra <- extra %>%
-            .[, c("txID", "txName", "geneName")] %>%
+            # Merge only the `gene*` and `tx*` columns
+            .[, grep("^(gene|tx)", colnames(.))] %>%
             # Drop rows containing an NA value
             filter_all(all_vars(is_not_na(.))) %>%
             unique() %>%
@@ -101,6 +108,9 @@ rowRangesFromGFF <- function(
 
     assert_are_identical(names(gr), sort(names(gr)))
     assert_are_identical(names(gr), mcols(gr)[[1L]])
+
+    # Add the broad class column
+    gr <- .addBroadClassCol(gr)
 
     gr
 }
