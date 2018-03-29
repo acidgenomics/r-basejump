@@ -38,7 +38,7 @@ readGFF <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
     file <- localOrRemoteFile(file)
-    inform(paste("Reading GFF/GTF:", names(file)))
+    inform(paste("Reading GFF:", names(file)))
     gff <- tryCatch(
         read.delim(
             file = file,
