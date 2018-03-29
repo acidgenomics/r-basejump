@@ -52,7 +52,7 @@ rowRangesFromGFF <- function(
 
     # GRanges ==================================================================
     # Make TxDb
-    txdb <- suppressWarnings(makeTxDbFromGFF(file))
+    txdb <- makeTxDbFromGFF(file)
 
     # GRanges from TxDb
     if (level == "genes") {

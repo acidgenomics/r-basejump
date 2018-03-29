@@ -17,20 +17,17 @@
 #' @examples
 #' tx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
 tx2geneFromGFF <- function(file) {
-    file <- localOrRemoteFile(file)
-
-    txdb <- suppressWarnings(makeTxDbFromGFF(file))
-    # `tx_id` returns as integer, so use `tx_name` instead and rename
-    tx <- transcripts(txdb, columns = c("tx_name", "gene_id"))
-
-    data <- mcols(tx) %>%
+    data <- parseGFFAttributes(
+        file = file,
+        select = c("gene_id", "transcript_id")
+    ) %>%
         as.data.frame() %>%
-        set_colnames(c("txID", "geneID")) %>%
-        mutate_all(as.character) %>%
-        .[order(.[["txID"]]), , drop = FALSE] %>%
+        set_colnames(c("geneID", "txID")) %>%
+        # Put transcripts first
+        .[, c("txID", "geneID")] %>%
+        # Drop rows containing an NA value
+        .[complete.cases(.), , drop = FALSE] %>%
         set_rownames(.[["txID"]])
-
-    assert_has_no_duplicates(data[["txID"]])
 
     inform(paste(
         "tx2gene mappings:",
