@@ -7,6 +7,8 @@
 parseGFFAttributes(file, select = c("gene_", "transcript_"), unique = TRUE)
 }
 \arguments{
+\item{file}{File path.}
+
 \item{select}{Attribute to select. Supports partial matching. Defaults to
 returning attributes matching both "\code{gene_}" and "\code{transcript_}".}
 
@@ -23,5 +25,6 @@ Memory overhead and speed is greatly improved by requiring keys.
 Deparsing only unique values is much faster and generally recommended.
 }
 \examples{
-parseGFFAttributes("mmusculus.gtf") \%>\% glimpse()
+parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf") \%>\%
+    glimpse()
 }
