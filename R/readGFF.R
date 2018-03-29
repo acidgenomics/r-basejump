@@ -1,13 +1,13 @@
 gffCols <- c(
-    "chromosome",
-    "annotationSource",
-    "featureType",
+    "seqname",
+    "source",
+    "feature",
     "start",
     "end",
     "score",
     "strand",
-    "phase",
-    "keyValuePairs"
+    "frame",
+    "attribute"
 )
 
 
