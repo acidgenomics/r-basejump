@@ -4,17 +4,16 @@
 \alias{parseGFFAttributes}
 \title{Parse GFF Attributes Column}
 \usage{
-parseGFFAttributes(file, select = c("gene_", "transcript_"), unique = TRUE,
-  return = c("data.frame", "list"))
+parseGFFAttributes(file, select = c("gene_", "transcript_"), unique = TRUE)
 }
 \arguments{
-\item{select}{Attribute keys to select. Supports partial matching. Defaults
-to returning attributes matching both "\code{gene_}" and "\code{transcript_}".}
+\item{select}{Attribute to select. Supports partial matching. Defaults to
+returning attributes matching both "\code{gene_}" and "\code{transcript_}".}
 
 \item{unique}{Return unique attributes.}
 }
 \value{
-\code{data.frame}.
+\code{tbl_df}.
 }
 \description{
 Parse GFF Attributes Column

@@ -14,8 +14,9 @@
 #' @examples
 #' gene2symbolFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
 gene2symbolFromGFF <- function(file) {
-    gff <- readGFF(file)
-    data <- .gffKeyValuePairs(gff, unique = TRUE)
+    data <- parseGFFAttributes(file, select = "gene_") %>%
+        as.data.frame() %>%
+        camel()
 
     # Standardize columns into Ensembl format
     if ("geneSymbol" %in% colnames(data)) {
@@ -23,18 +24,14 @@ gene2symbolFromGFF <- function(file) {
     }
 
     data <- data[, c("geneID", "geneName")] %>%
+        # Drop rows containing an NA value
+        .[complete.cases(.), , drop = FALSE] %>%
         mutate_if(is.factor, as.character) %>%
-        .[!is.na(.[["geneID"]]), , drop = FALSE] %>%
-        .[!is.na(.[["geneName"]]), , drop = FALSE] %>%
         unique() %>%
         .[order(.[["geneID"]]), , drop = FALSE] %>%
         set_rownames(.[["geneID"]])
-    assert_has_no_duplicates(data[["geneID"]])
 
-    inform(paste(
-        "gene2symbol mappings:",
-        length(unique(data[["geneID"]])), "genes"
-    ))
+    assert_has_no_duplicates(data[["geneID"]])
 
     data
 }

@@ -31,43 +31,47 @@ rowRangesFromGFF <- function(
     file <- localOrRemoteFile(file)
     level <- match.arg(level)
 
-    # Prepare TxDb
-    # Warnings are common at this step
-    txdb <- suppressWarnings(makeTxDbFromGFF(file))
-
+    # Attributes ===============================================================
     # Note that GenomicFeatures doesn't support returning the `geneName` from
     # the key value pairs of the GFF file
-    gff <- suppressMessages(readGFF(file))
-    extra <- .gffKeyValuePairs(gff, unique = TRUE)
-
+    attributes <- parseGFFAttributes(
+        file,
+        select = c("gene_", "transcript_"),
+        unique = TRUE
+    ) %>%
+        as.data.frame() %>%
+        camel()
     # Standardize columns into Ensembl format
-    colnames(extra) <- colnames(extra) %>%
+    colnames(attributes) <- colnames(attributes) %>%
         gsub("^transcript", "tx", .) %>%
         gsub("Symbol$", "Name", .)
-    requiredCols <- c(
-        "txID",
-        "txName",
-        "txBiotype",
-        "geneID",
-        "geneName",
-        "geneBiotype"
+    assert_is_subset(
+        x = c("txID", "txName", "geneID", "geneName"),
+        y = colnames(attributes)
     )
-    assert_is_subset(requiredCols, colnames(extra))
 
+    # GRanges ==================================================================
+    # Make TxDb
+    txdb <- suppressWarnings(makeTxDbFromGFF(file))
+
+    # GRanges from TxDb
     if (level == "genes") {
         gr <- genes(txdb, columns = "gene_id")
         colnames(mcols(gr)) <- "geneID"
-        extra <- extra %>%
+        attributes <- attributes %>%
             # Merge only the `gene*` columns
             .[, grep("^gene", colnames(.))] %>%
             # Drop rows containing an NA value
-            filter_all(all_vars(is_not_na(.))) %>%
-            unique() %>%
-            as("DataFrame")
-        assert_has_no_duplicates(extra[["geneID"]])
+            .[complete.cases(.), , drop = FALSE] %>%
+            unique()
+        assert_has_no_duplicates(attributes[["geneID"]])
+        assert_is_subset(
+            x = mcols(gr)[["geneID"]],
+            y = attributes[["geneID"]]
+        )
         merge <- merge(
             x = mcols(gr),
-            y = extra,
+            y = attributes,
             by = "geneID",
             all.x = TRUE
         )
@@ -84,18 +88,21 @@ rowRangesFromGFF <- function(
         names(gr) <- mcols(gr)[["txID"]]
         # Order GRanges by `txID`
         gr <- gr[sort(names(gr))]
-        # Merge the extra columns
-        extra <- extra %>%
+        # Merge the attributes columns
+        attributes <- attributes %>%
             # Merge only the `gene*` and `tx*` columns
             .[, grep("^(gene|tx)", colnames(.))] %>%
             # Drop rows containing an NA value
-            filter_all(all_vars(is_not_na(.))) %>%
-            unique() %>%
-            as("DataFrame")
-        assert_has_no_duplicates(extra[["txID"]])
+            .[complete.cases(.), , drop = FALSE] %>%
+            unique()
+        assert_has_no_duplicates(attributes[["txID"]])
+        assert_is_subset(
+            x = mcols(gr)[["txID"]],
+            y = attributes[["txID"]]
+        )
         merge <- merge(
             x = mcols(gr),
-            y = extra,
+            y = attributes,
             by = "txID",
             all.x = TRUE
         )

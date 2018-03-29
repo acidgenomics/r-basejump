@@ -1,7 +1,7 @@
 .addBroadClassCol <- function(object) {
     assert_is_any_of(object, ensemblReturn)
-    # Note that DataFrame class nests the GRanges containing seqnames. When we
-    # coerce to data.frame here, it gets coerced to `x.*` columns.
+    # Note that DataFrame class nests the GRanges containing `seqnames` column.
+    # When we coerce to data.frame here, it gets coerced to `x.*` columns.
     data <- as.data.frame(object)
     if (is(object, "GRanges")) {
         rownames(data) <- names(object)
@@ -12,29 +12,35 @@
     assert_is_subset("geneName", colnames(data))
     geneName <- data[["geneName"]]
 
-    # Biotype (prioritize transcript over gene, if present)
+    # Biotype (optional)
+    # Prioritize transcript over gene, if present
     biotypeCol <- grep(
         pattern = "biotype$",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    assert_is_non_empty(biotypeCol)
-    biotypeCol <- biotypeCol[[1L]]
-    biotype <- data[[biotypeCol]]
+    if (length(biotypeCol)) {
+        biotypeCol <- biotypeCol[[1L]]
+        biotype <- data[[biotypeCol]]
+    } else {
+        warn("biotype missing")
+        biotype <- NA
+    }
 
     # seqnames (aka chromosome)
+    # NOTE: Doesn't get returned for transcript data frames
     seqnamesCol <- grep(
-        pattern = "seqname",
+        pattern = "seqnames",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    # NOTE This doesn't get returned for transcript data frames
     if (length(seqnamesCol)) {
         seqnamesCol <- seqnamesCol[[1L]]
         seqnames <- data[[seqnamesCol]]
     } else {
+        warn("seqnames missing")
         seqnames <- NA
     }
 

@@ -18,15 +18,18 @@
 #' tx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>% glimpse()
 tx2geneFromGFF <- function(file) {
     file <- localOrRemoteFile(file)
+
     txdb <- suppressWarnings(makeTxDbFromGFF(file))
     # `tx_id` returns as integer, so use `tx_name` instead and rename
     tx <- transcripts(txdb, columns = c("tx_name", "gene_id"))
+
     data <- mcols(tx) %>%
         as.data.frame() %>%
         set_colnames(c("txID", "geneID")) %>%
         mutate_all(as.character) %>%
         .[order(.[["txID"]]), , drop = FALSE] %>%
         set_rownames(.[["txID"]])
+
     assert_has_no_duplicates(data[["txID"]])
 
     inform(paste(

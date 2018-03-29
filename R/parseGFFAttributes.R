@@ -3,11 +3,11 @@
 #' @note Memory overhead and speed is greatly improved by requiring keys.
 #' Deparsing only unique values is much faster and generally recommended.
 #'
-#' @param select Attribute keys to select. Supports partial matching. Defaults
-#'   to returning attributes matching both "`gene_`" and "`transcript_`".
+#' @param select Attribute to select. Supports partial matching. Defaults to
+#'   returning attributes matching both "`gene_`" and "`transcript_`".
 #' @param unique Return unique attributes.
 #'
-#' @return `data.frame`.
+#' @return `tbl_df`.
 #' @export
 #'
 #' @examples
@@ -15,22 +15,16 @@
 parseGFFAttributes <- function(
     file,
     select = c("gene_", "transcript_"),
-    unique = TRUE,
-    return = c("data.frame", "list")
+    unique = TRUE
 ) {
     gff <- readGFF(file)
     assert_is_character(select)
     assert_is_a_bool(unique)
-    return <- match.arg(return)
 
-    inform("Parsing GFF key value pairs")
-    strings <- gff %>%
-        .[["keyValuePairs"]] %>%
-        as.character()
+    strings <- as.character(gff[["attribute"]])
 
     # This can be significantly faster for large GFF files
     if (isTRUE(unique)) {
-        inform("Getting unique attributes")
         strings <- unique(strings)
     }
 
@@ -50,8 +44,7 @@ parseGFFAttributes <- function(
         USE.NAMES = FALSE
     )
     strings <- strings[hits]
-
-    inform(paste(length(strings), "key value pairs"))
+    assert_is_non_empty(strings)
 
     # This can take a long time for large genomes, so use a progress bar
     list <- pblapply(strings, function(x) {
@@ -94,17 +87,14 @@ parseGFFAttributes <- function(
 
         # Only return values that match `select` argument
         grepl <- grepl(
-            pattern = paste(keys, collapse = "|"),
+            pattern = paste(select, collapse = "|"),
             x = names(value)
         )
         value[grepl]
     })
 
-    if (return == "data.frame") {
-        ldply(list, rbind) %>%
-            # Return strings instead of factors
-            mutate_if(is.factor, as.character)
-    } else if (return == "list") {
-        list
-    }
+    ldply(list, rbind) %>%
+        as_tibble() %>%
+        # Return strings instead of factors
+        mutate_all(as.character)
 }
