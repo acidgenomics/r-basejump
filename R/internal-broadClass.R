@@ -1,6 +1,6 @@
 .addBroadClassCol <- function(object) {
     assert_is_any_of(object, ensemblReturn)
-    # Note that DataFrame class nests the GRanges containing `seqnames` column.
+    # Note that DataFrame class nests the GRanges containing `seqname` column.
     # When we coerce to data.frame here, it gets coerced to `x.*` columns.
     data <- as.data.frame(object)
     if (is(object, "GRanges")) {
@@ -28,31 +28,31 @@
         biotype <- NA
     }
 
-    # seqnames (aka chromosome)
+    # seqname (aka chromosome)
     # NOTE: Doesn't get returned for transcript data frames
-    seqnamesCol <- grep(
-        pattern = "seqnames",
+    seqnameCol <- grep(
+        pattern = "seqname",
         x = colnames(data),
         ignore.case = TRUE,
         value = TRUE
     )
-    if (length(seqnamesCol)) {
-        seqnamesCol <- seqnamesCol[[1L]]
-        seqnames <- data[[seqnamesCol]]
+    if (length(seqnameCol)) {
+        seqnameCol <- seqnameCol[[1L]]
+        seqname <- data[[seqnameCol]]
     } else {
-        warn("seqnames missing")
-        seqnames <- NA
+        warn("seqname missing")
+        seqname <- NA
     }
 
     inform(paste(
         "Defining broadClass using:",
-        toString(c("geneName", biotypeCol, "seqnames"))
+        toString(c("geneName", biotypeCol, seqnameCol))
     ))
 
     broadClass <- data.frame(
         "geneName" = geneName,
         "biotype" = biotype,
-        "seqnames" = seqnames,
+        "seqname" = seqname,
         row.names = rownames(data)
     ) %>%
         .broadClass()
@@ -78,11 +78,11 @@
 .broadClass <- function(object) {
     assertHasRownames(object)
     assert_is_subset(
-        x = c("geneName", "biotype", "seqnames"),
+        x = c("geneName", "biotype", "seqname"),
         y = colnames(object)
     )
     broad <- case_when(
-        object[["seqnames"]] == "MT" ~ "mito",
+        object[["seqname"]] == "MT" ~ "mito",
         grepl(
             pattern = "^mt[\\:\\-]",
             x = object[["geneName"]],
