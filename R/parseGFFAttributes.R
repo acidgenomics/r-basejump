@@ -3,6 +3,7 @@
 #' @note Memory overhead and speed is greatly improved by requiring keys.
 #' Deparsing only unique values is much faster and generally recommended.
 #'
+#' @inheritParams general
 #' @param select Attribute to select. Supports partial matching. Defaults to
 #'   returning attributes matching both "`gene_`" and "`transcript_`".
 #' @param unique Return unique attributes.
@@ -11,7 +12,8 @@
 #' @export
 #'
 #' @examples
-#' parseGFFAttributes("mmusculus.gtf") %>% glimpse()
+#' parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf") %>%
+#'     glimpse()
 parseGFFAttributes <- function(
     file,
     select = c("gene_", "transcript_"),
