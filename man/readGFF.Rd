@@ -20,6 +20,10 @@ The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
+\details{
+Column names follow the conventions defined by Ensembl.
+https://ensembl.org/info/website/upload/gff.html
+}
 \examples{
 readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 }
