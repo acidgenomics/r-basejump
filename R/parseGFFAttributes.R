@@ -25,7 +25,6 @@ parseGFFAttributes <- function(
 
     strings <- as.character(gff[["attribute"]])
 
-    # This can be significantly faster for large GFF files
     if (isTRUE(unique)) {
         strings <- unique(strings)
     }
@@ -47,6 +46,10 @@ parseGFFAttributes <- function(
     )
     strings <- strings[hits]
     assert_is_non_empty(strings)
+
+    if (isTRUE(unique)) {
+        strings <- unique(strings)
+    }
 
     # This can take a long time for large genomes, so use a progress bar
     list <- pblapply(strings, function(x) {
@@ -95,8 +98,16 @@ parseGFFAttributes <- function(
         value[grepl]
     })
 
-    ldply(list, rbind) %>%
+    data <- ldply(list, rbind) %>%
         as_tibble() %>%
         # Return strings instead of factors
-        mutate_all(as.character)
+        mutate_all(as.character) %>%
+        # Ensure columns always return sorted
+        .[, sort(colnames(.))]
+
+    if (isTRUE(unique)) {
+        data <- unique(data)
+    }
+
+    data
 }

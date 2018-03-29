@@ -23,17 +23,13 @@ gene2symbolFromGFF <- function(file) {
         data[["geneName"]] <- data[["geneSymbol"]]
     }
 
-    data <- data[, c("geneID", "geneName")] %>%
+    data[, c("geneID", "geneName")] %>%
         # Drop rows containing an NA value
         .[complete.cases(.), , drop = FALSE] %>%
         mutate_if(is.factor, as.character) %>%
         unique() %>%
         .[order(.[["geneID"]]), , drop = FALSE] %>%
         set_rownames(.[["geneID"]])
-
-    assert_has_no_duplicates(data[["geneID"]])
-
-    data
 }
 
 
