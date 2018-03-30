@@ -11,6 +11,8 @@
 #' @return Character vector.
 #' @export
 #'
+#' @seealso [base::make.names()].
+#'
 #' @examples
 #' makeNames(c(123L, "hello world"))
 makeNames <- function(names, unique = FALSE) {
