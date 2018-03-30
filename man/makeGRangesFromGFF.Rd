@@ -12,7 +12,7 @@ makeGRangesFromGTF(file, level = c("genes", "transcripts"))
 \arguments{
 \item{file}{File path.}
 
-\item{level}{Fetch annotations as "\code{genes} or "\code{transcripts}".}
+\item{level}{Fetch annotations as "\code{genes}" or "\code{transcripts}".}
 }
 \value{
 \code{data.frame}.

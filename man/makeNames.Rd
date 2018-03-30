@@ -24,6 +24,9 @@ Sanitizes names using underscore instead of dot.
 \examples{
 makeNames(c(123L, "hello world"))
 }
+\seealso{
+\code{\link[base:make.names]{base::make.names()}}.
+}
 \author{
 Michael Steinbaugh
 }
