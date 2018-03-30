@@ -87,28 +87,20 @@
     <p>Markdown List</p>
     
 
-    <pre class="usage"><span class='fu'>markdownList</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>markdownList</span>(<span class='no'>object</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>markdownList</span>(<span class='no'>object</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>mdList</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>mdList</span>(<span class='no'>object</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p><code>atomic</code>, which will be coerced to <code>character</code>.</p></td>
     </tr>
     <tr>
       <th>ordered</th>
-      <td><p>Ordered (<code>TRUE</code>; <code>1.</code>) or unordered (<code>FALSE</code>; <code>-</code>) list in
-Markdown format.</p></td>
+      <td><p>Ordered ("<code>TRUE</code>") or unordered ("<code>FALSE</code>") list.</p></td>
     </tr>
     <tr>
       <th>asis</th>
@@ -124,9 +116,9 @@ inside an RMarkdown chunk with <code>results="asis"</code> enabled.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other R Markdown Functions: <code>kables</code>,
-  <code>markdownHeader</code>,
-  <code>markdownPlotlist</code></p>
+    <p>Other R Markdown Functions: <code><a href='kables.html'>kables</a></code>,
+  <code><a href='markdownHeader.html'>markdownHeader</a></code>,
+  <code><a href='markdownPlotlist.html'>markdownPlotlist</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

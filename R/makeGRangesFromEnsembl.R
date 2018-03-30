@@ -33,18 +33,15 @@
 #'
 #' @family Gene Functions
 #'
-#' @param organism Default recommended usage is to provide the full latin
-#'   organism name as a string.
-#' @param format Desired annotation data format, either "`genes`",
-#'   "`transcripts`", "`gene2symbol`"., or "`tx2gene`".
-#' @param genomeBuild *Optional.* Genome assembly name (e.g. GRCh38).
-#' @param release *Optional.* Ensembl release version. Defaults to the most
-#'   current release available on AnnotationHub.
-#' @param metadata Include the AnnotationHub metadata inside a list. Useful
-#'   for documenting where the annotations were sourced from inside
-#'   AnnotationHub.
+#' @param organism Full latin organism name (e.g. "`Homo sapiens`").
+#' @param format Fetch ranges as "`genes`" or "`transcripts`".
+#' @param genomeBuild *Optional.* Genome assembly name (e.g. "`GRCh38`"). If
+#'   `NULL`, defaults to the most recent build available.
+#' @param release *Optional.* Release version (e.g. `90`). If `NULL`, defaults
+#'   to the most recent release available.
+#' @param metadata Include the AnnotationHub metadata inside a `list`.
 #'
-#' @return `GRanges`containing gene or transcript annotations.
+#' @return `GRanges`.
 #' @export
 #'
 #' @seealso

@@ -7,29 +7,27 @@
 #' @family GFF Functions
 #'
 #' @inheritParams general
-#' @param level Fetch annotations as "`genes`" or "`transcripts`".
+#' @param format Output as genes or transcripts.
 #'
-#' @return `data.frame`.
+#' @return `GRanges`.
 #' @export
 #'
 #' @examples
 #' file <- "http://basejump.seq.cloud/mmusculus.gtf"
 #'
 #' # Genes
-#' x <- makeGRangesFromGFF(file, level = "genes")
-#' head(names(x))
-#' head(mcols(x))
+#' x <- makeGRangesFromGFF(file, format = "genes")
+#' summary(x)
 #'
 #' # Transcripts
-#' x <- makeGRangesFromGFF(file, level = "transcripts")
-#' head(names(x))
-#' head(mcols(x))
+#' x <- makeGRangesFromGFF(file, format = "transcripts")
+#' summary(x)
 makeGRangesFromGFF <- function(
     file,
-    level = c("genes", "transcripts")
+    format = c("genes", "transcripts")
 ) {
     file <- localOrRemoteFile(file)
-    level <- match.arg(level)
+    format <- match.arg(format)
 
     # Attributes ===============================================================
     # Note that GenomicFeatures doesn't support returning the `geneName` from
@@ -55,7 +53,7 @@ makeGRangesFromGFF <- function(
     txdb <- makeTxDbFromGFF(file)
 
     # GRanges from TxDb
-    if (level == "genes") {
+    if (format == "genes") {
         gr <- genes(txdb, columns = "gene_id")
         colnames(mcols(gr)) <- "geneID"
         attributes <- attributes %>%
@@ -80,7 +78,7 @@ makeGRangesFromGFF <- function(
             x = names(gr),
             y = mcols(gr)[["geneID"]]
         )
-    } else if (level == "transcripts") {
+    } else if (format == "transcripts") {
         # `tx_id` returns as integer, so use `tx_name` instead and rename
         gr <- transcripts(txdb, columns = c("tx_name"))
         colnames(mcols(gr)) <- "txID"

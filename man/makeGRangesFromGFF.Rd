@@ -5,17 +5,17 @@
 \alias{makeGRangesFromGTF}
 \title{Genomic Ranges from GFF File}
 \usage{
-makeGRangesFromGFF(file, level = c("genes", "transcripts"))
+makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 
-makeGRangesFromGTF(file, level = c("genes", "transcripts"))
+makeGRangesFromGTF(file, format = c("genes", "transcripts"))
 }
 \arguments{
 \item{file}{File path.}
 
-\item{level}{Fetch annotations as "\code{genes}" or "\code{transcripts}".}
+\item{format}{Output as genes or transcripts.}
 }
 \value{
-\code{data.frame}.
+\code{GRanges}.
 }
 \description{
 The GFF (General Feature Format) format consists of one line per feature,
@@ -26,14 +26,12 @@ GTF (General Transfer Format) is identical to GFF version 2.
 file <- "http://basejump.seq.cloud/mmusculus.gtf"
 
 # Genes
-x <- makeGRangesFromGFF(file, level = "genes")
-head(names(x))
-head(mcols(x))
+x <- makeGRangesFromGFF(file, format = "genes")
+summary(x)
 
 # Transcripts
-x <- makeGRangesFromGFF(file, level = "transcripts")
-head(names(x))
-head(mcols(x))
+x <- makeGRangesFromGFF(file, format = "transcripts")
+summary(x)
 }
 \seealso{
 Other GFF Functions: \code{\link{makeGene2symbolFromGFF}},

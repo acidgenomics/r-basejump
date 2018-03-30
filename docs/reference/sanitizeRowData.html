@@ -116,7 +116,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ensembl.html'>ensembl</a></span>(
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(
     <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>,
     <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>,
     <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCh37"</span>
@@ -152,10 +152,11 @@
 #&gt; <span class='message'>    not</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'ensembldb'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:stats':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>hub id: "EnsDb.Hsapiens.v75"</span>
+#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>id: "EnsDb.Hsapiens.v75"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>genome build: "GRCh37"</span>
-#&gt; <span class='message'>release version: "75"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 64,102
+#&gt; <span class='message'>build: "GRCh37"</span>
+#&gt; <span class='message'>release: "75"</span>
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 64,102
 #&gt; Variables: 10
 #&gt; $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7, 7, ...
 #&gt; $ start          &lt;int&gt; 99883667, 99839799, 49551404, 169818772, 169631245, ...
@@ -168,7 +169,7 @@
 #&gt; $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome, chro...
 #&gt; $ broadClass     &lt;fct&gt; coding, coding, coding, coding, coding, coding, codi...</div><div class='input'>
 <span class='co'># Transcripts ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ensembl.html'>ensembl</a></span>(
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(
     <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>,
     <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>,
     <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCh37"</span>
@@ -204,10 +205,11 @@
 #&gt; <span class='message'>    not</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'ensembldb'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:stats':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>hub id: "EnsDb.Hsapiens.v75"</span>
+#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>id: "EnsDb.Hsapiens.v75"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>genome build: "GRCh37"</span>
-#&gt; <span class='message'>release version: "75"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 215,647
+#&gt; <span class='message'>build: "GRCh37"</span>
+#&gt; <span class='message'>release: "75"</span>
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 215,647
 #&gt; Variables: 15
 #&gt; $ seqnames       &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7, 11, 1, 17, 1...
 #&gt; $ start          &lt;int&gt; 127228399, 9092961, 64073050, 2904119, 72356367, 374...
