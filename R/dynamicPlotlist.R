@@ -37,10 +37,10 @@ dynamicPlotlist <- function(
     assertIsAHeaderLevel(headerLevel)
     return <- match.arg(return)
     if (return == "grid") {
-        plot_grid(plotlist = object)
+        plot_grid(plotlist = plotlist)
     } else if (return == "list") {
-        object
+        plotlist
     } else if (return == "markdown") {
-        markdownPlotlist(object, headerLevel = headerLevel)
+        markdownPlotlist(plotlist, headerLevel = headerLevel)
     }
 }
