@@ -7,7 +7,7 @@
 #' @family GFF Functions
 #'
 #' @inheritParams general
-#' @param level Choose "`genes` or "`transcripts`".
+#' @param level Fetch annotations as "`genes` or "`transcripts`".
 #'
 #' @return `data.frame`.
 #' @export
