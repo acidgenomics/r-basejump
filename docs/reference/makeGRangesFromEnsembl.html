@@ -97,34 +97,31 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p>Default recommended usage is to provide the full latin
-organism name as a string.</p></td>
+      <td><p>Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Desired annotation data format, either "<code>genes</code>",
-"<code>transcripts</code>", "<code>gene2symbol</code>"., or "<code>tx2gene</code>".</p></td>
+      <td><p>Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional.</em> Genome assembly name (e.g. GRCh38).</p></td>
+      <td><p><em>Optional.</em> Genome assembly name (e.g. "<code>GRCh38</code>"). If
+<code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><em>Optional.</em> Ensembl release version. Defaults to the most
-current release available on AnnotationHub.</p></td>
+      <td><p><em>Optional.</em> Release version (e.g. <code>90</code>). If <code>NULL</code>, defaults
+to the most recent release available.</p></td>
     </tr>
     <tr>
       <th>metadata</th>
-      <td><p>Include the AnnotationHub metadata inside a list. Useful
-for documenting where the annotations were sourced from inside
-AnnotationHub.</p></td>
+      <td><p>Include the AnnotationHub metadata inside a <code>list</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>GRanges</code>containing gene or transcript annotations.</p>
+    <p><code>GRanges</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

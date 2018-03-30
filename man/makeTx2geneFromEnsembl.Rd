@@ -7,13 +7,13 @@
 makeTx2geneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
 }
 \arguments{
-\item{organism}{Default recommended usage is to provide the full latin
-organism name as a string.}
+\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
+\code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
+\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
+to the most recent release available.}
 }
 \value{
 \code{data.frame}

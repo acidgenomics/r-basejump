@@ -8,23 +8,20 @@ makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
   genomeBuild = NULL, release = NULL, metadata = FALSE)
 }
 \arguments{
-\item{organism}{Default recommended usage is to provide the full latin
-organism name as a string.}
+\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{format}{Desired annotation data format, either "\code{genes}",
-"\code{transcripts}", "\code{gene2symbol}"., or "\code{tx2gene}".}
+\item{format}{Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. GRCh38).}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
+\code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
+\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
+to the most recent release available.}
 
-\item{metadata}{Include the AnnotationHub metadata inside a list. Useful
-for documenting where the annotations were sourced from inside
-AnnotationHub.}
+\item{metadata}{Include the AnnotationHub metadata inside a \code{list}.}
 }
 \value{
-\code{GRanges}containing gene or transcript annotations.
+\code{GRanges}.
 }
 \description{
 Quickly obtain gene and transcript annotations from

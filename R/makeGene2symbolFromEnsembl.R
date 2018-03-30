@@ -2,7 +2,7 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #'
-#' @return `data.frame`
+#' @return `data.frame`.
 #' @export
 makeGene2symbolFromEnsembl <- function(
     organism,
