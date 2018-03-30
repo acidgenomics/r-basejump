@@ -8,11 +8,12 @@ dynamicPlotlist(plotlist, headerLevel = 2L, return = c("grid", "list",
   "markdown"))
 }
 \arguments{
-\item{headerLevel}{Markdown header level. Only applicable when
-\code{return = "markdown"}.}
+\item{plotlist}{List containing \code{ggplot} objects.}
 
-\item{return}{Return type. "\code{grid}", "\code{list}", and "\code{markdown}" are
-supported.}
+\item{headerLevel}{Markdown header level.}
+
+\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
+the first item in the vector by default.}
 }
 \value{
 \itemize{

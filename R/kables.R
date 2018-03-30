@@ -15,7 +15,10 @@
 #' @seealso [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' list(head(starwars), head(mtcars)) %>% kables()
+#' kables(
+#'     list = list(head(starwars), head(mtcars)),
+#'     captions = c("starwars", "mtcars")
+#' )
 kables <- function(
     list,
     captions,

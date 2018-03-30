@@ -4,7 +4,7 @@
 #'
 #' @inherit markdownHeader
 #'
-#' @param atomic `atomic`. Coerced to `character`.
+#' @param object `atomic`, which will be coerced to `character`.
 #' @param ordered Ordered ("`TRUE`") or unordered ("`FALSE`") list.
 #'
 #' @export
@@ -19,7 +19,8 @@ markdownList <- function(
     ordered = FALSE,
     asis = FALSE
 ) {
-    assert_is_character(object)
+    assert_is_atomic(object)
+    object <- as.character(object)
     assert_all_are_not_na(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_is_a_bool(ordered)

@@ -5,12 +5,12 @@
 \alias{mdHeader}
 \title{Markdown Header}
 \usage{
-markdownHeader(string, level = 2L, tabset = FALSE, asis = FALSE)
+markdownHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
 
-mdHeader(string, level = 2L, tabset = FALSE, asis = FALSE)
+mdHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
-\item{string}{Character string.}
+\item{object}{\code{scalar}, which will be coerced to \code{character}.}
 
 \item{level}{Header level (1-7).}
 

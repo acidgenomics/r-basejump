@@ -3,7 +3,7 @@
 #' @name markdownHeader
 #' @family R Markdown Functions
 #'
-#' @param string Character string.
+#' @param object `scalar`, which will be coerced to `character`.
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or
@@ -19,20 +19,21 @@
 #' markdownHeader("Header", tabset = TRUE)
 #' markdownHeader("Header", asis = TRUE)
 markdownHeader <- function(
-    string,
+    object,
     level = 2L,
     tabset = FALSE,
     asis = FALSE
 ) {
-    assert_is_a_string(string)
-    assert_all_are_not_na(string)
-    assert_all_are_non_missing_nor_empty_character(string)
+    assert_is_scalar(object)
+    object <- as.character(object)
+    assert_all_are_not_na(object)
+    assert_all_are_non_missing_nor_empty_character(object)
     assertIsAHeaderLevel(level)
     assert_is_a_bool(tabset)
     assert_is_a_bool(asis)
 
     # Add the header level
-    header <- paste(str_dup("#", level), string)
+    header <- paste(str_dup("#", level), object)
 
     # Append tabset label
     if (isTRUE(tabset)) {

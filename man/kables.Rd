@@ -21,7 +21,10 @@ Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
 Handle multiple kables in a single R Markdown chunk.
 }
 \examples{
-list(head(starwars), head(mtcars)) \%>\% kables()
+kables(
+    list = list(head(starwars), head(mtcars)),
+    captions = c("starwars", "mtcars")
+)
 }
 \seealso{
 \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.

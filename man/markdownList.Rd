@@ -10,12 +10,12 @@ markdownList(object, ordered = FALSE, asis = FALSE)
 mdList(object, ordered = FALSE, asis = FALSE)
 }
 \arguments{
+\item{object}{\code{atomic}, which will be coerced to \code{character}.}
+
 \item{ordered}{Ordered ("\code{TRUE}") or unordered ("\code{FALSE}") list.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
 inside an RMarkdown chunk with \code{results="asis"} enabled.}
-
-\item{atomic}{\code{atomic}. Coerced to \code{character}.}
 }
 \value{
 Markdown formatted code as \link[knitr:asis_output]{knitr::asis_output} or

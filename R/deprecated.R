@@ -164,6 +164,13 @@ assertIsAnnotable <- function(...) {
 
 #' @rdname deprecated
 #' @export
+ensembl <- function(...) {
+    .Deprecated("makeGRangesFromEnsembl")
+    makeGRangesFromEnsembl(...)
+}
+
+#' @rdname deprecated
+#' @export
 gene2symbolFromGFF <- function(...) {
     .Deprecated("makeGene2symbolFromGFF")
     makeGene2symbolFromGFF(...)
