@@ -51,8 +51,13 @@ parseGFFAttributes <- function(
         strings <- unique(strings)
     }
 
-    # This can take a long time for large genomes, so use a progress bar
-    list <- pblapply(strings, function(x) {
+    # Show a progress bar when parsing a large number of strings
+    if (length(strings) > 10000L) {
+        fxn <- pbapply
+    } else {
+        fxn <- lapply
+    }
+    list <- fxn(strings, function(x) {
         # Remove trailing delim
         x <- gsub(
             pattern = ";$",
