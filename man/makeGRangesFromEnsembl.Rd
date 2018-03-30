@@ -2,14 +2,10 @@
 % Please edit documentation in R/makeGRangesFromEnsembl.R
 \name{makeGRangesFromEnsembl}
 \alias{makeGRangesFromEnsembl}
-\alias{ensembl}
 \title{Genomic Ranges from Ensembl}
 \usage{
 makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
   genomeBuild = NULL, release = NULL, metadata = FALSE)
-
-ensembl(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
-  release = NULL, metadata = FALSE)
 }
 \arguments{
 \item{organism}{Default recommended usage is to provide the full latin

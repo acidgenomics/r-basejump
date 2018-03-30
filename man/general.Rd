@@ -6,13 +6,20 @@
 \arguments{
 \item{file}{File path.}
 
+\item{headerLevel}{Markdown header level.}
+
 \item{object}{Object.}
+
+\item{plotlist}{List containing \code{ggplot} objects.}
+
+\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
+the first item in the vector by default.}
+
+\item{value}{Value to assign.}
 
 \item{x}{Primary object.}
 
 \item{y}{Secondary object.}
-
-\item{value}{Value to assign.}
 
 \item{...}{Additional arguments.}
 }

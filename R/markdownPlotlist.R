@@ -2,8 +2,7 @@
 #'
 #' @family R Markdown Functions
 #'
-#' @param plotlist List containing `ggplot` objects.
-#' @param headerLevel Header level.
+#' @inheritParams general
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
 #' @export

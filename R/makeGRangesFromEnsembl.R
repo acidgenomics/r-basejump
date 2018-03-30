@@ -269,10 +269,3 @@ makeGRangesFromEnsembl <- function(
         gr
     }
 }
-
-
-
-# Aliases ======================================================================
-#' @rdname makeGRangesFromEnsembl
-#' @export
-makeGRangesFromEnsembl -> ensembl

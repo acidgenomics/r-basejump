@@ -12,7 +12,7 @@ mdPlotlist(plotlist, headerLevel = 2L)
 \arguments{
 \item{plotlist}{List containing \code{ggplot} objects.}
 
-\item{headerLevel}{Header level.}
+\item{headerLevel}{Markdown header level.}
 }
 \value{
 Graphical output of plots, separated by Markdown headers.

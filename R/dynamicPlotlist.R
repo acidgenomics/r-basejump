@@ -3,10 +3,6 @@
 #' @family Plot Functions
 #'
 #' @inheritParams general
-#' @param headerLevel Markdown header level. Only applicable when
-#'   `return = "markdown"`.
-#' @param return Return type. "`grid`", "`list`", and "`markdown`" are
-#'   supported.
 #'
 #' @seealso [markdownPlotlist()].
 #'

@@ -21,6 +21,7 @@
 \alias{initializeDir}
 \alias{annotable}
 \alias{assertIsAnnotable}
+\alias{ensembl}
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGTF}
 \alias{sanitizeAnnotable}
@@ -65,6 +66,8 @@ initializeDir(...)
 annotable(...)
 
 assertIsAnnotable(...)
+
+ensembl(...)
 
 gene2symbolFromGFF(...)
 
