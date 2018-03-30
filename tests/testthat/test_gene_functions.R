@@ -127,9 +127,9 @@ test_that("detectOrganism : tbl_df", {
 
 
 
-# gene2symbolFromGFF ===========================================================
-test_that("gene2symbolFromGFF : Mus musculus", {
-    x <- gene2symbolFromGFF("mmusculus.gtf")
+# makeGene2symbolFromGFF =======================================================
+test_that("makeGene2symbolFromGFF : Mus musculus", {
+    x <- makeGene2symbolFromGFF("mmusculus.gtf")
     expect_identical(dim(x), c(17L, 2L))
     expect_identical(
         head(x, 2L),
@@ -142,8 +142,8 @@ test_that("gene2symbolFromGFF : Mus musculus", {
     )
 })
 
-test_that("gene2symbolFromGFF : Drosophila melanogaster", {
-    x <- gene2symbolFromGFF("dmelanogaster.gtf")
+test_that("makeGene2symbolFromGFF : Drosophila melanogaster", {
+    x <- makeGene2symbolFromGFF("dmelanogaster.gtf")
     expect_identical(dim(x), c(5L, 2L))
     expect_identical(
         head(x, 2L),
@@ -153,6 +153,41 @@ test_that("gene2symbolFromGFF : Drosophila melanogaster", {
             row.names = c("FBgn0031081", "FBgn0031085"),
             stringsAsFactors = FALSE
         )
+    )
+})
+
+
+
+# makeTx2geneFromGFF ===========================================================
+test_that("makeTx2geneFromGFF : Drosophila melanogaster", {
+    x <- makeTx2geneFromGFF("dmelanogaster.gtf")
+    expect_identical(dim(x), c(7L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            "txID" = c("FBtr0070000", "FBtr0070001"),
+            "geneID" = c("FBgn0031081", "FBgn0052826"),
+            row.names = c("FBtr0070000", "FBtr0070001"),
+            stringsAsFactors = FALSE
+        )
+    )
+})
+
+test_that("makeTx2geneFromGFF : Mus musculus", {
+    x <- makeTx2geneFromGFF("mmusculus.gtf")
+    expect_identical(dim(x), c(20L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            "txID" = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            "geneID" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            stringsAsFactors = FALSE
+        )
+    )
+    expect_message(
+        makeTx2geneFromGFF("mmusculus.gtf"),
+        "tx2gene mappings: 20 transcripts, 17 genes"
     )
 })
 
@@ -173,40 +208,5 @@ test_that("stripTranscriptVersions", {
     expect_identical(
         stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
         c("ENSMUST00000119854", "EGFP.1")
-    )
-})
-
-
-
-# tx2geneFromGFF ===============================================================
-test_that("tx2geneFromGFF : Drosophila melanogaster", {
-    x <- tx2geneFromGFF("dmelanogaster.gtf")
-    expect_identical(dim(x), c(7L, 2L))
-    expect_identical(
-        head(x, 2L),
-        data.frame(
-            "txID" = c("FBtr0070000", "FBtr0070001"),
-            "geneID" = c("FBgn0031081", "FBgn0052826"),
-            row.names = c("FBtr0070000", "FBtr0070001"),
-            stringsAsFactors = FALSE
-        )
-    )
-})
-
-test_that("tx2geneFromGFF : Mus musculus", {
-    x <- tx2geneFromGFF("mmusculus.gtf")
-    expect_identical(dim(x), c(20L, 2L))
-    expect_identical(
-        head(x, 2L),
-        data.frame(
-            "txID" = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            "geneID" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            stringsAsFactors = FALSE
-        )
-    )
-    expect_message(
-        tx2geneFromGFF("mmusculus.gtf"),
-        "tx2gene mappings: 20 transcripts, 17 genes"
     )
 })
