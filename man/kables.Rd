@@ -4,7 +4,7 @@
 \alias{kables}
 \title{Create Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
-kables(list, captions = NULL, force = FALSE)
+kables(list, captions, force = FALSE)
 }
 \arguments{
 \item{list}{List of column data (e.g. \code{data.frame}, \code{matrix}).}
