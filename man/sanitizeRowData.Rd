@@ -21,7 +21,7 @@ Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
 }
 \examples{
 # Genes ====
-x <- ensembl(
+x <- makeGRangesFromEnsembl(
     organism = "Homo sapiens",
     format = "genes",
     genomeBuild = "GRCh37"
@@ -29,7 +29,7 @@ x <- ensembl(
 sanitizeRowData(x) \%>\% glimpse()
 
 # Transcripts ====
-x <- ensembl(
+x <- makeGRangesFromEnsembl(
     organism = "Homo sapiens",
     format = "transcripts",
     genomeBuild = "GRCh37"
