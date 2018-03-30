@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' # Genes ====
-#' x <- ensembl(
+#' x <- makeGRangesFromEnsembl(
 #'     organism = "Homo sapiens",
 #'     format = "genes",
 #'     genomeBuild = "GRCh37"
@@ -22,7 +22,7 @@
 #' sanitizeRowData(x) %>% glimpse()
 #'
 #' # Transcripts ====
-#' x <- ensembl(
+#' x <- makeGRangesFromEnsembl(
 #'     organism = "Homo sapiens",
 #'     format = "transcripts",
 #'     genomeBuild = "GRCh37"
