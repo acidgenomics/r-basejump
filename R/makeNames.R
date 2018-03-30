@@ -4,9 +4,11 @@
 #'
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams base::make.names
+#' @param names `atomic` to be coerced to syntactically valid names. Will be
+#'   coerced to `character` if necessary.
+#' @param unique `logical`; if `TRUE`, the resulting elements are unique.
 #'
-#' @seealso [base::make.names()].
+#' @seealso `base::make.names()`.
 #'
 #' @return Character vector.
 #' @export
