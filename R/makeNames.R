@@ -3,11 +3,10 @@
 #' @note Sanitizes names using "`_`" instead of "`.`".
 #'
 #' @author Michael Steinbaugh
-#' @keywords internal
 #'
-#' @inherit base::make.names
+#' @inheritParams base::make.names
 #'
-#' @seealso [make.names()].
+#' @seealso [base::make.names()].
 #'
 #' @return Character vector.
 #' @export

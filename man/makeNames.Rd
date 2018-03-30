@@ -19,37 +19,12 @@ Character vector.
 \description{
 Make Syntactically Valid Names
 }
-\details{
-A syntactically valid name consists of letters, numbers and the dot or
-  underline characters and starts with a letter or the dot not followed
-  by a number.  Names such as \code{".2way"} are not valid, and neither
-  are the \link{reserved} words.
-
-  The definition of a \emph{letter} depends on the current locale, but
-  only ASCII digits are considered to be digits.
-
-  The character \code{"X"} is prepended if necessary.
-  All invalid characters are translated to \code{"."}.  A missing value
-  is translated to \code{"NA"}.  Names which match \R keywords have a dot
-  appended to them.  Duplicated values are altered by
-  \code{\link{make.unique}}.
-}
 \note{
 Sanitizes names using "\code{_}" instead of "\code{.}".
 }
-\section{Warning}{
-
-  Some OSes, notably FreeBSD, report extremely incorrect information about
-  which characters are alphabetic in some locales (typically, all
-  multi-byte locales including UTF-8 locales).  However, \R provides
-  substitutes on Windows, macOS and AIX.
-
-}
-
 \seealso{
-\code{\link[=make.names]{make.names()}}.
+\code{\link[base:make.names]{base::make.names()}}.
 }
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
