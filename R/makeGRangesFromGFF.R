@@ -119,6 +119,9 @@ makeGRangesFromGFF <- function(
     gr <- .sanitizeAnnotationCols(gr)
     gr <- .addBroadClassCol(gr)
 
+    # Ensure GRanges is sorted by names
+    gr <- gr[sort(names(gr))]
+
     assert_has_names(gr)
     stopifnot(is(gr, "GRanges"))
 

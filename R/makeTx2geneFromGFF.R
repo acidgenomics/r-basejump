@@ -25,6 +25,7 @@ makeTx2geneFromGFF <- function(file) {
         .[, c("txID", "geneID")] %>%
         # Drop rows containing an NA value
         .[complete.cases(.), , drop = FALSE] %>%
+        .[order(.[["txID"]]), , drop = FALSE] %>%
         set_rownames(.[["txID"]])
 
     inform(paste(
