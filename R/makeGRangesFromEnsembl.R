@@ -156,7 +156,7 @@ makeGRangesFromEnsembl <- function(
         } else if (!nrow(mcols)) {
             abort(paste(
                 paste(
-                    "Ensembl annotations were not found on AnnotationHub",
+                    "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
                 ),
                 paste("organism:", deparse(organism)),
