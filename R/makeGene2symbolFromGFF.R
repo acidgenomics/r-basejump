@@ -28,8 +28,6 @@ makeGene2symbolFromGFF <- function(file) {
     data[, c("geneID", "geneName")] %>%
         # Drop rows containing an NA value
         .[complete.cases(.), , drop = FALSE] %>%
-        mutate_if(is.factor, as.character) %>%
-        unique() %>%
         .[order(.[["geneID"]]), , drop = FALSE] %>%
         set_rownames(.[["geneID"]])
 }
