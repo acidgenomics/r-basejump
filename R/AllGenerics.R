@@ -62,14 +62,6 @@ setGeneric("dotted", function(object, ...) {
 
 
 
-#' @rdname dynamicPlotlist
-#' @export
-setGeneric("dynamicPlotlist", function(object, ...) {
-    standardGeneric("dynamicPlotlist")
-})
-
-
-
 #' @rdname logRatio
 #' @export
 setGeneric("foldChangeToLogRatio", function(object, ...) {
@@ -86,25 +78,9 @@ setGeneric("fixNA", function(object, ...) {
 
 
 
-#' @rdname gene2symbol
-#' @export
-setGeneric("gene2symbol", function(object, ...) {
-    standardGeneric("gene2symbol")
-})
-
-
-
 #' @rdname geometricMean
 setGeneric("geometricMean", function(object, ...) {
     standardGeneric("geometricMean")
-})
-
-
-
-#' @rdname kables
-#' @export
-setGeneric("kables", function(object, ...) {
-    standardGeneric("kables")
 })
 
 
@@ -113,30 +89,6 @@ setGeneric("kables", function(object, ...) {
 #' @export
 setGeneric("logRatioToFoldChange", function(object, ...) {
     standardGeneric("logRatioToFoldChange")
-})
-
-
-
-#' @rdname markdownHeader
-#' @export
-setGeneric("markdownHeader", function(object, ...) {
-    standardGeneric("markdownHeader")
-})
-
-
-
-#' @rdname markdownList
-#' @export
-setGeneric("markdownList", function(object, ...) {
-    standardGeneric("markdownList")
-})
-
-
-
-#' @rdname markdownPlotlist
-#' @export
-setGeneric("markdownPlotlist", function(object, ...) {
-    standardGeneric("markdownPlotlist")
 })
 
 
@@ -161,14 +113,6 @@ setGeneric("snake", function(object, ...) {
 #' @export
 setGeneric("stripTranscriptVersions", function(object, ...) {
     standardGeneric("stripTranscriptVersions")
-})
-
-
-
-#' @rdname tx2gene
-#' @export
-setGeneric("tx2gene", function(object, ...) {
-    standardGeneric("tx2gene")
 })
 
 

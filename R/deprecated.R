@@ -151,30 +151,9 @@ initializeDir <- function(...) {
  # v0.4.0 ======================================================================
 #' @rdname deprecated
 #' @export
-setGeneric("annotable", function(object, ...) {
-    standardGeneric("annotable")
-})
-
-#' @rdname deprecated
-#' @export
-setMethod(
-    "annotable",
-    signature("character"),
-    function(object, ...) {
-        .Deprecated("ensembl")
-        ensembl(organism = object, ...)
-    }
-)
-
-#' @rdname deprecated
-#' @export
-setMethod(
-    "annotable",
-    signature("data.frame"),
-    function(object) {
-        .Defunct()
-    }
-)
+annotable <- function(...) {
+    .Defunct("makeGRangesFromEnsembl")
+}
 
 #' @rdname deprecated
 #' @export
@@ -185,9 +164,31 @@ assertIsAnnotable <- function(...) {
 
 #' @rdname deprecated
 #' @export
+gene2symbolFromGFF <- function(...) {
+    .Deprecated("makeGene2symbolFromGFF")
+    makeGene2symbolFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+gene2symbolFromGFF -> gene2symbolFromGTF
+
+#' @rdname deprecated
+#' @export
 sanitizeAnnotable <- function(...) {
     .Deprecated("sanitizeRowData")
     sanitizeRowData(...)
 }
+
+#' @rdname deprecated
+#' @export
+tx2geneFromGFF <- function(...) {
+    .Deprecated("makeTx2geneFromGFF")
+    makeTx2geneFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+tx2geneFromGFF -> tx2geneFromGTF
 
 # nocov end

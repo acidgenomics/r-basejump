@@ -25,6 +25,7 @@ NULL
 #' @importFrom assertive assert_all_are_non_negative
 #' @importFrom assertive assert_all_are_not_na
 #' @importFrom assertive assert_all_are_positive
+#' @importFrom assertive assert_all_are_same_length
 #' @importFrom assertive assert_any_are_matching_regex
 #' @importFrom assertive assert_are_disjoint_sets
 #' @importFrom assertive assert_are_intersecting_sets
