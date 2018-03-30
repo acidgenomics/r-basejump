@@ -88,7 +88,7 @@
 data frames.</p>
     
 
-    <pre class="usage"><span class='fu'>assertHasRownames</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)
+    <pre class="usage"><span class='fu'>assertHasRownames</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))
 
 <span class='fu'>hasRownames</span>(<span class='no'>x</span>)</pre>
     
@@ -133,6 +133,7 @@ for data frames and tibbles.</p>
   <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGFF.html'>assertIsGFF</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
   <code>assertIsImplicitInteger</code>,

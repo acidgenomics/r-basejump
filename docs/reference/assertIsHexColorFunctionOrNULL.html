@@ -87,7 +87,8 @@
     <p>Assert Is Hex Color Function or NULL</p>
     
 
-    <pre class="usage"><span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
+    <pre class="usage"><span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>,
+  <span class='st'>"stop"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -126,13 +127,18 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
   <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGFF.html'>assertIsGFF</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code>assertIsImplicitInteger</code>,
   <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code>, <code><a href='assert.html'>assert</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>viridis</span>)
+    <pre class="examples"><div class='input'><span class='no'>hex</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>n</span>) {
+    <span class='no'>colors</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"#FFFFFF"</span>, <span class='st'>"#000000"</span>)
+    <span class='no'>colors</span>[<span class='fu'>seq_len</span>(<span class='no'>n</span>)]
+}
+<span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='no'>hex</span>)
 <span class='fu'>assertIsHexColorFunctionOrNULL</span>(<span class='kw'>NULL</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
