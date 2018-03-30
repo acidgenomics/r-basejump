@@ -87,30 +87,24 @@
     <p>Dynamic Plotlist</p>
     
 
-    <pre class="usage"><span class='fu'>dynamicPlotlist</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for list</span>
-<span class='fu'>dynamicPlotlist</span>(<span class='no'>object</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='st'>"grid"</span>, <span class='kw'>headerLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
+    <pre class="usage"><span class='fu'>dynamicPlotlist</span>(<span class='no'>plotlist</span>, <span class='kw'>headerLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"grid"</span>, <span class='st'>"list"</span>,
+  <span class='st'>"markdown"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>return</th>
-      <td><p>Return type. "grid", "list", and "markdown" are supported.</p></td>
+      <th>plotlist</th>
+      <td><p>List containing <code>ggplot</code> objects.</p></td>
     </tr>
     <tr>
       <th>headerLevel</th>
-      <td><p>Markdown header level. Only applicable when
-<code>return = "markdown"</code>.</p></td>
+      <td><p>Markdown header level.</p></td>
+    </tr>
+    <tr>
+      <th>return</th>
+      <td><p>Object class to return. Uses <code>match.arg()</code> internally and picks
+the first item in the vector by default.</p></td>
     </tr>
     </table>
     
@@ -126,11 +120,8 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>markdownPlotlist()</code>.</p>
-<p>Other Plot Functions: <code><a href='midnightTheme.html'>midnightTheme</a></code>,
-  <code>plotCorrelationHeatmap</code>,
-  <code>plotHeatmap</code>,
-  <code>plotQuantileHeatmap</code></p>
+    <p><code><a href='markdownPlotlist.html'>markdownPlotlist()</a></code>.</p>
+<p>Other Plot Functions: <code><a href='midnightTheme.html'>midnightTheme</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

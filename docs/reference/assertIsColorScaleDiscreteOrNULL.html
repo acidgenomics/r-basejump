@@ -87,7 +87,8 @@
     <p>Assert Is Color Palette Scale Discrete or NULL</p>
     
 
-    <pre class="usage"><span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>)</pre>
+    <pre class="usage"><span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>,
+  <span class='st'>"stop"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +126,7 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
   <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGFF.html'>assertIsGFF</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
   <code>assertIsImplicitInteger</code>,
@@ -132,7 +134,7 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/viridis/topics/scale_viridis'>scale_color_viridis</a></span>(<span class='kw'>discrete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="examples"><div class='input'><span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>scale_color_manual</a></span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"red"</span>, <span class='st'>"blue"</span>))
 <span class='fu'>class</span>(<span class='no'>color</span>)</div><div class='output co'>#&gt; [1] "ScaleDiscrete" "Scale"         "ggproto"      </div><div class='input'><span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='no'>color</span>)
 <span class='fu'>assertIsColorScaleDiscreteOrNULL</span>(<span class='kw'>NULL</span>)</div></pre>
   </div>

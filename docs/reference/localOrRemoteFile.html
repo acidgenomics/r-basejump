@@ -87,19 +87,14 @@
     <p>This function is vectorized and supports mixed local and remote paths.</p>
     
 
-    <pre class="usage"><span class='fu'>localOrRemoteFile</span>(<span class='no'>object</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"stop"</span>, <span class='st'>"warning"</span>, <span class='st'>"message"</span>, <span class='st'>"none"</span>))</pre>
+    <pre class="usage"><span class='fu'>localOrRemoteFile</span>(<span class='no'>file</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>severity</th>
-      <td><p>Return <code>stop</code> (default), <code>warning</code>, or <code>message</code> if file
-doesn't exist.</p></td>
+      <th>file</th>
+      <td><p>File path.</p></td>
     </tr>
     </table>
     
@@ -107,27 +102,25 @@ doesn't exist.</p></td>
 
     <p>Named character vector containing the original basename as the name
 and local file path (i.e. tempfile) as the string. Aborts on a missing
-file by default. Returns <code>NULL</code> when <code>severity = "warning"</code> and a missing
-file is detected.</p>
+file.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p>
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Single file</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)
-<span class='fu'>names</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)
+<span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv"</div><div class='input'>
 <span class='co'># Vectorized</span>
-<span class='no'>files</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='fu'>c</span>(
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='fu'>c</span>(
     <span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>,
     <span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>
 ))
-<span class='fu'>names</span>(<span class='no'>files</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv" "mtcars.rda"</div></pre>
+<span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv" "mtcars.rda"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
