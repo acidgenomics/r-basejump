@@ -18,14 +18,12 @@
 #' list(head(starwars), head(mtcars)) %>% kables()
 kables <- function(
     list,
-    captions = NULL,
+    captions,
     force = FALSE
 ) {
     assert_is_list(list)
-    assertIsCharacterOrNULL(captions)
-    if (is.character(captions)) {
-        assert_all_are_same_length(list, captions)
-    }
+    assert_is_character(captions)
+    assert_are_same_length(list, captions)
     assert_is_a_bool(force)
     output <- opts_knit[["get"]]("rmarkdown.pandoc.to")
     if (!is.null(output) || isTRUE(force)) {
@@ -36,7 +34,7 @@ kables <- function(
                 kable(x, caption = caption)
             },
             SIMPLIFY = FALSE,
-            USE.NAMES = FALSE
+            USE.NAMES = TRUE
         )
         asis_output(tables)
     } else {
@@ -44,4 +42,3 @@ kables <- function(
         list
     }
 }
-
