@@ -1,4 +1,4 @@
-#' Ensembl Annotations
+#' Genomic Ranges from Ensembl
 #'
 #' Quickly obtain gene and transcript annotations from
 #' [Ensembl](http://www.ensembl.org/) using
@@ -31,7 +31,6 @@
 #'   querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
 #'   suported on AnnotationHub.
 #'
-#' @name ensembl
 #' @family Gene Functions
 #'
 #' @param organism Default recommended usage is to provide the full latin
@@ -44,14 +43,8 @@
 #' @param metadata Include the AnnotationHub metadata inside a list. Useful
 #'   for documenting where the annotations were sourced from inside
 #'   AnnotationHub.
-#' @param return Class of the returned object. Only applies when `format` equals
-#'   "`genes`" or "`transcripts`". Can be "`GRanges`" (default), "`DataFrame`",
-#'   or "`data.frame`". See `help("genes", "ensembldb")` for additional
-#'   information. "`gene2symbol`" and "`tx2gene`" are always returned as
-#'   `data.frame`.
 #'
-#' @return `GRanges`, `DataFrame`, or `data.frame` containing gene or
-#'   transcript annotations.
+#' @return `GRanges`containing gene or transcript annotations.
 #' @export
 #'
 #' @seealso
@@ -60,26 +53,25 @@
 #'
 #' @examples
 #' # Genes ====
-#' data <- ensembl("Homo sapiens", format = "genes")
-#' summary(data)
+#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+#' summary(x)
 #'
 #' # Transcripts ====
-#' data <- ensembl("Homo sapiens", format = "transcripts")
-#' summary(data)
-ensembl <- function(
+#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+#' summary(x)
+makeGRangesFromEnsembl <- function(
     organism,
-    format = c("genes", "gene2symbol", "transcripts", "tx2gene"),
+    format = c("genes", "transcripts"),
     genomeBuild = NULL,
     release = NULL,
-    metadata = FALSE,
-    return = c("GRanges", "DataFrame", "data.frame")
+    metadata = FALSE
 ) {
     assert_is_a_string(organism)
     # Standard organism query, if necessary
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
-    # Stop on UCSC genome build
+    # Abort on UCSC genome build
     if (
         is_a_string(genomeBuild) &&
         grepl("^[a-z]{2}\\d{2}$", genomeBuild)
@@ -93,11 +85,6 @@ ensembl <- function(
         release <- as.integer(release)
     }
     assert_is_a_bool(metadata)
-    if (format %in% c("genes", "transcripts")) {
-        return <- match.arg(return)
-    } else {
-        return <- "data.frame"
-    }
 
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
@@ -127,7 +114,7 @@ ensembl <- function(
         ))
 
         inform(paste(
-            "Fetching Ensembl", format, "from AnnotationHub",
+            "Making GRanges from Ensembl with AnnotationHub",
             packageVersion("AnnotationHub"),
             paste0("(", snapshotDate(ah), ")")
         ))
@@ -173,7 +160,7 @@ ensembl <- function(
                     packageVersion("AnnotationHub")
                 ),
                 paste("organism:", deparse(organism)),
-                paste("genomeBuild:", deparse(genomeBuild)),
+                paste("build:", deparse(genomeBuild)),
                 paste("release:", deparse(release)),
                 sep = "\n"
             ))
@@ -202,45 +189,37 @@ ensembl <- function(
     assert_is_a_string(genomeBuild)
 
     inform(paste(
-        paste("hub id:", deparse(id)),
+        paste("id:", deparse(id)),
         paste("organism:", deparse(organism(edb))),
-        paste("genome build:", deparse(genomeBuild)),
-        paste("release version:", deparse(ensemblVersion(edb))),
+        paste("build:", deparse(genomeBuild)),
+        paste("release:", deparse(ensemblVersion(edb))),
+        paste("format:", deparse(format)),
         sep = "\n"
     ))
 
     if (format == "genes") {
-        data <- genes(
+        gr <- genes(
             x = edb,
             order.by = "gene_id",
-            return.type = return
+            return.type = "GRanges"
         )
-        if (return == "GRanges") {
-            assert_has_names(data)
-        } else {
-            rownames(data) <- data[["gene_id"]]
-        }
     } else if (format == "transcripts") {
         tx <- transcripts(
             x = edb,
             order.by = "tx_id",
-            return.type = return
+            return.type = "GRanges"
         )
+
         # Get additional mcols of interest from gene annotations
         gene <- genes(
             x = edb,
             order.by = "gene_id",
-            return.type = return
+            return.type = "GRanges"
         )
 
-        # Prepare the merged data
-        if (is(tx, "GRanges")) {
-            txData <- mcols(tx)
-            geneData <- mcols(gene)
-        } else {
-            txData <- tx
-            geneData <- gene
-        }
+        # Merge the data
+        txData <- mcols(tx)
+        geneData <- mcols(gene)
         mergeData <- merge(
             x = txData,
             y = geneData,
@@ -255,38 +234,9 @@ ensembl <- function(
         assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
 
         # Now we can slot back into the transcript mcols
-        if (is(tx, "GRanges")) {
-            mcols(tx) <- mergeData
-        } else {
-            tx <- mergeData
-        }
-        data <- tx
-
-        if (return == "GRanges") {
-            assert_has_names(data)
-        } else {
-            rownames(data) <- data[["tx_id"]]
-        }
-    } else if (format == "gene2symbol") {
-        # Always return data.frame
-        data <- genes(
-            x = edb,
-            columns = c("gene_id", "gene_name"),
-            order.by = "gene_id",
-            return.type = return
-        )
-        rownames(data) <- data[["gene_id"]]
-    } else if (format == "tx2gene") {
-        # Always return data.frame
-        data <- transcripts(
-            x = edb,
-            columns = c("tx_id", "gene_id"),
-            order.by = "tx_id",
-            return.type = return
-        )
-        rownames(data) <- data[["tx_id"]]
+        mcols(tx) <- mergeData
+        gr <- tx
     }
-    assert_is_all_of(data, return)
 
     # Force detach =============================================================
     fxnAttached <- setdiff(.packages(), userAttached)
@@ -306,27 +256,23 @@ ensembl <- function(
     assert_are_identical(.packages(), userAttached)
 
     # Return ===================================================================
-    # Sanitize columns
-    data <- .sanitizeAnnotationCols(data)
-    assert_is_all_of(data, return)
+    gr <- .sanitizeAnnotationCols(gr)
+    gr <- .addBroadClassCol(gr)
 
-    # Broad class definitions
-    if (format %in% c("genes", "transcripts")) {
-        data <- .addBroadClassCol(data)
-    }
-    assert_is_all_of(data, return)
-
-    # Double check that names are set correctly
-    if (has_rows(data)) {
-        assertHasRownames(data)
-    } else {
-        assert_has_names(data)
-    }
+    assert_has_names(gr)
+    stopifnot(is(gr, "GRanges"))
 
     # Include the EnsDB metadata inside a list, if desired
     if (isTRUE(metadata)) {
-        data <- list("data" = data, "metadata" = meta)
+        list("data" = gr, "metadata" = meta)
+    } else {
+        gr
     }
-
-    data
 }
+
+
+
+# Aliases ======================================================================
+#' @rdname makeGRangesFromEnsembl
+#' @export
+makeGRangesFromEnsembl -> ensembl

@@ -1,10 +1,6 @@
 .sanitizeAnnotationCols <- function(object) {
-    # Get mcols, if necessary
-    if (is(object, "GRanges")) {
-        data <- mcols(object)
-    } else {
-        data <- object
-    }
+    stopifnot(is(object, "GRanges"))
+    data <- mcols(object)
 
     # Rename the columns
     colnames(data) <- colnames(data) %>%
@@ -54,11 +50,6 @@
     data <- data %>%
         .[, unique(c(priorityCols, colnames(.))), drop = FALSE]
 
-    if (is(object, "GRanges")) {
-        mcols(object) <- data
-    } else {
-        object <- data
-    }
-
+    mcols(object) <- data
     object
 }
