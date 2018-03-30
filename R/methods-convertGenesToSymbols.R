@@ -41,7 +41,7 @@ NULL
 
 
 # Constructors =================================================================
-.convertGenesToSymbols <- function(
+.convertGenesToSymbols.vec <- function(  # nolint
     object,
     gene2symbol = NULL,
     organism = NULL,
@@ -64,8 +64,8 @@ NULL
             organism <- detectOrganism(organism)
         }
         assert_is_a_string(organism)
-        gene2symbol <- gene2symbol(
-            object = organism,
+        gene2symbol <- makeGene2symbolFromEnsembl(
+            organism = organism,
             genomeBuild = genomeBuild,
             release = release
         )
@@ -90,6 +90,7 @@ NULL
 
     assert_is_character(geneName)
     assert_has_names(geneName)
+
     geneName[object]
 }
 
@@ -123,7 +124,7 @@ NULL
 setMethod(
     "convertGenesToSymbols",
     signature("character"),
-    .convertGenesToSymbols
+    .convertGenesToSymbols.vec
 )
 
 

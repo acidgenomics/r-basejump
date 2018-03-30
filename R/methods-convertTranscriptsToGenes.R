@@ -38,7 +38,7 @@ NULL
 
 
 # Constructors =================================================================
-.convertTranscriptsToGenes <- function(
+.convertTranscriptsToGenes.vec <- function(  # nolint
     object,
     tx2gene = NULL,
     organism = NULL,
@@ -63,8 +63,8 @@ NULL
             organism <- detectOrganism(organism)
         }
         assert_is_a_string(organism)
-        tx2gene <- tx2gene(
-            object = organism,
+        tx2gene <- makeTx2geneFromEnsembl(
+            organism = organism,
             genomeBuild = genomeBuild,
             release = release
         )
@@ -88,6 +88,7 @@ NULL
 
     assert_is_character(geneID)
     assert_has_names(geneID)
+
     geneID[object]
 }
 
@@ -101,13 +102,15 @@ NULL
     release = NULL
 ) {
     # Passthrough: tx2gene, organism, genomeBuild, release
-    rownames(object) <- .convertTranscriptsToGenes(
-        object = rownames(object),
+    rownames <- rownames(object)
+    rownames <- convertTranscriptsToGenes(
+        object = rownames,
         tx2gene = tx2gene,
         organism = organism,
         genomeBuild = genomeBuild,
         release = release
     )
+    rownames(object) <- rownames
     object
 }
 
@@ -118,7 +121,7 @@ NULL
 setMethod(
     "convertTranscriptsToGenes",
     signature("character"),
-    .convertTranscriptsToGenes
+    .convertTranscriptsToGenes.vec
 )
 
 
