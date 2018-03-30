@@ -2,37 +2,30 @@ context("R Markdown Functions")
 
 # kables =======================================================================
 test_that("kables : list", {
-    # Check for knit_asis if kables are forced
-    expect_identical(
-        list(head(starwars), head(mtcars)) %>%
-            kables(force = TRUE) %>%
-            class(),
-        "knit_asis"
-    )
-
-    # Check for unmodified return in R session
-    expect_identical(
-        list(head(starwars), head(mtcars)) %>%
-            kables(),
-        list(head(starwars), head(mtcars))
-    )
-})
-
-test_that("kables : captions argument", {
-    expect_identical(
+    # Simulate a knit session
+    expect_is(
         kables(
-            list(head(starwars), head(mtcars)),
+            list = list(head(starwars), head(mtcars)),
             captions = c("starwars", "mtcars"),
-            force = TRUE) %>%
-            class(),
+            force = TRUE
+        ),
         "knit_asis"
+    )
+    # Check for unmodified return in R session
+    expect_is(
+        kables(
+            list = list(head(starwars), head(mtcars)),
+            captions = c("starwars", "mtcars"),
+            force = FALSE
+        ),
+        "list"
     )
 })
 
 
 
 # markdownHeader ===============================================================
-test_that("markdownHeader ", {
+test_that("markdownHeader", {
     md <- markdownHeader("Header")
     expect_is(md, "knit_asis")
     md <- markdownHeader("Header", level = 4L) %>%

@@ -193,8 +193,8 @@ test_that("removeNA : character", {
 
 # sanitizeRowData ==============================================================
 test_that("sanitizeRowData", {
-    x <- genes("Homo sapiens") %>%
-        sanitizeRowData()
+    x <- makeGRangesFromEnsembl("Homo sapiens")
+    x <- sanitizeRowData(x)
     expect_identical(
         lapply(x, class),
         list(
