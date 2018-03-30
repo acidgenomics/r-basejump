@@ -1,5 +1,11 @@
 context("Assert Checks")
 
+gene2symbol <- data.frame(
+    "geneID" = c("gene_1", "gene_2"),
+    "geneName" = c("symbol_1", "symbol_2"),
+    row.names = c("gene_1", "gene_2")
+)
+
 test_that("assertAllAreNonExisting", {
     expect_silent(assertAllAreNonExisting(c("a", "b", "c")))
     a <- 1L
@@ -31,7 +37,6 @@ test_that("assertFormalCompress", {
 })
 
 test_that("assertFormalGene2symbol", {
-    gene2symbol <- gene2symbol("Homo sapiens", release = ensemblRelease)
     genes <- head(rownames(gene2symbol), 2L)
     expect_true(is.character(genes))
     x <- data.frame(
@@ -45,7 +50,7 @@ test_that("assertFormalGene2symbol", {
         assertFormalGene2symbol(mtcars, genes, gene2symbol),
         paste(
             "is_subset :",
-            "The elements 'ENSG00000000003', 'ENSG00000000005'",
+            "The elements 'gene_1', 'gene_2'",
             "in genes are not in rownames\\(x\\)."
         )
     )
@@ -106,7 +111,7 @@ test_that("assertIsAnIntegerOrNULL", {
 })
 
 test_that("assertAreGeneAnnotations", {
-    x <- genes("Homo sapiens")
+    x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
     expect_silent(assertAreGeneAnnotations(x))
     expect_error(
         assertAreGeneAnnotations(mtcars),
@@ -115,7 +120,7 @@ test_that("assertAreGeneAnnotations", {
 })
 
 test_that("assertAreTranscriptAnnotations", {
-    x <- transcripts("Homo sapiens")
+    x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
     expect_silent(assertAreTranscriptAnnotations(x))
     expect_error(
         assertAreTranscriptAnnotations(mtcars),
@@ -207,7 +212,6 @@ test_that("assertIsFillScaleDiscreteOrNULL", {
 })
 
 test_that("assertIsGene2symbol", {
-    gene2symbol <- gene2symbol("Homo sapiens")
     expect_silent(assertIsGene2symbol(gene2symbol))
     expect_error(
         assertIsGene2symbol(mtcars),
@@ -258,7 +262,11 @@ test_that("isImplicitInteger", {
 })
 
 test_that("assertIsTx2gene", {
-    tx2gene <- tx2gene("Homo sapiens")
+    tx2gene <- data.frame(
+        "txID" = c("tx_1", "tx_2"),
+        "geneID" = c("gene_1", "gene_2"),
+        row.names = c("tx_1", "tx_2")
+    )
     expect_silent(assertIsTx2gene(tx2gene))
     expect_error(
         assertIsTx2gene(mtcars),
