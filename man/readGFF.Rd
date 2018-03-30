@@ -33,7 +33,7 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 \item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
-Other GFF Functions: \code{\link{gene2symbolFromGFF}},
-  \code{\link{rowRangesFromGFF}},
-  \code{\link{tx2geneFromGFF}}
+Other GFF Functions: \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromGFF}}
 }

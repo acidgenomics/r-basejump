@@ -43,6 +43,6 @@ stripTranscriptVersions("cTel79B.1")
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}}, \code{\link{ensembl}},
-  \code{\link{gene2symbol}}, \code{\link{tx2gene}}
+  \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromEnsembl}}
 }

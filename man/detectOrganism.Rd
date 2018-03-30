@@ -82,7 +82,6 @@ detectOrganism(tibble)
 \seealso{
 Other Gene Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{ensembl}}, \code{\link{gene2symbol}},
-  \code{\link{stripTranscriptVersions}},
-  \code{\link{tx2gene}}
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{stripTranscriptVersions}}
 }
