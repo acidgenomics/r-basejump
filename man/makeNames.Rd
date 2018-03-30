@@ -7,11 +7,10 @@
 makeNames(names, unique = FALSE)
 }
 \arguments{
-\item{names}{character vector to be coerced to syntactically valid
-   names.  This is coerced to character if necessary.}
+\item{names}{\code{atomic} to be coerced to syntactically valid names. Will be
+coerced to \code{character} if necessary.}
 
-\item{unique}{logical; if \code{TRUE}, the resulting elements are
-     unique.  This may be desired for, e.g., column names.}
+\item{unique}{\code{logical}; if \code{TRUE}, the resulting elements are unique.}
 }
 \value{
 Character vector.
@@ -20,10 +19,10 @@ Character vector.
 Make Syntactically Valid Names
 }
 \note{
-Sanitizes names using "\code{_}" instead of "\code{.}".
+Sanitizes names using underscore instead of dot.
 }
-\seealso{
-\code{\link[base:make.names]{base::make.names()}}.
+\examples{
+makeNames(c(123L, "hello world"))
 }
 \author{
 Michael Steinbaugh
