@@ -56,7 +56,7 @@ parseGFFAttributes <- function(
 
     # Show a progress bar when parsing a large number of strings
     if (length(strings) > 10000L) {
-        fxn <- pbapply
+        fxn <- pblapply
     } else {
         fxn <- lapply
     }
