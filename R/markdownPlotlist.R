@@ -1,6 +1,7 @@
 #' Markdown Plotlist
 #'
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

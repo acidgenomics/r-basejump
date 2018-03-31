@@ -3,6 +3,7 @@
 #' Handle multiple kables in a single R Markdown chunk.
 #'
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @param list List of column data (e.g. `data.frame`, `matrix`).
 #' @param captions Optional character vector of table captions.

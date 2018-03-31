@@ -3,6 +3,9 @@
 #' @note Memory overhead and speed is greatly improved by requiring keys.
 #' Deparsing only unique values is much faster and generally recommended.
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams general
 #' @param select Attribute to select. Supports partial matching. Defaults to
 #'   returning attributes matching both "`gene_`" and "`transcript_`".

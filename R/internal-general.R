@@ -1,6 +1,7 @@
 #' General Arguments
 #'
 #' @name general
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @param file File path.

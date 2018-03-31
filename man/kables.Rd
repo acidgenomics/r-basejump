@@ -33,3 +33,6 @@ Other R Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownList}},
   \code{\link{markdownPlotlist}}
 }
+\author{
+Michael Steinbaugh
+}

@@ -5,6 +5,7 @@
 #' and `.rownames` files.
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,

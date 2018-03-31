@@ -29,6 +29,10 @@ print(loaded)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{localOrRemoteFile}},
-  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
+  \code{\link{loadData}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

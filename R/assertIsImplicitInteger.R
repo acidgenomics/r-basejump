@@ -1,9 +1,8 @@
 #' Assert Is Implicit Integer
 #'
-#' @rdname assertIsImplicitInteger
 #' @name assertIsImplicitInteger
-#'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 NULL
 

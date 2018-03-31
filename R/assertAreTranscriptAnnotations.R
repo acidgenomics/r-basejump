@@ -1,6 +1,7 @@
 #' Assert Are Ensembl Transcript Annotations
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl transcript annotations.

@@ -4,6 +4,7 @@
 #' up functions that require writes to a user-specified directory.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
 #' @param dir Directory path.
 #'

@@ -6,6 +6,7 @@
 #' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
 #'
 #' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

@@ -22,6 +22,8 @@ names(yaml)
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{readFileByExtension}}
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}}
+}
+\author{
+Michael Steinbaugh
 }

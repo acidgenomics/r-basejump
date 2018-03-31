@@ -21,8 +21,9 @@ each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
 \details{
-Column names follow the conventions defined by Ensembl.
-https://ensembl.org/info/website/upload/gff.html
+Column names follow the
+\href{https://ensembl.org/info/website/upload/gff.html}{conventions}
+defined by Ensembl.
 }
 \examples{
 readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
@@ -33,7 +34,10 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 \item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
-Other GFF Functions: \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromGFF}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

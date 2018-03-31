@@ -28,3 +28,15 @@ Deparsing only unique values is much faster and generally recommended.
 parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf") \%>\%
     glimpse()
 }
+\seealso{
+Other Gene Annotation Functions: \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}}
+}
+\author{
+Michael Steinbaugh
+}

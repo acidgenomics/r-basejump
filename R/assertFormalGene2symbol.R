@@ -1,6 +1,7 @@
 #' Assert Formal Gene to Symbol Mappings
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x Object containing gene identifiers in the rownames.

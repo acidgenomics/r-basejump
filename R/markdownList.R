@@ -1,6 +1,7 @@
 #' Markdown List
 #'
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @inherit markdownHeader
 #'

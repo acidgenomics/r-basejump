@@ -2,6 +2,7 @@
 #'
 #' @note Sanitizes names using underscore instead of dot.
 #'
+#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @param names `atomic` to be coerced to syntactically valid names. Will be

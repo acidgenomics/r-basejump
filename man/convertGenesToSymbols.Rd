@@ -82,8 +82,11 @@ print(mat)
 rownames(mat)
 }
 \seealso{
-Other Gene Functions: \code{\link{convertTranscriptsToGenes}},
+Other Gene Functions: \code{\link{annotable}},
+  \code{\link{convertTranscriptsToGenes}},
   \code{\link{detectOrganism}},
-  \code{\link{makeGRangesFromEnsembl}},
   \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

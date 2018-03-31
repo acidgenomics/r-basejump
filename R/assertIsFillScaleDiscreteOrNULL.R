@@ -1,6 +1,7 @@
 #' Assert Is Fill Palette Scale Discrete or NULL
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

@@ -8,6 +8,7 @@
 #' names using non-standard evaluation.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save

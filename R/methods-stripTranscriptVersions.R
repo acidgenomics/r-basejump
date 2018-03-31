@@ -5,6 +5,7 @@
 #'
 #' @name stripTranscriptVersions
 #' @family Gene Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

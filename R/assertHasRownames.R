@@ -7,6 +7,7 @@
 #'   for data frames and tibbles.
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

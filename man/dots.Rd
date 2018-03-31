@@ -44,5 +44,10 @@ dots(mtcars, starwars, character = TRUE)
 }
 
 Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{methodFormals}},
   \code{\link{multiassignAsNewEnvir}}
+}
+\author{
+Michael Steinbaugh
 }

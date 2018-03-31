@@ -16,6 +16,7 @@
 #'
 #' @name detectOrganism
 #' @family Gene Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param unique Only return unique matching organisms. Applies to character

@@ -2,6 +2,7 @@
 #'
 #' @name snake
 #' @family Name Functions
+#' @author Michael Steinbaugh
 #'
 #' @inherit dotted
 #'

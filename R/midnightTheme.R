@@ -3,6 +3,7 @@
 #' Blackout palette that sets the plot background as black, with white text.
 #'
 #' @family Plot Functions
+#' @author Michael Steinbaugh
 #'
 #' @return ggplot `theme`.
 #' @export

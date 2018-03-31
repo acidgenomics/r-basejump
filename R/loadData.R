@@ -19,6 +19,7 @@
 #' names using non-standard evaluation.
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @param ... Object names. Note that these arguments are interpreted using
 #'   non-standard evaluation, and *should not be quoted*.

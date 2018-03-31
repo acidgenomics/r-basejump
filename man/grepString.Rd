@@ -23,3 +23,6 @@ grepString("gene")
 Other Atomic Vector Functions: \code{\link{sortUnique}},
   \code{\link{toStringUnique}}
 }
+\author{
+Michael Steinbaugh
+}

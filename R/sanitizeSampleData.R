@@ -1,6 +1,7 @@
 #' Sanitize Sample Data
 #'
 #' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

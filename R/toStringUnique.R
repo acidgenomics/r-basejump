@@ -1,6 +1,7 @@
 #' Convert to a Unique Character String
 #'
 #' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

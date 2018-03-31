@@ -28,3 +28,6 @@ Other Write Functions: \code{\link{assignAndSaveData}},
   \code{\link{saveData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
 }
+\author{
+Michael Steinbaugh
+}

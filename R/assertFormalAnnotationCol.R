@@ -1,6 +1,7 @@
 #' Assert Formal Annotation Column
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param colData Column data.

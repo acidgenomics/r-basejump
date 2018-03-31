@@ -2,6 +2,7 @@
 #'
 #' @name convertTranscriptsToGenes
 #' @family Gene Functions
+#' @author Michael Steinbaugh
 #'
 #' @inherit convertGenesToSymbols
 #'

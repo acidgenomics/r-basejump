@@ -30,3 +30,6 @@ markdownPlotlist(plotlist)
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownList}}
 }
+\author{
+Michael Steinbaugh
+}

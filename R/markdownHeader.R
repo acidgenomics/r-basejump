@@ -2,6 +2,7 @@
 #'
 #' @name markdownHeader
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @param object `scalar`, which will be coerced to `character`.
 #' @param level Header level (1-7).

@@ -1,6 +1,7 @@
 #' Assert Is an Integer or NULL
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

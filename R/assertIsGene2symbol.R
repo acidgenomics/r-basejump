@@ -1,6 +1,7 @@
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be

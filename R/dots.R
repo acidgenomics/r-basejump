@@ -1,6 +1,7 @@
 #' Extract Dots from Function
 #'
 #' @family Developer Functions
+#' @author Michael Steinbaugh
 #'
 #' @param ... Objects as dots.
 #' @param character Return dots (`...`) as character vector.

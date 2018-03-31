@@ -25,6 +25,14 @@ makeGene2symbolFromGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\%
     glimpse()
 }
 \seealso{
-Other GFF Functions: \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{readGFF}}
+Other Gene Annotation Functions: \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}}
+}
+\author{
+Michael Steinbaugh
 }
