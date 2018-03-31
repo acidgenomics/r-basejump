@@ -10,7 +10,7 @@ toStringUnique(object)
 \item{object}{Object.}
 }
 \value{
-string.
+\code{character} string.
 }
 \description{
 Convert to a Unique Character String

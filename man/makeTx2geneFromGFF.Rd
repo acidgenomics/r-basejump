@@ -6,8 +6,6 @@
 \title{Transcript-to-Gene Mappings from GFF File}
 \usage{
 makeTx2geneFromGFF(file)
-
-makeTx2geneFromGTF(file)
 }
 \arguments{
 \item{file}{File path.}

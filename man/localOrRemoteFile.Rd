@@ -10,9 +10,8 @@ localOrRemoteFile(file)
 \item{file}{File path.}
 }
 \value{
-Named character vector containing the original basename as the name
-and local file path (i.e. tempfile) as the string. Aborts on a missing
-file.
+Named \code{character} containing the original basename as the name and
+local file path (i.e. tempfile) as the string. Aborts on a missing file.
 }
 \description{
 This function is vectorized and supports mixed local and remote paths.

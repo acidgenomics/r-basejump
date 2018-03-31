@@ -16,7 +16,7 @@ readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
 \item{...}{Additional arguments.}
 }
 \value{
-\code{tibble} by default, or a sparse matrix for \code{.mtx} files.
+\code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
 Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}

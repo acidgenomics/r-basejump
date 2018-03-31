@@ -6,8 +6,6 @@
 \title{Genomic Ranges from GFF File}
 \usage{
 makeGRangesFromGFF(file, format = c("genes", "transcripts"))
-
-makeGRangesFromGTF(file, format = c("genes", "transcripts"))
 }
 \arguments{
 \item{file}{File path.}

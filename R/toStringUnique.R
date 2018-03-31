@@ -7,7 +7,7 @@
 #'
 #' @seealso [base::toString()].
 #'
-#' @return string.
+#' @return `character` string.
 #' @export
 #'
 #' @examples

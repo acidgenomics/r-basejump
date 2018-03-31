@@ -113,6 +113,7 @@ setMethod(
 
 # Aliases ======================================================================
 #' @rdname geometricMean
+#' @usage NULL
 #' @export
 geomean <- function(...) {
     geometricMean(...)  # nocov

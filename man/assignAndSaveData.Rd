@@ -29,7 +29,7 @@ Silent named \code{character} containing file paths.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
-the newly assigned object, specified by \code{dir}.
+the newly assigned object, specified by the "\code{dir}" argument.
 }
 \note{
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.

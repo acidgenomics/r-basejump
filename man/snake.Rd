@@ -91,7 +91,7 @@ snake(list)
 }
 \seealso{
 Other Name Functions: \code{\link{camel}},
-  \code{\link{dotted}}
+  \code{\link{dotted}}, \code{\link{makeNames}}
 }
 \author{
 Michael Steinbaugh

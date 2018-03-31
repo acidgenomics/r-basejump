@@ -10,7 +10,7 @@
 
 \item{object}{Object.}
 
-\item{plotlist}{List containing \code{ggplot} objects.}
+\item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
 the first item in the vector by default.}

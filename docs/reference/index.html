@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,9 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +37,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +54,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">basejump</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">basejump</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -70,6 +81,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -80,10 +92,7 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.4.0</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
     <div class="contents">
@@ -104,69 +113,75 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="annotable.html">annotable</a></code> </p>
+            <p><code><a href="annotable.html">annotable()</a></code> </p>
           </td>
           <td><p>Ensembl Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols</a></code> </p>
+            <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols()</a></code> </p>
           </td>
           <td><p>Convert Ensembl Identifiers to Gene Symbols</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes</a></code> </p>
+            <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> </p>
           </td>
           <td><p>Convert Ensembl Transcripts to Genes</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl</a></code> </p>
+            <p><code><a href="convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl()</a></code> </p>
           </td>
           <td><p>Convert UCSC Build to Ensembl</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeGene2symbolFromEnsembl.html">makeGene2symbolFromEnsembl</a></code> </p>
-          </td>
-          <td><p>Gene-to-Symbol Mappings from Ensembl</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl</a></code> </p>
+            <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> </p>
           </td>
           <td><p>Genomic Ranges from Ensembl</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeTx2geneFromEnsembl.html">makeTx2geneFromEnsembl</a></code> </p>
+            <p><code><a href="makeGene2symbolFromEnsembl.html">makeGene2symbolFromEnsembl()</a></code> </p>
+          </td>
+          <td><p>Gene-to-Symbol Mappings from Ensembl</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="makeTx2geneFromEnsembl.html">makeTx2geneFromEnsembl()</a></code> </p>
           </td>
           <td><p>Transcript-to-Gene Mappings from Ensembl</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGFF</a></code> <code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGTF</a></code> </p>
-          </td>
-          <td><p>Gene-to-Symbol Mappings from GFF File</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="makeGRangesFromGFF.html">makeGRangesFromGFF</a></code> <code><a href="makeGRangesFromGFF.html">makeGRangesFromGTF</a></code> </p>
+            <p><code><a href="makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRangesFromGFF.html">makeGRangesFromGTF()</a></code> </p>
           </td>
           <td><p>Genomic Ranges from GFF File</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGFF</a></code> <code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGTF</a></code> </p>
+            <p><code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> <code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGTF()</a></code> </p>
+          </td>
+          <td><p>Gene-to-Symbol Mappings from GFF File</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code> <code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGTF()</a></code> </p>
           </td>
           <td><p>Transcript-to-Gene Mappings from GFF File</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="parseGFFAttributes.html">parseGFFAttributes</a></code> </p>
+            <p><code><a href="parseGFFAttributes.html">parseGFFAttributes()</a></code> </p>
           </td>
           <td><p>Parse GFF Attributes Column</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
+          </td>
+          <td><p>Strip Transcript Versions</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -178,19 +193,19 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="camel.html">camel</a></code> <code><a href="camel.html">upperCamel</a></code> </p>
+            <p><code><a href="camel.html">camel()</a></code> <code><a href="camel.html">upperCamel()</a></code> </p>
           </td>
           <td><p>Camel Case</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="dotted.html">dotted</a></code> </p>
+            <p><code><a href="dotted.html">dotted()</a></code> </p>
           </td>
           <td><p>Dotted Case</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="snake.html">snake</a></code> </p>
+            <p><code><a href="snake.html">snake()</a></code> </p>
           </td>
           <td><p>Snake Case</p></td>
         </tr>
@@ -204,21 +219,33 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="aggregateFeatures.html">aggregateFeatures</a></code> </p>
+            <p><code><a href="aggregateFeatures.html">aggregateFeatures()</a></code> </p>
           </td>
           <td><p>Aggregate Features</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="aggregateReplicates.html">aggregateReplicates</a></code> </p>
+            <p><code><a href="aggregateReplicates.html">aggregateReplicates()</a></code> </p>
           </td>
           <td><p>Aggregate Replicates</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="logRatio.html">foldChangeToLogRatio</a></code> <code><a href="logRatio.html">logRatioToFoldChange</a></code> </p>
+            <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
           </td>
           <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="geometricMean.html">geometricMean()</a></code> <code><a href="geometricMean.html">geomean()</a></code> </p>
+          </td>
+          <td><p>Geometric Mean</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="microplate.html">microplate()</a></code> </p>
+          </td>
+          <td><p>Microtiter Plate Well Identifiers</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -230,37 +257,37 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="loadData.html">loadData</a></code> </p>
+            <p><code><a href="loadData.html">loadData()</a></code> </p>
           </td>
           <td><p>Load Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="loadDataAsName.html">loadDataAsName</a></code> </p>
+            <p><code><a href="loadDataAsName.html">loadDataAsName()</a></code> </p>
           </td>
           <td><p>Load Data as Name</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="loadRemoteData.html">loadRemoteData</a></code> </p>
+            <p><code><a href="loadRemoteData.html">loadRemoteData()</a></code> </p>
           </td>
           <td><p>Load Remote Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="readFileByExtension.html">readFileByExtension</a></code> </p>
+            <p><code><a href="readFileByExtension.html">readFileByExtension()</a></code> </p>
           </td>
           <td><p>Read File by Extension</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="readGFF.html">readGFF</a></code> <code><a href="readGFF.html">readGTF</a></code> </p>
+            <p><code><a href="readGFF.html">readGFF()</a></code> <code><a href="readGFF.html">readGTF()</a></code> </p>
           </td>
           <td><p>Read GFF/GTF Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="readYAML.html">readYAML</a></code> </p>
+            <p><code><a href="readYAML.html">readYAML()</a></code> </p>
           </td>
           <td><p>Read YAML File</p></td>
         </tr>
@@ -274,25 +301,25 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="assignAndSaveData.html">assignAndSaveData</a></code> </p>
+            <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
           </td>
           <td><p>Assign and Save Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="saveData.html">saveData</a></code> </p>
+            <p><code><a href="saveData.html">saveData()</a></code> </p>
           </td>
           <td><p>Save Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="transmit.html">transmit</a></code> </p>
+            <p><code><a href="transmit.html">transmit()</a></code> </p>
           </td>
           <td><p>Transmit Files from a Remote FTP Server</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="writeCounts.html">writeCounts</a></code> </p>
+            <p><code><a href="writeCounts.html">writeCounts()</a></code> </p>
           </td>
           <td><p>Write Counts</p></td>
         </tr>
@@ -306,13 +333,13 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="dynamicPlotlist.html">dynamicPlotlist</a></code> </p>
+            <p><code><a href="dynamicPlotlist.html">dynamicPlotlist()</a></code> </p>
           </td>
           <td><p>Dynamic Plotlist</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="midnightTheme.html">midnightTheme</a></code> <code><a href="midnightTheme.html">theme_midnight</a></code> </p>
+            <p><code><a href="midnightTheme.html">midnightTheme()</a></code> <code><a href="midnightTheme.html">theme_midnight()</a></code> </p>
           </td>
           <td><p>Midnight Theme</p></td>
         </tr>
@@ -326,25 +353,25 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="kables.html">kables</a></code> </p>
+            <p><code><a href="kables.html">kables()</a></code> </p>
           </td>
           <td><p>Create Tables in LaTeX, HTML, Markdown and reStructuredText</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="markdownHeader.html">markdownHeader</a></code> <code><a href="markdownHeader.html">mdHeader</a></code> </p>
+            <p><code><a href="markdownHeader.html">markdownHeader()</a></code> <code><a href="markdownHeader.html">mdHeader()</a></code> </p>
           </td>
           <td><p>Markdown Header</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="markdownList.html">markdownList</a></code> <code><a href="markdownList.html">mdList</a></code> </p>
+            <p><code><a href="markdownList.html">markdownList()</a></code> <code><a href="markdownList.html">mdList()</a></code> </p>
           </td>
           <td><p>Markdown List</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="markdownPlotlist.html">markdownPlotlist</a></code> <code><a href="markdownPlotlist.html">mdPlotlist</a></code> </p>
+            <p><code><a href="markdownPlotlist.html">markdownPlotlist()</a></code> <code><a href="markdownPlotlist.html">mdPlotlist()</a></code> </p>
           </td>
           <td><p>Markdown Plotlist</p></td>
         </tr>
@@ -358,25 +385,25 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="collapseToString.html">collapseToString</a></code> </p>
+            <p><code><a href="collapseToString.html">collapseToString()</a></code> </p>
           </td>
           <td><p>Collapse to String</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="grepString.html">grepString</a></code> </p>
+            <p><code><a href="grepString.html">grepString()</a></code> </p>
           </td>
           <td><p><code>grep</code> String Generator</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sortUnique.html">sortUnique</a></code> </p>
+            <p><code><a href="sortUnique.html">sortUnique()</a></code> </p>
           </td>
           <td><p>Quickly Perform Sort Unique on a Vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="toStringUnique.html">toStringUnique</a></code> </p>
+            <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
           </td>
           <td><p>Convert to a Unique Character String</p></td>
         </tr>
@@ -390,31 +417,31 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="fixNA.html">fixNA</a></code> </p>
+            <p><code><a href="fixNA.html">fixNA()</a></code> </p>
           </td>
           <td><p>Fix Character Strings Missing <code>NA</code></p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeNames.html">makeNames</a></code> </p>
+            <p><code><a href="makeNames.html">makeNames()</a></code> </p>
           </td>
           <td><p>Make Syntactically Valid Names</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="removeNA.html">removeNA</a></code> </p>
+            <p><code><a href="removeNA.html">removeNA()</a></code> </p>
           </td>
           <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sanitizeRowData.html">sanitizeRowData</a></code> </p>
+            <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
           </td>
           <td><p>Sanitize Row Data</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sanitizeSampleData.html">sanitizeSampleData</a></code> </p>
+            <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
           </td>
           <td><p>Sanitize Sample Data</p></td>
         </tr>
@@ -428,33 +455,45 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="detectHPC.html">detectHPC</a></code> </p>
+            <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
           </td>
           <td><p>Detect HPC Environment</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="detectOrganism.html">detectOrganism</a></code> </p>
+            <p><code><a href="detectOrganism.html">detectOrganism()</a></code> </p>
           </td>
           <td><p>Detect Organism</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="dots.html">dots</a></code> </p>
+            <p><code><a href="dots.html">dots()</a></code> </p>
           </td>
           <td><p>Extract Dots from Function</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="localOrRemoteFile.html">localOrRemoteFile</a></code> </p>
+            <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> </p>
+          </td>
+          <td><p>Initialize Directory</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
           </td>
           <td><p>Dynamically Handle a Local or Remote File Path</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="methodFormals.html">methodFormals</a></code> </p>
+            <p><code><a href="methodFormals.html">methodFormals()</a></code> </p>
           </td>
           <td><p>Access to the Formal Arguments of an S4 Method</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code> </p>
+          </td>
+          <td><p>Assign Multiple Objects as a New Environment</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -466,133 +505,133 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="assertAllAreNonExisting.html">assertAllAreNonExisting</a></code> </p>
+            <p><code><a href="assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> </p>
           </td>
           <td><p>Assert All Variables Are Non-Existing</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertAreGeneAnnotations.html">assertAreGeneAnnotations</a></code> </p>
+            <p><code><a href="assertAreGeneAnnotations.html">assertAreGeneAnnotations()</a></code> </p>
           </td>
           <td><p>Assert Are Ensembl Gene Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertAreTranscriptAnnotations.html">assertAreTranscriptAnnotations</a></code> </p>
+            <p><code><a href="assertAreTranscriptAnnotations.html">assertAreTranscriptAnnotations()</a></code> </p>
           </td>
           <td><p>Assert Are Ensembl Transcript Annotations</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertFormalAnnotationCol.html">assertFormalAnnotationCol</a></code> </p>
+            <p><code><a href="assertFormalAnnotationCol.html">assertFormalAnnotationCol()</a></code> </p>
           </td>
           <td><p>Assert Formal Annotation Column</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertFormalCompress.html">assertFormalCompress</a></code> </p>
+            <p><code><a href="assertFormalCompress.html">assertFormalCompress()</a></code> </p>
           </td>
           <td><p>Assert Formal Compression</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertFormalGene2symbol.html">assertFormalGene2symbol</a></code> </p>
+            <p><code><a href="assertFormalGene2symbol.html">assertFormalGene2symbol()</a></code> </p>
           </td>
           <td><p>Assert Formal Gene to Symbol Mappings</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertHasRownames.html">assertHasRownames</a></code> <code><a href="assertHasRownames.html">hasRownames</a></code> </p>
+            <p><code><a href="assertHasRownames.html">assertHasRownames()</a></code> <code><a href="assertHasRownames.html">hasRownames()</a></code> </p>
           </td>
           <td><p>Assert Has Rownames</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsAHeaderLevel.html">assertIsAHeaderLevel</a></code> </p>
+            <p><code><a href="assertIsAHeaderLevel.html">assertIsAHeaderLevel()</a></code> </p>
           </td>
           <td><p>Assert Is a Header Level</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsAnIntegerOrNULL.html">assertIsAnIntegerOrNULL</a></code> </p>
-          </td>
-          <td><p>Assert Is an Integer or NULL</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="assertIsANumberOrNULL.html">assertIsANumberOrNULL</a></code> </p>
+            <p><code><a href="assertIsANumberOrNULL.html">assertIsANumberOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is a Number or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsAStringOrNULL.html">assertIsAStringOrNULL</a></code> </p>
+            <p><code><a href="assertIsAStringOrNULL.html">assertIsAStringOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is a String or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsCharacterOrNULL.html">assertIsCharacterOrNULL</a></code> </p>
+            <p><code><a href="assertIsAnIntegerOrNULL.html">assertIsAnIntegerOrNULL()</a></code> </p>
+          </td>
+          <td><p>Assert Is an Integer or NULL</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assertIsCharacterOrNULL.html">assertIsCharacterOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Character Vector or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsColorScaleContinuousOrNULL.html">assertIsColorScaleContinuousOrNULL</a></code> </p>
+            <p><code><a href="assertIsColorScaleContinuousOrNULL.html">assertIsColorScaleContinuousOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Color Palette Scale Continuous or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsColorScaleDiscreteOrNULL.html">assertIsColorScaleDiscreteOrNULL</a></code> </p>
+            <p><code><a href="assertIsColorScaleDiscreteOrNULL.html">assertIsColorScaleDiscreteOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Color Palette Scale Discrete or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsDataFrameOrNULL.html">assertIsDataFrameOrNULL</a></code> </p>
+            <p><code><a href="assertIsDataFrameOrNULL.html">assertIsDataFrameOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Data Frame or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsFillScaleContinuousOrNULL.html">assertIsFillScaleContinuousOrNULL</a></code> </p>
+            <p><code><a href="assertIsFillScaleContinuousOrNULL.html">assertIsFillScaleContinuousOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Fill Palette Scale Continuous or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsFillScaleDiscreteOrNULL.html">assertIsFillScaleDiscreteOrNULL</a></code> </p>
+            <p><code><a href="assertIsFillScaleDiscreteOrNULL.html">assertIsFillScaleDiscreteOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Fill Palette Scale Discrete or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsGene2symbol.html">assertIsGene2symbol</a></code> </p>
-          </td>
-          <td><p>Assert Is Gene to Symbol Mapping Data Frame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="assertIsGFF.html">assertIsGFF</a></code> </p>
+            <p><code><a href="assertIsGFF.html">assertIsGFF()</a></code> </p>
           </td>
           <td><p>Assert Is GFF</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsHexColorFunctionOrNULL.html">assertIsHexColorFunctionOrNULL</a></code> </p>
+            <p><code><a href="assertIsGene2symbol.html">assertIsGene2symbol()</a></code> </p>
+          </td>
+          <td><p>Assert Is Gene to Symbol Mapping Data Frame</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assertIsHexColorFunctionOrNULL.html">assertIsHexColorFunctionOrNULL()</a></code> </p>
           </td>
           <td><p>Assert Is Hex Color Function or NULL</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsImplicitInteger.html">assertIsAnImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsAnImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitIntegerOrNULL</a></code> <code><a href="assertIsImplicitInteger.html">isAnImplicitInteger</a></code> <code><a href="assertIsImplicitInteger.html">isImplicitInteger</a></code> </p>
+            <p><code><a href="assertIsImplicitInteger.html">assertIsAnImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsAnImplicitIntegerOrNULL()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitIntegerOrNULL()</a></code> <code><a href="assertIsImplicitInteger.html">isAnImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">isImplicitInteger()</a></code> </p>
           </td>
           <td><p>Assert Is Implicit Integer</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="assertIsTx2gene.html">assertIsTx2gene</a></code> </p>
+            <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
           </td>
           <td><p>Check Transcript to Gene Mapping Data</p></td>
         </tr>
@@ -631,5 +670,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

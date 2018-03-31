@@ -14,14 +14,14 @@ writeCounts(..., dir = ".", gzip = TRUE)
 \item{gzip}{Compress the counts file using gzip.}
 }
 \value{
-Invisible named character vector containing file paths to count
-matrices written to disk.
+Invisible named \code{character} containing file paths to count matrices
+written to disk.
 }
 \description{
 Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-written to disk as comma separated values (\code{.csv}). Single-cell RNA-seq
-counts are written to disk in MatrixMarket format (\code{.mtx}), along with the
-sample barcodes (\code{.colnames}), and gene identifiers (\code{.rownames}).
+written to disk as comma separated values ("\code{.csv}"). Single-cell RNA-seq
+counts are written to disk in MatrixMarket format ("\code{.mtx}"), along with the
+sample barcodes ("\code{.colnames}"), and gene identifiers ("\code{.rownames}").
 }
 \details{
 Automatic gzip compression is offered as a user-defined option. This setting

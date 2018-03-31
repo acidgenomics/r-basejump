@@ -19,7 +19,7 @@ annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
 to the most recent release available.}
 }
 \value{
-\code{data.frame}
+\code{data.frame}.
 }
 \description{
 Ensembl Annotations
