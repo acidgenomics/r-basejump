@@ -24,5 +24,9 @@ multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}
+  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{methodFormals}}
+}
+\author{
+Michael Steinbaugh
 }

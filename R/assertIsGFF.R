@@ -1,6 +1,7 @@
 #' Assert Is GFF
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x GFF `data.frame`.

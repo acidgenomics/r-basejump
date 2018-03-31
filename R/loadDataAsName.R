@@ -4,6 +4,7 @@
 #'   names using non-standard evaluation.
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams loadData
 #' @param ... Key value pairs, defining the name mappings. For example,

@@ -17,4 +17,7 @@ table verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[
 \seealso{
 \code{help(topic = "coerce", package = "methods")}.
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{internal}

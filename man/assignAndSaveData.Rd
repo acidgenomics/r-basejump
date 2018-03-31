@@ -48,3 +48,6 @@ Other Write Functions: \code{\link{initializeDirectory}},
   \code{\link{saveData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
 }
+\author{
+Michael Steinbaugh
+}

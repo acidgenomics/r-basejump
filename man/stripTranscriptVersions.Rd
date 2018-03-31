@@ -41,8 +41,11 @@ stripTranscriptVersions("ENSMUST00000000001.1")
 stripTranscriptVersions("cTel79B.1")
 }
 \seealso{
-Other Gene Functions: \code{\link{convertGenesToSymbols}},
+Other Gene Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{detectOrganism}},
-  \code{\link{makeGRangesFromEnsembl}}
+  \code{\link{detectOrganism}}
+}
+\author{
+Michael Steinbaugh
 }

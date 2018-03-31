@@ -34,6 +34,14 @@ x <- makeGRangesFromGFF(file, format = "transcripts")
 summary(x)
 }
 \seealso{
-Other GFF Functions: \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{readGFF}}
+Other Gene Annotation Functions: \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}}
+}
+\author{
+Michael Steinbaugh
 }

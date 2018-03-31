@@ -4,6 +4,7 @@
 #' [base::toString()] output.
 #'
 #' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

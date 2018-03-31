@@ -1,6 +1,7 @@
 #' Assert Is Character Vector or NULL
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

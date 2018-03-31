@@ -26,4 +26,7 @@ the first item in the vector by default.}
 \description{
 General Arguments
 }
+\author{
+Michael Steinbaugh
+}
 \keyword{internal}

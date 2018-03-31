@@ -1,5 +1,8 @@
 #' Transcript-to-Gene Mappings from Ensembl
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams makeGRangesFromEnsembl
 #'
 #' @return `data.frame`

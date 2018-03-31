@@ -18,10 +18,12 @@ gffCols <- c(
 #' each containing 9 columns of data, plus optional track definition lines. The
 #' GTF (General Transfer Format) is identical to GFF version 2.
 #'
-#' Column names follow the conventions defined by Ensembl.
-#' https://ensembl.org/info/website/upload/gff.html
+#' Column names follow the
+#' [conventions](https://ensembl.org/info/website/upload/gff.html)
+#' defined by Ensembl.
 #'
-#' @family GFF Functions
+#' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

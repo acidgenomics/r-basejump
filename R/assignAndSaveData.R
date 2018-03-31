@@ -4,6 +4,7 @@
 #' the newly assigned object, specified by `dir`.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @inheritParams saveData

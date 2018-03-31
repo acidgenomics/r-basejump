@@ -82,6 +82,10 @@ mtcars \%>\%
 }
 
 Other Sanitization Functions: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
+  \code{\link{makeNames}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
+}
+\author{
+Michael Steinbaugh
 }

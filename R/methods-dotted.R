@@ -11,6 +11,7 @@
 #'
 #' @name dotted
 #' @family Name Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param object Character vector or an object for which [names()] assignment

@@ -100,3 +100,6 @@ dotted(list)
 Other Name Functions: \code{\link{camel}},
   \code{\link{snake}}
 }
+\author{
+Michael Steinbaugh
+}

@@ -43,3 +43,6 @@ dynamicPlotlist(plotlist, return = "markdown")
 
 Other Plot Functions: \code{\link{midnightTheme}}
 }
+\author{
+Michael Steinbaugh
+}

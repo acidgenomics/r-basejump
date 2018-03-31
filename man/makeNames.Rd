@@ -26,6 +26,11 @@ makeNames(c(123L, "hello world"))
 }
 \seealso{
 \code{\link[base:make.names]{base::make.names()}}.
+
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}},
+  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh

@@ -1,6 +1,7 @@
 #' Assert All Variables Are Non-Existing
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x Character vector of variable names to check in environment.

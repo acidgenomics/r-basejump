@@ -2,6 +2,7 @@
 #'
 #' @name logRatio
 #' @family Math Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param object Numeric of log ratio or fold change values.

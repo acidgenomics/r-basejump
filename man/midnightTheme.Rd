@@ -29,3 +29,6 @@ p + midnightTheme()
 
 Other Plot Functions: \code{\link{dynamicPlotlist}}
 }
+\author{
+Michael Steinbaugh
+}

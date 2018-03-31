@@ -1,6 +1,7 @@
 #' Assert Are Ensembl Gene Annotations
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl gene annotations.

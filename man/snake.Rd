@@ -93,3 +93,6 @@ snake(list)
 Other Name Functions: \code{\link{camel}},
   \code{\link{dotted}}
 }
+\author{
+Michael Steinbaugh
+}

@@ -30,7 +30,7 @@ x <- localOrRemoteFile(c(
 names(x)
 }
 \seealso{
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{methodFormals}},
+  \code{\link{multiassignAsNewEnvir}}
 }

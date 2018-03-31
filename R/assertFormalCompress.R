@@ -1,6 +1,7 @@
 #' Assert Formal Compression
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

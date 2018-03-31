@@ -25,3 +25,6 @@ toStringUnique(vec)
 Other Atomic Vector Functions: \code{\link{grepString}},
   \code{\link{sortUnique}}
 }
+\author{
+Michael Steinbaugh
+}

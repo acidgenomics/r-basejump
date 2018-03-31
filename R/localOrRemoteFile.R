@@ -2,7 +2,7 @@
 #'
 #' This function is vectorized and supports mixed local and remote paths.
 #'
-#' @family Read Functions
+#' @family Developer Functions
 #'
 #' @inheritParams saveData
 #' @inheritParams general

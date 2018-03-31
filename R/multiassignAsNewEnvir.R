@@ -1,6 +1,7 @@
 #' Assign Multiple Objects as a New Environment
 #'
 #' @family Developer Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams dots
 #' @inheritParams saveData

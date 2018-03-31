@@ -3,6 +3,7 @@
 #' Defunct or Deprecated Functions
 #'
 #' @name deprecated
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @inheritParams general
@@ -149,12 +150,6 @@ initializeDir <- function(...) {
 
 
  # v0.4.0 ======================================================================
-#' @rdname deprecated
-#' @export
-annotable <- function(...) {
-    .Defunct("makeGRangesFromEnsembl")
-}
-
 #' @rdname deprecated
 #' @export
 assertIsAnnotable <- function(...) {

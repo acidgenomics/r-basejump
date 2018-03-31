@@ -23,3 +23,6 @@ sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 Other Atomic Vector Functions: \code{\link{grepString}},
   \code{\link{toStringUnique}}
 }
+\author{
+Michael Steinbaugh
+}

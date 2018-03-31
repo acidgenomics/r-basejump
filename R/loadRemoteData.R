@@ -4,6 +4,7 @@
 #' multiple URLs in a single call.
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @inheritParams loadData

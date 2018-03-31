@@ -39,6 +39,9 @@ glimpse(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{sanitizeRowData}}
+  \code{\link{fixNA}}, \code{\link{makeNames}},
+  \code{\link{removeNA}}, \code{\link{sanitizeRowData}}
+}
+\author{
+Michael Steinbaugh
 }

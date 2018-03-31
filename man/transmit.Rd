@@ -45,3 +45,6 @@ Other Write Functions: \code{\link{assignAndSaveData}},
   \code{\link{initializeDirectory}},
   \code{\link{saveData}}, \code{\link{writeCounts}}
 }
+\author{
+Michael Steinbaugh
+}

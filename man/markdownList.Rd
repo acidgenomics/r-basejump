@@ -35,3 +35,6 @@ Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}},
   \code{\link{markdownPlotlist}}
 }
+\author{
+Michael Steinbaugh
+}

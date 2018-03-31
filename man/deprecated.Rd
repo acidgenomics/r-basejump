@@ -19,7 +19,6 @@
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
 \alias{initializeDir}
-\alias{annotable}
 \alias{assertIsAnnotable}
 \alias{ensembl}
 \alias{gene2symbolFromGFF}
@@ -63,8 +62,6 @@ assertFormalColorFunction(...)
 
 initializeDir(...)
 
-annotable(...)
-
 assertIsAnnotable(...)
 
 ensembl(...)
@@ -87,5 +84,8 @@ tx2geneFromGTF(...)
 }
 \description{
 Defunct or Deprecated Functions
+}
+\author{
+Michael Steinbaugh
 }
 \keyword{internal}

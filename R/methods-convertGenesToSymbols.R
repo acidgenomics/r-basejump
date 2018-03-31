@@ -2,6 +2,7 @@
 #'
 #' @name convertGenesToSymbols
 #' @family Gene Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general

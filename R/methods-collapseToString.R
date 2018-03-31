@@ -2,6 +2,7 @@
 #'
 #' @name collapseToString
 #' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param sep Separator. Defaults to comma.

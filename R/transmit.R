@@ -4,9 +4,10 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
-#' @inheritParams general
 #' @inheritParams saveData
+#' @inheritParams general
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
 #' @param localDir Directory where to save files locally.

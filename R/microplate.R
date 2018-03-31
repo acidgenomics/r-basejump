@@ -1,6 +1,7 @@
 #' Microtiter Plate Well Identifiers
 #'
 #' @family Math Functions
+#' @author Michael Steinbaugh
 #'
 #' @param plates Number of plates.
 #' @param wells Number of wells (`96`, `384`).

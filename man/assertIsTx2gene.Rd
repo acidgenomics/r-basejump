@@ -51,3 +51,6 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assert}}
 }
+\author{
+Michael Steinbaugh
+}

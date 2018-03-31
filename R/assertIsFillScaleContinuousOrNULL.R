@@ -1,6 +1,7 @@
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

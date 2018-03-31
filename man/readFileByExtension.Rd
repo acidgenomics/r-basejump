@@ -41,5 +41,8 @@ glimpse(xlsx)
 
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{localOrRemoteFile}}, \code{\link{readYAML}}
+  \code{\link{readGFF}}, \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }
