@@ -3,14 +3,14 @@
 #' Coerce Ensembl `rowData` to a `data.frame`, and drop any nested list columns
 #' (e.g. `entrezID`). Nested columns will fail to write to disk as CSVs.
 #'
-#' Supports `GRanges`, `data.frame`, and `DataFrame` objects.
+#' Supports `GRanges`, `DataFrame`, and `data.frame` class objects.
 #'
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return `data.frame`, without any nested list columns.
+#' @return `data.frame`, without any nested `list` columns.
 #' @export
 #'
 #' @examples

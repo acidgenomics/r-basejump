@@ -6,7 +6,7 @@
 #' @inherit markdownHeader
 #'
 #' @param object `atomic`, which will be coerced to `character`.
-#' @param ordered Ordered ("`TRUE`") or unordered ("`FALSE`") list.
+#' @param ordered Ordered ("`TRUE`") or unordered ("`FALSE`") `list`.
 #'
 #' @export
 #'
@@ -56,5 +56,6 @@ markdownList <- function(
 
 # Aliases ======================================================================
 #' @rdname markdownList
+#' @usage NULL
 #' @export
 markdownList -> mdList

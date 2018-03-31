@@ -39,8 +39,8 @@ collapseToString(object, ...)
 }
 \value{
 \itemize{
-\item For vector: String.
-\item For column data: Single row.
+\item For \code{atomic} vector: \code{character} string.
+\item For column data: Object collapsed to a single row.
 }
 }
 \description{
@@ -82,8 +82,7 @@ mtcars \%>\%
 }
 
 Other Sanitization Functions: \code{\link{fixNA}},
-  \code{\link{makeNames}}, \code{\link{removeNA}},
-  \code{\link{sanitizeRowData}},
+  \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
 \author{

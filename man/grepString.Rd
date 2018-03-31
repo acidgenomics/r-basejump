@@ -2,7 +2,7 @@
 % Please edit documentation in R/grepString.R
 \name{grepString}
 \alias{grepString}
-\title{\code{grep} String Generator}
+\title{\code{grep} String}
 \usage{
 grepString(object)
 }
@@ -10,11 +10,11 @@ grepString(object)
 \item{object}{Object.}
 }
 \value{
-Comma delimited grep string.
+\code{character} string for \code{\link[=grep]{grep()}} matching.
 }
 \description{
-Generate a grep string for pattern matching against comma separated
-\code{\link[base:toString]{base::toString()}} output.
+Generate a \code{\link[=grep]{grep()}} string for pattern matching against comma separated
+\code{\link[=toString]{toString()}} output.
 }
 \examples{
 grepString("gene")

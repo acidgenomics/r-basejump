@@ -11,8 +11,8 @@
 #' @param removeNA Remove NA values.
 #'
 #' @return
-#' - For vector: String.
-#' - For column data: Single row.
+#' - For `atomic` vector: `character` string.
+#' - For column data: Object collapsed to a single row.
 #'
 #' @seealso
 #' - [base::toString()].

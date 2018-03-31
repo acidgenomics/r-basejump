@@ -6,8 +6,6 @@
 \title{Markdown Header}
 \usage{
 markdownHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
-
-mdHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
 \item{object}{\code{scalar}, which will be coerced to \code{character}.}
@@ -17,11 +15,13 @@ mdHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
 \item{tabset}{Include tabset marker.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an RMarkdown chunk with \code{results="asis"} enabled.}
+inside an RMarkdown chunk with '\code{results="asis"}' enabled.}
 }
 \value{
-Markdown formatted code as \link[knitr:asis_output]{knitr::asis_output} or
-\code{\link[base:writeLines]{base::writeLines()}}.
+\itemize{
+\item "\code{asis = TRUE}": \code{\link[knitr:asis_output]{knitr::asis_output()}}.
+\item "\code{asis = FALSE}": \code{\link[=writeLines]{writeLines()}}.
+}
 }
 \description{
 Markdown Header

@@ -21,7 +21,7 @@ with or without the trailing slash.}
 (\code{TRUE}/\code{FALSE})}
 }
 \value{
-Invisible vector of local file paths.
+Invisible \code{character} containing local file paths.
 }
 \description{
 Utility function that supports easy file matching and download from a remote

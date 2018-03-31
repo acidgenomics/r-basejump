@@ -6,8 +6,6 @@
 \title{Gene-to-Symbol Mappings from GFF File}
 \usage{
 makeGene2symbolFromGFF(file)
-
-makeGene2symbolFromGTF(file)
 }
 \arguments{
 \item{file}{File path.}

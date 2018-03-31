@@ -3,11 +3,9 @@
 \name{readGFF}
 \alias{readGFF}
 \alias{readGTF}
-\title{Read GFF/GTF Annotations}
+\title{Read GFF Annotations}
 \usage{
 readGFF(file)
-
-readGTF(file)
 }
 \arguments{
 \item{file}{File path.}

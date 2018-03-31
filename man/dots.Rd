@@ -9,13 +9,13 @@ dots(..., character = FALSE)
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{character}{Return dots (\code{...}) as character vector.}
+\item{character}{Return dots (\code{...}) as \code{character} vector.}
 }
 \value{
 \itemize{
-\item For \code{character = FALSE}: \code{list} containing objects as names. Can return
+\item For "\code{character = FALSE}": \code{list} containing objects as names. Can return
 object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
-\item For \code{character = TRUE}: Character vector.
+\item For "\code{character = TRUE}": \code{character} containing the dot names.
 }
 }
 \description{

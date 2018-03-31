@@ -5,7 +5,7 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #'
-#' @return `data.frame`
+#' @return `data.frame`.
 #' @export
 makeTx2geneFromEnsembl <- function(
     organism,

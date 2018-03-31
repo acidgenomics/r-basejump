@@ -16,7 +16,7 @@ makeTx2geneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
 to the most recent release available.}
 }
 \value{
-\code{data.frame}
+\code{data.frame}.
 }
 \description{
 Transcript-to-Gene Mappings from Ensembl

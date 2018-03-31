@@ -11,7 +11,7 @@
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `dotted`, `snake`, or `upperCamel`. This is always enforced.
 #'
-#' @return `tibble` by default, or a sparse matrix for `.mtx` files.
+#' @return `tbl_df` by default, or a sparse matrix for `.mtx` files.
 #' @export
 #'
 #' @seealso

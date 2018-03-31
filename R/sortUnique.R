@@ -8,7 +8,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return Unique vector.
+#' @return Unique `vector`.
 #' @export
 #'
 #' @examples

@@ -5,26 +5,26 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame`.
+#' @return `DataFrame` or `data.frame`.
 #' @export
 #'
 #' @examples
+#' # DataFrame ====
+#' from <- DataFrame(
+#'     "genotype" = c("wt", "ko", "wt", "ko"),
+#'     "batch" = c(1L, 1L, 2L, 2L),
+#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+#' )
+#' glimpse(from)
+#' to <- sanitizeSampleData(from)
+#' glimpse(to)
+#'
 #' # data.frame ====
 #' from <- data.frame(
 #'     "genotype" = c("wt", "ko", "wt", "ko"),
 #'     "batch" = c(1L, 1L, 2L, 2L),
 #'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
 #'     stringsAsFactors = FALSE
-#' )
-#' glimpse(from)
-#' to <- sanitizeSampleData(from)
-#' glimpse(to)
-#'
-#' # DataFrame ====
-#' from <- DataFrame(
-#'     "genotype" = c("wt", "ko", "wt", "ko"),
-#'     "batch" = c(1L, 1L, 2L, 2L),
-#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
 #' )
 #' glimpse(from)
 #' to <- sanitizeSampleData(from)

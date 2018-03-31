@@ -131,5 +131,6 @@ makeGRangesFromGFF <- function(
 
 # Aliases ======================================================================
 #' @rdname makeGRangesFromGFF
+#' @usage NULL
 #' @export
 makeGRangesFromGFF -> makeGRangesFromGTF

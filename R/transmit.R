@@ -16,7 +16,7 @@
 #' @param compress Compress the files with [R.utils::gzip()] after download.
 #'   (`TRUE`/`FALSE`)
 #'
-#' @return Invisible vector of local file paths.
+#' @return Invisible `character` containing local file paths.
 #' @export
 #'
 #' @examples

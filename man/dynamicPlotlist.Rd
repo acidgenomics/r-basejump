@@ -8,7 +8,7 @@ dynamicPlotlist(plotlist, headerLevel = 2L, return = c("grid", "list",
   "markdown"))
 }
 \arguments{
-\item{plotlist}{List containing \code{ggplot} objects.}
+\item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{headerLevel}{Markdown header level.}
 

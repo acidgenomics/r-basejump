@@ -12,7 +12,7 @@ gffCols <- c(
 
 
 
-#' Read GFF/GTF Annotations
+#' Read GFF Annotations
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
 #' each containing 9 columns of data, plus optional track definition lines. The
@@ -50,10 +50,10 @@ readGFF <- function(file) {
             stringsAsFactors = FALSE
         ),
         error = function(e) {
-            abort("GFF/GTF file failed to load")
+            abort("GFF file failed to load")
         },
         warning = function(w) {
-            abort("GFF/GTF file failed to load")
+            abort("GFF file failed to load")
         }
     )
     gff
@@ -63,5 +63,6 @@ readGFF <- function(file) {
 
 # Aliases ======================================================================
 #' @rdname readGFF
+#' @usage NULL
 #' @export
 readGFF -> readGTF

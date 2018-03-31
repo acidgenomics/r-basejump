@@ -5,7 +5,7 @@
 #'
 #' @inherit makeGRangesFromEnsembl
 #'
-#' @return `data.frame`
+#' @return `data.frame`.
 #' @export
 #'
 #' @examples

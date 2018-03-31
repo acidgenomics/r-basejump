@@ -2,14 +2,14 @@
 #'
 #' @note Sanitizes names using underscore instead of dot.
 #'
-#' @family Sanitization Functions
+#' @family Name Functions
 #' @author Michael Steinbaugh
 #'
 #' @param names `atomic` to be coerced to syntactically valid names. Will be
 #'   coerced to `character` if necessary.
 #' @param unique `logical`; if `TRUE`, the resulting elements are unique.
 #'
-#' @return Character vector.
+#' @return `character`.
 #' @export
 #'
 #' @seealso [base::make.names()].

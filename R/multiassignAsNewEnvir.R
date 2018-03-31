@@ -5,10 +5,10 @@
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
-#' @param envirName New environment name (string).
-#' @param parentEnvir Parent environment of new environment.
+#' @param envirName New environment name (`string`).
+#' @param parentEnvir Parent `environment` where to assign the new environment.
 #'
-#' @return Character vector of assigned objects in the new environment.
+#' @return `character` of object names in the new `environment`.
 #' @export
 #'
 #' @examples
