@@ -1,6 +1,65 @@
 template:
   params:
     bootswatch: readable
+
 authors:
   Michael Steinbaugh:
     href: http://steinbaugh.com
+
+reference:
+  - title: Gene Annotation Functions
+    contents:
+    - annotable
+    - starts_with("convert")
+    - ends_with("FromEnsembl")
+    - ends_with("FromGFF")
+    - parseGFFAttributes
+  - title: Name Functions
+    contents:
+    - camel
+    - dotted
+    - snake
+  - title: Math Functions
+    contents:
+    - starts_with("aggregate")
+    - matches("Ratio")
+  - title: Read Functions
+    contents:
+    - starts_with("load")
+    - starts_with("read")
+  - title: Write Functions
+    contents:
+    - starts_with("assign")
+    - starts_with("save")
+    - transmit
+    - starts_with("write")
+  - title: Plot Functions
+    contents:
+    - dynamicPlotlist
+    - ends_with("Theme")
+  - title: R Markdown Functions
+    contents:
+    - kables
+    - starts_with("markdown")
+  - title: Atomic Vector Functions
+    contents:
+    - collapseToString
+    - grepString
+    - sortUnique
+    - toStringUnique
+  - title: Sanitization Functions
+    contents:
+    - fixNA
+    - makeNames
+    - removeNA
+    - starts_with("sanitize")
+  - title: Developer Functions
+    contents:
+    - starts_with("detect")
+    - dots
+    - localOrRemoteFile
+    - methodFormals
+  - title: Assert Checks
+    desc: Readable check functions to ensure code integrity.
+    contents:
+    - starts_with("assert")
