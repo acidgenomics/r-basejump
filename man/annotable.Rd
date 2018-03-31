@@ -65,7 +65,7 @@ x <- annotable("Homo sapiens")
 glimpse(x)
 
 # Transcripts ====
-x < - annotable("Homo sapiens")
+x <- annotable("Homo sapiens", format = "transcripts")
 glimpse(x)
 }
 \seealso{
