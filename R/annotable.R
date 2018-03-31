@@ -14,7 +14,7 @@
 #' glimpse(x)
 #'
 #' # Transcripts ====
-#' x < - annotable("Homo sapiens", format = "transcripts")
+#' x <- annotable("Homo sapiens", format = "transcripts")
 #' glimpse(x)
 annotable <- function(
     organism,
