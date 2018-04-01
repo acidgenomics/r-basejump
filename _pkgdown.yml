@@ -64,7 +64,7 @@ reference:
     - localOrRemoteFile
     - methodFormals
     - multiassignAsNewEnvir
-  - title: Assert Checks
+  - title: Assert Check Functions
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")

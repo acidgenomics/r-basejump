@@ -1,4 +1,4 @@
-context("Assert Checks")
+context("Assert Check Functions")
 
 gene2symbol <- data.frame(
     "geneID" = c("gene_1", "gene_2"),
