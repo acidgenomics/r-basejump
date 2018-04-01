@@ -16,7 +16,7 @@ makeGene2symbolFromEnsembl <- function(
         organism = organism,
         format = "genes",
         genomeBuild = genomeBuild,
-        release = NULL
+        release = release
     )
     mcols(gr) %>%
         .[, c("geneID", "geneName")] %>%
