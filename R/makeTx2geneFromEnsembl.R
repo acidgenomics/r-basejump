@@ -16,7 +16,7 @@ makeTx2geneFromEnsembl <- function(
         organism = organism,
         format = "transcripts",
         genomeBuild = genomeBuild,
-        release = NULL
+        release = release
     )
     mcols(gr) %>%
         .[, c("txID", "geneID")] %>%

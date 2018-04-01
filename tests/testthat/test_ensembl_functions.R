@@ -252,7 +252,7 @@ test_that("makeGene2symbolFromEnsembl", {
         release = ensemblRelease
     )
     expect_identical(colnames(x), c("geneID", "geneName"))
-    expect_identical(nrow(x), 64661L)
+    expect_identical(nrow(x), 63970L)
 })
 
 
@@ -264,5 +264,5 @@ test_that("makeTx2geneFromEnsembl", {
         release = ensemblRelease
     )
     expect_identical(colnames(x), c("txID", "geneID"))
-    expect_identical(nrow(x), 220144L)
+    expect_identical(nrow(x), 216741L)
 })
