@@ -36,7 +36,7 @@ glimpse(xlsx)
 \itemize{
 \item \href{http://readr.tidyverse.org}{readr}.
 \item \href{http://readxl.tidyverse.org}{readxl}.
-\item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
+\item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
 
 Other Read Functions: \code{\link{loadDataAsName}},

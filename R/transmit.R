@@ -13,7 +13,7 @@
 #' @param localDir Directory where to save files locally.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local files (including suffix), if desired.
-#' @param compress Compress the files with [R.utils::gzip()] after download.
+#' @param compress gzip compress the files after download.
 #'   (`TRUE`/`FALSE`)
 #'
 #' @return Invisible `character` containing local file paths.
