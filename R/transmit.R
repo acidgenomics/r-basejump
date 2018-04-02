@@ -14,7 +14,6 @@
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local files (including suffix), if desired.
 #' @param compress gzip compress the files after download.
-#'   (`TRUE`/`FALSE`)
 #'
 #' @return Invisible `character` containing local file paths.
 #' @export
