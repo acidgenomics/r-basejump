@@ -149,6 +149,15 @@ test_that("convertTranscriptsToGenes : matrix", {
 
 
 
+# convertUCSCBuildToEnsembl ====================================================
+test_that("convertUCSCBuildToEnsembl", {
+    expect_identical(convertUCSCBuildToEnsembl("hg19"), "GRCh37")
+    expect_identical(convertUCSCBuildToEnsembl("hg38"), "GRCh38")
+    expect_identical(convertUCSCBuildToEnsembl("mm10"), "GRCm38")
+})
+
+
+
 # detectOrganism ===============================================================
 test_that("detectOrganism : Homo sapiens", {
     x <- "Homo sapiens"
