@@ -8,6 +8,7 @@
 #' [dplyr::mutate()].
 #'
 #' @name coerceToTibble
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @param from Class for which the coerce method will perform coercion.

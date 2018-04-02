@@ -15,7 +15,8 @@
 #' - *Ovis aries* (sheep)
 #'
 #' @name detectOrganism
-#' @family Gene Functions
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param unique Only return unique matching organisms. Applies to character

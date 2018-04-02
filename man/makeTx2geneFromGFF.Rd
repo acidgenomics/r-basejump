@@ -6,8 +6,6 @@
 \title{Transcript-to-Gene Mappings from GFF File}
 \usage{
 makeTx2geneFromGFF(file)
-
-makeTx2geneFromGTF(file)
 }
 \arguments{
 \item{file}{File path.}
@@ -25,7 +23,19 @@ makeTx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\%
     glimpse()
 }
 \seealso{
-Other GFF Functions: \code{\link{makeGRangesFromGFF}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{readGFF}}
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

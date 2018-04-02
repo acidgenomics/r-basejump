@@ -4,7 +4,8 @@
 #' each containing 9 columns of data, plus optional track definition lines. The
 #' GTF (General Transfer Format) is identical to GFF version 2.
 #'
-#' @family GFF Functions
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
@@ -42,5 +43,6 @@ makeTx2geneFromGFF <- function(file) {
 
 # Aliases ======================================================================
 #' @rdname makeTx2geneFromGFF
+#' @usage NULL
 #' @export
 makeTx2geneFromGFF -> makeTx2geneFromGTF

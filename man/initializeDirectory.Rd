@@ -10,7 +10,7 @@ initializeDirectory(dir)
 \item{dir}{Directory path.}
 }
 \value{
-Path.
+Directory path.
 }
 \description{
 Checks and creates a directory recursively automatically. Useful for setting
@@ -27,4 +27,7 @@ unlink("testdir", recursive = TRUE)
 Other Write Functions: \code{\link{assignAndSaveData}},
   \code{\link{saveData}}, \code{\link{transmit}},
   \code{\link{writeCounts}}
+}
+\author{
+Michael Steinbaugh
 }

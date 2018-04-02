@@ -3,6 +3,7 @@
 #' @note This checks for `data.frame` and will stop for `DataFrame` class.
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

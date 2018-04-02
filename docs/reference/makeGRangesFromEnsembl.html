@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,15 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Genomic Ranges from Ensembl — makeGRangesFromEnsembl" />
+
+<meta property="og:description" content="Quickly obtain gene and transcript annotations from
+Ensembl using
+AnnotationHub and
+ensembldb." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +43,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +60,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">basejump</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">basejump</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -70,6 +87,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -77,22 +95,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Genomic Ranges from Ensembl</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRangesFromEnsembl.R'><code>R/makeGRangesFromEnsembl.R</code></a></small>
     </div>
 
     
     <p>Quickly obtain gene and transcript annotations from
-<a href='http://www.ensembl.org/'>Ensembl</a> using
-<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p>
+<a href='http://www.ensembl.org'>Ensembl</a> using
+<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a> and
+<a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
     
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
   <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -135,9 +155,8 @@ back to version 87.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Use GRCh38 instead of hg38 for the genome build, since we're
-querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
-suported on AnnotationHub.</p>
+    <p>Use "<code>GRCh38</code>" instead of "<code>hg38</code>" for the genome build, since we're
+querying Ensembl and not UCSC.</p>
     
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad Class Definitions</h2>
 
@@ -155,16 +174,27 @@ semantically-meaningful groups:</p><ul>
 <li><p><code>other</code></p></li>
 </ul>
     
+    <h2 class="hasAnchor" id="grch-legacy-annotations"><a class="anchor" href="#grch-legacy-annotations"></a>GRCh37 Legacy Annotations</h2>
+
+    
+    <p>The <em>Homo sapiens</em> GRCh37 (release 75) build is supported by internally
+querying the
+<a href='https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75'>EnsDb.Hsapiens.v75</a>
+package.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <ul>
+    <div class='dont-index'><ul>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
-</ul>
-    <p>Other Gene Functions: <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
-  <code>detectOrganism</code>,
-  <code>stripTranscriptVersions</code></p>
+</ul></div>
+    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
+  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
+  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
+  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
+  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -194,10 +224,16 @@ semantically-meaningful groups:</p><ul>
 
       <li><a href="#broad-class-definitions">Broad Class Definitions</a></li>
 
+      <li><a href="#grch-legacy-annotations">GRCh37 Legacy Annotations</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
@@ -214,5 +250,8 @@ semantically-meaningful groups:</p><ul>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

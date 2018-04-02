@@ -13,7 +13,7 @@ coerced to \code{character} if necessary.}
 \item{unique}{\code{logical}; if \code{TRUE}, the resulting elements are unique.}
 }
 \value{
-Character vector.
+\code{character}.
 }
 \description{
 Make Syntactically Valid Names
@@ -26,6 +26,9 @@ makeNames(c(123L, "hello world"))
 }
 \seealso{
 \code{\link[base:make.names]{base::make.names()}}.
+
+Other Name Functions: \code{\link{camel}},
+  \code{\link{dotted}}, \code{\link{snake}}
 }
 \author{
 Michael Steinbaugh

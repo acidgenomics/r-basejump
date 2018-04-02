@@ -1,6 +1,7 @@
 #' Check Transcript to Gene Mapping Data
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl transcript to gene identifier

@@ -1,6 +1,7 @@
 #' Markdown Plotlist
 #'
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
@@ -37,5 +38,6 @@ markdownPlotlist <- function(
 
 # Aliases ======================================================================
 #' @rdname markdownPlotlist
+#' @usage NULL
 #' @export
 markdownPlotlist -> mdPlotlist

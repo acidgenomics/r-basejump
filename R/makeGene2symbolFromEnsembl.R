@@ -1,5 +1,8 @@
 #' Gene-to-Symbol Mappings from Ensembl
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams makeGRangesFromEnsembl
 #'
 #' @return `data.frame`.
@@ -13,7 +16,7 @@ makeGene2symbolFromEnsembl <- function(
         organism = organism,
         format = "genes",
         genomeBuild = genomeBuild,
-        release = NULL
+        release = release
     )
     mcols(gr) %>%
         .[, c("geneID", "geneName")] %>%

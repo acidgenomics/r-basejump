@@ -22,8 +22,6 @@ geometricMean(object, ...)
 
 \S4method{geometricMean}{numeric}(object, removeNA = TRUE,
   zeroPropagate = FALSE)
-
-geomean(...)
 }
 \arguments{
 \item{object}{Object.}
@@ -42,32 +40,34 @@ The geometric mean is the nth root of n products or e to the mean log of \code{x
 Useful for describing non-normal (i.e. geometric) distributions.
 }
 \details{
-Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
-\href{https://stackoverflow.com/a/25555105}{code}.
-}
-\note{
-This function should be fully zero- and \code{NA}-tolerant. This calculation
-is not particularly useful if there are elements that are <= 0 and will
-return \code{NaN}.
+This function should be fully zero- and \code{NA}-tolerant. This calculation is
+not particularly useful if there are elements that are <= 0 and will return
+\code{NaN}.
 }
 \examples{
-# integer
+# integer ====
 vec <- seq(1L, 5L, 1L)
 geometricMean(vec)
 vec2 <- vec ^ 2L
 geometricMean(vec2)
 
-# data.frame
+# data.frame ====
 df <- data.frame(vec, vec2)
 geometricMean(df)
 
-# matrix
+# matrix ====
 mat <- as.matrix(df)
 geometricMean(mat)
 }
 \seealso{
+Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
+\href{https://stackoverflow.com/a/25555105}{code}.
+
 Other Math Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}},
   \code{\link{foldChangeToLogRatio}},
   \code{\link{microplate}}
+}
+\author{
+Michael Steinbaugh
 }

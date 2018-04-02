@@ -1,6 +1,7 @@
 #' Dynamic Plotlist
 #'
 #' @family Plot Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

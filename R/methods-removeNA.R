@@ -2,6 +2,7 @@
 #'
 #' @name removeNA
 #' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

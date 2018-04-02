@@ -2,23 +2,23 @@
 % Please edit documentation in R/kables.R
 \name{kables}
 \alias{kables}
-\title{Create Tables in LaTeX, HTML, Markdown and reStructuredText}
+\title{Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText}
 \usage{
 kables(list, captions, force = FALSE)
 }
 \arguments{
-\item{list}{List of column data (e.g. \code{data.frame}, \code{matrix}).}
+\item{list}{\code{list} containing column data (e.g. \code{data.frame}, \code{matrix}).}
 
-\item{captions}{Optional character vector of table captions.}
+\item{captions}{Optional \code{character} vector of table captions.}
 
-\item{force}{Force kable output. Recommended for development and unit testing
-only.}
+\item{force}{Force knit output. \emph{Recommended for development and unit testing
+only.}}
 }
 \value{
-Knit tables, using \code{\link[knitr:kable]{knitr::kable()}}.
+Knit tables.
 }
 \description{
-Handle multiple kables in a single R Markdown chunk.
+Knit multiple tables in a single R Markdown chunk.
 }
 \examples{
 kables(
@@ -27,9 +27,15 @@ kables(
 )
 }
 \seealso{
-\href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
+\itemize{
+\item \code{\link[knitr:kable]{knitr::kable()}}.
+\item \href{https://stackoverflow.com/a/35149103/3911732}{Stack Overflow post}.
+}
 
 Other R Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownList}},
   \code{\link{markdownPlotlist}}
+}
+\author{
+Michael Steinbaugh
 }

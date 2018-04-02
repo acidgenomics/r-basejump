@@ -1,6 +1,7 @@
 #' Read YAML File
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'

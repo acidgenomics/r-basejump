@@ -1,6 +1,7 @@
 #' Assert Is Hex Color Function or NULL
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

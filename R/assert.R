@@ -2,6 +2,7 @@
 #'
 #' @name assert
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @param x Object.

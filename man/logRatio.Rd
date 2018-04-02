@@ -56,3 +56,6 @@ Other Math Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}},
   \code{\link{geometricMean}}, \code{\link{microplate}}
 }
+\author{
+Michael Steinbaugh
+}

@@ -1,4 +1,4 @@
-context("Assert Checks")
+context("Assert Check Functions")
 
 gene2symbol <- data.frame(
     "geneID" = c("gene_1", "gene_2"),
@@ -224,6 +224,15 @@ test_that("assertIsGene2symbol", {
     expect_error(
         assertIsGene2symbol(NULL),
         "is_data.frame : x"
+    )
+})
+
+test_that("assertIsGFF", {
+    x <- readGFF("mmusculus.gtf")
+    assertIsGFF(x)
+    expect_error(
+        assertIsGFF(mtcars),
+        "is_of_length : colnames\\(x\\) has length 11, not 9."
     )
 })
 

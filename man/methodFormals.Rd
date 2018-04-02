@@ -18,9 +18,16 @@ methodFormals(f, signature)
 \description{
 Access to the Formal Arguments of an S4 Method
 }
-\note{
-Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
-}
 \examples{
 methodFormals("geometricMean", "numeric")
+}
+\seealso{
+Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
+
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{multiassignAsNewEnvir}}
+}
+\author{
+Michael Steinbaugh
 }
