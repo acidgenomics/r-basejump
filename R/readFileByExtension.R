@@ -17,7 +17,7 @@
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
-#' - [Matrix::readMM()]: Read a MatrixMarket file.
+#' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
 #'
 #' @examples
 #' # Comma separated values
