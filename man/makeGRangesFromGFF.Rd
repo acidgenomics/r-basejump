@@ -6,8 +6,6 @@
 \title{Genomic Ranges from GFF File}
 \usage{
 makeGRangesFromGFF(file, format = c("genes", "transcripts"))
-
-makeGRangesFromGTF(file, format = c("genes", "transcripts"))
 }
 \arguments{
 \item{file}{File path.}
@@ -34,6 +32,19 @@ x <- makeGRangesFromGFF(file, format = "transcripts")
 summary(x)
 }
 \seealso{
-Other GFF Functions: \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{readGFF}}
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

@@ -3,6 +3,9 @@
 #' @note Memory overhead and speed is greatly improved by requiring keys.
 #' Deparsing only unique values is much faster and generally recommended.
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams general
 #' @param select Attribute to select. Supports partial matching. Defaults to
 #'   returning attributes matching both "`gene_`" and "`transcript_`".
@@ -53,7 +56,7 @@ parseGFFAttributes <- function(
 
     # Show a progress bar when parsing a large number of strings
     if (length(strings) > 10000L) {
-        fxn <- pbapply
+        fxn <- pblapply
     } else {
         fxn <- lapply
     }

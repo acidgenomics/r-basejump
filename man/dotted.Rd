@@ -98,5 +98,8 @@ dotted(list)
 }
 \seealso{
 Other Name Functions: \code{\link{camel}},
-  \code{\link{snake}}
+  \code{\link{makeNames}}, \code{\link{snake}}
+}
+\author{
+Michael Steinbaugh
 }

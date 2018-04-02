@@ -25,8 +25,9 @@ to the most recent release available.}
 }
 \description{
 Quickly obtain gene and transcript annotations from
-\href{http://www.ensembl.org/}{Ensembl} using
-\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub}.
+\href{http://www.ensembl.org}{Ensembl} using
+\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub} and
+\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 \details{
 Simply specify the desired organism, using the full latin name. For example,
@@ -39,9 +40,8 @@ the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 back to version 87.
 }
 \note{
-Use GRCh38 instead of hg38 for the genome build, since we're
-querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
-suported on AnnotationHub.
+Use "\code{GRCh38}" instead of "\code{hg38}" for the genome build, since we're
+querying Ensembl and not UCSC.
 }
 \section{Broad Class Definitions}{
 
@@ -60,6 +60,14 @@ semantically-meaningful groups:
 }
 }
 
+\section{GRCh37 Legacy Annotations}{
+
+The \emph{Homo sapiens} GRCh37 (release 75) build is supported by internally
+querying the
+\href{https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75}{EnsDb.Hsapiens.v75}
+package.
+}
+
 \examples{
 # Genes ====
 x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
@@ -75,8 +83,19 @@ summary(x)
 \item \href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 
-Other Gene Functions: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
   \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

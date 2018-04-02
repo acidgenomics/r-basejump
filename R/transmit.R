@@ -4,18 +4,18 @@
 #' FTP server. Also enables on-the-fly file renaming and compression.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
-#' @inheritParams general
 #' @inheritParams saveData
+#' @inheritParams general
 #' @param remoteDir Remote directory URL. Currently supports FTP. Works either
 #'   with or without the trailing slash.
 #' @param localDir Directory where to save files locally.
 #' @param pattern Pattern to match against remote file names.
 #' @param rename Rename the local files (including suffix), if desired.
-#' @param compress Compress the files with [R.utils::gzip()] after download.
-#'   (`TRUE`/`FALSE`)
+#' @param compress gzip compress the files after download.
 #'
-#' @return Invisible vector of local file paths.
+#' @return Invisible `character` containing local file paths.
 #' @export
 #'
 #' @examples

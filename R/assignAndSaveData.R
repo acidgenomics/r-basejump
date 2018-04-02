@@ -1,12 +1,13 @@
 #' Assign and Save Data
 #'
 #' Assigns a new object by name to the current working environment then saves
-#' the newly assigned object, specified by `dir`.
+#' the newly assigned object, specified by the "`dir`" argument.
 #'
 #' @family Write Functions
+#' @author Michael Steinbaugh
 #'
-#' @inheritParams general
 #' @inheritParams saveData
+#' @inheritParams general
 #' @param name Desired variable name.
 #' @param envir Environment to use for assignment. Defaults to [parent.frame()],
 #'   the calling environment.

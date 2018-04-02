@@ -1,8 +1,9 @@
 #' Genomic Ranges from Ensembl
 #'
 #' Quickly obtain gene and transcript annotations from
-#' [Ensembl](http://www.ensembl.org/) using
-#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
+#' [Ensembl](http://www.ensembl.org) using
+#' [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub) and
+#' [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
 #'
 #' Simply specify the desired organism, using the full latin name. For example,
 #' we can obtain human annotations with `Homo sapiens`. Optionally, specific
@@ -27,11 +28,17 @@
 #'   - `tcr` (T cell receptor)
 #'   - `other`
 #'
-#' @note Use GRCh38 instead of hg38 for the genome build, since we're
-#'   querying Ensembl and not UCSC. Unfortunately, GRCh37 is not currently
-#'   suported on AnnotationHub.
+#' @section GRCh37 Legacy Annotations:
+#' The *Homo sapiens* GRCh37 (release 75) build is supported by internally
+#' querying the
+#' [EnsDb.Hsapiens.v75](https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75)
+#' package.
 #'
-#' @family Gene Functions
+#' @note Use "`GRCh38`" instead of "`hg38`" for the genome build, since we're
+#'   querying Ensembl and not UCSC.
+#'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
 #' @param organism Full latin organism name (e.g. "`Homo sapiens`").
 #' @param format Fetch ranges as "`genes`" or "`transcripts`".

@@ -10,7 +10,7 @@ toStringUnique(object)
 \item{object}{Object.}
 }
 \value{
-string.
+\code{character} string.
 }
 \description{
 Convert to a Unique Character String
@@ -24,4 +24,7 @@ toStringUnique(vec)
 
 Other Atomic Vector Functions: \code{\link{grepString}},
   \code{\link{sortUnique}}
+}
+\author{
+Michael Steinbaugh
 }

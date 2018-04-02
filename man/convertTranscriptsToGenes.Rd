@@ -86,8 +86,19 @@ print(mat)
 rownames(mat)
 }
 \seealso{
-Other Gene Functions: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},
   \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
   \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

@@ -10,14 +10,14 @@ sanitizeRowData(object)
 \item{object}{Object.}
 }
 \value{
-\code{data.frame}, without any nested list columns.
+\code{data.frame}, without any nested \code{list} columns.
 }
 \description{
 Coerce Ensembl \code{rowData} to a \code{data.frame}, and drop any nested list columns
 (e.g. \code{entrezID}). Nested columns will fail to write to disk as CSVs.
 }
 \details{
-Supports \code{GRanges}, \code{data.frame}, and \code{DataFrame} objects.
+Supports \code{GRanges}, \code{DataFrame}, and \code{data.frame} class objects.
 }
 \examples{
 # Genes ====
@@ -40,4 +40,7 @@ sanitizeRowData(x) \%>\% glimpse()
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{fixNA}}, \code{\link{removeNA}},
   \code{\link{sanitizeSampleData}}
+}
+\author{
+Michael Steinbaugh
 }

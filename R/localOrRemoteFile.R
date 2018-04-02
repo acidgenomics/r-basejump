@@ -2,14 +2,13 @@
 #'
 #' This function is vectorized and supports mixed local and remote paths.
 #'
-#' @family Read Functions
+#' @family Developer Functions
 #'
 #' @inheritParams saveData
 #' @inheritParams general
 #'
-#' @return Named character vector containing the original basename as the name
-#'   and local file path (i.e. tempfile) as the string. Aborts on a missing
-#'   file.
+#' @return Named `character` containing the original basename as the name and
+#'   local file path (i.e. tempfile) as the string. Aborts on a missing file.
 #' @export
 #'
 #' @examples

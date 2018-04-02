@@ -16,8 +16,25 @@ makeTx2geneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
 to the most recent release available.}
 }
 \value{
-\code{data.frame}
+\code{data.frame}.
 }
 \description{
 Transcript-to-Gene Mappings from Ensembl
+}
+\seealso{
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

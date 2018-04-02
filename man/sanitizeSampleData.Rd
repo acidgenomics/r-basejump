@@ -10,12 +10,22 @@ sanitizeSampleData(object)
 \item{object}{Object.}
 }
 \value{
-\code{DataFrame}.
+\code{DataFrame} or \code{data.frame}.
 }
 \description{
 Sanitize Sample Data
 }
 \examples{
+# DataFrame ====
+from <- DataFrame(
+    "genotype" = c("wt", "ko", "wt", "ko"),
+    "batch" = c(1L, 1L, 2L, 2L),
+    row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+)
+glimpse(from)
+to <- sanitizeSampleData(from)
+glimpse(to)
+
 # data.frame ====
 from <- data.frame(
     "genotype" = c("wt", "ko", "wt", "ko"),
@@ -26,19 +36,12 @@ from <- data.frame(
 glimpse(from)
 to <- sanitizeSampleData(from)
 glimpse(to)
-
-# DataFrame ====
-from <- DataFrame(
-    "genotype" = c("wt", "ko", "wt", "ko"),
-    "batch" = c(1L, 1L, 2L, 2L),
-    row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
-)
-glimpse(from)
-to <- sanitizeSampleData(from)
-glimpse(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{fixNA}}, \code{\link{removeNA}},
   \code{\link{sanitizeRowData}}
+}
+\author{
+Michael Steinbaugh
 }

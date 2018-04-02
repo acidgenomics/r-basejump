@@ -40,3 +40,6 @@ Other Math Functions: \code{\link{aggregateFeatures}},
   \code{\link{foldChangeToLogRatio}},
   \code{\link{geometricMean}}
 }
+\author{
+Michael Steinbaugh
+}

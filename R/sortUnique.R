@@ -4,10 +4,11 @@
 #' queries, for example.
 #'
 #' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Unique vector.
+#' @return Unique `vector`.
 #' @export
 #'
 #' @examples

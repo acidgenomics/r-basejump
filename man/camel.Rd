@@ -142,5 +142,8 @@ camel(list)
 }
 \seealso{
 Other Name Functions: \code{\link{dotted}},
-  \code{\link{snake}}
+  \code{\link{makeNames}}, \code{\link{snake}}
+}
+\author{
+Michael Steinbaugh
 }

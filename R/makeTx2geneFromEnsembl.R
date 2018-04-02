@@ -1,8 +1,11 @@
 #' Transcript-to-Gene Mappings from Ensembl
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams makeGRangesFromEnsembl
 #'
-#' @return `data.frame`
+#' @return `data.frame`.
 #' @export
 makeTx2geneFromEnsembl <- function(
     organism,
@@ -13,7 +16,7 @@ makeTx2geneFromEnsembl <- function(
         organism = organism,
         format = "transcripts",
         genomeBuild = genomeBuild,
-        release = NULL
+        release = release
     )
     mcols(gr) %>%
         .[, c("txID", "geneID")] %>%

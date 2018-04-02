@@ -5,18 +5,19 @@
 #' and `.rownames` files.
 #'
 #' @family Read Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param makeNames Make syntactically valid names. Supports **`camel`**,
 #'   `dotted`, `snake`, or `upperCamel`. This is always enforced.
 #'
-#' @return `tibble` by default, or a sparse matrix for `.mtx` files.
+#' @return `tbl_df` by default, or a sparse matrix for `.mtx` files.
 #' @export
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
-#' - [Matrix::readMM()]: Read a MatrixMarket file.
+#' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
 #'
 #' @examples
 #' # Comma separated values

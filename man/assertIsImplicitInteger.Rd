@@ -64,3 +64,6 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
 }
+\author{
+Michael Steinbaugh
+}

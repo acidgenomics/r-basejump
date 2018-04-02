@@ -2,15 +2,17 @@
 #'
 #' @name markdownHeader
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
 #' @param object `scalar`, which will be coerced to `character`.
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or
-#'   inside an RMarkdown chunk with `results="asis"` enabled.
+#'   inside an RMarkdown chunk with '`results="asis"`' enabled.
 #'
-#' @return Markdown formatted code as [knitr::asis_output] or
-#'   [base::writeLines()].
+#' @return
+#' - "`asis = TRUE`": [knitr::asis_output()].
+#' - "`asis = FALSE`": [writeLines()].
 #' @export
 #'
 #' @examples
@@ -57,5 +59,6 @@ markdownHeader <- function(
 
 # Aliases ======================================================================
 #' @rdname markdownHeader
+#' @usage NULL
 #' @export
 markdownHeader -> mdHeader

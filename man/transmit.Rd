@@ -17,11 +17,10 @@ with or without the trailing slash.}
 
 \item{rename}{Rename the local files (including suffix), if desired.}
 
-\item{compress}{Compress the files with \code{\link[R.utils:gzip]{R.utils::gzip()}} after download.
-(\code{TRUE}/\code{FALSE})}
+\item{compress}{gzip compress the files after download.}
 }
 \value{
-Invisible vector of local file paths.
+Invisible \code{character} containing local file paths.
 }
 \description{
 Utility function that supports easy file matching and download from a remote
@@ -44,4 +43,7 @@ unlink("ensembl_readme.txt.gz")
 Other Write Functions: \code{\link{assignAndSaveData}},
   \code{\link{initializeDirectory}},
   \code{\link{saveData}}, \code{\link{writeCounts}}
+}
+\author{
+Michael Steinbaugh
 }

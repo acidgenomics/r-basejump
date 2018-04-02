@@ -3,6 +3,7 @@
 #' Markdown supports header levels 1-7 (`<H1>`-`<H7>`).
 #'
 #' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export

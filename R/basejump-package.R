@@ -2,6 +2,8 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
+#' @keywords internal
+#'
 #' @import BiocGenerics S4Vectors datasets methods
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate

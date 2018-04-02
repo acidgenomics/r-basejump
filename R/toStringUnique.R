@@ -1,12 +1,13 @@
 #' Convert to a Unique Character String
 #'
 #' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
 #' @seealso [base::toString()].
 #'
-#' @return string.
+#' @return `character` string.
 #' @export
 #'
 #' @examples

@@ -1,5 +1,8 @@
 #' Convert UCSC Build to Ensembl
 #'
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
+#'
 #' @inheritParams general
 #'
 #' @return Character vector containing Ensembl genome build names.

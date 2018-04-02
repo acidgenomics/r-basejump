@@ -16,7 +16,7 @@ readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
 \item{...}{Additional arguments.}
 }
 \value{
-\code{tibble} by default, or a sparse matrix for \code{.mtx} files.
+\code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
 Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}
@@ -36,10 +36,13 @@ glimpse(xlsx)
 \itemize{
 \item \href{http://readr.tidyverse.org}{readr}.
 \item \href{http://readxl.tidyverse.org}{readxl}.
-\item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
+\item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
 
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{localOrRemoteFile}}, \code{\link{readYAML}}
+  \code{\link{readGFF}}, \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

@@ -58,3 +58,6 @@ Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
+\author{
+Michael Steinbaugh
+}

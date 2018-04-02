@@ -1,18 +1,21 @@
-#' Create Tables in LaTeX, HTML, Markdown and reStructuredText
+#' Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText
 #'
-#' Handle multiple kables in a single R Markdown chunk.
+#' Knit multiple tables in a single R Markdown chunk.
 #'
 #' @family R Markdown Functions
+#' @author Michael Steinbaugh
 #'
-#' @param list List of column data (e.g. `data.frame`, `matrix`).
-#' @param captions Optional character vector of table captions.
-#' @param force Force kable output. Recommended for development and unit testing
-#'   only.
+#' @param list `list` containing column data (e.g. `data.frame`, `matrix`).
+#' @param captions Optional `character` vector of table captions.
+#' @param force Force knit output. *Recommended for development and unit testing
+#'   only.*
 #'
-#' @return Knit tables, using [knitr::kable()].
+#' @return Knit tables.
 #' @export
 #'
-#' @seealso [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
+#' @seealso
+#' - [knitr::kable()].
+#' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
 #' kables(

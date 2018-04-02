@@ -9,13 +9,13 @@ dots(..., character = FALSE)
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{character}{Return dots (\code{...}) as character vector.}
+\item{character}{Return dots (\code{...}) as \code{character} vector.}
 }
 \value{
 \itemize{
-\item For \code{character = FALSE}: \code{list} containing objects as names. Can return
+\item For "\code{character = FALSE}": \code{list} containing objects as names. Can return
 object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
-\item For \code{character = TRUE}: Character vector.
+\item For "\code{character = TRUE}": \code{character} containing the dot names.
 }
 }
 \description{
@@ -30,19 +30,18 @@ dots(mtcars, starwars, character = TRUE)
 }
 \seealso{
 \itemize{
-\item \code{help("dotsMethods", "methods")}
-\item \code{browseVignettes("rlang")}.
-\item \href{http://rlang.tidyverse.org}{rlang} functions:
-\code{\link[rlang:quos]{rlang::quos()}},
-\code{\link[rlang:dots_definitions]{rlang::dots_definitions()}},
-\code{\link[rlang:dots_values]{rlang::dots_values()}},
-\code{\link[rlang:eval_tidy]{rlang::eval_tidy()}},
-\code{\link[rlang:eval_bare]{rlang::eval_bare()}}.
+\item \code{help("dotsMethods", "methods")}.
 \item \href{http://tidyverse.org}{tidyverse} code:
+\href{http://rlang.tidyverse.org}{rlang}
 \href{https://goo.gl/fhAuak}{dplyr utils},
-\href{https://goo.gl/bM5TrP}{devtools infrastructure}
+\href{https://goo.gl/bM5TrP}{devtools infrastructure}.
 }
 
 Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{methodFormals}},
   \code{\link{multiassignAsNewEnvir}}
+}
+\author{
+Michael Steinbaugh
 }

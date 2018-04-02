@@ -6,11 +6,9 @@
 \title{Markdown Plotlist}
 \usage{
 markdownPlotlist(plotlist, headerLevel = 2L)
-
-mdPlotlist(plotlist, headerLevel = 2L)
 }
 \arguments{
-\item{plotlist}{List containing \code{ggplot} objects.}
+\item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{headerLevel}{Markdown header level.}
 }
@@ -29,4 +27,7 @@ markdownPlotlist(plotlist)
 
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownList}}
+}
+\author{
+Michael Steinbaugh
 }

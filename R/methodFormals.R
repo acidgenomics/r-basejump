@@ -1,11 +1,14 @@
 #' Access to the Formal Arguments of an S4 Method
 #'
-#' @inheritParams methods::getMethod
+#' @family Developer Functions
+#' @author Michael Steinbaugh
 #'
-#' @note Modified version of [John Chambers' code](https://goo.gl/ymX571).
+#' @inheritParams methods::getMethod
 #'
 #' @return `list` of formal arguments.
 #' @export
+#'
+#' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'
 #' @examples
 #' methodFormals("geometricMean", "numeric")

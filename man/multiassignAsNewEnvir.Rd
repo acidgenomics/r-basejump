@@ -9,12 +9,12 @@ multiassignAsNewEnvir(..., envirName, parentEnvir = parent.frame())
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{envirName}{New environment name (string).}
+\item{envirName}{New environment name (\code{string}).}
 
-\item{parentEnvir}{Parent environment of new environment.}
+\item{parentEnvir}{Parent \code{environment} where to assign the new environment.}
 }
 \value{
-Character vector of assigned objects in the new environment.
+\code{character} of object names in the new \code{environment}.
 }
 \description{
 Assign Multiple Objects as a New Environment
@@ -24,5 +24,9 @@ multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}
+  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{methodFormals}}
+}
+\author{
+Michael Steinbaugh
 }

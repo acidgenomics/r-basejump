@@ -2,6 +2,7 @@
 #'
 #' @name collapseToString
 #' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param sep Separator. Defaults to comma.
@@ -10,8 +11,8 @@
 #' @param removeNA Remove NA values.
 #'
 #' @return
-#' - For vector: String.
-#' - For column data: Single row.
+#' - For `atomic` vector: `character` string.
+#' - For column data: Object collapsed to a single row.
 #'
 #' @seealso
 #' - [base::toString()].
