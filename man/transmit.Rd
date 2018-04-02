@@ -17,8 +17,7 @@ with or without the trailing slash.}
 
 \item{rename}{Rename the local files (including suffix), if desired.}
 
-\item{compress}{gzip compress the files after download.
-(\code{TRUE}/\code{FALSE})}
+\item{compress}{gzip compress the files after download.}
 }
 \value{
 Invisible \code{character} containing local file paths.
