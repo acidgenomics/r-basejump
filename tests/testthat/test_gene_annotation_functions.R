@@ -534,7 +534,7 @@ test_that("makeTx2geneFromGFF : Mus musculus", {
 
 
 # stripTranscriptVersions ======================================================
-test_that("stripTranscriptVersions", {
+test_that("stripTranscriptVersions : character", {
     expect_identical(
         stripTranscriptVersions("ENSMUST00000119854.7"),
         "ENSMUST00000119854"
@@ -548,5 +548,25 @@ test_that("stripTranscriptVersions", {
     expect_identical(
         stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
         c("ENSMUST00000119854", "EGFP.1")
+    )
+})
+
+test_that("stripTranscriptVersions : matrix", {
+    x <- mat
+    rownames(x) <- c(
+        "ENSMUST00000000001.1",
+        "ENSMUST00000000001.2",
+        "ENSMUST00000000002.1",
+        "EGFP.1"
+    )
+    y <- stripTranscriptVersions(x)
+    expect_identical(
+        rownames(y),
+        c(
+            "ENSMUST00000000001",
+            "ENSMUST00000000001",  # allowed in matrix
+            "ENSMUST00000000002",
+            "EGFP.1"
+        )
     )
 })
