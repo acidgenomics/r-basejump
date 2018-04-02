@@ -428,9 +428,11 @@ test_that("makeGRangesFromEnsembl : Multiple organisms", {
 
 
 # makeGRangesFromGFF ===========================================================
-test_that("makeGRangesFromGFF", {
+test_that("makeGRangesFromGFF : genes", {
     # Expected warning about `phase` metadata column
-    x <- suppressWarnings(makeGRangesFromGFF("mmusculus.gtf"))
+    x <- suppressWarnings(
+        makeGRangesFromGFF("mmusculus.gtf", format = "genes")
+    )
     expect_identical(length(x), 17L)
     expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
     expect_identical(
@@ -441,6 +443,33 @@ test_that("makeGRangesFromGFF", {
             "geneBiotype",
             "geneSource",
             "geneVersion",
+            "broadClass"
+        )
+    )
+})
+
+
+test_that("makeGRangesFromGFF : transcripts", {
+    # Expected warning about `phase` metadata column
+    x <- suppressWarnings(
+        makeGRangesFromGFF("mmusculus.gtf", format = "transcripts")
+    )
+    expect_identical(length(x), 20L)
+    expect_identical(names(x)[[1L]], "ENSMUST00000070533")
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "txID",
+            "txName",
+            "txBiotype",
+            "geneID",
+            "geneName",
+            "geneBiotype",
+            "geneSource",
+            "geneVersion",
+            "txSource",
+            "txSupportLevel",
+            "txVersion",
             "broadClass"
         )
     )
