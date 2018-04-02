@@ -39,6 +39,19 @@ test_that("dots", {
 
 
 
+# methodFormals ================================================================
+test_that("methodFormals", {
+    expect_identical(
+        methodFormals(f = "camel", signature = "character"),
+        pairlist(
+            "object" = substitute(),
+            "strict" = FALSE
+        )
+    )
+})
+
+
+
 # multiassignAsNewEnvir ========================================================
 test_that("multiassignAsNewEnvir", {
     x <- multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
