@@ -19,13 +19,18 @@ Convert UCSC Build to Ensembl
 convertUCSCBuildToEnsembl(c("hg19", "hg38"))
 }
 \seealso{
-Other Gene Annotation Functions: \code{\link{makeGRangesFromEnsembl}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{detectOrganism}},
+  \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
   \code{\link{makeTx2geneFromGFF}},
-  \code{\link{parseGFFAttributes}}
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
 }
 \author{
 Michael Steinbaugh

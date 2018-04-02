@@ -15,7 +15,7 @@
 #' - *Ovis aries* (sheep)
 #'
 #' @name detectOrganism
-#' @family Gene Functions
+#' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
