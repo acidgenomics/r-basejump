@@ -276,6 +276,18 @@ test_that("detectOrganism : tbl_df", {
 
 
 
+# makeGene2symbolFromEnsembl ===================================================
+test_that("makeGene2symbolFromEnsembl", {
+    x <- makeGene2symbolFromEnsembl(
+        organism = "Homo sapiens",
+        release = ensemblRelease
+    )
+    expect_identical(colnames(x), c("geneID", "geneName"))
+    expect_identical(nrow(x), 63970L)
+})
+
+
+
 # makeGene2symbolFromGFF =======================================================
 test_that("makeGene2symbolFromGFF : Mus musculus", {
     x <- makeGene2symbolFromGFF("mmusculus.gtf")
@@ -415,14 +427,23 @@ test_that("makeGRangesFromEnsembl : Multiple organisms", {
 
 
 
-# makeGene2symbolFromEnsembl ===================================================
-test_that("makeGene2symbolFromEnsembl", {
-    x <- makeGene2symbolFromEnsembl(
-        organism = "Homo sapiens",
-        release = ensemblRelease
+# makeGRangesFromGFF ===========================================================
+test_that("makeGRangesFromGFF", {
+    # Expected warning about `phase` metadata column
+    x <- suppressWarnings(makeGRangesFromGFF("mmusculus.gtf"))
+    expect_identical(length(x), 17L)
+    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "geneID",
+            "geneName",
+            "geneBiotype",
+            "geneSource",
+            "geneVersion",
+            "broadClass"
+        )
     )
-    expect_identical(colnames(x), c("geneID", "geneName"))
-    expect_identical(nrow(x), 63970L)
 })
 
 
