@@ -10,6 +10,7 @@ reference:
   - title: Gene Annotation Functions
     contents:
     - annotable
+    - broadClass
     - starts_with("convert")
     - ends_with("FromEnsembl")
     - ends_with("FromGFF")
