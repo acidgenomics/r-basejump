@@ -1,5 +1,53 @@
-.sanitizeAnnotationCols <- function(object) {
-    stopifnot(is(object, "GRanges"))
+#' Detect ID Column
+#'
+#' Utility function for automatically setting rownames. Note that the transcript
+#' ID column takes priority over the gene ID column.
+#'
+#' @keywords internal
+#' @noRd
+.detectIDCol <- function(object) {
+    object <- as.data.frame(object)
+    assert_are_intersecting_sets(
+        x = c("txID", "geneID"),
+        y = colnames(object)
+    )
+    txCol <- match("txID", colnames(object)) %>%
+        na.omit()
+    geneCol <- match("geneID", colnames(object)) %>%
+        na.omit()
+    if (length(txCol)) {
+        index <- txCol[[1L]]
+    } else {
+        index <- geneCol[[1L]]
+    }
+    colnames(object)[[index]]
+}
+
+
+
+.makeGRanges <- function(object) {
+    assert_is_all_of(object, "GRanges")
+    assert_has_names(object)
+
+    # Ensure GRanges is sorted by names
+    object <- object[sort(names(object))]
+
+    # Standardize the metadata columns
+    object <- .standardizeGRangesMetadata(object)
+    assert_are_identical(names(object), mcols(object)[[1L]])
+
+    # Add broad class definitions
+    mcols(object)[["broadClass"]] <- broadClass(object)
+
+    assert_is_all_of(object, "GRanges")
+    object
+}
+
+
+
+.standardizeGRangesMetadata <- function(object) {
+    assert_is_all_of(object, "GRanges")
+    inform("Standardizing the metadata columns")
     data <- mcols(object)
 
     # Rename the columns
@@ -26,14 +74,6 @@
     if (is.character(data[["seqCoordSystem"]])) {
         inform("Setting seqCoordSystem as factor")
         data[["seqCoordSystem"]] <- as.factor(data[["seqCoordSystem"]])
-    }
-    if (is.character(data[["seqName"]])) {
-        inform("Setting seqName as factor")
-        data[["seqName"]] <- as.factor(data[["seqName"]])
-    }
-    if (is.integer(data[["seqStrand"]])) {
-        inform("Setting seqStrand as factor")
-        data[["seqStrand"]] <- as.factor(data[["seqStrand"]])
     }
     if (is.character(data[["txBiotype"]])) {
         inform("Setting txBiotype as factor")
