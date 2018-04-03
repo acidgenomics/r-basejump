@@ -36,9 +36,9 @@ back to version 87.
 }
 \section{Broad Class Definitions}{
 
-For gene and transcript tables, when \code{broadClass = TRUE}, a \code{broadClass}
-column is added, which generalizes the gene types into a smaller number of
-semantically-meaningful groups:
+For gene and transcript annotations, a \code{broadClass} column is added, which
+generalizes the gene types into a smaller number of semantically-meaningful
+groups:
 \itemize{
 \item \code{coding}
 \item \code{noncoding}
@@ -69,7 +69,8 @@ x <- annotable("Homo sapiens", format = "transcripts")
 glimpse(x)
 }
 \seealso{
-Other Gene Annotation Functions: \code{\link{convertGenesToSymbols}},
+Other Gene Annotation Functions: \code{\link{broadClass}},
+  \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},

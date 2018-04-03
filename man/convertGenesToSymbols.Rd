@@ -83,6 +83,7 @@ rownames(mat)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},
