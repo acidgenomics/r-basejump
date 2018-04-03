@@ -1,3 +1,5 @@
+# nocov start
+
 globalVariables("biocLite")
 
 .biocLite <- function(pkgs, ...) {
@@ -16,3 +18,5 @@ globalVariables("biocLite")
     }
     require(pkgs, character.only = TRUE)
 }
+
+# nocov end
