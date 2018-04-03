@@ -4,6 +4,7 @@
 #' @family Gene Annotation Functions
 #' @author Rory Kirchner and Michael Steinbaugh
 #'
+#' @inheritParams general
 #' @param object Object that can be coerced to `data.frame`, containing gene or
 #'   transcript annotations.
 #'
