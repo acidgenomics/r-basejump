@@ -172,9 +172,18 @@ to the most recent release available.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Gene Functions: <code><a href='annotable.html'>annotable</a></code>,
+    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
+  <code>broadClass</code>,
   <code>convertGenesToSymbols</code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code>detectOrganism</code>,
+  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
+  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
+  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
+  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
+  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
+  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
@@ -189,7 +198,7 @@ to the most recent release available.</p></td>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "90"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 
 #&gt; "ENSMUSG00000000001" "ENSMUSG00000000003" "ENSMUSG00000000003" </div><div class='input'>
 <span class='co'># matrix ====</span>
 <span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
@@ -209,7 +218,7 @@ to the most recent release available.</p></td>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "90"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;                    sample_1 sample_2
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;                    sample_1 sample_2
 #&gt; ENSMUSG00000000001        1        2
 #&gt; ENSMUSG00000000003        3        4
 #&gt; ENSMUSG00000000003        5        6</div><div class='input'><span class='fu'>rownames</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;   ENSMUST00000000001   ENSMUST00000000003   ENSMUST00000114041 

@@ -161,9 +161,9 @@ querying Ensembl and not UCSC.</p>
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad Class Definitions</h2>
 
     
-    <p>For gene and transcript tables, when <code>broadClass = TRUE</code>, a <code>broadClass</code>
-column is added, which generalizes the gene types into a smaller number of
-semantically-meaningful groups:</p><ul>
+    <p>For gene and transcript annotations, a <code>broadClass</code> column is added, which
+generalizes the gene types into a smaller number of semantically-meaningful
+groups:</p><ul>
 <li><p><code>coding</code></p></li>
 <li><p><code>noncoding</code></p></li>
 <li><p><code>pseudo</code></p></li>
@@ -188,13 +188,19 @@ package.</p>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
+  <code>broadClass</code>,
+  <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+  <code>detectOrganism</code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
-  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code></p></div>
+  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -203,13 +209,13 @@ package.</p>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "90"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 64661 ranges and 7 metadata columns"</div><div class='input'>
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 64661 ranges and 7 metadata columns"</div><div class='input'>
 <span class='co'># Transcripts ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH57757"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "90"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 220144 ranges and 13 metadata columns"</div></pre>
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 220144 ranges and 13 metadata columns"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
