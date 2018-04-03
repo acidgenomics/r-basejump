@@ -184,6 +184,19 @@ sanitizeAnnotable <- function(...) {
 
 #' @rdname deprecated
 #' @export
+sanitizeColData <- function(...) {
+    .Deprecated("sanitizeSampleData")
+    sanitizeSampleData(...)
+}
+
+#' @rdname deprecated
+#' @export
+tx2gene <- function(...) {
+    .Defunct("tx2geneFromGFF or bcbioBase::readTx2gene")
+}
+
+#' @rdname deprecated
+#' @export
 tx2geneFromGFF <- function(...) {
     .Deprecated("makeTx2geneFromGFF")
     makeTx2geneFromGFF(...)
