@@ -15,9 +15,9 @@
 #' back to version 87.
 #'
 #' @section Broad Class Definitions:
-#' For gene and transcript tables, when `broadClass = TRUE`, a `broadClass`
-#' column is added, which generalizes the gene types into a smaller number of
-#' semantically-meaningful groups:
+#' For gene and transcript annotations, a `broadClass` column is added, which
+#' generalizes the gene types into a smaller number of semantically-meaningful
+#' groups:
 #'
 #'   - `coding`
 #'   - `noncoding`
@@ -259,12 +259,7 @@ makeGRangesFromEnsembl <- function(
     ))
     assert_are_identical(.packages(), userAttached)
 
-    # Return ===================================================================
-    gr <- .sanitizeAnnotationCols(gr)
-    gr <- .addBroadClassCol(gr)
-
-    assert_has_names(gr)
-    stopifnot(is(gr, "GRanges"))
+    gr <- .makeGRanges(gr)
 
     # Include the EnsDB metadata inside a list, if desired
     if (isTRUE(metadata)) {

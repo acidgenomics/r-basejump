@@ -112,19 +112,7 @@ makeGRangesFromGFF <- function(
         )
     }
 
-    assert_are_identical(names(gr), sort(names(gr)))
-    assert_are_identical(names(gr), mcols(gr)[[1L]])
-
-    gr <- .sanitizeAnnotationCols(gr)
-    gr <- .addBroadClassCol(gr)
-
-    # Ensure GRanges is sorted by names
-    gr <- gr[sort(names(gr))]
-
-    assert_has_names(gr)
-    stopifnot(is(gr, "GRanges"))
-
-    gr
+    .makeGRanges(gr)
 }
 
 
