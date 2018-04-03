@@ -20,6 +20,8 @@ broadClass(object, ...)
 \arguments{
 \item{object}{Object that can be coerced to \code{data.frame}, containing gene or
 transcript annotations.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Named \code{factor} containing broad class definitions.
