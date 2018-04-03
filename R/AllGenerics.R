@@ -14,6 +14,14 @@ setGeneric("aggregateReplicates", function(object, ...) {
 
 
 
+#' @rdname broadClass
+#' @export
+setGeneric("broadClass", function(object, ...) {
+    standardGeneric("broadClass")
+})
+
+
+
 #' @rdname camel
 #' @export
 setGeneric("camel", function(object, ...) {
