@@ -37,11 +37,6 @@
 
 
 globalVariables(".")
-ensemblReturn <- c(
-    "GRanges",
-    "DataFrame",
-    "data.frame"
-)
 annotationCols <- c(
     "txID",
     "txName",
