@@ -29,13 +29,12 @@ Broad Class Definitions
 }
 \examples{
 # GRanges ====
-# Ensembl
 x <- makeGRangesFromEnsembl("Homo sapiens")
-broadClass(x)
+head(broadClass(x))
 
 # data.frame ====
 x <- annotable("Homo sapiens")
-broadClass(x)
+head(broadClass(x))
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
