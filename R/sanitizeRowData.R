@@ -30,7 +30,6 @@
 #' )
 #' sanitizeRowData(x) %>% glimpse()
 sanitizeRowData <- function(object) {
-    assert_is_any_of(object, ensemblReturn)
     data <- as.data.frame(object)
 
     # Enforce camel case
