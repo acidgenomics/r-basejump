@@ -24,6 +24,8 @@
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGTF}
 \alias{sanitizeAnnotable}
+\alias{sanitizeColData}
+\alias{tx2gene}
 \alias{tx2geneFromGFF}
 \alias{tx2geneFromGTF}
 \title{Defunct or Deprecated Functions}
@@ -71,6 +73,10 @@ gene2symbolFromGFF(...)
 gene2symbolFromGTF(...)
 
 sanitizeAnnotable(...)
+
+sanitizeColData(...)
+
+tx2gene(...)
 
 tx2geneFromGFF(...)
 
