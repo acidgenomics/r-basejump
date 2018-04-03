@@ -81,6 +81,7 @@ detectOrganism(tibble)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
