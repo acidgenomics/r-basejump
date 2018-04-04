@@ -64,7 +64,6 @@ Imports:
     utils,
     yaml
 Suggests:
-    BiocStyle,
     devtools (>= 1.13),
     EnsDb.Hsapiens.v75,
     lintr (>= 1.0),
@@ -74,11 +73,7 @@ Suggests:
     tidyverse (>= 1.2)
 biocViews:
     DataImport,
-    DifferentialExpression,
-    GeneExpression,
-    ReportWriting,
-    RNASeq,
-    Visualization
+    Infrastructure
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
