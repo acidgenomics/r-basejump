@@ -1,10 +1,6 @@
-template:
-  params:
-    bootswatch: readable
-
 authors:
   Michael Steinbaugh:
-    href: http://steinbaugh.com
+    href: /
 
 reference:
   - title: Gene Annotation Functions
