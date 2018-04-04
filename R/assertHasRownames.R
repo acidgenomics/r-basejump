@@ -1,5 +1,3 @@
-# TODO Use assert engine
-
 #' Assert Has Rownames
 #'
 #' A stricter alternative to the assertive version that works properply with
@@ -8,33 +6,24 @@
 #' @note `tibble::has_rownames()` works better than `assertive::has_rownames()`
 #'   for data frames and tibbles.
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
 #' data <- data.frame(
-#'     sample1 = c(1L, 2L),
-#'     sample2 = c(3L, 4L),
-#'     row.names = c("gene1", "gene2"),
-#'     stringsAsFactors = FALSE)
-#' assertHasRownames(data)
-#'
-#' # Now set the rownames as NULL
-#' rownames(data) <- NULL
-#' tryCatch(
-#'     assertHasRownames(data),
-#'     error = function(e) e)
-#'
-#' tibble <- tibble(
-#'     sample1 = c(1L, 2L),
-#'     sample2 = c(3L, 4L)
+#'     "sample_1" = c(1L, 2L),
+#'     "sample_2" = c(3L, 4L),
+#'     row.names = c("gene_1", "gene_2"),
+#'     stringsAsFactors = FALSE
 #' )
-#' tryCatch(
-#'     assertHasRownames(tibble),
-#'     error = function(e) e)
-assertHasRownames <- function(x, severity = "stop") {
+#' assertHasRownames(data)
+assertHasRownames <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     stopifnot(hasRownames(x))
     assert_are_disjoint_sets(
         x = rownames(x),

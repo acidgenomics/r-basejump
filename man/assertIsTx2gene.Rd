@@ -4,12 +4,12 @@
 \alias{assertIsTx2gene}
 \title{Check Transcript to Gene Mapping Data}
 \usage{
-assertIsTx2gene(x, severity = "stop")
+assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
-\item{x}{\link{data.frame} containing Ensembl transcript to gene identifier
-mappings. Must be structured as a two column \link{data.frame} with "enstxp" and
-"ensgene" columns.}
+\item{x}{\code{data.frame} containing Ensembl transcript to gene identifier
+mappings. Must be structured as a two column \code{data.frame} with "txID" and
+"geneID" columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -21,17 +21,16 @@ Abort on mismatch.
 Check Transcript to Gene Mapping Data
 }
 \examples{
-# Success
-tx2gene <- tx2gene("Homo sapiens")
-assertIsTx2gene(tx2gene)
-
-# Failure
-tryCatch(
-    assertIsTx2gene(mtcars),
-    error = function(e) e)
+x <- data.frame(
+    "txID" = "ENST00000000233",
+    "geneID" = "ENSG00000004059"
+)
+assertIsTx2gene(x)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -40,15 +39,18 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

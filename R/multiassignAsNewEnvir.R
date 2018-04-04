@@ -1,14 +1,14 @@
 #' Assign Multiple Objects as a New Environment
 #'
-#' @family Object Assignment Utilities
+#' @family Developer Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
+#' @param envirName New environment name (`string`).
+#' @param parentEnvir Parent `environment` where to assign the new environment.
 #'
-#' @param envirName New environment name (string).
-#' @param parentEnvir Parent environment of new environment.
-#'
-#' @return Character vector of assigned objects in the new environment.
+#' @return `character` of object names in the new `environment`.
 #' @export
 #'
 #' @examples
@@ -16,8 +16,8 @@
 multiassignAsNewEnvir <- function(
     ...,
     envirName,
-    parentEnvir = parent.frame(),
-    quiet = FALSE) {
+    parentEnvir = parent.frame()
+) {
     dots <- dots(...)
     assert_is_list(dots)
     dotsNames <- dots(..., character = TRUE)
@@ -30,12 +30,8 @@ multiassignAsNewEnvir <- function(
         assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
     }))
 
-    if (!isTRUE(quiet)) {
-        inform(paste("Assigning", toString(dotsNames), "as", envirName))
-    }
-
+    inform(paste("Assigning", toString(dotsNames), "as", envirName))
     assign(envirName, value = envir, envir = parentEnvir)
 
-    # Silently return a list of the objects in the new environment
     invisible(objects(envir))
 }

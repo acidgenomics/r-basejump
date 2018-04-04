@@ -1,39 +1,36 @@
 #' Snake Case
 #'
-#' @rdname snake
 #' @name snake
+#' @family Name Functions
+#' @author Michael Steinbaugh
 #'
 #' @inherit dotted
 #'
 #' @examples
-#' load(system.file(
-#'     file.path("extdata", "makeNames.rda"),
-#'     package = "basejump"
-#' ))
+#' load(system.file("extdata/mn.rda", package = "basejump"))
 #'
-#' # Character vector
-#' character <- makeNames$character
+#' # character ====
+#' character <- mn$character
 #' print(character)
 #' snake(character)
 #'
-#' # Named character vector
-#' namedCharacter <- makeNames$namedCharacter
+#' namedCharacter <- mn$namedCharacter
 #' print(namedCharacter)
 #' snake(namedCharacter)
 #'
-#' # Factor
-#' factor <- makeNames$factor
+#' # factor ====
+#' factor <- mn$factor
 #' print(factor)
 #' snake(factor)
 #'
-#' # data.frame
-#' dataFrame <- makeNames$dataFrame
+#' # data.frame ====
+#' dataFrame <- mn$dataFrame
 #' print(dataFrame)
 #' snake(dataFrame, rownames = TRUE)
 #' snake(dataFrame, rownames = FALSE)
 #'
-#' # Named list
-#' list <- makeNames$list
+#' # list ====
+#' list <- mn$list
 #' print(list)
 #' snake(list)
 NULL
@@ -50,10 +47,11 @@ NULL
 
 
 
-.snake.ANY <- function(
+.snake.ANY <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
         .snake.dim(object, rownames = rownames, colnames = colnames)
@@ -69,7 +67,8 @@ NULL
 .snake.dim <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
     if (isTRUE(rownames) && hasRownames(object)) {
@@ -78,6 +77,23 @@ NULL
     if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .snake(colnames(object))
     }
+    object
+}
+
+
+
+.snake.factor <- function(object) {  # nolint
+    object %>%
+        .snake.vector() %>%
+        factor()
+}
+
+
+
+.snake.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- snake(colnames)
+    colnames(mcols(object)) <- colnames
     object
 }
 
@@ -115,7 +131,8 @@ NULL
 setMethod(
     "snake",
     signature("ANY"),
-    .snake.ANY)
+    .snake.ANY
+)
 
 
 
@@ -124,7 +141,8 @@ setMethod(
 setMethod(
     "snake",
     signature("character"),
-    .snake.vector)
+    .snake.vector
+)
 
 
 
@@ -133,7 +151,8 @@ setMethod(
 setMethod(
     "snake",
     signature("data.frame"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -142,7 +161,8 @@ setMethod(
 setMethod(
     "snake",
     signature("DataFrame"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -151,7 +171,18 @@ setMethod(
 setMethod(
     "snake",
     signature("factor"),
-    .snake.vector)
+    .snake.factor
+)
+
+
+
+#' @rdname snake
+#' @export
+setMethod(
+    "snake",
+    signature("GRanges"),
+    .snake.mcols
+)
 
 
 
@@ -160,7 +191,8 @@ setMethod(
 setMethod(
     "snake",
     signature("list"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -169,7 +201,8 @@ setMethod(
 setMethod(
     "snake",
     signature("List"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -178,7 +211,8 @@ setMethod(
 setMethod(
     "snake",
     signature("matrix"),
-    .snake.dim)
+    .snake.dim
+)
 
 
 
@@ -187,7 +221,8 @@ setMethod(
 setMethod(
     "snake",
     signature("SimpleList"),
-    .snake.names)
+    .snake.names
+)
 
 
 
@@ -196,4 +231,5 @@ setMethod(
 setMethod(
     "snake",
     signature("tbl_df"),
-    .snake.tibble)
+    .snake.tibble
+)

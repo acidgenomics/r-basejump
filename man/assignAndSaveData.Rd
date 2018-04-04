@@ -4,8 +4,8 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
-  envir = parent.frame(), quiet = FALSE)
+assignAndSaveData(name, object, dir = ".", compress = TRUE,
+  envir = parent.frame())
 }
 \arguments{
 \item{name}{Desired variable name.}
@@ -23,24 +23,31 @@ assignAndSaveData(name, object, dir = getwd(), compress = TRUE,
 
 \item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
 the calling environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Silent named character vector of file path.
+Silent named \code{character} containing file paths.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
-the newly assigned object, specified by \code{dir}.
+the newly assigned object, specified by the "\code{dir}" argument.
 }
 \note{
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
 }
 \examples{
 assignAndSaveData(name = "test", object = mtcars)
+exists("test", inherits = FALSE)
+file.exists("test.rda")
 
+# Clean up
+rm(test)
 unlink("test.rda")
 }
 \seealso{
-Other Object Assignment Utilities: \code{\link{multiassignAsNewEnvir}}
+Other Write Functions: \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
+}
+\author{
+Michael Steinbaugh
 }

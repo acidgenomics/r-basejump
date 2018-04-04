@@ -6,14 +6,13 @@
 \title{Midnight Theme}
 \usage{
 midnightTheme()
-
-theme_midnight()
 }
 \value{
-ggplot theme.
+\code{theme}.
 }
 \description{
-Blackout palette that sets the plot background as black, with white text.
+\href{http://ggplot2.tidyverse.org}{ggplot2} blackout palette that sets the plot
+background as black, with white text.
 }
 \examples{
 library(ggplot2)
@@ -26,4 +25,9 @@ p + midnightTheme()
 \item \code{\link[ggplot2:theme]{ggplot2::theme()}}.
 \item Inspired by \code{Seurat::DarkTheme()}, with some modifications.
 }
+
+Other Plot Functions: \code{\link{dynamicPlotlist}}
+}
+\author{
+Michael Steinbaugh
 }

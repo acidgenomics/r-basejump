@@ -1,12 +1,14 @@
-#' Deprecated Functions
+# nocov start
+
+#' Defunct or Deprecated Functions
 #'
-#' @rdname deprecated
 #' @name deprecated
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
 #' @inheritParams general
 #'
-#' @return Soft deprecation to new functions.
+#' @return [.Defunct()] or [.Deprecated()] calls.
 NULL
 
 
@@ -14,14 +16,14 @@ NULL
 # Legacy =======================================================================
 #' @rdname deprecated
 #' @export
-summarizeRows <- function() {
-    .Deprecated("collapseToString")
+summarizeRows <- function(...) {
+    .Defunct("collapseToString")
 }
 
 #' @rdname deprecated
 #' @export
-wash <- function() {
-    .Deprecated()
+wash <- function(...) {
+    .Defunct()
 }
 
 
@@ -29,16 +31,16 @@ wash <- function() {
 # v0.0.23 ======================================================================
 #' @rdname deprecated
 #' @export
-packageSE <- function() {
-    .Deprecated("bcbioBase::prepareSummarizedExperiment")
+packageSE <- function(...) {
+    .Defunct("bcbioBase::prepareSummarizedExperiment")
 }
 
 
 
 #' @rdname deprecated
 #' @export
-prepareSE <- function() {
-    .Deprecated("bcbioBase::prepareSummarizedExperiment")
+prepareSE <- function(...) {
+    .Defunct("bcbioBase::prepareSummarizedExperiment")
 }
 
 
@@ -46,28 +48,17 @@ prepareSE <- function() {
 # v0.0.24 ======================================================================
 #' @rdname deprecated
 #' @export
-metadataTable <- function() {
-    .Deprecated("bcbioBase::sampleMetadata")
+metadataTable <- function(...) {
+    .Defunct("bcbioBase::sampleData")
 }
 
 
 
 # v0.0.25 ======================================================================
 #' @rdname deprecated
-#' @importFrom scales percent
 #' @export
 pct <- function(...) {
-    .Deprecated("scales::percent")
-    scales::percent(...)
-}
-
-
-
-# v0.1.0 =======================================================================
-#' @rdname deprecated
-#' @export
-sampleDirs <- function() {
-    .Deprecated()
+    .Defunct("scales::percent")
 }
 
 
@@ -76,15 +67,13 @@ sampleDirs <- function() {
 #' @rdname deprecated
 #' @export
 fc2lr <- function(...) {
-    .Deprecated("foldChangeToLogRatio")
-    foldChangeToLogRatio(...)
+    .Defunct("foldChangeToLogRatio")
 }
 
 #' @rdname deprecated
 #' @export
 lr2fc <- function(...) {
-    .Deprecated("logRatioToFoldChange")
-    logRatioToFoldChange(...)
+    .Defunct("logRatioToFoldChange")
 }
 
 
@@ -93,13 +82,13 @@ lr2fc <- function(...) {
 #' @rdname deprecated
 #' @export
 comp <- function() {
-    .Deprecated("Biostrings::complement")
+    .Defunct("Biostrings::complement")
 }
 
 #' @rdname deprecated
 #' @export
 revcomp <- function() {
-    .Deprecated("Biostrings::reverseComplement")
+    .Defunct("Biostrings::reverseComplement")
 }
 
 
@@ -107,7 +96,7 @@ revcomp <- function() {
 # v0.2.2 =======================================================================
 #' @rdname deprecated
 symbol2gene <- function() {
-    .Deprecated()
+    .Defunct()
 }
 
 
@@ -116,21 +105,21 @@ symbol2gene <- function() {
 #' @rdname deprecated
 #' @export
 checkAnnotable <- function(...) {
-    # .Deprecated("assertIsAnnotable")
+    .Deprecated("assertIsAnnotable")
     assertIsAnnotable(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkGene2symbol <- function(...) {
-    # .Deprecated("assertIsGene2symbol")
+    .Deprecated("assertIsGene2symbol")
     assertIsGene2symbol(...)
 }
 
 #' @rdname deprecated
 #' @export
 checkTx2gene <- function(...) {
-    # .Deprecated("assertIsTx2gene")
+    .Deprecated("assertIsTx2gene")
     assertIsTx2gene(...)
 }
 
@@ -147,13 +136,74 @@ assertFormalHeaderLevel <- function(...) {
 #' @rdname deprecated
 #' @export
  assertFormalColorFunction <- function(...) {
-     .Deprecated("assertIsHexColorFunctionOrNULL")
-     assertIsHexColorFunctionOrNULL(...)
- }
+    .Deprecated("assertIsHexColorFunctionOrNULL")
+    assertIsHexColorFunctionOrNULL(...)
+}
 
- #' @rdname deprecated
- #' @export
- initializeDir <- function(...) {
-     .Deprecated("initializeDirectory")
-     initializeDirectory(...)
- }
+#' @rdname deprecated
+#' @export
+initializeDir <- function(...) {
+    .Deprecated("initializeDirectory")
+    initializeDirectory(...)
+}
+
+
+
+ # v0.4.0 ======================================================================
+#' @rdname deprecated
+#' @export
+assertIsAnnotable <- function(...) {
+     .Deprecated("assertAreGeneAnnotations")
+     assertAreGeneAnnotations(...)
+}
+
+#' @rdname deprecated
+#' @export
+ensembl <- function(...) {
+    .Deprecated("makeGRangesFromEnsembl")
+    makeGRangesFromEnsembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+gene2symbolFromGFF <- function(...) {
+    .Deprecated("makeGene2symbolFromGFF")
+    makeGene2symbolFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+gene2symbolFromGFF -> gene2symbolFromGTF
+
+#' @rdname deprecated
+#' @export
+sanitizeAnnotable <- function(...) {
+    .Deprecated("sanitizeRowData")
+    sanitizeRowData(...)
+}
+
+#' @rdname deprecated
+#' @export
+sanitizeColData <- function(...) {
+    .Deprecated("sanitizeSampleData")
+    sanitizeSampleData(...)
+}
+
+#' @rdname deprecated
+#' @export
+tx2gene <- function(...) {
+    .Defunct("tx2geneFromGFF or bcbioBase::readTx2gene")
+}
+
+#' @rdname deprecated
+#' @export
+tx2geneFromGFF <- function(...) {
+    .Deprecated("makeTx2geneFromGFF")
+    makeTx2geneFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+tx2geneFromGFF -> tx2geneFromGTF
+
+# nocov end

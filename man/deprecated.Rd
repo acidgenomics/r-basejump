@@ -8,7 +8,6 @@
 \alias{prepareSE}
 \alias{metadataTable}
 \alias{pct}
-\alias{sampleDirs}
 \alias{fc2lr}
 \alias{lr2fc}
 \alias{comp}
@@ -20,21 +19,28 @@
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
 \alias{initializeDir}
-\title{Deprecated Functions}
+\alias{assertIsAnnotable}
+\alias{ensembl}
+\alias{gene2symbolFromGFF}
+\alias{gene2symbolFromGTF}
+\alias{sanitizeAnnotable}
+\alias{sanitizeColData}
+\alias{tx2gene}
+\alias{tx2geneFromGFF}
+\alias{tx2geneFromGTF}
+\title{Defunct or Deprecated Functions}
 \usage{
-summarizeRows()
+summarizeRows(...)
 
-wash()
+wash(...)
 
-packageSE()
+packageSE(...)
 
-prepareSE()
+prepareSE(...)
 
-metadataTable()
+metadataTable(...)
 
 pct(...)
-
-sampleDirs()
 
 fc2lr(...)
 
@@ -57,14 +63,35 @@ assertFormalHeaderLevel(...)
 assertFormalColorFunction(...)
 
 initializeDir(...)
+
+assertIsAnnotable(...)
+
+ensembl(...)
+
+gene2symbolFromGFF(...)
+
+gene2symbolFromGTF(...)
+
+sanitizeAnnotable(...)
+
+sanitizeColData(...)
+
+tx2gene(...)
+
+tx2geneFromGFF(...)
+
+tx2geneFromGTF(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
 }
 \value{
-Soft deprecation to new functions.
+\code{\link[=.Defunct]{.Defunct()}} or \code{\link[=.Deprecated]{.Deprecated()}} calls.
 }
 \description{
-Deprecated Functions
+Defunct or Deprecated Functions
+}
+\author{
+Michael Steinbaugh
 }
 \keyword{internal}

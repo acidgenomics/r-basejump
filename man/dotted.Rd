@@ -9,6 +9,7 @@
 \alias{dotted,data.frame-method}
 \alias{dotted,DataFrame-method}
 \alias{dotted,factor-method}
+\alias{dotted,GRanges-method}
 \alias{dotted,list-method}
 \alias{dotted,List-method}
 \alias{dotted,matrix-method}
@@ -27,6 +28,8 @@ dotted(object, ...)
 \S4method{dotted}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{factor}(object)
+
+\S4method{dotted}{GRanges}(object)
 
 \S4method{dotted}{list}(object)
 
@@ -56,13 +59,10 @@ Object with syntatically valid names. For objects supporting
 \code{\link[base:names]{base::names()}}, the underlying data returns unchanged.
 }
 \description{
-Dotted Case
-}
-\details{
-For unnamed character vectors, this function will sanitize the
-underlying values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
-objects supporting name assignments. They return the object without
-modification of the underlying data.
+For unnamed character vectors, this function will sanitize the underlying
+values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on objects
+supporting name assignments. They return the object without modification of
+the underlying data.
 }
 \note{
 \code{dotted.case} support is provided for matching against base R
@@ -70,33 +70,36 @@ parameters, but we strongly advise against using it for object and/or
 argument name assignments.
 }
 \examples{
-load(system.file(
-    file.path("extdata", "makeNames.rda"),
-    package = "basejump"
-))
+load(system.file("extdata/mn.rda", package = "basejump"))
 
-# Character vector
-character <- makeNames$character
+# character ====
+character <- mn$character
 print(character)
 dotted(character)
 
-# Named character vector
-namedCharacter <- makeNames$namedCharacter
+namedCharacter <- mn$namedCharacter
 dotted(namedCharacter)
 
-# Factor
-factor <- makeNames$factor
+# factor ====
+factor <- mn$factor
 print(factor)
 dotted(factor)
 
-# data.frame
-dataFrame <- makeNames$dataFrame
+# data.frame ====
+dataFrame <- mn$dataFrame
 print(dataFrame)
 dotted(dataFrame, rownames = TRUE)
 dotted(dataFrame, rownames = FALSE)
 
-# Named list
-list <- makeNames$list
+# list ====
+list <- mn$list
 print(list)
 dotted(list)
+}
+\seealso{
+Other Name Functions: \code{\link{camel}},
+  \code{\link{makeNames}}, \code{\link{snake}}
+}
+\author{
+Michael Steinbaugh
 }

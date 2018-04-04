@@ -1,8 +1,8 @@
 #' Fix Character Strings Missing `NA`
 #'
-#' @rdname fixNA
 #' @name fixNA
-#' @family Cleanup Utilities
+#' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
@@ -16,32 +16,34 @@
 #' data.frame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
-#'     stringsAsFactors = FALSE) %>%
+#'     stringsAsFactors = FALSE
+#' ) %>%
 #'     fixNA()
 #'
 #' # tibble
 #' tibble(
 #'     a = c("foo", ""),
-#'     b = c(NA, "bar")) %>%
+#'     b = c(NA, "bar")
+#' ) %>%
 #'     fixNA()
 NULL
 
 
 
 # Constructors =================================================================
-.fixNA.character <- function(object) {
+.fixNA.character <- function(object) {  # nolint
     assert_is_character(object)
     patterns <- c(
         "^$",
         "^\\s+$",
         "^NA$",
-        "^NULL$")
+        "^NULL$"
+    )
     gsub(paste(patterns, collapse = "|"), NA, object)
 }
 
 
 
-#' @importFrom dplyr funs mutate_if
 .fixNA.tidy <- function(object) {  # nolint
     mutate_if(object, is.character, funs(fixNA))
 }
@@ -55,9 +57,10 @@ setMethod(
     "fixNA",
     signature("ANY"),
     function(object) {
-    # Return unmodified by default
-    object
-})
+        # Return unmodified by default
+        object
+    }
+)
 
 
 
@@ -66,7 +69,8 @@ setMethod(
 setMethod(
     "fixNA",
     signature("character"),
-    .fixNA.character)
+    .fixNA.character
+)
 
 
 
@@ -75,7 +79,8 @@ setMethod(
 setMethod(
     "fixNA",
     signature("data.frame"),
-    .fixNA.tidy)
+    .fixNA.tidy
+)
 
 
 
@@ -89,7 +94,8 @@ setMethod(
             as.data.frame() %>%
             fixNA() %>%
             as("DataFrame")
-    })
+    }
+)
 
 
 
@@ -98,4 +104,5 @@ setMethod(
 setMethod(
     "fixNA",
     signature("tbl_df"),
-    .fixNA.tidy)
+    .fixNA.tidy
+)

@@ -4,7 +4,7 @@
 \alias{assertIsAHeaderLevel}
 \title{Assert Is a Header Level}
 \usage{
-assertIsAHeaderLevel(x, severity = "stop")
+assertIsAHeaderLevel(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -16,17 +16,15 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Assert Is a Header Level
+Markdown supports header levels 1-7 (\code{<H1>}-\code{<H7>}).
 }
 \examples{
-# Markdown supports levels 1-7
 assertIsAHeaderLevel(1L)
-tryCatch(
-    assertIsAHeaderLevel(8L),
-    error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -34,15 +32,18 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

@@ -1,13 +1,14 @@
-#' `grep` String Generator
+#' `grep` String
 #'
-#' Generate a grep string for pattern matching against comma separated
-#' [base::toString()] output.
+#' Generate a [grep()] string for pattern matching against comma separated
+#' [toString()] output.
 #'
-#' @family String Utilities
+#' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Comma separated grep string.
+#' @return `character` string for [grep()] matching.
 #' @export
 #'
 #' @examples
@@ -26,5 +27,6 @@ grepString <- function(object) {
             "\\s", ., ",",
             "|",
             # End of list
-            "\\s", ., "$")
+            "\\s", ., "$"
+        )
 }

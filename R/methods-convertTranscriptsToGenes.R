@@ -1,94 +1,96 @@
 #' Convert Ensembl Transcripts to Genes
 #'
-#' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
-#' @family Gene Annotation Utilities
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
-#' @inheritParams general
-#' @inheritParams convertGenesToSymbols
+#' @inherit convertGenesToSymbols
 #'
 #' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
 #'
-#' @return Same class as object.
-#'
 #' @examples
-#' # character
-#' c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041") %>%
-#'     convertTranscriptsToGenes()
+#' # character ====
+#' transcripts <- c(
+#'     "ENSMUST00000000001",
+#'     "ENSMUST00000000003",
+#'     "ENSMUST00000114041"
+#' )
+#' convertTranscriptsToGenes(transcripts)
 #'
-#' # matrix
-#' matrix(
+#' # matrix ====
+#' mat <- matrix(
 #'     data = seq(1L:6L),
 #'     byrow = TRUE,
 #'     nrow = 3L,
 #'     ncol = 2L,
 #'     dimnames = list(
 #'         c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
-#'         c("sample1", "sample2")
+#'         c("sample_1", "sample_2")
 #'     )
-#' ) %>%
-#'     convertTranscriptsToGenes()
+#' )
+#' print(mat)
+#' mat <- convertTranscriptsToGenes(mat)
+#' print(mat)
+#' rownames(mat)
 NULL
 
 
 
 # Constructors =================================================================
-.convertTranscriptsToGenes <- function(
+.convertTranscriptsToGenes.vec <- function(  # nolint
     object,
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL,
-    quiet = FALSE) {
-    # Passthrough: genomeBuild, release, quiet
+    release = NULL
+) {
+    # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
     assert_is_any_of(tx2gene, c("data.frame", "NULL"))
     assertIsAStringOrNULL(organism)
     assertIsAnImplicitIntegerOrNULL(release)
-    assert_is_a_bool(quiet)
 
     # If no tx2gene is provided, fall back to using Ensembl annotations
     if (!is.data.frame(tx2gene)) {
         # Generate tx2gene from Ensembl
-        if (!isTRUE(quiet)) {
-            inform("Obtaining transcript-to-gene mappings from Ensembl")
-        }
+        inform("Obtaining transcript-to-gene mappings from Ensembl")
         if (is.null(organism)) {
             organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
             organism <- detectOrganism(organism)
         }
         assert_is_a_string(organism)
-        tx2gene <- tx2gene(
-            object = organism,
+        tx2gene <- makeTx2geneFromEnsembl(
+            organism = organism,
             genomeBuild = genomeBuild,
-            release = release,
-            quiet = quiet)
+            release = release
+        )
     } else {
         assertIsTx2gene(tx2gene)
     }
 
     tx2gene <- tx2gene %>%
         .[object, , drop = FALSE] %>%
-        .[!is.na(.[["ensgene"]]), , drop = FALSE]
+        .[!is.na(.[["geneID"]]), , drop = FALSE]
 
-    gene <- tx2gene[["ensgene"]]
-    names(gene) <- tx2gene[["enstxp"]]
+    geneID <- tx2gene[["geneID"]]
+    names(geneID) <- tx2gene[["txID"]]
 
-    if (!all(object %in% names(gene))) {
+    if (!all(object %in% names(geneID))) {
         abort(paste(
             "Unmatched transcripts present.",
             "Try using a GFF file instead."
         ))
     }
 
-    assert_is_character(gene)
-    assert_has_names(gene)
-    gene[object]
+    assert_is_character(geneID)
+    assert_has_names(geneID)
+
+    geneID[object]
 }
 
 
@@ -98,16 +100,18 @@ NULL
     tx2gene = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL,
-    quiet = FALSE) {
-    # Passthrough: tx2gene, organism, genomeBuild, release, quiet
-    rownames(object) <- .convertTranscriptsToGenes(
-        object = rownames(object),
+    release = NULL
+) {
+    # Passthrough: tx2gene, organism, genomeBuild, release
+    rownames <- rownames(object)
+    rownames <- convertTranscriptsToGenes(
+        object = rownames,
         tx2gene = tx2gene,
         organism = organism,
         genomeBuild = genomeBuild,
-        release = release,
-        quiet = quiet)
+        release = release
+    )
+    rownames(object) <- rownames
     object
 }
 
@@ -118,7 +122,8 @@ NULL
 setMethod(
     "convertTranscriptsToGenes",
     signature("character"),
-    .convertTranscriptsToGenes)
+    .convertTranscriptsToGenes.vec
+)
 
 
 
@@ -127,7 +132,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("data.frame"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -136,7 +142,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("DataFrame"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -145,7 +152,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("dgCMatrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -154,7 +162,8 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("dgTMatrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)
 
 
 
@@ -163,4 +172,5 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("matrix"),
-    .convertTranscriptsToGenes.dim)
+    .convertTranscriptsToGenes.dim
+)

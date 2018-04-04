@@ -4,7 +4,7 @@
 \alias{assertIsDataFrameOrNULL}
 \title{Assert Is Data Frame or NULL}
 \usage{
-assertIsDataFrameOrNULL(x, severity = "stop")
+assertIsDataFrameOrNULL(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -18,18 +18,17 @@ Abort on mismatch.
 \description{
 Assert Is Data Frame or NULL
 }
+\note{
+This checks for \code{data.frame} and will stop for \code{DataFrame} class.
+}
 \examples{
-# Success
 assertIsDataFrameOrNULL(mtcars)
 assertIsDataFrameOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsDataFrameOrNULL(1L),
-    error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -38,14 +37,17 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

@@ -3,11 +3,12 @@
 #' The function also strips `NA` values. This is useful for gene list server
 #' queries, for example.
 #'
-#' @family Cleanup Utilities
+#' @family Atomic Vector Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Unique vector.
+#' @return Unique `vector`.
 #' @export
 #'
 #' @examples

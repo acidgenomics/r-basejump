@@ -1,12 +1,11 @@
-#' Convert Ensembl Identifier to Gene Symbol
+#' Convert Ensembl Identifiers to Gene Symbols
 #'
-#' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
-#' @family Gene Annotation Utilities
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
+#' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @inheritParams annotable
-#'
 #' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
 #'   attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
@@ -18,14 +17,12 @@
 #'
 #' @return Same class as original object.
 #'
-#' @seealso [detectOrganism()].
-#'
 #' @examples
-#' # character
-#' vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' convertGenesToSymbols(vec)
+#' # character ====
+#' genes <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+#' convertGenesToSymbols(genes)
 #'
-#' # matrix
+#' # matrix ====
 #' mat <- matrix(
 #'     data = seq(1L:4L),
 #'     byrow = TRUE,
@@ -33,76 +30,69 @@
 #'     ncol = 2L,
 #'     dimnames = list(
 #'         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-#'         c("sample1", "sample2")
+#'         c("sample_1", "sample_2")
 #'     )
 #' )
-#' convertGenesToSymbols(mat)
+#' print(mat)
+#' mat <- convertGenesToSymbols(mat)
+#' print(mat)
+#' rownames(mat)
 NULL
 
 
 
 # Constructors =================================================================
-.convertGenesToSymbols <- function(  # nolint
+.convertGenesToSymbols.vec <- function(  # nolint
     object,
     gene2symbol = NULL,
     organism = NULL,
     genomeBuild = NULL,
-    release = NULL,
-    uniqueSymbol = FALSE,
-    quiet = FALSE) {
-    # Passthrough: genomeBuild, release, quiet
+    release = NULL
+) {
+    # Passthrough: genomeBuild, release
     assert_is_character(object)
     assert_all_are_non_missing_nor_empty_character(object)
-    assert_has_no_duplicates(object)
     assertIsDataFrameOrNULL(gene2symbol)
     assertIsAStringOrNULL(organism)
-    assert_is_a_bool(uniqueSymbol)
 
     # If no gene2symbol is provided, fall back to using Ensembl annotations
     if (!is.data.frame(gene2symbol)) {
         # Generate gene2symbol from Ensembl
-        if (isTRUE(quiet)) {
-            inform("Obtaining gene-to-symbol mappings from Ensembl")
-        }
+        inform("Obtaining gene-to-symbol mappings from Ensembl")
         if (is.null(organism)) {
             organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
             organism <- detectOrganism(organism)
         }
         assert_is_a_string(organism)
-        gene2symbol <- gene2symbol(
-            object = organism,
+        gene2symbol <- makeGene2symbolFromEnsembl(
+            organism = organism,
             genomeBuild = genomeBuild,
-            release = release,
-            uniqueSymbol = uniqueSymbol,
-            quiet = quiet)
-    } else {
-        assertIsGene2symbol(gene2symbol)
-        if (isTRUE(uniqueSymbol)) {
-            gene2symbol[["symbol"]] <- make.unique(gene2symbol[["symbol"]])
-        }
+            release = release
+        )
     }
+    assertIsGene2symbol(gene2symbol)
 
     gene2symbol <- gene2symbol %>%
         .[object, , drop = FALSE] %>%
-        .[!is.na(.[["symbol"]]), , drop = FALSE]
+        .[!is.na(.[["geneName"]]), , drop = FALSE]
+    geneName <- gene2symbol[["geneName"]]
+    names(geneName) <- gene2symbol[["geneID"]]
 
-    symbol <- gene2symbol[["symbol"]]
-    names(symbol) <- gene2symbol[["ensgene"]]
-
-    if (!all(object %in% names(symbol))) {
+    if (!all(object %in% names(geneName))) {
         nomatch <- setdiff(object, rownames(gene2symbol))
         names(nomatch) <- nomatch
         warn(paste(
             "Failed to match all genes to symbols:",
             toString(nomatch)
         ))
-        symbol <- c(symbol, nomatch)
+        geneName <- c(geneName, nomatch)
     }
 
-    assert_is_character(symbol)
-    assert_has_names(symbol)
-    symbol[object]
+    assert_is_character(geneName)
+    assert_has_names(geneName)
+
+    geneName[object]
 }
 
 
@@ -112,20 +102,17 @@ NULL
     gene2symbol = NULL,
     genomeBuild = NULL,
     organism = NULL,
-    release = NULL,
-    uniqueSymbol = FALSE,
-    quiet = FALSE) {
-    # Passthrough: gene2symbol, organism, release, quiet
+    release = NULL
+) {
     assertHasRownames(object)
     rownames <- rownames(object)
-    rownames <- .convertGenesToSymbols(
+    rownames <- convertGenesToSymbols(
         object = rownames,
         gene2symbol = gene2symbol,
         genomeBuild = genomeBuild,
         organism = organism,
-        release = release,
-        uniqueSymbol = uniqueSymbol,
-        quiet = quiet)
+        release = release
+    )
     rownames(object) <- rownames
     object
 }
@@ -138,7 +125,8 @@ NULL
 setMethod(
     "convertGenesToSymbols",
     signature("character"),
-    .convertGenesToSymbols)
+    .convertGenesToSymbols.vec
+)
 
 
 
@@ -147,7 +135,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("data.frame"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -156,7 +145,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("DataFrame"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -165,7 +155,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("dgCMatrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -174,7 +165,8 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("dgTMatrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)
 
 
 
@@ -183,4 +175,5 @@ setMethod(
 setMethod(
     "convertGenesToSymbols",
     signature("matrix"),
-    .convertGenesToSymbols.dim)
+    .convertGenesToSymbols.dim
+)

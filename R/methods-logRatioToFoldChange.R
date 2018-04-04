@@ -16,7 +16,8 @@
 setMethod(
     "logRatioToFoldChange",
     signature("integer"),
-    .logRatioToFoldChange)
+    .logRatioToFoldChange
+)
 
 
 
@@ -25,4 +26,5 @@ setMethod(
 setMethod(
     "logRatioToFoldChange",
     signature("numeric"),
-    .logRatioToFoldChange)
+    .logRatioToFoldChange
+)

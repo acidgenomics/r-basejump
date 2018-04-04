@@ -1,16 +1,17 @@
 #' Midnight Theme
 #'
-#' Blackout palette that sets the plot background as black, with white text.
+#' [ggplot2](http://ggplot2.tidyverse.org) blackout palette that sets the plot
+#' background as black, with white text.
 #'
-#' @importFrom ggplot2 element_blank element_line element_rect element_text
-#'   theme theme_minimal
+#' @family Plot Functions
+#' @author Michael Steinbaugh
+#'
+#' @return `theme`.
+#' @export
 #'
 #' @seealso
 #' - [ggplot2::theme()].
 #' - Inspired by `Seurat::DarkTheme()`, with some modifications.
-#'
-#' @return ggplot theme.
-#' @export
 #'
 #' @examples
 #' library(ggplot2)
@@ -41,5 +42,6 @@ midnightTheme <- function() {
 
 # Aliases ======================================================================
 #' @rdname midnightTheme
+#' @usage NULL
 #' @export
-midnightTheme -> theme_midnight
+midnightTheme -> theme_midnight  # nolint

@@ -9,7 +9,7 @@
 mtcars
 }
 \value{
-\link{data.frame}.
+\code{data.frame}.
 }
 \description{
 Motor Trend Car Road Tests

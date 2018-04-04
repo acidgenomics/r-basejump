@@ -4,11 +4,11 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = getwd(), overwrite = TRUE, compress = "bzip2",
-  quiet = FALSE)
+saveData(..., dir = ".", overwrite = TRUE, compress = TRUE)
 }
 \arguments{
-\item{...}{Object names as symbols.}
+\item{...}{Object names. Note that these arguments are interpreted using
+non-standard evaluation, and \emph{should not be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
@@ -20,8 +20,6 @@ saveData(..., dir = getwd(), overwrite = TRUE, compress = "bzip2",
     \code{"bzip2"} or \code{"xz"} specify the type of
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
 Silent named character vector of file paths.
@@ -32,6 +30,9 @@ symbols. This function saves each object into a separate \code{.rda} file rather
 than combining into a single file.
 }
 \note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+
 These function will \emph{overwrite} existing saved data, following the
 same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\link[devtools:use_data]{devtools::use_data()}} does
 not overwrite by default if that behavior is preferred.
@@ -48,5 +49,10 @@ unlink(c("mtcars.rda", "starwars.rda"))
 \item \code{usethis::use_data()}.
 }
 
-Other Write Utilities: \code{\link{writeCounts}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{transmit}}, \code{\link{writeCounts}}
+}
+\author{
+Michael Steinbaugh
 }

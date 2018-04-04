@@ -2,7 +2,6 @@
 #'
 #' Supports organism detection from genome build or Ensembl identifier.
 #'
-#' @details
 #' Currently supported organisms:
 #'
 #' - *Homo sapiens* (human)
@@ -15,9 +14,9 @@
 #' - *Gallus gallus* (chicken)
 #' - *Ovis aries* (sheep)
 #'
-#' @rdname detectOrganism
 #' @name detectOrganism
-#' @family Gene Annotation Utilities
+#' @family Gene Annotation Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #' @param unique Only return unique matching organisms. Applies to character
@@ -165,8 +164,7 @@ NULL
 
 
 
-# detectOrganism(c("ENSG00000000001", "ENSG00000000003"))
-.detectOrganism.character <- function(object, unique = FALSE) {
+.detectOrganism.character <- function(object, unique = FALSE) {  # nolint
     assert_is_a_bool(unique)
     x <- vapply(
         X = object,
@@ -179,7 +177,7 @@ NULL
     if (is_a_string(x)) {
         names(x) <- NULL
     }
-    if (length(unique(x)) > 1L) {
+    if (length(na.omit(unique(x))) > 1L) {
         warn("Multiple organisms detected")
     }
     if (isTRUE(unique)) {
@@ -203,13 +201,16 @@ NULL
 
 .detectOrganism.tibble <- function(object) {  # nolint
     assert_has_colnames(object)
-    object <- snake(object)
-    # Look for Ensembl gene column
-    geneCol <- c("rowname", "ensgene", "ensembl_gene_id")
-    assert_are_intersecting_sets(colnames(object), geneCol)
-    object %>%
-        .[, which(colnames(.) %in% geneCol)[[1L]], drop = TRUE] %>%
-        .returnUniqueOrganism()
+    object <- camel(object)
+    idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
+    assert_are_intersecting_sets(idCols, colnames(object))
+    idCol <- match(
+        x = idCols,
+        table = colnames(object)
+    ) %>%
+        na.omit() %>%
+        .[[1L]]
+    .returnUniqueOrganism(object[, idCol, drop = TRUE])
 }
 
 
@@ -229,7 +230,8 @@ NULL
 setMethod(
     "detectOrganism",
     signature("character"),
-    .detectOrganism.character)
+    .detectOrganism.character
+)
 
 
 
@@ -238,7 +240,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("data.frame"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -247,7 +250,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("DataFrame"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -256,7 +260,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("dgCMatrix"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -265,7 +270,8 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("matrix"),
-    .detectOrganism.dim)
+    .detectOrganism.dim
+)
 
 
 
@@ -274,4 +280,5 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("tbl_df"),
-    .detectOrganism.tibble)
+    .detectOrganism.tibble
+)

@@ -4,7 +4,8 @@
 \alias{assertFormalAnnotationCol}
 \title{Assert Formal Annotation Column}
 \usage{
-assertFormalAnnotationCol(x, colData, severity = "stop")
+assertFormalAnnotationCol(x, colData,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -22,25 +23,22 @@ Assert Formal Annotation Column
 }
 \examples{
 x <- data.frame(
-    sample1 = c(1L, 2L),
-    sample2 = c(3L, 4L),
-    row.names = c("gene1", "gene2"),
-    stringsAsFactors = FALSE)
+    "sample_1" = c(1L, 2L),
+    "sample_2" = c(3L, 4L),
+    row.names = c("gene_1", "gene_2"),
+    stringsAsFactors = FALSE
+)
 colData <- data.frame(
-    genotype = c("wt", "ko"),
-    row.names = c("sample1", "sample2"),
-    stringsAsFactors = TRUE)
-
-# Success
+    "genotype" = c("wt", "ko"),
+    row.names = c("sample_1", "sample_2"),
+    stringsAsFactors = TRUE
+)
 assertFormalAnnotationCol(x, colData)
-
-# Failure
-tryCatch(
-    assertFormalAnnotationCol(mtcars, colData),
-    error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},
@@ -48,15 +46,18 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

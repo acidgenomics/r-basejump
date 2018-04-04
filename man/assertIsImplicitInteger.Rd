@@ -6,6 +6,7 @@
 \alias{assertIsAnImplicitIntegerOrNULL}
 \alias{assertIsImplicitInteger}
 \alias{assertIsImplicitIntegerOrNULL}
+\alias{isAnImplicitInteger}
 \alias{isImplicitInteger}
 \title{Assert Is Implicit Integer}
 \usage{
@@ -16,6 +17,8 @@ assertIsAnImplicitIntegerOrNULL(x)
 assertIsImplicitInteger(x)
 
 assertIsImplicitIntegerOrNULL(x)
+
+isAnImplicitInteger(x)
 
 isImplicitInteger(x)
 }
@@ -35,12 +38,13 @@ assertIsAnImplicitIntegerOrNULL(NULL)
 assertIsImplicitInteger(c(1, 2))
 assertIsImplicitIntegerOrNULL(c(1, 2))
 assertIsImplicitIntegerOrNULL(NULL)
-isImplicitInteger(1)
-# Also returns `TRUE` for explicit integers
-isImplicitInteger(1L)
+isAnImplicitInteger(1)
+isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -49,14 +53,17 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

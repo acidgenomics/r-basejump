@@ -1,10 +1,21 @@
 #' Assert Checks
 #'
-#' @rdname assert
 #' @name assert
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
+#' @param x Object.
+#' @param envir Environment.
+#' @param inherits Should the enclosing frames of the environment be searched?
+#' @param severity How severe should the consequences of the assertion be?
+#'   Either "`stop`", "`warning`", "`message`", or "`none`".
+#'
+#' @return Abort on mismatch.
+NULL
+
+
+
 #' @importFrom assertive assert_all_are_dirs
 #' @importFrom assertive assert_all_are_existing_files
 #' @importFrom assertive assert_all_are_greater_than
@@ -20,11 +31,13 @@
 #' @importFrom assertive assert_are_intersecting_sets
 #' @importFrom assertive assert_are_identical
 #' @importFrom assertive assert_are_same_length
+#' @importFrom assertive assert_are_set_equal
 #' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_colnames
 #' @importFrom assertive assert_has_dims
 #' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_no_duplicates
+#' @importFrom assertive assert_has_rows
 #' @importFrom assertive assert_is_a_bool
 #' @importFrom assertive assert_is_a_number
 #' @importFrom assertive assert_is_a_string
@@ -45,20 +58,17 @@
 #' @importFrom assertive assert_is_non_empty
 #' @importFrom assertive assert_is_not_null
 #' @importFrom assertive assert_is_numeric
+#' @importFrom assertive assert_is_of_length
 #' @importFrom assertive assert_is_scalar
 #' @importFrom assertive assert_is_subset
 #' @importFrom assertive assert_is_vector
 #' @importFrom assertive has_colnames
+#' @importFrom assertive has_dims
+#' @importFrom assertive has_rows
+#' @importFrom assertive is_a_number
 #' @importFrom assertive is_a_string
 #' @importFrom assertive is_existing
 #' @importFrom assertive is_hex_color
+#' @importFrom assertive is_not_na
 #' @importFrom assertive is_scalar
-#'
-#' @param x Object.
-#' @param envir Environment.
-#' @param inherits Should the enclosing frames of the environment be searched?
-#' @param severity How severe should the consequences of the assertion be?
-#'   Either "`stop`", "`warning`", "`message`", or "`none`".
-#'
-#' @return Abort on mismatch.
 NULL

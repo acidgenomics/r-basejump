@@ -10,7 +10,7 @@ sortUnique(object)
 \item{object}{Object.}
 }
 \value{
-Unique vector.
+Unique \code{vector}.
 }
 \description{
 The function also strips \code{NA} values. This is useful for gene list server
@@ -20,6 +20,9 @@ queries, for example.
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{removeNA}}
+Other Atomic Vector Functions: \code{\link{grepString}},
+  \code{\link{toStringUnique}}
+}
+\author{
+Michael Steinbaugh
 }

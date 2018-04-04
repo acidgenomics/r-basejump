@@ -11,6 +11,7 @@
 \alias{camel,data.frame-method}
 \alias{camel,DataFrame-method}
 \alias{camel,factor-method}
+\alias{camel,GRanges-method}
 \alias{camel,list-method}
 \alias{camel,List-method}
 \alias{camel,matrix-method}
@@ -21,6 +22,7 @@
 \alias{upperCamel,data.frame-method}
 \alias{upperCamel,DataFrame-method}
 \alias{upperCamel,factor-method}
+\alias{upperCamel,GRanges-method}
 \alias{upperCamel,list-method}
 \alias{upperCamel,List-method}
 \alias{upperCamel,matrix-method}
@@ -45,6 +47,8 @@ upperCamel(object, ...)
 
 \S4method{camel}{factor}(object, strict = FALSE)
 
+\S4method{camel}{GRanges}(object, strict = FALSE)
+
 \S4method{camel}{list}(object, strict = FALSE)
 
 \S4method{camel}{List}(object, strict = FALSE)
@@ -68,6 +72,8 @@ upperCamel(object, ...)
   strict = FALSE)
 
 \S4method{upperCamel}{factor}(object, strict = FALSE)
+
+\S4method{upperCamel}{GRanges}(object, strict = FALSE)
 
 \S4method{upperCamel}{list}(object, strict = FALSE)
 
@@ -104,40 +110,40 @@ Object with syntatically valid names. For objects supporting
 \description{
 Camel Case
 }
-\details{
-For unnamed character vectors, this function will sanitize the
-underlying values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on
-objects supporting name assignments. They return the object without
-modification of the underlying data.
-}
 \examples{
-load(system.file("extdata/makeNames.rda", package = "basejump"))
+load(system.file("extdata/mn.rda", package = "basejump"))
 
-# Character vector
-character <- makeNames$character
+# character ====
+character <- mn$character
 print(character)
 camel(character)
 upperCamel(character)
 
-# Named character vector
-namedCharacter <- makeNames$namedCharacter
+namedCharacter <- mn$namedCharacter
 camel(namedCharacter)
 upperCamel(namedCharacter)
 
-# Factor
-factor <- makeNames$factor
+# factor ====
+factor <- mn$factor
 print(factor)
 camel(factor)
 upperCamel(factor)
 
-# data.frame
-dataFrame <- makeNames$dataFrame
+# data.frame ====
+dataFrame <- mn$dataFrame
 print(dataFrame)
 camel(dataFrame, rownames = TRUE)
 camel(dataFrame, rownames = FALSE)
 
-# Named list
-list <- makeNames$list
+# list ====
+list <- mn$list
 print(list)
 camel(list)
+}
+\seealso{
+Other Name Functions: \code{\link{dotted}},
+  \code{\link{makeNames}}, \code{\link{snake}}
+}
+\author{
+Michael Steinbaugh
 }

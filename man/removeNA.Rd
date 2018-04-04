@@ -45,20 +45,23 @@ Remove Rows and Columns Containing Only \code{NA} Values
 matrix(
     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
     nrow = 3,
-    ncol = 3) \%>\%
+    ncol = 3
+) \%>\%
     removeNA()
 
 data.frame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
     c = c("B", NA, "D"),
-    stringsAsFactors = FALSE) \%>\%
+    stringsAsFactors = FALSE
+) \%>\%
     removeNA()
 
 tibble(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
-    c = c("B", NA, "D")) \%>\%
+    c = c("B", NA, "D")
+) \%>\%
     removeNA()
 
 # Support for vectors
@@ -66,6 +69,10 @@ removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 }
 \seealso{
-Other Cleanup Utilities: \code{\link{fixNA}},
-  \code{\link{sortUnique}}
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{fixNA}}, \code{\link{sanitizeRowData}},
+  \code{\link{sanitizeSampleData}}
+}
+\author{
+Michael Steinbaugh
 }

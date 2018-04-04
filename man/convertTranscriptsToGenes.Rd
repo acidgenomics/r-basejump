@@ -16,22 +16,22 @@
 convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -48,43 +48,58 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
+\code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
+\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
+to the most recent release available.}
 }
 \value{
-Same class as object.
+Same class as original object.
 }
 \description{
 Convert Ensembl Transcripts to Genes
 }
 \examples{
-# character
-c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041") \%>\%
-    convertTranscriptsToGenes()
+# character ====
+transcripts <- c(
+    "ENSMUST00000000001",
+    "ENSMUST00000000003",
+    "ENSMUST00000114041"
+)
+convertTranscriptsToGenes(transcripts)
 
-# matrix
-matrix(
+# matrix ====
+mat <- matrix(
     data = seq(1L:6L),
     byrow = TRUE,
     nrow = 3L,
     ncol = 2L,
     dimnames = list(
         c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
-        c("sample1", "sample2")
+        c("sample_1", "sample_2")
     )
-) \%>\%
-    convertTranscriptsToGenes()
+)
+print(mat)
+mat <- convertTranscriptsToGenes(mat)
+print(mat)
+rownames(mat)
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
-  \code{\link{tx2gene}}
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

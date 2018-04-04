@@ -11,13 +11,15 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,12 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Dynamically Handle a Local or Remote File Path — localOrRemoteFile" />
+
+<meta property="og:description" content="This function is vectorized and supports mixed local and remote paths." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +40,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">basejump</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">basejump</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -60,9 +74,6 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -73,6 +84,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -80,45 +92,51 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Dynamically Handle a Local or Remote File Path</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/localOrRemoteFile.R'><code>R/localOrRemoteFile.R</code></a></small>
+    <p class="hidden name"><code>localOrRemoteFile.Rd</code></p>
     </div>
 
     
-    <p>Dynamically Handle a Local or Remote File Path</p>
+    <p>This function is vectorized and supports mixed local and remote paths.</p>
     
 
-    <pre class="usage"><span class='fu'>localOrRemoteFile</span>(<span class='no'>object</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='st'>"stop"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>localOrRemoteFile</span>(<span class='no'>file</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    <tr>
-      <th>severity</th>
-      <td><p>Return <code>stop</code> (default), <code>warning</code>, or <code>message</code> if file
-doesn't exist.</p></td>
-    </tr>
-    <tr>
-      <th>quiet</th>
-      <td><p>If <code>TRUE</code>, suppress any status messages and/or progress bars.</p></td>
+      <th>file</th>
+      <td><p>File path.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Named character vector containing the original file name as the
-name and local file path as the string. Aborts on a missing file.</p>
+    <p>Named <code>character</code> containing the original basename as the name and
+local file path (i.e. tempfile) as the string. Aborts on a missing file.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
+  <code><a href='dots.html'>dots</a></code>, <code><a href='methodFormals.html'>methodFormals</a></code>,
+  <code><a href='multiassignAsNewEnvir.html'>multiassignAsNewEnvir</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>)</div><div class='output co'>#&gt;                                                                             mtcars.rda 
-#&gt; "/private/var/folders/9j/7k0pxwsx1p9gc33ct8whwfv40000gn/T/RtmpO4pEtm/file174a5dc33f23" </div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Single file</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)
+<span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv"</div><div class='input'>
+<span class='co'># Vectorized</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='fu'>c</span>(
+    <span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>,
+    <span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>
+))
+<span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "mtcars.csv" "mtcars.rda"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -126,6 +144,8 @@ name and local file path as the string. Aborts on a missing file.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -135,7 +155,7 @@ name and local file path as the string. Aborts on a missing file.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://steinbaugh.com'>Michael Steinbaugh</a>.</p>
+  <p>Developed by <a href='/'>Michael Steinbaugh</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -145,5 +165,8 @@ name and local file path as the string. Aborts on a missing file.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
