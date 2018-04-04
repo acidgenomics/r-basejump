@@ -22,8 +22,8 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Rory Kirchner \email{roryk@alum.mit.edu} [contributor]
-  \item Mary Piper \email{mary.piper@gmail.com} [contributor]
+  \item Rory Kirchner \email{roryk@alum.mit.edu} (0000-0003-4814-5885) [contributor]
+  \item Mary Piper \email{mary.piper@gmail.com} (0000-0003-2699-3840) [contributor]
 }
 
 }
