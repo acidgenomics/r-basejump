@@ -11,33 +11,27 @@
 \alias{convertGenesToSymbols,dgCMatrix-method}
 \alias{convertGenesToSymbols,dgTMatrix-method}
 \alias{convertGenesToSymbols,matrix-method}
-\title{Convert Ensembl Identifier to Gene Symbol}
+\title{Convert Ensembl Identifiers to Gene Symbols}
 \usage{
 convertGenesToSymbols(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL,
-  uniqueSymbol = FALSE, quiet = FALSE)
+  genomeBuild = NULL, organism = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -54,28 +48,24 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Check to see if a specific genome build is
-supported.}
+\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
+\code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Ensembl release version. Defaults to the most
-current release available on AnnotationHub.}
-
-\item{uniqueSymbol}{Make gene symbols unique.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
+\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
+to the most recent release available.}
 }
 \value{
 Same class as original object.
 }
 \description{
-Convert Ensembl Identifier to Gene Symbol
+Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
-# character
-vec <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-convertGenesToSymbols(vec)
+# character ====
+genes <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+convertGenesToSymbols(genes)
 
-# matrix
+# matrix ====
 mat <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
@@ -83,18 +73,29 @@ mat <- matrix(
     ncol = 2L,
     dimnames = list(
         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-        c("sample1", "sample2")
+        c("sample_1", "sample_2")
     )
 )
-convertGenesToSymbols(mat)
+print(mat)
+mat <- convertGenesToSymbols(mat)
+print(mat)
+rownames(mat)
 }
 \seealso{
-\code{\link[=detectOrganism]{detectOrganism()}}.
-
-Other Gene Annotation Utilities: \code{\link{annotable}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}},
-  \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
-  \code{\link{tx2gene}}
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

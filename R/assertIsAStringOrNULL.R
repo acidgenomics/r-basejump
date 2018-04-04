@@ -1,20 +1,18 @@
 #' Assert Is a String or NULL
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
-#' # Success
 #' assertIsAStringOrNULL("hello world")
 #' assertIsAStringOrNULL(NULL)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsAStringOrNULL(c("hello", "world")),
-#'     error = function(e) e)
-assertIsAStringOrNULL <- function(x, severity = "stop") {
+assertIsAStringOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assertIsCharacterOrNULL(x, severity = severity)
     if (is.character(x)) {
         assert_is_a_string(x, severity = severity)

@@ -1,6 +1,7 @@
 #' Assert Formal Gene to Symbol Mappings
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @param x Object containing gene identifiers in the rownames.
@@ -10,19 +11,25 @@
 #' @export
 #'
 #' @examples
-#' gene2symbol <- gene2symbol("Homo sapiens", release = 90L)
+#' gene2symbol <- data.frame(
+#'     "geneID" = c("ENSG00000000003", "ENSG00000000005"),
+#'     "geneName" = c("TSPAN6", "TNMD"),
+#'     row.names = c("ENSG00000000003", "ENSG00000000005")
+#' )
 #' genes <- head(rownames(gene2symbol), 2L)
 #' x <- data.frame(
-#'     sample1 = c(1L, 2L),
-#'     saple2 = c(3L, 4L),
+#'     "sample_1" = c(1L, 2L),
+#'     "sample_2" = c(3L, 4L),
 #'     row.names = genes,
-#'     stringsAsFactors = FALSE)
+#'     stringsAsFactors = FALSE
+#' )
 #' assertFormalGene2symbol(x, genes, gene2symbol)
 assertFormalGene2symbol <- function(
     x,
     genes,
     gene2symbol,
-    severity = "stop") {
+    severity = getOption("assertive.severity", "stop")
+) {
     assertHasRownames(x)
     assert_is_any_of(genes, c("character", "NULL"))
     if (is.character(genes)) {

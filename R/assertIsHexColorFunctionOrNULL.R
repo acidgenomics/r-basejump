@@ -1,17 +1,27 @@
 #' Assert Is Hex Color Function or NULL
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
-#' assertIsHexColorFunctionOrNULL(viridis)
-assertIsHexColorFunctionOrNULL <- function(x, severity = "stop") {
+#' hex <- function(n) {
+#'     colors <- c("#FFFFFF", "#000000")
+#'     colors[seq_len(n)]
+#' }
+#' assertIsHexColorFunctionOrNULL(hex)
+#' assertIsHexColorFunctionOrNULL(NULL)
+assertIsHexColorFunctionOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("function", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (is.function(x)) {
         colors <- x(2L)
         assert_is_character(colors, severity = severity)

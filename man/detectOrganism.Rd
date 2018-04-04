@@ -80,10 +80,20 @@ tibble <- as(counts, "tibble")
 detectOrganism(tibble)
 }
 \seealso{
-Other Gene Annotation Utilities: \code{\link{annotable}},
+Other Gene Annotation Functions: \code{\link{annotable}},
+  \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
-  \code{\link{gene2symbolFromGFF}},
-  \code{\link{gene2symbol}}, \code{\link{tx2geneFromGFF}},
-  \code{\link{tx2gene}}
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{makeGRangesFromEnsembl}},
+  \code{\link{makeGRangesFromGFF}},
+  \code{\link{makeGene2symbolFromEnsembl}},
+  \code{\link{makeGene2symbolFromGFF}},
+  \code{\link{makeTx2geneFromEnsembl}},
+  \code{\link{makeTx2geneFromGFF}},
+  \code{\link{parseGFFAttributes}},
+  \code{\link{stripTranscriptVersions}}
+}
+\author{
+Michael Steinbaugh
 }

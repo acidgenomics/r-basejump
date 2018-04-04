@@ -1,22 +1,23 @@
 #' Assert Is Data Frame or NULL
 #'
-#' @family Assert Checks
+#' @note This checks for `data.frame` and will stop for `DataFrame` class.
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
-#' # Success
 #' assertIsDataFrameOrNULL(mtcars)
 #' assertIsDataFrameOrNULL(NULL)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsDataFrameOrNULL(1L),
-#'     error = function(e) e)
-assertIsDataFrameOrNULL <- function(x, severity = "stop") {
+assertIsDataFrameOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("data.frame", "NULL"),
-        severity = severity)
+        severity = severity
+    )
 }

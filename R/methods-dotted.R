@@ -1,20 +1,19 @@
 #' Dotted Case
 #'
-#' @details For unnamed character vectors, this function will sanitize the
-#' underlying values. Otherwise, it will set [names()] and/or [rownames()] on
-#' objects supporting name assignments. They return the object without
-#' modification of the underlying data.
+#' For unnamed character vectors, this function will sanitize the underlying
+#' values. Otherwise, it will set [names()] and/or [rownames()] on objects
+#' supporting name assignments. They return the object without modification of
+#' the underlying data.
 #'
 #' @note `dotted.case` support is provided for matching against base R
 #'   parameters, but we strongly advise against using it for object and/or
 #'   argument name assignments.
 #'
-#' @rdname dotted
 #' @name dotted
-#' @family Make Names Utilities
+#' @family Name Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#'
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
 #' @param rownames Apply sanitization on row names. This is not recommended
@@ -27,33 +26,29 @@
 #'   [base::names()], the underlying data returns unchanged.
 #'
 #' @examples
-#' load(system.file(
-#'     file.path("extdata", "makeNames.rda"),
-#'     package = "basejump"
-#' ))
+#' load(system.file("extdata/mn.rda", package = "basejump"))
 #'
-#' # Character vector
-#' character <- makeNames$character
+#' # character ====
+#' character <- mn$character
 #' print(character)
 #' dotted(character)
 #'
-#' # Named character vector
-#' namedCharacter <- makeNames$namedCharacter
+#' namedCharacter <- mn$namedCharacter
 #' dotted(namedCharacter)
 #'
-#' # Factor
-#' factor <- makeNames$factor
+#' # factor ====
+#' factor <- mn$factor
 #' print(factor)
 #' dotted(factor)
 #'
-#' # data.frame
-#' dataFrame <- makeNames$dataFrame
+#' # data.frame ====
+#' dataFrame <- mn$dataFrame
 #' print(dataFrame)
 #' dotted(dataFrame, rownames = TRUE)
 #' dotted(dataFrame, rownames = FALSE)
 #'
-#' # Named list
-#' list <- makeNames$list
+#' # list ====
+#' list <- mn$list
 #' print(list)
 #' dotted(list)
 NULL
@@ -88,7 +83,8 @@ NULL
 .dotted.ANY <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     # Passthrough: rownames, colnames
     if (!is.null(dimnames(object))) {
         .dotted.dim(object, rownames = rownames, colnames = colnames)
@@ -104,7 +100,8 @@ NULL
 .dotted.dim <- function(  # nolint
     object,
     rownames = FALSE,
-    colnames = TRUE) {
+    colnames = TRUE
+) {
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
     if (isTRUE(rownames) && hasRownames(object)) {
@@ -113,6 +110,23 @@ NULL
     if (isTRUE(colnames) && has_colnames(object)) {
         colnames(object) <- .dotted(colnames(object))
     }
+    object
+}
+
+
+
+.dotted.factor <- function(object) {  # nolint
+    object %>%
+        .dotted.vector() %>%
+        factor()
+}
+
+
+
+.dotted.mcols <- function(object) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- dotted(colnames)
+    colnames(mcols(object)) <- colnames
     object
 }
 
@@ -132,7 +146,7 @@ NULL
 
 
 
-.dotted.vector <- function(object) {  # no lint
+.dotted.vector <- function(object) {  # nolint
     if (!is.null(names(object))) {
         names <- .dotted(names(object))
     } else {
@@ -167,7 +181,8 @@ NULL
 setMethod(
     "dotted",
     signature("ANY"),
-    .dotted.ANY)
+    .dotted.ANY
+)
 
 
 
@@ -176,7 +191,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    .dotted.vector)
+    .dotted.vector
+)
 
 
 
@@ -185,7 +201,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("data.frame"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -194,7 +211,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("DataFrame"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -203,7 +221,18 @@ setMethod(
 setMethod(
     "dotted",
     signature("factor"),
-    .dotted.vector)
+    .dotted.factor
+)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("GRanges"),
+    .dotted.mcols
+)
 
 
 
@@ -212,7 +241,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("list"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -221,7 +251,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("List"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -230,7 +261,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("matrix"),
-    .dotted.dim)
+    .dotted.dim
+)
 
 
 
@@ -239,7 +271,8 @@ setMethod(
 setMethod(
     "dotted",
     signature("SimpleList"),
-    .dotted.names)
+    .dotted.names
+)
 
 
 
@@ -248,4 +281,5 @@ setMethod(
 setMethod(
     "dotted",
     signature("tbl_df"),
-    .dotted.tibble)
+    .dotted.tibble
+)

@@ -1,27 +1,30 @@
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
-#' @param x [data.frame] containing Ensembl gene identifier to gene symbol
-#'   mappings. Must be structured as a two column [data.frame] with "ensgene"
-#'   and "symbol" columns.
+#' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be
+#'   structured as a two column `data.frame` with "geneID" and "geneName"
+#'   columns.
 #'
 #' @export
 #'
 #' @examples
-#' # Success
-#' gene2symbol <- gene2symbol("Homo sapiens")
-#' assertIsGene2symbol(gene2symbol)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsGene2symbol(mtcars),
-#'     error = function(e) e)
-assertIsGene2symbol <- function(x, severity = "stop") {
+#' x <- data.frame(
+#'     "geneID" = "ENSG00000000003",
+#'     "geneName" = "TSPAN6"
+#' )
+#' assertIsGene2symbol(x)
+assertIsGene2symbol <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
-        y = c("ensgene", "symbol"),
-        severity = severity)
+        y = c("geneID", "geneName"),
+        severity = severity
+    )
+    assert_has_rows(x, severity = severity)
 }

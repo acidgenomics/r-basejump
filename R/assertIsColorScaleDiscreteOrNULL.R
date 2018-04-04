@@ -1,34 +1,35 @@
-# TODO Need to add a check to distinguish `color/fill`
-
 #' Assert Is Color Palette Scale Discrete or NULL
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
-#' # Success
-#' color <- scale_color_viridis(discrete = TRUE)
+#' color <- ggplot2::scale_color_manual(values = c("red", "blue"))
 #' class(color)
 #' assertIsColorScaleDiscreteOrNULL(color)
 #' assertIsColorScaleDiscreteOrNULL(NULL)
-#'
-#' # Failure
-#' color <- scale_color_viridis(discrete = FALSE)
-#' class(color)
-#' tryCatch(
-#'     assertIsColorScaleDiscreteOrNULL(color),
-#'     error = function(e) e)
-assertIsColorScaleDiscreteOrNULL <- function(x, severity = "stop") {
+assertIsColorScaleDiscreteOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("ScaleDiscrete", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (!is.null(x)) {
         assert_is_all_of(
             x = x,
             classes = c("ggproto", "Scale", "ScaleDiscrete"),
-            severity = severity)
+            severity = severity
+        )
+        assert_are_identical(
+            x = x[["aesthetics"]],
+            y = "colour",
+            severity = severity
+        )
     }
 }

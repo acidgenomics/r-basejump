@@ -2,14 +2,15 @@
 % Please edit documentation in R/loadDataAsName.R
 \name{loadDataAsName}
 \alias{loadDataAsName}
-\title{Load Data File as Name}
+\title{Load Data as Name}
 \usage{
-loadDataAsName(..., dir = getwd(), envir = parent.frame())
+loadDataAsName(..., dir = ".", envir = parent.frame())
 }
 \arguments{
-\item{...}{Key value pairs, defining the name mappings. The argument name
-defines the new name of the object in the environment, whereas the value
-(string) denotes the original object name. For example, \code{newName1 = "oldName1", newName2 = "oldName2"}.}
+\item{...}{Key value pairs, defining the name mappings. For example,
+\code{newName1} = \code{oldName1}, \code{newName2} = \code{oldName2}. Note that these
+arguments are interpreted using non-standard evaluation, and \emph{should not
+be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
@@ -17,15 +18,29 @@ defines the new name of the object in the environment, whereas the value
 which will assign into the calling environment.}
 }
 \value{
-Silently return named character vector of file paths.
+Invisible named \code{character} containing file paths.
 }
 \description{
-Load Data File as Name
+Load Data as Name
+}
+\note{
+This function is intended for interactive use and interprets object
+names using non-standard evaluation.
 }
 \examples{
-loadDataAsName(
-    annotable = "grch37",
+loaded <- loadDataAsName(
+    makeNames = mn,
     dir = system.file("extdata", package = "basejump")
 )
-glimpse(annotable)
+print(loaded)
+class(makeNames)
+}
+\seealso{
+Other Read Functions: \code{\link{loadData}},
+  \code{\link{loadRemoteData}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

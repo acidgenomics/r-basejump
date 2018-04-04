@@ -4,7 +4,7 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
+writeCounts(..., dir = ".", gzip = TRUE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
@@ -12,18 +12,16 @@ writeCounts(..., dir = getwd(), gzip = TRUE, quiet = FALSE)
 \item{dir}{Output directory.}
 
 \item{gzip}{Compress the counts file using gzip.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Invisible named character vector containing file paths to count
-matrices written to disk.
+Invisible named \code{character} containing file paths to count matrices
+written to disk.
 }
 \description{
 Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-written to disk as comma separated values (\code{.csv}). Single-cell RNA-seq
-counts are written to disk in MatrixMarket format (\code{.mtx}), along with the
-sample barcodes (\code{.colnames}), and gene identifiers (\code{.rownames}).
+written to disk as comma separated values ("\code{.csv}"). Single-cell RNA-seq
+counts are written to disk in MatrixMarket format ("\code{.mtx}"), along with the
+sample barcodes ("\code{.colnames}"), and gene identifiers ("\code{.rownames}").
 }
 \details{
 Automatic gzip compression is offered as a user-defined option. This setting
@@ -38,7 +36,9 @@ writeCounts(mtcars, gzip = TRUE)
 unlink("mtcars.csv.gz")
 }
 \seealso{
-Other Write Utilities: \code{\link{saveData}}
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{initializeDirectory}},
+  \code{\link{saveData}}, \code{\link{transmit}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

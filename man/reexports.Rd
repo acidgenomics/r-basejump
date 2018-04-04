@@ -3,31 +3,21 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{pull}
+\alias{Matrix}
 \alias{reexports}
-\alias{aes}
+\alias{DataFrame}
 \alias{reexports}
-\alias{ggplot}
+\alias{mcols}
 \alias{reexports}
 \alias{\%>\%}
 \alias{reexports}
 \alias{set_rownames}
-\alias{reexports}
-\alias{Matrix}
-\alias{reexports}
-\alias{DataFrame}
 \alias{reexports}
 \alias{glimpse}
 \alias{reexports}
 \alias{is_tibble}
 \alias{reexports}
 \alias{tibble}
-\alias{reexports}
-\alias{viridis}
-\alias{reexports}
-\alias{scale_color_viridis}
-\alias{reexports}
-\alias{scale_fill_viridis}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -35,18 +25,12 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{pull}}}
-
-  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
-
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}
 
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
-  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}}
+  \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
-
-  \item{viridis}{\code{\link[viridis]{viridis}}, \code{\link[viridis]{scale_color_viridis}}, \code{\link[viridis]{scale_fill_viridis}}}
 }}
 

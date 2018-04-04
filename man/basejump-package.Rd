@@ -18,12 +18,13 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Michael Steinbaugh \email{mike@steinbaugh.com}
+\strong{Maintainer}: Michael Steinbaugh \email{mike@steinbaugh.com} (0000-0002-2403-2221)
 
 Other contributors:
 \itemize{
-  \item Rory Kirchner \email{roryk@alum.mit.edu} [contributor]
-  \item Mary Piper \email{mary.piper@gmail.com} [contributor]
+  \item Rory Kirchner \email{roryk@alum.mit.edu} (0000-0003-4814-5885) [contributor]
+  \item Mary Piper \email{mary.piper@gmail.com} (0000-0003-2699-3840) [contributor]
 }
 
 }
+\keyword{internal}

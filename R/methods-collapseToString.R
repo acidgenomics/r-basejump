@@ -1,45 +1,46 @@
 #' Collapse to String
 #'
-#' @rdname collapseToString
 #' @name collapseToString
-#' @family Data Manipulation Utilities
+#' @family Sanitization Functions
+#' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#'
 #' @param sep Separator. Defaults to comma.
 #' @param unique Unique values.
 #' @param sort Sort values.
 #' @param removeNA Remove NA values.
 #'
 #' @return
-#' - For vector: String.
-#' - For column data: Single row.
+#' - For `atomic` vector: `character` string.
+#' - For column data: Object collapsed to a single row.
 #'
 #' @seealso
 #' - [base::toString()].
 #'
 #' @examples
-#' # character
+#' # character ====
 #' groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
 #' collapseToString(
 #'     groceries,
 #'     unique = TRUE,
 #'     sort = TRUE,
-#'     removeNA = TRUE)
+#'     removeNA = TRUE
+#' )
 #' collapseToString(
 #'     groceries,
 #'     unique = FALSE,
 #'     sort = FALSE,
-#'     removeNA = FALSE)
+#'     removeNA = FALSE
+#' )
 #'
-#' # numeric
+#' # numeric ====
 #' collapseToString(seq(1:5))
 #'
-#' # logical
+#' # logical ====
 #' collapseToString(c(TRUE, FALSE))
 #' collapseToString(c(NA, NaN))
 #'
-#' # data.frame
+#' # data.frame ====
 #' # Objects supporting `dim` function similarly
 #' mtcars %>%
 #'     head() %>%
@@ -50,14 +51,13 @@ NULL
 
 
 # Constructors =================================================================
-#' @importFrom stats na.omit
-#' @importFrom stringr str_replace_na
 .collapseToString <- function(
     object,
     sep = ", ",
     sort = FALSE,
     removeNA = FALSE,
-    unique = FALSE) {
+    unique = FALSE
+) {
     assert_is_any_of(object, c("factor", "vector"))
     # Early return unmodified if scalar
     if (is_scalar(object)) {
@@ -93,13 +93,13 @@ NULL
 
 
 
-#' @importFrom dplyr funs mutate_all summarize_all
 .collapseToString.dim <- function(  # nolint
     object,
     sep = ", ",
     sort = FALSE,
     removeNA = FALSE,
-    unique = FALSE) {
+    unique = FALSE
+) {
     # Passthrough: sep, unique, sort
     assert_has_dims(object)
 
@@ -119,7 +119,8 @@ NULL
                 sep = sep,
                 sort = sort,
                 removeNA = removeNA,
-                unique = unique)
+                unique = unique
+            )
         ))
 
     if (!is.null(class)) {
@@ -136,8 +137,9 @@ NULL
 #' @export
 setMethod(
     "collapseToString",
-    signature("character"),
-    .collapseToString)
+    signature("atomic"),
+    .collapseToString
+)
 
 
 
@@ -146,7 +148,8 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("data.frame"),
-    .collapseToString.dim)
+    .collapseToString.dim
+)
 
 
 
@@ -155,34 +158,8 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("DataFrame"),
-    .collapseToString.dim)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("factor"),
-    .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("integer"),
-    .collapseToString)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("logical"),
-    .collapseToString)
+    .collapseToString.dim
+)
 
 
 
@@ -191,13 +168,5 @@ setMethod(
 setMethod(
     "collapseToString",
     signature("matrix"),
-    .collapseToString.dim)
-
-
-
-#' @rdname collapseToString
-#' @export
-setMethod(
-    "collapseToString",
-    signature("numeric"),
-    .collapseToString)
+    .collapseToString.dim
+)

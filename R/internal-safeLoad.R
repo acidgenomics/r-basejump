@@ -1,17 +1,21 @@
-#' @importFrom tools file_path_sans_ext
 .safeLoad <- function(
     file,
     name = NULL,
-    envir = parent.frame()) {
+    envir = parent.frame()
+) {
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
     assert_is_any_of(name, c("character", "NULL"))
+    if (is.character(name)) {
+        assert_is_a_string(name)
+    }
     assert_is_environment(envir)
 
     # Get the name from the file stem
     if (is.null(name)) {
         assert_all_are_matching_regex(file, "\\.rda$")
-        name <- file_path_sans_ext(basename(file))
+        name <- gsub("\\.rda$", "", basename(file))
     }
 
     # Fail on attempt to load on top of an existing object

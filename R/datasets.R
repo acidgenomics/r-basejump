@@ -1,9 +1,20 @@
-#' Motor Trend Car Road Tests
+#' Gene Symbol Synonyms
 #'
-#' @import datasets
+#' @author Michael Steinbaugh
 #' @keywords internal
 #'
-#' @return [data.frame].
+#' @examples
+#' names(synonyms)
+#' glimpse(synonyms[["homoSapiens"]])
+"synonyms"
+
+
+
+#' Motor Trend Car Road Tests
+#'
+#' @keywords internal
+#'
+#' @return `data.frame`.
 #' @export
 #'
 #' @examples
@@ -16,7 +27,7 @@ datasets::mtcars -> mtcars
 #'
 #' @keywords internal
 #'
-#' @return [tibble].
+#' @return `tibble`.
 #' @export
 #'
 #' @examples
@@ -29,21 +40,9 @@ dplyr::starwars -> starwars
 #'
 #' @keywords internal
 #'
-#' @return [tibble].
+#' @return `tibble`.
 #' @export
 #'
 #' @examples
 #' glimpse(mpg)
 ggplot2::mpg -> mpg
-
-
-
-#' Gene Symbol Synonyms
-#'
-#' @author Michael Steinbaugh
-#' @keywords internal
-#'
-#' @examples
-#' names(synonyms)
-#' glimpse(synonyms[["homoSapiens"]])
-"synonyms"

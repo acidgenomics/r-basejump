@@ -4,7 +4,8 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \title{Assert Is Hex Color Function or NULL}
 \usage{
-assertIsHexColorFunctionOrNULL(x, severity = "stop")
+assertIsHexColorFunctionOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,10 +20,17 @@ Abort on mismatch.
 Assert Is Hex Color Function or NULL
 }
 \examples{
-assertIsHexColorFunctionOrNULL(viridis)
+hex <- function(n) {
+    colors <- c("#FFFFFF", "#000000")
+    colors[seq_len(n)]
+}
+assertIsHexColorFunctionOrNULL(hex)
+assertIsHexColorFunctionOrNULL(NULL)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -31,14 +39,17 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

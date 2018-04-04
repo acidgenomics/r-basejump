@@ -2,7 +2,8 @@
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
-#' @family Infrastructure Utilities
+#' @family Developer Functions
+#' @author Michael Steinbaugh
 #'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).

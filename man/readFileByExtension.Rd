@@ -4,24 +4,19 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(object, makeNames = "camel", severity = "stop",
-  quiet = FALSE, ...)
+readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
+  "dotted"), ...)
 }
 \arguments{
-\item{object}{File path.}
+\item{file}{File path.}
 
 \item{makeNames}{Make syntactically valid names. Supports \strong{\code{camel}},
 \code{dotted}, \code{snake}, or \code{upperCamel}. This is always enforced.}
 
-\item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
-doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
-
 \item{...}{Additional arguments.}
 }
 \value{
-\link{tibble} by default, or a sparse matrix for \code{.mtx} files.
+\code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
 Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}
@@ -29,16 +24,25 @@ files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.coln
 and \code{.rownames} files.
 }
 \examples{
-readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+# Comma separated values
+csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+glimpse(csv)
+
+# Microsoft Excel Worksheet
+xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+glimpse(xlsx)
 }
 \seealso{
 \itemize{
 \item \href{http://readr.tidyverse.org}{readr}.
 \item \href{http://readxl.tidyverse.org}{readxl}.
-\item \code{\link[Matrix:readMM]{Matrix::readMM()}}: Read a MatrixMarket file.
+\item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
 
-Other Data Import and Project Utilities: \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readYAML}},
-  \code{\link{transmit}}
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadData}}, \code{\link{loadRemoteData}},
+  \code{\link{readGFF}}, \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

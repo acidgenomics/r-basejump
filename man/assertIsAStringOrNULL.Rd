@@ -4,7 +4,7 @@
 \alias{assertIsAStringOrNULL}
 \title{Assert Is a String or NULL}
 \usage{
-assertIsAStringOrNULL(x, severity = "stop")
+assertIsAStringOrNULL(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,17 +19,13 @@ Abort on mismatch.
 Assert Is a String or NULL
 }
 \examples{
-# Success
 assertIsAStringOrNULL("hello world")
 assertIsAStringOrNULL(NULL)
-
-# Failure
-tryCatch(
-    assertIsAStringOrNULL(c("hello", "world")),
-    error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -37,15 +33,18 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

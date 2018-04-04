@@ -10,7 +10,7 @@ initializeDirectory(dir)
 \item{dir}{Directory path.}
 }
 \value{
-Directory path string.
+Directory path.
 }
 \description{
 Checks and creates a directory recursively automatically. Useful for setting
@@ -19,5 +19,15 @@ up functions that require writes to a user-specified directory.
 \examples{
 initializeDirectory("testdir")
 dir.exists("testdir")
+
+# Clean up
 unlink("testdir", recursive = TRUE)
+}
+\seealso{
+Other Write Functions: \code{\link{assignAndSaveData}},
+  \code{\link{saveData}}, \code{\link{transmit}},
+  \code{\link{writeCounts}}
+}
+\author{
+Michael Steinbaugh
 }

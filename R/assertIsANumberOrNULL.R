@@ -1,24 +1,23 @@
 #' Assert Is a Number or NULL
 #'
-#' @family Assert Checks
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
 #' @inherit assert
 #'
 #' @export
 #'
 #' @examples
-#' # Success
 #' assertIsANumberOrNULL(1.1)
 #' assertIsANumberOrNULL(NULL)
-#'
-#' # Failure
-#' tryCatch(
-#'     assertIsANumberOrNULL(c(1.1, 1.2)),
-#'     error = function(e) e)
-assertIsANumberOrNULL <- function(x, severity = "stop") {
+assertIsANumberOrNULL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
     assert_is_any_of(
         x = x,
         classes = c("numeric", "NULL"),
-        severity = severity)
+        severity = severity
+    )
     if (is.numeric(x)) {
         assert_is_a_number(x, severity = severity)
     }

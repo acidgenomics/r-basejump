@@ -1,44 +1,64 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' @importFrom utils download.file
+#' This function is vectorized and supports mixed local and remote paths.
 #'
-#' @inheritParams general
+#' @family Developer Functions
+#'
 #' @inheritParams saveData
+#' @inheritParams general
 #'
-#' @param severity Return `stop` (default), `warning`, or `message` if file
-#'   doesn't exist.
-#'
-#' @return Named character vector containing the original file name as the
-#'   name and local file path as the string. Aborts on a missing file.
+#' @return Named `character` containing the original basename as the name and
+#'   local file path (i.e. tempfile) as the string. Aborts on a missing file.
 #' @export
 #'
 #' @examples
-#' localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
-localOrRemoteFile <- function(
-    object,
-    severity = "stop",
-    quiet = FALSE) {
-    assert_is_a_string(object)
-    assert_is_a_string(severity)
-    assert_is_subset(severity, c("message", "stop", "warning"))
-    assert_is_a_bool(quiet)
-    basename <- basename(object)
+#' # Single file
+#' x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+#' names(x)
+#'
+#' # Vectorized
+#' x <- localOrRemoteFile(c(
+#'     "http://basejump.seq.cloud/mtcars.csv",
+#'     "http://basejump.seq.cloud/mtcars.rda"
+#' ))
+#' names(x)
+localOrRemoteFile <- function(file) {
+    assert_is_character(file)
 
-    # Download remote file, if necessary
-    if (grepl("\\://", object)) {
-        # Remote file
-        file <- tempfile()
-        download.file(url = object, destfile = file, quiet = quiet)
-    } else {
-        file <- object
-    }
+    local <- mapply(
+        file = file,
+        FUN = function(file) {
+            # Remote file mode
+            if (grepl("\\://", file)) {
+                # Make sure local tempfile always has an extension
+                extPattern <- "\\.([A-Za-z0-9]+)$"
+                assert_all_are_matching_regex(file, extPattern)
+                ext <- str_match(file, extPattern)[, 2L]
 
-    assert_all_are_existing_files(file, severity = severity)
-    if (!file.exists(file)) {
-        return(invisible())
-    }
+                # Fix for Excel files on Windows
+                # https://github.com/tidyverse/readxl/issues/374
+                # Otherwise, `read_excel()` errors in `readFileByExtension()`
+                if (ext == "xlsx") {
+                    # Write binary
+                    mode <- "wb"
+                } else {
+                    # Write (default)
+                    mode <- "w"
+                }
 
-    file <- normalizePath(file)
-    names(file) <- basename
-    file
+                destfile <- paste(tempfile(), ext, sep = ".")
+                download.file(url = file, destfile = destfile, mode = mode)
+                destfile
+            } else {
+                file
+            }
+        },
+        SIMPLIFY = TRUE,
+        USE.NAMES = FALSE
+    )
+    assert_all_are_existing_files(local)
+
+    local <- normalizePath(local, winslash = "/", mustWork = TRUE)
+    names(local) <- basename(file)
+    local
 }

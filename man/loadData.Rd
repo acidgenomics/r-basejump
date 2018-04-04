@@ -2,26 +2,25 @@
 % Please edit documentation in R/loadData.R
 \name{loadData}
 \alias{loadData}
-\title{Load Local Data}
+\title{Load Data}
 \usage{
-loadData(..., dir = getwd(), envir = parent.frame(), quiet = FALSE)
+loadData(..., dir = ".", envir = parent.frame())
 }
 \arguments{
-\item{...}{Object names as symbols.}
+\item{...}{Object names. Note that these arguments are interpreted using
+non-standard evaluation, and \emph{should not be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
 }
 \value{
-Silent named character vector of file paths.
+Invisible \code{character} containing file paths.
 }
 \description{
-Load R data (\code{.rda}) files from a directory using symbols rather than complete
-file paths.
+Load R data (\code{.rda}) files from a directory using symbols rather than
+complete file paths.
 }
 \details{
 \code{\link[=loadData]{loadData()}} is opinionated about the format of R data files it will accept.
@@ -36,8 +35,24 @@ files that contain a single object, and the internal object name must match
 the file name exactly. These conventions match the recommendations of the
 RStudio team, which recommends saving single objects per file.
 }
+\note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
+}
 \examples{
-# Load the internal GRCh37 gene annotations data
-loadData(grch37, dir = system.file("extdata", package = "basejump"))
-glimpse(grch37)
+loaded <- loadData(
+    mn,
+    dir = system.file("extdata", package = "basejump")
+)
+print(loaded)
+class(mn)
+}
+\seealso{
+Other Read Functions: \code{\link{loadDataAsName}},
+  \code{\link{loadRemoteData}},
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readYAML}}
+}
+\author{
+Michael Steinbaugh
 }

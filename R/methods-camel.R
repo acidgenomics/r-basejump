@@ -1,7 +1,8 @@
 #' Camel Case
 #'
-#' @rdname camel
 #' @name camel
+#' @family Name Functions
+#' @author Michael Steinbaugh
 #'
 #' @inherit dotted
 #'
@@ -10,33 +11,32 @@
 #'   example.
 #'
 #' @examples
-#' load(system.file("extdata/makeNames.rda", package = "basejump"))
+#' load(system.file("extdata/mn.rda", package = "basejump"))
 #'
-#' # Character vector
-#' character <- makeNames$character
+#' # character ====
+#' character <- mn$character
 #' print(character)
 #' camel(character)
 #' upperCamel(character)
 #'
-#' # Named character vector
-#' namedCharacter <- makeNames$namedCharacter
+#' namedCharacter <- mn$namedCharacter
 #' camel(namedCharacter)
 #' upperCamel(namedCharacter)
 #'
-#' # Factor
-#' factor <- makeNames$factor
+#' # factor ====
+#' factor <- mn$factor
 #' print(factor)
 #' camel(factor)
 #' upperCamel(factor)
 #'
-#' # data.frame
-#' dataFrame <- makeNames$dataFrame
+#' # data.frame ====
+#' dataFrame <- mn$dataFrame
 #' print(dataFrame)
 #' camel(dataFrame, rownames = TRUE)
 #' camel(dataFrame, rownames = FALSE)
 #'
-#' # Named list
-#' list <- makeNames$list
+#' # list ====
+#' list <- mn$list
 #' print(list)
 #' camel(list)
 NULL
@@ -47,7 +47,8 @@ NULL
 .camel <- function(
     object,
     format = "lower",
-    strict = FALSE) {
+    strict = FALSE
+) {
     object <- dotted(object)
     assert_is_a_string(format)
     assert_is_subset(format, c("lower", "upper"))
@@ -90,7 +91,8 @@ NULL
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: rownames, colnames, strict
     if (!is.null(dimnames(object))) {
         .camel.dim(
@@ -111,7 +113,8 @@ NULL
     object,
     rownames = FALSE,
     colnames = TRUE,
-    strict = FALSE) {
+    strict = FALSE
+) {
     # Passthrough: strict
     assert_has_dimnames(object)
     assert_is_a_bool(rownames)
@@ -122,6 +125,23 @@ NULL
         assert_has_colnames(object)
         colnames(object) <- .camel(colnames(object), strict = strict)
     }
+    object
+}
+
+
+
+.camel.factor <- function(object, strict = FALSE) {  # nolint
+    object %>%
+        .camel.vector(strict = strict) %>%
+        factor()
+}
+
+
+
+.camel.mcols <- function(object, strict = FALSE) {  # nolint
+    colnames <- colnames(mcols(object))
+    colnames <- camel(colnames, strict = strict)
+    colnames(mcols(object)) <- colnames
     object
 }
 
@@ -141,7 +161,8 @@ NULL
         object,
         rownames = FALSE,
         colnames = TRUE,
-        strict = strict)
+        strict = strict
+    )
 }
 
 
@@ -166,7 +187,8 @@ NULL
 setMethod(
     "camel",
     signature("ANY"),
-    .camel.ANY)
+    .camel.ANY
+)
 
 
 
@@ -175,7 +197,8 @@ setMethod(
 setMethod(
     "camel",
     signature("character"),
-    .camel.vector)
+    .camel.vector
+)
 
 
 
@@ -184,7 +207,8 @@ setMethod(
 setMethod(
     "camel",
     signature("data.frame"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -193,7 +217,8 @@ setMethod(
 setMethod(
     "camel",
     signature("DataFrame"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -202,7 +227,19 @@ setMethod(
 setMethod(
     "camel",
     signature("factor"),
-    .camel.vector)
+    .camel.factor
+)
+
+
+
+
+#' @rdname camel
+#' @export
+setMethod(
+    "camel",
+    signature("GRanges"),
+    .camel.mcols
+)
 
 
 
@@ -211,7 +248,8 @@ setMethod(
 setMethod(
     "camel",
     signature("list"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -220,7 +258,8 @@ setMethod(
 setMethod(
     "camel",
     signature("List"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -229,7 +268,8 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    .camel.dim)
+    .camel.dim
+)
 
 
 
@@ -238,7 +278,8 @@ setMethod(
 setMethod(
     "camel",
     signature("SimpleList"),
-    .camel.names)
+    .camel.names
+)
 
 
 
@@ -247,4 +288,5 @@ setMethod(
 setMethod(
     "camel",
     signature("tbl_df"),
-    .camel.tibble)
+    .camel.tibble
+)

@@ -4,23 +4,32 @@
 \alias{localOrRemoteFile}
 \title{Dynamically Handle a Local or Remote File Path}
 \usage{
-localOrRemoteFile(object, severity = "stop", quiet = FALSE)
+localOrRemoteFile(file)
 }
 \arguments{
-\item{object}{Object.}
-
-\item{severity}{Return \code{stop} (default), \code{warning}, or \code{message} if file
-doesn't exist.}
-
-\item{quiet}{If \code{TRUE}, suppress any status messages and/or progress bars.}
+\item{file}{File path.}
 }
 \value{
-Named character vector containing the original file name as the
-name and local file path as the string. Aborts on a missing file.
+Named \code{character} containing the original basename as the name and
+local file path (i.e. tempfile) as the string. Aborts on a missing file.
 }
 \description{
-Dynamically Handle a Local or Remote File Path
+This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
-localOrRemoteFile("http://basejump.seq.cloud/mtcars.rda")
+# Single file
+x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+names(x)
+
+# Vectorized
+x <- localOrRemoteFile(c(
+    "http://basejump.seq.cloud/mtcars.csv",
+    "http://basejump.seq.cloud/mtcars.rda"
+))
+names(x)
+}
+\seealso{
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{methodFormals}},
+  \code{\link{multiassignAsNewEnvir}}
 }

@@ -4,7 +4,8 @@
 \alias{assertIsColorScaleContinuousOrNULL}
 \title{Assert Is Color Palette Scale Continuous or NULL}
 \usage{
-assertIsColorScaleContinuousOrNULL(x, severity = "stop")
+assertIsColorScaleContinuousOrNULL(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -19,21 +20,15 @@ Abort on mismatch.
 Assert Is Color Palette Scale Continuous or NULL
 }
 \examples{
-# Success
-color <- scale_color_viridis(discrete = FALSE)
+color <- ggplot2::scale_color_gradient(low = "red", high = "blue")
 class(color)
 assertIsColorScaleContinuousOrNULL(color)
 assertIsColorScaleContinuousOrNULL(NULL)
-
-# Failure
-color <- scale_color_viridis(discrete = TRUE)
-class(color)
-tryCatch(
-    assertIsColorScaleContinuousOrNULL(color),
-    error = function(e) e)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -42,14 +37,17 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

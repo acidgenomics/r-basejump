@@ -4,12 +4,12 @@
 \alias{assertIsGene2symbol}
 \title{Assert Is Gene to Symbol Mapping Data Frame}
 \usage{
-assertIsGene2symbol(x, severity = "stop")
+assertIsGene2symbol(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
-\item{x}{\link{data.frame} containing Ensembl gene identifier to gene symbol
-mappings. Must be structured as a two column \link{data.frame} with "ensgene"
-and "symbol" columns.}
+\item{x}{\code{data.frame} containing Ensembl gene-to-symbol mappings. Must be
+structured as a two column \code{data.frame} with "geneID" and "geneName"
+columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -21,17 +21,16 @@ Abort on mismatch.
 Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
-# Success
-gene2symbol <- gene2symbol("Homo sapiens")
-assertIsGene2symbol(gene2symbol)
-
-# Failure
-tryCatch(
-    assertIsGene2symbol(mtcars),
-    error = function(e) e)
+x <- data.frame(
+    "geneID" = "ENSG00000000003",
+    "geneName" = "TSPAN6"
+)
+assertIsGene2symbol(x)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -40,14 +39,17 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }

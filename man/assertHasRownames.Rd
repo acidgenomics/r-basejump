@@ -5,7 +5,7 @@
 \alias{hasRownames}
 \title{Assert Has Rownames}
 \usage{
-assertHasRownames(x, severity = "stop")
+assertHasRownames(x, severity = getOption("assertive.severity", "stop"))
 
 hasRownames(x)
 }
@@ -28,28 +28,17 @@ for data frames and tibbles.
 }
 \examples{
 data <- data.frame(
-    sample1 = c(1L, 2L),
-    sample2 = c(3L, 4L),
-    row.names = c("gene1", "gene2"),
-    stringsAsFactors = FALSE)
-assertHasRownames(data)
-
-# Now set the rownames as NULL
-rownames(data) <- NULL
-tryCatch(
-    assertHasRownames(data),
-    error = function(e) e)
-
-tibble <- tibble(
-    sample1 = c(1L, 2L),
-    sample2 = c(3L, 4L)
+    "sample_1" = c(1L, 2L),
+    "sample_2" = c(3L, 4L),
+    row.names = c("gene_1", "gene_2"),
+    stringsAsFactors = FALSE
 )
-tryCatch(
-    assertHasRownames(tibble),
-    error = function(e) e)
+assertHasRownames(data)
 }
 \seealso{
-Other Assert Checks: \code{\link{assertAllAreNonExisting}},
+Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAreGeneAnnotations}},
+  \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
@@ -57,15 +46,18 @@ Other Assert Checks: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsAnnotable}},
   \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
   \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
+  \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
   \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+}
+\author{
+Michael Steinbaugh
 }
