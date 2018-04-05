@@ -1,6 +1,6 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.4.1
+Version: 0.99.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -31,7 +31,7 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 LazyData: TRUE
 Depends:
-    R (>= 3.4)
+    R (>= 3.5)
 Imports:
     AnnotationHub,
     BiocGenerics,
@@ -46,7 +46,7 @@ Imports:
     datasets,
     dendsort,
     dplyr (>= 0.7),
-    ensembldb (>= 2.0),
+    ensembldb,
     ggplot2 (>= 2.2.1),
     knitr (>= 1.20),
     magrittr (>= 1.5),
@@ -65,9 +65,9 @@ Imports:
     yaml
 Suggests:
     BiocStyle,
-    devtools (>= 1.13),
+    devtools,
     EnsDb.Hsapiens.v75,
-    lintr (>= 1.0),
+    lintr,
     roxygen2,
     testthat (>= 2.0),
     tidyr (>= 0.8),
