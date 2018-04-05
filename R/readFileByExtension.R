@@ -66,35 +66,21 @@ readFileByExtension <- function(
             ...
         )
     } else if (ext == "mtx") {
-        data <- Matrix::readMM(file = file, ...)
+        data <- readMM(file = file, ...)
     } else if (ext == "tsv") {
-        data <- readr::read_tsv(
-            file = file,
-            na = na,
-            progress = FALSE,
-            ...
-        )
+        data <- read_tsv(file = file, na = na, progress = FALSE, ...)
     } else if (ext == "txt") {
-        data <- utils::read.table(
-            file = file,
-            header = TRUE,
-            na.strings = na,
-            ...
-        )
+        data <- read.table(file = file, header = TRUE, na.strings = na, ...)
     } else if (ext == "xlsx") {
-        data <- readxl::read_excel(
-            path = file,
-            na = na,
-            ...
-        )
+        data <- read_excel(path = file, na = na, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- readr::read_lines(
+        data <- read_lines(
             file = file,
             na = na,
             ...
         )
     } else if (ext == "counts") {
-        data <- readr::read_tsv(
+        data <- read_tsv(
             file = file,
             na = na,
             progress = FALSE,
