@@ -1,5 +1,7 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
+Description: Helper functions for bioinformatics, package development, and
+    R Markdown reports.
 Version: 0.99.0
 Authors@R: c(
     person(
@@ -21,17 +23,15 @@ Authors@R: c(
         role = "ctb",
         comment = c(ORCID = "0000-0003-2699-3840")
     ))
-Description: Helper functions for bioinformatics, package development, and
-    R Markdown reports.
-License: MIT + file LICENSE
-Encoding: UTF-8
 URL:
     http://steinbaugh.com/basejump,
     https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 Depends:
-    R (>= 3.5)
+    R (>= 3.4)
 Imports:
     AnnotationHub,
     BiocGenerics,
