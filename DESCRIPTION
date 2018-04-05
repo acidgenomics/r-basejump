@@ -31,7 +31,7 @@ URL:
 BugReports: https://github.com/steinbaugh/basejump/issues
 LazyData: TRUE
 Depends:
-    R (>= 3.6)
+    R (>= 3.5)
 Imports:
     AnnotationHub,
     BiocGenerics,
