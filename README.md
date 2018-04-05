@@ -18,10 +18,7 @@ This is an [R][] package.
 ```r
 source("https://bioconductor.org/biocLite.R")
 biocLite("devtools")
-biocLite(
-    "steinbaugh/basejump",
-    dependencies = c("Depends", "Imports", "Suggests")
-)
+biocLite("steinbaugh/basejump")
 ```
 
 ### [conda][]  method
