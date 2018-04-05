@@ -61,14 +61,8 @@ Imports:
     utils,
     yaml
 Suggests:
-    BiocStyle,
-    devtools,
     EnsDb.Hsapiens.v75,
-    lintr,
-    roxygen2,
-    testthat (>= 2.0),
-    tidyr (>= 0.8),
-    tidyverse (>= 1.2)
+    testthat (>= 2.0)
 biocViews:
     DataImport,
     Infrastructure
