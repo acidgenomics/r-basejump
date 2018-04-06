@@ -34,7 +34,6 @@ Depends:
     R (>= 3.4)
 Imports:
     AnnotationHub,
-    BiocGenerics,
     GenomicFeatures,
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
