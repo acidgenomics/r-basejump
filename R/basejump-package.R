@@ -35,16 +35,3 @@
 #'   installed.packages packageVersion read.delim read.table
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
-
-
-
-globalVariables(".")
-annotationCols <- c(
-    "txID",
-    "txName",
-    "txBiotype",
-    "geneID",
-    "geneName",
-    "geneBiotype",
-    "description"
-)
