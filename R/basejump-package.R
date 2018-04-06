@@ -4,14 +4,13 @@
 #'
 #' @keywords internal
 #'
-#' @import datasets methods
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
-#' @importFrom S4Vectors complete.cases mcols<- na.omit tail
+#' @importFrom S4Vectors as.data.frame complete.cases mcols<- na.omit tail
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr case_when funs mutate_all mutate_if summarize_all
 #' @importFrom ensembldb ensemblVersion
@@ -19,6 +18,7 @@
 #'   ggplot theme theme_minimal
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr set_colnames set_names
+#' @importFrom methods as getGeneric is selectMethod show
 #' @importFrom pbapply pblapply
 #' @importFrom plyr ldply
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
