@@ -4,16 +4,16 @@
 \name{broadClass}
 \alias{broadClass}
 \alias{broadClass}
-\alias{broadClass,DataFrame-method}
 \alias{broadClass,data.frame-method}
+\alias{broadClass,DataFrame-method}
 \alias{broadClass,GRanges-method}
 \title{Broad Class Definitions}
 \usage{
 broadClass(object, ...)
 
-\S4method{broadClass}{DataFrame}(object)
-
 \S4method{broadClass}{data.frame}(object)
+
+\S4method{broadClass}{DataFrame}(object)
 
 \S4method{broadClass}{GRanges}(object)
 }
