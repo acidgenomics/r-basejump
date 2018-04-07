@@ -1,17 +1,23 @@
-devtools::load_all()
-library(tidyverse)
+# Synonym support for C. elegans is poor on NCBI.
+# Refer users to `wormbase` package instead.
 
-# Support for C. elegans is poor here. Use WormBase instead.
+library(devtools)
+library(tidyverse)
+load_all()
+
 genomes <- list(
-    "drosophilaMelanogaster" = c(
-        kingdom = "Invertebrates",
-        species = "Drosophila_melanogaster"),
     "homoSapiens" = c(
-        kingdom = "Mammalia",
-        species = "Homo_sapiens"),
+        "kingdom" = "Mammalia",
+        "species" = "Homo_sapiens"
+    ),
     "musMusculus" = c(
-        kingdom = "Mammalia",
-        species = "Mus_musculus")
+        "kingdom" = "Mammalia",
+        "species" = "Mus_musculus"
+    ),
+    "drosophilaMelanogaster" = c(
+        "kingdom" = "Invertebrates",
+        "species" = "Drosophila_melanogaster"
+    )
 )
 
 synonyms <- lapply(genomes, function(genome) {
@@ -30,34 +36,35 @@ synonyms <- lapply(genomes, function(genome) {
     }
 
     data <- data %>%
-        camel(strict = FALSE) %>%
+        camel() %>%
         select(symbol, synonyms, dbXrefs) %>%
-        filter(synonyms != "-", dbXrefs != "-") %>%
-        mutate(synonyms = str_replace_all(synonyms, "\\|", ", ")) %>%
-        arrange(symbol)
+        rename(geneName = symbol) %>%
+        filter(
+            synonyms != "-",
+            dbXrefs != "-"
+        ) %>%
+        mutate(synonyms = str_replace_all(synonyms, "\\|", ", "))
 
     # Extract the gene identifiers
     organism <- camel(genome[["species"]])
     if (organism == "drosophilaMelanogaster") {
-        data <- data %>%
-            mutate(
-                ensgene = str_extract(dbXrefs, "\\bFBgn[0-9]{7}\\b")
-            )
+        data <- mutate(
+            data,
+            geneID = str_extract(dbXrefs, "\\bFBgn[0-9]{7}\\b")
+        )
     } else if (organism %in% c("homoSapiens", "musMusculus")) {
-        data <- data %>%
-            mutate(
-                ensgene = str_extract(dbXrefs, "\\bENS[A-Z]+[0-9]{11}\\b")
-            )
+        data <- mutate(
+            data,
+            geneID = str_extract(dbXrefs, "\\bENS[A-Z]+[0-9]{11}\\b")
+        )
     }
 
     data %>%
-        filter(!is.na(ensgene)) %>%
-        select(ensgene, symbol, synonyms) %>%
-        arrange(ensgene)
+        filter(!is.na(geneID)) %>%
+        select(geneID, geneName, synonyms) %>%
+        arrange(geneID)
 })
 names(synonyms) <- names(genomes)
 
 synonyms[["date"]] <- Sys.Date()
-synonyms[["sessionInfo"]] <- sessionInfo()
-
-devtools::use_data(synonyms, overwrite = TRUE, compress = "xz")
+use_data(synonyms, overwrite = TRUE, compress = "xz")
