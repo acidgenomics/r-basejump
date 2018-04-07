@@ -42,8 +42,8 @@
 #'
 #' @param organism Full latin organism name (e.g. "`Homo sapiens`").
 #' @param format Fetch ranges as "`genes`" or "`transcripts`".
-#' @param genomeBuild *Optional.* Genome assembly name (e.g. "`GRCh38`"). If
-#'   `NULL`, defaults to the most recent build available.
+#' @param genomeBuild *Optional.* Genome build assembly name (e.g. "`GRCh38`").
+#'   If `NULL`, defaults to the most recent build available.
 #' @param release *Optional.* Release version (e.g. `90`). If `NULL`, defaults
 #'   to the most recent release available.
 #' @param metadata Include the AnnotationHub metadata inside a `list`.
@@ -57,7 +57,8 @@
 #'
 #' @examples
 #' # Genes ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+#' x <- makeGRangesFromEnsembl(
+#'     organism = "Homo sapiens", format = "genes")
 #' summary(x)
 #'
 #' # Transcripts ====
@@ -105,8 +106,13 @@ makeGRangesFromEnsembl <- function(
     ) {
         # GRCh37 release 75
         id <- "EnsDb.Hsapiens.v75"
-        .biocLite(id)
-        edb <- get(id, inherits = TRUE)
+        if (requireNamespace(id, quietly = TRUE)) {
+            edb <- get(id, inherits = TRUE)
+        } else {
+            abort(paste(
+                "GRCh37 genome build requires the", id, "package"
+            ))
+        }
     } else {
         # AnnotationHub ========================================================
         # Connect to AnnotationHub. On a fresh install this will print a
