@@ -26,21 +26,23 @@ assertFormalAnnotationCol <- function(
     colData,
     severity = getOption("assertive.severity", "stop")
 ) {
-    assert_has_dims(x, severity = severity)
+    assert_has_dimnames(x, severity = severity)
     assert_is_any_of(
         x = colData,
         classes = c("data.frame", "DataFrame", "logical", "NULL"),
         severity = severity
     )
     if (has_dims(colData)) {
-        assert_has_colnames(colData, severity = severity)
-        assertHasRownames(colData, severity = severity)
+        assert_has_dimnames(colData, severity = severity)
         assert_are_identical(
             x = colnames(x),
             y = rownames(colData),
             severity = severity
         )
-        lapply(colData, assert_is_factor)
+        # All columns must be factors
+        lapply(colData, function(x) {
+            assert_is_factor(x, severity = severity)
+        })
     }
     if (is.logical(colData)) {
         assert_is_identical_to_na(colData, severity = severity)
