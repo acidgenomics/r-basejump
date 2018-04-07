@@ -18,13 +18,13 @@ This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
 # Single file
-x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
+x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
 names(x)
 
 # Vectorized
 x <- localOrRemoteFile(c(
-    "http://basejump.seq.cloud/mtcars.csv",
-    "http://basejump.seq.cloud/mtcars.rda"
+    "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
+    "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
 ))
 names(x)
 }

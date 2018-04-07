@@ -22,7 +22,7 @@ Assert Is Data Frame or NULL
 This checks for \code{data.frame} and will stop for \code{DataFrame} class.
 }
 \examples{
-assertIsDataFrameOrNULL(mtcars)
+assertIsDataFrameOrNULL(datasets::mtcars)
 assertIsDataFrameOrNULL(NULL)
 }
 \seealso{

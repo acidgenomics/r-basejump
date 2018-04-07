@@ -218,20 +218,12 @@ upperCamel(x)
 makeNames(x)
 
 # data.frame ====
-x <- mn$dataFrame
-print(x)
-
-camel(x, rownames = FALSE)
-camel(x, rownames = TRUE)
-
-dotted(x, rownames = FALSE)
-dotted(x, rownames = TRUE)
-
-snake(x, rownames = FALSE)
-snake(x, rownames = TRUE)
-
-upperCamel(x, rownames = FALSE)
-upperCamel(x, rownames = TRUE)
+x <- datasets::USArrests
+glimpse(x)
+camel(x, rownames = TRUE, colnames = TRUE)
+dotted(x, rownames = TRUE, colnames = TRUE)
+snake(x, rownames = TRUE, colnames = TRUE)
+upperCamel(x, rownames = TRUE, colnames = TRUE)
 
 # list ====
 x <- mn$list

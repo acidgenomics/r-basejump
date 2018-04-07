@@ -20,7 +20,9 @@ multiassignAsNewEnvir(..., envirName, parentEnvir = parent.frame())
 Assign Multiple Objects as a New Environment
 }
 \examples{
-multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
+multiassignAsNewEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
+class(example)
+ls(example)
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},

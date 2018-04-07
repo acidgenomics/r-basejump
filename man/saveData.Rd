@@ -38,10 +38,11 @@ same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\li
 not overwrite by default if that behavior is preferred.
 }
 \examples{
-saveData(mtcars, starwars)
+saveData(rnaseqCounts, singleCellCounts, dir = "example")
+list.files("example")
 
 # Clean up
-unlink(c("mtcars.rda", "starwars.rda"))
+unlink("example", recursive = TRUE)
 }
 \seealso{
 \itemize{

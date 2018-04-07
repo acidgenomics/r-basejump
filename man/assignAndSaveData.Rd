@@ -35,13 +35,13 @@ the newly assigned object, specified by the "\code{dir}" argument.
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
 }
 \examples{
-assignAndSaveData(name = "test", object = mtcars)
-exists("test", inherits = FALSE)
-file.exists("test.rda")
+assignAndSaveData(name = "example", object = rnaseqCounts)
+exists("example", inherits = FALSE)
+file.exists("example.rda")
 
 # Clean up
-rm(test)
-unlink("test.rda")
+rm(example)
+unlink("example.rda")
 }
 \seealso{
 Other Write Functions: \code{\link{initializeDirectory}},

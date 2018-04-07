@@ -12,8 +12,8 @@ annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
 
 \item{format}{Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
-\code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
+If \code{NULL}, defaults to the most recent build available.}
 
 \item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
 to the most recent release available.}

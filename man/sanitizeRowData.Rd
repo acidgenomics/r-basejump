@@ -21,19 +21,11 @@ Supports \code{GRanges}, \code{DataFrame}, and \code{data.frame} class objects.
 }
 \examples{
 # Genes ====
-x <- makeGRangesFromEnsembl(
-    organism = "Homo sapiens",
-    format = "genes",
-    genomeBuild = "GRCh37"
-)
+x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
 sanitizeRowData(x) \%>\% glimpse()
 
 # Transcripts ====
-x <- makeGRangesFromEnsembl(
-    organism = "Homo sapiens",
-    format = "transcripts",
-    genomeBuild = "GRCh37"
-)
+x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
 sanitizeRowData(x) \%>\% glimpse()
 }
 \seealso{
