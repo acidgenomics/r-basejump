@@ -112,11 +112,11 @@ makeNames <- function(names, unique = FALSE) {
     format = c("lower", "upper"),
     strict = FALSE
 ) {
-    assert_is_atomic(object)
+    object <- .dotted(object)
     format <- match.arg(format)
     assert_is_a_bool(strict)
 
-    object <- dotted(object)
+
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
@@ -195,7 +195,7 @@ makeNames <- function(names, unique = FALSE) {
 .snake <- function(object) {
     assert_is_atomic(object)
     object %>%
-        dotted() %>%
+        .dotted() %>%
         tolower() %>%
         gsub("\\.", "_", .)
 }
@@ -203,14 +203,13 @@ makeNames <- function(names, unique = FALSE) {
 
 
 .upperCamel <- function(object, strict = FALSE) {
-    assert_is_atomic(object)
     .camel(object, format = "upper", strict = strict)
 }
 
 
 
-# dim --------------------------------------------------------------------------
-.camel.dim <- function(  # nolint
+# matrix -----------------------------------------------------------------------
+.camel.matrix <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE,
@@ -230,7 +229,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-.dotted.dim <- function(  # nolint
+.dotted.matrix <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE
@@ -248,7 +247,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-.snake.dim <- function(  # nolint
+.snake.matrix <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE
@@ -266,7 +265,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-.upperCamel.dim <- function(  # nolint
+.upperCamel.matrix <- function(  # nolint
     object,
     rownames = FALSE,
     colnames = TRUE,
@@ -296,7 +295,7 @@ makeNames <- function(names, unique = FALSE) {
 
 .dotted.names <- function(object) {  # nolint
     assert_has_names(object)
-    names(object) <- .dotted(names(object))
+    names(object) <- dotted(names(object))
     object
 }
 
@@ -304,7 +303,7 @@ makeNames <- function(names, unique = FALSE) {
 
 .snake.names <- function(object) {  # nolint
     assert_has_names(object)
-    names(object) <- .snake(names(object))
+    names(object) <- snake(names(object))
     object
 }
 
@@ -312,92 +311,13 @@ makeNames <- function(names, unique = FALSE) {
 
 .upperCamel.names <- function(object, strict = FALSE) {  # nolint
     assert_has_names(object)
-    names(object) <- .upperCamel(names(object), strict = strict)
+    names(object) <- upperCamel(names(object), strict = strict)
     object
 }
 
 
 
 # Methods ======================================================================
-# ANY --------------------------------------------------------------------------
-#' @rdname makeNames
-#' @export
-setMethod(
-    "camel",
-    signature("ANY"),
-    function(object, strict = FALSE) {
-        if (!is.null(dimnames(object))) {
-            .camel.dim(object, strict = strict)
-        } else if (!is.null(names(object))) {
-            .camel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "dotted",
-    signature("ANY"),
-    function(object) {
-        # Passthrough: rownames, colnames
-        if (!is.null(dimnames(object))) {
-            .dotted.dim(object)
-        } else if (!is.null(names(object))) {
-            .dotted.names(object)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "snake",
-    signature("ANY"),
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE
-    ) {
-        # Passthrough: rownames, colnames
-        if (!is.null(dimnames(object))) {
-            .snake.dim(object, rownames = rownames, colnames = colnames)
-        } else if (!is.null(names(object))) {
-            .snake.names(object)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "upperCamel",
-    signature("ANY"),
-    function(object, strict = FALSE) {
-        if (!is.null(dimnames(object))) {
-            .upperCamel.dim(object, strict = strict)
-        } else if (!is.null(names(object))) {
-            .upperCamel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
-)
-
-
-
 # character --------------------------------------------------------------------
 #' @rdname makeNames
 #' @export
@@ -542,7 +462,7 @@ setMethod(
 setMethod(
     "camel",
     signature("matrix"),
-    .camel.dim
+    .camel.matrix
 )
 
 
@@ -552,7 +472,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("matrix"),
-    .dotted.dim
+    .dotted.matrix
 )
 
 
@@ -562,7 +482,7 @@ setMethod(
 setMethod(
     "snake",
     signature("matrix"),
-    .snake.dim
+    .snake.matrix
 )
 
 
@@ -572,7 +492,7 @@ setMethod(
 setMethod(
     "upperCamel",
     signature("matrix"),
-    .upperCamel.dim
+    .upperCamel.matrix
 )
 
 
@@ -839,4 +759,114 @@ setMethod(
     "upperCamel",
     signature("SimpleList"),
     getMethod("upperCamel", "list")
+)
+
+
+
+# ANY --------------------------------------------------------------------------
+#' @rdname makeNames
+#' @export
+setMethod(
+    "camel",
+    signature("ANY"),
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = FALSE
+    ) {
+        if (!is.null(dimnames(object))) {
+            .camel.matrix(
+                object,
+                rownames = rownames,
+                colnames = colnames,
+                strict = strict
+            )
+        } else if (!is.null(names(object))) {
+            .camel.names(object, strict = strict)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "dotted",
+    signature("ANY"),
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE
+    ) {
+        if (!is.null(dimnames(object))) {
+            .dotted.matrix(
+                object,
+                rownames = rownames,
+                colnames = colnames
+            )
+        } else if (!is.null(names(object))) {
+            .dotted.names(object)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "snake",
+    signature("ANY"),
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE
+    ) {
+        # Passthrough: rownames, colnames
+        if (!is.null(dimnames(object))) {
+            .snake.matrix(
+                object,
+                rownames = rownames,
+                colnames = colnames
+            )
+        } else if (!is.null(names(object))) {
+            .snake.names(object)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "upperCamel",
+    signature("ANY"),
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = FALSE
+    ) {
+        if (!is.null(dimnames(object))) {
+            .upperCamel.matrix(
+                object,
+                rownames = rownames,
+                colnames = colnames,
+                strict = strict
+            )
+        } else if (!is.null(names(object))) {
+            .upperCamel.names(object, strict = strict)
+        } else {
+            object
+        }
+    }
 )
