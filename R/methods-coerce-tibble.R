@@ -26,16 +26,16 @@ NULL
 
 # Constructors =================================================================
 .tibble <- function(from) {
-    if (tibble::is_tibble(from)) {
+    if (is_tibble(from)) {
         return(from)
     }
     assert_has_dims(from)
     assert_has_colnames(from)
     from <- as.data.frame(from)
-    if (tibble::has_rownames(from)) {
+    if (has_rownames(from)) {
         from <- rownames_to_column(from)
     }
-    tibble::as_tibble(from)
+    as_tibble(from)
 }
 
 

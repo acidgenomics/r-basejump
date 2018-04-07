@@ -11,8 +11,4 @@ test_that("Coerce to tibble", {
         colnames(x)[[1L]],
         "rowname"
     )
-    expect_error(
-         as(list("foo", "bar"), "tibble"),
-        "has_dims :"
-    )
 })
