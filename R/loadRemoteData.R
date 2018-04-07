@@ -16,10 +16,10 @@
 #'
 #' @examples
 #' loaded <- loadRemoteData(c(
-#'     "http://basejump.seq.cloud/mtcars.rda",
-#'     "http://basejump.seq.cloud/starwars.rda"
+#'     "http://basejump.seq.cloud/rnaseqCounts.rda",
+#'     "http://basejump.seq.cloud/singleCellCounts.rda"
 #' ))
-#' print(loaded)
+#' loaded["url", ]
 loadRemoteData <- function(url, envir = parent.frame()) {
     assert_is_character(url)
     # Check for remote URL containing `.rda` file
