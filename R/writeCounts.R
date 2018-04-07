@@ -24,10 +24,12 @@
 #' @export
 #'
 #' @examples
-#' writeCounts(mtcars, gzip = TRUE)
+#' writeCounts(rnaseqCounts, dir = "example")
+#' writeCounts(singleCellCounts, dir = "example")
+#' list.files("example")
 #'
 #' # Clean up
-#' unlink("mtcars.csv.gz")
+#' unlink("example", recursive = TRUE)
 writeCounts <- function(
     ...,
     dir = ".",
