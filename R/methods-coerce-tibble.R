@@ -7,19 +7,28 @@
 #' table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
 #' [dplyr::mutate()].
 #'
-#' @name coerceToTibble
+#' @name coerce-tibble
 #' @author Michael Steinbaugh
-#' @keywords internal
-#'
-#' @param from Class for which the coerce method will perform coercion.
 #'
 #' @seealso `help(topic = "coerce", package = "methods")`.
+#'
+#' @examples
+#' # data.frame ====
+#' # Automatically move rownames to `rowname` column
+#' as(datasets::mtcars, "tibble") %>% glimpse()
+#'
+#' # tibble ====
+#' # Return unmodified
+#' as(dplyr::starwars, "tibble") %>% glimpse()
 NULL
 
 
 
 # Constructors =================================================================
-.as.tibble <- function(from) {  # nolint
+.tibble <- function(from) {
+    if (tibble::is_tibble(from)) {
+        return(from)
+    }
     assert_has_dims(from)
     assert_has_colnames(from)
     from <- as.data.frame(from)
@@ -32,10 +41,10 @@ NULL
 
 
 # Methods ======================================================================
-setAs(from = "matrix", to = "tbl_df", def = .as.tibble)
-setAs(from = "data.frame", to = "tbl_df", def = .as.tibble)
-setAs(from = "DataFrame", to = "tbl_df", def = .as.tibble)
+setAs(from = "matrix", to = "tbl_df", def = .tibble)
+setAs(from = "data.frame", to = "tbl_df", def = .tibble)
+setAs(from = "DataFrame", to = "tbl_df", def = .tibble)
 
-setAs(from = "matrix", to = "tibble", def = .as.tibble)
-setAs(from = "data.frame", to = "tibble", def = .as.tibble)
-setAs(from = "DataFrame", to = "tibble", def = .as.tibble)
+setAs(from = "matrix", to = "tibble", def = .tibble)
+setAs(from = "data.frame", to = "tibble", def = .tibble)
+setAs(from = "DataFrame", to = "tibble", def = .tibble)
