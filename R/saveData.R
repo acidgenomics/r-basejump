@@ -26,10 +26,11 @@
 #' @export
 #'
 #' @examples
-#' saveData(mtcars, starwars)
+#' saveData(rnaseqCounts, singleCellCounts, dir = "example")
+#' list.files("example")
 #'
 #' # Clean up
-#' unlink(c("mtcars.rda", "starwars.rda"))
+#' unlink("example", recursive = TRUE)
 saveData <- function(
     ...,
     dir = ".",
