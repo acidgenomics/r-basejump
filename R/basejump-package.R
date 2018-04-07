@@ -15,7 +15,7 @@
 #' @importFrom dplyr case_when funs mutate_all mutate_if summarize_all
 #' @importFrom ensembldb ensemblVersion
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
-#'   ggplot theme theme_minimal
+#'   ggplot theme theme_classic theme_minimal
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom magrittr set_colnames set_names
 #' @importFrom methods as getGeneric is selectMethod show
