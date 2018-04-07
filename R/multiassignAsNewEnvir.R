@@ -12,7 +12,9 @@
 #' @export
 #'
 #' @examples
-#' multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
+#' multiassignAsNewEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
+#' class(example)
+#' ls(example)
 multiassignAsNewEnvir <- function(
     ...,
     envirName,
