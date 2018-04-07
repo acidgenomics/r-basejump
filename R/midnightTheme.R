@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' library(ggplot2)
-#' p <- ggplot(mtcars) +
+#' p <- ggplot(mpg) +
 #'     geom_point(aes(x = wt, y = mpg, colour = factor(gear)))
 #' p + midnightTheme()
 midnightTheme <- function() {
@@ -28,6 +28,7 @@ midnightTheme <- function() {
         theme(
             text = whiteText,
             axis.text = whiteText,
+            axis.text.x = element_text(angle = 90L, hjust = 1L),
             legend.key = grayBackground,
             panel.grid.major = grayLine,
             panel.grid.minor = element_blank(),
