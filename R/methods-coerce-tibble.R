@@ -19,7 +19,7 @@
 #'
 #' # tibble ====
 #' # Return unmodified
-#' as(dplyr::starwars, "tibble") %>% glimpse()
+#' as(ggplot2::mpg, "tibble") %>% glimpse()
 NULL
 
 
