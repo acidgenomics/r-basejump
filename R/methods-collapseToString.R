@@ -42,9 +42,9 @@
 #'
 #' # data.frame ====
 #' # Objects supporting `dim` function similarly
-#' mtcars %>%
+#' ggplot2::mpg %>%
 #'     head() %>%
-#'     collapseToString() %>%
+#'     collapseToString(sort = TRUE, unique = TRUE) %>%
 #'     t()
 NULL
 
