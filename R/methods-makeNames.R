@@ -1,15 +1,16 @@
 #' Make Syntactically Valid Names
 #'
-#' For unnamed character vectors, this function will sanitize the underlying
-#' values. Otherwise, it will set [names()] and/or [rownames()] on objects
-#' supporting name assignments. They return the object without modification of
-#' the underlying data.
+#' For `atomic` vectors, these functions will sanitize the values. Otherwise, it
+#' will set [names()], [rownames()], and/or [colnames()] without modification of
+#' the values.
 #'
 #' @note `dotted.case` support is provided for matching against base R
-#'   parameters, but we strongly advise against using it for object and/or
-#'   argument name assignments.
+#'   parameters. However, it is recommended to avoid using it for variable
+#'   assignments into an `environment`, as that can introduce conflicts with
+#'   base functions.
 #'
-#' @note [makeNames()] sanitizes names using underscore instead of dot.
+#' @note [makeNames()] sanitizes names using underscore instead of dot, which is
+#'   the convention used by [make.names()].
 #'
 #' @name makeNames
 #' @author Michael Steinbaugh
@@ -27,9 +28,9 @@
 #'   example.
 #'
 #' @return Object with syntatically valid names. For objects supporting
-#'   [base::names()], the underlying data returns unchanged.
+#'   [names()], the underlying data returns unchanged.
 #'
-#' @seealso [base::make.names()].
+#' @seealso [make.names()].
 #'
 #' @examples
 #' load(system.file("extdata/mn.rda", package = "basejump"))

@@ -170,20 +170,21 @@ recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
-\code{\link[base:names]{base::names()}}, the underlying data returns unchanged.
+\code{\link[=names]{names()}}, the underlying data returns unchanged.
 }
 \description{
-For unnamed character vectors, this function will sanitize the underlying
-values. Otherwise, it will set \code{\link[=names]{names()}} and/or \code{\link[=rownames]{rownames()}} on objects
-supporting name assignments. They return the object without modification of
-the underlying data.
+For \code{atomic} vectors, these functions will sanitize the values. Otherwise, it
+will set \code{\link[=names]{names()}}, \code{\link[=rownames]{rownames()}}, and/or \code{\link[=colnames]{colnames()}} without modification of
+the values.
 }
 \note{
 \code{dotted.case} support is provided for matching against base R
-parameters, but we strongly advise against using it for object and/or
-argument name assignments.
+parameters. However, it is recommended to avoid using it for variable
+assignments into an \code{environment}, as that can introduce conflicts with
+base functions.
 
-\code{\link[=makeNames]{makeNames()}} sanitizes names using underscore instead of dot.
+\code{\link[=makeNames]{makeNames()}} sanitizes names using underscore instead of dot, which is
+the convention used by \code{\link[=make.names]{make.names()}}.
 }
 \examples{
 load(system.file("extdata/mn.rda", package = "basejump"))
@@ -239,7 +240,7 @@ snake(x)
 upperCamel(x)
 }
 \seealso{
-\code{\link[base:make.names]{base::make.names()}}.
+\code{\link[=make.names]{make.names()}}.
 }
 \author{
 Michael Steinbaugh
