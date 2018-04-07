@@ -6,11 +6,11 @@
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
+\alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,data.frame-method}
 \alias{convertTranscriptsToGenes,DataFrame-method}
 \alias{convertTranscriptsToGenes,dgCMatrix-method}
 \alias{convertTranscriptsToGenes,dgTMatrix-method}
-\alias{convertTranscriptsToGenes,matrix-method}
 \title{Convert Ensembl Transcripts to Genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
@@ -18,20 +18,15 @@ convertTranscriptsToGenes(object, ...)
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
   organism = NULL, genomeBuild = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{matrix}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{data.frame}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{DataFrame}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
