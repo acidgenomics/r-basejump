@@ -41,7 +41,7 @@ dynamicPlotlist(plotlist, return = "markdown")
 \seealso{
 \code{\link[=markdownPlotlist]{markdownPlotlist()}}.
 
-Other Plot Functions: \code{\link{midnightTheme}}
+Other Plot Functions: \code{\link{themes}}
 }
 \author{
 Michael Steinbaugh

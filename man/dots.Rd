@@ -23,10 +23,10 @@ Extract Dots from Function
 }
 \examples{
 # names
-dots(mtcars, starwars)
+dots(a, b, c)
 
 # character
-dots(mtcars, starwars, character = TRUE)
+dots(a, b, c, character = TRUE)
 }
 \seealso{
 \itemize{

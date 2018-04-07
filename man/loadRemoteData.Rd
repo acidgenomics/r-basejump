@@ -22,10 +22,10 @@ multiple URLs in a single call.
 }
 \examples{
 loaded <- loadRemoteData(c(
-    "http://basejump.seq.cloud/mtcars.rda",
-    "http://basejump.seq.cloud/starwars.rda"
+    "http://basejump.seq.cloud/rnaseqCounts.rda",
+    "http://basejump.seq.cloud/singleCellCounts.rda"
 ))
-print(loaded)
+loaded["url", ]
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
