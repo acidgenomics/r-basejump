@@ -59,6 +59,7 @@ readFileByExtension <- function(
     }
 
     if (ext == "csv") {
+        # Comma separated values
         data <- readr::read_csv(
             file = file,
             na = na,
@@ -66,20 +67,28 @@ readFileByExtension <- function(
             ...
         )
     } else if (ext == "mtx") {
+        # MatrixMarket
+        # Require `.rownames` and `.colnames` files
         data <- readMM(file = file, ...)
+        rownames <- localOrRemoteFile(paste(file, "rownames", sep = ".")) %>%
+            read_lines(na = na)
+        colnames <- localOrRemoteFile(paste(file, "colnames", sep = ".")) %>%
+            read_lines(na = na)
+        rownames(data) <- rownames
+        colnames(data) <- colnames
     } else if (ext == "tsv") {
+        # Tab separated values
         data <- read_tsv(file = file, na = na, progress = FALSE, ...)
     } else if (ext == "txt") {
+        # Text table
         data <- read.table(file = file, header = TRUE, na.strings = na, ...)
     } else if (ext == "xlsx") {
+        # Excel workbook
         data <- read_excel(path = file, na = na, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(
-            file = file,
-            na = na,
-            ...
-        )
+        data <- read_lines(file = file, na = na, ...)
     } else if (ext == "counts") {
+        # bcbio counts output
         data <- read_tsv(
             file = file,
             na = na,
@@ -98,7 +107,7 @@ readFileByExtension <- function(
         colnames(data) <- makeNames(colnames(data))
     }
 
-    # Remove all NA rows and columns from column data
+    # Remove any rows and columns containing only NA values
     if (!is.null(dimnames)) {
         data <- removeNA(data)
     }
