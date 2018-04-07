@@ -35,6 +35,7 @@ NULL
 #' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_colnames
 #' @importFrom assertive assert_has_dims
+#' @importFrom assertive assert_has_dimnames
 #' @importFrom assertive assert_has_names
 #' @importFrom assertive assert_has_no_duplicates
 #' @importFrom assertive assert_has_rows
