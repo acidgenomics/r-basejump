@@ -191,28 +191,28 @@ load(system.file("extdata/mn.rda", package = "basejump"))
 # character ====
 x <- mn$character
 print(x)
-makeNames(x)
 camel(x)
 dotted(x)
 snake(x)
 upperCamel(x)
+makeNames(x)
 
 x <- mn$namedCharacter
 print(x)
-makeNames(x)
 camel(x)
 dotted(x)
 snake(x)
 upperCamel(x)
+makeNames(x)
 
 # factor ====
 x <- mn$factor
 print(x)
-makeNames(x)
 camel(x)
 dotted(x)
 snake(x)
 upperCamel(x)
+makeNames(x)
 
 # data.frame ====
 x <- mn$dataFrame
