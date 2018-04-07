@@ -19,8 +19,8 @@
 #'
 #' @examples
 #' kables(
-#'     list = list(head(starwars), head(mtcars)),
-#'     captions = c("starwars", "mtcars")
+#'     list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+#'     captions = c("mpg", "mtcars")
 #' )
 kables <- function(
     list,
