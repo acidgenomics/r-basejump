@@ -15,42 +15,29 @@
 #'
 #' @examples
 #' # Genes ====
-#' x <- makeGRangesFromEnsembl(
-#'     organism = "Homo sapiens",
-#'     format = "genes",
-#'     genomeBuild = "GRCh37"
-#' )
+#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
 #' sanitizeRowData(x) %>% glimpse()
 #'
 #' # Transcripts ====
-#' x <- makeGRangesFromEnsembl(
-#'     organism = "Homo sapiens",
-#'     format = "transcripts",
-#'     genomeBuild = "GRCh37"
-#' )
+#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
 #' sanitizeRowData(x) %>% glimpse()
 sanitizeRowData <- function(object) {
-    data <- as.data.frame(object)
+    object <- as.data.frame(object)
+    assertHasRownames(object)
 
     # Enforce camel case
-    data <- camel(data)
-
-    # Set the rownames, if they're missing
-    if (!hasRownames(data)) {
-        idCol <- .detectIDCol(data)
-        rownames(data) <- data[[idCol]]
-    }
+    object <- camel(object)
 
     # Drop any nested list columns (e.g. `entrezID`). These's don't play
     # nicely with downstream R Markdown functions.
     nestedCols <- vapply(
-        X = data,
+        X = object,
         FUN = is.list,
         FUN.VALUE = logical(1L)
     )
     if (any(nestedCols)) {
-        data <- data[, which(!nestedCols), drop = FALSE]
+        object <- object[, which(!nestedCols), drop = FALSE]
     }
 
-    data
+    object
 }
