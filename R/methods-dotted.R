@@ -29,28 +29,28 @@
 #' load(system.file("extdata/mn.rda", package = "basejump"))
 #'
 #' # character ====
-#' character <- mn$character
-#' print(character)
-#' dotted(character)
+#' x <- mn$character
+#' print(x)
+#' dotted(x)
 #'
-#' namedCharacter <- mn$namedCharacter
-#' dotted(namedCharacter)
+#' x <- mn$namedCharacter
+#' dotted(x)
 #'
 #' # factor ====
-#' factor <- mn$factor
-#' print(factor)
-#' dotted(factor)
+#' x <- mn$factor
+#' print(x)
+#' dotted(x)
 #'
 #' # data.frame ====
-#' dataFrame <- mn$dataFrame
-#' print(dataFrame)
-#' dotted(dataFrame, rownames = TRUE)
-#' dotted(dataFrame, rownames = FALSE)
+#' x <- mn$dataFrame
+#' print(x)
+#' dotted(x, rownames = TRUE)
+#' dotted(x, rownames = FALSE)
 #'
 #' # list ====
-#' list <- mn$list
-#' print(list)
-#' dotted(list)
+#' x <- mn$list
+#' print(x)
+#' dotted(x)
 NULL
 
 
@@ -80,23 +80,6 @@ NULL
 
 
 
-.dotted.ANY <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE
-) {
-    # Passthrough: rownames, colnames
-    if (!is.null(dimnames(object))) {
-        .dotted.dim(object, rownames = rownames, colnames = colnames)
-    } else if (!is.null(names(object))) {
-        .dotted.names(object)
-    } else {
-        object
-    }
-}
-
-
-
 .dotted.dim <- function(  # nolint
     object,
     rownames = FALSE,
@@ -115,45 +98,9 @@ NULL
 
 
 
-.dotted.factor <- function(object) {  # nolint
-    object %>%
-        .dotted.vector() %>%
-        factor()
-}
-
-
-
-.dotted.mcols <- function(object) {  # nolint
-    colnames <- colnames(mcols(object))
-    colnames <- dotted(colnames)
-    colnames(mcols(object)) <- colnames
-    object
-}
-
-
-
 .dotted.names <- function(object) {  # nolint
     assert_has_names(object)
     names(object) <- .dotted(names(object))
-    object
-}
-
-
-
-.dotted.tibble <- function(object) {  # nolint
-    .dotted.dim(object, rownames = FALSE, colnames = TRUE)
-}
-
-
-
-.dotted.vector <- function(object) {  # nolint
-    if (!is.null(names(object))) {
-        names <- .dotted(names(object))
-    } else {
-        names <- NULL
-    }
-    object <- .dotted(object)
-    names(object) <- names
     object
 }
 
@@ -181,7 +128,16 @@ NULL
 setMethod(
     "dotted",
     signature("ANY"),
-    .dotted.ANY
+    function(object) {
+        # Passthrough: rownames, colnames
+        if (!is.null(dimnames(object))) {
+            .dotted.dim(object)
+        } else if (!is.null(names(object))) {
+            .dotted.names(object)
+        } else {
+            object
+        }
+    }
 )
 
 
@@ -191,27 +147,16 @@ setMethod(
 setMethod(
     "dotted",
     signature("character"),
-    .dotted.vector
-)
-
-
-
-#' @rdname dotted
-#' @export
-setMethod(
-    "dotted",
-    signature("data.frame"),
-    .dotted.dim
-)
-
-
-
-#' @rdname dotted
-#' @export
-setMethod(
-    "dotted",
-    signature("DataFrame"),
-    .dotted.dim
+    function(object) {
+        if (!is.null(names(object))) {
+            names <- .dotted(names(object))
+        } else {
+            names <- NULL
+        }
+        object <- .dotted(object)
+        names(object) <- names
+        object
+    }
 )
 
 
@@ -221,7 +166,42 @@ setMethod(
 setMethod(
     "dotted",
     signature("factor"),
-    .dotted.factor
+    function(object) {
+        object %>%
+            as.character() %>%
+            dotted() %>%
+            as.factor()
+    }
+)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("matrix"),
+    .dotted.dim
+)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("data.frame"),
+    getMethod("dotted", "matrix")
+)
+
+
+
+#' @rdname dotted
+#' @export
+setMethod(
+    "dotted",
+    signature("DataFrame"),
+    getMethod("dotted", "data.frame")
 )
 
 
@@ -231,7 +211,12 @@ setMethod(
 setMethod(
     "dotted",
     signature("GRanges"),
-    .dotted.mcols
+    function(object) {
+        colnames <- colnames(mcols(object))
+        colnames <- dotted(colnames)
+        colnames(mcols(object)) <- colnames
+        object
+    }
 )
 
 
@@ -251,17 +236,7 @@ setMethod(
 setMethod(
     "dotted",
     signature("List"),
-    .dotted.names
-)
-
-
-
-#' @rdname dotted
-#' @export
-setMethod(
-    "dotted",
-    signature("matrix"),
-    .dotted.dim
+    getMethod("dotted", "list")
 )
 
 
@@ -271,15 +246,5 @@ setMethod(
 setMethod(
     "dotted",
     signature("SimpleList"),
-    .dotted.names
-)
-
-
-
-#' @rdname dotted
-#' @export
-setMethod(
-    "dotted",
-    signature("tbl_df"),
-    .dotted.tibble
+    getMethod("dotted", "list")
 )
