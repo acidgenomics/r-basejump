@@ -42,7 +42,6 @@ Imports:
     S4Vectors,
     assertive (>= 0.3),
     cowplot (>= 0.9),
-    datasets,
     dplyr (>= 0.7),
     ensembldb,
     ggplot2 (>= 2.2.1),
