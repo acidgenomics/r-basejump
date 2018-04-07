@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' assertIsDataFrameOrNULL(mtcars)
+#' assertIsDataFrameOrNULL(datasets::mtcars)
 #' assertIsDataFrameOrNULL(NULL)
 assertIsDataFrameOrNULL <- function(
     x,
