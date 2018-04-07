@@ -1,8 +1,8 @@
 #' Make Syntactically Valid Names
 #'
-#' For `atomic` vectors, these functions will sanitize the values. Otherwise, it
-#' will set [names()], [rownames()], and/or [colnames()] without modification of
-#' the values.
+#' For `atomic` vectors, these functions will sanitize the values. Otherwise,
+#' they will set [names()], [rownames()], and/or [colnames()] without
+#' modification of the values.
 #'
 #' @note `dotted.case` support is provided for matching against base R
 #'   parameters. However, it is recommended to avoid using it for variable

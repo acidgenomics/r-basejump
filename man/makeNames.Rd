@@ -173,9 +173,9 @@ Object with syntatically valid names. For objects supporting
 \code{\link[=names]{names()}}, the underlying data returns unchanged.
 }
 \description{
-For \code{atomic} vectors, these functions will sanitize the values. Otherwise, it
-will set \code{\link[=names]{names()}}, \code{\link[=rownames]{rownames()}}, and/or \code{\link[=colnames]{colnames()}} without modification of
-the values.
+For \code{atomic} vectors, these functions will sanitize the values. Otherwise,
+they will set \code{\link[=names]{names()}}, \code{\link[=rownames]{rownames()}}, and/or \code{\link[=colnames]{colnames()}} without
+modification of the values.
 }
 \note{
 \code{dotted.case} support is provided for matching against base R
