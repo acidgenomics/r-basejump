@@ -14,10 +14,7 @@ reference:
     - starts_with("strip")
   - title: Name Functions
     contents:
-    - camel
-    - dotted
     - makeNames
-    - snake
   - title: Math Functions
     contents:
     - starts_with("aggregate")
