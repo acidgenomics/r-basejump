@@ -118,6 +118,42 @@ NULL
 
 
 
+.upperCamel <- function(object, strict = FALSE) {
+    .camel(object, format = "upper", strict = strict)
+}
+
+
+
+.upperCamel.dim <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE
+) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && hasRownames(object)) {
+        rownames(object) <- .upperCamel(rownames(object), strict = strict)
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        colnames(object) <- .upperCamel(colnames(object), strict = strict)
+    }
+    object
+}
+
+
+
+.upperCamel.names <- function(  # nolint
+    object,
+    strict = FALSE
+) {
+    assert_has_names(object)
+    names(object) <- .upperCamel(names(object), strict = strict)
+    object
+}
+
+
+
 # Methods ======================================================================
 #' @rdname camel
 #' @export
@@ -125,11 +161,26 @@ setMethod(
     "camel",
     signature("ANY"),
     function(object, strict = FALSE) {
-        # Passthrough: rownames, colnames, strict
         if (!is.null(dimnames(object))) {
             .camel.dim(object, strict = strict)
         } else if (!is.null(names(object))) {
             .camel.names(object, strict = strict)
+        } else {
+            object
+        }
+    }
+)
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("ANY"),
+    function(object, strict = FALSE) {
+        if (!is.null(dimnames(object))) {
+            .upperCamel.dim(object, strict = strict)
+        } else if (!is.null(names(object))) {
+            .upperCamel.names(object, strict = strict)
         } else {
             object
         }
@@ -155,6 +206,23 @@ setMethod(
     }
 )
 
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("character"),
+    function(object, strict = FALSE) {
+        if (!is.null(names(object))) {
+            names <- .upperCamel(names(object), strict = strict)
+        } else {
+            names <- NULL
+        }
+        object <- .upperCamel(object, strict = strict)
+        names(object) <- names
+        object
+    }
+)
+
 
 
 #' @rdname camel
@@ -170,6 +238,19 @@ setMethod(
     }
 )
 
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("factor"),
+    function(object, strict = FALSE) {
+        object %>%
+            as.character() %>%
+            upperCamel(strict = strict) %>%
+            as.factor()
+    }
+)
+
 
 
 #' @rdname camel
@@ -178,6 +259,14 @@ setMethod(
     "camel",
     signature("matrix"),
     .camel.dim
+)
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("matrix"),
+    .upperCamel.dim
 )
 
 
@@ -190,6 +279,14 @@ setMethod(
     getMethod("camel", "matrix")
 )
 
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("data.frame"),
+    getMethod("upperCamel", "matrix")
+)
+
 
 
 #' @rdname camel
@@ -198,6 +295,14 @@ setMethod(
     "camel",
     signature("DataFrame"),
     getMethod("camel", "data.frame")
+)
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("DataFrame"),
+    getMethod("upperCamel", "data.frame")
 )
 
 
@@ -215,6 +320,19 @@ setMethod(
     }
 )
 
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("GRanges"),
+    function(object, strict = FALSE) {
+        colnames <- colnames(mcols(object))
+        colnames <- upperCamel(colnames, strict = strict)
+        colnames(mcols(object)) <- colnames
+        object
+    }
+)
+
 
 
 #' @rdname camel
@@ -223,6 +341,14 @@ setMethod(
     "camel",
     signature("list"),
     .camel.names
+)
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("list"),
+    .upperCamel.names
 )
 
 
@@ -235,6 +361,14 @@ setMethod(
     getMethod("camel", "list")
 )
 
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("List"),
+    getMethod("upperCamel", "list")
+)
+
 
 
 #' @rdname camel
@@ -243,4 +377,12 @@ setMethod(
     "camel",
     signature("SimpleList"),
     getMethod("camel", "list")
+)
+
+#' @rdname camel
+#' @export
+setMethod(
+    "upperCamel",
+    signature("SimpleList"),
+    getMethod("upperCamel", "list")
 )
