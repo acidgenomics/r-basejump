@@ -8,15 +8,14 @@
 \alias{camel}
 \alias{camel,ANY-method}
 \alias{camel,character-method}
+\alias{camel,factor-method}
+\alias{camel,matrix-method}
 \alias{camel,data.frame-method}
 \alias{camel,DataFrame-method}
-\alias{camel,factor-method}
 \alias{camel,GRanges-method}
 \alias{camel,list-method}
 \alias{camel,List-method}
-\alias{camel,matrix-method}
 \alias{camel,SimpleList-method}
-\alias{camel,tbl_df-method}
 \alias{upperCamel,ANY-method}
 \alias{upperCamel,character-method}
 \alias{upperCamel,data.frame-method}
@@ -34,10 +33,14 @@ camel(object, ...)
 
 upperCamel(object, ...)
 
-\S4method{camel}{ANY}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
+\S4method{camel}{ANY}(object, strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
+
+\S4method{camel}{factor}(object, strict = FALSE)
+
+\S4method{camel}{matrix}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 
 \S4method{camel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
@@ -45,20 +48,13 @@ upperCamel(object, ...)
 \S4method{camel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
 
-\S4method{camel}{factor}(object, strict = FALSE)
-
 \S4method{camel}{GRanges}(object, strict = FALSE)
 
 \S4method{camel}{list}(object, strict = FALSE)
 
 \S4method{camel}{List}(object, strict = FALSE)
 
-\S4method{camel}{matrix}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
-
 \S4method{camel}{SimpleList}(object, strict = FALSE)
-
-\S4method{camel}{tbl_df}(object, strict = FALSE)
 
 \S4method{upperCamel}{ANY}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
@@ -92,16 +88,16 @@ will be meaningful.}
 
 \item{...}{Additional arguments.}
 
+\item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
+allow the return of any capitalized acronyms. "RNA" will become "Rna", for
+example.}
+
 \item{rownames}{Apply sanitization on row names. This is not recommended
 by default, since rownames commonly contain gene identifiers that should
 not be modified.}
 
 \item{colnames}{Apply sanitization on column names. This is generally
 recommended by default.}
-
-\item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
-allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-example.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
@@ -114,31 +110,31 @@ Camel Case
 load(system.file("extdata/mn.rda", package = "basejump"))
 
 # character ====
-character <- mn$character
-print(character)
-camel(character)
-upperCamel(character)
+x <- mn$character
+print(x)
+camel(x)
+upperCamel(x)
 
-namedCharacter <- mn$namedCharacter
-camel(namedCharacter)
-upperCamel(namedCharacter)
+x <- mn$namedCharacter
+camel(x)
+upperCamel(x)
 
 # factor ====
-factor <- mn$factor
-print(factor)
-camel(factor)
-upperCamel(factor)
+x <- mn$factor
+print(x)
+camel(x)
+upperCamel(x)
 
 # data.frame ====
-dataFrame <- mn$dataFrame
-print(dataFrame)
-camel(dataFrame, rownames = TRUE)
-camel(dataFrame, rownames = FALSE)
+x <- mn$dataFrame
+print(x)
+camel(x, rownames = TRUE)
+camel(x, rownames = FALSE)
 
 # list ====
-list <- mn$list
-print(list)
-camel(list)
+x <- mn$list
+print(x)
+camel(x)
 }
 \seealso{
 Other Name Functions: \code{\link{dotted}},

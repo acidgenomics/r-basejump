@@ -6,28 +6,29 @@
 \alias{dotted}
 \alias{dotted,ANY-method}
 \alias{dotted,character-method}
+\alias{dotted,factor-method}
+\alias{dotted,matrix-method}
 \alias{dotted,data.frame-method}
 \alias{dotted,DataFrame-method}
-\alias{dotted,factor-method}
 \alias{dotted,GRanges-method}
 \alias{dotted,list-method}
 \alias{dotted,List-method}
-\alias{dotted,matrix-method}
 \alias{dotted,SimpleList-method}
-\alias{dotted,tbl_df-method}
 \title{Dotted Case}
 \usage{
 dotted(object, ...)
 
-\S4method{dotted}{ANY}(object, rownames = FALSE, colnames = TRUE)
+\S4method{dotted}{ANY}(object)
 
 \S4method{dotted}{character}(object)
+
+\S4method{dotted}{factor}(object)
+
+\S4method{dotted}{matrix}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{data.frame}(object, rownames = FALSE, colnames = TRUE)
 
 \S4method{dotted}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
-
-\S4method{dotted}{factor}(object)
 
 \S4method{dotted}{GRanges}(object)
 
@@ -35,11 +36,7 @@ dotted(object, ...)
 
 \S4method{dotted}{List}(object)
 
-\S4method{dotted}{matrix}(object, rownames = FALSE, colnames = TRUE)
-
 \S4method{dotted}{SimpleList}(object)
-
-\S4method{dotted}{tbl_df}(object)
 }
 \arguments{
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
@@ -73,28 +70,28 @@ argument name assignments.
 load(system.file("extdata/mn.rda", package = "basejump"))
 
 # character ====
-character <- mn$character
-print(character)
-dotted(character)
+x <- mn$character
+print(x)
+dotted(x)
 
-namedCharacter <- mn$namedCharacter
-dotted(namedCharacter)
+x <- mn$namedCharacter
+dotted(x)
 
 # factor ====
-factor <- mn$factor
-print(factor)
-dotted(factor)
+x <- mn$factor
+print(x)
+dotted(x)
 
 # data.frame ====
-dataFrame <- mn$dataFrame
-print(dataFrame)
-dotted(dataFrame, rownames = TRUE)
-dotted(dataFrame, rownames = FALSE)
+x <- mn$dataFrame
+print(x)
+dotted(x, rownames = TRUE)
+dotted(x, rownames = FALSE)
 
 # list ====
-list <- mn$list
-print(list)
-dotted(list)
+x <- mn$list
+print(x)
+dotted(x)
 }
 \seealso{
 Other Name Functions: \code{\link{camel}},
