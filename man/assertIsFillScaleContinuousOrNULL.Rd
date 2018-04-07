@@ -46,7 +46,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}, \code{\link{assert}}
+  \code{\link{assertIsTx2gene}}
 }
 \author{
 Michael Steinbaugh
