@@ -22,120 +22,118 @@ NULL
 
 
 
-# Constructors =================================================================
-.broadClass <- function(object) {
-    object <- as.data.frame(object)
-    assertHasRownames(object)
-
-    # Early return if already defined
-    if ("broadClass" %in% colnames(object)) {
-        broad <- object[["broadClass"]]
-        names(broad) <- rownames(object)
-        return(broad)
-    }
-
-    # geneName (required)
-    assert_is_subset("geneName", colnames(object))
-    geneName <- object[["geneName"]]
-
-    # Biotype (optional)
-    # Prioritize transcript over gene, if present
-    biotypeCol <- grep(
-        pattern = "biotype$",
-        x = colnames(object),
-        ignore.case = TRUE,
-        value = TRUE
-    )
-    if (length(biotypeCol)) {
-        biotypeCol <- biotypeCol[[1L]]
-        biotype <- object[[biotypeCol]]
-    } else {
-        warn("biotype missing")
-        biotype <- NA
-    }
-
-    # seqname (optional; aka chromosome)
-    seqnameCol <- grep(
-        pattern = "seqname",
-        x = colnames(object),
-        ignore.case = TRUE,
-        value = TRUE
-    )
-    if (length(seqnameCol)) {
-        seqnameCol <- seqnameCol[[1L]]
-        seqname <- object[[seqnameCol]]
-    } else {
-        warn("seqname missing")
-        seqname <- NA
-    }
-
-    inform(paste(
-        "Defining broadClass using:",
-        toString(c("geneName", biotypeCol, seqnameCol))
-    ))
-    data <- tibble(
-        "geneName" = geneName,
-        "biotype" = biotype,
-        "seqname" = seqname
-    )
-    broad <- case_when(
-        data[["seqname"]] == "MT" ~ "mito",
-        grepl(
-            pattern = "^mt[\\:\\-]",
-            x = data[["geneName"]],
-            ignore.case = TRUE
-        ) ~ "mito",
-        data[["biotype"]] == "protein_coding" ~ "coding",
-        data[["biotype"]] %in% c(
-            "known_ncrna",
-            "lincRNA",
-            "non_coding"
-        ) ~ "noncoding",
-        grepl(
-            pattern = "pseudo",
-            x = data[["biotype"]]
-        ) ~ "pseudo",
-        data[["biotype"]] %in% c(
-            "miRNA",
-            "misc_RNA",
-            "ribozyme",
-            "rRNA",
-            "scaRNA",
-            "scRNA",
-            "snoRNA",
-            "snRNA",
-            "sRNA"
-        ) ~ "small",
-        data[["biotype"]] %in% c(
-            "non_stop_decay",
-            "nonsense_mediated_decay"
-        ) ~ "decaying",
-        grepl(
-            pattern = "^ig_",
-            x = data[["biotype"]],
-            ignore.case = TRUE
-        ) ~ "ig",
-        grepl(
-            pattern = "^tr_",
-            x = data[["biotype"]],
-            ignore.case = TRUE
-        ) ~ "tcr",
-        TRUE ~ "other"
-    )
-    broad <- as.factor(broad)
-    names(broad) <- rownames(object)
-    broad
-}
-
-
-
 # Methods ======================================================================
 #' @rdname broadClass
 #' @export
 setMethod(
     "broadClass",
-    signature("DataFrame"),
-    .broadClass
+    signature("data.frame"),
+    function(object) {
+        object <- as.data.frame(object)
+        assertHasRownames(object)
+
+        # Early return if already defined
+        if ("broadClass" %in% colnames(object)) {
+            broad <- object[["broadClass"]]
+            names(broad) <- rownames(object)
+            return(broad)
+        }
+
+        # geneName (required)
+        assert_is_subset("geneName", colnames(object))
+        geneName <- object[["geneName"]]
+
+        # Biotype (optional)
+        # Prioritize transcript over gene, if present
+        biotypeCol <- grep(
+            pattern = "biotype$",
+            x = colnames(object),
+            ignore.case = TRUE,
+            value = TRUE
+        )
+        if (length(biotypeCol)) {
+            biotypeCol <- biotypeCol[[1L]]
+            biotype <- object[[biotypeCol]]
+        } else {
+            warn("biotype missing")
+            biotype <- NA
+        }
+
+        # seqname (optional; aka chromosome)
+        seqnameCol <- grep(
+            pattern = "seqname",
+            x = colnames(object),
+            ignore.case = TRUE,
+            value = TRUE
+        )
+        if (length(seqnameCol)) {
+            seqnameCol <- seqnameCol[[1L]]
+            seqname <- object[[seqnameCol]]
+        } else {
+            warn("seqname missing")
+            seqname <- NA
+        }
+
+        inform(paste(
+            "Defining broadClass using:",
+            toString(c("geneName", biotypeCol, seqnameCol))
+        ))
+
+        data <- tibble(
+            "geneName" = geneName,
+            "biotype" = biotype,
+            "seqname" = seqname
+        )
+
+        broad <- case_when(
+            data[["seqname"]] == "MT" ~ "mito",
+            grepl(
+                pattern = "^mt[\\:\\-]",
+                x = data[["geneName"]],
+                ignore.case = TRUE
+            ) ~ "mito",
+            data[["biotype"]] == "protein_coding" ~ "coding",
+            data[["biotype"]] %in% c(
+                "known_ncrna",
+                "lincRNA",
+                "non_coding"
+            ) ~ "noncoding",
+            grepl(
+                pattern = "pseudo",
+                x = data[["biotype"]]
+            ) ~ "pseudo",
+            data[["biotype"]] %in% c(
+                "miRNA",
+                "misc_RNA",
+                "ribozyme",
+                "rRNA",
+                "scaRNA",
+                "scRNA",
+                "snoRNA",
+                "snRNA",
+                "sRNA"
+            ) ~ "small",
+            data[["biotype"]] %in% c(
+                "non_stop_decay",
+                "nonsense_mediated_decay"
+            ) ~ "decaying",
+            grepl(
+                pattern = "^ig_",
+                x = data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "ig",
+            grepl(
+                pattern = "^tr_",
+                x = data[["biotype"]],
+                ignore.case = TRUE
+            ) ~ "tcr",
+            TRUE ~ "other"
+        )
+
+        broad <- as.factor(broad)
+        names(broad) <- rownames(object)
+        broad
+    }
 )
 
 
@@ -144,8 +142,8 @@ setMethod(
 #' @export
 setMethod(
     "broadClass",
-    signature("data.frame"),
-    .broadClass
+    signature("DataFrame"),
+    getMethod("broadClass", "data.frame")
 )
 
 
@@ -155,5 +153,5 @@ setMethod(
 setMethod(
     "broadClass",
     signature("GRanges"),
-    .broadClass
+    getMethod("broadClass", "data.frame")
 )
