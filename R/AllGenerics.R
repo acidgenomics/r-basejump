@@ -28,7 +28,7 @@ setGeneric("broadClass", function(object, ...) {
 
 
 
-#' @rdname camel
+#' @rdname makeNames
 #' @export
 setGeneric(
     "camel",
@@ -83,7 +83,7 @@ setGeneric(
 
 
 
-#' @rdname dotted
+#' @rdname makeNames
 #' @export
 setGeneric(
     "dotted",
@@ -148,7 +148,7 @@ setGeneric(
 
 
 
-#' @rdname snake
+#' @rdname makeNames
 #' @export
 setGeneric(
     "snake",
@@ -170,7 +170,7 @@ setGeneric(
 
 
 
-#' @rdname camel
+#' @rdname makeNames
 #' @export
 setGeneric(
     "upperCamel",
