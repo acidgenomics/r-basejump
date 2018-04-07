@@ -21,6 +21,7 @@ NULL
 # Constructors =================================================================
 .as.tibble <- function(from) {  # nolint
     assert_has_dims(from)
+    assert_has_colnames(from)
     from <- as.data.frame(from)
     if (tibble::has_rownames(from)) {
         from <- rownames_to_column(from)
@@ -31,7 +32,10 @@ NULL
 
 
 # Methods ======================================================================
-# We may want to manually define the classes here in a stricter manner in
-# the future (e.g. `DataFrame`, `data.frame`, `Matrix`, `matrix`, `dgCMatrix`).
-setAs("ANY", "tbl_df", .as.tibble)
-setAs("ANY", "tibble", .as.tibble)
+setAs(from = "matrix", to = "tbl_df", def = .as.tibble)
+setAs(from = "data.frame", to = "tbl_df", def = .as.tibble)
+setAs(from = "DataFrame", to = "tbl_df", def = .as.tibble)
+
+setAs(from = "matrix", to = "tibble", def = .as.tibble)
+setAs(from = "data.frame", to = "tibble", def = .as.tibble)
+setAs(from = "DataFrame", to = "tibble", def = .as.tibble)
