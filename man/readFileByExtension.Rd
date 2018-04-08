@@ -19,9 +19,32 @@ readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
 \code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
-Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}
-files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.colnames},
-and \code{.rownames} files.
+Supports automatic loading of common file extensions:
+}
+\details{
+\itemize{
+\item "\code{.csv}": Comma separated values.
+\item "\code{.mtx}": MatrixMarket sparse matrix.
+\item "\code{.rda}": R data. Must contain a single object. Doesn't require internal
+object name to match, like in the \code{\link[=loadData]{loadData()}} function.
+\item "\code{.rds}": R data serialized.
+\item "\code{.tsv}" Tab separated values.
+\item "\code{.xlsx}": Excel workbook.
+}
+
+Also supports some additional extensions commonly used with the
+\href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
+\itemize{
+\item "\code{.counts}": Counts \code{table}.
+\item "\code{.colnames}": Sidecar file containing column names.
+\item "\code{.rownames}": Sidecar file containing row names.
+}
+}
+\note{
+Reading a MatrixMarket ("\code{.mtx}") file now requires "\code{.colnames}" and
+\code{".rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
+the sparse matrix. Legacy support for manual loading of these sidecar files
+is provided.
 }
 \examples{
 # Comma separated values
@@ -38,6 +61,10 @@ glimpse(xlsx)
 \item \href{http://readxl.tidyverse.org}{readxl}.
 \item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
+
+Integration of the
+\href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package is
+being considered for a future update.
 
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},

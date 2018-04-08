@@ -31,5 +31,6 @@ names(x)
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{methodFormals}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
