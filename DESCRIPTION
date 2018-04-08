@@ -60,8 +60,10 @@ Imports:
     utils
 Suggests:
     EnsDb.Hsapiens.v75,
+    jsonlite,
     rio (>= 0.5),
-    testthat (>= 2.0)
+    testthat (>= 2.0),
+    yaml
 biocViews:
     DataImport,
     Infrastructure

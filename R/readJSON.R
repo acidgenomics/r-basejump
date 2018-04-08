@@ -1,4 +1,4 @@
-#' Read YAML File
+#' Read JSON File
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
@@ -9,13 +9,13 @@
 #' @export
 #'
 #' @examples
-#' x <- readYAML("http://basejump.seq.cloud/example.yaml")
+#' x <- readJSON("http://basejump.seq.cloud/example.json")
 #' names(x)
-readYAML <- function(file) {
-    requireNamespace("yaml")
+readJSON <- function(file) {
+    requireNamespace("jsonlite")
     assert_is_a_string(file)
-    assert_all_are_matching_regex(file, "\\.ya?ml$")
+    assert_all_are_matching_regex(file, "\\.json$")
     message(paste("Reading", basename(file)))
     file <- localOrRemoteFile(file)
-    yaml::yaml.load_file(file)
+    jsonlite::read_json(file)
 }

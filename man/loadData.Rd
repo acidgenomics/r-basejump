@@ -49,7 +49,7 @@ loadData(
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readYAML}}
+  \code{\link{readJSON}}, \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh

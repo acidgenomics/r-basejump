@@ -24,7 +24,8 @@ Column names follow the
 defined by Ensembl.
 }
 \examples{
-readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
+x <- readGFF("http://basejump.seq.cloud/example.gtf")
+glimpse(x)
 }
 \seealso{
 \itemize{
@@ -34,7 +35,8 @@ readGFF("http://basejump.seq.cloud/mmusculus.gtf") \%>\% glimpse()
 
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readYAML}}
+  \code{\link{readFileByExtension}},
+  \code{\link{readJSON}}, \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh
