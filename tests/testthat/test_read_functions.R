@@ -24,14 +24,14 @@ test_that("loadData : Standard evaluation", {
 test_that("loadData : Multiple objects in single file", {
     expect_error(
         loadData(multi),
-        "is_a_string : loaded has length 2, not 1."
+        "multi.rda contains multiple objects : x, y"
     )
 })
 
 test_that("loadData : Renamed file", {
     expect_error(
         loadData(renamed),
-        "are_identical : name and loaded are not identical."
+        "renamed.rda has been renamed."
     )
 })
 
@@ -73,14 +73,14 @@ test_that("loadData : Standard evaluation", {
 test_that("loadDataAsName : Missing files", {
     expect_error(
         loadDataAsName(data = XXX),
-        "is_existing_file :"
+        rdataError
     )
 })
 
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
         loadDataAsName(data = multi),
-        "is_a_string : loaded has length 2, not 1."
+        "multi.rda contains multiple objects : x, y"
     )
 })
 
@@ -99,12 +99,12 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
+    x <- loadRemoteData(paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
     # Character matrix of loaded files
-    expect_is(loaded, "matrix")
+    expect_is(x, "character")
     expect_identical(
-        loaded["url", "rnaseqCounts", drop = TRUE],
-        paste(cacheURL, "rnaseqCounts.rda", sep = "/")
+        x,
+        c("rnaseqCounts" = paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
     )
     # Check that the object loaded correctly
     expect_is(rnaseqCounts, "matrix")
@@ -121,11 +121,11 @@ test_that("loadRemoteData : Already loaded", {
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
         loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
-        "is_matching_regex : url does not match"
+        rdataError
     )
     expect_error(
         loadRemoteData("foobar.rda"),
-        "is_matching_regex : url does not match"
+        "foobar.rda does not match '\\^http"
     )
     expect_error(
         loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"), envir = "XXX"),
@@ -206,14 +206,16 @@ test_that("readFileByExtension : Counts file (.counts)", {
 
 test_that("readFileByExtension : Unsupported file type", {
     # Missing extension
+    file.create("example")
     expect_error(
-        readFileByExtension("DESCRIPTION"),
+        readFileByExtension("example"),
         "is_matching_regex :"
     )
-    # R Data
+    unlink("example")
+    # Unsupported extension
     expect_error(
-        readFileByExtension("gr.rda"),
-        "Unsupported file extension: gr.rda"
+        readFileByExtension("test_read_functions.R"),
+        "Unsupported extension"
     )
 })
 
