@@ -28,7 +28,7 @@ localOrRemoteFile <- function(file) {
         file = file,
         FUN = function(file) {
             # Remote file mode
-            if (grepl("\\://", file)) {
+            if (isURL(file)) {
                 assert_all_are_matching_regex(file, extPattern)
                 ext <- str_match(basename(file), extPattern) %>%
                     .[1L, 2L:3L] %>%
@@ -57,6 +57,7 @@ localOrRemoteFile <- function(file) {
         SIMPLIFY = TRUE,
         USE.NAMES = FALSE
     )
+    assert_all_are_existing_files(local)
     local <- normalizePath(local, winslash = "/", mustWork = TRUE)
     assert_all_are_matching_regex(file, extPattern)
     names(local) <- basename(file)
