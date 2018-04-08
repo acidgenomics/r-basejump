@@ -72,12 +72,9 @@ readFileByExtension <- function(
     )
 
     basename <- names(file)
-    match <- str_match(basename, extPattern)
-    ext <- match[1L, 2L]
-    extFull <- match[1L, 2L:3L] %>%
-        na.omit() %>%
-        paste(collapse = "")
-    gzip <- grepl("\\.gz$", extFull)
+    ext <- str_match(basename, extPattern)[1L, 2L]
+    exti <- tolower(ext)  # case insensitive
+    unsupported <-
 
     # File import, based on extension
     message(paste("Reading", names(file)))
@@ -85,9 +82,28 @@ readFileByExtension <- function(
     # Sanitize NA values
     na <- c("", "NA", "#N/A", "NULL", "null")
 
-    if (ext %in% c("colnames", "rownames")) {
+    blacklist <- c(
+        "doc",
+        "docx",
+        "ppt",
+        "pptx",
+        "txt"
+    )
+    source <- c(
+        "md",
+        "rmd",
+        "py",
+        "r",
+        "sh"
+    )
+    if (exti %in% blacklist) {
+        stop(paste("Unsupported extension", ":", ext))
+    } else if (exti %in% source) {
+        message("Importing as source code lines")
+        data <- read_lines(file)
+    } else if (exti %in% c("colnames", "rownames")) {
         data <- read_lines(file = file, na = na, ...)
-    } else if (ext == "counts") {
+    } else if (exti == "counts") {
         # bcbio counts output
         data <- read_tsv(
             file = file,
@@ -98,7 +114,7 @@ readFileByExtension <- function(
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
-    } else if (ext == "csv") {
+    } else if (exti == "csv") {
         # Comma separated values
         data <- readr::read_csv(
             file = file,
@@ -106,9 +122,9 @@ readFileByExtension <- function(
             progress = FALSE,
             ...
         )
-    } else if (ext %in% c("gff", "gff3", "gtf")) {
+    } else if (exti %in% c("gff", "gff3", "gtf")) {
         data <- readGFF(file)
-    } else if (ext == "mtx") {
+    } else if (exti == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
         data <- readMM(file = file, ...)
@@ -118,28 +134,36 @@ readFileByExtension <- function(
             read_lines(na = na)
         rownames(data) <- rownames
         colnames(data) <- colnames
-    } else if (ext %in% c("rda", "RData")) {
+    } else if (exti %in% c("rda", "rdata")) {
         safe <- new.env()
         object <- load(file, envir = safe)
         if (length(safe) != 1L) {
             stop("File does not contain a single object.")
         }
         data <- get(object, envir = safe, inherits = FALSE)
-    } else if (ext == "rds") {
+    } else if (exti == "rds") {
         data <- readRDS(file)
-    } else if (ext == "tsv") {
+    } else if (exti == "tsv") {
         # Tab separated values
         data <- read_tsv(file = file, na = na, progress = FALSE, ...)
-    } else if (ext == "txt") {
-        # Text table
-        data <- read.table(file = file, header = TRUE, na.strings = na, ...)
-    } else if (ext == "xlsx") {
+    } else if (exti == "xlsx") {
         # Excel workbook
         data <- read_excel(path = file, na = na, ...)
-    } else if (ext %in% c("yaml", "yml")) {
+    } else if (exti %in% c("yaml", "yml")) {
         data <- readYAML(file)
+    } else if (requireNamespace("rio", quietly = TRUE)) {
+        message(paste(
+            paste(deparse(ext), "isn't natively supported."),
+            "Attempting to read using `rio::import()`.",
+            sep = "\n"
+        ))
+        data <- rio::import(file)
     } else {
-        stop(paste("Unsupported extension", basename(file), sep = " : "))
+        stop(paste(
+            unsupportedExt,
+            "Install the rio package for additional file format support.",
+            sep = "\n"
+        ))
     }
 
     # Sanitize colnames
