@@ -2,23 +2,25 @@
 #'
 #' Supports automatic loading of common file extensions:
 #'
-#' - "`.csv`": Comma separated values.
-#' - "`.mtx`": MatrixMarket sparse matrix.
-#' - "`.rda`": R data. Must contain a single object. Doesn't require internal
-#'   object name to match, like in the [loadData()] function.
-#' - "`.rds`": R data serialized.
-#' - "`.tsv`" Tab separated values.
-#' - "`.xlsx`": Excel workbook.
+#' - `csv`: Comma Separated Values.
+#' - `gff`/`gff3`/`gtf`: General Feature Format.
+#' - `mtx`: MatrixMarket sparse matrix.
+#' - `rda`/`RData`: R Data. Must contain a single object. Doesn't require
+#'   internal object name to match, like in the [loadData()] function.
+#' - `rds`: R Data Serialized.
+#' - `tsv` Tab Separated Values.
+#' - `xlsx`: Excel workbook.
+#' - `yaml`/`yml`: YAML.
 #'
 #' Also supports some additional extensions commonly used with the
 #' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
 #'
-#' - "`.counts`": Counts `table`.
-#' - "`.colnames`": Sidecar file containing column names.
-#' - "`.rownames`": Sidecar file containing row names.
+#' - `counts`: Counts `table`.
+#' - `colnames`: Sidecar file containing column names.
+#' - `rownames`: Sidecar file containing row names.
 #'
-#' @note Reading a MatrixMarket ("`.mtx`") file now requires "`.colnames`" and
-#'   `".rownames"` sidecar files containing the [colnames()] and [rownames()] of
+#' @note Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
+#'   `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
 #'   the sparse matrix. Legacy support for manual loading of these sidecar files
 #'   is provided.
 #'
@@ -104,6 +106,8 @@ readFileByExtension <- function(
             progress = FALSE,
             ...
         )
+    } else if (ext %in% c("gff", "gff3", "gtf")) {
+        data <- readGFF(file)
     } else if (ext == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
@@ -114,7 +118,7 @@ readFileByExtension <- function(
             read_lines(na = na)
         rownames(data) <- rownames
         colnames(data) <- colnames
-    } else if (ext == "rda") {
+    } else if (ext %in% c("rda", "RData")) {
         safe <- new.env()
         object <- load(file, envir = safe)
         if (length(safe) != 1L) {
@@ -132,6 +136,8 @@ readFileByExtension <- function(
     } else if (ext == "xlsx") {
         # Excel workbook
         data <- read_excel(path = file, na = na, ...)
+    } else if (ext %in% c("yaml", "yml")) {
+        data <- readYAML(file)
     } else {
         stop(paste("Unsupported extension", basename(file), sep = " : "))
     }
