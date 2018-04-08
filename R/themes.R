@@ -41,7 +41,7 @@ NULL
 #'
 #' @examples
 #' # Midnight Theme
-#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
+#' p + midnightTheme(aspectRatio = 1L, legendPosition = "none")
 midnightTheme <- function(
     baseSize = 14L,
     baseFamily = "",
@@ -119,52 +119,64 @@ midnightTheme <- function(
 #' scientific manuscripts and website tutorials.
 #'
 #' @examples
-#' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
-theme_paperwhite <- function(  # nolint
-    base_size = 14L,
-    base_family = "",
-    base_face = c("bold", "plain"),
-    aspect_ratio = NULL,
-    legend_position = c("bottom", "right", "none"),
+#' p + paperwhiteTheme(aspectRatio = 1L, legendPosition = "none")
+paperwhiteTheme <- function(  # nolint
+    baseSize = 14L,
+    baseFamily = "",
+    baseFace = c("bold", "plain"),
+    aspectRatio = NULL,
+    legendPosition = c("bottom", "right", "none"),
     grid = FALSE
 ) {
-    assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
-    base_face <- match.arg(base_face)
-    legend_position <- match.arg(legend_position)
+    f <- camel(formals())
+    .assignCamelArgs()
+    assert_is_a_number(baseSize)
+    assert_is_a_string(baseFamily)
+    # call to character
+    assert_is_subset(
+        x = baseFace,
+        y = as.character(f[["baseFace"]])[-1L]
+    )
+    baseFace <- baseFace[[1L]]
+    # call to character
+    assert_is_subset(
+        x = legendPosition,
+        y = as.character(f[["legendPosition"]])[-1L]
+    )
+    legendPosition <- legendPosition[[1L]]
     assert_is_a_bool(grid)
 
     gray <- "gray88"  #E0E0E0
 
     text <- element_text(
-        family = base_family,
-        face = base_face,
+        family = baseFamily,
+        face = baseFace,
         color = "black"
     )
 
     if (isTRUE(grid)) {
-        axis_line <- element_blank()
-        axis_ticks <- element_blank()
+        axisLine <- element_blank()
+        axisTicks <- element_blank()
         grid <- element_line(color = gray)
     } else {
-        axis_line <- element_line(color = "black")
-        axis_ticks <- element_line(color = "black")
+        axisLine <- element_line(color = "black")
+        axisTicks <- element_line(color = "black")
         grid <- element_blank()
     }
 
     theme_classic(
-        base_size = base_size,
-        base_family = base_family
+        base_size = baseSize,
+        base_family = baseFamily
     ) +
         theme(
             text = text,
-            aspect.ratio = aspect_ratio,
-            axis.line = axis_line,
+            aspect.ratio = aspectRatio,
+            axis.line = axisLine,
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
-            axis.ticks = axis_ticks,
+            axis.ticks = axisTicks,
             panel.grid.major = grid,
-            legend.position = legend_position,
+            legend.position = legendPosition,
             strip.text = text,
             complete = TRUE,
             validate = TRUE
@@ -183,4 +195,5 @@ formals(theme_midnight) <- snake(formals(midnightTheme))
 
 #' @rdname themes
 #' @export
-paperwhiteTheme <- theme_paperwhite
+theme_paperwhite <- paperwhiteTheme
+formals(theme_paperwhite) <- snake(formals(paperwhiteTheme))
