@@ -30,8 +30,7 @@ is enabled by default to save disk space. Note that the
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
 \examples{
-writeCounts(rnaseqCounts, dir = "example")
-writeCounts(singleCellCounts, dir = "example")
+writeCounts(rnaseqCounts, singleCellCounts, dir = "example")
 list.files("example")
 
 # Clean up
