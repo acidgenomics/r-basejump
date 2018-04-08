@@ -22,11 +22,16 @@
 #' class(rnaseqCounts)
 #' class(singleCellCounts)
 loadRemoteData <- function(url, envir = parent.frame()) {
-    assert_is_character(url)
-    assert_all_are_matching_regex(
-        x = tolower(url),
-        pattern = paste0("^http(s)?\\://.+", rdataExtPattern)
-    )
+    assertIsURL(url)
+    if (!all(vapply(
+        X = url,
+        FUN = function(x) {
+            grepl(rdataExtPattern, x, ignore.case = TRUE)
+        },
+        FUN.VALUE = logical(1L)
+    ))) {
+        stop(rdataError)
+    }
     assert_is_environment(envir)
     names <- gsub(rdataExtPattern, "", basename(url), ignore.case = TRUE)
     names(url) <- names
