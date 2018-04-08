@@ -47,7 +47,7 @@ localOrRemoteFile <- function(file) {
                     mode <- "w"
                 }
 
-                destfile <- paste(tempfile(), ext, sep = ".")
+                destfile <- file.path(tempdir(), basename(file))
                 download.file(url = file, destfile = destfile, mode = mode)
                 destfile
             } else {
@@ -58,8 +58,6 @@ localOrRemoteFile <- function(file) {
         USE.NAMES = FALSE
     )
     assert_all_are_existing_files(local)
-    local <- normalizePath(local, winslash = "/", mustWork = TRUE)
-    assert_all_are_matching_regex(file, extPattern)
-    names(local) <- basename(file)
-    local
+    assert_all_are_matching_regex(local, extPattern)
+    normalizePath(local, winslash = "/", mustWork = TRUE)
 }
