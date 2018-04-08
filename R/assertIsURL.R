@@ -19,3 +19,21 @@ assertIsURL <- function(
         severity = severity
     )
 }
+
+
+
+#' @rdname assertIsURL
+#' @export
+isURL <- function(x) {
+    if (!is.character(x)) {
+        return(FALSE)
+    }
+    vapply(
+        X = x,
+        FUN = function(x) {
+            grepl("^http(s)?\\://.+", x)
+        },
+        FUN.VALUE = logical(1L),
+        USE.NAMES = FALSE
+    )
+}
