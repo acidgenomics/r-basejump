@@ -2,17 +2,25 @@
 % Please edit documentation in R/themes.R
 \name{themes}
 \alias{themes}
-\alias{theme_midnight}
-\alias{theme_paperwhite}
 \alias{midnightTheme}
+\alias{theme_paperwhite}
+\alias{theme_midnight}
 \alias{paperwhiteTheme}
 \title{Complete Themes}
 \usage{
+midnightTheme(baseSize = 14L, baseFamily = "", baseFace = c("bold",
+  "plain"), aspectRatio = NULL, legendPosition = c("bottom", "right",
+  "none"), grid = TRUE)
+
+theme_paperwhite(base_size = 14L, base_family = "", base_face = c("bold",
+  "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
+  "none"), grid = FALSE)
+
 theme_midnight(base_size = 14L, base_family = "", base_face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = TRUE)
 
-theme_paperwhite(base_size = 14L, base_family = "", base_face = c("bold",
+paperwhiteTheme(base_size = 14L, base_family = "", base_face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = FALSE)
 }
@@ -38,6 +46,8 @@ scientific manuscripts and website tutorials.
 
 \examples{
 library(ggplot2)
+
+# Example ggplot object
 p <- ggplot(
     data = mpg,
     mapping = aes(

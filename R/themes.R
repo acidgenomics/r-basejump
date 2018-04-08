@@ -14,6 +14,8 @@
 #'
 #' @examples
 #' library(ggplot2)
+#'
+#' # Example ggplot object
 #' p <- ggplot(
 #'     data = mpg,
 #'     mapping = aes(
@@ -40,51 +42,63 @@ NULL
 #' @examples
 #' # Midnight Theme
 #' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
-theme_midnight <- function(  # nolint
-    base_size = 14L,
-    base_family = "",
-    base_face = c("bold", "plain"),
-    aspect_ratio = NULL,
-    legend_position = c("bottom", "right", "none"),
+midnightTheme <- function(
+    baseSize = 14L,
+    baseFamily = "",
+    baseFace = c("bold", "plain"),
+    aspectRatio = NULL,
+    legendPosition = c("bottom", "right", "none"),
     grid = TRUE
 ) {
-    assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
-    base_face <- match.arg(base_face)
-    legend_position <- match.arg(legend_position)
+    f <- camel(formals())
+    .assignCamelArgs()
+    assert_is_a_number(baseSize)
+    assert_is_a_string(baseFamily)
+    # call to character
+    assert_is_subset(
+        x = baseFace,
+        y = as.character(f[["baseFace"]])[-1L]
+    )
+    baseFace <- baseFace[[1L]]
+    # call to character
+    assert_is_subset(
+        x = legendPosition,
+        y = as.character(f[["legendPosition"]])[-1L]
+    )
+    legendPosition <- legendPosition[[1L]]
     assert_is_a_bool(grid)
 
     gray <- "gray12"  #1F1F1F
 
     text <- element_text(
-        family = base_family,
-        face = base_face,
+        family = baseFamily,
+        face = baseFace,
         color = "white"
     )
 
     if (isTRUE(grid)) {
-        axis_line <- element_blank()
-        axis_ticks <- element_blank()
+        axisLine <- element_blank()
+        axisTicks <- element_blank()
         grid <- element_line(color = gray)
     } else {
-        axis_line <- element_line(color = "white")
-        axis_ticks <- element_line(color = "white")
+        axisLine <- element_line(color = "white")
+        axisTicks <- element_line(color = "white")
         grid <- element_blank()
     }
 
     theme_minimal(
-        base_size = base_size,
-        base_family = base_family
+        base_size = baseSize,
+        base_family = baseFamily
     ) +
         theme(
             text = text,
-            aspect.ratio = aspect_ratio,
-            axis.line = axis_line,
+            aspect.ratio = aspectRatio,
+            axis.line = axisLine,
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
-            axis.ticks = axis_ticks,
+            axis.ticks = axisTicks,
             legend.key = element_rect(color = NA, fill = gray),
-            legend.position = legend_position,
+            legend.position = legendPosition,
             panel.grid.major = grid,
             panel.grid.minor = element_blank(),
             plot.background = element_rect(color = NA, fill = "black"),
@@ -161,13 +175,12 @@ theme_paperwhite <- function(  # nolint
 
 # Aliases ======================================================================
 #' @rdname themes
-#' @usage NULL
 #' @export
-midnightTheme <- theme_midnight
+theme_midnight <- midnightTheme
+formals(theme_midnight) <- snake(formals(midnightTheme))
 
 
 
 #' @rdname themes
-#' @usage NULL
 #' @export
 paperwhiteTheme <- theme_paperwhite
