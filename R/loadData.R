@@ -41,10 +41,8 @@ loadData <- function(
     assert_is_environment(envir)
     dots <- dots(..., character = TRUE)
     files <- .listRData(dots = dots, dir = dir)
-    message(paste("Loading", toString(basename(files)), "from", dir))
-
-    # R Data
     if (ext == "rds") {
+        # R data serialized
         mapply(
             FUN = .safeLoadRDS,
             file = files,
@@ -53,6 +51,7 @@ loadData <- function(
             USE.NAMES = FALSE
         )
     } else {
+        # R data
         mapply(
             FUN = .safeLoad,
             file = files,
@@ -61,6 +60,5 @@ loadData <- function(
             USE.NAMES = FALSE
         )
     }
-
     invisible(files)
 }
