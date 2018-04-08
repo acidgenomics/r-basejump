@@ -91,9 +91,9 @@ readFileByExtension <- function(
     )
     source <- c(
         "md",
-        "rmd",
         "py",
         "r",
+        "rmd",
         "sh"
     )
     if (exti %in% blacklist) {
