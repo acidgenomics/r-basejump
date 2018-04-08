@@ -44,16 +44,26 @@
 #' being considered for a future update.
 #'
 #' @examples
-#' # Comma separated values
+#' # Comma Separated Values
 #' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' glimpse(x)
+#'
+#' # Counts Table (bcbio)
+#' x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
+#' glimpse(x)
+#'
+#' # R Data
+#' x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
 #' glimpse(x)
 #'
 #' # Microsoft Excel Worksheet
 #' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 #' glimpse(x)
 #'
-#' # R Data
-#' x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+#' # Text Table (ambiguous; not recommended)
+#' x <- suppressWarnings(
+#'     readFileByExtension("http://basejump.seq.cloud/example.txt")
+#' )
 #' glimpse(x)
 readFileByExtension <- function(
     file,
@@ -74,7 +84,7 @@ readFileByExtension <- function(
     basename <- names(file)
     ext <- str_match(basename, extPattern)[1L, 2L]
     exti <- tolower(ext)  # case insensitive
-    unsupported <-
+    unsupported <- paste("Unsupported extension", ":", ext)
 
     # File import, based on extension
     message(paste("Reading", names(file)))
@@ -86,8 +96,7 @@ readFileByExtension <- function(
         "doc",
         "docx",
         "ppt",
-        "pptx",
-        "txt"
+        "pptx"
     )
     source <- c(
         "md",
@@ -97,7 +106,7 @@ readFileByExtension <- function(
         "sh"
     )
     if (exti %in% blacklist) {
-        stop(paste("Unsupported extension", ":", ext))
+        stop(unsupported)
     } else if (exti %in% source) {
         message("Importing as source code lines")
         data <- read_lines(file)
@@ -146,6 +155,19 @@ readFileByExtension <- function(
     } else if (exti == "tsv") {
         # Tab separated values
         data <- read_tsv(file = file, na = na, progress = FALSE, ...)
+    } else if (exti == "txt") {
+        # Table?
+        warning(paste(
+            deparse(ext), "is ambiguous and not recommended.",
+            "Assuming table output from `utils::write.table()`.",
+            sep = "\n"
+        ))
+        data <- read.table(
+            file = file,
+            header = TRUE,
+            na.strings = na,
+            ...
+        )
     } else if (exti == "xlsx") {
         # Excel workbook
         data <- read_excel(path = file, na = na, ...)
@@ -160,7 +182,7 @@ readFileByExtension <- function(
         data <- rio::import(file)
     } else {
         stop(paste(
-            unsupportedExt,
+            unsupported,
             "Install the rio package for additional file format support.",
             sep = "\n"
         ))
