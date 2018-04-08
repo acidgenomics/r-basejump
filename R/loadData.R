@@ -45,57 +45,7 @@ loadData <- function(
 
     dots <- dots(..., character = TRUE)
 
-    # Match rda, rdata, rds extensions
-    extPattern <- "\\.(rd[a|ata|s])$"
-    files <- list.files(
-        path = dir,
-        pattern = paste0(
-            "^(",
-            paste(dots, collapse = "|"),
-            ")",
-            extPattern
-        ),
-        full.names = TRUE,
-        ignore.case = TRUE
-    )
-    names <- gsub(extPattern, "", basename(files))
-    names(files) <- names
-
-    # Check for duplicate names
-    if (any(duplicated(names))) {
-        dupeNames <- names[duplicated(names)]
-        dupeFiles <- grep(
-            paste(dupeNames, collapse = "|"),
-            basename(files),
-            value = TRUE
-        )
-        stop(paste(
-            "Duplicates",
-            toString(dupeFiles),
-            sep = " : "
-        ))
-    }
-
-    # Check for extension soup and stop on detection
-    ext <- str_match(files, extPattern) %>%
-        .[, 2L] %>%
-        unique() %>%
-        sort()
-    if (length(ext) != 1L) {
-        stop(paste(
-            paste(
-                "Multiple extensions",
-                toString(ext),
-                sep = " : "
-            ),
-            "Use a single R data file format inside a directory.",
-            printString(files),
-            sep = "\n"
-        ))
-    }
-
-    # Now safe to sort the files to match the dots
-    files <- files[dots]
+    files <- .listRData(dots = dots, dir = dir)
     message(paste("Loading", toString(basename(files)), "from", dir))
 
     # R Data
