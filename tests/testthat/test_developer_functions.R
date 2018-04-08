@@ -20,15 +20,19 @@ test_that("detectHPC", {
 # dots =========================================================================
 test_that("dots", {
     expect_identical(
-        dots(mtcars, starwars),
-        list(as.name("mtcars"), as.name("starwars"))
+        dots(a, b, c),
+        list(
+            as.name("a"),
+            as.name("b"),
+            as.name("c")
+        )
     )
     expect_identical(
-        dots(mtcars, starwars, character = TRUE),
-        c("mtcars", "starwars")
+        dots(a, b, c, character = TRUE),
+        c("a", "b", "c")
     )
     expect_error(
-        dots(mtcars, mtcars),
+        dots(a, a, b, c),
         "has_no_duplicates : dots has a duplicate at position 2"
     )
     expect_error(
@@ -52,13 +56,16 @@ test_that("methodFormals", {
 
 
 
-# multiassignAsNewEnvir ========================================================
-test_that("multiassignAsNewEnvir", {
-    x <- multiassignAsNewEnvir(mtcars, starwars, envirName = "test")
-    expect_identical(x, c("mtcars", "starwars"))
-    expect_identical(x, ls(test))
+# multiassignAsEnvir ===========================================================
+test_that("multiassignAsEnvir", {
+    x <- multiassignAsEnvir(
+        rnaseqCounts, singleCellCounts,
+        envirName = "example"
+    )
+    expect_identical(x, c("rnaseqCounts", "singleCellCounts"))
+    expect_identical(x, ls(example))
     expect_error(
-        multiassignAsNewEnvir(mtcars, envirName = parent.frame()),
+        multiassignAsEnvir(rnaseqCounts, envirName = parent.frame()),
         "is_a_string : envirName"
     )
 })
