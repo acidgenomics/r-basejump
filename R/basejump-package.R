@@ -37,6 +37,7 @@
 #' @importFrom yaml yaml.load_file
 #'
 #' @importFrom assertive assert_all_are_dirs
+#' @importFrom assertive assert_all_are_existing
 #' @importFrom assertive assert_all_are_existing_files
 #' @importFrom assertive assert_all_are_greater_than
 #' @importFrom assertive assert_all_are_greater_than_or_equal_to
