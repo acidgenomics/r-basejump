@@ -2,20 +2,12 @@
 % Please edit documentation in R/themes.R
 \name{themes}
 \alias{themes}
-\alias{midnightTheme}
-\alias{paperwhiteTheme}
 \alias{theme_midnight}
 \alias{theme_paperwhite}
+\alias{midnightTheme}
+\alias{paperwhiteTheme}
 \title{Complete Themes}
 \usage{
-midnightTheme(baseSize = 14L, baseFamily = "", baseFace = c("bold",
-  "plain"), aspectRatio = NULL, legendPosition = c("bottom", "right",
-  "none"), grid = TRUE)
-
-paperwhiteTheme(baseSize = 14L, baseFamily = "", baseFace = c("bold",
-  "plain"), aspectRatio = NULL, legendPosition = c("bottom", "right",
-  "none"), grid = FALSE)
-
 theme_midnight(base_size = 14L, base_family = "", base_face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = TRUE)
@@ -23,6 +15,11 @@ theme_midnight(base_size = 14L, base_family = "", base_face = c("bold",
 theme_paperwhite(base_size = 14L, base_family = "", base_face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = FALSE)
+}
+\arguments{
+\item{base_size}{base font size}
+
+\item{base_family}{base font family}
 }
 \value{
 \code{theme}.
@@ -58,8 +55,8 @@ p <- ggplot(
 ) +
     geom_point()
 # Midnight Theme
-p + midnightTheme(aspectRatio = 1L, legendPosition = "none")
-p + paperwhiteTheme(aspectRatio = 1L, legendPosition = "none")
+p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
+p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
