@@ -7,25 +7,27 @@
 loadRemoteData(url, envir = parent.frame())
 }
 \arguments{
-\item{url}{Remote URL file path to R Data file. Supports multiple URLs
-passed in as a character vector.}
+\item{url}{Remote URL file path to R data. Supports multiple URLs passed in
+as a character vector.}
 
 \item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
 which will assign into the calling environment.}
 }
 \value{
-Invisible character \code{matrix} containing URL and tempfile paths.
+Invisible named \code{character} containing the local object name as the
+name, and the remote URL as the value.
 }
 \description{
 Load a remote R binary file. This function is vectorized and supports
 multiple URLs in a single call.
 }
 \examples{
-loaded <- loadRemoteData(c(
+loadRemoteData(c(
     "http://basejump.seq.cloud/rnaseqCounts.rda",
     "http://basejump.seq.cloud/singleCellCounts.rda"
 ))
-loaded["url", ]
+class(rnaseqCounts)
+class(singleCellCounts)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
