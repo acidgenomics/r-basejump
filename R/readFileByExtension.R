@@ -51,14 +51,13 @@
 #' glimpse(xlsx)
 readFileByExtension <- function(
     file,
-    makeNames = c("camel", "snake", "upperCamel", "dotted"),
+    makeNames = c("camel", "dotted", "snake", "upperCamel"),
     ...
 ) {
     assert_is_a_string(file)
     file <- localOrRemoteFile(file)
-    # Require that input string contains an extension
-    extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
-    assert_all_are_matching_regex(file, extPattern)
+
+    # Get makeNames function
     makeNames <- match.arg(makeNames)
     makeNames <- get(
         x = makeNames,
@@ -79,12 +78,6 @@ readFileByExtension <- function(
 
     # Sanitize NA values
     na <- c("", "NA", "#N/A", "NULL", "null")
-
-    # Add extension to tempfile, if necessary
-    if (!grepl(extPattern, file)) {
-        file.rename(from = file, to = paste0(file, ".", extFull))
-        file <- paste0(file, ".", extFull)
-    }
 
     if (ext %in% c("colnames", "rownames")) {
         data <- read_lines(file = file, na = na, ...)
