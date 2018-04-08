@@ -1,5 +1,6 @@
 #' PANTHER Gene Ontology Annotations
 #'
+#' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
@@ -118,7 +119,7 @@ panther <- function(
 
 
 .pantherAnnotations <- function(
-    organism = c("human", "mouse", "fruit_fly", "nematode"),
+    organism = c("human", "mouse", "fruit_fly", "nematode_worm"),
     release,
     dir = "."
 ) {
