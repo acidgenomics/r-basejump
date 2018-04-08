@@ -11,7 +11,7 @@ panther <- function(
     organism = c(
         "human" = "Homo sapiens",
         "mouse" = "Mus musculus",
-        "nematode" = "Caenorhabditis elegans",
+        "nematode_worm" = "Caenorhabditis elegans",
         "fruit_fly" = "Drosophila melanogaster"
     ),
     release = NULL
@@ -29,10 +29,10 @@ panther <- function(
         .panther.mouse(data)
     } else if (organism == "Drosophila melanogaster") {
         data <- .pantherAnnotations("fruit_fly", release = release)
-        .panther.fruitfly(data)
+        .panther.fruit_fly(data)
     } else if (organism == "Caenorhabditis elegans") {
-        data <- .pantherAnnotations("nematode", release = release)
-        .panther.nematode(data)
+        data <- .pantherAnnotations("nematode_worm", release = release)
+        .panther.nematode_worm(data)
     }
 }
 
@@ -97,7 +97,7 @@ panther <- function(
 
 
 
-.panther.fruitfly <- function(data) {  # nolint
+.panther.fruit_fly <- function(data) {  # nolint
     data %>%
         mutate(
             geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$")
@@ -107,7 +107,7 @@ panther <- function(
 
 
 
-.panther.nematode <- function(data) {  # nolint
+.panther.nematode_worm <- function(data) {  # nolint
      data %>%
         mutate(
             geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$")

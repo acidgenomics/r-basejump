@@ -4,12 +4,12 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism = c(human = "Homo sapiens", mouse = "Mus musculus", nematode
-  = "Caenorhabditis elegans", fruit_fly = "Drosophila melanogaster"),
-  release = NULL)
+panther(organism = c(human = "Homo sapiens", mouse = "Mus musculus",
+  nematode_worm = "Caenorhabditis elegans", fruit_fly =
+  "Drosophila melanogaster"), release = NULL)
 }
 \description{
-Only the current PANTHER release is currently supported.
+PANTHER Gene Ontology Annotations
 }
 \examples{
 x <- panther("Homo sapiens")
