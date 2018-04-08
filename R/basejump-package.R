@@ -13,8 +13,9 @@
 #' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
 #'   tail
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr arrange bind_rows case_when everything filter funs mutate
-#'   mutate_all mutate_at mutate_if select summarize_all top_n
+#' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
+#'   left_join mutate mutate_all mutate_at mutate_if select summarize_all top_n
+#'   ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
@@ -34,7 +35,6 @@
 #' @importFrom tidyr separate
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
-#' @importFrom yaml yaml.load_file
 #'
 #' @importFrom assertive assert_all_are_dirs
 #' @importFrom assertive assert_all_are_existing
