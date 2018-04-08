@@ -1,10 +1,9 @@
-#' Assign Multiple Objects as a New Environment
+#' Assign Multiple Objects as an Environment
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams dots
-#' @inheritParams saveData
 #' @param envirName New environment name (`string`).
 #' @param parentEnvir Parent `environment` where to assign the new environment.
 #'
@@ -12,10 +11,10 @@
 #' @export
 #'
 #' @examples
-#' multiassignAsNewEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
+#' multiassignAsEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
 #' class(example)
 #' ls(example)
-multiassignAsNewEnvir <- function(
+multiassignAsEnvir <- function(
     ...,
     envirName,
     parentEnvir = parent.frame()
