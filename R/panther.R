@@ -87,7 +87,7 @@ panther <- function(
         ) %>%
         filter(!is.na(!!sym("mgiID"))) %>%
         left_join(map, by = "mgiID") %>%
-        select(-!!sym("mgiID"))
+        select(-!!sym("mgiID")) %>%
         filter(!is.na(!!sym("geneID")))
 
     # Return
