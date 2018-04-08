@@ -13,6 +13,8 @@
 #' @inheritParams loadData
 #' @inheritParams base::save
 #' @param overwrite Overwrite existing file.
+#' @param format RDS (serialized R Data) or RData. RDS is preferred when saving
+#'   single objects per file, which is always the convention of [saveData()].
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
@@ -34,41 +36,55 @@
 saveData <- function(
     ...,
     dir = ".",
+    ext = c("rda", "rds"),
     overwrite = TRUE,
     compress = TRUE
 ) {
-    objectNames <- dots(..., character = TRUE)
-    assert_is_character(objectNames)
+    objects <- list(...)
+    names(objects) <- dots(..., character = TRUE)
     dir <- initializeDirectory(dir)
+    ext <- match.arg(ext)
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
 
-    files <- file.path(dir, paste0(objectNames, ".rda"))
-    names(files) <- objectNames
+    files <- file.path(dir, paste(names(objects), ext, sep = "."))
+    names(files) <- names(objects)
 
     message(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        warning(paste("Skipping", toString(basename(skip))))
+        warning(paste("Skipping", toString(basename(skip))), call. = FALSE)
         files <- files[!file.exists(files)]
+        if (!length(files)) {
+            warning("No files were saved.")
+            return(invisible())
+        }
+        objects <- objects[!file.exists(files)]
     }
 
-    if (!length(files)) {
-        warning("No files were saved")
-        return(invisible())
-    }
-
-    mapply(
-        FUN = save,
-        list = names(files),
-        file = files,
-        MoreArgs = list(
-            envir = parent.frame(),
-            compress = compress
+    # Determine which save function to use
+    if (ext == "rds") {
+        mapply(
+            FUN = saveRDS,
+            object = objects,
+            file = files,
+            MoreArgs = list(
+                "compress" = compress
+            )
         )
-    )
+    } else {
+        mapply(
+            FUN = save,
+            list = names(files),
+            file = files,
+            MoreArgs = list(
+                "envir" = parent.frame(),
+                "compress" = compress
+            )
+        )
+    }
 
     invisible(files)
 }
