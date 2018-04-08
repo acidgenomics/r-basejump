@@ -1,8 +1,26 @@
 #' Read File by Extension
 #'
-#' Supports automatic loading of standard `.csv`, `.mtx`, `.tsv`, and `.xlsx`
-#' files. Also supports bcbio-nextgen pipeline-specific `.counts`, `.colnames`,
-#' and `.rownames` files.
+#' Supports automatic loading of common file extensions:
+#'
+#' - "`.csv`": Comma separated values.
+#' - "`.mtx`": MatrixMarket sparse matrix.
+#' - "`.rda`": R data. Must contain a single object. Doesn't require internal
+#'   object name to match, like in the [loadData()] function.
+#' - "`.rds`": R data serialized.
+#' - "`.tsv`" Tab separated values.
+#' - "`.xlsx`": Excel workbook.
+#'
+#' Also supports some additional extensions commonly used with the
+#' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
+#'
+#' - "`.counts`": Counts `table`.
+#' - "`.colnames`": Sidecar file containing column names.
+#' - "`.rownames`": Sidecar file containing row names.
+#'
+#' @note Reading a MatrixMarket ("`.mtx`") file now requires "`.colnames`" and
+#'   `".rownames"` sidecar files containing the [colnames()] and [rownames()] of
+#'   the sparse matrix. Legacy support for manual loading of these sidecar files
+#'   is provided.
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
@@ -18,6 +36,10 @@
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
 #' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
+#'
+#' Integration of the
+#' [rio](https://cran.r-project.org/web/packages/rio/index.html) package is
+#' being considered for a future update.
 #'
 #' @examples
 #' # Comma separated values
@@ -47,8 +69,10 @@ readFileByExtension <- function(
     basename <- names(file)
     match <- str_match(basename, extPattern)
     ext <- match[1L, 2L]
-    extFull <- paste(match[1L, 2L:3L], collapse = "")
-    gzip <- ifelse(is.na(match[1L, 3L]), FALSE, TRUE)
+    extFull <- match[1L, 2L:3L] %>%
+        na.omit() %>%
+        paste(collapse = "")
+    gzip <- grepl("\\.gz$", extFull)
 
     # File import, based on extension
     message(paste("Reading", names(file)))
@@ -62,7 +86,20 @@ readFileByExtension <- function(
         file <- paste0(file, ".", extFull)
     }
 
-    if (ext == "csv") {
+    if (ext %in% c("colnames", "rownames")) {
+        data <- read_lines(file = file, na = na, ...)
+    } else if (ext == "counts") {
+        # bcbio counts output
+        data <- read_tsv(
+            file = file,
+            na = na,
+            progress = FALSE,
+            ...
+        ) %>%
+            as.data.frame() %>%
+            column_to_rownames("id") %>%
+            as.matrix()
+    } else if (ext == "csv") {
         # Comma separated values
         data <- readr::read_csv(
             file = file,
@@ -80,6 +117,15 @@ readFileByExtension <- function(
             read_lines(na = na)
         rownames(data) <- rownames
         colnames(data) <- colnames
+    } else if (ext == "rda") {
+        safe <- new.env()
+        object <- load(file, envir = safe)
+        if (length(safe) != 1L) {
+            stop("File does not contain a single object.")
+        }
+        data <- get(object, envir = safe, inherits = FALSE)
+    } else if (ext == "rds") {
+        data <- readRDS(file)
     } else if (ext == "tsv") {
         # Tab separated values
         data <- read_tsv(file = file, na = na, progress = FALSE, ...)
@@ -89,21 +135,8 @@ readFileByExtension <- function(
     } else if (ext == "xlsx") {
         # Excel workbook
         data <- read_excel(path = file, na = na, ...)
-    } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(file = file, na = na, ...)
-    } else if (ext == "counts") {
-        # bcbio counts output
-        data <- read_tsv(
-            file = file,
-            na = na,
-            progress = FALSE,
-            ...
-        ) %>%
-            as.data.frame() %>%
-            column_to_rownames("id") %>%
-            as.matrix()
     } else {
-        stop(paste("Unsupported file extension:", basename(file)))
+        stop(paste("Unsupported extension", basename(file), sep = " : "))
     }
 
     # Sanitize colnames
