@@ -20,6 +20,7 @@
 #' @family Read Functions
 #' @author Michael Steinbaugh
 #'
+#' @inheritParams general
 #' @param ... Object names. Note that these arguments are interpreted as symbols
 #'   using non-standard evaluation for convenience during interactive use, and
 #'   *should not be quoted*.

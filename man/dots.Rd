@@ -40,7 +40,8 @@ dots(a, b, c, character = TRUE)
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{localOrRemoteFile}},
   \code{\link{methodFormals}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh

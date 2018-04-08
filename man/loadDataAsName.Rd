@@ -28,12 +28,11 @@ This function is intended for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-loaded <- loadDataAsName(
-    makeNames = mn,
-    dir = system.file("extdata", package = "basejump")
+loadDataAsName(
+    example = birthwt,
+    dir = system.file("tests", package = "stats")
 )
-print(loaded)
-class(makeNames)
+class(example)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},

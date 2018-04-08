@@ -13,8 +13,9 @@
 #' @inheritParams loadData
 #' @inheritParams base::save
 #' @param overwrite Overwrite existing file.
-#' @param format RDS (serialized R Data) or RData. RDS is preferred when saving
-#'   single objects per file, which is always the convention of [saveData()].
+#' @param ext R data ("`rda`", "`RData`") or R data serialized (RDS; "`rds`").
+#'   RDS is preferred when saving single objects per file, which is always the
+#'   convention of [saveData()], regardless of the extension used.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
@@ -36,7 +37,7 @@
 saveData <- function(
     ...,
     dir = ".",
-    ext = c("rda", "rds"),
+    ext = c("rda", "rds", "RData"),
     overwrite = TRUE,
     compress = TRUE
 ) {

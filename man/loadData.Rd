@@ -7,8 +7,9 @@
 loadData(..., dir = ".", envir = parent.frame())
 }
 \arguments{
-\item{...}{Object names. Note that these arguments are interpreted using
-non-standard evaluation, and \emph{should not be quoted}.}
+\item{...}{Object names. Note that these arguments are interpreted as symbols
+using non-standard evaluation for convenience during interactive use, and
+\emph{should not be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
 
@@ -19,8 +20,8 @@ which will assign into the calling environment.}
 Invisible \code{character} containing file paths.
 }
 \description{
-Load R data (\code{.rda}) files from a directory using symbols rather than
-complete file paths.
+Load R data files from a directory using symbols rather than complete file
+paths. Supports "\code{.RData}", "\code{.rda}", and "\code{.rds}" file extensions.
 }
 \details{
 \code{\link[=loadData]{loadData()}} is opinionated about the format of R data files it will accept.
@@ -32,20 +33,17 @@ the object name will no longer match.
 
 To avoid any accidental replacements, \code{\link[=loadData]{loadData()}} will only load R data
 files that contain a single object, and the internal object name must match
-the file name exactly. These conventions match the recommendations of the
-RStudio team, which recommends saving single objects per file.
+the file name exactly.
 }
 \note{
 This function is desired for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-loaded <- loadData(
-    mn,
-    dir = system.file("extdata", package = "basejump")
+loadData(
+    anorexia, birthwt,
+    dir = system.file("tests", package = "stats")
 )
-print(loaded)
-class(mn)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
