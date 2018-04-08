@@ -1,5 +1,7 @@
 context("Math Functions")
 
+
+
 # aggregateFeatures ============================================================
 test_that("aggregateFeatures", {
     aggMat <- data.frame(
