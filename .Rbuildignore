@@ -1,10 +1,11 @@
 ^.*\.Rproj$
-^\.lintr$
+^.*\.gz$
 ^\.Rprofile$
 ^\.Rproj\.user$
+^\.lintr$
 ^\.travis\.yml$
+^_pkgdown\.yml$
+^appveyor\.yml$
 ^data-raw$
 ^docs$
-^_pkgdown\.yml$
 ^pkgdown$
-^appveyor\.yml$
