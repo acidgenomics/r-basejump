@@ -37,19 +37,6 @@ writeCounts <- function(
     dots <- dots_list(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
-
-    invisible(lapply(dots, assert_has_dims))
-    invisible(lapply(dots, function(x) {
-        assert_is_any_of(
-            x,
-            c(
-                "data.frame",
-                "dgCMatrix",
-                "dgTMatrix",
-                "matrix"
-            )
-        )
-    }))
     dir <- initializeDirectory(dir)
     assert_is_a_bool(gzip)
 
@@ -60,7 +47,21 @@ writeCounts <- function(
         name <- names,
         counts <- dots,
         FUN = function(name, counts) {
-            if (grepl("^dg.+Matrix$", class(counts)[[1L]])) {
+            if (is.matrix(counts)) {
+                # Coercing to tibble to keep rownames intact
+                ext <- ".csv"
+                if (isTRUE(gzip)) {
+                    ext <- paste0(ext, ".gz")
+                }
+                fileName <- paste0(name, ext)
+                filePath <- file.path(dir, fileName)
+                # See `setAs.R` file for documentation on tibble coercion method
+                write_csv(
+                    x = as(counts, "tibble"),
+                    path = filePath
+                )
+                returnPath <- filePath
+            } else if (grepl("^dg.+Matrix$", class(counts)[[1L]])) {
                 # MatrixMarket file
                 matrixFile <- file.path(dir, paste0(name, ".mtx"))
                 writeMM(counts, matrixFile)
@@ -77,19 +78,7 @@ writeCounts <- function(
                 write_lines(genes, genesFile)
                 returnPath <- matrixFile
             } else {
-                # Coercing to tibble to keep rownames intact
-                ext <- ".csv"
-                if (isTRUE(gzip)) {
-                    ext <- paste0(ext, ".gz")
-                }
-                fileName <- paste0(name, ext)
-                filePath <- file.path(dir, fileName)
-                # See `setAs.R` file for documentation on tibble coercion method
-                write_csv(
-                    x = as(counts, "tibble"),
-                    path = filePath
-                )
-                returnPath <- filePath
+                stop(paste(name, "is not a matrix"), call. = FALSE)
             }
             returnPath
         },
