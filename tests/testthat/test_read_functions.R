@@ -99,15 +99,15 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "sparse.rda", sep = "/"))
+    loaded <- loadRemoteData(paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
     # Character matrix of loaded files
     expect_is(loaded, "matrix")
     expect_identical(
-        loaded["url", "sparse", drop = TRUE],
-        paste(cacheURL, "sparse.rda", sep = "/")
+        loaded["url", "rnaseqCounts", drop = TRUE],
+        paste(cacheURL, "rnaseqCounts.rda", sep = "/")
     )
     # Check that the object loaded correctly
-    expect_is(sparse, "dgCMatrix")
+    expect_is(rnaseqCounts, "matrix")
 })
 
 test_that("loadRemoteData : Already loaded", {
@@ -154,16 +154,19 @@ test_that("localOrRemoteFile : Missing file", {
 
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
-    csv <- readFileByExtension("mtcars.csv")
-    expect_is(csv, "tbl_df")
+    x <- readFileByExtension("mtcars.csv")
+    expect_is(x, "tbl_df")
 })
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
-    mtx <- readFileByExtension("sparse.mtx")
-    expect_is(mtx, "ngTMatrix")
-    col <- readFileByExtension("test.colnames")
-    expect_identical(col, c("foo", "bar"))
-    # rownames use the same code base as colnames
+    x <- readFileByExtension("singleCellCounts.mtx.gz")
+    expect_is(x, "dgTMatrix")
+
+    x <- readFileByExtension("singleCellCounts.mtx.gz.rownames")
+    expect_is(x, "character")
+
+    x <- readFileByExtension("singleCellCounts.mtx.gz.colnames")
+    expect_is(x, "character")
 })
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
