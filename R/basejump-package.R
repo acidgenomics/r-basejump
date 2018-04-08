@@ -12,7 +12,8 @@
 #' @importFrom RCurl getURL
 #' @importFrom S4Vectors as.data.frame complete.cases mcols<- na.omit tail
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr case_when funs mutate_all mutate_if summarize_all
+#' @importFrom dplyr arrange bind_rows case_when everything filter funs mutate
+#'   mutate_all mutate_at mutate_if select summarize_all top_n
 #' @importFrom ensembldb ensemblVersion
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
@@ -23,12 +24,13 @@
 #' @importFrom plyr ldply
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
-#' @importFrom rlang abort dots_list eval_bare inform warn
+#' @importFrom rlang !! UQ sym dots_list eval_bare
 #' @importFrom stats dist
 #' @importFrom stringr str_dup str_extract str_length str_match str_pad
-#'   str_replace_na str_subset
+#'   str_replace str_replace_all str_replace_na str_subset
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
+#' @importFrom tidyr separate
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
 #' @importFrom yaml yaml.load_file
