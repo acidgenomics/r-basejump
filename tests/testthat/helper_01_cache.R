@@ -10,10 +10,11 @@ files <- c(
     "multi.rda",
     "plotlist.rda",
     "renamed.rda",
-    "sparse.mtx",
-    "summary.yaml",
-    "test.colnames",
-    "test.counts"
+    "rnaseqCounts.csv.gz",
+    "singleCellCounts.mtx.gz",
+    "singleCellCounts.mtx.gz.colnames",
+    "singleCellCounts.mtx.gz.rownames",
+    "summary.yaml"
 )
 mapply(
     FUN = function(cacheURL, file, envir) {
