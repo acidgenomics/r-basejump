@@ -123,7 +123,7 @@ readFileByExtension <- function(
             ...
         )
     } else if (exti %in% c("gff", "gff3", "gtf")) {
-        data <- readGFF(file)
+        data <- suppressMessages(readGFF(file))
     } else if (exti == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
@@ -150,7 +150,7 @@ readFileByExtension <- function(
         # Excel workbook
         data <- read_excel(path = file, na = na, ...)
     } else if (exti %in% c("yaml", "yml")) {
-        data <- readYAML(file)
+        data <- suppressMessages(readYAML(file))
     } else if (requireNamespace("rio", quietly = TRUE)) {
         message(paste(
             paste(deparse(ext), "isn't natively supported."),
