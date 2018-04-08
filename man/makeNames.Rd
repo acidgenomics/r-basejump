@@ -189,7 +189,7 @@ base functions.
 the convention used by \code{\link[=make.names]{make.names()}}.
 }
 \examples{
-load(system.file("extdata/mn.rda", package = "basejump"))
+loadRemoteData("http://basejump.seq.cloud/mn.rda")
 
 # character ====
 x <- mn$character
