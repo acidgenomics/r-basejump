@@ -81,13 +81,12 @@ readFileByExtension <- function(
         inherits = FALSE
     )
 
-    basename <- names(file)
-    ext <- str_match(basename, extPattern)[1L, 2L]
+    ext <- str_match(basename(file), extPattern)[1L, 2L]
     exti <- tolower(ext)  # case insensitive
     unsupported <- paste("Unsupported extension", ":", ext)
 
     # File import, based on extension
-    message(paste("Reading", names(file)))
+    message(paste("Reading", basename(file)))
 
     # Sanitize NA values
     na <- c("", "NA", "#N/A", "NULL", "null")
