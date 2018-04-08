@@ -18,6 +18,9 @@
         full.names = TRUE,
         ignore.case = TRUE
     )
+    if (!length(files)) {
+        stop("R data files must contain `.rda`, `.rds`, or `.RData` extension")
+    }
     names <- gsub(rdataExtPattern, "", basename(files), ignore.case = TRUE)
     names(files) <- names
 
@@ -90,7 +93,28 @@
     loaded <- load(file, envir = tmpEnvir)
 
     # Ensure that the loaded name is identical to the file name
-    assert_is_a_string(loaded)
+    if (!is_a_string(loaded)) {
+        stop(paste(
+            basename(file),
+            "contains multiple objects",
+            ":",
+            toString(loaded)
+        ))
+    }
+    if (!identical(name, loaded)) {
+        stop(paste(
+            paste(basename(file), "has been renamed."),
+            "The object name inside the file doesn't match.",
+            paste("  - expected:", name),
+            paste("  - actual:  ", loaded),
+            paste(
+                "Avoid renaming R data files;",
+                "this can lead to accidental replacement",
+                "in the working environment."
+            ),
+            sep = "\n"
+        ))
+    }
     assert_are_identical(name, loaded)
 
     # Now we're ready to assign into the target environment
