@@ -23,26 +23,28 @@ Supports automatic loading of common file extensions:
 }
 \details{
 \itemize{
-\item "\code{.csv}": Comma separated values.
-\item "\code{.mtx}": MatrixMarket sparse matrix.
-\item "\code{.rda}": R data. Must contain a single object. Doesn't require internal
-object name to match, like in the \code{\link[=loadData]{loadData()}} function.
-\item "\code{.rds}": R data serialized.
-\item "\code{.tsv}" Tab separated values.
-\item "\code{.xlsx}": Excel workbook.
+\item \code{csv}: Comma Separated Values.
+\item \code{gff}/\code{gff3}/\code{gtf}: General Feature Format.
+\item \code{mtx}: MatrixMarket sparse matrix.
+\item \code{rda}/\code{RData}: R Data. Must contain a single object. Doesn't require
+internal object name to match, like in the \code{\link[=loadData]{loadData()}} function.
+\item \code{rds}: R Data Serialized.
+\item \code{tsv} Tab Separated Values.
+\item \code{xlsx}: Excel workbook.
+\item \code{yaml}/\code{yml}: YAML.
 }
 
 Also supports some additional extensions commonly used with the
 \href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
 \itemize{
-\item "\code{.counts}": Counts \code{table}.
-\item "\code{.colnames}": Sidecar file containing column names.
-\item "\code{.rownames}": Sidecar file containing row names.
+\item \code{counts}: Counts \code{table}.
+\item \code{colnames}: Sidecar file containing column names.
+\item \code{rownames}: Sidecar file containing row names.
 }
 }
 \note{
-Reading a MatrixMarket ("\code{.mtx}") file now requires "\code{.colnames}" and
-\code{".rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
+Reading a MatrixMarket ("\code{mtx}") file now requires "\code{colnames}" and
+\code{"rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertIsTx2gene.R
 \name{assertIsTx2gene}
 \alias{assertIsTx2gene}
-\title{Check Transcript to Gene Mapping Data}
+\title{Assert Is Transcript-to-Gene Mapping Data}
 \usage{
 assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
 }
@@ -18,7 +18,7 @@ Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 Abort on mismatch.
 }
 \description{
-Check Transcript to Gene Mapping Data
+Assert Is Transcript-to-Gene Mapping Data
 }
 \examples{
 x <- data.frame(
@@ -48,7 +48,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}}
+  \code{\link{assertIsImplicitInteger}},
+  \code{\link{assertIsURL}}
 }
 \author{
 Michael Steinbaugh
