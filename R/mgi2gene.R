@@ -1,6 +1,6 @@
 #' MGI to Ensembl Gene ID Mappings
 #'
-#' @family Gene Ontology Functions
+#' @family Gene Annotation Functions
 #'
 #' @return `data.frame`.
 #' @export
