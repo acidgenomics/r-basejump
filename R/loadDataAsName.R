@@ -1,7 +1,3 @@
-# FIXME Need to add RDS support
-
-
-
 #' Load Data as Name
 #'
 #' @note This function is intended for interactive use and interprets object
