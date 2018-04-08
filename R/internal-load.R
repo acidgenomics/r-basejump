@@ -1,3 +1,5 @@
+# Prefer RDS over RData if both files are present.
+
 .safeLoad <- function(
     file,
     name = NULL,
