@@ -55,7 +55,7 @@ writeCounts <- function(
     # Iterate across the dot objects and write to disk
     names <- dots(..., character = TRUE)
 
-    inform(paste("Writing", toString(names), "to", dir))
+    message(paste("Writing", toString(names), "to", dir))
 
     files <- lapply(seq_along(dots), function(a) {
         name <- names[[a]]

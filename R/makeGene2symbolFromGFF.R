@@ -16,7 +16,7 @@
 #' makeGene2symbolFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>%
 #'     glimpse()
 makeGene2symbolFromGFF <- function(file) {
-    inform("Making gene2symbol from GFF")
+    message("Making gene2symbol from GFF")
     data <- parseGFFAttributes(file, select = "gene_") %>%
         as.data.frame() %>%
         camel()

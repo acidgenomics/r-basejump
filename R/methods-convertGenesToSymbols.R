@@ -58,7 +58,7 @@ NULL
     # If no gene2symbol is provided, fall back to using Ensembl annotations
     if (!is.data.frame(gene2symbol)) {
         # Generate gene2symbol from Ensembl
-        inform("Obtaining gene-to-symbol mappings from Ensembl")
+        message("Obtaining gene-to-symbol mappings from Ensembl")
         if (is.null(organism)) {
             organism <- detectOrganism(object, unique = TRUE)
         } else if (is_a_string(organism)) {
@@ -82,7 +82,7 @@ NULL
     if (!all(object %in% names(geneName))) {
         nomatch <- setdiff(object, rownames(gene2symbol))
         names(nomatch) <- nomatch
-        warn(paste(
+        warning(paste(
             "Failed to match all genes to symbols:",
             toString(nomatch)
         ))

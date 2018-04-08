@@ -32,7 +32,7 @@ multiassignAsNewEnvir <- function(
         assign(dotsNames[[a]], eval(dots[[a]]), envir = envir)
     }))
 
-    inform(paste("Assigning", toString(dotsNames), "as", envirName))
+    message(paste("Assigning", toString(dotsNames), "as", envirName))
     assign(envirName, value = envir, envir = parentEnvir)
 
     invisible(objects(envir))

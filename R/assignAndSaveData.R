@@ -42,7 +42,7 @@ assignAndSaveData <- function(
     assign(name, object, envir = envir)
 
     # Save
-    inform(paste("Saving", name, "to", dir))
+    message(paste("Saving", name, "to", dir))
     file <- file.path(dir, paste0(name, ".rda"))
     save(
         list = name,

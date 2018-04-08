@@ -17,7 +17,7 @@ assertAllAreNonExisting <- function(
 ) {
     exists <- is_existing(x, envir = envir, inherits = inherits)
     if (any(exists)) {
-        abort(paste(
+        stop(paste(
             "Already exists in environment:",
             toString(x[exists])
         ))

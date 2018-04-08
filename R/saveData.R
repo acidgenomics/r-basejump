@@ -46,17 +46,17 @@ saveData <- function(
     files <- file.path(dir, paste0(objectNames, ".rda"))
     names(files) <- objectNames
 
-    inform(paste("Saving", toString(basename(files)), "to", dir))
+    message(paste("Saving", toString(basename(files)), "to", dir))
 
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        warn(paste("Skipping", toString(basename(skip))))
+        warning(paste("Skipping", toString(basename(skip))))
         files <- files[!file.exists(files)]
     }
 
     if (!length(files)) {
-        warn("No files were saved")
+        warning("No files were saved")
         return(invisible())
     }
 

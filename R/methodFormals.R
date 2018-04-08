@@ -26,7 +26,7 @@ methodFormals <- function(f, signature) {
         if (is.function(local)) {
             return(formals(local))
         }
-        warn("Expected `.local` assignment to be a function")
+        warning("Expected `.local` assignment to be a function")
     }
     genFormals
 }

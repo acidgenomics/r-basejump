@@ -172,13 +172,13 @@ NULL
         FUN.VALUE = character(1L)
     )
     if (all(is.na(x))) {
-        abort("Failed to detect organism")
+        stop("Failed to detect organism")
     }
     if (is_a_string(x)) {
         names(x) <- NULL
     }
     if (length(na.omit(unique(x))) > 1L) {
-        warn("Multiple organisms detected")
+        warning("Multiple organisms detected")
     }
     if (isTRUE(unique)) {
         x <- x %>%

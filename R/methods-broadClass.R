@@ -55,7 +55,7 @@ setMethod(
             biotypeCol <- biotypeCol[[1L]]
             biotype <- object[[biotypeCol]]
         } else {
-            warn("biotype missing")
+            warning("biotype missing")
             biotype <- NA
         }
 
@@ -70,11 +70,11 @@ setMethod(
             seqnameCol <- seqnameCol[[1L]]
             seqname <- object[[seqnameCol]]
         } else {
-            warn("seqname missing")
+            warning("seqname missing")
             seqname <- NA
         }
 
-        inform(paste(
+        message(paste(
             "Defining broadClass using:",
             toString(c("geneName", biotypeCol, seqnameCol))
         ))
