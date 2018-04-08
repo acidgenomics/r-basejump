@@ -3,7 +3,7 @@ context("Coercion Methods")
 
 
 # tibble =======================================================================
-test_that("Coerce to tibble", {
+test_that("tibble", {
     x <- as(df, "tibble")
     expect_is(x, "tbl_df")
     # Expect that rownames are automatically moved to first column
