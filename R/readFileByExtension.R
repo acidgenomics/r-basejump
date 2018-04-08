@@ -43,12 +43,16 @@
 #'
 #' @examples
 #' # Comma separated values
-#' csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
-#' glimpse(csv)
+#' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' glimpse(x)
 #'
 #' # Microsoft Excel Worksheet
-#' xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
-#' glimpse(xlsx)
+#' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+#' glimpse(x)
+#'
+#' # R Data
+#' x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+#' glimpse(x)
 readFileByExtension <- function(
     file,
     makeNames = c("camel", "dotted", "snake", "upperCamel"),
