@@ -1,4 +1,4 @@
-#' Check Transcript to Gene Mapping Data
+#' Assert Is Transcript-to-Gene Mapping Data
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
