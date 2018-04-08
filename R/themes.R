@@ -11,8 +11,17 @@
 #' @family Plot Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams ggplot2::theme_minimal
-#' @inheritParams ggplot2::element_text
+#' @param base_size Base font size.
+#' @param base_family Base font family.
+#' @param face Font face ("`bold`", "`plain`").
+#' @param aspect_ratio Numeric scalar specifying the plot proportions. Use `1`
+#'   for a perfectly square plot (including the axis labels).
+#' @param legend_position Legend key position. We're being a little more
+#'   restrictive here, only allowing "`bottom`", "`right`", or "`none`".
+#'   Including the legend at the top or the left side of the plot rarely makes
+#'   sense and is discouraged.
+#' @param grid Label the major panel grids. If `TRUE`, the axis lines will also
+#'   be removed.
 #'
 #' @return `theme`.
 #'
@@ -51,14 +60,14 @@ NULL
 theme_midnight <- function(
     base_size = 14L,
     base_family = "",
-    base_face = c("bold", "plain"),
+    face = c("bold", "plain"),
     aspect_ratio = NULL,
     legend_position = c("bottom", "right", "none"),
     grid = TRUE
 ) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
-    base_face <- match.arg(base_face)
+    face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
     assert_is_a_bool(grid)
@@ -67,7 +76,7 @@ theme_midnight <- function(
 
     text <- element_text(
         family = base_family,
-        face = base_face,
+        face = face,
         color = "white"
     )
 
@@ -118,14 +127,14 @@ theme_midnight <- function(
 theme_paperwhite <- function(
     base_size = 14L,
     base_family = "",
-    base_face = c("bold", "plain"),
+    face = c("bold", "plain"),
     aspect_ratio = NULL,
     legend_position = c("bottom", "right", "none"),
     grid = FALSE
 ) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
-    base_face <- match.arg(base_face)
+    face <- match.arg(face)
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
     assert_is_a_bool(grid)
@@ -134,7 +143,7 @@ theme_paperwhite <- function(
 
     text <- element_text(
         family = base_family,
-        face = base_face,
+        face = face,
         color = "black"
     )
 

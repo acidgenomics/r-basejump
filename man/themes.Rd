@@ -8,18 +8,31 @@
 \alias{paperwhiteTheme}
 \title{Complete Themes}
 \usage{
-theme_midnight(base_size = 14L, base_family = "", base_face = c("bold",
+theme_midnight(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = TRUE)
 
-theme_paperwhite(base_size = 14L, base_family = "", base_face = c("bold",
+theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
   "none"), grid = FALSE)
 }
 \arguments{
-\item{base_size}{base font size}
+\item{base_size}{Base font size.}
 
-\item{base_family}{base font family}
+\item{base_family}{Base font family.}
+
+\item{face}{Font face ("\code{bold}", "\code{plain}").}
+
+\item{aspect_ratio}{Numeric scalar specifying the plot proportions. Use \code{1}
+for a perfectly square plot (including the axis labels).}
+
+\item{legend_position}{Legend key position. We're being a little more
+restrictive here, only allowing "\code{bottom}", "\code{right}", or "\code{none}".
+Including the legend at the top or the left side of the plot rarely makes
+sense and is discouraged.}
+
+\item{grid}{Label the major panel grids. If \code{TRUE}, the axis lines will also
+be removed.}
 }
 \value{
 \code{theme}.
