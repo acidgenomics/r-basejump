@@ -533,6 +533,24 @@ test_that("makeTx2geneFromGFF : Mus musculus", {
 
 
 
+# panther ======================================================================
+test_that("panther", {
+    organisms <- c(
+        "Homo sapiens",
+        "Mus musculus",
+        "Drosophila melanogaster",
+        "Caenorhabditis elegans"
+    )
+    list <- lapply(organisms, function(organism) {
+        invisible(capture.output(
+            x <- panther(organism)
+        ))
+        expect_is(x, "data.frame")
+    })
+})
+
+
+
 # stripTranscriptVersions ======================================================
 test_that("stripTranscriptVersions : character", {
     expect_identical(
