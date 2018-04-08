@@ -24,8 +24,7 @@
 #' @export
 #'
 #' @examples
-#' writeCounts(rnaseqCounts, dir = "example")
-#' writeCounts(singleCellCounts, dir = "example")
+#' writeCounts(rnaseqCounts, singleCellCounts, dir = "example")
 #' list.files("example")
 #'
 #' # Clean up
@@ -37,6 +36,8 @@ writeCounts <- function(
 ) {
     dots <- dots_list(...)
     assert_is_list(dots)
+    names <- dots(..., character = TRUE)
+
     invisible(lapply(dots, assert_has_dims))
     invisible(lapply(dots, function(x) {
         assert_is_any_of(
@@ -53,48 +54,48 @@ writeCounts <- function(
     assert_is_a_bool(gzip)
 
     # Iterate across the dot objects and write to disk
-    names <- dots(..., character = TRUE)
-
     message(paste("Writing", toString(names), "to", dir))
 
-    files <- lapply(seq_along(dots), function(a) {
-        name <- names[[a]]
-        counts <- dots[[a]]
-        if (class(counts)[[1L]] %in% c("dgCMatrix", "dgTMatrix")) {
-            # MatrixMarket file
-            matrixFile <- file.path(dir, paste0(name, ".mtx"))
-            writeMM(counts, matrixFile)
-            # Write barcodes (colnames)
-            barcodes <- colnames(counts)
-            barcodesFile <- paste0(matrixFile, ".colnames")
-            write_lines(barcodes, barcodesFile)
-            # Write gene names (rownames)
-            genes <- rownames(counts)
-            genesFile <- paste0(matrixFile, ".rownames")
-            write_lines(genes, genesFile)
-            returnPath <- matrixFile
-            # gzip the matrix, if desired
-            if (isTRUE(gzip)) {
-                returnPath <- gzip(matrixFile, overwrite = TRUE)
+    files <- mapply(
+        name <- names,
+        counts <- dots,
+        FUN = function(name, counts) {
+            if (grepl("^dg.+Matrix$", class(counts)[[1L]])) {
+                # MatrixMarket file
+                matrixFile <- file.path(dir, paste0(name, ".mtx"))
+                writeMM(counts, matrixFile)
+                if (isTRUE(gzip)) {
+                    matrixFile <- gzip(matrixFile, overwrite = TRUE)
+                }
+                # Write barcodes (colnames)
+                barcodes <- colnames(counts)
+                barcodesFile <- paste0(matrixFile, ".colnames")
+                write_lines(barcodes, barcodesFile)
+                # Write gene names (rownames)
+                genes <- rownames(counts)
+                genesFile <- paste0(matrixFile, ".rownames")
+                write_lines(genes, genesFile)
+                returnPath <- matrixFile
+            } else {
+                # Coercing to tibble to keep rownames intact
+                ext <- ".csv"
+                if (isTRUE(gzip)) {
+                    ext <- paste0(ext, ".gz")
+                }
+                fileName <- paste0(name, ext)
+                filePath <- file.path(dir, fileName)
+                # See `setAs.R` file for documentation on tibble coercion method
+                write_csv(
+                    x = as(counts, "tibble"),
+                    path = filePath
+                )
+                returnPath <- filePath
             }
-        } else {
-            # Coerce to tibble use readr
-            ext <- ".csv"
-            if (isTRUE(gzip)) {
-                ext <- paste0(ext, ".gz")
-            }
-            fileName <- paste0(name, ext)
-            filePath <- file.path(dir, fileName)
-            # See `setAs.R` file for documentation on tibble coercion method
-            write_csv(
-                x = as(counts, "tibble"),
-                path = filePath
-            )
-            returnPath <- filePath
-        }
-        returnPath
-    })
-    names(files) <- names
+            returnPath
+        },
+        SIMPLIFY = TRUE,
+        USE.NAMES = TRUE
+    )
 
     invisible(files)
 }

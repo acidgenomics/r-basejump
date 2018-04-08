@@ -33,8 +33,9 @@ readFileByExtension <- function(
     ...
 ) {
     assert_is_a_string(file)
+    file <- localOrRemoteFile(file)
     # Require that input string contains an extension
-    extPattern <- "\\.([a-zA-Z0-9]+)$"
+    extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
     assert_all_are_matching_regex(file, extPattern)
     makeNames <- match.arg(makeNames)
     makeNames <- get(
@@ -43,19 +44,22 @@ readFileByExtension <- function(
         inherits = FALSE
     )
 
-    file <- localOrRemoteFile(file)
     basename <- names(file)
-    ext <- str_match(basename, extPattern)[[2L]]
+    match <- str_match(basename, extPattern)
+    ext <- match[1L, 2L]
+    extFull <- paste(match[1L, 2L:3L], collapse = "")
+    gzip <- ifelse(is.na(match[1L, 3L]), FALSE, TRUE)
 
     # File import, based on extension
     message(paste("Reading", names(file)))
-    na <- c("", "NA", "#N/A")
+
+    # Sanitize NA values
+    na <- c("", "NA", "#N/A", "NULL", "null")
 
     # Add extension to tempfile, if necessary
     if (!grepl(extPattern, file)) {
-        # tempfile needs an extension or `read_excel()` call will abort
-        file.rename(from = file, to = paste0(file, ".", ext))
-        file <- paste0(file, ".", ext)
+        file.rename(from = file, to = paste0(file, ".", extFull))
+        file <- paste0(file, ".", extFull)
     }
 
     if (ext == "csv") {
