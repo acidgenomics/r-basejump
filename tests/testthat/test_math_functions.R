@@ -102,7 +102,7 @@ test_that("geometricMean", {
         mean
     )
     expect_error(
-        geometricMean(starwars),
+        geometricMean(ggplot2::mpg),
         "is_numeric :"
     )
 

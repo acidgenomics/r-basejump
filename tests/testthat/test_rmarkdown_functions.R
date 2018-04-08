@@ -5,8 +5,8 @@ test_that("kables : list", {
     # Simulate a knit session
     expect_is(
         kables(
-            list = list(head(starwars), head(mtcars)),
-            captions = c("starwars", "mtcars"),
+            list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+            captions = c("mpg", "mtcars"),
             force = TRUE
         ),
         "knit_asis"
@@ -14,8 +14,8 @@ test_that("kables : list", {
     # Check for unmodified return in R session
     expect_is(
         kables(
-            list = list(head(starwars), head(mtcars)),
-            captions = c("starwars", "mtcars"),
+            list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+            captions = c("mpg", "mtcars"),
             force = FALSE
         ),
         "list"
