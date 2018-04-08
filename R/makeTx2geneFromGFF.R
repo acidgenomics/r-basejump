@@ -29,7 +29,7 @@ makeTx2geneFromGFF <- function(file) {
         .[order(.[["txID"]]), , drop = FALSE] %>%
         set_rownames(.[["txID"]])
 
-    inform(paste(
+    message(paste(
         "tx2gene mappings:",
         length(unique(data[["txID"]])), "transcripts,",
         length(unique(data[["geneID"]])), "genes"

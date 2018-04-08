@@ -15,6 +15,6 @@ readYAML <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.ya?ml$")
     file <- localOrRemoteFile(file)
-    inform(paste("Reading", names(file)))
+    message(paste("Reading", names(file)))
     yaml.load_file(file)
 }

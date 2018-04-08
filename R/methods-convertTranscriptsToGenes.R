@@ -61,7 +61,7 @@ setMethod(
         # If no tx2gene is provided, fall back to using Ensembl annotations
         if (!is.data.frame(tx2gene)) {
             # Generate tx2gene from Ensembl
-            inform("Obtaining transcript-to-gene mappings from Ensembl")
+            message("Obtaining transcript-to-gene mappings from Ensembl")
             if (is.null(organism)) {
                 organism <- detectOrganism(object, unique = TRUE)
             } else if (is_a_string(organism)) {
@@ -85,7 +85,7 @@ setMethod(
         names(geneID) <- tx2gene[["txID"]]
 
         if (!all(object %in% names(geneID))) {
-            abort(paste(
+            stop(paste(
                 "Unmatched transcripts present.",
                 "Try using a GFF file instead."
             ))

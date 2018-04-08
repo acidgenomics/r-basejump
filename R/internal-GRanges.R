@@ -20,7 +20,7 @@
 
 .standardizeGRangesMetadata <- function(object) {
     assert_is_all_of(object, "GRanges")
-    inform("Standardizing the metadata columns")
+    message("Standardizing the metadata columns")
     data <- mcols(object)
 
     # Rename the columns
@@ -31,29 +31,29 @@
 
     # Always use geneName instead of symbol
     if (all(c("geneName", "symbol") %in% colnames(data))) {
-        inform("Using geneName instead of symbol")
+        message("Using geneName instead of symbol")
         data[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(data)) {
-        inform("Renaming symbol to geneName")
+        message("Renaming symbol to geneName")
         data[["geneName"]] <- data[["symbol"]]
         data[["symbol"]] <- NULL
     }
 
     # Set strings as factors
     if (is.character(data[["geneBiotype"]])) {
-        inform("Setting geneBiotype as factor")
+        message("Setting geneBiotype as factor")
         data[["geneBiotype"]] <- as.factor(data[["geneBiotype"]])
     }
     if (is.character(data[["seqCoordSystem"]])) {
-        inform("Setting seqCoordSystem as factor")
+        message("Setting seqCoordSystem as factor")
         data[["seqCoordSystem"]] <- as.factor(data[["seqCoordSystem"]])
     }
     if (is.character(data[["txBiotype"]])) {
-        inform("Setting txBiotype as factor")
+        message("Setting txBiotype as factor")
         data[["txBiotype"]] <- as.factor(data[["txBiotype"]])
     }
     if (is.integer(data[["txSupportLevel"]])) {
-        inform("Setting txSupportLevel as factor")
+        message("Setting txSupportLevel as factor")
         data[["txSupportLevel"]] <- as.factor(data[["txSupportLevel"]])
     }
 

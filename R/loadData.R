@@ -54,7 +54,7 @@ loadData <- function(
         mustWork = TRUE
     )
 
-    inform(paste("Loading", toString(basename(files)), "from", dir))
+    message(paste("Loading", toString(basename(files)), "from", dir))
     objects <- mapply(
         FUN = .safeLoad,
         file = files,

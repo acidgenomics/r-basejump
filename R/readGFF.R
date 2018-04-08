@@ -40,7 +40,7 @@ readGFF <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
     file <- localOrRemoteFile(file)
-    inform(paste("Reading GFF:", names(file)))
+    message(paste("Reading GFF:", names(file)))
     gff <- tryCatch(
         read.delim(
             file = file,
@@ -50,10 +50,10 @@ readGFF <- function(file) {
             stringsAsFactors = FALSE
         ),
         error = function(e) {
-            abort("GFF file failed to load")
+            stop("GFF file failed to load")
         },
         warning = function(w) {
-            abort("GFF file failed to load")
+            stop("GFF file failed to load")
         }
     )
     gff

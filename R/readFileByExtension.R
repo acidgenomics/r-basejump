@@ -48,7 +48,7 @@ readFileByExtension <- function(
     ext <- str_match(basename, extPattern)[[2L]]
 
     # File import, based on extension
-    inform(paste("Reading", names(file)))
+    message(paste("Reading", names(file)))
     na <- c("", "NA", "#N/A")
 
     # Add extension to tempfile, if necessary
@@ -99,7 +99,7 @@ readFileByExtension <- function(
             column_to_rownames("id") %>%
             as.matrix()
     } else {
-        abort(paste("Unsupported file extension:", basename(file)))
+        stop(paste("Unsupported file extension:", basename(file)))
     }
 
     # Sanitize colnames

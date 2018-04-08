@@ -81,7 +81,7 @@ makeGRangesFromEnsembl <- function(
         is_a_string(genomeBuild) &&
         grepl("^[a-z]{2}\\d{2}$", genomeBuild)
     ) {
-        abort("Use Ensembl genome build name instead of UCSC name")
+        stop("Use Ensembl genome build name instead of UCSC name")
     }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
@@ -109,7 +109,7 @@ makeGRangesFromEnsembl <- function(
         if (requireNamespace(id, quietly = TRUE)) {
             edb <- get(id, inherits = TRUE)
         } else {
-            abort(paste(
+            stop(paste(
                 "GRCh37 genome build requires the", id, "package"
             ))
         }
@@ -123,7 +123,7 @@ makeGRangesFromEnsembl <- function(
             ah <- suppressMessages(AnnotationHub())
         ))
 
-        inform(paste(
+        message(paste(
             "Making GRanges from Ensembl with AnnotationHub",
             packageVersion("AnnotationHub"),
             paste0("(", snapshotDate(ah), ")")
@@ -134,7 +134,7 @@ makeGRangesFromEnsembl <- function(
 
         # For legacy release requests, switch to newest version available
         if (!is.null(release) && release < 87L) {
-            warn(paste(
+            warning(paste(
                 "ensembldb currently only supports Ensembl releases >= 87.",
                 "Switching to current release instead.",
                 sep = "\n"
@@ -164,7 +164,7 @@ makeGRangesFromEnsembl <- function(
             # Pick the latest release by AH identifier
             mcols <- tail(mcols, 1L)
         } else if (!nrow(mcols)) {
-            abort(paste(
+            stop(paste(
                 paste(
                     "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
@@ -198,7 +198,7 @@ makeGRangesFromEnsembl <- function(
     genomeBuild <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
     assert_is_a_string(genomeBuild)
 
-    inform(paste(
+    message(paste(
         paste("id:", deparse(id)),
         paste("organism:", deparse(organism(edb))),
         paste("build:", deparse(genomeBuild)),
