@@ -61,6 +61,7 @@ Imports:
     yaml
 Suggests:
     EnsDb.Hsapiens.v75,
+    rio (>= 0.5),
     testthat (>= 2.0)
 biocViews:
     DataImport,
