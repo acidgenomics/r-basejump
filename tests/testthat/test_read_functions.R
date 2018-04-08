@@ -140,7 +140,7 @@ test_that("localOrRemoteFile : Vectorized", {
     urls <- paste(cacheURL, c("mtcars.csv", "mtcars.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
     expect_is(files, "character")
-    expect_identical(names(files), basename(urls))
+    expect_identical(basename(urls), basename(files))
 })
 
 test_that("localOrRemoteFile : Missing file", {
