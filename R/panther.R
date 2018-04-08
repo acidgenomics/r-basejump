@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' x <- panther("Homo sapiens")
-#' glimpse(hs)
+#' glimpse(x)
 panther <- function(
     organism = c(
         "human" = "Homo sapiens",
