@@ -77,9 +77,9 @@ test_that("transmit : Rename and compress", {
         rename = "ensembl_readme.txt",
         compress = TRUE
     )
-    expected <- file.path(getwd(), "ensembl_readme.txt.gz")
-    names(expected) <- "README"
-    expect_identical(readme, expected)
+    y <- file.path(getwd(), "ensembl_readme.txt.gz")
+    names(y) <- "README"
+    expect_identical(x, y)
     unlink("ensembl_readme.txt.gz")
 })
 
