@@ -120,7 +120,7 @@ midnightTheme <- function(
 #'
 #' @examples
 #' p + paperwhiteTheme(aspectRatio = 1L, legendPosition = "none")
-paperwhiteTheme <- function(  # nolint
+paperwhiteTheme <- function(
     baseSize = 14L,
     baseFamily = "",
     baseFace = c("bold", "plain"),
@@ -188,12 +188,12 @@ paperwhiteTheme <- function(  # nolint
 # Aliases ======================================================================
 #' @rdname themes
 #' @export
-theme_midnight <- midnightTheme
+theme_midnight <- midnightTheme  # nolint
 formals(theme_midnight) <- snake(formals(midnightTheme))
 
 
 
 #' @rdname themes
 #' @export
-theme_paperwhite <- paperwhiteTheme
+theme_paperwhite <- paperwhiteTheme  # nolint
 formals(theme_paperwhite) <- snake(formals(paperwhiteTheme))
