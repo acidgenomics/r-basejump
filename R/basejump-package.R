@@ -10,11 +10,12 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
-#' @importFrom S4Vectors as.data.frame complete.cases mcols<- na.omit tail
+#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
+#'   tail
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs mutate
 #'   mutate_all mutate_at mutate_if select summarize_all top_n
-#' @importFrom ensembldb ensemblVersion
+#' @importFrom ensembldb ensemblVersion organism
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
 #' @importFrom knitr asis_output kable opts_knit

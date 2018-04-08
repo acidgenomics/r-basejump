@@ -107,7 +107,7 @@ makeGRangesFromEnsembl <- function(
         # GRCh37 release 75
         id <- "EnsDb.Hsapiens.v75"
         if (requireNamespace(id, quietly = TRUE)) {
-            edb <- get(id, inherits = TRUE)
+            edb <- EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75
         } else {
             stop(paste(
                 "GRCh37 genome build requires the", id, "package"
