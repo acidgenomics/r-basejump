@@ -40,7 +40,7 @@
 #' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
-#' @param organism Full latin organism name (e.g. "`Homo sapiens`").
+#' @inheritParams general
 #' @param format Fetch ranges as "`genes`" or "`transcripts`".
 #' @param genomeBuild *Optional.* Genome build assembly name (e.g. "`GRCh38`").
 #'   If `NULL`, defaults to the most recent build available.

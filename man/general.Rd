@@ -23,6 +23,8 @@ which will assign into the calling environment.}
 
 \item{headerLevel}{Markdown header level.}
 
+\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks

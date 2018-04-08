@@ -8,6 +8,16 @@ panther(organism = c(human = "Homo sapiens", mouse = "Mus musculus",
   nematode_worm = "Caenorhabditis elegans", fruit_fly =
   "Drosophila melanogaster"), release = NULL)
 }
+\arguments{
+\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{release}{\code{character} string denoting PANTHER release version. If
+\code{NULL}, defaults to current release. Consult the PANTHER website for a list
+of release versions available from the FTP server (e.g. \code{"13.0"}).}
+}
+\value{
+\code{data.frame}.
+}
 \description{
 PANTHER Gene Ontology Annotations
 }
