@@ -7,10 +7,11 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param url Remote URL file path to R Data file. Supports multiple URLs
-#'   passed in as a character vector.
+#' @param url Remote URL file path to R data. Supports multiple URLs passed in
+#'   as a character vector.
 #'
-#' @return Invisible character `matrix` containing URL and tempfile paths.
+#' @return Invisible named `character` containing the local object name as the
+#'   name, and the remote URL as the value.
 #' @export
 #'
 #' @examples

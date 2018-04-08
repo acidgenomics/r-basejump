@@ -7,19 +7,18 @@
     dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
 
     # Match rda, rdata, rds extensions
-    extPattern <- "\\.(rd[a|ata|s])$"
     files <- list.files(
         path = dir,
         pattern = paste0(
             "^(",
             paste(dots, collapse = "|"),
             ")",
-            extPattern
+            rdataExtPattern
         ),
         full.names = TRUE,
         ignore.case = TRUE
     )
-    names <- gsub(extPattern, "", basename(files))
+    names <- gsub(rdataExtPattern, "", basename(files), ignore.case = TRUE)
     names(files) <- names
 
     # Check for duplicate names
@@ -38,7 +37,8 @@
     }
 
     # Check for extension soup and stop on detection
-    ext <- str_match(files, extPattern) %>%
+    ext <- files %>%
+        str_match(regex(rdataExtPattern, ignore_case = TRUE)) %>%
         .[, 2L] %>%
         unique() %>%
         sort()
@@ -77,11 +77,9 @@
     }
     assert_is_environment(envir)
 
-    # Get the name from the file stem. Supports `.rdata` and `.rda`
-    extPattern <- "\\.rd[a|ata]$"
     if (is.null(name)) {
-        stopifnot(grepl(extPattern, file, ignore.case = TRUE))
-        name <- gsub(extPattern, "", basename(file))
+        stopifnot(grepl(rdataExtPattern, file, ignore.case = TRUE))
+        name <- gsub(rdataExtPattern, "", basename(file))
     }
 
     # Fail on attempt to load on top of an existing object

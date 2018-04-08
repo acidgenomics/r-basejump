@@ -12,3 +12,6 @@ annotationCols <- c(
 
 # Note optional matching of gzip
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
+
+# Ignore case
+rdataExtPattern <- "\\.(rd[a|ata|s])$"
