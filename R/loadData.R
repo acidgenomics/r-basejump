@@ -38,13 +38,8 @@ loadData <- function(
     dir = ".",
     envir = parent.frame()
 ) {
-    assert_all_are_dirs(dir)
-    assert_is_a_string(dir)
-    dir <- normalizePath(dir, winslash = "/", mustWork = TRUE)
     assert_is_environment(envir)
-
     dots <- dots(..., character = TRUE)
-
     files <- .listRData(dots = dots, dir = dir)
     message(paste("Loading", toString(basename(files)), "from", dir))
 
