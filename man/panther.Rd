@@ -23,7 +23,7 @@ PANTHER Gene Ontology Annotations
 }
 \examples{
 x <- panther("Homo sapiens")
-glimpse(hs)
+glimpse(x)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
