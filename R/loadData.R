@@ -1,7 +1,7 @@
 #' Load Data
 #'
-#' Load R data (`.rda`) files from a directory using symbols rather than
-#' complete file paths.
+#' Load R data files from a directory using symbols rather than complete file
+#' paths. Supports "`.RData`", "`.rda`", and "`.rds`" file extensions.
 #'
 #' [loadData()] is opinionated about the format of R data files it will accept.
 #' [base::save()] allows for the saving of multiple objects into a single R data
@@ -12,8 +12,7 @@
 #'
 #' To avoid any accidental replacements, [loadData()] will only load R data
 #' files that contain a single object, and the internal object name must match
-#' the file name exactly. These conventions match the recommendations of the
-#' RStudio team, which recommends saving single objects per file.
+#' the file name exactly.
 #'
 #' @note This function is desired for interactive use and interprets object
 #' names using non-standard evaluation.
@@ -21,22 +20,18 @@
 #' @family Read Functions
 #' @author Michael Steinbaugh
 #'
-#' @param ... Object names. Note that these arguments are interpreted using
-#'   non-standard evaluation, and *should not be quoted*.
-#' @param dir Output directory. Defaults to the current working directory.
-#' @param envir Environment to use for assignment. Defaults to `parent.frame()`,
-#'   which will assign into the calling environment.
+#' @param ... Object names. Note that these arguments are interpreted as symbols
+#'   using non-standard evaluation for convenience during interactive use, and
+#'   *should not be quoted*.
 #'
 #' @return Invisible `character` containing file paths.
 #' @export
 #'
 #' @examples
-#' loaded <- loadData(
-#'     mn,
-#'     dir = system.file("extdata", package = "basejump")
+#' loadData(
+#'     anorexia, birthwt,
+#'     dir = system.file("tests", package = "stats")
 #' )
-#' print(loaded)
-#' class(mn)
 loadData <- function(
     ...,
     dir = ".",
@@ -48,21 +43,78 @@ loadData <- function(
     assert_is_environment(envir)
 
     dots <- dots(..., character = TRUE)
-    files <- normalizePath(
-        path = file.path(dir, paste0(dots, ".rda")),
-        winslash = "/",
-        mustWork = TRUE
-    )
 
+    # Match rda, rdata, rds extensions
+    extPattern <- "\\.(rd[a|ata|s])$"
+    files <- list.files(
+        path = dir,
+        pattern = paste0(
+            "^(",
+            paste(dots, collapse = "|"),
+            ")",
+            extPattern
+        ),
+        full.names = TRUE,
+        ignore.case = TRUE
+    )
+    names <- gsub(extPattern, "", basename(files))
+    names(files) <- names
+
+    # Check for duplicate names
+    if (any(duplicated(names))) {
+        dupeNames <- names[duplicated(names)]
+        dupeFiles <- grep(
+            paste(dupeNames, collapse = "|"),
+            basename(files),
+            value = TRUE
+        )
+        stop(paste(
+            "Duplicates",
+            toString(dupeFiles),
+            sep = " : "
+        ))
+    }
+
+    # Check for extension soup and stop on detection
+    ext <- str_match(files, extPattern) %>%
+        .[, 2L] %>%
+        unique() %>%
+        sort()
+    if (length(ext) != 1L) {
+        stop(paste(
+            paste(
+                "Multiple extensions",
+                toString(ext),
+                sep = " : "
+            ),
+            "Use a single R data file format inside a directory.",
+            printString(files),
+            sep = "\n"
+        ))
+    }
+
+    # Now safe to sort the files to match the dots
+    files <- files[dots]
     message(paste("Loading", toString(basename(files)), "from", dir))
-    objects <- mapply(
-        FUN = .safeLoad,
-        file = files,
-        MoreArgs = list(envir = envir),
-        SIMPLIFY = TRUE,
-        USE.NAMES = FALSE
-    )
-    names(objects) <- dots
 
-    invisible(objects)
+    # R Data
+    if (ext == "rds") {
+        mapply(
+            FUN = .safeLoadRDS,
+            file = files,
+            MoreArgs = list(envir = envir),
+            SIMPLIFY = TRUE,
+            USE.NAMES = FALSE
+        )
+    } else {
+        mapply(
+            FUN = .safeLoad,
+            file = files,
+            MoreArgs = list(envir = envir),
+            SIMPLIFY = TRUE,
+            USE.NAMES = FALSE
+        )
+    }
+
+    invisible(files)
 }
