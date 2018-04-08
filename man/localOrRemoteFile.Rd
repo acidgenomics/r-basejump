@@ -19,14 +19,14 @@ This function is vectorized and supports mixed local and remote paths.
 \examples{
 # Single file
 x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
-names(x)
+basename(x)
 
 # Vectorized
 x <- localOrRemoteFile(c(
     "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
     "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
 ))
-names(x)
+basename(x)
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
