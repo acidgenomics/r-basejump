@@ -62,7 +62,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsGFF}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
 }
 \author{
 Michael Steinbaugh

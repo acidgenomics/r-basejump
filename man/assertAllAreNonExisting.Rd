@@ -43,7 +43,7 @@ Other Assert Check Functions: \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
 }
 \author{
 Michael Steinbaugh
