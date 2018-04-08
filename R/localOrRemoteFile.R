@@ -14,14 +14,14 @@
 #' @examples
 #' # Single file
 #' x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
-#' names(x)
+#' basename(x)
 #'
 #' # Vectorized
 #' x <- localOrRemoteFile(c(
 #'     "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
 #'     "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
 #' ))
-#' names(x)
+#' basename(x)
 localOrRemoteFile <- function(file) {
     assert_is_character(file)
     local <- mapply(
