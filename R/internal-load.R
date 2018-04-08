@@ -19,7 +19,7 @@
         ignore.case = TRUE
     )
     if (!length(files)) {
-        stop("R data files must contain `.rda`, `.rds`, or `.RData` extension")
+        stop(rdataError)
     }
     names <- gsub(rdataExtPattern, "", basename(files), ignore.case = TRUE)
     names(files) <- names
