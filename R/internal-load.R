@@ -57,6 +57,8 @@
 
     # Now safe to sort the files to match the dots
     files <- files[dots]
+    message(paste("Loading", toString(basename(files)), "from", dir))
+    files
 }
 
 
