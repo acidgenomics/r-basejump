@@ -49,16 +49,26 @@ the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }
 \examples{
-# Comma separated values
+# Comma Separated Values
 x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+glimpse(x)
+
+# Counts Table (bcbio)
+x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
+glimpse(x)
+
+# R Data
+x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
 glimpse(x)
 
 # Microsoft Excel Worksheet
 x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 glimpse(x)
 
-# R Data
-x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+# Text Table (ambiguous; not recommended)
+x <- suppressWarnings(
+    readFileByExtension("http://basejump.seq.cloud/example.txt")
+)
 glimpse(x)
 }
 \seealso{
