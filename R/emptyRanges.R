@@ -12,20 +12,26 @@
 #' @seealso `help("seqinfo", "GenomeInfoDb")`.
 #'
 #' @examples
-#' emptyRanges("EGFP", seqname = "transgene")
+#' emptyRanges(c("EGFP", "TDTOMATO"), seqname = "transgene")
 emptyRanges <- function(
     names,
-    seqname = "transgene",
+    seqname = "unknown",
     mcolsNames = NULL
 ) {
     assert_is_character(names)
     assert_is_a_string(seqname)
     assert_is_any_of(mcolsNames, c("character", "NULL"))
 
-    x <- paste(seqname, "1-100", sep = ":")
-    x <- replicate(n = length(names), expr = x)
+    # Create dummy IRanges that scale, with a length of 100 per feature
+    vec <- vapply(
+        X = seq_along(names),
+        FUN = function(i) {
+            paste0(seqname, ":", i, "-", i * 100 + 1)
+        },
+        FUN.VALUE = "character"
+    )
 
-    gr <- GRanges(x)
+    gr <- GRanges(vec)
     names(gr) <- names
 
     # Create the required empty metadata columns

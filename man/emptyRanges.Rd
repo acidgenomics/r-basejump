@@ -4,7 +4,7 @@
 \alias{emptyRanges}
 \title{Generate Empty Genomic Ranges}
 \usage{
-emptyRanges(names, seqname = "transgene", mcolsNames = NULL)
+emptyRanges(names, seqname = "unknown", mcolsNames = NULL)
 }
 \value{
 \code{GRanges}.
@@ -14,7 +14,7 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-emptyRanges("EGFP", seqname = "transgene")
+emptyRanges(c("EGFP", "TDTOMATO"), seqname = "transgene")
 }
 \seealso{
 \code{help("seqinfo", "GenomeInfoDb")}.
