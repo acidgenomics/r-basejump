@@ -9,10 +9,12 @@
 #' @return `GRanges`.
 #' @export
 #'
-#' @seealso `help("seqinfo", "GenomeInfoDb")`.
+#' @seealso
+#' - `help("seqinfo", "GenomeInfoDb")`.
+#' - `DESeq2::makeExampleDESeqDataSet()`.
 #'
 #' @examples
-#' emptyRanges(c("EGFP", "TDTOMATO"), seqname = "transgene")
+#' emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 emptyRanges <- function(
     names,
     seqname = "unknown",
@@ -22,16 +24,13 @@ emptyRanges <- function(
     assert_is_a_string(seqname)
     assert_is_any_of(mcolsNames, c("character", "NULL"))
 
-    # Create dummy IRanges that scale, with a length of 100 per feature
-    vec <- vapply(
-        X = seq_along(names),
-        FUN = function(i) {
-            paste0(seqname, ":", i, "-", i * 100 + 1)
-        },
-        FUN.VALUE = "character"
+    gr <- GRanges(
+        seqnames = seqname,
+        ranges = IRanges(
+            start = (1L:length(names) - 1L) * 100L + 1L,
+            width = 100L
+        )
     )
-
-    gr <- GRanges(vec)
     names(gr) <- names
 
     # Create the required empty metadata columns
