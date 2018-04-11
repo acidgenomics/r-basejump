@@ -7,6 +7,7 @@
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom GenomicRanges GRanges
+#' @importFrom IRanges IRanges
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom R.utils gzip
