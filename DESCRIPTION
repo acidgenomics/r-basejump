@@ -35,6 +35,7 @@ Depends:
 Imports:
     AnnotationHub,
     GenomicFeatures,
+    IRanges,
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
     R.utils,

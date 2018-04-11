@@ -14,10 +14,13 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-emptyRanges(c("EGFP", "TDTOMATO"), seqname = "transgene")
+emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 }
 \seealso{
-\code{help("seqinfo", "GenomeInfoDb")}.
+\itemize{
+\item \code{help("seqinfo", "GenomeInfoDb")}.
+\item \code{DESeq2::makeExampleDESeqDataSet()}.
+}
 
 Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
