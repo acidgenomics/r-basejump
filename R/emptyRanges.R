@@ -6,6 +6,15 @@
 #' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
+#' @param names *Required.* `character` vector of gene or transcript names.
+#' @param seqname *Required.* `character` string that defines the alternative
+#'   chromosome name where these ranges will be grouped. Defaults to "`unknown`"
+#'   but "`transgene`" (for transgenes) and "`spike`" (for spike-ins) are also
+#'   supported.
+#' @param mcolsNames *Optional.* Metadata columns to be defined in the `mcols()`
+#'   of the `GRanges` object. Normally this does not need to be defined; useful
+#'   when combining with another defined `GRanges` object containing metadata.
+#'
 #' @return `GRanges`.
 #' @export
 #'
@@ -14,10 +23,17 @@
 #' - `DESeq2::makeExampleDESeqDataSet()`.
 #'
 #' @examples
+#' # Unknown/dead genes
+#' emptyRanges("ENSG00000000000", seqname = "unknown")
+#'
+#' # Transgenes
 #' emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
+#'
+#' # Spike-ins
+#' emptyRanges("ERCC", seqname = "spike")
 emptyRanges <- function(
     names,
-    seqname = "unknown",
+    seqname = c("unknown", "transgene", "spike"),
     mcolsNames = NULL
 ) {
     assert_is_character(names)
