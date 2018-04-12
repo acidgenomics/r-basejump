@@ -206,7 +206,7 @@ test_that("readFileByExtension : Counts file (.counts)", {
 })
 
 test_that("readFileByExtension : R file", {
-    expectMessage(
+    expect_message(
         readFileByExtension("test_read_functions.R"),
         "Importing as source code lines"
     )
