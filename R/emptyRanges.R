@@ -6,14 +6,15 @@
 #' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
-#' @param names *Required.* `character` vector of gene or transcript names.
-#' @param seqname *Required.* `character` string that defines the alternative
-#'   chromosome name where these ranges will be grouped. Defaults to "`unknown`"
-#'   but "`transgene`" (for transgenes) and "`spike`" (for spike-ins) are also
+#' @param names `character` vector of gene or transcript names.
+#' @param seqname `character` string that defines the alternative chromosome in
+#'   `seqnames()` where these ranges will be grouped. Defaults to "`unknown`"
+#'   but "`transgene`" (transgenes) and "`spike`" (spike-ins) are also
 #'   supported.
-#' @param mcolsNames *Optional.* Metadata columns to be defined in the `mcols()`
-#'   of the `GRanges` object. Normally this does not need to be defined; useful
-#'   when combining with another defined `GRanges` object containing metadata.
+#' @param mcolsNames *Optional.* `character` vector of metadata column names to
+#'   be defined in the `mcols()` of the `GRanges` return. Normally this does not
+#'   need to be defined; useful when combining with another `GRanges` that
+#'   contains metadata.
 #'
 #' @return `GRanges`.
 #' @export
