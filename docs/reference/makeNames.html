@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make Syntactically Valid Names — makeNames • basejump</title>
+<title>Make Syntactically Valid Names — camel • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,9 +27,11 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Make Syntactically Valid Names — makeNames" />
+<meta property="og:title" content="Make Syntactically Valid Names — camel" />
 
-<meta property="og:description" content="Make Syntactically Valid Names" />
+<meta property="og:description" content="For atomic vectors, these functions will sanitize the values. Otherwise,
+they will set names(), rownames(), and/or colnames() without
+modification of the values." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -96,19 +98,166 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make Syntactically Valid Names</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeNames.R'><code>R/makeNames.R</code></a></small>
-    <p class="hidden name"><code>makeNames.Rd</code></p>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-makeNames.R'><code>R/methods-makeNames.R</code></a></small>
+    <div class="hidden name"><code>makeNames.Rd</code></div>
     </div>
 
     
-    <p>Make Syntactically Valid Names</p>
+    <p>For <code>atomic</code> vectors, these functions will sanitize the values. Otherwise,
+they will set <code>names()</code>, <code>rownames()</code>, and/or <code>colnames()</code> without
+modification of the values.</p>
     
 
-    <pre class="usage"><span class='fu'>makeNames</span>(<span class='no'>names</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>camel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>makeNames</span>(<span class='no'>names</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for character</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for list</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for List</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for List</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for List</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for List</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SimpleList</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Character vector or an object for which <code>names()</code> assignment
+will be meaningful.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
     <tr>
       <th>names</th>
       <td><p><code>atomic</code> to be coerced to syntactically valid names. Will be
@@ -118,25 +267,175 @@ coerced to <code>character</code> if necessary.</p></td>
       <th>unique</th>
       <td><p><code>logical</code>; if <code>TRUE</code>, the resulting elements are unique.</p></td>
     </tr>
+    <tr>
+      <th>strict</th>
+      <td><p>Enforce strict name sanitization. When <code>TRUE</code>, this does not
+allow the return of any capitalized acronyms. "RNA" will become "Rna", for
+example.</p></td>
+    </tr>
+    <tr>
+      <th>rownames</th>
+      <td><p>Apply sanitization on row names. This is not recommended
+by default, since rownames commonly contain gene identifiers that should
+not be modified.</p></td>
+    </tr>
+    <tr>
+      <th>colnames</th>
+      <td><p>Apply sanitization on column names. This is generally
+recommended by default.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code>.</p>
+    <p>Object with syntatically valid names. For objects supporting
+<code>names()</code>, the underlying data returns unchanged.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Sanitizes names using underscore instead of dot.</p>
+    <p><code>dotted.case</code> support is provided for matching against base R
+parameters. However, it is recommended to avoid using it for variable
+assignments into an <code>environment</code>, as that can introduce conflicts with
+base functions.</p>
+<p><code>makeNames()</code> sanitizes names using underscore instead of dot, which is
+the convention used by <code>make.names()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/base/topics/make.names'>base::make.names()</a></code>.</p>
-<p>Other Name Functions: <code>camel</code>,
-  <code>dotted</code>, <code>snake</code></p></div>
+    <div class='dont-index'><p><code>make.names()</code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>makeNames</span>(<span class='fu'>c</span>(<span class='fl'>123L</span>, <span class='st'>"hello world"</span>))</div><div class='output co'>#&gt; [1] "X123"        "hello_world"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/mn.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mn.rda</span></div><div class='input'>
+<span class='co'># character ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>character</span>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello world"     "HELLO WORLD"     "RNAi clones"     "nCount"         
+#&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M.Score"       "worfdbHTMLRemap"
+#&gt;  [9] "Mazda RX4"       "123"             NA               </div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "helloWorld"      "helloWORLD"      "rnaiClones"      "nCount"         
+#&gt;  [5] "tx2gene"         "tx2GeneID"       "g2mScore"        "worfdbHTMLRemap"
+#&gt;  [9] "mazdaRX4"        "x123"            NA               </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello.world"       "HELLO.WORLD"       "RNAI.clones"      
+#&gt;  [4] "n.Count"           "tx2gene"           "TX2.Gene.ID"      
+#&gt;  [7] "G2M.Score"         "worfdb.HTML.Remap" "Mazda.RX4"        
+#&gt; [10] "X123"              NA                 </div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello_world"       "hello_world"       "rnai_clones"      
+#&gt;  [4] "n_count"           "tx2gene"           "tx2_gene_id"      
+#&gt;  [7] "g2m_score"         "worfdb_html_remap" "mazda_rx4"        
+#&gt; [10] "x123"              NA                 </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "HelloWorld"      "HELLOWORLD"      "RNAIClones"      "NCount"         
+#&gt;  [5] "Tx2gene"         "TX2GeneID"       "G2MScore"        "WorfdbHTMLRemap"
+#&gt;  [9] "MazdaRX4"        "X123"            NA               </div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "hello_world"     "HELLO_WORLD"     "RNAi_clones"     "nCount"         
+#&gt;  [5] "tx2gene"         "TX2GeneID"       "G2M_Score"       "worfdbHTMLRemap"
+#&gt;  [9] "Mazda_RX4"       "X123"            "NA_"            </div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>namedCharacter</span>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        Item.A        Item.B 
+#&gt; "hello world" "HELLO WORLD" </div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        itemA        itemB 
+#&gt; "helloWorld" "helloWORLD" </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        Item.A        Item.B 
+#&gt; "hello.world" "HELLO.WORLD" </div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        item_a        item_b 
+#&gt; "hello_world" "hello_world" </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        ItemA        ItemB 
+#&gt; "HelloWorld" "HELLOWORLD" </div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "hello_world" "HELLO_WORLD"</div><div class='input'>
+<span class='co'># factor ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>factor</span>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample 1 sample 2 sample 3 sample 4 
+#&gt;  group 1  group 1  group 2  group 2 
+#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group1 group1 group2 group2
+#&gt; Levels: group1 group2</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group.1 group.1 group.2 group.2
+#&gt; Levels: group.1 group.2</div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group_1 group_1 group_2 group_2
+#&gt; Levels: group_1 group_2</div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] Group1 Group1 Group2 Group2
+#&gt; Levels: Group1 Group2</div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "group_1" "group_1" "group_2" "group_2"</div><div class='input'>
+<span class='co'># data.frame ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/USArrests'>USArrests</a></span>
+<span class='fu'>dimnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] "Alabama"        "Alaska"         "Arizona"        "Arkansas"      
+#&gt;  [5] "California"     "Colorado"       "Connecticut"    "Delaware"      
+#&gt;  [9] "Florida"        "Georgia"        "Hawaii"         "Idaho"         
+#&gt; [13] "Illinois"       "Indiana"        "Iowa"           "Kansas"        
+#&gt; [17] "Kentucky"       "Louisiana"      "Maine"          "Maryland"      
+#&gt; [21] "Massachusetts"  "Michigan"       "Minnesota"      "Mississippi"   
+#&gt; [25] "Missouri"       "Montana"        "Nebraska"       "Nevada"        
+#&gt; [29] "New Hampshire"  "New Jersey"     "New Mexico"     "New York"      
+#&gt; [33] "North Carolina" "North Dakota"   "Ohio"           "Oklahoma"      
+#&gt; [37] "Oregon"         "Pennsylvania"   "Rhode Island"   "South Carolina"
+#&gt; [41] "South Dakota"   "Tennessee"      "Texas"          "Utah"          
+#&gt; [45] "Vermont"        "Virginia"       "Washington"     "West Virginia" 
+#&gt; [49] "Wisconsin"      "Wyoming"       
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "Murder"   "Assault"  "UrbanPop" "Rape"    
+#&gt; </div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'>dimnames</span>()</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] "alabama"       "alaska"        "arizona"       "arkansas"     
+#&gt;  [5] "california"    "colorado"      "connecticut"   "delaware"     
+#&gt;  [9] "florida"       "georgia"       "hawaii"        "idaho"        
+#&gt; [13] "illinois"      "indiana"       "iowa"          "kansas"       
+#&gt; [17] "kentucky"      "louisiana"     "maine"         "maryland"     
+#&gt; [21] "massachusetts" "michigan"      "minnesota"     "mississippi"  
+#&gt; [25] "missouri"      "montana"       "nebraska"      "nevada"       
+#&gt; [29] "newHampshire"  "newJersey"     "newMexico"     "newYork"      
+#&gt; [33] "northCarolina" "northDakota"   "ohio"          "oklahoma"     
+#&gt; [37] "oregon"        "pennsylvania"  "rhodeIsland"   "southCarolina"
+#&gt; [41] "southDakota"   "tennessee"     "texas"         "utah"         
+#&gt; [45] "vermont"       "virginia"      "washington"    "westVirginia" 
+#&gt; [49] "wisconsin"     "wyoming"      
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "murder"   "assault"  "urbanPop" "rape"    
+#&gt; </div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'>dimnames</span>()</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] "Alabama"        "Alaska"         "Arizona"        "Arkansas"      
+#&gt;  [5] "California"     "Colorado"       "Connecticut"    "Delaware"      
+#&gt;  [9] "Florida"        "Georgia"        "Hawaii"         "Idaho"         
+#&gt; [13] "Illinois"       "Indiana"        "Iowa"           "Kansas"        
+#&gt; [17] "Kentucky"       "Louisiana"      "Maine"          "Maryland"      
+#&gt; [21] "Massachusetts"  "Michigan"       "Minnesota"      "Mississippi"   
+#&gt; [25] "Missouri"       "Montana"        "Nebraska"       "Nevada"        
+#&gt; [29] "New.Hampshire"  "New.Jersey"     "New.Mexico"     "New.York"      
+#&gt; [33] "North.Carolina" "North.Dakota"   "Ohio"           "Oklahoma"      
+#&gt; [37] "Oregon"         "Pennsylvania"   "Rhode.Island"   "South.Carolina"
+#&gt; [41] "South.Dakota"   "Tennessee"      "Texas"          "Utah"          
+#&gt; [45] "Vermont"        "Virginia"       "Washington"     "West.Virginia" 
+#&gt; [49] "Wisconsin"      "Wyoming"       
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "Murder"    "Assault"   "Urban.Pop" "Rape"     
+#&gt; </div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'>dimnames</span>()</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] "alabama"        "alaska"         "arizona"        "arkansas"      
+#&gt;  [5] "california"     "colorado"       "connecticut"    "delaware"      
+#&gt;  [9] "florida"        "georgia"        "hawaii"         "idaho"         
+#&gt; [13] "illinois"       "indiana"        "iowa"           "kansas"        
+#&gt; [17] "kentucky"       "louisiana"      "maine"          "maryland"      
+#&gt; [21] "massachusetts"  "michigan"       "minnesota"      "mississippi"   
+#&gt; [25] "missouri"       "montana"        "nebraska"       "nevada"        
+#&gt; [29] "new_hampshire"  "new_jersey"     "new_mexico"     "new_york"      
+#&gt; [33] "north_carolina" "north_dakota"   "ohio"           "oklahoma"      
+#&gt; [37] "oregon"         "pennsylvania"   "rhode_island"   "south_carolina"
+#&gt; [41] "south_dakota"   "tennessee"      "texas"          "utah"          
+#&gt; [45] "vermont"        "virginia"       "washington"     "west_virginia" 
+#&gt; [49] "wisconsin"      "wyoming"       
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "murder"    "assault"   "urban_pop" "rape"     
+#&gt; </div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'>dimnames</span>()</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1] "Alabama"       "Alaska"        "Arizona"       "Arkansas"     
+#&gt;  [5] "California"    "Colorado"      "Connecticut"   "Delaware"     
+#&gt;  [9] "Florida"       "Georgia"       "Hawaii"        "Idaho"        
+#&gt; [13] "Illinois"      "Indiana"       "Iowa"          "Kansas"       
+#&gt; [17] "Kentucky"      "Louisiana"     "Maine"         "Maryland"     
+#&gt; [21] "Massachusetts" "Michigan"      "Minnesota"     "Mississippi"  
+#&gt; [25] "Missouri"      "Montana"       "Nebraska"      "Nevada"       
+#&gt; [29] "NewHampshire"  "NewJersey"     "NewMexico"     "NewYork"      
+#&gt; [33] "NorthCarolina" "NorthDakota"   "Ohio"          "Oklahoma"     
+#&gt; [37] "Oregon"        "Pennsylvania"  "RhodeIsland"   "SouthCarolina"
+#&gt; [41] "SouthDakota"   "Tennessee"     "Texas"         "Utah"         
+#&gt; [45] "Vermont"       "Virginia"      "Washington"    "WestVirginia" 
+#&gt; [49] "Wisconsin"     "Wyoming"      
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] "Murder"   "Assault"  "UrbanPop" "Rape"    
+#&gt; </div><div class='input'>
+<span class='co'># list ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>list</span>
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $Item.A
+#&gt; [1] 1 2
+#&gt; 
+#&gt; $Item.B
+#&gt; [1] 3 4
+#&gt; </div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'>names</span>()</div><div class='output co'>#&gt; [1] "itemA" "itemB"</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'>names</span>()</div><div class='output co'>#&gt; [1] "Item.A" "Item.B"</div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'>names</span>()</div><div class='output co'>#&gt; [1] "item_a" "item_b"</div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'>names</span>()</div><div class='output co'>#&gt; [1] "ItemA" "ItemB"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

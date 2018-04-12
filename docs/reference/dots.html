@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Extract Dots from Function</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/dots.R'><code>R/dots.R</code></a></small>
-    <p class="hidden name"><code>dots.Rd</code></p>
+    <div class="hidden name"><code>dots.Rd</code></div>
     </div>
 
     
@@ -141,19 +141,23 @@ object from the stored <code>name</code> class with <code>eval()</code>.</p></li
     <div class='dont-index'><p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
   <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
   <code><a href='methodFormals.html'>methodFormals</a></code>,
-  <code><a href='multiassignAsNewEnvir.html'>multiassignAsNewEnvir</a></code></p></div>
+  <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
+  <code><a href='printString.html'>printString</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># names</span>
-<span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; mtcars
+<span class='fu'>dots</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; a
 #&gt; 
 #&gt; [[2]]
-#&gt; starwars
+#&gt; b
+#&gt; 
+#&gt; [[3]]
+#&gt; c
 #&gt; </div><div class='input'>
 <span class='co'># character</span>
-<span class='fu'>dots</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "mtcars"   "starwars"</div></pre>
+<span class='fu'>dots</span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>character</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "a" "b" "c"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

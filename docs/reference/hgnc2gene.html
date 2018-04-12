@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assign Multiple Objects as a New Environment — multiassignAsNewEnvir • basejump</title>
+<title>HGNC to Ensembl Gene ID Mappings — hgnc2gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,9 +27,9 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Assign Multiple Objects as a New Environment — multiassignAsNewEnvir" />
+<meta property="og:title" content="HGNC to Ensembl Gene ID Mappings — hgnc2gene" />
 
-<meta property="og:description" content="Assign Multiple Objects as a New Environment" />
+<meta property="og:description" content="HGNC to Ensembl Gene ID Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -95,52 +95,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assign Multiple Objects as a New Environment</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/multiassignAsNewEnvir.R'><code>R/multiassignAsNewEnvir.R</code></a></small>
-    <p class="hidden name"><code>multiassignAsNewEnvir.Rd</code></p>
+    <h1>HGNC to Ensembl Gene ID Mappings</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/hgnc2gene.R'><code>R/hgnc2gene.R</code></a></small>
+    <div class="hidden name"><code>hgnc2gene.Rd</code></div>
     </div>
 
     
-    <p>Assign Multiple Objects as a New Environment</p>
+    <p>HGNC to Ensembl Gene ID Mappings</p>
     
 
-    <pre class="usage"><span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>...</span>, <span class='no'>envirName</span>, <span class='kw'>parentEnvir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Objects as dots.</p></td>
-    </tr>
-    <tr>
-      <th>envirName</th>
-      <td><p>New environment name (<code>string</code>).</p></td>
-    </tr>
-    <tr>
-      <th>parentEnvir</th>
-      <td><p>Parent <code>environment</code> where to assign the new environment.</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>hgnc2gene</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code> of object names in the new <code>environment</code>.</p>
+    <p><code>data.frame</code></p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
-  <code><a href='dots.html'>dots</a></code>, <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
-  <code><a href='methodFormals.html'>methodFormals</a></code></p></div>
+    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
+  <code>broadClass</code>,
+  <code>convertGenesToSymbols</code>,
+  <code>convertTranscriptsToGenes</code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
+  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
+  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
+  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
+  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>multiassignAsNewEnvir</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>, <span class='kw'>envirName</span> <span class='kw'>=</span> <span class='st'>"test"</span>)</div><div class='output co'>#&gt; <span class='message'>Assigning mtcars, starwars as test</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>hgnc2gene</span>()</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  .default = col_character(),</span>
+#&gt; <span class='message'>  date_approved_reserved = col_date(format = ""),</span>
+#&gt; <span class='message'>  date_symbol_changed = col_date(format = ""),</span>
+#&gt; <span class='message'>  date_name_changed = col_date(format = ""),</span>
+#&gt; <span class='message'>  date_modified = col_date(format = ""),</span>
+#&gt; <span class='message'>  entrez_id = col_integer(),</span>
+#&gt; <span class='message'>  homeodb = col_integer(),</span>
+#&gt; <span class='message'>  orphanet = col_integer()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 37,450
+#&gt; Variables: 2
+#&gt; $ hgncID &lt;int&gt; 5, 7, 8, 15, 16, 17, 18, 19, 20, 21, 23, 29, 30, 31, 32, 33,...
+#&gt; $ geneID &lt;chr&gt; "ENSG00000121410", "ENSG00000175899", "ENSG00000256069", "EN...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
