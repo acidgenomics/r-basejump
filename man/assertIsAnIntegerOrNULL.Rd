@@ -26,7 +26,6 @@ assertIsAnIntegerOrNULL(NULL)
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
-  \code{\link{assertFormalAnnotationCol}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
   \code{\link{assertHasRownames}},
