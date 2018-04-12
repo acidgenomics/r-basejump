@@ -11,7 +11,9 @@
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'
 #' @examples
-#' methodFormals("geometricMean", "numeric")
+#' x <- methodFormals("geometricMean", "numeric")
+#' class(x)
+#' names(x)
 methodFormals <- function(f, signature) {
     fdef <- getGeneric(f)
     method <- selectMethod(fdef, signature)
@@ -26,7 +28,7 @@ methodFormals <- function(f, signature) {
         if (is.function(local)) {
             return(formals(local))
         }
-        warn("Expected `.local` assignment to be a function")
+        warning("Expected `.local` assignment to be a function")
     }
     genFormals
 }

@@ -1,48 +1,33 @@
-#' Gene Symbol Synonyms
+#' Example RNA-Seq Counts
+#'
+#' Generated with `DESeq2::makeExampleDESeqDataSet()`.
 #'
 #' @author Michael Steinbaugh
-#' @keywords internal
+#'
+#' @examples
+#' summary(rnaseqCounts)
+"rnaseqCounts"
+
+
+
+#' Example Single-Cell RNA-Seq Counts
+#'
+#' Modified version of `scater::sc_example_counts`, with dimnames formatted
+#' in camel case for package consistency.
+#'
+#' @examples
+#' summary(singleCellCounts)
+"singleCellCounts"
+
+
+
+#' Gene Name Synonyms
+#'
+#' A list of tibbles per organism containing gene name (a.k.a. symbol) synonyms.
+#'
+#' @author Michael Steinbaugh
 #'
 #' @examples
 #' names(synonyms)
 #' glimpse(synonyms[["homoSapiens"]])
 "synonyms"
-
-
-
-#' Motor Trend Car Road Tests
-#'
-#' @keywords internal
-#'
-#' @return `data.frame`.
-#' @export
-#'
-#' @examples
-#' glimpse(mtcars)
-datasets::mtcars -> mtcars
-
-
-
-#' Starwars Characters
-#'
-#' @keywords internal
-#'
-#' @return `tibble`.
-#' @export
-#'
-#' @examples
-#' glimpse(starwars)
-dplyr::starwars -> starwars
-
-
-
-#' Miles per Gallon
-#'
-#' @keywords internal
-#'
-#' @return `tibble`.
-#' @export
-#'
-#' @examples
-#' glimpse(mpg)
-ggplot2::mpg -> mpg

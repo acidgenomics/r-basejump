@@ -19,14 +19,17 @@ methodFormals(f, signature)
 Access to the Formal Arguments of an S4 Method
 }
 \examples{
-methodFormals("geometricMean", "numeric")
+x <- methodFormals("geometricMean", "numeric")
+class(x)
+names(x)
 }
 \seealso{
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{localOrRemoteFile}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh

@@ -37,13 +37,14 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}},
+  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}},
-  \code{\link{parseGFFAttributes}},
+  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}}, \code{\link{parseGFFAttributes}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

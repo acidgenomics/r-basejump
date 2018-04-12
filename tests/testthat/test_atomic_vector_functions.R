@@ -1,5 +1,7 @@
 context("Atomic Vector Functions")
 
+
+
 # grepString ===================================================================
 test_that("grepString", {
     expect_identical(

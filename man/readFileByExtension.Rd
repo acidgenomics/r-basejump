@@ -4,8 +4,8 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
-  "dotted"), ...)
+readFileByExtension(file, makeNames = c("camel", "dotted", "snake",
+  "upperCamel"), ...)
 }
 \arguments{
 \item{file}{File path.}
@@ -19,18 +19,57 @@ readFileByExtension(file, makeNames = c("camel", "snake", "upperCamel",
 \code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
 }
 \description{
-Supports automatic loading of standard \code{.csv}, \code{.mtx}, \code{.tsv}, and \code{.xlsx}
-files. Also supports bcbio-nextgen pipeline-specific \code{.counts}, \code{.colnames},
-and \code{.rownames} files.
+Supports automatic loading of common file extensions:
+}
+\details{
+\itemize{
+\item \code{csv}: Comma Separated Values.
+\item \code{gff}/\code{gff3}/\code{gtf}: General Feature Format.
+\item \code{mtx}: MatrixMarket sparse matrix.
+\item \code{rda}/\code{RData}: R Data. Must contain a single object. Doesn't require
+internal object name to match, like in the \code{\link[=loadData]{loadData()}} function.
+\item \code{rds}: R Data Serialized.
+\item \code{tsv} Tab Separated Values.
+\item \code{xlsx}: Excel workbook.
+\item \code{yaml}/\code{yml}: YAML.
+}
+
+Also supports some additional extensions commonly used with the
+\href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
+\itemize{
+\item \code{counts}: Counts \code{table}.
+\item \code{colnames}: Sidecar file containing column names.
+\item \code{rownames}: Sidecar file containing row names.
+}
+}
+\note{
+Reading a MatrixMarket ("\code{mtx}") file now requires "\code{colnames}" and
+\code{"rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
+the sparse matrix. Legacy support for manual loading of these sidecar files
+is provided.
 }
 \examples{
-# Comma separated values
-csv <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
-glimpse(csv)
+# Comma Separated Values
+x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+glimpse(x)
+
+# Counts Table (bcbio)
+x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
+glimpse(x)
+
+# R Data
+x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+glimpse(x)
 
 # Microsoft Excel Worksheet
-xlsx <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
-glimpse(xlsx)
+x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+glimpse(x)
+
+# Text Table (ambiguous; not recommended)
+x <- suppressWarnings(
+    readFileByExtension("http://basejump.seq.cloud/example.txt")
+)
+glimpse(x)
 }
 \seealso{
 \itemize{
@@ -39,9 +78,14 @@ glimpse(xlsx)
 \item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
 
+Integration of the
+\href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package is
+being considered for a future update.
+
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readYAML}}
+  \code{\link{readGFF}}, \code{\link{readJSON}},
+  \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh

@@ -4,13 +4,19 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = ".", overwrite = TRUE, compress = TRUE)
+saveData(..., dir = ".", ext = c("rda", "rds", "RData"), overwrite = TRUE,
+  compress = TRUE)
 }
 \arguments{
-\item{...}{Object names. Note that these arguments are interpreted using
-non-standard evaluation, and \emph{should not be quoted}.}
+\item{...}{Object names. Note that these arguments are interpreted as symbols
+using non-standard evaluation for convenience during interactive use, and
+\emph{should not be quoted}.}
 
 \item{dir}{Output directory. Defaults to the current working directory.}
+
+\item{ext}{R data ("\code{rda}", "\code{RData}") or R data serialized (RDS; "\code{rds}").
+RDS is preferred when saving single objects per file, which is always the
+convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
 
 \item{overwrite}{Overwrite existing file.}
 
@@ -38,10 +44,11 @@ same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\li
 not overwrite by default if that behavior is preferred.
 }
 \examples{
-saveData(mtcars, starwars)
+saveData(rnaseqCounts, singleCellCounts, dir = "example")
+list.files("example")
 
 # Clean up
-unlink(c("mtcars.rda", "starwars.rda"))
+unlink("example", recursive = TRUE)
 }
 \seealso{
 \itemize{

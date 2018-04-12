@@ -51,7 +51,7 @@ makeGRangesFromGFF <- function(
 
     # GRanges ==================================================================
     # Make TxDb
-    txdb <- makeTxDbFromGFF(file)
+    txdb <- suppressWarnings(makeTxDbFromGFF(file))
 
     # GRanges from TxDb
     if (format == "genes") {

@@ -4,24 +4,31 @@
 \alias{general}
 \title{General Arguments}
 \arguments{
+\item{object}{Object.}
+
+\item{value}{Value to assign.}
+
+\item{x}{Object.}
+
+\item{y}{Secondary object.}
+
+\item{...}{Additional arguments.}
+
+\item{dir}{Output directory. Defaults to the current working directory.}
+
+\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
+which will assign into the calling environment.}
+
 \item{file}{File path.}
 
 \item{headerLevel}{Markdown header level.}
 
-\item{object}{Object.}
+\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
 the first item in the vector by default.}
-
-\item{value}{Value to assign.}
-
-\item{x}{Primary object.}
-
-\item{y}{Secondary object.}
-
-\item{...}{Additional arguments.}
 }
 \description{
 General Arguments

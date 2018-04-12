@@ -6,12 +6,16 @@ gene2symbol <- data.frame(
     row.names = c("gene_1", "gene_2")
 )
 
+
+
 test_that("assertAllAreNonExisting", {
     expect_silent(assertAllAreNonExisting(c("a", "b", "c")))
     a <- 1L
     b <- 2L
     expect_error(assertAllAreNonExisting(c("a", "b", "c")))
 })
+
+
 
 test_that("assertFormalAnnotationCol", {
     x <- df
@@ -24,6 +28,8 @@ test_that("assertFormalAnnotationCol", {
     expect_error(assertFormalAnnotationCol(mtcars, y))
 })
 
+
+
 test_that("assertFormalCompress", {
     expect_error(
         assertFormalCompress("XXX"),
@@ -35,6 +41,8 @@ test_that("assertFormalCompress", {
     )
     expect_silent(assertFormalCompress("xz"))
 })
+
+
 
 test_that("assertFormalGene2symbol", {
     genes <- head(rownames(gene2symbol), 2L)
@@ -56,12 +64,16 @@ test_that("assertFormalGene2symbol", {
     )
 })
 
+
+
 test_that("assertHasRownames", {
     expect_silent(assertHasRownames(df))
     rownames(df) <- NULL
     expect_error(assertHasRownames(df))
     expect_error(assertHasRownames(tbl))
 })
+
+
 
 test_that("assertIsDataFrameOrNULL", {
     expect_silent(assertIsDataFrameOrNULL(mtcars))
@@ -71,6 +83,8 @@ test_that("assertIsDataFrameOrNULL", {
         "is2 : x is not in any of the classes 'data.frame', 'NULL'."
     )
 })
+
+
 
 test_that("assertIsAHeaderLevel", {
     expect_silent(assertIsAHeaderLevel(1L))
@@ -83,6 +97,8 @@ test_that("assertIsAHeaderLevel", {
     )
 })
 
+
+
 test_that("assertIsAnImplicitInteger", {
     expect_silent(assertIsAnImplicitInteger(1))  # nolint
     expect_silent(assertIsAnImplicitInteger(1L))
@@ -93,6 +109,8 @@ test_that("assertIsAnImplicitInteger", {
     expect_error(assertIsImplicitInteger(1.000000000000001))
 })
 
+
+
 test_that("assertIsAnImplicitIntegerOrNULL", {
     expect_silent(assertIsAnImplicitIntegerOrNULL(NULL))
     expect_silent(assertIsAnImplicitIntegerOrNULL(1))  # nolint
@@ -100,6 +118,8 @@ test_that("assertIsAnImplicitIntegerOrNULL", {
     expect_silent(assertIsAnImplicitIntegerOrNULL(1.0))
     expect_error(assertIsAnImplicitIntegerOrNULL(1.1))
 })
+
+
 
 test_that("assertIsAnIntegerOrNULL", {
     expect_silent(assertIsAnIntegerOrNULL(1L))
@@ -110,6 +130,8 @@ test_that("assertIsAnIntegerOrNULL", {
     )
 })
 
+
+
 test_that("assertAreGeneAnnotations", {
     x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
     expect_silent(assertAreGeneAnnotations(x))
@@ -118,6 +140,8 @@ test_that("assertAreGeneAnnotations", {
         "is_subset : "
     )
 })
+
+
 
 test_that("assertAreTranscriptAnnotations", {
     x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
@@ -128,6 +152,8 @@ test_that("assertAreTranscriptAnnotations", {
     )
 })
 
+
+
 test_that("assertIsANumberOrNULL", {
     expect_silent(assertIsANumberOrNULL(1.1))
     expect_silent(assertIsANumberOrNULL(NULL))
@@ -136,6 +162,8 @@ test_that("assertIsANumberOrNULL", {
         "is_a_number : x has length 2, not 1."
     )
 })
+
+
 
 test_that("assertIsAStringOrNULL", {
     expect_silent(assertIsAStringOrNULL("hello world"))
@@ -146,6 +174,8 @@ test_that("assertIsAStringOrNULL", {
     )
 })
 
+
+
 test_that("assertIsCharacterOrNULL", {
     expect_silent(assertIsCharacterOrNULL(c("hello", "world")))
     expect_silent(assertIsCharacterOrNULL(NULL))
@@ -154,6 +184,8 @@ test_that("assertIsCharacterOrNULL", {
         "is2 : x is not in any of the classes 'character', 'NULL'."
     )
 })
+
+
 
 test_that("assertIsColorScaleContinuousOrNULL", {
     x <- ggplot2::scale_color_gradient(low = "red", high = "blue")
@@ -169,6 +201,8 @@ test_that("assertIsColorScaleContinuousOrNULL", {
     )
 })
 
+
+
 test_that("assertIsColorScaleDiscreteOrNULL", {
     x <- ggplot2::scale_color_manual(values = "red")
     expect_silent(assertIsColorScaleDiscreteOrNULL(x))
@@ -182,6 +216,8 @@ test_that("assertIsColorScaleDiscreteOrNULL", {
         )
     )
 })
+
+
 
 test_that("assertIsFillScaleContinuousOrNULL", {
     x <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
@@ -197,6 +233,8 @@ test_that("assertIsFillScaleContinuousOrNULL", {
     )
 })
 
+
+
 test_that("assertIsFillScaleDiscreteOrNULL", {
     x <- ggplot2::scale_fill_manual(values = "red")
     expect_silent(assertIsFillScaleDiscreteOrNULL(x))
@@ -210,6 +248,8 @@ test_that("assertIsFillScaleDiscreteOrNULL", {
         )
     )
 })
+
+
 
 test_that("assertIsGene2symbol", {
     expect_silent(assertIsGene2symbol(gene2symbol))
@@ -227,6 +267,8 @@ test_that("assertIsGene2symbol", {
     )
 })
 
+
+
 test_that("assertIsGFF", {
     x <- readGFF("mmusculus.gtf")
     assertIsGFF(x)
@@ -235,6 +277,8 @@ test_that("assertIsGFF", {
         "is_of_length : colnames\\(x\\) has length 11, not 9."
     )
 })
+
+
 
 test_that("assertIsHexColorFunctionOrNULL", {
     x <- function(n) {
@@ -248,12 +292,16 @@ test_that("assertIsHexColorFunctionOrNULL", {
     )
 })
 
+
+
 test_that("assertIsImplicitInteger", {
     expect_silent(assertIsImplicitInteger(c(1, 2)))  # nolint
     expect_silent(assertIsImplicitInteger(c(1L, 2L)))
     expect_silent(assertIsImplicitInteger(c(1.0, 2.0)))
     expect_error(assertIsImplicitInteger(c(1.1, 2.1)))
 })
+
+
 
 test_that("assertIsImplicitIntegerOrNULL", {
     expect_silent(assertIsImplicitIntegerOrNULL(NULL))
@@ -263,12 +311,16 @@ test_that("assertIsImplicitIntegerOrNULL", {
     expect_error(assertIsImplicitIntegerOrNULL(c(1.1, 2.1)))
 })
 
+
+
 test_that("isImplicitInteger", {
     expect_true(isImplicitInteger(1))  # nolint
     expect_true(isImplicitInteger(1L))
     expect_true(isImplicitInteger(1.0))
     expect_false(isImplicitInteger(1.1))
 })
+
+
 
 test_that("assertIsTx2gene", {
     tx2gene <- data.frame(

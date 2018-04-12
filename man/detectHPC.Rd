@@ -31,7 +31,8 @@ detectHPC()
 Other Developer Functions: \code{\link{dots}},
   \code{\link{localOrRemoteFile}},
   \code{\link{methodFormals}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh

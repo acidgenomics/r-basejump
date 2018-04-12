@@ -206,4 +206,14 @@ tx2geneFromGFF <- function(...) {
 #' @export
 tx2geneFromGFF -> tx2geneFromGTF
 
+
+
+# v0.5.0 =======================================================================
+#' @rdname deprecated
+#' @export
+multiassignAsNewEnvir <- function(...) {
+    .Deprecated("multiassignAsEnvir")
+    multiassignAsEnvir(...)
+}
+
 # nocov end

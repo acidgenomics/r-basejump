@@ -30,10 +30,11 @@ is enabled by default to save disk space. Note that the
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
 }
 \examples{
-writeCounts(mtcars, gzip = TRUE)
+writeCounts(rnaseqCounts, singleCellCounts, dir = "example")
+list.files("example")
 
 # Clean up
-unlink("mtcars.csv.gz")
+unlink("example", recursive = TRUE)
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},

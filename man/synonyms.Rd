@@ -3,13 +3,13 @@
 \docType{data}
 \name{synonyms}
 \alias{synonyms}
-\title{Gene Symbol Synonyms}
-\format{An object of class \code{list} of length 5.}
+\title{Gene Name Synonyms}
+\format{An object of class \code{list} of length 4.}
 \usage{
 synonyms
 }
 \description{
-Gene Symbol Synonyms
+A list of tibbles per organism containing gene name (a.k.a. symbol) synonyms.
 }
 \examples{
 names(synonyms)
@@ -18,4 +18,4 @@ glimpse(synonyms[["homoSapiens"]])
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
+\keyword{datasets}

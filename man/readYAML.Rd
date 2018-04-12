@@ -16,13 +16,14 @@ readYAML(file)
 Read YAML File
 }
 \examples{
-yaml <- readYAML("http://basejump.seq.cloud/summary.yaml")
-names(yaml)
+x <- readYAML("http://basejump.seq.cloud/example.yaml")
+names(x)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}}
+  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+  \code{\link{readJSON}}
 }
 \author{
 Michael Steinbaugh

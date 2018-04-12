@@ -18,13 +18,13 @@
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
-#' assignAndSaveData(name = "test", object = mtcars)
-#' exists("test", inherits = FALSE)
-#' file.exists("test.rda")
+#' assignAndSaveData(name = "example", object = rnaseqCounts)
+#' exists("example", inherits = FALSE)
+#' file.exists("example.rda")
 #'
 #' # Clean up
-#' rm(test)
-#' unlink("test.rda")
+#' rm(example)
+#' unlink("example.rda")
 assignAndSaveData <- function(
     name,
     object,
@@ -42,7 +42,7 @@ assignAndSaveData <- function(
     assign(name, object, envir = envir)
 
     # Save
-    inform(paste("Saving", name, "to", dir))
+    message(paste("Saving", name, "to", dir))
     file <- file.path(dir, paste0(name, ".rda"))
     save(
         list = name,

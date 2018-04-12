@@ -28,18 +28,17 @@ This function is intended for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-loaded <- loadDataAsName(
-    makeNames = mn,
+loadDataAsName(
+    renamed = example,
     dir = system.file("extdata", package = "basejump")
 )
-print(loaded)
-class(makeNames)
+class(renamed)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},
   \code{\link{loadRemoteData}},
   \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readYAML}}
+  \code{\link{readJSON}}, \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh

@@ -31,18 +31,31 @@ test_that("dynamicPlotlist", {
 
 
 
-# midnightTheme ================================================================
-test_that("midnightTheme", {
-    p <- ggplot2::ggplot(
-        data = mpg,
-        mapping = ggplot2::aes(cty, hwy)
-    ) +
-        ggplot2::geom_point(color = "orange") +
-        midnightTheme()
-    expect_is(p, "ggplot")
-    # Check for the black plot background
+# themes =======================================================================
+p <- ggplot2::ggplot(
+    data = ggplot2::mpg,
+    mapping = ggplot2::aes(cty, hwy)
+) +
+    ggplot2::geom_point(color = "orange")
+
+test_that("theme_midnight", {
+    expect_is(theme_midnight(), "theme")
+    x <- p + theme_midnight()
+    expect_is(x, "ggplot")
+    # Check background color
     expect_identical(
-        p[["theme"]][["plot.background"]][["fill"]],
+        x[["theme"]][["plot.background"]][["fill"]],
         "black"
+    )
+})
+
+test_that("theme_paperwhite", {
+    expect_is(theme_paperwhite(), "theme")
+    x <- p + theme_paperwhite()
+    expect_is(x, "ggplot")
+    # Check background color
+    expect_identical(
+        x[["theme"]][["plot.background"]][["fill"]],
+        NULL
     )
 })

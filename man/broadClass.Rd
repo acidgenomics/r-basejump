@@ -4,16 +4,16 @@
 \name{broadClass}
 \alias{broadClass}
 \alias{broadClass}
-\alias{broadClass,DataFrame-method}
 \alias{broadClass,data.frame-method}
+\alias{broadClass,DataFrame-method}
 \alias{broadClass,GRanges-method}
 \title{Broad Class Definitions}
 \usage{
 broadClass(object, ...)
 
-\S4method{broadClass}{DataFrame}(object)
-
 \S4method{broadClass}{data.frame}(object)
+
+\S4method{broadClass}{DataFrame}(object)
 
 \S4method{broadClass}{GRanges}(object)
 }
@@ -43,14 +43,15 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}},
+  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}},
-  \code{\link{parseGFFAttributes}},
+  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}}, \code{\link{parseGFFAttributes}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
