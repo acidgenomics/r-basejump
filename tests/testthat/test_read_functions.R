@@ -175,7 +175,8 @@ test_that("readFileByExtension : Tab separated values file (.tsv)", {
 })
 
 test_that("readFileByExtension : Table format file (.txt)", {
-    txt <- readFileByExtension("mtcars.txt")
+    expect_warning(readFileByExtension("mtcars.txt"))
+    txt <- suppressWarnings(readFileByExtension("mtcars.txt"))
     expect_is(txt, "data.frame")
     # txt has integer columns whereas mtcars doesn't
     expect_equal(txt, mtcars)
@@ -204,6 +205,15 @@ test_that("readFileByExtension : Counts file (.counts)", {
     )
 })
 
+test_that("readFileByExtension : R file", {
+    expectMessage(
+        readFileByExtension("test_read_functions.R"),
+        "Importing as source code lines"
+    )
+    x <- readFileByExtension("test_read_functions.R")
+    expect_is(x, "character")
+})
+
 test_that("readFileByExtension : Unsupported file type", {
     # Missing extension
     file.create("example")
@@ -212,11 +222,6 @@ test_that("readFileByExtension : Unsupported file type", {
         "is_matching_regex :"
     )
     unlink("example")
-    # Unsupported extension
-    expect_error(
-        readFileByExtension("test_read_functions.R"),
-        "Unsupported extension"
-    )
 })
 
 

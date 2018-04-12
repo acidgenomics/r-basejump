@@ -203,6 +203,7 @@ test_that("sanitizeRowData", {
     expect_identical(
         lapply(x, class),
         list(
+            "rowname" = "character",
             "seqnames" = "factor",
             "start" = "integer",
             "end" = "integer",
