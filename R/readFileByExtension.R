@@ -157,7 +157,7 @@ readFileByExtension <- function(
     } else if (exti == "txt") {
         # Table?
         warning(paste(
-            deparse(ext), "is ambiguous and not recommended.",
+            paste(deparse(ext), "is ambiguous and not recommended."),
             "Assuming table output from `utils::write.table()`.",
             sep = "\n"
         ))
