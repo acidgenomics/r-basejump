@@ -21,10 +21,10 @@
 #'
 #' @examples
 #' # names
-#' dots(mtcars, starwars)
+#' dots(a, b, c)
 #'
 #' # character
-#' dots(mtcars, starwars, character = TRUE)
+#' dots(a, b, c, character = TRUE)
 dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))
     assert_is_list(dots)

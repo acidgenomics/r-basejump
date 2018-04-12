@@ -60,7 +60,7 @@ multiple URLs in a single call." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@ multiple URLs in a single call." />
     <div class="page-header">
     <h1>Load Remote Data</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/loadRemoteData.R'><code>R/loadRemoteData.R</code></a></small>
-    <p class="hidden name"><code>loadRemoteData.Rd</code></p>
+    <div class="hidden name"><code>loadRemoteData.Rd</code></div>
     </div>
 
     
@@ -113,8 +113,8 @@ multiple URLs in a single call.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>url</th>
-      <td><p>Remote URL file path to R Data file. Supports multiple URLs
-passed in as a character vector.</p></td>
+      <td><p>Remote URL file path to R data. Supports multiple URLs passed in
+as a character vector.</p></td>
     </tr>
     <tr>
       <th>envir</th>
@@ -125,27 +125,24 @@ which will assign into the calling environment.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible character <code>matrix</code> containing URL and tempfile paths.</p>
+    <p>Invisible named <code>character</code> containing the local object name as the
+name, and the remote URL as the value.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadData.html'>loadData</a></code>,
   <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='readJSON.html'>readJSON</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>loaded</span> <span class='kw'>&lt;-</span> <span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
-    <span class='st'>"http://basejump.seq.cloud/mtcars.rda"</span>,
-    <span class='st'>"http://basejump.seq.cloud/starwars.rda"</span>
-))
-<span class='fu'>print</span>(<span class='no'>loaded</span>)</div><div class='output co'>#&gt;          mtcars                                                                          
-#&gt; url      "http://basejump.seq.cloud/mtcars.rda"                                          
-#&gt; tempfile "/var/folders/j1/hw6j14mj3wq381x7mynwfbp00000gn/T//RtmpzO30b6/file14bbb28339830"
-#&gt;          starwars                                                                        
-#&gt; url      "http://basejump.seq.cloud/starwars.rda"                                        
-#&gt; tempfile "/var/folders/j1/hw6j14mj3wq381x7mynwfbp00000gn/T//RtmpzO30b6/file14bbb534c8bee"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
+    <span class='st'>"http://basejump.seq.cloud/rnaseqCounts.rda"</span>,
+    <span class='st'>"http://basejump.seq.cloud/singleCellCounts.rda"</span>
+))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseqCounts.rda</span></div><div class='output co'>#&gt; <span class='message'>Reading singleCellCounts.rda</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseqCounts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>singleCellCounts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
+#&gt; attr(,"package")
+#&gt; [1] "Matrix"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

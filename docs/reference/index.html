@@ -56,7 +56,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -142,6 +142,12 @@
       </tr><tr>
         <!--  -->
         <td>
+          <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
+        </td>
+        <td><p>Generate Empty Genomic Ranges</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
           <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> </p>
         </td>
         <td><p>Genomic Ranges from Ensembl</p></td>
@@ -178,6 +184,12 @@
       </tr><tr>
         <!--  -->
         <td>
+          <p><code><a href="panther.html">panther()</a></code> </p>
+        </td>
+        <td><p>PANTHER Gene Ontology Annotations</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
           <p><code><a href="parseGFFAttributes.html">parseGFFAttributes()</a></code> </p>
         </td>
         <td><p>Parse GFF Attributes Column</p></td>
@@ -187,6 +199,24 @@
           <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
         </td>
         <td><p>Strip Transcript Versions</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
+        </td>
+        <td><p>Assert Is Transcript-to-Gene Mapping Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="hgnc2gene.html">hgnc2gene()</a></code> </p>
+        </td>
+        <td><p>HGNC to Ensembl Gene ID Mappings</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="mgi2gene.html">mgi2gene()</a></code> </p>
+        </td>
+        <td><p>MGI to Ensembl Gene ID Mappings</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -198,27 +228,9 @@
       <tr>
         <!--  -->
         <td>
-          <p><code><a href="camel.html">camel()</a></code> <code><a href="camel.html">upperCamel()</a></code> </p>
-        </td>
-        <td><p>Camel Case</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="dotted.html">dotted()</a></code> </p>
-        </td>
-        <td><p>Dotted Case</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="makeNames.html">makeNames()</a></code> </p>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> </p>
         </td>
         <td><p>Make Syntactically Valid Names</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="snake.html">snake()</a></code> </p>
-        </td>
-        <td><p>Snake Case</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -298,6 +310,12 @@
       </tr><tr>
         <!--  -->
         <td>
+          <p><code><a href="readJSON.html">readJSON()</a></code> </p>
+        </td>
+        <td><p>Read JSON File</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
           <p><code><a href="readYAML.html">readYAML()</a></code> </p>
         </td>
         <td><p>Read YAML File</p></td>
@@ -350,9 +368,9 @@
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="midnightTheme.html">midnightTheme()</a></code> </p>
+          <p><code><a href="themes.html">theme_midnight()</a></code> <code><a href="themes.html">theme_paperwhite()</a></code> </p>
         </td>
-        <td><p>Midnight Theme</p></td>
+        <td><p>Complete Themes</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -453,6 +471,20 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-coercion-methods" class="hasAnchor"><a href="#section-coercion-methods" class="anchor"></a>Coercion Methods</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="coerce-tibble.html">coerce-tibble</a></code> </p>
+        </td>
+        <td><p>Coerce to <code>tibble</code> Class Object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-developer-functions" class="hasAnchor"><a href="#section-developer-functions" class="anchor"></a>Developer Functions</h2>
           <p class="section-desc"></p>
         </th>
@@ -496,9 +528,15 @@
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="multiassignAsNewEnvir.html">multiassignAsNewEnvir()</a></code> </p>
+          <p><code><a href="multiassignAsEnvir.html">multiassignAsEnvir()</a></code> </p>
         </td>
-        <td><p>Assign Multiple Objects as a New Environment</p></td>
+        <td><p>Assign Multiple Objects as an Environment</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="printString.html">printString()</a></code> </p>
+        </td>
+        <td><p>Print String</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -638,7 +676,39 @@
         <td>
           <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
         </td>
-        <td><p>Check Transcript to Gene Mapping Data</p></td>
+        <td><p>Assert Is Transcript-to-Gene Mapping Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="assertIsURL.html">assertIsURL()</a></code> <code><a href="assertIsURL.html">isURL()</a></code> </p>
+        </td>
+        <td><p>Assert Is URL</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="synonyms.html">synonyms</a></code> </p>
+        </td>
+        <td><p>Gene Name Synonyms</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="rnaseqCounts.html">rnaseqCounts</a></code> </p>
+        </td>
+        <td><p>Example RNA-Seq Counts</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="singleCellCounts.html">singleCellCounts</a></code> </p>
+        </td>
+        <td><p>Example Single-Cell RNA-Seq Counts</p></td>
       </tr>
     </tbody>
     </table>
@@ -656,8 +726,10 @@
       <li><a href="#section-r-markdown-functions">R Markdown Functions</a></li>
       <li><a href="#section-atomic-vector-functions">Atomic Vector Functions</a></li>
       <li><a href="#section-sanitization-functions">Sanitization Functions</a></li>
+      <li><a href="#section-coercion-methods">Coercion Methods</a></li>
       <li><a href="#section-developer-functions">Developer Functions</a></li>
       <li><a href="#section-assert-check-functions">Assert Check Functions</a></li>
+      <li><a href="#section-datasets">Datasets</a></li>
     </ul>
   </div>
 </div>

@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
     <div class="page-header">
     <h1>Sanitize Row Data</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizeRowData.R'><code>R/sanitizeRowData.R</code></a></small>
-    <p class="hidden name"><code>sanitizeRowData.Rd</code></p>
+    <div class="hidden name"><code>sanitizeRowData.Rd</code></div>
     </div>
 
     
@@ -134,114 +134,47 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(
-    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>,
-    <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>,
-    <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCh37"</span>
-)</div><div class='output co'>#&gt; <span class='message'>Loading required package: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ensembldb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'parallel'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:basejump':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, clusterSplit, parApply, parCapply,</span>
-#&gt; <span class='message'>    parLapply, parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'BiocGenerics'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:parallel':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,</span>
-#&gt; <span class='message'>    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,</span>
-#&gt; <span class='message'>    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,</span>
-#&gt; <span class='message'>    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
-#&gt; <span class='message'>    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,</span>
-#&gt; <span class='message'>    table, tapply, union, unique, unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicFeatures</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationDbi</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationFilter</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'AnnotationFilter'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:testthat':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    not</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'ensembldb'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>id: "EnsDb.Hsapiens.v75"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH57757"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh37"</span>
-#&gt; <span class='message'>release: "75"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 64,102
-#&gt; Variables: 10
+#&gt; <span class='message'>build: "GRCh38"</span>
+#&gt; <span class='message'>release: "90"</span>
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 64,661
+#&gt; Variables: 12
+#&gt; $ rowname        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
 #&gt; $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7, 7, ...
-#&gt; $ start          &lt;int&gt; 99883667, 99839799, 49551404, 169818772, 169631245, ...
-#&gt; $ end            &lt;int&gt; 99894988, 99854882, 49575092, 169863408, 169823221, ...
-#&gt; $ width          &lt;int&gt; 11322, 15084, 23689, 44637, 191977, 23214, 95627, 16...
+#&gt; $ start          &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 169662007...
+#&gt; $ end            &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 169854080...
+#&gt; $ width          &lt;int&gt; 12883, 15084, 23689, 44637, 192074, 23214, 95627, 16...
 #&gt; $ strand         &lt;fct&gt; -, +, -, -, +, -, +, -, -, +, -, +, -, +, +, +, +, -...
 #&gt; $ geneID         &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
 #&gt; $ geneName       &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR"...
 #&gt; $ geneBiotype    &lt;fct&gt; protein_coding, protein_coding, protein_coding, prot...
+#&gt; $ description    &lt;chr&gt; "tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858]",...
 #&gt; $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome, chro...
 #&gt; $ broadClass     &lt;fct&gt; coding, coding, coding, coding, coding, coding, codi...</div><div class='input'>
 <span class='co'># Transcripts ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(
-    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>,
-    <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>,
-    <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='st'>"GRCh37"</span>
-)</div><div class='output co'>#&gt; <span class='message'>Loading required package: EnsDb.Hsapiens.v75</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ensembldb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'parallel'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:basejump':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, clusterSplit, parApply, parCapply,</span>
-#&gt; <span class='message'>    parLapply, parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'BiocGenerics'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:parallel':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,</span>
-#&gt; <span class='message'>    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,</span>
-#&gt; <span class='message'>    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,</span>
-#&gt; <span class='message'>    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
-#&gt; <span class='message'>    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,</span>
-#&gt; <span class='message'>    table, tapply, union, unique, unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'S4Vectors'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicFeatures</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationDbi</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationFilter</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'AnnotationFilter'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:testthat':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    not</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'ensembldb'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter</span></div><div class='output co'>#&gt; <span class='message'>id: "EnsDb.Hsapiens.v75"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH57757"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh37"</span>
-#&gt; <span class='message'>release: "75"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 215,647
-#&gt; Variables: 15
-#&gt; $ seqnames       &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7, 11, 1, 17, 1...
-#&gt; $ start          &lt;int&gt; 127228399, 9092961, 64073050, 2904119, 72356367, 374...
-#&gt; $ end            &lt;int&gt; 127231759, 9102551, 64084210, 2913124, 72375167, 374...
-#&gt; $ width          &lt;int&gt; 3361, 9591, 11161, 9006, 18801, 17495, 16880, 14609,...
-#&gt; $ strand         &lt;fct&gt; +, -, +, +, -, +, -, -, -, +, +, -, -, -, -, +, +, +...
+#&gt; <span class='message'>build: "GRCh38"</span>
+#&gt; <span class='message'>release: "90"</span>
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txSupportLevel as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 220,144
+#&gt; Variables: 18
+#&gt; $ rowname        &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST000000004...
+#&gt; $ seqnames       &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7, 11, 1, 1, 7,...
+#&gt; $ start          &lt;int&gt; 127588345, 8940365, 64305578, 2794953, 72129238, 372...
+#&gt; $ end            &lt;int&gt; 127591705, 8949955, 64316738, 2805423, 72148038, 372...
+#&gt; $ width          &lt;int&gt; 3361, 9591, 11161, 10471, 18801, 17495, 16880, 14609...
+#&gt; $ strand         &lt;fct&gt; +, -, +, +, -, +, -, -, -, +, +, -, -, -, +, +, +, -...
 #&gt; $ txID           &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST000000004...
 #&gt; $ txName         &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST000000004...
 #&gt; $ txBiotype      &lt;fct&gt; protein_coding, protein_coding, protein_coding, prot...
 #&gt; $ geneID         &lt;chr&gt; "ENSG00000004059", "ENSG00000003056", "ENSG000001731...
 #&gt; $ geneName       &lt;chr&gt; "ARF5", "M6PR", "ESRRA", "FKBP4", "CYP26B1", "NDUFAF...
 #&gt; $ geneBiotype    &lt;fct&gt; protein_coding, protein_coding, protein_coding, prot...
-#&gt; $ txCdsSeqStart  &lt;int&gt; 127228553, 9094414, 64074652, 2904306, 72359356, 374...
-#&gt; $ txCdsSeqEnd    &lt;int&gt; 127231353, 9099000, 64083438, 2912424, 72374963, 374...
+#&gt; $ description    &lt;chr&gt; "ADP ribosylation factor 5 [Source:HGNC Symbol;Acc:H...
+#&gt; $ txCdsSeqStart  &lt;int&gt; 127588499, 8941818, 64307180, 2795140, 72132227, 372...
+#&gt; $ txCdsSeqEnd    &lt;int&gt; 127591299, 8946404, 64315966, 2803258, 72147834, 372...
+#&gt; $ txSupportLevel &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1...
 #&gt; $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome, chro...
 #&gt; $ broadClass     &lt;fct&gt; coding, coding, coding, coding, coding, coding, codi...</div></pre>
   </div>

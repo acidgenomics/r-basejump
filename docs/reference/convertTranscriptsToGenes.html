@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Convert Ensembl Transcripts to Genes</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-convertTranscriptsToGenes.R'><code>R/methods-convertTranscriptsToGenes.R</code></a></small>
-    <p class="hidden name"><code>convertTranscriptsToGenes.Rd</code></p>
+    <div class="hidden name"><code>convertTranscriptsToGenes.Rd</code></div>
     </div>
 
     
@@ -110,25 +110,20 @@
 <span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='kw'>tx2gene</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>convertTranscriptsToGenes</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,8 +152,8 @@ manually declared.</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional.</em> Genome assembly name (e.g. "<code>GRCh38</code>"). If
-<code>NULL</code>, defaults to the most recent build available.</p></td>
+      <td><p><em>Optional.</em> Genome build assembly name (e.g. "<code>GRCh38</code>").
+If <code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
     <tr>
       <th>release</th>
@@ -177,14 +172,15 @@ to the most recent release available.</p></td>
   <code>broadClass</code>,
   <code>convertGenesToSymbols</code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>,
+  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
-  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 

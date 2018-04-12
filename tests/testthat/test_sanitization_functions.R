@@ -1,4 +1,9 @@
-context("Sanitize Functions")
+context("Sanitization Functions")
+
+groceries <- c(NA, NA, "milk", "eggs", "eggs", "veggies")
+mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
+
+
 
 # collapseToString =============================================================
 test_that("collapseToString : atomic", {
@@ -33,7 +38,7 @@ test_that("collapseToString : atomic", {
 
 test_that("colllapseToString : data.frame", {
     expect_identical(
-        mtcars %>%
+        datasets::mtcars %>%
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg", drop = TRUE],
@@ -198,6 +203,7 @@ test_that("sanitizeRowData", {
     expect_identical(
         lapply(x, class),
         list(
+            "rowname" = "character",
             "seqnames" = "factor",
             "start" = "integer",
             "end" = "integer",

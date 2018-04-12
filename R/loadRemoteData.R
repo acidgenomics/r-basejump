@@ -7,65 +7,53 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @inheritParams loadData
-#' @param url Remote URL file path to R Data file. Supports multiple URLs
-#'   passed in as a character vector.
+#' @param url Remote URL file path to R data. Supports multiple URLs passed in
+#'   as a character vector.
 #'
-#' @return Invisible character `matrix` containing URL and tempfile paths.
+#' @return Invisible named `character` containing the local object name as the
+#'   name, and the remote URL as the value.
 #' @export
 #'
 #' @examples
-#' loaded <- loadRemoteData(c(
-#'     "http://basejump.seq.cloud/mtcars.rda",
-#'     "http://basejump.seq.cloud/starwars.rda"
+#' loadRemoteData(c(
+#'     "http://basejump.seq.cloud/rnaseqCounts.rda",
+#'     "http://basejump.seq.cloud/singleCellCounts.rda"
 #' ))
-#' print(loaded)
+#' class(rnaseqCounts)
+#' class(singleCellCounts)
 loadRemoteData <- function(url, envir = parent.frame()) {
-    assert_is_character(url)
-    # Check for remote URL containing `.rda` file
-    assert_all_are_matching_regex(url, "^http(s)?\\://.+\\.rda$")
+    assertIsURL(url)
+    if (!all(vapply(
+        X = url,
+        FUN = function(x) {
+            grepl(rdataExtPattern, x, ignore.case = TRUE)
+        },
+        FUN.VALUE = logical(1L)
+    ))) {
+        stop(rdataError)
+    }
     assert_is_environment(envir)
+    names <- gsub(rdataExtPattern, "", basename(url), ignore.case = TRUE)
+    names(url) <- names
 
     # Check to make sure the objects don't already exist
-    basename(url) %>%
-        gsub("\\.rda$", "", .) %>%
-        assertAllAreNonExisting(envir = envir, inherits = FALSE)
-
-    .urlToTempfile <- function(url, envir = parent.frame()) {
-        assert_is_a_string(url)
-        assert_is_environment(envir)
-        tempfile <- tempfile()
-        download.file(url = url, destfile = tempfile)
-        c(url = url, tempfile = as.character(tempfile))
-    }
+    assertAllAreNonExisting(names, envir = envir, inherits = FALSE)
 
     # Download the files to tempdir and return a character matrix of mappings
-    map <- mapply(
-        FUN = .urlToTempfile,
+    invisible(mapply(
+        name = names,
         url = url,
         MoreArgs = list(envir = envir),
-        SIMPLIFY = FALSE,
-        USE.NAMES = FALSE
-    )
-    map <- do.call(cbind, map)
-    colnames(map) <- gsub("\\.rda$", "", basename(map["url", , drop = TRUE]))
-    assert_is_matrix(map)
+        FUN = function(name, url, envir) {
+            data <- readFileByExtension(url)
+            assign(
+                x = name,
+                value = data,
+                envir = envir
+            )
+        }
+    ))
 
-    # Now we're ready to load safely from the tempdir
-    files <- map["tempfile", , drop = FALSE]
-    names <- colnames(map)
-    objects <- mapply(
-        FUN = .safeLoad,
-        file = files,
-        name = names,
-        MoreArgs = list(envir = envir),
-        SIMPLIFY = FALSE,
-        USE.NAMES = TRUE
-    )
-    objects <- do.call(cbind, objects)
-    colnames(objects) <- names
-
-    return <- map[, colnames(objects), drop = FALSE]
-    assert_is_matrix(return)
-    invisible(return)
+    assert_all_are_existing(names, envir = envir, inherits = FALSE)
+    invisible(url)
 }

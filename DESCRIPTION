@@ -1,6 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Version: 0.4.0
+Description: Helper functions for bioinformatics, package development, and
+    R Markdown reports.
+Version: 0.5.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -21,21 +23,20 @@ Authors@R: c(
         role = "ctb",
         comment = c(ORCID = "0000-0003-2699-3840")
     ))
-Description: Helper functions for bioinformatics, package development, and
-    R Markdown reports.
-License: MIT + file LICENSE
-Encoding: UTF-8
 URL:
     http://steinbaugh.com/basejump,
     https://github.com/steinbaugh/basejump
 BugReports: https://github.com/steinbaugh/basejump/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 Depends:
     R (>= 3.4)
 Imports:
     AnnotationHub,
-    BiocGenerics,
     GenomicFeatures,
+    GenomicRanges,
+    IRanges,
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
     R.utils,
@@ -43,34 +44,28 @@ Imports:
     S4Vectors,
     assertive (>= 0.3),
     cowplot (>= 0.9),
-    datasets,
-    dendsort,
     dplyr (>= 0.7),
-    ensembldb (>= 2.0),
+    ensembldb,
     ggplot2 (>= 2.2.1),
     knitr (>= 1.20),
     magrittr (>= 1.5),
     methods,
-    parallel,
     pbapply,
     plyr (>= 1.8),
     readr (>= 1.1),
     readxl (>= 1.0),
     rlang (>= 0.2),
-    scales,
     stats,
     stringr (>= 1.3),
     tibble (>= 1.4),
-    utils,
-    yaml
-Suggests:
-    devtools (>= 1.13),
-    EnsDb.Hsapiens.v75,
-    lintr (>= 1.0),
-    roxygen2,
-    testthat (>= 2.0),
     tidyr (>= 0.8),
-    tidyverse (>= 1.2)
+    utils
+Suggests:
+    EnsDb.Hsapiens.v75,
+    jsonlite,
+    rio (>= 0.5),
+    testthat (>= 2.0),
+    yaml
 biocViews:
     DataImport,
     Infrastructure

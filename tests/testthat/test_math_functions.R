@@ -1,5 +1,7 @@
 context("Math Functions")
 
+
+
 # aggregateFeatures ============================================================
 test_that("aggregateFeatures", {
     aggMat <- data.frame(
@@ -100,7 +102,7 @@ test_that("geometricMean", {
         mean
     )
     expect_error(
-        geometricMean(starwars),
+        geometricMean(ggplot2::mpg),
         "is_numeric :"
     )
 

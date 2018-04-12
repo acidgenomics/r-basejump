@@ -13,27 +13,28 @@
 #'
 #' @examples
 #' # Single file
-#' x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
-#' names(x)
+#' x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
+#' basename(x)
 #'
 #' # Vectorized
 #' x <- localOrRemoteFile(c(
-#'     "http://basejump.seq.cloud/mtcars.csv",
-#'     "http://basejump.seq.cloud/mtcars.rda"
+#'     "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
+#'     "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
 #' ))
-#' names(x)
+#' basename(x)
 localOrRemoteFile <- function(file) {
     assert_is_character(file)
-
     local <- mapply(
         file = file,
         FUN = function(file) {
             # Remote file mode
-            if (grepl("\\://", file)) {
-                # Make sure local tempfile always has an extension
-                extPattern <- "\\.([A-Za-z0-9]+)$"
+            if (isURL(file)) {
                 assert_all_are_matching_regex(file, extPattern)
-                ext <- str_match(file, extPattern)[, 2L]
+                ext <- str_match(basename(file), extPattern) %>%
+                    .[1L, 2L:3L] %>%
+                    na.omit() %>%
+                    paste(collapse = "")
+                assert_is_non_empty(ext)
 
                 # Fix for Excel files on Windows
                 # https://github.com/tidyverse/readxl/issues/374
@@ -46,7 +47,7 @@ localOrRemoteFile <- function(file) {
                     mode <- "w"
                 }
 
-                destfile <- paste(tempfile(), ext, sep = ".")
+                destfile <- file.path(tempdir(), basename(file))
                 download.file(url = file, destfile = destfile, mode = mode)
                 destfile
             } else {
@@ -57,8 +58,6 @@ localOrRemoteFile <- function(file) {
         USE.NAMES = FALSE
     )
     assert_all_are_existing_files(local)
-
-    local <- normalizePath(local, winslash = "/", mustWork = TRUE)
-    names(local) <- basename(file)
-    local
+    assert_all_are_matching_regex(local, extPattern)
+    normalizePath(local, winslash = "/", mustWork = TRUE)
 }

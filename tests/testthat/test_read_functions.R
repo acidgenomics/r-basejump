@@ -24,14 +24,14 @@ test_that("loadData : Standard evaluation", {
 test_that("loadData : Multiple objects in single file", {
     expect_error(
         loadData(multi),
-        "is_a_string : loaded has length 2, not 1."
+        "multi.rda contains multiple objects : x, y"
     )
 })
 
 test_that("loadData : Renamed file", {
     expect_error(
         loadData(renamed),
-        "are_identical : name and loaded are not identical."
+        "renamed.rda has been renamed."
     )
 })
 
@@ -73,14 +73,14 @@ test_that("loadData : Standard evaluation", {
 test_that("loadDataAsName : Missing files", {
     expect_error(
         loadDataAsName(data = XXX),
-        "is_existing_file :"
+        rdataError
     )
 })
 
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
         loadDataAsName(data = multi),
-        "is_a_string : loaded has length 2, not 1."
+        "multi.rda contains multiple objects : x, y"
     )
 })
 
@@ -99,36 +99,39 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    loaded <- loadRemoteData(paste(cacheURL, "sparse.rda", sep = "/"))
+    x <- loadRemoteData(paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
     # Character matrix of loaded files
-    expect_is(loaded, "matrix")
+    expect_is(x, "character")
     expect_identical(
-        loaded["url", "sparse", drop = TRUE],
-        paste(cacheURL, "sparse.rda", sep = "/")
+        x,
+        c("rnaseqCounts" = paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
     )
     # Check that the object loaded correctly
-    expect_is(sparse, "dgCMatrix")
+    expect_is(rnaseqCounts, "matrix")
 })
 
 test_that("loadRemoteData : Already loaded", {
-    mtcars <- datasets::mtcars
+    example <- TRUE
     expect_error(
-        loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/")),
-        "Already exists in environment: mtcars"
+        loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
+        "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
         loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
-        "is_matching_regex : url does not match"
+        rdataError
     )
     expect_error(
         loadRemoteData("foobar.rda"),
-        "is_matching_regex : url does not match"
+        "foobar.rda does not match '\\^http"
     )
     expect_error(
-        loadRemoteData(paste(cacheURL, "mtcars.rda", sep = "/"), envir = "XXX"),
+        loadRemoteData(
+            paste(cacheURL, "example.rda", sep = "/"),
+            envir = "XXX"
+        ),
         "is_environment : envir"
     )
 })
@@ -137,10 +140,10 @@ test_that("loadRemoteData : Invalid arguments", {
 
 # localOrRemoteFile ============================================================
 test_that("localOrRemoteFile : Vectorized", {
-    urls <- paste(cacheURL, c("mtcars.csv", "mtcars.rda"), sep = "/")
+    urls <- paste(cacheURL, c("example.csv", "example.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
     expect_is(files, "character")
-    expect_identical(names(files), basename(urls))
+    expect_identical(basename(urls), basename(files))
 })
 
 test_that("localOrRemoteFile : Missing file", {
@@ -154,27 +157,30 @@ test_that("localOrRemoteFile : Missing file", {
 
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
-    csv <- readFileByExtension("mtcars.csv")
-    expect_is(csv, "tbl_df")
+    x <- readFileByExtension("example.csv")
+    expect_is(x, "tbl_df")
 })
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
-    mtx <- readFileByExtension("sparse.mtx")
-    expect_is(mtx, "ngTMatrix")
-    col <- readFileByExtension("test.colnames")
-    expect_identical(col, c("foo", "bar"))
-    # rownames use the same code base as colnames
+    x <- readFileByExtension("singleCellCounts.mtx.gz")
+    expect_is(x, "dgTMatrix")
+
+    x <- readFileByExtension("singleCellCounts.mtx.gz.rownames")
+    expect_is(x, "character")
+
+    x <- readFileByExtension("singleCellCounts.mtx.gz.colnames")
+    expect_is(x, "character")
 })
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
-    tsv <- readFileByExtension("mtcars.tsv")
+    tsv <- readFileByExtension("example.tsv")
     expect_is(tsv, "tbl_df")
 })
 
 test_that("readFileByExtension : Table format file (.txt)", {
-    txt <- readFileByExtension("mtcars.txt")
+    expect_warning(readFileByExtension("example.txt"))
+    txt <- suppressWarnings(readFileByExtension("example.txt"))
     expect_is(txt, "data.frame")
-    # txt has integer columns whereas mtcars doesn't
     expect_equal(txt, mtcars)
 })
 
@@ -187,7 +193,7 @@ test_that("readFileByExtension : Excel file (.xlsx)", {
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
-    x <- readFileByExtension("test.counts")
+    x <- readFileByExtension("example.counts")
     expect_is(x, "matrix")
     expect_identical(
         rownames(x)[1L:5L],
@@ -201,17 +207,23 @@ test_that("readFileByExtension : Counts file (.counts)", {
     )
 })
 
+test_that("readFileByExtension : R file", {
+    expect_message(
+        readFileByExtension("test_read_functions.R"),
+        "Importing as source code lines"
+    )
+    x <- readFileByExtension("test_read_functions.R")
+    expect_is(x, "character")
+})
+
 test_that("readFileByExtension : Unsupported file type", {
     # Missing extension
+    file.create("example")
     expect_error(
-        readFileByExtension("DESCRIPTION"),
+        readFileByExtension("example"),
         "is_matching_regex :"
     )
-    # R Data
-    expect_error(
-        readFileByExtension("gr.rda"),
-        "Unsupported file extension: gr.rda"
-    )
+    unlink("example")
 })
 
 
@@ -240,27 +252,6 @@ test_that("readGFF : Unsupported file type", {
 
 # readYAML =====================================================================
 test_that("readYAML : bcbio project summary", {
-    yaml <- readYAML("summary.yaml")
-    expect_identical(
-        class(yaml),
-        "list"
-    )
-    expect_identical(
-        names(yaml),
-        c("date", "upload", "bcbio_system", "samples")
-    )
-})
-
-test_that("readYAML : Unsupported file type", {
-    expect_error(
-        readYAML("mtcars.csv"),
-        "is_matching_regex : file"
-    )
-})
-
-test_that("readYAML : Missing file", {
-    expect_error(
-        readYAML("foobar.yaml"),
-        "is_existing_file :"
-    )
+    x <- readYAML("example.yaml")
+    expect_is(x, "list")
 })

@@ -23,10 +23,10 @@ Extract Dots from Function
 }
 \examples{
 # names
-dots(mtcars, starwars)
+dots(a, b, c)
 
 # character
-dots(mtcars, starwars, character = TRUE)
+dots(a, b, c, character = TRUE)
 }
 \seealso{
 \itemize{
@@ -40,7 +40,8 @@ dots(mtcars, starwars, character = TRUE)
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{localOrRemoteFile}},
   \code{\link{methodFormals}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh

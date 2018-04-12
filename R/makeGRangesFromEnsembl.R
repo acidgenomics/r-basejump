@@ -40,10 +40,10 @@
 #' @family Gene Annotation Functions
 #' @author Michael Steinbaugh
 #'
-#' @param organism Full latin organism name (e.g. "`Homo sapiens`").
+#' @inheritParams general
 #' @param format Fetch ranges as "`genes`" or "`transcripts`".
-#' @param genomeBuild *Optional.* Genome assembly name (e.g. "`GRCh38`"). If
-#'   `NULL`, defaults to the most recent build available.
+#' @param genomeBuild *Optional.* Genome build assembly name (e.g. "`GRCh38`").
+#'   If `NULL`, defaults to the most recent build available.
 #' @param release *Optional.* Release version (e.g. `90`). If `NULL`, defaults
 #'   to the most recent release available.
 #' @param metadata Include the AnnotationHub metadata inside a `list`.
@@ -57,7 +57,8 @@
 #'
 #' @examples
 #' # Genes ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+#' x <- makeGRangesFromEnsembl(
+#'     organism = "Homo sapiens", format = "genes")
 #' summary(x)
 #'
 #' # Transcripts ====
@@ -80,7 +81,7 @@ makeGRangesFromEnsembl <- function(
         is_a_string(genomeBuild) &&
         grepl("^[a-z]{2}\\d{2}$", genomeBuild)
     ) {
-        abort("Use Ensembl genome build name instead of UCSC name")
+        stop("Use Ensembl genome build name instead of UCSC name")
     }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
@@ -105,8 +106,13 @@ makeGRangesFromEnsembl <- function(
     ) {
         # GRCh37 release 75
         id <- "EnsDb.Hsapiens.v75"
-        .biocLite(id)
-        edb <- get(id, inherits = TRUE)
+        if (requireNamespace(id, quietly = TRUE)) {
+            edb <- get(id, envir = asNamespace(id), inherits = FALSE)
+        } else {
+            stop(paste(
+                "GRCh37 genome build requires the", id, "package"
+            ))
+        }
     } else {
         # AnnotationHub ========================================================
         # Connect to AnnotationHub. On a fresh install this will print a
@@ -117,7 +123,7 @@ makeGRangesFromEnsembl <- function(
             ah <- suppressMessages(AnnotationHub())
         ))
 
-        inform(paste(
+        message(paste(
             "Making GRanges from Ensembl with AnnotationHub",
             packageVersion("AnnotationHub"),
             paste0("(", snapshotDate(ah), ")")
@@ -128,7 +134,7 @@ makeGRangesFromEnsembl <- function(
 
         # For legacy release requests, switch to newest version available
         if (!is.null(release) && release < 87L) {
-            warn(paste(
+            warning(paste(
                 "ensembldb currently only supports Ensembl releases >= 87.",
                 "Switching to current release instead.",
                 sep = "\n"
@@ -158,7 +164,7 @@ makeGRangesFromEnsembl <- function(
             # Pick the latest release by AH identifier
             mcols <- tail(mcols, 1L)
         } else if (!nrow(mcols)) {
-            abort(paste(
+            stop(paste(
                 paste(
                     "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
@@ -192,7 +198,7 @@ makeGRangesFromEnsembl <- function(
     genomeBuild <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
     assert_is_a_string(genomeBuild)
 
-    inform(paste(
+    message(paste(
         paste("id:", deparse(id)),
         paste("organism:", deparse(organism(edb))),
         paste("build:", deparse(genomeBuild)),

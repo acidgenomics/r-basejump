@@ -1,34 +1,46 @@
 context("Save Utilities")
 
+
+
 # assignAndSaveData ============================================================
 test_that("assignAndSaveData", {
     expect_identical(
-        assignAndSaveData("test", mtcars) %>%
-            basename(),
-        "test.rda"
+        assignAndSaveData(name = "example", object = rnaseqCounts),
+        c("example" = file.path(getwd(), "example.rda"))
     )
     expect_message(
-        assignAndSaveData("test", mtcars),
-        paste("Saving test to", getwd())
+        assignAndSaveData("example", rnaseqCounts),
+        paste("Saving example to", getwd())
     )
-    unlink("test.rda")
+    unlink("example.rda")
 })
 
 
 
 # saveData =====================================================================
 test_that("saveData", {
-    paths <- file.path(getwd(), "savetest", c("mtcars.rda", "starwars.rda"))
-    names(paths) <- c("mtcars", "starwars")
+    dir <- "example"
+    paths <- file.path(
+        getwd(),
+        "example",
+        c("rnaseqCounts.rda", "singleCellCounts.rda")
+    )
+    names(paths) <- c("rnaseqCounts", "singleCellCounts")
     expect_identical(
-        saveData(mtcars, starwars, dir = "savetest", overwrite = TRUE),
+        saveData(
+            rnaseqCounts, singleCellCounts,
+            dir = dir, overwrite = TRUE
+        ),
         paths
     )
     expect_warning(
-        saveData(mtcars, starwars, dir = "savetest", overwrite = FALSE),
-        "Skipping"
+        saveData(
+            rnaseqCounts, singleCellCounts,
+            dir = dir, overwrite = FALSE
+        ),
+        "No files were saved."
     )
-    unlink("savetest", recursive = TRUE)
+    unlink(dir, recursive = TRUE)
     expect_error(
         saveData(XXX),
         "object 'XXX' not found"
@@ -38,7 +50,7 @@ test_that("saveData", {
         "is_name : X"
     )
     expect_error(
-        saveData(mtcars, dir = NULL),
+        saveData(rnaseqCounts, dir = NULL),
         "is_a_string : dir"
     )
 })
@@ -47,27 +59,27 @@ test_that("saveData", {
 
 # transmit =====================================================================
 test_that("transmit : Standard", {
-    readme <- transmit(
+    x <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
         compress = FALSE
     )
-    expected <- file.path(getwd(), "README")
-    names(expected) <- "README"
-    expect_identical(readme, expected)
+    y <- file.path(getwd(), "README")
+    names(y) <- "README"
+    expect_identical(x, y)
     unlink("README")
 })
 
 test_that("transmit : Rename and compress", {
-    readme <- transmit(
+    x <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
         rename = "ensembl_readme.txt",
         compress = TRUE
     )
-    expected <- file.path(getwd(), "ensembl_readme.txt.gz")
-    names(expected) <- "README"
-    expect_identical(readme, expected)
+    y <- file.path(getwd(), "ensembl_readme.txt.gz")
+    names(y) <- "README"
+    expect_identical(x, y)
     unlink("ensembl_readme.txt.gz")
 })
 
@@ -94,30 +106,29 @@ test_that("transmit : Invalid parameters", {
 
 # writeCounts ==================================================================
 test_that("writeCounts", {
-    df <- as.data.frame(mtcars)
-    dgc <- as(mat, "dgCMatrix")
+    dir <- "example"
     expect_message(
-        writeCounts(df, dgc, mat, dir = "testcounts"),
-        "Writing df, dgc, mat"
+        writeCounts(mat, dgc, dir = dir),
+        "Writing mat, dgc"
     )
     expect_identical(
-        dir("testcounts"),
+        list.files(dir),
         c(
-            "df.csv.gz",
-            "dgc.mtx.colnames",
             "dgc.mtx.gz",
-            "dgc.mtx.rownames",
+            "dgc.mtx.gz.colnames",
+            "dgc.mtx.gz.rownames",
             "mat.csv.gz"
         )
+    )
+    # Don't allow data.frame
+    expect_error(
+        writeCounts(mtcars),
+        "mtcars is not a matrix"
     )
     # Check that `eval_bare()` call errors on missing object
     expect_error(
         writeCounts(XXX),
         "object 'XXX' not found"
     )
-    expect_error(
-        writeCounts(seq(1L:10L)),
-        "has_dims :"
-    )
-    unlink("testcounts", recursive = TRUE)
+    unlink(dir, recursive = TRUE)
 })

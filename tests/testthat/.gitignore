@@ -2,8 +2,10 @@
 *.counts
 *.csv
 *.gtf
+*.gz
 *.mtx
 *.rda
+*.rownames
 *.tsv
 *.txt
 *.xlsx

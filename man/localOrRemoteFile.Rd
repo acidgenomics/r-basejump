@@ -18,18 +18,19 @@ This function is vectorized and supports mixed local and remote paths.
 }
 \examples{
 # Single file
-x <- localOrRemoteFile("http://basejump.seq.cloud/mtcars.csv")
-names(x)
+x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
+basename(x)
 
 # Vectorized
 x <- localOrRemoteFile(c(
-    "http://basejump.seq.cloud/mtcars.csv",
-    "http://basejump.seq.cloud/mtcars.rda"
+    "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
+    "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
 ))
-names(x)
+basename(x)
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{methodFormals}},
-  \code{\link{multiassignAsNewEnvir}}
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }

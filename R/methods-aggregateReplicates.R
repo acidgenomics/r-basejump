@@ -42,10 +42,10 @@ setMethod(
     function(object, groupings) {
         assert_is_factor(groupings)
         assert_are_identical(colnames(object), names(groupings))
-        t <- Matrix::t(object)
+        t <- t(object)
         rownames(t) <- groupings
         tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
-        agg <- Matrix::t(tagg)
+        agg <- t(tagg)
         agg
     })
 

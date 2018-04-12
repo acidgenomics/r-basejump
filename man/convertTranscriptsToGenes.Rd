@@ -6,11 +6,11 @@
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
+\alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,data.frame-method}
 \alias{convertTranscriptsToGenes,DataFrame-method}
 \alias{convertTranscriptsToGenes,dgCMatrix-method}
 \alias{convertTranscriptsToGenes,dgTMatrix-method}
-\alias{convertTranscriptsToGenes,matrix-method}
 \title{Convert Ensembl Transcripts to Genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
@@ -18,20 +18,15 @@ convertTranscriptsToGenes(object, ...)
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
   organism = NULL, genomeBuild = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{matrix}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{data.frame}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{DataFrame}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, ...)
 
-\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -48,8 +43,8 @@ FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
 first gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Genome assembly name (e.g. "\code{GRCh38}"). If
-\code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
+If \code{NULL}, defaults to the most recent build available.}
 
 \item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
 to the most recent release available.}
@@ -90,14 +85,15 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}},
+  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}},
-  \code{\link{parseGFFAttributes}},
+  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}}, \code{\link{parseGFFAttributes}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
