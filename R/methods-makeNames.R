@@ -63,19 +63,19 @@
 #'
 #' # data.frame ====
 #' x <- datasets::USArrests
-#' glimpse(x)
-#' camel(x, rownames = TRUE, colnames = TRUE)
-#' dotted(x, rownames = TRUE, colnames = TRUE)
-#' snake(x, rownames = TRUE, colnames = TRUE)
-#' upperCamel(x, rownames = TRUE, colnames = TRUE)
+#' dimnames(x)
+#' camel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+#' dotted(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+#' snake(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+#' upperCamel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
 #'
 #' # list ====
 #' x <- mn$list
 #' print(x)
-#' camel(x)
-#' dotted(x)
-#' snake(x)
-#' upperCamel(x)
+#' camel(x) %>% names()
+#' dotted(x) %>% names()
+#' snake(x) %>% names()
+#' upperCamel(x) %>% names()
 NULL
 
 

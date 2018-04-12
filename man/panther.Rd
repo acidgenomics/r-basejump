@@ -22,7 +22,9 @@ of release versions available from the FTP server (e.g. \code{"13.0"}).}
 PANTHER Gene Ontology Annotations
 }
 \examples{
-x <- panther("Homo sapiens")
+invisible(capture.output(
+    x <- panther("Homo sapiens")
+))
 glimpse(x)
 }
 \seealso{
