@@ -223,7 +223,7 @@ test_that("sanitizeRowData", {
 
 # sanitizeSampleData ===========================================================
 test_that("sanitizeSampleData", {
-    x <- DataFrame(
+    sampleData <- DataFrame(
         "genotype" = factor(c("wt", "ko", "wt", "ko")),
         "batch" = factor(c(1L, 1L, 2L, 2L)),
         # not a factor yet
@@ -232,7 +232,7 @@ test_that("sanitizeSampleData", {
     )
     x <- sanitizeSampleData(x)
     expect_is(x, "DataFrame")
-    expect_identical(rownames(x), rownames(cd))
+    expect_identical(rownames(x), rownames(sampleData))
     expect_true(all(vapply(
         X = x,
         FUN = is.factor,
