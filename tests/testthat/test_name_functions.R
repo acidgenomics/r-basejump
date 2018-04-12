@@ -1,19 +1,35 @@
 context("Name Functions")
 
-mat <- mat
-colnames(mat) <- c("sample_1_1", "sample_1_2", "sample_2_1", "sample_2_2")
-rownames(mat) <- c("gene_1", "gene_2", "gene_3", "gene_4")
+funs <- list(
+    "camel" = camel,
+    "dotted" = dotted,
+    "snake" = snake,
+    "upperCamel" = upperCamel
+)
 
-# camel ========================================================================
-test_that("camel : ANY", {
-    # Integer (atomic)
-    expect_identical(camel(1L), 1L)
-    expect_identical(
-        camel(c("hello.world" = 1L)),
-        c("helloWorld" = 1L)
+
+
+# ANY ==========================================================================
+test_that("ANY", {
+    # Atomic
+    x <- 1L
+    lapply(funs, function(fun) {
+        expect_identical(fun(x), x)
+    })
+
+    # Named atomic
+    x <- c("hello.world" = 1L)
+    expect <- c(
+        "helloWorld",
+        "hello.world",
+        "hello_world",
+        "HelloWorld"
     )
+    lapply(seq_along(funs), function(i) {
+        expect_identical(names(funs[[i]](x)), expect[[i]])
+    })
 
-    # Matrix (dimnames)
+    # Sparse matrix (dimnames)
     x <- Matrix(
         data = 1L:4L,
         nrow = 2L,
@@ -23,15 +39,35 @@ test_that("camel : ANY", {
             c("sample.id.1", "sample.id.2")
         )
     )
-    expect_identical(
-        dimnames(camel(x, rownames = TRUE, colnames = TRUE)),
-        list(
+    expect <- list(
+        "camel" = list(
             c("geneID1", "geneID2"),
             c("sampleID1", "sampleID2")
+        ),
+        "dotted" = list(
+            c("gene.ID.1", "gene.ID.2"),
+            c("sample.ID.1", "sample.ID.2")
+        ),
+        "snake" = list(
+            c("gene_id_1", "gene_id_2"),
+            c("sample_id_1", "sample_id_2")
+        ),
+        "upperCamel" = list(
+            c("GeneID1", "GeneID2"),
+            c("SampleID1", "SampleID2")
         )
     )
+    lapply(seq_along(funs), function(i) {
+        expect_identical(
+            dimnames(funs[[i]](x, rownames = TRUE, colnames = TRUE)),
+            expect[[i]]
+        )
+    })
 })
 
+
+
+# character ====================================================================
 test_that("camel : character", {
     expect_identical(
         camel(mn[["character"]], strict = FALSE),
@@ -89,12 +125,8 @@ test_that("camel : character", {
 
 test_that("camel : data.frame", {
     # Sanitize rownames
-    expect_identical(
-        camel(mn[["dataFrame"]], rownames = TRUE, strict = TRUE) %>%
-            rownames() %>%
-            .[[1L]],
-        "mazdaRx4"
-    )
+    x <- camel(mn[["dataFrame"]], rownames = TRUE, strict = TRUE)
+    expect_identical(rownames(x)[[1L]], "alabama")
     # Unset rownames should be skipped, even when `rownames = TRUE`
     expect_identical(
         mn[["dataFrame"]] %>%
@@ -125,7 +157,7 @@ test_that("camel : list", {
 })
 
 test_that("camel : matrix", {
-    x <- camel(mat)
+    x <- camel(mn[["matrix"]])
     expect_identical(
         rownames(x)[[1L]],
         "gene_1"
@@ -153,46 +185,9 @@ test_that("camel : matrix", {
     )
 })
 
-test_that("camel : tibble", {
-    expect_identical(
-        mn[["tibble"]] %>%
-            .[, 1L:5L] %>%
-            camel(strict = TRUE) %>%
-            colnames(),
-        c("name", "height", "mass", "hairColor", "skinColor")
-    )
-})
-
 
 
 # dotted =======================================================================
-test_that("dotted : ANY", {
-    # Integer (atomic)
-    expect_identical(dotted(1L), 1L)
-    expect_identical(
-        dotted(c("helloWorld" = 1L)),
-        c("hello.World" = 1L)
-    )
-
-    # Matrix (dimnames)
-    x <- Matrix(
-        data = 1L:4L,
-        nrow = 2L,
-        ncol = 2L,
-        dimnames = list(
-            c("gene_id_1", "gene_id_2"),
-            c("sample_id_1", "sample_id_2")
-        )
-    )
-    expect_identical(
-        dimnames(dotted(x, rownames = TRUE, colnames = TRUE)),
-        list(
-            c("gene.ID.1", "gene.ID.2"),
-            c("sample.ID.1", "sample.ID.2")
-        )
-    )
-})
-
 test_that("dotted : character", {
     expect_identical(
         dotted(mn[["character"]]),
@@ -251,7 +246,7 @@ test_that("dotted : list", {
 })
 
 test_that("dotted : matrix", {
-    x <- dotted(mat)
+    x <- dotted(mn[["matrix"]])
     expect_identical(
         rownames(x)[[1L]],
         "gene_1"
@@ -279,52 +274,9 @@ test_that("dotted : matrix", {
     )
 })
 
-test_that("dotted : tibble", {
-    expect_identical(
-        mn[["tibble"]] %>%
-            .[, 1L:5L] %>%
-            dotted() %>%
-            colnames(),
-        c(
-            "name",
-            "height",
-            "mass",
-            "hair.color",
-            "skin.color"
-        )
-    )
-})
-
 
 
 # snake ========================================================================
-test_that("snake : ANY", {
-    # Integer (atomic)
-    expect_identical(snake(1L), 1L)
-    expect_identical(
-        snake(c("hello.world" = 1L)),
-        c("hello_world" = 1L)
-    )
-
-    # Matrix (dimnames)
-    x <- Matrix(
-        data = 1L:4L,
-        nrow = 2L,
-        ncol = 2L,
-        dimnames = list(
-            c("gene.id.1", "gene.id.2"),
-            c("sample.id.1", "sample.id.2")
-        )
-    )
-    expect_identical(
-        dimnames(snake(x, rownames = TRUE, colnames = TRUE)),
-        list(
-            c("gene_id_1", "gene_id_2"),
-            c("sample_id_1", "sample_id_2")
-        )
-    )
-})
-
 test_that("snake : character", {
     x <- snake(mn[["character"]])
     expect_identical(
@@ -388,14 +340,14 @@ test_that("snake : list", {
 
 test_that("snake : matrix", {
     # Already formatted in snake case
-    x <- snake(mat)
+    x <- snake(mn[["matrix"]])
     expect_identical(
         rownames(x)[[1L]],
-        rownames(mat)[[1L]]
+        rownames(mn[["matrix"]])[[1L]]
     )
     expect_identical(
         colnames(x),
-        colnames(mat)
+        colnames(mn[["matrix"]])
     )
 
     # Sanitize rownames
@@ -416,53 +368,9 @@ test_that("snake : matrix", {
     )
 })
 
-test_that("snake : tibble", {
-    x <- mn[["tibble"]] %>%
-        .[, 1L:5L] %>%
-        snake() %>%
-        colnames()
-    expect_identical(
-        x,
-        c(
-            "name",
-            "height",
-            "mass",
-            "hair_color",
-            "skin_color"
-        )
-    )
-})
-
 
 
 # upperCamel ===================================================================
-test_that("upperCamel : ANY", {
-    # Integer (atomic)
-    expect_identical(upperCamel(1L), 1L)
-    expect_identical(
-        upperCamel(c("hello.world" = 1L)),
-        c("HelloWorld" = 1L)
-    )
-
-    # Matrix (dimnames)
-    x <- Matrix(
-        data = 1L:4L,
-        nrow = 2L,
-        ncol = 2L,
-        dimnames = list(
-            c("gene.id.1", "gene.id.2"),
-            c("sample.id.1", "sample.id.2")
-        )
-    )
-    expect_identical(
-        dimnames(upperCamel(x, rownames = TRUE, colnames = TRUE)),
-        list(
-            c("GeneID1", "GeneID2"),
-            c("SampleID1", "SampleID2")
-        )
-    )
-})
-
 test_that("upperCamel : character", {
     expect_identical(
         upperCamel(mn[["character"]], strict = FALSE),
@@ -561,7 +469,7 @@ test_that("upperCamel : list", {
 })
 
 test_that("upperCamel : matrix", {
-    x <- upperCamel(mat)
+    x <- upperCamel(mn[["matrix"]])
     expect_identical(
         rownames(x)[[1L]],
         "gene_1"
@@ -589,15 +497,5 @@ test_that("upperCamel : matrix", {
             upperCamel(rownames = TRUE, strict = TRUE) %>%
             rownames(),
         NULL
-    )
-})
-
-test_that("upperCamel : tibble", {
-    expect_identical(
-        mn[["tibble"]] %>%
-            .[, 1L:5L] %>%
-            upperCamel(strict = TRUE) %>%
-            colnames(),
-        c("Name", "Height", "Mass", "HairColor", "SkinColor")
     )
 })
