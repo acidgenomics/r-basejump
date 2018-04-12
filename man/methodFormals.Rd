@@ -19,7 +19,9 @@ methodFormals(f, signature)
 Access to the Formal Arguments of an S4 Method
 }
 \examples{
-methodFormals("geometricMean", "numeric")
+x <- methodFormals("geometricMean", "numeric")
+class(x)
+names(x)
 }
 \seealso{
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
