@@ -61,7 +61,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
     <div class="page-header">
     <h1>Transcript-to-Gene Mappings from GFF File</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeTx2geneFromGFF.R'><code>R/makeTx2geneFromGFF.R</code></a></small>
-    <p class="hidden name"><code>makeTx2geneFromGFF.Rd</code></p>
+    <div class="hidden name"><code>makeTx2geneFromGFF.Rd</code></div>
     </div>
 
     
@@ -130,19 +130,21 @@ GTF (General Transfer Format) is identical to GFF version 2.</p>
   <code>convertGenesToSymbols</code>,
   <code>convertTranscriptsToGenes</code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>,
+  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
+  <code><a href='mgi2gene.html'>mgi2gene</a></code>, <code><a href='panther.html'>panther</a></code>,
   <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
+    <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='output co'>#&gt; Observations: 20
 #&gt; Variables: 2
 #&gt; $ txID   &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST00000157...
 #&gt; $ geneID &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG00000088...</div></pre>

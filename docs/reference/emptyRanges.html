@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse GFF Attributes Column — parseGFFAttributes • basejump</title>
+<title>Generate Empty Genomic Ranges — emptyRanges • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,9 +27,10 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Parse GFF Attributes Column — parseGFFAttributes" />
+<meta property="og:title" content="Generate Empty Genomic Ranges — emptyRanges" />
 
-<meta property="og:description" content="Parse GFF Attributes Column" />
+<meta property="og:description" content="Utility function that provides support for creating internal GRanges for
+transgene and FASTA spike-in sequences." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -95,78 +96,92 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse GFF Attributes Column</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/parseGFFAttributes.R'><code>R/parseGFFAttributes.R</code></a></small>
-    <div class="hidden name"><code>parseGFFAttributes.Rd</code></div>
+    <h1>Generate Empty Genomic Ranges</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/emptyRanges.R'><code>R/emptyRanges.R</code></a></small>
+    <div class="hidden name"><code>emptyRanges.Rd</code></div>
     </div>
 
     
-    <p>Parse GFF Attributes Column</p>
+    <p>Utility function that provides support for creating internal <code>GRanges</code> for
+transgene and FASTA spike-in sequences.</p>
     
 
-    <pre class="usage"><span class='fu'>parseGFFAttributes</span>(<span class='no'>file</span>, <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gene_"</span>, <span class='st'>"transcript_"</span>), <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>emptyRanges</span>(<span class='no'>names</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"unknown"</span>, <span class='st'>"transgene"</span>, <span class='st'>"spike"</span>),
+  <span class='kw'>mcolsNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>File path.</p></td>
+      <th>names</th>
+      <td><p><code>character</code> vector of gene or transcript names.</p></td>
     </tr>
     <tr>
-      <th>select</th>
-      <td><p>Attribute to select. Supports partial matching. Defaults to
-returning attributes matching both "<code>gene_</code>" and "<code>transcript_</code>".</p></td>
+      <th>seqname</th>
+      <td><p><code>character</code> string that defines the alternative chromosome in
+<code><a href='http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo'>GenomeInfoDb::seqnames()</a></code> where these ranges will be grouped. Defaults to
+"<code>unknown</code>" but "<code>transgene</code>" (transgenes) and "<code>spike</code>" (spike-ins) are
+also supported.</p></td>
     </tr>
     <tr>
-      <th>unique</th>
-      <td><p>Return unique attributes.</p></td>
+      <th>mcolsNames</th>
+      <td><p><em>Optional.</em> <code>character</code> vector of metadata column names to
+be defined in the <code><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>S4Vectors::mcols()</a></code> of the <code>GRanges</code> return. Normally
+this does not need to be defined; useful when combining with another
+<code>GRanges</code> that contains metadata.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>tbl_df</code>.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Memory overhead and speed is greatly improved by requiring keys.
-Deparsing only unique values is much faster and generally recommended.</p>
+    <p><code>GRanges</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><ul>
+<li><p><code>help("seqinfo", "GenomeInfoDb")</code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/DESeq2/topics/makeExampleDESeqDataSet'>DESeq2::makeExampleDESeqDataSet()</a></code>.</p></li>
+</ul></div>
     <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
   <code>broadClass</code>,
   <code>convertGenesToSymbols</code>,
   <code>convertTranscriptsToGenes</code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
+  <code>detectOrganism</code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>parseGFFAttributes</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 11
-#&gt; $ gene_biotype             &lt;chr&gt; "TEC", "snRNA", "protein_coding", "protein...
-#&gt; $ gene_id                  &lt;chr&gt; "ENSMUSG00000102693", "ENSMUSG00000064842"...
-#&gt; $ gene_name                &lt;chr&gt; "4933401J01Rik", "Gm26206", "Xkr4", "Xkr4"...
-#&gt; $ gene_source              &lt;chr&gt; "havana", "ensembl", "ensembl_havana", "en...
-#&gt; $ gene_version             &lt;chr&gt; "1", "1", "5", "5", "5", "1", "1", "1", "1...
-#&gt; $ transcript_biotype       &lt;chr&gt; "TEC", "snRNA", "processed_transcript", "p...
-#&gt; $ transcript_id            &lt;chr&gt; "ENSMUST00000193812", "ENSMUST00000082908"...
-#&gt; $ transcript_name          &lt;chr&gt; "4933401J01Rik-201", "Gm26206-201", "Xkr4-...
-#&gt; $ transcript_source        &lt;chr&gt; "havana", "ensembl", "havana", "havana", "...
-#&gt; $ transcript_support_level &lt;chr&gt; "NA", "NA", "1", "1", "1", "NA", "NA", "NA...
-#&gt; $ transcript_version       &lt;chr&gt; "1", "1", "1", "1", "4", "1", "1", "1", "1...</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Unknown/dead genes</span>
+<span class='fu'>emptyRanges</span>(<span class='st'>"ENSG00000000000"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
+#&gt;                   seqnames    ranges strand
+#&gt;                      &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
+#&gt;   ENSG00000000000  unknown  [1, 100]      *
+#&gt;   -------
+#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
+<span class='co'># Transgenes</span>
+<span class='fu'>emptyRanges</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"GAL4"</span>), <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"transgene"</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
+#&gt;             seqnames     ranges strand
+#&gt;                &lt;Rle&gt;  &lt;IRanges&gt;  &lt;Rle&gt;
+#&gt;       EGFP transgene [  1, 100]      *
+#&gt;   TDTOMATO transgene [101, 200]      *
+#&gt;       GAL4 transgene [201, 300]      *
+#&gt;   -------
+#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
+<span class='co'># Spike-ins</span>
+<span class='fu'>emptyRanges</span>(<span class='st'>"ERCC"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"spike"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
+#&gt;        seqnames    ranges strand
+#&gt;           &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
+#&gt;   ERCC    spike  [1, 100]      *
+#&gt;   -------
+#&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -174,8 +189,6 @@ Deparsing only unique values is much faster and generally recommended.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
