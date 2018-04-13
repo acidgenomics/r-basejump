@@ -17,19 +17,6 @@ test_that("assertAllAreNonExisting", {
 
 
 
-test_that("assertFormalAnnotationCol", {
-    x <- df
-    y <- as.data.frame(coldata)
-    expect_silent(assertFormalAnnotationCol(x, y))
-    expect_silent(assertFormalAnnotationCol(x, NA))
-    expect_silent(assertFormalAnnotationCol(x, NULL))
-    # Support DataFrame
-    expect_silent(assertFormalAnnotationCol(x, coldata))
-    expect_error(assertFormalAnnotationCol(mtcars, y))
-})
-
-
-
 test_that("assertFormalCompress", {
     expect_error(
         assertFormalCompress("XXX"),
