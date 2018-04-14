@@ -24,7 +24,6 @@ environment:
 
 build_script:
   - Rscript -e "source('http://bioconductor.org/biocLite.R')"
-  - Rscript -e "biocLite('BiocUpgrade', ask = FALSE)"
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 
