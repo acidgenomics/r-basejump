@@ -10,8 +10,8 @@ init:
 install:
   ps: Bootstrap
 
-cache:
-  - C:\RLibrary
+# cache:
+#   - C:\RLibrary
 
 # Adapt as necessary starting from here
 
@@ -19,10 +19,12 @@ environment:
   global:
     BIOC_USE_DEVEL: TRUE
     R_ARCH: x64
+    USE_RTOOLS: TRUE
     WARNINGS_ARE_ERRORS: 1
 
 build_script:
   - Rscript -e "source('http://bioconductor.org/biocLite.R')"
+  - Rscript -e "biocLite('BiocUpgrade', ask = FALSE)"
   - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
 
