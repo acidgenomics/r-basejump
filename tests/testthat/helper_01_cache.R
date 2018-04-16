@@ -4,6 +4,7 @@ files <- c(
     "example.counts",
     "example.csv",
     "example.rda",
+    "example.rds",
     "example.tsv",
     "example.txt",
     "example.yaml",
