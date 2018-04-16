@@ -61,7 +61,7 @@ modification of the values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -335,10 +335,14 @@ the convention used by <code>make.names()</code>.</p>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>mn</span>$<span class='no'>factor</span>
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample 1 sample 2 sample 3 sample 4 
 #&gt;  group 1  group 1  group 2  group 2 
-#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group1 group1 group2 group2
-#&gt; Levels: group1 group2</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group.1 group.1 group.2 group.2
-#&gt; Levels: group.1 group.2</div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] group_1 group_1 group_2 group_2
-#&gt; Levels: group_1 group_2</div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] Group1 Group1 Group2 Group2
+#&gt; Levels: group 1 group 2</div><div class='input'><span class='fu'>camel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample1 sample2 sample3 sample4 
+#&gt;  group1  group1  group2  group2 
+#&gt; Levels: group1 group2</div><div class='input'><span class='fu'>dotted</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample.1 sample.2 sample.3 sample.4 
+#&gt;  group.1  group.1  group.2  group.2 
+#&gt; Levels: group.1 group.2</div><div class='input'><span class='fu'>snake</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample_1 sample_2 sample_3 sample_4 
+#&gt;  group_1  group_1  group_2  group_2 
+#&gt; Levels: group_1 group_2</div><div class='input'><span class='fu'>upperCamel</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Sample1 Sample2 Sample3 Sample4 
+#&gt;  Group1  Group1  Group2  Group2 
 #&gt; Levels: Group1 Group2</div><div class='input'><span class='fu'>makeNames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "group_1" "group_1" "group_2" "group_2"</div><div class='input'>
 <span class='co'># data.frame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/USArrests'>USArrests</a></span>
