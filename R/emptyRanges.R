@@ -38,7 +38,7 @@ emptyRanges <- function(
     mcolsNames = NULL
 ) {
     assert_is_character(names)
-    assert_is_a_string(seqname)
+    seqname <- match.arg(seqname)
     assert_is_any_of(mcolsNames, c("character", "NULL"))
 
     gr <- GRanges(

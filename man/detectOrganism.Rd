@@ -61,23 +61,17 @@ Currently supported organisms:
 }
 }
 \examples{
-loadRemoteData("http://basejump.seq.cloud/counts.rda")
-
-# String
+# By gene identifier
 detectOrganism("ENSG00000000003")
-detectOrganism("GRCh38")
-detectOrganism("hg38")
-detectOrganism("H. sapiens")
-
-# Character vector with spike-ins
 detectOrganism(c("ENSG00000000003", "EGFP", "TDTOMATO"))
 
-# Matrix
-detectOrganism(counts)
+# By genome build
+detectOrganism("GRCh38")  # Ensembl
+detectOrganism("hg38")    # UCSC
 
-# Tibble
-tibble <- as(counts, "tibble")
-detectOrganism(tibble)
+# By alternate organism name
+detectOrganism("H. sapiens")
+detectOrganism("hsapiens")
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},

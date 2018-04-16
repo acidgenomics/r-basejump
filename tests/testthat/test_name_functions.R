@@ -189,6 +189,29 @@ test_that("makeNames : character : camel-specific", {
 
 
 
+# factor =======================================================================
+test_that("makeNames : factor", {
+    x <- mn[["factor"]]
+    levels <- list(
+        "camel" = c("group1", "group2"),
+        "dotted" = c("group.1", "group.2"),
+        "snake" = c("group_1", "group_2"),
+        "upperCamel" = c("Group1", "Group2")
+    )
+    names <- list(
+        "camel" = c("sample1", "sample2", "sample3", "sample4"),
+        "dotted" = c("sample.1", "sample.2", "sample.3", "sample.4"),
+        "snake" = c("sample_1", "sample_2", "sample_3", "sample_4"),
+        "upperCamel" = c("Sample1", "Sample2", "Sample3", "Sample4")
+    )
+    lapply(seq_along(funs), function(i) {
+        expect_identical(levels(funs[[i]](x)), levels[[i]])
+        expect_identical(names(funs[[i]](x)), names[[i]])
+    })
+})
+
+
+
 # matrix / data.frame ==========================================================
 test_that("makeNames : matrix", {
     x <- mn[["matrix"]][1L:3L, 1L:3L]

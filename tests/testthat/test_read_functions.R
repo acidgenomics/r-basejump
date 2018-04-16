@@ -35,6 +35,13 @@ test_that("loadData : Renamed file", {
     )
 })
 
+test_that("loadData : RDA and RDS files in directory", {
+    expect_error(
+        loadData(example),
+        "Duplicates : example.rda, example.rds"
+    )
+})
+
 test_that("loadData : Invalid arguments", {
     expect_error(
         loadData(gr, dir = "XXX"),
@@ -99,15 +106,15 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    x <- loadRemoteData(paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
+    x <- loadRemoteData(paste(cacheURL, "example.rds", sep = "/"))
     # Character matrix of loaded files
     expect_is(x, "character")
     expect_identical(
         x,
-        c("rnaseqCounts" = paste(cacheURL, "rnaseqCounts.rda", sep = "/"))
+        c("example" = paste(cacheURL, "example.rds", sep = "/"))
     )
     # Check that the object loaded correctly
-    expect_is(rnaseqCounts, "matrix")
+    expect_is(example, "data.frame")
 })
 
 test_that("loadRemoteData : Already loaded", {

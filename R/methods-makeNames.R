@@ -394,10 +394,13 @@ setMethod(
     "camel",
     signature("factor"),
     function(object, strict = FALSE) {
-        object %>%
+        names <- names(object)
+        object <- object %>%
             as.character() %>%
             camel(strict = strict) %>%
             as.factor()
+        names(object) <- camel(names, strict = strict)
+        object
     }
 )
 
@@ -409,10 +412,13 @@ setMethod(
     "dotted",
     signature("factor"),
     function(object) {
-        object %>%
+        names <- names(object)
+        object <- object %>%
             as.character() %>%
             dotted() %>%
             as.factor()
+        names(object) <- dotted(names)
+        object
     }
 )
 
@@ -424,10 +430,13 @@ setMethod(
     "snake",
     signature("factor"),
     function(object) {
-        object %>%
+        names <- names(object)
+        object <- object %>%
             as.character() %>%
             snake() %>%
             as.factor()
+        names(object) <- snake(names)
+        object
     }
 )
 
@@ -439,10 +448,13 @@ setMethod(
     "upperCamel",
     signature("factor"),
     function(object, strict = FALSE) {
-        object %>%
+        names <- names(object)
+        object <- object %>%
             as.character() %>%
             upperCamel(strict = strict) %>%
             as.factor()
+        names(object) <- upperCamel(names, strict = strict)
+        object
     }
 )
 
