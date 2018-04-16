@@ -35,6 +35,13 @@ test_that("loadData : Renamed file", {
     )
 })
 
+test_that("loadData : RDA and RDS files in directory", {
+    expect_error(
+        loadData(example),
+        "Duplicates : example.rda, example.rds"
+    )
+})
+
 test_that("loadData : Invalid arguments", {
     expect_error(
         loadData(gr, dir = "XXX"),

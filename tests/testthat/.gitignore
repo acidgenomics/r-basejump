@@ -5,6 +5,7 @@
 *.gz
 *.mtx
 *.rda
+*.rds
 *.rownames
 *.tsv
 *.txt
