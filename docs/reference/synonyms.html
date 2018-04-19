@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gene Symbol Synonyms — synonyms • basejump</title>
+<title>Gene Name Synonyms — synonyms • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,9 +27,9 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Gene Symbol Synonyms — synonyms" />
+<meta property="og:title" content="Gene Name Synonyms — synonyms" />
 
-<meta property="og:description" content="Gene Symbol Synonyms" />
+<meta property="og:description" content="A list of tibbles per organism containing gene name (a.k.a. symbol) synonyms." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -95,28 +95,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gene Symbol Synonyms</h1>
+    <h1>Gene Name Synonyms</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
-    <p class="hidden name"><code>synonyms.Rd</code></p>
+    <div class="hidden name"><code>synonyms.Rd</code></div>
     </div>
 
     
-    <p>Gene Symbol Synonyms</p>
+    <p>A list of tibbles per organism containing gene name (a.k.a. symbol) synonyms.</p>
     
 
     <pre class="usage"><span class='no'>synonyms</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>list</code> of length 5.</p>
+    <p>An object of class <code>list</code> of length 4.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>names</span>(<span class='no'>synonyms</span>)</div><div class='output co'>#&gt; [1] "drosophilaMelanogaster" "homoSapiens"            "musMusculus"           
-#&gt; [4] "date"                   "sessionInfo"           </div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>synonyms</span><span class='kw'>[[</span><span class='st'>"homoSapiens"</span>]])</div><div class='output co'>#&gt; Observations: 19,176
+    <pre class="examples"><div class='input'><span class='fu'>names</span>(<span class='no'>synonyms</span>)</div><div class='output co'>#&gt; [1] "homoSapiens"            "musMusculus"            "drosophilaMelanogaster"
+#&gt; [4] "date"                  </div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>synonyms</span><span class='kw'>[[</span><span class='st'>"homoSapiens"</span>]])</div><div class='output co'>#&gt; Observations: 19,309
 #&gt; Variables: 3
-#&gt; $ ensgene  &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
-#&gt; $ symbol   &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "FGR", "CFH", "FUCA2", ...
+#&gt; $ geneID   &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
+#&gt; $ geneName &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "FGR", "CFH", "FUCA2", ...
 #&gt; $ synonyms &lt;chr&gt; "T245, TM4SF6, TSPAN-6", "BRICD4, CHM1L, TEM", "CDGIE, MPD...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

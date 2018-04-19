@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Read YAML File</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readYAML.R'><code>R/readYAML.R</code></a></small>
-    <p class="hidden name"><code>readYAML.Rd</code></p>
+    <div class="hidden name"><code>readYAML.Rd</code></div>
     </div>
 
     
@@ -123,11 +123,12 @@
 
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code></p></div>
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
+  <code><a href='readJSON.html'>readJSON</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>yaml</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='st'>"http://basejump.seq.cloud/summary.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading summary.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>yaml</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readYAML</span>(<span class='st'>"http://basejump.seq.cloud/example.yaml"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.yaml</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -17,12 +17,10 @@
 #'
 #' @examples
 #' loadDataAsName(
-#'     example1 = anorexia,
-#'     example2 = birthwt,
-#'     dir = system.file("tests", package = "stats")
+#'     renamed = example,
+#'     dir = system.file("extdata", package = "basejump")
 #' )
-#' class(example1)
-#' class(example2)
+#' class(renamed)
 loadDataAsName <- function(
     ...,
     dir = ".",

@@ -285,6 +285,37 @@ test_that("detectOrganism : tbl_df", {
 
 
 
+# emptyRanges ==================================================================
+test_that("emptyRanges", {
+    x <- emptyRanges("XXX")
+    expect_identical(
+        levels(GenomeInfoDb::seqnames(x)),
+        "unknown"
+    )
+    expect_identical(
+        IRanges::ranges(x),
+        IRanges::IRanges(
+            start = 1L,
+            end = 100L,
+            names = "XXX"
+        )
+    )
+})
+
+test_that("emptyRanges : mcols", {
+    x <- emptyRanges(
+        "EGFP",
+        seqname = "transgene",
+        mcolsNames = c("geneID", "geneName")
+    )
+    expect_identical(
+        names(mcols(x)),
+        c("geneID", "geneName")
+    )
+})
+
+
+
 # makeGene2symbolFromEnsembl ===================================================
 test_that("makeGene2symbolFromEnsembl", {
     x <- makeGene2symbolFromEnsembl(

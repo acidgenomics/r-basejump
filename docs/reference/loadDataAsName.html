@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Load Data as Name</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/loadDataAsName.R'><code>R/loadDataAsName.R</code></a></small>
-    <p class="hidden name"><code>loadDataAsName.Rd</code></p>
+    <div class="hidden name"><code>loadDataAsName.Rd</code></div>
     </div>
 
     
@@ -141,16 +141,14 @@ names using non-standard evaluation.</p>
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadData.html'>loadData</a></code>,
   <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
   <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='readJSON.html'>readJSON</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>loaded</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDataAsName</span>(
-    <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='no'>mn</span>,
+    <pre class="examples"><div class='input'><span class='fu'>loadDataAsName</span>(
+    <span class='kw'>renamed</span> <span class='kw'>=</span> <span class='no'>example</span>,
     <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>)
-)
-<span class='fu'>print</span>(<span class='no'>loaded</span>)</div><div class='output co'>#&gt;                                                    makeNames 
-#&gt; "/Users/mike/GitHub/steinbaugh/basejump/inst/extdata/mn.rda" </div><div class='input'><span class='fu'>class</span>(<span class='no'>makeNames</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
+)</div><div class='output co'>#&gt; <span class='message'>Loading example.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>renamed</span>)</div><div class='output co'>#&gt; [1] "character"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

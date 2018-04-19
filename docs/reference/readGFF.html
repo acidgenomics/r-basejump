@@ -61,7 +61,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
     <div class="page-header">
     <h1>Read GFF Annotations</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readGFF.R'><code>R/readGFF.R</code></a></small>
-    <p class="hidden name"><code>readGFF.Rd</code></p>
+    <div class="hidden name"><code>readGFF.Rd</code></div>
     </div>
 
     
@@ -137,11 +137,12 @@ defined by Ensembl.</p>
 </ul></div>
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>,
+  <code><a href='readJSON.html'>readJSON</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>readGFF</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Reading GFF: mmusculus.gtf</span></div><div class='output co'>#&gt; Observations: 95
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 95
 #&gt; Variables: 9
 #&gt; $ seqname   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
 #&gt; $ source    &lt;chr&gt; "havana", "havana", "havana", "ensembl", "ensembl", "ense...

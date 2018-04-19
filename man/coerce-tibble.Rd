@@ -4,12 +4,11 @@
 \alias{coerce-tibble}
 \title{Coerce to \code{tibble} Class Object}
 \description{
-Coerce an object to a \code{tibble} \code{data.frame}. Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by converting the rownames
-to a standard \code{data.frame} column named \code{rowname} upon coercion. This helps
-avoid downstream unexpected data loss when using the dplyr chain of single
-table verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or
-\code{\link[dplyr:mutate]{dplyr::mutate()}}.
+Coerce an object to a \code{tibble} (\code{tbl_df}). Tibbles don't support rowname
+assignemnt, so here we are ensuring they are kept by moving them to a column
+named \code{rowname} upon coercion. This helps avoid downstream unexpected data
+loss when using the dplyr chain of single table verbs, such as
+\code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
 }
 \examples{
 # data.frame ====
@@ -21,7 +20,10 @@ as(datasets::mtcars, "tibble") \%>\% glimpse()
 as(ggplot2::mpg, "tibble") \%>\% glimpse()
 }
 \seealso{
-\code{help(topic = "coerce", package = "methods")}.
+\itemize{
+\item \code{help(topic = "tibble", package = "tibble")}
+\item \code{help(topic = "coerce", package = "methods")}.
+}
 }
 \author{
 Michael Steinbaugh

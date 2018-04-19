@@ -1,16 +1,17 @@
 #' Coerce to `tibble` Class Object
 #'
-#' Coerce an object to a `tibble` `data.frame`. Tibbles don't support rowname
-#' assignemnt, so here we are ensuring they are kept by converting the rownames
-#' to a standard `data.frame` column named `rowname` upon coercion. This helps
-#' avoid downstream unexpected data loss when using the dplyr chain of single
-#' table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
-#' [dplyr::mutate()].
+#' Coerce an object to a `tibble` (`tbl_df`). Tibbles don't support rowname
+#' assignemnt, so here we are ensuring they are kept by moving them to a column
+#' named `rowname` upon coercion. This helps avoid downstream unexpected data
+#' loss when using the dplyr chain of single table verbs, such as
+#' [dplyr::arrange()], [dplyr::filter()], or [dplyr::mutate()].
 #'
 #' @name coerce-tibble
 #' @author Michael Steinbaugh
 #'
-#' @seealso `help(topic = "coerce", package = "methods")`.
+#' @seealso
+#' - `help(topic = "tibble", package = "tibble")`
+#' - `help(topic = "coerce", package = "methods")`.
 #'
 #' @examples
 #' # data.frame ====

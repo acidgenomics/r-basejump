@@ -22,7 +22,9 @@ of release versions available from the FTP server (e.g. \code{"13.0"}).}
 PANTHER Gene Ontology Annotations
 }
 \examples{
-x <- panther("Homo sapiens")
+invisible(capture.output(
+    x <- panther("Homo sapiens")
+))
 glimpse(x)
 }
 \seealso{
@@ -31,7 +33,8 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{hgnc2gene}},
+  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
   \code{\link{makeGene2symbolFromEnsembl}},

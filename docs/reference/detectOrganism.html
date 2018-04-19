@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Detect Organism</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-detectOrganism.R'><code>R/methods-detectOrganism.R</code></a></small>
-    <p class="hidden name"><code>detectOrganism.Rd</code></p>
+    <div class="hidden name"><code>detectOrganism.Rd</code></div>
     </div>
 
     
@@ -173,29 +173,25 @@ multiple organisms are detected.</p></li>
   <code>convertGenesToSymbols</code>,
   <code>convertTranscriptsToGenes</code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
-  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/counts.rda"</span>)
-
-<span class='co'># String</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># Character vector with spike-ins</span>
-<span class='fu'>detectOrganism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>))</div><div class='output co'>#&gt; ENSG00000000003            EGFP        TDTOMATO 
+    <pre class="examples"><div class='input'><span class='co'># By gene identifier</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>))</div><div class='output co'>#&gt; ENSG00000000003            EGFP        TDTOMATO 
 #&gt;  "Homo sapiens"              NA              NA </div><div class='input'>
-<span class='co'># Matrix</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt; [1] "Mus musculus"</div><div class='input'>
-<span class='co'># Tibble</span>
-<span class='no'>tibble</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"tibble"</span>)
-<span class='fu'>detectOrganism</span>(<span class='no'>tibble</span>)</div><div class='output co'>#&gt; [1] "Mus musculus"</div></pre>
+<span class='co'># By genome build</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)  <span class='co'># Ensembl</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)    <span class='co'># UCSC</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># By alternate organism name</span>
+<span class='fu'>detectOrganism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

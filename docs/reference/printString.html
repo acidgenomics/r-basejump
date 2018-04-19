@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Midnight Theme — midnightTheme • basejump</title>
+<title>Print String — printString • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,10 +27,10 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Midnight Theme — midnightTheme" />
+<meta property="og:title" content="Print String — printString" />
 
-<meta property="og:description" content="ggplot2 blackout palette that sets the plot
-background as black, with white text." />
+<meta property="og:description" content="Capture print() output of an atomic vector. Useful for returning
+informative messages inside a function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -60,7 +60,7 @@ background as black, with white text." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -96,40 +96,51 @@ background as black, with white text." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Midnight Theme</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/midnightTheme.R'><code>R/midnightTheme.R</code></a></small>
-    <p class="hidden name"><code>midnightTheme.Rd</code></p>
+    <h1>Print String</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/printString.R'><code>R/printString.R</code></a></small>
+    <div class="hidden name"><code>printString.Rd</code></div>
     </div>
 
     
-    <p><a href='http://ggplot2.tidyverse.org'>ggplot2</a> blackout palette that sets the plot
-background as black, with white text.</p>
+    <p>Capture <code>print()</code> output of an <code>atomic</code> vector. Useful for returning
+informative messages inside a function.</p>
     
 
-    <pre class="usage"><span class='fu'>midnightTheme</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>printString</span>(<span class='no'>x</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>100L</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code>atomic</code> vector.</p></td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td><p>Maximum length of vector.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>theme</code>.</p>
+    <p><code>character</code> string.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>ggplot2::theme()</a></code>.</p></li>
-<li><p>Inspired by <code><a href='http://www.rdocumentation.org/packages/Seurat/topics/DarkTheme'>Seurat::DarkTheme()</a></code>, with some modifications.</p></li>
-</ul></div>
-    <div class='dont-index'><p>Other Plot Functions: <code><a href='dynamicPlotlist.html'>dynamicPlotlist</a></code></p></div>
+    <div class='dont-index'><p><code>cat()</code>.</p>
+<p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
+  <code><a href='dots.html'>dots</a></code>, <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='methodFormals.html'>methodFormals</a></code>,
+  <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='message'>Want to understand how all the pieces fit together? Buy the ggplot2</span>
-#&gt; <span class='message'>book: http://ggplot2.org/book/</span></div><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>mtcars</span>) +
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>wt</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>mpg</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='fu'>factor</span>(<span class='no'>gear</span>)))
-<span class='no'>p</span> + <span class='fu'>midnightTheme</span>()</div><div class='img'><img src='midnightTheme-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>printString</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))</div><div class='output co'>#&gt; [1] "[1] \"hello\" \"world\""</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
