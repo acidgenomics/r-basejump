@@ -1,20 +1,23 @@
 cacheURL <- "http://basejump.seq.cloud"
 files <- c(
     "dmelanogaster.gtf",
+    "example.counts",
+    "example.csv",
+    "example.rda",
+    "example.rds",
+    "example.tsv",
+    "example.txt",
+    "example.yaml",
     "gr.rda",
     "mmusculus.gtf",
     "mn.rda",
-    "mtcars.csv",
-    "mtcars.tsv",
-    "mtcars.txt",
     "multi.rda",
     "plotlist.rda",
     "renamed.rda",
     "rnaseqCounts.csv.gz",
     "singleCellCounts.mtx.gz",
     "singleCellCounts.mtx.gz.colnames",
-    "singleCellCounts.mtx.gz.rownames",
-    "summary.yaml"
+    "singleCellCounts.mtx.gz.rownames"
 )
 mapply(
     FUN = function(cacheURL, file, envir) {

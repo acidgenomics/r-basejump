@@ -29,12 +29,10 @@ names using non-standard evaluation.
 }
 \examples{
 loadDataAsName(
-    example1 = anorexia,
-    example2 = birthwt,
-    dir = system.file("tests", package = "stats")
+    renamed = example,
+    dir = system.file("extdata", package = "basejump")
 )
-class(example1)
-class(example2)
+class(renamed)
 }
 \seealso{
 Other Read Functions: \code{\link{loadData}},

@@ -59,7 +59,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
     <div class="page-header">
     <h1>Collapse to String</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-collapseToString.R'><code>R/methods-collapseToString.R</code></a></small>
-    <p class="hidden name"><code>collapseToString.Rd</code></p>
+    <div class="hidden name"><code>collapseToString.Rd</code></div>
     </div>
 
     
@@ -190,21 +190,21 @@
 <span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [1] "TRUE, FALSE"</div><div class='input'><span class='fu'>collapseToString</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NaN</span>))</div><div class='output co'>#&gt; [1] "NA, NaN"</div><div class='input'>
 <span class='co'># data.frame ====</span>
 <span class='co'># Objects supporting `dim` function similarly</span>
-<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/mpg'>mpg</a></span> <span class='kw'>%&gt;%</span>
     <span class='fu'>head</span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>collapseToString</span>() <span class='kw'>%&gt;%</span>
-    <span class='fu'>t</span>()</div><div class='output co'>#&gt;      [,1]                                      
-#&gt; mpg  "21, 21, 22.8, 21.4, 18.7, 18.1"          
-#&gt; cyl  "6, 6, 4, 6, 8, 6"                        
-#&gt; disp "160, 160, 108, 258, 360, 225"            
-#&gt; hp   "110, 110, 93, 110, 175, 105"             
-#&gt; drat "3.9, 3.9, 3.85, 3.08, 3.15, 2.76"        
-#&gt; wt   "2.62, 2.875, 2.32, 3.215, 3.44, 3.46"    
-#&gt; qsec "16.46, 17.02, 18.61, 19.44, 17.02, 20.22"
-#&gt; vs   "0, 0, 1, 1, 0, 1"                        
-#&gt; am   "1, 1, 1, 0, 0, 0"                        
-#&gt; gear "4, 4, 4, 3, 3, 3"                        
-#&gt; carb "4, 4, 1, 1, 2, 1"                        </div></pre>
+    <span class='fu'>collapseToString</span>(<span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>t</span>()</div><div class='output co'>#&gt;              [,1]                                        
+#&gt; manufacturer "audi"                                      
+#&gt; model        "a4"                                        
+#&gt; displ        "1.8, 2, 2.8"                               
+#&gt; year         "1999, 2008"                                
+#&gt; cyl          "4, 6"                                      
+#&gt; trans        "auto(av), auto(l5), manual(m5), manual(m6)"
+#&gt; drv          "f"                                         
+#&gt; cty          "16, 18, 20, 21"                            
+#&gt; hwy          "26, 29, 30, 31"                            
+#&gt; fl           "p"                                         
+#&gt; class        "compact"                                   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

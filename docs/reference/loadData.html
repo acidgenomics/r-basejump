@@ -29,8 +29,8 @@
   
 <meta property="og:title" content="Load Data — loadData" />
 
-<meta property="og:description" content="Load R data (.rda) files from a directory using symbols rather than
-complete file paths." />
+<meta property="og:description" content="Load R data files from a directory using symbols rather than complete file
+paths. Supports ".RData", ".rda", and ".rds" file extensions." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -60,7 +60,7 @@ complete file paths." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -98,12 +98,12 @@ complete file paths." />
     <div class="page-header">
     <h1>Load Data</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/loadData.R'><code>R/loadData.R</code></a></small>
-    <p class="hidden name"><code>loadData.Rd</code></p>
+    <div class="hidden name"><code>loadData.Rd</code></div>
     </div>
 
     
-    <p>Load R data (<code>.rda</code>) files from a directory using symbols rather than
-complete file paths.</p>
+    <p>Load R data files from a directory using symbols rather than complete file
+paths. Supports "<code>.RData</code>", "<code>.rda</code>", and "<code>.rds</code>" file extensions.</p>
     
 
     <pre class="usage"><span class='fu'>loadData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
@@ -113,8 +113,9 @@ complete file paths.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Object names. Note that these arguments are interpreted using
-non-standard evaluation, and <em>should not be quoted</em>.</p></td>
+      <td><p>Object names. Note that these arguments are interpreted as symbols
+using non-standard evaluation for convenience during interactive use, and
+<em>should not be quoted</em>.</p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -141,8 +142,7 @@ file internally stores the name of an object, if the file is later renamed
 the object name will no longer match.</p>
 <p>To avoid any accidental replacements, <code>loadData()</code> will only load R data
 files that contain a single object, and the internal object name must match
-the file name exactly. These conventions match the recommendations of the
-RStudio team, which recommends saving single objects per file.</p>
+the file name exactly.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -154,15 +154,14 @@ names using non-standard evaluation.</p>
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
   <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='readJSON.html'>readJSON</a></code>, <code><a href='readYAML.html'>readYAML</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>loaded</span> <span class='kw'>&lt;-</span> <span class='fu'>loadData</span>(
-    <span class='no'>mn</span>,
+    <pre class="examples"><div class='input'><span class='fu'>loadData</span>(
+    <span class='no'>example</span>,
     <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"basejump"</span>)
-)</div><div class='output co'>#&gt; <span class='message'>Loading mn.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>loaded</span>)</div><div class='output co'>#&gt;                                                           mn 
-#&gt; "/Users/mike/GitHub/steinbaugh/basejump/inst/extdata/mn.rda" </div><div class='input'><span class='fu'>class</span>(<span class='no'>mn</span>)</div><div class='output co'>#&gt; [1] "list"</div></pre>
+)</div><div class='output co'>#&gt; <span class='message'>Loading example.rda from /Users/mike/GitHub/steinbaugh/basejump/inst/extdata</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

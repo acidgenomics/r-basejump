@@ -61,7 +61,7 @@ than combining into a single file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ than combining into a single file." />
     <div class="page-header">
     <h1>Save Data</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/saveData.R'><code>R/saveData.R</code></a></small>
-    <p class="hidden name"><code>saveData.Rd</code></p>
+    <div class="hidden name"><code>saveData.Rd</code></div>
     </div>
 
     
@@ -108,19 +108,27 @@ symbols. This function saves each object into a separate <code>.rda</code> file 
 than combining into a single file.</p>
     
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rda"</span>, <span class='st'>"rds"</span>, <span class='st'>"RData"</span>), <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Object names. Note that these arguments are interpreted using
-non-standard evaluation, and <em>should not be quoted</em>.</p></td>
+      <td><p>Object names. Note that these arguments are interpreted as symbols
+using non-standard evaluation for convenience during interactive use, and
+<em>should not be quoted</em>.</p></td>
     </tr>
     <tr>
       <th>dir</th>
       <td><p>Output directory. Defaults to the current working directory.</p></td>
+    </tr>
+    <tr>
+      <th>ext</th>
+      <td><p>R data ("<code>rda</code>", "<code>RData</code>") or R data serialized (RDS; "<code>rds</code>").
+RDS is preferred when saving single objects per file, which is always the
+convention of <code>saveData()</code>, regardless of the extension used.</p></td>
     </tr>
     <tr>
       <th>overwrite</th>
@@ -161,9 +169,9 @@ not overwrite by default if that behavior is preferred.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>mtcars</span>, <span class='no'>starwars</span>)</div><div class='output co'>#&gt; <span class='message'>Saving mtcars.rda, starwars.rda to /Users/mike/GitHub/steinbaugh/basejump/docs/reference</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>rnaseqCounts</span>, <span class='no'>singleCellCounts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rnaseqCounts.rda, singleCellCounts.rda to /Users/mike/GitHub/steinbaugh/basejump/docs/reference/example</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseqCounts.rda"     "singleCellCounts.rda"</div><div class='input'>
 <span class='co'># Clean up</span>
-<span class='fu'>unlink</span>(<span class='fu'>c</span>(<span class='st'>"mtcars.rda"</span>, <span class='st'>"starwars.rda"</span>))</div></pre>
+<span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

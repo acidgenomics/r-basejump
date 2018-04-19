@@ -8,10 +8,13 @@ reference:
     - annotable
     - broadClass
     - starts_with("convert")
+    - emptyRanges
     - ends_with("FromEnsembl")
     - ends_with("FromGFF")
+    - panther
     - starts_with("parse")
     - starts_with("strip")
+    - ends_with("2gene")
   - title: Name Functions
     contents:
     - makeNames
@@ -50,6 +53,9 @@ reference:
     - fixNA
     - removeNA
     - starts_with("sanitize")
+  - title: Coercion Methods
+    contents:
+    - starts_with("coerce")
   - title: Developer Functions
     contents:
     - starts_with("detect")
@@ -57,8 +63,14 @@ reference:
     - starts_with("initialize")
     - localOrRemoteFile
     - methodFormals
-    - multiassignAsNewEnvir
+    - multiassignAsEnvir
+    - printString
   - title: Assert Check Functions
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
+  - title: Datasets
+    contents:
+    - synonyms
+    - rnaseqCounts
+    - singleCellCounts

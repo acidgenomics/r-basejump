@@ -12,7 +12,9 @@
 #' @export
 #'
 #' @examples
-#' x <- panther("Homo sapiens")
+#' invisible(capture.output(
+#'     x <- panther("Homo sapiens")
+#' ))
 #' glimpse(x)
 panther <- function(
     organism = c(

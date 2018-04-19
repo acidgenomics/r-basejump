@@ -36,10 +36,10 @@ localOrRemoteFile <- function(file) {
                     paste(collapse = "")
                 assert_is_non_empty(ext)
 
-                # Fix for Excel files on Windows
+                # Fix for binary files (typically on Windows)
                 # https://github.com/tidyverse/readxl/issues/374
                 # Otherwise, `read_excel()` errors in `readFileByExtension()`
-                if (ext == "xlsx") {
+                if (ext %in% c("rda", "rds", "xls", "xlsx")) {
                     # Write binary
                     mode <- "wb"
                 } else {

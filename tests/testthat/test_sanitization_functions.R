@@ -203,6 +203,7 @@ test_that("sanitizeRowData", {
     expect_identical(
         lapply(x, class),
         list(
+            "rowname" = "character",
             "seqnames" = "factor",
             "start" = "integer",
             "end" = "integer",
@@ -222,11 +223,9 @@ test_that("sanitizeRowData", {
 
 # sanitizeSampleData ===========================================================
 test_that("sanitizeSampleData", {
-    x <- coldata
-    x[["day"]] <- c(14L, 14L, 30L, 30L)
-    x <- sanitizeSampleData(x)
+    x <- sanitizeSampleData(sd)
     expect_is(x, "DataFrame")
-    expect_identical(rownames(x), rownames(coldata))
+    expect_identical(rownames(x), rownames(sd))
     expect_true(all(vapply(
         X = x,
         FUN = is.factor,

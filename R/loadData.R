@@ -30,8 +30,8 @@
 #'
 #' @examples
 #' loadData(
-#'     anorexia, birthwt,
-#'     dir = system.file("tests", package = "stats")
+#'     example,
+#'     dir = system.file("extdata", package = "basejump")
 #' )
 loadData <- function(
     ...,

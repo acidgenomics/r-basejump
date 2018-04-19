@@ -62,7 +62,7 @@ ensembldb." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@ ensembldb." />
     <div class="page-header">
     <h1>Genomic Ranges from Ensembl</h1>
     <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRangesFromEnsembl.R'><code>R/makeGRangesFromEnsembl.R</code></a></small>
-    <p class="hidden name"><code>makeGRangesFromEnsembl.Rd</code></p>
+    <div class="hidden name"><code>makeGRangesFromEnsembl.Rd</code></div>
     </div>
 
     
@@ -126,8 +126,8 @@ ensembldb." />
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional.</em> Genome assembly name (e.g. "<code>GRCh38</code>"). If
-<code>NULL</code>, defaults to the most recent build available.</p></td>
+      <td><p><em>Optional.</em> Genome build assembly name (e.g. "<code>GRCh38</code>").
+If <code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
     <tr>
       <th>release</th>
@@ -194,19 +194,21 @@ package.</p>
   <code>convertGenesToSymbols</code>,
   <code>convertTranscriptsToGenes</code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>,
+  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
-  <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH57757"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(
+    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.10.1 (2017-10-27)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH57757"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "90"</span>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>tibble</code> Class Object — coerceToTibble • basejump</title>
+<title>Read JSON File — readJSON • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,14 +27,9 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>tibble</code> Class Object — coerceToTibble" />
+<meta property="og:title" content="Read JSON File — readJSON" />
 
-<meta property="og:description" content="Coerce an object to a tibble data.frame. Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by converting the rownames
-to a standard data.frame column named rowname upon coercion. This helps
-avoid downstream unexpected data loss when using the dplyr chain of single
-table verbs, such as dplyr::arrange(), dplyr::filter(), or
-dplyr::mutate()." />
+<meta property="og:description" content="Read JSON File" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,7 +59,7 @@ dplyr::mutate()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -100,43 +95,54 @@ dplyr::mutate()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>tibble</code> Class Object</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-coerce.R'><code>R/methods-coerce.R</code></a></small>
-    <p class="hidden name"><code>coerceToTibble.Rd</code></p>
+    <h1>Read JSON File</h1>
+    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readJSON.R'><code>R/readJSON.R</code></a></small>
+    <div class="hidden name"><code>readJSON.Rd</code></div>
     </div>
 
     
-    <p>Coerce an object to a <code>tibble</code> <code>data.frame</code>. Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by converting the rownames
-to a standard <code>data.frame</code> column named <code>rowname</code> upon coercion. This helps
-avoid downstream unexpected data loss when using the dplyr chain of single
-table verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or
-<code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
+    <p>Read JSON File</p>
     
 
+    <pre class="usage"><span class='fu'>readJSON</span>(<span class='no'>file</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>from</th>
-      <td><p>Class for which the coerce method will perform coercion.</p></td>
+      <th>file</th>
+      <td><p>File path.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>list</code>.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>help(topic = "coerce", package = "methods")</code>.</p></div>
+    <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
+  <code><a href='readFileByExtension.html'>readFileByExtension</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
+  <code><a href='readYAML.html'>readYAML</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readJSON</span>(<span class='st'>"http://basejump.seq.cloud/example.json"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.json</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
+#&gt; [4] "input_fasta_files" "input_gtf_files"   "mem_gb"           
+#&gt; [7] "mkref_version"     "threads"           "version"          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     
