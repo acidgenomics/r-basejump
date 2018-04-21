@@ -216,4 +216,14 @@ multiassignAsNewEnvir <- function(...) {
     multiassignAsEnvir(...)
 }
 
+
+
+# v0.5.2 =======================================================================
+#' @rdname deprecated
+#' @export
+geomean <- function(...) {
+    .Deprecated("geometricMean")
+    geometricMean(...)
+}
+
 # nocov end
