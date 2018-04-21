@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Assert Is GFF</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
     <div class="hidden name"><code>assertIsGFF.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Assert Is GFF</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>assertIsGFF</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))</pre>
     
@@ -111,7 +115,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>GFF <code>data.frame</code>.</p></td>
+      <td><p><code>data.frame</code>.</p></td>
     </tr>
     <tr>
       <th>severity</th>
@@ -122,7 +126,7 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Abort on mismatch.</p>
+    <p>Stop on mismatch.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

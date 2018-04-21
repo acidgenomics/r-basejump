@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Complete Themes</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/themes.R'><code>R/themes.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/themes.R'><code>R/themes.R</code></a></small>
     <div class="hidden name"><code>themes.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><a href='http://ggplot2.tidyverse.org'>ggplot2</a> themes.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>theme_midnight</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bottom"</span>, <span class='st'>"right"</span>,
@@ -150,7 +154,7 @@ be removed.</p></td>
 
     <p><code>theme</code>.</p>
     
-    <h2 class="hasAnchor" id="midnight"><a class="anchor" href="#midnight"></a>Midnight</h2>
+    <h2 class="hasAnchor" id="midnight-theme"><a class="anchor" href="#midnight-theme"></a>Midnight Theme</h2>
 
     
     <p>Blackout theme that sets the plot background as black, with white text.
@@ -158,7 +162,7 @@ Inspired by <code><a href='http://www.rdocumentation.org/packages/Seurat/topics/
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.</p>
     
-    <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
+    <h2 class="hasAnchor" id="paperwhite-theme"><a class="anchor" href="#paperwhite-theme"></a>Paperwhite Theme</h2>
 
     
     <p>High contrast black and white theme optimized for print. Recommended for
@@ -171,8 +175,8 @@ scientific manuscripts and website tutorials.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='message'>Want to understand how all the pieces fit together? Buy the ggplot2</span>
-#&gt; <span class='message'>book: http://ggplot2.org/book/</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+
 <span class='co'># Example ggplot object</span>
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>,
@@ -193,9 +197,9 @@ scientific manuscripts and website tutorials.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#midnight">Midnight</a></li>
+      <li><a href="#midnight-theme">Midnight Theme</a></li>
 
-      <li><a href="#paperwhite">Paperwhite</a></li>
+      <li><a href="#paperwhite-theme">Paperwhite Theme</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
