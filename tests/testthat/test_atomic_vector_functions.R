@@ -6,7 +6,7 @@ context("Atomic Vector Functions")
 test_that("grepString", {
     expect_identical(
         grepString("gene"),
-        "^gene$|^gene,|\\sgene,|\\sgene$"
+        "^gene$|^gene,\\s|,\\sgene,\\s|,\\sgene$"
     )
 })
 
