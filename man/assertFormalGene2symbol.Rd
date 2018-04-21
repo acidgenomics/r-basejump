@@ -18,7 +18,7 @@ assertFormalGene2symbol(x, genes, gene2symbol,
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Formal Gene to Symbol Mappings

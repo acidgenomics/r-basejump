@@ -14,7 +14,7 @@ assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
 \item{inherits}{Should the enclosing frames of the environment be searched?}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert All Variables Are Non-Existing
