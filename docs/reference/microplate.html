@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Microtiter Plate Well Identifiers</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/microplate.R'><code>R/microplate.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/microplate.R'><code>R/microplate.R</code></a></small>
     <div class="hidden name"><code>microplate.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Microtiter Plate Well Identifiers</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>microplate</span>(<span class='kw'>plates</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>, <span class='kw'>controls</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -141,36 +145,32 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Single 96-well plate</span>
-<span class='fu'>microplate</span>(<span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09"
-#&gt; [10] "1-A10" "1-A11" "1-A12" "1-B01" "1-B02" "1-B03" "1-B04" "1-B05" "1-B06"
-#&gt; [19] "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12" "1-C01" "1-C02" "1-C03"
-#&gt; [28] "1-C04" "1-C05" "1-C06" "1-C07" "1-C08" "1-C09" "1-C10" "1-C11" "1-C12"
-#&gt; [37] "1-D01" "1-D02" "1-D03" "1-D04" "1-D05" "1-D06" "1-D07" "1-D08" "1-D09"
-#&gt; [46] "1-D10" "1-D11" "1-D12" "1-E01" "1-E02"
+<span class='fu'>microplate</span>(<span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09" "1-A10"
+#&gt; [11] "1-A11" "1-A12" "1-B01" "1-B02" "1-B03" "1-B04" "1-B05" "1-B06" "1-B07" "1-B08"
+#&gt; [21] "1-B09" "1-B10" "1-B11" "1-B12" "1-C01" "1-C02" "1-C03" "1-C04" "1-C05" "1-C06"
+#&gt; [31] "1-C07" "1-C08" "1-C09" "1-C10" "1-C11" "1-C12" "1-D01" "1-D02" "1-D03" "1-D04"
+#&gt; [41] "1-D05" "1-D06" "1-D07" "1-D08" "1-D09" "1-D10" "1-D11" "1-D12" "1-E01" "1-E02"
 #&gt;  [ reached getOption("max.print") -- omitted 46 entries ]</div><div class='input'>
 <span class='co'># 2 96-well plates</span>
-<span class='fu'>microplate</span>(<span class='kw'>plates</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09"
-#&gt; [10] "1-A10" "1-A11" "1-A12" "1-B01" "1-B02" "1-B03" "1-B04" "1-B05" "1-B06"
-#&gt; [19] "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12" "1-C01" "1-C02" "1-C03"
-#&gt; [28] "1-C04" "1-C05" "1-C06" "1-C07" "1-C08" "1-C09" "1-C10" "1-C11" "1-C12"
-#&gt; [37] "1-D01" "1-D02" "1-D03" "1-D04" "1-D05" "1-D06" "1-D07" "1-D08" "1-D09"
-#&gt; [46] "1-D10" "1-D11" "1-D12" "1-E01" "1-E02"
+<span class='fu'>microplate</span>(<span class='kw'>plates</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09" "1-A10"
+#&gt; [11] "1-A11" "1-A12" "1-B01" "1-B02" "1-B03" "1-B04" "1-B05" "1-B06" "1-B07" "1-B08"
+#&gt; [21] "1-B09" "1-B10" "1-B11" "1-B12" "1-C01" "1-C02" "1-C03" "1-C04" "1-C05" "1-C06"
+#&gt; [31] "1-C07" "1-C08" "1-C09" "1-C10" "1-C11" "1-C12" "1-D01" "1-D02" "1-D03" "1-D04"
+#&gt; [41] "1-D05" "1-D06" "1-D07" "1-D08" "1-D09" "1-D10" "1-D11" "1-D12" "1-E01" "1-E02"
 #&gt;  [ reached getOption("max.print") -- omitted 142 entries ]</div><div class='input'>
 <span class='co'># Single 384-well plate</span>
-<span class='fu'>microplate</span>(<span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>384L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09"
-#&gt; [10] "1-A10" "1-A11" "1-A12" "1-A13" "1-A14" "1-A15" "1-A16" "1-A17" "1-A18"
-#&gt; [19] "1-A19" "1-A20" "1-A21" "1-A22" "1-A23" "1-A24" "1-B01" "1-B02" "1-B03"
-#&gt; [28] "1-B04" "1-B05" "1-B06" "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12"
-#&gt; [37] "1-B13" "1-B14" "1-B15" "1-B16" "1-B17" "1-B18" "1-B19" "1-B20" "1-B21"
-#&gt; [46] "1-B22" "1-B23" "1-B24" "1-C01" "1-C02"
+<span class='fu'>microplate</span>(<span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>384L</span>)</div><div class='output co'>#&gt;  [1] "1-A01" "1-A02" "1-A03" "1-A04" "1-A05" "1-A06" "1-A07" "1-A08" "1-A09" "1-A10"
+#&gt; [11] "1-A11" "1-A12" "1-A13" "1-A14" "1-A15" "1-A16" "1-A17" "1-A18" "1-A19" "1-A20"
+#&gt; [21] "1-A21" "1-A22" "1-A23" "1-A24" "1-B01" "1-B02" "1-B03" "1-B04" "1-B05" "1-B06"
+#&gt; [31] "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12" "1-B13" "1-B14" "1-B15" "1-B16"
+#&gt; [41] "1-B17" "1-B18" "1-B19" "1-B20" "1-B21" "1-B22" "1-B23" "1-B24" "1-C01" "1-C02"
 #&gt;  [ reached getOption("max.print") -- omitted 334 entries ]</div><div class='input'>
 <span class='co'># 2 96-well plates with 6 control wells per plate</span>
-<span class='fu'>microplate</span>(<span class='kw'>plates</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>, <span class='kw'>controls</span> <span class='kw'>=</span> <span class='fl'>6L</span>)</div><div class='output co'>#&gt;  [1] "1-A07" "1-A08" "1-A09" "1-A10" "1-A11" "1-A12" "1-B01" "1-B02" "1-B03"
-#&gt; [10] "1-B04" "1-B05" "1-B06" "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12"
-#&gt; [19] "1-C01" "1-C02" "1-C03" "1-C04" "1-C05" "1-C06" "1-C07" "1-C08" "1-C09"
-#&gt; [28] "1-C10" "1-C11" "1-C12" "1-D01" "1-D02" "1-D03" "1-D04" "1-D05" "1-D06"
-#&gt; [37] "1-D07" "1-D08" "1-D09" "1-D10" "1-D11" "1-D12" "1-E01" "1-E02" "1-E03"
-#&gt; [46] "1-E04" "1-E05" "1-E06" "1-E07" "1-E08"
+<span class='fu'>microplate</span>(<span class='kw'>plates</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>wells</span> <span class='kw'>=</span> <span class='fl'>96L</span>, <span class='kw'>controls</span> <span class='kw'>=</span> <span class='fl'>6L</span>)</div><div class='output co'>#&gt;  [1] "1-A07" "1-A08" "1-A09" "1-A10" "1-A11" "1-A12" "1-B01" "1-B02" "1-B03" "1-B04"
+#&gt; [11] "1-B05" "1-B06" "1-B07" "1-B08" "1-B09" "1-B10" "1-B11" "1-B12" "1-C01" "1-C02"
+#&gt; [21] "1-C03" "1-C04" "1-C05" "1-C06" "1-C07" "1-C08" "1-C09" "1-C10" "1-C11" "1-C12"
+#&gt; [31] "1-D01" "1-D02" "1-D03" "1-D04" "1-D05" "1-D06" "1-D07" "1-D08" "1-D09" "1-D10"
+#&gt; [41] "1-D11" "1-D12" "1-E01" "1-E02" "1-E03" "1-E04" "1-E05" "1-E06" "1-E07" "1-E08"
 #&gt;  [ reached getOption("max.print") -- omitted 130 entries ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -61,7 +63,7 @@ than combining into a single file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -98,15 +100,17 @@ than combining into a single file." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Save Data</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/saveData.R'><code>R/saveData.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/saveData.R'><code>R/saveData.R</code></a></small>
     <div class="hidden name"><code>saveData.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Wrapper for <code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code> supporting quick saving of object names passed as
 symbols. This function saves each object into a separate <code>.rda</code> file rather
 than combining into a single file.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rda"</span>, <span class='st'>"rds"</span>, <span class='st'>"RData"</span>), <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -147,7 +151,7 @@ convention of <code>saveData()</code>, regardless of the extension used.</p></td
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silent named character vector of file paths.</p>
+    <p>Invisible named <code>character</code> vector of file paths.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -161,7 +165,7 @@ not overwrite by default if that behavior is preferred.</p>
 
     <div class='dont-index'><ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/usethis/topics/use_data'>usethis::use_data()</a></code>.</p></li>
+<li><p><code>usethis::use_data()</code>.</p></li>
 </ul></div>
     <div class='dont-index'><p>Other Write Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
   <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
