@@ -40,7 +40,7 @@ be removed.}
 \description{
 \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
-\section{Midnight}{
+\section{Midnight Theme}{
 
 Blackout theme that sets the plot background as black, with white text.
 Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
@@ -48,7 +48,7 @@ for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.
 }
 
-\section{Paperwhite}{
+\section{Paperwhite Theme}{
 
 High contrast black and white theme optimized for print. Recommended for
 scientific manuscripts and website tutorials.

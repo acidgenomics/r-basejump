@@ -41,6 +41,10 @@ Also supports some additional extensions commonly used with the
 \item \code{colnames}: Sidecar file containing column names.
 \item \code{rownames}: Sidecar file containing row names.
 }
+
+If the file format isn't supported natively (or blacklisted), the
+\href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package will
+be used as a fallback attempt.
 }
 \note{
 Reading a MatrixMarket ("\code{mtx}") file now requires "\code{colnames}" and
@@ -77,10 +81,6 @@ glimpse(x)
 \item \href{http://readxl.tidyverse.org}{readxl}.
 \item \href{https://cran.r-project.org/web/packages/Matrix/index.html}{Matrix}.
 }
-
-Integration of the
-\href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package is
-being considered for a future update.
 
 Other Read Functions: \code{\link{loadDataAsName}},
   \code{\link{loadData}}, \code{\link{loadRemoteData}},

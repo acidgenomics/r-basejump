@@ -11,8 +11,8 @@ kables(list, captions, force = FALSE)
 
 \item{captions}{Optional \code{character} vector of table captions.}
 
-\item{force}{Force knit output. \emph{Recommended for development and unit testing
-only.}}
+\item{force}{Force knit output. Recommended for development and unit testing
+only.}
 }
 \value{
 Knit tables.

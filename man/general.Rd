@@ -4,6 +4,8 @@
 \alias{general}
 \title{General Arguments}
 \arguments{
+\item{atomic}{\code{atomic} vector.}
+
 \item{object}{Object.}
 
 \item{value}{Value to assign.}

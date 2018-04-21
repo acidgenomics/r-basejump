@@ -7,10 +7,9 @@
 methodFormals(f, signature)
 }
 \arguments{
-\item{f}{a generic function or the character-string name of one.}
+\item{f}{Generic \code{function} or \code{character} string.}
 
-\item{signature}{the signature of classes to match to the arguments
-    of \code{f}.  See the details below.}
+\item{signature}{The signature of classes to match to the \code{f} argument.}
 }
 \value{
 \code{list} of formal arguments.

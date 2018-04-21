@@ -19,6 +19,10 @@
 #' - `colnames`: Sidecar file containing column names.
 #' - `rownames`: Sidecar file containing row names.
 #'
+#' If the file format isn't supported natively (or blacklisted), the
+#' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
+#' be used as a fallback attempt.
+#'
 #' @note Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
 #'   `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
 #'   the sparse matrix. Legacy support for manual loading of these sidecar files
@@ -38,10 +42,6 @@
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
 #' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
-#'
-#' Integration of the
-#' [rio](https://cran.r-project.org/web/packages/rio/index.html) package is
-#' being considered for a future update.
 #'
 #' @examples
 #' # Comma Separated Values

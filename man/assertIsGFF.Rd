@@ -7,7 +7,7 @@
 assertIsGFF(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
-\item{x}{GFF \code{data.frame}.}
+\item{x}{\code{data.frame}.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}

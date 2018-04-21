@@ -19,8 +19,7 @@ gffCols <- c(
 #' GTF (General Transfer Format) is identical to GFF version 2.
 #'
 #' Column names follow the
-#' [conventions](https://ensembl.org/info/website/upload/gff.html)
-#' defined by Ensembl.
+#' [conventions defined by Ensembl](https://bit.ly/2K6EBla).
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
