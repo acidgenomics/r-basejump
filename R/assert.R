@@ -9,7 +9,7 @@
 #' @param severity How severe should the consequences of the assertion be?
 #'   Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
-#' @return Abort on mismatch.
+#' @return Stop on mismatch.
 NULL
 
 

@@ -76,7 +76,7 @@ makeGRangesFromEnsembl <- function(
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
-    # Abort on UCSC genome build
+    # Stop on UCSC genome build
     if (
         is_a_string(genomeBuild) &&
         grepl("^[a-z]{2}\\d{2}$", genomeBuild)
