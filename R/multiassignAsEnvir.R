@@ -4,10 +4,12 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams dots
-#' @param envirName New environment name (`string`).
-#' @param parentEnvir Parent `environment` where to assign the new environment.
+#' @param envirName `character` string denoting the name of the new
+#'   `environment` that will be created.
+#' @param parentEnvir Parent `environment` where to assign the new
+#'   `environment`, defined by `envirName`.
 #'
-#' @return `character` of object names in the new `environment`.
+#' @return `character` vector of object names in the new `environment`.
 #' @export
 #'
 #' @examples

@@ -1,21 +1,22 @@
-#' Quickly Perform Sort Unique on a Vector
+#' Sort and Make Unique
 #'
-#' The function also strips `NA` values. This is useful for gene list server
-#' queries, for example.
+#' This is a convenience function to quickly sort and atomic vector and make the
+#' values unique. The function also strips `NA` values. This is useful for
+#' repetitive gene vector operations, for example.
 #'
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Unique `vector`.
+#' @return `atomic` vector.
 #' @export
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
-sortUnique <- function(object) {
-    assert_is_atomic(object)
-    object %>%
+sortUnique <- function(atomic) {
+    assert_is_atomic(atomic)
+    atomic %>%
         sort(na.last = TRUE) %>%
         unique()
 }

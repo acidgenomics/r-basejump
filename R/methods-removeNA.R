@@ -6,7 +6,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return Sanitized data.
+#' @return Sanitized object.
 #'
 #' @examples
 #' # Remove NA only rows and columns

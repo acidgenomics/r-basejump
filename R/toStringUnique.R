@@ -11,11 +11,10 @@
 #' @export
 #'
 #' @examples
-#' vec <- c("hello", "world", NA, "hello", "world", NA)
-#' toStringUnique(vec)
-toStringUnique <- function(object) {
-    assert_is_atomic(object)
-    object %>%
+#' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
+toStringUnique <- function(atomic) {
+    assert_is_atomic(atomic)
+    atomic %>%
         as.character() %>%
         na.omit() %>%
         unique() %>%
