@@ -3,7 +3,8 @@
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams methods::getMethod
+#' @param f Generic `function` or `character` string.
+#' @param signature The signature of classes to match to the `f` argument.
 #'
 #' @return `list` of formal arguments.
 #' @export
