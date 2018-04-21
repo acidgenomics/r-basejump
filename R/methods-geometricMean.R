@@ -79,7 +79,7 @@ setMethod(
         apply(
             X = object,
             MARGIN = 2L,
-            FUN = .geometricMean
+            FUN = geometricMean
         )
     }
 )
