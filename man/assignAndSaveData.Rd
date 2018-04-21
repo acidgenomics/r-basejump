@@ -25,7 +25,7 @@ assignAndSaveData(name, object, dir = ".", compress = TRUE,
 the calling environment.}
 }
 \value{
-Silent named \code{character} containing file paths.
+Invisible named \code{character} containing file paths.
 }
 \description{
 Assigns a new object by name to the current working environment then saves

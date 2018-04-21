@@ -19,7 +19,7 @@ Stop on mismatch.
 Assert Is Data Frame or NULL
 }
 \note{
-This checks for \code{data.frame} and will stop for \code{DataFrame} class.
+This checks for \code{data.frame} and will stop on \code{DataFrame} class.
 }
 \examples{
 assertIsDataFrameOrNULL(datasets::mtcars)

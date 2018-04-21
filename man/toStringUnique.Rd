@@ -4,10 +4,10 @@
 \alias{toStringUnique}
 \title{Convert to a Unique Character String}
 \usage{
-toStringUnique(object)
+toStringUnique(atomic)
 }
 \arguments{
-\item{object}{Object.}
+\item{atomic}{\code{atomic} vector.}
 }
 \value{
 \code{character} string.
@@ -16,8 +16,7 @@ toStringUnique(object)
 Convert to a Unique Character String
 }
 \examples{
-vec <- c("hello", "world", NA, "hello", "world", NA)
-toStringUnique(vec)
+toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 }
 \seealso{
 \code{\link[base:toString]{base::toString()}}.

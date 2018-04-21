@@ -8,7 +8,7 @@
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or
-#'   inside an RMarkdown chunk with '`results="asis"`' enabled.
+#'   inside an RMarkdown chunk with '`results = "asis"`' enabled.
 #'
 #' @return
 #' - "`asis = TRUE`": [knitr::asis_output()].

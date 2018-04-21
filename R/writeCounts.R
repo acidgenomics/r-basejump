@@ -1,9 +1,10 @@
 #' Write Counts
 #'
-#' Supports both bulk and single-cell RNA-seq output. Bulk RNA-seq counts are
-#' written to disk as comma separated values ("`.csv`"). Single-cell RNA-seq
-#' counts are written to disk in MatrixMarket format ("`.mtx`"), along with the
-#' sample barcodes ("`.colnames`"), and gene identifiers ("`.rownames`").
+#' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
+#' counts are written to disk as comma separated values ("`.csv`"). Single-cell
+#' RNA-seq counts are written to disk in MatrixMarket format ("`.mtx`"), along
+#' with the sample barcodes ("`.colnames`"), and gene identifiers
+#' ("`.rownames`").
 #'
 #' Automatic gzip compression is offered as a user-defined option. This setting
 #' is enabled by default to save disk space. Note that the
@@ -19,8 +20,7 @@
 #' @param dir Output directory.
 #' @param gzip Compress the counts file using gzip.
 #'
-#' @return Invisible named `character` containing file paths to count matrices
-#'   written to disk.
+#' @return Invisible named `character` containing file paths.
 #' @export
 #'
 #' @examples

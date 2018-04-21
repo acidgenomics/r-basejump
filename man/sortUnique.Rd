@@ -2,19 +2,20 @@
 % Please edit documentation in R/sortUnique.R
 \name{sortUnique}
 \alias{sortUnique}
-\title{Quickly Perform Sort Unique on a Vector}
+\title{Sort and Make Unique}
 \usage{
-sortUnique(object)
+sortUnique(atomic)
 }
 \arguments{
-\item{object}{Object.}
+\item{atomic}{\code{atomic} vector.}
 }
 \value{
-Unique \code{vector}.
+\code{atomic} vector.
 }
 \description{
-The function also strips \code{NA} values. This is useful for gene list server
-queries, for example.
+This is a convenience function to quickly sort and atomic vector and make the
+values unique. The function also strips \code{NA} values. This is useful for
+repetitive gene vector operations, for example.
 }
 \examples{
 sortUnique(c(NA, NA, "milk", "eggs", "eggs"))

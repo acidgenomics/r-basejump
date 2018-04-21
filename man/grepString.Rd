@@ -4,22 +4,30 @@
 \alias{grepString}
 \title{\code{grep} String}
 \usage{
-grepString(object)
+grepString(string, sep = ", ")
 }
 \arguments{
-\item{object}{Object.}
+\item{string}{\code{character} string.}
+
+\item{sep}{Separator. Defaults to comma.}
 }
 \value{
-\code{character} string for \code{\link[=grep]{grep()}} matching.
+\code{character} string, containing a regular expression pattern.
 }
 \description{
-Generate a \code{\link[=grep]{grep()}} string for pattern matching against comma separated
-\code{\link[=toString]{toString()}} output.
+Generate a \code{grep} string for pattern matching against a delimited \code{character}
+string returned by \code{\link[base:toString]{base::toString()}} or \code{\link[base:paste]{base::paste()}} using the \code{collapse}
+argument.
 }
 \examples{
 grepString("gene")
 }
 \seealso{
+\itemize{
+\item \code{\link[base:grep]{base::grep()}}.
+\item \code{\link[base:toString]{base::toString()}}.
+}
+
 Other Atomic Vector Functions: \code{\link{sortUnique}},
   \code{\link{toStringUnique}}
 }
