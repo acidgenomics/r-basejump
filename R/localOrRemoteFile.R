@@ -8,7 +8,7 @@
 #' @inheritParams general
 #'
 #' @return Named `character` containing the original basename as the name and
-#'   local file path (i.e. tempfile) as the string. Aborts on a missing file.
+#'   local file path (i.e. tempfile) as the string. Stops on a missing file.
 #' @export
 #'
 #' @examples
