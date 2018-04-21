@@ -18,29 +18,28 @@
 #' glimpse(x)
 panther <- function(
     organism = c(
-        "human" = "Homo sapiens",
-        "mouse" = "Mus musculus",
-        "nematode_worm" = "Caenorhabditis elegans",
-        "fruit_fly" = "Drosophila melanogaster"
+        "Homo sapiens",
+        "Mus musculus",
+        "Caenorhabditis elegans",
+        "Drosophila melanogaster"
     ),
     release = NULL
 ) {
     organism <- match.arg(organism)
-    if (is.null(release)) {
-        release <- "current_release"
-    }
-    assert_is_a_string(release)
+    map <- c(
+        "Homo sapiens" = "human",
+        "Mus musculus" = "mouse",
+        "Caenorhabditis elegans" = "nematode_worm",
+        "Drosophila melanogaster" = "fruit_fly"
+    )
+    data <- .pantherAnnotations(map[[organism]], release = release)
     if (organism == "Homo sapiens") {
-        data <- .pantherAnnotations("human", release = release)
         .panther.human(data)
     } else if (organism == "Mus musculus") {
-        data <- .pantherAnnotations("mouse", release = release)
         .panther.mouse(data)
     } else if (organism == "Drosophila melanogaster") {
-        data <- .pantherAnnotations("fruit_fly", release = release)
         .panther.fruit_fly(data)
     } else if (organism == "Caenorhabditis elegans") {
-        data <- .pantherAnnotations("nematode_worm", release = release)
         .panther.nematode_worm(data)
     }
 }
@@ -49,7 +48,7 @@ panther <- function(
 
 # Constructors =================================================================
 .panther.human <- function(data) {  # nolint
-    map <- hgnc2gene()
+    hgnc2gene <- hgnc2gene()
 
     # Ensembl matches
     ensembl <- data %>%
@@ -66,20 +65,20 @@ panther <- function(
             hgncID = as.integer(!!sym("hgncID"))
         ) %>%
         filter(!is.na(!!sym("hgncID"))) %>%
-        left_join(map, by = "hgncID") %>%
+        merge(hgnc2gene, by = "hgncID", all.x = TRUE) %>%
+        as_tibble() %>%
         select(-!!sym("hgncID")) %>%
         filter(!is.na(!!sym("geneID"))) %>%
         unique()
 
-    # Return
-    bind_rows(ensembl, hgnc) %>%
+    do.call(rbind, list(ensembl, hgnc)) %>%
         .pantherReturn()
 }
 
 
 
 .panther.mouse <- function(data) {  # nolint
-    map <- mgi2gene()
+    mgi2gene <- mgi2gene()
 
     # Ensembl matches
     ensembl <- data %>%
@@ -95,12 +94,12 @@ panther <- function(
             mgiID = as.integer(!!sym("mgiID"))
         ) %>%
         filter(!is.na(!!sym("mgiID"))) %>%
-        left_join(map, by = "mgiID") %>%
+        merge(mgi2gene, by = "mgiID", all.x = TRUE) %>%
+        as_tibble() %>%
         select(-!!sym("mgiID")) %>%
         filter(!is.na(!!sym("geneID")))
 
-    # Return
-    bind_rows(ensembl, mgi) %>%
+    do.call(rbind, list(ensembl, mgi)) %>%
         .pantherReturn()
 }
 
@@ -126,12 +125,17 @@ panther <- function(
 
 
 
+# Here we're matching the organism name to the conventions used on PANTHER
 .pantherAnnotations <- function(
     organism = c("human", "mouse", "fruit_fly", "nematode_worm"),
-    release,
+    release = NULL,
     dir = "."
 ) {
     organism <- match.arg(organism)
+    if (is.null(release)) {
+        release <- "current_release"
+    }
+    assert_is_a_string(release)
     file <- transmit(
         remoteDir = paste(
             "ftp://ftp.pantherdb.org",
