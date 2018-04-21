@@ -29,6 +29,7 @@
 \alias{tx2geneFromGFF}
 \alias{tx2geneFromGTF}
 \alias{multiassignAsNewEnvir}
+\alias{geomean}
 \title{Defunct or Deprecated Functions}
 \usage{
 summarizeRows(...)
@@ -84,6 +85,8 @@ tx2geneFromGFF(...)
 tx2geneFromGTF(...)
 
 multiassignAsNewEnvir(...)
+
+geomean(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
