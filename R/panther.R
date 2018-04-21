@@ -136,6 +136,7 @@ panther <- function(
         release <- "current_release"
     }
     assert_is_a_string(release)
+    message("Downloading PANTHER annotations")
     file <- transmit(
         remoteDir = paste(
             "ftp://ftp.pantherdb.org",
