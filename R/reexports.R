@@ -4,6 +4,8 @@
 #' @export
 Matrix::Matrix
 
+
+
 #' @importFrom S4Vectors DataFrame
 #' @export
 S4Vectors::DataFrame
@@ -12,6 +14,8 @@ S4Vectors::DataFrame
 #' @export
 S4Vectors::mcols
 
+
+
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
@@ -19,6 +23,8 @@ magrittr::`%>%`
 #' @importFrom magrittr set_rownames
 #' @export
 magrittr::set_rownames
+
+
 
 #' @importFrom tibble glimpse
 #' @export
