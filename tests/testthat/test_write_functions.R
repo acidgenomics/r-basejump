@@ -26,13 +26,28 @@ test_that("saveData", {
         c("rnaseqCounts.rda", "singleCellCounts.rda")
     )
     names(paths) <- c("rnaseqCounts", "singleCellCounts")
-    expect_identical(
-        saveData(
-            rnaseqCounts, singleCellCounts,
-            dir = dir, overwrite = TRUE
-        ),
-        paths
+
+    # rda (default)
+    x <- saveData(
+        rnaseqCounts, singleCellCounts,
+        dir = dir,
+        overwrite = TRUE
     )
+    expect_identical(x, paths)
+
+    # rds
+    x <- saveData(
+        rnaseqCounts, singleCellCounts,
+        ext = "rds",
+        dir = dir,
+        overwrite = TRUE
+    )
+    expect_identical(
+        basename(x),
+        c("rnaseqCounts.rds", "singleCellCounts.rds")
+    )
+
+    # Check `overwrite = FALSE` mode
     expect_warning(
         saveData(
             rnaseqCounts, singleCellCounts,
@@ -40,7 +55,11 @@ test_that("saveData", {
         ),
         "No files were saved."
     )
+
     unlink(dir, recursive = TRUE)
+})
+
+test_that("saveData : Invalid parameters", {
     expect_error(
         saveData(XXX),
         "object 'XXX' not found"
