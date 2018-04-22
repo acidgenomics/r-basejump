@@ -15,7 +15,7 @@ mappings. Must be structured as a two column \code{data.frame} with "txID" and
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Is Transcript-to-Gene Mapping Data

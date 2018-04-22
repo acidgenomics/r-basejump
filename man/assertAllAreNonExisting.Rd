@@ -7,14 +7,14 @@
 assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
 }
 \arguments{
-\item{x}{Character vector of variable names to check in environment.}
+\item{x}{\code{character} vector of variable names to check in \code{environment}.}
 
-\item{envir}{Environment.}
+\item{envir}{\code{environment}.}
 
-\item{inherits}{Should the enclosing frames of the environment be searched?}
+\item{inherits}{Should the enclosing frames of the \code{environment} be searched?}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert All Variables Are Non-Existing

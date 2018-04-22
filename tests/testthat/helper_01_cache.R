@@ -3,6 +3,7 @@ files <- c(
     "dmelanogaster.gtf",
     "example.counts",
     "example.csv",
+    "example.json",
     "example.rda",
     "example.rds",
     "example.tsv",
@@ -15,6 +16,7 @@ files <- c(
     "plotlist.rda",
     "renamed.rda",
     "rnaseqCounts.csv.gz",
+    "serialized.rds",
     "singleCellCounts.mtx.gz",
     "singleCellCounts.mtx.gz.colnames",
     "singleCellCounts.mtx.gz.rownames"

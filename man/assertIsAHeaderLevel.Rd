@@ -13,7 +13,7 @@ assertIsAHeaderLevel(x, severity = getOption("assertive.severity", "stop"))
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Markdown supports header levels 1-7 (\code{<H1>}-\code{<H7>}).

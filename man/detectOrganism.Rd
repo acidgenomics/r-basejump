@@ -5,10 +5,11 @@
 \alias{detectOrganism}
 \alias{detectOrganism}
 \alias{detectOrganism,character-method}
+\alias{detectOrganism,factor-method}
+\alias{detectOrganism,matrix-method}
 \alias{detectOrganism,data.frame-method}
 \alias{detectOrganism,DataFrame-method}
 \alias{detectOrganism,dgCMatrix-method}
-\alias{detectOrganism,matrix-method}
 \alias{detectOrganism,tbl_df-method}
 \title{Detect Organism}
 \usage{
@@ -16,13 +17,15 @@ detectOrganism(object, ...)
 
 \S4method{detectOrganism}{character}(object, unique = FALSE)
 
+\S4method{detectOrganism}{factor}(object, unique = FALSE)
+
+\S4method{detectOrganism}{matrix}(object)
+
 \S4method{detectOrganism}{data.frame}(object)
 
 \S4method{detectOrganism}{DataFrame}(object)
 
 \S4method{detectOrganism}{dgCMatrix}(object)
-
-\S4method{detectOrganism}{matrix}(object)
 
 \S4method{detectOrganism}{tbl_df}(object)
 }
@@ -31,15 +34,15 @@ detectOrganism(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{unique}{Only return unique matching organisms. Applies to character
+\item{unique}{Only return unique matching organisms. Applies to \code{character}
 vector input.}
 }
 \value{
-Full latin organism name. Always aborts on detection failure.
+Full latin organism name. Stops on detection failure.
 \itemize{
-\item Vector: Named character vector containing organism name or \code{NA} for
+\item \code{atomic}: Named \code{character} vector containing organism name or \code{NA} for
 individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
-\item Dim: Unique character vector of the organism(s) detected.  Warns if
+\item \code{dim}: Unique \code{character} vector of the organism(s) detected. Warns if
 multiple organisms are detected.
 }
 }

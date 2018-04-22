@@ -9,12 +9,14 @@ multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{envirName}{New environment name (\code{string}).}
+\item{envirName}{\code{character} string denoting the name of the new
+\code{environment} that will be created.}
 
-\item{parentEnvir}{Parent \code{environment} where to assign the new environment.}
+\item{parentEnvir}{Parent \code{environment} where to assign the new
+\code{environment}, defined by \code{envirName}.}
 }
 \value{
-\code{character} of object names in the new \code{environment}.
+\code{character} vector of object names in the new \code{environment}.
 }
 \description{
 Assign Multiple Objects as an Environment

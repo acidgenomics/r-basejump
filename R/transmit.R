@@ -89,16 +89,17 @@ transmit <- function(
     # Check for existing files and skip, if necessary
     if (any(file.exists(files))) {
         exists <- which(file.exists(files))
-        if (identical(length(exists), length(files))) {
-            message("All files already downloaded")
-            files <- normalizePath(files, winslash = "/", mustWork = TRUE)
-            names(files) <- match
-            return(invisible(files))
-        } else {
-            skip <- files[exists]
-            message(paste("Skipping", toString(basename(skip))))
-            localPaths <- localPaths[!exists]
-        }
+        skip <- files[exists]
+        message(paste("Skipping", toString(basename(skip))))
+        localPaths <- localPaths[!exists]
+    }
+
+    # Early return if all files exist
+    if (!length(localPaths)) {
+        message("All files have already downloaded")
+        files <- normalizePath(files, winslash = "/", mustWork = TRUE)
+        names(files) <- match
+        return(invisible(files))
     }
 
     message(paste("Downloading", toString(basename(files))))

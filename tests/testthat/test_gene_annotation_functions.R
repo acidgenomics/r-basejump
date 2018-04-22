@@ -14,21 +14,41 @@ test_that("annotable", {
 
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : character", {
-    x <- convertGenesToSymbols(
-        c("ENSMUSG00000000001", "ENSMUSG00000000003"),
+    x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+    y <- c(
+        "ENSMUSG00000000001" = "Gnai3",
+        "ENSMUSG00000000003" = "Pbsn"
+    )
+
+    # gene2symbol (recommended)
+    gene2symbol <- makeGene2symbolFromEnsembl(
+        organism = "Mus musculus",
         release = ensemblRelease
     )
     expect_identical(
-        x,
-        c(
-            "ENSMUSG00000000001" = "Gnai3",
-            "ENSMUSG00000000003" = "Pbsn"
-        )
+        convertGenesToSymbols(x, gene2symbol = gene2symbol),
+        y
+    )
+
+    # organism
+    expect_identical(
+        convertGenesToSymbols(
+            x,
+            organism = "Mus musculus",
+            release = ensemblRelease
+        ),
+        y
+    )
+
+    # No tx2gene or organism
+    expect_identical(
+        convertGenesToSymbols(x, release = ensemblRelease),
+        y
     )
 })
 
 test_that("convertGenesToSymbols : matrix", {
-    mat <- matrix(
+    x <- matrix(
         data = seq(1L:4L),
         byrow = TRUE,
         nrow = 2L,
@@ -39,7 +59,7 @@ test_that("convertGenesToSymbols : matrix", {
         )
     )
     expect_identical(
-        convertGenesToSymbols(mat, release = ensemblRelease) %>%
+        convertGenesToSymbols(x, release = ensemblRelease) %>%
             rownames(),
         c(
             "ENSMUSG00000000001" = "Gnai3",
@@ -50,29 +70,23 @@ test_that("convertGenesToSymbols : matrix", {
 
 test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
-    vec <- c("EGFP", "ENSMUSG00000000001")
-    g2s <- suppressWarnings(
-        convertGenesToSymbols(
-            object = vec,
-            organism = "Mus musculus",
-            release = ensemblRelease
-        )
-    )
-    expect_identical(g2s, c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3"))
-    expect_warning(
-        convertGenesToSymbols(
-            object = vec,
-            organism = "Mus musculus",
-            release = ensemblRelease
+    x <- c("EGFP", "ENSMUSG00000000001")
+    expect_identical(
+        suppressWarnings(
+            convertGenesToSymbols(
+                object = x,
+                organism = "Mus musculus",
+                release = ensemblRelease
+            )
         ),
-        "Failed to match all genes to symbols: EGFP"
+        c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3")
     )
 })
 
 test_that("convertGenesToSymbols : Invalid identifiers", {
     expect_warning(
         convertGenesToSymbols("ENSMUSG00000000000", release = ensemblRelease),
-        "Failed to match all genes to symbols: ENSMUSG00000000000"
+        "Failed to match genes: ENSMUSG00000000000"
     )
     expect_error(
         convertGenesToSymbols(c("ENSMUSG00000000001", NA)),
@@ -88,30 +102,36 @@ test_that("convertGenesToSymbols : Invalid identifiers", {
 
 # convertTranscriptsToGenes ====================================================
 test_that("convertTranscriptsToGenes : character", {
+    x <- c("ENSMUST00000000001", "ENSMUST00000000003")
+    y <- c(
+        "ENSMUST00000000001" = "ENSMUSG00000000001",
+        "ENSMUST00000000003" = "ENSMUSG00000000003"
+    )
+
+    # tx2gene (recommended)
+    tx2gene <- makeTx2geneFromEnsembl(
+        organism = "Mus musculus",
+        release = ensemblRelease
+    )
+    expect_identical(
+        convertTranscriptsToGenes(x, tx2gene = tx2gene),
+        y
+    )
+
+    # organism
     expect_identical(
         convertTranscriptsToGenes(
-            c("ENSMUST00000000001", "ENSMUST00000000003"),
+            x,
+            organism = "Mus musculus",
             release = ensemblRelease
         ),
-        c(
-            "ENSMUST00000000001" = "ENSMUSG00000000001",
-            "ENSMUST00000000003" = "ENSMUSG00000000003"
-        )
+        y
     )
-    expect_error(
-        convertTranscriptsToGenes(
-            c("ENSMUST00000000000", "ENSMUST00000000001"),
-            release = ensemblRelease
-        ),
-        "Unmatched transcripts present. Try using a GFF file instead."
-    )
-    expect_error(
-        convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
-        "is_non_missing_nor_empty_character :"
-    )
-    expect_error(
-        convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
-        "is_non_missing_nor_empty_character :"
+
+    # No tx2gene or organism
+    expect_identical(
+        convertTranscriptsToGenes(x, release = ensemblRelease),
+        y
     )
 })
 
@@ -133,7 +153,7 @@ test_that("convertTranscriptsToGenes : matrix", {
     )
     expect_error(
         convertTranscriptsToGenes(mat, release = ensemblRelease),
-        "Unmatched transcripts present. Try using a GFF file instead."
+        "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_identical(
         mat[2L:4L, ] %>%
@@ -147,6 +167,24 @@ test_that("convertTranscriptsToGenes : matrix", {
     )
 })
 
+test_that("convertTranscriptsToGenes : Invalid params", {
+    expect_error(
+        convertTranscriptsToGenes(
+            c("ENSMUST00000000000", "ENSMUST00000000001"),
+            release = ensemblRelease
+        ),
+        "Failed to match transcripts: ENSMUST00000000000"
+    )
+    expect_error(
+        convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
+        "is_non_missing_nor_empty_character :"
+    )
+    expect_error(
+        convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
+        "is_non_missing_nor_empty_character :"
+    )
+})
+
 
 
 # convertUCSCBuildToEnsembl ====================================================
@@ -154,6 +192,7 @@ test_that("convertUCSCBuildToEnsembl", {
     expect_identical(convertUCSCBuildToEnsembl("hg19"), "GRCh37")
     expect_identical(convertUCSCBuildToEnsembl("hg38"), "GRCh38")
     expect_identical(convertUCSCBuildToEnsembl("mm10"), "GRCm38")
+    expect_error(convertUCSCBuildToEnsembl("XXX"))
 })
 
 
@@ -440,21 +479,19 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     expect_identical(head(names(x), 1L), "ENST00000000233")
 })
 
-test_that("makeGRangesFromEnsembl : Unsupported release version", {
+test_that("makeGRangesFromEnsembl : Invalid parameters", {
+    expect_error(
+        makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
+        "Use Ensembl genome build name"
+    )
     expect_warning(
         makeGRangesFromEnsembl("Homo sapiens", release = 86L),
         "Switching to current release instead."
     )
-})
-
-test_that("makeGRangesFromEnsembl : Unsupported organism", {
     expect_error(
         makeGRangesFromEnsembl(organism = "AAA", genomeBuild = "BBB"),
         "No ID matched on AnnotationHub"
     )
-})
-
-test_that("makeGRangesFromEnsembl : Multiple organisms", {
     expect_error(
         makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
         "is_a_string : "

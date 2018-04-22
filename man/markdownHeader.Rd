@@ -15,7 +15,7 @@ markdownHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
 \item{tabset}{Include tabset marker.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an RMarkdown chunk with '\code{results="asis"}' enabled.}
+inside an RMarkdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{

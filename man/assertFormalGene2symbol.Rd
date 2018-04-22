@@ -8,17 +8,18 @@ assertFormalGene2symbol(x, genes, gene2symbol,
   severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
-\item{x}{Object containing gene identifiers in the rownames.}
+\item{x}{Object containing gene identifiers in the row names.}
 
-\item{genes}{Character vector of gene identifiers.}
+\item{genes}{\code{character} vector of gene identifiers.}
 
-\item{gene2symbol}{Gene-to-symbol mappings data frame.}
+\item{gene2symbol}{Gene-to-symbol mappings. Must contain a \code{data.frame} or
+\code{NULL}.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Formal Gene to Symbol Mappings

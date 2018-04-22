@@ -7,8 +7,8 @@
 #'
 #' @param list `list` containing column data (e.g. `data.frame`, `matrix`).
 #' @param captions Optional `character` vector of table captions.
-#' @param force Force knit output. *Recommended for development and unit testing
-#'   only.*
+#' @param force Force knit output. Recommended for development and unit testing
+#'   only.
 #'
 #' @return Knit tables.
 #' @export

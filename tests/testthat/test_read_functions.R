@@ -1,16 +1,19 @@
 context("Read Functions")
 
 # loadData =====================================================================
-test_that("loadData : Non-standard evaluation", {
+test_that("loadData", {
+    # rda
     x <- loadData(gr)
     expect_identical(
         x,
         c("gr" = normalizePath("gr.rda", winslash = "/"))
     )
-    # Avoid accidentally overwrites in the current environment
-    expect_error(
-        loadData(gr),
-        "Already exists in environment: gr"
+
+    # rds
+    x <- loadData(serialized)
+    expect_identical(
+        x,
+        c("serialized" = normalizePath("serialized.rds", winslash = "/"))
     )
 })
 
@@ -18,6 +21,15 @@ test_that("loadData : Standard evaluation", {
     expect_error(
         loadData("gr.rda"),
         "is_name :"
+    )
+})
+
+test_that("loadData : Already exists", {
+    # Avoid accidentally overwrites in the current environment
+    gr <- TRUE
+    expect_error(
+        loadData(gr),
+        "Already exists in environment: gr"
     )
 })
 
@@ -35,10 +47,17 @@ test_that("loadData : Renamed file", {
     )
 })
 
-test_that("loadData : RDA and RDS files in directory", {
+test_that("loadData : Duplicate RDA and RDS files", {
     expect_error(
         loadData(example),
         "Duplicates : example.rda, example.rds"
+    )
+})
+
+test_that("loadData : Uncertain extension", {
+    expect_error(
+        loadData(gr, serialized),
+        "Multiple extensions : rda, rds"
     )
 })
 
@@ -68,6 +87,12 @@ test_that("loadDataAsName : Non-standard evaluation", {
         loadDataAsName(data_1 = gr, data_2 = mn),
         "Already exists in environment: data_1, data_2"
     )
+})
+
+test_that("loadDataAsName : Serialized", {
+    x <- loadDataAsName(new = serialized)
+    expect_identical(names(x), "new")
+    expect_true(exists("new", inherits = FALSE))
 })
 
 test_that("loadData : Standard evaluation", {
@@ -168,6 +193,11 @@ test_that("readFileByExtension : Comma separated value file (.csv)", {
     expect_is(x, "tbl_df")
 })
 
+test_that("readFileByExtension : GFF", {
+    x <- readFileByExtension("mmusculus.gtf")
+    expect_is(x, "data.frame")
+})
+
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
     x <- readFileByExtension("singleCellCounts.mtx.gz")
     expect_is(x, "dgTMatrix")
@@ -223,7 +253,22 @@ test_that("readFileByExtension : R file", {
     expect_is(x, "character")
 })
 
-test_that("readFileByExtension : Unsupported file type", {
+test_that("readFileByExtension : R Data", {
+    # rda
+    x <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
+    expect_is(x, "tbl_df")
+
+    # rds
+    x <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
+    expect_is(x, "tbl_df")
+})
+
+test_that("readFileByExtension : YAML", {
+    x <- readFileByExtension("example.yaml")
+    expect_is(x, "list")
+})
+
+test_that("readFileByExtension : No extension", {
     # Missing extension
     file.create("example")
     expect_error(
@@ -253,6 +298,14 @@ test_that("readGFF : Unsupported file type", {
         readGFF("XXX.rda"),
         "is_matching_regex :"
     )
+})
+
+
+
+# readJSON =====================================================================
+test_that("readJSON", {
+    x <- readJSON("example.json")
+    expect_is(x, "list")
 })
 
 

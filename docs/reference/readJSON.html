@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read JSON File</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readJSON.R'><code>R/readJSON.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readJSON.R'><code>R/readJSON.R</code></a></small>
     <div class="hidden name"><code>readJSON.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Read JSON File</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>readJSON</span>(<span class='no'>file</span>)</pre>
     
@@ -128,7 +132,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readJSON</span>(<span class='st'>"http://basejump.seq.cloud/example.json"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.json</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readJSON</span>(<span class='st'>"http://basejump.seq.cloud/example.json"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: jsonlite</span></div><div class='output co'>#&gt; <span class='message'>Reading example.json</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
 #&gt; [4] "input_fasta_files" "input_gtf_files"   "mem_gb"           
 #&gt; [7] "mkref_version"     "threads"           "version"          </div></pre>
   </div>

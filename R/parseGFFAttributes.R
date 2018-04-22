@@ -15,8 +15,10 @@
 #' @export
 #'
 #' @examples
-#' parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf") %>%
-#'     glimpse()
+#' invisible(capture.output(
+#'     x <- parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf")
+#' ))
+#' glimpse(x)
 parseGFFAttributes <- function(
     file,
     select = c("gene_", "transcript_"),
@@ -54,13 +56,7 @@ parseGFFAttributes <- function(
         strings <- unique(strings)
     }
 
-    # Show a progress bar when parsing a large number of strings
-    if (length(strings) > 10000L) {
-        fxn <- pblapply
-    } else {
-        fxn <- lapply
-    }
-    list <- fxn(strings, function(x) {
+    list <- pblapply(strings, function(x) {
         # Remove trailing delim
         x <- gsub(
             pattern = ";$",

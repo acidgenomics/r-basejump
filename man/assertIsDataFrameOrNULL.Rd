@@ -13,13 +13,13 @@ assertIsDataFrameOrNULL(x, severity = getOption("assertive.severity", "stop"))
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Is Data Frame or NULL
 }
 \note{
-This checks for \code{data.frame} and will stop for \code{DataFrame} class.
+This checks for \code{data.frame} and will stop on \code{DataFrame} class.
 }
 \examples{
 assertIsDataFrameOrNULL(datasets::mtcars)

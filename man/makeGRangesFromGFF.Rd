@@ -24,11 +24,15 @@ GTF (General Transfer Format) is identical to GFF version 2.
 file <- "http://basejump.seq.cloud/mmusculus.gtf"
 
 # Genes
-x <- makeGRangesFromGFF(file, format = "genes")
+invisible(capture.output(
+    x <- makeGRangesFromGFF(file, format = "genes")
+))
 summary(x)
 
 # Transcripts
-x <- makeGRangesFromGFF(file, format = "transcripts")
+invisible(capture.output(
+    x <- makeGRangesFromGFF(file, format = "transcripts")
+))
 summary(x)
 }
 \seealso{

@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read File by Extension</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readFileByExtension.R'><code>R/readFileByExtension.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readFileByExtension.R'><code>R/readFileByExtension.R</code></a></small>
     <div class="hidden name"><code>readFileByExtension.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Supports automatic loading of common file extensions:</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>file</span>, <span class='kw'>makeNames</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"camel"</span>, <span class='st'>"dotted"</span>, <span class='st'>"snake"</span>,
   <span class='st'>"upperCamel"</span>), <span class='no'>...</span>)</pre>
@@ -148,6 +152,9 @@ internal object name to match, like in the <code><a href='loadData.html'>loadDat
 <li><p><code>colnames</code>: Sidecar file containing column names.</p></li>
 <li><p><code>rownames</code>: Sidecar file containing row names.</p></li>
 </ul>
+    <p>If the file format isn't supported natively (or blacklisted), the
+<a href='https://cran.r-project.org/web/packages/rio/index.html'>rio</a> package will
+be used as a fallback attempt.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -163,10 +170,7 @@ is provided.</p>
 <li><p><a href='http://readxl.tidyverse.org'>readxl</a>.</p></li>
 <li><p><a href='https://cran.r-project.org/web/packages/Matrix/index.html'>Matrix</a>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Integration of the
-<a href='https://cran.r-project.org/web/packages/rio/index.html'>rio</a> package is
-being considered for a future update.</p>
-<p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
+    <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
   <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
   <code><a href='readGFF.html'>readGFF</a></code>, <code><a href='readJSON.html'>readJSON</a></code>,
   <code><a href='readYAML.html'>readYAML</a></code></p></div>

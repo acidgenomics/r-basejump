@@ -7,14 +7,17 @@
 localOrRemoteFile(file)
 }
 \arguments{
-\item{file}{File path.}
+\item{file}{Local file path or remote URL.}
 }
 \value{
-Named \code{character} containing the original basename as the name and
-local file path (i.e. tempfile) as the string. Aborts on a missing file.
+\code{character} vector containing the local file paths.
 }
 \description{
 This function is vectorized and supports mixed local and remote paths.
+Remote files are downloaded locally to a temporary directory.
+}
+\note{
+Stops on a missing file.
 }
 \examples{
 # Single file
@@ -29,6 +32,8 @@ x <- localOrRemoteFile(c(
 basename(x)
 }
 \seealso{
+\code{\link[base:tempdir]{base::tempdir()}}.
+
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
