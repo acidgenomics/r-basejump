@@ -29,7 +29,12 @@ methodFormals <- function(f, signature) {
         if (is.function(local)) {
             return(formals(local))
         }
-        warning("Expected `.local` assignment to be a function")
+        # nocov start
+        warning(paste(
+            "Expected a .local assignment to be a function.",
+            "Corrupted method?"
+        ))
+        # nocov end
     }
     genFormals
 }
