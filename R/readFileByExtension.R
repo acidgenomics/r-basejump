@@ -105,7 +105,7 @@ readFileByExtension <- function(
         "sh"
     )
     if (exti %in% blacklist) {
-        stop(unsupported)
+        stop(unsupported)  # nocov
     } else if (exti %in% source) {
         message("Importing as source code lines")
         data <- read_lines(file)
@@ -173,18 +173,22 @@ readFileByExtension <- function(
     } else if (exti %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
     } else if (requireNamespace("rio", quietly = TRUE)) {
+        # nocov start
         message(paste(
             paste(deparse(ext), "isn't natively supported."),
             "Attempting to read using `rio::import()`.",
             sep = "\n"
         ))
         data <- rio::import(file)
+        # nocov end
     } else {
+        # nocov start
         stop(paste(
             unsupported,
             "Install the rio package for additional file format support.",
             sep = "\n"
         ))
+        # nocov end
     }
 
     # Sanitize colnames

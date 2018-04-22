@@ -77,7 +77,7 @@ test_that("saveData : Invalid parameters", {
 
 
 # transmit =====================================================================
-test_that("transmit : Standard", {
+test_that("transmit", {
     x <- transmit(
         remoteDir = ensemblURL,
         pattern = "README",
@@ -86,6 +86,17 @@ test_that("transmit : Standard", {
     y <- file.path(getwd(), "README")
     names(y) <- "README"
     expect_identical(x, y)
+
+    # Check that function skips on existing
+    expect_message(
+        transmit(
+            remoteDir = ensemblURL,
+            pattern = "README",
+            compress = FALSE
+        ),
+        "All files have already downloaded"
+    )
+
     unlink("README")
 })
 
