@@ -47,10 +47,17 @@ test_that("loadData : Renamed file", {
     )
 })
 
-test_that("loadData : RDA and RDS files in directory", {
+test_that("loadData : Duplicate RDA and RDS files", {
     expect_error(
         loadData(example),
         "Duplicates : example.rda, example.rds"
+    )
+})
+
+test_that("loadData : Uncertain extension", {
+    expect_error(
+        loadData(gr, serialized),
+        "Multiple extensions : rda, rds"
     )
 })
 
