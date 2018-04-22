@@ -3,6 +3,7 @@
 *.csv
 *.gtf
 *.gz
+*.json
 *.mtx
 *.rda
 *.rds

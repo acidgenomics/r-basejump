@@ -302,6 +302,14 @@ test_that("readGFF : Unsupported file type", {
 
 
 
+# readJSON =====================================================================
+test_that("readJSON", {
+    x <- readJSON("example.json")
+    expect_is(x, "list")
+})
+
+
+
 # readYAML =====================================================================
 test_that("readYAML : bcbio project summary", {
     x <- readYAML("example.yaml")

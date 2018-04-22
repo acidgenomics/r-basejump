@@ -81,7 +81,10 @@ makeGRangesFromEnsembl <- function(
         is_a_string(genomeBuild) &&
         grepl("^[a-z]{2}\\d{2}$", genomeBuild)
     ) {
-        stop("Use Ensembl genome build name instead of UCSC name")
+        stop(paste(
+            "Use Ensembl genome build name (e.g. GRCh38)",
+            "instead of UCSC name (e.g. hg38)"
+        ))
     }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
@@ -109,9 +112,11 @@ makeGRangesFromEnsembl <- function(
         if (requireNamespace(id, quietly = TRUE)) {
             edb <- get(id, envir = asNamespace(id), inherits = FALSE)
         } else {
+            # nocov start
             stop(paste(
                 "GRCh37 genome build requires the", id, "package"
             ))
+            # nocov end
         }
     } else {
         # AnnotationHub ========================================================
