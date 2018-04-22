@@ -1,16 +1,19 @@
 context("Read Functions")
 
 # loadData =====================================================================
-test_that("loadData : Non-standard evaluation", {
+test_that("loadData", {
+    # rda
     x <- loadData(gr)
     expect_identical(
         x,
         c("gr" = normalizePath("gr.rda", winslash = "/"))
     )
-    # Avoid accidentally overwrites in the current environment
-    expect_error(
-        loadData(gr),
-        "Already exists in environment: gr"
+
+    # rds
+    x <- loadData(serialized)
+    expect_identical(
+        x,
+        c("serialized" = normalizePath("serialized.rds", winslash = "/"))
     )
 })
 
@@ -18,6 +21,15 @@ test_that("loadData : Standard evaluation", {
     expect_error(
         loadData("gr.rda"),
         "is_name :"
+    )
+})
+
+test_that("loadData : Already exists", {
+    # Avoid accidentally overwrites in the current environment
+    gr <- TRUE
+    expect_error(
+        loadData(gr),
+        "Already exists in environment: gr"
     )
 })
 
