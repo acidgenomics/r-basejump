@@ -25,8 +25,10 @@ Memory overhead and speed is greatly improved by requiring keys.
 Deparsing only unique values is much faster and generally recommended.
 }
 \examples{
-parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf") \%>\%
-    glimpse()
+invisible(capture.output(
+    x <- parseGFFAttributes("http://basejump.seq.cloud/mmusculus.gtf")
+))
+glimpse(x)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
