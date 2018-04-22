@@ -34,9 +34,11 @@
         message("Using geneName instead of symbol")
         data[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(data)) {
+        # nocov start
         message("Renaming symbol to geneName")
         data[["geneName"]] <- data[["symbol"]]
         data[["symbol"]] <- NULL
+        # nocov end
     }
 
     # Set strings as factors
