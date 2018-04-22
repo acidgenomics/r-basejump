@@ -69,3 +69,13 @@ test_that("multiassignAsEnvir", {
         "is_a_string : envirName"
     )
 })
+
+
+
+# printString ==================================================================
+test_that("printString", {
+    expect_identical(
+        printString(c("hello", "world")),
+        "[1] \"hello\" \"world\""
+    )
+})

@@ -13,7 +13,7 @@ assertFormalCompress(x, severity = getOption("assertive.severity", "stop"))
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Formal Compression

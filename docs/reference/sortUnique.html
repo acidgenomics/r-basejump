@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quickly Perform Sort Unique on a Vector — sortUnique • basejump</title>
+<title>Sort and Make Unique — sortUnique • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,16 +21,19 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Quickly Perform Sort Unique on a Vector — sortUnique" />
+<meta property="og:title" content="Sort and Make Unique — sortUnique" />
 
-<meta property="og:description" content="The function also strips NA values. This is useful for gene list server
-queries, for example." />
+<meta property="og:description" content="This is a convenience function to quickly sort and atomic vector and make the
+values unique. The function also strips NA values. This is useful for
+repetitive gene vector operations, for example." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -60,7 +63,7 @@ queries, for example." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,30 +99,33 @@ queries, for example." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Quickly Perform Sort Unique on a Vector</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sortUnique.R'><code>R/sortUnique.R</code></a></small>
+    <h1>Sort and Make Unique</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sortUnique.R'><code>R/sortUnique.R</code></a></small>
     <div class="hidden name"><code>sortUnique.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>The function also strips <code>NA</code> values. This is useful for gene list server
-queries, for example.</p>
+    <p>This is a convenience function to quickly sort and atomic vector and make the
+values unique. The function also strips <code>NA</code> values. This is useful for
+repetitive gene vector operations, for example.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>sortUnique</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>sortUnique</span>(<span class='no'>atomic</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>atomic</th>
+      <td><p><code>atomic</code> vector.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Unique <code>vector</code>.</p>
+    <p><code>atomic</code> vector.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

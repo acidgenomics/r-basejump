@@ -6,18 +6,14 @@
 #'
 #' @inherit convertGenesToSymbols
 #'
-#' @param tx2gene *Optional.* Transcript-to-gene mappings. If `NULL`, will
-#'   attempt to download from Ensembl using the desired `organism`,
-#'   `genomeBuild`, and `release` arguments.
+#' @param tx2gene *Optional.* Transcript-to-gene mappings. If missing, the
+#'   function will attempt to download mappings from Ensembl according to the
+#'   `organism`, `genomeBuild`, and `release` parameters.
 #'
 #' @examples
 #' # character ====
-#' transcripts <- c(
-#'     "ENSMUST00000000001",
-#'     "ENSMUST00000000003",
-#'     "ENSMUST00000114041"
-#' )
-#' convertTranscriptsToGenes(transcripts)
+#' x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
+#' convertTranscriptsToGenes(x)
 #'
 #' # matrix ====
 #' mat <- matrix(
@@ -45,8 +41,8 @@ setMethod(
     signature("character"),
     function(
         object,
-        tx2gene = NULL,
-        organism = NULL,
+        tx2gene,
+        organism,
         genomeBuild = NULL,
         release = NULL
     ) {
@@ -54,18 +50,12 @@ setMethod(
         assert_is_character(object)
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
-        assert_is_any_of(tx2gene, c("data.frame", "NULL"))
-        assertIsAStringOrNULL(organism)
-        assertIsAnImplicitIntegerOrNULL(release)
 
         # If no tx2gene is provided, fall back to using Ensembl annotations
-        if (!is.data.frame(tx2gene)) {
-            # Generate tx2gene from Ensembl
+        if (missing(tx2gene) || is.null(tx2gene)) {
             message("Obtaining transcript-to-gene mappings from Ensembl")
-            if (is.null(organism)) {
+            if (missing(organism) || is.null(organism)) {
                 organism <- detectOrganism(object, unique = TRUE)
-            } else if (is_a_string(organism)) {
-                organism <- detectOrganism(organism)
             }
             assert_is_a_string(organism)
             tx2gene <- makeTx2geneFromEnsembl(
@@ -73,28 +63,19 @@ setMethod(
                 genomeBuild = genomeBuild,
                 release = release
             )
-        } else {
-            assertIsTx2gene(tx2gene)
+        }
+        assertIsTx2gene(tx2gene)
+
+        missing <- setdiff(object, tx2gene[["txID"]])
+        if (length(missing)) {
+            stop(paste("Failed to match transcripts:", toString(missing)))
         }
 
-        tx2gene <- tx2gene %>%
-            .[object, , drop = FALSE] %>%
-            .[!is.na(.[["geneID"]]), , drop = FALSE]
+        tx2gene <- tx2gene[match(object, tx2gene[["txID"]]), , drop = FALSE]
 
-        geneID <- tx2gene[["geneID"]]
-        names(geneID) <- tx2gene[["txID"]]
-
-        if (!all(object %in% names(geneID))) {
-            stop(paste(
-                "Unmatched transcripts present.",
-                "Try using a GFF file instead."
-            ))
-        }
-
-        assert_is_character(geneID)
-        assert_has_names(geneID)
-
-        geneID[object]
+        return <- tx2gene[["geneID"]]
+        names(return) <- tx2gene[["txID"]]
+        return
     }
 )
 

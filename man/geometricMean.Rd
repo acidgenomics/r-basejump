@@ -4,24 +4,19 @@
 \name{geometricMean}
 \alias{geometricMean}
 \alias{geometricMean}
-\alias{geometricMean,data.frame-method}
-\alias{geometricMean,integer-method}
-\alias{geometricMean,matrix-method}
 \alias{geometricMean,numeric-method}
-\alias{geomean}
+\alias{geometricMean,matrix-method}
+\alias{geometricMean,data.frame-method}
 \title{Geometric Mean}
 \usage{
 geometricMean(object, ...)
 
-\S4method{geometricMean}{data.frame}(object)
-
-\S4method{geometricMean}{integer}(object, removeNA = TRUE,
+\S4method{geometricMean}{numeric}(object, removeNA = TRUE,
   zeroPropagate = FALSE)
 
 \S4method{geometricMean}{matrix}(object)
 
-\S4method{geometricMean}{numeric}(object, removeNA = TRUE,
-  zeroPropagate = FALSE)
+\S4method{geometricMean}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -45,7 +40,7 @@ not particularly useful if there are elements that are <= 0 and will return
 \code{NaN}.
 }
 \examples{
-# integer ====
+# numeric ====
 vec <- seq(1L, 5L, 1L)
 geometricMean(vec)
 vec2 <- vec ^ 2L

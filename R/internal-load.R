@@ -19,7 +19,7 @@
         ignore.case = TRUE
     )
     if (!length(files)) {
-        stop(rdataError)
+        stop(rdataError, call. = FALSE)
     }
     names <- gsub(rdataExtPattern, "", basename(files), ignore.case = TRUE)
     names(files) <- names

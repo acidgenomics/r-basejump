@@ -3,7 +3,8 @@
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams methods::getMethod
+#' @param f Generic `function` or `character` string.
+#' @param signature The signature of classes to match to the `f` argument.
 #'
 #' @return `list` of formal arguments.
 #' @export
@@ -28,7 +29,12 @@ methodFormals <- function(f, signature) {
         if (is.function(local)) {
             return(formals(local))
         }
-        warning("Expected `.local` assignment to be a function")
+        # nocov start
+        warning(paste(
+            "Expected a .local assignment to be a function.",
+            "Corrupted method?"
+        ))
+        # nocov end
     }
     genFormals
 }

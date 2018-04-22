@@ -4,12 +4,12 @@
 #' @keywords internal
 #'
 #' @param x Object.
-#' @param envir Environment.
-#' @param inherits Should the enclosing frames of the environment be searched?
+#' @param envir `environment`.
+#' @param inherits Should the enclosing frames of the `environment` be searched?
 #' @param severity How severe should the consequences of the assertion be?
 #'   Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
-#' @return Abort on mismatch.
+#' @return Stop on mismatch.
 NULL
 
 
@@ -30,7 +30,7 @@ NULL
 #' @author Michael Steinbaugh
 #' @inherit assert
 #'
-#' @param x Character vector of variable names to check in environment.
+#' @param x `character` vector of variable names to check in `environment`.
 #'
 #' @export
 #'
@@ -151,9 +151,10 @@ assertFormalCompress <- function(
 #' @author Michael Steinbaugh
 #' @inherit assert
 #'
-#' @param x Object containing gene identifiers in the rownames.
-#' @param genes Character vector of gene identifiers.
-#' @param gene2symbol Gene-to-symbol mappings data frame.
+#' @param x Object containing gene identifiers in the row names.
+#' @param genes `character` vector of gene identifiers.
+#' @param gene2symbol Gene-to-symbol mappings. Must contain a `data.frame` or
+#'   `NULL`.
 #'
 #' @export
 #'
@@ -432,7 +433,7 @@ assertIsColorScaleDiscreteOrNULL <- function(
 
 #' Assert Is Data Frame or NULL
 #'
-#' @note This checks for `data.frame` and will stop for `DataFrame` class.
+#' @note This checks for `data.frame` and will stop on `DataFrame` class.
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
@@ -539,7 +540,7 @@ assertIsFillScaleDiscreteOrNULL <- function(
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be
-#'   structured as a two column `data.frame` with "geneID" and "geneName"
+#'   structured as a two column `data.frame` with "`geneID`" and "`geneName`"
 #'   columns.
 #'
 #' @export
@@ -571,7 +572,7 @@ assertIsGene2symbol <- function(
 #' @author Michael Steinbaugh
 #' @inherit assert
 #'
-#' @param x GFF `data.frame`.
+#' @param x `data.frame`.
 #'
 #' @export
 assertIsGFF <- function(

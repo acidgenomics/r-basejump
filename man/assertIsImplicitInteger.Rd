@@ -26,7 +26,7 @@ isImplicitInteger(x)
 \item{x}{Object.}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Is Implicit Integer

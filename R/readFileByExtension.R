@@ -19,6 +19,10 @@
 #' - `colnames`: Sidecar file containing column names.
 #' - `rownames`: Sidecar file containing row names.
 #'
+#' If the file format isn't supported natively (or blacklisted), the
+#' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
+#' be used as a fallback attempt.
+#'
 #' @note Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
 #'   `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
 #'   the sparse matrix. Legacy support for manual loading of these sidecar files
@@ -38,10 +42,6 @@
 #' - [readr](http://readr.tidyverse.org).
 #' - [readxl](http://readxl.tidyverse.org).
 #' - [Matrix](https://cran.r-project.org/web/packages/Matrix/index.html).
-#'
-#' Integration of the
-#' [rio](https://cran.r-project.org/web/packages/rio/index.html) package is
-#' being considered for a future update.
 #'
 #' @examples
 #' # Comma Separated Values
@@ -105,7 +105,7 @@ readFileByExtension <- function(
         "sh"
     )
     if (exti %in% blacklist) {
-        stop(unsupported)
+        stop(unsupported)  # nocov
     } else if (exti %in% source) {
         message("Importing as source code lines")
         data <- read_lines(file)
@@ -173,18 +173,22 @@ readFileByExtension <- function(
     } else if (exti %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
     } else if (requireNamespace("rio", quietly = TRUE)) {
+        # nocov start
         message(paste(
             paste(deparse(ext), "isn't natively supported."),
             "Attempting to read using `rio::import()`.",
             sep = "\n"
         ))
         data <- rio::import(file)
+        # nocov end
     } else {
+        # nocov start
         stop(paste(
             unsupported,
             "Install the rio package for additional file format support.",
             sep = "\n"
         ))
+        # nocov end
     }
 
     # Sanitize colnames

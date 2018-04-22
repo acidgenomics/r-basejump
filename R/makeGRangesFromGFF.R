@@ -17,11 +17,15 @@
 #' file <- "http://basejump.seq.cloud/mmusculus.gtf"
 #'
 #' # Genes
-#' x <- makeGRangesFromGFF(file, format = "genes")
+#' invisible(capture.output(
+#'     x <- makeGRangesFromGFF(file, format = "genes")
+#' ))
 #' summary(x)
 #'
 #' # Transcripts
-#' x <- makeGRangesFromGFF(file, format = "transcripts")
+#' invisible(capture.output(
+#'     x <- makeGRangesFromGFF(file, format = "transcripts")
+#' ))
 #' summary(x)
 makeGRangesFromGFF <- function(
     file,

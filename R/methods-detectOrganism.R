@@ -19,14 +19,14 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param unique Only return unique matching organisms. Applies to character
+#' @param unique Only return unique matching organisms. Applies to `character`
 #'   vector input.
 #'
-#' @return Full latin organism name. Always aborts on detection failure.
+#' @return Full latin organism name. Stops on detection failure.
 #'
-#' - Vector: Named character vector containing organism name or `NA` for
+#' - `atomic`: Named `character` vector containing organism name or `NA` for
 #'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
-#' - Dim: Unique character vector of the organism(s) detected.  Warns if
+#' - `dim`: Unique `character` vector of the organism(s) detected. Warns if
 #'   multiple organisms are detected.
 #'
 #' @examples
@@ -158,57 +158,6 @@ NULL
 
 
 
-.detectOrganism.character <- function(object, unique = FALSE) {  # nolint
-    assert_is_a_bool(unique)
-    x <- vapply(
-        X = object,
-        FUN = .detectOrganism,
-        FUN.VALUE = character(1L)
-    )
-    if (all(is.na(x))) {
-        stop("Failed to detect organism")
-    }
-    if (is_a_string(x)) {
-        names(x) <- NULL
-    }
-    if (length(na.omit(unique(x))) > 1L) {
-        warning("Multiple organisms detected")
-    }
-    if (isTRUE(unique)) {
-        x <- x %>%
-            as.character() %>%
-            na.omit() %>%
-            unique()
-    }
-    x
-}
-
-
-
-.detectOrganism.dim <- function(object) {  # nolint
-    # Assume gene identifiers are defined in the rownames
-    assertHasRownames(object)
-    .returnUniqueOrganism(rownames(object))
-}
-
-
-
-.detectOrganism.tibble <- function(object) {  # nolint
-    assert_has_colnames(object)
-    object <- camel(object)
-    idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
-    assert_are_intersecting_sets(idCols, colnames(object))
-    idCol <- match(
-        x = idCols,
-        table = colnames(object)
-    ) %>%
-        na.omit() %>%
-        .[[1L]]
-    .returnUniqueOrganism(object[, idCol, drop = TRUE])
-}
-
-
-
 .returnUniqueOrganism <- function(object) {
     assert_is_character(object)
     x <- detectOrganism(object)
@@ -224,7 +173,30 @@ NULL
 setMethod(
     "detectOrganism",
     signature("character"),
-    .detectOrganism.character
+    function(object, unique = FALSE) {
+        assert_is_a_bool(unique)
+        x <- vapply(
+            X = as.character(object),
+            FUN = .detectOrganism,
+            FUN.VALUE = character(1L)
+        )
+        if (all(is.na(x))) {
+            stop("Failed to detect organism")
+        }
+        if (is_a_string(x)) {
+            names(x) <- NULL
+        }
+        if (length(na.omit(unique(x))) > 1L) {
+            warning("Multiple organisms detected")
+        }
+        if (isTRUE(unique)) {
+            x <- x %>%
+                as.character() %>%
+                na.omit() %>%
+                unique()
+        }
+        x
+    }
 )
 
 
@@ -233,28 +205,8 @@ setMethod(
 #' @export
 setMethod(
     "detectOrganism",
-    signature("data.frame"),
-    .detectOrganism.dim
-)
-
-
-
-#' @rdname detectOrganism
-#' @export
-setMethod(
-    "detectOrganism",
-    signature("DataFrame"),
-    .detectOrganism.dim
-)
-
-
-
-#' @rdname detectOrganism
-#' @export
-setMethod(
-    "detectOrganism",
-    signature("dgCMatrix"),
-    .detectOrganism.dim
+    signature("factor"),
+    getMethod("detectOrganism", "character")
 )
 
 
@@ -264,7 +216,41 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("matrix"),
-    .detectOrganism.dim
+    function(object) {
+        # Assume gene identifiers are defined in the rownames
+        assertHasRownames(object)
+        .returnUniqueOrganism(rownames(object))
+    }
+)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("data.frame"),
+    getMethod("detectOrganism", "matrix")
+)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("DataFrame"),
+    getMethod("detectOrganism", "matrix")
+)
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    "detectOrganism",
+    signature("dgCMatrix"),
+    getMethod("detectOrganism", "matrix")
 )
 
 
@@ -274,5 +260,17 @@ setMethod(
 setMethod(
     "detectOrganism",
     signature("tbl_df"),
-    .detectOrganism.tibble
+    function(object) {
+        assert_has_colnames(object)
+        object <- camel(object)
+        idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
+        assert_are_intersecting_sets(idCols, colnames(object))
+        idCol <- match(
+            x = idCols,
+            table = colnames(object)
+        ) %>%
+            na.omit() %>%
+            .[[1L]]
+        .returnUniqueOrganism(object[, idCol, drop = TRUE])
+    }
 )

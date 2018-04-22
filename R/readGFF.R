@@ -19,8 +19,7 @@ gffCols <- c(
 #' GTF (General Transfer Format) is identical to GFF version 2.
 #'
 #' Column names follow the
-#' [conventions](https://ensembl.org/info/website/upload/gff.html)
-#' defined by Ensembl.
+#' [conventions defined by Ensembl](https://bit.ly/2K6EBla).
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
@@ -51,10 +50,10 @@ readGFF <- function(file) {
             stringsAsFactors = FALSE
         ),
         error = function(e) {
-            stop("GFF file failed to load")
+            stop("GFF file failed to load")  # nocov
         },
         warning = function(w) {
-            stop("GFF file failed to load")
+            stop("GFF file failed to load")  # nocov
         }
     )
     gff

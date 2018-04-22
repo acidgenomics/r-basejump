@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -29,7 +31,7 @@
   
 <meta property="og:title" content="Print String — printString" />
 
-<meta property="og:description" content="Capture print() output of an atomic vector. Useful for returning
+<meta property="og:description" content="Capture base::print() output of an atomic vector. Useful for returning
 informative messages inside a function." />
 <meta name="twitter:card" content="summary" />
 
@@ -60,7 +62,7 @@ informative messages inside a function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -97,14 +99,16 @@ informative messages inside a function." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Print String</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/printString.R'><code>R/printString.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/printString.R'><code>R/printString.R</code></a></small>
     <div class="hidden name"><code>printString.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>Capture <code>print()</code> output of an <code>atomic</code> vector. Useful for returning
+    <p>Capture <code><a href='http://www.rdocumentation.org/packages/base/topics/print'>base::print()</a></code> output of an <code>atomic</code> vector. Useful for returning
 informative messages inside a function.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>printString</span>(<span class='no'>x</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>100L</span>)</pre>
     
@@ -127,7 +131,7 @@ informative messages inside a function.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>cat()</code>.</p>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/base/topics/cat'>base::cat()</a></code>.</p>
 <p>Other Developer Functions: <code><a href='detectHPC.html'>detectHPC</a></code>,
   <code><a href='dots.html'>dots</a></code>, <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
   <code><a href='methodFormals.html'>methodFormals</a></code>,

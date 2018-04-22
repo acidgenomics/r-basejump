@@ -4,8 +4,7 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism = c(human = "Homo sapiens", mouse = "Mus musculus",
-  nematode_worm = "Caenorhabditis elegans", fruit_fly =
+panther(organism = c("Homo sapiens", "Mus musculus", "Caenorhabditis elegans",
   "Drosophila melanogaster"), release = NULL)
 }
 \arguments{

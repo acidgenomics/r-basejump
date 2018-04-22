@@ -35,7 +35,7 @@ removeNA(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Sanitized data.
+Sanitized object.
 }
 \description{
 Remove Rows and Columns Containing Only \code{NA} Values

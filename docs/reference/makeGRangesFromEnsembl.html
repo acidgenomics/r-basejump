@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -62,7 +64,7 @@ ensembldb." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -99,16 +101,18 @@ ensembldb." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Genomic Ranges from Ensembl</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRangesFromEnsembl.R'><code>R/makeGRangesFromEnsembl.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRangesFromEnsembl.R'><code>R/makeGRangesFromEnsembl.R</code></a></small>
     <div class="hidden name"><code>makeGRangesFromEnsembl.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Quickly obtain gene and transcript annotations from
 <a href='http://www.ensembl.org'>Ensembl</a> using
 <a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a> and
 <a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
   <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>

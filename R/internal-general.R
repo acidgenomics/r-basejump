@@ -4,6 +4,7 @@
 #' @author Michael Steinbaugh
 #' @keywords internal
 #'
+#' @param atomic `atomic` vector.
 #' @param object Object.
 #' @param value Value to assign.
 #' @param x Object.

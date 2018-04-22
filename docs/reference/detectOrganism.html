@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -59,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -96,18 +98,26 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Detect Organism</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-detectOrganism.R'><code>R/methods-detectOrganism.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-detectOrganism.R'><code>R/methods-detectOrganism.R</code></a></small>
     <div class="hidden name"><code>detectOrganism.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Supports organism detection from genome build or Ensembl identifier.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
@@ -116,9 +126,6 @@
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for matrix</span>
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for tbl_df</span>
@@ -137,17 +144,17 @@
     </tr>
     <tr>
       <th>unique</th>
-      <td><p>Only return unique matching organisms. Applies to character
+      <td><p>Only return unique matching organisms. Applies to <code>character</code>
 vector input.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Full latin organism name. Always aborts on detection failure.</p><ul>
-<li><p>Vector: Named character vector containing organism name or <code>NA</code> for
+    <p>Full latin organism name. Stops on detection failure.</p><ul>
+<li><p><code>atomic</code>: Named <code>character</code> vector containing organism name or <code>NA</code> for
 individual match failures (e.g. spike-ins like EGFP, TDTOMATO).</p></li>
-<li><p>Dim: Unique character vector of the organism(s) detected.  Warns if
+<li><p><code>dim</code>: Unique <code>character</code> vector of the organism(s) detected. Warns if
 multiple organisms are detected.</p></li>
 </ul>
 

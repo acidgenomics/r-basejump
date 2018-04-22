@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -61,7 +63,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -98,15 +100,17 @@ GTF (General Transfer Format) is identical to GFF version 2." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Gene-to-Symbol Mappings from GFF File</h1>
-    <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGene2symbolFromGFF.R'><code>R/makeGene2symbolFromGFF.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGene2symbolFromGFF.R'><code>R/makeGene2symbolFromGFF.R</code></a></small>
     <div class="hidden name"><code>makeGene2symbolFromGFF.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>makeGene2symbolFromGFF</span>(<span class='no'>file</span>)</pre>
     
@@ -142,8 +146,9 @@ GTF (General Transfer Format) is identical to GFF version 2.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='output co'>#&gt; Observations: 17
+    <pre class="examples"><div class='input'><span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
+    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>)
+))</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 17
 #&gt; Variables: 2
 #&gt; $ geneID   &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG000000...
 #&gt; $ geneName &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938", ...</div></pre>

@@ -16,7 +16,7 @@ hasRownames(x)
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 A stricter alternative to the assertive version that works properply with

@@ -6,15 +6,15 @@
 \arguments{
 \item{x}{Object.}
 
-\item{envir}{Environment.}
+\item{envir}{\code{environment}.}
 
-\item{inherits}{Should the enclosing frames of the environment be searched?}
+\item{inherits}{Should the enclosing frames of the \code{environment} be searched?}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Abort on mismatch.
+Stop on mismatch.
 }
 \description{
 Assert Checks

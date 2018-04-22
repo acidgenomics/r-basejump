@@ -10,6 +10,7 @@
 #' x <- hgnc2gene()
 #' glimpse(x)
 hgnc2gene <- function() {
+    message("Obtaining HGNC to Ensembl gene ID mappings")
     raw <- read_tsv(
         file = paste(
             "ftp://ftp.ebi.ac.uk",

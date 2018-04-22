@@ -28,7 +28,7 @@ convention of \code{\link[=saveData]{saveData()}}, regardless of the extension u
     for workspace format version 1.}
 }
 \value{
-Silent named character vector of file paths.
+Invisible named \code{character} vector of file paths.
 }
 \description{
 Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object names passed as

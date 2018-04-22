@@ -1,15 +1,18 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
 #' This function is vectorized and supports mixed local and remote paths.
+#' Remote files are downloaded locally to a temporary directory.
+#'
+#' @note Stops on a missing file.
 #'
 #' @family Developer Functions
 #'
-#' @inheritParams saveData
-#' @inheritParams general
+#' @param file Local file path or remote URL.
 #'
-#' @return Named `character` containing the original basename as the name and
-#'   local file path (i.e. tempfile) as the string. Aborts on a missing file.
+#' @return `character` vector containing the local file paths.
 #' @export
+#'
+#' @seealso [base::tempdir()].
 #'
 #' @examples
 #' # Single file

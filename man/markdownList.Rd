@@ -13,7 +13,7 @@ markdownList(object, ordered = FALSE, asis = FALSE)
 \item{ordered}{Ordered ("\code{TRUE}") or unordered ("\code{FALSE}") \code{list}.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an RMarkdown chunk with '\code{results="asis"}' enabled.}
+inside an RMarkdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
