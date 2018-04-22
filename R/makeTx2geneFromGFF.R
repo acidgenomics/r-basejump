@@ -13,8 +13,10 @@
 #' @export
 #'
 #' @examples
-#' makeTx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>%
-#'     glimpse()
+#' invisible(capture.output(
+#'     x <- makeTx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
+#' ))
+#' glimpse(x)
 makeTx2geneFromGFF <- function(file) {
     data <- parseGFFAttributes(
         file = file,

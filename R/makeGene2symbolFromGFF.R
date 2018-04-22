@@ -13,8 +13,10 @@
 #' @export
 #'
 #' @examples
-#' makeGene2symbolFromGFF("http://basejump.seq.cloud/mmusculus.gtf") %>%
-#'     glimpse()
+#' invisible(capture.output(
+#'     x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
+#' ))
+#' glimpse(x)
 makeGene2symbolFromGFF <- function(file) {
     message("Making gene2symbol from GFF")
     data <- parseGFFAttributes(file, select = "gene_") %>%
