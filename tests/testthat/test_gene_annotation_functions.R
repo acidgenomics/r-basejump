@@ -86,7 +86,7 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
 test_that("convertGenesToSymbols : Invalid identifiers", {
     expect_warning(
         convertGenesToSymbols("ENSMUSG00000000000", release = ensemblRelease),
-        "Failed to match all genes to symbols: ENSMUSG00000000000"
+        "Failed to match genes: ENSMUSG00000000000"
     )
     expect_error(
         convertGenesToSymbols(c("ENSMUSG00000000001", NA)),
@@ -153,7 +153,7 @@ test_that("convertTranscriptsToGenes : matrix", {
     )
     expect_error(
         convertTranscriptsToGenes(mat, release = ensemblRelease),
-        "Unmatched transcripts present. Try using a GFF file instead."
+        "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_identical(
         mat[2L:4L, ] %>%
@@ -173,7 +173,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
             c("ENSMUST00000000000", "ENSMUST00000000001"),
             release = ensemblRelease
         ),
-        "Unmatched transcripts present. Try using a GFF file instead."
+        "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_error(
         convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
