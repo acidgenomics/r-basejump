@@ -15,8 +15,8 @@
 \usage{
 convertTranscriptsToGenes(object, ...)
 
-\S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{character}(object, tx2gene, organism,
+  genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, ...)
 
@@ -33,9 +33,9 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{tx2gene}{\emph{Optional.} Transcript-to-gene mappings. If \code{NULL}, will
-attempt to download from Ensembl using the desired \code{organism},
-\code{genomeBuild}, and \code{release} arguments.}
+\item{tx2gene}{\emph{Optional.} Transcript-to-gene mappings. If missing, the
+function will attempt to download mappings from Ensembl according to the
+\code{organism}, \code{genomeBuild}, and \code{release} parameters.}
 
 \item{organism}{\emph{Optional.} Organism name. Normally this argument is
 unnecessary and can be left unset. If a count matrix starts with a
@@ -57,12 +57,8 @@ Convert Ensembl Transcripts to Genes
 }
 \examples{
 # character ====
-transcripts <- c(
-    "ENSMUST00000000001",
-    "ENSMUST00000000003",
-    "ENSMUST00000114041"
-)
-convertTranscriptsToGenes(transcripts)
+x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
+convertTranscriptsToGenes(x)
 
 # matrix ====
 mat <- matrix(
