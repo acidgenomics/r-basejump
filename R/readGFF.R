@@ -50,10 +50,10 @@ readGFF <- function(file) {
             stringsAsFactors = FALSE
         ),
         error = function(e) {
-            stop("GFF file failed to load")
+            stop("GFF file failed to load")  # nocov
         },
         warning = function(w) {
-            stop("GFF file failed to load")
+            stop("GFF file failed to load")  # nocov
         }
     )
     gff
