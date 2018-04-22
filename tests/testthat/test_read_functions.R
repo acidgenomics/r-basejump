@@ -89,6 +89,12 @@ test_that("loadDataAsName : Non-standard evaluation", {
     )
 })
 
+test_that("loadDataAsName : Serialized", {
+    x <- loadDataAsName(new = serialized)
+    expect_identical(names(x), "new")
+    expect_true(exists("new", inherits = FALSE))
+})
+
 test_that("loadData : Standard evaluation", {
     expect_error(
         loadDataAsName(data = "gr.rda"),
@@ -187,6 +193,11 @@ test_that("readFileByExtension : Comma separated value file (.csv)", {
     expect_is(x, "tbl_df")
 })
 
+test_that("readFileByExtension : GFF", {
+    x <- readFileByExtension("mmusculus.gtf")
+    expect_is(x, "data.frame")
+})
+
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
     x <- readFileByExtension("singleCellCounts.mtx.gz")
     expect_is(x, "dgTMatrix")
@@ -242,7 +253,22 @@ test_that("readFileByExtension : R file", {
     expect_is(x, "character")
 })
 
-test_that("readFileByExtension : Unsupported file type", {
+test_that("readFileByExtension : R Data", {
+    # rda
+    x <- readFileByExtension("example.rda")
+    expect_is(x, "tbl_df")
+
+    # rds
+    x <- readFileByExtension("example.rds")
+    expect_is(x, "tbl_df")
+})
+
+test_that("readFileByExtension : YAML", {
+    x <- readFileByExtension("example.yaml")
+    expect_is(x, "list")
+})
+
+test_that("readFileByExtension : No extension", {
     # Missing extension
     file.create("example")
     expect_error(
