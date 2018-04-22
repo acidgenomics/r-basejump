@@ -3,6 +3,7 @@ files <- c(
     "dmelanogaster.gtf",
     "example.counts",
     "example.csv",
+    "example.json",
     "example.rda",
     "example.rds",
     "example.tsv",

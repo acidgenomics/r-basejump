@@ -441,21 +441,19 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     expect_identical(head(names(x), 1L), "ENST00000000233")
 })
 
-test_that("makeGRangesFromEnsembl : Unsupported release version", {
+test_that("makeGRangesFromEnsembl : Invalid parameters", {
+    expect_error(
+        makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
+        "Use Ensembl genome build name"
+    )
     expect_warning(
         makeGRangesFromEnsembl("Homo sapiens", release = 86L),
         "Switching to current release instead."
     )
-})
-
-test_that("makeGRangesFromEnsembl : Unsupported organism", {
     expect_error(
         makeGRangesFromEnsembl(organism = "AAA", genomeBuild = "BBB"),
         "No ID matched on AnnotationHub"
     )
-})
-
-test_that("makeGRangesFromEnsembl : Multiple organisms", {
     expect_error(
         makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
         "is_a_string : "
