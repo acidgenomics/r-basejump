@@ -6,32 +6,27 @@
 \alias{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
 \alias{convertGenesToSymbols,character-method}
+\alias{convertGenesToSymbols,matrix-method}
 \alias{convertGenesToSymbols,data.frame-method}
 \alias{convertGenesToSymbols,DataFrame-method}
 \alias{convertGenesToSymbols,dgCMatrix-method}
 \alias{convertGenesToSymbols,dgTMatrix-method}
-\alias{convertGenesToSymbols,matrix-method}
 \title{Convert Ensembl Identifiers to Gene Symbols}
 \usage{
 convertGenesToSymbols(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol, organism,
+  genomeBuild = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{matrix}(object, ...)
 
-\S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{data.frame}(object, ...)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{DataFrame}(object, ...)
 
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{dgCMatrix}(object, ...)
 
-\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
-  genomeBuild = NULL, organism = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{dgTMatrix}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -62,8 +57,8 @@ Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
 # character ====
-genes <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-convertGenesToSymbols(genes)
+x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+convertGenesToSymbols(x)
 
 # matrix ====
 mat <- matrix(

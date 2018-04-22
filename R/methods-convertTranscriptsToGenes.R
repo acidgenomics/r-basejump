@@ -56,8 +56,6 @@ setMethod(
             message("Obtaining transcript-to-gene mappings from Ensembl")
             if (missing(organism) || is.null(organism)) {
                 organism <- detectOrganism(object, unique = TRUE)
-            } else {
-                organism <- detectOrganism(organism)
             }
             assert_is_a_string(organism)
             tx2gene <- makeTx2geneFromEnsembl(
@@ -65,21 +63,19 @@ setMethod(
                 genomeBuild = genomeBuild,
                 release = release
             )
-        } else {
-            assertIsTx2gene(tx2gene)
         }
+        assertIsTx2gene(tx2gene)
 
-        if (!all(object %in% tx2gene[["txID"]])) {
-            stop(paste(
-                "Unmatched transcripts present.",
-                "Try using a GFF file instead."
-            ))
+        missing <- setdiff(object, tx2gene[["txID"]])
+        if (length(missing)) {
+            stop(paste("Failed to match transcripts:", toString(missing)))
         }
 
         tx2gene <- tx2gene[match(object, tx2gene[["txID"]]), , drop = FALSE]
-        genes <- tx2gene[["geneID"]]
-        names(genes) <- tx2gene[["txID"]]
-        genes
+
+        return <- tx2gene[["geneID"]]
+        names(return) <- tx2gene[["txID"]]
+        return
     }
 )
 
