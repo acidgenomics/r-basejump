@@ -2,8 +2,6 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
-#' @keywords internal
-#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom GenomicRanges GRanges
