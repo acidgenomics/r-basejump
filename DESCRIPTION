@@ -1,35 +1,7 @@
 Package: basejump
-Title: Base Functions for Bioinformatics
-Description: Helper functions for bioinformatics, package development, and
-    R Markdown reports.
-Version: 0.5.2
-Authors@R: c(
-    person(
-        "Michael", "Steinbaugh",
-        email = "mike@steinbaugh.com",
-        role = c("aut", "cre"),
-        comment = c(ORCID = "0000-0002-2403-2221")
-    ),
-    person(
-        "Rory", "Kirchner",
-        email = "roryk@alum.mit.edu",
-        role = "ctb",
-        comment = c(ORCID = "0000-0003-4814-5885")
-    ),
-    person(
-        given = "Mary",
-        family = "Piper",
-        email = "mary.piper@gmail.com",
-        role = "ctb",
-        comment = c(ORCID = "0000-0003-2699-3840")
-    ))
-URL:
-    http://steinbaugh.com/basejump,
-    https://github.com/steinbaugh/basejump
-BugReports: https://github.com/steinbaugh/basejump/issues
-License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: TRUE
+Title: TRAVIS BIOCONDUCTOR CACHE
+Description: TRAVIS BIOCONDUCTOR CACHE
+Version: 0.0.99
 Depends:
     R (>= 3.4)
 Imports:
@@ -37,38 +9,4 @@ Imports:
     GenomicFeatures,
     GenomicRanges,
     IRanges,
-    Matrix (>= 1.2),
-    Matrix.utils (>= 0.9),
-    R.utils,
-    RCurl (>= 1.95),
-    S4Vectors,
-    assertive (>= 0.3),
-    cowplot (>= 0.9),
-    dplyr (>= 0.7),
-    ensembldb,
-    ggplot2 (>= 2.2.1),
-    knitr (>= 1.20),
-    magrittr (>= 1.5),
-    methods,
-    pbapply,
-    plyr (>= 1.8),
-    readr (>= 1.1),
-    readxl (>= 1.0),
-    rlang (>= 0.2),
-    stats,
-    stringr (>= 1.3),
-    tibble (>= 1.4),
-    tidyr (>= 0.8),
-    utils
-Suggests:
-    EnsDb.Hsapiens.v75,
-    jsonlite,
-    rio (>= 0.5),
-    testthat (>= 2.0),
-    yaml
-biocViews:
-    DataImport,
-    Infrastructure
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
-VignetteBuilder: knitr
+    S4Vectors
