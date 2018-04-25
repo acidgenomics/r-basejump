@@ -66,6 +66,7 @@
 #' @importFrom assertive.properties has_colnames
 #' @importFrom assertive.properties has_dims
 #' @importFrom assertive.properties has_rows
+#' @importFrom assertive.properties is_scalar
 #' @importFrom assertive.sets assert_are_disjoint_sets
 #' @importFrom assertive.sets assert_are_intersecting_sets
 #' @importFrom assertive.sets assert_are_set_equal
@@ -90,5 +91,4 @@
 #' @importFrom assertive.types assert_is_numeric
 #' @importFrom assertive.types is_a_number
 #' @importFrom assertive.types is_a_string
-#' @importFrom assertive.types is_scalar
 "_PACKAGE"
