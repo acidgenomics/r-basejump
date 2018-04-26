@@ -35,7 +35,6 @@ setMethod(
     "fixNA",
     signature("ANY"),
     function(object) {
-        # Return unmodified by default
         object
     }
 )

@@ -5,29 +5,23 @@
 \alias{removeNA}
 \alias{removeNA}
 \alias{removeNA,ANY-method}
-\alias{removeNA,character-method}
-\alias{removeNA,numeric-method}
+\alias{removeNA,atomic-method}
 \alias{removeNA,matrix-method}
 \alias{removeNA,data.frame-method}
 \alias{removeNA,DataFrame-method}
-\alias{removeNA,tbl_df-method}
 \title{Remove Rows and Columns Containing Only \code{NA} Values}
 \usage{
 removeNA(object, ...)
 
 \S4method{removeNA}{ANY}(object)
 
-\S4method{removeNA}{character}(object)
-
-\S4method{removeNA}{numeric}(object)
+\S4method{removeNA}{atomic}(object)
 
 \S4method{removeNA}{matrix}(object)
 
 \S4method{removeNA}{data.frame}(object)
 
 \S4method{removeNA}{DataFrame}(object)
-
-\S4method{removeNA}{tbl_df}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -41,30 +35,26 @@ Sanitized object.
 Remove Rows and Columns Containing Only \code{NA} Values
 }
 \examples{
-# Remove NA only rows and columns
-matrix(
-    c(1, NA, 3, NA, NA, NA, 2, NA, 4),
+# matrix ====
+x <- matrix(
+    data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
     nrow = 3,
     ncol = 3
-) \%>\%
-    removeNA()
+)
+print(x)
+removeNA(x)
 
-data.frame(
+# data.frame ====
+x <- data.frame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
     c = c("B", NA, "D"),
     stringsAsFactors = FALSE
-) \%>\%
-    removeNA()
+)
+print(x)
+removeNA(x)
 
-tibble(
-    a = c("A", NA, "C"),
-    b = c(NA, NA, NA),
-    c = c("B", NA, "D")
-) \%>\%
-    removeNA()
-
-# Support for vectors
+# atomic ====
 removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 }
