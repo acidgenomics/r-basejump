@@ -9,45 +9,21 @@
 #' @return Object containing proper `NA` values.
 #'
 #' @examples
-#' # character
+#' # character ====
 #' fixNA(c(1L, "x", "", "NA", "NULL"))
 #'
-#' # data.frame
-#' data.frame(
+#' # data.frame ====
+#' x <- data.frame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
+#'     row.names = c("a", "b"),
 #'     stringsAsFactors = FALSE
-#' ) %>%
-#'     fixNA()
+#' )
+#' fixNA(x)
 #'
-#' # tibble
-#' tibble(
-#'     a = c("foo", ""),
-#'     b = c(NA, "bar")
-#' ) %>%
-#'     fixNA()
+#' # DataFrame ====
+#'
 NULL
-
-
-
-# Constructors =================================================================
-.fixNA.character <- function(object) {  # nolint
-    assert_is_character(object)
-    patterns <- c(
-        "^$",
-        "^\\s+$",
-        "^NA$",
-        "^NULL$",
-        "^none available$"
-    )
-    gsub(paste(patterns, collapse = "|"), NA, object)
-}
-
-
-
-.fixNA.tidy <- function(object) {  # nolint
-    mutate_if(object, is.character, funs(fixNA))
-}
 
 
 
@@ -70,7 +46,16 @@ setMethod(
 setMethod(
     "fixNA",
     signature("character"),
-    .fixNA.character
+    function(object) {
+        patterns <- c(
+            "^$",
+            "^\\s+$",
+            "^NA$",
+            "^NULL$",
+            "^none available$"
+        )
+        gsub(paste(patterns, collapse = "|"), NA, object)
+    }
 )
 
 
@@ -80,7 +65,12 @@ setMethod(
 setMethod(
     "fixNA",
     signature("data.frame"),
-    .fixNA.tidy
+    function(object) {
+        object %>%
+            rownames_to_column() %>%
+            mutate_if(is.character, funs(fixNA)) %>%
+            column_to_rownames()
+    }
 )
 
 
@@ -91,10 +81,16 @@ setMethod(
     "fixNA",
     signature("DataFrame"),
     function(object) {
-        object %>%
-            as.data.frame() %>%
-            fixNA() %>%
-            as("DataFrame")
+        list <- lapply(
+            X = object,
+            FUN = function(col) {
+                if (is.character(col)) {
+                    fixNA(col)
+                } else {
+                    col
+                }
+            })
+        DataFrame(list, row.names = names(list))
     }
 )
 
@@ -105,5 +101,7 @@ setMethod(
 setMethod(
     "fixNA",
     signature("tbl_df"),
-    .fixNA.tidy
+    function(object) {
+        mutate_if(object, is.character, funs(fixNA))
+    }
 )
