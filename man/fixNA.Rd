@@ -39,16 +39,17 @@ Fix Character Strings Missing \code{NA}
 fixNA(c(1L, "x", "", "NA", "NULL"))
 
 # data.frame ====
-x <- data.frame(
+df <- data.frame(
     a = c("foo", ""),
     b = c(NA, "bar"),
-    row.names = c("a", "b"),
+    row.names = c("c", "d"),
     stringsAsFactors = FALSE
 )
 fixNA(x)
 
 # DataFrame ====
-
+DF <- as(df, "DataFrame")
+fixNA(DF)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},

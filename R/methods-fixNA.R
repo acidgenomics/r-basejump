@@ -13,16 +13,17 @@
 #' fixNA(c(1L, "x", "", "NA", "NULL"))
 #'
 #' # data.frame ====
-#' x <- data.frame(
+#' df <- data.frame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
-#'     row.names = c("a", "b"),
+#'     row.names = c("c", "d"),
 #'     stringsAsFactors = FALSE
 #' )
 #' fixNA(x)
 #'
 #' # DataFrame ====
-#'
+#' DF <- as(df, "DataFrame")
+#' fixNA(DF)
 NULL
 
 
@@ -81,6 +82,7 @@ setMethod(
     "fixNA",
     signature("DataFrame"),
     function(object) {
+        rownames <- rownames(object)
         list <- lapply(
             X = object,
             FUN = function(col) {
@@ -90,7 +92,7 @@ setMethod(
                     col
                 }
             })
-        DataFrame(list, row.names = names(list))
+        DataFrame(list, row.names = rownames)
     }
 )
 
