@@ -170,10 +170,7 @@ theme_paperwhite <- function(
             axis.ticks = axis_ticks,
             panel.grid.major = grid,
             legend.position = legend_position,
-            strip.background = element_rect(
-                colour = NULL,
-                fill = "white"
-            ),
+            strip.background = element_rect(colour = NA, fill = "white"),
             strip.text = text,
             complete = TRUE,
             validate = TRUE
