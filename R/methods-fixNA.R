@@ -81,6 +81,7 @@ setMethod(
     "fixNA",
     signature("DataFrame"),
     function(object) {
+        rownames <- rownames(object)
         list <- lapply(
             X = object,
             FUN = function(col) {
@@ -90,7 +91,7 @@ setMethod(
                     col
                 }
             })
-        DataFrame(list, row.names = names(list))
+        DataFrame(list, row.names = rownames)
     }
 )
 
