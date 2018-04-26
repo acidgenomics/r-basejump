@@ -23,8 +23,8 @@ A stricter alternative to the assertive version that works properply with
 data frames.
 }
 \note{
-\code{tibble::has_rownames()} works better than \code{assertive::has_rownames()}
-for data frames and tibbles.
+\code{tibble::has_rownames()} is more consistent than
+\code{assertive.properties::has_rownames()} for data frames and tibbles.
 }
 \examples{
 data <- data.frame(

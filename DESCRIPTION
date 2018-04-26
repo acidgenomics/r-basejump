@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.5.2
+Version: 0.5.3
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -42,7 +42,15 @@ Imports:
     R.utils,
     RCurl (>= 1.95),
     S4Vectors,
-    assertive (>= 0.3),
+    assertive.base,
+    assertive.code,
+    assertive.data,
+    assertive.files,
+    assertive.numbers,
+    assertive.properties,
+    assertive.sets,
+    assertive.strings,
+    assertive.types,
     cowplot (>= 0.9),
     dplyr (>= 0.7),
     ensembldb,

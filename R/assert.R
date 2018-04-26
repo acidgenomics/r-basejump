@@ -197,8 +197,8 @@ assertFormalGene2symbol <- function(
 #' A stricter alternative to the assertive version that works properply with
 #' data frames.
 #'
-#' @note `tibble::has_rownames()` works better than `assertive::has_rownames()`
-#'   for data frames and tibbles.
+#' @note `tibble::has_rownames()` is more consistent than
+#'   `assertive.properties::has_rownames()` for data frames and tibbles.
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
@@ -738,7 +738,7 @@ hasRownames <- function(x) {  # nolint
     if (is.data.frame(x)) {
         tibble::has_rownames(x)
     } else {
-        assertive::has_rownames(x)
+        assertive.properties::has_rownames(x)
     }
 }
 
