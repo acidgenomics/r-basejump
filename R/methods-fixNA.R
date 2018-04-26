@@ -37,7 +37,8 @@ NULL
         "^$",
         "^\\s+$",
         "^NA$",
-        "^NULL$"
+        "^NULL$",
+        "^none available$"
     )
     gsub(paste(patterns, collapse = "|"), NA, object)
 }
