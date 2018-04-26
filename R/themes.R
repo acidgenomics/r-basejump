@@ -36,7 +36,7 @@
 #'     mapping = aes(
 #'         x = manufacturer,
 #'         y = displ,
-#'         color = manufacturer
+#'         colour = manufacturer
 #'     )
 #' ) +
 #'     geom_point()
@@ -77,16 +77,16 @@ theme_midnight <- function(
     text <- element_text(
         family = base_family,
         face = face,
-        color = "white"
+        colour = "white"
     )
 
     if (isTRUE(grid)) {
         axis_line <- element_blank()
         axis_ticks <- element_blank()
-        grid <- element_line(color = gray)
+        grid <- element_line(colour = gray)
     } else {
-        axis_line <- element_line(color = "white")
-        axis_ticks <- element_line(color = "white")
+        axis_line <- element_line(colour = "white")
+        axis_ticks <- element_line(colour = "white")
         grid <- element_blank()
     }
 
@@ -101,11 +101,11 @@ theme_midnight <- function(
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
             axis.ticks = axis_ticks,
-            legend.key = element_rect(color = NA, fill = gray),
+            legend.key = element_rect(colour = NA, fill = gray),
             legend.position = legend_position,
             panel.grid.major = grid,
             panel.grid.minor = element_blank(),
-            plot.background = element_rect(color = NA, fill = "black"),
+            plot.background = element_rect(colour = NA, fill = "black"),
             strip.text = text,
             complete = TRUE,
             validate = TRUE
@@ -144,16 +144,16 @@ theme_paperwhite <- function(
     text <- element_text(
         family = base_family,
         face = face,
-        color = "black"
+        colour = "black"
     )
 
     if (isTRUE(grid)) {
         axis_line <- element_blank()
         axis_ticks <- element_blank()
-        grid <- element_line(color = gray)
+        grid <- element_line(colour = gray)
     } else {
-        axis_line <- element_line(color = "black")
-        axis_ticks <- element_line(color = "black")
+        axis_line <- element_line(colour = "black")
+        axis_ticks <- element_line(colour = "black")
         grid <- element_blank()
     }
 
