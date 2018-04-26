@@ -35,23 +35,20 @@ Object containing proper \code{NA} values.
 Fix Character Strings Missing \code{NA}
 }
 \examples{
-# character
+# character ====
 fixNA(c(1L, "x", "", "NA", "NULL"))
 
-# data.frame
-data.frame(
+# data.frame ====
+x <- data.frame(
     a = c("foo", ""),
     b = c(NA, "bar"),
+    row.names = c("a", "b"),
     stringsAsFactors = FALSE
-) \%>\%
-    fixNA()
+)
+fixNA(x)
 
-# tibble
-tibble(
-    a = c("foo", ""),
-    b = c(NA, "bar")
-) \%>\%
-    fixNA()
+# DataFrame ====
+
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
