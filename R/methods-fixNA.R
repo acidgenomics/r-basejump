@@ -66,10 +66,14 @@ setMethod(
     "fixNA",
     signature("data.frame"),
     function(object) {
-        object %>%
-            rownames_to_column() %>%
-            mutate_if(is.character, funs(fixNA)) %>%
-            column_to_rownames()
+        if (has_rownames(object)) {
+            rownames <- rownames(object)
+        } else {
+            rownames <- NULL
+        }
+        object <- mutate_if(object, is.character, funs(fixNA))
+        rownames(object) <- rownames
+        object
     }
 )
 
