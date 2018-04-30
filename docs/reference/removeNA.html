@@ -21,12 +21,13 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Remove Rows and Columns Containing Only <code>NA</code> Values — removeNA" />
@@ -44,8 +45,6 @@
 <![endif]-->
 
 
-
-
   </head>
 
   <body>
@@ -61,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.3</span>
       </span>
     </div>
 
@@ -113,10 +112,7 @@
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>removeNA</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for character</span>
-<span class='fu'>removeNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for numeric</span>
+<span class='co'># S4 method for atomic</span>
 <span class='fu'>removeNA</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for matrix</span>
@@ -126,9 +122,6 @@
 <span class='fu'>removeNA</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>removeNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for tbl_df</span>
 <span class='fu'>removeNA</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -156,35 +149,32 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Remove NA only rows and columns</span>
-<span class='fu'>matrix</span>(
-    <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
+    <pre class="examples"><div class='input'><span class='co'># matrix ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>),
     <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>,
     <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>
-) <span class='kw'>%&gt;%</span>
-    <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;      [,1] [,2]
+)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      [,1] [,2] [,3]
+#&gt; [1,]    1   NA    2
+#&gt; [2,]   NA   NA   NA
+#&gt; [3,]    3   NA    4</div><div class='input'><span class='fu'>removeNA</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      [,1] [,2]
 #&gt; [1,]    1    2
 #&gt; [2,]    3    4</div><div class='input'>
-<span class='fu'>data.frame</span>(
+<span class='co'># data.frame ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
     <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>),
     <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-) <span class='kw'>%&gt;%</span>
-    <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt;   a c
+)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      a  b    c
+#&gt; 1    A NA    B
+#&gt; 2 &lt;NA&gt; NA &lt;NA&gt;
+#&gt; 3    C NA    D</div><div class='input'><span class='fu'>removeNA</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   a c
 #&gt; 1 A B
 #&gt; 3 C D</div><div class='input'>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
-    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='fl'>NA</span>, <span class='st'>"C"</span>),
-    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"B"</span>, <span class='fl'>NA</span>, <span class='st'>"D"</span>)
-) <span class='kw'>%&gt;%</span>
-    <span class='fu'>removeNA</span>()</div><div class='output co'>#&gt; # A tibble: 2 x 2
-#&gt;   a     c    
-#&gt;   &lt;chr&gt; &lt;chr&gt;
-#&gt; 1 A     B    
-#&gt; 2 C     D    </div><div class='input'>
-<span class='co'># Support for vectors</span>
+<span class='co'># atomic ====</span>
 <span class='fu'>removeNA</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] "hello" "world"
 #&gt; attr(,"na.action")
 #&gt; [1] 3
