@@ -117,12 +117,14 @@ test_that("fixNA", {
         data.frame(
             "a" = c("foo", ""),
             "b" = c(NA, "bar"),
+            row.names = c("c", "d"),
             stringsAsFactors = FALSE
         ) %>%
             fixNA(),
         data.frame(
             "a" = c("foo", NA),
             "b" = c(NA, "bar"),
+            row.names = c("c", "d"),
             stringsAsFactors = FALSE
         )
     )
