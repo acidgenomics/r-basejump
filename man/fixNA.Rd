@@ -45,7 +45,7 @@ df <- data.frame(
     row.names = c("c", "d"),
     stringsAsFactors = FALSE
 )
-fixNA(x)
+fixNA(df)
 
 # DataFrame ====
 DF <- as(df, "DataFrame")
