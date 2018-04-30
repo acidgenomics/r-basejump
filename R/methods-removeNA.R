@@ -9,50 +9,29 @@
 #' @return Sanitized object.
 #'
 #' @examples
-#' # Remove NA only rows and columns
-#' matrix(
-#'     c(1, NA, 3, NA, NA, NA, 2, NA, 4),
+#' # matrix ====
+#' x <- matrix(
+#'     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
 #'     nrow = 3,
 #'     ncol = 3
-#' ) %>%
-#'     removeNA()
+#' )
+#' print(x)
+#' removeNA(x)
 #'
-#' data.frame(
+#' # data.frame ====
+#' x <- data.frame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
 #'     c = c("B", NA, "D"),
 #'     stringsAsFactors = FALSE
-#' ) %>%
-#'     removeNA()
+#' )
+#' print(x)
+#' removeNA(x)
 #'
-#' tibble(
-#'     a = c("A", NA, "C"),
-#'     b = c(NA, NA, NA),
-#'     c = c("B", NA, "D")
-#' ) %>%
-#'     removeNA()
-#'
-#' # Support for vectors
+#' # atomic ====
 #' removeNA(c("hello", "world", NA))
 #' removeNA(c(1, 2, NA))
 NULL
-
-
-
-# Constructors =================================================================
-.removeNA.vector <- function(object) {  # nolint
-    assert_is_vector(object)
-    na.omit(object)
-}
-
-.removeNA.dim <- function(object) {  # nolint
-    assert_has_dims(object)
-    object %>%
-        # Remove all `NA` rows
-        .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
-        # Remove all `NA` columns
-        .[, apply(., 2L, function(a) !all(is.na(a))), drop = FALSE]
-}
 
 
 
@@ -63,7 +42,6 @@ setMethod(
     "removeNA",
     signature("ANY"),
     function(object) {
-        # Return unmodified by default
         object
     }
 )
@@ -74,18 +52,10 @@ setMethod(
 #' @export
 setMethod(
     "removeNA",
-    signature("character"),
-    .removeNA.vector
-)
-
-
-
-#' @rdname removeNA
-#' @export
-setMethod(
-    "removeNA",
-    signature("numeric"),
-    .removeNA.vector
+    signature("atomic"),
+    function(object) {
+        na.omit(object)
+    }
 )
 
 
@@ -95,7 +65,13 @@ setMethod(
 setMethod(
     "removeNA",
     signature("matrix"),
-    .removeNA.dim
+    function(object) {
+        object %>%
+            # Drop rows that are all `NA`
+            .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
+            # Drop columns that are all `NA`
+            .[, apply(., 2L, function(a) !all(is.na(a))), drop = FALSE]
+    }
 )
 
 
@@ -105,7 +81,7 @@ setMethod(
 setMethod(
     "removeNA",
     signature("data.frame"),
-    .removeNA.dim
+    getMethod("removeNA", "matrix")
 )
 
 
@@ -115,15 +91,5 @@ setMethod(
 setMethod(
     "removeNA",
     signature("DataFrame"),
-    .removeNA.dim
-)
-
-
-
-#' @rdname removeNA
-#' @export
-setMethod(
-    "removeNA",
-    signature("tbl_df"),
-    .removeNA.dim
+    getMethod("removeNA", "matrix")
 )

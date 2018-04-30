@@ -112,7 +112,24 @@ test_that("fixNA", {
         fixNA(c(1L, "x", "", "NA")),
         c("1", "x", NA, NA))
 
-    # data.frame
+    # data.frame with rownames
+    expect_identical(
+        data.frame(
+            "a" = c("foo", ""),
+            "b" = c(NA, "bar"),
+            row.names = c("c", "d"),
+            stringsAsFactors = FALSE
+        ) %>%
+            fixNA(),
+        data.frame(
+            "a" = c("foo", NA),
+            "b" = c(NA, "bar"),
+            row.names = c("c", "d"),
+            stringsAsFactors = FALSE
+        )
+    )
+
+    # data.frame without rownames
     expect_identical(
         data.frame(
             "a" = c("foo", ""),

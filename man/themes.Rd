@@ -63,7 +63,7 @@ p <- ggplot(
     mapping = aes(
         x = manufacturer,
         y = displ,
-        color = manufacturer
+        colour = manufacturer
     )
 ) +
     geom_point()

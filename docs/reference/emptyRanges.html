@@ -21,12 +21,13 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Generate Empty Genomic Ranges — emptyRanges" />
@@ -45,8 +46,6 @@ transgene and FASTA spike-in sequences." />
 <![endif]-->
 
 
-
-
   </head>
 
   <body>
@@ -62,7 +61,7 @@ transgene and FASTA spike-in sequences." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.3</span>
       </span>
     </div>
 
@@ -167,23 +166,23 @@ this does not need to be defined; useful when combining with another
 <span class='fu'>emptyRanges</span>(<span class='st'>"ENSG00000000000"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"unknown"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;                   seqnames    ranges strand
 #&gt;                      &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
-#&gt;   ENSG00000000000  unknown  [1, 100]      *
+#&gt;   ENSG00000000000  unknown     1-100      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'># Transgenes</span>
 <span class='fu'>emptyRanges</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"GAL4"</span>), <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"transgene"</span>)</div><div class='output co'>#&gt; GRanges object with 3 ranges and 0 metadata columns:
-#&gt;             seqnames     ranges strand
-#&gt;                &lt;Rle&gt;  &lt;IRanges&gt;  &lt;Rle&gt;
-#&gt;       EGFP transgene [  1, 100]      *
-#&gt;   TDTOMATO transgene [101, 200]      *
-#&gt;       GAL4 transgene [201, 300]      *
+#&gt;             seqnames    ranges strand
+#&gt;                &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
+#&gt;       EGFP transgene     1-100      *
+#&gt;   TDTOMATO transgene   101-200      *
+#&gt;       GAL4 transgene   201-300      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div><div class='input'>
 <span class='co'># Spike-ins</span>
 <span class='fu'>emptyRanges</span>(<span class='st'>"ERCC"</span>, <span class='kw'>seqname</span> <span class='kw'>=</span> <span class='st'>"spike"</span>)</div><div class='output co'>#&gt; GRanges object with 1 range and 0 metadata columns:
 #&gt;        seqnames    ranges strand
 #&gt;           &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt;
-#&gt;   ERCC    spike  [1, 100]      *
+#&gt;   ERCC    spike     1-100      *
 #&gt;   -------
 #&gt;   seqinfo: 1 sequence from an unspecified genome; no seqlengths</div></pre>
   </div>
