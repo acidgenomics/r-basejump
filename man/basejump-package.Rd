@@ -11,7 +11,7 @@ Base functions for bioinformatics and R package development.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://steinbaugh.com/basejump}
+  \item \url{https://steinbaugh.com/basejump}
   \item \url{https://github.com/steinbaugh/basejump}
   \item Report bugs at \url{https://github.com/steinbaugh/basejump/issues}
 }
