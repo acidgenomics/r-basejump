@@ -4,8 +4,10 @@
 \alias{themes}
 \alias{theme_midnight}
 \alias{theme_paperwhite}
+\alias{minimal_axis}
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
+\alias{minimalAxis}
 \title{Complete Themes}
 \usage{
 theme_midnight(base_size = 14L, base_family = "", face = c("bold",
