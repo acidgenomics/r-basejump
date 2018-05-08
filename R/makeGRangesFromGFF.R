@@ -85,7 +85,7 @@ makeGRangesFromGFF <- function(
         )
     } else if (format == "transcripts") {
         # `tx_id` returns as integer, so use `tx_name` instead and rename
-        gr <- transcripts(txdb, columns = c("tx_name"))
+        gr <- transcripts(txdb, columns = "tx_name")
         colnames(mcols(gr)) <- "txID"
         # Need to set the names on the GRanges object manually
         names(gr) <- mcols(gr)[["txID"]]
@@ -94,7 +94,7 @@ makeGRangesFromGFF <- function(
         # Merge the attributes columns
         attributes <- attributes %>%
             # Merge only the `gene*` and `tx*` columns
-            .[, grep("^(gene|tx)", colnames(.))] %>%
+            .[, grep("^(gene|tx)", colnames(.)), drop = FALSE] %>%
             # Drop rows containing an NA value
             .[complete.cases(.), , drop = FALSE] %>%
             unique()
