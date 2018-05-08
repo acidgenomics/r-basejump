@@ -53,8 +53,7 @@ fixNA(DF)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
-  \code{\link{sanitizeSampleData}}
+  \code{\link{removeNA}}, \code{\link{sanitizeRowData}}
 }
 \author{
 Michael Steinbaugh
