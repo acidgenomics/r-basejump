@@ -1,4 +1,4 @@
-# nolint begin
+# nolint start
 # snake_case, following ggplot2 conventions
 
 
