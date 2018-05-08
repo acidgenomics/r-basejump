@@ -125,7 +125,7 @@ test_that("makeNames : character", {
         )
     )
     lapply(seq_along(funs), function(i) {
-        expect_identical( funs[[i]](x), expect[[i]])
+        expect_identical(funs[[i]](x), expect[[i]])
     })
 })
 
