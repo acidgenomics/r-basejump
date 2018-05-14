@@ -11,7 +11,7 @@ readGFF(file)
 \item{file}{File path.}
 }
 \value{
-\code{data.frame}.
+\code{GRanges}.
 }
 \description{
 The GFF (General Feature Format) format consists of one line per feature,
