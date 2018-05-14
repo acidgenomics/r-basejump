@@ -29,6 +29,7 @@
 \alias{tx2geneFromGTF}
 \alias{multiassignAsNewEnvir}
 \alias{geomean}
+\alias{assertIsGFF}
 \alias{parseGFFAttributes}
 \title{Defunct or Deprecated Functions}
 \usage{
@@ -85,6 +86,8 @@ tx2geneFromGTF(...)
 multiassignAsNewEnvir(...)
 
 geomean(...)
+
+assertIsGFF(...)
 
 parseGFFAttributes(...)
 }
