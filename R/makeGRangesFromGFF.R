@@ -37,12 +37,11 @@ makeGRangesFromGFF <- function(
     # Attributes ===============================================================
     # Note that GenomicFeatures doesn't support returning the `geneName` from
     # the key value pairs of the GFF file
-    attributes <- parseGFFAttributes(
-        file,
-        select = c("gene_", "transcript_"),
-        unique = TRUE
-    ) %>%
+    gff <- readGFF(file)
+    attributes <- gff %>%
         as.data.frame() %>%
+        .[, grepl("^(gene|transcript)_", colnames(.)), drop = FALSE] %>%
+        unique() %>%
         camel()
     # Standardize columns into Ensembl format
     colnames(attributes) <- colnames(attributes) %>%
