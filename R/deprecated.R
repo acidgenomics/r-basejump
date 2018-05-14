@@ -1,5 +1,7 @@
 # nocov start
 
+
+
 #' Defunct or Deprecated Functions
 #'
 #' @name deprecated
@@ -218,5 +220,16 @@ geomean <- function(...) {
     .Deprecated("geometricMean")
     geometricMean(...)
 }
+
+
+
+# v0.5.4 =======================================================================
+#' @rdname deprecated
+#' @export
+parseGFFAttributes <- function(...) {
+    .Defunct("readGFF")
+}
+
+
 
 # nocov end
