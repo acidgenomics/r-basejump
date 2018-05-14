@@ -518,8 +518,8 @@ test_that("makeGRangesFromGFF : genes", {
             "geneID",
             "geneName",
             "geneBiotype",
-            "geneSource",
             "geneVersion",
+            "geneSource",
             "broadClass"
         )
     )
@@ -542,11 +542,11 @@ test_that("makeGRangesFromGFF : transcripts", {
             "geneID",
             "geneName",
             "geneBiotype",
-            "geneSource",
             "geneVersion",
+            "geneSource",
+            "txVersion",
             "txSource",
             "txSupportLevel",
-            "txVersion",
             "broadClass"
         )
     )

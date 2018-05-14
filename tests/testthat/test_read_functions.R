@@ -195,7 +195,7 @@ test_that("readFileByExtension : Comma separated value file (.csv)", {
 
 test_that("readFileByExtension : GFF", {
     x <- readFileByExtension("mmusculus.gtf")
-    expect_is(x, "data.frame")
+    expect_s4_class(x, "GRanges")
 })
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
@@ -283,14 +283,53 @@ test_that("readFileByExtension : No extension", {
 # readGFF ======================================================================
 test_that("readGFF : Drosophila melanogaster", {
     x <- readGFF("dmelanogaster.gtf")
-    # Check for 9 columns
-    expect_identical(ncol(x), 9L)
+    expect_s4_class(x, "GRanges")
+    expect_identical(levels(seqnames(x)), "X")
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "source",
+            "type",
+            "score",
+            "phase",
+            "gene_id",
+            "gene_symbol",
+            "transcript_id",
+            "transcript_symbol"
+        )
+    )
 })
 
 test_that("readGFF : Mus musculus", {
     x <- readGFF("mmusculus.gtf")
-    # Check for 9 columns
-    expect_identical(ncol(x), 9L)
+    expect_identical(levels(seqnames(x)), "1")
+    expect_identical(
+        colnames(mcols(x)),
+        c(
+            "source",
+            "type",
+            "score",
+            "phase",
+            "gene_id",
+            "gene_version",
+            "gene_name",
+            "gene_source",
+            "gene_biotype",
+            "transcript_id",
+            "transcript_version",
+            "transcript_name",
+            "transcript_source",
+            "transcript_biotype",
+            "transcript_support_level",
+            "exon_number",
+            "exon_id",
+            "exon_version",
+            "tag",
+            "ccds_id",
+            "protein_id",
+            "protein_version"
+        )
+    )
 })
 
 test_that("readGFF : Unsupported file type", {
