@@ -1,17 +1,3 @@
-gffCols <- c(
-    "seqname",
-    "source",
-    "feature",
-    "start",
-    "end",
-    "score",
-    "strand",
-    "frame",
-    "attribute"
-)
-
-
-
 #' Read GFF Annotations
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
