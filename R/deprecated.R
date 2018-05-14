@@ -226,6 +226,12 @@ geomean <- function(...) {
 # v0.5.4 =======================================================================
 #' @rdname deprecated
 #' @export
+assertIsGFF <- function(...) {
+    .Defunct()
+}
+
+#' @rdname deprecated
+#' @export
 parseGFFAttributes <- function(...) {
     .Defunct("readGFF")
 }
