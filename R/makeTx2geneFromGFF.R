@@ -19,6 +19,7 @@
 #' glimpse(x)
 makeTx2geneFromGFF <- function(file) {
     message("Making tx2gene from GFF")
+
     data <- readGFF(file) %>%
         as.data.frame() %>%
         .[, c("transcript_id", "gene_id")] %>%
