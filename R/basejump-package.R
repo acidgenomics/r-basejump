@@ -22,10 +22,10 @@
 #' @importFrom magrittr set_colnames set_names
 #' @importFrom methods as getGeneric is selectMethod show
 #' @importFrom pbapply pblapply
-#' @importFrom plyr ldply
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
 #' @importFrom rlang !! UQ sym dots_list eval_bare
+#' @importFrom rtracklayer import
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
