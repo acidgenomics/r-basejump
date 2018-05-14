@@ -131,7 +131,7 @@ readFileByExtension <- function(
             ...
         )
     } else if (exti %in% c("gff", "gff3", "gtf")) {
-        data <- suppressMessages(readGFF(file))
+        data <- rtracklayer::import(file)
     } else if (exti == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
