@@ -14,7 +14,8 @@
 #'   tail
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange case_when everything filter funs group_by mutate
-#'   mutate_all mutate_at mutate_if select summarize_all top_n ungroup
+#'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
+#'   ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
