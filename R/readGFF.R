@@ -26,7 +26,7 @@ gffCols <- c(
 #'
 #' @inheritParams general
 #'
-#' @return `data.frame`.
+#' @return `GRanges`.
 #' @export
 #'
 #' @seealso
@@ -39,16 +39,12 @@ gffCols <- c(
 readGFF <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
+
     message(paste("Reading", basename(file)))
     file <- localOrRemoteFile(file)
+
     gff <- tryCatch(
-        read.delim(
-            file = file,
-            col.names = gffCols,
-            comment.char = "#",
-            header = FALSE,
-            stringsAsFactors = FALSE
-        ),
+        rtracklayer::import(file),
         error = function(e) {
             stop("GFF file failed to load")  # nocov
         },
@@ -56,6 +52,7 @@ readGFF <- function(file) {
             stop("GFF file failed to load")  # nocov
         }
     )
+
     gff
 }
 
