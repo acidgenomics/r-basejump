@@ -19,8 +19,11 @@
 #' glimpse(x)
 makeGene2symbolFromGFF <- function(file) {
     message("Making gene2symbol from GFF")
-    data <- parseGFFAttributes(file, select = "gene_") %>%
+
+    data <- readGFF(file) %>%
         as.data.frame() %>%
+        select(starts_with("gene_")) %>%
+        unique() %>%
         camel()
 
     # Standardize columns into Ensembl format
