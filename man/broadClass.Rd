@@ -51,7 +51,7 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
   \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}}, \code{\link{parseGFFAttributes}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

@@ -256,17 +256,6 @@ test_that("assertIsGene2symbol", {
 
 
 
-test_that("assertIsGFF", {
-    x <- readGFF("mmusculus.gtf")
-    assertIsGFF(x)
-    expect_error(
-        assertIsGFF(mtcars),
-        "is_of_length : colnames\\(x\\) has length 11, not 9."
-    )
-})
-
-
-
 test_that("assertIsHexColorFunctionOrNULL", {
     x <- function(n) {
         colors <- c("#FFFFFF", "#000000")

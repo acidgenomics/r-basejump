@@ -18,14 +18,13 @@
 #' ))
 #' glimpse(x)
 makeTx2geneFromGFF <- function(file) {
-    data <- parseGFFAttributes(
-        file = file,
-        select = c("gene_id", "transcript_id")
-    ) %>%
+    message("Making tx2gene from GFF")
+
+    data <- readGFF(file) %>%
         as.data.frame() %>%
-        set_colnames(c("geneID", "txID")) %>%
-        # Put transcripts first
-        .[, c("txID", "geneID")] %>%
+        .[, c("transcript_id", "gene_id")] %>%
+        set_colnames(c("txID", "geneID")) %>%
+        unique() %>%
         # Drop rows containing an NA value
         .[complete.cases(.), , drop = FALSE] %>%
         .[order(.[["txID"]]), , drop = FALSE] %>%
