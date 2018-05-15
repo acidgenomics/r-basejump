@@ -21,7 +21,8 @@
 #'
 #' @examples
 #' x <- readGFF("http://basejump.seq.cloud/example.gtf")
-#' glimpse(x)
+#' summary(x)
+#' as.data.frame(x) %>% glimpse()
 readGFF <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
