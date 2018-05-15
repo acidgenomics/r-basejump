@@ -284,7 +284,7 @@ test_that("readFileByExtension : No extension", {
 test_that("readGFF : Drosophila melanogaster", {
     x <- readGFF("dmelanogaster.gtf")
     expect_s4_class(x, "GRanges")
-    expect_identical(levels(seqnames(x)), "X")
+    expect_identical(levels(GenomeInfoDb::seqnames(x)), "X")
     expect_identical(
         colnames(mcols(x)),
         c(
@@ -302,7 +302,7 @@ test_that("readGFF : Drosophila melanogaster", {
 
 test_that("readGFF : Mus musculus", {
     x <- readGFF("mmusculus.gtf")
-    expect_identical(levels(seqnames(x)), "1")
+    expect_identical(levels(GenomeInfoDb::seqnames(x)), "1")
     expect_identical(
         colnames(mcols(x)),
         c(
