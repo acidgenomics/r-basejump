@@ -1,3 +1,42 @@
+# basejump 0.5.0 (2018-04-13)
+
+## New functions
+
+- `emptyRanges()` enables easy creation of placeholder ranges for `GRanges` objects, where transgene and FASTA spike-ins are needed.
+- `hgnc2gene()` enables easy mapping of HGNC to Ensembl gene identifiers.
+- `mgi2gene()` enables easy mapping of MGI to Ensembl gene identifiers.
+- `panther()` function enables easy querying of the [PANTHER][] website. Human, mouse, nematode worm, and fruit fly are currently supported. The specific PANTHER release (e.g. 13) can be declared using the `release` argument. Otherwise, the function will return the most recent annotations from the [PANTHER][] website.
+- Added `isURL()` check function.
+- `readJSON()` adds support for JSON files. Like the other read functions, it supports both local files and remote URLs.
+
+## ggplot2 themes
+
+- `theme_midnight()` and `theme_paperwhite()` provide minimal, high contrast [ggplot2][] themes with bold sans serif labels.
+
+- printString
+- readJSON
+
+## Major changes
+
+- `loadData()` now supports `.rda`, `.rds`, and `.RData` files. The function will error by design if multiple data extensions are detected inside the directory specified with the `dir` argument.
+
+
+## Minor changes
+
+- Consolidated assert check function code.
+- Moved assertive imports to `basejump-package.R` file.
+- Consolidated globals inside package to `globals.R` file.
+- Removed internal `.biocLite()` function. Now using `requireNamespace()` instead, without attempting to install automatically.
+- Added internal support for safe loading RDS files.
+- Switched back to using `message()`, `warning()`, and `stop()` instead of the rlang equivalents.
+- Improved internal method declaration using `getMethod()` where applicable.
+- `multiassignAsEnvir()` is now recommended in place of `multiassignAsNewEnvir()`.
+- `readFileByExtension()` will now attempt to use the [rio][] package for file extensions that are not natively supported.
+- `writeCounts()` now uses `mapply()` internally.
+- Migrated `assertFormalAnnotationCol()` to [bcbioBase][] package.
+
+
+
 ## basejump 0.4.0 (2018-03-22)
 
 ### Major changes
