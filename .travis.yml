@@ -32,8 +32,10 @@ warnings_are_errors: true
 
 notifications:
   email:
+    recipients:
+      - mike@steinbaugh.com
     on_success: change
-    on_failure: change
+    on_failure: always
 
 r_packages:
   - covr
