@@ -328,7 +328,7 @@ test_that("detectOrganism : tbl_df", {
 test_that("emptyRanges", {
     x <- emptyRanges("XXX")
     expect_identical(
-        levels(GenomeInfoDb::seqnames(x)),
+        levels(seqnames(x)),
         "unknown"
     )
     expect_identical(
