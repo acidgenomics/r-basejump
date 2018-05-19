@@ -35,6 +35,7 @@ Depends:
 Imports:
     AnnotationHub,
     GenomicFeatures,
+    GenomeInfoDb,
     GenomicRanges,
     IRanges,
     Matrix (>= 1.2),

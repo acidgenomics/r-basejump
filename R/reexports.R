@@ -1,5 +1,11 @@
 # Only reexport functions needed for working examples and vignette
 
+#' @importFrom GenomeInfoDb seqnames
+#' @export
+GenomeInfoDb::seqnames
+
+
+
 #' @importFrom Matrix Matrix
 #' @export
 Matrix::Matrix
