@@ -12,10 +12,20 @@ os:
   - linux
   - osx
 
+matrix:
+  exclude:
+  - os: osx
+    r: bioc-devel
+
 # blocklist
 # branches:
 #   except:
 #   - develop
+
+# safelist
+# branches:
+#   only:
+#   - master
 
 env:
   global:
