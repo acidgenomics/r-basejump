@@ -63,7 +63,7 @@ ensembldb." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.6</span>
       </span>
     </div>
 
@@ -77,6 +77,9 @@ ensembldb." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -204,20 +207,20 @@ package.</p>
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code><a href='panther.html'>panther</a></code>, <code><a href='parseGFFAttributes.html'>parseGFFAttributes</a></code>,
+  <code><a href='panther.html'>panther</a></code>,
   <code>stripTranscriptVersions</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(
-    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-23)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+    <span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
 #&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 65256 ranges and 7 metadata columns"</div><div class='input'>
 <span class='co'># Transcripts ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-23)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>

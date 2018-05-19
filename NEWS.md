@@ -1,3 +1,107 @@
+# basejump 0.5.6 (2018-05-19)
+
+## Minor changes
+
+- Fixed NAMESPACE issue with `GenomeInfoDb::seqnames()`.
+- Improved `readGFF()` working example to reflect switch to `GRanges` return.
+- Added macOS bioc-release to Travis CI build checks.
+
+
+
+# basejump 0.5.5 (2018-05-15)
+
+## Major changes
+
+- `readGFF()` now uses `rtracklayer::import()` internally to return GFF file as a `GRanges` object instead of a `data.frame`.
+
+## Minor changes
+
+- `assertIsGFF()` and `parseGFFAttributes()` functions are now defunct.
+- Simplified internal GFF handling code for `makeGRangesFromGFF()`, `makeGene2symbolFromGFF()`, and `makeTx2geneFromGFF()`.
+
+
+
+# basejump 0.5.4 (2018-05-08)
+
+- Migrated `sanitizeSampleData()` to bcbioBase package.
+- Updated Bioconductor install method for 3.7.
+
+
+
+# basejump 0.5.3 (2018-04-30)
+
+## Minor changes
+
+- Improved internal S4 method code for `fixNA()` and `removeNA()`.
+- Tweaked gray accent colors in `theme_midnight()` and `theme_paperwhite()`. Now using British spelling internally for ggplot code.
+- Improved `strip.background` for `theme_paperwhite()`, removing the black box around the labels when facet wrapping is enabled.
+
+
+
+# basejump 0.5.2 (2018-04-26)
+
+## Minor changes
+
+- Improved documentation for assert check functions.
+- Deprecated `geomean()` in favor of `geometricMean()`.
+- Simplified internal code for `grepString()`.
+- Added message during `hgnc2gene()` call.
+- Miscellaneous documentation fixes.
+- Moved internal constructors into the S4 method definitions, where applicable.
+- Simplified default parameter definition for `panther(organism = "XXX")`.
+- Improved code coverage, using `nocov` where appropriate.
+
+
+
+# basejump 0.5.1 (2018-04-16)
+
+## Minor changes
+
+- `emptyRanges()`: Now using `match.arg()` internally to capture `seqname` argument.
+- Removed legacy `.assignCamelArgs()` and `.assignCamelFormals()` internal functions.
+- Improved internal handling of XLSX files in `localOrRemoteFile()`.
+
+
+
+# basejump 0.5.0 (2018-04-13)
+
+## New functions
+
+- `emptyRanges()` enables easy creation of placeholder ranges for `GRanges` objects, where transgene and FASTA spike-ins are needed.
+- `hgnc2gene()` enables easy mapping of HGNC to Ensembl gene identifiers.
+- `mgi2gene()` enables easy mapping of MGI to Ensembl gene identifiers.
+- `panther()` function enables easy querying of the [PANTHER][] website. Human, mouse, nematode worm, and fruit fly are currently supported. The specific PANTHER release (e.g. 13) can be declared using the `release` argument. Otherwise, the function will return the most recent annotations from the [PANTHER][] website.
+- Added `isURL()` check function.
+- `readJSON()` adds support for JSON files. Like the other read functions, it supports both local files and remote URLs.
+
+## ggplot2 themes
+
+- `theme_midnight()` and `theme_paperwhite()` provide minimal, high contrast [ggplot2][] themes with bold sans serif labels.
+
+- printString
+- readJSON
+
+## Major changes
+
+- `loadData()` now supports `.rda`, `.rds`, and `.RData` files. The function will error by design if multiple data extensions are detected inside the directory specified with the `dir` argument.
+
+
+## Minor changes
+
+- Consolidated assert check function code.
+- Moved assertive imports to `basejump-package.R` file.
+- Consolidated globals inside package to `globals.R` file.
+- Removed internal `.biocLite()` function. Now using `requireNamespace()` instead, without attempting to install automatically.
+- Added internal support for safe loading RDS files.
+- Switched back to using `message()`, `warning()`, and `stop()` instead of the rlang equivalents.
+- Improved internal method declaration using `getMethod()` where applicable.
+- `multiassignAsEnvir()` is now recommended in place of `multiassignAsNewEnvir()`.
+- `readFileByExtension()` will now attempt to use the [rio][] package for file extensions that are not natively supported.
+- `writeCounts()` now uses `mapply()` internally.
+- Migrated `assertFormalAnnotationCol()` to [bcbioBase][] package.
+
+
+
 ## basejump 0.4.0 (2018-03-22)
 
 ### Major changes

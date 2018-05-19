@@ -24,7 +24,8 @@ Column names follow the
 }
 \examples{
 x <- readGFF("http://basejump.seq.cloud/example.gtf")
-glimpse(x)
+summary(x)
+as.data.frame(x) \%>\% glimpse()
 }
 \seealso{
 \itemize{

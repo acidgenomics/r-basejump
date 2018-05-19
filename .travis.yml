@@ -8,10 +8,24 @@ r:
   - bioc-release
   - bioc-devel
 
+os:
+  - linux
+  - osx
+
+matrix:
+  exclude:
+  - os: osx
+    r: bioc-devel
+
 # blocklist
-branches:
-  except:
-  - develop
+# branches:
+#   except:
+#   - develop
+
+# safelist
+# branches:
+#   only:
+#   - master
 
 env:
   global:
@@ -28,8 +42,10 @@ warnings_are_errors: true
 
 notifications:
   email:
+    recipients:
+      - mike@steinbaugh.com
     on_success: change
-    on_failure: change
+    on_failure: always
 
 r_packages:
   - covr
