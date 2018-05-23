@@ -12,6 +12,29 @@
 #' @importFrom RCurl getURL
 #' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
 #'   tail
+#' @importFrom assertive.base assert_all_are_not_na assert_are_identical
+#'   assert_is_identical_to_na is_not_na
+#' @importFrom assertive.code assert_all_are_existing is_existing
+#' @importFrom assertive.data assert_all_are_hex_colors is_hex_color
+#' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
+#' @importFrom assertive.numbers assert_all_are_greater_than
+#'   assert_all_are_greater_than_or_equal_to assert_all_are_non_negative
+#'   assert_all_are_positive
+#' @importFrom assertive.properties assert_are_same_length assert_has_colnames
+#'   assert_has_dimnames assert_has_dims assert_has_names
+#'   assert_has_no_duplicates assert_has_rows assert_is_atomic assert_is_empty
+#'   assert_is_non_empty assert_is_not_null assert_is_of_length
+#'   assert_is_scalar assert_is_vector has_colnames has_dims has_rows is_scalar
+#' @importFrom assertive.sets assert_are_disjoint_sets
+#'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
+#' @importFrom assertive.strings assert_all_are_matching_regex
+#'   assert_all_are_non_missing_nor_empty_character
+#'   assert_any_are_matching_regex
+#' @importFrom assertive.types assert_is_a_bool assert_is_a_number
+#'   assert_is_a_string assert_is_all_of assert_is_an_integer assert_is_any_of
+#'   assert_is_character assert_is_data.frame assert_is_environment
+#'   assert_is_factor assert_is_integer assert_is_list assert_is_matrix
+#'   assert_is_name assert_is_numeric is_a_number is_a_string
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange case_when everything filter funs group_by mutate
 #'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
@@ -35,61 +58,4 @@
 #' @importFrom tidyr separate
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
-#'
-#' @importFrom assertive.base assert_all_are_not_na
-#' @importFrom assertive.base assert_are_identical
-#' @importFrom assertive.base assert_is_identical_to_na
-#' @importFrom assertive.base is_not_na
-#' @importFrom assertive.code assert_all_are_existing
-#' @importFrom assertive.code is_existing
-#' @importFrom assertive.data assert_all_are_hex_colors
-#' @importFrom assertive.data is_hex_color
-#' @importFrom assertive.files assert_all_are_dirs
-#' @importFrom assertive.files assert_all_are_existing_files
-#' @importFrom assertive.numbers assert_all_are_greater_than
-#' @importFrom assertive.numbers assert_all_are_greater_than_or_equal_to
-#' @importFrom assertive.numbers assert_all_are_non_negative
-#' @importFrom assertive.numbers assert_all_are_positive
-#' @importFrom assertive.properties assert_are_same_length
-#' @importFrom assertive.properties assert_has_colnames
-#' @importFrom assertive.properties assert_has_dimnames
-#' @importFrom assertive.properties assert_has_dims
-#' @importFrom assertive.properties assert_has_names
-#' @importFrom assertive.properties assert_has_no_duplicates
-#' @importFrom assertive.properties assert_has_rows
-#' @importFrom assertive.properties assert_is_atomic
-#' @importFrom assertive.properties assert_is_empty
-#' @importFrom assertive.properties assert_is_non_empty
-#' @importFrom assertive.properties assert_is_not_null
-#' @importFrom assertive.properties assert_is_of_length
-#' @importFrom assertive.properties assert_is_scalar
-#' @importFrom assertive.properties assert_is_vector
-#' @importFrom assertive.properties has_colnames
-#' @importFrom assertive.properties has_dims
-#' @importFrom assertive.properties has_rows
-#' @importFrom assertive.properties is_scalar
-#' @importFrom assertive.sets assert_are_disjoint_sets
-#' @importFrom assertive.sets assert_are_intersecting_sets
-#' @importFrom assertive.sets assert_are_set_equal
-#' @importFrom assertive.sets assert_is_subset
-#' @importFrom assertive.strings assert_all_are_matching_regex
-#' @importFrom assertive.strings assert_all_are_non_missing_nor_empty_character
-#' @importFrom assertive.strings assert_any_are_matching_regex
-#' @importFrom assertive.types assert_is_a_bool
-#' @importFrom assertive.types assert_is_a_number
-#' @importFrom assertive.types assert_is_a_string
-#' @importFrom assertive.types assert_is_all_of
-#' @importFrom assertive.types assert_is_an_integer
-#' @importFrom assertive.types assert_is_any_of
-#' @importFrom assertive.types assert_is_character
-#' @importFrom assertive.types assert_is_data.frame
-#' @importFrom assertive.types assert_is_environment
-#' @importFrom assertive.types assert_is_factor
-#' @importFrom assertive.types assert_is_integer
-#' @importFrom assertive.types assert_is_list
-#' @importFrom assertive.types assert_is_matrix
-#' @importFrom assertive.types assert_is_name
-#' @importFrom assertive.types assert_is_numeric
-#' @importFrom assertive.types is_a_number
-#' @importFrom assertive.types is_a_string
 "_PACKAGE"
