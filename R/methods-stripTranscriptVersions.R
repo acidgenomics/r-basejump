@@ -21,16 +21,6 @@ NULL
 
 
 
-# Constructors =================================================================
-.stripTranscriptsVersions.dim <- function(object) {  # nolint
-    x <- rownames(object)
-    x <- stripTranscriptVersions(x)
-    rownames(object) <- x
-    object
-}
-
-
-
 # Methods ======================================================================
 #' @rdname stripTranscriptVersions
 #' @export
@@ -54,8 +44,13 @@ setMethod(
 #' @export
 setMethod(
     "stripTranscriptVersions",
-    signature("dgCMatrix"),
-    .stripTranscriptsVersions.dim
+    signature("matrix"),
+    function(object) {
+        rownames <- rownames(object)
+        rownames <- stripTranscriptVersions(rownames)
+        rownames(object) <- rownames
+        object
+    }
 )
 
 
@@ -64,6 +59,6 @@ setMethod(
 #' @export
 setMethod(
     "stripTranscriptVersions",
-    signature("matrix"),
-    .stripTranscriptsVersions.dim
+    signature("dgCMatrix"),
+    getMethod("stripTranscriptVersions", "matrix")
 )
