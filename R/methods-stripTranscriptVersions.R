@@ -34,7 +34,8 @@ setMethod(
         assert_is_character(object)
         assert_all_are_not_na(object)
         assert_all_are_non_missing_nor_empty_character(object)
-        gsub("^(ENS.*T\\d{11})\\.\\d+$", "\\1", object)
+        # punct will match `-` or `_` here
+        gsub("^(ENS.*T\\d{11})[[:punct:]]\\d+$", "\\1", object)
     }
 )
 
