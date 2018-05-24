@@ -187,7 +187,7 @@ sanitizeAnnotable <- function(...) {
 #' @rdname deprecated
 #' @export
 tx2gene <- function(...) {
-    .Defunct("tx2geneFromGFF or bcbioBase::readTx2gene")
+    .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
 }
 
 #' @rdname deprecated
