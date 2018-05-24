@@ -1,3 +1,11 @@
+# basejump 0.5.7 (2018-05-24)
+
+## Minor changes
+
+- Tweaked gray color accents for `theme_midnight()` and `theme_paperwhite()`.
+
+
+
 # basejump 0.5.6 (2018-05-19)
 
 ## Minor changes
