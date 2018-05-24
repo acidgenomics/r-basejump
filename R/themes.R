@@ -72,7 +72,7 @@ theme_midnight <- function(
     legend_position <- match.arg(legend_position)
     assert_is_a_bool(grid)
 
-    gray <- "gray8"
+    gray <- "gray10"
 
     text <- element_text(
         family = base_family,
@@ -139,7 +139,7 @@ theme_paperwhite <- function(
     legend_position <- match.arg(legend_position)
     assert_is_a_bool(grid)
 
-    gray <- "gray92"
+    gray <- "gray95"
 
     text <- element_text(
         family = base_family,
