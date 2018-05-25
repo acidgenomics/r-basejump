@@ -1,3 +1,11 @@
+# basejump 0.5.8
+
+## Minor changes
+
+- Made `dynamicPlotlist()` defunct.
+
+
+
 # basejump 0.5.7 (2018-05-24)
 
 ## Minor changes
