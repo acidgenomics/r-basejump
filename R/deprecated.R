@@ -2,7 +2,7 @@
 
 
 
-#' Defunct or Deprecated Functions
+#' Deprecated Functions
 #'
 #' @name deprecated
 #' @author Michael Steinbaugh
@@ -10,19 +10,32 @@
 #'
 #' @inheritParams general
 #'
-#' @return [.Defunct()] or [.Deprecated()] calls.
+#' @return [.Deprecated()].
+NULL
+
+
+
+#' Defunct Functions
+#'
+#' @name defunct
+#' @author Michael Steinbaugh
+#' @keywords internal
+#'
+#' @inheritParams general
+#'
+#' @return [.Defunct()].
 NULL
 
 
 
 # Legacy =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 summarizeRows <- function(...) {
     .Defunct("collapseToString")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 wash <- function(...) {
     .Defunct()
@@ -31,7 +44,7 @@ wash <- function(...) {
 
 
 # v0.0.23 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 packageSE <- function(...) {
     .Defunct("bcbioBase::prepareSummarizedExperiment")
@@ -39,7 +52,7 @@ packageSE <- function(...) {
 
 
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 prepareSE <- function(...) {
     .Defunct("bcbioBase::prepareSummarizedExperiment")
@@ -48,7 +61,7 @@ prepareSE <- function(...) {
 
 
 # v0.0.24 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 metadataTable <- function(...) {
     .Defunct("bcbioBase::sampleData")
@@ -57,7 +70,7 @@ metadataTable <- function(...) {
 
 
 # v0.0.25 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 pct <- function(...) {
     .Defunct("scales::percent")
@@ -66,13 +79,13 @@ pct <- function(...) {
 
 
 # v0.1.6 ======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 fc2lr <- function(...) {
     .Defunct("foldChangeToLogRatio")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 lr2fc <- function(...) {
     .Defunct("logRatioToFoldChange")
@@ -81,13 +94,13 @@ lr2fc <- function(...) {
 
 
 # v0.1.1 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 comp <- function() {
     .Defunct("Biostrings::complement")
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 revcomp <- function() {
     .Defunct("Biostrings::reverseComplement")
@@ -96,7 +109,7 @@ revcomp <- function() {
 
 
 # v0.2.2 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 symbol2gene <- function() {
     .Defunct()
 }
@@ -184,7 +197,7 @@ sanitizeAnnotable <- function(...) {
     sanitizeRowData(...)
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 tx2gene <- function(...) {
     .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
@@ -224,16 +237,25 @@ geomean <- function(...) {
 
 
 # v0.5.4 =======================================================================
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 assertIsGFF <- function(...) {
     .Defunct()
 }
 
-#' @rdname deprecated
+#' @rdname defunct
 #' @export
 parseGFFAttributes <- function(...) {
     .Defunct("readGFF")
+}
+
+
+
+# v0.5.8 =======================================================================
+#' @rdname defunct
+#' @export
+dynamicPlotlist <- function(...) {
+    .Defunct()
 }
 
 

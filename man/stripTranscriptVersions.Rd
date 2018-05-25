@@ -36,6 +36,7 @@ beginning with "ENS".
 \examples{
 # Ensembl
 stripTranscriptVersions("ENSMUST00000000001.1")
+stripTranscriptVersions("ENSMUST00000000001-1")
 stripTranscriptVersions("ENSMUST00000000001_1")
 
 # WormBase (unmodified)
