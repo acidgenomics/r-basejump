@@ -29,7 +29,7 @@ convertUCSCBuildToEnsembl <- function(object) {
     )
     match <- match(object, keys)
     if (any(is.na(match))) {
-        stop("Failed to detect UCSC genome build")
+        return(NULL)
     }
     names(keys)[match]
 }
