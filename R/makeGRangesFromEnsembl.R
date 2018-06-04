@@ -76,15 +76,16 @@ makeGRangesFromEnsembl <- function(
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(genomeBuild)
-    # Stop on UCSC genome build
-    if (
-        is_a_string(genomeBuild) &&
-        grepl("^[a-z]{2}\\d{2}$", genomeBuild)
-    ) {
-        stop(paste(
-            "Use Ensembl genome build name (e.g. GRCh38)",
-            "instead of UCSC name (e.g. hg38)"
-        ))
+    # Check for UCSC genome build and warn
+    if (is_a_string(genomeBuild)) {
+        genomeBuildRemap <- convertUCSCBuildToEnsembl(genomeBuild)
+        if (!is.null(genomeBuildRemap)) {
+            message("Converting requested UCSC genome build to Ensembl")
+            message(deparse(genomeBuildRemap))
+            # Coerce to drop any UCSC to Ensembl key mapping in name.
+            # Example: `c(hg19 = "GRCh37")`
+            genomeBuild <- as.character(genomeBuildRemap)
+        }
     }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
@@ -103,7 +104,7 @@ makeGRangesFromEnsembl <- function(
     if (
         tolower(organism) == "homo sapiens" &&
         (
-            identical(tolower(genomeBuild), "grch37") ||
+            identical(tolower(as.character(genomeBuild)), "grch37") ||
             identical(release, 75L)
         )
     ) {
