@@ -5,7 +5,8 @@
 #'
 #' @inheritParams general
 #'
-#' @return Character vector containing Ensembl genome build names.
+#' @return `character` containing Ensembl genome build as the value, UCSC build
+#'   as the name. Returns `NULL` on match failure.
 #' @export
 #'
 #' @examples
@@ -31,5 +32,7 @@ convertUCSCBuildToEnsembl <- function(object) {
     if (any(is.na(match))) {
         return(NULL)
     }
-    names(keys)[match]
+    return <- names(keys)[match]
+    names(return) <- keys[match]
+    return
 }

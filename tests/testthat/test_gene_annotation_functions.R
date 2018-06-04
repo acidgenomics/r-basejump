@@ -189,10 +189,22 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 
 # convertUCSCBuildToEnsembl ====================================================
 test_that("convertUCSCBuildToEnsembl", {
-    expect_identical(convertUCSCBuildToEnsembl("hg19"), "GRCh37")
-    expect_identical(convertUCSCBuildToEnsembl("hg38"), "GRCh38")
-    expect_identical(convertUCSCBuildToEnsembl("mm10"), "GRCm38")
-    expect_error(convertUCSCBuildToEnsembl("XXX"))
+    expect_identical(
+        convertUCSCBuildToEnsembl("hg19"),
+        c(hg19 = "GRCh37")
+    )
+    expect_identical(
+        convertUCSCBuildToEnsembl("hg38"),
+        c(hg38 = "GRCh38")
+    )
+    expect_identical(
+        convertUCSCBuildToEnsembl("mm10"),
+        c(mm10 = "GRCm38")
+    )
+    expect_identical(
+        convertUCSCBuildToEnsembl("XXX"),
+        NULL
+    )
 })
 
 
