@@ -80,8 +80,11 @@ makeGRangesFromEnsembl <- function(
     if (is_a_string(genomeBuild)) {
         genomeBuildRemap <- convertUCSCBuildToEnsembl(genomeBuild)
         if (!is.null(genomeBuildRemap)) {
-            message("Converting requested UCSC genome build to Ensembl")
-            message(deparse(genomeBuildRemap))
+            warning(paste(
+                "UCSC genome build ID detected. Use Ensembl build ID instead.",
+                paste("Mapping:", deparse(genomeBuildRemap)),
+                sep = "\n"
+            ))
             # Coerce to drop any UCSC to Ensembl key mapping in name.
             # Example: `c(hg19 = "GRCh37")`
             genomeBuild <- as.character(genomeBuildRemap)
