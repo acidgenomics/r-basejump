@@ -3,15 +3,6 @@
 #' Base functions for bioinformatics and R package development.
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
-#' @importFrom GenomicRanges GRanges
-#' @importFrom IRanges IRanges
-#' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
-#' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom R.utils gzip
-#' @importFrom RCurl getURL
-#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
-#'   tail
 #' @importFrom assertive.base assert_all_are_not_na assert_are_identical
 #'   assert_is_identical_to_na is_not_na
 #' @importFrom assertive.code assert_all_are_existing is_existing
@@ -40,16 +31,25 @@
 #'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
 #'   ungroup
 #' @importFrom ensembldb ensemblVersion organism
+#' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
+#' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
+#' @importFrom IRanges IRanges
 #' @importFrom knitr asis_output kable opts_knit
+#' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
+#' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames set_names
 #' @importFrom methods as getGeneric is selectMethod show
 #' @importFrom pbapply pblapply
+#' @importFrom R.utils gzip
+#' @importFrom RCurl getURL
 #' @importFrom readr read_csv read_lines read_tsv write_csv write_lines
 #' @importFrom readxl read_excel
 #' @importFrom rlang !! UQ sym dots_list eval_bare
 #' @importFrom rtracklayer import
+#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
+#'   tail
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
