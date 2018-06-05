@@ -14,20 +14,12 @@
 #' @examples
 #' # Ensembl
 #' stripTranscriptVersions("ENSMUST00000000001.1")
+#' stripTranscriptVersions("ENSMUST00000000001-1")
+#' stripTranscriptVersions("ENSMUST00000000001_1")
 #'
 #' # WormBase (unmodified)
 #'stripTranscriptVersions("cTel79B.1")
 NULL
-
-
-
-# Constructors =================================================================
-.stripTranscriptsVersions.dim <- function(object) {  # nolint
-    x <- rownames(object)
-    x <- stripTranscriptVersions(x)
-    rownames(object) <- x
-    object
-}
 
 
 
@@ -44,7 +36,23 @@ setMethod(
         assert_is_character(object)
         assert_all_are_not_na(object)
         assert_all_are_non_missing_nor_empty_character(object)
-        gsub("^(ENS.*T\\d{11})\\.\\d+$", "\\1", object)
+        # punct will match `-` or `_` here
+        gsub("^(ENS.*T\\d{11})[[:punct:]]\\d+$", "\\1", object)
+    }
+)
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    "stripTranscriptVersions",
+    signature("matrix"),
+    function(object) {
+        rownames <- rownames(object)
+        rownames <- stripTranscriptVersions(rownames)
+        rownames(object) <- rownames
+        object
     }
 )
 
@@ -55,15 +63,5 @@ setMethod(
 setMethod(
     "stripTranscriptVersions",
     signature("dgCMatrix"),
-    .stripTranscriptsVersions.dim
-)
-
-
-
-#' @rdname stripTranscriptVersions
-#' @export
-setMethod(
-    "stripTranscriptVersions",
-    signature("matrix"),
-    .stripTranscriptsVersions.dim
+    getMethod("stripTranscriptVersions", "matrix")
 )

@@ -6,17 +6,17 @@
 \alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
-\alias{stripTranscriptVersions,dgCMatrix-method}
 \alias{stripTranscriptVersions,matrix-method}
+\alias{stripTranscriptVersions,dgCMatrix-method}
 \title{Strip Transcript Versions}
 \usage{
 stripTranscriptVersions(object, ...)
 
 \S4method{stripTranscriptVersions}{character}(object)
 
-\S4method{stripTranscriptVersions}{dgCMatrix}(object)
-
 \S4method{stripTranscriptVersions}{matrix}(object)
+
+\S4method{stripTranscriptVersions}{dgCMatrix}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -36,6 +36,8 @@ beginning with "ENS".
 \examples{
 # Ensembl
 stripTranscriptVersions("ENSMUST00000000001.1")
+stripTranscriptVersions("ENSMUST00000000001-1")
+stripTranscriptVersions("ENSMUST00000000001_1")
 
 # WormBase (unmodified)
 stripTranscriptVersions("cTel79B.1")

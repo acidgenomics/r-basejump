@@ -2,17 +2,6 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
-\alias{summarizeRows}
-\alias{wash}
-\alias{packageSE}
-\alias{prepareSE}
-\alias{metadataTable}
-\alias{pct}
-\alias{fc2lr}
-\alias{lr2fc}
-\alias{comp}
-\alias{revcomp}
-\alias{symbol2gene}
 \alias{checkAnnotable}
 \alias{checkGene2symbol}
 \alias{checkTx2gene}
@@ -24,37 +13,12 @@
 \alias{gene2symbolFromGFF}
 \alias{gene2symbolFromGTF}
 \alias{sanitizeAnnotable}
-\alias{tx2gene}
 \alias{tx2geneFromGFF}
 \alias{tx2geneFromGTF}
 \alias{multiassignAsNewEnvir}
 \alias{geomean}
-\alias{assertIsGFF}
-\alias{parseGFFAttributes}
-\title{Defunct or Deprecated Functions}
+\title{Deprecated Functions}
 \usage{
-summarizeRows(...)
-
-wash(...)
-
-packageSE(...)
-
-prepareSE(...)
-
-metadataTable(...)
-
-pct(...)
-
-fc2lr(...)
-
-lr2fc(...)
-
-comp()
-
-revcomp()
-
-symbol2gene()
-
 checkAnnotable(...)
 
 checkGene2symbol(...)
@@ -77,8 +41,6 @@ gene2symbolFromGTF(...)
 
 sanitizeAnnotable(...)
 
-tx2gene(...)
-
 tx2geneFromGFF(...)
 
 tx2geneFromGTF(...)
@@ -86,19 +48,15 @@ tx2geneFromGTF(...)
 multiassignAsNewEnvir(...)
 
 geomean(...)
-
-assertIsGFF(...)
-
-parseGFFAttributes(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
 }
 \value{
-\code{\link[=.Defunct]{.Defunct()}} or \code{\link[=.Deprecated]{.Deprecated()}} calls.
+\code{\link[=.Deprecated]{.Deprecated()}}.
 }
 \description{
-Defunct or Deprecated Functions
+Deprecated Functions
 }
 \author{
 Michael Steinbaugh

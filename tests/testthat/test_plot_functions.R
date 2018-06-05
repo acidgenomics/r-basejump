@@ -1,34 +1,5 @@
 context("Plot Functions")
 
-# dynamicPlotlist ==============================================================
-test_that("dynamicPlotlist", {
-    # grid
-    x <- dynamicPlotlist(plotlist, return = "grid")
-    expect_s3_class(x, "ggplot")
-
-    # list
-    x <- dynamicPlotlist(plotlist, return = "list")
-    expect_is(x, "list")
-
-    # markdown
-    output <- capture.output(
-        dynamicPlotlist(plotlist, return = "markdown")
-    )
-    expect_identical(
-        output,
-        c(
-            "",
-            "",
-            "## continuous",
-            "",
-            "",
-            "",
-            "## discrete",
-            ""
-        )
-    )
-})
-
 
 
 # themes =======================================================================
