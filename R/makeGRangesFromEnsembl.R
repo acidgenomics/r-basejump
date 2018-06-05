@@ -85,8 +85,7 @@ makeGRangesFromEnsembl <- function(
                 paste("Mapping:", deparse(genomeBuildRemap)),
                 sep = "\n"
             ))
-            # Coerce to drop any UCSC to Ensembl key mapping in name.
-            # Example: `c(hg19 = "GRCh37")`
+            # Coerce to drop any UCSC to Ensembl key mapping in name
             genomeBuild <- as.character(genomeBuildRemap)
         }
     }
