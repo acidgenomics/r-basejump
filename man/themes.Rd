@@ -73,8 +73,6 @@ p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
-
-Other Plot Functions: \code{\link{dynamicPlotlist}}
 }
 \author{
 Michael Steinbaugh

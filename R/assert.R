@@ -331,6 +331,7 @@ assertIsAStringOrNULL <- function(
 
 
 
+# Deprecate this function in a future release
 #' Assert Is Character Vector or NULL
 #'
 #' @family Assert Check Functions
@@ -431,6 +432,7 @@ assertIsColorScaleDiscreteOrNULL <- function(
 
 
 
+# Deprecate this function in a future release
 #' Assert Is Data Frame or NULL
 #'
 #' @note This checks for `data.frame` and will stop on `DataFrame` class.
