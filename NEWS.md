@@ -1,8 +1,21 @@
-# basejump 0.5.8
+# basejump 0.5.8 (2018-06-05)
 
 ## Minor changes
 
-- Made `dynamicPlotlist()` defunct.
+- `makeGRangesFromEnsembl()` now supports remapping of UCSC genome build to
+  Ensembl. However, this isn't recommended, and will warn the user.
+- `convertUCSCBuildToEnsembl()` now returns `NULL` instead of erroring on
+  genome build match failure.
+- `stripTranscriptVersions()` now matches "`.`", "`-`", and "`_`" version
+  delimiters.
+- Made unused `dynamicPlotlist()` function defunct.
+- Consider deprecating `assertIsCharacterOrNULL()` and
+  `assertIsDataFrameOrNULL()` in a future release.
+
+## Infrastructure changes
+
+- Reenable Travis CI blocklist, excluding develop branch from checks.
+- Reorganized documentation of deprecated and defunct functions.
 
 
 
