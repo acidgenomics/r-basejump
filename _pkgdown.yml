@@ -3,6 +3,9 @@ authors:
     href: /
 
 reference:
+  - title: Package Information
+    contents:
+    - basejump-package
   - title: Gene Annotation Functions
     contents:
     - annotable
