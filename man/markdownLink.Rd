@@ -28,7 +28,9 @@ markdownLink(
 )
 }
 \seealso{
-\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax Documentation}.
+\itemize{
+\item \href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
+}
 
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownList}},

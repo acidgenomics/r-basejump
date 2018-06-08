@@ -15,7 +15,8 @@
 #' @param title *Optional.* Link title attribute. This will appear in mouse-over
 #'   popup.
 #'
-#' @seealso [Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax).
+#' @seealso
+#' - [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return Markdown-formatted link.
 #' @export
