@@ -1,6 +1,5 @@
 #' Markdown Header
 #'
-#' @name markdownHeader
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
 #'
