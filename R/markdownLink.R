@@ -18,5 +18,5 @@ markdownLink = function(desc, link, text=NULL) {
   if(!is.null(text)) {
     mdlink = paste0(mdlink, ': ', text)
   }
-  cat(markdownlink)
+  cat(mdlink)
 }
