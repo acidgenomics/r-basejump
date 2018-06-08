@@ -26,7 +26,8 @@ markdownPlotlist(plotlist)
 \code{\link[cowplot:plot_grid]{cowplot::plot_grid()}}.
 
 Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownHeader}}, \code{\link{markdownList}}
+  \code{\link{markdownHeader}}, \code{\link{markdownLink}},
+  \code{\link{markdownList}}
 }
 \author{
 Michael Steinbaugh
