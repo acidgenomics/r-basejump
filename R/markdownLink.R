@@ -1,6 +1,6 @@
 #' Markdown Link
 #'
-#' For use in 'asis' blocks.
+#' For use in 'asis' blocks only.
 #'
 #' @family R Markdown Functions
 #' @author Rory Kirchner, Michael Steinbaugh
