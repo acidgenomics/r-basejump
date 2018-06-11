@@ -18,7 +18,7 @@ mouse-over pop-up box.}
 Markdown-formatted link.
 }
 \description{
-For use in 'asis' blocks.
+For use in 'asis' blocks only.
 }
 \examples{
 markdownLink(
