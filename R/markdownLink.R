@@ -1,22 +1,15 @@
-# Consider renaming "link" to "url"?
-# Improve the return documentation consistency across Markdown functions
-
-
-
 #' Markdown Link
 #'
 #' For use in 'asis' blocks.
 #'
 #' @family R Markdown Functions
-#' @author Rory Kirchner
+#' @author Rory Kirchner, Michael Steinbaugh
 #'
-#' @param text Link text.
-#' @param url Link URL.
-#' @param title *Optional.* Link title attribute. This will appear in mouse-over
-#'   popup.
+#' @inherit markdownHeader
 #'
-#' @seealso
-#' - [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
+#' @param url URL.
+#' @param title *Optional.* Link title attribute. This will appear in a
+#'   mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.
 #' @export
@@ -27,12 +20,19 @@
 #'     url = "https://www.r-project.org",
 #'     title = "The R Project for Statistical Computing"
 #' )
-markdownLink <- function(text, url, title = NULL) {
-  x <- paste0('[', text, '](', url, ')')
-  if (!is.null(title)) {
-    x <- paste0(x, ': ', title)
-  }
-  writeLines(x)
+markdownLink <- function(
+    text,
+    url,
+    title = NULL
+) {
+    assert_is_a_string(object)
+    assert_is_a_string(url)
+    assertIsAStringOrNULL(title)
+    x <- paste0('[', text, '](', url, ')')
+    if (!is.null(title)) {
+        x <- paste0(x, ': ', title)
+    }
+    writeLines(x)
 }
 
 

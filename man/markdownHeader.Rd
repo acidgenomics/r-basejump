@@ -6,17 +6,17 @@
 \alias{mdLink}
 \title{Markdown Header}
 \usage{
-markdownHeader(object, level = 2L, tabset = FALSE, asis = FALSE)
+markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
-\item{object}{\code{scalar}, which will be coerced to \code{character}.}
+\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
 
 \item{level}{Header level (1-7).}
 
 \item{tabset}{Include tabset marker.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an RMarkdown chunk with '\code{results = "asis"}' enabled.}
+inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
@@ -34,6 +34,10 @@ markdownHeader("Header", tabset = TRUE)
 markdownHeader("Header", asis = TRUE)
 }
 \seealso{
+\itemize{
+\item \href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
+}
+
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},
   \code{\link{markdownPlotlist}}
