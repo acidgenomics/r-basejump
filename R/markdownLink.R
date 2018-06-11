@@ -28,9 +28,9 @@ markdownLink <- function(
     assert_is_a_string(text)
     assert_is_a_string(url)
     assertIsAStringOrNULL(title)
-    x <- paste0('[', text, '](', url, ')')
+    x <- paste0("[", text, "](", url, ")")
     if (!is.null(title)) {
-        x <- paste0(x, ': ', title)
+        x <- paste0(x, ": ", title)
     }
     writeLines(x)
 }
