@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.8</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.9</span>
       </span>
     </div>
 
@@ -103,7 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Markdown Header</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdownHeader.R'><code>R/markdownHeader.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdownHeader.R'><code>R/markdownHeader.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdownLink.R'><code>R/markdownLink.R</code></a></small>
     <div class="hidden name"><code>markdownHeader.Rd</code></div>
     </div>
 
@@ -113,14 +113,14 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>markdownHeader</span>(<span class='no'>object</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>markdownHeader</span>(<span class='no'>text</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>tabset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>asis</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p><code>scalar</code>, which will be coerced to <code>character</code>.</p></td>
+      <th>text</th>
+      <td><p>Text. Can be any <code>atomic</code>, which will be coerced to <code>character</code>.</p></td>
     </tr>
     <tr>
       <th>level</th>
@@ -133,7 +133,7 @@
     <tr>
       <th>asis</th>
       <td><p>Set this to <code>TRUE</code> when using the function inside a loop or
-inside an RMarkdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
+inside an R Markdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
     </tr>
     </table>
     
@@ -148,8 +148,11 @@ inside an RMarkdown chunk with '<code>results = "asis"</code>' enabled.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><ul>
+<li><p><a href='https://daringfireball.net/projects/markdown/syntax'>Markdown Syntax</a>.</p></li>
+</ul></div>
     <div class='dont-index'><p>Other R Markdown Functions: <code><a href='kables.html'>kables</a></code>,
-  <code><a href='markdownList.html'>markdownList</a></code>,
+  <code><a href='markdownLink.html'>markdownLink</a></code>, <code><a href='markdownList.html'>markdownList</a></code>,
   <code><a href='markdownPlotlist.html'>markdownPlotlist</a></code></p></div>
     
 

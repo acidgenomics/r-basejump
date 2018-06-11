@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assert All Variables Are Non-Existing — assertAllAreNonExisting • basejump</title>
+<title>Markdown Link — markdownLink • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Assert All Variables Are Non-Existing — assertAllAreNonExisting" />
+<meta property="og:title" content="Markdown Link — markdownLink" />
 
-<meta property="og:description" content="Assert All Variables Are Non-Existing" />
+<meta property="og:description" content="For use in 'asis' blocks only." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,65 +102,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assert All Variables Are Non-Existing</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
-    <div class="hidden name"><code>assertAllAreNonExisting.Rd</code></div>
+    <h1>Markdown Link</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/markdownLink.R'><code>R/markdownLink.R</code></a></small>
+    <div class="hidden name"><code>markdownLink.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Assert All Variables Are Non-Existing</p>
+    <p>For use in 'asis' blocks only.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertAllAreNonExisting</span>(<span class='no'>x</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(), <span class='kw'>inherits</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>markdownLink</span>(<span class='no'>text</span>, <span class='no'>url</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p><code>character</code> vector of variable names to check in <code>environment</code>.</p></td>
+      <th>text</th>
+      <td><p>Text. Can be any <code>atomic</code>, which will be coerced to <code>character</code>.</p></td>
     </tr>
     <tr>
-      <th>envir</th>
-      <td><p><code>environment</code>.</p></td>
+      <th>url</th>
+      <td><p>URL.</p></td>
     </tr>
     <tr>
-      <th>inherits</th>
-      <td><p>Should the enclosing frames of the <code>environment</code> be searched?</p></td>
+      <th>title</th>
+      <td><p><em>Optional.</em> Link title attribute. This will appear in a
+mouse-over pop-up box.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Stop on mismatch.</p>
+    <p>Markdown-formatted link.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
-  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
-  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
-  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
-  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
-  <code><a href='assertIsAHeaderLevel.html'>assertIsAHeaderLevel</a></code>,
-  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
-  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
-  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
-  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
-  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
-  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
-  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
-  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
-  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
-  <code>assertIsImplicitInteger</code>,
-  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code>, <code><a href='assertIsURL.html'>assertIsURL</a></code></p></div>
+    <div class='dont-index'><p>Other R Markdown Functions: <code><a href='kables.html'>kables</a></code>,
+  <code><a href='markdownHeader.html'>markdownHeader</a></code>, <code><a href='markdownList.html'>markdownList</a></code>,
+  <code><a href='markdownPlotlist.html'>markdownPlotlist</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assertAllAreNonExisting</span>(<span class='fu'>c</span>(<span class='st'>"XXX"</span>, <span class='st'>"YYY"</span>))</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>markdownLink</span>(
+    <span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"R"</span>,
+    <span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://www.r-project.org"</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"The R Project for Statistical Computing"</span>
+)</div><div class='output co'>#&gt; <span class='error'>Error in assert_engine(is_a_string, x, .xname = get_name_in_parent(x),     severity = severity): object 'object' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,7 +165,7 @@
 
     <h2>Author</h2>
     
-Michael Steinbaugh
+Rory Kirchner, Michael Steinbaugh
 
   </div>
 </div>
