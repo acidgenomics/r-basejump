@@ -7,12 +7,12 @@
 markdownLink(text, url, title = NULL)
 }
 \arguments{
-\item{text}{Link text.}
+\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
 
-\item{url}{Link URL.}
+\item{url}{URL.}
 
-\item{title}{\emph{Optional.} Link title attribute. This will appear in mouse-over
-popup.}
+\item{title}{\emph{Optional.} Link title attribute. This will appear in a
+mouse-over pop-up box.}
 }
 \value{
 Markdown-formatted link.
@@ -28,14 +28,10 @@ markdownLink(
 )
 }
 \seealso{
-\itemize{
-\item \href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
-}
-
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownList}},
   \code{\link{markdownPlotlist}}
 }
 \author{
-Rory Kirchner
+Rory Kirchner, Michael Steinbaugh
 }
