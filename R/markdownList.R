@@ -5,7 +5,6 @@
 #'
 #' @inherit markdownHeader
 #'
-#' @param object `atomic`, which will be coerced to `character`.
 #' @param ordered Ordered ("`TRUE`") or unordered ("`FALSE`") `list`.
 #'
 #' @export
@@ -16,26 +15,26 @@
 #' markdownList(groceries, ordered = TRUE)
 #' markdownList(groceries, asis = TRUE)
 markdownList <- function(
-    object,
+    text,
     ordered = FALSE,
     asis = FALSE
 ) {
-    assert_is_atomic(object)
-    object <- as.character(object)
-    assert_all_are_not_na(object)
-    assert_all_are_non_missing_nor_empty_character(object)
+    assert_is_atomic(text)
+    text <- as.character(text)
+    assert_all_are_not_na(text)
+    assert_all_are_non_missing_nor_empty_character(text)
     assert_is_a_bool(ordered)
     assert_is_a_bool(asis)
 
     list <- vapply(
-        X = seq_along(object),
+        X = seq_along(text),
         FUN = function(a) {
             if (isTRUE(ordered)) {
                 prefix <- paste0(a, ".")
             } else {
                 prefix <- "-"
             }
-            paste(prefix, object[[a]])
+            paste(prefix, text[[a]])
         },
         FUN.VALUE = character(1L)
     )

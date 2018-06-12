@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.5.8
+Version: 0.5.9
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -34,15 +34,6 @@ Depends:
     R (>= 3.4)
 Imports:
     AnnotationHub,
-    GenomicFeatures,
-    GenomeInfoDb,
-    GenomicRanges,
-    IRanges,
-    Matrix (>= 1.2),
-    Matrix.utils (>= 0.9),
-    R.utils,
-    RCurl (>= 1.95),
-    S4Vectors,
     assertive.base,
     assertive.code,
     assertive.data,
@@ -55,15 +46,24 @@ Imports:
     cowplot (>= 0.9),
     dplyr (>= 0.7),
     ensembldb,
+    GenomeInfoDb,
+    GenomicFeatures,
+    GenomicRanges,
     ggplot2 (>= 2.2.1),
+    IRanges,
     knitr (>= 1.20),
     magrittr (>= 1.5),
+    Matrix (>= 1.2),
+    Matrix.utils (>= 0.9),
     methods,
     pbapply,
+    R.utils,
+    RCurl (>= 1.95),
     readr (>= 1.1),
     readxl (>= 1.0),
     rlang (>= 0.2),
     rtracklayer,
+    S4Vectors,
     stats,
     stringr (>= 1.3),
     tibble (>= 1.4),

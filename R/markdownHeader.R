@@ -1,14 +1,18 @@
 #' Markdown Header
 #'
-#' @name markdownHeader
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
 #'
-#' @param object `scalar`, which will be coerced to `character`.
+#' @inheritParams general
+#'
+#' @param text Text. Can be any `atomic`, which will be coerced to `character`.
 #' @param level Header level (1-7).
 #' @param tabset Include tabset marker.
 #' @param asis Set this to `TRUE` when using the function inside a loop or
-#'   inside an RMarkdown chunk with '`results = "asis"`' enabled.
+#'   inside an R Markdown chunk with '`results = "asis"`' enabled.
+#'
+#' @seealso
+#' - [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return
 #' - "`asis = TRUE`": [knitr::asis_output()].
@@ -21,21 +25,21 @@
 #' markdownHeader("Header", tabset = TRUE)
 #' markdownHeader("Header", asis = TRUE)
 markdownHeader <- function(
-    object,
+    text,
     level = 2L,
     tabset = FALSE,
     asis = FALSE
 ) {
-    assert_is_scalar(object)
-    object <- as.character(object)
-    assert_all_are_not_na(object)
-    assert_all_are_non_missing_nor_empty_character(object)
+    assert_is_scalar(text)
+    text <- as.character(text)
+    assert_all_are_not_na(text)
+    assert_all_are_non_missing_nor_empty_character(text)
     assertIsAHeaderLevel(level)
     assert_is_a_bool(tabset)
     assert_is_a_bool(asis)
 
     # Add the header level
-    header <- paste(str_dup("#", level), object)
+    header <- paste(str_dup("#", level), text)
 
     # Append tabset label
     if (isTRUE(tabset)) {

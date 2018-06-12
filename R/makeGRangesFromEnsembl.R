@@ -14,7 +14,7 @@
 #' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 #' back to version 87.
 #'
-#' @section Broad Class Definitions:
+#' @section Broad class definitions:
 #' For gene and transcript annotations, a `broadClass` column is added, which
 #' generalizes the gene types into a smaller number of semantically-meaningful
 #' groups:
@@ -28,7 +28,7 @@
 #'   - `tcr` (T cell receptor)
 #'   - `other`
 #'
-#' @section GRCh37 Legacy Annotations:
+#' @section GRCh37 legacy annotations:
 #' The *Homo sapiens* GRCh37 (release 75) build is supported by internally
 #' querying the
 #' [EnsDb.Hsapiens.v75](https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75)
