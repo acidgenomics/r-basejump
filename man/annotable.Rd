@@ -34,7 +34,7 @@ Under the hood, this function fetches annotations from AnnotationHub using
 the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 back to version 87.
 }
-\section{Broad Class Definitions}{
+\section{Broad class definitions}{
 
 For gene and transcript annotations, a \code{broadClass} column is added, which
 generalizes the gene types into a smaller number of semantically-meaningful
@@ -51,7 +51,7 @@ groups:
 }
 }
 
-\section{GRCh37 Legacy Annotations}{
+\section{GRCh37 legacy annotations}{
 
 The \emph{Homo sapiens} GRCh37 (release 75) build is supported by internally
 querying the

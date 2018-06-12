@@ -1,22 +1,44 @@
-##' make a Rmarkdown link, for use in 'asis' blocks
-##'
-##' @title
-##' @param title title of link
-##' @param link link
-##' @param text optional description of link, placed after it with a colon
-##' @return markdown-formatted link
-##' @author Rory Kirchner
-##' @example \dontrun{
-##' ```{r, results='asis'}
-##' outfile = "results/outfile.csv"
-##' readr::write_csv(outfile)
-##' markdownLink("DE results", outfile, "Out file")
-##' ```
-##' }
-markdownLink = function(desc, link, text=NULL) {
-  mdlink = paste0('[', desc, '](',link,')')
-  if(!is.null(text)) {
-    mdlink = paste0(mdlink, ': ', text)
-  }
-  cat(mdlink)
+#' Markdown Link
+#'
+#' For use in 'asis' blocks only.
+#'
+#' @family R Markdown Functions
+#' @author Rory Kirchner, Michael Steinbaugh
+#'
+#' @inherit markdownHeader
+#'
+#' @param url URL.
+#' @param title *Optional.* Link title attribute. This will appear in a
+#'   mouse-over pop-up box.
+#'
+#' @return Markdown-formatted link.
+#' @export
+#'
+#' @examples
+#' markdownLink(
+#'     text = "R",
+#'     url = "https://www.r-project.org",
+#'     title = "The R Project for Statistical Computing"
+#' )
+markdownLink <- function(
+    text,
+    url,
+    title = NULL
+) {
+    assert_is_a_string(text)
+    assert_is_a_string(url)
+    assertIsAStringOrNULL(title)
+    x <- paste0("[", text, "](", url, ")")
+    if (!is.null(title)) {
+        x <- paste0(x, ": ", title)
+    }
+    writeLines(x)
 }
+
+
+
+# Aliases ======================================================================
+#' @rdname markdownHeader
+#' @usage NULL
+#' @export
+markdownLink -> mdLink

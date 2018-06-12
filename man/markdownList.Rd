@@ -5,15 +5,15 @@
 \alias{mdList}
 \title{Markdown List}
 \usage{
-markdownList(object, ordered = FALSE, asis = FALSE)
+markdownList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
-\item{object}{\code{atomic}, which will be coerced to \code{character}.}
+\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
 
 \item{ordered}{Ordered ("\code{TRUE}") or unordered ("\code{FALSE}") \code{list}.}
 
 \item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an RMarkdown chunk with '\code{results = "asis"}' enabled.}
+inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
@@ -32,7 +32,7 @@ markdownList(groceries, asis = TRUE)
 }
 \seealso{
 Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownHeader}},
+  \code{\link{markdownHeader}}, \code{\link{markdownLink}},
   \code{\link{markdownPlotlist}}
 }
 \author{
