@@ -89,11 +89,7 @@ setMethod(
         list <- lapply(
             X = object,
             FUN = function(col) {
-                if (is.character(col)) {
-                    fixNA(col)
-                } else {
-                    col
-                }
+                fixNA(col)
             })
         DataFrame(list, row.names = rownames)
     }
