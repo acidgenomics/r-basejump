@@ -62,7 +62,7 @@ saveData <- function(
             warning("No files were saved.")
             return(invisible())
         }
-        objects <- objects[!file.exists(files)]
+        objects <- objects[!file.exists(files)]  # nocov
     }
 
     # Determine which save function to use

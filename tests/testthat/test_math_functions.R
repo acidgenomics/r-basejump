@@ -117,11 +117,21 @@ test_that("geometricMean", {
     expect_identical(geometricMean(x), NaN)
 
     # Zero propagation =========================================================
-    x <- seq(from = 0L, to = 5L, by = 1L)
     expect_identical(
-        geometricMean(x, zeroPropagate = TRUE),
+        geometricMean(
+            seq(from = 0L, to = 5L, by = 1L),
+            zeroPropagate = TRUE
+        ),
         0L
     )
+    expect_identical(
+        round(geometricMean(
+            seq(from = 1L, to = 5L, by = 1L),
+            zeroPropagate = TRUE
+        ), digits = 6L),
+        2.605171
+    )
+
     expect_identical(
         round(geometricMean(x, zeroPropagate = FALSE), digits = 6L),
         2.220906
