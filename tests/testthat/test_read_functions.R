@@ -131,13 +131,11 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    x <- loadRemoteData("example.rds")
+    url <- paste(cacheURL, "example.rds", sep = "/")
+    x <- loadRemoteData(url)
     # Character matrix of loaded files
     expect_is(x, "character")
-    expect_identical(
-        x,
-        c("example" = "example.rds")
-    )
+    expect_identical(x, c("example" = url))
     # Check that the object loaded correctly
     expect_is(example, "data.frame")
 })
@@ -145,14 +143,14 @@ test_that("loadRemoteData", {
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
-        loadRemoteData("example.rda"),
+        loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
         "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
-        loadRemoteData("mmusculus.gtf"),
+        loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
         rdataError
     )
     expect_error(
@@ -161,7 +159,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         loadRemoteData(
-            paste("example.rda"),
+            paste(paste(cacheURL, "example.rda", sep = "/")),
             envir = "XXX"
         ),
         "is_environment : envir"
@@ -225,7 +223,7 @@ test_that("readFileByExtension : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    xlsx <- readFileByExtension("mtcars.xlsx")
+    xlsx <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
     expect_is(xlsx, "tbl_df")
 })
 
