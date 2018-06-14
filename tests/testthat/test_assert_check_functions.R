@@ -266,6 +266,12 @@ test_that("assertIsHexColorFunctionOrNULL", {
         assertIsHexColorFunctionOrNULL(x(2L)),
         "is2 :"
     )
+    # viridis trailing "FF" sanitization support
+    viridis <- function(n = 2L) {
+        colors <- c("#440154FF", "#FDE725FF")
+        colors[n]
+    }
+    expect_silent(assertIsHexColorFunctionOrNULL(viridis))
 })
 
 
@@ -318,3 +324,16 @@ test_that("assertIsTx2gene", {
         "is_data.frame : x"
     )
 })
+
+
+
+test_that("isAnImplicitInteger", {
+    expect_false(isAnImplicitInteger("XXX"))
+})
+
+
+
+test_that("isURL", {
+    expect_false(isURL("XXX"))
+})
+
