@@ -52,6 +52,23 @@ test_that("markdownHeader", {
 
 
 
+# markdownLink =================================================================
+test_that("markdownLink", {
+    expect_identical(
+        capture.output(markdownLink(
+            text = "R",
+            url = "https://www.r-project.org",
+            title = "The R Project for Statistical Computing"
+        )),
+        paste(
+            "[R](https://www.r-project.org):",
+            "The R Project for Statistical Computing"
+        )
+    )
+})
+
+
+
 # markdownList =================================================================
 test_that("markdownList", {
     groceries <- c("milk", "eggs")
