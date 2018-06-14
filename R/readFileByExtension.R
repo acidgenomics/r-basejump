@@ -146,7 +146,7 @@ readFileByExtension <- function(
         safe <- new.env()
         object <- load(file, envir = safe)
         if (length(safe) != 1L) {
-            stop("File does not contain a single object.")
+            stop("File does not contain a single object")
         }
         data <- get(object, envir = safe, inherits = FALSE)
     } else if (exti == "rds") {

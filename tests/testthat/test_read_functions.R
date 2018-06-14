@@ -131,12 +131,12 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    x <- loadRemoteData(paste(cacheURL, "example.rds", sep = "/"))
+    x <- loadRemoteData("example.rds")
     # Character matrix of loaded files
     expect_is(x, "character")
     expect_identical(
         x,
-        c("example" = paste(cacheURL, "example.rds", sep = "/"))
+        c("example" = "example.rds")
     )
     # Check that the object loaded correctly
     expect_is(example, "data.frame")
@@ -145,14 +145,14 @@ test_that("loadRemoteData", {
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
-        loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
+        loadRemoteData("example.rda"),
         "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
-        loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
+        loadRemoteData("mmusculus.gtf"),
         rdataError
     )
     expect_error(
@@ -161,7 +161,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         loadRemoteData(
-            paste(cacheURL, "example.rda", sep = "/"),
+            paste("example.rda"),
             envir = "XXX"
         ),
         "is_environment : envir"
@@ -225,7 +225,7 @@ test_that("readFileByExtension : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    xlsx <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    xlsx <- readFileByExtension("mtcars.xlsx")
     expect_is(xlsx, "tbl_df")
 })
 
@@ -255,12 +255,18 @@ test_that("readFileByExtension : R file", {
 
 test_that("readFileByExtension : R Data", {
     # rda
-    x <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
+    x <- readFileByExtension("example.rda")
     expect_is(x, "tbl_df")
 
     # rds
-    x <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
+    x <- readFileByExtension("example.rds")
     expect_is(x, "tbl_df")
+
+    # Error on object containing multiple data
+    expect_error(
+        readFileByExtension("multi.rda"),
+        "File does not contain a single object"
+    )
 })
 
 test_that("readFileByExtension : YAML", {
