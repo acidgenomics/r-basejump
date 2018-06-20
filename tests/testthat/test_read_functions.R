@@ -253,16 +253,16 @@ test_that("readFileByExtension : R file", {
 
 test_that("readFileByExtension : R Data", {
     # rda
-    x <- readFileByExtension("example.rda")
+    x <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
     expect_is(x, "tbl_df")
 
     # rds
-    x <- readFileByExtension("example.rds")
+    x <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
     expect_is(x, "tbl_df")
 
     # Error on object containing multiple data
     expect_error(
-        readFileByExtension("multi.rda"),
+        readFileByExtension(paste(cacheURL, "multi.rda", sep = "/")),
         "File does not contain a single object"
     )
 })
