@@ -26,7 +26,8 @@ mapply(
         if (!file.exists(file)) {
             utils::download.file(
                 url = paste(cacheURL, file, sep = "/"),
-                destfile = file)
+                destfile = file
+            )
         }
         # Load R Data file
         if (grepl("\\.rda$", file)) {
