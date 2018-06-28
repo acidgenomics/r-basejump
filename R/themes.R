@@ -63,7 +63,7 @@ theme_midnight <- function(
     face = c("bold", "plain"),
     aspect_ratio = NULL,
     legend_position = c("bottom", "right", "none"),
-    grid = TRUE
+    grid = FALSE
 ) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
