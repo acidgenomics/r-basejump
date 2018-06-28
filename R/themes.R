@@ -81,13 +81,13 @@ theme_midnight <- function(
     )
 
     if (isTRUE(grid)) {
-        axis_line <- element_blank()
         axis_ticks <- element_blank()
         grid <- element_line(colour = gray)
+        panel_border <- element_blank()
     } else {
-        axis_line <- element_line(colour = "white")
         axis_ticks <- element_line(colour = "white")
         grid <- element_blank()
+        panel_border <- element_rect(colour = "white", fill = NA)
     }
 
     theme_minimal(
@@ -97,12 +97,13 @@ theme_midnight <- function(
         theme(
             text = text,
             aspect.ratio = aspect_ratio,
-            axis.line = axis_line,
+            axis.line = element_blank(),
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
             axis.ticks = axis_ticks,
             legend.key = element_rect(colour = NA, fill = gray),
             legend.position = legend_position,
+            panel.border = panel_border,
             panel.grid.major = grid,
             panel.grid.minor = element_blank(),
             plot.background = element_rect(colour = NA, fill = "black"),
@@ -148,13 +149,13 @@ theme_paperwhite <- function(
     )
 
     if (isTRUE(grid)) {
-        axis_line <- element_blank()
         axis_ticks <- element_blank()
         grid <- element_line(colour = gray)
+        panel_border <- element_blank()
     } else {
-        axis_line <- element_line(colour = "black")
         axis_ticks <- element_line(colour = "black")
         grid <- element_blank()
+        panel_border <- element_rect(colour = "black", fill = NA)
     }
 
     theme_classic(
@@ -164,10 +165,11 @@ theme_paperwhite <- function(
         theme(
             text = text,
             aspect.ratio = aspect_ratio,
-            axis.line = axis_line,
+            axis.line = element_blank(),
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
             axis.ticks = axis_ticks,
+            panel.border = panel_border,
             panel.grid.major = grid,
             legend.position = legend_position,
             strip.background = element_rect(colour = NA, fill = "white"),
