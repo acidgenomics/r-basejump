@@ -177,5 +177,10 @@ readFileByExtension <- function(file, ...) {
         # nocov end
     }
 
+    # Remove all NA rows/columns for data frames
+    if (is.data.frame(data)) {
+        data <- removeNA(data)
+    }
+
     data
 }
