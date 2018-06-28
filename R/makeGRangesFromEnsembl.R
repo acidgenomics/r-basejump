@@ -156,22 +156,8 @@ makeGRangesFromEnsembl <- function(
             pattern = c("Ensembl", organism, release, genomeBuild, rdataclass),
             ignore.case = TRUE
         )
-
-        # Pick the newest EnsDb that matches
         mcols <- mcols(ahdb)
-        if (nrow(mcols) > 1L) {
-            if (!is.null(genomeBuild)) {
-                mcols <- mcols %>%
-                    .[grep(genomeBuild, .[["genome"]], ignore.case = TRUE),
-                      , drop = FALSE]
-            }
-            if (!is.null(release)) {
-                mcols <- mcols %>%
-                    .[grep(release, .[["tags"]]), , drop = FALSE]
-            }
-            # Pick the latest release by AH identifier
-            mcols <- tail(mcols, 1L)
-        } else if (!nrow(mcols)) {
+        if (!nrow(mcols)) {
             stop(paste(
                 paste(
                     "No ID matched on AnnotationHub",
@@ -182,6 +168,10 @@ makeGRangesFromEnsembl <- function(
                 paste("release:", deparse(release)),
                 sep = "\n"
             ))
+        } else {
+            # Pick the latest EnsDb that matches
+            mcols <- tail(mcols, 1L)
+            message(mcols[["title"]])
         }
         id <- rownames(mcols)
 
