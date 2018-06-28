@@ -32,8 +32,6 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param makeNames Make syntactically valid names. Supports **`camel`**,
-#'   `dotted`, `snake`, or `upperCamel`. This is always enforced.
 #'
 #' @return `tbl_df` by default, or a sparse matrix for `.mtx` files.
 #' @export
@@ -65,21 +63,9 @@
 #'     readFileByExtension("http://basejump.seq.cloud/example.txt")
 #' )
 #' glimpse(x)
-readFileByExtension <- function(
-    file,
-    makeNames = c("camel", "dotted", "snake", "upperCamel"),
-    ...
-) {
+readFileByExtension <- function(file, ...) {
     assert_is_a_string(file)
     file <- localOrRemoteFile(file)
-
-    # Get makeNames function
-    makeNames <- match.arg(makeNames)
-    makeNames <- get(
-        x = makeNames,
-        envir = asNamespace("basejump"),
-        inherits = FALSE
-    )
 
     ext <- str_match(basename(file), extPattern)[1L, 2L]
     exti <- tolower(ext)  # case insensitive
@@ -189,16 +175,6 @@ readFileByExtension <- function(
             sep = "\n"
         ))
         # nocov end
-    }
-
-    # Sanitize colnames
-    if (!is.null(colnames(data))) {
-        colnames(data) <- makeNames(colnames(data))
-    }
-
-    # Remove any rows and columns containing only NA values
-    if (!is.null(dimnames)) {
-        data <- removeNA(data)
     }
 
     data
