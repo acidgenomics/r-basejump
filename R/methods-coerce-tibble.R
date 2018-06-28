@@ -28,7 +28,7 @@ NULL
 # Constructors =================================================================
 .tibble <- function(from) {
     if (is_tibble(from)) {
-        return(from)
+        return(from)  # nocov
     }
     from <- as.data.frame(from)
     assert_has_colnames(from)
