@@ -336,4 +336,3 @@ test_that("isAnImplicitInteger", {
 test_that("isURL", {
     expect_false(isURL("XXX"))
 })
-
