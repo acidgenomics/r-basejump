@@ -4,15 +4,13 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(file, ...)
+readFileByExtension(file)
 }
 \arguments{
 \item{file}{File path.}
-
-\item{...}{Additional arguments.}
 }
 \value{
-\code{tbl_df} by default, or a sparse matrix for \code{.mtx} files.
+Varies depending on the file extension.
 }
 \description{
 Supports automatic loading of common file extensions:
@@ -23,11 +21,11 @@ Supports automatic loading of common file extensions:
 \item \code{gff}/\code{gff3}/\code{gtf}: General Feature Format.
 \item \code{mtx}: MatrixMarket sparse matrix.
 \item \code{rda}/\code{RData}: R Data. Must contain a single object. Doesn't require
-internal object name to match, like in the \code{\link[=loadData]{loadData()}} function.
+internal object name to match, like with the \code{\link[=loadData]{loadData()}} function.
 \item \code{rds}: R Data Serialized.
 \item \code{tsv} Tab Separated Values.
 \item \code{xlsx}: Excel workbook.
-\item \code{yaml}/\code{yml}: YAML.
+\item \code{yml}: YAML.
 }
 
 Also supports some additional extensions commonly used with the
@@ -49,26 +47,20 @@ the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }
 \examples{
-# Comma Separated Values
-x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
-glimpse(x)
-
-# Counts Table (bcbio)
-x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
-glimpse(x)
-
 # R Data
 x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+glimpse(x)
+
+# Comma Separated Values
+x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
 glimpse(x)
 
 # Microsoft Excel Worksheet
 x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
 glimpse(x)
 
-# Text Table (ambiguous; not recommended)
-x <- suppressWarnings(
-    readFileByExtension("http://basejump.seq.cloud/example.txt")
-)
+# bcbio Counts Table
+x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
 glimpse(x)
 }
 \seealso{

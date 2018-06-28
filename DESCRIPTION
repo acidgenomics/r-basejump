@@ -60,7 +60,6 @@ Imports:
     R.utils,
     RCurl (>= 1.95),
     readr (>= 1.1),
-    readxl (>= 1.0),
     rlang (>= 0.2),
     rtracklayer,
     S4Vectors,
