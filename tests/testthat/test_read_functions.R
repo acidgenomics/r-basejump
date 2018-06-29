@@ -197,13 +197,13 @@ test_that("readFileByExtension : GFF", {
 })
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
-    x <- readFileByExtension("singleCellCounts.mtx.gz")
+    x <- readFileByExtension("single_cell_counts.mtx.gz")
     expect_is(x, "dgTMatrix")
 
-    x <- readFileByExtension("singleCellCounts.mtx.gz.rownames")
+    x <- readFileByExtension("single_cell_counts.mtx.gz.rownames")
     expect_is(x, "character")
 
-    x <- readFileByExtension("singleCellCounts.mtx.gz.colnames")
+    x <- readFileByExtension("single_cell_counts.mtx.gz.colnames")
     expect_is(x, "character")
 })
 
