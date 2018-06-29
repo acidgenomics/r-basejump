@@ -8,7 +8,7 @@ files <- c(
     "example.rds",
     "example.tsv",
     "example.txt",
-    "example.yaml",
+    "example.yml",
     "gr.rda",
     "mmusculus.gtf",
     "mn.rda",
@@ -26,7 +26,8 @@ mapply(
         if (!file.exists(file)) {
             utils::download.file(
                 url = paste(cacheURL, file, sep = "/"),
-                destfile = file)
+                destfile = file
+            )
         }
         # Load R Data file
         if (grepl("\\.rda$", file)) {

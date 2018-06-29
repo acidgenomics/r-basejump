@@ -736,8 +736,8 @@ isAnImplicitInteger <- function(x) {
 #' @examples
 #' isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 isImplicitInteger <- function(x) {
-    mapply(
-        x = x,
+    vapply(
+        X = x,
         FUN = function(x) {
             if (!is.numeric(x)) {
                 return(FALSE)
@@ -751,8 +751,7 @@ isImplicitInteger <- function(x) {
                 tolerance = .Machine[["double.eps"]]
             ))
         },
-        SIMPLIFY = TRUE,
-        USE.NAMES = FALSE
+        FUN.VALUE = logical(1L)
     )
 }
 

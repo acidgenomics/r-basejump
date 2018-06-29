@@ -42,7 +42,7 @@ setMethod(
     "removeNA",
     signature("ANY"),
     function(object) {
-        object
+        object  # nocov
     }
 )
 

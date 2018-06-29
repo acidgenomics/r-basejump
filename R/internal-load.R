@@ -74,10 +74,7 @@
     assert_is_a_string(file)
     assert_all_are_existing_files(file)
     file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-    assert_is_any_of(name, c("character", "NULL"))
-    if (is.character(name)) {
-        assert_is_a_string(name)
-    }
+    assertIsAStringOrNULL(name)
     assert_is_environment(envir)
 
     if (is.null(name)) {

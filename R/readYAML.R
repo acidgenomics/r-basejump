@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' x <- readYAML("http://basejump.seq.cloud/example.yaml")
+#' x <- readYAML("http://basejump.seq.cloud/example.yml")
 #' names(x)
 readYAML <- function(file) {
     requireNamespace("yaml")
