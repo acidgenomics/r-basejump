@@ -13,10 +13,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
+#' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gtf")
 #' glimpse(x)
-#' }
 makeTx2geneFromGFF <- function(file) {
     message("Making tx2gene from GFF")
 
