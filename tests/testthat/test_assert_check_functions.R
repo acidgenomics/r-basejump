@@ -328,7 +328,10 @@ test_that("assertIsTx2gene", {
 
 
 test_that("isAnImplicitInteger", {
-    expect_false(isAnImplicitInteger("XXX"))
+    expect_identical(
+        isImplicitInteger(list(1, 1L, 1.1, "XXX")),
+        c(TRUE, TRUE, FALSE, FALSE)
+    )
 })
 
 
