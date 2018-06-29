@@ -21,19 +21,10 @@ each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
-file <- "http://basejump.seq.cloud/mmusculus.gtf"
-
-# Genes
-invisible(capture.output(
-    x <- makeGRangesFromGFF(file, format = "genes")
-))
+\dontrun{
+x <- makeGRangesFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
 summary(x)
-
-# Transcripts
-invisible(capture.output(
-    x <- makeGRangesFromGFF(file, format = "transcripts")
-))
-summary(x)
+}
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},

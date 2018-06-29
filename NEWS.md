@@ -1,3 +1,24 @@
+# basejump 0.5.10 (2018-06-28)
+
+## Minor changes
+
+- Removed `makeNames` argument from `readFileByExtension()` function. Use the
+  `makeNames` family of functions manually after data import instead. This
+  helps avoid unwanted sanitization of data.
+- Simplified assert checks for internal load function.
+- Improved code coverage.
+- AppVeyor CI updates to work with Bioconductor 3.8 devel.
+
+
+
+# basejump 0.5.9 (2018-06-12)
+
+## Minor changes
+
+- Markdown function consistency improvements. Now all relevant Markdown functions use `text` as the primary argument, instead of `object`.
+
+
+
 # basejump 0.5.8 (2018-06-05)
 
 ## Minor changes

@@ -40,13 +40,6 @@ warnings_are_errors: true
 # Temporarily enable when caching Bioconductor packages
 # script: true
 
-notifications:
-  email:
-    recipients:
-      - mike@steinbaugh.com
-    on_success: change
-    on_failure: always
-
 r_packages:
   - covr
 bioc_packages:
@@ -59,3 +52,10 @@ after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
   - R CMD BiocCheck .
+
+notifications:
+  email:
+    recipients:
+      - mike@steinbaugh.com
+    on_success: change
+    on_failure: always

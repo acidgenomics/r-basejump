@@ -14,19 +14,10 @@
 #' @export
 #'
 #' @examples
-#' file <- "http://basejump.seq.cloud/mmusculus.gtf"
-#'
-#' # Genes
-#' invisible(capture.output(
-#'     x <- makeGRangesFromGFF(file, format = "genes")
-#' ))
+#' \dontrun{
+#' x <- makeGRangesFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
 #' summary(x)
-#'
-#' # Transcripts
-#' invisible(capture.output(
-#'     x <- makeGRangesFromGFF(file, format = "transcripts")
-#' ))
-#' summary(x)
+#' }
 makeGRangesFromGFF <- function(
     file,
     format = c("genes", "transcripts")

@@ -18,6 +18,12 @@ test_that("theme_midnight", {
         x[["theme"]][["plot.background"]][["fill"]],
         "black"
     )
+    # Grid mode
+    x <- p + theme_midnight(grid = TRUE)
+    expect_identical(
+        x[["theme"]][["panel.grid.major"]][["colour"]],
+        "gray10"
+    )
 })
 
 test_that("theme_paperwhite", {
@@ -28,5 +34,11 @@ test_that("theme_paperwhite", {
     expect_identical(
         x[["theme"]][["plot.background"]][["fill"]],
         NULL
+    )
+    # Grid mode
+    x <- p + theme_paperwhite(grid = TRUE)
+    expect_identical(
+        x[["theme"]][["panel.grid.major"]][["colour"]],
+        "gray95"
     )
 })

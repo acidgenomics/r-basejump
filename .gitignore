@@ -9,8 +9,9 @@ docs/reference/*.R
 docs/reference/*.Rmd
 docs/reference/*.yaml
 tests/testthat/*/
-tests/textthat/*.bib
-tests/textthat/*.rda
-tests/textthat/*.Rmd
-tests/textthat/*.yaml
-tests/textthat/setup.R
+tests/testthat/_*.R
+tests/testthat/*.bib
+tests/testthat/*.rda
+tests/testthat/*.Rmd
+tests/testthat/*.yaml
+tests/testthat/*.yml

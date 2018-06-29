@@ -36,5 +36,5 @@ methodFormals <- function(f, signature) {
         ))
         # nocov end
     }
-    genFormals
+    genFormals  # nocov
 }

@@ -21,6 +21,10 @@ to the most recent release available.}
 \description{
 Gene-to-Symbol Mappings from Ensembl
 }
+\examples{
+x <- makeGene2symbolFromEnsembl("Homo sapiens")
+glimpse(x)
+}
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},

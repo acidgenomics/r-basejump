@@ -131,13 +131,11 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    x <- loadRemoteData(paste(cacheURL, "example.rds", sep = "/"))
+    url <- paste(cacheURL, "example.rds", sep = "/")
+    x <- loadRemoteData(url)
     # Character matrix of loaded files
     expect_is(x, "character")
-    expect_identical(
-        x,
-        c("example" = paste(cacheURL, "example.rds", sep = "/"))
-    )
+    expect_identical(x, c("example" = url))
     # Check that the object loaded correctly
     expect_is(example, "data.frame")
 })
@@ -161,7 +159,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         loadRemoteData(
-            paste(cacheURL, "example.rda", sep = "/"),
+            paste(paste(cacheURL, "example.rda", sep = "/")),
             envir = "XXX"
         ),
         "is_environment : envir"
@@ -190,7 +188,7 @@ test_that("localOrRemoteFile : Missing file", {
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
     x <- readFileByExtension("example.csv")
-    expect_is(x, "tbl_df")
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : GFF", {
@@ -210,23 +208,16 @@ test_that("readFileByExtension : MatrixMarket file (.mtx)", {
 })
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
-    tsv <- readFileByExtension("example.tsv")
-    expect_is(tsv, "tbl_df")
-})
-
-test_that("readFileByExtension : Table format file (.txt)", {
-    expect_warning(readFileByExtension("example.txt"))
-    txt <- suppressWarnings(readFileByExtension("example.txt"))
-    expect_is(txt, "data.frame")
-    expect_equal(txt, mtcars)
+    x <- readFileByExtension("example.tsv")
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    xlsx <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
-    expect_is(xlsx, "tbl_df")
+    x <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
@@ -244,7 +235,7 @@ test_that("readFileByExtension : Counts file (.counts)", {
     )
 })
 
-test_that("readFileByExtension : R file", {
+test_that("readFileByExtension : R script", {
     expect_message(
         readFileByExtension("test_read_functions.R"),
         "Importing as source code lines"
@@ -261,10 +252,16 @@ test_that("readFileByExtension : R Data", {
     # rds
     x <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
     expect_is(x, "tbl_df")
+
+    # Error on object containing multiple data
+    expect_error(
+        readFileByExtension(paste(cacheURL, "multi.rda", sep = "/")),
+        "File does not contain a single object"
+    )
 })
 
 test_that("readFileByExtension : YAML", {
-    x <- readFileByExtension("example.yaml")
+    x <- readFileByExtension("example.yml")
     expect_is(x, "list")
 })
 
@@ -351,6 +348,6 @@ test_that("readJSON", {
 
 # readYAML =====================================================================
 test_that("readYAML : bcbio project summary", {
-    x <- readYAML("example.yaml")
+    x <- readYAML("example.yml")
     expect_is(x, "list")
 })

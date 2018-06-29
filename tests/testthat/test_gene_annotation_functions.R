@@ -12,6 +12,23 @@ test_that("annotable", {
 
 
 
+# broadClass ===================================================================
+test_that("broadClass", {
+    df <- annotable("Homo sapiens")
+
+    bc <- df[["broadClass"]]
+    names(bc) <- rownames(df)
+
+    # Early return if already defined
+    expect_identical(bc, broadClass(df))
+
+    # Warn on missing `biotype` and `seqname` columns
+    minimal <- df[, c("geneID", "geneName")]
+    expect_warning(broadClass(minimal))
+})
+
+
+
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : character", {
     x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
@@ -512,6 +529,20 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
         makeGRangesFromEnsembl("Homo sapiens", format = "XXX"),
         "'arg' should be one of \"genes\", \"transcripts\""
     )
+})
+
+test_that("makeGRangesFromEnsembl : metadata", {
+    x <- makeGRangesFromEnsembl(
+        organism = "Homo sapiens",
+        release = ensemblRelease,
+        metadata = TRUE
+    )
+    expect_is(x, "list")
+    expect_identical(
+        names(x),
+        c("data", "metadata")
+    )
+    expect_is(x[["metadata"]], "tbl_df")
 })
 
 
