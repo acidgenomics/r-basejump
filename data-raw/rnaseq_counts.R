@@ -1,0 +1,6 @@
+library(devtools)
+library(DESeq2)
+load_all()
+dds <- makeExampleDESeqDataSet()
+rnaseq_counts <- counts(dds)
+use_data(rnaseq_counts, overwrite = TRUE, compress = "xz")
