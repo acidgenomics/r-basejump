@@ -57,8 +57,7 @@
 #'
 #' @examples
 #' # Genes ====
-#' x <- makeGRangesFromEnsembl(
-#'     organism = "Homo sapiens", format = "genes")
+#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
 #' summary(x)
 #'
 #' # Transcripts ====
