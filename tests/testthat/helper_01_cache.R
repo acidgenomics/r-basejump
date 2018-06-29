@@ -8,7 +8,7 @@ files <- c(
     "example.rds",
     "example.tsv",
     "example.txt",
-    "example.yaml",
+    "example.yml",
     "gr.rda",
     "mmusculus.gtf",
     "mn.rda",
