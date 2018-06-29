@@ -14,10 +14,9 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' x <- makeGRangesFromGFF("http://basejump.seq.cloud/mmusculus.gtf")
+#' x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
 #' summary(x)
-#' }
+#' as.data.frame(x) %>% glimpse()
 makeGRangesFromGFF <- function(
     file,
     format = c("genes", "transcripts")
