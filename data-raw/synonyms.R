@@ -6,28 +6,29 @@ library(tidyverse)
 load_all()
 
 genomes <- list(
-    "homoSapiens" = c(
-        "kingdom" = "Mammalia",
-        "species" = "Homo_sapiens"
+    homoSapiens = c(
+        kingdom = "Mammalia",
+        species = "Homo_sapiens"
     ),
-    "musMusculus" = c(
-        "kingdom" = "Mammalia",
-        "species" = "Mus_musculus"
+    musMusculus = c(
+        kingdom = "Mammalia",
+        species = "Mus_musculus"
     ),
-    "drosophilaMelanogaster" = c(
-        "kingdom" = "Invertebrates",
-        "species" = "Drosophila_melanogaster"
+    drosophilaMelanogaster = c(
+        kingdom = "Invertebrates",
+        species = "Drosophila_melanogaster"
     )
 )
 
 synonyms <- lapply(genomes, function(genome) {
-    data <- file.path(
+    data <- paste(
         "ftp://ftp.ncbi.nih.gov",
         "gene",
         "DATA",
         "GENE_INFO",
         genome[["kingdom"]],
-        paste0(genome[["species"]], ".gene_info.gz")
+        paste0(genome[["species"]], ".gene_info.gz"),
+        sep = "/"
     ) %>%
         read_tsv()
 
