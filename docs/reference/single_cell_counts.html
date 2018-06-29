@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Example RNA-Seq Counts — rnaseqCounts • basejump</title>
+<title>Example Single-Cell RNA-Seq Counts — single_cell_counts • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Example RNA-Seq Counts — rnaseqCounts" />
+<meta property="og:title" content="Example Single-Cell RNA-Seq Counts — single_cell_counts" />
 
-<meta property="og:description" content="Generated with DESeq2::makeExampleDESeqDataSet()." />
+<meta property="og:description" content="Modified version of scater::sc_example_counts, with dimnames formatted
+in camel case for package consistency." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
       </span>
     </div>
 
@@ -102,46 +103,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Example RNA-Seq Counts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
-    <div class="hidden name"><code>rnaseqCounts.Rd</code></div>
+    <h1>Example Single-Cell RNA-Seq Counts</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>single_cell_counts.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Generated with <code><a href='http://www.rdocumentation.org/packages/DESeq2/topics/makeExampleDESeqDataSet'>DESeq2::makeExampleDESeqDataSet()</a></code>.</p>
+    <p>Modified version of <code><a href='http://www.rdocumentation.org/packages/scater/topics/sc_example_counts'>scater::sc_example_counts</a></code>, with dimnames formatted
+in camel case for package consistency.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>rnaseqCounts</span></pre>
+    <pre class="usage"><span class='no'>single_cell_counts</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>matrix</code> with 1000 rows and 12 columns.</p>
+    <p>An object of class <code>dgCMatrix</code> with 2000 rows and 40 columns.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>summary</span>(<span class='no'>rnaseqCounts</span>)</div><div class='output co'>#&gt;     sample1           sample2           sample3           sample4       
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
-#&gt;  1st Qu.:   5.00   1st Qu.:   5.00   1st Qu.:   4.00   1st Qu.:   5.00  
-#&gt;  Median :  16.00   Median :  14.00   Median :  15.00   Median :  15.00  
-#&gt;  Mean   :  41.93   Mean   :  41.21   Mean   :  42.43   Mean   :  40.02  
-#&gt;  3rd Qu.:  40.00   3rd Qu.:  42.25   3rd Qu.:  39.00   3rd Qu.:  39.00  
-#&gt;  Max.   :1213.00   Max.   :1511.00   Max.   :1388.00   Max.   :1598.00  
-#&gt;     sample5           sample6           sample7           sample8      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.0  
-#&gt;  1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:   5.00   1st Qu.:   4.0  
-#&gt;  Median :  15.00   Median :  14.50   Median :  15.00   Median :  15.0  
-#&gt;  Mean   :  40.35   Mean   :  40.16   Mean   :  42.67   Mean   :  40.5  
-#&gt;  3rd Qu.:  42.00   3rd Qu.:  39.00   3rd Qu.:  38.00   3rd Qu.:  39.0  
-#&gt;  Max.   :1183.00   Max.   :1049.00   Max.   :1666.00   Max.   :1051.0  
-#&gt;     sample9           sample10          sample11          sample12      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :   0.00  
-#&gt;  1st Qu.:   5.00   1st Qu.:   5.00   1st Qu.:   5.00   1st Qu.:   4.00  
-#&gt;  Median :  15.00   Median :  15.00   Median :  16.00   Median :  14.00  
-#&gt;  Mean   :  41.11   Mean   :  41.51   Mean   :  41.95   Mean   :  39.98  
-#&gt;  3rd Qu.:  42.00   3rd Qu.:  43.00   3rd Qu.:  41.00   3rd Qu.:  38.00  
-#&gt;  Max.   :1030.00   Max.   :1297.00   Max.   :1597.00   Max.   :1342.00  </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>summary</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
+#&gt;     80000 dgCMatrix        S4 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

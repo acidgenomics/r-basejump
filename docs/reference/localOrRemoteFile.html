@@ -64,7 +64,7 @@ Remote files are downloaded locally to a temporary directory." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
       </span>
     </div>
 
@@ -145,14 +145,14 @@ Remote files are downloaded locally to a temporary directory.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Single file</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/rnaseqCounts.csv.gz"</span>)
-<span class='fu'>basename</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rnaseqCounts.csv.gz"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.csv.gz"</span>)
+<span class='fu'>basename</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv.gz"</div><div class='input'>
 <span class='co'># Vectorized</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>localOrRemoteFile</span>(<span class='fu'>c</span>(
-    <span class='st'>"http://basejump.seq.cloud/rnaseqCounts.csv.gz"</span>,
-    <span class='st'>"http://basejump.seq.cloud/singleCellCounts.mtx.gz"</span>
+    <span class='st'>"http://basejump.seq.cloud/rnaseq_counts.csv.gz"</span>,
+    <span class='st'>"http://basejump.seq.cloud/single_cell_counts.mtx.gz"</span>
 ))
-<span class='fu'>basename</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rnaseqCounts.csv.gz"     "singleCellCounts.mtx.gz"</div></pre>
+<span class='fu'>basename</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv.gz"      "single_cell_counts.mtx.gz"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
