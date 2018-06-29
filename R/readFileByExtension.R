@@ -112,19 +112,8 @@ readFileByExtension <- function(file) {
         data <- readRDS(file)
     } else if (ext %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
-    } else if (requireNamespace("rio", quietly = TRUE)) {
-        message(paste(
-            "Using `rio::import()` to read", deparse(ext), "file extension"
-        ))
-        data <- rio::import(file)
     } else {
-        # nocov start
-        stop(paste(
-            unsupported,
-            "Install the rio package for additional file format support.",
-            sep = "\n"
-        ))
-        # nocov end
+        data <- rio::import(file)
     }
 
     data

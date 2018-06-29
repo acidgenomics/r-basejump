@@ -36,6 +36,7 @@
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   ggplot theme theme_classic theme_minimal
 #' @importFrom IRanges IRanges
+#' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
@@ -57,4 +58,8 @@
 #' @importFrom tidyr separate
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
+#' @importFrom yaml yaml.load_file
 "_PACKAGE"
+
+# NAMESPACE conflicts:
+# @importFrom rio import

@@ -7,6 +7,10 @@
 #'
 #' @return `data.frame`.
 #' @export
+#'
+#' @examples
+#' x <- makeTx2geneFromEnsembl("Homo sapiens")
+#' glimpse(x)
 makeTx2geneFromEnsembl <- function(
     organism,
     genomeBuild = NULL,
