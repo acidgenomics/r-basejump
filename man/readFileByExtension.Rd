@@ -48,7 +48,7 @@ is provided.
 }
 \examples{
 # R Data
-x <- readFileByExtension("http://basejump.seq.cloud/rnaseqCounts.rda")
+x <- readFileByExtension("http://basejump.seq.cloud/rnaseq_counts.rda")
 glimpse(x)
 
 # Comma Separated Values

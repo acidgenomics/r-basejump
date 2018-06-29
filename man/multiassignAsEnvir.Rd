@@ -22,7 +22,7 @@ multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
 Assign Multiple Objects as an Environment
 }
 \examples{
-multiassignAsEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
+multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
 class(example)
 ls(example)
 }
