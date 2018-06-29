@@ -103,7 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert Ensembl Identifiers to Gene Symbols</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/methods-convertGenesToSymbols.R'><code>R/methods-convertGenesToSymbols.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertGenesToSymbols-methods.R'><code>R/convertGenesToSymbols-methods.R</code></a></small>
     <div class="hidden name"><code>convertGenesToSymbols.Rd</code></div>
     </div>
 
@@ -196,7 +196,7 @@ to the most recent release available.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># character ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>)
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
@@ -215,7 +215,7 @@ to the most recent release available.</p></td>
 )
 <span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;                    sample_1 sample_2
 #&gt; ENSMUSG00000000001        1        2
-#&gt; ENSMUSG00000000003        3        4</div><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
+#&gt; ENSMUSG00000000003        3        4</div><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
