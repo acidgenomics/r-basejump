@@ -7,6 +7,10 @@
 #'
 #' @return `data.frame`.
 #' @export
+#'
+#' @examples
+#' x <- makeGene2symbolFromEnsembl("Homo sapiens")
+#' glimpse(x)
 makeGene2symbolFromEnsembl <- function(
     organism,
     genomeBuild = NULL,
