@@ -12,10 +12,9 @@
 #' x <- readJSON("http://basejump.seq.cloud/example.json")
 #' names(x)
 readJSON <- function(file) {
-    requireNamespace("jsonlite")
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.json$")
     message(paste("Reading", basename(file)))
     file <- localOrRemoteFile(file)
-    jsonlite::read_json(file)
+    read_json(file)
 }
