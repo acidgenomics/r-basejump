@@ -21,6 +21,10 @@ to the most recent release available.}
 \description{
 Transcript-to-Gene Mappings from Ensembl
 }
+\examples{
+x <- makeTx2geneFromEnsembl("Homo sapiens")
+glimpse(x)
+}
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
