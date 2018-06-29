@@ -16,7 +16,7 @@ readYAML(file)
 Read YAML File
 }
 \examples{
-x <- readYAML("http://basejump.seq.cloud/example.yaml")
+x <- readYAML("http://basejump.seq.cloud/example.yml")
 names(x)
 }
 \seealso{
