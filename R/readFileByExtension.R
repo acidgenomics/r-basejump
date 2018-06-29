@@ -10,7 +10,7 @@
 #' - `rds`: R Data Serialized.
 #' - `tsv` Tab Separated Values.
 #' - `xlsx`: Excel workbook.
-#' - `yml`: YAML.
+#' - `yaml`/`yml`: YAML.
 #'
 #' Also supports some additional extensions commonly used with the
 #' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
@@ -110,6 +110,8 @@ readFileByExtension <- function(file) {
         data <- get(object, envir = safe, inherits = FALSE)
     } else if (ext == "rds") {
         data <- readRDS(file)
+    } else if (ext %in% c("yaml", "yml")) {
+        data <- suppressMessages(readYAML(file))
     } else if (requireNamespace("rio", quietly = TRUE)) {
         message(paste(
             "Using `rio::import()` to read", deparse(ext), "file extension"

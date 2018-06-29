@@ -25,7 +25,7 @@ internal object name to match, like with the \code{\link[=loadData]{loadData()}}
 \item \code{rds}: R Data Serialized.
 \item \code{tsv} Tab Separated Values.
 \item \code{xlsx}: Excel workbook.
-\item \code{yml}: YAML.
+\item \code{yaml}/\code{yml}: YAML.
 }
 
 Also supports some additional extensions commonly used with the

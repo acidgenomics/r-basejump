@@ -188,7 +188,7 @@ test_that("localOrRemoteFile : Missing file", {
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
     x <- readFileByExtension("example.csv")
-    expect_is(x, "tbl_df")
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : GFF", {
@@ -208,23 +208,16 @@ test_that("readFileByExtension : MatrixMarket file (.mtx)", {
 })
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
-    tsv <- readFileByExtension("example.tsv")
-    expect_is(tsv, "tbl_df")
-})
-
-test_that("readFileByExtension : Table format file (.txt)", {
-    expect_warning(readFileByExtension("example.txt"))
-    txt <- suppressWarnings(readFileByExtension("example.txt"))
-    expect_is(txt, "data.frame")
-    expect_equal(txt, mtcars)
+    x <- readFileByExtension("example.tsv")
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    xlsx <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
-    expect_is(xlsx, "tbl_df")
+    x <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    expect_is(x, "data.frame")
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
@@ -242,7 +235,7 @@ test_that("readFileByExtension : Counts file (.counts)", {
     )
 })
 
-test_that("readFileByExtension : R file", {
+test_that("readFileByExtension : R script", {
     expect_message(
         readFileByExtension("test_read_functions.R"),
         "Importing as source code lines"
@@ -268,7 +261,7 @@ test_that("readFileByExtension : R Data", {
 })
 
 test_that("readFileByExtension : YAML", {
-    x <- readFileByExtension("example.yaml")
+    x <- readFileByExtension("example.yml")
     expect_is(x, "list")
 })
 
