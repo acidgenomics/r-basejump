@@ -348,6 +348,6 @@ test_that("readJSON", {
 
 # readYAML =====================================================================
 test_that("readYAML : bcbio project summary", {
-    x <- readYAML("example.yaml")
+    x <- readYAML("example.yml")
     expect_is(x, "list")
 })
