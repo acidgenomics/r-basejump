@@ -33,8 +33,8 @@
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom GenomicRanges GRanges
-#' @importFrom ggplot2 aes element_blank element_line element_rect element_text
-#'   ggplot theme theme_classic theme_minimal
+#' @importFrom ggplot2 element_blank element_line element_rect element_text
+#'   theme theme_linedraw
 #' @importFrom IRanges IRanges
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit

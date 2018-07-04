@@ -82,15 +82,15 @@ theme_midnight <- function(
 
     if (isTRUE(grid)) {
         axis_ticks <- element_blank()
-        grid <- element_line(colour = gray)
+        panel_grid_major <- element_line(colour = gray, size = 0.5)
         panel_border <- element_blank()
     } else {
         axis_ticks <- element_line(colour = "white")
-        grid <- element_blank()
+        panel_grid_major <- element_blank()
         panel_border <- element_rect(colour = "white", fill = NA)
     }
 
-    theme_minimal(
+    theme_linedraw(
         base_size = base_size,
         base_family = base_family
     ) +
@@ -102,9 +102,11 @@ theme_midnight <- function(
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
             axis.ticks = axis_ticks,
             legend.key = element_rect(colour = NA, fill = gray),
+            legend.background = element_blank(),
             legend.position = legend_position,
+            panel.background = element_blank(),
             panel.border = panel_border,
-            panel.grid.major = grid,
+            panel.grid.major = panel_grid_major,
             panel.grid.minor = element_blank(),
             plot.background = element_rect(colour = NA, fill = "black"),
             strip.text = text,
@@ -150,15 +152,15 @@ theme_paperwhite <- function(
 
     if (isTRUE(grid)) {
         axis_ticks <- element_blank()
-        grid <- element_line(colour = gray)
+        panel_grid_major <- element_line(colour = gray, size = 0.5)
         panel_border <- element_blank()
     } else {
         axis_ticks <- element_line(colour = "black")
-        grid <- element_blank()
+        panel_grid_major <- element_blank()
         panel_border <- element_rect(colour = "black", fill = NA)
     }
 
-    theme_classic(
+    theme_linedraw(
         base_size = base_size,
         base_family = base_family
     ) +
@@ -169,8 +171,11 @@ theme_paperwhite <- function(
             axis.text = text,
             axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
             axis.ticks = axis_ticks,
+            panel.background = element_blank(),
             panel.border = panel_border,
-            panel.grid.major = grid,
+            panel.grid.major = panel_grid_major,
+            panel.grid.minor = element_blank(),
+            legend.background = element_blank(),
             legend.position = legend_position,
             strip.background = element_rect(colour = NA, fill = "white"),
             strip.text = text,
