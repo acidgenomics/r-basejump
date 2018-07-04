@@ -70,7 +70,7 @@ Imports:
     tibble (>= 1.4),
     tidyr (>= 0.8),
     utils,
-    yaml (<= 2.1)
+    yaml (>= 2.1)
 Suggests:
     EnsDb.Hsapiens.v75,
     testthat (>= 2.0)
