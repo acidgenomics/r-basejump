@@ -62,7 +62,7 @@ theme_midnight <- function(
     base_family = "",
     face = c("bold", "plain"),
     aspect_ratio = NULL,
-    legend_position = c("bottom", "right", "none"),
+    legend_position = c("right", "bottom", "none"),
     grid = FALSE
 ) {
     assert_is_a_number(base_size)
@@ -132,7 +132,7 @@ theme_paperwhite <- function(
     base_family = "",
     face = c("bold", "plain"),
     aspect_ratio = NULL,
-    legend_position = c("bottom", "right", "none"),
+    legend_position = c("right", "bottom", "none"),
     grid = FALSE
 ) {
     assert_is_a_number(base_size)

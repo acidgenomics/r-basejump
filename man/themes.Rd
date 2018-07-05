@@ -9,11 +9,11 @@
 \title{Complete Themes}
 \usage{
 theme_midnight(base_size = 14L, base_family = "", face = c("bold",
-  "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
+  "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "none"), grid = FALSE)
 
 theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
-  "plain"), aspect_ratio = NULL, legend_position = c("bottom", "right",
+  "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "none"), grid = FALSE)
 }
 \arguments{
