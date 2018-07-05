@@ -4,8 +4,6 @@
 \alias{themes}
 \alias{theme_midnight}
 \alias{theme_paperwhite}
-\alias{midnightTheme}
-\alias{paperwhiteTheme}
 \title{Complete Themes}
 \usage{
 theme_midnight(base_size = 14L, base_family = "", face = c("bold",

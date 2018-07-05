@@ -17,6 +17,8 @@
 \alias{tx2geneFromGTF}
 \alias{multiassignAsNewEnvir}
 \alias{geomean}
+\alias{midnightTheme}
+\alias{paperwhiteTheme}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -48,6 +50,10 @@ tx2geneFromGTF(...)
 multiassignAsNewEnvir(...)
 
 geomean(...)
+
+midnightTheme(...)
+
+paperwhiteTheme(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

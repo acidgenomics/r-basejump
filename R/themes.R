@@ -186,19 +186,4 @@ theme_paperwhite <- function(
 
 
 
-# Aliases ======================================================================
-#' @rdname themes
-#' @usage NULL
-#' @export
-midnightTheme <- theme_midnight
-
-
-
-#' @rdname themes
-#' @usage NULL
-#' @export
-paperwhiteTheme <- theme_paperwhite
-
-
-
 # nolint end
