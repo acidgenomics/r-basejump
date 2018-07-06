@@ -4,7 +4,6 @@
 \name{rnaseq_counts}
 \alias{rnaseq_counts}
 \alias{rnaseqCounts}
-\alias{rnaseqCounts}
 \title{Example RNA-Seq Counts}
 \format{An object of class \code{matrix} with 1000 rows and 12 columns.}
 \usage{
