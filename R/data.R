@@ -11,13 +11,6 @@
 
 
 
-#' @rdname rnaseq_counts
-#' @usage NULL
-#' @export
-rnaseqCounts <- basejump::rnaseq_counts
-
-
-
 #' Example Single-Cell RNA-Seq Counts
 #'
 #' Modified version of `scater::sc_example_counts`, with dimnames formatted
@@ -29,13 +22,6 @@ rnaseqCounts <- basejump::rnaseq_counts
 #' @examples
 #' summary(single_cell_counts)
 "single_cell_counts"
-
-
-
-#' @rdname single_cell_counts
-#' @usage NULL
-#' @export
-singleCellCounts <- basejump::single_cell_counts
 
 
 

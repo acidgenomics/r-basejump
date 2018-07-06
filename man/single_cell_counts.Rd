@@ -4,7 +4,6 @@
 \name{single_cell_counts}
 \alias{single_cell_counts}
 \alias{singleCellCounts}
-\alias{singleCellCounts}
 \title{Example Single-Cell RNA-Seq Counts}
 \format{An object of class \code{dgCMatrix} with 2000 rows and 40 columns.}
 \usage{
