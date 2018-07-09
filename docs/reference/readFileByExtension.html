@@ -173,7 +173,10 @@ is provided.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># R Data</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'http://basejump.seq.cloud/rnaseq_counts.rda': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(url = file, destfile = destfile, mode = mode): cannot open URL 'http://basejump.seq.cloud/rnaseq_counts.rda'</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  num 1</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  int [1:1000, 1:12] 0 33 2 18 11 15 93 47 60 25 ...
+#&gt;  - attr(*, "dimnames")=List of 2
+#&gt;   ..$ : chr [1:1000] "gene1" "gene2" "gene3" "gene4" ...
+#&gt;   ..$ : chr [1:12] "sample1" "sample2" "sample3" "sample4" ...</div><div class='input'>
 <span class='co'># Comma Separated Values</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 32
 #&gt; Variables: 12

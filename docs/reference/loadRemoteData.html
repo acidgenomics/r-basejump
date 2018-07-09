@@ -149,7 +149,7 @@ name, and the remote URL as the value.</p>
     <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
     <span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>,
     <span class='st'>"http://basejump.seq.cloud/single_cell_counts.rda"</span>
-))</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'http://basejump.seq.cloud/rnaseq_counts.rda': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(url = file, destfile = destfile, mode = mode): cannot open URL 'http://basejump.seq.cloud/rnaseq_counts.rda'</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
+))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'http://basejump.seq.cloud/single_cell_counts.rda': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(url = file, destfile = destfile, mode = mode): cannot open URL 'http://basejump.seq.cloud/single_cell_counts.rda'</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div></pre>
   </div>

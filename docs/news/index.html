@@ -103,12 +103,28 @@
       <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="basejump-0-5-10-2018-06-28" class="section level1">
+    <div id="basejump-0-5-11-2018-07-09" class="section level1">
 <h1 class="page-header">
-<a href="#basejump-0-5-10-2018-06-28" class="anchor"></a>basejump 0.5.10 (2018-06-28)</h1>
+<a href="#basejump-0-5-11-2018-07-09" class="anchor"></a>basejump 0.5.11 (2018-07-09)</h1>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>Now requiring <a href="http://ggplot2.tidyverse.org">ggplot2</a> v3.0 internally.</li>
+<li>
+<code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code> now extend <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_linedraw()</a></code>, improving the consistency between these themes.</li>
+<li>Example data is now consistenly formatted using snake_case: <code>rnaseq_counts</code> and <code>single_cell_counts</code>, instead of the previous camelCase conventions: <code>rnaseqCounts</code>, <code>singleCellCounts</code>.</li>
+<li>Camel variants of the ggplot themes are now deprecated.</li>
+<li>Updated internal gene synonyms data from NIH.</li>
+</ul>
+</div>
+</div>
+    <div id="basejump-0-5-10-2018-06-28" class="section level1">
+<h1 class="page-header">
+<a href="#basejump-0-5-10-2018-06-28" class="anchor"></a>basejump 0.5.10 (2018-06-28)</h1>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Removed <code>makeNames</code> argument from <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
 <li>Simplified assert checks for internal load function.</li>
@@ -120,9 +136,9 @@
     <div id="basejump-0-5-9-2018-06-12" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-9-2018-06-12" class="anchor"></a>basejump 0.5.9 (2018-06-12)</h1>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Markdown function consistency improvements. Now all relevant Markdown functions use <code>text</code> as the primary argument, instead of <code>object</code>.</li>
 </ul>
@@ -131,9 +147,9 @@
     <div id="basejump-0-5-8-2018-06-05" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-8-2018-06-05" class="anchor"></a>basejump 0.5.8 (2018-06-05)</h1>
-<div id="minor-changes-2" class="section level2">
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> now supports remapping of UCSC genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
@@ -157,9 +173,9 @@
     <div id="basejump-0-5-7-2018-05-24" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-7-2018-05-24" class="anchor"></a>basejump 0.5.7 (2018-05-24)</h1>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Tweaked gray color accents for <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code>.</li>
 </ul>
@@ -168,9 +184,9 @@
     <div id="basejump-0-5-6-2018-05-19" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-6-2018-05-19" class="anchor"></a>basejump 0.5.6 (2018-05-19)</h1>
-<div id="minor-changes-4" class="section level2">
+<div id="minor-changes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Fixed NAMESPACE issue with <code><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">GenomeInfoDb::seqnames()</a></code>.</li>
 <li>Improved <code><a href="../reference/readGFF.html">readGFF()</a></code> working example to reflect switch to <code>GRanges</code> return.</li>
@@ -189,9 +205,9 @@
 <code><a href="../reference/readGFF.html">readGFF()</a></code> now uses <code><a href="http://www.rdocumentation.org/packages/rtracklayer/topics/export">rtracklayer::import()</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-5" class="section level2">
+<div id="minor-changes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/defunct.html">assertIsGFF()</a></code> and <code><a href="../reference/defunct.html">parseGFFAttributes()</a></code> functions are now defunct.</li>
@@ -210,9 +226,9 @@
     <div id="basejump-0-5-3-2018-04-30" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-3-2018-04-30" class="anchor"></a>basejump 0.5.3 (2018-04-30)</h1>
-<div id="minor-changes-6" class="section level2">
+<div id="minor-changes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-6" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Improved internal S4 method code for <code>fixNA()</code> and <code>removeNA()</code>.</li>
 <li>Tweaked gray accent colors in <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code>. Now using British spelling internally for ggplot code.</li>
@@ -223,9 +239,9 @@
     <div id="basejump-0-5-2-2018-04-26" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-2-2018-04-26" class="anchor"></a>basejump 0.5.2 (2018-04-26)</h1>
-<div id="minor-changes-7" class="section level2">
+<div id="minor-changes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-7" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Improved documentation for assert check functions.</li>
 <li>Deprecated <code><a href="../reference/deprecated.html">geomean()</a></code> in favor of <code>geometricMean()</code>.</li>
@@ -241,9 +257,9 @@
     <div id="basejump-0-5-1-2018-04-16" class="section level1">
 <h1 class="page-header">
 <a href="#basejump-0-5-1-2018-04-16" class="anchor"></a>basejump 0.5.1 (2018-04-16)</h1>
-<div id="minor-changes-8" class="section level2">
+<div id="minor-changes-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-8" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-9" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/emptyRanges.html">emptyRanges()</a></code>: Now using <code>match.arg()</code> internally to capture <code>seqname</code> argument.</li>
@@ -289,9 +305,9 @@
 <code><a href="../reference/loadData.html">loadData()</a></code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
 </ul>
 </div>
-<div id="minor-changes-9" class="section level2">
+<div id="minor-changes-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-9" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-10" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Consolidated assert check function code.</li>
 <li>Moved assertive imports to <code>basejump-package.R</code> file.</li>
@@ -322,9 +338,9 @@
 <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> now works with unquoted names, improving consistency with <code><a href="../reference/loadData.html">loadData()</a></code> (non-standard evaluation).</li>
 </ul>
 </div>
-<div id="minor-changes-10" class="section level3">
+<div id="minor-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Added new <code><a href="../reference/convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl()</a></code> function, for easy remapping of <a href="https://genome.ucsc.edu">UCSC</a> to <a href="https://www.ensembl.org">Ensembl</a> genome build names (e.g. <code>hg38</code> to <code>GRCh38</code>).</li>
 <li>Migrated matrix methods for <code>plotCorrelationHeatmap()</code> here from bcbioRNASeq, for improved consistency with other heatmap functions.</li>
@@ -363,7 +379,7 @@
 <li>Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.</li>
 <li>Added <code>sanitizeColData()</code> function.</li>
 <li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
-<li>Now exporting <code><a href="../reference/themes.html">midnightTheme()</a></code> as a <code><a href="../reference/themes.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
+<li>Now exporting <code><a href="../reference/deprecated.html">midnightTheme()</a></code> as a <code><a href="../reference/themes.html">theme_midnight()</a></code> alias to match the syntax in the ggplot2 package.</li>
 <li>Added working examples and code coverage for all assert check functions.</li>
 <li>Simplified the internal collapse code for <code><a href="../reference/annotable.html">annotable()</a></code> to simply work on the Entrez identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code>collapseToString()</code>.</li>
 <li>Added ggplot color palette assert checks: <code>assertColorScaleContinuousOrNULL()</code>, <code>assertColorScaleDiscreteOrNULL()</code>, <code>assertFillScaleContinuousOrNULL()</code>, <code>assertFillScaleDiscreteOrNULL()</code>.</li>
@@ -471,7 +487,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-1-4-2017-12-04" class="anchor"></a>basejump 0.1.4 (2017-12-04)</h2>
 <ul>
-<li>Added <code><a href="../reference/themes.html">midnightTheme()</a></code> ggplot theme. Originally this was defined as <code>darkTheme()</code> in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_minimal()</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
+<li>Added <code><a href="../reference/deprecated.html">midnightTheme()</a></code> ggplot theme. Originally this was defined as <code>darkTheme()</code> in the bcbioSingleCell package, but can be useful for other plots and has been moved here for general bioinformatics usage. The theme now uses <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_minimal()</a></code> as the base, with some color tweaks, namely dark gray axes without white axis lines.</li>
 <li>Improve NAMESPACE imports to include <code><a href="http://www.rdocumentation.org/packages/stats/topics/formula">stats::formula()</a></code> and <code><a href="http://www.rdocumentation.org/packages/utils/topics/capture.output">utils::capture.output()</a></code>.</li>
 </ul>
 </div>
@@ -769,6 +785,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#basejump-0-5-11-2018-07-09">0.5.11</a></li>
         <li><a href="#basejump-0-5-10-2018-06-28">0.5.10</a></li>
         <li><a href="#basejump-0-5-9-2018-06-12">0.5.9</a></li>
         <li><a href="#basejump-0-5-8-2018-06-05">0.5.8</a></li>
