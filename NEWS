@@ -1,3 +1,18 @@
+# basejump 0.5.11 (2018-07-09)
+
+## Minor changes
+
+- Now requiring [ggplot2][] v3.0 internally.
+- `theme_midnight()` and `theme_paperwhite()` now extend
+  `ggplot2::theme_linedraw()`, improving the consistency between these themes.
+- Example data is now consistenly formatted using snake_case: `rnaseq_counts`
+  and `single_cell_counts`, instead of the previous camelCase conventions:
+  `rnaseqCounts`, `singleCellCounts`.
+- Camel variants of the ggplot themes are now deprecated.
+- Updated internal gene synonyms data from NIH.
+
+
+
 # basejump 0.5.10 (2018-06-28)
 
 ## Minor changes
