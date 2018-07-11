@@ -27,7 +27,9 @@ gene2symbol(rse_bcb) \%>\% head()
 }
 \seealso{
 Other Data Functions: \code{\link{counts}},
-  \code{\link{selectSamples}}
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
