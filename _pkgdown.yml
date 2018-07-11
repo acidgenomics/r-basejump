@@ -76,5 +76,5 @@ reference:
     contents:
     - synonyms
     - rnaseq_counts
-    - rse_dds
+    - starts_with("rse_")
     - single_cell_counts
