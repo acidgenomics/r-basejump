@@ -24,7 +24,7 @@
 #' @export
 #'
 #' @examples
-#' writeCounts(rnaseqCounts, singleCellCounts, dir = "example")
+#' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
 #' list.files("example")
 #'
 #' # Clean up

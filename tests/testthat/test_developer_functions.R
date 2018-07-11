@@ -59,13 +59,13 @@ test_that("methodFormals", {
 # multiassignAsEnvir ===========================================================
 test_that("multiassignAsEnvir", {
     x <- multiassignAsEnvir(
-        rnaseqCounts, singleCellCounts,
+        rnaseq_counts, single_cell_counts,
         envirName = "example"
     )
-    expect_identical(x, c("rnaseqCounts", "singleCellCounts"))
+    expect_identical(x, c("rnaseq_counts", "single_cell_counts"))
     expect_identical(x, ls(example))
     expect_error(
-        multiassignAsEnvir(rnaseqCounts, envirName = parent.frame()),
+        multiassignAsEnvir(rnaseq_counts, envirName = parent.frame()),
         "is_a_string : envirName"
     )
 })

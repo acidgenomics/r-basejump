@@ -29,7 +29,7 @@
 #' @export
 #'
 #' @examples
-#' saveData(rnaseqCounts, singleCellCounts, dir = "example")
+#' saveData(rnaseq_counts, single_cell_counts, dir = "example")
 #' list.files("example")
 #'
 #' # Clean up

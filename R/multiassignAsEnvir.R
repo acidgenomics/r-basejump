@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' multiassignAsEnvir(rnaseqCounts, singleCellCounts, envirName = "example")
+#' multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
 #' class(example)
 #' ls(example)
 multiassignAsEnvir <- function(

@@ -23,11 +23,11 @@ multiple URLs in a single call.
 }
 \examples{
 loadRemoteData(c(
-    "http://basejump.seq.cloud/rnaseqCounts.rda",
-    "http://basejump.seq.cloud/singleCellCounts.rda"
+    "http://basejump.seq.cloud/rnaseq_counts.rda",
+    "http://basejump.seq.cloud/single_cell_counts.rda"
 ))
-class(rnaseqCounts)
-class(singleCellCounts)
+class(rnaseq_counts)
+class(single_cell_counts)
 }
 \seealso{
 Other Read Functions: \code{\link{loadDataAsName}},

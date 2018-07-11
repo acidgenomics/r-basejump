@@ -1,4 +1,4 @@
-# mn: make names
+# Make Names Sanitization Examples
 
 character <- c(
     "hello world",
@@ -15,8 +15,8 @@ character <- c(
 )
 
 namedCharacter <- c(
-    "Item.A" = "hello world",
-    "Item.B" = "HELLO WORLD"
+    Item.A = "hello world",
+    Item.B = "HELLO WORLD"
 )
 
 factor <- factor(
@@ -33,17 +33,17 @@ matrix <- as.matrix(dataFrame)
 tibble <- head(ggplot2::mpg)
 
 list <- list(
-    "Item.A" = c(1L, 2L),
-    "Item.B" = c(3L, 4L)
+    Item.A = c(1L, 2L),
+    Item.B = c(3L, 4L)
 )
 
 mn <- list(
-    "character" = character,
-    "namedCharacter" = namedCharacter,
-    "factor" = factor,
-    "dataFrame" = dataFrame,
-    "matrix" = matrix,
-    "tibble" = tibble,
-    "list" = list
+    character = character,
+    namedCharacter = namedCharacter,
+    factor = factor,
+    dataFrame = dataFrame,
+    matrix = matrix,
+    tibble = tibble,
+    list = list
 )
 saveData(mn, dir = "~", compress = "xz")

@@ -44,7 +44,7 @@ same conventions as \code{\link[base:save]{base::save()}}. Conversely, \code{\li
 not overwrite by default if that behavior is preferred.
 }
 \examples{
-saveData(rnaseqCounts, singleCellCounts, dir = "example")
+saveData(rnaseq_counts, single_cell_counts, dir = "example")
 list.files("example")
 
 # Clean up
