@@ -51,9 +51,226 @@ test_that("gene2symbol : NULL return", {
 
 
 
+# interestingGroups ============================================================
+test_that("interestingGroups : SummarizedExperiment", {
+    expect_identical(
+        interestingGroups(rse_bcb),
+        "treatment"
+    )
+    expect_identical(
+        interestingGroups(rse_dds),
+        NULL
+    )
+})
+
+test_that("interestingGroups : Assignment method", {
+    x <- rse_bcb
+    interestingGroups(x) <- "sampleName"
+    expect_identical(
+        interestingGroups(x),
+        "sampleName"
+    )
+    expect_error(
+        interestingGroups(x) <- "XXX",
+        "The interesting groups \"XXX\" are not defined"
+    )
+})
+
+
+
+# sampleData ===================================================================
+# Check output of `return` parameter
+return <- methodFormals(
+    f = "sampleData",
+    signature = "SummarizedExperiment"
+) %>%
+    .[["return"]] %>%
+    as.character() %>%
+    .[-1L]
+
+test_that("sampleData: Verbose mode", {
+    list <- lapply(return, function(x) {
+        sampleData(
+            rse_bcb,
+            clean = FALSE,
+            return = x
+        )
+    })
+
+    # Check returns
+    expect_identical(
+        lapply(list, class),
+        list(
+            structure("DataFrame", package = "S4Vectors"),
+            "data.frame",
+            "knitr_kable"
+        )
+    )
+
+    # Check dimnames
+    expected <- list(
+        colnames(rse_bcb),
+        c(colnames(colData(rse_bcb)), "interestingGroups")
+    )
+    expect_identical(
+        lapply(list, dimnames),
+        list(
+            expected,
+            expected,
+            NULL
+        )
+    )
+})
+
+test_that("sampleData : Clean mode", {
+    list <- lapply(return, function(x) {
+        sampleData(
+            rse_bcb,
+            clean = TRUE,
+            return = x
+        )
+    })
+
+    # Check returns
+    expect_identical(
+        lapply(list, class),
+        list(
+            structure("DataFrame", package = "S4Vectors"),
+            "data.frame",
+            "knitr_kable"
+        )
+    )
+
+    # Check dimnames
+    expected <- list(
+        colnames(rse_bcb),
+        c(
+            "sampleName",
+            "day",
+            "replicate",
+            "strain",
+            "tissue",
+            "treatment"
+        )
+    )
+    expect_identical(
+        lapply(list, dimnames),
+        list(
+            expected,
+            expected,
+            NULL
+        )
+    )
+
+    # Ensure all columns are factor
+    invisible(lapply(list[[1L]], function(x) {
+        expect_is(x, "factor")
+    }))
+
+    # Interesting groups
+    x <- sampleData(rse_bcb, clean = FALSE, interestingGroups = NULL)
+    expect_identical(
+        x[["interestingGruops"]],
+        NULL
+    )
+    x <- sampleData(rse_bcb, clean = FALSE, interestingGroups = "day")
+    expect_identical(
+        levels(x[["interestingGroups"]]),
+        c("0", "7")
+    )
+})
+
+test_that("sampleData : Assignment method", {
+    x <- rse_bcb
+    sampleData(x)[["test"]] <- as.factor(seq_len(ncol(x)))
+    expect_is(sampleData(x)[["test"]], "factor")
+})
+
+
+
+# sampleNames ==================================================================
+test_that("sampleNames", {
+    x <- sampleNames(rse_bcb)
+    expect_identical(
+        x[seq_len(2L)],
+        c(
+            control_rep1 = "control_rep1",
+            control_rep2 = "control_rep2"
+        )
+    )
+
+    x <- sampleNames(rse_dds)
+    expect_identical(
+        x[seq_len(2L)],
+        c(
+            sample1 = "sample1",
+            sample10 = "sample10"
+        )
+    )
+})
+
+
+
 # selectSamples ================================================================
 test_that("selectSamples : SummarizedExperiment", {
     x <- selectSamples(rse_dds, condition = "A")
     expect_identical(dim(x), c(1000L, 6L))
     expect_identical(colnames(x), paste0("sample", seq(6L)))
+})
+
+
+
+# uniteInterestingGroups =======================================================
+test_that("uniteInterestingGroups : Single interesting group", {
+    x <- uniteInterestingGroups(
+        object = datasets::mtcars,
+        interestingGroups = c("vs", "am", "gear")
+    )
+    expect_identical(
+        levels(x[["interestingGroups"]]),
+        c("0:0:3", "0:1:4", "0:1:5", "1:0:3", "1:0:4", "1:1:4", "1:1:5")
+    )
+})
+
+test_that("uniteInterestingGroups : tidy (tibble) mode", {
+    x <- uniteInterestingGroups(
+        object = dplyr::starwars,
+        interestingGroups = c("hair_color", "skin_color")
+    )
+    expect_is(x, "tbl_df")
+    expect_is(x[["interestingGroups"]], "factor")
+    expect_identical(
+        x[["interestingGroups"]] %>%
+            as.character() %>%
+            head(2L),
+        c("blond:fair", "NA:gold")
+    )
+})
+
+test_that("uniteInterestingGroups : Two interesting groups", {
+    x <- uniteInterestingGroups(
+        object = datasets::mtcars,
+        interestingGroups = c("gear", "carb")
+    )
+    expect_identical(
+        head(x[["interestingGroups"]]),
+        factor(
+            c("4:4", "4:4", "4:1", "3:1", "3:2", "3:1"),
+            levels = c(
+                "3:1", "3:2", "3:3", "3:4",
+                "4:1", "4:2", "4:4",
+                "5:2", "5:4", "5:6", "5:8"
+            )
+        )
+    )
+})
+
+test_that("uniteInterestingGroups : Missing groups", {
+    expect_error(
+        uniteInterestingGroups(
+            object = datasets::mtcars,
+            interestingGroups = c("XXX", "YYY")
+        ),
+        "is_subset : The elements 'XXX', 'YYY' in interestingGroups"
+    )
 })
