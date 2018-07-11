@@ -12,17 +12,12 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param clean `logical`. Only return `factor` columns not defined in
-#'   [metadataBlacklist].
 #'
-#' @return Data describing the samples.
-#'
-#' @seealso [metadataBlacklist].
+#' @return `DataFrame` containing metadata that describes the samples.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_bcb, clean = TRUE) %>% glimpse()
-#' sampleData(rse_bcb, clean = FALSE) %>% glimpse()
+#' sampleData(rse_bcb) %>% glimpse()
 #'
 #' # Assignment support
 #' x <- rse_dds
@@ -39,35 +34,8 @@ NULL
 setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
-    function(
-        object,
-        clean = TRUE,
-        interestingGroups,
-        return = c("DataFrame", "data.frame", "kable")
-    ) {
-        data <- colData(object)
-        assert_is_a_bool(clean)
-        return <- match.arg(return)
-
-        # Only return factor columns, if desired
-        if (isTRUE(clean)) {
-            data <- data[, vapply(data, is.factor, logical(1L)), drop = FALSE]
-        } else {
-            # Include `interestingGroups` column, if not NULL
-            if (missing(interestingGroups)) {
-                interestingGroups <- basejump::interestingGroups(object)
-            }
-            if (length(interestingGroups)) {
-                data <- uniteInterestingGroups(data, interestingGroups)
-            }
-        }
-
-        # Return
-        if (return == "kable") {
-            kable(as.data.frame(data), row.names = FALSE)
-        } else {
-            as(data, return)
-        }
+    function(object) {
+        colData(object)
     }
 )
 

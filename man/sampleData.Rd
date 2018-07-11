@@ -16,8 +16,7 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object, clean = TRUE,
-  interestingGroups, return = c("DataFrame", "data.frame", "kable"))
+\S4method{sampleData}{SummarizedExperiment}(object)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
@@ -31,15 +30,9 @@ sampleData(object, ...) <- value
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
-
-\item{clean}{\code{logical}. Only return \code{factor} columns not defined in
-\link{metadataBlacklist}.}
-
-\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
-the first item in the vector by default.}
 }
 \value{
-Data describing the samples.
+\code{DataFrame} containing metadata that describes the samples.
 }
 \description{
 Return the sample metadata. Columns are always sanitized to factor.
@@ -52,8 +45,7 @@ experiment).
 }
 \examples{
 # SummarizedExperiment ====
-sampleData(rse_bcb, clean = TRUE) \%>\% glimpse()
-sampleData(rse_bcb, clean = FALSE) \%>\% glimpse()
+sampleData(rse_bcb) \%>\% glimpse()
 
 # Assignment support
 x <- rse_dds
@@ -62,8 +54,6 @@ sampleData(x)[["test"]] <- seq_len(ncol(x))
 glimpse(sampleData(x))
 }
 \seealso{
-\link{metadataBlacklist}.
-
 Other Data Functions: \code{\link{counts}},
   \code{\link{gene2symbol}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
