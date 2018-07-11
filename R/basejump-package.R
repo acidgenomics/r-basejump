@@ -2,6 +2,8 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
+#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom assertive.base assert_all_are_not_na assert_are_identical
 #'   assert_is_identical_to_na is_not_na
@@ -53,6 +55,7 @@
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
+#' @importFrom SummarizedExperiment assays
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate
