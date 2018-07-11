@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.5.11
+Version: 0.6.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -67,6 +67,7 @@ Imports:
     S4Vectors,
     stats,
     stringr (>= 1.3),
+    SummarizedExperiment,
     tibble (>= 1.4),
     tidyr (>= 0.8),
     utils,
