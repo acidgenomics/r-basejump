@@ -75,5 +75,6 @@ reference:
   - title: Datasets
     contents:
     - synonyms
-    - rnaseqCounts
-    - singleCellCounts
+    - rnaseq_counts
+    - rse_dds
+    - single_cell_counts
