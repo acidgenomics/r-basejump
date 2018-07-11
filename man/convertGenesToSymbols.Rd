@@ -11,6 +11,7 @@
 \alias{convertGenesToSymbols,DataFrame-method}
 \alias{convertGenesToSymbols,dgCMatrix-method}
 \alias{convertGenesToSymbols,dgTMatrix-method}
+\alias{convertGenesToSymbols,SummarizedExperiment-method}
 \title{Convert Ensembl Identifiers to Gene Symbols}
 \usage{
 convertGenesToSymbols(object, ...)
@@ -27,6 +28,8 @@ convertGenesToSymbols(object, ...)
 \S4method{convertGenesToSymbols}{dgCMatrix}(object, ...)
 
 \S4method{convertGenesToSymbols}{dgTMatrix}(object, ...)
+
+\S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -75,6 +78,11 @@ print(mat)
 mat <- convertGenesToSymbols(mat)
 print(mat)
 rownames(mat)
+
+# SummarizedExperiment ====
+x <- convertGenesToSymbols(rse_bcb)
+show(x)
+head(rownames(x))
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
