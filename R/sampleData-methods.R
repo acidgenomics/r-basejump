@@ -52,13 +52,10 @@ setMethod(
         # Only return factor columns, if desired
         if (isTRUE(clean)) {
             data <- data[, vapply(data, is.factor, logical(1L)), drop = FALSE]
-            # Drop remaining blacklisted columns
-            setdiff <- setdiff(colnames(data), metadataBlacklist)
-            data <- data[, setdiff, drop = FALSE]
         } else {
             # Include `interestingGroups` column, if not NULL
             if (missing(interestingGroups)) {
-                interestingGroups <- bcbioBase::interestingGroups(object)
+                interestingGroups <- basejump::interestingGroups(object)
             }
             if (length(interestingGroups)) {
                 data <- uniteInterestingGroups(data, interestingGroups)
