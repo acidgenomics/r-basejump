@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate Replicates — aggregateReplicates • basejump</title>
+<title>Interesting Groups — interestingGroups • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aggregate Replicates — aggregateReplicates" />
+<meta property="og:title" content="Interesting Groups — interestingGroups" />
 
-<meta property="og:description" content="Aggregate Replicates" />
+<meta property="og:description" content="Interesting Groups" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,24 +99,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aggregate Replicates</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregateReplicates-methods.R'><code>R/aggregateReplicates-methods.R</code></a></small>
-    <div class="hidden name"><code>aggregateReplicates.Rd</code></div>
+    <h1>Interesting Groups</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/interestingGroups-methods.R'><code>R/interestingGroups-methods.R</code></a></small>
+    <div class="hidden name"><code>interestingGroups.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Aggregate Replicates</p>
+    <p>Interesting Groups</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>interestingGroups</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
+<span class='fu'>interestingGroups</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)</pre>
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>interestingGroups</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment,character</span>
+<span class='fu'>interestingGroups</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,52 +132,20 @@
       <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
-      <th>groupings</th>
-      <td><p>Factor that defines the aggregation groupings. The new
-aggregation names are defined as the factor levels, and the original
-replicates are defined as the names of the factor.</p></td>
+      <th>value</th>
+      <td><p>Value to assign.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object with aggregated counts per pooled sample (columns).</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Math Functions: <code>aggregateFeatures</code>,
-  <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
-  <code>geometricMean</code>, <code><a href='microplate.html'>microplate</a></code></p></div>
+    <p><code>character</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='st'>"sample_1.1"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)),
-    <span class='st'>"sample_1.2"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>3</span>, <span class='fl'>4</span>)),
-    <span class='st'>"sample_2.1"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)),
-    <span class='st'>"sample_2.2"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
-)
-
-<span class='no'>groupings</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>, <span class='st'>"sample_2"</span>))
-<span class='fu'>names</span>(<span class='no'>groupings</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>counts</span>)
-
-<span class='co'># matrix ====</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
-<span class='fu'>aggregateReplicates</span>(<span class='no'>mat</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt;      sample_1 sample_2
-#&gt; [1,]        0        4
-#&gt; [2,]        0        6
-#&gt; [3,]        0        0
-#&gt; [4,]        4        0
-#&gt; [5,]        6        0</div><div class='input'>
-<span class='co'># dgCMatrix ====</span>
-<span class='no'>dgc</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>mat</span>, <span class='st'>"dgCMatrix"</span>)
-<span class='fu'>aggregateReplicates</span>(<span class='no'>dgc</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
-#&gt;      sample_1 sample_2
-#&gt; [1,]        .        4
-#&gt; [2,]        .        6
-#&gt; [3,]        .        .
-#&gt; [4,]        4        .
-#&gt; [5,]        6        .</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+<span class='fu'>interestingGroups</span>(<span class='no'>rse_dds</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>colnames</span>(<span class='fu'>colData</span>(<span class='no'>rse_dds</span>))</div><div class='output co'>#&gt; [1] "condition"</div><div class='input'><span class='fu'>interestingGroups</span>(<span class='no'>rse_dds</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='fu'>colData</span>(<span class='no'>rse_dds</span>))<span class='kw'>[[</span><span class='fl'>1L</span>]]
+<span class='fu'>interestingGroups</span>(<span class='no'>rse_dds</span>)</div><div class='output co'>#&gt; [1] "condition"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -183,15 +153,13 @@ replicates are defined as the names of the factor.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
     
-Michael Steinbaugh, Rory Kirchner
+Michael Steinbaugh
 
   </div>
 </div>

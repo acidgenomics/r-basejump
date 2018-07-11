@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate Replicates — aggregateReplicates • basejump</title>
+<title>Unite Interesting Groups — uniteInterestingGroups • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aggregate Replicates — aggregateReplicates" />
+<meta property="og:title" content="Unite Interesting Groups — uniteInterestingGroups" />
 
-<meta property="og:description" content="Aggregate Replicates" />
+<meta property="og:description" content="Create a single interesting groups column (&quot;interestingGroups&quot;) used for
+coloring in plots. When multiple interesting groups are present, unite into a
+single column, delimited by a colon." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,83 +101,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aggregate Replicates</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregateReplicates-methods.R'><code>R/aggregateReplicates-methods.R</code></a></small>
-    <div class="hidden name"><code>aggregateReplicates.Rd</code></div>
+    <h1>Unite Interesting Groups</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/uniteInterestingGroups-methods.R'><code>R/uniteInterestingGroups-methods.R</code></a></small>
+    <div class="hidden name"><code>uniteInterestingGroups.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Aggregate Replicates</p>
+    <p>Create a single interesting groups column ("<code>interestingGroups</code>") used for
+coloring in plots. When multiple interesting groups are present, unite into a
+single column, delimited by a colon.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>uniteInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>uniteInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateReplicates</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)</pre>
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>uniteInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>uniteInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object.</p></td>
+      <td><p>Object containing interesting groups in multiple columns.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
-    <tr>
-      <th>groupings</th>
-      <td><p>Factor that defines the aggregation groupings. The new
-aggregation names are defined as the factor levels, and the original
-replicates are defined as the names of the factor.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object with aggregated counts per pooled sample (columns).</p>
+    <p>Data frame, now containing an <code>interestingGroups</code> column.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Math Functions: <code>aggregateFeatures</code>,
-  <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
-  <code>geometricMean</code>, <code><a href='microplate.html'>microplate</a></code></p></div>
+    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
+  <code>gene2symbol</code>, <code>sampleData</code>,
+  <code><a href='sampleNames.html'>sampleNames</a></code>, <code>selectSamples</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='st'>"sample_1.1"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)),
-    <span class='st'>"sample_1.2"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>3</span>, <span class='fl'>4</span>)),
-    <span class='st'>"sample_2.1"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)),
-    <span class='st'>"sample_2.2"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
-)
-
-<span class='no'>groupings</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>, <span class='st'>"sample_2"</span>))
-<span class='fu'>names</span>(<span class='no'>groupings</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>counts</span>)
-
-<span class='co'># matrix ====</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
-<span class='fu'>aggregateReplicates</span>(<span class='no'>mat</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt;      sample_1 sample_2
-#&gt; [1,]        0        4
-#&gt; [2,]        0        6
-#&gt; [3,]        0        0
-#&gt; [4,]        4        0
-#&gt; [5,]        6        0</div><div class='input'>
-<span class='co'># dgCMatrix ====</span>
-<span class='no'>dgc</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>mat</span>, <span class='st'>"dgCMatrix"</span>)
-<span class='fu'>aggregateReplicates</span>(<span class='no'>dgc</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
-#&gt;      sample_1 sample_2
-#&gt; [1,]        .        4
-#&gt; [2,]        .        6
-#&gt; [3,]        .        .
-#&gt; [4,]        4        .
-#&gt; [5,]        6        .</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleData</span>(<span class='no'>rse_bcb</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .local(object, ...): unused argument (interestingGroups = NULL)</span></div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>uniteInterestingGroups</span>(<span class='no'>x</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"treatment"</span>, <span class='st'>"day"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list("numeric"), new("nonstandardGenericFunction", .Data = function (object,     ...) {    standardGeneric("uniteInterestingGroups")}, generic = structure("uniteInterestingGroups", package = "basejump"),     package = "basejump", group = list(), valueClass = character(0),     signature = "object", default = NULL, skeleton = (function (object,         ...)     stop("invalid call in method dispatch to 'uniteInterestingGroups' (no default method)",         domain = NA))(object, ...)), &lt;environment&gt;): unable to find an inherited method for function 'uniteInterestingGroups' for signature '"numeric"'</span></div><div class='input'><span class='no'>y</span><span class='kw'>[[</span><span class='st'>"interestingGroups"</span>]]</div><div class='output co'>#&gt; <span class='error'>Error in y[["interestingGroups"]]: subscript out of bounds</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -191,7 +166,7 @@ replicates are defined as the names of the factor.</p></td>
 
     <h2>Author</h2>
     
-Michael Steinbaugh, Rory Kirchner
+Michael Steinbaugh
 
   </div>
 </div>
