@@ -31,7 +31,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
 Depends:
-    R (>= 3.4)
+    R (>= 3.4),
+    SummarizedExperiment
 Imports:
     AnnotationHub,
     assertive.base,
@@ -68,7 +69,6 @@ Imports:
     S4Vectors,
     stats,
     stringr (>= 1.3),
-    SummarizedExperiment,
     tibble (>= 1.4),
     tidyr (>= 0.8),
     utils,
