@@ -16,13 +16,13 @@
 #'
 #' @examples
 #' # Single file
-#' x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseqCounts.csv.gz")
+#' x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseq_counts.csv.gz")
 #' basename(x)
 #'
 #' # Vectorized
 #' x <- localOrRemoteFile(c(
-#'     "http://basejump.seq.cloud/rnaseqCounts.csv.gz",
-#'     "http://basejump.seq.cloud/singleCellCounts.mtx.gz"
+#'     "http://basejump.seq.cloud/rnaseq_counts.csv.gz",
+#'     "http://basejump.seq.cloud/single_cell_counts.mtx.gz"
 #' ))
 #' basename(x)
 localOrRemoteFile <- function(file) {

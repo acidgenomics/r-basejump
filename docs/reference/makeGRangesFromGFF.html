@@ -65,7 +65,7 @@ GTF (General Transfer Format) is identical to GFF version 2." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
       </span>
     </div>
 
@@ -155,16 +155,19 @@ GTF (General Transfer Format) is identical to GFF version 2.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='st'>"http://basejump.seq.cloud/mmusculus.gtf"</span>
-
-<span class='co'># Genes</span>
-<span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)
-))</div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>Import genomic features from the file as a GRanges object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Prepare the 'metadata' data frame ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Make the TxDb object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 17 ranges and 6 metadata columns"</div><div class='input'>
-<span class='co'># Transcripts</span>
-<span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)
-))</div><div class='output co'>#&gt; <span class='message'>Reading mmusculus.gtf</span></div><div class='output co'>#&gt; <span class='message'>Import genomic features from the file as a GRanges object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Prepare the 'metadata' data frame ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Make the TxDb object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting txBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, txBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 20 ranges and 12 metadata columns"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Import genomic features from the file as a GRanges object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Prepare the 'metadata' data frame ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Make the TxDb object ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 17 ranges and 6 metadata columns"</div><div class='input'><span class='fu'>as.data.frame</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 17
+#&gt; Variables: 11
+#&gt; $ seqnames    &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+#&gt; $ start       &lt;int&gt; 3999557, 3205901, 3102016, 3783876, 3466587, 3647309, 3...
+#&gt; $ end         &lt;int&gt; 4409241, 3671498, 3102125, 3783933, 3513553, 3658904, 3...
+#&gt; $ width       &lt;int&gt; 409685, 465598, 110, 58, 46967, 11596, 80477, 1634, 235...
+#&gt; $ strand      &lt;fct&gt; -, -, +, -, +, -, -, +, +, +, +, -, +, -, -, -, -
+#&gt; $ geneID      &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000051951", "ENSMUSG000...
+#&gt; $ geneName    &lt;chr&gt; "Rp1", "Xkr4", "Gm26206", "Gm27396", "Gm1992", "Gm19938...
+#&gt; $ geneBiotype &lt;fct&gt; protein_coding, protein_coding, snRNA, snRNA, antisense...
+#&gt; $ geneVersion &lt;chr&gt; "12", "5", "1", "2", "1", "1", "1", "1", "1", "1", "1",...
+#&gt; $ geneSource  &lt;chr&gt; "ensembl_havana", "ensembl_havana", "ensembl", "ensembl...
+#&gt; $ broadClass  &lt;fct&gt; coding, coding, small, small, other, other, noncoding, ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

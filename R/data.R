@@ -2,11 +2,12 @@
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`.
 #'
+#' @aliases rnaseqCounts
 #' @author Michael Steinbaugh
 #'
 #' @examples
-#' summary(rnaseqCounts)
-"rnaseqCounts"
+#' summary(rnaseq_counts)
+"rnaseq_counts"
 
 
 
@@ -15,9 +16,12 @@
 #' Modified version of `scater::sc_example_counts`, with dimnames formatted
 #' in camel case for package consistency.
 #'
+#' @aliases singleCellCounts
+#' @author Michael Steinbaugh
+#'
 #' @examples
-#' summary(singleCellCounts)
-"singleCellCounts"
+#' summary(single_cell_counts)
+"single_cell_counts"
 
 
 

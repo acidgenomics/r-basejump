@@ -5,11 +5,11 @@ context("Save Utilities")
 # assignAndSaveData ============================================================
 test_that("assignAndSaveData", {
     expect_identical(
-        assignAndSaveData(name = "example", object = rnaseqCounts),
+        assignAndSaveData(name = "example", object = rnaseq_counts),
         c("example" = file.path(getwd(), "example.rda"))
     )
     expect_message(
-        assignAndSaveData("example", rnaseqCounts),
+        assignAndSaveData("example", rnaseq_counts),
         paste("Saving example to", getwd())
     )
     unlink("example.rda")
@@ -23,13 +23,13 @@ test_that("saveData", {
     paths <- file.path(
         getwd(),
         "example",
-        c("rnaseqCounts.rda", "singleCellCounts.rda")
+        c("rnaseq_counts.rda", "single_cell_counts.rda")
     )
-    names(paths) <- c("rnaseqCounts", "singleCellCounts")
+    names(paths) <- c("rnaseq_counts", "single_cell_counts")
 
     # rda (default)
     x <- saveData(
-        rnaseqCounts, singleCellCounts,
+        rnaseq_counts, single_cell_counts,
         dir = dir,
         overwrite = TRUE
     )
@@ -37,20 +37,20 @@ test_that("saveData", {
 
     # rds
     x <- saveData(
-        rnaseqCounts, singleCellCounts,
+        rnaseq_counts, single_cell_counts,
         ext = "rds",
         dir = dir,
         overwrite = TRUE
     )
     expect_identical(
         basename(x),
-        c("rnaseqCounts.rds", "singleCellCounts.rds")
+        c("rnaseq_counts.rds", "single_cell_counts.rds")
     )
 
     # Check `overwrite = FALSE` mode
     expect_warning(
         saveData(
-            rnaseqCounts, singleCellCounts,
+            rnaseq_counts, single_cell_counts,
             dir = dir, overwrite = FALSE
         ),
         "No files were saved."
@@ -69,7 +69,7 @@ test_that("saveData : Invalid parameters", {
         "is_name : X"
     )
     expect_error(
-        saveData(rnaseqCounts, dir = NULL),
+        saveData(rnaseq_counts, dir = NULL),
         "is_a_string : dir"
     )
 })

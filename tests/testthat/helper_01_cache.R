@@ -15,11 +15,11 @@ files <- c(
     "multi.rda",
     "plotlist.rda",
     "renamed.rda",
-    "rnaseqCounts.csv.gz",
+    "rnaseq_counts.csv.gz",
     "serialized.rds",
-    "singleCellCounts.mtx.gz",
-    "singleCellCounts.mtx.gz.colnames",
-    "singleCellCounts.mtx.gz.rownames"
+    "single_cell_counts.mtx.gz",
+    "single_cell_counts.mtx.gz.colnames",
+    "single_cell_counts.mtx.gz.rownames"
 )
 mapply(
     FUN = function(cacheURL, file, envir) {

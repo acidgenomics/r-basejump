@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.5.10
+Version: 0.5.11
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -49,15 +49,15 @@ Imports:
     GenomeInfoDb,
     GenomicFeatures,
     GenomicRanges,
-    ggplot2 (>= 2.2.1),
+    ggplot2 (>= 3.0),
     IRanges,
-    jsonlite,
+    jsonlite (>= 1.5),
     knitr (>= 1.20),
     magrittr (>= 1.5),
     Matrix (>= 1.2),
     Matrix.utils (>= 0.9),
     methods,
-    pbapply,
+    pbapply (>= 1.3),
     R.utils,
     RCurl (>= 1.95),
     readr (>= 1.1),
@@ -70,7 +70,7 @@ Imports:
     tibble (>= 1.4),
     tidyr (>= 0.8),
     utils,
-    yaml
+    yaml (>= 2.1)
 Suggests:
     EnsDb.Hsapiens.v75,
     testthat (>= 2.0)

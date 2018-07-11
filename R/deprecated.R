@@ -260,4 +260,23 @@ dynamicPlotlist <- function(...) {
 
 
 
+# 0.5.11 =======================================================================
+#' @rdname deprecated
+#' @export
+midnightTheme <- function(...) {
+    .Deprecated("theme_midnight")
+    theme_midnight(...)
+}
+
+
+
+#' @rdname deprecated
+#' @export
+paperwhiteTheme <- function(...) {
+    .Deprecated("theme_paperwhite")
+    theme_paperwhite(...)
+}
+
+
+
 # nocov end
