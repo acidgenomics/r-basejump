@@ -535,6 +535,73 @@ assertIsFillScaleDiscreteOrNULL <- function(
 
 
 
+#' Interesting Groups Formal Assert Check
+#'
+#' Prevent unwanted downstream behavior when a missing interesting group
+#' is requested by the user.
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#'
+#' @inheritParams general
+#'
+#' @return Silent, stop on error.
+#' @export
+#'
+#' @examples
+#' assertFormalInterestingGroups(rse_bcb, "treatment")
+#' assertFormalInterestingGroups(rse_dds, "condition")
+assertFormalInterestingGroups <- function(
+    x,
+    interestingGroups,
+    severity = getOption("assertive.severity", "stop")
+) {
+    fun <- get(severity)
+
+    # Early return on `NULL` value (e.g. DESeqDataSet)
+    if (is.null(interestingGroups)) {
+        return(invisible())
+    }
+
+    assert_is_character(interestingGroups)
+
+    # Obtain sampleData is S4 object is passed in
+    if (!any(is(x, "DataFrame") || is(x, "data.frame"))) {
+        # Don't want clean return, so we can check to see if interesting
+        # groups are present but defined as non factor columns
+        x <- sampleData(x, clean = FALSE, interestingGroups = NULL)
+    }
+
+    # Check that interesting groups are slotted into sampleData
+    if (!all(interestingGroups %in% colnames(x))) {
+        setdiff <- setdiff(interestingGroups, colnames(x))
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(setdiff)),
+            "are not defined as columns in `sampleData()`"
+        ))
+    }
+
+    # Check that interesting groups are factors
+    isFactor <- vapply(
+        X = x[, interestingGroups, drop = FALSE],
+        FUN = is.factor,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    )
+    if (!all(isFactor)) {
+        invalid <- names(isFactor)[which(!isFactor)]
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(invalid)),
+            "are not factor"
+        ))
+    }
+}
+
+
+
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
 #' @family Assert Check Functions
