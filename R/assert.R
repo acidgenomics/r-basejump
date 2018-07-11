@@ -567,10 +567,8 @@ assertFormalInterestingGroups <- function(
     assert_is_character(interestingGroups)
 
     # Obtain sampleData is S4 object is passed in
-    if (!any(is(x, "DataFrame") || is(x, "data.frame"))) {
-        # Don't want clean return, so we can check to see if interesting
-        # groups are present but defined as non factor columns
-        x <- sampleData(x, clean = FALSE, interestingGroups = NULL)
+    if (is(x, "SummarizedExperiment")) {
+        x <- sampleData(as(x, "SummarizedExperiment"))
     }
 
     # Check that interesting groups are slotted into sampleData
