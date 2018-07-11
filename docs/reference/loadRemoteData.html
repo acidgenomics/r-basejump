@@ -64,7 +64,7 @@ multiple URLs in a single call." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.0</span>
       </span>
     </div>
 
@@ -78,9 +78,6 @@ multiple URLs in a single call." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -149,7 +146,7 @@ name, and the remote URL as the value.</p>
     <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
     <span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>,
     <span class='st'>"http://basejump.seq.cloud/single_cell_counts.rda"</span>
-))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'http://basejump.seq.cloud/single_cell_counts.rda': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in download.file(url = file, destfile = destfile, mode = mode): cannot open URL 'http://basejump.seq.cloud/single_cell_counts.rda'</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
+))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='message'>Reading single_cell_counts.rda</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div></pre>
   </div>
