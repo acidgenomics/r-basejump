@@ -100,14 +100,6 @@ test_that("assertFormalInterestingGroups", {
         ),
         "The interesting groups \"totalReads, exonicRate\" are not factor"
     )
-    # Error on blacklisted columns
-    expect_error(
-        assertFormalInterestingGroups(
-            x = rse_bcb,
-            interestingGroups = "genomeBuild"
-        ),
-        "The interesting groups \"genomeBuild\" are blacklisted."
-    )
 })
 
 

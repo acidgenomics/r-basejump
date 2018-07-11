@@ -58,7 +58,7 @@
 #' @importFrom SummarizedExperiment assays
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
-#' @importFrom tidyr separate
+#' @importFrom tidyr separate unite
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
 #' @importFrom yaml yaml.load_file
