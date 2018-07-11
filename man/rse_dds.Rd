@@ -11,6 +11,9 @@ rse_dds
 \description{
 \code{RangedSummarizedExperiment} Coerced from \code{DESeqDataSet}
 }
+\seealso{
+Other Minimal Example Data: \code{\link{rse_bcb}}
+}
 \author{
 Michael Steinbaugh
 }

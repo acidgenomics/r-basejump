@@ -128,10 +128,33 @@ setGeneric(
 
 
 #' @rdname geometricMean
+#' @export
 setGeneric(
     "geometricMean",
     function(object, ...) {
         standardGeneric("geometricMean")
+    }
+)
+
+
+
+#' @rdname interestingGroups
+#' @export
+setGeneric(
+    "interestingGroups",
+    function(object, ...) {
+        standardGeneric("interestingGroups")
+    }
+)
+
+
+
+#' @rdname interestingGroups
+#' @export
+setGeneric(
+    "interestingGroups<-",
+    function(object, ..., value) {
+        standardGeneric("interestingGroups<-")
     }
 )
 
@@ -154,6 +177,28 @@ setGeneric(
     "removeNA",
     function(object, ...) {
         standardGeneric("removeNA")
+    }
+)
+
+
+
+#' @rdname sampleData
+#' @export
+setGeneric(
+    "sampleData",
+    function(object, ...) {
+        standardGeneric("sampleData")
+    }
+)
+
+
+
+#' @rdname sampleData
+#' @export
+setGeneric(
+    "sampleData<-",
+    function(object, ..., value) {
+        standardGeneric("sampleData<-")
     }
 )
 
@@ -187,6 +232,17 @@ setGeneric(
     "stripTranscriptVersions",
     function(object, ...) {
         standardGeneric("stripTranscriptVersions")
+    }
+)
+
+
+
+#' @rdname uniteInterestingGroups
+#' @export
+setGeneric(
+    "uniteInterestingGroups",
+    function(object, ...) {
+        standardGeneric("uniteInterestingGroups")
     }
 )
 

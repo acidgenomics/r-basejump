@@ -33,7 +33,9 @@ colnames(x)
 }
 \seealso{
 Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}}
+  \code{\link{gene2symbol}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh

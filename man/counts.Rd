@@ -24,5 +24,7 @@ summary(x)
 }
 \seealso{
 Other Data Functions: \code{\link{gene2symbol}},
-  \code{\link{selectSamples}}
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}},
+  \code{\link{uniteInterestingGroups}}
 }
