@@ -116,6 +116,17 @@ setGeneric(
 
 
 
+#' @rdname gene2symbol
+#' @export
+setGeneric(
+    "gene2symbol",
+    function(object) {
+        standardGeneric("gene2symbol")
+    }
+)
+
+
+
 #' @rdname geometricMean
 setGeneric(
     "geometricMean",
@@ -143,6 +154,17 @@ setGeneric(
     "removeNA",
     function(object, ...) {
         standardGeneric("removeNA")
+    }
+)
+
+
+
+#' @rdname selectSamples
+#' @export
+setGeneric(
+    "selectSamples",
+    function(object, ...) {
+        standardGeneric("selectSamples")
     }
 )
 
