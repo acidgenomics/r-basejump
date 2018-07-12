@@ -22,6 +22,8 @@ uniteInterestingGroups(object, ...)
 \item{object}{Object containing interesting groups in multiple columns.}
 
 \item{...}{Additional arguments.}
+
+\item{interestingGroups}{\code{character}. Groups of interest.}
 }
 \value{
 Data frame, now containing an \code{interestingGroups} column.
