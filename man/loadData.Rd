@@ -11,10 +11,11 @@ loadData(..., dir = ".", envir = parent.frame())
 using non-standard evaluation for convenience during interactive use, and
 \emph{should not be quoted}.}
 
-\item{dir}{Output directory. Defaults to the current working directory.}
+\item{dir}{\code{string}. Directory path. Defaults to the current working
+directory.}
 
-\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
-which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to
+\code{parent.frame()}, which will assign into the calling environment.}
 }
 \value{
 Invisible \code{character} containing file paths.

@@ -43,19 +43,19 @@
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames set_names
-#' @importFrom methods as getGeneric is selectMethod show
+#' @importFrom methods as getGeneric is selectMethod show validObject
 #' @importFrom pbapply pblapply
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! UQ sym dots_list eval_bare
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
-#'   tail
+#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata
+#'   metadata<- na.omit tail
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
-#' @importFrom SummarizedExperiment assays
+#' @importFrom SummarizedExperiment assays colData colData<-
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate unite
