@@ -16,6 +16,7 @@
 #'   which will assign into the calling environment.
 #' @param file File path.
 #' @param headerLevel Markdown header level.
+#' @param interestingGroups `character`. Groups of interest.
 #' @param organism Full latin organism name (e.g. "`Homo sapiens`").
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
