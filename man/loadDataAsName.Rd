@@ -12,7 +12,7 @@ loadDataAsName(..., dir = ".", envir = parent.frame())
 arguments are interpreted using non-standard evaluation, and \emph{should not
 be quoted}.}
 
-\item{dir}{\code{string}. Directory path. Defaults to the current working
+\item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
 \item{envir}{\code{environment} to use for assignment. Defaults to

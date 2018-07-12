@@ -10,7 +10,7 @@ markdownPlotlist(plotlist, headerLevel = 2L)
 \arguments{
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
-\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
+\item{headerLevel}{\code{integer scalar}. Markdown header level (1-7).}
 }
 \value{
 Graphical output of plots, separated by Markdown headers.
