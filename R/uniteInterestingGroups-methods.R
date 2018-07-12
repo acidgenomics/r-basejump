@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' x <- sampleData(rse_bcb, interestingGroups = NULL)
+#' x <- sampleData(rse_bcb)
 #' y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
 #' y[["interestingGroups"]]
 NULL
