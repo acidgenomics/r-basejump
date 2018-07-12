@@ -16,18 +16,19 @@
 
 \item{...}{Additional arguments.}
 
-\item{dir}{Output directory. Defaults to the current working directory.}
+\item{dir}{\code{string}. Directory path. Defaults to the current working
+directory.}
 
-\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
-which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to
+\code{parent.frame()}, which will assign into the calling environment.}
 
-\item{file}{File path.}
+\item{file}{\code{string}. File path.}
 
-\item{headerLevel}{Markdown header level.}
+\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
-\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 

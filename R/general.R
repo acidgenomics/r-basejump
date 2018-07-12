@@ -18,8 +18,7 @@
 #' @param file `string`. File path.
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
-#' @param organism `character`. Full latin organism name
-#'   (e.g. "`Homo sapiens`").
+#' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
 #'   the first item in the vector by default.
