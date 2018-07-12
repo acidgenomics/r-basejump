@@ -25,6 +25,8 @@ which will assign into the calling environment.}
 
 \item{headerLevel}{Markdown header level.}
 
+\item{interestingGroups}{\code{character}. Groups of interest.}
+
 \item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
