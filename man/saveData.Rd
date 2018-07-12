@@ -12,7 +12,7 @@ saveData(..., dir = ".", ext = c("rda", "rds", "RData"), overwrite = TRUE,
 using non-standard evaluation for convenience during interactive use, and
 \emph{should not be quoted}.}
 
-\item{dir}{\code{string}. Directory path. Defaults to the current working
+\item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
 \item{ext}{R data ("\code{rda}", "\code{RData}") or R data serialized (RDS; "\code{rds}").

@@ -16,7 +16,7 @@
 
 \item{...}{Additional arguments.}
 
-\item{dir}{\code{string}. Directory path. Defaults to the current working
+\item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
 \item{envir}{\code{environment} to use for assignment. Defaults to
@@ -24,15 +24,11 @@ directory.}
 
 \item{file}{\code{string}. File path.}
 
-\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
+\item{headerLevel}{\code{integer scalar}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
-<<<<<<< HEAD
-\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
-=======
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
->>>>>>> 542a7c96afde210aeb7350b1fe473abc4bcca57e
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
