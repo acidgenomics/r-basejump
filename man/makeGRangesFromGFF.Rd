@@ -8,7 +8,7 @@
 makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 }
 \arguments{
-\item{file}{File path.}
+\item{file}{\code{string}. File path.}
 
 \item{format}{Output as genes or transcripts.}
 }

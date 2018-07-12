@@ -7,7 +7,7 @@
 readYAML(file)
 }
 \arguments{
-\item{file}{File path.}
+\item{file}{\code{string}. File path.}
 }
 \value{
 \code{list}.
