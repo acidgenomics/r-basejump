@@ -192,6 +192,75 @@ assertFormalGene2symbol <- function(
 
 
 
+#' Interesting Groups Formal Assert Check
+#'
+#' Prevent unwanted downstream behavior when a missing interesting group
+#' is requested by the user.
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#'
+#' @inheritParams general
+#'
+#' @return Silent, stop on error.
+#' @export
+#'
+#' @examples
+#' assertFormalInterestingGroups(rse_bcb, "treatment")
+#' assertFormalInterestingGroups(rse_dds, "condition")
+assertFormalInterestingGroups <- function(
+    x,
+    interestingGroups,
+    severity = getOption("assertive.severity", "stop")
+) {
+    fun <- get(severity)
+
+    # Early return on `NULL` value (e.g. DESeqDataSet)
+    if (is.null(interestingGroups)) {
+        return(invisible())
+    }
+
+    assert_is_character(interestingGroups)
+
+    # Obtain sampleData if S4 object is passed in
+    if (isS4(x)) {
+        if (is(x, "SummarizedExperiment")) {
+            x <- as(x, "SummarizedExperiment")
+        }
+        x <- sampleData(x)
+        stopifnot(is(x, "DataFrame"))
+    }
+
+    # Check that interesting groups are slotted into sampleData
+    if (!all(interestingGroups %in% colnames(x))) {
+        setdiff <- setdiff(interestingGroups, colnames(x))
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(setdiff)),
+            "are not defined as columns in `sampleData()`"
+        ))
+    }
+
+    # Check that interesting groups are factors
+    isFactor <- vapply(
+        X = x[, interestingGroups, drop = FALSE],
+        FUN = is.factor,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    )
+    if (!all(isFactor)) {
+        invalid <- names(isFactor)[which(!isFactor)]
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(invalid)),
+            "are not factor"
+        ))
+    }
+}
+
+
+
 #' Assert Has Rownames
 #'
 #' A stricter alternative to the assertive version that works properply with
@@ -530,71 +599,6 @@ assertIsFillScaleDiscreteOrNULL <- function(
             y = "fill",
             severity = severity
         )
-    }
-}
-
-
-
-#' Interesting Groups Formal Assert Check
-#'
-#' Prevent unwanted downstream behavior when a missing interesting group
-#' is requested by the user.
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#'
-#' @inheritParams general
-#'
-#' @return Silent, stop on error.
-#' @export
-#'
-#' @examples
-#' assertFormalInterestingGroups(rse_bcb, "treatment")
-#' assertFormalInterestingGroups(rse_dds, "condition")
-assertFormalInterestingGroups <- function(
-    x,
-    interestingGroups,
-    severity = getOption("assertive.severity", "stop")
-) {
-    fun <- get(severity)
-
-    # Early return on `NULL` value (e.g. DESeqDataSet)
-    if (is.null(interestingGroups)) {
-        return(invisible())
-    }
-
-    assert_is_character(interestingGroups)
-
-    # Obtain sampleData is S4 object is passed in
-    if (is(x, "SummarizedExperiment")) {
-        x <- sampleData(as(x, "SummarizedExperiment"))
-    }
-
-    # Check that interesting groups are slotted into sampleData
-    if (!all(interestingGroups %in% colnames(x))) {
-        setdiff <- setdiff(interestingGroups, colnames(x))
-        fun(paste(
-            "The interesting groups",
-            deparse(toString(setdiff)),
-            "are not defined as columns in `sampleData()`"
-        ))
-    }
-
-    # Check that interesting groups are factors
-    isFactor <- vapply(
-        X = x[, interestingGroups, drop = FALSE],
-        FUN = is.factor,
-        FUN.VALUE = logical(1L),
-        USE.NAMES = TRUE
-    )
-    if (!all(isFactor)) {
-        invalid <- names(isFactor)[which(!isFactor)]
-        fun(paste(
-            "The interesting groups",
-            deparse(toString(invalid)),
-            "are not factor"
-        ))
     }
 }
 

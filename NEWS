@@ -1,3 +1,31 @@
+# basejump 0.6.0 (2018-07-11)
+
+## Major changes
+
+- Now importing [SummarizedExperiment][] package and providing basic method
+  support for generics that were previously used in the [bcbioBase][] package.
+
+## Migrated functions from [bcbioBase][]
+
+Previously, these functions were exported in the [bcbioBase][] package, but
+they provide non-bcbio-specific functionality, and should be included in
+the [basejump][] package instead.
+
+- `assertFormalInterestingGroups()`.
+- `gene2symbol()`.
+- `interestingGroups()`, `interestingGroups<-()`, `uniteInterestingGroups()`.
+- `sampleData()`, `sampleData<-()`, `sanitizeSampleData()`.
+- `sampleNames()`.
+- `selectSamples()`.
+
+Providing basic `SummarizedExperiment` class method support for `counts()`.
+
+## Minor changes
+
+- `geometricMean()` generic was not exported correctly.
+
+
+
 # basejump 0.5.11 (2018-07-09)
 
 ## Minor changes

@@ -44,6 +44,7 @@ Imports:
     assertive.sets,
     assertive.strings,
     assertive.types,
+    Biobase,
     BiocGenerics,
     cowplot (>= 0.9),
     dplyr (>= 0.7),
