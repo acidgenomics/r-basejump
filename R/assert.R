@@ -223,14 +223,9 @@ assertFormalInterestingGroups <- function(
 
     assert_is_character(interestingGroups)
 
-    # Obtain sampleData if S4 object is passed in
+    # Obtain column data if S4 object is passed in
     if (isS4(x)) {
-        if (is(x, "SingleCellExperiment") || is(x, "seurat")) {
-            x <- sampleData(x, interestingGroups = NULL)
-        } else if (is(x, "SummarizedExperiment")) {
-            x <- as(x, "SummarizedExperiment")
-            x <- sampleData(x)
-        }
+        x <- colData(x)
     }
     x <- as(x, "DataFrame")
 
