@@ -15,11 +15,27 @@ This is an [R][] package.
 
 ### [Bioconductor][] method
 
+#### R >= 3.5
+
 ```r
 install.packages("BiocManager")
 library(BiocManager)
+install("devtools")
 install("GenomeInfoDbData")
 install("steinbaugh/basejump")
+```
+
+#### R < 3.5
+
+We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
+However, legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
+
+```r
+# try http:// if https:// URLs are not supported
+source("https://bioconductor.org/biocLite.R")
+biocLite("devtools")
+biocLite("GenomeInfoDbData")
+biocLite("steinbaugh/basejump")
 ```
 
 ### [conda][]  method
