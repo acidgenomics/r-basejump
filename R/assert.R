@@ -225,7 +225,12 @@ assertFormalInterestingGroups <- function(
 
     # Obtain sampleData if S4 object is passed in
     if (isS4(x)) {
-        x <- sampleData(x)
+        if (is(x, "SingleCellExperiment") || is(x, "seurat")) {
+            x <- sampleData(x, interestingGroups = NULL)
+        } else if (is(x, "SummarizedExperiment")) {
+            x <- as(x, "SummarizedExperiment")
+            x <- sampleData(x)
+        }
     }
     x <- as(x, "DataFrame")
 
