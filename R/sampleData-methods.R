@@ -1,3 +1,8 @@
+# Deprecate `clean` argument once bcbioRNASeq package is updated with method
+# support
+
+
+
 #' Sample Data
 #'
 #' Return the sample metadata. Columns are always sanitized to factor.
@@ -12,6 +17,8 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
+#'
+#' @param clean Deprecated argument, providing only factor column return.
 #'
 #' @return `DataFrame` containing metadata that describes the samples.
 #'
@@ -34,7 +41,14 @@ NULL
 setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
-    function(object) {
+    function(object, clean = FALSE) {
+        if (isTRUE(clean)) {
+            warning(paste(
+                "`clean = TRUE` argument is deprecated for",
+                "`SummarizedExperiment`. `bcbioRNASeq` method support is",
+                "provided in the upcoming release."
+            ))
+        }
         colData(object)
     }
 )
