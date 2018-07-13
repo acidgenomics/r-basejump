@@ -20,6 +20,10 @@ The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
+\details{
+The UCSC website has detailed conventions on the GFF3 format, including
+the metadata columns.
+}
 \examples{
 x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
 summary(x)
