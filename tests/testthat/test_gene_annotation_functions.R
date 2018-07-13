@@ -469,19 +469,19 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     expect_identical(
         lapply(mcols(x), class),
         list(
-            "txID" = "character",
-            "txName" = "character",
-            "txBiotype" = "factor",
-            "geneID" = "character",
-            "geneName" = "character",
-            "geneBiotype" = "factor",
-            "description" = "character",
-            "txCdsSeqStart" = "integer",
-            "txCdsSeqEnd" = "integer",
-            "txSupportLevel" = "factor",
-            "seqCoordSystem" = "factor",
-            "entrezID" = "AsIs",
-            "broadClass" = "factor"
+            txID = "character",
+            txName = "character",
+            txBiotype = "factor",
+            geneID = "character",
+            geneName = "character",
+            geneBiotype = "factor",
+            description = "character",
+            txCdsSeqStart = "integer",
+            txCdsSeqEnd = "integer",
+            txSupportLevel = "factor",
+            seqCoordSystem = "factor",
+            entrezID = "AsIs",
+            broadClass = "factor"
         )
     )
 })
@@ -567,7 +567,6 @@ test_that("makeGRangesFromGFF : genes", {
         )
     )
 })
-
 
 test_that("makeGRangesFromGFF : transcripts", {
     # Expected warning about `phase` metadata column
