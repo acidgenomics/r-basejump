@@ -28,6 +28,11 @@ the metadata columns.
 x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
 summary(x)
 as.data.frame(x) \%>\% glimpse()
+
+# Ensembl GTF genes
+makeGRangesFromGFF(
+    file = "~/Mus_musculus.GRCm38.87.gtf.gz"
+)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},

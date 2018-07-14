@@ -4,6 +4,7 @@
 #'
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
+#' @importFrom AnnotationDbi columns
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom assertive.base assert_all_are_not_na assert_are_identical
 #'   assert_is_identical_to_na is_not_na
