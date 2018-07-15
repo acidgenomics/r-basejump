@@ -20,17 +20,17 @@ makeTx2geneFromGFF <- function(file) {
 
     data <- readGFF(file) %>%
         as.data.frame() %>%
-        .[, c("transcript_id", "gene_id")] %>%
-        set_colnames(c("txID", "geneID")) %>%
+        camel() %>%
+        select(!!!syms(c("transcriptID", "geneID"))) %>%
         unique() %>%
-        # Drop rows containing an NA value
+        arrange(!!sym("transcriptID")) %>%
+        # Drop rows containing an NA value in either column
         .[complete.cases(.), , drop = FALSE] %>%
-        .[order(.[["txID"]]), , drop = FALSE] %>%
-        set_rownames(.[["txID"]])
+        set_rownames(.[["transcriptID"]])
 
     message(paste(
         "tx2gene mappings:",
-        length(unique(data[["txID"]])), "transcripts,",
+        length(unique(data[["transcriptID"]])), "transcripts,",
         length(unique(data[["geneID"]])), "genes"
     ))
 

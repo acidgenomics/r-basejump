@@ -469,16 +469,16 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     expect_identical(
         lapply(mcols(x), class),
         list(
-            txID = "character",
-            txName = "character",
-            txBiotype = "factor",
+            transcriptID = "character",
+            transcriptName = "character",
+            transcriptBiotype = "factor",
             geneID = "character",
             geneName = "character",
             geneBiotype = "factor",
             description = "character",
-            txCdsSeqStart = "integer",
-            txCdsSeqEnd = "integer",
-            txSupportLevel = "factor",
+            transcriptCdsSeqStart = "integer",
+            transcriptCdsSeqEnd = "integer",
+            transcriptSupportLevel = "factor",
             seqCoordSystem = "factor",
             entrezID = "AsIs",
             broadClass = "factor"
@@ -578,17 +578,17 @@ test_that("makeGRangesFromGFF : transcripts", {
     expect_identical(
         colnames(mcols(x)),
         c(
-            "txID",
-            "txName",
-            "txBiotype",
+            "transcriptID",
+            "transcriptName",
+            "transcriptBiotype",
             "geneID",
             "geneName",
             "geneBiotype",
             "geneVersion",
             "geneSource",
-            "txVersion",
-            "txSource",
-            "txSupportLevel",
+            "transcriptVersion",
+            "transcriptSource",
+            "transcriptSupportLevel",
             "broadClass"
         )
     )
@@ -602,7 +602,7 @@ test_that("makeTx2geneFromEnsembl", {
         organism = "Homo sapiens",
         release = ensemblRelease
     )
-    expect_identical(colnames(x), c("txID", "geneID"))
+    expect_identical(colnames(x), c("transcriptID", "geneID"))
     expect_identical(nrow(x), 216741L)
 })
 
@@ -615,8 +615,8 @@ test_that("makeTx2geneFromGFF : Drosophila melanogaster", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "txID" = c("FBtr0070000", "FBtr0070001"),
-            "geneID" = c("FBgn0031081", "FBgn0052826"),
+            transcriptID = c("FBtr0070000", "FBtr0070001"),
+            geneID = c("FBgn0031081", "FBgn0052826"),
             row.names = c("FBtr0070000", "FBtr0070001"),
             stringsAsFactors = FALSE
         )
@@ -629,8 +629,8 @@ test_that("makeTx2geneFromGFF : Mus musculus", {
     expect_identical(
         head(x, 2L),
         data.frame(
-            "txID" = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            "geneID" = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
+            transcriptID = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            geneID = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
             row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
             stringsAsFactors = FALSE
         )
