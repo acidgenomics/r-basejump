@@ -67,6 +67,13 @@ makeGRangesFromGFF <- function(
         "transcript_support_level",
         "transcript_version"
     )
+    ensemblGFFCols <- c(
+        "biotype",
+        "gene_id",
+        "ID",
+        "Name",
+        "transcript_id"
+    )
 
     if (all(ensemblGTFCols %in% colnames(attributes))) {
         type <- "Ensembl GTF"
@@ -76,6 +83,8 @@ makeGRangesFromGFF <- function(
         type <- "FlyBase GTF"
     } else if (all(flybaseGFFCols %in% colnames(attributes))) {
         type <- "FlyBase GFF"
+    } else {
+        stop("Unsupported GFF")
     }
 
     message(paste(type, "detected"))
@@ -86,8 +95,7 @@ makeGRangesFromGFF <- function(
             # Select only the `gene_` and `transcript_` columns.
             # Note that this will also include biotype information.
             .[, grepl("^(gene|transcript)_", colnames(.)), drop = FALSE] %>%
-            unique() %>%
-            camel()
+            unique()
     } else if (type == "Ensembl GFF") {
         # Transcripts
         # Obtain `gene_id` from the `Parent` column
@@ -95,9 +103,15 @@ makeGRangesFromGFF <- function(
             filter(!is.na(!!sym("transcript_id"))) %>%
             # Name: transcript_name
             select(!!!syms(c(
-                "transcript_id", "Name", "Parent"
+                "transcript_id",
+                "Name",
+                "Parent",
+                "biotype"
             ))) %>%
-            rename(transcript_name = !!sym("Name")) %>%
+            rename(
+                transcript_name = !!sym("Name"),
+                transcript_biotype = !!sym("biotype")
+            ) %>%
             unique()
         # Require that all transcripts have a parent gene
         stopifnot(all(grepl("^gene:", transcripts[["Parent"]])))
@@ -109,8 +123,15 @@ makeGRangesFromGFF <- function(
         genes <- attributes %>%
             filter(!is.na(!!sym("gene_id"))) %>%
             # Name: gene_name
-            select(!!!syms(c("gene_id", "Name"))) %>%
-            rename(gene_name = !!sym("Name")) %>%
+            select(!!!syms(c(
+                "gene_id",
+                "Name",
+                "biotype"
+            ))) %>%
+            rename(
+                gene_name = !!sym("Name"),
+                gene_biotype = !!sym("biotype")
+            ) %>%
             unique()
 
         # Now it's safe to join the transcript and gene data frames
@@ -118,6 +139,9 @@ makeGRangesFromGFF <- function(
     } else {
         stop("Not supported yet")
     }
+
+    # Convert columns to camel case
+    attributes <- camel(attributes)
 
     assert_is_subset(
         x = c("transcriptID", "transcriptName", "geneID", "geneName"),
