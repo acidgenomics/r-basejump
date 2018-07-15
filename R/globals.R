@@ -1,9 +1,9 @@
 globalVariables(".")
 
 annotationCols <- c(
-    "txID",
-    "txName",
-    "txBiotype",
+    "transcriptID",
+    "transcriptName",
+    "transcriptBiotype",
     "geneID",
     "geneName",
     "geneBiotype",

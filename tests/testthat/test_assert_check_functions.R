@@ -335,16 +335,16 @@ test_that("isImplicitInteger", {
 
 test_that("assertIsTx2gene", {
     tx2gene <- data.frame(
-        "txID" = c("tx_1", "tx_2"),
-        "geneID" = c("gene_1", "gene_2"),
-        row.names = c("tx_1", "tx_2")
+        transcriptID = c("transcript_1", "transcript_2"),
+        geneID = c("gene_1", "gene_2"),
+        row.names = c("transcript_1", "transcript_2")
     )
     expect_silent(assertIsTx2gene(tx2gene))
     expect_error(
         assertIsTx2gene(mtcars),
         paste(
             "are_identical :",
-            "colnames\\(x\\) and c\\(\"txID\", \"geneID\"\\)",
+            "colnames\\(x\\) and c\\(\"transcriptID\", \"geneID\"\\)",
             "are not identical."
         )
     )

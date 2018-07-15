@@ -21,8 +21,8 @@ Assert Are Ensembl Transcript Annotations
 }
 \examples{
 x <- data.frame(
-    "txID" = "ENST00000000233",
-    "geneID" = "ENSG00000004059"
+    transcriptID = "ENST00000000233",
+    geneID = "ENSG00000004059"
 )
 assertAreTranscriptAnnotations(x)
 }
