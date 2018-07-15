@@ -1,14 +1,6 @@
-# FIXME Add FlyBase support
-# FIXME Add WormBase support
-# FIXME Check UCSC?
-
-# FIXME
-# FlyBase needs to rename gene_symbol to gene_name
-# colnames(attributes) <- colnames(attributes) %>%
-# gsub("Symbol$", "Name", .)
-
-# TODO Ensure `transcript` is used in place of `tx` in all code
-# Might need to write some object integrity checks
+# TODO Check FlyBase
+# TODO Check WormBase
+# TODO Check UCSC?
 
 
 
@@ -48,55 +40,79 @@ makeGRangesFromGFF <- function(
     stopifnot(grepl("\\.g[ft]f", file, ignore.case = TRUE))
     format <- match.arg(format)
 
-    # Attributes ===============================================================
+    # Import GFF as GRanges
     gff <- readGFF(file)
 
-    # Generate a data frame containing gene and transcript ID/name mappings
+    # Ensure mcols are camel case (`geneID`, not `gene_id`)
+    gff <- camel(gff)
+
+    # Alternate method (for genes)
+    # gr <- gff[gff$type == "gene"]
+    gr <- gff[!is.na(gff$geneID)]
+    any(duplicated(gr$geneID))
+
+    gr <- gff[!is.na(gff$transcriptID)]
+    any(duplicated(gr$transcriptID))
+
+    # Attributes ===============================================================
     attributes <- as.data.frame(mcols(gff))
 
-    ensemblGTFCols <- c(
-        "gene_biotype",
-        "gene_id",
-        "gene_name",
-        "gene_source",
-        "gene_version",
-        "transcript_biotype",
-        "transcript_id",
-        "transcript_name",
-        "transcript_source",
-        "transcript_support_level",
-        "transcript_version"
-    )
-    ensemblGFFCols <- c(
-        "biotype",
-        "gene_id",
-        "ID",
-        "Name",
-        "transcript_id"
-    )
-
-    if (all(ensemblGTFCols %in% colnames(attributes))) {
-        type <- "Ensembl GTF"
-    } else if (all(ensemblGFFCols %in% colnames(attributes))) {
-        type <- "Ensembl GFF"
-    } else if (all(flybaseGTFCols %in% colnames(attributes))) {
-        type <- "FlyBase GTF"
-    } else if (all(flybaseGFFCols %in% colnames(attributes))) {
-        type <- "FlyBase GFF"
+    # Determine if GFFv3 or GTF (GFFv2)
+    if (all(c("ID", "Name") %in% colnames(attributes))) {
+        type <- "GFF"
     } else {
-        stop("Unsupported GFF")
+        type <- "GTF"
     }
 
-    message(paste(type, "detected"))
-    message(printString(colnames(attributes)))
+    # Report the source of the gene annotations
+    assert_is_subset("source", colnames(attributes))
+    if (any(grepl("FlyBase", attributes[["source"]]))) {
+        source <- "FlyBase"
+    } else if (any(grepl("WormBase", attributes[["source"]]))) {
+        source <- "WormBase"
+    } else if (any(grepl(
+        "ensembl", attributes[["source"]], ignore.case = TRUE
+    ))) {
+        source <- "Ensembl"
+    } else {
+        stop("Unknown/unsupported GFF source")
+    }
 
-    if (type == "Ensembl GTF") {
+    message(paste(source, type, "detected"))
+
+    # FlyBase: Rename `symbol` to `name`
+    if (source == "FlyBase") {
+        colnames(attributes) <- gsub(
+            pattern = "_symbol$",
+            replacement = "_name",
+            x = colnames(attributes)
+        )
+    }
+
+    # `gene_id` and `transcript_id` are always required
+    assert_is_subset(
+        x = c("gene_id", "transcript_id"),
+        y = colnames(attributes)
+    )
+
+    if (type == "GTF") {
+        # `gene_name` and `transcript_name` are optional, but recommended.
+        # This aren't included in WormBase files, for example.
+        assert_is_subset(
+            x = c("gene_name", "transcript_name"),
+            y = colnames(attributes),
+            severity = "warning"
+        )
         attributes <- attributes %>%
             # Select only the `gene_` and `transcript_` columns.
             # Note that this will also include biotype information.
             .[, grepl("^(gene|transcript)_", colnames(.)), drop = FALSE] %>%
+            filter(
+                !is.na(!!sym("transcript_id")),
+                !is.na(!!sym("gene_id"))
+            ) %>%
             unique()
-    } else if (type == "Ensembl GFF") {
+    } else if (type == "GFF") {
         # Transcripts
         # Obtain `gene_id` from the `Parent` column
         transcripts <- attributes %>%
@@ -136,35 +152,14 @@ makeGRangesFromGFF <- function(
 
         # Now it's safe to join the transcript and gene data frames
         attributes <- left_join(transcripts, genes, by = "gene_id")
-    } else {
-        stop("Not supported yet")
     }
 
     # Convert columns to camel case
     attributes <- camel(attributes)
-
-    assert_is_subset(
-        x = c("transcriptID", "transcriptName", "geneID", "geneName"),
-        y = colnames(attributes)
-    )
-
     # Sort the attributes column names, for consistency
     attributes <- attributes[, sort(colnames(attributes))]
 
-    # GRanges ==================================================================
-    # Make transcript database (TxDb object)
-    txdb <- suppressWarnings(makeTxDbFromGFF(file))
-    message(printString(columns(txdb)))
-
-    # GRanges from TxDb
     if (format == "genes") {
-        gr <- genes(txdb)
-        # Ensure mcols are camel case
-        gr <- camel(gr)
-        # Assign gene ID as name and sort
-        assert_is_subset("geneID", names(mcols(gr)))
-        names(gr) <- mcols(gr)[["geneID"]]
-        gr <- gr[sort(names(gr))]
         # Gene-level attributes
         attributes <- attributes %>%
             # Merge only the `gene*` columns
@@ -173,11 +168,40 @@ makeGRangesFromGFF <- function(
             arrange(!!sym("geneID")) %>%
             unique()
         assert_has_no_duplicates(attributes[["geneID"]])
+    } else if (format == "transcripts") {
+        # Transcript-level attributes
+        attributes <- attributes %>%
+            filter(!is.na(!!sym("transcriptID"))) %>%
+            arrange(!!sym("transcriptID")) %>%
+            unique()
+        assert_has_no_duplicates(attributes[["transcriptID"]])
+    }
+
+    # GRanges from TxDb ========================================================
+    if (format == "genes") {
+        gr <- genes(txdb)
+        # Ensure mcols are camel case
+        gr <- camel(gr)
+
+        # GenomicFeatures returns `geneName` instead of `geneID`
+        if (type == "GFF") {
+            # https://www.biostars.org/p/196367/
+            stop(paste(
+                "GenomicFeatures returns `geneName` instead of `geneID`",
+                "with Ensembl GFFv3"
+            ))
+        }
+
+        # Assign gene ID as name and sort
+        assert_is_subset("geneID", names(mcols(gr)))
+        names(gr) <- mcols(gr)[["geneID"]]
+        gr <- gr[sort(names(gr))]
+
+        # Merge annotations into mcols
         assert_is_subset(
             x = mcols(gr)[["geneID"]],
             y = attributes[["geneID"]]
         )
-        # Merge annotations into mcols
         merge <- merge(
             x = mcols(gr),
             y = attributes,
@@ -195,20 +219,17 @@ makeGRangesFromGFF <- function(
         colnames(mcols(gr)) <- gsub("^tx_", "transcript_", colnames(mcols(gr)))
         # Ensure mcols are camel case
         gr <- camel(gr)
-        if (type == "Ensembl GTF") {
+        if (source == "Ensembl") {
             # Ensembl GTF returns integer instead of ID for `transcriptID`
             mcols(gr)[["transcriptID"]] <- mcols(gr)[["transcriptName"]]
+            mcols(gr)[["transcriptName"]] <- NULL
         }
         # Assign gene ID as name and sort
         assert_is_subset("transcriptID", names(mcols(gr)))
         names(gr) <- mcols(gr)[["transcriptID"]]
         gr <- gr[sort(names(gr))]
-        # Transcript-level attributes
-        attributes <- attributes %>%
-            filter(!is.na(!!sym("transcriptID"))) %>%
-            arrange(!!sym("transcriptID")) %>%
-            unique()
-        assert_has_no_duplicates(attributes[["transcriptID"]])
+
+
         assert_is_subset(
             x = mcols(gr)[["transcriptID"]],
             y = attributes[["transcriptID"]]
