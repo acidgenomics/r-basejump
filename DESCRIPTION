@@ -34,7 +34,6 @@ Depends:
     R (>= 3.4),
     SummarizedExperiment
 Imports:
-    AnnotationDbi,
     AnnotationHub,
     assertive.base,
     assertive.code,
