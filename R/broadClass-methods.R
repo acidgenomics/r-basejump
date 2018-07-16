@@ -75,7 +75,7 @@ setMethod(
         }
 
         message(paste(
-            "Defining broadClass using:",
+            "Defining broad class using:",
             toString(c("geneName", biotypeCol, seqnameCol))
         ))
 
