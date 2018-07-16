@@ -38,7 +38,6 @@ test_that("makeGRangesFromGFF : genes", {
     x <- makeGRangesFromGFF("mmusculus.gtf", format = "genes")
     expect_identical(length(x), 17L)
     expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
-    # FIXME Need to update internal code to match
     expect_identical(
         lapply(mcols(x), class),
         list(
@@ -55,27 +54,28 @@ test_that("makeGRangesFromGFF : genes", {
 })
 
 test_that("makeGRangesFromGFF : transcripts", {
-    # Expected warning about `phase` metadata column
-    x <- suppressWarnings(
-        makeGRangesFromGFF("mmusculus.gtf", format = "transcripts")
-    )
+    x <- makeGRangesFromGFF("mmusculus.gtf", format = "transcripts")
     expect_identical(length(x), 20L)
     expect_identical(names(x)[[1L]], "ENSMUST00000070533")
     expect_identical(
-        colnames(mcols(x)),
-        c(
-            "transcriptID",
-            "transcriptName",
-            "transcriptBiotype",
-            "geneID",
-            "geneName",
-            "geneBiotype",
-            "geneVersion",
-            "geneSource",
-            "transcriptVersion",
-            "transcriptSource",
-            "transcriptSupportLevel",
-            "broadClass"
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            ccdsID = "factor",
+            geneBiotype = "factor",
+            geneID = "factor",
+            geneName = "factor",
+            geneSource = "factor",
+            geneVersion = "factor",
+            source = "factor",
+            tag = "factor",
+            transcriptBiotype = "factor",
+            transcriptID = "character",
+            transcriptName = "character",
+            transcriptSource = "factor",
+            transcriptSupportLevel = "factor",
+            transcriptVersion = "factor",
+            type = "factor"
         )
     )
 })
