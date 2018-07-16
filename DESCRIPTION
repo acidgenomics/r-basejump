@@ -50,7 +50,6 @@ Imports:
     dplyr (>= 0.7),
     ensembldb,
     GenomeInfoDb,
-    GenomicFeatures,
     GenomicRanges,
     ggplot2 (>= 3.0),
     IRanges,
