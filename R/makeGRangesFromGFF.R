@@ -79,9 +79,6 @@ makeGRangesFromGFF <- function(
     }
 
     message(paste(source, type, "detected"))
-    if (type == "GFF") {
-        message("GTF (GFFv2) is preferred over GFF3, if possible")
-    }
 
     # Always require `geneID` and `transcriptID` columns in file
     assert_is_subset(
@@ -141,7 +138,16 @@ makeGRangesFromGFF <- function(
         tx <- gff
         tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
         if (type == "GTF") {
-            tx <- tx[grepl("transcript", mcols(tx)[["type"]])]
+            types <- c(
+                "pseudogene",
+                "rna",
+                "transcript"
+            )
+            tx <- tx[grepl(
+                pattern = paste(types, collapse = "|"),
+                x = mcols(tx)[["type"]],
+                ignore.case = TRUE
+            )]
         } else if (type == "GFF") {
             # transcriptName
             assert_is_subset("name", colnames(mcols(tx)))
