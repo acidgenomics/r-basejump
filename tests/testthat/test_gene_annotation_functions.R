@@ -412,13 +412,13 @@ test_that("makeGRangesFromEnsembl : genes", {
     expect_identical(
         lapply(mcols(x), class),
         list(
-            "geneID" = "character",
-            "geneName" = "character",
-            "geneBiotype" = "factor",
-            "description" = "character",
-            "seqCoordSystem" = "factor",
-            "entrezID" = "list",
-            "broadClass" = "factor"
+            broadClass = "factor",
+            description = "factor",
+            entrezID = "list",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "factor",
+            seqCoordSystem = "factor"
         )
     )
 })
@@ -438,19 +438,19 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     expect_identical(
         lapply(mcols(x), class),
         list(
+            broadClass = "factor",
+            description = "factor",
+            entrezID = "list",
+            geneBiotype = "factor",
+            geneID = "factor",
+            geneName = "factor",
+            seqCoordSystem = "factor",
+            transcriptBiotype = "factor",
+            transcriptCdsSeqEnd = "integer",
+            transcriptCdsSeqStart = "integer",
             transcriptID = "character",
             transcriptName = "character",
-            transcriptBiotype = "factor",
-            geneID = "character",
-            geneName = "character",
-            geneBiotype = "factor",
-            description = "character",
-            transcriptCdsSeqStart = "integer",
-            transcriptCdsSeqEnd = "integer",
-            transcriptSupportLevel = "factor",
-            seqCoordSystem = "factor",
-            entrezID = "AsIs",
-            broadClass = "factor"
+            transcriptSupportLevel = "integer"
         )
     )
 })
