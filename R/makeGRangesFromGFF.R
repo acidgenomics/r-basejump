@@ -118,13 +118,6 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
     }
-    if (!"geneName" %in% colnames(mcols(gn))) {
-        warning(paste(
-            "`geneName` is missing.",
-            "Using `geneID` in place."
-        ))
-        mcols(gn)[["geneName"]] <- mcols(gn)[["geneID"]]
-    }
     assert_has_no_duplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
@@ -177,13 +170,6 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["alias"]] <- NULL
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
-        }
-        if (!"transcriptName" %in% colnames(mcols(tx))) {
-            warning(paste(
-                "`transcriptName` is missing.",
-                "Using `transcriptID` in place."
-            ))
-            mcols(gn)[["transcriptName"]] <- mcols(gn)[["transcriptID"]]
         }
         assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
