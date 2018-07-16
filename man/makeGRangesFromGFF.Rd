@@ -40,6 +40,11 @@ colnames(mcols(x))
 x <- make
 }
 \seealso{
+\itemize{
+\item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
+\item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
+}
+
 Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},

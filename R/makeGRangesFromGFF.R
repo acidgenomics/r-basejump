@@ -25,6 +25,10 @@
 #' @return `GRanges`.
 #' @export
 #'
+#' @seealso
+#' - [rtracklayer::import()].
+#' - [GenomicFeatures::makeTxDbFromGFF()].
+#'
 #' @examples
 #' x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
 #' summary(x)
@@ -97,10 +101,9 @@ makeGRangesFromGFF <- function(
 
     # Transcript database (GenomicFeatures TxDb object)
     # We're using this to inform about potentially problematic transcripts
-    txdb <- suppressWarnings(makeTxDbFromGFF(file))
+    # txdb <- suppressWarnings(makeTxDbFromGFF(file))
 
     # Genes ====================================================================
-    # GRanges from GFF (rtracklayer)
     gn <- gff
     gn <- gn[!is.na(mcols(gn)[["geneID"]])]
     gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
@@ -128,28 +131,13 @@ makeGRangesFromGFF <- function(
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
     )
 
-    # Check GRanges against TxDb (GenomicFeatures)
-    txdbGn <- genes(txdb)
-    setdiff <- setdiff(gn, txdbGn)
-    if (length(setdiff)) {
-        warning(paste(
-            "Missing from TxDb:",
-            toString(sort(mcols(setdiff)[["geneID"]]))
-        ))
-    }
-
     message(paste(length(gn), "gene annotations"))
-    message(paste(
-        "geneID:",
-        toString(c(head(names(gn), n = 2L), "..."))
-    ))
     if (format == "genes") {
         gr <- gn
     }
 
     # Transcripts ==============================================================
     if (format == "transcripts") {
-        # GRanges from GFF (rtracklayer)
         tx <- gff
         tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
         if (type == "GTF") {
@@ -187,21 +175,7 @@ makeGRangesFromGFF <- function(
             y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
         )
 
-        # Check GRanges against TxDb (GenomicFeatures)
-        txdbTx <- transcripts(txdb)
-        setdiff <- setdiff(tx, txdbTx)
-        if (length(setdiff)) {
-            stop(paste(
-                "Missing from TxDb:",
-                toString(sort(mcols(setdiff)[["transcriptID"]]))
-            ))
-        }
-
         message(paste(length(tx), "transcript annotations"))
-        message(paste(
-            "transcriptID:",
-            toString(c(head(names(tx), n = 2L), "..."))
-        ))
         gr <- tx
 
         # Merge the gene-level annotations (`geneName`, `geneBiotype`)
