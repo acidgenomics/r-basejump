@@ -52,7 +52,7 @@
 #' @importFrom rlang !! UQ sym dots_list eval_bare
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
-#'   metadata<- na.omit tail
+#'   metadata<- na.omit setdiff tail
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset

@@ -25,19 +25,17 @@ The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.
 }
 \examples{
-x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
+file <- "http://basejump.seq.cloud/example.gtf"
+
+# Genes
+x <- makeGRangesFromGFF(file = file, format = "genes")
 summary(x)
 as.data.frame(x) \%>\% glimpse()
 
-# Ensembl GTF genes
-x <- makeGRangesFromGFF(
-    file = "~/Mus_musculus.GRCm38.87.gtf.gz",
-    format = "genes"
-)
-colnames(mcols(x))
-
-# Ensembl GTF transcripts
-x <- make
+# Transcripts
+x <- makeGRangesFromGFF(file = file, format = "transcripts")
+summary(x)
+as.data.frame(x) \%>\% glimpse()
 }
 \seealso{
 \itemize{

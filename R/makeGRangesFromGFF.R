@@ -1,9 +1,8 @@
-# TODO Add UCSC support
-# TODO Check FlyBase
-# TODO Check WormBase
-# FIXME Need to figure out how to sanitize geneID from Parent for GFF
-# FIXME Always use TxDb to double check that we're returning the right number
-# TODO Consider using `level` instead of `format` for genes/transcripts
+# TODO UCSC Support
+# TODO FlyBase GFF support
+# TODO WormBase GFF support
+# TODO WormBase has some malformed entries in GTF: Transcript:AC8.13
+# We may want to add a filter for these
 
 
 
@@ -30,19 +29,17 @@
 #' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
+#' file <- "http://basejump.seq.cloud/example.gtf"
+#'
+#' # Genes
+#' x <- makeGRangesFromGFF(file = file, format = "genes")
 #' summary(x)
 #' as.data.frame(x) %>% glimpse()
 #'
-#' # Ensembl GTF genes
-#' x <- makeGRangesFromGFF(
-#'     file = "~/Mus_musculus.GRCm38.87.gtf.gz",
-#'     format = "genes"
-#' )
-#' colnames(mcols(x))
-#'
-#' # Ensembl GTF transcripts
-#' x <- make
+#' # Transcripts
+#' x <- makeGRangesFromGFF(file = file, format = "transcripts")
+#' summary(x)
+#' as.data.frame(x) %>% glimpse()
 makeGRangesFromGFF <- function(
     file,
     format = c("genes", "transcripts")
@@ -80,25 +77,28 @@ makeGRangesFromGFF <- function(
 
     message(paste(source, type, "detected"))
 
+    if (
+        source %in% c("FlyBase", "WormBase") &&
+        type == "GFF"
+    ) {
+        stop(paste(
+            "Only GTF files are currently supported from", source
+        ))
+    }
+
     # Always require `geneID` and `transcriptID` columns in file
     assert_is_subset(
         x = c("geneID", "transcriptID"),
         y = colnames(mcols(gff))
     )
 
-    # FlyBase: Rename `symbol` to `name`
-    if (source == "FlyBase") {
-        message("Renaming `*Symbol` to `*Name`")
-        colnames(mcols(gff)) <- gsub(
-            pattern = "Symbol$",
-            replacement = "Name",
-            x = colnames(mcols(gff))
-        )
-    }
-
-    # Transcript database (GenomicFeatures TxDb object)
-    # We're using this to inform about potentially problematic transcripts
-    # txdb <- suppressWarnings(makeTxDbFromGFF(file))
+    # Rename `geneSymbol` to `geneName`.
+    # This applies to FlyBase and WormBase annotations
+    colnames(mcols(gff)) <- gsub(
+        pattern = "Symbol$",
+        replacement = "Name",
+        x = colnames(mcols(gff))
+    )
 
     # Genes ====================================================================
     gn <- gff
@@ -118,6 +118,13 @@ makeGRangesFromGFF <- function(
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
     }
+    if (!"geneName" %in% colnames(mcols(gn))) {
+        warning(paste(
+            "`geneName` is missing.",
+            "Using `geneID` in place."
+        ))
+        mcols(gn)[["geneName"]] <- mcols(gn)[["geneID"]]
+    }
     assert_has_no_duplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
@@ -128,8 +135,8 @@ makeGRangesFromGFF <- function(
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
     )
 
-    message(paste(length(gn), "gene annotations"))
     if (format == "genes") {
+        message(paste(length(gn), "gene annotations"))
         gr <- gn
     }
 
@@ -170,6 +177,13 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["alias"]] <- NULL
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
+        }
+        if (!"transcriptName" %in% colnames(mcols(tx))) {
+            warning(paste(
+                "`transcriptName` is missing.",
+                "Using `transcriptID` in place."
+            ))
+            mcols(gn)[["transcriptName"]] <- mcols(gn)[["transcriptID"]]
         }
         assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
