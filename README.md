@@ -15,6 +15,8 @@ This is an [R][] package.
 
 ### [Bioconductor][] method
 
+We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
+
 #### R >= 3.5
 
 ```r
@@ -27,8 +29,7 @@ install("steinbaugh/basejump")
 
 #### R < 3.5
 
-We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
-However, legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
+Legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
 
 ```r
 # try http:// if https:// URLs are not supported
