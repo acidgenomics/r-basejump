@@ -26,7 +26,7 @@
 #'
 #' @seealso
 #' - [rtracklayer::import()].
-#' - `GenomicFeatures::makeTxDbFromGFF()`.
+#' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
 #' file <- "http://basejump.seq.cloud/example.gtf"
