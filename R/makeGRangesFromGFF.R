@@ -3,6 +3,7 @@
 # TODO Check WormBase
 # FIXME Need to figure out how to sanitize geneID from Parent for GFF
 # FIXME Always use TxDb to double check that we're returning the right number
+# TODO Consider using `level` instead of `format` for genes/transcripts
 
 
 
@@ -75,7 +76,7 @@ makeGRangesFromGFF <- function(
 
     message(paste(source, type, "detected"))
     if (type == "GFF") {
-        warning("Input of GTF (GFFv2) is preferred over GFF3, if possible")
+        warning("GTF (GFFv2) is preferred over GFF3, if possible")
     }
 
     # Always require `geneID` and `transcriptID` columns in file
@@ -213,7 +214,18 @@ makeGRangesFromGFF <- function(
         ids <- mcols(gff)[["transcriptID"]]
     }
     ids <- sort(unique(na.omit(ids)))
-    assert_are_identical(ids, names(gr))
+    if (type == "GTF") {
+        # Strict mode for GTF, requiring exact match
+        assert_are_identical(ids, names(gr))
+    } else if (type == "GFF") {
+        # Less strict for GFF, allowing missing identifiers
+        if (!identical(ids, names(gr))) {
+            warning(paste(
+                "Missing identifiers:",
+                toString(setdiff(ids, names(gr)))
+            ))
+        }
+    }
 
     .makeGRanges(gr)
 }
