@@ -56,23 +56,19 @@
         # nocov end
     }
 
-    # Set strings as factors
-    if (is.character(mcols[["geneBiotype"]])) {
-        message("Setting `geneBiotype` as factor")
-        mcols[["geneBiotype"]] <- as.factor(mcols[["geneBiotype"]])
-    }
-    if (is.character(mcols[["seqCoordSystem"]])) {
-        message("Setting `seqCoordSystem` as factor")
-        mcols[["seqCoordSystem"]] <- as.factor(mcols[["seqCoordSystem"]])
-    }
-    if (is.character(mcols[["txBiotype"]])) {
-        message("Setting `txBiotype` as factor")
-        mcols[["txBiotype"]] <- as.factor(mcols[["txBiotype"]])
-    }
-    if (is.integer(mcols[["txSupportLevel"]])) {
-        message("Setting `txSupportLevel` as factor")
-        mcols[["txSupportLevel"]] <- as.factor(mcols[["txSupportLevel"]])
-    }
+    # Sanitize any character columns that have duplicates into factor
+    message("Converting strings to factors")
+    mcols <- lapply(
+        X = mcols,
+        FUN = function(col) {
+            if (is.character(col) && any(duplicated(col))) {
+                as.factor(col)
+            } else {
+                col
+            }
+        }
+    )
+    mcols <- as(mcols, "DataFrame")
 
     # Require that names match the identifier column
     # Check `transcriptID` then `geneID`
