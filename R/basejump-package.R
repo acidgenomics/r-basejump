@@ -34,7 +34,6 @@
 #'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
 #'   ungroup
 #' @importFrom ensembldb ensemblVersion organism
-#' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 element_blank element_line element_rect element_text
 #'   theme theme_linedraw

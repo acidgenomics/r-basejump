@@ -40,7 +40,7 @@ as.data.frame(x) \%>\% glimpse()
 \seealso{
 \itemize{
 \item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
-\item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
+\item \code{GenomicFeatures::makeTxDbFromGFF()}.
 }
 
 Other Gene Annotation Functions: \code{\link{annotable}},
