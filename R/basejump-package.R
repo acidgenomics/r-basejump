@@ -28,6 +28,7 @@
 #'   assert_is_character assert_is_data.frame assert_is_environment
 #'   assert_is_factor assert_is_integer assert_is_list assert_is_matrix
 #'   assert_is_name assert_is_numeric is_a_number is_a_string
+#' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange case_when everything filter funs group_by mutate
 #'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
@@ -50,7 +51,7 @@
 #' @importFrom readr read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! UQ sym dots_list eval_bare
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata
+#' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
 #'   metadata<- na.omit tail
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad

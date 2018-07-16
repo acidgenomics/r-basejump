@@ -175,6 +175,8 @@ makeGRangesFromGFF <- function(
 
         # Intersection of GFF and TxDb
         tx <- gffTx[gffTx %in% txdbTx]
+        # FIXME This errors out
+        # FIXME Better way to handle dupes?
         assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
@@ -204,6 +206,15 @@ makeGRangesFromGFF <- function(
         gr <- tx
         mcols(gr) <- merge
     }
+
+    # Warn if any identifiers are dropped
+    if (format == "genes") {
+        ids <- mcols(gff)[["geneID"]]
+    } else if (format == "transcripts") {
+        ids <- mcols(gff)[["transcriptID"]]
+    }
+    ids <- sort(unique(na.omit(ids)))
+    assert_are_identical(ids, names(gr))
 
     .makeGRanges(gr)
 }
