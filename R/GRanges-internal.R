@@ -1,22 +1,21 @@
 .makeGRanges <- function(object) {
     assert_is_all_of(object, "GRanges")
     assert_has_names(object)
+
+    # Sanitize mcols to camel case
+    object <- camel(object)
+
+    # Use `transcript` instead of `tx` consistently
+    colnames(mcols(object)) <- gsub(
+        pattern = "^tx",
+        replacement = "transcript",
+        x = colnames(mcols(object))
+    )
+
     # Ensure GRanges is sorted by names
     object <- object[sort(names(object))]
+
     # Standardize the metadata columns
-    object <- .standardizeGRangesMetadata(object)
-    # Require that the first column contains the names (e.g. `geneID`)
-    assert_are_identical(names(object), mcols(object)[[1L]])
-    # Add broad class definitions
-    mcols(object)[["broadClass"]] <- broadClass(object)
-    assert_is_all_of(object, "GRanges")
-    object
-}
-
-
-
-.standardizeGRangesMetadata <- function(object) {
-    assert_is_all_of(object, "GRanges")
     message("Standardizing the metadata columns")
     mcols <- mcols(object)
     # Remove columns that are all NA
@@ -62,7 +61,14 @@
     priorityCols <- intersect(annotationCols, colnames(mcols))
     mcols <- mcols %>%
         .[, unique(c(priorityCols, colnames(.))), drop = FALSE]
-
     mcols(object) <- mcols
+
+    # Require that the first column contains the names (e.g. `geneID`)
+    assert_are_identical(names(object), mcols(object)[[1L]])
+
+    # Add broad class definitions
+    mcols(object)[["broadClass"]] <- broadClass(object)
+
+    assert_is_all_of(object, "GRanges")
     object
 }
