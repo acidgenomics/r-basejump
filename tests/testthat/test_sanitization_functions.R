@@ -220,18 +220,18 @@ test_that("sanitizeRowData", {
     expect_identical(
         lapply(x, class),
         list(
-            "rowname" = "character",
-            "seqnames" = "factor",
-            "start" = "integer",
-            "end" = "integer",
-            "width" = "integer",
-            "strand" = "factor",
-            "geneID" = "character",
-            "geneName" = "character",
-            "geneBiotype" = "factor",
-            "description" = "character",
-            "seqCoordSystem" = "factor",
-            "broadClass" = "factor"
+            rowname = "character",
+            seqnames = "factor",
+            start = "integer",
+            end = "integer",
+            width = "integer",
+            strand = "factor",
+            broadClass = "factor",
+            description = "factor",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "factor",
+            seqCoordSystem = "factor"
         )
     )
 })
