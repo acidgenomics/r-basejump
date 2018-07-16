@@ -30,9 +30,14 @@ summary(x)
 as.data.frame(x) \%>\% glimpse()
 
 # Ensembl GTF genes
-makeGRangesFromGFF(
-    file = "~/Mus_musculus.GRCm38.87.gtf.gz"
+x <- makeGRangesFromGFF(
+    file = "~/Mus_musculus.GRCm38.87.gtf.gz",
+    format = "genes"
 )
+colnames(mcols(x))
+
+# Ensembl GTF transcripts
+x <- make
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
