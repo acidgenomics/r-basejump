@@ -64,7 +64,9 @@
             if (is.character(col) && any(duplicated(col))) {
                 as.factor(col)
             } else {
-                col
+                # `I` inhibits reinterpretation and returns AsIs
+                # Recommended in the DataFrame documentation
+                I(col)
             }
         }
     )
