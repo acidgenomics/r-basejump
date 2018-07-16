@@ -1,6 +1,6 @@
+# TODO Add UCSC support
 # TODO Check FlyBase
 # TODO Check WormBase
-# TODO Check UCSC?
 # FIXME Need to figure out how to sanitize geneID from Parent for GFF
 # FIXME Always use TxDb to double check that we're returning the right number
 
@@ -74,6 +74,9 @@ makeGRangesFromGFF <- function(
     }
 
     message(paste(source, type, "detected"))
+    if (type == "GFF") {
+        warning("Input of GTF (GFFv2) is preferred over GFF3, if possible")
+    }
 
     # Always require `geneID` and `transcriptID` columns in file
     assert_is_subset(
@@ -99,8 +102,8 @@ makeGRangesFromGFF <- function(
     gffGn <- gff
     gffGn <- gffGn[!is.na(mcols(gffGn)[["geneID"]])]
     gffGn <- gffGn[grepl("gene", mcols(gffGn)[["type"]])]
-    # Drop pseudogene rows (e.g. FlyBase GTF)
     gffGn <- gffGn[!grepl("pseudogene", mcols(gffGn)[["type"]])]
+    stopifnot(!any(duplicated(gffGn)))
     assert_has_no_duplicates(mcols(gffGn)[["geneID"]])
     names(gffGn) <- mcols(gffGn)[["geneID"]]
     gffGn <- gffGn[sort(names(gffGn))]
@@ -121,19 +124,24 @@ makeGRangesFromGFF <- function(
     txdbGn <- genes(txdb)
     txdbGn <- camel(txdbGn)
     assert_is_subset("geneID", colnames(mcols(txdbGn)))
+    stopifnot(!any(duplicated(txdbGn)))
+    assert_has_no_duplicates(mcols(gffGn)[["geneID"]])
     names(txdbGn) <- mcols(txdbGn)[["geneID"]]
     txdbGn <- txdbGn[sort(names(txdbGn))]
+
+    # Require that GFF and TxDb contain the same ranges
+    stopifnot(!length(setdiff(gffGn, txdbGn)))
+    assert_are_same_length(gffGn, txdbGn)
+    assert_are_identical(
+        x = mcols(gffGn)[["geneID"]],
+        y = mcols(txdbGn)[["geneID"]]
+    )
+
     message(paste(length(txdbGn), "gene annotations"))
     message(paste(
         "geneID:",
         toString(c(head(names(txdbGn), n = 2L), "..."))
     ))
-
-    # Check that GFF rows match TxDb
-    assert_are_identical(
-        x = mcols(gffGn)[["geneID"]],
-        y = mcols(txdbGn)[["geneID"]]
-    )
 
     if (format == "genes") {
         gr <- gffGn
