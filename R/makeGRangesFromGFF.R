@@ -81,14 +81,16 @@ makeGRangesFromGFF <- function(
         colnames(mcols(gff)) <- gsub(
             pattern = "Symbol$",
             replacement = "Name",
-            x = colnames(attributes)
+            x = colnames(mcols(gff))
         )
     }
 
     # Genes (gn; always generate)
     gn <- gff
-    gn <- gn[grepl("gene", mcols(gn)[["type"]])]
     gn <- gn[!is.na(mcols(gn)[["geneID"]])]
+    gn <- gn[grepl("gene", mcols(gn)[["type"]])]
+    # Drop pseudogene rows (e.g. FlyBase GTF)
+    gn <- gn[!grepl("pseudogene", mcols(gn)[["type"]])]
     assert_has_no_duplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     if (type == "GFF") {
@@ -107,13 +109,26 @@ makeGRangesFromGFF <- function(
     if (format == "genes") {
         gr <- gn
     } else if (format == "transcripts") {
+        if (type == "GTF") {
+            txdb <- suppressWarnings(makeTxDbFromGFF(file))
+            tx <- transcripts(txdb)
+            tx <- camel(tx)
+            mcols(tx)[["txID"]] <- mcols(tx)[["txName"]]
+            mcols(tx)[["txName"]] <- NULL
+        } else if (type == "GFF") {
+
+        }
+
         # Transcripts (tx)
         tx <- gff
-        tx <- tx[grepl("transcript", mcols(tx)[["type"]])]
         tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
-        assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
-        names(tx) <- mcols(tx)[["transcriptID"]]
+        # FIXME How to get the right transcripts? mRNA???
+        tx <- tx[grepl("mRNA", mcols(tx)[["type"]])]
+        # FIXME Not sure how to pick out FlyBase transcripts here
         if (type == "GFF") {
+            tx <- tx[grepl("transcript", mcols(tx)[["type"]])]
+            assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
+            names(tx) <- mcols(tx)[["transcriptID"]]
             # transcriptName
             mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
             mcols(tx)[["name"]] <- NULL
@@ -132,29 +147,29 @@ makeGRangesFromGFF <- function(
             mcols(tx)[["alias"]] <- NULL
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
-            # Merge gene metadata
-            geneCols <- setdiff(
-                x = colnames(mcols(gn)),
-                y = colnames(mcols(tx))
-            )
-            geneCols <- c("geneID", geneCols)
-            # Need to ensure that `geneID` column is `character` and not
-            # `CompressedCharacterList`, otherwise merge will fail here
-            mcols <- merge(
-                x = mcols(tx),
-                y = mcols(gn)[, geneCols],
-                all.x = TRUE,
-                by = "geneID"
-            )
-            rownames(mcols) <- mcols[["transcriptID"]]
-            mcols <- mcols[names(tx), ]
-            assert_are_identical(
-                x = mcols(tx)[["transcriptID"]],
-                y = mcols[["transcriptID"]]
-            )
-            gr <- tx
-            mcols(gr) <- mcols
         }
+        # Merge gene metadata
+        geneCols <- setdiff(
+            x = colnames(mcols(gn)),
+            y = colnames(mcols(tx))
+        )
+        geneCols <- c("geneID", geneCols)
+        # Need to ensure that `geneID` column is `character` and not
+        # `CompressedCharacterList`, otherwise merge will fail here
+        mcols <- merge(
+            x = mcols(tx),
+            y = mcols(gn)[, geneCols],
+            all.x = TRUE,
+            by = "geneID"
+        )
+        rownames(mcols) <- mcols[["transcriptID"]]
+        mcols <- mcols[names(tx), ]
+        assert_are_identical(
+            x = mcols(tx)[["transcriptID"]],
+            y = mcols[["transcriptID"]]
+        )
+        gr <- tx
+        mcols(gr) <- mcols
     }
 
     .makeGRanges(gr)
