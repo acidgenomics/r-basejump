@@ -25,5 +25,6 @@ makeTx2geneFromEnsembl <- function(
     mcols(gr) %>%
         as.data.frame() %>%
         select(!!!syms(c("transcriptID", "geneID"))) %>%
+        mutate_all(as.character) %>%
         set_rownames(.[[1L]])
 }
