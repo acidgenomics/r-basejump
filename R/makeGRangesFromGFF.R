@@ -105,12 +105,6 @@ makeGRangesFromGFF <- function(
     gffGn <- gff
     gffGn <- gffGn[!is.na(mcols(gffGn)[["geneID"]])]
     gffGn <- gffGn[grepl("gene", mcols(gffGn)[["type"]])]
-    # FIXME This will error out with FlyBase? Keep this line?
-    # gffGn <- gffGn[!grepl("pseudogene", mcols(gffGn)[["type"]])]
-    stopifnot(!any(duplicated(gffGn)))
-    assert_has_no_duplicates(mcols(gffGn)[["geneID"]])
-    names(gffGn) <- mcols(gffGn)[["geneID"]]
-    gffGn <- gffGn[sort(names(gffGn))]
     if (type == "GFF") {
         # geneName
         assert_is_subset("name", colnames(mcols(gffGn)))
@@ -137,7 +131,6 @@ makeGRangesFromGFF <- function(
         "geneID:",
         toString(c(head(names(gn), n = 2L), "..."))
     ))
-
     if (format == "genes") {
         gr <- gn
     }
@@ -148,7 +141,11 @@ makeGRangesFromGFF <- function(
         txdbTx <- transcripts(txdb)
 
         # GRanges from GFF
-        gffTx <- gff[!is.na(mcols(gff)[["transcriptID"]])]
+        gffTx <- gff
+        gffTx <- gffTx[!is.na(mcols(gffTx)[["transcriptID"]])]
+        # Drop exons and CDS
+        gffTx <- gffTx[mcols(gffTx)[["type"]] != "exon"]
+        gffTx <- gffTx[mcols(gffTx)[["type"]] != "CDS"]
         if (type == "GFF") {
             # transcriptName
             assert_is_subset("name", colnames(mcols(gffTx)))
@@ -175,8 +172,6 @@ makeGRangesFromGFF <- function(
 
         # Intersection of GFF and TxDb
         tx <- gffTx[gffTx %in% txdbTx]
-        # FIXME This errors out
-        # FIXME Better way to handle dupes?
         assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
@@ -186,25 +181,29 @@ makeGRangesFromGFF <- function(
             "transcriptID:",
             toString(c(head(names(tx), n = 2L), "..."))
         ))
+        gr <- tx
 
         # Merge the gene-level annotations (`geneName`, `geneBiotype`)
-        geneCols <- setdiff(colnames(mcols(gn)), colnames(mcols(tx)))
-        geneCols <- c("geneID", geneCols)
-        merge <- merge(
-            x = mcols(tx),
-            y = mcols(gn)[, geneCols],
-            all.x = TRUE,
-            by = "geneID"
+        geneCols <- setdiff(
+            x = colnames(mcols(gn)),
+            y = colnames(mcols(gr))
         )
-        rownames(merge) <- merge[["transcriptID"]]
-        merge <- merge[sort(rownames(merge)), ]
-        assert_are_identical(
-            x = mcols(tx)[["transcriptID"]],
-            y = merge[["transcriptID"]]
-        )
-
-        gr <- tx
-        mcols(gr) <- merge
+        if (length(geneCols)) {
+            geneCols <- c("geneID", geneCols)
+            merge <- merge(
+                x = mcols(gr),
+                y = mcols(gn)[, geneCols],
+                all.x = TRUE,
+                by = "geneID"
+            )
+            rownames(merge) <- merge[["transcriptID"]]
+            merge <- merge[sort(rownames(merge)), ]
+            assert_are_identical(
+                x = mcols(gr)[["transcriptID"]],
+                y = merge[["transcriptID"]]
+            )
+            mcols(gr) <- merge
+        }
     }
 
     # Warn if any identifiers are dropped
