@@ -49,6 +49,7 @@ Imports:
     cowplot (>= 0.9),
     dplyr (>= 0.7),
     ensembldb,
+    GenomicFeatures,
     GenomeInfoDb,
     GenomicRanges,
     ggplot2 (>= 3.0),
