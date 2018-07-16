@@ -76,7 +76,7 @@ makeGRangesFromGFF <- function(
 
     message(paste(source, type, "detected"))
     if (type == "GFF") {
-        warning("GTF (GFFv2) is preferred over GFF3, if possible")
+        message("GTF (GFFv2) is preferred over GFF3, if possible")
     }
 
     # Always require `geneID` and `transcriptID` columns in file
@@ -95,37 +95,48 @@ makeGRangesFromGFF <- function(
         )
     }
 
-    # Transcript database (GenomicFeatures TxDb)
+    # Transcript database (GenomicFeatures TxDb object)
+    # We're using this to inform about potentially problematic transcripts
     txdb <- suppressWarnings(makeTxDbFromGFF(file))
 
     # Genes ====================================================================
-    # GRanges from TxDb
-    txdbGn <- genes(txdb)
-
-    # GRanges from GFF
-    gffGn <- gff
-    gffGn <- gffGn[!is.na(mcols(gffGn)[["geneID"]])]
-    gffGn <- gffGn[grepl("gene", mcols(gffGn)[["type"]])]
+    # GRanges from GFF (rtracklayer)
+    gn <- gff
+    gn <- gn[!is.na(mcols(gn)[["geneID"]])]
+    gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
     if (type == "GFF") {
         # geneName
-        assert_is_subset("name", colnames(mcols(gffGn)))
-        mcols(gffGn)[["geneName"]] <- mcols(gffGn)[["name"]]
-        mcols(gffGn)[["name"]] <- NULL
+        assert_is_subset("name", colnames(mcols(gn)))
+        mcols(gn)[["geneName"]] <- mcols(gn)[["name"]]
+        mcols(gn)[["name"]] <- NULL
         # geneBiotype
-        assert_is_subset("biotype", colnames(mcols(gffGn)))
-        mcols(gffGn)[["geneBiotype"]] <- mcols(gffGn)[["biotype"]]
-        mcols(gffGn)[["biotype"]] <- NULL
+        assert_is_subset("biotype", colnames(mcols(gn)))
+        mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
+        mcols(gn)[["biotype"]] <- NULL
         # Remove extra columns
-        mcols(gffGn)[["alias"]] <- NULL
-        mcols(gffGn)[["id"]] <- NULL
-        mcols(gffGn)[["parent"]] <- NULL
+        mcols(gn)[["alias"]] <- NULL
+        mcols(gn)[["id"]] <- NULL
+        mcols(gn)[["parent"]] <- NULL
     }
-
-    # Intersection of GFF and TxDb
-    gn <- gffGn[gffGn %in% txdbGn]
     assert_has_no_duplicates(mcols(gn)[["geneID"]])
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
+
+    # Stop on missing genes
+    assert_are_identical(
+        x = names(gn),
+        y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
+    )
+
+    # Check GRanges against TxDb (GenomicFeatures)
+    txdbGn <- genes(txdb)
+    setdiff <- setdiff(gn, txdbGn)
+    if (length(setdiff)) {
+        warning(paste(
+            "Missing from TxDb:",
+            toString(sort(mcols(setdiff)[["geneID"]]))
+        ))
+    }
 
     message(paste(length(gn), "gene annotations"))
     message(paste(
@@ -138,44 +149,53 @@ makeGRangesFromGFF <- function(
 
     # Transcripts ==============================================================
     if (format == "transcripts") {
-        # GRanges from TxDb
-        txdbTx <- transcripts(txdb)
-
-        # GRanges from GFF
-        gffTx <- gff
-        gffTx <- gffTx[!is.na(mcols(gffTx)[["transcriptID"]])]
-        # Drop exons and CDS
-        gffTx <- gffTx[mcols(gffTx)[["type"]] != "exon"]
-        gffTx <- gffTx[mcols(gffTx)[["type"]] != "CDS"]
-        if (type == "GFF") {
+        # GRanges from GFF (rtracklayer)
+        tx <- gff
+        tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
+        if (type == "GTF") {
+            tx <- tx[grepl("transcript", mcols(tx)[["type"]])]
+        } else if (type == "GFF") {
             # transcriptName
-            assert_is_subset("name", colnames(mcols(gffTx)))
-            mcols(gffTx)[["transcriptName"]] <- mcols(gffTx)[["name"]]
-            mcols(gffTx)[["name"]] <- NULL
+            assert_is_subset("name", colnames(mcols(tx)))
+            mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
+            mcols(tx)[["name"]] <- NULL
             # transcriptBiotype
-            assert_is_subset("biotype", colnames(mcols(gffTx)))
-            mcols(gffTx)[["transcriptBiotype"]] <- mcols(gffTx)[["biotype"]]
-            mcols(gffTx)[["biotype"]] <- NULL
+            assert_is_subset("biotype", colnames(mcols(tx)))
+            mcols(tx)[["transcriptBiotype"]] <- mcols(tx)[["biotype"]]
+            mcols(tx)[["biotype"]] <- NULL
             # geneID
-            assert_is_subset("parent", colnames(mcols(gffTx)))
-            stopifnot(all(grepl("^gene:", mcols(gffTx)[["parent"]])))
-            mcols(gffTx)[["geneID"]] <- as.character(mcols(gffTx)[["parent"]])
-            mcols(gffTx)[["geneID"]] <- gsub(
+            assert_is_subset("parent", colnames(mcols(tx)))
+            stopifnot(all(grepl("^gene:", mcols(tx)[["parent"]])))
+            mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
+            mcols(tx)[["geneID"]] <- gsub(
                 pattern = "^gene:",
                 replacement = "",
-                x = mcols(gffTx)[["geneID"]]
+                x = mcols(tx)[["geneID"]]
             )
             # Remove extra columns
-            mcols(gffTx)[["alias"]] <- NULL
-            mcols(gffTx)[["id"]] <- NULL
-            mcols(gffTx)[["parent"]] <- NULL
+            mcols(tx)[["alias"]] <- NULL
+            mcols(tx)[["id"]] <- NULL
+            mcols(tx)[["parent"]] <- NULL
         }
-
-        # Intersection of GFF and TxDb
-        tx <- gffTx[gffTx %in% txdbTx]
         assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
+
+        # Stop on missing transcripts
+        assert_are_identical(
+            x = names(tx),
+            y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
+        )
+
+        # Check GRanges against TxDb (GenomicFeatures)
+        txdbTx <- transcripts(txdb)
+        setdiff <- setdiff(tx, txdbTx)
+        if (length(setdiff)) {
+            stop(paste(
+                "Missing from TxDb:",
+                toString(sort(mcols(setdiff)[["transcriptID"]]))
+            ))
+        }
 
         message(paste(length(tx), "transcript annotations"))
         message(paste(
@@ -204,26 +224,6 @@ makeGRangesFromGFF <- function(
                 y = merge[["transcriptID"]]
             )
             mcols(gr) <- merge
-        }
-    }
-
-    # Warn if any identifiers are dropped
-    if (format == "genes") {
-        ids <- mcols(gff)[["geneID"]]
-    } else if (format == "transcripts") {
-        ids <- mcols(gff)[["transcriptID"]]
-    }
-    ids <- sort(unique(na.omit(ids)))
-    if (type == "GTF") {
-        # Strict mode for GTF, requiring exact match
-        assert_are_identical(ids, names(gr))
-    } else if (type == "GFF") {
-        # Less strict for GFF, allowing missing identifiers
-        if (!identical(ids, names(gr))) {
-            warning(paste(
-                "Missing identifiers:",
-                toString(setdiff(ids, names(gr)))
-            ))
         }
     }
 
