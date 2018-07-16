@@ -98,20 +98,26 @@ makeGRangesFromGFF <- function(
     txdb <- suppressWarnings(makeTxDbFromGFF(file))
 
     # Genes ====================================================================
+    # GRanges from TxDb
+    txdbGn <- genes(txdb)
+
     # GRanges from GFF
     gffGn <- gff
     gffGn <- gffGn[!is.na(mcols(gffGn)[["geneID"]])]
     gffGn <- gffGn[grepl("gene", mcols(gffGn)[["type"]])]
-    gffGn <- gffGn[!grepl("pseudogene", mcols(gffGn)[["type"]])]
+    # FIXME This will error out with FlyBase? Keep this line?
+    # gffGn <- gffGn[!grepl("pseudogene", mcols(gffGn)[["type"]])]
     stopifnot(!any(duplicated(gffGn)))
     assert_has_no_duplicates(mcols(gffGn)[["geneID"]])
     names(gffGn) <- mcols(gffGn)[["geneID"]]
     gffGn <- gffGn[sort(names(gffGn))]
     if (type == "GFF") {
         # geneName
+        assert_is_subset("name", colnames(mcols(gffGn)))
         mcols(gffGn)[["geneName"]] <- mcols(gffGn)[["name"]]
         mcols(gffGn)[["name"]] <- NULL
         # geneBiotype
+        assert_is_subset("biotype", colnames(mcols(gffGn)))
         mcols(gffGn)[["geneBiotype"]] <- mcols(gffGn)[["biotype"]]
         mcols(gffGn)[["biotype"]] <- NULL
         # Remove extra columns
@@ -120,142 +126,83 @@ makeGRangesFromGFF <- function(
         mcols(gffGn)[["parent"]] <- NULL
     }
 
-    # GRanges from TxDb
-    txdbGn <- genes(txdb)
-    txdbGn <- camel(txdbGn)
-    assert_is_subset("geneID", colnames(mcols(txdbGn)))
-    stopifnot(!any(duplicated(txdbGn)))
-    assert_has_no_duplicates(mcols(gffGn)[["geneID"]])
-    names(txdbGn) <- mcols(txdbGn)[["geneID"]]
-    txdbGn <- txdbGn[sort(names(txdbGn))]
+    # Intersection of GFF and TxDb
+    gn <- gffGn[gffGn %in% txdbGn]
+    assert_has_no_duplicates(mcols(gn)[["geneID"]])
+    names(gn) <- mcols(gn)[["geneID"]]
+    gn <- gn[sort(names(gn))]
 
-    # Require that GFF and TxDb contain the same ranges
-    stopifnot(!length(setdiff(gffGn, txdbGn)))
-    assert_are_same_length(gffGn, txdbGn)
-    assert_are_identical(
-        x = mcols(gffGn)[["geneID"]],
-        y = mcols(txdbGn)[["geneID"]]
-    )
-
-    message(paste(length(txdbGn), "gene annotations"))
+    message(paste(length(gn), "gene annotations"))
     message(paste(
         "geneID:",
-        toString(c(head(names(txdbGn), n = 2L), "..."))
+        toString(c(head(names(gn), n = 2L), "..."))
     ))
 
     if (format == "genes") {
-        gr <- gffGn
+        gr <- gn
     }
 
     # Transcripts ==============================================================
     if (format == "transcripts") {
         # GRanges from TxDb
         txdbTx <- transcripts(txdb)
-        txdbTx <- camel(txdbTx)
-        colnames(mcols(txdbTx)) <- gsub(
-            pattern = "^tx",
-            replacement = "transcript",
-            x = colnames(mcols(txdbTx))
-        )
-        # Check for numeric `transcriptID` and replace with `transcriptName`
-        assert_is_subset("transcriptID", colnames(mcols(txdbTx)))
-        if (type == "GTF") {
-            if (is.integer(mcols(txdbTx)[["transcriptID"]])) {
-                assert_is_subset("transcriptName", colnames(mcols(txdbTx)))
-                mcols(txdbTx)[["transcriptID"]] <-
-                    mcols(txdbTx)[["transcriptName"]]
-                mcols(txdbTx)[["transcriptName"]] <- NULL
-            }
+
+        # GRanges from GFF
+        gffTx <- gff[!is.na(mcols(gff)[["transcriptID"]])]
+        if (type == "GFF") {
+            # transcriptName
+            assert_is_subset("name", colnames(mcols(gffTx)))
+            mcols(gffTx)[["transcriptName"]] <- mcols(gffTx)[["name"]]
+            mcols(gffTx)[["name"]] <- NULL
+            # transcriptBiotype
+            assert_is_subset("biotype", colnames(mcols(gffTx)))
+            mcols(gffTx)[["transcriptBiotype"]] <- mcols(gffTx)[["biotype"]]
+            mcols(gffTx)[["biotype"]] <- NULL
+            # geneID
+            assert_is_subset("parent", colnames(mcols(gffTx)))
+            stopifnot(all(grepl("^gene:", mcols(gffTx)[["parent"]])))
+            mcols(gffTx)[["geneID"]] <- as.character(mcols(gffTx)[["parent"]])
+            mcols(gffTx)[["geneID"]] <- gsub(
+                pattern = "^gene:",
+                replacement = "",
+                x = mcols(gffTx)[["geneID"]]
+            )
+            # Remove extra columns
+            mcols(gffTx)[["alias"]] <- NULL
+            mcols(gffTx)[["id"]] <- NULL
+            mcols(gffTx)[["parent"]] <- NULL
         }
-        names(txdbTx) <- mcols(txdbTx)[["transcriptID"]]
-        txdbTx <- txdbTx[sort(names(txdbTx))]
-        message(paste(length(txdbTx), "transcript annotations"))
+
+        # Intersection of GFF and TxDb
+        tx <- gffTx[gffTx %in% txdbTx]
+        assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
+        names(tx) <- mcols(tx)[["transcriptID"]]
+        tx <- tx[sort(names(tx))]
+
+        message(paste(length(tx), "transcript annotations"))
         message(paste(
             "transcriptID:",
-            toString(c(head(names(txdbTx), n = 2L), "..."))
+            toString(c(head(names(tx), n = 2L), "..."))
         ))
 
-        # Attributes from GFF
-        if (type == "GTF") {
-            mcols <- mcols(gff) %>%
-                as.data.frame() %>%
-                .[, grepl("^(gene|transcript)", colnames(.)), drop = FALSE] %>%
-                filter(!is.na(!!sym("transcriptID"))) %>%
-                arrange(!!sym("transcriptID")) %>%
-                unique() %>%
-                camel() %>%
-                as("DataFrame")
-            assert_has_no_duplicates(mcols[["transcriptID"]])
-            assert_are_identical(
-                x = mcols(txdbTx)[["transcriptID"]],
-                y = mcols[["transcriptID"]]
-            )
-            merge <- merge(
-                x = mcols(txdbTx),
-                y = mcols,
-                by = "transcriptID",
-                all.x = TRUE
-            )
-            rownames(merge) <- merge[["transcriptID"]]
-            merge <- merge[sort(rownames(merge)), ]
-            assert_are_identical(
-                x = mcols(txdbTx)[["transcriptID"]],
-                y = merge[["transcriptID"]]
-            )
-            gr <- txdbTx
-            mcols(gr) <- merge
-        } else if (type == "GFF") {
-            gffTx <- gff
-            gffTx <- gffTx[!is.na(mcols(gffTx)[["transcriptID"]])]
-            # FIXME How to get the right transcripts? mRNA???
-            gffTx <- gffTx[grepl("mRNA", mcols(gffTx)[["type"]])]
-            # FIXME Not sure how to pick out FlyBase transcripts here
-            if (type == "GFF") {
-                gffTx <- gffTx[grepl("transcript", mcols(gffTx)[["type"]])]
-                assert_has_no_duplicates(mcols(gffTx)[["transcriptID"]])
-                names(gffTx) <- mcols(gffTx)[["transcriptID"]]
-                # transcriptName
-                mcols(gffTx)[["transcriptName"]] <- mcols(gffTx)[["name"]]
-                mcols(gffTx)[["name"]] <- NULL
-                # transcriptBiotype
-                mcols(gffTx)[["transcriptBiotype"]] <- mcols(gffTx)[["biotype"]]
-                mcols(gffTx)[["biotype"]] <- NULL
-                # geneID
-                stopifnot(all(grepl("^gene:", mcols(gffTx)[["parent"]])))
-                mcols(gffTx)[["geneID"]] <- as.character(mcols(gffTx)[["parent"]])
-                mcols(gffTx)[["geneID"]] <- gsub(
-                    pattern = "^gene:",
-                    replacement = "",
-                    x = mcols(gffTx)[["geneID"]]
-                )
-                # Remove extra columns
-                mcols(gffTx)[["alias"]] <- NULL
-                mcols(gffTx)[["id"]] <- NULL
-                mcols(gffTx)[["parent"]] <- NULL
-            }
-            # Merge gene metadata
-            geneCols <- setdiff(
-                x = colnames(mcols(gffGn)),
-                y = colnames(mcols(gffTx))
-            )
-            geneCols <- c("geneID", geneCols)
-            # Need to ensure that `geneID` column is `character` and not
-            # `CompressedCharacterList`, otherwise merge will fail here
-            mcols <- merge(
-                x = mcols(gffTx),
-                y = mcols(gffGn)[, geneCols],
-                all.x = TRUE,
-                by = "geneID"
-            )
-            rownames(mcols) <- mcols[["transcriptID"]]
-            mcols <- mcols[names(gffTx), ]
-            assert_are_identical(
-                x = mcols(gffTx)[["transcriptID"]],
-                y = mcols[["transcriptID"]]
-            )
-            gr <- gffTx
-            mcols(gr) <- mcols
-        }
+        # Merge the gene-level annotations (`geneName`, `geneBiotype`)
+        geneCols <- setdiff(colnames(mcols(gn)), colnames(mcols(tx)))
+        geneCols <- c("geneID", geneCols)
+        merge <- merge(
+            x = mcols(tx),
+            y = mcols(gn)[, geneCols],
+            all.x = TRUE,
+            by = "geneID"
+        )
+        rownames(merge) <- merge[["transcriptID"]]
+        merge <- merge[sort(rownames(merge)), ]
+        assert_are_identical(
+            x = mcols(tx)[["transcriptID"]],
+            y = merge[["transcriptID"]]
+        )
+
+        gr <- tx
+        mcols(gr) <- merge
     }
 
     .makeGRanges(gr)
