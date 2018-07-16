@@ -86,7 +86,7 @@
     mcols(object) <- mcols
 
     # Ensure broad class definitions are included
-    mcols[["broadClass"]] <- broadClass(object)
+    mcols(object)[["broadClass"]] <- broadClass(object)
 
     # Sort metadata columns alphabetically
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
