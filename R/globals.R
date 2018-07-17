@@ -1,12 +1,5 @@
 globalVariables(".")
 
-annotationCols <- c(
-    "geneID",
-    "geneName",
-    "transcriptID",
-    "transcriptName"
-)
-
 # Note optional matching of gzip
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
