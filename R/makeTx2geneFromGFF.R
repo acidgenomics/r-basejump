@@ -1,8 +1,3 @@
-# FIXME Doesn't work with GFF3
-# FIXME Add GTF/GFF3 detection
-
-
-
 #' Transcript-to-Gene Mappings from GFF File
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
