@@ -4,6 +4,11 @@
 
 - Now importing [SummarizedExperiment][] package and providing basic method
   support for generics that were previously used in the [bcbioBase][] package.
+- Improved GFFv3 handling in `makeGRangesFromGFF()` and other GFF utility
+  functions, including `makeGene2symbolFromGFF()` and `makeTx2geneFromGFF()`.
+  Note that `makeGRangesFromGFF()` now returns additional metadata columns
+  accessible with `mcols()`, and that these columns are now sorted
+  alphabetically.
 
 ## Migrated functions from [bcbioBase][]
 
