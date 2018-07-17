@@ -741,7 +741,7 @@ assertIsTx2gene <- function(
     # nocov start
     if ("txID" %in% colnames(x)) {
         warning("Use `transcriptID` instead of `txID`")
-        colnames(x) <- gsub("^txID$", "transcriptID")
+        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
     }
     # nocov end
     assert_are_identical(
