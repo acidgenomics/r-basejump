@@ -1,13 +1,10 @@
 globalVariables(".")
 
 annotationCols <- c(
-    "txID",
-    "txName",
-    "txBiotype",
     "geneID",
     "geneName",
-    "geneBiotype",
-    "description"
+    "transcriptID",
+    "transcriptName"
 )
 
 # Note optional matching of gzip

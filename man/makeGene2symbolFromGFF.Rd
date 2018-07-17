@@ -8,7 +8,7 @@
 makeGene2symbolFromGFF(file)
 }
 \arguments{
-\item{file}{File path.}
+\item{file}{\code{string}. File path.}
 }
 \value{
 \code{data.frame}.
@@ -19,7 +19,12 @@ each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
+# GTF
 x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
+glimpse(x)
+
+# GFFv3
+x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
 glimpse(x)
 }
 \seealso{

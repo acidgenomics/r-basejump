@@ -10,8 +10,8 @@ loadRemoteData(url, envir = parent.frame())
 \item{url}{Remote URL file path to R data. Supports multiple URLs passed in
 as a character vector.}
 
-\item{envir}{Environment to use for assignment. Defaults to \code{parent.frame()},
-which will assign into the calling environment.}
+\item{envir}{\code{environment} to use for assignment. Defaults to
+\code{parent.frame()}, which will assign into the calling environment.}
 }
 \value{
 Invisible named \code{character} containing the local object name as the

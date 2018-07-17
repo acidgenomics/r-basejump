@@ -220,18 +220,39 @@ test_that("sanitizeRowData", {
     expect_identical(
         lapply(x, class),
         list(
-            "rowname" = "character",
-            "seqnames" = "factor",
-            "start" = "integer",
-            "end" = "integer",
-            "width" = "integer",
-            "strand" = "factor",
-            "geneID" = "character",
-            "geneName" = "character",
-            "geneBiotype" = "factor",
-            "description" = "character",
-            "seqCoordSystem" = "factor",
-            "broadClass" = "factor"
+            rowname = "character",
+            seqnames = "factor",
+            start = "integer",
+            end = "integer",
+            width = "integer",
+            strand = "factor",
+            broadClass = "factor",
+            description = "factor",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "factor",
+            seqCoordSystem = "factor"
         )
     )
+})
+
+
+
+# sanitizeSampleData ===========================================================
+test_that("sanitizeSampleData", {
+    sd <- DataFrame(
+        "genotype" = factor(c("wt", "ko", "wt", "ko")),
+        "batch" = factor(c(1L, 1L, 2L, 2L)),
+        # not a factor yet
+        "day" = c(14L, 14L, 30L, 30L),
+        row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+    )
+    x <- sanitizeSampleData(sd)
+    expect_is(x, "DataFrame")
+    expect_identical(rownames(x), rownames(sd))
+    expect_true(all(vapply(
+        X = x,
+        FUN = is.factor,
+        FUN.VALUE = logical(1L)
+    )))
 })

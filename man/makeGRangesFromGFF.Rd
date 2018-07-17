@@ -8,7 +8,7 @@
 makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 }
 \arguments{
-\item{file}{File path.}
+\item{file}{\code{string}. File path.}
 
 \item{format}{Output as genes or transcripts.}
 }
@@ -20,12 +20,29 @@ The GFF (General Feature Format) format consists of one line per feature,
 each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
+\details{
+The UCSC website has detailed conventions on the GFF3 format, including
+the metadata columns.
+}
 \examples{
-x <- makeGRangesFromGFF("http://basejump.seq.cloud/example.gtf")
+file <- "http://basejump.seq.cloud/example.gtf"
+
+# Genes
+x <- makeGRangesFromGFF(file = file, format = "genes")
+summary(x)
+as.data.frame(x) \%>\% glimpse()
+
+# Transcripts
+x <- makeGRangesFromGFF(file = file, format = "transcripts")
 summary(x)
 as.data.frame(x) \%>\% glimpse()
 }
 \seealso{
+\itemize{
+\item \code{\link[rtracklayer:import]{rtracklayer::import()}}.
+\item \code{\link[GenomicFeatures:makeTxDbFromGFF]{GenomicFeatures::makeTxDbFromGFF()}}.
+}
+
 Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},

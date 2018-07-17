@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.0</span>
       </span>
     </div>
 
@@ -77,9 +77,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -132,7 +129,10 @@
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,7 +200,7 @@ to the most recent release available.</p></td>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Sorting GRanges by identifier</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` instead of `symbol`</span></div><div class='output co'>#&gt; <span class='message'>Converting strings to factors</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
 #&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
 <span class='co'># matrix ====</span>
 <span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
@@ -219,10 +219,20 @@ to the most recent release available.</p></td>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using geneName instead of symbol</span></div><div class='output co'>#&gt; <span class='message'>Setting geneBiotype as factor</span></div><div class='output co'>#&gt; <span class='message'>Setting seqCoordSystem as factor</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;       sample_1 sample_2
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Sorting GRanges by identifier</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Using `geneName` instead of `symbol`</span></div><div class='output co'>#&gt; <span class='message'>Converting strings to factors</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;       sample_1 sample_2
 #&gt; Gnai3        1        2
 #&gt; Pbsn         3        4</div><div class='input'><span class='fu'>rownames</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
-#&gt;            "Gnai3"             "Pbsn" </div></pre>
+#&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
+<span class='co'># SummarizedExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_bcb</span>)
+<span class='fu'>show</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; dim: 500 6 
+#&gt; metadata(30): version level ... devtoolsSessionInfo subset
+#&gt; assays(1): counts
+#&gt; rownames(500): Cox5a Comt ... AC157654.1 AC129085.1
+#&gt; rowData names(7): geneID geneName ... entrezID broadClass
+#&gt; colnames(6): control_rep1 control_rep2 ... fa_day7_rep2 fa_day7_rep3
+#&gt; colData names(25): sampleName day ... x5x3Bias xGC</div><div class='input'><span class='fu'>head</span>(<span class='fu'>rownames</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "Cox5a"  "Comt"   "Dazap2" "Rpl13"  "Calm1"  "Ddt"   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

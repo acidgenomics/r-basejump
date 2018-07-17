@@ -95,8 +95,8 @@ assertAreGeneAnnotations <- function(
 #'
 #' @examples
 #' x <- data.frame(
-#'     "txID" = "ENST00000000233",
-#'     "geneID" = "ENSG00000004059"
+#'     transcriptID = "ENST00000000233",
+#'     geneID = "ENSG00000004059"
 #' )
 #' assertAreTranscriptAnnotations(x)
 assertAreTranscriptAnnotations <- function(
@@ -105,7 +105,7 @@ assertAreTranscriptAnnotations <- function(
 ) {
     x <- as.data.frame(x)
     assert_is_subset(
-        x = c("txID", "geneID"),
+        x = c("transcriptID", "geneID"),
         y = colnames(x),
         severity = severity
     )
@@ -187,6 +187,72 @@ assertFormalGene2symbol <- function(
     if (is.data.frame(gene2symbol)) {
         assertIsGene2symbol(gene2symbol)
         assert_is_subset(rownames(x), rownames(gene2symbol))
+    }
+}
+
+
+
+#' Interesting Groups Formal Assert Check
+#'
+#' Prevent unwanted downstream behavior when a missing interesting group
+#' is requested by the user.
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#'
+#' @inheritParams general
+#'
+#' @return Silent, stop on error.
+#' @export
+#'
+#' @examples
+#' assertFormalInterestingGroups(rse_bcb, "treatment")
+#' assertFormalInterestingGroups(rse_dds, "condition")
+assertFormalInterestingGroups <- function(
+    x,
+    interestingGroups,
+    severity = getOption("assertive.severity", "stop")
+) {
+    fun <- get(severity)
+
+    # Early return on `NULL` value (e.g. DESeqDataSet)
+    if (is.null(interestingGroups)) {
+        return(invisible())
+    }
+
+    assert_is_character(interestingGroups)
+
+    # Obtain column data if S4 object is passed in
+    if (isS4(x)) {
+        x <- colData(x)
+    }
+    x <- as(x, "DataFrame")
+
+    # Check that interesting groups are slotted into sampleData
+    if (!all(interestingGroups %in% colnames(x))) {
+        setdiff <- setdiff(interestingGroups, colnames(x))
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(setdiff)),
+            "are not defined as columns in `sampleData()`"
+        ))
+    }
+
+    # Check that interesting groups are factors
+    isFactor <- vapply(
+        X = x[, interestingGroups, drop = FALSE],
+        FUN = is.factor,
+        FUN.VALUE = logical(1L),
+        USE.NAMES = TRUE
+    )
+    if (!all(isFactor)) {
+        invalid <- names(isFactor)[which(!isFactor)]
+        fun(paste(
+            "The interesting groups",
+            deparse(toString(invalid)),
+            "are not factor"
+        ))
     }
 }
 
@@ -655,15 +721,15 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column `data.frame` with "txID" and
-#'   "geneID" columns.
+#'   mappings. Must be structured as a two column `data.frame` with
+#'   "transcriptID" and "geneID" columns.
 #'
 #' @export
 #'
 #' @examples
 #' x <- data.frame(
-#'     "txID" = "ENST00000000233",
-#'     "geneID" = "ENSG00000004059"
+#'     transcriptID = "ENST00000000233",
+#'     geneID = "ENSG00000004059"
 #' )
 #' assertIsTx2gene(x)
 assertIsTx2gene <- function(
@@ -673,7 +739,7 @@ assertIsTx2gene <- function(
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
-        y = c("txID", "geneID"),
+        y = c("transcriptID", "geneID"),
         severity = severity
     )
     assert_has_rows(x, severity = severity)

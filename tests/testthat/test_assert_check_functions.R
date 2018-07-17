@@ -1,6 +1,6 @@
 context("Assert Check Functions")
 
-gene2symbol <- data.frame(
+g2s <- data.frame(
     "geneID" = c("gene_1", "gene_2"),
     "geneName" = c("symbol_1", "symbol_2"),
     row.names = c("gene_1", "gene_2")
@@ -13,6 +13,28 @@ test_that("assertAllAreNonExisting", {
     a <- 1L
     b <- 2L
     expect_error(assertAllAreNonExisting(c("a", "b", "c")))
+})
+
+
+
+test_that("assertAreGeneAnnotations", {
+    x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+    expect_silent(assertAreGeneAnnotations(x))
+    expect_error(
+        assertAreGeneAnnotations(mtcars),
+        "is_subset : "
+    )
+})
+
+
+
+test_that("assertAreTranscriptAnnotations", {
+    x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+    expect_silent(assertAreTranscriptAnnotations(x))
+    expect_error(
+        assertAreTranscriptAnnotations(mtcars),
+        "is_subset : "
+    )
 })
 
 
@@ -32,7 +54,7 @@ test_that("assertFormalCompress", {
 
 
 test_that("assertFormalGene2symbol", {
-    genes <- head(rownames(gene2symbol), 2L)
+    genes <- head(rownames(g2s), 2L)
     expect_true(is.character(genes))
     x <- data.frame(
         "sample_1" = c(1L, 2L),
@@ -40,14 +62,43 @@ test_that("assertFormalGene2symbol", {
         row.names = genes,
         stringsAsFactors = FALSE
     )
-    expect_silent(assertFormalGene2symbol(x, genes, gene2symbol))
+    expect_silent(assertFormalGene2symbol(x, genes, g2s))
     expect_error(
-        assertFormalGene2symbol(mtcars, genes, gene2symbol),
+        assertFormalGene2symbol(mtcars, genes, g2s),
         paste(
             "is_subset :",
             "The elements 'gene_1', 'gene_2'",
             "in genes are not in rownames\\(x\\)."
         )
+    )
+})
+
+
+
+test_that("assertFormalInterestingGroups", {
+    expect_silent(
+        assertFormalInterestingGroups(
+            x = rse_bcb,
+            interestingGroups = c("tissue", "treatment")
+        )
+    )
+    # Must exist as columns in sampleData
+    expect_error(
+        assertFormalInterestingGroups(
+            x = rse_bcb,
+            interestingGroups = "XXX"
+        ),
+        paste(
+            "The interesting groups \"XXX\" are not defined"
+        )
+    )
+    # Require interesting groups to be defined as factor columns
+    expect_error(
+        assertFormalInterestingGroups(
+            x = rse_bcb,
+            interestingGroups = c("totalReads", "exonicRate")
+        ),
+        "The interesting groups \"totalReads, exonicRate\" are not factor"
     )
 })
 
@@ -114,28 +165,6 @@ test_that("assertIsAnIntegerOrNULL", {
     expect_error(
         assertIsAnIntegerOrNULL(c(1L, 2L)),
         "is_an_integer : x has length 2, not 1."
-    )
-})
-
-
-
-test_that("assertAreGeneAnnotations", {
-    x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
-    expect_silent(assertAreGeneAnnotations(x))
-    expect_error(
-        assertAreGeneAnnotations(mtcars),
-        "is_subset : "
-    )
-})
-
-
-
-test_that("assertAreTranscriptAnnotations", {
-    x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
-    expect_silent(assertAreTranscriptAnnotations(x))
-    expect_error(
-        assertAreTranscriptAnnotations(mtcars),
-        "is_subset : "
     )
 })
 
@@ -239,7 +268,7 @@ test_that("assertIsFillScaleDiscreteOrNULL", {
 
 
 test_that("assertIsGene2symbol", {
-    expect_silent(assertIsGene2symbol(gene2symbol))
+    expect_silent(assertIsGene2symbol(g2s))
     expect_error(
         assertIsGene2symbol(mtcars),
         paste(
@@ -306,16 +335,16 @@ test_that("isImplicitInteger", {
 
 test_that("assertIsTx2gene", {
     tx2gene <- data.frame(
-        "txID" = c("tx_1", "tx_2"),
-        "geneID" = c("gene_1", "gene_2"),
-        row.names = c("tx_1", "tx_2")
+        transcriptID = c("transcript_1", "transcript_2"),
+        geneID = c("gene_1", "gene_2"),
+        row.names = c("transcript_1", "transcript_2")
     )
     expect_silent(assertIsTx2gene(tx2gene))
     expect_error(
         assertIsTx2gene(mtcars),
         paste(
             "are_identical :",
-            "colnames\\(x\\) and c\\(\"txID\", \"geneID\"\\)",
+            "colnames\\(x\\) and c\\(\"transcriptID\", \"geneID\"\\)",
             "are not identical."
         )
     )

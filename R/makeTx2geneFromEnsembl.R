@@ -23,7 +23,8 @@ makeTx2geneFromEnsembl <- function(
         release = release
     )
     mcols(gr) %>%
-        .[, c("txID", "geneID")] %>%
         as.data.frame() %>%
+        select(!!!syms(c("transcriptID", "geneID"))) %>%
+        mutate_all(as.character) %>%
         set_rownames(.[[1L]])
 }

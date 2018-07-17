@@ -21,8 +21,8 @@ Assert Are Ensembl Transcript Annotations
 }
 \examples{
 x <- data.frame(
-    "txID" = "ENST00000000233",
-    "geneID" = "ENSG00000004059"
+    transcriptID = "ENST00000000233",
+    geneID = "ENSG00000004059"
 )
 assertAreTranscriptAnnotations(x)
 }
@@ -31,6 +31,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
+  \code{\link{assertFormalInterestingGroups}},
   \code{\link{assertHasRownames}},
   \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},

@@ -15,11 +15,26 @@ This is an [R][] package.
 
 ### [Bioconductor][] method
 
+We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
+
+#### R >= 3.5
+
 ```r
-## try http:// if https:// URLs are not supported
+install.packages("BiocManager")
+library(BiocManager)
+install("devtools")
+install("GenomeInfoDbData")
+install("steinbaugh/basejump")
+```
+
+#### R < 3.5
+
+Legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
+
+```r
+# try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
 biocLite("devtools")
-biocLite("remotes")
 biocLite("GenomeInfoDbData")
 biocLite("steinbaugh/basejump")
 ```
@@ -27,6 +42,9 @@ biocLite("steinbaugh/basejump")
 ### [conda][]  method
 
 ```bash
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
 conda install -c bioconda r-basejump 
 ```
 

@@ -1,8 +1,9 @@
 cacheURL <- "http://basejump.seq.cloud"
 files <- c(
-    "dmelanogaster.gtf",
     "example.counts",
     "example.csv",
+    "example.gtf",
+    "example.gff3",
     "example.json",
     "example.rda",
     "example.rds",
@@ -10,7 +11,6 @@ files <- c(
     "example.txt",
     "example.yml",
     "gr.rda",
-    "mmusculus.gtf",
     "mn.rda",
     "multi.rda",
     "plotlist.rda",

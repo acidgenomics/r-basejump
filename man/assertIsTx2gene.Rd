@@ -8,8 +8,8 @@ assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript to gene identifier
-mappings. Must be structured as a two column \code{data.frame} with "txID" and
-"geneID" columns.}
+mappings. Must be structured as a two column \code{data.frame} with
+"transcriptID" and "geneID" columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -22,8 +22,8 @@ Assert Is Transcript-to-Gene Mapping Data
 }
 \examples{
 x <- data.frame(
-    "txID" = "ENST00000000233",
-    "geneID" = "ENSG00000004059"
+    transcriptID = "ENST00000000233",
+    geneID = "ENSG00000004059"
 )
 assertIsTx2gene(x)
 }
@@ -33,6 +33,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},
+  \code{\link{assertFormalInterestingGroups}},
   \code{\link{assertHasRownames}},
   \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
