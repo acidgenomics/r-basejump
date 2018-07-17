@@ -138,10 +138,6 @@ test_that("makeTx2geneFromGFF : Minimal GTF", {
             stringsAsFactors = FALSE
         )
     )
-    expect_message(
-        makeTx2geneFromGFF("mmusculus.gtf"),
-        "tx2gene mappings: 20 transcripts, 17 genes"
-    )
 })
 
 # FIXME This is broken
