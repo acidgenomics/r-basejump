@@ -5,21 +5,32 @@ context("GFF Functions")
 # makeGene2symbolFromGFF =======================================================
 test_that("makeGene2symbolFromGFF : Minimal GTF", {
     x <- makeGene2symbolFromGFF("example.gtf")
+    expect_is(x, "data.frame")
     expect_identical(dim(x), c(17L, 2L))
     expect_identical(
         head(x, 2L),
         data.frame(
-            "geneID" = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
-            "geneName" = c("Rp1", "Xkr4"),
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            geneName = c("Rp1", "Xkr4"),
             row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
             stringsAsFactors = FALSE
         )
     )
 })
 
-# FIXME This is broken
 test_that("makeGene2symbolFromGFF : Minimal GFF3", {
     x <- makeGene2symbolFromGFF("example.gff3")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(20L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            geneName = c("Rp1", "Sox17"),
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            stringsAsFactors = FALSE
+        )
+    )
 })
 
 
@@ -128,6 +139,7 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 # makeTx2geneFromGFF ===========================================================
 test_that("makeTx2geneFromGFF : Minimal GTF", {
     x <- makeTx2geneFromGFF("example.gtf")
+    expect_is(x, "data.frame")
     expect_identical(dim(x), c(20L, 2L))
     expect_identical(
         head(x, 2L),
@@ -140,7 +152,17 @@ test_that("makeTx2geneFromGFF : Minimal GTF", {
     )
 })
 
-# FIXME This is broken
 test_that("makeTx2geneFromGFF : Minimal GFF3", {
     x <- makeTx2geneFromGFF("example.gff3")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(26L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            transcriptID = c("ENSMUST00000027032", "ENSMUST00000027035"),
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            row.names = c("ENSMUST00000027032", "ENSMUST00000027035"),
+            stringsAsFactors = FALSE
+        )
+    )
 })
