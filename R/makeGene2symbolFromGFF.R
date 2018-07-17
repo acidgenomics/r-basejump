@@ -40,15 +40,15 @@ makeGene2symbolFromGFF <- function(file) {
             !"geneName" %in% colnames(data) &&
             "geneSymbol" %in% colnames(data)
         ) {
-            data[["geneName"]] <- data[["geneSymbol"]]
+            # Needed for FlyBase
+            data[["geneName"]] <- data[["geneSymbol"]]  # nocov
         }
     } else if (type == "GFF") {
         if (
             !"geneName" %in% colnames(data) &&
             "name" %in% colnames(data)
         ) {
-            # Needed for FlyBase
-            data[["geneName"]] <- data[["name"]]  # nocov
+            data[["geneName"]] <- data[["name"]]
         }
     }
 
