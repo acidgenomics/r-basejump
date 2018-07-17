@@ -740,7 +740,7 @@ assertIsTx2gene <- function(
     # Safe to remove once bcbioBase is updated
     # nocov start
     if ("txID" %in% colnames(x)) {
-        warning("Use `transcriptID` instead of `txID`")
+        message("Use `transcriptID` instead of `txID`")
         colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
     }
     # nocov end
