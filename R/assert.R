@@ -721,8 +721,8 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @inherit assert
 #'
 #' @param x `data.frame` containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column `data.frame` with "transcriptID" and
-#'   "geneID" columns.
+#'   mappings. Must be structured as a two column `data.frame` with
+#'   "transcriptID" and "geneID" columns.
 #'
 #' @export
 #'

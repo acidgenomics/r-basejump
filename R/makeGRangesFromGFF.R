@@ -1,11 +1,3 @@
-# TODO UCSC Support
-# TODO FlyBase GFF support
-# TODO WormBase GFF support
-# TODO WormBase has some malformed entries in GTF: Transcript:AC8.13
-# We may want to add a filter for these
-
-
-
 #' Genomic Ranges from GFF File
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
