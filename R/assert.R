@@ -737,6 +737,13 @@ assertIsTx2gene <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     assert_is_data.frame(x, severity = severity)
+    # Safe to remove once bcbioBase is updated
+    # nocov start
+    if ("txID" %in% colnames(x)) {
+        warning("Use `transcriptID` instead of `txID`")
+        colnames(x) <- gsub("^txID$", "transcriptID")
+    }
+    # nocov end
     assert_are_identical(
         x = colnames(x),
         y = c("transcriptID", "geneID"),
