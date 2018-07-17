@@ -266,7 +266,7 @@ makeGRangesFromEnsembl <- function(
 
     # Include the EnsDB metadata inside a list, if desired
     if (isTRUE(metadata)) {
-        list("data" = gr, "metadata" = meta)
+        list(data = gr, metadata = meta)
     } else {
         gr
     }

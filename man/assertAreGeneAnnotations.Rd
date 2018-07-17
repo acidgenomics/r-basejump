@@ -21,8 +21,8 @@ Assert Are Ensembl Gene Annotations
 }
 \examples{
 x <- data.frame(
-    "geneID" = "ENSG00000000003",
-    "geneName" = "TSPAN6"
+    geneID = "ENSG00000000003",
+    geneName = "TSPAN6"
 )
 assertAreGeneAnnotations(x)
 }
