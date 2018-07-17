@@ -192,7 +192,10 @@ test_that("readFileByExtension : Comma separated value file (.csv)", {
 })
 
 test_that("readFileByExtension : GFF", {
-    x <- readFileByExtension("mmusculus.gtf")
+    x <- readFileByExtension("example.gtf")
+    expect_s4_class(x, "GRanges")
+
+    x <- readFileByExtension("example.gff3")
     expect_s4_class(x, "GRanges")
 })
 
@@ -278,10 +281,10 @@ test_that("readFileByExtension : No extension", {
 
 
 # readGFF ======================================================================
-test_that("readGFF : Drosophila melanogaster", {
-    x <- readGFF("dmelanogaster.gtf")
+test_that("readGFF : Minimal GFF3", {
+    x <- readGFF("example.gff3")
     expect_s4_class(x, "GRanges")
-    expect_identical(levels(seqnames(x)), "X")
+    expect_identical(levels(seqnames(x)), "1")
     expect_identical(
         colnames(mcols(x)),
         c(
@@ -289,15 +292,34 @@ test_that("readGFF : Drosophila melanogaster", {
             "type",
             "score",
             "phase",
+            "ID",
+            "Alias",
+            "external_name",
+            "logic_name",
+            "Name",
+            "biotype",
+            "description",
             "gene_id",
-            "gene_symbol",
+            "havana_gene",
+            "havana_version",
+            "version",
+            "Parent",
+            "havana_transcript",
+            "tag",
             "transcript_id",
-            "transcript_symbol"
+            "transcript_support_level",
+            "constitutive",
+            "ensembl_end_phase",
+            "ensembl_phase",
+            "exon_id",
+            "rank",
+            "ccdsid",
+            "protein_id"
         )
     )
 })
 
-test_that("readGFF : Mus musculus", {
+test_that("readGFF : Minimal GTF", {
     x <- readGFF("mmusculus.gtf")
     expect_identical(levels(seqnames(x)), "1")
     expect_identical(
