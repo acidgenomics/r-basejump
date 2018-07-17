@@ -47,7 +47,8 @@ makeGene2symbolFromGFF <- function(file) {
             !"geneName" %in% colnames(data) &&
             "name" %in% colnames(data)
         ) {
-            data[["geneName"]] <- data[["name"]]
+            # Needed for FlyBase
+            data[["geneName"]] <- data[["name"]]  # nocov
         }
     }
 

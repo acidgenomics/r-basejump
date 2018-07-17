@@ -2,9 +2,9 @@
 .gffSource <- function(gff) {
     assert_is_subset("source", colnames(mcols(gff)))
     if (any(grepl("FlyBase", mcols(gff)[["source"]]))) {
-        "FlyBase"
+        "FlyBase"  # nocov
     } else if (any(grepl("WormBase", mcols(gff)[["source"]]))) {
-        "WormBase"
+        "WormBase"  # nocov
     } else if (any(grepl(
         "ensembl", mcols(gff)[["source"]], ignore.case = TRUE
     ))) {
@@ -55,12 +55,14 @@
 
     # Missing `geneName`
     if (!"geneName" %in% colnames(mcols)) {
+        # nocov start
         warning(paste(
             "`geneName` is missing.",
             "Using `geneID` in place."
         ))
         assert_is_subset("geneID", colnames(mcols))
         mcols[["geneName"]] <- mcols[["geneID"]]
+        # nocov end
     }
 
     # Missing `transcriptName`
@@ -68,11 +70,13 @@
         "transcriptID" %in% colnames(mcols) &&
         !"transcriptName" %in% colnames(mcols)
     ) {
+        # nocov start
         warning(paste(
             "`transcriptName` is missing.",
             "Using `transcriptID` in place."
         ))
         mcols[["transcriptName"]] <- mcols[["transcriptID"]]
+        # nocov end
     }
 
     # Always use `geneName` instead of `symbol`
