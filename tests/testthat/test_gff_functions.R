@@ -3,8 +3,8 @@ context("GFF Functions")
 
 
 # makeGene2symbolFromGFF =======================================================
-test_that("makeGene2symbolFromGFF : Mus musculus", {
-    x <- makeGene2symbolFromGFF("mmusculus.gtf")
+test_that("makeGene2symbolFromGFF : Minimal GTF", {
+    x <- makeGene2symbolFromGFF("example.gtf")
     expect_identical(dim(x), c(17L, 2L))
     expect_identical(
         head(x, 2L),
@@ -17,25 +17,18 @@ test_that("makeGene2symbolFromGFF : Mus musculus", {
     )
 })
 
-test_that("makeGene2symbolFromGFF : Drosophila melanogaster", {
-    x <- makeGene2symbolFromGFF("dmelanogaster.gtf")
-    expect_identical(dim(x), c(5L, 2L))
-    expect_identical(
-        head(x, 2L),
-        data.frame(
-            "geneID" = c("FBgn0031081", "FBgn0031085"),
-            "geneName" = c("Nep3", "CG9570"),
-            row.names = c("FBgn0031081", "FBgn0031085"),
-            stringsAsFactors = FALSE
-        )
-    )
+# FIXME This is broken
+test_that("makeGene2symbolFromGFF : Minimal GFF3", {
+    x <- makeGene2symbolFromGFF("example.gff3")
 })
 
 
 
 # makeGRangesFromGFF ===========================================================
-test_that("makeGRangesFromGFF : genes", {
-    x <- makeGRangesFromGFF("mmusculus.gtf", format = "genes")
+test_that("makeGRangesFromGFF : Minimal GTF", {
+    # Genes
+    x <- makeGRangesFromGFF("example.gtf", format = "genes")
+    expect_s4_class(x, "GRanges")
     expect_identical(length(x), 17L)
     expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
     expect_identical(
@@ -51,10 +44,10 @@ test_that("makeGRangesFromGFF : genes", {
             type = "factor"
         )
     )
-})
 
-test_that("makeGRangesFromGFF : transcripts", {
-    x <- makeGRangesFromGFF("mmusculus.gtf", format = "transcripts")
+    # Transcripts
+    x <- makeGRangesFromGFF("example.gtf", format = "transcripts")
+    expect_s4_class(x, "GRanges")
     expect_identical(length(x), 20L)
     expect_identical(names(x)[[1L]], "ENSMUST00000070533")
     expect_identical(
@@ -80,25 +73,61 @@ test_that("makeGRangesFromGFF : transcripts", {
     )
 })
 
-
-
-# makeTx2geneFromGFF ===========================================================
-test_that("makeTx2geneFromGFF : Drosophila melanogaster", {
-    x <- makeTx2geneFromGFF("dmelanogaster.gtf")
-    expect_identical(dim(x), c(7L, 2L))
+test_that("makeGRangesFromGFF : Minimal GFF3", {
+    # Genes
+    x <- makeGRangesFromGFF("example.gff3", format = "genes")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 20L)
+    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
     expect_identical(
-        head(x, 2L),
-        data.frame(
-            transcriptID = c("FBtr0070000", "FBtr0070001"),
-            geneID = c("FBgn0031081", "FBgn0052826"),
-            row.names = c("FBtr0070000", "FBtr0070001"),
-            stringsAsFactors = FALSE
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            description = "character",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "character",
+            havanaGene = "factor",
+            havanaVersion = "factor",
+            logicName = "factor",
+            source = "factor",
+            type = "factor",
+            version = "factor"
+        )
+    )
+
+    # Transcripts
+    x <- makeGRangesFromGFF("example.gff3", format = "transcripts")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 26L)
+    expect_identical(names(x)[[1L]], "ENSMUST00000027032")
+    expect_identical(
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            ccdsID = "factor",
+            geneBiotype = "factor",
+            geneID = "factor",
+            geneName = "factor",
+            havanaTranscript = "factor",
+            havanaVersion = "factor",
+            source = "factor",
+            tag = "factor",
+            transcriptBiotype = "factor",
+            transcriptID = "character",
+            transcriptName = "character",
+            transcriptSupportLevel = "factor",
+            type = "factor",
+            version = "factor"
         )
     )
 })
 
-test_that("makeTx2geneFromGFF : Mus musculus", {
-    x <- makeTx2geneFromGFF("mmusculus.gtf")
+
+
+# makeTx2geneFromGFF ===========================================================
+test_that("makeTx2geneFromGFF : Minimal GTF", {
+    x <- makeTx2geneFromGFF("example.gtf")
     expect_identical(dim(x), c(20L, 2L))
     expect_identical(
         head(x, 2L),
@@ -113,4 +142,9 @@ test_that("makeTx2geneFromGFF : Mus musculus", {
         makeTx2geneFromGFF("mmusculus.gtf"),
         "tx2gene mappings: 20 transcripts, 17 genes"
     )
+})
+
+# FIXME This is broken
+test_that("makeTx2geneFromGFF : Minimal GFF3", {
+    x <- makeTx2geneFromGFF("example.gff3")
 })
