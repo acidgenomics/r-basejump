@@ -12,7 +12,8 @@ assignAndSaveData(name, object, dir = ".", compress = TRUE,
 
 \item{object}{Object.}
 
-\item{dir}{Output directory. Defaults to the current working directory.}
+\item{dir}{\code{string}. Output directory. Defaults to the current working
+directory.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to

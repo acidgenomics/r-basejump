@@ -30,7 +30,8 @@ sanitizeRowData(x) \%>\% glimpse()
 }
 \seealso{
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{removeNA}}
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh

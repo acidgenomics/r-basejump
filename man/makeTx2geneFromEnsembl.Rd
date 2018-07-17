@@ -7,7 +7,7 @@
 makeTx2geneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
 }
 \arguments{
-\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
 If \code{NULL}, defaults to the most recent build available.}

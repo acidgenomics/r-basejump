@@ -25,5 +25,6 @@ makeGene2symbolFromEnsembl <- function(
     mcols(gr) %>%
         .[, c("geneID", "geneName")] %>%
         as.data.frame() %>%
+        mutate_all(as.character) %>%
         set_rownames(.[[1L]])
 }

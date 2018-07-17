@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.5.11
+Version: 0.6.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -31,7 +31,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
 Depends:
-    R (>= 3.4)
+    R (>= 3.4),
+    SummarizedExperiment
 Imports:
     AnnotationHub,
     assertive.base,
@@ -43,11 +44,13 @@ Imports:
     assertive.sets,
     assertive.strings,
     assertive.types,
+    Biobase,
+    BiocGenerics,
     cowplot (>= 0.9),
     dplyr (>= 0.7),
     ensembldb,
-    GenomeInfoDb,
     GenomicFeatures,
+    GenomeInfoDb,
     GenomicRanges,
     ggplot2 (>= 3.0),
     IRanges,

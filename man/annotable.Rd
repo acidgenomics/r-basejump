@@ -8,7 +8,7 @@ annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
   release = NULL)
 }
 \arguments{
-\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{format}{Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 

@@ -8,7 +8,7 @@ panther(organism = c("Homo sapiens", "Mus musculus", "Caenorhabditis elegans",
   "Drosophila melanogaster"), release = NULL)
 }
 \arguments{
-\item{organism}{Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{release}{\code{character} string denoting PANTHER release version. If
 \code{NULL}, defaults to current release. Consult the PANTHER website for a list

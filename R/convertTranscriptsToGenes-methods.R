@@ -66,15 +66,22 @@ setMethod(
         }
         assertIsTx2gene(tx2gene)
 
-        missing <- setdiff(object, tx2gene[["txID"]])
+        missing <- setdiff(object, tx2gene[["transcriptID"]])
         if (length(missing)) {
             stop(paste("Failed to match transcripts:", toString(missing)))
         }
 
-        tx2gene <- tx2gene[match(object, tx2gene[["txID"]]), , drop = FALSE]
+        tx2gene <- tx2gene[
+            match(
+                x = object,
+                table = tx2gene[["transcriptID"]]
+            ),
+            ,
+            drop = FALSE
+        ]
 
         return <- tx2gene[["geneID"]]
-        names(return) <- tx2gene[["txID"]]
+        names(return) <- tx2gene[["transcriptID"]]
         return
     }
 )

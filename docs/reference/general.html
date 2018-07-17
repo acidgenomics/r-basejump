@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.11</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.0</span>
       </span>
     </div>
 
@@ -77,9 +77,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -103,7 +100,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>General Arguments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/internal-general.R'><code>R/internal-general.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/general.R'><code>R/general.R</code></a></small>
     <div class="hidden name"><code>general.Rd</code></div>
     </div>
 
@@ -143,24 +140,29 @@
     </tr>
     <tr>
       <th>dir</th>
-      <td><p>Output directory. Defaults to the current working directory.</p></td>
+      <td><p><code>string</code>. Output directory. Defaults to the current working
+directory.</p></td>
     </tr>
     <tr>
       <th>envir</th>
-      <td><p>Environment to use for assignment. Defaults to <code>parent.frame()</code>,
-which will assign into the calling environment.</p></td>
+      <td><p><code>environment</code> to use for assignment. Defaults to
+<code>parent.frame()</code>, which will assign into the calling environment.</p></td>
     </tr>
     <tr>
       <th>file</th>
-      <td><p>File path.</p></td>
+      <td><p><code>string</code>. File path.</p></td>
     </tr>
     <tr>
       <th>headerLevel</th>
-      <td><p>Markdown header level.</p></td>
+      <td><p><code>integer scalar</code>. Markdown header level (1-7).</p></td>
+    </tr>
+    <tr>
+      <th>interestingGroups</th>
+      <td><p><code>character</code>. Groups of interest.</p></td>
     </tr>
     <tr>
       <th>organism</th>
-      <td><p>Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
     </tr>
     <tr>
       <th>plotlist</th>

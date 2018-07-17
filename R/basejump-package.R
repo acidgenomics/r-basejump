@@ -2,6 +2,8 @@
 #'
 #' Base functions for bioinformatics and R package development.
 #'
+#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom assertive.base assert_all_are_not_na assert_are_identical
 #'   assert_is_identical_to_na is_not_na
@@ -26,12 +28,13 @@
 #'   assert_is_character assert_is_data.frame assert_is_environment
 #'   assert_is_factor assert_is_integer assert_is_list assert_is_matrix
 #'   assert_is_name assert_is_numeric is_a_number is_a_string
+#' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange case_when everything filter funs group_by mutate
 #'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
 #'   ungroup
 #' @importFrom ensembldb ensemblVersion organism
-#' @importFrom GenomicFeatures genes makeTxDbFromGFF transcripts
+#' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 element_blank element_line element_rect element_text
 #'   theme theme_linedraw
@@ -41,21 +44,22 @@
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames set_names
-#' @importFrom methods as getGeneric is selectMethod show
+#' @importFrom methods as getGeneric is selectMethod show validObject
 #' @importFrom pbapply pblapply
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
-#' @importFrom rlang !! UQ sym dots_list eval_bare
+#' @importFrom rlang !! !!! dots_list eval_bare UQ sym syms
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors as.data.frame complete.cases mcols<- metadata na.omit
-#'   tail
+#' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
+#'   metadata<- na.omit setdiff tail
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
+#' @importFrom SummarizedExperiment assays colData colData<-
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
-#' @importFrom tidyr separate
+#' @importFrom tidyr separate unite
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table
 #' @importFrom yaml yaml.load_file

@@ -116,11 +116,45 @@ setGeneric(
 
 
 
+#' @rdname gene2symbol
+#' @export
+setGeneric(
+    "gene2symbol",
+    function(object) {
+        standardGeneric("gene2symbol")
+    }
+)
+
+
+
 #' @rdname geometricMean
+#' @export
 setGeneric(
     "geometricMean",
     function(object, ...) {
         standardGeneric("geometricMean")
+    }
+)
+
+
+
+#' @rdname interestingGroups
+#' @export
+setGeneric(
+    "interestingGroups",
+    function(object, ...) {
+        standardGeneric("interestingGroups")
+    }
+)
+
+
+
+#' @rdname interestingGroups
+#' @export
+setGeneric(
+    "interestingGroups<-",
+    function(object, ..., value) {
+        standardGeneric("interestingGroups<-")
     }
 )
 
@@ -148,6 +182,39 @@ setGeneric(
 
 
 
+#' @rdname sampleData
+#' @export
+setGeneric(
+    "sampleData",
+    function(object, ...) {
+        standardGeneric("sampleData")
+    }
+)
+
+
+
+#' @rdname sampleData
+#' @export
+setGeneric(
+    "sampleData<-",
+    function(object, ..., value) {
+        standardGeneric("sampleData<-")
+    }
+)
+
+
+
+#' @rdname selectSamples
+#' @export
+setGeneric(
+    "selectSamples",
+    function(object, ...) {
+        standardGeneric("selectSamples")
+    }
+)
+
+
+
 #' @rdname makeNames
 #' @export
 setGeneric(
@@ -165,6 +232,17 @@ setGeneric(
     "stripTranscriptVersions",
     function(object, ...) {
         standardGeneric("stripTranscriptVersions")
+    }
+)
+
+
+
+#' @rdname uniteInterestingGroups
+#' @export
+setGeneric(
+    "uniteInterestingGroups",
+    function(object, ...) {
+        standardGeneric("uniteInterestingGroups")
     }
 )
 
