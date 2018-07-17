@@ -8,8 +8,8 @@ assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript to gene identifier
-mappings. Must be structured as a two column \code{data.frame} with "transcriptID" and
-"geneID" columns.}
+mappings. Must be structured as a two column \code{data.frame} with
+"transcriptID" and "geneID" columns.}
 
 \item{severity}{How severe should the consequences of the assertion be?
 Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
