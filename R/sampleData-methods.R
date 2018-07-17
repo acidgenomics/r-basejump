@@ -42,6 +42,7 @@ setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
     function(object, clean = FALSE) {
+        # nocov start
         if (isTRUE(clean)) {
             warning(paste(
                 "`clean = TRUE` argument is deprecated for",
@@ -49,6 +50,7 @@ setMethod(
                 "provided in the upcoming release."
             ))
         }
+        # nocov end
         colData(object)
     }
 )
