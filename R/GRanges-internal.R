@@ -121,7 +121,7 @@
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
 
     # Ensure GRanges is sorted by names
-    message(paste("Sorting GRanges by", idCol))
+    message(paste("Sorting ranges by", idCol))
     object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")
