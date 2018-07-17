@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.6.1
+Version: 0.6.0
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
