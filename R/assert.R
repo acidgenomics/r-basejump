@@ -737,10 +737,9 @@ assertIsTx2gene <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     assert_is_data.frame(x, severity = severity)
-    # Safe to remove once bcbioBase is updated
     # nocov start
+    # Consider informing the user about this in a future update
     if ("txID" %in% colnames(x)) {
-        message("Use `transcriptID` instead of `txID`")
         colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
     }
     # nocov end
