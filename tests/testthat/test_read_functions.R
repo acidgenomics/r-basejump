@@ -320,7 +320,7 @@ test_that("readGFF : Minimal GFF3", {
 })
 
 test_that("readGFF : Minimal GTF", {
-    x <- readGFF("mmusculus.gtf")
+    x <- readGFF("example.gtf")
     expect_identical(levels(seqnames(x)), "1")
     expect_identical(
         colnames(mcols(x)),
