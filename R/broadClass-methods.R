@@ -80,9 +80,9 @@ setMethod(
         ))
 
         data <- tibble(
-            "geneName" = geneName,
-            "biotype" = biotype,
-            "seqname" = seqname
+            geneName = geneName,
+            biotype = biotype,
+            seqname = seqname
         )
 
         broad <- case_when(
