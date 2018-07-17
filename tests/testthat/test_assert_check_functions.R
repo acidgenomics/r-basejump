@@ -1,8 +1,8 @@
 context("Assert Check Functions")
 
 g2s <- data.frame(
-    "geneID" = c("gene_1", "gene_2"),
-    "geneName" = c("symbol_1", "symbol_2"),
+    geneID = c("gene_1", "gene_2"),
+    geneName = c("symbol_1", "symbol_2"),
     row.names = c("gene_1", "gene_2")
 )
 

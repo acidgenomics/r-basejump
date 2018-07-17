@@ -6,7 +6,7 @@ context("Save Utilities")
 test_that("assignAndSaveData", {
     expect_identical(
         assignAndSaveData(name = "example", object = rnaseq_counts),
-        c("example" = file.path(getwd(), "example.rda"))
+        c(example = file.path(getwd(), "example.rda"))
     )
     expect_message(
         assignAndSaveData("example", rnaseq_counts),

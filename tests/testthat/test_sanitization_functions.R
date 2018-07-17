@@ -115,15 +115,15 @@ test_that("fixNA", {
     # data.frame with rownames
     expect_identical(
         data.frame(
-            "a" = c("foo", ""),
-            "b" = c(NA, "bar"),
+            a = c("foo", ""),
+            b = c(NA, "bar"),
             row.names = c("c", "d"),
             stringsAsFactors = FALSE
         ) %>%
             fixNA(),
         data.frame(
-            "a" = c("foo", NA),
-            "b" = c(NA, "bar"),
+            a = c("foo", NA),
+            b = c(NA, "bar"),
             row.names = c("c", "d"),
             stringsAsFactors = FALSE
         )
@@ -132,14 +132,14 @@ test_that("fixNA", {
     # data.frame without rownames
     expect_identical(
         data.frame(
-            "a" = c("foo", ""),
-            "b" = c(NA, "bar"),
+            a = c("foo", ""),
+            b = c(NA, "bar"),
             stringsAsFactors = FALSE
         ) %>%
             fixNA(),
         data.frame(
-            "a" = c("foo", NA),
-            "b" = c(NA, "bar"),
+            a = c("foo", NA),
+            b = c(NA, "bar"),
             stringsAsFactors = FALSE
         )
     )
@@ -147,33 +147,33 @@ test_that("fixNA", {
     # DataFrame
     expect_identical(
         DataFrame(
-            "a" = c("foo", ""),
-            "b" = c(NA, "bar")
+            a = c("foo", ""),
+            b = c(NA, "bar")
         ) %>%
             fixNA(),
         DataFrame(
-            "a" = c("foo", NA),
-            "b" = c(NA, "bar")
+            a = c("foo", NA),
+            b = c(NA, "bar")
         )
     )
 
     # tbl_df
     expect_identical(
         tibble(
-            "a" = c("foo", ""),
-            "b" = c(NA, "bar")
+            a = c("foo", ""),
+            b = c(NA, "bar")
         ) %>%
             fixNA(),
         tibble(
-            "a" = c("foo", NA),
-            "b" = c(NA, "bar")
+            a = c("foo", NA),
+            b = c(NA, "bar")
         )
     )
 
     # ANY (list)
     expect_identical(
-        fixNA(list("a" = 1L)),
-        list("a" = 1L)
+        fixNA(list(a = 1L)),
+        list(a = 1L)
     )
 })
 
@@ -184,14 +184,14 @@ test_that("removeNA : data.frame", {
     # data.frame
     expect_identical(
         data.frame(
-            "a" = c("A", NA, "C"),
-            "b" = c(NA, NA, NA),
-            "c" = c("B", NA, "D")
+            a = c("A", NA, "C"),
+            b = c(NA, NA, NA),
+            c = c("B", NA, "D")
         ) %>%
             removeNA(),
         data.frame(
-            "a" = c("A", "C"),
-            "c" = c("B", "D"),
+            a = c("A", "C"),
+            c = c("B", "D"),
             row.names = c(1L, 3L)
         )
     )
@@ -241,10 +241,10 @@ test_that("sanitizeRowData", {
 # sanitizeSampleData ===========================================================
 test_that("sanitizeSampleData", {
     sd <- DataFrame(
-        "genotype" = factor(c("wt", "ko", "wt", "ko")),
-        "batch" = factor(c(1L, 1L, 2L, 2L)),
+        genotype = factor(c("wt", "ko", "wt", "ko")),
+        batch = factor(c(1L, 1L, 2L, 2L)),
         # not a factor yet
-        "day" = c(14L, 14L, 30L, 30L),
+        day = c(14L, 14L, 30L, 30L),
         row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
     )
     x <- sanitizeSampleData(sd)

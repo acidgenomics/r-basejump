@@ -1,10 +1,10 @@
 context("Name Functions")
 
 funs <- list(
-    "camel" = camel,
-    "dotted" = dotted,
-    "snake" = snake,
-    "upperCamel" = upperCamel
+    camel = camel,
+    dotted = dotted,
+    snake = snake,
+    upperCamel = upperCamel
 )
 
 
@@ -40,19 +40,19 @@ test_that("makeNames : ANY", {
         )
     )
     expect <- list(
-        "camel" = list(
+        camel = list(
             c("geneID1", "geneID2"),
             c("sampleID1", "sampleID2")
         ),
-        "dotted" = list(
+        dotted = list(
             c("gene.ID.1", "gene.ID.2"),
             c("sample.ID.1", "sample.ID.2")
         ),
-        "snake" = list(
+        snake = list(
             c("gene_id_1", "gene_id_2"),
             c("sample_id_1", "sample_id_2")
         ),
-        "upperCamel" = list(
+        upperCamel = list(
             c("GeneID1", "GeneID2"),
             c("SampleID1", "SampleID2")
         )
@@ -71,7 +71,7 @@ test_that("makeNames : ANY", {
 test_that("makeNames : character", {
     x <- mn[["character"]]
     expect <- list(
-        "camel" = c(
+        camel = c(
             "helloWorld",
             "helloWORLD",
             "rnaiClones",
@@ -84,7 +84,7 @@ test_that("makeNames : character", {
             "x123",
             NA
         ),
-        "dotted" = c(
+        dotted = c(
             "hello.world",
             "HELLO.WORLD",
             "RNAI.clones",
@@ -97,7 +97,7 @@ test_that("makeNames : character", {
             "X123",
             NA
         ),
-        "snake" = c(
+        snake = c(
             "hello_world",
             "hello_world",
             "rnai_clones",
@@ -110,7 +110,7 @@ test_that("makeNames : character", {
             "x123",
             NA
         ),
-        "upperCamel" = c(
+        upperCamel = c(
             "HelloWorld",
             "HELLOWORLD",  # improve this?
             "RNAIClones",
@@ -132,10 +132,10 @@ test_that("makeNames : character", {
 test_that("makeNames : character : named", {
     x <- mn[["namedCharacter"]]
     expect <- list(
-        "camel" = c("itemA" = "helloWorld", "itemB" = "helloWORLD"),
-        "dotted" = c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD"),
-        "snake" = c("item_a" = "hello_world", "item_b" = "hello_world"),
-        "upperCamel" = c("ItemA" = "HelloWorld", "ItemB" = "HELLOWORLD")
+        camel = c(itemA = "helloWorld", itemB = "helloWORLD"),
+        dotted = c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD"),
+        snake = c("item_a" = "hello_world", "item_b" = "hello_world"),
+        upperCamel = c(ItemA = "HelloWorld", ItemB = "HELLOWORLD")
     )
     lapply(seq_along(funs), function(i) {
         expect_identical(funs[[i]](x), expect[[i]])
@@ -193,16 +193,16 @@ test_that("makeNames : character : camel-specific", {
 test_that("makeNames : factor", {
     x <- mn[["factor"]]
     levels <- list(
-        "camel" = c("group1", "group2"),
-        "dotted" = c("group.1", "group.2"),
-        "snake" = c("group_1", "group_2"),
-        "upperCamel" = c("Group1", "Group2")
+        camel = c("group1", "group2"),
+        dotted = c("group.1", "group.2"),
+        snake = c("group_1", "group_2"),
+        upperCamel = c("Group1", "Group2")
     )
     names <- list(
-        "camel" = c("sample1", "sample2", "sample3", "sample4"),
-        "dotted" = c("sample.1", "sample.2", "sample.3", "sample.4"),
-        "snake" = c("sample_1", "sample_2", "sample_3", "sample_4"),
-        "upperCamel" = c("Sample1", "Sample2", "Sample3", "Sample4")
+        camel = c("sample1", "sample2", "sample3", "sample4"),
+        dotted = c("sample.1", "sample.2", "sample.3", "sample.4"),
+        snake = c("sample_1", "sample_2", "sample_3", "sample_4"),
+        upperCamel = c("Sample1", "Sample2", "Sample3", "Sample4")
     )
     lapply(seq_along(funs), function(i) {
         expect_identical(levels(funs[[i]](x)), levels[[i]])
@@ -216,19 +216,19 @@ test_that("makeNames : factor", {
 test_that("makeNames : matrix", {
     x <- mn[["matrix"]][1L:3L, 1L:3L]
     expect <- list(
-        "camel" = list(
+        camel = list(
             c("alabama", "alaska", "arizona"),
             c("murder", "assault", "urbanPop")
         ),
-        "dotted" = list(
+        dotted = list(
             c("Alabama", "Alaska", "Arizona"),
             c("Murder", "Assault", "Urban.Pop")
         ),
-        "snake" = list(
+        snake = list(
             c("alabama", "alaska", "arizona"),
             c("murder", "assault", "urban_pop")
         ),
-        "upperCamel" = list(
+        upperCamel = list(
             c("Alabama", "Alaska", "Arizona"),
             c("Murder", "Assault", "UrbanPop")
         )
@@ -247,7 +247,7 @@ test_that("makeNames : matrix", {
 test_that("camel : GRanges", {
     # gr object is already camel formatted!
     expect <- list(
-        "camel" = c(
+        camel = c(
             "geneID",
             "geneName",
             "geneBiotype",
@@ -256,7 +256,7 @@ test_that("camel : GRanges", {
             "entrezID",
             "broadClass"
         ),
-        "dotted" = c(
+        dotted = c(
             "gene.ID",
             "gene.Name",
             "gene.Biotype",
@@ -265,7 +265,7 @@ test_that("camel : GRanges", {
             "entrez.ID",
             "broad.Class"
         ),
-        "snake" = c(
+        snake = c(
             "gene_id",
             "gene_name",
             "gene_biotype",
@@ -274,7 +274,7 @@ test_that("camel : GRanges", {
             "entrez_id",
             "broad_class"
         ),
-        "upperCamel" = c(
+        upperCamel = c(
             "GeneID",
             "GeneName",
             "GeneBiotype",
@@ -298,10 +298,10 @@ test_that("camel : GRanges", {
 test_that("camel : list", {
     x <- mn[["list"]]
     expect <- list(
-        "camel" = c("itemA", "itemB"),
-        "dotted" = c("Item.A", "Item.B"),
-        "snake" = c("item_a", "item_b"),
-        "upperCamel" = c("ItemA", "ItemB")
+        camel = c("itemA", "itemB"),
+        dotted = c("Item.A", "Item.B"),
+        snake = c("item_a", "item_b"),
+        upperCamel = c("ItemA", "ItemB")
     )
     lapply(seq_along(funs), function(i) {
         expect_identical(names(funs[[i]](x)), expect[[i]])

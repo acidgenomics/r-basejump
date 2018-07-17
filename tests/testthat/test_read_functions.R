@@ -6,14 +6,14 @@ test_that("loadData", {
     x <- loadData(gr)
     expect_identical(
         x,
-        c("gr" = normalizePath("gr.rda", winslash = "/"))
+        c(gr = normalizePath("gr.rda", winslash = "/"))
     )
 
     # rds
     x <- loadData(serialized)
     expect_identical(
         x,
-        c("serialized" = normalizePath("serialized.rds", winslash = "/"))
+        c(serialized = normalizePath("serialized.rds", winslash = "/"))
     )
 })
 
@@ -135,7 +135,7 @@ test_that("loadRemoteData", {
     x <- loadRemoteData(url)
     # Character matrix of loaded files
     expect_is(x, "character")
-    expect_identical(x, c("example" = url))
+    expect_identical(x, c(example = url))
     # Check that the object loaded correctly
     expect_is(example, "data.frame")
 })

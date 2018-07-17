@@ -96,7 +96,7 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
                 release = ensemblRelease
             )
         ),
-        c("EGFP" = "EGFP", "ENSMUSG00000000001" = "Gnai3")
+        c(EGFP = "EGFP", "ENSMUSG00000000001" = "Gnai3")
     )
 })
 
