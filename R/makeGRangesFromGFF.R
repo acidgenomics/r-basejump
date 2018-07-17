@@ -46,29 +46,11 @@ makeGRangesFromGFF <- function(
     assert_is_all_of(gff, "GRanges")
     gff <- camel(gff)
 
-    # Determine if GFF or GTF
-    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
-        type <- "GFF"
-    } else {
-        type <- "GTF"
-    }
-
-    # Report the source of the gene annotations
-    assert_is_subset("source", colnames(mcols(gff)))
-    if (any(grepl("FlyBase", mcols(gff)[["source"]]))) {
-        source <- "FlyBase"
-    } else if (any(grepl("WormBase", mcols(gff)[["source"]]))) {
-        source <- "WormBase"
-    } else if (any(grepl(
-        "ensembl", mcols(gff)[["source"]], ignore.case = TRUE
-    ))) {
-        source <- "Ensembl"
-    } else {
-        stop("Unsupported GFF source")
-    }
-
+    source <- .gffSource(gff)
+    type <- .gffType(gff)
     message(paste(source, type, "detected"))
 
+    # nocov start
     if (
         source %in% c("FlyBase", "WormBase") &&
         type == "GFF"
@@ -77,6 +59,7 @@ makeGRangesFromGFF <- function(
             "Only GTF files are currently supported from", source
         ))
     }
+    # nocov end
 
     # Always require `geneID` and `transcriptID` columns in file
     assert_is_subset(

@@ -1,3 +1,34 @@
+# Report the source of the gene annotations
+.gffSource <- function(gff) {
+    assert_is_subset("source", colnames(mcols(gff)))
+    if (any(grepl("FlyBase", mcols(gff)[["source"]]))) {
+        "FlyBase"
+    } else if (any(grepl("WormBase", mcols(gff)[["source"]]))) {
+        "WormBase"
+    } else if (any(grepl(
+        "ensembl", mcols(gff)[["source"]], ignore.case = TRUE
+    ))) {
+        "Ensembl"
+    } else {
+        stop("Unsupported GFF source")  # nocov
+    }
+}
+
+
+
+# Determine if GFF or GTF
+.gffType <- function(gff) {
+    stopifnot(is(gff, "GRanges"))
+    gff <- camel(gff)
+    if (all(c("id", "name") %in% colnames(mcols(gff)))) {
+        "GFF"
+    } else {
+        "GTF"
+    }
+}
+
+
+
 .makeGRanges <- function(object) {
     assert_is_all_of(object, "GRanges")
     assert_has_names(object)
