@@ -26,8 +26,8 @@ Assert Formal Gene to Symbol Mappings
 }
 \examples{
 gene2symbol <- data.frame(
-    "geneID" = c("ENSG00000000003", "ENSG00000000005"),
-    "geneName" = c("TSPAN6", "TNMD"),
+    geneID = c("ENSG00000000003", "ENSG00000000005"),
+    geneName = c("TSPAN6", "TNMD"),
     row.names = c("ENSG00000000003", "ENSG00000000005")
 )
 genes <- head(rownames(gene2symbol), 2L)

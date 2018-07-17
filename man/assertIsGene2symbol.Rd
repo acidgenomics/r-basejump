@@ -22,8 +22,8 @@ Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
 x <- data.frame(
-    "geneID" = "ENSG00000000003",
-    "geneName" = "TSPAN6"
+    geneID = "ENSG00000000003",
+    geneName = "TSPAN6"
 )
 assertIsGene2symbol(x)
 }
