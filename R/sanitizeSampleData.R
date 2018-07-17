@@ -11,8 +11,8 @@
 #' @examples
 #' # DataFrame ====
 #' from <- DataFrame(
-#'     "genotype" = c("wt", "ko", "wt", "ko"),
-#'     "batch" = c(1L, 1L, 2L, 2L),
+#'     genotype = c("wt", "ko", "wt", "ko"),
+#'     batch = c(1L, 1L, 2L, 2L),
 #'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
 #' )
 #' glimpse(from)
@@ -21,8 +21,8 @@
 #'
 #' # data.frame ====
 #' from <- data.frame(
-#'     "genotype" = c("wt", "ko", "wt", "ko"),
-#'     "batch" = c(1L, 1L, 2L, 2L),
+#'     genotype = c("wt", "ko", "wt", "ko"),
+#'     batch = c(1L, 1L, 2L, 2L),
 #'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
 #'     stringsAsFactors = FALSE
 #' )

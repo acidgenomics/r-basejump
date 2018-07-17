@@ -72,7 +72,7 @@ saveData <- function(
             object = objects,
             file = files,
             MoreArgs = list(
-                "compress" = compress
+                compress = compress
             )
         )
     } else {
@@ -81,8 +81,8 @@ saveData <- function(
             list = names(files),
             file = files,
             MoreArgs = list(
-                "envir" = parent.frame(),
-                "compress" = compress
+                envir = parent.frame(),
+                compress = compress
             )
         )
     }

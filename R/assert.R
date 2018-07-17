@@ -64,8 +64,8 @@ assertAllAreNonExisting <- function(
 #'
 #' @examples
 #' x <- data.frame(
-#'     "geneID" = "ENSG00000000003",
-#'     "geneName" = "TSPAN6"
+#'     geneID = "ENSG00000000003",
+#'     geneName = "TSPAN6"
 #' )
 #' assertAreGeneAnnotations(x)
 assertAreGeneAnnotations <- function(
@@ -160,8 +160,8 @@ assertFormalCompress <- function(
 #'
 #' @examples
 #' gene2symbol <- data.frame(
-#'     "geneID" = c("ENSG00000000003", "ENSG00000000005"),
-#'     "geneName" = c("TSPAN6", "TNMD"),
+#'     geneID = c("ENSG00000000003", "ENSG00000000005"),
+#'     geneName = c("TSPAN6", "TNMD"),
 #'     row.names = c("ENSG00000000003", "ENSG00000000005")
 #' )
 #' genes <- head(rownames(gene2symbol), 2L)
@@ -615,8 +615,8 @@ assertIsFillScaleDiscreteOrNULL <- function(
 #'
 #' @examples
 #' x <- data.frame(
-#'     "geneID" = "ENSG00000000003",
-#'     "geneName" = "TSPAN6"
+#'     geneID = "ENSG00000000003",
+#'     geneName = "TSPAN6"
 #' )
 #' assertIsGene2symbol(x)
 assertIsGene2symbol <- function(
