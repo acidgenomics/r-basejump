@@ -13,27 +13,53 @@
 #' @export
 #'
 #' @examples
+#' # GTF
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
+#' glimpse(x)
+#'
+#' # GFFv3
+#' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
 #' glimpse(x)
 makeGene2symbolFromGFF <- function(file) {
     message("Making gene2symbol from GFF")
+    gff <- readGFF(file)
 
-    data <- readGFF(file) %>%
+    source <- .gffSource(gff)
+    type <- .gffType(gff)
+    message(paste(source, type, "detected"))
+
+    data <- mcols(gff) %>%
         as.data.frame() %>%
-        select(starts_with("gene_")) %>%
-        unique() %>%
         camel()
+    assert_is_subset("geneID", colnames(data))
+    geneIDs <- sort(unique(na.omit(data[["geneID"]])))
+    data <- filter(data, !is.na(!!sym("geneID")))
 
-    # Standardize columns into Ensembl format
-    if ("geneSymbol" %in% colnames(data)) {
-        data[["geneName"]] <- data[["geneSymbol"]]
+    if (type == "GTF") {
+        if (
+            !"geneName" %in% colnames(data) &&
+            "geneSymbol" %in% colnames(data)
+        ) {
+            data[["geneName"]] <- data[["geneSymbol"]]
+        }
+    } else if (type == "GFF") {
+        if (
+            !"geneName" %in% colnames(data) &&
+            "name" %in% colnames(data)
+        ) {
+            data[["geneName"]] <- data[["name"]]
+        }
     }
 
-    data[, c("geneID", "geneName")] %>%
-        # Drop rows containing an NA value
+    data <- data %>%
+        select(!!!syms(c("geneID", "geneName"))) %>%
         .[complete.cases(.), , drop = FALSE] %>%
-        .[order(.[["geneID"]]), , drop = FALSE] %>%
+        unique() %>%
+        arrange(!!sym("geneID")) %>%
         set_rownames(.[["geneID"]])
+
+    assert_are_identical(geneIDs, rownames(data))
+    data
 }
 
 

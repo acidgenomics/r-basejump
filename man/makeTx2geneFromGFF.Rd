@@ -19,7 +19,12 @@ each containing 9 columns of data, plus optional track definition lines. The
 GTF (General Transfer Format) is identical to GFF version 2.
 }
 \examples{
+# GTF
 x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gtf")
+glimpse(x)
+
+# GFFv3
+x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gff3")
 glimpse(x)
 }
 \seealso{
