@@ -1,9 +1,0 @@
----
-title: ""
-author: "`r getOption('author')`"
-date: "`r Sys.Date()`"
----
-
-```{r setup, include=FALSE}
-```
-
