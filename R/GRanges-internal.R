@@ -33,10 +33,6 @@
     assert_is_all_of(object, "GRanges")
     assert_has_names(object)
 
-    # Ensure GRanges is sorted by names
-    message("Sorting GRanges by identifier")
-    object <- object[sort(names(object))]
-
     # Standardize the metadata columns
     message("Standardizing the metadata columns")
     mcols <- mcols(object)
@@ -81,18 +77,15 @@
 
     # Always use `geneName` instead of `symbol`
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
-        message("Using `geneName` instead of `symbol`")
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
         # nocov start
-        message("Renaming `symbol` to `geneName`")
         mcols[["geneName"]] <- mcols[["symbol"]]
         mcols[["symbol"]] <- NULL
         # nocov end
     }
 
     # Sanitize any character columns that have duplicates into factor
-    message("Converting strings to factors")
     mcols <- lapply(
         X = mcols,
         FUN = function(col) {
@@ -106,23 +99,30 @@
         }
     )
     mcols <- as(mcols, "DataFrame")
+    mcols(object) <- mcols
 
     # Require that names match the identifier column
-    # Check `transcriptID` then `geneID`
-    assert_are_intersecting_sets(annotationCols, colnames(mcols))
-    if ("transcriptID" %in% colnames(mcols)) {
+    # Use `transcriptID` over `geneID` if defined
+    assert_are_intersecting_sets(
+        x = c("geneID", "transcriptID"),
+        y = colnames(mcols(object))
+    )
+    if ("transcriptID" %in% colnames(mcols(object))) {
         idCol <- "transcriptID"
     } else {
         idCol <- "geneID"
     }
-    assert_are_identical(names(object), mcols[[idCol]])
-    mcols(object) <- mcols
+    names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included
     mcols(object)[["broadClass"]] <- broadClass(object)
 
     # Sort metadata columns alphabetically
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
+
+    # Ensure GRanges is sorted by names
+    message(paste("Sorting ranges by", idCol))
+    object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")
     object
