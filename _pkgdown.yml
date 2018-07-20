@@ -6,6 +6,15 @@ reference:
   - title: Package Information
     contents:
     - basejump-package
+  - title: Data Functions
+    contents:
+    - counts
+    - gene2symbol
+    - interestingGroups
+    - sampleData
+    - sampleNames
+    - selectSamples
+    - uniteInterestingGroups
   - title: Gene Annotation Functions
     contents:
     - annotable
