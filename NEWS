@@ -1,3 +1,14 @@
+# basejump 0.6.1 (2018-07-20)
+
+## Minor changes
+
+- Bug fix for `convertGenesToSymbols()` method for `RangedSummarizedExperiment`.
+  Previously, if `geneName` column was a factor, this function would error.
+  This issue has been fixed by ensuring that the symbols provided in `geneName`
+  are coerced to a character vector.
+- Improved [conda][] installation instructions.
+
+
 # basejump 0.6.0 (2018-07-17)
 
 ## Major changes
