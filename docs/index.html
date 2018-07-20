@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
       </span>
     </div>
 
@@ -101,10 +101,21 @@
 <div id="conda-method" class="section level3">
 <h3 class="hasAnchor">
 <a href="#conda-method" class="anchor"></a><a href="https://conda.io">conda</a> method</h3>
+<p>Ensure that <a href="https://conda.io">conda</a> is configured to use the <a href="https://bioconda.github.io">bioconda</a> channels.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> config --add channels defaults
 <span class="ex">conda</span> config --add channels conda-forge
-<span class="ex">conda</span> config --add channels bioconda
-<span class="ex">conda</span> install -c bioconda r-basejump </code></pre></div>
+<span class="ex">conda</span> config --add channels bioconda</code></pre></div>
+<p>To avoid version issues, your <code>.condarc</code> file should only contain the following channels, in this order:</p>
+<pre><code>channels:
+  - bioconda
+  - conda-forge
+  - defaults</code></pre>
+<p>We recommend first setting up a clean <a href="https://www.r-project.org">R</a> <a href="https://conda.io">conda</a> environment, which should use <code>r-base</code> from the <code>conda-forge</code> channel.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> create --name r-base
+<span class="ex">conda</span> activate r-base</code></pre></div>
+<p>Launch R and check that it is set up correctly with the <code>capabilities()</code> function. Note that <code>X11 = TRUE</code> is required for graphical output, and requires X11 forwarding over SSH.</p>
+<p>Now you’re ready to install <code>r-basejump</code>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> install -c bioconda r-basejump</code></pre></div>
 </div>
 </div>
 </div>
