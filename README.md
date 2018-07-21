@@ -43,14 +43,38 @@ biocLite("steinbaugh/basejump")
 
 ### [conda][]  method
 
+Configure [conda][] to use the [bioconda][] channels.
+
 ```bash
 conda config --add channels defaults
 conda config --add channels conda-forge
 conda config --add channels bioconda
+```
+
+To avoid version issues, your `.condarc` file should only contain the following channels, in this order:
+
+```
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+```
+
+We recommend installing into a clean [conda][] environment:
+
+```bash
+conda create --name r
+conda activate r
+```
+
+Now you're ready to install `r-basejump`
+
+```bash
 conda install -c bioconda r-basejump 
 ```
 
 
+[bioconda]: https://bioconda.github.io
 [Bioconductor]: https://bioconductor.org
 [conda]: https://conda.io
 [R]: https://www.r-project.org
