@@ -25,6 +25,9 @@ invisible(capture.output(
     x <- panther("Homo sapiens")
 ))
 glimpse(x)
+
+# Clean up
+unlink("PTHR*_human.gz")
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
