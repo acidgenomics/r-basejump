@@ -166,9 +166,11 @@ setMethod(
         if (is.null(gene2symbol)) {
             return(object)
         }
-        symbols <- gene2symbol[, "geneName", drop = TRUE]
         # Note that ".1" will be added here for duplicate gene symbols.
-        symbols <- make.unique(symbols)
+        symbols <- gene2symbol %>%
+            .[, "geneName", drop = TRUE] %>%
+            as.character() %>%
+            make.unique()
         rownames(object) <- symbols
         object
     }
