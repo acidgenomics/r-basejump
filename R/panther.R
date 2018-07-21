@@ -16,6 +16,9 @@
 #'     x <- panther("Homo sapiens")
 #' ))
 #' glimpse(x)
+#'
+#' # Clean up
+#' unlink("PTHR*_human.gz")
 panther <- function(
     organism = c(
         "Homo sapiens",
