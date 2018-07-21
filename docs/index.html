@@ -82,10 +82,11 @@
 <h4 class="hasAnchor">
 <a href="#r-3-5" class="anchor"></a>R &gt;= 3.5</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"BiocManager"</span>)
-<span class="kw">library</span>(BiocManager)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"devtools"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"GenomeInfoDbData"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"steinbaugh/basejump"</span>)</code></pre></div>
+<span class="kw">library</span>(<span class="st">"BiocManager"</span>)
+<span class="kw">install</span>(<span class="st">"devtools"</span>)
+<span class="kw">install</span>(<span class="st">"remotes"</span>)
+<span class="kw">install</span>(<span class="st">"GenomeInfoDbData"</span>)
+<span class="kw">install</span>(<span class="st">"steinbaugh/basejump"</span>)</code></pre></div>
 </div>
 <div id="r-3-5-1" class="section level4">
 <h4 class="hasAnchor">
@@ -94,6 +95,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># try http:// if https:// URLs are not supported</span>
 <span class="kw">source</span>(<span class="st">"https://bioconductor.org/biocLite.R"</span>)
 <span class="kw">biocLite</span>(<span class="st">"devtools"</span>)
+<span class="kw">biocLite</span>(<span class="st">"remotes"</span>)
 <span class="kw">biocLite</span>(<span class="st">"GenomeInfoDbData"</span>)
 <span class="kw">biocLite</span>(<span class="st">"steinbaugh/basejump"</span>)</code></pre></div>
 </div>
@@ -101,7 +103,7 @@
 <div id="conda-method" class="section level3">
 <h3 class="hasAnchor">
 <a href="#conda-method" class="anchor"></a><a href="https://conda.io">conda</a> method</h3>
-<p>Ensure that <a href="https://conda.io">conda</a> is configured to use the <a href="https://bioconda.github.io">bioconda</a> channels.</p>
+<p>Configure <a href="https://conda.io">conda</a> to use the <a href="https://bioconda.github.io">bioconda</a> channels.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> config --add channels defaults
 <span class="ex">conda</span> config --add channels conda-forge
 <span class="ex">conda</span> config --add channels bioconda</code></pre></div>
@@ -110,10 +112,10 @@
   - bioconda
   - conda-forge
   - defaults</code></pre>
-<p>We recommend first setting up a clean <a href="https://www.r-project.org">R</a> <a href="https://conda.io">conda</a> environment, which should use <code>r-base</code> from the <code>conda-forge</code> channel.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> create --name r-base
-<span class="ex">conda</span> activate r-base</code></pre></div>
-<p>Launch R and check that it is set up correctly with the <code>capabilities()</code> function. Note that <code>X11 = TRUE</code> is required for graphical output, and requires X11 forwarding over SSH.</p>
+<p>We recommend installing into a clean <a href="https://conda.io">conda</a> environment:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> create --name r
+<span class="ex">conda</span> activate r</code></pre></div>
+<p>Launch <a href="https://www.r-project.org">R</a> and check that it is set up correctly with the <code>capabilities()</code> function. Note that <code>X11 = TRUE</code> is required for graphical output, and requires X11 forwarding over SSH.</p>
 <p>Now you’re ready to install <code>r-basejump</code>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">conda</span> install -c bioconda r-basejump</code></pre></div>
 </div>

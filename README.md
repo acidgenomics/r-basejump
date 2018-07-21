@@ -21,8 +21,9 @@ We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
 
 ```r
 install.packages("BiocManager")
-library(BiocManager)
+library("BiocManager")
 install("devtools")
+install("remotes")
 install("GenomeInfoDbData")
 install("steinbaugh/basejump")
 ```
@@ -35,13 +36,14 @@ Legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
 # try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
 biocLite("devtools")
+biocLite("remotes")
 biocLite("GenomeInfoDbData")
 biocLite("steinbaugh/basejump")
 ```
 
 ### [conda][]  method
 
-Ensure that [conda][] is configured to use the [bioconda][] channels.
+Configure [conda][] to use the [bioconda][] channels.
 
 ```bash
 conda config --add channels defaults
@@ -57,15 +59,15 @@ channels:
   - conda-forge
   - defaults
 ```
-  
-We recommend first setting up a clean [R][] [conda][] environment, which should use `r-base` from the `conda-forge` channel.
+
+We recommend installing into a clean [conda][] environment:
 
 ```bash
-conda create --name r-base
-conda activate r-base
+conda create --name r
+conda activate r
 ```
 
-Launch R and check that it is set up correctly with the `capabilities()` function. Note that `X11 = TRUE` is required for graphical output, and requires X11 forwarding over SSH.
+Launch [R][] and check that it is set up correctly with the `capabilities()` function. Note that `X11 = TRUE` is required for graphical output, and requires X11 forwarding over SSH.
 
 Now you're ready to install `r-basejump`.
 

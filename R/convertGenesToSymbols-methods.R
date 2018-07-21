@@ -166,10 +166,12 @@ setMethod(
         if (is.null(gene2symbol)) {
             return(object)
         }
-        # Ensure factors get coerced to character
-        symbols <- as.character(gene2symbol[, "geneName", drop = TRUE])
+        # Ensure factors get coerced to character.
         # Note that ".1" will be added here for duplicate gene symbols.
-        symbols <- make.unique(symbols)
+        symbols <- gene2symbol %>%
+            .[, "geneName", drop = TRUE] %>%
+            as.character() %>%
+            make.unique()
         rownames(object) <- symbols
         object
     }
