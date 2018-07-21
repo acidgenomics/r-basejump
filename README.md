@@ -67,10 +67,12 @@ conda create --name r
 conda activate r
 ```
 
-Now you're ready to install `r-basejump`
+Launch [R][] and check that it is set up correctly with the `capabilities()` function. Note that `X11 = TRUE` is required for graphical output, and requires X11 forwarding over SSH.
+
+Now you're ready to install `r-basejump`.
 
 ```bash
-conda install -c bioconda r-basejump 
+conda install -c bioconda r-basejump
 ```
 
 

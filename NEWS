@@ -2,11 +2,10 @@
 
 ## Minor changes
 
-- Bug fix for `convertGenesToSymbols()` `SummarizedExperiment` method when
-  handling `gene2symbol` data that has `geneName` column as `factor` instead
-  of `character`. This fix ensures that `factor` gets coerced to `character`
-  internally before the `make.names()` call that ensures gene symbols are
-  unique.
+- Bug fix for `convertGenesToSymbols()` method for `SummarizedExperiment`.
+  Previously, if `geneName` column was a factor, this function would error.
+  This issue has been fixed by ensuring that the symbols provided in `geneName`
+  are coerced to a character vector.
 - Improved [conda][] installation instructions.
 
 

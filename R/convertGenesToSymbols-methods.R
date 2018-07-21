@@ -166,6 +166,7 @@ setMethod(
         if (is.null(gene2symbol)) {
             return(object)
         }
+        # Ensure factors get coerced to character.
         # Note that ".1" will be added here for duplicate gene symbols.
         symbols <- gene2symbol %>%
             .[, "geneName", drop = TRUE] %>%
