@@ -49,7 +49,7 @@
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
-#' @importFrom rlang !! !!! dots_list eval_bare UQ sym syms
+#' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
 #'   metadata<- na.omit setdiff tail
