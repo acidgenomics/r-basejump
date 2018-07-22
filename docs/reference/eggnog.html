@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MGI to Ensembl Gene ID Mappings — mgi2gene • basejump</title>
+<title>EggNOG Annotations — eggnog • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="MGI to Ensembl Gene ID Mappings — mgi2gene" />
+<meta property="og:title" content="EggNOG Annotations — eggnog" />
 
-<meta property="og:description" content="MGI to Ensembl Gene ID Mappings" />
+<meta property="og:description" content="EggNOG is a hierarchical orthology framework with functional annotations for
+eukaryotic, prokaryotic, and viral genomes." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,56 +100,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>MGI to Ensembl Gene ID Mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/mgi2gene.R'><code>R/mgi2gene.R</code></a></small>
-    <div class="hidden name"><code>mgi2gene.Rd</code></div>
+    <h1>EggNOG Annotations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/eggnog.R'><code>R/eggnog.R</code></a></small>
+    <div class="hidden name"><code>eggnog.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>MGI to Ensembl Gene ID Mappings</p>
+    <p>EggNOG is a hierarchical orthology framework with functional annotations for
+eukaryotic, prokaryotic, and viral genomes.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mgi2gene</span>()</pre>
+    <pre class="usage"><span class='fu'>eggnog</span>()</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>.</p>
+    <p><code>list</code> containing (1; "<code>cogFunctionalCategories</code>") <strong>C</strong>luster of
+<strong>O</strong>rthologous <strong>G</strong>roups (COG) functional category information and (2;
+"<code>annotations</code>") up-to-date functional descriptions and categories for
+<strong>Eu</strong>karyotes <strong>N</strong>on-supervised <strong>O</strong>rthologous <strong>G</strong>roups (euNOG) and
+<strong>N</strong>on-supervised <strong>O</strong>rthologous <strong>G</strong>roups (NOG) protein identifiers.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code>broadClass</code>,
-  <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>,
-  <code>stripTranscriptVersions</code></p></div>
+    <div class='dont-index'><p><a href='http://eggnogdb.embl.de/download/latest/README.txt'>EggNOG README</a></p>
+<p>Other Database Functions: <code><a href='panther.html'>panther</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>mgi2gene</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining MGI to Ensembl gene ID mappings</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>eggnog</span>()</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  .default = col_character(),</span>
-#&gt; <span class='message'>  X6 = col_integer(),</span>
-#&gt; <span class='message'>  X8 = col_integer(),</span>
-#&gt; <span class='message'>  X9 = col_integer(),</span>
-#&gt; <span class='message'>  X13 = col_integer(),</span>
-#&gt; <span class='message'>  X14 = col_integer(),</span>
-#&gt; <span class='message'>  X18 = col_integer(),</span>
-#&gt; <span class='message'>  X19 = col_integer()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 63,437
-#&gt; Variables: 2
-#&gt; $ mgiID  &lt;int&gt; 87853, 87854, 87859, 87860, 87862, 87863, 87864, 87866, 8786...
-#&gt; $ geneID &lt;chr&gt; "ENSMUSG00000027596", "ENSMUSG00000030359", "ENSMUSG00000026...</div></pre>
+#&gt; <span class='message'>  taxonomicLevel = col_character(),</span>
+#&gt; <span class='message'>  groupName = col_character(),</span>
+#&gt; <span class='message'>  proteinCount = col_integer(),</span>
+#&gt; <span class='message'>  speciesCount = col_integer(),</span>
+#&gt; <span class='message'>  cogFunctionalCategory = col_character(),</span>
+#&gt; <span class='message'>  consensusFunctionalDescription = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  taxonomicLevel = col_character(),</span>
+#&gt; <span class='message'>  groupName = col_character(),</span>
+#&gt; <span class='message'>  proteinCount = col_integer(),</span>
+#&gt; <span class='message'>  speciesCount = col_integer(),</span>
+#&gt; <span class='message'>  cogFunctionalCategory = col_character(),</span>
+#&gt; <span class='message'>  consensusFunctionalDescription = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; List of 2
+#&gt;  $ cogFunctionalCategories:Classes 'tbl_df', 'tbl' and 'data.frame':	18 obs. of  2 variables:
+#&gt;   ..$ letter     : chr [1:18] "A" "B" "C" "E" ...
+#&gt;   ..$ description: chr [1:18] "RNA processing and modification" "Chromatin structure and dynamics" "Energy production and conversion" "Amino acid transport and metabolism" ...
+#&gt;  $ annotations            :Classes 'tbl_df', 'tbl' and 'data.frame':	286584 obs. of  3 variables:
+#&gt;   ..$ eggnogID                      : chr [1:286584] "COG0001" "COG0002" "COG0003" "COG0004" ...
+#&gt;   ..$ consensusFunctionalDescription: chr [1:286584] "Glutamate-1-semialdehyde aminotransferase" "N-acetylglutamate semialdehyde dehydrogenase" "ATPase required for the post-translational delivery of tail-anchored (TA) proteins to the endoplasmic reticulum"| __truncated__ "ammonium Transporter" ...
+#&gt;   ..$ cogFunctionalCategory         : chr [1:286584] "H" "E" "P" "P" ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,6 +164,10 @@
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
