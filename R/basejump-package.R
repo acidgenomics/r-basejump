@@ -30,9 +30,9 @@
 #'   assert_is_name assert_is_numeric is_a_number is_a_string
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr arrange case_when everything filter funs group_by mutate
-#'   mutate_all mutate_at mutate_if select starts_with summarize_all top_n
-#'   ungroup
+#' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
+#'   mutate mutate_all mutate_at mutate_if rename select starts_with
+#'   summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
