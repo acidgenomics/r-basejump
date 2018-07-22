@@ -1,6 +1,6 @@
 #' PANTHER Gene Ontology Annotations
 #'
-#' @family Gene Annotation Functions
+#' @family Database Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
