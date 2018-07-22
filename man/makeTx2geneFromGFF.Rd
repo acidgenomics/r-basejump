@@ -40,7 +40,7 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{mgi2gene}}, \code{\link{panther}},
+  \code{\link{mgi2gene}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
