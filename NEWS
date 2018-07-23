@@ -1,3 +1,13 @@
+# basejump 0.6.2 (2018-07-22)
+
+## New functions
+
+- `eggnog()`: quickly download current annotations from EggNOG database. Useful
+  for annotating gene-to-protein matches; currently in use with the brightworm
+  RNAi screening package, which contains WormBase gene ID and EggNOG ID
+  annotations.
+
+
 # basejump 0.6.1 (2018-07-21)
 
 ## Minor changes

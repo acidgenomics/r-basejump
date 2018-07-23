@@ -27,6 +27,10 @@ reference:
     - starts_with("parse")
     - starts_with("strip")
     - ends_with("2gene")
+  - title: Database Functions
+    contents:
+    - eggnog
+    - panther
   - title: Name Functions
     contents:
     - makeNames

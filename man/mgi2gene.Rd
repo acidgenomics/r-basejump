@@ -29,6 +29,6 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{panther}},
+  \code{\link{makeTx2geneFromGFF}},
   \code{\link{stripTranscriptVersions}}
 }
