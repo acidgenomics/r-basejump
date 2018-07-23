@@ -38,17 +38,25 @@ localOrRemoteFile <- function(file) {
                     na.omit() %>%
                     paste(collapse = "")
                 assert_is_non_empty(ext)
-
                 # Fix for binary files (typically on Windows)
                 # https://github.com/tidyverse/readxl/issues/374
-                if (ext %in% c("rda", "rds", "xls", "xlsx")) {
+                binary <- c(
+                    "bz2",
+                    "gz",
+                    "rda",
+                    "rds",
+                    "xls",
+                    "xlsx",
+                    "xz",
+                    "zip"
+                )
+                if (ext %in% binary) {
                     # Write binary
                     mode <- "wb"
                 } else {
                     # Write (default)
                     mode <- "w"
                 }
-
                 destfile <- file.path(tempdir(), basename(file))
                 download.file(url = file, destfile = destfile, mode = mode)
                 destfile
