@@ -9,14 +9,14 @@
 markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
 }
 \arguments{
-\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
+\item{text}{\code{string}. Header text.}
 
-\item{level}{Header level (1-7).}
+\item{level}{\code{scalar integer}. Header level (1-7).}
 
-\item{tabset}{Include tabset marker.}
+\item{tabset}{\code{boolean}. Include tabset marker.}
 
-\item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
+\item{asis}{\code{boolean}. Set this to \code{TRUE} when using the function inside a
+loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{

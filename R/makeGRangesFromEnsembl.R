@@ -41,12 +41,13 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param format Fetch ranges as "`genes`" or "`transcripts`".
-#' @param genomeBuild *Optional.* Genome build assembly name (e.g. "`GRCh38`").
-#'   If `NULL`, defaults to the most recent build available.
-#' @param release *Optional.* Release version (e.g. `90`). If `NULL`, defaults
-#'   to the most recent release available.
-#' @param metadata Include the AnnotationHub metadata inside a `list`.
+#' @param format `string`. Fetch ranges as "`genes`" or "`transcripts`".
+#' @param genomeBuild `string` or `NULL`. Genome build assembly name (e.g.
+#'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
+#' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
+#'   set `NULL`, defaults to the most recent release available.
+#' @param metadata `boolean`. Include the AnnotationHub metadata inside a
+#'   `list`.
 #'
 #' @return `GRanges`.
 #' @export

@@ -5,11 +5,11 @@
 #'
 #' @inheritParams general
 #'
-#' @param text Text. Can be any `atomic`, which will be coerced to `character`.
-#' @param level Header level (1-7).
-#' @param tabset Include tabset marker.
-#' @param asis Set this to `TRUE` when using the function inside a loop or
-#'   inside an R Markdown chunk with '`results = "asis"`' enabled.
+#' @param text `string`. Header text.
+#' @param level `scalar integer`. Header level (1-7).
+#' @param tabset `boolean`. Include tabset marker.
+#' @param asis `boolean`. Set this to `TRUE` when using the function inside a
+#'   loop or inside an R Markdown chunk with '`results = "asis"`' enabled.
 #'
 #' @seealso
 #' - [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
@@ -30,9 +30,7 @@ markdownHeader <- function(
     tabset = FALSE,
     asis = FALSE
 ) {
-    assert_is_scalar(text)
-    text <- as.character(text)
-    assert_all_are_not_na(text)
+    assert_is_a_string(text)
     assert_all_are_non_missing_nor_empty_character(text)
     assertIsAHeaderLevel(level)
     assert_is_a_bool(tabset)

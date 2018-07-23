@@ -9,11 +9,10 @@ multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
 \arguments{
 \item{...}{Objects as dots.}
 
-\item{envirName}{\code{character} string denoting the name of the new
-\code{environment} that will be created.}
+\item{envirName}{\code{string}. Name of the new \code{environment} to create.}
 
-\item{parentEnvir}{Parent \code{environment} where to assign the new
-\code{environment}, defined by \code{envirName}.}
+\item{parentEnvir}{\code{environment}. Parent \code{environment} where to assign the
+new \code{environment}, specified by \code{envirName} argument.}
 }
 \value{
 \code{character} vector of object names in the new \code{environment}.

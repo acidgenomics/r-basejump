@@ -4,8 +4,6 @@
 \alias{general}
 \title{General Arguments}
 \arguments{
-\item{atomic}{\code{atomic} vector.}
-
 \item{object}{Object.}
 
 \item{value}{Value to assign.}
@@ -24,7 +22,7 @@ directory.}
 
 \item{file}{\code{string}. File path.}
 
-\item{headerLevel}{\code{integer scalar}. Markdown header level (1-7).}
+\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 

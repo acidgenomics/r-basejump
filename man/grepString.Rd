@@ -4,15 +4,15 @@
 \alias{grepString}
 \title{\code{grep} String}
 \usage{
-grepString(string, sep = ", ")
+grepString(x, sep = ", ")
 }
 \arguments{
-\item{string}{\code{character} string.}
+\item{x}{\code{string}. Term to use for grep matching.}
 
-\item{sep}{Separator. Defaults to comma.}
+\item{sep}{\code{string}. Separator. Defaults to comma.}
 }
 \value{
-\code{character} string, containing a regular expression pattern.
+\code{string}, containing a regular expression pattern.
 }
 \description{
 Generate a \code{grep} string for pattern matching against a delimited \code{character}

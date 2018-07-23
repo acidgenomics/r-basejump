@@ -15,8 +15,8 @@ assertFormalGene2symbol(x, genes, gene2symbol,
 \item{gene2symbol}{Gene-to-symbol mappings. Must contain a \code{data.frame} or
 \code{NULL}.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.

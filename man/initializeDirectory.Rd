@@ -7,7 +7,7 @@
 initializeDirectory(dir)
 }
 \arguments{
-\item{dir}{Directory path.}
+\item{dir}{\code{string}. Directory path.}
 }
 \value{
 Directory path.

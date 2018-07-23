@@ -3,10 +3,10 @@
 #' @family Math Functions
 #' @author Michael Steinbaugh
 #'
-#' @param plates Number of plates.
-#' @param wells Number of wells (`96`, `384`).
-#' @param controls Number of control wells.
-#' @param prefix *Optional.* Plate name prefix.
+#' @param plates `scalar integer`. Number of plates.
+#' @param wells `scalar integer`. Number of wells (`96`, `384`).
+#' @param controls `scalar integer`. Number of control wells.
+#' @param prefix `string` or `NULL`. Plate name prefix.
 #'
 #' @return Character vector containing well identifiers.
 #' @export
@@ -29,14 +29,21 @@ microplate <- function(
     controls = 0L,
     prefix = NULL
 ) {
-    assert_is_an_integer(plates)
+    # plates
+    assertIsAnImplicitInteger(plates)
+    plates <- as.integer(plates)
     assert_all_are_positive(plates)
-    assert_is_an_integer(wells)
+    # wells
+    assertIsAnImplicitInteger(wells)
+    wells <- as.integer(wells)
     assert_all_are_positive(wells)
     assert_is_subset(wells, c(96L, 384L))
-    assert_is_an_integer(controls)
+    # controls
+    assertIsAnImplicitInteger(controls)
+    controls <- as.integer(controls)
     assert_all_are_non_negative(controls)
     assert_is_subset(controls, 0L:12L)
+    # prefix
     assertIsAStringOrNULL(prefix)
 
     if (wells == 96L) {

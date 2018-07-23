@@ -5,7 +5,7 @@
 #'
 #' @inherit markdownHeader
 #'
-#' @param ordered Ordered ("`TRUE`") or unordered ("`FALSE`") `list`.
+#' @param ordered `boolean`. Ordered ("`TRUE`") or unordered ("`FALSE`").
 #'
 #' @export
 #'

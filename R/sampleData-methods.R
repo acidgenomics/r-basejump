@@ -18,7 +18,8 @@
 #'
 #' @inheritParams general
 #'
-#' @param clean Deprecated argument, providing only factor column return.
+#' @param clean `boolean`. Deprecated argument, providing only factor column
+#'   return.
 #'
 #' @return `DataFrame` containing metadata that describes the samples.
 #'

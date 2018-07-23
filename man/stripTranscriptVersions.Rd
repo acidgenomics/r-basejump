@@ -24,7 +24,7 @@ stripTranscriptVersions(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Transcript identifiers without version numbers.
+Object containing transcript identifiers without version numbers.
 }
 \description{
 Strip Transcript Versions

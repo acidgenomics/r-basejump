@@ -12,10 +12,10 @@
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
-#' @param overwrite Overwrite existing file.
-#' @param ext R data ("`rda`", "`RData`") or R data serialized (RDS; "`rds`").
-#'   RDS is preferred when saving single objects per file, which is always the
-#'   convention of [saveData()], regardless of the extension used.
+#' @param overwrite `boolean`. Overwrite existing file.
+#' @param ext `string`. R data ("`rda`", "`RData`") or R data serialized (RDS;
+#'   "`rds`"). RDS is preferred when saving single objects per file, which is
+#'   always the convention of [saveData()], regardless of the extension used.
 #'
 #' @note These function will *overwrite* existing saved data, following the
 #'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does

@@ -9,10 +9,10 @@ kables(list, captions, force = FALSE)
 \arguments{
 \item{list}{\code{list} containing column data (e.g. \code{data.frame}, \code{matrix}).}
 
-\item{captions}{Optional \code{character} vector of table captions.}
+\item{captions}{\code{character}. Table captions.}
 
-\item{force}{Force knit output. Recommended for development and unit testing
-only.}
+\item{force}{\code{boolean}. Force knit output. Recommended for development and
+unit testing only.}
 }
 \value{
 Knit tables.

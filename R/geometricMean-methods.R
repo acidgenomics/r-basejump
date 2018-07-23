@@ -12,8 +12,8 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param removeNA Remove `NA` values from calculations.
-#' @param zeroPropagate Allow propagation of zeroes.
+#' @param removeNA `boolean`. Remove `NA` values from calculations.
+#' @param zeroPropagate `boolean`. Allow propagation of zeroes.
 #'
 #' @return `numeric` containing geometric means.
 #'
@@ -44,7 +44,11 @@ NULL
 setMethod(
     "geometricMean",
     signature("numeric"),
-    function(object, removeNA = TRUE, zeroPropagate = FALSE) {
+    function(
+        object,
+        removeNA = TRUE,
+        zeroPropagate = FALSE
+    ) {
         assert_is_a_bool(removeNA)
         assert_is_a_bool(zeroPropagate)
 
