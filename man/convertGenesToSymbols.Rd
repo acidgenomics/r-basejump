@@ -16,8 +16,8 @@
 \usage{
 convertGenesToSymbols(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol, organism,
-  genomeBuild = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{matrix}(object, ...)
 
@@ -36,21 +36,21 @@ convertGenesToSymbols(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{gene2symbol}{\emph{Optional.} Gene-to-symbol mappings. If \code{NULL}, will
-attempt to download from Ensembl using the desired \code{organism},
+\item{gene2symbol}{\code{data.frame} or \code{NULL}. Gene-to-symbol mappings. If set
+\code{NULL}, will attempt to download from Ensembl using the desired \code{organism},
 \code{genomeBuild}, and \code{release} arguments.}
 
-\item{organism}{\emph{Optional.} Organism name. Normally this argument is
-unnecessary and can be left unset. If a count matrix starts with a
-FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-first gene identifier will fail. In this case, the desired organism must be
+\item{organism}{\code{string}. Organism name. Normally this argument is
+unnecessary and can be left unset. If a count matrix starts with a FASTA
+spike-in (e.g. "EGFP"), then automatic genome detection based on the first
+gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
-If \code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
-to the most recent release available.}
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 Same class as original object.

@@ -8,10 +8,11 @@
 
 \item{envir}{\code{environment}.}
 
-\item{inherits}{Should the enclosing frames of the \code{environment} be searched?}
+\item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
+be searched?}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.

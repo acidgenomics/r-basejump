@@ -11,7 +11,8 @@ assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
 
 \item{envir}{\code{environment}.}
 
-\item{inherits}{Should the enclosing frames of the \code{environment} be searched?}
+\item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
+be searched?}
 }
 \value{
 Stop on mismatch.

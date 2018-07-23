@@ -5,9 +5,10 @@
 #'
 #' @param x Object.
 #' @param envir `environment`.
-#' @param inherits Should the enclosing frames of the `environment` be searched?
-#' @param severity How severe should the consequences of the assertion be?
-#'   Either "`stop`", "`warning`", "`message`", or "`none`".
+#' @param inherits `boolean`. Should the enclosing frames of the `environment`
+#'   be searched?
+#' @param severity `string`. How severe should the consequences of the assertion
+#'   be? Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
 #' @return Stop on mismatch.
 NULL

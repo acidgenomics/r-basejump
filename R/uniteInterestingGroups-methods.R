@@ -9,9 +9,9 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param object Object containing interesting groups in multiple columns.
+#' @param object Object containing multiple interesting groups.
 #'
-#' @return Data frame, now containing an `interestingGroups` column.
+#' @return Data frame containing an `interestingGroups` column.
 #' @export
 #'
 #' @examples

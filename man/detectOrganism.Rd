@@ -34,8 +34,8 @@ detectOrganism(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{unique}{Only return unique matching organisms. Applies to \code{character}
-vector input.}
+\item{unique}{\code{boolean}. Only return unique matching organisms. Applies to
+\code{character} input.}
 }
 \value{
 Full latin organism name. Stops on detection failure.

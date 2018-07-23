@@ -7,11 +7,11 @@
 markdownLink(text, url, title = NULL)
 }
 \arguments{
-\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
+\item{text}{\code{string}. Header text.}
 
-\item{url}{URL.}
+\item{url}{\code{string}. URL.}
 
-\item{title}{\emph{Optional.} Link title attribute. This will appear in a
+\item{title}{\code{string} or \code{NULL}. Link title attribute. This will appear in a
 mouse-over pop-up box.}
 }
 \value{

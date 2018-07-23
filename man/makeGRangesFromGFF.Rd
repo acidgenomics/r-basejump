@@ -10,7 +10,7 @@ makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 \arguments{
 \item{file}{\code{string}. File path.}
 
-\item{format}{Output as genes or transcripts.}
+\item{format}{\code{string}. Output as genes or transcripts.}
 }
 \value{
 \code{GRanges}.

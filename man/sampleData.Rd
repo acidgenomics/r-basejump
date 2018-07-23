@@ -31,7 +31,8 @@ sampleData(object, ...) <- value
 
 \item{value}{Value to assign.}
 
-\item{clean}{Deprecated argument, providing only factor column return.}
+\item{clean}{\code{boolean}. Deprecated argument, providing only factor column
+return.}
 }
 \value{
 \code{DataFrame} containing metadata that describes the samples.

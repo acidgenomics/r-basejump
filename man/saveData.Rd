@@ -15,11 +15,11 @@ using non-standard evaluation for convenience during interactive use, and
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
-\item{ext}{R data ("\code{rda}", "\code{RData}") or R data serialized (RDS; "\code{rds}").
-RDS is preferred when saving single objects per file, which is always the
-convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
+\item{ext}{\code{string}. R data ("\code{rda}", "\code{RData}") or R data serialized (RDS;
+"\code{rds}"). RDS is preferred when saving single objects per file, which is
+always the convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
 
-\item{overwrite}{Overwrite existing file.}
+\item{overwrite}{\code{boolean}. Overwrite existing file.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to

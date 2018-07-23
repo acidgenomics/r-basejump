@@ -7,7 +7,7 @@
 localOrRemoteFile(file)
 }
 \arguments{
-\item{file}{Local file path or remote URL.}
+\item{file}{\code{string}. Local file path or remote URL.}
 }
 \value{
 \code{character} vector containing the local file paths.

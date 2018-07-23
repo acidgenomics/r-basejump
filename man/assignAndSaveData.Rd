@@ -8,7 +8,7 @@ assignAndSaveData(name, object, dir = ".", compress = TRUE,
   envir = parent.frame())
 }
 \arguments{
-\item{name}{Desired variable name.}
+\item{name}{\code{string}. Desired variable name.}
 
 \item{object}{Object.}
 
@@ -22,8 +22,8 @@ directory.}
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
 
-\item{envir}{Environment to use for assignment. Defaults to \code{\link[=parent.frame]{parent.frame()}},
-the calling environment.}
+\item{envir}{\code{environment}. Environment to use for assignment. Defaults to
+\code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
 }
 \value{
 Invisible named \code{character} containing file paths.

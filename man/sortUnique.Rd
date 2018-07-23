@@ -4,13 +4,13 @@
 \alias{sortUnique}
 \title{Sort and Make Unique}
 \usage{
-sortUnique(atomic)
+sortUnique(x)
 }
 \arguments{
-\item{atomic}{\code{atomic} vector.}
+\item{x}{Object.}
 }
 \value{
-\code{atomic} vector.
+\code{atomic}.
 }
 \description{
 This is a convenience function to quickly sort and atomic vector and make the

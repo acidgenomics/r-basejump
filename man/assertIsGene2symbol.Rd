@@ -11,8 +11,8 @@ assertIsGene2symbol(x, severity = getOption("assertive.severity", "stop"))
 structured as a two column \code{data.frame} with "\code{geneID}" and "\code{geneName}"
 columns.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.

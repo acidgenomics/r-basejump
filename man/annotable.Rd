@@ -10,13 +10,13 @@ annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{format}{Fetch ranges as "\code{genes}" or "\code{transcripts}".}
+\item{format}{\code{string}. Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
-If \code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
-to the most recent release available.}
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 \code{data.frame}.

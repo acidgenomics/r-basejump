@@ -29,17 +29,17 @@ collapseToString(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{sep}{Separator. Defaults to comma.}
+\item{sep}{\code{string}. Separator. Defaults to comma.}
 
-\item{sort}{Sort values.}
+\item{sort}{\code{boolean}. Sort values.}
 
-\item{removeNA}{Remove NA values.}
+\item{removeNA}{\code{boolean}. Remove NA values.}
 
-\item{unique}{Unique values.}
+\item{unique}{\code{boolean}. Unique values.}
 }
 \value{
 \itemize{
-\item For \code{atomic} vector: \code{character} string.
+\item For \code{atomic}: \code{string}.
 \item For column data: Object collapsed to a single row.
 }
 }

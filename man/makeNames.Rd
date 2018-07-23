@@ -155,20 +155,20 @@ will be meaningful.}
 \item{...}{Additional arguments.}
 
 \item{names}{\code{atomic} to be coerced to syntactically valid names. Will be
-coerced to \code{character} if necessary.}
+coerced to \code{character}, if necessary.}
 
-\item{unique}{\code{logical}; if \code{TRUE}, the resulting elements are unique.}
+\item{unique}{\code{boolean}. If \code{TRUE}, the resulting elements are unique.}
 
-\item{strict}{Enforce strict name sanitization. When \code{TRUE}, this does not
-allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-example.}
+\item{strict}{\code{boolean}. Enforce strict name sanitization. When \code{TRUE}, this
+does not allow the return of any capitalized acronyms. "RNA" will become
+"Rna", for example.}
 
-\item{rownames}{Apply sanitization on row names. This is not recommended
-by default, since rownames commonly contain gene identifiers that should
-not be modified.}
+\item{rownames}{\code{boolean}. Apply sanitization on row names. This is not
+recommended by default, since rownames commonly contain gene identifiers
+that should not be modified.}
 
-\item{colnames}{Apply sanitization on column names. This is generally
-recommended by default.}
+\item{colnames}{\code{boolean}. Apply sanitization on column names. This is
+generally recommended by default.}
 }
 \value{
 Object with syntatically valid names. For objects supporting
