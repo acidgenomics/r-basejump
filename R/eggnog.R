@@ -22,15 +22,16 @@
 #' glimpse(x)
 eggnog <- function() {
     # Categories ===============================================================
-    file <- localOrRemoteFile(paste(
-        "http://eggnogdb.embl.de",
-        "download",
-        "latest",
-        "COG_functional_categories.txt",
-        sep = "/"
-    ))
     pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
-    categories <- read_lines(file) %>%
+    categories <- read_lines(
+        file = paste(
+            "http://eggnogdb.embl.de",
+            "download",
+            "latest",
+            "COG_functional_categories.txt",
+            sep = "/"
+        )
+    ) %>%
         str_subset(pattern) %>%
         str_match(pattern) %>%
         as_tibble() %>%
@@ -49,28 +50,32 @@ eggnog <- function() {
     )
 
     ## euNOG: Eukaryota
-    file <- localOrRemoteFile(paste(
-        "http://eggnogdb.embl.de",
-        "download",
-        "latest",
-        "data",
-        "euNOG",
-        "euNOG.annotations.tsv.gz",
-        sep = "/"
-    ))
-    eunog <- read_tsv(file, col_names = colnames)
+    eunog <- read_tsv(
+        file = paste(
+            "http://eggnogdb.embl.de",
+            "download",
+            "latest",
+            "data",
+            "euNOG",
+            "euNOG.annotations.tsv.gz",
+            sep = "/"
+        ),
+        col_names = colnames
+    )
 
     ## NOG: LUCA
-    file <- localOrRemoteFile(paste(
-        "http://eggnogdb.embl.de",
-        "download",
-        "latest",
-        "data",
-        "NOG",
-        "NOG.annotations.tsv.gz",
-        sep = "/"
-    ))
-    nog <- read_tsv(file, col_names = colnames)
+    nog <- read_tsv(
+        file = paste(
+            "http://eggnogdb.embl.de",
+            "download",
+            "latest",
+            "data",
+            "NOG",
+            "NOG.annotations.tsv.gz",
+            sep = "/"
+        ),
+        col_names = colnames
+    )
 
     annotations <- bind_rows(eunog, nog) %>%
         select(!!!syms(c(
