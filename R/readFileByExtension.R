@@ -57,7 +57,7 @@
 #' # bcbio Counts Table
 #' x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
 #' glimpse(x)
-readFileByExtension <- function(file) {
+readFileByExtension <- function(file, ...) {
     assert_is_a_string(file)
     file <- localOrRemoteFile(file)
     message(paste("Reading", basename(file)))
@@ -76,16 +76,12 @@ readFileByExtension <- function(file) {
         stop(unsupported)  # nocov
     } else if (ext %in% source) {
         message("Importing as source code lines")
-        data <- read_lines(file)
+        data <- read_lines(file, ...)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(file = file, na = na)
+        data <- read_lines(file = file, na = na, ...)
     } else if (ext == "counts") {
         # bcbio counts output
-        data <- read_tsv(
-            file = file,
-            na = na,
-            progress = FALSE
-        ) %>%
+        data <- read_tsv(file = file, na = na, ...) %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
@@ -94,7 +90,7 @@ readFileByExtension <- function(file) {
     } else if (ext == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
-        data <- readMM(file = file)
+        data <- readMM(file = file, ...)
         rownames <- localOrRemoteFile(paste(file, "rownames", sep = ".")) %>%
             read_lines(na = na)
         colnames <- localOrRemoteFile(paste(file, "colnames", sep = ".")) %>%
@@ -113,7 +109,7 @@ readFileByExtension <- function(file) {
     } else if (ext %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
     } else {
-        data <- rio::import(file)
+        data <- rio::import(file, ...)
     }
 
     data

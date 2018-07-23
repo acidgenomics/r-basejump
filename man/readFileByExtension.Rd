@@ -4,10 +4,12 @@
 \alias{readFileByExtension}
 \title{Read File by Extension}
 \usage{
-readFileByExtension(file)
+readFileByExtension(file, ...)
 }
 \arguments{
 \item{file}{\code{string}. File path.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Varies depending on the file extension.
