@@ -16,7 +16,7 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object, clean = FALSE)
+\S4method{sampleData}{SummarizedExperiment}(object, ...)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
@@ -30,9 +30,6 @@ sampleData(object, ...) <- value
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
-
-\item{clean}{\code{boolean}. Deprecated argument, providing only factor column
-return.}
 }
 \value{
 \code{DataFrame} containing metadata that describes the samples.
