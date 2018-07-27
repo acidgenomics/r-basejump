@@ -54,7 +54,7 @@ setMethod(
         if ("return" %in% names(call)) {
             stop(paste(
                 "`return` argument is defunct.",
-                "Use a separation coercion call after the return",
+                "Use a separation coercion call after the return instead",
                 "(e.g. `as.data.frame()`)."
             ))
         }
