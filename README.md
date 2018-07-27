@@ -13,36 +13,35 @@ Base functions for bioinformatics and [R][] package development.
 
 This is an [R][] package.
 
-### [Bioconductor][] method
+### [Bioconductor][]
 
-We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
-
-#### R >= 3.5
+We recommend installing the package using [BiocManager][].
 
 ```r
 if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
-BiocManager::install("devtools")
-BiocManager::install("remotes")
-BiocManager::install("GenomeInfoDbData")
-BiocManager::install("steinbaugh/basejump")
+BiocManager::install(
+    pkgs = c(
+        "devtools",
+        "remotes",
+        "GenomeInfoDbData"
+    )
+)
+BiocManager::install(
+    pkgs = "steinbaugh/basejump",
+    dependencies = c("Depends", "Imports", "Suggests")
+)
 ```
 
-#### R < 3.5
-
-Legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
+For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
 
 ```r
 # try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
-BiocInstaller::biocLite("devtools")
-BiocInstaller::biocLite("remotes")
-BiocInstaller::biocLite("GenomeInfoDbData")
-BiocInstaller::biocLite("steinbaugh/basejump")
 ```
 
-### [conda][]  method
+### [conda][]
 
 Configure [conda][] to use the [bioconda][] channels.
 
@@ -78,6 +77,7 @@ conda install -c bioconda r-basejump
 
 
 [bioconda]: https://bioconda.github.io
+[BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org
 [conda]: https://conda.io
 [R]: https://www.r-project.org
