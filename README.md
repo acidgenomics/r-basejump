@@ -15,7 +15,7 @@ This is an [R][] package.
 
 ### [Bioconductor][]
 
-We recommend installing the package using [BiocManager][].
+We recommend installing the package with [BiocManager][].
 
 ```r
 if (!require("BiocManager")) {
