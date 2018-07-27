@@ -20,12 +20,13 @@ We recommend using [R][] 3.5 / [Bioconductor][] 3.7.
 #### R >= 3.5
 
 ```r
-install.packages("BiocManager")
-library("BiocManager")
-install("devtools")
-install("remotes")
-install("GenomeInfoDbData")
-install("steinbaugh/basejump")
+if (!require("BiocManager")) {
+    install.packages("BiocManager")
+}
+BiocManager::install("devtools")
+BiocManager::install("remotes")
+BiocManager::install("GenomeInfoDbData")
+BiocManager::install("steinbaugh/basejump")
 ```
 
 #### R < 3.5
@@ -35,10 +36,10 @@ Legacy support for [R][] 3.4 / [Bioconductor][] 3.6 is provided.
 ```r
 # try http:// if https:// URLs are not supported
 source("https://bioconductor.org/biocLite.R")
-biocLite("devtools")
-biocLite("remotes")
-biocLite("GenomeInfoDbData")
-biocLite("steinbaugh/basejump")
+BiocInstaller::biocLite("devtools")
+BiocInstaller::biocLite("remotes")
+BiocInstaller::biocLite("GenomeInfoDbData")
+BiocInstaller::biocLite("steinbaugh/basejump")
 ```
 
 ### [conda][]  method
