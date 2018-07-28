@@ -3,7 +3,6 @@
 \docType{methods}
 \name{detectOrganism}
 \alias{detectOrganism}
-\alias{detectOrganism}
 \alias{detectOrganism,character-method}
 \alias{detectOrganism,factor-method}
 \alias{detectOrganism,matrix-method}
@@ -94,3 +93,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

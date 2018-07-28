@@ -3,7 +3,6 @@
 \docType{methods}
 \name{aggregateFeatures}
 \alias{aggregateFeatures}
-\alias{aggregateFeatures}
 \alias{aggregateFeatures,dgCMatrix-method}
 \alias{aggregateFeatures,matrix-method}
 \title{Aggregate Features}
@@ -55,3 +54,4 @@ Other Math Functions: \code{\link{aggregateReplicates}},
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Math Functions}

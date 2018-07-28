@@ -52,3 +52,4 @@ Other Write Functions: \code{\link{initializeDirectory}},
 \author{
 Michael Steinbaugh
 }
+\concept{Write Functions}

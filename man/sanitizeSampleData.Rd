@@ -45,3 +45,4 @@ Other Sanitization Functions: \code{\link{collapseToString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}

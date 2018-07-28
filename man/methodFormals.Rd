@@ -33,3 +33,4 @@ Other Developer Functions: \code{\link{detectHPC}},
 \author{
 Michael Steinbaugh
 }
+\concept{Developer Functions}

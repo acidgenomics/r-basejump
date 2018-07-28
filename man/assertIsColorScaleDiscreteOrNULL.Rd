@@ -4,8 +4,8 @@
 \alias{assertIsColorScaleDiscreteOrNULL}
 \title{Assert Is Color Palette Scale Discrete or NULL}
 \usage{
-assertIsColorScaleDiscreteOrNULL(x, severity = getOption("assertive.severity",
-  "stop"))
+assertIsColorScaleDiscreteOrNULL(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -50,3 +50,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

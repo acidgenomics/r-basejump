@@ -7,7 +7,6 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{makeNames}
-\alias{makeNames}
 \alias{camel,character-method}
 \alias{dotted,character-method}
 \alias{snake,character-method}
@@ -83,18 +82,19 @@ makeNames(names, unique = FALSE)
 
 \S4method{snake}{matrix}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{upperCamel}{matrix}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
+\S4method{upperCamel}{matrix}(object, rownames = FALSE,
+  colnames = TRUE, strict = FALSE)
 
 \S4method{camel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
 
-\S4method{dotted}{data.frame}(object, rownames = FALSE, colnames = TRUE)
+\S4method{dotted}{data.frame}(object, rownames = FALSE,
+  colnames = TRUE)
 
 \S4method{snake}{data.frame}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{upperCamel}{data.frame}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
+\S4method{upperCamel}{data.frame}(object, rownames = FALSE,
+  colnames = TRUE, strict = FALSE)
 
 \S4method{camel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
   strict = FALSE)
@@ -103,8 +103,8 @@ makeNames(names, unique = FALSE)
 
 \S4method{snake}{DataFrame}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{upperCamel}{DataFrame}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
+\S4method{upperCamel}{DataFrame}(object, rownames = FALSE,
+  colnames = TRUE, strict = FALSE)
 
 \S4method{camel}{GRanges}(object, strict = FALSE)
 

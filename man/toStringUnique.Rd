@@ -27,3 +27,4 @@ Other Atomic Vector Functions: \code{\link{grepString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Atomic Vector Functions}

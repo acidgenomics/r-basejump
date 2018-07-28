@@ -28,3 +28,4 @@ Other Data Functions: \code{\link{gene2symbol}},
   \code{\link{selectSamples}},
   \code{\link{uniteInterestingGroups}}
 }
+\concept{Data Functions}

@@ -4,7 +4,8 @@
 \alias{assertIsANumberOrNULL}
 \title{Assert Is a Number or NULL}
 \usage{
-assertIsANumberOrNULL(x, severity = getOption("assertive.severity", "stop"))
+assertIsANumberOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -47,3 +48,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

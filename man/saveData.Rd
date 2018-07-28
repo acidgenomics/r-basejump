@@ -4,8 +4,8 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = ".", ext = c("rda", "rds", "RData"), overwrite = TRUE,
-  compress = TRUE)
+saveData(..., dir = ".", ext = c("rda", "rds", "RData"),
+  overwrite = TRUE, compress = TRUE)
 }
 \arguments{
 \item{...}{Object names. Note that these arguments are interpreted as symbols
@@ -64,3 +64,4 @@ Other Write Functions: \code{\link{assignAndSaveData}},
 \author{
 Michael Steinbaugh
 }
+\concept{Write Functions}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{collapseToString}
 \alias{collapseToString}
-\alias{collapseToString}
 \alias{collapseToString,atomic-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
@@ -15,11 +14,11 @@ collapseToString(object, ...)
 \S4method{collapseToString}{atomic}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 
-\S4method{collapseToString}{data.frame}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
+\S4method{collapseToString}{data.frame}(object, sep = ", ",
+  sort = FALSE, removeNA = FALSE, unique = FALSE)
 
-\S4method{collapseToString}{DataFrame}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
+\S4method{collapseToString}{DataFrame}(object, sep = ", ",
+  sort = FALSE, removeNA = FALSE, unique = FALSE)
 
 \S4method{collapseToString}{matrix}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
@@ -88,3 +87,4 @@ Other Sanitization Functions: \code{\link{fixNA}},
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}

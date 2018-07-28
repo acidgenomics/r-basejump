@@ -4,7 +4,8 @@
 \alias{assertIsDataFrameOrNULL}
 \title{Assert Is Data Frame or NULL}
 \usage{
-assertIsDataFrameOrNULL(x, severity = getOption("assertive.severity", "stop"))
+assertIsDataFrameOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -50,3 +51,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

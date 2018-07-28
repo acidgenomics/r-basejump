@@ -3,7 +3,6 @@
 \docType{methods}
 \name{aggregateReplicates}
 \alias{aggregateReplicates}
-\alias{aggregateReplicates}
 \alias{aggregateReplicates,dgCMatrix-method}
 \alias{aggregateReplicates,matrix-method}
 \title{Aggregate Replicates}
@@ -56,3 +55,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Math Functions}

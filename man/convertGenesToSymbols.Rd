@@ -4,7 +4,6 @@
 \docType{methods}
 \name{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
-\alias{convertGenesToSymbols}
 \alias{convertGenesToSymbols,character-method}
 \alias{convertGenesToSymbols,matrix-method}
 \alias{convertGenesToSymbols,data.frame-method}
@@ -102,3 +101,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

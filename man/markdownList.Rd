@@ -38,3 +38,4 @@ Other R Markdown Functions: \code{\link{kables}},
 \author{
 Michael Steinbaugh
 }
+\concept{R Markdown Functions}

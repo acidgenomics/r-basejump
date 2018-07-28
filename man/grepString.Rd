@@ -34,3 +34,4 @@ Other Atomic Vector Functions: \code{\link{sortUnique}},
 \author{
 Michael Steinbaugh
 }
+\concept{Atomic Vector Functions}

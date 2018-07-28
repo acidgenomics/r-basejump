@@ -4,8 +4,8 @@
 \alias{assertAreTranscriptAnnotations}
 \title{Assert Are Ensembl Transcript Annotations}
 \usage{
-assertAreTranscriptAnnotations(x, severity = getOption("assertive.severity",
-  "stop"))
+assertAreTranscriptAnnotations(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript annotations.}
@@ -51,3 +51,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

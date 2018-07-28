@@ -39,3 +39,4 @@ Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}}
 }
+\concept{Developer Functions}

@@ -4,7 +4,6 @@
 \docType{methods}
 \name{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes}
-\alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
 \alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,data.frame-method}
@@ -94,3 +93,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}
