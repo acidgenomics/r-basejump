@@ -40,7 +40,7 @@ setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
     function(object, ...) {
-        # Legacy arguments =========================================================
+        # Legacy arguments =====================================================
         # nocov start
         call <- match.call(expand.dots = TRUE)
         # clean
