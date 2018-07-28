@@ -23,7 +23,6 @@ reference:
     - emptyRanges
     - ends_with("FromEnsembl")
     - ends_with("FromGFF")
-    - panther
     - starts_with("parse")
     - starts_with("strip")
     - ends_with("2gene")
