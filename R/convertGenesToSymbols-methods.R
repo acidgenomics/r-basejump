@@ -40,8 +40,10 @@
 #'
 #' # SummarizedExperiment ====
 #' x <- convertGenesToSymbols(rse_bcb)
-#' show(x)
-#' head(rownames(x))
+#' print(x)
+#'
+#' y <- convertSymbolsToGenes(x)
+#' print(y)
 NULL
 
 

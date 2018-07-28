@@ -61,6 +61,17 @@ setGeneric(
 
 
 
+#' @rdname convertGenesToSymbols
+#' @export
+setGeneric(
+    "convertSymbolsToGenes",
+    function(object, ...) {
+        standardGeneric("convertSymbolsToGenes")
+    }
+)
+
+
+
 #' @rdname convertTranscriptsToGenes
 #' @export
 setGeneric(
