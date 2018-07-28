@@ -17,4 +17,5 @@ Other Minimal Example Data: \code{\link{rse_dds}}
 \author{
 Michael Steinbaugh
 }
+\concept{Minimal Example Data}
 \keyword{datasets}

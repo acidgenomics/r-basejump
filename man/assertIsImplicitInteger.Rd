@@ -4,7 +4,6 @@
 \alias{assertIsImplicitInteger}
 \alias{assertIsAnImplicitInteger}
 \alias{assertIsAnImplicitIntegerOrNULL}
-\alias{assertIsImplicitInteger}
 \alias{assertIsImplicitIntegerOrNULL}
 \alias{isAnImplicitInteger}
 \alias{isImplicitInteger}
@@ -66,3 +65,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

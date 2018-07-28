@@ -4,7 +4,6 @@
 \docType{methods}
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
-\alias{uniteInterestingGroups}
 \alias{uniteInterestingGroups,data.frame-method}
 \alias{uniteInterestingGroups,DataFrame-method}
 \alias{uniteInterestingGroups,tbl_df-method}
@@ -46,3 +45,4 @@ Other Data Functions: \code{\link{counts}},
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

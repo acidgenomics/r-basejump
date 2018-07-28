@@ -4,8 +4,8 @@
 \alias{assertIsHexColorFunctionOrNULL}
 \title{Assert Is Hex Color Function or NULL}
 \usage{
-assertIsHexColorFunctionOrNULL(x, severity = getOption("assertive.severity",
-  "stop"))
+assertIsHexColorFunctionOrNULL(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -52,3 +52,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{broadClass}
 \alias{broadClass}
-\alias{broadClass}
 \alias{broadClass,data.frame-method}
 \alias{broadClass,DataFrame-method}
 \alias{broadClass,GRanges-method}
@@ -56,3 +55,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Rory Kirchner and Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

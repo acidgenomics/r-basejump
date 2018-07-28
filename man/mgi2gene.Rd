@@ -32,3 +32,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{makeTx2geneFromGFF}},
   \code{\link{stripTranscriptVersions}}
 }
+\concept{Gene Annotation Functions}

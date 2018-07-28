@@ -5,7 +5,6 @@
 \name{sampleData}
 \alias{sampleData}
 \alias{sampleData<-}
-\alias{sampleData}
 \alias{sampleData,SummarizedExperiment-method}
 \alias{sampleData<-,SummarizedExperiment,DataFrame-method}
 \alias{sampleData<-,SummarizedExperiment,data.frame-method}
@@ -62,3 +61,4 @@ Other Data Functions: \code{\link{counts}},
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

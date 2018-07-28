@@ -3,7 +3,6 @@
 \docType{methods}
 \name{geometricMean}
 \alias{geometricMean}
-\alias{geometricMean}
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
 \alias{geometricMean,data.frame-method}
@@ -66,3 +65,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh
 }
+\concept{Math Functions}

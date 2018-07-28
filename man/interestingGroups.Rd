@@ -4,7 +4,6 @@
 \name{interestingGroups}
 \alias{interestingGroups}
 \alias{interestingGroups<-}
-\alias{interestingGroups}
 \alias{interestingGroups,SummarizedExperiment-method}
 \alias{interestingGroups<-,SummarizedExperiment,character-method}
 \title{Interesting Groups}
@@ -15,7 +14,8 @@ interestingGroups(object, ...) <- value
 
 \S4method{interestingGroups}{SummarizedExperiment}(object)
 
-\S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
+
+  \S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
 }
 \arguments{
 \item{object}{Object.}

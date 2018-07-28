@@ -4,7 +4,8 @@
 \alias{assertFormalCompress}
 \title{Assert Formal Compression}
 \usage{
-assertFormalCompress(x, severity = getOption("assertive.severity", "stop"))
+assertFormalCompress(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
@@ -46,3 +47,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

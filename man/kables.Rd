@@ -39,3 +39,4 @@ Other R Markdown Functions: \code{\link{markdownHeader}},
 \author{
 Michael Steinbaugh
 }
+\concept{R Markdown Functions}

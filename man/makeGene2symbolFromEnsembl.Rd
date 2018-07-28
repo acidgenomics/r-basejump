@@ -4,7 +4,8 @@
 \alias{makeGene2symbolFromEnsembl}
 \title{Gene-to-Symbol Mappings from Ensembl}
 \usage{
-makeGene2symbolFromEnsembl(organism, genomeBuild = NULL, release = NULL)
+makeGene2symbolFromEnsembl(organism, genomeBuild = NULL,
+  release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -43,3 +44,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

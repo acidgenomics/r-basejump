@@ -76,3 +76,4 @@ p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 \author{
 Michael Steinbaugh
 }
+\concept{Plot Functions}

@@ -37,3 +37,4 @@ Other Developer Functions: \code{\link{dots}},
 \author{
 Michael Steinbaugh
 }
+\concept{Developer Functions}

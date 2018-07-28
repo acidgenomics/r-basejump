@@ -4,7 +4,6 @@
 \docType{methods}
 \name{stripTranscriptVersions}
 \alias{stripTranscriptVersions}
-\alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
 \alias{stripTranscriptVersions,matrix-method}
 \alias{stripTranscriptVersions,dgCMatrix-method}
@@ -60,3 +59,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

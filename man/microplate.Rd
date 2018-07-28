@@ -43,3 +43,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh
 }
+\concept{Math Functions}

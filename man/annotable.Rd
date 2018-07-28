@@ -4,8 +4,8 @@
 \alias{annotable}
 \title{Ensembl Annotations}
 \usage{
-annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
-  release = NULL)
+annotable(organism, format = c("genes", "transcripts"),
+  genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -22,7 +22,10 @@ set \code{NULL}, defaults to the most recent release available.}
 \code{data.frame}.
 }
 \description{
-Ensembl Annotations
+Quickly obtain gene and transcript annotations from
+\href{http://www.ensembl.org}{Ensembl} using
+\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub} and
+\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 \details{
 Simply specify the desired organism, using the full latin name. For example,
@@ -86,3 +89,4 @@ Other Gene Annotation Functions: \code{\link{broadClass}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

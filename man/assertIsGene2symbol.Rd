@@ -4,7 +4,8 @@
 \alias{assertIsGene2symbol}
 \title{Assert Is Gene to Symbol Mapping Data Frame}
 \usage{
-assertIsGene2symbol(x, severity = getOption("assertive.severity", "stop"))
+assertIsGene2symbol(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl gene-to-symbol mappings. Must be
@@ -52,3 +53,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

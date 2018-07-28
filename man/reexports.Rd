@@ -4,21 +4,13 @@
 \name{reexports}
 \alias{reexports}
 \alias{seqnames}
-\alias{reexports}
 \alias{Matrix}
-\alias{reexports}
 \alias{DataFrame}
-\alias{reexports}
 \alias{mcols}
-\alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
 \alias{set_rownames}
-\alias{reexports}
 \alias{glimpse}
-\alias{reexports}
 \alias{is_tibble}
-\alias{reexports}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
