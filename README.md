@@ -82,4 +82,5 @@ The papers and software cited in our workflows are available as a [shared librar
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org
 [conda]: https://conda.io
+[Paperpile]: http://paperpile.com
 [R]: https://www.r-project.org
