@@ -13,7 +13,7 @@
 #' @examples
 #' # GRanges ====
 #' x <- makeGRangesFromEnsembl("Homo sapiens")
-#' head(broadClass(x))
+#' table(broadClass(x))
 NULL
 
 
