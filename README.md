@@ -8,7 +8,6 @@
 
 Base functions for bioinformatics and [R][] package development.
 
-
 ## Installation
 
 This is an [R][] package.
@@ -74,7 +73,6 @@ Now you're ready to install `r-basejump`.
 ```bash
 conda install -c bioconda r-basejump
 ```
-
 
 [bioconda]: https://bioconda.github.io
 [BiocManager]: https://cran.r-project.org/package=BiocManager
