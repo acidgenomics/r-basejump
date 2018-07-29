@@ -25,7 +25,7 @@ Broad Class Definitions
 \examples{
 # GRanges ====
 x <- makeGRangesFromEnsembl("Homo sapiens")
-head(broadClass(x))
+table(broadClass(x))
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},
