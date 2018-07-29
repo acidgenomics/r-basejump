@@ -3,16 +3,10 @@
 \docType{methods}
 \name{broadClass}
 \alias{broadClass}
-\alias{broadClass,data.frame-method}
-\alias{broadClass,DataFrame-method}
 \alias{broadClass,GRanges-method}
 \title{Broad Class Definitions}
 \usage{
 broadClass(object, ...)
-
-\S4method{broadClass}{data.frame}(object)
-
-\S4method{broadClass}{DataFrame}(object)
 
 \S4method{broadClass}{GRanges}(object)
 }
@@ -31,10 +25,6 @@ Broad Class Definitions
 \examples{
 # GRanges ====
 x <- makeGRangesFromEnsembl("Homo sapiens")
-head(broadClass(x))
-
-# data.frame ====
-x <- annotable("Homo sapiens")
 head(broadClass(x))
 }
 \seealso{
