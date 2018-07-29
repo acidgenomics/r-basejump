@@ -74,6 +74,10 @@ Now you're ready to install `r-basejump`.
 conda install -c bioconda r-basejump
 ```
 
+# References
+
+The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
+
 [bioconda]: https://bioconda.github.io
 [BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org
