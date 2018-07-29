@@ -279,4 +279,29 @@ paperwhiteTheme <- function(...) {
 
 
 
+# v0.6.2 =======================================================================
+#' @rdname defunct
+#' @export
+setMethod(
+    "broadClass",
+    signature("data.frame"),
+    function(object) {
+        .Defunct(
+            msg = "`broadClass()` now requires a `GRanges` class object"
+        )
+    }
+)
+
+
+
+#' @rdname defunct
+#' @export
+setMethod(
+    "broadClass",
+    signature("DataFrame"),
+    getMethod("broadClass", "data.frame")
+)
+
+
+
 # nocov end

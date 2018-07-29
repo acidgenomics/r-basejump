@@ -14,10 +14,6 @@
 #' # GRanges ====
 #' x <- makeGRangesFromEnsembl("Homo sapiens")
 #' head(broadClass(x))
-#'
-#' # data.frame ====
-#' x <- annotable("Homo sapiens")
-#' head(broadClass(x))
 NULL
 
 
@@ -27,7 +23,7 @@ NULL
 #' @export
 setMethod(
     "broadClass",
-    signature("data.frame"),
+    signature("GRanges"),
     function(object) {
         object <- as.data.frame(object)
         assertHasRownames(object)
@@ -134,24 +130,4 @@ setMethod(
         names(broad) <- rownames(object)
         broad
     }
-)
-
-
-
-#' @rdname broadClass
-#' @export
-setMethod(
-    "broadClass",
-    signature("DataFrame"),
-    getMethod("broadClass", "data.frame")
-)
-
-
-
-#' @rdname broadClass
-#' @export
-setMethod(
-    "broadClass",
-    signature("GRanges"),
-    getMethod("broadClass", "data.frame")
 )
