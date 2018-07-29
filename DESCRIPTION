@@ -76,6 +76,7 @@ Imports:
     yaml (>= 2.1)
 Suggests:
     EnsDb.Hsapiens.v75,
+    sessioninfo,
     testthat (>= 2.0)
 biocViews:
     DataImport,
