@@ -9,7 +9,6 @@ reference:
   - title: Data Functions
     contents:
     - counts
-    - gene2symbol
     - interestingGroups
     - sampleData
     - sampleNames
@@ -25,7 +24,7 @@ reference:
     - ends_with("FromGFF")
     - starts_with("parse")
     - starts_with("strip")
-    - ends_with("2gene")
+    - matches("2")
   - title: Database Functions
     contents:
     - eggnog
