@@ -4,11 +4,14 @@
 \name{broadClass}
 \alias{broadClass}
 \alias{broadClass,GRanges-method}
+\alias{broadClass,SummarizedExperiment-method}
 \title{Broad Class Definitions}
 \usage{
 broadClass(object, ...)
 
 \S4method{broadClass}{GRanges}(object)
+
+\S4method{broadClass}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object that can be coerced to \code{data.frame}, containing gene or
@@ -24,8 +27,12 @@ Broad Class Definitions
 }
 \examples{
 # GRanges ====
-x <- makeGRangesFromEnsembl("Homo sapiens")
-table(broadClass(x))
+x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
+table(x)
+
+# SummarizedExperiment ====
+x <- broadClass(rse_bcb)
+table(x)
 }
 \seealso{
 Other Gene Annotation Functions: \code{\link{annotable}},

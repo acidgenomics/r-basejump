@@ -12,8 +12,12 @@
 #'
 #' @examples
 #' # GRanges ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens")
-#' table(broadClass(x))
+#' x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
+#' table(x)
+#'
+#' # SummarizedExperiment ====
+#' x <- broadClass(rse_bcb)
+#' table(x)
 NULL
 
 
@@ -129,5 +133,17 @@ setMethod(
         broad <- as.factor(broad)
         names(broad) <- rownames(object)
         broad
+    }
+)
+
+
+
+#' @rdname broadClass
+#' @export
+setMethod(
+    "broadClass",
+    signature("SummarizedExperiment"),
+    function(object) {
+        rowData(object)[["broadClass"]]
     }
 )
