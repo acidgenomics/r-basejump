@@ -25,10 +25,9 @@ Stop on mismatch.
 Assert Formal Gene to Symbol Mappings
 }
 \examples{
-gene2symbol <- data.frame(
+gene2symbol <- tibble(
     geneID = c("ENSG00000000003", "ENSG00000000005"),
-    geneName = c("TSPAN6", "TNMD"),
-    row.names = c("ENSG00000000003", "ENSG00000000005")
+    geneName = c("TSPAN6", "TNMD")
 )
 genes <- head(rownames(gene2symbol), 2L)
 x <- data.frame(

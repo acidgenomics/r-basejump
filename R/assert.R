@@ -756,6 +756,13 @@ assertIsTx2gene <- function(
         severity = severity
     )
     assert_has_rows(x, severity = severity)
+    # Assert that all columns are character
+    invisible(mapply(
+        FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
 }
 
 
