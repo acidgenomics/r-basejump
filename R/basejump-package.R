@@ -31,7 +31,7 @@
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   mutate mutate_all mutate_at mutate_if rename select starts_with
+#'   mutate mutate_all mutate_at mutate_if pull rename select starts_with
 #'   summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
