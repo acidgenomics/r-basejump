@@ -1,9 +1,8 @@
 context("Assert Check Functions")
 
-g2s <- data.frame(
+g2s <- tibble(
     geneID = c("gene_1", "gene_2"),
-    geneName = c("symbol_1", "symbol_2"),
-    row.names = c("gene_1", "gene_2")
+    geneName = c("symbol_1", "symbol_2")
 )
 
 
@@ -54,7 +53,7 @@ test_that("assertFormalCompress", {
 
 
 test_that("assertFormalGene2symbol", {
-    genes <- head(rownames(g2s), 2L)
+    genes <- pull(g2s, "geneID")
     expect_true(is.character(genes))
     x <- data.frame(
         "sample_1" = c(1L, 2L),
