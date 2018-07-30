@@ -5,10 +5,8 @@
 \name{sampleData}
 \alias{sampleData}
 \alias{sampleData<-}
-\alias{sampleData}
 \alias{sampleData,SummarizedExperiment-method}
 \alias{sampleData<-,SummarizedExperiment,DataFrame-method}
-\alias{sampleData<-,SummarizedExperiment,data.frame-method}
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample Data}
 \usage{
@@ -16,11 +14,9 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object, clean = FALSE)
+\S4method{sampleData}{SummarizedExperiment}(object, ...)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
-
-\S4method{sampleData}{SummarizedExperiment,data.frame}(object) <- value
 
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }
@@ -30,8 +26,6 @@ sampleData(object, ...) <- value
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
-
-\item{clean}{Deprecated argument, providing only factor column return.}
 }
 \value{
 \code{DataFrame} containing metadata that describes the samples.
@@ -64,3 +58,4 @@ Other Data Functions: \code{\link{counts}},
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

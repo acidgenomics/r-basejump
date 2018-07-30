@@ -9,9 +9,9 @@ writeCounts(..., dir = ".", gzip = TRUE)
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
 
-\item{dir}{Output directory.}
+\item{dir}{\code{string}. Output directory.}
 
-\item{gzip}{Compress the counts file using gzip.}
+\item{gzip}{\code{boolean}. Compress the counts file using gzip.}
 }
 \value{
 Invisible named \code{character} containing file paths.
@@ -44,3 +44,4 @@ Other Write Functions: \code{\link{assignAndSaveData}},
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Write Functions}

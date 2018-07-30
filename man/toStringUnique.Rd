@@ -4,13 +4,13 @@
 \alias{toStringUnique}
 \title{Convert to a Unique Character String}
 \usage{
-toStringUnique(atomic)
+toStringUnique(x)
 }
 \arguments{
-\item{atomic}{\code{atomic} vector.}
+\item{x}{Object.}
 }
 \value{
-\code{character} string.
+\code{string}.
 }
 \description{
 Convert to a Unique Character String
@@ -27,3 +27,4 @@ Other Atomic Vector Functions: \code{\link{grepString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Atomic Vector Functions}

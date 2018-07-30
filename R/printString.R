@@ -6,10 +6,10 @@
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
-#' @param x `atomic` vector.
-#' @param max Maximum length of vector.
+#' @param x `atomic`.
+#' @param max `scalar integer`. Maximum length of vector.
 #'
-#' @return `character` string.
+#' @return `string`.
 #' @export
 #'
 #' @seealso [base::cat()].

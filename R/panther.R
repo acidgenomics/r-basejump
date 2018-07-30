@@ -4,9 +4,9 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param release `character` string denoting PANTHER release version. If
-#'   `NULL`, defaults to current release. Consult the PANTHER website for a list
-#'   of release versions available from the FTP server (e.g. `"13.0"`).
+#' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
+#'   defaults to current release. Consult the PANTHER website for a list of
+#'   release versions available from the FTP server (e.g. `"13.0"`).
 #'
 #' @return `data.frame`.
 #' @export

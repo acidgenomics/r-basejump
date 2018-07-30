@@ -4,7 +4,6 @@
 \docType{methods}
 \name{stripTranscriptVersions}
 \alias{stripTranscriptVersions}
-\alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
 \alias{stripTranscriptVersions,matrix-method}
 \alias{stripTranscriptVersions,dgCMatrix-method}
@@ -24,7 +23,7 @@ stripTranscriptVersions(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Transcript identifiers without version numbers.
+Object containing transcript identifiers without version numbers.
 }
 \description{
 Strip Transcript Versions
@@ -60,3 +59,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

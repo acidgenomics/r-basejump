@@ -31,7 +31,7 @@
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   mutate mutate_all mutate_at mutate_if rename select starts_with
+#'   mutate mutate_all mutate_at mutate_if pull rename select starts_with
 #'   summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
@@ -56,7 +56,7 @@
 #' @importFrom stats dist
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
-#' @importFrom SummarizedExperiment assays colData colData<-
+#' @importFrom SummarizedExperiment assays colData colData<- rowData
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate unite

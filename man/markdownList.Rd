@@ -8,12 +8,12 @@
 markdownList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
-\item{text}{Text. Can be any \code{atomic}, which will be coerced to \code{character}.}
+\item{text}{\code{string}. Header text.}
 
-\item{ordered}{Ordered ("\code{TRUE}") or unordered ("\code{FALSE}") \code{list}.}
+\item{ordered}{\code{boolean}. Ordered ("\code{TRUE}") or unordered ("\code{FALSE}").}
 
-\item{asis}{Set this to \code{TRUE} when using the function inside a loop or
-inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
+\item{asis}{\code{boolean}. Set this to \code{TRUE} when using the function inside a
+loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 \value{
 \itemize{
@@ -38,3 +38,4 @@ Other R Markdown Functions: \code{\link{kables}},
 \author{
 Michael Steinbaugh
 }
+\concept{R Markdown Functions}

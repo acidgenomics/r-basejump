@@ -4,14 +4,14 @@
 \alias{assertAreTranscriptAnnotations}
 \title{Assert Are Ensembl Transcript Annotations}
 \usage{
-assertAreTranscriptAnnotations(x, severity = getOption("assertive.severity",
-  "stop"))
+assertAreTranscriptAnnotations(x,
+  severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl transcript annotations.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.
@@ -51,3 +51,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

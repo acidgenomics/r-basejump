@@ -7,7 +7,7 @@
 initializeDirectory(dir)
 }
 \arguments{
-\item{dir}{Directory path.}
+\item{dir}{\code{string}. Directory path.}
 }
 \value{
 Directory path.
@@ -31,3 +31,4 @@ Other Write Functions: \code{\link{assignAndSaveData}},
 \author{
 Michael Steinbaugh
 }
+\concept{Write Functions}

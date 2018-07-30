@@ -7,8 +7,8 @@
 #'
 #' @inherit markdownHeader
 #'
-#' @param url URL.
-#' @param title *Optional.* Link title attribute. This will appear in a
+#' @param url `string`. URL.
+#' @param title `string` or `NULL`. Link title attribute. This will appear in a
 #'   mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.

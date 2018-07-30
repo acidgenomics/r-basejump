@@ -4,13 +4,14 @@
 \alias{assertIsCharacterOrNULL}
 \title{Assert Is Character Vector or NULL}
 \usage{
-assertIsCharacterOrNULL(x, severity = getOption("assertive.severity", "stop"))
+assertIsCharacterOrNULL(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{Object.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.
@@ -47,3 +48,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

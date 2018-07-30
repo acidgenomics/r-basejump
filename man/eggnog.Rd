@@ -7,11 +7,15 @@
 eggnog()
 }
 \value{
-\code{list} containing (1; "\code{cogFunctionalCategories}") \strong{C}luster of
-\strong{O}rthologous \strong{G}roups (COG) functional category information and (2;
-"\code{annotations}") up-to-date functional descriptions and categories for
-\strong{Eu}karyotes \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (euNOG) and
-\strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein identifiers.
+\code{list} containing:
+\enumerate{
+\item "\code{cogFunctionalCategories}": \strong{C}luster of \strong{O}rthologous \strong{G}roups
+(COG) functional category information.
+\item "\code{annotations}": up-to-date functional descriptions and categories
+for \strong{Eu}karyotes \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (euNOG)
+and \strong{N}on-supervised \strong{O}rthologous \strong{G}roups (NOG) protein
+identifiers.
+}
 }
 \description{
 EggNOG is a hierarchical orthology framework with functional annotations for
@@ -29,3 +33,4 @@ Other Database Functions: \code{\link{panther}}
 \author{
 Michael Steinbaugh
 }
+\concept{Database Functions}

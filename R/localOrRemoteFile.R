@@ -7,7 +7,7 @@
 #'
 #' @family Developer Functions
 #'
-#' @param file Local file path or remote URL.
+#' @param file `string`. Local file path or remote URL.
 #'
 #' @return `character` vector containing the local file paths.
 #' @export

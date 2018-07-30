@@ -7,7 +7,7 @@
 methodFormals(f, signature)
 }
 \arguments{
-\item{f}{Generic \code{function} or \code{character} string.}
+\item{f}{Generic \code{function} or \code{string} referencing a generic.}
 
 \item{signature}{The signature of classes to match to the \code{f} argument.}
 }
@@ -33,3 +33,4 @@ Other Developer Functions: \code{\link{detectHPC}},
 \author{
 Michael Steinbaugh
 }
+\concept{Developer Functions}

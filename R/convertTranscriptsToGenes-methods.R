@@ -6,9 +6,9 @@
 #'
 #' @inherit convertGenesToSymbols
 #'
-#' @param tx2gene *Optional.* Transcript-to-gene mappings. If missing, the
-#'   function will attempt to download mappings from Ensembl according to the
-#'   `organism`, `genomeBuild`, and `release` parameters.
+#' @param tx2gene `data.frame` or `NULL`. Transcript-to-gene mappings. If set
+#'   `NULL`, the function will attempt to download mappings from Ensembl
+#'   according to the `organism`, `genomeBuild`, and `release` parameters.
 #'
 #' @examples
 #' # character ====
@@ -41,8 +41,8 @@ setMethod(
     signature("character"),
     function(
         object,
-        tx2gene,
-        organism,
+        tx2gene = NULL,
+        organism = NULL,
         genomeBuild = NULL,
         release = NULL
     ) {
@@ -50,11 +50,12 @@ setMethod(
         assert_is_character(object)
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
+        assert_is_any_of(tx2gene, c("data.frame", "NULL"))
 
         # If no tx2gene is provided, fall back to using Ensembl annotations
-        if (missing(tx2gene) || is.null(tx2gene)) {
+        if (is.null(tx2gene)) {
             message("Obtaining transcript-to-gene mappings from Ensembl")
-            if (missing(organism) || is.null(organism)) {
+            if (is.null(organism)) {
                 organism <- detectOrganism(object, unique = TRUE)
             }
             assert_is_a_string(organism)

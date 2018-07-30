@@ -18,14 +18,14 @@
 #' @inheritParams general
 #' @param object Character vector or an object for which [names()] assignment
 #'   will be meaningful.
-#' @param rownames Apply sanitization on row names. This is not recommended
-#'   by default, since rownames commonly contain gene identifiers that should
-#'   not be modified.
-#' @param colnames Apply sanitization on column names. This is generally
-#'   recommended by default.
-#' @param strict Enforce strict name sanitization. When `TRUE`, this does not
-#'   allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-#'   example.
+#' @param rownames `boolean`. Apply sanitization on row names. This is not
+#'   recommended by default, since rownames commonly contain gene identifiers
+#'   that should not be modified.
+#' @param colnames `boolean`. Apply sanitization on column names. This is
+#'   generally recommended by default.
+#' @param strict `boolean`. Enforce strict name sanitization. When `TRUE`, this
+#'   does not allow the return of any capitalized acronyms. "RNA" will become
+#'   "Rna", for example.
 #'
 #' @return Object with syntatically valid names. For objects supporting
 #'   [names()], the underlying data returns unchanged.
@@ -83,8 +83,8 @@ NULL
 # Standard Functions ===========================================================
 #' @rdname makeNames
 #' @param names `atomic` to be coerced to syntactically valid names. Will be
-#'   coerced to `character` if necessary.
-#' @param unique `logical`; if `TRUE`, the resulting elements are unique.
+#'   coerced to `character`, if necessary.
+#' @param unique `boolean`. If `TRUE`, the resulting elements are unique.
 #' @export
 makeNames <- function(names, unique = FALSE) {
     assert_is_atomic(names)

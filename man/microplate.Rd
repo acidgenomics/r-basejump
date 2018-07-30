@@ -7,13 +7,13 @@
 microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 }
 \arguments{
-\item{plates}{Number of plates.}
+\item{plates}{\code{scalar integer}. Number of plates.}
 
-\item{wells}{Number of wells (\code{96}, \code{384}).}
+\item{wells}{\code{scalar integer}. Number of wells (\code{96}, \code{384}).}
 
-\item{controls}{Number of control wells.}
+\item{controls}{\code{scalar integer}. Number of control wells.}
 
-\item{prefix}{\emph{Optional.} Plate name prefix.}
+\item{prefix}{\code{string} or \code{NULL}. Plate name prefix.}
 }
 \value{
 Character vector containing well identifiers.
@@ -43,3 +43,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh
 }
+\concept{Math Functions}

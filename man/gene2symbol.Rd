@@ -3,7 +3,6 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
-\alias{gene2symbol}
 \alias{gene2symbol,SummarizedExperiment-method}
 \title{Gene to Symbol Mappings}
 \usage{
@@ -34,3 +33,4 @@ Other Data Functions: \code{\link{counts}},
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

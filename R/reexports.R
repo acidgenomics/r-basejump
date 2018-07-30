@@ -1,5 +1,13 @@
 # Only reexport functions needed for working examples and vignette
 
+
+
+#' @importFrom dplyr pull
+#' @export
+dplyr::pull
+
+
+
 #' @importFrom GenomeInfoDb seqnames
 #' @export
 GenomeInfoDb::seqnames

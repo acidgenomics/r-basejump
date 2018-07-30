@@ -7,12 +7,12 @@
 printString(x, max = 100L)
 }
 \arguments{
-\item{x}{\code{atomic} vector.}
+\item{x}{\code{atomic}.}
 
-\item{max}{Maximum length of vector.}
+\item{max}{\code{scalar integer}. Maximum length of vector.}
 }
 \value{
-\code{character} string.
+\code{string}.
 }
 \description{
 Capture \code{\link[base:print]{base::print()}} output of an \code{atomic} vector. Useful for returning
@@ -32,3 +32,4 @@ Other Developer Functions: \code{\link{detectHPC}},
 \author{
 Michael Steinbaugh
 }
+\concept{Developer Functions}

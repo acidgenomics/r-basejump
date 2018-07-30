@@ -3,7 +3,6 @@
 \docType{methods}
 \name{removeNA}
 \alias{removeNA}
-\alias{removeNA}
 \alias{removeNA,ANY-method}
 \alias{removeNA,atomic-method}
 \alias{removeNA,matrix-method}
@@ -66,3 +65,4 @@ Other Sanitization Functions: \code{\link{collapseToString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}

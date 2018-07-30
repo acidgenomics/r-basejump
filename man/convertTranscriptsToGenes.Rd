@@ -4,7 +4,6 @@
 \docType{methods}
 \name{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes}
-\alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
 \alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,data.frame-method}
@@ -15,8 +14,8 @@
 \usage{
 convertTranscriptsToGenes(object, ...)
 
-\S4method{convertTranscriptsToGenes}{character}(object, tx2gene, organism,
-  genomeBuild = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
+  organism = NULL, genomeBuild = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, ...)
 
@@ -33,21 +32,21 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{tx2gene}{\emph{Optional.} Transcript-to-gene mappings. If missing, the
-function will attempt to download mappings from Ensembl according to the
-\code{organism}, \code{genomeBuild}, and \code{release} parameters.}
+\item{tx2gene}{\code{data.frame} or \code{NULL}. Transcript-to-gene mappings. If set
+\code{NULL}, the function will attempt to download mappings from Ensembl
+according to the \code{organism}, \code{genomeBuild}, and \code{release} parameters.}
 
-\item{organism}{\emph{Optional.} Organism name. Normally this argument is
-unnecessary and can be left unset. If a count matrix starts with a
-FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-first gene identifier will fail. In this case, the desired organism must be
+\item{organism}{\code{string}. Organism name. Normally this argument is
+unnecessary and can be left unset. If a count matrix starts with a FASTA
+spike-in (e.g. "EGFP"), then automatic genome detection based on the first
+gene identifier will fail. In this case, the desired organism must be
 manually declared.}
 
-\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
-If \code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
-to the most recent release available.}
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 Same class as original object.
@@ -94,3 +93,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{detectOrganism}
 \alias{detectOrganism}
-\alias{detectOrganism}
 \alias{detectOrganism,character-method}
 \alias{detectOrganism,factor-method}
 \alias{detectOrganism,matrix-method}
@@ -34,8 +33,8 @@ detectOrganism(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{unique}{Only return unique matching organisms. Applies to \code{character}
-vector input.}
+\item{unique}{\code{boolean}. Only return unique matching organisms. Applies to
+\code{character} input.}
 }
 \value{
 Full latin organism name. Stops on detection failure.
@@ -94,3 +93,4 @@ Other Gene Annotation Functions: \code{\link{annotable}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}

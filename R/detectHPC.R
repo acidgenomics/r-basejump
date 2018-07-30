@@ -8,8 +8,8 @@
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
-#' @return Scheduler name if HPC is detected (e.g. LSF, SLURM), otherwise
-#'   `FALSE`.
+#' @return Scheduler name `string` if HPC is detected (e.g. LSF, SLURM),
+#'   otherwise `FALSE`.
 #' @export
 #'
 #' @seealso

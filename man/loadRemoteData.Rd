@@ -7,8 +7,7 @@
 loadRemoteData(url, envir = parent.frame())
 }
 \arguments{
-\item{url}{Remote URL file path to R data. Supports multiple URLs passed in
-as a character vector.}
+\item{url}{\code{character}. Remote URL file path(s) to R data.}
 
 \item{envir}{\code{environment} to use for assignment. Defaults to
 \code{parent.frame()}, which will assign into the calling environment.}
@@ -38,3 +37,4 @@ Other Read Functions: \code{\link{loadDataAsName}},
 \author{
 Michael Steinbaugh
 }
+\concept{Read Functions}

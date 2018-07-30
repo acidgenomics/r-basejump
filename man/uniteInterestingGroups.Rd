@@ -4,7 +4,6 @@
 \docType{methods}
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
-\alias{uniteInterestingGroups}
 \alias{uniteInterestingGroups,data.frame-method}
 \alias{uniteInterestingGroups,DataFrame-method}
 \alias{uniteInterestingGroups,tbl_df-method}
@@ -19,14 +18,14 @@ uniteInterestingGroups(object, ...)
 \S4method{uniteInterestingGroups}{tbl_df}(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object containing interesting groups in multiple columns.}
+\item{object}{Object containing multiple interesting groups.}
 
 \item{...}{Additional arguments.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 }
 \value{
-Data frame, now containing an \code{interestingGroups} column.
+Data frame containing an \code{interestingGroups} column.
 }
 \description{
 Create a single interesting groups column ("\code{interestingGroups}") used for
@@ -46,3 +45,4 @@ Other Data Functions: \code{\link{counts}},
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

@@ -4,25 +4,28 @@
 \alias{annotable}
 \title{Ensembl Annotations}
 \usage{
-annotable(organism, format = c("genes", "transcripts"), genomeBuild = NULL,
-  release = NULL)
+annotable(organism, format = c("genes", "transcripts"),
+  genomeBuild = NULL, release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{format}{Fetch ranges as "\code{genes}" or "\code{transcripts}".}
+\item{format}{\code{string}. Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\emph{Optional.} Genome build assembly name (e.g. "\code{GRCh38}").
-If \code{NULL}, defaults to the most recent build available.}
+\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
-\item{release}{\emph{Optional.} Release version (e.g. \code{90}). If \code{NULL}, defaults
-to the most recent release available.}
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 \code{data.frame}.
 }
 \description{
-Ensembl Annotations
+Quickly obtain gene and transcript annotations from
+\href{http://www.ensembl.org}{Ensembl} using
+\href{https://doi.org/doi:10.18129/B9.bioc.AnnotationHub}{AnnotationHub} and
+\href{https://doi.org/doi:10.18129/B9.bioc.ensembldb}{ensembldb}.
 }
 \details{
 Simply specify the desired organism, using the full latin name. For example,
@@ -86,3 +89,4 @@ Other Gene Annotation Functions: \code{\link{broadClass}},
 \author{
 Michael Steinbaugh
 }
+\concept{Gene Annotation Functions}
