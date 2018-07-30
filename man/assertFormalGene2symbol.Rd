@@ -29,7 +29,7 @@ gene2symbol <- tibble(
     geneID = c("ENSG00000000003", "ENSG00000000005"),
     geneName = c("TSPAN6", "TNMD")
 )
-genes <- head(rownames(gene2symbol), 2L)
+genes <- pull(gene2symbol, "geneID")
 x <- data.frame(
     "sample_1" = c(1L, 2L),
     "sample_2" = c(3L, 4L),
