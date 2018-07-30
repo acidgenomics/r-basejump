@@ -24,14 +24,17 @@ setMethod(
     signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
-        data <- as.data.frame(rowData(object))
+        data <- rowData(object)
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(data))) {
             warning("Object does not contain gene-to-symbol mappings")
             return(NULL)
         }
-        data <- data[, cols]
-        rownames(data) <- rownames(object)
+        data <- data %>%
+            as.data.frame() %>%
+            select(!!!syms(cols)) %>%
+            mutate_all(as.character) %>%
+            set_rownames(rownames(object))
         assertIsGene2symbol(data)
         data
     }
