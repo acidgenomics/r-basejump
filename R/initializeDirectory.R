@@ -6,7 +6,7 @@
 #' @family Write Functions
 #' @author Michael Steinbaugh
 #'
-#' @param dir Directory path.
+#' @param dir `string`. Directory path.
 #'
 #' @return Directory path.
 #' @export

@@ -6,14 +6,14 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @param gene2symbol *Optional.* Gene-to-symbol mappings. If `NULL`, will
-#'   attempt to download from Ensembl using the desired `organism`,
+#' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
+#'   `NULL`, will attempt to download from Ensembl using the desired `organism`,
 #'   `genomeBuild`, and `release` arguments.
-#' @param organism *Optional.* Organism name. Normally this argument is
-#'  unnecessary and can be left unset. If a count matrix starts with a
-#'  FASTA spike-in (e.g. "EGFP"), then automatic genome detection based on the
-#'  first gene identifier will fail. In this case, the desired organism must be
-#'  manually declared.
+#' @param organism `string`. Organism name. Normally this argument is
+#'   unnecessary and can be left unset. If a count matrix starts with a FASTA
+#'   spike-in (e.g. "EGFP"), then automatic genome detection based on the first
+#'   gene identifier will fail. In this case, the desired organism must be
+#'   manually declared.
 #'
 #' @return Same class as original object.
 #'
@@ -40,8 +40,10 @@
 #'
 #' # SummarizedExperiment ====
 #' x <- convertGenesToSymbols(rse_bcb)
-#' show(x)
-#' head(rownames(x))
+#' print(x)
+#'
+#' y <- convertSymbolsToGenes(x)
+#' print(y)
 NULL
 
 
@@ -54,20 +56,21 @@ setMethod(
     signature("character"),
     function(
         object,
-        gene2symbol,
-        organism,
+        gene2symbol = NULL,
+        organism = NULL,
         genomeBuild = NULL,
         release = NULL
     ) {
         # Passthrough: genomeBuild, release
         assert_is_character(object)
-        assert_all_are_non_missing_nor_empty_character(object)
         # Allowing duplicates here (unlike convertTranscriptsToGenes)
+        assert_all_are_non_missing_nor_empty_character(object)
+        assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations
-        if (missing(gene2symbol) || is.null(gene2symbol)) {
+        if (is.null(gene2symbol)) {
             message("Obtaining gene-to-symbol mappings from Ensembl")
-            if (missing(organism) || is.null(organism)) {
+            if (is.null(organism)) {
                 organism <- detectOrganism(object, unique = TRUE)
             }
             assert_is_a_string(organism)

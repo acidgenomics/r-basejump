@@ -14,17 +14,17 @@ test_that("annotable", {
 
 # broadClass ===================================================================
 test_that("broadClass", {
-    df <- annotable("Homo sapiens")
+    # GRanges
+    expect_is(
+        broadClass(makeGRangesFromEnsembl("Homo sapiens")),
+        "factor"
+    )
 
-    bc <- df[["broadClass"]]
-    names(bc) <- rownames(df)
-
-    # Early return if already defined
-    expect_identical(bc, broadClass(df))
-
-    # Warn on missing `biotype` and `seqname` columns
-    minimal <- df[, c("geneID", "geneName")]
-    expect_warning(broadClass(minimal))
+    # SummarizedExperiment
+    expect_is(
+        broadClass(rse_bcb),
+        "factor"
+    )
 })
 
 

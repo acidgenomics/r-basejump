@@ -3,7 +3,6 @@
 \docType{methods}
 \name{geometricMean}
 \alias{geometricMean}
-\alias{geometricMean}
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
 \alias{geometricMean,data.frame-method}
@@ -23,9 +22,9 @@ geometricMean(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{removeNA}{Remove \code{NA} values from calculations.}
+\item{removeNA}{\code{boolean}. Remove \code{NA} values from calculations.}
 
-\item{zeroPropagate}{Allow propagation of zeroes.}
+\item{zeroPropagate}{\code{boolean}. Allow propagation of zeroes.}
 }
 \value{
 \code{numeric} containing geometric means.
@@ -66,3 +65,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh
 }
+\concept{Math Functions}

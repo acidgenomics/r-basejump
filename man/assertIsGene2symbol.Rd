@@ -4,15 +4,16 @@
 \alias{assertIsGene2symbol}
 \title{Assert Is Gene to Symbol Mapping Data Frame}
 \usage{
-assertIsGene2symbol(x, severity = getOption("assertive.severity", "stop"))
+assertIsGene2symbol(x, severity = getOption("assertive.severity",
+  "stop"))
 }
 \arguments{
 \item{x}{\code{data.frame} containing Ensembl gene-to-symbol mappings. Must be
 structured as a two column \code{data.frame} with "\code{geneID}" and "\code{geneName}"
 columns.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.
@@ -21,7 +22,7 @@ Stop on mismatch.
 Assert Is Gene to Symbol Mapping Data Frame
 }
 \examples{
-x <- data.frame(
+x <- tibble(
     geneID = "ENSG00000000003",
     geneName = "TSPAN6"
 )
@@ -52,3 +53,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

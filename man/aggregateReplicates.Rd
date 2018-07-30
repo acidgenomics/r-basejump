@@ -3,7 +3,6 @@
 \docType{methods}
 \name{aggregateReplicates}
 \alias{aggregateReplicates}
-\alias{aggregateReplicates}
 \alias{aggregateReplicates,dgCMatrix-method}
 \alias{aggregateReplicates,matrix-method}
 \title{Aggregate Replicates}
@@ -19,9 +18,9 @@ aggregateReplicates(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{groupings}{Factor that defines the aggregation groupings. The new
-aggregation names are defined as the factor levels, and the original
-replicates are defined as the names of the factor.}
+\item{groupings}{\code{character}. Factor that defines the aggregation groupings.
+The new aggregation names are defined as the factor levels, and the
+original replicates are defined as the names of the factor.}
 }
 \value{
 Object with aggregated counts per pooled sample (columns).
@@ -56,3 +55,4 @@ Other Math Functions: \code{\link{aggregateFeatures}},
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Math Functions}

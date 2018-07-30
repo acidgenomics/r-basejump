@@ -5,7 +5,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame` or `data.frame`.
+#' @return Data frame.
 #' @export
 #'
 #' @examples

@@ -4,12 +4,12 @@
 #' @author Michael Steinbaugh
 #'
 #' @param ... Objects as dots.
-#' @param character Return dots (`...`) as `character` vector.
+#' @param character `boolean`. Return dots (`...`) as `character`.
 #'
 #' @return
-#' - For "`character = FALSE`": `list` containing objects as names. Can return
+#' - "`character = FALSE`": `list` containing objects as names. Can return
 #'   object from the stored `name` class with [eval()].
-#' - For "`character = TRUE`": `character` containing the dot names.
+#' - "`character = TRUE`": `character` containing the dot names.
 #' @export
 #'
 #' @seealso

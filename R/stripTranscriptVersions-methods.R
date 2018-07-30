@@ -9,7 +9,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return Transcript identifiers without version numbers.
+#' @return Object containing transcript identifiers without version numbers.
 #'
 #' @examples
 #' # Ensembl

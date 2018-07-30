@@ -3,22 +3,15 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{pull}
 \alias{seqnames}
-\alias{reexports}
 \alias{Matrix}
-\alias{reexports}
 \alias{DataFrame}
-\alias{reexports}
 \alias{mcols}
-\alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
 \alias{set_rownames}
-\alias{reexports}
 \alias{glimpse}
-\alias{reexports}
 \alias{is_tibble}
-\alias{reexports}
 \alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -27,6 +20,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{dplyr}{\code{\link[dplyr]{pull}}}
+
   \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}

@@ -3,21 +3,32 @@ context("Data Functions")
 
 
 # convertGenesToSymbols ========================================================
-test_that("convertGenesToSymbols", {
+test_that("convertGenesToSymbols : SummarizedExperiment", {
     x <- convertGenesToSymbols(rse_bcb)
     expect_identical(
-        head(rownames(x)),
-        c("Cox5a", "Comt", "Dazap2", "Rpl13", "Calm1", "Ddt")
+        rownames(x),
+        mcols(rowRanges(x))[["geneName"]]
     )
-})
 
-test_that("convertGenesToSymbols : unmodified return", {
+    # Unmodified return
     expect_warning(
         convertGenesToSymbols(rse_dds),
         "Object does not contain gene-to-symbol mappings"
     )
     x <- suppressWarnings(convertGenesToSymbols(rse_dds))
     expect_identical(rownames(x), rownames(rse_dds))
+})
+
+
+
+# convertSymbolsToGenes ========================================================
+test_that("convertSymbolsToGenes : SummarizedExperiment", {
+    x <- convertGenesToSymbols(rse_bcb)
+    y <- convertSymbolsToGenes(x)
+    expect_identical(
+        rownames(y),
+        mcols(rowRanges(y))[["geneID"]]
+    )
 })
 
 

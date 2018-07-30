@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
-Version: 0.6.1
+Version: 0.6.2
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -76,10 +76,11 @@ Imports:
     yaml (>= 2.1)
 Suggests:
     EnsDb.Hsapiens.v75,
+    sessioninfo,
     testthat (>= 2.0)
 biocViews:
     DataImport,
     Infrastructure
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 VignetteBuilder: knitr

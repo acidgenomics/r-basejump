@@ -11,7 +11,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param format Output as genes or transcripts.
+#' @param format `string`. Output as genes or transcripts.
 #'
 #' @return `GRanges`.
 #' @export

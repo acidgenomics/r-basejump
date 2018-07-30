@@ -8,9 +8,9 @@
 #'
 #' @inheritParams saveData
 #' @inheritParams general
-#' @param name Desired variable name.
-#' @param envir Environment to use for assignment. Defaults to [parent.frame()],
-#'   the calling environment.
+#' @param name `string`. Desired variable name.
+#' @param envir `environment`. Environment to use for assignment. Defaults to
+#'   [parent.frame()], the calling environment.
 #'
 #' @return Invisible named `character` containing file paths.
 #' @export

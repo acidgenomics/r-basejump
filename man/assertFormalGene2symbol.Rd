@@ -15,8 +15,8 @@ assertFormalGene2symbol(x, genes, gene2symbol,
 \item{gene2symbol}{Gene-to-symbol mappings. Must contain a \code{data.frame} or
 \code{NULL}.}
 
-\item{severity}{How severe should the consequences of the assertion be?
-Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{severity}{\code{string}. How severe should the consequences of the assertion
+be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.
@@ -25,12 +25,11 @@ Stop on mismatch.
 Assert Formal Gene to Symbol Mappings
 }
 \examples{
-gene2symbol <- data.frame(
+gene2symbol <- tibble(
     geneID = c("ENSG00000000003", "ENSG00000000005"),
-    geneName = c("TSPAN6", "TNMD"),
-    row.names = c("ENSG00000000003", "ENSG00000000005")
+    geneName = c("TSPAN6", "TNMD")
 )
-genes <- head(rownames(gene2symbol), 2L)
+genes <- pull(gene2symbol, "geneID")
 x <- data.frame(
     "sample_1" = c(1L, 2L),
     "sample_2" = c(3L, 4L),
@@ -64,3 +63,4 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
 \author{
 Michael Steinbaugh
 }
+\concept{Assert Check Functions}

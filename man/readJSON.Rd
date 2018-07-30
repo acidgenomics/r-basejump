@@ -28,3 +28,4 @@ Other Read Functions: \code{\link{loadDataAsName}},
 \author{
 Michael Steinbaugh
 }
+\concept{Read Functions}

@@ -9,14 +9,14 @@
 #'
 #' @inheritParams general
 #'
-#' @return `atomic` vector.
+#' @return `atomic`.
 #' @export
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
-sortUnique <- function(atomic) {
-    assert_is_atomic(atomic)
-    atomic %>%
+sortUnique <- function(x) {
+    assert_is_atomic(x)
+    x %>%
         sort(na.last = TRUE) %>%
         unique()
 }

@@ -12,12 +12,12 @@
 #'
 #' @examples
 #' # GRanges ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens")
-#' head(broadClass(x))
+#' x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
+#' table(x)
 #'
-#' # data.frame ====
-#' x <- annotable("Homo sapiens")
-#' head(broadClass(x))
+#' # SummarizedExperiment ====
+#' x <- broadClass(rse_bcb)
+#' table(x)
 NULL
 
 
@@ -27,7 +27,7 @@ NULL
 #' @export
 setMethod(
     "broadClass",
-    signature("data.frame"),
+    signature("GRanges"),
     function(object) {
         object <- as.data.frame(object)
         assertHasRownames(object)
@@ -55,8 +55,10 @@ setMethod(
             biotypeCol <- biotypeCol[[1L]]
             biotype <- object[[biotypeCol]]
         } else {
+            # nocov start
             warning("biotype missing", call. = FALSE)
             biotype <- NA
+            # nocov end
         }
 
         # seqname (optional; aka chromosome)
@@ -70,8 +72,10 @@ setMethod(
             seqnameCol <- seqnameCol[[1L]]
             seqname <- object[[seqnameCol]]
         } else {
+            # nocov start
             warning("seqname missing", call. = FALSE)
             seqname <- NA
+            # nocov end
         }
 
         message(paste(
@@ -142,16 +146,8 @@ setMethod(
 #' @export
 setMethod(
     "broadClass",
-    signature("DataFrame"),
-    getMethod("broadClass", "data.frame")
-)
-
-
-
-#' @rdname broadClass
-#' @export
-setMethod(
-    "broadClass",
-    signature("GRanges"),
-    getMethod("broadClass", "data.frame")
+    signature("SummarizedExperiment"),
+    function(object) {
+        rowData(object)[["broadClass"]]
+    }
 )

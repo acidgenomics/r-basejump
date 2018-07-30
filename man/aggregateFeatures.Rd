@@ -3,7 +3,6 @@
 \docType{methods}
 \name{aggregateFeatures}
 \alias{aggregateFeatures}
-\alias{aggregateFeatures}
 \alias{aggregateFeatures,dgCMatrix-method}
 \alias{aggregateFeatures,matrix-method}
 \title{Aggregate Features}
@@ -19,9 +18,9 @@ aggregateFeatures(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{groupings}{Feature groupings (e.g. gene or transcript IDs), defined as
-a named factor. The pooled features must be defined as the factor levels,
-and the original features as the names of the factor.}
+\item{groupings}{\code{character}. Feature groupings (e.g. gene or transcript
+IDs), defined as a named factor. The pooled features must be defined as the
+factor levels, and the original features as the names of the factor.}
 }
 \value{
 Object of same class with aggregated features (rows).
@@ -55,3 +54,4 @@ Other Math Functions: \code{\link{aggregateReplicates}},
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
+\concept{Math Functions}

@@ -7,14 +7,14 @@
 #'
 #' @seealso [base::toString()].
 #'
-#' @return `character` string.
+#' @return `string`.
 #' @export
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
-toStringUnique <- function(atomic) {
-    assert_is_atomic(atomic)
-    atomic %>%
+toStringUnique <- function(x) {
+    assert_is_atomic(x)
+    x %>%
         as.character() %>%
         na.omit() %>%
         unique() %>%

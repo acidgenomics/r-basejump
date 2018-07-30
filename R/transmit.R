@@ -8,12 +8,12 @@
 #'
 #' @inheritParams saveData
 #' @inheritParams general
-#' @param remoteDir Remote directory URL. Currently supports FTP. Works either
-#'   with or without the trailing slash.
-#' @param localDir Directory where to save files locally.
-#' @param pattern Pattern to match against remote file names.
-#' @param rename Rename the local files (including suffix), if desired.
-#' @param compress gzip compress the files after download.
+#' @param remoteDir `string`. Remote FTP directory path.
+#' @param localDir `string`. Directory where to save files locally.
+#' @param pattern `string`. Pattern to match against remote file names.
+#' @param rename `string` or `NULL`. Rename the local files (including suffix),
+#'   if desired.
+#' @param compress `boolean`. gzip compress the files after download.
 #'
 #' @return Invisible `character` containing local file paths.
 #' @export

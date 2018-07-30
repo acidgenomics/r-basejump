@@ -5,9 +5,9 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
-#' @param groupings Feature groupings (e.g. gene or transcript IDs), defined as
-#'   a named factor. The pooled features must be defined as the factor levels,
-#'   and the original features as the names of the factor.
+#' @param groupings `character`. Feature groupings (e.g. gene or transcript
+#'   IDs), defined as a named factor. The pooled features must be defined as the
+#'   factor levels, and the original features as the names of the factor.
 #'
 #' @return Object of same class with aggregated features (rows).
 #'

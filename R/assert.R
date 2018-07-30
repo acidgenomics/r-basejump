@@ -5,9 +5,10 @@
 #'
 #' @param x Object.
 #' @param envir `environment`.
-#' @param inherits Should the enclosing frames of the `environment` be searched?
-#' @param severity How severe should the consequences of the assertion be?
-#'   Either "`stop`", "`warning`", "`message`", or "`none`".
+#' @param inherits `boolean`. Should the enclosing frames of the `environment`
+#'   be searched?
+#' @param severity `string`. How severe should the consequences of the assertion
+#'   be? Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
 #' @return Stop on mismatch.
 NULL
@@ -159,12 +160,11 @@ assertFormalCompress <- function(
 #' @export
 #'
 #' @examples
-#' gene2symbol <- data.frame(
+#' gene2symbol <- tibble(
 #'     geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'     geneName = c("TSPAN6", "TNMD"),
-#'     row.names = c("ENSG00000000003", "ENSG00000000005")
+#'     geneName = c("TSPAN6", "TNMD")
 #' )
-#' genes <- head(rownames(gene2symbol), 2L)
+#' genes <- pull(gene2symbol, "geneID")
 #' x <- data.frame(
 #'     "sample_1" = c(1L, 2L),
 #'     "sample_2" = c(3L, 4L),
@@ -186,7 +186,7 @@ assertFormalGene2symbol <- function(
     assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
     if (is.data.frame(gene2symbol)) {
         assertIsGene2symbol(gene2symbol)
-        assert_is_subset(rownames(x), rownames(gene2symbol))
+        assert_is_subset(rownames(x), gene2symbol[["geneID"]])
     }
 }
 
@@ -614,7 +614,7 @@ assertIsFillScaleDiscreteOrNULL <- function(
 #' @export
 #'
 #' @examples
-#' x <- data.frame(
+#' x <- tibble(
 #'     geneID = "ENSG00000000003",
 #'     geneName = "TSPAN6"
 #' )
@@ -630,6 +630,13 @@ assertIsGene2symbol <- function(
         severity = severity
     )
     assert_has_rows(x, severity = severity)
+    # Assert that all columns are character
+    invisible(mapply(
+        FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
 }
 
 
@@ -727,7 +734,7 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @export
 #'
 #' @examples
-#' x <- data.frame(
+#' x <- tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
 #' )
@@ -749,6 +756,13 @@ assertIsTx2gene <- function(
         severity = severity
     )
     assert_has_rows(x, severity = severity)
+    # Assert that all columns are character
+    invisible(mapply(
+        FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
 }
 
 

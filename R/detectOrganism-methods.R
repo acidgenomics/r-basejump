@@ -19,8 +19,8 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param unique Only return unique matching organisms. Applies to `character`
-#'   vector input.
+#' @param unique `boolean`. Only return unique matching organisms. Applies to
+#'   `character` input.
 #'
 #' @return Full latin organism name. Stops on detection failure.
 #'

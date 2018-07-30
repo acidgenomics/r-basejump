@@ -5,13 +5,13 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param sep Separator. Defaults to comma.
-#' @param unique Unique values.
-#' @param sort Sort values.
-#' @param removeNA Remove NA values.
+#' @param sep `string`. Separator. Defaults to comma.
+#' @param unique `boolean`. Unique values.
+#' @param sort `boolean`. Sort values.
+#' @param removeNA `boolean`. Remove NA values.
 #'
 #' @return
-#' - For `atomic` vector: `character` string.
+#' - For `atomic`: `string`.
 #' - For column data: Object collapsed to a single row.
 #'
 #' @seealso

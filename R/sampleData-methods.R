@@ -18,8 +18,6 @@
 #'
 #' @inheritParams general
 #'
-#' @param clean Deprecated argument, providing only factor column return.
-#'
 #' @return `DataFrame` containing metadata that describes the samples.
 #'
 #' @examples
@@ -41,16 +39,27 @@ NULL
 setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
-    function(object, clean = FALSE) {
+    function(object, ...) {
+        # Legacy arguments =====================================================
         # nocov start
-        if (isTRUE(clean)) {
+        call <- match.call(expand.dots = TRUE)
+        # clean
+        if (isTRUE(call[["clean"]])) {
             warning(paste(
-                "`clean = TRUE` argument is deprecated for",
-                "`SummarizedExperiment`. `bcbioRNASeq` method support is",
-                "provided in the upcoming release."
+                "`clean` argument is deprecated for `SummarizedExperiment`.",
+                "Improved `bcbioRNASeq` method is provided in v0.2.6."
+            ))
+        }
+        # return
+        if ("return" %in% names(call)) {
+            stop(paste(
+                "`return` argument is defunct.",
+                "Use a separation coercion call after the return instead",
+                "(e.g. `as.data.frame()`)."
             ))
         }
         # nocov end
+
         colData(object)
     }
 )
@@ -66,26 +75,7 @@ setMethod(
         value = "DataFrame"
     ),
     function(object, value) {
-        colData(object) <- as(value, "DataFrame")
+        colData(object) <- value
         object
     }
-)
-
-
-
-#' @rdname sampleData
-#' @export
-setMethod(
-    "sampleData<-",
-    signature(
-        object = "SummarizedExperiment",
-        value = "data.frame"
-    ),
-    getMethod(
-        "sampleData<-",
-        signature(
-            object = "SummarizedExperiment",
-            value = "DataFrame"
-        )
-    )
 )

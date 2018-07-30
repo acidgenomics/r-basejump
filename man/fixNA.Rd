@@ -3,7 +3,6 @@
 \docType{methods}
 \name{fixNA}
 \alias{fixNA}
-\alias{fixNA}
 \alias{fixNA,ANY-method}
 \alias{fixNA,character-method}
 \alias{fixNA,data.frame-method}
@@ -59,3 +58,4 @@ Other Sanitization Functions: \code{\link{collapseToString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}

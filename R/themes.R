@@ -11,17 +11,18 @@
 #' @family Plot Functions
 #' @author Michael Steinbaugh
 #'
-#' @param base_size Base font size.
-#' @param base_family Base font family.
-#' @param face Font face ("`bold`", "`plain`").
-#' @param aspect_ratio Numeric scalar specifying the plot proportions. Use `1`
-#'   for a perfectly square plot (including the axis labels).
-#' @param legend_position Legend key position. We're being a little more
-#'   restrictive here, only allowing "`bottom`", "`right`", or "`none`".
+#' @param base_size `scalar numeric`. Base font size.
+#' @param base_family `string`. Base font family.
+#' @param face `string`. Font face ("`bold`", "`plain`").
+#' @param aspect_ratio `scalar numeric`. Aspect ratio, specifying the plot
+#'   proportions. Use `1` for a perfectly square plot (including the axis
+#'   labels).
+#' @param legend_position `string`. Legend key position. We're being a little
+#'   more restrictive here, only allowing "`bottom`", "`right`", or "`none`".
 #'   Including the legend at the top or the left side of the plot rarely makes
 #'   sense and is discouraged.
-#' @param grid Label the major panel grids. If `TRUE`, the axis lines will also
-#'   be removed.
+#' @param grid `boolean`. Label the major panel grids. If `TRUE`, the axis lines
+#'   will also be removed.
 #'
 #' @return `theme`.
 #'

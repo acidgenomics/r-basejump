@@ -4,15 +4,15 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism = c("Homo sapiens", "Mus musculus", "Caenorhabditis elegans",
-  "Drosophila melanogaster"), release = NULL)
+panther(organism = c("Homo sapiens", "Mus musculus",
+  "Caenorhabditis elegans", "Drosophila melanogaster"), release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{release}{\code{character} string denoting PANTHER release version. If
-\code{NULL}, defaults to current release. Consult the PANTHER website for a list
-of release versions available from the FTP server (e.g. \code{"13.0"}).}
+\item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
+defaults to current release. Consult the PANTHER website for a list of
+release versions available from the FTP server (e.g. \code{"13.0"}).}
 }
 \value{
 \code{data.frame}.
@@ -35,3 +35,4 @@ Other Database Functions: \code{\link{eggnog}}
 \author{
 Michael Steinbaugh
 }
+\concept{Database Functions}

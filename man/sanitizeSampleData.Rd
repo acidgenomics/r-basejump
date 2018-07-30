@@ -10,7 +10,7 @@ sanitizeSampleData(object)
 \item{object}{Object.}
 }
 \value{
-\code{DataFrame} or \code{data.frame}.
+Data frame.
 }
 \description{
 Sanitize Sample Data
@@ -45,3 +45,4 @@ Other Sanitization Functions: \code{\link{collapseToString}},
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}
