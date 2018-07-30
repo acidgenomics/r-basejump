@@ -160,10 +160,9 @@ assertFormalCompress <- function(
 #' @export
 #'
 #' @examples
-#' gene2symbol <- data.frame(
+#' gene2symbol <- tibble(
 #'     geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'     geneName = c("TSPAN6", "TNMD"),
-#'     row.names = c("ENSG00000000003", "ENSG00000000005")
+#'     geneName = c("TSPAN6", "TNMD")
 #' )
 #' genes <- head(rownames(gene2symbol), 2L)
 #' x <- data.frame(
@@ -187,7 +186,7 @@ assertFormalGene2symbol <- function(
     assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
     if (is.data.frame(gene2symbol)) {
         assertIsGene2symbol(gene2symbol)
-        assert_is_subset(rownames(x), rownames(gene2symbol))
+        assert_is_subset(rownames(x), gene2symbol[["geneID"]])
     }
 }
 
@@ -615,7 +614,7 @@ assertIsFillScaleDiscreteOrNULL <- function(
 #' @export
 #'
 #' @examples
-#' x <- data.frame(
+#' x <- tibble(
 #'     geneID = "ENSG00000000003",
 #'     geneName = "TSPAN6"
 #' )
@@ -630,7 +629,7 @@ assertIsGene2symbol <- function(
         y = c("geneID", "geneName"),
         severity = severity
     )
-    assertHasRownames(x, severity = severity)
+    assert_has_rows(x, severity = severity)
     # Assert that all columns are character
     invisible(mapply(
         FUN = assert_is_character,
