@@ -3,6 +3,7 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{pull}
 \alias{seqnames}
 \alias{Matrix}
 \alias{DataFrame}
@@ -19,6 +20,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{dplyr}{\code{\link[dplyr]{pull}}}
+
   \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{set_rownames}}}

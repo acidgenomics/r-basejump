@@ -734,7 +734,7 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @export
 #'
 #' @examples
-#' x <- data.frame(
+#' x <- tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
 #' )
