@@ -79,22 +79,3 @@ setMethod(
         object
     }
 )
-
-
-
-#' @rdname sampleData
-#' @export
-setMethod(
-    "sampleData<-",
-    signature(
-        object = "SummarizedExperiment",
-        value = "data.frame"
-    ),
-    getMethod(
-        "sampleData<-",
-        signature(
-            object = "SummarizedExperiment",
-            value = "DataFrame"
-        )
-    )
-)

@@ -7,7 +7,6 @@
 \alias{sampleData<-}
 \alias{sampleData,SummarizedExperiment-method}
 \alias{sampleData<-,SummarizedExperiment,DataFrame-method}
-\alias{sampleData<-,SummarizedExperiment,data.frame-method}
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample Data}
 \usage{
@@ -18,8 +17,6 @@ sampleData(object, ...) <- value
 \S4method{sampleData}{SummarizedExperiment}(object, ...)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
-
-\S4method{sampleData}{SummarizedExperiment,data.frame}(object) <- value
 
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }
