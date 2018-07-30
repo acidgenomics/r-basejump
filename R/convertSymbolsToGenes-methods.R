@@ -7,10 +7,10 @@ setMethod(
         validObject(object)
         gene2symbol <- gene2symbol(object)
         if (is.null(gene2symbol)) {
-            return(object)
+            return(object)  # nocov
         }
         genes <- gene2symbol %>%
-            .[, "geneID", drop = TRUE] %>%
+            pull("geneID") %>%
             as.character()
         rownames(object) <- genes
         object
