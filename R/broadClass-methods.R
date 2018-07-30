@@ -55,8 +55,10 @@ setMethod(
             biotypeCol <- biotypeCol[[1L]]
             biotype <- object[[biotypeCol]]
         } else {
+            # nocov start
             warning("biotype missing", call. = FALSE)
             biotype <- NA
+            # nocov end
         }
 
         # seqname (optional; aka chromosome)
@@ -70,8 +72,10 @@ setMethod(
             seqnameCol <- seqnameCol[[1L]]
             seqname <- object[[seqnameCol]]
         } else {
+            # nocov start
             warning("seqname missing", call. = FALSE)
             seqname <- NA
+            # nocov end
         }
 
         message(paste(
