@@ -333,12 +333,11 @@ test_that("isImplicitInteger", {
 
 
 test_that("assertIsTx2gene", {
-    tx2gene <- data.frame(
+    t2g <- tibble(
         transcriptID = c("transcript_1", "transcript_2"),
-        geneID = c("gene_1", "gene_2"),
-        row.names = c("transcript_1", "transcript_2")
+        geneID = c("gene_1", "gene_2")
     )
-    expect_silent(assertIsTx2gene(tx2gene))
+    expect_silent(assertIsTx2gene(t2g))
     expect_error(
         assertIsTx2gene(mtcars),
         paste(
