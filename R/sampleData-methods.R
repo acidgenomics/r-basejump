@@ -75,7 +75,7 @@ setMethod(
         value = "DataFrame"
     ),
     function(object, value) {
-        colData(object) <- as(value, "DataFrame")
+        colData(object) <- value
         object
     }
 )
