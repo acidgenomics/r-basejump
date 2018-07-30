@@ -630,7 +630,14 @@ assertIsGene2symbol <- function(
         y = c("geneID", "geneName"),
         severity = severity
     )
-    assert_has_rows(x, severity = severity)
+    assertHasRownames(x, severity = severity)
+    # Assert that all columns are character
+    invisible(mapply(
+        FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
 }
 
 
