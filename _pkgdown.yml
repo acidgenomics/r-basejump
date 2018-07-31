@@ -50,7 +50,6 @@ reference:
     - starts_with("write")
   - title: Plot Functions
     contents:
-    - dynamicPlotlist
     - starts_with("theme_")
   - title: R Markdown Functions
     contents:
