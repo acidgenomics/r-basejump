@@ -51,8 +51,9 @@ DF <- as(df, "DataFrame")
 fixNA(DF)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{collapseToString}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
 \author{

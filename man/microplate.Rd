@@ -35,12 +35,10 @@ microplate(wells = 384L)
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
 \seealso{
-Other Math Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}},
-  \code{\link{foldChangeToLogRatio}},
+Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
   \code{\link{geometricMean}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Math Functions}
+\concept{Math and Science Functions}

@@ -80,8 +80,9 @@ ggplot2::mpg \%>\%
 \item \code{\link[base:toString]{base::toString()}}.
 }
 
-Other Sanitization Functions: \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}},
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
 \author{

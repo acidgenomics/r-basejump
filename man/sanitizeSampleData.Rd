@@ -38,9 +38,9 @@ to <- sanitizeSampleData(from)
 glimpse(to)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{sanitizeRowData}}
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{collapseToString}}, \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeRowData}}
 }
 \author{
 Michael Steinbaugh

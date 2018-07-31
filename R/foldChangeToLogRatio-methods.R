@@ -1,7 +1,7 @@
 #' Interconvert Log Ratio and Fold Change Values
 #'
 #' @name logRatio
-#' @family Math Functions
+#' @family Math and Science Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

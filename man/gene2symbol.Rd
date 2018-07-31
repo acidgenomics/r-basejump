@@ -25,7 +25,8 @@ Gene to Symbol Mappings
 gene2symbol(rse_bcb) \%>\% head()
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
+Other Data Functions: \code{\link{aggregateFeatures}},
+  \code{\link{aggregateReplicates}}, \code{\link{counts}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
   \code{\link{uniteInterestingGroups}}

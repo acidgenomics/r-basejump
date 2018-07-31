@@ -8,6 +8,7 @@ reference:
     - basejump-package
   - title: Data Functions
     contents:
+    - starts_with("aggregate")
     - counts
     - interestingGroups
     - sampleData
@@ -24,30 +25,25 @@ reference:
     - ends_with("FromGFF")
     - starts_with("parse")
     - starts_with("strip")
-    - matches("2")
+    - gene2symbol
+    - tx2gene
   - title: Database Functions
     contents:
     - eggnog
     - panther
-  - title: Name Functions
-    contents:
-    - makeNames
-  - title: Math Functions
-    contents:
-    - starts_with("aggregate")
-    - matches("Change")
-    - matches("Mean")
-    - microplate
-  - title: Read Functions
-    contents:
-    - starts_with("load")
-    - starts_with("read")
-  - title: Write Functions
+  - title: Read/Write Functions
     contents:
     - starts_with("assign")
+    - starts_with("load")
+    - starts_with("read")
     - starts_with("save")
     - transmit
     - starts_with("write")
+  - title: Math and Science Functions
+    contents:
+    - matches("Change")
+    - matches("Mean")
+    - microplate
   - title: Plot Functions
     contents:
     - starts_with("theme_")
@@ -55,17 +51,18 @@ reference:
     contents:
     - kables
     - starts_with("markdown")
+  - title: Sanitization Functions
+    contents:
+    - fixNA
+    - makeNames
+    - removeNA
+    - starts_with("sanitize")
   - title: Atomic Vector Functions
     contents:
     - collapseToString
     - grepString
     - sortUnique
     - toStringUnique
-  - title: Sanitization Functions
-    contents:
-    - fixNA
-    - removeNA
-    - starts_with("sanitize")
   - title: Coercion Methods
     contents:
     - starts_with("coerce")
