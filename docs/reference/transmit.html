@@ -64,7 +64,7 @@ FTP server. Also enables on-the-fly file renaming and compression." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -120,24 +120,24 @@ FTP server. Also enables on-the-fly file renaming and compression.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>remoteDir</th>
-      <td><p>Remote directory URL. Currently supports FTP. Works either
-with or without the trailing slash.</p></td>
+      <td><p><code>string</code>. Remote FTP directory path.</p></td>
     </tr>
     <tr>
       <th>localDir</th>
-      <td><p>Directory where to save files locally.</p></td>
+      <td><p><code>string</code>. Directory where to save files locally.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>Pattern to match against remote file names.</p></td>
+      <td><p><code>string</code>. Pattern to match against remote file names.</p></td>
     </tr>
     <tr>
       <th>rename</th>
-      <td><p>Rename the local files (including suffix), if desired.</p></td>
+      <td><p><code>string</code> or <code>NULL</code>. Rename the local files (including suffix),
+if desired.</p></td>
     </tr>
     <tr>
       <th>compress</th>
-      <td><p>gzip compress the files after download.</p></td>
+      <td><p><code>boolean</code>. gzip compress the files after download.</p></td>
     </tr>
     </table>
     

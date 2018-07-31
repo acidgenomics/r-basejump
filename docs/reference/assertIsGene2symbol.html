@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -110,7 +110,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertIsGene2symbol</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))</pre>
+    <pre class="usage"><span class='fu'>assertIsGene2symbol</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>,
+  <span class='st'>"stop"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,8 +124,8 @@ columns.</p></td>
     </tr>
     <tr>
       <th>severity</th>
-      <td><p>How severe should the consequences of the assertion be?
-Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
+      <td><p><code>string</code>. How severe should the consequences of the assertion
+be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
     </tr>
     </table>
     
@@ -152,12 +153,12 @@ Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
-  <code>assertIsImplicitInteger</code>,
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
   <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code>, <code><a href='assertIsURL.html'>assertIsURL</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
     <span class='kw'>geneID</span> <span class='kw'>=</span> <span class='st'>"ENSG00000000003"</span>,
     <span class='kw'>geneName</span> <span class='kw'>=</span> <span class='st'>"TSPAN6"</span>
 )
