@@ -65,7 +65,7 @@ than combining into a single file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -114,8 +114,8 @@ than combining into a single file.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rda"</span>, <span class='st'>"rds"</span>, <span class='st'>"RData"</span>), <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rda"</span>, <span class='st'>"rds"</span>, <span class='st'>"RData"</span>),
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,13 +133,13 @@ directory.</p></td>
     </tr>
     <tr>
       <th>ext</th>
-      <td><p>R data ("<code>rda</code>", "<code>RData</code>") or R data serialized (RDS; "<code>rds</code>").
-RDS is preferred when saving single objects per file, which is always the
-convention of <code>saveData()</code>, regardless of the extension used.</p></td>
+      <td><p><code>string</code>. R data ("<code>rda</code>", "<code>RData</code>") or R data serialized (RDS;
+"<code>rds</code>"). RDS is preferred when saving single objects per file, which is
+always the convention of <code>saveData()</code>, regardless of the extension used.</p></td>
     </tr>
     <tr>
       <th>overwrite</th>
-      <td><p>Overwrite existing file.</p></td>
+      <td><p><code>boolean</code>. Overwrite existing file.</p></td>
     </tr>
     <tr>
       <th>compress</th>

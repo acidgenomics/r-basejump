@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -117,12 +117,12 @@
   <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>,
+  <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>removeNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>collapseToString</span>(<span class='no'>object</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>", "</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
@@ -141,19 +141,19 @@
     </tr>
     <tr>
       <th>sep</th>
-      <td><p>Separator. Defaults to comma.</p></td>
+      <td><p><code>string</code>. Separator. Defaults to comma.</p></td>
     </tr>
     <tr>
       <th>sort</th>
-      <td><p>Sort values.</p></td>
+      <td><p><code>boolean</code>. Sort values.</p></td>
     </tr>
     <tr>
       <th>removeNA</th>
-      <td><p>Remove NA values.</p></td>
+      <td><p><code>boolean</code>. Remove NA values.</p></td>
     </tr>
     <tr>
       <th>unique</th>
-      <td><p>Unique values.</p></td>
+      <td><p><code>boolean</code>. Unique values.</p></td>
     </tr>
     </table>
     
@@ -161,7 +161,7 @@
 
     
 <ul>
-<li><p>For <code>atomic</code> vector: <code>character</code> string.</p></li>
+<li><p>For <code>atomic</code>: <code>string</code>.</p></li>
 <li><p>For column data: Object collapsed to a single row.</p></li>
 </ul>
 
@@ -171,8 +171,8 @@
     <div class='dont-index'><ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/toString'>base::toString()</a></code>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Sanitization Functions: <code>fixNA</code>,
-  <code>removeNA</code>, <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
+    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='fixNA.html'>fixNA</a></code>,
+  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
   <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
     
 

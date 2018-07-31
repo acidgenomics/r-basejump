@@ -34,7 +34,10 @@
   
 <meta property="og:title" content="Ensembl Annotations — annotable" />
 
-<meta property="og:description" content="Ensembl Annotations" />
+<meta property="og:description" content="Quickly obtain gene and transcript annotations from
+Ensembl using
+AnnotationHub and
+ensembldb." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -106,12 +109,15 @@
 
     <div class="ref-description">
     
-    <p>Ensembl Annotations</p>
+    <p>Quickly obtain gene and transcript annotations from
+<a href='http://www.ensembl.org'>Ensembl</a> using
+<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a> and
+<a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>), <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -122,17 +128,17 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
+      <td><p><code>string</code>. Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional.</em> Genome build assembly name (e.g. "<code>GRCh38</code>").
-If <code>NULL</code>, defaults to the most recent build available.</p></td>
+      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
+"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><em>Optional.</em> Release version (e.g. <code>90</code>). If <code>NULL</code>, defaults
-to the most recent release available.</p></td>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
+set <code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     </table>
     
@@ -176,11 +182,11 @@ package.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Gene Annotation Functions: <code>broadClass</code>,
-  <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
+    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
   <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
@@ -188,7 +194,7 @@ package.</p>
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code>stripTranscriptVersions</code></p></div>
+  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
