@@ -58,8 +58,9 @@ removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 }
 \seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{sanitizeRowData}},
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{collapseToString}}, \code{\link{fixNA}},
+  \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
 \author{

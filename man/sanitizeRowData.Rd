@@ -29,9 +29,9 @@ x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
 sanitizeRowData(x) \%>\% glimpse()
 }
 \seealso{
-Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
-  \code{\link{sanitizeSampleData}}
+Other Sanitization Functions: \code{\link{camel}},
+  \code{\link{collapseToString}}, \code{\link{fixNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh

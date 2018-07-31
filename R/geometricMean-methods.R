@@ -8,7 +8,7 @@
 #' `NaN`.
 #'
 #' @name geometricMean
-#' @family Math Functions
+#' @family Math and Science Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

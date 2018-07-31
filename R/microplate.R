@@ -1,6 +1,6 @@
 #' Microtiter Plate Well Identifiers
 #'
-#' @family Math Functions
+#' @family Math and Science Functions
 #' @author Michael Steinbaugh
 #'
 #' @param plates `scalar integer`. Number of plates.
