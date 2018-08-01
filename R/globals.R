@@ -13,6 +13,7 @@ rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
 
 
 #' Separator Bar
+#' @keywords internal
 #' @export
 #' @examples
 #' cat(separatorBar)
@@ -24,6 +25,7 @@ separatorBar <- paste0(
 
 
 #' Update Message
+#' @keywords internal
 #' @export
 #' @examples
 #' message(updateMessage)
