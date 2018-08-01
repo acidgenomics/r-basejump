@@ -72,11 +72,12 @@ x <- annotable("Homo sapiens", format = "transcripts")
 glimpse(x)
 }
 \seealso{
-Other Gene Annotation Functions: \code{\link{broadClass}},
+Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{detectOrganism}}, \code{\link{eggnog}},
+  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
@@ -84,9 +85,10 @@ Other Gene Annotation Functions: \code{\link{broadClass}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
   \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Gene Annotation Functions}
+\concept{Annotation Functions}

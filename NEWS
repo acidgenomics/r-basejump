@@ -1,11 +1,45 @@
-# basejump 0.6.2 (2018-07-22)
+# basejump 0.6.3 (2018-08-01)
+
+## Minor changes
+
+- Migrated `separatorBar` and `updateMessage` global export from [bcbioBase][].
+  Improved `separatorBar` appeareance to automatically scale to current session
+  width, using `getOption("width")`.
+
+
+
+# basejump 0.6.2 (2018-07-31)
 
 ## New functions
 
+- `convertSymbolsToGenes()`: provides `SummarizedExperiment` method support for
+  converting objects containing gene symbols ("geneName") as rownames back to
+  gene identifiers ("geneID").
 - `eggnog()`: quickly download current annotations from EggNOG database. Useful
   for annotating gene-to-protein matches; currently in use with the brightworm
   RNAi screening package, which contains WormBase gene ID and EggNOG ID
   annotations.
+
+## Major changes
+
+- Now suggesting [BiocManager][] instead of [BiocInstaller][] for installation.
+- `broadClass()` now supports `GRanges` and `SummarizedExperiment`. Support for
+  `data.frame` and/or `DataFrame` class objects has been removed.
+
+## Minor changes
+
+- `convertGenesToSymbols()` and `convertTranscriptsToGenes()` now have
+  `organism` and `gene2symbol` arguments set `NULL` by default.
+- Upgraded to roxygen2 v6.1 for documentation, which improves handling of
+  aliases in the Rd files.
+- Added `dplyr::pull()` to reexported functions.
+- Improved package documentation by declaring the supported class(es) for
+  each function argument.
+- Moved `foldChangeToLogRatio()` and `logRatioToFoldChange()` constructors into
+  `numeric` method declarations.
+- Simplified internal code for `gene2symbol()` `SummarizedExperiment` method.
+- `toStringUnique()` now uses `x` instead of `atomic` as primary argument.
+
 
 
 # basejump 0.6.1 (2018-07-21)
@@ -17,6 +51,7 @@
   This issue has been fixed by ensuring that the symbols provided in `geneName`
   are coerced to a character vector.
 - Improved [conda][] installation instructions.
+
 
 
 # basejump 0.6.0 (2018-07-17)

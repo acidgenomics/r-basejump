@@ -1,7 +1,7 @@
 #' Aggregate Replicates
 #'
 #' @name aggregateReplicates
-#' @family Math Functions
+#' @family Data Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general

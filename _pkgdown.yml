@@ -8,65 +8,61 @@ reference:
     - basejump-package
   - title: Data Functions
     contents:
+    - starts_with("aggregate")
     - counts
     - interestingGroups
     - sampleData
     - sampleNames
     - selectSamples
     - uniteInterestingGroups
-  - title: Gene Annotation Functions
+  - title: Annotation Functions
     contents:
     - annotable
     - broadClass
     - starts_with("convert")
+    - eggnog
     - emptyRanges
-    - ends_with("FromEnsembl")
-    - ends_with("FromGFF")
+    - starts_with("gene")
+    - hgnc2gene
+    - starts_with("makeGene2symbol")
+    - starts_with("makeGRanges")
+    - starts_with("makeTx2gene")
+    - mgi2gene
     - starts_with("parse")
     - starts_with("strip")
-    - matches("2")
-  - title: Database Functions
-    contents:
-    - eggnog
     - panther
-  - title: Name Functions
-    contents:
-    - makeNames
-  - title: Math Functions
-    contents:
-    - starts_with("aggregate")
-    - matches("Change")
-    - matches("Mean")
-    - microplate
-  - title: Read Functions
-    contents:
-    - starts_with("load")
-    - starts_with("read")
-  - title: Write Functions
+  - title: Read/Write Functions
     contents:
     - starts_with("assign")
+    - starts_with("load")
+    - starts_with("read")
     - starts_with("save")
     - transmit
     - starts_with("write")
+  - title: Math and Science Functions
+    contents:
+    - matches("Change")
+    - matches("Mean")
+    - microplate
   - title: Plot Functions
     contents:
-    - dynamicPlotlist
     - starts_with("theme_")
   - title: R Markdown Functions
     contents:
     - kables
     - starts_with("markdown")
+  - title: Sanitization Functions
+    contents:
+    - fixNA
+    - makeNames
+    - removeNA
+    - starts_with("sanitize")
   - title: Atomic Vector Functions
     contents:
     - collapseToString
     - grepString
     - sortUnique
     - toStringUnique
-  - title: Sanitization Functions
-    contents:
-    - fixNA
-    - removeNA
-    - starts_with("sanitize")
   - title: Coercion Methods
     contents:
     - starts_with("coerce")
@@ -83,9 +79,8 @@ reference:
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
-  - title: Datasets
+  - title: Example Datasets
     contents:
-    - synonyms
     - rnaseq_counts
     - starts_with("rse_")
     - single_cell_counts

@@ -57,12 +57,10 @@ geometricMean(mat)
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 \href{https://stackoverflow.com/a/25555105}{code}.
 
-Other Math Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}},
-  \code{\link{foldChangeToLogRatio}},
+Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
   \code{\link{microplate}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Math Functions}
+\concept{Math and Science Functions}

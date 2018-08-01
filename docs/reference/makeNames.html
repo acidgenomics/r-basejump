@@ -65,7 +65,7 @@ modification of the values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -159,22 +159,23 @@ modification of the values.</p>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>dotted</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
@@ -187,8 +188,8 @@ modification of the values.</p>
 <span class='fu'>snake</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for GRanges</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -267,28 +268,28 @@ will be meaningful.</p></td>
     <tr>
       <th>names</th>
       <td><p><code>atomic</code> to be coerced to syntactically valid names. Will be
-coerced to <code>character</code> if necessary.</p></td>
+coerced to <code>character</code>, if necessary.</p></td>
     </tr>
     <tr>
       <th>unique</th>
-      <td><p><code>logical</code>; if <code>TRUE</code>, the resulting elements are unique.</p></td>
+      <td><p><code>boolean</code>. If <code>TRUE</code>, the resulting elements are unique.</p></td>
     </tr>
     <tr>
       <th>strict</th>
-      <td><p>Enforce strict name sanitization. When <code>TRUE</code>, this does not
-allow the return of any capitalized acronyms. "RNA" will become "Rna", for
-example.</p></td>
+      <td><p><code>boolean</code>. Enforce strict name sanitization. When <code>TRUE</code>, this
+does not allow the return of any capitalized acronyms. "RNA" will become
+"Rna", for example.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p>Apply sanitization on row names. This is not recommended
-by default, since rownames commonly contain gene identifiers that should
-not be modified.</p></td>
+      <td><p><code>boolean</code>. Apply sanitization on row names. This is not
+recommended by default, since rownames commonly contain gene identifiers
+that should not be modified.</p></td>
     </tr>
     <tr>
       <th>colnames</th>
-      <td><p>Apply sanitization on column names. This is generally
-recommended by default.</p></td>
+      <td><p><code>boolean</code>. Apply sanitization on column names. This is
+generally recommended by default.</p></td>
     </tr>
     </table>
     
@@ -308,7 +309,11 @@ the convention used by <code>make.names()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>make.names()</code>.</p></div>
+    <div class='dont-index'><p><code>make.names()</code>.</p>
+<p>Other Sanitization Functions: <code><a href='collapseToString.html'>collapseToString</a></code>,
+  <code><a href='fixNA.html'>fixNA</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
+  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -131,15 +131,21 @@
       <tr>
         
         <td>
-          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="aggregateFeatures.html">aggregateFeatures()</a></code> </p>
         </td>
-        <td><p>Counts</p></td>
+        <td><p>Aggregate Features</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
+          <p><code><a href="aggregateReplicates.html">aggregateReplicates()</a></code> </p>
         </td>
-        <td><p>Gene to Symbol Mappings</p></td>
+        <td><p>Aggregate Replicates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Counts</p></td>
       </tr><tr>
         
         <td>
@@ -174,7 +180,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-gene-annotation-functions" class="hasAnchor"><a href="#section-gene-annotation-functions" class="anchor"></a>Gene Annotation Functions</h2>
+          <h2 id="section-annotation-functions" class="hasAnchor"><a href="#section-annotation-functions" class="anchor"></a>Annotation Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -193,7 +199,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols()</a></code> </p>
+          <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols()</a></code> <code><a href="convertGenesToSymbols.html">convertSymbolsToGenes()</a></code> </p>
         </td>
         <td><p>Convert Ensembl Identifiers to Gene Symbols</p></td>
       </tr><tr>
@@ -211,63 +217,27 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="eggnog.html">eggnog()</a></code> </p>
+        </td>
+        <td><p>EggNOG Annotations</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
         </td>
         <td><p>Generate Empty Genomic Ranges</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> </p>
+          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
         </td>
-        <td><p>Genomic Ranges from Ensembl</p></td>
+        <td><p>Gene to Symbol Mappings</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGene2symbolFromEnsembl.html">makeGene2symbolFromEnsembl()</a></code> </p>
+          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
         </td>
-        <td><p>Gene-to-Symbol Mappings from Ensembl</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeTx2geneFromEnsembl.html">makeTx2geneFromEnsembl()</a></code> </p>
-        </td>
-        <td><p>Transcript-to-Gene Mappings from Ensembl</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> </p>
-        </td>
-        <td><p>Genomic Ranges from GFF File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> </p>
-        </td>
-        <td><p>Gene-to-Symbol Mappings from GFF File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code> </p>
-        </td>
-        <td><p>Transcript-to-Gene Mappings from GFF File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="panther.html">panther()</a></code> </p>
-        </td>
-        <td><p>PANTHER Gene Ontology Annotations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
-        </td>
-        <td><p>Strip Transcript Versions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
-        </td>
-        <td><p>Assert Is Transcript-to-Gene Mapping Data</p></td>
+        <td><p>Gene Synonyms</p></td>
       </tr><tr>
         
         <td>
@@ -277,23 +247,51 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="makeGene2symbolFromEnsembl.html">makeGene2symbolFromEnsembl()</a></code> </p>
+        </td>
+        <td><p>Gene-to-Symbol Mappings from Ensembl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> </p>
+        </td>
+        <td><p>Gene-to-Symbol Mappings from GFF File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> </p>
+        </td>
+        <td><p>Genomic Ranges from Ensembl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> </p>
+        </td>
+        <td><p>Genomic Ranges from GFF File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2geneFromEnsembl.html">makeTx2geneFromEnsembl()</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Mappings from Ensembl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Mappings from GFF File</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="mgi2gene.html">mgi2gene()</a></code> </p>
         </td>
         <td><p>MGI to Ensembl Gene ID Mappings</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-database-functions" class="hasAnchor"><a href="#section-database-functions" class="anchor"></a>Database Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
+      </tr><tr>
         
         <td>
-          <p><code><a href="eggnog.html">eggnog()</a></code> </p>
+          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
         </td>
-        <td><p>EggNOG Annotations</p></td>
+        <td><p>Strip Transcript Versions</p></td>
       </tr><tr>
         
         <td>
@@ -304,63 +302,17 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-name-functions" class="hasAnchor"><a href="#section-name-functions" class="anchor"></a>Name Functions</h2>
+          <h2 id="section-read-write-functions" class="hasAnchor"><a href="#section-read-write-functions" class="anchor"></a>Read/Write Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> </p>
+          <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
         </td>
-        <td><p>Make Syntactically Valid Names</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-math-functions" class="hasAnchor"><a href="#section-math-functions" class="anchor"></a>Math Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="aggregateFeatures.html">aggregateFeatures()</a></code> </p>
-        </td>
-        <td><p>Aggregate Features</p></td>
+        <td><p>Assign and Save Data</p></td>
       </tr><tr>
-        
-        <td>
-          <p><code><a href="aggregateReplicates.html">aggregateReplicates()</a></code> </p>
-        </td>
-        <td><p>Aggregate Replicates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
-        </td>
-        <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geometricMean.html">geometricMean()</a></code> </p>
-        </td>
-        <td><p>Geometric Mean</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="microplate.html">microplate()</a></code> </p>
-        </td>
-        <td><p>Microtiter Plate Well Identifiers</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-read-functions" class="hasAnchor"><a href="#section-read-functions" class="anchor"></a>Read Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
         
         <td>
           <p><code><a href="loadData.html">loadData()</a></code> </p>
@@ -402,20 +354,6 @@
           <p><code><a href="readYAML.html">readYAML()</a></code> </p>
         </td>
         <td><p>Read YAML File</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-write-functions" class="hasAnchor"><a href="#section-write-functions" class="anchor"></a>Write Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
-        </td>
-        <td><p>Assign and Save Data</p></td>
       </tr><tr>
         
         <td>
@@ -438,17 +376,37 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-plot-functions" class="hasAnchor"><a href="#section-plot-functions" class="anchor"></a>Plot Functions</h2>
+          <h2 id="section-math-and-science-functions" class="hasAnchor"><a href="#section-math-and-science-functions" class="anchor"></a>Math and Science Functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="defunct.html">summarizeRows()</a></code> <code><a href="defunct.html">wash()</a></code> <code><a href="defunct.html">packageSE()</a></code> <code><a href="defunct.html">prepareSE()</a></code> <code><a href="defunct.html">metadataTable()</a></code> <code><a href="defunct.html">pct()</a></code> <code><a href="defunct.html">fc2lr()</a></code> <code><a href="defunct.html">lr2fc()</a></code> <code><a href="defunct.html">comp()</a></code> <code><a href="defunct.html">revcomp()</a></code> <code><a href="defunct.html">symbol2gene()</a></code> <code><a href="defunct.html">tx2gene()</a></code> <code><a href="defunct.html">assertIsGFF()</a></code> <code><a href="defunct.html">parseGFFAttributes()</a></code> <code><a href="defunct.html">dynamicPlotlist()</a></code> </p>
+          <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
         </td>
-        <td><p>Defunct Functions</p></td>
+        <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="geometricMean.html">geometricMean()</a></code> </p>
+        </td>
+        <td><p>Geometric Mean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="microplate.html">microplate()</a></code> </p>
+        </td>
+        <td><p>Microtiter Plate Well Identifiers</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plot-functions" class="hasAnchor"><a href="#section-plot-functions" class="anchor"></a>Plot Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="themes.html">theme_midnight()</a></code> <code><a href="themes.html">theme_paperwhite()</a></code> </p>
@@ -496,6 +454,44 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-sanitization-functions" class="hasAnchor"><a href="#section-sanitization-functions" class="anchor"></a>Sanitization Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="fixNA.html">fixNA()</a></code> </p>
+        </td>
+        <td><p>Fix Character Strings Missing <code>NA</code></p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> </p>
+        </td>
+        <td><p>Make Syntactically Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
+        </td>
+        <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Row Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Sample Data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-atomic-vector-functions" class="hasAnchor"><a href="#section-atomic-vector-functions" class="anchor"></a>Atomic Vector Functions</h2>
           <p class="section-desc"></p>
         </th>
@@ -524,38 +520,6 @@
           <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
         </td>
         <td><p>Convert to a Unique Character String</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-sanitization-functions" class="hasAnchor"><a href="#section-sanitization-functions" class="anchor"></a>Sanitization Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="fixNA.html">fixNA()</a></code> </p>
-        </td>
-        <td><p>Fix Character Strings Missing <code>NA</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
-        </td>
-        <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
-        </td>
-        <td><p>Sanitize Row Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
-        </td>
-        <td><p>Sanitize Sample Data</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -770,17 +734,11 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+          <h2 id="section-example-datasets" class="hasAnchor"><a href="#section-example-datasets" class="anchor"></a>Example Datasets</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="synonyms.html">synonyms</a></code> </p>
-        </td>
-        <td><p>Gene Name Synonyms</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="rnaseq_counts.html">rnaseq_counts</a></code> </p>
@@ -814,20 +772,17 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-package-information">Package Information</a></li>
       <li><a href="#section-data-functions">Data Functions</a></li>
-      <li><a href="#section-gene-annotation-functions">Gene Annotation Functions</a></li>
-      <li><a href="#section-database-functions">Database Functions</a></li>
-      <li><a href="#section-name-functions">Name Functions</a></li>
-      <li><a href="#section-math-functions">Math Functions</a></li>
-      <li><a href="#section-read-functions">Read Functions</a></li>
-      <li><a href="#section-write-functions">Write Functions</a></li>
+      <li><a href="#section-annotation-functions">Annotation Functions</a></li>
+      <li><a href="#section-read-write-functions">Read/Write Functions</a></li>
+      <li><a href="#section-math-and-science-functions">Math and Science Functions</a></li>
       <li><a href="#section-plot-functions">Plot Functions</a></li>
       <li><a href="#section-r-markdown-functions">R Markdown Functions</a></li>
-      <li><a href="#section-atomic-vector-functions">Atomic Vector Functions</a></li>
       <li><a href="#section-sanitization-functions">Sanitization Functions</a></li>
+      <li><a href="#section-atomic-vector-functions">Atomic Vector Functions</a></li>
       <li><a href="#section-coercion-methods">Coercion Methods</a></li>
       <li><a href="#section-developer-functions">Developer Functions</a></li>
       <li><a href="#section-assert-check-functions">Assert Check Functions</a></li>
-      <li><a href="#section-datasets">Datasets</a></li>
+      <li><a href="#section-example-datasets">Example Datasets</a></li>
     </ul>
   </div>
 </div>

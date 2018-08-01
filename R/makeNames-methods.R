@@ -13,6 +13,7 @@
 #'   the convention used by [make.names()].
 #'
 #' @name makeNames
+#' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

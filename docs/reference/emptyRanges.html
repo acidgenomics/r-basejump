@@ -64,7 +64,7 @@ transgene and FASTA spike-in sequences." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -120,21 +120,21 @@ transgene and FASTA spike-in sequences.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>names</th>
-      <td><p><code>character</code> vector of gene or transcript names.</p></td>
+      <td><p><code>character</code>. Gene or transcript names.</p></td>
     </tr>
     <tr>
       <th>seqname</th>
-      <td><p><code>character</code> string that defines the alternative chromosome in
+      <td><p><code>string</code> Name of the alternative chromosome to be defined in
 <code><a href='http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo'>GenomeInfoDb::seqnames()</a></code> where these ranges will be grouped. Defaults to
 "<code>unknown</code>" but "<code>transgene</code>" (transgenes) and "<code>spike</code>" (spike-ins) are
 also supported.</p></td>
     </tr>
     <tr>
       <th>mcolsNames</th>
-      <td><p><em>Optional.</em> <code>character</code> vector of metadata column names to
-be defined in the <code><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>S4Vectors::mcols()</a></code> of the <code>GRanges</code> return. Normally
-this does not need to be defined; useful when combining with another
-<code>GRanges</code> that contains metadata.</p></td>
+      <td><p><code>character</code> or <code>NULL</code>. Metadata column names to be defined
+in the <code><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>S4Vectors::mcols()</a></code> of the <code>GRanges</code> return. Normally this does not
+need to be defined; useful when combining with another <code>GRanges</code> that
+contains metadata.</p></td>
     </tr>
     </table>
     
@@ -148,19 +148,21 @@ this does not need to be defined; useful when combining with another
 <li><p><code>help("seqinfo", "GenomeInfoDb")</code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/DESeq2/topics/makeExampleDESeqDataSet'>DESeq2::makeExampleDESeqDataSet()</a></code>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code>broadClass</code>,
-  <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
+  <code><a href='broadClass.html'>broadClass</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
+  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code>stripTranscriptVersions</code></p></div>
+  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

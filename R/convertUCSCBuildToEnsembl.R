@@ -1,6 +1,6 @@
 #' Convert UCSC Build to Ensembl
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

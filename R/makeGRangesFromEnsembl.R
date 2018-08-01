@@ -37,7 +37,7 @@
 #' @note Use "`GRCh38`" instead of "`hg38`" for the genome build, since we're
 #'   querying Ensembl and not UCSC.
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
