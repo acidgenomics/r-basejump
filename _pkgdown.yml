@@ -22,14 +22,15 @@ reference:
     - starts_with("convert")
     - eggnog
     - emptyRanges
-    - ends_with("FromEnsembl")
-    - ends_with("FromGFF")
+    - starts_with("gene")
+    - hgnc2gene
+    - starts_with("makeGene2symbol")
+    - starts_with("makeGRanges")
+    - starts_with("makeTx2gene")
+    - mgi2gene
     - starts_with("parse")
     - starts_with("strip")
-    - starts_with("gene")
-    - ends_with("2gene")
     - panther
-    - tx2gene
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
