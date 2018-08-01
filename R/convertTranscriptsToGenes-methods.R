@@ -1,7 +1,7 @@
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @name convertTranscriptsToGenes
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inherit convertGenesToSymbols

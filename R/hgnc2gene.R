@@ -1,6 +1,6 @@
 #' HGNC to Ensembl Gene ID Mappings
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @return `data.frame`

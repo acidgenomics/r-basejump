@@ -1,7 +1,7 @@
 #' Broad Class Definitions
 #'
 #' @name broadClass
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Rory Kirchner and Michael Steinbaugh
 #'
 #' @inheritParams general
