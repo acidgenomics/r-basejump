@@ -1,3 +1,13 @@
+# basejump 0.6.3 (2018-08-01)
+
+## Minor changes
+
+- Migrated `separatorBar` and `updateMessage` global export from [bcbioBase][].
+  Improved `separatorBar` appeareance to automatically scale to current session
+  width, using `getOption("width")`.
+
+
+
 # basejump 0.6.2 (2018-07-31)
 
 ## New functions
