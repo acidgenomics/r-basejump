@@ -1,4 +1,4 @@
-context("Gene Annotation Functions")
+context("Annotation Functions")
 
 
 
@@ -353,6 +353,32 @@ test_that("detectOrganism : tbl_df", {
 
 
 
+# eggnog =======================================================================
+test_that("eggnog", {
+    x <- eggnog()
+    expect_is(x, "list")
+    expect_identical(
+        names(x),
+        c("cogFunctionalCategories", "annotations")
+    )
+    expect_identical(
+        lapply(x, colnames),
+        list(
+            cogFunctionalCategories = c(
+                "letter",
+                "description"
+            ),
+            annotations = c(
+                "eggnogID",
+                "consensusFunctionalDescription",
+                "cogFunctionalCategory"
+            )
+        )
+    )
+})
+
+
+
 # emptyRanges ==================================================================
 test_that("emptyRanges", {
     x <- emptyRanges("XXX")
@@ -384,6 +410,19 @@ test_that("emptyRanges : mcols", {
 
 
 
+# geneSynonyms =================================================================
+test_that("geneSynonyms", {
+    lapply(
+        X = as.character(formals("geneSynonyms")[["organism"]])[-1L],
+        FUN = function(organism) {
+            x <- geneSynonyms(organism = organism)
+            expect_is(x, "grouped_df")
+        }
+    )
+})
+
+
+
 # makeGene2symbolFromEnsembl ===================================================
 test_that("makeGene2symbolFromEnsembl", {
     x <- makeGene2symbolFromEnsembl(
@@ -392,6 +431,39 @@ test_that("makeGene2symbolFromEnsembl", {
     )
     expect_identical(colnames(x), c("geneID", "geneName"))
     expect_identical(nrow(x), 63970L)
+})
+
+
+
+# makeGene2symbolFromGFF =======================================================
+test_that("makeGene2symbolFromGFF : Minimal GTF", {
+    x <- makeGene2symbolFromGFF("example.gtf")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(17L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            geneName = c("Rp1", "Xkr4"),
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
+            stringsAsFactors = FALSE
+        )
+    )
+})
+
+test_that("makeGene2symbolFromGFF : Minimal GFF3", {
+    x <- makeGene2symbolFromGFF("example.gff3")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(20L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            geneName = c("Rp1", "Sox17"),
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            stringsAsFactors = FALSE
+        )
+    )
 })
 
 
@@ -516,6 +588,107 @@ test_that("makeGRangesFromEnsembl : metadata", {
 
 
 
+# makeGRangesFromGFF ===========================================================
+test_that("makeGRangesFromGFF : Minimal GTF", {
+    # Genes
+    x <- makeGRangesFromGFF("example.gtf", format = "genes")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 17L)
+    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
+    expect_identical(
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "character",
+            geneSource = "factor",
+            geneVersion = "factor",
+            source = "factor",
+            type = "factor"
+        )
+    )
+
+    # Transcripts
+    x <- makeGRangesFromGFF("example.gtf", format = "transcripts")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 20L)
+    expect_identical(names(x)[[1L]], "ENSMUST00000070533")
+    expect_identical(
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            ccdsID = "factor",
+            geneBiotype = "factor",
+            geneID = "factor",
+            geneName = "factor",
+            geneSource = "factor",
+            geneVersion = "factor",
+            source = "factor",
+            tag = "factor",
+            transcriptBiotype = "factor",
+            transcriptID = "character",
+            transcriptName = "character",
+            transcriptSource = "factor",
+            transcriptSupportLevel = "factor",
+            transcriptVersion = "factor",
+            type = "factor"
+        )
+    )
+})
+
+test_that("makeGRangesFromGFF : Minimal GFF3", {
+    # Genes
+    x <- makeGRangesFromGFF("example.gff3", format = "genes")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 20L)
+    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
+    expect_identical(
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            description = "character",
+            geneBiotype = "factor",
+            geneID = "character",
+            geneName = "character",
+            havanaGene = "factor",
+            havanaVersion = "factor",
+            logicName = "factor",
+            source = "factor",
+            type = "factor",
+            version = "factor"
+        )
+    )
+
+    # Transcripts
+    x <- makeGRangesFromGFF("example.gff3", format = "transcripts")
+    expect_s4_class(x, "GRanges")
+    expect_identical(length(x), 26L)
+    expect_identical(names(x)[[1L]], "ENSMUST00000027032")
+    expect_identical(
+        lapply(mcols(x), class),
+        list(
+            broadClass = "factor",
+            ccdsID = "factor",
+            geneBiotype = "factor",
+            geneID = "factor",
+            geneName = "factor",
+            havanaTranscript = "factor",
+            havanaVersion = "factor",
+            source = "factor",
+            tag = "factor",
+            transcriptBiotype = "factor",
+            transcriptID = "character",
+            transcriptName = "character",
+            transcriptSupportLevel = "factor",
+            type = "factor",
+            version = "factor"
+        )
+    )
+})
+
+
+
 # makeTx2geneFromEnsembl =======================================================
 test_that("makeTx2geneFromEnsembl", {
     x <- makeTx2geneFromEnsembl(
@@ -524,6 +697,57 @@ test_that("makeTx2geneFromEnsembl", {
     )
     expect_identical(colnames(x), c("transcriptID", "geneID"))
     expect_identical(nrow(x), 216741L)
+})
+
+
+
+# makeTx2geneFromGFF ===========================================================
+test_that("makeTx2geneFromGFF : Minimal GTF", {
+    x <- makeTx2geneFromGFF("example.gtf")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(20L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            transcriptID = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            geneID = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
+            stringsAsFactors = FALSE
+        )
+    )
+})
+
+test_that("makeTx2geneFromGFF : Minimal GFF3", {
+    x <- makeTx2geneFromGFF("example.gff3")
+    expect_is(x, "data.frame")
+    expect_identical(dim(x), c(26L, 2L))
+    expect_identical(
+        head(x, 2L),
+        data.frame(
+            transcriptID = c("ENSMUST00000027032", "ENSMUST00000027035"),
+            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
+            row.names = c("ENSMUST00000027032", "ENSMUST00000027035"),
+            stringsAsFactors = FALSE
+        )
+    )
+})
+
+
+
+# PANTHER ======================================================================
+test_that("PANTHER", {
+    organisms <- c(
+        "Homo sapiens",
+        "Mus musculus",
+        "Drosophila melanogaster",
+        "Caenorhabditis elegans"
+    )
+    list <- lapply(organisms, function(organism) {
+        invisible(capture.output(
+            x <- panther(organism)
+        ))
+        expect_is(x, "data.frame")
+    })
 })
 
 
