@@ -15,9 +15,9 @@ rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
 #' Separator Bar
 #' @export
 #' @examples
-#' separatorBar
+#' cat(separatorBar)
 separatorBar <- paste0(
-    rep(x = "=", times = options("width")),
+    rep(x = "=", times = getOption("width", 72L)),
     collapse = ""
 )
 
@@ -26,5 +26,5 @@ separatorBar <- paste0(
 #' Update Message
 #' @export
 #' @examples
-#' updateMessage
+#' message(updateMessage)
 updateMessage <- "Run `updateObject()` to update your object"

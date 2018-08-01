@@ -12,6 +12,6 @@ separatorBar
 Separator Bar
 }
 \examples{
-separatorBar
+cat(separatorBar)
 }
 \keyword{datasets}

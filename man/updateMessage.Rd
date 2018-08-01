@@ -12,6 +12,6 @@ updateMessage
 Update Message
 }
 \examples{
-updateMessage
+message(updateMessage)
 }
 \keyword{datasets}
