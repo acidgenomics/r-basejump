@@ -8,12 +8,8 @@ geneSynonyms(organism = c("Homo sapiens", "Mus musculus",
   "Drosophila melanogaster"))
 }
 \arguments{
-\item{organism}{\code{string}. Spported organisms:
-\itemize{
-\item \code{"*Homo sapiens*"}.
-\item \code{"*Mus musculus*"}.
-\item \code{"*Drosophila melanogaster*"}.
-}}
+\item{organism}{\code{string}. Spported organisms: \emph{Homo sapiens}, \emph{Mus musculus},
+\emph{Drosophila melanogaster}.}
 }
 \value{
 \code{grouped_df}, grouped by \code{geneID} column.

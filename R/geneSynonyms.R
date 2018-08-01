@@ -8,10 +8,8 @@
 #' @author Michael Steinbaugh
 #' @family Annotation Functions
 #'
-#' @param organism `string`. Spported organisms:
-#'   - `"*Homo sapiens*"`.
-#'   - `"*Mus musculus*"`.
-#'   - `"*Drosophila melanogaster*"`.
+#' @param organism `string`. Spported organisms: *Homo sapiens*, *Mus musculus*,
+#'   *Drosophila melanogaster*.
 #'
 #' @return `grouped_df`, grouped by `geneID` column.
 #' @export
