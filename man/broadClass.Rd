@@ -35,11 +35,12 @@ x <- broadClass(rse_bcb)
 table(x)
 }
 \seealso{
-Other Gene Annotation Functions: \code{\link{annotable}},
+Other Annotation Functions: \code{\link{annotable}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{detectOrganism}}, \code{\link{eggnog}},
+  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
@@ -47,9 +48,10 @@ Other Gene Annotation Functions: \code{\link{annotable}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromEnsembl}},
   \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
 Rory Kirchner and Michael Steinbaugh
 }
-\concept{Gene Annotation Functions}
+\concept{Annotation Functions}

@@ -26,21 +26,23 @@ x <- makeTx2geneFromEnsembl("Homo sapiens")
 glimpse(x)
 }
 \seealso{
-Other Gene Annotation Functions: \code{\link{annotable}},
+Other Annotation Functions: \code{\link{annotable}},
   \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
+  \code{\link{detectOrganism}}, \code{\link{eggnog}},
+  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
   \code{\link{hgnc2gene}},
   \code{\link{makeGRangesFromEnsembl}},
   \code{\link{makeGRangesFromGFF}},
   \code{\link{makeGene2symbolFromEnsembl}},
   \code{\link{makeGene2symbolFromGFF}},
   \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Gene Annotation Functions}
+\concept{Annotation Functions}

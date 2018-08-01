@@ -20,6 +20,7 @@
 \alias{dynamicPlotlist}
 \alias{broadClass,data.frame-method}
 \alias{broadClass,DataFrame-method}
+\alias{synonyms}
 \title{Defunct Functions}
 \usage{
 summarizeRows(...)
@@ -55,6 +56,8 @@ dynamicPlotlist(...)
 \S4method{broadClass}{data.frame}(object)
 
 \S4method{broadClass}{DataFrame}(object)
+
+synonyms(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

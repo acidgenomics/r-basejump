@@ -14,4 +14,4 @@ Separator Bar
 \examples{
 cat(separatorBar)
 }
-\keyword{datasets}
+\keyword{internal}
