@@ -4,7 +4,7 @@
 #'   beginning with "ENS".
 #'
 #' @name stripTranscriptVersions
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

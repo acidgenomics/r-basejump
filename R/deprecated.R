@@ -304,4 +304,13 @@ setMethod(
 
 
 
+# v0.6.3 =======================================================================
+#' @rdname defunct
+#' @export
+synonyms <- function(...) {
+    .Defunct("geneSynonyms")
+}
+
+
+
 # nocov end

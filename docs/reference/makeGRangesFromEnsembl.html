@@ -66,7 +66,7 @@ ensembldb." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -128,21 +128,22 @@ ensembldb." />
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
+      <td><p><code>string</code>. Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
       <th>genomeBuild</th>
-      <td><p><em>Optional.</em> Genome build assembly name (e.g. "<code>GRCh38</code>").
-If <code>NULL</code>, defaults to the most recent build available.</p></td>
+      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
+"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
     <tr>
       <th>release</th>
-      <td><p><em>Optional.</em> Release version (e.g. <code>90</code>). If <code>NULL</code>, defaults
-to the most recent release available.</p></td>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
+set <code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     <tr>
       <th>metadata</th>
-      <td><p>Include the AnnotationHub metadata inside a <code>list</code>.</p></td>
+      <td><p><code>boolean</code>. Include the AnnotationHub metadata inside a
+<code>list</code>.</p></td>
     </tr>
     </table>
     
@@ -195,19 +196,21 @@ package.</p>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
 <li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Gene Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code>broadClass</code>,
-  <code>convertGenesToSymbols</code>,
-  <code>convertTranscriptsToGenes</code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
+  <code><a href='broadClass.html'>broadClass</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code>detectOrganism</code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
   <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
   <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
   <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
   <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
   <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
   <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code>stripTranscriptVersions</code></p></div>
+  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

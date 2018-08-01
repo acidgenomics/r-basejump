@@ -1,4 +1,4 @@
-context("Name Functions")
+context("Make Names Functions")
 
 funs <- list(
     camel = camel,

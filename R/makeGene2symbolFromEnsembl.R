@@ -1,6 +1,6 @@
 #' Gene-to-Symbol Mappings from Ensembl
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRangesFromEnsembl

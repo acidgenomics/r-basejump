@@ -235,7 +235,13 @@ upperCamel(x) \%>\% names()
 }
 \seealso{
 \code{\link[=make.names]{make.names()}}.
+
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{sanitizeRowData}},
+  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh
 }
+\concept{Sanitization Functions}

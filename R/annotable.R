@@ -1,6 +1,6 @@
 #' Ensembl Annotations
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inherit makeGRangesFromEnsembl

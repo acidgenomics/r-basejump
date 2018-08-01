@@ -3,7 +3,7 @@
 #' EggNOG is a hierarchical orthology framework with functional annotations for
 #' eukaryotic, prokaryotic, and viral genomes.
 #'
-#' @family Database Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
