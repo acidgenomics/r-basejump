@@ -1,7 +1,7 @@
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRangesFromEnsembl

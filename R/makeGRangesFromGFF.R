@@ -7,7 +7,7 @@
 #' The UCSC website has detailed conventions on the GFF3 format, including
 #' the metadata columns.
 #'
-#' @family Gene Annotation Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
