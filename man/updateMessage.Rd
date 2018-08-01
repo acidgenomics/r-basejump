@@ -14,4 +14,4 @@ Update Message
 \examples{
 message(updateMessage)
 }
-\keyword{datasets}
+\keyword{internal}
