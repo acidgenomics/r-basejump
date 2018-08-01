@@ -38,16 +38,3 @@
 #' @examples
 #' summary(single_cell_counts)
 "single_cell_counts"
-
-
-
-#' Gene Name Synonyms
-#'
-#' A list of tibbles per organism containing gene name (a.k.a. symbol) synonyms.
-#'
-#' @author Michael Steinbaugh
-#'
-#' @examples
-#' names(synonyms)
-#' glimpse(synonyms[["homoSapiens"]])
-"synonyms"
