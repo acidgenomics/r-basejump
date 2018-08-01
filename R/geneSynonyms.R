@@ -52,8 +52,8 @@ geneSynonyms <- function(
         select(!!!syms(c("symbol", "synonyms", "dbXrefs"))) %>%
         rename(geneName = !!sym("symbol")) %>%
         filter(
-            synonyms != "-",
-            dbXrefs != "-"
+            !!sym("synonyms") != "-",
+            !!sym("dbXrefs") != "-"
         ) %>%
         mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
 
