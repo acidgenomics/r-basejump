@@ -14,7 +14,6 @@ reference:
     - sampleData
     - sampleNames
     - selectSamples
-    - uniteInterestingGroups
   - title: Annotation Functions
     contents:
     - annotable
@@ -72,6 +71,7 @@ reference:
     - dots
     - starts_with("initialize")
     - localOrRemoteFile
+    - matchInterestingGroups
     - methodFormals
     - multiassignAsEnvir
     - printString

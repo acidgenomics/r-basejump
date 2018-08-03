@@ -39,9 +39,11 @@ dots(a, b, c, character = TRUE)
 
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh

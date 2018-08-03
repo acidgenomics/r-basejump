@@ -38,12 +38,14 @@ y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
 y[["interestingGroups"]]
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
-  \code{\link{gene2symbol}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Developer Functions}

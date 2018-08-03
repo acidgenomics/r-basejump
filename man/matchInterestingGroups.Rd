@@ -16,7 +16,15 @@ Match Interesting Groups
 matchInterestingGroups(rse_bcb)
 matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
 }
+\seealso{
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{methodFormals}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
+}
 \author{
 Michael Steinbaugh
 }
-\keyword{internal}
+\concept{Developer Functions}
