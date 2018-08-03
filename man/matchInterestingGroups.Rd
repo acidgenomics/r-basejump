@@ -4,7 +4,7 @@
 \alias{matchInterestingGroups}
 \title{Match Interesting Groups}
 \usage{
-matchInterestingGroups(object, ...)
+matchInterestingGroups(object, interestingGroups, ...)
 }
 \value{
 \code{character}.
@@ -14,8 +14,8 @@ Match Interesting Groups
 }
 \examples{
 matchInterestingGroups(rse_bcb)
-matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
 matchInterestingGroups(rse_bcb, interestingGroups = NULL)
+matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
