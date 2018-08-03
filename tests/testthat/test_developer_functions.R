@@ -1,5 +1,7 @@
 context("Developer Functions")
 
+
+
 # detectHPC ====================================================================
 test_that("detectHPC", {
     expect_identical(detectHPC(), FALSE)
@@ -38,6 +40,24 @@ test_that("dots", {
     expect_error(
         dots(),
         "is_non_empty : dots has length 0"
+    )
+})
+
+
+
+# matchInterestingGroups =======================================================
+test_that("matchInterestingGroups", {
+    expect_identical(
+        matchInterestingGroups(rse_bcb),
+        "treatment"
+    )
+    expect_identical(
+        matchInterestingGroups(rse_bcb, interestingGroups = NULL),
+        "sampleName"
+    )
+    expect_identical(
+        matchInterestingGroups(rse_bcb, interestingGroups = "sampleName"),
+        "sampleName"
     )
 })
 
