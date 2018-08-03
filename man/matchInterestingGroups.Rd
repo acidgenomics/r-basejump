@@ -6,6 +6,13 @@
 \usage{
 matchInterestingGroups(object, interestingGroups, ...)
 }
+\arguments{
+\item{object}{Object.}
+
+\item{interestingGroups}{\code{character}. Groups of interest.}
+
+\item{...}{Additional arguments.}
+}
 \value{
 \code{character}.
 }
