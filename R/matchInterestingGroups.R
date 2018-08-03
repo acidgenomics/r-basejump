@@ -1,4 +1,4 @@
-#' Return Interesting Groups
+#' Match Interesting Groups
 #'
 #' @author Michael Steinbaugh
 #' @keywords internal
@@ -7,12 +7,12 @@
 #' @export
 #'
 #' @examples
-#' .returnInterestingGroups(rse_bcb)
-.returnInterestingGroups <- function(
-    object,
-    interestingGroups
-) {
-    if (missing(interestingGroups)) {
+#' matchInterestingGroups(rse_bcb)
+#' matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+matchInterestingGroups <- function(object, ...) {
+    call <- match.call()
+    interestingGroups <- call[["interestingGroups"]]
+    if (!length(interestingGroups)) {
         interestingGroups <- basejump::interestingGroups(object)
         if (is.null(interestingGroups)) {
             interestingGroups <- "sampleName"
