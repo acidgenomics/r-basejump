@@ -3,6 +3,7 @@
 export("%>%")
 export("interestingGroups<-")
 export("sampleData<-")
+export(.returnInterestingGroups)
 export(DataFrame)
 export(Matrix)
 export(aggregateFeatures)
