@@ -15,6 +15,7 @@ Match Interesting Groups
 \examples{
 matchInterestingGroups(rse_bcb)
 matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+matchInterestingGroups(rse_bcb, interestingGroups = NULL)
 }
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
