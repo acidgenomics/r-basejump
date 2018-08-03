@@ -12,10 +12,8 @@
 #' matchInterestingGroups(rse_bcb, interestingGroups = NULL)
 matchInterestingGroups <- function(object, ...) {
     call <- match.call()
-    interestingGroups <- call[["interestingGroups"]]
-    if (is.null(interestingGroups)) {
-        interestingGroups <- "sampleName"
-    } else if (!length(interestingGroups)) {
+    interestingGroups <- as.character(call[["interestingGroups"]])
+    if (!length(interestingGroups)) {
         interestingGroups <- basejump::interestingGroups(object)
         if (is.null(interestingGroups)) {
             interestingGroups <- "sampleName"
