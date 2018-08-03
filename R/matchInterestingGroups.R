@@ -7,6 +7,8 @@
 #' @author Michael Steinbaugh
 #' @family Developer Functions
 #'
+#' @inheritParams general
+#'
 #' @return `character`.
 #' @export
 #'
