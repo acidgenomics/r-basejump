@@ -26,7 +26,6 @@ summary(x)
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}},
   \code{\link{gene2symbol}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{uniteInterestingGroups}}
+  \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \concept{Data Functions}

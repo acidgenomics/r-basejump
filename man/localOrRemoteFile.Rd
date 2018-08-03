@@ -35,8 +35,10 @@ basename(x)
 \code{\link[base:tempdir]{base::tempdir()}}.
 
 Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{methodFormals}},
+  \code{\link{dots}}, \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \concept{Developer Functions}
