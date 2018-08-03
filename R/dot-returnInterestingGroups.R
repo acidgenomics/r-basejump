@@ -1,7 +1,7 @@
 #' Return Interesting Groups
 #'
-#' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @keywords internal
 #'
 #' @return `character`.
 #' @export
