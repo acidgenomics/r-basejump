@@ -48,7 +48,8 @@ test_that("dots", {
 # matchInterestingGroups =======================================================
 test_that("matchInterestingGroups", {
     expect_identical(
-        matchInterestingGroups(rse_bcb)
+        matchInterestingGroups(rse_bcb),
+        "treatment"
     )
     expect_identical(
         matchInterestingGroups(rse_bcb, interestingGroups = NULL),
