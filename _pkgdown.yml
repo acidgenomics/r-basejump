@@ -75,6 +75,7 @@ reference:
     - methodFormals
     - multiassignAsEnvir
     - printString
+    - uniteInterestingGroups
   - title: Assert Check Functions
     desc: Readable check functions to ensure code integrity.
     contents:
