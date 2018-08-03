@@ -28,7 +28,9 @@ ls(example)
 \seealso{
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{localOrRemoteFile}},
-  \code{\link{methodFormals}}, \code{\link{printString}}
+  \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}}, \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh

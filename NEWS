@@ -1,3 +1,13 @@
+# basejump 0.6.4 (2018-08-03)
+
+## New functions
+
+- `matchInterestingGroups()`: New developer function to automatically handle
+  `interestingGroups` argument used across various plotting functions and in the
+  bcbio infrastructure packges.
+
+
+
 # basejump 0.6.3 (2018-08-01)
 
 ## Minor changes

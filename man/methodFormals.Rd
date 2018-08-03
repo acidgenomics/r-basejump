@@ -27,8 +27,10 @@ Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 
 Other Developer Functions: \code{\link{detectHPC}},
   \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh

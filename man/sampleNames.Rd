@@ -20,8 +20,7 @@ sampleNames(rse_dds)
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}}, \code{\link{counts}},
   \code{\link{gene2symbol}}, \code{\link{sampleData}},
-  \code{\link{selectSamples}},
-  \code{\link{uniteInterestingGroups}}
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh
