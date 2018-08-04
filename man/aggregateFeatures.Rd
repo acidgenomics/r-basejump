@@ -48,9 +48,9 @@ aggregateFeatures(dgc, groupings = groupings)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateReplicates}},
-  \code{\link{counts}}, \code{\link{gene2symbol}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+  \code{\link{counts}}, \code{\link{flatFiles}},
+  \code{\link{gene2symbol}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
