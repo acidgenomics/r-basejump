@@ -72,6 +72,10 @@ p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
+
+Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }
 \author{
 Michael Steinbaugh

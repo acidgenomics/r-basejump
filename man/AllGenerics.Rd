@@ -2,10 +2,13 @@
 % Please edit documentation in R/AllGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
+\alias{metrics}
 \alias{plotGene}
 \alias{plotQC}
 \title{S4 Generics}
 \usage{
+metrics(object, ...)
+
 plotGene(object, ...)
 
 plotQC(object, ...)
