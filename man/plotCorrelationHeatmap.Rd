@@ -13,7 +13,7 @@ plotCorrelationHeatmap(object, ...)
   interestingGroups, method = c("pearson", "spearman"),
   clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis, legendColor = NULL, borderColor = NULL,
+  color = viridis::viridis, legendColor = NULL, borderColor = NULL,
   title = TRUE, ...)
 }
 \arguments{
@@ -78,8 +78,8 @@ plotCorrelationHeatmap(rse_dds)
 plotCorrelationHeatmap(
     object = rse_dds,
     interestingGroups = "condition",
-    color = plasma,
-    legendColor = viridis
+    color = viridis::plasma,
+    legendColor = viridis::viridis
 )
 
 # Hexadecimal color input
