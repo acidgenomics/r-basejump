@@ -44,8 +44,9 @@
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom magrittr set_colnames set_names
-#' @importFrom methods as getGeneric is selectMethod show validObject
+#' @importFrom magrittr set_colnames
+#' @importFrom methods as formalArgs getGeneric getMethod is selectMethod setAs
+#'   show validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
@@ -53,17 +54,19 @@
 #' @importFrom readr read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
-#'   metadata<- na.omit setdiff tail
-#' @importFrom stats dist
+#' @importFrom S4Vectors %in% as.data.frame complete.cases cor mcols mcols<-
+#'   metadata metadata<- na.omit setdiff tail
+#' @importFrom sessioninfo session_info
+#' @importFrom stats dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset
-#' @importFrom SummarizedExperiment assays colData colData<- rowData
+#' @importFrom SummarizedExperiment assay assays colData colData<- rowData
+#'   SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate unite
 #' @importFrom utils capture.output download.file globalVariables
-#'   installed.packages packageVersion read.delim read.table
+#'   installed.packages packageVersion read.delim read.table sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
