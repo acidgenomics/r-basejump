@@ -50,11 +50,12 @@
 #' plotHeatmap(
 #'     object = rse_dds,
 #'     interestingGroups = "condition",
-#'     color = plasma,
-#'     legendColor = viridis
+#'     color = viridis::plasma,
+#'     legendColor = viridis::viridis
 #' )
 #'
 #' # Hexadecimal color input
+#' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 #' plotHeatmap(rse_dds, color = purple_orange)
 #'
@@ -83,7 +84,7 @@ setMethod(
         showColnames = TRUE,
         treeheightRow = 0L,
         treeheightCol = 50L,
-        color = viridis,
+        color = viridis::viridis,
         legendColor = NULL,
         borderColor = NULL,
         title = NULL,

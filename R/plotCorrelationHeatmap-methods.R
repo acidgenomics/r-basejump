@@ -28,8 +28,8 @@
 #' plotCorrelationHeatmap(
 #'     object = rse_dds,
 #'     interestingGroups = "condition",
-#'     color = plasma,
-#'     legendColor = viridis
+#'     color = viridis::plasma,
+#'     legendColor = viridis::viridis
 #' )
 #'
 #' # Hexadecimal color input
@@ -57,7 +57,7 @@ setMethod(
         showColnames = TRUE,
         treeheightRow = 0L,
         treeheightCol = 50L,
-        color = viridis,
+        color = viridis::viridis,
         legendColor = NULL,
         borderColor = NULL,
         title = TRUE,

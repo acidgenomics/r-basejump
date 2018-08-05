@@ -16,8 +16,8 @@
 #' plotQuantileHeatmap(
 #'     object = rse_dds,
 #'     interestingGroups = "condition",
-#'     color = plasma,
-#'     legendColor = viridis
+#'     color = viridis::plasma,
+#'     legendColor = viridis::viridis
 #' )
 NULL
 
@@ -58,8 +58,8 @@ setMethod(
         showColnames = TRUE,
         treeheightRow = 0L,
         treeheightCol = 50L,
+        color = viridis::viridis,
         legend = FALSE,
-        color = viridis,
         legendColor = NULL,
         borderColor = NULL,
         title = NULL,
