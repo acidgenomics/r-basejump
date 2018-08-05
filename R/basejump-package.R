@@ -15,9 +15,10 @@
 #'   assert_all_are_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
 #'   assert_has_dimnames assert_has_dims assert_has_names
-#'   assert_has_no_duplicates assert_has_rows assert_is_atomic assert_is_empty
-#'   assert_is_non_empty assert_is_not_null assert_is_of_length
-#'   assert_is_scalar assert_is_vector has_colnames has_dims has_rows is_scalar
+#'   assert_has_no_duplicates assert_has_rownames assert_has_rows
+#'   assert_is_atomic assert_is_empty assert_is_non_empty assert_is_not_null
+#'   assert_is_of_length assert_is_scalar assert_is_vector has_colnames has_dims
+#'   has_rows is_scalar
 #' @importFrom assertive.sets assert_are_disjoint_sets
 #'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
 #' @importFrom assertive.strings assert_all_are_matching_regex
@@ -31,8 +32,8 @@
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   mutate mutate_all mutate_at mutate_if pull rename select starts_with
-#'   summarize_all top_n ungroup
+#'   mutate mutate_all mutate_at mutate_if pull rename select select_if
+#'   starts_with summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
@@ -46,6 +47,7 @@
 #' @importFrom magrittr set_colnames set_names
 #' @importFrom methods as getGeneric is selectMethod show validObject
 #' @importFrom pbapply pblapply
+#' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
