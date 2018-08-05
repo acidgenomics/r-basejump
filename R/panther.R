@@ -28,6 +28,7 @@ panther <- function(
     ),
     release = NULL
 ) {
+    stopifnot(has_internet())
     organism <- match.arg(organism)
     map <- c(
         "Homo sapiens" = "human",

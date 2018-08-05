@@ -24,6 +24,7 @@ geneSynonyms <- function(
         "Drosophila melanogaster"
     )
 ) {
+    stopifnot(has_internet())
     organism <- match.arg(organism)
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)

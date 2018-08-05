@@ -9,6 +9,7 @@
 #' x <- mgi2gene()
 #' glimpse(x)
 mgi2gene <- function() {
+    stopifnot(has_internet())
     message("Obtaining MGI to Ensembl gene ID mappings")
     raw <- read_tsv(
         file = paste(

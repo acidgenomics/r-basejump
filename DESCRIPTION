@@ -47,6 +47,7 @@ Imports:
     Biobase,
     BiocGenerics,
     cowplot (>= 0.9),
+    curl,
     dendsort (>= 0.3),
     dplyr (>= 0.7),
     ensembldb,

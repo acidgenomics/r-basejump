@@ -21,6 +21,7 @@
 #' class(rnaseq_counts)
 #' class(single_cell_counts)
 loadRemoteData <- function(url, envir = parent.frame()) {
+    stopifnot(has_internet())
     assertIsURL(url)
     if (!all(vapply(
         X = url,

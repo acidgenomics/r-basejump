@@ -31,6 +31,7 @@
 #'   assert_is_name assert_is_numeric is_a_number is_a_string
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
+#' @importFrom curl has_internet
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
 #'   mutate mutate_all mutate_at mutate_if pull rename select select_if
 #'   starts_with summarize_all top_n ungroup
