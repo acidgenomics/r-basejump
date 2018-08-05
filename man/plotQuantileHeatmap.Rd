@@ -11,7 +11,7 @@ plotQuantileHeatmap(object, ...)
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object,
   interestingGroups, n = 10L, clusterRows = TRUE, clusterCols = TRUE,
   showRownames = FALSE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, legend = FALSE, color = viridis,
+  treeheightCol = 50L, color = viridis::viridis, legend = FALSE,
   legendColor = NULL, borderColor = NULL, title = NULL, ...)
 }
 \arguments{
@@ -40,8 +40,6 @@ column dendrograms. Use \code{0} to disable.}
 \item{treeheightCol}{\code{scalar integer}. Size of the row and
 column dendrograms. Use \code{0} to disable.}
 
-\item{legend}{\code{boolean}. Show the color legend.}
-
 \item{color}{\code{function}, \code{character}, or \code{NULL}. Hexadecimal color function
 or values to use for plot. We generally recommend these hexadecimal
 functions from the viridis package:
@@ -55,6 +53,8 @@ Alternatively, colors can be defined manually using hexadecimal values
 Refer to the RColorBrewer package for hexadecimal color palettes that may
 be suitable. If set \code{NULL}, will use the default pheatmap colors.
 }}
+
+\item{legend}{\code{boolean}. Show the color legend.}
 
 \item{legendColor}{\code{function} or \code{NULL}. Hexadecimal color function to use
 for legend labels. Note that hexadecimal values are not supported. If set
@@ -81,8 +81,8 @@ plotQuantileHeatmap(rse_dds)
 plotQuantileHeatmap(
     object = rse_dds,
     interestingGroups = "condition",
-    color = plasma,
-    legendColor = viridis
+    color = viridis::plasma,
+    legendColor = viridis::viridis
 )
 }
 \seealso{

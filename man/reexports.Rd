@@ -5,11 +5,12 @@
 \alias{reexports}
 \alias{pull}
 \alias{seqnames}
+\alias{\%>\%}
+\alias{set_rownames}
 \alias{Matrix}
 \alias{DataFrame}
 \alias{mcols}
-\alias{\%>\%}
-\alias{set_rownames}
+\alias{SummarizedExperiment}
 \alias{glimpse}
 \alias{is_tibble}
 \alias{tibble}
@@ -29,6 +30,8 @@ below to see their documentation.
   \item{Matrix}{\code{\link[Matrix]{Matrix}}}
 
   \item{S4Vectors}{\code{\link[S4Vectors]{DataFrame}}, \code{\link[S4Vectors]{mcols}}}
+
+  \item{SummarizedExperiment}{\code{\link[SummarizedExperiment]{SummarizedExperiment}}}
 
   \item{tibble}{\code{\link[tibble]{glimpse}}, \code{\link[tibble]{is_tibble}}, \code{\link[tibble]{tibble}}}
 }}
