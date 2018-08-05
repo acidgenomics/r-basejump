@@ -37,6 +37,7 @@ transmit <- function(
     rename = NULL,
     compress = FALSE
 ) {
+    stopifnot(has_internet())
     assert_is_a_string(remoteDir)
     # Check for public FTP protocol
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
