@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>tibble</code> Class Object — coerce-tibble • basejump</title>
+<title>Methods for Coercing an Object to a Class — coerce • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,13 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>tibble</code> Class Object — coerce-tibble" />
+<meta property="og:title" content="Methods for Coercing an Object to a Class — coerce" />
 
-<meta property="og:description" content="Coerce an object to a tibble (tbl_df). Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by moving them to a column
-named rowname upon coercion. This helps avoid downstream unexpected data
-loss when using the dplyr chain of single table verbs, such as
-dplyr::arrange(), dplyr::filter(), or dplyr::mutate()." />
+<meta property="og:description" content="Methods for Coercing an Object to a Class" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +63,7 @@ dplyr::arrange(), dplyr::filter(), or dplyr::mutate()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.0</span>
       </span>
     </div>
 
@@ -103,12 +99,24 @@ dplyr::arrange(), dplyr::filter(), or dplyr::mutate()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>tibble</code> Class Object</h1>
+    <h1>Methods for Coercing an Object to a Class</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerce-methods.R'><code>R/coerce-methods.R</code></a></small>
-    <div class="hidden name"><code>coerce-tibble.Rd</code></div>
+    <div class="hidden name"><code>coerce.Rd</code></div>
     </div>
 
     <div class="ref-description">
+    
+    <p>Methods for Coercing an Object to a Class</p>
+    
+    </div>
+
+        
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Object of new class.</p>
+    
+    <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
+
     
     <p>Coerce an object to a <code>tibble</code> (<code>tbl_df</code>). Tibbles don't support rowname
 assignemnt, so here we are ensuring they are kept by moving them to a column
@@ -116,12 +124,11 @@ named <code>rowname</code> upon coercion. This helps avoid downstream unexpected
 loss when using the dplyr chain of single table verbs, such as
 <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
     
-    </div>
-
-        
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/as'>methods::as()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/setAs'>methods::coerce()</a></code>.</p></li>
 <li><p><code>help(topic = "tibble", package = "tibble")</code></p></li>
 <li><p><code>help(topic = "coerce", package = "methods")</code>.</p></li>
 </ul></div>
@@ -164,6 +171,10 @@ loss when using the dplyr chain of single table verbs, such as
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#tibble">tibble</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
