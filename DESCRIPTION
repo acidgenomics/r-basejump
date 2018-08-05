@@ -54,6 +54,7 @@ Imports:
     GenomeInfoDb,
     GenomicRanges,
     ggplot2 (>= 3.0),
+    grDevices,
     IRanges,
     jsonlite (>= 1.5),
     knitr (>= 1.20),
@@ -64,6 +65,7 @@ Imports:
     pbapply (>= 1.3),
     pheatmap,
     R.utils,
+    RColorBrewer,
     RCurl (>= 1.95),
     readr (>= 1.1),
     rio (>= 0.5),
@@ -80,9 +82,6 @@ Imports:
     yaml (>= 2.1)
 Suggests:
     EnsDb.Hsapiens.v75,
-    grDevices,
-    RColorBrewer,
-    sessioninfo,
     testthat (>= 2.0)
 biocViews:
     DataImport,
