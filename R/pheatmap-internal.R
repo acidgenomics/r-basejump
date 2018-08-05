@@ -1,3 +1,17 @@
+# Prepare annotation column data using interesting groups
+.annotationCol <- function(object, interestingGroups) {
+    if (
+        !length(interestingGroups) ||
+        identical(interestingGroups, "sampleName")
+    ) {
+        NULL
+    } else {
+        colData(object)[, interestingGroups, drop = FALSE]
+    }
+}
+
+
+
 # Sanitize formals into snake case and abort on duplicates.
 # Duplicates may arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
