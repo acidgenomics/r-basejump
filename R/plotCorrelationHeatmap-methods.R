@@ -65,9 +65,10 @@ setMethod(
     ) {
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
-        if (missing(interestingGroups)) {
-            interestingGroups <- basejump::interestingGroups(object)
-        }
+        interestingGroups <- matchInterestingGroups(
+            object = object,
+            interestingGroups = interestingGroups
+        )
         method <- match.arg(method)
         assert_is_a_string(clusteringMethod)
         assert_is_a_bool(showColnames)
@@ -89,11 +90,11 @@ setMethod(
         mat <- as.matrix(assay(object))
         mat <- cor(mat, method = method)
 
-        if (length(interestingGroups)) {
-            annotationCol <- colData(object)[, interestingGroups, drop = FALSE]
-        } else {
-            annotationCol <- NULL
-        }
+        # Annotation columns
+        annotationCol <- .annotationCol(
+            object = object,
+            interestingGroups = interestingGroups
+        )
 
         # Use `sampleName`, if defined
         sampleName <- colData(object)[["sampleName"]]
