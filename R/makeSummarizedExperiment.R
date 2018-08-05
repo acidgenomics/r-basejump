@@ -1,18 +1,18 @@
-#' Prepare Summarized Experiment
+#' Make Summarized Experiment
 #'
-#' This is a utility wrapper for [SummarizedExperiment::SummarizedExperiment()]
-#' that provides automatic subsetting for row and column data. It also provides
-#' automatic handling of FASTA spike-ins.
-#'
-#' This function also provides automatic metadata slotting of multiple useful
-#' environment parameters:
+#' This function is a utility wrapper for
+#' [SummarizedExperiment::SummarizedExperiment()] that provides automatic
+#' subsetting for row and column data, as well as automatic handling of
+#' transgenes and spike-ins. Additionally, it improves upon the standard
+#' constructor by slotting useful session information into the [metadata()]
+#' slot:
 #'
 #' - `date`: Today's date, returned from [base::Sys.Date()].
 #' - `wd`: Working directory, returned from [base::getwd()].
 #' - `utilsSessionInfo`: [utils::sessionInfo()].
 #' - `devtoolsSessionInfo`: [sessioninfo::session_info()].
 #'
-#' @family Prepare Functions
+#' @family Data Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
@@ -88,13 +88,13 @@
 #'     row.names = samples
 #' )
 #'
-#' prepareSummarizedExperiment(
+#' makeSummarizedExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,
 #'     colData = colData,
 #'     transgeneNames = "EGFP"
 #' )
-prepareSummarizedExperiment <- function(
+makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,
     colData = NULL,
