@@ -20,14 +20,17 @@
 
 # Automatically handle the annotation columns.
 # Factors with a single level are automatically dropped.
-.pheatmapAnnotationCol <- function(data) {
+.pheatmapAnnotationCol <- function(
+    data,
+    blacklist = "sampleName"
+) {
     # pheatmap requires `NA` argument if empty
     if (!has_dims(data)) {
         return(NA)
     }
     assertHasRownames(data)
-    blacklist <- c("sampleName", metadataBlacklist)
 
+    blacklist <- unique(c("sampleName", blacklist))
     data <- data %>%
         as.data.frame() %>%
         # Remove sample name columns
