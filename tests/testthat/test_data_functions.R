@@ -41,6 +41,28 @@ test_that("counts", {
 
 
 
+# flatFiles ====================================================================
+test_that("flatFiles : SummarizedExperiment", {
+    x <- flatFiles(rse_dds)
+    expect_is(x, "list")
+    expect_identical(
+        names(x),
+        c(
+            "rowRanges",
+            "colData",
+            "assays",
+            "NAMES",
+            "elementMetadata",
+            "metadata"
+        )
+    )
+    # S4 coercion to list method support
+    y <- as(rse_dds, "list")
+    expect_identical(x, y)
+})
+
+
+
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
     x <- gene2symbol(rse_bcb)
@@ -84,6 +106,161 @@ test_that("interestingGroups : Assignment method", {
     expect_error(
         interestingGroups(x) <- "XXX",
         "The interesting groups \"XXX\" are not defined"
+    )
+})
+
+
+
+# makeSummarizedExperiment ==================================================
+test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
+    rse <- makeSummarizedExperiment(
+        assays = list(counts = mat),
+        rowRanges = rr,
+        colData = cd
+    )
+    expect_s4_class(rse, "RangedSummarizedExperiment")
+    expect_identical(dim(rse), c(4L, 4L))
+    expect_identical(names(rse), genes)
+    expect_identical(
+        lapply(metadata(rse), class),
+        list(
+            date = "Date",
+            wd = "character",
+            utilsSessionInfo = "sessionInfo",
+            devtoolsSessionInfo = "session_info"
+        )
+    )
+})
+
+test_that("makeSummarizedExperiment : Super minimal", {
+    rse <- suppressWarnings(makeSummarizedExperiment(
+        assays = list(counts = mat),
+        rowRanges = NULL,
+        colData = NULL
+    ))
+    expect_s4_class(rse, "RangedSummarizedExperiment")
+    expect_identical(levels(seqnames(rse)), "unknown")
+})
+
+test_that("makeSummarizedExperiment : Spike-in support", {
+    rownames(mat)[1L:2L] <- c("EGFP", "ERCC")
+    rse <- makeSummarizedExperiment(
+        assays = list(counts = mat),
+        rowRanges = rr[3L:4L],
+        colData = cd,
+        transgeneNames = "EGFP",
+        spikeNames = "ERCC"
+    )
+    expect_identical(
+        rownames(rse),
+        c("EGFP", "ERCC", genes[3L:4L])
+    )
+    expect_identical(
+        levels(seqnames(rse)),
+        c("spike", "transgene", "1")
+    )
+})
+
+test_that("makeSummarizedExperiment : Strict names", {
+    # Don't allow any dashes and other illegal characters in names
+    matBadRows <- mat
+    rownames(matBadRows) <- paste0(rownames(matBadRows), "-XXX")
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = matBadRows),
+            rowRanges = rr,
+            colData = cd
+        ),
+        "are_identical : makeNames\\(rownames\\(assay\\)"
+    )
+    matBadCols <- mat
+    colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = matBadCols),
+            rowRanges = rr,
+            colData = cd
+        ),
+        "are_identical : makeNames\\(colnames\\(assay\\)"
+    )
+})
+
+test_that("makeSummarizedExperiment : Duplicate names", {
+    matDupeRows <- mat
+    rownames(matDupeRows) <- c(
+        "gene_1",
+        "gene_1",
+        "gene_2",
+        "gene_2"
+    )
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = matDupeRows),
+            rowRanges = rr,
+            colData = cd
+        ),
+        paste(
+            "has_no_duplicates :",
+            "rownames\\(assay\\) has duplicates at positions 2, 4."
+        )
+    )
+    matDupeCols <- mat
+    colnames(matDupeCols) <- c(
+        "sample_1",
+        "sample_1",
+        "sample_2",
+        "sample_2"
+    )
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = matDupeCols),
+            rowRanges = rr,
+            colData = cd
+        ),
+        paste(
+            "has_no_duplicates :",
+            "colnames\\(assay\\) has duplicates at positions 2, 4."
+        )
+    )
+})
+
+test_that("makeSummarizedExperiment : Column data failure", {
+    # Bad pass-in of objects not supporting `dimnames()`
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = "yyy"),
+            rowRanges = rr,
+            colData = cd
+        ),
+        "has_dimnames : The dimension names of assay are NULL."
+    )
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = mat),
+            rowRanges = rr,
+            colData = c(xxx = "yyy")
+        ),
+        "is2 : colData"
+    )
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = mat),
+            rowRanges = c(xxx = "yyy"),
+            colData = cd
+        ),
+        "is2 : rowRanges"
+    )
+})
+
+test_that("makeSummarizedExperiment : Invalid metadata", {
+    expect_error(
+        makeSummarizedExperiment(
+            assays = list(counts = mat),
+            rowRanges = rr,
+            colData = cd,
+            metadata = Sys.Date()
+        ),
+        "is2 : metadata"
     )
 })
 
