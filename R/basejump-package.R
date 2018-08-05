@@ -47,7 +47,7 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames
 #' @importFrom methods as formalArgs getGeneric getMethod is selectMethod setAs
-#'   show validObject .hasSlot
+#'   show slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
@@ -61,7 +61,7 @@
 #' @importFrom sessioninfo session_info
 #' @importFrom stats dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
-#'   str_replace str_replace_all str_replace_na str_subset
+#'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assays colData colData<- rowData
 #'   SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
