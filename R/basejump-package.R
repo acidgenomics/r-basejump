@@ -39,6 +39,7 @@
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 element_blank element_line element_rect element_text
 #'   theme theme_linedraw
+#' @importFrom grDevices colorRampPalette
 #' @importFrom IRanges IRanges
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
@@ -50,6 +51,7 @@
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
