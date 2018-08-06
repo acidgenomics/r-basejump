@@ -1,5 +1,7 @@
 context("Plot Functions")
 
+pheatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
+
 
 
 # Heatmaps =====================================================================
@@ -37,13 +39,15 @@ test_that("plotHeatmap : SummarizedExperiment", {
         expect_is(
             f(
                 object = object,
-                color = viridis,
-                legendColor = viridis
+                color = viridis::viridis,
+                legendColor = viridis::viridis
             ),
             "pheatmap"
         )
         # Hexadecimal color palettes (e.g. RColorBrewer)
-        color <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
+        color <- colorRampPalette(
+            RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
+        )(256L)
         expect_is(
             f(
                 object = object,
