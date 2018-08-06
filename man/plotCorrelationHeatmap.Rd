@@ -83,6 +83,7 @@ plotCorrelationHeatmap(
 )
 
 # Hexadecimal color input
+library("RColorBrewer")
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 plotCorrelationHeatmap(rse_dds, color = purple_orange)
 
