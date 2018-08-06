@@ -223,9 +223,11 @@ improved aesthetics.</p></td>
     <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>
 )</div><div class='img'><img src='plotCorrelationHeatmap-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Hexadecimal color input</span>
-<span class='no'>purple_orange</span> <span class='kw'>&lt;-</span> <span class='fu'>colorRampPalette</span>(<span class='fu'>brewer.pal</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>))(<span class='fl'>256L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in brewer.pal(n = 11L, name = "PuOr"): could not find function "brewer.pal"</span></div><div class='input'><span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_dds</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>purple_orange</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .pheatmapColor(color): object 'purple_orange' not found</span></div><div class='input'>
+<span class='fu'>library</span>(<span class='st'>"RColorBrewer"</span>)
+<span class='no'>purple_orange</span> <span class='kw'>&lt;-</span> <span class='fu'>colorRampPalette</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>))(<span class='fl'>256L</span>)
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_dds</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>purple_orange</span>)</div><div class='img'><img src='plotCorrelationHeatmap-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Default pheatmap colors</span>
-<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_dds</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='img'><img src='plotCorrelationHeatmap-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_dds</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='img'><img src='plotCorrelationHeatmap-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
