@@ -1,3 +1,7 @@
+# nocov start
+
+
+
 #' S4 Generics
 #'
 #' @name AllGenerics
@@ -356,3 +360,7 @@ setGeneric(
         standardGeneric("upperCamel")
     }
 )
+
+
+
+# nocov end
