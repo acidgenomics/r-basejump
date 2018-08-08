@@ -16,9 +16,6 @@
 #'     x <- panther("Homo sapiens")
 #' ))
 #' glimpse(x)
-#'
-#' # Clean up
-#' unlink("PTHR*_human.gz")
 panther <- function(
     organism = c(
         "Homo sapiens",
@@ -28,6 +25,7 @@ panther <- function(
     ),
     release = NULL
 ) {
+    stopifnot(has_internet())
     organism <- match.arg(organism)
     map <- c(
         "Homo sapiens" = "human",
@@ -132,7 +130,7 @@ panther <- function(
 .pantherAnnotations <- function(
     organism = c("human", "mouse", "fruit_fly", "nematode_worm"),
     release = NULL,
-    dir = "."
+    dir = tempdir()
 ) {
     organism <- match.arg(organism)
     if (is.null(release)) {

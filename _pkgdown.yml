@@ -10,7 +10,9 @@ reference:
     contents:
     - starts_with("aggregate")
     - counts
+    - flatFiles
     - interestingGroups
+    - makeSummarizedExperiment
     - sampleData
     - sampleNames
     - selectSamples
@@ -30,6 +32,9 @@ reference:
     - starts_with("parse")
     - starts_with("strip")
     - panther
+  - title: Plot Functions
+    contents:
+    - starts_with("plot")
   - title: Read/Write Functions
     contents:
     - starts_with("assign")

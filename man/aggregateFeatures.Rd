@@ -48,7 +48,9 @@ aggregateFeatures(dgc, groupings = groupings)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateReplicates}},
-  \code{\link{counts}}, \code{\link{gene2symbol}},
+  \code{\link{counts}}, \code{\link{flatFiles}},
+  \code{\link{gene2symbol}},
+  \code{\link{makeSummarizedExperiment}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}}
 }

@@ -15,9 +15,10 @@
 #'   assert_all_are_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
 #'   assert_has_dimnames assert_has_dims assert_has_names
-#'   assert_has_no_duplicates assert_has_rows assert_is_atomic assert_is_empty
-#'   assert_is_non_empty assert_is_not_null assert_is_of_length
-#'   assert_is_scalar assert_is_vector has_colnames has_dims has_rows is_scalar
+#'   assert_has_no_duplicates assert_has_rownames assert_has_rows
+#'   assert_is_atomic assert_is_empty assert_is_non_empty assert_is_not_null
+#'   assert_is_of_length assert_is_scalar assert_is_vector has_colnames has_dims
+#'   has_rows is_scalar
 #' @importFrom assertive.sets assert_are_disjoint_sets
 #'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
 #' @importFrom assertive.strings assert_all_are_matching_regex
@@ -30,38 +31,45 @@
 #'   assert_is_name assert_is_numeric is_a_number is_a_string
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
+#' @importFrom curl has_internet
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   mutate mutate_all mutate_at mutate_if pull rename select starts_with
-#'   summarize_all top_n ungroup
+#'   mutate mutate_all mutate_at mutate_if pull rename select select_if
+#'   starts_with summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 element_blank element_line element_rect element_text
 #'   theme theme_linedraw
+#' @importFrom grDevices colorRampPalette
 #' @importFrom IRanges IRanges
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom magrittr set_colnames set_names
-#' @importFrom methods as getGeneric is selectMethod show validObject
+#' @importFrom magrittr set_colnames
+#' @importFrom methods as formalArgs getGeneric getMethod is selectMethod setAs
+#'   show slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
+#' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL
 #' @importFrom readr read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% as.data.frame complete.cases mcols<- metadata
-#'   metadata<- na.omit setdiff tail
-#' @importFrom stats dist
+#' @importFrom S4Vectors %in% as.data.frame complete.cases cor mcols mcols<-
+#'   metadata metadata<- na.omit setdiff tail
+#' @importFrom sessioninfo session_info
+#' @importFrom stats dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
-#'   str_replace str_replace_all str_replace_na str_subset
-#' @importFrom SummarizedExperiment assays colData colData<- rowData
+#'   str_replace str_replace_all str_replace_na str_subset str_trunc
+#' @importFrom SummarizedExperiment assay assays colData colData<- rowData
+#'   SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate unite
 #' @importFrom utils capture.output download.file globalVariables
-#'   installed.packages packageVersion read.delim read.table
+#'   installed.packages packageVersion read.delim read.table sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
