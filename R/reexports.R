@@ -14,6 +14,16 @@ GenomeInfoDb::seqnames
 
 
 
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
+#' @importFrom magrittr set_rownames
+#' @export
+magrittr::set_rownames
+
+
+
 #' @importFrom Matrix Matrix
 #' @export
 Matrix::Matrix
@@ -30,13 +40,9 @@ S4Vectors::mcols
 
 
 
-#' @importFrom magrittr %>%
+#' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
-magrittr::`%>%`
-
-#' @importFrom magrittr set_rownames
-#' @export
-magrittr::set_rownames
+SummarizedExperiment::SummarizedExperiment
 
 
 

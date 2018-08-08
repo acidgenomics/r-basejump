@@ -158,6 +158,12 @@ makeGRangesFromEnsembl <- function(
         )
         mcols <- mcols(ahdb)
         if (!nrow(mcols)) {
+            # Warn if working offline, which can cause match failure
+            if (!isTRUE(has_internet())) {
+                # nocov start
+                stop("AnnotationHub requires an Internet connection for lookup")
+                # nocov end
+            }
             stop(paste(
                 paste(
                     "No ID matched on AnnotationHub",

@@ -10,6 +10,7 @@
 #' x <- hgnc2gene()
 #' glimpse(x)
 hgnc2gene <- function() {
+    stopifnot(has_internet())
     message("Obtaining HGNC to Ensembl gene ID mappings")
     raw <- read_tsv(
         file = paste(

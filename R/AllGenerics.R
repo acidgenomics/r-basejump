@@ -1,3 +1,19 @@
+# nocov start
+
+
+
+#' S4 Generics
+#'
+#' @name AllGenerics
+#' @keywords internal
+#'
+#' @inheritParams general
+#'
+#' @return Varies, depending upon the method.
+NULL
+
+
+
 #' @rdname aggregateFeatures
 #' @export
 setGeneric(
@@ -127,6 +143,17 @@ setGeneric(
 
 
 
+#' @rdname flatFiles
+#' @export
+setGeneric(
+    "flatFiles",
+    function(object, ...) {
+        standardGeneric("flatFiles")
+    }
+)
+
+
+
 #' @rdname gene2symbol
 #' @export
 setGeneric(
@@ -177,6 +204,72 @@ setGeneric(
     "logRatioToFoldChange",
     function(object, ...) {
         standardGeneric("logRatioToFoldChange")
+    }
+)
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    "metrics",
+    function(object, ...) {
+        standardGeneric("metrics")
+    }
+)
+
+
+
+#' @rdname plotCorrelationHeatmap
+#' @export
+setGeneric(
+    "plotCorrelationHeatmap",
+    function(object, ...) {
+        standardGeneric("plotCorrelationHeatmap")
+    }
+)
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    "plotGene",
+    function(object, ...) {
+        standardGeneric("plotGene")
+    }
+)
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setGeneric(
+    "plotHeatmap",
+    function(object, ...) {
+        standardGeneric("plotHeatmap")
+    }
+)
+
+
+
+#' @rdname plotQuantileHeatmap
+#' @export
+setGeneric(
+    "plotQuantileHeatmap",
+    function(object, ...) {
+        standardGeneric("plotQuantileHeatmap")
+    }
+)
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    "plotQC",
+    function(object, ...) {
+        standardGeneric("plotQC")
     }
 )
 
@@ -267,3 +360,7 @@ setGeneric(
         standardGeneric("upperCamel")
     }
 )
+
+
+
+# nocov end
