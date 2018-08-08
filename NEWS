@@ -1,47 +1,68 @@
-# basejump 0.6.4 (2018-08-03)
+## basejump 0.7.0 (2018-08-07)
 
-## New functions
+In this release, we are migrating some of the S4 generics previously exported
+in the [bcbioBase][] package. We are consolidating these functions here for
+simplicity and stability.
+
+### New functions
+
+- `makeSummarizedExperiment()`: Renamed `prepareSummarizedExperiment()`,
+  previously exported in the [bcbioBase][] package. We are using the `make`
+  prefix here for consistency (see other gene annotation functions).
+- Migrated S4 generics and methods from [bcbioBase][]: `flatFiles()`,
+  `metrics()`, `plotCorrleationHeatmap()`, `plotGene()`, `plotHeatmap()`,
+  `plotQC()`, and `plotQuantileHeatmap()`.
+
+### Major changes
+
+- Now using `curl::has_internet()` internally to check for Internet connection.
+  This applies to the annotation functions that query web databases.
+- Added coercion method support for converting a `SummarizedExperiment` to
+  an unstructured `list`. This is the method used internally for `flatFiles()`.
+
+
+## basejump 0.6.4 (2018-08-03)
+
+### New functions
 
 - `matchInterestingGroups()`: New developer function to automatically handle
   `interestingGroups` argument used across various plotting functions and in the
-  bcbio infrastructure packges.
+  [bcbio][] infrastructure packges.
 
 
+## basejump 0.6.3 (2018-08-01)
 
-# basejump 0.6.3 (2018-08-01)
-
-## Minor changes
+### Minor changes
 
 - Migrated `separatorBar` and `updateMessage` global export from [bcbioBase][].
   Improved `separatorBar` appeareance to automatically scale to current session
   width, using `getOption("width")`.
 
 
+## basejump 0.6.2 (2018-07-31)
 
-# basejump 0.6.2 (2018-07-31)
-
-## New functions
+### New functions
 
 - `convertSymbolsToGenes()`: provides `SummarizedExperiment` method support for
   converting objects containing gene symbols ("geneName") as rownames back to
   gene identifiers ("geneID").
-- `eggnog()`: quickly download current annotations from EggNOG database. Useful
-  for annotating gene-to-protein matches; currently in use with the brightworm
-  RNAi screening package, which contains WormBase gene ID and EggNOG ID
-  annotations.
+- `eggnog()`: quickly download current annotations from [EggNOG][] database.
+  Useful for annotating gene-to-protein matches; currently in use with the
+  [brightworm][] RNAi screening package, which contains [WormBase][] gene ID and
+  [EggNOG][] ID annotations.
 
-## Major changes
+### Major changes
 
 - Now suggesting [BiocManager][] instead of [BiocInstaller][] for installation.
 - `broadClass()` now supports `GRanges` and `SummarizedExperiment`. Support for
   `data.frame` and/or `DataFrame` class objects has been removed.
 
-## Minor changes
+### Minor changes
 
 - `convertGenesToSymbols()` and `convertTranscriptsToGenes()` now have
   `organism` and `gene2symbol` arguments set `NULL` by default.
-- Upgraded to roxygen2 v6.1 for documentation, which improves handling of
-  aliases in the Rd files.
+- Upgraded to [roxygen2][] v6.1 for documentation, which improves handling of
+  aliases in the Rd manual files.
 - Added `dplyr::pull()` to reexported functions.
 - Improved package documentation by declaring the supported class(es) for
   each function argument.
@@ -51,10 +72,9 @@
 - `toStringUnique()` now uses `x` instead of `atomic` as primary argument.
 
 
+## basejump 0.6.1 (2018-07-21)
 
-# basejump 0.6.1 (2018-07-21)
-
-## Minor changes
+### Minor changes
 
 - Bug fix for `convertGenesToSymbols()` method for `SummarizedExperiment`.
   Previously, if `geneName` column was a factor, this function would error.
@@ -63,81 +83,77 @@
 - Improved [conda][] installation instructions.
 
 
+## basejump 0.6.0 (2018-07-17)
 
-# basejump 0.6.0 (2018-07-17)
-
-## Major changes
+### Major changes
 
 - Now importing [SummarizedExperiment][] package and providing basic method
   support for generics that were previously used in the [bcbioBase][] package.
 - Improved GFFv3 handling in `makeGRangesFromGFF()` and other GFF utility
   functions, including `makeGene2symbolFromGFF()` and `makeTx2geneFromGFF()`.
   Note that `makeGRangesFromGFF()` now returns additional metadata columns
-  accessible with `mcols()`, and that these columns are now sorted
+  accessible with `S4Vectors::mcols()`, and that these columns are now sorted
   alphabetically.
 
-## Migrated functions from [bcbioBase][]
+### Migrated functions
 
 Previously, these functions were exported in the [bcbioBase][] package, but
-they provide non-bcbio-specific functionality, and should be included in
-the [basejump][] package instead.
+they provide non-[bcbio][]-specific functionality, and should be included here
+in the [basejump][] package instead:
 
 - `assertFormalInterestingGroups()`.
 - `gene2symbol()`.
-- `interestingGroups()`, `interestingGroups<-()`, `uniteInterestingGroups()`.
-- `sampleData()`, `sampleData<-()`, `sanitizeSampleData()`.
+- `interestingGroups()`, `uniteInterestingGroups()`.
+- `sampleData()`, `sanitizeSampleData()`.
 - `sampleNames()`.
 - `selectSamples()`.
 
 Providing basic `SummarizedExperiment` class method support for `counts()`.
 
-## Minor changes
+### Minor changes
 
 - `geometricMean()` generic was not exported correctly.
 
 
+## basejump 0.5.11 (2018-07-09)
 
-# basejump 0.5.11 (2018-07-09)
-
-## Minor changes
+### Minor changes
 
 - Now requiring [ggplot2][] v3.0 internally.
 - `theme_midnight()` and `theme_paperwhite()` now extend
   `ggplot2::theme_linedraw()`, improving the consistency between these themes.
-- Example data is now consistenly formatted using snake_case: `rnaseq_counts`
-  and `single_cell_counts`, instead of the previous camelCase conventions:
+- Example data is now consistenly formatted using snake case: `rnaseq_counts`
+  and `single_cell_counts`, instead of the previous camel case conventions:
   `rnaseqCounts`, `singleCellCounts`.
 - Camel variants of the ggplot themes are now deprecated.
-- Updated internal gene synonyms data from NIH.
+- Updated internal gene synonyms data from [NIH][].
 
 
+## basejump 0.5.10 (2018-06-28)
 
-# basejump 0.5.10 (2018-06-28)
-
-## Minor changes
+### Minor changes
 
 - Removed `makeNames` argument from `readFileByExtension()` function. Use the
   `makeNames` family of functions manually after data import instead. This
   helps avoid unwanted sanitization of data.
 - Simplified assert checks for internal load function.
 - Improved code coverage.
-- AppVeyor CI updates to work with Bioconductor 3.8 devel.
+- [AppVeyor CI][] updates to work with [Bioconductor][] 3.8 devel.
 
 
+## basejump 0.5.9 (2018-06-12)
 
-# basejump 0.5.9 (2018-06-12)
+### Minor changes
 
-## Minor changes
-
-- Markdown function consistency improvements. Now all relevant Markdown functions use `text` as the primary argument, instead of `object`.
-
+- Markdown function consistency improvements. Now all relevant [Markdown][]
+  functions use `text` as the primary argument, instead of `object`.
 
 
-# basejump 0.5.8 (2018-06-05)
+## basejump 0.5.8 (2018-06-05)
 
-## Minor changes
+### Minor changes
 
-- `makeGRangesFromEnsembl()` now supports remapping of UCSC genome build to
+- `makeGRangesFromEnsembl()` now supports remapping of [UCSC][] genome build to
   Ensembl. However, this isn't recommended, and will warn the user.
 - `convertUCSCBuildToEnsembl()` now returns `NULL` instead of erroring on
   genome build match failure.
@@ -147,64 +163,62 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - Consider deprecating `assertIsCharacterOrNULL()` and
   `assertIsDataFrameOrNULL()` in a future release.
 
-## Infrastructure changes
+### Infrastructure changes
 
-- Reenable Travis CI blocklist, excluding develop branch from checks.
+- Reenable [Travis CI][] blocklist, excluding develop branch from checks.
 - Reorganized documentation of deprecated and defunct functions.
 
 
+## basejump 0.5.7 (2018-05-24)
 
-# basejump 0.5.7 (2018-05-24)
-
-## Minor changes
+### Minor changes
 
 - Tweaked gray color accents for `theme_midnight()` and `theme_paperwhite()`.
 
 
+## basejump 0.5.6 (2018-05-19)
 
-# basejump 0.5.6 (2018-05-19)
-
-## Minor changes
+### Minor changes
 
 - Fixed NAMESPACE issue with `GenomeInfoDb::seqnames()`.
 - Improved `readGFF()` working example to reflect switch to `GRanges` return.
-- Added macOS bioc-release to Travis CI build checks.
+- Added [macOS][] bioc-release image to [Travis CI][] build checks.
 
 
+## basejump 0.5.5 (2018-05-15)
 
-# basejump 0.5.5 (2018-05-15)
+### Major changes
 
-## Major changes
+- `readGFF()` now uses `rtracklayer::import()` internally to return GFF file
+  as a `GRanges` object instead of a `data.frame`.
 
-- `readGFF()` now uses `rtracklayer::import()` internally to return GFF file as a `GRanges` object instead of a `data.frame`.
-
-## Minor changes
+### Minor changes
 
 - `assertIsGFF()` and `parseGFFAttributes()` functions are now defunct.
-- Simplified internal GFF handling code for `makeGRangesFromGFF()`, `makeGene2symbolFromGFF()`, and `makeTx2geneFromGFF()`.
+- Simplified internal GFF handling code for `makeGRangesFromGFF()`,
+  `makeGene2symbolFromGFF()`, and `makeTx2geneFromGFF()`.
 
 
+## basejump 0.5.4 (2018-05-08)
 
-# basejump 0.5.4 (2018-05-08)
-
-- Migrated `sanitizeSampleData()` to bcbioBase package.
-- Updated Bioconductor install method for 3.7.
-
+- Migrated `sanitizeSampleData()` to [bcbioBase][] package.
+- Updated [Bioconductor][] install method for 3.7.
 
 
-# basejump 0.5.3 (2018-04-30)
+## basejump 0.5.3 (2018-04-30)
 
-## Minor changes
+### Minor changes
 
 - Improved internal S4 method code for `fixNA()` and `removeNA()`.
-- Tweaked gray accent colors in `theme_midnight()` and `theme_paperwhite()`. Now using British spelling internally for ggplot code.
-- Improved `strip.background` for `theme_paperwhite()`, removing the black box around the labels when facet wrapping is enabled.
+- Tweaked gray accent colors in `theme_midnight()` and `theme_paperwhite()`.
+  Now using British spelling internally for ggplot code.
+- Improved `strip.background` for `theme_paperwhite()`, removing the black box
+  around the labels when facet wrapping is enabled.
 
 
+## basejump 0.5.2 (2018-04-26)
 
-# basejump 0.5.2 (2018-04-26)
-
-## Minor changes
+### Minor changes
 
 - Improved documentation for assert check functions.
 - Deprecated `geomean()` in favor of `geometricMean()`.
@@ -216,54 +230,63 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - Improved code coverage, using `nocov` where appropriate.
 
 
+## basejump 0.5.1 (2018-04-16)
 
-# basejump 0.5.1 (2018-04-16)
+### Minor changes
 
-## Minor changes
-
-- `emptyRanges()`: Now using `match.arg()` internally to capture `seqname` argument.
-- Removed legacy `.assignCamelArgs()` and `.assignCamelFormals()` internal functions.
+- `emptyRanges()`: Now using `match.arg()` internally to capture `seqname`
+  argument.
+- Removed legacy `.assignCamelArgs()` and `.assignCamelFormals()` internal
+  functions.
 - Improved internal handling of XLSX files in `localOrRemoteFile()`.
 
 
+## basejump 0.5.0 (2018-04-13)
 
-# basejump 0.5.0 (2018-04-13)
+### New functions
 
-## New functions
-
-- `emptyRanges()` enables easy creation of placeholder ranges for `GRanges` objects, where transgene and FASTA spike-ins are needed.
-- `hgnc2gene()` enables easy mapping of HGNC to Ensembl gene identifiers.
-- `mgi2gene()` enables easy mapping of MGI to Ensembl gene identifiers.
-- `panther()` function enables easy querying of the [PANTHER][] website. Human, mouse, nematode worm, and fruit fly are currently supported. The specific PANTHER release (e.g. 13) can be declared using the `release` argument. Otherwise, the function will return the most recent annotations from the [PANTHER][] website.
+- `emptyRanges()` enables easy creation of placeholder ranges for `GRanges`
+  objects, where transgene and FASTA spike-ins are needed.
+- `hgnc2gene()` enables easy mapping of [HGNC][] to [Ensembl][] gene
+  identifiers.
+- `mgi2gene()` enables easy mapping of [MGI][] to [Ensembl][] gene identifiers.
+- `panther()` function enables easy querying of the [PANTHER][] website.
+  Human, mouse, nematode worm, and fruit fly are currently supported. The
+  specific [PANTHER][] release (e.g. 13) can be declared using the `release`
+  argument. Otherwise, the function will return the most recent annotations
+  from the [PANTHER][] website.
 - Added `isURL()` check function.
-- `readJSON()` adds support for JSON files. Like the other read functions, it supports both local files and remote URLs.
+- `readJSON()` adds support for JSON files. Like the other read functions, it
+  supports both local files and remote URLs.
 
-## ggplot2 themes
+### ggplot2 themes
 
-- `theme_midnight()` and `theme_paperwhite()` provide minimal, high contrast [ggplot2][] themes with bold sans serif labels.
+- `theme_midnight()` and `theme_paperwhite()` provide minimal, high contrast
+  [ggplot2][] themes with bold sans serif labels.
 
-- printString
-- readJSON
+### Major changes
 
-## Major changes
+- `loadData()` now supports `.rda`, `.rds`, and `.RData` files. The function
+  will error by design if multiple data extensions are detected inside the
+  directory specified with the `dir` argument.
 
-- `loadData()` now supports `.rda`, `.rds`, and `.RData` files. The function will error by design if multiple data extensions are detected inside the directory specified with the `dir` argument.
-
-
-## Minor changes
+### Minor changes
 
 - Consolidated assert check function code.
 - Moved assertive imports to `basejump-package.R` file.
 - Consolidated globals inside package to `globals.R` file.
-- Removed internal `.biocLite()` function. Now using `requireNamespace()` instead, without attempting to install automatically.
+- Removed internal `.biocLite()` function. Now using `requireNamespace()`
+  instead, without attempting to install automatically.
 - Added internal support for safe loading RDS files.
-- Switched back to using `message()`, `warning()`, and `stop()` instead of the rlang equivalents.
+- Switched back to using `message()`, `warning()`, and `stop()` instead of
+  the [rlang][] equivalents.
 - Improved internal method declaration using `getMethod()` where applicable.
-- `multiassignAsEnvir()` is now recommended in place of `multiassignAsNewEnvir()`.
-- `readFileByExtension()` will now attempt to use the [rio][] package for file extensions that are not natively supported.
+- `multiassignAsEnvir()` is now recommended in place of
+  `multiassignAsNewEnvir()`.
+- `readFileByExtension()` will now attempt to use the [rio][] package for
+  file extensions that are not natively supported.
 - `writeCounts()` now uses `mapply()` internally.
 - Migrated `assertFormalAnnotationCol()` to [bcbioBase][] package.
-
 
 
 ## basejump 0.4.0 (2018-03-22)
@@ -284,12 +307,12 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - Added new `convertUCSCBuildToEnsembl()` function, for easy remapping of
   [UCSC][] to [Ensembl][] genome build names (e.g. `hg38` to `GRCh38`).
 - Migrated matrix methods for `plotCorrelationHeatmap()` here from
-  bcbioRNASeq, for improved consistency with other heatmap functions.
+  [bcbioRNASeq][], for improved consistency with other heatmap functions.
 - Exporting `makeNames()` variant of `base::make.names()` that sanitizes
   using underscores ("_") rather than dots (".").
 - Converted `readYAML()` from a generic to standard function.
-- Added support for AppVeyor CI code testing on Windows.
-- Made Travis CI build checks stricter, adding support for `BiocCheck()`.
+- Added support for [AppVeyor CI][] code testing on [Windows][].
+- Made [Travis CI][] build checks stricter, adding support for `BiocCheck()`.
 - Added new assert checks: `assertAreGeneAnnotations()`,
   `assertAreTranscriptAnnotations()`, `isAnImplicitInteger()`.
 - Simplified working examples for assert checks to just show successes.
@@ -315,20 +338,20 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - Added `sanitizeColData()` function.
 - Added `assertAllAreNonExisting()` function.
 - Now exporting `midnightTheme()` as a `theme_midnight()` alias to match the
-  syntax in the ggplot2 package.
+  syntax in the [ggplot2][] package.
 - Added working examples and code coverage for all assert check functions.
 - Simplified the internal collapse code for `annotable()` to simply work on
-  the Entrez identifier column (`entrez`). If a manually passed in data frame
-  still has duplicates, the function will now abort instead of attempting to
-  use `collapseToString()`.
-- Added ggplot color palette assert checks:
+  the [Entrez][] identifier column (`entrez`). If a manually passed in data
+  frame still has duplicates, the function will now abort instead of attempting
+  to use `collapseToString()`.
+- Added [ggplot2][] color palette assert checks:
   `assertColorScaleContinuousOrNULL()`, `assertColorScaleDiscreteOrNULL()`,
   `assertFillScaleContinuousOrNULL()`, `assertFillScaleDiscreteOrNULL()`.
 
 
 ## basejump 0.3.0 (2018-02-16)
 
-- Switch to using assertive internally for assert checks.
+- Switch to using [assertive][] internally for assert checks.
 - Now exporting these assert check functions:
   `assert_formal_annotation_col()`, `assert_formal_color_function()`,
   `assert_formal_compress()`, `assert_formal_gene2symbol()`,
@@ -349,7 +372,7 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   functions. Previously some of this functionality was contained within the
   `gene2symbol()` and `tx2gene()` generics for the character method. This
   behavior was inconsistent with `gene2symbol()` and `tx2gene()` usage in the
-  bcbio R packages, so I decided to split these out into separate functions.
+  [bcbio][] R packages, so I decided to split these out into separate functions.
   Now `gene2symbol()` and `tx2gene()` work consistently with the `annotable()`
   function to return gene-to-symbol and transcript-to-gene identifier mappings
   in a `data.frame`.
@@ -362,16 +385,17 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 ## basejump 0.2.0 (2018-01-28)
 
-- Offloaded internal bcbio-specific code to new package named [bcbioBase][].
-  Consequently, this makes the basejump package leaner, meaner, and easier to
-  manage. The following functions are now exported in that package: `bcbio()`,
-  `checkInterestingGroups()`, `flatFiles()`, `interestingGroups()`,
+- Offloaded internal [bcbio][]-specific code to new package named [bcbioBase][].
+  Consequently, this makes the [basejump][] package leaner, meaner, and easier
+  to manage. The following functions are now exported in that package:
+  `bcbio()`, `checkInterestingGroups()`, `flatFiles()`, `interestingGroups()`,
   `metrics()`, `plotDot()`, `plotGene()`, `plotQC()`, `plotViolin()`,
   `prepareSummarizedExperiment()`, `prepareTemplate()`, `readDataVersions()`,
   `readLogFile()`, `readProgramVersions()`, `readSampleMetadataFile()`,
   `sampleMetadata()`, `sampleYAML()`, `sampleYAMLMetadata()`,
   `sampleYAMLMetrics()`, and `selectSamples()`. These functions are now
-  deprecated here in basejump (see `deprecated.R` file for more information).
+  deprecated here in [basejump][] (see `deprecated.R` file for more
+  information).
 - `comp()` and `revcomp()` have been deprecated in favor of `complement()`
   and `reverseComplement()` from the [Biostrings][] package.
 - Internally, errors, messages, and warnings now use methods from the
@@ -383,7 +407,7 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   behavior of `base::load()`, but helps prevent accidental overwrite in the
   current working environment.
 - `localOrRemoteFile()`, previously an internal function, is now exported.
-- `annotable()` now uses internal GRCh37 annotations from the [annotables][]
+- `annotable()` now uses internal [GRCh37][] annotations from the [annotables][]
   package, which is saved in the `extdata/` directory internally. Previously,
   these genome annotations were accessed from lazy loaded data saved in the
   `data/` directory of the package repository.
@@ -420,8 +444,8 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 ## basejump 0.1.9 (2017-12-18)
 
 - Added `plotHeatmap()` functionality.
-- Migrated `tpm()` generic from bcbioRNASeq, for future use in
-  bcbioSingleCell.
+- Migrated `tpm()` generic from [bcbioRNASeq][], for future use in
+  [bcbioSingleCell][].
 - Added matrix method support for `plotHeatmap()`.
 - Added matrix method support for `plotQuantileHeatmap()`, which works
   similarly as `plotHeatmap()`.
@@ -434,31 +458,30 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   consistent `groupings` parameter, which uses a named factor to define the
   mappings of either samples (columns) for `aggregateReplicates()` or
   genes/transcripts (rows) for `aggregateFeatures()`.
-- Update for makeNames sanitization functions. Now they will work on
+- Update for `makeNames` sanitization functions. Now they will work on
   `names(x)` for vectors by default.
-- Improved `detectOrganism()` to match against "H. sapiens" and
-  "Homo_sapiens".
-- Added internal GRCh37 transcript to gene mapping.
+- Improved `detectOrganism()` to match against "H. sapiens", etc.
+- Added internal [GRCh37][] transcript to gene mapping.
 - Improved organism matching to detect "Homo_sapiens" and "H. sapiens".
-- Factors are now supported in the makeNames utilities: `camel()`,
+- Factors are now supported in the `makeNames` utilities: `camel()`,
   `dotted()`, `snake()`, and `upperCamel()`.
-- Improved handling of `NA` values from LibreOffice and Microsoft Excel
-  output in `readFileByExtension()`.. This function now sets `""`, `NA`, and
-  `#N/A` strings as `NA` correctly.
+- Improved handling of `NA` values from [LibreOffice][] and
+  [Microsoft Excel][Excel] output in `readFileByExtension()`. This function now
+  sets `""`, `NA`, and `#N/A` strings as `NA` correctly.
 
 
 ## basejump 0.1.7 (2017-12-11)
 
 - Renamed `fc2lr()` to `foldChangeToLogRatio()` and `lr2fc()` and
   `logRatioToFoldChange()`.
-- Moved `plotDot()` and `plotViolin()` generics here from bcbioSingleCell.
-- Added internal GRCh37 gene annotations.
+- Moved `plotDot()` and `plotViolin()` generics here from [bcbioSingleCell][].
+- Added internal [GRCh37][] gene annotations.
 
 
 ## basejump 0.1.6 (2017-12-06)
 
-- Moved `microplate()` code from the worminfo package here, since it's of
-  general interest.
+- Moved `microplate()` code from the [wormbase][r-wormbase] package here, since
+  it's of general interest.
 
 
 ## basejump 0.1.5 (2017-12-05)
@@ -470,8 +493,8 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 ## basejump 0.1.4 (2017-12-04)
 
-- Added `midnightTheme()` ggplot theme. Originally this was defined as
-  `darkTheme()` in the bcbioSingleCell package, but can be useful for other
+- Added `midnightTheme()` [ggplot2][] theme. Originally this was defined as
+  `darkTheme()` in the [bcbioSingleCell][] package, but can be useful for other
   plots and has been moved here for general bioinformatics usage. The theme now
   uses `ggplot2::theme_minimal()` as the base, with some color tweaks, namely
   dark gray axes without white axis lines.
@@ -492,32 +515,33 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - DNA sequence utility functions `comp()` and `revcomp()` now return `NULL`
   for integers and numerics.
 - For `prepareSummarizedExperiment()`, added support for dropping `NULL`
-  objects in assays list. This is useful for handling output from bcbioRNASeq
-  when `transformLimit` is reached. In this case, the `rlog` and `vst` matrices
-  aren't generated and set `NULL` in the assays list. Using
+  objects in assays list. This is useful for handling output from
+  [bcbioRNASeq][] when `transformLimit` is reached. In this case, the `rlog` and
+  `vst` matrices aren't generated and set `NULL` in the assays list. Using
   `Filter(Negate(is.null), assays)` we can drop these `NULL` objects and
-  prevent a downstream dimension mismatch in the `SummarizedExperiment()` call.
+  prevent a downstream dimension mismatch in the
+  `SummarizedExperiment::SummarizedExperiment()` call.
 - Improved support for multiplexed files in `readSampleMetadataFile()`. This
   now checks for a sequence column containing ACGT nucleotides. When those are
   detected, the `revcomp` column is generated. Otherwise this step is skipped.
   This is useful for handling multiplexed sample metadata from 10X Genomics
-  CellRanger single-cell RNA-seq samples.
-- Updated `annotable()` function to include nested Entrez identifiers in the
+  [Cell Ranger][] single-cell RNA-seq samples.
+- Updated `annotable()` function to include nested [Entrez][] identifiers in the
   `entrez` column. This is useful for downstream functional analysis.
 
 
 ## basejump 0.1.2 (2017-11-30)
 
-- Added bcbio `plotQC()` generic.
-- Added back `toStringUnique()` code, which is still in use in the worminfo
-  package.
+- Added [bcbio][] `plotQC()` generic.
+- Added back `toStringUnique()` code, which is still in use in the
+  [wormbase][r-wormbase] package.
 - Added deprecations for `summarizeRows()` (now `collapseToString()`) and
   `wash()` functions.
-- Updated installation method to include manual installation of ensembldb.
-  Otherwise, basejump installation fails due to GenomeInfoDb and
-  GenomeInfoDbData not getting installed completely.
+- Updated installation method to include manual installation of [ensembldb][].
+  Otherwise, [basejump][] installation fails due to [GenomeInfoDb][] and
+  [GenomeInfoDbData][] not getting installed completely.
 - Now suggesting that the user installs suggested packages in the README.
-- Updated PANTHER annotation scripts.
+- Updated [PANTHER][] annotation scripts.
 - Bug fix for `detectOrganism()`. Now allowing `NULL` return for unsupported
   organism, with a warning.
 
@@ -533,11 +557,10 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   simply pass the key value pairs in as dots. For example, `newName1 =
   "oldName1", newName2 = "oldName2"`. The legacy `mappings` method will still
   work, as long as the dots argument is a length of 1.
-- Ensembl release version now defaults to `NULL` instead of `current` for
+- [Ensembl][] release version now defaults to `NULL` instead of `current` for
   `annotable()`, `gene2symbol()`, `symbol2gene()` and `tx2gene()` functions.
-- Allow rowData to be left unset in `prepareSummarizedExperiment()`. This is
-  useful for setting
-  up objects that don't contain gene annotations.
+- Allow `rowData` to be left unset in `prepareSummarizedExperiment()`. This is
+  useful for setting up objects that don't contain gene annotations.
 - Removed sample selection by pattern matching (`pattern`, `patternCol`
   arguments) in `readSampleMetadata()`. This feature wasn't fully baked and
   doesn't offer enough functionality to the user.
@@ -545,16 +568,15 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 ## basejump 0.1.0 (2017-10-23)
 
-- Bump version to match bcbioRNASeq package.
+- Bump version to match [bcbioRNASeq][] package.
 - Improved unit testing coverage of `prepareSummarizedExperiment()`.
-- Added quiet mode support to functions that output messages, where
-  applicable.
-- Moved roxygen function imports to each file from `basejump-package.R` file.
+- Added quiet mode support to functions that output messages, where applicable.
+- Consolidated [roxygen2][] function imports to `basejump-package.R` file.
 - Deprecated `sampleDirs()` generic.
 - Improved organism detection in `detectOrganism()` and added support for
   chicken genome.
 - Clarified warning messages in `prepareSummarizedExperiment()` to make
-  sample loading with `loadRNASeq()` and `loadSingleCell()` in the bcbio
+  sample loading with `loadRNASeq()` and `loadSingleCell()` in the [bcbio][]
   packages less confusing.
 - Improved `NULL` returns in `readDataVersions`, `readLogFile()`, and
   `readProgramVersions()` utility functions.
@@ -578,36 +600,36 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 - Added additional package version requirements in `DESCRIPTION` file.
 - Implicit integers are allowed.
-- Using GitHub version of covr package for unit tests.
+- Using [GitHub][] version of [covr][] package for unit tests.
 - Renamed `multiassignAsNewEnv()` to `multiassignAsNewEnvir()`
 - Added `*GFF()` function variants for `gene2symbolFromGTF()` and
   `tx2geneFromGTF()`.
-- Added shared bcbio generic functions: `aggregateReplicates()`, `bcbio()`,
+- Added shared [bcbio][] generic functions: `aggregateReplicates()`, `bcbio()`,
   `bcbio<-()`, `interestingGroups()`, `metrics()`, `plotGene()`,
   `sampleDirs()`, `sampleMetadata()`, `selectSamples()`. These functions are
   saved in `bcbioGenerics.R` file.
-- Incorporated bcbio utility functions shared across bcbioRNASeq and
-  bcbioSingleCell: `readDataVersions()` (deprecated `.dataVersions()`),
+- Incorporated [bcbio][] utility functions shared across [bcbioRNASeq][] and
+  [bcbioSingleCell][]: `readDataVersions()` (deprecated `.dataVersions()`),
   `readLogFile()` (deprecated `.logFile()`), `readProgramVersions()`
   (deprecated `.programs()`), `sampleYAML()` (deprecated `.sampleYAML()`),
   `sampleYAMLMetadata()` (deprecated `sampleYAMLMetadata()`),
   `sampleYAMLMetrics()` (deprecated .sampleYAMLMetrics()`).
 - Deprecated `metadataTable()` function.
-- Moved all roxygen documentation to `methods-*.R` files where applicable.
+- Moved all [roxygen2][] documentation to `methods-*.R` files where applicable.
 - Now using `assays` in `prepareSummarizedExperiment()` generic definition as
   primary object.
 - Improved `assignAndSaveData()` to add silent return of file path.
 - Now consistently using clear function definitions (`()`) in chain
   operations with magrittr pipe (`%>%`).
 - Added `.prepareSampleMetadata()` utility function, for use with loading
-  sample metadata from an external CSV, Excel, or YAML file.
+  sample metadata from an external CSV, [Excel][], or YAML file.
 - Added `loadData()` functionality back to the package.
 - Initial commit of `loadDataAsName()` function.
-- Improved `annotable()` function documentation and support for Ensembl
+- Improved `annotable()` function documentation and support for [Ensembl][]
   release versions.
 - Improved sanitization rules for `camel()`, `dotted()`, and `snake()` name
   functions. Added the `strict` argument to `camel()` and `dotted()`.
-- Improved the documentation for the makeNames functions, by splitting each
+- Improved the documentation for the `makeNames` functions, by splitting each
   into their own separate methods file.
 - Improved S4 method support for the logRatio functions.
 - Added integer support for `geomean()` function. Also improved internal code
@@ -615,16 +637,16 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   documentation for more information.
 - Added release support for `tx2gene` functions.
 - Reduced the number of reexported functions (for documentation) down to the
-  magrittr pipe (`%>%`), `Matrix()`, `DataFrame()`, and `tibble()`.
+  [magrittr][] pipe (`%>%`), `Matrix()`, `DataFrame()`, and `tibble()`.
 - Added silent return of file path to `saveData()` function.
-- Improved documentation for tibble coercion using `as(object, "tibble")`
+- Improved documentation for [tibble][] coercion using `as(object, "tibble")`
 - Renamed `collapse()` function to `collapseToString()`, to avoid NAMESPACE
-  collisions with tidyverse packages (dplyr, glue).
+  collisions with tidyverse packages ([dplyr][], [glue][]).
 
 
 ## basejump 0.0.23 (2017-09-14)
 
-- Upgraded `annotable()` function to query Ensembl using the [ensembldb][]
+- Upgraded `annotable()` function to query [Ensembl][] using the [ensembldb][]
   package rather than [annotables][].
 
 
@@ -646,7 +668,7 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
   improved testing for GTF file utilities.
 - Code coverage now above 90%!
 - Renamed `packageSE()` to `prepareSE()` for better semantic meaning.
-- Made multiple generics more flexible by inclusion of `…`.
+- Made multiple generics more flexible by inclusion of passthrough (`…`).
 - Reduced the number of deprecated functions.
 - Initial commit of internal `localOrRemote()` utility function.
 - Initial commit of `prepareTemplate()` function.
@@ -664,7 +686,7 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 - Upgraded all functions to S4 functions where possible.
 - Assign utilities were kept as S3 functions since S4 dispatch makes
   `parent.frame()` assignment not work correctly.
-- Deprecated snake_case and British spelling variants to reduce the number of
+- Deprecated snake case and British spelling variants to reduce the number of
   exported functions.
 - Added more working examples.
 - Added unit testing for [annotables][] functions.
@@ -683,9 +705,9 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 ## basejump 0.0.17 (2017-07-11)
 
-- Added [annotables][] common code from bcbio packages.
+- Added [annotables][] common code from [bcbio][] packages.
 - Added automatic file reading using [readr][] package.
-- Combined write_counts functions from [bcbioRNASeq][] and [bcbioSinglecell][].
+- Combined write counts functions from [bcbioRNASeq][] and [bcbioSinglecell][].
 - Initial commit of `assign_data()` for use in [bcbioSingleCell][] sample loops.
 
 
@@ -709,13 +731,13 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 ## basejump 0.0.13 (2017-06-12)
 
-- setMethod on tidyverse NAMESPACE collisons ([dplyr][], [tidyr][]) using
-  `signature("data.frame").
+- `setMethod()` for [tidyverse][] NAMESPACE collisons ([dplyr][], [tidyr][])
+  using `signature("data.frame").
 
 
 ## basejump 0.0.12 (2017-05-25)
 
-- Updated exports based on [worminfo][] package.
+- Updated exports based on [wormbase][r-wormbase] package.
 
 
 ## basejump 0.0.11 (2017-05-18)
@@ -728,12 +750,12 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 ## basejump 0.0.10 (2017-05-14)
 
 - Added NAMESPACE utilities to deal with [tidyverse][] generic verbs.
-- Switched package documentation method to use [roxygen][] with pkgapi.
+- Switched package documentation method to use [roxygen2][] with pkgapi.
 
 
 ## basejump 0.0.9 (2017-05-13)
 
-- Added snake_case function variants.
+- Added snake case function variants.
 
 
 ## basejump 0.0.8 (2017-05-13)
@@ -779,25 +801,55 @@ Providing basic `SummarizedExperiment` class method support for `counts()`.
 
 [AnnotationHub]: https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html
 [annotables]: https://github.com/stephenturner/annotables
+[AppVeyor CI]: https://ci.appveyor.com
+[assertive]: https://cran.r-project.org/package=assertive
+[basejump]: https://steinbaugh.com/basejump
 [bcbio]: https://github.com/chapmanb/bcbio-nextgen
 [bcbioBase]: http://bioinformatics.sph.harvard.edu/bcbioBase
 [bcbioRNASeq]: http://bioinformatics.sph.harvard.edu/bcbioRNASeq
 [bcbioSingleCell]: http://bioinformatics.sph.harvard.edu/bcbioSingleCell
+[BiocInstaller]: https://doi.org/doi:10.18129/B9.bioc.BiocInstaller
+[BiocManager]: https://cran.r-project.org/package=BiocManager
 [Bioconductor]: https://bioconductor.org
 [Biostrings]: http://bioconductor.org/packages/release/bioc/html/Biostrings.html
+[brightworm]: https://steinbaugh.com/brightworm
+[Cell Ranger]: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
+[conda]: https://conda.io
+[covr]: https://cran.r-project.org/package=covr
 [devtools]: https://github.com/hadley/devtools
 [dplyr]: http://dplyr.tidyverse.org
+[EggNOG]: http://eggnogdb.embl.de
 [Ensembl]: https://www.ensembl.org
 [ensembldb]: http://bioconductor.org/packages/release/bioc/html/ensembldb.html
+[Entrez]: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
+[Excel]: https://products.office.com/en-us/excel
+[GenomeInfoDb]: https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDb
+[GenomeInfoDbData]: https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDbData
 [ggplot2]: http://ggplot2.tidyverse.org
+[GitHub]: https://github.com
+[glue]: https://glue.tidyverse.org
+[GRCh37]: https://grch37.ensembl.org
+[HGNC]: https://www.genenames.org
 [HMS RC]: https://rc.hms.harvard.edu
+[LibreOffice]: https://www.libreoffice.org
 [lintr]: https://github.com/jimhester/lintr
+[macOS]: https://www.apple.com/macos
+[magrittr]: https://magrittr.tidyverse.org
+[Markdown]: https://daringfireball.net/projects/markdown
+[MGI]: http://www.informatics.jax.org
+[NIH]: https://www.nih.gov
+[PANTHER]: http://pantherdb.org
 [readr]: http://readr.tidyverse.org
+[rio]: https://cran.r-project.org/package=rio
 [rlang]: http://rlang.tidyverse.org
-[roxygen]: https://github.com/klutometis/roxygen
+[roxygen2]: https://cran.r-project.org/package=roxygen2
 [SummarizedExperiment]: https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
 [testthat]: https://github.com/hadley/testthat
+[tibble]: https://tibble.tidyverse.org
 [tidyr]: http://tidyr.tidyverse.org
 [tidyverse]: http://www.tidyverse.org
+[Travis CI]: https://travis-ci.com
 [UCSC]: https://genome.ucsc.edu
-[worminfo]: http://steinbaugh.com/worminfo
+[r-wormbase]: https://steinbaugh.com/wormbase
+[Windows]: https://www.microsoft.com/en-us/windows
+[WormBase]: http://www.wormbase.org
