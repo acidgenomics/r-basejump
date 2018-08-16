@@ -50,7 +50,6 @@ NULL
 
 
 
-# Constructors =================================================================
 .collapseToString <- function(
     object,
     sep = ", ",
@@ -132,7 +131,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname collapseToString
 #' @export
 setMethod(

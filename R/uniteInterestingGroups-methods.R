@@ -22,7 +22,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(

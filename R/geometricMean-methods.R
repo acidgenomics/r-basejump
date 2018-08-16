@@ -38,7 +38,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname geometricMean
 #' @export
 setMethod(

@@ -24,7 +24,7 @@
 #' x <- eggnog()
 #' glimpse(x)
 eggnog <- function() {
-    # Categories ===============================================================
+    # Categories ---------------------------------------------------------------
     pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
     categories <- read_lines(
         file = paste(
@@ -42,7 +42,7 @@ eggnog <- function() {
         set_colnames(c("letter", "description")) %>%
         arrange(!!sym("letter"))
 
-    # Annotations ==============================================================
+    # Annotations --------------------------------------------------------------
     colnames <- c(
         "taxonomicLevel",
         "groupName",
@@ -52,7 +52,7 @@ eggnog <- function() {
         "consensusFunctionalDescription"
     )
 
-    ## euNOG: Eukaryota
+    # euNOG: Eukaryota
     eunog <- read_tsv(
         file = paste(
             "http://eggnogdb.embl.de",
@@ -66,7 +66,7 @@ eggnog <- function() {
         col_names = colnames
     )
 
-    ## NOG: LUCA
+    # NOG: LUCA
     nog <- read_tsv(
         file = paste(
             "http://eggnogdb.embl.de",
@@ -89,7 +89,7 @@ eggnog <- function() {
         rename(eggnogID = !!sym("groupName")) %>%
         arrange(!!sym("eggnogID"))
 
-    # Return ====
+    # Return -------------------------------------------------------------------
     list(
         cogFunctionalCategories = categories,
         annotations = annotations

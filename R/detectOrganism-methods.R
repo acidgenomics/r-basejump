@@ -45,11 +45,10 @@ NULL
 
 
 
-# Constructors =================================================================
 .detectOrganism <- function(object) {
     assert_is_a_string(object)
 
-    # Homo sapiens =============================================================
+    # Homo sapiens
     grep <- c(
         "^H(omo)?([._[:space:]]+)?sapiens$",
         # Ensembl
@@ -62,7 +61,7 @@ NULL
         return("Homo sapiens")
     }
 
-    # Mus musculus =============================================================
+    # Mus musculus
     grep <- c(
         "^M(us)?([._[:space:]]+)?musculus$",
         # Ensembl
@@ -75,7 +74,7 @@ NULL
         return("Mus musculus")
     }
 
-    # Rattus norvegicus ====================================================
+    # Rattus norvegicus
     grep <- c(
         "^R(attus)?([._[:space:]]+)?norvegicus$",
         # Ensembl
@@ -88,7 +87,7 @@ NULL
         return("Rattus norvegicus")
     }
 
-    # Danio rerio ==============================================================
+    # Danio rerio
     grep <- c(
         "^D(anio)?([._[:space:]]+)?rerio$",
         # Ensembl
@@ -101,7 +100,7 @@ NULL
         return("Danio rerio")
     }
 
-    # Drosophila melanogaster ==================================================
+    # Drosophila melanogaster
     grep <- c(
         "^D(rosophila)?([._[:space:]]+)?melanogaster$",
         # Ensembl
@@ -114,7 +113,7 @@ NULL
         return("Drosophila melanogaster")
     }
 
-    # Caenorhabditis elegans ===================================================
+    # Caenorhabditis elegans
     grep <- c(
         "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
         # Ensembl
@@ -127,7 +126,7 @@ NULL
         return("Caenorhabditis elegans")
     }
 
-    # Gallus gallus ============================================================
+    # Gallus gallus
     grep <- c(
         "G(allus)?([._[:space:]]+)?gallus$",
         # Ensembl
@@ -140,7 +139,7 @@ NULL
         return("Gallus gallus")
     }
 
-    # Ovis aries ===============================================================
+    # Ovis aries
     grep <- c(
         "^O(vis)?([._[:space:]]+)?aries$",
         # Ensembl
@@ -167,7 +166,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname detectOrganism
 #' @export
 setMethod(

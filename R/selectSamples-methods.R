@@ -24,6 +24,7 @@ NULL
 
 
 # Methods ======================================================================
+
 #' @rdname selectSamples
 #' @export
 setMethod(
