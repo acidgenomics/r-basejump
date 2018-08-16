@@ -48,7 +48,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(

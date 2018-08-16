@@ -16,7 +16,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname gene2symbol
 #' @export
 setMethod(

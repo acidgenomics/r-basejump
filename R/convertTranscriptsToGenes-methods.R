@@ -34,7 +34,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname convertTranscriptsToGenes
 setMethod(
     "convertTranscriptsToGenes",

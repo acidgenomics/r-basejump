@@ -1,8 +1,3 @@
-# Deprecate `clean` argument once bcbioRNASeq package is updated with method
-# support
-
-
-
 #' Sample Data
 #'
 #' Return the sample metadata. Columns are always sanitized to factor.
@@ -34,13 +29,14 @@ NULL
 
 
 # Methods ======================================================================
+
 #' @rdname sampleData
 #' @export
 setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
     function(object, ...) {
-        # Legacy arguments =====================================================
+        # Legacy arguments -----------------------------------------------------
         # nocov start
         call <- match.call(expand.dots = TRUE)
         # clean

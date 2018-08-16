@@ -33,7 +33,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname aggregateReplicates
 #' @export
 setMethod(
