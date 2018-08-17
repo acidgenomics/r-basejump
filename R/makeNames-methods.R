@@ -31,7 +31,12 @@
 #' @return Object with syntatically valid names. For objects supporting
 #'   [names()], the underlying data returns unchanged.
 #'
-#' @seealso [make.names()].
+#' @seealso
+#' - [make.names()].
+#' - [janitor](https://cran.r-project.org/package=janitor) contains a number of
+#'   useful functions that provide similar sanitization support, but isn't
+#'   designed to work natively with [Bioconductor](https://bioconductor.org) and
+#'   S4 object classes.
 #'
 #' @examples
 #' loadRemoteData("http://basejump.seq.cloud/mn.rda")
@@ -81,7 +86,7 @@ NULL
 
 
 
-# Standard Functions ===========================================================
+# atomic =======================================================================
 #' @rdname makeNames
 #' @param names `atomic` to be coerced to syntactically valid names. Will be
 #'   coerced to `character`, if necessary.
@@ -98,8 +103,6 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-# Constructors =================================================================
-# atomic -----------------------------------------------------------------------
 .camel <- function(
     object,
     format = c("lower", "upper"),
@@ -201,83 +204,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-# matrix -----------------------------------------------------------------------
-.camel.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE,
-    strict = FALSE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- camel(rownames(object), strict = strict)
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        assert_has_colnames(object)
-        colnames(object) <- camel(colnames(object), strict = strict)
-    }
-    object
-}
-
-
-
-.dotted.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .dotted(rownames(object))
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .dotted(colnames(object))
-    }
-    object
-}
-
-
-
-.snake.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .snake(rownames(object))
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .snake(colnames(object))
-    }
-    object
-}
-
-
-
-.upperCamel.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE,
-    strict = FALSE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .upperCamel(rownames(object), strict = strict)
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .upperCamel(colnames(object), strict = strict)
-    }
-    object
-}
-
-
-
-# names ------------------------------------------------------------------------
+# names (character) ============================================================
 .camel.names <- function(object, strict = FALSE) {  # nolint
     assert_has_names(object)
     names(object) <- camel(names(object), strict = strict)
@@ -310,8 +237,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-# Methods ======================================================================
-# character --------------------------------------------------------------------
+# character ====================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -388,7 +314,7 @@ setMethod(
 
 
 
-# factor -----------------------------------------------------------------------
+# factor =======================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -461,7 +387,82 @@ setMethod(
 
 
 
-# matrix -----------------------------------------------------------------------
+# matrix =======================================================================
+.camel.matrix <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE
+) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && hasRownames(object)) {
+        rownames(object) <- camel(rownames(object), strict = strict)
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        assert_has_colnames(object)
+        colnames(object) <- camel(colnames(object), strict = strict)
+    }
+    object
+}
+
+
+
+.dotted.matrix <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE
+) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && hasRownames(object)) {
+        rownames(object) <- .dotted(rownames(object))
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        colnames(object) <- .dotted(colnames(object))
+    }
+    object
+}
+
+
+
+.snake.matrix <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE
+) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && hasRownames(object)) {
+        rownames(object) <- .snake(rownames(object))
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        colnames(object) <- .snake(colnames(object))
+    }
+    object
+}
+
+
+
+.upperCamel.matrix <- function(  # nolint
+    object,
+    rownames = FALSE,
+    colnames = TRUE,
+    strict = FALSE
+) {
+    assert_has_dimnames(object)
+    assert_is_a_bool(rownames)
+    if (isTRUE(rownames) && hasRownames(object)) {
+        rownames(object) <- .upperCamel(rownames(object), strict = strict)
+    }
+    if (isTRUE(colnames) && has_colnames(object)) {
+        colnames(object) <- .upperCamel(colnames(object), strict = strict)
+    }
+    object
+}
+
+
+
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -502,7 +503,7 @@ setMethod(
 
 
 
-# data.frame -------------------------------------------------------------------
+# data.frame ===================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -543,7 +544,7 @@ setMethod(
 
 
 
-# DataFrame --------------------------------------------------------------------
+# DataFrame ====================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -584,7 +585,7 @@ setMethod(
 
 
 
-# GRanges ----------------------------------------------------------------------
+# GRanges ======================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -645,7 +646,7 @@ setMethod(
 
 
 
-# list -------------------------------------------------------------------------
+# list =========================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -686,7 +687,7 @@ setMethod(
 
 
 
-# List -------------------------------------------------------------------------
+# List =========================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -727,7 +728,7 @@ setMethod(
 
 
 
-# SimpleList -------------------------------------------------------------------
+# SimpleList ===================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
@@ -768,7 +769,7 @@ setMethod(
 
 
 
-# ANY --------------------------------------------------------------------------
+# ANY ==========================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
