@@ -23,8 +23,6 @@ NULL
 
 
 
-# Methods ======================================================================
-
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(

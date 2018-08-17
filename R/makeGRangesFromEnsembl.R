@@ -100,7 +100,7 @@ makeGRangesFromEnsembl <- function(
     # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
     userAttached <- .packages()
 
-    # Fetch annotations from AnnotationHub/ensembldb ===========================
+    # Fetch annotations from AnnotationHub/ensembldb ---------------------------
     # ah: AnnotationHub
     # edb: Ensembl database
     if (
@@ -122,7 +122,7 @@ makeGRangesFromEnsembl <- function(
             # nocov end
         }
     } else {
-        # AnnotationHub ========================================================
+        # AnnotationHub --------------------------------------------------------
         # Connect to AnnotationHub. On a fresh install this will print a
         # txProgressBar to the console. We're using `capture.output()` here
         # to suppress the console output, since it's not very informative and
@@ -190,7 +190,7 @@ makeGRangesFromEnsembl <- function(
         ))
     }
 
-    # Get annotations from EnsDb ===============================================
+    # Get annotations from EnsDb -----------------------------------------------
     assert_is_all_of(edb, "EnsDb")
 
     meta <- metadata(edb)
@@ -252,7 +252,9 @@ makeGRangesFromEnsembl <- function(
         gr <- tx
     }
 
-    # Force detach =============================================================
+    # Force detach -------------------------------------------------------------
+    # ensembldb will attach unwanted packages into the NAMESPACE, which can
+    # conflict with tidyverse
     fxnAttached <- setdiff(.packages(), userAttached)
     invisible(lapply(
         X = fxnAttached,

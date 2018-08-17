@@ -45,7 +45,6 @@ readGFF <- function(file) {
 
 
 
-# Aliases ======================================================================
 #' @rdname readGFF
 #' @usage NULL
 #' @export
