@@ -68,7 +68,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname plotHeatmap
 #' @export
 setMethod(
