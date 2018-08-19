@@ -1,5 +1,11 @@
 ## basejump 0.7.1 (2018-08-18)
 
+### New functions
+
+- `cleanSystemLibrary()`: Utility function to check whether a user has installed
+  packages into the [R][] system library. Refer to `.libPaths()` documentation
+  for more information on library paths.
+
 ### Minor changes
 
 - Migrated `prepareTemplate()` from [bcbioBase][] package. Simplifed this
