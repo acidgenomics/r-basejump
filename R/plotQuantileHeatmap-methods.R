@@ -23,7 +23,6 @@ NULL
 
 
 
-# Constructors =================================================================
 #' Create Breaks Based on Quantiles of the Data
 #'
 #' @keywords internal

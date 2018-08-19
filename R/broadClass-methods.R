@@ -22,7 +22,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname broadClass
 #' @export
 setMethod(

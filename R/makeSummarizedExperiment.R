@@ -102,7 +102,7 @@ makeSummarizedExperiment <- function(
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Legacy arguments =========================================================
+    # Legacy arguments ---------------------------------------------------------
     # nocov start
     call <- match.call()
     if ("isSpike" %in% names(call)) {
@@ -111,7 +111,7 @@ makeSummarizedExperiment <- function(
     }
     # nocov end
 
-    # Assert checks ============================================================
+    # Assert checks ------------------------------------------------------------
     assert_is_any_of(assays, c("list", "ShallowSimpleListAssays", "SimpleList"))
     assert_is_any_of(rowRanges, c("GRanges", "NULL"))
     assert_is_any_of(colData, c("DataFrame", "data.frame", "NULL"))
@@ -119,7 +119,7 @@ makeSummarizedExperiment <- function(
     assert_is_any_of(transgeneNames, c("character", "NULL"))
     assert_is_any_of(spikeNames, c("character", "NULL"))
 
-    # Assays ===================================================================
+    # Assays -------------------------------------------------------------------
     # Require the primary assay matrix to be named counts. This helps ensure
     # consistency with the conventions for SingleCellExperiment.
     assert_are_identical(names(assays)[[1L]], "counts")
@@ -141,7 +141,7 @@ makeSummarizedExperiment <- function(
         y = colnames(assay)
     )
 
-    # Row ranges ===============================================================
+    # Row ranges ---------------------------------------------------------------
     # Detect rows that don't contain annotations.
     # Transgenes should contain `transgene` seqname
     # Spike-ins should contain `spike` seqname
@@ -202,7 +202,7 @@ makeSummarizedExperiment <- function(
     assert_is_subset(rownames(assay), names(rowRanges))
     rowRanges <- rowRanges[rownames(assay)]
 
-    # Column data ==============================================================
+    # Column data --------------------------------------------------------------
     if (is.null(colData)) {
         colData <- DataFrame(row.names = colnames(assay))
     } else {
@@ -210,7 +210,7 @@ makeSummarizedExperiment <- function(
         colData <- as(colData, "DataFrame")
     }
 
-    # Metadata =================================================================
+    # Metadata -----------------------------------------------------------------
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- normalizePath(".", winslash = "/", mustWork = TRUE)
@@ -218,7 +218,7 @@ makeSummarizedExperiment <- function(
     metadata[["devtoolsSessionInfo"]] <- session_info(include_base = TRUE)
     metadata <- Filter(Negate(is.null), metadata)
 
-    # Return ===================================================================
+    # Return -------------------------------------------------------------------
     SummarizedExperiment(
         assays = assays,
         rowRanges = rowRanges,

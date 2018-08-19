@@ -37,7 +37,6 @@ markdownLink <- function(
 
 
 
-# Aliases ======================================================================
 #' @rdname markdownHeader
 #' @usage NULL
 #' @export

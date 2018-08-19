@@ -41,7 +41,6 @@ unlink("ensembl_readme.txt.gz")
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{initializeDirectory}},
   \code{\link{saveData}}, \code{\link{writeCounts}}
 }
 \author{

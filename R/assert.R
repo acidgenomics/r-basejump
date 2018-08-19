@@ -791,7 +791,6 @@ assertIsURL <- function(
 
 
 
-# Logical Return Functions =====================================================
 #' @rdname assertHasRownames
 #' @export
 hasRownames <- function(x) {  # nolint

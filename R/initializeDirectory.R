@@ -3,7 +3,7 @@
 #' Checks and creates a directory recursively automatically. Useful for setting
 #' up functions that require writes to a user-specified directory.
 #'
-#' @family Write Functions
+#' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
 #' @param dir `string`. Directory path.

@@ -38,7 +38,6 @@ unlink("example", recursive = TRUE)
 }
 \seealso{
 Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{initializeDirectory}},
   \code{\link{saveData}}, \code{\link{transmit}}
 }
 \author{

@@ -32,7 +32,6 @@ NULL
 
 
 
-# Methods ======================================================================
 #' @rdname aggregateFeatures
 #' @export
 setMethod(

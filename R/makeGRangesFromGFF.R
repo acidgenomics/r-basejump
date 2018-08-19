@@ -75,7 +75,7 @@ makeGRangesFromGFF <- function(
         x = colnames(mcols(gff))
     )
 
-    # Genes ====================================================================
+    # Genes --------------------------------------------------------------------
     gn <- gff
     gn <- gn[!is.na(mcols(gn)[["geneID"]])]
     gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
@@ -108,7 +108,7 @@ makeGRangesFromGFF <- function(
         gr <- gn
     }
 
-    # Transcripts ==============================================================
+    # Transcripts --------------------------------------------------------------
     if (format == "transcripts") {
         tx <- gff
         tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
@@ -187,7 +187,6 @@ makeGRangesFromGFF <- function(
 
 
 
-# Aliases ======================================================================
 #' @rdname makeGRangesFromGFF
 #' @usage NULL
 #' @export
