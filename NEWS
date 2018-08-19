@@ -1,3 +1,13 @@
+## basejump 0.7.1 (2018-08-18)
+
+### Minor changes
+
+- Migrated `prepareTemplate()` from [bcbioBase][] package. Simplifed this
+  function to copy all files inside `extdata/rmarkdown/shared` within a
+  specified package. Currently in use for [bcbioRNASeq][], [bcbioSingleCell][],
+  and the new [pointillism][] clustering package.
+
+
 ## basejump 0.7.0 (2018-08-07)
 
 In this release, we are migrating some of the S4 generics previously exported
