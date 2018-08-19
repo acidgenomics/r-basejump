@@ -18,6 +18,10 @@
 #'
 #' @param package `string`. Name of package containing the R Markdown template.
 #' @param overwrite `boolean`. Should existing destination files be overwritten?
+#' @param sourceDir `string`. File path to shared source file directory.
+#'   Normally this can be left `NULL` when working in a standard interactive
+#'   session, but is necessary when developing code in a devtools package
+#'   environment loaded with `devtools::load_all()`.
 #'
 #' @return Invisible `logical` indicating which files were copied.
 #' @export
@@ -35,23 +39,24 @@
 prepareTemplate <- function(
     package,
     overwrite = FALSE,
+    sourceDir = NULL,
     ...
 ) {
-    # Legacy arguments
-    dots <- list(...)
-    # `prepareTemplate()`: Use `package` instead of `sourceDir`
-    if (missing(package) && "sourceDir" %in% names(dots)) {
-        sourceDir <- dots[["sourceDir"]]
-        stopifnot(grepl(file.path("rmarkdown", "shared"), sourceDir))
-        package <- basename(dirname(dirname(sourceDir)))
-    }
-
     # Assert checks
     assert_is_a_string(package)
+    assertIsAStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
     # Shared file source directory
-    sourceDir <- system.file("rmarkdown/shared", package = package)
+    # Keeping the `sourceDir` argument because devtools attempts to intercept
+    # `system.file`, and this can cause path issues during development
+    if (is.null(sourceDir)) {
+        sourceDir <- system.file(
+            "rmarkdown/shared",
+            package = package,
+            mustWork = TRUE
+        )
+    }
     assert_all_are_dirs(sourceDir)
 
     # Get vector of all shared files
