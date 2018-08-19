@@ -18,11 +18,17 @@ cleanSystemLibrary <- function() {
 
     # Expect a single system library
     syslib <- unique(base[, "LibPath"])
-    stopifnot(length(syslib) == 1)
+    if (!identical(length(syslib), 1L)) {
+        message("Detected multiple system libraries")
+        return(FALSE)
+    }
 
     # Subset packages in the system library
     system <- x[which(x[, "LibPath"] == syslib), ]
-    stopifnot(!any(is.na(system[, "Priority"])))
+    if (any(is.na(system[, "Priority"]))) {
+        message("Detected user-installed packages in system library")
+        return(FALSE)
+    }
 
     # Check for packages built against a different point release
     # e.g. 3.5.1
@@ -30,10 +36,13 @@ cleanSystemLibrary <- function() {
     stopifnot(grepl("^\\d\\.\\d\\.\\d$", version))
     # e.g. 3.5
     version <- gsub("\\.\\d$", "", version)
-    stopifnot(all(grepl(
+    if (!all(grepl(
         pattern = paste0("^", version),
         x = system[, "Built"]
-    )))
+    ))) {
+        messages("Detected packages built against a different release")
+        return(FALSE)
+    }
 
     TRUE
 }
