@@ -1,19 +1,10 @@
-# nocov start
-
-
-
 #' Prepare R Markdown Template File
 #'
-#' If the required template dependency files aren't present, download latest
-#' versions from the package website. Existing files are never overwritten.
-#'
-#' By default, this function will create local copies of these files:
-#'
-#' - `_footer.Rmd`
-#' - `_header.Rmd`
-#' - `_output.yaml`
-#' - `_setup.R`
-#' - `bibliography.bib`
+#' If the required template dependency files aren't present, copy them from the
+#' requested package. Existing files are not overwritten by default. This
+#' function will copy dependency files from a requested package inside the
+#' `rmarkdown/shared` directory. If a package doesn't contain this
+#' subdirectory, the function will return an error.
 #'
 #' This code is used internally by:
 #'
@@ -25,50 +16,62 @@
 #'
 #' @inheritParams general
 #'
-#' @param file `character`. File name(s).
+#' @param package `string`. Name of package containing the R Markdown template.
 #' @param overwrite `boolean`. Should existing destination files be overwritten?
-#' @param sourceDir `string`. Source directory path.
 #'
 #' @return Invisible `logical` indicating which files were copied.
 #' @export
 #'
 #' @examples
-#' # RNA-seq pipeline
+#' # RNA-seq template
 #' \dontrun{
-#' prepareTemplate(
-#'     sourceDir = system.file("rmarkdown/shared", package = "bcbioRNASeq")
-#' )
+#' prepareTemplate(package = "bcbioRNASeq")
+#' }
+#'
+#' # Single-cell RNA-seq template
+#' \dontrun{
+#' prepareTemplate(package = "bcbioSingleCell")
 #' }
 prepareTemplate <- function(
-    file = c(
-        "_output.yaml",
-        "_footer.Rmd",
-        "_header.Rmd",
-        "_setup.R",
-        "bibliography.bib"
-    ),
-    sourceDir,
-    overwrite = FALSE
+    package,
+    overwrite = FALSE,
+    ...
 ) {
-    assert_is_character(file)
+    # Legacy arguments
+    # Convert legacy `sourceDir` into `package`
+    call <- match.call()
+    if (
+        missing(package) &&
+        "sourceDir" %in% names(call)
+    ) {
+        warning("`prepareTemplate()`: Use `package` instead of `sourceDir`")
+        sourceDir <- call[["sourceDir"]]
+        stopifnot(grepl(file.path("rmarkdown", "shared"), sourceDir))
+        package <- basename(dirname(dirname(sourceDir)))
+    }
+
+    # Assert checks
+    assert_is_a_string(package)
+    assert_is_a_bool(overwrite)
+
+    # Shared file source directory
+    sourceDir <- system.file("rmarkdown/shared", package = package)
     assert_all_are_dirs(sourceDir)
-    assert_is_a_string(sourceDir)
-    assert_all_are_existing_files(file.path(sourceDir, file))
-    invisible(mapply(
-        file = file,
-        MoreArgs = list(sourceDir = sourceDir),
-        FUN = function(file, sourceDir) {
+
+    # Get vector of all shared files
+    files <- list.files(sourceDir, full.names = TRUE)
+    assert_is_non_empty(files)
+    assert_all_are_non_empty_files(files)
+
+    # Copy files to working directory
+    invisible(lapply(
+        X = files,
+        FUN = function(file) {
             file.copy(
-                from = file.path(sourceDir, file),
-                to = file,
+                from = file,
+                to = basename(file),
                 overwrite = overwrite
             )
-        },
-        SIMPLIFY = TRUE,
-        USE.NAMES = TRUE
+        }
     ))
 }
-
-
-
-# nocov end
