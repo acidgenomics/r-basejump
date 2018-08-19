@@ -47,7 +47,6 @@ panther <- function(
 
 
 
-# Constructors =================================================================
 .panther.human <- function(data) {  # nolint
     hgnc2gene <- hgnc2gene()
 

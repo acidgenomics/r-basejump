@@ -36,7 +36,6 @@ markdownPlotlist <- function(
 
 
 
-# Aliases ======================================================================
 #' @rdname markdownPlotlist
 #' @usage NULL
 #' @export

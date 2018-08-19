@@ -53,7 +53,6 @@ markdownList <- function(
 
 
 
-# Aliases ======================================================================
 #' @rdname markdownList
 #' @usage NULL
 #' @export

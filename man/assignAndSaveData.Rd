@@ -45,9 +45,8 @@ rm(example)
 unlink("example.rda")
 }
 \seealso{
-Other Write Functions: \code{\link{initializeDirectory}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
+Other Write Functions: \code{\link{saveData}},
+  \code{\link{transmit}}, \code{\link{writeCounts}}
 }
 \author{
 Michael Steinbaugh

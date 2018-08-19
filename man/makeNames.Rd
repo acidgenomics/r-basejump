@@ -234,7 +234,13 @@ snake(x) \%>\% names()
 upperCamel(x) \%>\% names()
 }
 \seealso{
-\code{\link[=make.names]{make.names()}}.
+\itemize{
+\item \code{\link[=make.names]{make.names()}}.
+\item \href{https://cran.r-project.org/package=janitor}{janitor} contains a number of
+useful functions that provide similar sanitization support, but isn't
+designed to work natively with \href{https://bioconductor.org}{Bioconductor} and
+S4 object classes.
+}
 
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{fixNA}}, \code{\link{removeNA}},

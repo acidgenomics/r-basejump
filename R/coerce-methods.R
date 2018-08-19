@@ -31,21 +31,6 @@ NULL
 
 
 
-# Constructors =================================================================
-.tibble <- function(from) {
-    if (is_tibble(from)) {
-        return(from)  # nocov
-    }
-    from <- as.data.frame(from)
-    assert_has_colnames(from)
-    if (has_rownames(from)) {
-        from <- rownames_to_column(from)
-    }
-    as_tibble(from)
-}
-
-
-
 # list =========================================================================
 setAs(
     from = "SummarizedExperiment",
@@ -58,6 +43,17 @@ setAs(
 
 
 # tibble =======================================================================
+.tibble <- function(from) {
+    if (is_tibble(from)) {
+        return(from)  # nocov
+    }
+    from <- as.data.frame(from)
+    assert_has_colnames(from)
+    if (has_rownames(from)) {
+        from <- rownames_to_column(from)
+    }
+    as_tibble(from)
+}
 setAs(from = "matrix", to = "tbl_df", def = .tibble)
 setAs(from = "data.frame", to = "tbl_df", def = .tibble)
 setAs(from = "DataFrame", to = "tbl_df", def = .tibble)

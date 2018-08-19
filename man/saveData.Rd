@@ -58,7 +58,6 @@ unlink("example", recursive = TRUE)
 }
 
 Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{initializeDirectory}},
   \code{\link{transmit}}, \code{\link{writeCounts}}
 }
 \author{

@@ -26,6 +26,7 @@ geneSynonyms <- function(
 ) {
     stopifnot(has_internet())
     organism <- match.arg(organism)
+
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
     if (species == "Drosophila_melanogaster") {
@@ -33,6 +34,7 @@ geneSynonyms <- function(
     } else {
         kingdom <- "Mammalia"
     }
+
     genome <- c(kingdom = kingdom, species = species)
 
     data <- read_tsv(

@@ -10,6 +10,7 @@
 #' @importFrom assertive.code assert_all_are_existing is_existing
 #' @importFrom assertive.data assert_all_are_hex_colors is_hex_color
 #' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
+#'   assert_all_are_non_empty_files
 #' @importFrom assertive.numbers assert_all_are_greater_than
 #'   assert_all_are_greater_than_or_equal_to assert_all_are_non_negative
 #'   assert_all_are_positive

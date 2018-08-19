@@ -55,6 +55,7 @@ reference:
     contents:
     - kables
     - starts_with("markdown")
+    - prepareTemplate
   - title: Sanitization Functions
     contents:
     - fixNA
@@ -72,6 +73,7 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
+    - cleanSystemLibrary
     - starts_with("detect")
     - dots
     - starts_with("initialize")
