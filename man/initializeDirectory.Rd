@@ -24,11 +24,16 @@ dir.exists("testdir")
 unlink("testdir", recursive = TRUE)
 }
 \seealso{
-Other Write Functions: \code{\link{assignAndSaveData}},
-  \code{\link{saveData}}, \code{\link{transmit}},
-  \code{\link{writeCounts}}
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Write Functions}
+\concept{Developer Functions}

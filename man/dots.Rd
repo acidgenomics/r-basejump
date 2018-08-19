@@ -37,7 +37,9 @@ dots(a, b, c, character = TRUE)
 \href{https://goo.gl/bM5TrP}{devtools infrastructure}.
 }
 
-Other Developer Functions: \code{\link{detectHPC}},
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
+  \code{\link{detectHPC}},
+  \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},

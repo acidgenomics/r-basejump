@@ -34,8 +34,10 @@ basename(x)
 \seealso{
 \code{\link[base:tempdir]{base::tempdir()}}.
 
-Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{matchInterestingGroups}},
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{initializeDirectory}},
+  \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
