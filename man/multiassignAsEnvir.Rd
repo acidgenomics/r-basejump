@@ -26,8 +26,10 @@ class(example)
 ls(example)
 }
 \seealso{
-Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{localOrRemoteFile}},
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{initializeDirectory}},
+  \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}}, \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}

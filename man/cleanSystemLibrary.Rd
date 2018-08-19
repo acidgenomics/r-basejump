@@ -15,6 +15,17 @@ Determine whether a user has installed packages into the system library.
 \examples{
 cleanSystemLibrary()
 }
+\seealso{
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{initializeDirectory}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
+}
 \author{
 Michael Steinbaugh
 }
+\concept{Developer Functions}
