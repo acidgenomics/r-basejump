@@ -2,6 +2,7 @@
 #'
 #' Determine whether a user has installed packages into the system library.
 #'
+#' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
 #' @return `logical`. Is system library clean?
