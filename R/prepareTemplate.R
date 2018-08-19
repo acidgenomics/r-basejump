@@ -38,14 +38,10 @@ prepareTemplate <- function(
     ...
 ) {
     # Legacy arguments
-    # Convert legacy `sourceDir` into `package`
-    call <- match.call()
-    if (
-        missing(package) &&
-        "sourceDir" %in% names(call)
-    ) {
-        warning("`prepareTemplate()`: Use `package` instead of `sourceDir`")
-        sourceDir <- call[["sourceDir"]]
+    dots <- list(...)
+    # `prepareTemplate()`: Use `package` instead of `sourceDir`
+    if (missing(package) && "sourceDir" %in% names(dots)) {
+        sourceDir <- dots[["sourceDir"]]
         stopifnot(grepl(file.path("rmarkdown", "shared"), sourceDir))
         package <- basename(dirname(dirname(sourceDir)))
     }
@@ -64,7 +60,7 @@ prepareTemplate <- function(
     assert_all_are_non_empty_files(files)
 
     # Copy files to working directory
-    invisible(lapply(
+    copied <- vapply(
         X = files,
         FUN = function(file) {
             file.copy(
@@ -72,6 +68,10 @@ prepareTemplate <- function(
                 to = basename(file),
                 overwrite = overwrite
             )
-        }
-    ))
+        },
+        FUN.VALUE = logical(1L)
+    )
+    names(copied) <- basename(files)
+
+    invisible(copied)
 }
