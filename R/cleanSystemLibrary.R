@@ -40,7 +40,7 @@ cleanSystemLibrary <- function() {
         pattern = paste0("^", version),
         x = system[, "Built"]
     ))) {
-        messages("Detected packages built against a different release")
+        message("Detected packages built against a different release")
         return(FALSE)
     }
 
