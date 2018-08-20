@@ -10,7 +10,6 @@ reference:
     contents:
     - starts_with("aggregate")
     - counts
-    - flatFiles
     - interestingGroups
     - makeSummarizedExperiment
     - sampleData
@@ -35,6 +34,7 @@ reference:
   - title: Plot Functions
     contents:
     - starts_with("plot")
+    - starts_with("theme_")
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
@@ -43,25 +43,22 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
-  - title: Math and Science Functions
-    contents:
-    - matches("Change")
-    - matches("Mean")
-    - microplate
-  - title: Plot Functions
-    contents:
-    - starts_with("theme_")
-  - title: R Markdown Functions
-    contents:
-    - kables
-    - starts_with("markdown")
-    - prepareTemplate
   - title: Sanitization Functions
     contents:
     - fixNA
     - makeNames
     - removeNA
     - starts_with("sanitize")
+  - title: Math and Science Functions
+    contents:
+    - matches("Change")
+    - matches("Mean")
+    - microplate
+  - title: R Markdown Functions
+    contents:
+    - kables
+    - starts_with("markdown")
+    - prepareTemplate
   - title: Atomic Vector Functions
     contents:
     - collapseToString
@@ -76,6 +73,7 @@ reference:
     - cleanSystemLibrary
     - starts_with("detect")
     - dots
+    - flatFiles
     - starts_with("initialize")
     - localOrRemoteFile
     - matchInterestingGroups
