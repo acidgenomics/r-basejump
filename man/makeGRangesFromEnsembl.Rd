@@ -5,14 +5,14 @@
 \title{Genomic Ranges from Ensembl}
 \usage{
 makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
-  genomeBuild = NULL, release = NULL, metadata = FALSE)
+  build = NULL, release = NULL, metadata = FALSE, ...)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{format}{\code{string}. Fetch ranges as "\code{genes}" or "\code{transcripts}".}
 
-\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
 "\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
@@ -20,6 +20,8 @@ set \code{NULL}, defaults to the most recent release available.}
 
 \item{metadata}{\code{boolean}. Include the AnnotationHub metadata inside a
 \code{list}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{GRanges}.

@@ -7,8 +7,9 @@
 #' @inherit convertGenesToSymbols
 #'
 #' @param tx2gene `data.frame` or `NULL`. Transcript-to-gene mappings. If set
-#'   `NULL`, the function will attempt to download mappings from Ensembl
-#'   according to the `organism`, `genomeBuild`, and `release` parameters.
+#'   `NULL`, the function will attempt to download the mappings from Ensembl
+#'   automatically.
+#' @param ... Passthrough to [makeTx2geneFromEnsembl()].
 #'
 #' @examples
 #' # character ====
@@ -41,15 +42,13 @@ setMethod(
     function(
         object,
         tx2gene = NULL,
-        organism = NULL,
-        genomeBuild = NULL,
-        release = NULL
+        ...
     ) {
-        # Passthrough: genomeBuild, release
-        assert_is_character(object)
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
         assert_is_any_of(tx2gene, c("data.frame", "NULL"))
+        dots <- list(...)
+        organism <- dots[["organism"]]
 
         # If no tx2gene is provided, fall back to using Ensembl annotations
         if (is.null(tx2gene)) {
@@ -58,11 +57,8 @@ setMethod(
                 organism <- detectOrganism(object, unique = TRUE)
             }
             assert_is_a_string(organism)
-            tx2gene <- makeTx2geneFromEnsembl(
-                organism = organism,
-                genomeBuild = genomeBuild,
-                release = release
-            )
+            message(paste(organism, "genes detected"))
+            tx2gene <- makeTx2geneFromEnsembl(..., organism = organism)
         }
         assertIsTx2gene(tx2gene)
 
@@ -72,10 +68,7 @@ setMethod(
         }
 
         tx2gene <- tx2gene[
-            match(
-                x = object,
-                table = tx2gene[["transcriptID"]]
-            ),
+            match(x = object, table = tx2gene[["transcriptID"]]),
             ,
             drop = FALSE
         ]
