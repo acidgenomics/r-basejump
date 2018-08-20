@@ -119,29 +119,14 @@ ensembldb." />
     
     </div>
 
-    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>organism</th>
-      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
-    </tr>
-    <tr>
-      <th>format</th>
-      <td><p><code>string</code>. Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
-    </tr>
-    <tr>
-      <th>genomeBuild</th>
-      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
-"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
-    </tr>
-    <tr>
-      <th>release</th>
-      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
-set <code>NULL</code>, defaults to the most recent release available.</p></td>
+      <th>...</th>
+      <td><p>Passthrough to <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
     </tr>
     </table>
     
