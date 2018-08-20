@@ -42,7 +42,7 @@
 #'
 #' @inheritParams general
 #' @param format `string`. Fetch ranges as "`genes`" or "`transcripts`".
-#' @param genomeBuild `string` or `NULL`. Genome build assembly name (e.g.
+#' @param build `string` or `NULL`. Genome build assembly name (e.g.
 #'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
 #' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
 #'   set `NULL`, defaults to the most recent release available.
@@ -67,26 +67,36 @@
 makeGRangesFromEnsembl <- function(
     organism,
     format = c("genes", "transcripts"),
-    genomeBuild = NULL,
+    build = NULL,
     release = NULL,
-    metadata = FALSE
+    metadata = FALSE,
+    ...
 ) {
+    # Legacy arguments ---------------------------------------------------------
+    # nocov start
+    args <- list(...)
+    if ("genomeBuild" %in% names(args)) {
+        message("Use `build` instead of `genomeBuild`")
+        build <- args[["genomeBuild"]]
+    }
+    # nocov end
+
+    # Assert checks ------------------------------------------------------------
     assert_is_a_string(organism)
     # Standard organism query, if necessary
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
-    assertIsAStringOrNULL(genomeBuild)
-    # Check for UCSC genome build and warn
-    if (is_a_string(genomeBuild)) {
-        genomeBuildRemap <- convertUCSCBuildToEnsembl(genomeBuild)
-        if (!is.null(genomeBuildRemap)) {
-            warning(paste(
-                "UCSC genome build ID detected. Use Ensembl build ID instead.",
-                paste("Mapping:", deparse(genomeBuildRemap)),
+    assertIsAStringOrNULL(build)
+    # Check for accidental UCSC input and abort, informing user
+    if (is_a_string(build)) {
+        ucscCheck <- convertUCSCBuildToEnsembl(build)
+        if (!is.null(ucscCheck)) {
+            stop(paste(
+                "UCSC build ID detected.",
+                "Use Ensembl build ID instead.",
+                printString(ucscCheck),
                 sep = "\n"
             ))
-            # Coerce to drop any UCSC to Ensembl key mapping in name
-            genomeBuild <- as.character(genomeBuildRemap)
         }
     }
     assertIsAnImplicitIntegerOrNULL(release)
@@ -104,9 +114,9 @@ makeGRangesFromEnsembl <- function(
     # ah: AnnotationHub
     # edb: Ensembl database
     if (
-        tolower(organism) == "homo sapiens" &&
+        identical(tolower(organism), "homo sapiens") &&
         (
-            identical(tolower(as.character(genomeBuild)), "grch37") ||
+            identical(tolower(as.character(build)), "grch37") ||
             identical(release, 75L)
         )
     ) {
@@ -151,34 +161,63 @@ makeGRangesFromEnsembl <- function(
         }
 
         # Query AnnotationHub
-        ahdb <- query(
-            ah,
-            pattern = c("Ensembl", organism, release, genomeBuild, rdataclass),
+        ahs <- query(
+            x = ah,
+            pattern = c(
+                "Ensembl",
+                organism,
+                build,
+                release,
+                rdataclass
+            ),
             ignore.case = TRUE
         )
-        mcols <- mcols(ahdb)
+
+        # Get the AnnotationHub from the metadata columns
+        mcols <- mcols(ahs)
+
+        # Abort if there's no match and working offline
+        if (
+            !isTRUE(has_internet()) &&
+            !nrow(mcols)
+        ) {
+            # nocov start
+            stop("AnnotationHub requires an Internet connection for lookup")
+            # nocov end
+        }
+
+        # Ensure build matches, if specified
+        if (!is.null(build)) {
+            assert_is_subset("genome", colnames(mcols))
+            mcols <- mcols[mcols[["genome"]] %in% build, , drop = FALSE]
+        }
+
+        # Ensure release matches, or pick the latest one
+        if (!is.null(release)) {
+            assert_is_subset("title", colnames(mcols))
+            mcols <- mcols[
+                grepl(paste("Ensembl", release), mcols[["title"]]),
+                ,
+                drop = FALSE
+            ]
+            assert_is_of_length(nrow(mcols), 1L)
+        }
+
         if (!nrow(mcols)) {
-            # Warn if working offline, which can cause match failure
-            if (!isTRUE(has_internet())) {
-                # nocov start
-                stop("AnnotationHub requires an Internet connection for lookup")
-                # nocov end
-            }
             stop(paste(
                 paste(
                     "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
                 ),
                 paste("organism:", deparse(organism)),
-                paste("build:", deparse(genomeBuild)),
+                paste("build:", deparse(build)),
                 paste("release:", deparse(release)),
                 sep = "\n"
             ))
-        } else {
-            # Pick the latest EnsDb that matches
-            mcols <- tail(mcols, 1L)
-            message(mcols[["title"]])
         }
+
+        mcols <- tail(mcols, 1L)
+        message(mcols[["title"]])
         id <- rownames(mcols)
 
         # This step will also output `txProgressBar()` on a fresh install. Using
@@ -199,13 +238,13 @@ makeGRangesFromEnsembl <- function(
     meta <- as(meta, "tibble")
 
     # Stash the AnnotationHub ID
-    genomeBuild <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
-    assert_is_a_string(genomeBuild)
+    build <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
+    assert_is_a_string(build)
 
     message(paste(
         paste("id:", deparse(id)),
         paste("organism:", deparse(organism(edb))),
-        paste("build:", deparse(genomeBuild)),
+        paste("build:", deparse(build)),
         paste("release:", deparse(ensemblVersion(edb))),
         paste("format:", deparse(format)),
         sep = "\n"
