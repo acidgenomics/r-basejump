@@ -47,8 +47,8 @@ setMethod(
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
         assert_is_any_of(tx2gene, c("data.frame", "NULL"))
-        dots <- list(...)
-        organism <- dots[["organism"]]
+        args <- list(...)
+        organism <- args[["organism"]]
 
         # If no tx2gene is provided, fall back to using Ensembl annotations
         if (is.null(tx2gene)) {
@@ -58,7 +58,11 @@ setMethod(
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected"))
-            tx2gene <- makeTx2geneFromEnsembl(..., organism = organism)
+            args[["organism"]] <- organism
+            tx2gene <- do.call(
+                what = makeTx2geneFromEnsembl,
+                args = args
+            )
         }
         assertIsTx2gene(tx2gene)
 

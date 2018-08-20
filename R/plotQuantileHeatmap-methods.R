@@ -134,6 +134,6 @@ setMethod(
             ...
         )
         args <- .pheatmapArgs(args)
-        do.call(pheatmap, args)
+        do.call(what = pheatmap, args = args)
     }
 )
