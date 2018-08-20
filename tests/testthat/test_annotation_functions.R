@@ -532,7 +532,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "genes",
-        genomeBuild = "GRCh37"
+        build = "GRCh37"
     )
     expect_is(x, "GRanges")
     expect_identical(length(x), 64102L)
@@ -542,7 +542,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "transcripts",
-        genomeBuild = "GRCh37"
+        build = "GRCh37"
     )
     expect_is(x, "GRanges")
     expect_identical(length(x), 215647L)
@@ -550,8 +550,8 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
 })
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
-    expect_warning(
-        makeGRangesFromEnsembl("Homo sapiens", genomeBuild = "hg38"),
+    expect_error(
+        makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
         "UCSC genome build ID detected."
     )
     expect_warning(
@@ -559,7 +559,7 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
         "Switching to current release instead."
     )
     expect_error(
-        makeGRangesFromEnsembl(organism = "AAA", genomeBuild = "BBB"),
+        makeGRangesFromEnsembl(organism = "AAA", build = "BBB"),
         "No ID matched on AnnotationHub"
     )
     expect_error(
