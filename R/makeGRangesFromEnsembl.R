@@ -74,10 +74,10 @@ makeGRangesFromEnsembl <- function(
 ) {
     # Legacy arguments ---------------------------------------------------------
     # nocov start
-    call <- match.call()
-    if ("genomeBuild" %in% names(call)) {
+    args <- list(...)
+    if ("genomeBuild" %in% names(args)) {
         message("Use `build` instead of `genomeBuild`")
-        build <- call[["genomeBuild"]]
+        build <- args[["genomeBuild"]]
     }
     # nocov end
 
