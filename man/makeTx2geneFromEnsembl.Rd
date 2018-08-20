@@ -4,16 +4,10 @@
 \alias{makeTx2geneFromEnsembl}
 \title{Transcript-to-Gene Mappings from Ensembl}
 \usage{
-makeTx2geneFromEnsembl(organism, genomeBuild = NULL, release = NULL)
+makeTx2geneFromEnsembl(...)
 }
 \arguments{
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
-
-\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
-
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
+\item{...}{Passthrough to \code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}}.}
 }
 \value{
 \code{data.frame}.

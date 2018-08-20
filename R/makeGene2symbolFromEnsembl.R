@@ -4,6 +4,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRangesFromEnsembl
+#' @param ... Passthrough to [makeGRangesFromEnsembl()].
 #'
 #' @return `data.frame`.
 #' @export
@@ -11,17 +12,8 @@
 #' @examples
 #' x <- makeGene2symbolFromEnsembl("Homo sapiens")
 #' glimpse(x)
-makeGene2symbolFromEnsembl <- function(
-    organism,
-    genomeBuild = NULL,
-    release = NULL
-) {
-    gr <- makeGRangesFromEnsembl(
-        organism = organism,
-        format = "genes",
-        genomeBuild = genomeBuild,
-        release = release
-    )
+makeGene2symbolFromEnsembl <- function(...) {
+    gr <- makeGRangesFromEnsembl(..., format = "genes")
     mcols(gr) %>%
         .[, c("geneID", "geneName")] %>%
         as.data.frame() %>%
