@@ -6,11 +6,6 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @param organism `string`. Organism name. Normally this argument is
-#'   unnecessary and can be left unset. If a count matrix starts with a FASTA
-#'   spike-in (e.g. "EGFP"), then automatic genome detection based on the first
-#'   gene identifier will fail. In this case, the desired organism must be
-#'   manually declared.
 #' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
