@@ -552,7 +552,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(
         makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
-        "UCSC genome build ID detected."
+        "UCSC build ID detected."
     )
     expect_warning(
         makeGRangesFromEnsembl("Homo sapiens", release = 86L),
