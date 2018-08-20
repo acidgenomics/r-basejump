@@ -5,6 +5,8 @@
 #'
 #' @inherit makeGRangesFromEnsembl
 #'
+#' @param ... Passthrough to [makeGRangesFromEnsembl()].
+#'
 #' @return `data.frame`.
 #' @export
 #'
@@ -16,18 +18,6 @@
 #' # Transcripts ====
 #' x <- annotable("Homo sapiens", format = "transcripts")
 #' glimpse(x)
-annotable <- function(
-    organism,
-    format = c("genes", "transcripts"),
-    genomeBuild = NULL,
-    release = NULL
-) {
-    format <- match.arg(format)
-    gr <- makeGRangesFromEnsembl(
-        organism = organism,
-        format = format,
-        genomeBuild = genomeBuild,
-        release = release
-    )
-    as.data.frame(gr)
+annotable <- function(...) {
+    as.data.frame(makeGRangesFromEnsembl(...))
 }

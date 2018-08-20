@@ -120,7 +120,7 @@ ensembldb." />
     </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>genomeBuild</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,7 +134,7 @@ ensembldb." />
       <td><p><code>string</code>. Fetch ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
     </tr>
     <tr>
-      <th>genomeBuild</th>
+      <th>build</th>
       <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
 "<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
     </tr>
@@ -147,6 +147,10 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
       <th>metadata</th>
       <td><p><code>boolean</code>. Include the AnnotationHub metadata inside a
 <code>list</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

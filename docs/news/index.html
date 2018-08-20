@@ -114,11 +114,19 @@
 <code><a href="../reference/cleanSystemLibrary.html">cleanSystemLibrary()</a></code>: Utility function to check whether a user has installed packages into the [R][] system library. Refer to <code>.libPaths()</code> documentation for more information on library paths.</li>
 </ul>
 </div>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Now using <code>build</code> instead of <code>genomeBuild</code> for <a href="https://www.ensembl.org">Ensembl</a> annotation functions. The <code>genomeBuild</code> argument still works but now will inform the user about the change.</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code> from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package. Simplifed this function to copy all files inside <code>extdata/rmarkdown/shared</code> within a specified package. Currently in use for <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a>, <a href="http://bioinformatics.sph.harvard.edu/bcbioSingleCell">bcbioSingleCell</a>, and the new [pointillism][] clustering package.</li>
+<li>Made <a href="https://www.ensembl.org">Ensembl</a> release matching stricter, based on the metadata columns.</li>
 </ul>
 </div>
 </div>
@@ -135,9 +143,9 @@
 <li>Migrated S4 generics and methods from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>: <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code>plotCorrleationHeatmap()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/plotHeatmap.html">plotHeatmap()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, and <code><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code>.</li>
 </ul>
 </div>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code><a href="http://www.rdocumentation.org/packages/curl/topics/nslookup">curl::has_internet()</a></code> internally to check for Internet connection. This applies to the annotation functions that query web databases.</li>
 <li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code><a href="../reference/flatFiles.html">flatFiles()</a></code>.</li>
@@ -180,9 +188,9 @@
 <code><a href="../reference/eggnog.html">eggnog()</a></code>: quickly download current annotations from <a href="http://eggnogdb.embl.de">EggNOG</a> database. Useful for annotating gene-to-protein matches; currently in use with the <a href="https://steinbaugh.com/brightworm">brightworm</a> RNAi screening package, which contains <a href="http://www.wormbase.org">WormBase</a> gene ID and <a href="http://eggnogdb.embl.de">EggNOG</a> ID annotations.</li>
 </ul>
 </div>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now suggesting <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> instead of <a href="https://doi.org/doi:10.18129/B9.bioc.BiocInstaller">BiocInstaller</a> for installation.</li>
 <li>
@@ -220,9 +228,9 @@
     <div id="basejump-0-6-0-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
-<div id="major-changes-2" class="section level3">
+<div id="major-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> package and providing basic method support for generics that were previously used in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package.</li>
 <li>Improved GFFv3 handling in <code><a href="../reference/makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> and other GFF utility functions, including <code><a href="../reference/makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> and <code><a href="../reference/makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code>. Note that <code><a href="../reference/makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> now returns additional metadata columns accessible with <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">S4Vectors::mcols()</a></code>, and that these columns are now sorted alphabetically.</li>
@@ -352,9 +360,9 @@
     <div id="basejump-0-5-5-2018-05-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-5-2018-05-15" class="anchor"></a>basejump 0.5.5 (2018-05-15)</h2>
-<div id="major-changes-3" class="section level3">
+<div id="major-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code><a href="../reference/readGFF.html">readGFF()</a></code> now uses <code><a href="http://www.rdocumentation.org/packages/rtracklayer/topics/export">rtracklayer::import()</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
@@ -451,9 +459,9 @@
 <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org">ggplot2</a> themes with bold sans serif labels.</li>
 </ul>
 </div>
-<div id="major-changes-4" class="section level3">
+<div id="major-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code><a href="../reference/loadData.html">loadData()</a></code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
@@ -483,9 +491,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-5" class="section level3">
+<div id="major-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org">Ensembl</a>: <code><a href="../reference/deprecated.html">ensembl()</a></code>, <code>genes()</code>, and <code>transcripts()</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> using <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org">Ensembl</a> if available.</li>

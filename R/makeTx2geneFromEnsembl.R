@@ -4,6 +4,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRangesFromEnsembl
+#' @param ... Passthrough to [makeGRangesFromEnsembl()].
 #'
 #' @return `data.frame`.
 #' @export
@@ -11,17 +12,8 @@
 #' @examples
 #' x <- makeTx2geneFromEnsembl("Homo sapiens")
 #' glimpse(x)
-makeTx2geneFromEnsembl <- function(
-    organism,
-    genomeBuild = NULL,
-    release = NULL
-) {
-    gr <- makeGRangesFromEnsembl(
-        organism = organism,
-        format = "transcripts",
-        genomeBuild = genomeBuild,
-        release = release
-    )
+makeTx2geneFromEnsembl <- function(...) {
+    gr <- makeGRangesFromEnsembl(..., format = "transcripts")
     mcols(gr) %>%
         as.data.frame() %>%
         select(!!!syms(c("transcriptID", "geneID"))) %>%

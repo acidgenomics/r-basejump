@@ -20,7 +20,7 @@ convertGenesToSymbols(object, ...)
 convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, genomeBuild = NULL, release = NULL)
+  ...)
 
 \S4method{convertGenesToSymbols}{matrix}(object, ...)
 
@@ -39,23 +39,11 @@ convertSymbolsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{Passthrough to \code{\link[=makeGene2symbolFromEnsembl]{makeGene2symbolFromEnsembl()}}.}
 
 \item{gene2symbol}{\code{data.frame} or \code{NULL}. Gene-to-symbol mappings. If set
-\code{NULL}, will attempt to download from Ensembl using the desired \code{organism},
-\code{genomeBuild}, and \code{release} arguments.}
-
-\item{organism}{\code{string}. Organism name. Normally this argument is
-unnecessary and can be left unset. If a count matrix starts with a FASTA
-spike-in (e.g. "EGFP"), then automatic genome detection based on the first
-gene identifier will fail. In this case, the desired organism must be
-manually declared.}
-
-\item{genomeBuild}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
-"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
-
-\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
-set \code{NULL}, defaults to the most recent release available.}
+\code{NULL}, the function will attempt to download the mappings from Ensembl
+automatically.}
 }
 \value{
 Same class as original object.
