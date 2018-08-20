@@ -6,12 +6,19 @@
   packages into the [R][] system library. Refer to `.libPaths()` documentation
   for more information on library paths.
 
+### Major changes
+
+- Now using `build` instead of `genomeBuild` for [Ensembl][] annotation
+  functions. The `genomeBuild` argument still works but now will inform the user
+  about the change.
+
 ### Minor changes
 
 - Migrated `prepareTemplate()` from [bcbioBase][] package. Simplifed this
   function to copy all files inside `extdata/rmarkdown/shared` within a
   specified package. Currently in use for [bcbioRNASeq][], [bcbioSingleCell][],
   and the new [pointillism][] clustering package.
+- Made [Ensembl][] release matching stricter, based on the metadata columns.
 
 
 ## basejump 0.7.0 (2018-08-07)
