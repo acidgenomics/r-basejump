@@ -62,8 +62,8 @@ setMethod(
         # Allowing duplicates here (unlike convertTranscriptsToGenes)
         assert_all_are_non_missing_nor_empty_character(object)
         assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
-        dots <- list(...)
-        organism <- dots[["organism"]]
+        args <- list(...)
+        organism <- args[["organism"]]
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations
         if (is.null(gene2symbol)) {
@@ -73,7 +73,11 @@ setMethod(
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected"))
-            gene2symbol <- makeGene2symbolFromEnsembl(..., organism = organism)
+            args[["organism"]] <- organism
+            gene2symbol <- do.call(
+                what = makeGene2symbolFromEnsembl,
+                args = args
+            )
         }
         assertIsGene2symbol(gene2symbol)
 
