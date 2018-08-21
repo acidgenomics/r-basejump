@@ -6,15 +6,6 @@ reference:
   - title: Package Information
     contents:
     - basejump-package
-  - title: Data Functions
-    contents:
-    - starts_with("aggregate")
-    - counts
-    - interestingGroups
-    - makeSummarizedExperiment
-    - sampleData
-    - sampleNames
-    - selectSamples
   - title: Annotation Functions
     contents:
     - annotable
@@ -31,10 +22,6 @@ reference:
     - starts_with("parse")
     - starts_with("strip")
     - panther
-  - title: Plot Functions
-    contents:
-    - starts_with("plot")
-    - starts_with("theme_")
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
@@ -43,12 +30,25 @@ reference:
     - starts_with("save")
     - transmit
     - starts_with("write")
+  - title: Data Functions
+    contents:
+    - starts_with("aggregate")
+    - counts
+    - interestingGroups
+    - makeSummarizedExperiment
+    - sampleData
+    - sampleNames
+    - selectSamples
   - title: Sanitization Functions
     contents:
     - fixNA
     - makeNames
     - removeNA
     - starts_with("sanitize")
+  - title: Plot Functions
+    contents:
+    - starts_with("plot")
+    - starts_with("theme_")
   - title: Math and Science Functions
     contents:
     - matches("Change")
