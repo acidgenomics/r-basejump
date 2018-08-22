@@ -13,7 +13,6 @@ reference:
     - starts_with("convert")
     - eggnog
     - emptyRanges
-    - starts_with("gene")
     - hgnc2gene
     - starts_with("makeGene2symbol")
     - starts_with("makeGRanges")
@@ -34,6 +33,7 @@ reference:
     contents:
     - starts_with("aggregate")
     - counts
+    - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
     - sampleData
