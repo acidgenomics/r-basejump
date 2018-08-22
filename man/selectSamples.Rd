@@ -33,7 +33,7 @@ colnames(x)
 \seealso{
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}}, \code{\link{counts}},
-  \code{\link{flatFiles}}, \code{\link{gene2symbol}},
+  \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{sampleData}}, \code{\link{sampleNames}}
 }
