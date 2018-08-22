@@ -3,6 +3,11 @@
 \name{coerce}
 \alias{coerce}
 \alias{as}
+\alias{coerce,SummarizedExperiment,list-method}
+\alias{coerce,matrix,tbl_df-method}
+\alias{coerce,data.frame,tbl_df-method}
+\alias{coerce,DataFrame,tbl_df-method}
+\alias{coerce,GRanges,tbl_df-method}
 \title{Methods for Coercing an Object to a Class}
 \value{
 Object of new class.

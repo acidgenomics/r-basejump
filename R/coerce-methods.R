@@ -32,6 +32,9 @@ NULL
 
 
 # list =========================================================================
+#' @rdname coerce
+#' @name coerce,SummarizedExperiment,list-method
+#' @exportMethod coerce
 setAs(
     from = "SummarizedExperiment",
     to = "list",
@@ -55,15 +58,23 @@ setAs(
     }
     as_tibble(from)
 }
-# matrix
+
+#' @rdname coerce
+#' @name coerce,matrix,tbl_df-method
+#' @exportMethod coerce
 setAs(from = "matrix", to = "tbl_df", def = .as_tibble)
-setAs(from = "matrix", to = "tibble", def = .as_tibble)
-# data.frame
+
+#' @rdname coerce
+#' @name coerce,data.frame,tbl_df-method
+#' @exportMethod coerce
 setAs(from = "data.frame", to = "tbl_df", def = .as_tibble)
-setAs(from = "data.frame", to = "tibble", def = .as_tibble)
-# DataFrame
+
+#' @rdname coerce
+#' @name coerce,DataFrame,tbl_df-method
+#' @exportMethod coerce
 setAs(from = "DataFrame", to = "tbl_df", def = .as_tibble)
-setAs(from = "DataFrame", to = "tibble", def = .as_tibble)
-# GRanges
+
+#' @rdname coerce
+#' @name coerce,GRanges,tbl_df-method
+#' @exportMethod coerce
 setAs(from = "GRanges", to = "tbl_df", def = .as_tibble)
-setAs(from = "GRanges", to = "tibble", def = .as_tibble)
