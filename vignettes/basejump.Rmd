@@ -50,37 +50,45 @@ There are additional function families whose functionality lie outside the scope
 
 # Annotation functions
 
-Note that this is the bulk of the package functionality.
+Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users easily interface with [AnnotationHub][], and a robust set of tools to parse GFF and GTF files.
+
+[GenomicRanges][] [@Lawrence2013-vz]
+[AnnotationHub][], [ensembldb][].
+[rtracklayer][] [@rtracklayer].
 
 ```{r}
+makeGRangesFromEnsembl
 annotable
+makeGene2symbolFromEnsembl
+makeTx2geneFromEnsembl
+```
+
+```{r}
+makeGRangesFromGFF
+makeGene2symbolFromGFF
+makeTx2geneFromGFF
+```
+
+```{r}
 broadClass
+```
+
+```{r}
 convertGenesToSymbols
 convertSymbolsToGenes
 convertTranscriptsToGenes
-convertUCSCBuildToEnsembl
+```
+
+```{r}
 eggnog
-emptyRanges
-gene2symbol
 geneSynonyms
 hgnc2gene
-makeGene2symbolFromEnsembl
-makeGene2symbolFromGFF
-makeGRangesFromEnsembl
-makeGRangesFromGFF
-makeTx2geneFromEnsembl
-makeTx2geneFromGFF
 mgi2gene
 stripTranscriptVersions
 panther
 ```
 
-Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] remains overly challenging. [basejump][] aims to help address this issue by providing gene- and transcript-level annotation support
 
-[GenomicRanges][] [@Lawrence2013-vz]
-[AnnotationHub][], [ensembldb][].
-[Ensembl][] [@Hubbard2002-ah].
-[rtracklayer][] [@rtracklayer].
 
 ## GRanges return
 
@@ -188,8 +196,6 @@ makeTx2geneFromGFF
 makeGene2symbolFromGFF
 ```
 
-[Gencode][] [@Harrow2012-hx] has improved support for *Homo sapiens* and *Mus musculus* genomes, and we recommend using these annotations over [Ensembl][] [@Hubbard2002-ah] or [RefSeq][] [@Pruitt2007-vu] if possible.
-
 ## Query external annotation databases
 
 ### HGNC
@@ -285,6 +291,7 @@ print(object)
 aggregateFeatures
 aggregateReplicates
 counts
+gene2symbol
 interestingGroups
 makeSummarizedExperiment
 sampleData
