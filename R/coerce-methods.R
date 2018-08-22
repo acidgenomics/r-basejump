@@ -3,6 +3,7 @@
 #' @name coerce
 #' @aliases as
 #' @author Michael Steinbaugh
+#' @exportMethod coerce
 #'
 #' @section tibble:
 #' Coerce an object to a `tibble` (`tbl_df`). Tibbles don't support rowname
@@ -34,7 +35,6 @@ NULL
 # list =========================================================================
 #' @rdname coerce
 #' @name coerce,SummarizedExperiment,list-method
-#' @exportMethod coerce
 setAs(
     from = "SummarizedExperiment",
     to = "list",
@@ -61,20 +61,16 @@ setAs(
 
 #' @rdname coerce
 #' @name coerce,matrix,tbl_df-method
-#' @exportMethod coerce
 setAs(from = "matrix", to = "tbl_df", def = .as_tibble)
 
 #' @rdname coerce
 #' @name coerce,data.frame,tbl_df-method
-#' @exportMethod coerce
 setAs(from = "data.frame", to = "tbl_df", def = .as_tibble)
 
 #' @rdname coerce
 #' @name coerce,DataFrame,tbl_df-method
-#' @exportMethod coerce
 setAs(from = "DataFrame", to = "tbl_df", def = .as_tibble)
 
 #' @rdname coerce
 #' @name coerce,GRanges,tbl_df-method
-#' @exportMethod coerce
 setAs(from = "GRanges", to = "tbl_df", def = .as_tibble)
