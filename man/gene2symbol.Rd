@@ -27,7 +27,6 @@ gene2symbol(rse_bcb) \%>\% head()
 \seealso{
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}}, \code{\link{counts}},
-  \code{\link{flatFiles}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}}

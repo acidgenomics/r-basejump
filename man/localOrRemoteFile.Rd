@@ -36,6 +36,7 @@ basename(x)
 
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
