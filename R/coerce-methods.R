@@ -43,7 +43,7 @@ setAs(
 
 
 # tibble =======================================================================
-.tibble <- function(from) {
+.as_tibble <- function(from) {  # nolint
     if (is_tibble(from)) {
         return(from)  # nocov
     }
@@ -54,11 +54,15 @@ setAs(
     }
     as_tibble(from)
 }
-setAs(from = "matrix", to = "tbl_df", def = .tibble)
-setAs(from = "data.frame", to = "tbl_df", def = .tibble)
-setAs(from = "DataFrame", to = "tbl_df", def = .tibble)
-setAs(from = "GRanges", to = "tbl_df", def = .tibble)
-setAs(from = "matrix", to = "tibble", def = .tibble)
-setAs(from = "data.frame", to = "tibble", def = .tibble)
-setAs(from = "DataFrame", to = "tibble", def = .tibble)
-setAs(from = "GRanges", to = "tibble", def = .tibble)
+# matrix
+setAs(from = "matrix", to = "tbl_df", def = .as_tibble)
+setAs(from = "matrix", to = "tibble", def = .as_tibble)
+# data.frame
+setAs(from = "data.frame", to = "tbl_df", def = .as_tibble)
+setAs(from = "data.frame", to = "tibble", def = .as_tibble)
+# DataFrame
+setAs(from = "DataFrame", to = "tbl_df", def = .as_tibble)
+setAs(from = "DataFrame", to = "tibble", def = .as_tibble)
+# GRanges
+setAs(from = "GRanges", to = "tbl_df", def = .as_tibble)
+setAs(from = "GRanges", to = "tibble", def = .as_tibble)
