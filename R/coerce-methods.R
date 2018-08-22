@@ -32,6 +32,9 @@ NULL
 
 
 # list =========================================================================
+#' @rdname coerce
+#' @name coerce,SummarizedExperiment,list-method
+#' @exportMethod coerce
 setAs(
     from = "SummarizedExperiment",
     to = "list",
@@ -43,7 +46,8 @@ setAs(
 
 
 # tibble =======================================================================
-.tibble <- function(from) {
+# Help avoid dropping rownames during tidyverse function calls.
+.as_tibble <- function(from) {  # nolint
     if (is_tibble(from)) {
         return(from)  # nocov
     }
@@ -54,11 +58,23 @@ setAs(
     }
     as_tibble(from)
 }
-setAs(from = "matrix", to = "tbl_df", def = .tibble)
-setAs(from = "data.frame", to = "tbl_df", def = .tibble)
-setAs(from = "DataFrame", to = "tbl_df", def = .tibble)
-setAs(from = "GRanges", to = "tbl_df", def = .tibble)
-setAs(from = "matrix", to = "tibble", def = .tibble)
-setAs(from = "data.frame", to = "tibble", def = .tibble)
-setAs(from = "DataFrame", to = "tibble", def = .tibble)
-setAs(from = "GRanges", to = "tibble", def = .tibble)
+
+#' @rdname coerce
+#' @name coerce,matrix,tbl_df-method
+#' @exportMethod coerce
+setAs(from = "matrix", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,data.frame,tbl_df-method
+#' @exportMethod coerce
+setAs(from = "data.frame", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,DataFrame,tbl_df-method
+#' @exportMethod coerce
+setAs(from = "DataFrame", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,GRanges,tbl_df-method
+#' @exportMethod coerce
+setAs(from = "GRanges", to = "tbl_df", def = .as_tibble)
