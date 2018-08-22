@@ -43,6 +43,7 @@ setAs(
 
 
 # tibble =======================================================================
+# Help avoid dropping rownames during tidyverse function calls.
 .as_tibble <- function(from) {  # nolint
     if (is_tibble(from)) {
         return(from)  # nocov
