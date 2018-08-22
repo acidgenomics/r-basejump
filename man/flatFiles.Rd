@@ -28,14 +28,17 @@ class(x)
 names(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
-  \code{\link{gene2symbol}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{initializeDirectory}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{matchInterestingGroups}},
+  \code{\link{methodFormals}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}},
+  \code{\link{uniteInterestingGroups}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Developer Functions}

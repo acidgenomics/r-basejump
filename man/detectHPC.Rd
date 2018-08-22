@@ -29,7 +29,8 @@ detectHPC()
 }
 
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{dots}}, \code{\link{initializeDirectory}},
+  \code{\link{dots}}, \code{\link{flatFiles}},
+  \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
