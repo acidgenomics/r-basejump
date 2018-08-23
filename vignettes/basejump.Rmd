@@ -9,21 +9,21 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 abstract: >
-  The [basejump][] package is an infrastructure toolkit that extends the base
-  functionality of [Bioconductor][] [@Huber2015-nw]. The package leverages the
-  S4 class system for object-oriented programming, and defines multiple
-  additional generic functions for use in genomics research. [basejump][]
-  provides simple, user-friendly functions for the acquisition of genome
-  annotations from multiple online databases, including native support for
-  [Ensembl][] [@Hubbard2002-ah] and websites supporting standard [FASTA][] and
-  [GFF][] file formats. Consistent handling of sample metadata remains a
-  challenge for many bioinformatic analyses, and [basejump][] aims to address
-  this by providing a suite of sanitization functions to help standardize these
-  variable inputs. Additionally, interactive read/write operations in [R][] can
-  be cumbersome and non-trivial when working with multiple data objects; here we
-  provide additional functions designed for interactive use that aim to reduce
-  friction and provide consistent handling of multiple common file formats used
-  in genomics research.
+  The basejump package is an infrastructure toolkit that extends the base
+  functionality of Bioconductor [@Huber2015-nw]. The package leverages the S4
+  class system for object-oriented programming, and defines multiple additional
+  generic functions for use in genomics research. basejump provides simple,
+  user-friendly functions for the acquisition of genome annotations from
+  multiple online databases, including native support for Ensembl
+  [@Hubbard2002-ah] and websites supporting standard FASTA and GFF file formats.
+  Consistent handling of sample metadata remains a challenge for many
+  bioinformatic analyses, and basejump aims to address this by providing a suite
+  of sanitization functions to help standardize these variable inputs.
+  Additionally, interactive read/write operations in R can be cumbersome and
+  non-trivial when working with multiple data objects; here we provide
+  additional functions designed for interactive use that aim to reduce friction
+  and provide consistent handling of multiple common file formats used in
+  genomics research.
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -52,7 +52,7 @@ There are additional function families whose functionality lie outside the scope
 
 Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse general feature format (GFF) and general transfer format (GTF; a.k.a. GFFv2) annotation files. GFF file parsing is handled internally by the [rtracklayer][] [@rtracklayer] package. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] [@Lawrence2013-vz] package, which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols()` slot of the object. `GRanges` can be coerced to a flat `data.frame` using the `as.data.frame()` function.
 
-## makeGRangesFromEnsembl
+## Ensembl annotations
 
 `makeGRangesFromEnsembl()` supports multiple genome builds, and versioned releases from [Ensembl][]. By default, the function will use the latest release version available from [AnnotationHub][]/[ensembldb][].
 
@@ -301,7 +301,7 @@ exports[isS4]
 
 Additional resources:
 
-- [S4 classes and methods][https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html], Martin Morgan and Hervé Pagès, 2017.
+- [S4 classes and methods](https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html), Martin Morgan and Hervé Pagès, 2017.
 - [A quick overview of the S4 class system](https://bioconductor.org/packages/devel/bioc/vignettes/S4Vectors/inst/doc/S4QuickOverview.pdf), Hervé Pagès, 2016.
 - [The S4 object system](http://adv-r.had.co.nz/S4.html), Hadley Wickham.
 - [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
@@ -358,9 +358,8 @@ counts(object) %>% summary()
 ## Aggregation functions
 
 ```{r, eval=FALSE}
-# FIXME Add SummarizedExperiment method support
-aggregateFeatures(object)
-aggregateReplicates(object)
+aggregateFeatures()
+aggregateReplicates()
 ```
 
 # Plot functions
@@ -492,6 +491,7 @@ The papers and software cited in our workflows are available as a [shared librar
 [annotables]: https://github.com/stephenturner/annotables
 [AnnotationHub]: https://doi.org/doi:10.18129/B9.bioc.AnnotationHub
 [basejump]: https://steinbaugh.com/basejump
+[Bioconductor]: https://bioconductor.org
 [EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
 [Ensembl]: https://www.ensembl.org
 [ensembldb]: https://doi.org/doi:10.18129/B9.bioc.ensembldb
@@ -499,6 +499,7 @@ The papers and software cited in our workflows are available as a [shared librar
 [FlyBase]: http://flybase.org
 [GFF]: https://useast.ensembl.org/info/website/upload/gff.html
 [Gencode]: https://www.gencodegenes.org
+[GenomicRanges]: https://doi.org/doi:10.18129/B9.bioc.GenomicRanges
 [ggplot2]: https://ggplot2.tidyverse.org
 [GRCh37]: https://grch37.ensembl.org
 [hg19]: https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19
@@ -509,5 +510,6 @@ The papers and software cited in our workflows are available as a [shared librar
 [RefSeq]: https://www.ncbi.nlm.nih.gov/refseq
 [rio]: https://cran.r-project.org/package=rio
 [rtracklayer]: https://doi.org/doi:10.18129/B9.bioc.rtracklayer
+[SummarizedExperiment]: https://doi.org/doi:10.18129/B9.bioc.SummarizedExperiment
 [UCSC]: http://genome.ucsc.edu
 [WormBase]: https://wormbase.org
