@@ -343,7 +343,7 @@ test_that("detectOrganism : matrix", {
 })
 
 test_that("detectOrganism : tbl_df", {
-    x <- as(mat, "tibble")
+    x <- as(mat, "tbl_df")
     expect_true("rowname" %in% colnames(x))
     expect_identical(
         detectOrganism(x),

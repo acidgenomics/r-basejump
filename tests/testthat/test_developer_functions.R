@@ -45,6 +45,28 @@ test_that("dots", {
 
 
 
+# flatFiles ====================================================================
+test_that("flatFiles : SummarizedExperiment", {
+    x <- flatFiles(rse_dds)
+    expect_is(x, "list")
+    expect_identical(
+        names(x),
+        c(
+            "rowRanges",
+            "colData",
+            "assays",
+            "NAMES",
+            "elementMetadata",
+            "metadata"
+        )
+    )
+    # S4 coercion to list method support
+    y <- as(rse_dds, "list")
+    expect_identical(x, y)
+})
+
+
+
 # matchInterestingGroups =======================================================
 test_that("matchInterestingGroups", {
     expect_identical(

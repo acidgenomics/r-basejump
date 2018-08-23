@@ -57,7 +57,7 @@ writeCounts <- function(
                 filePath <- file.path(dir, fileName)
                 # See `setAs.R` file for documentation on tibble coercion method
                 write_csv(
-                    x = as(counts, "tibble"),
+                    x = as(counts, "tbl_df"),
                     path = filePath
                 )
                 returnPath <- filePath

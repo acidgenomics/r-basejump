@@ -8,3 +8,4 @@ docs/reference/*.rda
 docs/reference/*.R
 docs/reference/*.Rmd
 docs/reference/*.yaml
+inst/doc/

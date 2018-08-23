@@ -3,7 +3,7 @@
 #' Extract the slots inside an S4 object for archival storage.
 #'
 #' @name flatFiles
-#' @family Data Functions
+#' @family Developer Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

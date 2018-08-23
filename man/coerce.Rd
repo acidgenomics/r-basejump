@@ -3,6 +3,11 @@
 \name{coerce}
 \alias{coerce}
 \alias{as}
+\alias{coerce,SummarizedExperiment,list-method}
+\alias{coerce,matrix,tbl_df-method}
+\alias{coerce,data.frame,tbl_df-method}
+\alias{coerce,DataFrame,tbl_df-method}
+\alias{coerce,GRanges,tbl_df-method}
 \title{Methods for Coercing an Object to a Class}
 \value{
 Object of new class.
@@ -22,18 +27,17 @@ loss when using the dplyr chain of single table verbs, such as
 \examples{
 # data.frame ====
 # Automatically move rownames to `rowname` column
-as(datasets::mtcars, "tibble") \%>\% glimpse()
+as(datasets::mtcars, "tbl_df") \%>\% glimpse()
 
 # tibble ====
 # Return unmodified
-as(ggplot2::mpg, "tibble") \%>\% glimpse()
+as(ggplot2::mpg, "tbl_df") \%>\% glimpse()
 }
 \seealso{
 \itemize{
 \item \code{\link[methods:as]{methods::as()}}.
-\item \code{\link[methods:coerce]{methods::coerce()}}.
-\item \code{help(topic = "tibble", package = "tibble")}
-\item \code{help(topic = "coerce", package = "methods")}.
+\item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
+\item \code{\link[tibble:tibble]{tibble::tibble()}}.
 }
 }
 \author{
