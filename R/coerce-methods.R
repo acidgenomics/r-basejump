@@ -16,18 +16,17 @@
 #'
 #' @seealso
 #' - [methods::as()].
-#' - [methods::coerce()].
-#' - `help(topic = "tibble", package = "tibble")`
-#' - `help(topic = "coerce", package = "methods")`.
+#' - [methods::canCoerce()].
+#' - [tibble::tibble()].
 #'
 #' @examples
 #' # data.frame ====
 #' # Automatically move rownames to `rowname` column
-#' as(datasets::mtcars, "tibble") %>% glimpse()
+#' as(datasets::mtcars, "tbl_df") %>% glimpse()
 #'
 #' # tibble ====
 #' # Return unmodified
-#' as(ggplot2::mpg, "tibble") %>% glimpse()
+#' as(ggplot2::mpg, "tbl_df") %>% glimpse()
 NULL
 
 
