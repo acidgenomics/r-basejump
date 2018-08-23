@@ -83,7 +83,9 @@ Imports:
     viridis,
     yaml (>= 2.1)
 Suggests:
+    BiocStyle,
     EnsDb.Hsapiens.v75,
+    rmarkdown,
     testthat (>= 2.0)
 biocViews:
     DataImport,
