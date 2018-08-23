@@ -1,3 +1,13 @@
+## basejump 0.7.2 (2018-08-23)
+
+### Minor changes
+
+- Bug fix for `as()` coercion method support. Need to ensure
+  `exportMethods(coerce)` is included in `NAMESPACE` file, otherwise
+  `tibble` coercion using `as(x, "tbl_df")` won't work when called from an
+  Rscript without the package library loaded. Thanks @roryk for noticing this.
+
+
 ## basejump 0.7.1 (2018-08-18)
 
 ### New functions

@@ -38,7 +38,7 @@ dots(a, b, c, character = TRUE)
 }
 
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}},
+  \code{\link{detectHPC}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},

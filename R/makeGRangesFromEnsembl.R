@@ -235,7 +235,7 @@ makeGRangesFromEnsembl <- function(
     meta <- metadata(edb)
     assert_is_data.frame(meta)
     meta <- rbind(c("id", id), meta)
-    meta <- as(meta, "tibble")
+    meta <- as(meta, "tbl_df")
 
     # Stash the AnnotationHub ID
     build <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]

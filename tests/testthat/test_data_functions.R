@@ -41,28 +41,6 @@ test_that("counts", {
 
 
 
-# flatFiles ====================================================================
-test_that("flatFiles : SummarizedExperiment", {
-    x <- flatFiles(rse_dds)
-    expect_is(x, "list")
-    expect_identical(
-        names(x),
-        c(
-            "rowRanges",
-            "colData",
-            "assays",
-            "NAMES",
-            "elementMetadata",
-            "metadata"
-        )
-    )
-    # S4 coercion to list method support
-    y <- as(rse_dds, "list")
-    expect_identical(x, y)
-})
-
-
-
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
     x <- gene2symbol(rse_bcb)

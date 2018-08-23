@@ -22,7 +22,7 @@
 #' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
 #' sanitizeRowData(x) %>% glimpse()
 sanitizeRowData <- function(object) {
-    object <- as(object, "tibble")
+    object <- as(object, "tbl_df")
 
     # Enforce camel case
     object <- camel(object)

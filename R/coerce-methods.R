@@ -3,6 +3,8 @@
 #' @name coerce
 #' @aliases as
 #' @author Michael Steinbaugh
+#' @importFrom methods coerce
+#' @exportMethod coerce
 #'
 #' @section tibble:
 #' Coerce an object to a `tibble` (`tbl_df`). Tibbles don't support rowname
@@ -15,23 +17,24 @@
 #'
 #' @seealso
 #' - [methods::as()].
-#' - [methods::coerce()].
-#' - `help(topic = "tibble", package = "tibble")`
-#' - `help(topic = "coerce", package = "methods")`.
+#' - [methods::canCoerce()].
+#' - [tibble::tibble()].
 #'
 #' @examples
 #' # data.frame ====
 #' # Automatically move rownames to `rowname` column
-#' as(datasets::mtcars, "tibble") %>% glimpse()
+#' as(datasets::mtcars, "tbl_df") %>% glimpse()
 #'
 #' # tibble ====
 #' # Return unmodified
-#' as(ggplot2::mpg, "tibble") %>% glimpse()
+#' as(ggplot2::mpg, "tbl_df") %>% glimpse()
 NULL
 
 
 
 # list =========================================================================
+#' @rdname coerce
+#' @name coerce,SummarizedExperiment,list-method
 setAs(
     from = "SummarizedExperiment",
     to = "list",
@@ -43,7 +46,8 @@ setAs(
 
 
 # tibble =======================================================================
-.tibble <- function(from) {
+# Help avoid dropping rownames during tidyverse function calls.
+.as_tibble <- function(from) {  # nolint
     if (is_tibble(from)) {
         return(from)  # nocov
     }
@@ -54,11 +58,19 @@ setAs(
     }
     as_tibble(from)
 }
-setAs(from = "matrix", to = "tbl_df", def = .tibble)
-setAs(from = "data.frame", to = "tbl_df", def = .tibble)
-setAs(from = "DataFrame", to = "tbl_df", def = .tibble)
-setAs(from = "GRanges", to = "tbl_df", def = .tibble)
-setAs(from = "matrix", to = "tibble", def = .tibble)
-setAs(from = "data.frame", to = "tibble", def = .tibble)
-setAs(from = "DataFrame", to = "tibble", def = .tibble)
-setAs(from = "GRanges", to = "tibble", def = .tibble)
+
+#' @rdname coerce
+#' @name coerce,matrix,tbl_df-method
+setAs(from = "matrix", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,data.frame,tbl_df-method
+setAs(from = "data.frame", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,DataFrame,tbl_df-method
+setAs(from = "DataFrame", to = "tbl_df", def = .as_tibble)
+
+#' @rdname coerce
+#' @name coerce,GRanges,tbl_df-method
+setAs(from = "GRanges", to = "tbl_df", def = .as_tibble)
