@@ -1,18 +1,16 @@
 # Contributing to development
 
-- For all changes, **fork the repository**, and then issue a pull request that will be reviewed.
-- Do not commit changes directly to master branch.
-- Please avoid creating unnecessary new branches. Use a fork instead.
+- For all proposed changes, **fork the repository**, and then issue a pull request that will be reviewed.
 - Pull requests must pass build checks on Travis CI.
 - Support is only provided for the current release version.
-- Open an issue for any proposed changes that affect the `bcbioRNASeq` S4 class.
 
 ## Package style syntax
 
 Attempt to follow these style guides, by priority:
-(1) [Bioconductor coding style](https://www.bioconductor.org/developers/how-to/coding-style/);
-(2) [tidyverse style guide](http://style.tidyverse.org);
-(3) [Google R style guide](https://google.github.io/styleguide/Rguide.xml).
+
+1. [Bioconductor coding style](https://www.bioconductor.org/developers/how-to/coding-style/)
+2. [tidyverse style guide](http://style.tidyverse.org)
+3. [Google R style guide](https://google.github.io/styleguide/Rguide.xml)
 
 Please adhere to these guidelines, in particular:
 
