@@ -44,12 +44,14 @@ prepareTemplate <- function(
 ) {
     # Assert checks
     assert_is_a_string(package)
+    # Package must be installed.
+    stopifnot(package %in% rownames(installed.packages()))
     assertIsAStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
     # Shared file source directory
     # Keeping the `sourceDir` argument because devtools attempts to intercept
-    # `system.file`, and this can cause path issues during development
+    # `system.file`, and this can cause path issues during development.
     if (is.null(sourceDir)) {
         sourceDir <- system.file(
             "rmarkdown/shared",
@@ -59,12 +61,15 @@ prepareTemplate <- function(
     }
     assert_all_are_dirs(sourceDir)
 
-    # Get vector of all shared files
+    # We're covering the code below in bcbioRNASeq and bcbioSingleCell.
+    # nocov start
+
+    # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
     assert_is_non_empty(files)
     assert_all_are_non_empty_files(files)
 
-    # Copy files to working directory
+    # Copy files to working directory.
     copied <- vapply(
         X = files,
         FUN = function(file) {
@@ -79,4 +84,5 @@ prepareTemplate <- function(
     names(copied) <- basename(files)
 
     invisible(copied)
+    # nocov end
 }
