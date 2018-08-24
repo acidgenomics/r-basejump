@@ -27,7 +27,7 @@ markdownPlotlist(plotlist)
 
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownLink}},
-  \code{\link{markdownList}}
+  \code{\link{markdownList}}, \code{\link{prepareTemplate}}
 }
 \author{
 Michael Steinbaugh

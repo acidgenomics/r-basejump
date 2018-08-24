@@ -30,7 +30,8 @@ markdownLink(
 \seealso{
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}}
+  \code{\link{markdownPlotlist}},
+  \code{\link{prepareTemplate}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

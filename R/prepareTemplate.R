@@ -11,7 +11,7 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @family Prepare Functions
+#' @family R Markdown Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general

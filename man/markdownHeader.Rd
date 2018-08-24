@@ -40,7 +40,8 @@ markdownHeader("Header", asis = TRUE)
 
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}}
+  \code{\link{markdownPlotlist}},
+  \code{\link{prepareTemplate}}
 }
 \author{
 Michael Steinbaugh

@@ -34,7 +34,8 @@ kables(
 
 Other R Markdown Functions: \code{\link{markdownHeader}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},
-  \code{\link{markdownPlotlist}}
+  \code{\link{markdownPlotlist}},
+  \code{\link{prepareTemplate}}
 }
 \author{
 Michael Steinbaugh
