@@ -2,6 +2,17 @@ context("Developer Functions")
 
 
 
+# cleanSystemLibrary ===========================================================
+test_that("cleanSystemLibrary", {
+    # Simple check to make sure a logical is returned successfully.
+    expect_type(
+        object = cleanSystemLibrary(),
+        type = "logical"
+    )
+})
+
+
+
 # detectHPC ====================================================================
 test_that("detectHPC", {
     expect_identical(detectHPC(), FALSE)

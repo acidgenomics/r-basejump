@@ -1,5 +1,7 @@
 context("R Markdown Functions")
 
+
+
 # kables =======================================================================
 test_that("kables : list", {
     # Simulate a knit session
@@ -114,5 +116,19 @@ test_that("markdownPlotlist", {
             "## discrete",
             ""
         )
+    )
+})
+
+
+
+# prepareTemplate ==============================================================
+test_that("prepareTemplate", {
+    expect_error(
+        prepareTemplate(package = "XXX"),
+        "is_subset : The element 'XXX'"
+    )
+    expect_error(
+        prepareTemplate(package = "basejump"),
+        "No file found"
     )
 })

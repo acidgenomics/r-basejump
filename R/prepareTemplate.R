@@ -1,3 +1,8 @@
+# We're covering the code below in bcbioRNASeq and bcbioSingleCell.
+# nocov start
+
+
+
 #' Prepare R Markdown Template File
 #'
 #' If the required template dependency files aren't present, copy them from the
@@ -45,7 +50,7 @@ prepareTemplate <- function(
     # Assert checks
     assert_is_a_string(package)
     # Package must be installed.
-    stopifnot(package %in% rownames(installed.packages()))
+    assert_is_subset(package, rownames(installed.packages()))
     assertIsAStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
@@ -60,9 +65,6 @@ prepareTemplate <- function(
         )
     }
     assert_all_are_dirs(sourceDir)
-
-    # We're covering the code below in bcbioRNASeq and bcbioSingleCell.
-    # nocov start
 
     # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
@@ -84,5 +86,8 @@ prepareTemplate <- function(
     names(copied) <- basename(files)
 
     invisible(copied)
-    # nocov end
 }
+
+
+
+# nocov end
