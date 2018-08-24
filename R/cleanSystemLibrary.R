@@ -1,3 +1,9 @@
+# We're checking for a logical in code coverage, but Travis CI will return
+# FALSE here, and it's hard to test some of these conditions.
+# nocov start
+
+
+
 #' Check for Clean System Library
 #'
 #' Determine whether a user has installed packages into the system library.
@@ -46,3 +52,7 @@ cleanSystemLibrary <- function() {
 
     TRUE
 }
+
+
+
+# nocov end
