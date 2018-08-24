@@ -33,7 +33,8 @@ markdownList(groceries, asis = TRUE)
 \seealso{
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownHeader}}, \code{\link{markdownLink}},
-  \code{\link{markdownPlotlist}}
+  \code{\link{markdownPlotlist}},
+  \code{\link{prepareTemplate}}
 }
 \author{
 Michael Steinbaugh

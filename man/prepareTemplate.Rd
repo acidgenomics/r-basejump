@@ -46,7 +46,13 @@ prepareTemplate(package = "bcbioRNASeq")
 prepareTemplate(package = "bcbioSingleCell")
 }
 }
+\seealso{
+Other R Markdown Functions: \code{\link{kables}},
+  \code{\link{markdownHeader}}, \code{\link{markdownLink}},
+  \code{\link{markdownList}},
+  \code{\link{markdownPlotlist}}
+}
 \author{
 Michael Steinbaugh
 }
-\concept{Prepare Functions}
+\concept{R Markdown Functions}
