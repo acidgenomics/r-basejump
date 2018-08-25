@@ -17,7 +17,6 @@
 #' @examples
 #' # SummarizedExperiment ====
 #' sampleNames(rse_bcb)
-#' sampleNames(rse_dds)
 NULL
 
 

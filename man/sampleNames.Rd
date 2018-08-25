@@ -14,7 +14,6 @@ the syntactically valid names defined as the rownames of \code{\link[=sampleData
 \examples{
 # SummarizedExperiment ====
 sampleNames(rse_bcb)
-sampleNames(rse_dds)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateFeatures}},
