@@ -29,13 +29,9 @@ setMethod(
     signature("SummarizedExperiment"),
     function(object) {
         data <- sampleData(object)
+        assert_is_subset("sampleName", colnames(data))
         data <- data[sort(rownames(data)), , drop = FALSE]
-        if ("sampleName" %in% colnames(data)) {
-            vec <- data[, "sampleName", drop = TRUE]
-        } else {
-            vec <- rownames(data)
-        }
-        vec <- as.character(vec)
+        vec <- as.character(data[, "sampleName", drop = TRUE])
         names(vec) <- rownames(data)
         vec
     }

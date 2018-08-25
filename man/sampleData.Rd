@@ -44,7 +44,7 @@ experiment).
 sampleData(rse_bcb) \%>\% glimpse()
 
 # Assignment support
-x <- rse_dds
+x <- rse_bcb
 sampleData(x)[["test"]] <- seq_len(ncol(x))
 # `test` column should be now defined
 glimpse(sampleData(x))
