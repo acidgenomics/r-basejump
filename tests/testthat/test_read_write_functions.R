@@ -256,11 +256,12 @@ test_that("readFileByExtension : Counts file (.counts)", {
 })
 
 test_that("readFileByExtension : R script", {
+    file <- "test_read_write_functions.R"
     expect_message(
-        readFileByExtension("test_read_functions.R"),
+        readFileByExtension(file),
         "Importing as source code lines"
     )
-    x <- readFileByExtension("test_read_functions.R")
+    x <- readFileByExtension(file)
     expect_is(x, "character")
 })
 
