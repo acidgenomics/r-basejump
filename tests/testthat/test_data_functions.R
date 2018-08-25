@@ -277,11 +277,12 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 
 # sampleData ===================================================================
-test_that("sampleData: Verbose mode", {
+test_that("sampleData : SummarizedExperiment", {
     expect_identical(sampleData(rse_bcb), colData(rse_bcb))
+    expect_error(sampleData(rse_dds), "sampleName")
 })
 
-test_that("sampleData : Assignment method", {
+test_that("sampleData<- : SummarizedExperiment", {
     x <- rse_bcb
     sampleData(x)[["test"]] <- as.factor(seq_len(ncol(x)))
     expect_is(sampleData(x)[["test"]], "factor")
@@ -299,15 +300,7 @@ test_that("sampleNames", {
             control_rep2 = "control_rep2"
         )
     )
-
-    x <- sampleNames(rse_dds)
-    expect_identical(
-        x[seq_len(2L)],
-        c(
-            sample1 = "sample1",
-            sample10 = "sample10"
-        )
-    )
+    expect_error(sampleNames(rse_dds), "sampleName")
 })
 
 
