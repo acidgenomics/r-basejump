@@ -54,7 +54,14 @@ setMethod(
         }
         # nocov end
 
-        colData(object)
+        data <- colData(object)
+        if (!"sampleName" %in% colnames(data)) {
+            stop(paste(
+                "`sampleData()` requires `sampleName` column",
+                "to be defined in `colData()`"
+            ), call. = FALSE)
+        }
+        data
     }
 )
 
