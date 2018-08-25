@@ -1,0 +1,515 @@
+---
+title: "basejump"
+author: "Michael Steinbaugh"
+date: "`r BiocStyle::doc_date()`"
+output: BiocStyle::html_document
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{basejump}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+abstract: >
+  The basejump package is an infrastructure toolkit that extends the base
+  functionality of Bioconductor [@Huber2015-nw]. The package leverages the S4
+  class system for object-oriented programming, and defines multiple additional
+  generic functions for use in genomics research. basejump provides simple,
+  user-friendly functions for the acquisition of genome annotations from
+  multiple online databases, including native support for Ensembl
+  [@Hubbard2002-ah] and websites supporting standard FASTA and GFF file formats.
+  Consistent handling of sample metadata remains a challenge for many
+  bioinformatic analyses, and basejump aims to address this by providing a suite
+  of sanitization functions to help standardize these variable inputs.
+  Additionally, interactive read/write operations in R can be cumbersome and
+  non-trivial when working with multiple data objects; here we provide
+  additional functions designed for interactive use that aim to reduce friction
+  and provide consistent handling of multiple common file formats used in
+  genomics research.
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library("basejump")
+ggplot2::theme_set(theme_paperwhite())
+```
+
+This vignette focuses on the most common user-facing functions that fall into the following categories:
+
+- Annotation functions
+- Read/write functions
+- Data functions
+- Plot functions
+- Sanitization functions
+- Math and science functions
+
+There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
+
+- R Markdown Functions
+- Atomic Vector Functions
+- Coercion Methods
+- Developer Functions
+- Assert Check Functions
+
+# Annotation functions
+
+Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse general feature format (GFF) and general transfer format (GTF; a.k.a. GFFv2) annotation files. GFF file parsing is handled internally by the [rtracklayer][] [@rtracklayer] package. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] [@Lawrence2013-vz] package, which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols()` slot of the object. `GRanges` can be coerced to a flat `data.frame` using the `as.data.frame()` function.
+
+## Ensembl annotations
+
+`makeGRangesFromEnsembl()` supports multiple genome builds, and versioned releases from [Ensembl][]. By default, the function will use the latest release version available from [AnnotationHub][]/[ensembldb][].
+
+```{r}
+grch38 <- makeGRangesFromEnsembl("Homo sapiens")
+summary(grch38)
+glimpse(grch38)
+head(names(grch38))
+```
+
+Data inside the `GRanges` object can be accessed with a number of functions, including `seqnames()`, `ranges()`, `strand()`, and `seqinfo()`.
+
+```{r}
+seqnames(grch38)
+ranges(grch38)
+strand(grch38)
+seqinfo(grch38)
+```
+
+The `GRanges` class is a powerful container for genomic coordinates and metadata. For example, we can easily the gene counts per chromosome.
+
+```{r}
+seqnames(grch38) %>%
+    table() %>%
+    sort(decreasing = TRUE) %>%
+    head(n = 24) %>%
+    .[sort(names(.))]
+```
+
+Gene metadata is contained in the `mcols()` slot of the object, using a `DataFrame` internally. Here'a the current list of gene-level annotation columns returned from `makeGRangesFromEnsembl()`:
+
+```{r}
+colnames(mcols(grch38))
+glimpse(mcols(grch38))
+```
+
+Transcript-level annotations are also supported, using the `format = "transcripts"` argument.
+
+```{r}
+transcripts <- makeGRangesFromEnsembl(
+    organism = "Homo sapiens",
+    format = "transcripts"
+)
+summary(transcripts)
+glimpse(mcols(transcripts))
+```
+
+### Versioned releases
+
+Versioned releases are supported by the "`release`" argument, which currently supports back to [Ensembl][] 87. If an older [Ensembl][] release is required, resort to using a GFF file or browse the [Bioconductor][] website to see if a suitable annotation database package is available.
+
+```{r}
+grch38_90 <- makeGRangesFromEnsembl(
+    organism = "Homo sapiens",
+    release = 90
+)
+summary(grch38_90)
+seqinfo(grch38_90)
+```
+
+### GRCh37
+
+The legacy [Ensembl GRCh37 genome build][GRCh37] (release 75; also known as [UCSC hg19][hg19]) is also supported, but is no longer recommended for use in new analyses. Internally, support for [GRCh37][] is provided by the [EnsDb.Hsapiens.v75][] annotation database package.
+
+```{r}
+grch37 <- makeGRangesFromEnsembl(
+    organism = "Homo sapiens",
+    build = "GRCh37"
+)
+summary(grch37)
+seqinfo(grch37)
+```
+
+### data.frame return
+
+For convenience, if you prefer to return annotations as a `data.frame` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function but automatically coerces the return to a standard `data.frame`, with the identifiers as the row names. For quick access to current [Ensembl][] annotations in `tibble` format, we also recommend the [annotables][] package.
+
+```{r, message=FALSE}
+genes <- annotable("Homo sapiens")
+glimpse(genes)
+transcripts <- annotable("Homo sapiens")
+glimpse(transcripts)
+```
+
+Note that `GRanges` objects can also be coerced to a `data.frame` using the `as.data.frame()` coercion method.
+
+```{r}
+grch38 %>% as.data.frame() %>% glimpse()
+```
+
+## Gene mapping functions
+
+Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the `gene2symbol()` and `tx2gene()` functions. Both of these functions return a `data.frame`.
+
+```{r, message=FALSE}
+gene2symbol <- makeGene2symbolFromEnsembl("Homo sapiens")
+glimpse(gene2symbol)
+tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
+glimpse(tx2gene)
+```
+
+## Parse GFF files
+
+GTF
+
+```{r, eval=FALSE}
+makeGRangesFromGFF()
+makeTx2geneFromGFF()
+makeGene2symbolFromGFF()
+```
+
+GFFv3
+
+```{r, eval=FALSE}
+makeGRangesFromGFF()
+makeTx2geneFromGFF()
+makeGene2symbolFromGFF()
+```
+
+## Gene conversion functions
+
+```{r, eval=FALSE}
+convertGenesToSymbols()
+convertSymbolsToGenes()
+convertTranscriptsToGenes()
+```
+
+## Transcript versions
+
+```{r, eval=FALSE}
+stripTranscriptVersions()
+```
+
+## Query external annotation databases
+
+### HGNC
+
+[HGNC][] [@HGNC].
+
+```{r}
+hgnc2gene <- hgnc2gene()
+glimpse(hgnc2gene)
+```
+
+### MGI
+
+[MGI][] [@MGI].
+
+```{r}
+mgi2gene <- mgi2gene()
+glimpse(mgi2gene)
+```
+
+### PANTHER
+
+[PANTHER][] [@PANTHER].
+
+```{r}
+panther <- panther()
+glimpse(panther)
+```
+
+### EggNOG
+
+[EggNOG][] [@EggNOG]
+
+```{r}
+eggnog <- eggnog()
+glimpse(eggnog)
+```
+
+### WormBase
+
+Note that for *Caenorhabditis elegans* genome annotations, we recommend additional use of our specialized [wormbase package][r-wormbase], which queries the [WormBase][] database directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on [Ensembl][].
+
+# Read/write functions
+
+Non-standard evaluation.
+[rio][] package.
+
+With the `readFileByExtension()` function, we are extending the base functionality of the powerful `rio::import()` function to handle additional common formats used for biological and genomic data analysis.
+
+- GFF/GTF files.
+- Sparse matrices.
+- RNA-seq counts tables (`.counts`).
+- JSON.
+- YAML.
+
+```{r, eval=FALSE}
+readFileByExtension()
+```
+
+```{r, eval=FALSE}
+readGFF()
+readJSON()
+readYAML()
+```
+
+```{r, eval=FALSE}
+loadData()
+loadDataAsName()
+loadRemoteData()
+```
+
+```{r, eval=FALSE}
+localOrRemoteFile()
+```
+
+```{r, eval=FALSE}
+assignAndSaveData()
+saveData()
+```
+
+# Data functions
+
+Introduction to [SummarizedExperiment][].
+S4.
+Object-oriented programming.
+Need an introduction to [SummarizedExperiment][].
+
+```{r}
+object <- basejump::rse_bcb
+print(object)
+```
+
+## S4 generics
+
+[basejump][] defines additional generics for use in genomics.
+`showMethods()` and `getMethod()`.
+
+Here is the current list of exported S4 generics:
+
+```{r}
+exports <- getNamespaceExports("basejump") %>%
+    sort() %>%
+    .[!grepl("^\\.", .)]
+isS4 <- vapply(
+    X = exports,
+    FUN = function(x) {
+        isS4(get(x, envir = asNamespace("basejump")))
+    },
+    FUN.VALUE = logical(1L)
+)
+exports[isS4]
+```
+
+Additional resources:
+
+- [S4 classes and methods](https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html), Martin Morgan and Hervé Pagès, 2017.
+- [A quick overview of the S4 class system](https://bioconductor.org/packages/devel/bioc/vignettes/S4Vectors/inst/doc/S4QuickOverview.pdf), Hervé Pagès, 2016.
+- [The S4 object system](http://adv-r.had.co.nz/S4.html), Hadley Wickham.
+- [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
+- [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
+
+## Make a SummarizedExperiment
+
+```{r, eval=FALSE}
+makeSummarizedExperiment()
+```
+
+## Column and row data
+
+```{r}
+colData(object) %>% glimpse()
+```
+
+```{r}
+rowRanges(object) %>% glimpse()
+rowData(object) %>% glimpse()
+```
+
+## Sample selection and metadata
+
+```{r}
+sampleData(object) %>% glimpse()
+sampleNames(object)
+```
+
+```{r, eval=FALSE}
+selectSamples()
+```
+
+## Interesting groups
+
+```{r}
+interestingGroups(object)
+```
+
+Assignment method support.
+
+```{r}
+interestingGroups(object) <- "treatment"
+```
+
+## Counts
+
+Comment on `assays()`.
+
+```{r}
+counts(object) %>% summary()
+```
+
+## Aggregation functions
+
+```{r, eval=FALSE}
+aggregateFeatures()
+aggregateReplicates()
+```
+
+# Plot functions
+
+## Heatmaps
+
+```{r}
+plotHeatmap(object)
+plotCorrelationHeatmap(object)
+plotQuantileHeatmap(object)
+```
+
+## ggplot2 themes
+
+The package provides simple, high-contrast [ggplot2][] [@ggplot2] themes that are suitable for publication and presentation. The `theme_paperwhite()` theme is a black-and-white theme that uses a bold sans-serif font. The `theme_midnight()` theme inverts `theme_paperwhite()` to use a black background, and can be useful for visualizing plots that contain a wide range of bright colors.
+
+```{r}
+library("ggplot2")
+p <- ggplot(
+    data = mpg,
+    mapping = aes(
+        x = manufacturer,
+        y = displ,
+        colour = manufacturer
+    )
+) +
+    geom_point()
+```
+
+```{r}
+p + theme_grey()
+p + theme_minimal()
+p + theme_bw()
+```
+
+Comment on borders, axis, bold sans serif text.
+
+```{r}
+p + theme_paperwhite()
+p + theme_midnight()
+```
+
+# Sanitization functions
+
+```{r}
+loadRemoteData("http://basejump.seq.cloud/mn.rda")
+```
+
+## Atomic vectors
+
+```{r}
+x <- mn$character
+print(x)
+camel(x)
+dotted(x)
+snake(x)
+upperCamel(x)
+makeNames(x)
+
+x <- mn$namedCharacter
+print(x)
+camel(x)
+dotted(x)
+snake(x)
+upperCamel(x)
+makeNames(x)
+
+x <- mn$factor
+print(x)
+camel(x)
+dotted(x)
+snake(x)
+upperCamel(x)
+makeNames(x)
+```
+
+## Data frames
+
+```{r}
+x <- datasets::USArrests
+dimnames(x)
+camel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+dotted(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+snake(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+upperCamel(x, rownames = TRUE, colnames = TRUE) %>% dimnames()
+```
+
+## Lists
+
+```{r}
+x <- mn$list
+print(x)
+camel(x) %>% names()
+dotted(x) %>% names()
+snake(x) %>% names()
+upperCamel(x) %>% names()
+```
+
+## Sample and feature data
+
+```{r, eval=FALSE}
+sanitizeRowData()
+sanitizeSampleData()
+```
+
+# Math and science functions
+
+```{r, eval=FALSE}
+foldChangeToLogRatio()
+logRatioToFoldChange()
+```
+
+96-well and 24-well plate format.
+
+```{r}
+microplate()
+```
+
+# R session information
+
+```{r}
+sessioninfo::session_info()
+```
+
+# References
+
+The papers and software cited in our workflows are available as a [shared library](https://paperpile.com/shared/agxufd) on [Paperpile][].
+
+[annotables]: https://github.com/stephenturner/annotables
+[AnnotationHub]: https://doi.org/doi:10.18129/B9.bioc.AnnotationHub
+[basejump]: https://steinbaugh.com/basejump
+[Bioconductor]: https://bioconductor.org
+[EnsDb.Hsapiens.v75]: https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75
+[Ensembl]: https://www.ensembl.org
+[ensembldb]: https://doi.org/doi:10.18129/B9.bioc.ensembldb
+[FASTA]: https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml
+[FlyBase]: http://flybase.org
+[GFF]: https://useast.ensembl.org/info/website/upload/gff.html
+[Gencode]: https://www.gencodegenes.org
+[GenomicRanges]: https://doi.org/doi:10.18129/B9.bioc.GenomicRanges
+[ggplot2]: https://ggplot2.tidyverse.org
+[GRCh37]: https://grch37.ensembl.org
+[hg19]: https://genome.ucsc.edu/cgi-bin/hgGateway?db=hg19
+[Paperpile]: https://paperpile.com
+[R]: https://www.r-project.org
+[R Markdown]: https://rmarkdown.rstudio.com
+[r-wormbase]: https://steinbaugh.com/wormbase
+[RefSeq]: https://www.ncbi.nlm.nih.gov/refseq
+[rio]: https://cran.r-project.org/package=rio
+[rtracklayer]: https://doi.org/doi:10.18129/B9.bioc.rtracklayer
+[SummarizedExperiment]: https://doi.org/doi:10.18129/B9.bioc.SummarizedExperiment
+[UCSC]: http://genome.ucsc.edu
+[WormBase]: https://wormbase.org
