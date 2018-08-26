@@ -216,20 +216,30 @@ assertFormalInterestingGroups <- function(
 ) {
     fun <- get(severity)
 
-    # Early return on `NULL` value (e.g. DESeqDataSet)
+    # Early return on `NULL` value (e.g. DESeqDataSet).
     if (is.null(interestingGroups)) {
         return(invisible())
     }
 
     assert_is_character(interestingGroups)
 
-    # Obtain column data if S4 object is passed in
+    # Obtain column data if S4 object is passed in.
     if (isS4(x)) {
+        assert_is_subset(
+            x = interestingGroups,
+            y = colnames(colData(x)),
+            severity = severity
+        )
+        assert_is_subset(
+            x = interestingGroups,
+            y = colnames(sampleData(x)),
+            severity = severity
+        )
         x <- colData(x)
     }
     x <- as(x, "DataFrame")
 
-    # Check that interesting groups are slotted into sampleData
+    # Check that interesting groups are slotted into sampleData.
     if (!all(interestingGroups %in% colnames(x))) {
         setdiff <- setdiff(interestingGroups, colnames(x))
         fun(paste(
@@ -239,7 +249,7 @@ assertFormalInterestingGroups <- function(
         ))
     }
 
-    # Check that interesting groups are factors
+    # Check that interesting groups are factors.
     isFactor <- vapply(
         X = x[, interestingGroups, drop = FALSE],
         FUN = is.factor,
