@@ -787,11 +787,7 @@ assertIsURL <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     assert_is_character(x, severity = severity)
-    assert_all_are_matching_regex(
-        x = x,
-        pattern = "^http(s)?\\://.+",
-        severity = severity
-    )
+    assert_all_are_true(isURL(x), severity = severity)
 }
 
 
@@ -856,7 +852,7 @@ isURL <- function(x) {
     vapply(
         X = x,
         FUN = function(x) {
-            grepl("^http(s)?\\://.+", x)
+            grepl("^(http(s)?|ftp)\\://.+", x)
         },
         FUN.VALUE = logical(1L),
         USE.NAMES = FALSE
