@@ -13,6 +13,7 @@ reference:
     - starts_with("convert")
     - eggnog
     - emptyRanges
+    - geneSynonyms
     - hgnc2gene
     - starts_with("makeGene2symbol")
     - starts_with("makeGRanges")
