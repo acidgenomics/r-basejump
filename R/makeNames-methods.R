@@ -101,14 +101,14 @@ NULL
         object <- tolower(object)
     }
 
-    # lowerCamelCase or UpperCamelCase
+    # lowerCamelCase or UpperCamelCase.
     if (format == "lower") {
         # lowerCamelCase
-        # Coerce first word to lower
+        # Coerce first word to lower.
         object <- gsub("^(\\w+)\\b", "\\L\\1", object, perl = TRUE)
     } else if (format == "upper") {
         # UpperCamelCase
-        # Capitalize the first letter
+        # Capitalize the first letter.
         object <- gsub("^([a-z])", replacement = "\\U\\1", object, perl = TRUE)
     }
 
@@ -128,8 +128,15 @@ NULL
             gsub(pattern, replacement, .)
     }
 
+    # Remove dots in between words and numbers.
+    object <- object %>%
+        gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", .) %>%
+        gsub("([[:digit:]])\\.([[:alpha:]])", "\\1\\2", .)
+
     # First letter of second word must be capitalized.
-    gsub("(\\w)\\.(\\w)", "\\1\\U\\2", object, perl = TRUE)
+    object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
+
+    object
 }
 
 
@@ -142,26 +149,28 @@ NULL
 
 
 
-# Dotted case is the internal method used by camel and snake
+# Dotted case is the internal method used by camel and snake.
 .dotted <- function(object) {
     assert_is_atomic(object)
     object %>%
         as.character() %>%
+        # Strip comma delims in between numbers (e.g. 1,000,000).
+        gsub("(\\d),(\\d)", "\\1\\2", .) %>%
         make.names(unique = FALSE, allow_ = FALSE) %>%
-        # Convert non-alphanumeric characters to dots
+        # Ensure all non-alphanumeric characters get coerced to periods.
         gsub("[^[:alnum:]]", ".", .) %>%
-        # Combine multiple dots
+        # Combine multiple dots.
         gsub("[\\.]+", ".", .) %>%
-        # Strip leading or trailing dots
+        # Strip leading or trailing dots.
         gsub("(^\\.|\\.$)", "", .) %>%
-        # Coerce `"NA"` back to `NA` after `make.names()`
+        # Coerce `"NA"` back to `NA` after `make.names()`.
         fixNA() %>%
         .sanitizeAcronyms() %>%
         # Establish word boundaries for camelCase acronyms
-        # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`)
-        # Acronym following a word
+        # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`).
+        # Acronym following a word.
         gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
-        # Word following an acronym
+        # Word following an acronym.
         gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
 }
 
@@ -179,9 +188,9 @@ NULL
     assert_is_atomic(object)
     object %>%
         as.character() %>%
-        # Ensure "id" is always "ID"
+        # Ensure "id" is always "ID".
         gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
-        # Sanitize mixed case scientific acronyms
+        # Sanitize mixed case scientific acronyms.
         gsub("\\b(mRNA)\\b", "MRNA", .) %>%
         gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
         gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
@@ -211,7 +220,7 @@ NULL
 
 
 .upperCamel <- function(object, strict = FALSE) {
-    camel(object, format = "upper", strict = strict)
+    .camel(object, format = "upper", strict = strict)
 }
 
 
