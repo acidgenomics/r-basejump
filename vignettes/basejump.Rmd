@@ -63,7 +63,9 @@ The [basejump][] package defines generics and methods for object-oriented progra
 Here is a current list of S4 generics and/or methods exported by the package:
 
 ```{r}
-exports <- sort(getNamespaceExports("basejump"))[!grepl("^\\.", .)]
+exports <- getNamespaceExports("basejump") %>%
+    sort() %>%
+    .[!grepl("^\\.", .)]
 isS4 <- vapply(
     X = exports,
     FUN = function(x) {
