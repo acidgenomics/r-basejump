@@ -60,7 +60,7 @@ The [basejump][] package defines generics and methods for object-oriented progra
 - [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
 - [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
 
-Here is a current list of S4 generics and/or methods exported by the package:
+Here's the current list of S4 generics and/or methods exported by the package:
 
 ```{r}
 exports <- getNamespaceExports("basejump") %>%
@@ -80,11 +80,15 @@ In [R][], you can check whether a function is using the S4 object system with th
 
 # Annotation functions
 
-Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent2002-fo] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse [GFF][] and [GTF][] annotation files. [GFF][] file parsing is handled internally by the [rtracklayer][] [@Lawrence2009-zx] package. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] [@Lawrence2013-vz] package, which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols` slot of the object. `GRanges` can be coerced to a standard `data.frame` using the `BiocGenerics::as.data.frame()` function.
+Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent2002-fo] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse [GFF][] and [GTF][] annotation files. [GFF][] file parsing is handled internally by the [rtracklayer][] package [@Lawrence2009-zx]. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] package [@Lawrence2013-vz], which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols` slot of the object. `GRanges` can be coerced to a standard `data.frame` using the `BiocGenerics::as.data.frame()` function.
 
 ## Ensembl annotations
 
-`makeGRangesFromEnsembl()` supports multiple genome builds, and versioned releases from [Ensembl][]. By default, the function will use the latest release version available from [AnnotationHub][] and [ensembldb][].
+`makeGRangesFromEnsembl()` supports multiple genome builds, and versioned releases from [Ensembl][].
+
+### Current release
+
+By default, the function will use the latest release version available from [AnnotationHub][] and [ensembldb][].
 
 ```{r}
 grch38 <- makeGRangesFromEnsembl("Homo sapiens")
@@ -133,7 +137,7 @@ S4Vectors::mcols(transcripts) %>% glimpse()
 
 ### Versioned releases
 
-Versioned releases are supported by the "`release`" argument, which currently supports back to [Ensembl][] 87. If an older [Ensembl][] release is required, resort to using a GFF file or browse the [Bioconductor][] website to see if a suitable annotation database package is available.
+Versioned releases are supported by the "`release`" argument, which currently supports back to [Ensembl][] 87. If an older [Ensembl][] release is required, resort to using a [GTF][]/[GFF][] file or browse the [Bioconductor][] website to see if a suitable annotation database package is available.
 
 ```{r}
 grch38_90 <- makeGRangesFromEnsembl(
@@ -185,9 +189,9 @@ tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
 glimpse(tx2gene)
 ```
 
-## Parse GFF files
+## Parse GTF/GFF files
 
-For organisms that are not well supported on [Ensembl][], we recommend using [GTF][] or [GFF][] files for gene annotations. In general, [GTF][] files are more consistently standardized and recommended over GFFv3, if possible. `makeTx2geneFromGFF()` and `makeGene2symbolFromGFF()` are utility functions that can return transcript-to-gene and gene-to-symbol mappings from the genomic ranges returned by `makeGRangesFromGFF()`.
+For organisms that are not well supported on [Ensembl][], we recommend using [GTF][] or [GFF][] files for gene annotations. In general, [GTF][] files are more consistently standardized and recommended over GFF3, if possible. `makeTx2geneFromGFF()` and `makeGene2symbolFromGFF()` are utility functions that can return transcript-to-gene and gene-to-symbol mappings from the genomic ranges returned by `makeGRangesFromGFF()`.
 
 ### GTF
 
@@ -212,7 +216,7 @@ BiocGenerics::strand(grch38_gtf)
 S4Vectors::mcols(grch38_gtf) %>% glimpse()
 ```
 
-### GFFv3
+### GFF3
 
 ```{r}
 gff_file <- paste(
@@ -294,17 +298,17 @@ Note that for *Caenorhabditis elegans* genome annotations, we recommend addition
 
 # Read/write functions
 
-This section is still under development.
+FIXME This section is still under development.
 
 # Data functions
 
-This section is still under development.
+FIXME This section is still under development.
 
 # Plot functions
 
 ## ggplot2 themes
 
-The package provides simple, high-contrast [ggplot2][] [@ggplot2] themes that are suitable for publication and presentation. The `theme_paperwhite()` theme is a black-and-white theme that uses a bold sans-serif font. The `theme_midnight()` theme inverts `theme_paperwhite()` to use a black background, and can be useful for visualizing plots that contain a wide range of bright colors.
+The package provides two simple, high-contrast [ggplot2][] [@Wickham2009-si] themes that are suitable for publication and presentation. Both of these themes extend the `ggplot2::theme_bw()` theme, with a few tweaks. `theme_paperwhite()` uses black on white colors, and `theme_midnight()` is a dark theme, instead opting for white on black. Both themes use bold sans serif fonts for all labels, and remove the axis grid by default, which are typically not very informative and make a plot appear more cluttered.
 
 ```{r}
 library("ggplot2")
@@ -319,13 +323,14 @@ p <- ggplot(
     geom_point()
 ```
 
+For reference, here are two popular [ggplot2][] default themes: `theme_grey()` and `theme_bw()`.
+
 ```{r}
 p + theme_grey()
-p + theme_minimal()
 p + theme_bw()
 ```
 
-Comment on borders, axis, bold sans serif text.
+The basejump themes extend `theme_bw()`, with a few tweaks and color changes.
 
 ```{r}
 p + theme_paperwhite()
@@ -338,7 +343,13 @@ Additional, the package provides support for easy heatmap generation, by wrappin
 
 ```{r}
 plotHeatmap(rse_bcb)
+```
+
+```{r}
 plotCorrelationHeatmap(rse_bcb)
+```
+
+```{r}
 plotQuantileHeatmap(rse_bcb)
 ```
 
@@ -410,7 +421,7 @@ upperCamel(x) %>% names()
 
 # Math and science functions
 
-This section is still in development.
+FIXME This section is still under development.
 
 # R session information
 
