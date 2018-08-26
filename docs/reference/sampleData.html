@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
       </span>
     </div>
 
@@ -74,6 +74,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -198,17 +201,41 @@ experiment).</p>
 #&gt;   ..@ elementMetadata: NULL
 #&gt;   ..@ metadata       : list()</div><div class='input'>
 <span class='co'># Assignment support</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_dds</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_bcb</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"test"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>seq_len</span>(<span class='fu'>ncol</span>(<span class='no'>x</span>))
 <span class='co'># `test` column should be now defined</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='fu'>sampleData</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:12] "sample1" "sample2" "sample3" "sample4" ...
-#&gt;   ..@ nrows          : int 12
-#&gt;   ..@ listData       :List of 2
-#&gt;   .. ..$ condition: Factor w/ 2 levels "A","B": 1 1 1 1 1 1 2 2 2 2 ...
-#&gt;   .. ..$ test     : int [1:12] 1 2 3 4 5 6 7 8 9 10 ...
+#&gt;   ..@ rownames       : chr [1:6] "control_rep1" "control_rep2" "control_rep3" "fa_day7_rep1" ...
+#&gt;   ..@ nrows          : int 6
+#&gt;   ..@ listData       :List of 26
+#&gt;   .. ..$ sampleName                   : Factor w/ 18 levels "control_rep1",..: 1 2 3 16 17 18
+#&gt;   .. ..$ day                          : Factor w/ 6 levels "0","1","2","3",..: 1 1 1 5 5 5
+#&gt;   .. ..$ genomeBuild                  : Factor w/ 1 level "GRCm38_90": 1 1 1 1 1 1
+#&gt;   .. ..$ replicate                    : Factor w/ 3 levels "1","2","3": 1 2 3 1 2 3
+#&gt;   .. ..$ samRef                       : Factor w/ 1 level "/n/app/bcbio/dev/genomes/Mmusculus/GRCm38_90/seq/GRCm38_90.fa": 1 1 1 1 1 1
+#&gt;   .. ..$ strain                       : Factor w/ 1 level "Balb/c": 1 1 1 1 1 1
+#&gt;   .. ..$ tissue                       : Factor w/ 1 level "kidney": 1 1 1 1 1 1
+#&gt;   .. ..$ treatment                    : Factor w/ 2 levels "control","folic_acid": 1 1 1 2 2 2
+#&gt;   .. ..$ averageInsertSize            : num [1:6] 243 254 238 235 248 ...
+#&gt;   .. ..$ averageReadLength            : num [1:6] 50 50 50 50 50 50
+#&gt;   .. ..$ duplicates                   : num [1:6] 0 0 0 0 0 0
+#&gt;   .. ..$ duplicationRateOfMapped      : num [1:6] 0.539 0.542 0.566 0.453 0.442 ...
+#&gt;   .. ..$ exonicRate                   : num [1:6] 0.734 0.718 0.787 0.655 0.646 ...
+#&gt;   .. ..$ intergenicRate               : num [1:6] 0.0634 0.0655 0.0461 0.0487 0.0586 0.0702
+#&gt;   .. ..$ intronicRate                 : num [1:6] 0.203 0.217 0.167 0.296 0.296 ...
+#&gt;   .. ..$ mappedPairedReads            : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
+#&gt;   .. ..$ mappedReads                  : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
+#&gt;   .. ..$ qualityFormat                : Factor w/ 1 level "standard": 1 1 1 1 1 1
+#&gt;   .. ..$ rrna                         : num [1:6] 16412535 31779476 15967974 14933148 13229240 ...
+#&gt;   .. ..$ rrnaRate                     : num [1:6] 0.614 0.585 0.645 0.555 0.558 ...
+#&gt;   .. ..$ sequenceLength               : num [1:6] 50 50 50 50 50 50
+#&gt;   .. ..$ sequencesFlaggedAsPoorQuality: num [1:6] 0 0 0 0 0 0
+#&gt;   .. ..$ totalReads                   : num [1:6] 9.72e+07 1.79e+08 7.68e+07 8.11e+07 7.41e+07 ...
+#&gt;   .. ..$ x5x3Bias                     : num [1:6] 0.88 0.77 0.91 0.45 0.76 0.65
+#&gt;   .. ..$ xGC                          : num [1:6] 46 45 43 40 41 46
+#&gt;   .. ..$ test                         : int [1:6] 1 2 3 4 5 6
 #&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata:Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+#&gt;   ..@ elementMetadata: NULL
 #&gt;   ..@ metadata       : list()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

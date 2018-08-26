@@ -65,7 +65,7 @@ modification of the values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
       </span>
     </div>
 
@@ -76,6 +76,9 @@ modification of the values." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -126,6 +129,18 @@ modification of the values.</p>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='fu'>makeNames</span>(<span class='no'>names</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -206,6 +221,18 @@ modification of the values.</p>
 <span class='co'># S4 method for GRanges</span>
 <span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+<span class='co'># S4 method for CompressedGRangesList</span>
+<span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='co'># S4 method for CompressedGRangesList</span>
+<span class='fu'>dotted</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for CompressedGRangesList</span>
+<span class='fu'>snake</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for CompressedGRangesList</span>
+<span class='fu'>upperCamel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
 <span class='co'># S4 method for list</span>
 <span class='fu'>camel</span>(<span class='no'>object</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
@@ -270,12 +297,13 @@ will be meaningful.</p></td>
     </tr>
     <tr>
       <th>names</th>
-      <td><p><code>atomic</code> to be coerced to syntactically valid names. Will be
-coerced to <code>character</code>, if necessary.</p></td>
+      <td><p>character vector to be coerced to syntactically valid
+   names.  This is coerced to character if necessary.</p></td>
     </tr>
     <tr>
       <th>unique</th>
-      <td><p><code>boolean</code>. If <code>TRUE</code>, the resulting elements are unique.</p></td>
+      <td><p>logical; if <code>TRUE</code>, the resulting elements are
+     unique.  This may be desired for, e.g., column names.</p></td>
     </tr>
     <tr>
       <th>strict</th>
