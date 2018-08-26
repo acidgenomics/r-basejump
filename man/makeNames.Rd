@@ -31,6 +31,10 @@
 \alias{dotted,GRanges-method}
 \alias{snake,GRanges-method}
 \alias{upperCamel,GRanges-method}
+\alias{camel,CompressedGRangesList-method}
+\alias{dotted,CompressedGRangesList-method}
+\alias{snake,CompressedGRangesList-method}
+\alias{upperCamel,CompressedGRangesList-method}
 \alias{camel,list-method}
 \alias{dotted,list-method}
 \alias{snake,list-method}
@@ -43,10 +47,6 @@
 \alias{dotted,SimpleList-method}
 \alias{snake,SimpleList-method}
 \alias{upperCamel,SimpleList-method}
-\alias{camel,ANY-method}
-\alias{dotted,ANY-method}
-\alias{snake,ANY-method}
-\alias{upperCamel,ANY-method}
 \title{Make Syntactically Valid Names}
 \usage{
 camel(object, ...)
@@ -114,6 +114,14 @@ makeNames(names, unique = FALSE)
 
 \S4method{upperCamel}{GRanges}(object, strict = FALSE)
 
+\S4method{camel}{CompressedGRangesList}(object, strict = FALSE)
+
+\S4method{dotted}{CompressedGRangesList}(object)
+
+\S4method{snake}{CompressedGRangesList}(object)
+
+\S4method{upperCamel}{CompressedGRangesList}(object, strict = FALSE)
+
 \S4method{camel}{list}(object, strict = FALSE)
 
 \S4method{dotted}{list}(object)
@@ -137,16 +145,6 @@ makeNames(names, unique = FALSE)
 \S4method{snake}{SimpleList}(object)
 
 \S4method{upperCamel}{SimpleList}(object, strict = FALSE)
-
-\S4method{camel}{ANY}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
-
-\S4method{dotted}{ANY}(object, rownames = FALSE, colnames = TRUE)
-
-\S4method{snake}{ANY}(object, rownames = FALSE, colnames = TRUE)
-
-\S4method{upperCamel}{ANY}(object, rownames = FALSE, colnames = TRUE,
-  strict = FALSE)
 }
 \arguments{
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment

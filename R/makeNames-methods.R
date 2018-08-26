@@ -592,9 +592,10 @@ setMethod(
     "camel",
     signature("GRanges"),
     function(object, strict = FALSE) {
-        colnames <- colnames(mcols(object))
-        colnames <- camel(colnames, strict = strict)
-        colnames(mcols(object)) <- colnames
+        colnames(mcols(object)) <- camel(
+            object = colnames(mcols(object)),
+            strict = strict
+        )
         object
     }
 )
@@ -607,9 +608,9 @@ setMethod(
     "dotted",
     signature("GRanges"),
     function(object) {
-        colnames <- colnames(mcols(object))
-        colnames <- dotted(colnames)
-        colnames(mcols(object)) <- colnames
+        colnames(mcols(object)) <- dotted(
+            object = colnames(mcols(object))
+        )
         object
     }
 )
@@ -622,9 +623,9 @@ setMethod(
     "snake",
     signature("GRanges"),
     function(object) {
-        colnames <- colnames(mcols(object))
-        colnames <- snake(colnames)
-        colnames(mcols(object)) <- colnames
+        colnames(mcols(object)) <- snake(
+            object = colnames(mcols(object))
+        )
         object
     }
 )
@@ -637,11 +638,53 @@ setMethod(
     "upperCamel",
     signature("GRanges"),
     function(object, strict = FALSE) {
-        colnames <- colnames(mcols(object))
-        colnames <- upperCamel(colnames, strict = strict)
-        colnames(mcols(object)) <- colnames
+        colnames(mcols(object)) <- upperCamel(
+            object = colnames(mcols(object)),
+            strict = strict
+        )
         object
     }
+)
+
+
+
+# CompressedGRangesList ========================================================
+#' @rdname makeNames
+#' @export
+setMethod(
+    "camel",
+    signature("CompressedGRangesList"),
+    getMethod("camel", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "dotted",
+    signature("CompressedGRangesList"),
+    getMethod("dotted", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "snake",
+    signature("CompressedGRangesList"),
+    getMethod("snake", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "upperCamel",
+    signature("CompressedGRangesList"),
+    getMethod("upperCamel", "GRanges")
 )
 
 
@@ -765,114 +808,4 @@ setMethod(
     "upperCamel",
     signature("SimpleList"),
     getMethod("upperCamel", "list")
-)
-
-
-
-# ANY ==========================================================================
-#' @rdname makeNames
-#' @export
-setMethod(
-    "camel",
-    signature("ANY"),
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        strict = FALSE
-    ) {
-        if (!is.null(dimnames(object))) {
-            .camel.matrix(
-                object,
-                rownames = rownames,
-                colnames = colnames,
-                strict = strict
-            )
-        } else if (!is.null(names(object))) {
-            .camel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "dotted",
-    signature("ANY"),
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE
-    ) {
-        if (!is.null(dimnames(object))) {
-            .dotted.matrix(
-                object,
-                rownames = rownames,
-                colnames = colnames
-            )
-        } else if (!is.null(names(object))) {
-            .dotted.names(object)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "snake",
-    signature("ANY"),
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE
-    ) {
-        # Passthrough: rownames, colnames
-        if (!is.null(dimnames(object))) {
-            .snake.matrix(
-                object,
-                rownames = rownames,
-                colnames = colnames
-            )
-        } else if (!is.null(names(object))) {
-            .snake.names(object)
-        } else {
-            object
-        }
-    }
-)
-
-
-
-#' @rdname makeNames
-#' @export
-setMethod(
-    "upperCamel",
-    signature("ANY"),
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        strict = FALSE
-    ) {
-        if (!is.null(dimnames(object))) {
-            .upperCamel.matrix(
-                object,
-                rownames = rownames,
-                colnames = colnames,
-                strict = strict
-            )
-        } else if (!is.null(names(object))) {
-            .upperCamel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
 )
