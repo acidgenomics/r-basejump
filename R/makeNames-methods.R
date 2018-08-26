@@ -106,11 +106,11 @@ makeNames <- function(names, unique = FALSE) {
     format = c("lower", "upper"),
     strict = FALSE
 ) {
-    object <- .dotted(object)
+    object <- dotted(object)
     format <- match.arg(format)
     assert_is_a_bool(strict)
 
-
+    # Simplify mixed case acronyms in strict mode.
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
@@ -126,20 +126,24 @@ makeNames <- function(names, unique = FALSE) {
         object <- gsub("^([a-z])", replacement = "\\U\\1", object, perl = TRUE)
     }
 
-    # Check for the presence of delimited numbers (e.g. 1,000,000)
+    # Check for the presence of delimited numbers (e.g. 100.00).
     pattern <- "([0-9])\\.([0-9])"
-    replacement <- "\\1x\\2"
+    if (isTRUE(strict)) {
+        replacement <- "x"
+    } else {
+        replacement <- "."
+    }
+    replacement <- paste0("\\1", replacement, "\\2")
     if (any(grepl(pattern, object))) {
         object <- object %>%
-            # Escape number separators (useful for keeping decimals, etc.)
+            # Escape number separators (useful for keeping decimals, etc.).
             gsub(pattern, replacement, .) %>%
-            # Have to run twice here otherwise it will miss some matches
+            # Have to run twice here otherwise it will miss some matches.
             gsub(pattern, replacement, .)
     }
 
-    object %>%
-        # First letter of second plus words must be capitalized
-        gsub("\\.(\\w)", "\\U\\1", ., perl = TRUE)
+    # First letter of second word must be capitalized.
+    gsub("(\\w)\\.(\\w)", "\\1\\U\\2", object, perl = TRUE)
 }
 
 
@@ -189,7 +193,7 @@ makeNames <- function(names, unique = FALSE) {
 .snake <- function(object) {
     assert_is_atomic(object)
     object %>%
-        .dotted() %>%
+        dotted() %>%
         tolower() %>%
         gsub("\\.", "_", .)
 }
@@ -197,7 +201,7 @@ makeNames <- function(names, unique = FALSE) {
 
 
 .upperCamel <- function(object, strict = FALSE) {
-    .camel(object, format = "upper", strict = strict)
+    camel(object, format = "upper", strict = strict)
 }
 
 
