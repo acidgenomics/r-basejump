@@ -5,8 +5,8 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
-#' @importFrom assertive.base assert_all_are_not_na assert_are_identical
-#'   assert_is_identical_to_na is_not_na
+#' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
+#'   assert_are_identical assert_is_identical_to_na is_not_na
 #' @importFrom assertive.code assert_all_are_existing is_existing
 #' @importFrom assertive.data assert_all_are_hex_colors is_hex_color
 #' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
