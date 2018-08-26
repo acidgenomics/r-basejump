@@ -40,10 +40,10 @@ This vignette focuses on the most common user-facing functions that fall into th
 - Data functions
 - Plot functions
 - Sanitization functions
+- Math and science functions
 
 There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
 
-- Math and science functions
 - R Markdown functions
 - Atomic vector functions
 - Coercion methods
@@ -407,6 +407,10 @@ dotted(x) %>% names()
 snake(x) %>% names()
 upperCamel(x) %>% names()
 ```
+
+# Math and science functions
+
+This section is still in development.
 
 # R session information
 
