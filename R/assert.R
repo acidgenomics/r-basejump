@@ -230,11 +230,6 @@ assertFormalInterestingGroups <- function(
             y = colnames(colData(x)),
             severity = severity
         )
-        assert_is_subset(
-            x = interestingGroups,
-            y = colnames(sampleData(x, interestingGroups = NULL)),
-            severity = severity
-        )
         x <- colData(x)
     }
     x <- as(x, "DataFrame")
