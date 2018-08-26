@@ -86,21 +86,7 @@ NULL
 
 
 
-# atomic =======================================================================
-#' @rdname makeNames
-#' @inheritParams base::make.names
-#' @export
-makeNames <- function(names, unique = FALSE) {
-    assert_is_atomic(names)
-    assert_is_a_bool(unique)
-    names <- as.character(names)
-    names <- make.names(names, unique = unique)
-    names <- gsub("\\.", "_", names)
-    names
-}
-
-
-
+# Constructors =================================================================
 .camel <- function(
     object,
     format = c("lower", "upper"),
@@ -148,6 +134,14 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
+.camel.names <- function(object, strict = FALSE) {  # nolint
+    assert_has_names(object)
+    names(object) <- camel(names(object), strict = strict)
+    object
+}
+
+
+
 # Dotted case is the internal method used by camel and snake
 .dotted <- function(object) {
     assert_is_atomic(object)
@@ -169,6 +163,14 @@ makeNames <- function(names, unique = FALSE) {
         gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
         # Word following an acronym
         gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
+}
+
+
+
+.dotted.names <- function(object) {  # nolint
+    assert_has_names(object)
+    names(object) <- dotted(names(object))
+    object
 }
 
 
@@ -200,33 +202,16 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
-.upperCamel <- function(object, strict = FALSE) {
-    camel(object, format = "upper", strict = strict)
-}
-
-
-
-# names (character) ============================================================
-.camel.names <- function(object, strict = FALSE) {  # nolint
-    assert_has_names(object)
-    names(object) <- camel(names(object), strict = strict)
-    object
-}
-
-
-
-.dotted.names <- function(object) {  # nolint
-    assert_has_names(object)
-    names(object) <- dotted(names(object))
-    object
-}
-
-
-
 .snake.names <- function(object) {  # nolint
     assert_has_names(object)
     names(object) <- snake(names(object))
     object
+}
+
+
+
+.upperCamel <- function(object, strict = FALSE) {
+    camel(object, format = "upper", strict = strict)
 }
 
 
@@ -236,6 +221,69 @@ makeNames <- function(names, unique = FALSE) {
     names(object) <- upperCamel(names(object), strict = strict)
     object
 }
+
+
+
+# atomic =======================================================================
+#' @rdname makeNames
+#' @inheritParams base::make.names
+#' @export
+makeNames <- function(names, unique = FALSE) {
+    assert_is_atomic(names)
+    assert_is_a_bool(unique)
+    names <- as.character(names)
+    names <- make.names(names, unique = unique)
+    names <- gsub("\\.", "_", names)
+    names
+}
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "camel",
+    signature("atomic"),
+    function(object, ...) {
+        object
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "dotted",
+    signature("atomic"),
+    function(object, ...) {
+        object
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "snake",
+    signature("atomic"),
+    function(object, ...) {
+        object
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    "upperCamel",
+    signature("atomic"),
+    function(object, ...) {
+        object
+    }
+)
 
 
 

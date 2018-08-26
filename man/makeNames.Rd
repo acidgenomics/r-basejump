@@ -7,6 +7,10 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{makeNames}
+\alias{camel,atomic-method}
+\alias{dotted,atomic-method}
+\alias{snake,atomic-method}
+\alias{upperCamel,atomic-method}
 \alias{camel,character-method}
 \alias{dotted,character-method}
 \alias{snake,character-method}
@@ -58,6 +62,14 @@ snake(object, ...)
 upperCamel(object, ...)
 
 makeNames(names, unique = FALSE)
+
+\S4method{camel}{atomic}(object, ...)
+
+\S4method{dotted}{atomic}(object, ...)
+
+\S4method{snake}{atomic}(object, ...)
+
+\S4method{upperCamel}{atomic}(object, ...)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
