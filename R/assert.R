@@ -232,7 +232,7 @@ assertFormalInterestingGroups <- function(
         )
         assert_is_subset(
             x = interestingGroups,
-            y = colnames(sampleData(x)),
+            y = colnames(sampleData(x, interestingGroups = NULL)),
             severity = severity
         )
         x <- colData(x)
