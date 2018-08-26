@@ -88,9 +88,7 @@ NULL
 
 # atomic =======================================================================
 #' @rdname makeNames
-#' @param names `atomic` to be coerced to syntactically valid names. Will be
-#'   coerced to `character`, if necessary.
-#' @param unique `boolean`. If `TRUE`, the resulting elements are unique.
+#' @inheritParams base::make.names
 #' @export
 makeNames <- function(names, unique = FALSE) {
     assert_is_atomic(names)

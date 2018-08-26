@@ -152,10 +152,11 @@ will be meaningful.}
 
 \item{...}{Additional arguments.}
 
-\item{names}{\code{atomic} to be coerced to syntactically valid names. Will be
-coerced to \code{character}, if necessary.}
+\item{names}{character vector to be coerced to syntactically valid
+   names.  This is coerced to character if necessary.}
 
-\item{unique}{\code{boolean}. If \code{TRUE}, the resulting elements are unique.}
+\item{unique}{logical; if \code{TRUE}, the resulting elements are
+     unique.  This may be desired for, e.g., column names.}
 
 \item{strict}{\code{boolean}. Enforce strict name sanitization. When \code{TRUE}, this
 does not allow the return of any capitalized acronyms. "RNA" will become
