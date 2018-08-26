@@ -1,9 +1,16 @@
 globalVariables(".")
 
-# Note optional matching of gzip
+# Note optional matching of gzip.
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
-# Ignore case
+#' Lane Grep Pattern
+#' @keywords internal
+#' @export
+#' @examples
+#' lanePattern
+lanePattern <- "_L(\\d{3})"
+
+# Ignore case.
 rdataExtPattern <- "\\.(rd[a|ata|s])$"
 
 rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
