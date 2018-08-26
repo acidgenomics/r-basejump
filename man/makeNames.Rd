@@ -51,6 +51,10 @@
 \alias{dotted,SimpleList-method}
 \alias{snake,SimpleList-method}
 \alias{upperCamel,SimpleList-method}
+\alias{camel,ANY-method}
+\alias{dotted,ANY-method}
+\alias{snake,ANY-method}
+\alias{upperCamel,ANY-method}
 \title{Make Syntactically Valid Names}
 \usage{
 camel(object, ...)
@@ -63,13 +67,13 @@ upperCamel(object, ...)
 
 makeNames(names, unique = FALSE)
 
-\S4method{camel}{atomic}(object, ...)
+\S4method{camel}{atomic}(object, strict = FALSE)
 
-\S4method{dotted}{atomic}(object, ...)
+\S4method{dotted}{atomic}(object)
 
-\S4method{snake}{atomic}(object, ...)
+\S4method{snake}{atomic}(object)
 
-\S4method{upperCamel}{atomic}(object, ...)
+\S4method{upperCamel}{atomic}(object, strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
@@ -157,6 +161,16 @@ makeNames(names, unique = FALSE)
 \S4method{snake}{SimpleList}(object)
 
 \S4method{upperCamel}{SimpleList}(object, strict = FALSE)
+
+\S4method{camel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
+
+\S4method{dotted}{ANY}(object, rownames = FALSE, colnames = TRUE)
+
+\S4method{snake}{ANY}(object, rownames = FALSE, colnames = TRUE)
+
+\S4method{upperCamel}{ANY}(object, rownames = FALSE, colnames = TRUE,
+  strict = FALSE)
 }
 \arguments{
 \item{object}{Character vector or an object for which \code{\link[=names]{names()}} assignment
