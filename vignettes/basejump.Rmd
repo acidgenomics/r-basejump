@@ -11,7 +11,7 @@ vignette: >
 abstract: >
   The basejump package is an infrastructure toolkit that extends the base
   functionality of Bioconductor [@Huber2015-nw]. The package leverages the S4
-  class system for object-oriented programming, and defines multiple additional
+  object system for object-oriented programming, and defines multiple additional
   generic functions for use in genomics research. basejump provides simple,
   user-friendly functions for the acquisition of genome annotations from
   multiple online databases, including native support for Ensembl
@@ -31,6 +31,8 @@ library("basejump")
 ggplot2::theme_set(theme_paperwhite())
 ```
 
+# Introduction
+
 This vignette focuses on the most common user-facing functions that fall into the following categories:
 
 - Annotation functions
@@ -42,15 +44,41 @@ This vignette focuses on the most common user-facing functions that fall into th
 
 There are additional function families whose functionality lie outside the scope of this vignette. Consult the [basejump][] website or package documentation for more information of these types of functions, which are more technical in nature and predominantly developer-facing:
 
-- R Markdown Functions
-- Atomic Vector Functions
-- Coercion Methods
-- Developer Functions
-- Assert Check Functions
+- R Markdown functions
+- Atomic vector functions
+- Coercion methods
+- Developer functions
+- Assert check functions
+
+# The S4 object system
+
+The [basejump][] package defines generics and methods for object-oriented programming with the S4 object system, which is used extensively by the [Bioconductor][] project. These resources describe the S4 object system in detail:
+
+- [S4 classes and methods](https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html), Martin Morgan and Hervé Pagès, 2017.
+- [A quick overview of the S4 class system](https://bioconductor.org/packages/devel/bioc/vignettes/S4Vectors/inst/doc/S4QuickOverview.pdf), Hervé Pagès, 2016.
+- [The S4 object system](http://adv-r.had.co.nz/S4.html), Hadley Wickham.
+- [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
+- [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
+
+Here is a current list of S4 generics and/or methods exported by the package:
+
+```{r}
+exports <- sort(getNamespaceExports("basejump"))[!grepl("^\\.", .)]
+isS4 <- vapply(
+    X = exports,
+    FUN = function(x) {
+        isS4(get(x, envir = asNamespace("basejump")))
+    },
+    FUN.VALUE = logical(1L)
+)
+exports[isS4]
+```
+
+In [R][], you can check whether a function is using the S4 object system with the `isS4()` function. Additionally, `showMethods()` and `getMethod`. In contrast, to obtain information on functions using the [S3][] object system, use `methods()` instead.
 
 # Annotation functions
 
-Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse general feature format (GFF) and general transfer format (GTF; a.k.a. GFFv2) annotation files. GFF file parsing is handled internally by the [rtracklayer][] [@rtracklayer] package. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] [@Lawrence2013-vz] package, which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols()` slot of the object. `GRanges` can be coerced to a flat `data.frame` using the `as.data.frame()` function.
+Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent2002-fo] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse general feature format (GFF) and general transfer format (GTF; a.k.a. GFFv2) annotation files. GFF file parsing is handled internally by the [rtracklayer][] [@Lawrence2009-zx] package. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] [@Lawrence2013-vz] package, which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols()` slot of the object. `GRanges` can be coerced to a flat `data.frame` using the `as.data.frame()` function.
 
 ## Ensembl annotations
 
@@ -126,7 +154,7 @@ summary(grch37)
 seqinfo(grch37)
 ```
 
-### data.frame return
+### Data frame return
 
 For convenience, if you prefer to return annotations as a `data.frame` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function but automatically coerces the return to a standard `data.frame`, with the identifiers as the row names. For quick access to current [Ensembl][] annotations in `tibble` format, we also recommend the [annotables][] package.
 
@@ -190,7 +218,7 @@ stripTranscriptVersions()
 
 ### HGNC
 
-[HGNC][] [@HGNC].
+[HGNC][] [@Yates2017-fq].
 
 ```{r}
 hgnc2gene <- hgnc2gene()
@@ -199,7 +227,7 @@ glimpse(hgnc2gene)
 
 ### MGI
 
-[MGI][] [@MGI].
+[MGI][] [@Smith2018-ds].
 
 ```{r}
 mgi2gene <- mgi2gene()
@@ -208,7 +236,7 @@ glimpse(mgi2gene)
 
 ### PANTHER
 
-[PANTHER][] [@PANTHER].
+[PANTHER][] [@Mi2017-jl].
 
 ```{r}
 panther <- panther()
@@ -217,7 +245,7 @@ glimpse(panther)
 
 ### EggNOG
 
-[EggNOG][] [@EggNOG]
+[EggNOG][] [@Huerta-Cepas2016-ql]
 
 ```{r}
 eggnog <- eggnog()
@@ -226,7 +254,7 @@ glimpse(eggnog)
 
 ### WormBase
 
-Note that for *Caenorhabditis elegans* genome annotations, we recommend additional use of our specialized [wormbase package][r-wormbase], which queries the [WormBase][] database directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on [Ensembl][].
+Note that for *Caenorhabditis elegans* genome annotations, we recommend additional use of our specialized [wormbase package][r-wormbase], which queries the [WormBase][] database [@Stein2001-mk] directly, and provides support of versioned releases (e.g. WS265) that have additional metadata not currently available on [Ensembl][].
 
 # Read/write functions
 
@@ -277,35 +305,6 @@ Need an introduction to [SummarizedExperiment][].
 object <- basejump::rse_bcb
 print(object)
 ```
-
-## S4 generics
-
-[basejump][] defines additional generics for use in genomics.
-`showMethods()` and `getMethod()`.
-
-Here is the current list of exported S4 generics:
-
-```{r}
-exports <- getNamespaceExports("basejump") %>%
-    sort() %>%
-    .[!grepl("^\\.", .)]
-isS4 <- vapply(
-    X = exports,
-    FUN = function(x) {
-        isS4(get(x, envir = asNamespace("basejump")))
-    },
-    FUN.VALUE = logical(1L)
-)
-exports[isS4]
-```
-
-Additional resources:
-
-- [S4 classes and methods](https://www.bioconductor.org/help/course-materials/2017/Zurich/S4-classes-and-methods.html), Martin Morgan and Hervé Pagès, 2017.
-- [A quick overview of the S4 class system](https://bioconductor.org/packages/devel/bioc/vignettes/S4Vectors/inst/doc/S4QuickOverview.pdf), Hervé Pagès, 2016.
-- [The S4 object system](http://adv-r.had.co.nz/S4.html), Hadley Wickham.
-- [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
-- [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
 
 ## Make a SummarizedExperiment
 
@@ -510,6 +509,7 @@ The papers and software cited in our workflows are available as a [shared librar
 [RefSeq]: https://www.ncbi.nlm.nih.gov/refseq
 [rio]: https://cran.r-project.org/package=rio
 [rtracklayer]: https://doi.org/doi:10.18129/B9.bioc.rtracklayer
+[S3]: http://adv-r.had.co.nz/S3.html
 [SummarizedExperiment]: https://doi.org/doi:10.18129/B9.bioc.SummarizedExperiment
 [UCSC]: http://genome.ucsc.edu
 [WormBase]: https://wormbase.org
