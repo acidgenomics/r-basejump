@@ -1,3 +1,5 @@
+# FIXME Switch all of these loops to mapply calls
+
 context("Make Names Functions")
 
 funs <- list(
@@ -35,7 +37,7 @@ test_that("makeNames : atomic", {
 # character ====================================================================
 test_that("makeNames : character", {
     x <- mn[["character"]]
-    expect <- list(
+    expected <- list(
         camel = c(
             "helloWorld",
             "helloWORLD",
@@ -46,6 +48,9 @@ test_that("makeNames : character", {
             "g2mScore",
             "worfdbHTMLRemap",
             "mazdaRX4",
+            "percentGC",
+            "x5prime",
+            "x5.3Bias",
             "x123",
             NA
         ),
@@ -59,6 +64,9 @@ test_that("makeNames : character", {
             "G2M.Score",
             "worfdb.HTML.Remap",
             "Mazda.RX4",
+            "percent.GC",
+            "X5prime",
+            "X5.3.bias",
             "X123",
             NA
         ),
@@ -72,6 +80,9 @@ test_that("makeNames : character", {
             "g2m_score",
             "worfdb_html_remap",
             "mazda_rx4",
+            "percent_gc",
+            "x5prime",
+            "x5_3_bias",
             "x123",
             NA
         ),
@@ -85,26 +96,39 @@ test_that("makeNames : character", {
             "G2MScore",
             "WorfdbHTMLRemap",
             "MazdaRX4",
+            "PercentGC",
+            "X5prime",
+            "X5.3Bias",
             "X123",
             NA
         )
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(funs[[i]](x), expect[[i]])
-    })
+    mapply(
+        f = funs,
+        expected = expected,
+        FUN = function(f, expected) {
+            expect_identical(f(x), expected)
+        },
+        SIMPLIFY = FALSE
+    )
 })
 
 test_that("makeNames : character (named)", {
     x <- mn[["namedCharacter"]]
-    expect <- list(
+    expected <- list(
         camel = c(itemA = "helloWorld", itemB = "helloWORLD"),
         dotted = c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD"),
         snake = c("item_a" = "hello_world", "item_b" = "hello_world"),
         upperCamel = c(ItemA = "HelloWorld", ItemB = "HELLOWORLD")
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(funs[[i]](x), expect[[i]])
-    })
+    mapply(
+        f = funs,
+        expected = expected,
+        FUN = function(f, expected) {
+            expect_identical(f(x), expected)
+        },
+        SIMPLIFY = FALSE
+    )
 })
 
 test_that("makeNames : character : Delimited numbers", {
@@ -321,25 +345,6 @@ test_that("makeNames : ANY (e.g. Matrix)", {
 
 
 # camel-specific ===============================================================
-test_that("camel : Tricky variants", {
-    expect_identical(
-        camel("3bias", strict = FALSE),
-        "x3bias"
-    )
-    expect_identical(
-        camel("5'-3' bias", strict = FALSE),
-        "x5.3Bias"
-    )
-    expect_identical(
-        camel("5'-3' bias", strict = TRUE),
-        "x5x3Bias"
-    )
-    expect_identical(
-        camel("x5.3Bias", strict = TRUE),
-        "x5x3Bias"
-    )
-})
-
 test_that("camel : Strict mode", {
     x <- mn[["character"]]
     expect_identical(
