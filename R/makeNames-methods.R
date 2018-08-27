@@ -152,6 +152,8 @@ NULL
     assert_is_atomic(object)
     object %>%
         as.character() %>%
+        # Handle "%" as a special case. Spell out as "percent".
+        gsub("%", "percent", .) %>%
         # Strip comma delims in between numbers (e.g. 1,000,000).
         gsub("(\\d),(\\d)", "\\1\\2", .) %>%
         make.names(unique = FALSE, allow_ = FALSE) %>%
