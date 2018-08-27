@@ -321,6 +321,25 @@ test_that("makeNames : ANY (e.g. Matrix)", {
 
 
 # camel-specific ===============================================================
+test_that("camel : Tricky variants", {
+    expect_identical(
+        camel("3bias", strict = FALSE),
+        "x3bias"
+    )
+    expect_identical(
+        camel("5'-3' bias", strict = FALSE),
+        "x5.3Bias"
+    )
+    expect_identical(
+        camel("5'-3' bias", strict = TRUE),
+        "x5x3Bias"
+    )
+    expect_identical(
+        camel("x5.3Bias", strict = TRUE),
+        "x5x3Bias"
+    )
+})
+
 test_that("camel : Strict mode", {
     x <- mn[["character"]]
     expect_identical(
@@ -331,7 +350,7 @@ test_that("camel : Strict mode", {
             "rnaiClones",
             "nCount",
             "tx2gene",
-            "tx2geneId",
+            "tx2GeneId",
             "g2mScore",
             "worfdbHtmlRemap",
             "mazdaRx4",
@@ -347,7 +366,7 @@ test_that("camel : Strict mode", {
             "RnaiClones",
             "NCount",
             "Tx2gene",
-            "Tx2geneId",
+            "Tx2GeneId",
             "G2mScore",
             "WorfdbHtmlRemap",
             "MazdaRx4",
