@@ -1,4 +1,5 @@
 # Make Names Sanitization Examples
+# Last updated 2018-08-27
 
 character <- c(
     "hello world",
@@ -10,6 +11,9 @@ character <- c(
     "G2M.Score",
     "worfdbHTMLRemap",
     "Mazda RX4",
+    "%GC",
+    "5prime",
+    "5'-3' bias",
     123L,
     NA
 )
@@ -46,4 +50,5 @@ mn <- list(
     tibble = tibble,
     list = list
 )
-saveData(mn, dir = "~", compress = "xz")
+
+saveData(mn, dir = "tests/testthat", compress = "xz")
