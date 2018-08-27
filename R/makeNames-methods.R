@@ -128,10 +128,8 @@ NULL
             gsub(pattern, replacement, .)
     }
 
-    # Remove dots in between words and numbers.
-    object <- object %>%
-        gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", .) %>%
-        gsub("([[:digit:]])\\.([[:alpha:]])", "\\1\\2", .)
+    # Remove dots in between numbers following a letter.
+    object <- gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", object)
 
     # First letter of second word must be capitalized.
     object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
