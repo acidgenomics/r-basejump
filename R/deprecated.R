@@ -313,4 +313,13 @@ synonyms <- function(...) {
 
 
 
+# v0.7.3 =======================================================================
+#' @rdname deprecated
+#' @export
+assertIsURL <- function(...) {
+    assertAllAreURL(...)
+}
+
+
+
 # nocov end
