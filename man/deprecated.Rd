@@ -19,6 +19,7 @@
 \alias{geomean}
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
+\alias{assertIsURL}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -54,6 +55,8 @@ geomean(...)
 midnightTheme(...)
 
 paperwhiteTheme(...)
+
+assertIsURL(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
