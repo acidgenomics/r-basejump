@@ -685,7 +685,10 @@ assertIsGene2symbol <- function(
         y = c("geneID", "geneName"),
         severity = severity
     )
-    assertHasRownames(x, severity = severity)
+    # Require rownames for standard data frame.
+    if (!is_tibble(x)) {
+        assertHasRownames(x, severity = severity)
+    }
     # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
@@ -869,7 +872,10 @@ assertIsTx2gene <- function(
         y = c("transcriptID", "geneID"),
         severity = severity
     )
-    assertHasRownames(x, severity = severity)
+    # Require rownames for standard data frame.
+    if (!is_tibble(x)) {
+        assertHasRownames(x, severity = severity)
+    }
     # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
