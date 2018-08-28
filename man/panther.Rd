@@ -4,8 +4,7 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism = c("Homo sapiens", "Mus musculus",
-  "Caenorhabditis elegans", "Drosophila melanogaster"), release = NULL)
+panther(organism, release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
