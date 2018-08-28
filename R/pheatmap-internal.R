@@ -1,4 +1,7 @@
-.emptyPheatmapAnnotations <- list(data = NA, colors = NA)
+.emptyPheatmapAnnotations <- list(
+    annotationCol = NA,
+    annotationColors = NA
+)
 
 
 
@@ -80,7 +83,10 @@
     }
 
     # Return -------------------------------------------------------------------
-    list(data = data, colors = colors)
+    list(
+        annotationCol = data,
+        annotationColors = colors
+    )
 }
 
 
