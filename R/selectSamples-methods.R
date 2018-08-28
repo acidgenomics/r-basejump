@@ -33,11 +33,11 @@ setMethod(
         args <- list(...)
         invisible(lapply(args, assert_is_atomic))
 
-        # Match the arguments against the sample metadata
+        # Match the arguments against the sample metadata.
         colData <- colData(object)
         assert_is_subset(names(args), colnames(colData))
 
-        # Obtain the sample identifiers
+        # Obtain the sample identifiers.
         list <- mapply(
             col = names(args),
             arg = args,
@@ -48,10 +48,9 @@ setMethod(
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
-        samples <- Reduce(f = intersect, x = list) %>%
-            as.character() %>%
-            sort()
+        samples <- Reduce(f = intersect, x = list)
         assert_is_non_empty(samples)
+        samples <- sort(as.character(samples))
 
         object[, samples]
     }
