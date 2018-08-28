@@ -15,25 +15,15 @@ NULL
 
 
 
-#' Assert Is Implicit Integer
-#'
-#' @name assertIsImplicitInteger
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-NULL
-
-
-
+# assertAllAreNonExisting ======================================================
 #' Assert All Variables Are Non-Existing
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @export
 #'
 #' @param x `character` vector of variable names to check in `environment`.
-#'
-#' @export
 #'
 #' @examples
 #' assertAllAreNonExisting(c("XXX", "YYY"))
@@ -53,12 +43,12 @@ assertAllAreNonExisting <- function(
 
 
 
+# assertAllAreValidNames =======================================================
 #' Assert All Are Valid Names
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -67,28 +57,49 @@ assertAllAreValidNames <- function(
     x,
     severity = getOption("assertive.severity", "stop")
 ) {
-    assert_is_character(
-        x = x,
-        severity = severity
-    )
-    assert_are_identical(
-        x = x,
-        y = make.names(x),
-        severity = severity
+    assert_is_character(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
+    assert_all_are_true(validNames(x), severity = severity)
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
+#' @examples
+#' validNames(c(
+#'     "sample_1",
+#'     "gene_1",
+#'     "293cells",
+#'     "cell-AAAAAAAA",
+#'     "GFP+ sort"
+#' ))
+validNames <- function(x) {
+    if (!is.character(x) || length(x) == 0L) {
+        return(FALSE)
+    }
+    vapply(
+        X = x,
+        FUN = function(x) {
+            # Note that we're enforcing unique values here.
+            identical(x, make.names(x, unique = TRUE))
+        },
+        FUN.VALUE = logical(1L),
+        USE.NAMES = FALSE
     )
 }
 
 
 
+# assertAreGeneAnnotations =====================================================
 #' Assert Are Ensembl Gene Annotations
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @export
 #'
 #' @param x `data.frame` containing Ensembl gene annotations.
-#'
-#' @export
 #'
 #' @examples
 #' x <- data.frame(
@@ -111,15 +122,16 @@ assertAreGeneAnnotations <- function(
 
 
 
+# assertAreTranscriptAnnotations ===============================================
 #' Assert Are Ensembl Transcript Annotations
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @export
 #'
 #' @param x `data.frame` containing Ensembl transcript annotations.
 #'
-#' @export
 #'
 #' @examples
 #' x <- data.frame(
@@ -142,12 +154,12 @@ assertAreTranscriptAnnotations <- function(
 
 
 
+# assertFormalCompress =========================================================
 #' Assert Formal Compression
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -173,18 +185,18 @@ assertFormalCompress <- function(
 
 
 
+# assertFormalGene2symbol ======================================================
 #' Assert Formal Gene to Symbol Mappings
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @export
 #'
 #' @param x Object containing gene identifiers in the row names.
 #' @param genes `character` vector of gene identifiers.
 #' @param gene2symbol Gene-to-symbol mappings. Must contain a `data.frame` or
 #'   `NULL`.
-#'
-#' @export
 #'
 #' @examples
 #' gene2symbol <- tibble(
@@ -219,6 +231,7 @@ assertFormalGene2symbol <- function(
 
 
 
+# assertFormalInterestingGroups ================================================
 #' Interesting Groups Formal Assert Check
 #'
 #' Prevent unwanted downstream behavior when a missing interesting group
@@ -227,10 +240,6 @@ assertFormalGene2symbol <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
-#' @inheritParams general
-#'
-#' @return Silent, stop on error.
 #' @export
 #'
 #' @examples
@@ -290,6 +299,7 @@ assertFormalInterestingGroups <- function(
 
 
 
+# assertHasRownames ============================================================
 #' Assert Has Rownames
 #'
 #' A stricter alternative to the assertive version that works properply with
@@ -301,7 +311,6 @@ assertFormalInterestingGroups <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -326,6 +335,19 @@ assertHasRownames <- function(
 
 
 
+#' @rdname assertHasRownames
+#' @export
+hasRownames <- function(x) {  # nolint
+    if (is.data.frame(x)) {
+        tibble::has_rownames(x)
+    } else {
+        assertive.properties::has_rownames(x)
+    }
+}
+
+
+
+# assertIsAHeaderLevel =========================================================
 #' Assert Is a Header Level
 #'
 #' Markdown supports header levels 1-7 (`<H1>`-`<H7>`).
@@ -333,7 +355,6 @@ assertHasRownames <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -352,12 +373,12 @@ assertIsAHeaderLevel <- function(
 
 
 
+# assertIsAnIntegerOrNULL ======================================================
 #' Assert Is an Integer or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -379,12 +400,12 @@ assertIsAnIntegerOrNULL <- function(
 
 
 
+# assertIsANumberOrNULL ========================================================
 #' Assert Is a Number or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -406,12 +427,12 @@ assertIsANumberOrNULL <- function(
 
 
 
+# assertIsAStringOrNULL ========================================================
 #' Assert Is a String or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -429,13 +450,13 @@ assertIsAStringOrNULL <- function(
 
 
 
-# Deprecate this function in a future release
+# assertIsCharacterOrNULL ======================================================
+# Deprecate this function in a future release.
 #' Assert Is Character Vector or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -454,12 +475,12 @@ assertIsCharacterOrNULL <- function(
 
 
 
+# assertIsColorScaleContinuousOrNULL ===========================================
 #' Assert Is Color Palette Scale Continuous or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -492,12 +513,12 @@ assertIsColorScaleContinuousOrNULL <- function(
 
 
 
+# assertIsColorScaleDiscreteOrNULL =============================================
 #' Assert Is Color Palette Scale Discrete or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -529,8 +550,8 @@ assertIsColorScaleDiscreteOrNULL <- function(
 }
 
 
-
-# Deprecate this function in a future release
+# assertIsDataFrameOrNULL ======================================================
+# Deprecate this function in a future release.
 #' Assert Is Data Frame or NULL
 #'
 #' @note This checks for `data.frame` and will stop on `DataFrame` class.
@@ -538,7 +559,6 @@ assertIsColorScaleDiscreteOrNULL <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -557,6 +577,7 @@ assertIsDataFrameOrNULL <- function(
 
 
 
+# assertIsFillScaleContinuousOrNULL ============================================
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'
 #' @family Assert Check Functions
@@ -595,6 +616,7 @@ assertIsFillScaleContinuousOrNULL <- function(
 
 
 
+# assertIsFillScaleDiscreteOrNULL ==============================================
 #' Assert Is Fill Palette Scale Discrete or NULL
 #'
 #' @family Assert Check Functions
@@ -633,17 +655,17 @@ assertIsFillScaleDiscreteOrNULL <- function(
 
 
 
+# assertIsGene2symbol ==========================================================
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @export
 #'
 #' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be
 #'   structured as a two column `data.frame` with "`geneID`" and "`geneName`"
 #'   columns.
-#'
-#' @export
 #'
 #' @examples
 #' x <- tibble(
@@ -673,12 +695,12 @@ assertIsGene2symbol <- function(
 
 
 
+# assertIsHexColorFunctionOrNULL ===============================================
 #' Assert Is Hex Color Function or NULL
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#'
 #' @export
 #'
 #' @examples
@@ -708,6 +730,17 @@ assertIsHexColorFunctionOrNULL <- function(
         assert_all_are_hex_colors(colors, severity = severity)
     }
 }
+
+
+
+# assertIsImplicitInteger ======================================================
+#' Assert Is Implicit Integer
+#'
+#' @name assertIsImplicitInteger
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+NULL
 
 
 
@@ -753,84 +786,6 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 
 
 
-#' Assert Is Transcript-to-Gene Mapping Data
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#'
-#' @param x `data.frame` containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column `data.frame` with
-#'   "transcriptID" and "geneID" columns.
-#'
-#' @export
-#'
-#' @examples
-#' x <- tibble(
-#'     transcriptID = "ENST00000000233",
-#'     geneID = "ENSG00000004059"
-#' )
-#' assertIsTx2gene(x)
-assertIsTx2gene <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_data.frame(x, severity = severity)
-    # nocov start
-    # Consider informing the user about this in a future update
-    if ("txID" %in% colnames(x)) {
-        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
-    }
-    # nocov end
-    assert_are_identical(
-        x = colnames(x),
-        y = c("transcriptID", "geneID"),
-        severity = severity
-    )
-    assert_has_rows(x, severity = severity)
-    # Assert that all columns are character
-    invisible(mapply(
-        FUN = assert_is_character,
-        x = x,
-        MoreArgs = list(severity = severity),
-        SIMPLIFY = FALSE
-    ))
-}
-
-
-
-#' Assert Is URL
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#'
-#' @export
-#'
-#' @examples
-#' assertIsURL("https://steinbaugh.com")
-assertIsURL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_character(x, severity = severity)
-    assert_all_are_true(isURL(x), severity = severity)
-}
-
-
-
-#' @rdname assertHasRownames
-#' @export
-hasRownames <- function(x) {  # nolint
-    if (is.data.frame(x)) {
-        tibble::has_rownames(x)
-    } else {
-        assertive.properties::has_rownames(x)
-    }
-}
-
-
-
 #' @rdname assertIsImplicitInteger
 #' @export
 #' @examples
@@ -870,10 +825,87 @@ isImplicitInteger <- function(x) {
 
 
 
-#' @rdname assertIsURL
+# assertIsTx2gene ==============================================================
+#' Assert Is Transcript-to-Gene Mapping Data
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
 #' @export
+#'
+#' @param x `data.frame` containing Ensembl transcript to gene identifier
+#'   mappings. Must be structured as a two column `data.frame` with
+#'   "transcriptID" and "geneID" columns.
+#'
+#' @examples
+#' x <- tibble(
+#'     transcriptID = "ENST00000000233",
+#'     geneID = "ENSG00000004059"
+#' )
+#' assertIsTx2gene(x)
+assertIsTx2gene <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
+    assert_is_data.frame(x, severity = severity)
+    # nocov start
+    # Consider informing the user about this in a future update
+    if ("txID" %in% colnames(x)) {
+        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
+    }
+    # nocov end
+    assert_are_identical(
+        x = colnames(x),
+        y = c("transcriptID", "geneID"),
+        severity = severity
+    )
+    assert_has_rows(x, severity = severity)
+    # Assert that all columns are character
+    invisible(mapply(
+        FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
+}
+
+
+
+# assertAllAreURL ==============================================================
+#' Assert All Are URL
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#' @export
+#'
+#' @examples
+#' assertAllAreURL(c(
+#'     "https://www.r-project.org",
+#'     "ftp://r-project.org",
+#' ))
+assertAllAreURL <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
+    assert_is_character(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
+    assert_all_are_true(isURL(x), severity = severity)
+}
+
+
+
+#' @rdname assertAllAreURL
+#' @export
+#' @examples
+#' isURL(c(
+#'     "http://www.r-project.org",
+#'     "https://www.r-project.org",
+#'     "ftp://r-project.org",
+#'     "r-project.org"
+#' ))
 isURL <- function(x) {
-    if (!is.character(x)) {
+    if (!is.character(x) || length(x) == 0L) {
         return(FALSE)
     }
     vapply(
