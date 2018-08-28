@@ -27,6 +27,7 @@ setMethod(
     "sampleNames",
     signature("SummarizedExperiment"),
     function(object) {
+        object <- .coerceToSummarizedExperiment(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
         data <- data[sort(rownames(data)), , drop = FALSE]
