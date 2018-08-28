@@ -877,6 +877,8 @@ assertIsTx2gene <- function(
         MoreArgs = list(severity = severity),
         SIMPLIFY = FALSE
     ))
+    # Assert that there are no duplicate transcripts.
+    assert_has_no_duplicates(x[["transcriptID"]])
 }
 
 
