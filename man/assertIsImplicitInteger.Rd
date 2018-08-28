@@ -42,6 +42,7 @@ isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},

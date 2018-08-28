@@ -28,6 +28,7 @@ assertAreGeneAnnotations(x)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
   \code{\link{assertFormalGene2symbol}},

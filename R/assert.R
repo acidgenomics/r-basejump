@@ -53,6 +53,33 @@ assertAllAreNonExisting <- function(
 
 
 
+#' Assert All Are Valid Names
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#'
+#' @export
+#'
+#' @examples
+#' assertAllAreValidNames(c("sample_1", "sample_2"))
+assertAllAreValidNames <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
+    assert_is_character(
+        x = x,
+        severity = severity
+    )
+    assert_are_identical(
+        x = x,
+        y = make.names(x),
+        severity = severity
+    )
+}
+
+
+
 #' Assert Are Ensembl Gene Annotations
 #'
 #' @family Assert Check Functions
