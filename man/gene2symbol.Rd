@@ -20,6 +20,10 @@ mappings.
 \description{
 Gene to Symbol Mappings
 }
+\note{
+This function will make any duplicated symbols unique by applying
+\code{\link[base:make.unique]{base::make.unique()}}, which will add ".1" to the end of the gene name.
+}
 \examples{
 # SummarizedExperiment ====
 gene2symbol(rse_bcb) \%>\% head()
