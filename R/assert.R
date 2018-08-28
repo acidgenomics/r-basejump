@@ -679,12 +679,13 @@ assertIsGene2symbol <- function(
 ) {
     # Requiring standard data frame class.
     assert_is_data.frame(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
         y = c("geneID", "geneName"),
         severity = severity
     )
-    assert_has_rows(x, severity = severity)
+    assertHasRownames(x, severity = severity)
     # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
