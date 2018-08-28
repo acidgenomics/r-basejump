@@ -4,7 +4,7 @@ setMethod(
     "convertSymbolsToGenes",
     signature("SummarizedExperiment"),
     function(object) {
-        validObject(object)
+        object <- .coerceToSummarizedExperiment(object)
         gene2symbol <- gene2symbol(object)
         if (is.null(gene2symbol)) {
             return(object)  # nocov

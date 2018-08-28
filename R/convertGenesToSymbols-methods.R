@@ -158,14 +158,14 @@ setMethod(
     "convertGenesToSymbols",
     signature("SummarizedExperiment"),
     function(object) {
-        validObject(object)
-        gene2symbol <- gene2symbol(object)
-        if (is.null(gene2symbol)) {
+        object <- .coerceToSummarizedExperiment(object)
+        g2s <- gene2symbol(object)
+        if (is.null(g2s)) {
             return(object)
         }
         # Ensure factors get coerced to character.
         # Note that ".1" will be added here for duplicate gene symbols.
-        symbols <- gene2symbol %>%
+        symbols <- g2s %>%
             .[, "geneName", drop = TRUE] %>%
             as.character() %>%
             make.unique()

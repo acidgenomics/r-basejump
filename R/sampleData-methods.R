@@ -54,6 +54,7 @@ setMethod(
         }
         # nocov end
 
+        object <- .coerceToSummarizedExperiment(object)
         data <- colData(object)
         if (!"sampleName" %in% colnames(data)) {
             stop(paste(
