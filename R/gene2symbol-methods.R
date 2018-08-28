@@ -25,10 +25,7 @@ setMethod(
     "gene2symbol",
     signature("SummarizedExperiment"),
     function(object) {
-        validObject(object)
-        object <- as(object, "SummarizedExperiment")
-        rownames <- rownames(object)
-        assert_is_character(rownames)
+        object <- .coerceToSummarizedExperiment(object)
         data <- rowData(object)
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(data))) {
@@ -51,7 +48,7 @@ setMethod(
             mutate(geneName = make.unique(!!sym("geneName"))) %>%
             as.data.frame() %>%
             # Note that we're matching the object rownames here.
-            set_rownames(rownames)
+            set_rownames(rownames(object))
         assertIsGene2symbol(data)
         data
     }
