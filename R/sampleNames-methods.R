@@ -8,7 +8,7 @@
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #'
-#' @importFrom Biobase sampleNames
+#' @importFrom Biobase sampleNames sampleNames<-
 #'
 #' @inheritParams general
 #'
@@ -16,7 +16,17 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleNames(rse_bcb)
+#' object <- rse_bcb
+#' x <- sampleNames(object)
+#' print(x)
+#'
+#' # Assignment support
+#' value <- sampleNames(object)
+#' value <- gsub("_", " ", value)
+#' print(value)
+#' sampleNames(object) <- value
+#' x <- sampleNames(object)
+#' print(x)
 NULL
 
 
@@ -34,5 +44,32 @@ setMethod(
         vec <- as.character(data[, "sampleName", drop = TRUE])
         names(vec) <- rownames(data)
         vec
+    }
+)
+
+
+
+#' @rdname sampleNames
+#' @export
+setMethod(
+    "sampleNames<-",
+    signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    function(object, value) {
+        assert_has_names(value)
+        # Note that these will correspond to columns for bulk RNA-seq but not
+        # single-cell RNA-seq samples, which map to cells.
+        ids <- names(sampleNames(object))
+        assert_is_non_empty(ids)
+        # Require the input to match the original IDs.
+        assert_are_set_equal(names(value), ids)
+        # Now safe to reorder the value vector to match.
+        value <- value[ids]
+        # Check that the slotting destination matches.
+        assert_are_identical(names(value), rownames(sampleData(object)))
+        sampleData(object)[["sampleName"]] <- value
+        object
     }
 )
