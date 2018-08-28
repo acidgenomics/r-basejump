@@ -857,8 +857,9 @@ assertIsTx2gene <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     assert_is_data.frame(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
     # nocov start
-    # Consider informing the user about this in a future update
+    # Consider informing the user about this in a future update.
     if ("txID" %in% colnames(x)) {
         colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
     }
@@ -868,8 +869,8 @@ assertIsTx2gene <- function(
         y = c("transcriptID", "geneID"),
         severity = severity
     )
-    assert_has_rows(x, severity = severity)
-    # Assert that all columns are character
+    assertHasRownames(x, severity = severity)
+    # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
         x = x,
