@@ -677,6 +677,7 @@ assertIsGene2symbol <- function(
     x,
     severity = getOption("assertive.severity", "stop")
 ) {
+    # Requiring standard data frame class.
     assert_is_data.frame(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
@@ -684,10 +685,17 @@ assertIsGene2symbol <- function(
         severity = severity
     )
     assert_has_rows(x, severity = severity)
-    # Assert that all columns are character
+    # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
         x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
+    # Assert that neither column has duplicates.
+    invisible(mapply(
+        x = data,
+        FUN = assert_has_no_duplicates,
         MoreArgs = list(severity = severity),
         SIMPLIFY = FALSE
     ))
