@@ -694,8 +694,8 @@ assertIsGene2symbol <- function(
     ))
     # Assert that neither column has duplicates.
     invisible(mapply(
-        x = data,
         FUN = assert_has_no_duplicates,
+        x = x,
         MoreArgs = list(severity = severity),
         SIMPLIFY = FALSE
     ))
