@@ -10,13 +10,11 @@ assertFormalInterestingGroups(x, interestingGroups,
 \arguments{
 \item{x}{Object.}
 
-\item{interestingGroups}{\code{character}. Groups of interest.}
-
 \item{severity}{\code{string}. How severe should the consequences of the assertion
 be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
-Silent, stop on error.
+Stop on mismatch.
 }
 \description{
 Prevent unwanted downstream behavior when a missing interesting group
@@ -28,6 +26,7 @@ assertFormalInterestingGroups(rse_dds, "condition")
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreURL}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -47,7 +46,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
+  \code{\link{assertIsTx2gene}}
 }
 \author{
 Michael Steinbaugh

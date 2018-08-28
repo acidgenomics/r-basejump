@@ -2,10 +2,13 @@
 % Please edit documentation in R/assert.R
 \name{assertAllAreValidNames}
 \alias{assertAllAreValidNames}
+\alias{validNames}
 \title{Assert All Are Valid Names}
 \usage{
 assertAllAreValidNames(x, severity = getOption("assertive.severity",
   "stop"))
+
+validNames(x)
 }
 \arguments{
 \item{x}{Object.}
@@ -21,9 +24,17 @@ Assert All Are Valid Names
 }
 \examples{
 assertAllAreValidNames(c("sample_1", "sample_2"))
+validNames(c(
+    "sample_1",
+    "gene_1",
+    "293cells",
+    "cell-AAAAAAAA",
+    "GFP+ sort"
+))
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreURL}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -43,7 +54,7 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
+  \code{\link{assertIsTx2gene}}
 }
 \author{
 Michael Steinbaugh

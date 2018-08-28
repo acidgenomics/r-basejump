@@ -24,7 +24,8 @@ Assert All Variables Are Non-Existing
 assertAllAreNonExisting(c("XXX", "YYY"))
 }
 \seealso{
-Other Assert Check Functions: \code{\link{assertAllAreValidNames}},
+Other Assert Check Functions: \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -44,7 +45,7 @@ Other Assert Check Functions: \code{\link{assertAllAreValidNames}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
+  \code{\link{assertIsTx2gene}}
 }
 \author{
 Michael Steinbaugh
