@@ -26,12 +26,16 @@ setMethod(
     signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
+        object <- as(object, "SummarizedExperiment")
+        rownames <- rownames(object)
+        assert_is_character(rownames)
         data <- rowData(object)
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(data))) {
             warning("Object does not contain gene-to-symbol mappings")
             return(NULL)
         }
+        assert_is_non_empty(data)
         # Inform the user if there are duplicate symbols.
         if (any(duplicated(data[["geneName"]]))) {
             x <- data[["geneName"]]
@@ -47,7 +51,7 @@ setMethod(
             mutate(geneName = make.unique(!!sym("geneName"))) %>%
             as.data.frame() %>%
             # Note that we're matching the object rownames here.
-            set_rownames(rownames(object))
+            set_rownames(rownames)
         assertIsGene2symbol(data)
         data
     }
