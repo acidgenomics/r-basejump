@@ -1,3 +1,6 @@
+lapply <- BiocParallel::bplapply
+mapply <- BiocParallel::bpmapply
+
 mat <- matrix(
     data = seq(1L:16L),
     nrow = 4L,
