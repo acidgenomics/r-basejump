@@ -158,7 +158,7 @@ setMethod(
     "convertGenesToSymbols",
     signature("SummarizedExperiment"),
     function(object) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         g2s <- gene2symbol(object)
         if (is.null(g2s)) {
             return(object)

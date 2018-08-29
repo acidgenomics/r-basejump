@@ -64,7 +64,7 @@ setMethod(
         title = NULL,
         ...
     ) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(

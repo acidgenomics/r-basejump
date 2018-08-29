@@ -25,7 +25,7 @@ setMethod(
     "gene2symbol",
     signature("SummarizedExperiment"),
     function(object) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         data <- rowData(object)
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(data))) {

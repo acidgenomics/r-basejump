@@ -37,7 +37,7 @@ setMethod(
     "sampleNames",
     signature("SummarizedExperiment"),
     function(object) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
         data <- data[sort(rownames(data)), , drop = FALSE]
@@ -70,6 +70,7 @@ setMethod(
         # Check that the slotting destination matches.
         assert_are_identical(names(value), rownames(sampleData(object)))
         sampleData(object)[["sampleName"]] <- value
+        validObject(object)
         object
     }
 )

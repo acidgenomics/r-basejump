@@ -23,7 +23,7 @@ setMethod(
     "counts",
     "SummarizedExperiment",
     function(object) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]]
     }
