@@ -16,7 +16,8 @@
 #' @examples
 #' # character ====
 #' x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' convertGenesToSymbols(x)
+#' y <- convertGenesToSymbols(x)
+#' print(y)
 #'
 #' # matrix ====
 #' mat <- matrix(
