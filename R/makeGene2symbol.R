@@ -4,12 +4,12 @@
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams general
 #' @inheritParams makeGRanges
 #' @inheritParams gene2symbol
-#' @param ... Passthrough to [makeGRangesFromEnsembl()].
 #'
 #' @return `data.frame`.
+#'
+#' @seealso `help(topic = "makeGRanges", package = "basejump")`.
 #'
 #' @examples
 #' # makeGene2symbolFromEnsembl ====
@@ -20,6 +20,7 @@
 #' # GTF
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
 #' glimpse(x)
+#'
 #' # GFF3
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
 #' glimpse(x)
@@ -30,10 +31,19 @@ NULL
 #' @rdname makeGene2symbol
 #' @export
 makeGene2symbolFromEnsembl <- function(
-    ...,
-    unique = TRUE
+    organism,
+    build = NULL,
+    release = NULL,
+    unique = TRUE,
+    ...
 ) {
-    gr <- makeGRangesFromEnsembl(..., format = "genes")
+    gr <- makeGRangesFromEnsembl(
+        organism = organism,
+        build = build,
+        release = release,
+        format = "genes",
+        ...
+    )
     data <- mcols(gr) %>%
         .[, c("geneID", "geneName")] %>%
         as.data.frame() %>%
