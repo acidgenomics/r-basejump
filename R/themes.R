@@ -126,14 +126,7 @@ theme_midnight <- function(
 #'
 #' @examples
 #' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
-theme_paperwhite <- function(
-    base_size = 14L,
-    base_family = "",
-    face = c("bold", "plain"),
-    aspect_ratio = NULL,
-    legend_position = c("right", "bottom", "none"),
-    grid = FALSE
-) {
+theme_paperwhite <- function() {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
     face <- match.arg(face)
@@ -182,6 +175,8 @@ theme_paperwhite <- function(
             validate = TRUE
         )
 }
+# Set the formals.
+formals(theme_paperwhite) <- formals(theme_midnight)
 
 
 
