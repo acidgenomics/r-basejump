@@ -210,7 +210,7 @@ setGeneric(
 setGeneric(
     "metrics",
     function(object, ...) {
-        standardGeneric("metrics")
+        standardGeneric("metrics")  # nocov
     }
 )
 
@@ -232,7 +232,7 @@ setGeneric(
 setGeneric(
     "plotGene",
     function(object, ...) {
-        standardGeneric("plotGene")
+        standardGeneric("plotGene")  # nocov
     }
 )
 
@@ -265,7 +265,7 @@ setGeneric(
 setGeneric(
     "plotQC",
     function(object, ...) {
-        standardGeneric("plotQC")
+        standardGeneric("plotQC")  # nocov
     }
 )
 
