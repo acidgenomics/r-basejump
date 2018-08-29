@@ -3,7 +3,7 @@ Title: Base Functions for Bioinformatics
 Description: Helper functions for bioinformatics, package development, and
     R Markdown reports.
 Version: 0.7.3
-Date: 2018-08-26
+Date: 2018-08-29
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
