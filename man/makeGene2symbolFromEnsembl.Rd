@@ -4,10 +4,13 @@
 \alias{makeGene2symbolFromEnsembl}
 \title{Gene-to-Symbol Mappings from Ensembl}
 \usage{
-makeGene2symbolFromEnsembl(...)
+makeGene2symbolFromEnsembl(..., unique = TRUE)
 }
 \arguments{
 \item{...}{Passthrough to \code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}}.}
+
+\item{unique}{\code{boolean}. Ensure that all gene symbols are unique. Uses
+\code{\link[base:make.unique]{base::make.unique()}} internally.}
 }
 \value{
 \code{data.frame}.

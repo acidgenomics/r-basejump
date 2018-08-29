@@ -9,6 +9,9 @@
 #'
 #' @inheritParams general
 #'
+#' @param unique `boolean`. Ensure that all gene symbols are unique. Uses
+#'   [base::make.unique()] internally.
+#'
 #' @return `data.frame` containing gene identifier and gene name (aka symbol)
 #'   mappings.
 #'
@@ -19,13 +22,36 @@ NULL
 
 
 
+.makeGeneNamesUnique <- function(data) {
+    assert_is_subset(
+        x = c("geneID", "geneName"),
+        y = colnames(data)
+    )
+    if (any(duplicated(data[["geneName"]]))) {
+        x <- data[["geneName"]]
+        n <- length(unique(x[duplicated(x)]))
+        message(paste(
+            "Sanitizing", n, "duplicated symbols using `make.unique()`"
+        ))
+        data[["geneName"]] <- make.unique(data[["geneName"]])
+    }
+    data
+}
+
+
+
 #' @rdname gene2symbol
 #' @export
 setMethod(
     "gene2symbol",
     signature("SummarizedExperiment"),
-    function(object) {
+    function(
+        object,
+        unique = TRUE
+    ) {
         validObject(object)
+        assert_is_a_bool(unique)
+
         data <- rowData(object)
         cols <- c("geneID", "geneName")
         if (!all(cols %in% colnames(data))) {
@@ -33,22 +59,19 @@ setMethod(
             return(NULL)
         }
         assert_is_non_empty(data)
-        # Inform the user if there are duplicate symbols.
-        if (any(duplicated(data[["geneName"]]))) {
-            x <- data[["geneName"]]
-            n <- length(unique(x[duplicated(x)]))
-            message(paste(
-                "Sanitizing", n, "duplicated symbols using `make.unique()`"
-            ))
-        }
+
         data <- data %>%
-            as("tbl_df") %>%
+            as.data.frame() %>%
             select(!!!syms(cols)) %>%
             mutate_all(as.character) %>%
-            mutate(geneName = make.unique(!!sym("geneName"))) %>%
-            as.data.frame() %>%
-            # Note that we're matching the object rownames here.
             set_rownames(rownames(object))
+
+        # Ensure gene names (symbols) are unique, if desired.
+        # This is recommended by default.
+        if (isTRUE(unique)) {
+            data <- .makeGeneNamesUnique(data)
+        }
+
         assertIsGene2symbol(data)
         data
     }
