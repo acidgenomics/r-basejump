@@ -83,7 +83,7 @@ test_that("interestingGroups : Assignment method", {
     )
     expect_error(
         interestingGroups(x) <- "XXX",
-        "The interesting groups \"XXX\" are not defined"
+        "is_subset : The element 'XXX' in interestingGroups"
     )
 })
 
