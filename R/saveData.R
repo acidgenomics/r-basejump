@@ -37,14 +37,17 @@
 saveData <- function(
     ...,
     dir = ".",
-    ext = c("rda", "rds", "RData"),
+    ext = getOption("basejump.save.ext", "rda"),
     overwrite = TRUE,
-    compress = TRUE
+    compress = getOption("basejump.save.compress", TRUE)
 ) {
     objects <- list(...)
     names(objects) <- dots(..., character = TRUE)
     dir <- initializeDirectory(dir)
-    ext <- match.arg(ext)
+    ext <- match.arg(
+        arg = ext,
+        choices = c("rda", "rds", "RData")
+    )
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
 
