@@ -2,6 +2,9 @@
 
 context("Make Names Functions")
 
+load("gr.rda")
+load("mn.rda")
+
 funs <- list(
     camel = camel,
     dotted = dotted,

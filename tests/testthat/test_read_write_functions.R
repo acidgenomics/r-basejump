@@ -4,15 +4,15 @@ context("Read/Write Functions")
 
 # assignAndSaveData ============================================================
 test_that("assignAndSaveData", {
+    x <- suppressMessages(assignAndSaveData(
+        name = "XXX",
+        object = rnaseq_counts
+    ))
     expect_identical(
-        assignAndSaveData(name = "example", object = rnaseq_counts),
-        c(example = file.path(getwd(), "example.rda"))
+        x,
+        c(XXX = file.path(getwd(), "XXX.rda"))
     )
-    expect_message(
-        assignAndSaveData("example", rnaseq_counts),
-        paste("Saving example to", getwd())
-    )
-    unlink("example.rda")
+    unlink("XXX.rda")
 })
 
 
@@ -172,7 +172,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         loadRemoteData("foobar.rda"),
-        "foobar.rda does not match '\\^http"
+        "isURL"
     )
     expect_error(
         loadRemoteData(
