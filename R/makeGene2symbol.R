@@ -1,26 +1,60 @@
-#' Gene-to-Symbol Mappings from GFF File
+#' Make Gene-to-Symbol Mappings
 #'
-#' The GFF (General Feature Format) format consists of one line per feature,
-#' each containing 9 columns of data, plus optional track definition lines. The
-#' GTF (General Transfer Format) is identical to GFF version 2.
-#'
+#' @name makeGene2symbol
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
+#' @inheritParams makeGRanges
 #' @inheritParams gene2symbol
+#' @param ... Passthrough to [makeGRangesFromEnsembl()].
 #'
 #' @return `data.frame`.
-#' @export
 #'
 #' @examples
+#' # makeGene2symbolFromEnsembl ====
+#' x <- makeGene2symbolFromEnsembl("Homo sapiens")
+#' glimpse(x)
+#'
+#' # makeGene2symbolFromGFF ====
 #' # GTF
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
 #' glimpse(x)
-#'
-#' # GFFv3
+#' # GFF3
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
 #' glimpse(x)
+NULL
+
+
+
+#' @rdname makeGene2symbol
+#' @export
+makeGene2symbolFromEnsembl <- function(
+    ...,
+    unique = TRUE
+) {
+    gr <- makeGRangesFromEnsembl(..., format = "genes")
+    data <- mcols(gr) %>%
+        .[, c("geneID", "geneName")] %>%
+        as.data.frame() %>%
+        mutate_all(as.character) %>%
+        arrange(!!sym("geneID")) %>%
+        set_rownames(.[["geneID"]])
+
+    # Ensure gene names (symbols) are unique, if desired.
+    # This is recommended by default.
+    if (isTRUE(unique)) {
+        data <- .makeGeneNamesUnique(data)
+    }
+
+    assertIsGene2symbol(data)
+    data
+}
+
+
+
+#' @rdname makeGene2symbol
+#' @export
 makeGene2symbolFromGFF <- function(
     file,
     unique = TRUE
@@ -77,7 +111,7 @@ makeGene2symbolFromGFF <- function(
 
 
 
-#' @rdname makeGene2symbolFromGFF
+#' @rdname makeGene2symbol
 #' @usage NULL
 #' @export
 makeGene2symbolFromGFF -> makeGene2symbolFromGTF
