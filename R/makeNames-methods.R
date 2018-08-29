@@ -115,7 +115,11 @@ NULL
     # Check for the presence of delimited numbers (e.g. 100.00).
     pattern <- "([0-9])\\.([0-9])"
     if (isTRUE(strict)) {
-        replacement <- "x"
+        if (format == "lower") {
+            replacement <- "x"
+        } else if (format == "upper") {
+            replacement <- "X"
+        }
     } else {
         replacement <- "."
     }
