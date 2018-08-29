@@ -1,4 +1,10 @@
-#' Genomic Ranges from Ensembl
+#' Make Genomic Ranges
+#'
+#' @name makeGRanges
+#' @family Annotation Functions
+#' @author Michael Steinbaugh
+#'
+#' @section Ensembl annotations:
 #'
 #' Quickly obtain gene and transcript annotations from
 #' [Ensembl](http://www.ensembl.org) using
@@ -14,7 +20,29 @@
 #' the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 #' back to version 87.
 #'
+#' Genome build: use "`GRCh38`" instead of "`hg38`" for the genome build, since
+#' we're querying Ensembl and not UCSC.
+#'
+#' @section GTF/GFF file:
+#'
+#' The GFF (General Feature Format) format consists of one line per feature,
+#' each containing 9 columns of data, plus optional track definition lines. The
+#' GTF (General Transfer Format) is identical to GFF version 2. We recommend
+#' using a GTF file instead of a GFF3 file, if possible.
+#'
+#' The UCSC website has detailed conventions on the GFF3 format, including
+#' the metadata columns.
+#'
+#' @section GRCh37 legacy annotations:
+#'
+#' [makeGRangesFromEnsembl()] supports the legacy *Homo sapiens* GRCh37 (release
+#' 75) build by internally querying the
+#' [EnsDb.Hsapiens.v75](https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75)
+#' package. Alternatively, the corresponding GTF/GFF file can be loaded directly
+#' from GENCODE or Ensembl.
+#'
 #' @section Broad class definitions:
+#'
 #' For gene and transcript annotations, a `broadClass` column is added, which
 #' generalizes the gene types into a smaller number of semantically-meaningful
 #' groups:
@@ -28,20 +56,8 @@
 #'   - `tcr` (T cell receptor)
 #'   - `other`
 #'
-#' @section GRCh37 legacy annotations:
-#' The *Homo sapiens* GRCh37 (release 75) build is supported by internally
-#' querying the
-#' [EnsDb.Hsapiens.v75](https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75)
-#' package.
-#'
-#' @note Use "`GRCh38`" instead of "`hg38`" for the genome build, since we're
-#'   querying Ensembl and not UCSC.
-#'
-#' @family Annotation Functions
-#' @author Michael Steinbaugh
-#'
 #' @inheritParams general
-#' @param format `string`. Fetch ranges as "`genes`" or "`transcripts`".
+#' @param format `string`. Return ranges as "`genes`" or "`transcripts`".
 #' @param build `string` or `NULL`. Genome build assembly name (e.g.
 #'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
 #' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
@@ -50,20 +66,39 @@
 #'   `list`.
 #'
 #' @return `GRanges`.
-#' @export
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
 #' - [ensembldb](https://doi.org/doi:10.18129/B9.bioc.ensembldb).
+#' - [rtracklayer::import()].
+#' - [GenomicFeatures::makeTxDbFromGFF()].
 #'
 #' @examples
-#' # Genes ====
+#' # makeGRangesFromEnsembl ====
+#' # Genes
 #' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
 #' summary(x)
 #'
-#' # Transcripts ====
+#' # Transcripts
 #' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
 #' summary(x)
+#'
+#' # makeGRangesFromGFF ====
+#' file <- "http://basejump.seq.cloud/example.gtf"
+#'
+#' # Genes
+#' x <- makeGRangesFromGFF(file = file, format = "genes")
+#' summary(x)
+#'
+#' # Transcripts
+#' x <- makeGRangesFromGFF(file = file, format = "transcripts")
+#' summary(x)
+NULL
+
+
+
+#' @rdname makeGRanges
+#' @export
 makeGRangesFromEnsembl <- function(
     organism,
     format = c("genes", "transcripts"),
@@ -319,3 +354,167 @@ makeGRangesFromEnsembl <- function(
         gr
     }
 }
+
+
+
+#' @rdname makeGRanges
+#' @export
+makeGRangesFromGFF <- function(
+    file,
+    format = c("genes", "transcripts")
+) {
+    file <- localOrRemoteFile(file)
+    # Require GFF or GTF file extension
+    stopifnot(grepl("\\.g[ft]f", file, ignore.case = TRUE))
+    format <- match.arg(format)
+
+    # Import GFF as GRanges (using rtracklayer)
+    gff <- readGFF(file)
+    assert_is_all_of(gff, "GRanges")
+    gff <- camel(gff)
+
+    source <- .gffSource(gff)
+    type <- .gffType(gff)
+    message(paste(source, type, "detected"))
+
+    # nocov start
+    if (
+        source %in% c("FlyBase", "WormBase") &&
+        type == "GFF"
+    ) {
+        stop(paste(
+            "Only GTF files are currently supported from", source
+        ))
+    }
+    # nocov end
+
+    # Always require `geneID` and `transcriptID` columns in file
+    assert_is_subset(
+        x = c("geneID", "transcriptID"),
+        y = colnames(mcols(gff))
+    )
+
+    # Rename `geneSymbol` to `geneName`.
+    # This applies to FlyBase and WormBase annotations
+    colnames(mcols(gff)) <- gsub(
+        pattern = "Symbol$",
+        replacement = "Name",
+        x = colnames(mcols(gff))
+    )
+
+    # Genes --------------------------------------------------------------------
+    gn <- gff
+    gn <- gn[!is.na(mcols(gn)[["geneID"]])]
+    gn <- gn[is.na(mcols(gn)[["transcriptID"]])]
+    if (type == "GFF") {
+        # geneName
+        assert_is_subset("name", colnames(mcols(gn)))
+        mcols(gn)[["geneName"]] <- mcols(gn)[["name"]]
+        mcols(gn)[["name"]] <- NULL
+        # geneBiotype
+        assert_is_subset("biotype", colnames(mcols(gn)))
+        mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
+        mcols(gn)[["biotype"]] <- NULL
+        # Remove extra columns
+        mcols(gn)[["alias"]] <- NULL
+        mcols(gn)[["id"]] <- NULL
+        mcols(gn)[["parent"]] <- NULL
+    }
+    assert_has_no_duplicates(mcols(gn)[["geneID"]])
+    names(gn) <- mcols(gn)[["geneID"]]
+    gn <- gn[sort(names(gn))]
+
+    # Stop on missing genes
+    assert_are_identical(
+        x = names(gn),
+        y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
+    )
+
+    if (format == "genes") {
+        message(paste(length(gn), "gene annotations"))
+        gr <- gn
+    }
+
+    # Transcripts --------------------------------------------------------------
+    if (format == "transcripts") {
+        tx <- gff
+        tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
+        if (type == "GTF") {
+            types <- c(
+                "pseudogene",
+                "rna",
+                "transcript"
+            )
+            tx <- tx[grepl(
+                pattern = paste(types, collapse = "|"),
+                x = mcols(tx)[["type"]],
+                ignore.case = TRUE
+            )]
+        } else if (type == "GFF") {
+            # transcriptName
+            assert_is_subset("name", colnames(mcols(tx)))
+            mcols(tx)[["transcriptName"]] <- mcols(tx)[["name"]]
+            mcols(tx)[["name"]] <- NULL
+            # transcriptBiotype
+            assert_is_subset("biotype", colnames(mcols(tx)))
+            mcols(tx)[["transcriptBiotype"]] <- mcols(tx)[["biotype"]]
+            mcols(tx)[["biotype"]] <- NULL
+            # geneID
+            assert_is_subset("parent", colnames(mcols(tx)))
+            stopifnot(all(grepl("^gene:", mcols(tx)[["parent"]])))
+            mcols(tx)[["geneID"]] <- as.character(mcols(tx)[["parent"]])
+            mcols(tx)[["geneID"]] <- gsub(
+                pattern = "^gene:",
+                replacement = "",
+                x = mcols(tx)[["geneID"]]
+            )
+            # Remove extra columns
+            mcols(tx)[["alias"]] <- NULL
+            mcols(tx)[["id"]] <- NULL
+            mcols(tx)[["parent"]] <- NULL
+        }
+        assert_has_no_duplicates(mcols(tx)[["transcriptID"]])
+        names(tx) <- mcols(tx)[["transcriptID"]]
+        tx <- tx[sort(names(tx))]
+
+        # Stop on missing transcripts
+        assert_are_identical(
+            x = names(tx),
+            y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
+        )
+
+        message(paste(length(tx), "transcript annotations"))
+        gr <- tx
+
+        # Merge the gene-level annotations (`geneName`, `geneBiotype`)
+        geneCols <- setdiff(
+            x = colnames(mcols(gn)),
+            y = colnames(mcols(gr))
+        )
+        if (length(geneCols)) {
+            geneCols <- c("geneID", geneCols)
+            merge <- merge(
+                x = mcols(gr),
+                y = mcols(gn)[, geneCols],
+                all.x = TRUE,
+                by = "geneID"
+            )
+            rownames(merge) <- merge[["transcriptID"]]
+            merge <- merge[sort(rownames(merge)), ]
+            assert_are_identical(
+                x = mcols(gr)[["transcriptID"]],
+                y = merge[["transcriptID"]]
+            )
+            mcols(gr) <- merge
+        }
+    }
+
+    .makeGRanges(gr)
+}
+
+
+
+#' @rdname makeGRanges
+#' @usage NULL
+#' @export
+makeGRangesFromGFF -> makeGRangesFromGTF
