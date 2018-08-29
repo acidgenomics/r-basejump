@@ -15,8 +15,8 @@ abstract: >
   generic functions for use in genomics research. basejump provides simple,
   user-friendly functions for the acquisition of genome annotations from
   multiple online databases, including native support for Ensembl
-  [@Hubbard2002-ah] and websites supporting standard FASTA and GFF file formats.
-  Consistent handling of sample metadata remains a challenge for many
+  [@Hubbard2002-ah] and websites supporting standard FASTA and GTF/GFF file
+  formats. Consistent handling of sample metadata remains a challenge for many
   bioinformatic analyses, and basejump aims to address this by providing a suite
   of sanitization functions to help standardize these variable inputs.
   Additionally, interactive read/write operations in R can be cumbersome and
@@ -80,7 +80,7 @@ In [R][], you can check whether a function is using the S4 object system with th
 
 # Annotation functions
 
-Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent2002-fo] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse [GFF][] and [GTF][] annotation files. [GFF][] file parsing is handled internally by the [rtracklayer][] package [@Lawrence2009-zx]. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] package [@Lawrence2013-vz], which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols` slot of the object. `GRanges` can be coerced to a standard `data.frame` using the `BiocGenerics::as.data.frame()` function.
+Obtaining versioned genome annotations quickly and reliably from online databases such as [Ensembl][] [@Hubbard2002-ah], [GENCODE][] [@Harrow2012-hx], [RefSeq][] [@Pruitt2007-vu], and the [UCSC Genome Browser][UCSC] [@Kent2002-fo] remains overly challenging. [basejump][] aims to help address this issue by providing native gene- and transcript-level annotation support by helping users interface with [AnnotationHub][] and [ensembldb][], along with a robust set of tools to parse [GTF][] and [GFF][] annotation files. Annotation file parsing is handled internally by the [rtracklayer][] package [@Lawrence2009-zx]. Genome annotations are returned as `GRanges` objects, defined in the [GenomicRanges][] package [@Lawrence2013-vz], which allows for easy access to position, chromosome, strand, and additional metadata saved in the `mcols` slot of the object. `GRanges` can be coerced to a standard `data.frame` using the `BiocGenerics::as.data.frame()` function.
 
 ## Ensembl annotations
 
