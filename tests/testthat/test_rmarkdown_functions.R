@@ -124,13 +124,8 @@ test_that("markdownPlotlist", {
 
 
 # prepareTemplate ==============================================================
+# This code is covered in bcbioRNASeq and bcbioSingleCell.
 test_that("prepareTemplate", {
-    expect_error(
-        prepareTemplate(package = "XXX"),
-        "is_subset : The element 'XXX'"
-    )
-    expect_error(
-        prepareTemplate(package = "basejump"),
-        "No file found"
-    )
+    expect_error(prepareTemplate(package = "XXX"))
+    expect_error(prepareTemplate(package = "basejump"))
 })
