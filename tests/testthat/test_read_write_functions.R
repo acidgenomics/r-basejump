@@ -454,9 +454,11 @@ test_that("saveData : Invalid parameters", {
 
 
 # transmit =====================================================================
+remoteDir <- "ftp://ftp.ensembl.org/pub/release-89"
+
 test_that("transmit", {
     x <- transmit(
-        remoteDir = ensemblURL,
+        remoteDir = remoteDir,
         pattern = "README",
         compress = FALSE
     )
@@ -467,7 +469,7 @@ test_that("transmit", {
     # Check that function skips on existing
     expect_message(
         transmit(
-            remoteDir = ensemblURL,
+            remoteDir = remoteDir,
             pattern = "README",
             compress = FALSE
         ),
@@ -479,7 +481,7 @@ test_that("transmit", {
 
 test_that("transmit : Rename and compress", {
     x <- transmit(
-        remoteDir = ensemblURL,
+        remoteDir = remoteDir,
         pattern = "README",
         rename = "ensembl_readme.txt",
         compress = TRUE
@@ -492,19 +494,32 @@ test_that("transmit : Rename and compress", {
 
 test_that("transmit : Invalid parameters", {
     expect_error(
-        transmit("http://steinbaugh.com", pattern = "README"),
+        transmit(
+            remoteDir = "http://steinbaugh.com",
+            pattern = "README"
+        ),
         "is_matching_regex : remoteDir"
     )
     expect_error(
-        transmit("ftp://ftp.wormbase.org/pub/", pattern = "README"),
+        transmit(
+            remoteDir = "ftp://ftp.wormbase.org/pub/",
+            pattern = "README"
+        ),
         "is_non_empty : remoteFiles"
     )
     expect_error(
-        transmit(ensemblURL, pattern = "XXX"),
+        transmit(
+            remoteDir = remoteDir,
+            pattern = "XXX"
+        ),
         "is_non_empty : match"
     )
     expect_error(
-        transmit(ensemblURL, pattern = "README", rename = c("XXX", "YYY")),
+        transmit(
+            remoteDir = remoteDir,
+            pattern = "README",
+            rename = c("XXX", "YYY")
+        ),
         "are_same_length : match has length 1 but rename has length 2."
     )
 })

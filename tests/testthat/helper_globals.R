@@ -21,6 +21,3 @@ mat <- matrix(
 df <- as.data.frame(mat)
 tbl <- as(df, "tbl_df")
 dgc <- as(mat, "dgCMatrix")
-
-ensemblRelease <- 87L
-ensemblURL <- "ftp://ftp.ensembl.org/pub/release-89"
