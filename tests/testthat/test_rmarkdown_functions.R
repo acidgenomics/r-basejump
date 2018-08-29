@@ -1,5 +1,7 @@
 context("R Markdown Functions")
 
+load("plotlist.rda")
+
 
 
 # kables =======================================================================
