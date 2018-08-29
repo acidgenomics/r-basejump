@@ -240,6 +240,7 @@ assertFormalGene2symbol <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
+#' @inheritParams general
 #' @export
 #'
 #' @examples
@@ -882,7 +883,7 @@ assertIsTx2gene <- function(
 #' @examples
 #' assertAllAreURL(c(
 #'     "https://www.r-project.org",
-#'     "ftp://r-project.org",
+#'     "ftp://r-project.org"
 #' ))
 assertAllAreURL <- function(
     x,
