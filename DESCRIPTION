@@ -86,6 +86,7 @@ Suggests:
     BiocParallel,
     BiocStyle,
     EnsDb.Hsapiens.v75,
+    patrick,
     rmarkdown,
     testthat (>= 2.0)
 biocViews:

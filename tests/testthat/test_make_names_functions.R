@@ -13,39 +13,36 @@ funs <- list(
 
 
 # atomic =======================================================================
-test_that("makeNames : atomic", {
-    # Unnamed
-    x <- 1L
-    lapply(funs, function(fun) {
-        expect_identical(fun(x), x)
-    })
+with_parameters_test_that(
+    "makeNames : atomic : unnamed", {
+        x <- 1L
+        expect_identical(f(x), x)
+    },
+    f = funs
+)
 
-    # Named
-    object <- c("hello.world" = 1L)
-    expected <- c(
+with_parameters_test_that(
+    "makeNames : atomic : named", {
+        object <- c("hello.world" = 1L)
+        expect_identical(
+            object = names(f(object)),
+            expected = expected
+        )
+    },
+    f = funs,
+    expected = c(
         "helloWorld",
         "hello.world",
         "hello_world",
         "HelloWorld"
     )
-    mapply(
-        fun = funs,
-        expected = expected,
-        MoreArgs = list(object = object),
-        FUN = function(fun, object, expected) {
-            expect_identical(
-                object = names(fun(object)),
-                expected = expected
-            )
-        }
-    )
-})
+)
 
 
 
 # character ====================================================================
 test_that("makeNames : character", {
-    x <- mn[["character"]]
+    object <- mn[["character"]]
     expected <- list(
         camel = c(
             "helloWorld",
@@ -113,17 +110,20 @@ test_that("makeNames : character", {
         )
     )
     mapply(
-        f = funs,
+        fun = funs,
         expected = expected,
-        FUN = function(f, expected) {
-            expect_identical(f(x), expected)
-        },
-        SIMPLIFY = FALSE
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                object = fun(object),
+                expected = expected
+            )
+        }
     )
 })
 
 test_that("makeNames : character (named)", {
-    x <- mn[["namedCharacter"]]
+    object <- mn[["namedCharacter"]]
     expected <- list(
         camel = c(itemA = "helloWorld", itemB = "helloWORLD"),
         dotted = c("Item.A" = "hello.world", "Item.B" = "HELLO.WORLD"),
@@ -131,16 +131,23 @@ test_that("makeNames : character (named)", {
         upperCamel = c(ItemA = "HelloWorld", ItemB = "HELLOWORLD")
     )
     mapply(
-        f = funs,
+        fun = funs,
         expected = expected,
-        FUN = function(f, expected) {
-            expect_identical(f(x), expected)
-        },
-        SIMPLIFY = FALSE
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                object = fun(object),
+                expected = expected
+            )
+        }
     )
 })
 
 test_that("makeNames : character : Delimited numbers", {
+    expect_identical(
+        upperCamel("1,000,000"),
+        "X1000000"
+    )
     expect_identical(
         camel("1,000,000", strict = FALSE),
         "x1000000"
@@ -149,7 +156,6 @@ test_that("makeNames : character : Delimited numbers", {
         camel("1,000,000", strict = TRUE),
         "x1000000"
     )
-
     expect_identical(
         camel("2018-01-01", strict = FALSE),
         "x2018.01.01"
@@ -158,7 +164,6 @@ test_that("makeNames : character : Delimited numbers", {
         camel("2018-01-01", strict = TRUE),
         "x2018x01x01"
     )
-
     expect_identical(
         camel("0.01", strict = FALSE),
         "x0.01"
@@ -167,7 +172,6 @@ test_that("makeNames : character : Delimited numbers", {
         camel("0.01", strict = TRUE),
         "x0x01"
     )
-
     expect_identical(
         camel("res.0.1", strict = FALSE),
         "res0.1"
@@ -175,11 +179,6 @@ test_that("makeNames : character : Delimited numbers", {
     expect_identical(
         camel("res.0.1", strict = TRUE),
         "res0x1"
-    )
-
-    expect_identical(
-        upperCamel("1,000,000"),
-        "X1000000"
     )
     expect_identical(
         upperCamel("2018-01-01", strict = TRUE),
@@ -195,7 +194,7 @@ test_that("makeNames : character : Delimited numbers", {
 
 # factor =======================================================================
 test_that("makeNames : factor", {
-    x <- mn[["factor"]]
+    object <- mn[["factor"]]
     levels <- list(
         camel = c("group1", "group2"),
         dotted = c("group.1", "group.2"),
@@ -208,18 +207,24 @@ test_that("makeNames : factor", {
         snake = c("sample_1", "sample_2", "sample_3", "sample_4"),
         upperCamel = c("Sample1", "Sample2", "Sample3", "Sample4")
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(levels(funs[[i]](x)), levels[[i]])
-        expect_identical(names(funs[[i]](x)), names[[i]])
-    })
+    mapply(
+        fun = funs,
+        levels = levels,
+        names = names,
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, levels, names) {
+            expect_identical(levels(fun(object)), levels)
+            expect_identical(names(fun(object)), names)
+        }
+    )
 })
 
 
 
 # matrix / data.frame ==========================================================
 test_that("makeNames : matrix", {
-    x <- mn[["matrix"]][1L:3L, 1L:3L]
-    expect <- list(
+    object <- mn[["matrix"]][1L:3L, 1L:3L]
+    expected <- list(
         camel = list(
             c("alabama", "alaska", "arizona"),
             c("murder", "assault", "urbanPop")
@@ -237,12 +242,17 @@ test_that("makeNames : matrix", {
             c("Murder", "Assault", "UrbanPop")
         )
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(
-            dimnames(funs[[i]](x, rownames = TRUE, colnames = TRUE)),
-            expect[[i]]
-        )
-    })
+    mapply(
+        fun = funs,
+        expected = expected,
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                dimnames(fun(object, rownames = TRUE, colnames = TRUE)),
+                expected
+            )
+        }
+    )
 })
 
 
@@ -250,7 +260,7 @@ test_that("makeNames : matrix", {
 # GRanges ======================================================================
 test_that("makeNames : GRanges", {
     # gr object is already camel formatted!
-    expect <- list(
+    expected <- list(
         camel = c(
             "geneID",
             "geneName",
@@ -288,35 +298,48 @@ test_that("makeNames : GRanges", {
             "BroadClass"
         )
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(
-            colnames(mcols(funs[[i]](gr))),
-            expect[[i]]
-        )
-    })
+    mapply(
+        fun = funs,
+        expected = expected,
+        MoreArgs = list(object = gr),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                object = colnames(mcols(fun(object))),
+                expected = expected
+            )
+        }
+    )
 })
 
 
 
 # list =========================================================================
 test_that("makeNames : list", {
-    x <- mn[["list"]]
-    expect <- list(
+    object <- mn[["list"]]
+    expected <- list(
         camel = c("itemA", "itemB"),
         dotted = c("Item.A", "Item.B"),
         snake = c("item_a", "item_b"),
         upperCamel = c("ItemA", "ItemB")
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(names(funs[[i]](x)), expect[[i]])
-    })
+    mapply(
+        fun = funs,
+        expected = expected,
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                object = names(fun(object)),
+                expected = expected
+            )
+        }
+    )
 })
 
 
 
 # ANY ==========================================================================
 test_that("makeNames : ANY (e.g. Matrix)", {
-    x <- Matrix(
+    object <- Matrix(
         data = 1L:4L,
         nrow = 2L,
         ncol = 2L,
@@ -325,7 +348,7 @@ test_that("makeNames : ANY (e.g. Matrix)", {
             c("sample.id.1", "sample.id.2")
         )
     )
-    expect <- list(
+    expected <- list(
         camel = list(
             c("geneID1", "geneID2"),
             c("sampleID1", "sampleID2")
@@ -343,10 +366,14 @@ test_that("makeNames : ANY (e.g. Matrix)", {
             c("SampleID1", "SampleID2")
         )
     )
-    lapply(seq_along(funs), function(i) {
+    mapply(
+        fun = funs,
+        expected = expected,
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
         expect_identical(
-            dimnames(funs[[i]](x, rownames = TRUE, colnames = TRUE)),
-            expect[[i]]
+            object = dimnames(fun(object, rownames = TRUE, colnames = TRUE)),
+            expected = expected
         )
     })
 })
