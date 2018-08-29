@@ -1,10 +1,12 @@
 context("Annotation Functions")
 
+release <- 87L
+
 
 
 # annotable ====================================================================
 test_that("annotable", {
-    x <- annotable("Homo sapiens", release = ensemblRelease)
+    x <- annotable("Homo sapiens", release = release)
     expect_is(x, "data.frame")
     expect_identical(dim(x), c(63970L, 12L))
     expect_identical(rownames(x)[[1L]], "ENSG00000000003")
@@ -40,7 +42,7 @@ test_that("convertGenesToSymbols : character", {
     # gene2symbol (recommended)
     g2s <- makeGene2symbolFromEnsembl(
         organism = "Mus musculus",
-        release = ensemblRelease
+        release = release
     )
     expect_identical(
         object = convertGenesToSymbols(
@@ -55,14 +57,14 @@ test_that("convertGenesToSymbols : character", {
         object = convertGenesToSymbols(
             object = x,
             organism = "Mus musculus",
-            release = ensemblRelease
+            release = release
         ),
         expected = y
     )
 
     # No tx2gene or organism
     expect_identical(
-        convertGenesToSymbols(x, release = ensemblRelease),
+        convertGenesToSymbols(x, release = release),
         y
     )
 })
@@ -79,7 +81,7 @@ test_that("convertGenesToSymbols : matrix", {
         )
     )
     expect_identical(
-        convertGenesToSymbols(x, release = ensemblRelease) %>%
+        convertGenesToSymbols(x, release = release) %>%
             rownames(),
         c(
             "ENSMUSG00000000001" = "Gnai3",
@@ -96,7 +98,7 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
             convertGenesToSymbols(
                 object = x,
                 organism = "Mus musculus",
-                release = ensemblRelease
+                release = release
             )
         ),
         c(EGFP = "EGFP", "ENSMUSG00000000001" = "Gnai3")
@@ -105,7 +107,7 @@ test_that("convertGenesToSymbols : FASTA spike-in support", {
 
 test_that("convertGenesToSymbols : Invalid identifiers", {
     expect_warning(
-        convertGenesToSymbols("ENSMUSG00000000000", release = ensemblRelease),
+        convertGenesToSymbols("ENSMUSG00000000000", release = release),
         "Failed to match genes: ENSMUSG00000000000"
     )
     expect_error(
@@ -131,7 +133,7 @@ test_that("convertTranscriptsToGenes : character", {
     # tx2gene (recommended)
     tx2gene <- makeTx2geneFromEnsembl(
         organism = "Mus musculus",
-        release = ensemblRelease
+        release = release
     )
     expect_identical(
         convertTranscriptsToGenes(x, tx2gene = tx2gene),
@@ -143,14 +145,14 @@ test_that("convertTranscriptsToGenes : character", {
         convertTranscriptsToGenes(
             x,
             organism = "Mus musculus",
-            release = ensemblRelease
+            release = release
         ),
         y
     )
 
     # No tx2gene or organism
     expect_identical(
-        convertTranscriptsToGenes(x, release = ensemblRelease),
+        convertTranscriptsToGenes(x, release = release),
         y
     )
 })
@@ -172,7 +174,7 @@ test_that("convertTranscriptsToGenes : matrix", {
         )
     )
     expect_error(
-        convertTranscriptsToGenes(mat, release = ensemblRelease),
+        convertTranscriptsToGenes(mat, release = release),
         "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_identical(
@@ -191,7 +193,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
     expect_error(
         convertTranscriptsToGenes(
             c("ENSMUST00000000000", "ENSMUST00000000001"),
-            release = ensemblRelease
+            release = release
         ),
         "Failed to match transcripts: ENSMUST00000000000"
     )
@@ -430,7 +432,7 @@ test_that("geneSynonyms", {
 test_that("makeGene2symbolFromEnsembl", {
     x <- makeGene2symbolFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease
+        release = release
     )
     expect_identical(colnames(x), c("geneID", "geneName"))
     expect_identical(nrow(x), 63970L)
@@ -476,7 +478,7 @@ test_that("makeGRangesFromEnsembl : genes", {
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "genes",
-        release = ensemblRelease
+        release = release
     )
     expect_s4_class(x, "GRanges")
     expect_identical(length(x), 63970L)
@@ -502,7 +504,7 @@ test_that("makeGRangesFromEnsembl : transcripts", {
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "transcripts",
-        release = ensemblRelease
+        release = release
     )
     expect_s4_class(x, "GRanges")
     expect_identical(length(x), 216741L)
@@ -578,7 +580,7 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
 test_that("makeGRangesFromEnsembl : metadata", {
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease,
+        release = release,
         metadata = TRUE
     )
     expect_is(x, "list")
@@ -696,7 +698,7 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 test_that("makeTx2geneFromEnsembl", {
     x <- makeTx2geneFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease
+        release = release
     )
     expect_identical(colnames(x), c("transcriptID", "geneID"))
     expect_identical(nrow(x), 216741L)
