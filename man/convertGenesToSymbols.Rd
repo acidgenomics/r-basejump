@@ -54,7 +54,8 @@ Convert Ensembl Identifiers to Gene Symbols
 \examples{
 # character ====
 x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-convertGenesToSymbols(x)
+y <- convertGenesToSymbols(x)
+print(y)
 
 # matrix ====
 mat <- matrix(
@@ -80,20 +81,14 @@ y <- convertSymbolsToGenes(x)
 print(y)
 }
 \seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
+Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}},
+  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2gene}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
