@@ -29,11 +29,6 @@ mapply(
                 destfile = file
             )
         }
-        # Load R Data file
-        if (grepl("\\.rda$", file)) {
-            message(paste("Loading", file))
-            load(file, envir = envir)
-        }
     },
     file = files,
     MoreArgs = list(cacheURL = cacheURL, envir = environment())
