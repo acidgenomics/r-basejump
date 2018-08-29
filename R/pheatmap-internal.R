@@ -1,13 +1,92 @@
-# Prepare annotation column data using interesting groups
-.annotationCol <- function(object, interestingGroups) {
+.emptyPheatmapAnnotations <- list(
+    annotationCol = NA,
+    annotationColors = NA
+)
+
+
+
+# Automatically handle the annotation data and colors.
+# Factors with a single level are automatically dropped.
+.pheatmapAnnotations <- function(
+    object,
+    blacklist = "sampleName",
+    legendColor
+) {
+    validObject(object)
+    assert_is_character(blacklist)
+    assertIsHexColorFunctionOrNULL(legendColor)
+
+    # Annotation columns -------------------------------------------------------
+    data <- colData(object)
+    interestingGroups <- interestingGroups(object)
+
+    # pheatmap requires `NA` if empty.
     if (
+        !has_dims(data) ||
         !length(interestingGroups) ||
         identical(interestingGroups, "sampleName")
     ) {
-        NULL
-    } else {
-        colData(object)[, interestingGroups, drop = FALSE]
+        return(.emptyPheatmapAnnotations)
     }
+
+    assertHasRownames(data)
+    data <- data[, interestingGroups, drop = FALSE]
+
+    # Prepare the blacklist, always excluding sample names from labeling in
+    # the pheatmap annotation columns.
+    blacklist <- unique(c("sampleName", blacklist))
+
+    data <- data %>%
+        as("tbl_df") %>%
+        # Remove blacklisted columns (e.g. `sampleName`).
+        .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
+        # Ensure all strings are factors.
+        mutate_if(is.character, as.factor) %>%
+        # Ensure unwanted columns like `sizeFactor` are dropped.
+        select_if(is.factor) %>%
+        as.data.frame() %>%
+        column_to_rownames()
+
+    # Drop any remaining factor columns that contain a single level.
+    hasLevels <- vapply(
+        data,
+        FUN = function(x) {
+            length(levels(x)) > 1L
+        },
+        FUN.VALUE = logical(1L)
+    )
+
+    # Return empty if there are no useful factor columns.
+    if (!length(hasLevels)) {
+        return(.emptyPheatmapAnnotations)  # nocov
+    }
+
+    data <- data[, hasLevels, drop = FALSE]
+
+    # Colors -------------------------------------------------------------------
+    if (
+        is.data.frame(data) &&
+        is.function(legendColor)
+    ) {
+        colors <- lapply(
+            X = data,
+            FUN = function(x) {
+                assert_is_factor(x)
+                levels <- levels(x)
+                colors <- legendColor(length(levels))
+                names(colors) <- levels
+                colors
+            })
+        names(colors) <- colnames(data)
+    } else {
+        colors <- NA
+    }
+
+    # Return -------------------------------------------------------------------
+    list(
+        annotationCol = data,
+        annotationColors = colors
+    )
 }
 
 
@@ -32,72 +111,8 @@
 
 
 
-# Automatically handle the annotation columns.
-# Factors with a single level are automatically dropped.
-.pheatmapAnnotationCol <- function(
-    data,
-    blacklist = "sampleName"
-) {
-    # pheatmap requires `NA` argument if empty
-    if (!has_dims(data)) {
-        return(NA)
-    }
-    assertHasRownames(data)
-
-    blacklist <- unique(c("sampleName", blacklist))
-    data <- data %>%
-        as.data.frame() %>%
-        # Remove sample name columns
-        .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
-        rownames_to_column() %>%
-        # Ensure all strings are factor
-        mutate_if(is.character, as.factor) %>%
-        # Ensure unwanted columns like `sizeFactor` are dropped
-        select_if(is.factor) %>%
-        column_to_rownames()
-
-    # Drop any remaining factor columns that contain a single level
-    hasLevels <- vapply(
-        data,
-        FUN = function(x) {
-            length(levels(x)) > 1L
-        },
-        FUN.VALUE = logical(1L)
-    )
-
-    if (!length(hasLevels)) {
-        return(NA)  # nocov
-    }
-
-    data[, hasLevels, drop = FALSE]
-}
-
-
-
-# Define colors for each annotation column
-.pheatmapAnnotationColors <- function(annotationCol, legendColor) {
-    assertIsHexColorFunctionOrNULL(legendColor)
-    if (is.data.frame(annotationCol) && is.function(legendColor)) {
-        list <- lapply(
-            X = annotationCol,
-            FUN = function(col) {
-                assert_is_factor(col)
-                levels <- levels(col)
-                colors <- legendColor(length(levels))
-                names(colors) <- levels
-                colors
-            })
-        names(list) <- colnames(annotationCol)
-        list
-    } else {
-        NA
-    }
-}
-
-
-
 # If `color = NULL`, use the pheatmap default palette
-.pheatmapColor <- function(color = NULL, n = 256L) {
+.pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {
         # Hexadecimal color palette
         # (e.g. RColorBrewer palettes)

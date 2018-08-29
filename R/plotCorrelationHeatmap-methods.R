@@ -63,12 +63,19 @@ setMethod(
         title = TRUE,
         ...
     ) {
+        object <- .coerceToSummarizedExperiment(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
         )
+        if (
+            is.character(interestingGroups) &&
+            !identical(interestingGroups, "sampleName")
+        ) {
+            interestingGroups(object) <- interestingGroups
+        }
         method <- match.arg(method)
         assert_is_a_string(clusteringMethod)
         assert_is_a_bool(showColnames)
@@ -90,27 +97,33 @@ setMethod(
         mat <- as.matrix(assay(object))
         mat <- cor(mat, method = method)
 
-        # Annotation columns
-        annotationCol <- .annotationCol(
+        # Get annotation columns and colors automatically.
+        x <- .pheatmapAnnotations(
             object = object,
-            interestingGroups = interestingGroups
-        )
-
-        # Use `sampleName`, if defined
-        sampleName <- colData(object)[["sampleName"]]
-        if (length(sampleName)) {
-            colnames(mat) <- sampleName
-            if (length(annotationCol)) {
-                rownames(annotationCol) <- sampleName
-            }
-        }
-
-        annotationCol <- .pheatmapAnnotationCol(annotationCol)
-        annotationColors <- .pheatmapAnnotationColors(
-            annotationCol = annotationCol,
             legendColor = legendColor
         )
-        color <- .pheatmapColor(color)
+        assert_is_list(x)
+        assert_are_identical(
+            x = names(x),
+            y = c("annotationCol", "annotationColors")
+        )
+        annotationCol <- x[["annotationCol"]]
+        annotationColors <- x[["annotationColors"]]
+        rm(x)
+
+        color <- .pheatmapColorPalette(color)
+
+        # Substitute human-friendly sample names, if defined.
+        sampleNames <- tryCatch(
+            expr = sampleNames(object),
+            error = function(e) NULL
+        )
+        if (length(sampleNames)) {
+            colnames(mat) <- sampleNames
+            if (length(annotationCol)) {
+                rownames(annotationCol) <- sampleNames
+            }
+        }
 
         # Return pretty heatmap with modified defaults
         args <- list(

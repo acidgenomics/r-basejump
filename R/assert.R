@@ -678,16 +678,28 @@ assertIsGene2symbol <- function(
     x,
     severity = getOption("assertive.severity", "stop")
 ) {
+    # Requiring standard data frame class.
     assert_is_data.frame(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
         y = c("geneID", "geneName"),
         severity = severity
     )
-    assert_has_rows(x, severity = severity)
-    # Assert that all columns are character
+    # Require rownames for standard data frame.
+    if (!is_tibble(x)) {
+        assertHasRownames(x, severity = severity)
+    }
+    # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
+        x = x,
+        MoreArgs = list(severity = severity),
+        SIMPLIFY = FALSE
+    ))
+    # Assert that neither column has duplicates.
+    invisible(mapply(
+        FUN = assert_has_no_duplicates,
         x = x,
         MoreArgs = list(severity = severity),
         SIMPLIFY = FALSE
@@ -849,8 +861,9 @@ assertIsTx2gene <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     assert_is_data.frame(x, severity = severity)
+    assert_is_non_empty(x, severity = severity)
     # nocov start
-    # Consider informing the user about this in a future update
+    # Consider informing the user about this in a future update.
     if ("txID" %in% colnames(x)) {
         colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
     }
@@ -860,14 +873,19 @@ assertIsTx2gene <- function(
         y = c("transcriptID", "geneID"),
         severity = severity
     )
-    assert_has_rows(x, severity = severity)
-    # Assert that all columns are character
+    # Require rownames for standard data frame.
+    if (!is_tibble(x)) {
+        assertHasRownames(x, severity = severity)
+    }
+    # Assert that all columns are character.
     invisible(mapply(
         FUN = assert_is_character,
         x = x,
         MoreArgs = list(severity = severity),
         SIMPLIFY = FALSE
     ))
+    # Assert that there are no duplicate transcripts.
+    assert_has_no_duplicates(x[["transcriptID"]])
 }
 
 

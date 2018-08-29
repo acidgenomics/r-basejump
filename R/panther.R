@@ -17,22 +17,29 @@
 #' ))
 #' glimpse(x)
 panther <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Caenorhabditis elegans",
-        "Drosophila melanogaster"
-    ),
+    organism,
     release = NULL
 ) {
     stopifnot(has_internet())
-    organism <- match.arg(organism)
+    organism <- match.arg(
+        arg = organism,
+        choices = c(
+            "Homo sapiens",
+            "Mus musculus",
+            "Caenorhabditis elegans",
+            "Drosophila melanogaster"
+        )
+    )
     map <- c(
         "Homo sapiens" = "human",
         "Mus musculus" = "mouse",
         "Caenorhabditis elegans" = "nematode_worm",
         "Drosophila melanogaster" = "fruit_fly"
     )
+    message(paste(
+        "Downloading PANTHER annotations for",
+        organism, paste0("(", map[[organism]], ")")
+    ))
     data <- .pantherAnnotations(map[[organism]], release = release)
     if (organism == "Homo sapiens") {
         .panther.human(data)
@@ -59,6 +66,7 @@ panther <- function(
 
     # HGNC matches
     hgnc <- data %>%
+        as("tbl_df") %>%
         # Extract the HGNC ID
         mutate(
             hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
@@ -66,13 +74,11 @@ panther <- function(
         ) %>%
         filter(!is.na(!!sym("hgncID"))) %>%
         merge(hgnc2gene, by = "hgncID", all.x = TRUE) %>%
-        as_tibble() %>%
         select(-!!sym("hgncID")) %>%
         filter(!is.na(!!sym("geneID"))) %>%
         unique()
 
-    do.call(rbind, list(ensembl, hgnc)) %>%
-        .pantherReturn()
+    .pantherReturn(do.call(rbind, list(ensembl, hgnc)))
 }
 
 
@@ -89,18 +95,17 @@ panther <- function(
 
     # MGI matches
     mgi <- data %>%
+        as("tbl_df") %>%
         mutate(
             mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
             mgiID = as.integer(!!sym("mgiID"))
         ) %>%
         filter(!is.na(!!sym("mgiID"))) %>%
         merge(mgi2gene, by = "mgiID", all.x = TRUE) %>%
-        as_tibble() %>%
         select(-!!sym("mgiID")) %>%
         filter(!is.na(!!sym("geneID")))
 
-    do.call(rbind, list(ensembl, mgi)) %>%
-        .pantherReturn()
+    .pantherReturn(do.call(rbind, list(ensembl, mgi)))
 }
 
 
@@ -136,7 +141,6 @@ panther <- function(
         release <- "current_release"
     }
     assert_is_a_string(release)
-    message("Downloading PANTHER annotations")
     file <- transmit(
         remoteDir = paste(
             "ftp://ftp.pantherdb.org",
