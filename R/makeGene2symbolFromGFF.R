@@ -8,6 +8,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
+#' @inheritParams gene2symbol
 #'
 #' @return `data.frame`.
 #' @export
@@ -20,7 +21,12 @@
 #' # GFFv3
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
 #' glimpse(x)
-makeGene2symbolFromGFF <- function(file) {
+makeGene2symbolFromGFF <- function(
+    file,
+    unique = TRUE
+) {
+    assert_is_a_bool(unique)
+
     message("Making gene2symbol from GFF")
     gff <- readGFF(file)
 
@@ -31,8 +37,8 @@ makeGene2symbolFromGFF <- function(file) {
     data <- mcols(gff) %>%
         as.data.frame() %>%
         camel()
+
     assert_is_subset("geneID", colnames(data))
-    geneIDs <- sort(unique(na.omit(data[["geneID"]])))
     data <- filter(data, !is.na(!!sym("geneID")))
 
     if (type == "GTF") {
@@ -59,7 +65,13 @@ makeGene2symbolFromGFF <- function(file) {
         arrange(!!sym("geneID")) %>%
         set_rownames(.[["geneID"]])
 
-    assert_are_identical(geneIDs, rownames(data))
+    # Ensure gene names (symbols) are unique, if desired.
+    # This is recommended by default.
+    if (isTRUE(unique)) {
+        data <- .makeGeneNamesUnique(data)
+    }
+
+    assertIsGene2symbol(data)
     data
 }
 

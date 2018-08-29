@@ -6,12 +6,17 @@
 \alias{gene2symbol,SummarizedExperiment-method}
 \title{Gene to Symbol Mappings}
 \usage{
-gene2symbol(object)
+gene2symbol(object, ...)
 
-\S4method{gene2symbol}{SummarizedExperiment}(object)
+\S4method{gene2symbol}{SummarizedExperiment}(object, unique = TRUE)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
+
+\item{unique}{\code{boolean}. Ensure that all gene symbols are unique. Uses
+\code{\link[base:make.unique]{base::make.unique()}} internally.}
 }
 \value{
 \code{data.frame} containing gene identifier and gene name (aka symbol)

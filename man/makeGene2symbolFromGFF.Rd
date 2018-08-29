@@ -5,10 +5,13 @@
 \alias{makeGene2symbolFromGTF}
 \title{Gene-to-Symbol Mappings from GFF File}
 \usage{
-makeGene2symbolFromGFF(file)
+makeGene2symbolFromGFF(file, unique = TRUE)
 }
 \arguments{
 \item{file}{\code{string}. File path.}
+
+\item{unique}{\code{boolean}. Ensure that all gene symbols are unique. Uses
+\code{\link[base:make.unique]{base::make.unique()}} internally.}
 }
 \value{
 \code{data.frame}.
