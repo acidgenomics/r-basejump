@@ -24,7 +24,7 @@ Assert All Are URL
 \examples{
 assertAllAreURL(c(
     "https://www.r-project.org",
-    "ftp://r-project.org",
+    "ftp://r-project.org"
 ))
 isURL(c(
     "http://www.r-project.org",
