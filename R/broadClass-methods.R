@@ -147,7 +147,7 @@ setMethod(
     "broadClass",
     signature("SummarizedExperiment"),
     function(object) {
-        object <- .coerceToSummarizedExperiment(object)
+        validObject(object)
         rowData(object)[["broadClass"]]
     }
 )

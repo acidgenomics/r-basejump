@@ -34,6 +34,8 @@ setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
     function(object, ...) {
+        validObject(object)
+
         # Legacy arguments -----------------------------------------------------
         # nocov start
         call <- match.call(expand.dots = TRUE)
@@ -54,7 +56,6 @@ setMethod(
         }
         # nocov end
 
-        object <- .coerceToSummarizedExperiment(object)
         data <- colData(object)
         if (!"sampleName" %in% colnames(data)) {
             stop(paste(
@@ -78,6 +79,7 @@ setMethod(
     ),
     function(object, value) {
         colData(object) <- value
+        validObject(object)
         object
     }
 )
