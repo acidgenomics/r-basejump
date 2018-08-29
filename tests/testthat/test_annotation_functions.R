@@ -38,23 +38,26 @@ test_that("convertGenesToSymbols : character", {
     )
 
     # gene2symbol (recommended)
-    gene2symbol <- makeGene2symbolFromEnsembl(
+    g2s <- makeGene2symbolFromEnsembl(
         organism = "Mus musculus",
         release = ensemblRelease
     )
     expect_identical(
-        convertGenesToSymbols(x, gene2symbol = gene2symbol),
-        y
+        object = convertGenesToSymbols(
+            x,
+            gene2symbol = g2s
+        ),
+        expected = y
     )
 
     # organism
     expect_identical(
-        convertGenesToSymbols(
-            x,
+        object = convertGenesToSymbols(
+            object = x,
             organism = "Mus musculus",
             release = ensemblRelease
         ),
-        y
+        expected = y
     )
 
     # No tx2gene or organism

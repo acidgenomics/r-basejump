@@ -174,11 +174,11 @@ test_that("makeNames : character : Delimited numbers", {
     )
     expect_identical(
         upperCamel("2018-01-01", strict = TRUE),
-        "X2018x01x01"
+        "X2018X01X01"
     )
     expect_identical(
         upperCamel("0.01", strict = TRUE),
-        "X0x01"
+        "X0X01"
     )
 })
 
@@ -359,6 +359,9 @@ test_that("camel : Strict mode", {
             "g2mScore",
             "worfdbHtmlRemap",
             "mazdaRx4",
+            "percentGc",
+            "x5prime",
+            "x5x3Bias",
             "x123",
             NA
         )
@@ -375,6 +378,9 @@ test_that("camel : Strict mode", {
             "G2mScore",
             "WorfdbHtmlRemap",
             "MazdaRx4",
+            "PercentGc",
+            "X5prime",
+            "X5X3Bias",
             "X123",
             NA
         )

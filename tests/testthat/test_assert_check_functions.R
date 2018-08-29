@@ -81,17 +81,15 @@ test_that("assertFormalInterestingGroups", {
             interestingGroups = c("tissue", "treatment")
         )
     )
-    # Must exist as columns in sampleData
+    # Must exist as columns in sampleData.
     expect_error(
         assertFormalInterestingGroups(
             x = rse_bcb,
             interestingGroups = "XXX"
         ),
-        paste(
-            "The interesting groups \"XXX\" are not defined"
-        )
+        "is_subset : The element 'XXX'"
     )
-    # Require interesting groups to be defined as factor columns
+    # Require interesting groups to be defined as factor columns.
     expect_error(
         assertFormalInterestingGroups(
             x = rse_bcb,
@@ -142,7 +140,7 @@ test_that("assertIsAnImplicitInteger", {
     expect_silent(assertIsAnImplicitInteger(1.0))
     expect_error(assertIsAnImplicitInteger(c(1L, 2L)))
     expect_error(assertIsAnImplicitInteger(1.1))
-    # Tolerance threshold
+    # Check tolerance threshold.
     expect_error(assertIsImplicitInteger(1.000000000000001))
 })
 
@@ -294,7 +292,7 @@ test_that("assertIsHexColorFunctionOrNULL", {
         assertIsHexColorFunctionOrNULL(x(2L)),
         "is2 :"
     )
-    # viridis trailing "FF" sanitization support
+    # Check viridis trailing "FF" sanitization support.
     viridis <- function(n = 2L) {
         colors <- c("#440154FF", "#FDE725FF")
         colors[n]
