@@ -911,7 +911,7 @@ setMethod(
                 strict = strict
             )
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -935,7 +935,7 @@ setMethod(
                 colnames = colnames
             )
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -959,7 +959,7 @@ setMethod(
                 colnames = colnames
             )
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -985,7 +985,7 @@ setMethod(
                 strict = strict
             )
         } else {
-            object
+            object  # nocov
         }
     }
 )
