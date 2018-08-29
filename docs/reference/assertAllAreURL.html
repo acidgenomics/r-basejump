@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gene-to-Symbol Mappings from Ensembl — makeGene2symbolFromEnsembl • basejump</title>
+<title>Assert All Are URL — assertAllAreURL • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Gene-to-Symbol Mappings from Ensembl — makeGene2symbolFromEnsembl" />
+<meta property="og:title" content="Assert All Are URL — assertAllAreURL" />
 
-<meta property="og:description" content="Gene-to-Symbol Mappings from Ensembl" />
+<meta property="og:description" content="Assert All Are URL" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,60 +105,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gene-to-Symbol Mappings from Ensembl</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGene2symbolFromEnsembl.R'><code>R/makeGene2symbolFromEnsembl.R</code></a></small>
-    <div class="hidden name"><code>makeGene2symbolFromEnsembl.Rd</code></div>
+    <h1>Assert All Are URL</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <div class="hidden name"><code>assertAllAreURL.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Gene-to-Symbol Mappings from Ensembl</p>
+    <p>Assert All Are URL</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>assertAllAreURL</span>(<span class='no'>x</span>, <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))
+
+<span class='fu'>isURL</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Passthrough to <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
+      <th>x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>severity</th>
+      <td><p><code>string</code>. How severe should the consequences of the assertion
+be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>.</p>
+    <p>Stop on mismatch.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
-  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code><a href='panther.html'>panther</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
+  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
+  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
+  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
+  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
+  <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
+  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
+  <code><a href='assertIsAHeaderLevel.html'>assertIsAHeaderLevel</a></code>,
+  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
+  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
+  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
+  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
+  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
+  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
+  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
-#&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh38"</span>
-#&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 65,256
-#&gt; Variables: 2
-#&gt; $ geneID   &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
-#&gt; $ geneName &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112", "FGR", "CFH...</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assertAllAreURL</span>(<span class='fu'>c</span>(
+    <span class='st'>"https://www.r-project.org"</span>,
+    <span class='st'>"ftp://r-project.org"</span>
+))
+<span class='fu'>isURL</span>(<span class='fu'>c</span>(
+    <span class='st'>"http://www.r-project.org"</span>,
+    <span class='st'>"https://www.r-project.org"</span>,
+    <span class='st'>"ftp://r-project.org"</span>,
+    <span class='st'>"r-project.org"</span>
+))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

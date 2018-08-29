@@ -135,19 +135,14 @@ identifiers.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='http://eggnogdb.embl.de/download/latest/README.txt'>EggNOG README</a></p>
-<p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+<p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
   <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
@@ -171,8 +166,8 @@ identifiers.</p></li>
 #&gt; <span class='message'>  consensusFunctionalDescription = col_character()</span>
 #&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; List of 2
 #&gt;  $ cogFunctionalCategories:Classes 'tbl_df', 'tbl' and 'data.frame':	18 obs. of  2 variables:
-#&gt;   ..$ letter     : chr [1:18] "A" "B" "C" "E" ...
-#&gt;   ..$ description: chr [1:18] "RNA processing and modification" "Chromatin structure and dynamics" "Energy production and conversion" "Amino acid transport and metabolism" ...
+#&gt;   ..$ letter     : Factor w/ 18 levels "A","B","C","E",..: 1 2 3 4 5 6 7 8 9 10 ...
+#&gt;   ..$ description: Factor w/ 18 levels "Amino acid transport and metabolism",..: 16 4 8 1 15 2 5 13 18 3 ...
 #&gt;  $ annotations            :Classes 'tbl_df', 'tbl' and 'data.frame':	286584 obs. of  3 variables:
 #&gt;   ..$ eggnogID                      : chr [1:286584] "COG0001" "COG0002" "COG0003" "COG0004" ...
 #&gt;   ..$ consensusFunctionalDescription: chr [1:286584] "Glutamate-1-semialdehyde aminotransferase" "N-acetylglutamate semialdehyde dehydrogenase" "ATPase required for the post-translational delivery of tail-anchored (TA) proteins to the endoplasmic reticulum"| __truncated__ "ammonium Transporter" ...

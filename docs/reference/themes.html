@@ -163,7 +163,7 @@ will also be removed.</p></td>
 
     <p><code>theme</code>.</p>
     
-    <h2 class="hasAnchor" id="midnight-theme"><a class="anchor" href="#midnight-theme"></a>Midnight Theme</h2>
+    <h2 class="hasAnchor" id="midnight"><a class="anchor" href="#midnight"></a>Midnight</h2>
 
     
     <p>Blackout theme that sets the plot background as black, with white text.
@@ -171,7 +171,7 @@ Inspired by <code><a href='http://www.rdocumentation.org/packages/Seurat/topics/
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.</p>
     
-    <h2 class="hasAnchor" id="paperwhite-theme"><a class="anchor" href="#paperwhite-theme"></a>Paperwhite Theme</h2>
+    <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
 
     
     <p>High contrast black and white theme optimized for print. Recommended for
@@ -187,8 +187,6 @@ scientific manuscripts and website tutorials.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Example ggplot object</span>
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>,
     <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(
@@ -198,7 +196,6 @@ scientific manuscripts and website tutorials.</p>
     )
 ) +
     <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()
-<span class='co'># Midnight Theme</span>
 <span class='no'>p</span> + <span class='fu'>theme_midnight</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='fu'>theme_paperwhite</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -208,9 +205,9 @@ scientific manuscripts and website tutorials.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#midnight-theme">Midnight Theme</a></li>
+      <li><a href="#midnight">Midnight</a></li>
 
-      <li><a href="#paperwhite-theme">Paperwhite Theme</a></li>
+      <li><a href="#paperwhite">Paperwhite</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

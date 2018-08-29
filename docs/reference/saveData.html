@@ -120,8 +120,9 @@ than combining into a single file.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"rda"</span>, <span class='st'>"rds"</span>, <span class='st'>"RData"</span>),
-  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>saveData</span>(<span class='no'>...</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.ext"</span>, <span class='st'>"rda"</span>),
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.compress"</span>,
+  <span class='fl'>TRUE</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

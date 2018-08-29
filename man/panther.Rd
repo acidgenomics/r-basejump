@@ -7,7 +7,13 @@
 panther(organism, release = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Supported organisms:
+\itemize{
+\item \emph{Homo sapiens}
+\item \emph{Mus musculus}
+\item \emph{Caenorhabditis elegans}
+\item \emph{Drosophila melanogaster}
+}}
 
 \item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of

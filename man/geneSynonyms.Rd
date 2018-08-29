@@ -4,12 +4,15 @@
 \alias{geneSynonyms}
 \title{Gene Synonyms}
 \usage{
-geneSynonyms(organism = c("Homo sapiens", "Mus musculus",
-  "Drosophila melanogaster"))
+geneSynonyms(organism)
 }
 \arguments{
-\item{organism}{\code{string}. Spported organisms: \emph{Homo sapiens}, \emph{Mus musculus},
-\emph{Drosophila melanogaster}.}
+\item{organism}{\code{string}. Supported organisms:
+\itemize{
+\item \emph{Homo sapiens}
+\item \emph{Mus musculus}
+\item \emph{Drosophila melanogaster}
+}}
 }
 \value{
 \code{grouped_df}, grouped by \code{geneID} column.
