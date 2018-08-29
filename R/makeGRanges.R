@@ -56,6 +56,13 @@
 #'   - `tcr` (T cell receptor)
 #'   - `other`
 #'
+#' @section annotable:
+#'
+#' [annotable()] is a legacy convenience function that calls
+#' [makeGRangesFromEnsembl()] and returns a `data.frame` instead of `GRanges`.
+#' Note that `GRanges` also support coercion to a basic `data.frame` using
+#' [as.data.frame()].
+#'
 #' @inheritParams general
 #' @param format `string`. Return ranges as "`genes`" or "`transcripts`".
 #' @param build `string` or `NULL`. Genome build assembly name (e.g.
@@ -65,7 +72,9 @@
 #' @param metadata `boolean`. Include the AnnotationHub metadata inside a
 #'   `list`.
 #'
-#' @return `GRanges`.
+#' @return
+#' - `makeGRangesFromEnsembl()`, `makeGRangesFromGFF()`: `GRanges`.
+#' - `annotable()`: `data.frame`.
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
@@ -93,6 +102,15 @@
 #' # Transcripts
 #' x <- makeGRangesFromGFF(file = file, format = "transcripts")
 #' summary(x)
+#'
+#' # annotable ====
+#' # Genes
+#' x <- annotable("Homo sapiens")
+#' glimpse(x)
+#'
+#' # Transcripts
+#' x <- annotable("Homo sapiens", format = "transcripts")
+#' glimpse(x)
 NULL
 
 
@@ -354,6 +372,23 @@ makeGRangesFromEnsembl <- function(
         gr
     }
 }
+
+
+
+#' @rdname makeGRanges
+#' @export
+annotable <- function() {
+    gr <- do.call(
+        what = makeGRangesFromEnsembl,
+        args = as.list(match.call())[-1L]
+    )
+    as.data.frame(gr)
+}
+# Set the formals.
+f <- formals("makeGRangesFromEnsembl")
+f <- f[setdiff(names(f), "metadata")]
+formals(annotable) <- f
+rm(f)
 
 
 
