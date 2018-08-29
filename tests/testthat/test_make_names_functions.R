@@ -1,5 +1,3 @@
-# FIXME Switch all of these loops to mapply calls
-
 context("Make Names Functions")
 
 load("gr.rda")
@@ -23,16 +21,24 @@ test_that("makeNames : atomic", {
     })
 
     # Named
-    x <- c("hello.world" = 1L)
-    expect <- c(
+    object <- c("hello.world" = 1L)
+    expected <- c(
         "helloWorld",
         "hello.world",
         "hello_world",
         "HelloWorld"
     )
-    lapply(seq_along(funs), function(i) {
-        expect_identical(names(funs[[i]](x)), expect[[i]])
-    })
+    mapply(
+        fun = funs,
+        expected = expected,
+        MoreArgs = list(object = object),
+        FUN = function(fun, object, expected) {
+            expect_identical(
+                object = names(fun(object)),
+                expected = expected
+            )
+        }
+    )
 })
 
 
