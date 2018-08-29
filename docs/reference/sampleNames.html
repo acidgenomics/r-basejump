@@ -120,7 +120,22 @@ the syntactically valid names defined as the rownames of <code><a href='sampleDa
     
     </div>
 
-        
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment,character</span>
+<span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Value to assign.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Named <code>character</code> vector of the sample names.</p>
@@ -136,14 +151,29 @@ the syntactically valid names defined as the rownames of <code><a href='sampleDa
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>sampleNames</span>(<span class='no'>rse_bcb</span>)</div><div class='output co'>#&gt;   control_rep1   control_rep2   control_rep3   fa_day7_rep1   fa_day7_rep2 
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_bcb</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   control_rep1   control_rep2   control_rep3   fa_day7_rep1   fa_day7_rep2 
 #&gt; "control_rep1" "control_rep2" "control_rep3" "fa_day7_rep1" "fa_day7_rep2" 
 #&gt;   fa_day7_rep3 
-#&gt; "fa_day7_rep3" </div></pre>
+#&gt; "fa_day7_rep3" </div><div class='input'>
+<span class='co'># Assignment support</span>
+<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>gsub</span>(<span class='st'>"_"</span>, <span class='st'>" "</span>, <span class='no'>value</span>)
+<span class='fu'>print</span>(<span class='no'>value</span>)</div><div class='output co'>#&gt;   control_rep1   control_rep2   control_rep3   fa_day7_rep1   fa_day7_rep2 
+#&gt; "control rep1" "control rep2" "control rep3" "fa day7 rep1" "fa day7 rep2" 
+#&gt;   fa_day7_rep3 
+#&gt; "fa day7 rep3" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   control_rep1   control_rep2   control_rep3   fa_day7_rep1   fa_day7_rep2 
+#&gt; "control rep1" "control rep2" "control rep3" "fa day7 rep1" "fa day7 rep2" 
+#&gt;   fa_day7_rep3 
+#&gt; "fa day7 rep3" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 

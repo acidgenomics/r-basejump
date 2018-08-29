@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transcript-to-Gene Mappings from Ensembl — makeTx2geneFromEnsembl • basejump</title>
+<title>Make Transcript-to-Gene Mappings — makeTx2gene • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Transcript-to-Gene Mappings from Ensembl — makeTx2geneFromEnsembl" />
+<meta property="og:title" content="Make Transcript-to-Gene Mappings — makeTx2gene" />
 
-<meta property="og:description" content="Transcript-to-Gene Mappings from Ensembl" />
+<meta property="og:description" content="Make Transcript-to-Gene Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,25 +105,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transcript-to-Gene Mappings from Ensembl</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeTx2geneFromEnsembl.R'><code>R/makeTx2geneFromEnsembl.R</code></a></small>
-    <div class="hidden name"><code>makeTx2geneFromEnsembl.Rd</code></div>
+    <h1>Make Transcript-to-Gene Mappings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeTx2gene.R'><code>R/makeTx2gene.R</code></a></small>
+    <div class="hidden name"><code>makeTx2gene.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Transcript-to-Gene Mappings from Ensembl</p>
+    <p>Make Transcript-to-Gene Mappings</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>...</span>)
+
+<span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>file</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Passthrough to <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
+      <td><p>Passthrough to <code><a href='makeGRanges.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p><code>string</code>. File path.</p></td>
     </tr>
     </table>
     
@@ -133,32 +139,40 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+    <div class='dont-index'><p><code>help(topic = "makeGRanges", package = "basejump")</code>.</p>
+<p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+    <pre class="examples"><div class='input'><span class='co'># makeTx2geneFromEnsembl ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
 #&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 225,358
 #&gt; Variables: 2
 #&gt; $ transcriptID &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST00000000442...
-#&gt; $ geneID       &lt;chr&gt; "ENSG00000004059", "ENSG00000003056", "ENSG00000173153...</div></pre>
+#&gt; $ geneID       &lt;chr&gt; "ENSG00000004059", "ENSG00000003056", "ENSG00000173153...</div><div class='input'>
+<span class='co'># makeTx2geneFromGFF ====</span>
+<span class='co'># GTF</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 20
+#&gt; Variables: 2
+#&gt; $ transcriptID &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST00...
+#&gt; $ geneID       &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG00...</div><div class='input'>
+<span class='co'># GFF3</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 26 transcripts, 20 genes</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 26
+#&gt; Variables: 2
+#&gt; $ transcriptID &lt;chr&gt; "ENSMUST00000027032", "ENSMUST00000027035", "ENSMUST00...
+#&gt; $ geneID       &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000025902", "ENSMUSG00...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ensembl Annotations — annotable • basejump</title>
+<title>Make Genomic Ranges — makeGRanges • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,12 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Ensembl Annotations — annotable" />
+<meta property="og:title" content="Make Genomic Ranges — makeGRanges" />
 
-<meta property="og:description" content="Quickly obtain gene and transcript annotations from
-Ensembl using
-AnnotationHub and
-ensembldb." />
+<meta property="og:description" content="Make Genomic Ranges" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,44 +105,105 @@ ensembldb." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Ensembl Annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/annotable.R'><code>R/annotable.R</code></a></small>
-    <div class="hidden name"><code>annotable.Rd</code></div>
+    <h1>Make Genomic Ranges</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/makeGRanges.R'><code>R/makeGRanges.R</code></a></small>
+    <div class="hidden name"><code>makeGRanges.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Quickly obtain gene and transcript annotations from
-<a href='http://www.ensembl.org'>Ensembl</a> using
-<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a> and
-<a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
+    <p>Make Genomic Ranges</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>annotable</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
+  <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+
+<span class='fu'>makeGRangesFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>))
+
+<span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>), <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>organism</th>
+      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p><code>string</code>. Return ranges as "<code>genes</code>" or "<code>transcripts</code>".</p></td>
+    </tr>
+    <tr>
+      <th>build</th>
+      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
+"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
+set <code>NULL</code>, defaults to the most recent release available.</p></td>
+    </tr>
+    <tr>
+      <th>metadata</th>
+      <td><p><code>boolean</code>. Include the AnnotationHub metadata inside a
+<code>list</code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Passthrough to <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p><code>string</code>. File path.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+<ul>
+<li><p><code>makeGRangesFromEnsembl()</code>, <code>makeGRangesFromGFF()</code>: <code>GRanges</code>.</p></li>
+<li><p><code>annotable()</code>: <code>data.frame</code>.</p></li>
+</ul>
 
-    <p>Simply specify the desired organism, using the full latin name. For example,
+    
+    <h2 class="hasAnchor" id="ensembl-annotations"><a class="anchor" href="#ensembl-annotations"></a>Ensembl annotations</h2>
+
+    
+    <p>Quickly obtain gene and transcript annotations from
+<a href='http://www.ensembl.org'>Ensembl</a> using
+<a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a> and
+<a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p>
+<p>Simply specify the desired organism, using the full latin name. For example,
 we can obtain human annotations with <code>Homo sapiens</code>. Optionally, specific
 Ensembl genome builds (e.g. <code>GRCh38</code>) and release versions (e.g. <code>87</code>) are
 supported.</p>
 <p>Under the hood, this function fetches annotations from AnnotationHub using
 the ensembldb package. AnnotationHub supports versioned Ensembl releases,
 back to version 87.</p>
+<p>Genome build: use "<code>GRCh38</code>" instead of "<code>hg38</code>" for the genome build, since
+we're querying Ensembl and not UCSC.</p>
+    
+    <h2 class="hasAnchor" id="gtf-gff-file"><a class="anchor" href="#gtf-gff-file"></a>GTF/GFF file</h2>
+
+    
+    <p>The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines. The
+GTF (General Transfer Format) is identical to GFF version 2. We recommend
+using a GTF file instead of a GFF3 file, if possible.</p>
+<p>The UCSC website has detailed conventions on the GFF3 format, including
+the metadata columns.</p>
+    
+    <h2 class="hasAnchor" id="grch-legacy-annotations"><a class="anchor" href="#grch-legacy-annotations"></a>GRCh37 legacy annotations</h2>
+
+    
+    <p><code>makeGRangesFromEnsembl()</code> supports the legacy <em>Homo sapiens</em> GRCh37 (release
+75) build by internally querying the
+<a href='https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75'>EnsDb.Hsapiens.v75</a>
+package. Alternatively, the corresponding GTF/GFF file can be loaded directly
+from GENCODE or Ensembl.</p>
     
     <h2 class="hasAnchor" id="broad-class-definitions"><a class="anchor" href="#broad-class-definitions"></a>Broad class definitions</h2>
 
@@ -163,35 +221,57 @@ groups:</p><ul>
 <li><p><code>other</code></p></li>
 </ul>
     
-    <h2 class="hasAnchor" id="grch-legacy-annotations"><a class="anchor" href="#grch-legacy-annotations"></a>GRCh37 legacy annotations</h2>
+    <h2 class="hasAnchor" id="annotable"><a class="anchor" href="#annotable"></a>annotable</h2>
 
     
-    <p>The <em>Homo sapiens</em> GRCh37 (release 75) build is supported by internally
-querying the
-<a href='https://doi.org/doi:10.18129/B9.bioc.EnsDb.Hsapiens.v75'>EnsDb.Hsapiens.v75</a>
-package.</p>
+    <p><code>annotable()</code> is a legacy convenience function that calls
+<code>makeGRangesFromEnsembl()</code> and returns a <code>data.frame</code> instead of <code>GRanges</code>.
+Note that <code>GRanges</code> also support coercion to a basic <code>data.frame</code> using
+<code>as.data.frame()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><ul>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.AnnotationHub'>AnnotationHub</a>.</p></li>
+<li><p><a href='https://doi.org/doi:10.18129/B9.bioc.ensembldb'>ensembldb</a>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/rtracklayer/topics/export'>rtracklayer::import()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/GenomicFeatures/topics/makeTxDbFromGFF'>GenomicFeatures::makeTxDbFromGFF()</a></code>.</p></li>
+</ul></div>
     <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
+    <pre class="examples"><div class='input'><span class='co'># makeGRangesFromEnsembl ====</span>
+<span class='co'># Genes</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+#&gt; <span class='message'>organism: "Homo sapiens"</span>
+#&gt; <span class='message'>build: "GRCh38"</span>
+#&gt; <span class='message'>release: "92"</span>
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 65256 ranges and 7 metadata columns"</div><div class='input'>
+<span class='co'># Transcripts</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+#&gt; <span class='message'>organism: "Homo sapiens"</span>
+#&gt; <span class='message'>build: "GRCh38"</span>
+#&gt; <span class='message'>release: "92"</span>
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 225358 ranges and 13 metadata columns"</div><div class='input'>
+<span class='co'># makeGRangesFromGFF ====</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='st'>"http://basejump.seq.cloud/example.gtf"</span>
+
+<span class='co'># Genes</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='output co'>#&gt; <span class='message'>17 gene annotations</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 17 ranges and 8 metadata columns"</div><div class='input'>
+<span class='co'># Transcripts</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGRangesFromGFF</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='output co'>#&gt; <span class='message'>20 transcript annotations</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 20 ranges and 16 metadata columns"</div><div class='input'>
+<span class='co'># annotable ====</span>
+<span class='co'># Genes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>annotable</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
@@ -210,7 +290,7 @@ package.</p>
 #&gt; $ geneID         &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
 #&gt; $ geneName       &lt;fct&gt; TSPAN6, TNMD, DPM1, SCYL3, C1orf112, FGR, CFH, FUCA2...
 #&gt; $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome, chro...</div><div class='input'>
-<span class='co'># Transcripts ====</span>
+<span class='co'># Transcripts</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>annotable</span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
@@ -243,11 +323,15 @@ package.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#ensembl-annotations">Ensembl annotations</a></li>
+
+      <li><a href="#gtf-gff-file">GTF/GFF file</a></li>
+
+      <li><a href="#grch-legacy-annotations">GRCh37 legacy annotations</a></li>
 
       <li><a href="#broad-class-definitions">Broad class definitions</a></li>
 
-      <li><a href="#grch-legacy-annotations">GRCh37 legacy annotations</a></li>
+      <li><a href="#annotable">annotable</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

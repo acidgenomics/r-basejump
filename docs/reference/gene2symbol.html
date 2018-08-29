@@ -116,10 +116,10 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,12 +128,26 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td><p><code>boolean</code>. Ensure that all gene symbols are unique. Uses
+<code><a href='http://www.rdocumentation.org/packages/base/topics/make.unique'>base::make.unique()</a></code> internally.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>data.frame</code> containing gene identifier and gene name (aka symbol)
 mappings.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function will make any duplicated symbols unique by applying
+<code><a href='http://www.rdocumentation.org/packages/base/topics/make.unique'>base::make.unique()</a></code>, which will add ".1" to the end of the gene name.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -160,6 +174,8 @@ mappings.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

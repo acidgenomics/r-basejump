@@ -8,8 +8,10 @@
 #' @author Michael Steinbaugh
 #' @family Annotation Functions
 #'
-#' @param organism `string`. Spported organisms: *Homo sapiens*, *Mus musculus*,
-#'   *Drosophila melanogaster*.
+#' @param organism `string`. Supported organisms:
+#'   - *Homo sapiens*
+#'   - *Mus musculus*
+#'   - *Drosophila melanogaster*
 #'
 #' @return `grouped_df`, grouped by `geneID` column.
 #' @export
@@ -17,15 +19,16 @@
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' glimpse(x)
-geneSynonyms <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster"
-    )
-) {
+geneSynonyms <- function(organism) {
     stopifnot(has_internet())
-    organism <- match.arg(organism)
+    organism <- match.arg(
+        arg = organism,
+        choices = c(
+            "Homo sapiens",
+            "Mus musculus",
+            "Drosophila melanogaster"
+        )
+    )
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)

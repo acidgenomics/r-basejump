@@ -3,18 +3,18 @@
 \name{makeGRanges}
 \alias{makeGRanges}
 \alias{makeGRangesFromEnsembl}
-\alias{annotable}
 \alias{makeGRangesFromGFF}
 \alias{makeGRangesFromGTF}
+\alias{annotable}
 \title{Make Genomic Ranges}
 \usage{
 makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
   build = NULL, release = NULL, metadata = FALSE, ...)
 
+makeGRangesFromGFF(file, format = c("genes", "transcripts"))
+
 annotable(organism, format = c("genes", "transcripts"), build = NULL,
   release = NULL, ...)
-
-makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}

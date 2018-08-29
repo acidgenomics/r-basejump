@@ -377,23 +377,6 @@ makeGRangesFromEnsembl <- function(
 
 #' @rdname makeGRanges
 #' @export
-annotable <- function() {
-    gr <- do.call(
-        what = makeGRangesFromEnsembl,
-        args = as.list(match.call())[-1L]
-    )
-    as.data.frame(gr)
-}
-# Set the formals.
-f <- formals("makeGRangesFromEnsembl")
-f <- f[setdiff(names(f), "metadata")]
-formals(annotable) <- f
-rm(f)
-
-
-
-#' @rdname makeGRanges
-#' @export
 makeGRangesFromGFF <- function(
     file,
     format = c("genes", "transcripts")
@@ -553,3 +536,20 @@ makeGRangesFromGFF <- function(
 #' @usage NULL
 #' @export
 makeGRangesFromGFF -> makeGRangesFromGTF
+
+
+
+#' @rdname makeGRanges
+#' @export
+annotable <- function() {
+    gr <- do.call(
+        what = makeGRangesFromEnsembl,
+        args = as.list(match.call())[-1L]
+    )
+    as.data.frame(gr)
+}
+# Set the formals.
+f <- formals("makeGRangesFromEnsembl")
+f <- f[setdiff(names(f), "metadata")]
+formals(annotable) <- f
+rm(f)
