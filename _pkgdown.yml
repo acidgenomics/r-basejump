@@ -8,16 +8,15 @@ reference:
     - basejump-package
   - title: Annotation Functions
     contents:
-    - annotable
     - broadClass
     - starts_with("convert")
     - eggnog
     - emptyRanges
     - geneSynonyms
     - hgnc2gene
-    - starts_with("makeGene2symbol")
-    - starts_with("makeGRanges")
-    - starts_with("makeTx2gene")
+    - makeGene2symbol
+    - makeGRanges
+    - makeTx2gene
     - mgi2gene
     - starts_with("parse")
     - starts_with("strip")
