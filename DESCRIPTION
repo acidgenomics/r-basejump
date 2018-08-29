@@ -83,6 +83,7 @@ Imports:
     viridis,
     yaml (>= 2.1)
 Suggests:
+    BiocParallel,
     BiocStyle,
     EnsDb.Hsapiens.v75,
     rmarkdown,
