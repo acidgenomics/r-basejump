@@ -1,7 +1,3 @@
-# nocov start
-
-
-
 #' S4 Generics
 #'
 #' @name AllGenerics
@@ -158,7 +154,7 @@ setGeneric(
 #' @export
 setGeneric(
     "gene2symbol",
-    function(object) {
+    function(object, ...) {
         standardGeneric("gene2symbol")
     }
 )
@@ -360,7 +356,3 @@ setGeneric(
         standardGeneric("upperCamel")
     }
 )
-
-
-
-# nocov end
