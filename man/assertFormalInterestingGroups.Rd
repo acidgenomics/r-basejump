@@ -8,9 +8,7 @@ assertFormalInterestingGroups(x, interestingGroups,
   severity = getOption("assertive.severity", "stop"))
 }
 \arguments{
-\item{x}{Object.}
-
-\item{interestingGroups}{\code{character}. Groups of interest.}
+\item{x}{\code{SummarizedExperiment}.}
 
 \item{severity}{\code{string}. How severe should the consequences of the assertion
 be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
@@ -24,7 +22,7 @@ is requested by the user.
 }
 \examples{
 assertFormalInterestingGroups(rse_bcb, "treatment")
-assertFormalInterestingGroups(rse_dds, "condition")
+assertFormalInterestingGroups(rse_bcb, NULL)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

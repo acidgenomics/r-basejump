@@ -240,12 +240,13 @@ assertFormalGene2symbol <- function(
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
-#' @inheritParams general
 #' @export
+#'
+#' @param x `SummarizedExperiment`.
 #'
 #' @examples
 #' assertFormalInterestingGroups(rse_bcb, "treatment")
-#' assertFormalInterestingGroups(rse_dds, "condition")
+#' assertFormalInterestingGroups(rse_bcb, NULL)
 assertFormalInterestingGroups <- function(
     x,
     interestingGroups,
@@ -253,37 +254,32 @@ assertFormalInterestingGroups <- function(
 ) {
     fun <- get(severity)
 
-    # Early return on `NULL` value (e.g. DESeqDataSet).
+    # Check for SummarizedExperiment.s
+    assert_is_all_of(
+        x = x,
+        classes = "SummarizedExperiment",
+        severity = severity
+    )
+
+    # Early return clean on `NULL` value (e.g. DESeqDataSet).
     if (is.null(interestingGroups)) {
         return(invisible())
+    } else {
+        assert_is_character(interestingGroups)
     }
-
-    assert_is_character(interestingGroups)
 
     # Obtain column data if S4 object is passed in.
-    if (isS4(x)) {
-        assert_is_subset(
-            x = interestingGroups,
-            y = colnames(colData(x)),
-            severity = severity
-        )
-        x <- colData(x)
-    }
-    x <- as(x, "DataFrame")
+    assert_is_subset(
+        x = interestingGroups,
+        y = colnames(colData(x)),
+        severity = severity
+    )
 
-    # Check that interesting groups are slotted into sampleData.
-    if (!all(interestingGroups %in% colnames(x))) {
-        setdiff <- setdiff(interestingGroups, colnames(x))
-        fun(paste(
-            "The interesting groups",
-            deparse(toString(setdiff)),
-            "are not defined as columns in `sampleData()`"
-        ))
-    }
+    data <- colData(x)
 
     # Check that interesting groups are factors.
     isFactor <- vapply(
-        X = x[, interestingGroups, drop = FALSE],
+        X = data[, interestingGroups, drop = FALSE],
         FUN = is.factor,
         FUN.VALUE = logical(1L),
         USE.NAMES = TRUE
