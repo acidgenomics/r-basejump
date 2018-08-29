@@ -32,6 +32,20 @@ NULL
 
 
 
+# Coerce to RSE first, to avoid dropping rowData DataFrame.
+# This can happen with classes that extend RSE instead of SE.
+.coerceToSummarizedExperiment <- function(from) {
+    validObject(from)
+    to <- from
+    if (is(to, "RangedSummarizedExperiment")) {
+        to <- as(to, "RangedSummarizedExperiment")
+    }
+    to <- as(to, "SummarizedExperiment")
+    to
+}
+
+
+
 # list =========================================================================
 #' @rdname coerce
 #' @name coerce,SummarizedExperiment,list-method

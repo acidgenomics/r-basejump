@@ -25,6 +25,7 @@ setMethod(
     "flatFiles",
     signature("SummarizedExperiment"),
     function(object) {
+        object <- .coerceToSummarizedExperiment(object)
         list <- lapply(slotNames(object), function(slot) {
             if (.hasSlot(object, slot)) {
                 slot(object, slot)

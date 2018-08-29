@@ -23,6 +23,7 @@ setMethod(
     "interestingGroups",
     signature("SummarizedExperiment"),
     function(object) {
+        object <- .coerceToSummarizedExperiment(object)
         value <- metadata(object)[["interestingGroups"]]
         assertFormalInterestingGroups(object, value)
         value
