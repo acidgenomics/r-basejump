@@ -288,7 +288,7 @@ glimpse(eggnog)
 ### PANTHER
 
 ```{r}
-panther <- panther()
+panther <- panther(organism = "Homo sapiens")
 glimpse(panther)
 ```
 
