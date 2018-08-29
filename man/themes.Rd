@@ -39,7 +39,7 @@ will also be removed.}
 \description{
 \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
-\section{Midnight Theme}{
+\section{Midnight}{
 
 Blackout theme that sets the plot background as black, with white text.
 Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
@@ -47,7 +47,7 @@ for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.
 }
 
-\section{Paperwhite Theme}{
+\section{Paperwhite}{
 
 High contrast black and white theme optimized for print. Recommended for
 scientific manuscripts and website tutorials.
@@ -55,8 +55,6 @@ scientific manuscripts and website tutorials.
 
 \examples{
 library(ggplot2)
-
-# Example ggplot object
 p <- ggplot(
     data = mpg,
     mapping = aes(
@@ -66,7 +64,6 @@ p <- ggplot(
     )
 ) +
     geom_point()
-# Midnight Theme
 p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 }
