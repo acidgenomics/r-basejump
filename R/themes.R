@@ -7,6 +7,16 @@
 #'
 #' [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
+#' @section Midnight:
+#' Blackout theme that sets the plot background as black, with white text.
+#' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
+#' for visualizing many points with a high dynamic color range, such as t-SNE
+#' expression plots.
+#'
+#' @section Paperwhite:
+#' High contrast black and white theme optimized for print. Recommended for
+#' scientific manuscripts and website tutorials.
+#'
 #' @name themes
 #' @family Plot Functions
 #' @author Michael Steinbaugh
@@ -30,8 +40,6 @@
 #'
 #' @examples
 #' library(ggplot2)
-#'
-#' # Example ggplot object
 #' p <- ggplot(
 #'     data = mpg,
 #'     mapping = aes(
@@ -41,22 +49,14 @@
 #'     )
 #' ) +
 #'     geom_point()
+#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
+#' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 NULL
 
 
 
 #' @rdname themes
 #' @export
-#'
-#' @section Midnight Theme:
-#' Blackout theme that sets the plot background as black, with white text.
-#' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
-#' for visualizing many points with a high dynamic color range, such as t-SNE
-#' expression plots.
-#'
-#' @examples
-#' # Midnight Theme
-#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 theme_midnight <- function(
     base_size = 14L,
     base_family = "",
@@ -119,13 +119,6 @@ theme_midnight <- function(
 
 #' @rdname themes
 #' @export
-#'
-#' @section Paperwhite Theme:
-#' High contrast black and white theme optimized for print. Recommended for
-#' scientific manuscripts and website tutorials.
-#'
-#' @examples
-#' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
 theme_paperwhite <- function() {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
