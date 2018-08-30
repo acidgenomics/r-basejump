@@ -15,7 +15,8 @@
 #'
 #' Conversely, when coercing a `tibble` back to an S4 `DataFrame`, our
 #' `as(tbl_df, Class = "DataFrame")` method looks for the "rowname" column and
-#' will move it back to [rownames()] automatically.
+#' will attempt to move it back to [rownames()] automatically, unless there are
+#' duplicates present.
 #'
 #' @return Object of new class.
 #'
@@ -95,8 +96,12 @@ setAs(
     def = function(from) {
         to <- as.data.frame(from)
         to <- as(to, "DataFrame")
-        if ("rowname" %in% colnames(to)) {
-            rownames(to) <- to[["rowname"]]
+        rownames <- to[["rowname"]]
+        if (
+            is.character(rownames) &&
+            !any(duplicated(rownames))
+        ) {
+            rownames(to) <- rownames
             to[["rowname"]] <- NULL
         }
         to
