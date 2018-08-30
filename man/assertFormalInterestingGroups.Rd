@@ -10,6 +10,8 @@ assertFormalInterestingGroups(x, interestingGroups,
 \arguments{
 \item{x}{\code{SummarizedExperiment}.}
 
+\item{interestingGroups}{\code{character}. Groups of interest.}
+
 \item{severity}{\code{string}. How severe should the consequences of the assertion
 be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
