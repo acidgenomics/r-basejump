@@ -1,1 +1,2 @@
-setOldClass(Classes = "tbl_df")
+# tibble
+setOldClass(Classes = c("tbl_df", "tbl", "data.frame"))
