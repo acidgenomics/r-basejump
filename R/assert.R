@@ -242,6 +242,7 @@ assertFormalGene2symbol <- function(
 #' @inherit assert
 #' @export
 #'
+#' @inheritParams general
 #' @param x `SummarizedExperiment`.
 #'
 #' @examples

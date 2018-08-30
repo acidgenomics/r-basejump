@@ -416,15 +416,13 @@ test_that("emptyRanges : mcols", {
 
 
 # geneSynonyms =================================================================
-test_that("geneSynonyms", {
-    lapply(
-        X = as.character(formals("geneSynonyms")[["organism"]])[-1L],
-        FUN = function(organism) {
-            x <- geneSynonyms(organism = organism)
-            expect_is(x, "grouped_df")
-        }
-    )
-})
+with_parameters_test_that(
+    "geneSynonyms", {
+        x <- geneSynonyms(organism = organism)
+        expect_is(x, "grouped_df")
+    },
+    organism = .geneSynonymsOrganisms
+)
 
 
 
@@ -533,7 +531,7 @@ test_that("makeGRangesFromEnsembl : transcripts", {
 })
 
 test_that("makeGRangesFromEnsembl : GRCh37", {
-    # genes
+    # Genes
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "genes",
@@ -543,7 +541,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     expect_identical(length(x), 64102L)
     expect_identical(head(names(x), 1L), "ENSG00000000003")
 
-    # transcripts
+    # Transcripts
     x <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "transcripts",
@@ -740,20 +738,15 @@ test_that("makeTx2geneFromGFF : Minimal GFF3", {
 
 
 # PANTHER ======================================================================
-test_that("PANTHER", {
-    organisms <- c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster",
-        "Caenorhabditis elegans"
-    )
-    list <- lapply(organisms, function(organism) {
+with_parameters_test_that(
+    "PANTHER", {
         invisible(capture.output(
             x <- panther(organism)
         ))
         expect_is(x, "data.frame")
-    })
-})
+    },
+    organism = names(.pantherMappings)
+)
 
 
 
@@ -763,12 +756,12 @@ test_that("stripTranscriptVersions : character", {
         stripTranscriptVersions("ENSMUST00000119854.7"),
         "ENSMUST00000119854"
     )
-    # Return unmodified if not Ensembl transcript (ENS*T)
+    # Return unmodified if not Ensembl transcript (ENS*T).
     expect_identical(
         stripTranscriptVersions("EGFP.1"),
         "EGFP.1"
     )
-    # Theoretical spike-in containing a transcript version
+    # Theoretical spike-in containing a transcript version.
     expect_identical(
         stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
         c("ENSMUST00000119854", "EGFP.1")
@@ -788,7 +781,7 @@ test_that("stripTranscriptVersions : matrix", {
         rownames(y),
         c(
             "ENSMUST00000000001",
-            "ENSMUST00000000001",  # allowed in matrix
+            "ENSMUST00000000001",  # Allowed in matrix.
             "ENSMUST00000000002",
             "EGFP.1"
         )
