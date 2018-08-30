@@ -5,6 +5,7 @@
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the wormbase package instead.
 #'
+#' @name geneSynonyms
 #' @author Michael Steinbaugh
 #' @family Annotation Functions
 #'
@@ -14,20 +15,29 @@
 #'   - *Drosophila melanogaster*
 #'
 #' @return `grouped_df`, grouped by `geneID` column.
-#' @export
 #'
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' glimpse(x)
+NULL
+
+
+
+.geneSynonymsOrganisms <- c(
+    "Homo sapiens",
+    "Mus musculus",
+    "Drosophila melanogaster"
+)
+
+
+
+#' @rdname geneSynonyms
+#' @export
 geneSynonyms <- function(organism) {
     stopifnot(has_internet())
     organism <- match.arg(
         arg = organism,
-        choices = c(
-            "Homo sapiens",
-            "Mus musculus",
-            "Drosophila melanogaster"
-        )
+        choices = .geneSynonymsOrganisms
     )
 
     # NCBI uses underscore for species name
