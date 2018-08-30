@@ -26,7 +26,8 @@ verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:
 
 Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
 \code{as(tbl_df, Class = "DataFrame")} method looks for the "rowname" column and
-will move it back to \code{\link[=rownames]{rownames()}} automatically.
+will attempt to move it back to \code{\link[=rownames]{rownames()}} automatically, unless there are
+duplicates present.
 }
 
 \examples{
