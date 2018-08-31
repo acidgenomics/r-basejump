@@ -12,22 +12,25 @@
 #' @return Object with aggregated counts per pooled sample (columns).
 #'
 #' @examples
-#' counts <- data.frame(
-#'     "sample_1.1" = as.integer(c(0, 0, 0, 1, 2)),
-#'     "sample_1.2" = as.integer(c(0, 0, 0, 3, 4)),
-#'     "sample_2.1" = as.integer(c(1, 2, 0, 0, 0)),
-#'     "sample_2.2" = as.integer(c(3, 4, 0, 0, 0))
+#' counts <- DataFrame(
+#'     "sample1_rep1" = as.integer(c(0, 0, 0, 1, 2)),
+#'     "sample1_rep2" = as.integer(c(0, 0, 0, 3, 4)),
+#'     "sample2_rep1" = as.integer(c(1, 2, 0, 0, 0)),
+#'     "sample2_rep2" = as.integer(c(3, 4, 0, 0, 0))
 #' )
 #'
-#' groupings <- factor(c("sample_1", "sample_1", "sample_2", "sample_2"))
+#' groupings <- factor(c("sample1", "sample1", "sample2", "sample2"))
 #' names(groupings) <- colnames(counts)
+#' print(groupings)
 #'
 #' # matrix ====
 #' mat <- as(counts, "matrix")
+#' print(mat)
 #' aggregateReplicates(mat, groupings = groupings)
 #'
 #' # dgCMatrix ====
 #' dgc <- as(mat, "dgCMatrix")
+#' print(dgc)
 #' aggregateReplicates(dgc, groupings = groupings)
 NULL
 
