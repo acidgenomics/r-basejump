@@ -5,13 +5,14 @@ setMethod(
     signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
-        gene2symbol <- gene2symbol(object)
-        if (is.null(gene2symbol)) {
-            return(object)  # nocov
+        g2s <- gene2symbol(object)
+        if (is.null(g2s)) {
+            # nocov start
+            warning("Object does not contain gene-to-symbol mappings")
+            return(object)
+            # nocov end
         }
-        genes <- gene2symbol %>%
-            pull("geneID") %>%
-            as.character()
+        genes <- g2s[, "geneID", drop = TRUE]
         rownames(object) <- genes
         object
     }
