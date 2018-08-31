@@ -101,6 +101,41 @@ assertAllAreValidNames <- function(
 
 #' @rdname assertAllAreValidNames
 #' @export
+assertHasValidDimnames <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
+    assert_has_dimnames(x, severity = "stop")
+    invisible(mapply(
+        FUN = assertAllAreValidNames,
+        x = dimnames(x),
+        MoreArgs = list(severity = severity)
+    ))
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
+assertHasValidNames <- function(
+    x,
+    severity = getOption("assertive.severity", "stop")
+) {
+    if (has_dims(x)) {
+        stop("Use `assertHasValidDimnames()` instead")
+    }
+    assert_has_names(x, severity = "stop")
+    invisible(mapply(
+        FUN = assertAllAreValidNames,
+        x = names(x),
+        MoreArgs = list(severity = severity)
+    ))
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
 #' @examples
 #' validNames(c(
 #'     "sample_1",
