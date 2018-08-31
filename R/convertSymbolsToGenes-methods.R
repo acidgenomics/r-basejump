@@ -9,9 +9,9 @@ setMethod(
         if (is.null(g2s)) {
             stop("Object does not contain gene-to-symbol mappings")
         }
-        genes <- g2s[, "geneID", drop = TRUE]
-        assert_has_no_duplicates(genes)
-        rownames(object) <- genes
+        assert_are_identical(rownames(object), g2s[["geneName"]])
+        assert_has_no_duplicates(g2s[["geneID"]])
+        rownames(object) <- g2s[["geneID"]]
         object
     }
 )
