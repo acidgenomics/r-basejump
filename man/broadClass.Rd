@@ -14,7 +14,7 @@ broadClass(object, ...)
 \S4method{broadClass}{SummarizedExperiment}(object)
 }
 \arguments{
-\item{object}{Object that can be coerced to \code{data.frame}, containing gene or
+\item{object}{Object that can be coerced to \code{DataFrame}, containing gene or
 transcript annotations.}
 
 \item{...}{Additional arguments.}
