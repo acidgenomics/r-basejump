@@ -7,11 +7,19 @@
 \alias{makeGene2symbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
-makeGene2symbolFromEnsembl(...)
+makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL, ...)
 
 makeGene2symbolFromGFF(file)
 }
 \arguments{
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
+
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
+
 \item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
