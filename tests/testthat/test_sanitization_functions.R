@@ -239,20 +239,39 @@ test_that("sanitizeRowData", {
 
 
 # sanitizeSampleData ===========================================================
-test_that("sanitizeSampleData", {
-    sd <- DataFrame(
-        genotype = factor(c("wt", "ko", "wt", "ko")),
-        batch = factor(c(1L, 1L, 2L, 2L)),
-        # not a factor yet
-        day = c(14L, 14L, 30L, 30L),
-        row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+with_parameters_test_that(
+    "sanitizeSampleData", {
+        # `sampleName` column is required.
+        expect_error(
+            sanitizeSampleData(data),
+            "sampleName"
+        )
+        # And `sampleName` column can't contain duplicates.
+        data[["sampleName"]] <- "XXX"
+        expect_error(
+            sanitizeSampleData(data),
+            "has_no_duplicates"
+        )
+        data[["sampleName"]] <- paste("sample", seq_len(nrow(data)))
+        x <- sanitizeSampleData(data)
+        expect_is(x, "DataFrame")
+        expect_true(all(vapply(
+            X = x,
+            FUN = is.factor,
+            FUN.VALUE = logical(1L)
+        )))
+    },
+    data = list(
+        DataFrame = DataFrame(
+            genotype = rep(c("wt", "ko"), 2L),
+            batch = c(1L, 1L, 2L, 2L),
+            row.names = paste("sample", seq_len(4L), sep = "_")
+        ),
+        tbl_df = tibble(
+            rowname = paste("sample", seq_len(4L), sep = "_"),
+            sample_name = paste0("patient", seq_len(4L)),
+            genotype = c("wt", "ko", "wt", "ko"),
+            batch = c(1L, 1L, 2L, 2L)
+        )
     )
-    x <- sanitizeSampleData(sd)
-    expect_is(x, "DataFrame")
-    expect_identical(rownames(x), rownames(sd))
-    expect_true(all(vapply(
-        X = x,
-        FUN = is.factor,
-        FUN.VALUE = logical(1L)
-    )))
-})
+)

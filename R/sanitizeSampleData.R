@@ -37,6 +37,8 @@ sanitizeSampleData <- function(object) {
         x = "sampleName",
         y = colnames(object)
     )
+    # And check for any duplicate rows.
+    assert_has_no_duplicates(object[["sampleName"]])
 
     # Error if blacklisted columns are detected.
     assert_are_disjoint_sets(
