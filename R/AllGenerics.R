@@ -13,8 +13,8 @@ NULL
 #' @rdname aggregateFeatures
 #' @export
 setGeneric(
-    "aggregateFeatures",
-    function(object, ...) {
+    name = "aggregateFeatures",
+    def = function(object, ...) {
         standardGeneric("aggregateFeatures")
     }
 )
@@ -205,12 +205,45 @@ setGeneric(
 
 
 
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    "mapGenesToIDs",
+    function(object, ...) {
+        standardGeneric("mapGenesToIDs")
+    }
+)
+
+
+
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    "mapGenesToRownames",
+    function(object, ...) {
+        standardGeneric("mapGenesToRownames")
+    }
+)
+
+
+
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    "mapGenesToSymbols",
+    function(object, ...) {
+        standardGeneric("mapGenesToSymbols")
+    }
+)
+
+
+
 #' @rdname AllGenerics
 #' @export
 setGeneric(
     "metrics",
     function(object, ...) {
-        standardGeneric("metrics")  # nocov
+        standardGeneric("metrics")
     }
 )
 
@@ -232,7 +265,7 @@ setGeneric(
 setGeneric(
     "plotGene",
     function(object, ...) {
-        standardGeneric("plotGene")  # nocov
+        standardGeneric("plotGene")
     }
 )
 
