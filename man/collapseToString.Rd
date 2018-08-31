@@ -4,9 +4,9 @@
 \name{collapseToString}
 \alias{collapseToString}
 \alias{collapseToString,atomic-method}
+\alias{collapseToString,matrix-method}
 \alias{collapseToString,data.frame-method}
 \alias{collapseToString,DataFrame-method}
-\alias{collapseToString,matrix-method}
 \title{Collapse to String}
 \usage{
 collapseToString(object, ...)
@@ -14,14 +14,14 @@ collapseToString(object, ...)
 \S4method{collapseToString}{atomic}(object, sep = ", ", sort = FALSE,
   removeNA = FALSE, unique = FALSE)
 
+\S4method{collapseToString}{matrix}(object, sep = ", ", sort = FALSE,
+  removeNA = FALSE, unique = FALSE)
+
 \S4method{collapseToString}{data.frame}(object, sep = ", ",
   sort = FALSE, removeNA = FALSE, unique = FALSE)
 
 \S4method{collapseToString}{DataFrame}(object, sep = ", ",
   sort = FALSE, removeNA = FALSE, unique = FALSE)
-
-\S4method{collapseToString}{matrix}(object, sep = ", ", sort = FALSE,
-  removeNA = FALSE, unique = FALSE)
 }
 \arguments{
 \item{object}{Object.}
