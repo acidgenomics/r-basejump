@@ -38,19 +38,23 @@ setMethod(
 
         # Legacy arguments -----------------------------------------------------
         # nocov start
-        call <- match.call(expand.dots = TRUE)
+        # Use `match.call()` instead of `sys.call()` here to capture the formal
+        # argument names, even if the user doesn't define them.
+        call <- match.call()
         # clean
-        if (isTRUE(call[["clean"]])) {
+        if ("clean" %in% names(call)) {
             warning(paste(
                 "`clean` argument is deprecated for `SummarizedExperiment`.",
-                "Improved `bcbioRNASeq` method is provided in v0.2.6."
+                "Improved `bcbioRNASeq` method is provided in v0.2.6.",
+                sep = "\n"
             ))
         }
         # return
         if ("return" %in% names(call)) {
             stop(paste(
-                "`return` argument is defunct.",
-                "Use a separation coercion call after the return instead",
+                "`return` argument is defunct.\n",
+                "`sampleData()` always returns `DataFrame` class.\n",
+                "Use a separation coercion call for `data.frame`",
                 "(e.g. `as.data.frame()`)."
             ))
         }
