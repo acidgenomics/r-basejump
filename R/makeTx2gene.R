@@ -54,12 +54,21 @@ NULL
 
 #' @rdname makeTx2gene
 #' @export
-makeTx2geneFromEnsembl <- function(...) {
-    gr <- makeGRangesFromEnsembl(..., format = "transcripts")
-    data <- .makeTx2gene(gr)
-    assert_are_identical(names(gr), rownames(data))
-    data
+makeTx2geneFromEnsembl <- function() {
+    args <- as.list(match.call())[-1L]
+    args[["format"]] <- "transcripts"
+    gr <- do.call(
+        what = makeGRangesFromEnsembl,
+        args = args
+    )
+    .makeTx2gene(gr)
 }
+
+# Set the formals.
+#' @include makeGRanges.R
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), c("format", "metadata"))]
+formals(makeTx2geneFromEnsembl) <- as.pairlist(f)
 
 
 
