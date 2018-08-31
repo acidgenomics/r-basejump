@@ -12,21 +12,24 @@
 #' @return Object of same class with aggregated features (rows).
 #'
 #' @examples
-#' counts <- data.frame(
-#'     "sample_1" = as.integer(c(0, 1, 2, 3)),
-#'     "sample_2" = as.integer(c(1, 2, 3, 4)),
-#'     row.names = c("gene_1.1", "gene_1.2", "gene_2.1", "gene_2.2")
+#' counts <- DataFrame(
+#'     "sample1" = as.integer(c(0, 1, 0, 2)),
+#'     "sample2" = as.integer(c(1, 0, 2, 0)),
+#'     row.names = paste0("transcript", seq_len(4))
 #' )
 #'
-#' groupings <- factor(c("gene_1", "gene_1", "gene_2", "gene_2"))
+#' groupings <- factor(c("gene1", "gene1", "gene2", "gene2"))
 #' names(groupings) <- rownames(counts)
+#' print(groupings)
 #'
 #' # matrix ====
 #' mat <- as(counts, "matrix")
+#' print(mat)
 #' aggregateFeatures(mat, groupings = groupings)
 #'
 #' # dgCMatrix ====
 #' dgc <- as(mat, "dgCMatrix")
+#' print(dgc)
 #' aggregateFeatures(dgc, groupings = groupings)
 NULL
 
