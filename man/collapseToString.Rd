@@ -69,7 +69,6 @@ collapseToString(c(TRUE, FALSE))
 collapseToString(c(NA, NaN))
 
 # data.frame ====
-# Objects supporting `dim` function similarly
 ggplot2::mpg \%>\%
     head() \%>\%
     collapseToString(sort = TRUE, unique = TRUE) \%>\%
