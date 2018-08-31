@@ -10,32 +10,25 @@ sanitizeSampleData(object)
 \item{object}{Object.}
 }
 \value{
-Data frame.
+\code{DataFrame}.
 }
 \description{
-Sanitize Sample Data
+This function will standardize sample metadata.
+}
+\details{
+The following conventions are enforced:
+\itemize{
+\item Column names will be converted to camel case, using \code{\link[=camel]{camel()}}.
+\item Data must contain a \code{sampleName} column.
+\item All columns will be coerced to factor.
+\item Non-atomic columns will be dropped.
+}
+
+Currently supports \code{DataFrame} or \code{data.frame} input.
 }
 \examples{
-# DataFrame ====
-from <- DataFrame(
-    genotype = c("wt", "ko", "wt", "ko"),
-    batch = c(1L, 1L, 2L, 2L),
-    row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
-)
-glimpse(from)
-to <- sanitizeSampleData(from)
-glimpse(to)
-
-# data.frame ====
-from <- data.frame(
-    genotype = c("wt", "ko", "wt", "ko"),
-    batch = c(1L, 1L, 2L, 2L),
-    row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
-    stringsAsFactors = FALSE
-)
-glimpse(from)
-to <- sanitizeSampleData(from)
-glimpse(to)
+object <- sampleData(rse_bcb)
+x <- sanitizeSampleData(object)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
