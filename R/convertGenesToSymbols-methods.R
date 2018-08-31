@@ -162,14 +162,10 @@ setMethod(
         validObject(object)
         g2s <- gene2symbol(object)
         if (is.null(g2s)) {
-            return(object)
+            stop("Object does not contain gene-to-symbol mappings")
         }
-        # Ensure factors get coerced to character.
-        # Note that ".1" will be added here for duplicate gene symbols.
-        symbols <- g2s %>%
-            .[, "geneName", drop = TRUE] %>%
-            as.character() %>%
-            make.unique()
+        symbols <- g2s[, "geneName", drop = TRUE]
+        assert_has_no_duplicates(symbols)
         rownames(object) <- symbols
         object
     }
