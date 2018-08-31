@@ -47,7 +47,7 @@ transmit <- function(
     }
     localDir <- initializeDirectory(localDir)
     assert_is_a_string(pattern)
-    assertIsCharacterOrNULL(rename)
+    assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)
 
     remoteList <- remoteDir %>%
