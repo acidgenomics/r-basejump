@@ -2,10 +2,18 @@
 % Please edit documentation in R/assert.R
 \name{assertAllAreValidNames}
 \alias{assertAllAreValidNames}
+\alias{assertHasValidDimnames}
+\alias{assertHasValidNames}
 \alias{validNames}
 \title{Assert All Are Valid Names}
 \usage{
 assertAllAreValidNames(x, severity = getOption("assertive.severity",
+  "stop"))
+
+assertHasValidDimnames(x, severity = getOption("assertive.severity",
+  "stop"))
+
+assertHasValidNames(x, severity = getOption("assertive.severity",
   "stop"))
 
 validNames(x)

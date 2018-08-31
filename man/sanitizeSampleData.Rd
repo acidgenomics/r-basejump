@@ -29,6 +29,7 @@ Currently supports \code{DataFrame} or \code{data.frame} input.
 \examples{
 object <- sampleData(rse_bcb)
 x <- sanitizeSampleData(object)
+all(vapply(x, is.factor, logical(1L)))
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
