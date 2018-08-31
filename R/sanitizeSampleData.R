@@ -61,7 +61,6 @@ sanitizeSampleData <- function(object) {
     )
     assert_are_identical(dimnames, validDimnames)
 
-
     # Coerce all columns to factor, and ensure levels are updated, in case
     # samples have been subset.
     rownames <- rownames(data)
