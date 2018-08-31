@@ -26,6 +26,7 @@
 #' @examples
 #' object <- sampleData(rse_bcb)
 #' x <- sanitizeSampleData(object)
+#' all(vapply(x, is.factor, logical(1L)))
 sanitizeSampleData <- function(object) {
     assert_is_any_of(object, c("DataFrame", "data.frame"))
     assert_is_non_empty(object)
@@ -53,13 +54,7 @@ sanitizeSampleData <- function(object) {
     assertHasRownames(data)
 
     # Require that dimnames are valid.
-    dimnames <- dimnames(data)
-    validDimnames <- mapply(
-        FUN = make.names,
-        names = dimnames,
-        MoreArgs = list(unique = TRUE)
-    )
-    assert_are_identical(dimnames, validDimnames)
+    assertHasValidDimnames(data)
 
     # Coerce all columns to factor, and ensure levels are updated, in case
     # samples have been subset.
