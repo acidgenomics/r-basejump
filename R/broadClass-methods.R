@@ -28,31 +28,32 @@ setMethod(
     "broadClass",
     signature("GRanges"),
     function(object) {
-        object <- as(object, "DataFrame")
-        assertHasRownames(object)
+        data <- as(object, "tbl_df")
+        assert_are_identical(data[["rowname"]], names(object))
+        rownames <- data[["rowname"]]
 
         # Early return if already defined
-        if ("broadClass" %in% colnames(object)) {
-            broad <- object[["broadClass"]]
-            names(broad) <- rownames(object)
+        if ("broadClass" %in% colnames(data)) {
+            broad <- data[["broadClass"]]
+            names(broad) <- rownames
             return(broad)
         }
 
         # geneName (required)
-        assert_is_subset("geneName", colnames(object))
-        geneName <- object[["geneName"]]
+        assert_is_subset("geneName", colnames(data))
+        geneName <- data[["geneName"]]
 
         # Biotype (optional)
         # Prioritize transcript over gene, if present
         biotypeCol <- grep(
             pattern = "biotype$",
-            x = colnames(object),
+            x = colnames(data),
             ignore.case = TRUE,
             value = TRUE
         )
         if (length(biotypeCol)) {
             biotypeCol <- biotypeCol[[1L]]
-            biotype <- object[[biotypeCol]]
+            biotype <- data[[biotypeCol]]
         } else {
             # nocov start
             warning("biotype missing", call. = FALSE)
@@ -63,13 +64,13 @@ setMethod(
         # seqname (optional; aka chromosome)
         seqnameCol <- grep(
             pattern = "seqname",
-            x = colnames(object),
+            x = colnames(data),
             ignore.case = TRUE,
             value = TRUE
         )
         if (length(seqnameCol)) {
             seqnameCol <- seqnameCol[[1L]]
-            seqname <- object[[seqnameCol]]
+            seqname <- data[[seqnameCol]]
         } else {
             # nocov start
             warning("seqname missing", call. = FALSE)
@@ -134,7 +135,7 @@ setMethod(
         )
 
         broad <- as.factor(broad)
-        names(broad) <- rownames(object)
+        names(broad) <- rownames
         broad
     }
 )
