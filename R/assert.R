@@ -43,6 +43,41 @@ assertAllAreNonExisting <- function(
 
 
 
+# assertAllAreUniqueGeneNames ==================================================
+assertAllAreUniqueGeneNames <- function(
+    object,
+    genes,
+    severity = getOption("assertive.severity", "warning")
+) {
+    assert_is_all_of(
+        x = object,
+        classes = "SummarizedExperiment",
+        severity = "stop"
+    )
+    assert_is_character(genes, severity = "stop")
+    # Get all of the gene names stashed in the object.
+    allGenes <- mcols(rowRanges(object))[["geneName"]]
+    assert_is_non_empty(
+        x = allGenes,
+        severity = "stop"
+    )
+    # Require that the user passed in gene names.
+    assert_is_subset(
+        x = genes,
+        y = allGenes,
+        severity = "stop"
+    )
+    # Check for no intersect with duplicate names.
+    duplicatedGenes <- allGenes[which(duplicated(allGenes))]
+    assert_are_disjoint_sets(
+        x = genes,
+        y = duplicatedGenes,
+        severity = severity
+    )
+}
+
+
+
 # assertAllAreValidNames =======================================================
 #' Assert All Are Valid Names
 #'
