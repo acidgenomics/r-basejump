@@ -17,7 +17,7 @@ makeTx2geneFromGFF(file)
 \item{file}{\code{string}. File path.}
 }
 \value{
-\code{data.frame}.
+\code{DataFrame}.
 }
 \description{
 Make Transcript-to-Gene Mappings
