@@ -746,7 +746,11 @@ assertIsGene2symbol <- function(
     severity = getOption("assertive.severity", "stop")
 ) {
     # Requiring standard data frame class.
-    assert_is_data.frame(x, severity = severity)
+    assert_is_all_of(
+        x = x,
+        classes = "DataFrame",
+        severity = severity
+    )
     assert_is_non_empty(x, severity = severity)
     assert_are_identical(
         x = colnames(x),
@@ -927,7 +931,11 @@ assertIsTx2gene <- function(
     x,
     severity = getOption("assertive.severity", "stop")
 ) {
-    assert_is_data.frame(x, severity = severity)
+    assert_is_all_of(
+        x = x,
+        classes = "DataFrame",
+        severity = severity
+    )
     assert_is_non_empty(x, severity = severity)
     # nocov start
     # Consider informing the user about this in a future update.
@@ -952,7 +960,10 @@ assertIsTx2gene <- function(
         SIMPLIFY = FALSE
     ))
     # Assert that there are no duplicate transcripts.
-    assert_has_no_duplicates(x[["transcriptID"]])
+    assert_has_no_duplicates(
+        x = x[["transcriptID"]],
+        severity = severity
+    )
 }
 
 
