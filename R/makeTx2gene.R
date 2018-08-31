@@ -9,11 +9,10 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams makeGRanges
-#' @param ... Passthrough to [makeGRangesFromEnsembl()].
+#'
+#' @seealso [makeGRanges].
 #'
 #' @return `DataFrame`.
-#'
-#' @seealso `help(topic = "makeGRanges", package = "basejump")`.
 #'
 #' @examples
 #' # makeTx2geneFromEnsembl ====
@@ -42,6 +41,7 @@ NULL
         arrange(!!sym("transcriptID")) %>%
         as("DataFrame") %>%
         set_rownames(.[["transcriptID"]])
+    assertIsTx2gene(data)
     message(paste(
         "tx2gene mappings:",
         length(unique(data[["transcriptID"]])), "transcripts,",

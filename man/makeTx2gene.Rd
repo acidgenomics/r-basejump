@@ -12,7 +12,7 @@ makeTx2geneFromEnsembl(...)
 makeTx2geneFromGFF(file)
 }
 \arguments{
-\item{...}{Passthrough to \code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}}.}
+\item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
 }
@@ -37,7 +37,7 @@ x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gff3")
 glimpse(x)
 }
 \seealso{
-\code{help(topic = "makeGRanges", package = "basejump")}.
+\link{makeGRanges}.
 
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
