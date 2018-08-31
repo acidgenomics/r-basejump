@@ -11,6 +11,8 @@
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #'
+#' @inheritParams general
+#'
 #' @return `DataFrame`.
 #'
 #' @examples
