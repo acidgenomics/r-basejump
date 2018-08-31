@@ -5,7 +5,7 @@
 #' @author Rory Kirchner and Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param object Object that can be coerced to `data.frame`, containing gene or
+#' @param object Object that can be coerced to `DataFrame`, containing gene or
 #'   transcript annotations.
 #'
 #' @return Named `factor` containing broad class definitions.
@@ -28,7 +28,7 @@ setMethod(
     "broadClass",
     signature("GRanges"),
     function(object) {
-        object <- as.data.frame(object)
+        object <- as(object, "DataFrame")
         assertHasRownames(object)
 
         # Early return if already defined
