@@ -22,16 +22,27 @@ NULL
 
 
 
+.returnInterestingGroups <- function(data, interestingGroups) {
+    # If `interestingGroups` isn't defined, use sample name by default.
+    if (is.null(interestingGroups)) {
+        interestingGroups <- "sampleName"
+    }
+    assert_is_character(interestingGroups)
+    assert_is_subset(interestingGroups, colnames(data))
+    interestingGroups
+}
+
+
+
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
     "uniteInterestingGroups",
     signature("data.frame"),
     function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
-        # This approach will return numerics for DataFrame class, so
-        # coercing columns to data.frame
+        interestingGroups <- .returnInterestingGroups(object, interestingGroups)
+        # This approach will return numerics for `DataFrame` class, so
+        # coercing columns to data.frame.
         data <- as.data.frame(object[, interestingGroups, drop = FALSE])
         value <- apply(
             X = data,
@@ -63,8 +74,7 @@ setMethod(
     "uniteInterestingGroups",
     signature("tbl_df"),
     function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
+        interestingGroups <- .returnInterestingGroups(object, interestingGroups)
         object[["interestingGroups"]] <- NULL
         object <- unite(
             data = object,
