@@ -7,9 +7,9 @@
 #' @inheritParams makeGRanges
 #' @inheritParams gene2symbol
 #'
-#' @return `data.frame`.
+#' @seealso [makeGRanges].
 #'
-#' @seealso `help(topic = "makeGRanges", package = "basejump")`.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' # makeGene2symbolFromEnsembl ====
@@ -28,35 +28,36 @@ NULL
 
 
 
-#' @rdname makeGene2symbol
-#' @export
-makeGene2symbolFromEnsembl <- function(
-    organism,
-    build = NULL,
-    release = NULL,
-    unique = TRUE,
-    ...
-) {
-    gr <- makeGRangesFromEnsembl(
-        organism = organism,
-        build = build,
-        release = release,
-        format = "genes",
-        ...
+.makeGeneNamesUnique <- function(data) {
+    assert_is_subset(
+        x = c("geneID", "geneName"),
+        y = colnames(data)
     )
-    data <- mcols(gr) %>%
-        .[, c("geneID", "geneName")] %>%
-        as.data.frame() %>%
-        mutate_all(as.character) %>%
-        arrange(!!sym("geneID")) %>%
-        set_rownames(.[["geneID"]])
-
-    # Ensure gene names (symbols) are unique, if desired.
-    # This is recommended by default.
-    if (isTRUE(unique)) {
-        data <- .makeGeneNamesUnique(data)
+    if (any(duplicated(data[["geneName"]]))) {
+        x <- data[["geneName"]]
+        n <- length(unique(x[duplicated(x)]))
+        message(paste(
+            "Sanitizing", n, "duplicated symbols using `make.unique()`"
+        ))
+        data[["geneName"]] <- make.unique(data[["geneName"]])
     }
+    data
+}
 
+
+
+.makeGene2symbol <- function(data) {
+    assert_is_non_empty(data)
+    data <- data %>%
+        as("tbl_df") %>%
+        select(!!!syms(c("geneID", "geneName"))) %>%
+        .[complete.cases(.), , drop = FALSE] %>%
+        mutate_all(as.character) %>%
+        unique() %>%
+        arrange(!!sym("geneID")) %>%
+        .makeGeneNamesUnique() %>%
+        as("DataFrame") %>%
+        set_rownames(.[["geneID"]])
     assertIsGene2symbol(data)
     data
 }
@@ -65,12 +66,18 @@ makeGene2symbolFromEnsembl <- function(
 
 #' @rdname makeGene2symbol
 #' @export
-makeGene2symbolFromGFF <- function(
-    file,
-    unique = TRUE
-) {
-    assert_is_a_bool(unique)
+makeGene2symbolFromEnsembl <- function(...) {
+    # FIXME Use do.call here instead
+    gr <- makeGRangesFromEnsembl(..., format = "genes")
+    data <- .makeGene2symbol(gr)
+    data
+}
 
+
+
+#' @rdname makeGene2symbol
+#' @export
+makeGene2symbolFromGFF <- function(file) {
     message("Making gene2symbol from GFF")
     gff <- readGFF(file)
 
@@ -78,11 +85,13 @@ makeGene2symbolFromGFF <- function(
     type <- .gffType(gff)
     message(paste(source, type, "detected"))
 
-    data <- mcols(gff) %>%
-        as.data.frame() %>%
-        camel()
+    # Coerce to tibble.
+    data <- camel(as(gff, "tbl_df"))
 
+    # Require `geneID` column.
     assert_is_subset("geneID", colnames(data))
+
+    # Filter rows that don't contain gene annotations.
     data <- filter(data, !is.na(!!sym("geneID")))
 
     if (type == "GTF") {
@@ -102,21 +111,7 @@ makeGene2symbolFromGFF <- function(
         }
     }
 
-    data <- data %>%
-        select(!!!syms(c("geneID", "geneName"))) %>%
-        .[complete.cases(.), , drop = FALSE] %>%
-        unique() %>%
-        arrange(!!sym("geneID")) %>%
-        set_rownames(.[["geneID"]])
-
-    # Ensure gene names (symbols) are unique, if desired.
-    # This is recommended by default.
-    if (isTRUE(unique)) {
-        data <- .makeGeneNamesUnique(data)
-    }
-
-    assertIsGene2symbol(data)
-    data
+    .makeGene2symbol(data)
 }
 
 
