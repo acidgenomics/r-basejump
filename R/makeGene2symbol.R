@@ -66,12 +66,21 @@ NULL
 
 #' @rdname makeGene2symbol
 #' @export
-makeGene2symbolFromEnsembl <- function(...) {
-    # FIXME Use do.call here instead
-    gr <- makeGRangesFromEnsembl(..., format = "genes")
-    data <- .makeGene2symbol(gr)
-    data
+makeGene2symbolFromEnsembl <- function() {
+    args <- as.list(match.call())[-1L]
+    args[["format"]] <- "genes"
+    gr <- do.call(
+        what = makeGRangesFromEnsembl,
+        args = args
+    )
+    .makeGene2symbol(gr)
 }
+
+# Set the formals.
+#' @include makeGRanges.R
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), c("format", "metadata"))]
+formals(makeGene2symbolFromEnsembl) <- as.pairlist(f)
 
 
 
