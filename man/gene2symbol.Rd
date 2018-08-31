@@ -37,8 +37,9 @@ gene2symbol(rse_bcb) \%>\% head()
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh

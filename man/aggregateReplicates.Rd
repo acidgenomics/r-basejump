@@ -51,8 +51,9 @@ aggregateReplicates(dgc, groupings = groupings)
 Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{counts}}, \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
