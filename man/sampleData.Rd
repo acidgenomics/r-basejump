@@ -54,7 +54,8 @@ Other Data Functions: \code{\link{aggregateFeatures}},
   \code{\link{aggregateReplicates}}, \code{\link{counts}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh
