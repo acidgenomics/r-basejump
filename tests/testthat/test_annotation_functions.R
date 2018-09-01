@@ -46,7 +46,7 @@ test_that("convertGenesToSymbols : character", {
     )
     expect_identical(
         object = convertGenesToSymbols(
-            x,
+            object = x,
             gene2symbol = g2s
         ),
         expected = y
