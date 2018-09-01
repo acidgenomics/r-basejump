@@ -34,15 +34,11 @@ setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
     function(object, ...) {
-        validObject(object)
-
         # Legacy arguments -----------------------------------------------------
         # nocov start
-        # Use `match.call()` instead of `sys.call()` here to capture the formal
-        # argument names, even if the user doesn't define them.
-        call <- match.call()
+        args <- .matchArgs()
         # clean
-        if ("clean" %in% names(call)) {
+        if ("clean" %in% names(args)) {
             warning(paste(
                 "`clean` argument is deprecated for `SummarizedExperiment`.",
                 "Improved `bcbioRNASeq` method is provided in v0.2.6.",
@@ -50,7 +46,7 @@ setMethod(
             ))
         }
         # return
-        if ("return" %in% names(call)) {
+        if ("return" %in% names(args)) {
             stop(paste(
                 "`return` argument is defunct.\n",
                 "`sampleData()` always returns `DataFrame` class.\n",
@@ -60,14 +56,13 @@ setMethod(
         }
         # nocov end
 
-        data <- colData(object)
-        if (!"sampleName" %in% colnames(data)) {
-            stop(paste(
-                "`sampleData()` requires `sampleName` column",
-                "to be defined in `colData()`"
-            ), call. = FALSE)
-        }
-        data
+        validObject(object)
+        # Require `sampleName` column to be defined.
+        assert_is_subset(
+            x = "sampleName",
+            y = colnames(colData(object))
+        )
+        colData(object)
     }
 )
 
