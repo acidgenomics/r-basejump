@@ -74,7 +74,7 @@
 #'
 #' @return
 #' - `makeGRangesFromEnsembl()`, `makeGRangesFromGFF()`: `GRanges`.
-#' - `annotable()`: `data.frame`.
+#' - `annotable()`: `tbl_df`.
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
@@ -546,7 +546,7 @@ annotable <- function() {
         what = makeGRangesFromEnsembl,
         args = as.list(match.call())[-1L]
     )
-    as.data.frame(gr)
+    as(gr, "tbl_df")
 }
 # Set the formals.
 f <- formals("makeGRangesFromEnsembl")
