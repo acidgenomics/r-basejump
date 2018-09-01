@@ -128,12 +128,7 @@ setMethod(
         assert_is_subset("aggregate", colnames(sampleData(object)))
         groupings <- colData(object)[["aggregate"]]
         assert_is_factor(groupings)
-        assertAllAreValidNames(
-            x = as.character(groupings),
-            severity = "warning"
-        )
-        groupings <- makeNames(groupings, unique = FALSE)
-        groupings <- as.factor(groupings)
+        assertAllAreValidNames(as.character(groupings))
         names(groupings) <- colnames(object)
 
         # Assays ===============================================================
@@ -213,6 +208,35 @@ setMethod(
     "aggregateFeatures",
     signature("SummarizedExperiment"),
     function(object) {
-        stop("Not added yet")
+        validObject(object)
+        assert_is_subset("aggregate", colnames(rowData(object)))
+        groupings <- rowData(object)[["aggregate"]]
+        assert_is_factor(groupings)
+        assertAllAreValidNames(as.character(groupings))
+        names(groupings) <- rownames(object)
+
+        # Assays ===============================================================
+        message("Aggregating counts")
+        counts <- aggregateFeatures(
+            object = counts(object),
+            groupings = groupings
+        )
+        assert_are_identical(sum(counts), sum(counts(object)))
+        rownames <- rownames(counts)
+
+        # Return ===============================================================
+        args <- list(
+            assays = list(counts = counts),
+            colData = colData(object)
+        )
+        if (is(object, "RangedSummarizedExperiment")) {
+            args[["rowRanges"]] <- emptyRanges(names = rownames)
+        } else {
+            args[["rowData"]] <- DataFrame(row.names = rownames)
+        }
+        do.call(
+            what = SummarizedExperiment,
+            args = args
+        )
     }
 )
