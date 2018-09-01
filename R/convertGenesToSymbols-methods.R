@@ -57,8 +57,11 @@ setMethod(
     ) {
         # Allowing duplicates here (unlike convertTranscriptsToGenes)
         assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
-        args <- list(...)
+        assert_is_any_of(gene2symbol, c("DataFrame", "NULL"))
+
+        # FIXME Fix documentation formals here.
+        # Use `sys.call()` instead...
+        args <- as.list(sys.call(which = -1L))[-1L]
         organism <- args[["organism"]]
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations
