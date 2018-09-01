@@ -10,7 +10,7 @@ NULL
 
 
 
-#' @rdname aggregateFeatures
+#' @rdname aggregate
 #' @export
 setGeneric(
     name = "aggregateFeatures",
@@ -21,7 +21,7 @@ setGeneric(
 
 
 
-#' @rdname aggregateReplicates
+#' @rdname aggregate
 #' @export
 setGeneric(
     "aggregateReplicates",
