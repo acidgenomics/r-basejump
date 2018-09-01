@@ -37,7 +37,7 @@ set \code{NULL}, defaults to the most recent release available.}
 \value{
 \itemize{
 \item \code{makeGRangesFromEnsembl()}, \code{makeGRangesFromGFF()}: \code{GRanges}.
-\item \code{annotable()}: \code{data.frame}.
+\item \code{annotable()}: \code{tbl_df}.
 }
 }
 \description{
