@@ -1,11 +1,15 @@
+# FIXME Add `SummarizedExperiment` explanation in documentation.
+
+
+
 #' Aggregate Columns or Rows
 #'
 #' Aggregate sample replicates (columns) or gene/transcript features (rows).
 #'
-#' [aggregateReplicates()] works across the columns, and is designed to
-#' aggregate sample replicates. [aggregateFeatures()] works down the rows, and
-#' is designed to aggregate features (e.g. genes or transcripts). Most commonly,
-#' the [aggregateFeatures()] function can be used to aggregate counts from
+#' [aggregateCols()] works across the columns, and is designed to aggregate
+#' sample replicates. [aggregateRows()] works down the rows, and is designed to
+#' aggregate features (e.g. genes or transcripts). Most commonly, the
+#' [aggregateRows()] function can be used to aggregate counts from
 #' transcript-level to gene-level.
 #'
 #' @name aggregate
@@ -59,15 +63,15 @@
 #' )
 #' print(se)
 #'
-#' # aggregateReplicates ====
-#' aggregateReplicates(matrix, groupings = samples)
-#' aggregateReplicates(sparse, groupings = samples)
-#' aggregateReplicates(se)
+#' # aggregateCols ====
+#' aggregateCols(matrix, groupings = samples)
+#' aggregateCols(sparse, groupings = samples)
+#' aggregateCols(se)
 #'
-#' # aggregateFeatures ====
-#' aggregateFeatures(matrix, groupings = genes)
-#' aggregateFeatures(sparse, groupings = genes)
-#' aggregateFeatures(se)
+#' # aggregateRows ====
+#' aggregateRows(matrix, groupings = genes)
+#' aggregateRows(sparse, groupings = genes)
+#' aggregateRows(se)
 NULL
 
 
@@ -82,11 +86,11 @@ NULL
 
 
 
-# aggregateReplicates ==========================================================
+# aggregateCols ================================================================
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateReplicates",
+    "aggregateCols",
     signature("matrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
@@ -105,7 +109,7 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateReplicates",
+    "aggregateCols",
     signature("sparseMatrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
@@ -124,7 +128,7 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateReplicates",
+    "aggregateCols",
     signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
@@ -135,15 +139,15 @@ setMethod(
         assertAllAreValidNames(as.character(groupings))
         names(groupings) <- colnames(object)
 
-        # Assays ===============================================================
+        # Assays ---------------------------------------------------------------
         message("Aggregating counts")
-        counts <- aggregateReplicates(
+        counts <- aggregateCols(
             object = counts(object),
             groupings = groupings
         )
         assert_are_identical(sum(counts), sum(counts(object)))
 
-        # Column data ==========================================================
+        # Column data ----------------------------------------------------------
         # Reslot with minimal sample-level data only.
         sampleNames <- sampleData(object)[["aggregate"]]
         assert_is_factor(sampleNames)
@@ -157,7 +161,7 @@ setMethod(
             y = colnames(counts)
         )
 
-        # Return ===============================================================
+        # Return ---------------------------------------------------------------
         args <- list(
             assays = list(counts = counts),
             colData = sampleData
@@ -176,11 +180,11 @@ setMethod(
 
 
 
-# aggregateFeatures ============================================================
+# aggregateRows ================================================================
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateFeatures",
+    "aggregateRows",
     signature("matrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
@@ -194,7 +198,7 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateFeatures",
+    "aggregateRows",
     signature("sparseMatrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
@@ -209,7 +213,7 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateFeatures",
+    "aggregateRows",
     signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
@@ -219,16 +223,16 @@ setMethod(
         assertAllAreValidNames(as.character(groupings))
         names(groupings) <- rownames(object)
 
-        # Assays ===============================================================
+        # Assays ---------------------------------------------------------------
         message("Aggregating counts")
-        counts <- aggregateFeatures(
+        counts <- aggregateRows(
             object = counts(object),
             groupings = groupings
         )
         assert_are_identical(sum(counts), sum(counts(object)))
         rownames <- rownames(counts)
 
-        # Return ===============================================================
+        # Return ---------------------------------------------------------------
         args <- list(
             assays = list(counts = counts),
             colData = colData(object)
