@@ -27,9 +27,10 @@
 #'   assert_any_are_matching_regex
 #' @importFrom assertive.types assert_is_a_bool assert_is_a_number
 #'   assert_is_a_string assert_is_all_of assert_is_an_integer assert_is_any_of
-#'   assert_is_character assert_is_data.frame assert_is_environment
-#'   assert_is_factor assert_is_function assert_is_integer assert_is_list
-#'   assert_is_matrix assert_is_name assert_is_numeric is_a_number is_a_string
+#'   assert_is_call assert_is_character assert_is_data.frame
+#'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
+#'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
+#'   is_a_number is_a_string
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
@@ -52,6 +53,7 @@
 #'   show slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
+#' @importFrom pryr standardise_call
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL
