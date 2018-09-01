@@ -322,4 +322,21 @@ assertIsURL <- function(...) {
 
 
 
+# v0.99.0 ======================================================================
+#' @rdname deprecated
+#' @export
+aggregateFeatures <- function(...) {
+    .Deprecated("aggregateRows")
+    aggregateRows(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateReplicates <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+
+
 # nocov end
