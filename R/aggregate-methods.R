@@ -50,8 +50,11 @@
 #'
 #' # SummarizedExperiment
 #' se <- SummarizedExperiment(
-#'     assay = sparse,
-#'     colData = DataFrame(aggregate = samples),
+#'     assay = list(counts = sparse),
+#'     colData = DataFrame(
+#'         sampleName = names(samples),
+#'         aggregate = samples
+#'     ),
 #'     rowData = DataFrame(aggregate = genes)
 #' )
 #'
