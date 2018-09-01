@@ -64,7 +64,7 @@ print(counts)
 
 # Dense matrix
 matrix <- as(counts, "matrix")
-class(sparse)
+class(matrix)
 print(matrix)
 
 # Sparse matrix
@@ -89,6 +89,7 @@ se <- SummarizedExperiment(
     ),
     rowData = DataFrame(aggregate = genes)
 )
+print(se)
 
 # aggregateReplicates ====
 aggregateReplicates(matrix, groupings = samples)
@@ -98,7 +99,7 @@ aggregateReplicates(se)
 # aggregateFeatures ====
 aggregateFeatures(matrix, groupings = genes)
 aggregateFeatures(sparse, groupings = genes)
-aggregateReplicates(se)
+aggregateFeatures(se)
 }
 \seealso{
 Other Data Functions: \code{\link{counts}},
