@@ -1,7 +1,3 @@
-# FIXME Improve the formals here.
-
-
-
 #' Make Transcript-to-Gene Mappings
 #'
 #' @name makeTx2gene
