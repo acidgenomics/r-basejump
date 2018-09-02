@@ -4,18 +4,22 @@
 \alias{makeSummarizedExperiment}
 \title{Make Summarized Experiment}
 \usage{
-makeSummarizedExperiment(assays, rowRanges = NULL, colData = NULL,
-  metadata = NULL, transgeneNames = NULL, spikeNames = NULL)
+makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
+  colData = NULL, metadata = NULL, transgeneNames = NULL,
+  spikeNames = NULL)
 }
 \arguments{
 \item{assays}{\code{list}. RNA-seq count matrices, which must have matching
 dimensions. Counts can be passed in either dense (\code{matrix}) or sparse
 (\code{dgCMatrix}, \code{dgTMatrix}) format.}
 
-\item{rowRanges}{\code{GRanges} or \code{NULL}. Metadata describing the
+\item{rowRanges}{\code{GRanges} or \code{NULL}. \emph{Recommended}. Metadata describing the
 assay rows. If defined, must contain genomic ranges. Can be left \code{NULL} if
 the genome is poorly annotated and/or ranges aren't available from
 AnnotationHub.}
+
+\item{rowData}{\code{DataFrame} or \code{NULL}. \emph{Not recommended}. Metadata describing
+the assay rows, if genomic ranges are not available.}
 
 \item{colData}{\code{DataFrame} \code{data.frame}, or \code{matrix}. Metadata
 describing the assay columns. For bulk RNA-seq, this data describes the
@@ -30,7 +34,10 @@ samples. For single-cell RNA-seq, this data describes the cells.}
 rows denote spike-in sequences (e.g. ERCCs).}
 }
 \value{
-\code{RangedSummarizedExperiment}.
+\itemize{
+\item Providing \code{rowRanges}: \code{RangedSummarizedExperiment}.
+\item Providing \code{rowData}: \code{SummarizedExperiment}.
+}
 }
 \description{
 This function is a utility wrapper for
