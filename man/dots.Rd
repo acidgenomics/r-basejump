@@ -22,10 +22,7 @@ object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
 Extract Dots from Function
 }
 \examples{
-# names
-dots(a, b, c)
-
-# character
+dots(a, b, c, character = FALSE)
 dots(a, b, c, character = TRUE)
 }
 \seealso{
