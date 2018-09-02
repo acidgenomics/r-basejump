@@ -36,7 +36,7 @@ setMethod(
     function(object, ...) {
         # Legacy arguments -----------------------------------------------------
         # nocov start
-        args <- .matchArgs()
+        args <- matchS4Args()
         # clean
         if ("clean" %in% names(args)) {
             warning(paste(
