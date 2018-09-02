@@ -36,8 +36,9 @@ print(x)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeSampleData}}
+  \code{\link{collapseToString}}, \code{\link{removeNA}},
+  \code{\link{sanitizeNA}},
+  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh
