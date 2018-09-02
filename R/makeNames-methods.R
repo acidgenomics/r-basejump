@@ -168,7 +168,8 @@ NULL
         # Strip leading or trailing dots.
         gsub("(^\\.|\\.$)", "", .) %>%
         # Coerce `"NA"` back to `NA` after `make.names()`.
-        fixNA() %>%
+        sanitizeNA() %>%
+        # Standardize any mixed case acronyms.
         .sanitizeAcronyms() %>%
         # Establish word boundaries for camelCase acronyms
         # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`).
