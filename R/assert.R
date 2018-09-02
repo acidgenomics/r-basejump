@@ -829,7 +829,7 @@ isImplicitInteger <- function(object) {
 #' )
 #' assertIsTx2gene(object)
 assertIsTx2gene <- function(object) {
-    assert_is_all_of(
+    assert_is_any_of(
         x = object,
         classes = c("DataFrame", "tbl_df")
     )
