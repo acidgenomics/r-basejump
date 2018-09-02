@@ -77,14 +77,14 @@ test_that("assertFormalGene2symbol", {
 test_that("assertFormalInterestingGroups", {
     expect_silent(
         assertFormalInterestingGroups(
-            x = rse_bcb,
+            x = rse_small,
             interestingGroups = c("tissue", "treatment")
         )
     )
     # Must exist as columns in sampleData.
     expect_error(
         assertFormalInterestingGroups(
-            x = rse_bcb,
+            x = rse_small,
             interestingGroups = "XXX"
         ),
         "is_subset : The element 'XXX'"
@@ -92,7 +92,7 @@ test_that("assertFormalInterestingGroups", {
     # Require interesting groups to be defined as factor columns.
     expect_error(
         assertFormalInterestingGroups(
-            x = rse_bcb,
+            x = rse_small,
             interestingGroups = c("totalReads", "exonicRate")
         ),
         "The interesting groups \"totalReads, exonicRate\" are not factor"

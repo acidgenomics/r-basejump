@@ -20,9 +20,9 @@ matchInterestingGroups(object, interestingGroups, ...)
 Match Interesting Groups
 }
 \examples{
-matchInterestingGroups(rse_bcb)
-matchInterestingGroups(rse_bcb, interestingGroups = NULL)
-matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+matchInterestingGroups(rse_small)
+matchInterestingGroups(rse_small, interestingGroups = NULL)
+matchInterestingGroups(rse_small, interestingGroups = "sampleName")
 }
 \seealso{
 Other Developer Functions: \code{\link{calls}},

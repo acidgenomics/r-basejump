@@ -24,7 +24,7 @@
 #' @export
 #'
 #' @examples
-#' object <- sampleData(rse_bcb)
+#' object <- sampleData(rse_small)
 #' x <- sanitizeSampleData(object)
 #' all(vapply(x, is.factor, logical(1L)))
 sanitizeSampleData <- function(object) {

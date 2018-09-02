@@ -27,7 +27,7 @@ The following conventions are enforced:
 Currently supports \code{DataFrame} or \code{data.frame} input.
 }
 \examples{
-object <- sampleData(rse_bcb)
+object <- sampleData(rse_small)
 x <- sanitizeSampleData(object)
 all(vapply(x, is.factor, logical(1L)))
 }

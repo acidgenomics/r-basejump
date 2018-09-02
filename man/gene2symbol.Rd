@@ -27,7 +27,7 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
-gene2symbol(rse_bcb) \%>\% head()
+gene2symbol(rse_small) \%>\% head()
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},

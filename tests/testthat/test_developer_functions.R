@@ -81,15 +81,15 @@ test_that("flatFiles : SummarizedExperiment", {
 # matchInterestingGroups =======================================================
 test_that("matchInterestingGroups", {
     expect_identical(
-        matchInterestingGroups(rse_bcb),
+        matchInterestingGroups(rse_small),
         "treatment"
     )
     expect_identical(
-        matchInterestingGroups(rse_bcb, interestingGroups = NULL),
+        matchInterestingGroups(rse_small, interestingGroups = NULL),
         "sampleName"
     )
     expect_identical(
-        matchInterestingGroups(rse_bcb, interestingGroups = "sampleName"),
+        matchInterestingGroups(rse_small, interestingGroups = "sampleName"),
         "sampleName"
     )
 })

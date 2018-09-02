@@ -28,7 +28,7 @@
 #' @examples
 #' # DataFrame to tbl_df ====
 #' # Automatically move rownames to `rowname` column
-#' data <- colData(rse_bcb)
+#' data <- colData(rse_small)
 #' class(data)
 #' hasRownames(data)
 #'

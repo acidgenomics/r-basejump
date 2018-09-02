@@ -47,7 +47,7 @@ that is duplicated, these functions will return a warning.
 }
 
 \examples{
-object <- rse_bcb
+object <- rse_small
 head(rownames(object))
 
 object_symbols <- convertGenesToSymbols(object)

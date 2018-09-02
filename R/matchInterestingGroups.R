@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @examples
-#' matchInterestingGroups(rse_bcb)
-#' matchInterestingGroups(rse_bcb, interestingGroups = NULL)
-#' matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+#' matchInterestingGroups(rse_small)
+#' matchInterestingGroups(rse_small, interestingGroups = NULL)
+#' matchInterestingGroups(rse_small, interestingGroups = "sampleName")
 matchInterestingGroups <- function(object, interestingGroups, ...) {
     if (missing(interestingGroups)) {
         interestingGroups <- basejump::interestingGroups(object)

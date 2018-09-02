@@ -24,7 +24,7 @@ names are always sorted alphabetically.
 error otherwise.
 }
 \examples{
-x <- metrics(rse_bcb)
+x <- metrics(rse_small)
 glimpse(x)
 }
 \seealso{

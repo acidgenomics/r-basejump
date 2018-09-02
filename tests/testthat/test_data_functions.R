@@ -4,7 +4,7 @@ context("Data Functions")
 
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : SummarizedExperiment", {
-    x <- convertGenesToSymbols(rse_bcb)
+    x <- convertGenesToSymbols(rse_small)
     expect_identical(
         rownames(x),
         mcols(rowRanges(x))[["geneName"]]
@@ -23,7 +23,7 @@ test_that("convertGenesToSymbols : SummarizedExperiment", {
 
 # convertSymbolsToGenes ========================================================
 test_that("convertSymbolsToGenes : SummarizedExperiment", {
-    x <- convertGenesToSymbols(rse_bcb)
+    x <- convertGenesToSymbols(rse_small)
     y <- convertSymbolsToGenes(x)
     expect_identical(
         rownames(y),
@@ -43,7 +43,7 @@ test_that("counts", {
 
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
-    x <- gene2symbol(rse_bcb)
+    x <- gene2symbol(rse_small)
     expect_is(x, "data.frame")
     expect_identical(colnames(x), c("geneID", "geneName"))
     expect_true(tibble::has_rownames(x))
@@ -65,7 +65,7 @@ test_that("gene2symbol : NULL return", {
 # interestingGroups ============================================================
 test_that("interestingGroups : SummarizedExperiment", {
     expect_identical(
-        interestingGroups(rse_bcb),
+        interestingGroups(rse_small),
         "treatment"
     )
     expect_identical(
@@ -75,7 +75,7 @@ test_that("interestingGroups : SummarizedExperiment", {
 })
 
 test_that("interestingGroups : Assignment method", {
-    x <- rse_bcb
+    x <- rse_small
     interestingGroups(x) <- "sampleName"
     expect_identical(
         interestingGroups(x),
@@ -278,12 +278,12 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
-    expect_identical(sampleData(rse_bcb), colData(rse_bcb))
+    expect_identical(sampleData(rse_small), colData(rse_small))
     expect_error(sampleData(rse_dds), "sampleName")
 })
 
 test_that("sampleData<- : SummarizedExperiment", {
-    x <- rse_bcb
+    x <- rse_small
     sampleData(x)[["test"]] <- as.factor(seq_len(ncol(x)))
     expect_is(sampleData(x)[["test"]], "factor")
 })
@@ -292,7 +292,7 @@ test_that("sampleData<- : SummarizedExperiment", {
 
 # sampleNames ==================================================================
 test_that("sampleNames", {
-    x <- sampleNames(rse_bcb)
+    x <- sampleNames(rse_small)
     expect_identical(
         x[seq_len(2L)],
         c(

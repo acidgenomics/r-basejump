@@ -21,7 +21,7 @@
 #' @return `character`.
 #'
 #' @examples
-#' object <- rse_bcb
+#' object <- rse_small
 #' head(rownames(object))
 #'
 #' object_symbols <- convertGenesToSymbols(object)

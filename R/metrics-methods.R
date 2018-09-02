@@ -16,7 +16,7 @@
 #' @return `DataFrame`.
 #'
 #' @examples
-#' x <- metrics(rse_bcb)
+#' x <- metrics(rse_small)
 #' glimpse(x)
 NULL
 
