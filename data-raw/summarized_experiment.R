@@ -19,30 +19,30 @@ saveData(dds_small, dir = "tests/testthat", compress = "xz")
 # Need to change rows to actual gene identifiers here, and slot colData.
 rse <- as(dds, "RangedSummarizedExperiment")
 stopifnot(object.size(rse) < mb)
-
 # Column data.
 # Add required `sampleName` column.
 rse$sampleName <- as.factor(colnames(rse))
-stopifnot(object.size(rse) < mb)
-
 # Row data.
-gr <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
+rowRanges <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
 # Subset to match the number of rows in the example.
-gr <- gr[seq_len(nrow(rse))]
-# Report the size of the ranges.
-format(object.size(gr), units = "auto")
+rowRanges <- rowRanges[seq_len(nrow(rse))]
+# Ensure factor levels in mcols are dropped, to save space.
+# Otherwise the example will be too big.
+mcols <- mcols(rowRanges) %>%
+    as("tbl_df") %>%
+    mutate_if(is.factor, droplevels) %>%
+    as("DataFrame")
+mcols(rowRanges) <- mcols
 # Update the rownames of the object to match our genomic ranges.
-rownames(rse) <- names(gr)
-rowRanges(rse) <- gr
+rownames(rse) <- names(rowRanges)
+rowRanges(rse) <- rowRanges
 # Report the size of each slot in bytes.
 vapply(
     X = flatFiles(rse),
     FUN = object.size,
     FUN.VALUE = numeric(1L)
 )
-# Stop if the object is too big.
-# FIXME Example object size is still too big...
-# stopifnot(object.size(rse) < mb)
+stopifnot(object.size(rse) < mb)
 stopifnot(validObject(rse))
 rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
