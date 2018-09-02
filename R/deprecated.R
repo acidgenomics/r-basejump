@@ -337,6 +337,28 @@ aggregateReplicates <- function(...) {
     aggregateCols(...)
 }
 
+#' @rdname deprecated
+#' @export
+assertIsCharacterOrNULL <- function(object, ...) {
+    .Deprecated("assert_is_any_of")
+    assert_is_any_of(
+        x = object,
+        classes = c("character", "NULL"),
+        ...
+    )
+}
+
+#' @rdname deprecated
+#' @export
+assertIsDataFrameOrNULL <- function(object, ...) {
+    .Deprecated("assert_is_any_of")
+    assert_is_any_of(
+        x = object,
+        classes = c("data.frame", "NULL"),
+        ...
+    )
+}
+
 
 
 # nocov end
