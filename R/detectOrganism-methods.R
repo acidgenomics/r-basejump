@@ -22,7 +22,7 @@
 #' @param unique `boolean`. Only return unique matching organisms. Applies to
 #'   `character` input.
 #'
-#' @return Full latin organism name. Stops on detection failure.
+#' @return `character`. Full latin organism name. Stops on detection failure.
 #'
 #' - `atomic`: Named `character` vector containing organism name or `NA` for
 #'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).

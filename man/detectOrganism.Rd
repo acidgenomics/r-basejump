@@ -37,7 +37,7 @@ detectOrganism(object, ...)
 \code{character} input.}
 }
 \value{
-Full latin organism name. Stops on detection failure.
+\code{character}. Full latin organism name. Stops on detection failure.
 \itemize{
 \item \code{atomic}: Named \code{character} vector containing organism name or \code{NA} for
 individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
