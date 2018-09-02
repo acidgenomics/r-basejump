@@ -59,7 +59,7 @@ NULL
 makeTx2geneFromEnsembl <- function(
     # Setting formals below.
 ) {
-    args <- matchS4Args()
+    args <- matchArgs(S4 = FALSE)
     args[["format"]] <- "transcripts"
     gr <- do.call(
         what = makeGRangesFromEnsembl,
