@@ -1,13 +1,13 @@
-#' `grep` String
+#' Generate a `grep` String
 #'
-#' Generate a `grep` string for pattern matching against a delimited `character`
-#' string returned by [base::toString()] or [base::paste()] using the `collapse`
-#' argument.
+#' A `grep` string is useful for pattern matching against a delimited
+#' `character` string returned by [base::toString()] or [base::paste()] using
+#' the `collapse` argument.
 #'
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
 #'
-#' @param x `string`. Term to use for grep matching.
+#' @param object `string`. Term to use for grep matching.
 #' @param sep `string`. Separator. Defaults to comma.
 #'
 #' @return `string`, containing a regular expression pattern.
@@ -19,18 +19,18 @@
 #'
 #' @examples
 #' grepString("gene")
-grepString <- function(x, sep = ", ") {
-    assert_is_a_string(x)
+grepString <- function(object, sep = ", ") {
+    assert_is_a_string(object)
     sep <- sub(" ", "\\s", sep, fixed = TRUE)
     paste(
         # Unique
-        paste0("^", x, "$"),
+        paste0("^", object, "$"),
         # Beginning
-        paste0("^", x, sep),
+        paste0("^", object, sep),
         # Middle
-        paste0(sep, x, sep),
+        paste0(sep, object, sep),
         # End
-        paste0(sep, x, "$"),
+        paste0(sep, object, "$"),
         sep = "|"
     )
 }
