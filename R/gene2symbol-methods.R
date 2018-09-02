@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' gene2symbol(rse_bcb) %>% head()
+#' gene2symbol(rse_small) %>% head()
 NULL
 
 

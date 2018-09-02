@@ -12,7 +12,7 @@ pheatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
 
 with_parameters_test_that(
     "plotHeatmap : SummarizedExperiment", {
-        object <- rse_bcb
+        object <- rse_small
         p <- f(object)
 
         # Expect pheatmap return.
@@ -70,7 +70,7 @@ with_parameters_test_that(
 
 test_that("plotHeatmap : Invalid pheatmap passthrough", {
     expect_error(
-        plotHeatmap(rse_bcb, show_colnames = FALSE),
+        plotHeatmap(rse_small, show_colnames = FALSE),
         "Define formalArgs in camel case: show_colnames"
     )
 })

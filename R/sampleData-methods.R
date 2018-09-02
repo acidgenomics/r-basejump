@@ -17,10 +17,10 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_bcb) %>% glimpse()
+#' sampleData(rse_small) %>% glimpse()
 #'
 #' # Assignment support
-#' x <- rse_bcb
+#' x <- rse_small
 #' sampleData(x)[["test"]] <- seq_len(ncol(x))
 #' # `test` column should be now defined
 #' glimpse(sampleData(x))

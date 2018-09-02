@@ -6,66 +6,64 @@ release <- 87L
 
 # annotable ====================================================================
 test_that("annotable", {
-    x <- annotable("Homo sapiens", release = release)
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(63970L, 12L))
-    expect_identical(rownames(x)[[1L]], "ENSG00000000003")
+    object <- annotable("Homo sapiens", release = release)
+    expect_is(object, "tbl_df")
+    expect_true("rowname" %in% colnames(object))
+    expect_identical(dim(object), c(63970L, 13L))
+    expect_identical(object[["rowname"]][[1L]], "ENSG00000000003")
 })
 
 
 
 # broadClass ===================================================================
-test_that("broadClass", {
-    # GRanges
-    expect_is(
-        broadClass(makeGRangesFromEnsembl("Homo sapiens")),
-        "factor"
+with_parameters_test_that(
+    "broadClass", {
+        expect_is(broadClass(object), "factor")
+    },
+    object = list(
+        GRanges = makeGRangesFromEnsembl("Homo sapiens"),
+        SummarizedExperiment = rse_small
     )
-
-    # SummarizedExperiment
-    expect_is(
-        broadClass(rse_bcb),
-        "factor"
-    )
-})
+)
 
 
 
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : character", {
-    x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-    y <- c(
-        "ENSMUSG00000000001" = "Gnai3",
-        "ENSMUSG00000000003" = "Pbsn"
+    object <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+    expected <- c(
+        ENSMUSG00000000001 = "Gnai3",
+        ENSMUSG00000000003 = "Pbsn"
     )
 
-    # gene2symbol (recommended)
+    # Using automatic organism detection (AnnotationHub).
+    # FIXME This test is failing?
+    expect_identical(
+        convertGenesToSymbols(object, release = release),
+        expected = expected
+    )
+
+    # Using organism (AnnotationHub).
+    expect_identical(
+        object = convertGenesToSymbols(
+            object = object,
+            organism = "Mus musculus",
+            release = release
+        ),
+        expected = expected
+    )
+
+    # Using gene2symbol DataFrame.
     g2s <- makeGene2symbolFromEnsembl(
         organism = "Mus musculus",
         release = release
     )
     expect_identical(
         object = convertGenesToSymbols(
-            object = x,
+            object = object,
             gene2symbol = g2s
         ),
-        expected = y
-    )
-
-    # organism
-    expect_identical(
-        object = convertGenesToSymbols(
-            object = x,
-            organism = "Mus musculus",
-            release = release
-        ),
-        expected = y
-    )
-
-    # No tx2gene or organism
-    expect_identical(
-        convertGenesToSymbols(x, release = release),
-        y
+        expected = expected
     )
 })
 

@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' object <- rse_bcb
+#' object <- rse_small
 #' x <- sampleNames(object)
 #' print(x)
 #'

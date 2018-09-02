@@ -320,8 +320,8 @@ assertFormalGene2symbol <- function(
 #' @param object `SummarizedExperiment`.
 #'
 #' @examples
-#' assertFormalInterestingGroups(rse_bcb, "treatment")
-#' assertFormalInterestingGroups(rse_bcb, NULL)
+#' assertFormalInterestingGroups(rse_small, "treatment")
+#' assertFormalInterestingGroups(rse_small, NULL)
 assertFormalInterestingGroups <- function(object, interestingGroups) {
     # Always require SummarizedExperiment for object.
     assert_is_all_of(

@@ -19,8 +19,8 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \examples{
-assertFormalInterestingGroups(rse_bcb, "treatment")
-assertFormalInterestingGroups(rse_bcb, NULL)
+assertFormalInterestingGroups(rse_small, "treatment")
+assertFormalInterestingGroups(rse_small, NULL)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},

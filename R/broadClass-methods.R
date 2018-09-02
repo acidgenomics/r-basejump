@@ -16,7 +16,7 @@
 #' table(x)
 #'
 #' # SummarizedExperiment ====
-#' x <- broadClass(rse_bcb)
+#' x <- broadClass(rse_small)
 #' table(x)
 NULL
 

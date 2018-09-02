@@ -38,7 +38,7 @@
 #' rownames(mat)
 #'
 #' # SummarizedExperiment ====
-#' x <- convertGenesToSymbols(rse_bcb)
+#' x <- convertGenesToSymbols(rse_small)
 #' print(x)
 #'
 #' y <- convertSymbolsToGenes(x)
