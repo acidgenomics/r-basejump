@@ -2,33 +2,31 @@
 % Please edit documentation in R/assert.R
 \name{assertAreGeneAnnotations}
 \alias{assertAreGeneAnnotations}
-\title{Assert Are Ensembl Gene Annotations}
+\title{Assert Are Gene Annotations}
 \usage{
-assertAreGeneAnnotations(x, severity = getOption("assertive.severity",
-  "stop"))
+assertAreGeneAnnotations(object)
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl gene annotations.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object that can be coerced to \code{data.frame}.}
 }
 \value{
 Stop on mismatch.
 }
 \description{
-Assert Are Ensembl Gene Annotations
+Must contain \code{geneID} and \code{geneName} columns. Does not need to contain
+rownames, so \code{tibble} class is supported.
 }
 \examples{
-x <- data.frame(
+object <- tibble(
     geneID = "ENSG00000000003",
     geneName = "TSPAN6"
 )
-assertAreGeneAnnotations(x)
+assertAreGeneAnnotations(object)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -39,10 +37,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

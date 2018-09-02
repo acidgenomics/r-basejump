@@ -4,31 +4,29 @@
 \alias{assertAreTranscriptAnnotations}
 \title{Assert Are Ensembl Transcript Annotations}
 \usage{
-assertAreTranscriptAnnotations(x,
-  severity = getOption("assertive.severity", "stop"))
+assertAreTranscriptAnnotations(object)
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl transcript annotations.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object that can be coerced to \code{data.frame}.}
 }
 \value{
 Stop on mismatch.
 }
 \description{
-Assert Are Ensembl Transcript Annotations
+Must contain \code{transcriptID} and \code{transcriptName} columns. Does not need to
+contain rownames, so \code{tibble} class is supported.
 }
 \examples{
-x <- data.frame(
+object <- tibble(
     transcriptID = "ENST00000000233",
     geneID = "ENSG00000004059"
 )
-assertAreTranscriptAnnotations(x)
+assertAreTranscriptAnnotations(object)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -39,10 +37,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

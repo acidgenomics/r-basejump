@@ -22,6 +22,8 @@
 \alias{assertIsURL}
 \alias{aggregateFeatures}
 \alias{aggregateReplicates}
+\alias{assertIsCharacterOrNULL}
+\alias{assertIsDataFrameOrNULL}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -63,9 +65,15 @@ assertIsURL(...)
 aggregateFeatures(...)
 
 aggregateReplicates(...)
+
+assertIsCharacterOrNULL(object, ...)
+
+assertIsDataFrameOrNULL(object, ...)
 }
 \arguments{
 \item{...}{Additional arguments.}
+
+\item{object}{Object.}
 }
 \value{
 \code{\link[=.Deprecated]{.Deprecated()}}.
