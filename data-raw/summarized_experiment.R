@@ -10,7 +10,7 @@ mb <- structure(1e6, class = "object_size")
 # Generate example DESeqDataSet using DESeq2.
 dds <- makeExampleDESeqDataSet(n = 100L, m = 4L)
 stopifnot(object.size(dds) < mb)
-validObject(dds)
+stopifnot(validObject(dds))
 dds_small <- dds
 saveData(dds_small, dir = "tests/testthat", compress = "xz")
 
@@ -23,7 +23,7 @@ stopifnot(object.size(rse) < mb)
 # Column data.
 # Add required `sampleName` column.
 rse$sampleName <- as.factor(colnames(rse))
-stopifnot(object_size(rse) < mb)
+stopifnot(object.size(rse) < mb)
 
 # Row data.
 gr <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
@@ -41,7 +41,8 @@ vapply(
     FUN.VALUE = numeric(1L)
 )
 # Stop if the object is too big.
-# stopifnot(object_size(rse) < mb)
-validObject(rse)
+# FIXME Example object size is still too big...
+# stopifnot(object.size(rse) < mb)
+stopifnot(validObject(rse))
 rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
