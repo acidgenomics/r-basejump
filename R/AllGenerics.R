@@ -13,9 +13,9 @@ NULL
 #' @rdname aggregate
 #' @export
 setGeneric(
-    name = "aggregateFeatures",
+    name = "aggregateCols",
     def = function(object, ...) {
-        standardGeneric("aggregateFeatures")
+        standardGeneric("aggregateCols")
     }
 )
 
@@ -24,9 +24,9 @@ setGeneric(
 #' @rdname aggregate
 #' @export
 setGeneric(
-    "aggregateReplicates",
-    function(object, ...) {
-        standardGeneric("aggregateReplicates")
+    name = "aggregateRows",
+    def = function(object, ...) {
+        standardGeneric("aggregateRows")
     }
 )
 
@@ -34,17 +34,20 @@ setGeneric(
 
 #' @rdname broadClass
 #' @export
-setGeneric("broadClass", function(object, ...) {
-    standardGeneric("broadClass")
-})
+setGeneric(
+    name = "broadClass",
+    def = function(object, ...) {
+        standardGeneric("broadClass")
+    }
+)
 
 
 
 #' @rdname makeNames
 #' @export
 setGeneric(
-    "camel",
-    function(object, ...) {
+    name = "camel",
+    def = function(object, ...) {
         standardGeneric("camel")
     }
 )
@@ -54,8 +57,8 @@ setGeneric(
 #' @rdname collapseToString
 #' @export
 setGeneric(
-    "collapseToString",
-    function(object, ...) {
+    name = "collapseToString",
+    def = function(object, ...) {
         standardGeneric("collapseToString")
     }
 )
@@ -65,8 +68,8 @@ setGeneric(
 #' @rdname convertGenesToSymbols
 #' @export
 setGeneric(
-    "convertGenesToSymbols",
-    function(object, ...) {
+    name = "convertGenesToSymbols",
+    def = function(object, ...) {
         standardGeneric("convertGenesToSymbols")
     }
 )
@@ -76,8 +79,8 @@ setGeneric(
 #' @rdname convertGenesToSymbols
 #' @export
 setGeneric(
-    "convertSymbolsToGenes",
-    function(object, ...) {
+    name = "convertSymbolsToGenes",
+    def = function(object, ...) {
         standardGeneric("convertSymbolsToGenes")
     }
 )
@@ -87,8 +90,8 @@ setGeneric(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setGeneric(
-    "convertTranscriptsToGenes",
-    function(object, ...) {
+    name = "convertTranscriptsToGenes",
+    def = function(object, ...) {
         standardGeneric("convertTranscriptsToGenes")
     }
 )
@@ -98,8 +101,8 @@ setGeneric(
 #' @rdname detectOrganism
 #' @export
 setGeneric(
-    "detectOrganism",
-    function(object, ...) {
+    name = "detectOrganism",
+    def = function(object, ...) {
         standardGeneric("detectOrganism")
     }
 )
@@ -109,8 +112,8 @@ setGeneric(
 #' @rdname makeNames
 #' @export
 setGeneric(
-    "dotted",
-    function(object, ...) {
+    name = "dotted",
+    def = function(object, ...) {
         standardGeneric("dotted")
     }
 )
@@ -120,8 +123,8 @@ setGeneric(
 #' @rdname logRatio
 #' @export
 setGeneric(
-    "foldChangeToLogRatio",
-    function(object, ...) {
+    name = "foldChangeToLogRatio",
+    def = function(object, ...) {
         standardGeneric("foldChangeToLogRatio")
     }
 )
@@ -131,8 +134,8 @@ setGeneric(
 #' @rdname fixNA
 #' @export
 setGeneric(
-    "fixNA",
-    function(object, ...) {
+    name = "fixNA",
+    def = function(object, ...) {
         standardGeneric("fixNA")
     }
 )
@@ -142,8 +145,8 @@ setGeneric(
 #' @rdname flatFiles
 #' @export
 setGeneric(
-    "flatFiles",
-    function(object, ...) {
+    name = "flatFiles",
+    def = function(object, ...) {
         standardGeneric("flatFiles")
     }
 )
@@ -153,8 +156,8 @@ setGeneric(
 #' @rdname gene2symbol
 #' @export
 setGeneric(
-    "gene2symbol",
-    function(object, ...) {
+    name = "gene2symbol",
+    def = function(object, ...) {
         standardGeneric("gene2symbol")
     }
 )
@@ -164,8 +167,8 @@ setGeneric(
 #' @rdname geometricMean
 #' @export
 setGeneric(
-    "geometricMean",
-    function(object, ...) {
+    name = "geometricMean",
+    def = function(object, ...) {
         standardGeneric("geometricMean")
     }
 )
@@ -175,8 +178,8 @@ setGeneric(
 #' @rdname interestingGroups
 #' @export
 setGeneric(
-    "interestingGroups",
-    function(object, ...) {
+    name = "interestingGroups",
+    def = function(object, ...) {
         standardGeneric("interestingGroups")
     }
 )
@@ -186,8 +189,8 @@ setGeneric(
 #' @rdname interestingGroups
 #' @export
 setGeneric(
-    "interestingGroups<-",
-    function(object, ..., value) {
+    name = "interestingGroups<-",
+    def = function(object, ..., value) {
         standardGeneric("interestingGroups<-")
     }
 )
@@ -197,8 +200,8 @@ setGeneric(
 #' @rdname logRatio
 #' @export
 setGeneric(
-    "logRatioToFoldChange",
-    function(object, ...) {
+    name = "logRatioToFoldChange",
+    def = function(object, ...) {
         standardGeneric("logRatioToFoldChange")
     }
 )
@@ -208,8 +211,8 @@ setGeneric(
 #' @rdname mapGenes
 #' @export
 setGeneric(
-    "mapGenesToIDs",
-    function(object, ...) {
+    name = "mapGenesToIDs",
+    def = function(object, ...) {
         standardGeneric("mapGenesToIDs")
     }
 )
@@ -219,8 +222,8 @@ setGeneric(
 #' @rdname mapGenes
 #' @export
 setGeneric(
-    "mapGenesToRownames",
-    function(object, ...) {
+    name = "mapGenesToRownames",
+    def = function(object, ...) {
         standardGeneric("mapGenesToRownames")
     }
 )
@@ -230,8 +233,8 @@ setGeneric(
 #' @rdname mapGenes
 #' @export
 setGeneric(
-    "mapGenesToSymbols",
-    function(object, ...) {
+    name = "mapGenesToSymbols",
+    def = function(object, ...) {
         standardGeneric("mapGenesToSymbols")
     }
 )
@@ -241,8 +244,8 @@ setGeneric(
 #' @rdname AllGenerics
 #' @export
 setGeneric(
-    "metrics",
-    function(object, ...) {
+    name = "metrics",
+    def = function(object, ...) {
         standardGeneric("metrics")
     }
 )
@@ -252,8 +255,8 @@ setGeneric(
 #' @rdname plotCorrelationHeatmap
 #' @export
 setGeneric(
-    "plotCorrelationHeatmap",
-    function(object, ...) {
+    name = "plotCorrelationHeatmap",
+    def = function(object, ...) {
         standardGeneric("plotCorrelationHeatmap")
     }
 )
@@ -263,8 +266,8 @@ setGeneric(
 #' @rdname AllGenerics
 #' @export
 setGeneric(
-    "plotGene",
-    function(object, ...) {
+    name = "plotGene",
+    def = function(object, ...) {
         standardGeneric("plotGene")
     }
 )
@@ -274,8 +277,8 @@ setGeneric(
 #' @rdname plotHeatmap
 #' @export
 setGeneric(
-    "plotHeatmap",
-    function(object, ...) {
+    name = "plotHeatmap",
+    def = function(object, ...) {
         standardGeneric("plotHeatmap")
     }
 )
@@ -285,8 +288,8 @@ setGeneric(
 #' @rdname plotQuantileHeatmap
 #' @export
 setGeneric(
-    "plotQuantileHeatmap",
-    function(object, ...) {
+    name = "plotQuantileHeatmap",
+    def = function(object, ...) {
         standardGeneric("plotQuantileHeatmap")
     }
 )
@@ -296,8 +299,8 @@ setGeneric(
 #' @rdname AllGenerics
 #' @export
 setGeneric(
-    "plotQC",
-    function(object, ...) {
+    name = "plotQC",
+    def = function(object, ...) {
         standardGeneric("plotQC")  # nocov
     }
 )
@@ -307,8 +310,8 @@ setGeneric(
 #' @rdname removeNA
 #' @export
 setGeneric(
-    "removeNA",
-    function(object, ...) {
+    name = "removeNA",
+    def = function(object, ...) {
         standardGeneric("removeNA")
     }
 )
@@ -318,8 +321,8 @@ setGeneric(
 #' @rdname sampleData
 #' @export
 setGeneric(
-    "sampleData",
-    function(object, ...) {
+    name = "sampleData",
+    def = function(object, ...) {
         standardGeneric("sampleData")
     }
 )
@@ -329,8 +332,8 @@ setGeneric(
 #' @rdname sampleData
 #' @export
 setGeneric(
-    "sampleData<-",
-    function(object, ..., value) {
+    name = "sampleData<-",
+    def = function(object, ..., value) {
         standardGeneric("sampleData<-")
     }
 )
@@ -340,8 +343,8 @@ setGeneric(
 #' @rdname selectSamples
 #' @export
 setGeneric(
-    "selectSamples",
-    function(object, ...) {
+    name = "selectSamples",
+    def = function(object, ...) {
         standardGeneric("selectSamples")
     }
 )
@@ -351,8 +354,8 @@ setGeneric(
 #' @rdname makeNames
 #' @export
 setGeneric(
-    "snake",
-    function(object, ...) {
+    name = "snake",
+    def = function(object, ...) {
         standardGeneric("snake")
     }
 )
@@ -362,8 +365,8 @@ setGeneric(
 #' @rdname stripTranscriptVersions
 #' @export
 setGeneric(
-    "stripTranscriptVersions",
-    function(object, ...) {
+    name = "stripTranscriptVersions",
+    def = function(object, ...) {
         standardGeneric("stripTranscriptVersions")
     }
 )
@@ -373,8 +376,8 @@ setGeneric(
 #' @rdname uniteInterestingGroups
 #' @export
 setGeneric(
-    "uniteInterestingGroups",
-    function(object, ...) {
+    name = "uniteInterestingGroups",
+    def = function(object, ...) {
         standardGeneric("uniteInterestingGroups")
     }
 )
@@ -384,8 +387,8 @@ setGeneric(
 #' @rdname makeNames
 #' @export
 setGeneric(
-    "upperCamel",
-    function(object, ...) {
+    name = "upperCamel",
+    def = function(object, ...) {
         standardGeneric("upperCamel")
     }
 )
