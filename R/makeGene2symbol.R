@@ -4,6 +4,8 @@
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
+#' @include makeGRanges.R
+#'
 #' @inheritParams makeGRanges
 #' @inheritParams gene2symbol
 #'
@@ -66,7 +68,9 @@ NULL
 
 #' @rdname makeGene2symbol
 #' @export
-makeGene2symbolFromEnsembl <- function() {
+makeGene2symbolFromEnsembl <- function(
+    # Setting formals below.
+) {
     args <- as.list(match.call())[-1L]
     args[["format"]] <- "genes"
     gr <- do.call(
@@ -77,7 +81,6 @@ makeGene2symbolFromEnsembl <- function() {
 }
 
 # Set the formals.
-#' @include makeGRanges.R
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("format", "metadata"))]
 formals(makeGene2symbolFromEnsembl) <- as.pairlist(f)
