@@ -12,28 +12,43 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
+#' @inheritParams base::apply
 #' @param removeNA `boolean`. Remove `NA` values from calculations.
 #' @param zeroPropagate `boolean`. Allow propagation of zeroes.
 #'
-#' @return `numeric` containing geometric means.
+#' @return `numeric`.
 #'
 #' @seealso Modified version of `psych::geometric.mean()` and Paul McMurdie's
 #'   [code](https://stackoverflow.com/a/25555105).
 #'
 #' @examples
 #' # numeric ====
-#' vec <- seq(1L, 5L, 1L)
-#' geometricMean(vec)
+#' vec1 <- seq(1L, 5L, 1L)
+#' print(vec1)
+#' geometricMean(vec1)
+#'
 #' vec2 <- vec ^ 2L
+#' print(vec2)
 #' geometricMean(vec2)
 #'
-#' # data.frame ====
-#' df <- data.frame(vec, vec2)
-#' geometricMean(df)
-#'
 #' # matrix ====
-#' mat <- as.matrix(df)
-#' geometricMean(mat)
+#' matrix <- matrix(
+#'     data = c(vec1, vec2),
+#'     ncol = 2L,
+#'     byrow = FALSE
+#' )
+#' print(matrix)
+#' geometricMean(matrix)
+#'
+#' # sparseMatrix ====
+#' sparse <- as(matrix, "sparseMatrix")
+#' print(sparse)
+#' geometricMean(sparse)
+#'
+#' # DataFrame ====
+#' df <- as(matrix, "DataFrame")
+#' print(df)
+#' geometricMean(df)
 NULL
 
 
@@ -77,11 +92,11 @@ setMethod(
 setMethod(
     "geometricMean",
     signature("matrix"),
-    function(object) {
+    function(object, MARGIN = 2L) {
         invisible(lapply(object, assert_is_numeric))
         apply(
             X = object,
-            MARGIN = 2L,
+            MARGIN = MARGIN,
             FUN = geometricMean
         )
     }
@@ -93,6 +108,26 @@ setMethod(
 #' @export
 setMethod(
     "geometricMean",
+    signature("sparseMatrix"),
+    getMethod("geometricMean", "matrix")
+)
+
+
+
+#' @rdname geometricMean
+#' @export
+setMethod(
+    "geometricMean",
     signature("data.frame"),
+    getMethod("geometricMean", "matrix")
+)
+
+
+
+#' @rdname geometricMean
+#' @export
+setMethod(
+    "geometricMean",
+    signature("DataFrame"),
     getMethod("geometricMean", "matrix")
 )
