@@ -14,7 +14,7 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object, ...)
+\S4method{sampleData}{SummarizedExperiment}(object)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
