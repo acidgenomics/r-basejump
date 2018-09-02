@@ -1,9 +1,14 @@
+# TODO Add support for SummarizedExperiment
+
+
+
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @name convertTranscriptsToGenes
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
+#' @include makeGRanges.R
 #' @inherit convertGenesToSymbols
 #'
 #' @param tx2gene `data.frame` or `NULL`. Transcript-to-gene mappings. If set
@@ -14,7 +19,8 @@
 #' @examples
 #' # character ====
 #' x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
-#' convertTranscriptsToGenes(x)
+#' y <- convertTranscriptsToGenes(x)
+#' print(y)
 #'
 #' # matrix ====
 #' mat <- matrix(
@@ -35,52 +41,91 @@ NULL
 
 
 
+.convertTranscriptsToGenes.character <-  # nolint
+function(
+    # Setting the formals below.
+    object,
+    tx2gene = NULL,
+    organism = NULL
+) {
+    assert_all_are_non_missing_nor_empty_character(object)
+    assert_has_no_duplicates(object)
+    assert_is_any_of(tx2gene, c("data.frame", "NULL"))
+    assertIsAStringOrNULL(organism)
+
+    # If no tx2gene is provided, fall back to using Ensembl annotations.
+    if (is.null(tx2gene)) {
+        message("Obtaining transcript-to-gene mappings from Ensembl")
+        if (is.null(organism)) {
+            organism <- detectOrganism(object, unique = TRUE)
+        }
+        assert_is_a_string(organism)
+        message(paste(organism, "genes detected"))
+        args <- matchS4Args()
+        args[["object"]] <- NULL
+        args[["organism"]] <- organism
+        tx2gene <- do.call(
+            what = makeTx2geneFromEnsembl,
+            args = args
+        )
+    }
+    assertIsTx2gene(tx2gene)
+
+    missing <- setdiff(object, tx2gene[["transcriptID"]])
+    if (length(missing)) {
+        stop(paste("Failed to match transcripts:", toString(missing)))
+    }
+
+    tx2gene <- tx2gene[
+        match(x = object, table = tx2gene[["transcriptID"]]),
+        ,
+        drop = FALSE
+        ]
+
+    return <- tx2gene[["geneID"]]
+    names(return) <- tx2gene[["transcriptID"]]
+    return
+}
+
+# Set the formals.
+f1 <- formals(.convertTranscriptsToGenes.character)
+f2 <- formals(makeGRangesFromEnsembl)
+f2 <- f2[setdiff(
+    x = names(f2),
+    y = c(names(f1), "format", "metadata")
+)]
+f <- c(f1, f2)
+formals(.convertTranscriptsToGenes.character) <- as.pairlist(f)
+
+
+
+# Consider aggregating the matrix to gene level instead.
+.convertTranscriptsToGenes.matrix <-  # nolint
+function(
+    # Setting the formals below.
+) {
+    rownames <- rownames(object)
+    args <- matchS4Args()
+    args[["object"]] <- rownames
+    rownames <- do.call(
+        what = convertTranscriptsToGenes,
+        args = args
+    )
+    rownames(object) <- rownames
+    object
+}
+
+# Set the formals.
+f <- formals(.convertTranscriptsToGenes.character)
+formals(.convertTranscriptsToGenes.matrix) <- as.pairlist(f)
+
+
+
 #' @rdname convertTranscriptsToGenes
 setMethod(
     "convertTranscriptsToGenes",
     signature("character"),
-    function(
-        object,
-        tx2gene = NULL,
-        ...
-    ) {
-        assert_all_are_non_missing_nor_empty_character(object)
-        assert_has_no_duplicates(object)
-        assert_is_any_of(tx2gene, c("data.frame", "NULL"))
-        args <- list(...)
-        organism <- args[["organism"]]
-
-        # If no tx2gene is provided, fall back to using Ensembl annotations
-        if (is.null(tx2gene)) {
-            message("Obtaining transcript-to-gene mappings from Ensembl")
-            if (is.null(organism)) {
-                organism <- detectOrganism(object, unique = TRUE)
-            }
-            assert_is_a_string(organism)
-            message(paste(organism, "genes detected"))
-            args[["organism"]] <- organism
-            tx2gene <- do.call(
-                what = makeTx2geneFromEnsembl,
-                args = args
-            )
-        }
-        assertIsTx2gene(tx2gene)
-
-        missing <- setdiff(object, tx2gene[["transcriptID"]])
-        if (length(missing)) {
-            stop(paste("Failed to match transcripts:", toString(missing)))
-        }
-
-        tx2gene <- tx2gene[
-            match(x = object, table = tx2gene[["transcriptID"]]),
-            ,
-            drop = FALSE
-        ]
-
-        return <- tx2gene[["geneID"]]
-        names(return) <- tx2gene[["transcriptID"]]
-        return
-    }
+    .convertTranscriptsToGenes.character
 )
 
 
@@ -90,11 +135,7 @@ setMethod(
 setMethod(
     "convertTranscriptsToGenes",
     signature("matrix"),
-    function(object, ...) {
-        rownames <- convertTranscriptsToGenes(rownames(object), ...)
-        rownames(object) <- rownames
-        object
-    }
+    .convertTranscriptsToGenes.matrix
 )
 
 
