@@ -33,8 +33,8 @@ all(vapply(x, is.factor, logical(1L)))
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeRowData}}
+  \code{\link{collapseToString}}, \code{\link{removeNA}},
+  \code{\link{sanitizeNA}}, \code{\link{sanitizeRowData}}
 }
 \author{
 Michael Steinbaugh

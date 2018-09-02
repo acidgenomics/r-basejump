@@ -24,6 +24,7 @@
 \alias{aggregateReplicates}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
+\alias{fixNA}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -69,6 +70,8 @@ aggregateReplicates(...)
 assertIsCharacterOrNULL(object, ...)
 
 assertIsDataFrameOrNULL(object, ...)
+
+fixNA(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

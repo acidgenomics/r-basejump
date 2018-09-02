@@ -80,7 +80,7 @@ ggplot2::mpg \%>\%
 }
 
 Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeNA}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
