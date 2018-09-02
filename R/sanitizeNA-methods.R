@@ -16,18 +16,13 @@
 #' # character ====
 #' sanitizeNA(c(1L, "x", "", "NA", "NULL"))
 #'
-#' # data.frame ====
-#' df <- data.frame(
+#' # DataFrame ====
+#' object <- DataFrame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
-#'     row.names = c("c", "d"),
-#'     stringsAsFactors = FALSE
+#'     row.names = c("c", "d")
 #' )
-#' sanitizeNA(df)
-#'
-#' # DataFrame ====
-#' DF <- as(df, "DataFrame")
-#' sanitizeNA(DF)
+#' sanitizeNA(object)
 NULL
 
 
