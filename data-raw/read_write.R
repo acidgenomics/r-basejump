@@ -3,15 +3,17 @@
 # Note that `readr::write_*()` functions never write rownames.
 
 library(tidyverse)
+dir <- "tests/testthat"
 
 # Coerce to tibble before writing.
 example <- as(datasets::mtcars, "tbl_df")
 stopifnot("rowname" %in% colnames(example))
 
-save(example, file = "data-raw/example.rda", compress = FALSE)
-saveRDS(example, file = "data-raw/example.rds", compress = FALSE)
+# Compression can cause some AppVeyor CI checks to fail.
+save(example, file = file.path(dir, "example.rda"), compress = FALSE)
+saveRDS(example, file = file.path(dir, "example.rds"), compress = FALSE)
 
-write_csv(mtcars, "data-raw/example.csv")
-write_csv(mtcars, "data-raw/example.csv.gz")
-write_tsv(mtcars, "data-raw/example.tsv")
-write_tsv(mtcars, "data-raw/example.tsv.gz")
+write_csv(mtcars, file.path(dir, "example.csv"))
+write_csv(mtcars, file.path(dir, "example.csv.gz"))
+write_tsv(mtcars, file.path(dir, "example.tsv"))
+write_tsv(mtcars, file.path(dir, "example.tsv.gz"))
