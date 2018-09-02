@@ -1,7 +1,3 @@
-# FIXME Add `SummarizedExperiment` explanation in documentation.
-
-
-
 #' Aggregate Columns or Rows
 #'
 #' Aggregate sample replicates (columns) or gene/transcript features (rows).
@@ -11,6 +7,12 @@
 #' aggregate features (e.g. genes or transcripts). Most commonly, the
 #' [aggregateRows()] function can be used to aggregate counts from
 #' transcript-level to gene-level.
+#'
+#' @section SummarizedExperiment:
+#'
+#' Slot an `aggregate` column into `colData()` for `aggregateCols()`, or into
+#' `rowData()` for `aggregateRows()`. The S4 method will define the `groupings`
+#' automatically and perform the aggregation.
 #'
 #' @name aggregate
 #' @family Data Functions
