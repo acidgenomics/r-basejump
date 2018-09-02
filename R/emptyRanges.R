@@ -50,7 +50,7 @@ emptyRanges <- function(
     )
     names(gr) <- names
 
-    # Create the required empty metadata columns
+    # Create the required empty metadata columns.
     if (!length(mcolsNames)) {
         ncol <- 0L
     } else {
