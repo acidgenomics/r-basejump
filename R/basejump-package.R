@@ -57,7 +57,7 @@
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL
-#' @importFrom readr read_lines read_tsv write_csv write_lines
+#' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% as.data.frame complete.cases cor mcols mcols<-
