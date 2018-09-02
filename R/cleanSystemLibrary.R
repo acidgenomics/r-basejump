@@ -1,6 +1,6 @@
+# nocov start
 # We're checking for a logical in code coverage, but Travis CI will return
 # FALSE here, and it's hard to test some of these conditions.
-# nocov start
 
 
 
@@ -19,28 +19,28 @@
 cleanSystemLibrary <- function() {
     x <- installed.packages()
 
-    # Subset information on base packages
+    # Subset information on base packages.
     base <- x[which(x[, "Priority"] == "base"), ]
 
-    # Expect a single system library
+    # Expect a single system library.
     syslib <- unique(base[, "LibPath"])
     if (!identical(length(syslib), 1L)) {
         message("Detected multiple system libraries")
         return(FALSE)
     }
 
-    # Subset packages in the system library
+    # Subset packages in the system library.
     system <- x[which(x[, "LibPath"] == syslib), ]
     if (any(is.na(system[, "Priority"]))) {
         message("Detected user-installed packages in system library")
         return(FALSE)
     }
 
-    # Check for packages built against a different point release
-    # e.g. 3.5.1
+    # Check for packages built against a different point release.
+    # (e.g. 3.5.1)
     version <- getRversion()
     stopifnot(grepl("^\\d\\.\\d\\.\\d$", version))
-    # e.g. 3.5
+    # (e.g. 3.5)
     version <- gsub("\\.\\d$", "", version)
     if (!all(grepl(
         pattern = paste0("^", version),
