@@ -655,7 +655,7 @@ assertIsGene2symbol <- function(object) {
     )
     assert_is_non_empty(object)
     assert_are_identical(
-        x = colnames(x),
+        x = colnames(object),
         y = c("geneID", "geneName")
     )
     # Require rownames for standard data frame.
