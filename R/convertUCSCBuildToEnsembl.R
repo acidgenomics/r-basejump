@@ -28,9 +28,13 @@ convertUCSCBuildToEnsembl <- function(object) {
         # Saccharomyces cerevisiae (Yeast)
         "R64-1-1" = "sacCer3"
     )
-    match <- match(object, keys)
+    match <- match(x = object, table = keys)
+    # Stop on match failure.
     if (any(is.na(match))) {
-        return(NULL)
+        stop(paste(
+            "Failed to match UCSC to Ensembl:",
+            toString(object[which(is.na(match))])
+        ))
     }
     return <- names(keys)[match]
     names(return) <- keys[match]
