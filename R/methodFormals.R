@@ -19,13 +19,13 @@ methodFormals <- function(f, signature) {
     fdef <- getGeneric(f)
     method <- selectMethod(fdef, signature)
     genFormals <- formals(fdef)
-    b <- body(method)
+    body <- body(method)
     if (
-        is(b, "{") &&
-        is(b[[2L]], "<-") &&
-        identical(b[[2L]][[2L]], as.name(".local"))
+        is(body, "{") &&
+        is(body[[2L]], "<-") &&
+        identical(body[[2L]][[2L]], as.name(".local"))
     ) {
-        local <- eval(b[[2L]][[3L]])
+        local <- eval(body[[2L]][[3L]])
         if (is.function(local)) {
             return(formals(local))
         }
