@@ -33,29 +33,7 @@ NULL
 setMethod(
     "sampleData",
     signature("SummarizedExperiment"),
-    function(object, ...) {
-        # Legacy arguments -----------------------------------------------------
-        # nocov start
-        args <- matchS4Args()
-        # clean
-        if ("clean" %in% names(args)) {
-            warning(paste(
-                "`clean` argument is deprecated for `SummarizedExperiment`.",
-                "Improved `bcbioRNASeq` method is provided in v0.2.6.",
-                sep = "\n"
-            ))
-        }
-        # return
-        if ("return" %in% names(args)) {
-            stop(paste(
-                "`return` argument is defunct.\n",
-                "`sampleData()` always returns `DataFrame` class.\n",
-                "Use a separation coercion call for `data.frame`",
-                "(e.g. `as.data.frame()`)."
-            ))
-        }
-        # nocov end
-
+    function(object) {
         validObject(object)
         # Require `sampleName` column to be defined.
         assert_is_subset(
