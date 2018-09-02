@@ -1,13 +1,12 @@
 # Read/write file examples
-# Last updated 2018-08-27
-# Note that `readr::write_*()` functions never write rownames
+# Last updated 2018-09-02
+# Note that `readr::write_*()` functions never write rownames.
 
 library(tidyverse)
 
-# Coerce to tibble before writing
-example <- datasets::mtcars %>%
-    rownames_to_column() %>%
-    as_tibble()
+# Coerce to tibble before writing.
+example <- as(datasets::mtcars, "tbl_df")
+stopifnot("rowname" %in% colnames(example))
 
 save(example, file = "data-raw/example.rda", compress = FALSE)
 saveRDS(example, file = "data-raw/example.rds", compress = FALSE)

@@ -1,5 +1,5 @@
-# Make Names Sanitization Examples
-# Last updated 2018-08-27
+# Make names sanitization test data
+# Last updated 2018-09-02
 
 character <- c(
     "hello world",
