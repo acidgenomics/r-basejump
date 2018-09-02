@@ -52,6 +52,14 @@ aggregate features (e.g. genes or transcripts). Most commonly, the
 \code{\link[=aggregateRows]{aggregateRows()}} function can be used to aggregate counts from
 transcript-level to gene-level.
 }
+\section{SummarizedExperiment}{
+
+
+Slot an \code{aggregate} column into \code{colData()} for \code{aggregateCols()}, or into
+\code{rowData()} for \code{aggregateRows()}. The S4 method will define the \code{groupings}
+automatically and perform the aggregation.
+}
+
 \examples{
 counts <- DataFrame(
     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
