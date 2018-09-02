@@ -131,17 +131,6 @@ setGeneric(
 
 
 
-#' @rdname fixNA
-#' @export
-setGeneric(
-    name = "fixNA",
-    def = function(object, ...) {
-        standardGeneric("fixNA")
-    }
-)
-
-
-
 #' @rdname flatFiles
 #' @export
 setGeneric(
@@ -335,6 +324,17 @@ setGeneric(
     name = "sampleData<-",
     def = function(object, ..., value) {
         standardGeneric("sampleData<-")
+    }
+)
+
+
+
+#' @rdname sanitizeNA
+#' @export
+setGeneric(
+    name = "sanitizeNA",
+    def = function(object, ...) {
+        standardGeneric("sanitizeNA")
     }
 )
 
