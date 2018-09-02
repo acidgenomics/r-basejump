@@ -9,12 +9,12 @@
 \title{Make Genomic Ranges}
 \usage{
 makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
-  build = NULL, release = NULL, metadata = FALSE, ...)
+  build = NULL, release = NULL, metadata = FALSE)
 
 makeGRangesFromGFF(file, format = c("genes", "transcripts"))
 
 annotable(organism, format = c("genes", "transcripts"), build = NULL,
-  release = NULL, ...)
+  release = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -29,8 +29,6 @@ set \code{NULL}, defaults to the most recent release available.}
 
 \item{metadata}{\code{boolean}. Include the AnnotationHub metadata inside a
 \code{list}.}
-
-\item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
 }

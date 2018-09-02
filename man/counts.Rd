@@ -23,8 +23,7 @@ x <- counts(rse_dds)
 summary(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}},
+Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{metrics}},

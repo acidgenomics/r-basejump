@@ -42,7 +42,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
+  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}

@@ -7,7 +7,7 @@
 \alias{makeTx2geneFromGTF}
 \title{Make Transcript-to-Gene Mappings}
 \usage{
-makeTx2geneFromEnsembl(organism, build = NULL, release = NULL, ...)
+makeTx2geneFromEnsembl(organism, build = NULL, release = NULL)
 
 makeTx2geneFromGFF(file)
 }
@@ -19,8 +19,6 @@ makeTx2geneFromGFF(file)
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
-
-\item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
 }

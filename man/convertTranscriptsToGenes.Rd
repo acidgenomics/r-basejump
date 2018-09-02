@@ -15,17 +15,22 @@
 convertTranscriptsToGenes(object, ...)
 
 \S4method{convertTranscriptsToGenes}{character}(object, tx2gene = NULL,
-  ...)
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{matrix}(object, ...)
+\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{data.frame}(object, ...)
+\S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{DataFrame}(object, ...)
+\S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, ...)
+\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, ...)
+\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
+  organism = NULL, build = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}
@@ -35,6 +40,14 @@ convertTranscriptsToGenes(object, ...)
 \item{tx2gene}{\code{data.frame} or \code{NULL}. Transcript-to-gene mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
 automatically.}
+
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
+
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 Same class as original object.
@@ -45,7 +58,8 @@ Convert Ensembl Transcripts to Genes
 \examples{
 # character ====
 x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
-convertTranscriptsToGenes(x)
+y <- convertTranscriptsToGenes(x)
+print(y)
 
 # matrix ====
 mat <- matrix(

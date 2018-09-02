@@ -20,6 +20,8 @@
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
 \alias{assertIsURL}
+\alias{aggregateFeatures}
+\alias{aggregateReplicates}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -57,6 +59,10 @@ midnightTheme(...)
 paperwhiteTheme(...)
 
 assertIsURL(...)
+
+aggregateFeatures(...)
+
+aggregateReplicates(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

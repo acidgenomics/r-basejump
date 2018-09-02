@@ -20,17 +20,22 @@ convertGenesToSymbols(object, ...)
 convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  ...)
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{matrix}(object, ...)
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{data.frame}(object, ...)
+\S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{DataFrame}(object, ...)
+\S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, ...)
+\S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, ...)
+\S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
@@ -44,6 +49,14 @@ convertSymbolsToGenes(object, ...)
 \item{gene2symbol}{\code{data.frame} or \code{NULL}. Gene-to-symbol mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
 automatically.}
+
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
+
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 Same class as original object.
