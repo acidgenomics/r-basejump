@@ -5,7 +5,9 @@
 \alias{geometricMean}
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
+\alias{geometricMean,sparseMatrix-method}
 \alias{geometricMean,data.frame-method}
+\alias{geometricMean,DataFrame-method}
 \title{Geometric Mean}
 \usage{
 geometricMean(object, ...)
@@ -13,9 +15,13 @@ geometricMean(object, ...)
 \S4method{geometricMean}{numeric}(object, removeNA = TRUE,
   zeroPropagate = FALSE)
 
-\S4method{geometricMean}{matrix}(object)
+\S4method{geometricMean}{matrix}(object, MARGIN = 2L)
 
-\S4method{geometricMean}{data.frame}(object)
+\S4method{geometricMean}{sparseMatrix}(object, MARGIN = 2L)
+
+\S4method{geometricMean}{data.frame}(object, MARGIN = 2L)
+
+\S4method{geometricMean}{DataFrame}(object, MARGIN = 2L)
 }
 \arguments{
 \item{object}{Object.}
@@ -25,9 +31,15 @@ geometricMean(object, ...)
 \item{removeNA}{\code{boolean}. Remove \code{NA} values from calculations.}
 
 \item{zeroPropagate}{\code{boolean}. Allow propagation of zeroes.}
+
+\item{MARGIN}{a vector giving the subscripts which the function will
+    be applied over.  E.g., for a matrix \code{1} indicates rows,
+    \code{2} indicates columns, \code{c(1, 2)} indicates rows and
+    columns. Where \code{X} has named dimnames, it can be a character
+    vector selecting dimension names.}
 }
 \value{
-\code{numeric} containing geometric means.
+\code{numeric}.
 }
 \description{
 The geometric mean is the nth root of n products or e to the mean log of \code{x}.
@@ -40,18 +52,32 @@ not particularly useful if there are elements that are <= 0 and will return
 }
 \examples{
 # numeric ====
-vec <- seq(1L, 5L, 1L)
-geometricMean(vec)
+vec1 <- seq(1L, 5L, 1L)
+print(vec1)
+geometricMean(vec1)
+
 vec2 <- vec ^ 2L
+print(vec2)
 geometricMean(vec2)
 
-# data.frame ====
-df <- data.frame(vec, vec2)
-geometricMean(df)
-
 # matrix ====
-mat <- as.matrix(df)
-geometricMean(mat)
+matrix <- matrix(
+    data = c(vec1, vec2),
+    ncol = 2L,
+    byrow = FALSE
+)
+print(matrix)
+geometricMean(matrix)
+
+# sparseMatrix ====
+sparse <- as(matrix, "sparseMatrix")
+print(sparse)
+geometricMean(sparse)
+
+# DataFrame ====
+df <- as(matrix, "DataFrame")
+print(df)
+geometricMean(df)
 }
 \seealso{
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
