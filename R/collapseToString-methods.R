@@ -116,7 +116,7 @@ setMethod(
         # Coerce to tibble to perform the collapse.
         collapse <- object %>%
             as(Class = "tbl_df") %>%
-            mutate_all(funs(fixNA)) %>%
+            mutate_all(funs(sanitizeNA)) %>%
             summarize_all(funs(
                 collapseToString(
                     object = .,
