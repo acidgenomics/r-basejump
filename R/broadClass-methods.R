@@ -32,19 +32,19 @@ setMethod(
         assert_are_identical(data[["rowname"]], names(object))
         rownames <- data[["rowname"]]
 
-        # Early return if already defined
+        # Early return if already defined.
         if ("broadClass" %in% colnames(data)) {
             broad <- data[["broadClass"]]
             names(broad) <- rownames
             return(broad)
         }
 
-        # geneName (required)
+        # Gene name (required).
         assert_is_subset("geneName", colnames(data))
         geneName <- data[["geneName"]]
 
         # Biotype (optional)
-        # Prioritize transcript over gene, if present
+        # Prioritize transcript over gene, if present.
         biotypeCol <- grep(
             pattern = "biotype$",
             x = colnames(data),
@@ -61,7 +61,7 @@ setMethod(
             # nocov end
         }
 
-        # seqname (optional; aka chromosome)
+        # Seqname (optional; aka chromosome).
         seqnameCol <- grep(
             pattern = "seqname",
             x = colnames(data),
