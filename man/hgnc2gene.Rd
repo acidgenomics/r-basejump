@@ -7,7 +7,7 @@
 hgnc2gene()
 }
 \value{
-\code{data.frame}
+\code{DataFrame}.
 }
 \description{
 HGNC to Ensembl Gene ID Mappings
