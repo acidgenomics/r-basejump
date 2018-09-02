@@ -14,15 +14,18 @@
 #'
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @param assays `list`. RNA-seq count matrices, which must have matching
 #'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
 #'   (`dgCMatrix`, `dgTMatrix`) format.
-#' @param rowRanges `GRanges` or `NULL`. Metadata describing the
+#' @param rowRanges `GRanges` or `NULL`. *Recommended*. Metadata describing the
 #'   assay rows. If defined, must contain genomic ranges. Can be left `NULL` if
 #'   the genome is poorly annotated and/or ranges aren't available from
 #'   AnnotationHub.
+#' @param rowData `DataFrame` or `NULL`. *Not recommended*. Metadata describing
+#'   the assay rows, if genomic ranges are not available.
 #' @param colData `DataFrame` `data.frame`, or `matrix`. Metadata
 #'   describing the assay columns. For bulk RNA-seq, this data describes the
 #'   samples. For single-cell RNA-seq, this data describes the cells.
@@ -32,8 +35,9 @@
 #' @param spikeNames `character` or `NULL`. Vector indicating which [assay()]
 #'   rows denote spike-in sequences (e.g. ERCCs).
 #'
-#' @return `RangedSummarizedExperiment`.
-#' @export
+#' @return
+#' - Providing `rowRanges`: `RangedSummarizedExperiment`.
+#' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
@@ -97,24 +101,21 @@
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,
+    rowData = NULL,
     colData = NULL,
     metadata = NULL,
     transgeneNames = NULL,
     spikeNames = NULL
 ) {
-    # Legacy arguments ---------------------------------------------------------
-    # nocov start
-    call <- match.call()
-    if ("isSpike" %in% names(call)) {
-        warning("Use `spikeNames` instead of `isSpike`")
-        spikeNames <- call[["isSpike"]]
-    }
-    # nocov end
-
     # Assert checks ------------------------------------------------------------
     assert_is_any_of(assays, c("list", "ShallowSimpleListAssays", "SimpleList"))
     assert_is_any_of(rowRanges, c("GRanges", "NULL"))
-    assert_is_any_of(colData, c("DataFrame", "data.frame", "NULL"))
+    assert_is_any_of(rowData, c("DataFrame", "NULL"))
+    # Only allow `rowData` if `rowRanges` are `NULL`.
+    if (!is.null(rowRanges)) {
+        assert_is_null(rowData)
+    }
+    assert_is_any_of(colData, c("DataFrame", "NULL"))
     assert_is_any_of(metadata, c("list", "NULL"))
     assert_is_any_of(transgeneNames, c("character", "NULL"))
     assert_is_any_of(spikeNames, c("character", "NULL"))
@@ -141,16 +142,17 @@ makeSummarizedExperiment <- function(
         y = colnames(assay)
     )
 
-    # Row ranges ---------------------------------------------------------------
-    # Detect rows that don't contain annotations.
-    # Transgenes should contain `transgene` seqname
-    # Spike-ins should contain `spike` seqname
-    # Otherwise, unannotated genes will be given `unknown` seqname
-    setdiff <- setdiff(rownames(assay), names(rowRanges))
-
+    # Row data -----------------------------------------------------------------
+    mcolsNames <- NULL
+    # Dynamically allow input of rowRanges (recommended) or rowData (fallback).
     if (is(rowRanges, "GRanges")) {
+        # Detect rows that don't contain annotations.
+        # Transgenes should contain `transgene` seqname.
+        # Spike-ins should contain `spike` seqname.
+        # Otherwise, unannotated genes will be given `unknown` seqname.
         assert_are_intersecting_sets(rownames(assay), names(rowRanges))
         mcolsNames <- names(mcols(rowRanges))
+        setdiff <- setdiff(rownames(assay), names(rowRanges))
 
         # Transgenes
         if (length(setdiff) && length(transgeneNames)) {
@@ -175,40 +177,47 @@ makeSummarizedExperiment <- function(
             rowRanges <- suppressWarnings(c(spikeRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
+    } else if (is(rowData, "DataFrame")) {
+        warning("`rowRanges` usage is recommended over `rowData`")
+        assert_is_subset(rownames(assay), rownames(rowData))
+        rowData <- rowData[rownames(assay), , drop = FALSE]
     } else {
+        # Fallback support when working with poorly annotation genomes.
         rowRanges <- GRanges()
-        mcolsNames <- NULL
     }
 
-    # Label any unannotated genes with `unknown` seqname
-    if (length(setdiff)) {
-        warning(paste(
-            paste(
-                "Unannotated rows detected",
-                paste0("(", length(setdiff), "):")
-            ),
-            str_trunc(toString(setdiff), width = 80L),
-            sep = "\n"
-        ))
-        unknownRanges <- emptyRanges(
-            names = setdiff,
-            seqname = "unknown",
-            mcolsNames = mcolsNames
-        )
-        rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
+    # Final processing of rowRanges, if defined.
+    # Automatically slot empty ranges, if necessary, and inform the user.
+    if (is(rowRanges, "GRanges")) {
+        # Label any remaining unannotated genes with `unknown` seqname.
+        if (length(setdiff)) {
+            warning(paste(
+                paste(
+                    "Unannotated rows detected",
+                    paste0("(", length(setdiff), "):")
+                ),
+                str_trunc(toString(setdiff), width = 80L),
+                sep = "\n"
+            ))
+            unknownRanges <- emptyRanges(
+                names = setdiff,
+                seqname = "unknown",
+                mcolsNames = mcolsNames
+            )
+            rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
+        }
+        # Sort the rowRanges to match assay.
+        assert_is_subset(rownames(assay), names(rowRanges))
+        rowRanges <- rowRanges[rownames(assay)]
     }
-
-    # Sort the rowRanges to match assay
-    assert_is_subset(rownames(assay), names(rowRanges))
-    rowRanges <- rowRanges[rownames(assay)]
 
     # Column data --------------------------------------------------------------
     if (is.null(colData)) {
+        warning("`colData` is recommended")
         colData <- DataFrame(row.names = colnames(assay))
-    } else {
-        assert_are_identical(colnames(assay), rownames(colData))
-        colData <- as(colData, "DataFrame")
     }
+    assert_is_subset(colnames(assay), rownames(colData))
+    colData <- colData[colnames(assay), , drop = FALSE]
 
     # Metadata -----------------------------------------------------------------
     metadata <- as.list(metadata)
@@ -219,10 +228,16 @@ makeSummarizedExperiment <- function(
     metadata <- Filter(Negate(is.null), metadata)
 
     # Return -------------------------------------------------------------------
-    SummarizedExperiment(
+    args <- list(
         assays = assays,
         rowRanges = rowRanges,
+        rowData = rowData,
         colData = colData,
         metadata = metadata
+    )
+    args <- Filter(Negate(is.null), args)
+    do.call(
+        what = SummarizedExperiment,
+        args = args
     )
 }
