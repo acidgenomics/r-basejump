@@ -4,14 +4,10 @@
 \alias{assertIsAStringOrNULL}
 \title{Assert Is a String or NULL}
 \usage{
-assertIsAStringOrNULL(x, severity = getOption("assertive.severity",
-  "stop"))
+assertIsAStringOrNULL(object)
 }
 \arguments{
-\item{x}{Object.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object.}
 }
 \value{
 Stop on mismatch.
@@ -26,6 +22,7 @@ assertIsAStringOrNULL(NULL)
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -36,10 +33,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsAHeaderLevel}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

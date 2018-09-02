@@ -9,20 +9,20 @@
 \alias{isImplicitInteger}
 \title{Assert Is Implicit Integer}
 \usage{
-assertIsAnImplicitInteger(x)
+assertIsAnImplicitInteger(object)
 
-assertIsAnImplicitIntegerOrNULL(x)
+assertIsAnImplicitIntegerOrNULL(object)
 
-assertIsImplicitInteger(x)
+assertIsImplicitInteger(object)
 
-assertIsImplicitIntegerOrNULL(x)
+assertIsImplicitIntegerOrNULL(object)
 
-isAnImplicitInteger(x)
+isAnImplicitInteger(object)
 
-isImplicitInteger(x)
+isImplicitInteger(object)
 }
 \arguments{
-\item{x}{Object.}
+\item{object}{Object.}
 }
 \value{
 Stop on mismatch.
@@ -43,6 +43,7 @@ isImplicitInteger(list(1, 1L, 1.1, "XXX"))
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -54,10 +55,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

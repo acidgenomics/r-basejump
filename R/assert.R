@@ -815,6 +815,14 @@ isImplicitInteger <- function(object) {
 #'   "`geneID`". If `DataFrame`, must also have `rownames` set.
 #'
 #' @examples
+#' # DataFrame ====
+#' object <- DataFrame(
+#'     transcriptID = "ENST00000000233",
+#'     geneID = "ENSG00000004059"
+#'     row.names = "ENST00000000233"
+#' )
+#'
+#' # tibble ====
 #' object <- tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
