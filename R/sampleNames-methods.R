@@ -7,6 +7,7 @@
 #' @name sampleNames
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @importFrom Biobase sampleNames sampleNames<-
 #'
