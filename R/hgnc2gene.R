@@ -3,7 +3,7 @@
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
-#' @return `data.frame`
+#' @return `DataFrame`.
 #' @export
 #'
 #' @examples
@@ -24,7 +24,7 @@ hgnc2gene <- function() {
             sep = "/"
         )
     )
-    data <- as.data.frame(raw)
+    data <- as(raw, "tbl_df")
     data <- camel(data)
     data <- data[, c("hgncID", "ensemblGeneID")]
     colnames(data)[[2L]] <- "geneID"
