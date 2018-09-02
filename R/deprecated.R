@@ -359,6 +359,13 @@ assertIsDataFrameOrNULL <- function(object, ...) {
     )
 }
 
+#' @rdname deprecated
+#' @export
+fixNA <- function(...) {
+    .Deprecated("sanitizeNA")
+    sanitizeNA(...)
+}
+
 
 
 # nocov end

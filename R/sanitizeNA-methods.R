@@ -1,6 +1,10 @@
-#' Fix Character Strings Missing `NA`
+#' Sanitize `NA` Values
 #'
-#' @name fixNA
+#' Standardize empty strings (`""`), character NAs (`"NA"`), and `NULL` values
+#' inside a character vector to `NA_character_`. Other `atomic` data types are
+#' returned unmodified.
+#'
+#' @name sanitizeNA
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
@@ -10,7 +14,7 @@
 #'
 #' @examples
 #' # character ====
-#' fixNA(c(1L, "x", "", "NA", "NULL"))
+#' sanitizeNA(c(1L, "x", "", "NA", "NULL"))
 #'
 #' # data.frame ====
 #' df <- data.frame(
@@ -19,19 +23,19 @@
 #'     row.names = c("c", "d"),
 #'     stringsAsFactors = FALSE
 #' )
-#' fixNA(df)
+#' sanitizeNA(df)
 #'
 #' # DataFrame ====
 #' DF <- as(df, "DataFrame")
-#' fixNA(DF)
+#' sanitizeNA(DF)
 NULL
 
 
 
-#' @rdname fixNA
+#' @rdname sanitizeNA
 #' @export
 setMethod(
-    "fixNA",
+    "sanitizeNA",
     signature("ANY"),
     function(object) {
         object
@@ -40,10 +44,10 @@ setMethod(
 
 
 
-#' @rdname fixNA
+#' @rdname sanitizeNA
 #' @export
 setMethod(
-    "fixNA",
+    "sanitizeNA",
     signature("character"),
     function(object) {
         patterns <- c(
@@ -53,16 +57,20 @@ setMethod(
             "^NULL$",
             "^none available$"
         )
-        gsub(paste(patterns, collapse = "|"), NA, object)
+        gsub(
+            pattern = paste(patterns, collapse = "|"),
+            replacement = NA,
+            x = object
+        )
     }
 )
 
 
 
-#' @rdname fixNA
+#' @rdname sanitizeNA
 #' @export
 setMethod(
-    "fixNA",
+    "sanitizeNA",
     signature("data.frame"),
     function(object) {
         if (has_rownames(object)) {
@@ -70,7 +78,7 @@ setMethod(
         } else {
             rownames <- NULL
         }
-        object <- mutate_if(object, is.character, funs(fixNA))
+        object <- mutate_if(object, is.character, funs(sanitizeNA))
         rownames(object) <- rownames
         object
     }
@@ -78,17 +86,17 @@ setMethod(
 
 
 
-#' @rdname fixNA
+#' @rdname sanitizeNA
 #' @export
 setMethod(
-    "fixNA",
+    "sanitizeNA",
     signature("DataFrame"),
     function(object) {
         rownames <- rownames(object)
         list <- lapply(
             X = object,
             FUN = function(col) {
-                fixNA(col)
+                sanitizeNA(col)
             })
         DataFrame(list, row.names = rownames)
     }
@@ -96,12 +104,12 @@ setMethod(
 
 
 
-#' @rdname fixNA
+#' @rdname sanitizeNA
 #' @export
 setMethod(
-    "fixNA",
+    "sanitizeNA",
     signature("tbl_df"),
     function(object) {
-        mutate_if(object, is.character, funs(fixNA))
+        mutate_if(object, is.character, funs(sanitizeNA))
     }
 )
