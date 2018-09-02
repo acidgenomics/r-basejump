@@ -6,11 +6,13 @@
 \alias{matchArgs}
 \title{Functions to Access the Function Call Stack}
 \usage{
-matchCall(which = -1L)
+matchCall(S4 = FALSE, which)
 
-matchArgs(which = -1L, S4 = FALSE)
+matchArgs(S4 = FALSE, which)
 }
 \arguments{
+\item{S4}{\code{boolean}. Are we matching the call from inside an S4 method?}
+
 \item{which}{the frame number if non-negative, the number of frames
     to go back if negative.}
 }

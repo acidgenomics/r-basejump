@@ -11,6 +11,8 @@
 #'
 #' @inheritParams base::sys.call
 #'
+#' @param S4 `boolean`. Are we matching the call from inside an S4 method?
+#'
 #' @seealso
 #' - [base::sys.calls()].
 #' - [base::sys.call()].
@@ -39,16 +41,42 @@ NULL
 
 #' @rdname calls
 #' @export
-matchCall <- function(which = -1L) {
+matchCall <- function(S4 = FALSE, which) {
+    assert_is_a_bool(S4)
+
+    # If `which` isn't specified, set the parent automatically.
+    if (missing(which)) {
+        if (isTRUE(S4)) {
+            which <- -2L
+        } else {
+            which <- -1L
+        }
+    }
     assert_is_a_number(which)
+
+    # If used inside an S4 method, check the call stack first.
+    if (isTRUE(S4)) {
+        # Check for `.local() call.
+        assert_are_identical(
+            x = sys.call(which = which + 1L)[[1L]],
+            y = as.name(".local")
+        )
+        # Check for S4 generic.
+        stopifnot(isS4(get(as.character(sys.call(which = which)[[1L]]))))
+    }
+
+    # Ready to match the call.
     call <- sys.call(which = which)
     call <- standardise_call(
         call = call,
         env = pos.to.env(-1L)
     )
     assert_is_call(call)
+
+    # Check that all arguments are named before returning.
     names <- names(as.list(call)[-1L])
     assert_all_are_non_empty_character(names)
+
     call
 }
 
@@ -56,20 +84,19 @@ matchCall <- function(which = -1L) {
 
 #' @rdname calls
 #' @export
-matchArgs <- function(which = -1L, S4 = FALSE) {
-    assert_is_a_number(which)
+matchArgs <- function(S4 = FALSE, which) {
     assert_is_a_bool(S4)
-    # Need to recurse up an extra level here to capture the desired call.
-    call <- matchCall(which = which - 1L)
-    # If used inside an S4 method, check up the call stack.
-    if (isTRUE(S4)) {
-        # Check for `.local() call.
-        assert_are_identical(
-            x = sys.call(which = which - 1L)[[1L]],
-            y = as.name(".local")
-        )
-        # Check for S4 generic.
-        stopifnot(isS4(get(as.character(sys.call(which = -2L)[[1L]]))))
+    # Note that we need to recurse up an extra level here.
+    if (missing(which)) {
+        if (isTRUE(S4)) {
+            which <- -3L
+        } else {
+            which <- -2L
+        }
     }
+    call <- matchCall(S4 = S4, which = which)
+    # FIXME
+    # print(call)
+    # print(sys.calls())
     as.list(call)[-1L]
 }
