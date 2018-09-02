@@ -145,14 +145,17 @@ assertHasValidNames <- function(
 #'     "GFP+ sort"
 #' ))
 validNames <- function(x) {
-    if (!is.character(x) || length(x) == 0L) {
+    if (!is.atomic(x)) {
         return(FALSE)
     }
     vapply(
         X = x,
         FUN = function(x) {
             # Note that we're enforcing unique values here.
-            identical(x, make.names(x, unique = TRUE))
+            identical(
+                x = as.character(x),
+                y = make.names(x, unique = TRUE)
+            )
         },
         FUN.VALUE = logical(1L),
         USE.NAMES = FALSE
