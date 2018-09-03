@@ -59,9 +59,10 @@ NULL
     if (!is_tibble(data)) {
         data <- as(data, "tbl_df")
     }
-    assert_is_tbl_df(data)
 
-    # Select only the necessary columns.
+    # Prepare the minimal columns necessary.
+    assert_is_tbl_df(data)
+    assertHasRownames(data)
     cols <- c("rowname", "geneID", "geneName")
     assert_is_subset(cols, colnames(data))
 
@@ -74,11 +75,6 @@ NULL
         arrange(!!sym("geneID")) %>%
         .makeGeneNamesUnique() %>%
         as("DataFrame")
-
-    # Set the rownames from gene ID, if necessary (see below).
-    if (!hasRownames(data)) {
-        data <- data[["geneID"]]
-    }
 
     assertIsGene2symbol(data)
     data
@@ -143,6 +139,7 @@ makeGene2symbolFromGFF <- function(file) {
         }
     }
 
+    data[["rowname"]] <- data[["geneID"]]
     .makeGene2symbol(data)
 }
 
