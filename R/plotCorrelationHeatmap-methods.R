@@ -5,6 +5,7 @@
 #' @name plotCorrelationHeatmap
 #' @family Plot Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams plotHeatmap
 #' @param method `string`. Correlation coefficient (or covariance) method to be
