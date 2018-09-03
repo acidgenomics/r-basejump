@@ -5,6 +5,7 @@
 \alias{sanitizeNA}
 \alias{sanitizeNA,atomic-method}
 \alias{sanitizeNA,character-method}
+\alias{sanitizeNA,factor-method}
 \alias{sanitizeNA,data.frame-method}
 \alias{sanitizeNA,DataFrame-method}
 \alias{sanitizeNA,tbl_df-method}
@@ -15,6 +16,8 @@ sanitizeNA(object, ...)
 \S4method{sanitizeNA}{atomic}(object)
 
 \S4method{sanitizeNA}{character}(object)
+
+\S4method{sanitizeNA}{factor}(object)
 
 \S4method{sanitizeNA}{data.frame}(object)
 
@@ -37,7 +40,9 @@ returned unmodified.
 }
 \examples{
 # character ====
-sanitizeNA(c(1L, "x", "", "NA", "NULL"))
+object <- as.character(c(1L, "x", "", "NA", "NULL"))
+print(object)
+sanitizeNA(object)
 
 # DataFrame ====
 object <- DataFrame(

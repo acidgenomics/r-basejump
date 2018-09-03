@@ -14,7 +14,9 @@
 #'
 #' @examples
 #' # character ====
-#' sanitizeNA(c(1L, "x", "", "NA", "NULL"))
+#' object <- as.character(c(1L, "x", "", "NA", "NULL"))
+#' print(object)
+#' sanitizeNA(object)
 #'
 #' # DataFrame ====
 #' object <- DataFrame(
@@ -39,6 +41,7 @@ setMethod(
 
 
 
+# Note that names will be kept here after the gsub call.
 #' @rdname sanitizeNA
 #' @export
 setMethod(
@@ -57,6 +60,21 @@ setMethod(
             replacement = NA,
             x = object
         )
+    }
+)
+
+
+
+#' @rdname sanitizeNA
+#' @export
+setMethod(
+    f = "sanitizeNA",
+    signature = signature("factor"),
+    definition = function(object) {
+        x <- sanitizeNA(as.character(object))
+        levels(x) <- unique(sanitizeNA(levels(object)))
+        names(x) <- names(object)
+        x
     }
 )
 
