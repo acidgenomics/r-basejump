@@ -26,14 +26,14 @@ class(example)
 ls(example)
 }
 \seealso{
-Other Developer Functions: \code{\link{calls}},
-  \code{\link{cleanSystemLibrary}},
+Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{dots}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}}, \code{\link{printString}},
+  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
+  \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
