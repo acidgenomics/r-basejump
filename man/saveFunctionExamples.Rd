@@ -30,7 +30,7 @@ saveFunctionExamples(
     dir = "XXX"
 )
 
-# Cleanup
+# Clean up
 unlink("XXX", recursive = TRUE)
 }
 \seealso{
