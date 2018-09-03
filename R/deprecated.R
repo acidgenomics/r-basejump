@@ -28,56 +28,6 @@ NULL
 
 
 
-# Legacy =======================================================================
-#' @rdname defunct
-#' @export
-summarizeRows <- function(...) {
-    .Defunct("collapseToString")
-}
-
-#' @rdname defunct
-#' @export
-wash <- function(...) {
-    .Defunct()
-}
-
-
-
-# v0.0.23 ======================================================================
-#' @rdname defunct
-#' @export
-packageSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-#' @rdname defunct
-#' @export
-prepareSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-# v0.0.24 ======================================================================
-#' @rdname defunct
-#' @export
-metadataTable <- function(...) {
-    .Defunct("bcbioBase::sampleData")
-}
-
-
-
-# v0.0.25 ======================================================================
-#' @rdname defunct
-#' @export
-pct <- function(...) {
-    .Defunct("scales::percent")
-}
-
-
-
 # v0.1.6 ======================================================================
 #' @rdname defunct
 #' @export
