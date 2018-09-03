@@ -43,7 +43,9 @@ saveFunctionExamples <- function(
     # If no function is specified, save everything.
     if (is.null(f)) {
         f <- names(db)
-        message(paste("Saving", length(f), "functions from", package))
+        message(paste(
+            "Saving", length(f), "functions from", package, "to", dir
+        ))
     }
 
     # Check that the requiested function(s) are valid.
@@ -63,8 +65,9 @@ saveFunctionExamples <- function(
                 kind = "examples"
             )
 
+            # Early return if there are no examples for that Rd file.
             if (!length(x)) {
-                print("Early return")
+                message(paste("Skipping", f))
                 return(invisible())
             }
 
@@ -80,7 +83,7 @@ saveFunctionExamples <- function(
 
             # Save to an R script.
             path <- file.path(dir, paste0(f, ".R"))
-            message(paste("Saving examples to", path))
+            message(paste("Saving", f))
             write_lines(x = x, path = path)
             path
         },
