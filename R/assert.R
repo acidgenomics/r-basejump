@@ -388,7 +388,9 @@ assertHasRownames <- function(object) {
 #' @rdname assertHasRownames
 #' @export
 hasRownames <- function(object) {
-    if (is.data.frame(object)) {
+    if (is(object, "tbl_df")) {
+        "rowname" %in% colnames(object)
+    } else if (is.data.frame(object)) {
         tibble::has_rownames(object)
     } else {
         assertive.properties::has_rownames(object)
