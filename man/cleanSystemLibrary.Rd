@@ -25,6 +25,7 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
+  \code{\link{saveFunctionExamples}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

@@ -34,6 +34,7 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}}, \code{\link{printString}},
+  \code{\link{saveFunctionExamples}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
