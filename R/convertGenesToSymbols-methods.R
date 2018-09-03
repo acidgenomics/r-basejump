@@ -11,7 +11,6 @@
 #' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
-#' @param ... Passthrough to [makeGene2symbolFromEnsembl()].
 #'
 #' @return Same class as original object.
 #'
