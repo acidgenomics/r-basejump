@@ -28,7 +28,7 @@ sampleData(object, ...) <- value
 \item{value}{Value to assign.}
 }
 \value{
-\code{DataFrame} containing metadata that describes the samples.
+\code{DataFrame}. Metadata that describes the samples.
 }
 \description{
 Return the sample metadata. Columns are always sanitized to factor.
