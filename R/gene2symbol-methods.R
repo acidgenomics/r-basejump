@@ -26,6 +26,7 @@ setMethod(
     definition = function(object) {
         validObject(object)
         data <- rowData(object)
+        rownames(data) <- rownames(object)
         # Early return `NULL` if object doesn't contain mappings.
         if (!all(c("geneID", "geneName") %in% colnames(data))) {
             stop("Object does not contain gene-to-symbol mappings")
