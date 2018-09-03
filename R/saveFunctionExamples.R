@@ -60,7 +60,7 @@ saveFunctionExamples <- function(
         ),
         FUN = function(f, package, dir) {
             # Is there an exported function we can use instead here?
-            x <- .RdGetMetadata(db[[f]], kind = "examples")
+            x <- .parseRdMetadata(db[[f]], kind = "examples")
 
             # Early return if there are no examples for that Rd file.
             if (!length(x)) {
@@ -91,21 +91,20 @@ saveFunctionExamples <- function(
 
 
 # Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace.
-.RdGetMetadata <- function(x, kind) {
-    assert_is_all_of(x, "Rd")
-    x <- x[.RdTags(x) == sprintf("\\%s", kind)]
-    if (!length(x)) {
-        character()
-    } else {
-        # Coerce to character, not a character matrix.
-        x <- as.character(sapply(x, as.character))
-        # Strip leading and trailing whitespace, if present.
-        if (x[[1L]] == "") {
-            x <- x[-1L]
-        }
-        if (x[[length(x)]] == "") {
-            x <- x[-length(x)]
-        }
-        x
+.parseRdMetadata <- function(object, kind) {
+    assert_is_all_of(object, "Rd")
+    object <- object[.RdTags(object) == sprintf("\\%s", kind)]
+    if (!length(object)) {
+        return(character())
     }
+    # Coerce to character, not a character matrix.
+    object <- as.character(sapply(object, as.character))
+    # Strip leading and trailing whitespace, if present.
+    if (object[[1L]] == "") {
+        object <- object[-1L]
+    }
+    if (object[[length(object)]] == "") {
+        object <- object[-length(object)]
+    }
+    object
 }
