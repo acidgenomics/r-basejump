@@ -21,11 +21,11 @@ fc2lr(...)
 
 lr2fc(...)
 
-comp()
+comp(...)
 
-revcomp()
+revcomp(...)
 
-symbol2gene()
+symbol2gene(...)
 
 tx2gene(...)
 

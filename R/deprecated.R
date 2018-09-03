@@ -46,13 +46,13 @@ lr2fc <- function(...) {
 # v0.1.1 =======================================================================
 #' @rdname defunct
 #' @export
-comp <- function() {
+comp <- function(...) {
     .Defunct("Biostrings::complement")
 }
 
 #' @rdname defunct
 #' @export
-revcomp <- function() {
+revcomp <- function(...) {
     .Defunct("Biostrings::reverseComplement")
 }
 
@@ -60,8 +60,8 @@ revcomp <- function() {
 
 # v0.2.2 =======================================================================
 #' @rdname defunct
-symbol2gene <- function() {
-    .Defunct()
+symbol2gene <- function(...) {
+    .Defunct("convertSymbolsToGenes")
 }
 
 
@@ -263,6 +263,7 @@ synonyms <- function(...) {
 #' @rdname deprecated
 #' @export
 assertIsURL <- function(...) {
+    .Deprecated("assertAllAreURL")
     assertAllAreURL(...)
 }
 
