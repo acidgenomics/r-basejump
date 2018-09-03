@@ -2,15 +2,15 @@
 % Please edit documentation in R/themes.R
 \name{themes}
 \alias{themes}
-\alias{theme_midnight}
 \alias{theme_paperwhite}
+\alias{theme_midnight}
 \title{Complete Themes}
 \usage{
-theme_midnight(base_size = 14L, base_family = "", face = c("bold",
+theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "none"), grid = FALSE)
 
-theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
+theme_midnight(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "none"), grid = FALSE)
 }
@@ -39,18 +39,18 @@ will also be removed.}
 \description{
 \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
+\section{Paperwhite}{
+
+High contrast black and white theme optimized for print. Recommended for
+scientific manuscripts and website tutorials.
+}
+
 \section{Midnight}{
 
 Blackout theme that sets the plot background as black, with white text.
 Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.
-}
-
-\section{Paperwhite}{
-
-High contrast black and white theme optimized for print. Recommended for
-scientific manuscripts and website tutorials.
 }
 
 \examples{
@@ -64,8 +64,8 @@ p <- ggplot(
     )
 ) +
     geom_point()
-p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
+p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
