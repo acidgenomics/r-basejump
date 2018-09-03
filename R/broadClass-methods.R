@@ -11,10 +11,6 @@
 #' @return Named `factor` containing broad class definitions.
 #'
 #' @examples
-#' # GRanges ====
-#' x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
-#' table(x)
-#'
 #' # SummarizedExperiment ====
 #' x <- broadClass(rse_small)
 #' table(x)
