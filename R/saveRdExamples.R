@@ -44,9 +44,6 @@ saveRdExamples <- function(
     # If no function is specified, save everything.
     if (is.null(Rd)) {
         Rd <- names(db)
-        message(paste(
-            "Saving", length(Rd), "Rd examples from", package, "to", dir
-        ))
     }
 
     # Check that the requiested function(s) are valid.
@@ -87,6 +84,10 @@ saveRdExamples <- function(
     names <- names(paths)
     paths <- as.character(paths)
     names(paths) <- names
+
+    message(paste(
+        "Saved", length(paths), "Rd examples from", package, "to", dir
+    ))
 
     # Return file paths of saved R scripts.
     invisible(paths)
