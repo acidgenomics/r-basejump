@@ -1,7 +1,3 @@
-# FIXME Ensure `DataFrame` class return here, where applicable.
-
-
-
 #' Read File by Extension
 #'
 #' Supports automatic loading of common file extensions:
@@ -38,7 +34,8 @@
 #'
 #' @inheritParams general
 #'
-#' @return Varies depending on the file extension.
+#' @return Varies, depending on the file extension. Note that data frames are
+#'   returned as `DataFrame` class, when applicable.
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
