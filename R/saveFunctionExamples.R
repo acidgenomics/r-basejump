@@ -22,7 +22,7 @@
 #'     dir = "XXX"
 #' )
 #'
-#' # Cleanup
+#' # Clean up
 #' unlink("XXX", recursive = TRUE)
 saveFunctionExamples <- function(
     fun,

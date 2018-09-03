@@ -11,6 +11,9 @@
 #' [readr](http://readr.tidyverse.org/) package, built into
 #' [RStudio](https://www.rstudio.com/), now natively supports compressed files.
 #'
+#' @note This function is desired for interactive use and interprets object
+#' names using non-standard evaluation.
+#'
 #' @family Write Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
