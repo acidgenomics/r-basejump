@@ -218,8 +218,6 @@ midnightTheme <- function(...) {
     theme_midnight(...)
 }
 
-
-
 #' @rdname deprecated
 #' @export
 paperwhiteTheme <- function(...) {
@@ -241,8 +239,6 @@ setMethod(
         )
     }
 )
-
-
 
 #' @rdname defunct
 #' @export
