@@ -47,50 +47,48 @@
 #' - `SingleCellExperiment::SingleCellExperiment()`.
 #'
 #' @examples
+#' # Rows (genes)
 #' genes <- c(
-#'     "EGFP",  # transgene
-#'     "gene1",
-#'     "gene2",
-#'     "gene3"
+#'     "EGFP",  # transgene (see below)
+#'     paste0("gene", seq_len(3L))
 #' )
-#' samples <- c(
-#'     "sample1",
-#'     "sample2",
-#'     "sample3",
-#'     "sample4"
-#' )
+#' print(genes)
 #'
-#' # Example matrix
-#' mat <- matrix(
-#'     seq(1L:16L),
+#' # Columns (samples)
+#' samples <- paste0("sample", seq_len(4L))
+#' print(samples)
+#'
+#' # Counts (assay)
+#' counts <- matrix(
+#'     data = seq_len(16L),
 #'     nrow = 4L,
 #'     ncol = 4L,
 #'     dimnames = list(genes, samples)
 #' )
+#' # Primary assay must be named "counts".
+#' assays <- list(counts = counts)
+#' print(assays)
 #'
-#' # Primary assay must be named "counts"
-#' assays = list(counts = mat)
-#'
-#' # rowRanges won't contain transgenes or spike-ins
+#' # Row data (genomic ranges)
 #' rowRanges <- GRanges(
-#'     seqnames = c("1", "1", "1"),
+#'     seqnames = rep("1", times = 3L),
 #'     ranges = IRanges(
-#'         start = c(1L, 101L, 201L),
-#'         end = c(100L, 200L, 300L)
+#'         start = seq(from = 1L, to = 201L, by = 100L),
+#'         end = seq(from = 100L, to = 300L, by = 100L)
 #'     )
 #' )
-#' names(rowRanges) <- c("gene1", "gene2", "gene3")
+#' # Note that we haven't defined the transgene here.
+#' # It will be handled automatically in the function call.
+#' names(rowRanges) <- paste0("gene", seq_len(3L))
+#' print(rowRanges)
 #'
-#' colData <- data.frame(
-#'     genotype = c(
-#'         "wildtype",
-#'         "wildtype",
-#'         "knockout",
-#'         "knockout"
-#'     ),
-#'     age = c(3L, 6L, 3L, 6L),
+#' # Column data
+#' colData <- DataFrame(
+#'     genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
+#'     age = rep(c(3L, 6L), 2L),
 #'     row.names = samples
 #' )
+#' print(colData)
 #'
 #' makeSummarizedExperiment(
 #'     assays = assays,
