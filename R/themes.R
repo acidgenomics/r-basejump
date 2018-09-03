@@ -7,15 +7,15 @@
 #'
 #' [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
+#' @section Paperwhite:
+#' High contrast black and white theme optimized for print. Recommended for
+#' scientific manuscripts and website tutorials.
+#'
 #' @section Midnight:
 #' Blackout theme that sets the plot background as black, with white text.
 #' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
-#'
-#' @section Paperwhite:
-#' High contrast black and white theme optimized for print. Recommended for
-#' scientific manuscripts and website tutorials.
 #'
 #' @name themes
 #' @family Plot Functions
@@ -49,21 +49,77 @@
 #'     )
 #' ) +
 #'     geom_point()
-#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 #' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
+#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 NULL
 
 
 
 #' @rdname themes
 #' @export
-theme_midnight <- function(
+theme_paperwhite <- function(
     base_size = 14L,
     base_family = "",
     face = c("bold", "plain"),
     aspect_ratio = NULL,
     legend_position = c("right", "bottom", "none"),
     grid = FALSE
+) {
+    assert_is_a_number(base_size)
+    assert_is_a_string(base_family)
+    face <- match.arg(face)
+    assertIsANumberOrNULL(aspect_ratio)
+    legend_position <- match.arg(legend_position)
+    assert_is_a_bool(grid)
+
+    gray <- "gray95"
+
+    text <- element_text(
+        family = base_family,
+        face = face,
+        colour = "black"
+    )
+
+    if (isTRUE(grid)) {
+        axis_ticks <- element_blank()
+        panel_grid_major <- element_line(colour = gray, size = 0.5)
+        panel_border <- element_blank()
+    } else {
+        axis_ticks <- element_line(colour = "black")
+        panel_grid_major <- element_blank()
+        panel_border <- element_rect(colour = "black", fill = NA)
+    }
+
+    theme_linedraw(
+        base_size = base_size,
+        base_family = base_family
+    ) +
+        theme(
+            text = text,
+            aspect.ratio = aspect_ratio,
+            axis.line = element_blank(),
+            axis.text = text,
+            axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
+            axis.ticks = axis_ticks,
+            panel.background = element_blank(),
+            panel.border = panel_border,
+            panel.grid.major = panel_grid_major,
+            panel.grid.minor = element_blank(),
+            legend.background = element_blank(),
+            legend.position = legend_position,
+            strip.background = element_rect(colour = NA, fill = "white"),
+            strip.text = text,
+            complete = TRUE,
+            validate = TRUE
+        )
+}
+
+
+
+#' @rdname themes
+#' @export
+theme_midnight <- function(
+    # Formals are set below.
 ) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
@@ -115,64 +171,8 @@ theme_midnight <- function(
         )
 }
 
-
-
-#' @rdname themes
-#' @export
-theme_paperwhite <- function(
-    # Formals are set below.
-) {
-    assert_is_a_number(base_size)
-    assert_is_a_string(base_family)
-    face <- match.arg(face)
-    assertIsANumberOrNULL(aspect_ratio)
-    legend_position <- match.arg(legend_position)
-    assert_is_a_bool(grid)
-
-    gray <- "gray95"
-
-    text <- element_text(
-        family = base_family,
-        face = face,
-        colour = "black"
-    )
-
-    if (isTRUE(grid)) {
-        axis_ticks <- element_blank()
-        panel_grid_major <- element_line(colour = gray, size = 0.5)
-        panel_border <- element_blank()
-    } else {
-        axis_ticks <- element_line(colour = "black")
-        panel_grid_major <- element_blank()
-        panel_border <- element_rect(colour = "black", fill = NA)
-    }
-
-    theme_linedraw(
-        base_size = base_size,
-        base_family = base_family
-    ) +
-        theme(
-            text = text,
-            aspect.ratio = aspect_ratio,
-            axis.line = element_blank(),
-            axis.text = text,
-            axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5),
-            axis.ticks = axis_ticks,
-            panel.background = element_blank(),
-            panel.border = panel_border,
-            panel.grid.major = panel_grid_major,
-            panel.grid.minor = element_blank(),
-            legend.background = element_blank(),
-            legend.position = legend_position,
-            strip.background = element_rect(colour = NA, fill = "white"),
-            strip.text = text,
-            complete = TRUE,
-            validate = TRUE
-        )
-}
-
 # Set the formals.
-formals(theme_paperwhite) <- formals(theme_midnight)
+formals(theme_midnight) <- formals(theme_paperwhite)
 
 
 
