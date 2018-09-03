@@ -30,16 +30,19 @@
 #' geneIDs <- head(rownames(object))
 #' geneNames <- head(as.character(rowRanges(object)$geneName))
 #'
+#' # Row names
 #' mapGenesToRownames(object, genes = geneIDs)
 #' mapGenesToRownames(object, genes = geneNames)
 #' mapGenesToRownames(object_symbols, genes = geneIDs)
 #' mapGenesToRownames(object_symbols, genes = geneNames)
 #'
+#' # Gene identifiers
 #' mapGenesToIDs(object, genes = geneIDs)
 #' mapGenesToIDs(object, genes = geneNames)
 #' mapGenesToIDs(object_symbols, genes = geneIDs)
 #' mapGenesToIDs(object_symbols, genes = geneNames)
 #'
+#' # Gene names (symbols)
 #' mapGenesToSymbols(object, genes = geneIDs)
 #' mapGenesToSymbols(object, genes = geneNames)
 #' mapGenesToSymbols(object_symbols, genes = geneIDs)
