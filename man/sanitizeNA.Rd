@@ -3,7 +3,7 @@
 \docType{methods}
 \name{sanitizeNA}
 \alias{sanitizeNA}
-\alias{sanitizeNA,ANY-method}
+\alias{sanitizeNA,atomic-method}
 \alias{sanitizeNA,character-method}
 \alias{sanitizeNA,data.frame-method}
 \alias{sanitizeNA,DataFrame-method}
@@ -12,7 +12,7 @@
 \usage{
 sanitizeNA(object, ...)
 
-\S4method{sanitizeNA}{ANY}(object)
+\S4method{sanitizeNA}{atomic}(object)
 
 \S4method{sanitizeNA}{character}(object)
 
