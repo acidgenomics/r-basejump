@@ -9,8 +9,8 @@
 #' @inheritParams general
 #' @param url `character`. Remote URL file path(s) to R data.
 #'
-#' @return Invisible named `character` containing the local object name as the
-#'   name, and the remote URL as the value.
+#' @return Invisible named `character`. Local object name as the name, and the
+#'   remote URL as the value.
 #' @export
 #'
 #' @examples

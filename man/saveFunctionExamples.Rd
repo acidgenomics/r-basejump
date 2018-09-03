@@ -16,7 +16,7 @@ examples.}
 directory.}
 }
 \value{
-\code{character}. Invisible file path(s).
+Invisible \code{character}. File path(s).
 }
 \description{
 Parse the documentation for a function and save the working examples to an

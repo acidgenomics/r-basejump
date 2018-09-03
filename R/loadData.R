@@ -25,7 +25,7 @@
 #'   using non-standard evaluation for convenience during interactive use, and
 #'   *should not be quoted*.
 #'
-#' @return Invisible `character` containing file paths.
+#' @return Invisible `character`. File paths.
 #' @export
 #'
 #' @examples

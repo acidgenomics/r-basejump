@@ -30,7 +30,7 @@ always the convention of \code{\link[=saveData]{saveData()}}, regardless of the 
     for workspace format version 1.}
 }
 \value{
-Invisible named \code{character} vector of file paths.
+Invisible named \code{character}. File paths.
 }
 \description{
 Wrapper for \code{\link[base:save]{base::save()}} supporting quick saving of object names passed as

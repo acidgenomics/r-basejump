@@ -29,7 +29,7 @@
 #'   session, but is necessary when developing code in a devtools package
 #'   environment loaded with `devtools::load_all()`.
 #'
-#' @return Invisible `logical` indicating which files were copied.
+#' @return Invisible `logical`. Was the file copied?.
 #'
 #' @examples
 #' # RNA-seq template

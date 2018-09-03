@@ -13,7 +13,7 @@
 #'   examples.
 #' @param package `string`. Package name.
 #'
-#' @return `character`. Invisible file path(s).
+#' @return Invisible `character`. File path(s).
 #'
 #' @examples
 #' saveFunctionExamples(
