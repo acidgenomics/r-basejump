@@ -44,7 +44,7 @@ convertSymbolsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough to \code{\link[=makeGene2symbolFromEnsembl]{makeGene2symbolFromEnsembl()}}.}
+\item{...}{Additional arguments.}
 
 \item{gene2symbol}{\code{data.frame} or \code{NULL}. Gene-to-symbol mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
