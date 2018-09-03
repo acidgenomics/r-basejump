@@ -3,12 +3,6 @@
 \docType{methods}
 \name{defunct}
 \alias{defunct}
-\alias{summarizeRows}
-\alias{wash}
-\alias{packageSE}
-\alias{prepareSE}
-\alias{metadataTable}
-\alias{pct}
 \alias{fc2lr}
 \alias{lr2fc}
 \alias{comp}
@@ -23,18 +17,6 @@
 \alias{synonyms}
 \title{Defunct Functions}
 \usage{
-summarizeRows(...)
-
-wash(...)
-
-packageSE(...)
-
-prepareSE(...)
-
-metadataTable(...)
-
-pct(...)
-
 fc2lr(...)
 
 lr2fc(...)
