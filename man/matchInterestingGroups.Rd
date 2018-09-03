@@ -4,20 +4,21 @@
 \alias{matchInterestingGroups}
 \title{Match Interesting Groups}
 \usage{
-matchInterestingGroups(object, interestingGroups, ...)
+matchInterestingGroups(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{\code{SummarizedExperiment}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
-
-\item{...}{Additional arguments.}
 }
 \value{
-\code{character}.
+\code{character}. Interesting groups.
 }
 \description{
-Match Interesting Groups
+Match the user-defined interesting groups to the values slotted within a
+\code{SummarizedExperiment} object, and check that they are valid. Otherwise
+supports a missing \code{interestingGroups} argument, which will then use the
+\code{\link[=interestingGroups]{interestingGroups()}} accessor function internally.
 }
 \examples{
 matchInterestingGroups(rse_small)
