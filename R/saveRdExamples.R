@@ -16,10 +16,6 @@
 #'
 #' @return Invisible `character`. File path(s).
 #'
-#' @seealso
-#' - [parseRd()].
-#' - [tools::Rd_db()].
-#'
 #' @examples
 #' saveRdExamples(
 #'     Rd = c("do.call", "droplevels"),

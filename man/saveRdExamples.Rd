@@ -35,11 +35,6 @@ saveRdExamples(
 unlink("XXX", recursive = TRUE)
 }
 \seealso{
-\itemize{
-\item \code{\link[=parseRd]{parseRd()}}.
-\item \code{\link[tools:Rd_db]{tools::Rd_db()}}.
-}
-
 Other R Documentation Functions: \code{\link{RdTags}},
   \code{\link{parseRd}}
 }
