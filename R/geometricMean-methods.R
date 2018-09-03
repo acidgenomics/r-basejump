@@ -56,8 +56,8 @@ NULL
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("numeric"),
+    f = "geometricMean",
+    signature = signature("numeric"),
     function(
         object,
         removeNA = TRUE,
@@ -90,8 +90,8 @@ setMethod(
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("matrix"),
+    f = "geometricMean",
+    signature = signature("matrix"),
     function(object, MARGIN = 2L) {
         invisible(lapply(object, assert_is_numeric))
         apply(
@@ -107,9 +107,9 @@ setMethod(
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("sparseMatrix"),
-    getMethod("geometricMean", "matrix")
+    f = "geometricMean",
+    signature = signature("sparseMatrix"),
+    definition = getMethod("geometricMean", "matrix")
 )
 
 
@@ -117,9 +117,9 @@ setMethod(
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("data.frame"),
-    getMethod("geometricMean", "matrix")
+    f = "geometricMean",
+    signature = signature("data.frame"),
+    definition = getMethod("geometricMean", "matrix")
 )
 
 
@@ -127,7 +127,7 @@ setMethod(
 #' @rdname geometricMean
 #' @export
 setMethod(
-    "geometricMean",
-    signature("DataFrame"),
-    getMethod("geometricMean", "matrix")
+    f = "geometricMean",
+    signature = signature("DataFrame"),
+    definition = getMethod("geometricMean", "matrix")
 )

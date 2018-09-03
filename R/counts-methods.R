@@ -20,7 +20,7 @@ NULL
 #' @rdname counts
 #' @export
 setMethod(
-    "counts",
+    f = "counts",
     "SummarizedExperiment",
     function(object) {
         validObject(object)

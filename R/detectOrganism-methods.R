@@ -169,8 +169,8 @@ NULL
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("character"),
+    f = "detectOrganism",
+    signature = signature("character"),
     function(object, unique = FALSE) {
         assert_is_a_bool(unique)
         x <- vapply(
@@ -202,9 +202,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("factor"),
-    getMethod("detectOrganism", "character")
+    f = "detectOrganism",
+    signature = signature("factor"),
+    definition = getMethod("detectOrganism", "character")
 )
 
 
@@ -212,8 +212,8 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("matrix"),
+    f = "detectOrganism",
+    signature = signature("matrix"),
     function(object) {
         # Assume gene identifiers are defined in the rownames
         assertHasRownames(object)
@@ -226,9 +226,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("data.frame"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("data.frame"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -236,9 +236,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("DataFrame"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("DataFrame"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -246,9 +246,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("dgCMatrix"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -256,8 +256,8 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("tbl_df"),
+    f = "detectOrganism",
+    signature = signature("tbl_df"),
     function(object) {
         assert_has_colnames(object)
         object <- camel(object)

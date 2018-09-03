@@ -25,8 +25,8 @@ NULL
 #' @rdname metrics
 #' @export
 setMethod(
-    "metrics",
-    signature("SummarizedExperiment"),
+    f = "metrics",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         interestingGroups <- interestingGroups(object)

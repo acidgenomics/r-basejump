@@ -10,10 +10,11 @@
 #' @name sampleData
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame` containing metadata that describes the samples.
+#' @return `DataFrame`. Metadata that describes the samples.
 #'
 #' @examples
 #' # SummarizedExperiment ====
@@ -31,8 +32,8 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData",
-    signature("SummarizedExperiment"),
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         # Require `sampleName` column to be defined.
@@ -49,8 +50,8 @@ setMethod(
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData<-",
-    signature(
+    f = "sampleData<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),

@@ -283,8 +283,8 @@ paperwhiteTheme <- function(...) {
 #' @rdname defunct
 #' @export
 setMethod(
-    "broadClass",
-    signature("data.frame"),
+    f = "broadClass",
+    signature = signature("data.frame"),
     function(object) {
         .Defunct(
             msg = "`broadClass()` now requires a `GRanges` class object"
@@ -297,9 +297,9 @@ setMethod(
 #' @rdname defunct
 #' @export
 setMethod(
-    "broadClass",
-    signature("DataFrame"),
-    getMethod("broadClass", "data.frame")
+    f = "broadClass",
+    signature = signature("DataFrame"),
+    definition = getMethod("broadClass", "data.frame")
 )
 
 

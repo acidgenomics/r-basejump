@@ -1,8 +1,8 @@
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertSymbolsToGenes",
-    signature("SummarizedExperiment"),
+    f = "convertSymbolsToGenes",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         g2s <- gene2symbol(object)

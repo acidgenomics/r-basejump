@@ -26,8 +26,8 @@ NULL
 #' @rdname selectSamples
 #' @export
 setMethod(
-    "selectSamples",
-    signature("SummarizedExperiment"),
+    f = "selectSamples",
+    signature = signature("SummarizedExperiment"),
     function(object, ...) {
         validObject(object)
         args <- list(...)

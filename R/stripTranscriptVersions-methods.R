@@ -26,8 +26,8 @@ NULL
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("character"),
+    f = "stripTranscriptVersions",
+    signature = signature("character"),
     function(object) {
         # Pattern matching against Ensembl transcript IDs
         # http://www.ensembl.org/info/genome/stable_ids/index.html
@@ -45,8 +45,8 @@ setMethod(
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("matrix"),
+    f = "stripTranscriptVersions",
+    signature = signature("matrix"),
     function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
@@ -60,7 +60,7 @@ setMethod(
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("dgCMatrix"),
-    getMethod("stripTranscriptVersions", "matrix")
+    f = "stripTranscriptVersions",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("stripTranscriptVersions", "matrix")
 )

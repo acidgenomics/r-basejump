@@ -47,8 +47,8 @@ NULL
 #' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
-    "plotCorrelationHeatmap",
-    signature("SummarizedExperiment"),
+    f = "plotCorrelationHeatmap",
+    signature = signature("SummarizedExperiment"),
     function(
         object,
         interestingGroups,

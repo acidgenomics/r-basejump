@@ -22,8 +22,8 @@ NULL
 #' @rdname flatFiles
 #' @export
 setMethod(
-    "flatFiles",
-    signature("SummarizedExperiment"),
+    f = "flatFiles",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         list <- lapply(slotNames(object), function(slot) {

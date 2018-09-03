@@ -30,8 +30,8 @@ NULL
 #' @rdname sanitizeNA
 #' @export
 setMethod(
-    "sanitizeNA",
-    signature("ANY"),
+    f = "sanitizeNA",
+    signature = signature("ANY"),
     function(object) {
         object
     }
@@ -42,8 +42,8 @@ setMethod(
 #' @rdname sanitizeNA
 #' @export
 setMethod(
-    "sanitizeNA",
-    signature("character"),
+    f = "sanitizeNA",
+    signature = signature("character"),
     function(object) {
         patterns <- c(
             "^$",
@@ -65,8 +65,8 @@ setMethod(
 #' @rdname sanitizeNA
 #' @export
 setMethod(
-    "sanitizeNA",
-    signature("data.frame"),
+    f = "sanitizeNA",
+    signature = signature("data.frame"),
     function(object) {
         if (has_rownames(object)) {
             rownames <- rownames(object)
@@ -84,8 +84,8 @@ setMethod(
 #' @rdname sanitizeNA
 #' @export
 setMethod(
-    "sanitizeNA",
-    signature("DataFrame"),
+    f = "sanitizeNA",
+    signature = signature("DataFrame"),
     function(object) {
         rownames <- rownames(object)
         list <- lapply(
@@ -102,8 +102,8 @@ setMethod(
 #' @rdname sanitizeNA
 #' @export
 setMethod(
-    "sanitizeNA",
-    signature("tbl_df"),
+    f = "sanitizeNA",
+    signature = signature("tbl_df"),
     function(object) {
         mutate_if(object, is.character, funs(sanitizeNA))
     }

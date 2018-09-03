@@ -20,8 +20,8 @@ NULL
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups",
-    signature("SummarizedExperiment"),
+    f = "interestingGroups",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         value <- metadata(object)[["interestingGroups"]]
@@ -35,8 +35,8 @@ setMethod(
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups<-",
-    signature(
+    f = "interestingGroups<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "character"
     ),

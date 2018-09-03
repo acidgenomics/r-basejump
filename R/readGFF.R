@@ -9,11 +9,11 @@
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return `GRanges`.
-#' @export
 #'
 #' @seealso
 #' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
@@ -22,7 +22,6 @@
 #' @examples
 #' x <- readGFF("http://basejump.seq.cloud/example.gtf")
 #' summary(x)
-#' as.data.frame(x) %>% glimpse()
 readGFF <- function(file) {
     assert_is_a_string(file)
     assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")

@@ -37,8 +37,8 @@ NULL
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("data.frame"),
+    f = "uniteInterestingGroups",
+    signature = signature("data.frame"),
     function(object, interestingGroups) {
         interestingGroups <- .returnInterestingGroups(object, interestingGroups)
         # This approach will return numerics for `DataFrame` class, so
@@ -60,9 +60,9 @@ setMethod(
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("DataFrame"),
-    getMethod("uniteInterestingGroups", "data.frame")
+    f = "uniteInterestingGroups",
+    signature = signature("DataFrame"),
+    definition = getMethod("uniteInterestingGroups", "data.frame")
 )
 
 
@@ -71,8 +71,8 @@ setMethod(
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("tbl_df"),
+    f = "uniteInterestingGroups",
+    signature = signature("tbl_df"),
     function(object, interestingGroups) {
         interestingGroups <- .returnInterestingGroups(object, interestingGroups)
         object[["interestingGroups"]] <- NULL
