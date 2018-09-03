@@ -1,16 +1,16 @@
 #' Save Functions Examples
 #'
-#' Parse the documentation for a function and save the working examples to an
-#' R script. Note that the `fun` argument is parameterized and can handle
-#' multiple requests in a single call.
+#' Parse the documentation for a function and save the working examples to an R
+#' script. Note that the `f` argument is parameterized and can handle multiple
+#' requests in a single call.
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
-#' @param fun `character`. Function(s) from which to parse and save the working
-#'   examples.
+#' @param f `character` or `NULL`. Function(s) from which to parse and save the
+#'   working examples. If `NULL`, all functions will be saved.
 #' @param package `string`. Package name.
 #'
 #' @return Invisible `character`. File path(s).
@@ -25,30 +25,41 @@
 #' # Clean up
 #' unlink("XXX", recursive = TRUE)
 saveFunctionExamples <- function(
-    fun,
+    f,
     package,
     dir = "."
 ) {
-    assert_is_character(fun)
+    assert_is_any_of(
+        x = f,
+        classes = c("character", "NULL")
+    )
     assert_is_a_string(package)
     dir <- initializeDirectory(dir)
 
     # Get a database of the Rd files available in the requested package.
     db <- Rd_db(package)
     names(db) <- gsub("\\.Rd", "", names(db))
-    assert_is_subset(fun, names(db))
+
+    # If no function is specified, save everything.
+    if (is.null(f)) {
+        message(paste("Saving all functions from", package))
+        f <- names(db)
+    }
+
+    # Check that the requiested function(s) are valid.
+    assert_is_subset(f, names(db))
 
     # Parse the Rd files and return the working examples as a character.
     paths <- mapply(
-        fun = fun,
+        f = f,
         MoreArgs = list(
             package = package,
             dir = dir
         ),
-        FUN = function(fun, package, dir) {
+        FUN = function(f, package, dir) {
             # Is there an exported function we can use instead here?
             x <- tools:::.Rd_get_metadata(
-                x = db[[fun]],
+                x = db[[f]],
                 kind = "examples"
             )
             x <- as.character(x)
@@ -62,7 +73,7 @@ saveFunctionExamples <- function(
             }
 
             # Save to an R script.
-            path <- file.path(dir, paste0(fun, ".R"))
+            path <- file.path(dir, paste0(f, ".R"))
             message(paste("Saving examples to", path))
             write_lines(x = x, path = path)
             path

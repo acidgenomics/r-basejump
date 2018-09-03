@@ -4,11 +4,11 @@
 \alias{saveFunctionExamples}
 \title{Save Functions Examples}
 \usage{
-saveFunctionExamples(fun, package, dir = ".")
+saveFunctionExamples(f, package, dir = ".")
 }
 \arguments{
-\item{fun}{\code{character}. Function(s) from which to parse and save the working
-examples.}
+\item{f}{\code{character} or \code{NULL}. Function(s) from which to parse and save the
+working examples. If \code{NULL}, all functions will be saved.}
 
 \item{package}{\code{string}. Package name.}
 
@@ -19,9 +19,9 @@ directory.}
 Invisible \code{character}. File path(s).
 }
 \description{
-Parse the documentation for a function and save the working examples to an
-R script. Note that the \code{fun} argument is parameterized and can handle
-multiple requests in a single call.
+Parse the documentation for a function and save the working examples to an R
+script. Note that the \code{f} argument is parameterized and can handle multiple
+requests in a single call.
 }
 \examples{
 saveFunctionExamples(
