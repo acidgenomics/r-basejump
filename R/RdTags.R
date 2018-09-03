@@ -14,7 +14,7 @@
 #' RdTags(Rd)
 RdTags <- function(object) {  # nolint
     assert_is_all_of(object, "Rd")
-    tags <- sapply(Rd, attr, "Rd_tag")
+    tags <- sapply(object, attr, "Rd_tag")
     if (!length(tags)) {
         tags <- character()
     } else {
