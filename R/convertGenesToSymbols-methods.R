@@ -17,30 +17,29 @@
 #'
 #' @examples
 #' # character ====
-#' object <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' x <- convertGenesToSymbols(object)
-#' print(x)
+#' from <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+#' to <- convertGenesToSymbols(from)
+#' print(to)
 #'
 #' # matrix ====
-#' mat <- matrix(
+#' from <- matrix(
 #'     data = seq(1L:4L),
 #'     byrow = TRUE,
 #'     nrow = 2L,
 #'     ncol = 2L,
 #'     dimnames = list(
 #'         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-#'         c("sample_1", "sample_2")
+#'         c("sample1", "sample2")
 #'     )
 #' )
-#' print(mat)
-#' mat <- convertGenesToSymbols(mat)
-#' print(mat)
-#' rownames(mat)
+#' print(from)
+#' to <- convertGenesToSymbols(from)
+#' print(to)
+#' rownames(to)
 #'
 #' # SummarizedExperiment ====
 #' x <- convertGenesToSymbols(rse_small)
 #' print(x)
-#'
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL
