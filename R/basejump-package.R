@@ -31,7 +31,7 @@
 #'   assert_is_call assert_is_character assert_is_data.frame
 #'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
 #'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
-#'   is_a_number is_a_string
+#'   assert_is_tbl_df is_a_number is_a_string
 #' @importFrom BiocGenerics match
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet

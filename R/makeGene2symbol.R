@@ -49,29 +49,36 @@ NULL
 
 
 .makeGene2symbol <- function(data) {
-    assert_is_non_empty(data)
-    assert_is_subset(
-        x = c("geneID", "geneName"),
-        y = colnames(data)
+    assert_is_any_of(
+        x = data,
+        classes = c("DataFrame", "GRanges", "tbl_df")
     )
-    data <- data[, c("geneID", "geneName")]
+    assert_is_non_empty(data)
 
-    # If we're providing `DataFrame` class object (e.g. `gene2symbol()`),
-    # require rownames, then coerce to tibble for tidyverse operations.
-    if (is(data, "DataFrame")) {
-        assertHasRownames(data)
+    # Coerce to tibble if necessary.
+    if (!is_tibble(data)) {
         data <- as(data, "tbl_df")
     }
+    assert_is_tbl_df(data)
+
+    # Select only the necessary columns.
+    cols <- c("rowname", "geneID", "geneName")
+    assert_is_subset(cols, colnames(data))
 
     # Sanitize using tidyverse chain.
     data <- data %>%
-        as("tbl_df") %>%
+        select(!!!syms(cols)) %>%
         .[complete.cases(.), , drop = FALSE] %>%
         mutate_all(as.character) %>%
         unique() %>%
         arrange(!!sym("geneID")) %>%
         .makeGeneNamesUnique() %>%
         as("DataFrame")
+
+    # Set the rownames from gene ID, if necessary (see below).
+    if (!hasRownames(data)) {
+        data <- data[["geneID"]]
+    }
 
     assertIsGene2symbol(data)
     data

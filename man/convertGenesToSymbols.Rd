@@ -66,9 +66,9 @@ Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
 # character ====
-x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-y <- convertGenesToSymbols(x)
-print(y)
+object <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+x <- convertGenesToSymbols(object)
+print(x)
 
 # matrix ====
 mat <- matrix(
