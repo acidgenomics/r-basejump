@@ -818,7 +818,7 @@ isImplicitInteger <- function(object) {
 #' # DataFrame ====
 #' object <- DataFrame(
 #'     transcriptID = "ENST00000000233",
-#'     geneID = "ENSG00000004059"
+#'     geneID = "ENSG00000004059",
 #'     row.names = "ENST00000000233"
 #' )
 #'
