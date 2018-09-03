@@ -14,9 +14,9 @@ selectSamples(object, ...)
 \item{object}{Object.}
 
 \item{...}{Selection arguments that map to the column names of
-\code{\link[=sampleData]{sampleData()}}. \code{atomic} values are supported. Avoid using \code{logical} or
+\code{\link[=sampleData]{sampleData()}}. \code{character} vectors are supported. Avoid using \code{logical} or
 \code{numeric} indices (e.g. \code{\link[base:which]{base::which()}} calls) here, for improved code
-readability.}
+legibility and reproducibility.}
 }
 \value{
 \code{SummarizedExperiment}.
@@ -26,8 +26,8 @@ Sample selection utility function designed for interactive use.
 }
 \examples{
 # SummarizedExperiment ====
-x <- selectSamples(rse_dds, condition = "A")
-show(x)
+x <- selectSamples(rse_small, genotype = "wildtype")
+print(x)
 colnames(x)
 }
 \seealso{
