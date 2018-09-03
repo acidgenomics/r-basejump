@@ -31,16 +31,16 @@ Make Gene-to-Symbol Mappings
 \examples{
 # makeGene2symbolFromEnsembl ====
 x <- makeGene2symbolFromEnsembl("Homo sapiens")
-glimpse(x)
+print(x)
 
 # makeGene2symbolFromGFF ====
 # GTF
 x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
-glimpse(x)
+print(x)
 
 # GFF3
 x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
-glimpse(x)
+print(x)
 }
 \seealso{
 \link{makeGRanges}.

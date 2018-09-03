@@ -31,16 +31,16 @@ Make Transcript-to-Gene Mappings
 \examples{
 # makeTx2geneFromEnsembl ====
 x <- makeTx2geneFromEnsembl("Homo sapiens")
-glimpse(x)
+print(x)
 
 # makeTx2geneFromGFF ====
 # GTF
 x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gtf")
-glimpse(x)
+print(x)
 
 # GFF3
 x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gff3")
-glimpse(x)
+print(x)
 }
 \seealso{
 \link{makeGRanges}.

@@ -9,10 +9,10 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' interestingGroups(rse_dds)
-#' colnames(colData(rse_dds))
-#' interestingGroups(rse_dds) <- colnames(colData(rse_dds))[[1L]]
-#' interestingGroups(rse_dds)
+#' interestingGroups(rse_small)
+#' colnames(colData(rse_small))
+#' interestingGroups(rse_small) <- colnames(colData(rse_small))[[1L]]
+#' interestingGroups(rse_small)
 NULL
 
 

@@ -26,10 +26,6 @@ Named \code{factor} containing broad class definitions.
 Broad Class Definitions
 }
 \examples{
-# GRanges ====
-x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
-table(x)
-
 # SummarizedExperiment ====
 x <- broadClass(rse_small)
 table(x)

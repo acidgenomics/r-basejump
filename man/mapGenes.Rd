@@ -54,7 +54,10 @@ object_symbols <- convertGenesToSymbols(object)
 head(rownames(object_symbols))
 
 geneIDs <- head(rownames(object))
+print(geneIDs)
+
 geneNames <- head(as.character(rowRanges(object)$geneName))
+print(geneNames)
 
 # Row names
 mapGenesToRownames(object, genes = geneIDs)
