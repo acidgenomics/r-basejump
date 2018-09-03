@@ -40,7 +40,7 @@ writeCounts <- function(
     dir <- initializeDirectory(dir)
     assert_is_a_bool(gzip)
 
-    # Iterate across the dot objects and write to disk
+    # Iterate across the dot objects and write to disk.
     message(paste("Writing", toString(names), "to", dir))
 
     files <- mapply(
@@ -48,14 +48,13 @@ writeCounts <- function(
         counts <- dots,
         FUN = function(name, counts) {
             if (is.matrix(counts)) {
-                # Coercing to tibble to keep rownames intact
+                # Coercing matrix to tibble here, to keep rownames intact.
                 ext <- ".csv"
                 if (isTRUE(gzip)) {
                     ext <- paste0(ext, ".gz")
                 }
                 fileName <- paste0(name, ext)
                 filePath <- file.path(dir, fileName)
-                # See `setAs.R` file for documentation on tibble coercion method
                 write_csv(
                     x = as(counts, "tbl_df"),
                     path = filePath
@@ -68,11 +67,11 @@ writeCounts <- function(
                 if (isTRUE(gzip)) {
                     matrixFile <- gzip(matrixFile, overwrite = TRUE)
                 }
-                # Write barcodes (colnames)
+                # Write barcodes (colnames).
                 barcodes <- colnames(counts)
                 barcodesFile <- paste0(matrixFile, ".colnames")
                 write_lines(barcodes, barcodesFile)
-                # Write gene names (rownames)
+                # Write gene names (rownames).
                 genes <- rownames(counts)
                 genesFile <- paste0(matrixFile, ".rownames")
                 write_lines(genes, genesFile)
