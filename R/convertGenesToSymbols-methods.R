@@ -200,12 +200,20 @@ setMethod(
     definition = function(object) {
         validObject(object)
         g2s <- gene2symbol(object)
-        if (is.null(g2s)) {
-            stop("Object does not contain gene-to-symbol mappings")
-        }
         assert_are_identical(rownames(object), g2s[["geneID"]])
         assert_has_no_duplicates(g2s[["geneName"]])
+
+        # Update the object rownames.
         rownames(object) <- g2s[["geneName"]]
+
+        # Ensure all names get updated correctly.
+        if (is(object, "RangedSummarizedExperiment")) {
+            assert_are_identical(
+                x = rownames(object),
+                y = names(rowRanges(object))
+            )
+        }
+
         object
     }
 )
