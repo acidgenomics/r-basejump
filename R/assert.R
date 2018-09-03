@@ -377,10 +377,12 @@ assertFormalInterestingGroups <- function(object, interestingGroups) {
 #' assertHasRownames(object)
 assertHasRownames <- function(object) {
     assert_all_are_true(hasRownames(object))
-    assert_are_disjoint_sets(
-        x = rownames(object),
-        y = as.character(seq_len(nrow(object)))
-    )
+    if (!is(object, "tbl_df")) {
+        assert_are_disjoint_sets(
+            x = rownames(object),
+            y = as.character(seq_len(nrow(object)))
+        )
+    }
 }
 
 
