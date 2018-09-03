@@ -28,8 +28,7 @@ setMethod(
         data <- rowData(object)
         # Early return `NULL` if object doesn't contain mappings.
         if (!all(c("geneID", "geneName") %in% colnames(data))) {
-            warning("Object does not contain gene-to-symbol mappings")
-            return(NULL)
+            stop("Object does not contain gene-to-symbol mappings")
         }
         .makeGene2symbol(data)
     }
