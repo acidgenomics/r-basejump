@@ -8,10 +8,6 @@
 
 \item{value}{Value to assign.}
 
-\item{x}{Object.}
-
-\item{y}{Secondary object.}
-
 \item{...}{Additional arguments.}
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working

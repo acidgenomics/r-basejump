@@ -6,8 +6,6 @@
 #'
 #' @param object Object.
 #' @param value Value to assign.
-#' @param x Object.
-#' @param y Secondary object.
 #' @param ... Additional arguments.
 #'
 #' @param dir `string`. Output directory. Defaults to the current working
