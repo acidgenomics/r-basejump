@@ -30,7 +30,8 @@ colData(rse) <- DataFrame(
     treatment = factor(
         rep(c("control", "treated"), each = 2L),
         levels = c("control", "treated")
-    )
+    ),
+    row.names = colnames(rse)
 )
 # Row data.
 rowRanges <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
