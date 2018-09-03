@@ -27,19 +27,18 @@
 #' Rd <- db[["nrow.Rd"]]
 #' class(Rd)
 #' summary(Rd)
+#' RdTags(Rd)
 #' examples <- parseRd(Rd, tag = "examples")
 #' print(examples)
 parseRd <- function(object, tag) {
     assert_is_all_of(object, "Rd")
     assert_is_a_string(tag)
 
-    # Get the metadata that matches the requested tag.
-    data <- object[RdTags(object) == sprintf("\\%s", tag)]
+    tags <- RdTags(object)
+    assert_is_subset(tag, tags)
 
-    # Error if there is no match to `tag` argument.
-    if (!length(data)) {
-        stop(paste("Rd does not contain", deparse(tag)))
-    }
+    # Get the metadata that matches the requested tag.
+    data <- object[tags == tag]
 
     # Coerce to character, not a character matrix.
     data <- as.character(sapply(data, as.character))

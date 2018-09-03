@@ -31,6 +31,7 @@ head(names(db))
 Rd <- db[["nrow.Rd"]]
 class(Rd)
 summary(Rd)
+RdTags(Rd)
 examples <- parseRd(Rd, tag = "examples")
 print(examples)
 }
