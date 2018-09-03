@@ -3,34 +3,36 @@
 #' @name removeNA
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return Sanitized object.
 #'
 #' @examples
+#' # atomic ====
+#' removeNA(c("hello", "world", NA))
+#' removeNA(c(1, 2, NA))
+#'
 #' # matrix ====
-#' x <- matrix(
+#' object <- matrix(
 #'     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
 #'     nrow = 3,
 #'     ncol = 3
 #' )
+#' print(object)
+#' x <- removeNA(object)
 #' print(x)
-#' removeNA(x)
 #'
-#' # data.frame ====
-#' x <- data.frame(
+#' # DataFrame ====
+#' object <- DataFrame(
 #'     a = c("A", NA, "C"),
 #'     b = c(NA, NA, NA),
-#'     c = c("B", NA, "D"),
-#'     stringsAsFactors = FALSE
+#'     c = c("B", NA, "D")
 #' )
+#' print(object)
+#' x <- removeNA(object)
 #' print(x)
-#' removeNA(x)
-#'
-#' # atomic ====
-#' removeNA(c("hello", "world", NA))
-#' removeNA(c(1, 2, NA))
 NULL
 
 
@@ -38,21 +40,9 @@ NULL
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("ANY"),
-    function(object) {
-        object  # nocov
-    }
-)
-
-
-
-#' @rdname removeNA
-#' @export
-setMethod(
-    "removeNA",
-    signature("atomic"),
-    function(object) {
+    f = "removeNA",
+    signature = signature("atomic"),
+    definition = function(object) {
         na.omit(object)
     }
 )
@@ -62,8 +52,8 @@ setMethod(
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("matrix"),
+    f = "removeNA",
+    signature = signature("matrix"),
     function(object) {
         object %>%
             # Drop rows that are all `NA`
@@ -78,9 +68,9 @@ setMethod(
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("data.frame"),
-    getMethod("removeNA", "matrix")
+    f = "removeNA",
+    signature = signature("sparseMatrix"),
+    definition = getMethod("removeNA", "matrix")
 )
 
 
@@ -88,7 +78,17 @@ setMethod(
 #' @rdname removeNA
 #' @export
 setMethod(
-    "removeNA",
-    signature("DataFrame"),
-    getMethod("removeNA", "matrix")
+    f = "removeNA",
+    signature = signature("data.frame"),
+    definition = getMethod("removeNA", "matrix")
+)
+
+
+
+#' @rdname removeNA
+#' @export
+setMethod(
+    f = "removeNA",
+    signature = signature("DataFrame"),
+    definition = getMethod("removeNA", "matrix")
 )
