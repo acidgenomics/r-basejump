@@ -1,7 +1,3 @@
-# TODO explain required and blacklisted columns more clearly.
-
-
-
 #' Sanitize Sample Data
 #'
 #' This function will standardize sample metadata.
@@ -9,7 +5,9 @@
 #' The following conventions are enforced:
 #'
 #' - Column names will be converted to camel case, using [camel()].
-#' - Data must contain a `sampleName` column.
+#' - Required columns: `sampleName`.
+#' - Blacklisted columns: `interestingGroups`, `sampleID`. These columns are
+#'   generated internally, and should not be user defined.
 #' - All columns will be coerced to factor.
 #' - Non-atomic columns will be dropped.
 #'
