@@ -32,11 +32,13 @@ setMethod(
     signature = signature("data.frame"),
     definition = function(object, interestingGroups) {
         interestingGroups <- matchInterestingGroups(object, interestingGroups)
+        # Subset to get only the columns of interest.
+        data <- object[, interestingGroups, drop = FALSE]
+        assert_is_non_empty(data)
         # This approach will return numerics for `DataFrame` class, so
         # coercing columns to data.frame.
-        data <- as.data.frame(object[, interestingGroups, drop = FALSE])
         value <- apply(
-            X = data,
+            X = as.data.frame(data),
             MARGIN = 1L,
             FUN = paste,
             collapse = ":"
