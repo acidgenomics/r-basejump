@@ -31,7 +31,7 @@ NULL
 #' @export
 setMethod(
     f = "sanitizeNA",
-    signature = signature("ANY"),
+    signature = signature("atomic"),
     definition = function(object) {
         object
     }

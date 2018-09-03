@@ -47,7 +47,7 @@ sanitizeRowData <- function(object) {
         FUN = is.atomic,
         FUN.VALUE = logical(1L)
     )
-    data <- data[, keep]
+    data <- data[, keep, drop = FALSE]
     assert_is_non_empty(data)
 
     data
