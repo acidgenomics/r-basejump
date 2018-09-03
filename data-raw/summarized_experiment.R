@@ -1,5 +1,5 @@
 # SummarizedExperiment example objects, using simulated DESeq2 counts
-# Last updated 2018-09-02
+# Last updated 2018-09-03
 
 library(DESeq2)
 
@@ -20,8 +20,18 @@ saveData(dds_small, dir = "tests/testthat", compress = "xz")
 rse <- as(dds, "RangedSummarizedExperiment")
 stopifnot(object.size(rse) < mb)
 # Column data.
-# Add required `sampleName` column.
-rse$sampleName <- as.factor(colnames(rse))
+# Note that `sampleName` column is required for `sampleData()` return.
+colData(rse) <- DataFrame(
+    sampleName = as.factor(colnames(rse)),
+    genotype = factor(
+        rep(c("wildtype", "knockout"), times = 2L),
+        levels = c("wildtype", "knockout")
+    ),
+    treatment = factor(
+        rep(c("control", "treated"), each = 2L),
+        levels = c("control", "treated")
+    )
+)
 # Row data.
 rowRanges <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
 # Subset to match the number of rows in the example.
