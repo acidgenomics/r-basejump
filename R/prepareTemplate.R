@@ -18,6 +18,7 @@
 #'
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
@@ -29,7 +30,6 @@
 #'   environment loaded with `devtools::load_all()`.
 #'
 #' @return Invisible `logical` indicating which files were copied.
-#' @export
 #'
 #' @examples
 #' # RNA-seq template
@@ -47,16 +47,14 @@ prepareTemplate <- function(
     sourceDir = NULL,
     ...
 ) {
-    # Assert checks
     assert_is_a_string(package)
-    # Package must be installed.
     assert_is_subset(package, rownames(installed.packages()))
     assertIsAStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
-    # Shared file source directory
-    # Keeping the `sourceDir` argument because devtools attempts to intercept
-    # `system.file`, and this can cause path issues during development.
+    # Shared file source directory. Keeping the `sourceDir` argument because
+    # devtools attempts to intercept `system.file`, and this can cause path
+    # issues during development.
     if (is.null(sourceDir)) {
         sourceDir <- system.file(
             "rmarkdown/shared",
