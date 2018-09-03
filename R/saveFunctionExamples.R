@@ -42,8 +42,8 @@ saveFunctionExamples <- function(
 
     # If no function is specified, save everything.
     if (is.null(f)) {
-        message(paste("Saving all functions from", package))
         f <- names(db)
+        message(paste("Saving", length(f), "functions from", package))
     }
 
     # Check that the requiested function(s) are valid.
@@ -62,6 +62,12 @@ saveFunctionExamples <- function(
                 x = db[[f]],
                 kind = "examples"
             )
+
+            if (!length(x)) {
+                print("Early return")
+                return(invisible())
+            }
+
             x <- as.character(x)
 
             # Strip leading and trailing whitespace, if present.
