@@ -9,15 +9,16 @@
 #'
 #' @inheritParams general
 #'
-#' @return Object containing transcript identifiers without version numbers.
+#' @return Modified object, containing transcript identifiers without version
+#'   numbers.
 #'
 #' @examples
-#' # Ensembl
+#' # Ensembl (modify; contains versions)
 #' stripTranscriptVersions("ENSMUST00000000001.1")
 #' stripTranscriptVersions("ENSMUST00000000001-1")
 #' stripTranscriptVersions("ENSMUST00000000001_1")
 #'
-#' # WormBase (unmodified)
+#' # WormBase (keep; doesn't contain versions)
 #'stripTranscriptVersions("cTel79B.1")
 NULL
 
