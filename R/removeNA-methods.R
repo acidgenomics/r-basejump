@@ -54,7 +54,7 @@ setMethod(
 setMethod(
     f = "removeNA",
     signature = signature("matrix"),
-    function(object) {
+    definition = function(object) {
         object %>%
             # Drop rows that are all `NA`
             .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%

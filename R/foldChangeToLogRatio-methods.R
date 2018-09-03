@@ -29,7 +29,7 @@ NULL
 setMethod(
     f = "foldChangeToLogRatio",
     signature = signature("numeric"),
-    function(object, base = 2L) {
+    definition = function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)
         assert_all_are_positive(base)

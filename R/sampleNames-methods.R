@@ -37,7 +37,7 @@ NULL
 setMethod(
     f = "sampleNames",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
@@ -58,7 +58,7 @@ setMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    function(object, value) {
+    definition = function(object, value) {
         assert_has_names(value)
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.

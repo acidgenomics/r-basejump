@@ -258,7 +258,7 @@ makeNames <- function(names, unique = FALSE) {
 setMethod(
     f = "camel",
     signature = signature("atomic"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             .camel.names(object, strict = strict)
         } else {
@@ -274,7 +274,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("atomic"),
-    function(object) {
+    definition = function(object) {
         if (!is.null(names(object))) {
             .dotted.names(object)
         } else {
@@ -290,7 +290,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("atomic"),
-    function(object) {
+    definition = function(object) {
         if (!is.null(names(object))) {
             .snake.names(object)
         } else {
@@ -306,7 +306,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("atomic"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             .upperCamel.names(object, strict = strict)
         } else {
@@ -323,7 +323,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("character"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .camel(names(object), strict = strict)
         } else {
@@ -342,7 +342,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("character"),
-    function(object) {
+    definition = function(object) {
         if (!is.null(names(object))) {
             names <- .dotted(names(object))
         } else {
@@ -361,7 +361,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("character"),
-    function(object) {
+    definition = function(object) {
         if (!is.null(names(object))) {
             names <- .snake(names(object))
         } else {
@@ -380,7 +380,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("character"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .upperCamel(names(object), strict = strict)
         } else {
@@ -400,7 +400,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("factor"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -418,7 +418,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("factor"),
-    function(object) {
+    definition = function(object) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -436,7 +436,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("factor"),
-    function(object) {
+    definition = function(object) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -454,7 +454,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("factor"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -671,7 +671,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("GRanges"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         colnames(mcols(object)) <- camel(
             object = colnames(mcols(object)),
             strict = strict
@@ -687,7 +687,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("GRanges"),
-    function(object) {
+    definition = function(object) {
         colnames(mcols(object)) <- dotted(
             object = colnames(mcols(object))
         )
@@ -702,7 +702,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("GRanges"),
-    function(object) {
+    definition = function(object) {
         colnames(mcols(object)) <- snake(
             object = colnames(mcols(object))
         )
@@ -717,7 +717,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("GRanges"),
-    function(object, strict = FALSE) {
+    definition = function(object, strict = FALSE) {
         colnames(mcols(object)) <- upperCamel(
             object = colnames(mcols(object)),
             strict = strict
@@ -898,7 +898,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("ANY"),
-    function(
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE,
@@ -924,7 +924,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("ANY"),
-    function(
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE
@@ -948,7 +948,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("ANY"),
-    function(
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE
@@ -972,7 +972,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("ANY"),
-    function(
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE,

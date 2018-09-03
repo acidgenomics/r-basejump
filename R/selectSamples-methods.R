@@ -28,7 +28,7 @@ NULL
 setMethod(
     f = "selectSamples",
     signature = signature("SummarizedExperiment"),
-    function(object, ...) {
+    definition = function(object, ...) {
         validObject(object)
         args <- list(...)
         invisible(lapply(args, assert_is_atomic))

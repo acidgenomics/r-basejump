@@ -60,7 +60,7 @@ NULL
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("SummarizedExperiment"),
-    function(object, genes) {
+    definition = function(object, genes) {
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
@@ -108,7 +108,7 @@ setMethod(
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
-    function(object, genes) {
+    definition = function(object, genes) {
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
@@ -148,7 +148,7 @@ setMethod(
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    function(object, genes) {
+    definition = function(object, genes) {
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)

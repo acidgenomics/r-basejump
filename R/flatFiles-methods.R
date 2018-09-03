@@ -24,7 +24,7 @@ NULL
 setMethod(
     f = "flatFiles",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         list <- lapply(slotNames(object), function(slot) {
             if (.hasSlot(object, slot)) {

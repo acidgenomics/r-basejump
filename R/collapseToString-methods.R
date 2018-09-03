@@ -54,7 +54,7 @@ NULL
 setMethod(
     f = "collapseToString",
     signature = signature("atomic"),
-    function(
+    definition = function(
         object,
         sep = ", ",
         sort = FALSE,
@@ -103,7 +103,7 @@ setMethod(
 setMethod(
     f = "collapseToString",
     signature = signature("matrix"),
-    function(
+    definition = function(
         object,
         sep = ", ",
         sort = FALSE,

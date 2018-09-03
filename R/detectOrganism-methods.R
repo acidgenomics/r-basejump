@@ -171,7 +171,7 @@ NULL
 setMethod(
     f = "detectOrganism",
     signature = signature("character"),
-    function(object, unique = FALSE) {
+    definition = function(object, unique = FALSE) {
         assert_is_a_bool(unique)
         x <- vapply(
             X = as.character(object),
@@ -214,7 +214,7 @@ setMethod(
 setMethod(
     f = "detectOrganism",
     signature = signature("matrix"),
-    function(object) {
+    definition = function(object) {
         # Assume gene identifiers are defined in the rownames
         assertHasRownames(object)
         .returnUniqueOrganism(rownames(object))
@@ -258,7 +258,7 @@ setMethod(
 setMethod(
     f = "detectOrganism",
     signature = signature("tbl_df"),
-    function(object) {
+    definition = function(object) {
         assert_has_colnames(object)
         object <- camel(object)
         idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")

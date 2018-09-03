@@ -39,7 +39,7 @@ NULL
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
-    function(object, interestingGroups) {
+    definition = function(object, interestingGroups) {
         interestingGroups <- .returnInterestingGroups(object, interestingGroups)
         # This approach will return numerics for `DataFrame` class, so
         # coercing columns to data.frame.
@@ -73,7 +73,7 @@ setMethod(
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("tbl_df"),
-    function(object, interestingGroups) {
+    definition = function(object, interestingGroups) {
         interestingGroups <- .returnInterestingGroups(object, interestingGroups)
         object[["interestingGroups"]] <- NULL
         object <- unite(

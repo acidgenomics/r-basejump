@@ -47,7 +47,7 @@ NULL
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SummarizedExperiment"),
-    function(
+    definition = function(
         object,
         interestingGroups,
         n = 10L,

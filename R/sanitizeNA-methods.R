@@ -32,7 +32,7 @@ NULL
 setMethod(
     f = "sanitizeNA",
     signature = signature("ANY"),
-    function(object) {
+    definition = function(object) {
         object
     }
 )
@@ -44,7 +44,7 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("character"),
-    function(object) {
+    definition = function(object) {
         patterns <- c(
             "^$",
             "^\\s+$",
@@ -67,7 +67,7 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("data.frame"),
-    function(object) {
+    definition = function(object) {
         if (has_rownames(object)) {
             rownames <- rownames(object)
         } else {
@@ -86,7 +86,7 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("DataFrame"),
-    function(object) {
+    definition = function(object) {
         rownames <- rownames(object)
         list <- lapply(
             X = object,
@@ -104,7 +104,7 @@ setMethod(
 setMethod(
     f = "sanitizeNA",
     signature = signature("tbl_df"),
-    function(object) {
+    definition = function(object) {
         mutate_if(object, is.character, funs(sanitizeNA))
     }
 )

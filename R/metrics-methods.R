@@ -27,7 +27,7 @@ NULL
 setMethod(
     f = "metrics",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         interestingGroups <- interestingGroups(object)
         data <- colData(object)
