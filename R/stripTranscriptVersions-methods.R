@@ -28,7 +28,7 @@ NULL
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("character"),
-    function(object) {
+    definition = function(object) {
         # Pattern matching against Ensembl transcript IDs
         # http://www.ensembl.org/info/genome/stable_ids/index.html
         # Examples: ENST (human); ENSMUST (mouse)
@@ -47,7 +47,7 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("matrix"),
-    function(object) {
+    definition = function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
         rownames(object) <- rownames

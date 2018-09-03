@@ -34,7 +34,7 @@ NULL
 setMethod(
     f = "sampleData",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         # Require `sampleName` column to be defined.
         assert_is_subset(
@@ -55,7 +55,7 @@ setMethod(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    function(object, value) {
+    definition = function(object, value) {
         colData(object) <- value
         validObject(object)
         object

@@ -23,7 +23,7 @@ NULL
 setMethod(
     f = "gene2symbol",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         data <- rowData(object)
         # Early return `NULL` if object doesn't contain mappings.

@@ -58,7 +58,7 @@ NULL
 setMethod(
     f = "geometricMean",
     signature = signature("numeric"),
-    function(
+    definition = function(
         object,
         removeNA = TRUE,
         zeroPropagate = FALSE
@@ -92,7 +92,7 @@ setMethod(
 setMethod(
     f = "geometricMean",
     signature = signature("matrix"),
-    function(object, MARGIN = 2L) {
+    definition = function(object, MARGIN = 2L) {
         invisible(lapply(object, assert_is_numeric))
         apply(
             X = object,

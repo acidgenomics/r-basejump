@@ -285,7 +285,7 @@ paperwhiteTheme <- function(...) {
 setMethod(
     f = "broadClass",
     signature = signature("data.frame"),
-    function(object) {
+    definition = function(object) {
         .Defunct(
             msg = "`broadClass()` now requires a `GRanges` class object"
         )

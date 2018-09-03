@@ -27,7 +27,7 @@ NULL
 setMethod(
     f = "broadClass",
     signature = signature("GRanges"),
-    function(object) {
+    definition = function(object) {
         data <- as(object, "tbl_df")
         assert_are_identical(data[["rowname"]], names(object))
         rownames <- data[["rowname"]]
@@ -147,7 +147,7 @@ setMethod(
 setMethod(
     f = "broadClass",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         rowData(object)[["broadClass"]]
     }

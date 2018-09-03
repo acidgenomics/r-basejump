@@ -94,7 +94,7 @@ NULL
 setMethod(
     f = "aggregateCols",
     signature = signature("matrix"),
-    function(object, groupings) {
+    definition = function(object, groupings) {
         assert_is_factor(groupings)
         assertAllAreValidNames(as.character(groupings))
         assert_are_identical(colnames(object), names(groupings))
@@ -113,7 +113,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("sparseMatrix"),
-    function(object, groupings) {
+    definition = function(object, groupings) {
         assert_is_factor(groupings)
         assertAllAreValidNames(as.character(groupings))
         assert_are_identical(colnames(object), names(groupings))
@@ -132,7 +132,7 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         assert_is_subset("aggregate", colnames(colData(object)))
         assert_is_subset("aggregate", colnames(sampleData(object)))
@@ -188,7 +188,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("matrix"),
-    function(object, groupings) {
+    definition = function(object, groupings) {
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
         .aggregateMessage(groupings)
@@ -202,7 +202,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("sparseMatrix"),
-    function(object, groupings) {
+    definition = function(object, groupings) {
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
         .aggregateMessage(groupings)
@@ -217,7 +217,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         assert_is_subset("aggregate", colnames(rowData(object)))
         groupings <- rowData(object)[["aggregate"]]

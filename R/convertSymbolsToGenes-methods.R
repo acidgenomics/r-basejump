@@ -3,7 +3,7 @@
 setMethod(
     f = "convertSymbolsToGenes",
     signature = signature("SummarizedExperiment"),
-    function(object) {
+    definition = function(object) {
         validObject(object)
         g2s <- gene2symbol(object)
         if (is.null(g2s)) {

@@ -73,7 +73,7 @@ NULL
 setMethod(
     f = "plotHeatmap",
     signature = signature("SummarizedExperiment"),
-    function(
+    definition = function(
         object,
         interestingGroups,
         scale = c("row", "column", "none"),

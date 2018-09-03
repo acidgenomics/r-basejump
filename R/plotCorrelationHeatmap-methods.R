@@ -49,7 +49,7 @@ NULL
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SummarizedExperiment"),
-    function(
+    definition = function(
         object,
         interestingGroups,
         method = c("pearson", "spearman"),
