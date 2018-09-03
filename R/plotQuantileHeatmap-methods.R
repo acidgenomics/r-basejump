@@ -45,8 +45,8 @@ NULL
 #' @rdname plotQuantileHeatmap
 #' @export
 setMethod(
-    "plotQuantileHeatmap",
-    signature("SummarizedExperiment"),
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
     function(
         object,
         interestingGroups,

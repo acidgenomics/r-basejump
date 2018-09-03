@@ -21,8 +21,8 @@ NULL
 #' @rdname gene2symbol
 #' @export
 setMethod(
-    "gene2symbol",
-    signature("SummarizedExperiment"),
+    f = "gene2symbol",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         data <- rowData(object)

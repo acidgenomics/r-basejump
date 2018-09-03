@@ -58,8 +58,8 @@ NULL
 #' @rdname mapGenes
 #' @export
 setMethod(
-    "mapGenesToRownames",
-    signature("SummarizedExperiment"),
+    f = "mapGenesToRownames",
+    signature = signature("SummarizedExperiment"),
     function(object, genes) {
         validObject(object)
         assert_is_character(genes)
@@ -106,8 +106,8 @@ setMethod(
 #' @rdname mapGenes
 #' @export
 setMethod(
-    "mapGenesToIDs",
-    signature("SummarizedExperiment"),
+    f = "mapGenesToIDs",
+    signature = signature("SummarizedExperiment"),
     function(object, genes) {
         validObject(object)
         assert_is_character(genes)
@@ -146,8 +146,8 @@ setMethod(
 #' @rdname mapGenes
 #' @export
 setMethod(
-    "mapGenesToSymbols",
-    signature("SummarizedExperiment"),
+    f = "mapGenesToSymbols",
+    signature = signature("SummarizedExperiment"),
     function(object, genes) {
         validObject(object)
         assert_is_character(genes)

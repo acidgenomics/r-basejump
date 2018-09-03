@@ -256,8 +256,8 @@ makeNames <- function(names, unique = FALSE) {
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("atomic"),
+    f = "camel",
+    signature = signature("atomic"),
     function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             .camel.names(object, strict = strict)
@@ -272,8 +272,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("atomic"),
+    f = "dotted",
+    signature = signature("atomic"),
     function(object) {
         if (!is.null(names(object))) {
             .dotted.names(object)
@@ -288,8 +288,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("atomic"),
+    f = "snake",
+    signature = signature("atomic"),
     function(object) {
         if (!is.null(names(object))) {
             .snake.names(object)
@@ -304,8 +304,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("atomic"),
+    f = "upperCamel",
+    signature = signature("atomic"),
     function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             .upperCamel.names(object, strict = strict)
@@ -321,8 +321,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("character"),
+    f = "camel",
+    signature = signature("character"),
     function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .camel(names(object), strict = strict)
@@ -340,8 +340,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("character"),
+    f = "dotted",
+    signature = signature("character"),
     function(object) {
         if (!is.null(names(object))) {
             names <- .dotted(names(object))
@@ -359,8 +359,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("character"),
+    f = "snake",
+    signature = signature("character"),
     function(object) {
         if (!is.null(names(object))) {
             names <- .snake(names(object))
@@ -378,8 +378,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("character"),
+    f = "upperCamel",
+    signature = signature("character"),
     function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .upperCamel(names(object), strict = strict)
@@ -398,8 +398,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("factor"),
+    f = "camel",
+    signature = signature("factor"),
     function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
@@ -416,8 +416,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("factor"),
+    f = "dotted",
+    signature = signature("factor"),
     function(object) {
         names <- names(object)
         object <- object %>%
@@ -434,8 +434,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("factor"),
+    f = "snake",
+    signature = signature("factor"),
     function(object) {
         names <- names(object)
         object <- object %>%
@@ -452,8 +452,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("factor"),
+    f = "upperCamel",
+    signature = signature("factor"),
     function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
@@ -546,8 +546,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("matrix"),
+    f = "camel",
+    signature = signature("matrix"),
     .camel.matrix
 )
 
@@ -556,8 +556,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("matrix"),
+    f = "dotted",
+    signature = signature("matrix"),
     .dotted.matrix
 )
 
@@ -566,8 +566,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("matrix"),
+    f = "snake",
+    signature = signature("matrix"),
     .snake.matrix
 )
 
@@ -576,8 +576,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("matrix"),
+    f = "upperCamel",
+    signature = signature("matrix"),
     .upperCamel.matrix
 )
 
@@ -587,9 +587,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("data.frame"),
-    getMethod("camel", "matrix")
+    f = "camel",
+    signature = signature("data.frame"),
+    definition = getMethod("camel", "matrix")
 )
 
 
@@ -597,9 +597,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("data.frame"),
-    getMethod("dotted", "matrix")
+    f = "dotted",
+    signature = signature("data.frame"),
+    definition = getMethod("dotted", "matrix")
 )
 
 
@@ -607,9 +607,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("data.frame"),
-    getMethod("snake", "matrix")
+    f = "snake",
+    signature = signature("data.frame"),
+    definition = getMethod("snake", "matrix")
 )
 
 
@@ -617,9 +617,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("data.frame"),
-    getMethod("upperCamel", "matrix")
+    f = "upperCamel",
+    signature = signature("data.frame"),
+    definition = getMethod("upperCamel", "matrix")
 )
 
 
@@ -628,9 +628,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("DataFrame"),
-    getMethod("camel", "data.frame")
+    f = "camel",
+    signature = signature("DataFrame"),
+    definition = getMethod("camel", "data.frame")
 )
 
 
@@ -638,9 +638,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("DataFrame"),
-    getMethod("dotted", "data.frame")
+    f = "dotted",
+    signature = signature("DataFrame"),
+    definition = getMethod("dotted", "data.frame")
 )
 
 
@@ -648,9 +648,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("DataFrame"),
-    getMethod("snake", "data.frame")
+    f = "snake",
+    signature = signature("DataFrame"),
+    definition = getMethod("snake", "data.frame")
 )
 
 
@@ -658,9 +658,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("DataFrame"),
-    getMethod("upperCamel", "data.frame")
+    f = "upperCamel",
+    signature = signature("DataFrame"),
+    definition = getMethod("upperCamel", "data.frame")
 )
 
 
@@ -669,8 +669,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("GRanges"),
+    f = "camel",
+    signature = signature("GRanges"),
     function(object, strict = FALSE) {
         colnames(mcols(object)) <- camel(
             object = colnames(mcols(object)),
@@ -685,8 +685,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("GRanges"),
+    f = "dotted",
+    signature = signature("GRanges"),
     function(object) {
         colnames(mcols(object)) <- dotted(
             object = colnames(mcols(object))
@@ -700,8 +700,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("GRanges"),
+    f = "snake",
+    signature = signature("GRanges"),
     function(object) {
         colnames(mcols(object)) <- snake(
             object = colnames(mcols(object))
@@ -715,8 +715,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("GRanges"),
+    f = "upperCamel",
+    signature = signature("GRanges"),
     function(object, strict = FALSE) {
         colnames(mcols(object)) <- upperCamel(
             object = colnames(mcols(object)),
@@ -732,9 +732,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("CompressedGRangesList"),
-    getMethod("camel", "GRanges")
+    f = "camel",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("camel", "GRanges")
 )
 
 
@@ -742,9 +742,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("CompressedGRangesList"),
-    getMethod("dotted", "GRanges")
+    f = "dotted",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("dotted", "GRanges")
 )
 
 
@@ -752,9 +752,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("CompressedGRangesList"),
-    getMethod("snake", "GRanges")
+    f = "snake",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("snake", "GRanges")
 )
 
 
@@ -762,9 +762,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("CompressedGRangesList"),
-    getMethod("upperCamel", "GRanges")
+    f = "upperCamel",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("upperCamel", "GRanges")
 )
 
 
@@ -773,8 +773,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("list"),
+    f = "camel",
+    signature = signature("list"),
     .camel.names
 )
 
@@ -783,8 +783,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("list"),
+    f = "dotted",
+    signature = signature("list"),
     .dotted.names
 )
 
@@ -793,8 +793,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("list"),
+    f = "snake",
+    signature = signature("list"),
     .snake.names
 )
 
@@ -803,8 +803,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("list"),
+    f = "upperCamel",
+    signature = signature("list"),
     .upperCamel.names
 )
 
@@ -814,9 +814,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("List"),
-    getMethod("camel", "list")
+    f = "camel",
+    signature = signature("List"),
+    definition = getMethod("camel", "list")
 )
 
 
@@ -824,9 +824,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("List"),
-    getMethod("dotted", "list")
+    f = "dotted",
+    signature = signature("List"),
+    definition = getMethod("dotted", "list")
 )
 
 
@@ -834,9 +834,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("List"),
-    getMethod("snake", "list")
+    f = "snake",
+    signature = signature("List"),
+    definition = getMethod("snake", "list")
 )
 
 
@@ -844,9 +844,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("List"),
-    getMethod("upperCamel", "list")
+    f = "upperCamel",
+    signature = signature("List"),
+    definition = getMethod("upperCamel", "list")
 )
 
 
@@ -855,9 +855,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("SimpleList"),
-    getMethod("camel", "list")
+    f = "camel",
+    signature = signature("SimpleList"),
+    definition = getMethod("camel", "list")
 )
 
 
@@ -865,9 +865,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("SimpleList"),
-    getMethod("dotted", "list")
+    f = "dotted",
+    signature = signature("SimpleList"),
+    definition = getMethod("dotted", "list")
 )
 
 
@@ -875,9 +875,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("SimpleList"),
-    getMethod("snake", "list")
+    f = "snake",
+    signature = signature("SimpleList"),
+    definition = getMethod("snake", "list")
 )
 
 
@@ -885,9 +885,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("SimpleList"),
-    getMethod("upperCamel", "list")
+    f = "upperCamel",
+    signature = signature("SimpleList"),
+    definition = getMethod("upperCamel", "list")
 )
 
 
@@ -896,8 +896,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("ANY"),
+    f = "camel",
+    signature = signature("ANY"),
     function(
         object,
         rownames = FALSE,
@@ -922,8 +922,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("ANY"),
+    f = "dotted",
+    signature = signature("ANY"),
     function(
         object,
         rownames = FALSE,
@@ -946,8 +946,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("ANY"),
+    f = "snake",
+    signature = signature("ANY"),
     function(
         object,
         rownames = FALSE,
@@ -970,8 +970,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("ANY"),
+    f = "upperCamel",
+    signature = signature("ANY"),
     function(
         object,
         rownames = FALSE,

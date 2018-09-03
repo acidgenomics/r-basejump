@@ -123,8 +123,8 @@ formals(.convertTranscriptsToGenes.matrix) <- as.pairlist(f)
 
 #' @rdname convertTranscriptsToGenes
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("character"),
+    f = "convertTranscriptsToGenes",
+    signature = signature("character"),
     .convertTranscriptsToGenes.character
 )
 
@@ -133,8 +133,8 @@ setMethod(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("matrix"),
+    f = "convertTranscriptsToGenes",
+    signature = signature("matrix"),
     .convertTranscriptsToGenes.matrix
 )
 
@@ -143,9 +143,9 @@ setMethod(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("data.frame"),
-    getMethod("convertTranscriptsToGenes", "matrix")
+    f = "convertTranscriptsToGenes",
+    signature = signature("data.frame"),
+    definition = getMethod("convertTranscriptsToGenes", "matrix")
 )
 
 
@@ -153,9 +153,9 @@ setMethod(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("DataFrame"),
-    getMethod("convertTranscriptsToGenes", "data.frame")
+    f = "convertTranscriptsToGenes",
+    signature = signature("DataFrame"),
+    definition = getMethod("convertTranscriptsToGenes", "data.frame")
 )
 
 
@@ -163,9 +163,9 @@ setMethod(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("dgCMatrix"),
-    getMethod("convertTranscriptsToGenes", "matrix")
+    f = "convertTranscriptsToGenes",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("convertTranscriptsToGenes", "matrix")
 )
 
 
@@ -173,7 +173,7 @@ setMethod(
 #' @rdname convertTranscriptsToGenes
 #' @export
 setMethod(
-    "convertTranscriptsToGenes",
-    signature("dgTMatrix"),
-    getMethod("convertTranscriptsToGenes", "matrix")
+    f = "convertTranscriptsToGenes",
+    signature = signature("dgTMatrix"),
+    definition = getMethod("convertTranscriptsToGenes", "matrix")
 )

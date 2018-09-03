@@ -25,8 +25,8 @@ NULL
 #' @rdname broadClass
 #' @export
 setMethod(
-    "broadClass",
-    signature("GRanges"),
+    f = "broadClass",
+    signature = signature("GRanges"),
     function(object) {
         data <- as(object, "tbl_df")
         assert_are_identical(data[["rowname"]], names(object))
@@ -145,8 +145,8 @@ setMethod(
 #' @rdname broadClass
 #' @export
 setMethod(
-    "broadClass",
-    signature("SummarizedExperiment"),
+    f = "broadClass",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         rowData(object)[["broadClass"]]

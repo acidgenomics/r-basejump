@@ -1,8 +1,8 @@
 #' @rdname logRatio
 #' @export
 setMethod(
-    "logRatioToFoldChange",
-    signature("numeric"),
+    f = "logRatioToFoldChange",
+    signature = signature("numeric"),
     function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)

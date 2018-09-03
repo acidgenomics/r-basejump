@@ -35,8 +35,8 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleNames",
-    signature("SummarizedExperiment"),
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         data <- sampleData(object)
@@ -53,8 +53,8 @@ setMethod(
 #' @rdname sampleNames
 #' @export
 setMethod(
-    "sampleNames<-",
-    signature(
+    f = "sampleNames<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "character"
     ),

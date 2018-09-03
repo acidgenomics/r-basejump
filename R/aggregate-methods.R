@@ -92,8 +92,8 @@ NULL
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateCols",
-    signature("matrix"),
+    f = "aggregateCols",
+    signature = signature("matrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
         assertAllAreValidNames(as.character(groupings))
@@ -111,8 +111,8 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateCols",
-    signature("sparseMatrix"),
+    f = "aggregateCols",
+    signature = signature("sparseMatrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
         assertAllAreValidNames(as.character(groupings))
@@ -130,8 +130,8 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateCols",
-    signature("SummarizedExperiment"),
+    f = "aggregateCols",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         assert_is_subset("aggregate", colnames(colData(object)))
@@ -186,8 +186,8 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateRows",
-    signature("matrix"),
+    f = "aggregateRows",
+    signature = signature("matrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
@@ -200,8 +200,8 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateRows",
-    signature("sparseMatrix"),
+    f = "aggregateRows",
+    signature = signature("sparseMatrix"),
     function(object, groupings) {
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
@@ -215,8 +215,8 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    "aggregateRows",
-    signature("SummarizedExperiment"),
+    f = "aggregateRows",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         assert_is_subset("aggregate", colnames(rowData(object)))

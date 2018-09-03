@@ -52,8 +52,8 @@ NULL
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("atomic"),
+    f = "collapseToString",
+    signature = signature("atomic"),
     function(
         object,
         sep = ", ",
@@ -101,8 +101,8 @@ setMethod(
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("matrix"),
+    f = "collapseToString",
+    signature = signature("matrix"),
     function(
         object,
         sep = ", ",
@@ -137,9 +137,9 @@ setMethod(
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("data.frame"),
-    getMethod("collapseToString", "matrix")
+    f = "collapseToString",
+    signature = signature("data.frame"),
+    definition = getMethod("collapseToString", "matrix")
 )
 
 
@@ -147,7 +147,7 @@ setMethod(
 #' @rdname collapseToString
 #' @export
 setMethod(
-    "collapseToString",
-    signature("DataFrame"),
-    getMethod("collapseToString", "matrix")
+    f = "collapseToString",
+    signature = signature("DataFrame"),
+    definition = getMethod("collapseToString", "matrix")
 )

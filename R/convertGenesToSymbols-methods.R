@@ -135,8 +135,8 @@ formals(.convertGenesToSymbols.matrix) <- as.pairlist(f)
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("character"),
+    f = "convertGenesToSymbols",
+    signature = signature("character"),
     .convertGenesToSymbols.character
 )
 
@@ -145,8 +145,8 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("matrix"),
+    f = "convertGenesToSymbols",
+    signature = signature("matrix"),
     .convertGenesToSymbols.matrix
 )
 
@@ -155,9 +155,9 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("data.frame"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("data.frame"),
+    definition = getMethod("convertGenesToSymbols", "matrix")
 )
 
 
@@ -165,9 +165,9 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("DataFrame"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("DataFrame"),
+    definition = getMethod("convertGenesToSymbols", "matrix")
 )
 
 
@@ -175,9 +175,9 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("dgCMatrix"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("convertGenesToSymbols", "matrix")
 )
 
 
@@ -185,9 +185,9 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("dgTMatrix"),
-    getMethod("convertGenesToSymbols", "matrix")
+    f = "convertGenesToSymbols",
+    signature = signature("dgTMatrix"),
+    definition = getMethod("convertGenesToSymbols", "matrix")
 )
 
 
@@ -195,8 +195,8 @@ setMethod(
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertGenesToSymbols",
-    signature("SummarizedExperiment"),
+    f = "convertGenesToSymbols",
+    signature = signature("SummarizedExperiment"),
     function(object) {
         validObject(object)
         g2s <- gene2symbol(object)
