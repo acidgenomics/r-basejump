@@ -60,10 +60,7 @@ saveFunctionExamples <- function(
         ),
         FUN = function(f, package, dir) {
             # Is there an exported function we can use instead here?
-            x <- tools:::.Rd_get_metadata(
-                x = db[[f]],
-                kind = "examples"
-            )
+            x <- .RdGetMetadata(db[[f]], kind = "examples")
 
             # Early return if there are no examples for that Rd file.
             if (!length(x)) {
@@ -71,19 +68,10 @@ saveFunctionExamples <- function(
                 return(invisible())
             }
 
-            x <- as.character(x)
-
-            # Strip leading and trailing whitespace, if present.
-            if (x[[1L]] == "") {
-                x <- x[-1L]
-            }
-            if (x[[length(x)]] == "") {
-                x <- x[-length(x)]
-            }
-
             # Save to an R script.
             path <- file.path(dir, paste0(f, ".R"))
             message(paste("Saving", f))
+            unlink(path)
             write_lines(x = x, path = path)
             path
         },
@@ -93,4 +81,31 @@ saveFunctionExamples <- function(
 
     # Return file paths of saved R scripts.
     invisible(paths)
+}
+
+
+
+# Using the unexported `RdTags()` parser internally.
+.RdTags <- tools:::RdTags
+
+
+
+# Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace.
+.RdGetMetadata <- function(x, kind) {
+    assert_is_all_of(x, "Rd")
+    x <- x[.RdTags(x) == sprintf("\\%s", kind)]
+    if (!length(x)) {
+        character()
+    } else {
+        # Coerce to character, not a character matrix.
+        x <- as.character(sapply(x, as.character))
+        # Strip leading and trailing whitespace, if present.
+        if (x[[1L]] == "") {
+            x <- x[-1L]
+        }
+        if (x[[length(x)]] == "") {
+            x <- x[-length(x)]
+        }
+        x
+    }
 }
