@@ -41,8 +41,8 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{initializeDirectory}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}}, \code{\link{parseRd}},
-  \code{\link{printString}}, \code{\link{saveRdExamples}},
+  \code{\link{multiassignAsEnvir}},
+  \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
 }
 \concept{Developer Functions}
