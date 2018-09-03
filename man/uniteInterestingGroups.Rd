@@ -18,14 +18,14 @@ uniteInterestingGroups(object, ...)
 \S4method{uniteInterestingGroups}{tbl_df}(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object containing multiple interesting groups.}
+\item{object}{Object containing column data that defines interesting groups.}
 
 \item{...}{Additional arguments.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 }
 \value{
-Data frame containing an \code{interestingGroups} column.
+Modified object, containing an \code{interestingGroups} column.
 }
 \description{
 Create a single interesting groups column ("\code{interestingGroups}") used for
@@ -33,9 +33,12 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \examples{
-x <- sampleData(rse_small)
-y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
-y[["interestingGroups"]]
+object <- sampleData(rse_small)
+x <- uniteInterestingGroups(
+    object = object,
+    interestingGroups = c("genotype", "treatment")
+)
+print(x)
 }
 \seealso{
 Other Developer Functions: \code{\link{calls}},
