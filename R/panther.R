@@ -14,7 +14,7 @@
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
 #'
-#' @return `data.frame`.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' invisible(capture.output(
@@ -79,7 +79,7 @@ NULL
         ),
         .funs = .splitTerms
     ) %>%
-        as.data.frame() %>%
+        as("DataFrame") %>%
         set_rownames(.[["geneID"]])
 }
 
@@ -214,7 +214,9 @@ panther <- function(
             "goCC",
             "pantherClass",
             "pantherPathway"
-        )) %>%
+        ),
+        col_types = cols()
+    ) %>%
         separate(
             col = "pantherID",
             into = c("organism", "keys", "uniprotKB"),
