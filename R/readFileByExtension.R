@@ -1,3 +1,7 @@
+# FIXME Ensure `DataFrame` class return here, where applicable.
+
+
+
 #' Read File by Extension
 #'
 #' Supports automatic loading of common file extensions:
@@ -30,11 +34,11 @@
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return Varies depending on the file extension.
-#' @export
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
@@ -110,6 +114,11 @@ readFileByExtension <- function(file, ...) {
         data <- suppressMessages(readYAML(file))
     } else {
         data <- rio::import(file, ...)
+        # Return as `DataFrame` instead of `data.frame`.
+        if (is.data.frame(data)) {
+            data <- as(data, "DataFrame")
+        }
+        data
     }
 
     data
