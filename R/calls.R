@@ -41,29 +41,29 @@ NULL
 
 #' @rdname calls
 #' @export
-matchCall <- function(S4 = FALSE, which) {
+matchCall <- function(which, S4 = FALSE) {
     assert_is_a_bool(S4)
 
-    # If `which` isn't specified, set the parent automatically.
-    if (missing(which)) {
-        if (isTRUE(S4)) {
-            which <- -2L
-        } else {
-            which <- -1L
-        }
-    }
-    assert_is_a_number(which)
-
-    # If used inside an S4 method, check the call stack first.
+    # S4 mode: Traverse up the call stack and find the first `.local()`.
+    # The desired S4 call to match is one level above.
     if (isTRUE(S4)) {
+        isLocal <- sapply(
+            X = rev(sys.calls()),
+            FUN = function(x) {
+                identical(x[[1L]], as.name(".local"))
+            }
+        )
+        which <- match(x = TRUE, table = isLocal)
+        assert_is_a_number(which)
+        which <- -which
         # Check for `.local() call.
         assert_are_identical(
             x = sys.call(which = which + 1L)[[1L]],
             y = as.name(".local")
         )
-        # Check for S4 generic.
-        stopifnot(isS4(get(as.character(sys.call(which = which)[[1L]]))))
     }
+
+    assert_is_a_number(which)
 
     # Ready to match the call.
     call <- sys.call(which = which)
@@ -84,19 +84,10 @@ matchCall <- function(S4 = FALSE, which) {
 
 #' @rdname calls
 #' @export
-matchArgs <- function(S4 = FALSE, which) {
-    assert_is_a_bool(S4)
-    # Note that we need to recurse up an extra level here.
-    if (missing(which)) {
-        if (isTRUE(S4)) {
-            which <- -3L
-        } else {
-            which <- -2L
-        }
-    }
-    call <- matchCall(S4 = S4, which = which)
-    # FIXME
-    # print(call)
-    # print(sys.calls())
+matchArgs <- function(which, S4 = FALSE) {
+    call <- matchCall(
+        which = which,
+        S4 = S4
+    )
     as.list(call)[-1L]
 }
