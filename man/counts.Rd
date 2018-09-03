@@ -19,7 +19,7 @@ Counts
 }
 \examples{
 # SummarizedExperiment ====
-x <- counts(rse_dds)
+x <- counts(rse_small)
 summary(x)
 }
 \seealso{

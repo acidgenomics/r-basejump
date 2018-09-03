@@ -27,7 +27,7 @@
 #' print(vec1)
 #' geometricMean(vec1)
 #'
-#' vec2 <- vec ^ 2L
+#' vec2 <- vec1 ^ 2L
 #' print(vec2)
 #' geometricMean(vec2)
 #'

@@ -44,11 +44,11 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotHeatmap(rse_dds)
+#' plotHeatmap(rse_small)
 #'
 #' # Set legend using interesting groups, and customize colors
 #' plotHeatmap(
-#'     object = rse_dds,
+#'     object = rse_small,
 #'     interestingGroups = "condition",
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
@@ -57,13 +57,13 @@
 #' # Hexadecimal color input
 #' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-#' plotHeatmap(rse_dds, color = purple_orange)
+#' plotHeatmap(rse_small, color = purple_orange)
 #'
 #' # Default pheatmap colors
-#' plotHeatmap(rse_dds, color = NULL)
+#' plotHeatmap(rse_small, color = NULL)
 #'
 #' # Disable column clustering
-#' plotHeatmap(rse_dds, clusterCols = FALSE)
+#' plotHeatmap(rse_small, clusterCols = FALSE)
 NULL
 
 
