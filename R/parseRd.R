@@ -12,6 +12,9 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
+#' @seealso
+#' - [tools::Rd_db()].
+#'
 #' @examples
 #' db <- tools::Rd_db("base")
 #' head(names(db))
