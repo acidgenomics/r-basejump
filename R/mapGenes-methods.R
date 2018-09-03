@@ -28,7 +28,10 @@
 #' head(rownames(object_symbols))
 #'
 #' geneIDs <- head(rownames(object))
+#' print(geneIDs)
+#'
 #' geneNames <- head(as.character(rowRanges(object)$geneName))
+#' print(geneNames)
 #'
 #' # Row names
 #' mapGenesToRownames(object, genes = geneIDs)
@@ -72,15 +75,12 @@ setMethod(
 
         # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
-        if (is.null(g2s)) {
-            stop(.mapGenesError)
-        }
         assert_are_identical(rownames(g2s), rownames(object))
 
         if (any(genes %in% g2s[["geneName"]])) {
             # User passed in gene names, but the object uses gene IDs.
             assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes, severity = "warning")
+            assertAllAreUniqueGeneNames(object, genes)
             match <- match(x = genes, table = g2s[["geneName"]])
             assert_all_are_not_na(match)
             return <- rownames(g2s[match, , drop = FALSE])
@@ -115,9 +115,6 @@ setMethod(
 
         # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
-        if (is.null(g2s)) {
-            stop(.mapGenesError)
-        }
         assert_are_identical(rownames(g2s), rownames(object))
 
         if (any(genes %in% g2s[["geneID"]])) {
@@ -127,7 +124,7 @@ setMethod(
         } else if (any(genes %in% g2s[["geneName"]])) {
             # User passed in gene names.
             assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes, severity = "warning")
+            assertAllAreUniqueGeneNames(object, genes)
             match <- match(x = genes, table = g2s[["geneName"]])
             assert_all_are_not_na(match)
             return <- g2s[match, "geneID", drop = TRUE]
@@ -169,7 +166,7 @@ setMethod(
         } else if (any(genes %in% g2s[["geneName"]])) {
             # User passed in gene names.
             assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes, severity = "warning")
+            assertAllAreUniqueGeneNames(object, genes)
             return(genes)
         } else {
             stop(.mapGenesError)
