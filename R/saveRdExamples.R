@@ -82,8 +82,6 @@ saveRdExamples <- function(
         USE.NAMES = TRUE
     )
 
-    return(list)
-
     # Coerce to character and remove NULL items.
     paths <- Filter(Negate(is.null), list)
     names <- names(paths)
