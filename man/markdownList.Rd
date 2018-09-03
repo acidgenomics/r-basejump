@@ -22,7 +22,9 @@ loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 }
 \description{
-Markdown List
+Include a Markdown-formatted list, either ordered or unordered. This function
+works in any R Markdown code block. When calling from inside an \code{asis} chunk,
+set \code{asis = TRUE}.
 }
 \examples{
 groceries <- c("milk", "eggs")
