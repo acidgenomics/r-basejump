@@ -33,8 +33,8 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}}, \code{\link{printString}},
-  \code{\link{saveFunctionExamples}},
+  \code{\link{methodFormals}}, \code{\link{parseRd}},
+  \code{\link{printString}}, \code{\link{saveRdExamples}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

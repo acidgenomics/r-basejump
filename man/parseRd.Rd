@@ -20,6 +20,10 @@ examples <- parseRd(Rd, kind = "examples")
 print(examples)
 }
 \seealso{
+\itemize{
+\item \code{\link[tools:Rd_db]{tools::Rd_db()}}.
+}
+
 Other Developer Functions: \code{\link{calls}},
   \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{dots}},
@@ -29,8 +33,7 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
-  \code{\link{saveFunctionExamples}},
+  \code{\link{printString}}, \code{\link{saveRdExamples}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

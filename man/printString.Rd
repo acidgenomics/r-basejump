@@ -32,8 +32,8 @@ Other Developer Functions: \code{\link{calls}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{saveFunctionExamples}},
+  \code{\link{multiassignAsEnvir}}, \code{\link{parseRd}},
+  \code{\link{saveRdExamples}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
