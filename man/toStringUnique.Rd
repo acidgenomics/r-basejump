@@ -4,10 +4,10 @@
 \alias{toStringUnique}
 \title{Convert to a Unique Character String}
 \usage{
-toStringUnique(x)
+toStringUnique(object)
 }
 \arguments{
-\item{x}{Object.}
+\item{object}{\code{atomic}.}
 }
 \value{
 \code{string}.

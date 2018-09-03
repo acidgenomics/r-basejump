@@ -3,7 +3,7 @@
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams general
+#' @param object `atomic`.
 #'
 #' @seealso [base::toString()].
 #'
@@ -12,9 +12,9 @@
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))
-toStringUnique <- function(x) {
-    assert_is_atomic(x)
-    x %>%
+toStringUnique <- function(object) {
+    assert_is_atomic(object)
+    object %>%
         as.character() %>%
         na.omit() %>%
         unique() %>%
