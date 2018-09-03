@@ -1,13 +1,16 @@
 #' Markdown List
 #'
+#' Include a Markdown-formatted list, either ordered or unordered. This function
+#' works in any R Markdown code block. When calling from inside an `asis` chunk,
+#' set `asis = TRUE`.
+#'
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inherit markdownHeader
 #'
 #' @param ordered `boolean`. Ordered ("`TRUE`") or unordered ("`FALSE`").
-#'
-#' @export
 #'
 #' @examples
 #' groceries <- c("milk", "eggs")

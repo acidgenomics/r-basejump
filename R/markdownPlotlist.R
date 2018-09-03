@@ -1,17 +1,22 @@
 #' Markdown Plotlist
 #'
+#' Supports using a named `list` containing multiple `ggplot` objects, which
+#' can be used in an R Markdown report, separated by headers. Internally, the
+#' headers are generated with the [markdownHeader()] function.
+#'
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return Graphical output of plots, separated by Markdown headers.
-#' @export
 #'
 #' @seealso [cowplot::plot_grid()].
 #'
 #' @examples
 #' loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+#' names(plotlist)
 #' markdownPlotlist(plotlist)
 markdownPlotlist <- function(
     plotlist,

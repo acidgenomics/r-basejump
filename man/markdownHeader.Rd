@@ -25,11 +25,11 @@ loop or inside an R Markdown chunk with '\code{results = "asis"}' enabled.}
 }
 }
 \description{
-Markdown Header
+Generate a Markdown header (levels 1-7) in any R Markdown code block. When
+calling inside an \code{asis} chunk, set \code{asis = TRUE}.
 }
 \examples{
-markdownHeader("Header")
-markdownHeader("Header", level = 4L)
+markdownHeader("Header", level = 2L)
 markdownHeader("Header", tabset = TRUE)
 markdownHeader("Header", asis = TRUE)
 }

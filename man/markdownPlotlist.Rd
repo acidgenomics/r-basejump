@@ -16,10 +16,13 @@ markdownPlotlist(plotlist, headerLevel = 2L)
 Graphical output of plots, separated by Markdown headers.
 }
 \description{
-Markdown Plotlist
+Supports using a named \code{list} containing multiple \code{ggplot} objects, which
+can be used in an R Markdown report, separated by headers. Internally, the
+headers are generated with the \code{\link[=markdownHeader]{markdownHeader()}} function.
 }
 \examples{
 loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+names(plotlist)
 markdownPlotlist(plotlist)
 }
 \seealso{

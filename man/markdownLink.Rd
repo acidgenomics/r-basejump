@@ -2,7 +2,7 @@
 % Please edit documentation in R/markdownLink.R
 \name{markdownLink}
 \alias{markdownLink}
-\title{Markdown Link}
+\title{Markdown Hyperlink}
 \usage{
 markdownLink(text, url, title = NULL)
 }
@@ -18,7 +18,7 @@ mouse-over pop-up box.}
 Markdown-formatted link.
 }
 \description{
-For use in 'asis' blocks only.
+For use in \code{asis} blocks only.
 }
 \examples{
 markdownLink(
