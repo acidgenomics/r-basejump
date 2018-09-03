@@ -9,28 +9,19 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param object Object containing multiple interesting groups.
+#' @param object Object containing column data that defines interesting groups.
 #'
-#' @return Data frame containing an `interestingGroups` column.
+#' @return Modified object, containing an `interestingGroups` column.
 #' @export
 #'
 #' @examples
-#' x <- sampleData(rse_small)
-#' y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
-#' y[["interestingGroups"]]
+#' object <- sampleData(rse_small)
+#' x <- uniteInterestingGroups(
+#'     object = object,
+#'     interestingGroups = c("genotype", "treatment")
+#' )
+#' print(x)
 NULL
-
-
-
-.returnInterestingGroups <- function(data, interestingGroups) {
-    # If `interestingGroups` isn't defined, use sample name by default.
-    if (is.null(interestingGroups)) {
-        interestingGroups <- "sampleName"
-    }
-    assert_is_character(interestingGroups)
-    assert_is_subset(interestingGroups, colnames(data))
-    interestingGroups
-}
 
 
 
@@ -40,7 +31,7 @@ setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
     definition = function(object, interestingGroups) {
-        interestingGroups <- .returnInterestingGroups(object, interestingGroups)
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         # This approach will return numerics for `DataFrame` class, so
         # coercing columns to data.frame.
         data <- as.data.frame(object[, interestingGroups, drop = FALSE])
@@ -74,7 +65,7 @@ setMethod(
     f = "uniteInterestingGroups",
     signature = signature("tbl_df"),
     definition = function(object, interestingGroups) {
-        interestingGroups <- .returnInterestingGroups(object, interestingGroups)
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         object[["interestingGroups"]] <- NULL
         object <- unite(
             data = object,
