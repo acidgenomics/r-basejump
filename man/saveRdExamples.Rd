@@ -40,19 +40,10 @@ unlink("XXX", recursive = TRUE)
 \item \code{\link[tools:Rd_db]{tools::Rd_db()}}.
 }
 
-Other Developer Functions: \code{\link{calls}},
-  \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}}, \code{\link{parseRd}},
-  \code{\link{printString}},
-  \code{\link{uniteInterestingGroups}}
+Other R Documentation Functions: \code{\link{RdTags}},
+  \code{\link{parseRd}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}
+\concept{R Documentation Functions}

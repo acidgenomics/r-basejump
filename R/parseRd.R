@@ -1,16 +1,22 @@
-# Using the unexported `RdTags()` parser internally.
-.RdTags <- tools:::RdTags
-
-
-
 #' Parse R Documentation
 #'
 #' Modified version of `tools:::.Rd_get_metadata()` that keeps whitespace and
 #' returns `character` instead of `matrix`.
 #'
-#' @family Developer Functions
+#' @family R Documentation Functions
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @param object `Rd`. R documentation, returned from [tools::Rd_db()].
+#' @param tag `string`. Desired metadata type. For example, these are supported:
+#'   - "`title`".
+#'   - "`description`".
+#'   - "`usage`".
+#'   - "`arguments`".
+#'   - "`value`".
+#'   - "`references`".
+#'   - "`seealso`".
+#'   - "`examples`".
 #'
 #' @seealso
 #' - [tools::Rd_db()].
@@ -21,18 +27,18 @@
 #' Rd <- db[["nrow.Rd"]]
 #' class(Rd)
 #' summary(Rd)
-#' examples <- parseRd(Rd, kind = "examples")
+#' examples <- parseRd(Rd, tag = "examples")
 #' print(examples)
-parseRd <- function(object, kind) {
+parseRd <- function(object, tag) {
     assert_is_all_of(object, "Rd")
-    assert_is_a_string(kind)
+    assert_is_a_string(tag)
 
-    # Get the metadata that matches the requested kind.
-    data <- object[.RdTags(object) == sprintf("\\%s", kind)]
+    # Get the metadata that matches the requested tag.
+    data <- object[RdTags(object) == sprintf("\\%s", tag)]
 
-    # Error if there is no match to `kind` argument.
+    # Error if there is no match to `tag` argument.
     if (!length(data)) {
-        stop(paste("Rd does not contain", deparse(kind)))
+        stop(paste("Rd does not contain", deparse(tag)))
     }
 
     # Coerce to character, not a character matrix.

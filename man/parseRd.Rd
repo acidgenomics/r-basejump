@@ -4,7 +4,22 @@
 \alias{parseRd}
 \title{Parse R Documentation}
 \usage{
-parseRd(object, kind)
+parseRd(object, tag)
+}
+\arguments{
+\item{object}{\code{Rd}. R documentation, returned from \code{\link[tools:Rd_db]{tools::Rd_db()}}.}
+
+\item{tag}{\code{string}. Desired metadata type. For example, these are supported:
+\itemize{
+\item "\code{title}".
+\item "\code{description}".
+\item "\code{usage}".
+\item "\code{arguments}".
+\item "\code{value}".
+\item "\code{references}".
+\item "\code{seealso}".
+\item "\code{examples}".
+}}
 }
 \description{
 Modified version of \code{tools:::.Rd_get_metadata()} that keeps whitespace and
@@ -16,7 +31,7 @@ head(names(db))
 Rd <- db[["nrow.Rd"]]
 class(Rd)
 summary(Rd)
-examples <- parseRd(Rd, kind = "examples")
+examples <- parseRd(Rd, tag = "examples")
 print(examples)
 }
 \seealso{
@@ -24,19 +39,10 @@ print(examples)
 \item \code{\link[tools:Rd_db]{tools::Rd_db()}}.
 }
 
-Other Developer Functions: \code{\link{calls}},
-  \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
-  \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
-  \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{saveRdExamples}},
-  \code{\link{uniteInterestingGroups}}
+Other R Documentation Functions: \code{\link{RdTags}},
+  \code{\link{saveRdExamples}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Developer Functions}
+\concept{R Documentation Functions}
