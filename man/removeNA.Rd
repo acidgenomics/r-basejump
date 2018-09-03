@@ -3,20 +3,20 @@
 \docType{methods}
 \name{removeNA}
 \alias{removeNA}
-\alias{removeNA,ANY-method}
 \alias{removeNA,atomic-method}
 \alias{removeNA,matrix-method}
+\alias{removeNA,sparseMatrix-method}
 \alias{removeNA,data.frame-method}
 \alias{removeNA,DataFrame-method}
 \title{Remove Rows and Columns Containing Only \code{NA} Values}
 \usage{
 removeNA(object, ...)
 
-\S4method{removeNA}{ANY}(object)
-
 \S4method{removeNA}{atomic}(object)
 
 \S4method{removeNA}{matrix}(object)
+
+\S4method{removeNA}{sparseMatrix}(object)
 
 \S4method{removeNA}{data.frame}(object)
 
@@ -34,28 +34,29 @@ Sanitized object.
 Remove Rows and Columns Containing Only \code{NA} Values
 }
 \examples{
+# atomic ====
+removeNA(c("hello", "world", NA))
+removeNA(c(1, 2, NA))
+
 # matrix ====
-x <- matrix(
+object <- matrix(
     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
     nrow = 3,
     ncol = 3
 )
+print(object)
+x <- removeNA(object)
 print(x)
-removeNA(x)
 
-# data.frame ====
-x <- data.frame(
+# DataFrame ====
+object <- DataFrame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
-    c = c("B", NA, "D"),
-    stringsAsFactors = FALSE
+    c = c("B", NA, "D")
 )
+print(object)
+x <- removeNA(object)
 print(x)
-removeNA(x)
-
-# atomic ====
-removeNA(c("hello", "world", NA))
-removeNA(c(1, 2, NA))
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
