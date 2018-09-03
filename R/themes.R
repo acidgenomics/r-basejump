@@ -119,7 +119,9 @@ theme_midnight <- function(
 
 #' @rdname themes
 #' @export
-theme_paperwhite <- function() {
+theme_paperwhite <- function(
+    # Formals are set below.
+) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
     face <- match.arg(face)
@@ -168,6 +170,7 @@ theme_paperwhite <- function() {
             validate = TRUE
         )
 }
+
 # Set the formals.
 formals(theme_paperwhite) <- formals(theme_midnight)
 
