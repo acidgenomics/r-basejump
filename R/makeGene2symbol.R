@@ -16,16 +16,16 @@
 #' @examples
 #' # makeGene2symbolFromEnsembl ====
 #' x <- makeGene2symbolFromEnsembl("Homo sapiens")
-#' glimpse(x)
+#' print(x)
 #'
 #' # makeGene2symbolFromGFF ====
 #' # GTF
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
-#' glimpse(x)
+#' print(x)
 #'
 #' # GFF3
 #' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
-#' glimpse(x)
+#' print(x)
 NULL
 
 
@@ -50,16 +50,29 @@ NULL
 
 .makeGene2symbol <- function(data) {
     assert_is_non_empty(data)
+    assert_is_subset(
+        x = c("geneID", "geneName"),
+        y = colnames(data)
+    )
+    data <- data[, c("geneID", "geneName")]
+
+    # If we're providing `DataFrame` class object (e.g. `gene2symbol()`),
+    # require rownames, then coerce to tibble for tidyverse operations.
+    if (is(data, "DataFrame")) {
+        assertHasRownames(data)
+        data <- as(data, "tbl_df")
+    }
+
+    # Sanitize using tidyverse chain.
     data <- data %>%
         as("tbl_df") %>%
-        select(!!!syms(c("geneID", "geneName"))) %>%
         .[complete.cases(.), , drop = FALSE] %>%
         mutate_all(as.character) %>%
         unique() %>%
         arrange(!!sym("geneID")) %>%
         .makeGeneNamesUnique() %>%
-        as("DataFrame") %>%
-        set_rownames(.[["geneID"]])
+        as("DataFrame")
+
     assertIsGene2symbol(data)
     data
 }
