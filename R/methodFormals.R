@@ -2,12 +2,11 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
-#'
-#' @param f Generic `function` or `string` referencing a generic.
-#' @param signature The signature of classes to match to the `f` argument.
-#'
-#' @return `list` of formal arguments.
 #' @export
+#'
+#' @inheritParams methods::selectMethod
+#'
+#' @return `list`. Formal arguments.
 #'
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'

@@ -7,12 +7,13 @@
 methodFormals(f, signature)
 }
 \arguments{
-\item{f}{Generic \code{function} or \code{string} referencing a generic.}
+\item{f}{a generic function or the character-string name of one.}
 
-\item{signature}{The signature of classes to match to the \code{f} argument.}
+\item{signature}{the signature of classes to match to the arguments
+    of \code{f}.  See the details below.}
 }
 \value{
-\code{list} of formal arguments.
+\code{list}. Formal arguments.
 }
 \description{
 Access to the Formal Arguments of an S4 Method
