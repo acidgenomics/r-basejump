@@ -2,6 +2,7 @@
 #'
 #' @family Math and Science Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param plates `scalar integer`. Number of plates.
 #' @param wells `scalar integer`. Number of wells (`96`, `384`).
@@ -9,19 +10,18 @@
 #' @param prefix `string` or `NULL`. Plate name prefix.
 #'
 #' @return Character vector containing well identifiers.
-#' @export
 #'
 #' @examples
-#' # Single 96-well plate
+#' # Single 96-well plate.
 #' microplate(wells = 96L)
 #'
-#' # 2 96-well plates
+#' # 2 96-well plates.
 #' microplate(plates = 2L, wells = 96L)
 #'
-#' # Single 384-well plate
+#' # Single 384-well plate.
 #' microplate(wells = 384L)
 #'
-#' # 2 96-well plates with 6 control wells per plate
+#' # 2 96-well plates with 6 control wells per plate.
 #' microplate(plates = 2L, wells = 96L, controls = 6L)
 microplate <- function(
     plates = 1L,
@@ -29,21 +29,21 @@ microplate <- function(
     controls = 0L,
     prefix = NULL
 ) {
-    # plates
+    # Plates
     assertIsAnImplicitInteger(plates)
     plates <- as.integer(plates)
     assert_all_are_positive(plates)
-    # wells
+    # Wells
     assertIsAnImplicitInteger(wells)
     wells <- as.integer(wells)
     assert_all_are_positive(wells)
     assert_is_subset(wells, c(96L, 384L))
-    # controls
+    # Controls
     assertIsAnImplicitInteger(controls)
     controls <- as.integer(controls)
     assert_all_are_non_negative(controls)
     assert_is_subset(controls, 0L:12L)
-    # prefix
+    # Prefix
     assertIsAStringOrNULL(prefix)
 
     if (wells == 96L) {
