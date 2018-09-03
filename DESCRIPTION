@@ -101,6 +101,7 @@ Collate:
     'AllClasses.R'
     'AllGenerics.R'
     'GRanges-internal.R'
+    'RdTags.R'
     'aggregate-methods.R'
     'assert.R'
     'assignAndSaveData.R'

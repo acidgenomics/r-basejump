@@ -4,7 +4,7 @@
 #' script. Note that the `f` argument is parameterized and can handle multiple
 #' requests in a single call.
 #'
-#' @family Developer Functions
+#' @family R Documentation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -65,7 +65,7 @@ saveRdExamples <- function(
         ),
         FUN = function(Rd, package, dir) {
             x <- tryCatch(
-                expr = parseRd(db[[Rd]], kind = "examples"),
+                expr = parseRd(db[[Rd]], tag = "examples"),
                 error = function(e) character()
             )
 
