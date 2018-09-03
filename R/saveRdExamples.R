@@ -45,7 +45,7 @@ saveRdExamples <- function(
     if (is.null(Rd)) {
         Rd <- names(db)
         message(paste(
-            "Saving", length(Rd), "functions from", package, "to", dir
+            "Saving", length(Rd), "Rd examples from", package, "to", dir
         ))
     }
 
