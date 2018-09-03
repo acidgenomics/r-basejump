@@ -23,7 +23,7 @@
 #' @param dir `string`. Output directory.
 #' @param gzip `boolean`. Compress the counts file using gzip.
 #'
-#' @return Invisible named `character` containing file paths.
+#' @return Invisible named `character`. File paths.
 #' @export
 #'
 #' @examples

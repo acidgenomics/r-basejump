@@ -19,7 +19,7 @@ directory.}
 \code{parent.frame()}, which will assign into the calling environment.}
 }
 \value{
-Invisible named \code{character} containing file paths.
+Invisible named \code{character}. File paths.
 }
 \description{
 Load Data as Name

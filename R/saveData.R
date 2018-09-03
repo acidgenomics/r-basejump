@@ -25,7 +25,7 @@
 #' - [base::save()].
 #' - `usethis::use_data()`.
 #'
-#' @return Invisible named `character` vector of file paths.
+#' @return Invisible named `character`. File paths.
 #' @export
 #'
 #' @examples

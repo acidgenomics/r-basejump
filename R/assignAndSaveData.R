@@ -12,7 +12,7 @@
 #' @param envir `environment`. Environment to use for assignment. Defaults to
 #'   [parent.frame()], the calling environment.
 #'
-#' @return Invisible named `character` containing file paths.
+#' @return Invisible named `character`. File paths.
 #' @export
 #'
 #' @note This function attempts to follow the same order as [base::assign()].
