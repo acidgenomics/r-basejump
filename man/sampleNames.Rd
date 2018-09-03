@@ -29,7 +29,7 @@ print(x)
 
 # Assignment support
 value <- sampleNames(object)
-value <- gsub("_", " ", value)
+value <- toupper(value)
 print(value)
 sampleNames(object) <- value
 x <- sampleNames(object)
