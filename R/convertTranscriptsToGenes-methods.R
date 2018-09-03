@@ -61,7 +61,7 @@ function(
         }
         assert_is_a_string(organism)
         message(paste(organism, "genes detected"))
-        args <- matchArgs(S4 = TRUE)
+        args <- as.list(matchS4Call())[-1L]
         args[["object"]] <- NULL
         args[["organism"]] <- organism
         tx2gene <- do.call(
@@ -105,7 +105,7 @@ function(
     # Setting the formals below.
 ) {
     rownames <- rownames(object)
-    args <- matchArgs(S4 = TRUE)
+    args <- as.list(matchS4Call())[-1L]
     args[["object"]] <- rownames
     rownames <- do.call(
         what = convertTranscriptsToGenes,

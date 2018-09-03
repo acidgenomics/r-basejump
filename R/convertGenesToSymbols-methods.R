@@ -67,7 +67,7 @@ function(
         }
         assert_is_a_string(organism)
         message(paste(organism, "genes detected"))
-        args <- matchArgs(S4 = TRUE)
+        args <- as.list(matchS4Call())[-1L]
         args[["object"]] <- NULL
         args[["organism"]] <- organism
         gene2symbol <- do.call(
@@ -116,7 +116,7 @@ function(
     # Setting formals below.
 ) {
     rownames <- rownames(object)
-    args <- matchArgs(S4 = TRUE)
+    args <- as.list(matchS4Call())[-1L]
     args[["object"]] <- rownames
     rownames <- do.call(
         what = convertGenesToSymbols,
