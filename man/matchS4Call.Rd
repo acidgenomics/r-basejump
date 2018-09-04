@@ -7,10 +7,7 @@
 matchS4Call()
 }
 \value{
-\itemize{
-\item 
-\item 
-}
+\code{call}.
 }
 \description{
 Note that \code{\link[base:match.call]{base::match.call()}} doesn't always work correctly inside S4
@@ -18,6 +15,10 @@ methods. Here we are using a combination of \code{\link[base:sys.call]{base::sys
 \code{\link[pryr:standardise_call]{pryr::standardise_call()}} to correctly capture named arguments inside an S4
 method. The function raverses up the call stack and find the first
 \code{.local()}. The desired S4 call to match is one level above.
+}
+\examples{
+# Execute this inside an S4 method.
+\dontrun{matchS4Call()}
 }
 \seealso{
 \itemize{

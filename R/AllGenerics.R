@@ -230,7 +230,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname metrics
 #' @export
 setGeneric(
     name = "metrics",
