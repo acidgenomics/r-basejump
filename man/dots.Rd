@@ -22,10 +22,7 @@ object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
 Extract Dots from Function
 }
 \examples{
-# names
-dots(a, b, c)
-
-# character
+dots(a, b, c, character = FALSE)
 dots(a, b, c, character = TRUE)
 }
 \seealso{
@@ -42,7 +39,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
+  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}

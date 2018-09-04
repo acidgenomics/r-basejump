@@ -1,1 +1,4 @@
-setOldClass(Classes = "tbl_df")
+#' @include basejump-package.R
+
+# tibble
+setOldClass(Classes = class(tibble()))

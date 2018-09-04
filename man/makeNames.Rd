@@ -7,6 +7,10 @@
 \alias{snake}
 \alias{upperCamel}
 \alias{makeNames}
+\alias{camel,atomic-method}
+\alias{dotted,atomic-method}
+\alias{snake,atomic-method}
+\alias{upperCamel,atomic-method}
 \alias{camel,character-method}
 \alias{dotted,character-method}
 \alias{snake,character-method}
@@ -31,6 +35,10 @@
 \alias{dotted,GRanges-method}
 \alias{snake,GRanges-method}
 \alias{upperCamel,GRanges-method}
+\alias{camel,CompressedGRangesList-method}
+\alias{dotted,CompressedGRangesList-method}
+\alias{snake,CompressedGRangesList-method}
+\alias{upperCamel,CompressedGRangesList-method}
 \alias{camel,list-method}
 \alias{dotted,list-method}
 \alias{snake,list-method}
@@ -58,6 +66,14 @@ snake(object, ...)
 upperCamel(object, ...)
 
 makeNames(names, unique = FALSE)
+
+\S4method{camel}{atomic}(object, strict = FALSE)
+
+\S4method{dotted}{atomic}(object)
+
+\S4method{snake}{atomic}(object)
+
+\S4method{upperCamel}{atomic}(object, strict = FALSE)
 
 \S4method{camel}{character}(object, strict = FALSE)
 
@@ -114,6 +130,14 @@ makeNames(names, unique = FALSE)
 
 \S4method{upperCamel}{GRanges}(object, strict = FALSE)
 
+\S4method{camel}{CompressedGRangesList}(object, strict = FALSE)
+
+\S4method{dotted}{CompressedGRangesList}(object)
+
+\S4method{snake}{CompressedGRangesList}(object)
+
+\S4method{upperCamel}{CompressedGRangesList}(object, strict = FALSE)
+
 \S4method{camel}{list}(object, strict = FALSE)
 
 \S4method{dotted}{list}(object)
@@ -154,10 +178,11 @@ will be meaningful.}
 
 \item{...}{Additional arguments.}
 
-\item{names}{\code{atomic} to be coerced to syntactically valid names. Will be
-coerced to \code{character}, if necessary.}
+\item{names}{character vector to be coerced to syntactically valid
+   names.  This is coerced to character if necessary.}
 
-\item{unique}{\code{boolean}. If \code{TRUE}, the resulting elements are unique.}
+\item{unique}{logical; if \code{TRUE}, the resulting elements are
+     unique.  This may be desired for, e.g., column names.}
 
 \item{strict}{\code{boolean}. Enforce strict name sanitization. When \code{TRUE}, this
 does not allow the return of any capitalized acronyms. "RNA" will become
@@ -243,7 +268,7 @@ S4 object classes.
 }
 
 Other Sanitization Functions: \code{\link{collapseToString}},
-  \code{\link{fixNA}}, \code{\link{removeNA}},
+  \code{\link{removeNA}}, \code{\link{sanitizeNA}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }

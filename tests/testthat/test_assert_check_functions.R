@@ -1,12 +1,14 @@
 context("Assert Check Functions")
 
-g2s <- tibble(
-    geneID = c("gene_1", "gene_2"),
-    geneName = c("symbol_1", "symbol_2")
+g2s <- DataFrame(
+    geneID = paste0("gene", seq_len(2L)),
+    geneName = paste0("symbol", seq_len(2L)),
+    row.names = paste0("gene", seq_len(2L))
 )
 
 
 
+# assertAllAreNonExisting ======================================================
 test_that("assertAllAreNonExisting", {
     expect_silent(assertAllAreNonExisting(c("a", "b", "c")))
     a <- 1L
@@ -16,34 +18,37 @@ test_that("assertAllAreNonExisting", {
 
 
 
+# assertAreGeneAnnotations =====================================================
 test_that("assertAreGeneAnnotations", {
-    x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
-    expect_silent(assertAreGeneAnnotations(x))
+    object <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+    expect_silent(assertAreGeneAnnotations(object))
     expect_error(
-        assertAreGeneAnnotations(mtcars),
-        "is_subset : "
+        object = assertAreGeneAnnotations(mtcars),
+        regexp = "is_subset : "
     )
 })
 
 
 
+# assertAreTranscriptAnnotations ===============================================
 test_that("assertAreTranscriptAnnotations", {
-    x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
-    expect_silent(assertAreTranscriptAnnotations(x))
+    object <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+    expect_silent(assertAreTranscriptAnnotations(object))
     expect_error(
-        assertAreTranscriptAnnotations(mtcars),
-        "is_subset : "
+        object = assertAreTranscriptAnnotations(mtcars),
+        regexp = "is_subset : "
     )
 })
 
 
 
+# assertFormalCompress =========================================================
 test_that("assertFormalCompress", {
     expect_error(
-        assertFormalCompress("XXX"),
-        paste(
+        object = assertFormalCompress("XXX"),
+        regexp = paste(
             "is_subset :",
-            "The element 'XXX' in x is not in",
+            "The element 'XXX' in object is not in",
             "c\\(\"bzip2\", \"gzip\", \"xz\"\\)."
         )
     )
@@ -52,102 +57,106 @@ test_that("assertFormalCompress", {
 
 
 
+# assertFormalGene2symbol ======================================================
 test_that("assertFormalGene2symbol", {
-    genes <- pull(g2s, "geneID")
+    genes <- g2s[["geneID"]]
     expect_true(is.character(genes))
-    x <- data.frame(
-        "sample_1" = c(1L, 2L),
-        "sample_2" = c(3L, 4L),
-        row.names = genes,
-        stringsAsFactors = FALSE
+    object <- DataFrame(
+        "sample1" = c(1L, 2L),
+        "sample2" = c(3L, 4L),
+        row.names = genes
     )
-    expect_silent(assertFormalGene2symbol(x, genes, g2s))
+    expect_silent(assertFormalGene2symbol(object, genes, g2s))
     expect_error(
-        assertFormalGene2symbol(mtcars, genes, g2s),
-        paste(
+        object = assertFormalGene2symbol(mtcars, genes, g2s),
+        regexp = paste(
             "is_subset :",
-            "The elements 'gene_1', 'gene_2'",
-            "in genes are not in rownames\\(x\\)."
+            "The elements 'gene1', 'gene2'",
+            "in genes are not in rownames\\(object\\)."
         )
     )
 })
 
 
 
+# assertFormalInterestingGroups ================================================
 test_that("assertFormalInterestingGroups", {
     expect_silent(
         assertFormalInterestingGroups(
-            x = rse_bcb,
-            interestingGroups = c("tissue", "treatment")
+            object = rse_small,
+            interestingGroups = c("genotype", "treatment")
         )
     )
-    # Must exist as columns in sampleData
+
+    # Must exist as columns in sampleData.
     expect_error(
-        assertFormalInterestingGroups(
-            x = rse_bcb,
+        object = assertFormalInterestingGroups(
+            object = rse_small,
             interestingGroups = "XXX"
         ),
-        paste(
-            "The interesting groups \"XXX\" are not defined"
-        )
+        regexp = "is_subset : The element 'XXX'"
     )
-    # Require interesting groups to be defined as factor columns
-    expect_error(
-        assertFormalInterestingGroups(
-            x = rse_bcb,
-            interestingGroups = c("totalReads", "exonicRate")
-        ),
-        "The interesting groups \"totalReads, exonicRate\" are not factor"
-    )
+
+    # FIXME
+    # Require interesting groups to be defined as factor columns.
+    # expect_error(
+    #     assertFormalInterestingGroups(
+    #         object = rse_small,
+    #         interestingGroups = c("totalReads", "exonicRate")
+    #     ),
+    #     "The interesting groups \"totalReads, exonicRate\" are not factor"
+    # )
 })
 
 
 
+# assertHasRownames ============================================================
 test_that("assertHasRownames", {
     expect_silent(assertHasRownames(df))
     rownames(df) <- NULL
     expect_error(assertHasRownames(df))
-    expect_error(assertHasRownames(tbl))
+    expect_silent(assertHasRownames(tbl))
 })
 
 
 
-test_that("assertIsDataFrameOrNULL", {
-    expect_silent(assertIsDataFrameOrNULL(mtcars))
-    expect_silent(assertIsDataFrameOrNULL(NULL))
-    expect_error(
-        assertIsDataFrameOrNULL(1L),
-        "is2 : x is not in any of the classes 'data.frame', 'NULL'."
-    )
-})
-
-
-
+# assertIsAHeaderLevel =========================================================
 test_that("assertIsAHeaderLevel", {
     expect_silent(assertIsAHeaderLevel(1L))
     expect_error(
-        assertIsAHeaderLevel(8L),
-        paste(
+        object = assertIsAHeaderLevel(8L),
+        regexp = paste(
             "is_subset :",
-            "The element '8' in as.integer\\(x\\) is not in seq\\(1L:7L\\)."
+            "The element '8' in as.integer\\(object\\)"
         )
     )
 })
 
 
 
+# assertIsAnImplicitInteger ====================================================
 test_that("assertIsAnImplicitInteger", {
     expect_silent(assertIsAnImplicitInteger(1))  # nolint
     expect_silent(assertIsAnImplicitInteger(1L))
     expect_silent(assertIsAnImplicitInteger(1.0))
     expect_error(assertIsAnImplicitInteger(c(1L, 2L)))
     expect_error(assertIsAnImplicitInteger(1.1))
-    # Tolerance threshold
+    # Check tolerance threshold.
     expect_error(assertIsImplicitInteger(1.000000000000001))
 })
 
 
 
+test_that("isAnImplicitInteger", {
+    expect_identical(
+        isImplicitInteger(list(1, 1L, 1.1, "XXX")),  # nolint
+        c(TRUE, TRUE, FALSE, FALSE)
+    )
+})
+
+
+
+# assertIsAnImplicitIntegerOrNULL ==============================================
 test_that("assertIsAnImplicitIntegerOrNULL", {
     expect_silent(assertIsAnImplicitIntegerOrNULL(NULL))
     expect_silent(assertIsAnImplicitIntegerOrNULL(1))  # nolint
@@ -158,143 +167,131 @@ test_that("assertIsAnImplicitIntegerOrNULL", {
 
 
 
+# assertIsAnIntegerOrNULL ======================================================
 test_that("assertIsAnIntegerOrNULL", {
     expect_silent(assertIsAnIntegerOrNULL(1L))
     expect_silent(assertIsAnIntegerOrNULL(NULL))
     expect_error(
-        assertIsAnIntegerOrNULL(c(1L, 2L)),
-        "is_an_integer : x has length 2, not 1."
+        object = assertIsAnIntegerOrNULL(c(1L, 2L)),
+        regexp = "is_an_integer : object has length 2, not 1."
     )
 })
 
 
 
+# assertIsANumberOrNULL ========================================================
 test_that("assertIsANumberOrNULL", {
     expect_silent(assertIsANumberOrNULL(1.1))
     expect_silent(assertIsANumberOrNULL(NULL))
     expect_error(
-        assertIsANumberOrNULL(c(1.1, 1.2)),
-        "is_a_number : x has length 2, not 1."
+        object = assertIsANumberOrNULL(c(1.1, 1.2)),
+        regexp = "is_a_number : object has length 2, not 1."
     )
 })
 
 
 
+# assertIsAStringOrNULL ========================================================
 test_that("assertIsAStringOrNULL", {
     expect_silent(assertIsAStringOrNULL("hello world"))
     expect_silent(assertIsAStringOrNULL(NULL))
     expect_error(
-        assertIsAStringOrNULL(c("hello", "world")),
-        "is_a_string : x has length 2, not 1."
+        object = assertIsAStringOrNULL(c("hello", "world")),
+        regexp = "is_a_string : object has length 2, not 1."
     )
 })
 
 
 
-test_that("assertIsCharacterOrNULL", {
-    expect_silent(assertIsCharacterOrNULL(c("hello", "world")))
-    expect_silent(assertIsCharacterOrNULL(NULL))
-    expect_error(
-        assertIsCharacterOrNULL(1L),
-        "is2 : x is not in any of the classes 'character', 'NULL'."
-    )
-})
-
-
-
+# assertIsColorScaleContinuousOrNULL ===========================================
 test_that("assertIsColorScaleContinuousOrNULL", {
-    x <- ggplot2::scale_color_gradient(low = "red", high = "blue")
-    expect_silent(assertIsColorScaleContinuousOrNULL(x))
+    object <- ggplot2::scale_color_gradient(low = "red", high = "blue")
+    expect_silent(assertIsColorScaleContinuousOrNULL(object))
     expect_silent(assertIsColorScaleContinuousOrNULL(NULL))
-    x <- ggplot2::scale_color_manual(values = "red")
+    object <- ggplot2::scale_color_manual(values = "red")
     expect_error(
-        assertIsColorScaleContinuousOrNULL(x),
-        paste(
+        object = assertIsColorScaleContinuousOrNULL(object),
+        regexp = paste(
             "is2 :",
-            "x is not in any of the classes 'ScaleContinuous', 'NULL'."
+            "object is not in any of the classes 'ScaleContinuous', 'NULL'."
         )
     )
 })
 
 
 
+# assertIsColorScaleDiscreteOrNULL =============================================
 test_that("assertIsColorScaleDiscreteOrNULL", {
-    x <- ggplot2::scale_color_manual(values = "red")
-    expect_silent(assertIsColorScaleDiscreteOrNULL(x))
+    object <- ggplot2::scale_color_manual(values = "red")
+    expect_silent(assertIsColorScaleDiscreteOrNULL(object))
     expect_silent(assertIsColorScaleDiscreteOrNULL(NULL))
-    x <- ggplot2::scale_color_gradient(low = "red", high = "blue")
+    object <- ggplot2::scale_color_gradient(low = "red", high = "blue")
     expect_error(
-        assertIsColorScaleDiscreteOrNULL(x),
-        paste(
+        object = assertIsColorScaleDiscreteOrNULL(object),
+        regexp = paste(
             "is2 :",
-            "x is not in any of the classes 'ScaleDiscrete', 'NULL'."
+            "object is not in any of the classes 'ScaleDiscrete', 'NULL'."
         )
     )
 })
 
 
 
+# assertIsFillScaleContinuousOrNULL ============================================
 test_that("assertIsFillScaleContinuousOrNULL", {
-    x <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
-    expect_silent(assertIsFillScaleContinuousOrNULL(x))
+    object <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
+    expect_silent(assertIsFillScaleContinuousOrNULL(object))
     expect_silent(assertIsFillScaleContinuousOrNULL(NULL))
-    x <- ggplot2::scale_fill_manual(values = "red")
+    object <- ggplot2::scale_fill_manual(values = "red")
     expect_error(
-        assertIsFillScaleContinuousOrNULL(x),
-        paste(
+        object = assertIsFillScaleContinuousOrNULL(object),
+        regexp = paste(
             "is2 :",
-            "x is not in any of the classes 'ScaleContinuous', 'NULL'."
+            "object is not in any of the classes 'ScaleContinuous', 'NULL'."
         )
     )
 })
 
 
 
+# assertIsFillScaleDiscreteOrNULL ==============================================
 test_that("assertIsFillScaleDiscreteOrNULL", {
-    x <- ggplot2::scale_fill_manual(values = "red")
-    expect_silent(assertIsFillScaleDiscreteOrNULL(x))
+    object <- ggplot2::scale_fill_manual(values = "red")
+    expect_silent(assertIsFillScaleDiscreteOrNULL(object))
     expect_silent(assertIsFillScaleDiscreteOrNULL(NULL))
-    x <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
+    object <- ggplot2::scale_fill_gradient(low = "red", high = "blue")
     expect_error(
-        assertIsFillScaleDiscreteOrNULL(x),
-        paste(
+        object = assertIsFillScaleDiscreteOrNULL(object),
+        regexp = paste(
             "is2 :",
-            "x is not in any of the classes 'ScaleDiscrete', 'NULL'."
+            "object is not in any of the classes 'ScaleDiscrete', 'NULL'."
         )
     )
 })
 
 
 
+# assertIsGene2symbol ==========================================================
 test_that("assertIsGene2symbol", {
     expect_silent(assertIsGene2symbol(g2s))
-    expect_error(
-        assertIsGene2symbol(mtcars),
-        paste(
-            "are_identical :",
-            "colnames\\(x\\) and c\\(\"geneID\", \"geneName\"\\)",
-            "are not identical."
-        )
-    )
-    expect_error(
-        assertIsGene2symbol(NULL),
-        "is_data.frame : x"
-    )
+    expect_error(assertIsGene2symbol(mtcars))
+    expect_error(assertIsGene2symbol(NULL))
 })
 
 
 
+# assertIsHexColorFunctionOrNULL ===============================================
 test_that("assertIsHexColorFunctionOrNULL", {
-    x <- function(n) {
+    object <- function(n) {
         colors <- c("#FFFFFF", "#000000")
         colors[seq_len(n)]
     }
-    expect_silent(assertIsHexColorFunctionOrNULL(x))
+    expect_silent(assertIsHexColorFunctionOrNULL(object))
     expect_error(
-        assertIsHexColorFunctionOrNULL(x(2L)),
-        "is2 :"
+        object = assertIsHexColorFunctionOrNULL(object(2L)),
+        regexp = "is2 :"
     )
-    # viridis trailing "FF" sanitization support
+    # Check viridis trailing "FF" sanitization support.
     viridis <- function(n = 2L) {
         colors <- c("#440154FF", "#FDE725FF")
         colors[n]
@@ -304,6 +301,7 @@ test_that("assertIsHexColorFunctionOrNULL", {
 
 
 
+# assertIsImplicitInteger ======================================================
 test_that("assertIsImplicitInteger", {
     expect_silent(assertIsImplicitInteger(c(1, 2)))  # nolint
     expect_silent(assertIsImplicitInteger(c(1L, 2L)))
@@ -313,6 +311,7 @@ test_that("assertIsImplicitInteger", {
 
 
 
+# assertIsImplicitIntegerOrNULL ================================================
 test_that("assertIsImplicitIntegerOrNULL", {
     expect_silent(assertIsImplicitIntegerOrNULL(NULL))
     expect_silent(assertIsImplicitIntegerOrNULL(c(1, 2)))  # nolint
@@ -332,37 +331,21 @@ test_that("isImplicitInteger", {
 
 
 
+# assertIsTx2gene ==============================================================
 test_that("assertIsTx2gene", {
     t2g <- tibble(
-        transcriptID = c("transcript_1", "transcript_2"),
-        geneID = c("gene_1", "gene_2")
+        transcriptID = paste0("transcript", seq_len(2L)),
+        geneID = paste0("gene", seq_len(2L))
     )
     expect_silent(assertIsTx2gene(t2g))
-    expect_error(
-        assertIsTx2gene(mtcars),
-        paste(
-            "are_identical :",
-            "colnames\\(x\\) and c\\(\"transcriptID\", \"geneID\"\\)",
-            "are not identical."
-        )
-    )
-    expect_error(
-        assertIsTx2gene(NULL),
-        "is_data.frame : x"
-    )
+    expect_error(assertIsTx2gene(mtcars))
+    expect_error(assertIsTx2gene(NULL))
 })
 
 
 
-test_that("isAnImplicitInteger", {
-    expect_identical(
-        isImplicitInteger(list(1, 1L, 1.1, "XXX")),  # nolint
-        c(TRUE, TRUE, FALSE, FALSE)
-    )
-})
-
-
-
+# assertIsURL ==================================================================
+# FIXME Need to improve this
 test_that("isURL", {
     expect_false(isURL("XXX"))
     expect_false(isURL(1L))

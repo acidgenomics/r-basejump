@@ -12,7 +12,7 @@
 #'   arguments are interpreted using non-standard evaluation, and *should not
 #'   be quoted*.
 #'
-#' @return Invisible named `character` containing file paths.
+#' @return Invisible named `character`. File paths.
 #' @export
 #'
 #' @examples

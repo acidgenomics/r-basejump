@@ -1,17 +1,19 @@
 #' Gene to Symbol Mappings
 #'
+#' @note This function will make any duplicated symbols unique by applying
+#' [base::make.unique()], which will add ".1" to the end of the gene name.
+#'
 #' @name gene2symbol
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return `data.frame` containing gene identifier and gene name (aka symbol)
-#'   mappings.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' gene2symbol(rse_bcb) %>% head()
+#' gene2symbol(rse_small) %>% head()
 NULL
 
 
@@ -19,22 +21,16 @@ NULL
 #' @rdname gene2symbol
 #' @export
 setMethod(
-    "gene2symbol",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "gene2symbol",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
         data <- rowData(object)
-        cols <- c("geneID", "geneName")
-        if (!all(cols %in% colnames(data))) {
-            warning("Object does not contain gene-to-symbol mappings")
-            return(NULL)
+        rownames(data) <- rownames(object)
+        # Early return `NULL` if object doesn't contain mappings.
+        if (!all(c("geneID", "geneName") %in% colnames(data))) {
+            stop("Object does not contain gene-to-symbol mappings")
         }
-        data <- data %>%
-            as.data.frame() %>%
-            select(!!!syms(cols)) %>%
-            mutate_all(as.character) %>%
-            set_rownames(rownames(object))
-        assertIsGene2symbol(data)
-        data
+        .makeGene2symbol(data)
     }
 )

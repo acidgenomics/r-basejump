@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Assert Are Ensembl Transcript Annotations — assertAreTranscriptAnnotations" />
 
-<meta property="og:description" content="Assert Are Ensembl Transcript Annotations" />
+<meta property="og:description" content="Must contain transcriptID and transcriptName columns. Does not need to
+contain rownames, so tibble class is supported." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +75,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -109,24 +113,19 @@
 
     <div class="ref-description">
     
-    <p>Assert Are Ensembl Transcript Annotations</p>
+    <p>Must contain <code>transcriptID</code> and <code>transcriptName</code> columns. Does not need to
+contain rownames, so <code>tibble</code> class is supported.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>x</span>,
-  <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))</pre>
+    <pre class="usage"><span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p><code>data.frame</code> containing Ensembl transcript annotations.</p></td>
-    </tr>
-    <tr>
-      <th>severity</th>
-      <td><p><code>string</code>. How severe should the consequences of the assertion
-be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
+      <th>object</th>
+      <td><p>Object that can be coerced to <code>data.frame</code>.</p></td>
     </tr>
     </table>
     
@@ -137,6 +136,9 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
   <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
   <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
   <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
@@ -146,24 +148,22 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
   <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
   <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
   <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
-  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
   <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
   <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
-  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code>, <code><a href='assertIsURL.html'>assertIsURL</a></code></p></div>
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
     <span class='kw'>transcriptID</span> <span class='kw'>=</span> <span class='st'>"ENST00000000233"</span>,
     <span class='kw'>geneID</span> <span class='kw'>=</span> <span class='st'>"ENSG00000004059"</span>
 )
-<span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>x</span>)</div></pre>
+<span class='fu'>assertAreTranscriptAnnotations</span>(<span class='no'>object</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

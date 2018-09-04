@@ -1,6 +1,7 @@
 # Contributing to development
 
 - For all proposed changes, **fork the repository**, and then issue a pull request that will be reviewed.
+- Merge external pull requests in the `develop` branch of the repository, rather than `master`, if possible.
 - Pull requests must pass build checks on Travis CI.
 - Support is only provided for the current release version.
 

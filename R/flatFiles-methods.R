@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' x <- flatFiles(rse_dds)
+#' x <- flatFiles(rse_small)
 #' class(x)
 #' names(x)
 NULL
@@ -22,9 +22,10 @@ NULL
 #' @rdname flatFiles
 #' @export
 setMethod(
-    "flatFiles",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "flatFiles",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
+        validObject(object)
         list <- lapply(slotNames(object), function(slot) {
             if (.hasSlot(object, slot)) {
                 slot(object, slot)

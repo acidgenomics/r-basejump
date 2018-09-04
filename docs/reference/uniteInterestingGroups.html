@@ -65,7 +65,7 @@ single column, delimited by a colon." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -76,6 +76,9 @@ single column, delimited by a colon." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -133,7 +136,7 @@ single column, delimited by a colon.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object containing multiple interesting groups.</p></td>
+      <td><p>Object containing column data that defines interesting groups.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -147,7 +150,7 @@ single column, delimited by a colon.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Data frame containing an <code>interestingGroups</code> column.</p>
+    <p>Modified object, containing an <code>interestingGroups</code> column.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -157,17 +160,24 @@ single column, delimited by a colon.</p>
   <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
   <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
   <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
-  <code><a href='methodFormals.html'>methodFormals</a></code>,
+  <code><a href='matchS4Call.html'>matchS4Call</a></code>, <code><a href='methodFormals.html'>methodFormals</a></code>,
   <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
   <code><a href='printString.html'>printString</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>rse_bcb</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>uniteInterestingGroups</span>(<span class='no'>x</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"treatment"</span>, <span class='st'>"day"</span>))
-<span class='no'>y</span><span class='kw'>[[</span><span class='st'>"interestingGroups"</span>]]</div><div class='output co'>#&gt; control_rep1 control_rep2 control_rep3 fa_day7_rep1 fa_day7_rep2 fa_day7_rep3 
-#&gt;    control:0    control:0    control:0 folic_acid:7 folic_acid:7 folic_acid:7 
-#&gt; Levels: control:0 folic_acid:7</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>rse_small</span>)
+<span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>uniteInterestingGroups</span>(
+    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>from</span>,
+    <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genotype"</span>, <span class='st'>"treatment"</span>)
+)
+<span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+#&gt;         sampleName genotype treatment interestingGroups
+#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample1    sample1 wildtype   control  wildtype:control
+#&gt; sample2    sample2 knockout   control  knockout:control
+#&gt; sample3    sample3 wildtype   treated  wildtype:treated
+#&gt; sample4    sample4 knockout   treated  knockout:treated</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

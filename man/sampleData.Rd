@@ -14,7 +14,7 @@ sampleData(object, ...)
 
 sampleData(object, ...) <- value
 
-\S4method{sampleData}{SummarizedExperiment}(object, ...)
+\S4method{sampleData}{SummarizedExperiment}(object)
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
@@ -28,7 +28,7 @@ sampleData(object, ...) <- value
 \item{value}{Value to assign.}
 }
 \value{
-\code{DataFrame} containing metadata that describes the samples.
+\code{DataFrame}. Metadata that describes the samples.
 }
 \description{
 Return the sample metadata. Columns are always sanitized to factor.
@@ -41,19 +41,19 @@ experiment).
 }
 \examples{
 # SummarizedExperiment ====
-sampleData(rse_bcb) \%>\% glimpse()
+sampleData(rse_small)
 
 # Assignment support
-x <- rse_dds
+x <- rse_small
 sampleData(x)[["test"]] <- seq_len(ncol(x))
 # `test` column should be now defined
-glimpse(sampleData(x))
+sampleData(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
+Other Data Functions: \code{\link{counts}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \author{

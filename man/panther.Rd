@@ -4,18 +4,23 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism = c("Homo sapiens", "Mus musculus",
-  "Caenorhabditis elegans", "Drosophila melanogaster"), release = NULL)
+panther(organism, release = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+\item{organism}{\code{string}. Supported organisms:
+\itemize{
+\item \emph{Homo sapiens}
+\item \emph{Mus musculus}
+\item \emph{Caenorhabditis elegans}
+\item \emph{Drosophila melanogaster}
+}}
 
 \item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 }
 \value{
-\code{data.frame}.
+\code{DataFrame}.
 }
 \description{
 PANTHER Gene Ontology Annotations
@@ -27,20 +32,15 @@ invisible(capture.output(
 glimpse(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
+Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
+  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2gene}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

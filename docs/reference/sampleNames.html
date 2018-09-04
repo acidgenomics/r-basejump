@@ -65,7 +65,7 @@ the syntactically valid names defined as the rownames of sampleData()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -76,6 +76,9 @@ the syntactically valid names defined as the rownames of sampleData()." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -117,33 +120,55 @@ the syntactically valid names defined as the rownames of <code><a href='sampleDa
     
     </div>
 
-        
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment,character</span>
+<span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Value to assign.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Named <code>character</code> vector of the sample names.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateFeatures.html'>aggregateFeatures</a></code>,
-  <code><a href='aggregateReplicates.html'>aggregateReplicates</a></code>, <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
   <code><a href='gene2symbol.html'>gene2symbol</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>sampleNames</span>(<span class='no'>rse_bcb</span>)</div><div class='output co'>#&gt;   control_rep1   control_rep2   control_rep3   fa_day7_rep1   fa_day7_rep2 
-#&gt; "control_rep1" "control_rep2" "control_rep3" "fa_day7_rep1" "fa_day7_rep2" 
-#&gt;   fa_day7_rep3 
-#&gt; "fa_day7_rep3" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>rse_dds</span>)</div><div class='output co'>#&gt;    sample1   sample10   sample11   sample12    sample2    sample3    sample4 
-#&gt;  "sample1" "sample10" "sample11" "sample12"  "sample2"  "sample3"  "sample4" 
-#&gt;    sample5    sample6    sample7    sample8    sample9 
-#&gt;  "sample5"  "sample6"  "sample7"  "sample8"  "sample9" </div></pre>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
+#&gt; "sample1" "sample2" "sample3" "sample4" </div><div class='input'>
+<span class='co'># Assignment support</span>
+<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='no'>value</span> <span class='kw'>&lt;-</span> <span class='fu'>toupper</span>(<span class='no'>value</span>)
+<span class='fu'>print</span>(<span class='no'>value</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
+#&gt; "SAMPLE1" "SAMPLE2" "SAMPLE3" "SAMPLE4" </div><div class='input'><span class='fu'>sampleNames</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>sampleNames</span>(<span class='no'>object</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
+#&gt; "SAMPLE1" "SAMPLE2" "SAMPLE3" "SAMPLE4" </div><div class='input'><span class='fu'>colData</span>(<span class='no'>object</span>)$<span class='no'>sampleName</span></div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
+#&gt; "SAMPLE1" "SAMPLE2" "SAMPLE3" "SAMPLE4" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 

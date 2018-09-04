@@ -2,6 +2,17 @@ context("Developer Functions")
 
 
 
+# cleanSystemLibrary ===========================================================
+test_that("cleanSystemLibrary", {
+    # Simple check to make sure a logical is returned successfully.
+    expect_type(
+        object = cleanSystemLibrary(),
+        type = "logical"
+    )
+})
+
+
+
 # detectHPC ====================================================================
 test_that("detectHPC", {
     expect_identical(detectHPC(), FALSE)
@@ -22,24 +33,24 @@ test_that("detectHPC", {
 # dots =========================================================================
 test_that("dots", {
     expect_identical(
-        dots(a, b, c),
-        list(
+        object = dots(a, b, c),
+        expected = list(
             as.name("a"),
             as.name("b"),
             as.name("c")
         )
     )
     expect_identical(
-        dots(a, b, c, character = TRUE),
-        c("a", "b", "c")
+        object = dots(a, b, c, character = TRUE),
+        expected = c("a", "b", "c")
     )
     expect_error(
-        dots(a, a, b, c),
-        "has_no_duplicates : dots has a duplicate at position 2"
+        object = dots(a, a, b, c),
+        regexp = "has_no_duplicates : dots has a duplicate at position 2"
     )
     expect_error(
-        dots(),
-        "is_non_empty : dots has length 0"
+        object = dots(),
+        regexp = "is_non_empty : dots has length 0"
     )
 })
 
@@ -47,11 +58,11 @@ test_that("dots", {
 
 # flatFiles ====================================================================
 test_that("flatFiles : SummarizedExperiment", {
-    x <- flatFiles(rse_dds)
-    expect_is(x, "list")
+    object <- flatFiles(rse_small)
+    expect_is(object, "list")
     expect_identical(
-        names(x),
-        c(
+        object = names(object),
+        expected = c(
             "rowRanges",
             "colData",
             "assays",
@@ -60,9 +71,12 @@ test_that("flatFiles : SummarizedExperiment", {
             "metadata"
         )
     )
-    # S4 coercion to list method support
-    y <- as(rse_dds, "list")
-    expect_identical(x, y)
+
+    # S4 coercion to list method support.
+    expect_identical(
+        object = as(rse_small, "list"),
+        expected = flatFiles(rse_small)
+    )
 })
 
 
@@ -70,16 +84,19 @@ test_that("flatFiles : SummarizedExperiment", {
 # matchInterestingGroups =======================================================
 test_that("matchInterestingGroups", {
     expect_identical(
-        matchInterestingGroups(rse_bcb),
-        "treatment"
+        object = matchInterestingGroups(rse_small),
+        expected = c("genotype", "treatment")
     )
     expect_identical(
-        matchInterestingGroups(rse_bcb, interestingGroups = NULL),
-        "sampleName"
+        object = matchInterestingGroups(rse_small, interestingGroups = NULL),
+        expected = "sampleName"
     )
     expect_identical(
-        matchInterestingGroups(rse_bcb, interestingGroups = "sampleName"),
-        "sampleName"
+        object = matchInterestingGroups(
+            object = rse_small,
+            interestingGroups = "sampleName"
+        ),
+        expected = "sampleName"
     )
 })
 
@@ -88,8 +105,8 @@ test_that("matchInterestingGroups", {
 # methodFormals ================================================================
 test_that("methodFormals", {
     expect_identical(
-        methodFormals(f = "camel", signature = "character"),
-        pairlist(
+        object = methodFormals(f = "camel", signature = "character"),
+        expected = pairlist(
             object = substitute(),
             strict = FALSE
         )
@@ -100,15 +117,19 @@ test_that("methodFormals", {
 
 # multiassignAsEnvir ===========================================================
 test_that("multiassignAsEnvir", {
-    x <- multiassignAsEnvir(
+    object <- multiassignAsEnvir(
         rnaseq_counts, single_cell_counts,
         envirName = "example"
     )
-    expect_identical(x, c("rnaseq_counts", "single_cell_counts"))
-    expect_identical(x, ls(example))
+    expected <- c("rnaseq_counts", "single_cell_counts")
+    expect_identical(object, expected)
+    expect_identical(
+        object = ls(example),
+        expected = expected
+    )
     expect_error(
-        multiassignAsEnvir(rnaseq_counts, envirName = parent.frame()),
-        "is_a_string : envirName"
+        object = multiassignAsEnvir(rnaseq_counts, envirName = parent.frame()),
+        regexp = "is_a_string : envirName"
     )
 })
 
@@ -117,7 +138,7 @@ test_that("multiassignAsEnvir", {
 # printString ==================================================================
 test_that("printString", {
     expect_identical(
-        printString(c("hello", "world")),
-        "[1] \"hello\" \"world\""
+        object = printString(c("hello", "world")),
+        expected = "[1] \"hello\" \"world\""
     )
 })

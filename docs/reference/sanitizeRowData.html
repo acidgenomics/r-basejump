@@ -34,8 +34,8 @@
   
 <meta property="og:title" content="Sanitize Row Data — sanitizeRowData" />
 
-<meta property="og:description" content="Coerce Ensembl rowData to a data.frame, and drop any nested list columns
-(e.g. entrezID). Nested columns will fail to write to disk as CSVs." />
+<meta property="og:description" content="Coerce gene annotations to a tibble, and keep only atomic columns.
+Complex columns (e.g. Entrez ID list) will fail to write to disk as CSVs." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -75,6 +75,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -110,8 +113,8 @@
 
     <div class="ref-description">
     
-    <p>Coerce Ensembl <code>rowData</code> to a <code>data.frame</code>, and drop any nested list columns
-(e.g. <code>entrezID</code>). Nested columns will fail to write to disk as CSVs.</p>
+    <p>Coerce gene annotations to a <code>tibble</code>, and keep only <code>atomic</code> columns.
+Complex columns (e.g. Entrez ID <code>list</code>) will fail to write to disk as CSVs.</p>
     
     </div>
 
@@ -128,64 +131,44 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>, without any nested <code>list</code> columns.</p>
+    <p><code>tbl_df</code>, containing only <code>atomic</code> columns.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Supports <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects.</p>
+    <p>Supports <code>GRanges</code> and <code>DataFrame</code> class objects.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Sanitization Functions: <code><a href='makeNames.html'>camel</a></code>,
-  <code><a href='collapseToString.html'>collapseToString</a></code>, <code><a href='fixNA.html'>fixNA</a></code>,
-  <code><a href='removeNA.html'>removeNA</a></code>, <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
+  <code><a href='collapseToString.html'>collapseToString</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
+  <code><a href='sanitizeNA.html'>sanitizeNA</a></code>,
+  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Genes ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"genes"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
-#&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh38"</span>
-#&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 65,256
-#&gt; Variables: 12
-#&gt; $ rowname        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
-#&gt; $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7, 7, ...
-#&gt; $ start          &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 169662007...
-#&gt; $ end            &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 169854080...
-#&gt; $ width          &lt;int&gt; 12883, 15084, 23689, 44637, 192074, 23214, 95627, 16...
-#&gt; $ strand         &lt;fct&gt; -, +, -, -, +, -, +, -, -, +, -, +, -, +, +, +, +, -...
-#&gt; $ broadClass     &lt;fct&gt; coding, coding, coding, coding, coding, coding, codi...
-#&gt; $ description    &lt;fct&gt; tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858], t...
-#&gt; $ geneBiotype    &lt;fct&gt; protein_coding, protein_coding, protein_coding, prot...
-#&gt; $ geneID         &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
-#&gt; $ geneName       &lt;fct&gt; TSPAN6, TNMD, DPM1, SCYL3, C1orf112, FGR, CFH, FUCA2...
-#&gt; $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome, chro...</div><div class='input'>
-<span class='co'># Transcripts ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></span>(<span class='st'>"Homo sapiens"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"transcripts"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
-#&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh38"</span>
-#&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'>sanitizeRowData</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 225,358
-#&gt; Variables: 18
-#&gt; $ rowname                &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST0...
-#&gt; $ seqnames               &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7, 11, ...
-#&gt; $ start                  &lt;int&gt; 127588345, 8940365, 64305578, 2794953, 72129...
-#&gt; $ end                    &lt;int&gt; 127591705, 8949955, 64316738, 2805423, 72148...
-#&gt; $ width                  &lt;int&gt; 3361, 9591, 11161, 10471, 18801, 17495, 1688...
-#&gt; $ strand                 &lt;fct&gt; +, -, +, +, -, +, -, -, -, +, +, -, -, -, +,...
-#&gt; $ broadClass             &lt;fct&gt; coding, coding, coding, coding, coding, codi...
-#&gt; $ description            &lt;fct&gt; ADP ribosylation factor 5 [Source:HGNC Symbo...
-#&gt; $ geneBiotype            &lt;fct&gt; protein_coding, protein_coding, protein_codi...
-#&gt; $ geneID                 &lt;fct&gt; ENSG00000004059, ENSG00000003056, ENSG000001...
-#&gt; $ geneName               &lt;fct&gt; ARF5, M6PR, ESRRA, FKBP4, CYP26B1, NDUFAF7, ...
-#&gt; $ seqCoordSystem         &lt;fct&gt; chromosome, chromosome, chromosome, chromoso...
-#&gt; $ transcriptBiotype      &lt;fct&gt; protein_coding, protein_coding, protein_codi...
-#&gt; $ transcriptCdsSeqEnd    &lt;int&gt; 127591299, 8946404, 64315966, 2803258, 72147...
-#&gt; $ transcriptCdsSeqStart  &lt;int&gt; 127588499, 8941818, 64307180, 2795140, 72132...
-#&gt; $ transcriptID           &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST0...
-#&gt; $ transcriptName         &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST0...
-#&gt; $ transcriptSupportLevel &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 5, 1,...</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>colnames</span>(<span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class'>mcols</a></span>(<span class='no'>from</span>))</div><div class='output co'>#&gt; [1] "broadClass"     "description"    "entrezID"       "geneBiotype"   
+#&gt; [5] "geneID"         "geneName"       "seqCoordSystem"</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeRowData</span>(<span class='no'>from</span>)
+<span class='fu'>vapply</span>(<span class='no'>to</span>, <span class='no'>is.atomic</span>, <span class='fu'>logical</span>(<span class='fl'>1L</span>))</div><div class='output co'>#&gt;        rowname       seqnames          start            end          width 
+#&gt;           TRUE           TRUE           TRUE           TRUE           TRUE 
+#&gt;         strand     broadClass    description    geneBiotype         geneID 
+#&gt;           TRUE           TRUE           TRUE           TRUE           TRUE 
+#&gt;       geneName seqCoordSystem 
+#&gt;           TRUE           TRUE </div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 12
+#&gt;    rowname seqnames  start    end  width strand broadClass description
+#&gt;    &lt;chr&gt;   &lt;fct&gt;     &lt;int&gt;  &lt;int&gt;  &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;      &lt;fct&gt;      
+#&gt;  1 ENSG00… X        1.01e8 1.01e8  12883 -      coding     tetraspani…
+#&gt;  2 ENSG00… X        1.01e8 1.01e8  15084 +      coding     tenomoduli…
+#&gt;  3 ENSG00… 20       5.09e7 5.10e7  23689 -      coding     dolichyl-p…
+#&gt;  4 ENSG00… 1        1.70e8 1.70e8  44637 -      coding     SCY1 like …
+#&gt;  5 ENSG00… 1        1.70e8 1.70e8 192074 +      coding     chromosome…
+#&gt;  6 ENSG00… 1        2.76e7 2.76e7  23214 -      coding     FGR proto-…
+#&gt;  7 ENSG00… 1        1.97e8 1.97e8  95627 +      coding     complement…
+#&gt;  8 ENSG00… 6        1.43e8 1.44e8  16880 -      coding     alpha-L-fu…
+#&gt;  9 ENSG00… 6        5.35e7 5.36e7 119630 -      coding     glutamate-…
+#&gt; 10 ENSG00… 6        4.11e7 4.11e7  27032 +      coding     nuclear tr…
+#&gt; # ... with 90 more rows, and 4 more variables: geneBiotype &lt;fct&gt;, geneID &lt;chr&gt;,
+#&gt; #   geneName &lt;fct&gt;, seqCoordSystem &lt;fct&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

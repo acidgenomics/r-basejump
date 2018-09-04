@@ -86,87 +86,105 @@ NULL
 
 
 
-# atomic =======================================================================
-#' @rdname makeNames
-#' @param names `atomic` to be coerced to syntactically valid names. Will be
-#'   coerced to `character`, if necessary.
-#' @param unique `boolean`. If `TRUE`, the resulting elements are unique.
-#' @export
-makeNames <- function(names, unique = FALSE) {
-    assert_is_atomic(names)
-    assert_is_a_bool(unique)
-    names <- as.character(names)
-    names <- make.names(names, unique = unique)
-    names <- gsub("\\.", "_", names)
-    names
-}
-
-
-
+# Constructors =================================================================
 .camel <- function(
     object,
     format = c("lower", "upper"),
     strict = FALSE
 ) {
-    object <- .dotted(object)
+    object <- dotted(object)
     format <- match.arg(format)
     assert_is_a_bool(strict)
 
-
+    # Simplify mixed case acronyms in strict mode.
     if (isTRUE(strict)) {
         object <- tolower(object)
     }
 
-    # lowerCamelCase or UpperCamelCase
+    # lowerCamelCase or UpperCamelCase.
     if (format == "lower") {
         # lowerCamelCase
-        # Coerce first word to lower
+        # Coerce first word to lower.
         object <- gsub("^(\\w+)\\b", "\\L\\1", object, perl = TRUE)
     } else if (format == "upper") {
         # UpperCamelCase
-        # Capitalize the first letter
+        # Capitalize the first letter.
         object <- gsub("^([a-z])", replacement = "\\U\\1", object, perl = TRUE)
     }
 
-    # Check for the presence of delimited numbers (e.g. 1,000,000)
+    # Check for the presence of delimited numbers (e.g. 100.00).
     pattern <- "([0-9])\\.([0-9])"
-    replacement <- "\\1x\\2"
+    if (isTRUE(strict)) {
+        if (format == "lower") {
+            replacement <- "x"
+        } else if (format == "upper") {
+            replacement <- "X"
+        }
+    } else {
+        replacement <- "."
+    }
+    replacement <- paste0("\\1", replacement, "\\2")
     if (any(grepl(pattern, object))) {
         object <- object %>%
-            # Escape number separators (useful for keeping decimals, etc.)
+            # Escape number separators (useful for keeping decimals, etc.).
             gsub(pattern, replacement, .) %>%
-            # Have to run twice here otherwise it will miss some matches
+            # Have to run twice here otherwise it will miss some matches.
             gsub(pattern, replacement, .)
     }
 
-    object %>%
-        # First letter of second plus words must be capitalized
-        gsub("\\.(\\w)", "\\U\\1", ., perl = TRUE)
+    # Remove dots in between numbers following a letter.
+    object <- gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", object)
+
+    # First letter of second word must be capitalized.
+    object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
+
+    object
 }
 
 
 
-# Dotted case is the internal method used by camel and snake
+.camel.names <- function(object, strict = FALSE) {  # nolint
+    assert_has_names(object)
+    names(object) <- camel(names(object), strict = strict)
+    object
+}
+
+
+
+# Dotted case is the internal method used by camel and snake.
 .dotted <- function(object) {
     assert_is_atomic(object)
     object %>%
         as.character() %>%
+        # Handle "%" as a special case. Spell out as "percent".
+        gsub("%", "percent", .) %>%
+        # Strip comma delims in between numbers (e.g. 1,000,000).
+        gsub("(\\d),(\\d)", "\\1\\2", .) %>%
         make.names(unique = FALSE, allow_ = FALSE) %>%
-        # Convert non-alphanumeric characters to dots
+        # Ensure all non-alphanumeric characters get coerced to periods.
         gsub("[^[:alnum:]]", ".", .) %>%
-        # Combine multiple dots
+        # Combine multiple dots.
         gsub("[\\.]+", ".", .) %>%
-        # Strip leading or trailing dots
+        # Strip leading or trailing dots.
         gsub("(^\\.|\\.$)", "", .) %>%
-        # Coerce `"NA"` back to `NA` after `make.names()`
-        fixNA() %>%
+        # Coerce `"NA"` back to `NA` after `make.names()`.
+        sanitizeNA() %>%
+        # Standardize any mixed case acronyms.
         .sanitizeAcronyms() %>%
         # Establish word boundaries for camelCase acronyms
-        # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`)
-        # Acronym following a word
+        # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`).
+        # Acronym following a word.
         gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
-        # Word following an acronym
+        # Word following an acronym.
         gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
+}
+
+
+
+.dotted.names <- function(object) {  # nolint
+    assert_has_names(object)
+    names(object) <- dotted(names(object))
+    object
 }
 
 
@@ -175,9 +193,9 @@ makeNames <- function(names, unique = FALSE) {
     assert_is_atomic(object)
     object %>%
         as.character() %>%
-        # Ensure "id" is always "ID"
+        # Ensure "id" is always "ID".
         gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
-        # Sanitize mixed case scientific acronyms
+        # Sanitize mixed case scientific acronyms.
         gsub("\\b(mRNA)\\b", "MRNA", .) %>%
         gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
         gsub("\\b(ncRNA)\\b", "NCRNA", .) %>%
@@ -191,32 +209,9 @@ makeNames <- function(names, unique = FALSE) {
 .snake <- function(object) {
     assert_is_atomic(object)
     object %>%
-        .dotted() %>%
+        dotted() %>%
         tolower() %>%
         gsub("\\.", "_", .)
-}
-
-
-
-.upperCamel <- function(object, strict = FALSE) {
-    .camel(object, format = "upper", strict = strict)
-}
-
-
-
-# names (character) ============================================================
-.camel.names <- function(object, strict = FALSE) {  # nolint
-    assert_has_names(object)
-    names(object) <- camel(names(object), strict = strict)
-    object
-}
-
-
-
-.dotted.names <- function(object) {  # nolint
-    assert_has_names(object)
-    names(object) <- dotted(names(object))
-    object
 }
 
 
@@ -229,6 +224,12 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
+.upperCamel <- function(object, strict = FALSE) {
+    .camel(object, format = "upper", strict = strict)
+}
+
+
+
 .upperCamel.names <- function(object, strict = FALSE) {  # nolint
     assert_has_names(object)
     names(object) <- upperCamel(names(object), strict = strict)
@@ -237,13 +238,92 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
+# atomic =======================================================================
+#' @rdname makeNames
+#' @inheritParams base::make.names
+#' @export
+makeNames <- function(names, unique = FALSE) {
+    assert_is_atomic(names)
+    assert_is_a_bool(unique)
+    names <- as.character(names)
+    names <- make.names(names, unique = unique)
+    names <- gsub("\\.", "_", names)
+    names
+}
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("atomic"),
+    definition = function(object, strict = FALSE) {
+        if (!is.null(names(object))) {
+            .camel.names(object, strict = strict)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "dotted",
+    signature = signature("atomic"),
+    definition = function(object) {
+        if (!is.null(names(object))) {
+            .dotted.names(object)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "snake",
+    signature = signature("atomic"),
+    definition = function(object) {
+        if (!is.null(names(object))) {
+            .snake.names(object)
+        } else {
+            object
+        }
+    }
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "upperCamel",
+    signature = signature("atomic"),
+    definition = function(object, strict = FALSE) {
+        if (!is.null(names(object))) {
+            .upperCamel.names(object, strict = strict)
+        } else {
+            object
+        }
+    }
+)
+
+
+
 # character ====================================================================
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("character"),
-    function(object, strict = FALSE) {
+    f = "camel",
+    signature = signature("character"),
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .camel(names(object), strict = strict)
         } else {
@@ -260,9 +340,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("character"),
-    function(object) {
+    f = "dotted",
+    signature = signature("character"),
+    definition = function(object) {
         if (!is.null(names(object))) {
             names <- .dotted(names(object))
         } else {
@@ -279,9 +359,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("character"),
-    function(object) {
+    f = "snake",
+    signature = signature("character"),
+    definition = function(object) {
         if (!is.null(names(object))) {
             names <- .snake(names(object))
         } else {
@@ -298,9 +378,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("character"),
-    function(object, strict = FALSE) {
+    f = "upperCamel",
+    signature = signature("character"),
+    definition = function(object, strict = FALSE) {
         if (!is.null(names(object))) {
             names <- .upperCamel(names(object), strict = strict)
         } else {
@@ -318,9 +398,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("factor"),
-    function(object, strict = FALSE) {
+    f = "camel",
+    signature = signature("factor"),
+    definition = function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -336,9 +416,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("factor"),
-    function(object) {
+    f = "dotted",
+    signature = signature("factor"),
+    definition = function(object) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -354,9 +434,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("factor"),
-    function(object) {
+    f = "snake",
+    signature = signature("factor"),
+    definition = function(object) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -372,9 +452,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("factor"),
-    function(object, strict = FALSE) {
+    f = "upperCamel",
+    signature = signature("factor"),
+    definition = function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -466,8 +546,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("matrix"),
+    f = "camel",
+    signature = signature("matrix"),
     .camel.matrix
 )
 
@@ -476,8 +556,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("matrix"),
+    f = "dotted",
+    signature = signature("matrix"),
     .dotted.matrix
 )
 
@@ -486,8 +566,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("matrix"),
+    f = "snake",
+    signature = signature("matrix"),
     .snake.matrix
 )
 
@@ -496,8 +576,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("matrix"),
+    f = "upperCamel",
+    signature = signature("matrix"),
     .upperCamel.matrix
 )
 
@@ -507,9 +587,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("data.frame"),
-    getMethod("camel", "matrix")
+    f = "camel",
+    signature = signature("data.frame"),
+    definition = getMethod("camel", "matrix")
 )
 
 
@@ -517,9 +597,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("data.frame"),
-    getMethod("dotted", "matrix")
+    f = "dotted",
+    signature = signature("data.frame"),
+    definition = getMethod("dotted", "matrix")
 )
 
 
@@ -527,9 +607,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("data.frame"),
-    getMethod("snake", "matrix")
+    f = "snake",
+    signature = signature("data.frame"),
+    definition = getMethod("snake", "matrix")
 )
 
 
@@ -537,9 +617,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("data.frame"),
-    getMethod("upperCamel", "matrix")
+    f = "upperCamel",
+    signature = signature("data.frame"),
+    definition = getMethod("upperCamel", "matrix")
 )
 
 
@@ -548,9 +628,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("DataFrame"),
-    getMethod("camel", "data.frame")
+    f = "camel",
+    signature = signature("DataFrame"),
+    definition = getMethod("camel", "data.frame")
 )
 
 
@@ -558,9 +638,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("DataFrame"),
-    getMethod("dotted", "data.frame")
+    f = "dotted",
+    signature = signature("DataFrame"),
+    definition = getMethod("dotted", "data.frame")
 )
 
 
@@ -568,9 +648,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("DataFrame"),
-    getMethod("snake", "data.frame")
+    f = "snake",
+    signature = signature("DataFrame"),
+    definition = getMethod("snake", "data.frame")
 )
 
 
@@ -578,9 +658,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("DataFrame"),
-    getMethod("upperCamel", "data.frame")
+    f = "upperCamel",
+    signature = signature("DataFrame"),
+    definition = getMethod("upperCamel", "data.frame")
 )
 
 
@@ -589,12 +669,13 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("GRanges"),
-    function(object, strict = FALSE) {
-        colnames <- colnames(mcols(object))
-        colnames <- camel(colnames, strict = strict)
-        colnames(mcols(object)) <- colnames
+    f = "camel",
+    signature = signature("GRanges"),
+    definition = function(object, strict = FALSE) {
+        colnames(mcols(object)) <- camel(
+            object = colnames(mcols(object)),
+            strict = strict
+        )
         object
     }
 )
@@ -604,12 +685,12 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("GRanges"),
-    function(object) {
-        colnames <- colnames(mcols(object))
-        colnames <- dotted(colnames)
-        colnames(mcols(object)) <- colnames
+    f = "dotted",
+    signature = signature("GRanges"),
+    definition = function(object) {
+        colnames(mcols(object)) <- dotted(
+            object = colnames(mcols(object))
+        )
         object
     }
 )
@@ -619,12 +700,12 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("GRanges"),
-    function(object) {
-        colnames <- colnames(mcols(object))
-        colnames <- snake(colnames)
-        colnames(mcols(object)) <- colnames
+    f = "snake",
+    signature = signature("GRanges"),
+    definition = function(object) {
+        colnames(mcols(object)) <- snake(
+            object = colnames(mcols(object))
+        )
         object
     }
 )
@@ -634,14 +715,56 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("GRanges"),
-    function(object, strict = FALSE) {
-        colnames <- colnames(mcols(object))
-        colnames <- upperCamel(colnames, strict = strict)
-        colnames(mcols(object)) <- colnames
+    f = "upperCamel",
+    signature = signature("GRanges"),
+    definition = function(object, strict = FALSE) {
+        colnames(mcols(object)) <- upperCamel(
+            object = colnames(mcols(object)),
+            strict = strict
+        )
         object
     }
+)
+
+
+
+# CompressedGRangesList ========================================================
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("camel", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "dotted",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("dotted", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "snake",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("snake", "GRanges")
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "upperCamel",
+    signature = signature("CompressedGRangesList"),
+    definition = getMethod("upperCamel", "GRanges")
 )
 
 
@@ -650,8 +773,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("list"),
+    f = "camel",
+    signature = signature("list"),
     .camel.names
 )
 
@@ -660,8 +783,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("list"),
+    f = "dotted",
+    signature = signature("list"),
     .dotted.names
 )
 
@@ -670,8 +793,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("list"),
+    f = "snake",
+    signature = signature("list"),
     .snake.names
 )
 
@@ -680,8 +803,8 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("list"),
+    f = "upperCamel",
+    signature = signature("list"),
     .upperCamel.names
 )
 
@@ -691,9 +814,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("List"),
-    getMethod("camel", "list")
+    f = "camel",
+    signature = signature("List"),
+    definition = getMethod("camel", "list")
 )
 
 
@@ -701,9 +824,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("List"),
-    getMethod("dotted", "list")
+    f = "dotted",
+    signature = signature("List"),
+    definition = getMethod("dotted", "list")
 )
 
 
@@ -711,9 +834,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("List"),
-    getMethod("snake", "list")
+    f = "snake",
+    signature = signature("List"),
+    definition = getMethod("snake", "list")
 )
 
 
@@ -721,9 +844,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("List"),
-    getMethod("upperCamel", "list")
+    f = "upperCamel",
+    signature = signature("List"),
+    definition = getMethod("upperCamel", "list")
 )
 
 
@@ -732,9 +855,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("SimpleList"),
-    getMethod("camel", "list")
+    f = "camel",
+    signature = signature("SimpleList"),
+    definition = getMethod("camel", "list")
 )
 
 
@@ -742,9 +865,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("SimpleList"),
-    getMethod("dotted", "list")
+    f = "dotted",
+    signature = signature("SimpleList"),
+    definition = getMethod("dotted", "list")
 )
 
 
@@ -752,9 +875,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("SimpleList"),
-    getMethod("snake", "list")
+    f = "snake",
+    signature = signature("SimpleList"),
+    definition = getMethod("snake", "list")
 )
 
 
@@ -762,9 +885,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("SimpleList"),
-    getMethod("upperCamel", "list")
+    f = "upperCamel",
+    signature = signature("SimpleList"),
+    definition = getMethod("upperCamel", "list")
 )
 
 
@@ -773,9 +896,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "camel",
-    signature("ANY"),
-    function(
+    f = "camel",
+    signature = signature("ANY"),
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE,
@@ -783,15 +906,13 @@ setMethod(
     ) {
         if (!is.null(dimnames(object))) {
             .camel.matrix(
-                object,
+                object = object,
                 rownames = rownames,
                 colnames = colnames,
                 strict = strict
             )
-        } else if (!is.null(names(object))) {
-            .camel.names(object, strict = strict)
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -801,23 +922,21 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "dotted",
-    signature("ANY"),
-    function(
+    f = "dotted",
+    signature = signature("ANY"),
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE
     ) {
         if (!is.null(dimnames(object))) {
             .dotted.matrix(
-                object,
+                object = object,
                 rownames = rownames,
                 colnames = colnames
             )
-        } else if (!is.null(names(object))) {
-            .dotted.names(object)
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -827,24 +946,21 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "snake",
-    signature("ANY"),
-    function(
+    f = "snake",
+    signature = signature("ANY"),
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE
     ) {
-        # Passthrough: rownames, colnames
         if (!is.null(dimnames(object))) {
             .snake.matrix(
-                object,
+                object = object,
                 rownames = rownames,
                 colnames = colnames
             )
-        } else if (!is.null(names(object))) {
-            .snake.names(object)
         } else {
-            object
+            object  # nocov
         }
     }
 )
@@ -854,9 +970,9 @@ setMethod(
 #' @rdname makeNames
 #' @export
 setMethod(
-    "upperCamel",
-    signature("ANY"),
-    function(
+    f = "upperCamel",
+    signature = signature("ANY"),
+    definition = function(
         object,
         rownames = FALSE,
         colnames = TRUE,
@@ -864,15 +980,13 @@ setMethod(
     ) {
         if (!is.null(dimnames(object))) {
             .upperCamel.matrix(
-                object,
+                object = object,
                 rownames = rownames,
                 colnames = colnames,
                 strict = strict
             )
-        } else if (!is.null(names(object))) {
-            .upperCamel.names(object, strict = strict)
         } else {
-            object
+            object  # nocov
         }
     }
 )

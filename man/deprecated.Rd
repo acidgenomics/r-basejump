@@ -19,6 +19,12 @@
 \alias{geomean}
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
+\alias{assertIsURL}
+\alias{aggregateFeatures}
+\alias{aggregateReplicates}
+\alias{assertIsCharacterOrNULL}
+\alias{assertIsDataFrameOrNULL}
+\alias{fixNA}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -54,9 +60,23 @@ geomean(...)
 midnightTheme(...)
 
 paperwhiteTheme(...)
+
+assertIsURL(...)
+
+aggregateFeatures(...)
+
+aggregateReplicates(...)
+
+assertIsCharacterOrNULL(object, ...)
+
+assertIsDataFrameOrNULL(object, ...)
+
+fixNA(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
+
+\item{object}{Object.}
 }
 \value{
 \code{\link[=.Deprecated]{.Deprecated()}}.

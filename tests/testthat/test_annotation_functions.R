@@ -1,71 +1,73 @@
 context("Annotation Functions")
 
+release <- 87L
+
 
 
 # annotable ====================================================================
 test_that("annotable", {
-    x <- annotable("Homo sapiens", release = ensemblRelease)
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(63970L, 12L))
-    expect_identical(rownames(x)[[1L]], "ENSG00000000003")
+    object <- annotable("Homo sapiens", release = release)
+    expect_is(object, "tbl_df")
+    expect_true("rowname" %in% colnames(object))
+    expect_identical(dim(object), c(63970L, 13L))
+    expect_identical(object[["rowname"]][[1L]], "ENSG00000000003")
 })
 
 
 
 # broadClass ===================================================================
-test_that("broadClass", {
-    # GRanges
-    expect_is(
-        broadClass(makeGRangesFromEnsembl("Homo sapiens")),
-        "factor"
+with_parameters_test_that(
+    "broadClass", {
+        expect_is(broadClass(object), "factor")
+    },
+    object = list(
+        GRanges = makeGRangesFromEnsembl("Homo sapiens"),
+        SummarizedExperiment = rse_small
     )
-
-    # SummarizedExperiment
-    expect_is(
-        broadClass(rse_bcb),
-        "factor"
-    )
-})
+)
 
 
 
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : character", {
-    x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-    y <- c(
-        "ENSMUSG00000000001" = "Gnai3",
-        "ENSMUSG00000000003" = "Pbsn"
+    object <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+    expected <- c(
+        ENSMUSG00000000001 = "Gnai3",
+        ENSMUSG00000000003 = "Pbsn"
     )
 
-    # gene2symbol (recommended)
-    gene2symbol <- makeGene2symbolFromEnsembl(
-        organism = "Mus musculus",
-        release = ensemblRelease
-    )
+    # Using automatic organism detection (AnnotationHub).
     expect_identical(
-        convertGenesToSymbols(x, gene2symbol = gene2symbol),
-        y
+        convertGenesToSymbols(object, release = release),
+        expected = expected
     )
 
-    # organism
+    # Using organism (AnnotationHub).
     expect_identical(
-        convertGenesToSymbols(
-            x,
+        object = convertGenesToSymbols(
+            object = object,
             organism = "Mus musculus",
-            release = ensemblRelease
+            release = release
         ),
-        y
+        expected = expected
     )
 
-    # No tx2gene or organism
+    # Using gene2symbol DataFrame.
+    g2s <- makeGene2symbolFromEnsembl(
+        organism = "Mus musculus",
+        release = release
+    )
     expect_identical(
-        convertGenesToSymbols(x, release = ensemblRelease),
-        y
+        object = convertGenesToSymbols(
+            object = object,
+            gene2symbol = g2s
+        ),
+        expected = expected
     )
 })
 
 test_that("convertGenesToSymbols : matrix", {
-    x <- matrix(
+    object <- matrix(
         data = seq(1L:4L),
         byrow = TRUE,
         nrow = 2L,
@@ -76,9 +78,10 @@ test_that("convertGenesToSymbols : matrix", {
         )
     )
     expect_identical(
-        convertGenesToSymbols(x, release = ensemblRelease) %>%
+        object = object %>%
+            convertGenesToSymbols(release = release) %>%
             rownames(),
-        c(
+        expected = c(
             "ENSMUSG00000000001" = "Gnai3",
             "ENSMUSG00000000003" = "Pbsn"
         )
@@ -87,22 +90,22 @@ test_that("convertGenesToSymbols : matrix", {
 
 test_that("convertGenesToSymbols : FASTA spike-in support", {
     # Specify organism (to handle FASTA spike-ins (e.g. EGFP)
-    x <- c("EGFP", "ENSMUSG00000000001")
+    object <- c("EGFP", "ENSMUSG00000000001")
     expect_identical(
-        suppressWarnings(
+        object = suppressWarnings(
             convertGenesToSymbols(
-                object = x,
+                object = object,
                 organism = "Mus musculus",
-                release = ensemblRelease
+                release = release
             )
         ),
-        c(EGFP = "EGFP", "ENSMUSG00000000001" = "Gnai3")
+        expected = c(EGFP = "EGFP", "ENSMUSG00000000001" = "Gnai3")
     )
 })
 
 test_that("convertGenesToSymbols : Invalid identifiers", {
     expect_warning(
-        convertGenesToSymbols("ENSMUSG00000000000", release = ensemblRelease),
+        convertGenesToSymbols("ENSMUSG00000000000", release = release),
         "Failed to match genes: ENSMUSG00000000000"
     )
     expect_error(
@@ -119,8 +122,8 @@ test_that("convertGenesToSymbols : Invalid identifiers", {
 
 # convertTranscriptsToGenes ====================================================
 test_that("convertTranscriptsToGenes : character", {
-    x <- c("ENSMUST00000000001", "ENSMUST00000000003")
-    y <- c(
+    object <- c("ENSMUST00000000001", "ENSMUST00000000003")
+    expected <- c(
         "ENSMUST00000000001" = "ENSMUSG00000000001",
         "ENSMUST00000000003" = "ENSMUSG00000000003"
     )
@@ -128,32 +131,32 @@ test_that("convertTranscriptsToGenes : character", {
     # tx2gene (recommended)
     tx2gene <- makeTx2geneFromEnsembl(
         organism = "Mus musculus",
-        release = ensemblRelease
+        release = release
     )
     expect_identical(
-        convertTranscriptsToGenes(x, tx2gene = tx2gene),
-        y
+        object = convertTranscriptsToGenes(object, tx2gene = tx2gene),
+        expected = expected
     )
 
     # organism
     expect_identical(
-        convertTranscriptsToGenes(
-            x,
+        object = convertTranscriptsToGenes(
+            object = object,
             organism = "Mus musculus",
-            release = ensemblRelease
+            release = release
         ),
-        y
+        expected = expected
     )
 
-    # No tx2gene or organism
+    # No tx2gene or organism.
     expect_identical(
-        convertTranscriptsToGenes(x, release = ensemblRelease),
-        y
+        object = convertTranscriptsToGenes(object, release = release),
+        expected = expected
     )
 })
 
 test_that("convertTranscriptsToGenes : matrix", {
-    mat <- matrix(
+    object <- matrix(
         data = seq(1L:8L),
         byrow = TRUE,
         nrow = 4L,
@@ -169,14 +172,15 @@ test_that("convertTranscriptsToGenes : matrix", {
         )
     )
     expect_error(
-        convertTranscriptsToGenes(mat, release = ensemblRelease),
-        "Failed to match transcripts: ENSMUST00000000000"
+        object = convertTranscriptsToGenes(object, release = release),
+        regexp = "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_identical(
-        mat[2L:4L, ] %>%
+        object = object %>%
+            .[2L:4L, ] %>%
             convertTranscriptsToGenes() %>%
             rownames(),
-        c(
+        expected = c(
             "ENSMUST00000000001" = "ENSMUSG00000000001",
             "ENSMUST00000000003" = "ENSMUSG00000000003",
             "ENSMUST00000114041" = "ENSMUSG00000000003"
@@ -186,19 +190,19 @@ test_that("convertTranscriptsToGenes : matrix", {
 
 test_that("convertTranscriptsToGenes : Invalid params", {
     expect_error(
-        convertTranscriptsToGenes(
+        object = convertTranscriptsToGenes(
             c("ENSMUST00000000000", "ENSMUST00000000001"),
-            release = ensemblRelease
+            release = release
         ),
-        "Failed to match transcripts: ENSMUST00000000000"
+        regexp = "Failed to match transcripts: ENSMUST00000000000"
     )
     expect_error(
-        convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
-        "is_non_missing_nor_empty_character :"
+        object = convertTranscriptsToGenes(c("ENSMUSG00000000001", NA)),
+        regexp = "is_non_missing_nor_empty_character :"
     )
     expect_error(
-        convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
-        "is_non_missing_nor_empty_character :"
+        object = convertTranscriptsToGenes(c("ENSMUSG00000000001", "")),
+        regexp = "is_non_missing_nor_empty_character :"
     )
 })
 
@@ -207,20 +211,20 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 # convertUCSCBuildToEnsembl ====================================================
 test_that("convertUCSCBuildToEnsembl", {
     expect_identical(
-        convertUCSCBuildToEnsembl("hg19"),
-        c(hg19 = "GRCh37")
+        object = convertUCSCBuildToEnsembl("hg19"),
+        expected = c(hg19 = "GRCh37")
     )
     expect_identical(
-        convertUCSCBuildToEnsembl("hg38"),
-        c(hg38 = "GRCh38")
+        object = convertUCSCBuildToEnsembl("hg38"),
+        expected = c(hg38 = "GRCh38")
     )
     expect_identical(
-        convertUCSCBuildToEnsembl("mm10"),
-        c(mm10 = "GRCm38")
+        object = convertUCSCBuildToEnsembl("mm10"),
+        expected = c(mm10 = "GRCm38")
     )
-    expect_identical(
-        convertUCSCBuildToEnsembl("XXX"),
-        NULL
+    expect_error(
+        object = convertUCSCBuildToEnsembl("XXX"),
+        regexp = "Failed to match UCSC"
     )
 })
 
@@ -228,90 +232,90 @@ test_that("convertUCSCBuildToEnsembl", {
 
 # detectOrganism ===============================================================
 test_that("detectOrganism : Homo sapiens", {
-    x <- "Homo sapiens"
-    expect_identical(x, detectOrganism("Homo sapiens"))
-    expect_identical(x, detectOrganism("hsapiens"))
-    expect_identical(x, detectOrganism("GRCh38"))
-    expect_identical(x, detectOrganism("grch38"))
-    expect_identical(x, detectOrganism("hg38"))
-    expect_identical(x, detectOrganism("ENSG00000000001"))
-    expect_identical(x, detectOrganism("ENST00000000001"))
+    object <- "Homo sapiens"
+    expect_identical(object, detectOrganism("Homo sapiens"))
+    expect_identical(object, detectOrganism("hsapiens"))
+    expect_identical(object, detectOrganism("GRCh38"))
+    expect_identical(object, detectOrganism("grch38"))
+    expect_identical(object, detectOrganism("hg38"))
+    expect_identical(object, detectOrganism("ENSG00000000001"))
+    expect_identical(object, detectOrganism("ENST00000000001"))
 })
 
 test_that("detectOrganism : Mus musculus", {
-    x <- "Mus musculus"
-    expect_identical(x, detectOrganism("Mus musculus"))
-    expect_identical(x, detectOrganism("mmusculus"))
-    expect_identical(x, detectOrganism("GRCm38"))
-    expect_identical(x, detectOrganism("grcm38"))
-    expect_identical(x, detectOrganism("mm10"))
-    expect_identical(x, detectOrganism("ENSMUSG00000000001"))
-    expect_identical(x, detectOrganism("ENSMUST00000000001"))
+    object <- "Mus musculus"
+    expect_identical(object, detectOrganism("Mus musculus"))
+    expect_identical(object, detectOrganism("mmusculus"))
+    expect_identical(object, detectOrganism("GRCm38"))
+    expect_identical(object, detectOrganism("grcm38"))
+    expect_identical(object, detectOrganism("mm10"))
+    expect_identical(object, detectOrganism("ENSMUSG00000000001"))
+    expect_identical(object, detectOrganism("ENSMUST00000000001"))
 })
 
 test_that("detectOrganism : Rattus norvegicus", {
-    x <- "Rattus norvegicus"
-    expect_identical(x, detectOrganism("Rattus norvegicus"))
-    expect_identical(x, detectOrganism("rnorvegicus"))
-    expect_identical(x, detectOrganism("ENSRNOG00000000001"))
-    expect_identical(x, detectOrganism("ENSRNOT00000000001"))
+    object <- "Rattus norvegicus"
+    expect_identical(object, detectOrganism("Rattus norvegicus"))
+    expect_identical(object, detectOrganism("rnorvegicus"))
+    expect_identical(object, detectOrganism("ENSRNOG00000000001"))
+    expect_identical(object, detectOrganism("ENSRNOT00000000001"))
 })
 
 test_that("detectOrganism : Danio rerio", {
-    x <- "Danio rerio"
-    expect_identical(x, detectOrganism("Danio rerio"))
-    expect_identical(x, detectOrganism("drerio"))
-    expect_identical(x, detectOrganism("GRCz10"))
-    expect_identical(x, detectOrganism("danRer10"))
-    expect_identical(x, detectOrganism("ENSDARG00000000001"))
-    expect_identical(x, detectOrganism("ENSDART00000000001"))
+    object <- "Danio rerio"
+    expect_identical(object, detectOrganism("Danio rerio"))
+    expect_identical(object, detectOrganism("drerio"))
+    expect_identical(object, detectOrganism("GRCz10"))
+    expect_identical(object, detectOrganism("danRer10"))
+    expect_identical(object, detectOrganism("ENSDARG00000000001"))
+    expect_identical(object, detectOrganism("ENSDART00000000001"))
 })
 
 test_that("detectOrganism : Drosophila melanogaster", {
-    x <- "Drosophila melanogaster"
-    expect_identical(x, detectOrganism("Drosophila melanogaster"))
-    expect_identical(x, detectOrganism("dmelanogaster"))
-    expect_identical(x, detectOrganism("BDGP6"))
-    expect_identical(x, detectOrganism("dm6"))
-    expect_identical(x, detectOrganism("FBgn0000001"))
-    expect_identical(x, detectOrganism("FBtr0000001"))
+    object <- "Drosophila melanogaster"
+    expect_identical(object, detectOrganism("Drosophila melanogaster"))
+    expect_identical(object, detectOrganism("dmelanogaster"))
+    expect_identical(object, detectOrganism("BDGP6"))
+    expect_identical(object, detectOrganism("dm6"))
+    expect_identical(object, detectOrganism("FBgn0000001"))
+    expect_identical(object, detectOrganism("FBtr0000001"))
 })
 
 test_that("detectOrganism : Caenorhabditis elegans", {
-    x <- "Caenorhabditis elegans"
-    expect_identical(x, detectOrganism("Caenorhabditis elegans"))
-    expect_identical(x, detectOrganism("celegans"))
-    expect_identical(x, detectOrganism("WBcel235"))
-    expect_identical(x, detectOrganism("ce11"))
-    expect_identical(x, detectOrganism("WBGene00000001"))
+    object <- "Caenorhabditis elegans"
+    expect_identical(object, detectOrganism("Caenorhabditis elegans"))
+    expect_identical(object, detectOrganism("celegans"))
+    expect_identical(object, detectOrganism("WBcel235"))
+    expect_identical(object, detectOrganism("ce11"))
+    expect_identical(object, detectOrganism("WBGene00000001"))
 })
 
 test_that("detectOrganism : Gallus gallus", {
-    x <- "Gallus gallus"
-    expect_identical(x, detectOrganism("Gallus gallus"))
-    expect_identical(x, detectOrganism("ggallus"))
-    expect_identical(x, detectOrganism("ENSGALG00000000001"))
-    expect_identical(x, detectOrganism("ENSGALT00000000001"))
+    object <- "Gallus gallus"
+    expect_identical(object, detectOrganism("Gallus gallus"))
+    expect_identical(object, detectOrganism("ggallus"))
+    expect_identical(object, detectOrganism("ENSGALG00000000001"))
+    expect_identical(object, detectOrganism("ENSGALT00000000001"))
 })
 
 test_that("detectOrganism : Ovis aries", {
-    x <- "Ovis aries"
-    expect_identical(x, detectOrganism("Ovis aries"))
-    expect_identical(x, detectOrganism("oaries"))
-    expect_identical(x, detectOrganism("ENSOARG00000000001"))
-    expect_identical(x, detectOrganism("ENSOART00000000001"))
+    object <- "Ovis aries"
+    expect_identical(object, detectOrganism("Ovis aries"))
+    expect_identical(object, detectOrganism("oaries"))
+    expect_identical(object, detectOrganism("ENSOARG00000000001"))
+    expect_identical(object, detectOrganism("ENSOART00000000001"))
 })
 
 test_that("detectOrganism : Multiple organisms", {
-    x <- c(
+    object <- c(
         "ENSG00000000001",
         "ENSG00000000002",
         "ENSMUSG00000000001",
         "ENSMUSG00000000002"
     )
     expect_identical(
-        suppressWarnings(detectOrganism(x, unique = FALSE)),
-        c(
+        object = suppressWarnings(detectOrganism(object, unique = FALSE)),
+        expected = c(
             "ENSG00000000001" = "Homo sapiens",
             "ENSG00000000002" = "Homo sapiens",
             "ENSMUSG00000000001" = "Mus musculus",
@@ -319,34 +323,35 @@ test_that("detectOrganism : Multiple organisms", {
         )
     )
     expect_identical(
-        suppressWarnings(detectOrganism(x, unique = TRUE)),
-        c("Homo sapiens", "Mus musculus")
+        object = suppressWarnings(detectOrganism(object, unique = TRUE)),
+        expected = c("Homo sapiens", "Mus musculus")
     )
     expect_warning(
-        detectOrganism(x),
-        "Multiple organisms detected"
+        object = detectOrganism(object),
+        regexp = "Multiple organisms detected"
     )
 })
 
 test_that("detectOrganism : Detection failure", {
     expect_error(
-        detectOrganism("XXX"),
-        "Failed to detect organism"
+        object = detectOrganism("XXX"),
+        regexp = "Failed to detect organism"
     )
 })
 
 test_that("detectOrganism : matrix", {
+    object <- mat
     expect_identical(
-        detectOrganism(mat),
-        "Homo sapiens"
+        object = detectOrganism(object),
+        expected = "Homo sapiens"
     )
 })
 
 test_that("detectOrganism : tbl_df", {
-    x <- as(mat, "tbl_df")
-    expect_true("rowname" %in% colnames(x))
+    object <- as(mat, "tbl_df")
+    expect_true("rowname" %in% colnames(object))
     expect_identical(
-        detectOrganism(x),
+        detectOrganism(object),
         "Homo sapiens"
     )
 })
@@ -355,15 +360,15 @@ test_that("detectOrganism : tbl_df", {
 
 # eggnog =======================================================================
 test_that("eggnog", {
-    x <- eggnog()
-    expect_is(x, "list")
+    object <- eggnog()
+    expect_is(object, "list")
     expect_identical(
-        names(x),
-        c("cogFunctionalCategories", "annotations")
+        object = names(object),
+        expected = c("cogFunctionalCategories", "annotations")
     )
     expect_identical(
-        lapply(x, colnames),
-        list(
+        object = lapply(object, colnames),
+        expected = list(
             cogFunctionalCategories = c(
                 "letter",
                 "description"
@@ -381,14 +386,14 @@ test_that("eggnog", {
 
 # emptyRanges ==================================================================
 test_that("emptyRanges", {
-    x <- emptyRanges("XXX")
+    object <- emptyRanges("XXX")
     expect_identical(
-        levels(seqnames(x)),
-        "unknown"
+        object = levels(seqnames(object)),
+        expected = "unknown"
     )
     expect_identical(
-        IRanges::ranges(x),
-        IRanges::IRanges(
+        object = IRanges::ranges(object),
+        expected = IRanges::IRanges(
             start = 1L,
             end = 100L,
             names = "XXX"
@@ -397,71 +402,67 @@ test_that("emptyRanges", {
 })
 
 test_that("emptyRanges : mcols", {
-    x <- emptyRanges(
+    object <- emptyRanges(
         "EGFP",
         seqname = "transgene",
         mcolsNames = c("geneID", "geneName")
     )
     expect_identical(
-        names(mcols(x)),
-        c("geneID", "geneName")
+        object = names(mcols(object)),
+        expected = c("geneID", "geneName")
     )
 })
 
 
 
 # geneSynonyms =================================================================
-test_that("geneSynonyms", {
-    lapply(
-        X = as.character(formals("geneSynonyms")[["organism"]])[-1L],
-        FUN = function(organism) {
-            x <- geneSynonyms(organism = organism)
-            expect_is(x, "grouped_df")
-        }
-    )
-})
+with_parameters_test_that(
+    "geneSynonyms", {
+        object <- geneSynonyms(organism = organism)
+        expect_is(object, "grouped_df")
+    },
+    organism = .geneSynonymsOrganisms
+)
 
 
 
 # makeGene2symbolFromEnsembl ===================================================
 test_that("makeGene2symbolFromEnsembl", {
-    x <- makeGene2symbolFromEnsembl(
+    object <- makeGene2symbolFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease
+        release = release
     )
-    expect_identical(colnames(x), c("geneID", "geneName"))
-    expect_identical(nrow(x), 63970L)
+    expect_identical(colnames(object), c("geneID", "geneName"))
+    expect_identical(nrow(object), 63970L)
 })
 
 
 
 # makeGene2symbolFromGFF =======================================================
 test_that("makeGene2symbolFromGFF : Minimal GTF", {
-    x <- makeGene2symbolFromGFF("example.gtf")
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(17L, 2L))
+    object <- makeGene2symbolFromGFF("example.gtf")
+    expect_is(object, "DataFrame")
+    expect_identical(dim(object), c(17L, 2L))
     expect_identical(
-        head(x, 2L),
-        data.frame(
+        object = head(object, 2L),
+        expected = DataFrame(
             geneID = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
             geneName = c("Rp1", "Xkr4"),
-            row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
-            stringsAsFactors = FALSE
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951")
         )
     )
 })
 
 test_that("makeGene2symbolFromGFF : Minimal GFF3", {
-    x <- makeGene2symbolFromGFF("example.gff3")
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(20L, 2L))
+    object <- makeGene2symbolFromGFF("example.gff3")
+    expect_is(object, "DataFrame")
+    expect_identical(dim(object), c(20L, 2L))
     expect_identical(
-        head(x, 2L),
-        data.frame(
+        object = head(object, 2L),
+        expected = DataFrame(
             geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
             geneName = c("Rp1", "Sox17"),
-            row.names = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
-            stringsAsFactors = FALSE
+            row.names = c("ENSMUSG00000025900", "ENSMUSG00000025902")
         )
     )
 })
@@ -470,20 +471,20 @@ test_that("makeGene2symbolFromGFF : Minimal GFF3", {
 
 # makeGRangesFromEnsembl =======================================================
 test_that("makeGRangesFromEnsembl : genes", {
-    x <- makeGRangesFromEnsembl(
+    object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "genes",
-        release = ensemblRelease
+        release = release
     )
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 63970L)
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 63970L)
     expect_identical(
-        head(names(x), 3L),
-        c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
+        object = head(names(object), 3L),
+        expected = c("ENSG00000000003", "ENSG00000000005", "ENSG00000000419")
     )
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             description = "factor",
             entrezID = "list",
@@ -496,20 +497,20 @@ test_that("makeGRangesFromEnsembl : genes", {
 })
 
 test_that("makeGRangesFromEnsembl : transcripts", {
-    x <- makeGRangesFromEnsembl(
+    object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "transcripts",
-        release = ensemblRelease
+        release = release
     )
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 216741L)
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 216741L)
     expect_identical(
-        head(names(x), 3L),
-        c("ENST00000000233", "ENST00000000412", "ENST00000000442")
+        object = head(names(object), 3L),
+        expected = c("ENST00000000233", "ENST00000000412", "ENST00000000442")
     )
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             description = "factor",
             entrezID = "list",
@@ -528,62 +529,62 @@ test_that("makeGRangesFromEnsembl : transcripts", {
 })
 
 test_that("makeGRangesFromEnsembl : GRCh37", {
-    # genes
-    x <- makeGRangesFromEnsembl(
+    # Genes
+    object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "genes",
         build = "GRCh37"
     )
-    expect_is(x, "GRanges")
-    expect_identical(length(x), 64102L)
-    expect_identical(head(names(x), 1L), "ENSG00000000003")
+    expect_is(object, "GRanges")
+    expect_identical(length(object), 64102L)
+    expect_identical(head(names(object), 1L), "ENSG00000000003")
 
-    # transcripts
-    x <- makeGRangesFromEnsembl(
+    # Transcripts
+    object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
         format = "transcripts",
         build = "GRCh37"
     )
-    expect_is(x, "GRanges")
-    expect_identical(length(x), 215647L)
-    expect_identical(head(names(x), 1L), "ENST00000000233")
+    expect_is(object, "GRanges")
+    expect_identical(length(object), 215647L)
+    expect_identical(head(names(object), 1L), "ENST00000000233")
 })
 
 test_that("makeGRangesFromEnsembl : Invalid parameters", {
     expect_error(
-        makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
-        "UCSC build ID detected."
+        object = makeGRangesFromEnsembl("Homo sapiens", build = "hg38"),
+        regexp = "UCSC build ID detected."
     )
     expect_warning(
-        makeGRangesFromEnsembl("Homo sapiens", release = 86L),
-        "Switching to current release instead."
+        object = makeGRangesFromEnsembl("Homo sapiens", release = 86L),
+        regexp = "Switching to current release instead."
     )
     expect_error(
-        makeGRangesFromEnsembl(organism = "AAA", build = "BBB"),
-        "No ID matched on AnnotationHub"
+        object = makeGRangesFromEnsembl(organism = "AAA", build = "BBB"),
+        regexp = "No ID matched on AnnotationHub"
     )
     expect_error(
-        makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
-        "is_a_string : "
+        object = makeGRangesFromEnsembl(c("Homo sapiens", "Mus musculus")),
+        regexp = "is_a_string : "
     )
     expect_error(
-        makeGRangesFromEnsembl("Homo sapiens", format = "XXX"),
-        "'arg' should be one of \"genes\", \"transcripts\""
+        object = makeGRangesFromEnsembl("Homo sapiens", format = "XXX"),
+        regexp = "'arg' should be one of \"genes\", \"transcripts\""
     )
 })
 
 test_that("makeGRangesFromEnsembl : metadata", {
-    x <- makeGRangesFromEnsembl(
+    object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease,
+        release = release,
         metadata = TRUE
     )
-    expect_is(x, "list")
+    expect_is(object, "list")
     expect_identical(
-        names(x),
-        c("data", "metadata")
+        object = names(object),
+        expected = c("data", "metadata")
     )
-    expect_is(x[["metadata"]], "tbl_df")
+    expect_is(object[["metadata"]], "tbl_df")
 })
 
 
@@ -591,13 +592,13 @@ test_that("makeGRangesFromEnsembl : metadata", {
 # makeGRangesFromGFF ===========================================================
 test_that("makeGRangesFromGFF : Minimal GTF", {
     # Genes
-    x <- makeGRangesFromGFF("example.gtf", format = "genes")
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 17L)
-    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
+    object <- makeGRangesFromGFF("example.gtf", format = "genes")
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 17L)
+    expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             geneBiotype = "factor",
             geneID = "character",
@@ -610,13 +611,13 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
     )
 
     # Transcripts
-    x <- makeGRangesFromGFF("example.gtf", format = "transcripts")
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 20L)
-    expect_identical(names(x)[[1L]], "ENSMUST00000070533")
+    object <- makeGRangesFromGFF("example.gtf", format = "transcripts")
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 20L)
+    expect_identical(names(object)[[1L]], "ENSMUST00000070533")
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             ccdsID = "factor",
             geneBiotype = "factor",
@@ -639,13 +640,13 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
 
 test_that("makeGRangesFromGFF : Minimal GFF3", {
     # Genes
-    x <- makeGRangesFromGFF("example.gff3", format = "genes")
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 20L)
-    expect_identical(names(x)[[1L]], "ENSMUSG00000025900")
+    object <- makeGRangesFromGFF("example.gff3", format = "genes")
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 20L)
+    expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             description = "character",
             geneBiotype = "factor",
@@ -661,13 +662,13 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
     )
 
     # Transcripts
-    x <- makeGRangesFromGFF("example.gff3", format = "transcripts")
-    expect_s4_class(x, "GRanges")
-    expect_identical(length(x), 26L)
-    expect_identical(names(x)[[1L]], "ENSMUST00000027032")
+    object <- makeGRangesFromGFF("example.gff3", format = "transcripts")
+    expect_s4_class(object, "GRanges")
+    expect_identical(length(object), 26L)
+    expect_identical(names(object)[[1L]], "ENSMUST00000027032")
     expect_identical(
-        lapply(mcols(x), class),
-        list(
+        object = lapply(mcols(object), class),
+        expected = list(
             broadClass = "factor",
             ccdsID = "factor",
             geneBiotype = "factor",
@@ -691,99 +692,93 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 
 # makeTx2geneFromEnsembl =======================================================
 test_that("makeTx2geneFromEnsembl", {
-    x <- makeTx2geneFromEnsembl(
+    object <- makeTx2geneFromEnsembl(
         organism = "Homo sapiens",
-        release = ensemblRelease
+        release = release
     )
-    expect_identical(colnames(x), c("transcriptID", "geneID"))
-    expect_identical(nrow(x), 216741L)
+    expect_identical(colnames(object), c("transcriptID", "geneID"))
+    expect_identical(nrow(object), 216741L)
 })
 
 
 
 # makeTx2geneFromGFF ===========================================================
 test_that("makeTx2geneFromGFF : Minimal GTF", {
-    x <- makeTx2geneFromGFF("example.gtf")
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(20L, 2L))
+    object <- makeTx2geneFromGFF("example.gtf")
+    expect_is(object, "DataFrame")
+    expect_identical(dim(object), c(20L, 2L))
     expect_identical(
-        head(x, 2L),
-        data.frame(
+        object = head(object, 2L),
+        expected = DataFrame(
             transcriptID = c("ENSMUST00000070533", "ENSMUST00000082908"),
             geneID = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            stringsAsFactors = FALSE
+            row.names = c("ENSMUST00000070533", "ENSMUST00000082908")
         )
     )
 })
 
 test_that("makeTx2geneFromGFF : Minimal GFF3", {
-    x <- makeTx2geneFromGFF("example.gff3")
-    expect_is(x, "data.frame")
-    expect_identical(dim(x), c(26L, 2L))
+    object <- makeTx2geneFromGFF("example.gff3")
+    expect_is(object, "DataFrame")
+    expect_identical(dim(object), c(26L, 2L))
     expect_identical(
-        head(x, 2L),
-        data.frame(
+        object = head(object, 2L),
+        expected = DataFrame(
             transcriptID = c("ENSMUST00000027032", "ENSMUST00000027035"),
             geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
-            row.names = c("ENSMUST00000027032", "ENSMUST00000027035"),
-            stringsAsFactors = FALSE
+            row.names = c("ENSMUST00000027032", "ENSMUST00000027035")
         )
     )
 })
 
 
 
-# PANTHER ======================================================================
-test_that("PANTHER", {
-    organisms <- c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Drosophila melanogaster",
-        "Caenorhabditis elegans"
-    )
-    list <- lapply(organisms, function(organism) {
+# panther ======================================================================
+with_parameters_test_that(
+    "panther", {
         invisible(capture.output(
-            x <- panther(organism)
+            object <- panther(organism)
         ))
-        expect_is(x, "data.frame")
-    })
-})
+        expect_is(object, "DataFrame")
+    },
+    organism = names(.pantherMappings)
+)
 
 
 
 # stripTranscriptVersions ======================================================
 test_that("stripTranscriptVersions : character", {
     expect_identical(
-        stripTranscriptVersions("ENSMUST00000119854.7"),
-        "ENSMUST00000119854"
+        object = stripTranscriptVersions("ENSMUST00000119854.7"),
+        expected = "ENSMUST00000119854"
     )
-    # Return unmodified if not Ensembl transcript (ENS*T)
+    # Return unmodified if not Ensembl transcript (ENS*T).
     expect_identical(
-        stripTranscriptVersions("EGFP.1"),
-        "EGFP.1"
+        object = stripTranscriptVersions("EGFP.1"),
+        expected = "EGFP.1"
     )
-    # Theoretical spike-in containing a transcript version
+    # Theoretical spike-in containing a transcript version.
     expect_identical(
-        stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
-        c("ENSMUST00000119854", "EGFP.1")
+        object = stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
+        expected = c("ENSMUST00000119854", "EGFP.1")
     )
 })
 
 test_that("stripTranscriptVersions : matrix", {
-    x <- mat
-    rownames(x) <- c(
+    object <- mat
+    rownames(object) <- c(
         "ENSMUST00000000001.1",
         "ENSMUST00000000001.2",
         "ENSMUST00000000002.1",
         "EGFP.1"
     )
-    y <- stripTranscriptVersions(x)
     expect_identical(
-        rownames(y),
-        c(
+        object = object %>%
+            stripTranscriptVersions() %>%
+            rownames(),
+        expected = c(
             "ENSMUST00000000001",
-            "ENSMUST00000000001",  # allowed in matrix
+            "ENSMUST00000000001",  # Dupes allowed in matrix.
             "ENSMUST00000000002",
             "EGFP.1"
         )

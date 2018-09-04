@@ -10,28 +10,27 @@ sanitizeRowData(object)
 \item{object}{Object.}
 }
 \value{
-\code{data.frame}, without any nested \code{list} columns.
+\code{tbl_df}, containing only \code{atomic} columns.
 }
 \description{
-Coerce Ensembl \code{rowData} to a \code{data.frame}, and drop any nested list columns
-(e.g. \code{entrezID}). Nested columns will fail to write to disk as CSVs.
+Coerce gene annotations to a \code{tibble}, and keep only \code{atomic} columns.
+Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
 }
 \details{
-Supports \code{GRanges}, \code{DataFrame}, and \code{data.frame} class objects.
+Supports \code{GRanges} and \code{DataFrame} class objects.
 }
 \examples{
-# Genes ====
-x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
-sanitizeRowData(x) \%>\% glimpse()
-
-# Transcripts ====
-x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
-sanitizeRowData(x) \%>\% glimpse()
+from <- SummarizedExperiment::rowRanges(rse_small)
+colnames(S4Vectors::mcols(from))
+to <- sanitizeRowData(from)
+vapply(to, is.atomic, logical(1L))
+print(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{fixNA}},
-  \code{\link{removeNA}}, \code{\link{sanitizeSampleData}}
+  \code{\link{collapseToString}}, \code{\link{removeNA}},
+  \code{\link{sanitizeNA}},
+  \code{\link{sanitizeSampleData}}
 }
 \author{
 Michael Steinbaugh

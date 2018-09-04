@@ -9,15 +9,18 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param object Object containing multiple interesting groups.
+#' @param object Object containing column data that defines interesting groups.
 #'
-#' @return Data frame containing an `interestingGroups` column.
+#' @return Modified object, containing an `interestingGroups` column.
 #' @export
 #'
 #' @examples
-#' x <- sampleData(rse_bcb)
-#' y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
-#' y[["interestingGroups"]]
+#' from <- sampleData(rse_small)
+#' to <- uniteInterestingGroups(
+#'     object = from,
+#'     interestingGroups = c("genotype", "treatment")
+#' )
+#' print(to)
 NULL
 
 
@@ -25,16 +28,18 @@ NULL
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("data.frame"),
-    function(object, interestingGroups) {
+    f = "uniteInterestingGroups",
+    signature = signature("data.frame"),
+    definition = function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
-        # This approach will return numerics for DataFrame class, so
-        # coercing columns to data.frame
-        data <- as.data.frame(object[, interestingGroups, drop = FALSE])
+        # Subset to get only the columns of interest.
+        data <- object[, interestingGroups, drop = FALSE]
+        assert_is_non_empty(data)
+        # This approach will return numerics for `DataFrame` class, so
+        # coercing columns to data.frame.
         value <- apply(
-            X = data,
+            X = as.data.frame(data),
             MARGIN = 1L,
             FUN = paste,
             collapse = ":"
@@ -49,9 +54,9 @@ setMethod(
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("DataFrame"),
-    getMethod("uniteInterestingGroups", "data.frame")
+    f = "uniteInterestingGroups",
+    signature = signature("DataFrame"),
+    definition = getMethod("uniteInterestingGroups", "data.frame")
 )
 
 
@@ -60,9 +65,9 @@ setMethod(
 #' @rdname uniteInterestingGroups
 #' @export
 setMethod(
-    "uniteInterestingGroups",
-    signature("tbl_df"),
-    function(object, interestingGroups) {
+    f = "uniteInterestingGroups",
+    signature = signature("tbl_df"),
+    definition = function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
         object[["interestingGroups"]] <- NULL

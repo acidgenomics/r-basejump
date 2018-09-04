@@ -22,7 +22,7 @@
 #' @param unique `boolean`. Only return unique matching organisms. Applies to
 #'   `character` input.
 #'
-#' @return Full latin organism name. Stops on detection failure.
+#' @return `character`. Full latin organism name. Stops on detection failure.
 #'
 #' - `atomic`: Named `character` vector containing organism name or `NA` for
 #'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
@@ -169,9 +169,9 @@ NULL
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("character"),
-    function(object, unique = FALSE) {
+    f = "detectOrganism",
+    signature = signature("character"),
+    definition = function(object, unique = FALSE) {
         assert_is_a_bool(unique)
         x <- vapply(
             X = as.character(object),
@@ -202,9 +202,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("factor"),
-    getMethod("detectOrganism", "character")
+    f = "detectOrganism",
+    signature = signature("factor"),
+    definition = getMethod("detectOrganism", "character")
 )
 
 
@@ -212,9 +212,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("matrix"),
-    function(object) {
+    f = "detectOrganism",
+    signature = signature("matrix"),
+    definition = function(object) {
         # Assume gene identifiers are defined in the rownames
         assertHasRownames(object)
         .returnUniqueOrganism(rownames(object))
@@ -226,9 +226,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("data.frame"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("data.frame"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -236,9 +236,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("DataFrame"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("DataFrame"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -246,9 +246,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("dgCMatrix"),
-    getMethod("detectOrganism", "matrix")
+    f = "detectOrganism",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("detectOrganism", "matrix")
 )
 
 
@@ -256,9 +256,9 @@ setMethod(
 #' @rdname detectOrganism
 #' @export
 setMethod(
-    "detectOrganism",
-    signature("tbl_df"),
-    function(object) {
+    f = "detectOrganism",
+    signature = signature("tbl_df"),
+    definition = function(object) {
         assert_has_colnames(object)
         object <- camel(object)
         idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")

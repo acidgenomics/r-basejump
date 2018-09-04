@@ -1,18 +1,17 @@
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
-    "convertSymbolsToGenes",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "convertSymbolsToGenes",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
-        gene2symbol <- gene2symbol(object)
-        if (is.null(gene2symbol)) {
-            return(object)  # nocov
+        g2s <- gene2symbol(object)
+        if (is.null(g2s)) {
+            stop("Object does not contain gene-to-symbol mappings")
         }
-        genes <- gene2symbol %>%
-            pull("geneID") %>%
-            as.character()
-        rownames(object) <- genes
+        assert_are_identical(rownames(object), g2s[["geneName"]])
+        assert_has_no_duplicates(g2s[["geneID"]])
+        rownames(object) <- g2s[["geneID"]]
         object
     }
 )

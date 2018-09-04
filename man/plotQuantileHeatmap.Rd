@@ -75,12 +75,11 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 }
 \examples{
 # SummarizedExperiment ====
-plotQuantileHeatmap(rse_dds)
+plotQuantileHeatmap(rse_small)
 
-# Set legend using interesting groups, and customize colors
+# Using viridis color palettes.
 plotQuantileHeatmap(
-    object = rse_dds,
-    interestingGroups = "condition",
+    object = rse_small,
     color = viridis::plasma,
     legendColor = viridis::viridis
 )

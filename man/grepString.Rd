@@ -2,12 +2,12 @@
 % Please edit documentation in R/grepString.R
 \name{grepString}
 \alias{grepString}
-\title{\code{grep} String}
+\title{Generate a \code{grep} String}
 \usage{
-grepString(x, sep = ", ")
+grepString(object, sep = ", ")
 }
 \arguments{
-\item{x}{\code{string}. Term to use for grep matching.}
+\item{object}{\code{string}. Term to use for grep matching.}
 
 \item{sep}{\code{string}. Separator. Defaults to comma.}
 }
@@ -15,9 +15,9 @@ grepString(x, sep = ", ")
 \code{string}, containing a regular expression pattern.
 }
 \description{
-Generate a \code{grep} string for pattern matching against a delimited \code{character}
-string returned by \code{\link[base:toString]{base::toString()}} or \code{\link[base:paste]{base::paste()}} using the \code{collapse}
-argument.
+A \code{grep} string is useful for pattern matching against a delimited
+\code{character} string returned by \code{\link[base:toString]{base::toString()}} or \code{\link[base:paste]{base::paste()}} using
+the \code{collapse} argument.
 }
 \examples{
 grepString("gene")

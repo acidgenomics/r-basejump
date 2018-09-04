@@ -19,7 +19,7 @@ environment loaded with \code{devtools::load_all()}.}
 \item{...}{Additional arguments.}
 }
 \value{
-Invisible \code{logical} indicating which files were copied.
+Invisible \code{logical}. Was the file copied?.
 }
 \description{
 If the required template dependency files aren't present, copy them from the
@@ -46,7 +46,13 @@ prepareTemplate(package = "bcbioRNASeq")
 prepareTemplate(package = "bcbioSingleCell")
 }
 }
+\seealso{
+Other R Markdown Functions: \code{\link{kables}},
+  \code{\link{markdownHeader}}, \code{\link{markdownLink}},
+  \code{\link{markdownList}},
+  \code{\link{markdownPlotlist}}
+}
 \author{
 Michael Steinbaugh
 }
-\concept{Prepare Functions}
+\concept{R Markdown Functions}

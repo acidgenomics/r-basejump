@@ -2,12 +2,11 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
-#'
-#' @param f Generic `function` or `string` referencing a generic.
-#' @param signature The signature of classes to match to the `f` argument.
-#'
-#' @return `list` of formal arguments.
 #' @export
+#'
+#' @inheritParams methods::selectMethod
+#'
+#' @return `list`. Formal arguments.
 #'
 #' @seealso Modified version of [John Chambers' code](https://goo.gl/ymX571).
 #'
@@ -19,13 +18,13 @@ methodFormals <- function(f, signature) {
     fdef <- getGeneric(f)
     method <- selectMethod(fdef, signature)
     genFormals <- formals(fdef)
-    b <- body(method)
+    body <- body(method)
     if (
-        is(b, "{") &&
-        is(b[[2L]], "<-") &&
-        identical(b[[2L]][[2L]], as.name(".local"))
+        is(body, "{") &&
+        is(body[[2L]], "<-") &&
+        identical(body[[2L]][[2L]], as.name(".local"))
     ) {
-        local <- eval(b[[2L]][[3L]])
+        local <- eval(body[[2L]][[3L]])
         if (is.function(local)) {
             return(formals(local))
         }

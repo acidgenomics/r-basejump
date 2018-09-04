@@ -26,7 +26,7 @@ directory.}
 \code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
 }
 \value{
-Invisible named \code{character} containing file paths.
+Invisible named \code{character}. File paths.
 }
 \description{
 Assigns a new object by name to the current working environment then saves

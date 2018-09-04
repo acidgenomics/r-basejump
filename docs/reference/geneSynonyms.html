@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +74,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -113,16 +116,18 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"Mus musculus"</span>,
-  <span class='st'>"Drosophila melanogaster"</span>))</pre>
+    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='no'>organism</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Spported organisms: <em>Homo sapiens</em>, <em>Mus musculus</em>,
-<em>Drosophila melanogaster</em>.</p></td>
+      <td><p><code>string</code>. Supported organisms:</p><ul>
+<li><p><em>Homo sapiens</em></p></li>
+<li><p><em>Mus musculus</em></p></li>
+<li><p><em>Drosophila melanogaster</em></p></li>
+</ul></td>
     </tr>
     </table>
     
@@ -137,19 +142,14 @@ Use the wormbase package instead.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
@@ -173,11 +173,21 @@ Use the wormbase package instead.</p>
 #&gt; <span class='message'>  Other_designations = col_character(),</span>
 #&gt; <span class='message'>  Modification_date = col_integer(),</span>
 #&gt; <span class='message'>  Feature_type = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 19,335
-#&gt; Variables: 3
-#&gt; $ geneID   &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
-#&gt; $ geneName &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "FGR", "CFH", "FUCA2", ...
-#&gt; $ synonyms &lt;chr&gt; "T245, TM4SF6, TSPAN-6", "BRICD4, CHM1L, TEM", "CDGIE, MPD...</div></pre>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 19,338 x 3
+#&gt; # Groups:   geneID [19,327]
+#&gt;    geneID         geneName synonyms                                            
+#&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;                                               
+#&gt;  1 ENSG000000000… TSPAN6   T245, TM4SF6, TSPAN-6                               
+#&gt;  2 ENSG000000000… TNMD     BRICD4, CHM1L, TEM                                  
+#&gt;  3 ENSG000000004… DPM1     CDGIE, MPDS                                         
+#&gt;  4 ENSG000000004… SCYL3    PACE-1, PACE1                                       
+#&gt;  5 ENSG000000009… FGR      SRC2, c-fgr, c-src2, p55-Fgr, p55c-fgr, p58-Fgr, p5…
+#&gt;  6 ENSG000000009… CFH      AHUS1, AMBP1, ARMD4, ARMS1, CFHL3, FH, FHL1, HF, HF…
+#&gt;  7 ENSG000000010… FUCA2    dJ20N2.5                                            
+#&gt;  8 ENSG000000010… GCLC     GCL, GCS, GLCL, GLCLC                               
+#&gt;  9 ENSG000000011… NFYA     CBF-A, CBF-B, HAP2, NF-YA                           
+#&gt; 10 ENSG000000014… STPG1    C1orf201, MAPO2                                     
+#&gt; # ... with 19,328 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -71,6 +71,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -103,31 +106,69 @@
       <small>Source: <a href='https://github.com/steinbaugh/basejump/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="basejump-0-7-2-2018-08-23" class="section level2">
+    <div id="basejump-0-7-2-2018-08-29" class="section level2">
 <h2 class="hasAnchor">
-<a href="#basejump-0-7-2-2018-08-23" class="anchor"></a>basejump 0.7.2 (2018-08-23)</h2>
+<a href="#basejump-0-7-2-2018-08-29" class="anchor"></a>basejump 0.7.2 (2018-08-29)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li><code><a href="../reference/assertAllAreURL.html">assertAllAreURL()</a></code></li>
+<li><code><a href="../reference/assertAllAreValidNames.html">assertAllAreValidNames()</a></code></li>
+<li><code><a href="../reference/assertAllAreValidNames.html">validNames()</a></code></li>
+</ul>
+</div>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Added a draft vignette explaining the functions available in the package.</li>
+<li>
+<code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/makeGene2symbol.html">makeGene2symbolFromEnsembl()</a></code>, and <code><a href="../reference/makeGene2symbol.html">makeGene2symbolFromGFF()</a></code> functions now support the <code>unique</code> argument, which returns sanitized values in the <code>geneName</code> column, ensuring there are no duplicates. This is enabled by default (recommended) but can be disabled using <code>unique = FALSE</code>. This functionality was added to ensure consistent gene name handling in single-cell RNA-seq analyses.</li>
+<li>
+<code><a href="../reference/saveData.html">saveData()</a></code> now supports <code>basejump.save.ext</code> and <code>basejump.save.compress</code> global options, so the desired file type (e.g. RDS instead of RDA) and compression (e.g. xz instead of gzip) can be easily specified for an entire project.</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
+<li>
+<code><a href="../reference/sampleNames.html">sampleNames()</a></code> now supports assignment for <code>SummarizedExperiment</code> method.</li>
+<li>Now exporting <code>lanePattern</code> regular expression pattern as a global, which was previously defined in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package.</li>
 <li>Bug fix for <code><a href="../reference/coerce.html">as()</a></code> coercion method support. Need to ensure <code>exportMethods(coerce)</code> is included in <code>NAMESPACE</code> file, otherwise <code>tibble</code> coercion using <code><a href="../reference/coerce.html">as(x, "tbl_df")</a></code> won’t work when called from an Rscript without the package library loaded. Thanks <a href='http://github.com/roryk'>@roryk</a> for noticing this.</li>
+<li>Updated <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> generic to use <code>...</code>, since we’ve added the <code>unique = TRUE</code> argument in this release.</li>
+<li>
+<code><a href="../reference/makeGRanges.html">annotable()</a></code>: Moved to <code>makeGRanges.R</code> file, and improved the internal code to export supported formals also used in <code><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl()</a></code>. The function should work exactly the same as previous releases, but now with clearer supported arguments in the documentation.</li>
+<li>Skipping code coverage for <code><a href="../reference/cleanSystemLibrary.html">cleanSystemLibrary()</a></code>, since <a href="https://travis-ci.com">Travis CI</a> installs packages into the system library, and causes this check to return <code>FALSE</code>.</li>
+<li>Consistently using <code><a href="../reference/coerce.html">as(from, "tbl_df")</a></code> for internal tibble coercion in all functions.</li>
+<li>
+<code><a href="../reference/geneSynonyms.html">geneSynonyms()</a></code> and <code><a href="../reference/panther.html">panther()</a></code>: <code>organism</code> argument matching no longer suggests a default. The current list of supported organisms is in the documentation, and described in the internal <code>match.arg()</code> call.</li>
+<li>All <code>SummarizedExperiment</code> methods use <code>validObject()</code> validity checks, where applicable.</li>
+<li>Consolidated documentation for all <code>makeGRanges</code>, <code>makeGene2symbol</code>, and <code>makeTx2gene</code> functions.</li>
+<li>Heatmap functions: simplified the internal code responsible for defining <code>annotationCol</code> and <code>annotationColors</code> automatically.</li>
+<li>
+<code><a href="../reference/sampleData.html">sampleData()</a></code>: Made validity check stricter, requiring <code>sampleName</code> column to be defined, otherwise the function will intentionally error.</li>
+<li>Now using <code>formals()</code> internall to keep ggplot2 theme formals consistent.</li>
+<li>Updated example data scripts and resaved internal data.</li>
+<li>Updated contribution guidelines in <code>CONTRIBUTING.md</code> file.</li>
 </ul>
 </div>
 </div>
     <div id="basejump-0-7-1-2018-08-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-1-2018-08-18" class="anchor"></a>basejump 0.7.1 (2018-08-18)</h2>
-<div id="new-functions" class="section level3">
+<div id="new-functions-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h3>
+<a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code><a href="../reference/cleanSystemLibrary.html">cleanSystemLibrary()</a></code>: Utility function to check whether a user has installed packages into the [R][] system library. Refer to <code>.libPaths()</code> documentation for more information on library paths.</li>
 </ul>
 </div>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code>build</code> instead of <code>genomeBuild</code> for <a href="https://www.ensembl.org">Ensembl</a> annotation functions. The <code>genomeBuild</code> argument still works but now will inform the user about the change.</li>
 </ul>
@@ -145,18 +186,18 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-7-0-2018-08-07" class="anchor"></a>basejump 0.7.0 (2018-08-07)</h2>
 <p>In this release, we are migrating some of the S4 generics previously exported in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package. We are consolidating these functions here for simplicity and stability.</p>
-<div id="new-functions-1" class="section level3">
+<div id="new-functions-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h3>
+<a href="#new-functions-2" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code><a href="../reference/makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code>: Renamed <code>prepareSummarizedExperiment()</code>, previously exported in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package. We are using the <code>make</code> prefix here for consistency (see other gene annotation functions).</li>
-<li>Migrated S4 generics and methods from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>: <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code>plotCorrleationHeatmap()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/plotHeatmap.html">plotHeatmap()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, and <code><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code>.</li>
+<li>Migrated S4 generics and methods from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>: <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotCorrleationHeatmap()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/plotHeatmap.html">plotHeatmap()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, and <code><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code>.</li>
 </ul>
 </div>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code><a href="http://www.rdocumentation.org/packages/curl/topics/nslookup">curl::has_internet()</a></code> internally to check for Internet connection. This applies to the annotation functions that query web databases.</li>
 <li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code><a href="../reference/flatFiles.html">flatFiles()</a></code>.</li>
@@ -166,9 +207,9 @@
     <div id="basejump-0-6-4-2018-08-03" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-4-2018-08-03" class="anchor"></a>basejump 0.6.4 (2018-08-03)</h2>
-<div id="new-functions-2" class="section level3">
+<div id="new-functions-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h3>
+<a href="#new-functions-3" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code><a href="../reference/matchInterestingGroups.html">matchInterestingGroups()</a></code>: New developer function to automatically handle <code>interestingGroups</code> argument used across various plotting functions and in the <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> infrastructure packges.</li>
@@ -189,9 +230,9 @@
     <div id="basejump-0-6-2-2018-07-31" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-2-2018-07-31" class="anchor"></a>basejump 0.6.2 (2018-07-31)</h2>
-<div id="new-functions-3" class="section level3">
+<div id="new-functions-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-3" class="anchor"></a>New functions</h3>
+<a href="#new-functions-4" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code><a href="../reference/convertGenesToSymbols.html">convertSymbolsToGenes()</a></code>: provides <code>SummarizedExperiment</code> method support for converting objects containing gene symbols (“geneName”) as rownames back to gene identifiers (“geneID”).</li>
@@ -199,9 +240,9 @@
 <code><a href="../reference/eggnog.html">eggnog()</a></code>: quickly download current annotations from <a href="http://eggnogdb.embl.de">EggNOG</a> database. Useful for annotating gene-to-protein matches; currently in use with the <a href="https://steinbaugh.com/brightworm">brightworm</a> RNAi screening package, which contains <a href="http://www.wormbase.org">WormBase</a> gene ID and <a href="http://eggnogdb.embl.de">EggNOG</a> ID annotations.</li>
 </ul>
 </div>
-<div id="major-changes-2" class="section level3">
+<div id="major-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now suggesting <a href="https://cran.r-project.org/package=BiocManager">BiocManager</a> instead of <a href="https://doi.org/doi:10.18129/B9.bioc.BiocInstaller">BiocInstaller</a> for installation.</li>
 <li>
@@ -239,12 +280,12 @@
     <div id="basejump-0-6-0-2018-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-6-0-2018-07-17" class="anchor"></a>basejump 0.6.0 (2018-07-17)</h2>
-<div id="major-changes-3" class="section level3">
+<div id="major-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> package and providing basic method support for generics that were previously used in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package.</li>
-<li>Improved GFFv3 handling in <code><a href="../reference/makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> and other GFF utility functions, including <code><a href="../reference/makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> and <code><a href="../reference/makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code>. Note that <code><a href="../reference/makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> now returns additional metadata columns accessible with <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">S4Vectors::mcols()</a></code>, and that these columns are now sorted alphabetically.</li>
+<li>Improved GFFv3 handling in <code><a href="../reference/makeGRanges.html">makeGRangesFromGFF()</a></code> and other GFF utility functions, including <code><a href="../reference/makeGene2symbol.html">makeGene2symbolFromGFF()</a></code> and <code><a href="../reference/makeTx2gene.html">makeTx2geneFromGFF()</a></code>. Note that <code><a href="../reference/makeGRanges.html">makeGRangesFromGFF()</a></code> now returns additional metadata columns accessible with <code><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">S4Vectors::mcols()</a></code>, and that these columns are now sorted alphabetically.</li>
 </ul>
 </div>
 <div id="migrated-functions" class="section level3">
@@ -326,13 +367,13 @@
 <a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
-<code><a href="../reference/makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> now supports remapping of <a href="https://genome.ucsc.edu">UCSC</a> genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
+<code><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl()</a></code> now supports remapping of <a href="https://genome.ucsc.edu">UCSC</a> genome build to Ensembl. However, this isn’t recommended, and will warn the user.</li>
 <li>
 <code><a href="../reference/convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl()</a></code> now returns <code>NULL</code> instead of erroring on genome build match failure.</li>
 <li>
 <code><a href="../reference/stripTranscriptVersions.html">stripTranscriptVersions()</a></code> now matches “<code>.</code>”, “<code>-</code>”, and “<code>_</code>” version delimiters.</li>
 <li>Made unused <code><a href="../reference/defunct.html">dynamicPlotlist()</a></code> function defunct.</li>
-<li>Consider deprecating <code><a href="../reference/assertIsCharacterOrNULL.html">assertIsCharacterOrNULL()</a></code> and <code><a href="../reference/assertIsDataFrameOrNULL.html">assertIsDataFrameOrNULL()</a></code> in a future release.</li>
+<li>Consider deprecating <code><a href="../reference/deprecated.html">assertIsCharacterOrNULL()</a></code> and <code><a href="../reference/deprecated.html">assertIsDataFrameOrNULL()</a></code> in a future release.</li>
 </ul>
 </div>
 <div id="infrastructure-changes" class="section level3">
@@ -371,9 +412,9 @@
     <div id="basejump-0-5-5-2018-05-15" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-5-2018-05-15" class="anchor"></a>basejump 0.5.5 (2018-05-15)</h2>
-<div id="major-changes-4" class="section level3">
+<div id="major-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code><a href="../reference/readGFF.html">readGFF()</a></code> now uses <code><a href="http://www.rdocumentation.org/packages/rtracklayer/topics/export">rtracklayer::import()</a></code> internally to return GFF file as a <code>GRanges</code> object instead of a <code>data.frame</code>.</li>
@@ -385,7 +426,7 @@
 <ul>
 <li>
 <code><a href="../reference/defunct.html">assertIsGFF()</a></code> and <code><a href="../reference/defunct.html">parseGFFAttributes()</a></code> functions are now defunct.</li>
-<li>Simplified internal GFF handling code for <code><a href="../reference/makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code>, <code><a href="../reference/makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code>, and <code><a href="../reference/makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code>.</li>
+<li>Simplified internal GFF handling code for <code><a href="../reference/makeGRanges.html">makeGRangesFromGFF()</a></code>, <code><a href="../reference/makeGene2symbol.html">makeGene2symbolFromGFF()</a></code>, and <code><a href="../reference/makeTx2gene.html">makeTx2geneFromGFF()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -404,7 +445,7 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Improved internal S4 method code for <code><a href="../reference/fixNA.html">fixNA()</a></code> and <code><a href="../reference/removeNA.html">removeNA()</a></code>.</li>
+<li>Improved internal S4 method code for <code><a href="../reference/deprecated.html">fixNA()</a></code> and <code><a href="../reference/removeNA.html">removeNA()</a></code>.</li>
 <li>Tweaked gray accent colors in <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code>. Now using British spelling internally for ggplot code.</li>
 <li>Improved <code>strip.background</code> for <code><a href="../reference/themes.html">theme_paperwhite()</a></code>, removing the black box around the labels when facet wrapping is enabled.</li>
 </ul>
@@ -445,9 +486,9 @@
     <div id="basejump-0-5-0-2018-04-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-5-0-2018-04-13" class="anchor"></a>basejump 0.5.0 (2018-04-13)</h2>
-<div id="new-functions-4" class="section level3">
+<div id="new-functions-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-functions-4" class="anchor"></a>New functions</h3>
+<a href="#new-functions-5" class="anchor"></a>New functions</h3>
 <ul>
 <li>
 <code><a href="../reference/emptyRanges.html">emptyRanges()</a></code> enables easy creation of placeholder ranges for <code>GRanges</code> objects, where transgene and FASTA spike-ins are needed.</li>
@@ -457,7 +498,7 @@
 <code><a href="../reference/mgi2gene.html">mgi2gene()</a></code> enables easy mapping of <a href="http://www.informatics.jax.org">MGI</a> to <a href="https://www.ensembl.org">Ensembl</a> gene identifiers.</li>
 <li>
 <code><a href="../reference/panther.html">panther()</a></code> function enables easy querying of the <a href="http://pantherdb.org">PANTHER</a> website. Human, mouse, nematode worm, and fruit fly are currently supported. The specific <a href="http://pantherdb.org">PANTHER</a> release (e.g. 13) can be declared using the <code>release</code> argument. Otherwise, the function will return the most recent annotations from the <a href="http://pantherdb.org">PANTHER</a> website.</li>
-<li>Added <code><a href="../reference/assertIsURL.html">isURL()</a></code> check function.</li>
+<li>Added <code><a href="../reference/assertAllAreURL.html">isURL()</a></code> check function.</li>
 <li>
 <code><a href="../reference/readJSON.html">readJSON()</a></code> adds support for JSON files. Like the other read functions, it supports both local files and remote URLs.</li>
 </ul>
@@ -470,9 +511,9 @@
 <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org">ggplot2</a> themes with bold sans serif labels.</li>
 </ul>
 </div>
-<div id="major-changes-5" class="section level3">
+<div id="major-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code><a href="../reference/loadData.html">loadData()</a></code> now supports <code>.rda</code>, <code>.rds</code>, and <code>.RData</code> files. The function will error by design if multiple data extensions are detected inside the directory specified with the <code>dir</code> argument.</li>
@@ -502,9 +543,9 @@
     <div id="basejump-0-4-0-2018-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#basejump-0-4-0-2018-03-22" class="anchor"></a>basejump 0.4.0 (2018-03-22)</h2>
-<div id="major-changes-6" class="section level3">
+<div id="major-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-7" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Introducing new functions for the acquistion of gene and transcript annotations from <a href="https://www.ensembl.org">Ensembl</a>: <code><a href="../reference/deprecated.html">ensembl()</a></code>, <code>genes()</code>, and <code>transcripts()</code>. These functions allow the return of <code>GRanges</code>, <code>DataFrame</code>, and <code>data.frame</code> class objects from <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> using <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a>.</li>
 <li>Improved internal <code>broadClass</code> definition code to match against chromosome from <a href="https://www.ensembl.org">Ensembl</a> if available.</li>
@@ -531,7 +572,7 @@
 <a href="#deprecations" class="anchor"></a>Deprecations</h3>
 <ul>
 <li>
-<code><a href="../reference/annotable.html">annotable()</a></code> function has been deprecated in favor of the new <code><a href="../reference/deprecated.html">ensembl()</a></code> function.</li>
+<code><a href="../reference/makeGRanges.html">annotable()</a></code> function has been deprecated in favor of the new <code><a href="../reference/deprecated.html">ensembl()</a></code> function.</li>
 <li>
 <code><a href="../reference/deprecated.html">checkAnnotable()</a></code> deprecated in favor of <code><a href="../reference/deprecated.html">assertIsAnnotable()</a></code>.</li>
 <li>
@@ -542,7 +583,7 @@
 <code><a href="../reference/deprecated.html">assertFormalColorFunction()</a></code> deprecated in favor of <code><a href="../reference/assertIsHexColorFunctionOrNULL.html">assertIsHexColorFunctionOrNULL()</a></code>.</li>
 <li>
 <code><a href="../reference/deprecated.html">initializeDir()</a></code> deprecated in favor of <code><a href="../reference/initializeDirectory.html">initializeDirectory()</a></code>.</li>
-<li>Defunct: <code><a href="../reference/defunct.html">summarizeRows()</a></code>, <code><a href="../reference/defunct.html">wash()</a></code>, <code><a href="../reference/defunct.html">packageSE()</a></code>, <code><a href="../reference/defunct.html">prepareSE()</a></code>, <code><a href="../reference/defunct.html">metadataTable()</a></code>, <code><a href="../reference/defunct.html">comp()</a></code>, <code><a href="../reference/defunct.html">revcomp()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code>.</li>
+<li>Defunct: <code>summarizeRows()</code>, <code>wash()</code>, <code>packageSE()</code>, <code>prepareSE()</code>, <code>metadataTable()</code>, <code><a href="../reference/defunct.html">comp()</a></code>, <code><a href="../reference/defunct.html">revcomp()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -555,7 +596,7 @@
 <li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
 <li>Now exporting <code><a href="../reference/deprecated.html">midnightTheme()</a></code> as a <code><a href="../reference/themes.html">theme_midnight()</a></code> alias to match the syntax in the <a href="http://ggplot2.tidyverse.org">ggplot2</a> package.</li>
 <li>Added working examples and code coverage for all assert check functions.</li>
-<li>Simplified the internal collapse code for <code><a href="../reference/annotable.html">annotable()</a></code> to simply work on the <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code><a href="../reference/collapseToString.html">collapseToString()</a></code>.</li>
+<li>Simplified the internal collapse code for <code><a href="../reference/makeGRanges.html">annotable()</a></code> to simply work on the <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code><a href="../reference/collapseToString.html">collapseToString()</a></code>.</li>
 <li>Added <a href="http://ggplot2.tidyverse.org">ggplot2</a> color palette assert checks: <code>assertColorScaleContinuousOrNULL()</code>, <code>assertColorScaleDiscreteOrNULL()</code>, <code>assertFillScaleContinuousOrNULL()</code>, <code>assertFillScaleDiscreteOrNULL()</code>.</li>
 </ul>
 </div>
@@ -572,7 +613,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-2-1-2018-02-07" class="anchor"></a>basejump 0.2.1 (2018-02-07)</h2>
 <ul>
-<li>Added <code><a href="../reference/convertGenesToSymbols.html">convertGenesToSymbols()</a></code> and <code><a href="../reference/convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> functions. Previously some of this functionality was contained within the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> usage in the <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> R packages, so I decided to split these out into separate functions. Now <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> work consistently with the <code><a href="../reference/annotable.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
+<li>Added <code><a href="../reference/convertGenesToSymbols.html">convertGenesToSymbols()</a></code> and <code><a href="../reference/convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> functions. Previously some of this functionality was contained within the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> usage in the <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> R packages, so I decided to split these out into separate functions. Now <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> work consistently with the <code><a href="../reference/makeGRanges.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
 <li>
 <code><a href="../reference/markdownHeader.html">markdownHeader()</a></code>, <code><a href="../reference/markdownList.html">markdownList()</a></code>, and <code><a href="../reference/markdownPlotlist.html">markdownPlotlist()</a></code> are now exported as S4 generics. The <code>md*()</code> function variants are now exported as aliases.</li>
 <li>
@@ -584,7 +625,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-2-0-2018-01-28" class="anchor"></a>basejump 0.2.0 (2018-01-28)</h2>
 <ul>
-<li>Offloaded internal <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a>-specific code to new package named <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>. Consequently, this makes the <a href="https://steinbaugh.com/basejump">basejump</a> package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio()</code>, <code>checkInterestingGroups()</code>, <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code>plotDot()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, <code>plotViolin()</code>, <code>prepareSummarizedExperiment()</code>, <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code>, <code>readDataVersions()</code>, <code>readLogFile()</code>, <code>readProgramVersions()</code>, <code>readSampleMetadataFile()</code>, <code>sampleMetadata()</code>, <code>sampleYAML()</code>, <code>sampleYAMLMetadata()</code>, <code>sampleYAMLMetrics()</code>, and <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are now deprecated here in <a href="https://steinbaugh.com/basejump">basejump</a> (see <code>deprecated.R</code> file for more information).</li>
+<li>Offloaded internal <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a>-specific code to new package named <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>. Consequently, this makes the <a href="https://steinbaugh.com/basejump">basejump</a> package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio()</code>, <code>checkInterestingGroups()</code>, <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotDot()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, <code>plotViolin()</code>, <code>prepareSummarizedExperiment()</code>, <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code>, <code>readDataVersions()</code>, <code>readLogFile()</code>, <code>readProgramVersions()</code>, <code>readSampleMetadataFile()</code>, <code>sampleMetadata()</code>, <code>sampleYAML()</code>, <code>sampleYAMLMetadata()</code>, <code>sampleYAMLMetrics()</code>, and <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are now deprecated here in <a href="https://steinbaugh.com/basejump">basejump</a> (see <code>deprecated.R</code> file for more information).</li>
 <li>
 <code><a href="../reference/defunct.html">comp()</a></code> and <code><a href="../reference/defunct.html">revcomp()</a></code> have been deprecated in favor of <code>complement()</code> and <code>reverseComplement()</code> from the <a href="http://bioconductor.org/packages/release/bioc/html/Biostrings.html">Biostrings</a> package.</li>
 <li>Internally, errors, messages, and warnings now use methods from the <a href="http://rlang.tidyverse.org">rlang</a> package: <code>abort()</code>, <code>inform()</code>, and <code>warn()</code>, in place of <code>stop()</code>, <code>message()</code>, and <code>warning()</code>, respectively.</li>
@@ -592,7 +633,7 @@
 <li>
 <code><a href="../reference/localOrRemoteFile.html">localOrRemoteFile()</a></code>, previously an internal function, is now exported.</li>
 <li>
-<code><a href="../reference/annotable.html">annotable()</a></code> now uses internal <a href="https://grch37.ensembl.org">GRCh37</a> annotations from the <a href="https://github.com/stephenturner/annotables">annotables</a> package, which is saved in the <code>extdata/</code> directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the <code>data/</code> directory of the package repository.</li>
+<code><a href="../reference/makeGRanges.html">annotable()</a></code> now uses internal <a href="https://grch37.ensembl.org">GRCh37</a> annotations from the <a href="https://github.com/stephenturner/annotables">annotables</a> package, which is saved in the <code>extdata/</code> directory internally. Previously, these genome annotations were accessed from lazy loaded data saved in the <code>data/</code> directory of the package repository.</li>
 <li>
 <code>annotables()</code> now checks for all packages attached by <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> and <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and forces detachment at the end of the function call. Otherwise, this can result in the unwanted effect of <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> masking other user-loaded functions, such as the <a href="http://www.tidyverse.org">tidyverse</a> suite (e.g. <code><a href="http://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code>).</li>
 <li>Consistently reformatted code indents to be a multple of 4 spaces, as recommended by <a href="https://bioconductor.org">Bioconductor</a>.</li>
@@ -608,7 +649,7 @@
 <ul>
 <li>Bug fix for multiplexed sample input into <code>readSampleMetadataFile()</code>. We were detecting the presence of <code>index</code> column but should instead check against <code>sequence</code> column.</li>
 <li>Added <code><a href="../reference/defunct.html">dynamicPlotlist()</a></code> and <code><a href="../reference/markdownPlotlist.html">mdPlotlist()</a></code> plotting utilities.</li>
-<li>Added <code>uniqueSymbols</code> parameter to <code><a href="../reference/annotable.html">annotable()</a></code> function.</li>
+<li>Added <code>uniqueSymbols</code> parameter to <code><a href="../reference/makeGRanges.html">annotable()</a></code> function.</li>
 </ul>
 </div>
     <div id="basejump-0-1-9-2017-12-18" class="section level2">
@@ -625,7 +666,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-1-8-2017-12-14" class="anchor"></a>basejump 0.1.8 (2017-12-14)</h2>
 <ul>
-<li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code><a href="../reference/aggregateReplicates.html">aggregateReplicates()</a></code> and <code><a href="../reference/aggregateFeatures.html">aggregateFeatures()</a></code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code><a href="../reference/aggregateReplicates.html">aggregateReplicates()</a></code> or genes/transcripts (rows) for <code><a href="../reference/aggregateFeatures.html">aggregateFeatures()</a></code>.</li>
+<li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code> and <code><a href="../reference/deprecated.html">aggregateFeatures()</a></code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code> or genes/transcripts (rows) for <code><a href="../reference/deprecated.html">aggregateFeatures()</a></code>.</li>
 <li>Update for <code>makeNames</code> sanitization functions. Now they will work on <code>names(x)</code> for vectors by default.</li>
 <li>Improved <code><a href="../reference/detectOrganism.html">detectOrganism()</a></code> to match against “H. sapiens”, etc.</li>
 <li>Added internal <a href="https://grch37.ensembl.org">GRCh37</a> transcript to gene mapping.</li>
@@ -676,7 +717,7 @@
 <li>DNA sequence utility functions <code><a href="../reference/defunct.html">comp()</a></code> and <code><a href="../reference/defunct.html">revcomp()</a></code> now return <code>NULL</code> for integers and numerics.</li>
 <li>For <code>prepareSummarizedExperiment()</code>, added support for dropping <code>NULL</code> objects in assays list. This is useful for handling output from <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a> when <code>transformLimit</code> is reached. In this case, the <code>rlog</code> and <code>vst</code> matrices aren’t generated and set <code>NULL</code> in the assays list. Using <code>Filter(Negate(is.null), assays)</code> we can drop these <code>NULL</code> objects and prevent a downstream dimension mismatch in the <code><a href="http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class">SummarizedExperiment::SummarizedExperiment()</a></code> call.</li>
 <li>Improved support for multiplexed files in <code>readSampleMetadataFile()</code>. This now checks for a sequence column containing ACGT nucleotides. When those are detected, the <code>revcomp</code> column is generated. Otherwise this step is skipped. This is useful for handling multiplexed sample metadata from 10X Genomics <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cell Ranger</a> single-cell RNA-seq samples.</li>
-<li>Updated <code><a href="../reference/annotable.html">annotable()</a></code> function to include nested <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
+<li>Updated <code><a href="../reference/makeGRanges.html">annotable()</a></code> function to include nested <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifiers in the <code>entrez</code> column. This is useful for downstream functional analysis.</li>
 </ul>
 </div>
     <div id="basejump-0-1-2-2017-11-30" class="section level2">
@@ -685,7 +726,7 @@
 <ul>
 <li>Added <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> <code><a href="../reference/AllGenerics.html">plotQC()</a></code> generic.</li>
 <li>Added back <code><a href="../reference/toStringUnique.html">toStringUnique()</a></code> code, which is still in use in the <a href="https://steinbaugh.com/wormbase">wormbase</a> package.</li>
-<li>Added deprecations for <code><a href="../reference/defunct.html">summarizeRows()</a></code> (now <code><a href="../reference/collapseToString.html">collapseToString()</a></code>) and <code><a href="../reference/defunct.html">wash()</a></code> functions.</li>
+<li>Added deprecations for <code>summarizeRows()</code> (now <code><a href="../reference/collapseToString.html">collapseToString()</a></code>) and <code>wash()</code> functions.</li>
 <li>Updated installation method to include manual installation of <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a>. Otherwise, <a href="https://steinbaugh.com/basejump">basejump</a> installation fails due to <a href="https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDb">GenomeInfoDb</a> and <a href="https://doi.org/doi:10.18129/B9.bioc.GenomeInfoDbData">GenomeInfoDbData</a> not getting installed completely.</li>
 <li>Now suggesting that the user installs suggested packages in the README.</li>
 <li>Updated <a href="http://pantherdb.org">PANTHER</a> annotation scripts.</li>
@@ -700,7 +741,7 @@
 <li>Bug fix for <code>readDataVersions()</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
 <li>Improved key value pair method for <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 =   "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
 <li>
-<a href="https://www.ensembl.org">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/annotable.html">annotable()</a></code>, <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> functions.</li>
+<a href="https://www.ensembl.org">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/makeGRanges.html">annotable()</a></code>, <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> functions.</li>
 <li>Allow <code>rowData</code> to be left unset in <code>prepareSummarizedExperiment()</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata()</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
@@ -741,9 +782,9 @@
 <li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/deprecated.html">multiassignAsNewEnvir()</a></code>
 </li>
 <li>Added <code>*GFF()</code> function variants for <code><a href="../reference/deprecated.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/deprecated.html">tx2geneFromGTF()</a></code>.</li>
-<li>Added shared <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> generic functions: <code><a href="../reference/aggregateReplicates.html">aggregateReplicates()</a></code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/AllGenerics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code>sampleDirs()</code>, <code>sampleMetadata()</code>, <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Added shared <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> generic functions: <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code>sampleDirs()</code>, <code>sampleMetadata()</code>, <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
 <li>Incorporated <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> utility functions shared across <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a> and <a href="http://bioinformatics.sph.harvard.edu/bcbioSingleCell">bcbioSingleCell</a>: <code>readDataVersions()</code> (deprecated <code>.dataVersions()</code>), <code>readLogFile()</code> (deprecated <code>.logFile()</code>), <code>readProgramVersions()</code> (deprecated <code>.programs()</code>), <code>sampleYAML()</code> (deprecated <code>.sampleYAML()</code>), <code>sampleYAMLMetadata()</code> (deprecated <code>sampleYAMLMetadata()</code>), <code>sampleYAMLMetrics()</code> (deprecated .sampleYAMLMetrics()`).</li>
-<li>Deprecated <code><a href="../reference/defunct.html">metadataTable()</a></code> function.</li>
+<li>Deprecated <code>metadataTable()</code> function.</li>
 <li>Moved all <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> documentation to <code>methods-*.R</code> files where applicable.</li>
 <li>Now using <code>assays</code> in <code>prepareSummarizedExperiment()</code> generic definition as primary object.</li>
 <li>Improved <code><a href="../reference/assignAndSaveData.html">assignAndSaveData()</a></code> to add silent return of file path.</li>
@@ -751,7 +792,7 @@
 <li>Added <code>.prepareSampleMetadata()</code> utility function, for use with loading sample metadata from an external CSV, <a href="https://products.office.com/en-us/excel">Excel</a>, or YAML file.</li>
 <li>Added <code><a href="../reference/loadData.html">loadData()</a></code> functionality back to the package.</li>
 <li>Initial commit of <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code> function.</li>
-<li>Improved <code><a href="../reference/annotable.html">annotable()</a></code> function documentation and support for <a href="https://www.ensembl.org">Ensembl</a> release versions.</li>
+<li>Improved <code><a href="../reference/makeGRanges.html">annotable()</a></code> function documentation and support for <a href="https://www.ensembl.org">Ensembl</a> release versions.</li>
 <li>Improved sanitization rules for <code><a href="../reference/makeNames.html">camel()</a></code>, <code><a href="../reference/makeNames.html">dotted()</a></code>, and <code><a href="../reference/makeNames.html">snake()</a></code> name functions. Added the <code>strict</code> argument to <code><a href="../reference/makeNames.html">camel()</a></code> and <code><a href="../reference/makeNames.html">dotted()</a></code>.</li>
 <li>Improved the documentation for the <code>makeNames</code> functions, by splitting each into their own separate methods file.</li>
 <li>Improved S4 method support for the logRatio functions.</li>
@@ -768,7 +809,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-0-23-2017-09-14" class="anchor"></a>basejump 0.0.23 (2017-09-14)</h2>
 <ul>
-<li>Upgraded <code><a href="../reference/annotable.html">annotable()</a></code> function to query <a href="https://www.ensembl.org">Ensembl</a> using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
+<li>Upgraded <code><a href="../reference/makeGRanges.html">annotable()</a></code> function to query <a href="https://www.ensembl.org">Ensembl</a> using the <a href="http://bioconductor.org/packages/release/bioc/html/ensembldb.html">ensembldb</a> package rather than <a href="https://github.com/stephenturner/annotables">annotables</a>.</li>
 </ul>
 </div>
     <div id="basejump-0-0-22-2017-09-08" class="section level2">
@@ -776,7 +817,7 @@
 <a href="#basejump-0-0-22-2017-09-08" class="anchor"></a>basejump 0.0.22 (2017-09-08)</h2>
 <ul>
 <li>Improved unit testing coverage.</li>
-<li>Renamed <code><a href="../reference/defunct.html">prepareSE()</a></code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
+<li>Renamed <code>prepareSE()</code> to <code>prepareSummarizedExperiment()</code>. Improved row and column name handling in the function. It now outputs more helpful diagnostic messages on error.</li>
 <li>Reworked and simplified <code><a href="../reference/detectHPC.html">detectHPC()</a></code> function to allow for unit testing.</li>
 </ul>
 </div>
@@ -787,7 +828,7 @@
 <li>NAMESPACE improvements. Reduced the number of re-exported functions to simplify the package.</li>
 <li>Improved code coverage and unit testing with additional <a href="https://github.com/hadley/testthat">testthat</a> checks. Specifically, added unit testing for remote download functions and improved testing for GTF file utilities.</li>
 <li>Code coverage now above 90%!</li>
-<li>Renamed <code><a href="../reference/defunct.html">packageSE()</a></code> to <code><a href="../reference/defunct.html">prepareSE()</a></code> for better semantic meaning.</li>
+<li>Renamed <code>packageSE()</code> to <code>prepareSE()</code> for better semantic meaning.</li>
 <li>Made multiple generics more flexible by inclusion of passthrough (<code>…</code>).</li>
 <li>Reduced the number of deprecated functions.</li>
 <li>Initial commit of internal <code>localOrRemote()</code> utility function.</li>
@@ -822,7 +863,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-0-18-2017-07-24" class="anchor"></a>basejump 0.0.18 (2017-07-24)</h2>
 <ul>
-<li>Initial support for <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> creation with <code><a href="../reference/defunct.html">packageSE()</a></code>.</li>
+<li>Initial support for <a href="https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html">SummarizedExperiment</a> creation with <code>packageSE()</code>.</li>
 </ul>
 </div>
     <div id="basejump-0-0-17-2017-07-11" class="section level2">
@@ -960,7 +1001,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#basejump-0-7-2-2018-08-23">0.7.2</a></li>
+        <li><a href="#basejump-0-7-2-2018-08-29">0.7.2</a></li>
         <li><a href="#basejump-0-7-1-2018-08-18">0.7.1</a></li>
         <li><a href="#basejump-0-7-0-2018-08-07">0.7.0</a></li>
         <li><a href="#basejump-0-6-4-2018-08-03">0.6.4</a></li>

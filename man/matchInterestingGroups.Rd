@@ -4,25 +4,26 @@
 \alias{matchInterestingGroups}
 \title{Match Interesting Groups}
 \usage{
-matchInterestingGroups(object, interestingGroups, ...)
+matchInterestingGroups(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object.}
+\item{object}{\code{SummarizedExperiment}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
-
-\item{...}{Additional arguments.}
 }
 \value{
-\code{character}.
+\code{character}. Interesting groups.
 }
 \description{
-Match Interesting Groups
+Match the user-defined interesting groups to the values slotted within a
+\code{SummarizedExperiment} object, and check that they are valid. Otherwise
+supports a missing \code{interestingGroups} argument, which will then use the
+\code{\link[=interestingGroups]{interestingGroups()}} accessor function internally.
 }
 \examples{
-matchInterestingGroups(rse_bcb)
-matchInterestingGroups(rse_bcb, interestingGroups = NULL)
-matchInterestingGroups(rse_bcb, interestingGroups = "sampleName")
+matchInterestingGroups(rse_small)
+matchInterestingGroups(rse_small, interestingGroups = NULL)
+matchInterestingGroups(rse_small, interestingGroups = "sampleName")
 }
 \seealso{
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
@@ -30,7 +31,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
-  \code{\link{methodFormals}},
+  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
