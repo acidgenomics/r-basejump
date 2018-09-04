@@ -86,34 +86,34 @@ p <- ggplot2::ggplot(
 
 test_that("theme_midnight", {
     expect_is(theme_midnight(), "theme")
-    x <- p + theme_midnight()
-    expect_is(x, "ggplot")
+    object <- p + theme_midnight()
+    expect_is(object, "ggplot")
     # Check background color.
     expect_identical(
-        x[["theme"]][["plot.background"]][["fill"]],
+        object[["theme"]][["plot.background"]][["fill"]],
         "black"
     )
     # Grid mode.
-    x <- p + theme_midnight(grid = TRUE)
+    object <- p + theme_midnight(grid = TRUE)
     expect_identical(
-        x[["theme"]][["panel.grid.major"]][["colour"]],
+        object[["theme"]][["panel.grid.major"]][["colour"]],
         "gray10"
     )
 })
 
 test_that("theme_paperwhite", {
     expect_is(theme_paperwhite(), "theme")
-    x <- p + theme_paperwhite()
-    expect_is(x, "ggplot")
+    object <- p + theme_paperwhite()
+    expect_is(object, "ggplot")
     # Check background color.
     expect_identical(
-        x[["theme"]][["plot.background"]][["fill"]],
+        object[["theme"]][["plot.background"]][["fill"]],
         NULL
     )
     # Grid mode.
-    x <- p + theme_paperwhite(grid = TRUE)
+    object <- p + theme_paperwhite(grid = TRUE)
     expect_identical(
-        x[["theme"]][["panel.grid.major"]][["colour"]],
+        object[["theme"]][["panel.grid.major"]][["colour"]],
         "gray95"
     )
 })
