@@ -20,19 +20,11 @@ Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
 Supports \code{GRanges} and \code{DataFrame} class objects.
 }
 \examples{
-# Genes ====
-gr <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
-colnames(mcols(gr))
-x <- sanitizeRowData(gr)
-vapply(x, is.atomic, logical(1L))
-print(x)
-
-# Transcripts ====
-gr <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
-colnames(mcols(gr))
-x <- sanitizeRowData(gr)
-vapply(x, is.atomic, logical(1L))
-print(x)
+from <- rowRanges(rse_small)
+print(colnames(mcols(from)))
+to <- sanitizeRowData(from)
+vapply(to, is.atomic, logical(1L))
+print(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},

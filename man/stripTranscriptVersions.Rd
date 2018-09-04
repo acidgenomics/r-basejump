@@ -35,9 +35,11 @@ beginning with "ENS".
 }
 \examples{
 # Ensembl (modify; contains versions)
-stripTranscriptVersions("ENSMUST00000000001.1")
-stripTranscriptVersions("ENSMUST00000000001-1")
-stripTranscriptVersions("ENSMUST00000000001_1")
+stripTranscriptVersions(c(
+    "ENSMUST00000000001.1",
+    "ENSMUST00000000001-1",
+    "ENSMUST00000000001_1"
+))
 
 # WormBase (keep; doesn't contain versions)
 stripTranscriptVersions("cTel79B.1")

@@ -69,23 +69,22 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 # SummarizedExperiment ====
 plotHeatmap(rse_small)
 
-# Set legend using interesting groups, and customize colors
+# Using viridis color palette.
 plotHeatmap(
     object = rse_small,
-    interestingGroups = "condition",
     color = viridis::plasma,
     legendColor = viridis::viridis
 )
 
-# Hexadecimal color input
+# Using hexadecimal color input.
 library("RColorBrewer")
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 plotHeatmap(rse_small, color = purple_orange)
 
-# Default pheatmap colors
+# Using default pheatmap colors.
 plotHeatmap(rse_small, color = NULL)
 
-# Disable column clustering
+# Disable column clustering.
 plotHeatmap(rse_small, clusterCols = FALSE)
 }
 \seealso{

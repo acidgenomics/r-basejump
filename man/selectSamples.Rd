@@ -25,7 +25,6 @@ legibility and reproducibility.}
 Sample selection utility function designed for interactive use.
 }
 \examples{
-# SummarizedExperiment ====
 x <- selectSamples(rse_small, genotype = "wildtype")
 print(x)
 colnames(x)
