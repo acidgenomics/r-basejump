@@ -10,14 +10,9 @@ mat <- matrix(
             "ENSG00000000003",
             "ENSG00000000004"
         ),
-        c(
-            "sample_1",
-            "sample_2",
-            "sample_3",
-            "sample_4"
-        )
+        paste0("sample", seq_len(4L))
     )
 )
 df <- as.data.frame(mat)
 tbl <- as(df, "tbl_df")
-dgc <- as(mat, "dgCMatrix")
+sparse <- as(mat, "sparseMatrix")

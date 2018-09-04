@@ -83,7 +83,6 @@ test_that("interestingGroups : Assignment method", {
 # makeSummarizedExperiment =====================================================
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
-
 mat <- matrix(
     data = seq(1L:16L),
     nrow = 4L,
@@ -91,7 +90,6 @@ mat <- matrix(
     byrow = FALSE,
     dimnames = list(genes, samples)
 )
-dgc <- as(mat, "dgCMatrix")
 
 rr <- GRanges(
     seqnames = replicate(n = 4L, expr = "1"),
