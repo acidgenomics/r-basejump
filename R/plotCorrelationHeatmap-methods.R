@@ -121,7 +121,10 @@ setMethod(
         )
         if (length(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (length(annotationCol)) {
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
                 rownames(annotationCol) <- sampleNames
             }
         }
