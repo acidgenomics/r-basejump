@@ -15,12 +15,12 @@
 #' @export
 #'
 #' @examples
-#' object <- sampleData(rse_small)
-#' x <- uniteInterestingGroups(
-#'     object = object,
+#' from <- sampleData(rse_small)
+#' to <- uniteInterestingGroups(
+#'     object = from,
 #'     interestingGroups = c("genotype", "treatment")
 #' )
-#' print(x)
+#' print(to)
 NULL
 
 

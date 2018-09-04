@@ -15,7 +15,6 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
 #' x <- selectSamples(rse_small, genotype = "wildtype")
 #' print(x)
 #' colnames(x)
