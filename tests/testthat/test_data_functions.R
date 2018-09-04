@@ -55,13 +55,14 @@ test_that("gene2symbol : No mappings", {
 # interestingGroups ============================================================
 test_that("interestingGroups : SummarizedExperiment", {
     expect_identical(
-        interestingGroups(rse_small),
-        "treatment"
+        object = interestingGroups(rse_small),
+        expected = c("genotype", "treatment")
     )
-    expect_identical(
-        interestingGroups(rse_small),
-        NULL
-    )
+
+    # Check object with no metadata
+    object <- rse_small
+    metadata(object) <- list()
+    expect_identical(interestingGroups(object), NULL)
 })
 
 test_that("interestingGroups : Assignment method", {
@@ -127,13 +128,33 @@ test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
     )
 })
 
+test_that("makeSummarizedExperiment : SummarizedExperiment", {
+    # Allow legacy support of rowData pass-in.
+    se <- makeSummarizedExperiment(
+        assays = list(counts = mat),
+        rowData = as(rr, "DataFrame"),
+        colData = cd
+    )
+    # Check for SE and not RSE.
+    expect_identical(
+        object = class(se),
+        expected = structure(
+            .Data = "SummarizedExperiment",
+            package = "SummarizedExperiment"
+        )
+    )
+})
+
+
+
 test_that("makeSummarizedExperiment : Super minimal", {
-    rse <- suppressWarnings(makeSummarizedExperiment(
+    # Ensure this returns clean with no row or column annotations.
+    rse <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = NULL,
         rowData = NULL,
         colData = NULL
-    ))
+    )
     expect_s4_class(rse, "RangedSummarizedExperiment")
     expect_identical(levels(seqnames(rse)), "unknown")
 })
