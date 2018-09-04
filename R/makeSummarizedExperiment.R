@@ -190,8 +190,14 @@ makeSummarizedExperiment <- function(
         # Label any remaining unannotated genes with `unknown` seqname.
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         if (length(setdiff)) {
-            warning(paste(
-                # 24 characters
+            # Stop on a lot of unannotated genes, otherwise warn.
+            if (length(setdiff) > 10L) {
+                f <- stop
+            } else {
+                f <- warning
+            }
+            f(paste(
+                # 24 characters (see trunc call below)
                 paste(
                     "Unannotated rows",
                     paste0("(", length(setdiff), "):")
