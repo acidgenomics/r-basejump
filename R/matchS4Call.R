@@ -21,12 +21,6 @@
 #' @return
 #' - [matchCall()]: `call`.
 #' - [matchArgs()]: `list`.
-#'
-#' @examples
-#' f <- function(object) {
-#'     matchArgs(match.call())
-#' }
-#' f(object = "XXX")
 matchS4Call <- function() {
     # Find the `.local()` function in the call stack.
     isLocal <- sapply(

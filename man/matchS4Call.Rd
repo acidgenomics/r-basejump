@@ -19,12 +19,6 @@ methods. Here we are using a combination of \code{\link[base:sys.call]{base::sys
 method. The function raverses up the call stack and find the first
 \code{.local()}. The desired S4 call to match is one level above.
 }
-\examples{
-f <- function(object) {
-    matchArgs(match.call())
-}
-f(object = "XXX")
-}
 \seealso{
 \itemize{
 \item \code{\link[base:sys.calls]{base::sys.calls()}}.
