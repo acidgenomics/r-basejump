@@ -14,17 +14,20 @@
 #'
 #' @examples
 #' # character ====
-#' object <- as.character(c(1L, "x", "", "NA", "NULL"))
-#' print(object)
-#' sanitizeNA(object)
+#' from <- as.character(c(1L, "x", "", "NA", "NULL"))
+#' print(from)
+#' to <- sanitizeNA(from)
+#' print(to)
 #'
 #' # DataFrame ====
-#' object <- DataFrame(
+#' from <- DataFrame(
 #'     a = c("foo", ""),
 #'     b = c(NA, "bar"),
 #'     row.names = c("c", "d")
 #' )
-#' sanitizeNA(object)
+#' print(from)
+#' to <- sanitizeNA(from)
+#' print(to)
 NULL
 
 

@@ -22,9 +22,11 @@
 #' @export
 #'
 #' @examples
-#' object <- sampleData(rse_small)
-#' x <- sanitizeSampleData(object)
+#' from <- sampleData(rse_small)
+#' print(from)
+#' to <- sanitizeSampleData(from)
 #' all(vapply(x, is.factor, logical(1L)))
+#' print(to)
 sanitizeSampleData <- function(object) {
     assert_is_any_of(object, c("DataFrame", "data.frame"))
     assert_is_non_empty(object)
