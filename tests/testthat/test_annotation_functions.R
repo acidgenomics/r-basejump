@@ -348,7 +348,7 @@ test_that("detectOrganism : matrix", {
 })
 
 test_that("detectOrganism : tbl_df", {
-    object <- as(object, "tbl_df")
+    object <- as(mat, "tbl_df")
     expect_true("rowname" %in% colnames(object))
     expect_identical(
         detectOrganism(object),
@@ -739,7 +739,7 @@ with_parameters_test_that(
         invisible(capture.output(
             object <- panther(organism)
         ))
-        expect_is(object, "data.frame")
+        expect_is(object, "DataFrame")
     },
     organism = names(.pantherMappings)
 )
