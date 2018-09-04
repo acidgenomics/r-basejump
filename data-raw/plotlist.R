@@ -1,5 +1,5 @@
 # Plotlist data for testing ggplot2 code
-# Last updated 2018-09-02
+# Last updated 2018-09-04
 
 library(ggplot2)
 library(cowplot)

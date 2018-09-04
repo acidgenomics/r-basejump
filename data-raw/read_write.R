@@ -1,5 +1,5 @@
 # Read/write file examples
-# Last updated 2018-09-02
+# Last updated 2018-09-04
 # Note that `readr::write_*()` functions never write rownames.
 
 library(tidyverse)
