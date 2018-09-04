@@ -130,15 +130,17 @@ makeGRangesFromEnsembl <- function(
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(build)
-    # Check for accidental UCSC input and abort, informing user.
+    # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(build)) {
-        ucscCheck <- convertUCSCBuildToEnsembl(build)
-        if (!is.null(ucscCheck)) {
+        ucscCheck <- tryCatch(
+            expr = convertUCSCBuildToEnsembl(build),
+            error = function(e) NULL
+        )
+        if (length(ucscCheck)) {
             stop(paste(
                 "UCSC build ID detected.",
-                "Use Ensembl build ID instead.",
-                printString(ucscCheck),
-                sep = "\n"
+                "Use Ensembl ID instead.\n",
+                printString(ucscCheck)
             ))
         }
     }
