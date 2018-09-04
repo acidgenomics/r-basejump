@@ -10,9 +10,10 @@
 #'
 #' @section SummarizedExperiment:
 #'
-#' Slot an `aggregate` column into `colData()` for `aggregateCols()`, or into
-#' `rowData()` for `aggregateRows()`. The S4 method will define the `groupings`
-#' automatically and perform the aggregation.
+#' Slot an `aggregate` column into [SummarizedExperiment::colData()] for
+#' [aggregateCols()], or into [SummarizedExperiment::rowData()] for
+#' `aggregateRows()`. The S4 method will define the `groupings` automatically
+#' and perform the aggregation.
 #'
 #' @name aggregate
 #' @family Data Functions
@@ -27,7 +28,7 @@
 #'   (features).
 #'
 #' @examples
-#' counts <- DataFrame(
+#' counts <- S4Vectors::DataFrame(
 #'     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
 #'     sample1_replicate2 = as.integer(c(1, 0, 1, 1)),
 #'     sample2_replicate1 = as.integer(c(1, 1, 0, 1)),
@@ -55,13 +56,13 @@
 #' print(genes)
 #'
 #' # SummarizedExperiment
-#' se <- SummarizedExperiment(
+#' se <- SummarizedExperiment::SummarizedExperiment(
 #'     assay = list(counts = sparse),
-#'     colData = DataFrame(
+#'     colData = S4Vectors::DataFrame(
 #'         sampleName = names(samples),
 #'         aggregate = samples
 #'     ),
-#'     rowData = DataFrame(aggregate = genes)
+#'     rowData = S4Vectors::DataFrame(aggregate = genes)
 #' )
 #' print(se)
 #'

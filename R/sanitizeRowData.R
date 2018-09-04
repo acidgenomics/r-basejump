@@ -14,8 +14,8 @@
 #' @export
 #'
 #' @examples
-#' from <- rowRanges(rse_small)
-#' print(colnames(mcols(from)))
+#' from <- SummarizedExperiment::rowRanges(rse_small)
+#' colnames(S4Vectors::mcols(from))
 #' to <- sanitizeRowData(from)
 #' vapply(to, is.atomic, logical(1L))
 #' print(to)
