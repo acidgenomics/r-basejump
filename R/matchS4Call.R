@@ -18,9 +18,11 @@
 #' - [base::match.call()].
 #' - [pryr::standardise_call()].
 #'
-#' @return
-#' - [matchCall()]: `call`.
-#' - [matchArgs()]: `list`.
+#' @return `call`.
+#'
+#' @examples
+#' # Execute this inside an S4 method.
+#' \dontrun{matchS4Call()}
 matchS4Call <- function() {
     # Find the `.local()` function in the call stack.
     isLocal <- sapply(
