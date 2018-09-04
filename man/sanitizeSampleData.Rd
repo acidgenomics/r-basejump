@@ -32,7 +32,7 @@ Currently supports \code{DataFrame} or \code{data.frame} input.
 from <- sampleData(rse_small)
 print(from)
 to <- sanitizeSampleData(from)
-all(vapply(x, is.factor, logical(1L)))
+all(vapply(to, is.factor, logical(1L)))
 print(to)
 }
 \seealso{

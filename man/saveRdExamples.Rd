@@ -28,11 +28,11 @@ requests in a single call.
 saveRdExamples(
     Rd = c("do.call", "droplevels"),
     package = "base",
-    dir = "XXX"
+    dir = "example"
 )
 
 # Clean up
-unlink("XXX", recursive = TRUE)
+unlink("example", recursive = TRUE)
 }
 \seealso{
 Other R Documentation Functions: \code{\link{RdTags}},
