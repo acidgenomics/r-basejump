@@ -87,6 +87,6 @@ reference:
     - starts_with("assert")
   - title: Example Datasets
     contents:
+    - rse_small
     - rnaseq_counts
-    - starts_with("rse_")
     - single_cell_counts

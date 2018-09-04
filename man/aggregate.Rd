@@ -55,13 +55,14 @@ transcript-level to gene-level.
 \section{SummarizedExperiment}{
 
 
-Slot an \code{aggregate} column into \code{colData()} for \code{aggregateCols()}, or into
-\code{rowData()} for \code{aggregateRows()}. The S4 method will define the \code{groupings}
-automatically and perform the aggregation.
+Slot an \code{aggregate} column into \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} for
+\code{\link[=aggregateCols]{aggregateCols()}}, or into \code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} for
+\code{aggregateRows()}. The S4 method will define the \code{groupings} automatically
+and perform the aggregation.
 }
 
 \examples{
-counts <- DataFrame(
+counts <- S4Vectors::DataFrame(
     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
     sample1_replicate2 = as.integer(c(1, 0, 1, 1)),
     sample2_replicate1 = as.integer(c(1, 1, 0, 1)),
@@ -89,13 +90,13 @@ names(genes) <- rownames(counts)
 print(genes)
 
 # SummarizedExperiment
-se <- SummarizedExperiment(
+se <- SummarizedExperiment::SummarizedExperiment(
     assay = list(counts = sparse),
-    colData = DataFrame(
+    colData = S4Vectors::DataFrame(
         sampleName = names(samples),
         aggregate = samples
     ),
-    rowData = DataFrame(aggregate = genes)
+    rowData = S4Vectors::DataFrame(aggregate = genes)
 )
 print(se)
 

@@ -34,7 +34,9 @@
   
 <meta property="og:title" content="Markdown Plotlist — markdownPlotlist" />
 
-<meta property="og:description" content="Markdown Plotlist" />
+<meta property="og:description" content="Supports using a named list containing multiple ggplot objects, which
+can be used in an R Markdown report, separated by headers. Internally, the
+headers are generated with the markdownHeader() function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -112,7 +114,9 @@
 
     <div class="ref-description">
     
-    <p>Markdown Plotlist</p>
+    <p>Supports using a named <code>list</code> containing multiple <code>ggplot</code> objects, which
+can be used in an R Markdown report, separated by headers. Internally, the
+headers are generated with the <code><a href='markdownHeader.html'>markdownHeader()</a></code> function.</p>
     
     </div>
 
@@ -144,7 +148,9 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda</span></div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'assertIsURL' is deprecated.</span>
+#&gt; <span class='warning'>Use 'assertAllAreURL' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; [1] "continuous" "discrete"  </div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; ## continuous
 #&gt; </div><div class='img'><img src='markdownPlotlist-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 

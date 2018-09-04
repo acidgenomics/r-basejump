@@ -26,7 +26,7 @@ Use the wormbase package instead.
 }
 \examples{
 x <- geneSynonyms(organism = "Homo sapiens")
-glimpse(x)
+print(x)
 }
 \seealso{
 Other Annotation Functions: \code{\link{broadClass}},

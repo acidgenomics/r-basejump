@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>RangedSummarizedExperiment</code> Coerced from <code>DESeqDataSet</code> — rse_dds • basejump</title>
+<title>Save R Documentation Examples — saveRdExamples • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="<code>RangedSummarizedExperiment</code> Coerced from <code>DESeqDataSet</code> — rse_dds" />
+<meta property="og:title" content="Save R Documentation Examples — saveRdExamples" />
 
-<meta property="og:description" content="RangedSummarizedExperiment Coerced from DESeqDataSet" />
+<meta property="og:description" content="Parse the documentation for a function and save the working examples to an R
+script. Note that the f argument is parameterized and can handle multiple
+requests in a single call." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -105,37 +107,71 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>RangedSummarizedExperiment</code> Coerced from <code>DESeqDataSet</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>rse_dds.Rd</code></div>
+    <h1>Save R Documentation Examples</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/saveRdExamples.R'><code>R/saveRdExamples.R</code></a></small>
+    <div class="hidden name"><code>saveRdExamples.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>RangedSummarizedExperiment</code> Coerced from <code>DESeqDataSet</code></p>
+    <p>Parse the documentation for a function and save the working examples to an R
+script. Note that the <code>f</code> argument is parameterized and can handle multiple
+requests in a single call.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>rse_dds</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>saveRdExamples</span>(<span class='no'>Rd</span>, <span class='no'>package</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>Rd</th>
+      <td><p><code>character</code> or <code>NULL</code>. R documentation name(s) from which to parse
+and save the working examples. If <code>NULL</code>, all documentation files
+containing examples will be saved.</p></td>
+    </tr>
+    <tr>
+      <th>package</th>
+      <td><p><code>string</code>. Package name.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p><code>string</code>. Output directory. Defaults to the current working
+directory.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>RangedSummarizedExperiment</code> with 1000 rows and 12 columns.</p>
+    <p>Invisible <code>character</code>. File path(s).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Minimal Example Data: <code><a href='rse_bcb.html'>rse_bcb</a></code></p></div>
+    <div class='dont-index'><p>Other R Documentation Functions: <code><a href='RdTags.html'>RdTags</a></code>,
+  <code><a href='parseRd.html'>parseRd</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>saveRdExamples</span>(
+    <span class='kw'>Rd</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"do.call"</span>, <span class='st'>"droplevels"</span>),
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"base"</span>,
+    <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>
+)</div><div class='output co'>#&gt; <span class='message'>Saving do.call</span></div><div class='output co'>#&gt; <span class='message'>Saving droplevels</span></div><div class='output co'>#&gt; <span class='message'>Saved 2 Rd examples from base to /Users/mike/git/basejump-develop/docs/reference/example</span></div><div class='input'>
+<span class='co'># Clean up</span>
+<span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sort and Make Unique — sortUnique • basejump</title>
+<title>Functions to Access the Function Call Stack — matchS4Call • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,11 +32,13 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Sort and Make Unique — sortUnique" />
+<meta property="og:title" content="Functions to Access the Function Call Stack — matchS4Call" />
 
-<meta property="og:description" content="This is a convenience function to quickly sort and atomic vector and make the
-values unique. The function also strips NA values. This is useful for
-repetitive gene vector operations, for example." />
+<meta property="og:description" content="Note that base::match.call() doesn't always work correctly inside S4
+methods. Here we are using a combination of base::sys.call() with
+pryr::standardise_call() to correctly capture named arguments inside an S4
+method. The function raverses up the call stack and find the first
+.local(). The desired S4 call to match is one level above." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,54 +109,61 @@ repetitive gene vector operations, for example." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sort and Make Unique</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sortUnique.R'><code>R/sortUnique.R</code></a></small>
-    <div class="hidden name"><code>sortUnique.Rd</code></div>
+    <h1>Functions to Access the Function Call Stack</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/matchS4Call.R'><code>R/matchS4Call.R</code></a></small>
+    <div class="hidden name"><code>matchS4Call.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a convenience function to quickly sort and atomic vector and make the
-values unique. The function also strips <code>NA</code> values. This is useful for
-repetitive gene vector operations, for example.</p>
+    <p>Note that <code><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call()</a></code> doesn't always work correctly inside S4
+methods. Here we are using a combination of <code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call()</a></code> with
+<code><a href='http://www.rdocumentation.org/packages/pryr/topics/standardise_call'>pryr::standardise_call()</a></code> to correctly capture named arguments inside an S4
+method. The function raverses up the call stack and find the first
+<code>.local()</code>. The desired S4 call to match is one level above.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sortUnique</span>(<span class='no'>object</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p><code>atomic</code>.</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>matchS4Call</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>atomic</code>.</p>
+    
+<ul>
+<li><p></p></li>
+<li><p></p></li>
+</ul>
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Atomic Vector Functions: <code><a href='grepString.html'>grepString</a></code>,
-  <code><a href='toStringUnique.html'>toStringUnique</a></code></p></div>
+    <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.calls()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/pryr/topics/standardise_call'>pryr::standardise_call()</a></code>.</p></li>
+</ul></div>
+    <div class='dont-index'><p>Other Developer Functions: <code><a href='cleanSystemLibrary.html'>cleanSystemLibrary</a></code>,
+  <code><a href='detectHPC.html'>detectHPC</a></code>, <code><a href='dots.html'>dots</a></code>,
+  <code><a href='flatFiles.html'>flatFiles</a></code>,
+  <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
+  <code><a href='methodFormals.html'>methodFormals</a></code>,
+  <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
+  <code><a href='printString.html'>printString</a></code>,
+  <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sortUnique</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='st'>"milk"</span>, <span class='st'>"eggs"</span>, <span class='st'>"eggs"</span>))</div><div class='output co'>#&gt; [1] "eggs" "milk" NA    </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
     

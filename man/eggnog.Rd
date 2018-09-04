@@ -23,7 +23,7 @@ eukaryotic, prokaryotic, and viral genomes.
 }
 \examples{
 x <- eggnog()
-glimpse(x)
+print(x)
 }
 \seealso{
 \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}

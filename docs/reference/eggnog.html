@@ -64,7 +64,7 @@ eukaryotic, prokaryotic, and viral genomes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -164,14 +164,45 @@ identifiers.</p></li>
 #&gt; <span class='message'>  speciesCount = col_integer(),</span>
 #&gt; <span class='message'>  cogFunctionalCategory = col_character(),</span>
 #&gt; <span class='message'>  consensusFunctionalDescription = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ cogFunctionalCategories:Classes 'tbl_df', 'tbl' and 'data.frame':	18 obs. of  2 variables:
-#&gt;   ..$ letter     : Factor w/ 18 levels "A","B","C","E",..: 1 2 3 4 5 6 7 8 9 10 ...
-#&gt;   ..$ description: Factor w/ 18 levels "Amino acid transport and metabolism",..: 16 4 8 1 15 2 5 13 18 3 ...
-#&gt;  $ annotations            :Classes 'tbl_df', 'tbl' and 'data.frame':	286584 obs. of  3 variables:
-#&gt;   ..$ eggnogID                      : chr [1:286584] "COG0001" "COG0002" "COG0003" "COG0004" ...
-#&gt;   ..$ consensusFunctionalDescription: chr [1:286584] "Glutamate-1-semialdehyde aminotransferase" "N-acetylglutamate semialdehyde dehydrogenase" "ATPase required for the post-translational delivery of tail-anchored (TA) proteins to the endoplasmic reticulum"| __truncated__ "ammonium Transporter" ...
-#&gt;   ..$ cogFunctionalCategory         : chr [1:286584] "H" "E" "P" "P" ...</div></pre>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $cogFunctionalCategories
+#&gt; # A tibble: 18 x 2
+#&gt;    letter description                           
+#&gt;    &lt;fct&gt;  &lt;fct&gt;                                 
+#&gt;  1 A      RNA processing and modification       
+#&gt;  2 B      Chromatin structure and dynamics      
+#&gt;  3 C      Energy production and conversion      
+#&gt;  4 E      Amino acid transport and metabolism   
+#&gt;  5 F      Nucleotide transport and metabolism   
+#&gt;  6 G      Carbohydrate transport and metabolism 
+#&gt;  7 H      Coenzyme transport and metabolism     
+#&gt;  8 I      Lipid transport and metabolism        
+#&gt;  9 K      Transcription                         
+#&gt; 10 N      Cell motility                         
+#&gt; 11 P      Inorganic ion transport and metabolism
+#&gt; 12 R      General function prediction only      
+#&gt; 13 S      Function unknown                      
+#&gt; 14 T      Signal transduction mechanisms        
+#&gt; 15 V      Defense mechanisms                    
+#&gt; 16 W      Extracellular structures              
+#&gt; 17 Y      Nuclear structure                     
+#&gt; 18 Z      Cytoskeleton                          
+#&gt; 
+#&gt; $annotations
+#&gt; # A tibble: 286,584 x 3
+#&gt;    eggnogID consensusFunctionalDescription                   cogFunctionalCate…
+#&gt;    &lt;chr&gt;    &lt;chr&gt;                                            &lt;chr&gt;             
+#&gt;  1 COG0001  Glutamate-1-semialdehyde aminotransferase        H                 
+#&gt;  2 COG0002  N-acetylglutamate semialdehyde dehydrogenase     E                 
+#&gt;  3 COG0003  ATPase required for the post-translational deli… P                 
+#&gt;  4 COG0004  ammonium Transporter                             P                 
+#&gt;  5 COG0005  The purine nucleoside phosphorylases catalyze t… F                 
+#&gt;  6 COG0006  peptidase M24                                    E                 
+#&gt;  7 COG0007  Multifunctional enzyme that catalyzes the SAM-d… H                 
+#&gt;  8 COG0008  Catalyzes the attachment of glutamate to tRNA(G… J                 
+#&gt;  9 COG0009  sua5 ycio yrdc ywlc family protein               J                 
+#&gt; 10 COG0010  hydrolase activity, acting on carbon-nitrogen (… E                 
+#&gt; # ... with 286,574 more rows
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -116,29 +116,23 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertFormalGene2symbol</span>(<span class='no'>x</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>,
-  <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))</pre>
+    <pre class="usage"><span class='fu'>assertFormalGene2symbol</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object containing gene identifiers in the row names.</p></td>
+      <th>object</th>
+      <td><p>Object containing gene identifiers in <code>rownames</code>. Cannot
+contain gene names, or the check will fail.</p></td>
     </tr>
     <tr>
       <th>genes</th>
-      <td><p><code>character</code> vector of gene identifiers.</p></td>
+      <td><p><code>character</code>. Gene identifiers.</p></td>
     </tr>
     <tr>
       <th>gene2symbol</th>
-      <td><p>Gene-to-symbol mappings. Must contain a <code>data.frame</code> or
-<code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>severity</th>
-      <td><p><code>string</code>. How severe should the consequences of the assertion
-be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
+      <td><p><code>DataFrame</code>, <code>tbl_df</code>, or <code>NULL</code>. Gene-to-symbol mappings.</p></td>
     </tr>
     </table>
     
@@ -150,6 +144,7 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
 
     <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
   <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
   <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
   <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
   <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
@@ -160,10 +155,8 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
   <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
   <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
   <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
-  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
   <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
@@ -178,13 +171,12 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
     <span class='kw'>geneName</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"TSPAN6"</span>, <span class='st'>"TNMD"</span>)
 )
 <span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></span>(<span class='no'>gene2symbol</span>, <span class='st'>"geneID"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
     <span class='st'>"sample_1"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='fl'>2L</span>),
     <span class='st'>"sample_2"</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3L</span>, <span class='fl'>4L</span>),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='no'>genes</span>,
-    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='no'>genes</span>
 )
-<span class='fu'>assertFormalGene2symbol</span>(<span class='no'>x</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>)</div></pre>
+<span class='fu'>assertFormalGene2symbol</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='no'>gene2symbol</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fix Character Strings Missing <code>NA</code> — fixNA • basejump</title>
+<title>Assert All Are Unique Gene Names — assertAllAreUniqueGeneNames • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Fix Character Strings Missing <code>NA</code> — fixNA" />
+<meta property="og:title" content="Assert All Are Unique Gene Names — assertAllAreUniqueGeneNames" />
 
-<meta property="og:description" content="Fix Character Strings Missing NA" />
+<meta property="og:description" content="This assert check determines if a user-defined gene name query is using only
+unique (non-amgibuous) symbols. It is designed to be used for gene plotting
+particularly when performing single-cell RNA-seq marker analysis." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -105,79 +107,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fix Character Strings Missing <code>NA</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/fixNA-methods.R'><code>R/fixNA-methods.R</code></a></small>
-    <div class="hidden name"><code>fixNA.Rd</code></div>
+    <h1>Assert All Are Unique Gene Names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <div class="hidden name"><code>assertAllAreUniqueGeneNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Fix Character Strings Missing <code>NA</code></p>
+    <p>This assert check determines if a user-defined gene name query is using only
+unique (non-amgibuous) symbols. It is designed to be used for gene plotting
+particularly when performing single-cell RNA-seq marker analysis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fixNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for tbl_df</span>
-<span class='fu'>fixNA</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>assertAllAreUniqueGeneNames</span>(<span class='no'>object</span>, <span class='no'>genes</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object.</p></td>
+      <td><p><code>SummarizedExperiment</code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>genes</th>
+      <td><p><code>character</code>. Input vector to check against definitions in the
+corresponding <code>SummarizedExperiment</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object containing proper <code>NA</code> values.</p>
+    <p>Stop on mismatch.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='makeNames.html'>camel</a></code>,
-  <code><a href='collapseToString.html'>collapseToString</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
-  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
-  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
+    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
+  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
+  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
+  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
+  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
+  <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
+  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
+  <code><a href='assertIsAHeaderLevel.html'>assertIsAHeaderLevel</a></code>,
+  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
+  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
+  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
+  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
+  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># character ====</span>
-<span class='fu'>fixNA</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>))</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
-<span class='co'># data.frame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
-    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>),
-    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)
-<span class='fu'>fixNA</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;      a    b
-#&gt; c  foo &lt;NA&gt;
-#&gt; d &lt;NA&gt;  bar</div><div class='input'>
-<span class='co'># DataFrame ====</span>
-<span class='no'>DF</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>df</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>fixNA</span>(<span class='no'>DF</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
-#&gt;             a           b
-#&gt;   &lt;character&gt; &lt;character&gt;
-#&gt; c         foo          NA
-#&gt; d          NA         bar</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+<span class='fu'>print</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; dim: 100 4 
+#&gt; metadata(2): version interestingGroups
+#&gt; assays(1): counts
+#&gt; rownames(100): ENSG00000000003 ENSG00000000005 ... ENSG00000005469
+#&gt;   ENSG00000005471
+#&gt; rowData names(7): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(4): sample1 sample2 sample3 sample4
+#&gt; colData names(3): sampleName genotype treatment</div><div class='input'><span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>as.character</span>(<span class='fu'>rowData</span>(<span class='no'>rse_small</span>)$<span class='no'>geneName</span>))
+<span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; [1] "TSPAN6"   "TNMD"     "DPM1"     "SCYL3"    "C1orf112" "FGR"     </div><div class='input'><span class='fu'>assertAllAreUniqueGeneNames</span>(<span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
