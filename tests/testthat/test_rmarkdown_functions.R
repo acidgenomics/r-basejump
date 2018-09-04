@@ -6,51 +6,48 @@ load("plotlist.rda")
 
 # kables =======================================================================
 test_that("kables : list", {
-    # Simulate a knit session
-    expect_is(
-        kables(
-            list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-            captions = c("mpg", "mtcars"),
-            force = TRUE
-        ),
-        "knit_asis"
+    # Simulate a knit session.
+    object <- kables(
+        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+        captions = c("mpg", "mtcars"),
+        force = TRUE
     )
-    # Check for unmodified return in R session
-    expect_is(
-        kables(
-            list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-            captions = c("mpg", "mtcars"),
-            force = FALSE
-        ),
-        "list"
+    expect_is(object, "knit_asis")
+
+    # Check for unmodified return in R session.
+    object <- kables(
+        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+        captions = c("mpg", "mtcars"),
+        force = FALSE
     )
+    expect_is(object, "list")
 })
 
 
 
 # markdownHeader ===============================================================
 test_that("markdownHeader", {
-    md <- markdownHeader("Header")
-    expect_is(md, "knit_asis")
-    md <- markdownHeader("Header", level = 4L) %>%
-        as.character()
+    object <- markdownHeader("Header")
+    expect_is(object, "knit_asis")
     expect_identical(
-        md,
-        "#### Header\n"  # nolint
+        object = "Header" %>%
+            markdownHeader(level = 4L) %>%
+            as.character(),
+        expected = "#### Header\n"  # nolint
     )
-    md <- markdownHeader("Header", tabset = TRUE) %>%
-        as.character()
     expect_identical(
-         md,
-        "## Header {.tabset}\n"  # nolint
+        object = "Header" %>%
+            markdownHeader(tabset = TRUE) %>%
+            as.character(),
+        expected = "## Header {.tabset}\n"  # nolint
     )
     expect_output(
-        markdownHeader("Header", asis = TRUE),
-        "\\n\\n## Header\\n"  # nolint
+        object = markdownHeader("Header", asis = TRUE),
+        regexp = "\\n\\n## Header\\n"  # nolint
     )
     expect_error(
-        markdownHeader("Header", level = 8L),
-        "is_subset : The element '8'"
+        object = markdownHeader("Header", level = 8L),
+        regexp = "is_subset : The element '8'"
     )
 })
 
