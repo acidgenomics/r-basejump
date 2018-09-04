@@ -111,14 +111,10 @@ aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
+  \code{\link{geometricMean}}, \code{\link{microplate}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Data Functions}
+\concept{Math and Science Functions}

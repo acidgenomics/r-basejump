@@ -37,8 +37,8 @@ print(x)
 colData(object)$sampleName
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}}, \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{counts}},
+  \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{selectSamples}}

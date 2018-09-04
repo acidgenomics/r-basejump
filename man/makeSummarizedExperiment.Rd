@@ -115,11 +115,10 @@ makeSummarizedExperiment(
 \item \code{SingleCellExperiment::SingleCellExperiment()}.
 }
 
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}}, \code{\link{gene2symbol}},
-  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+Other Data Functions: \code{\link{counts}},
+  \code{\link{gene2symbol}}, \code{\link{mapGenesToIDs}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh
