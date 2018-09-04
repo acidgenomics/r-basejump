@@ -109,16 +109,16 @@ cd <- DataFrame(
 )
 
 test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
-    rse <- makeSummarizedExperiment(
+    object <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = rr,
         colData = cd
     )
-    expect_s4_class(rse, "RangedSummarizedExperiment")
-    expect_identical(dim(rse), c(4L, 4L))
-    expect_identical(names(rse), genes)
+    expect_s4_class(object, "RangedSummarizedExperiment")
+    expect_identical(dim(object), c(4L, 4L))
+    expect_identical(names(object), genes)
     expect_identical(
-        object = lapply(metadata(rse), class),
+        object = lapply(metadata(object), class),
         expected = list(
             date = "Date",
             wd = "character",
@@ -130,14 +130,14 @@ test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
 
 test_that("makeSummarizedExperiment : SummarizedExperiment", {
     # Allow legacy support of rowData pass-in.
-    se <- makeSummarizedExperiment(
+    object <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowData = as(rr, "DataFrame"),
         colData = cd
     )
     # Check for SE and not RSE.
     expect_identical(
-        object = class(se),
+        object = class(object),
         expected = structure(
             .Data = "SummarizedExperiment",
             package = "SummarizedExperiment"
@@ -145,10 +145,8 @@ test_that("makeSummarizedExperiment : SummarizedExperiment", {
     )
 })
 
-
-
-test_that("makeSummarizedExperiment : Super minimal", {
-    # Ensure this returns clean with no row or column annotations.
+test_that("makeSummarizedExperiment : No row/column annotations", {
+    # Ensure this returns clean in minimal mode.
     rse <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = NULL,
@@ -161,7 +159,7 @@ test_that("makeSummarizedExperiment : Super minimal", {
 
 test_that("makeSummarizedExperiment : Spike-in support", {
     rownames(mat)[1L:2L] <- c("EGFP", "ERCC")
-    rse <- makeSummarizedExperiment(
+    object <- makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = rr[3L:4L],
         colData = cd,
@@ -169,72 +167,62 @@ test_that("makeSummarizedExperiment : Spike-in support", {
         spikeNames = "ERCC"
     )
     expect_identical(
-        rownames(rse),
-        c("EGFP", "ERCC", genes[3L:4L])
+        object = rownames(object),
+        expected = c("EGFP", "ERCC", genes[3L:4L])
     )
     expect_identical(
-        levels(seqnames(rse)),
-        c("spike", "transgene", "1")
+        object = levels(seqnames(object)),
+        expected = c("spike", "transgene", "1")
     )
 })
 
 test_that("makeSummarizedExperiment : Strict names", {
-    # Don't allow any dashes and other illegal characters in names
+    # Don't allow any dashes and other illegal characters in names.
     matBadRows <- mat
-    rownames(matBadRows) <- paste0(rownames(matBadRows), "-XXX")
+    rownames(matBadRows) <- paste0(rownames(mat), "-XXX")
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = matBadRows),
             rowRanges = rr,
             colData = cd
         ),
-        "are_identical : makeNames\\(rownames\\(assay\\)"
+        regexp = "are_identical : makeNames\\(rownames\\(assay\\)"
     )
     matBadCols <- mat
     colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = matBadCols),
             rowRanges = rr,
             colData = cd
         ),
-        "are_identical : makeNames\\(colnames\\(assay\\)"
+        regexp = "are_identical : makeNames\\(colnames\\(assay\\)"
     )
 })
 
 test_that("makeSummarizedExperiment : Duplicate names", {
     matDupeRows <- mat
-    rownames(matDupeRows) <- c(
-        "gene_1",
-        "gene_1",
-        "gene_2",
-        "gene_2"
-    )
+    rownames(matDupeRows) <- paste0("gene", rep(seq_len(2L), each = 2L))
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = matDupeRows),
             rowRanges = rr,
             colData = cd
         ),
-        paste(
+        regexp = paste(
             "has_no_duplicates :",
             "rownames\\(assay\\) has duplicates at positions 2, 4."
         )
     )
     matDupeCols <- mat
-    colnames(matDupeCols) <- c(
-        "sample_1",
-        "sample_1",
-        "sample_2",
-        "sample_2"
-    )
+    colnames(matDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = matDupeCols),
             rowRanges = rr,
             colData = cd
         ),
-        paste(
+        regexp = paste(
             "has_no_duplicates :",
             "colnames\\(assay\\) has duplicates at positions 2, 4."
         )
@@ -242,42 +230,42 @@ test_that("makeSummarizedExperiment : Duplicate names", {
 })
 
 test_that("makeSummarizedExperiment : Column data failure", {
-    # Bad pass-in of objects not supporting `dimnames()`
+    # Bad pass-in of objects not supporting `dimnames()`.
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = "yyy"),
             rowRanges = rr,
             colData = cd
         ),
-        "has_dimnames : The dimension names of assay are NULL."
+        regexp = "has_dimnames : The dimension names of assay are NULL."
     )
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = mat),
             rowRanges = rr,
             colData = c(xxx = "yyy")
         ),
-        "is2 : colData"
+        regexp = "is2 : colData"
     )
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = mat),
             rowRanges = c(xxx = "yyy"),
             colData = cd
         ),
-        "is2 : rowRanges"
+        regexp = "is2 : rowRanges"
     )
 })
 
 test_that("makeSummarizedExperiment : Invalid metadata", {
     expect_error(
-        makeSummarizedExperiment(
+        object = makeSummarizedExperiment(
             assays = list(counts = mat),
             rowRanges = rr,
             colData = cd,
             metadata = Sys.Date()
         ),
-        "is2 : metadata"
+        regexp = "is2 : metadata"
     )
 })
 
