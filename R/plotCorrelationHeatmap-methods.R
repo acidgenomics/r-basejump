@@ -25,20 +25,19 @@
 #' # SummarizedExperiment ====
 #' plotCorrelationHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palettes.
 #' plotCorrelationHeatmap(
 #'     object = rse_small,
-#'     interestingGroups = "condition",
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
 #'
-#' # Hexadecimal color input
+#' # Using hexadecimal color input.
 #' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 #' plotCorrelationHeatmap(rse_small, color = purple_orange)
 #'
-#' # Default pheatmap colors
+#' # Using default pheatmap colors.
 #' plotCorrelationHeatmap(rse_small, color = NULL)
 NULL
 

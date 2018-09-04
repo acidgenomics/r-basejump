@@ -12,10 +12,9 @@
 #' # SummarizedExperiment ====
 #' plotQuantileHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palettes.
 #' plotQuantileHeatmap(
 #'     object = rse_small,
-#'     interestingGroups = "condition",
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
