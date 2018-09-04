@@ -7,11 +7,16 @@
 #'
 #' [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
+#' All themes are based off of [ggplot2::theme_linedraw()], but with
+#' modifications and extra user-definable parameters.
+#'
 #' @section Paperwhite:
+#'
 #' High contrast black and white theme optimized for print. Recommended for
 #' scientific manuscripts and website tutorials.
 #'
 #' @section Midnight:
+#'
 #' Blackout theme that sets the plot background as black, with white text.
 #' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
 #' for visualizing many points with a high dynamic color range, such as t-SNE
@@ -31,8 +36,9 @@
 #'   more restrictive here, only allowing "`bottom`", "`right`", or "`none`".
 #'   Including the legend at the top or the left side of the plot rarely makes
 #'   sense and is discouraged.
-#' @param grid `boolean`. Label the major panel grids. If `TRUE`, the axis lines
-#'   will also be removed.
+#' @param grid `boolean`. Label the major panel grids with a gray accent.
+#' @param minimal `boolean`. Remove all axis lines, axis ticks, and
+#'   panel borders.
 #'
 #' @return `theme`.
 #'
@@ -63,7 +69,8 @@ theme_paperwhite <- function(
     face = c("bold", "plain"),
     aspect_ratio = NULL,
     legend_position = c("right", "bottom", "none"),
-    grid = FALSE
+    grid = FALSE,
+    minimal = FALSE
 ) {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
@@ -71,6 +78,7 @@ theme_paperwhite <- function(
     assertIsANumberOrNULL(aspect_ratio)
     legend_position <- match.arg(legend_position)
     assert_is_a_bool(grid)
+    assert_is_a_bool(minimal)
 
     gray <- "gray95"
 
@@ -80,13 +88,19 @@ theme_paperwhite <- function(
         colour = "black"
     )
 
+    # Include the grid lines.
     if (isTRUE(grid)) {
-        axis_ticks <- element_blank()
         panel_grid_major <- element_line(colour = gray, size = 0.5)
+    } else {
+        panel_grid_major <- element_blank()
+    }
+
+    # Remove panel border and axis ticks.
+    if (isTRUE(minimal)) {
+        axis_ticks <- element_blank()
         panel_border <- element_blank()
     } else {
         axis_ticks <- element_line(colour = "black")
-        panel_grid_major <- element_blank()
         panel_border <- element_rect(colour = "black", fill = NA)
     }
 
@@ -136,13 +150,19 @@ theme_midnight <- function(
         colour = "white"
     )
 
+    # Include the grid lines.
     if (isTRUE(grid)) {
-        axis_ticks <- element_blank()
         panel_grid_major <- element_line(colour = gray, size = 0.5)
+    } else {
+        panel_grid_major <- element_blank()
+    }
+
+    # Remove panel border and axis ticks.
+    if (isTRUE(minimal)) {
+        axis_ticks <- element_blank()
         panel_border <- element_blank()
     } else {
         axis_ticks <- element_line(colour = "white")
-        panel_grid_major <- element_blank()
         panel_border <- element_rect(colour = "white", fill = NA)
     }
 
