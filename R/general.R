@@ -13,6 +13,7 @@
 #' @param envir `environment` to use for assignment. Defaults to
 #'   `parent.frame()`, which will assign into the calling environment.
 #' @param file `string`. File path.
+#' @param genes `character`. Gene identifiers.
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").

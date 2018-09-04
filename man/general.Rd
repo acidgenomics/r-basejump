@@ -18,6 +18,8 @@ directory.}
 
 \item{file}{\code{string}. File path.}
 
+\item{genes}{\code{character}. Gene identifiers.}
+
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}

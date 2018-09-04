@@ -68,7 +68,7 @@
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assayNames assays colData colData<-
-#'   rowData SummarizedExperiment
+#'   rowData rowRanges SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames has_rownames is_tibble
 #'   rownames_to_column
 #' @importFrom tidyr separate unite
