@@ -29,9 +29,11 @@ generated internally, and should not be user defined.
 Currently supports \code{DataFrame} or \code{data.frame} input.
 }
 \examples{
-object <- sampleData(rse_small)
-x <- sanitizeSampleData(object)
+from <- sampleData(rse_small)
+print(from)
+to <- sanitizeSampleData(from)
 all(vapply(x, is.factor, logical(1L)))
+print(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},

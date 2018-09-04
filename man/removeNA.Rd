@@ -39,24 +39,24 @@ removeNA(c("hello", "world", NA))
 removeNA(c(1, 2, NA))
 
 # matrix ====
-object <- matrix(
+from <- matrix(
     data = c(1, NA, 3, NA, NA, NA, 2, NA, 4),
     nrow = 3,
     ncol = 3
 )
-print(object)
-x <- removeNA(object)
-print(x)
+print(from)
+to <- removeNA(from)
+print(to)
 
 # DataFrame ====
-object <- DataFrame(
+from <- DataFrame(
     a = c("A", NA, "C"),
     b = c(NA, NA, NA),
     c = c("B", NA, "D")
 )
-print(object)
-x <- removeNA(object)
-print(x)
+print(from)
+to <- removeNA(from)
+print(to)
 }
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
