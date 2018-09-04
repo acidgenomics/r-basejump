@@ -188,14 +188,18 @@ makeSummarizedExperiment <- function(
     # Automatically slot empty ranges, if necessary, and inform the user.
     if (is(rowRanges, "GRanges")) {
         # Label any remaining unannotated genes with `unknown` seqname.
+        setdiff <- setdiff(rownames(assay), names(rowRanges))
         if (length(setdiff)) {
             warning(paste(
+                # 24 characters
                 paste(
-                    "Unannotated rows detected",
+                    "Unannotated rows",
                     paste0("(", length(setdiff), "):")
                 ),
-                str_trunc(toString(setdiff), width = 80L),
-                sep = "\n"
+                str_trunc(
+                    string = toString(setdiff),
+                    width = getOption("width") - 24L
+                )
             ))
             unknownRanges <- emptyRanges(
                 names = setdiff,
