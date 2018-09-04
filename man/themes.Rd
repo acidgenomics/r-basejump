@@ -8,11 +8,11 @@
 \usage{
 theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "none"), grid = FALSE)
+  "none"), grid = FALSE, minimal = FALSE)
 
 theme_midnight(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "none"), grid = FALSE)
+  "none"), grid = FALSE, minimal = FALSE)
 }
 \arguments{
 \item{base_size}{\code{scalar numeric}. Base font size.}
@@ -30,8 +30,10 @@ more restrictive here, only allowing "\code{bottom}", "\code{right}", or "\code{
 Including the legend at the top or the left side of the plot rarely makes
 sense and is discouraged.}
 
-\item{grid}{\code{boolean}. Label the major panel grids. If \code{TRUE}, the axis lines
-will also be removed.}
+\item{grid}{\code{boolean}. Label the major panel grids with a gray accent.}
+
+\item{minimal}{\code{boolean}. Remove all axis lines, axis ticks, and
+panel borders.}
 }
 \value{
 \code{theme}.
@@ -39,13 +41,19 @@ will also be removed.}
 \description{
 \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
+\details{
+All themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
+modifications and extra user-definable parameters.
+}
 \section{Paperwhite}{
+
 
 High contrast black and white theme optimized for print. Recommended for
 scientific manuscripts and website tutorials.
 }
 
 \section{Midnight}{
+
 
 Blackout theme that sets the plot background as black, with white text.
 Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
