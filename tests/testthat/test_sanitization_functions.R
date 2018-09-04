@@ -199,11 +199,10 @@ with_parameters_test_that(
 
 # sanitizeRowData ==============================================================
 test_that("sanitizeRowData", {
-    x <- makeGRangesFromEnsembl("Homo sapiens")
-    x <- sanitizeRowData(x)
+    object <- sanitizeRowData(rowRanges(rse_small))
     expect_identical(
-        lapply(x, class),
-        list(
+        object = lapply(object, class),
+        expected = list(
             rowname = "character",
             seqnames = "factor",
             start = "integer",
@@ -226,26 +225,32 @@ test_that("sanitizeRowData", {
 with_parameters_test_that(
     "sanitizeSampleData", {
         # `sampleName` column is required.
+        object[["sampleName"]] <- NULL
         expect_error(
-            sanitizeSampleData(data),
-            "sampleName"
+            object = sanitizeSampleData(object),
+            regexp = "sampleName"
         )
+
         # And `sampleName` column can't contain duplicates.
-        data[["sampleName"]] <- "XXX"
+        object[["sampleName"]] <- "XXX"
         expect_error(
-            sanitizeSampleData(data),
-            "has_no_duplicates"
+            object = sanitizeSampleData(object),
+            regexp = "has_no_duplicates"
         )
-        data[["sampleName"]] <- paste("sample", seq_len(nrow(data)))
-        x <- sanitizeSampleData(data)
-        expect_is(x, "DataFrame")
+
+        # All columns should return factor.
+        object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
+        data <- sanitizeSampleData(object)
+        expect_is(data, "DataFrame")
         expect_true(all(vapply(
-            X = x,
+            X = data,
             FUN = is.factor,
             FUN.VALUE = logical(1L)
         )))
+
+
     },
-    data = list(
+    object = list(
         DataFrame = DataFrame(
             genotype = rep(c("wt", "ko"), 2L),
             batch = c(1L, 1L, 2L, 2L),
