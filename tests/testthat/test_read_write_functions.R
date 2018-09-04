@@ -220,7 +220,7 @@ test_that("readFileByExtension : GFF", {
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
     object <- readFileByExtension("single_cell_counts.mtx.gz")
-    expect_is(object, "dgTMatrix")
+    expect_is(object, "sparseMatrix")
 
     object <- readFileByExtension("single_cell_counts.mtx.gz.rownames")
     expect_is(object, "character")
