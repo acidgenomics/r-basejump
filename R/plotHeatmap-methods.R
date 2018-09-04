@@ -76,7 +76,7 @@ setMethod(
     definition = function(
         object,
         interestingGroups,
-        scale = c("row", "column", "none"),
+        scale = c("none", "row", "column"),
         clusterRows = TRUE,
         clusterCols = TRUE,
         showRownames = FALSE,
@@ -127,8 +127,10 @@ setMethod(
         # `DESeqTransform`, which doesn't use `counts` as the primary assay.
         mat <- as.matrix(assay(object))
 
-        # Filter out any zero count rows when row scaling.
+        # Filter out any zero count rows when row scaling, otherwise hclust
+        # calculation will error.
         if (scale == "row") {
+            message("Row scaling... dropping rows with all zero counts")
             mat <- mat[rowSums(mat) > 0L, , drop = FALSE]
         }
 
