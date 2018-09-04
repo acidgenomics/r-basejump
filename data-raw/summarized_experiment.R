@@ -1,7 +1,8 @@
 # SummarizedExperiment example objects, using simulated DESeq2 counts
 # Last updated 2018-09-03
 
-library(DESeq2)
+library("DESeq2")
+library("tidyverse")
 
 # Restrict to 1 MB per file.
 mb <- structure(1e6, class = "object_size")
@@ -47,6 +48,8 @@ mcols(rowRanges) <- mcols
 # Update the rownames of the object to match our genomic ranges.
 rownames(rse) <- names(rowRanges)
 rowRanges(rse) <- rowRanges
+# Define the interesting groups.
+interestingGroups(rse) <- c("genotype", "treatment")
 # Report the size of each slot in bytes.
 vapply(
     X = flatFiles(rse),
