@@ -116,33 +116,33 @@ test_that("loadDataAsName : Serialized", {
 
 test_that("loadData : Standard evaluation", {
     expect_error(
-        loadDataAsName(data = "gr.rda"),
-        "is_name :"
+        object = loadDataAsName(data = "gr.rda"),
+        regexp = "is_name :"
     )
 })
 
 test_that("loadDataAsName : Missing files", {
     expect_error(
-        loadDataAsName(data = XXX),
-        rdataError
+        object = loadDataAsName(data = XXX),
+        regexp = rdataError
     )
 })
 
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
-        loadDataAsName(data = multi),
-        "multi.rda contains multiple objects : x, y"
+        object = loadDataAsName(data = multi),
+        regexp = "multi.rda contains multiple objects : x, y"
     )
 })
 
 test_that("loadDataAsName : Invalid arguments", {
     expect_error(
-        loadDataAsName(data = gr, dir = "XXX"),
-        "is_dir : "
+        object = loadDataAsName(data = gr, dir = "XXX"),
+        regexp = "is_dir : "
     )
     expect_error(
-        loadDataAsName(data = gr, envir = "XXX"),
-        "is_environment : envir"
+        object = loadDataAsName(data = gr, envir = "XXX"),
+        regexp = "is_environment : envir"
     )
 })
 
@@ -162,26 +162,26 @@ test_that("loadRemoteData", {
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
-        loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
-        "Already exists in environment: example"
+        object = loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
+        regexp = "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
-        loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
-        rdataError
+        object = loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
+        regexp = rdataError
     )
     expect_error(
-        loadRemoteData("foobar.rda"),
-        "isURL"
+        object = loadRemoteData("foobar.rda"),
+        regexp = "isURL"
     )
     expect_error(
-        loadRemoteData(
+        object = loadRemoteData(
             paste(paste(cacheURL, "example.rda", sep = "/")),
             envir = "XXX"
         ),
-        "is_environment : envir"
+        regexp = "is_environment : envir"
     )
 })
 
@@ -197,8 +197,8 @@ test_that("localOrRemoteFile : Vectorized", {
 
 test_that("localOrRemoteFile : Missing file", {
     expect_error(
-        localOrRemoteFile("XXX.csv"),
-        "is_existing_file :"
+        object = localOrRemoteFile("XXX.csv"),
+        regexp = "is_existing_file :"
     )
 })
 
@@ -207,7 +207,7 @@ test_that("localOrRemoteFile : Missing file", {
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
     object <- readFileByExtension("example.csv")
-    expect_is(object, "data.frame")
+    expect_is(object, "DataFrame")
 })
 
 test_that("readFileByExtension : GFF", {
@@ -231,7 +231,7 @@ test_that("readFileByExtension : MatrixMarket file (.mtx)", {
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
     object <- readFileByExtension("example.tsv")
-    expect_is(object, "data.frame")
+    expect_is(object, "DataFrame")
 })
 
 test_that("readFileByExtension : Excel file (.xlsx)", {
@@ -239,15 +239,15 @@ test_that("readFileByExtension : Excel file (.xlsx)", {
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
     object <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
-    expect_is(object, "data.frame")
+    expect_is(object, "DataFrame")
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
     object <- readFileByExtension("example.counts")
     expect_is(object, "matrix")
     expect_identical(
-        rownames(object)[1L:5L],
-        c(
+        object = head(rownames(object), n = 5L),
+        expected = c(
             "ENSMUSG00000102693",
             "ENSMUSG00000064842",
             "ENSMUSG00000051951",
@@ -260,8 +260,8 @@ test_that("readFileByExtension : Counts file (.counts)", {
 test_that("readFileByExtension : R script", {
     file <- "test_read_write_functions.R"
     expect_message(
-        readFileByExtension(file),
-        "Importing as source code lines"
+        object = readFileByExtension(file),
+        regexp = "Importing as source code lines"
     )
     object <- readFileByExtension(file)
     expect_is(object, "character")
@@ -278,8 +278,8 @@ test_that("readFileByExtension : R Data", {
 
     # Error on object containing multiple data
     expect_error(
-        readFileByExtension(paste(cacheURL, "multi.rda", sep = "/")),
-        "File does not contain a single object"
+        object = readFileByExtension(paste(cacheURL, "multi.rda", sep = "/")),
+        regexp = "File does not contain a single object"
     )
 })
 
@@ -292,8 +292,8 @@ test_that("readFileByExtension : No extension", {
     # Missing extension
     file.create("example")
     expect_error(
-        readFileByExtension("example"),
-        "is_matching_regex :"
+        object = readFileByExtension("example"),
+        regexp = "is_matching_regex :"
     )
     unlink("example")
 })
@@ -306,8 +306,8 @@ test_that("readGFF : Minimal GFF3", {
     expect_s4_class(object, "GRanges")
     expect_identical(levels(seqnames(object)), "1")
     expect_identical(
-        colnames(mcols(object)),
-        c(
+        object = colnames(mcols(object)),
+        expected = c(
             "source",
             "type",
             "score",
@@ -343,8 +343,8 @@ test_that("readGFF : Minimal GTF", {
     object <- readGFF("example.gtf")
     expect_identical(levels(seqnames(object)), "1")
     expect_identical(
-        colnames(mcols(object)),
-        c(
+        object = colnames(mcols(object)),
+        expected = c(
             "source",
             "type",
             "score",
@@ -373,8 +373,8 @@ test_that("readGFF : Minimal GTF", {
 
 test_that("readGFF : Unsupported file type", {
     expect_error(
-        readGFF("XXX.rda"),
-        "is_matching_regex :"
+        object = readGFF("XXX.rda"),
+        regexp = "is_matching_regex :"
     )
 })
 
@@ -422,17 +422,17 @@ test_that("saveData", {
         overwrite = TRUE
     )
     expect_identical(
-        basename(object),
-        c("rnaseq_counts.rds", "single_cell_counts.rds")
+        object = basename(object),
+        expected = c("rnaseq_counts.rds", "single_cell_counts.rds")
     )
 
     # Check `overwrite = FALSE` mode
     expect_warning(
-        saveData(
+        object = saveData(
             rnaseq_counts, single_cell_counts,
             dir = dir, overwrite = FALSE
         ),
-        "No files were saved."
+        regexp = "No files were saved."
     )
 
     unlink(dir, recursive = TRUE)
@@ -440,22 +440,23 @@ test_that("saveData", {
 
 test_that("saveData : Invalid parameters", {
     expect_error(
-        saveData(XXX),
-        "object 'XXX' not found"
+        object = saveData(XXX),
+        regexp = "object 'XXX' not found"
     )
     expect_error(
-        saveData("mtcars"),
-        "is_name : X"
+        object = saveData("mtcars"),
+        regexp = "is_name : X"
     )
     expect_error(
-        saveData(rnaseq_counts, dir = NULL),
-        "is_a_string : dir"
+        object = saveData(rnaseq_counts, dir = NULL),
+        regexp = "is_a_string : dir"
     )
 })
 
 
 
 # transmit =====================================================================
+# Note that `transmit()` currently only works for FTP.
 remoteDir <- "ftp://ftp.ensembl.org/pub/release-89"
 
 test_that("transmit", {
@@ -464,18 +465,18 @@ test_that("transmit", {
         pattern = "README",
         compress = FALSE
     )
-    y <- file.path(getwd(), "README")
-    names(y) <- "README"
-    expect_identical(object, y)
+    expected <- file.path(getwd(), "README")
+    names(expected) <- "README"
+    expect_identical(object, expected)
 
     # Check that function skips on existing
     expect_message(
-        transmit(
+        object = transmit(
             remoteDir = remoteDir,
             pattern = "README",
             compress = FALSE
         ),
-        "All files have already downloaded"
+        regexp = "All files have already downloaded"
     )
 
     unlink("README")
@@ -488,41 +489,41 @@ test_that("transmit : Rename and compress", {
         rename = "ensembl_readme.txt",
         compress = TRUE
     )
-    y <- file.path(getwd(), "ensembl_readme.txt.gz")
-    names(y) <- "README"
-    expect_identical(object, y)
+    expected <- file.path(getwd(), "ensembl_readme.txt.gz")
+    names(expected) <- "README"
+    expect_identical(object, expected)
     unlink("ensembl_readme.txt.gz")
 })
 
 test_that("transmit : Invalid parameters", {
     expect_error(
-        transmit(
+        object = transmit(
             remoteDir = "http://steinbaugh.com",
             pattern = "README"
         ),
-        "is_matching_regex : remoteDir"
+        regexp = "is_matching_regex : remoteDir"
     )
     expect_error(
-        transmit(
+        object = transmit(
             remoteDir = "ftp://ftp.wormbase.org/pub/",
             pattern = "README"
         ),
-        "is_non_empty : remoteFiles"
+        regexp = "is_non_empty : remoteFiles"
     )
     expect_error(
-        transmit(
+        object = transmit(
             remoteDir = remoteDir,
             pattern = "XXX"
         ),
-        "is_non_empty : match"
+        regexp = "is_non_empty : match"
     )
     expect_error(
-        transmit(
+        object = transmit(
             remoteDir = remoteDir,
             pattern = "README",
             rename = c("XXX", "YYY")
         ),
-        "are_same_length : match has length 1 but rename has length 2."
+        regexp = "are_same_length : match has length 1 but rename has length 2."
     )
 })
 
@@ -532,27 +533,27 @@ test_that("transmit : Invalid parameters", {
 test_that("writeCounts", {
     dir <- "example"
     expect_message(
-        writeCounts(mat, dgc, dir = dir),
-        "Writing mat, dgc"
+        object = writeCounts(mat, sparse, dir = dir),
+        regexp = "Writing mat, sparse"
     )
     expect_identical(
-        list.files(dir),
-        c(
-            "dgc.mtx.gz",
-            "dgc.mtx.gz.colnames",
-            "dgc.mtx.gz.rownames",
-            "mat.csv.gz"
+        object = list.files(dir),
+        expected = c(
+            "mat.csv.gz",
+            "sparse.mtx.gz",
+            "sparse.mtx.gz.colnames",
+            "sparse.mtx.gz.rownames"
         )
     )
-    # Don't allow data.frame
+    # Require a matrix, and don't allow data frames.
     expect_error(
-        writeCounts(mtcars),
-        "mtcars is not a matrix"
+        object = writeCounts(mtcars),
+        regexp = "mtcars is not a matrix"
     )
     # Check that `eval_bare()` call errors on missing object
     expect_error(
-        writeCounts(XXX),
-        "object 'XXX' not found"
+        object = writeCounts(XXX),
+        regexp = "object 'XXX' not found"
     )
     unlink(dir, recursive = TRUE)
 })
