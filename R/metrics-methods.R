@@ -29,10 +29,14 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
         validObject(object)
-        interestingGroups <- interestingGroups(object)
         data <- colData(object)
         assert_is_non_empty(data)
         # Add the `interestingGroups` column.
+        # Use `sampleName` column by default, if undefined.
+        interestingGroups <- interestingGroups(object)
+        if (is.null(interestingGroups)) {
+            interestingGroups <- "sampleName"
+        }
         data <- uniteInterestingGroups(data, interestingGroups)
         assert_is_subset(
             x = c("sampleName", "interestingGroups"),
