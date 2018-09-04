@@ -31,7 +31,8 @@ setMethod(
     f = "uniteInterestingGroups",
     signature = signature("data.frame"),
     definition = function(object, interestingGroups) {
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
+        assert_is_character(interestingGroups)
+        assert_is_subset(interestingGroups, colnames(object))
         # Subset to get only the columns of interest.
         data <- object[, interestingGroups, drop = FALSE]
         assert_is_non_empty(data)
@@ -67,7 +68,8 @@ setMethod(
     f = "uniteInterestingGroups",
     signature = signature("tbl_df"),
     definition = function(object, interestingGroups) {
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
+        assert_is_character(interestingGroups)
+        assert_is_subset(interestingGroups, colnames(object))
         object[["interestingGroups"]] <- NULL
         object <- unite(
             data = object,
