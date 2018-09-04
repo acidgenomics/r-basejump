@@ -20,11 +20,11 @@
 #' saveRdExamples(
 #'     Rd = c("do.call", "droplevels"),
 #'     package = "base",
-#'     dir = "XXX"
+#'     dir = "example"
 #' )
 #'
 #' # Clean up
-#' unlink("XXX", recursive = TRUE)
+#' unlink("example", recursive = TRUE)
 saveRdExamples <- function(
     Rd,
     package,
