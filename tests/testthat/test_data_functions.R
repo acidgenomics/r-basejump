@@ -4,30 +4,22 @@ context("Data Functions")
 
 # convertGenesToSymbols ========================================================
 test_that("convertGenesToSymbols : SummarizedExperiment", {
-    x <- convertGenesToSymbols(rse_small)
+    object <- convertGenesToSymbols(rse_small)
     expect_identical(
-        rownames(x),
-        mcols(rowRanges(x))[["geneName"]]
+        object = rownames(object),
+        expected = as.character(mcols(rowRanges(object))[["geneName"]])
     )
-
-    # Unmodified return
-    expect_warning(
-        convertGenesToSymbols(rse_dds),
-        "Object does not contain gene-to-symbol mappings"
-    )
-    x <- suppressWarnings(convertGenesToSymbols(rse_dds))
-    expect_identical(rownames(x), rownames(rse_dds))
 })
 
 
 
 # convertSymbolsToGenes ========================================================
 test_that("convertSymbolsToGenes : SummarizedExperiment", {
-    x <- convertGenesToSymbols(rse_small)
-    y <- convertSymbolsToGenes(x)
+    object <- convertGenesToSymbols(rse_small)
+    object <- convertSymbolsToGenes(object)
     expect_identical(
-        rownames(y),
-        mcols(rowRanges(y))[["geneID"]]
+        object = rownames(object),
+        expected = as.character(mcols(rowRanges(object))[["geneID"]])
     )
 })
 
@@ -35,28 +27,26 @@ test_that("convertSymbolsToGenes : SummarizedExperiment", {
 
 # counts =======================================================================
 test_that("counts", {
-    x <- counts(rse_dds)
-    expect_is(x, "matrix")
+    object <- counts(rse_small)
+    expect_is(object, "matrix")
 })
 
 
 
 # gene2symbol ==================================================================
 test_that("gene2symbol", {
-    x <- gene2symbol(rse_small)
-    expect_is(x, "data.frame")
-    expect_identical(colnames(x), c("geneID", "geneName"))
-    expect_true(tibble::has_rownames(x))
+    object <- gene2symbol(rse_small)
+    expect_is(object, "DataFrame")
+    expect_identical(colnames(object), c("geneID", "geneName"))
+    expect_true(hasRownames(object))
 })
 
-test_that("gene2symbol : NULL return", {
-    expect_warning(
-        gene2symbol(rse_dds),
-        "Object does not contain gene-to-symbol mappings"
-    )
-    expect_identical(
-        suppressWarnings(gene2symbol(rse_dds)),
-        NULL
+test_that("gene2symbol : No mappings", {
+    object <- rse_small
+    rowData(object) <- NULL
+    expect_error(
+        object = gene2symbol(object),
+        regexp = "Object does not contain gene-to-symbol mappings"
     )
 })
 
@@ -69,21 +59,21 @@ test_that("interestingGroups : SummarizedExperiment", {
         "treatment"
     )
     expect_identical(
-        interestingGroups(rse_dds),
+        interestingGroups(rse_small),
         NULL
     )
 })
 
 test_that("interestingGroups : Assignment method", {
-    x <- rse_small
-    interestingGroups(x) <- "sampleName"
+    object <- rse_small
+    interestingGroups(object) <- "sampleName"
     expect_identical(
-        interestingGroups(x),
-        "sampleName"
+        object = interestingGroups(object),
+        expected = "sampleName"
     )
     expect_error(
-        interestingGroups(x) <- "XXX",
-        "is_subset : The element 'XXX' in interestingGroups"
+        object = interestingGroups(object) <- "XXX",
+        regexp = "is_subset : The element 'XXX' in interestingGroups"
     )
 })
 
@@ -105,20 +95,15 @@ dgc <- as(mat, "dgCMatrix")
 rr <- GRanges(
     seqnames = replicate(n = 4L, expr = "1"),
     ranges = IRanges(
-        start = c(1L, 101L, 201L, 301L),
-        end = c(100L, 200L, 300L, 400L)
+        start = seq(from = 1L, to = 301L, by = 100L),
+        end = seq(from = 100L, to = 401L, by = 100L)
     )
 )
 names(rr) <- genes
 
-cd <- data.frame(
-    genotype = c(
-        "wildtype",
-        "wildtype",
-        "knockout",
-        "knockout"
-    ),
-    age = c(3L, 6L, 3L, 6L),
+cd <- DataFrame(
+    genotype = rep(c("wildtype", "knockout"), each = 2L),
+    age = rep(c(3L, 6L), times = 2L),
     row.names = samples
 )
 
@@ -132,8 +117,8 @@ test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
     expect_identical(dim(rse), c(4L, 4L))
     expect_identical(names(rse), genes)
     expect_identical(
-        lapply(metadata(rse), class),
-        list(
+        object = lapply(metadata(rse), class),
+        expected = list(
             date = "Date",
             wd = "character",
             utilsSessionInfo = "sessionInfo",
@@ -146,6 +131,7 @@ test_that("makeSummarizedExperiment : Super minimal", {
     rse <- suppressWarnings(makeSummarizedExperiment(
         assays = list(counts = mat),
         rowRanges = NULL,
+        rowData = NULL,
         colData = NULL
     ))
     expect_s4_class(rse, "RangedSummarizedExperiment")
@@ -279,62 +265,62 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
     expect_identical(sampleData(rse_small), colData(rse_small))
-    expect_error(sampleData(rse_dds), "sampleName")
+    expect_error(sampleData(rse_small), "sampleName")
 })
 
 test_that("sampleData<- : SummarizedExperiment", {
-    x <- rse_small
-    sampleData(x)[["test"]] <- as.factor(seq_len(ncol(x)))
-    expect_is(sampleData(x)[["test"]], "factor")
+    object <- rse_small
+    sampleData(object)[["test"]] <- as.factor(seq_len(ncol(object)))
+    expect_is(sampleData(object)[["test"]], "factor")
 })
 
 
 
 # sampleNames ==================================================================
 test_that("sampleNames", {
-    x <- sampleNames(rse_small)
+    object <- sampleNames(rse_small)
     expect_identical(
-        x[seq_len(2L)],
+        object[seq_len(2L)],
         c(
             control_rep1 = "control_rep1",
             control_rep2 = "control_rep2"
         )
     )
-    expect_error(sampleNames(rse_dds), "sampleName")
+    expect_error(sampleNames(rse_small), "sampleName")
 })
 
 
 
 # selectSamples ================================================================
 test_that("selectSamples : SummarizedExperiment", {
-    x <- selectSamples(rse_dds, condition = "A")
-    expect_identical(dim(x), c(1000L, 6L))
-    expect_identical(colnames(x), paste0("sample", seq(6L)))
+    object <- selectSamples(rse_small, condition = "A")
+    expect_identical(dim(object), c(1000L, 6L))
+    expect_identical(colnames(object), paste0("sample", seq(6L)))
 })
 
 
 
 # uniteInterestingGroups =======================================================
 test_that("uniteInterestingGroups : Single interesting group", {
-    x <- uniteInterestingGroups(
+    object <- uniteInterestingGroups(
         object = datasets::mtcars,
         interestingGroups = c("vs", "am", "gear")
     )
     expect_identical(
-        levels(x[["interestingGroups"]]),
+        levels(object[["interestingGroups"]]),
         c("0:0:3", "0:1:4", "0:1:5", "1:0:3", "1:0:4", "1:1:4", "1:1:5")
     )
 })
 
 test_that("uniteInterestingGroups : tidy (tibble) mode", {
-    x <- uniteInterestingGroups(
+    object <- uniteInterestingGroups(
         object = dplyr::starwars,
         interestingGroups = c("hair_color", "skin_color")
     )
-    expect_is(x, "tbl_df")
-    expect_is(x[["interestingGroups"]], "factor")
+    expect_is(object, "tbl_df")
+    expect_is(object[["interestingGroups"]], "factor")
     expect_identical(
-        x[["interestingGroups"]] %>%
+        object[["interestingGroups"]] %>%
             as.character() %>%
             head(2L),
         c("blond:fair", "NA:gold")
@@ -342,12 +328,12 @@ test_that("uniteInterestingGroups : tidy (tibble) mode", {
 })
 
 test_that("uniteInterestingGroups : Two interesting groups", {
-    x <- uniteInterestingGroups(
+    object <- uniteInterestingGroups(
         object = datasets::mtcars,
         interestingGroups = c("gear", "carb")
     )
     expect_identical(
-        head(x[["interestingGroups"]]),
+        head(object[["interestingGroups"]]),
         factor(
             c("4:4", "4:4", "4:1", "3:1", "3:2", "3:1"),
             levels = c(

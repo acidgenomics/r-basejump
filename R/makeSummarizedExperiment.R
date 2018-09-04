@@ -184,39 +184,52 @@ makeSummarizedExperiment <- function(
         rowRanges <- GRanges()
     }
 
-    # Final processing of rowRanges, if defined.
-    # Automatically slot empty ranges, if necessary, and inform the user.
-    if (is(rowRanges, "GRanges")) {
-        # Label any remaining unannotated genes with `unknown` seqname.
-        setdiff <- setdiff(rownames(assay), names(rowRanges))
+    # Check for any unannotated rows and stop on detection.
+    if (length(rowRanges)) {
+        data <- as(rowRanges, "DataFrame")
+    } else if (length(rowData)) {
+        data <- rowData
+    } else {
+        data <- NULL
+        # FIXME
+        stop()
+    }
+    if (length(data)) {
+        assertHasRownames(data)
+        setdiff <- setdiff(rownames(assay), rownames(data))
         if (length(setdiff)) {
-            # Stop on a lot of unannotated genes, otherwise warn.
-            if (length(setdiff) > 10L) {
-                f <- stop
-            } else {
-                f <- warning
-            }
-            f(paste(
+            # Stop on any unannotated rows (strict).
+            stop(paste(
                 # 24 characters (see trunc call below)
                 paste(
                     "Unannotated rows",
-                    paste0("(", length(setdiff), "):")
+                    paste0("(", length(setdiff), "):"),
+                    str_trunc(
+                        string = toString(setdiff),
+                        width = getOption("width") - 24L
+                    )
                 ),
-                str_trunc(
-                    string = toString(setdiff),
-                    width = getOption("width") - 24L
-                )
+                "Check that your genome build and release are correct.",
+                "Consider using a GTF/GFF file for row annotations.",
+                paste(
+                    "Define transgenes with `transgeneNames`",
+                    "and spike-ins with `spikeNames`."
+                ),
+                sep = "\n"
             ))
-            unknownRanges <- emptyRanges(
-                names = setdiff,
-                seqname = "unknown",
-                mcolsNames = mcolsNames
-            )
-            rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
         }
-        # Sort the rowRanges to match assay.
+    }
+    rm(data)
+
+    # Automatically arrange the rows to match the main assay.
+    if (length(rowRanges)) {
+        assert_has_names(rowRanges)
         assert_is_subset(rownames(assay), names(rowRanges))
         rowRanges <- rowRanges[rownames(assay)]
+    } else if (length(rowData)) {
+        assertHasRownames(rowData)
+        assert_is_subset(rownames(assay), rownames(rowData))
+        rowData <- rowData[rownames(assay)]
     }
 
     # Column data --------------------------------------------------------------
