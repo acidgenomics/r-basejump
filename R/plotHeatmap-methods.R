@@ -44,26 +44,25 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotHeatmap(rse_dds)
+#' plotHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palette.
 #' plotHeatmap(
-#'     object = rse_dds,
-#'     interestingGroups = "condition",
+#'     object = rse_small,
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
 #'
-#' # Hexadecimal color input
+#' # Using hexadecimal color input.
 #' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-#' plotHeatmap(rse_dds, color = purple_orange)
+#' plotHeatmap(rse_small, color = purple_orange)
 #'
-#' # Default pheatmap colors
-#' plotHeatmap(rse_dds, color = NULL)
+#' # Using default pheatmap colors.
+#' plotHeatmap(rse_small, color = NULL)
 #'
-#' # Disable column clustering
-#' plotHeatmap(rse_dds, clusterCols = FALSE)
+#' # Disable column clustering.
+#' plotHeatmap(rse_small, clusterCols = FALSE)
 NULL
 
 
@@ -71,12 +70,12 @@ NULL
 #' @rdname plotHeatmap
 #' @export
 setMethod(
-    "plotHeatmap",
-    signature("SummarizedExperiment"),
-    function(
+    f = "plotHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = function(
         object,
         interestingGroups,
-        scale = c("row", "column", "none"),
+        scale = c("none", "row", "column"),
         clusterRows = TRUE,
         clusterCols = TRUE,
         showRownames = FALSE,
@@ -119,14 +118,18 @@ setMethod(
             title <- NA
         }
 
-        # Convert the SE objec to use symbols in the rownames, for pheatmap.
-        object <- suppressWarnings(convertGenesToSymbols(object))
+        # Convert the SE object to use symbols in the rownames, for pheatmap.
+        object <- convertGenesToSymbols(object)
 
         # Ensure we're using a dense matrix.
+        # Note that we want to use `assay()` here instead, so this supports
+        # `DESeqTransform`, which doesn't use `counts` as the primary assay.
         mat <- as.matrix(assay(object))
 
-        # Filter out any zero count rows when row scaling.
+        # Filter out any zero count rows when row scaling, otherwise hclust
+        # calculation will error.
         if (scale == "row") {
+            message("Row scaling... dropping rows with all zero counts")
             mat <- mat[rowSums(mat) > 0L, , drop = FALSE]
         }
 
@@ -153,7 +156,10 @@ setMethod(
         )
         if (length(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (length(annotationCol)) {
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
                 rownames(annotationCol) <- sampleNames
             }
         }

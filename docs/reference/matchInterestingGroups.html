@@ -34,7 +34,10 @@
   
 <meta property="og:title" content="Match Interesting Groups — matchInterestingGroups" />
 
-<meta property="og:description" content="Match Interesting Groups" />
+<meta property="og:description" content="Match the user-defined interesting groups to the values slotted within a
+SummarizedExperiment object, and check that they are valid. Otherwise
+supports a missing interestingGroups argument, which will then use the
+interestingGroups() accessor function internally." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -112,32 +115,31 @@
 
     <div class="ref-description">
     
-    <p>Match Interesting Groups</p>
+    <p>Match the user-defined interesting groups to the values slotted within a
+<code>SummarizedExperiment</code> object, and check that they are valid. Otherwise
+supports a missing <code>interestingGroups</code> argument, which will then use the
+<code><a href='interestingGroups.html'>interestingGroups()</a></code> accessor function internally.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>matchInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>matchInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object.</p></td>
+      <td><p><code>SummarizedExperiment</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>. Groups of interest.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code>.</p>
+    <p><code>character</code>. Interesting groups.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -146,14 +148,14 @@
   <code><a href='flatFiles.html'>flatFiles</a></code>,
   <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
   <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
-  <code><a href='methodFormals.html'>methodFormals</a></code>,
+  <code><a href='matchS4Call.html'>matchS4Call</a></code>, <code><a href='methodFormals.html'>methodFormals</a></code>,
   <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
   <code><a href='printString.html'>printString</a></code>,
   <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_bcb</span>)</div><div class='output co'>#&gt; [1] "treatment"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_bcb</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; [1] "sampleName"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_bcb</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='st'>"sampleName"</span>)</div><div class='output co'>#&gt; [1] "sampleName"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "genotype"  "treatment"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; [1] "sampleName"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='st'>"sampleName"</span>)</div><div class='output co'>#&gt; [1] "sampleName"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

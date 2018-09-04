@@ -23,23 +23,24 @@ the syntactically valid names defined as the rownames of \code{\link[=sampleData
 }
 \examples{
 # SummarizedExperiment ====
-object <- rse_bcb
+object <- rse_small
 x <- sampleNames(object)
 print(x)
 
 # Assignment support
 value <- sampleNames(object)
-value <- gsub("_", " ", value)
+value <- toupper(value)
 print(value)
 sampleNames(object) <- value
 x <- sampleNames(object)
 print(x)
+colData(object)$sampleName
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
+Other Data Functions: \code{\link{counts}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{selectSamples}}
 }
 \author{

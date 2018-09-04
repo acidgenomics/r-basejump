@@ -3,12 +3,10 @@
 #' @name assert
 #' @keywords internal
 #'
-#' @param x Object.
+#' @param object Object.
 #' @param envir `environment`.
 #' @param inherits `boolean`. Should the enclosing frames of the `environment`
 #'   be searched?
-#' @param severity `string`. How severe should the consequences of the assertion
-#'   be? Either "`stop`", "`warning`", "`message`", or "`none`".
 #'
 #' @return Stop on mismatch.
 NULL
@@ -23,22 +21,68 @@ NULL
 #' @inherit assert
 #' @export
 #'
-#' @param x `character` vector of variable names to check in `environment`.
+#' @param object `character`. Variable names to check in `environment`.
 #'
 #' @examples
 #' assertAllAreNonExisting(c("XXX", "YYY"))
 assertAllAreNonExisting <- function(
-    x,
+    object,
     envir = parent.frame(),
     inherits = FALSE
 ) {
-    exists <- is_existing(x, envir = envir, inherits = inherits)
+    exists <- is_existing(object, envir = envir, inherits = inherits)
     if (any(exists)) {
         stop(paste(
             "Already exists in environment:",
-            toString(x[exists])
+            toString(object[exists])
         ))
     }
+}
+
+
+
+# assertAllAreUniqueGeneNames ==================================================
+#' Assert All Are Unique Gene Names
+#'
+#' This assert check determines if a user-defined gene name query is using only
+#' unique (non-amgibuous) symbols. It is designed to be used for gene plotting
+#' particularly when performing single-cell RNA-seq marker analysis.
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#' @export
+#'
+#' @param object `SummarizedExperiment`.
+#' @param genes `character`. Input vector to check against definitions in the
+#'   corresponding `SummarizedExperiment`.
+#'
+#' @examples
+#' object <- rse_small
+#' print(object)
+#' genes <- head(as.character(rowData(rse_small)$geneName))
+#' print(genes)
+#' assertAllAreUniqueGeneNames(object = object, genes = genes)
+assertAllAreUniqueGeneNames <- function(object, genes) {
+    assert_is_all_of(
+        x = object,
+        classes = "SummarizedExperiment"
+    )
+    assert_is_character(genes)
+    # Get all of the gene names stashed in the object.
+    allGenes <- mcols(rowRanges(object))[["geneName"]]
+    assert_is_non_empty(allGenes)
+    # Require that the user passed in gene names.
+    assert_is_subset(
+        x = genes,
+        y = allGenes
+    )
+    # Check for no intersect with duplicate names.
+    duplicatedGenes <- allGenes[which(duplicated(allGenes))]
+    assert_are_disjoint_sets(
+        x = genes,
+        y = duplicatedGenes
+    )
 }
 
 
@@ -53,13 +97,37 @@ assertAllAreNonExisting <- function(
 #'
 #' @examples
 #' assertAllAreValidNames(c("sample_1", "sample_2"))
-assertAllAreValidNames <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_character(x, severity = severity)
-    assert_is_non_empty(x, severity = severity)
-    assert_all_are_true(validNames(x), severity = severity)
+assertAllAreValidNames <- function(object) {
+    assert_is_character(object)
+    assert_is_non_empty(object)
+    assert_all_are_true(validNames(object))
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
+assertHasValidDimnames <- function(object) {
+    assert_has_dimnames(object)
+    invisible(lapply(
+        X = dimnames(object),
+        FUN = assertAllAreValidNames
+    ))
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
+assertHasValidNames <- function(object) {
+    if (has_dims(object)) {
+        stop("Use `assertHasValidDimnames()` instead")
+    }
+    assert_has_names(object)
+    invisible(lapply(
+        X = names(object),
+        FUN = assertAllAreValidNames
+    ))
 }
 
 
@@ -74,15 +142,18 @@ assertAllAreValidNames <- function(
 #'     "cell-AAAAAAAA",
 #'     "GFP+ sort"
 #' ))
-validNames <- function(x) {
-    if (!is.character(x) || length(x) == 0L) {
+validNames <- function(object) {
+    if (!is.atomic(object)) {
         return(FALSE)
     }
     vapply(
-        X = x,
-        FUN = function(x) {
+        X = object,
+        FUN = function(object) {
             # Note that we're enforcing unique values here.
-            identical(x, make.names(x, unique = TRUE))
+            identical(
+                x = as.character(object),
+                y = make.names(object, unique = TRUE)
+            )
         },
         FUN.VALUE = logical(1L),
         USE.NAMES = FALSE
@@ -92,32 +163,31 @@ validNames <- function(x) {
 
 
 # assertAreGeneAnnotations =====================================================
-#' Assert Are Ensembl Gene Annotations
+#' Assert Are Gene Annotations
+#'
+#' Must contain `geneID` and `geneName` columns. Does not need to contain
+#' rownames, so `tibble` class is supported.
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
-#' @param x `data.frame` containing Ensembl gene annotations.
+#' @param object Object that can be coerced to `data.frame`.
 #'
 #' @examples
-#' x <- data.frame(
+#' object <- tibble(
 #'     geneID = "ENSG00000000003",
 #'     geneName = "TSPAN6"
 #' )
-#' assertAreGeneAnnotations(x)
-assertAreGeneAnnotations <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    x <- as.data.frame(x)
+#' assertAreGeneAnnotations(object)
+assertAreGeneAnnotations <- function(object) {
+    df <- as.data.frame(object)
     assert_is_subset(
         x = c("geneID", "geneName"),
-        y = colnames(x),
-        severity = severity
+        y = colnames(df)
     )
-    assert_has_rows(x, severity = severity)
+    assert_is_non_empty(df)
 }
 
 
@@ -125,31 +195,30 @@ assertAreGeneAnnotations <- function(
 # assertAreTranscriptAnnotations ===============================================
 #' Assert Are Ensembl Transcript Annotations
 #'
+#' Must contain `transcriptID` and `transcriptName` columns. Does not need to
+#' contain rownames, so `tibble` class is supported.
+#'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
-#' @param x `data.frame` containing Ensembl transcript annotations.
+#' @param object Object that can be coerced to `data.frame`.
 #'
 #'
 #' @examples
-#' x <- data.frame(
+#' object <- tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
 #' )
-#' assertAreTranscriptAnnotations(x)
-assertAreTranscriptAnnotations <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    x <- as.data.frame(x)
+#' assertAreTranscriptAnnotations(object)
+assertAreTranscriptAnnotations <- function(object) {
+    df <- as.data.frame(object)
     assert_is_subset(
         x = c("transcriptID", "geneID"),
-        y = colnames(x),
-        severity = severity
+        y = colnames(df)
     )
-    assert_has_rows(x, severity = severity)
+    assert_is_non_empty(object)
 }
 
 
@@ -164,21 +233,16 @@ assertAreTranscriptAnnotations <- function(
 #'
 #' @examples
 #' assertFormalCompress("xz")
-assertFormalCompress <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertFormalCompress <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("character", "logical"),
-        severity = severity
+        x = object,
+        classes = c("character", "logical")
     )
-    if (is.character(x)) {
-        assert_is_a_string(x, severity = severity)
+    if (is.character(object)) {
+        assert_is_a_string(object)
         assert_is_subset(
-            x = x,
-            y = c("bzip2", "gzip", "xz"),
-            severity = severity
+            x = object,
+            y = c("bzip2", "gzip", "xz")
         )
     }
 }
@@ -193,10 +257,10 @@ assertFormalCompress <- function(
 #' @inherit assert
 #' @export
 #'
-#' @param x Object containing gene identifiers in the row names.
-#' @param genes `character` vector of gene identifiers.
-#' @param gene2symbol Gene-to-symbol mappings. Must contain a `data.frame` or
-#'   `NULL`.
+#' @param object Object containing gene identifiers in `rownames`. Cannot
+#'   contain gene names, or the check will fail.
+#' @param genes `character`. Gene identifiers.
+#' @param gene2symbol `DataFrame`, `tbl_df`, or `NULL`. Gene-to-symbol mappings.
 #'
 #' @examples
 #' gene2symbol <- tibble(
@@ -204,28 +268,38 @@ assertFormalCompress <- function(
 #'     geneName = c("TSPAN6", "TNMD")
 #' )
 #' genes <- pull(gene2symbol, "geneID")
-#' x <- data.frame(
+#' object <- DataFrame(
 #'     "sample_1" = c(1L, 2L),
 #'     "sample_2" = c(3L, 4L),
-#'     row.names = genes,
-#'     stringsAsFactors = FALSE
+#'     row.names = genes
 #' )
-#' assertFormalGene2symbol(x, genes, gene2symbol)
+#' assertFormalGene2symbol(object, genes, gene2symbol)
 assertFormalGene2symbol <- function(
-    x,
+    object,
     genes,
-    gene2symbol,
-    severity = getOption("assertive.severity", "stop")
+    gene2symbol
 ) {
-    assertHasRownames(x)
-    assert_is_any_of(genes, c("character", "NULL"))
+    assertHasRownames(object)
+    assert_is_any_of(
+        x = genes,
+        classes = c("character", "NULL")
+    )
     if (is.character(genes)) {
-        assert_is_subset(genes, rownames(x))
+        assert_is_subset(
+            x = genes,
+            y = rownames(object)
+        )
     }
-    assert_is_any_of(gene2symbol, c("data.frame", "NULL"))
-    if (is.data.frame(gene2symbol)) {
+    assert_is_any_of(
+        x = gene2symbol,
+        classes = c("DataFrame", "tbl_df", "NULL")
+    )
+    if (!is.null(gene2symbol)) {
         assertIsGene2symbol(gene2symbol)
-        assert_is_subset(rownames(x), gene2symbol[["geneID"]])
+        assert_is_subset(
+            x = rownames(object),
+            y = gene2symbol[["geneID"]]
+        )
     }
 }
 
@@ -243,56 +317,38 @@ assertFormalGene2symbol <- function(
 #' @export
 #'
 #' @inheritParams general
-#' @param x `SummarizedExperiment`.
+#' @param object `SummarizedExperiment`.
 #'
 #' @examples
-#' assertFormalInterestingGroups(rse_bcb, "treatment")
-#' assertFormalInterestingGroups(rse_bcb, NULL)
-assertFormalInterestingGroups <- function(
-    x,
-    interestingGroups,
-    severity = getOption("assertive.severity", "stop")
-) {
-    fun <- get(severity)
-
-    # Check for SummarizedExperiment.s
+#' assertFormalInterestingGroups(rse_small, "treatment")
+#' assertFormalInterestingGroups(rse_small, NULL)
+assertFormalInterestingGroups <- function(object, interestingGroups) {
+    # Always require SummarizedExperiment for object.
     assert_is_all_of(
-        x = x,
-        classes = "SummarizedExperiment",
-        severity = severity
+        x = object,
+        classes = "SummarizedExperiment"
     )
 
-    # Early return clean on `NULL` value (e.g. DESeqDataSet).
+    # Check `interestingGroups` argument.
     if (is.null(interestingGroups)) {
+        # Early return clean on `NULL` value (e.g. DESeqDataSet).
         return(invisible())
     } else {
+        # Otherwise, require that `interestingGroups` is a character.
         assert_is_character(interestingGroups)
     }
 
-    # Obtain column data if S4 object is passed in.
+    # Check intersection with column data.
     assert_is_subset(
         x = interestingGroups,
-        y = colnames(colData(x)),
-        severity = severity
+        y = colnames(colData(object))
     )
 
-    data <- colData(x)
-
-    # Check that interesting groups are factors.
-    isFactor <- vapply(
-        X = data[, interestingGroups, drop = FALSE],
-        FUN = is.factor,
-        FUN.VALUE = logical(1L),
-        USE.NAMES = TRUE
-    )
-    if (!all(isFactor)) {
-        invalid <- names(isFactor)[which(!isFactor)]
-        fun(paste(
-            "The interesting groups",
-            deparse(toString(invalid)),
-            "are not factor"
-        ))
-    }
+    # Check that interesting groups columns are factors.
+    invisible(lapply(
+        X = colData(object)[, interestingGroups, drop = FALSE],
+        FUN = assert_is_factor
+    ))
 }
 
 
@@ -300,11 +356,11 @@ assertFormalInterestingGroups <- function(
 # assertHasRownames ============================================================
 #' Assert Has Rownames
 #'
-#' A stricter alternative to the assertive version that works properply with
+#' A stricter alternative to the assertive version that works properly with
 #' data frames.
 #'
 #' @note `tibble::has_rownames()` is more consistent than
-#'   `assertive.properties::has_rownames()` for data frames and tibbles.
+#'   `assertive.properties::has_rownames()` for `DataFrame` and `tbl_df` class.
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
@@ -312,34 +368,34 @@ assertFormalInterestingGroups <- function(
 #' @export
 #'
 #' @examples
-#' data <- data.frame(
-#'     "sample_1" = c(1L, 2L),
-#'     "sample_2" = c(3L, 4L),
-#'     row.names = c("gene_1", "gene_2"),
-#'     stringsAsFactors = FALSE
+#' object <- DataFrame(
+#'     "sample1" = c(1L, 2L),
+#'     "sample2" = c(3L, 4L),
+#'     row.names = c("gene1", "gene2")
 #' )
-#' assertHasRownames(data)
-assertHasRownames <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    stopifnot(hasRownames(x))
-    assert_are_disjoint_sets(
-        x = rownames(x),
-        y = as.character(seq_len(nrow(x))),
-        severity = severity
-    )
+#' print(object)
+#' assertHasRownames(object)
+assertHasRownames <- function(object) {
+    assert_all_are_true(hasRownames(object))
+    if (!is(object, "tbl_df")) {
+        assert_are_disjoint_sets(
+            x = rownames(object),
+            y = as.character(seq_len(nrow(object)))
+        )
+    }
 }
 
 
 
 #' @rdname assertHasRownames
 #' @export
-hasRownames <- function(x) {  # nolint
-    if (is.data.frame(x)) {
-        tibble::has_rownames(x)
+hasRownames <- function(object) {
+    if (is(object, "tbl_df")) {
+        "rowname" %in% colnames(object)
+    } else if (is.data.frame(object)) {
+        tibble::has_rownames(object)
     } else {
-        assertive.properties::has_rownames(x)
+        assertive.properties::has_rownames(object)
     }
 }
 
@@ -357,15 +413,11 @@ hasRownames <- function(x) {  # nolint
 #'
 #' @examples
 #' assertIsAHeaderLevel(1L)
-assertIsAHeaderLevel <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_a_number(x, severity = severity)
+assertIsAHeaderLevel <- function(object) {
+    assert_is_a_number(object)
     assert_is_subset(
-        x = as.integer(x),
-        y = seq(1L:7L),
-        severity = severity
+        x = as.integer(object),
+        y = seq(1L:7L)
     )
 }
 
@@ -382,17 +434,13 @@ assertIsAHeaderLevel <- function(
 #' @examples
 #' assertIsAnIntegerOrNULL(1L)
 #' assertIsAnIntegerOrNULL(NULL)
-assertIsAnIntegerOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsAnIntegerOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("integer", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("integer", "NULL")
     )
-    if (is.integer(x)) {
-        assert_is_an_integer(x, severity = severity)
+    if (is.integer(object)) {
+        assert_is_an_integer(object)
     }
 }
 
@@ -409,17 +457,13 @@ assertIsAnIntegerOrNULL <- function(
 #' @examples
 #' assertIsANumberOrNULL(1.1)
 #' assertIsANumberOrNULL(NULL)
-assertIsANumberOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsANumberOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("numeric", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("numeric", "NULL")
     )
-    if (is.numeric(x)) {
-        assert_is_a_number(x, severity = severity)
+    if (is.numeric(object)) {
+        assert_is_a_number(object)
     }
 }
 
@@ -436,39 +480,14 @@ assertIsANumberOrNULL <- function(
 #' @examples
 #' assertIsAStringOrNULL("hello world")
 #' assertIsAStringOrNULL(NULL)
-assertIsAStringOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assertIsCharacterOrNULL(x, severity = severity)
-    if (is.character(x)) {
-        assert_is_a_string(x, severity = severity)
-    }
-}
-
-
-
-# assertIsCharacterOrNULL ======================================================
-# Deprecate this function in a future release.
-#' Assert Is Character Vector or NULL
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#' @export
-#'
-#' @examples
-#' assertIsCharacterOrNULL(c("hello", "world"))
-#' assertIsCharacterOrNULL(NULL)
-assertIsCharacterOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsAStringOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("character", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("character", "NULL")
     )
+    if (is.character(object)) {
+        assert_is_a_string(object)
+    }
 }
 
 
@@ -486,25 +505,19 @@ assertIsCharacterOrNULL <- function(
 #' class(color)
 #' assertIsColorScaleContinuousOrNULL(color)
 #' assertIsColorScaleContinuousOrNULL(NULL)
-assertIsColorScaleContinuousOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsColorScaleContinuousOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("ScaleContinuous", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("ScaleContinuous", "NULL")
     )
-    if (!is.null(x)) {
+    if (!is.null(object)) {
         assert_is_all_of(
-            x = x,
-            classes = c("ggproto", "Scale", "ScaleContinuous"),
-            severity = severity
+            x = object,
+            classes = c("ggproto", "Scale", "ScaleContinuous")
         )
         assert_are_identical(
-            x = x[["aesthetics"]],
-            y = "colour",
-            severity = severity
+            x = object[["aesthetics"]],
+            y = "colour"
         )
     }
 }
@@ -524,53 +537,21 @@ assertIsColorScaleContinuousOrNULL <- function(
 #' class(color)
 #' assertIsColorScaleDiscreteOrNULL(color)
 #' assertIsColorScaleDiscreteOrNULL(NULL)
-assertIsColorScaleDiscreteOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsColorScaleDiscreteOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("ScaleDiscrete", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("ScaleDiscrete", "NULL")
     )
-    if (!is.null(x)) {
+    if (!is.null(object)) {
         assert_is_all_of(
-            x = x,
-            classes = c("ggproto", "Scale", "ScaleDiscrete"),
-            severity = severity
+            x = object,
+            classes = c("ggproto", "Scale", "ScaleDiscrete")
         )
         assert_are_identical(
-            x = x[["aesthetics"]],
-            y = "colour",
-            severity = severity
+            x = object[["aesthetics"]],
+            y = "colour"
         )
     }
-}
-
-
-# assertIsDataFrameOrNULL ======================================================
-# Deprecate this function in a future release.
-#' Assert Is Data Frame or NULL
-#'
-#' @note This checks for `data.frame` and will stop on `DataFrame` class.
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#' @export
-#'
-#' @examples
-#' assertIsDataFrameOrNULL(datasets::mtcars)
-#' assertIsDataFrameOrNULL(NULL)
-assertIsDataFrameOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_any_of(
-        x = x,
-        classes = c("data.frame", "NULL"),
-        severity = severity
-    )
 }
 
 
@@ -589,25 +570,19 @@ assertIsDataFrameOrNULL <- function(
 #' class(fill)
 #' assertIsFillScaleContinuousOrNULL(fill)
 #' assertIsFillScaleContinuousOrNULL(NULL)
-assertIsFillScaleContinuousOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsFillScaleContinuousOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("ScaleContinuous", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("ScaleContinuous", "NULL")
     )
-    if (!is.null(x)) {
+    if (!is.null(object)) {
         assert_is_all_of(
-            x = x,
-            classes = c("ggproto", "Scale", "ScaleContinuous"),
-            severity = severity
+            x = object,
+            classes = c("ggproto", "Scale", "ScaleContinuous")
         )
         assert_are_identical(
-            x = x[["aesthetics"]],
-            y = "fill",
-            severity = severity
+            x = object[["aesthetics"]],
+            y = "fill"
         )
     }
 }
@@ -628,25 +603,19 @@ assertIsFillScaleContinuousOrNULL <- function(
 #' class(fill)
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)
-assertIsFillScaleDiscreteOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsFillScaleDiscreteOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("ScaleDiscrete", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("ScaleDiscrete", "NULL")
     )
-    if (!is.null(x)) {
+    if (!is.null(object)) {
         assert_is_all_of(
-            x = x,
-            classes = c("ggproto", "Scale", "ScaleDiscrete"),
-            severity = severity
+            x = object,
+            classes = c("ggproto", "Scale", "ScaleDiscrete")
         )
         assert_are_identical(
-            x = x[["aesthetics"]],
-            y = "fill",
-            severity = severity
+            x = object[["aesthetics"]],
+            y = "fill"
         )
     }
 }
@@ -656,50 +625,56 @@ assertIsFillScaleDiscreteOrNULL <- function(
 # assertIsGene2symbol ==========================================================
 #' Assert Is Gene to Symbol Mapping Data Frame
 #'
+#' @note Standard `data.frame` class is not supported. Use either `DataFrame`
+#'   or `tbl_df` class.
+#'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
 #' @inherit assert
 #' @export
 #'
-#' @param x `data.frame` containing Ensembl gene-to-symbol mappings. Must be
-#'   structured as a two column `data.frame` with "`geneID`" and "`geneName`"
-#'   columns.
+#' @param object `DataFrame` or `tbl_df`. Must contain "`geneID`" and
+#'   "`geneName`" columns. If `DataFrame`, must also have `rownames` set.
 #'
 #' @examples
-#' x <- tibble(
+#' # DataFrame ====
+#' object <- DataFrame(
+#'     geneID = "ENSG00000000003",
+#'     geneName = "TSPAN6",
+#'     row.names = "ENSG00000000003"
+#' )
+#' assertIsGene2symbol(object)
+#'
+#' # tibble ====
+#' object <- tibble(
 #'     geneID = "ENSG00000000003",
 #'     geneName = "TSPAN6"
 #' )
-#' assertIsGene2symbol(x)
-assertIsGene2symbol <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+#' assertIsGene2symbol(object)
+assertIsGene2symbol <- function(object) {
     # Requiring standard data frame class.
-    assert_is_data.frame(x, severity = severity)
-    assert_is_non_empty(x, severity = severity)
+    assert_is_any_of(
+        x = object,
+        classes = c("DataFrame", "tbl_df")
+    )
+    assert_is_non_empty(object)
     assert_are_identical(
-        x = colnames(x),
-        y = c("geneID", "geneName"),
-        severity = severity
+        x = colnames(object),
+        y = c("geneID", "geneName")
     )
     # Require rownames for standard data frame.
-    if (!is_tibble(x)) {
-        assertHasRownames(x, severity = severity)
+    if (!is_tibble(object)) {
+        assertHasRownames(object)
     }
     # Assert that all columns are character.
-    invisible(mapply(
-        FUN = assert_is_character,
-        x = x,
-        MoreArgs = list(severity = severity),
-        SIMPLIFY = FALSE
+    invisible(lapply(
+        X = object,
+        FUN = assert_is_character
     ))
     # Assert that neither column has duplicates.
-    invisible(mapply(
-        FUN = assert_has_no_duplicates,
-        x = x,
-        MoreArgs = list(severity = severity),
-        SIMPLIFY = FALSE
+    invisible(lapply(
+        X = object,
+        FUN = assert_has_no_duplicates
     ))
 }
 
@@ -720,24 +695,20 @@ assertIsGene2symbol <- function(
 #' }
 #' assertIsHexColorFunctionOrNULL(hex)
 #' assertIsHexColorFunctionOrNULL(NULL)
-assertIsHexColorFunctionOrNULL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
+assertIsHexColorFunctionOrNULL <- function(object) {
     assert_is_any_of(
-        x = x,
-        classes = c("function", "NULL"),
-        severity = severity
+        x = object,
+        classes = c("function", "NULL")
     )
-    if (is.function(x)) {
-        colors <- x(2L)
-        assert_is_character(colors, severity = severity)
+    if (is.function(object)) {
+        colors <- object(2L)
+        assert_is_character(colors)
         if (!all(is_hex_color(colors))) {
             # viridis adds "FF" to the end of hex colors.
             # Attempt to fix before running hex check.
             colors <- gsub("^(#[A-Z0-9]{6})[A-Z0-9]{2}$", "\\1", colors)
         }
-        assert_all_are_hex_colors(colors, severity = severity)
+        assert_all_are_hex_colors(colors)
     }
 }
 
@@ -758,8 +729,8 @@ NULL
 #' @export
 #' @examples
 #' assertIsAnImplicitInteger(1)
-assertIsAnImplicitInteger <- function(x) {
-    stopifnot(isAnImplicitInteger(x))
+assertIsAnImplicitInteger <- function(object) {
+    assert_all_are_true(isAnImplicitInteger(object))
 }
 
 
@@ -769,8 +740,8 @@ assertIsAnImplicitInteger <- function(x) {
 #' @examples
 #' assertIsAnImplicitIntegerOrNULL(1)
 #' assertIsAnImplicitIntegerOrNULL(NULL)
-assertIsAnImplicitIntegerOrNULL <- function(x) {
-    stopifnot(any(isAnImplicitInteger(x), is.null(x)))
+assertIsAnImplicitIntegerOrNULL <- function(object) {
+    assert_all_are_true(any(isAnImplicitInteger(object), is.null(object)))
 }
 
 
@@ -779,8 +750,8 @@ assertIsAnImplicitIntegerOrNULL <- function(x) {
 #' @export
 #' @examples
 #' assertIsImplicitInteger(c(1, 2))
-assertIsImplicitInteger <- function(x) {
-    stopifnot(isImplicitInteger(x))
+assertIsImplicitInteger <- function(object) {
+    assert_all_are_true(isImplicitInteger(object))
 }
 
 
@@ -790,8 +761,8 @@ assertIsImplicitInteger <- function(x) {
 #' @examples
 #' assertIsImplicitIntegerOrNULL(c(1, 2))
 #' assertIsImplicitIntegerOrNULL(NULL)
-assertIsImplicitIntegerOrNULL <- function(x) {
-    stopifnot(any(isImplicitInteger(x), is.null(x)))
+assertIsImplicitIntegerOrNULL <- function(object) {
+    assert_all_are_true(any(isImplicitInteger(object), is.null(object)))
 }
 
 
@@ -800,11 +771,11 @@ assertIsImplicitIntegerOrNULL <- function(x) {
 #' @export
 #' @examples
 #' isAnImplicitInteger(1)
-isAnImplicitInteger <- function(x) {
-    if (!is_a_number(x)) {
+isAnImplicitInteger <- function(object) {
+    if (!is_a_number(object)) {
         return(FALSE)
     }
-    isImplicitInteger(x)
+    isImplicitInteger(object)
 }
 
 
@@ -813,19 +784,19 @@ isAnImplicitInteger <- function(x) {
 #' @export
 #' @examples
 #' isImplicitInteger(list(1, 1L, 1.1, "XXX"))
-isImplicitInteger <- function(x) {
+isImplicitInteger <- function(object) {
     vapply(
-        X = x,
-        FUN = function(x) {
-            if (!is.numeric(x)) {
+        X = object,
+        FUN = function(object) {
+            if (!is.numeric(object)) {
                 return(FALSE)
             }
-            if (is.integer(x)) {
+            if (is.integer(object)) {
                 return(TRUE)
             }
             isTRUE(all.equal(
-                target = as.integer(x),
-                current = x,
+                target = as.integer(object),
+                current = object,
                 tolerance = .Machine[["double.eps"]]
             ))
         },
@@ -840,49 +811,54 @@ isImplicitInteger <- function(x) {
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
-#' @inherit assert
+#' @inherit assertIsGene2symbol
 #' @export
 #'
-#' @param x `data.frame` containing Ensembl transcript to gene identifier
-#'   mappings. Must be structured as a two column `data.frame` with
-#'   "transcriptID" and "geneID" columns.
+#' @param object `DataFrame` or `tbl_df` containing transcript-to-gene
+#'   identifier mappings. Must contain the columns "`transcriptID`" and
+#'   "`geneID`". If `DataFrame`, must also have `rownames` set.
 #'
 #' @examples
-#' x <- tibble(
+#' # DataFrame ====
+#' object <- DataFrame(
+#'     transcriptID = "ENST00000000233",
+#'     geneID = "ENSG00000004059",
+#'     row.names = "ENST00000000233"
+#' )
+#'
+#' # tibble ====
+#' object <- tibble(
 #'     transcriptID = "ENST00000000233",
 #'     geneID = "ENSG00000004059"
 #' )
-#' assertIsTx2gene(x)
-assertIsTx2gene <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_data.frame(x, severity = severity)
-    assert_is_non_empty(x, severity = severity)
+#' assertIsTx2gene(object)
+assertIsTx2gene <- function(object) {
+    assert_is_any_of(
+        x = object,
+        classes = c("DataFrame", "tbl_df")
+    )
+    assert_is_non_empty(object)
     # nocov start
-    # Consider informing the user about this in a future update.
-    if ("txID" %in% colnames(x)) {
-        colnames(x) <- gsub("^txID$", "transcriptID", colnames(x))
+    if ("txID" %in% colnames(object)) {
+        warning("Use `transcript` instead of `tx`")
+        colnames(object) <- gsub("^txID$", "transcriptID", colnames(object))
     }
     # nocov end
     assert_are_identical(
-        x = colnames(x),
-        y = c("transcriptID", "geneID"),
-        severity = severity
+        x = colnames(object),
+        y = c("transcriptID", "geneID")
     )
-    # Require rownames for standard data frame.
-    if (!is_tibble(x)) {
-        assertHasRownames(x, severity = severity)
+    # Require rownames for DataFrame.
+    if (!is_tibble(object)) {
+        assertHasRownames(object)
     }
     # Assert that all columns are character.
-    invisible(mapply(
-        FUN = assert_is_character,
-        x = x,
-        MoreArgs = list(severity = severity),
-        SIMPLIFY = FALSE
+    invisible(lapply(
+        X = object,
+        FUN = assert_is_character
     ))
     # Assert that there are no duplicate transcripts.
-    assert_has_no_duplicates(x[["transcriptID"]])
+    assert_has_no_duplicates(object[["transcriptID"]])
 }
 
 
@@ -900,13 +876,10 @@ assertIsTx2gene <- function(
 #'     "https://www.r-project.org",
 #'     "ftp://r-project.org"
 #' ))
-assertAllAreURL <- function(
-    x,
-    severity = getOption("assertive.severity", "stop")
-) {
-    assert_is_character(x, severity = severity)
-    assert_is_non_empty(x, severity = severity)
-    assert_all_are_true(isURL(x), severity = severity)
+assertAllAreURL <- function(object) {
+    assert_is_character(object)
+    assert_is_non_empty(object)
+    assert_all_are_true(isURL(object))
 }
 
 
@@ -920,14 +893,14 @@ assertAllAreURL <- function(
 #'     "ftp://r-project.org",
 #'     "r-project.org"
 #' ))
-isURL <- function(x) {
-    if (!is.character(x) || length(x) == 0L) {
+isURL <- function(object) {
+    if (!is.character(object) || length(object) == 0L) {
         return(FALSE)
     }
     vapply(
-        X = x,
-        FUN = function(x) {
-            grepl("^(http(s)?|ftp)\\://.+", x)
+        X = object,
+        FUN = function(object) {
+            grepl("^(http(s)?|ftp)\\://.+", object)
         },
         FUN.VALUE = logical(1L),
         USE.NAMES = FALSE

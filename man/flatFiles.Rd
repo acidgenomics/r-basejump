@@ -23,7 +23,7 @@ Extract the slots inside an S4 object for archival storage.
 }
 \examples{
 # SummarizedExperiment ====
-x <- flatFiles(rse_dds)
+x <- flatFiles(rse_small)
 class(x)
 names(x)
 }
@@ -33,7 +33,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
+  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}

@@ -65,7 +65,7 @@ overrided by setting clusterRows or clusterCols to FALSE." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -225,11 +225,10 @@ improved aesthetics.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>plotQuantileHeatmap</span>(<span class='no'>rse_dds</span>)</div><div class='img'><img src='plotQuantileHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Set legend using interesting groups, and customize colors</span>
+<span class='fu'>plotQuantileHeatmap</span>(<span class='no'>rse_small</span>)</div><div class='img'><img src='plotQuantileHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Using viridis color palettes.</span>
 <span class='fu'>plotQuantileHeatmap</span>(
-    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>rse_dds</span>,
-    <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='st'>"condition"</span>,
+    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>rse_small</span>,
     <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>plasma</a></span>,
     <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>
 )</div><div class='img'><img src='plotQuantileHeatmap-2.png' alt='' width='700' height='433' /></div></pre>

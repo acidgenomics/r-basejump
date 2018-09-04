@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>RangedSummarizedExperiment</code> Coerced from <code>bcbioRNASeq</code> — rse_bcb • basejump</title>
+<title>R Documentation Tags — RdTags • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="<code>RangedSummarizedExperiment</code> Coerced from <code>bcbioRNASeq</code> — rse_bcb" />
+<meta property="og:title" content="R Documentation Tags — RdTags" />
 
-<meta property="og:description" content="RangedSummarizedExperiment Coerced from bcbioRNASeq" />
+<meta property="og:description" content="Modified version of the unexported tools:::RdTags() function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -105,37 +105,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1><code>RangedSummarizedExperiment</code> Coerced from <code>bcbioRNASeq</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>rse_bcb.Rd</code></div>
+    <h1>R Documentation Tags</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/RdTags.R'><code>R/RdTags.R</code></a></small>
+    <div class="hidden name"><code>RdTags.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>RangedSummarizedExperiment</code> Coerced from <code>bcbioRNASeq</code></p>
+    <p>Modified version of the unexported <code>tools:::RdTags()</code> function.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>rse_bcb</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>RangedSummarizedExperiment</code> with 500 rows and 6 columns.</p>
+    <pre class="usage"><span class='fu'>RdTags</span>(<span class='no'>object</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p><code>Rd</code>. R documentation, returned from <code><a href='http://www.rdocumentation.org/packages/tools/topics/Rdutils'>tools::Rd_db()</a></code>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Minimal Example Data: <code><a href='rse_dds.html'>rse_dds</a></code></p></div>
+    <div class='dont-index'><p>Other R Documentation Functions: <code><a href='parseRd.html'>parseRd</a></code>,
+  <code><a href='saveRdExamples.html'>saveRdExamples</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>db</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tools</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tools/topics/Rdutils'>Rd_db</a></span>(<span class='st'>"base"</span>)
+<span class='no'>Rd</span> <span class='kw'>&lt;-</span> <span class='no'>db</span><span class='kw'>[[</span><span class='st'>"nrow.Rd"</span>]]
+<span class='fu'>RdTags</span>(<span class='no'>Rd</span>)</div><div class='output co'>#&gt;  [1] "title"       "name"        "alias"       "alias"       "alias"      
+#&gt;  [6] "alias"       "keyword"     "description" "usage"       "arguments"  
+#&gt; [11] "value"       "references"  "seealso"     "examples"   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
-
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

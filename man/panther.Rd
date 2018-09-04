@@ -20,7 +20,7 @@ defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 }
 \value{
-\code{data.frame}.
+\code{DataFrame}.
 }
 \description{
 PANTHER Gene Ontology Annotations

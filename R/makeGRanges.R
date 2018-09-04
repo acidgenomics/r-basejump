@@ -74,7 +74,7 @@
 #'
 #' @return
 #' - `makeGRangesFromEnsembl()`, `makeGRangesFromGFF()`: `GRanges`.
-#' - `annotable()`: `data.frame`.
+#' - `annotable()`: `tbl_df`.
 #'
 #' @seealso
 #' - [AnnotationHub](https://doi.org/doi:10.18129/B9.bioc.AnnotationHub).
@@ -122,45 +122,37 @@ makeGRangesFromEnsembl <- function(
     format = c("genes", "transcripts"),
     build = NULL,
     release = NULL,
-    metadata = FALSE,
-    ...
+    metadata = FALSE
 ) {
-    # Legacy arguments ---------------------------------------------------------
-    # nocov start
-    args <- list(...)
-    if ("genomeBuild" %in% names(args)) {
-        message("Use `build` instead of `genomeBuild`")
-        build <- args[["genomeBuild"]]
-    }
-    # nocov end
-
     # Assert checks ------------------------------------------------------------
     assert_is_a_string(organism)
-    # Standard organism query, if necessary
+    # Standard organism query, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
     format <- match.arg(format)
     assertIsAStringOrNULL(build)
-    # Check for accidental UCSC input and abort, informing user
+    # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(build)) {
-        ucscCheck <- convertUCSCBuildToEnsembl(build)
-        if (!is.null(ucscCheck)) {
+        ucscCheck <- tryCatch(
+            expr = convertUCSCBuildToEnsembl(build),
+            error = function(e) NULL
+        )
+        if (length(ucscCheck)) {
             stop(paste(
                 "UCSC build ID detected.",
-                "Use Ensembl build ID instead.",
-                printString(ucscCheck),
-                sep = "\n"
+                "Use Ensembl ID instead.\n",
+                printString(ucscCheck)
             ))
         }
     }
     assertIsAnImplicitIntegerOrNULL(release)
     if (isAnImplicitInteger(release)) {
-        # Note that ensembldb currently only supports >= 87
+        # Note that ensembldb currently only supports >= 87.
         assert_all_are_positive(release)
         release <- as.integer(release)
     }
     assert_is_a_bool(metadata)
 
-    # Ensure `select()` isn't masked by ensembldb/AnnotationDbi
+    # Ensure `select()` isn't masked by ensembldb and/or AnnotationDbi.
     userAttached <- .packages()
 
     # Fetch annotations from AnnotationHub/ensembldb ---------------------------
@@ -200,10 +192,10 @@ makeGRangesFromEnsembl <- function(
             paste0("(", snapshotDate(ah), ")")
         ))
 
-        # Use ensembldb annotations by default
+        # Use ensembldb annotations by default.
         rdataclass <- "EnsDb"
 
-        # For legacy release requests, switch to newest version available
+        # For legacy release requests, switch to newest version available.
         if (!is.null(release) && release < 87L) {
             warning(paste(
                 "ensembldb currently only supports Ensembl releases >= 87.",
@@ -213,7 +205,7 @@ makeGRangesFromEnsembl <- function(
             release <- NULL
         }
 
-        # Query AnnotationHub
+        # Query AnnotationHub.
         ahs <- query(
             x = ah,
             pattern = c(
@@ -226,10 +218,10 @@ makeGRangesFromEnsembl <- function(
             ignore.case = TRUE
         )
 
-        # Get the AnnotationHub from the metadata columns
+        # Get the AnnotationHub from the metadata columns.
         mcols <- mcols(ahs)
 
-        # Abort if there's no match and working offline
+        # Abort if there's no match and working offline.
         if (
             !isTRUE(has_internet()) &&
             !nrow(mcols)
@@ -239,13 +231,13 @@ makeGRangesFromEnsembl <- function(
             # nocov end
         }
 
-        # Ensure build matches, if specified
+        # Ensure build matches, if specified.
         if (!is.null(build)) {
             assert_is_subset("genome", colnames(mcols))
             mcols <- mcols[mcols[["genome"]] %in% build, , drop = FALSE]
         }
 
-        # Ensure release matches, or pick the latest one
+        # Ensure release matches, or pick the latest one.
         if (!is.null(release)) {
             assert_is_subset("title", colnames(mcols))
             mcols <- mcols[
@@ -290,7 +282,7 @@ makeGRangesFromEnsembl <- function(
     meta <- rbind(c("id", id), meta)
     meta <- as(meta, "tbl_df")
 
-    # Stash the AnnotationHub ID
+    # Stash the AnnotationHub ID.
     build <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
     assert_is_a_string(build)
 
@@ -316,14 +308,14 @@ makeGRangesFromEnsembl <- function(
             return.type = "GRanges"
         )
 
-        # Get additional mcols of interest from gene annotations
+        # Get additional mcols of interest from gene annotations.
         gene <- genes(
             x = edb,
             order.by = "gene_id",
             return.type = "GRanges"
         )
 
-        # Merge the data
+        # Merge the data.
         txData <- mcols(tx)
         geneData <- mcols(gene)
         mergeData <- merge(
@@ -339,14 +331,14 @@ makeGRangesFromEnsembl <- function(
         mergeData <- mergeData[match, , drop = FALSE]
         assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
 
-        # Now we can slot back into the transcript mcols
+        # Now we can slot back into the transcript mcols.
         mcols(tx) <- mergeData
         gr <- tx
     }
 
     # Force detach -------------------------------------------------------------
     # ensembldb will attach unwanted packages into the NAMESPACE, which can
-    # conflict with tidyverse
+    # conflict with tidyverse.
     fxnAttached <- setdiff(.packages(), userAttached)
     invisible(lapply(
         X = fxnAttached,
@@ -365,7 +357,7 @@ makeGRangesFromEnsembl <- function(
 
     gr <- .makeGRanges(gr)
 
-    # Include the EnsDB metadata inside a list, if desired
+    # Include the EnsDB metadata inside a list, if desired.
     if (isTRUE(metadata)) {
         list(data = gr, metadata = meta)
     } else {
@@ -382,11 +374,11 @@ makeGRangesFromGFF <- function(
     format = c("genes", "transcripts")
 ) {
     file <- localOrRemoteFile(file)
-    # Require GFF or GTF file extension
+    # Require GFF or GTF file extension.
     stopifnot(grepl("\\.g[ft]f", file, ignore.case = TRUE))
     format <- match.arg(format)
 
-    # Import GFF as GRanges (using rtracklayer)
+    # Import GFF as GRanges (using rtracklayer).
     gff <- readGFF(file)
     assert_is_all_of(gff, "GRanges")
     gff <- camel(gff)
@@ -406,14 +398,14 @@ makeGRangesFromGFF <- function(
     }
     # nocov end
 
-    # Always require `geneID` and `transcriptID` columns in file
+    # Always require `geneID` and `transcriptID` columns in file.
     assert_is_subset(
         x = c("geneID", "transcriptID"),
         y = colnames(mcols(gff))
     )
 
     # Rename `geneSymbol` to `geneName`.
-    # This applies to FlyBase and WormBase annotations
+    # This applies to FlyBase and WormBase annotations.
     colnames(mcols(gff)) <- gsub(
         pattern = "Symbol$",
         replacement = "Name",
@@ -442,7 +434,7 @@ makeGRangesFromGFF <- function(
     names(gn) <- mcols(gn)[["geneID"]]
     gn <- gn[sort(names(gn))]
 
-    # Stop on missing genes
+    # Stop on missing genes.
     assert_are_identical(
         x = names(gn),
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
@@ -495,7 +487,7 @@ makeGRangesFromGFF <- function(
         names(tx) <- mcols(tx)[["transcriptID"]]
         tx <- tx[sort(names(tx))]
 
-        # Stop on missing transcripts
+        # Stop on missing transcripts.
         assert_are_identical(
             x = names(tx),
             y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
@@ -504,7 +496,7 @@ makeGRangesFromGFF <- function(
         message(paste(length(tx), "transcript annotations"))
         gr <- tx
 
-        # Merge the gene-level annotations (`geneName`, `geneBiotype`)
+        # Merge the gene-level annotations (`geneName`, `geneBiotype`).
         geneCols <- setdiff(
             x = colnames(mcols(gn)),
             y = colnames(mcols(gr))
@@ -546,7 +538,7 @@ annotable <- function() {
         what = makeGRangesFromEnsembl,
         args = as.list(match.call())[-1L]
     )
-    as.data.frame(gr)
+    as(gr, "tbl_df")
 }
 # Set the formals.
 f <- formals("makeGRangesFromEnsembl")

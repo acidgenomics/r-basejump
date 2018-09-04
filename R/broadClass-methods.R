@@ -5,18 +5,14 @@
 #' @author Rory Kirchner and Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param object Object that can be coerced to `data.frame`, containing gene or
+#' @param object Object that can be coerced to `DataFrame`, containing gene or
 #'   transcript annotations.
 #'
 #' @return Named `factor` containing broad class definitions.
 #'
 #' @examples
-#' # GRanges ====
-#' x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
-#' table(x)
-#'
 #' # SummarizedExperiment ====
-#' x <- broadClass(rse_bcb)
+#' x <- broadClass(rse_small)
 #' table(x)
 NULL
 
@@ -25,34 +21,35 @@ NULL
 #' @rdname broadClass
 #' @export
 setMethod(
-    "broadClass",
-    signature("GRanges"),
-    function(object) {
-        object <- as.data.frame(object)
-        assertHasRownames(object)
+    f = "broadClass",
+    signature = signature("GRanges"),
+    definition = function(object) {
+        data <- as(object, "tbl_df")
+        assert_are_identical(data[["rowname"]], names(object))
+        rownames <- data[["rowname"]]
 
-        # Early return if already defined
-        if ("broadClass" %in% colnames(object)) {
-            broad <- object[["broadClass"]]
-            names(broad) <- rownames(object)
+        # Early return if already defined.
+        if ("broadClass" %in% colnames(data)) {
+            broad <- data[["broadClass"]]
+            names(broad) <- rownames
             return(broad)
         }
 
-        # geneName (required)
-        assert_is_subset("geneName", colnames(object))
-        geneName <- object[["geneName"]]
+        # Gene name (required).
+        assert_is_subset("geneName", colnames(data))
+        geneName <- data[["geneName"]]
 
         # Biotype (optional)
-        # Prioritize transcript over gene, if present
+        # Prioritize transcript over gene, if present.
         biotypeCol <- grep(
             pattern = "biotype$",
-            x = colnames(object),
+            x = colnames(data),
             ignore.case = TRUE,
             value = TRUE
         )
         if (length(biotypeCol)) {
             biotypeCol <- biotypeCol[[1L]]
-            biotype <- object[[biotypeCol]]
+            biotype <- data[[biotypeCol]]
         } else {
             # nocov start
             warning("biotype missing", call. = FALSE)
@@ -60,16 +57,16 @@ setMethod(
             # nocov end
         }
 
-        # seqname (optional; aka chromosome)
+        # Seqname (optional; aka chromosome).
         seqnameCol <- grep(
             pattern = "seqname",
-            x = colnames(object),
+            x = colnames(data),
             ignore.case = TRUE,
             value = TRUE
         )
         if (length(seqnameCol)) {
             seqnameCol <- seqnameCol[[1L]]
-            seqname <- object[[seqnameCol]]
+            seqname <- data[[seqnameCol]]
         } else {
             # nocov start
             warning("seqname missing", call. = FALSE)
@@ -134,7 +131,7 @@ setMethod(
         )
 
         broad <- as.factor(broad)
-        names(broad) <- rownames(object)
+        names(broad) <- rownames
         broad
     }
 )
@@ -144,9 +141,9 @@ setMethod(
 #' @rdname broadClass
 #' @export
 setMethod(
-    "broadClass",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "broadClass",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
         rowData(object)[["broadClass"]]
     }

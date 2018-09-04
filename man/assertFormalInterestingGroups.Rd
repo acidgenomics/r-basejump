@@ -4,16 +4,12 @@
 \alias{assertFormalInterestingGroups}
 \title{Interesting Groups Formal Assert Check}
 \usage{
-assertFormalInterestingGroups(x, interestingGroups,
-  severity = getOption("assertive.severity", "stop"))
+assertFormalInterestingGroups(object, interestingGroups)
 }
 \arguments{
-\item{x}{\code{SummarizedExperiment}.}
+\item{object}{\code{SummarizedExperiment}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.
@@ -23,12 +19,13 @@ Prevent unwanted downstream behavior when a missing interesting group
 is requested by the user.
 }
 \examples{
-assertFormalInterestingGroups(rse_bcb, "treatment")
-assertFormalInterestingGroups(rse_bcb, NULL)
+assertFormalInterestingGroups(rse_small, "treatment")
+assertFormalInterestingGroups(rse_small, NULL)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -39,10 +36,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

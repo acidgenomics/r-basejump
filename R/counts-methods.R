@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' x <- counts(rse_dds)
+#' x <- counts(rse_small)
 #' summary(x)
 NULL
 
@@ -20,7 +20,7 @@ NULL
 #' @rdname counts
 #' @export
 setMethod(
-    "counts",
+    f = "counts",
     "SummarizedExperiment",
     function(object) {
         validObject(object)

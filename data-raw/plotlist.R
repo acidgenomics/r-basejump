@@ -1,5 +1,5 @@
-# Plotlist
-# Last updated 2018-08-27
+# Plotlist data for testing ggplot2 code
+# Last updated 2018-09-04
 
 library(ggplot2)
 library(cowplot)
@@ -17,6 +17,7 @@ plotlist <- list(
 )
 
 # Plotting example using the plotlist with cowplot
-plot_grid(plotlist = plotlist)
+p <- plot_grid(plotlist = plotlist)
+stopifnot(is(p, "ggplot"))
 
 saveData(plotlist, dir = "tests/testthat", compress = "xz")

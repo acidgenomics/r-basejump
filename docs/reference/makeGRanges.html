@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -117,12 +117,12 @@
     </div>
 
     <pre class="usage"><span class='fu'>makeGRangesFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>),
-  <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+  <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>makeGRangesFromGFF</span>(<span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>))
 
 <span class='fu'>annotable</span>(<span class='no'>organism</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"genes"</span>, <span class='st'>"transcripts"</span>), <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,10 +151,6 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 <code>list</code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
       <th>file</th>
       <td><p><code>string</code>. File path.</p></td>
     </tr>
@@ -165,7 +161,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
 <ul>
 <li><p><code>makeGRangesFromEnsembl()</code>, <code>makeGRangesFromGFF()</code>: <code>GRanges</code>.</p></li>
-<li><p><code>annotable()</code>: <code>data.frame</code>.</p></li>
+<li><p><code>annotable()</code>: <code>tbl_df</code>.</p></li>
 </ul>
 
     
@@ -277,7 +273,8 @@ Note that <code>GRanges</code> also support coercion to a basic <code>data.frame
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
 #&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 65,256
-#&gt; Variables: 12
+#&gt; Variables: 13
+#&gt; $ rowname        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000000004...
 #&gt; $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7, 7, ...
 #&gt; $ start          &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 169662007...
 #&gt; $ end            &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 169854080...
@@ -296,7 +293,8 @@ Note that <code>GRanges</code> also support coercion to a basic <code>data.frame
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
 #&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 225,358
-#&gt; Variables: 18
+#&gt; Variables: 19
+#&gt; $ rowname                &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST0...
 #&gt; $ seqnames               &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7, 11, ...
 #&gt; $ start                  &lt;int&gt; 127588345, 8940365, 64305578, 2794953, 72129...
 #&gt; $ end                    &lt;int&gt; 127591705, 8949955, 64316738, 2805423, 72148...

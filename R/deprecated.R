@@ -28,56 +28,6 @@ NULL
 
 
 
-# Legacy =======================================================================
-#' @rdname defunct
-#' @export
-summarizeRows <- function(...) {
-    .Defunct("collapseToString")
-}
-
-#' @rdname defunct
-#' @export
-wash <- function(...) {
-    .Defunct()
-}
-
-
-
-# v0.0.23 ======================================================================
-#' @rdname defunct
-#' @export
-packageSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-#' @rdname defunct
-#' @export
-prepareSE <- function(...) {
-    .Defunct("bcbioBase::prepareSummarizedExperiment")
-}
-
-
-
-# v0.0.24 ======================================================================
-#' @rdname defunct
-#' @export
-metadataTable <- function(...) {
-    .Defunct("bcbioBase::sampleData")
-}
-
-
-
-# v0.0.25 ======================================================================
-#' @rdname defunct
-#' @export
-pct <- function(...) {
-    .Defunct("scales::percent")
-}
-
-
-
 # v0.1.6 ======================================================================
 #' @rdname defunct
 #' @export
@@ -96,13 +46,13 @@ lr2fc <- function(...) {
 # v0.1.1 =======================================================================
 #' @rdname defunct
 #' @export
-comp <- function() {
+comp <- function(...) {
     .Defunct("Biostrings::complement")
 }
 
 #' @rdname defunct
 #' @export
-revcomp <- function() {
+revcomp <- function(...) {
     .Defunct("Biostrings::reverseComplement")
 }
 
@@ -110,8 +60,8 @@ revcomp <- function() {
 
 # v0.2.2 =======================================================================
 #' @rdname defunct
-symbol2gene <- function() {
-    .Defunct()
+symbol2gene <- function(...) {
+    .Defunct("convertSymbolsToGenes")
 }
 
 
@@ -268,8 +218,6 @@ midnightTheme <- function(...) {
     theme_midnight(...)
 }
 
-
-
 #' @rdname deprecated
 #' @export
 paperwhiteTheme <- function(...) {
@@ -283,23 +231,21 @@ paperwhiteTheme <- function(...) {
 #' @rdname defunct
 #' @export
 setMethod(
-    "broadClass",
-    signature("data.frame"),
-    function(object) {
+    f = "broadClass",
+    signature = signature("data.frame"),
+    definition = function(object) {
         .Defunct(
             msg = "`broadClass()` now requires a `GRanges` class object"
         )
     }
 )
 
-
-
 #' @rdname defunct
 #' @export
 setMethod(
-    "broadClass",
-    signature("DataFrame"),
-    getMethod("broadClass", "data.frame")
+    f = "broadClass",
+    signature = signature("DataFrame"),
+    definition = getMethod("broadClass", "data.frame")
 )
 
 
@@ -317,7 +263,54 @@ synonyms <- function(...) {
 #' @rdname deprecated
 #' @export
 assertIsURL <- function(...) {
+    .Deprecated("assertAllAreURL")
     assertAllAreURL(...)
+}
+
+
+
+# v0.99.0 ======================================================================
+#' @rdname deprecated
+#' @export
+aggregateFeatures <- function(...) {
+    .Deprecated("aggregateRows")
+    aggregateRows(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateReplicates <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+#' @rdname deprecated
+#' @export
+assertIsCharacterOrNULL <- function(object, ...) {
+    .Deprecated("assert_is_any_of")
+    assert_is_any_of(
+        x = object,
+        classes = c("character", "NULL"),
+        ...
+    )
+}
+
+#' @rdname deprecated
+#' @export
+assertIsDataFrameOrNULL <- function(object, ...) {
+    .Deprecated("assert_is_any_of")
+    assert_is_any_of(
+        x = object,
+        classes = c("data.frame", "NULL"),
+        ...
+    )
+}
+
+#' @rdname deprecated
+#' @export
+fixNA <- function(...) {
+    .Deprecated("sanitizeNA")
+    sanitizeNA(...)
 }
 
 

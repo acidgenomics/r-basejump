@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -134,38 +134,23 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateFeatures.html'>aggregateFeatures</a></code>,
-  <code><a href='aggregateReplicates.html'>aggregateReplicates</a></code>,
-  <code><a href='gene2symbol.html'>gene2symbol</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='gene2symbol.html'>gene2symbol</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>rse_dds</span>)
-<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;     sample1           sample2           sample3          sample4      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :  0.00   Min.   :  0.00  
-#&gt;  1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:  4.00   1st Qu.:  4.00  
-#&gt;  Median :  15.00   Median :  15.00   Median : 14.00   Median : 14.00  
-#&gt;  Mean   :  41.63   Mean   :  44.45   Mean   : 42.58   Mean   : 40.81  
-#&gt;  3rd Qu.:  43.00   3rd Qu.:  42.00   3rd Qu.: 42.00   3rd Qu.: 42.00  
-#&gt;  Max.   :1085.00   Max.   :1516.00   Max.   :993.00   Max.   :870.00  
-#&gt;     sample5           sample6           sample7           sample8      
-#&gt;  Min.   :   0.00   Min.   :   0.00   Min.   :   0.00   Min.   :  0.00  
-#&gt;  1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:   4.00   1st Qu.:  4.00  
-#&gt;  Median :  16.50   Median :  14.00   Median :  14.00   Median : 15.00  
-#&gt;  Mean   :  43.31   Mean   :  44.81   Mean   :  43.06   Mean   : 43.95  
-#&gt;  3rd Qu.:  43.25   3rd Qu.:  43.00   3rd Qu.:  43.00   3rd Qu.: 44.00  
-#&gt;  Max.   :1351.00   Max.   :1015.00   Max.   :1276.00   Max.   :904.00  
-#&gt;     sample9           sample10         sample11         sample12      
-#&gt;  Min.   :   0.00   Min.   :  0.00   Min.   :   0.0   Min.   :   0.00  
-#&gt;  1st Qu.:   4.00   1st Qu.:  4.00   1st Qu.:   4.0   1st Qu.:   4.00  
-#&gt;  Median :  15.00   Median : 14.00   Median :  14.0   Median :  15.00  
-#&gt;  Mean   :  43.57   Mean   : 41.43   Mean   :  43.1   Mean   :  42.44  
-#&gt;  3rd Qu.:  44.00   3rd Qu.: 43.00   3rd Qu.:  43.0   3rd Qu.:  42.00  
-#&gt;  Max.   :1054.00   Max.   :806.00   Max.   :1215.0   Max.   :1027.00  </div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>rse_small</span>)
+<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;     sample1           sample2          sample3           sample4       
+#&gt;  Min.   :   0.00   Min.   :  0.00   Min.   :   0.00   Min.   :   0.00  
+#&gt;  1st Qu.:   6.75   1st Qu.:  5.00   1st Qu.:   4.75   1st Qu.:   3.75  
+#&gt;  Median :  14.50   Median : 16.50   Median :  18.00   Median :  15.00  
+#&gt;  Mean   :  48.24   Mean   : 47.71   Mean   :  57.69   Mean   :  49.26  
+#&gt;  3rd Qu.:  40.25   3rd Qu.: 40.00   3rd Qu.:  47.25   3rd Qu.:  46.50  
+#&gt;  Max.   :1123.00   Max.   :952.00   Max.   :1987.00   Max.   :1047.00  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

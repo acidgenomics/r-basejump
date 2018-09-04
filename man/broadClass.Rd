@@ -14,7 +14,7 @@ broadClass(object, ...)
 \S4method{broadClass}{SummarizedExperiment}(object)
 }
 \arguments{
-\item{object}{Object that can be coerced to \code{data.frame}, containing gene or
+\item{object}{Object that can be coerced to \code{DataFrame}, containing gene or
 transcript annotations.}
 
 \item{...}{Additional arguments.}
@@ -26,12 +26,8 @@ Named \code{factor} containing broad class definitions.
 Broad Class Definitions
 }
 \examples{
-# GRanges ====
-x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
-table(x)
-
 # SummarizedExperiment ====
-x <- broadClass(rse_bcb)
+x <- broadClass(rse_small)
 table(x)
 }
 \seealso{

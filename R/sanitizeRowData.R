@@ -1,42 +1,46 @@
 #' Sanitize Row Data
 #'
-#' Coerce Ensembl `rowData` to a `data.frame`, and drop any nested list columns
-#' (e.g. `entrezID`). Nested columns will fail to write to disk as CSVs.
+#' Coerce gene annotations to a `tibble`, and keep only `atomic` columns.
+#' Complex columns (e.g. Entrez ID `list`) will fail to write to disk as CSVs.
 #'
-#' Supports `GRanges`, `DataFrame`, and `data.frame` class objects.
+#' Supports `GRanges` and `DataFrame` class objects.
 #'
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return `data.frame`, without any nested `list` columns.
+#' @return `tbl_df`, containing only `atomic` columns.
 #' @export
 #'
 #' @examples
-#' # Genes ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
-#' sanitizeRowData(x) %>% glimpse()
-#'
-#' # Transcripts ====
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
-#' sanitizeRowData(x) %>% glimpse()
+#' from <- SummarizedExperiment::rowRanges(rse_small)
+#' colnames(S4Vectors::mcols(from))
+#' to <- sanitizeRowData(from)
+#' vapply(to, is.atomic, logical(1L))
+#' print(to)
 sanitizeRowData <- function(object) {
-    object <- as(object, "tbl_df")
+    assert_is_any_of(
+        x = object,
+        classes = c("GRanges", "DataFrame")
+    )
+    validObject(object)
 
-    # Enforce camel case
-    object <- camel(object)
+    # Coerce to tibble.
+    data <- as(object, "tbl_df")
 
-    # Drop any nested list columns (e.g. `entrezID`). These's don't play
-    # nicely with downstream R Markdown functions.
-    nestedCols <- vapply(
-        X = object,
-        FUN = is.list,
+    # Enforce camel case.
+    data <- camel(data)
+
+    # Keep only atomic columns. Complex columns won't write to disk as CSVs
+    # or work with R Markdown functions.
+    keep <- vapply(
+        X = data,
+        FUN = is.atomic,
         FUN.VALUE = logical(1L)
     )
-    if (any(nestedCols)) {
-        object <- object[, which(!nestedCols), drop = FALSE]
-    }
+    data <- data[, keep, drop = FALSE]
+    assert_is_non_empty(data)
 
-    object
+    data
 }

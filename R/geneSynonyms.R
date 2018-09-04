@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
-#' glimpse(x)
+#' print(x)
 NULL
 
 
@@ -73,7 +73,7 @@ geneSynonyms <- function(organism) {
         ) %>%
         mutate(synonyms = str_replace_all(!!sym("synonyms"), "\\|", ", "))
 
-    # Sanitize the identifiers
+    # Sanitize the identifiers.
     if (organism == "Drosophila melanogaster") {
         data <- mutate(
             data,

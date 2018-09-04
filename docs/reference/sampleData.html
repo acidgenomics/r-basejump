@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -121,7 +121,7 @@
 <span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>sampleData</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>sampleData</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for SummarizedExperiment,DataFrame</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
@@ -148,7 +148,7 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code> containing metadata that describes the samples.</p>
+    <p><code>DataFrame</code>. Metadata that describes the samples.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -159,84 +159,33 @@ experiment).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateFeatures.html'>aggregateFeatures</a></code>,
-  <code><a href='aggregateReplicates.html'>aggregateReplicates</a></code>, <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
   <code><a href='gene2symbol.html'>gene2symbol</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>sampleData</span>(<span class='no'>rse_bcb</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:6] "control_rep1" "control_rep2" "control_rep3" "fa_day7_rep1" ...
-#&gt;   ..@ nrows          : int 6
-#&gt;   ..@ listData       :List of 25
-#&gt;   .. ..$ sampleName                   : Factor w/ 18 levels "control_rep1",..: 1 2 3 16 17 18
-#&gt;   .. ..$ day                          : Factor w/ 6 levels "0","1","2","3",..: 1 1 1 5 5 5
-#&gt;   .. ..$ genomeBuild                  : Factor w/ 1 level "GRCm38_90": 1 1 1 1 1 1
-#&gt;   .. ..$ replicate                    : Factor w/ 3 levels "1","2","3": 1 2 3 1 2 3
-#&gt;   .. ..$ samRef                       : Factor w/ 1 level "/n/app/bcbio/dev/genomes/Mmusculus/GRCm38_90/seq/GRCm38_90.fa": 1 1 1 1 1 1
-#&gt;   .. ..$ strain                       : Factor w/ 1 level "Balb/c": 1 1 1 1 1 1
-#&gt;   .. ..$ tissue                       : Factor w/ 1 level "kidney": 1 1 1 1 1 1
-#&gt;   .. ..$ treatment                    : Factor w/ 2 levels "control","folic_acid": 1 1 1 2 2 2
-#&gt;   .. ..$ averageInsertSize            : num [1:6] 243 254 238 235 248 ...
-#&gt;   .. ..$ averageReadLength            : num [1:6] 50 50 50 50 50 50
-#&gt;   .. ..$ duplicates                   : num [1:6] 0 0 0 0 0 0
-#&gt;   .. ..$ duplicationRateOfMapped      : num [1:6] 0.539 0.542 0.566 0.453 0.442 ...
-#&gt;   .. ..$ exonicRate                   : num [1:6] 0.734 0.718 0.787 0.655 0.646 ...
-#&gt;   .. ..$ intergenicRate               : num [1:6] 0.0634 0.0655 0.0461 0.0487 0.0586 0.0702
-#&gt;   .. ..$ intronicRate                 : num [1:6] 0.203 0.217 0.167 0.296 0.296 ...
-#&gt;   .. ..$ mappedPairedReads            : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
-#&gt;   .. ..$ mappedReads                  : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
-#&gt;   .. ..$ qualityFormat                : Factor w/ 1 level "standard": 1 1 1 1 1 1
-#&gt;   .. ..$ rrna                         : num [1:6] 16412535 31779476 15967974 14933148 13229240 ...
-#&gt;   .. ..$ rrnaRate                     : num [1:6] 0.614 0.585 0.645 0.555 0.558 ...
-#&gt;   .. ..$ sequenceLength               : num [1:6] 50 50 50 50 50 50
-#&gt;   .. ..$ sequencesFlaggedAsPoorQuality: num [1:6] 0 0 0 0 0 0
-#&gt;   .. ..$ totalReads                   : num [1:6] 9.72e+07 1.79e+08 7.68e+07 8.11e+07 7.41e+07 ...
-#&gt;   .. ..$ x5x3Bias                     : num [1:6] 0.88 0.77 0.91 0.45 0.76 0.65
-#&gt;   .. ..$ xGC                          : num [1:6] 46 45 43 40 41 46
-#&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata: NULL
-#&gt;   ..@ metadata       : list()</div><div class='input'>
+<span class='fu'>sampleData</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt;         sampleName genotype treatment
+#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1    sample1 wildtype   control
+#&gt; sample2    sample2 knockout   control
+#&gt; sample3    sample3 wildtype   treated
+#&gt; sample4    sample4 knockout   treated</div><div class='input'>
 <span class='co'># Assignment support</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_bcb</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"test"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>seq_len</span>(<span class='fu'>ncol</span>(<span class='no'>x</span>))
 <span class='co'># `test` column should be now defined</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='fu'>sampleData</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:6] "control_rep1" "control_rep2" "control_rep3" "fa_day7_rep1" ...
-#&gt;   ..@ nrows          : int 6
-#&gt;   ..@ listData       :List of 26
-#&gt;   .. ..$ sampleName                   : Factor w/ 18 levels "control_rep1",..: 1 2 3 16 17 18
-#&gt;   .. ..$ day                          : Factor w/ 6 levels "0","1","2","3",..: 1 1 1 5 5 5
-#&gt;   .. ..$ genomeBuild                  : Factor w/ 1 level "GRCm38_90": 1 1 1 1 1 1
-#&gt;   .. ..$ replicate                    : Factor w/ 3 levels "1","2","3": 1 2 3 1 2 3
-#&gt;   .. ..$ samRef                       : Factor w/ 1 level "/n/app/bcbio/dev/genomes/Mmusculus/GRCm38_90/seq/GRCm38_90.fa": 1 1 1 1 1 1
-#&gt;   .. ..$ strain                       : Factor w/ 1 level "Balb/c": 1 1 1 1 1 1
-#&gt;   .. ..$ tissue                       : Factor w/ 1 level "kidney": 1 1 1 1 1 1
-#&gt;   .. ..$ treatment                    : Factor w/ 2 levels "control","folic_acid": 1 1 1 2 2 2
-#&gt;   .. ..$ averageInsertSize            : num [1:6] 243 254 238 235 248 ...
-#&gt;   .. ..$ averageReadLength            : num [1:6] 50 50 50 50 50 50
-#&gt;   .. ..$ duplicates                   : num [1:6] 0 0 0 0 0 0
-#&gt;   .. ..$ duplicationRateOfMapped      : num [1:6] 0.539 0.542 0.566 0.453 0.442 ...
-#&gt;   .. ..$ exonicRate                   : num [1:6] 0.734 0.718 0.787 0.655 0.646 ...
-#&gt;   .. ..$ intergenicRate               : num [1:6] 0.0634 0.0655 0.0461 0.0487 0.0586 0.0702
-#&gt;   .. ..$ intronicRate                 : num [1:6] 0.203 0.217 0.167 0.296 0.296 ...
-#&gt;   .. ..$ mappedPairedReads            : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
-#&gt;   .. ..$ mappedReads                  : num [1:6] 5.94e+07 1.23e+08 5.32e+07 6.79e+07 5.94e+07 ...
-#&gt;   .. ..$ qualityFormat                : Factor w/ 1 level "standard": 1 1 1 1 1 1
-#&gt;   .. ..$ rrna                         : num [1:6] 16412535 31779476 15967974 14933148 13229240 ...
-#&gt;   .. ..$ rrnaRate                     : num [1:6] 0.614 0.585 0.645 0.555 0.558 ...
-#&gt;   .. ..$ sequenceLength               : num [1:6] 50 50 50 50 50 50
-#&gt;   .. ..$ sequencesFlaggedAsPoorQuality: num [1:6] 0 0 0 0 0 0
-#&gt;   .. ..$ totalReads                   : num [1:6] 9.72e+07 1.79e+08 7.68e+07 8.11e+07 7.41e+07 ...
-#&gt;   .. ..$ x5x3Bias                     : num [1:6] 0.88 0.77 0.91 0.45 0.76 0.65
-#&gt;   .. ..$ xGC                          : num [1:6] 46 45 43 40 41 46
-#&gt;   .. ..$ test                         : int [1:6] 1 2 3 4 5 6
-#&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata: NULL
-#&gt;   ..@ metadata       : list()</div></pre>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+#&gt;         sampleName genotype treatment      test
+#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt; &lt;integer&gt;
+#&gt; sample1    sample1 wildtype   control         1
+#&gt; sample2    sample2 knockout   control         2
+#&gt; sample3    sample3 wildtype   treated         3
+#&gt; sample4    sample4 knockout   treated         4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -5,6 +5,7 @@
 #' @name plotCorrelationHeatmap
 #' @family Plot Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams plotHeatmap
 #' @param method `string`. Correlation coefficient (or covariance) method to be
@@ -22,23 +23,22 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotCorrelationHeatmap(rse_dds)
+#' plotCorrelationHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palettes.
 #' plotCorrelationHeatmap(
-#'     object = rse_dds,
-#'     interestingGroups = "condition",
+#'     object = rse_small,
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
 #'
-#' # Hexadecimal color input
+#' # Using hexadecimal color input.
 #' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-#' plotCorrelationHeatmap(rse_dds, color = purple_orange)
+#' plotCorrelationHeatmap(rse_small, color = purple_orange)
 #'
-#' # Default pheatmap colors
-#' plotCorrelationHeatmap(rse_dds, color = NULL)
+#' # Using default pheatmap colors.
+#' plotCorrelationHeatmap(rse_small, color = NULL)
 NULL
 
 
@@ -46,9 +46,9 @@ NULL
 #' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
-    "plotCorrelationHeatmap",
-    signature("SummarizedExperiment"),
-    function(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = function(
         object,
         interestingGroups,
         method = c("pearson", "spearman"),
@@ -120,7 +120,10 @@ setMethod(
         )
         if (length(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (length(annotationCol)) {
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
                 rownames(annotationCol) <- sampleNames
             }
         }

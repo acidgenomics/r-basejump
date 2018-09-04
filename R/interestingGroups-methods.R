@@ -9,10 +9,10 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' interestingGroups(rse_dds)
-#' colnames(colData(rse_dds))
-#' interestingGroups(rse_dds) <- colnames(colData(rse_dds))[[1L]]
-#' interestingGroups(rse_dds)
+#' interestingGroups(rse_small)
+#' colnames(colData(rse_small))
+#' interestingGroups(rse_small) <- colnames(colData(rse_small))[[1L]]
+#' interestingGroups(rse_small)
 NULL
 
 
@@ -20,9 +20,9 @@ NULL
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "interestingGroups",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
         value <- metadata(object)[["interestingGroups"]]
         assertFormalInterestingGroups(object, value)
@@ -35,12 +35,12 @@ setMethod(
 #' @rdname interestingGroups
 #' @export
 setMethod(
-    "interestingGroups<-",
-    signature(
+    f = "interestingGroups<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    function(object, value) {
+    definition = function(object, value) {
         assertFormalInterestingGroups(object, value)
         metadata(object)[["interestingGroups"]] <- value
         validObject(object)

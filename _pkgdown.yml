@@ -18,7 +18,6 @@ reference:
     - makeGRanges
     - makeTx2gene
     - mgi2gene
-    - starts_with("parse")
     - starts_with("strip")
     - panther
   - title: Read/Write Functions
@@ -31,11 +30,12 @@ reference:
     - starts_with("write")
   - title: Data Functions
     contents:
-    - starts_with("aggregate")
     - counts
     - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
+    - mapGenesToIDs
+    - metrics
     - sampleData
     - sampleNames
     - selectSamples
@@ -51,6 +51,7 @@ reference:
     - starts_with("theme_")
   - title: Math and Science Functions
     contents:
+    - starts_with("aggregate")
     - matches("Change")
     - matches("Mean")
     - microplate
@@ -77,16 +78,20 @@ reference:
     - starts_with("initialize")
     - localOrRemoteFile
     - matchInterestingGroups
+    - matchS4Call
     - methodFormals
     - multiassignAsEnvir
     - printString
     - uniteInterestingGroups
+  - title: R Documentation Functions
+    contents:
+    - matches("Rd")
   - title: Assert Check Functions
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
   - title: Example Datasets
     contents:
+    - rse_small
     - rnaseq_counts
-    - starts_with("rse_")
     - single_cell_counts

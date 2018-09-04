@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -116,11 +116,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>theme_midnight</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
+    <pre class="usage"><span class='fu'>theme_paperwhite</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
   <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>theme_paperwhite</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
+<span class='fu'>theme_midnight</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
   <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
@@ -163,6 +163,12 @@ will also be removed.</p></td>
 
     <p><code>theme</code>.</p>
     
+    <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
+
+    
+    <p>High contrast black and white theme optimized for print. Recommended for
+scientific manuscripts and website tutorials.</p>
+    
     <h2 class="hasAnchor" id="midnight"><a class="anchor" href="#midnight"></a>Midnight</h2>
 
     
@@ -170,12 +176,6 @@ will also be removed.</p></td>
 Inspired by <code><a href='http://www.rdocumentation.org/packages/Seurat/topics/DarkTheme'>Seurat::DarkTheme()</a></code>, with some color modifications. Useful
 for visualizing many points with a high dynamic color range, such as t-SNE
 expression plots.</p>
-    
-    <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
-
-    
-    <p>High contrast black and white theme optimized for print. Recommended for
-scientific manuscripts and website tutorials.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -196,7 +196,7 @@ scientific manuscripts and website tutorials.</p>
     )
 ) +
     <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()
-<span class='no'>p</span> + <span class='fu'>theme_midnight</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='fu'>theme_paperwhite</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>p</span> + <span class='fu'>theme_paperwhite</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='fu'>theme_midnight</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -205,9 +205,9 @@ scientific manuscripts and website tutorials.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#midnight">Midnight</a></li>
-
       <li><a href="#paperwhite">Paperwhite</a></li>
+
+      <li><a href="#midnight">Midnight</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

@@ -239,40 +239,40 @@ with_parameters_test_that(
     f = funs,
     expected = list(
         camel = c(
+            "broadClass",
+            "description",
+            "entrezID",
+            "geneBiotype",
             "geneID",
             "geneName",
-            "geneBiotype",
-            "description",
-            "seqCoordSystem",
-            "entrezID",
-            "broadClass"
+            "seqCoordSystem"
         ),
         dotted = c(
+            "broad.Class",
+            "description",
+            "entrez.ID",
+            "gene.Biotype",
             "gene.ID",
             "gene.Name",
-            "gene.Biotype",
-            "description",
-            "seq.Coord.System",
-            "entrez.ID",
-            "broad.Class"
+            "seq.Coord.System"
         ),
         snake = c(
+            "broad_class",
+            "description",
+            "entrez_id",
+            "gene_biotype",
             "gene_id",
             "gene_name",
-            "gene_biotype",
-            "description",
-            "seq_coord_system",
-            "entrez_id",
-            "broad_class"
+            "seq_coord_system"
         ),
         upperCamel = c(
+            "BroadClass",
+            "Description",
+            "EntrezID",
+            "GeneBiotype",
             "GeneID",
             "GeneName",
-            "GeneBiotype",
-            "Description",
-            "SeqCoordSystem",
-            "EntrezID",
-            "BroadClass"
+            "SeqCoordSystem"
         )
     )
 )

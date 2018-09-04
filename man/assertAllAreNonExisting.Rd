@@ -4,10 +4,11 @@
 \alias{assertAllAreNonExisting}
 \title{Assert All Variables Are Non-Existing}
 \usage{
-assertAllAreNonExisting(x, envir = parent.frame(), inherits = FALSE)
+assertAllAreNonExisting(object, envir = parent.frame(),
+  inherits = FALSE)
 }
 \arguments{
-\item{x}{\code{character} vector of variable names to check in \code{environment}.}
+\item{object}{\code{character}. Variable names to check in \code{environment}.}
 
 \item{envir}{\code{environment}.}
 
@@ -25,6 +26,7 @@ assertAllAreNonExisting(c("XXX", "YYY"))
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -36,10 +38,8 @@ Other Assert Check Functions: \code{\link{assertAllAreURL}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

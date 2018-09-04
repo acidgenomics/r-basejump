@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
     <pre class="usage"><span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,17 +132,11 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
-    <tr>
-      <th>unique</th>
-      <td><p><code>boolean</code>. Ensure that all gene symbols are unique. Uses
-<code><a href='http://www.rdocumentation.org/packages/base/topics/make.unique'>base::make.unique()</a></code> internally.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code> containing gene identifier and gene name (aka symbol)
-mappings.</p>
+    <p><code>DataFrame</code>.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -151,22 +145,24 @@ mappings.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateFeatures.html'>aggregateFeatures</a></code>,
-  <code><a href='aggregateReplicates.html'>aggregateReplicates</a></code>, <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>rse_bcb</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt;                                geneID geneName
-#&gt; ENSMUSG00000000088 ENSMUSG00000000088    Cox5a
-#&gt; ENSMUSG00000000326 ENSMUSG00000000326     Comt
-#&gt; ENSMUSG00000000346 ENSMUSG00000000346   Dazap2
-#&gt; ENSMUSG00000000740 ENSMUSG00000000740    Rpl13
-#&gt; ENSMUSG00000001175 ENSMUSG00000001175    Calm1
-#&gt; ENSMUSG00000001666 ENSMUSG00000001666      Ddt</div></pre>
+<span class='fu'>gene2symbol</span>(<span class='no'>rse_small</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; DataFrame with 6 rows and 2 columns
+#&gt;                          geneID    geneName
+#&gt;                     &lt;character&gt; &lt;character&gt;
+#&gt; ENSG00000000003 ENSG00000000003      TSPAN6
+#&gt; ENSG00000000005 ENSG00000000005        TNMD
+#&gt; ENSG00000000419 ENSG00000000419        DPM1
+#&gt; ENSG00000000457 ENSG00000000457       SCYL3
+#&gt; ENSG00000000460 ENSG00000000460    C1orf112
+#&gt; ENSG00000000938 ENSG00000000938         FGR</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

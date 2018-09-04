@@ -8,94 +8,94 @@ mpgString <- "18.1, 18.7, 21, 21.4, 22.8"
 # collapseToString =============================================================
 test_that("collapseToString : atomic", {
     expect_identical(
-        collapseToString(
-            groceries,
+        object = collapseToString(
+            object = groceries,
             sort = TRUE,
             removeNA = FALSE,
             unique = FALSE
         ),
-        "eggs, eggs, milk, veggies, NA, NA"
+        expected = "eggs, eggs, milk, veggies, NA, NA"
     )
     expect_identical(
-        collapseToString(
-            groceries,
+        object = collapseToString(
+            object = groceries,
             sort = TRUE,
             removeNA = TRUE,
             unique = FALSE
         ),
-        "eggs, eggs, milk, veggies"
+        expected = "eggs, eggs, milk, veggies"
     )
     expect_identical(
-        collapseToString(
-            groceries,
+        object = collapseToString(
+            object = groceries,
             sort = TRUE,
             removeNA = TRUE,
             unique = TRUE
         ),
-        "eggs, milk, veggies"
+        expected = "eggs, milk, veggies"
     )
 })
 
 test_that("colllapseToString : data.frame", {
     expect_identical(
-        datasets::mtcars %>%
+        object = datasets::mtcars %>%
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg", drop = TRUE],
-        mpgString
+        expected = mpgString
     )
 })
 
 test_that("collapseToString : DataFrame", {
     expect_identical(
-        mtcars %>%
+        object = mtcars %>%
             as("DataFrame") %>%
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[, "mpg"],
-        mpgString
+        expected = mpgString
     )
 })
 
 test_that("collapseToString : integer", {
     expect_identical(
-        collapseToString(seq(1L:5L)),
-        "1, 2, 3, 4, 5"
+        object = collapseToString(seq(1L:5L)),
+        expected = "1, 2, 3, 4, 5"
     )
 })
 
 test_that("collapseToString : logical", {
     expect_identical(
-        collapseToString(c(TRUE, FALSE), sort = TRUE),
-        "FALSE, TRUE"
+        object = collapseToString(c(TRUE, FALSE), sort = TRUE),
+        expected = "FALSE, TRUE"
     )
     # NA and NaN should stay fixed even when sorting is enabled
     expect_identical(
-        collapseToString(c(NA, NaN), sort = TRUE),
-        "NA, NaN"
+        object = collapseToString(c(NA, NaN), sort = TRUE),
+        expected = "NA, NaN"
     )
     expect_identical(
-        collapseToString(c(NaN, NA), sort = TRUE),
-        "NaN, NA"
+        object = collapseToString(c(NaN, NA), sort = TRUE),
+        expected = "NaN, NA"
     )
 })
 
 test_that("collapseToString : matrix", {
     expect_identical(
-        mtcars %>%
+        object = mtcars %>%
             as("matrix") %>%
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
             .[1L, "mpg", drop = TRUE] %>%
             as.character(),
-        mpgString
+        expected = mpgString
     )
 })
 
 test_that("collapseToString : numeric", {
     expect_identical(
-        collapseToString(c(3.141593, 6.0221409e+23)),
-        "3.141593, 6.0221409e+23"
+        object = collapseToString(c(3.141593, 6.0221409e+23)),
+        expected = "3.141593, 6.0221409e+23"
     )
 })
 
@@ -105,121 +105,105 @@ test_that("collapseToString : scalar early return", {
 
 
 
-# fixNA ========================================================================
-test_that("fixNA", {
-    # character vector
-    expect_identical(
-        fixNA(c(1L, "x", "", "NA")),
-        c("1", "x", NA, NA))
-
-    # data.frame with rownames
-    expect_identical(
-        data.frame(
-            a = c("foo", ""),
-            b = c(NA, "bar"),
-            row.names = c("c", "d"),
-            stringsAsFactors = FALSE
-        ) %>%
-            fixNA(),
-        data.frame(
-            a = c("foo", NA),
-            b = c(NA, "bar"),
-            row.names = c("c", "d"),
-            stringsAsFactors = FALSE
-        )
-    )
-
-    # data.frame without rownames
-    expect_identical(
-        data.frame(
-            a = c("foo", ""),
-            b = c(NA, "bar"),
-            stringsAsFactors = FALSE
-        ) %>%
-            fixNA(),
-        data.frame(
-            a = c("foo", NA),
-            b = c(NA, "bar"),
-            stringsAsFactors = FALSE
-        )
-    )
-
-    # DataFrame
-    expect_identical(
-        DataFrame(
-            a = c("foo", ""),
-            b = c(NA, "bar")
-        ) %>%
-            fixNA(),
-        DataFrame(
-            a = c("foo", NA),
-            b = c(NA, "bar")
-        )
-    )
-
-    # tbl_df
-    expect_identical(
-        tibble(
-            a = c("foo", ""),
-            b = c(NA, "bar")
-        ) %>%
-            fixNA(),
-        tibble(
-            a = c("foo", NA),
-            b = c(NA, "bar")
-        )
-    )
-
-    # ANY (list)
-    expect_identical(
-        fixNA(list(a = 1L)),
-        list(a = 1L)
-    )
-})
-
-
-
 # removeNA =====================================================================
-test_that("removeNA : data.frame", {
-    # data.frame
-    expect_identical(
-        data.frame(
+# Support for vectors (using `stats::na.omit()`).
+# This will return structure attributes about original size, with class omit.
+with_parameters_test_that(
+    "removeNA", {
+        expect_identical(
+            object = removeNA(object),
+            expected = expected
+        )
+    },
+    object = list(
+        character = c("hello", "world", NA),
+        numeric = c(1L, 2L, NA),
+        DataFrame = DataFrame(
             a = c("A", NA, "C"),
             b = c(NA, NA, NA),
-            c = c("B", NA, "D")
-        ) %>%
-            removeNA(),
-        data.frame(
+            c = c("B", NA, "D"),
+            row.names = c("x", "y", "z")
+        )
+    ),
+    expected = list(
+        character = structure(
+            .Data = c("hello", "world"),
+            na.action = structure(3L, class = "omit")
+        ),
+        numeric = structure(
+            .Data = c(1L, 2L),
+            na.action = structure(3L, class = "omit")
+        ),
+        DataFrame = DataFrame(
             a = c("A", "C"),
             c = c("B", "D"),
-            row.names = c(1L, 3L)
+            row.names = c("x", "z")
         )
     )
-})
+)
 
-# Support for vectors (using `stats::na.omit()`)
-test_that("removeNA : character", {
-    expect_identical(
-        removeNA(c("hello", "world", NA)) %>%
-            as.character(),
-        c("hello", "world")
+
+
+# sanitizeNA ===================================================================
+with_parameters_test_that(
+    "sanitizeNA", {
+        expect_identical(
+            object = sanitizeNA(object),
+            expected = expected
+        )
+    },
+    object = list(
+        character = c(1L, "x", "", "NA"),
+        data.frame = data.frame(
+            a = c("foo", ""),
+            b = c(NA, "bar"),
+            stringsAsFactors = FALSE
+        ),
+        DataFrame1 = DataFrame(
+            a = c("foo", ""),
+            b = c(NA, "bar"),
+            row.names = c("c", "d")
+        ),
+        DataFrame2 = DataFrame(
+            a = c("foo", ""),
+            b = c(NA, "bar")
+        ),
+        tbl_df = tibble(
+            a = c("foo", ""),
+            b = c(NA, "bar")
+        )
+    ),
+    expected = list(
+        character = c("1", "x", NA, NA),
+        data.frame = data.frame(
+            a = c("foo", NA),
+            b = c(NA, "bar"),
+            stringsAsFactors = FALSE
+        ),
+        DataFrame1 = DataFrame(
+            a = c("foo", NA),
+            b = c(NA, "bar"),
+            row.names = c("c", "d")
+        ),
+        DataFrame2 = DataFrame(
+            a = c("foo", NA),
+            b = c(NA, "bar")
+        ),
+        tbl_df = tibble(
+            a = c("foo", NA),
+            b = c(NA, "bar")
+        )
     )
-    expect_identical(
-        removeNA(c(1L, 2L, NA)) %>%
-            as.integer(),
-        c(1L, 2L)
-    )
-})
+)
 
 
 
 # sanitizeRowData ==============================================================
 test_that("sanitizeRowData", {
-    x <- makeGRangesFromEnsembl("Homo sapiens")
-    x <- sanitizeRowData(x)
+    object <- sanitizeRowData(rowRanges(rse_small))
     expect_identical(
-        lapply(x, class),
-        list(
+        object = lapply(object, class),
+        expected = list(
             rowname = "character",
             seqnames = "factor",
             start = "integer",
@@ -239,20 +223,45 @@ test_that("sanitizeRowData", {
 
 
 # sanitizeSampleData ===========================================================
-test_that("sanitizeSampleData", {
-    sd <- DataFrame(
-        genotype = factor(c("wt", "ko", "wt", "ko")),
-        batch = factor(c(1L, 1L, 2L, 2L)),
-        # not a factor yet
-        day = c(14L, 14L, 30L, 30L),
-        row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
+with_parameters_test_that(
+    "sanitizeSampleData", {
+        # `sampleName` column is required.
+        object[["sampleName"]] <- NULL
+        expect_error(
+            object = sanitizeSampleData(object),
+            regexp = "sampleName"
+        )
+
+        # And `sampleName` column can't contain duplicates.
+        object[["sampleName"]] <- "XXX"
+        expect_error(
+            object = sanitizeSampleData(object),
+            regexp = "has_no_duplicates"
+        )
+
+        # All columns should return factor.
+        object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
+        data <- sanitizeSampleData(object)
+        expect_is(data, "DataFrame")
+        expect_true(all(vapply(
+            X = data,
+            FUN = is.factor,
+            FUN.VALUE = logical(1L)
+        )))
+
+
+    },
+    object = list(
+        DataFrame = DataFrame(
+            genotype = rep(c("wt", "ko"), 2L),
+            batch = c(1L, 1L, 2L, 2L),
+            row.names = paste("sample", seq_len(4L), sep = "_")
+        ),
+        tbl_df = tibble(
+            rowname = paste("sample", seq_len(4L), sep = "_"),
+            sample_name = paste0("patient", seq_len(4L)),
+            genotype = c("wt", "ko", "wt", "ko"),
+            batch = c(1L, 1L, 2L, 2L)
+        )
     )
-    x <- sanitizeSampleData(sd)
-    expect_is(x, "DataFrame")
-    expect_identical(rownames(x), rownames(sd))
-    expect_true(all(vapply(
-        X = x,
-        FUN = is.factor,
-        FUN.VALUE = logical(1L)
-    )))
-})
+)

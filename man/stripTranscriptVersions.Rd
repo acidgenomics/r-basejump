@@ -23,7 +23,8 @@ stripTranscriptVersions(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Object containing transcript identifiers without version numbers.
+Modified object, containing transcript identifiers without version
+numbers.
 }
 \description{
 Strip Transcript Versions
@@ -33,12 +34,14 @@ This function is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
 }
 \examples{
-# Ensembl
-stripTranscriptVersions("ENSMUST00000000001.1")
-stripTranscriptVersions("ENSMUST00000000001-1")
-stripTranscriptVersions("ENSMUST00000000001_1")
+# Ensembl (modify; contains versions)
+stripTranscriptVersions(c(
+    "ENSMUST00000000001.1",
+    "ENSMUST00000000001-1",
+    "ENSMUST00000000001_1"
+))
 
-# WormBase (unmodified)
+# WormBase (keep; doesn't contain versions)
 stripTranscriptVersions("cTel79B.1")
 }
 \seealso{

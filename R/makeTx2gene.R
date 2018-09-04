@@ -4,40 +4,70 @@
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
+#' @include makeGRanges.R
+#'
 #' @inheritParams makeGRanges
-#' @param ... Passthrough to [makeGRangesFromEnsembl()].
 #'
-#' @return `data.frame`.
+#' @seealso [makeGRanges].
 #'
-#' @seealso `help(topic = "makeGRanges", package = "basejump")`.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' # makeTx2geneFromEnsembl ====
 #' x <- makeTx2geneFromEnsembl("Homo sapiens")
-#' glimpse(x)
+#' print(x)
 #'
 #' # makeTx2geneFromGFF ====
 #' # GTF
 #' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gtf")
-#' glimpse(x)
+#' print(x)
 #'
 #' # GFF3
 #' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gff3")
-#' glimpse(x)
+#' print(x)
 NULL
+
+
+
+.makeTx2gene <- function(data) {
+    data <- data %>%
+        as("tbl_df") %>%
+        select(!!!syms(c("transcriptID", "geneID"))) %>%
+        .[complete.cases(.), , drop = FALSE] %>%
+        unique() %>%
+        mutate_all(as.character) %>%
+        arrange(!!sym("transcriptID")) %>%
+        as("DataFrame") %>%
+        set_rownames(.[["transcriptID"]])
+    assertIsTx2gene(data)
+    message(paste(
+        "tx2gene mappings:",
+        length(unique(data[["transcriptID"]])), "transcripts,",
+        length(unique(data[["geneID"]])), "genes"
+    ))
+    data
+}
 
 
 
 #' @rdname makeTx2gene
 #' @export
-makeTx2geneFromEnsembl <- function(...) {
-    gr <- makeGRangesFromEnsembl(..., format = "transcripts")
-    mcols(gr) %>%
-        as.data.frame() %>%
-        select(!!!syms(c("transcriptID", "geneID"))) %>%
-        mutate_all(as.character) %>%
-        set_rownames(.[[1L]])
+makeTx2geneFromEnsembl <- function(
+    # Setting formals below.
+) {
+    args <- as.list(match.call())[-1L]
+    args[["format"]] <- "transcripts"
+    gr <- do.call(
+        what = makeGRangesFromEnsembl,
+        args = args
+    )
+    .makeTx2gene(gr)
 }
+
+# Set the formals.
+f <- formals(makeGRangesFromEnsembl)
+f <- f[setdiff(names(f), c("format", "metadata"))]
+formals(makeTx2geneFromEnsembl) <- as.pairlist(f)
 
 
 
@@ -46,17 +76,22 @@ makeTx2geneFromEnsembl <- function(...) {
 makeTx2geneFromGFF <- function(file) {
     message("Making tx2gene from GFF")
     gff <- readGFF(file)
+    assert_is_all_of(gff, "GRanges")
 
+    # Get information on the type of GFF file.
     source <- .gffSource(gff)
     type <- .gffType(gff)
     message(paste(source, type, "detected"))
 
-    data <- mcols(gff) %>%
-        as.data.frame() %>%
-        camel()
+    # Coerce GRanges to tibble.
+    data <- camel(as(gff, "tbl_df"))
     assert_is_subset("transcriptID", colnames(data))
-    transcriptIDs <- sort(unique(na.omit(data[["transcriptID"]])))
+
+    # Remove rows that don't contain transcript annotations.
     data <- filter(data, !is.na(!!sym("transcriptID")))
+
+    # Get a vector of unique transcript IDs.
+    transcriptIDs <- sort(unique(data[["transcriptID"]]))
 
     if (type == "GFF") {
         assert_is_subset("parent", colnames(data))
@@ -69,19 +104,7 @@ makeTx2geneFromGFF <- function(file) {
         )
     }
 
-    data <- data %>%
-        select(!!!syms(c("transcriptID", "geneID"))) %>%
-        .[complete.cases(.), , drop = FALSE] %>%
-        unique() %>%
-        arrange(!!sym("transcriptID")) %>%
-        set_rownames(.[["transcriptID"]])
-
-    message(paste(
-        "tx2gene mappings:",
-        length(unique(data[["transcriptID"]])), "transcripts,",
-        length(unique(data[["geneID"]])), "genes"
-    ))
-
+    data <- .makeTx2gene(data)
     assert_are_identical(transcriptIDs, rownames(data))
     data
 }

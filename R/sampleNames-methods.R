@@ -7,6 +7,7 @@
 #' @name sampleNames
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @importFrom Biobase sampleNames sampleNames<-
 #'
@@ -16,17 +17,18 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' object <- rse_bcb
+#' object <- rse_small
 #' x <- sampleNames(object)
 #' print(x)
 #'
 #' # Assignment support
 #' value <- sampleNames(object)
-#' value <- gsub("_", " ", value)
+#' value <- toupper(value)
 #' print(value)
 #' sampleNames(object) <- value
 #' x <- sampleNames(object)
 #' print(x)
+#' colData(object)$sampleName
 NULL
 
 
@@ -34,9 +36,9 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleNames",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
@@ -52,12 +54,12 @@ setMethod(
 #' @rdname sampleNames
 #' @export
 setMethod(
-    "sampleNames<-",
-    signature(
+    f = "sampleNames<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    function(object, value) {
+    definition = function(object, value) {
         assert_has_names(value)
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.

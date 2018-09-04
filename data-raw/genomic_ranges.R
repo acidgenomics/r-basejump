@@ -1,7 +1,5 @@
-# Genomic Ranges Example
-# Last updated 2018-08-27
+# Genomic ranges
+# Last updated 2018-09-04
 
 gr <- makeGRangesFromEnsembl("Homo sapiens", release = 87L)
-gr <- head(gr)
-
 saveData(gr, dir = "tests/testthat", compress = "xz")

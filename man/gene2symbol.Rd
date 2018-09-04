@@ -8,19 +8,15 @@
 \usage{
 gene2symbol(object, ...)
 
-\S4method{gene2symbol}{SummarizedExperiment}(object, unique = TRUE)
+\S4method{gene2symbol}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{unique}{\code{boolean}. Ensure that all gene symbols are unique. Uses
-\code{\link[base:make.unique]{base::make.unique()}} internally.}
 }
 \value{
-\code{data.frame} containing gene identifier and gene name (aka symbol)
-mappings.
+\code{DataFrame}.
 }
 \description{
 Gene to Symbol Mappings
@@ -31,12 +27,12 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
-gene2symbol(rse_bcb) \%>\% head()
+gene2symbol(rse_small) \%>\% head()
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
+Other Data Functions: \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}}
 }

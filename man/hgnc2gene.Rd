@@ -7,14 +7,14 @@
 hgnc2gene()
 }
 \value{
-\code{data.frame}
+\code{DataFrame}.
 }
 \description{
 HGNC to Ensembl Gene ID Mappings
 }
 \examples{
 x <- hgnc2gene()
-glimpse(x)
+print(x)
 }
 \seealso{
 Other Annotation Functions: \code{\link{broadClass}},

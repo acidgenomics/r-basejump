@@ -4,14 +4,10 @@
 \alias{assertIsFillScaleContinuousOrNULL}
 \title{Assert Is Fill Palette Scale Continuous or NULL}
 \usage{
-assertIsFillScaleContinuousOrNULL(x,
-  severity = getOption("assertive.severity", "stop"))
+assertIsFillScaleContinuousOrNULL(object)
 }
 \arguments{
-\item{x}{Object.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object.}
 }
 \value{
 Stop on mismatch.
@@ -28,6 +24,7 @@ assertIsFillScaleContinuousOrNULL(NULL)
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
@@ -39,10 +36,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},

@@ -7,10 +7,9 @@
 \alias{makeGene2symbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
-makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL,
-  unique = TRUE, ...)
+makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL)
 
-makeGene2symbolFromGFF(file, unique = TRUE)
+makeGene2symbolFromGFF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -21,15 +20,10 @@ makeGene2symbolFromGFF(file, unique = TRUE)
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
 
-\item{unique}{\code{boolean}. Ensure that all gene symbols are unique. Uses
-\code{\link[base:make.unique]{base::make.unique()}} internally.}
-
-\item{...}{Additional arguments.}
-
 \item{file}{\code{string}. File path.}
 }
 \value{
-\code{data.frame}.
+\code{DataFrame}.
 }
 \description{
 Make Gene-to-Symbol Mappings
@@ -37,19 +31,19 @@ Make Gene-to-Symbol Mappings
 \examples{
 # makeGene2symbolFromEnsembl ====
 x <- makeGene2symbolFromEnsembl("Homo sapiens")
-glimpse(x)
+print(x)
 
 # makeGene2symbolFromGFF ====
 # GTF
 x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
-glimpse(x)
+print(x)
 
 # GFF3
 x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
-glimpse(x)
+print(x)
 }
 \seealso{
-\code{help(topic = "makeGRanges", package = "basejump")}.
+\link{makeGRanges}.
 
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},

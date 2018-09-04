@@ -65,7 +65,7 @@ than combining into a single file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -161,7 +161,7 @@ always the convention of <code>saveData()</code>, regardless of the extension us
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible named <code>character</code> vector of file paths.</p>
+    <p>Invisible named <code>character</code>. File paths.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -175,14 +175,14 @@ not overwrite by default if that behavior is preferred.</p>
 
     <div class='dont-index'><ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/save'>base::save()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/usethis/topics/use_data'>usethis::use_data()</a></code>.</p></li>
+<li><p><code>usethis::use_data()</code>.</p></li>
 </ul></div>
     <div class='dont-index'><p>Other Write Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
   <code><a href='transmit.html'>transmit</a></code>, <code><a href='writeCounts.html'>writeCounts</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rnaseq_counts.rda, single_cell_counts.rda to /Users/mike/GitHub/basejump-develop/docs/reference/example</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.rda"      "single_cell_counts.rda"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>saveData</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving rnaseq_counts.rda, single_cell_counts.rda to /home/bioinfo/git/basejump-develop/docs/reference/example</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.rda"      "single_cell_counts.rda"</div><div class='input'>
 <span class='co'># Clean up</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>

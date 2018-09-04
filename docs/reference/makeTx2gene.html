@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>file</span>)</pre>
     
@@ -124,8 +124,18 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Passthrough to <code><a href='makeGRanges.html'>makeGRangesFromEnsembl()</a></code>.</p></td>
+      <th>organism</th>
+      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+    </tr>
+    <tr>
+      <th>build</th>
+      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
+"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
+set <code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     <tr>
       <th>file</th>
@@ -135,11 +145,11 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>.</p>
+    <p><code>DataFrame</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>help(topic = "makeGRanges", package = "basejump")</code>.</p>
+    <div class='dont-index'><p><a href='makeGRanges.html'>makeGRanges</a>.</p>
 <p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
@@ -158,21 +168,51 @@
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 225,358
-#&gt; Variables: 2
-#&gt; $ transcriptID &lt;chr&gt; "ENST00000000233", "ENST00000000412", "ENST00000000442...
-#&gt; $ geneID       &lt;chr&gt; "ENSG00000004059", "ENSG00000003056", "ENSG00000173153...</div><div class='input'>
+#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 225358 transcripts, 65256 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 225358 rows and 2 columns
+#&gt;                    transcriptID          geneID
+#&gt;                     &lt;character&gt;     &lt;character&gt;
+#&gt; ENST00000000233 ENST00000000233 ENSG00000004059
+#&gt; ENST00000000412 ENST00000000412 ENSG00000003056
+#&gt; ENST00000000442 ENST00000000442 ENSG00000173153
+#&gt; ENST00000001008 ENST00000001008 ENSG00000004478
+#&gt; ENST00000001146 ENST00000001146 ENSG00000003137
+#&gt; ...                         ...             ...
+#&gt; LRG_998t1             LRG_998t1         LRG_998
+#&gt; LRG_998t2             LRG_998t2         LRG_998
+#&gt; LRG_999t1             LRG_999t1         LRG_999
+#&gt; LRG_999t2             LRG_999t2         LRG_999
+#&gt; LRG_99t1               LRG_99t1          LRG_99</div><div class='input'>
 <span class='co'># makeTx2geneFromGFF ====</span>
 <span class='co'># GTF</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 20
-#&gt; Variables: 2
-#&gt; $ transcriptID &lt;chr&gt; "ENSMUST00000070533", "ENSMUST00000082908", "ENSMUST00...
-#&gt; $ geneID       &lt;chr&gt; "ENSMUSG00000051951", "ENSMUSG00000064842", "ENSMUSG00...</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 20 transcripts, 17 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 20 rows and 2 columns
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
+#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
+#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
+#&gt; ENSMUST00000159265 ENSMUST00000159265 ENSMUSG00000051951
+#&gt; ENSMUST00000161581 ENSMUST00000161581 ENSMUSG00000089699
+#&gt; ...                               ...                ...
+#&gt; ENSMUST00000194454 ENSMUST00000194454 ENSMUSG00000102592
+#&gt; ENSMUST00000194643 ENSMUST00000194643 ENSMUSG00000102343
+#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
+#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
+#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900</div><div class='input'>
 <span class='co'># GFF3</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 26 transcripts, 20 genes</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 26
-#&gt; Variables: 2
-#&gt; $ transcriptID &lt;chr&gt; "ENSMUST00000027032", "ENSMUST00000027035", "ENSMUST00...
-#&gt; $ geneID       &lt;chr&gt; "ENSMUSG00000025900", "ENSMUSG00000025902", "ENSMUSG00...</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeTx2geneFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making tx2gene from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 26 transcripts, 20 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 26 rows and 2 columns
+#&gt;                          transcriptID             geneID
+#&gt;                           &lt;character&gt;        &lt;character&gt;
+#&gt; ENSMUST00000027032 ENSMUST00000027032 ENSMUSG00000025900
+#&gt; ENSMUST00000027035 ENSMUST00000027035 ENSMUSG00000025902
+#&gt; ENSMUST00000070533 ENSMUST00000070533 ENSMUSG00000051951
+#&gt; ENSMUST00000082908 ENSMUST00000082908 ENSMUSG00000064842
+#&gt; ENSMUST00000157708 ENSMUST00000157708 ENSMUSG00000088333
+#&gt; ...                               ...                ...
+#&gt; ENSMUST00000195166 ENSMUST00000195166 ENSMUSG00000103161
+#&gt; ENSMUST00000195335 ENSMUST00000195335 ENSMUSG00000103377
+#&gt; ENSMUST00000195384 ENSMUST00000195384 ENSMUSG00000102948
+#&gt; ENSMUST00000208660 ENSMUST00000208660 ENSMUSG00000025900
+#&gt; ENSMUST00000208793 ENSMUST00000208793 ENSMUSG00000025900</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

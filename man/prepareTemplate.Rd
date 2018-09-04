@@ -19,7 +19,7 @@ environment loaded with \code{devtools::load_all()}.}
 \item{...}{Additional arguments.}
 }
 \value{
-Invisible \code{logical} indicating which files were copied.
+Invisible \code{logical}. Was the file copied?.
 }
 \description{
 If the required template dependency files aren't present, copy them from the

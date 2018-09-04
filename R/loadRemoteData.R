@@ -9,8 +9,8 @@
 #' @inheritParams general
 #' @param url `character`. Remote URL file path(s) to R data.
 #'
-#' @return Invisible named `character` containing the local object name as the
-#'   name, and the remote URL as the value.
+#' @return Invisible named `character`. Local object name as the name, and the
+#'   remote URL as the value.
 #' @export
 #'
 #' @examples
@@ -22,7 +22,7 @@
 #' class(single_cell_counts)
 loadRemoteData <- function(url, envir = parent.frame()) {
     stopifnot(has_internet())
-    assertIsURL(url)
+    assertAllAreURL(url)
     if (!all(vapply(
         X = url,
         FUN = function(x) {

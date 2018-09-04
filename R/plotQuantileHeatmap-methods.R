@@ -10,12 +10,11 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotQuantileHeatmap(rse_dds)
+#' plotQuantileHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palettes.
 #' plotQuantileHeatmap(
-#'     object = rse_dds,
-#'     interestingGroups = "condition",
+#'     object = rse_small,
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
@@ -45,9 +44,9 @@ NULL
 #' @rdname plotQuantileHeatmap
 #' @export
 setMethod(
-    "plotQuantileHeatmap",
-    signature("SummarizedExperiment"),
-    function(
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = function(
         object,
         interestingGroups,
         n = 10L,
@@ -124,7 +123,10 @@ setMethod(
         )
         if (length(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (length(annotationCol)) {
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
                 rownames(annotationCol) <- sampleNames
             }
         }

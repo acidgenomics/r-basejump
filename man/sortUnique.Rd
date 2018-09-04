@@ -4,10 +4,10 @@
 \alias{sortUnique}
 \title{Sort and Make Unique}
 \usage{
-sortUnique(x)
+sortUnique(object)
 }
 \arguments{
-\item{x}{Object.}
+\item{object}{\code{atomic}.}
 }
 \value{
 \code{atomic}.

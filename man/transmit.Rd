@@ -20,7 +20,7 @@ if desired.}
 \item{compress}{\code{boolean}. gzip compress the files after download.}
 }
 \value{
-Invisible \code{character} containing local file paths.
+Invisible \code{character}. Local file paths.
 }
 \description{
 Utility function that supports easy file matching and download from a remote

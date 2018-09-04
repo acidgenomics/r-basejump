@@ -2,19 +2,21 @@
 % Please edit documentation in R/assert.R
 \name{assertAllAreValidNames}
 \alias{assertAllAreValidNames}
+\alias{assertHasValidDimnames}
+\alias{assertHasValidNames}
 \alias{validNames}
 \title{Assert All Are Valid Names}
 \usage{
-assertAllAreValidNames(x, severity = getOption("assertive.severity",
-  "stop"))
+assertAllAreValidNames(object)
 
-validNames(x)
+assertHasValidDimnames(object)
+
+assertHasValidNames(object)
+
+validNames(object)
 }
 \arguments{
-\item{x}{Object.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object.}
 }
 \value{
 Stop on mismatch.
@@ -35,6 +37,7 @@ validNames(c(
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -45,10 +48,8 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},

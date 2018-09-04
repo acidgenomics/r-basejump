@@ -10,20 +10,21 @@
 #' @name sampleData
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame` containing metadata that describes the samples.
+#' @return `DataFrame`. Metadata that describes the samples.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_bcb) %>% glimpse()
+#' sampleData(rse_small)
 #'
 #' # Assignment support
-#' x <- rse_bcb
+#' x <- rse_small
 #' sampleData(x)[["test"]] <- seq_len(ncol(x))
 #' # `test` column should be now defined
-#' glimpse(sampleData(x))
+#' sampleData(x)
 NULL
 
 
@@ -31,39 +32,16 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData",
-    signature("SummarizedExperiment"),
-    function(object, ...) {
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
         validObject(object)
-
-        # Legacy arguments -----------------------------------------------------
-        # nocov start
-        call <- match.call(expand.dots = TRUE)
-        # clean
-        if (isTRUE(call[["clean"]])) {
-            warning(paste(
-                "`clean` argument is deprecated for `SummarizedExperiment`.",
-                "Improved `bcbioRNASeq` method is provided in v0.2.6."
-            ))
-        }
-        # return
-        if ("return" %in% names(call)) {
-            stop(paste(
-                "`return` argument is defunct.",
-                "Use a separation coercion call after the return instead",
-                "(e.g. `as.data.frame()`)."
-            ))
-        }
-        # nocov end
-
-        data <- colData(object)
-        if (!"sampleName" %in% colnames(data)) {
-            stop(paste(
-                "`sampleData()` requires `sampleName` column",
-                "to be defined in `colData()`"
-            ), call. = FALSE)
-        }
-        data
+        # Require `sampleName` column to be defined.
+        assert_is_subset(
+            x = "sampleName",
+            y = colnames(colData(object))
+        )
+        colData(object)
     }
 )
 
@@ -72,12 +50,12 @@ setMethod(
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData<-",
-    signature(
+    f = "sampleData<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    function(object, value) {
+    definition = function(object, value) {
         colData(object) <- value
         validObject(object)
         object
