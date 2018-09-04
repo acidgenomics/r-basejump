@@ -1,5 +1,5 @@
 # Make names sanitization test data
-# Last updated 2018-09-02
+# Last updated 2018-09-04
 
 character <- c(
     "hello world",

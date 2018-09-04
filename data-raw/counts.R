@@ -1,5 +1,5 @@
 # RNA-seq count matrices
-# Last updated 2018-09-02
+# Last updated 2018-09-04
 
 library(DESeq2)
 library(Matrix)
