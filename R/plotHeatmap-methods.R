@@ -119,10 +119,12 @@ setMethod(
             title <- NA
         }
 
-        # Convert the SE objec to use symbols in the rownames, for pheatmap.
-        object <- suppressWarnings(convertGenesToSymbols(object))
+        # Convert the SE object to use symbols in the rownames, for pheatmap.
+        object <- convertGenesToSymbols(object)
 
         # Ensure we're using a dense matrix.
+        # Note that we want to use `assay()` here instead, so this supports
+        # `DESeqTransform`, which doesn't use `counts` as the primary assay.
         mat <- as.matrix(assay(object))
 
         # Filter out any zero count rows when row scaling.
@@ -153,7 +155,10 @@ setMethod(
         )
         if (length(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (length(annotationCol)) {
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
                 rownames(annotationCol) <- sampleNames
             }
         }
