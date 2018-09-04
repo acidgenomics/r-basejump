@@ -1,7 +1,3 @@
-# TODO Add support for SummarizedExperiment
-
-
-
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @name convertTranscriptsToGenes
@@ -50,7 +46,7 @@ function(
 ) {
     assert_all_are_non_missing_nor_empty_character(object)
     assert_has_no_duplicates(object)
-    assert_is_any_of(tx2gene, c("data.frame", "NULL"))
+    assert_is_any_of(tx2gene, c("DataFrame", "NULL"))
     assertIsAStringOrNULL(organism)
 
     # If no tx2gene is provided, fall back to using Ensembl annotations.
