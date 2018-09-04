@@ -83,7 +83,8 @@ geometricMean(df)
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
 \href{https://stackoverflow.com/a/25555105}{code}.
 
-Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
+Other Math and Science Functions: \code{\link{aggregateCols}},
+  \code{\link{foldChangeToLogRatio}},
   \code{\link{microplate}}
 }
 \author{

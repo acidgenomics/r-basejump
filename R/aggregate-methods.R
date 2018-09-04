@@ -16,7 +16,7 @@
 #' and perform the aggregation.
 #'
 #' @name aggregate
-#' @family Data Functions
+#' @family Math and Science Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general

@@ -30,8 +30,7 @@ This function will make any duplicated symbols unique by applying
 gene2symbol(rse_small) \%>\% head()
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+Other Data Functions: \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
