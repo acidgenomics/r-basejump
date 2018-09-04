@@ -27,6 +27,8 @@ mapGenesToSymbols(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{genes}{\code{character}. Gene identifiers.}
 }
 \value{
 \code{character}.
