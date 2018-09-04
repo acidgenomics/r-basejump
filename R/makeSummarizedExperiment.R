@@ -98,8 +98,8 @@
 #' )
 makeSummarizedExperiment <- function(
     assays,
-    rowRanges = NULL,
-    rowData = NULL,
+    rowRanges = NULL,  # recommended
+    rowData = NULL,    # not recommended
     colData = NULL,
     metadata = NULL,
     transgeneNames = NULL,
@@ -185,15 +185,14 @@ makeSummarizedExperiment <- function(
     }
 
     # Check for unannotated rows and inform the user.
-    if (length(rowRanges)) {
+    if (is(rowRanges, "GRanges")) {
         data <- as(rowRanges, "DataFrame")
-    } else if (length(rowData)) {
+    } else if (is(rowData, "DataFrame")) {
         data <- rowData
     } else {
         data <- NULL
     }
-    if (length(data)) {
-        assertHasRownames(data)
+    if (!is.null(data)) {
         setdiff <- setdiff(rownames(assay), rownames(data))
         if (length(setdiff)) {
             # Stop on lots of unannotated rows, otherwise warn.
@@ -220,21 +219,28 @@ makeSummarizedExperiment <- function(
                 ),
                 sep = "\n"
             ))
-            # FIXME Need to update rowRanges with empty ranges
-            stop()
+            # Slot unknown ranges in rowRanges, if necessary.
+            if (is(rowRanges, "GRanges")) {
+                unknownRanges <- emptyRanges(
+                    names = setdiff,
+                    seqname = "unknown",
+                    mcolsNames = mcolsNames
+                )
+                rowRanges <- suppressWarnings(c(unknownRanges, rowRanges))
+            }
         }
     }
     rm(data)
 
     # Automatically arrange the rows to match the main assay.
-    if (length(rowRanges)) {
+    if (is(rowRanges, "GRanges")) {
         assert_has_names(rowRanges)
         assert_is_subset(rownames(assay), names(rowRanges))
         rowRanges <- rowRanges[rownames(assay)]
-    } else if (length(rowData)) {
+    } else if (is(rowData, "DataFrame")) {
         assertHasRownames(rowData)
         assert_is_subset(rownames(assay), rownames(rowData))
-        rowData <- rowData[rownames(assay)]
+        rowData <- rowData[rownames(assay), , drop = FALSE]
     }
 
     # Column data --------------------------------------------------------------
