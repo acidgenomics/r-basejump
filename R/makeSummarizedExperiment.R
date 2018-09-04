@@ -184,23 +184,26 @@ makeSummarizedExperiment <- function(
         rowRanges <- GRanges()
     }
 
-    # Check for any unannotated rows and stop on detection.
+    # Check for unannotated rows and inform the user.
     if (length(rowRanges)) {
         data <- as(rowRanges, "DataFrame")
     } else if (length(rowData)) {
         data <- rowData
     } else {
         data <- NULL
-        # FIXME
-        stop()
     }
     if (length(data)) {
         assertHasRownames(data)
         setdiff <- setdiff(rownames(assay), rownames(data))
         if (length(setdiff)) {
-            # Stop on any unannotated rows (strict).
-            stop(paste(
-                # 24 characters (see trunc call below)
+            # Stop on lots of unannotated rows, otherwise warn.
+            if (length(setdiff) > 100L) {
+                f <- stop
+            } else {
+                f <- warning
+            }
+            f(paste(
+                # 24 characters (see trunc call below).
                 paste(
                     "Unannotated rows",
                     paste0("(", length(setdiff), "):"),
@@ -217,6 +220,8 @@ makeSummarizedExperiment <- function(
                 ),
                 sep = "\n"
             ))
+            # FIXME Need to update rowRanges with empty ranges
+            stop()
         }
     }
     rm(data)
