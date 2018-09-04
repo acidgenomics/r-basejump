@@ -108,7 +108,7 @@ names are always sorted alphabetically." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Metrics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/metrics-methods.R'><code>R/metrics-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/metrics-methods.R'><code>R/metrics-methods.R</code></a></small>
     <div class="hidden name"><code>metrics.Rd</code></div>
     </div>
 
@@ -120,7 +120,9 @@ names are always sorted alphabetically.</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='fu'>metrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>metrics</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -129,6 +131,10 @@ names are always sorted alphabetically.</p>
     <tr>
       <th>object</th>
       <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
@@ -143,8 +149,8 @@ error otherwise.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
-  <code><a href='counts.html'>counts</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
   <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
   <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
