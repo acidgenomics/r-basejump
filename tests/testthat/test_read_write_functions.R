@@ -4,13 +4,13 @@ context("Read/Write Functions")
 
 # assignAndSaveData ============================================================
 test_that("assignAndSaveData", {
-    x <- suppressMessages(assignAndSaveData(
+    object <- suppressMessages(assignAndSaveData(
         name = "XXX",
         object = rnaseq_counts
     ))
     expect_identical(
-        x,
-        c(XXX = file.path(getwd(), "XXX.rda"))
+        object = object,
+        expected = c(XXX = file.path(getwd(), "XXX.rda"))
     )
     unlink("XXX.rda")
 })
@@ -20,72 +20,74 @@ test_that("assignAndSaveData", {
 # loadData =====================================================================
 test_that("loadData", {
     # rda
-    x <- loadData(gr)
+    object <- loadData(gr)
     expect_identical(
-        x,
-        c(gr = normalizePath("gr.rda", winslash = "/"))
+        object = object,
+        expected = c(gr = normalizePath("gr.rda", winslash = "/"))
     )
 
     # rds
-    x <- loadData(serialized)
+    object <- loadData(serialized)
     expect_identical(
-        x,
-        c(serialized = normalizePath("serialized.rds", winslash = "/"))
+        object = object,
+        expected = c(
+            serialized = normalizePath("serialized.rds", winslash = "/")
+        )
     )
 })
 
 test_that("loadData : Standard evaluation", {
     expect_error(
-        loadData("gr.rda"),
-        "is_name :"
+        object = loadData("gr.rda"),
+        regexp = "is_name :"
     )
 })
 
 test_that("loadData : Already exists", {
-    # Avoid accidentally overwrites in the current environment
+    # Avoid accidental overwrites in the current environment.
     gr <- TRUE
     expect_error(
-        loadData(gr),
-        "Already exists in environment: gr"
+        object = loadData(gr),
+        regexp = "Already exists in environment: gr"
     )
 })
 
 test_that("loadData : Multiple objects in single file", {
     expect_error(
-        loadData(multi),
-        "multi.rda contains multiple objects : x, y"
+        object = loadData(multi),
+        regexp = "multi.rda contains multiple objects : x, y"
     )
 })
 
 test_that("loadData : Renamed file", {
     expect_error(
-        loadData(renamed),
-        "renamed.rda has been renamed."
+        object = loadData(renamed),
+        regexp = "renamed.rda has been renamed."
     )
 })
 
 test_that("loadData : Duplicate RDA and RDS files", {
     expect_error(
-        loadData(example),
-        "Duplicates : example.rda, example.rds"
+        object = loadData(example),
+        regexp = "Duplicates : example.rda, example.rds"
     )
 })
 
 test_that("loadData : Uncertain extension", {
     expect_error(
-        loadData(gr, serialized),
-        "Multiple extensions : rda, rds"
+        object = loadData(gr, serialized),
+        regexp = "Multiple extensions : rda, rds"
     )
 })
 
 test_that("loadData : Invalid arguments", {
     expect_error(
-        loadData(gr, dir = "XXX"),
-        "is_dir :"
+        object = loadData(gr, dir = "XXX"),
+        regexp = "is_dir :"
     )
     expect_error(
-        loadData(gr, envir = "XXX"),
-        "is_environment : envir"
+        object = loadData(gr, envir = "XXX"),
+        regexp = "is_environment : envir"
     )
 })
 
@@ -93,22 +95,22 @@ test_that("loadData : Invalid arguments", {
 
 # loadDataAsName ===============================================================
 test_that("loadDataAsName : Non-standard evaluation", {
-    x <- loadDataAsName(data_1 = gr, data_2 = mn)
-    expect_is(x, "character")
-    expect_identical(names(x), c("data_1", "data_2"))
+    object <- loadDataAsName(data_1 = gr, data_2 = mn)
+    expect_is(object, "character")
+    expect_identical(names(object), c("data_1", "data_2"))
     expect_true(exists("data_1", inherits = FALSE))
     expect_true(exists("data_2", inherits = FALSE))
     # Now that the objects are loaded, let's check to make sure we can't
     # accidentally overwrite in the current environment
     expect_error(
-        loadDataAsName(data_1 = gr, data_2 = mn),
-        "Already exists in environment: data_1, data_2"
+        object = loadDataAsName(data_1 = gr, data_2 = mn),
+        regexp = "Already exists in environment: data_1, data_2"
     )
 })
 
 test_that("loadDataAsName : Serialized", {
-    x <- loadDataAsName(new = serialized)
-    expect_identical(names(x), "new")
+    object <- loadDataAsName(new = serialized)
+    expect_identical(names(object), "new")
     expect_true(exists("new", inherits = FALSE))
 })
 
@@ -149,10 +151,10 @@ test_that("loadDataAsName : Invalid arguments", {
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
     url <- paste(cacheURL, "example.rds", sep = "/")
-    x <- loadRemoteData(url)
+    object <- loadRemoteData(url)
     # Character matrix of loaded files
-    expect_is(x, "character")
-    expect_identical(x, c(example = url))
+    expect_is(object, "character")
+    expect_identical(object, c(example = url))
     # Check that the object loaded correctly
     expect_is(example, "data.frame")
 })
@@ -204,47 +206,47 @@ test_that("localOrRemoteFile : Missing file", {
 
 # readFileByExtension ==========================================================
 test_that("readFileByExtension : Comma separated value file (.csv)", {
-    x <- readFileByExtension("example.csv")
-    expect_is(x, "data.frame")
+    object <- readFileByExtension("example.csv")
+    expect_is(object, "data.frame")
 })
 
 test_that("readFileByExtension : GFF", {
-    x <- readFileByExtension("example.gtf")
-    expect_s4_class(x, "GRanges")
+    object <- readFileByExtension("example.gtf")
+    expect_s4_class(object, "GRanges")
 
-    x <- readFileByExtension("example.gff3")
-    expect_s4_class(x, "GRanges")
+    object <- readFileByExtension("example.gff3")
+    expect_s4_class(object, "GRanges")
 })
 
 test_that("readFileByExtension : MatrixMarket file (.mtx)", {
-    x <- readFileByExtension("single_cell_counts.mtx.gz")
-    expect_is(x, "dgTMatrix")
+    object <- readFileByExtension("single_cell_counts.mtx.gz")
+    expect_is(object, "dgTMatrix")
 
-    x <- readFileByExtension("single_cell_counts.mtx.gz.rownames")
-    expect_is(x, "character")
+    object <- readFileByExtension("single_cell_counts.mtx.gz.rownames")
+    expect_is(object, "character")
 
-    x <- readFileByExtension("single_cell_counts.mtx.gz.colnames")
-    expect_is(x, "character")
+    object <- readFileByExtension("single_cell_counts.mtx.gz.colnames")
+    expect_is(object, "character")
 })
 
 test_that("readFileByExtension : Tab separated values file (.tsv)", {
-    x <- readFileByExtension("example.tsv")
-    expect_is(x, "data.frame")
+    object <- readFileByExtension("example.tsv")
+    expect_is(object, "data.frame")
 })
 
 test_that("readFileByExtension : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    x <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
-    expect_is(x, "data.frame")
+    object <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    expect_is(object, "data.frame")
 })
 
 test_that("readFileByExtension : Counts file (.counts)", {
-    x <- readFileByExtension("example.counts")
-    expect_is(x, "matrix")
+    object <- readFileByExtension("example.counts")
+    expect_is(object, "matrix")
     expect_identical(
-        rownames(x)[1L:5L],
+        rownames(object)[1L:5L],
         c(
             "ENSMUSG00000102693",
             "ENSMUSG00000064842",
@@ -261,18 +263,18 @@ test_that("readFileByExtension : R script", {
         readFileByExtension(file),
         "Importing as source code lines"
     )
-    x <- readFileByExtension(file)
-    expect_is(x, "character")
+    object <- readFileByExtension(file)
+    expect_is(object, "character")
 })
 
 test_that("readFileByExtension : R Data", {
     # rda
-    x <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
-    expect_is(x, "tbl_df")
+    object <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
+    expect_is(object, "tbl_df")
 
     # rds
-    x <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
-    expect_is(x, "tbl_df")
+    object <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
+    expect_is(object, "tbl_df")
 
     # Error on object containing multiple data
     expect_error(
@@ -282,8 +284,8 @@ test_that("readFileByExtension : R Data", {
 })
 
 test_that("readFileByExtension : YAML", {
-    x <- readFileByExtension("example.yml")
-    expect_is(x, "list")
+    object <- readFileByExtension("example.yml")
+    expect_is(object, "list")
 })
 
 test_that("readFileByExtension : No extension", {
@@ -300,11 +302,11 @@ test_that("readFileByExtension : No extension", {
 
 # readGFF ======================================================================
 test_that("readGFF : Minimal GFF3", {
-    x <- readGFF("example.gff3")
-    expect_s4_class(x, "GRanges")
-    expect_identical(levels(seqnames(x)), "1")
+    object <- readGFF("example.gff3")
+    expect_s4_class(object, "GRanges")
+    expect_identical(levels(seqnames(object)), "1")
     expect_identical(
-        colnames(mcols(x)),
+        colnames(mcols(object)),
         c(
             "source",
             "type",
@@ -338,10 +340,10 @@ test_that("readGFF : Minimal GFF3", {
 })
 
 test_that("readGFF : Minimal GTF", {
-    x <- readGFF("example.gtf")
-    expect_identical(levels(seqnames(x)), "1")
+    object <- readGFF("example.gtf")
+    expect_identical(levels(seqnames(object)), "1")
     expect_identical(
-        colnames(mcols(x)),
+        colnames(mcols(object)),
         c(
             "source",
             "type",
@@ -380,16 +382,16 @@ test_that("readGFF : Unsupported file type", {
 
 # readJSON =====================================================================
 test_that("readJSON", {
-    x <- readJSON("example.json")
-    expect_is(x, "list")
+    object <- readJSON("example.json")
+    expect_is(object, "list")
 })
 
 
 
 # readYAML =====================================================================
 test_that("readYAML : bcbio project summary", {
-    x <- readYAML("example.yml")
-    expect_is(x, "list")
+    object <- readYAML("example.yml")
+    expect_is(object, "list")
 })
 
 
@@ -405,22 +407,22 @@ test_that("saveData", {
     names(paths) <- c("rnaseq_counts", "single_cell_counts")
 
     # rda (default)
-    x <- saveData(
+    object <- saveData(
         rnaseq_counts, single_cell_counts,
         dir = dir,
         overwrite = TRUE
     )
-    expect_identical(x, paths)
+    expect_identical(object, paths)
 
     # rds
-    x <- saveData(
+    object <- saveData(
         rnaseq_counts, single_cell_counts,
         ext = "rds",
         dir = dir,
         overwrite = TRUE
     )
     expect_identical(
-        basename(x),
+        basename(object),
         c("rnaseq_counts.rds", "single_cell_counts.rds")
     )
 
@@ -457,14 +459,14 @@ test_that("saveData : Invalid parameters", {
 remoteDir <- "ftp://ftp.ensembl.org/pub/release-89"
 
 test_that("transmit", {
-    x <- transmit(
+    object <- transmit(
         remoteDir = remoteDir,
         pattern = "README",
         compress = FALSE
     )
     y <- file.path(getwd(), "README")
     names(y) <- "README"
-    expect_identical(x, y)
+    expect_identical(object, y)
 
     # Check that function skips on existing
     expect_message(
@@ -480,7 +482,7 @@ test_that("transmit", {
 })
 
 test_that("transmit : Rename and compress", {
-    x <- transmit(
+    object <- transmit(
         remoteDir = remoteDir,
         pattern = "README",
         rename = "ensembl_readme.txt",
@@ -488,7 +490,7 @@ test_that("transmit : Rename and compress", {
     )
     y <- file.path(getwd(), "ensembl_readme.txt.gz")
     names(y) <- "README"
-    expect_identical(x, y)
+    expect_identical(object, y)
     unlink("ensembl_readme.txt.gz")
 })
 
