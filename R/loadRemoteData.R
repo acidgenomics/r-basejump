@@ -22,7 +22,7 @@
 #' class(single_cell_counts)
 loadRemoteData <- function(url, envir = parent.frame()) {
     stopifnot(has_internet())
-    assertIsURL(url)
+    assertAllAreURL(url)
     if (!all(vapply(
         X = url,
         FUN = function(x) {
