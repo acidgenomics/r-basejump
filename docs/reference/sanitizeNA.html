@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate Features — aggregateFeatures • basejump</title>
+<title>Sanitize <code>NA</code> Values — sanitizeNA • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aggregate Features — aggregateFeatures" />
+<meta property="og:title" content="Sanitize <code>NA</code> Values — sanitizeNA" />
 
-<meta property="og:description" content="Aggregate Features" />
+<meta property="og:description" content="Standardize empty strings (&quot;&quot;), character NAs (&quot;NA&quot;), and NULL values
+inside a character vector to NA_character_. Other atomic data types are
+returned unmodified." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -105,24 +107,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aggregate Features</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregateFeatures-methods.R'><code>R/aggregateFeatures-methods.R</code></a></small>
-    <div class="hidden name"><code>aggregateFeatures.Rd</code></div>
+    <h1>Sanitize <code>NA</code> Values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizeNA-methods.R'><code>R/sanitizeNA-methods.R</code></a></small>
+    <div class="hidden name"><code>sanitizeNA.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Aggregate Features</p>
+    <p>Standardize empty strings (<code>""</code>), character NAs (<code>"NA"</code>), and <code>NULL</code> values
+inside a character vector to <code>NA_character_</code>. Other <code>atomic</code> data types are
+returned unmodified.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>sanitizeNA</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
+<span class='co'># S4 method for atomic</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateFeatures</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)</pre>
+<span class='co'># S4 method for character</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for factor</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for tbl_df</span>
+<span class='fu'>sanitizeNA</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,48 +151,41 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
-    <tr>
-      <th>groupings</th>
-      <td><p><code>character</code>. Feature groupings (e.g. gene or transcript
-IDs), defined as a named factor. The pooled features must be defined as the
-factor levels, and the original features as the names of the factor.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Object of same class with aggregated features (rows).</p>
+    <p>Object containing proper <code>NA</code> values.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateReplicates.html'>aggregateReplicates</a></code>,
-  <code><a href='counts.html'>counts</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
-  <code><a href='selectSamples.html'>selectSamples</a></code></p></div>
+    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='makeNames.html'>camel</a></code>,
+  <code><a href='collapseToString.html'>collapseToString</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
+  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code>,
+  <code><a href='sanitizeSampleData.html'>sanitizeSampleData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-    <span class='st'>"sample_1"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>)),
-    <span class='st'>"sample_2"</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>)),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gene_1.1"</span>, <span class='st'>"gene_1.2"</span>, <span class='st'>"gene_2.1"</span>, <span class='st'>"gene_2.2"</span>)
+    <pre class="examples"><div class='input'><span class='co'># character ====</span>
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>as.character</span>(<span class='fu'>c</span>(<span class='fl'>1L</span>, <span class='st'>"x"</span>, <span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>))
+<span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; [1] "1"    "x"    ""     "NA"   "NULL"</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeNA</span>(<span class='no'>from</span>)
+<span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; [1] "1" "x" NA  NA  NA </div><div class='input'>
+<span class='co'># DataFrame ====</span>
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>""</span>),
+    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='st'>"bar"</span>),
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>)
 )
-
-<span class='no'>groupings</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"gene_1"</span>, <span class='st'>"gene_1"</span>, <span class='st'>"gene_2"</span>, <span class='st'>"gene_2"</span>))
-<span class='fu'>names</span>(<span class='no'>groupings</span>) <span class='kw'>&lt;-</span> <span class='fu'>rownames</span>(<span class='no'>counts</span>)
-
-<span class='co'># matrix ====</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
-<span class='fu'>aggregateFeatures</span>(<span class='no'>mat</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt;        sample_1 sample_2
-#&gt; gene_1        1        3
-#&gt; gene_2        5        7</div><div class='input'>
-<span class='co'># dgCMatrix ====</span>
-<span class='no'>dgc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>mat</span>, <span class='st'>"dgCMatrix"</span>)
-<span class='fu'>aggregateFeatures</span>(<span class='no'>dgc</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>groupings</span>)</div><div class='output co'>#&gt; 2 x 2 sparse Matrix of class "dgCMatrix"
-#&gt;        sample_1 sample_2
-#&gt; gene_1        1        3
-#&gt; gene_2        5        7</div></pre>
+<span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;             a           b
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; c         foo          NA
+#&gt; d                     bar</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeNA</span>(<span class='no'>from</span>)
+<span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;             a           b
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; c         foo          NA
+#&gt; d          NA         bar</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -192,7 +201,7 @@ factor levels, and the original features as the names of the factor.</p></td>
 
     <h2>Author</h2>
     
-Michael Steinbaugh, Rory Kirchner
+Michael Steinbaugh
 
   </div>
 </div>

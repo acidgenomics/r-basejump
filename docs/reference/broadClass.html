@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object that can be coerced to <code>data.frame</code>, containing gene or
+      <td><p>Object that can be coerced to <code>DataFrame</code>, containing gene or
 transcript annotations.</p></td>
     </tr>
     <tr>
@@ -156,19 +156,11 @@ transcript annotations.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># GRanges ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>broadClass</span>(<span class='fu'><a href='makeGRanges.html'>makeGRangesFromEnsembl</a></span>(<span class='st'>"Homo sapiens"</span>))</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
-#&gt; <span class='message'>organism: "Homo sapiens"</span>
-#&gt; <span class='message'>build: "GRCh38"</span>
-#&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
-#&gt;    coding        ig      mito noncoding     other    pseudo     small       tcr 
-#&gt;     22630       338        37      7859      9606     16487      8034       265 </div><div class='input'>
-<span class='co'># SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>broadClass</span>(<span class='no'>rse_bcb</span>)
+    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>broadClass</span>(<span class='no'>rse_small</span>)
 <span class='fu'>table</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
-#&gt;    coding        ig      mito noncoding     other    pseudo     small       tcr 
-#&gt;       333         0        27         8        13        39        80         0 </div></pre>
+#&gt; coding pseudo 
+#&gt;     99      1 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -18,13 +18,13 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_small) %>% glimpse()
+#' sampleData(rse_small)
 #'
 #' # Assignment support
 #' x <- rse_small
 #' sampleData(x)[["test"]] <- seq_len(ncol(x))
 #' # `test` column should be now defined
-#' glimpse(sampleData(x))
+#' sampleData(x)
 NULL
 
 

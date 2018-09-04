@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -173,11 +173,21 @@ Use the wormbase package instead.</p>
 #&gt; <span class='message'>  Other_designations = col_character(),</span>
 #&gt; <span class='message'>  Modification_date = col_integer(),</span>
 #&gt; <span class='message'>  Feature_type = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 19,337
-#&gt; Variables: 3
-#&gt; $ geneID   &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG00000000419", "...
-#&gt; $ geneName &lt;chr&gt; "TSPAN6", "TNMD", "DPM1", "SCYL3", "FGR", "CFH", "FUCA2", ...
-#&gt; $ synonyms &lt;chr&gt; "T245, TM4SF6, TSPAN-6", "BRICD4, CHM1L, TEM", "CDGIE, MPD...</div></pre>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 19,338 x 3
+#&gt; # Groups:   geneID [19,327]
+#&gt;    geneID         geneName synonyms                                            
+#&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;                                               
+#&gt;  1 ENSG000000000… TSPAN6   T245, TM4SF6, TSPAN-6                               
+#&gt;  2 ENSG000000000… TNMD     BRICD4, CHM1L, TEM                                  
+#&gt;  3 ENSG000000004… DPM1     CDGIE, MPDS                                         
+#&gt;  4 ENSG000000004… SCYL3    PACE-1, PACE1                                       
+#&gt;  5 ENSG000000009… FGR      SRC2, c-fgr, c-src2, p55-Fgr, p55c-fgr, p58-Fgr, p5…
+#&gt;  6 ENSG000000009… CFH      AHUS1, AMBP1, ARMD4, ARMS1, CFHL3, FH, FHL1, HF, HF…
+#&gt;  7 ENSG000000010… FUCA2    dJ20N2.5                                            
+#&gt;  8 ENSG000000010… GCLC     GCL, GCS, GLCL, GLCLC                               
+#&gt;  9 ENSG000000011… NFYA     CBF-A, CBF-B, HAP2, NF-YA                           
+#&gt; 10 ENSG000000014… STPG1    C1orf201, MAPO2                                     
+#&gt; # ... with 19,328 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

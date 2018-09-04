@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
-#' glimpse(x)
+#' print(x)
 NULL
 
 

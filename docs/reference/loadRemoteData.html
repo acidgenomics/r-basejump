@@ -64,7 +64,7 @@ multiple URLs in a single call." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -136,8 +136,8 @@ multiple URLs in a single call.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible named <code>character</code> containing the local object name as the
-name, and the remote URL as the value.</p>
+    <p>Invisible named <code>character</code>. Local object name as the name, and the
+remote URL as the value.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -151,7 +151,9 @@ name, and the remote URL as the value.</p>
     <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
     <span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>,
     <span class='st'>"http://basejump.seq.cloud/single_cell_counts.rda"</span>
-))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='message'>Reading single_cell_counts.rda</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
+))</div><div class='output co'>#&gt; <span class='warning'>Warning: 'assertIsURL' is deprecated.</span>
+#&gt; <span class='warning'>Use 'assertAllAreURL' instead.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='message'>Reading single_cell_counts.rda</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
 #&gt; [1] "Matrix"</div></pre>
   </div>

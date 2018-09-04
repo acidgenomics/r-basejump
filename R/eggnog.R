@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' x <- eggnog()
-#' glimpse(x)
+#' print(x)
 eggnog <- function() {
     # Categories ---------------------------------------------------------------
     pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"

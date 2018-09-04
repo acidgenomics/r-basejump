@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Markdown Header — markdownHeader" />
 
-<meta property="og:description" content="Markdown Header" />
+<meta property="og:description" content="Generate a Markdown header (levels 1-7) in any R Markdown code block. When
+calling inside an asis chunk, set asis = TRUE." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -112,7 +113,8 @@
 
     <div class="ref-description">
     
-    <p>Markdown Header</p>
+    <p>Generate a Markdown header (levels 1-7) in any R Markdown code block. When
+calling inside an <code>asis</code> chunk, set <code>asis = TRUE</code>.</p>
     
     </div>
 
@@ -161,13 +163,7 @@ loop or inside an R Markdown chunk with '<code>results = "asis"</code>' enabled.
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>)</div><div class='output co'>#&gt; [1] "## Header\n"
-#&gt; attr(,"format")
-#&gt; [1] "markdown"
-#&gt; attr(,"class")
-#&gt; [1] "knit_asis"
-#&gt; attr(,"knit_cacheable")
-#&gt; [1] NA</div><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>4L</span>)</div><div class='output co'>#&gt; [1] "#### Header\n"
+    <pre class="examples"><div class='input'><span class='fu'>markdownHeader</span>(<span class='st'>"Header"</span>, <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; [1] "## Header\n"
 #&gt; attr(,"format")
 #&gt; [1] "markdown"
 #&gt; attr(,"class")

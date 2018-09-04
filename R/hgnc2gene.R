@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' x <- hgnc2gene()
-#' glimpse(x)
+#' print(x)
 hgnc2gene <- function() {
     stopifnot(has_internet())
     message("Obtaining HGNC to Ensembl gene ID mappings")
