@@ -121,7 +121,8 @@ with_parameters_test_that(
         DataFrame = DataFrame(
             a = c("A", NA, "C"),
             b = c(NA, NA, NA),
-            c = c("B", NA, "D")
+            c = c("B", NA, "D"),
+            row.names = c("x", "y", "z")
         )
     ),
     expected = list(
@@ -136,7 +137,7 @@ with_parameters_test_that(
         DataFrame = DataFrame(
             a = c("A", "C"),
             c = c("B", "D"),
-            row.names = c(1L, 3L)
+            row.names = c("x", "z")
         )
     )
 )
