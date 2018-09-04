@@ -199,10 +199,10 @@ For organisms that are not well supported on [Ensembl][], we recommend using [GT
 gtf_file <- paste(
     "ftp://ftp.ensembl.org",
     "pub",
-    "release-93",
+    "release-92",
     "gtf",
     "homo_sapiens",
-    "Homo_sapiens.GRCh38.93.gtf.gz",
+    "Homo_sapiens.GRCh38.92.gtf.gz",
     sep = "/"
 )
 grch38_gtf <- makeGRangesFromGFF(gtf_file)
@@ -222,10 +222,10 @@ S4Vectors::mcols(grch38_gtf) %>% glimpse()
 gff_file <- paste(
     "ftp://ftp.ensembl.org",
     "pub",
-    "release-93",
+    "release-92",
     "gff3",
     "homo_sapiens",
-    "Homo_sapiens.GRCh38.93.gff3.gz",
+    "Homo_sapiens.GRCh38.92.gff3.gz",
     sep = "/"
 )
 grch38_gff <- makeGRangesFromGFF(gff_file)
@@ -244,7 +244,7 @@ S4Vectors::mcols(grch38_gff) %>% glimpse()
 Dealing with gene identifier to gene name (symbol) mapping in a non-destructive manner remains challenging for the bioinformatics community. [basejump][] provides `convertGenesToSymbols()` and `convertSymbolsToGenes()` generics that define methods for `SummarizedExperiment`, making interconversion between gene IDs and gene names easier. Internally, these mappings are handled by the `geneID` and `geneName` `mcols` columns inside of the `rowRanges` slot.
 
 ```{r}
-rse_symbols <- convertGenesToSymbols(rse_bcb)
+rse_symbols <- convertGenesToSymbols(rse_small)
 head(rownames(rse_symbols))
 ```
 
@@ -342,15 +342,15 @@ p + theme_midnight()
 Additional, the package provides support for easy heatmap generation, by wrapping the popular [pheatmap][] package. Here are providing `SummarizedExperiment` method support, so annotation column metadata is handled seamlessly.
 
 ```{r}
-plotHeatmap(rse_bcb)
+plotHeatmap(rse_small)
 ```
 
 ```{r}
-plotCorrelationHeatmap(rse_bcb)
+plotCorrelationHeatmap(rse_small)
 ```
 
 ```{r}
-plotQuantileHeatmap(rse_bcb)
+plotQuantileHeatmap(rse_small)
 ```
 
 # Sanitization functions
