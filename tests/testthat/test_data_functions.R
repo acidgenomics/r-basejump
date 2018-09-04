@@ -273,8 +273,18 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
-    expect_identical(sampleData(rse_small), colData(rse_small))
-    expect_error(sampleData(rse_small), "sampleName")
+    expect_identical(
+        object = sampleData(rse_small),
+        expected = colData(rse_small)
+    )
+
+    # Requiring `sampleName` column to be defined.
+    object <- rse_small
+    colData(object) <- DataFrame(row.names = colnames(object))
+    expect_error(
+        object = sampleData(object),
+        regexp = "sampleName"
+    )
 })
 
 test_that("sampleData<- : SummarizedExperiment", {
@@ -288,23 +298,32 @@ test_that("sampleData<- : SummarizedExperiment", {
 # sampleNames ==================================================================
 test_that("sampleNames", {
     object <- sampleNames(rse_small)
-    expect_identical(
-        object[seq_len(2L)],
-        c(
-            control_rep1 = "control_rep1",
-            control_rep2 = "control_rep2"
-        )
+    expected <- as.character(colData(rse_small)[["sampleName"]])
+    names(expected) <- colnames(rse_small)
+    expect_identical(object, expected)
+
+    # Require `sampleName` column to be defined.
+    object <- rse_small
+    colData(object) <- DataFrame(row.names = colnames(object))
+    expect_error(
+        object = sampleNames(object),
+        regexp = "sampleName"
     )
-    expect_error(sampleNames(rse_small), "sampleName")
 })
 
 
 
 # selectSamples ================================================================
 test_that("selectSamples : SummarizedExperiment", {
-    object <- selectSamples(rse_small, condition = "A")
-    expect_identical(dim(object), c(1000L, 6L))
-    expect_identical(colnames(object), paste0("sample", seq(6L)))
+    object <- selectSamples(rse_small, genotype = "wildtype")
+    expect_identical(
+        object = dim(object),
+        expected = c(100L, 2L)
+    )
+    expect_identical(
+        object = colnames(object),
+        expected = c("sample1", "sample3")
+    )
 })
 
 
@@ -318,21 +337,6 @@ test_that("uniteInterestingGroups : Single interesting group", {
     expect_identical(
         levels(object[["interestingGroups"]]),
         c("0:0:3", "0:1:4", "0:1:5", "1:0:3", "1:0:4", "1:1:4", "1:1:5")
-    )
-})
-
-test_that("uniteInterestingGroups : tidy (tibble) mode", {
-    object <- uniteInterestingGroups(
-        object = dplyr::starwars,
-        interestingGroups = c("hair_color", "skin_color")
-    )
-    expect_is(object, "tbl_df")
-    expect_is(object[["interestingGroups"]], "factor")
-    expect_identical(
-        object[["interestingGroups"]] %>%
-            as.character() %>%
-            head(2L),
-        c("blond:fair", "NA:gold")
     )
 })
 
@@ -351,6 +355,21 @@ test_that("uniteInterestingGroups : Two interesting groups", {
                 "5:2", "5:4", "5:6", "5:8"
             )
         )
+    )
+})
+
+test_that("uniteInterestingGroups : tidy (tibble) mode", {
+    object <- uniteInterestingGroups(
+        object = dplyr::starwars,
+        interestingGroups = c("hair_color", "skin_color")
+    )
+    expect_is(object, "tbl_df")
+    expect_is(object[["interestingGroups"]], "factor")
+    expect_identical(
+        object[["interestingGroups"]] %>%
+            as.character() %>%
+            head(2L),
+        c("blond:fair", "NA:gold")
     )
 })
 
