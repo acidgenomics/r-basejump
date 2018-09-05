@@ -17,8 +17,30 @@ method. The function raverses up the call stack and find the first
 \code{.local()}. The desired S4 call to match is one level above.
 }
 \examples{
-# Execute this inside an S4 method.
-\dontrun{matchS4Call()}
+setGeneric(
+    name = "testing",
+    def = function(object, ...) {
+        standardGeneric("testing")
+    }
+)
+setMethod(
+    f = "testing",
+    signature = signature("character"),
+    definition = function(object, ...) {
+        call <- matchS4Call(verbose = TRUE)
+        call
+    }
+)
+setMethod(
+    f = "testing",
+    signature = signature("numeric"),
+    definition = function(object, xxx, ...) {
+        call <- matchS4Call(verbose = TRUE)
+        call
+    }
+)
+testing("abc")
+testing(123L)
 }
 \seealso{
 \itemize{
