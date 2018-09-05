@@ -36,7 +36,6 @@ NULL
         .[complete.cases(.), , drop = FALSE] %>%
         unique() %>%
         mutate_all(as.character) %>%
-        arrange(!!sym("transcriptID")) %>%
         as("DataFrame") %>%
         set_rownames(.[["transcriptID"]])
     assertIsTx2gene(data)

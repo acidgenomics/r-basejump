@@ -72,7 +72,6 @@ NULL
         .[complete.cases(.), , drop = FALSE] %>%
         mutate_all(as.character) %>%
         unique() %>%
-        arrange(!!sym("geneID")) %>%
         .makeGeneNamesUnique() %>%
         as("DataFrame")
 
