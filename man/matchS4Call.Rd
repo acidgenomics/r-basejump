@@ -4,7 +4,7 @@
 \alias{matchS4Call}
 \title{Functions to Access the Function Call Stack}
 \usage{
-matchS4Call()
+matchS4Call(verbose = FALSE)
 }
 \value{
 \code{call}.
