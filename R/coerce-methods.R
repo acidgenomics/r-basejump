@@ -63,7 +63,12 @@ setAs(
     if (is_tibble(from)) {
         return(from)  # nocov
     }
-    from <- as.data.frame(from, stringsAsFactors = FALSE)
+    # Suppressing the warning about some object classes not supporting the
+    # `stringsAsFactors` argument (e.g. DataFrame).
+    from <- suppressWarnings(as.data.frame(
+        x = from,
+        stringsAsFactors = FALSE
+    ))
     assert_has_colnames(from)
     if (has_rownames(from)) {
         from <- rownames_to_column(from)
