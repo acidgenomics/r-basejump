@@ -63,7 +63,7 @@ setAs(
     if (is_tibble(from)) {
         return(from)  # nocov
     }
-    from <- as.data.frame(from)
+    from <- as.data.frame(from, stringsAsFactors = FALSE)
     assert_has_colnames(from)
     if (has_rownames(from)) {
         from <- rownames_to_column(from)
@@ -94,7 +94,7 @@ setAs(
     from = "tbl_df",
     to = "DataFrame",
     def = function(from) {
-        to <- as.data.frame(from)
+        to <- as.data.frame(from, stringsAsFactors = FALSE)
         to <- as(to, "DataFrame")
         rownames <- to[["rowname"]]
         if (
