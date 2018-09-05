@@ -23,24 +23,18 @@
 #' @examples
 #' # Execute this inside an S4 method.
 #' \dontrun{matchS4Call()}
-matchS4Call <- function() {
-    # Find the `.local()` function in the call stack.
-    isLocal <- sapply(
-        X = rev(sys.calls()),
-        FUN = function(x) {
-            identical(x[[1L]], as.name(".local"))
-        }
-    )
-    which <- match(x = TRUE, table = isLocal)
-    assert_is_a_number(which)
-    # Flip back to negative index.
-    which <- -which
+matchS4Call <- function(verbose = FALSE) {
+    # Match against 1 level up in stack from system parent.
+    which <- sys.parent() - 1L
 
-    # Confirm the `.local() call.
-    assert_are_identical(
-        x = sys.call(which = which + 1L)[[1L]],
-        y = as.name(".local")
-    )
+    if (isTRUE(verbose)) {
+        stack <- list()
+        stack[["sys.calls"]] <- sys.calls()
+        stack[["sys.function"]] <- sys.function(which = -1L)
+        stack[["sys.parent"]] <- sys.parent()
+        stack[["which"]] <- which
+        print(stack)
+    }
 
     # Ready to match the call.
     call <- sys.call(which = which)
@@ -54,5 +48,40 @@ matchS4Call <- function() {
     names <- names(as.list(call)[-1L])
     assert_all_are_non_empty_character(names)
 
+    if (isTRUE(verbose)) {
+        print(call)
+    }
+
     call
 }
+
+
+
+# FIXME Remove this before pull request
+# For testing purposes =========================================================
+# S4 dispatches differently if the method doesn't match the generic exactly.
+setGeneric(
+    name = "matchS4CallTest",
+    def = function(object, ...) {
+        standardGeneric("matchS4CallTest")
+    }
+)
+
+
+setMethod(
+    "matchS4CallTest",
+    signature("character"),
+    function(object, ...) {
+        call <- matchS4Call(verbose = TRUE)
+        call
+    }
+)
+
+setMethod(
+    "matchS4CallTest",
+    signature("numeric"),
+    function(object, xxx, ...) {
+        call <- matchS4Call(verbose = TRUE)
+        call
+    }
+)
