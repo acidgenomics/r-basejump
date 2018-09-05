@@ -44,7 +44,7 @@ NULL
 
 
 
-# list =========================================================================
+# Coerce to list ===============================================================
 #' @rdname coerce
 #' @name coerce,SummarizedExperiment,list-method
 setAs(
@@ -57,7 +57,7 @@ setAs(
 
 
 
-# tibble =======================================================================
+# Coerce to tibble =============================================================
 # Helps avoid dropping rownames during tidyverse function calls.
 .coerceToTibble <- function(from) {
     if (is_tibble(from)) {
@@ -87,6 +87,9 @@ setAs(from = "DataFrame", to = "tbl_df", def = .coerceToTibble)
 #' @name coerce,GRanges,tbl_df-method
 setAs(from = "GRanges", to = "tbl_df", def = .coerceToTibble)
 
+
+
+# Coerce from tibble ===========================================================
 # Currently only supporting S4 DataFrame here.
 #' @rdname coerce
 #' @name coerce,tbl_df,DataFrame-method
@@ -96,11 +99,12 @@ setAs(
     def = function(from) {
         to <- as.data.frame(from, stringsAsFactors = FALSE)
         to <- as(to, "DataFrame")
-        rownames <- to[["rowname"]]
+        rownames <- as.character(to[["rowname"]])
         if (
-            is.character(rownames) &&
+            length(rownames) &&
             !any(duplicated(rownames))
         ) {
+            assertAllAreValidNames(rownames)
             rownames(to) <- rownames
             to[["rowname"]] <- NULL
         }
