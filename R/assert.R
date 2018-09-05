@@ -656,7 +656,9 @@ assertIsGene2symbol <- function(object) {
     # Requiring standard data frame class.
     assert_is_any_of(
         x = object,
-        classes = c("DataFrame", "tbl_df")
+        # Remove data.frame in a future update.
+        # This can cause validity checks on old bcbio objects to fail otherwise.
+        classes = c("DataFrame", "tbl_df", "data.frame")
     )
     assert_is_non_empty(object)
     assert_are_identical(
@@ -836,7 +838,9 @@ isImplicitInteger <- function(object) {
 assertIsTx2gene <- function(object) {
     assert_is_any_of(
         x = object,
-        classes = c("DataFrame", "tbl_df")
+        # Remove data.frame in a future update.
+        # This can cause validity checks on old bcbio objects to fail otherwise.
+        classes = c("DataFrame", "tbl_df", "data.frame")
     )
     assert_is_non_empty(object)
     # nocov start
