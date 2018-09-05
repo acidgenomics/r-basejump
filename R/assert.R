@@ -100,6 +100,7 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
 assertAllAreValidNames <- function(object) {
     assert_is_character(object)
     assert_is_non_empty(object)
+    assert_all_are_non_missing_nor_empty_character(object)
     assert_all_are_true(validNames(object))
 }
 
