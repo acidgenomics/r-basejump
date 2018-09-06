@@ -1,7 +1,8 @@
-context("ggplot2")
+context("ggplot2 Functions")
 
 
 
+# basejump_geom_abline =========================================================
 test_that("basejump_geom_abline", {
     object <- basejump_geom_abline(xintercept = 1L)
     expect_is(object, "Layer")
@@ -23,6 +24,7 @@ test_that("basejump_geom_abline", {
 
 
 
+# basejump_geom_label ==========================================================
 test_that("basejump_geom_label", {
     object <- basejump_geom_label()
     expect_is(object, "Layer")
@@ -30,6 +32,7 @@ test_that("basejump_geom_label", {
 
 
 
+# basejump_geom_label_average ==================================================
 test_that("basejump_geom_label_average", {
     # Normal mode.
     data <- data.frame(
@@ -51,6 +54,7 @@ test_that("basejump_geom_label_average", {
 
 
 
+# basejump_geom_label_repel ====================================================
 test_that("basejump_geom_label_repel", {
     object <- basejump_geom_label_repel()
     expect_is(object, "Layer")
@@ -62,3 +66,43 @@ test_that("basejump_geom_label_repel", {
         expected = "orange"
     )
 })
+
+
+
+# themes =======================================================================
+with_parameters_test_that(
+    "themes", {
+        p <- ggplot2::ggplot(
+            data = ggplot2::mpg,
+            mapping = ggplot2::aes(cty, hwy)
+        ) +
+            ggplot2::geom_point(color = "orange")
+        expect_is(fun(), "theme")
+        object <- p + fun()
+        expect_is(object, "ggplot")
+        # Check background color.
+        expect_identical(
+            object = object[["theme"]][["plot.background"]][["fill"]],
+            expected = plotBackground
+        )
+        # Grid mode.
+        object <- p + fun(grid = TRUE)
+        expect_identical(
+            object[["theme"]][["panel.grid.major"]][["colour"]],
+            gridColor
+        )
+        # Minimal mode.
+    },
+    fun = list(
+        paperwhite = theme_paperwhite,
+        midnight = theme_midnight
+    ),
+    plotBackground = list(
+        paperwhite = NULL,
+        midnight = "black"
+    ),
+    gridColor = list(
+        paperwhite = "gray95",
+        midnight = "gray10"
+    )
+)
