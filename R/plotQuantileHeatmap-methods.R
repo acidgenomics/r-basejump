@@ -48,7 +48,7 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(
         object,
-        interestingGroups,
+        interestingGroups = NULL,
         n = 10L,
         clusterRows = TRUE,
         clusterCols = TRUE,
@@ -70,10 +70,7 @@ setMethod(
             object = object,
             interestingGroups = interestingGroups
         )
-        if (
-            is.character(interestingGroups) &&
-            !identical(interestingGroups, "sampleName")
-        ) {
+        if (length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
         }
         assertIsAnImplicitInteger(n)
