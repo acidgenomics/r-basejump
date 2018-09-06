@@ -89,7 +89,7 @@ test_that("matchInterestingGroups", {
     )
     expect_identical(
         object = matchInterestingGroups(rse_small, interestingGroups = NULL),
-        expected = "sampleName"
+        expected = c("genotype", "treatment")
     )
     expect_identical(
         object = matchInterestingGroups(
