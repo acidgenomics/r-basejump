@@ -31,7 +31,7 @@ setMethod(
     f = "testing",
     signature = signature("character"),
     definition = function(object, ...) {
-        call <- matchS4Call(verbose = TRUE)
+        call <- matchS4Call()
         call
     }
 )
@@ -39,7 +39,7 @@ setMethod(
     f = "testing",
     signature = signature("numeric"),
     definition = function(object, xxx, ...) {
-        call <- matchS4Call(verbose = TRUE)
+        call <- matchS4Call()
         call
     }
 )
