@@ -104,12 +104,9 @@ geom
 \item \code{\link[ggrepel:geom_label_repel]{ggrepel::geom_label_repel()}}.
 }
 
-Other Plot Functions: \code{\link{ggplot2_themes}},
-  \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}}
+Other ggplot2 Functions: \code{\link{ggplot2_themes}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Plot Functions}
+\concept{ggplot2 Functions}

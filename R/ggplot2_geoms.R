@@ -9,7 +9,7 @@
 #' [ggplot2](http://ggplot2.org).
 #'
 #' @name ggplot2_geoms
-#' @family Plot Functions
+#' @family ggplot2 Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams ggplot2::geom_label

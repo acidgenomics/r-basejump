@@ -23,7 +23,7 @@
 #' expression plots.
 #'
 #' @name ggplot2_themes
-#' @family Plot Functions
+#' @family ggplot2 Functions
 #' @author Michael Steinbaugh
 #'
 #' @param base_size `scalar numeric`. Base font size.
