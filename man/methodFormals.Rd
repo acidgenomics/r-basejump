@@ -34,7 +34,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{matchInterestingGroups}},
   \code{\link{matchS4Call}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
+  \code{\link{printString}}, \code{\link{setArgsToDoCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
