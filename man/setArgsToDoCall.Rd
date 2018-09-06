@@ -6,6 +6,26 @@
 \usage{
 setArgsToDoCall(args, removeArgs = NULL, call, fun)
 }
+\arguments{
+\item{args}{
+    The default method expects a \emph{list} of arguments to the function
+    call (the \code{names} attribute of \code{args} gives the argument names).
+    See \code{?base::\link[base]{do.call}} for the details.
+    
+    Specific methods can support other objects.
+    Please refer to the documentation of a particular method for the details.
+  }
+
+\item{removeArgs}{\code{character}. Names of objects to remove from \code{call} (e.g.
+\code{\link[=match.call]{match.call()}}) and \code{fun} (e.g. \code{\link[=sys.function]{sys.function()}}) before passing to
+\code{do.call()}.}
+
+\item{call}{\code{call}. Call to match against. Recommended to use either
+\code{\link[=match.call]{match.call()}} or \code{\link[=matchS4Call]{matchS4Call()}} (for S4 method).}
+
+\item{fun}{\code{function}. Function containing the \code{\link[=do.call]{do.call()}} step. Recommended
+to use \code{\link[=sys.function]{sys.function()}} by default.}
+}
 \value{
 \code{list}. Arguments to pass to \code{\link[=do.call]{do.call()}}.
 }

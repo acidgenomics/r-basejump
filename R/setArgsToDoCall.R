@@ -1,5 +1,4 @@
-# FIXME Improve documentation
-
+# TODO See if we can set default `call` and `fun` arguments.
 # call = match.call
 # fun = sys.function(sys.parent())
 
@@ -10,6 +9,15 @@
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @inheritParams BiocGenerics::do.call
+#' @param removeArgs `character`. Names of objects to remove from `call` (e.g.
+#'   [match.call()]) and `fun` (e.g. [sys.function()]) before passing to
+#'   `do.call()`.
+#' @param call `call`. Call to match against. Recommended to use either
+#'   [match.call()] or [matchS4Call()] (for S4 method).
+#' @param fun `function`. Function containing the [do.call()] step. Recommended
+#'   to use [sys.function()] by default.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 setArgsToDoCall <- function(
