@@ -22,7 +22,7 @@ basejump_geom_label_repel(data = NULL, mapping = NULL, color = NULL,
 \item{xintercept, yintercept}{\code{scalar numeric} denoting x- or y-axis cutoff.
 Specify one but not both.}
 
-\item{data}{\code{data.frame}.}
+\item{data}{\code{data.frame}. Data.}
 
 \item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or
 \code{\link[=aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
@@ -34,12 +34,13 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
-\item{col}{Column.}
+\item{col}{\code{string}. Column name.}
 
-\item{fun}{Function to use for average calculation. Currently supports
-"\code{mean}" or "\code{median}".}
+\item{fun}{\code{string}. Function name to use for average calculation. Currently
+supports "\code{mean}" or "\code{median}".}
 
-\item{digits}{Number of significant digits to use. Defaults to rounded.}
+\item{digits}{\code{scalar integer}. Number of significant digits to use. Defaults
+to rounded.}
 
 \item{color}{\code{string}. Text color (e.g. \code{"orange"}).}
 
@@ -80,6 +81,7 @@ is required, simply use the ggrepel version instead.
 }
 
 \examples{
+# basejump_geom_abline ====
 # x-axis line
 geom <- basejump_geom_abline(xintercept = 1L)
 geom
@@ -87,14 +89,20 @@ geom
 # y-axis line
 geom <- basejump_geom_abline(yintercept = 1L)
 geom
+
+# basejump_geom_label ====
 geom <- basejump_geom_label()
 geom
+
+# basejump_geom_label_average ====
 geom <- basejump_geom_label_average(
     data = colData(rse_bcb),
     col = "exonicRate",
     fun = "median"
 )
 geom
+
+# basejump_geom_label_repel ====
 geom <- basejump_geom_label_repel()
 geom
 }

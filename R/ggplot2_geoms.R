@@ -8,6 +8,25 @@
 #' Convenience functions with modified defaults for
 #' [ggplot2](http://ggplot2.org).
 #'
+#' @section basejump_geom_abline:
+#'
+#' Horizontal or vertical cutoff line.
+#'
+#' @section basejump_geom_label:
+#'
+#' Modified version of [ggplot2::geom_label()].
+#'
+#' @section basejump_geom_label_average:
+#'
+#' Add average labels to a plot. For example, `col` can be `nGene`. Median or
+#' mean values are always calculated per sample (`sampleName`).
+#'
+#' @section basejump_geom_label_repel:
+#'
+#' Repulsive textual annotations. Modified basejump version of
+#' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
+#' is required, simply use the ggrepel version instead.
+#'
 #' @name ggplot2_geoms
 #' @family ggplot2 Functions
 #' @author Michael Steinbaugh
@@ -17,24 +36,21 @@
 #' @param size `scalar integer`. Font size.
 #' @param xintercept,yintercept `scalar numeric` denoting x- or y-axis cutoff.
 #'   Specify one but not both.
+#' @param data `data.frame`. Data.
+#' @param col `string`. Column name.
+#' @param fun `string`. Function name to use for average calculation. Currently
+#'   supports "`mean`" or "`median`".
+#' @param digits `scalar integer`. Number of significant digits to use. Defaults
+#'   to rounded.
 #'
 #' @seealso
 #' - [ggplot2::geom_label()].
 #' - [ggrepel::geom_label_repel()].
 #'
 #' @return `ggproto`.
-NULL
-
-
-
-#' @rdname ggplot2_geoms
-#' @section basejump_geom_abline:
-#'
-#' Horizontal or vertical cutoff line.
-#'
-#' @export
 #'
 #' @examples
+#' # basejump_geom_abline ====
 #' # x-axis line
 #' geom <- basejump_geom_abline(xintercept = 1L)
 #' geom
@@ -42,6 +58,28 @@ NULL
 #' # y-axis line
 #' geom <- basejump_geom_abline(yintercept = 1L)
 #' geom
+#'
+#' # basejump_geom_label ====
+#' geom <- basejump_geom_label()
+#' geom
+#'
+#' # basejump_geom_label_average ====
+#' geom <- basejump_geom_label_average(
+#'     data = colData(rse_bcb),
+#'     col = "exonicRate",
+#'     fun = "median"
+#' )
+#' geom
+#'
+#' # basejump_geom_label_repel ====
+#' geom <- basejump_geom_label_repel()
+#' geom
+NULL
+
+
+
+#' @rdname ggplot2_geoms
+#' @export
 basejump_geom_abline <- function(
     xintercept = NULL,
     yintercept = NULL
@@ -77,15 +115,7 @@ basejump_geom_abline <- function(
 
 
 #' @rdname ggplot2_geoms
-#' @section basejump_geom_label:
-#'
-#' Modified version of [ggplot2::geom_label()].
-#'
 #' @export
-#'
-#' @examples
-#' geom <- basejump_geom_label()
-#' geom
 basejump_geom_label <- function(
     data = NULL,
     mapping = NULL,
@@ -108,26 +138,7 @@ basejump_geom_label <- function(
 
 
 #' @rdname ggplot2_geoms
-#' @section basejump_geom_label_average:
-#'
-#' Add average labels to a plot. For example, `col` can be `nGene`. Median or
-#' mean values are always calculated per sample (`sampleName`).
-#'
-#' @param data `data.frame`.
-#' @param col Column.
-#' @param fun Function to use for average calculation. Currently supports
-#'   "`mean`" or "`median`".
-#' @param digits Number of significant digits to use. Defaults to rounded.
-#'
 #' @export
-#'
-#' @examples
-#' geom <- basejump_geom_label_average(
-#'     data = colData(rse_bcb),
-#'     col = "exonicRate",
-#'     fun = "median"
-#' )
-#' geom
 basejump_geom_label_average <- function(
     data,
     col,
@@ -175,17 +186,7 @@ basejump_geom_label_average <- function(
 
 
 #' @rdname ggplot2_geoms
-#' @section basejump_geom_label_repel:
-#'
-#' Repulsive textual annotations. Modified basejump version of
-#' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
-#' is required, simply use the ggrepel version instead.
-#'
 #' @export
-#'
-#' @examples
-#' geom <- basejump_geom_label_repel()
-#' geom
 basejump_geom_label_repel <- function(
     data = NULL,
     mapping = NULL,
