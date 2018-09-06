@@ -94,7 +94,9 @@ plotHeatmap(rse_small, clusterCols = FALSE)
 \item \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}.
 }
 
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotQuantileHeatmap}}, \code{\link{themes}}
+Other Plot Functions: \code{\link{ggplot2_geoms}},
+  \code{\link{ggplot2_themes}},
+  \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }
 \concept{Plot Functions}
