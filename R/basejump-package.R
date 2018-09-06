@@ -41,9 +41,11 @@
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
-#' @importFrom ggplot2 element_blank element_line element_rect element_text
-#'   theme theme_linedraw
+#' @importFrom ggplot2 aes element_blank element_line element_rect element_text
+#'   geom_hline geom_label geom_vline theme theme_linedraw
+#' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
+#' @importFrom grid arrow unit
 #' @importFrom IRanges IRanges
 #' @importFrom jsonlite read_json
 #' @importFrom knitr asis_output kable opts_knit
