@@ -58,6 +58,40 @@ NULL
 
 
 
+# mapGenesToRownames ===========================================================
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToRownames",
+    signature = signature("DataFrame"),
+    definition = function(object, genes) {
+        assertIsGene2symbol(object)
+        if (any(genes %in% object[["geneName"]])) {
+            # User passed in gene names, but the object uses gene IDs.
+            assert_is_subset(genes, object[["geneName"]])
+            # FIXME Rethink how to approach this check.
+            # assertAllAreUniqueGeneNames(object, genes)
+            match <- match(x = genes, table = object[["geneName"]])
+            assert_all_are_not_na(match)
+            return <- rownames(object[match, , drop = FALSE])
+        } else if (any(genes %in% object[["geneID"]])) {
+            # User passed in gene IDs, but the object uses gene names.
+            # This scenario isn't common but we're supporting it anyway.
+            assert_is_subset(genes, object[["geneID"]])
+            match <- match(x = genes, table = object[["geneID"]])
+            assert_all_are_not_na(match)
+            return <- rownames(object[match, , drop = FALSE])
+        } else {
+            stop(.mapGenesError)
+        }
+        return <- as.character(return)
+        names(return) <- genes
+        return
+    }
+)
+
+
+
 #' @rdname mapGenes
 #' @export
 setMethod(
@@ -67,34 +101,43 @@ setMethod(
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
-
         # Return early if the `genes` vector already matches rownames.
         if (all(genes %in% rownames(object))) {
             return(genes)
         }
-
         # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
+        # Using the DataFrame method.
+        mapGenesToRownames(object = g2s, genes = genes)
+    }
+)
 
-        if (any(genes %in% g2s[["geneName"]])) {
-            # User passed in gene names, but the object uses gene IDs.
-            assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes)
-            match <- match(x = genes, table = g2s[["geneName"]])
+
+
+# mapGenesToIDs ================================================================
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToIDs",
+    signature = signature("DataFrame"),
+    definition = function(object, genes) {
+        assertIsGene2symbol(object)
+        if (any(genes %in% object[["geneID"]])) {
+            # User passed in gene identifiers.
+            assert_is_subset(genes, object[["geneID"]])
+            return(genes)
+        } else if (any(genes %in% object[["geneName"]])) {
+            # User passed in gene names.
+            assert_is_subset(genes, object[["geneName"]])
+            # FIXME Rethink this step.
+            # assertAllAreUniqueGeneNames(object, genes)
+            match <- match(x = genes, table = object[["geneName"]])
             assert_all_are_not_na(match)
-            return <- rownames(g2s[match, , drop = FALSE])
-        } else if (any(genes %in% g2s[["geneID"]])) {
-            # User passed in gene IDs, but the object uses gene names.
-            # This scenario isn't common but we're supporting it anyway.
-            assert_is_subset(genes, g2s[["geneID"]])
-            match <- match(x = genes, table = g2s[["geneID"]])
-            assert_all_are_not_na(match)
-            return <- rownames(g2s[match, , drop = FALSE])
+            return <- object[match, "geneID", drop = TRUE]
         } else {
             stop(.mapGenesError)
         }
-
         return <- as.character(return)
         names(return) <- genes
         return
@@ -112,26 +155,39 @@ setMethod(
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
-
         # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
+        # Using DataFrame method.
+        mapGenesToIDs(object = g2s, genes = genes)
+    }
+)
 
-        if (any(genes %in% g2s[["geneID"]])) {
+
+
+# mapGenesToSymbols ============================================================
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToSymbols",
+    signature = signature("DataFrame"),
+    definition = function(object, genes) {
+        assertIsGene2symbol(object)
+        if (any(genes %in% object[["geneID"]])) {
             # User passed in gene identifiers.
-            assert_is_subset(genes, g2s[["geneID"]])
-            return(genes)
-        } else if (any(genes %in% g2s[["geneName"]])) {
-            # User passed in gene names.
-            assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes)
-            match <- match(x = genes, table = g2s[["geneName"]])
+            assert_is_subset(genes, object[["geneID"]])
+            match <- match(x = genes, table = object[["geneID"]])
             assert_all_are_not_na(match)
-            return <- g2s[match, "geneID", drop = TRUE]
+            return <- object[match, "geneName", drop = TRUE]
+        } else if (any(genes %in% object[["geneName"]])) {
+            # User passed in gene names.
+            assert_is_subset(genes, object[["geneName"]])
+            # FIXME Rethink this step.
+            # assertAllAreUniqueGeneNames(object, genes)
+            return(genes)
         } else {
             stop(.mapGenesError)
         }
-
         return <- as.character(return)
         names(return) <- genes
         return
@@ -149,31 +205,13 @@ setMethod(
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
-
         # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
         if (is.null(g2s)) {
             stop(.mapGenesError)
         }
         assert_are_identical(rownames(g2s), rownames(object))
-
-        if (any(genes %in% g2s[["geneID"]])) {
-            # User passed in gene identifiers.
-            assert_is_subset(genes, g2s[["geneID"]])
-            match <- match(x = genes, table = g2s[["geneID"]])
-            assert_all_are_not_na(match)
-            return <- g2s[match, "geneName", drop = TRUE]
-        } else if (any(genes %in% g2s[["geneName"]])) {
-            # User passed in gene names.
-            assert_is_subset(genes, g2s[["geneName"]])
-            assertAllAreUniqueGeneNames(object, genes)
-            return(genes)
-        } else {
-            stop(.mapGenesError)
-        }
-
-        return <- as.character(return)
-        names(return) <- genes
-        return
+        # Using the DataFrame method.
+        mapGenesToSymbols(object = g2s, genes = genes)
     }
 )

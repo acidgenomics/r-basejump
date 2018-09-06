@@ -6,8 +6,11 @@
 \alias{mapGenesToRownames}
 \alias{mapGenesToSymbols}
 \alias{mapGenes}
+\alias{mapGenesToRownames,DataFrame-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
+\alias{mapGenesToIDs,DataFrame-method}
 \alias{mapGenesToIDs,SummarizedExperiment-method}
+\alias{mapGenesToSymbols,DataFrame-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map Genes}
 \usage{
@@ -17,9 +20,15 @@ mapGenesToRownames(object, ...)
 
 mapGenesToSymbols(object, ...)
 
+\S4method{mapGenesToRownames}{DataFrame}(object, genes)
+
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes)
 
+\S4method{mapGenesToIDs}{DataFrame}(object, genes)
+
 \S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes)
+
+\S4method{mapGenesToSymbols}{DataFrame}(object, genes)
 
 \S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes)
 }
