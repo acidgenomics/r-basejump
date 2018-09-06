@@ -21,16 +21,31 @@
 #'   to use [sys.function()] by default.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
+#'
+#' @examples
+#' example <- function(object, xxx, ...) {
+#'     args <- setArgsToDoCall(
+#'         args = list(
+#'             object = object,
+#'             collapse = " "
+#'         ),
+#'         removeArgs = "xxx",
+#'         verbose = TRUE
+#'     )
+#'     do.call(what = paste, args = args)
+#' }
+#' example(c("hello", "world"))
 setArgsToDoCall <- function(
     args,
     removeArgs = NULL,
-    call,
-    fun,
+    call = sys.call(which = sys.parent()),
+    fun = sys.function(which = sys.parent()),
     verbose = FALSE
 ) {
     assert_is_list(args)
     assert_has_names(args)
     assert_is_any_of(removeArgs, c("character", "NULL"))
+    call <- standardise_call(call)
     assert_is_call(call)
     assert_is_function(fun)
     assert_is_a_bool(verbose)
