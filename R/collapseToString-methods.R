@@ -116,6 +116,8 @@ setMethod(
         # Coerce to tibble to perform the collapse.
         collapse <- object %>%
             as(Class = "tbl_df") %>%
+            # Ensure rownames are unset in collapsed tibble.
+            mutate(rowname = NULL) %>%
             mutate_all(funs(sanitizeNA)) %>%
             summarize_all(funs(
                 collapseToString(
