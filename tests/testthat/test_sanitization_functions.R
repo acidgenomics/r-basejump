@@ -52,7 +52,7 @@ test_that("collapseToString : DataFrame", {
             as("DataFrame") %>%
             head() %>%
             collapseToString(sort = TRUE, unique = TRUE) %>%
-            .[, "mpg"],
+            .[["mpg"]],
         expected = mpgString
     )
 })
