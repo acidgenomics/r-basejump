@@ -96,8 +96,9 @@ plotCorrelationHeatmap(rse_small, color = NULL)
 \item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 }
 
-Other Plot Functions: \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}}, \code{\link{themes}}
+Other Plot Functions: \code{\link{ggplot2_geoms}},
+  \code{\link{ggplot2_themes}}, \code{\link{plotHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }
 \author{
 Michael Steinbaugh

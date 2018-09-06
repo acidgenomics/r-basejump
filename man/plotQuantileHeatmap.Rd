@@ -86,8 +86,10 @@ plotQuantileHeatmap(
 )
 }
 \seealso{
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}}, \code{\link{themes}}
+Other Plot Functions: \code{\link{ggplot2_geoms}},
+  \code{\link{ggplot2_themes}},
+  \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotHeatmap}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh
