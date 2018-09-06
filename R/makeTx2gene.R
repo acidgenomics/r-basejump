@@ -90,7 +90,7 @@ makeTx2geneFromGFF <- function(file) {
     data <- filter(data, !is.na(!!sym("transcriptID")))
 
     # Get a vector of unique transcript IDs.
-    transcriptIDs <- sort(unique(data[["transcriptID"]]))
+    transcriptIDs <- unique(data[["transcriptID"]])
 
     if (type == "GFF") {
         assert_is_subset("parent", colnames(data))
