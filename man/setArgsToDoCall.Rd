@@ -4,7 +4,9 @@
 \alias{setArgsToDoCall}
 \title{Set Arguments to Do Call}
 \usage{
-setArgsToDoCall(args, removeArgs = NULL, call, fun, verbose = FALSE)
+setArgsToDoCall(args, removeArgs = NULL, call = sys.call(which =
+  sys.parent()), fun = sys.function(which = sys.parent()),
+  verbose = FALSE)
 }
 \arguments{
 \item{args}{
@@ -34,6 +36,20 @@ recommended to enable this when debugging.}
 }
 \description{
 Set Arguments to Do Call
+}
+\examples{
+example <- function(object, xxx, ...) {
+    args <- setArgsToDoCall(
+        args = list(
+            object = object,
+            collapse = " "
+        ),
+        removeArgs = "xxx",
+        verbose = TRUE
+    )
+    do.call(what = paste, args = args)
+}
+example(c("hello", "world"))
 }
 \seealso{
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
