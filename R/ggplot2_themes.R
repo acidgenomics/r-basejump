@@ -1,5 +1,5 @@
 # nolint start
-# snake_case, following ggplot2 conventions.
+# Using snake case, following ggplot2 conventions.
 
 
 
