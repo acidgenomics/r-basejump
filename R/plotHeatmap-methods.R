@@ -126,7 +126,6 @@ setMethod(
         # Filter out any zero count rows when row scaling, otherwise hclust
         # calculation will error.
         if (scale == "row") {
-            message("Row scaling... dropping rows with all zero counts")
             mat <- mat[rowSums(mat) > 0L, , drop = FALSE]
         }
 
