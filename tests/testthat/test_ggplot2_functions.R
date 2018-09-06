@@ -88,10 +88,19 @@ with_parameters_test_that(
         # Grid mode.
         object <- p + fun(grid = TRUE)
         expect_identical(
-            object[["theme"]][["panel.grid.major"]][["colour"]],
-            gridColor
+            object = object[["theme"]][["panel.grid.major"]][["colour"]],
+            expected = gridColor
         )
         # Minimal mode.
+        object <- p + fun(minimal = TRUE)
+        expect_identical(
+            object = object[["theme"]][["panel.border"]],
+            expected = structure(
+                .Data = list(),
+                class = c("element_blank", "element")
+            )
+        )
+
     },
     fun = list(
         paperwhite = theme_paperwhite,
