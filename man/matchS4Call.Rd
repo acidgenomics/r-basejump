@@ -6,6 +6,10 @@
 \usage{
 matchS4Call(verbose = FALSE)
 }
+\arguments{
+\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
+recommended to enable this when debugging.}
+}
 \value{
 \code{call}.
 }
