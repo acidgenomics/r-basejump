@@ -78,12 +78,9 @@ p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
 
-Other Plot Functions: \code{\link{ggplot2_geoms}},
-  \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}}
+Other ggplot2 Functions: \code{\link{ggplot2_geoms}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Plot Functions}
+\concept{ggplot2 Functions}
