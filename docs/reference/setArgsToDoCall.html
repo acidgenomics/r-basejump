@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Flat Files from S4 Object — flatFiles • basejump</title>
+<title>Set Arguments to Do Call — setArgsToDoCall • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Flat Files from S4 Object — flatFiles" />
+<meta property="og:title" content="Set Arguments to Do Call — setArgsToDoCall" />
 
-<meta property="og:description" content="Extract the slots inside an S4 object for archival storage." />
+<meta property="og:description" content="Set Arguments to Do Call" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,57 +105,100 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Flat Files from S4 Object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/flatFiles-methods.R'><code>R/flatFiles-methods.R</code></a></small>
-    <div class="hidden name"><code>flatFiles.Rd</code></div>
+    <h1>Set Arguments to Do Call</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/setArgsToDoCall.R'><code>R/setArgsToDoCall.R</code></a></small>
+    <div class="hidden name"><code>setArgsToDoCall.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract the slots inside an S4 object for archival storage.</p>
+    <p>Set Arguments to Do Call</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>flatFiles</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>setArgsToDoCall</span>(<span class='no'>args</span>, <span class='kw'>removeArgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>call</span> <span class='kw'>=</span> <span class='fu'>sys.call</span>(<span class='kw'>which</span> <span class='kw'>=</span>
+  <span class='fu'>sys.parent</span>()), <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>sys.function</span>(<span class='kw'>which</span> <span class='kw'>=</span> <span class='fu'>sys.parent</span>()),
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>args</th>
+      <td><p>The default method expects a <em>list</em> of arguments to the function
+    call (the <code>names</code> attribute of <code>args</code> gives the argument names).
+    See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/do.call'>do.call</a></code> for the details.</p>    
+<p>Specific methods can support other objects.
+    Please refer to the documentation of a particular method for the details.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>removeArgs</th>
+      <td><p><code>character</code>. Names of objects to remove from <code>call</code> (e.g.
+<code>match.call()</code>) and <code>fun</code> (e.g. <code>sys.function()</code>) before passing to
+<code>do.call()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>call</th>
+      <td><p><code>call</code>. Call to match against. Recommended to use either
+<code>match.call()</code> or <code><a href='matchS4Call.html'>matchS4Call()</a></code> (for S4 method).</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code>function</code>. Function containing the <code>do.call()</code> step. Recommended
+to use <code>sys.function()</code> by default.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p><code>boolean</code>. Run the function with verbose messages? It is only
+recommended to enable this when debugging.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>list</code> containing the S4 object slots.</p>
+    <p><code>list</code>. Arguments to pass to <code>do.call()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Developer Functions: <code><a href='cleanSystemLibrary.html'>cleanSystemLibrary</a></code>,
   <code><a href='detectHPC.html'>detectHPC</a></code>, <code><a href='dots.html'>dots</a></code>,
+  <code><a href='flatFiles.html'>flatFiles</a></code>,
   <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
   <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
   <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
   <code><a href='matchS4Call.html'>matchS4Call</a></code>, <code><a href='methodFormals.html'>methodFormals</a></code>,
   <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
-  <code><a href='printString.html'>printString</a></code>, <code><a href='setArgsToDoCall.html'>setArgsToDoCall</a></code>,
+  <code><a href='printString.html'>printString</a></code>,
   <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>flatFiles</span>(<span class='no'>rse_small</span>)
-<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
-#&gt; [5] "elementMetadata" "metadata"       </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>example</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>xxx</span>, <span class='no'>...</span>) {
+    <span class='no'>args</span> <span class='kw'>&lt;-</span> <span class='fu'>setArgsToDoCall</span>(
+        <span class='kw'>args</span> <span class='kw'>=</span> <span class='fu'>list</span>(
+            <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
+            <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>
+        ),
+        <span class='kw'>removeArgs</span> <span class='kw'>=</span> <span class='st'>"xxx"</span>,
+        <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+    )
+    <span class='fu'>do.call</span>(<span class='kw'>what</span> <span class='kw'>=</span> <span class='no'>paste</span>, <span class='kw'>args</span> <span class='kw'>=</span> <span class='no'>args</span>)
+}
+<span class='fu'>example</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))</div><div class='output co'>#&gt; $names
+#&gt; [1] "object"   "collapse"
+#&gt; 
+#&gt; $call
+#&gt; example(object = c("hello", "world"))
+#&gt; 
+#&gt; $fun
+#&gt; function (object, xxx, ...) 
+#&gt; {
+#&gt;     args &lt;- setArgsToDoCall(args = list(object = object, collapse = " "), 
+#&gt;         removeArgs = "xxx", verbose = TRUE)
+#&gt;     do.call(what = paste, args = args)
+#&gt; }
+#&gt; &lt;environment: 0x120dc3948&gt;
+#&gt; </div><div class='output co'>#&gt; [1] "hello world"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

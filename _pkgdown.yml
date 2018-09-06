@@ -41,17 +41,16 @@ reference:
     - selectSamples
   - title: Sanitization Functions
     contents:
-    - fixNA
     - makeNames
-    - removeNA
+    - starts_with("remove")
     - starts_with("sanitize")
   - title: Plot Functions
     contents:
     - starts_with("plot")
   - title: ggplot2 Functions
     contents:
-    - starts_with("geom_")
-    - starts_with("theme_")
+    - ggplot2_geoms
+    - ggplot2_themes
   - title: Math and Science Functions
     contents:
     - starts_with("aggregate")
@@ -85,6 +84,7 @@ reference:
     - methodFormals
     - multiassignAsEnvir
     - printString
+    - setArgsToDoCall
     - uniteInterestingGroups
   - title: R Documentation Functions
     contents:

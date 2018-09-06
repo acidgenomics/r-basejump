@@ -185,34 +185,34 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 <span class='co'># makeGene2symbolFromGFF ====</span>
 <span class='co'># GTF</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 17 rows and 2 columns
-#&gt;                                geneID    geneName
-#&gt;                           &lt;character&gt; &lt;character&gt;
-#&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1
-#&gt; ENSMUSG00000051951 ENSMUSG00000051951        Xkr4
-#&gt; ENSMUSG00000064842 ENSMUSG00000064842     Gm26206
-#&gt; ENSMUSG00000088333 ENSMUSG00000088333     Gm27396
-#&gt; ENSMUSG00000089699 ENSMUSG00000089699      Gm1992
-#&gt; ...                               ...         ...
-#&gt; ENSMUSG00000103147 ENSMUSG00000103147      Gm7341
-#&gt; ENSMUSG00000103161 ENSMUSG00000103161     Gm38148
-#&gt; ENSMUSG00000103201 ENSMUSG00000103201     Gm37329
-#&gt; ENSMUSG00000103377 ENSMUSG00000103377     Gm37180
-#&gt; ENSMUSG00000104017 ENSMUSG00000104017     Gm37363</div><div class='input'>
+#&gt;                                geneID      geneName
+#&gt;                           &lt;character&gt;   &lt;character&gt;
+#&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik
+#&gt; ENSMUSG00000064842 ENSMUSG00000064842       Gm26206
+#&gt; ENSMUSG00000051951 ENSMUSG00000051951          Xkr4
+#&gt; ENSMUSG00000102851 ENSMUSG00000102851       Gm18956
+#&gt; ENSMUSG00000103377 ENSMUSG00000103377       Gm37180
+#&gt; ...                               ...           ...
+#&gt; ENSMUSG00000102348 ENSMUSG00000102348       Gm10568
+#&gt; ENSMUSG00000102592 ENSMUSG00000102592       Gm38385
+#&gt; ENSMUSG00000088333 ENSMUSG00000088333       Gm27396
+#&gt; ENSMUSG00000102343 ENSMUSG00000102343       Gm37381
+#&gt; ENSMUSG00000025900 ENSMUSG00000025900           Rp1</div><div class='input'>
 <span class='co'># GFF3</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 20 rows and 2 columns
-#&gt;                                geneID    geneName
-#&gt;                           &lt;character&gt; &lt;character&gt;
-#&gt; ENSMUSG00000025900 ENSMUSG00000025900         Rp1
-#&gt; ENSMUSG00000025902 ENSMUSG00000025902       Sox17
-#&gt; ENSMUSG00000051951 ENSMUSG00000051951        Xkr4
-#&gt; ENSMUSG00000064842 ENSMUSG00000064842     Gm26206
-#&gt; ENSMUSG00000088333 ENSMUSG00000088333     Gm27396
-#&gt; ...                               ...         ...
-#&gt; ENSMUSG00000103161 ENSMUSG00000103161     Gm38148
-#&gt; ENSMUSG00000103201 ENSMUSG00000103201     Gm37329
-#&gt; ENSMUSG00000103377 ENSMUSG00000103377     Gm37180
-#&gt; ENSMUSG00000104017 ENSMUSG00000104017     Gm37363
-#&gt; ENSMUSG00000104123 ENSMUSG00000104123     Gm37483</div></pre>
+#&gt;                                geneID      geneName
+#&gt;                           &lt;character&gt;   &lt;character&gt;
+#&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik
+#&gt; ENSMUSG00000064842 ENSMUSG00000064842       Gm26206
+#&gt; ENSMUSG00000051951 ENSMUSG00000051951          Xkr4
+#&gt; ENSMUSG00000102851 ENSMUSG00000102851       Gm18956
+#&gt; ENSMUSG00000103377 ENSMUSG00000103377       Gm37180
+#&gt; ...                               ...           ...
+#&gt; ENSMUSG00000102343 ENSMUSG00000102343       Gm37381
+#&gt; ENSMUSG00000025900 ENSMUSG00000025900           Rp1
+#&gt; ENSMUSG00000102948 ENSMUSG00000102948        Gm6101
+#&gt; ENSMUSG00000104123 ENSMUSG00000104123       Gm37483
+#&gt; ENSMUSG00000025902 ENSMUSG00000025902         Sox17</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
