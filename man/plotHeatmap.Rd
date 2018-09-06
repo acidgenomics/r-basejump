@@ -8,11 +8,12 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{SummarizedExperiment}(object, interestingGroups,
-  scale = c("none", "row", "column"), clusterRows = TRUE,
-  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = NULL, borderColor = NULL, title = NULL, ...)
+\S4method{plotHeatmap}{SummarizedExperiment}(object,
+  interestingGroups = NULL, scale = c("row", "column", "none"),
+  clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = NULL, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}

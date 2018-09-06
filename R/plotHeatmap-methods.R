@@ -74,8 +74,8 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(
         object,
-        interestingGroups,
-        scale = c("none", "row", "column"),
+        interestingGroups = NULL,
+        scale = c("row", "column", "none"),
         clusterRows = TRUE,
         clusterCols = TRUE,
         showRownames = FALSE,
@@ -95,10 +95,7 @@ setMethod(
             object = object,
             interestingGroups = interestingGroups
         )
-        if (
-            is.character(interestingGroups) &&
-            !identical(interestingGroups, "sampleName")
-        ) {
+        if (length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
         }
         scale <- match.arg(scale)

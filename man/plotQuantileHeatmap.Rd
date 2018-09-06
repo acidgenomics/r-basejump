@@ -9,10 +9,11 @@
 plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object,
-  interestingGroups, n = 10L, clusterRows = TRUE, clusterCols = TRUE,
-  showRownames = FALSE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = viridis::viridis, legend = FALSE,
-  legendColor = NULL, borderColor = NULL, title = NULL, ...)
+  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
+  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
+  legend = FALSE, legendColor = NULL, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}

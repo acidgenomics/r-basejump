@@ -10,7 +10,7 @@
 plotCorrelationHeatmap(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
-  interestingGroups, method = c("pearson", "spearman"),
+  interestingGroups = NULL, method = c("pearson", "spearman"),
   clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = NULL, borderColor = NULL,

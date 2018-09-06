@@ -50,7 +50,7 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(
         object,
-        interestingGroups,
+        interestingGroups = NULL,
         method = c("pearson", "spearman"),
         clusteringMethod = "ward.D2",
         showRownames = TRUE,
@@ -70,10 +70,7 @@ setMethod(
             object = object,
             interestingGroups = interestingGroups
         )
-        if (
-            is.character(interestingGroups) &&
-            !identical(interestingGroups, "sampleName")
-        ) {
+        if (length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
         }
         method <- match.arg(method)
