@@ -446,9 +446,9 @@ test_that("makeGene2symbolFromGFF : Minimal GTF", {
     expect_identical(
         object = head(object, 2L),
         expected = DataFrame(
-            geneID = c("ENSMUSG00000025900", "ENSMUSG00000051951"),
-            geneName = c("Rp1", "Xkr4"),
-            row.names = c("ENSMUSG00000025900", "ENSMUSG00000051951")
+            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
+            geneName = c("4933401J01Rik", "Gm26206"),
+            row.names = c("ENSMUSG00000102693", "ENSMUSG00000064842")
         )
     )
 })
@@ -460,9 +460,9 @@ test_that("makeGene2symbolFromGFF : Minimal GFF3", {
     expect_identical(
         object = head(object, 2L),
         expected = DataFrame(
-            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
-            geneName = c("Rp1", "Sox17"),
-            row.names = c("ENSMUSG00000025900", "ENSMUSG00000025902")
+            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
+            geneName = c("4933401J01Rik", "Gm26206"),
+            row.names = c("ENSMUSG00000102693", "ENSMUSG00000064842")
         )
     )
 })
@@ -710,9 +710,9 @@ test_that("makeTx2geneFromGFF : Minimal GTF", {
     expect_identical(
         object = head(object, 2L),
         expected = DataFrame(
-            transcriptID = c("ENSMUST00000070533", "ENSMUST00000082908"),
-            geneID = c("ENSMUSG00000051951", "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000070533", "ENSMUST00000082908")
+            transcriptID = c("ENSMUST00000193812", "ENSMUST00000082908"),
+            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000193812", "ENSMUST00000082908")
         )
     )
 })
@@ -724,9 +724,9 @@ test_that("makeTx2geneFromGFF : Minimal GFF3", {
     expect_identical(
         object = head(object, 2L),
         expected = DataFrame(
-            transcriptID = c("ENSMUST00000027032", "ENSMUST00000027035"),
-            geneID = c("ENSMUSG00000025900", "ENSMUSG00000025902"),
-            row.names = c("ENSMUST00000027032", "ENSMUST00000027035")
+            transcriptID = c("ENSMUST00000193812", "ENSMUST00000082908"),
+            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
+            row.names = c("ENSMUST00000193812", "ENSMUST00000082908")
         )
     )
 })
