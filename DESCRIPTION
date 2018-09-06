@@ -178,6 +178,7 @@ Collate:
     'saveData.R'
     'saveRdExamples.R'
     'selectSamples-methods.R'
+    'setArgsToDoCall.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'themes.R'
