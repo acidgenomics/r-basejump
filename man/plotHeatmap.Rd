@@ -9,7 +9,7 @@
 plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(object,
-  interestingGroups = NULL, scale = c("row", "column", "none"),
+  interestingGroups = NULL, scale = c("none", "row", "column"),
   clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = NULL, borderColor = NULL,

@@ -75,7 +75,7 @@ setMethod(
     definition = function(
         object,
         interestingGroups = NULL,
-        scale = c("row", "column", "none"),
+        scale = c("none", "row", "column"),
         clusterRows = TRUE,
         clusterCols = TRUE,
         showRownames = FALSE,
