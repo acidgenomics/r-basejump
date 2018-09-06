@@ -4,7 +4,7 @@
 \alias{setArgsToDoCall}
 \title{Set Arguments to Do Call}
 \usage{
-setArgsToDoCall(args, removeArgs = NULL, call, fun)
+setArgsToDoCall(args, removeArgs = NULL, call, fun, verbose = FALSE)
 }
 \arguments{
 \item{args}{
@@ -25,6 +25,9 @@ setArgsToDoCall(args, removeArgs = NULL, call, fun)
 
 \item{fun}{\code{function}. Function containing the \code{\link[=do.call]{do.call()}} step. Recommended
 to use \code{\link[=sys.function]{sys.function()}} by default.}
+
+\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
+recommended to enable this when debugging.}
 }
 \value{
 \code{list}. Arguments to pass to \code{\link[=do.call]{do.call()}}.

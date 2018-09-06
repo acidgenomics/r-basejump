@@ -11,6 +11,7 @@
 #' @export
 #'
 #' @inheritParams BiocGenerics::do.call
+#' @inheritParams general
 #' @param removeArgs `character`. Names of objects to remove from `call` (e.g.
 #'   [match.call()]) and `fun` (e.g. [sys.function()]) before passing to
 #'   `do.call()`.
@@ -24,14 +25,16 @@ setArgsToDoCall <- function(
     args,
     removeArgs = NULL,
     call,
-    fun
+    fun,
+    verbose = FALSE
 ) {
     assert_is_list(args)
     assert_has_names(args)
     assert_is_any_of(removeArgs, c("character", "NULL"))
     assert_is_call(call)
     assert_is_function(fun)
-    # FIXME Improve the assert checks to check the names passed in here.
+    assert_is_a_bool(verbose)
+    # TODO Improve the assert checks to check the names passed in here.
 
     callArgs <- call %>%
         as.list() %>%
@@ -48,6 +51,16 @@ setArgsToDoCall <- function(
         x = names(args),
         y = c(removeArgs, "...")
     )]
+
+    # Enable verbose mode, for debugging.
+    if (isTRUE(verbose)) {
+        stack <- list(
+            names = names(args),
+            call = call,
+            fun = fun
+        )
+        print(stack)
+    }
 
     stopifnot(!any(duplicated(names(args))))
     args

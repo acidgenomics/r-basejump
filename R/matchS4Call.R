@@ -11,6 +11,7 @@
 #' @export
 #'
 #' @inheritParams base::sys.call
+#' @inheritParams general
 #'
 #' @seealso
 #' - [base::sys.calls()].
