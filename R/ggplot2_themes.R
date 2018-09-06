@@ -1,11 +1,11 @@
 # nolint start
-# snake_case, following ggplot2 conventions
+# snake_case, following ggplot2 conventions.
 
 
 
-#' Complete Themes
+#' ggplot2 Themes
 #'
-#' [ggplot2](http://ggplot2.tidyverse.org) themes.
+#' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
 #' All themes are based off of [ggplot2::theme_linedraw()], but with
 #' modifications and extra user-definable parameters.
@@ -22,7 +22,7 @@
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
 #'
-#' @name themes
+#' @name ggplot2_themes
 #' @family Plot Functions
 #' @author Michael Steinbaugh
 #'
@@ -61,7 +61,7 @@ NULL
 
 
 
-#' @rdname themes
+#' @rdname ggplot2_themes
 #' @export
 theme_paperwhite <- function(
     base_size = 14L,
@@ -130,7 +130,7 @@ theme_paperwhite <- function(
 
 
 
-#' @rdname themes
+#' @rdname ggplot2_themes
 #' @export
 theme_midnight <- function(
     # Formals are set below.
