@@ -1,9 +1,3 @@
-# TODO See if we can set default `call` and `fun` arguments.
-# call = match.call
-# fun = sys.function(sys.parent())
-
-
-
 #' Set Arguments to Do Call
 #'
 #' @family Developer Functions
