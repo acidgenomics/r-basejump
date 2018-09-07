@@ -6,6 +6,11 @@
 #' @inheritParams general
 #'
 #' @return Varies, depending upon the method.
+#'
+#' @seealso
+#' - [methods::isGeneric()]
+#' - [methods::showMethods()]
+#' - [methods::getMethod()]
 NULL
 
 
