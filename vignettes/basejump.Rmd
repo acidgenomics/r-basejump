@@ -60,20 +60,11 @@ The [basejump][] package defines generics and methods for object-oriented progra
 - [Bioconductor for Genomic Data Science](http://kasperdanielhansen.github.io/genbioconductor), Kasper Hansen, 2016.
 - [S4 System Development in Bioconductor](https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf), Patrick Aboyoun, 2010.
 
-Here's the current list of S4 generics and/or methods exported by the package:
+Here's the current list of S4 generics exported by the package:
 
 ```{r}
-exports <- getNamespaceExports("basejump") %>%
-    sort() %>%
-    .[!grepl("^\\.", .)]
-isS4 <- vapply(
-    X = exports,
-    FUN = function(x) {
-        isS4(get(x, envir = asNamespace("basejump")))
-    },
-    FUN.VALUE = logical(1L)
-)
-exports[isS4]
+generics <- getGenerics(asNamespace("basejump"))
+markdownList(generics@.Data)
 ```
 
 In [R][], you can check whether a function is using the S4 object system with the `base::isS4()` function. Additionally, `methods::showMethods()` and `methods::getMethod()`. In contrast, to obtain information on functions using the [S3][] object system, use `utils::methods()` instead.
