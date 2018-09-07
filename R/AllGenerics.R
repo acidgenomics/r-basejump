@@ -345,6 +345,17 @@ setGeneric(
 
 
 
+#' @rdname sanitizePercent
+#' @export
+setGeneric(
+    name = "sanitizePercent",
+    def = function(object, ...) {
+        standardGeneric("sanitizePercent")
+    }
+)
+
+
+
 #' @rdname selectSamples
 #' @export
 setGeneric(

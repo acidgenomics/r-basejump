@@ -175,6 +175,7 @@ Collate:
     'sampleData-methods.R'
     'sampleNames-methods.R'
     'sanitizeNA-methods.R'
+    'sanitizePercent-methods.R'
     'sanitizeRowData.R'
     'sanitizeSampleData.R'
     'saveData.R'

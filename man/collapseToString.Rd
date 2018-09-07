@@ -81,6 +81,7 @@ ggplot2::mpg \%>\%
 
 Other Sanitization Functions: \code{\link{camel}},
   \code{\link{removeNA}}, \code{\link{sanitizeNA}},
+  \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
