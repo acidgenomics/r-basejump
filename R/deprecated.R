@@ -147,11 +147,11 @@ sanitizeAnnotable <- function(...) {
     sanitizeRowData(...)
 }
 
-#' @rdname defunct
-#' @export
-tx2gene <- function(...) {
-    .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
-}
+# #' @rdname defunct
+# #' @export
+# tx2gene <- function(...) {
+#     .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
+# }
 
 #' @rdname deprecated
 #' @export
