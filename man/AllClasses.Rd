@@ -14,4 +14,10 @@ Varies, depending upon the method.
 \description{
 S4 Classes
 }
+\seealso{
+\itemize{
+\item \code{\link[methods:getClass]{methods::getClass()}}.
+\item \code{\link[methods:isClass]{methods::isClass()}}.
+}
+}
 \keyword{internal}

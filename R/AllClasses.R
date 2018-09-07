@@ -7,6 +7,10 @@
 #' @inheritParams general
 #'
 #' @return Varies, depending upon the method.
+#'
+#' @seealso
+#' - [methods::getClass()].
+#' - [methods::isClass()].
 NULL
 
 
