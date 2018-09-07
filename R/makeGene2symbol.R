@@ -75,8 +75,7 @@ NULL
         .makeGeneNamesUnique() %>%
         as("DataFrame")
 
-    assertIsGene2symbol(data)
-    data
+    new("gene2symbol", data)
 }
 
 
