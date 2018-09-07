@@ -38,13 +38,12 @@ NULL
         mutate_all(as.character) %>%
         as("DataFrame") %>%
         set_rownames(.[["transcriptID"]])
-    assertIsTx2gene(data)
     message(paste(
         "tx2gene mappings:",
         length(unique(data[["transcriptID"]])), "transcripts,",
         length(unique(data[["geneID"]])), "genes"
     ))
-    data
+    new("tx2gene", data)
 }
 
 
