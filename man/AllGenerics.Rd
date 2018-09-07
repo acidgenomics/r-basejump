@@ -4,11 +4,14 @@
 \alias{AllGenerics}
 \alias{plotGene}
 \alias{plotQC}
+\alias{tx2gene}
 \title{S4 Generics}
 \usage{
 plotGene(object, ...)
 
 plotQC(object, ...)
+
+tx2gene(object, ...)
 }
 \arguments{
 \item{object}{Object.}
