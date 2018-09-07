@@ -13,7 +13,13 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' gene2symbol(rse_small) %>% head()
+#' x <-gene2symbol(rse_small)
+#' print(x)
+#'
+#' # New gene2symbol object ====
+#' x <- new("gene2symbol", gene2symbol(rse_small))
+#' class(x)
+#' validObject(x)
 NULL
 
 

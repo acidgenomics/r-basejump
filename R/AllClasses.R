@@ -17,5 +17,10 @@ gene2symbol <- setClass(
     contains = "DataFrame"
 )
 
-# TODO Add working example
-# new("gene2symbol", g2s)
+setValidity(
+    Class = "gene2symbol",
+    method = function(object) {
+        assertIsGene2symbol(object)
+        TRUE
+    }
+)

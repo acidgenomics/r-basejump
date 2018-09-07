@@ -28,7 +28,13 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
-gene2symbol(rse_small) \%>\% head()
+x <-gene2symbol(rse_small)
+print(x)
+
+# New gene2symbol object ====
+x <- new("gene2symbol", gene2symbol(rse_small))
+class(x)
+validObject(x)
 }
 \seealso{
 Other Data Functions: \code{\link{counts}},
