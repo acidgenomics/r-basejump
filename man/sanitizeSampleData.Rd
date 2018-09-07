@@ -38,7 +38,8 @@ print(to)
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
   \code{\link{collapseToString}}, \code{\link{removeNA}},
-  \code{\link{sanitizeNA}}, \code{\link{sanitizeRowData}}
+  \code{\link{sanitizeNA}}, \code{\link{sanitizePercent}},
+  \code{\link{sanitizeRowData}}
 }
 \author{
 Michael Steinbaugh

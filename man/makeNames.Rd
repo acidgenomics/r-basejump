@@ -269,6 +269,7 @@ S4 object classes.
 
 Other Sanitization Functions: \code{\link{collapseToString}},
   \code{\link{removeNA}}, \code{\link{sanitizeNA}},
+  \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }

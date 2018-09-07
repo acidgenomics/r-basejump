@@ -61,6 +61,7 @@ print(to)
 \seealso{
 Other Sanitization Functions: \code{\link{camel}},
   \code{\link{collapseToString}}, \code{\link{sanitizeNA}},
+  \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}},
   \code{\link{sanitizeSampleData}}
 }
