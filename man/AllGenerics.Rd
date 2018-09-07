@@ -24,4 +24,11 @@ Varies, depending upon the method.
 \description{
 S4 Generics
 }
+\seealso{
+\itemize{
+\item \code{\link[methods:isGeneric]{methods::isGeneric()}}
+\item \code{\link[methods:showMethods]{methods::showMethods()}}
+\item \code{\link[methods:getMethod]{methods::getMethod()}}
+}
+}
 \keyword{internal}
