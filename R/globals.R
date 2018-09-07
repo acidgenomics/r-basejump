@@ -29,9 +29,11 @@ rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
 #' @examples
 #' cat(separatorBar)
 separatorBar <- paste0(
-    rep(x = "=", times = min(c(getOption("width", 72L), 72L))),
+    rep(x = "─", times = min(c(getOption("width", 72L), 72L))),
     collapse = ""
 )
+
+
 
 #' Update Message
 #' @keywords internal
