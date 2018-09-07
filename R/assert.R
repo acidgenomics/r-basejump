@@ -258,50 +258,69 @@ assertFormalCompress <- function(object) {
 #' @inherit assert
 #' @export
 #'
-#' @param object Object containing gene identifiers in `rownames`. Cannot
-#'   contain gene names, or the check will fail.
-#' @param genes `character`. Gene identifiers.
-#' @param gene2symbol `DataFrame`, `tbl_df`, or `NULL`. Gene-to-symbol mappings.
+#' @param object Object class supporting `rownames`. All rownames in this object
+#'   must intersect with the rownames defined in the `gene2symbol` argument.
+#' @param genes `character`. Gene identifiers. Note that gene names (symbols)
+#'   are also supported, but not recommended if the stable IDs can be easily
+#'   provided instead.
+#' @param gene2symbol `gene2symbol`. Gene-to-symbol mappings. Must contain
+#'   `geneID` and `geneName` columns, with rownames defined. All of the `object`
+#'   rownames must be defined here, otherwise the function will error.
 #'
 #' @examples
-#' gene2symbol <- tibble(
-#'     geneID = c("ENSG00000000003", "ENSG00000000005"),
-#'     geneName = c("TSPAN6", "TNMD")
-#' )
-#' genes <- pull(gene2symbol, "geneID")
 #' object <- DataFrame(
-#'     "sample_1" = c(1L, 2L),
-#'     "sample_2" = c(3L, 4L),
-#'     row.names = genes
+#'     "sample1" = c(1L, 2L),
+#'     "sample2" = c(3L, 4L),
+#'     row.names = c("gene1", "gene2")
 #' )
-#' assertFormalGene2symbol(object, genes, gene2symbol)
+#' print(object)
+#'
+#' gene2symbol <- new(
+#'     Class = "gene2symbol",
+#'     DataFrame(
+#'         geneID = c("ENSG00000000003", "ENSG00000000005"),
+#'         geneName = c("TSPAN6", "TNMD"),
+#'         row.names = rownames(object)
+#'     )
+#' )
+#' print(gene2symbol)
+#'
+#' geneIDs <- gene2symbol[["geneID"]]
+#' print(geneIDs)
+#'
+#' geneNames <- gene2symbol[["geneName"]]
+#' print(geneNames)
+#'
+#' assertFormalGene2symbol(
+#'     object = object,
+#'     genes = geneIDs,
+#'     gene2symbol = gene2symbol
+#' )
+#' assertFormalGene2symbol(
+#'     object = object,
+#'     genes = geneNames,
+#'     gene2symbol = gene2symbol
+#' )
 assertFormalGene2symbol <- function(
     object,
     genes,
     gene2symbol
 ) {
     assertHasRownames(object)
-    assert_is_any_of(
-        x = genes,
-        classes = c("character", "NULL")
+    assert_is_character(genes)
+    assert_is_all_of(gene2symbol, "gene2symbol")
+    # Require that all rownames of object are defined in gene2symbol.
+    assert_is_subset(
+        x = rownames(object),
+        y = rownames(gene2symbol)
     )
-    if (is.character(genes)) {
-        assert_is_subset(
-            x = genes,
-            y = rownames(object)
-        )
-    }
-    assert_is_any_of(
-        x = gene2symbol,
-        classes = c("DataFrame", "tbl_df", "NULL")
+    # Check to ensure the user defined genes map to the rownames of the object.
+    rownames <- mapGenesToRownames(
+        object = gene2symbol,
+        genes = genes
     )
-    if (!is.null(gene2symbol)) {
-        assertIsGene2symbol(gene2symbol)
-        assert_is_subset(
-            x = rownames(object),
-            y = gene2symbol[["geneID"]]
-        )
-    }
+    assert_is_non_empty(rownames)
+    assert_is_subset(rownames, rownames(object))
 }
 
 
