@@ -373,6 +373,17 @@ setGeneric(
 
 
 
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    name = "tx2gene",
+    def = function(object, ...) {
+        standardGeneric("tx2gene")
+    }
+)
+
+
+
 #' @rdname uniteInterestingGroups
 #' @export
 setGeneric(
