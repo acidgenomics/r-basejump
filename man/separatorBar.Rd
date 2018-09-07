@@ -9,7 +9,11 @@
 separatorBar
 }
 \description{
-Separator Bar
+Maximum of 72 characters wide.
+}
+\note{
+Bioconductor HTML vignettes don't render correctly when printing > 76
+characters, even though the default width is set at 80.
 }
 \examples{
 cat(separatorBar)
