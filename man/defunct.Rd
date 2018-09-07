@@ -8,7 +8,6 @@
 \alias{comp}
 \alias{revcomp}
 \alias{symbol2gene}
-\alias{tx2gene}
 \alias{assertIsGFF}
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
@@ -26,8 +25,6 @@ comp(...)
 revcomp(...)
 
 symbol2gene(...)
-
-tx2gene(...)
 
 assertIsGFF(...)
 
