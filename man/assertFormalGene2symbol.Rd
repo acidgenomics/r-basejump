@@ -7,12 +7,16 @@
 assertFormalGene2symbol(object, genes, gene2symbol)
 }
 \arguments{
-\item{object}{Object containing gene identifiers in \code{rownames}. Cannot
-contain gene names, or the check will fail.}
+\item{object}{Object class supporting \code{rownames}. All rownames in this object
+must intersect with the rownames defined in the \code{gene2symbol} argument.}
 
-\item{genes}{\code{character}. Gene identifiers.}
+\item{genes}{\code{character}. Gene identifiers. Note that gene names (symbols)
+are also supported, but not recommended if the stable IDs can be easily
+provided instead.}
 
-\item{gene2symbol}{\code{DataFrame}, \code{tbl_df}, or \code{NULL}. Gene-to-symbol mappings.}
+\item{gene2symbol}{\code{gene2symbol}. Gene-to-symbol mappings. Must contain
+\code{geneID} and \code{geneName} columns, with rownames defined. All of the \code{object}
+rownames must be defined here, otherwise the function will error.}
 }
 \value{
 Stop on mismatch.
@@ -21,17 +25,39 @@ Stop on mismatch.
 Assert Formal Gene to Symbol Mappings
 }
 \examples{
-gene2symbol <- tibble(
-    geneID = c("ENSG00000000003", "ENSG00000000005"),
-    geneName = c("TSPAN6", "TNMD")
-)
-genes <- pull(gene2symbol, "geneID")
 object <- DataFrame(
-    "sample_1" = c(1L, 2L),
-    "sample_2" = c(3L, 4L),
-    row.names = genes
+    "sample1" = c(1L, 2L),
+    "sample2" = c(3L, 4L),
+    row.names = c("gene1", "gene2")
 )
-assertFormalGene2symbol(object, genes, gene2symbol)
+print(object)
+
+gene2symbol <- new(
+    Class = "gene2symbol",
+    DataFrame(
+        geneID = c("ENSG00000000003", "ENSG00000000005"),
+        geneName = c("TSPAN6", "TNMD"),
+        row.names = rownames(object)
+    )
+)
+print(gene2symbol)
+
+geneIDs <- gene2symbol[["geneID"]]
+print(geneIDs)
+
+geneNames <- gene2symbol[["geneName"]]
+print(geneNames)
+
+assertFormalGene2symbol(
+    object = object,
+    genes = geneIDs,
+    gene2symbol = gene2symbol
+)
+assertFormalGene2symbol(
+    object = object,
+    genes = geneNames,
+    gene2symbol = gene2symbol
+)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
