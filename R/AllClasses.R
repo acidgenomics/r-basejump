@@ -7,6 +7,7 @@ setOldClass(Classes = class(tibble()))
 
 
 
+# gene2symbol ==================================================================
 #' @rdname gene2symbol
 #' @aliases NULL
 #' @exportClass gene2symbol
