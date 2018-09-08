@@ -92,12 +92,14 @@
 #' )
 #' print(colData)
 #'
-#' makeSummarizedExperiment(
+#' # Note that this returns with the dimnames sorted.
+#' x <- makeSummarizedExperiment(
 #'     assays = assays,
 #'     rowRanges = rowRanges,
 #'     colData = colData,
 #'     transgeneNames = "EGFP"
 #' )
+#' print(x)
 makeSummarizedExperiment <- function(
     assays,
     rowRanges = NULL,  # recommended
@@ -108,44 +110,38 @@ makeSummarizedExperiment <- function(
     spikeNames = NULL
 ) {
     # Assert checks ------------------------------------------------------------
-    assert_is_any_of(assays, c("list", "ShallowSimpleListAssays", "SimpleList"))
-    assert_is_any_of(rowRanges, c("GRanges", "NULL"))
-    assert_is_any_of(rowData, c("DataFrame", "NULL"))
+    assert_is_any_of(
+        x = assays,
+        classes = c("list", "ShallowSimpleListAssays", "SimpleList")
+    )
+    assert_is_any_of(rowRanges, classes = c("GRanges", "NULL"))
+    assert_is_any_of(rowData, classes = c("DataFrame", "NULL"))
     # Only allow `rowData` if `rowRanges` are `NULL`.
     if (!is.null(rowRanges)) {
         assert_is_null(rowData)
     }
-    assert_is_any_of(colData, c("DataFrame", "NULL"))
-    assert_is_any_of(metadata, c("list", "NULL"))
-    assert_is_any_of(transgeneNames, c("character", "NULL"))
-    assert_is_any_of(spikeNames, c("character", "NULL"))
+    assert_is_any_of(colData, classes = c("DataFrame", "NULL"))
+    assert_is_any_of(metadata, classes = c("list", "NULL"))
+    assert_is_any_of(transgeneNames, classes = c("character", "NULL"))
+    assert_is_any_of(spikeNames, classes = c("character", "NULL"))
 
     # Assays -------------------------------------------------------------------
-    # Require the primary assay matrix to be named counts. This helps ensure
-    # consistency with the conventions for SingleCellExperiment.
-    assert_are_identical(names(assays)[[1L]], "counts")
+    # Drop any `NULL` items in assays.
     if (is.list(assays)) {
         assays <- Filter(Negate(is.null), assays)
     }
+    # Require the primary assay to be named "counts". This helps ensure
+    # consistency with the conventions for `SingleCellExperiment`.
+    assert_are_identical(names(assays)[[1L]], "counts")
     assay <- assays[[1L]]
-    # FIXME Simplify the assert checks here?
-    assert_has_dimnames(assay)
-    assert_has_rownames(assay)
-    assert_has_colnames(assay)
-    assert_has_no_duplicates(rownames(assay))
-    assert_has_no_duplicates(colnames(assay))
-    # Columns and rows must contain valid names.
-    # FIXME Switch to using an S4 method on matrix here.
-    assert_are_identical(
-        x = makeNames(rownames(assay), unique = TRUE),
-        y = rownames(assay)
-    )
-    assert_are_identical(
-        x = makeNames(colnames(assay), unique = TRUE),
-        y = colnames(assay)
-    )
-
-    # Require that assay row and column names are sorted.
+    # Require valid names for both columns (samples) and rows (genes).
+    # Note that values beginning with a number or containing invalid characters
+    # (e.g. spaces, dashes) will error here.
+    assertHasValidDimnames(assay)
+    # We're going to require that the assay names be sorted, but will perform
+    # this step after generating the `SummarizedExperiment` object (see below).
+    # The `SummarizedExperiment()` constructor checks to ensure that all assays
+    # have matching dimnames, so we can skip that check.
 
     # Row data -----------------------------------------------------------------
     mcolsNames <- NULL
@@ -159,7 +155,6 @@ makeSummarizedExperiment <- function(
         assert_are_intersecting_sets(rownames(assay), names(rowRanges))
         mcolsNames <- names(mcols(rowRanges))
         setdiff <- setdiff(rownames(assay), names(rowRanges))
-
         # Transgenes
         if (length(setdiff) && length(transgeneNames)) {
             assert_is_subset(transgeneNames, setdiff)
@@ -171,7 +166,6 @@ makeSummarizedExperiment <- function(
             rowRanges <- suppressWarnings(c(transgeneRanges, rowRanges))
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-
         # FASTA spike-ins
         if (length(setdiff) && length(spikeNames)) {
             assert_is_subset(spikeNames, setdiff)
@@ -281,9 +275,12 @@ makeSummarizedExperiment <- function(
         colData = colData,
         metadata = metadata
     )
+    # Ensure we're not passing any `NULL` arguments to `do.call()`.
+    # This step will dynamically handle `rowRanges` and/or `rowData`.
     args <- Filter(Negate(is.null), args)
-    do.call(
-        what = SummarizedExperiment,
-        args = args
-    )
+    se <- do.call(what = SummarizedExperiment, args = args)
+    # Always return with sorted rows and columns.
+    se <- se[sort(rownames(se)), sort(colnames(se))]
+    validObject(se)
+    se
 }

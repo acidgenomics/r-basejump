@@ -102,12 +102,14 @@ colData <- DataFrame(
 )
 print(colData)
 
-makeSummarizedExperiment(
+# Note that this returns with the dimnames sorted.
+x <- makeSummarizedExperiment(
     assays = assays,
     rowRanges = rowRanges,
     colData = colData,
     transgeneNames = "EGFP"
 )
+print(x)
 }
 \seealso{
 \itemize{
