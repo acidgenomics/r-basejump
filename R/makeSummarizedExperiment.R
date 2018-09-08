@@ -12,6 +12,8 @@
 #' - `utilsSessionInfo`: [utils::sessionInfo()].
 #' - `devtoolsSessionInfo`: [sessioninfo::session_info()].
 #'
+#' @note Column and rows always return sorted alphabetically.
+#'
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #' @export
@@ -126,11 +128,14 @@ makeSummarizedExperiment <- function(
         assays <- Filter(Negate(is.null), assays)
     }
     assay <- assays[[1L]]
+    # FIXME Simplify the assert checks here?
     assert_has_dimnames(assay)
     assert_has_rownames(assay)
     assert_has_colnames(assay)
     assert_has_no_duplicates(rownames(assay))
     assert_has_no_duplicates(colnames(assay))
+    # Columns and rows must contain valid names.
+    # FIXME Switch to using an S4 method on matrix here.
     assert_are_identical(
         x = makeNames(rownames(assay), unique = TRUE),
         y = rownames(assay)
@@ -139,6 +144,8 @@ makeSummarizedExperiment <- function(
         x = makeNames(colnames(assay), unique = TRUE),
         y = colnames(assay)
     )
+
+    # Require that assay row and column names are sorted.
 
     # Row data -----------------------------------------------------------------
     mcolsNames <- NULL

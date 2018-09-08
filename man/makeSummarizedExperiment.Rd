@@ -55,6 +55,9 @@ slot:
 \item \code{devtoolsSessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}}.
 }
 }
+\note{
+Column and rows always return sorted alphabetically.
+}
 \examples{
 # Rows (genes)
 genes <- c(
