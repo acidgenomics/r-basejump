@@ -66,7 +66,7 @@
 #' @importFrom S4Vectors %in% as.data.frame complete.cases cor mcols mcols<-
 #'   metadata metadata<- na.omit setdiff tail
 #' @importFrom sessioninfo session_info
-#' @importFrom stats dist hclust quantile
+#' @importFrom stats as.formula dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assayNames assays colData colData<-
