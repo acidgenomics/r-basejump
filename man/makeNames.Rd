@@ -210,8 +210,8 @@ parameters. However, it is recommended to avoid using it for variable
 assignments into an \code{environment}, as that can introduce conflicts with
 base functions.
 
-\code{\link[=makeNames]{makeNames()}} sanitizes names using underscore instead of dot, which is
-the convention used by \code{\link[=make.names]{make.names()}}.
+\code{\link[=makeNames]{makeNames()}} sanitizes names using underscores instead of dots, the
+convention used by \code{\link[base:make.names]{base::make.names()}}.
 }
 \examples{
 loadRemoteData("http://basejump.seq.cloud/mn.rda")

@@ -1,3 +1,7 @@
+# FIXME Add S4 methods for makeNames
+
+
+
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
@@ -9,8 +13,8 @@
 #'   assignments into an `environment`, as that can introduce conflicts with
 #'   base functions.
 #'
-#' @note [makeNames()] sanitizes names using underscore instead of dot, which is
-#'   the convention used by [make.names()].
+#' @note [makeNames()] sanitizes names using underscores instead of dots, the
+#'   convention used by [base::make.names()].
 #'
 #' @name makeNames
 #' @family Sanitization Functions
