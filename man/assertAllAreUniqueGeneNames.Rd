@@ -23,7 +23,7 @@ particularly when performing single-cell RNA-seq marker analysis.
 \examples{
 object <- rse_small
 print(object)
-genes <- head(as.character(rowData(rse_small)$geneName))
+genes <- head(as.character(rowData(rse_small)[["geneName"]]))
 print(genes)
 assertAllAreUniqueGeneNames(object = object, genes = genes)
 }

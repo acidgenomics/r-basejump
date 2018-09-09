@@ -60,17 +60,22 @@ assertAllAreNonExisting <- function(
 #' @examples
 #' object <- rse_small
 #' print(object)
-#' genes <- head(as.character(rowData(rse_small)$geneName))
+#' genes <- head(as.character(rowData(rse_small)[["geneName"]]))
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
-    assert_is_all_of(
+    # Consider restricting this to `gene2symbol` instead of `DataFrame`.
+    assert_is_any_of(
         x = object,
-        classes = "SummarizedExperiment"
+        classes = c("DataFrame", "SummarizedExperiment")
     )
     assert_is_character(genes)
     # Get all of the gene names stashed in the object.
-    allGenes <- mcols(rowRanges(object))[["geneName"]]
+    if (is(object, "SummarizedExperiment")) {
+        allGenes <- mcols(rowRanges(object))[["geneName"]]
+    } else {
+        allGenes <- object[["geneName"]]
+    }
     assert_is_non_empty(allGenes)
     # Require that the user passed in gene names.
     assert_is_subset(
