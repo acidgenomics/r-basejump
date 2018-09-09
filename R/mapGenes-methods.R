@@ -22,34 +22,31 @@
 #'
 #' @examples
 #' object <- rse_small
-#' head(rownames(object))
+#' print(object)
 #'
-#' object_symbols <- convertGenesToSymbols(object)
-#' head(rownames(object_symbols))
+#' rownames <- head(rownames(object))
+#' print(rownames)
 #'
-#' geneIDs <- head(rownames(object))
+#' geneIDs <- head(rowData(object)[["geneID"]])
 #' print(geneIDs)
 #'
-#' geneNames <- head(as.character(rowRanges(object)$geneName))
+#' geneNames <- head(as.character(rowData(object)[["geneName"]]))
 #' print(geneNames)
 #'
 #' # Row names
+#' mapGenesToRownames(object, genes = rownames)
 #' mapGenesToRownames(object, genes = geneIDs)
 #' mapGenesToRownames(object, genes = geneNames)
-#' mapGenesToRownames(object_symbols, genes = geneIDs)
-#' mapGenesToRownames(object_symbols, genes = geneNames)
 #'
 #' # Gene identifiers
+#' mapGenesToIDs(object, genes = rownames)
 #' mapGenesToIDs(object, genes = geneIDs)
 #' mapGenesToIDs(object, genes = geneNames)
-#' mapGenesToIDs(object_symbols, genes = geneIDs)
-#' mapGenesToIDs(object_symbols, genes = geneNames)
 #'
 #' # Gene names (symbols)
+#' mapGenesToSymbols(object, genes = rownames)
 #' mapGenesToSymbols(object, genes = geneIDs)
 #' mapGenesToSymbols(object, genes = geneNames)
-#' mapGenesToSymbols(object_symbols, genes = geneIDs)
-#' mapGenesToSymbols(object_symbols, genes = geneNames)
 NULL
 
 
@@ -63,20 +60,37 @@ NULL
 #' @export
 setMethod(
     f = "mapGenesToRownames",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object, genes) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        assert_are_identical(rownames(g2s), rownames(object))
+        mapGenesToRownames(object = g2s, genes = genes)
+    }
+)
+
+
+
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToRownames",
     signature = signature("DataFrame"),
     definition = function(object, genes) {
         assertIsGene2symbol(object)
-        if (any(genes %in% object[["geneName"]])) {
-            # User passed in gene names, but the object uses gene IDs.
+        object <- as(object, "DataFrame")
+        assert_is_character(genes)
+        assert_is_non_empty(genes)
+        if (any(genes %in% rownames(object))) {
+            assert_is_subset(genes, rownames(object))
+            return(genes)
+        } else if (any(genes %in% object[["geneName"]])) {
             assert_is_subset(genes, object[["geneName"]])
-            # FIXME Rethink how to approach this check.
-            # assertAllAreUniqueGeneNames(object, genes)
+            assertAllAreUniqueGeneNames(object, genes)
             match <- match(x = genes, table = object[["geneName"]])
             assert_all_are_not_na(match)
             return <- rownames(object[match, , drop = FALSE])
         } else if (any(genes %in% object[["geneID"]])) {
-            # User passed in gene IDs, but the object uses gene names.
-            # This scenario isn't common but we're supporting it anyway.
             assert_is_subset(genes, object[["geneID"]])
             match <- match(x = genes, table = object[["geneID"]])
             assert_all_are_not_na(match)
@@ -92,30 +106,22 @@ setMethod(
 
 
 
+# mapGenesToIDs ================================================================
 #' @rdname mapGenes
 #' @export
 setMethod(
-    f = "mapGenesToRownames",
+    f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
     definition = function(object, genes) {
         validObject(object)
-        assert_is_character(genes)
-        assert_is_non_empty(genes)
-        # Return early if the `genes` vector already matches rownames.
-        if (all(genes %in% rownames(object))) {
-            return(genes)
-        }
-        # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
-        # Using the DataFrame method.
-        mapGenesToRownames(object = g2s, genes = genes)
+        mapGenesToIDs(object = g2s, genes = genes)
     }
 )
 
 
 
-# mapGenesToIDs ================================================================
 #' @rdname mapGenes
 #' @export
 setMethod(
@@ -123,15 +129,18 @@ setMethod(
     signature = signature("DataFrame"),
     definition = function(object, genes) {
         assertIsGene2symbol(object)
-        if (any(genes %in% object[["geneID"]])) {
-            # User passed in gene identifiers.
+        object <- as(object, "DataFrame")
+        assert_is_character(genes)
+        assert_is_non_empty(genes)
+        if (any(genes %in% rownames(object))) {
+            assert_is_subset(genes, rownames(object))
+            return <- object[genes, "geneID", drop = TRUE]
+        } else if (any(genes %in% object[["geneID"]])) {
             assert_is_subset(genes, object[["geneID"]])
             return(genes)
         } else if (any(genes %in% object[["geneName"]])) {
-            # User passed in gene names.
             assert_is_subset(genes, object[["geneName"]])
-            # FIXME Rethink this step.
-            # assertAllAreUniqueGeneNames(object, genes)
+            assertAllAreUniqueGeneNames(object, genes)
             match <- match(x = genes, table = object[["geneName"]])
             assert_all_are_not_na(match)
             return <- object[match, "geneID", drop = TRUE]
@@ -146,26 +155,22 @@ setMethod(
 
 
 
+# mapGenesToSymbols ============================================================
 #' @rdname mapGenes
 #' @export
 setMethod(
-    f = "mapGenesToIDs",
+    f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
     definition = function(object, genes) {
         validObject(object)
-        assert_is_character(genes)
-        assert_is_non_empty(genes)
-        # Get the gene-to-symbol mappings.
         g2s <- gene2symbol(object)
         assert_are_identical(rownames(g2s), rownames(object))
-        # Using DataFrame method.
-        mapGenesToIDs(object = g2s, genes = genes)
+        mapGenesToSymbols(object = g2s, genes = genes)
     }
 )
 
 
 
-# mapGenesToSymbols ============================================================
 #' @rdname mapGenes
 #' @export
 setMethod(
@@ -173,17 +178,20 @@ setMethod(
     signature = signature("DataFrame"),
     definition = function(object, genes) {
         assertIsGene2symbol(object)
-        if (any(genes %in% object[["geneID"]])) {
-            # User passed in gene identifiers.
+        object <- as(object, "DataFrame")
+        assert_is_character(genes)
+        assert_is_non_empty(genes)
+        if (any(genes %in% rownames(object))) {
+            assert_is_subset(genes, rownames(object))
+            return <- object[genes, "geneName", drop = TRUE]
+        } else if (any(genes %in% object[["geneID"]])) {
             assert_is_subset(genes, object[["geneID"]])
             match <- match(x = genes, table = object[["geneID"]])
             assert_all_are_not_na(match)
             return <- object[match, "geneName", drop = TRUE]
         } else if (any(genes %in% object[["geneName"]])) {
-            # User passed in gene names.
             assert_is_subset(genes, object[["geneName"]])
-            # FIXME Rethink this step.
-            # assertAllAreUniqueGeneNames(object, genes)
+            assertAllAreUniqueGeneNames(object, genes)
             return(genes)
         } else {
             stop(.mapGenesError)
@@ -191,27 +199,5 @@ setMethod(
         return <- as.character(return)
         names(return) <- genes
         return
-    }
-)
-
-
-
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToSymbols",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object, genes) {
-        validObject(object)
-        assert_is_character(genes)
-        assert_is_non_empty(genes)
-        # Get the gene-to-symbol mappings.
-        g2s <- gene2symbol(object)
-        if (is.null(g2s)) {
-            stop(.mapGenesError)
-        }
-        assert_are_identical(rownames(g2s), rownames(object))
-        # Using the DataFrame method.
-        mapGenesToSymbols(object = g2s, genes = genes)
     }
 )
