@@ -1,5 +1,5 @@
 # SummarizedExperiment example objects, using simulated DESeq2 counts
-# Last updated 2018-09-03
+# Last updated 2018-09-09
 
 library("DESeq2")
 library("tidyverse")
@@ -38,15 +38,17 @@ colData(rse) <- DataFrame(
 rowRanges <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
+# Note that we're keeping the original rownames from dds_small, and they won't
+# match the `geneID` column in rowRanges. This is intentional, for unit testing.
+names(rowRanges) <- rownames(rse)
 # Ensure factor levels in mcols are dropped, to save space.
-# Otherwise the example will be too big.
+# Otherwise the example will be too large.
 mcols <- mcols(rowRanges) %>%
     as("tbl_df") %>%
     mutate_if(is.factor, droplevels) %>%
     as("DataFrame")
 mcols(rowRanges) <- mcols
 # Update the rownames of the object to match our genomic ranges.
-rownames(rse) <- names(rowRanges)
 rowRanges(rse) <- rowRanges
 # Define the interesting groups.
 interestingGroups(rse) <- c("genotype", "treatment")
