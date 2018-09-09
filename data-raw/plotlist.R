@@ -1,8 +1,8 @@
 # Plotlist data for testing ggplot2 code
-# Last updated 2018-09-06
+# Last updated 2018-09-09
 
-library(ggplot2)
-library(cowplot)
+library("ggplot2")
+library("cowplot")
 
 # Examples from the ggplot2 cheatsheet
 # https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf

@@ -1,8 +1,8 @@
 # Read/write file examples
-# Last updated 2018-09-06
+# Last updated 2018-09-09
 # Note that `readr::write_*()` functions never write rownames.
 
-library(tidyverse)
+library("tidyverse")
 dir <- "tests/testthat"
 
 # Coerce to tibble before writing.

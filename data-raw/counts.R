@@ -1,9 +1,9 @@
 # RNA-seq count matrices
-# Last updated 2018-09-06
+# Last updated 2018-09-09
 
-library(DESeq2)
-library(Matrix)
-library(scater)
+library("DESeq2")
+library("Matrix")
+library("scater")
 
 # RNA-seq counts ===============================================================
 dds <- makeExampleDESeqDataSet(n = 100, m = 4)
