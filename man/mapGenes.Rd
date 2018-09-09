@@ -6,11 +6,11 @@
 \alias{mapGenesToRownames}
 \alias{mapGenesToSymbols}
 \alias{mapGenes}
-\alias{mapGenesToRownames,DataFrame-method}
+\alias{mapGenesToRownames,gene2symbol-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
-\alias{mapGenesToIDs,DataFrame-method}
+\alias{mapGenesToIDs,gene2symbol-method}
 \alias{mapGenesToIDs,SummarizedExperiment-method}
-\alias{mapGenesToSymbols,DataFrame-method}
+\alias{mapGenesToSymbols,gene2symbol-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map Genes}
 \usage{
@@ -20,15 +20,15 @@ mapGenesToRownames(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{DataFrame}(object, genes)
+\S4method{mapGenesToRownames}{gene2symbol}(object, genes)
 
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes)
 
-\S4method{mapGenesToIDs}{DataFrame}(object, genes)
+\S4method{mapGenesToIDs}{gene2symbol}(object, genes)
 
 \S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes)
 
-\S4method{mapGenesToSymbols}{DataFrame}(object, genes)
+\S4method{mapGenesToSymbols}{gene2symbol}(object, genes)
 
 \S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes)
 }
@@ -59,34 +59,31 @@ that is duplicated, these functions will return a warning.
 
 \examples{
 object <- rse_small
-head(rownames(object))
+print(object)
 
-object_symbols <- convertGenesToSymbols(object)
-head(rownames(object_symbols))
+rownames <- head(rownames(object))
+print(rownames)
 
-geneIDs <- head(rownames(object))
+geneIDs <- head(rowData(object)[["geneID"]])
 print(geneIDs)
 
-geneNames <- head(as.character(rowRanges(object)$geneName))
+geneNames <- head(as.character(rowData(object)[["geneName"]]))
 print(geneNames)
 
 # Row names
+mapGenesToRownames(object, genes = rownames)
 mapGenesToRownames(object, genes = geneIDs)
 mapGenesToRownames(object, genes = geneNames)
-mapGenesToRownames(object_symbols, genes = geneIDs)
-mapGenesToRownames(object_symbols, genes = geneNames)
 
 # Gene identifiers
+mapGenesToIDs(object, genes = rownames)
 mapGenesToIDs(object, genes = geneIDs)
 mapGenesToIDs(object, genes = geneNames)
-mapGenesToIDs(object_symbols, genes = geneIDs)
-mapGenesToIDs(object_symbols, genes = geneNames)
 
 # Gene names (symbols)
+mapGenesToSymbols(object, genes = rownames)
 mapGenesToSymbols(object, genes = geneIDs)
 mapGenesToSymbols(object, genes = geneNames)
-mapGenesToSymbols(object_symbols, genes = geneIDs)
-mapGenesToSymbols(object_symbols, genes = geneNames)
 }
 \seealso{
 Other Data Functions: \code{\link{counts}},

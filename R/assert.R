@@ -64,10 +64,9 @@ assertAllAreNonExisting <- function(
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
-    # Consider restricting this to `gene2symbol` instead of `DataFrame`.
     assert_is_any_of(
         x = object,
-        classes = c("DataFrame", "SummarizedExperiment")
+        classes = c("gene2symbol", "SummarizedExperiment")
     )
     assert_is_character(genes)
     # Get all of the gene names stashed in the object.
