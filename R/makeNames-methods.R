@@ -1,7 +1,3 @@
-# FIXME Add S4 methods for makeNames
-
-
-
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
