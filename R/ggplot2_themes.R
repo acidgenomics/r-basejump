@@ -139,9 +139,7 @@ theme_paperwhite <- function(
 
 #' @rdname ggplot2_themes
 #' @export
-theme_midnight <- function(
-    # Formals are set below.
-) {
+theme_midnight <- function() {
     assert_is_a_number(base_size)
     assert_is_a_string(base_family)
     face <- match.arg(face)
