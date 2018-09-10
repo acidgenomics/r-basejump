@@ -37,9 +37,9 @@ dots(a, b, c, character = TRUE)
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
+  \code{\link{localOrRemoteFile}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
+  \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}}, \code{\link{setArgsToDoCall}},
   \code{\link{uniteInterestingGroups}}
