@@ -869,7 +869,8 @@ assertIsTx2gene <- function(object) {
     assert_is_non_empty(object)
     # nocov start
     if ("txID" %in% colnames(object)) {
-        warning("Use `transcript` instead of `tx`")
+        # Consider warning here in a future update.
+        # "Use `transcript` instead of `tx`"
         colnames(object) <- gsub("^txID$", "transcriptID", colnames(object))
     }
     # nocov end
