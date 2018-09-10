@@ -1,3 +1,7 @@
+# TODO Improve the assert checks to check the names passed in here.
+
+
+
 #' Set Arguments to Do Call
 #'
 #' @family Developer Functions
@@ -6,13 +10,12 @@
 #'
 #' @inheritParams BiocGenerics::do.call
 #' @inheritParams general
-#' @param removeArgs `character`. Names of objects to remove from `call` (e.g.
-#'   [match.call()]) and `fun` (e.g. [sys.function()]) before passing to
-#'   `do.call()`.
-#' @param call `call`. Call to match against. Recommended to use either
-#'   [match.call()] or [matchS4Call()] (for S4 method).
-#' @param fun `function`. Function containing the [do.call()] step. Recommended
-#'   to use [sys.function()] by default.
+#' @param removeArgs `character`. Names of arguments to remove from `call`
+#'   and/or `fun` returns before passing to `do.call()`.
+#' @param call `call`. Call to match against. This argument needs to be changed
+#'   when called inside an S4 method.
+#' @param fun `function`. Function containing the [do.call()] call. Recommended
+#'   to leave unchanged by default.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 #'
@@ -43,7 +46,6 @@ setArgsToDoCall <- function(
     assert_is_call(call)
     assert_is_function(fun)
     assert_is_a_bool(verbose)
-    # TODO Improve the assert checks to check the names passed in here.
 
     callArgs <- call %>%
         as.list() %>%
@@ -63,14 +65,15 @@ setArgsToDoCall <- function(
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
-        stack <- list(
+        print(sys.status())
+        print(list(
             names = names(args),
             call = call,
             fun = fun
-        )
-        print(stack)
+        ))
     }
 
-    stopifnot(!any(duplicated(names(args))))
+    assert_all_are_non_missing_nor_empty_character(names(args))
+    assert_has_no_duplicates(names(args))
     args
 }
