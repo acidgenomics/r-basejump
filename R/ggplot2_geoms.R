@@ -124,17 +124,20 @@ basejump_geom_label <- function(
     mapping = NULL,
     ...
 ) {
-    geom_label(
-        data = data,
-        mapping = mapping,
-        alpha = 0.75,
-        color = "white",
-        fill = "black",
-        fontface = "bold",
-        label.padding = unit(0.2, "lines"),
-        label.size = NA,
-        show.legend = FALSE,
-        ...
+    do.call(
+        what = geom_label,
+        args = list(
+            data = data,
+            mapping = mapping,
+            alpha = 0.75,
+            color = "white",
+            fill = "black",
+            fontface = "bold",
+            label.padding = unit(0.2, "lines"),
+            label.size = NA,
+            show.legend = FALSE,
+            ...
+        )
     )
 }
 
@@ -179,10 +182,13 @@ basejump_geom_label_average <- function(
         data <- aggdata
     }
 
-    basejump_geom_label(
-        data = data,
-        mapping = aes(label = !!sym("roundedAverage")),
-        ...
+    do.call(
+        what = basejump_geom_label,
+        args = list(
+            data = data,
+            mapping = aes(label = !!sym("roundedAverage")),
+            ...
+        )
     )
 }
 
@@ -197,18 +203,22 @@ basejump_geom_label_repel <- function(
     size = 4L,
     ...
 ) {
-    geom <- geom_label_repel(
-        data = data,
-        mapping = mapping,
-        arrow = arrow(length = unit(0.01, "npc")),
-        box.padding = unit(0.5, "lines"),
-        fill = "white",
-        fontface = "bold",
-        force = 1L,
-        point.padding = unit(0.75, "lines"),
-        segment.size = 0.5,
-        show.legend = FALSE,
-        size = size
+    geom <- do.call(
+        what = geom_label_repel,
+        args = list(
+            data = data,
+            mapping = mapping,
+            arrow = arrow(length = unit(0.01, "npc")),
+            box.padding = unit(0.5, "lines"),
+            fill = "white",
+            fontface = "bold",
+            force = 1L,
+            point.padding = unit(0.75, "lines"),
+            segment.size = 0.5,
+            show.legend = FALSE,
+            size = size,
+            ...
+        )
     )
     if (is.character(color)) {
         geom[["aes_params"]][["colour"]] <- color
