@@ -51,12 +51,19 @@
 #'     mapping = aes(
 #'         x = manufacturer,
 #'         y = displ,
-#'         colour = manufacturer
+#'         color = manufacturer,
+#'         fill = manufacturer
 #'     )
-#' ) +
-#'     geom_point()
-#' p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
-#' p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
+#' )
+#' p + geom_point() + theme_paperwhite()
+#' p + geom_point() + theme_midnight()
+#'
+#' # Minimal bar plot
+#' p +
+#'     geom_bar(stat = "identity") +
+#'     # This will collapse the extra margin at y-intercept.
+#'     scale_y_continuous(expand = c(0, 0)) +
+#'     theme_paperwhite(minimal = TRUE, legend_position = "none")
 NULL
 
 
@@ -68,7 +75,7 @@ theme_paperwhite <- function(
     base_family = "",
     face = c("bold", "plain"),
     aspect_ratio = NULL,
-    legend_position = c("right", "bottom", "none"),
+    legend_position = c("right", "bottom", "top", "none"),
     grid = FALSE,
     minimal = FALSE
 ) {
