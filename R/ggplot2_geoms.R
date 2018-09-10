@@ -65,9 +65,12 @@
 #'
 #' # basejump_geom_label_average ====
 #' geom <- basejump_geom_label_average(
-#'     data = colData(rse_bcb),
-#'     col = "exonicRate",
-#'     fun = "median"
+#'     data = data.frame(
+#'         sampleName = c("sample1", "sample2"),
+#'         counts = seq_len(8L)
+#'     ),
+#'     col = "counts",
+#'     fun = "mean"
 #' )
 #' geom
 #'
@@ -142,7 +145,7 @@ basejump_geom_label <- function(
 basejump_geom_label_average <- function(
     data,
     col,
-    fun = c("median", "median"),
+    fun = c("mean", "median"),
     digits = 0L,
     ...
 ) {
