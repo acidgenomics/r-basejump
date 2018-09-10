@@ -65,7 +65,8 @@ function(
         }
         assert_is_a_string(organism)
         message(paste(organism, "genes detected"))
-        args <- as.list(matchS4Call())[-1L]
+        # FIXME Use `setArgsToDoCall()` here?
+        args <- as.list(matchCall())[-1L]
         args[["object"]] <- NULL
         args[["organism"]] <- organism
         gene2symbol <- do.call(
@@ -114,7 +115,8 @@ function(
     # Setting formals below.
 ) {
     rownames <- rownames(object)
-    args <- as.list(matchS4Call())[-1L]
+    # FIXME Use `setArgsToDoCall()` here?
+    args <- as.list(matchCall())[-1L]
     args[["object"]] <- rownames
     rownames <- do.call(
         what = convertGenesToSymbols,
@@ -198,12 +200,10 @@ setMethod(
     definition = function(object) {
         validObject(object)
         g2s <- gene2symbol(object)
-        assert_are_identical(rownames(object), g2s[["geneID"]])
-        assert_has_no_duplicates(g2s[["geneName"]])
-
+        symbols <- g2s[["geneName"]]
+        assert_has_no_duplicates(symbols)
         # Update the object rownames.
-        rownames(object) <- g2s[["geneName"]]
-
+        rownames(object) <- symbols
         # Ensure all names get updated correctly.
         if (is(object, "RangedSummarizedExperiment")) {
             assert_are_identical(
