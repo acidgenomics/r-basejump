@@ -8,11 +8,11 @@
 \usage{
 theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "none"), grid = FALSE, minimal = FALSE)
+  "top", "none"), grid = FALSE, minimal = FALSE)
 
 theme_midnight(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "none"), grid = FALSE, minimal = FALSE)
+  "top", "none"), grid = FALSE, minimal = FALSE)
 }
 \arguments{
 \item{base_size}{\code{scalar numeric}. Base font size.}
@@ -68,12 +68,19 @@ p <- ggplot(
     mapping = aes(
         x = manufacturer,
         y = displ,
-        colour = manufacturer
+        color = manufacturer,
+        fill = manufacturer
     )
-) +
-    geom_point()
-p + theme_paperwhite(aspect_ratio = 1L, legend_position = "none")
-p + theme_midnight(aspect_ratio = 1L, legend_position = "none")
+)
+p + geom_point() + theme_paperwhite()
+p + geom_point() + theme_midnight()
+
+# Minimal bar plot
+p +
+    geom_bar(stat = "identity") +
+    # This will collapse the extra margin at y-intercept.
+    scale_y_continuous(expand = c(0, 0)) +
+    theme_paperwhite(minimal = TRUE, legend_position = "none")
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}}.
