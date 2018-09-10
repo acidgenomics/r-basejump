@@ -18,15 +18,14 @@ setArgsToDoCall(args, removeArgs = NULL, call = sys.call(which =
     Please refer to the documentation of a particular method for the details.
   }
 
-\item{removeArgs}{\code{character}. Names of objects to remove from \code{call} (e.g.
-\code{\link[=match.call]{match.call()}}) and \code{fun} (e.g. \code{\link[=sys.function]{sys.function()}}) before passing to
-\code{do.call()}.}
+\item{removeArgs}{\code{character}. Names of arguments to remove from \code{call}
+and/or \code{fun} returns before passing to \code{do.call()}.}
 
-\item{call}{\code{call}. Call to match against. Recommended to use either
-\code{\link[=match.call]{match.call()}} or \code{\link[=matchS4Call]{matchS4Call()}} (for S4 method).}
+\item{call}{\code{call}. Call to match against. This argument needs to be changed
+when called inside an S4 method.}
 
-\item{fun}{\code{function}. Function containing the \code{\link[=do.call]{do.call()}} step. Recommended
-to use \code{\link[=sys.function]{sys.function()}} by default.}
+\item{fun}{\code{function}. Function containing the \code{\link[=do.call]{do.call()}} call. Recommended
+to leave unchanged by default.}
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
@@ -56,9 +55,9 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{dots}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}},
+  \code{\link{localOrRemoteFile}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{matchS4Call}}, \code{\link{methodFormals}},
+  \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
