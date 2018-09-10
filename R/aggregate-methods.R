@@ -96,9 +96,10 @@ setMethod(
     f = "aggregateCols",
     signature = signature("matrix"),
     definition = function(object, groupings) {
+        assertHasValidDimnames(object)
         assert_is_factor(groupings)
-        assertAllAreValidNames(as.character(groupings))
         assert_are_identical(colnames(object), names(groupings))
+        assertAllAreValidNames(levels(groupings))
         .aggregateMessage(groupings)
         t <- t(object)
         rownames(t) <- groupings
@@ -115,9 +116,11 @@ setMethod(
     f = "aggregateCols",
     signature = signature("sparseMatrix"),
     definition = function(object, groupings) {
+        validObject(object)
+        assertHasValidDimnames(object)
         assert_is_factor(groupings)
-        assertAllAreValidNames(as.character(groupings))
         assert_are_identical(colnames(object), names(groupings))
+        assertAllAreValidNames(levels(groupings))
         .aggregateMessage(groupings)
         t <- t(object)
         rownames(t) <- groupings
@@ -135,11 +138,12 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
         validObject(object)
+        assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(colData(object)))
         assert_is_subset("aggregate", colnames(sampleData(object)))
         groupings <- colData(object)[["aggregate"]]
         assert_is_factor(groupings)
-        assertAllAreValidNames(as.character(groupings))
+        assertAllAreValidNames(levels(groupings))
         names(groupings) <- colnames(object)
 
         # Assays ---------------------------------------------------------------
@@ -174,10 +178,7 @@ setMethod(
         } else {
             args[["rowData"]] <- rowData(object)
         }
-        do.call(
-            what = SummarizedExperiment,
-            args = args
-        )
+        do.call(what = SummarizedExperiment, args = args)
     }
 )
 
@@ -190,8 +191,10 @@ setMethod(
     f = "aggregateRows",
     signature = signature("matrix"),
     definition = function(object, groupings) {
+        assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
+        assertAllAreValidNames(levels(groupings))
         .aggregateMessage(groupings)
         rowsum(object, group = groupings, reorder = FALSE)
     })
@@ -204,8 +207,11 @@ setMethod(
     f = "aggregateRows",
     signature = signature("sparseMatrix"),
     definition = function(object, groupings) {
+        validObject(object)
+        assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
+        assertAllAreValidNames(levels(groupings))
         .aggregateMessage(groupings)
         rownames(object) <- groupings
         aggregate.Matrix(object, groupings = groupings, fun = "sum")
@@ -220,10 +226,11 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
         validObject(object)
+        assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(rowData(object)))
         groupings <- rowData(object)[["aggregate"]]
         assert_is_factor(groupings)
-        assertAllAreValidNames(as.character(groupings))
+        assertAllAreValidNames(levels(groupings))
         names(groupings) <- rownames(object)
 
         # Assays ---------------------------------------------------------------
@@ -245,9 +252,6 @@ setMethod(
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames)
         }
-        do.call(
-            what = SummarizedExperiment,
-            args = args
-        )
+        do.call(what = SummarizedExperiment, args = args)
     }
 )
