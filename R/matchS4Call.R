@@ -67,13 +67,12 @@ matchS4Call <- function(verbose = FALSE) {
     )
     assert_is_call(call)
 
-    # Check that all arguments are named before returning.
-    names <- names(as.list(call)[-1L])
-    assert_all_are_non_empty_character(names)
-
     if (isTRUE(verbose)) {
         print(call)
     }
+
+    # Require that all arguments are named before returning.
+    assert_all_are_non_missing_nor_empty_character(names(as.list(call)[-1L]))
 
     call
 }
