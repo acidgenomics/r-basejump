@@ -97,7 +97,7 @@ makeGene2symbolFromEnsembl <- function(
 # Set the formals.
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("format", "metadata"))]
-formals(makeGene2symbolFromEnsembl) <- as.pairlist(f)
+formals(makeGene2symbolFromEnsembl) <- f
 
 
 

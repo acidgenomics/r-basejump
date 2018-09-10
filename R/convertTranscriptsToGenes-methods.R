@@ -97,7 +97,7 @@ f2 <- f2[setdiff(
     y = c(names(f1), "format", "metadata")
 )]
 f <- c(f1, f2)
-formals(.convertTranscriptsToGenes.character) <- as.pairlist(f)
+formals(.convertTranscriptsToGenes.character) <- f
 
 
 
@@ -120,7 +120,7 @@ function(
 
 # Set the formals.
 f <- formals(.convertTranscriptsToGenes.character)
-formals(.convertTranscriptsToGenes.matrix) <- as.pairlist(f)
+formals(.convertTranscriptsToGenes.matrix) <- f
 
 
 

@@ -65,7 +65,7 @@ makeTx2geneFromEnsembl <- function(
 # Set the formals.
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("format", "metadata"))]
-formals(makeTx2geneFromEnsembl) <- as.pairlist(f)
+formals(makeTx2geneFromEnsembl) <- f
 
 
 
