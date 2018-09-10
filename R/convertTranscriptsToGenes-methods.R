@@ -1,3 +1,8 @@
+# FIXME Consider collapsing a matrix, and adding similar method support for
+# `SummarizedExperiment`
+
+
+
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @name convertTranscriptsToGenes
@@ -57,7 +62,8 @@ function(
         }
         assert_is_a_string(organism)
         message(paste(organism, "genes detected"))
-        args <- as.list(matchS4Call())[-1L]
+        # FIXME Use `setArgsToDoCall()` here?
+        args <- as.list(matchCall())[-1L]
         args[["object"]] <- NULL
         args[["organism"]] <- organism
         tx2gene <- do.call(
@@ -101,7 +107,8 @@ function(
     # Setting the formals below.
 ) {
     rownames <- rownames(object)
-    args <- as.list(matchS4Call())[-1L]
+    # FIXME Use `setArgsToDoCall()` here?
+    args <- as.list(matchCall())[-1L]
     args[["object"]] <- rownames
     rownames <- do.call(
         what = convertTranscriptsToGenes,
