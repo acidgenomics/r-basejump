@@ -63,8 +63,8 @@
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
-#' @importFrom S4Vectors %in% as.data.frame complete.cases cor mcols mcols<-
-#'   metadata metadata<- na.omit setdiff tail
+#' @importFrom S4Vectors %in% aggregate as.data.frame complete.cases cor mcols
+#'   mcols<- metadata metadata<- na.omit setdiff tail
 #' @importFrom sessioninfo session_info
 #' @importFrom stats as.formula dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
