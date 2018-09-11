@@ -164,11 +164,11 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># makeGene2symbolFromEnsembl ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromEnsembl</span>(<span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Homo Sapiens</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60977"</span>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='output co'>#&gt; <span class='message'>Sanitizing 2956 duplicated symbols using `make.unique()`</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 65256 rows and 2 columns
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='output co'>#&gt; <span class='message'>Sanitizing 2956 duplicated symbols using `make.unique()`</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; gene2symbol with 65256 rows and 2 columns
 #&gt;                          geneID    geneName
 #&gt;                     &lt;character&gt; &lt;character&gt;
 #&gt; ENSG00000000003 ENSG00000000003      TSPAN6
@@ -184,7 +184,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; LRG_999                 LRG_999       CIC.1</div><div class='input'>
 <span class='co'># makeGene2symbolFromGFF ====</span>
 <span class='co'># GTF</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 17 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GTF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; gene2symbol with 17 rows and 2 columns
 #&gt;                                geneID      geneName
 #&gt;                           &lt;character&gt;   &lt;character&gt;
 #&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik
@@ -199,7 +199,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; ENSMUSG00000102343 ENSMUSG00000102343       Gm37381
 #&gt; ENSMUSG00000025900 ENSMUSG00000025900           Rp1</div><div class='input'>
 <span class='co'># GFF3</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 20 rows and 2 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeGene2symbolFromGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gff3"</span>)</div><div class='output co'>#&gt; <span class='message'>Making gene2symbol from GFF</span></div><div class='output co'>#&gt; <span class='message'>Reading example.gff3</span></div><div class='output co'>#&gt; <span class='message'>Ensembl GFF detected</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; gene2symbol with 20 rows and 2 columns
 #&gt;                                geneID      geneName
 #&gt;                           &lt;character&gt;   &lt;character&gt;
 #&gt; ENSMUSG00000102693 ENSMUSG00000102693 4933401J01Rik

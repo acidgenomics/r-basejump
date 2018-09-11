@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sanitize Sample Data — sanitizeSampleData • basejump</title>
+<title><code>gene2symbol</code> Class — gene2symbol-class • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Sanitize Sample Data — sanitizeSampleData" />
+<meta property="og:title" content="<code>gene2symbol</code> Class — gene2symbol-class" />
 
-<meta property="og:description" content="This function will standardize sample metadata." />
+<meta property="og:description" content="Gene-to-symbol mappings." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,79 +105,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sanitize Sample Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/sanitizeSampleData.R'><code>R/sanitizeSampleData.R</code></a></small>
-    <div class="hidden name"><code>sanitizeSampleData.Rd</code></div>
+    <h1><code>gene2symbol</code> Class</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
+    <div class="hidden name"><code>gene2symbol-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function will standardize sample metadata.</p>
+    <p>Gene-to-symbol mappings.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sanitizeSampleData</span>(<span class='no'>object</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>DataFrame</code>.</p>
-    
+        
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The following conventions are enforced:</p><ul>
-<li><p>Column names will be converted to camel case, using <code><a href='makeNames.html'>camel()</a></code>.</p></li>
-<li><p>Required columns: <code>sampleName</code>.</p></li>
-<li><p>Blacklisted columns: <code>interestingGroups</code>, <code>sampleID</code>. These columns are
-generated internally, and should not be user defined.</p></li>
-<li><p>All columns will be coerced to factor.</p></li>
-<li><p>Non-atomic columns will be dropped.</p></li>
-</ul>
-    <p>Currently supports <code>DataFrame</code> or <code>data.frame</code> input.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Sanitization Functions: <code><a href='makeNames.html'>camel</a></code>,
-  <code><a href='collapseToString.html'>collapseToString</a></code>, <code><a href='removeNA.html'>removeNA</a></code>,
-  <code><a href='sanitizeNA.html'>sanitizeNA</a></code>, <code><a href='sanitizePercent.html'>sanitizePercent</a></code>,
-  <code><a href='sanitizeRowData.html'>sanitizeRowData</a></code></p></div>
+    <p>Contains a <code>DataFrame</code> with <code>geneID</code> and <code>geneName</code> columns.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
-#&gt;         sampleName genotype treatment
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control
-#&gt; sample2    sample2 knockout   control
-#&gt; sample3    sample3 wildtype   treated
-#&gt; sample4    sample4 knockout   treated</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitizeSampleData</span>(<span class='no'>from</span>)
-<span class='fu'>all</span>(<span class='fu'>vapply</span>(<span class='no'>to</span>, <span class='no'>is.factor</span>, <span class='fu'>logical</span>(<span class='fl'>1L</span>)))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
-#&gt;         sampleName genotype treatment
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control
-#&gt; sample2    sample2 knockout   control
-#&gt; sample3    sample3 wildtype   treated
-#&gt; sample4    sample4 knockout   treated</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(
+    <span class='st'>"gene2symbol"</span>,
+    <span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
+        <span class='kw'>geneID</span> <span class='kw'>=</span> <span class='st'>"ENSG00000000003"</span>,
+        <span class='kw'>geneName</span> <span class='kw'>=</span> <span class='st'>"TSPAN6"</span>,
+        <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='st'>"ENSG00000000003"</span>
+    )
+)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; gene2symbol with 1 row and 2 columns
+#&gt;                          geneID    geneName
+#&gt;                     &lt;character&gt; &lt;character&gt;
+#&gt; ENSG00000000003 ENSG00000000003      TSPAN6</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

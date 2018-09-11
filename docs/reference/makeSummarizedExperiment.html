@@ -191,6 +191,10 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 <li><p><code>devtoolsSessionInfo</code>: <code><a href='http://www.rdocumentation.org/packages/sessioninfo/topics/session_info'>sessioninfo::session_info()</a></code>.</p></li>
 </ul>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Column and rows always return sorted alphabetically.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
@@ -264,12 +268,13 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
 #&gt; sample2    wildtype         6
 #&gt; sample3    knockout         3
 #&gt; sample4    knockout         6</div><div class='input'>
-<span class='fu'>makeSummarizedExperiment</span>(
+<span class='co'># Note that this returns with the dimnames sorted.</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>makeSummarizedExperiment</span>(
     <span class='kw'>assays</span> <span class='kw'>=</span> <span class='no'>assays</span>,
     <span class='kw'>rowRanges</span> <span class='kw'>=</span> <span class='no'>rowRanges</span>,
     <span class='kw'>colData</span> <span class='kw'>=</span> <span class='no'>colData</span>,
     <span class='kw'>transgeneNames</span> <span class='kw'>=</span> <span class='st'>"EGFP"</span>
-)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: running command 'timedatectl' had status 1</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
 #&gt; dim: 4 4 
 #&gt; metadata(4): date wd utilsSessionInfo devtoolsSessionInfo
 #&gt; assays(1): counts
@@ -286,6 +291,8 @@ rows denote spike-in sequences (e.g. ERCCs).</p></td>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
