@@ -72,6 +72,7 @@ Imports:
     RColorBrewer,
     RCurl (>= 1.95),
     readr (>= 1.1),
+    reshape2,
     rio (>= 0.5),
     rlang (>= 0.2),
     rtracklayer,
@@ -154,6 +155,7 @@ Collate:
     'markdownPlotlist.R'
     'matchCall.R'
     'matchInterestingGroups.R'
+    'meltCounts-methods.R'
     'methodFormals.R'
     'metrics-methods.R'
     'mgi2gene.R'
@@ -163,6 +165,7 @@ Collate:
     'parseRd.R'
     'pheatmap-internal.R'
     'plotCorrelationHeatmap-methods.R'
+    'plotGene-methods.R'
     'plotHeatmap-methods.R'
     'plotQuantileHeatmap-methods.R'
     'prepareTemplate.R'
