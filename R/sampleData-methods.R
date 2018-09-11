@@ -41,7 +41,12 @@ setMethod(
             x = "sampleName",
             y = colnames(colData(object))
         )
-        colData(object)
+        data <- colData(object)
+        interestingGroups <- interestingGroups(object)
+        if (length(interestingGroups) > 0L) {
+            data <- uniteInterestingGroups(data, interestingGroups)
+        }
+        data
     }
 )
 
@@ -56,6 +61,17 @@ setMethod(
         value = "DataFrame"
     ),
     definition = function(object, value) {
+        # Don't allow the user to set `interestingGroups` column manually.
+        value[["interestingGroups"]] <- NULL
+        # Check for blacklisted columns.
+        assert_are_disjoint_sets(
+            colnames(value),
+            c(
+                "rowname",
+                "sampleID"
+            )
+        )
+        # Now safe to assign.
         colData(object) <- value
         validObject(object)
         object
