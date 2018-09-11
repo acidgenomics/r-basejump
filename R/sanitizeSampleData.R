@@ -40,19 +40,13 @@ sanitizeSampleData <- function(object) {
     # And check for any duplicate rows.
     assert_has_no_duplicates(object[["sampleName"]])
 
-    # Error if blacklisted columns are detected.
-    assert_are_disjoint_sets(
-        x = colnames(object),
-        y = c("interestingGroups", "sampleID")
-    )
-
-    # Error if non-atomic columns are detected.
+    # Error if any non-atomic columns are detected.
     invisible(lapply(object, assert_is_atomic))
 
-    # Ensure coercion to `DataFrame` class.
+    # Coerce to DataFrame class.
     data <- as(object, "DataFrame")
     assert_is_non_empty(data)
-    data <- camel(data)
+    assert_has_rows(data)
     assertHasRownames(data)
 
     # Require that dimnames are valid.
@@ -70,6 +64,13 @@ sanitizeSampleData <- function(object) {
     )
     data <- as(list, "DataFrame")
     rownames(data) <- rownames
+
+    # Sanitize to camel case.
+    data <- camel(data)
+
+    # Drop any blacklisted columns before return.
+    blacklist <- c("interestingGroups", "sampleID")
+    data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
 
     data
 }
