@@ -99,7 +99,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
 Collate: 
-    'basejump-package.R'
     'AllClasses.R'
     'AllGenerics.R'
     'GRanges-internal.R'
@@ -107,6 +106,7 @@ Collate:
     'aggregate-methods.R'
     'assert.R'
     'assignAndSaveData.R'
+    'basejump-package.R'
     'broadClass-methods.R'
     'cleanSystemLibrary.R'
     'coerce-methods.R'
