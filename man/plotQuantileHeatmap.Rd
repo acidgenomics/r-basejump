@@ -87,7 +87,7 @@ plotQuantileHeatmap(
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}}
+  \code{\link{plotGene}}, \code{\link{plotHeatmap}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

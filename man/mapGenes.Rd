@@ -89,8 +89,9 @@ mapGenesToSymbols(object, genes = geneNames)
 Other Data Functions: \code{\link{counts}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+  \code{\link{meltCounts}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh

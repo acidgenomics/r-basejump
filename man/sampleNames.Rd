@@ -40,8 +40,9 @@ colData(object)$sampleName
 Other Data Functions: \code{\link{counts}},
   \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh
