@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set Arguments to Do Call — setArgsToDoCall • basejump</title>
+<title>Functions to Access the Function Call Stack — matchCall • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,12 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Set Arguments to Do Call — setArgsToDoCall" />
+<meta property="og:title" content="Functions to Access the Function Call Stack — matchCall" />
 
-<meta property="og:description" content="Set Arguments to Do Call" />
+<meta property="og:description" content="Note that base::match.call() doesn't always work correctly inside S4
+methods. Here we are using a combination of base::sys.call() with
+pryr::standardise_call() to correctly capture named arguments inside an S4
+method." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,47 +108,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set Arguments to Do Call</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/setArgsToDoCall.R'><code>R/setArgsToDoCall.R</code></a></small>
-    <div class="hidden name"><code>setArgsToDoCall.Rd</code></div>
+    <h1>Functions to Access the Function Call Stack</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/matchCall.R'><code>R/matchCall.R</code></a></small>
+    <div class="hidden name"><code>matchCall.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Set Arguments to Do Call</p>
+    <p>Note that <code><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call()</a></code> doesn't always work correctly inside S4
+methods. Here we are using a combination of <code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call()</a></code> with
+<code><a href='http://www.rdocumentation.org/packages/pryr/topics/standardise_call'>pryr::standardise_call()</a></code> to correctly capture named arguments inside an S4
+method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>setArgsToDoCall</span>(<span class='no'>args</span>, <span class='kw'>removeArgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>call</span> <span class='kw'>=</span> <span class='fu'>sys.call</span>(<span class='kw'>which</span> <span class='kw'>=</span>
-  <span class='fu'>sys.parent</span>()), <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>sys.function</span>(<span class='kw'>which</span> <span class='kw'>=</span> <span class='fu'>sys.parent</span>()),
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>matchCall</span>(<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>args</th>
-      <td><p>The default method expects a <em>list</em> of arguments to the function
-    call (the <code>names</code> attribute of <code>args</code> gives the argument names).
-    See <code>?base::<a href='http://www.rdocumentation.org/packages/base/topics/do.call'>do.call</a></code> for the details.</p>    
-<p>Specific methods can support other objects.
-    Please refer to the documentation of a particular method for the details.</p></td>
-    </tr>
-    <tr>
-      <th>removeArgs</th>
-      <td><p><code>character</code>. Names of arguments to remove from <code>call</code>
-and/or <code>fun</code> returns before passing to <code>do.call()</code>.</p></td>
-    </tr>
-    <tr>
-      <th>call</th>
-      <td><p><code>call</code>. Call to match against. This argument needs to be changed
-when called inside an S4 method.</p></td>
-    </tr>
-    <tr>
-      <th>fun</th>
-      <td><p><code>function</code>. Function containing the <code>do.call()</code> call. Recommended
-to leave unchanged by default.</p></td>
-    </tr>
     <tr>
       <th>verbose</th>
       <td><p><code>boolean</code>. Run the function with verbose messages? It is only
@@ -155,40 +136,59 @@ recommended to enable this when debugging.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>list</code>. Arguments to pass to <code>do.call()</code>.</p>
+    <p><code>call</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.calls()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/sys.parent'>base::sys.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/base/topics/match.call'>base::match.call()</a></code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/pryr/topics/standardise_call'>pryr::standardise_call()</a></code>.</p></li>
+</ul></div>
     <div class='dont-index'><p>Other Developer Functions: <code><a href='cleanSystemLibrary.html'>cleanSystemLibrary</a></code>,
   <code><a href='detectHPC.html'>detectHPC</a></code>, <code><a href='dots.html'>dots</a></code>,
   <code><a href='flatFiles.html'>flatFiles</a></code>,
   <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
-  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>, <code><a href='matchCall.html'>matchCall</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
   <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
   <code><a href='methodFormals.html'>methodFormals</a></code>,
   <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
-  <code><a href='printString.html'>printString</a></code>,
+  <code><a href='printString.html'>printString</a></code>, <code><a href='setArgsToDoCall.html'>setArgsToDoCall</a></code>,
   <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>example</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>xxx</span>, <span class='no'>...</span>) {
-    <span class='no'>args</span> <span class='kw'>&lt;-</span> <span class='fu'>setArgsToDoCall</span>(
-        <span class='kw'>args</span> <span class='kw'>=</span> <span class='fu'>list</span>(
-            <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
-            <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>
-        ),
-        <span class='kw'>removeArgs</span> <span class='kw'>=</span> <span class='st'>"xxx"</span>
-    )
-    <span class='fu'>print</span>(<span class='no'>args</span>)
-    <span class='fu'>do.call</span>(<span class='kw'>what</span> <span class='kw'>=</span> <span class='no'>paste</span>, <span class='kw'>args</span> <span class='kw'>=</span> <span class='no'>args</span>)
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='st'>"XXX"</span>
+
+<span class='co'># Standard call</span>
+<span class='no'>testing</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>...</span>) {
+    <span class='fu'>matchCall</span>()
 }
-<span class='fu'>example</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))</div><div class='output co'>#&gt; $object
-#&gt; [1] "hello" "world"
-#&gt; 
-#&gt; $collapse
-#&gt; [1] " "
-#&gt; </div><div class='output co'>#&gt; [1] "hello world"</div></pre>
+<span class='fu'>testing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; testing(object = x)</div><div class='input'>
+<span class='co'># S4 mode</span>
+<span class='fu'>setGeneric</span>(
+    <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"testing"</span>,
+    <span class='kw'>def</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>...</span>) {
+        <span class='fu'>standardGeneric</span>(<span class='st'>"testing"</span>)
+    }
+)</div><div class='output co'>#&gt; [1] "testing"</div><div class='input'>
+<span class='fu'>setMethod</span>(
+    <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"testing"</span>,
+    <span class='kw'>signature</span> <span class='kw'>=</span> <span class='fu'>signature</span>(<span class='st'>"character"</span>),
+    <span class='kw'>definition</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>...</span>) {
+        <span class='fu'>matchCall</span>()
+    }
+)
+<span class='fu'>testing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; testing(object = x)</div><div class='input'>
+<span class='fu'>setMethod</span>(
+    <span class='kw'>f</span> <span class='kw'>=</span> <span class='st'>"testing"</span>,
+    <span class='kw'>signature</span> <span class='kw'>=</span> <span class='fu'>signature</span>(<span class='st'>"character"</span>),
+    <span class='kw'>definition</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>xxx</span>, <span class='no'>...</span>) {
+        <span class='fu'>matchCall</span>()
+    }
+)
+<span class='fu'>testing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; testing(object = x)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

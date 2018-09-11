@@ -6,6 +6,9 @@ reference:
   - title: Package Information
     contents:
     - basejump-package
+  - title: S4 Classes
+    contents:
+    - ends_with("-class")
   - title: Annotation Functions
     contents:
     - broadClass
@@ -80,7 +83,7 @@ reference:
     - starts_with("initialize")
     - localOrRemoteFile
     - matchInterestingGroups
-    - matchS4Call
+    - matchCall
     - methodFormals
     - multiassignAsEnvir
     - printString

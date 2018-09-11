@@ -43,9 +43,9 @@ example <- function(object, xxx, ...) {
             object = object,
             collapse = " "
         ),
-        removeArgs = "xxx",
-        verbose = TRUE
+        removeArgs = "xxx"
     )
+    print(args)
     do.call(what = paste, args = args)
 }
 example(c("hello", "world"))
