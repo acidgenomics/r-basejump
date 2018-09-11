@@ -268,7 +268,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname plotGene
 #' @export
 setGeneric(
     name = "plotGene",
