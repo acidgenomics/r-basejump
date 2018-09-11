@@ -432,40 +432,40 @@ test_that("makeGene2symbolFromEnsembl", {
         organism = "Homo sapiens",
         release = release
     )
-    expect_identical(colnames(object), c("geneID", "geneName"))
+    expect_is(object, "gene2symbol")
     expect_identical(nrow(object), 63970L)
 })
 
 
 
 # makeGene2symbolFromGFF =======================================================
-test_that("makeGene2symbolFromGFF : Minimal GTF", {
-    object <- makeGene2symbolFromGFF("example.gtf")
-    expect_is(object, "DataFrame")
-    expect_identical(dim(object), c(17L, 2L))
-    expect_identical(
-        object = head(object, 2L),
-        expected = DataFrame(
-            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
-            geneName = c("4933401J01Rik", "Gm26206"),
-            row.names = c("ENSMUSG00000102693", "ENSMUSG00000064842")
+with_parameters_test_that(
+    "makeGene2symbolFromGFF", {
+        object <- makeGene2symbolFromGFF(file)
+        expect_is(object, "gene2symbol")
+        expect_identical(
+            object = head(object, n = 2L),
+            expected = new(
+                "gene2symbol",
+                DataFrame(
+                    geneID = c(
+                        "ENSMUSG00000102693",
+                        "ENSMUSG00000064842"
+                    ),
+                    geneName = c(
+                        "4933401J01Rik",
+                        "Gm26206"
+                    ),
+                    row.names = c(
+                        "ENSMUSG00000102693",
+                        "ENSMUSG00000064842"
+                    )
+                )
+            )
         )
-    )
-})
-
-test_that("makeGene2symbolFromGFF : Minimal GFF3", {
-    object <- makeGene2symbolFromGFF("example.gff3")
-    expect_is(object, "DataFrame")
-    expect_identical(dim(object), c(20L, 2L))
-    expect_identical(
-        object = head(object, 2L),
-        expected = DataFrame(
-            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
-            geneName = c("4933401J01Rik", "Gm26206"),
-            row.names = c("ENSMUSG00000102693", "ENSMUSG00000064842")
-        )
-    )
-})
+    },
+    file = c("example.gtf", "example.gff3")
+)
 
 
 
@@ -696,40 +696,40 @@ test_that("makeTx2geneFromEnsembl", {
         organism = "Homo sapiens",
         release = release
     )
-    expect_identical(colnames(object), c("transcriptID", "geneID"))
+    expect_is(object, "tx2gene")
     expect_identical(nrow(object), 216741L)
 })
 
 
 
 # makeTx2geneFromGFF ===========================================================
-test_that("makeTx2geneFromGFF : Minimal GTF", {
-    object <- makeTx2geneFromGFF("example.gtf")
-    expect_is(object, "DataFrame")
-    expect_identical(dim(object), c(20L, 2L))
-    expect_identical(
-        object = head(object, 2L),
-        expected = DataFrame(
-            transcriptID = c("ENSMUST00000193812", "ENSMUST00000082908"),
-            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000193812", "ENSMUST00000082908")
+with_parameters_test_that(
+    "makeTx2geneFromGFF", {
+        object <- makeTx2geneFromGFF(file)
+        expect_is(object, "tx2gene")
+        expect_identical(
+            object = head(object, n = 2L),
+            expected = new(
+                "tx2gene",
+                DataFrame(
+                    transcriptID = c(
+                        "ENSMUST00000193812",
+                        "ENSMUST00000082908"
+                    ),
+                    geneID = c(
+                        "ENSMUSG00000102693",
+                        "ENSMUSG00000064842"
+                    ),
+                    row.names = c(
+                        "ENSMUST00000193812",
+                        "ENSMUST00000082908"
+                    )
+                )
+            )
         )
-    )
-})
-
-test_that("makeTx2geneFromGFF : Minimal GFF3", {
-    object <- makeTx2geneFromGFF("example.gff3")
-    expect_is(object, "DataFrame")
-    expect_identical(dim(object), c(26L, 2L))
-    expect_identical(
-        object = head(object, 2L),
-        expected = DataFrame(
-            transcriptID = c("ENSMUST00000193812", "ENSMUST00000082908"),
-            geneID = c("ENSMUSG00000102693", "ENSMUSG00000064842"),
-            row.names = c("ENSMUST00000193812", "ENSMUST00000082908")
-        )
-    )
-})
+    },
+    file = c("example.gtf", "example.gff3")
+)
 
 
 
@@ -748,19 +748,21 @@ with_parameters_test_that(
 
 # stripTranscriptVersions ======================================================
 test_that("stripTranscriptVersions : character", {
-    expect_identical(
-        object = stripTranscriptVersions("ENSMUST00000119854.7"),
-        expected = "ENSMUST00000119854"
-    )
     # Return unmodified if not Ensembl transcript (ENS*T).
+    # For example, check and make sure *C. elegans* transcripts are preserved.
     expect_identical(
-        object = stripTranscriptVersions("EGFP.1"),
-        expected = "EGFP.1"
-    )
-    # Theoretical spike-in containing a transcript version.
-    expect_identical(
-        object = stripTranscriptVersions(c("ENSMUST00000119854.7", "EGFP.1")),
-        expected = c("ENSMUST00000119854", "EGFP.1")
+        object = stripTranscriptVersions(c(
+            "ENSMUST00000119854.7",
+            "EGFP.1",
+            "2L52.1a",
+            "2L52.2"
+        )),
+        expected = c(
+            "ENSMUST00000119854",
+            "EGFP.1",
+            "2L52.1a",
+            "2L52.2"
+        )
     )
 })
 
