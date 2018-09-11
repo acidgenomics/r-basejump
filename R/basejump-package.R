@@ -42,7 +42,8 @@
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
-#'   geom_hline geom_label geom_vline theme theme_linedraw
+#'   geom_hline geom_label geom_point geom_vline position_jitterdodge
+#'   stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
