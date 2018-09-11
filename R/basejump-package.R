@@ -12,8 +12,8 @@
 #' @importFrom assertive.files assert_all_are_dirs assert_all_are_existing_files
 #'   assert_all_are_non_empty_files
 #' @importFrom assertive.numbers assert_all_are_greater_than
-#'   assert_all_are_greater_than_or_equal_to assert_all_are_non_negative
-#'   assert_all_are_positive
+#'   assert_all_are_greater_than_or_equal_to assert_all_are_in_closed_range
+#'   assert_all_are_non_negative assert_all_are_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
 #'   assert_has_dimnames assert_has_dims assert_has_names
 #'   assert_has_no_duplicates assert_has_rownames assert_has_rows
@@ -36,8 +36,8 @@
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
 #' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   mutate mutate_all mutate_at mutate_if pull rename select select_if
-#'   starts_with summarize_all top_n ungroup
+#'   left_join mutate mutate_all mutate_at mutate_if pull rename select
+#'   select_if starts_with summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
@@ -61,6 +61,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
+#' @importFrom reshape2 melt
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% aggregate as.data.frame complete.cases cor mcols

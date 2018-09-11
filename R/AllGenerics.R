@@ -235,6 +235,17 @@ setGeneric(
 
 
 
+#' @rdname meltCounts
+#' @export
+setGeneric(
+    name = "meltCounts",
+    def = function(object, ...) {
+        standardGeneric("meltCounts")
+    }
+)
+
+
+
 #' @rdname metrics
 #' @export
 setGeneric(
