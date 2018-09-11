@@ -1,9 +1,12 @@
 context("Assert Check Functions")
 
-g2s <- DataFrame(
-    geneID = paste0("gene", seq_len(2L)),
-    geneName = paste0("symbol", seq_len(2L)),
-    row.names = paste0("gene", seq_len(2L))
+g2s <- new(
+    "gene2symbol",
+    DataFrame(
+        geneID = paste0("gene", seq_len(2L)),
+        geneName = paste0("symbol", seq_len(2L)),
+        row.names = paste0("gene", seq_len(2L))
+    )
 )
 
 
@@ -69,11 +72,7 @@ test_that("assertFormalGene2symbol", {
     expect_silent(assertFormalGene2symbol(object, genes, g2s))
     expect_error(
         object = assertFormalGene2symbol(mtcars, genes, g2s),
-        regexp = paste(
-            "is_subset :",
-            "The elements 'gene1', 'gene2'",
-            "in genes are not in rownames\\(object\\)."
-        )
+        regexp = "is_subset :"
     )
 })
 
