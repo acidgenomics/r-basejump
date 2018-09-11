@@ -10,10 +10,10 @@ sanitizeRowData(object)
 \item{object}{Object.}
 }
 \value{
-\code{tbl_df}, containing only \code{atomic} columns.
+\code{DataFrame}. Contains only \code{character} and \code{factor} columns.
 }
 \description{
-Coerce gene annotations to a \code{tibble}, and keep only \code{atomic} columns.
+Coerce gene annotations to \code{DataFrame}, and keep only \code{atomic} columns.
 Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
 }
 \details{

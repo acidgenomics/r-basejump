@@ -1,6 +1,6 @@
 #' Sanitize Row Data
 #'
-#' Coerce gene annotations to a `tibble`, and keep only `atomic` columns.
+#' Coerce gene annotations to `DataFrame`, and keep only `atomic` columns.
 #' Complex columns (e.g. Entrez ID `list`) will fail to write to disk as CSVs.
 #'
 #' Supports `GRanges` and `DataFrame` class objects.
@@ -10,7 +10,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `tbl_df`, containing only `atomic` columns.
+#' @return `DataFrame`. Contains only `character` and `factor` columns.
 #' @export
 #'
 #' @examples
@@ -20,13 +20,11 @@
 #' vapply(to, is.atomic, logical(1L))
 #' print(to)
 sanitizeRowData <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("GRanges", "DataFrame")
-    )
+    assert_is_any_of(object, classes = c("GRanges", "DataFrame"))
     validObject(object)
 
-    # Coerce to tibble.
+    # Coerce to tibble. We'll return as `DataFrame`.
+    # This step helps coerce nested S4 data to atomic columns.
     data <- as(object, "tbl_df")
 
     # Enforce camel case.
@@ -42,5 +40,6 @@ sanitizeRowData <- function(object) {
     data <- data[, keep, drop = FALSE]
     assert_is_non_empty(data)
 
-    data
+    # Return
+    as(data, "DataFrame")
 }
