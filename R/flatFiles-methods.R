@@ -28,7 +28,6 @@ setMethod(
         if (!isS4(object)) {
             return(object)
         }
-        validObject(object)
         list <- lapply(slotNames(object), function(slot) {
             if (.hasSlot(object, slot)) {
                 slot(object, slot)
