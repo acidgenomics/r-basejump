@@ -95,6 +95,6 @@ plotHeatmap(rse_small, clusterCols = FALSE)
 }
 
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotQuantileHeatmap}}
+  \code{\link{plotGene}}, \code{\link{plotQuantileHeatmap}}
 }
 \concept{Plot Functions}
