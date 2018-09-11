@@ -8,8 +8,8 @@
 \usage{
 \S4method{plotGene}{SummarizedExperiment}(object, genes,
   interestingGroups = NULL, countsAxisLabel = "counts",
-  medianLine = TRUE, color = getOption("bcbio.discrete.color", NULL),
-  legend = getOption("bcbio.legend", TRUE), headerLevel = 2L,
+  medianLine = TRUE, color = getOption("basejump.discrete.color",
+  NULL), legend = getOption("basejump.legend", TRUE), headerLevel = 2L,
   return = c("facet", "wide"))
 }
 \arguments{
@@ -51,9 +51,8 @@ geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 # Rownames, gene IDs, and gene names (symbols) are supported.
-plotGene(object, genes = rownames)
-plotGene(object, genes = geneIDs)
-plotGene(object, genes = geneNames)
+plotGene(object, genes = geneIDs, return = "facet")
+plotGene(object, genes = geneNames, return = "wide")
 }
 \seealso{
 \code{\link[DESeq2:plotCounts]{DESeq2::plotCounts()}}.
