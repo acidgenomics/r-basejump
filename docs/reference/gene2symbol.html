@@ -154,15 +154,21 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>gene2symbol</span>(<span class='no'>rse_small</span>) <span class='kw'>%&gt;%</span> <span class='fu'>head</span>()</div><div class='output co'>#&gt; DataFrame with 6 rows and 2 columns
-#&gt;                          geneID    geneName
-#&gt;                     &lt;character&gt; &lt;character&gt;
-#&gt; ENSG00000000003 ENSG00000000003      TSPAN6
-#&gt; ENSG00000000005 ENSG00000000005        TNMD
-#&gt; ENSG00000000419 ENSG00000000419        DPM1
-#&gt; ENSG00000000457 ENSG00000000457       SCYL3
-#&gt; ENSG00000000460 ENSG00000000460    C1orf112
-#&gt; ENSG00000000938 ENSG00000000938         FGR</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span><span class='fu'>gene2symbol</span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; gene2symbol with 100 rows and 2 columns
+#&gt;                  geneID    geneName
+#&gt;             &lt;character&gt; &lt;character&gt;
+#&gt; gene1   ENSG00000000003      TSPAN6
+#&gt; gene2   ENSG00000000005        TNMD
+#&gt; gene3   ENSG00000000419        DPM1
+#&gt; gene4   ENSG00000000457       SCYL3
+#&gt; gene5   ENSG00000000460    C1orf112
+#&gt; ...                 ...         ...
+#&gt; gene96  ENSG00000005421        PON1
+#&gt; gene97  ENSG00000005436       GCFC2
+#&gt; gene98  ENSG00000005448       WDR54
+#&gt; gene99  ENSG00000005469        CROT
+#&gt; gene100 ENSG00000005471       ABCB4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

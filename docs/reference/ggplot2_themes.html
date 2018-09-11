@@ -118,11 +118,11 @@
 
     <pre class="usage"><span class='fu'>theme_paperwhite</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
-  <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='st'>"top"</span>, <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>theme_midnight</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
-  <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='st'>"top"</span>, <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,17 +193,23 @@ expression plots.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='message'>Want to understand how all the pieces fit together? See the R for Data</span>
-#&gt; <span class='message'>Science book: http://r4ds.had.co.nz/</span></div><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>,
     <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(
         <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
         <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>displ</span>,
-        <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>
+        <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
+        <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>
     )
-) +
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()
-<span class='no'>p</span> + <span class='fu'>theme_paperwhite</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2_themes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='fu'>theme_midnight</span>(<span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2_themes-2.png' alt='' width='700' height='433' /></div></pre>
+)
+<span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() + <span class='fu'>theme_paperwhite</span>()</div><div class='img'><img src='ggplot2_themes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() + <span class='fu'>theme_midnight</span>()</div><div class='img'><img src='ggplot2_themes-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Minimal bar plot</span>
+<span class='no'>p</span> +
+    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_bar</a></span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"identity"</span>) +
+    <span class='co'># This will collapse the extra margin at y-intercept.</span>
+    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous'>scale_y_continuous</a></span>(<span class='kw'>expand</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0</span>)) +
+    <span class='fu'>theme_paperwhite</span>(<span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2_themes-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
