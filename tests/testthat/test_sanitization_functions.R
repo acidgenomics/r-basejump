@@ -248,20 +248,17 @@ with_parameters_test_that(
             FUN = is.factor,
             FUN.VALUE = logical(1L)
         )))
-
-
     },
     object = list(
         DataFrame = DataFrame(
-            genotype = rep(c("wt", "ko"), 2L),
-            batch = c(1L, 1L, 2L, 2L),
-            row.names = paste("sample", seq_len(4L), sep = "_")
+            genotype = rep(c("wt", "ko"), times = 2L),
+            batch = rep(seq_len(2L), each = 2L),
+            row.names = paste0("sample", seq_len(4L))
         ),
         tbl_df = tibble(
-            rowname = paste("sample", seq_len(4L), sep = "_"),
-            sample_name = paste0("patient", seq_len(4L)),
-            genotype = c("wt", "ko", "wt", "ko"),
-            batch = c(1L, 1L, 2L, 2L)
+            rowname = paste0("sample", seq_len(4L)),
+            genotype = rep(c("wt", "ko"), times = 2L),
+            batch = rep(seq_len(2L), each = 2L)
         )
     )
 )
