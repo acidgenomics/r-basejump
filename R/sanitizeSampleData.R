@@ -56,6 +56,7 @@ sanitizeSampleData <- function(object) {
     assertHasRownames(data)
 
     # Require that dimnames are valid.
+    # This checks to ensure we don't have duplicate row or column names too.
     assertHasValidDimnames(data)
 
     # Coerce all columns to factor, and ensure levels are updated, in case
