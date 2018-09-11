@@ -3,12 +3,12 @@
 \docType{methods}
 \name{flatFiles}
 \alias{flatFiles}
-\alias{flatFiles,SummarizedExperiment-method}
+\alias{flatFiles,ANY-method}
 \title{Flat Files from S4 Object}
 \usage{
 flatFiles(object, ...)
 
-\S4method{flatFiles}{SummarizedExperiment}(object)
+\S4method{flatFiles}{ANY}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -16,13 +16,12 @@ flatFiles(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{list} containing the S4 object slots.
+\code{list}.
 }
 \description{
 Extract the slots inside an S4 object for archival storage.
 }
 \examples{
-# SummarizedExperiment ====
 x <- flatFiles(rse_small)
 class(x)
 names(x)
