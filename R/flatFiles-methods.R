@@ -8,10 +8,9 @@
 #'
 #' @inheritParams general
 #'
-#' @return `list` containing the S4 object slots.
+#' @return `list`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
 #' x <- flatFiles(rse_small)
 #' class(x)
 #' names(x)
@@ -23,8 +22,12 @@ NULL
 #' @export
 setMethod(
     f = "flatFiles",
-    signature = signature("SummarizedExperiment"),
+    signature = signature("ANY"),
     definition = function(object) {
+        # Return unmodified if not S4.
+        if (!isS4(object)) {
+            return(object)
+        }
         validObject(object)
         list <- lapply(slotNames(object), function(slot) {
             if (.hasSlot(object, slot)) {
