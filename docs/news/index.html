@@ -326,7 +326,7 @@
 <ul>
 <li>Now requiring <a href="http://ggplot2.tidyverse.org">ggplot2</a> v3.0 internally.</li>
 <li>
-<code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code> now extend <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_linedraw()</a></code>, improving the consistency between these themes.</li>
+<code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> and <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code> now extend <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_linedraw()</a></code>, improving the consistency between these themes.</li>
 <li>Example data is now consistenly formatted using snake case: <code>rnaseq_counts</code> and <code>single_cell_counts</code>, instead of the previous camel case conventions: <code>rnaseqCounts</code>, <code>singleCellCounts</code>.</li>
 <li>Camel variants of the ggplot themes are now deprecated.</li>
 <li>Updated internal gene synonyms data from <a href="https://www.nih.gov">NIH</a>.</li>
@@ -392,7 +392,7 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Tweaked gray color accents for <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code>.</li>
+<li>Tweaked gray color accents for <code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> and <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -446,8 +446,8 @@
 <a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved internal S4 method code for <code><a href="../reference/deprecated.html">fixNA()</a></code> and <code><a href="../reference/removeNA.html">removeNA()</a></code>.</li>
-<li>Tweaked gray accent colors in <code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code>. Now using British spelling internally for ggplot code.</li>
-<li>Improved <code>strip.background</code> for <code><a href="../reference/themes.html">theme_paperwhite()</a></code>, removing the black box around the labels when facet wrapping is enabled.</li>
+<li>Tweaked gray accent colors in <code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> and <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code>. Now using British spelling internally for ggplot code.</li>
+<li>Improved <code>strip.background</code> for <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code>, removing the black box around the labels when facet wrapping is enabled.</li>
 </ul>
 </div>
 </div>
@@ -508,7 +508,7 @@
 <a href="#ggplot2-themes" class="anchor"></a>ggplot2 themes</h3>
 <ul>
 <li>
-<code><a href="../reference/themes.html">theme_midnight()</a></code> and <code><a href="../reference/themes.html">theme_paperwhite()</a></code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org">ggplot2</a> themes with bold sans serif labels.</li>
+<code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> and <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code> provide minimal, high contrast <a href="http://ggplot2.tidyverse.org">ggplot2</a> themes with bold sans serif labels.</li>
 </ul>
 </div>
 <div id="major-changes-6" class="section level3">
@@ -594,7 +594,7 @@
 <li>Now exporting all assert checks in camel case instead of snake case, to match consistency in the rest of the package.</li>
 <li>Added <code>sanitizeColData()</code> function.</li>
 <li>Added <code><a href="../reference/assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> function.</li>
-<li>Now exporting <code><a href="../reference/deprecated.html">midnightTheme()</a></code> as a <code><a href="../reference/themes.html">theme_midnight()</a></code> alias to match the syntax in the <a href="http://ggplot2.tidyverse.org">ggplot2</a> package.</li>
+<li>Now exporting <code><a href="../reference/deprecated.html">midnightTheme()</a></code> as a <code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> alias to match the syntax in the <a href="http://ggplot2.tidyverse.org">ggplot2</a> package.</li>
 <li>Added working examples and code coverage for all assert check functions.</li>
 <li>Simplified the internal collapse code for <code><a href="../reference/makeGRanges.html">annotable()</a></code> to simply work on the <a href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">Entrez</a> identifier column (<code>entrez</code>). If a manually passed in data frame still has duplicates, the function will now abort instead of attempting to use <code><a href="../reference/collapseToString.html">collapseToString()</a></code>.</li>
 <li>Added <a href="http://ggplot2.tidyverse.org">ggplot2</a> color palette assert checks: <code>assertColorScaleContinuousOrNULL()</code>, <code>assertColorScaleDiscreteOrNULL()</code>, <code>assertFillScaleContinuousOrNULL()</code>, <code>assertFillScaleDiscreteOrNULL()</code>.</li>
@@ -613,7 +613,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-2-1-2018-02-07" class="anchor"></a>basejump 0.2.1 (2018-02-07)</h2>
 <ul>
-<li>Added <code><a href="../reference/convertGenesToSymbols.html">convertGenesToSymbols()</a></code> and <code><a href="../reference/convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> functions. Previously some of this functionality was contained within the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> usage in the <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> R packages, so I decided to split these out into separate functions. Now <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> work consistently with the <code><a href="../reference/makeGRanges.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
+<li>Added <code><a href="../reference/convertGenesToSymbols.html">convertGenesToSymbols()</a></code> and <code><a href="../reference/convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> functions. Previously some of this functionality was contained within the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/AllGenerics.html">tx2gene()</a></code> generics for the character method. This behavior was inconsistent with <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/AllGenerics.html">tx2gene()</a></code> usage in the <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> R packages, so I decided to split these out into separate functions. Now <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/AllGenerics.html">tx2gene()</a></code> work consistently with the <code><a href="../reference/makeGRanges.html">annotable()</a></code> function to return gene-to-symbol and transcript-to-gene identifier mappings in a <code>data.frame</code>.</li>
 <li>
 <code><a href="../reference/markdownHeader.html">markdownHeader()</a></code>, <code><a href="../reference/markdownList.html">markdownList()</a></code>, and <code><a href="../reference/markdownPlotlist.html">markdownPlotlist()</a></code> are now exported as S4 generics. The <code>md*()</code> function variants are now exported as aliases.</li>
 <li>
@@ -741,7 +741,7 @@
 <li>Bug fix for <code>readDataVersions()</code>, which shouldn’t have the column types defined, using <code>col_types = "ccT"</code>.</li>
 <li>Improved key value pair method for <code><a href="../reference/loadDataAsName.html">loadDataAsName()</a></code>. Now rather than using a named character vector for the <code>mappings</code> argument, the user can simply pass the key value pairs in as dots. For example, <code>newName1 =   "oldName1", newName2 = "oldName2"</code>. The legacy <code>mappings</code> method will still work, as long as the dots argument is a length of 1.</li>
 <li>
-<a href="https://www.ensembl.org">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/makeGRanges.html">annotable()</a></code>, <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code> and <code><a href="../reference/defunct.html">tx2gene()</a></code> functions.</li>
+<a href="https://www.ensembl.org">Ensembl</a> release version now defaults to <code>NULL</code> instead of <code>current</code> for <code><a href="../reference/makeGRanges.html">annotable()</a></code>, <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code>, <code><a href="../reference/defunct.html">symbol2gene()</a></code> and <code><a href="../reference/AllGenerics.html">tx2gene()</a></code> functions.</li>
 <li>Allow <code>rowData</code> to be left unset in <code>prepareSummarizedExperiment()</code>. This is useful for setting up objects that don’t contain gene annotations.</li>
 <li>Removed sample selection by pattern matching (<code>pattern</code>, <code>patternCol</code> arguments) in <code>readSampleMetadata()</code>. This feature wasn’t fully baked and doesn’t offer enough functionality to the user.</li>
 </ul>
