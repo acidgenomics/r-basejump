@@ -22,42 +22,6 @@ method.
 \examples{
 x <- "XXX"
 
-# Call stack inheritance ====
-testing <- function(object, ...) {
-    sys.status()
-}
-testing(x)
-
-# S4 mode
-setGeneric(
-    name = "testing",
-    def = function(object, ...) {
-        standardGeneric("testing")
-    }
-)
-
-# Inheritance where method is identical to generic.
-setMethod(
-    f = "testing",
-    signature = signature("character"),
-    definition = function(object, ...) {
-        sys.status()
-    }
-)
-testing(x)
-
-# Inheritance where method differs from generic.
-# Note that dispatch to `.local()` changes the `sys.parents()`
-setMethod(
-    f = "testing",
-    signature = signature("character"),
-    definition = function(object, xxx, ...) {
-        sys.status()
-    }
-)
-testing("XXX")
-
-# Call matching ====
 # Standard call
 testing <- function(object, ...) {
     matchCall()
