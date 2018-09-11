@@ -184,7 +184,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "are_identical : makeNames\\(rownames\\(assay\\)"
+        regexp = "validNames"
     )
     matBadCols <- mat
     colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
@@ -194,7 +194,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "are_identical : makeNames\\(colnames\\(assay\\)"
+        regexp = "validNames"
     )
 })
 
@@ -207,10 +207,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = paste(
-            "has_no_duplicates :",
-            "rownames\\(assay\\) has duplicates at positions 2, 4."
-        )
+        regexp = "has_no_duplicates :"
     )
     matDupeCols <- mat
     colnames(matDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
@@ -220,10 +217,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = paste(
-            "has_no_duplicates :",
-            "colnames\\(assay\\) has duplicates at positions 2, 4."
-        )
+        regexp = "has_no_duplicates :"
     )
 })
 
@@ -235,7 +229,7 @@ test_that("makeSummarizedExperiment : Column data failure", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "has_dimnames : The dimension names of assay are NULL."
+        regexp = "has_dimnames :"
     )
     expect_error(
         object = makeSummarizedExperiment(
