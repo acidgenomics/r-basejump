@@ -23,6 +23,8 @@
 #' @param groupings `factor`. Defines the aggregation groupings.
 #'   The new aggregate names are defined as the `factor` `levels`, and the
 #'   original, unaggregated names are defined as the `names`.
+#' @param constructor `function`. Constructor function to use when returning
+#'   aggregated object.
 #'
 #' @return Modified object, with aggregated columns (samples) or rows
 #'   (features).
@@ -80,11 +82,13 @@ NULL
 
 
 .aggregateMessage <- function(groupings) {
-    message(paste(
-        "Groupings:",
-        printString(groupings),
-        sep = "\n"
-    ))
+    assert_is_factor(groupings)
+    if (length(groupings) <= 20L) {
+        what <- groupings
+    } else {
+        what <- levels(groupings)
+    }
+    message(paste("Groupings:", printString(what), sep = "\n"))
 }
 
 
@@ -224,7 +228,10 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+    definition = function(
+        object,
+        constructor = SummarizedExperiment
+    ) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(rowData(object)))
@@ -232,13 +239,11 @@ setMethod(
         assert_is_factor(groupings)
         assertAllAreValidNames(levels(groupings))
         names(groupings) <- rownames(object)
+        assert_is_function(constructor)
 
         # Assays ---------------------------------------------------------------
         message("Aggregating counts")
-        counts <- aggregateRows(
-            object = counts(object),
-            groupings = groupings
-        )
+        counts <- aggregateRows(counts(object), groupings = groupings)
         assert_are_identical(sum(counts), sum(counts(object)))
         rownames <- rownames(counts)
 
@@ -252,6 +257,6 @@ setMethod(
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames)
         }
-        do.call(what = SummarizedExperiment, args = args)
+        do.call(what = constructor, args = args)
     }
 )
