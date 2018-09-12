@@ -1,7 +1,3 @@
-# TODO Improve the assert checks to check the names passed in here.
-
-
-
 #' Match Arguments to Do Call
 #'
 #' @family Developer Functions
@@ -9,13 +5,10 @@
 #' @export
 #'
 #' @inheritParams BiocGenerics::do.call
+#' @inheritParams base::sys.call
 #' @inheritParams general
 #' @param removeArgs `character`. Names of arguments to remove from `call`
 #'   and/or `fun` returns before passing to `do.call()`.
-#' @param call `call`. Call to match against. This argument needs to be changed
-#'   when called inside an S4 method.
-#' @param fun `function`. Function containing the [do.call()] call. Recommended
-#'   to leave unchanged by default.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 #'
@@ -35,17 +28,18 @@
 matchArgsToDoCall <- function(
     args,
     removeArgs = NULL,
-    call = matchCall(),
-    fun = sys.function(which = sys.parent()),
+    which = sys.parent(),
     verbose = FALSE
 ) {
     assert_is_list(args)
+    assert_is_non_empty(args)
     assert_has_names(args)
     assert_is_any_of(removeArgs, c("character", "NULL"))
-    call <- standardise_call(call)
-    assert_is_call(call)
-    assert_is_function(fun)
+    assert_is_a_number(which)
     assert_is_a_bool(verbose)
+
+    call <- .sysCallWithS4(which = which, verbose = verbose)
+    fun <- sys.function(which = which)
 
     callArgs <- call %>%
         as.list() %>%
@@ -58,6 +52,7 @@ matchArgsToDoCall <- function(
         .[setdiff(names(.), names(args))]
     args <- c(args, formalArgs)
 
+    # Note that we're currently stripping "..." before passing to `do.call()`.
     args <- args[setdiff(
         x = names(args),
         y = c(removeArgs, "...")
@@ -65,11 +60,10 @@ matchArgsToDoCall <- function(
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
-        print(sys.status())
         print(list(
-            names = names(args),
             call = call,
-            fun = fun
+            fun = formals(fun),
+            names = names(args)
         ))
     }
 
