@@ -4,8 +4,8 @@
 \alias{matchArgsToDoCall}
 \title{Match Arguments to Do Call}
 \usage{
-matchArgsToDoCall(args, removeArgs = NULL, call = matchCall(),
-  fun = sys.function(which = sys.parent()), verbose = FALSE)
+matchArgsToDoCall(args, removeArgs = NULL, which = sys.parent(),
+  verbose = FALSE)
 }
 \arguments{
 \item{args}{
@@ -20,11 +20,8 @@ matchArgsToDoCall(args, removeArgs = NULL, call = matchCall(),
 \item{removeArgs}{\code{character}. Names of arguments to remove from \code{call}
 and/or \code{fun} returns before passing to \code{do.call()}.}
 
-\item{call}{\code{call}. Call to match against. This argument needs to be changed
-when called inside an S4 method.}
-
-\item{fun}{\code{function}. Function containing the \code{\link[=do.call]{do.call()}} call. Recommended
-to leave unchanged by default.}
+\item{which}{the frame number if non-negative, the number of frames
+    to go back if negative.}
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
