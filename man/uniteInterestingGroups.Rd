@@ -45,11 +45,12 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{detectHPC}}, \code{\link{dots}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
-  \code{\link{localOrRemoteFile}}, \code{\link{matchCall}},
+  \code{\link{localOrRemoteFile}},
+  \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}}, \code{\link{setArgsToDoCall}}
+  \code{\link{printString}}
 }
 \author{
 Michael Steinbaugh

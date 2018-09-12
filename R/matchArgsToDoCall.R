@@ -2,7 +2,7 @@
 
 
 
-#' Set Arguments to Do Call
+#' Match Arguments to Do Call
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {
-#'     args <- setArgsToDoCall(
+#'     args <- matchArgsToDoCall(
 #'         args = list(
 #'             object = object,
 #'             collapse = " "
@@ -32,10 +32,10 @@
 #'     do.call(what = paste, args = args)
 #' }
 #' example(c("hello", "world"))
-setArgsToDoCall <- function(
+matchArgsToDoCall <- function(
     args,
     removeArgs = NULL,
-    call = sys.call(which = sys.parent()),
+    call = matchCall(),
     fun = sys.function(which = sys.parent()),
     verbose = FALSE
 ) {

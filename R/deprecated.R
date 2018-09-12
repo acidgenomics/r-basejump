@@ -299,6 +299,13 @@ fixNA <- function(...) {
     sanitizeNA(...)
 }
 
+#' @rdname deprecated
+#' @export
+setArgsToDoCall <- function(...) {
+    .Deprecated("matchArgsToDoCall")
+    matchArgsToDoCall(...)
+}
+
 
 
 # nocov end
