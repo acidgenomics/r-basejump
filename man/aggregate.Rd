@@ -27,8 +27,7 @@ aggregateRows(object, ...)
 
 \S4method{aggregateRows}{sparseMatrix}(object, groupings)
 
-\S4method{aggregateRows}{SummarizedExperiment}(object,
-  constructor = SummarizedExperiment)
+\S4method{aggregateRows}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -38,9 +37,6 @@ aggregateRows(object, ...)
 \item{groupings}{\code{factor}. Defines the aggregation groupings.
 The new aggregate names are defined as the \code{factor} \code{levels}, and the
 original, unaggregated names are defined as the \code{names}.}
-
-\item{constructor}{\code{function}. Constructor function to use when returning
-aggregated object.}
 }
 \value{
 Modified object, with aggregated columns (samples) or rows

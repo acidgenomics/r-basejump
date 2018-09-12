@@ -23,8 +23,6 @@
 #' @param groupings `factor`. Defines the aggregation groupings.
 #'   The new aggregate names are defined as the `factor` `levels`, and the
 #'   original, unaggregated names are defined as the `names`.
-#' @param constructor `function`. Constructor function to use when returning
-#'   aggregated object.
 #'
 #' @return Modified object, with aggregated columns (samples) or rows
 #'   (features).
@@ -228,10 +226,7 @@ setMethod(
 setMethod(
     f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
-    definition = function(
-        object,
-        constructor = SummarizedExperiment
-    ) {
+    definition = function(object) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(rowData(object)))
@@ -239,7 +234,6 @@ setMethod(
         assert_is_factor(groupings)
         assertAllAreValidNames(levels(groupings))
         names(groupings) <- rownames(object)
-        assert_is_function(constructor)
 
         # Assays ---------------------------------------------------------------
         message("Aggregating counts")
@@ -257,6 +251,6 @@ setMethod(
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames)
         }
-        do.call(what = constructor, args = args)
+        do.call(what = SummarizedExperiment, args = args)
     }
 )
