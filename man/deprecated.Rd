@@ -20,8 +20,6 @@
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
 \alias{assertIsURL}
-\alias{aggregateFeatures}
-\alias{aggregateReplicates}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
 \alias{fixNA}
@@ -62,10 +60,6 @@ midnightTheme(...)
 paperwhiteTheme(...)
 
 assertIsURL(...)
-
-aggregateFeatures(...)
-
-aggregateReplicates(...)
 
 assertIsCharacterOrNULL(object, ...)
 

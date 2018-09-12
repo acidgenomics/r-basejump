@@ -8,9 +8,12 @@
 \alias{aggregateCols,matrix-method}
 \alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
+\alias{aggregateReplicates}
+\alias{aggregateSamples}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
+\alias{aggregateFeatures}
 \title{Aggregate Columns or Rows}
 \usage{
 aggregateCols(object, ...)
@@ -23,11 +26,17 @@ aggregateRows(object, ...)
 
 \S4method{aggregateCols}{SummarizedExperiment}(object)
 
+aggregateReplicates(...)
+
+aggregateSamples(...)
+
 \S4method{aggregateRows}{matrix}(object, groupings)
 
 \S4method{aggregateRows}{sparseMatrix}(object, groupings)
 
 \S4method{aggregateRows}{SummarizedExperiment}(object)
+
+aggregateFeatures(...)
 }
 \arguments{
 \item{object}{Object.}
