@@ -65,13 +65,12 @@ function(
         }
         assert_is_a_string(organism)
         message(paste(organism, "genes detected"))
-        # FIXME Use `setArgsToDoCall()` here?
-        args <- as.list(matchCall())[-1L]
-        args[["object"]] <- NULL
-        args[["organism"]] <- organism
         gene2symbol <- do.call(
             what = makeGene2symbolFromEnsembl,
-            args = args
+            args = matchArgsToDoCall(
+                args = list(organism = organism),
+                removeArgs = c("object", "gene2symbol")
+            )
         )
     }
     assertIsGene2symbol(gene2symbol)
@@ -115,12 +114,9 @@ function(
     # Setting formals below.
 ) {
     rownames <- rownames(object)
-    # FIXME Use `setArgsToDoCall()` here?
-    args <- as.list(matchCall())[-1L]
-    args[["object"]] <- rownames
     rownames <- do.call(
         what = convertGenesToSymbols,
-        args = args
+        args = matchArgsToDoCall(args = list(object = rownames))
     )
     rownames(object) <- rownames
     object
