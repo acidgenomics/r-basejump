@@ -272,20 +272,6 @@ assertIsURL <- function(...) {
 # v0.99.0 ======================================================================
 #' @rdname deprecated
 #' @export
-aggregateFeatures <- function(...) {
-    .Deprecated("aggregateRows")
-    aggregateRows(...)
-}
-
-#' @rdname deprecated
-#' @export
-aggregateReplicates <- function(...) {
-    .Deprecated("aggregateCols")
-    aggregateCols(...)
-}
-
-#' @rdname deprecated
-#' @export
 assertIsCharacterOrNULL <- function(object, ...) {
     .Deprecated("assert_is_any_of")
     assert_is_any_of(

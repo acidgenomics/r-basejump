@@ -186,6 +186,23 @@ setMethod(
 
 
 
+# Consider deprecating this in a future release.
+#' @rdname aggregate
+#' @export
+aggregateReplicates <- function(...) {
+    aggregateCols(...)
+}
+
+
+
+#' @rdname aggregate
+#' @export
+aggregateSamples <- function(...) {
+    aggregateCols(...)
+}
+
+
+
 # aggregateRows ================================================================
 #' @rdname aggregate
 #' @export
@@ -254,3 +271,11 @@ setMethod(
         do.call(what = SummarizedExperiment, args = args)
     }
 )
+
+
+
+#' @rdname aggregate
+#' @export
+aggregateFeatures <- function(...) {
+    aggregateRows(...)
+}
