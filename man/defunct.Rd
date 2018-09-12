@@ -14,6 +14,7 @@
 \alias{broadClass,data.frame-method}
 \alias{broadClass,DataFrame-method}
 \alias{synonyms}
+\alias{setArgsToDoCall}
 \title{Defunct Functions}
 \usage{
 fc2lr(...)
@@ -37,6 +38,8 @@ dynamicPlotlist(...)
 \S4method{broadClass}{DataFrame}(object)
 
 synonyms(...)
+
+setArgsToDoCall(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
