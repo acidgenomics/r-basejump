@@ -151,10 +151,7 @@ setMethod(
     ) {
         validObject(object)
         # Coerce to `SummarizedExperiment`, for fast subsetting below.
-        if (is(object, "RangedSummarizedExperiment")) {
-            object <- as(object, "RangedSummarizedExperiment")
-        }
-        object <- as(object, "SummarizedExperiment")
+        object <- .coerceToSummarizedExperiment(object)
         assert_is_character(genes)
         # Limit the number of genes that can be plotted at once.
         assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)
