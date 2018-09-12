@@ -4,8 +4,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @inheritParams BiocGenerics::do.call
 #' @inheritParams base::sys.call
+#' @inheritParams BiocGenerics::do.call
 #' @inheritParams general
 #' @param removeArgs `character`. Names of arguments to remove from `call`
 #'   and/or `fun` returns before passing to `do.call()`.
