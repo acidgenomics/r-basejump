@@ -109,6 +109,7 @@ Collate:
     'assignAndSaveData.R'
     'basejump-package.R'
     'broadClass-methods.R'
+    'call-internal.R'
     'cleanSystemLibrary.R'
     'coerce-methods.R'
     'collapseToString-methods.R'
