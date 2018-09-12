@@ -63,7 +63,7 @@ matchArgsToDoCall <- function(
         print(list(
             call = call,
             fun = formals(fun),
-            names = names(args)
+            names = lapply(args(class))
         ))
     }
 
