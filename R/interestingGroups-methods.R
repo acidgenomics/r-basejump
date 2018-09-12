@@ -23,7 +23,6 @@ setMethod(
     f = "interestingGroups",
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
-        validObject(object)
         value <- metadata(object)[["interestingGroups"]]
         assertFormalInterestingGroups(object, value)
         value
@@ -43,7 +42,6 @@ setMethod(
     definition = function(object, value) {
         assertFormalInterestingGroups(object, value)
         metadata(object)[["interestingGroups"]] <- value
-        validObject(object)
         object
     }
 )
