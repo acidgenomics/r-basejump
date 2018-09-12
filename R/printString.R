@@ -21,5 +21,7 @@ printString <- function(x, max = 100L) {
     stopifnot(length(x) <= max)
     x <- capture.output(print(x))
     x <- paste(x, collapse = "\n")
+    # Remove leading and trailing line breaks.
+    x <- gsub("^\n|\n$", "", x)
     x
 }
