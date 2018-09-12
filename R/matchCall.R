@@ -55,15 +55,5 @@
 #' )
 #' testing(x)
 matchCall <- function(verbose = FALSE) {
-    which <- sys.parent()
-    call <- .sysCallWithS4(which = which, verbose = verbose)
-    # Standardize with pryr package.
-    call <- standardise_call(call = call, env = sys.frame(which = which))
-    # Print the matched call, for debugging.
-    if (isTRUE(verbose)) {
-        print(call)
-    }
-    # Require that all arguments are named before returning.
-    assert_all_are_non_missing_nor_empty_character(names(as.list(call)[-1L]))
-    call
+    .sysCallWithS4(which = sys.parent(), verbose = verbose)
 }
