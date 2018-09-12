@@ -183,12 +183,6 @@ setMethod(
             as("DataFrame")
         assertHasRownames(sampleData)
 
-        # Message the new sample IDs
-        message(paste(
-            "New sample names:",
-            toString(levels(sampleData[["sampleName"]]))
-        ))
-
         # Return ---------------------------------------------------------------
         args <- list(
             assays = list(counts = counts),
