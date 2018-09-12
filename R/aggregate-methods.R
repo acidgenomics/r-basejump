@@ -79,14 +79,12 @@ NULL
 
 
 
+# Don't message when aggregating single cell data.
 .aggregateMessage <- function(groupings) {
     assert_is_factor(groupings)
     if (length(groupings) <= 20L) {
-        what <- groupings
-    } else {
-        what <- levels(groupings)
+        message(paste("Groupings:", printString(groupings), sep = "\n"))
     }
-    message(paste("Groupings:", printString(what), sep = "\n"))
 }
 
 
@@ -143,6 +141,9 @@ setMethod(
         assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(colData(object)))
         assert_is_subset("aggregate", colnames(sampleData(object)))
+        if ("sampleNameAggregate" %in% colnames(colData)) {
+            stop("Use `aggregate` instead of `sampleNameAggregate`")
+        }
         groupings <- colData(object)[["aggregate"]]
         assert_is_factor(groupings)
         assertAllAreValidNames(levels(groupings))
@@ -150,10 +151,7 @@ setMethod(
 
         # Assays ---------------------------------------------------------------
         message("Aggregating counts")
-        counts <- aggregateCols(
-            object = counts(object),
-            groupings = groupings
-        )
+        counts <- aggregateCols(counts(object), groupings = groupings)
         assert_are_identical(sum(counts), sum(counts(object)))
 
         # Column data ----------------------------------------------------------
@@ -169,6 +167,27 @@ setMethod(
             x = rownames(sampleData),
             y = colnames(counts)
         )
+
+        # Collapse the sample data. This step will replace the `sampleName`
+        # column with the `aggregate` column metadata.
+        interestingGroups <- setdiff(interestingGroups(object), "sampleName")
+        sampleData <- sampleData(object) %>%
+            as("tbl_df") %>%
+            select(!!!syms(unique(c("aggregate", interestingGroups)))) %>%
+            unique() %>%
+            mutate(rowname = makeNames(!!sym("aggregate"))) %>%
+            rename(sampleName = !!sym("aggregate")) %>%
+            arrange(!!!syms(c("rowname", "sampleName"))) %>%
+            mutate_all(as.factor) %>%
+            mutate_all(droplevels) %>%
+            as("DataFrame")
+        assertHasRownames(sampleData)
+
+        # Message the new sample IDs
+        message(paste(
+            "New sample names:",
+            toString(levels(sampleData[["sampleName"]]))
+        ))
 
         # Return ---------------------------------------------------------------
         args <- list(
