@@ -201,10 +201,11 @@ with_parameters_test_that(
 # sanitizeRowData ==============================================================
 test_that("sanitizeRowData", {
     object <- sanitizeRowData(rowRanges(rse_small))
+    expect_s4_class(object, "DataFrame")
+    expect_true(hasRownames(object))
     expect_identical(
         object = lapply(object, class),
         expected = list(
-            rowname = "character",
             seqnames = "factor",
             start = "integer",
             end = "integer",
