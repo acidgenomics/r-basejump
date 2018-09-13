@@ -10,6 +10,13 @@
 
 \item{...}{Additional arguments.}
 
+\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
+color palette will be used. If manual color definitions are desired, we
+recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+To set the discrete color palette globally, use
+\code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
@@ -23,6 +30,8 @@ directory.}
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
+
+\item{legend}{\code{boolean}. Show plot legend.}
 
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
