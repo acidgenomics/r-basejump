@@ -6,8 +6,9 @@
 #' @export
 #'
 #' @inheritParams general
-#' @param log2Transform `boolean`. Apply `log2(x + 1L)` transformation to the
-#'   counts matrix before melt?
+#' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
+#'   the counts matrix prior to melting, if desired. Use `"identity"` to return
+#'   unmodified (default).
 #'
 #' @seealso [reshape2::melt()].
 #'
@@ -28,10 +29,10 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(
         object,
-        log2Transform = FALSE
+        trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
-        assert_is_a_bool(log2Transform)
+        trans <- match.arg(trans)
 
         # Prepare the counts matrix.
         counts <- assay(object)
@@ -39,9 +40,15 @@ setMethod(
         # Coerce to dense matrix.
         counts <- as.matrix(counts)
 
-        # log2 transform the matrix, if desired.
-        if (isTRUE(log2Transform)) {
-            counts <- log2(counts + 1L)
+        # Log transform the matrix, if desired.
+        if (trans != "identity") {
+            fun <- get(
+                x = trans,
+                envir = asNamespace("base"),
+                inherits = FALSE
+            )
+            assert_is_function(fun)
+            counts <- fun(counts + 1L)
         }
 
         # Get the sample metadata.
