@@ -8,16 +8,17 @@
 \usage{
 meltCounts(object, ...)
 
-\S4method{meltCounts}{SummarizedExperiment}(object,
-  log2Transform = FALSE)
+\S4method{meltCounts}{SummarizedExperiment}(object, trans = c("identity",
+  "log2", "log10"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{log2Transform}{\code{boolean}. Apply \code{log2(x + 1L)} transformation to the
-counts matrix before melt?}
+\item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
+the counts matrix prior to melting, if desired. Use \code{"identity"} to return
+unmodified (default).}
 }
 \value{
 \code{grouped_df}, grouped by \code{colname} (e.g. sample ID) and \code{rowname}
