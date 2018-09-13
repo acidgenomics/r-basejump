@@ -67,7 +67,6 @@ Imports:
     methods,
     pbapply (>= 1.3),
     pheatmap,
-    pryr,
     R.utils,
     RColorBrewer,
     RCurl (>= 1.95),
