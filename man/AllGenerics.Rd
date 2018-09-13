@@ -8,7 +8,7 @@
 \alias{tx2gene}
 \title{S4 Generics}
 \usage{
-export(object, ...)
+export(x, ...)
 
 markdown(object, ...)
 
@@ -17,9 +17,9 @@ plotQC(object, ...)
 tx2gene(object, ...)
 }
 \arguments{
-\item{object}{Object.}
-
 \item{...}{Additional arguments.}
+
+\item{object}{Object.}
 }
 \value{
 Varies, depending upon the method.

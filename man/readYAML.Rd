@@ -20,9 +20,9 @@ x <- readYAML("http://basejump.seq.cloud/example.yml")
 names(x)
 }
 \seealso{
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
+Other Read Functions: \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{readGFF}},
   \code{\link{readJSON}}
 }
 \author{

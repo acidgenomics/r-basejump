@@ -29,10 +29,10 @@ class(rnaseq_counts)
 class(single_cell_counts)
 }
 \seealso{
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}},
-  \code{\link{readFileByExtension}}, \code{\link{readGFF}},
-  \code{\link{readJSON}}, \code{\link{readYAML}}
+Other Read Functions: \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{readGFF}}, \code{\link{readJSON}},
+  \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh

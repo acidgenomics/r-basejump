@@ -32,10 +32,10 @@ summary(x)
 \item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
 }
 
-Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readFileByExtension}},
-  \code{\link{readJSON}}, \code{\link{readYAML}}
+Other Read Functions: \code{\link{import}},
+  \code{\link{loadDataAsName}}, \code{\link{loadData}},
+  \code{\link{loadRemoteData}}, \code{\link{readJSON}},
+  \code{\link{readYAML}}
 }
 \author{
 Michael Steinbaugh
