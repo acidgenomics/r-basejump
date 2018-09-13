@@ -28,8 +28,8 @@ detectHPC()
 \item \code{.Platform}.
 }
 
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{dots}}, \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{dots}},
+  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},

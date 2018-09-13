@@ -16,7 +16,7 @@ microplate(plates = 1L, wells = 96L, controls = 0L, prefix = NULL)
 \item{prefix}{\code{string} or \code{NULL}. Plate name prefix.}
 }
 \value{
-Character vector containing well identifiers.
+\code{character}. Well identifiers.
 }
 \description{
 Microtiter Plate Well Identifiers

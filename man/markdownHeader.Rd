@@ -34,9 +34,7 @@ markdownHeader("Header", tabset = TRUE)
 markdownHeader("Header", asis = TRUE)
 }
 \seealso{
-\itemize{
-\item \href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
-}
+\href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 
 Other R Markdown Functions: \code{\link{kables}},
   \code{\link{markdownLink}}, \code{\link{markdownList}},

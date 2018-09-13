@@ -26,9 +26,8 @@ class(example)
 ls(example)
 }
 \seealso{
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},

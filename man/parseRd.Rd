@@ -36,9 +36,7 @@ examples <- parseRd(Rd, tag = "examples")
 print(examples)
 }
 \seealso{
-\itemize{
-\item \code{\link[tools:Rd_db]{tools::Rd_db()}}.
-}
+\code{\link[tools:Rd_db]{tools::Rd_db()}}.
 
 Other R Documentation Functions: \code{\link{RdTags}},
   \code{\link{saveRdExamples}}

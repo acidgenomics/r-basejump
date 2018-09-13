@@ -34,8 +34,8 @@ dots(a, b, c, character = TRUE)
 \href{https://goo.gl/bM5TrP}{devtools infrastructure}.
 }
 
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},

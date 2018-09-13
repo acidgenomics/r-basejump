@@ -16,7 +16,7 @@ sanitizeRowData(object)
 Coerce gene annotations to \code{DataFrame}, and keep only \code{atomic} columns.
 Complex columns (e.g. Entrez ID \code{list}) will fail to write to disk as CSVs.
 }
-\details{
+\note{
 Supports \code{GRanges} and \code{DataFrame} class objects.
 }
 \examples{

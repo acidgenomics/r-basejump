@@ -7,16 +7,18 @@
 localOrRemoteFile(file)
 }
 \arguments{
-\item{file}{\code{string}. Local file path or remote URL.}
+\item{file}{\code{string}. Local file paths or remote URLs.}
 }
 \value{
-\code{character} vector containing the local file paths.
+\code{character}. Local file paths.
 }
 \description{
-This function is vectorized and supports mixed local and remote paths.
-Remote files are downloaded locally to a temporary directory.
+Dynamically Handle a Local or Remote File Path
 }
 \note{
+This function is vectorized and supports mixed local and remote paths. Remote
+files are downloaded locally to a temporary directory.
+
 Stops on a missing file.
 }
 \examples{
@@ -34,9 +36,8 @@ basename(x)
 \seealso{
 \code{\link[base:tempdir]{base::tempdir()}}.
 
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
@@ -44,5 +45,8 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
+}
+\author{
+Michael Steinbaugh
 }
 \concept{Developer Functions}
