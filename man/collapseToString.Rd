@@ -75,9 +75,7 @@ ggplot2::mpg \%>\%
     t()
 }
 \seealso{
-\itemize{
-\item \code{\link[base:toString]{base::toString()}}.
-}
+\code{\link[base:toString]{base::toString()}}.
 
 Other Sanitization Functions: \code{\link{camel}},
   \code{\link{removeNA}}, \code{\link{sanitizeNA}},

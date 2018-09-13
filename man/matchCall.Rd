@@ -14,10 +14,12 @@ recommended to enable this when debugging.}
 \code{call}.
 }
 \description{
-Note that \code{\link[base:match.call]{base::match.call()}} doesn't always work correctly inside S4
-methods. Here we are using a combination of \code{\link[base:sys.call]{base::sys.call()}} with
-\code{\link[pryr:standardise_call]{pryr::standardise_call()}} to correctly capture named arguments inside an S4
-method.
+Functions to Access the Function Call Stack
+}
+\note{
+\code{\link[base:match.call]{base::match.call()}} doesn't always work correctly inside S4 methods. Here we
+are using a combination of \code{\link[base:sys.call]{base::sys.call()}} with \code{\link[pryr:standardise_call]{pryr::standardise_call()}}
+to correctly capture named arguments inside an S4 method.
 }
 \examples{
 x <- "XXX"
@@ -62,9 +64,8 @@ testing(x)
 \item \code{\link[pryr:standardise_call]{pryr::standardise_call()}}.
 }
 
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},

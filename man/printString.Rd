@@ -24,9 +24,8 @@ printString(c("hello", "world"))
 \seealso{
 \code{\link[base:cat]{base::cat()}}.
 
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},

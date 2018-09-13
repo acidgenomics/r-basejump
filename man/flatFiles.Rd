@@ -27,9 +27,8 @@ class(x)
 names(x)
 }
 \seealso{
-Other Developer Functions: \code{\link{cleanSystemLibrary}},
-  \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{initializeDirectory}},
+Other Developer Functions: \code{\link{detectHPC}},
+  \code{\link{dots}}, \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},

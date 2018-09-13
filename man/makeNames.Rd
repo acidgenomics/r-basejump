@@ -205,13 +205,12 @@ they will set \code{\link[=names]{names()}}, \code{\link[=rownames]{rownames()}}
 modification of the values.
 }
 \note{
-\code{dotted.case} support is provided for matching against base R
-parameters. However, it is recommended to avoid using it for variable
-assignments into an \code{environment}, as that can introduce conflicts with
-base functions.
-
 \code{\link[=makeNames]{makeNames()}} sanitizes names using underscores instead of dots, the
 convention used by \code{\link[base:make.names]{base::make.names()}}.
+
+\code{dotted.case} support is provided for matching against base R parameters.
+However, it is recommended to avoid using it for variable assignments into an
+\code{environment}, as that can introduce conflicts with base functions.
 }
 \examples{
 loadRemoteData("http://basejump.seq.cloud/mn.rda")

@@ -12,7 +12,7 @@ grepString(object, sep = ", ")
 \item{sep}{\code{string}. Separator. Defaults to comma.}
 }
 \value{
-\code{string}, containing a regular expression pattern.
+\code{string}. Regular expression pattern.
 }
 \description{
 A \code{grep} string is useful for pattern matching against a delimited

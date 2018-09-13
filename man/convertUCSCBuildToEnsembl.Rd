@@ -10,8 +10,8 @@ convertUCSCBuildToEnsembl(object)
 \item{object}{Object.}
 }
 \value{
-\code{character} containing Ensembl genome build as the value, UCSC build
-as the name. Returns \code{NULL} on match failure.
+\code{character}. Ensembl genome build as the value, UCSC build as the
+name. Returns \code{NULL} on match failure.
 }
 \description{
 Convert UCSC Build to Ensembl

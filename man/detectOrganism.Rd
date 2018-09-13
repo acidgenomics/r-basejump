@@ -37,19 +37,21 @@ detectOrganism(object, ...)
 \code{character} input.}
 }
 \value{
-\code{character}. Full latin organism name. Stops on detection failure.
+\code{character}. Full latin organism name.
 \itemize{
 \item \code{atomic}: Named \code{character} vector containing organism name or \code{NA} for
 individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
 \item \code{dim}: Unique \code{character} vector of the organism(s) detected. Warns if
 multiple organisms are detected.
 }
+
+Stops on match failure.
 }
 \description{
 Supports organism detection from genome build or Ensembl identifier.
 }
-\details{
-Currently supported organisms:
+\section{Supported organisms}{
+
 \itemize{
 \item \emph{Homo sapiens} (human)
 \item \emph{Mus musculus} (mouse)
@@ -62,6 +64,7 @@ Currently supported organisms:
 \item \emph{Ovis aries} (sheep)
 }
 }
+
 \examples{
 # By gene identifier
 detectOrganism("ENSG00000000003")
