@@ -127,6 +127,7 @@ Collate:
     'dots.R'
     'eggnog.R'
     'emptyRanges.R'
+    'export-methods.R'
     'flatFiles-methods.R'
     'foldChangeToLogRatio-methods.R'
     'gene2symbol-methods.R'
