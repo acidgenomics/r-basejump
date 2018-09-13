@@ -145,6 +145,8 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(object) {
         validObject(object)
-        rowData(object)[["broadClass"]]
+        data <- rowData(object)[["broadClass"]]
+        assert_is_factor(data)
+        data
     }
 )
