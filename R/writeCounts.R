@@ -55,6 +55,8 @@ writeCounts <- function(
         counts <- dots,
         FUN = function(name, counts) {
             if (is.matrix(counts)) {
+                # FIXME Use `export()` method internally.
+
                 # Coercing matrix to tibble here, to keep rownames intact.
                 ext <- ".csv"
                 if (isTRUE(gzip)) {
@@ -67,22 +69,9 @@ writeCounts <- function(
                     path = filePath
                 )
                 returnPath <- filePath
-            } else if (grepl("^dg.+Matrix$", class(counts)[[1L]])) {
-                # MatrixMarket file
-                matrixFile <- file.path(dir, paste0(name, ".mtx"))
-                writeMM(counts, matrixFile)
-                if (isTRUE(gzip)) {
-                    matrixFile <- gzip(matrixFile, overwrite = TRUE)
-                }
-                # Write barcodes (colnames).
-                barcodes <- colnames(counts)
-                barcodesFile <- paste0(matrixFile, ".colnames")
-                write_lines(barcodes, barcodesFile)
-                # Write gene names (rownames).
-                genes <- rownames(counts)
-                genesFile <- paste0(matrixFile, ".rownames")
-                write_lines(genes, genesFile)
-                returnPath <- matrixFile
+            } else if (is(counts, "sparseMatrix")) {
+                # FIXME
+                stop("FIXME")
             } else {
                 stop(paste(name, "is not a matrix"), call. = FALSE)
             }
