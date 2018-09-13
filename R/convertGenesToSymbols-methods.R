@@ -3,6 +3,7 @@
 #' @name convertGenesToSymbols
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @include makeGRanges.R
 #'
@@ -45,6 +46,7 @@ NULL
 
 
 
+# convertGenesToSymbols ========================================================
 .convertGenesToSymbols.character <-  # nolint
 function(
     # Setting formals below.
@@ -208,6 +210,27 @@ setMethod(
             )
         }
 
+        object
+    }
+)
+
+
+
+# convertSymbolsToGenes ========================================================
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertSymbolsToGenes",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        if (is.null(g2s)) {
+            stop("Object does not contain gene-to-symbol mappings")
+        }
+        assert_are_identical(rownames(object), g2s[["geneName"]])
+        assert_has_no_duplicates(g2s[["geneID"]])
+        rownames(object) <- g2s[["geneID"]]
         object
     }
 )

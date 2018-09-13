@@ -15,11 +15,11 @@
 #'
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return `DataFrame`.
-#' @export
 #'
 #' @examples
 #' from <- sampleData(rse_small)

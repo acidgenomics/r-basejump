@@ -10,6 +10,7 @@
 #' @name geometricMean
 #' @family Math and Science Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @inheritParams base::apply

@@ -2,9 +2,9 @@
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @return `DataFrame`.
-#' @export
 #'
 #' @examples
 #' x <- hgnc2gene()

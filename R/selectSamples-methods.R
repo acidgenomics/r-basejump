@@ -5,6 +5,7 @@
 #' @name selectSamples
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @param ... Selection arguments that map to the column names of

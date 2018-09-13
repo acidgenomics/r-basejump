@@ -5,6 +5,7 @@
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param names `character`. Gene or transcript names.
 #' @param seqname `string` Name of the alternative chromosome to be defined in
@@ -17,7 +18,6 @@
 #'   contains metadata.
 #'
 #' @return `GRanges`.
-#' @export
 #'
 #' @seealso `help("seqinfo", "GenomeInfoDb")`.
 #'

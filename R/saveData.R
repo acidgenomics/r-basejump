@@ -4,11 +4,9 @@
 #' symbols. This function saves each object into a separate `.rda` file rather
 #' than combining into a single file.
 #'
-#' @note This function is desired for interactive use and interprets object
-#' names using non-standard evaluation.
-#'
 #' @family Write Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams loadData
 #' @inheritParams base::save
@@ -17,16 +15,18 @@
 #'   "`rds`"). RDS is preferred when saving single objects per file, which is
 #'   always the convention of [saveData()], regardless of the extension used.
 #'
-#' @note These function will *overwrite* existing saved data, following the
-#'   same conventions as [base::save()]. Conversely, [devtools::use_data()] does
-#'   not overwrite by default if that behavior is preferred.
+#' @note
+#' This function is desired for interactive use and interprets object names
+#' using non-standard evaluation. It will *overwrite* existing saved data,
+#' following the same conventions as [base::save()]. Conversely,
+#' [devtools::use_data()] does not overwrite by default if that behavior is
+#' preferred.
 #'
 #' @seealso
 #' - [base::save()].
 #' - `usethis::use_data()`.
 #'
 #' @return Invisible named `character`. File paths.
-#' @export
 #'
 #' @examples
 #' saveData(rnaseq_counts, single_cell_counts, dir = "example")

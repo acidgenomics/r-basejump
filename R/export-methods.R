@@ -1,15 +1,13 @@
 #' Export
 #'
+#' Export data out of R and write to disk.
+#'
+#' This is a wrapper for [rio::export()] that adds support for additional S4
+#' classes in Bioconductor.
+#'
 #' @name export
 #' @author Michael Steinbaugh
 #' @export
-#'
-#' @description
-#' Export data out of R and write to disk.
-#'
-#' @details
-#' This is a wrapper for [rio::export()] that adds support for additional S4
-#' classes in Bioconductor.
 #'
 #' @seealso [rio::export()].
 #'

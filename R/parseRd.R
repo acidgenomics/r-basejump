@@ -18,8 +18,7 @@
 #'   - "`seealso`".
 #'   - "`examples`".
 #'
-#' @seealso
-#' - [tools::Rd_db()].
+#' @seealso [tools::Rd_db()].
 #'
 #' @examples
 #' db <- tools::Rd_db("base")

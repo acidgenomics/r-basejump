@@ -2,15 +2,15 @@
 #'
 #' Detect if R is running on a high-performance computing (HPC) cluster.
 #'
-#' @family Developer Functions
-#' @author Michael Steinbaugh
-#'
 #' @note Currently supports detection of
 #'   [HMS Orchestra](https://rc.hms.harvard.edu/#orchestra).
 #'
+#' @family Developer Functions
+#' @author Michael Steinbaugh
+#' @export
+#'
 #' @return Scheduler name `string` if HPC is detected (e.g. LSF, SLURM),
 #'   otherwise `FALSE`.
-#' @export
 #'
 #' @seealso
 #' - `Sys.getenv()`.

@@ -6,11 +6,11 @@
 #'
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param object `atomic`.
 #'
 #' @return `atomic`.
-#' @export
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))

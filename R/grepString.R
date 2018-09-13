@@ -6,12 +6,12 @@
 #'
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param object `string`. Term to use for grep matching.
 #' @param sep `string`. Separator. Defaults to comma.
 #'
-#' @return `string`, containing a regular expression pattern.
-#' @export
+#' @return `string`. Regular expression pattern.
 #'
 #' @seealso
 #' - [base::grep()].

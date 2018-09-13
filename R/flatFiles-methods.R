@@ -1,3 +1,7 @@
+# TODO Consider renaming this generic, since we're not dealing with "files"
+
+
+
 #' Flat Files from S4 Object
 #'
 #' Extract the slots inside an S4 object for archival storage.
@@ -5,6 +9,7 @@
 #' @name flatFiles
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

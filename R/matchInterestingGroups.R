@@ -7,12 +7,12 @@
 #'
 #' @author Michael Steinbaugh
 #' @family Developer Functions
+#' @export
 #'
 #' @inheritParams general
 #' @param object `SummarizedExperiment`.
 #'
 #' @return `character`. Interesting groups.
-#' @export
 #'
 #' @examples
 #' matchInterestingGroups(rse_small)

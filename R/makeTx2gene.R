@@ -3,7 +3,6 @@
 #' @name makeTx2gene
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
-#'
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges

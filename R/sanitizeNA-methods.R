@@ -7,6 +7,7 @@
 #' @name sanitizeNA
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

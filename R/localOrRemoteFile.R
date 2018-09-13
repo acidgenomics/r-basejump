@@ -1,16 +1,18 @@
 #' Dynamically Handle a Local or Remote File Path
 #'
-#' This function is vectorized and supports mixed local and remote paths.
-#' Remote files are downloaded locally to a temporary directory.
+#' @note
+#' This function is vectorized and supports mixed local and remote paths. Remote
+#' files are downloaded locally to a temporary directory.
 #'
 #' @note Stops on a missing file.
 #'
 #' @family Developer Functions
-#'
-#' @param file `string`. Local file path or remote URL.
-#'
-#' @return `character` vector containing the local file paths.
+#' @author Michael Steinbaugh
 #' @export
+#'
+#' @param file `string`. Local file paths or remote URLs.
+#'
+#' @return `character`. Local file paths.
 #'
 #' @seealso [base::tempdir()].
 #'

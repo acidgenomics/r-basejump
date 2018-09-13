@@ -2,11 +2,11 @@
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return `list`.
-#' @export
 #'
 #' @examples
 #' x <- readJSON("http://basejump.seq.cloud/example.json")

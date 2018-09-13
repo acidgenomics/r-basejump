@@ -6,6 +6,7 @@
 #'
 #' @name plotHeatmap
 #' @family Plot Functions
+#' @export
 #'
 #' @inheritParams general
 #' @param scale `string`. Whether the values should be centered and scaled in

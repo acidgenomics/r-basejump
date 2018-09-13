@@ -5,11 +5,11 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param dir `string`. Directory path.
 #'
-#' @return Directory path.
-#' @export
+#' @return `string`. Directory path.
 #'
 #' @examples
 #' initializeDirectory("testdir")
