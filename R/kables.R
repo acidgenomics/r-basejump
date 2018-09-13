@@ -4,6 +4,7 @@
 #'
 #' @family R Markdown Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param list `list` containing column data (e.g. `data.frame`, `matrix`).
 #' @param captions `character`. Table captions.
@@ -11,7 +12,6 @@
 #'   unit testing only.
 #'
 #' @return Knit tables.
-#' @export
 #'
 #' @seealso
 #' - [knitr::kable()].

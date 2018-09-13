@@ -2,6 +2,7 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams dots
 #' @param envirName `string`. Name of the new `environment` to create.
@@ -9,7 +10,6 @@
 #'   new `environment`, specified by `envirName` argument.
 #'
 #' @return `character`. Object names defined in the new `environment`.
-#' @export
 #'
 #' @examples
 #' multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")

@@ -2,7 +2,7 @@
 #'
 #' Supports organism detection from genome build or Ensembl identifier.
 #'
-#' Currently supported organisms:
+#' @section Supported organisms:
 #'
 #' - *Homo sapiens* (human)
 #' - *Mus musculus* (mouse)
@@ -22,12 +22,15 @@
 #' @param unique `boolean`. Only return unique matching organisms. Applies to
 #'   `character` input.
 #'
-#' @return `character`. Full latin organism name. Stops on detection failure.
+#' @return
+#' `character`. Full latin organism name.
 #'
 #' - `atomic`: Named `character` vector containing organism name or `NA` for
 #'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
 #' - `dim`: Unique `character` vector of the organism(s) detected. Warns if
 #'   multiple organisms are detected.
+#'
+#' Stops on match failure.
 #'
 #' @examples
 #' # By gene identifier

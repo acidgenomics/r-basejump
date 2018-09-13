@@ -2,6 +2,7 @@
 #'
 #' @name interestingGroups
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

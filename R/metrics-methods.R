@@ -10,6 +10,7 @@
 #' @name metrics
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

@@ -2,6 +2,7 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param ... Objects as dots.
 #' @param character `boolean`. Return dots (`...`) as `character`.
@@ -10,7 +11,6 @@
 #' - "`character = FALSE`": `list` containing objects as names. Can return
 #'   object from the stored `name` class with [eval()].
 #' - "`character = TRUE`": `character` containing the dot names.
-#' @export
 #'
 #' @seealso
 #' - `help("dotsMethods", "methods")`.

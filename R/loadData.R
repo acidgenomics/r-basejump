@@ -15,10 +15,11 @@
 #' the file name exactly.
 #'
 #' @note This function is desired for interactive use and interprets object
-#' names using non-standard evaluation.
+#'   names using non-standard evaluation.
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @param ... Object names. Note that these arguments are interpreted as symbols
@@ -26,7 +27,6 @@
 #'   *should not be quoted*.
 #'
 #' @return Invisible `character`. File paths.
-#' @export
 #'
 #' @examples
 #' loadData(

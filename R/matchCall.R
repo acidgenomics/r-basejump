@@ -1,9 +1,9 @@
 #' Functions to Access the Function Call Stack
 #'
-#' Note that [base::match.call()] doesn't always work correctly inside S4
-#' methods. Here we are using a combination of [base::sys.call()] with
-#' [pryr::standardise_call()] to correctly capture named arguments inside an S4
-#' method.
+#' @note
+#' [base::match.call()] doesn't always work correctly inside S4 methods. Here we
+#' are using a combination of [base::sys.call()] with [pryr::standardise_call()]
+#' to correctly capture named arguments inside an S4 method.
 #'
 #' @author Michael Steinbaugh
 #' @family Developer Functions

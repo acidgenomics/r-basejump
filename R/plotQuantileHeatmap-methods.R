@@ -7,8 +7,9 @@
 #' @name plotQuantileHeatmap
 #' @family Plot Functions
 #' @author Rory Kirchner, Michael Steinbaugh
-#'
 #' @inherit plotHeatmap
+#' @export
+#'
 #' @param n `scalar integer`. The number of breaks to create.
 #' @param legend `boolean`. Show the color legend.
 #'

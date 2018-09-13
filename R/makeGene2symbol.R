@@ -3,7 +3,6 @@
 #' @name makeGene2symbol
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
-#'
 #' @include makeGRanges.R
 #'
 #' @inheritParams makeGRanges

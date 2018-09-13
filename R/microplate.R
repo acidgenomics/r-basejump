@@ -9,7 +9,7 @@
 #' @param controls `scalar integer`. Number of control wells.
 #' @param prefix `string` or `NULL`. Plate name prefix.
 #'
-#' @return Character vector containing well identifiers.
+#' @return `character`. Well identifiers.
 #'
 #' @examples
 #' # Single 96-well plate.

@@ -15,7 +15,7 @@
 #'   loop or inside an R Markdown chunk with '`results = "asis"`' enabled.
 #'
 #' @seealso
-#' - [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
+#' [Markdown Syntax](https://daringfireball.net/projects/markdown/syntax).
 #'
 #' @return
 #' - "`asis = TRUE`": [knitr::asis_output()].

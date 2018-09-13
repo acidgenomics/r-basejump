@@ -7,12 +7,12 @@
 #' @name uniteInterestingGroups
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @param object Object containing column data that defines interesting groups.
 #'
 #' @return Modified object, containing an `interestingGroups` column.
-#' @export
 #'
 #' @examples
 #' from <- sampleData(rse_small)

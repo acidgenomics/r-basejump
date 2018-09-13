@@ -5,6 +5,7 @@
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
@@ -18,7 +19,6 @@
 #'    for **Eu**karyotes **N**on-supervised **O**rthologous **G**roups (euNOG)
 #'    and **N**on-supervised **O**rthologous **G**roups (NOG) protein
 #'    identifiers.
-#' @export
 #'
 #' @examples
 #' x <- eggnog()

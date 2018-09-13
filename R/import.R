@@ -28,10 +28,11 @@
 #' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
 #' be used as a fallback attempt.
 #'
-#' @note Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
-#'   `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
-#'   the sparse matrix. Legacy support for manual loading of these sidecar files
-#'   is provided.
+#' @note
+#' Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
+#' `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
+#' the sparse matrix. Legacy support for manual loading of these sidecar files
+#' is provided.
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh

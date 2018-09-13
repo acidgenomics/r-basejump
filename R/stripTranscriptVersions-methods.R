@@ -6,6 +6,7 @@
 #' @name stripTranscriptVersions
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

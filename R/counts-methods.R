@@ -2,8 +2,8 @@
 #'
 #' @name counts
 #' @family Data Functions
-#'
 #' @importFrom BiocGenerics counts
+#' @export
 #'
 #' @inheritParams general
 #'

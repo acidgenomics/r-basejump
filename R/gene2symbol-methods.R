@@ -6,6 +6,7 @@
 #' @name gene2symbol
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'

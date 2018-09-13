@@ -3,15 +3,15 @@
 #' Coerce gene annotations to `DataFrame`, and keep only `atomic` columns.
 #' Complex columns (e.g. Entrez ID `list`) will fail to write to disk as CSVs.
 #'
-#' Supports `GRanges` and `DataFrame` class objects.
+#' @note Supports `GRanges` and `DataFrame` class objects.
 #'
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
 #' @return `DataFrame`. Contains only `character` and `factor` columns.
-#' @export
 #'
 #' @examples
 #' from <- SummarizedExperiment::rowRanges(rse_small)

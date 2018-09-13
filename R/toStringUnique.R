@@ -2,13 +2,13 @@
 #'
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @param object `atomic`.
 #'
 #' @seealso [base::toString()].
 #'
 #' @return `string`.
-#' @export
 #'
 #' @examples
 #' toStringUnique(c("hello", "world", NA, "hello", "world", NA))

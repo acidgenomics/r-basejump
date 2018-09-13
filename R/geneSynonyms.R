@@ -5,9 +5,9 @@
 #' @note Synonym support for *Caenorhabditis elegans* is poor on NCBI.
 #' Use the wormbase package instead.
 #'
-#' @name geneSynonyms
 #' @author Michael Steinbaugh
 #' @family Annotation Functions
+#' @export
 #'
 #' @param organism `string`. Supported organisms:
 #'   - *Homo sapiens*
@@ -19,20 +19,6 @@
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-NULL
-
-
-
-.geneSynonymsOrganisms <- c(
-    "Homo sapiens",
-    "Mus musculus",
-    "Drosophila melanogaster"
-)
-
-
-
-#' @rdname geneSynonyms
-#' @export
 geneSynonyms <- function(organism) {
     stopifnot(has_internet())
     organism <- match.arg(
@@ -92,3 +78,11 @@ geneSynonyms <- function(organism) {
         arrange(!!sym("geneID")) %>%
         group_by(!!sym("geneID"))
 }
+
+
+
+.geneSynonymsOrganisms <- c(
+    "Homo sapiens",
+    "Mus musculus",
+    "Drosophila melanogaster"
+)

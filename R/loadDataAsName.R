@@ -5,6 +5,7 @@
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams loadData
 #' @param ... Key value pairs, defining the name mappings. For example,
@@ -13,7 +14,6 @@
 #'   be quoted*.
 #'
 #' @return Invisible named `character`. File paths.
-#' @export
 #'
 #' @examples
 #' loadDataAsName(

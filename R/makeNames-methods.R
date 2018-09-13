@@ -4,13 +4,13 @@
 #' they will set [names()], [rownames()], and/or [colnames()] without
 #' modification of the values.
 #'
-#' @note `dotted.case` support is provided for matching against base R
-#'   parameters. However, it is recommended to avoid using it for variable
-#'   assignments into an `environment`, as that can introduce conflicts with
-#'   base functions.
+#' @note
+#' [makeNames()] sanitizes names using underscores instead of dots, the
+#' convention used by [base::make.names()].
 #'
-#' @note [makeNames()] sanitizes names using underscores instead of dots, the
-#'   convention used by [base::make.names()].
+#' `dotted.case` support is provided for matching against base R parameters.
+#' However, it is recommended to avoid using it for variable assignments into an
+#' `environment`, as that can introduce conflicts with base functions.
 #'
 #' @name makeNames
 #' @family Sanitization Functions

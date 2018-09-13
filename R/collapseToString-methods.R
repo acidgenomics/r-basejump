@@ -3,6 +3,7 @@
 #' @name collapseToString
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #' @param sep `string`. Separator. Defaults to comma.
@@ -14,8 +15,7 @@
 #' - For `atomic`: `string`.
 #' - For column data: Object collapsed to a single row.
 #'
-#' @seealso
-#' - [base::toString()].
+#' @seealso [base::toString()].
 #'
 #' @examples
 #' # character ====

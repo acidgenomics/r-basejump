@@ -8,6 +8,7 @@
 #' @name convertTranscriptsToGenes
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @include makeGRanges.R
 #' @inherit convertGenesToSymbols

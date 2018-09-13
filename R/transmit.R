@@ -5,6 +5,7 @@
 #'
 #' @family Write Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams saveData
 #' @inheritParams general
@@ -16,7 +17,6 @@
 #' @param compress `boolean`. gzip compress the files after download.
 #'
 #' @return Invisible `character`. Local file paths.
-#' @export
 #'
 #' @examples
 #' readme <- transmit(

@@ -1,3 +1,7 @@
+# FIXME Think about how to handle compression here.
+
+
+
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
@@ -16,6 +20,7 @@
 #'
 #' @family Write Functions
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @export
 #'
 #' @inheritParams dots
 #' @inheritParams saveData
@@ -24,7 +29,6 @@
 #' @param gzip `boolean`. Compress the counts file using gzip.
 #'
 #' @return Invisible named `character`. File paths.
-#' @export
 #'
 #' @examples
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")

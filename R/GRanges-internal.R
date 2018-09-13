@@ -1,4 +1,4 @@
-# Report the source of the gene annotations
+# Report the source of the gene annotations.
 .gffSource <- function(gff) {
     assert_is_subset("source", colnames(mcols(gff)))
     if (any(grepl("FlyBase", mcols(gff)[["source"]]))) {
@@ -16,7 +16,7 @@
 
 
 
-# Determine if GFF or GTF
+# Determine if GFF or GTF.
 .gffType <- function(gff) {
     stopifnot(is(gff, "GRanges"))
     gff <- camel(gff)
@@ -33,20 +33,20 @@
     assert_is_all_of(object, "GRanges")
     assert_has_names(object)
 
-    # Standardize the metadata columns
+    # Standardize the metadata columns.
     message("Standardizing the metadata columns")
     mcols <- mcols(object)
     # Sanitize to camel case
     mcols <- camel(mcols)
-    # Ensure "ID" is always capitalized (e.g. "entrezid")
+    # Ensure "ID" is always capitalized (e.g. "entrezid").
     colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
-    # Use `transcript` instead of `tx` consistently
+    # Use `transcript` instead of `tx` consistently.
     colnames(mcols) <- gsub(
         pattern = "^tx",
         replacement = "transcript",
         x = colnames(mcols)
     )
-    # Remove columns that are all NA
+    # Remove columns that are all NA.
     mcols <- removeNA(mcols)
 
     # Missing `geneName`
@@ -61,7 +61,7 @@
         # nocov end
     }
 
-    # Missing `transcriptName`
+    # Missing `transcriptName`.
     if (
         "transcriptID" %in% colnames(mcols) &&
         !"transcriptName" %in% colnames(mcols)
@@ -75,7 +75,7 @@
         # nocov end
     }
 
-    # Always use `geneName` instead of `symbol`
+    # Always use `geneName` instead of `symbol`.
     if (all(c("geneName", "symbol") %in% colnames(mcols))) {
         mcols[["symbol"]] <- NULL
     } else if ("symbol" %in% colnames(mcols)) {
@@ -85,15 +85,15 @@
         # nocov end
     }
 
-    # Sanitize any character columns that have duplicates into factor
+    # Sanitize any character columns that have duplicates into factor.
     mcols <- lapply(
         X = mcols,
         FUN = function(col) {
             if (is.character(col) && any(duplicated(col))) {
                 as.factor(col)
             } else {
-                # `I` inhibits reinterpretation and returns AsIs
-                # Recommended in the DataFrame documentation
+                # `I` inhibits reinterpretation and returns AsIs.
+                # Recommended in the DataFrame documentation.
                 I(col)
             }
         }
@@ -101,8 +101,8 @@
     mcols <- as(mcols, "DataFrame")
     mcols(object) <- mcols
 
-    # Require that names match the identifier column
-    # Use `transcriptID` over `geneID` if defined
+    # Require that names match the identifier column.
+    # Use `transcriptID` over `geneID` if defined.
     assert_are_intersecting_sets(
         x = c("geneID", "transcriptID"),
         y = colnames(mcols(object))
@@ -114,7 +114,7 @@
     }
     names(object) <- mcols(object)[[idCol]]
 
-    # Ensure broad class definitions are included
+    # Ensure broad class definitions are included.
     mcols(object)[["broadClass"]] <- broadClass(object)
 
     # Sort metadata columns alphabetically
