@@ -19,9 +19,7 @@
 #' @return `GRanges`.
 #' @export
 #'
-#' @seealso
-#' - `help("seqinfo", "GenomeInfoDb")`.
-#' - `DESeq2::makeExampleDESeqDataSet()`.
+#' @seealso `help("seqinfo", "GenomeInfoDb")`.
 #'
 #' @examples
 #' # Unknown/dead genes

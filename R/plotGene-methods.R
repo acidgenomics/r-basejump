@@ -20,8 +20,6 @@
 #'   applied to panel the samples.
 #' - "`wide`": Show `ggplot` in wide format, with genes on the x-axis.
 #'
-#' @seealso [DESeq2::plotCounts()].
-#'
 #' @examples
 #' object <- rse_small
 #'
@@ -174,12 +172,12 @@ setMethod(
 
         # Return
         if (return == "facet") {
-            fxn <- .plotGeneFacet
+            what <- .plotGeneFacet
         } else if (return == "wide") {
-            fxn <- .plotGeneWide
+            what <- .plotGeneWide
         }
         do.call(
-            what = fxn,
+            what = what,
             args = list(
                 object = object,
                 countsAxisLabel = countsAxisLabel,

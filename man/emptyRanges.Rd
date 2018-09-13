@@ -38,10 +38,7 @@ emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{
-\itemize{
-\item \code{help("seqinfo", "GenomeInfoDb")}.
-\item \code{DESeq2::makeExampleDESeqDataSet()}.
-}
+\code{help("seqinfo", "GenomeInfoDb")}.
 
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
