@@ -24,12 +24,11 @@ dir.exists("testdir")
 unlink("testdir", recursive = TRUE)
 }
 \seealso{
-Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{flatFiles}},
-  \code{\link{localOrRemoteFile}},
+Other Developer Functions: \code{\link{MethodDefinition}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{flatFiles}}, \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
