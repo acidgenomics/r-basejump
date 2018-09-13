@@ -441,3 +441,14 @@ setGeneric(
         standardGeneric("upperCamel")
     }
 )
+
+
+
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    name = "writeData",
+    def = function(object, ...) {
+        standardGeneric("writeData")
+    }
+)

@@ -5,6 +5,7 @@
 \alias{markdown}
 \alias{plotQC}
 \alias{tx2gene}
+\alias{writeData}
 \title{S4 Generics}
 \usage{
 markdown(object, ...)
@@ -12,6 +13,8 @@ markdown(object, ...)
 plotQC(object, ...)
 
 tx2gene(object, ...)
+
+writeData(object, ...)
 }
 \arguments{
 \item{object}{Object.}
