@@ -27,7 +27,7 @@ y <- "YYY"
 
 # Standard call
 testing <- function(object, ...) {
-    matchS4Call()
+    matchCallS4()
 }
 testing(x, y)
 
@@ -43,7 +43,7 @@ setMethod(
     f = "testing",
     signature = signature("character"),
     definition = function(object, ...) {
-        matchS4Call()
+        matchCallS4()
     }
 )
 testing(x, y)
@@ -52,7 +52,7 @@ setMethod(
     f = "testing",
     signature = signature("character"),
     definition = function(object, xxx, ...) {
-        matchS4Call()
+        matchCallS4()
     }
 )
 testing(x, y)

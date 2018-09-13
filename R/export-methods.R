@@ -20,8 +20,12 @@ NULL
 
 
 
-.export.ANY <- function(x, ...) {
+.export.ANY <-  # nolint
+function(x, ...) {
+    x <- getGenerics(where = parent.frame())
+    print(length(x))
     print(sys.status())
+    stop()
     call <- matchCall(verbose = TRUE)
     print(call)
     stop()
@@ -40,6 +44,60 @@ formals(.export.ANY) <- formals(rio::export)
 
 
 
+.export.sparseMatrix <-  # nolint
+function(x, file, format) {
+    call <- matchCall()
+    name <- call[["x"]]
+    print(str(name))
+    assert_is_name(name)
+    choices = c("mtx", "mtx.gz")
+
+    if (missing(file)) {
+        format <- match.arg(format, choices)
+        file <- paste0(name, ".", format)
+    } else {
+        assert_is_a_string(file)
+        # Require a valid extension.
+        grepChoices <- paste0("\\.", choices, "$")
+        stopifnot(any(vapply(
+            X = grepChoices,
+            FUN = grepl,
+            FUN.VALUE = logical(1L),
+            x = file
+        )))
+    }
+
+    message(paste("Exporting", name, "to", file))
+
+    # Determine whether we want to gzip compress.
+    gzip <- grepl("\\.gz$", file)
+
+    # Ensure ".gz" is stripped from the working file variable.
+    file <- sub("\\.gz", "", file)
+
+    # Create the recursive directory structure, if necessary.
+    initializeDirectory(dirname(file))
+
+    # MatrixMarket file
+    writeMM(obj = x, file = file)
+
+    if (isTRUE(gzip)) {
+        file <- gzip(file, overwrite = TRUE)
+    }
+
+    # Write barcodes (colnames).
+    barcodes <- colnames(counts)
+    barcodesFile <- paste0(matrixFile, ".colnames")
+    write_lines(barcodes, barcodesFile)
+    # Write gene names (rownames).
+    genes <- rownames(counts)
+    genesFile <- paste0(matrixFile, ".rownames")
+    write_lines(genes, genesFile)
+    returnPath <- matrixFile
+}
+
+
+
 #' @rdname export
 #' @export
 setMethod(
@@ -54,56 +112,7 @@ setMethod(
 #' @rdname export
 #' @export
 setMethod(
-    "export",
-    signature("sparseMatrix"),
-    function(x, file, format) {
-        call <- matchCall()
-        name <- call[["x"]]
-        print(str(name))
-        assert_is_name(name)
-        choices = c("mtx", "mtx.gz")
-
-        if (missing(file)) {
-            format <- match.arg(format, choices)
-            file <- paste0(name, ".", format)
-        } else {
-            assert_is_a_string(file)
-            # Require a valid extension.
-            grepChoices <- paste0("\\.", choices, "$")
-            stopifnot(any(vapply(
-                X = grepChoices,
-                FUN = grepl,
-                FUN.VALUE = logical(1L),
-                x = file
-            )))
-        }
-
-        message(paste("Exporting", name, "to", file))
-
-        # Determine whether we want to gzip compress.
-        gzip <- grepl("\\.gz$", file)
-
-        # Ensure ".gz" is stripped from the working file variable.
-        file <- sub("\\.gz", "", file)
-
-        # Create the recursive directory structure, if necessary.
-        initializeDirectory(dirname(file))
-
-        # MatrixMarket file
-        writeMM(obj = x, file = file)
-
-        if (isTRUE(gzip)) {
-            file <- gzip(file, overwrite = TRUE)
-        }
-
-        # Write barcodes (colnames).
-        barcodes <- colnames(counts)
-        barcodesFile <- paste0(matrixFile, ".colnames")
-        write_lines(barcodes, barcodesFile)
-        # Write gene names (rownames).
-        genes <- rownames(counts)
-        genesFile <- paste0(matrixFile, ".rownames")
-        write_lines(genes, genesFile)
-        returnPath <- matrixFile
-    }
+    f = "export",
+    signature = signature("sparseMatrix"),
+    definition = .export.sparseMatrix
 )

@@ -30,7 +30,7 @@
 #'
 #' # Standard call
 #' testing <- function(object, ...) {
-#'     matchS4Call()
+#'     matchCallS4()
 #' }
 #' testing(x, y)
 #'
@@ -46,7 +46,7 @@
 #'     f = "testing",
 #'     signature = signature("character"),
 #'     definition = function(object, ...) {
-#'         matchS4Call()
+#'         matchCallS4()
 #'     }
 #' )
 #' testing(x, y)
@@ -55,7 +55,7 @@
 #'     f = "testing",
 #'     signature = signature("character"),
 #'     definition = function(object, xxx, ...) {
-#'         matchS4Call()
+#'         matchCallS4()
 #'     }
 #' )
 #' testing(x, y)
@@ -64,6 +64,9 @@ matchCallS4 <- function(
     signature,
     verbose = FALSE
 ) {
+
+    stop()
+    print(hasMethod())
     which <- sys.parent()
 
     # Print the call stack, for debugging.
