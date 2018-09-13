@@ -1,8 +1,9 @@
-# TODO Consider renaming this to `import()` and wrapping `rio::import()`.
-
-
-
-#' Read File by Extension
+#' Import
+#'
+#' Read file by extension into R.
+#'
+#' This is a wrapper for [rio::import()] that adds support for additional
+#' common genomic data formats.
 #'
 #' Supports automatic loading of common file extensions:
 #'
@@ -48,21 +49,21 @@
 #'
 #' @examples
 #' # R Data
-#' x <- readFileByExtension("http://basejump.seq.cloud/rnaseq_counts.rda")
+#' x <- import("http://basejump.seq.cloud/rnaseq_counts.rda")
 #' glimpse(x)
 #'
 #' # Comma Separated Values
-#' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.csv")
+#' x <- import("http://basejump.seq.cloud/mtcars.csv")
 #' glimpse(x)
 #'
 #' # Microsoft Excel Worksheet
-#' x <- readFileByExtension("http://basejump.seq.cloud/mtcars.xlsx")
+#' x <- import("http://basejump.seq.cloud/mtcars.xlsx")
 #' glimpse(x)
 #'
 #' # bcbio Counts Table
-#' x <- readFileByExtension("http://basejump.seq.cloud/example.counts")
+#' x <- import("http://basejump.seq.cloud/example.counts")
 #' glimpse(x)
-readFileByExtension <- function(file, ...) {
+import <- function(file, ...) {
     assert_is_a_string(file)
     file <- localOrRemoteFile(file)
     message(paste("Reading", basename(file)))
