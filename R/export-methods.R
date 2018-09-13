@@ -7,6 +7,9 @@
 #' @export
 #'
 #' @seealso [rio::export()].
+#'
+#' @examples
+#' export(mtcars, format = "csv", dir = ".")
 NULL
 
 
