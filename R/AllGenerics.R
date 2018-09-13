@@ -235,6 +235,17 @@ setGeneric(
 
 
 
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    name = "markdown",
+    def = function(object, ...) {
+        standardGeneric("markdown")
+    }
+)
+
+
+
 #' @rdname meltCounts
 #' @export
 setGeneric(

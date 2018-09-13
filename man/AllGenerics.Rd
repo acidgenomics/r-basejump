@@ -2,10 +2,13 @@
 % Please edit documentation in R/AllGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
+\alias{markdown}
 \alias{plotQC}
 \alias{tx2gene}
 \title{S4 Generics}
 \usage{
+markdown(object, ...)
+
 plotQC(object, ...)
 
 tx2gene(object, ...)
