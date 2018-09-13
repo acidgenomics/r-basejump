@@ -24,12 +24,7 @@ NULL
 setMethod(
     "export",
     signature("ANY"),
-    function(
-        x,
-        file,
-        format,
-        ...
-    ) {
+    function(x, file, format, ...) {
         call <- matchCall()
         name <- call[["x"]]
         if (missing(file)) {
