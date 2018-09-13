@@ -36,21 +36,17 @@ loadRemoteData <- function(url, envir = parent.frame()) {
     names <- gsub(rdataExtPattern, "", basename(url), ignore.case = TRUE)
     names(url) <- names
 
-    # Check to make sure the objects don't already exist
+    # Check to make sure the objects don't already exist.
     assertAllAreNonExisting(names, envir = envir, inherits = FALSE)
 
-    # Download the files to tempdir and return a character matrix of mappings
+    # Download the files to tempdir and return a character matrix of mappings.
     invisible(mapply(
         name = names,
         url = url,
         MoreArgs = list(envir = envir),
         FUN = function(name, url, envir) {
-            data <- readFileByExtension(url)
-            assign(
-                x = name,
-                value = data,
-                envir = envir
-            )
+            data <- import(url)
+            assign(x = name, value = data, envir = envir)
         }
     ))
 
