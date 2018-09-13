@@ -1,3 +1,7 @@
+# TODO Consider renaming this to `import()` and wrapping `rio::import()`.
+
+
+
 #' Read File by Extension
 #'
 #' Supports automatic loading of common file extensions:
