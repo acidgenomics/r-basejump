@@ -8,11 +8,12 @@
 \usage{
 plotHeatmap(object, ...)
 
-\S4method{plotHeatmap}{SummarizedExperiment}(object, interestingGroups,
-  scale = c("row", "column", "none"), clusterRows = TRUE,
-  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = NULL, borderColor = NULL, title = NULL, ...)
+\S4method{plotHeatmap}{SummarizedExperiment}(object,
+  interestingGroups = NULL, scale = c("none", "row", "column"),
+  clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = NULL, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -67,26 +68,25 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 }
 \examples{
 # SummarizedExperiment ====
-plotHeatmap(rse_dds)
+plotHeatmap(rse_small)
 
-# Set legend using interesting groups, and customize colors
+# Using viridis color palette.
 plotHeatmap(
-    object = rse_dds,
-    interestingGroups = "condition",
+    object = rse_small,
     color = viridis::plasma,
     legendColor = viridis::viridis
 )
 
-# Hexadecimal color input
+# Using hexadecimal color input.
 library("RColorBrewer")
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-plotHeatmap(rse_dds, color = purple_orange)
+plotHeatmap(rse_small, color = purple_orange)
 
-# Default pheatmap colors
-plotHeatmap(rse_dds, color = NULL)
+# Using default pheatmap colors.
+plotHeatmap(rse_small, color = NULL)
 
-# Disable column clustering
-plotHeatmap(rse_dds, clusterCols = FALSE)
+# Disable column clustering.
+plotHeatmap(rse_small, clusterCols = FALSE)
 }
 \seealso{
 \itemize{
@@ -95,6 +95,6 @@ plotHeatmap(rse_dds, clusterCols = FALSE)
 }
 
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotQuantileHeatmap}}, \code{\link{themes}}
+  \code{\link{plotGene}}, \code{\link{plotQuantileHeatmap}}
 }
 \concept{Plot Functions}

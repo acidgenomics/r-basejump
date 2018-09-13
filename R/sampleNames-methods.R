@@ -7,8 +7,9 @@
 #' @name sampleNames
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
-#' @importFrom Biobase sampleNames
+#' @importFrom Biobase sampleNames sampleNames<-
 #'
 #' @inheritParams general
 #'
@@ -16,8 +17,18 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleNames(rse_bcb)
-#' sampleNames(rse_dds)
+#' object <- rse_small
+#' x <- sampleNames(object)
+#' print(x)
+#'
+#' # Assignment support
+#' value <- sampleNames(object)
+#' value <- toupper(value)
+#' print(value)
+#' sampleNames(object) <- value
+#' x <- sampleNames(object)
+#' print(x)
+#' colData(object)$sampleName
 NULL
 
 
@@ -25,18 +36,43 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleNames",
-    signature("SummarizedExperiment"),
-    function(object) {
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
+        validObject(object)
         data <- sampleData(object)
+        assert_is_subset("sampleName", colnames(data))
         data <- data[sort(rownames(data)), , drop = FALSE]
-        if ("sampleName" %in% colnames(data)) {
-            vec <- data[, "sampleName", drop = TRUE]
-        } else {
-            vec <- rownames(data)
-        }
-        vec <- as.character(vec)
+        vec <- as.character(data[, "sampleName", drop = TRUE])
         names(vec) <- rownames(data)
         vec
+    }
+)
+
+
+
+#' @rdname sampleNames
+#' @export
+setMethod(
+    f = "sampleNames<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    definition = function(object, value) {
+        assert_has_names(value)
+        # Note that these will correspond to columns for bulk RNA-seq but not
+        # single-cell RNA-seq samples, which map to cells.
+        ids <- names(sampleNames(object))
+        assert_is_non_empty(ids)
+        # Require the input to match the original IDs.
+        assert_are_set_equal(names(value), ids)
+        # Now safe to reorder the value vector to match.
+        value <- value[ids]
+        # Check that the slotting destination matches.
+        assert_are_identical(names(value), rownames(sampleData(object)))
+        sampleData(object)[["sampleName"]] <- value
+        validObject(object)
+        object
     }
 )

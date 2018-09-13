@@ -1,31 +1,29 @@
 context("Plot Functions")
 
-pheatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
-
 
 
 # Heatmaps =====================================================================
-fxns <- c(
-    "plotCorrelationHeatmap",
-    "plotHeatmap",
-    "plotQuantileHeatmap"
+funs <- list(
+    plotCorrelationHeatmap,
+    plotHeatmap,
+    plotQuantileHeatmap
 )
+pheatmapList <- c("tree_row", "tree_col", "kmeans", "gtable")
 
-test_that("plotHeatmap : SummarizedExperiment", {
-    invisible(lapply(fxns, function(f) {
-        object <- rse_bcb
-        f <- get(f)
+with_parameters_test_that(
+    "plotHeatmap : SummarizedExperiment", {
+        object <- rse_small
         p <- f(object)
 
-        # Expect pheatmap return
+        # Expect pheatmap return.
         expect_is(p, "pheatmap")
         expect_identical(names(p), pheatmapList)
 
-        # Test that plots contain annotation data
+        # Test that plots contain annotation data.
         gtable <- p[["gtable"]]
         expect_true("annotation_legend" %in% gtable[["layout"]][["name"]])
 
-        # Test color and title support
+        # Test color and title support.
         expect_is(
             f(
                 object = object,
@@ -35,7 +33,8 @@ test_that("plotHeatmap : SummarizedExperiment", {
             ),
             "pheatmap"
         )
-        # Hexadecimal color functions (e.g. viridis)
+
+        # Hexadecimal color functions (e.g. viridis).
         expect_is(
             f(
                 object = object,
@@ -44,7 +43,8 @@ test_that("plotHeatmap : SummarizedExperiment", {
             ),
             "pheatmap"
         )
-        # Hexadecimal color palettes (e.g. RColorBrewer)
+
+        # Hexadecimal color palettes (e.g. RColorBrewer).
         color <- colorRampPalette(
             RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
         )(256L)
@@ -55,7 +55,8 @@ test_that("plotHeatmap : SummarizedExperiment", {
             ),
             "pheatmap"
         )
-        # Disable interesting groups
+
+        # Disable interesting groups.
         expect_is(
             f(
                 object = object,
@@ -63,55 +64,13 @@ test_that("plotHeatmap : SummarizedExperiment", {
             ),
             "pheatmap"
         )
-    }))
-})
+    },
+    f = funs
+)
 
 test_that("plotHeatmap : Invalid pheatmap passthrough", {
     expect_error(
-        plotHeatmap(rse_bcb, show_colnames = FALSE),
+        plotHeatmap(rse_small, show_colnames = FALSE),
         "Define formalArgs in camel case: show_colnames"
-    )
-})
-
-
-
-# themes =======================================================================
-p <- ggplot2::ggplot(
-    data = ggplot2::mpg,
-    mapping = ggplot2::aes(cty, hwy)
-) +
-    ggplot2::geom_point(color = "orange")
-
-test_that("theme_midnight", {
-    expect_is(theme_midnight(), "theme")
-    x <- p + theme_midnight()
-    expect_is(x, "ggplot")
-    # Check background color
-    expect_identical(
-        x[["theme"]][["plot.background"]][["fill"]],
-        "black"
-    )
-    # Grid mode
-    x <- p + theme_midnight(grid = TRUE)
-    expect_identical(
-        x[["theme"]][["panel.grid.major"]][["colour"]],
-        "gray10"
-    )
-})
-
-test_that("theme_paperwhite", {
-    expect_is(theme_paperwhite(), "theme")
-    x <- p + theme_paperwhite()
-    expect_is(x, "ggplot")
-    # Check background color
-    expect_identical(
-        x[["theme"]][["plot.background"]][["fill"]],
-        NULL
-    )
-    # Grid mode
-    x <- p + theme_paperwhite(grid = TRUE)
-    expect_identical(
-        x[["theme"]][["panel.grid.major"]][["colour"]],
-        "gray95"
     )
 })

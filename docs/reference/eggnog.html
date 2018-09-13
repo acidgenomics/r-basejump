@@ -64,7 +64,7 @@ eukaryotic, prokaryotic, and viral genomes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -75,6 +75,9 @@ eukaryotic, prokaryotic, and viral genomes." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -132,19 +135,14 @@ identifiers.</p></li>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='http://eggnogdb.embl.de/download/latest/README.txt'>EggNOG README</a></p>
-<p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+<p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
   <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
@@ -166,14 +164,45 @@ identifiers.</p></li>
 #&gt; <span class='message'>  speciesCount = col_integer(),</span>
 #&gt; <span class='message'>  cogFunctionalCategory = col_character(),</span>
 #&gt; <span class='message'>  consensusFunctionalDescription = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ cogFunctionalCategories:Classes 'tbl_df', 'tbl' and 'data.frame':	18 obs. of  2 variables:
-#&gt;   ..$ letter     : chr [1:18] "A" "B" "C" "E" ...
-#&gt;   ..$ description: chr [1:18] "RNA processing and modification" "Chromatin structure and dynamics" "Energy production and conversion" "Amino acid transport and metabolism" ...
-#&gt;  $ annotations            :Classes 'tbl_df', 'tbl' and 'data.frame':	286584 obs. of  3 variables:
-#&gt;   ..$ eggnogID                      : chr [1:286584] "COG0001" "COG0002" "COG0003" "COG0004" ...
-#&gt;   ..$ consensusFunctionalDescription: chr [1:286584] "Glutamate-1-semialdehyde aminotransferase" "N-acetylglutamate semialdehyde dehydrogenase" "ATPase required for the post-translational delivery of tail-anchored (TA) proteins to the endoplasmic reticulum"| __truncated__ "ammonium Transporter" ...
-#&gt;   ..$ cogFunctionalCategory         : chr [1:286584] "H" "E" "P" "P" ...</div></pre>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; $cogFunctionalCategories
+#&gt; # A tibble: 18 x 2
+#&gt;    letter description                           
+#&gt;    &lt;chr&gt;  &lt;chr&gt;                                 
+#&gt;  1 A      RNA processing and modification       
+#&gt;  2 B      Chromatin structure and dynamics      
+#&gt;  3 C      Energy production and conversion      
+#&gt;  4 E      Amino acid transport and metabolism   
+#&gt;  5 F      Nucleotide transport and metabolism   
+#&gt;  6 G      Carbohydrate transport and metabolism 
+#&gt;  7 H      Coenzyme transport and metabolism     
+#&gt;  8 I      Lipid transport and metabolism        
+#&gt;  9 K      Transcription                         
+#&gt; 10 N      Cell motility                         
+#&gt; 11 P      Inorganic ion transport and metabolism
+#&gt; 12 R      General function prediction only      
+#&gt; 13 S      Function unknown                      
+#&gt; 14 T      Signal transduction mechanisms        
+#&gt; 15 V      Defense mechanisms                    
+#&gt; 16 W      Extracellular structures              
+#&gt; 17 Y      Nuclear structure                     
+#&gt; 18 Z      Cytoskeleton                          
+#&gt; 
+#&gt; $annotations
+#&gt; # A tibble: 286,584 x 3
+#&gt;    eggnogID consensusFunctionalDescription                   cogFunctionalCate…
+#&gt;    &lt;chr&gt;    &lt;chr&gt;                                            &lt;chr&gt;             
+#&gt;  1 COG0001  Glutamate-1-semialdehyde aminotransferase        H                 
+#&gt;  2 COG0002  N-acetylglutamate semialdehyde dehydrogenase     E                 
+#&gt;  3 COG0003  ATPase required for the post-translational deli… P                 
+#&gt;  4 COG0004  ammonium Transporter                             P                 
+#&gt;  5 COG0005  The purine nucleoside phosphorylases catalyze t… F                 
+#&gt;  6 COG0006  peptidase M24                                    E                 
+#&gt;  7 COG0007  Multifunctional enzyme that catalyzes the SAM-d… H                 
+#&gt;  8 COG0008  Catalyzes the attachment of glutamate to tRNA(G… J                 
+#&gt;  9 COG0009  sua5 ycio yrdc ywlc family protein               J                 
+#&gt; 10 COG0010  hydrolase activity, acting on carbon-nitrogen (… E                 
+#&gt; # ... with 286,574 more rows
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

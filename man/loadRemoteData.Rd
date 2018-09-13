@@ -13,8 +13,8 @@ loadRemoteData(url, envir = parent.frame())
 \code{parent.frame()}, which will assign into the calling environment.}
 }
 \value{
-Invisible named \code{character} containing the local object name as the
-name, and the remote URL as the value.
+Invisible named \code{character}. Local object name as the name, and the
+remote URL as the value.
 }
 \description{
 Load a remote R binary file. This function is vectorized and supports

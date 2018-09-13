@@ -9,10 +9,11 @@
 plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object,
-  interestingGroups, n = 10L, clusterRows = TRUE, clusterCols = TRUE,
-  showRownames = FALSE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = viridis::viridis, legend = FALSE,
-  legendColor = NULL, borderColor = NULL, title = NULL, ...)
+  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
+  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
+  legend = FALSE, legendColor = NULL, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -75,19 +76,18 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 }
 \examples{
 # SummarizedExperiment ====
-plotQuantileHeatmap(rse_dds)
+plotQuantileHeatmap(rse_small)
 
-# Set legend using interesting groups, and customize colors
+# Using viridis color palettes.
 plotQuantileHeatmap(
-    object = rse_dds,
-    interestingGroups = "condition",
+    object = rse_small,
     color = viridis::plasma,
     legendColor = viridis::viridis
 )
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}}, \code{\link{themes}}
+  \code{\link{plotGene}}, \code{\link{plotHeatmap}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

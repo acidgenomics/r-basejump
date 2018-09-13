@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' x <- eggnog()
-#' glimpse(x)
+#' print(x)
 eggnog <- function() {
     # Categories ---------------------------------------------------------------
     pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
@@ -37,7 +37,7 @@ eggnog <- function() {
     ) %>%
         str_subset(pattern) %>%
         str_match(pattern) %>%
-        as_tibble() %>%
+        as("tbl_df") %>%
         select(-1L) %>%
         set_colnames(c("letter", "description")) %>%
         arrange(!!sym("letter"))

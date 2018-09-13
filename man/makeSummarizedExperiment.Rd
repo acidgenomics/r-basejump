@@ -4,18 +4,22 @@
 \alias{makeSummarizedExperiment}
 \title{Make Summarized Experiment}
 \usage{
-makeSummarizedExperiment(assays, rowRanges = NULL, colData = NULL,
-  metadata = NULL, transgeneNames = NULL, spikeNames = NULL)
+makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
+  colData = NULL, metadata = NULL, transgeneNames = NULL,
+  spikeNames = NULL)
 }
 \arguments{
 \item{assays}{\code{list}. RNA-seq count matrices, which must have matching
 dimensions. Counts can be passed in either dense (\code{matrix}) or sparse
 (\code{dgCMatrix}, \code{dgTMatrix}) format.}
 
-\item{rowRanges}{\code{GRanges} or \code{NULL}. Metadata describing the
+\item{rowRanges}{\code{GRanges} or \code{NULL}. \emph{Recommended}. Metadata describing the
 assay rows. If defined, must contain genomic ranges. Can be left \code{NULL} if
 the genome is poorly annotated and/or ranges aren't available from
 AnnotationHub.}
+
+\item{rowData}{\code{DataFrame} or \code{NULL}. \emph{Not recommended}. Metadata describing
+the assay rows, if genomic ranges are not available.}
 
 \item{colData}{\code{DataFrame} \code{data.frame}, or \code{matrix}. Metadata
 describing the assay columns. For bulk RNA-seq, this data describes the
@@ -30,7 +34,10 @@ samples. For single-cell RNA-seq, this data describes the cells.}
 rows denote spike-in sequences (e.g. ERCCs).}
 }
 \value{
-\code{RangedSummarizedExperiment}.
+\itemize{
+\item Providing \code{rowRanges}: \code{RangedSummarizedExperiment}.
+\item Providing \code{rowData}: \code{SummarizedExperiment}.
+}
 }
 \description{
 This function is a utility wrapper for
@@ -48,58 +55,61 @@ slot:
 \item \code{devtoolsSessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}}.
 }
 }
+\note{
+Column and rows always return sorted alphabetically.
+}
 \examples{
+# Rows (genes)
 genes <- c(
-    "EGFP",  # transgene
-    "gene1",
-    "gene2",
-    "gene3"
+    "EGFP",  # transgene (see below)
+    paste0("gene", seq_len(3L))
 )
-samples <- c(
-    "sample1",
-    "sample2",
-    "sample3",
-    "sample4"
-)
+print(genes)
 
-# Example matrix
-mat <- matrix(
-    seq(1L:16L),
+# Columns (samples)
+samples <- paste0("sample", seq_len(4L))
+print(samples)
+
+# Counts (assay)
+counts <- matrix(
+    data = seq_len(16L),
     nrow = 4L,
     ncol = 4L,
     dimnames = list(genes, samples)
 )
+# Primary assay must be named "counts".
+assays <- list(counts = counts)
+print(assays)
 
-# Primary assay must be named "counts"
-assays = list(counts = mat)
-
-# rowRanges won't contain transgenes or spike-ins
+# Row data (genomic ranges)
 rowRanges <- GRanges(
-    seqnames = c("1", "1", "1"),
+    seqnames = rep("1", times = 3L),
     ranges = IRanges(
-        start = c(1L, 101L, 201L),
-        end = c(100L, 200L, 300L)
+        start = seq(from = 1L, to = 201L, by = 100L),
+        end = seq(from = 100L, to = 300L, by = 100L)
     )
 )
-names(rowRanges) <- c("gene1", "gene2", "gene3")
+# Note that we haven't defined the transgene here.
+# It will be handled automatically in the function call.
+names(rowRanges) <- paste0("gene", seq_len(3L))
+print(rowRanges)
 
-colData <- data.frame(
-    genotype = c(
-        "wildtype",
-        "wildtype",
-        "knockout",
-        "knockout"
-    ),
-    age = c(3L, 6L, 3L, 6L),
+# Column data
+colData <- DataFrame(
+    genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
+    age = rep(c(3L, 6L), 2L),
     row.names = samples
 )
+print(colData)
 
-makeSummarizedExperiment(
+# Note that this returns with the dimnames sorted.
+x <- makeSummarizedExperiment(
     assays = assays,
     rowRanges = rowRanges,
     colData = colData,
     transgeneNames = "EGFP"
 )
+print(x)
 }
 \seealso{
 \itemize{
@@ -110,10 +120,11 @@ makeSummarizedExperiment(
 \item \code{SingleCellExperiment::SingleCellExperiment()}.
 }
 
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
-  \code{\link{gene2symbol}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+Other Data Functions: \code{\link{counts}},
+  \code{\link{gene2symbol}}, \code{\link{mapGenesToIDs}},
+  \code{\link{meltCounts}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh

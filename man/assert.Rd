@@ -4,15 +4,12 @@
 \alias{assert}
 \title{Assert Checks}
 \arguments{
-\item{x}{Object.}
+\item{object}{Object.}
 
 \item{envir}{\code{environment}.}
 
 \item{inherits}{\code{boolean}. Should the enclosing frames of the \code{environment}
 be searched?}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
 }
 \value{
 Stop on mismatch.

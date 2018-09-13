@@ -1,58 +1,76 @@
 #' Sanitize Sample Data
 #'
+#' This function will standardize sample metadata.
+#'
+#' The following conventions are enforced:
+#'
+#' - Column names will be converted to camel case, using [camel()].
+#' - Required columns: `sampleName`.
+#' - Blacklisted columns: `interestingGroups`, `sampleID`. These columns are
+#'   generated internally, and should not be user defined.
+#' - All columns will be coerced to factor.
+#' - Non-atomic columns will be dropped.
+#'
+#' Currently supports `DataFrame` or `data.frame` input.
+#'
 #' @family Sanitization Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Data frame.
+#' @return `DataFrame`.
 #' @export
 #'
 #' @examples
-#' # DataFrame ====
-#' from <- DataFrame(
-#'     genotype = c("wt", "ko", "wt", "ko"),
-#'     batch = c(1L, 1L, 2L, 2L),
-#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4")
-#' )
-#' glimpse(from)
+#' from <- sampleData(rse_small)
+#' print(from)
 #' to <- sanitizeSampleData(from)
-#' glimpse(to)
-#'
-#' # data.frame ====
-#' from <- data.frame(
-#'     genotype = c("wt", "ko", "wt", "ko"),
-#'     batch = c(1L, 1L, 2L, 2L),
-#'     row.names = c("sample_1", "sample_2", "sample_3", "sample_4"),
-#'     stringsAsFactors = FALSE
-#' )
-#' glimpse(from)
-#' to <- sanitizeSampleData(from)
-#' glimpse(to)
+#' all(vapply(to, is.factor, logical(1L)))
+#' print(to)
 sanitizeSampleData <- function(object) {
-    assert_is_any_of(object, c("data.frame", "DataFrame"))
+    assert_is_any_of(object, c("DataFrame", "data.frame"))
     assert_is_non_empty(object)
     assert_has_colnames(object)
-    class <- class(object)[[1L]]
 
-    object <- as(object, "DataFrame")
-    object <- camel(object)
+    # Require `sampleName` column.
+    assert_is_subset(
+        x = "sampleName",
+        y = colnames(object)
+    )
+    # And check for any duplicate rows.
+    assert_has_no_duplicates(object[["sampleName"]])
 
+    # Error if any non-atomic columns are detected.
+    invisible(lapply(object, assert_is_atomic))
+
+    # Coerce to DataFrame class.
+    data <- as(object, "DataFrame")
+    assert_is_non_empty(data)
+    assert_has_rows(data)
+    assertHasRownames(data)
+
+    # Require that dimnames are valid.
+    # This checks to ensure we don't have duplicate row or column names too.
+    assertHasValidDimnames(data)
+
+    # Coerce all columns to factor, and ensure levels are updated, in case
+    # samples have been subset.
+    rownames <- rownames(data)
     list <- lapply(
-        X = object,
+        X = data,
         FUN = function(x) {
             droplevels(as.factor(x))
         }
     )
-
-    # DataFrame class supports coercion from list; data.frame does not
     data <- as(list, "DataFrame")
+    rownames(data) <- rownames
 
-    # Don't allow manual definition of automatic columns
+    # Sanitize to camel case.
+    data <- camel(data)
+
+    # Drop any blacklisted columns before return.
     blacklist <- c("interestingGroups", "sampleID")
     data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
 
-    data <- as(data, class)
-    rownames(data) <- rownames(object)
     data
 }

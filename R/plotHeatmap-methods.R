@@ -44,26 +44,25 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotHeatmap(rse_dds)
+#' plotHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palette.
 #' plotHeatmap(
-#'     object = rse_dds,
-#'     interestingGroups = "condition",
+#'     object = rse_small,
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
 #'
-#' # Hexadecimal color input
+#' # Using hexadecimal color input.
 #' library("RColorBrewer")
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-#' plotHeatmap(rse_dds, color = purple_orange)
+#' plotHeatmap(rse_small, color = purple_orange)
 #'
-#' # Default pheatmap colors
-#' plotHeatmap(rse_dds, color = NULL)
+#' # Using default pheatmap colors.
+#' plotHeatmap(rse_small, color = NULL)
 #'
-#' # Disable column clustering
-#' plotHeatmap(rse_dds, clusterCols = FALSE)
+#' # Disable column clustering.
+#' plotHeatmap(rse_small, clusterCols = FALSE)
 NULL
 
 
@@ -71,12 +70,12 @@ NULL
 #' @rdname plotHeatmap
 #' @export
 setMethod(
-    "plotHeatmap",
-    signature("SummarizedExperiment"),
-    function(
+    f = "plotHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = function(
         object,
-        interestingGroups,
-        scale = c("row", "column", "none"),
+        interestingGroups = NULL,
+        scale = c("none", "row", "column"),
         clusterRows = TRUE,
         clusterCols = TRUE,
         showRownames = FALSE,
@@ -89,12 +88,16 @@ setMethod(
         title = NULL,
         ...
     ) {
+        validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
         )
+        if (length(interestingGroups)) {
+            interestingGroups(object) <- interestingGroups
+        }
         scale <- match.arg(scale)
         assert_is_a_bool(clusterCols)
         assert_is_a_bool(clusterRows)
@@ -112,35 +115,50 @@ setMethod(
             title <- NA
         }
 
-        object <- suppressWarnings(convertGenesToSymbols(object))
+        # Convert the SE object to use symbols in the rownames, for pheatmap.
+        object <- convertGenesToSymbols(object)
 
+        # Ensure we're using a dense matrix.
+        # Note that we want to use `assay()` here instead, so this supports
+        # `DESeqTransform`, which doesn't use `counts` as the primary assay.
         mat <- as.matrix(assay(object))
+
+        # Filter out any zero count rows when row scaling, otherwise hclust
+        # calculation will error.
         if (scale == "row") {
-            # Filter out any zero count rows
             mat <- mat[rowSums(mat) > 0L, , drop = FALSE]
         }
 
-        # Annotation columns
-        annotationCol <- .annotationCol(
+        # Get annotation columns and colors automatically.
+        x <- .pheatmapAnnotations(
             object = object,
-            interestingGroups = interestingGroups
-        )
-
-        # Use `sampleName`, if defined
-        sampleName <- colData(object)[["sampleName"]]
-        if (length(sampleName)) {
-            colnames(mat) <- sampleName
-            if (length(annotationCol)) {
-                rownames(annotationCol) <- sampleName
-            }
-        }
-
-        annotationCol <- .pheatmapAnnotationCol(annotationCol)
-        annotationColors <- .pheatmapAnnotationColors(
-            annotationCol = annotationCol,
             legendColor = legendColor
         )
-        color <- .pheatmapColor(color)
+        assert_is_list(x)
+        assert_are_identical(
+            x = names(x),
+            y = c("annotationCol", "annotationColors")
+        )
+        annotationCol <- x[["annotationCol"]]
+        annotationColors <- x[["annotationColors"]]
+        rm(x)
+
+        color <- .pheatmapColorPalette(color)
+
+        # Substitute human-friendly sample names, if defined.
+        sampleNames <- tryCatch(
+            expr = sampleNames(object),
+            error = function(e) NULL
+        )
+        if (length(sampleNames)) {
+            colnames(mat) <- sampleNames
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
+                rownames(annotationCol) <- sampleNames
+            }
+        }
 
         # Return pretty heatmap with modified defaults
         args <- list(

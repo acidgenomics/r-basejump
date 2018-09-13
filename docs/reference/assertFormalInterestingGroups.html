@@ -64,7 +64,7 @@ is requested by the user." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -75,6 +75,9 @@ is requested by the user." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -115,34 +118,31 @@ is requested by the user.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>x</span>, <span class='no'>interestingGroups</span>,
-  <span class='kw'>severity</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"assertive.severity"</span>, <span class='st'>"stop"</span>))</pre>
+    <pre class="usage"><span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
+      <th>object</th>
+      <td><p><code>SummarizedExperiment</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>. Groups of interest.</p></td>
     </tr>
-    <tr>
-      <th>severity</th>
-      <td><p><code>string</code>. How severe should the consequences of the assertion
-be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", or "<code>none</code>".</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silent, stop on error.</p>
+    <p>Stop on mismatch.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
   <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
   <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
   <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
@@ -152,21 +152,19 @@ be? Either "<code>stop</code>", "<code>warning</code>", "<code>message</code>", 
   <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
   <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
   <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
-  <code><a href='assertIsCharacterOrNULL.html'>assertIsCharacterOrNULL</a></code>,
   <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsDataFrameOrNULL.html'>assertIsDataFrameOrNULL</a></code>,
   <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
   <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
   <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
   <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
   <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
-  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code>, <code><a href='assertIsURL.html'>assertIsURL</a></code></p></div>
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>rse_bcb</span>, <span class='st'>"treatment"</span>)
-<span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>rse_dds</span>, <span class='st'>"condition"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='st'>"treatment"</span>)
+<span class='fu'>assertFormalInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='kw'>NULL</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

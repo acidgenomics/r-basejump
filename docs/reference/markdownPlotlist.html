@@ -34,7 +34,9 @@
   
 <meta property="og:title" content="Markdown Plotlist — markdownPlotlist" />
 
-<meta property="og:description" content="Markdown Plotlist" />
+<meta property="og:description" content="Supports using a named list containing multiple ggplot objects, which
+can be used in an R Markdown report, separated by headers. Internally, the
+headers are generated with the markdownHeader() function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +76,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -109,7 +114,9 @@
 
     <div class="ref-description">
     
-    <p>Markdown Plotlist</p>
+    <p>Supports using a named <code>list</code> containing multiple <code>ggplot</code> objects, which
+can be used in an R Markdown report, separated by headers. Internally, the
+headers are generated with the <code><a href='markdownHeader.html'>markdownHeader()</a></code> function.</p>
     
     </div>
 
@@ -137,11 +144,11 @@
     <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/cowplot/topics/plot_grid'>cowplot::plot_grid()</a></code>.</p>
 <p>Other R Markdown Functions: <code><a href='kables.html'>kables</a></code>,
   <code><a href='markdownHeader.html'>markdownHeader</a></code>, <code><a href='markdownLink.html'>markdownLink</a></code>,
-  <code><a href='markdownList.html'>markdownList</a></code></p></div>
+  <code><a href='markdownList.html'>markdownList</a></code>, <code><a href='prepareTemplate.html'>prepareTemplate</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda</span></div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; [1] "continuous" "discrete"  </div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; ## continuous
 #&gt; </div><div class='img'><img src='markdownPlotlist-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 

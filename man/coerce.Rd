@@ -8,6 +8,7 @@
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
+\alias{coerce,tbl_df,DataFrame-method}
 \title{Methods for Coercing an Object to a Class}
 \value{
 Object of new class.
@@ -17,21 +18,33 @@ Methods for Coercing an Object to a Class
 }
 \section{tibble}{
 
-Coerce an object to a \code{tibble} (\code{tbl_df}). Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by moving them to a column
-named \code{rowname} upon coercion. This helps avoid downstream unexpected data
-loss when using the dplyr chain of single table verbs, such as
-\code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+Coerce an object to a \code{tibble} using \code{as(object, Class = "tbl_df")}. Tibbles
+don't support rowname assignment, so here we are ensuring they are kept by
+moving them to a column named \code{rowname} upon coercion. This helps avoid
+downstream unexpected data loss when using the dplyr chain of single table
+verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+
+Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
+\code{as(tbl_df, Class = "DataFrame")} method looks for the "rowname" column and
+will attempt to move it back to \code{\link[=rownames]{rownames()}} automatically, unless there are
+duplicates present.
 }
 
 \examples{
-# data.frame ====
+# DataFrame to tbl_df ====
 # Automatically move rownames to `rowname` column
-as(datasets::mtcars, "tbl_df") \%>\% glimpse()
+data <- colData(rse_small)
+class(data)
+hasRownames(data)
 
-# tibble ====
-# Return unmodified
-as(ggplot2::mpg, "tbl_df") \%>\% glimpse()
+tbl_df <- as(data, Class = "tbl_df")
+hasRownames(tbl_df)
+print(tbl_df)
+
+# tbl_df back to DataFrame ====
+data <- as(tbl_df, "DataFrame")
+hasRownames(data)
+class(data)
 }
 \seealso{
 \itemize{

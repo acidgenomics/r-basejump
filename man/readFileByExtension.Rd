@@ -12,7 +12,8 @@ readFileByExtension(file, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Varies depending on the file extension.
+Varies, depending on the file extension. Note that data frames are
+returned as \code{DataFrame} class, when applicable.
 }
 \description{
 Supports automatic loading of common file extensions:

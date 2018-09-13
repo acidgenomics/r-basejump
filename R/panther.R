@@ -1,178 +1,56 @@
 #' PANTHER Gene Ontology Annotations
 #'
+#' @name panther
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
+#' @param organism `string`. Supported organisms:
+#'   - *Homo sapiens*
+#'   - *Mus musculus*
+#'   - *Caenorhabditis elegans*
+#'   - *Drosophila melanogaster*
 #' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
 #'
-#' @return `data.frame`.
-#' @export
+#' @return `DataFrame`.
 #'
 #' @examples
 #' invisible(capture.output(
 #'     x <- panther("Homo sapiens")
 #' ))
 #' glimpse(x)
-panther <- function(
-    organism = c(
-        "Homo sapiens",
-        "Mus musculus",
-        "Caenorhabditis elegans",
-        "Drosophila melanogaster"
-    ),
-    release = NULL
-) {
-    stopifnot(has_internet())
-    organism <- match.arg(organism)
-    map <- c(
-        "Homo sapiens" = "human",
-        "Mus musculus" = "mouse",
-        "Caenorhabditis elegans" = "nematode_worm",
-        "Drosophila melanogaster" = "fruit_fly"
-    )
-    data <- .pantherAnnotations(map[[organism]], release = release)
-    if (organism == "Homo sapiens") {
-        .panther.human(data)
-    } else if (organism == "Mus musculus") {
-        .panther.mouse(data)
-    } else if (organism == "Drosophila melanogaster") {
-        .panther.fruit_fly(data)
-    } else if (organism == "Caenorhabditis elegans") {
-        .panther.nematode_worm(data)
-    }
-}
+NULL
 
 
 
-.panther.human <- function(data) {  # nolint
-    hgnc2gene <- hgnc2gene()
-
-    # Ensembl matches
-    ensembl <- data %>%
-        mutate(
-            geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
-        ) %>%
-        filter(!is.na(!!sym("geneID")))
-
-    # HGNC matches
-    hgnc <- data %>%
-        # Extract the HGNC ID
-        mutate(
-            hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
-            hgncID = as.integer(!!sym("hgncID"))
-        ) %>%
-        filter(!is.na(!!sym("hgncID"))) %>%
-        merge(hgnc2gene, by = "hgncID", all.x = TRUE) %>%
-        as_tibble() %>%
-        select(-!!sym("hgncID")) %>%
-        filter(!is.na(!!sym("geneID"))) %>%
-        unique()
-
-    do.call(rbind, list(ensembl, hgnc)) %>%
-        .pantherReturn()
-}
+# Constructors =================================================================
+.pantherMappings <- c(
+    "Homo sapiens" = "human",
+    "Mus musculus" = "mouse",
+    "Caenorhabditis elegans" = "nematode_worm",
+    "Drosophila melanogaster" = "fruit_fly"
+)
 
 
 
-.panther.mouse <- function(data) {  # nolint
-    mgi2gene <- mgi2gene()
-
-    # Ensembl matches
-    ensembl <- data %>%
-        mutate(
-            geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
-        ) %>%
-        filter(!is.na(!!sym("geneID")))
-
-    # MGI matches
-    mgi <- data %>%
-        mutate(
-            mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
-            mgiID = as.integer(!!sym("mgiID"))
-        ) %>%
-        filter(!is.na(!!sym("mgiID"))) %>%
-        merge(mgi2gene, by = "mgiID", all.x = TRUE) %>%
-        as_tibble() %>%
-        select(-!!sym("mgiID")) %>%
-        filter(!is.na(!!sym("geneID")))
-
-    do.call(rbind, list(ensembl, mgi)) %>%
-        .pantherReturn()
-}
-
-
-
-.panther.fruit_fly <- function(data) {  # nolint
-    data %>%
-        mutate(
-            geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$")
-        ) %>%
-        .pantherReturn()
-}
-
-
-
-.panther.nematode_worm <- function(data) {  # nolint
-     data %>%
-        mutate(
-            geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$")
-        ) %>%
-        .pantherReturn()
-}
-
-
-
-# Here we're matching the organism name to the conventions used on PANTHER
-.pantherAnnotations <- function(
-    organism = c("human", "mouse", "fruit_fly", "nematode_worm"),
-    release = NULL,
-    dir = tempdir()
-) {
-    organism <- match.arg(organism)
-    if (is.null(release)) {
-        release <- "current_release"
-    }
-    assert_is_a_string(release)
-    message("Downloading PANTHER annotations")
-    file <- transmit(
-        remoteDir = paste(
-            "ftp://ftp.pantherdb.org",
-            "sequence_classifications",
-            release,
-            "PANTHER_Sequence_Classification_files",
-            sep = "/"
-        ),
-        pattern = organism,
-        compress = TRUE,
-        localDir = dir
-    )
-    read_tsv(
-        file = file,
-        col_names = c(
-            "pantherID",
-            "X2",
-            "pantherSubfamily",
-            "pantherFamilyName",
-            "pantherSubfamilyName",
-            "goMF",
-            "goBP",
-            "goCC",
-            "pantherClass",
-            "pantherPathway"
-        )) %>%
-        separate(
-            col = "pantherID",
-            into = c("organism", "keys", "uniprotKB"),
-            sep = "\\|"
-        ) %>%
-        mutate(
-            X2 = NULL,
-            organism = NULL,
-            uniprotKB = NULL
-        )
+.splitTerms <- function(vec) {
+    message(deparse(substitute(vec)))
+    pblapply(vec, function(x) {
+        x <- x %>%
+            strsplit(split = ";") %>%
+            unlist() %>%
+            unique() %>%
+            sort() %>%
+            gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
+            gsub(">", " > ", .)
+        if (length(x)) {
+            x
+        } else {
+            NULL
+        }
+    })
 }
 
 
@@ -201,26 +79,157 @@ panther <- function(
         ),
         .funs = .splitTerms
     ) %>%
-        as.data.frame() %>%
+        as("DataFrame") %>%
         set_rownames(.[["geneID"]])
 }
 
 
 
-.splitTerms <- function(vec) {
-    message(deparse(substitute(vec)))
-    pblapply(vec, function(x) {
-        x <- x %>%
-            strsplit(split = ";") %>%
-            unlist() %>%
-            unique() %>%
-            sort() %>%
-            gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
-            gsub(">", " > ", .)
-        if (length(x)) {
-            x
-        } else {
-            NULL
-        }
-    })
+# Organism-specific data modifiers =============================================
+.panther.homoSapiens <- function(data) {  # nolint
+    hgnc2gene <- hgnc2gene()
+
+    # Ensembl matches
+    ensembl <- data %>%
+        mutate(
+            geneID = str_extract(!!sym("keys"), "ENSG[0-9]{11}")
+        ) %>%
+        filter(!is.na(!!sym("geneID")))
+
+    # HGNC matches
+    hgnc <- data %>%
+        as("tbl_df") %>%
+        # Extract the HGNC ID
+        mutate(
+            hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
+            hgncID = as.integer(!!sym("hgncID"))
+        ) %>%
+        filter(!is.na(!!sym("hgncID"))) %>%
+        merge(hgnc2gene, by = "hgncID", all.x = TRUE) %>%
+        select(-!!sym("hgncID")) %>%
+        filter(!is.na(!!sym("geneID"))) %>%
+        unique()
+
+    .pantherReturn(do.call(rbind, list(ensembl, hgnc)))
+}
+
+
+
+.panther.musMusculus <- function(data) {  # nolint
+    mgi2gene <- mgi2gene()
+
+    # Ensembl matches
+    ensembl <- data %>%
+        mutate(
+            geneID = str_extract(!!sym("keys"), "ENSMUSG[0-9]{11}")
+        ) %>%
+        filter(!is.na(!!sym("geneID")))
+
+    # MGI matches
+    mgi <- data %>%
+        as("tbl_df") %>%
+        mutate(
+            mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
+            mgiID = as.integer(!!sym("mgiID"))
+        ) %>%
+        filter(!is.na(!!sym("mgiID"))) %>%
+        merge(mgi2gene, by = "mgiID", all.x = TRUE) %>%
+        select(-!!sym("mgiID")) %>%
+        filter(!is.na(!!sym("geneID")))
+
+    .pantherReturn(do.call(rbind, list(ensembl, mgi)))
+}
+
+
+
+.panther.drosophilaMelanogaster <- function(data) {  # nolint
+    data %>%
+        mutate(
+            geneID = str_extract(!!sym("keys"), "FBgn\\d{7}$")
+        ) %>%
+        .pantherReturn()
+}
+
+
+
+.panther.caenorhabditisElegans <- function(data) {  # nolint
+    data %>%
+        mutate(
+            geneID = str_extract(!!sym("keys"), "WBGene\\d{8}$")
+        ) %>%
+        .pantherReturn()
+}
+
+
+
+# Function =====================================================================
+#' @rdname panther
+#' @export
+panther <- function(
+    organism,
+    release = NULL
+) {
+    stopifnot(has_internet())
+    organism <- match.arg(
+        arg = organism,
+        choices = names(.pantherMappings)
+    )
+    pantherName <-  .pantherMappings[[organism]]
+    assert_is_a_string(pantherName)
+    if (is.null(release)) {
+        release <- "current_release"
+    }
+    assert_is_a_string(release)
+
+    message(paste(
+        "Downloading PANTHER annotations for",
+        organism,
+        paste0("(", release, ")")
+    ))
+
+    file <- transmit(
+        remoteDir = paste(
+            "ftp://ftp.pantherdb.org",
+            "sequence_classifications",
+            release,
+            "PANTHER_Sequence_Classification_files",
+            sep = "/"
+        ),
+        pattern = pantherName,
+        compress = TRUE,
+        localDir = tempdir()
+    )
+    assert_is_a_string(file)
+
+    data <- read_tsv(
+        file = file,
+        col_names = c(
+            "pantherID",
+            "X2",
+            "pantherSubfamily",
+            "pantherFamilyName",
+            "pantherSubfamilyName",
+            "goMF",
+            "goBP",
+            "goCC",
+            "pantherClass",
+            "pantherPathway"
+        ),
+        col_types = cols()
+    ) %>%
+        separate(
+            col = "pantherID",
+            into = c("organism", "keys", "uniprotKB"),
+            sep = "\\|"
+        ) %>%
+        mutate(
+            X2 = NULL,
+            organism = NULL,
+            uniprotKB = NULL
+        )
+
+    # Using organism-specific internal return functions here.
+    fun <- get(paste("", "panther", camel(organism), sep = "."))
+    assert_is_function(fun)
+    fun(data)
 }

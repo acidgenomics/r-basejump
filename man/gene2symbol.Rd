@@ -6,30 +6,36 @@
 \alias{gene2symbol,SummarizedExperiment-method}
 \title{Gene to Symbol Mappings}
 \usage{
-gene2symbol(object)
+gene2symbol(object, ...)
 
 \S4method{gene2symbol}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
-\code{data.frame} containing gene identifier and gene name (aka symbol)
-mappings.
+\code{DataFrame}.
 }
 \description{
 Gene to Symbol Mappings
 }
+\note{
+This function will make any duplicated symbols unique by applying
+\code{\link[base:make.unique]{base::make.unique()}}, which will add ".1" to the end of the gene name.
+}
 \examples{
 # SummarizedExperiment ====
-gene2symbol(rse_bcb) \%>\% head()
+x <-gene2symbol(rse_small)
+print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}}, \code{\link{counts}},
+Other Data Functions: \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \author{
 Michael Steinbaugh

@@ -15,7 +15,7 @@ multiassignAsEnvir(..., envirName, parentEnvir = parent.frame())
 new \code{environment}, specified by \code{envirName} argument.}
 }
 \value{
-\code{character} vector of object names in the new \code{environment}.
+\code{character}. Object names defined in the new \code{environment}.
 }
 \description{
 Assign Multiple Objects as an Environment
@@ -31,6 +31,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
+  \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}}, \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}

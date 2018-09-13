@@ -5,38 +5,38 @@
 \alias{hasRownames}
 \title{Assert Has Rownames}
 \usage{
-assertHasRownames(x, severity = getOption("assertive.severity", "stop"))
+assertHasRownames(object)
 
-hasRownames(x)
+hasRownames(object)
 }
 \arguments{
-\item{x}{Object.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{Object.}
 }
 \value{
 Stop on mismatch.
 }
 \description{
-A stricter alternative to the assertive version that works properply with
+A stricter alternative to the assertive version that works properly with
 data frames.
 }
 \note{
 \code{tibble::has_rownames()} is more consistent than
-\code{assertive.properties::has_rownames()} for data frames and tibbles.
+\code{assertive.properties::has_rownames()} for \code{DataFrame} and \code{tbl_df} class.
 }
 \examples{
-data <- data.frame(
-    "sample_1" = c(1L, 2L),
-    "sample_2" = c(3L, 4L),
-    row.names = c("gene_1", "gene_2"),
-    stringsAsFactors = FALSE
+object <- DataFrame(
+    "sample1" = c(1L, 2L),
+    "sample2" = c(3L, 4L),
+    row.names = c("gene1", "gene2")
 )
-assertHasRownames(data)
+print(object)
+assertHasRownames(object)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
+  \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -46,16 +46,14 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
   \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}, \code{\link{assertIsURL}}
+  \code{\link{assertIsTx2gene}}
 }
 \author{
 Michael Steinbaugh

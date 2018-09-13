@@ -1,11 +1,59 @@
-## basejump 0.7.2 (2018-08-23)
+## basejump 0.7.2 (2018-08-29)
+
+### New functions
+
+- `assertAllAreURL()`
+- `assertAllAreValidNames()`
+- `validNames()`
+
+### Major changes
+
+- Added a draft vignette explaining the functions available in the package.
+- `gene2symbol()`, `makeGene2symbolFromEnsembl()`, and
+  `makeGene2symbolFromGFF()` functions now support the `unique` argument, which
+  returns sanitized values in the `geneName` column, ensuring there are no
+  duplicates. This is enabled by default (recommended) but can be disabled using
+  `unique = FALSE`. This functionality was added to ensure consistent gene name
+  handling in single-cell RNA-seq analyses.
+- `saveData()` now supports `basejump.save.ext` and `basejump.save.compress`
+  global options, so the desired file type (e.g. RDS instead of RDA) and
+  compression (e.g. xz instead of gzip) can be easily specified for an entire
+  project.
 
 ### Minor changes
 
+- `sampleNames()` now supports assignment for `SummarizedExperiment` method.
+- Now exporting `lanePattern` regular expression pattern as a global, which was
+  previously defined in the [bcbioBase][] package.
 - Bug fix for `as()` coercion method support. Need to ensure
   `exportMethods(coerce)` is included in `NAMESPACE` file, otherwise
   `tibble` coercion using `as(x, "tbl_df")` won't work when called from an
   Rscript without the package library loaded. Thanks @roryk for noticing this.
+- Updated `gene2symbol()` generic to use `...`, since we've added the
+`unique = TRUE` argument in this release.
+- `annotable()`: Moved to `makeGRanges.R` file, and improved the internal code
+  to export supported formals also used in `makeGRangesFromEnsembl()`. The
+  function should work exactly the same as previous releases, but now with
+  clearer supported arguments in the documentation.
+- Skipping code coverage for `cleanSystemLibrary()`, since [Travis CI][]
+  installs packages into the system library, and causes this check to return
+  `FALSE`.
+- Consistently using `as(from, "tbl_df")` for internal tibble coercion in all
+  functions.
+- `geneSynonyms()` and `panther()`: `organism` argument matching no longer suggests a default.
+  The current list of supported organisms is in the documentation, and described
+  in the internal `match.arg()` call.
+- All `SummarizedExperiment` methods use `validObject()` validity checks, where
+  applicable.
+- Consolidated documentation for all `makeGRanges`, `makeGene2symbol`, and
+  `makeTx2gene` functions.
+- Heatmap functions: simplified the internal code responsible for defining
+  `annotationCol` and `annotationColors` automatically.
+- `sampleData()`: Made validity check stricter, requiring `sampleName` column
+  to be defined, otherwise the function will intentionally error.
+- Now using `formals()` internall to keep ggplot2 theme formals consistent.
+- Updated example data scripts and resaved internal data.
+- Updated contribution guidelines in `CONTRIBUTING.md` file.
 
 
 ## basejump 0.7.1 (2018-08-18)

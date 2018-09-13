@@ -14,7 +14,7 @@ broadClass(object, ...)
 \S4method{broadClass}{SummarizedExperiment}(object)
 }
 \arguments{
-\item{object}{Object that can be coerced to \code{data.frame}, containing gene or
+\item{object}{Object that can be coerced to \code{DataFrame}, containing gene or
 transcript annotations.}
 
 \item{...}{Additional arguments.}
@@ -26,29 +26,19 @@ Named \code{factor} containing broad class definitions.
 Broad Class Definitions
 }
 \examples{
-# GRanges ====
-x <- broadClass(makeGRangesFromEnsembl("Homo sapiens"))
-table(x)
-
 # SummarizedExperiment ====
-x <- broadClass(rse_bcb)
+x <- broadClass(rse_small)
 table(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}},
+  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2gene}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

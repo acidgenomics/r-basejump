@@ -18,14 +18,14 @@ uniteInterestingGroups(object, ...)
 \S4method{uniteInterestingGroups}{tbl_df}(object, interestingGroups)
 }
 \arguments{
-\item{object}{Object containing multiple interesting groups.}
+\item{object}{Object containing column data that defines interesting groups.}
 
 \item{...}{Additional arguments.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 }
 \value{
-Data frame containing an \code{interestingGroups} column.
+Modified object, containing an \code{interestingGroups} column.
 }
 \description{
 Create a single interesting groups column ("\code{interestingGroups}") used for
@@ -33,9 +33,12 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \examples{
-x <- sampleData(rse_bcb)
-y <- uniteInterestingGroups(x, interestingGroups = c("treatment", "day"))
-y[["interestingGroups"]]
+from <- sampleData(rse_small)
+to <- uniteInterestingGroups(
+    object = from,
+    interestingGroups = c("genotype", "treatment")
+)
+print(to)
 }
 \seealso{
 Other Developer Functions: \code{\link{cleanSystemLibrary}},
@@ -43,6 +46,7 @@ Other Developer Functions: \code{\link{cleanSystemLibrary}},
   \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
+  \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
   \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},

@@ -1,3 +1,8 @@
+# We're covering the code below in bcbioRNASeq and bcbioSingleCell.
+# nocov start
+
+
+
 #' Prepare R Markdown Template File
 #'
 #' If the required template dependency files aren't present, copy them from the
@@ -11,8 +16,9 @@
 #' - `bcbioRNASeq::prepareRNASeqTemplate()`.
 #' - `bcbioSingleCell::prepareSingleCellTemplate()`.
 #'
-#' @family Prepare Functions
+#' @family R Markdown Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
@@ -23,8 +29,7 @@
 #'   session, but is necessary when developing code in a devtools package
 #'   environment loaded with `devtools::load_all()`.
 #'
-#' @return Invisible `logical` indicating which files were copied.
-#' @export
+#' @return Invisible `logical`. Was the file copied?.
 #'
 #' @examples
 #' # RNA-seq template
@@ -42,14 +47,14 @@ prepareTemplate <- function(
     sourceDir = NULL,
     ...
 ) {
-    # Assert checks
     assert_is_a_string(package)
+    assert_is_subset(package, rownames(installed.packages()))
     assertIsAStringOrNULL(sourceDir)
     assert_is_a_bool(overwrite)
 
-    # Shared file source directory
-    # Keeping the `sourceDir` argument because devtools attempts to intercept
-    # `system.file`, and this can cause path issues during development
+    # Shared file source directory. Keeping the `sourceDir` argument because
+    # devtools attempts to intercept `system.file`, and this can cause path
+    # issues during development.
     if (is.null(sourceDir)) {
         sourceDir <- system.file(
             "rmarkdown/shared",
@@ -59,12 +64,12 @@ prepareTemplate <- function(
     }
     assert_all_are_dirs(sourceDir)
 
-    # Get vector of all shared files
+    # Get vector of all shared files.
     files <- list.files(sourceDir, full.names = TRUE)
     assert_is_non_empty(files)
     assert_all_are_non_empty_files(files)
 
-    # Copy files to working directory
+    # Copy files to working directory.
     copied <- vapply(
         X = files,
         FUN = function(file) {
@@ -80,3 +85,7 @@ prepareTemplate <- function(
 
     invisible(copied)
 }
+
+
+
+# nocov end

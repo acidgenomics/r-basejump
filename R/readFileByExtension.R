@@ -30,11 +30,12 @@
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
-#' @return Varies depending on the file extension.
-#' @export
+#' @return Varies, depending on the file extension. Note that data frames are
+#'   returned as `DataFrame` class, when applicable.
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
@@ -110,6 +111,11 @@ readFileByExtension <- function(file, ...) {
         data <- suppressMessages(readYAML(file))
     } else {
         data <- rio::import(file, ...)
+        # Return as `DataFrame` instead of `data.frame`.
+        if (is.data.frame(data)) {
+            data <- as(data, "DataFrame")
+        }
+        data
     }
 
     data

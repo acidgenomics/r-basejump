@@ -64,7 +64,7 @@ Useful for describing non-normal (i.e. geometric) distributions." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -75,6 +75,9 @@ Useful for describing non-normal (i.e. geometric) distributions." />
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -122,10 +125,16 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
   <span class='kw'>zeroPropagate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>)
+<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
+
+<span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,11 +155,19 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
       <th>zeroPropagate</th>
       <td><p><code>boolean</code>. Allow propagation of zeroes.</p></td>
     </tr>
+    <tr>
+      <th>MARGIN</th>
+      <td><p>a vector giving the subscripts which the function will
+    be applied over.  E.g., for a matrix <code>1</code> indicates rows,
+    <code>2</code> indicates columns, <code>c(1, 2)</code> indicates rows and
+    columns. Where <code>X</code> has named dimnames, it can be a character
+    vector selecting dimension names.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> containing geometric means.</p>
+    <p><code>numeric</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -162,22 +179,48 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 
     <div class='dont-index'><p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code> and Paul McMurdie's
 <a href='https://stackoverflow.com/a/25555105'>code</a>.</p>
-<p>Other Math and Science Functions: <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
+<p>Other Math and Science Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
+  <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
   <code><a href='microplate.html'>microplate</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># numeric ====</span>
-<span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
-<span class='fu'>geometricMean</span>(<span class='no'>vec</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'><span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec</span> ^ <span class='fl'>2L</span>
-<span class='fu'>geometricMean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
-<span class='co'># data.frame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='no'>vec</span>, <span class='no'>vec2</span>)
-<span class='fu'>geometricMean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;      vec     vec2 
-#&gt; 2.605171 6.786916 </div><div class='input'>
+<span class='no'>vec1</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>, <span class='fl'>5L</span>, <span class='fl'>1L</span>)
+<span class='fu'>print</span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 1 2 3 4 5</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec1</span>)</div><div class='output co'>#&gt; [1] 2.605171</div><div class='input'>
+<span class='no'>vec2</span> <span class='kw'>&lt;-</span> <span class='no'>vec1</span> ^ <span class='fl'>2L</span>
+<span class='fu'>print</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1]  1  4  9 16 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>vec2</span>)</div><div class='output co'>#&gt; [1] 6.786916</div><div class='input'>
 <span class='co'># matrix ====</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>df</span>)
-<span class='fu'>geometricMean</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;      vec     vec2 
+<span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>vec1</span>, <span class='no'>vec2</span>),
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+<span class='fu'>print</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;      [,1] [,2]
+#&gt; [1,]    1    1
+#&gt; [2,]    2    4
+#&gt; [3,]    3    9
+#&gt; [4,]    4   16
+#&gt; [5,]    5   25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
+<span class='co'># sparseMatrix ====</span>
+<span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
+<span class='fu'>print</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; 5 x 2 sparse Matrix of class "dgCMatrix"
+#&gt;          
+#&gt; [1,] 1  1
+#&gt; [2,] 2  4
+#&gt; [3,] 3  9
+#&gt; [4,] 4 16
+#&gt; [5,] 5 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
+<span class='co'># DataFrame ====</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'>print</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; DataFrame with 5 rows and 2 columns
+#&gt;          V1        V2
+#&gt;   &lt;numeric&gt; &lt;numeric&gt;
+#&gt; 1         1         1
+#&gt; 2         2         4
+#&gt; 3         3         9
+#&gt; 4         4        16
+#&gt; 5         5        25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;       V1       V2 
 #&gt; 2.605171 6.786916 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' x <- counts(rse_dds)
+#' x <- counts(rse_small)
 #' summary(x)
 NULL
 
@@ -20,10 +20,11 @@ NULL
 #' @rdname counts
 #' @export
 setMethod(
-    "counts",
+    f = "counts",
     "SummarizedExperiment",
     function(object) {
-        stopifnot("counts" %in% names(assays(object)))
+        validObject(object)
+        assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]]
     }
 )

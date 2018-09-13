@@ -4,15 +4,12 @@
 \alias{assertIsTx2gene}
 \title{Assert Is Transcript-to-Gene Mapping Data}
 \usage{
-assertIsTx2gene(x, severity = getOption("assertive.severity", "stop"))
+assertIsTx2gene(object)
 }
 \arguments{
-\item{x}{\code{data.frame} containing Ensembl transcript to gene identifier
-mappings. Must be structured as a two column \code{data.frame} with
-"transcriptID" and "geneID" columns.}
-
-\item{severity}{\code{string}. How severe should the consequences of the assertion
-be? Either "\code{stop}", "\code{warning}", "\code{message}", or "\code{none}".}
+\item{object}{\code{DataFrame} or \code{tbl_df} containing transcript-to-gene
+identifier mappings. Must contain the columns "\code{transcriptID}" and
+"\code{geneID}". If \code{DataFrame}, must also have \code{rownames} set.}
 }
 \value{
 Stop on mismatch.
@@ -21,14 +18,25 @@ Stop on mismatch.
 Assert Is Transcript-to-Gene Mapping Data
 }
 \examples{
-x <- tibble(
+# DataFrame ====
+object <- DataFrame(
+    transcriptID = "ENST00000000233",
+    geneID = "ENSG00000004059",
+    row.names = "ENST00000000233"
+)
+
+# tibble ====
+object <- tibble(
     transcriptID = "ENST00000000233",
     geneID = "ENSG00000004059"
 )
-assertIsTx2gene(x)
+assertIsTx2gene(object)
 }
 \seealso{
 Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
+  \code{\link{assertAllAreURL}},
+  \code{\link{assertAllAreUniqueGeneNames}},
+  \code{\link{assertAllAreValidNames}},
   \code{\link{assertAreGeneAnnotations}},
   \code{\link{assertAreTranscriptAnnotations}},
   \code{\link{assertFormalCompress}},
@@ -39,16 +47,13 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsANumberOrNULL}},
   \code{\link{assertIsAStringOrNULL}},
   \code{\link{assertIsAnIntegerOrNULL}},
-  \code{\link{assertIsCharacterOrNULL}},
   \code{\link{assertIsColorScaleContinuousOrNULL}},
   \code{\link{assertIsColorScaleDiscreteOrNULL}},
-  \code{\link{assertIsDataFrameOrNULL}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
   \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsURL}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

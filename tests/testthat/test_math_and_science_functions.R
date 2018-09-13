@@ -2,75 +2,79 @@ context("Math and Science Functions")
 
 
 
-# aggregateFeatures ============================================================
-test_that("aggregateFeatures", {
-    aggMat <- data.frame(
-        "sample_1" = c(3L, 7L),
-        "sample_2" = c(11L, 15L),
-        "sample_3" = c(19L, 23L),
-        "sample_4" = c(27L, 31L),
-        row.names = c("gene_1", "gene_2")
-    ) %>%
-        as.matrix()
+# aggregateRows ================================================================
+test_that("aggregateRows", {
+    expected <- as.matrix(DataFrame(
+        "sample1" = c(3L, 7L),
+        "sample2" = c(11L, 15L),
+        "sample3" = c(19L, 23L),
+        "sample4" = c(27L, 31L),
+        row.names = c("gene1", "gene2")
+    ))
 
-    groupings <- factor(c("gene_1", "gene_1", "gene_2", "gene_2"))
-    names(groupings) <- rownames(df)
+    groupings <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
+    names(groupings) <- rownames(mat)
 
-    # matrix ===================================================================
-    x <- aggregateFeatures(mat, groupings = groupings)
-    expect_is(x, "matrix")
-    expect_identical(x, aggMat)
+    # matrix
+    object <- aggregateRows(mat, groupings = groupings)
+    expect_is(object, "matrix")
+    expect_identical(object, expected)
 
-    # dgCMatrix ================================================================
-    x <- aggregateFeatures(dgc, groupings = groupings)
-    y <- as(aggMat, "dgCMatrix")
-    expect_is(x, "dgCMatrix")
-    expect_identical(as.matrix(x), as.matrix(y))
+    # sparseMatrix
+    object <- aggregateRows(sparse, groupings = groupings)
+    expect_is(object, "sparseMatrix")
+    # Is there a way to improve this check?
+    expect_equal(
+        object = as.matrix(object),
+        expected = expected
+    )
 
-    # Invalid groupings ========================================================
+    # Invalid groupings
     expect_error(
-        aggregateFeatures(mat, groupings = "XXX"),
-        "is_factor :"
+        object = aggregateRows(mat, groupings = "XXX"),
+        regexp = "is_factor :"
     )
     expect_error(
-        aggregateFeatures(mat, groupings = factor(c("XXX", "YYY"))),
-        "are_identical :"
+        object = aggregateRows(mat, groupings = factor(c("XXX", "YYY"))),
+        regexp = "are_identical :"
     )
 })
 
 
 
-# aggregateReplicates ==========================================================
-test_that("aggregateReplicates", {
-    aggMat <- data.frame(
-        "sample_1" = c(6L, 8L, 10L, 12L),
-        "sample_2" = c(22L, 24L, 26L, 28L),
+# aggregateCols ================================================================
+test_that("aggregateCols", {
+    expected <- as.matrix(DataFrame(
+        "sample1" = c(6L, 8L, 10L, 12L),
+        "sample2" = c(22L, 24L, 26L, 28L),
         row.names = rownames(mat)
-    ) %>%
-        as.matrix()
+    ))
 
-    groupings <- factor(c("sample_1", "sample_1", "sample_2", "sample_2"))
+    groupings <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
     names(groupings) <- colnames(df)
 
-    # matrix ===================================================================
-    x <- aggregateReplicates(mat, groupings = groupings)
-    expect_is(x, "matrix")
-    expect_identical(x, aggMat)
+    # matrix
+    object <- aggregateCols(mat, groupings = groupings)
+    expect_is(object, "matrix")
+    expect_identical(object, expected)
 
-    # dgCMatrix ================================================================
-    x <- aggregateReplicates(dgc, groupings = groupings)
-    y <- as(aggMat, "dgCMatrix")
-    expect_is(x, "dgCMatrix")
-    expect_identical(x, y)
+    # sparseMatrix
+    object <- aggregateCols(sparse, groupings = groupings)
+    expect_is(object, "sparseMatrix")
+    # Is there a way to improve this check?
+    expect_equal(
+        object = as.matrix(object),
+        expected = expected
+    )
 
-    # Invalid groupings ========================================================
+    # Invalid groupings
     expect_error(
-        aggregateReplicates(mat, groupings = "XXX"),
-        "is_factor :"
+        object = aggregateCols(mat, groupings = "XXX"),
+        regexp = "is_factor :"
     )
     expect_error(
-        aggregateReplicates(mat, groupings = factor(c("XXX", "YYY"))),
-        "are_identical :"
+        object = aggregateCols(mat, groupings = factor(c("XXX", "YYY"))),
+        regexp = "are_identical :"
     )
 })
 

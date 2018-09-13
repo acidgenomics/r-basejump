@@ -18,7 +18,7 @@ directory.}
 \code{parent.frame()}, which will assign into the calling environment.}
 }
 \value{
-Invisible \code{character} containing file paths.
+Invisible \code{character}. File paths.
 }
 \description{
 Load R data files from a directory using symbols rather than complete file

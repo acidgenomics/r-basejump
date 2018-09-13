@@ -6,19 +6,21 @@ reference:
   - title: Package Information
     contents:
     - basejump-package
+  - title: S4 Classes
+    contents:
+    - ends_with("-class")
   - title: Annotation Functions
     contents:
-    - annotable
     - broadClass
     - starts_with("convert")
     - eggnog
     - emptyRanges
+    - geneSynonyms
     - hgnc2gene
-    - starts_with("makeGene2symbol")
-    - starts_with("makeGRanges")
-    - starts_with("makeTx2gene")
+    - makeGene2symbol
+    - makeGRanges
+    - makeTx2gene
     - mgi2gene
-    - starts_with("parse")
     - starts_with("strip")
     - panther
   - title: Read/Write Functions
@@ -31,26 +33,30 @@ reference:
     - starts_with("write")
   - title: Data Functions
     contents:
-    - starts_with("aggregate")
     - counts
     - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
+    - mapGenesToIDs
+    - metrics
     - sampleData
     - sampleNames
     - selectSamples
   - title: Sanitization Functions
     contents:
-    - fixNA
     - makeNames
-    - removeNA
+    - starts_with("remove")
     - starts_with("sanitize")
   - title: Plot Functions
     contents:
     - starts_with("plot")
-    - starts_with("theme_")
+  - title: ggplot2 Functions
+    contents:
+    - ggplot2_geoms
+    - ggplot2_themes
   - title: Math and Science Functions
     contents:
+    - starts_with("aggregate")
     - matches("Change")
     - matches("Mean")
     - microplate
@@ -77,16 +83,21 @@ reference:
     - starts_with("initialize")
     - localOrRemoteFile
     - matchInterestingGroups
+    - matchCall
     - methodFormals
     - multiassignAsEnvir
     - printString
+    - setArgsToDoCall
     - uniteInterestingGroups
+  - title: R Documentation Functions
+    contents:
+    - matches("Rd")
   - title: Assert Check Functions
     desc: Readable check functions to ensure code integrity.
     contents:
     - starts_with("assert")
   - title: Example Datasets
     contents:
+    - rse_small
     - rnaseq_counts
-    - starts_with("rse_")
     - single_cell_counts

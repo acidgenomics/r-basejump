@@ -1,9 +1,10 @@
-#' Markdown Link
+#' Markdown Hyperlink
 #'
-#' For use in 'asis' blocks only.
+#' For use in `asis` blocks only.
 #'
 #' @family R Markdown Functions
 #' @author Rory Kirchner, Michael Steinbaugh
+#' @export
 #'
 #' @inherit markdownHeader
 #'
@@ -12,7 +13,6 @@
 #'   mouse-over pop-up box.
 #'
 #' @return Markdown-formatted link.
-#' @export
 #'
 #' @examples
 #' markdownLink(
