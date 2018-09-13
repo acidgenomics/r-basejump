@@ -21,6 +21,9 @@ x <- new(
 )
 print(x)
 }
+\seealso{
+Other S4 Object: \code{\link{tx2gene-class}}
+}
 \author{
 Michael Steinbaugh
 }
