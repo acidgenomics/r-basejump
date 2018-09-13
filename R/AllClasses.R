@@ -48,6 +48,8 @@ setValidity(
 #'
 #' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
+#' @family S4 Object
+#' @author Michael Steinbaugh
 #' @export
 #'
 #' @examples

@@ -21,3 +21,10 @@ x <- new(
 )
 print(x)
 }
+\seealso{
+Other S4 Object: \code{\link{gene2symbol-class}}
+}
+\author{
+Michael Steinbaugh
+}
+\concept{S4 Object}
