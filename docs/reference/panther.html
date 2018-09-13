@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +74,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -113,15 +116,19 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>panther</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Homo sapiens"</span>, <span class='st'>"Mus musculus"</span>,
-  <span class='st'>"Caenorhabditis elegans"</span>, <span class='st'>"Drosophila melanogaster"</span>), <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>panther</span>(<span class='no'>organism</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+      <td><p><code>string</code>. Supported organisms:</p><ul>
+<li><p><em>Homo sapiens</em></p></li>
+<li><p><em>Mus musculus</em></p></li>
+<li><p><em>Caenorhabditis elegans</em></p></li>
+<li><p><em>Drosophila melanogaster</em></p></li>
+</ul></td>
     </tr>
     <tr>
       <th>release</th>
@@ -133,63 +140,41 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>data.frame</code>.</p>
+    <p><code>DataFrame</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
+  <code><a href='mgi2gene.html'>mgi2gene</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
     <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>panther</span>(<span class='st'>"Homo sapiens"</span>)
-))</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations</span></div><div class='output co'>#&gt; <span class='message'>Downloading PTHR13.1_human.gz</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  pantherID = col_character(),</span>
-#&gt; <span class='message'>  X2 = col_character(),</span>
-#&gt; <span class='message'>  pantherSubfamily = col_character(),</span>
-#&gt; <span class='message'>  pantherFamilyName = col_character(),</span>
-#&gt; <span class='message'>  pantherSubfamilyName = col_character(),</span>
-#&gt; <span class='message'>  goMF = col_character(),</span>
-#&gt; <span class='message'>  goBP = col_character(),</span>
-#&gt; <span class='message'>  goCC = col_character(),</span>
-#&gt; <span class='message'>  pantherClass = col_character(),</span>
-#&gt; <span class='message'>  pantherPathway = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  .default = col_character(),</span>
-#&gt; <span class='message'>  date_approved_reserved = col_date(format = ""),</span>
-#&gt; <span class='message'>  date_symbol_changed = col_date(format = ""),</span>
-#&gt; <span class='message'>  date_name_changed = col_date(format = ""),</span>
-#&gt; <span class='message'>  date_modified = col_date(format = ""),</span>
-#&gt; <span class='message'>  entrez_id = col_integer(),</span>
-#&gt; <span class='message'>  homeodb = col_integer(),</span>
-#&gt; <span class='message'>  orphanet = col_integer()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>See spec(...) for full column specifications.</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Observations: 19,670
-#&gt; Variables: 9
-#&gt; $ geneID               &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG000...
-#&gt; $ pantherSubfamily     &lt;chr&gt; "PTHR19282:SF169", "PTHR14064:SF3", "PTHR43398...
-#&gt; $ pantherFamilyName    &lt;chr&gt; "TETRASPANIN", "CHONDROMODULIN-RELATED", "FAMI...
-#&gt; $ pantherSubfamilyName &lt;chr&gt; "TETRASPANIN-6", "TENOMODULIN", "DOLICHOL-PHOS...
-#&gt; $ goMF                 &lt;list&gt; [NULL, NULL, &lt;"catalytic activity [GO:0003824...
-#&gt; $ goBP                 &lt;list&gt; [&lt;"biological regulation [GO:0065007]", "cell...
-#&gt; $ goCC                 &lt;list&gt; [&lt;"cell part [GO:0044464]", "integral to memb...
-#&gt; $ pantherClass         &lt;list&gt; [NULL, NULL, &lt;"glycosyltransferase [PC00111]"...
-#&gt; $ pantherPathway       &lt;list&gt; [NULL, NULL, NULL, NULL, NULL, "Parkinson dis...</div></pre>
+))</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release)</span></div><div class='output co'>#&gt; <span class='message'>Downloading PTHR13.1_human.gz</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+#&gt;   ..@ rownames       : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
+#&gt;   ..@ nrows          : int 19670
+#&gt;   ..@ listData       :List of 9
+#&gt;   .. ..$ geneID              : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
+#&gt;   .. ..$ pantherSubfamily    : chr [1:19670] "PTHR19282:SF169" "PTHR14064:SF3" "PTHR43398:SF1" "PTHR12984:SF15" ...
+#&gt;   .. ..$ pantherFamilyName   : chr [1:19670] "TETRASPANIN" "CHONDROMODULIN-RELATED" "FAMILY NOT NAMED" "SCY1-RELATED S/T PROTEIN KINASE-LIKE" ...
+#&gt;   .. ..$ pantherSubfamilyName: chr [1:19670] "TETRASPANIN-6" "TENOMODULIN" "DOLICHOL-PHOSPHATE MANNOSYLTRANSFERASE SUBUNIT 1" "PROTEIN-ASSOCIATING WITH THE CARBOXYL-TERMINAL DOMAIN OF EZRIN" ...
+#&gt;   .. ..$ goMF                :List of 19670
+#&gt;   .. ..$ goBP                :List of 19670
+#&gt;   .. ..$ goCC                :List of 19670
+#&gt;   .. ..$ pantherClass        :List of 19670
+#&gt;   .. ..$ pantherPathway      :List of 19670
+#&gt;   ..@ elementType    : chr "ANY"
+#&gt;   ..@ elementMetadata: NULL
+#&gt;   ..@ metadata       : list()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

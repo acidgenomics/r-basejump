@@ -20,17 +20,22 @@ convertGenesToSymbols(object, ...)
 convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  ...)
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{matrix}(object, ...)
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{data.frame}(object, ...)
+\S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{DataFrame}(object, ...)
+\S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, ...)
+\S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, ...)
+\S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
+  organism = NULL, build = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
@@ -39,11 +44,19 @@ convertSymbolsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough to \code{\link[=makeGene2symbolFromEnsembl]{makeGene2symbolFromEnsembl()}}.}
+\item{...}{Additional arguments.}
 
 \item{gene2symbol}{\code{data.frame} or \code{NULL}. Gene-to-symbol mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
 automatically.}
+
+\item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
+"\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
+
+\item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
+set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
 Same class as original object.
@@ -53,47 +66,41 @@ Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
 # character ====
-x <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-convertGenesToSymbols(x)
+from <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+to <- convertGenesToSymbols(from)
+print(to)
 
 # matrix ====
-mat <- matrix(
+from <- matrix(
     data = seq(1L:4L),
     byrow = TRUE,
     nrow = 2L,
     ncol = 2L,
     dimnames = list(
         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-        c("sample_1", "sample_2")
+        c("sample1", "sample2")
     )
 )
-print(mat)
-mat <- convertGenesToSymbols(mat)
-print(mat)
-rownames(mat)
+print(from)
+to <- convertGenesToSymbols(from)
+print(to)
+rownames(to)
 
 # SummarizedExperiment ====
-x <- convertGenesToSymbols(rse_bcb)
+x <- convertGenesToSymbols(rse_small)
 print(x)
-
 y <- convertSymbolsToGenes(x)
 print(y)
 }
 \seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
+Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}},
+  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2gene}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

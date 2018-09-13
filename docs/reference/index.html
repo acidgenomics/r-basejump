@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -71,6 +71,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -127,17 +130,31 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-annotation-functions" class="hasAnchor"><a href="#section-annotation-functions" class="anchor"></a>Annotation Functions</h2>
+          <h2 id="section-s-classes" class="hasAnchor"><a href="#section-s-classes" class="anchor"></a>S4 Classes</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="annotable.html">annotable()</a></code> </p>
+          <p><code><a href="gene2symbol-class.html">gene2symbol-class</a></code> </p>
         </td>
-        <td><p>Ensembl Annotations</p></td>
+        <td><p><code>gene2symbol</code> Class</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="tx2gene-class.html">tx2gene-class</a></code> </p>
+        </td>
+        <td><p><code>tx2gene</code> Class</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-annotation-functions" class="hasAnchor"><a href="#section-annotation-functions" class="anchor"></a>Annotation Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="broadClass.html">broadClass()</a></code> </p>
@@ -176,45 +193,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
+        </td>
+        <td><p>Gene Synonyms</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="hgnc2gene.html">hgnc2gene()</a></code> </p>
         </td>
         <td><p>HGNC to Ensembl Gene ID Mappings</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGene2symbolFromEnsembl.html">makeGene2symbolFromEnsembl()</a></code> </p>
+          <p><code><a href="makeGene2symbol.html">makeGene2symbolFromEnsembl()</a></code> <code><a href="makeGene2symbol.html">makeGene2symbolFromGFF()</a></code> </p>
         </td>
-        <td><p>Gene-to-Symbol Mappings from Ensembl</p></td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGene2symbolFromGFF.html">makeGene2symbolFromGFF()</a></code> </p>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
         </td>
-        <td><p>Gene-to-Symbol Mappings from GFF File</p></td>
+        <td><p>Make Genomic Ranges</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="makeGRangesFromEnsembl.html">makeGRangesFromEnsembl()</a></code> </p>
+          <p><code><a href="makeTx2gene.html">makeTx2geneFromEnsembl()</a></code> <code><a href="makeTx2gene.html">makeTx2geneFromGFF()</a></code> </p>
         </td>
-        <td><p>Genomic Ranges from Ensembl</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeGRangesFromGFF.html">makeGRangesFromGFF()</a></code> </p>
-        </td>
-        <td><p>Genomic Ranges from GFF File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeTx2geneFromEnsembl.html">makeTx2geneFromEnsembl()</a></code> </p>
-        </td>
-        <td><p>Transcript-to-Gene Mappings from Ensembl</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeTx2geneFromGFF.html">makeTx2geneFromGFF()</a></code> </p>
-        </td>
-        <td><p>Transcript-to-Gene Mappings from GFF File</p></td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
       </tr><tr>
         
         <td>
@@ -298,6 +303,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
+        </td>
+        <td><p>Save R Documentation Examples</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="transmit.html">transmit()</a></code> </p>
         </td>
         <td><p>Transmit Files from a Remote FTP Server</p></td>
@@ -316,18 +327,6 @@
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="aggregateFeatures.html">aggregateFeatures()</a></code> </p>
-        </td>
-        <td><p>Aggregate Features</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aggregateReplicates.html">aggregateReplicates()</a></code> </p>
-        </td>
-        <td><p>Aggregate Replicates</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
@@ -354,13 +353,25 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="mapGenes.html">mapGenesToIDs()</a></code> <code><a href="mapGenes.html">mapGenesToRownames()</a></code> <code><a href="mapGenes.html">mapGenesToSymbols()</a></code> </p>
+        </td>
+        <td><p>Map Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="metrics.html">metrics()</a></code> </p>
+        </td>
+        <td><p>Metrics</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="sampleData.html">sampleData()</a></code> <code><a href="sampleData.html">`sampleData<-`()</a></code> <code><a href="sampleData.html">sampleNames(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Sample Data</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sampleNames.html">sampleNames</a></code> </p>
+          <p><code><a href="sampleNames.html">`sampleNames<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> </p>
         </td>
         <td><p>Sample Names</p></td>
       </tr><tr>
@@ -380,12 +391,6 @@
       <tr>
         
         <td>
-          <p><code><a href="fixNA.html">fixNA()</a></code> </p>
-        </td>
-        <td><p>Fix Character Strings Missing <code>NA</code></p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> </p>
         </td>
         <td><p>Make Syntactically Valid Names</p></td>
@@ -395,6 +400,18 @@
           <p><code><a href="removeNA.html">removeNA()</a></code> </p>
         </td>
         <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
+        </td>
+        <td><p>Sanitize <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizePercent.html">sanitizePercent()</a></code> </p>
+        </td>
+        <td><p>Sanitize Percent</p></td>
       </tr><tr>
         
         <td>
@@ -433,12 +450,26 @@
           <p><code><a href="plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code> </p>
         </td>
         <td><p>Plot Heatmap with Quantile Breaks</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-ggplot-functions" class="hasAnchor"><a href="#section-ggplot-functions" class="anchor"></a>ggplot2 Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="ggplot2_geoms.html">basejump_geom_abline()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label_average()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label_repel()</a></code> </p>
+        </td>
+        <td><p>ggplot2 Geometric Objects</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="themes.html">theme_midnight()</a></code> <code><a href="themes.html">theme_paperwhite()</a></code> </p>
+          <p><code><a href="ggplot2_themes.html">theme_paperwhite()</a></code> <code><a href="ggplot2_themes.html">theme_midnight()</a></code> </p>
         </td>
-        <td><p>Complete Themes</p></td>
+        <td><p>ggplot2 Themes</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -448,6 +479,12 @@
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateCols()</a></code> <code><a href="aggregate.html">aggregateRows()</a></code> </p>
+        </td>
+        <td><p>Aggregate Columns or Rows</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
@@ -490,7 +527,7 @@
         <td>
           <p><code><a href="markdownLink.html">markdownLink()</a></code> </p>
         </td>
-        <td><p>Markdown Link</p></td>
+        <td><p>Markdown Hyperlink</p></td>
       </tr><tr>
         
         <td>
@@ -528,7 +565,7 @@
         <td>
           <p><code><a href="grepString.html">grepString()</a></code> </p>
         </td>
-        <td><p><code>grep</code> String</p></td>
+        <td><p>Generate a <code>grep</code> String</p></td>
       </tr><tr>
         
         <td>
@@ -614,6 +651,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="matchCall.html">matchCall()</a></code> </p>
+        </td>
+        <td><p>Functions to Access the Function Call Stack</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="methodFormals.html">methodFormals()</a></code> </p>
         </td>
         <td><p>Access to the Formal Arguments of an S4 Method</p></td>
@@ -632,9 +675,41 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="setArgsToDoCall.html">setArgsToDoCall()</a></code> </p>
+        </td>
+        <td><p>Set Arguments to Do Call</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups()</a></code> </p>
         </td>
         <td><p>Unite Interesting Groups</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-r-documentation-functions" class="hasAnchor"><a href="#section-r-documentation-functions" class="anchor"></a>R Documentation Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="RdTags.html">RdTags()</a></code> </p>
+        </td>
+        <td><p>R Documentation Tags</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="parseRd.html">parseRd()</a></code> </p>
+        </td>
+        <td><p>Parse R Documentation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
+        </td>
+        <td><p>Save R Documentation Examples</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -652,9 +727,27 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="assertAllAreURL.html">assertAllAreURL()</a></code> <code><a href="assertAllAreURL.html">isURL()</a></code> </p>
+        </td>
+        <td><p>Assert All Are URL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreUniqueGeneNames.html">assertAllAreUniqueGeneNames()</a></code> </p>
+        </td>
+        <td><p>Assert All Are Unique Gene Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreValidNames.html">assertAllAreValidNames()</a></code> <code><a href="assertAllAreValidNames.html">assertHasValidDimnames()</a></code> <code><a href="assertAllAreValidNames.html">assertHasValidNames()</a></code> <code><a href="assertAllAreValidNames.html">validNames()</a></code> </p>
+        </td>
+        <td><p>Assert All Are Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="assertAreGeneAnnotations.html">assertAreGeneAnnotations()</a></code> </p>
         </td>
-        <td><p>Assert Are Ensembl Gene Annotations</p></td>
+        <td><p>Assert Are Gene Annotations</p></td>
       </tr><tr>
         
         <td>
@@ -712,12 +805,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="assertIsCharacterOrNULL.html">assertIsCharacterOrNULL()</a></code> </p>
-        </td>
-        <td><p>Assert Is Character Vector or NULL</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="assertIsColorScaleContinuousOrNULL.html">assertIsColorScaleContinuousOrNULL()</a></code> </p>
         </td>
         <td><p>Assert Is Color Palette Scale Continuous or NULL</p></td>
@@ -727,12 +814,6 @@
           <p><code><a href="assertIsColorScaleDiscreteOrNULL.html">assertIsColorScaleDiscreteOrNULL()</a></code> </p>
         </td>
         <td><p>Assert Is Color Palette Scale Discrete or NULL</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="assertIsDataFrameOrNULL.html">assertIsDataFrameOrNULL()</a></code> </p>
-        </td>
-        <td><p>Assert Is Data Frame or NULL</p></td>
       </tr><tr>
         
         <td>
@@ -769,12 +850,6 @@
           <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
         </td>
         <td><p>Assert Is Transcript-to-Gene Mapping Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="assertIsURL.html">assertIsURL()</a></code> <code><a href="assertIsURL.html">isURL()</a></code> </p>
-        </td>
-        <td><p>Assert Is URL</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -786,21 +861,15 @@
       <tr>
         
         <td>
+          <p><code><a href="rse_small.html">rse_small</a></code> </p>
+        </td>
+        <td><p>Example RNA-Seq DataSet</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="rnaseq_counts.html">rnaseq_counts</a></code> </p>
         </td>
         <td><p>Example RNA-Seq Counts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rse_bcb.html">rse_bcb</a></code> </p>
-        </td>
-        <td><p><code>RangedSummarizedExperiment</code> Coerced from <code>bcbioRNASeq</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rse_dds.html">rse_dds</a></code> </p>
-        </td>
-        <td><p><code>RangedSummarizedExperiment</code> Coerced from <code>DESeqDataSet</code></p></td>
       </tr><tr>
         
         <td>
@@ -816,16 +885,19 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-package-information">Package Information</a></li>
+      <li><a href="#section-s-classes">S4 Classes</a></li>
       <li><a href="#section-annotation-functions">Annotation Functions</a></li>
       <li><a href="#section-read-write-functions">Read/Write Functions</a></li>
       <li><a href="#section-data-functions">Data Functions</a></li>
       <li><a href="#section-sanitization-functions">Sanitization Functions</a></li>
       <li><a href="#section-plot-functions">Plot Functions</a></li>
+      <li><a href="#section-ggplot-functions">ggplot2 Functions</a></li>
       <li><a href="#section-math-and-science-functions">Math and Science Functions</a></li>
       <li><a href="#section-r-markdown-functions">R Markdown Functions</a></li>
       <li><a href="#section-atomic-vector-functions">Atomic Vector Functions</a></li>
       <li><a href="#section-coercion-methods">Coercion Methods</a></li>
       <li><a href="#section-developer-functions">Developer Functions</a></li>
+      <li><a href="#section-r-documentation-functions">R Documentation Functions</a></li>
       <li><a href="#section-assert-check-functions">Assert Check Functions</a></li>
       <li><a href="#section-example-datasets">Example Datasets</a></li>
     </ul>

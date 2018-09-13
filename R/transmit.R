@@ -15,7 +15,7 @@
 #'   if desired.
 #' @param compress `boolean`. gzip compress the files after download.
 #'
-#' @return Invisible `character` containing local file paths.
+#' @return Invisible `character`. Local file paths.
 #' @export
 #'
 #' @examples
@@ -39,15 +39,15 @@ transmit <- function(
 ) {
     stopifnot(has_internet())
     assert_is_a_string(remoteDir)
-    # Check for public FTP protocol
+    # Check for public FTP protocol.
     assert_all_are_matching_regex(remoteDir, "^ftp\\://")
-    # `RCurl::getURL()` requires a trailing slash
+    # `RCurl::getURL()` requires a trailing slash.
     if (!grepl("/$", remoteDir)) {
         remoteDir <- paste0(remoteDir, "/")
     }
     localDir <- initializeDirectory(localDir)
     assert_is_a_string(pattern)
-    assertIsCharacterOrNULL(rename)
+    assert_is_any_of(rename, c("character", "NULL"))
     assert_is_a_bool(compress)
 
     remoteList <- remoteDir %>%
@@ -55,23 +55,23 @@ transmit <- function(
         read_lines()
     assert_is_non_empty(remoteList)
 
-    # Match the `-` at begining for file
+    # Match the `-` at begining for file.
     # `-rwxrwxr-x`: File
     # `drwxrwxr-x`: Directory
     remoteFiles <- remoteList %>%
         .[grepl("^-", .)] %>%
-        # File name is at the end, not including a space
+        # File name is at the end, not including a space.
         str_extract(pattern = "[^\\s]+$")
     assert_is_non_empty(remoteFiles)
 
-    # Apply pattern matching
+    # Apply pattern matching.
     match <- str_subset(remoteFiles, pattern)
     assert_is_non_empty(match)
 
-    # Concatenate using paste but strip the trailing slash (see above)
+    # Concatenate using paste but strip the trailing slash (see above).
     remotePaths <- paste(gsub("/$", "", remoteDir), match, sep = "/")
 
-    # Rename files, if desired
+    # Rename files, if desired.
     if (is.character(rename)) {
         assert_are_same_length(match, rename)
         name <- rename
@@ -87,7 +87,7 @@ transmit <- function(
         files <- localPaths
     }
 
-    # Check for existing files and skip, if necessary
+    # Check for existing files and skip, if necessary.
     if (any(file.exists(files))) {
         exists <- which(file.exists(files))
         skip <- files[exists]
@@ -95,7 +95,7 @@ transmit <- function(
         localPaths <- localPaths[!exists]
     }
 
-    # Early return if all files exist
+    # Early return if all files exist.
     if (!length(localPaths)) {
         message("All files have already downloaded")
         files <- normalizePath(files, winslash = "/", mustWork = TRUE)

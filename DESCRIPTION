@@ -1,9 +1,8 @@
 Package: basejump
 Title: Base Functions for Bioinformatics
-Description: Helper functions for bioinformatics, package development, and
-    R Markdown reports.
-Version: 0.7.2
-Date: 2018-08-23
+Description: Toolkit for bioinformatics and R package development.
+Version: 0.99.0
+Date: 2018-09-11
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -49,27 +48,31 @@ Imports:
     BiocGenerics,
     cowplot (>= 0.9),
     curl,
-    dendsort (>= 0.3),
+    dendsort,
     dplyr (>= 0.7),
     ensembldb,
     GenomicFeatures,
     GenomeInfoDb,
     GenomicRanges,
     ggplot2 (>= 3.0),
+    ggrepel,
     grDevices,
+    grid,
     IRanges,
     jsonlite (>= 1.5),
     knitr (>= 1.20),
     magrittr (>= 1.5),
-    Matrix (>= 1.2),
-    Matrix.utils (>= 0.9),
+    Matrix,
+    Matrix.utils,
     methods,
     pbapply (>= 1.3),
     pheatmap,
+    pryr,
     R.utils,
     RColorBrewer,
     RCurl (>= 1.95),
     readr (>= 1.1),
+    reshape2,
     rio (>= 0.5),
     rlang (>= 0.2),
     rtracklayer,
@@ -79,12 +82,14 @@ Imports:
     stringr (>= 1.3),
     tibble (>= 1.4),
     tidyr (>= 0.8),
+    tools,
     utils,
     viridis,
-    yaml (>= 2.1)
+    yaml (>= 2.2)
 Suggests:
     BiocStyle,
     EnsDb.Hsapiens.v75,
+    patrick,
     rmarkdown,
     testthat (>= 2.0)
 biocViews:
@@ -93,3 +98,101 @@ biocViews:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
+Collate: 
+    'AllClasses.R'
+    'AllGenerics.R'
+    'GRanges-internal.R'
+    'RdTags.R'
+    'SummarizedExperiment-internal.R'
+    'aggregate-methods.R'
+    'assert.R'
+    'assignAndSaveData.R'
+    'basejump-package.R'
+    'broadClass-methods.R'
+    'call-internal.R'
+    'cleanSystemLibrary.R'
+    'coerce-methods.R'
+    'collapseToString-methods.R'
+    'combine-methods.R'
+    'makeGRanges.R'
+    'convertGenesToSymbols-methods.R'
+    'convertSymbolsToGenes-methods.R'
+    'convertTranscriptsToGenes-methods.R'
+    'convertUCSCBuildToEnsembl.R'
+    'counts-methods.R'
+    'data.R'
+    'deprecated.R'
+    'detectHPC.R'
+    'detectOrganism-methods.R'
+    'dots.R'
+    'eggnog.R'
+    'emptyRanges.R'
+    'flatFiles-methods.R'
+    'foldChangeToLogRatio-methods.R'
+    'gene2symbol-methods.R'
+    'geneSynonyms.R'
+    'general.R'
+    'geometricMean-methods.R'
+    'ggplot2-internal.R'
+    'ggplot2_geoms.R'
+    'ggplot2_themes.R'
+    'globals.R'
+    'grepString.R'
+    'hgnc2gene.R'
+    'initializeDirectory.R'
+    'interestingGroups-methods.R'
+    'kables.R'
+    'load-internal.R'
+    'loadData.R'
+    'loadDataAsName.R'
+    'loadRemoteData.R'
+    'localOrRemoteFile.R'
+    'logRatioToFoldChange-methods.R'
+    'makeGene2symbol.R'
+    'makeNames-methods.R'
+    'makeSummarizedExperiment.R'
+    'makeTx2gene.R'
+    'mapGenes-methods.R'
+    'markdownHeader.R'
+    'markdownLink.R'
+    'markdownList.R'
+    'markdownPlotlist.R'
+    'matchArgsToDoCall.R'
+    'matchCall.R'
+    'matchInterestingGroups.R'
+    'meltCounts-methods.R'
+    'methodFormals.R'
+    'metrics-methods.R'
+    'mgi2gene.R'
+    'microplate.R'
+    'multiassignAsEnvir.R'
+    'panther.R'
+    'parseRd.R'
+    'pheatmap-internal.R'
+    'plotCorrelationHeatmap-methods.R'
+    'plotGene-methods.R'
+    'plotHeatmap-methods.R'
+    'plotQuantileHeatmap-methods.R'
+    'prepareTemplate.R'
+    'printString.R'
+    'readFileByExtension.R'
+    'readGFF.R'
+    'readJSON.R'
+    'readYAML.R'
+    'reexports.R'
+    'removeNA-methods.R'
+    'sampleData-methods.R'
+    'sampleNames-methods.R'
+    'sanitizeNA-methods.R'
+    'sanitizePercent-methods.R'
+    'sanitizeRowData.R'
+    'sanitizeSampleData.R'
+    'saveData.R'
+    'saveRdExamples.R'
+    'selectSamples-methods.R'
+    'sortUnique.R'
+    'stripTranscriptVersions-methods.R'
+    'toStringUnique.R'
+    'transmit.R'
+    'uniteInterestingGroups-methods.R'
+    'writeCounts.R'

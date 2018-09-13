@@ -3,49 +3,29 @@
 \docType{methods}
 \name{defunct}
 \alias{defunct}
-\alias{summarizeRows}
-\alias{wash}
-\alias{packageSE}
-\alias{prepareSE}
-\alias{metadataTable}
-\alias{pct}
 \alias{fc2lr}
 \alias{lr2fc}
 \alias{comp}
 \alias{revcomp}
 \alias{symbol2gene}
-\alias{tx2gene}
 \alias{assertIsGFF}
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
 \alias{broadClass,data.frame-method}
 \alias{broadClass,DataFrame-method}
 \alias{synonyms}
+\alias{setArgsToDoCall}
 \title{Defunct Functions}
 \usage{
-summarizeRows(...)
-
-wash(...)
-
-packageSE(...)
-
-prepareSE(...)
-
-metadataTable(...)
-
-pct(...)
-
 fc2lr(...)
 
 lr2fc(...)
 
-comp()
+comp(...)
 
-revcomp()
+revcomp(...)
 
-symbol2gene()
-
-tx2gene(...)
+symbol2gene(...)
 
 assertIsGFF(...)
 
@@ -58,6 +38,8 @@ dynamicPlotlist(...)
 \S4method{broadClass}{DataFrame}(object)
 
 synonyms(...)
+
+setArgsToDoCall(...)
 }
 \arguments{
 \item{...}{Additional arguments.}

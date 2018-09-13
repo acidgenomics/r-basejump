@@ -2,16 +2,13 @@
 % Please edit documentation in R/AllGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
-\alias{metrics}
-\alias{plotGene}
 \alias{plotQC}
+\alias{tx2gene}
 \title{S4 Generics}
 \usage{
-metrics(object, ...)
-
-plotGene(object, ...)
-
 plotQC(object, ...)
+
+tx2gene(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -23,5 +20,12 @@ Varies, depending upon the method.
 }
 \description{
 S4 Generics
+}
+\seealso{
+\itemize{
+\item \code{\link[methods:isGeneric]{methods::isGeneric()}}
+\item \code{\link[methods:showMethods]{methods::showMethods()}}
+\item \code{\link[methods:getMethod]{methods::getMethod()}}
+}
 }
 \keyword{internal}

@@ -9,15 +9,18 @@
 #'
 #' @inheritParams general
 #'
-#' @return Object containing transcript identifiers without version numbers.
+#' @return Modified object, containing transcript identifiers without version
+#'   numbers.
 #'
 #' @examples
-#' # Ensembl
-#' stripTranscriptVersions("ENSMUST00000000001.1")
-#' stripTranscriptVersions("ENSMUST00000000001-1")
-#' stripTranscriptVersions("ENSMUST00000000001_1")
+#' # Ensembl (modify; contains versions)
+#' stripTranscriptVersions(c(
+#'     "ENSMUST00000000001.1",
+#'     "ENSMUST00000000001-1",
+#'     "ENSMUST00000000001_1"
+#' ))
 #'
-#' # WormBase (unmodified)
+#' # WormBase (keep; doesn't contain versions)
 #'stripTranscriptVersions("cTel79B.1")
 NULL
 
@@ -26,9 +29,9 @@ NULL
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("character"),
-    function(object) {
+    f = "stripTranscriptVersions",
+    signature = signature("character"),
+    definition = function(object) {
         # Pattern matching against Ensembl transcript IDs
         # http://www.ensembl.org/info/genome/stable_ids/index.html
         # Examples: ENST (human); ENSMUST (mouse)
@@ -45,9 +48,9 @@ setMethod(
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("matrix"),
-    function(object) {
+    f = "stripTranscriptVersions",
+    signature = signature("matrix"),
+    definition = function(object) {
         rownames <- rownames(object)
         rownames <- stripTranscriptVersions(rownames)
         rownames(object) <- rownames
@@ -60,7 +63,7 @@ setMethod(
 #' @rdname stripTranscriptVersions
 #' @export
 setMethod(
-    "stripTranscriptVersions",
-    signature("dgCMatrix"),
-    getMethod("stripTranscriptVersions", "matrix")
+    f = "stripTranscriptVersions",
+    signature = signature("dgCMatrix"),
+    definition = getMethod("stripTranscriptVersions", "matrix")
 )

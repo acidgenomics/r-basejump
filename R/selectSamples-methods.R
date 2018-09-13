@@ -8,16 +8,15 @@
 #'
 #' @inheritParams general
 #' @param ... Selection arguments that map to the column names of
-#'   [sampleData()]. `atomic` values are supported. Avoid using `logical` or
+#'   [sampleData()]. `character` vectors are supported. Avoid using `logical` or
 #'   `numeric` indices (e.g. [base::which()] calls) here, for improved code
-#'   readability.
+#'   legibility and reproducibility.
 #'
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
-#' x <- selectSamples(rse_dds, condition = "A")
-#' show(x)
+#' x <- selectSamples(rse_small, genotype = "wildtype")
+#' print(x)
 #' colnames(x)
 NULL
 
@@ -26,33 +25,44 @@ NULL
 #' @rdname selectSamples
 #' @export
 setMethod(
-    "selectSamples",
-    signature("SummarizedExperiment"),
-    function(object, ...) {
+    f = "selectSamples",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object, ...) {
         validObject(object)
         args <- list(...)
-        invisible(lapply(args, assert_is_atomic))
+        assert_is_non_empty(args)
+        assert_has_names(args)
+        assert_all_are_non_missing_nor_empty_character(names(args))
+        # Requiring the key-value pairs to be character.
+        invisible(lapply(
+            X = args,
+            FUN = function(x) {
+                assert_is_character(x)
+                assert_all_are_non_missing_nor_empty_character(x)
+            }
+        ))
 
-        # Match the arguments against the sample metadata
+        # Match the arguments against the sample metadata.
         colData <- colData(object)
         assert_is_subset(names(args), colnames(colData))
 
-        # Obtain the sample identifiers
+        # Get the desired sample column index, using `which()`.
         list <- mapply(
             col = names(args),
             arg = args,
             MoreArgs = list(data = colData),
             FUN = function(col, arg, data) {
-                rownames(data[data[[col]] %in% arg, , drop = FALSE])
+                which(data[[col]] %in% arg)
             },
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
-        samples <- Reduce(f = intersect, x = list) %>%
-            as.character() %>%
-            sort()
-        assert_is_non_empty(samples)
 
-        object[, samples]
+        # Using a numeric index here.
+        cols <- Reduce(f = intersect, x = list)
+        assert_is_non_empty(cols)
+        cols <- sort(cols)
+
+        object[, cols]
     }
 )

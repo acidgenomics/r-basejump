@@ -67,7 +67,7 @@ with the sample barcodes (&quot;.colnames&quot;), and gene identifiers
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -78,6 +78,9 @@ with the sample barcodes (&quot;.colnames&quot;), and gene identifiers
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -142,7 +145,7 @@ with the sample barcodes ("<code>.colnames</code>"), and gene identifiers
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible named <code>character</code> containing file paths.</p>
+    <p>Invisible named <code>character</code>. File paths.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -151,6 +154,11 @@ is enabled by default to save disk space. Note that the
 <a href='http://readr.tidyverse.org/'>readr</a> package, built into
 <a href='https://www.rstudio.com/'>RStudio</a>, now natively supports compressed files.</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This function is desired for interactive use and interprets object
+names using non-standard evaluation.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Write Functions: <code><a href='assignAndSaveData.html'>assignAndSaveData</a></code>,
@@ -158,7 +166,7 @@ is enabled by default to save disk space. Note that the
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>writeCounts</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Writing rnaseq_counts, single_cell_counts to /Users/mike/GitHub/basejump/docs/reference/example</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv.gz"               "single_cell_counts.mtx.gz"         
+    <pre class="examples"><div class='input'><span class='fu'>writeCounts</span>(<span class='no'>rnaseq_counts</span>, <span class='no'>single_cell_counts</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"example"</span>)</div><div class='output co'>#&gt; <span class='message'>Writing rnaseq_counts, single_cell_counts to /home/bioinfo/git/basejump-develop/docs/reference/example</span></div><div class='input'><span class='fu'>list.files</span>(<span class='st'>"example"</span>)</div><div class='output co'>#&gt; [1] "rnaseq_counts.csv.gz"               "single_cell_counts.mtx.gz"         
 #&gt; [3] "single_cell_counts.mtx.gz.colnames" "single_cell_counts.mtx.gz.rownames"</div><div class='input'>
 <span class='co'># Clean up</span>
 <span class='fu'>unlink</span>(<span class='st'>"example"</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
@@ -171,6 +179,8 @@ is enabled by default to save disk space. Note that the
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

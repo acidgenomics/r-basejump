@@ -1,3 +1,7 @@
+# TODO Make sure we're stopping if user passes in `scale` argument.
+
+
+
 #' Plot Heatmap with Quantile Breaks
 #'
 #' @name plotQuantileHeatmap
@@ -10,12 +14,11 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' plotQuantileHeatmap(rse_dds)
+#' plotQuantileHeatmap(rse_small)
 #'
-#' # Set legend using interesting groups, and customize colors
+#' # Using viridis color palettes.
 #' plotQuantileHeatmap(
-#'     object = rse_dds,
-#'     interestingGroups = "condition",
+#'     object = rse_small,
 #'     color = viridis::plasma,
 #'     legendColor = viridis::viridis
 #' )
@@ -45,11 +48,11 @@ NULL
 #' @rdname plotQuantileHeatmap
 #' @export
 setMethod(
-    "plotQuantileHeatmap",
-    signature("SummarizedExperiment"),
-    function(
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = function(
         object,
-        interestingGroups,
+        interestingGroups = NULL,
         n = 10L,
         clusterRows = TRUE,
         clusterCols = TRUE,
@@ -64,12 +67,16 @@ setMethod(
         title = NULL,
         ...
     ) {
+        validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
         )
+        if (length(interestingGroups)) {
+            interestingGroups(object) <- interestingGroups
+        }
         assertIsAnImplicitInteger(n)
         n <- as.integer(n)
         assert_is_a_bool(clusterCols)
@@ -84,35 +91,48 @@ setMethod(
             title <- NA
         }
 
+        # Convert the SE objec to use symbols in the rownames, for pheatmap.
         object <- suppressWarnings(convertGenesToSymbols(object))
+
+        # Ensure we're using a dense matrix.
         mat <- as.matrix(assay(object))
 
-        # Annotation columns
-        annotationCol <- .annotationCol(
-            object = object,
-            interestingGroups = interestingGroups
-        )
+        # Calculate the quantile breaks.
+        breaks <- .quantileBreaks(mat, n = n)
 
-        # Use `sampleName`, if defined
-        sampleName <- colData(object)[["sampleName"]]
-        if (length(sampleName)) {
-            colnames(mat) <- sampleName
-            if (length(annotationCol)) {
-                rownames(annotationCol) <- sampleName
+        # Get annotation columns and colors automatically.
+        x <- .pheatmapAnnotations(
+            object = object,
+            legendColor = legendColor
+        )
+        assert_is_list(x)
+        assert_are_identical(
+            x = names(x),
+            y = c("annotationCol", "annotationColors")
+        )
+        annotationCol <- x[["annotationCol"]]
+        annotationColors <- x[["annotationColors"]]
+        rm(x)
+
+        # Note the number of breaks here.
+        color <- .pheatmapColorPalette(color, n = length(breaks) - 1L)
+
+        # Substitute human-friendly sample names, if defined.
+        sampleNames <- tryCatch(
+            expr = sampleNames(object),
+            error = function(e) NULL
+        )
+        if (length(sampleNames)) {
+            colnames(mat) <- sampleNames
+            if (
+                length(annotationCol) &&
+                !is.na(annotationCol)
+            ) {
+                rownames(annotationCol) <- sampleNames
             }
         }
 
-        # Calculate the quantile breaks
-        breaks <- .quantileBreaks(mat, n = n)
-
-        annotationCol <- .pheatmapAnnotationCol(annotationCol)
-        annotationColors <- .pheatmapAnnotationColors(
-            annotationCol = annotationCol,
-            legendColor = legendColor
-        )
-        color <- .pheatmapColor(color, n = length(breaks) - 1L)
-
-        # Return pretty heatmap with modified defaults
+        # Return pretty heatmap with modified defaults.
         args <- list(
             mat = mat,
             annotationCol = annotationCol,

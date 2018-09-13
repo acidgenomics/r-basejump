@@ -8,10 +8,6 @@
 
 \item{value}{Value to assign.}
 
-\item{x}{Object.}
-
-\item{y}{Secondary object.}
-
 \item{...}{Additional arguments.}
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working
@@ -21,6 +17,8 @@ directory.}
 \code{parent.frame()}, which will assign into the calling environment.}
 
 \item{file}{\code{string}. File path.}
+
+\item{genes}{\code{character}. Gene identifiers.}
 
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
@@ -32,6 +30,9 @@ directory.}
 
 \item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
 the first item in the vector by default.}
+
+\item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
+recommended to enable this when debugging.}
 }
 \description{
 General Arguments

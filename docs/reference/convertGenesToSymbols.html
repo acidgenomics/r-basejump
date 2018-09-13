@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +74,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -119,22 +122,27 @@
 
 <span class='co'># S4 method for character</span>
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>)
@@ -151,13 +159,27 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough to <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl()</a></code>.</p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>gene2symbol</th>
       <td><p><code>data.frame</code> or <code>NULL</code>. Gene-to-symbol mappings. If set
 <code>NULL</code>, the function will attempt to download the mappings from Ensembl
 automatically.</p></td>
+    </tr>
+    <tr>
+      <th>organism</th>
+      <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+    </tr>
+    <tr>
+      <th>build</th>
+      <td><p><code>string</code> or <code>NULL</code>. Genome build assembly name (e.g.
+"<code>GRCh38</code>"). If set <code>NULL</code>, defaults to the most recent build available.</p></td>
+    </tr>
+    <tr>
+      <th>release</th>
+      <td><p><code>scalar integer</code> or <code>NULL</code>. Release version (e.g. <code>90</code>). If
+set <code>NULL</code>, defaults to the most recent release available.</p></td>
     </tr>
     </table>
     
@@ -167,73 +189,66 @@ automatically.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='annotable.html'>annotable</a></code>,
-  <code><a href='broadClass.html'>broadClass</a></code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
   <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
-  <code><a href='makeGRangesFromEnsembl.html'>makeGRangesFromEnsembl</a></code>,
-  <code><a href='makeGRangesFromGFF.html'>makeGRangesFromGFF</a></code>,
-  <code><a href='makeGene2symbolFromEnsembl.html'>makeGene2symbolFromEnsembl</a></code>,
-  <code><a href='makeGene2symbolFromGFF.html'>makeGene2symbolFromGFF</a></code>,
-  <code><a href='makeTx2geneFromEnsembl.html'>makeTx2geneFromEnsembl</a></code>,
-  <code><a href='makeTx2geneFromGFF.html'>makeTx2geneFromGFF</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
-  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
+  <code><a href='mgi2gene.html'>mgi2gene</a></code>, <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># character ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>)
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus genes detected</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>)
+<span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus genes detected</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='output co'>#&gt; <span class='message'>Sanitizing 305 duplicated symbols using `make.unique()`</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
 #&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
 <span class='co'># matrix ====</span>
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
+<span class='no'>from</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>1L</span>:<span class='fl'>4L</span>),
     <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
     <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
     <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
     <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(
         <span class='fu'>c</span>(<span class='st'>"ENSMUSG00000000001"</span>, <span class='st'>"ENSMUSG00000000003"</span>),
-        <span class='fu'>c</span>(<span class='st'>"sample_1"</span>, <span class='st'>"sample_2"</span>)
+        <span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>)
     )
 )
-<span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;                    sample_1 sample_2
-#&gt; ENSMUSG00000000001        1        2
-#&gt; ENSMUSG00000000003        3        4</div><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus genes detected</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.0 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
+<span class='fu'>print</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt;                    sample1 sample2
+#&gt; ENSMUSG00000000001       1       2
+#&gt; ENSMUSG00000000003       3       4</div><div class='input'><span class='no'>to</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>from</span>)</div><div class='output co'>#&gt; <span class='message'>Obtaining gene-to-symbol mappings from Ensembl</span></div><div class='output co'>#&gt; <span class='message'>Mus musculus genes detected</span></div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 92 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>id: "AH60992"</span>
 #&gt; <span class='message'>organism: "Mus musculus"</span>
 #&gt; <span class='message'>build: "GRCm38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt;       sample_1 sample_2
-#&gt; Gnai3        1        2
-#&gt; Pbsn         3        4</div><div class='input'><span class='fu'>rownames</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
+#&gt; <span class='message'>format: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID</span></div><div class='output co'>#&gt; <span class='message'>Sanitizing 305 duplicated symbols using `make.unique()`</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt;       sample1 sample2
+#&gt; Gnai3       1       2
+#&gt; Pbsn        3       4</div><div class='input'><span class='fu'>rownames</span>(<span class='no'>to</span>)</div><div class='output co'>#&gt; ENSMUSG00000000001 ENSMUSG00000000003 
 #&gt;            "Gnai3"             "Pbsn" </div><div class='input'>
 <span class='co'># SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_bcb</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>convertGenesToSymbols</span>(<span class='no'>rse_small</span>)
 <span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 500 6 
-#&gt; metadata(30): version level ... devtoolsSessionInfo subset
+#&gt; dim: 100 4 
+#&gt; metadata(2): version interestingGroups
 #&gt; assays(1): counts
-#&gt; rownames(500): Cox5a Comt ... AC157654.1 AC129085.1
-#&gt; rowData names(7): geneID geneName ... entrezID broadClass
-#&gt; colnames(6): control_rep1 control_rep2 ... fa_day7_rep2 fa_day7_rep3
-#&gt; colData names(25): sampleName day ... x5x3Bias xGC</div><div class='input'>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)
+#&gt; rownames(100): TSPAN6 TNMD ... CROT ABCB4
+#&gt; rowData names(7): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(4): sample1 sample2 sample3 sample4
+#&gt; colData names(3): sampleName genotype treatment</div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>convertSymbolsToGenes</span>(<span class='no'>x</span>)
 <span class='fu'>print</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 500 6 
-#&gt; metadata(30): version level ... devtoolsSessionInfo subset
+#&gt; dim: 100 4 
+#&gt; metadata(2): version interestingGroups
 #&gt; assays(1): counts
-#&gt; rownames(500): ENSMUSG00000000088 ENSMUSG00000000326 ...
-#&gt;   ENSMUSG00000114367 ENSMUSG00000114458
-#&gt; rowData names(7): geneID geneName ... entrezID broadClass
-#&gt; colnames(6): control_rep1 control_rep2 ... fa_day7_rep2 fa_day7_rep3
-#&gt; colData names(25): sampleName day ... x5x3Bias xGC</div></pre>
+#&gt; rownames(100): ENSG00000000003 ENSG00000000005 ... ENSG00000005469
+#&gt;   ENSG00000005471
+#&gt; rowData names(7): broadClass description ... geneName seqCoordSystem
+#&gt; colnames(4): sample1 sample2 sample3 sample4
+#&gt; colData names(3): sampleName genotype treatment</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

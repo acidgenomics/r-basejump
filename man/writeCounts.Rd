@@ -14,7 +14,7 @@ writeCounts(..., dir = ".", gzip = TRUE)
 \item{gzip}{\code{boolean}. Compress the counts file using gzip.}
 }
 \value{
-Invisible named \code{character} containing file paths.
+Invisible named \code{character}. File paths.
 }
 \description{
 Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
@@ -28,6 +28,10 @@ Automatic gzip compression is offered as a user-defined option. This setting
 is enabled by default to save disk space. Note that the
 \href{http://readr.tidyverse.org/}{readr} package, built into
 \href{https://www.rstudio.com/}{RStudio}, now natively supports compressed files.
+}
+\note{
+This function is desired for interactive use and interprets object
+names using non-standard evaluation.
 }
 \examples{
 writeCounts(rnaseq_counts, single_cell_counts, dir = "example")

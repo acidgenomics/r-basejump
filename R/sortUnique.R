@@ -7,16 +7,16 @@
 #' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
 #'
-#' @inheritParams general
+#' @param object `atomic`.
 #'
 #' @return `atomic`.
 #' @export
 #'
 #' @examples
 #' sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
-sortUnique <- function(x) {
-    assert_is_atomic(x)
-    x %>%
+sortUnique <- function(object) {
+    assert_is_atomic(object)
+    object %>%
         sort(na.last = TRUE) %>%
         unique()
 }

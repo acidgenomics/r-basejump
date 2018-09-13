@@ -23,7 +23,8 @@ stripTranscriptVersions(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Object containing transcript identifiers without version numbers.
+Modified object, containing transcript identifiers without version
+numbers.
 }
 \description{
 Strip Transcript Versions
@@ -33,30 +34,26 @@ This function is strict, and will only strip Ensembl transcript IDs
 beginning with "ENS".
 }
 \examples{
-# Ensembl
-stripTranscriptVersions("ENSMUST00000000001.1")
-stripTranscriptVersions("ENSMUST00000000001-1")
-stripTranscriptVersions("ENSMUST00000000001_1")
+# Ensembl (modify; contains versions)
+stripTranscriptVersions(c(
+    "ENSMUST00000000001.1",
+    "ENSMUST00000000001-1",
+    "ENSMUST00000000001_1"
+))
 
-# WormBase (unmodified)
+# WormBase (keep; doesn't contain versions)
 stripTranscriptVersions("cTel79B.1")
 }
 \seealso{
-Other Annotation Functions: \code{\link{annotable}},
-  \code{\link{broadClass}},
+Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}},
-  \code{\link{makeGRangesFromEnsembl}},
-  \code{\link{makeGRangesFromGFF}},
-  \code{\link{makeGene2symbolFromEnsembl}},
-  \code{\link{makeGene2symbolFromGFF}},
-  \code{\link{makeTx2geneFromEnsembl}},
-  \code{\link{makeTx2geneFromGFF}}, \code{\link{mgi2gene}},
-  \code{\link{panther}}
+  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2gene}}, \code{\link{panther}}
 }
 \author{
 Michael Steinbaugh

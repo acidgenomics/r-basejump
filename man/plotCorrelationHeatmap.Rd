@@ -10,7 +10,7 @@
 plotCorrelationHeatmap(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
-  interestingGroups, method = c("pearson", "spearman"),
+  interestingGroups = NULL, method = c("pearson", "spearman"),
   clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = NULL, borderColor = NULL,
@@ -72,23 +72,22 @@ Construct a correlation heatmap comparing the columns of the matrix.
 }
 \examples{
 # SummarizedExperiment ====
-plotCorrelationHeatmap(rse_dds)
+plotCorrelationHeatmap(rse_small)
 
-# Set legend using interesting groups, and customize colors
+# Using viridis color palettes.
 plotCorrelationHeatmap(
-    object = rse_dds,
-    interestingGroups = "condition",
+    object = rse_small,
     color = viridis::plasma,
     legendColor = viridis::viridis
 )
 
-# Hexadecimal color input
+# Using hexadecimal color input.
 library("RColorBrewer")
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-plotCorrelationHeatmap(rse_dds, color = purple_orange)
+plotCorrelationHeatmap(rse_small, color = purple_orange)
 
-# Default pheatmap colors
-plotCorrelationHeatmap(rse_dds, color = NULL)
+# Using default pheatmap colors.
+plotCorrelationHeatmap(rse_small, color = NULL)
 }
 \seealso{
 \itemize{
@@ -97,8 +96,9 @@ plotCorrelationHeatmap(rse_dds, color = NULL)
 \item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 }
 
-Other Plot Functions: \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}}, \code{\link{themes}}
+Other Plot Functions: \code{\link{plotGene}},
+  \code{\link{plotHeatmap}},
+  \code{\link{plotQuantileHeatmap}}
 }
 \author{
 Michael Steinbaugh

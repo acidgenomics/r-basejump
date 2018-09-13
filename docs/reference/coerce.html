@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">basejump</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.7.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.0</span>
       </span>
     </div>
 
@@ -74,6 +74,9 @@
     <span class="fa fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/basejump.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -121,11 +124,15 @@
     <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
 
     
-    <p>Coerce an object to a <code>tibble</code> (<code>tbl_df</code>). Tibbles don't support rowname
-assignemnt, so here we are ensuring they are kept by moving them to a column
-named <code>rowname</code> upon coercion. This helps avoid downstream unexpected data
-loss when using the dplyr chain of single table verbs, such as
-<code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
+    <p>Coerce an object to a <code>tibble</code> using <code>as(object, Class = "tbl_df")</code>. Tibbles
+don't support rowname assignment, so here we are ensuring they are kept by
+moving them to a column named <code>rowname</code> upon coercion. This helps avoid
+downstream unexpected data loss when using the dplyr chain of single table
+verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
+<p>Conversely, when coercing a <code>tibble</code> back to an S4 <code>DataFrame</code>, our
+<code>as(tbl_df, Class = "DataFrame")</code> method looks for the "rowname" column and
+will attempt to move it back to <code>rownames()</code> automatically, unless there are
+duplicates present.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -137,37 +144,25 @@ loss when using the dplyr chain of single table verbs, such as
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># data.frame ====</span>
+    <pre class="examples"><div class='input'><span class='co'># DataFrame to tbl_df ====</span>
 <span class='co'># Automatically move rownames to `rowname` column</span>
-<span class='fu'>as</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>, <span class='st'>"tbl_df"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 32
-#&gt; Variables: 12
-#&gt; $ rowname &lt;chr&gt; "Mazda RX4", "Mazda RX4 Wag", "Datsun 710", "Hornet 4 Drive...
-#&gt; $ mpg     &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2,...
-#&gt; $ cyl     &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4,...
-#&gt; $ disp    &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140...
-#&gt; $ hp      &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 18...
-#&gt; $ drat    &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92,...
-#&gt; $ wt      &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.1...
-#&gt; $ qsec    &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22....
-#&gt; $ vs      &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,...
-#&gt; $ am      &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,...
-#&gt; $ gear    &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4,...
-#&gt; $ carb    &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1,...</div><div class='input'>
-<span class='co'># tibble ====</span>
-<span class='co'># Return unmodified</span>
-<span class='fu'>as</span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/mpg'>mpg</a></span>, <span class='st'>"tbl_df"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>()</div><div class='output co'>#&gt; Observations: 234
-#&gt; Variables: 11
-#&gt; $ manufacturer &lt;chr&gt; "audi", "audi", "audi", "audi", "audi", "audi", "audi"...
-#&gt; $ model        &lt;chr&gt; "a4", "a4", "a4", "a4", "a4", "a4", "a4", "a4 quattro"...
-#&gt; $ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0,...
-#&gt; $ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, ...
-#&gt; $ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, ...
-#&gt; $ trans        &lt;chr&gt; "auto(l5)", "manual(m5)", "manual(m6)", "auto(av)", "a...
-#&gt; $ drv          &lt;chr&gt; "f", "f", "f", "f", "f", "f", "f", "4", "4", "4", "4",...
-#&gt; $ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17...
-#&gt; $ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25...
-#&gt; $ fl           &lt;chr&gt; "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p",...
-#&gt; $ class        &lt;chr&gt; "compact", "compact", "compact", "compact", "compact",...</div></pre>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>rse_small</span>)
+<span class='fu'>class</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "DataFrame"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"</div><div class='input'><span class='fu'><a href='assertHasRownames.html'>hasRownames</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='no'>tbl_df</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>data</span>, <span class='kw'>Class</span> <span class='kw'>=</span> <span class='st'>"tbl_df"</span>)
+<span class='fu'><a href='assertHasRownames.html'>hasRownames</a></span>(<span class='no'>tbl_df</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>print</span>(<span class='no'>tbl_df</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 4
+#&gt;   rowname sampleName genotype treatment
+#&gt;   &lt;chr&gt;   &lt;fct&gt;      &lt;fct&gt;    &lt;fct&gt;    
+#&gt; 1 sample1 sample1    wildtype control  
+#&gt; 2 sample2 sample2    knockout control  
+#&gt; 3 sample3 sample3    wildtype treated  
+#&gt; 4 sample4 sample4    knockout treated  </div><div class='input'>
+<span class='co'># tbl_df back to DataFrame ====</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl_df</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'><a href='assertHasRownames.html'>hasRownames</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>class</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "DataFrame"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

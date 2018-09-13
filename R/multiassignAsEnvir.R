@@ -8,7 +8,7 @@
 #' @param parentEnvir `environment`. Parent `environment` where to assign the
 #'   new `environment`, specified by `envirName` argument.
 #'
-#' @return `character` vector of object names in the new `environment`.
+#' @return `character`. Object names defined in the new `environment`.
 #' @export
 #'
 #' @examples

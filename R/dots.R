@@ -20,10 +20,7 @@
 #'   [devtools infrastructure](https://goo.gl/bM5TrP).
 #'
 #' @examples
-#' # names
-#' dots(a, b, c)
-#'
-#' # character
+#' dots(a, b, c, character = FALSE)
 #' dots(a, b, c, character = TRUE)
 dots <- function(..., character = FALSE) {
     dots <- eval_bare(substitute(alist(...)))
@@ -32,7 +29,7 @@ dots <- function(..., character = FALSE) {
     assert_has_no_duplicates(dots)
     invisible(lapply(dots, assert_is_name))
 
-    # Convert names (symbols) to character vector
+    # Convert names (symbols) to character.
     names <- vapply(dots, as.character, character(1L))
     assert_has_no_duplicates(names)
 

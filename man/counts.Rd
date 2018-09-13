@@ -19,15 +19,14 @@ Counts
 }
 \examples{
 # SummarizedExperiment ====
-x <- counts(rse_dds)
+x <- counts(rse_small)
 summary(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateFeatures}},
-  \code{\link{aggregateReplicates}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{gene2symbol}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}
+  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}}
 }
 \concept{Data Functions}

@@ -10,20 +10,21 @@
 #' @name sampleData
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @export
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame` containing metadata that describes the samples.
+#' @return `DataFrame`. Metadata that describes the samples.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_bcb) %>% glimpse()
+#' sampleData(rse_small)
 #'
 #' # Assignment support
-#' x <- rse_dds
+#' x <- rse_small
 #' sampleData(x)[["test"]] <- seq_len(ncol(x))
 #' # `test` column should be now defined
-#' glimpse(sampleData(x))
+#' sampleData(x)
 NULL
 
 
@@ -31,30 +32,21 @@ NULL
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData",
-    signature("SummarizedExperiment"),
-    function(object, ...) {
-        # Legacy arguments -----------------------------------------------------
-        # nocov start
-        call <- match.call(expand.dots = TRUE)
-        # clean
-        if (isTRUE(call[["clean"]])) {
-            warning(paste(
-                "`clean` argument is deprecated for `SummarizedExperiment`.",
-                "Improved `bcbioRNASeq` method is provided in v0.2.6."
-            ))
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = function(object) {
+        validObject(object)
+        # Require `sampleName` column to be defined.
+        assert_is_subset(
+            x = "sampleName",
+            y = colnames(colData(object))
+        )
+        data <- colData(object)
+        interestingGroups <- interestingGroups(object)
+        if (length(interestingGroups) > 0L) {
+            data <- uniteInterestingGroups(data, interestingGroups)
         }
-        # return
-        if ("return" %in% names(call)) {
-            stop(paste(
-                "`return` argument is defunct.",
-                "Use a separation coercion call after the return instead",
-                "(e.g. `as.data.frame()`)."
-            ))
-        }
-        # nocov end
-
-        colData(object)
+        data
     }
 )
 
@@ -63,13 +55,25 @@ setMethod(
 #' @rdname sampleData
 #' @export
 setMethod(
-    "sampleData<-",
-    signature(
+    f = "sampleData<-",
+    signature = signature(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    function(object, value) {
+    definition = function(object, value) {
+        # Don't allow the user to set `interestingGroups` column manually.
+        value[["interestingGroups"]] <- NULL
+        # Check for blacklisted columns.
+        assert_are_disjoint_sets(
+            colnames(value),
+            c(
+                "rowname",
+                "sampleID"
+            )
+        )
+        # Now safe to assign.
         colData(object) <- value
+        validObject(object)
         object
     }
 )
