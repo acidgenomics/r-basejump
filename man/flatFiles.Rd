@@ -27,12 +27,12 @@ class(x)
 names(x)
 }
 \seealso{
-Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{initializeDirectory}},
+Other Developer Functions: \code{\link{MethodDefinition}},
+  \code{\link{detectHPC}}, \code{\link{dots}},
+  \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}}, \code{\link{matchCall}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{methodFormals}},
   \code{\link{multiassignAsEnvir}},
   \code{\link{printString}},
   \code{\link{uniteInterestingGroups}}
