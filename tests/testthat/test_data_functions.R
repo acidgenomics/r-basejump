@@ -265,9 +265,16 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
+    object <- rse_small
+    # Sample data should be identical to colData, but contain an extra
+    # interestingGroups column.
     expect_identical(
-        object = sampleData(rse_small),
-        expected = colData(rse_small)
+        object = setdiff(colnames(sampleData(object)), colnames(colData(object))),
+        expected = "interestingGroups"
+    )
+    expect_identical(
+        object = sampleData(object)[, colnames(colData(object))],
+        expected = colData(object)
     )
 
     # Requiring `sampleName` column to be defined.
