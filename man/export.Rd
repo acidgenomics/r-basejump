@@ -11,6 +11,9 @@
 \description{
 Export data out of R and write to disk.
 }
+\examples{
+export(mtcars, format = "csv", dir = ".")
+}
 \seealso{
 \code{\link[rio:export]{rio::export()}}.
 }
