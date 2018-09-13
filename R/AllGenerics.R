@@ -125,6 +125,17 @@ setGeneric(
 
 
 
+#' @rdname AllGenerics
+#' @export
+setGeneric(
+    name = "export",
+    def = function(object, ...) {
+        standardGeneric("export")
+    }
+)
+
+
+
 #' @rdname logRatio
 #' @export
 setGeneric(
@@ -439,16 +450,5 @@ setGeneric(
     name = "upperCamel",
     def = function(object, ...) {
         standardGeneric("upperCamel")
-    }
-)
-
-
-
-#' @rdname AllGenerics
-#' @export
-setGeneric(
-    name = "writeData",
-    def = function(object, ...) {
-        standardGeneric("writeData")
     }
 )

@@ -2,19 +2,19 @@
 % Please edit documentation in R/AllGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
+\alias{export}
 \alias{markdown}
 \alias{plotQC}
 \alias{tx2gene}
-\alias{writeData}
 \title{S4 Generics}
 \usage{
+export(object, ...)
+
 markdown(object, ...)
 
 plotQC(object, ...)
 
 tx2gene(object, ...)
-
-writeData(object, ...)
 }
 \arguments{
 \item{object}{Object.}
