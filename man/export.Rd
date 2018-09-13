@@ -6,13 +6,17 @@
 \alias{export,ANY-method}
 \title{Export}
 \usage{
-\S4method{export}{ANY}(object, format = "csv", dir = ".")
+\S4method{export}{ANY}(x, file, format, ...)
 }
 \description{
 Export data out of R and write to disk.
 }
+\details{
+This is a wrapper for \code{\link[rio:export]{rio::export()}} that adds support for additional S4
+classes in Bioconductor.
+}
 \examples{
-export(mtcars, format = "csv", dir = ".")
+export(mtcars, format = "csv")
 }
 \seealso{
 \code{\link[rio:export]{rio::export()}}.

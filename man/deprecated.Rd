@@ -23,6 +23,7 @@
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
 \alias{fixNA}
+\alias{readFileByExtension}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -66,6 +67,8 @@ assertIsCharacterOrNULL(object, ...)
 assertIsDataFrameOrNULL(object, ...)
 
 fixNA(...)
+
+readFileByExtension(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
