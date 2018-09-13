@@ -299,6 +299,13 @@ fixNA <- function(...) {
     sanitizeNA(...)
 }
 
+#' @rdname deprecated
+#' @export
+readFileByExtension <- function(...) {
+    .Deprecated("import")
+    import(...)
+}
+
 #' @rdname defunct
 #' @export
 setArgsToDoCall <- function(...) {
