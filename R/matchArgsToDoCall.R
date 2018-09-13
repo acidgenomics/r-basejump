@@ -38,6 +38,8 @@ matchArgsToDoCall <- function(
     assert_is_a_number(which)
     assert_is_a_bool(verbose)
 
+    # FIXME Rethink this approach
+    stop()
     call <- .sysCallWithS4(which = which, verbose = verbose)
     fun <- sys.function(which = which)
 
@@ -69,5 +71,6 @@ matchArgsToDoCall <- function(
 
     assert_all_are_non_missing_nor_empty_character(names(args))
     assert_has_no_duplicates(names(args))
+
     args
 }
