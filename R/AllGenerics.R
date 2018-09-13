@@ -129,7 +129,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "export",
-    def = function(object, ...) {
+    def = function(x, ...) {
         standardGeneric("export")
     }
 )
