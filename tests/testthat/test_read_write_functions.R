@@ -17,6 +17,102 @@ test_that("assignAndSaveData", {
 
 
 
+# import =======================================================================
+test_that("import : Comma separated value file (.csv)", {
+    object <- import("example.csv")
+    expect_is(object, "DataFrame")
+})
+
+test_that("import : GFF", {
+    object <- import("example.gtf")
+    expect_s4_class(object, "GRanges")
+
+    object <- import("example.gff3")
+    expect_s4_class(object, "GRanges")
+})
+
+test_that("import : MatrixMarket file (.mtx)", {
+    object <- import("single_cell_counts.mtx.gz")
+    expect_is(object, "sparseMatrix")
+
+    object <- import("single_cell_counts.mtx.gz.rownames")
+    expect_is(object, "character")
+
+    object <- import("single_cell_counts.mtx.gz.colnames")
+    expect_is(object, "character")
+})
+
+test_that("import : Tab separated values file (.tsv)", {
+    object <- import("example.tsv")
+    expect_is(object, "DataFrame")
+})
+
+test_that("import : Excel file (.xlsx)", {
+    # Use remote file to check Windows support. Excel files need to be
+    # written as binary on Windows to load properly. See `localOrRemoteFile()`
+    # for more information.
+    object <- import(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    expect_is(object, "DataFrame")
+})
+
+test_that("import : Counts file (.counts)", {
+    object <- import("example.counts")
+    expect_is(object, "matrix")
+    expect_identical(
+        object = head(rownames(object), n = 5L),
+        expected = c(
+            "ENSMUSG00000102693",
+            "ENSMUSG00000064842",
+            "ENSMUSG00000051951",
+            "ENSMUSG00000102851",
+            "ENSMUSG00000103377"
+        )
+    )
+})
+
+test_that("import : R script", {
+    file <- "test_read_write_functions.R"
+    expect_message(
+        object = import(file),
+        regexp = "Importing as source code lines"
+    )
+    object <- import(file)
+    expect_is(object, "character")
+})
+
+test_that("import : R Data", {
+    # rda
+    object <- import(paste(cacheURL, "example.rda", sep = "/"))
+    expect_is(object, "tbl_df")
+
+    # rds
+    object <- import(paste(cacheURL, "example.rds", sep = "/"))
+    expect_is(object, "tbl_df")
+
+    # Error on object containing multiple data
+    expect_error(
+        object = import(paste(cacheURL, "multi.rda", sep = "/")),
+        regexp = "File does not contain a single object"
+    )
+})
+
+test_that("import : YAML", {
+    object <- import("example.yml")
+    expect_is(object, "list")
+})
+
+test_that("import : No extension", {
+    # Missing extension
+    file.create("example")
+    expect_error(
+        object = import("example"),
+        regexp = "is_matching_regex :"
+    )
+    unlink("example")
+})
+
+
+
 # loadData =====================================================================
 test_that("loadData", {
     # rda
@@ -200,102 +296,6 @@ test_that("localOrRemoteFile : Missing file", {
         object = localOrRemoteFile("XXX.csv"),
         regexp = "is_existing_file :"
     )
-})
-
-
-
-# readFileByExtension ==========================================================
-test_that("readFileByExtension : Comma separated value file (.csv)", {
-    object <- readFileByExtension("example.csv")
-    expect_is(object, "DataFrame")
-})
-
-test_that("readFileByExtension : GFF", {
-    object <- readFileByExtension("example.gtf")
-    expect_s4_class(object, "GRanges")
-
-    object <- readFileByExtension("example.gff3")
-    expect_s4_class(object, "GRanges")
-})
-
-test_that("readFileByExtension : MatrixMarket file (.mtx)", {
-    object <- readFileByExtension("single_cell_counts.mtx.gz")
-    expect_is(object, "sparseMatrix")
-
-    object <- readFileByExtension("single_cell_counts.mtx.gz.rownames")
-    expect_is(object, "character")
-
-    object <- readFileByExtension("single_cell_counts.mtx.gz.colnames")
-    expect_is(object, "character")
-})
-
-test_that("readFileByExtension : Tab separated values file (.tsv)", {
-    object <- readFileByExtension("example.tsv")
-    expect_is(object, "DataFrame")
-})
-
-test_that("readFileByExtension : Excel file (.xlsx)", {
-    # Use remote file to check Windows support. Excel files need to be
-    # written as binary on Windows to load properly. See `localOrRemoteFile()`
-    # for more information.
-    object <- readFileByExtension(paste(cacheURL, "mtcars.xlsx", sep = "/"))
-    expect_is(object, "DataFrame")
-})
-
-test_that("readFileByExtension : Counts file (.counts)", {
-    object <- readFileByExtension("example.counts")
-    expect_is(object, "matrix")
-    expect_identical(
-        object = head(rownames(object), n = 5L),
-        expected = c(
-            "ENSMUSG00000102693",
-            "ENSMUSG00000064842",
-            "ENSMUSG00000051951",
-            "ENSMUSG00000102851",
-            "ENSMUSG00000103377"
-        )
-    )
-})
-
-test_that("readFileByExtension : R script", {
-    file <- "test_read_write_functions.R"
-    expect_message(
-        object = readFileByExtension(file),
-        regexp = "Importing as source code lines"
-    )
-    object <- readFileByExtension(file)
-    expect_is(object, "character")
-})
-
-test_that("readFileByExtension : R Data", {
-    # rda
-    object <- readFileByExtension(paste(cacheURL, "example.rda", sep = "/"))
-    expect_is(object, "tbl_df")
-
-    # rds
-    object <- readFileByExtension(paste(cacheURL, "example.rds", sep = "/"))
-    expect_is(object, "tbl_df")
-
-    # Error on object containing multiple data
-    expect_error(
-        object = readFileByExtension(paste(cacheURL, "multi.rda", sep = "/")),
-        regexp = "File does not contain a single object"
-    )
-})
-
-test_that("readFileByExtension : YAML", {
-    object <- readFileByExtension("example.yml")
-    expect_is(object, "list")
-})
-
-test_that("readFileByExtension : No extension", {
-    # Missing extension
-    file.create("example")
-    expect_error(
-        object = readFileByExtension("example"),
-        regexp = "is_matching_regex :"
-    )
-    unlink("example")
 })
 
 
