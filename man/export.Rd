@@ -27,6 +27,11 @@ Export data out of R and write to disk.
 This is a wrapper for \code{\link[rio:export]{rio::export()}} that adds support for additional S4
 classes in Bioconductor.
 }
+\note{
+The standard \code{\link[rio:export]{rio::export()}} call will drop rownames when exporting to
+CSV. We're performing any internal tibble coercion step to ensure rownames
+are always moved to a "rowname" column in the CSV output.
+}
 \examples{
 export(mtcars, format = "csv")
 }
