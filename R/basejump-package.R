@@ -80,6 +80,3 @@
 #'   installed.packages packageVersion read.delim read.table sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
-
-# NAMESPACE conflicts:
-# rio::import
