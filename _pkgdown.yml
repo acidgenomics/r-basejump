@@ -79,7 +79,6 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
-    - coerceToList
     - starts_with("detect")
     - dots
     - starts_with("initialize")
