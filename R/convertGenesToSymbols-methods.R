@@ -71,8 +71,7 @@ function(
             what = makeGene2symbolFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeFormals = c("object", "gene2symbol"),
-                verbose = TRUE
+                removeFormals = c("object", "gene2symbol")
             )
         )
     }
@@ -120,8 +119,7 @@ function(
     rownames <- do.call(
         what = convertGenesToSymbols,
         args = matchArgsToDoCall(
-            args = list(object = rownames),
-            verbose = TRUE
+            args = list(object = rownames)
         )
     )
     rownames(object) <- rownames

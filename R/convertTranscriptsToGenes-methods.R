@@ -68,7 +68,7 @@ function(
             args = matchArgsToDoCall(
                 args = list(organism = organism),
                 removeFormals = c("object", "tx2gene"),
-                verbose = TRUE
+                n = 2L
             )
         )
     }
@@ -112,7 +112,7 @@ function(
         what = convertTranscriptsToGenes,
         args = matchArgsToDoCall(
             args = list(object = rownames),
-            verbose = TRUE
+            n = 2L
         )
     )
     rownames(object) <- rownames
