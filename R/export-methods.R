@@ -22,14 +22,15 @@ NULL
 
 .export.ANY <-  # nolint
 function(x, ...) {
+    assert_is_non_empty(x)
     call <- standardizeCall()
     sym <- call[["x"]]
-    assertive::assert_is_symbol(sym)
-    message(paste("Exporting", sym, "to", file))
-    do.call(
-        what = rio::export,
-        args = as.list(call)[-1L]
-    )
+    assert_is_symbol(sym)
+    name <- as.character(sym)
+    file <- do.call(what = rio::export, args = as.list(call)[-1L])
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    message(paste("Exported", name, "to", file))
+    file
 }
 
 # Assign the formals.
@@ -37,12 +38,14 @@ formals(.export.ANY) <- formals(rio::export)
 
 
 
+# Note that "file" is referring to the matrix file.
+# The correponding column and row sidecar files are generated automatically.
 .export.sparseMatrix <-  # nolint
 function(x, file, format) {
-    call <- matchCall()
-    name <- call[["x"]]
-    print(str(name))
-    assert_is_name(name)
+    call <- standardizeCall()
+    sym <- call[["x"]]
+    assert_is_symbol(sym)
+    name <- as.character(sym)
     choices = c("mtx", "mtx.gz")
 
     if (missing(file)) {
@@ -65,7 +68,7 @@ function(x, file, format) {
     # Determine whether we want to gzip compress.
     gzip <- grepl("\\.gz$", file)
 
-    # Ensure ".gz" is stripped from the working file variable.
+    # Now ensure ".gz" is stripped from the working file variable.
     file <- sub("\\.gz", "", file)
 
     # Create the recursive directory structure, if necessary.
@@ -78,15 +81,25 @@ function(x, file, format) {
         file <- gzip(file, overwrite = TRUE)
     }
 
+    # Normalize the path.
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+
     # Write barcodes (colnames).
     barcodes <- colnames(counts)
-    barcodesFile <- paste0(matrixFile, ".colnames")
-    write_lines(barcodes, barcodesFile)
+    barcodesFile <- paste0(file, ".colnames")
+    write_lines(x = barcodes, path = barcodesFile)
+
     # Write gene names (rownames).
     genes <- rownames(counts)
-    genesFile <- paste0(matrixFile, ".rownames")
-    write_lines(genes, genesFile)
-    returnPath <- matrixFile
+    genesFile <- paste0(file, ".rownames")
+    write_lines(x = genes, path = genesFile)
+
+    # Return named character of file paths.
+    c(
+        matrix = file,
+        barcodes = barcodesFile,
+        genes = genesFile
+    )
 }
 
 
