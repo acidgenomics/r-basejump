@@ -26,7 +26,7 @@ Access to the Data Inside an S4 Method Definition
 \examples{
 # Function
 x <- methodFunction(f = "geometricMean", signature = "numeric")
-class(f)
+class(x)
 
 # Formals
 x <- methodFormals(f = "geometricMean", signature = "numeric")
