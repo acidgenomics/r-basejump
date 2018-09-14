@@ -1,3 +1,8 @@
+# FIXME This still isn't working right recursively.
+# S4 call stack inheritance is inception...
+
+
+
 #' Match Arguments to Do Call
 #'
 #' @family Developer Functions
@@ -25,21 +30,26 @@
 #'     do.call(what = paste, args = args)
 #' }
 #' example(c("hello", "world"))
-matchArgsToDoCall <- function(args, removeFormals = NULL) {
+matchArgsToDoCall <- function(
+    args,
+    removeFormals = NULL,
+    call
+) {
     assert_is_list(args)
     assert_is_non_empty(args)
     assert_has_names(args)
     assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_bool(verbose)
 
-    # Standardize the call.
-    call <- standardizeCall(
-        definition = definition,
-        call = call,
-        expand.dots = expand.dots,
-        envir = envir,
-        verbose = verbose
-    )
+    if (missing(call)) {
+        # Standardize the call.
+        call <- standardizeCall(
+            definition = definition,
+            expand.dots = expand.dots,
+            envir = envir,
+            verbose = verbose
+        )
+    }
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
@@ -70,6 +80,7 @@ matchArgsToDoCall <- function(args, removeFormals = NULL) {
 # Assign the formals.
 f1 <- formals(matchArgsToDoCall)
 f2 <- formals(standardizeCall)
+f2 <- f2[setdiff(names(f2), names(f1))]
 f <- c(f1, f2)
 formals(matchArgsToDoCall) <- f
 
