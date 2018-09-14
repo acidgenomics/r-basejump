@@ -57,12 +57,17 @@ standardizeCall <- function(verbose = FALSE) {
     if (isTRUE(verbose)) {
         print(list(
             sys.status = sys.status(),
-            sys.parent = sys.parent()
+            sys.parent = sys.parent(),
+            definition = definition,
+            call = call,
+            envir = envir,
+            isLocalCall = .isLocalCall(call)
         ))
     }
 
     # Check for S4 `.local()` and move up the stack an extra level accordingly.
     if (.isLocalCall(call)) {
+        # FIXME This approach doesn't work recursively...
         which <- sys.parent(n = 2L)
         definition <- sys.function(sys.parent(n = which))
         stopifnot(is(definition, "MethodDefinition"))
