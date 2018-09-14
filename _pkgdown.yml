@@ -35,11 +35,13 @@ reference:
     - starts_with("write")
   - title: Data Functions
     contents:
+    - combine
     - counts
     - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
     - mapGenesToIDs
+    - meltCounts
     - metrics
     - sampleData
     - sampleNames
@@ -82,12 +84,12 @@ reference:
     - dots
     - starts_with("initialize")
     - localOrRemoteFile
+    - matchArgsToDoCall
     - matchInterestingGroups
     - MethodDefinition
     - multiassignAsEnvir
     - printString
     - standardizeCall
-    - setArgsToDoCall
     - uniteInterestingGroups
   - title: R Documentation Functions
     contents:
