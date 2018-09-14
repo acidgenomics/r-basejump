@@ -5,6 +5,10 @@
 #' This is a wrapper for [rio::export()] that adds support for additional S4
 #' classes in Bioconductor.
 #'
+#' @note The standard [rio::export()] call will drop rownames when exporting to
+#'   CSV. We're performing any internal tibble coercion step to ensure rownames
+#'   are always moved to a "rowname" column in the CSV output.
+#'
 #' @name export
 #' @author Michael Steinbaugh
 #' @export
@@ -20,11 +24,11 @@ NULL
 
 
 
+# Coerce to tibble in this method to always preserve rownames.
+# Note that `rio::export()` does not preserve rownames by default.
 .export.ANY <-  # nolint
 function(x, file, format, ...) {
     assert_is_non_empty(x)
-    # Coerce to tibble.
-    # Note that our coercion method preserves rownames.
     x <- as(x, "tbl_df")
     if (missing(file) && missing(format)) {
         stop("Must specify 'file' and/or 'format'", call. = FALSE)
