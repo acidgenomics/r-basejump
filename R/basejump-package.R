@@ -54,7 +54,7 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames
 #' @importFrom methods as formalArgs getGeneric getMethod is new selectMethod
-#'   setAs show slotNames validObject .hasSlot
+#'   setAs show slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
