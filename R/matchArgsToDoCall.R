@@ -41,23 +41,16 @@ matchArgsToDoCall <- function(args, removeFormals = NULL) {
         verbose = verbose
     )
 
-    callArgs <- call %>%
-        as.list() %>%
-        .[-1L] %>%
+    # Prepare the `args` list.
+    callArgs <- as.list(call)[-1L] %>%
         .[setdiff(names(.), names(args))]
     args <- c(args, callArgs)
-
-    # We may need to rethink this step when dealing with `.local()`.
-    formalArgs <- definition %>%
-        formals() %>%
-        .[setdiff(names(.), names(args))]
-    args <- c(args, formalArgs)
-
-    # Note that we're currently stripping "..." before passing to `do.call()`.
-    args <- args[setdiff(
-        x = names(args),
-        y = c(removeFormals, "...")
-    )]
+    # Remove formals we want to exclude.
+    args <- args[setdiff(names(args), removeFormals)]
+    # FIXME We may not be handling all passthrough formals here correctly...
+    # Need to set up a unit test.
+    # If that's the case, we can return `definition` from `standardizeCall`
+    # return in a list and use that here.
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
