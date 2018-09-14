@@ -35,7 +35,7 @@ dots(a, b, c, character = TRUE)
 }
 
 Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{detectHPC}}, \code{\link{flatFiles}},
+  \code{\link{detectHPC}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},

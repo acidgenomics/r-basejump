@@ -26,7 +26,7 @@ unlink("testdir", recursive = TRUE)
 \seealso{
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}}, \code{\link{localOrRemoteFile}},
+  \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},

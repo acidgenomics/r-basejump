@@ -8,7 +8,7 @@
 \alias{detectOrganism,matrix-method}
 \alias{detectOrganism,data.frame-method}
 \alias{detectOrganism,DataFrame-method}
-\alias{detectOrganism,dgCMatrix-method}
+\alias{detectOrganism,sparseMatrix-method}
 \alias{detectOrganism,tbl_df-method}
 \title{Detect Organism}
 \usage{
@@ -24,7 +24,7 @@ detectOrganism(object, ...)
 
 \S4method{detectOrganism}{DataFrame}(object)
 
-\S4method{detectOrganism}{dgCMatrix}(object)
+\S4method{detectOrganism}{sparseMatrix}(object)
 
 \S4method{detectOrganism}{tbl_df}(object)
 }

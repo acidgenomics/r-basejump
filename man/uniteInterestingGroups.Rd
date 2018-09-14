@@ -43,7 +43,6 @@ print(to)
 \seealso{
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
