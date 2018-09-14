@@ -21,20 +21,28 @@ NULL
 
 
 .export.ANY <-  # nolint
-function(x, ...) {
+function(x, file, format, ...) {
     assert_is_non_empty(x)
     call <- standardizeCall()
     sym <- call[["x"]]
     assert_is_symbol(sym)
     name <- as.character(sym)
-    file <- do.call(what = rio::export, args = as.list(call)[-1L])
+    if (missing(file) && missing(format)) {
+        stop("Must specify 'file' and/or 'format'")
+    } else if (missing(file)) {
+        assert_is_a_string(format)
+        file <- paste0(name, ".", format)
+    } else if (missing(format)) {
+        assert_is_a_string(file)
+    }
+    file <- do.call(
+        what = rio::export,
+        args = list(x = x, file = file, ...)
+    )
     file <- normalizePath(file, winslash = "/", mustWork = TRUE)
     message(paste("Exported", name, "to", file))
     file
 }
-
-# Assign the formals.
-formals(.export.ANY) <- formals(rio::export)
 
 
 
@@ -44,7 +52,11 @@ formals(.export.ANY) <- formals(rio::export)
 .export.sparseMatrix <-  # nolint
 function(x, file, format) {
     assert_is_non_empty(x)
-    call <- standardizeCall()
+    # FIXME This is breaking
+    # call <- standardizeCall()
+    call <-
+    print(call)
+    stop("HELLO THERE")
     sym <- call[["x"]]
     assert_is_symbol(sym)
     name <- as.character(sym)
