@@ -55,18 +55,37 @@
 standardizeCall <- function(verbose = FALSE) {
     # Print the call stack, for debugging.
     if (isTRUE(verbose)) {
-        print(sys.status())
+        print(list(
+            sys.status = sys.status(),
+            sys.parent = sys.parent()
+        ))
     }
 
-    # Check for S4 `.local()` and move up the stack an extra level.
+    # Check for S4 `.local()` and move up the stack an extra level accordingly.
     if (.isLocalCall(call)) {
         which <- sys.parent(n = 2L)
+        print(which)
         definition <- sys.function(sys.parent(n = which))
+        stopifnot(is(definition, "MethodDefinition"))
         # Pull the ".local" function out, which has the formals we need to
         # match against in `match.call()` below.
         definition <- .extractLocal(definition)
         call <- sys.call(which = which)
+        if (isTRUE(.isLocalCall(call))) {
+            which <- which - 1L
+            call <- sys.call(which = which)
+        }
         envir <- sys.frame(which = which)
+    }
+
+    # Print the matched call, for debugging.
+    if (isTRUE(verbose)) {
+        print(list(
+            which = which,
+            definition = definition,
+            call = call,
+            envir = envir
+        ))
     }
 
     # Now ready to match (expand) the call.
@@ -79,14 +98,8 @@ standardizeCall <- function(verbose = FALSE) {
         envir = envir
     )
 
-    # Print the matched call, for debugging.
     if (isTRUE(verbose)) {
-        print(list(
-            which = which,
-            definition = definition,
-            call = call,
-            envir = envir
-        ))
+        print(call)
     }
 
     # Check call integrity before returning.
