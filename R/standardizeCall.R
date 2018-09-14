@@ -1,8 +1,16 @@
 #' Standardize Call
 #'
+#' This function adds matching support for S4 methods with formals that aren't
+#' identical to the generic, and use a nested `.local()` call.
+#'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @inheritParams base::match.call
+#' @inheritParams general
+#'
+#' @seealso [base::match.call()].
 #'
 #' @examples
 #' a <- "AAA"
@@ -44,13 +52,7 @@
 #'     }
 #' )
 #' testing(a, b, c)
-standardizeCall <- function(
-    definition = sys.function(sys.parent()),
-    call = sys.call(sys.parent()),
-    expand.dots = TRUE,
-    envir = parent.frame(n = 2L),
-    verbose = FALSE
-) {
+standardizeCall <- function(verbose = FALSE) {
     # Print the call stack, for debugging.
     if (isTRUE(verbose)) {
         print(sys.status())
@@ -96,6 +98,12 @@ standardizeCall <- function(
 
     call
 }
+
+# Assign the formals.
+# Ensure the function matches `base::match.call()`.
+f <- formals(match.call)
+f <- c(f, formals(standardizeCall))
+formals(standardizeCall) <- f
 
 
 
