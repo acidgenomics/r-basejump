@@ -57,7 +57,10 @@ standardizeCall <- function(verbose = FALSE) {
     if (isTRUE(verbose)) {
         print(list(
             sys.status = sys.status(),
-            sys.parent = sys.parent(),
+            sys.nframe = sys.nframe(),
+            sys.parent.1 = sys.parent(n = 1L),
+            sys.parent.2 = sys.parent(n = 2L),
+            sys.parent.3 = sys.parent(n = 3L),
             definition = definition,
             call = call,
             envir = envir,
@@ -67,19 +70,23 @@ standardizeCall <- function(verbose = FALSE) {
 
     # Check for S4 `.local()` and move up the stack an extra level accordingly.
     if (.isLocalCall(call)) {
-        # FIXME This approach doesn't work recursively...
         which <- sys.parent(n = 2L)
+        if (which < 1L) {
+            which <- 1L
+        }
         definition <- sys.function(sys.parent(n = which))
         stopifnot(is(definition, "MethodDefinition"))
         # Pull the ".local" function out, which has the formals we need to
         # match against in `match.call()` below.
         definition <- .extractLocal(definition)
         call <- sys.call(which = which)
-        if (isTRUE(.isLocalCall(call))) {
-            which <- which - 1L
-            call <- sys.call(which = which)
-        }
+        stopifnot(!isTRUE(.isLocalCall(call)))
         envir <- sys.frame(which = which)
+    } else {
+        which <- sys.parent(n = 1L)
+        if (which < 1L) {
+            which <- 1L
+        }
     }
 
     # Print the matched call, for debugging.
