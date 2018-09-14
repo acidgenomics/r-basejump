@@ -157,7 +157,6 @@ Collate:
     'markdownList.R'
     'markdownPlotlist.R'
     'matchArgsToDoCall.R'
-    'matchCall.R'
     'matchInterestingGroups.R'
     'meltCounts-methods.R'
     'metrics-methods.R'
