@@ -1,11 +1,50 @@
-.isLocalCall <- function(call) {
-    stopifnot(is(call, "call"))
-    identical(call[[1L]], as.symbol(".local"))
-}
-
-
-
-.standardizeCall <- function(
+#' Standardize Call
+#'
+#' @family Developer Functions
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @examples
+#' a <- "AAA"
+#' b <- "BBB"
+#' c <- "CCC"
+#'
+#' # Standard call
+#' testing <- function(x, y) {
+#'     print(match.call())
+#'     print(standardizeCall())
+#' }
+#' testing(a, b)
+#'
+#' # S4 mode
+#' setGeneric(
+#'     name = "testing",
+#'     def = function(x, y, ...) {
+#'         standardGeneric("testing")
+#'     }
+#' )
+#'
+#' setMethod(
+#'     f = "testing",
+#'     signature = signature("character"),
+#'     definition = function(x, y, ...) {
+#'         print(match.call())
+#'         print(standardizeCall())
+#'     }
+#' )
+#' testing(a, b)
+#'
+#' setMethod(
+#'     f = "testing",
+#'     signature = signature("character"),
+#'     definition = function(x, y, z) {
+#'         print(match.call())
+#'         print(match.call(call = sys.call(sys.parent())))
+#'         print(standardizeCall())
+#'     }
+#' )
+#' testing(a, b, c)
+standardizeCall <- function(
     definition = sys.function(sys.parent()),
     call = sys.call(sys.parent()),
     expand.dots = TRUE,
@@ -56,4 +95,11 @@
     assert_all_are_non_missing_nor_empty_character(names(as.list(call)[-1L]))
 
     call
+}
+
+
+
+.isLocalCall <- function(call) {
+    stopifnot(is(call, "call"))
+    identical(call[[1L]], as.symbol(".local"))
 }
