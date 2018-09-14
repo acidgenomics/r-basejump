@@ -2,14 +2,11 @@
 % Please edit documentation in R/AllGenerics.R
 \name{AllGenerics}
 \alias{AllGenerics}
-\alias{export}
 \alias{markdown}
 \alias{plotQC}
 \alias{tx2gene}
 \title{S4 Generics}
 \usage{
-export(x, ...)
-
 markdown(object, ...)
 
 plotQC(object, ...)
@@ -17,9 +14,9 @@ plotQC(object, ...)
 tx2gene(object, ...)
 }
 \arguments{
-\item{...}{Additional arguments.}
-
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Varies, depending upon the method.
