@@ -125,7 +125,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname export
 #' @export
 setGeneric(
     name = "export",
