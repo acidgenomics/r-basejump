@@ -39,7 +39,7 @@
 writeCounts <- function(
     ...,
     dir = ".",
-    gzip = TRUE
+    gzip = FALSE
 ) {
     dots <- dots_list(...)
     assert_is_list(dots)
@@ -51,31 +51,26 @@ writeCounts <- function(
     message(paste("Writing", toString(names), "to", dir))
 
     files <- mapply(
+        x <- dots,
         name <- names,
-        counts <- dots,
-        FUN = function(name, counts) {
-            if (is.matrix(counts)) {
-                # FIXME Use `export()` method internally.
-
-                # Coercing matrix to tibble here, to keep rownames intact.
-                ext <- ".csv"
+        FUN = function(x, name) {
+            if (is.matrix(x)) {
                 if (isTRUE(gzip)) {
-                    ext <- paste0(ext, ".gz")
+                    format <- "csv.gz"
+                } else {
+                    format = "csv"
                 }
-                fileName <- paste0(name, ext)
-                filePath <- file.path(dir, fileName)
-                write_csv(
-                    x = as(counts, "tbl_df"),
-                    path = filePath
-                )
-                returnPath <- filePath
-            } else if (is(counts, "sparseMatrix")) {
-                # FIXME
-                stop("FIXME")
+            } else if (is(x, "sparseMatrix")) {
+                if (isTRUE(gzip)) {
+                    format <- "mtx.gz"
+                } else {
+                    format = "mtx"
+                }
             } else {
                 stop(paste(name, "is not a matrix"), call. = FALSE)
             }
-            returnPath
+            file <- file.path(dir, paste0(name, ".", format))
+            do.call(what = export, args = list(x = x, file = file))
         },
         SIMPLIFY = TRUE,
         USE.NAMES = TRUE
