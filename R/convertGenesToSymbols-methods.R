@@ -72,7 +72,6 @@ function(
             args = matchArgsToDoCall(
                 args = list(organism = organism),
                 removeFormals = c("object", "gene2symbol"),
-                call = standardizeCall(verbose = TRUE),
                 verbose = TRUE
             )
         )
@@ -122,7 +121,6 @@ function(
         what = convertGenesToSymbols,
         args = matchArgsToDoCall(
             args = list(object = rownames),
-            call = standardizeCall(verbose = TRUE),
             verbose = TRUE
         )
     )
