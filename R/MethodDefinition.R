@@ -67,9 +67,7 @@ methodFunction <- function(f, signature) {
     if (isTRUE(.hasLocal(method))) {
         fun <- .extractLocal(method)
     } else {
-        # FIXME Check to see whether we need to pull out
-        # fun <- slot(method, ".Data")
-        fun <- method
+        fun <- slot(method, ".Data")
     }
     assert_is_function(fun)
     fun
