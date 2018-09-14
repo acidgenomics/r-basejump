@@ -22,9 +22,9 @@ x <- new(
 print(x)
 }
 \seealso{
-Other S4 Object: \code{\link{gene2symbol-class}}
+Other S4 Classes: \code{\link{gene2symbol-class}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{S4 Object}
+\concept{S4 Classes}

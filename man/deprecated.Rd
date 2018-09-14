@@ -23,6 +23,7 @@
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
 \alias{fixNA}
+\alias{flatFiles}
 \alias{readFileByExtension}
 \title{Deprecated Functions}
 \usage{
@@ -67,6 +68,8 @@ assertIsCharacterOrNULL(object, ...)
 assertIsDataFrameOrNULL(object, ...)
 
 fixNA(...)
+
+flatFiles(...)
 
 readFileByExtension(...)
 }

@@ -29,8 +29,7 @@ detectHPC()
 }
 
 Other Developer Functions: \code{\link{MethodDefinition}},
-  \code{\link{dots}}, \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
+  \code{\link{dots}}, \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
   \code{\link{matchInterestingGroups}},

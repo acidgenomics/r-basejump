@@ -22,6 +22,9 @@ export(x, ...)
 
 \item{format}{An optional character string containing the file format, which can be used to override the format inferred from \code{file} or, in lieu of specifying \code{file}, a file with the symbol name of \code{x} and the specified file extension will be created. Must specify \code{file} and/or \code{format}. Shortcuts include: \dQuote{,} (for comma-separated values), \dQuote{;} (for semicolon-separated values), \dQuote{|} (for pipe-separated values), and \dQuote{dump} for \code{\link[base]{dump}}.}
 }
+\value{
+Invisible \code{character}. File path(s).
+}
 \description{
 Export data out of R and write to disk.
 }
@@ -35,7 +38,8 @@ CSV. We're performing any internal tibble coercion step to ensure rownames
 are always moved to a "rowname" column in the CSV output.
 }
 \examples{
-export(mtcars, format = "csv")
+export(rnaseq_counts, format = "csv")
+export(single_cell_counts, format = "mtx")
 }
 \seealso{
 \code{\link[rio:export]{rio::export()}}.

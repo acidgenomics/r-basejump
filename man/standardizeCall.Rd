@@ -29,21 +29,19 @@ This function adds matching support for S4 methods with formals that aren't
 identical to the generic, and use a nested \code{.local()} call.
 }
 \examples{
-a <- "AAA"
-b <- "BBB"
-c <- "CCC"
+aaa <- "AAA"
+bbb <- "BBB"
 
-# Standard call
-testing <- function(x, y) {
-    print(match.call())
-    print(standardizeCall())
+# Standard function
+testing <- function(a, b) {
+    standardizeCall()
 }
-testing(a, b)
+testing(aaa, bbb)
 
-# S4 mode
+# Inside S4 method
 setGeneric(
     name = "testing",
-    def = function(x, y, ...) {
+    def = function(a, b, ...) {
         standardGeneric("testing")
     }
 )
@@ -51,30 +49,17 @@ setGeneric(
 setMethod(
     f = "testing",
     signature = signature("character"),
-    definition = function(x, y, ...) {
-        print(match.call())
-        print(standardizeCall())
+    definition = function(a, b, ...) {
+        standardizeCall()
     }
 )
-testing(a, b)
-
-setMethod(
-    f = "testing",
-    signature = signature("character"),
-    definition = function(x, y, z) {
-        print(match.call())
-        print(match.call(call = sys.call(sys.parent())))
-        print(standardizeCall())
-    }
-)
-testing(a, b, c)
+testing(aaa, bbb)
 }
 \seealso{
 \code{\link[base:match.call]{base::match.call()}}.
 
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
