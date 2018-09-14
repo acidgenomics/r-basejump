@@ -40,8 +40,10 @@ formals(.export.ANY) <- formals(rio::export)
 
 # Note that "file" is referring to the matrix file.
 # The correponding column and row sidecar files are generated automatically.
+# Consider adding HDF5 support in a future update.
 .export.sparseMatrix <-  # nolint
 function(x, file, format) {
+    assert_is_non_empty(x)
     call <- standardizeCall()
     sym <- call[["x"]]
     assert_is_symbol(sym)
@@ -63,8 +65,6 @@ function(x, file, format) {
         )))
     }
 
-    message(paste("Exporting", name, "to", file))
-
     # Determine whether we want to gzip compress.
     gzip <- grepl("\\.gz$", file)
 
@@ -85,14 +85,16 @@ function(x, file, format) {
     file <- normalizePath(file, winslash = "/", mustWork = TRUE)
 
     # Write barcodes (colnames).
-    barcodes <- colnames(counts)
+    barcodes <- colnames(x)
     barcodesFile <- paste0(file, ".colnames")
     write_lines(x = barcodes, path = barcodesFile)
 
     # Write gene names (rownames).
-    genes <- rownames(counts)
+    genes <- rownames(x)
     genesFile <- paste0(file, ".rownames")
     write_lines(x = genes, path = genesFile)
+
+    message(paste("Exported", name, "to", file))
 
     # Return named character of file paths.
     c(
@@ -114,7 +116,6 @@ setMethod(
 
 
 
-# FIXME Handle gzip
 #' @rdname export
 #' @export
 setMethod(
