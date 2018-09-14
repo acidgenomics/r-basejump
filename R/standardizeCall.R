@@ -64,7 +64,6 @@ standardizeCall <- function(verbose = FALSE) {
     # Check for S4 `.local()` and move up the stack an extra level accordingly.
     if (.isLocalCall(call)) {
         which <- sys.parent(n = 2L)
-        print(which)
         definition <- sys.function(sys.parent(n = which))
         stopifnot(is(definition, "MethodDefinition"))
         # Pull the ".local" function out, which has the formals we need to
