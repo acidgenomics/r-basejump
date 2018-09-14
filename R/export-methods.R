@@ -22,14 +22,7 @@ NULL
 
 .export.ANY <-  # nolint
 function(x, ...) {
-    x <- getGenerics(where = parent.frame())
-    print(length(x))
-    print(sys.status())
-    stop()
-    call <- matchCall(verbose = TRUE)
-    print(call)
-    stop()
-
+    call <- standardizeCall()
     sym <- call[["x"]]
     assertive::assert_is_symbol(sym)
     message(paste("Exporting", sym, "to", file))
