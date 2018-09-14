@@ -55,11 +55,8 @@ matchArgsToDoCall <- function(
         n = n + 1L
     }
 
+    # Get the position in the stack.
     which <- sys.parent(n = n)
-    # First position in the stack is 1, not 0.
-    if (which < 1L) {
-        which <- 1L
-    }
 
     call <- standardizeCall(
         definition = sys.function(which = which),
