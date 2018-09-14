@@ -47,8 +47,16 @@ matchArgsToDoCall <- function(
     assert_all_are_positive(n)
     assert_is_a_bool(verbose)
 
-    # Select the first call in the stack, if necessary.
+    # Handle S4 `.local()`, if necessary.
+    if (
+        n == 1L &&
+        isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
+    ) {
+        n = n + 1L
+    }
+
     which <- sys.parent(n = n)
+    # First position in the stack is 1, not 0.
     if (which < 1L) {
         which <- 1L
     }
@@ -67,10 +75,6 @@ matchArgsToDoCall <- function(
     args <- c(args, callArgs)
     # Remove formals we want to exclude.
     args <- args[setdiff(names(args), removeFormals)]
-    # FIXME We may not be handling all passthrough formals here correctly...
-    # Need to set up a unit test.
-    # If that's the case, we can return `definition` from `standardizeCall`
-    # return in a list and use that here.
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
