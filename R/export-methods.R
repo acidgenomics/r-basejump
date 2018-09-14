@@ -23,13 +23,16 @@ NULL
 .export.ANY <-  # nolint
 function(x, file, format, ...) {
     assert_is_non_empty(x)
-    call <- standardizeCall()
-    sym <- call[["x"]]
-    assert_is_symbol(sym)
-    name <- as.character(sym)
+    # Coerce to tibble.
+    # Note that our coercion method preserves rownames.
+    x <- as(x, "tbl_df")
     if (missing(file) && missing(format)) {
-        stop("Must specify 'file' and/or 'format'")
+        stop("Must specify 'file' and/or 'format'", call. = FALSE)
     } else if (missing(file)) {
+        call <- standardizeCall()
+        sym <- call[["x"]]
+        assert_is_symbol(sym)
+        name <- as.character(sym)
         assert_is_a_string(format)
         file <- paste0(name, ".", format)
     } else if (missing(format)) {
@@ -40,7 +43,7 @@ function(x, file, format, ...) {
         args = list(x = x, file = file, ...)
     )
     file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-    message(paste("Exported", name, "to", file))
+    message(paste("Exported", basename(file)))
     file
 }
 
@@ -52,20 +55,18 @@ function(x, file, format, ...) {
 .export.sparseMatrix <-  # nolint
 function(x, file, format) {
     assert_is_non_empty(x)
-    # FIXME This is breaking
-    # call <- standardizeCall()
-    call <-
-    print(call)
-    stop("HELLO THERE")
-    sym <- call[["x"]]
-    assert_is_symbol(sym)
-    name <- as.character(sym)
     choices = c("mtx", "mtx.gz")
 
-    if (missing(file)) {
+    if (missing(file) && missing(format)) {
+        stop("Must specify 'file' and/or 'format'", call. = FALSE)
+    } else if (missing(file)) {
+        call <- standardizeCall()
+        sym <- call[["x"]]
+        assert_is_symbol(sym)
+        name <- as.character(sym)
         format <- match.arg(format, choices)
         file <- paste0(name, ".", format)
-    } else {
+    } else if (missing(format)) {
         assert_is_a_string(file)
         # Require a valid extension.
         grepChoices <- paste0("\\.", choices, "$")
@@ -106,7 +107,7 @@ function(x, file, format) {
     genesFile <- paste0(file, ".rownames")
     write_lines(x = genes, path = genesFile)
 
-    message(paste("Exported", name, "to", file))
+    message(paste("Exported", basename(file)))
 
     # Return named character of file paths.
     c(
