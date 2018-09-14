@@ -67,7 +67,8 @@ function(
             what = makeTx2geneFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeFormals = c("object", "tx2gene")
+                removeFormals = c("object", "tx2gene"),
+                verbose = TRUE
             )
         )
     }
@@ -109,7 +110,10 @@ function(
     rownames <- rownames(object)
     rownames <- do.call(
         what = convertTranscriptsToGenes,
-        args = matchArgsToDoCall(args = list(object = rownames))
+        args = matchArgsToDoCall(
+            args = list(object = rownames),
+            verbose = TRUE
+        )
     )
     rownames(object) <- rownames
     object
