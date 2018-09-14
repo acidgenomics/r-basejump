@@ -33,7 +33,7 @@ Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
   \code{\link{matchInterestingGroups}},
-  \code{\link{printString}},
+  \code{\link{printString}}, \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

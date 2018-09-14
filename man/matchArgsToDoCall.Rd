@@ -4,8 +4,10 @@
 \alias{matchArgsToDoCall}
 \title{Match Arguments to Do Call}
 \usage{
-matchArgsToDoCall(args, removeArgs = NULL, which = sys.parent(),
-  verbose = FALSE)
+matchArgsToDoCall(args, removeFormals = NULL,
+  definition = sys.function(sys.parent()),
+  call = sys.call(sys.parent()), expand.dots = TRUE,
+  envir = parent.frame(2L), verbose = FALSE)
 }
 \arguments{
 \item{args}{
@@ -17,11 +19,13 @@ matchArgsToDoCall(args, removeArgs = NULL, which = sys.parent(),
     Please refer to the documentation of a particular method for the details.
   }
 
-\item{removeArgs}{\code{character}. Names of arguments to remove from \code{call}
+\item{removeFormals}{\code{character}. Names of arguments to remove from \code{call}
 and/or \code{fun} returns before passing to \code{do.call()}.}
 
-\item{which}{the frame number if non-negative, the number of frames
-    to go back if negative.}
+\item{envir}{
+    See \code{?base::\link[base]{do.call}} for a description of
+    these arguments.
+  }
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
@@ -39,7 +43,7 @@ example <- function(object, xxx, ...) {
             object = object,
             collapse = " "
         ),
-        removeArgs = "xxx"
+        removeFormals = "xxx"
     )
     print(args)
     do.call(what = paste, args = args)
@@ -54,7 +58,7 @@ Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
+  \code{\link{printString}}, \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
