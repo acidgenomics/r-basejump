@@ -26,6 +26,8 @@ reference:
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
+    - export
+    - import
     - starts_with("load")
     - starts_with("read")
     - starts_with("save")
@@ -52,8 +54,7 @@ reference:
     - starts_with("plot")
   - title: ggplot2 Functions
     contents:
-    - ggplot2_geoms
-    - ggplot2_themes
+    - starts_with("ggplot2_")
   - title: Math and Science Functions
     contents:
     - starts_with("aggregate")
@@ -76,17 +77,16 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
-    - cleanSystemLibrary
+    - coerceToList
     - starts_with("detect")
     - dots
-    - flatFiles
     - starts_with("initialize")
     - localOrRemoteFile
     - matchInterestingGroups
-    - matchCall
-    - methodFormals
+    - MethodDefinition
     - multiassignAsEnvir
     - printString
+    - standardizeCall
     - setArgsToDoCall
     - uniteInterestingGroups
   - title: R Documentation Functions
