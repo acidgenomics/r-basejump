@@ -1,8 +1,3 @@
-# FIXME This still isn't working right recursively.
-# S4 call stack inheritance is inception...
-
-
-
 #' Match Arguments to Do Call
 #'
 #' @family Developer Functions
