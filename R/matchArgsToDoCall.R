@@ -2,13 +2,13 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @include standardizeCall.R
 #' @export
 #'
-#' @inheritParams base::sys.call
-#' @inheritParams BiocGenerics::do.call
+#' @inheritParams standardizeCall
 #' @inheritParams general
-#' @param removeArgs `character`. Names of arguments to remove from `call`
-#'   and/or `fun` returns before passing to `do.call()`.
+#' @param removeFormals `character`. Names of formal arguments to remove from
+#'   `args` list before passing to `do.call()`.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 #'
@@ -19,29 +19,27 @@
 #'             object = object,
 #'             collapse = " "
 #'         ),
-#'         removeArgs = "xxx"
+#'         removeFormals = "xxx"
 #'     )
 #'     print(args)
 #'     do.call(what = paste, args = args)
 #' }
 #' example(c("hello", "world"))
-matchArgsToDoCall <- function(
-    args,
-    removeArgs = NULL,
-    which = sys.parent(),
-    verbose = FALSE
-) {
+matchArgsToDoCall <- function(args, removeFormals = NULL) {
     assert_is_list(args)
     assert_is_non_empty(args)
     assert_has_names(args)
-    assert_is_any_of(removeArgs, c("character", "NULL"))
-    assert_is_a_number(which)
+    assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_bool(verbose)
 
-    # FIXME Rethink this approach
-    stop()
-    call <- .sysCallWithS4(which = which, verbose = verbose)
-    fun <- sys.function(which = which)
+    # Standardize the call.
+    call <- standardizeCall(
+        definition = definition,
+        call = call,
+        expand.dots = expand.dots,
+        envir = envir,
+        verbose = verbose
+    )
 
     callArgs <- call %>%
         as.list() %>%
@@ -49,7 +47,8 @@ matchArgsToDoCall <- function(
         .[setdiff(names(.), names(args))]
     args <- c(args, callArgs)
 
-    formalArgs <- fun %>%
+    # We may need to rethink this step when dealing with `.local()`.
+    formalArgs <- definition %>%
         formals() %>%
         .[setdiff(names(.), names(args))]
     args <- c(args, formalArgs)
@@ -57,14 +56,14 @@ matchArgsToDoCall <- function(
     # Note that we're currently stripping "..." before passing to `do.call()`.
     args <- args[setdiff(
         x = names(args),
-        y = c(removeArgs, "...")
+        y = c(removeFormals, "...")
     )]
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
         print(list(
             call = call,
-            fun = formals(fun),
+            formals = formals(definition),
             args = lapply(args, class)
         ))
     }
@@ -74,3 +73,10 @@ matchArgsToDoCall <- function(
 
     args
 }
+
+# Assign the formals.
+f1 <- formals(matchArgsToDoCall)
+f2 <- formals(standardizeCall)
+f <- c(f1, f2)
+formals(matchArgsToDoCall) <- f
+
