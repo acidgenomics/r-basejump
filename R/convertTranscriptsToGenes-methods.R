@@ -67,7 +67,7 @@ function(
             what = makeTx2geneFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeArgs = c("object", "tx2gene")
+                removeFormals = c("object", "tx2gene")
             )
         )
     }
