@@ -17,24 +17,6 @@ rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
 
 
 
-#' Separator Bar
-#'
-#' Maximum of 72 characters wide.
-#'
-#' @note Bioconductor HTML vignettes don't render correctly when printing > 76
-#'   characters, even though the default width is set at 80.
-#'
-#' @keywords internal
-#' @export
-#' @examples
-#' cat(separatorBar)
-separatorBar <- paste0(
-    rep(x = "\u2500", times = min(c(getOption("width", 72L), 72L))),
-    collapse = ""
-)
-
-
-
 #' Update Message
 #' @keywords internal
 #' @export

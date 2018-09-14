@@ -88,6 +88,7 @@ reference:
     - MethodDefinition
     - multiassignAsEnvir
     - printString
+    - separator
     - standardizeCall
     - uniteInterestingGroups
   - title: R Documentation Functions

@@ -31,7 +31,7 @@ Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{matchArgsToDoCall}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{standardizeCall}},
+  \code{\link{separator}}, \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

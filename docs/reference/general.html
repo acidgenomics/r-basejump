@@ -133,6 +133,15 @@
       <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
+      <th>color</th>
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 color
+scale. Must supply discrete values. When set to <code>NULL</code>, the default ggplot2
+color palette will be used. If manual color definitions are desired, we
+recommend using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>.
+To set the discrete color palette globally, use
+<code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+    </tr>
+    <tr>
       <th>dir</th>
       <td><p><code>string</code>. Output directory. Defaults to the current working
 directory.</p></td>
@@ -157,6 +166,10 @@ directory.</p></td>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>. Groups of interest.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p><code>boolean</code>. Show plot legend.</p></td>
     </tr>
     <tr>
       <th>organism</th>

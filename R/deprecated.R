@@ -315,6 +315,12 @@ readFileByExtension <- function(...) {
 
 #' @rdname defunct
 #' @export
+separatorBar <- function(...) {
+    .Defunct("separator")
+}
+
+#' @rdname defunct
+#' @export
 setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }

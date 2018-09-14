@@ -14,7 +14,9 @@ Modified version of \code{scater::sc_example_counts}, with dimnames formatted
 in camel case for package consistency.
 }
 \examples{
-summary(single_cell_counts)
+dim(single_cell_counts)
+class(single_cell_counts)
+is(single_cell_counts, "sparseMatrix")
 }
 \author{
 Michael Steinbaugh
