@@ -10,8 +10,11 @@
 #' @include standardizeCall.R
 #' @export
 #'
-#' @inheritParams standardizeCall
+#'
+#' @inheritParams base::sys.call
 #' @inheritParams general
+#' @inheritParams standardizeCall
+
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
 #'
@@ -33,17 +36,20 @@
 matchArgsToDoCall <- function(
     args,
     removeFormals = NULL,
-    which = sys.parent(n = 2L),
-    verbose = TRUE
+    n = 1L,
+    verbose = FALSE
 ) {
     assert_is_list(args)
     assert_is_non_empty(args)
     assert_has_names(args)
     assert_is_any_of(removeFormals, c("character", "NULL"))
+    assert_is_a_number(n)
+    assert_all_are_positive(n)
     assert_is_a_bool(verbose)
 
     # Select the first call in the stack, if necessary.
-    if (which == 0L) {
+    which <- sys.parent(n = n)
+    if (which < 1L) {
         which <- 1L
     }
 
@@ -70,7 +76,6 @@ matchArgsToDoCall <- function(
     if (isTRUE(verbose)) {
         print(list(
             call = call,
-            formals = formals(definition),
             args = lapply(args, class)
         ))
     }
@@ -80,11 +85,3 @@ matchArgsToDoCall <- function(
 
     args
 }
-
-# Assign the formals.
-f1 <- formals(matchArgsToDoCall)
-f2 <- formals(standardizeCall)
-f2 <- f2[setdiff(names(f2), names(f1))]
-f <- c(f1, f2)
-formals(matchArgsToDoCall) <- f
-
