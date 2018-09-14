@@ -168,16 +168,6 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("dgCMatrix"),
-    definition = getMethod("convertTranscriptsToGenes", "matrix")
-)
-
-
-
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("dgTMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("convertTranscriptsToGenes", "matrix")
 )
