@@ -33,7 +33,8 @@
 matchArgsToDoCall <- function(
     args,
     removeFormals = NULL,
-    call
+    which = sys.parent(n = 2L),
+    verbose = TRUE
 ) {
     assert_is_list(args)
     assert_is_non_empty(args)
@@ -41,15 +42,18 @@ matchArgsToDoCall <- function(
     assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_bool(verbose)
 
-    if (missing(call)) {
-        # Standardize the call.
-        call <- standardizeCall(
-            definition = definition,
-            expand.dots = expand.dots,
-            envir = envir,
-            verbose = verbose
-        )
+    # Select the first call in the stack, if necessary.
+    if (which == 0L) {
+        which <- 1L
     }
+
+    call <- standardizeCall(
+        definition = sys.function(which = which),
+        call = sys.call(which = which),
+        expand.dots = TRUE,
+        envir = sys.frame(which = which),
+        verbose = verbose
+    )
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
