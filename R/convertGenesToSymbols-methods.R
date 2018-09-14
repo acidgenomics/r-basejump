@@ -176,17 +176,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("dgCMatrix"),
-    definition = getMethod("convertGenesToSymbols", "matrix")
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("dgTMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("convertGenesToSymbols", "matrix")
 )
 

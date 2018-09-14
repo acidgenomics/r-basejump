@@ -10,7 +10,7 @@ setOldClass(Classes = class(tibble()))
 #'
 #' Contains a `DataFrame` with `geneID` and `geneName` columns.
 #'
-#' @family S4 Object
+#' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -48,7 +48,7 @@ setValidity(
 #'
 #' Contains a `DataFrame` with `transcriptID` and `geneID` columns.
 #'
-#' @family S4 Object
+#' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
 #'

@@ -3,7 +3,7 @@
 #' Extract the slots inside an S4 object for archival storage.
 #'
 #' @name coerceToList
-#' @family Developer Functions
+#' @family Coercion Methods
 #' @author Michael Steinbaugh
 #' @export
 #'

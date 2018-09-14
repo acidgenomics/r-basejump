@@ -20,8 +20,8 @@
 #'
 #' @inheritParams general
 #' @param assays `list`. RNA-seq count matrices, which must have matching
-#'   dimensions. Counts can be passed in either dense (`matrix`) or sparse
-#'   (`dgCMatrix`, `dgTMatrix`) format.
+#'   dimensions. Counts can be passed in either a dense matrix (`matrix`) or
+#'   sparse matrix (`sparseMatrix`).
 #' @param rowRanges `GRanges` or `NULL`. *Recommended*. Metadata describing the
 #'   assay rows. If defined, must contain genomic ranges. Can be left `NULL` if
 #'   the genome is poorly annotated and/or ranges aren't available from

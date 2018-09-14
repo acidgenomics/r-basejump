@@ -250,7 +250,7 @@ setMethod(
 #' @export
 setMethod(
     f = "detectOrganism",
-    signature = signature("dgCMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("detectOrganism", "matrix")
 )
 
