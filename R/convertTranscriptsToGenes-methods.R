@@ -1,5 +1,5 @@
-# FIXME Consider collapsing a matrix, and adding similar method support for
-# `SummarizedExperiment`
+# TODO Consider collapsing a matrix to unique rows.
+# TODO Add SummarizedExperiment method support.
 
 
 
