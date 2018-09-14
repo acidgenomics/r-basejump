@@ -25,26 +25,31 @@ NULL
 
 
 
+.hasLocal <- function(definition) {
+    assert_is_function(definition)
+    body <- body(definition)
+    is(body, "{") &&
+        is(body[[2L]], "<-") &&
+        identical(body[[2L]][[2L]], as.name(".local"))
+}
+
+
+
+.extractLocal <- function(definition) {
+    stopifnot(.hasLocal(definition))
+    body <- body(definition)
+    local <- eval(body[[2L]][[3L]])
+    assert_is_function(local)
+    local
+}
+
+
+
 #' @rdname MethodDefinition
 #' @export
 methodFormals <- function(f, signature) {
-    fun <- methodFunction(f, signature)
-    formals(fun)
-    fdef <- getGeneric(f)
-    method <- selectMethod(fdef, signature)
-    body <- body(method)
-    if (
-        is(body, "{") &&
-        is(body[[2L]], "<-") &&
-        identical(body[[2L]][[2L]], as.name(".local"))
-    ) {
-        # .local
-        local <- eval(body[[2L]][[3L]])
-        assert_is_function(local)
-        formals(local)
-    } else {
-        formals(fdef)
-    }
+    definition <- methodFunction(f, signature)
+    formals(definition)
 }
 
 
@@ -52,18 +57,19 @@ methodFormals <- function(f, signature) {
 #' @rdname MethodDefinition
 #' @export
 methodFunction <- function(f, signature) {
-    fdef <- getGeneric(f)
-    method <- selectMethod(fdef, signature)
-    body <- body(method)
-    if (
-        is(body, "{") &&
-        is(body[[2L]], "<-") &&
-        identical(body[[2L]][[2L]], as.name(".local"))
-    ) {
-        # .local
-        fun <- eval(body[[2L]][[3L]])
+    method <- selectMethod(
+        f = getGeneric(f = f, mustFind = TRUE),
+        signature = signature
+    )
+    stopifnot(is(method, "MethodDefinition"))
+    # S4 will nest `.local()` function inside the method when the formals aren't
+    # identical to the generic. Otherwise it will be slotted in ".Data".
+    if (isTRUE(.hasLocal(method))) {
+        fun <- .extractLocal(method)
     } else {
-        fun <- slot(method, ".Data")
+        # FIXME Check to see whether we need to pull out
+        # fun <- slot(method, ".Data")
+        fun <- method
     }
     assert_is_function(fun)
     fun
