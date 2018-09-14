@@ -24,7 +24,7 @@
 #' @param dir `string`. Output directory.
 #' @param gzip `boolean`. Compress the counts file using gzip.
 #'
-#' @return Invisible named `character`. File paths.
+#' @return Invisible `list`. File paths.
 #'
 #' @examples
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
@@ -46,10 +46,11 @@ writeCounts <- function(
     # Iterate across the dot objects and write to disk.
     message(paste("Writing", toString(names), "to", dir))
 
+    # Put the names first in the call here.
     files <- mapply(
-        x <- dots,
         name <- names,
-        FUN = function(x, name) {
+        x <- dots,
+        FUN = function(name, x) {
             if (is.matrix(x)) {
                 if (isTRUE(gzip)) {
                     format <- "csv.gz"
@@ -68,7 +69,7 @@ writeCounts <- function(
             file <- file.path(dir, paste0(name, ".", format))
             do.call(what = export, args = list(x = x, file = file))
         },
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = TRUE
     )
 
