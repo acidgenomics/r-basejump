@@ -71,7 +71,7 @@ function(
             what = makeGene2symbolFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeArgs = c("object", "gene2symbol")
+                removeFormals = c("object", "gene2symbol")
             )
         )
     }
