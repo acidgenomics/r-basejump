@@ -16,10 +16,13 @@
 #' @inheritParams rio::export
 #' @param x Object.
 #'
+#' @return Invisible `character`. File path(s).
+#'
 #' @seealso [rio::export()].
 #'
 #' @examples
-#' export(mtcars, format = "csv")
+#' export(rnaseq_counts, format = "csv")
+#' export(single_cell_counts, format = "mtx")
 NULL
 
 
@@ -48,7 +51,7 @@ function(x, file, format, ...) {
     )
     file <- normalizePath(file, winslash = "/", mustWork = TRUE)
     message(paste("Exported", basename(file)))
-    file
+    invisible(file)
 }
 
 
@@ -111,14 +114,16 @@ function(x, file, format) {
     genesFile <- paste0(file, ".rownames")
     write_lines(x = genes, path = genesFile)
 
-    message(paste("Exported", basename(file)))
-
-    # Return named character of file paths.
-    c(
+    files <- c(
         matrix = file,
         barcodes = barcodesFile,
         genes = genesFile
     )
+
+    message(paste("Exported", toString(basename(files))))
+
+    # Return named character of file paths.
+    invisible(files)
 }
 
 
