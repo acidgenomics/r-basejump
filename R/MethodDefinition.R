@@ -15,7 +15,7 @@
 #' @examples
 #' # Function
 #' x <- methodFunction(f = "geometricMean", signature = "numeric")
-#' class(f)
+#' class(x)
 #'
 #' # Formals
 #' x <- methodFormals(f = "geometricMean", signature = "numeric")
