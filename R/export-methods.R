@@ -23,6 +23,14 @@
 #' @examples
 #' export(rnaseq_counts, format = "csv")
 #' export(single_cell_counts, format = "mtx")
+#'
+#' # Clean up
+#' file.remove(c(
+#'     "rnaseq_counts.csv",
+#'     "single_cell_counts.mtx",
+#'     "single_cell_counts.mtx.colnames",
+#'     "single_cell_counts.mtx.rownames"
+#' ))
 NULL
 
 

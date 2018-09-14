@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read File by Extension — readFileByExtension • basejump</title>
+<title>Import — import • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Read File by Extension — readFileByExtension" />
+<meta property="og:title" content="Import — import" />
 
-<meta property="og:description" content="Supports automatic loading of common file extensions:" />
+<meta property="og:description" content="Read file by extension into R." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,18 +105,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read File by Extension</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readFileByExtension.R'><code>R/readFileByExtension.R</code></a></small>
-    <div class="hidden name"><code>readFileByExtension.Rd</code></div>
+    <h1>Import</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/import.R'><code>R/import.R</code></a></small>
+    <div class="hidden name"><code>import.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Supports automatic loading of common file extensions:</p>
+    <p>Read file by extension into R.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>readFileByExtension</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>import</span>(<span class='no'>file</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,7 +138,9 @@ returned as <code>DataFrame</code> class, when applicable.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <ul>
+    <p>This is a wrapper for <code><a href='http://www.rdocumentation.org/packages/rio/topics/import'>rio::import()</a></code> that adds support for additional
+common genomic data formats.</p>
+<p>Supports automatic loading of common file extensions:</p><ul>
 <li><p><code>csv</code>: Comma Separated Values.</p></li>
 <li><p><code>gff</code>/<code>gff3</code>/<code>gtf</code>: General Feature Format.</p></li>
 <li><p><code>mtx</code>: MatrixMarket sparse matrix.</p></li>
@@ -181,12 +183,12 @@ is provided.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># R Data</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  int [1:1000, 1:12] 0 33 2 18 11 15 93 47 60 25 ...
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  int [1:1000, 1:12] 0 33 2 18 11 15 93 47 60 25 ...
 #&gt;  - attr(*, "dimnames")=List of 2
 #&gt;   ..$ : chr [1:1000] "gene1" "gene2" "gene3" "gene4" ...
 #&gt;   ..$ : chr [1:12] "sample1" "sample2" "sample3" "sample4" ...</div><div class='input'>
 <span class='co'># Comma Separated Values</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
 #&gt;   ..@ rownames       : NULL
 #&gt;   ..@ nrows          : int 32
 #&gt;   ..@ listData       :List of 12
@@ -206,7 +208,7 @@ is provided.</p>
 #&gt;   ..@ elementMetadata: NULL
 #&gt;   ..@ metadata       : list()</div><div class='input'>
 <span class='co'># Microsoft Excel Worksheet</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.xlsx"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.xlsx</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.xlsx"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.xlsx</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
 #&gt;   ..@ rownames       : NULL
 #&gt;   ..@ nrows          : int 6
 #&gt;   ..@ listData       :List of 12
@@ -226,7 +228,7 @@ is provided.</p>
 #&gt;   ..@ elementMetadata: NULL
 #&gt;   ..@ metadata       : list()</div><div class='input'>
 <span class='co'># bcbio Counts Table</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readFileByExtension</span>(<span class='st'>"http://basejump.seq.cloud/example.counts"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.counts</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/example.counts"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.counts</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  id = col_character(),</span>
 #&gt; <span class='message'>  sample01 = col_integer(),</span>

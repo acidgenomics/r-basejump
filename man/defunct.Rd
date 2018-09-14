@@ -14,6 +14,7 @@
 \alias{broadClass,data.frame-method}
 \alias{broadClass,DataFrame-method}
 \alias{synonyms}
+\alias{separatorBar}
 \alias{setArgsToDoCall}
 \title{Defunct Functions}
 \usage{
@@ -38,6 +39,8 @@ dynamicPlotlist(...)
 \S4method{broadClass}{DataFrame}(object)
 
 synonyms(...)
+
+separatorBar(...)
 
 setArgsToDoCall(...)
 }

@@ -186,6 +186,7 @@ Collate:
     'saveData.R'
     'saveRdExamples.R'
     'selectSamples-methods.R'
+    'separator.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'toStringUnique.R'

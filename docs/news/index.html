@@ -140,7 +140,7 @@
 <li>Updated <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> generic to use <code>...</code>, since we’ve added the <code>unique = TRUE</code> argument in this release.</li>
 <li>
 <code><a href="../reference/makeGRanges.html">annotable()</a></code>: Moved to <code>makeGRanges.R</code> file, and improved the internal code to export supported formals also used in <code><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl()</a></code>. The function should work exactly the same as previous releases, but now with clearer supported arguments in the documentation.</li>
-<li>Skipping code coverage for <code><a href="../reference/cleanSystemLibrary.html">cleanSystemLibrary()</a></code>, since <a href="https://travis-ci.com">Travis CI</a> installs packages into the system library, and causes this check to return <code>FALSE</code>.</li>
+<li>Skipping code coverage for <code>cleanSystemLibrary()</code>, since <a href="https://travis-ci.com">Travis CI</a> installs packages into the system library, and causes this check to return <code>FALSE</code>.</li>
 <li>Consistently using <code><a href="../reference/coerce.html">as(from, "tbl_df")</a></code> for internal tibble coercion in all functions.</li>
 <li>
 <code><a href="../reference/geneSynonyms.html">geneSynonyms()</a></code> and <code><a href="../reference/panther.html">panther()</a></code>: <code>organism</code> argument matching no longer suggests a default. The current list of supported organisms is in the documentation, and described in the internal <code>match.arg()</code> call.</li>
@@ -163,7 +163,7 @@
 <a href="#new-functions-1" class="anchor"></a>New functions</h3>
 <ul>
 <li>
-<code><a href="../reference/cleanSystemLibrary.html">cleanSystemLibrary()</a></code>: Utility function to check whether a user has installed packages into the [R][] system library. Refer to <code>.libPaths()</code> documentation for more information on library paths.</li>
+<code>cleanSystemLibrary()</code>: Utility function to check whether a user has installed packages into the [R][] system library. Refer to <code>.libPaths()</code> documentation for more information on library paths.</li>
 </ul>
 </div>
 <div id="major-changes-1" class="section level3">
@@ -192,7 +192,7 @@
 <ul>
 <li>
 <code><a href="../reference/makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code>: Renamed <code>prepareSummarizedExperiment()</code>, previously exported in the <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package. We are using the <code>make</code> prefix here for consistency (see other gene annotation functions).</li>
-<li>Migrated S4 generics and methods from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>: <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotCorrleationHeatmap()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/plotHeatmap.html">plotHeatmap()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, and <code><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code>.</li>
+<li>Migrated S4 generics and methods from <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>: <code><a href="../reference/deprecated.html">flatFiles()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotCorrleationHeatmap()</code>, <code><a href="../reference/plotGene.html">plotGene()</a></code>, <code><a href="../reference/plotHeatmap.html">plotHeatmap()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, and <code><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code>.</li>
 </ul>
 </div>
 <div id="major-changes-2" class="section level3">
@@ -200,7 +200,7 @@
 <a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now using <code><a href="http://www.rdocumentation.org/packages/curl/topics/nslookup">curl::has_internet()</a></code> internally to check for Internet connection. This applies to the annotation functions that query web databases.</li>
-<li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code><a href="../reference/flatFiles.html">flatFiles()</a></code>.</li>
+<li>Added coercion method support for converting a <code>SummarizedExperiment</code> to an unstructured <code>list</code>. This is the method used internally for <code><a href="../reference/deprecated.html">flatFiles()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -340,7 +340,7 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Removed <code>makeNames</code> argument from <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
+<li>Removed <code>makeNames</code> argument from <code><a href="../reference/deprecated.html">readFileByExtension()</a></code> function. Use the <code>makeNames</code> family of functions manually after data import instead. This helps avoid unwanted sanitization of data.</li>
 <li>Simplified assert checks for internal load function.</li>
 <li>Improved code coverage.</li>
 <li>
@@ -533,7 +533,7 @@
 <li>
 <code><a href="../reference/multiassignAsEnvir.html">multiassignAsEnvir()</a></code> is now recommended in place of <code><a href="../reference/deprecated.html">multiassignAsNewEnvir()</a></code>.</li>
 <li>
-<code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code> will now attempt to use the <a href="https://cran.r-project.org/package=rio">rio</a> package for file extensions that are not natively supported.</li>
+<code><a href="../reference/deprecated.html">readFileByExtension()</a></code> will now attempt to use the <a href="https://cran.r-project.org/package=rio">rio</a> package for file extensions that are not natively supported.</li>
 <li>
 <code><a href="../reference/writeCounts.html">writeCounts()</a></code> now uses <code>mapply()</code> internally.</li>
 <li>Migrated <code>assertFormalAnnotationCol()</code> to <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a> package.</li>
@@ -625,7 +625,7 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-2-0-2018-01-28" class="anchor"></a>basejump 0.2.0 (2018-01-28)</h2>
 <ul>
-<li>Offloaded internal <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a>-specific code to new package named <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>. Consequently, this makes the <a href="https://steinbaugh.com/basejump">basejump</a> package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio()</code>, <code>checkInterestingGroups()</code>, <code><a href="../reference/flatFiles.html">flatFiles()</a></code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotDot()</code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, <code>plotViolin()</code>, <code>prepareSummarizedExperiment()</code>, <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code>, <code>readDataVersions()</code>, <code>readLogFile()</code>, <code>readProgramVersions()</code>, <code>readSampleMetadataFile()</code>, <code>sampleMetadata()</code>, <code>sampleYAML()</code>, <code>sampleYAMLMetadata()</code>, <code>sampleYAMLMetrics()</code>, and <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are now deprecated here in <a href="https://steinbaugh.com/basejump">basejump</a> (see <code>deprecated.R</code> file for more information).</li>
+<li>Offloaded internal <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a>-specific code to new package named <a href="http://bioinformatics.sph.harvard.edu/bcbioBase">bcbioBase</a>. Consequently, this makes the <a href="https://steinbaugh.com/basejump">basejump</a> package leaner, meaner, and easier to manage. The following functions are now exported in that package: <code>bcbio()</code>, <code>checkInterestingGroups()</code>, <code><a href="../reference/deprecated.html">flatFiles()</a></code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code>plotDot()</code>, <code><a href="../reference/plotGene.html">plotGene()</a></code>, <code><a href="../reference/AllGenerics.html">plotQC()</a></code>, <code>plotViolin()</code>, <code>prepareSummarizedExperiment()</code>, <code><a href="../reference/prepareTemplate.html">prepareTemplate()</a></code>, <code>readDataVersions()</code>, <code>readLogFile()</code>, <code>readProgramVersions()</code>, <code>readSampleMetadataFile()</code>, <code>sampleMetadata()</code>, <code>sampleYAML()</code>, <code>sampleYAMLMetadata()</code>, <code>sampleYAMLMetrics()</code>, and <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are now deprecated here in <a href="https://steinbaugh.com/basejump">basejump</a> (see <code>deprecated.R</code> file for more information).</li>
 <li>
 <code><a href="../reference/defunct.html">comp()</a></code> and <code><a href="../reference/defunct.html">revcomp()</a></code> have been deprecated in favor of <code>complement()</code> and <code>reverseComplement()</code> from the <a href="http://bioconductor.org/packages/release/bioc/html/Biostrings.html">Biostrings</a> package.</li>
 <li>Internally, errors, messages, and warnings now use methods from the <a href="http://rlang.tidyverse.org">rlang</a> package: <code>abort()</code>, <code>inform()</code>, and <code>warn()</code>, in place of <code>stop()</code>, <code>message()</code>, and <code>warning()</code>, respectively.</li>
@@ -666,13 +666,13 @@
 <h2 class="hasAnchor">
 <a href="#basejump-0-1-8-2017-12-14" class="anchor"></a>basejump 0.1.8 (2017-12-14)</h2>
 <ul>
-<li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code> and <code><a href="../reference/deprecated.html">aggregateFeatures()</a></code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code> or genes/transcripts (rows) for <code><a href="../reference/deprecated.html">aggregateFeatures()</a></code>.</li>
+<li>Improved <code>matrix</code> and <code>dgCMatrix</code> method support in <code><a href="../reference/aggregate.html">aggregateReplicates()</a></code> and <code><a href="../reference/aggregate.html">aggregateFeatures()</a></code> functions. Both of these functions now use a consistent <code>groupings</code> parameter, which uses a named factor to define the mappings of either samples (columns) for <code><a href="../reference/aggregate.html">aggregateReplicates()</a></code> or genes/transcripts (rows) for <code><a href="../reference/aggregate.html">aggregateFeatures()</a></code>.</li>
 <li>Update for <code>makeNames</code> sanitization functions. Now they will work on <code>names(x)</code> for vectors by default.</li>
 <li>Improved <code><a href="../reference/detectOrganism.html">detectOrganism()</a></code> to match against “H. sapiens”, etc.</li>
 <li>Added internal <a href="https://grch37.ensembl.org">GRCh37</a> transcript to gene mapping.</li>
 <li>Improved organism matching to detect “Homo_sapiens” and “H. sapiens”.</li>
 <li>Factors are now supported in the <code>makeNames</code> utilities: <code><a href="../reference/makeNames.html">camel()</a></code>, <code><a href="../reference/makeNames.html">dotted()</a></code>, <code><a href="../reference/makeNames.html">snake()</a></code>, and <code><a href="../reference/makeNames.html">upperCamel()</a></code>.</li>
-<li>Improved handling of <code>NA</code> values from <a href="https://www.libreoffice.org">LibreOffice</a> and <a href="https://products.office.com/en-us/excel">Microsoft Excel</a> output in <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
+<li>Improved handling of <code>NA</code> values from <a href="https://www.libreoffice.org">LibreOffice</a> and <a href="https://products.office.com/en-us/excel">Microsoft Excel</a> output in <code><a href="../reference/deprecated.html">readFileByExtension()</a></code>. This function now sets <code>""</code>, <code>NA</code>, and <code>#N/A</code> strings as <code>NA</code> correctly.</li>
 </ul>
 </div>
     <div id="basejump-0-1-7-2017-12-11" class="section level2">
@@ -782,7 +782,7 @@
 <li>Renamed <code>multiassignAsNewEnv()</code> to <code><a href="../reference/deprecated.html">multiassignAsNewEnvir()</a></code>
 </li>
 <li>Added <code>*GFF()</code> function variants for <code><a href="../reference/deprecated.html">gene2symbolFromGTF()</a></code> and <code><a href="../reference/deprecated.html">tx2geneFromGTF()</a></code>.</li>
-<li>Added shared <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> generic functions: <code><a href="../reference/deprecated.html">aggregateReplicates()</a></code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code><a href="../reference/AllGenerics.html">plotGene()</a></code>, <code>sampleDirs()</code>, <code>sampleMetadata()</code>, <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
+<li>Added shared <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> generic functions: <code><a href="../reference/aggregate.html">aggregateReplicates()</a></code>, <code>bcbio()</code>, <code>bcbio&lt;-()</code>, <code><a href="../reference/interestingGroups.html">interestingGroups()</a></code>, <code><a href="../reference/metrics.html">metrics()</a></code>, <code><a href="../reference/plotGene.html">plotGene()</a></code>, <code>sampleDirs()</code>, <code>sampleMetadata()</code>, <code><a href="../reference/selectSamples.html">selectSamples()</a></code>. These functions are saved in <code>bcbioGenerics.R</code> file.</li>
 <li>Incorporated <a href="https://github.com/chapmanb/bcbio-nextgen">bcbio</a> utility functions shared across <a href="http://bioinformatics.sph.harvard.edu/bcbioRNASeq">bcbioRNASeq</a> and <a href="http://bioinformatics.sph.harvard.edu/bcbioSingleCell">bcbioSingleCell</a>: <code>readDataVersions()</code> (deprecated <code>.dataVersions()</code>), <code>readLogFile()</code> (deprecated <code>.logFile()</code>), <code>readProgramVersions()</code> (deprecated <code>.programs()</code>), <code>sampleYAML()</code> (deprecated <code>.sampleYAML()</code>), <code>sampleYAMLMetadata()</code> (deprecated <code>sampleYAMLMetadata()</code>), <code>sampleYAMLMetrics()</code> (deprecated .sampleYAMLMetrics()`).</li>
 <li>Deprecated <code>metadataTable()</code> function.</li>
 <li>Moved all <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a> documentation to <code>methods-*.R</code> files where applicable.</li>
@@ -836,7 +836,7 @@
 <li>Added additional <code>data-raw/</code> scripts.</li>
 <li>Added <code>onLoad.R</code> script back to ensure proper attachment of <a href="https://github.com/stephenturner/annotables">annotables</a> data package.</li>
 <li>Removed <a href="http://www.tidyverse.org">tidyverse</a> S4 method support.</li>
-<li>Improved remote file handling for <code><a href="../reference/readFileByExtension.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
+<li>Improved remote file handling for <code><a href="../reference/deprecated.html">readFileByExtension()</a></code>, <code><a href="../reference/readGFF.html">readGTF()</a></code>, and <code><a href="../reference/readYAML.html">readYAML()</a></code> functions.</li>
 </ul>
 </div>
     <div id="basejump-0-0-20-2017-08-16" class="section level2">

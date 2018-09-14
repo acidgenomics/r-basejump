@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Separator Bar — separatorBar • basejump</title>
+<title>Separator Bar — separator • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Separator Bar — separatorBar" />
+<meta property="og:title" content="Separator Bar — separator" />
 
 <meta property="og:description" content="Maximum of 72 characters wide." />
 <meta name="twitter:card" content="summary" />
@@ -106,8 +106,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Separator Bar</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/globals.R'><code>R/globals.R</code></a></small>
-    <div class="hidden name"><code>separatorBar.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/separator.R'><code>R/separator.R</code></a></small>
+    <div class="hidden name"><code>separator.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -116,31 +116,64 @@
     
     </div>
 
-    <pre class="usage"><span class='no'>separatorBar</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>separator</span>(<span class='kw'>sep</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"─"</span>, <span class='st'>"="</span>, <span class='st'>"-"</span>, <span class='st'>"+"</span>),
+  <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>min</span>(<span class='fu'>c</span>(<span class='fu'>getOption</span>(<span class='st'>"width"</span>, <span class='fl'>72L</span>), <span class='fl'>72L</span>)))</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sep</th>
+      <td><p><code>string</code> of length 1. Separator character.</p></td>
+    </tr>
+    <tr>
+      <th>times</th>
+      <td><p><code>scalar integer</code>. Number of times to repeat.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>character</code> of length 1.</p>
+    <p><code>string</code>.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Bioconductor HTML vignettes don't render correctly when printing &gt; 76
 characters, even though the default width is set at 80.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Developer Functions: <code><a href='MethodDefinition.html'>MethodDefinition</a></code>,
+  <code><a href='detectHPC.html'>detectHPC</a></code>, <code><a href='dots.html'>dots</a></code>,
+  <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
+  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>,
+  <code><a href='matchArgsToDoCall.html'>matchArgsToDoCall</a></code>,
+  <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
+  <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
+  <code><a href='printString.html'>printString</a></code>, <code><a href='standardizeCall.html'>standardizeCall</a></code>,
+  <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>cat</span>(<span class='no'>separatorBar</span>)</div><div class='output co'>#&gt; ────────────────────────────────────────────────────────────────────────</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>cat</span>(<span class='fu'>separator</span>())</div><div class='output co'>#&gt; ────────────────────────────────────────────────────────────────────────</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
 
       <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Michael Steinbaugh
 
   </div>
 </div>
