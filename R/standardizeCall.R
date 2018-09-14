@@ -13,21 +13,19 @@
 #' @seealso [base::match.call()].
 #'
 #' @examples
-#' a <- "AAA"
-#' b <- "BBB"
-#' c <- "CCC"
+#' aaa <- "AAA"
+#' bbb <- "BBB"
 #'
-#' # Standard call
-#' testing <- function(x, y) {
-#'     print(match.call())
-#'     print(standardizeCall())
+#' # Standard function
+#' testing <- function(a, b) {
+#'     standardizeCall()
 #' }
-#' testing(a, b)
+#' testing(aaa, bbb)
 #'
-#' # S4 mode
+#' # Inside S4 method
 #' setGeneric(
 #'     name = "testing",
-#'     def = function(x, y, ...) {
+#'     def = function(a, b, ...) {
 #'         standardGeneric("testing")
 #'     }
 #' )
@@ -35,23 +33,11 @@
 #' setMethod(
 #'     f = "testing",
 #'     signature = signature("character"),
-#'     definition = function(x, y, ...) {
-#'         print(match.call())
-#'         print(standardizeCall())
+#'     definition = function(a, b, ...) {
+#'         standardizeCall()
 #'     }
 #' )
-#' testing(a, b)
-#'
-#' setMethod(
-#'     f = "testing",
-#'     signature = signature("character"),
-#'     definition = function(x, y, z) {
-#'         print(match.call())
-#'         print(match.call(call = sys.call(sys.parent())))
-#'         print(standardizeCall())
-#'     }
-#' )
-#' testing(a, b, c)
+#' testing(aaa, bbb)
 standardizeCall <- function(verbose = FALSE) {
     # Print the call stack, for debugging.
     if (isTRUE(verbose)) {
