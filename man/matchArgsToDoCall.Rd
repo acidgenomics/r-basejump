@@ -8,6 +8,9 @@ matchArgsToDoCall(args, removeFormals = NULL, n = 1L,
   verbose = FALSE)
 }
 \arguments{
+\item{args}{a \emph{list} of arguments to the function call.  The
+    \code{names} attribute of \code{args} gives the argument names.}
+
 \item{removeFormals}{\code{character}. Names of formal arguments to remove from
 \code{args} list before passing to \code{do.call()}.}
 
@@ -38,6 +41,12 @@ example <- function(object, xxx, ...) {
 example(c("hello", "world"))
 }
 \seealso{
+\itemize{
+\item \code{\link[base:do.call]{base::do.call()}}.
+\item \code{\link[base:sys.call]{base::sys.call()}}.
+\item \code{\link[base:sys.parent]{base::sys.parent()}}.
+}
+
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
   \code{\link{flatFiles}},

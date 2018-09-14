@@ -7,13 +7,17 @@
 #'
 #'
 #' @inheritParams base::sys.call
+#' @inheritParams base::do.call
 #' @inheritParams general
-#' @inheritParams standardizeCall
-
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
+#'
+#' @seealso
+#' - [base::do.call()].
+#' - [base::sys.call()].
+#' - [base::sys.parent()].
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {
