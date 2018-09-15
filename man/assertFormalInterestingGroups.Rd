@@ -12,7 +12,7 @@ assertFormalInterestingGroups(object, interestingGroups)
 \item{interestingGroups}{\code{character}. Groups of interest.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Prevent unwanted downstream behavior when a missing interesting group

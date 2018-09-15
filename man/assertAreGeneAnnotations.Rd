@@ -10,7 +10,7 @@ assertAreGeneAnnotations(object)
 \item{object}{Object that can be coerced to \code{data.frame}.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Must contain \code{geneID} and \code{geneName} columns. Does not need to contain

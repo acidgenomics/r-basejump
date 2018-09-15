@@ -16,7 +16,7 @@ assertAllAreNonExisting(object, envir = parent.frame(),
 be searched?}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Assert All Variables Are Non-Existing

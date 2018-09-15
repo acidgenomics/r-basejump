@@ -4,6 +4,9 @@
 \name{tx2gene-class}
 \alias{tx2gene-class}
 \title{\code{tx2gene} Class}
+\value{
+\code{tx2gene}.
+}
 \description{
 Transcript-to-gene mappings.
 }

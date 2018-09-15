@@ -69,7 +69,7 @@ assertIsDataFrameOrNULL(object, ...)
 
 fixNA(...)
 
-flatFiles(...)
+flatFiles(object)
 
 readFileByExtension(...)
 }

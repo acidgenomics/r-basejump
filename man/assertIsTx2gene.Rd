@@ -12,7 +12,7 @@ identifier mappings. Must contain the columns "\code{transcriptID}" and
 "\code{geneID}". If \code{DataFrame}, must also have \code{rownames} set.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Assert Is Transcript-to-Gene Mapping Data
