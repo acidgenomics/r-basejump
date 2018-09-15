@@ -4,15 +4,13 @@
 #' This function is vectorized and supports mixed local and remote paths. Remote
 #' files are downloaded locally to a temporary directory.
 #'
-#' @note Stops on a missing file.
-#'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @param file `string`. Local file paths or remote URLs.
 #'
-#' @return `character`. Local file paths.
+#' @return `character`. Local file paths. Stops on a missing file.
 #'
 #' @seealso [base::tempdir()].
 #'
