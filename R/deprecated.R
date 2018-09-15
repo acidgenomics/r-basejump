@@ -301,9 +301,9 @@ fixNA <- function(...) {
 
 #' @rdname deprecated
 #' @export
-flatFiles <- function(...) {
-    .Deprecated("coerceToList")
-    coerceToList(...)
+flatFiles <- function(object) {
+    .Deprecated("coerceS4ToList(from), as(object, \"list\"), or as.list(x)")
+    coerceS4ToList(from = object)
 }
 
 #' @rdname deprecated
