@@ -90,12 +90,8 @@ NULL
 
 
 # aggregateCols ================================================================
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("matrix"),
-    definition = function(object, groupings) {
+.aggregateCols.matrix <-  # nolint
+    function(object, groupings) {
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(colnames(object), names(groupings))
@@ -106,16 +102,12 @@ setMethod(
         tagg <- rowsum(x = t, group = groupings, reorder = FALSE)
         agg <- t(tagg)
         agg
-    })
+    }
 
 
 
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("sparseMatrix"),
-    definition = function(object, groupings) {
+.aggregateCols.sparseMatrix <-  # nolint
+    function(object, groupings) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
@@ -127,16 +119,12 @@ setMethod(
         tagg <- aggregate.Matrix(t, groupings = groupings, fun = "sum")
         agg <- t(tagg)
         agg
-    })
+    }
 
 
 
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+.aggregateCols.SE <-  # nolint
+    function(object) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(colData(object)))
@@ -195,50 +183,54 @@ setMethod(
         }
         do.call(what = SummarizedExperiment, args = args)
     }
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateCols",
+    signature = signature("matrix"),
+    definition = .aggregateCols.matrix
 )
 
 
 
-# Consider deprecating this in a future release.
 #' @rdname aggregate
 #' @export
-aggregateReplicates <- function(...) {
-    aggregateCols(...)
-}
+setMethod(
+    f = "aggregateCols",
+    signature = signature("sparseMatrix"),
+    definition = .aggregateCols.sparseMatrix
+)
 
 
 
 #' @rdname aggregate
 #' @export
-aggregateSamples <- function(...) {
-    aggregateCols(...)
-}
+setMethod(
+    f = "aggregateCols",
+    signature = signature("SummarizedExperiment"),
+    definition = .aggregateCols.SE
+)
 
 
 
 # aggregateRows ================================================================
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("matrix"),
-    definition = function(object, groupings) {
+.aggregateRows.matrix <-  # nolint
+    function(object, groupings) {
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
         assert_are_identical(rownames(object), names(groupings))
         assertAllAreValidNames(levels(groupings))
         .aggregateMessage(groupings)
         rowsum(object, group = groupings, reorder = FALSE)
-    })
+    }
 
 
 
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("sparseMatrix"),
-    definition = function(object, groupings) {
+.aggregateRows.sparseMatrix <-  # nolint
+    function(object, groupings) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_factor(groupings)
@@ -247,16 +239,12 @@ setMethod(
         .aggregateMessage(groupings)
         rownames(object) <- groupings
         aggregate.Matrix(object, groupings = groupings, fun = "sum")
-    })
+    }
 
 
 
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+.aggregateRows.SE <-  # nolint
+    function(object) {
         validObject(object)
         assertHasValidDimnames(object)
         assert_is_subset("aggregate", colnames(rowData(object)))
@@ -283,9 +271,52 @@ setMethod(
         }
         do.call(what = SummarizedExperiment, args = args)
     }
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("matrix"),
+    definition = .aggregateRows.matrix
 )
 
 
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("sparseMatrix"),
+    definition = .aggregateRows.sparseMatrix
+)
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("SummarizedExperiment"),
+    definition = .aggregateRows.SE
+)
+
+
+
+# Aliases ======================================================================
+# Consider deprecating these in a future release.
+#' @rdname aggregate
+#' @export
+aggregateReplicates <- function(...) {
+    aggregateCols(...)
+}
+
+#' @rdname aggregate
+#' @export
+aggregateSamples <- function(...) {
+    aggregateCols(...)
+}
 
 #' @rdname aggregate
 #' @export
