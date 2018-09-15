@@ -1,8 +1,3 @@
-# TODO Consider collapsing a matrix to unique rows.
-# TODO Add SummarizedExperiment method support.
-
-
-
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @note
