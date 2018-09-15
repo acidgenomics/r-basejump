@@ -6,8 +6,6 @@
 \alias{geometricMean,numeric-method}
 \alias{geometricMean,matrix-method}
 \alias{geometricMean,sparseMatrix-method}
-\alias{geometricMean,data.frame-method}
-\alias{geometricMean,DataFrame-method}
 \title{Geometric Mean}
 \usage{
 geometricMean(object, ...)
@@ -18,10 +16,6 @@ geometricMean(object, ...)
 \S4method{geometricMean}{matrix}(object, MARGIN = 2L)
 
 \S4method{geometricMean}{sparseMatrix}(object, MARGIN = 2L)
-
-\S4method{geometricMean}{data.frame}(object, MARGIN = 2L)
-
-\S4method{geometricMean}{DataFrame}(object, MARGIN = 2L)
 }
 \arguments{
 \item{object}{Object.}
@@ -73,11 +67,6 @@ geometricMean(matrix)
 sparse <- as(matrix, "sparseMatrix")
 print(sparse)
 geometricMean(sparse)
-
-# DataFrame ====
-df <- as(matrix, "DataFrame")
-print(df)
-geometricMean(df)
 }
 \seealso{
 Modified version of \code{psych::geometric.mean()} and Paul McMurdie's
