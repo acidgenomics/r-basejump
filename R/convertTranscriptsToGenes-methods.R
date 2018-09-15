@@ -5,6 +5,11 @@
 
 #' Convert Ensembl Transcripts to Genes
 #'
+#' @note
+#' For objects suppporting [dim()] (e.g. `matrix`), the object rows will be
+#' collapsed to gene level using [collapseRows()]. This applies to our
+#' `SummarizedExperiment` method.
+#'
 #' @name convertTranscriptsToGenes
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
@@ -17,6 +22,8 @@
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #' @param ... Passthrough to [makeTx2geneFromEnsembl()].
+#'
+#' @seealso [collapseRows()].
 #'
 #' @examples
 #' # character ====
