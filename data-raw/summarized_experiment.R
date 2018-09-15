@@ -1,5 +1,5 @@
-# SummarizedExperiment example objects, using simulated DESeq2 counts
-# Last updated 2018-09-09
+# SummarizedExperiment example objects
+# Last updated 2018-09-15
 
 library("DESeq2")
 library("tidyverse")
@@ -9,6 +9,7 @@ mb <- structure(1e6, class = "object_size")
 
 # dds_small ====================================================================
 # Generate example DESeqDataSet using DESeq2.
+# Note that we're using simulated counts here.
 dds <- makeExampleDESeqDataSet(n = 100L, m = 4L)
 stopifnot(object.size(dds) < mb)
 stopifnot(validObject(dds))
@@ -35,7 +36,7 @@ colData(rse) <- DataFrame(
     row.names = colnames(rse)
 )
 # Row data.
-rowRanges <- makeGRangesFromEnsembl("Homo sapiens", release = 92L)
+rowRanges <- makeGRangesFromEnsembl("Homo sapiens")
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
 # Note that we're keeping the original rownames from dds_small, and they won't
@@ -62,3 +63,30 @@ stopifnot(object.size(rse) < mb)
 stopifnot(validObject(rse))
 rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
+
+# tx_se_small ==================================================================
+tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
+print(tx2gene)
+transcriptIDs <- c(
+    "ENST00000494424",
+    "ENST00000496771",
+    "ENST00000612152",
+    "ENST00000371584",
+    "ENST00000371588",
+    "ENST00000413082"
+)
+stopifnot(all(transcriptIDs %in% rownames(tx2gene)))
+sampleIDs <- paste0("sample", seq_len(4L))
+counts <- matrix(
+    data = seq_len(length(transcriptIDs) * length(sampleIDs)),
+    byrow = TRUE,
+    nrow = length(transcriptIDs),
+    ncol = length(sampleIDs),
+    dimnames = list(transcriptIDs, sampleIDs)
+)
+se <- SummarizedExperiment(
+    assays = list(counts = counts),
+    rowData = tx2gene[rownames(counts), , drop = FALSE]
+)
+tx_se_small <- se
+devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
