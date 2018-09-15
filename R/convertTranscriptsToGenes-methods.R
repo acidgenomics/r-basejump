@@ -61,53 +61,51 @@ NULL
 
 
 .convertTranscriptsToGenes.character <-  # nolint
-function(
-    # Setting the formals below.
-    object,
-    tx2gene = NULL,
-    organism = NULL
-) {
-    assert_all_are_non_missing_nor_empty_character(object)
-    assert_has_no_duplicates(object)
-    assert_is_any_of(tx2gene, c("DataFrame", "NULL"))
-    assertIsAStringOrNULL(organism)
+    function(
+        # Setting the formals below.
+        object,
+        tx2gene = NULL,
+        organism = NULL
+    ) {
+        assert_all_are_non_missing_nor_empty_character(object)
+        assert_has_no_duplicates(object)
+        assert_is_any_of(tx2gene, c("DataFrame", "NULL"))
+        assertIsAStringOrNULL(organism)
 
-    # If no tx2gene is provided, fall back to using Ensembl annotations.
-    if (is.null(tx2gene)) {
-        message("Obtaining transcript-to-gene mappings from Ensembl")
-        if (is.null(organism)) {
-            organism <- detectOrganism(object, unique = TRUE)
-        }
-        assert_is_a_string(organism)
-        message(paste(organism, "genes detected"))
-        tx2gene <- do.call(
-            what = makeTx2geneFromEnsembl,
-            args = matchArgsToDoCall(
-                args = list(organism = organism),
-                removeFormals = c("object", "tx2gene"),
-                n = 2L
+        # If no tx2gene is provided, fall back to using Ensembl annotations.
+        if (is.null(tx2gene)) {
+            message("Obtaining transcript-to-gene mappings from Ensembl")
+            if (is.null(organism)) {
+                organism <- detectOrganism(object, unique = TRUE)
+            }
+            assert_is_a_string(organism)
+            message(paste(organism, "genes detected"))
+            tx2gene <- do.call(
+                what = makeTx2geneFromEnsembl,
+                args = matchArgsToDoCall(
+                    args = list(organism = organism),
+                    removeFormals = c("object", "tx2gene"),
+                    n = 2L
+                )
             )
-        )
+        }
+        assertIsTx2gene(tx2gene)
+
+        missing <- setdiff(object, tx2gene[["transcriptID"]])
+        if (length(missing)) {
+            stop(paste("Failed to match transcripts:", toString(missing)))
+        }
+
+        tx2gene <- tx2gene[
+            match(x = object, table = tx2gene[["transcriptID"]]),
+            ,
+            drop = FALSE
+            ]
+
+        return <- as.factor(tx2gene[["geneID"]])
+        names(return) <- tx2gene[["transcriptID"]]
+        return
     }
-    assertIsTx2gene(tx2gene)
-
-    missing <- setdiff(object, tx2gene[["transcriptID"]])
-    if (length(missing)) {
-        stop(paste("Failed to match transcripts:", toString(missing)))
-    }
-
-    tx2gene <- tx2gene[
-        match(x = object, table = tx2gene[["transcriptID"]]),
-        ,
-        drop = FALSE
-        ]
-
-    return <- as.factor(tx2gene[["geneID"]])
-    names(return) <- tx2gene[["transcriptID"]]
-    return
-}
-
-# Set the formals.
 f1 <- formals(.convertTranscriptsToGenes.character)
 f2 <- formals(makeTx2geneFromEnsembl)
 f2 <- f2[setdiff(names(f2), c(names(f1)))]
@@ -118,24 +116,22 @@ formals(.convertTranscriptsToGenes.character) <- f
 
 # Consider aggregating the matrix to gene level instead.
 .convertTranscriptsToGenes.matrix <-  # nolint
-function(aggregate = TRUE) {
-    assert_is_a_bool(aggregate)
-    t2g <- do.call(
-        what = convertTranscriptsToGenes,
-        args = matchArgsToDoCall(
-            args = list(object = rownames(object)),
-            removeFormals = "aggregate"
+    function(aggregate = TRUE) {
+        assert_is_a_bool(aggregate)
+        t2g <- do.call(
+            what = convertTranscriptsToGenes,
+            args = matchArgsToDoCall(
+                args = list(object = rownames(object)),
+                removeFormals = "aggregate"
+            )
         )
-    )
-    if (isTRUE(aggregate)) {
-        aggregateRows(object, groupings = t2g)
-    } else {
-        rownames(object) <- as.character(t2g)
-        object
+        if (isTRUE(aggregate)) {
+            aggregateRows(object, groupings = t2g)
+        } else {
+            rownames(object) <- as.character(t2g)
+            object
+        }
     }
-}
-
-# Assign the formals.
 f1 <- formals(.convertTranscriptsToGenes.character)
 f2 <- formals(.convertTranscriptsToGenes.matrix)
 f <- c(f1, f2)
@@ -173,7 +169,7 @@ formals(.convertTranscriptsToGenes.matrix) <- f
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("character"),
-    .convertTranscriptsToGenes.character
+    definition = .convertTranscriptsToGenes.character
 )
 
 
@@ -183,7 +179,7 @@ setMethod(
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("matrix"),
-    .convertTranscriptsToGenes.matrix
+    definition = .convertTranscriptsToGenes.matrix
 )
 
 
@@ -193,7 +189,10 @@ setMethod(
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature("sparseMatrix"),
-    definition = getMethod("convertTranscriptsToGenes", "matrix")
+    definition = getMethod(
+        f = "convertTranscriptsToGenes",
+        signature = signature("matrix")
+    )
 )
 
 
