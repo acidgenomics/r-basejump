@@ -4,7 +4,7 @@
 \alias{writeCounts}
 \title{Write Counts}
 \usage{
-writeCounts(..., dir = ".", gzip = TRUE)
+writeCounts(..., dir = ".", gzip = FALSE)
 }
 \arguments{
 \item{...}{Count matrices, passed in as dots.}
@@ -14,7 +14,7 @@ writeCounts(..., dir = ".", gzip = TRUE)
 \item{gzip}{\code{boolean}. Compress the counts file using gzip.}
 }
 \value{
-Invisible named \code{character}. File paths.
+Invisible \code{list}. File paths.
 }
 \description{
 Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq

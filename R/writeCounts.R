@@ -1,7 +1,3 @@
-# FIXME Think about how to handle compression here.
-
-
-
 #' Write Counts
 #'
 #' Supports both bulk and single-cell RNA-seq count matrices. Bulk RNA-seq
@@ -28,7 +24,7 @@
 #' @param dir `string`. Output directory.
 #' @param gzip `boolean`. Compress the counts file using gzip.
 #'
-#' @return Invisible named `character`. File paths.
+#' @return Invisible `list`. File paths.
 #'
 #' @examples
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
@@ -39,7 +35,7 @@
 writeCounts <- function(
     ...,
     dir = ".",
-    gzip = TRUE
+    gzip = FALSE
 ) {
     dots <- dots_list(...)
     assert_is_list(dots)
@@ -50,34 +46,30 @@ writeCounts <- function(
     # Iterate across the dot objects and write to disk.
     message(paste("Writing", toString(names), "to", dir))
 
+    # Put the names first in the call here.
     files <- mapply(
         name <- names,
-        counts <- dots,
-        FUN = function(name, counts) {
-            if (is.matrix(counts)) {
-                # FIXME Use `export()` method internally.
-
-                # Coercing matrix to tibble here, to keep rownames intact.
-                ext <- ".csv"
+        x <- dots,
+        FUN = function(name, x) {
+            if (is.matrix(x)) {
                 if (isTRUE(gzip)) {
-                    ext <- paste0(ext, ".gz")
+                    format <- "csv.gz"
+                } else {
+                    format = "csv"
                 }
-                fileName <- paste0(name, ext)
-                filePath <- file.path(dir, fileName)
-                write_csv(
-                    x = as(counts, "tbl_df"),
-                    path = filePath
-                )
-                returnPath <- filePath
-            } else if (is(counts, "sparseMatrix")) {
-                # FIXME
-                stop("FIXME")
+            } else if (is(x, "sparseMatrix")) {
+                if (isTRUE(gzip)) {
+                    format <- "mtx.gz"
+                } else {
+                    format = "mtx"
+                }
             } else {
                 stop(paste(name, "is not a matrix"), call. = FALSE)
             }
-            returnPath
+            file <- file.path(dir, paste0(name, ".", format))
+            do.call(what = export, args = list(x = x, file = file))
         },
-        SIMPLIFY = TRUE,
+        SIMPLIFY = FALSE,
         USE.NAMES = TRUE
     )
 

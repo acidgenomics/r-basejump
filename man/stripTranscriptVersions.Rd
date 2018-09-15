@@ -6,7 +6,7 @@
 \alias{stripTranscriptVersions}
 \alias{stripTranscriptVersions,character-method}
 \alias{stripTranscriptVersions,matrix-method}
-\alias{stripTranscriptVersions,dgCMatrix-method}
+\alias{stripTranscriptVersions,sparseMatrix-method}
 \title{Strip Transcript Versions}
 \usage{
 stripTranscriptVersions(object, ...)
@@ -15,7 +15,7 @@ stripTranscriptVersions(object, ...)
 
 \S4method{stripTranscriptVersions}{matrix}(object)
 
-\S4method{stripTranscriptVersions}{dgCMatrix}(object)
+\S4method{stripTranscriptVersions}{sparseMatrix}(object)
 }
 \arguments{
 \item{object}{Object.}

@@ -1,5 +1,5 @@
-# FIXME Consider collapsing a matrix, and adding similar method support for
-# `SummarizedExperiment`
+# TODO Consider collapsing a matrix to unique rows.
+# TODO Add SummarizedExperiment method support.
 
 
 
@@ -74,7 +74,8 @@ function(
             what = makeTx2geneFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeArgs = c("object", "tx2gene")
+                removeFormals = c("object", "tx2gene"),
+                n = 2L
             )
         )
     }
@@ -116,7 +117,10 @@ function(
     rownames <- rownames(object)
     rownames <- do.call(
         what = convertTranscriptsToGenes,
-        args = matchArgsToDoCall(args = list(object = rownames))
+        args = matchArgsToDoCall(
+            args = list(object = rownames),
+            n = 2L
+        )
     )
     rownames(object) <- rownames
     object
@@ -171,16 +175,6 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("dgCMatrix"),
-    definition = getMethod("convertTranscriptsToGenes", "matrix")
-)
-
-
-
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("dgTMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("convertTranscriptsToGenes", "matrix")
 )

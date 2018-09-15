@@ -59,6 +59,17 @@ setGeneric(
 
 
 
+#' @rdname coerceToList
+#' @export
+setGeneric(
+    name = "coerceToList",
+    def = function(object, ...) {
+        standardGeneric("coerceToList")
+    }
+)
+
+
+
 #' @rdname collapseToString
 #' @export
 setGeneric(
@@ -125,7 +136,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname export
 #' @export
 setGeneric(
     name = "export",
@@ -142,17 +153,6 @@ setGeneric(
     name = "foldChangeToLogRatio",
     def = function(object, ...) {
         standardGeneric("foldChangeToLogRatio")
-    }
-)
-
-
-
-#' @rdname flatFiles
-#' @export
-setGeneric(
-    name = "flatFiles",
-    def = function(object, ...) {
-        standardGeneric("flatFiles")
     }
 )
 

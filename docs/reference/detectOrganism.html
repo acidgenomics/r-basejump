@@ -133,7 +133,7 @@
 <span class='co'># S4 method for DataFrame</span>
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for dgCMatrix</span>
+<span class='co'># S4 method for sparseMatrix</span>
 <span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for tbl_df</span>
@@ -159,17 +159,19 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code>. Full latin organism name. Stops on detection failure.</p><ul>
+    <p><code>character</code>. Full latin organism name.</p><ul>
 <li><p><code>atomic</code>: Named <code>character</code> vector containing organism name or <code>NA</code> for
 individual match failures (e.g. spike-ins like EGFP, TDTOMATO).</p></li>
 <li><p><code>dim</code>: Unique <code>character</code> vector of the organism(s) detected. Warns if
 multiple organisms are detected.</p></li>
 </ul>
 
+<p>Stops on match failure.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="supported-organisms"><a class="anchor" href="#supported-organisms"></a>Supported organisms</h2>
 
-    <p>Currently supported organisms:</p><ul>
+    
+    <ul>
 <li><p><em>Homo sapiens</em> (human)</p></li>
 <li><p><em>Mus musculus</em> (mouse)</p></li>
 <li><p><em>Rattus norvegicus</em> (rat)</p></li>
@@ -211,7 +213,7 @@ multiple organisms are detected.</p></li>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#supported-organisms">Supported organisms</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

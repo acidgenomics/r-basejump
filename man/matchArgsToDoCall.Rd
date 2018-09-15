@@ -4,24 +4,18 @@
 \alias{matchArgsToDoCall}
 \title{Match Arguments to Do Call}
 \usage{
-matchArgsToDoCall(args, removeArgs = NULL, which = sys.parent(),
+matchArgsToDoCall(args, removeFormals = NULL, n = 1L,
   verbose = FALSE)
 }
 \arguments{
-\item{args}{
-    The default method expects a \emph{list} of arguments to the function
-    call (the \code{names} attribute of \code{args} gives the argument names).
-    See \code{?base::\link[base]{do.call}} for the details.
-    
-    Specific methods can support other objects.
-    Please refer to the documentation of a particular method for the details.
-  }
+\item{args}{a \emph{list} of arguments to the function call.  The
+    \code{names} attribute of \code{args} gives the argument names.}
 
-\item{removeArgs}{\code{character}. Names of arguments to remove from \code{call}
-and/or \code{fun} returns before passing to \code{do.call()}.}
+\item{removeFormals}{\code{character}. Names of formal arguments to remove from
+\code{args} list before passing to \code{do.call()}.}
 
-\item{which}{the frame number if non-negative, the number of frames
-    to go back if negative.}
+\item{n}{the number of generations to go back.  (See the
+    \sQuote{Details} section.)}
 
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
@@ -39,7 +33,7 @@ example <- function(object, xxx, ...) {
             object = object,
             collapse = " "
         ),
-        removeArgs = "xxx"
+        removeFormals = "xxx"
     )
     print(args)
     do.call(what = paste, args = args)
@@ -47,15 +41,20 @@ example <- function(object, xxx, ...) {
 example(c("hello", "world"))
 }
 \seealso{
+\itemize{
+\item \code{\link[base:do.call]{base::do.call()}}.
+\item \code{\link[base:sys.call]{base::sys.call()}}.
+\item \code{\link[base:sys.parent]{base::sys.parent()}}.
+}
+
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
-  \code{\link{matchCallS4}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
+  \code{\link{printString}}, \code{\link{separator}},
+  \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

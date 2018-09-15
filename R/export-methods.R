@@ -5,6 +5,10 @@
 #' This is a wrapper for [rio::export()] that adds support for additional S4
 #' classes in Bioconductor.
 #'
+#' @note The standard [rio::export()] call will drop rownames when exporting to
+#'   CSV. We're performing any internal tibble coercion step to ensure rownames
+#'   are always moved to a "rowname" column in the CSV output.
+#'
 #' @name export
 #' @author Michael Steinbaugh
 #' @export
@@ -12,50 +16,72 @@
 #' @inheritParams rio::export
 #' @param x Object.
 #'
+#' @return Invisible `character`. File path(s).
+#'
 #' @seealso [rio::export()].
 #'
 #' @examples
-#' export(mtcars, format = "csv")
+#' export(rnaseq_counts, format = "csv")
+#' export(single_cell_counts, format = "mtx")
+#'
+#' # Clean up
+#' file.remove(c(
+#'     "rnaseq_counts.csv",
+#'     "single_cell_counts.mtx",
+#'     "single_cell_counts.mtx.colnames",
+#'     "single_cell_counts.mtx.rownames"
+#' ))
 NULL
 
 
 
+# Coerce to tibble in this method to always preserve rownames.
+# Note that `rio::export()` does not preserve rownames by default.
 .export.ANY <-  # nolint
-function(x, ...) {
-    x <- getGenerics(where = parent.frame())
-    print(length(x))
-    print(sys.status())
-    stop()
-    call <- matchCall(verbose = TRUE)
-    print(call)
-    stop()
-
-    sym <- call[["x"]]
-    assertive::assert_is_symbol(sym)
-    message(paste("Exporting", sym, "to", file))
-    do.call(
+function(x, file, format, ...) {
+    assert_is_non_empty(x)
+    x <- as(x, "tbl_df")
+    if (missing(file) && missing(format)) {
+        stop("Must specify 'file' and/or 'format'", call. = FALSE)
+    } else if (missing(file)) {
+        call <- standardizeCall()
+        sym <- call[["x"]]
+        assert_is_symbol(sym)
+        name <- as.character(sym)
+        assert_is_a_string(format)
+        file <- paste0(name, ".", format)
+    } else if (missing(format)) {
+        assert_is_a_string(file)
+    }
+    file <- do.call(
         what = rio::export,
-        args = as.list(call)[-1L]
+        args = list(x = x, file = file, ...)
     )
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+    message(paste("Exported", basename(file)))
+    invisible(file)
 }
 
-# Assign the formals.
-formals(.export.ANY) <- formals(rio::export)
 
 
-
+# Note that "file" is referring to the matrix file.
+# The correponding column and row sidecar files are generated automatically.
+# Consider adding HDF5 support in a future update.
 .export.sparseMatrix <-  # nolint
 function(x, file, format) {
-    call <- matchCall()
-    name <- call[["x"]]
-    print(str(name))
-    assert_is_name(name)
+    assert_is_non_empty(x)
     choices = c("mtx", "mtx.gz")
 
-    if (missing(file)) {
+    if (missing(file) && missing(format)) {
+        stop("Must specify 'file' and/or 'format'", call. = FALSE)
+    } else if (missing(file)) {
+        call <- standardizeCall()
+        sym <- call[["x"]]
+        assert_is_symbol(sym)
+        name <- as.character(sym)
         format <- match.arg(format, choices)
         file <- paste0(name, ".", format)
-    } else {
+    } else if (missing(format)) {
         assert_is_a_string(file)
         # Require a valid extension.
         grepChoices <- paste0("\\.", choices, "$")
@@ -67,12 +93,10 @@ function(x, file, format) {
         )))
     }
 
-    message(paste("Exporting", name, "to", file))
-
     # Determine whether we want to gzip compress.
     gzip <- grepl("\\.gz$", file)
 
-    # Ensure ".gz" is stripped from the working file variable.
+    # Now ensure ".gz" is stripped from the working file variable.
     file <- sub("\\.gz", "", file)
 
     # Create the recursive directory structure, if necessary.
@@ -85,15 +109,29 @@ function(x, file, format) {
         file <- gzip(file, overwrite = TRUE)
     }
 
+    # Normalize the path.
+    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
+
     # Write barcodes (colnames).
-    barcodes <- colnames(counts)
-    barcodesFile <- paste0(matrixFile, ".colnames")
-    write_lines(barcodes, barcodesFile)
+    barcodes <- colnames(x)
+    barcodesFile <- paste0(file, ".colnames")
+    write_lines(x = barcodes, path = barcodesFile)
+
     # Write gene names (rownames).
-    genes <- rownames(counts)
-    genesFile <- paste0(matrixFile, ".rownames")
-    write_lines(genes, genesFile)
-    returnPath <- matrixFile
+    genes <- rownames(x)
+    genesFile <- paste0(file, ".rownames")
+    write_lines(x = genes, path = genesFile)
+
+    files <- c(
+        matrix = file,
+        barcodes = barcodesFile,
+        genes = genesFile
+    )
+
+    message(paste("Exported", toString(basename(files))))
+
+    # Return named character of file paths.
+    invisible(files)
 }
 
 
@@ -108,7 +146,6 @@ setMethod(
 
 
 
-# FIXME Handle gzip
 #' @rdname export
 #' @export
 setMethod(

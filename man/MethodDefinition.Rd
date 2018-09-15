@@ -26,7 +26,7 @@ Access to the Data Inside an S4 Method Definition
 \examples{
 # Function
 x <- methodFunction(f = "geometricMean", signature = "numeric")
-class(f)
+class(x)
 
 # Formals
 x <- methodFormals(f = "geometricMean", signature = "numeric")
@@ -37,14 +37,13 @@ names(x)
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.
 
 Other Developer Functions: \code{\link{detectHPC}},
-  \code{\link{dots}}, \code{\link{flatFiles}},
-  \code{\link{initializeDirectory}},
+  \code{\link{dots}}, \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
-  \code{\link{matchCallS4}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
-  \code{\link{printString}},
+  \code{\link{printString}}, \code{\link{separator}},
+  \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{

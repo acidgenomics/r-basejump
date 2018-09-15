@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Access to the Formal Arguments of an S4 Method — methodFormals • basejump</title>
+<title>Coerce S4 Object to List — coerceToList • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Access to the Formal Arguments of an S4 Method — methodFormals" />
+<meta property="og:title" content="Coerce S4 Object to List — coerceToList" />
 
-<meta property="og:description" content="Access to the Formal Arguments of an S4 Method" />
+<meta property="og:description" content="Extract the slots inside an S4 object for archival storage." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,54 +105,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Access to the Formal Arguments of an S4 Method</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/methodFormals.R'><code>R/methodFormals.R</code></a></small>
-    <div class="hidden name"><code>methodFormals.Rd</code></div>
+    <h1>Coerce S4 Object to List</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerceToList-methods.R'><code>R/coerceToList-methods.R</code></a></small>
+    <div class="hidden name"><code>coerceToList.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Access to the Formal Arguments of an S4 Method</p>
+    <p>Extract the slots inside an S4 object for archival storage.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>methodFormals</span>(<span class='no'>f</span>, <span class='no'>signature</span>)</pre>
+    <pre class="usage"><span class='fu'>coerceToList</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>coerceToList</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>f</th>
-      <td><p>a generic function or the character-string name of one.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>signature</th>
-      <td><p>the signature of classes to match to the arguments
-    of <code>f</code>.  See the details below.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>list</code>. Formal arguments.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Modified version of <a href='https://goo.gl/ymX571'>John Chambers' code</a>.</p>
-<p>Other Developer Functions: <code><a href='cleanSystemLibrary.html'>cleanSystemLibrary</a></code>,
-  <code><a href='detectHPC.html'>detectHPC</a></code>, <code><a href='dots.html'>dots</a></code>,
-  <code><a href='flatFiles.html'>flatFiles</a></code>,
-  <code><a href='initializeDirectory.html'>initializeDirectory</a></code>,
-  <code><a href='localOrRemoteFile.html'>localOrRemoteFile</a></code>, <code><a href='matchCall.html'>matchCall</a></code>,
-  <code><a href='matchInterestingGroups.html'>matchInterestingGroups</a></code>,
-  <code><a href='multiassignAsEnvir.html'>multiassignAsEnvir</a></code>,
-  <code><a href='printString.html'>printString</a></code>, <code><a href='setArgsToDoCall.html'>setArgsToDoCall</a></code>,
-  <code><a href='uniteInterestingGroups.html'>uniteInterestingGroups</a></code></p></div>
+    <p><code>list</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>methodFormals</span>(<span class='st'>"geometricMean"</span>, <span class='st'>"numeric"</span>)
-<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "pairlist"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "object"        "removeNA"      "zeroPropagate"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>coerceToList</span>(<span class='no'>rse_small</span>)
+<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
+#&gt; [5] "elementMetadata" "metadata"       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,8 +150,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -8,8 +8,7 @@
 \alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,data.frame-method}
 \alias{convertTranscriptsToGenes,DataFrame-method}
-\alias{convertTranscriptsToGenes,dgCMatrix-method}
-\alias{convertTranscriptsToGenes,dgTMatrix-method}
+\alias{convertTranscriptsToGenes,sparseMatrix-method}
 \title{Convert Ensembl Transcripts to Genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
@@ -26,11 +25,8 @@ convertTranscriptsToGenes(object, ...)
 \S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
   organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertTranscriptsToGenes}{dgCMatrix}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertTranscriptsToGenes}{dgTMatrix}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
+\S4method{convertTranscriptsToGenes}{sparseMatrix}(object,
+  tx2gene = NULL, organism = NULL, build = NULL, release = NULL)
 }
 \arguments{
 \item{object}{Object.}

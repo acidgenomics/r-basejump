@@ -26,6 +26,8 @@ reference:
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
+    - export
+    - import
     - starts_with("load")
     - starts_with("read")
     - starts_with("save")
@@ -33,11 +35,13 @@ reference:
     - starts_with("write")
   - title: Data Functions
     contents:
+    - combine
     - counts
     - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
     - mapGenesToIDs
+    - meltCounts
     - metrics
     - sampleData
     - sampleNames
@@ -52,8 +56,7 @@ reference:
     - starts_with("plot")
   - title: ggplot2 Functions
     contents:
-    - ggplot2_geoms
-    - ggplot2_themes
+    - starts_with("ggplot2_")
   - title: Math and Science Functions
     contents:
     - starts_with("aggregate")
@@ -76,18 +79,17 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
-    - cleanSystemLibrary
     - starts_with("detect")
     - dots
-    - flatFiles
     - starts_with("initialize")
     - localOrRemoteFile
+    - matchArgsToDoCall
     - matchInterestingGroups
-    - matchCall
-    - methodFormals
+    - MethodDefinition
     - multiassignAsEnvir
     - printString
-    - setArgsToDoCall
+    - separator
+    - standardizeCall
     - uniteInterestingGroups
   - title: R Documentation Functions
     contents:
