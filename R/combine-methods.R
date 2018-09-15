@@ -25,33 +25,25 @@
 #' # For this simple working example, let's duplicate our minimal dataset.
 #'
 #' x <- rse_small
-#' validObject(x)
-#' sampleData(x)
-#' sampleNames(x)
+#' colnames(x)
+#' colData(x)
 #'
 #' y <- x
 #' colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
+#' colnames(y)
 #' colData(y)[["sampleName"]] <- colnames(y)
-#' validObject(y)
-#' sampleData(y)
-#' sampleNames(y)
+#' colData(y)
 #'
 #' # Combine two SummarizedExperiment objects.
 #' c <- combine(x, y)
 #' print(c)
-#' sampleNames(c)
+#' colnames(c)
+#' colData(c)
 NULL
 
 
 
-#' @rdname combine
-#' @export
-setMethod(
-    "combine",
-    signature(
-        x = "SummarizedExperiment",
-        y = "SummarizedExperiment"
-    ),
+.combine.SE <-  # nolint
     function(
         x,
         y,
@@ -146,4 +138,16 @@ setMethod(
         args <- Filter(Negate(is.null), args)
         do.call(what = makeSummarizedExperiment, args = args)
     }
+
+
+
+#' @rdname combine
+#' @export
+setMethod(
+    f = "combine",
+    signature = signature(
+        x = "SummarizedExperiment",
+        y = "SummarizedExperiment"
+    ),
+    definition = .combine.SE
 )
