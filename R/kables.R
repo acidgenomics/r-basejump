@@ -11,7 +11,7 @@
 #' @param force `boolean`. Force knit output. Recommended for development and
 #'   unit testing only.
 #'
-#' @return Knit tables.
+#' @return `asis_output` if in a knit call or `list`.
 #'
 #' @seealso
 #' - [knitr::kable()].
@@ -44,7 +44,7 @@ kables <- function(
         )
         asis_output(tables)
     } else {
-        # Return the unmodified list if not in a knit call
+        # Return the unmodified list if not in a knit call.
         list
     }
 }
