@@ -13,7 +13,7 @@
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #'
-#' @return Object, with gene IDs converted to symbols.
+#' @return Object with gene IDs converted to names (symbols).
 #'
 #' @examples
 #' gene2symbol <- makeGene2symbolFromEnsembl("Mus musculus")

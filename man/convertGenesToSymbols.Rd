@@ -52,7 +52,7 @@ automatically.}
 set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
-Object, with gene IDs converted to symbols.
+Object with gene IDs converted to names (symbols).
 }
 \description{
 Convert Ensembl Identifiers to Gene Symbols
