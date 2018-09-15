@@ -65,6 +65,6 @@ setMethod(
 #' @export
 setMethod(
     f = "stripTranscriptVersions",
-    signature = signature("dgCMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("stripTranscriptVersions", "matrix")
 )

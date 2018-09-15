@@ -10,8 +10,8 @@ makeSummarizedExperiment(assays, rowRanges = NULL, rowData = NULL,
 }
 \arguments{
 \item{assays}{\code{list}. RNA-seq count matrices, which must have matching
-dimensions. Counts can be passed in either dense (\code{matrix}) or sparse
-(\code{dgCMatrix}, \code{dgTMatrix}) format.}
+dimensions. Counts can be passed in either a dense matrix (\code{matrix}) or
+sparse matrix (\code{sparseMatrix}).}
 
 \item{rowRanges}{\code{GRanges} or \code{NULL}. \emph{Recommended}. Metadata describing the
 assay rows. If defined, must contain genomic ranges. Can be left \code{NULL} if

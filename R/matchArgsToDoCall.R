@@ -2,15 +2,22 @@
 #'
 #' @family Developer Functions
 #' @author Michael Steinbaugh
+#' @include standardizeCall.R
 #' @export
 #'
+#'
 #' @inheritParams base::sys.call
-#' @inheritParams BiocGenerics::do.call
+#' @inheritParams base::do.call
 #' @inheritParams general
-#' @param removeArgs `character`. Names of arguments to remove from `call`
-#'   and/or `fun` returns before passing to `do.call()`.
+#' @param removeFormals `character`. Names of formal arguments to remove from
+#'   `args` list before passing to `do.call()`.
 #'
 #' @return `list`. Arguments to pass to [do.call()].
+#'
+#' @seealso
+#' - [base::do.call()].
+#' - [base::sys.call()].
+#' - [base::sys.parent()].
 #'
 #' @examples
 #' example <- function(object, xxx, ...) {
@@ -19,7 +26,7 @@
 #'             object = object,
 #'             collapse = " "
 #'         ),
-#'         removeArgs = "xxx"
+#'         removeFormals = "xxx"
 #'     )
 #'     print(args)
 #'     do.call(what = paste, args = args)
@@ -27,44 +34,48 @@
 #' example(c("hello", "world"))
 matchArgsToDoCall <- function(
     args,
-    removeArgs = NULL,
-    which = sys.parent(),
+    removeFormals = NULL,
+    n = 1L,
     verbose = FALSE
 ) {
     assert_is_list(args)
     assert_is_non_empty(args)
     assert_has_names(args)
-    assert_is_any_of(removeArgs, c("character", "NULL"))
-    assert_is_a_number(which)
+    assert_is_any_of(removeFormals, c("character", "NULL"))
+    assert_is_a_number(n)
+    assert_all_are_positive(n)
     assert_is_a_bool(verbose)
 
-    # FIXME Rethink this approach
-    stop()
-    call <- .sysCallWithS4(which = which, verbose = verbose)
-    fun <- sys.function(which = which)
+    # Handle S4 `.local()`, if necessary.
+    if (
+        n == 1L &&
+        isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
+    ) {
+        n = n + 1L
+    }
 
-    callArgs <- call %>%
-        as.list() %>%
-        .[-1L] %>%
+    # Get the position in the stack.
+    which <- sys.parent(n = n)
+
+    call <- standardizeCall(
+        definition = sys.function(which = which),
+        call = sys.call(which = which),
+        expand.dots = TRUE,
+        envir = sys.frame(which = which),
+        verbose = verbose
+    )
+
+    # Prepare the `args` list.
+    callArgs <- as.list(call)[-1L] %>%
         .[setdiff(names(.), names(args))]
     args <- c(args, callArgs)
-
-    formalArgs <- fun %>%
-        formals() %>%
-        .[setdiff(names(.), names(args))]
-    args <- c(args, formalArgs)
-
-    # Note that we're currently stripping "..." before passing to `do.call()`.
-    args <- args[setdiff(
-        x = names(args),
-        y = c(removeArgs, "...")
-    )]
+    # Remove formals we want to exclude.
+    args <- args[setdiff(names(args), removeFormals)]
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
         print(list(
             call = call,
-            fun = formals(fun),
             args = lapply(args, class)
         ))
     }

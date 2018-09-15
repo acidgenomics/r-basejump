@@ -71,7 +71,7 @@ function(
             what = makeGene2symbolFromEnsembl,
             args = matchArgsToDoCall(
                 args = list(organism = organism),
-                removeArgs = c("object", "gene2symbol")
+                removeFormals = c("object", "gene2symbol")
             )
         )
     }
@@ -118,7 +118,9 @@ function(
     rownames <- rownames(object)
     rownames <- do.call(
         what = convertGenesToSymbols,
-        args = matchArgsToDoCall(args = list(object = rownames))
+        args = matchArgsToDoCall(
+            args = list(object = rownames)
+        )
     )
     rownames(object) <- rownames
     object
@@ -174,17 +176,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("dgCMatrix"),
-    definition = getMethod("convertGenesToSymbols", "matrix")
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("dgTMatrix"),
+    signature = signature("sparseMatrix"),
     definition = getMethod("convertGenesToSymbols", "matrix")
 )
 

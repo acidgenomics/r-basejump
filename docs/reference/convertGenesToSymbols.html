@@ -106,7 +106,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert Ensembl Identifiers to Gene Symbols</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertGenesToSymbols-methods.R'><code>R/convertGenesToSymbols-methods.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertSymbolsToGenes-methods.R'><code>R/convertSymbolsToGenes-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/convertGenesToSymbols-methods.R'><code>R/convertGenesToSymbols-methods.R</code></a></small>
     <div class="hidden name"><code>convertGenesToSymbols.Rd</code></div>
     </div>
 
@@ -136,13 +136,10 @@
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='co'># S4 method for dgCMatrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='co'># S4 method for dgTMatrix</span>
-<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>, <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>,
+  <span class='kw'>gene2symbol</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>organism</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>convertGenesToSymbols</span>(<span class='no'>object</span>)

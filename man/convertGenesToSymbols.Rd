@@ -9,8 +9,7 @@
 \alias{convertGenesToSymbols,matrix-method}
 \alias{convertGenesToSymbols,data.frame-method}
 \alias{convertGenesToSymbols,DataFrame-method}
-\alias{convertGenesToSymbols,dgCMatrix-method}
-\alias{convertGenesToSymbols,dgTMatrix-method}
+\alias{convertGenesToSymbols,sparseMatrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
 \title{Convert Ensembl Identifiers to Gene Symbols}
@@ -31,11 +30,9 @@ convertSymbolsToGenes(object, ...)
 \S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
   organism = NULL, build = NULL, release = NULL)
 
-\S4method{convertGenesToSymbols}{dgCMatrix}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertGenesToSymbols}{dgTMatrix}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
+\S4method{convertGenesToSymbols}{sparseMatrix}(object,
+  gene2symbol = NULL, organism = NULL, build = NULL,
+  release = NULL)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 

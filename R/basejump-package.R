@@ -31,7 +31,7 @@
 #'   assert_is_call assert_is_character assert_is_data.frame
 #'   assert_is_environment assert_is_factor assert_is_function assert_is_integer
 #'   assert_is_list assert_is_matrix assert_is_name assert_is_numeric
-#'   assert_is_tbl_df is_a_number is_a_string
+#'   assert_is_symbol assert_is_tbl_df is_a_number is_a_string
 #' @importFrom BiocGenerics do.call match
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
@@ -54,7 +54,7 @@
 #' @importFrom Matrix.utils aggregate.Matrix
 #' @importFrom magrittr set_colnames
 #' @importFrom methods as formalArgs getGeneric getMethod is new selectMethod
-#'   setAs show slotNames validObject .hasSlot
+#'   setAs show slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
 #' @importFrom R.utils gzip
@@ -80,6 +80,3 @@
 #'   installed.packages packageVersion read.delim read.table sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
-
-# NAMESPACE conflicts:
-# rio::import

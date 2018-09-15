@@ -34,5 +34,7 @@
 #' @author Michael Steinbaugh
 #'
 #' @examples
-#' summary(single_cell_counts)
+#' dim(single_cell_counts)
+#' class(single_cell_counts)
+#' is(single_cell_counts, "sparseMatrix")
 "single_cell_counts"

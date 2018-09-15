@@ -301,9 +301,22 @@ fixNA <- function(...) {
 
 #' @rdname deprecated
 #' @export
+flatFiles <- function(...) {
+    .Deprecated("coerceToList")
+    coerceToList(...)
+}
+
+#' @rdname deprecated
+#' @export
 readFileByExtension <- function(...) {
     .Deprecated("import")
     import(...)
+}
+
+#' @rdname defunct
+#' @export
+separatorBar <- function(...) {
+    .Defunct("separator")
 }
 
 #' @rdname defunct

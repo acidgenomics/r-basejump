@@ -26,13 +26,12 @@ printString(c("hello", "world"))
 
 Other Developer Functions: \code{\link{MethodDefinition}},
   \code{\link{detectHPC}}, \code{\link{dots}},
-  \code{\link{flatFiles}},
   \code{\link{initializeDirectory}},
   \code{\link{localOrRemoteFile}},
   \code{\link{matchArgsToDoCall}},
-  \code{\link{matchCallS4}},
   \code{\link{matchInterestingGroups}},
   \code{\link{multiassignAsEnvir}},
+  \code{\link{separator}}, \code{\link{standardizeCall}},
   \code{\link{uniteInterestingGroups}}
 }
 \author{
