@@ -10,6 +10,11 @@
 #' @inheritParams base::match.call
 #' @inheritParams general
 #'
+#' @return
+#' - `call`: `call`. Matched call.
+#' - `list`: `list`. Verbose list that includes additional information about how
+#'   the call was standardized.
+#'
 #' @seealso [base::match.call()].
 #'
 #' @examples
@@ -38,20 +43,28 @@
 #'     }
 #' )
 #' testing(aaa, bbb)
-standardizeCall <- function(verbose = FALSE) {
+standardizeCall <- function(
+    return = c("call", "list"),
+    verbose = FALSE
+) {
+    return <- match.arg(return)
+    assert_is_a_bool(verbose)
+
+    list <- list(
+        sys.status = sys.status(),
+        sys.nframe = sys.nframe(),
+        sys.parent.1 = sys.parent(n = 1L),
+        sys.parent.2 = sys.parent(n = 2L),
+        sys.parent.3 = sys.parent(n = 3L),
+        definition = definition,
+        call = call,
+        envir = envir,
+        .local = .isLocalCall(call)
+    )
+
     # Print the call stack, for debugging.
     if (isTRUE(verbose)) {
-        print(list(
-            sys.status = sys.status(),
-            sys.nframe = sys.nframe(),
-            sys.parent.1 = sys.parent(n = 1L),
-            sys.parent.2 = sys.parent(n = 2L),
-            sys.parent.3 = sys.parent(n = 3L),
-            definition = definition,
-            call = call,
-            envir = envir,
-            isLocalCall = .isLocalCall(call)
-        ))
+        print(list)
     }
 
     # Check for S4 `.local()` and move up the stack an extra level accordingly.
@@ -65,11 +78,16 @@ standardizeCall <- function(verbose = FALSE) {
         call <- sys.call(which = which)
         stopifnot(!isTRUE(.isLocalCall(call)))
         envir <- sys.frame(which = which)
+        # Update the verbose list.
+        list <- list(
+            .local.definition = definition,
+            .local.call = call,
+            .local.envir = envir
+        )
     } else {
         which <- sys.parent(n = 1L)
     }
-
-    # Print the matched call, for debugging.
+    list[["which"]] <- which
     if (isTRUE(verbose)) {
         print(list(
             which = which,
@@ -88,7 +106,7 @@ standardizeCall <- function(verbose = FALSE) {
         expand.dots = expand.dots,
         envir = envir
     )
-
+    list[["match.call"]] <- call
     if (isTRUE(verbose)) {
         print(call)
     }
@@ -100,7 +118,11 @@ standardizeCall <- function(verbose = FALSE) {
     # This check is especially important for S4 methods containing `.local()`.
     assert_all_are_non_missing_nor_empty_character(names(as.list(call)[-1L]))
 
-    call
+    if (return == "list") {
+        list
+    } else {
+        call
+    }
 }
 
 # Assign the formals.
