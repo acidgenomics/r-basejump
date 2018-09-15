@@ -125,6 +125,7 @@ Collate:
     'dots.R'
     'eggnog.R'
     'emptyRanges.R'
+    'ensembl2entrez.R'
     'export-methods.R'
     'gene2symbol-methods.R'
     'geneSynonyms.R'

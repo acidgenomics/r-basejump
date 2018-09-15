@@ -141,6 +141,17 @@ setGeneric(
 
 
 
+#' @rdname ensembl2entrez
+#' @export
+setGeneric(
+    name = "ensembl2entrez",
+    def = function(object, ...) {
+        standardGeneric("ensembl2entrez")
+    }
+)
+
+
+
 #' @rdname export
 #' @export
 setGeneric(
