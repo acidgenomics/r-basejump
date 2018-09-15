@@ -1,15 +1,17 @@
-#' HGNC to Ensembl Gene ID Mappings
+#' `hgnc2ensembl` Generator
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `DataFrame`.
+#' @return `hgnc2ensembl`.
+#'
+#' @seealso `hgnc2ensembl-class`.
 #'
 #' @examples
-#' x <- hgnc2gene()
+#' x <- hgnc2ensembl()
 #' print(x)
-hgnc2gene <- function() {
+hgnc2ensembl <- function() {
     stopifnot(has_internet())
     message("Obtaining HGNC to Ensembl gene ID mappings")
     data <- read_tsv(
@@ -34,6 +36,6 @@ hgnc2gene <- function() {
     data[["hgncID"]] <- as.integer(gsub("^HGNC\\:", "", data[["hgncID"]]))
     data <- data[order(data[["hgncID"]]), ]
     data <- as(data, "DataFrame")
-    rownames(data) <- data[["hgncID"]]
-    data
+    rownames(data) <- as.character(data[["hgncID"]])
+    new("hgnc2ensembl", data)
 }

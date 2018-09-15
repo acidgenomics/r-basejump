@@ -1,3 +1,8 @@
+# TODO Define GFF class.
+# TODO Consider defining ensembl2entrez class.
+
+
+
 # tbl_df =======================================================================
 setOldClass(Classes = class(tibble()))
 
@@ -43,7 +48,84 @@ setValidity(
 
 
 
-# tx2gene ==================================================================
+# hgnc2ensembl =================================================================
+#' `hgnc2ensembl` Class
+#'
+#' HGNC to Ensembl gene ID mappings.
+#'
+#' Contains a `DataFrame` with `hgncID` and `geneID` columns.
+#'
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+setClass(
+    Class = "hgnc2ensembl",
+    contains = "DataFrame"
+)
+
+setValidity(
+    Class = "hgnc2ensembl",
+    method = function(object) {
+        assert_are_identical(
+            x = colnames(object),
+            y = c("hgncID", "geneID")
+        )
+        assert_are_identical(
+            x = rownames(object),
+            y = as.character(object[["hgncID"]])
+        )
+        TRUE
+    }
+)
+
+
+
+# mgi2gene =====================================================================
+#' `mgi2ensembl` Class
+#'
+#' MGI to Ensembl gene ID mappings.
+#'
+#' Contains a `DataFrame` with `mgiID` and `geneID` columns.
+#'
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @return `mgi2ensembl`.
+#'
+#' @examples
+#' x <- (
+#'     "mgi2gene",
+#'     DataFrame(
+#'         mgiID = 87853L,
+#'         geneID = "ENSMUSG00000027596",
+#'         row.names = 87853L
+#'     )
+#' )
+#' print(x)
+setClass(
+    Class = "mgi2ensembl",
+    contains = "DataFrame"
+)
+
+setValidity(
+    Class = "mgi2ensembl",
+    method = function(object) {
+        assert_are_identical(
+            x = colnames(object),
+            y = c("mgiID", "geneID")
+        )
+        assert_are_identical(
+            x = rownames(object),
+            y = as.character(object[["mgiID"]])
+        )
+        TRUE
+    }
+)
+
+
+
+# tx2gene ======================================================================
 #' `tx2gene` Class
 #'
 #' Transcript-to-gene mappings.

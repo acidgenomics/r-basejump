@@ -1,15 +1,17 @@
-#' MGI to Ensembl Gene ID Mappings
+#' `mgi2ensembl` Generator
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `DataFrame`.
+#' @seealso `mgi2ensembl-class`.
+#'
+#' @return `mgi2ensembl`.
 #'
 #' @examples
-#' x <- mgi2gene()
+#' x <- mgi2ensembl()
 #' print(x)
-mgi2gene <- function() {
+mgi2ensembl <- function() {
     stopifnot(has_internet())
     message("Obtaining MGI to Ensembl gene ID mappings")
     data <- read_tsv(
@@ -32,5 +34,5 @@ mgi2gene <- function() {
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
     rownames(data) <- data[["mgiID"]]
-    data
+    new("mgi2ensembl", data)
 }
