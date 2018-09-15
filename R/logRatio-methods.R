@@ -15,22 +15,18 @@
 #' - `gtools::logratio2foldchange()`.
 #'
 #' @examples
-#' # Convert fold change to log ratio
+#' # Convert fold change to log ratio.
 #' foldChangeToLogRatio(c(-8, -4, -2, 1, 2, 4, 8))
 #'
-#' # Convert log ratio to fold change
+#' # Convert log ratio to fold change.
 #' logRatioToFoldChange(seq(-3, 3, 1))
 NULL
 
 
 
 # foldChangeToLogRatio =========================================================
-#' @rdname logRatio
-#' @export
-setMethod(
-    f = "foldChangeToLogRatio",
-    signature = signature("numeric"),
-    definition = function(object, base = 2L) {
+.foldChangeToLogRatio.numeric <-  # nolint
+    function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)
         assert_all_are_positive(base)
@@ -38,17 +34,22 @@ setMethod(
         object <- log(object, base)
         object
     }
+
+
+
+#' @rdname logRatio
+#' @export
+setMethod(
+    f = "foldChangeToLogRatio",
+    signature = signature("numeric"),
+    definition = .foldChangeToLogRatio.numeric
 )
 
 
 
 # logRatioToFoldChange =========================================================
-#' @rdname logRatio
-#' @export
-setMethod(
-    f = "logRatioToFoldChange",
-    signature = signature("numeric"),
-    definition = function(object, base = 2L) {
+.logRatioToFoldChange.numeric <-  # nolint
+    function(object, base = 2L) {
         assertIsAnImplicitInteger(base)
         base <- as.integer(base)
         assert_all_are_positive(base)
@@ -56,4 +57,13 @@ setMethod(
         object <- ifelse(object < 1L, -1L / object, object)
         object
     }
+
+
+
+#' @rdname logRatio
+#' @export
+setMethod(
+    f = "logRatioToFoldChange",
+    signature = signature("numeric"),
+    definition = .logRatioToFoldChange.numeric
 )
