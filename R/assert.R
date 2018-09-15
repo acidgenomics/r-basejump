@@ -8,7 +8,7 @@
 #' @param inherits `boolean`. Should the enclosing frames of the `environment`
 #'   be searched?
 #'
-#' @return Stop on mismatch.
+#' @return Always stop on error.
 NULL
 
 
