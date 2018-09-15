@@ -37,14 +37,12 @@ NULL
         map <- Filter(Negate(is.null), map)
         # Ensembl gene IDs are names. Entrez gene ID are values.
         vec <- unlist(map)
-        new(
-            Class = "ensembl2entrez",
-            DataFrame(
-                geneID = names(vec),
-                entrezID = vec,
-                row.names = names(vec)
-            )
+        data <- DataFrame(
+            geneID = names(vec),
+            entrezID = vec,
+            row.names = names(vec)
         )
+        new("ensembl2entrez", data)
     }
 
 
