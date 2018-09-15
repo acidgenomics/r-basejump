@@ -48,7 +48,7 @@ NULL
 
 
 
-.detectOrganism <- function(object) {
+.detectOrganism.string <- function(object) {
     assert_is_a_string(object)
 
     # Homo sapiens
@@ -160,25 +160,12 @@ NULL
 
 
 
-.returnUniqueOrganism <- function(object) {
-    assert_is_character(object)
-    x <- detectOrganism(object)
-    x <- sort(unique(na.omit(x)))
-    x
-}
-
-
-
-#' @rdname detectOrganism
-#' @export
-setMethod(
-    f = "detectOrganism",
-    signature = signature("character"),
-    definition = function(object, unique = FALSE) {
+.detectOrganism.character <-  # nolint
+    function(object, unique = FALSE) {
         assert_is_a_bool(unique)
         x <- vapply(
             X = as.character(object),
-            FUN = .detectOrganism,
+            FUN = .detectOrganism.string,
             FUN.VALUE = character(1L)
         )
         if (all(is.na(x))) {
@@ -198,6 +185,50 @@ setMethod(
         }
         x
     }
+
+
+
+.returnUniqueOrganism <- function(object) {
+    assert_is_character(object)
+    x <- detectOrganism(object)
+    x <- sort(unique(na.omit(x)))
+    x
+}
+
+
+
+.detectOrganism.matrix <-  # nolint
+    function(object) {
+        # Assume gene identifiers are defined in the rownames.
+        assertHasRownames(object)
+        .returnUniqueOrganism(rownames(object))
+    }
+
+
+
+.detectOrganism.tbl_df <-  # nolint
+    function(object) {
+        assert_has_colnames(object)
+        object <- camel(object)
+        idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
+        assert_are_intersecting_sets(idCols, colnames(object))
+        idCol <- match(
+            x = idCols,
+            table = colnames(object)
+        ) %>%
+            na.omit() %>%
+            .[[1L]]
+        .returnUniqueOrganism(object[, idCol, drop = TRUE])
+    }
+
+
+
+#' @rdname detectOrganism
+#' @export
+setMethod(
+    f = "detectOrganism",
+    signature = signature("character"),
+    definition = .detectOrganism.character
 )
 
 
@@ -207,7 +238,10 @@ setMethod(
 setMethod(
     f = "detectOrganism",
     signature = signature("factor"),
-    definition = getMethod("detectOrganism", "character")
+    definition = getMethod(
+        f = "detectOrganism",
+        signature = signature("character")
+    )
 )
 
 
@@ -217,11 +251,7 @@ setMethod(
 setMethod(
     f = "detectOrganism",
     signature = signature("matrix"),
-    definition = function(object) {
-        # Assume gene identifiers are defined in the rownames
-        assertHasRownames(object)
-        .returnUniqueOrganism(rownames(object))
-    }
+    definition = .detectOrganism.matrix
 )
 
 
@@ -261,17 +291,5 @@ setMethod(
 setMethod(
     f = "detectOrganism",
     signature = signature("tbl_df"),
-    definition = function(object) {
-        assert_has_colnames(object)
-        object <- camel(object)
-        idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
-        assert_are_intersecting_sets(idCols, colnames(object))
-        idCol <- match(
-            x = idCols,
-            table = colnames(object)
-        ) %>%
-            na.omit() %>%
-            .[[1L]]
-        .returnUniqueOrganism(object[, idCol, drop = TRUE])
-    }
+    definition = .detectOrganism.tbl_df
 )
