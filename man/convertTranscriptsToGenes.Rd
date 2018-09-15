@@ -55,6 +55,11 @@ Same class as original object.
 \description{
 Convert Ensembl Transcripts to Genes
 }
+\note{
+For objects suppporting \code{\link[=dim]{dim()}} (e.g. \code{matrix}), the object rows will be
+collapsed to gene level using \code{\link[=collapseRows]{collapseRows()}}. This applies to our
+\code{SummarizedExperiment} method.
+}
 \examples{
 # character ====
 x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
@@ -78,6 +83,8 @@ print(mat)
 rownames(mat)
 }
 \seealso{
+\code{\link[=collapseRows]{collapseRows()}}.
+
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
