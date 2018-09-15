@@ -6,7 +6,8 @@
 \usage{
 standardizeCall(definition = sys.function(sys.parent()),
   call = sys.call(sys.parent()), expand.dots = TRUE,
-  envir = parent.frame(2L), verbose = FALSE)
+  envir = parent.frame(2L), return = c("call", "list"),
+  verbose = FALSE)
 }
 \arguments{
 \item{definition}{a function, by default the function from which
@@ -21,8 +22,18 @@ standardizeCall(definition = sys.function(sys.parent()),
 \item{envir}{an environment, from which the \code{\dots} in \code{call}
     are retrieved, if any.}
 
+\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
+the first item in the vector by default.}
+
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
+}
+\value{
+\itemize{
+\item \code{call}: \code{call}. Matched call.
+\item \code{list}: \code{list}. Verbose list that includes additional information about how
+the call was standardized.
+}
 }
 \description{
 This function adds matching support for S4 methods with formals that aren't
