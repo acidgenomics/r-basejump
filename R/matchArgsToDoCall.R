@@ -57,18 +57,32 @@ matchArgsToDoCall <- function(
     # Get the position in the stack.
     which <- sys.parent(n = n)
 
-    call <- standardizeCall(
+    list <- standardizeCall(
         definition = sys.function(which = which),
         call = sys.call(which = which),
         expand.dots = TRUE,
         envir = sys.frame(which = which),
+        return = "list",
         verbose = verbose
     )
+
+    # Get the formals from the definition.
+    definition <- list[["definition"]]
+    assert_is_function(definition)
+
+    # Get the matched (standardized) call.
+    call <- list[["match.call"]]
+    assert_is_call(call)
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
         .[setdiff(names(.), names(args))]
     args <- c(args, callArgs)
+    formalArgs <- formals(definition) %>%
+        # Currently removing "...". We may want to change this.
+        .[setdiff(names(.), "...")] %>%
+        .[setdiff(names(.), names(args))]
+    args <- c(args, formalArgs)
     # Remove formals we want to exclude.
     args <- args[setdiff(names(args), removeFormals)]
 
