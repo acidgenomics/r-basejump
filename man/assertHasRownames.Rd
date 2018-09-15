@@ -13,7 +13,7 @@ hasRownames(object)
 \item{object}{Object.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 A stricter alternative to the assertive version that works properly with

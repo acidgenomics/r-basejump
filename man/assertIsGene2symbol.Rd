@@ -11,7 +11,7 @@ assertIsGene2symbol(object)
 "\code{geneName}" columns. If \code{DataFrame}, must also have \code{rownames} set.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Assert Is Gene to Symbol Mapping Data Frame

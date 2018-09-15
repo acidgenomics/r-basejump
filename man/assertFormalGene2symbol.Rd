@@ -19,7 +19,7 @@ provided instead.}
 rownames must be defined here, otherwise the function will error.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Assert Formal Gene to Symbol Mappings

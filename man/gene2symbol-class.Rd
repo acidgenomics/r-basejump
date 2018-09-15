@@ -4,6 +4,9 @@
 \name{gene2symbol-class}
 \alias{gene2symbol-class}
 \title{\code{gene2symbol} Class}
+\value{
+\code{gene2symbol}.
+}
 \description{
 Gene-to-symbol mappings.
 }

@@ -10,7 +10,7 @@ assertIsAHeaderLevel(object)
 \item{object}{Object.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Markdown supports header levels 1-7 (\code{<H1>}-\code{<H7>}).

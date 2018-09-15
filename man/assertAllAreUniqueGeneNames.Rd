@@ -13,7 +13,7 @@ assertAllAreUniqueGeneNames(object, genes)
 corresponding \code{SummarizedExperiment}.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 This assert check determines if a user-defined gene name query is using only

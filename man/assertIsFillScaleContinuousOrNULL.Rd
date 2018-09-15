@@ -10,7 +10,7 @@ assertIsFillScaleContinuousOrNULL(object)
 \item{object}{Object.}
 }
 \value{
-Stop on mismatch.
+Always stop on error.
 }
 \description{
 Assert Is Fill Palette Scale Continuous or NULL

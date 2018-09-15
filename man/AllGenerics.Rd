@@ -4,14 +4,11 @@
 \alias{AllGenerics}
 \alias{markdown}
 \alias{plotQC}
-\alias{tx2gene}
 \title{S4 Generics}
 \usage{
 markdown(object, ...)
 
 plotQC(object, ...)
-
-tx2gene(object, ...)
 }
 \arguments{
 \item{object}{Object.}
