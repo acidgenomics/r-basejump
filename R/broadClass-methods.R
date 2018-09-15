@@ -132,6 +132,7 @@ NULL
     }
 
 
+
 .broadClass.SE <-  # nolint
     function(object) {
         validObject(object)
