@@ -7,45 +7,60 @@
 #'
 #' @note
 #' For objects containing a counts matrix, the object rows will be collapsed to
-#' gene level using [collapseRows()]. This applies to our `SummarizedExperiment`
-#' method.
+#' gene level using [aggregateRows()]. This applies to our
+#' `SummarizedExperiment` method.
 #'
 #' @name convertTranscriptsToGenes
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @include makeGRanges.R
+#' @include makeTx2gene.R
 #' @inherit convertGenesToSymbols
 #'
-#' @param tx2gene `data.frame` or `NULL`. Transcript-to-gene mappings. If set
+#' @param tx2gene `tx2gene` or `NULL`. Transcript-to-gene mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
+#' @param aggregate `boolean`. For objects supporting [dim()], aggregate counts
+#'   to gene level and collapse the matrix.
 #' @param ... Passthrough to [makeTx2geneFromEnsembl()].
 #'
-#' @seealso [collapseRows()].
+#' @return
+#' - `character`: `factor`. Genes in the values, transcripts in the names.
+#' - `matrix`, `sparseMatrix`, `SummarizedExperiment`: Object containing counts
+#'   collapsed to gene level by default (see `aggregate` argument).
+#'
+#' @seealso [aggregateRows()].
 #'
 #' @examples
+#' tx2gene <- tx2gene(tx_se_small)
+#' print(tx2gene)
+#' transcriptIDs <- rownames(tx_se_small)
+#' print(transcriptIDs)
+#' stopifnot(all(transcriptIDs %in% rownames(tx2gene)))
+#'
 #' # character ====
-#' x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
-#' y <- convertTranscriptsToGenes(x)
-#' print(y)
+#' # Returns as factor.
+#' x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+#' print(x)
+#' str(x)
 #'
 #' # matrix ====
-#' mat <- matrix(
-#'     data = seq(1L:6L),
-#'     byrow = TRUE,
-#'     nrow = 3L,
-#'     ncol = 2L,
-#'     dimnames = list(
-#'         c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
-#'         c("sample1", "sample2")
-#'     )
-#' )
-#' print(mat)
-#' mat <- convertTranscriptsToGenes(mat)
-#' print(mat)
-#' rownames(mat)
+#' # Note that transcript IDs currently must be in the rows.
+#' counts <- counts(tx_se_small)
+#' print(counts)
+#' # Aggregate to gene level.
+#' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
+#' print(x)
+#' colSums(x)
+#' # Simply map to rownames.
+#' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
+#' print(x)
+#' colSums(x)
+#'
+#' # SummarizedExperiment ====
+#' object <- tx_se_small
+#' print(object)
 NULL
 
 
@@ -92,18 +107,15 @@ function(
         drop = FALSE
         ]
 
-    return <- tx2gene[["geneID"]]
+    return <- as.factor(tx2gene[["geneID"]])
     names(return) <- tx2gene[["transcriptID"]]
     return
 }
 
 # Set the formals.
 f1 <- formals(.convertTranscriptsToGenes.character)
-f2 <- formals(makeGRangesFromEnsembl)
-f2 <- f2[setdiff(
-    x = names(f2),
-    y = c(names(f1), "format", "metadata")
-)]
+f2 <- formals(makeTx2geneFromEnsembl)
+f2 <- f2[setdiff(names(f2), c(names(f1)))]
 f <- c(f1, f2)
 formals(.convertTranscriptsToGenes.character) <- f
 
@@ -111,24 +123,54 @@ formals(.convertTranscriptsToGenes.character) <- f
 
 # Consider aggregating the matrix to gene level instead.
 .convertTranscriptsToGenes.matrix <-  # nolint
-function(
-    # Setting the formals below.
-) {
-    rownames <- rownames(object)
-    rownames <- do.call(
+function(aggregate = TRUE) {
+    assert_is_a_bool(aggregate)
+    t2g <- do.call(
         what = convertTranscriptsToGenes,
         args = matchArgsToDoCall(
-            args = list(object = rownames),
-            n = 2L
+            args = list(object = rownames(object)),
+            removeFormals = "aggregate"
         )
     )
-    rownames(object) <- rownames
-    object
+    if (isTRUE(aggregate)) {
+        aggregateRows(object, groupings = t2g)
+    } else {
+        rownames(object) <- as.character(t2g)
+        object
+    }
 }
 
-# Set the formals.
-f <- formals(.convertTranscriptsToGenes.character)
+# Assign the formals.
+f1 <- formals(.convertTranscriptsToGenes.character)
+f2 <- formals(.convertTranscriptsToGenes.matrix)
+f <- c(f1, f2)
 formals(.convertTranscriptsToGenes.matrix) <- f
+
+
+
+# Consider returning RSE here in a future update.
+# Need to add code that handles rowRanges.
+.convertTranscriptsToGenes.SE <-  # nolint
+    function(object) {
+        tx2gene <- tx2gene(object)
+        counts <- counts(object)
+        t2g <- as.factor(tx2gene[["geneID"]])
+        names(t2g) <- tx2gene[["transcriptID"]]
+        counts <- convertTranscriptsToGenes(
+            object = counts,
+            tx2gene = tx2gene,
+            aggregate = TRUE
+        )
+        se <- SummarizedExperiment(
+            assays = list(counts = counts),
+            colData = colData(object)
+        )
+        assert_are_identical(
+            x = colSums(counts(object)),
+            y = colSums(counts(se))
+        )
+        se
+    }
 
 
 
@@ -155,26 +197,16 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("data.frame"),
-    definition = getMethod("convertTranscriptsToGenes", "matrix")
-)
-
-
-
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("DataFrame"),
-    definition = getMethod("convertTranscriptsToGenes", "data.frame")
-)
-
-
-
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
     signature = signature("sparseMatrix"),
     definition = getMethod("convertTranscriptsToGenes", "matrix")
+)
+
+
+
+#' @rdname convertTranscriptsToGenes
+#' @export
+setMethod(
+    f = "convertTranscriptsToGenes",
+    signature = signature("SummarizedExperiment"),
+    definition = .convertTranscriptsToGenes.SE
 )
