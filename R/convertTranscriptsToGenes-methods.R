@@ -6,9 +6,9 @@
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @note
-#' For objects suppporting [dim()] (e.g. `matrix`), the object rows will be
-#' collapsed to gene level using [collapseRows()]. This applies to our
-#' `SummarizedExperiment` method.
+#' For objects containing a counts matrix, the object rows will be collapsed to
+#' gene level using [collapseRows()]. This applies to our `SummarizedExperiment`
+#' method.
 #'
 #' @name convertTranscriptsToGenes
 #' @family Annotation Functions
