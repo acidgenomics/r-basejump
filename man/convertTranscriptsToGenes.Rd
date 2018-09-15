@@ -6,9 +6,8 @@
 \alias{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes,character-method}
 \alias{convertTranscriptsToGenes,matrix-method}
-\alias{convertTranscriptsToGenes,data.frame-method}
-\alias{convertTranscriptsToGenes,DataFrame-method}
 \alias{convertTranscriptsToGenes,sparseMatrix-method}
+\alias{convertTranscriptsToGenes,SummarizedExperiment-method}
 \title{Convert Ensembl Transcripts to Genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
@@ -17,23 +16,20 @@ convertTranscriptsToGenes(object, ...)
   organism = NULL, build = NULL, release = NULL)
 
 \S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertTranscriptsToGenes}{data.frame}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertTranscriptsToGenes}{DataFrame}(object, tx2gene = NULL,
-  organism = NULL, build = NULL, release = NULL)
+  organism = NULL, build = NULL, release = NULL, aggregate = TRUE)
 
 \S4method{convertTranscriptsToGenes}{sparseMatrix}(object,
-  tx2gene = NULL, organism = NULL, build = NULL, release = NULL)
+  tx2gene = NULL, organism = NULL, build = NULL, release = NULL,
+  aggregate = TRUE)
+
+\S4method{convertTranscriptsToGenes}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Passthrough to \code{\link[=makeTx2geneFromEnsembl]{makeTx2geneFromEnsembl()}}.}
 
-\item{tx2gene}{\code{data.frame} or \code{NULL}. Transcript-to-gene mappings. If set
+\item{tx2gene}{\code{tx2gene} or \code{NULL}. Transcript-to-gene mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
 automatically.}
 
@@ -44,42 +40,57 @@ automatically.}
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
+
+\item{aggregate}{\code{boolean}. For objects supporting \code{\link[=dim]{dim()}}, aggregate counts
+to gene level and collapse the matrix.}
 }
 \value{
-Same class as original object.
+\itemize{
+\item \code{character}: \code{factor}. Genes in the values, transcripts in the names.
+\item \code{matrix}, \code{sparseMatrix}, \code{SummarizedExperiment}: Object containing counts
+collapsed to gene level by default (see \code{aggregate} argument).
+}
 }
 \description{
 Convert Ensembl Transcripts to Genes
 }
 \note{
-For objects suppporting \code{\link[=dim]{dim()}} (e.g. \code{matrix}), the object rows will be
-collapsed to gene level using \code{\link[=collapseRows]{collapseRows()}}. This applies to our
+For objects containing a counts matrix, the object rows will be collapsed to
+gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{
+tx2gene <- tx2gene(tx_se_small)
+print(tx2gene)
+transcriptIDs <- rownames(tx_se_small)
+print(transcriptIDs)
+stopifnot(all(transcriptIDs \%in\% rownames(tx2gene)))
+
 # character ====
-x <- c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041")
-y <- convertTranscriptsToGenes(x)
-print(y)
+# Returns as factor.
+x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+print(x)
+str(x)
 
 # matrix ====
-mat <- matrix(
-    data = seq(1L:6L),
-    byrow = TRUE,
-    nrow = 3L,
-    ncol = 2L,
-    dimnames = list(
-        c("ENSMUST00000000001", "ENSMUST00000000003", "ENSMUST00000114041"),
-        c("sample1", "sample2")
-    )
-)
-print(mat)
-mat <- convertTranscriptsToGenes(mat)
-print(mat)
-rownames(mat)
+# Note that transcript IDs currently must be in the rows.
+counts <- counts(tx_se_small)
+print(counts)
+# Aggregate to gene level.
+x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
+print(x)
+colSums(x)
+# Simply map to rownames.
+x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = FALSE)
+print(x)
+colSums(x)
+
+# SummarizedExperiment ====
+object <- tx_se_small
+print(object)
 }
 \seealso{
-\code{\link[=collapseRows]{collapseRows()}}.
+\code{\link[=aggregateRows]{aggregateRows()}}.
 
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},

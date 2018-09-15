@@ -8,18 +8,18 @@
 \alias{annotable}
 \title{Make Genomic Ranges}
 \usage{
-makeGRangesFromEnsembl(organism, format = c("genes", "transcripts"),
-  build = NULL, release = NULL, metadata = FALSE)
+makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
+  build = NULL, release = NULL, metadata = FALSE, ...)
 
-makeGRangesFromGFF(file, format = c("genes", "transcripts"))
+makeGRangesFromGFF(file, level = c("genes", "transcripts"), ...)
 
-annotable(organism, format = c("genes", "transcripts"), build = NULL,
-  release = NULL)
+annotable(organism, level = c("genes", "transcripts"), build = NULL,
+  release = NULL, ...)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
-\item{format}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
+\item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
 \item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
 "\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
@@ -29,6 +29,8 @@ set \code{NULL}, defaults to the most recent release available.}
 
 \item{metadata}{\code{boolean}. Include the AnnotationHub metadata inside a
 \code{list}.}
+
+\item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
 }
@@ -114,22 +116,22 @@ Note that \code{GRanges} also support coercion to a basic \code{data.frame} usin
 \examples{
 # makeGRangesFromEnsembl ====
 # Genes
-x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+x <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
 summary(x)
 
 # Transcripts
-x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 summary(x)
 
 # makeGRangesFromGFF ====
 file <- "http://basejump.seq.cloud/example.gtf"
 
 # Genes
-x <- makeGRangesFromGFF(file = file, format = "genes")
+x <- makeGRangesFromGFF(file = file, level = "genes")
 summary(x)
 
 # Transcripts
-x <- makeGRangesFromGFF(file = file, format = "transcripts")
+x <- makeGRangesFromGFF(file = file, level = "transcripts")
 summary(x)
 
 # annotable ====
@@ -138,7 +140,7 @@ x <- annotable("Homo sapiens")
 glimpse(x)
 
 # Transcripts
-x <- annotable("Homo sapiens", format = "transcripts")
+x <- annotable("Homo sapiens", level = "transcripts")
 glimpse(x)
 }
 \seealso{

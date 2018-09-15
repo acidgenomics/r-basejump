@@ -3,7 +3,7 @@
 \docType{data}
 \name{rse_small}
 \alias{rse_small}
-\title{Example RNA-Seq DataSet}
+\title{Example RNA-Seq Data Set}
 \format{An object of class \code{RangedSummarizedExperiment} with 100 rows and 4 columns.}
 \usage{
 rse_small
@@ -14,6 +14,9 @@ identifiers and Ensembl annotations.
 }
 \examples{
 print(rse_small)
+}
+\seealso{
+Other Minimal Example Data: \code{\link{tx_se_small}}
 }
 \author{
 Michael Steinbaugh
