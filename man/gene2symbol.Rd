@@ -4,7 +4,7 @@
 \name{gene2symbol}
 \alias{gene2symbol}
 \alias{gene2symbol,SummarizedExperiment-method}
-\title{Gene to Symbol Mappings}
+\title{Gene-to-Symbol Mappings}
 \usage{
 gene2symbol(object, ...)
 
@@ -16,10 +16,10 @@ gene2symbol(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{DataFrame}.
+\code{gene2symbol}.
 }
 \description{
-Gene to Symbol Mappings
+Gene-to-Symbol Mappings
 }
 \note{
 This function will make any duplicated symbols unique by applying
@@ -27,7 +27,7 @@ This function will make any duplicated symbols unique by applying
 }
 \examples{
 # SummarizedExperiment ====
-x <-gene2symbol(rse_small)
+x <- gene2symbol(rse_small)
 print(x)
 }
 \seealso{
@@ -35,7 +35,8 @@ Other Data Functions: \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}}
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh

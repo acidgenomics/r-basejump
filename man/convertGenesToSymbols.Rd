@@ -7,8 +7,6 @@
 \alias{convertSymbolsToGenes}
 \alias{convertGenesToSymbols,character-method}
 \alias{convertGenesToSymbols,matrix-method}
-\alias{convertGenesToSymbols,data.frame-method}
-\alias{convertGenesToSymbols,DataFrame-method}
 \alias{convertGenesToSymbols,sparseMatrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
@@ -19,20 +17,16 @@ convertGenesToSymbols(object, ...)
 convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
+  organism = NULL, level = c("genes", "transcripts"), build = NULL,
+  release = NULL, ...)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertGenesToSymbols}{data.frame}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
-
-\S4method{convertGenesToSymbols}{DataFrame}(object, gene2symbol = NULL,
-  organism = NULL, build = NULL, release = NULL)
+  organism = NULL, level = c("genes", "transcripts"), build = NULL,
+  release = NULL, ...)
 
 \S4method{convertGenesToSymbols}{sparseMatrix}(object,
-  gene2symbol = NULL, organism = NULL, build = NULL,
-  release = NULL)
+  gene2symbol = NULL, organism = NULL, level = c("genes",
+  "transcripts"), build = NULL, release = NULL, ...)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
@@ -49,6 +43,8 @@ automatically.}
 
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
+\item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
+
 \item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
 "\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
 
@@ -56,7 +52,7 @@ automatically.}
 set \code{NULL}, defaults to the most recent release available.}
 }
 \value{
-Same class as original object.
+Object, with gene IDs converted to symbols.
 }
 \description{
 Convert Ensembl Identifiers to Gene Symbols
