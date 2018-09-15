@@ -7,15 +7,12 @@
 \alias{makeGene2symbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
-makeGene2symbolFromEnsembl(organism, level = c("genes", "transcripts"),
-  build = NULL, release = NULL, ...)
+makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL, ...)
 
 makeGene2symbolFromGFF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
-
-\item{level}{\code{string}. Return ranges as "\code{genes}" or "\code{transcripts}".}
 
 \item{build}{\code{string} or \code{NULL}. Genome build assembly name (e.g.
 "\code{GRCh38}"). If set \code{NULL}, defaults to the most recent build available.}
