@@ -11,7 +11,8 @@ HGNC to Ensembl gene ID mappings.
 Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 }
 \seealso{
-Other S4 Classes: \code{\link{gene2symbol-class}},
+Other S4 Classes: \code{\link{ensembl2entrez-class}},
+  \code{\link{gene2symbol-class}},
   \code{\link{mgi2ensembl-class}},
   \code{\link{tx2gene-class}}
 }

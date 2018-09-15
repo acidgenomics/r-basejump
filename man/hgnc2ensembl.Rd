@@ -24,10 +24,10 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
-  \code{\link{panther}},
+  \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
+  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2ensembl}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

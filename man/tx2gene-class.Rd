@@ -25,7 +25,8 @@ x <- new(
 print(x)
 }
 \seealso{
-Other S4 Classes: \code{\link{gene2symbol-class}},
+Other S4 Classes: \code{\link{ensembl2entrez-class}},
+  \code{\link{gene2symbol-class}},
   \code{\link{hgnc2ensembl-class}},
   \code{\link{mgi2ensembl-class}}
 }
