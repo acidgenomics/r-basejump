@@ -1,3 +1,7 @@
+# FIXME Need default methods for plotQC, markdown
+
+
+
 #' S4 Generics
 #'
 #' @name AllGenerics
@@ -59,12 +63,13 @@ setGeneric(
 
 
 
-#' @rdname coerceToList
+#' @rdname coerce
+#' @name coerce
 #' @export
 setGeneric(
-    name = "coerceToList",
-    def = function(object, ...) {
-        standardGeneric("coerceToList")
+    name = "coerceS4ToList",
+    def = function(from) {
+        standardGeneric("coerceS4ToList")
     }
 )
 
@@ -422,7 +427,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname tx2gene
 #' @export
 setGeneric(
     name = "tx2gene",
