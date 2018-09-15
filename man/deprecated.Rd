@@ -24,6 +24,8 @@
 \alias{assertIsDataFrameOrNULL}
 \alias{fixNA}
 \alias{flatFiles}
+\alias{hgnc2gene}
+\alias{mgi2gene}
 \alias{readFileByExtension}
 \title{Deprecated Functions}
 \usage{
@@ -70,6 +72,10 @@ assertIsDataFrameOrNULL(object, ...)
 fixNA(...)
 
 flatFiles(object)
+
+hgnc2gene(...)
+
+mgi2gene(...)
 
 readFileByExtension(...)
 }
