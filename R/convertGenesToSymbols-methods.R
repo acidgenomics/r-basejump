@@ -16,30 +16,31 @@
 #' @return Object, with gene IDs converted to symbols.
 #'
 #' @examples
+#' gene2symbol <- makeGene2symbolFromEnsembl("Mus musculus")
+#' print(gene2symbol)
+#' geneIDs <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+#' sampleIDs = paste0("sample", seq_len(2L))
+#'
 #' # character ====
-#' from <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' to <- convertGenesToSymbols(from)
-#' print(to)
+#' x <- convertGenesToSymbols(geneIDs, gene2symbol = gene2symbol)
+#' print(x)
 #'
 #' # matrix ====
-#' from <- matrix(
-#'     data = seq(1L:4L),
+#' counts <- matrix(
+#'     data = seq_len(length(geneIDs) * length(sampleIDs)),
 #'     byrow = TRUE,
-#'     nrow = 2L,
-#'     ncol = 2L,
-#'     dimnames = list(
-#'         c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-#'         c("sample1", "sample2")
-#'     )
+#'     nrow = length(geneIDs),
+#'     ncol = length(sampleIDs),
+#'     dimnames = list(geneIDs, sampleIDs)
 #' )
-#' print(from)
-#' to <- convertGenesToSymbols(from)
-#' print(to)
-#' rownames(to)
+#' print(counts)
+#' x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
+#' print(x)
 #'
 #' # SummarizedExperiment ====
 #' x <- convertGenesToSymbols(rse_small)
 #' print(x)
+#' # Interconvert back to gene IDs.
 #' y <- convertSymbolsToGenes(x)
 #' print(y)
 NULL
@@ -48,58 +49,56 @@ NULL
 
 # convertGenesToSymbols ========================================================
 .convertGenesToSymbols.character <-  # nolint
-function(
-    # Setting formals below.
-    object,
-    gene2symbol = NULL,
-    organism = NULL
-) {
-    # Allowing duplicates here (unlike convertTranscriptsToGenes).
-    assert_all_are_non_missing_nor_empty_character(object)
-    assert_is_any_of(gene2symbol, c("DataFrame", "NULL"))
-    assertIsAStringOrNULL(organism)
+    function(
+        # Setting formals below.
+        object,
+        gene2symbol = NULL,
+        organism = NULL
+    ) {
+        # Allowing duplicates here (unlike convertTranscriptsToGenes).
+        assert_all_are_non_missing_nor_empty_character(object)
+        assert_is_any_of(gene2symbol, c("DataFrame", "NULL"))
+        assertIsAStringOrNULL(organism)
 
-    # If no gene2symbol is provided, fall back to using Ensembl annotations.
-    if (is.null(gene2symbol)) {
-        message("Obtaining gene-to-symbol mappings from Ensembl")
-        if (is.null(organism)) {
-            organism <- detectOrganism(object, unique = TRUE)
-        }
-        assert_is_a_string(organism)
-        message(paste(organism, "genes detected"))
-        gene2symbol <- do.call(
-            what = makeGene2symbolFromEnsembl,
-            args = matchArgsToDoCall(
-                args = list(organism = organism),
-                removeFormals = c("object", "gene2symbol")
+        # If no gene2symbol is provided, fall back to using Ensembl annotations.
+        if (is.null(gene2symbol)) {
+            message("Obtaining gene-to-symbol mappings from Ensembl")
+            if (is.null(organism)) {
+                organism <- detectOrganism(object, unique = TRUE)
+            }
+            assert_is_a_string(organism)
+            message(paste(organism, "genes detected"))
+            gene2symbol <- do.call(
+                what = makeGene2symbolFromEnsembl,
+                args = matchArgsToDoCall(
+                    args = list(organism = organism),
+                    removeFormals = c("object", "gene2symbol")
+                )
             )
-        )
+        }
+        assertIsGene2symbol(gene2symbol)
+
+        # Arrange the gene2symbol to match the input.
+        gene2symbol <- gene2symbol[
+            match(x = object, table = gene2symbol[["geneID"]]),
+            ,
+            drop = FALSE
+            ]
+
+        return <- gene2symbol[["geneName"]]
+        names(return) <- gene2symbol[["geneID"]]
+
+        missing <- setdiff(object, gene2symbol[["geneID"]])
+        if (length(missing)) {
+            warning(paste(
+                "Failed to match genes:", toString(missing)
+            ), call. = FALSE)
+            names(missing) <- missing
+            return <- c(return, missing)
+        }
+
+        return[object]
     }
-    assertIsGene2symbol(gene2symbol)
-
-    # Arrange the gene2symbol to match the input.
-    gene2symbol <- gene2symbol[
-        match(x = object, table = gene2symbol[["geneID"]]),
-        ,
-        drop = FALSE
-    ]
-
-    return <- gene2symbol[["geneName"]]
-    names(return) <- gene2symbol[["geneID"]]
-
-    missing <- setdiff(object, gene2symbol[["geneID"]])
-    if (length(missing)) {
-        warning(paste(
-            "Failed to match genes:", toString(missing)
-        ), call. = FALSE)
-        names(missing) <- missing
-        return <- c(return, missing)
-    }
-
-    return[object]
-}
-
-# Set the formals.
 f1 <- formals(.convertGenesToSymbols.character)
 f2 <- formals(makeGRangesFromEnsembl)
 f2 <- f2[setdiff(
@@ -112,23 +111,38 @@ formals(.convertGenesToSymbols.character) <- f
 
 
 .convertGenesToSymbols.matrix <-  # nolint
-function(
-    # Setting formals below.
-) {
-    rownames <- rownames(object)
-    rownames <- do.call(
-        what = convertGenesToSymbols,
-        args = matchArgsToDoCall(
-            args = list(object = rownames)
+    function() {
+        g2s <- do.call(
+            what = convertGenesToSymbols,
+            args = matchArgsToDoCall(
+                args = list(object = rownames(object))
+            )
         )
-    )
-    rownames(object) <- rownames
-    object
-}
-
-# Set the formals.
+        rownames(object) <- as.character(g2s)
+        object
+    }
 f <- formals(.convertGenesToSymbols.character)
 formals(.convertGenesToSymbols.matrix) <- f
+
+
+
+.convertGenesToSymbols.SE <-  # nolint
+    function(object) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        symbols <- g2s[["geneName"]]
+        assert_has_no_duplicates(symbols)
+        # Update the object rownames.
+        rownames(object) <- as.character(symbols)
+        # Ensure all names get updated correctly.
+        if (is(object, "RangedSummarizedExperiment")) {
+            assert_are_identical(
+                x = rownames(object),
+                y = names(rowRanges(object))
+            )
+        }
+        object
+    }
 
 
 
@@ -167,42 +181,31 @@ setMethod(
 setMethod(
     f = "convertGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        validObject(object)
-        g2s <- gene2symbol(object)
-        symbols <- g2s[["geneName"]]
-        assert_has_no_duplicates(symbols)
-        # Update the object rownames.
-        rownames(object) <- symbols
-        # Ensure all names get updated correctly.
-        if (is(object, "RangedSummarizedExperiment")) {
-            assert_are_identical(
-                x = rownames(object),
-                y = names(rowRanges(object))
-            )
-        }
-
-        object
-    }
+    definition = .convertGenesToSymbols.SE
 )
 
 
 
 # convertSymbolsToGenes ========================================================
+.convertSymbolsToGenes.SE <-  # nolint
+    function(object) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        assert_are_identical(
+            x = rownames(object),
+            y = g2s[["geneName"]]
+        )
+        assert_has_no_duplicates(g2s[["geneID"]])
+        rownames(object) <- as.character(g2s[["geneID"]])
+        object
+    }
+
+
+
 #' @rdname convertGenesToSymbols
 #' @export
 setMethod(
     f = "convertSymbolsToGenes",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        validObject(object)
-        g2s <- gene2symbol(object)
-        if (is.null(g2s)) {
-            stop("Object does not contain gene-to-symbol mappings")
-        }
-        assert_are_identical(rownames(object), g2s[["geneName"]])
-        assert_has_no_duplicates(g2s[["geneID"]])
-        rownames(object) <- g2s[["geneID"]]
-        object
-    }
+    definition = .convertSymbolsToGenes.SE
 )
