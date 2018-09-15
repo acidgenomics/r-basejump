@@ -37,21 +37,20 @@ We're attempting to make this as strict as possible, requiring:
 # For this simple working example, let's duplicate our minimal dataset.
 
 x <- rse_small
-validObject(x)
-sampleData(x)
-sampleNames(x)
+colnames(x)
+colData(x)
 
 y <- x
 colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
+colnames(y)
 colData(y)[["sampleName"]] <- colnames(y)
-validObject(y)
-sampleData(y)
-sampleNames(y)
+colData(y)
 
 # Combine two SummarizedExperiment objects.
 c <- combine(x, y)
 print(c)
-sampleNames(c)
+colnames(c)
+colData(c)
 }
 \seealso{
 \code{\link[BiocGenerics:combine]{BiocGenerics::combine()}}.
