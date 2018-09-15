@@ -53,7 +53,7 @@ makeTx2geneFromEnsembl <- function(
     # Setting formals below.
 ) {
     args <- as.list(match.call())[-1L]
-    args[["format"]] <- "transcripts"
+    args[["level"]] <- "transcripts"
     gr <- do.call(
         what = makeGRangesFromEnsembl,
         args = args
@@ -63,7 +63,7 @@ makeTx2geneFromEnsembl <- function(
 
 # Set the formals.
 f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), c("format", "metadata"))]
+f <- f[setdiff(names(f), c("level", "metadata", "..."))]
 formals(makeTx2geneFromEnsembl) <- f
 
 
