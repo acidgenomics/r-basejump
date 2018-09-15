@@ -308,6 +308,20 @@ flatFiles <- function(object) {
 
 #' @rdname deprecated
 #' @export
+hgnc2gene <- function(...) {
+    .Deprecated("hgnc2ensembl")
+    hgnc2ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
+mgi2gene <- function(...) {
+    .Deprecated("mgi2enseml")
+    mgi2ensembl(...)
+}
+
+#' @rdname deprecated
+#' @export
 readFileByExtension <- function(...) {
     .Deprecated("import")
     import(...)
