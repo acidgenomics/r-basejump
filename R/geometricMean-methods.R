@@ -45,21 +45,12 @@
 #' sparse <- as(matrix, "sparseMatrix")
 #' print(sparse)
 #' geometricMean(sparse)
-#'
-#' # DataFrame ====
-#' df <- as(matrix, "DataFrame")
-#' print(df)
-#' geometricMean(df)
 NULL
 
 
 
-#' @rdname geometricMean
-#' @export
-setMethod(
-    f = "geometricMean",
-    signature = signature("numeric"),
-    definition = function(
+.geometricMean.numeric <-  # nolint
+    function(
         object,
         removeNA = TRUE,
         zeroPropagate = FALSE
@@ -84,6 +75,30 @@ setMethod(
             )
         }
     }
+
+
+
+.geometricMean.matrix <-  # nolint
+    function(object, MARGIN = 2L) {  # nolint
+        invisible(lapply(
+            X = object,
+            FUN = assert_is_numeric
+        ))
+        apply(
+            X = object,
+            MARGIN = MARGIN,
+            FUN = geometricMean
+        )
+    }
+
+
+
+#' @rdname geometricMean
+#' @export
+setMethod(
+    f = "geometricMean",
+    signature = signature("numeric"),
+    definition = .geometricMean.numeric
 )
 
 
@@ -93,14 +108,7 @@ setMethod(
 setMethod(
     f = "geometricMean",
     signature = signature("matrix"),
-    definition = function(object, MARGIN = 2L) {
-        invisible(lapply(object, assert_is_numeric))
-        apply(
-            X = object,
-            MARGIN = MARGIN,
-            FUN = geometricMean
-        )
-    }
+    definition = .geometricMean.matrix
 )
 
 
@@ -110,25 +118,8 @@ setMethod(
 setMethod(
     f = "geometricMean",
     signature = signature("sparseMatrix"),
-    definition = getMethod("geometricMean", "matrix")
-)
-
-
-
-#' @rdname geometricMean
-#' @export
-setMethod(
-    f = "geometricMean",
-    signature = signature("data.frame"),
-    definition = getMethod("geometricMean", "matrix")
-)
-
-
-
-#' @rdname geometricMean
-#' @export
-setMethod(
-    f = "geometricMean",
-    signature = signature("DataFrame"),
-    definition = getMethod("geometricMean", "matrix")
+    definition = getMethod(
+        f = "geometricMean",
+        signature = signature("matrix")
+    )
 )
