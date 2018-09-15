@@ -17,14 +17,18 @@ NULL
 
 
 
-#' @rdname counts
-#' @export
-setMethod(
-    f = "counts",
-    "SummarizedExperiment",
+.counts.SE <-  # nolint
     function(object) {
         validObject(object)
         assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]]
     }
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts",
+    signature = signature("SummarizedExperiment"),
+    definition = .counts.SE
 )
