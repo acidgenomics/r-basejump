@@ -6,6 +6,8 @@
 \title{Read GFF Annotations}
 \usage{
 readGFF(file)
+
+readGTF(file)
 }
 \arguments{
 \item{file}{\code{string}. File path.}
