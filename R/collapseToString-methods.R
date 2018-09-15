@@ -12,8 +12,8 @@
 #' @param removeNA `boolean`. Remove NA values.
 #'
 #' @return
-#' - For `atomic`: `string`.
-#' - For column data: Object collapsed to a single row.
+#' - `atomic`: `string`.
+#' - [dim()]: Object of same class, collapsed to a single row.
 #'
 #' @seealso [base::toString()].
 #'
@@ -49,12 +49,8 @@ NULL
 
 
 
-#' @rdname collapseToString
-#' @export
-setMethod(
-    f = "collapseToString",
-    signature = signature("atomic"),
-    definition = function(
+.collapseToString.atomic <-  # nolint
+    function(
         object,
         sep = ", ",
         sort = FALSE,
@@ -94,16 +90,11 @@ setMethod(
             as.character() %>%
             paste(collapse = sep)
     }
-)
 
 
 
-#' @rdname collapseToString
-#' @export
-setMethod(
-    f = "collapseToString",
-    signature = signature("matrix"),
-    definition = function(
+.collapseToString.matrix <-  # nolint
+    function(
         object,
         sep = ", ",
         sort = FALSE,
@@ -132,6 +123,25 @@ setMethod(
         # Coerce collapsed tibble back to original object class.
         as(object = collapse, Class = class(object)[[1L]])
     }
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    f = "collapseToString",
+    signature = signature("atomic"),
+    definition = .collapseToString.atomic
+)
+
+
+
+#' @rdname collapseToString
+#' @export
+setMethod(
+    f = "collapseToString",
+    signature = signature("matrix"),
+    definition = .collapseToString.matrix
 )
 
 

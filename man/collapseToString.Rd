@@ -38,8 +38,8 @@ collapseToString(object, ...)
 }
 \value{
 \itemize{
-\item For \code{atomic}: \code{string}.
-\item For column data: Object collapsed to a single row.
+\item \code{atomic}: \code{string}.
+\item \code{\link[=dim]{dim()}}: Object of same class, collapsed to a single row.
 }
 }
 \description{
