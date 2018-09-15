@@ -14,7 +14,7 @@
 #'   - *Mus musculus*
 #'   - *Drosophila melanogaster*
 #'
-#' @return `grouped_df`, grouped by `geneID` column.
+#' @return `grouped_df`. Grouped by `geneID` column.
 #'
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
