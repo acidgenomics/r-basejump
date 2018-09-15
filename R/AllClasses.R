@@ -16,6 +16,8 @@ setOldClass(Classes = class(tibble()))
 #'
 #' @inheritParams general
 #'
+#' @return `gene2symbol`.
+#'
 #' @examples
 #' x <- new(
 #'     "gene2symbol",
@@ -51,6 +53,8 @@ setValidity(
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return `tx2gene`.
 #'
 #' @examples
 #' x <- new(
