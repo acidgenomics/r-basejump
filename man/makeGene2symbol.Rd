@@ -10,6 +10,8 @@
 makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL, ...)
 
 makeGene2symbolFromGFF(file)
+
+makeGene2symbolFromGTF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -25,11 +27,17 @@ set \code{NULL}, defaults to the most recent release available.}
 \item{file}{\code{string}. File path.}
 }
 \value{
-\code{DataFrame}.
+\code{gene2symbol}.
 }
 \description{
 Make Gene-to-Symbol Mappings
 }
+\section{GFF/GTF files}{
+
+
+Remote URLs and compressed files are supported.
+}
+
 \examples{
 # makeGene2symbolFromEnsembl ====
 x <- makeGene2symbolFromEnsembl("Homo sapiens")

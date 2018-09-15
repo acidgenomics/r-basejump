@@ -542,24 +542,24 @@ makeGRangesFromGFF <- function(
 
 
 
-#' @rdname makeGRanges
-#' @usage NULL
-#' @export
-makeGRangesFromGFF -> makeGRangesFromGTF
-
-
-
+# Aliases ======================================================================
 #' @rdname makeGRanges
 #' @export
-annotable <- function() {
-    gr <- do.call(
-        what = makeGRangesFromEnsembl,
-        args = as.list(match.call())[-1L]
-    )
-    as(gr, "tbl_df")
-}
-# Set the formals.
-f <- formals("makeGRangesFromEnsembl")
+makeGRangesFromGTF <- makeGRangesFromGFF
+
+
+
+# Legacy =======================================================================
+#' @rdname makeGRanges
+#' @export
+annotable <-
+    function() {
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = as.list(match.call())[-1L]
+        )
+        as(gr, "tbl_df")
+    }
+f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), "metadata")]
 formals(annotable) <- f
-rm(f)
