@@ -64,7 +64,7 @@
 #' [as.data.frame()].
 #'
 #' @inheritParams general
-#' @param format `string`. Return ranges as "`genes`" or "`transcripts`".
+#' @param level `string`. Return ranges as "`genes`" or "`transcripts`".
 #' @param build `string` or `NULL`. Genome build assembly name (e.g.
 #'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
 #' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
@@ -85,22 +85,22 @@
 #' @examples
 #' # makeGRangesFromEnsembl ====
 #' # Genes
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+#' x <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
 #' summary(x)
 #'
 #' # Transcripts
-#' x <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+#' x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 #' summary(x)
 #'
 #' # makeGRangesFromGFF ====
 #' file <- "http://basejump.seq.cloud/example.gtf"
 #'
 #' # Genes
-#' x <- makeGRangesFromGFF(file = file, format = "genes")
+#' x <- makeGRangesFromGFF(file = file, level = "genes")
 #' summary(x)
 #'
 #' # Transcripts
-#' x <- makeGRangesFromGFF(file = file, format = "transcripts")
+#' x <- makeGRangesFromGFF(file = file, level = "transcripts")
 #' summary(x)
 #'
 #' # annotable ====
@@ -109,7 +109,7 @@
 #' glimpse(x)
 #'
 #' # Transcripts
-#' x <- annotable("Homo sapiens", format = "transcripts")
+#' x <- annotable("Homo sapiens", level = "transcripts")
 #' glimpse(x)
 NULL
 
@@ -119,16 +119,25 @@ NULL
 #' @export
 makeGRangesFromEnsembl <- function(
     organism,
-    format = c("genes", "transcripts"),
+    level = c("genes", "transcripts"),
     build = NULL,
     release = NULL,
-    metadata = FALSE
+    metadata = FALSE,
+    ...
 ) {
+    # Legacy arguments ---------------------------------------------------------
+    call <- match.call()
+    # format
+    if ("format" %in% names(call)) {
+        warning("Use `level` instead of `format`")
+        level <- call[["format"]]
+    }
+
     # Assert checks ------------------------------------------------------------
     assert_is_a_string(organism)
     # Standard organism query, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
-    format <- match.arg(format)
+    level <- match.arg(level)
     assertIsAStringOrNULL(build)
     # Check for accidental UCSC input and stop, informing user.
     if (is_a_string(build)) {
@@ -291,17 +300,17 @@ makeGRangesFromEnsembl <- function(
         paste("organism:", deparse(organism(edb))),
         paste("build:", deparse(build)),
         paste("release:", deparse(ensemblVersion(edb))),
-        paste("format:", deparse(format)),
+        paste("level:", deparse(level)),
         sep = "\n"
     ))
 
-    if (format == "genes") {
+    if (level == "genes") {
         gr <- genes(
             x = edb,
             order.by = "gene_id",
             return.type = "GRanges"
         )
-    } else if (format == "transcripts") {
+    } else if (level == "transcripts") {
         tx <- transcripts(
             x = edb,
             order.by = "tx_id",
@@ -371,14 +380,23 @@ makeGRangesFromEnsembl <- function(
 #' @export
 makeGRangesFromGFF <- function(
     file,
-    format = c("genes", "transcripts")
+    level = c("genes", "transcripts"),
+    ...
 ) {
-    file <- localOrRemoteFile(file)
-    # Require GFF or GTF file extension.
-    stopifnot(grepl("\\.g[ft]f", file, ignore.case = TRUE))
-    format <- match.arg(format)
+    # Legacy arguments ---------------------------------------------------------
+    call <- match.call()
+    # format
+    if ("format" %in% names(call)) {
+        warning("Use `level` instead of `format`")
+        level <- call[["format"]]
+    }
 
-    # Import GFF as GRanges (using rtracklayer).
+    # Assert checks ------------------------------------------------------------
+    # Note that `readGFF()` has assert checks for file (see below).
+    level <- match.arg(level)
+
+    # Read GFF -----------------------------------------------------------------
+    file <- localOrRemoteFile(file)
     gff <- readGFF(file)
     assert_is_all_of(gff, "GRanges")
     gff <- camel(gff)
@@ -440,13 +458,13 @@ makeGRangesFromGFF <- function(
         y = sort(unique(na.omit(mcols(gff)[["geneID"]])))
     )
 
-    if (format == "genes") {
+    if (level == "genes") {
         message(paste(length(gn), "gene annotations"))
         gr <- gn
     }
 
     # Transcripts --------------------------------------------------------------
-    if (format == "transcripts") {
+    if (level == "transcripts") {
         tx <- gff
         tx <- tx[!is.na(mcols(tx)[["transcriptID"]])]
         if (type == "GTF") {
