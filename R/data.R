@@ -11,7 +11,7 @@
 
 
 
-#' Example RNA-Seq DataSet
+#' Example RNA-Seq Data Set
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene
 #' identifiers and Ensembl annotations.
@@ -38,3 +38,14 @@
 #' class(single_cell_counts)
 #' is(single_cell_counts, "sparseMatrix")
 "single_cell_counts"
+
+
+
+#' Example Transcript-Level Data Set
+#'
+#' @family Minimal Example Data
+#' @author Michael Steinbaugh
+#'
+#' @examples
+#' print(tx_se_small)
+"tx_se_small"
