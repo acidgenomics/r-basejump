@@ -18,12 +18,8 @@ NULL
 
 
 
-#' @rdname broadClass
-#' @export
-setMethod(
-    f = "broadClass",
-    signature = signature("GRanges"),
-    definition = function(object) {
+.broadClass.GRanges <-  # nolint
+    function(object) {
         data <- as(object, "tbl_df")
         assert_are_identical(data[["rowname"]], names(object))
         rownames <- data[["rowname"]]
@@ -134,6 +130,24 @@ setMethod(
         names(broad) <- rownames
         broad
     }
+
+
+.broadClass.SE <-  # nolint
+    function(object) {
+        validObject(object)
+        data <- rowData(object)[["broadClass"]]
+        assert_is_factor(data)
+        data
+    }
+
+
+
+#' @rdname broadClass
+#' @export
+setMethod(
+    f = "broadClass",
+    signature = signature("GRanges"),
+    definition = .broadClass.GRanges
 )
 
 
@@ -143,10 +157,5 @@ setMethod(
 setMethod(
     f = "broadClass",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        validObject(object)
-        data <- rowData(object)[["broadClass"]]
-        assert_is_factor(data)
-        data
-    }
+    definition = .broadClass.SE
 )
