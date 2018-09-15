@@ -6,7 +6,7 @@
 #' @importFrom methods coerce
 #' @exportMethod coerce
 #'
-#' @section tibble:
+#' @section `tbl_df` (tibble):
 #'
 #' Coerce an object to a `tibble` using `as(object, Class = "tbl_df")`. Tibbles
 #' don't support rowname assignment, so here we are ensuring they are kept by
@@ -19,11 +19,13 @@
 #' will attempt to move it back to [rownames()] automatically, unless there are
 #' duplicates present.
 #'
-#' @section list:
+#' @section `list`:
 #'
-#' It's often useful to coerce an S4 object to a flat list for archival storage.
-#' Here we are providing the [coerceToList()] generic, which consistently
-#' coerces supported objects to a standard `list`.
+#' It is often useful to coerce an S4 object to a flat `list` for archival
+#' storage. Here we are providing the [coerceS4ToList()] generic, which
+#' consistently coerces the slots in any S4 to a standard `list`. Additionally,
+#' here we have improved support for `SummarizedExperiment` to `list` coercion,
+#' returning the slots as a `list`.
 #'
 #' @return Object of new class.
 #'
@@ -44,7 +46,7 @@
 #' hasRownames(tbl_df)
 #' print(tbl_df)
 #'
-#' # tbl_df back to DataFrame ====
+#' # tbl_df to DataFrame ====
 #' data <- as(tbl_df, "DataFrame")
 #' hasRownames(data)
 #' class(data)
