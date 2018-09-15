@@ -22,6 +22,10 @@ ensembl2entrez(object, ...)
 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest Entrez ID
 if there are multiple identifiers that map to an Ensembl gene ID.
 }
+\examples{
+x <- ensembl2entrez(rse_small)
+print(x)
+}
 \seealso{
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},

@@ -10,7 +10,7 @@ localOrRemoteFile(file)
 \item{file}{\code{string}. Local file paths or remote URLs.}
 }
 \value{
-\code{character}. Local file paths.
+\code{character}. Local file paths. Stops on a missing file.
 }
 \description{
 Dynamically Handle a Local or Remote File Path
@@ -18,8 +18,6 @@ Dynamically Handle a Local or Remote File Path
 \note{
 This function is vectorized and supports mixed local and remote paths. Remote
 files are downloaded locally to a temporary directory.
-
-Stops on a missing file.
 }
 \examples{
 # Single file

@@ -15,7 +15,7 @@ kables(list, captions, force = FALSE)
 unit testing only.}
 }
 \value{
-Knit tables.
+\code{asis_output} if in a knit call or \code{list}.
 }
 \description{
 Knit multiple tables in a single R Markdown chunk.
