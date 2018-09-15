@@ -36,9 +36,9 @@ Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2gene}}, \code{\link{makeGRanges}},
+  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
   \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2gene}}, \code{\link{panther}},
+  \code{\link{mgi2ensembl}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

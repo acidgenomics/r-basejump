@@ -15,7 +15,7 @@ geneSynonyms(organism)
 }}
 }
 \value{
-\code{grouped_df}, grouped by \code{geneID} column.
+\code{grouped_df}. Grouped by \code{geneID} column.
 }
 \description{
 Look up gene synonyms from NCBI.
@@ -34,9 +34,9 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{hgnc2gene}},
+  \code{\link{emptyRanges}}, \code{\link{hgnc2ensembl}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{mgi2gene}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
   \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }

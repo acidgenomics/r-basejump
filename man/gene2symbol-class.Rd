@@ -25,7 +25,9 @@ x <- new(
 print(x)
 }
 \seealso{
-Other S4 Classes: \code{\link{tx2gene-class}}
+Other S4 Classes: \code{\link{hgnc2ensembl-class}},
+  \code{\link{mgi2ensembl-class}},
+  \code{\link{tx2gene-class}}
 }
 \author{
 Michael Steinbaugh
