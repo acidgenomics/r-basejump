@@ -1,10 +1,54 @@
-# TODO Define GFF class.
-# TODO Consider defining ensembl2entrez class.
-
-
-
 # tbl_df =======================================================================
 setOldClass(Classes = class(tibble()))
+
+
+
+# ensembl2entrez ===============================================================
+#' `ensembl2entrez` Class
+#'
+#' Ensembl gene ID to Entrez ID mappings. Requires 1:1 mappings.
+#'
+#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
+#'
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @inheritParams general
+#'
+#' @return `ensembl2entrez`.
+#'
+#' @examples
+#' x <- new(
+#'     "ensembl2entrez",
+#'     DataFrame(
+#'         geneID = "ENSG00000000003",
+#'         entrezID = 7105L,
+#'         row.names = "ENSG00000000003"
+#'     )
+#' )
+#' print(x)
+setClass(
+    Class = "ensembl2entrez",
+    contains = "DataFrame"
+)
+
+setValidity(
+    Class = "ensembl2entrez",
+    method = function(object) {
+        assert_are_identical(
+            x = colnames(object),
+            y = c("geneID", "entrezID")
+        )
+        assert_are_identical(
+            x = rownames(object),
+            y = as.character(object[["geneID"]])
+        )
+        assert_has_no_duplicates(object[["geneID"]])
+        assert_is_integer(object[["entrezID"]])
+        TRUE
+    }
+)
 
 
 
