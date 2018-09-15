@@ -1,4 +1,4 @@
-#' Gene to Symbol Mappings
+#' Gene-to-Symbol Mappings
 #'
 #' @note This function will make any duplicated symbols unique by applying
 #' [base::make.unique()], which will add ".1" to the end of the gene name.
@@ -10,13 +10,26 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame`.
+#' @return `gene2symbol`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' x <-gene2symbol(rse_small)
+#' x <- gene2symbol(rse_small)
 #' print(x)
 NULL
+
+
+
+.gene2symbol.SE <-  # nolint
+    function(object) {
+        validObject(object)
+        data <- rowData(object)
+        rownames(data) <- rownames(object)
+        if (!all(c("geneID", "geneName") %in% colnames(data))) {
+            stop("Object does not contain gene-to-symbol mappings")
+        }
+        .makeGene2symbol(data)
+    }
 
 
 
@@ -25,14 +38,5 @@ NULL
 setMethod(
     f = "gene2symbol",
     signature = signature("SummarizedExperiment"),
-    definition = function(object) {
-        validObject(object)
-        data <- rowData(object)
-        rownames(data) <- rownames(object)
-        # Early return `NULL` if object doesn't contain mappings.
-        if (!all(c("geneID", "geneName") %in% colnames(data))) {
-            stop("Object does not contain gene-to-symbol mappings")
-        }
-        .makeGene2symbol(data)
-    }
+    definition = .gene2symbol.SE
 )
