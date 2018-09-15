@@ -33,7 +33,7 @@
 #' - [methods::as()].
 #' - [methods::canCoerce()].
 #' - [S4Vectors::as.list()].
-#' - [tibble::tibble()].
+#' - [tibble::tibble()], [tibble::as_tibble()].
 #'
 #' @examples
 #' # DataFrame to tbl_df ====
