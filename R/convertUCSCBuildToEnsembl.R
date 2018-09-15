@@ -7,7 +7,7 @@
 #' @inheritParams general
 #'
 #' @return `character`. Ensembl genome build as the value, UCSC build as the
-#'   name. Returns `NULL` on match failure.
+#'   name. Stops on match failure.
 #'
 #' @examples
 #' convertUCSCBuildToEnsembl(c("hg19", "hg38"))
