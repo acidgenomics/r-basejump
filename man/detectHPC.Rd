@@ -7,8 +7,8 @@
 detectHPC()
 }
 \value{
-Scheduler name \code{string} if HPC is detected (e.g. LSF, SLURM),
-otherwise \code{FALSE}.
+\code{string} or \code{boolean}. Scheduler name if HPC is detected (e.g. LSF,
+SLURM), otherwise \code{FALSE}.
 }
 \description{
 Detect if R is running on a high-performance computing (HPC) cluster.

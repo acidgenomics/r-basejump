@@ -9,8 +9,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return Scheduler name `string` if HPC is detected (e.g. LSF, SLURM),
-#'   otherwise `FALSE`.
+#' @return `string` or `boolean`. Scheduler name if HPC is detected (e.g. LSF,
+#'   SLURM), otherwise `FALSE`.
 #'
 #' @seealso
 #' - `Sys.getenv()`.
