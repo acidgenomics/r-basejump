@@ -58,30 +58,31 @@ Object, with gene IDs converted to symbols.
 Convert Ensembl Identifiers to Gene Symbols
 }
 \examples{
+gene2symbol <- makeGene2symbolFromEnsembl("Mus musculus")
+print(gene2symbol)
+geneIDs <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
+sampleIDs = paste0("sample", seq_len(2L))
+
 # character ====
-from <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-to <- convertGenesToSymbols(from)
-print(to)
+x <- convertGenesToSymbols(geneIDs, gene2symbol = gene2symbol)
+print(x)
 
 # matrix ====
-from <- matrix(
-    data = seq(1L:4L),
+counts <- matrix(
+    data = seq_len(length(geneIDs) * length(sampleIDs)),
     byrow = TRUE,
-    nrow = 2L,
-    ncol = 2L,
-    dimnames = list(
-        c("ENSMUSG00000000001", "ENSMUSG00000000003"),
-        c("sample1", "sample2")
-    )
+    nrow = length(geneIDs),
+    ncol = length(sampleIDs),
+    dimnames = list(geneIDs, sampleIDs)
 )
-print(from)
-to <- convertGenesToSymbols(from)
-print(to)
-rownames(to)
+print(counts)
+x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
+print(x)
 
 # SummarizedExperiment ====
 x <- convertGenesToSymbols(rse_small)
 print(x)
+# Interconvert back to gene IDs.
 y <- convertSymbolsToGenes(x)
 print(y)
 }
