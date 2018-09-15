@@ -11,6 +11,10 @@
 #' @inheritParams general
 #'
 #' @return `ensembl2entrez`.
+#'
+#' @examples
+#' x <- ensembl2entrez(rse_small)
+#' print(x)
 NULL
 
 
