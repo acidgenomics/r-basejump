@@ -13,7 +13,7 @@
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #'
-#' @return Same class as original object.
+#' @return Object, with gene IDs converted to symbols.
 #'
 #' @examples
 #' # character ====
@@ -148,26 +148,6 @@ setMethod(
     f = "convertGenesToSymbols",
     signature = signature("matrix"),
     .convertGenesToSymbols.matrix
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("data.frame"),
-    definition = getMethod("convertGenesToSymbols", "matrix")
-)
-
-
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("DataFrame"),
-    definition = getMethod("convertGenesToSymbols", "matrix")
 )
 
 
