@@ -7,6 +7,7 @@
 #' @exportMethod coerce
 #'
 #' @section tibble:
+#'
 #' Coerce an object to a `tibble` using `as(object, Class = "tbl_df")`. Tibbles
 #' don't support rowname assignment, so here we are ensuring they are kept by
 #' moving them to a column named `rowname` upon coercion. This helps avoid
@@ -18,16 +19,23 @@
 #' will attempt to move it back to [rownames()] automatically, unless there are
 #' duplicates present.
 #'
+#' @section list:
+#'
+#' It's often useful to coerce an S4 object to a flat list for archival storage.
+#' Here we are providing the [coerceToList()] generic, which consistently
+#' coerces supported objects to a standard `list`.
+#'
 #' @return Object of new class.
 #'
 #' @seealso
 #' - [methods::as()].
 #' - [methods::canCoerce()].
+#' - [S4Vectors::as.list()].
 #' - [tibble::tibble()].
 #'
 #' @examples
 #' # DataFrame to tbl_df ====
-#' # Automatically move rownames to `rowname` column
+#' # Automatically move row names to `rowname` column.
 #' data <- colData(rse_small)
 #' class(data)
 #' hasRownames(data)
@@ -40,20 +48,12 @@
 #' data <- as(tbl_df, "DataFrame")
 #' hasRownames(data)
 #' class(data)
+#'
+#' # SummarizedExperiment to list ====
+#' x <- as(rse_small, "list")
+#' class(x)
+#' names(x)
 NULL
-
-
-
-# Coerce to list ===============================================================
-#' @rdname coerce
-#' @name coerce,SummarizedExperiment,list-method
-setAs(
-    from = "SummarizedExperiment",
-    to = "list",
-    function(from) {
-        flatFiles(from)
-    }
-)
 
 
 
@@ -114,5 +114,58 @@ setAs(
             to[["rowname"]] <- NULL
         }
         to
+    }
+)
+
+
+
+# Coerce to list ===============================================================
+.coerceS4ToList <-  # nolint
+    function(from) {
+        stopifnot(isS4(from))
+        to <- lapply(slotNames(from), function(slot) {
+            if (.hasSlot(from, slot)) {
+                slot(from, slot)
+            } else {
+                NULL  # nocov
+            }
+        })
+        names(to) <- slotNames(from)
+        to
+    }
+
+
+
+#' @rdname coerce
+#' @export
+setMethod(
+    f = "coerceS4ToList",
+    signature = signature("ANY"),
+    definition = .coerceS4ToList
+)
+
+
+
+#' @rdname coerce
+#' @name coerce,SummarizedExperiment,list-method
+setAs(
+    from = "SummarizedExperiment",
+    to = "list",
+    def = getMethod(
+        f = "coerceS4ToList",
+        signature = signature(from = "ANY")
+    )
+)
+
+
+
+#' @rdname coerce
+#' @importFrom S4Vectors as.list
+#' @export
+setMethod(
+    f = "as.list",
+    signature = signature("SummarizedExperiment"),
+    definition = function(x) {
+        .coerceS4ToList(x)
     }
 )
