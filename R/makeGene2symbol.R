@@ -85,7 +85,7 @@ makeGene2symbolFromEnsembl <- function(
     # Setting formals below.
 ) {
     args <- as.list(match.call())[-1L]
-    args[["format"]] <- "genes"
+    args[["level"]] <- "genes"
     gr <- do.call(
         what = makeGRangesFromEnsembl,
         args = args
@@ -95,7 +95,7 @@ makeGene2symbolFromEnsembl <- function(
 
 # Set the formals.
 f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), c("format", "metadata"))]
+f <- f[setdiff(names(f), c("level", "metadata"))]
 formals(makeGene2symbolFromEnsembl) <- f
 
 
