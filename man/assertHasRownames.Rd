@@ -19,10 +19,6 @@ Always stop on error.
 A stricter alternative to the assertive version that works properly with
 data frames.
 }
-\note{
-\code{tibble::has_rownames()} is more consistent than
-\code{assertive.properties::has_rownames()} for \code{DataFrame} and \code{tbl_df} class.
-}
 \examples{
 object <- DataFrame(
     "sample1" = c(1L, 2L),
