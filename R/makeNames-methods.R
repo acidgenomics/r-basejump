@@ -87,108 +87,6 @@ NULL
 
 
 # Constructors =================================================================
-.camel <- function(
-    object,
-    format = c("lower", "upper"),
-    strict = FALSE
-) {
-    object <- dotted(object)
-    format <- match.arg(format)
-    assert_is_a_bool(strict)
-
-    # Simplify mixed case acronyms in strict mode.
-    if (isTRUE(strict)) {
-        object <- tolower(object)
-    }
-
-    # lowerCamelCase or UpperCamelCase.
-    if (format == "lower") {
-        # lowerCamelCase
-        # Coerce first word to lower.
-        object <- gsub("^(\\w+)\\b", "\\L\\1", object, perl = TRUE)
-    } else if (format == "upper") {
-        # UpperCamelCase
-        # Capitalize the first letter.
-        object <- gsub("^([a-z])", replacement = "\\U\\1", object, perl = TRUE)
-    }
-
-    # Check for the presence of delimited numbers (e.g. 100.00).
-    pattern <- "([0-9])\\.([0-9])"
-    if (isTRUE(strict)) {
-        if (format == "lower") {
-            replacement <- "x"
-        } else if (format == "upper") {
-            replacement <- "X"
-        }
-    } else {
-        replacement <- "."
-    }
-    replacement <- paste0("\\1", replacement, "\\2")
-    if (any(grepl(pattern, object))) {
-        object <- object %>%
-            # Escape number separators (useful for keeping decimals, etc.).
-            gsub(pattern, replacement, .) %>%
-            # Have to run twice here otherwise it will miss some matches.
-            gsub(pattern, replacement, .)
-    }
-
-    # Remove dots in between numbers following a letter.
-    object <- gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", object)
-
-    # First letter of second word must be capitalized.
-    object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
-
-    object
-}
-
-
-
-.camel.names <- function(object, strict = FALSE) {  # nolint
-    assert_has_names(object)
-    names(object) <- camel(names(object), strict = strict)
-    object
-}
-
-
-
-# Dotted case is the internal method used by camel and snake.
-.dotted <- function(object) {
-    assert_is_atomic(object)
-    object %>%
-        as.character() %>%
-        # Handle "%" as a special case. Spell out as "percent".
-        gsub("%", "percent", .) %>%
-        # Strip comma delims in between numbers (e.g. 1,000,000).
-        gsub("(\\d),(\\d)", "\\1\\2", .) %>%
-        make.names(unique = FALSE, allow_ = FALSE) %>%
-        # Ensure all non-alphanumeric characters get coerced to periods.
-        gsub("[^[:alnum:]]", ".", .) %>%
-        # Combine multiple dots.
-        gsub("[\\.]+", ".", .) %>%
-        # Strip leading or trailing dots.
-        gsub("(^\\.|\\.$)", "", .) %>%
-        # Coerce `"NA"` back to `NA` after `make.names()`.
-        sanitizeNA() %>%
-        # Standardize any mixed case acronyms.
-        .sanitizeAcronyms() %>%
-        # Establish word boundaries for camelCase acronyms
-        # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`).
-        # Acronym following a word.
-        gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
-        # Word following an acronym.
-        gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
-}
-
-
-
-.dotted.names <- function(object) {  # nolint
-    assert_has_names(object)
-    names(object) <- dotted(names(object))
-    object
-}
-
-
-
 .sanitizeAcronyms <- function(object) {
     assert_is_atomic(object)
     object %>%
@@ -202,38 +100,6 @@ NULL
         gsub("\\b(piRNA)\\b", "PIRNA", .) %>%
         gsub("\\b(rRNA)\\b", "RRNA", .) %>%
         gsub("\\b(RNAi)\\b", "RNAI", .)
-}
-
-
-
-.snake <- function(object) {
-    assert_is_atomic(object)
-    object %>%
-        dotted() %>%
-        tolower() %>%
-        gsub("\\.", "_", .)
-}
-
-
-
-.snake.names <- function(object) {  # nolint
-    assert_has_names(object)
-    names(object) <- snake(names(object))
-    object
-}
-
-
-
-.upperCamel <- function(object, strict = FALSE) {
-    .camel(object, format = "upper", strict = strict)
-}
-
-
-
-.upperCamel.names <- function(object, strict = FALSE) {  # nolint
-    assert_has_names(object)
-    names(object) <- upperCamel(names(object), strict = strict)
-    object
 }
 
 
@@ -253,18 +119,53 @@ makeNames <- function(names, unique = FALSE) {
 
 
 
+.camel.atomic <-  # nolint
+    function(object, strict = FALSE) {
+        if (has_names(object)) {
+            names(object) <- .camel.character(names(object), strict = strict)
+        }
+        object
+    }
+
+
+
+.dotted.atomic <-  # nolint
+    function(object) {
+        if (has_names(object)) {
+            names(object) <- .dotted.character(names(object))
+        }
+        object
+    }
+
+
+
+.snake.atomic <-  # nolint
+    function(object) {
+        if (has_rownames(object)) {
+            names(object) <- .snake.character(names(object))
+        }
+        object
+    }
+
+
+
+.upperCamel.atomic <-  # nolint
+    function(object, strict = FALSE) {
+        if (has_names(object)) {
+            names(object) <-
+                .upperCamel.character(names(object), strict = strict)
+        }
+        object
+    }
+
+
+
 #' @rdname makeNames
 #' @export
 setMethod(
     f = "camel",
     signature = signature("atomic"),
-    definition = function(object, strict = FALSE) {
-        if (!is.null(names(object))) {
-            .camel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
+    definition = .camel.atomic
 )
 
 
@@ -274,13 +175,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("atomic"),
-    definition = function(object) {
-        if (!is.null(names(object))) {
-            .dotted.names(object)
-        } else {
-            object
-        }
-    }
+    definition = .dotted.atomic
 )
 
 
@@ -290,13 +185,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("atomic"),
-    definition = function(object) {
-        if (!is.null(names(object))) {
-            .snake.names(object)
-        } else {
-            object
-        }
-    }
+    definition = .snake.atomic
 )
 
 
@@ -306,30 +195,140 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("atomic"),
-    definition = function(object, strict = FALSE) {
-        if (!is.null(names(object))) {
-            .upperCamel.names(object, strict = strict)
-        } else {
-            object
-        }
-    }
+    definition = .upperCamel.atomic
 )
 
 
 
 # character ====================================================================
+.camel.character <-  # nolint
+    function(
+        object,
+        format = c("lower", "upper"),
+        strict = FALSE
+    ) {
+        object <- dotted(object)
+        format <- match.arg(format)
+        assert_is_a_bool(strict)
+
+        # Simplify mixed case acronyms in strict mode.
+        if (isTRUE(strict)) {
+            object <- tolower(object)
+        }
+
+        # lowerCamelCase or UpperCamelCase.
+        if (format == "lower") {
+            # lowerCamelCase
+            # Coerce first word to lower.
+            object <- gsub(
+                pattern = "^(\\w+)\\b",
+                replacement = "\\L\\1",
+                x = object,
+                perl = TRUE
+            )
+        } else if (format == "upper") {
+            # UpperCamelCase
+            # Capitalize the first letter.
+            object <- gsub(
+                pattern = "^([a-z])",
+                replacement = "\\U\\1",
+                x = object,
+                perl = TRUE
+            )
+        }
+
+        # Check for the presence of delimited numbers (e.g. 100.00).
+        pattern <- "([0-9])\\.([0-9])"
+        if (isTRUE(strict)) {
+            if (format == "lower") {
+                replacement <- "x"
+            } else if (format == "upper") {
+                replacement <- "X"
+            }
+        } else {
+            replacement <- "."
+        }
+        replacement <- paste0("\\1", replacement, "\\2")
+        if (any(grepl(pattern, object))) {
+            object <- object %>%
+                # Escape number separators (useful for keeping decimals, etc.).
+                gsub(pattern, replacement, .) %>%
+                # Have to run twice here otherwise it will miss some matches.
+                gsub(pattern, replacement, .)
+        }
+
+        # Remove dots in between numbers following a letter.
+        object <- gsub("([[:alpha:]])\\.([[:digit:]])", "\\1\\2", object)
+
+        # First letter of second word must be capitalized.
+        object <- gsub("\\.([[:alpha:]])", "\\U\\1", object, perl = TRUE)
+
+        object
+    }
+
+
+
+# Dotted case is the internal method used by camel and snake.
+.dotted.character <-  # nolint
+    function(object) {
+        assert_is_atomic(object)
+        object %>%
+            as.character() %>%
+            # Handle "%" as a special case. Spell out as "percent".
+            gsub("%", "percent", .) %>%
+            # Strip comma delims in between numbers (e.g. 1,000,000).
+            gsub("(\\d),(\\d)", "\\1\\2", .) %>%
+            make.names(unique = FALSE, allow_ = FALSE) %>%
+            # Ensure all non-alphanumeric characters get coerced to periods.
+            gsub("[^[:alnum:]]", ".", .) %>%
+            # Combine multiple dots.
+            gsub("[\\.]+", ".", .) %>%
+            # Strip leading or trailing dots.
+            gsub("(^\\.|\\.$)", "", .) %>%
+            # Coerce `"NA"` back to `NA` after `make.names()`.
+            sanitizeNA() %>%
+            # Standardize any mixed case acronyms.
+            .sanitizeAcronyms() %>%
+            # Establish word boundaries for camelCase acronyms
+            # (e.g. `worfdbHTMLRemap` -> `worfdb.HTML.remap`).
+            # Acronym following a word.
+            gsub("([a-z])([A-Z])", "\\1.\\2", .) %>%
+            # Word following an acronym.
+            gsub("([A-Z0-9])([A-Z])([a-z])", "\\1.\\2\\3", .)
+    }
+
+
+
+.snake.character <-  # nolint
+    function(object) {
+        assert_is_atomic(object)
+        object %>%
+            dotted() %>%
+            tolower() %>%
+            gsub("\\.", "_", .)
+    }
+
+
+
+.upperCamel.character <-  # nolint
+    function(object, strict = FALSE) {
+        .camel.character(object, format = "upper", strict = strict)
+    }
+
+
+
 #' @rdname makeNames
 #' @export
 setMethod(
     f = "camel",
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
-        if (!is.null(names(object))) {
-            names <- .camel(names(object), strict = strict)
+        if (has_names(object)) {
+            names <- .camel.character(names(object), strict = strict)
         } else {
             names <- NULL
         }
-        object <- .camel(object, strict = strict)
+        object <- .camel.character(object, strict = strict)
         names(object) <- names
         object
     }
@@ -343,12 +342,12 @@ setMethod(
     f = "dotted",
     signature = signature("character"),
     definition = function(object) {
-        if (!is.null(names(object))) {
-            names <- .dotted(names(object))
+        if (has_names(object)) {
+            names <- .dotted.character(names(object))
         } else {
             names <- NULL
         }
-        object <- .dotted(object)
+        object <- .dotted.character(object)
         names(object) <- names
         object
     }
@@ -362,12 +361,12 @@ setMethod(
     f = "snake",
     signature = signature("character"),
     definition = function(object) {
-        if (!is.null(names(object))) {
-            names <- .snake(names(object))
+        if (has_names(object)) {
+            names <- .snake.character(names(object))
         } else {
             names <- NULL
         }
-        object <- .snake(object)
+        object <- .snake.character(object)
         names(object) <- names
         object
     }
@@ -381,12 +380,12 @@ setMethod(
     f = "upperCamel",
     signature = signature("character"),
     definition = function(object, strict = FALSE) {
-        if (!is.null(names(object))) {
-            names <- .upperCamel(names(object), strict = strict)
+        if (has_names(object)) {
+            names <- .upperCamel.character(names(object), strict = strict)
         } else {
             names <- NULL
         }
-        object <- .upperCamel(object, strict = strict)
+        object <- .upperCamel.character(object, strict = strict)
         names(object) <- names
         object
     }
@@ -395,12 +394,8 @@ setMethod(
 
 
 # factor =======================================================================
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "camel",
-    signature = signature("factor"),
-    definition = function(object, strict = FALSE) {
+.camel.factor <-  # nolint
+    function(object, strict = FALSE) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -409,16 +404,11 @@ setMethod(
         names(object) <- camel(names, strict = strict)
         object
     }
-)
 
 
 
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "dotted",
-    signature = signature("factor"),
-    definition = function(object) {
+.dotted.factor <-  # nolint
+    function(object) {
         names <- names(object)
         object <- object %>%
             as.character() %>%
@@ -427,6 +417,51 @@ setMethod(
         names(object) <- dotted(names)
         object
     }
+
+
+
+.snake.factor <-  # nolint
+    function(object) {
+        names <- names(object)
+        object <- object %>%
+            as.character() %>%
+            snake() %>%
+            as.factor()
+        names(object) <- snake(names)
+        object
+    }
+
+
+
+.upperCamel.factor <-  # nolint
+    function(object, strict = FALSE) {
+        names <- names(object)
+        object <- object %>%
+            as.character() %>%
+            upperCamel(strict = strict) %>%
+            as.factor()
+        names(object) <- upperCamel(names, strict = strict)
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("factor"),
+    definition = .camel.factor
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "dotted",
+    signature = signature("factor"),
+    definition = .dotted.factor
 )
 
 
@@ -436,15 +471,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("factor"),
-    definition = function(object) {
-        names <- names(object)
-        object <- object %>%
-            as.character() %>%
-            snake() %>%
-            as.factor()
-        names(object) <- snake(names)
-        object
-    }
+    definition = .snake.factor
 )
 
 
@@ -454,92 +481,90 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("factor"),
-    definition = function(object, strict = FALSE) {
-        names <- names(object)
-        object <- object %>%
-            as.character() %>%
-            upperCamel(strict = strict) %>%
-            as.factor()
-        names(object) <- upperCamel(names, strict = strict)
-        object
-    }
+    definition = .upperCamel.factor
 )
 
 
 
 # matrix =======================================================================
-.camel.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE,
-    strict = FALSE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- camel(rownames(object), strict = strict)
+.camel.matrix <-  # nolint
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = FALSE
+    ) {
+        assert_has_dimnames(object)
+        assert_is_a_bool(rownames)
+        if (isTRUE(rownames) && hasRownames(object)) {
+            rownames(object) <- camel(rownames(object), strict = strict)
+        }
+        if (isTRUE(colnames) && has_colnames(object)) {
+            assert_has_colnames(object)
+            colnames(object) <- camel(colnames(object), strict = strict)
+        }
+        object
     }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        assert_has_colnames(object)
-        colnames(object) <- camel(colnames(object), strict = strict)
+
+
+
+.dotted.matrix <-  # nolint
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE
+    ) {
+        assert_has_dimnames(object)
+        assert_is_a_bool(rownames)
+        if (isTRUE(rownames) && hasRownames(object)) {
+            rownames(object) <- .dotted.character(rownames(object))
+        }
+        if (isTRUE(colnames) && has_colnames(object)) {
+            colnames(object) <- .dotted.character(colnames(object))
+        }
+        object
     }
-    object
-}
 
 
 
-.dotted.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .dotted(rownames(object))
+.snake.matrix <-  # nolint
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE
+    ) {
+        assert_has_dimnames(object)
+        assert_is_a_bool(rownames)
+        if (isTRUE(rownames) && hasRownames(object)) {
+            rownames(object) <- .snake.character(rownames(object))
+        }
+        if (isTRUE(colnames) && has_colnames(object)) {
+            colnames(object) <- .snake.character(colnames(object))
+        }
+        object
     }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .dotted(colnames(object))
+
+
+
+.upperCamel.matrix <-  # nolint
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        strict = FALSE
+    ) {
+        assert_has_dimnames(object)
+        assert_is_a_bool(rownames)
+        if (isTRUE(rownames) && hasRownames(object)) {
+            rownames(object) <-
+                .upperCamel.character(rownames(object), strict = strict)
+        }
+        if (isTRUE(colnames) && has_colnames(object)) {
+            colnames(object) <-
+                .upperCamel.character(colnames(object), strict = strict)
+        }
+        object
     }
-    object
-}
-
-
-
-.snake.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .snake(rownames(object))
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .snake(colnames(object))
-    }
-    object
-}
-
-
-
-.upperCamel.matrix <- function(  # nolint
-    object,
-    rownames = FALSE,
-    colnames = TRUE,
-    strict = FALSE
-) {
-    assert_has_dimnames(object)
-    assert_is_a_bool(rownames)
-    if (isTRUE(rownames) && hasRownames(object)) {
-        rownames(object) <- .upperCamel(rownames(object), strict = strict)
-    }
-    if (isTRUE(colnames) && has_colnames(object)) {
-        colnames(object) <- .upperCamel(colnames(object), strict = strict)
-    }
-    object
-}
 
 
 
@@ -548,7 +573,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("matrix"),
-    .camel.matrix
+    definition = .camel.matrix
 )
 
 
@@ -558,7 +583,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("matrix"),
-    .dotted.matrix
+    definition = .dotted.matrix
 )
 
 
@@ -568,7 +593,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("matrix"),
-    .snake.matrix
+    definition = .snake.matrix
 )
 
 
@@ -578,7 +603,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("matrix"),
-    .upperCamel.matrix
+    definition = .upperCamel.matrix
 )
 
 
@@ -666,18 +691,54 @@ setMethod(
 
 
 # GRanges ======================================================================
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "camel",
-    signature = signature("GRanges"),
-    definition = function(object, strict = FALSE) {
+.camel.GRanges <-  # nolint
+    function(object, strict = FALSE) {
         colnames(mcols(object)) <- camel(
             object = colnames(mcols(object)),
             strict = strict
         )
         object
     }
+
+
+
+.dotted.GRanges <-  # nolint
+    function(object) {
+        colnames(mcols(object)) <- dotted(
+            object = colnames(mcols(object))
+        )
+        object
+    }
+
+
+
+.snake.GRanges <-  # nolint
+    function(object) {
+        colnames(mcols(object)) <- snake(
+            object = colnames(mcols(object))
+        )
+        object
+    }
+
+
+
+.upperCamel.GRanges <-  # nolint
+    function(object, strict = FALSE) {
+        colnames(mcols(object)) <- upperCamel(
+            object = colnames(mcols(object)),
+            strict = strict
+        )
+        object
+    }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("GRanges"),
+    definition = .camel.GRanges
 )
 
 
@@ -687,12 +748,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("GRanges"),
-    definition = function(object) {
-        colnames(mcols(object)) <- dotted(
-            object = colnames(mcols(object))
-        )
-        object
-    }
+    definition = .dotted.GRanges
 )
 
 
@@ -702,12 +758,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("GRanges"),
-    definition = function(object) {
-        colnames(mcols(object)) <- snake(
-            object = colnames(mcols(object))
-        )
-        object
-    }
+    definition = .snake.GRanges
 )
 
 
@@ -717,13 +768,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("GRanges"),
-    definition = function(object, strict = FALSE) {
-        colnames(mcols(object)) <- upperCamel(
-            object = colnames(mcols(object)),
-            strict = strict
-        )
-        object
-    }
+    definition = .upperCamel.GRanges
 )
 
 
@@ -775,7 +820,7 @@ setMethod(
 setMethod(
     f = "camel",
     signature = signature("list"),
-    .camel.names
+    definition = getMethod("camel", "atomic")
 )
 
 
@@ -785,7 +830,7 @@ setMethod(
 setMethod(
     f = "dotted",
     signature = signature("list"),
-    .dotted.names
+    definition = getMethod("dotted", "atomic")
 )
 
 
@@ -795,7 +840,7 @@ setMethod(
 setMethod(
     f = "snake",
     signature = signature("list"),
-    .snake.names
+    definition = getMethod("snake", "atomic")
 )
 
 
@@ -805,7 +850,7 @@ setMethod(
 setMethod(
     f = "upperCamel",
     signature = signature("list"),
-    .upperCamel.names
+    definition = getMethod("upperCamel", "atomic")
 )
 
 
@@ -893,12 +938,8 @@ setMethod(
 
 
 # ANY ==========================================================================
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "camel",
-    signature = signature("ANY"),
-    definition = function(
+.camel.ANY <-  # nolint
+    function(
         object,
         rownames = FALSE,
         colnames = TRUE,
@@ -915,16 +956,11 @@ setMethod(
             object  # nocov
         }
     }
-)
 
 
 
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "dotted",
-    signature = signature("ANY"),
-    definition = function(
+.dotted.ANY <-  # nolint
+    function(
         object,
         rownames = FALSE,
         colnames = TRUE
@@ -939,16 +975,11 @@ setMethod(
             object  # nocov
         }
     }
-)
 
 
 
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "snake",
-    signature = signature("ANY"),
-    definition = function(
+.snake.ANY <-  # nolint
+    function(
         object,
         rownames = FALSE,
         colnames = TRUE
@@ -963,16 +994,11 @@ setMethod(
             object  # nocov
         }
     }
-)
 
 
 
-#' @rdname makeNames
-#' @export
-setMethod(
-    f = "upperCamel",
-    signature = signature("ANY"),
-    definition = function(
+.upperCamel.ANY <-  # nolint
+    function(
         object,
         rownames = FALSE,
         colnames = TRUE,
@@ -989,4 +1015,43 @@ setMethod(
             object  # nocov
         }
     }
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "camel",
+    signature = signature("ANY"),
+    definition = .camel.ANY
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "dotted",
+    signature = signature("ANY"),
+    definition = .dotted.ANY
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "snake",
+    signature = signature("ANY"),
+    definition = .snake.ANY
+)
+
+
+
+#' @rdname makeNames
+#' @export
+setMethod(
+    f = "upperCamel",
+    signature = signature("ANY"),
+    definition = .upperCamel.ANY
 )
