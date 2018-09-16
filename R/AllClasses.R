@@ -124,7 +124,7 @@ setValidity(
 
 
 
-# mgi2gene =====================================================================
+# mgi2ensembl ==================================================================
 #' `mgi2ensembl` Class
 #'
 #' MGI to Ensembl gene ID mappings.
@@ -139,7 +139,7 @@ setValidity(
 #'
 #' @examples
 #' x <- (
-#'     "mgi2gene",
+#'     "mgi2ensembl",
 #'     DataFrame(
 #'         mgiID = 87853L,
 #'         geneID = "ENSMUSG00000027596",

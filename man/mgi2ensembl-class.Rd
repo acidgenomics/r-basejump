@@ -15,7 +15,7 @@ Contains a \code{DataFrame} with \code{mgiID} and \code{geneID} columns.
 }
 \examples{
 x <- (
-    "mgi2gene",
+    "mgi2ensembl",
     DataFrame(
         mgiID = 87853L,
         geneID = "ENSMUSG00000027596",
