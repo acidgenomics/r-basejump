@@ -148,7 +148,14 @@ validDimnames <- function(object) {
         vapply(
             X = lapply(
                 X = dimnames(object),
-                FUN = validNames
+                FUN = function(x) {
+                    # Return `FALSE` on duplicates.
+                    if (any(duplicated(x))) {
+                        FALSE
+                    } else {
+                        validNames(x)
+                    }
+                }
             ),
             FUN = all,
             FUN.VALUE = logical(1L)
