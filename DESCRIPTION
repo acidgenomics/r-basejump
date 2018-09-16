@@ -103,7 +103,6 @@ Collate:
     'GRanges-internal.R'
     'MethodDefinition.R'
     'RdTags.R'
-    'SummarizedExperiment-internal.R'
     'aggregate-methods.R'
     'assert.R'
     'assignAndSaveData.R'
