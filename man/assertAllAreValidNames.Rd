@@ -4,6 +4,7 @@
 \alias{assertAllAreValidNames}
 \alias{assertHasValidDimnames}
 \alias{assertHasValidNames}
+\alias{validDimnames}
 \alias{validNames}
 \title{Assert All Are Valid Names}
 \usage{
@@ -12,6 +13,8 @@ assertAllAreValidNames(object)
 assertHasValidDimnames(object)
 
 assertHasValidNames(object)
+
+validDimnames(object)
 
 validNames(object)
 }
@@ -26,6 +29,7 @@ Assert All Are Valid Names
 }
 \examples{
 assertAllAreValidNames(c("sample_1", "sample_2"))
+validDimnames(datasets::mtcars)
 validNames(c(
     "sample_1",
     "gene_1",

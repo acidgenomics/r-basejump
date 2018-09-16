@@ -13,6 +13,8 @@ makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
 
 makeGRangesFromGFF(file, level = c("genes", "transcripts"), ...)
 
+makeGRangesFromGTF(file, level = c("genes", "transcripts"), ...)
+
 annotable(organism, level = c("genes", "transcripts"), build = NULL,
   release = NULL, ...)
 }
@@ -74,6 +76,8 @@ using a GTF file instead of a GFF3 file, if possible.
 
 The UCSC website has detailed conventions on the GFF3 format, including
 the metadata columns.
+
+Remote URLs and compressed files are supported.
 }
 
 \section{GRCh37 legacy annotations}{

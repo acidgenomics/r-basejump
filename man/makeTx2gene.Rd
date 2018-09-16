@@ -10,6 +10,8 @@
 makeTx2geneFromEnsembl(organism, build = NULL, release = NULL)
 
 makeTx2geneFromGFF(file)
+
+makeTx2geneFromGTF(file)
 }
 \arguments{
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
@@ -23,11 +25,17 @@ set \code{NULL}, defaults to the most recent release available.}
 \item{file}{\code{string}. File path.}
 }
 \value{
-\code{DataFrame}.
+\code{tx2gene}.
 }
 \description{
 Make Transcript-to-Gene Mappings
 }
+\section{GFF/GTF file}{
+
+
+Remote URLs and compressed files are supported.
+}
+
 \examples{
 # makeTx2geneFromEnsembl ====
 x <- makeTx2geneFromEnsembl("Homo sapiens")

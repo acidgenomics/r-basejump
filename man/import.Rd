@@ -13,7 +13,7 @@ import(file, ...)
 }
 \value{
 Varies, depending on the file extension. Note that data frames are
-returned as \code{DataFrame} class, when applicable.
+returned as \code{DataFrame} class instead of \code{data.frame}, when applicable.
 }
 \description{
 Read file by extension into R.
