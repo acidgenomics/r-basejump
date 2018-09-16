@@ -22,12 +22,8 @@ NULL
 
 
 
-#' @rdname meltCounts
-#' @export
-setMethod(
-    f = "meltCounts",
-    signature = signature("SummarizedExperiment"),
-    definition = function(
+.meltCounts.SE <-  # nolint
+    function(
         object,
         trans = c("identity", "log2", "log10")
     ) {
@@ -72,4 +68,13 @@ setMethod(
             group_by(!!!syms(c("colname", "rowname"))) %>%
             left_join(sampleData, by = "colname")
     }
+
+
+
+#' @rdname meltCounts
+#' @export
+setMethod(
+    f = "meltCounts",
+    signature = signature("SummarizedExperiment"),
+    definition = .meltCounts.SE
 )

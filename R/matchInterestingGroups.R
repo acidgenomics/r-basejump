@@ -26,7 +26,7 @@ matchInterestingGroups <- function(object, interestingGroups) {
     ) {
         interestingGroups <- basejump::interestingGroups(object)
         if (is.null(interestingGroups)) {
-            interestingGroups <- "sampleName"  # nocov
+            interestingGroups <- "sampleName"
         }
     } else {
         interestingGroups(object) <- interestingGroups
