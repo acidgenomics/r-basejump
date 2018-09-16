@@ -56,9 +56,9 @@ setMethod(
     signature = signature("matrix"),
     definition = function(object) {
         object %>%
-            # Drop rows that are all `NA`
+            # Drop rows that are all `NA`.
             .[apply(., 1L, function(a) !all(is.na(a))), , drop = FALSE] %>%
-            # Drop columns that are all `NA`
+            # Drop columns that are all `NA`.
             .[, apply(., 2L, function(a) !all(is.na(a))), drop = FALSE]
     }
 )
