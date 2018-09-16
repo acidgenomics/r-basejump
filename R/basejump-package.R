@@ -44,8 +44,8 @@
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 aes element_blank element_line element_rect element_text
 #'   expand_limits facet_wrap geom_hline geom_label geom_point geom_vline ggplot
-#'   guides labs position_jitterdodge scale_x_continuous stat_summary theme
-#'   theme_linedraw
+#'   guides labs position_jitterdodge scale_x_continuous stat_ecdf stat_summary
+#'   theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
