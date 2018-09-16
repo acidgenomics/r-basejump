@@ -432,8 +432,8 @@ assertHasRownames <- function(object) {
 
 
 
-`tibble::has_rownames()` may be more consistent than
-`assertive.properties::has_rownames()` for `DataFrame` and `tbl_df` class.
+# `tibble::has_rownames()` may be more consistent than
+# `assertive.properties::has_rownames()` for `DataFrame` and `tbl_df` class.
 #' @rdname assertHasRownames
 #' @export
 hasRownames <- function(object) {
