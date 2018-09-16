@@ -6,19 +6,20 @@
 #' @export
 #'
 #' @inheritParams general
+#'
+#' @return Markdown output.
+#'
+#' @examples
+#' markdown(rse_small)
 NULL
 
 
 
 .markdown.SE <-  # nolint
-    function(object, headerLevel = 2L) {
-        assertIsAHeaderLevel(headerLevel)
-        markdownHeader("Sample data", level = headerLevel) %>%
-            show()
+    function(object) {
         sampleData(object) %>%
             as.data.frame() %>%
-            kable() %>%
-            show()
+            kable()
     }
 
 
