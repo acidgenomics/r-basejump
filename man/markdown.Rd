@@ -6,12 +6,10 @@
 \alias{markdown,SummarizedExperiment-method}
 \title{Markdown}
 \usage{
-\S4method{markdown}{SummarizedExperiment}(object, headerLevel = 2L)
+\S4method{markdown}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 }
 \value{
 Markdown output.
