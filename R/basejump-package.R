@@ -19,7 +19,7 @@
 #'   assert_has_no_duplicates assert_has_rownames assert_has_rows
 #'   assert_is_atomic assert_is_empty assert_is_non_empty assert_is_not_null
 #'   assert_is_null assert_is_of_length assert_is_scalar assert_is_vector
-#'   has_colnames has_dimnames has_dims has_rows is_scalar
+#'   has_colnames has_dimnames has_dims has_names has_rows is_scalar
 #' @importFrom assertive.sets assert_are_disjoint_sets
 #'   assert_are_intersecting_sets assert_are_set_equal assert_is_subset
 #' @importFrom assertive.strings assert_all_are_matching_regex
