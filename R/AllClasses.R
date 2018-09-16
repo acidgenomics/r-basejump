@@ -169,6 +169,44 @@ setValidity(
 
 
 
+# PANTHER ======================================================================
+#' `PANTHER` Class
+#'
+#' PANTHER Gene Ontology definitions.
+#'
+#' @family S4 Classes
+#' @author Michael Steinbaugh
+#' @export
+#'
+#' @return `PANTHER`
+setClass(
+    Class = "PANTHER",
+    contains = "DataFrame"
+)
+
+setValidity(
+    Class = "PANTHER",
+    method = function(object) {
+        assert_are_identical(
+            x = colnames(object),
+            y = c(
+                "geneID",
+                "goBP",
+                "goCC",
+                "goMF",
+                "pantherClass",
+                "pantherFamilyName",
+                "pantherPathway",
+                "pantherSubfamilyID",
+                "pantherSubfamilyName"
+            )
+        )
+        TRUE
+    }
+)
+
+
+
 # tx2gene ======================================================================
 #' `tx2gene` Class
 #'
