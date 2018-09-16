@@ -176,7 +176,6 @@ setAs(
 
 
 #' @rdname coerce
-#' @importFrom S4Vectors as.list
 #' @export
 setMethod(
     f = "as.list",
