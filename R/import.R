@@ -133,17 +133,13 @@ import <- function(file, ...) {
         data <- do.call(what = rio::import, args = args)
     }
 
-    return(data)
-
     # Return as `DataFrame` instead of `data.frame`.
     if (is.data.frame(data)) {
         data <- data %>%
             as("tbl_df") %>%
             as("DataFrame")
-        assert_are_disjoint_sets(
-            x = "rowname",
-            y = colnames(data)
-        )
+        # Ensure that rownames assign correctly, if necessary.
+        assert_are_disjoint_sets("rowname", colnames(data))
     }
 
     data
