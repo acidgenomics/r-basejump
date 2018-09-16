@@ -20,7 +20,7 @@ setOldClass(Classes = class(tibble()))
 #'
 #' @examples
 #' x <- new(
-#'     "ensembl2entrez",
+#'     Class = "ensembl2entrez",
 #'     DataFrame(
 #'         geneID = "ENSG00000000003",
 #'         entrezID = 7105L,
@@ -69,7 +69,7 @@ setValidity(
 #'
 #' @examples
 #' x <- new(
-#'     "gene2symbol",
+#'     Class = "gene2symbol",
 #'     DataFrame(
 #'         geneID = "ENSG00000000003",
 #'         geneName = "TSPAN6",
@@ -102,6 +102,16 @@ setValidity(
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @examples
+#' x <- new(
+#'     Class = "hgnc2ensembl",
+#'     DataFrame(
+#'         hgncID = 5L,
+#'         geneID = "ENSG00000121410",
+#'         row.names = 5L
+#'     )
+#' )
 setClass(
     Class = "hgnc2ensembl",
     contains = "DataFrame"
@@ -138,8 +148,8 @@ setValidity(
 #' @return `mgi2ensembl`.
 #'
 #' @examples
-#' x <- (
-#'     "mgi2ensembl",
+#' x <- new(
+#'     Class = "mgi2ensembl",
 #'     DataFrame(
 #'         mgiID = 87853L,
 #'         geneID = "ENSMUSG00000027596",
