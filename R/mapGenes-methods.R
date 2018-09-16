@@ -56,12 +56,8 @@ NULL
 
 
 # mapGenesToRownames ===========================================================
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToRownames",
-    signature = signature("gene2symbol"),
-    definition = function(object, genes) {
+.mapGenesToRownames.gene2symbol <-  # nolint
+    function(object, genes) {
         validObject(object)
         assert_is_character(genes)
         assert_is_non_empty(genes)
@@ -86,6 +82,25 @@ setMethod(
         names(return) <- genes
         return
     }
+
+
+
+.mapGenesToRownames.SE <-  # nolint
+    function(object, genes) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        assert_are_identical(rownames(g2s), rownames(object))
+        mapGenesToRownames(object = g2s, genes = genes)
+    }
+
+
+
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToRownames",
+    signature = signature("gene2symbol"),
+    definition = .mapGenesToRownames.gene2symbol
 )
 
 
@@ -95,23 +110,14 @@ setMethod(
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, genes) {
-        validObject(object)
-        g2s <- gene2symbol(object)
-        assert_are_identical(rownames(g2s), rownames(object))
-        mapGenesToRownames(object = g2s, genes = genes)
-    }
+    definition = .mapGenesToRownames.SE
 )
 
 
 
 # mapGenesToIDs ================================================================
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToIDs",
-    signature = signature("gene2symbol"),
-    definition = function(object, genes) {
+.mapGenesToIDs.gene2symbol <-  # nolint
+    function(object, genes) {
         validObject(object)
         # object <- as(object, "DataFrame")
         assert_is_character(genes)
@@ -135,6 +141,25 @@ setMethod(
         names(return) <- genes
         return
     }
+
+
+
+.mapGenesToIDs.SE <-  # nolint
+    function(object, genes) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        assert_are_identical(rownames(g2s), rownames(object))
+        mapGenesToIDs(object = g2s, genes = genes)
+    }
+
+
+
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToIDs",
+    signature = signature("gene2symbol"),
+    definition = .mapGenesToIDs.gene2symbol
 )
 
 
@@ -144,23 +169,14 @@ setMethod(
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, genes) {
-        validObject(object)
-        g2s <- gene2symbol(object)
-        assert_are_identical(rownames(g2s), rownames(object))
-        mapGenesToIDs(object = g2s, genes = genes)
-    }
+    definition = .mapGenesToIDs.SE
 )
 
 
 
 # mapGenesToSymbols ============================================================
-#' @rdname mapGenes
-#' @export
-setMethod(
-    f = "mapGenesToSymbols",
-    signature = signature("gene2symbol"),
-    definition = function(object, genes) {
+.mapGenesToSymbols.gene2symbol <-  # nolint
+    function(object, genes) {
         validObject(object)
         # object <- as(object, "DataFrame")
         assert_is_character(genes)
@@ -184,6 +200,25 @@ setMethod(
         names(return) <- genes
         return
     }
+
+
+
+.mapGenesToSymbols.SE <-  # nolint
+    function(object, genes) {
+        validObject(object)
+        g2s <- gene2symbol(object)
+        assert_are_identical(rownames(g2s), rownames(object))
+        mapGenesToSymbols(object = g2s, genes = genes)
+    }
+
+
+
+#' @rdname mapGenes
+#' @export
+setMethod(
+    f = "mapGenesToSymbols",
+    signature = signature("gene2symbol"),
+    definition = .mapGenesToSymbols.gene2symbol
 )
 
 
@@ -193,10 +228,5 @@ setMethod(
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = function(object, genes) {
-        validObject(object)
-        g2s <- gene2symbol(object)
-        assert_are_identical(rownames(g2s), rownames(object))
-        mapGenesToSymbols(object = g2s, genes = genes)
-    }
+    definition = .mapGenesToSymbols.SE
 )
