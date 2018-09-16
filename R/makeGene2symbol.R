@@ -1,5 +1,9 @@
 #' Make Gene-to-Symbol Mappings
 #'
+#' @section GFF/GTF file:
+#'
+#' Remote URLs and compressed files are supported.
+#'
 #' @name makeGene2symbol
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
@@ -10,7 +14,7 @@
 #'
 #' @seealso [makeGRanges].
 #'
-#' @return `DataFrame`.
+#' @return `gene2symbol`.
 #'
 #' @examples
 #' # makeGene2symbolFromEnsembl ====
@@ -81,19 +85,16 @@ NULL
 
 #' @rdname makeGene2symbol
 #' @export
-makeGene2symbolFromEnsembl <- function(
-    # Setting formals below.
-) {
-    args <- as.list(match.call())[-1L]
-    args[["level"]] <- "genes"
-    gr <- do.call(
-        what = makeGRangesFromEnsembl,
-        args = args
-    )
-    .makeGene2symbol(gr)
-}
-
-# Set the formals.
+makeGene2symbolFromEnsembl <-
+    function() {
+        args <- as.list(match.call())[-1L]
+        args[["level"]] <- "genes"
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = args
+        )
+        .makeGene2symbol(gr)
+    }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata"))]
 formals(makeGene2symbolFromEnsembl) <- f
@@ -142,7 +143,7 @@ makeGene2symbolFromGFF <- function(file) {
 
 
 
+# Aliases ======================================================================
 #' @rdname makeGene2symbol
-#' @usage NULL
 #' @export
-makeGene2symbolFromGFF -> makeGene2symbolFromGTF
+makeGene2symbolFromGTF <- makeGene2symbolFromGFF
