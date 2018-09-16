@@ -440,18 +440,14 @@ assertHasRownames <- function(object) {
 hasRownames <- function(object) {
     if (is(object, "tbl_df")) {
         "rowname" %in% colnames(object)
-    } else if (is.data.frame(object)) {
+    } else if (identical(
+        x = as.character(rownames(object)),
+        y = as.character(seq_len(nrow(object)))
+    )) {
         # Check for numeric rownames that match rows.
-        if (identical(
-            x = as.character(rownames(object)),
-            y = as.character(seq_len(nrow(object)))
-        )) {
-            FALSE
-        } else {
-            # Using assertive.properties method.
-            # Alternate: `tibble::has_rownames()`.
-            has_rownames(object)
-        }
+        FALSE
+    } else {
+        assertive::has_rownames(object)
     }
 }
 
