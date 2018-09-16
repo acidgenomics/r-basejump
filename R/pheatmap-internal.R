@@ -106,6 +106,7 @@
     }
     names(args) <- snake(names(args))
     assert_is_subset(names(args), formalArgs(pheatmap))
+    assert_has_no_duplicates(names(args))
     args
 }
 
