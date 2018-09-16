@@ -22,8 +22,8 @@ mgi2ensembl <- function() {
             "MGI_Gene_Model_Coord.rpt",
             sep = "/"
         ),
-        # Note the use of `null` here
-        na = c("", "NA", "null"),
+        # Using our global NA strings.
+        na = na,
         col_names = FALSE,
         # Suppress the column messages.
         col_types = cols(),
