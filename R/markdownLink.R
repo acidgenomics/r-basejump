@@ -38,6 +38,5 @@ markdownLink <- function(
 
 
 #' @rdname markdownHeader
-#' @usage NULL
 #' @export
 markdownLink -> mdLink

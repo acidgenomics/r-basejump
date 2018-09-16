@@ -42,6 +42,5 @@ markdownPlotlist <- function(
 
 
 #' @rdname markdownPlotlist
-#' @usage NULL
 #' @export
 markdownPlotlist -> mdPlotlist

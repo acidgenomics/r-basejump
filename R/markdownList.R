@@ -57,6 +57,5 @@ markdownList <- function(
 
 
 #' @rdname markdownList
-#' @usage NULL
 #' @export
 markdownList -> mdList
