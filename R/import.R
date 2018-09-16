@@ -41,7 +41,7 @@
 #' @inheritParams general
 #'
 #' @return Varies, depending on the file extension. Note that data frames are
-#'   returned as `DataFrame` class, when applicable.
+#'   returned as `DataFrame` class instead of `data.frame`, when applicable.
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
@@ -65,16 +65,17 @@
 #' x <- import("http://basejump.seq.cloud/example.counts")
 #' glimpse(x)
 import <- function(file, ...) {
+    args <- list(file, ...)
     assert_is_a_string(file)
-    file <- localOrRemoteFile(file)
+
     message(paste("Reading", basename(file)))
+    file <- localOrRemoteFile(file)
 
     ext <- basename(file) %>%
         str_match(extPattern) %>%
         .[1L, 2L] %>%
         tolower()
 
-    na <- c("", "NA", "#N/A", "NULL", "null")
     blacklist <- c("doc", "docx", "ppt", "pptx", "txt")
     source <- c("md", "py", "r", "rmd", "sh")
     unsupported <- paste("Unsupported extension", ":", deparse(ext))
@@ -83,12 +84,14 @@ import <- function(file, ...) {
         stop(unsupported)  # nocov
     } else if (ext %in% source) {
         message("Importing as source code lines")
-        data <- read_lines(file, ...)
+        data <- do.call(what = read_lines, args = args)
     } else if (ext %in% c("colnames", "rownames")) {
-        data <- read_lines(file = file, na = na, ...)
+        args[["na"]] <- na
+        data <- do.call(what = read_lines, args = args)
     } else if (ext == "counts") {
         # bcbio counts output
-        data <- read_tsv(file = file, na = na, ...) %>%
+        args[["na"]] <- na
+        data <- do.call(what = read_tsv, args = args) %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
@@ -97,10 +100,12 @@ import <- function(file, ...) {
     } else if (ext == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
-        data <- readMM(file = file, ...)
-        rownames <- localOrRemoteFile(paste(file, "rownames", sep = ".")) %>%
+        data <- do.call(what = readMM, args = args)
+        rownames <- paste(file, "rownames", sep = ".") %>%
+            localOrRemoteFile() %>%
             read_lines(na = na)
-        colnames <- localOrRemoteFile(paste(file, "colnames", sep = ".")) %>%
+        colnames <- paste(file, "colnames", sep = ".") %>%
+            localOrRemoteFile() %>%
             read_lines(na = na)
         rownames(data) <- rownames
         colnames(data) <- colnames
@@ -108,7 +113,7 @@ import <- function(file, ...) {
         safe <- new.env()
         object <- load(file, envir = safe)
         if (length(safe) != 1L) {
-            stop("File does not contain a single object.")
+            stop("File does not contain a single object")
         }
         data <- get(object, envir = safe, inherits = FALSE)
     } else if (ext == "rds") {
@@ -116,12 +121,29 @@ import <- function(file, ...) {
     } else if (ext %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
     } else {
-        data <- rio::import(file, ...)
-        # Return as `DataFrame` instead of `data.frame`.
-        if (is.data.frame(data)) {
-            data <- as(data, "DataFrame")
+        # `rio::import()`
+        # How we declare NA strings depends on the file extension.
+        if (ext %in% c("csv", "tsv")) {
+            # `data.table::fread()`
+            args[["na.strings"]] <- na
+        } else if (ext %in% c("xls", "xlsx")) {
+            # `readxl::read_excel()`
+            args[["na"]] <- na
         }
-        data
+        data <- do.call(what = rio::import, args = args)
+    }
+
+    return(data)
+
+    # Return as `DataFrame` instead of `data.frame`.
+    if (is.data.frame(data)) {
+        data <- data %>%
+            as("tbl_df") %>%
+            as("DataFrame")
+        assert_are_disjoint_sets(
+            x = "rowname",
+            y = colnames(data)
+        )
     }
 
     data
