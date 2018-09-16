@@ -5,6 +5,7 @@
 \alias{export}
 \alias{export,ANY-method}
 \alias{export,sparseMatrix-method}
+\alias{export,SummarizedExperiment-method}
 \title{Export}
 \usage{
 export(x, ...)
@@ -12,6 +13,8 @@ export(x, ...)
 \S4method{export}{ANY}(x, file, format, ...)
 
 \S4method{export}{sparseMatrix}(x, file, format)
+
+\S4method{export}{SummarizedExperiment}(x, dir = ".")
 }
 \arguments{
 \item{x}{Object.}
