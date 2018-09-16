@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @inheritParams rio::export
-#' @param x Object.
+#' @inheritParams general
 #'
 #' @return Invisible `character`. File path(s).
 #'

@@ -27,6 +27,8 @@ zerosVsDepth(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{title}{\code{string}. Plot title.}
 }
 \value{
 \code{DataFrame} or \code{ggplot}.

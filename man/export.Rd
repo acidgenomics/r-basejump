@@ -17,13 +17,16 @@ export(x, ...)
 \S4method{export}{SummarizedExperiment}(x, dir = ".")
 }
 \arguments{
-\item{x}{Object.}
+\item{x}{A data frame or matrix to be written into a file. (An exception to this is that \code{x} can be a list of data frames if the output file format is an Excel .xlsx workbook, .Rdata file, or HTML file. See examples.)}
 
 \item{...}{Additional arguments for the underlying export functions. See examples.}
 
 \item{file}{A character string naming a file. Must specify \code{file} and/or \code{format}.}
 
 \item{format}{An optional character string containing the file format, which can be used to override the format inferred from \code{file} or, in lieu of specifying \code{file}, a file with the symbol name of \code{x} and the specified file extension will be created. Must specify \code{file} and/or \code{format}. Shortcuts include: \dQuote{,} (for comma-separated values), \dQuote{;} (for semicolon-separated values), \dQuote{|} (for pipe-separated values), and \dQuote{dump} for \code{\link[base]{dump}}.}
+
+\item{dir}{\code{string}. Output directory. Defaults to the current working
+directory.}
 }
 \value{
 Invisible \code{character}. File path(s).
