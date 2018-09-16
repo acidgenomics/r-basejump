@@ -1,24 +1,3 @@
-# FIXME Need default methods for plotQC, markdown
-
-
-
-#' S4 Generics
-#'
-#' @name AllGenerics
-#' @keywords internal
-#'
-#' @inheritParams general
-#'
-#' @return Varies, depending upon the method.
-#'
-#' @seealso
-#' - [methods::isGeneric()]
-#' - [methods::showMethods()]
-#' - [methods::getMethod()]
-NULL
-
-
-
 #' @rdname aggregate
 #' @export
 setGeneric(
@@ -262,7 +241,7 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname markdown
 #' @export
 setGeneric(
     name = "markdown",
@@ -339,12 +318,12 @@ setGeneric(
 
 
 
-#' @rdname AllGenerics
+#' @rdname plotQC
 #' @export
 setGeneric(
     name = "plotQC",
     def = function(object, ...) {
-        standardGeneric("plotQC")  # nocov
+        standardGeneric("plotQC")
     }
 )
 

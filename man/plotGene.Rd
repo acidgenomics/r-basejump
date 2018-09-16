@@ -68,7 +68,7 @@ plotGene(object, genes = geneNames, style = "wide")
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotHeatmap}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
   \code{\link{plotQuantileHeatmap}}
 }
 \author{
