@@ -85,6 +85,7 @@ test_that("aggregateCols", {
 test_that("geometricMean", {
     int <- seq(from = 1L, to = 5L, by = 1L)
     num <- int ^ 2L
+    df <- data.frame(int, num)
     mat <- as.matrix(df)
     mean <- c(int = 2.605171, num = 6.786916)
 
