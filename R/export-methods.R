@@ -13,8 +13,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @inheritParams rio::export
 #' @inheritParams general
+#' @inheritParams rio::export
 #'
 #' @return Invisible `character`. File path(s).
 #'
