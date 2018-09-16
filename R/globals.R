@@ -10,12 +10,13 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 #' lanePattern
 lanePattern <- "_L(\\d{3})"
 
+# NA strings.
+na <- c("", "NA", "#N/A", "NULL", "null")
+
 # Ignore case.
 rdataExtPattern <- "\\.(rd[a|ata|s])$"
 
 rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
-
-
 
 #' Update Message
 #' @keywords internal
