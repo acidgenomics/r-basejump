@@ -8,9 +8,11 @@
 #'
 #' @inheritParams base::sys.call
 #' @inheritParams base::do.call
+#' @inheritParams standardizeCall
 #' @inheritParams general
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
+#'
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 #'
@@ -36,6 +38,8 @@ matchArgsToDoCall <- function(
     args,
     removeFormals = NULL,
     n = 1L,
+    definition = NULL,
+    call = NULL,
     verbose = FALSE
 ) {
     assert_is_list(args)
@@ -44,35 +48,45 @@ matchArgsToDoCall <- function(
     assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_number(n)
     assert_all_are_positive(n)
+    assert_is_any_of(definition, c("function", "NULL"))
+    assert_is_any_of(call, c("call", "NULL"))
     assert_is_a_bool(verbose)
 
-    # Handle S4 `.local()`, if necessary.
     if (
-        n == 1L &&
-        isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
+        is.null(definition) &&
+        is.null(call)
     ) {
-        n = n + 1L
+        # Handle S4 `.local()`, if necessary.
+        if (
+            n == 1L &&
+            isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
+        ) {
+            n = n + 1L
+        }
+
+        # Get the position in the stack.
+        which <- sys.parent(n = n)
+
+        list <- standardizeCall(
+            definition = sys.function(which = which),
+            call = sys.call(which = which),
+            expand.dots = TRUE,
+            envir = sys.frame(which = which),
+            return = "list",
+            verbose = verbose
+        )
+
+        # Get the formals from the definition.
+        definition <- list[["definition"]]
+        assert_is_function(definition)
+
+        # Get the matched (standardized) call.
+        call <- list[["match.call"]]
+        assert_is_call(call)
+    } else {
+        assert_is_function(definition)
+        assert_is_call(call)
     }
-
-    # Get the position in the stack.
-    which <- sys.parent(n = n)
-
-    list <- standardizeCall(
-        definition = sys.function(which = which),
-        call = sys.call(which = which),
-        expand.dots = TRUE,
-        envir = sys.frame(which = which),
-        return = "list",
-        verbose = verbose
-    )
-
-    # Get the formals from the definition.
-    definition <- list[["definition"]]
-    assert_is_function(definition)
-
-    # Get the matched (standardized) call.
-    call <- list[["match.call"]]
-    assert_is_call(call)
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
