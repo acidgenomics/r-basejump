@@ -33,6 +33,8 @@
 #' The UCSC website has detailed conventions on the GFF3 format, including
 #' the metadata columns.
 #'
+#' Remote URLs and compressed files are supported.
+#'
 #' @section GRCh37 legacy annotations:
 #'
 #' [makeGRangesFromEnsembl()] supports the legacy *Homo sapiens* GRCh37 (release

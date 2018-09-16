@@ -1,5 +1,9 @@
 #' Make Transcript-to-Gene Mappings
 #'
+#' @section GFF/GTF file:
+#'
+#' Remote URLs and compressed files are supported.
+#'
 #' @name makeTx2gene
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
@@ -9,7 +13,7 @@
 #'
 #' @seealso [makeGRanges].
 #'
-#' @return `DataFrame`.
+#' @return `tx2gene`.
 #'
 #' @examples
 #' # makeTx2geneFromEnsembl ====
@@ -49,19 +53,16 @@ NULL
 
 #' @rdname makeTx2gene
 #' @export
-makeTx2geneFromEnsembl <- function(
-    # Setting formals below.
-) {
-    args <- as.list(match.call())[-1L]
-    args[["level"]] <- "transcripts"
-    gr <- do.call(
-        what = makeGRangesFromEnsembl,
-        args = args
-    )
-    .makeTx2gene(gr)
-}
-
-# Set the formals.
+makeTx2geneFromEnsembl <-
+    function() {
+        args <- as.list(match.call())[-1L]
+        args[["level"]] <- "transcripts"
+        gr <- do.call(
+            what = makeGRangesFromEnsembl,
+            args = args
+        )
+        .makeTx2gene(gr)
+    }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
 formals(makeTx2geneFromEnsembl) <- f
@@ -108,7 +109,7 @@ makeTx2geneFromGFF <- function(file) {
 
 
 
+# Aliases ======================================================================
 #' @rdname makeTx2gene
-#' @usage NULL
 #' @export
-makeTx2geneFromGFF -> makeTx2geneFromGTF
+makeTx2geneFromGTF <- makeTx2geneFromGFF
