@@ -329,6 +329,17 @@ setGeneric(
 
 
 
+#' @rdname zerosVsDepth
+#' @export
+setGeneric(
+    name = "plotZerosVsDepth",
+    def = function(object, ...) {
+        standardGeneric("plotZerosVsDepth")
+    }
+)
+
+
+
 #' @rdname removeNA
 #' @export
 setGeneric(
@@ -445,5 +456,16 @@ setGeneric(
     name = "upperCamel",
     def = function(object, ...) {
         standardGeneric("upperCamel")
+    }
+)
+
+
+
+#' @rdname zerosVsDepth
+#' @export
+setGeneric(
+    name = "zerosVsDepth",
+    def = function(object, ...) {
+        standardGeneric("zerosVsDepth")
     }
 )
