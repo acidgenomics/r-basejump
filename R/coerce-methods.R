@@ -59,6 +59,17 @@ NULL
 
 
 
+# Internal =====================================================================
+.coerceToSummarizedExperiment <- function(object) {
+    assert_is_all_of(object, "SummarizedExperiment")
+    if (is(object, "RangedSummarizedExperiment")) {
+        object <- as(object, "RangedSummarizedExperiment")
+    }
+    as(object, "SummarizedExperiment")
+}
+
+
+
 # Coerce to tibble =============================================================
 # Helps avoid dropping rownames during tidyverse function calls.
 .coerceToTibble <- function(from) {
@@ -72,7 +83,7 @@ NULL
         stringsAsFactors = FALSE
     ))
     assert_has_colnames(from)
-    if (has_rownames(from)) {
+    if (hasRownames(from)) {
         from <- rownames_to_column(from)
     }
     as_tibble(from)
@@ -111,9 +122,12 @@ setAs(
             length(rownames) &&
             !any(duplicated(rownames))
         ) {
-            assertAllAreValidNames(rownames)
             rownames(to) <- rownames
             to[["rowname"]] <- NULL
+        }
+        # Warn on invalid dimnames.
+        if (!all(validDimnames(to))) {
+            warning("Invalid dimnames detected", call. = FALSE)
         }
         to
     }
