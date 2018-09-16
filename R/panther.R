@@ -14,7 +14,7 @@
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
 #'
-#' @return `DataFrame`.
+#' @return `PANTHER`.
 #'
 #' @examples
 #' invisible(capture.output(
@@ -63,7 +63,7 @@ NULL
         unique() %>%
         # Some organisms have duplicate annotations per gene ID
         group_by(!!sym("geneID")) %>%
-        top_n(n = 1L, wt = !!sym("pantherSubfamily")) %>%
+        top_n(n = 1L, wt = !!sym("pantherSubfamilyID")) %>%
         ungroup() %>%
         arrange(!!sym("geneID"))
     assert_has_no_duplicates(data[["geneID"]])
@@ -87,7 +87,9 @@ NULL
 
 # Organism-specific data modifiers =============================================
 .panther.homoSapiens <- function(data) {  # nolint
-    hgnc2gene <- hgnc2gene()
+    hgnc2ensembl <- hgnc2ensembl() %>%
+        set_rownames(NULL) %>%
+        as("tbl_df")
 
     # Ensembl matches
     ensembl <- data %>%
@@ -105,7 +107,7 @@ NULL
             hgncID = as.integer(!!sym("hgncID"))
         ) %>%
         filter(!is.na(!!sym("hgncID"))) %>%
-        merge(hgnc2gene, by = "hgncID", all.x = TRUE) %>%
+        left_join(hgnc2ensembl, by = "hgncID") %>%
         select(-!!sym("hgncID")) %>%
         filter(!is.na(!!sym("geneID"))) %>%
         unique()
@@ -116,7 +118,9 @@ NULL
 
 
 .panther.musMusculus <- function(data) {  # nolint
-    mgi2gene <- mgi2gene()
+    mgi2ensembl <- mgi2ensembl() %>%
+        set_rownames(NULL) %>%
+        as("tbl_df")
 
     # Ensembl matches
     ensembl <- data %>%
@@ -133,7 +137,7 @@ NULL
             mgiID = as.integer(!!sym("mgiID"))
         ) %>%
         filter(!is.na(!!sym("mgiID"))) %>%
-        merge(mgi2gene, by = "mgiID", all.x = TRUE) %>%
+        left_join(mgi2ensembl, by = "mgiID") %>%
         select(-!!sym("mgiID")) %>%
         filter(!is.na(!!sym("geneID")))
 
@@ -206,7 +210,7 @@ panther <- function(
         col_names = c(
             "pantherID",
             "X2",
-            "pantherSubfamily",
+            "pantherSubfamilyID",
             "pantherFamilyName",
             "pantherSubfamilyName",
             "goMF",
@@ -231,5 +235,8 @@ panther <- function(
     # Using organism-specific internal return functions here.
     fun <- get(paste("", "panther", camel(organism), sep = "."))
     assert_is_function(fun)
-    fun(data)
+    data <- fun(data)
+    # Sort columns alphabetically.
+    data <- data[, sort(colnames(data)), drop = FALSE]
+    new("PANTHER", data)
 }
