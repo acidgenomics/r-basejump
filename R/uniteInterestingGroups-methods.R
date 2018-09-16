@@ -25,12 +25,8 @@ NULL
 
 
 
-#' @rdname uniteInterestingGroups
-#' @export
-setMethod(
-    f = "uniteInterestingGroups",
-    signature = signature("data.frame"),
-    definition = function(object, interestingGroups) {
+.uniteInterestingGroups.df <-  # nolint
+    function(object, interestingGroups) {
         assert_is_character(interestingGroups)
         assert_is_subset(interestingGroups, colnames(object))
         # Subset to get only the columns of interest.
@@ -47,6 +43,34 @@ setMethod(
         object[["interestingGroups"]] <- as.factor(value)
         object
     }
+
+
+
+.uniteInterestingGroups.tbl_df <-  # nolint
+    function(object, interestingGroups) {
+        assert_is_character(interestingGroups)
+        assert_is_subset(interestingGroups, colnames(object))
+        object[["interestingGroups"]] <- NULL
+        object <- unite(
+            data = object,
+            col = interestingGroups,
+            !!interestingGroups,
+            sep = ":",
+            remove = FALSE
+        )
+        object[["interestingGroups"]] <-
+            as.factor(object[["interestingGroups"]])
+        object
+    }
+
+
+
+#' @rdname uniteInterestingGroups
+#' @export
+setMethod(
+    f = "uniteInterestingGroups",
+    signature = signature("data.frame"),
+    definition = .uniteInterestingGroups.df
 )
 
 
@@ -67,19 +91,5 @@ setMethod(
 setMethod(
     f = "uniteInterestingGroups",
     signature = signature("tbl_df"),
-    definition = function(object, interestingGroups) {
-        assert_is_character(interestingGroups)
-        assert_is_subset(interestingGroups, colnames(object))
-        object[["interestingGroups"]] <- NULL
-        object <- unite(
-            data = object,
-            col = interestingGroups,
-            !!interestingGroups,
-            sep = ":",
-            remove = FALSE
-        )
-        object[["interestingGroups"]] <-
-            as.factor(object[["interestingGroups"]])
-        object
-    }
+    definition = .uniteInterestingGroups.tbl_df
 )
