@@ -140,8 +140,10 @@ assertHasValidNames <- function(object) {
 #' @examples
 #' validDimnames(datasets::mtcars)
 validDimnames <- function(object) {
-    if (!has_dimnames(object)) {
-        FALSE
+    if (is.null(dim(object))) {
+        stop("Object does not support `dim()`")
+    } else if (!has_dimnames(object)) {
+        c(TRUE, TRUE)
     } else {
         vapply(
             X = lapply(
@@ -167,11 +169,10 @@ validDimnames <- function(object) {
 #'     "GFP+ sort"
 #' ))
 validNames <- function(object) {
-    if (
-        !is.atomic(object) ||
-        is.null(object)
-    ) {
+    if (!is.atomic(object)) {
         FALSE
+    } else if (is.null(object)) {
+        TRUE
     } else {
         vapply(
             X = object,
