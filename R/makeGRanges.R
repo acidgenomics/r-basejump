@@ -265,9 +265,9 @@ makeGRangesFromEnsembl <- function(
                     "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
                 ),
-                paste(bullet, "organism:", deparse(organism)),
-                paste(bullet, "build:", deparse(build)),
-                paste(bullet, "release:", deparse(release)),
+                paste(li, "organism:", deparse(organism)),
+                paste(li, "build:", deparse(build)),
+                paste(li, "release:", deparse(release)),
                 sep = "\n"
             ))
         }
@@ -298,11 +298,11 @@ makeGRangesFromEnsembl <- function(
     assert_is_a_string(build)
 
     message(paste(
-        paste(bullet, "id:", deparse(id)),
-        paste(bullet, "organism:", deparse(organism(edb))),
-        paste(bullet, "build:", deparse(build)),
-        paste(bullet, "release:", deparse(ensemblVersion(edb))),
-        paste(bullet, "level:", deparse(level)),
+        paste(li, "id:", deparse(id)),
+        paste(li, "organism:", deparse(organism(edb))),
+        paste(li, "build:", deparse(build)),
+        paste(li, "release:", deparse(ensemblVersion(edb))),
+        paste(li, "level:", deparse(level)),
         sep = "\n"
     ))
 
