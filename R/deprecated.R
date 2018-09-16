@@ -1,4 +1,5 @@
 # nocov start
+# nolint start
 
 
 
@@ -334,4 +335,5 @@ setArgsToDoCall <- function(...) {
 
 
 
+# nolint end
 # nocov end
