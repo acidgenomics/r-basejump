@@ -59,7 +59,7 @@ improved aesthetics.}
 \item{title}{\code{string} or \code{NULL}. Plot title.}
 }
 \value{
-Show heatmap and invisibly return a \code{list} of the components.
+\code{pheatmap}.
 }
 \description{
 Construct a simple heatmap. By default, row- and column-wise hierarchical

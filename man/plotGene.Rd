@@ -12,7 +12,7 @@ plotGene(object, ...)
   interestingGroups = NULL, countsAxisLabel = "counts",
   medianLine = TRUE, color = getOption("basejump.discrete.color",
   NULL), legend = getOption("basejump.legend", TRUE), headerLevel = 2L,
-  return = c("facet", "wide"))
+  style = c("facet", "wide"))
 }
 \arguments{
 \item{object}{Object.}
@@ -39,14 +39,13 @@ To set the discrete color palette globally, use
 
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
-\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
-the first item in the vector by default.}
+\item{style}{\code{string}. Plot style.}
 }
 \value{
 \itemize{
-\item "\code{facet}": \code{ggplot} grouped by \code{sampleName}, with \code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}}
-applied to panel the samples.
-\item "\code{wide}": Show \code{ggplot} in wide format, with genes on the x-axis.
+\item \code{style = "facet"}: \code{ggplot} grouped by \code{sampleName}, with
+\code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}} applied to panel the samples.
+\item \code{style = "wide"}: \code{ggplot} in wide format, with genes on the x-axis.
 }
 }
 \description{
@@ -64,8 +63,8 @@ geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 # Rownames, gene IDs, and gene names (symbols) are supported.
-plotGene(object, genes = geneIDs, return = "facet")
-plotGene(object, genes = geneNames, return = "wide")
+plotGene(object, genes = geneIDs, style = "facet")
+plotGene(object, genes = geneNames, style = "wide")
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
