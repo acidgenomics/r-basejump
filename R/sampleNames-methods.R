@@ -32,12 +32,8 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleNames",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+.sampleNames.SE <-  # nolint
+    function(object) {
         validObject(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
@@ -46,19 +42,11 @@ setMethod(
         names(vec) <- rownames(data)
         vec
     }
-)
 
 
 
-#' @rdname sampleNames
-#' @export
-setMethod(
-    f = "sampleNames<-",
-    signature = signature(
-        object = "SummarizedExperiment",
-        value = "character"
-    ),
-    definition = function(object, value) {
+`.sampleNames<-.SE` <-  # nolint
+    function(object, value) {
         assert_has_names(value)
         # Note that these will correspond to columns for bulk RNA-seq but not
         # single-cell RNA-seq samples, which map to cells.
@@ -74,4 +62,26 @@ setMethod(
         validObject(object)
         object
     }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
+    definition = .sampleNames.SE
+)
+
+
+
+#' @rdname sampleNames
+#' @export
+setMethod(
+    f = "sampleNames<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    definition = `.sampleNames<-.SE`
 )

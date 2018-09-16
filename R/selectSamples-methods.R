@@ -23,12 +23,8 @@ NULL
 
 
 
-#' @rdname selectSamples
-#' @export
-setMethod(
-    f = "selectSamples",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object, ...) {
+.selectSamples.SE <-  # nolint
+    function(object, ...) {
         validObject(object)
         args <- list(...)
         assert_is_non_empty(args)
@@ -66,4 +62,13 @@ setMethod(
 
         object[, cols]
     }
+
+
+
+#' @rdname selectSamples
+#' @export
+setMethod(
+    f = "selectSamples",
+    signature = signature("SummarizedExperiment"),
+    definition = .selectSamples.SE
 )
