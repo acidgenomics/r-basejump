@@ -27,12 +27,8 @@ NULL
 
 
 
-#' @rdname stripTranscriptVersions
-#' @export
-setMethod(
-    f = "stripTranscriptVersions",
-    signature = signature("character"),
-    definition = function(object) {
+.stripTranscriptVersions.character <-  # nolint
+    function(object) {
         # Pattern matching against Ensembl transcript IDs
         # http://www.ensembl.org/info/genome/stable_ids/index.html
         # Examples: ENST (human); ENSMUST (mouse)
@@ -42,6 +38,25 @@ setMethod(
         # punct will match `-` or `_` here
         gsub("^(ENS.*T\\d{11})[[:punct:]]\\d+$", "\\1", object)
     }
+
+
+
+.stripTranscriptVersions.matrix <-  # nolint
+    function(object) {
+        rownames <- rownames(object)
+        rownames <- stripTranscriptVersions(rownames)
+        rownames(object) <- rownames
+        object
+    }
+
+
+
+#' @rdname stripTranscriptVersions
+#' @export
+setMethod(
+    f = "stripTranscriptVersions",
+    signature = signature("character"),
+    definition = .stripTranscriptVersions.character
 )
 
 
@@ -51,12 +66,7 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("matrix"),
-    definition = function(object) {
-        rownames <- rownames(object)
-        rownames <- stripTranscriptVersions(rownames)
-        rownames(object) <- rownames
-        object
-    }
+    definition = .stripTranscriptVersions.matrix
 )
 
 
