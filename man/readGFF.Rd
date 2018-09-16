@@ -23,6 +23,8 @@ GTF (General Transfer Format) is identical to GFF version 2.
 \details{
 Column names follow the
 \href{https://bit.ly/2K6EBla}{conventions defined by Ensembl}.
+
+Remote URLs and compressed files are supported.
 }
 \examples{
 x <- readGFF("http://basejump.seq.cloud/example.gtf")

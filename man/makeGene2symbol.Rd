@@ -32,7 +32,7 @@ set \code{NULL}, defaults to the most recent release available.}
 \description{
 Make Gene-to-Symbol Mappings
 }
-\section{GFF/GTF files}{
+\section{GFF/GTF file}{
 
 
 Remote URLs and compressed files are supported.
