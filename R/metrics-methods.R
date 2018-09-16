@@ -23,12 +23,8 @@ NULL
 
 
 
-#' @rdname metrics
-#' @export
-setMethod(
-    f = "metrics",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+.metrics.SE <-  # nolint
+    function(object) {
         validObject(object)
         data <- colData(object)
         assert_is_non_empty(data)
@@ -44,7 +40,16 @@ setMethod(
             y = colnames(data)
         )
         # Require that the columns are sorted alphabetically.
-        data <- data[, sort(colnames(data))]
+        data <- data[, sort(colnames(data)), drop = FALSE]
         data
     }
+
+
+
+#' @rdname metrics
+#' @export
+setMethod(
+    f = "metrics",
+    signature = signature("SummarizedExperiment"),
+    definition = .metrics.SE
 )
