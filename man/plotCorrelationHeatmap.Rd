@@ -97,7 +97,7 @@ plotCorrelationHeatmap(rse_small, color = NULL)
 }
 
 Other Plot Functions: \code{\link{plotGene}},
-  \code{\link{plotHeatmap}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
   \code{\link{plotQuantileHeatmap}}
 }
 \author{
