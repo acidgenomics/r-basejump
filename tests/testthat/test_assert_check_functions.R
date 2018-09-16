@@ -23,7 +23,7 @@ test_that("assertAllAreNonExisting", {
 
 # assertAreGeneAnnotations =====================================================
 test_that("assertAreGeneAnnotations", {
-    object <- makeGRangesFromEnsembl("Homo sapiens", format = "genes")
+    object <- makeGRangesFromEnsembl("Homo sapiens", level = "genes")
     expect_silent(assertAreGeneAnnotations(object))
     expect_error(
         object = assertAreGeneAnnotations(mtcars),
@@ -35,7 +35,7 @@ test_that("assertAreGeneAnnotations", {
 
 # assertAreTranscriptAnnotations ===============================================
 test_that("assertAreTranscriptAnnotations", {
-    object <- makeGRangesFromEnsembl("Homo sapiens", format = "transcripts")
+    object <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
     expect_silent(assertAreTranscriptAnnotations(object))
     expect_error(
         object = assertAreTranscriptAnnotations(mtcars),

@@ -184,7 +184,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validNames"
+        regexp = "validDimnames"
     )
     matBadCols <- mat
     colnames(matBadCols) <- paste0(colnames(matBadCols), "-XXX")
@@ -194,7 +194,7 @@ test_that("makeSummarizedExperiment : Strict names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "validNames"
+        regexp = "validDimnames"
     )
 })
 
@@ -207,7 +207,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "has_no_duplicates :"
+        regexp = "validDimnames"
     )
     matDupeCols <- mat
     colnames(matDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
@@ -217,7 +217,7 @@ test_that("makeSummarizedExperiment : Duplicate names", {
             rowRanges = rr,
             colData = cd
         ),
-        regexp = "has_no_duplicates :"
+        regexp = "validDimnames"
     )
 })
 

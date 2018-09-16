@@ -1,5 +1,8 @@
 context("Read/Write Functions")
 
+# FIXME Generate a different working data frame example other than mtcars.
+# FIXME Need more complete `import()` / `export()` unit tests.
+
 
 
 # assignAndSaveData ============================================================
@@ -83,11 +86,11 @@ test_that("import : R script", {
 test_that("import : R Data", {
     # rda
     object <- import(paste(cacheURL, "example.rda", sep = "/"))
-    expect_is(object, "tbl_df")
+    expect_is(object, "DataFrame")
 
     # rds
     object <- import(paste(cacheURL, "example.rds", sep = "/"))
-    expect_is(object, "tbl_df")
+    expect_is(object, "DataFrame")
 
     # Error on object containing multiple data
     expect_error(
@@ -252,7 +255,7 @@ test_that("loadRemoteData", {
     expect_is(object, "character")
     expect_identical(object, c(example = url))
     # Check that the object loaded correctly
-    expect_is(example, "data.frame")
+    expect_is(example, "DataFrame")
 })
 
 test_that("loadRemoteData : Already loaded", {
@@ -409,6 +412,7 @@ test_that("saveData", {
     # rda (default)
     object <- saveData(
         rnaseq_counts, single_cell_counts,
+        ext = "rda",
         dir = dir,
         overwrite = TRUE
     )
