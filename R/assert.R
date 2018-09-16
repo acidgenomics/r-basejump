@@ -115,10 +115,7 @@ assertAllAreValidNames <- function(object) {
 #' @export
 assertHasValidDimnames <- function(object) {
     assert_has_dimnames(object)
-    invisible(lapply(
-        X = dimnames(object),
-        FUN = assertAllAreValidNames
-    ))
+    assert_all_are_true(validDimnames(object))
 }
 
 
@@ -141,6 +138,27 @@ assertHasValidNames <- function(object) {
 #' @rdname assertAllAreValidNames
 #' @export
 #' @examples
+#' validDimnames(datasets::mtcars)
+validDimnames <- function(object) {
+    if (!has_dimnames(object)) {
+        FALSE
+    } else {
+        vapply(
+            X = lapply(
+                X = dimnames(object),
+                FUN = validNames
+            ),
+            FUN = all,
+            FUN.VALUE = logical(1L)
+        )
+    }
+}
+
+
+
+#' @rdname assertAllAreValidNames
+#' @export
+#' @examples
 #' validNames(c(
 #'     "sample_1",
 #'     "gene_1",
@@ -149,21 +167,25 @@ assertHasValidNames <- function(object) {
 #'     "GFP+ sort"
 #' ))
 validNames <- function(object) {
-    if (!is.atomic(object)) {
-        return(FALSE)
+    if (
+        !is.atomic(object) ||
+        is.null(object)
+    ) {
+        FALSE
+    } else {
+        vapply(
+            X = object,
+            FUN = function(object) {
+                # Note that we're enforcing unique values here.
+                identical(
+                    x = as.character(object),
+                    y = make.names(object, unique = TRUE)
+                )
+            },
+            FUN.VALUE = logical(1L),
+            USE.NAMES = FALSE
+        )
     }
-    vapply(
-        X = object,
-        FUN = function(object) {
-            # Note that we're enforcing unique values here.
-            identical(
-                x = as.character(object),
-                y = make.names(object, unique = TRUE)
-            )
-        },
-        FUN.VALUE = logical(1L),
-        USE.NAMES = FALSE
-    )
 }
 
 
