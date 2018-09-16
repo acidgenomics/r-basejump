@@ -80,11 +80,11 @@ test_that("aggregateCols", {
 
 
 
+# FIXME Parameterize this test.
 # geometricMean ================================================================
 test_that("geometricMean", {
     int <- seq(from = 1L, to = 5L, by = 1L)
     num <- int ^ 2L
-    df <- data.frame(int, num)
     mat <- as.matrix(df)
     mean <- c(int = 2.605171, num = 6.786916)
 
@@ -98,16 +98,6 @@ test_that("geometricMean", {
     expect_identical(
         round(geometricMean(num), digits = 6L),
         mean[["num"]]
-    )
-
-    # data.frame ===============================================================
-    expect_identical(
-        round(geometricMean(df), digits = 6L),
-        mean
-    )
-    expect_error(
-        geometricMean(ggplot2::mpg),
-        "is_numeric :"
     )
 
     # matrix ===================================================================
