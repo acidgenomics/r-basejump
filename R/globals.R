@@ -1,7 +1,5 @@
 globalVariables(".")
 
-li <- "  -"
-
 # Note optional matching of gzip.
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
@@ -11,6 +9,9 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 #' @examples
 #' lanePattern
 lanePattern <- "_L(\\d{3})"
+
+# List item (following HTML convention).
+li <- "  -"
 
 # NA strings.
 na <- c("", "NA", "#N/A", "NULL", "null")
