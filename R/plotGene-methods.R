@@ -127,11 +127,7 @@ NULL
 
 
 
-#' @rdname plotGene
-#' @export
-setMethod(
-    "plotGene",
-    signature("SummarizedExperiment"),
+.plotGene.SE <-  # nolint
     function(
         object,
         genes,
@@ -183,4 +179,13 @@ setMethod(
             )
         )
     }
+
+
+
+#' @rdname plotGene
+#' @export
+setMethod(
+    f = "plotGene",
+    signature = signature("SummarizedExperiment"),
+    definition = .plotGene.SE
 )
