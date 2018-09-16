@@ -141,7 +141,7 @@ makeNames <- function(names, unique = FALSE) {
 
 .snake.atomic <-  # nolint
     function(object) {
-        if (has_rownames(object)) {
+        if (hasRownames(object)) {
             names(object) <- .snake.character(names(object))
         }
         object
