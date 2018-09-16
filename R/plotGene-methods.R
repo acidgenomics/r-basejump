@@ -1,8 +1,3 @@
-# TODO Keep the gene vector ordered as an option.
-# TODO Consider renaming `return` argument.
-
-
-
 #' Plot Gene Expression
 #'
 #' @name plotGene
@@ -14,11 +9,12 @@
 #' @param countsAxisLabel `string`. Label to use for the counts axis.
 #' @param medianLine `boolean`. Include median line for each group. Disabled if
 #'   samples are colored by sample name.
+#' @param style `string`. Plot style.
 #'
 #' @return
-#' - "`facet`": `ggplot` grouped by `sampleName`, with [ggplot2::facet_wrap()]
-#'   applied to panel the samples.
-#' - "`wide`": Show `ggplot` in wide format, with genes on the x-axis.
+#' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
+#'   [ggplot2::facet_wrap()] applied to panel the samples.
+#' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
 #' object <- rse_small
@@ -32,8 +28,8 @@
 #' print(geneNames)
 #'
 #' # Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotGene(object, genes = geneIDs, return = "facet")
-#' plotGene(object, genes = geneNames, return = "wide")
+#' plotGene(object, genes = geneIDs, style = "facet")
+#' plotGene(object, genes = geneNames, style = "wide")
 NULL
 
 
@@ -145,7 +141,7 @@ setMethod(
         color = getOption("basejump.discrete.color", NULL),
         legend = getOption("basejump.legend", TRUE),
         headerLevel = 2L,
-        return = c("facet", "wide")
+        style = c("facet", "wide")
     ) {
         validObject(object)
         # Coerce to `SummarizedExperiment`, for fast subsetting below.
@@ -163,17 +159,17 @@ setMethod(
         assertIsColorScaleDiscreteOrNULL(color)
         assert_is_a_bool(legend)
         assertIsAHeaderLevel(headerLevel)
-        return <- match.arg(return)
+        style <- match.arg(style)
 
         # Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
         # Now convert the rownames to symbols, for visualization.
         object <- convertGenesToSymbols(object)
 
-        # Return
-        if (return == "facet") {
+        # Plot style.
+        if (style == "facet") {
             what <- .plotGeneFacet
-        } else if (return == "wide") {
+        } else if (style == "wide") {
             what <- .plotGeneWide
         }
         do.call(
