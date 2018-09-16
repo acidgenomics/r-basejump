@@ -90,7 +90,7 @@ setMethod(
     f = "sanitizeNA",
     signature = signature("data.frame"),
     definition = function(object) {
-        if (has_rownames(object)) {
+        if (hasRownames(object)) {
             rownames <- rownames(object)
         } else {
             rownames <- NULL
