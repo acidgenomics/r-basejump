@@ -7,6 +7,8 @@
 #' Column names follow the
 #' [conventions defined by Ensembl](https://bit.ly/2K6EBla).
 #'
+#' Remote URLs and compressed files are supported.
+#'
 #' @family Read Functions
 #' @author Michael Steinbaugh
 #' @export
