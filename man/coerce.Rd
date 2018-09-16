@@ -21,6 +21,13 @@ coerceS4ToList(from)
 
 \S4method{as.list}{SummarizedExperiment}(x)
 }
+\arguments{
+\item{from}{The classes between which the coerce methods
+    \code{def} and \code{replace} perform coercion.
+  }
+
+\item{x}{Object.}
+}
 \value{
 Object of new class.
 }
@@ -77,7 +84,7 @@ names(x)
 \itemize{
 \item \code{\link[methods:as]{methods::as()}}.
 \item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
-\item \code{\link[S4Vectors:as.list]{S4Vectors::as.list()}}.
+\item \code{\link[=as.list]{as.list()}}.
 \item \code{\link[tibble:tibble]{tibble::tibble()}}, \code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 }
 }

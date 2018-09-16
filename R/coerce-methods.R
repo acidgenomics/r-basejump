@@ -1,11 +1,5 @@
 #' Methods for Coercing an Object to a Class
 #'
-#' @name coerce
-#' @aliases as
-#' @author Michael Steinbaugh
-#' @importFrom methods coerce
-#' @exportMethod coerce
-#'
 #' @section tibble:
 #'
 #' Coerce an object to a `tibble` (`tbl_df`) using `as(object, Class =
@@ -28,12 +22,21 @@
 #' here we have improved support for `SummarizedExperiment` to `list` coercion,
 #' returning the slots as a `list`.
 #'
+#' @name coerce
+#' @aliases as
+#' @author Michael Steinbaugh
+#' @importFrom methods coerce
+#' @exportMethod coerce
+#'
+#' @inheritParams general
+#' @inheritParams methods::coerce
+#'
 #' @return Object of new class.
 #'
 #' @seealso
 #' - [methods::as()].
 #' - [methods::canCoerce()].
-#' - [S4Vectors::as.list()].
+#' - [as.list()].
 #' - [tibble::tibble()], [tibble::as_tibble()].
 #'
 #' @examples
