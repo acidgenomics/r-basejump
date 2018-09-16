@@ -1,5 +1,7 @@
 context("Annotation Functions")
 
+# FIXME Work on stashing gene2symbol, tx2gene for better speed.
+
 release <- 87L
 
 
@@ -81,10 +83,7 @@ test_that("convertGenesToSymbols : matrix", {
         object = object %>%
             convertGenesToSymbols(release = release) %>%
             rownames(),
-        expected = c(
-            "ENSMUSG00000000001" = "Gnai3",
-            "ENSMUSG00000000003" = "Pbsn"
-        )
+        expected = c("Gnai3", "Pbsn")
     )
 })
 
@@ -123,10 +122,10 @@ test_that("convertGenesToSymbols : Invalid identifiers", {
 # convertTranscriptsToGenes ====================================================
 test_that("convertTranscriptsToGenes : character", {
     object <- c("ENSMUST00000000001", "ENSMUST00000000003")
-    expected <- c(
+    expected <- factor(c(
         "ENSMUST00000000001" = "ENSMUSG00000000001",
         "ENSMUST00000000003" = "ENSMUSG00000000003"
-    )
+    ))
 
     # tx2gene (recommended)
     tx2gene <- makeTx2geneFromEnsembl(
@@ -155,6 +154,7 @@ test_that("convertTranscriptsToGenes : character", {
     )
 })
 
+# FIXME Improve the collapse unit test here.
 test_that("convertTranscriptsToGenes : matrix", {
     object <- matrix(
         data = seq(1L:8L),
@@ -180,11 +180,7 @@ test_that("convertTranscriptsToGenes : matrix", {
             .[2L:4L, ] %>%
             convertTranscriptsToGenes() %>%
             rownames(),
-        expected = c(
-            "ENSMUST00000000001" = "ENSMUSG00000000001",
-            "ENSMUST00000000003" = "ENSMUSG00000000003",
-            "ENSMUST00000114041" = "ENSMUSG00000000003"
-        )
+        expected = c("ENSMUSG00000000001", "ENSMUSG00000000003")
     )
 })
 
@@ -473,7 +469,7 @@ with_parameters_test_that(
 test_that("makeGRangesFromEnsembl : genes", {
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        format = "genes",
+        level = "genes",
         release = release
     )
     expect_s4_class(object, "GRanges")
@@ -499,7 +495,7 @@ test_that("makeGRangesFromEnsembl : genes", {
 test_that("makeGRangesFromEnsembl : transcripts", {
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        format = "transcripts",
+        level = "transcripts",
         release = release
     )
     expect_s4_class(object, "GRanges")
@@ -532,7 +528,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     # Genes
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        format = "genes",
+        level = "genes",
         build = "GRCh37"
     )
     expect_is(object, "GRanges")
@@ -542,7 +538,7 @@ test_that("makeGRangesFromEnsembl : GRCh37", {
     # Transcripts
     object <- makeGRangesFromEnsembl(
         organism = "Homo sapiens",
-        format = "transcripts",
+        level = "transcripts",
         build = "GRCh37"
     )
     expect_is(object, "GRanges")
@@ -568,7 +564,7 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
         regexp = "is_a_string : "
     )
     expect_error(
-        object = makeGRangesFromEnsembl("Homo sapiens", format = "XXX"),
+        object = makeGRangesFromEnsembl("Homo sapiens", level = "XXX"),
         regexp = "'arg' should be one of \"genes\", \"transcripts\""
     )
 })
@@ -592,7 +588,7 @@ test_that("makeGRangesFromEnsembl : metadata", {
 # makeGRangesFromGFF ===========================================================
 test_that("makeGRangesFromGFF : Minimal GTF", {
     # Genes
-    object <- makeGRangesFromGFF("example.gtf", format = "genes")
+    object <- makeGRangesFromGFF("example.gtf", level = "genes")
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 17L)
     expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
@@ -611,7 +607,7 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
     )
 
     # Transcripts
-    object <- makeGRangesFromGFF("example.gtf", format = "transcripts")
+    object <- makeGRangesFromGFF("example.gtf", level = "transcripts")
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 20L)
     expect_identical(names(object)[[1L]], "ENSMUST00000070533")
@@ -640,7 +636,7 @@ test_that("makeGRangesFromGFF : Minimal GTF", {
 
 test_that("makeGRangesFromGFF : Minimal GFF3", {
     # Genes
-    object <- makeGRangesFromGFF("example.gff3", format = "genes")
+    object <- makeGRangesFromGFF("example.gff3", level = "genes")
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 20L)
     expect_identical(names(object)[[1L]], "ENSMUSG00000025900")
@@ -662,7 +658,7 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
     )
 
     # Transcripts
-    object <- makeGRangesFromGFF("example.gff3", format = "transcripts")
+    object <- makeGRangesFromGFF("example.gff3", level = "transcripts")
     expect_s4_class(object, "GRanges")
     expect_identical(length(object), 26L)
     expect_identical(names(object)[[1L]], "ENSMUST00000027032")
