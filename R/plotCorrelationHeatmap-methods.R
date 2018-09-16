@@ -1,7 +1,3 @@
-# TODO Make sure we're stopping if user passes in `scale` argument.
-
-
-
 #' Plot Correlation Heatmap
 #'
 #' Construct a correlation heatmap comparing the columns of the matrix.
@@ -23,7 +19,7 @@
 #' - [stats::hclust()].
 #' - [pheatmap::pheatmap()].
 #'
-#' @return Show heatmap and invisibly return a `list` of the components.
+#' @return `pheatmap`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
@@ -47,12 +43,8 @@ NULL
 
 
 
-#' @rdname plotCorrelationHeatmap
-#' @export
-setMethod(
-    f = "plotCorrelationHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = function(
+.plotCorrelationHeatmap.SE <-  # nolint
+    function(
         object,
         interestingGroups = NULL,
         method = c("pearson", "spearman"),
@@ -147,6 +139,19 @@ setMethod(
             ...
         )
         args <- .pheatmapArgs(args)
+        assert_are_disjoint_sets(
+            x = names(args),
+            y = "scale"
+        )
         do.call(what = pheatmap, args = args)
     }
+
+
+
+#' @rdname plotCorrelationHeatmap
+#' @export
+setMethod(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = .plotCorrelationHeatmap.SE
 )
