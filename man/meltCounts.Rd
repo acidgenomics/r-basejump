@@ -34,8 +34,8 @@ print(x)
 \seealso{
 \code{\link[reshape2:melt]{reshape2::melt()}}.
 
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},

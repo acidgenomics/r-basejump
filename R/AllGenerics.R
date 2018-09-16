@@ -329,7 +329,7 @@ setGeneric(
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setGeneric(
     name = "plotZerosVsDepth",
@@ -461,7 +461,7 @@ setGeneric(
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setGeneric(
     name = "zerosVsDepth",

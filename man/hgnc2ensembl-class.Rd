@@ -3,7 +3,10 @@
 \docType{class}
 \name{hgnc2ensembl-class}
 \alias{hgnc2ensembl-class}
-\title{\code{hgnc2ensembl} Class}
+\title{hgnc2ensembl Class}
+\value{
+\code{hgnc2ensembl}.
+}
 \description{
 HGNC to Ensembl gene ID mappings.
 }
@@ -19,8 +22,11 @@ x <- new(
         row.names = 5L
     )
 )
+print(x)
 }
 \seealso{
+\code{\link[=hgnc2ensembl]{hgnc2ensembl()}}.
+
 Other S4 Classes: \code{\link{PANTHER-class}},
   \code{\link{ensembl2entrez-class}},
   \code{\link{gene2symbol-class}},

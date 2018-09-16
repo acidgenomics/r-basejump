@@ -1,8 +1,8 @@
-#' Percentage of Zeros vs. Library Depth
+#' Plot Percentage of Zeros vs. Library Depth
 #'
 #' Calculate the dropout rate.
 #'
-#' @name zerosVsDepth
+#' @name plotZerosVsDepth
 #' @family Plot Functions
 #' @author Rory Kirchner, Michael Steinbaugh
 #'
@@ -50,7 +50,7 @@ NULL
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setMethod(
     f = "zerosVsDepth",
@@ -60,7 +60,7 @@ setMethod(
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setMethod(
     f = "zerosVsDepth",
@@ -103,7 +103,7 @@ setMethod(
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setMethod(
     f = "plotZerosVsDepth",
@@ -113,7 +113,7 @@ setMethod(
 
 
 
-#' @rdname zerosVsDepth
+#' @rdname plotZerosVsDepth
 #' @export
 setMethod(
     f = "plotZerosVsDepth",

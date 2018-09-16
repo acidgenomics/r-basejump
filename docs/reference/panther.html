@@ -123,12 +123,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Supported organisms:</p><ul>
-<li><p><em>Homo sapiens</em></p></li>
-<li><p><em>Mus musculus</em></p></li>
-<li><p><em>Caenorhabditis elegans</em></p></li>
-<li><p><em>Drosophila melanogaster</em></p></li>
-</ul></td>
+      <td><p><code>string</code>. Supported organisms: <em>Homo sapiens</em>,
+<em>Mus musculus</em>, <em>Caenorhabditis elegans</em>, <em>Drosophila melanogaster</em>.</p></td>
     </tr>
     <tr>
       <th>release</th>
@@ -140,7 +136,7 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>.</p>
+    <p><code>PANTHER</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -149,29 +145,30 @@ release versions available from the FTP server (e.g. <code>"13.0"</code>).</p></
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
   <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
-  <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>invisible</span>(<span class='fu'>capture.output</span>(
     <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>panther</span>(<span class='st'>"Homo sapiens"</span>)
-))</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release)</span></div><div class='output co'>#&gt; <span class='message'>Downloading PTHR13.1_human.gz</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
+))</div><div class='output co'>#&gt; <span class='message'>Downloading PANTHER annotations for Homo sapiens (current_release)</span></div><div class='output co'>#&gt; <span class='message'>Skipping PTHR13.1_human.gz</span></div><div class='output co'>#&gt; <span class='message'>All files have already downloaded</span></div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings</span></div><div class='output co'>#&gt; <span class='message'>Splitting and sorting the GO terms</span></div><div class='output co'>#&gt; <span class='message'>goMF</span></div><div class='output co'>#&gt; <span class='message'>goBP</span></div><div class='output co'>#&gt; <span class='message'>goCC</span></div><div class='output co'>#&gt; <span class='message'>pantherClass</span></div><div class='output co'>#&gt; <span class='message'>pantherPathway</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'PANTHER' [package "basejump"] with 6 slots
 #&gt;   ..@ rownames       : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
 #&gt;   ..@ nrows          : int 19670
 #&gt;   ..@ listData       :List of 9
 #&gt;   .. ..$ geneID              : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-#&gt;   .. ..$ pantherSubfamily    : chr [1:19670] "PTHR19282:SF169" "PTHR14064:SF3" "PTHR43398:SF1" "PTHR12984:SF15" ...
-#&gt;   .. ..$ pantherFamilyName   : chr [1:19670] "TETRASPANIN" "CHONDROMODULIN-RELATED" "FAMILY NOT NAMED" "SCY1-RELATED S/T PROTEIN KINASE-LIKE" ...
-#&gt;   .. ..$ pantherSubfamilyName: chr [1:19670] "TETRASPANIN-6" "TENOMODULIN" "DOLICHOL-PHOSPHATE MANNOSYLTRANSFERASE SUBUNIT 1" "PROTEIN-ASSOCIATING WITH THE CARBOXYL-TERMINAL DOMAIN OF EZRIN" ...
-#&gt;   .. ..$ goMF                :List of 19670
 #&gt;   .. ..$ goBP                :List of 19670
 #&gt;   .. ..$ goCC                :List of 19670
+#&gt;   .. ..$ goMF                :List of 19670
 #&gt;   .. ..$ pantherClass        :List of 19670
+#&gt;   .. ..$ pantherFamilyName   : chr [1:19670] "TETRASPANIN" "CHONDROMODULIN-RELATED" "FAMILY NOT NAMED" "SCY1-RELATED S/T PROTEIN KINASE-LIKE" ...
 #&gt;   .. ..$ pantherPathway      :List of 19670
+#&gt;   .. ..$ pantherSubfamilyID  : chr [1:19670] "PTHR19282:SF169" "PTHR14064:SF3" "PTHR43398:SF1" "PTHR12984:SF15" ...
+#&gt;   .. ..$ pantherSubfamilyName: chr [1:19670] "TETRASPANIN-6" "TENOMODULIN" "DOLICHOL-PHOSPHATE MANNOSYLTRANSFERASE SUBUNIT 1" "PROTEIN-ASSOCIATING WITH THE CARBOXYL-TERMINAL DOMAIN OF EZRIN" ...
 #&gt;   ..@ elementType    : chr "ANY"
 #&gt;   ..@ elementMetadata: NULL
 #&gt;   ..@ metadata       : list()</div></pre>

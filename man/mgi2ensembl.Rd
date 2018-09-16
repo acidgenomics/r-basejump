@@ -2,7 +2,7 @@
 % Please edit documentation in R/mgi2ensembl.R
 \name{mgi2ensembl}
 \alias{mgi2ensembl}
-\title{\code{mgi2ensembl} Generator}
+\title{MGI to Ensembl Gene ID Mappings}
 \usage{
 mgi2ensembl()
 }
@@ -10,7 +10,7 @@ mgi2ensembl()
 \code{mgi2ensembl}.
 }
 \description{
-\code{mgi2ensembl} Generator
+MGI to Ensembl Gene ID Mappings
 }
 \examples{
 x <- mgi2ensembl()
@@ -25,9 +25,10 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{panther}},
+  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
+  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

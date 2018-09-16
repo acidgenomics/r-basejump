@@ -9,7 +9,7 @@
 #'
 #' @inheritParams general
 #'
-#' @seealso [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt)
+#' @seealso [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
 #'
 #' @return `list` containing:
 #'
@@ -63,7 +63,9 @@ eggnog <- function() {
             "euNOG.annotations.tsv.gz",
             sep = "/"
         ),
-        col_names = colnames
+        col_names = colnames,
+        col_types = cols(),
+        progress = FALSE
     )
 
     # NOG: LUCA
@@ -77,7 +79,9 @@ eggnog <- function() {
             "NOG.annotations.tsv.gz",
             sep = "/"
         ),
-        col_names = colnames
+        col_names = colnames,
+        col_types = cols(),
+        progress = FALSE
     )
 
     annotations <- bind_rows(eunog, nog) %>%

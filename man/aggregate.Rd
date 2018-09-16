@@ -31,12 +31,6 @@ aggregateRows(object, ...)
 \S4method{aggregateRows}{sparseMatrix}(object, groupings)
 
 \S4method{aggregateRows}{SummarizedExperiment}(object)
-
-aggregateReplicates(...)
-
-aggregateSamples(...)
-
-aggregateFeatures(...)
 }
 \arguments{
 \item{object}{Object.}
@@ -120,10 +114,14 @@ aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 }
 \seealso{
-Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
-  \code{\link{geometricMean}}, \code{\link{microplate}}
+Other Data Functions: \code{\link{counts}},
+  \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
 }
-\concept{Math and Science Functions}
+\concept{Data Functions}

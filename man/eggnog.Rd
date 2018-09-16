@@ -26,17 +26,18 @@ x <- eggnog()
 print(x)
 }
 \seealso{
-\href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}
+\href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}.
 
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{emptyRanges}},
-  \code{\link{ensembl2entrez}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{panther}},
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

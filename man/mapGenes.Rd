@@ -86,8 +86,8 @@ mapGenesToSymbols(object, genes = geneIDs)
 mapGenesToSymbols(object, genes = geneNames)
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{meltCounts}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},

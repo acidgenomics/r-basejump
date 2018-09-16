@@ -16,7 +16,7 @@
 #' and perform the aggregation.
 #'
 #' @name aggregate
-#' @family Math and Science Functions
+#' @family Data Functions
 #' @author Michael Steinbaugh, Rory Kirchner
 #'
 #' @inheritParams general
@@ -307,18 +307,21 @@ setMethod(
 # Aliases ======================================================================
 # Consider deprecating these in a future release.
 #' @rdname aggregate
+#' @usage NULL
 #' @export
 aggregateReplicates <- function(...) {
     aggregateCols(...)
 }
 
 #' @rdname aggregate
+#' @usage NULL
 #' @export
 aggregateSamples <- function(...) {
     aggregateCols(...)
 }
 
 #' @rdname aggregate
+#' @usage NULL
 #' @export
 aggregateFeatures <- function(...) {
     aggregateRows(...)

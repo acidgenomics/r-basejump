@@ -161,25 +161,23 @@ between the datasets.</p></td>
     <pre class="examples"><div class='input'><span class='co'># For this simple working example, let's duplicate our minimal dataset.</span>
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
-<span class='fu'>validObject</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;         sampleName genotype treatment interestingGroups
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control  wildtype:control
-#&gt; sample2    sample2 knockout   control  knockout:control
-#&gt; sample3    sample3 wildtype   treated  wildtype:treated
-#&gt; sample4    sample4 knockout   treated  knockout:treated</div><div class='input'><span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4 
-#&gt; "sample1" "sample2" "sample3" "sample4" </div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt;         sampleName genotype treatment
+#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1    sample1 wildtype   control
+#&gt; sample2    sample2 knockout   control
+#&gt; sample3    sample3 wildtype   treated
+#&gt; sample4    sample4 knockout   treated</div><div class='input'>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
 <span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>8L</span>))
-<span class='fu'>colData</span>(<span class='no'>y</span>)<span class='kw'>[[</span><span class='st'>"sampleName"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>y</span>)
-<span class='fu'>validObject</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;          sampleName genotype treatment interestingGroups
-#&gt;         &lt;character&gt; &lt;factor&gt;  &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample5     sample5 wildtype   control  wildtype:control
-#&gt; sample6     sample6 knockout   control  knockout:control
-#&gt; sample7     sample7 wildtype   treated  wildtype:treated
-#&gt; sample8     sample8 knockout   treated  knockout:treated</div><div class='input'><span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt;   sample5   sample6   sample7   sample8 
-#&gt; "sample5" "sample6" "sample7" "sample8" </div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>y</span>)<span class='kw'>[[</span><span class='st'>"sampleName"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>y</span>)
+<span class='fu'>colData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt;          sampleName genotype treatment
+#&gt;         &lt;character&gt; &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample5     sample5 wildtype   control
+#&gt; sample6     sample6 knockout   control
+#&gt; sample7     sample7 wildtype   treated
+#&gt; sample8     sample8 knockout   treated</div><div class='input'>
 <span class='co'># Combine two SummarizedExperiment objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 <span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
@@ -190,8 +188,18 @@ between the datasets.</p></td>
 #&gt; rownames(100): gene1 gene10 ... gene98 gene99
 #&gt; rowData names(7): broadClass description ... geneName seqCoordSystem
 #&gt; colnames(8): sample1 sample2 ... sample7 sample8
-#&gt; colData names(3): sampleName genotype treatment</div><div class='input'><span class='fu'><a href='sampleNames.html'>sampleNames</a></span>(<span class='no'>c</span>)</div><div class='output co'>#&gt;   sample1   sample2   sample3   sample4   sample5   sample6   sample7   sample8 
-#&gt; "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7" "sample8" </div></pre>
+#&gt; colData names(3): sampleName genotype treatment</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7"
+#&gt; [8] "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 3 columns
+#&gt;         sampleName genotype treatment
+#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1    sample1 wildtype   control
+#&gt; sample2    sample2 knockout   control
+#&gt; sample3    sample3 wildtype   treated
+#&gt; sample4    sample4 knockout   treated
+#&gt; sample5    sample5 wildtype   control
+#&gt; sample6    sample6 knockout   control
+#&gt; sample7    sample7 wildtype   treated
+#&gt; sample8    sample8 knockout   treated</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -123,17 +123,14 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>organism</th>
-      <td><p><code>string</code>. Supported organisms:</p><ul>
-<li><p><em>Homo sapiens</em></p></li>
-<li><p><em>Mus musculus</em></p></li>
-<li><p><em>Drosophila melanogaster</em></p></li>
-</ul></td>
+      <td><p><code>string</code>. Supported organisms: <em>Homo sapiens</em>,
+<em>Mus musculus</em>, <em>Drosophila melanogaster</em>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>grouped_df</code>, grouped by <code>geneID</code> column.</p>
+    <p><code>grouped_df</code>. Grouped by <code>geneID</code> column.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -147,33 +144,17 @@ Use the wormbase package instead.</p>
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='hgnc2gene.html'>hgnc2gene</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
   <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  `#tax_id` = col_integer(),</span>
-#&gt; <span class='message'>  GeneID = col_integer(),</span>
-#&gt; <span class='message'>  Symbol = col_character(),</span>
-#&gt; <span class='message'>  LocusTag = col_character(),</span>
-#&gt; <span class='message'>  Synonyms = col_character(),</span>
-#&gt; <span class='message'>  dbXrefs = col_character(),</span>
-#&gt; <span class='message'>  chromosome = col_character(),</span>
-#&gt; <span class='message'>  map_location = col_character(),</span>
-#&gt; <span class='message'>  description = col_character(),</span>
-#&gt; <span class='message'>  type_of_gene = col_character(),</span>
-#&gt; <span class='message'>  Symbol_from_nomenclature_authority = col_character(),</span>
-#&gt; <span class='message'>  Full_name_from_nomenclature_authority = col_character(),</span>
-#&gt; <span class='message'>  Nomenclature_status = col_character(),</span>
-#&gt; <span class='message'>  Other_designations = col_character(),</span>
-#&gt; <span class='message'>  Modification_date = col_integer(),</span>
-#&gt; <span class='message'>  Feature_type = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 19,339 x 3
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 19,339 x 3
 #&gt; # Groups:   geneID [19,328]
 #&gt;    geneID         geneName synonyms                                            
 #&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;                                               

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce S4 Object to List — coerceToList • basejump</title>
+<title>Ensembl Gene ID to Entrez ID Mappings — ensembl2entrez • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce S4 Object to List — coerceToList" />
+<meta property="og:title" content="Ensembl Gene ID to Entrez ID Mappings — ensembl2entrez" />
 
-<meta property="og:description" content="Extract the slots inside an S4 object for archival storage." />
+<meta property="og:description" content="Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,21 +106,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce S4 Object to List</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerceToList-methods.R'><code>R/coerceToList-methods.R</code></a></small>
-    <div class="hidden name"><code>coerceToList.Rd</code></div>
+    <h1>Ensembl Gene ID to Entrez ID Mappings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/ensembl2entrez.R'><code>R/ensembl2entrez.R</code></a></small>
+    <div class="hidden name"><code>ensembl2entrez.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract the slots inside an S4 object for archival storage.</p>
+    <p>Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>coerceToList</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ensembl2entrez</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>coerceToList</span>(<span class='no'>object</span>)</pre>
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>ensembl2entrez</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,13 +138,39 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>list</code>.</p>
+    <p><code>ensembl2entrez</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
+  <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
+  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
+  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
+  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
+  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
+  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
+  <code><a href='panther.html'>panther</a></code>,
+  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>coerceToList</span>(<span class='no'>rse_small</span>)
-<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
-#&gt; [5] "elementMetadata" "metadata"       </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>ensembl2entrez</span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ensembl2entrez with 99 rows and 2 columns
+#&gt;                          geneID  entrezID
+#&gt;                     &lt;character&gt; &lt;integer&gt;
+#&gt; ENSG00000000003 ENSG00000000003      7105
+#&gt; ENSG00000000005 ENSG00000000005     64102
+#&gt; ENSG00000000419 ENSG00000000419      8813
+#&gt; ENSG00000000457 ENSG00000000457     57147
+#&gt; ENSG00000000460 ENSG00000000460     55732
+#&gt; ...                         ...       ...
+#&gt; ENSG00000005421 ENSG00000005421      5444
+#&gt; ENSG00000005436 ENSG00000005436      6936
+#&gt; ENSG00000005448 ENSG00000005448     84058
+#&gt; ENSG00000005469 ENSG00000005469     54677
+#&gt; ENSG00000005471 ENSG00000005471      5244</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -150,6 +178,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -97,14 +97,14 @@ For gene and transcript annotations, a \code{broadClass} column is added, which
 generalizes the gene types into a smaller number of semantically-meaningful
 groups:
 \itemize{
-\item \code{coding}
-\item \code{noncoding}
-\item \code{pseudo}
-\item \code{small}
-\item \code{decaying}
-\item \code{ig} (immunoglobulin)
-\item \code{tcr} (T cell receptor)
-\item \code{other}
+\item \code{coding}.
+\item \code{noncoding}.
+\item \code{pseudo}.
+\item \code{small}.
+\item \code{decaying}.
+\item \code{ig} (immunoglobulin).
+\item \code{tcr} (T cell receptor).
+\item \code{other}.
 }
 }
 
@@ -112,8 +112,8 @@ groups:
 
 
 \code{\link[=annotable]{annotable()}} is a legacy convenience function that calls
-\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{data.frame} instead of \code{GRanges}.
-Note that \code{GRanges} also support coercion to a basic \code{data.frame} using
+\code{\link[=makeGRangesFromEnsembl]{makeGRangesFromEnsembl()}} and returns a \code{tibble} instead of \code{GRanges}. Note
+that \code{GRanges} also support coercion to a basic \code{data.frame} using
 \code{\link[=as.data.frame]{as.data.frame()}}.
 }
 
@@ -161,7 +161,8 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
+  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
+  \code{\link{hgnc2ensembl}},
   \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
   \code{\link{mgi2ensembl}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}

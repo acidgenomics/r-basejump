@@ -171,6 +171,7 @@ Collate:
     'plotHeatmap-methods.R'
     'plotQC-methods.R'
     'plotQuantileHeatmap-methods.R'
+    'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
     'printString.R'
     'readGFF.R'
@@ -195,4 +196,3 @@ Collate:
     'tx2gene-methods.R'
     'uniteInterestingGroups-methods.R'
     'writeCounts.R'
-    'zerosVsDepth-methods.R'

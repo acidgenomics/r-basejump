@@ -128,12 +128,6 @@ Useful for describing non-normal (i.e. geometric) distributions.</p>
 <span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
 
 <span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
-
-<span class='co'># S4 method for data.frame</span>
-<span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)
-
-<span class='co'># S4 method for DataFrame</span>
 <span class='fu'>geometricMean</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -179,8 +173,7 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 
     <div class='dont-index'><p>Modified version of <code><a href='http://www.rdocumentation.org/packages/psych/topics/geometric.mean'>psych::geometric.mean()</a></code> and Paul McMurdie's
 <a href='https://stackoverflow.com/a/25555105'>code</a>.</p>
-<p>Other Math and Science Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
-  <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
+<p>Other Math and Science Functions: <code><a href='logRatio.html'>foldChangeToLogRatio</a></code>,
   <code><a href='microplate.html'>microplate</a></code></p></div>
     
 
@@ -210,18 +203,7 @@ not particularly useful if there are elements that are &lt;= 0 and will return
 #&gt; [2,] 2  4
 #&gt; [3,] 3  9
 #&gt; [4,] 4 16
-#&gt; [5,] 5 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div><div class='input'>
-<span class='co'># DataFrame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>print</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; DataFrame with 5 rows and 2 columns
-#&gt;          V1        V2
-#&gt;   &lt;numeric&gt; &lt;numeric&gt;
-#&gt; 1         1         1
-#&gt; 2         2         4
-#&gt; 3         3         9
-#&gt; 4         4        16
-#&gt; 5         5        25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;       V1       V2 
-#&gt; 2.605171 6.786916 </div></pre>
+#&gt; [5,] 5 25</div><div class='input'><span class='fu'>geometricMean</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] 2.605171 6.786916</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

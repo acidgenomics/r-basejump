@@ -45,8 +45,8 @@ Modified variants of:
 \item \code{gtools::logratio2foldchange()}.
 }
 
-Other Math and Science Functions: \code{\link{aggregateCols}},
-  \code{\link{geometricMean}}, \code{\link{microplate}}
+Other Math and Science Functions: \code{\link{geometricMean}},
+  \code{\link{microplate}}
 }
 \author{
 Michael Steinbaugh

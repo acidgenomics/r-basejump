@@ -5,11 +5,8 @@
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
-#' @param organism `string`. Supported organisms:
-#'   - *Homo sapiens*
-#'   - *Mus musculus*
-#'   - *Caenorhabditis elegans*
-#'   - *Drosophila melanogaster*
+#' @param organism `string`. Supported organisms: *Homo sapiens*,
+#'   *Mus musculus*, *Caenorhabditis elegans*, *Drosophila melanogaster*.
 #' @param release `string` or `NULL`. PANTHER release version. If set `NULL`,
 #'   defaults to current release. Consult the PANTHER website for a list of
 #'   release versions available from the FTP server (e.g. `"13.0"`).
@@ -219,7 +216,8 @@ panther <- function(
             "pantherClass",
             "pantherPathway"
         ),
-        col_types = cols()
+        col_types = cols(),
+        progress = FALSE
     ) %>%
         separate(
             col = "pantherID",

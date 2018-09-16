@@ -62,4 +62,4 @@ markdownHeader <- function(
 
 #' @rdname markdownHeader
 #' @export
-markdownHeader -> mdHeader
+mdHeader <- markdownHeader

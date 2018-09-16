@@ -9,10 +9,8 @@
 #' @family Annotation Functions
 #' @export
 #'
-#' @param organism `string`. Supported organisms:
-#'   - *Homo sapiens*
-#'   - *Mus musculus*
-#'   - *Drosophila melanogaster*
+#' @param organism `string`. Supported organisms: *Homo sapiens*,
+#'   *Mus musculus*, *Drosophila melanogaster*.
 #'
 #' @return `grouped_df`. Grouped by `geneID` column.
 #'
@@ -45,7 +43,9 @@ geneSynonyms <- function(organism) {
             genome[["kingdom"]],
             paste0(genome[["species"]], ".gene_info.gz"),
             sep = "/"
-        )
+        ),
+        col_types = cols(),
+        progress = FALSE
     )
     assert_is_non_empty(data)
 

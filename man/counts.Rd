@@ -23,7 +23,7 @@ x <- counts(rse_small)
 summary(x)
 }
 \seealso{
-Other Data Functions: \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metrics}}, \code{\link{sampleData}},

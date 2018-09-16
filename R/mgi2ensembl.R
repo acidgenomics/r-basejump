@@ -1,4 +1,4 @@
-#' `mgi2ensembl` Generator
+#' MGI to Ensembl Gene ID Mappings
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
@@ -27,7 +27,8 @@ mgi2ensembl <- function() {
         col_names = FALSE,
         # Suppress the column messages.
         col_types = cols(),
-        skip = 1L
+        skip = 1L,
+        progress = FALSE
     )
     data <- as(data[, c(1L, 11L)], "DataFrame")
     colnames(data) <- c("mgiID", "geneID")

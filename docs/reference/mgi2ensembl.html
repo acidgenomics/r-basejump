@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HGNC to Ensembl Gene ID Mappings — hgnc2gene • basejump</title>
+<title>MGI to Ensembl Gene ID Mappings — mgi2ensembl • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="HGNC to Ensembl Gene ID Mappings — hgnc2gene" />
+<meta property="og:title" content="MGI to Ensembl Gene ID Mappings — mgi2ensembl" />
 
-<meta property="og:description" content="HGNC to Ensembl Gene ID Mappings" />
+<meta property="og:description" content="MGI to Ensembl Gene ID Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,52 +105,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>HGNC to Ensembl Gene ID Mappings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/hgnc2gene.R'><code>R/hgnc2gene.R</code></a></small>
-    <div class="hidden name"><code>hgnc2gene.Rd</code></div>
+    <h1>MGI to Ensembl Gene ID Mappings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/mgi2ensembl.R'><code>R/mgi2ensembl.R</code></a></small>
+    <div class="hidden name"><code>mgi2ensembl.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>HGNC to Ensembl Gene ID Mappings</p>
+    <p>MGI to Ensembl Gene ID Mappings</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>hgnc2gene</span>()</pre>
+    <pre class="usage"><span class='fu'>mgi2ensembl</span>()</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>.</p>
+    <p><code>mgi2ensembl</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
+    <div class='dont-index'><p><code>mgi2ensembl-class</code>.</p>
+<p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>hgnc2gene</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining HGNC to Ensembl gene ID mappings</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 37589 rows and 2 columns
-#&gt;          hgncID          geneID
-#&gt;       &lt;integer&gt;     &lt;character&gt;
-#&gt; 5             5 ENSG00000121410
-#&gt; 7             7 ENSG00000175899
-#&gt; 8             8 ENSG00000256069
-#&gt; 15           15 ENSG00000253937
-#&gt; 16           16 ENSG00000196136
-#&gt; ...         ...             ...
-#&gt; 53980     53980 ENSG00000278499
-#&gt; 53981     53981 ENSG00000279457
-#&gt; 53982     53982 ENSG00000282886
-#&gt; 53985     53985 ENSG00000255105
-#&gt; 53986     53986 ENSG00000233576</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>mgi2ensembl</span>()</div><div class='output co'>#&gt; <span class='message'>Obtaining MGI to Ensembl gene ID mappings</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; mgi2ensembl with 63434 rows and 2 columns
+#&gt;             mgiID             geneID
+#&gt;         &lt;integer&gt;        &lt;character&gt;
+#&gt; 87853       87853 ENSMUSG00000027596
+#&gt; 87854       87854 ENSMUSG00000030359
+#&gt; 87859       87859 ENSMUSG00000026842
+#&gt; 87860       87860 ENSMUSG00000026596
+#&gt; 87862       87862 ENSMUSG00000066583
+#&gt; ...           ...                ...
+#&gt; 6155258   6155258 ENSMUSG00000116234
+#&gt; 6155259   6155259 ENSMUSG00000116292
+#&gt; 6155260   6155260 ENSMUSG00000116243
+#&gt; 6155262   6155262 ENSMUSG00000116433
+#&gt; 6155264   6155264 ENSMUSG00000116441</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

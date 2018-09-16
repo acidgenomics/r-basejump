@@ -15,7 +15,7 @@
 #' @return `string`.
 #'
 #' @examples
-#' cat(separator())
+#' cat(separator(times = 10L))
 separator <- function(
     sep = c("\u2500", "=", "-", "+"),
     times = min(c(getOption("width", 72L), 72L))

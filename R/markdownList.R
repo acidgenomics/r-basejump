@@ -58,4 +58,4 @@ markdownList <- function(
 
 #' @rdname markdownList
 #' @export
-markdownList -> mdList
+mdList <- markdownList

@@ -2,7 +2,7 @@
 % Please edit documentation in R/hgnc2ensembl.R
 \name{hgnc2ensembl}
 \alias{hgnc2ensembl}
-\title{\code{hgnc2ensembl} Generator}
+\title{HGNC to Ensembl Gene ID Mappings.}
 \usage{
 hgnc2ensembl()
 }
@@ -10,24 +10,23 @@ hgnc2ensembl()
 \code{hgnc2ensembl}.
 }
 \description{
-\code{hgnc2ensembl} Generator
+HGNC to Ensembl Gene ID Mappings.
 }
 \examples{
 x <- hgnc2ensembl()
 print(x)
 }
 \seealso{
-\code{hgnc2ensembl-class}.
-
 Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{panther}},
+  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

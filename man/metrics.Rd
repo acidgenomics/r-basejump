@@ -32,8 +32,8 @@ x <- metrics(rse_small)
 glimpse(x)
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},

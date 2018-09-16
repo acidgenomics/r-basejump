@@ -3,7 +3,7 @@
 \docType{class}
 \name{tx2gene-class}
 \alias{tx2gene-class}
-\title{\code{tx2gene} Class}
+\title{tx2gene Class}
 \value{
 \code{tx2gene}.
 }
@@ -25,6 +25,11 @@ x <- new(
 print(x)
 }
 \seealso{
+\itemize{
+\item \link{makeTx2gene}.
+\item \code{\link[=tx2gene]{tx2gene()}}.
+}
+
 Other S4 Classes: \code{\link{PANTHER-class}},
   \code{\link{ensembl2entrez-class}},
   \code{\link{gene2symbol-class}},

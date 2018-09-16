@@ -7,12 +7,8 @@
 geneSynonyms(organism)
 }
 \arguments{
-\item{organism}{\code{string}. Supported organisms:
-\itemize{
-\item \emph{Homo sapiens}
-\item \emph{Mus musculus}
-\item \emph{Drosophila melanogaster}
-}}
+\item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
+\emph{Mus musculus}, \emph{Drosophila melanogaster}.}
 }
 \value{
 \code{grouped_df}. Grouped by \code{geneID} column.
@@ -35,9 +31,10 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{panther}},
+  \code{\link{gene2symbol}}, \code{\link{hgnc2ensembl}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

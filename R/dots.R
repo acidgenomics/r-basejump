@@ -8,16 +8,16 @@
 #' @param character `boolean`. Return dots (`...`) as `character`.
 #'
 #' @return
-#' - "`character = FALSE`": `list` containing objects as names. Can return
-#'   object from the stored `name` class with [eval()].
-#' - "`character = TRUE`": `character` containing the dot names.
+#' - "`character = FALSE`": `list`. Objects as `name` class. Can return the
+#'   object from the `name` with [eval()].
+#' - "`character = TRUE`": `character`. Names of the dots.
 #'
 #' @seealso
 #' - `help("dotsMethods", "methods")`.
-#' - [tidyverse](http://tidyverse.org) code:
-#'   [rlang](http://rlang.tidyverse.org)
-#'   [dplyr utils](https://goo.gl/fhAuak),
-#'   [devtools infrastructure](https://goo.gl/bM5TrP).
+#' - [tidyverse](http://tidyverse.org) documentation:
+#'   - [rlang](http://rlang.tidyverse.org).
+#'   - [dplyr utils](https://goo.gl/fhAuak).
+#'   - [devtools infrastructure](https://goo.gl/bM5TrP).
 #'
 #' @examples
 #' dots(a, b, c, character = FALSE)

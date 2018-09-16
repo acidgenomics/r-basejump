@@ -3,14 +3,16 @@
 \docType{class}
 \name{PANTHER-class}
 \alias{PANTHER-class}
-\title{\code{PANTHER} Class}
+\title{PANTHER Class}
 \value{
-\code{PANTHER}
+\code{PANTHER}.
 }
 \description{
 PANTHER Gene Ontology definitions.
 }
 \seealso{
+\code{\link[=panther]{panther()}}.
+
 Other S4 Classes: \code{\link{ensembl2entrez-class}},
   \code{\link{gene2symbol-class}},
   \code{\link{hgnc2ensembl-class}},

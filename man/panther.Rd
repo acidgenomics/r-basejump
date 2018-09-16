@@ -7,13 +7,8 @@
 panther(organism, release = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Supported organisms:
-\itemize{
-\item \emph{Homo sapiens}
-\item \emph{Mus musculus}
-\item \emph{Caenorhabditis elegans}
-\item \emph{Drosophila melanogaster}
-}}
+\item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
+\emph{Mus musculus}, \emph{Caenorhabditis elegans}, \emph{Drosophila melanogaster}.}
 
 \item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of
@@ -38,9 +33,10 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
+  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
+  \code{\link{mgi2ensembl}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
