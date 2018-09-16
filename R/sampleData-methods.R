@@ -29,12 +29,8 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleData",
-    signature = signature("SummarizedExperiment"),
-    definition = function(object) {
+.sampleData.SE <-  # nolint
+    function(object) {
         validObject(object)
         # Require `sampleName` column to be defined.
         assert_is_subset(
@@ -48,6 +44,32 @@ setMethod(
         }
         data
     }
+
+
+
+`.sampleData<-.SE` <-  # nolint
+    function(object, value) {
+        # Don't allow the user to set `interestingGroups` column manually.
+        value[["interestingGroups"]] <- NULL
+        # Check for blacklisted columns.
+        assert_are_disjoint_sets(
+            colnames(value),
+            c("rowname", "sampleID")
+        )
+        # Now safe to assign.
+        colData(object) <- value
+        validObject(object)
+        object
+    }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = .sampleData.SE
 )
 
 
@@ -60,20 +82,5 @@ setMethod(
         object = "SummarizedExperiment",
         value = "DataFrame"
     ),
-    definition = function(object, value) {
-        # Don't allow the user to set `interestingGroups` column manually.
-        value[["interestingGroups"]] <- NULL
-        # Check for blacklisted columns.
-        assert_are_disjoint_sets(
-            colnames(value),
-            c(
-                "rowname",
-                "sampleID"
-            )
-        )
-        # Now safe to assign.
-        colData(object) <- value
-        validObject(object)
-        object
-    }
+    definition = `.sampleData<-.SE`
 )
