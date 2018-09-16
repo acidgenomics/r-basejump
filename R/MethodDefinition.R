@@ -19,8 +19,7 @@
 #'
 #' # Formals
 #' x <- methodFormals(f = "geometricMean", signature = "numeric")
-#' class(x)
-#' names(x)
+#' print(x)
 NULL
 
 
