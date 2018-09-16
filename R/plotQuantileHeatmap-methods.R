@@ -1,7 +1,3 @@
-# TODO Make sure we're stopping if user passes in `scale` argument.
-
-
-
 #' Plot Heatmap with Quantile Breaks
 #'
 #' @name plotQuantileHeatmap
