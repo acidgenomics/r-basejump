@@ -62,9 +62,10 @@ The [basejump][] package defines generics and methods for object-oriented progra
 
 Here's the current list of S4 generics exported by the package:
 
-```{r}
+```{r, include=FALSE}
 generics <- getGenerics(asNamespace("basejump"))
-markdownList(generics@.Data)
+links <- paste0("`", slot(generics, ".Data"), "()`")
+markdownList(links)
 ```
 
 In [R][], you can check whether a function is using the S4 object system with the `base::isS4()` function. Additionally, `methods::showMethods()` and `methods::getMethod()`. In contrast, to obtain information on functions using the [S3][] object system, use `utils::methods()` instead.
@@ -152,9 +153,9 @@ summary(grch37)
 GenomeInfoDb::seqinfo(grch37)
 ```
 
-### Data frame return
+### `tibble` return
 
-For convenience, if you prefer to return annotations as a `data.frame` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function but automatically coerces the return to a standard `data.frame`, with the identifiers as the row names. For quick access to current [Ensembl][] annotations in `tibble` format, we also recommend the [annotables][] package.
+For convenience, if you prefer to return annotations as a `tibble` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function and then automatically coerces the return to a `tibble` using our `as(object, Class = "tbl_df")` coercion method. For quick access to current [Ensembl][] annotations in `tibble` format, we also recommend the [annotables][] package.
 
 ```{r, message=FALSE}
 genes <- annotable("Homo sapiens")
@@ -163,7 +164,7 @@ transcripts <- annotable("Homo sapiens")
 glimpse(transcripts)
 ```
 
-Note that `GRanges` objects can also be coerced to a `data.frame` using the `as.data.frame()` coercion method.
+Note that `GRanges` objects can be coerced to a standard `data.frame` using the `as.data.frame()` coercion method.
 
 ```{r}
 grch38 %>% as.data.frame() %>% glimpse()
@@ -250,9 +251,9 @@ To convert from transcript- to gene-level easily, the `convertTranscriptsToGenes
 
 In addition to interfacing with [Ensembl][], [basejump][] exports a number of utility functions to interface with other genomic databases, including:
 
+- [EggNOG][] [@Huerta-Cepas2016-ql].
 - [HGNC][] [@Yates2017-fq].
 - [MGI][] [@Smith2018-ds].
-- [EggNOG][] [@Huerta-Cepas2016-ql].
 - [PANTHER][] [@Mi2017-jl].
 
 ### HGNC
