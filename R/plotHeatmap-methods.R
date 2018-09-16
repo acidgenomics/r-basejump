@@ -41,7 +41,7 @@
 #' - [pheatmap::pheatmap()].
 #' - [RColorBrewer::brewer.pal()].
 #'
-#' @return Show heatmap and invisibly return a `list` of the components.
+#' @return `pheatmap`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
@@ -68,12 +68,8 @@ NULL
 
 
 
-#' @rdname plotHeatmap
-#' @export
-setMethod(
-    f = "plotHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = function(
+.plotHeatmap.SE <-  # nolint
+    function(
         object,
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
@@ -181,4 +177,13 @@ setMethod(
         args <- .pheatmapArgs(args)
         do.call(what = pheatmap, args = args)
     }
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = .plotHeatmap.SE
 )
