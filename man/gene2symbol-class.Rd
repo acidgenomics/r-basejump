@@ -15,7 +15,7 @@ Contains a \code{DataFrame} with \code{geneID} and \code{geneName} columns.
 }
 \examples{
 x <- new(
-    "gene2symbol",
+    Class = "gene2symbol",
     DataFrame(
         geneID = "ENSG00000000003",
         geneName = "TSPAN6",

@@ -10,6 +10,16 @@ HGNC to Ensembl gene ID mappings.
 \details{
 Contains a \code{DataFrame} with \code{hgncID} and \code{geneID} columns.
 }
+\examples{
+x <- new(
+    Class = "hgnc2ensembl",
+    DataFrame(
+        hgncID = 5L,
+        geneID = "ENSG00000121410",
+        row.names = 5L
+    )
+)
+}
 \seealso{
 Other S4 Classes: \code{\link{PANTHER-class}},
   \code{\link{ensembl2entrez-class}},
