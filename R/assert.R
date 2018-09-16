@@ -447,7 +447,7 @@ hasRownames <- function(object) {
         # Check for numeric rownames that match rows.
         FALSE
     } else {
-        assertive::has_rownames(object)
+        has_rownames(object)
     }
 }
 
