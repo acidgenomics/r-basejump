@@ -7,7 +7,6 @@
 \alias{checkTx2gene}
 \alias{assertFormalHeaderLevel}
 \alias{assertFormalColorFunction}
-\alias{initializeDir}
 \alias{assertIsAnnotable}
 \alias{ensembl}
 \alias{gene2symbolFromGFF}
@@ -38,8 +37,6 @@ checkTx2gene(...)
 assertFormalHeaderLevel(...)
 
 assertFormalColorFunction(...)
-
-initializeDir(...)
 
 assertIsAnnotable(...)
 
