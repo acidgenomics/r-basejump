@@ -30,8 +30,7 @@ class(x)
 
 # Formals
 x <- methodFormals(f = "geometricMean", signature = "numeric")
-class(x)
-names(x)
+print(x)
 }
 \seealso{
 Modified version of \href{https://goo.gl/ymX571}{John Chambers' code}.

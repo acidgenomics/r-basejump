@@ -7,6 +7,10 @@
 \title{Markdown Header}
 \usage{
 markdownHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
+
+mdHeader(text, level = 2L, tabset = FALSE, asis = FALSE)
+
+mdLink(text, url, title = NULL)
 }
 \arguments{
 \item{text}{\code{string}. Header text.}

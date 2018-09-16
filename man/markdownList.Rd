@@ -6,6 +6,8 @@
 \title{Markdown List}
 \usage{
 markdownList(text, ordered = FALSE, asis = FALSE)
+
+mdList(text, ordered = FALSE, asis = FALSE)
 }
 \arguments{
 \item{text}{\code{string}. Header text.}
