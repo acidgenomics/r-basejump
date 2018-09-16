@@ -23,7 +23,7 @@ Bioconductor HTML vignettes don't render correctly when printing > 76
 characters, even though the default width is set at 80.
 }
 \examples{
-cat(separator())
+cat(separator(times = 10L))
 }
 \seealso{
 Other Developer Functions: \code{\link{MethodDefinition}},

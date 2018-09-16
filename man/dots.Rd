@@ -13,9 +13,9 @@ dots(..., character = FALSE)
 }
 \value{
 \itemize{
-\item "\code{character = FALSE}": \code{list} containing objects as names. Can return
-object from the stored \code{name} class with \code{\link[=eval]{eval()}}.
-\item "\code{character = TRUE}": \code{character} containing the dot names.
+\item "\code{character = FALSE}": \code{list}. Objects as \code{name} class. Can return the
+object from the \code{name} with \code{\link[=eval]{eval()}}.
+\item "\code{character = TRUE}": \code{character}. Names of the dots.
 }
 }
 \description{
@@ -28,10 +28,12 @@ dots(a, b, c, character = TRUE)
 \seealso{
 \itemize{
 \item \code{help("dotsMethods", "methods")}.
-\item \href{http://tidyverse.org}{tidyverse} code:
-\href{http://rlang.tidyverse.org}{rlang}
-\href{https://goo.gl/fhAuak}{dplyr utils},
-\href{https://goo.gl/bM5TrP}{devtools infrastructure}.
+\item \href{http://tidyverse.org}{tidyverse} documentation:
+\itemize{
+\item \href{http://rlang.tidyverse.org}{rlang}.
+\item \href{https://goo.gl/fhAuak}{dplyr utils}.
+\item \href{https://goo.gl/bM5TrP}{devtools infrastructure}.
+}
 }
 
 Other Developer Functions: \code{\link{MethodDefinition}},

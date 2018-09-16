@@ -16,19 +16,19 @@ tx2gene(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{DataFrame}.
+\code{tx2gene}.
 }
 \description{
 Transcript-to-Gene Mappings
 }
 \examples{
 # SummarizedExperiment ====
-x <- tx2gene(tx_rse_small)
+x <- tx2gene(tx_se_small)
 print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metrics}}, \code{\link{sampleData}},

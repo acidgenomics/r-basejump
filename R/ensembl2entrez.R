@@ -1,7 +1,7 @@
-#' `ensembl2entrez` Generator
+#' Ensembl Gene ID to Entrez ID Mappings
 #'
-#' 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest Entrez ID
-#' if there are multiple identifiers that map to an Ensembl gene ID.
+#' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+#' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
 #' @name ensembl2entrez
 #' @family Annotation Functions

@@ -1,12 +1,10 @@
-#' `hgnc2ensembl` Generator
+#' HGNC to Ensembl Gene ID Mappings.
 #'
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @return `hgnc2ensembl`.
-#'
-#' @seealso `hgnc2ensembl-class`.
 #'
 #' @examples
 #' x <- hgnc2ensembl()
@@ -26,7 +24,8 @@ hgnc2ensembl <- function() {
             sep = "/"
         ),
         # Suppress the column messages.
-        col_types = cols()
+        col_types = cols(),
+        progress = FALSE
     )
     data <- as(data, "tbl_df")
     data <- camel(data)

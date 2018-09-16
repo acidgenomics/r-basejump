@@ -26,14 +26,14 @@ Object of new class.
 \description{
 Methods for Coercing an Object to a Class
 }
-\section{\code{tbl_df} (tibble)}{
+\section{tibble}{
 
 
-Coerce an object to a \code{tibble} using \code{as(object, Class = "tbl_df")}. Tibbles
-don't support rowname assignment, so here we are ensuring they are kept by
-moving them to a column named \code{rowname} upon coercion. This helps avoid
-downstream unexpected data loss when using the dplyr chain of single table
-verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+Coerce an object to a \code{tibble} (\code{tbl_df}) using \code{as(object, Class = "tbl_df")}. Tibbles don't support rowname assignment, so here we are ensuring
+they are kept by moving them to a column named \code{rowname} upon coercion. This
+helps avoid downstream unexpected data loss when using the dplyr chain of
+single table verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or
+\code{\link[dplyr:mutate]{dplyr::mutate()}}.
 
 Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
 \code{as(tbl_df, Class = "DataFrame")} method looks for the "rowname" column and
@@ -41,7 +41,7 @@ will attempt to move it back to \code{\link[=rownames]{rownames()}} automaticall
 duplicates present.
 }
 
-\section{\code{list}}{
+\section{list}{
 
 
 It is often useful to coerce an S4 object to a flat \code{list} for archival

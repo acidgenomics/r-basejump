@@ -3,15 +3,16 @@
 \docType{class}
 \name{ensembl2entrez-class}
 \alias{ensembl2entrez-class}
-\title{\code{ensembl2entrez} Class}
+\title{ensembl2entrez Class}
 \value{
 \code{ensembl2entrez}.
 }
 \description{
-Ensembl gene ID to Entrez ID mappings. Requires 1:1 mappings.
+Ensembl gene ID to Entrez ID mappings.
 }
 \details{
-Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns.
+Contains a \code{DataFrame} with \code{geneID} and \code{entrezID} columns. Requires 1:1
+mappings.
 }
 \examples{
 x <- new(
@@ -25,6 +26,8 @@ x <- new(
 print(x)
 }
 \seealso{
+\code{\link[=ensembl2entrez]{ensembl2entrez()}}.
+
 Other S4 Classes: \code{\link{PANTHER-class}},
   \code{\link{gene2symbol-class}},
   \code{\link{hgnc2ensembl-class}},

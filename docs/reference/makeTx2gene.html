@@ -118,7 +118,9 @@
 
     <pre class="usage"><span class='fu'>makeTx2geneFromEnsembl</span>(<span class='no'>organism</span>, <span class='kw'>build</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>release</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>file</span>)</pre>
+<span class='fu'>makeTx2geneFromGFF</span>(<span class='no'>file</span>)
+
+<span class='fu'>makeTx2geneFromGTF</span>(<span class='no'>file</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,7 +147,12 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>.</p>
+    <p><code>tx2gene</code>.</p>
+    
+    <h2 class="hasAnchor" id="gff-gtf-file"><a class="anchor" href="#gff-gtf-file"></a>GFF/GTF file</h2>
+
+    
+    <p>Remote URLs and compressed files are supported.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -155,9 +162,10 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
-  <code><a href='hgnc2gene.html'>hgnc2gene</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
-  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='mgi2gene.html'>mgi2gene</a></code>,
+  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
@@ -168,7 +176,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
 #&gt; <span class='message'>organism: "Homo sapiens"</span>
 #&gt; <span class='message'>build: "GRCh38"</span>
 #&gt; <span class='message'>release: "92"</span>
-#&gt; <span class='message'>format: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 225358 transcripts, 65256 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; tx2gene with 225358 rows and 2 columns
+#&gt; <span class='message'>level: "transcripts"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, transcriptBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by transcriptID</span></div><div class='output co'>#&gt; <span class='message'>tx2gene mappings: 225358 transcripts, 65256 genes</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; tx2gene with 225358 rows and 2 columns
 #&gt;                    transcriptID          geneID
 #&gt;                     &lt;character&gt;     &lt;character&gt;
 #&gt; ENST00000000233 ENST00000000233 ENSG00000004059
@@ -220,6 +228,8 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#gff-gtf-file">GFF/GTF file</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

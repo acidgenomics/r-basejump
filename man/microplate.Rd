@@ -35,8 +35,7 @@ microplate(wells = 384L)
 microplate(plates = 2L, wells = 96L, controls = 6L)
 }
 \seealso{
-Other Math and Science Functions: \code{\link{aggregateCols}},
-  \code{\link{foldChangeToLogRatio}},
+Other Math and Science Functions: \code{\link{foldChangeToLogRatio}},
   \code{\link{geometricMean}}
 }
 \author{

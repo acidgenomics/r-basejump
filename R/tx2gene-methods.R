@@ -7,11 +7,11 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame`.
+#' @return `tx2gene`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' x <- tx2gene(tx_rse_small)
+#' x <- tx2gene(tx_se_small)
 #' print(x)
 NULL
 

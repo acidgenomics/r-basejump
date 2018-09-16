@@ -49,20 +49,20 @@
 #' generalizes the gene types into a smaller number of semantically-meaningful
 #' groups:
 #'
-#'   - `coding`
-#'   - `noncoding`
-#'   - `pseudo`
-#'   - `small`
-#'   - `decaying`
-#'   - `ig` (immunoglobulin)
-#'   - `tcr` (T cell receptor)
-#'   - `other`
+#'   - `coding`.
+#'   - `noncoding`.
+#'   - `pseudo`.
+#'   - `small`.
+#'   - `decaying`.
+#'   - `ig` (immunoglobulin).
+#'   - `tcr` (T cell receptor).
+#'   - `other`.
 #'
 #' @section annotable:
 #'
 #' [annotable()] is a legacy convenience function that calls
-#' [makeGRangesFromEnsembl()] and returns a `data.frame` instead of `GRanges`.
-#' Note that `GRanges` also support coercion to a basic `data.frame` using
+#' [makeGRangesFromEnsembl()] and returns a `tibble` instead of `GRanges`. Note
+#' that `GRanges` also support coercion to a basic `data.frame` using
 #' [as.data.frame()].
 #'
 #' @inheritParams general

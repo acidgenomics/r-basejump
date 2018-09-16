@@ -106,7 +106,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Methods for Coercing an Object to a Class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerce-methods.R'><code>R/coerce-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerce-methods.R'><code>R/coerce-methods.R</code></a></small>
     <div class="hidden name"><code>coerce.Rd</code></div>
     </div>
 
@@ -116,6 +116,13 @@
     
     </div>
 
+    <pre class="usage"><span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>as.list</span>(<span class='no'>x</span>)</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -124,28 +131,38 @@
     <h2 class="hasAnchor" id="tibble"><a class="anchor" href="#tibble"></a>tibble</h2>
 
     
-    <p>Coerce an object to a <code>tibble</code> using <code>as(object, Class = "tbl_df")</code>. Tibbles
-don't support rowname assignment, so here we are ensuring they are kept by
-moving them to a column named <code>rowname</code> upon coercion. This helps avoid
-downstream unexpected data loss when using the dplyr chain of single table
-verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
+    <p>Coerce an object to a <code>tibble</code> (<code>tbl_df</code>) using <code>as(object, Class = "tbl_df")</code>. Tibbles don't support rowname assignment, so here we are ensuring
+they are kept by moving them to a column named <code>rowname</code> upon coercion. This
+helps avoid downstream unexpected data loss when using the dplyr chain of
+single table verbs, such as <code><a href='http://dplyr.tidyverse.org/reference/arrange.html'>dplyr::arrange()</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, or
+<code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>.</p>
 <p>Conversely, when coercing a <code>tibble</code> back to an S4 <code>DataFrame</code>, our
 <code>as(tbl_df, Class = "DataFrame")</code> method looks for the "rowname" column and
 will attempt to move it back to <code>rownames()</code> automatically, unless there are
 duplicates present.</p>
+    
+    <h2 class="hasAnchor" id="list"><a class="anchor" href="#list"></a>list</h2>
+
+    
+    <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
+storage. Here we are providing the <code>coerceS4ToList()</code> generic, which
+consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
+here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
+returning the slots as a <code>list</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><ul>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/as'>methods::as()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/methods/topics/canCoerce'>methods::canCoerce()</a></code>.</p></li>
-<li><p><code><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble::tibble()</a></code>.</p></li>
+<li><p><code>S4Vectors::as.list()</code>.</p></li>
+<li><p><code><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble::tibble()</a></code>, <code><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>tibble::as_tibble()</a></code>.</p></li>
 </ul></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># DataFrame to tbl_df ====</span>
-<span class='co'># Automatically move rownames to `rowname` column</span>
+<span class='co'># Automatically move row names to `rowname` column.</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>colData</span>(<span class='no'>rse_small</span>)
 <span class='fu'>class</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "DataFrame"
 #&gt; attr(,"package")
@@ -158,11 +175,15 @@ duplicates present.</p>
 #&gt; 2 sample2 sample2    knockout control  
 #&gt; 3 sample3 sample3    wildtype treated  
 #&gt; 4 sample4 sample4    knockout treated  </div><div class='input'>
-<span class='co'># tbl_df back to DataFrame ====</span>
+<span class='co'># tbl_df to DataFrame ====</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl_df</span>, <span class='st'>"DataFrame"</span>)
 <span class='fu'><a href='assertHasRownames.html'>hasRownames</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>class</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [1] "DataFrame"
 #&gt; attr(,"package")
-#&gt; [1] "S4Vectors"</div></pre>
+#&gt; [1] "S4Vectors"</div><div class='input'>
+<span class='co'># SummarizedExperiment to list ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>rse_small</span>, <span class='st'>"list"</span>)
+<span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
+#&gt; [5] "elementMetadata" "metadata"       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -171,6 +192,8 @@ duplicates present.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#tibble">tibble</a></li>
+
+      <li><a href="#list">list</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

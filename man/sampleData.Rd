@@ -50,8 +50,8 @@ sampleData(x)[["test"]] <- seq_len(ncol(x))
 sampleData(x)
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
-  \code{\link{gene2symbol}},
+Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metrics}}, \code{\link{sampleNames}},

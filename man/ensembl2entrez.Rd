@@ -4,7 +4,7 @@
 \name{ensembl2entrez}
 \alias{ensembl2entrez}
 \alias{ensembl2entrez,SummarizedExperiment-method}
-\title{\code{ensembl2entrez} Generator}
+\title{Ensembl Gene ID to Entrez ID Mappings}
 \usage{
 ensembl2entrez(object, ...)
 
@@ -19,8 +19,8 @@ ensembl2entrez(object, ...)
 \code{ensembl2entrez}.
 }
 \description{
-1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest Entrez ID
-if there are multiple identifiers that map to an Ensembl gene ID.
+Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
+Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 }
 \examples{
 x <- ensembl2entrez(rse_small)
@@ -32,10 +32,11 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{panther}},
+  \code{\link{emptyRanges}}, \code{\link{gene2symbol}},
+  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

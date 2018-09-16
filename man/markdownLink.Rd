@@ -2,9 +2,12 @@
 % Please edit documentation in R/markdownLink.R
 \name{markdownLink}
 \alias{markdownLink}
+\alias{mdLink}
 \title{Markdown Hyperlink}
 \usage{
 markdownLink(text, url, title = NULL)
+
+mdLink(text, url, title = NULL)
 }
 \arguments{
 \item{text}{\code{string}. Header text.}

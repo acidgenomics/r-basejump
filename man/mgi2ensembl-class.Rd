@@ -3,7 +3,7 @@
 \docType{class}
 \name{mgi2ensembl-class}
 \alias{mgi2ensembl-class}
-\title{\code{mgi2ensembl} Class}
+\title{mgi2ensembl Class}
 \value{
 \code{mgi2ensembl}.
 }
@@ -25,6 +25,8 @@ x <- new(
 print(x)
 }
 \seealso{
+\code{\link[=mgi2ensembl]{mgi2ensembl()}}.
+
 Other S4 Classes: \code{\link{PANTHER-class}},
   \code{\link{ensembl2entrez-class}},
   \code{\link{gene2symbol-class}},

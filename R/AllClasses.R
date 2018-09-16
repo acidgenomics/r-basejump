@@ -4,11 +4,12 @@ setOldClass(Classes = class(tibble()))
 
 
 # ensembl2entrez ===============================================================
-#' `ensembl2entrez` Class
+#' ensembl2entrez Class
 #'
-#' Ensembl gene ID to Entrez ID mappings. Requires 1:1 mappings.
+#' Ensembl gene ID to Entrez ID mappings.
 #'
-#' Contains a `DataFrame` with `geneID` and `entrezID` columns.
+#' Contains a `DataFrame` with `geneID` and `entrezID` columns. Requires 1:1
+#' mappings.
 #'
 #' @family S4 Classes
 #' @author Michael Steinbaugh
@@ -17,6 +18,8 @@ setOldClass(Classes = class(tibble()))
 #' @inheritParams general
 #'
 #' @return `ensembl2entrez`.
+#'
+#' @seealso [ensembl2entrez()].
 #'
 #' @examples
 #' x <- new(
@@ -53,7 +56,7 @@ setValidity(
 
 
 # gene2symbol ==================================================================
-#' `gene2symbol` Class
+#' gene2symbol Class
 #'
 #' Gene-to-symbol mappings.
 #'
@@ -66,6 +69,10 @@ setValidity(
 #' @inheritParams general
 #'
 #' @return `gene2symbol`.
+#'
+#' @seealso
+#' - [makeGene2symbol].
+#' - [gene2symbol()].
 #'
 #' @examples
 #' x <- new(
@@ -85,6 +92,7 @@ setClass(
 setValidity(
     Class = "gene2symbol",
     method = function(object) {
+        # Deprecate and move this assert check code in a future release.
         assertIsGene2symbol(object)
         TRUE
     }
@@ -93,7 +101,7 @@ setValidity(
 
 
 # hgnc2ensembl =================================================================
-#' `hgnc2ensembl` Class
+#' hgnc2ensembl Class
 #'
 #' HGNC to Ensembl gene ID mappings.
 #'
@@ -102,6 +110,10 @@ setValidity(
 #' @family S4 Classes
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @return `hgnc2ensembl`.
+#'
+#' @seealso [hgnc2ensembl()].
 #'
 #' @examples
 #' x <- new(
@@ -112,6 +124,7 @@ setValidity(
 #'         row.names = 5L
 #'     )
 #' )
+#' print(x)
 setClass(
     Class = "hgnc2ensembl",
     contains = "DataFrame"
@@ -135,7 +148,7 @@ setValidity(
 
 
 # mgi2ensembl ==================================================================
-#' `mgi2ensembl` Class
+#' mgi2ensembl Class
 #'
 #' MGI to Ensembl gene ID mappings.
 #'
@@ -146,6 +159,8 @@ setValidity(
 #' @export
 #'
 #' @return `mgi2ensembl`.
+#'
+#' @seealso [mgi2ensembl()].
 #'
 #' @examples
 #' x <- new(
@@ -180,7 +195,7 @@ setValidity(
 
 
 # PANTHER ======================================================================
-#' `PANTHER` Class
+#' PANTHER Class
 #'
 #' PANTHER Gene Ontology definitions.
 #'
@@ -188,7 +203,9 @@ setValidity(
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @return `PANTHER`
+#' @return `PANTHER`.
+#'
+#' @seealso [panther()].
 setClass(
     Class = "PANTHER",
     contains = "DataFrame"
@@ -218,7 +235,7 @@ setValidity(
 
 
 # tx2gene ======================================================================
-#' `tx2gene` Class
+#' tx2gene Class
 #'
 #' Transcript-to-gene mappings.
 #'
@@ -229,6 +246,10 @@ setValidity(
 #' @export
 #'
 #' @return `tx2gene`.
+#'
+#' @seealso
+#' - [makeTx2gene].
+#' - [tx2gene()].
 #'
 #' @examples
 #' x <- new(
@@ -248,6 +269,7 @@ setClass(
 setValidity(
     Class = "tx2gene",
     method = function(object) {
+        # Deprecate and move this assert check code in a future release.
         assertIsTx2gene(object)
         TRUE
     }

@@ -15,14 +15,17 @@ reference:
     - starts_with("convert")
     - eggnog
     - emptyRanges
+    - ensembl2entrez
+    - gene2symbol
     - geneSynonyms
-    - hgnc2gene
+    - hgnc2ensembl
     - makeGene2symbol
     - makeGRanges
     - makeTx2gene
-    - mgi2gene
+    - mgi2ensembl
     - starts_with("strip")
     - panther
+    - tx2gene
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
@@ -35,9 +38,9 @@ reference:
     - starts_with("write")
   - title: Data Functions
     contents:
+    - starts_with("aggregate")
     - combine
     - counts
-    - gene2symbol
     - interestingGroups
     - makeSummarizedExperiment
     - mapGenesToIDs
@@ -59,7 +62,6 @@ reference:
     - starts_with("ggplot2_")
   - title: Math and Science Functions
     contents:
-    - starts_with("aggregate")
     - matches("Change")
     - matches("Mean")
     - microplate
@@ -100,6 +102,5 @@ reference:
     - starts_with("assert")
   - title: Example Datasets
     contents:
-    - rse_small
-    - rnaseq_counts
-    - single_cell_counts
+    - ends_with("_counts")
+    - ends_with("_small")

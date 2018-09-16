@@ -4,7 +4,7 @@
 #' [base::make.unique()], which will add ".1" to the end of the gene name.
 #'
 #' @name gene2symbol
-#' @family Data Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
