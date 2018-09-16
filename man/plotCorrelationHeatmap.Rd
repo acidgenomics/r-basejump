@@ -65,7 +65,7 @@ improved aesthetics.}
 \item{title}{\code{string} or \code{NULL}. Plot title.}
 }
 \value{
-Show heatmap and invisibly return a \code{list} of the components.
+\code{pheatmap}.
 }
 \description{
 Construct a correlation heatmap comparing the columns of the matrix.
