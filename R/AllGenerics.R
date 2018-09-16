@@ -43,7 +43,6 @@ setGeneric(
 
 
 #' @rdname coerce
-#' @name coerce
 #' @export
 setGeneric(
     name = "coerceS4ToList",

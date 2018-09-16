@@ -10,6 +10,11 @@ plotQC(object, ...)
 
 \S4method{plotQC}{SummarizedExperiment}(object)
 }
+\arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+}
 \description{
 Plot Quality Control
 }

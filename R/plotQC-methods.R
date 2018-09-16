@@ -5,6 +5,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
+#' @inheritParams general
+#'
 #' @examples
 #' plotQC(rse_small)
 NULL

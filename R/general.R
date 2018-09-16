@@ -6,6 +6,7 @@
 #'
 #' @param object Object.
 #' @param value Value to assign.
+#' @param x Object.
 #' @param ... Additional arguments.
 #'
 #' @param color `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 color
@@ -27,6 +28,7 @@
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
 #'   the first item in the vector by default.
+#' @param title `string`. Plot title.
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
 NULL
