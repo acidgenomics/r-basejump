@@ -4,9 +4,10 @@
 \alias{saveData}
 \title{Save Data}
 \usage{
-saveData(..., dir = ".", ext = getOption("basejump.save.ext", "rda"),
-  overwrite = TRUE, compress = getOption("basejump.save.compress",
-  TRUE))
+saveData(..., dir = getOption("basejump.save.dir", "."),
+  ext = getOption("basejump.save.ext", "rda"),
+  overwrite = getOption("basejump.save.overwrite", TRUE),
+  compress = getOption("basejump.save.compress", TRUE))
 }
 \arguments{
 \item{...}{Object names. Note that these arguments are interpreted as symbols

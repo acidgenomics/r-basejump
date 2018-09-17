@@ -40,18 +40,15 @@
 #' unlink("example", recursive = TRUE)
 saveData <- function(
     ...,
-    dir = ".",
+    dir = getOption("basejump.save.dir", "."),
     ext = getOption("basejump.save.ext", "rda"),
-    overwrite = TRUE,
+    overwrite = getOption("basejump.save.overwrite", TRUE),
     compress = getOption("basejump.save.compress", TRUE)
 ) {
     objects <- list(...)
     names(objects) <- dots(..., character = TRUE)
     dir <- initializeDirectory(dir)
-    ext <- match.arg(
-        arg = ext,
-        choices = c("rda", "rds", "RData")
-    )
+    ext <- match.arg(arg = ext, choices = c("rda", "rds", "RData"))
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
 
@@ -72,7 +69,7 @@ saveData <- function(
         objects <- objects[!file.exists(files)]  # nocov
     }
 
-    # Determine which save function to use
+    # Determine which save function to use.
     if (ext == "rds") {
         mapply(
             FUN = saveRDS,
