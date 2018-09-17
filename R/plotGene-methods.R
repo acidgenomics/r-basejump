@@ -1,3 +1,8 @@
+# FIXME Gene symbol message pops up even when we pass in IDs.
+# Sanitizing 110 duplicated symbols using `make.unique()`
+
+
+
 #' Plot Gene Expression
 #'
 #' @name plotGene
@@ -136,7 +141,6 @@ NULL
         medianLine = TRUE,
         color = getOption("basejump.discrete.color", NULL),
         legend = getOption("basejump.legend", TRUE),
-        headerLevel = 2L,
         style = c("facet", "wide")
     ) {
         validObject(object)
@@ -154,7 +158,6 @@ NULL
         assert_is_a_bool(medianLine)
         assertIsColorScaleDiscreteOrNULL(color)
         assert_is_a_bool(legend)
-        assertIsAHeaderLevel(headerLevel)
         style <- match.arg(style)
 
         # Subset to match the genes, which have been mapped to the rownames.
