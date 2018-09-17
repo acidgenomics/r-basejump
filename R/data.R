@@ -1,3 +1,16 @@
+#' Sexually Dimorphic Gender Marker Genes
+#'
+#' *Homo sapiens* and *Mus musculus* are currently defined.
+#'
+#' @author Michael Steinbaugh
+#' @keywords internal
+#'
+#' @examples
+#' names(gender_markers)
+"gender_markers"
+
+
+
 #' Example RNA-Seq Counts
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`.
