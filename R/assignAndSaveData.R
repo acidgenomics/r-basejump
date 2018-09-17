@@ -1,7 +1,3 @@
-# FIXME Add passthrough to `saveData()` with support for `basejump.save.ext`
-
-
-
 #' Assign and Save Data
 #'
 #' Assigns a new object by name to the current working environment then saves
@@ -9,6 +5,8 @@
 #'
 #' @family Write Functions
 #' @author Michael Steinbaugh
+#' @include saveData.R
+#' @export
 #'
 #' @inheritParams saveData
 #' @inheritParams general
@@ -16,8 +14,7 @@
 #' @param envir `environment`. Environment to use for assignment. Defaults to
 #'   [parent.frame()], the calling environment.
 #'
-#' @return Invisible named `character`. File paths.
-#' @export
+#' @return Invisible named `string`. File path.
 #'
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
@@ -32,8 +29,6 @@
 assignAndSaveData <- function(
     name,
     object,
-    dir = ".",
-    compress = TRUE,
     envir = parent.frame()
 ) {
     assert_is_a_string(name)
@@ -42,20 +37,26 @@ assignAndSaveData <- function(
     assertFormalCompress(compress)
     assert_is_environment(envir)
 
-    # Assign
-    assign(name, object, envir = envir)
+    # Assign data.
+    assign(x = name, value = object, envir = envir)
+    assign(x = name, value = object)
 
-    # Save
-    message(paste("Saving", name, "to", dir))
-    file <- file.path(dir, paste0(name, ".rda"))
-    save(
-        list = name,
-        file = file,
-        envir = envir,
+    # Save data.
+    args <- list(
+        as.name(name),
+        dir = dir,
+        ext = ext,
+        overwrite = overwrite,
         compress = compress
     )
-    file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-    names(file) <- name
+    file <- do.call(what = saveData, args = args)
 
     invisible(file)
 }
+
+# Assign the formals.
+f1 <- formals(assignAndSaveData)
+f2 <- formals(saveData)
+f2 <- f2[setdiff(names(f2), "...")]
+f <- c(f1, f2)
+formals(assignAndSaveData) <- f

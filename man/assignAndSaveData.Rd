@@ -4,16 +4,28 @@
 \alias{assignAndSaveData}
 \title{Assign and Save Data}
 \usage{
-assignAndSaveData(name, object, dir = ".", compress = TRUE,
-  envir = parent.frame())
+assignAndSaveData(name, object, envir = parent.frame(),
+  dir = getOption("basejump.save.dir", "."),
+  ext = getOption("basejump.save.ext", "rda"),
+  overwrite = getOption("basejump.save.overwrite", TRUE),
+  compress = getOption("basejump.save.compress", TRUE))
 }
 \arguments{
 \item{name}{\code{string}. Desired variable name.}
 
 \item{object}{Object.}
 
+\item{envir}{\code{environment}. Environment to use for assignment. Defaults to
+\code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
+
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
+
+\item{ext}{\code{string}. R data ("\code{rda}", "\code{RData}") or R data serialized (RDS;
+"\code{rds}"). RDS is preferred when saving single objects per file, which is
+always the convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
+
+\item{overwrite}{\code{boolean}. Overwrite existing file.}
 
 \item{compress}{logical or character string specifying whether saving
     to a named file is to use compression.  \code{TRUE} corresponds to
@@ -21,12 +33,9 @@ directory.}
     \code{"bzip2"} or \code{"xz"} specify the type of
     compression.  Ignored when \code{file} is a connection and
     for workspace format version 1.}
-
-\item{envir}{\code{environment}. Environment to use for assignment. Defaults to
-\code{\link[=parent.frame]{parent.frame()}}, the calling environment.}
 }
 \value{
-Invisible named \code{character}. File paths.
+Invisible named \code{string}. File path.
 }
 \description{
 Assigns a new object by name to the current working environment then saves
