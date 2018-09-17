@@ -55,13 +55,13 @@ writeCounts <- function(
                 if (isTRUE(gzip)) {
                     format <- "csv.gz"
                 } else {
-                    format = "csv"
+                    format <- "csv"
                 }
             } else if (is(x, "sparseMatrix")) {
                 if (isTRUE(gzip)) {
                     format <- "mtx.gz"
                 } else {
-                    format = "mtx"
+                    format <- "mtx"
                 }
             } else {
                 stop(paste(name, "is not a matrix"), call. = FALSE)

@@ -61,7 +61,7 @@ matchArgsToDoCall <- function(
             n == 1L &&
             isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
         ) {
-            n = n + 1L
+            n <- n + 1L
         }
 
         # Get the position in the stack.

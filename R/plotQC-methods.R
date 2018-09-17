@@ -30,25 +30,26 @@ NULL
 
 
 
-.plotQC.SE <- function(object) {
-    assay <- assay(object)
-    # Counts per row (gene).
-    rowSums <- .plotSumsECDF(assay, fun = rowSums) +
-        labs(title = "counts per row")
-    # Counts per column (sample).
-    colSums <- .plotSumsECDF(assay, fun = colSums) +
-        labs(title = "counts per column")
-    # Dropout rate.
-    zerosVsDepth <- plotZerosVsDepth(assay)
-    # Return paneled plot.
-    plot_grid(
-        plotlist = list(
-            rowSums = rowSums,
-            colSums = colSums,
-            zerosVsDepth = zerosVsDepth
+.plotQC.SE <-  # nolint
+    function(object) {
+        assay <- assay(object)
+        # Counts per row (gene).
+        rowSums <- .plotSumsECDF(assay, fun = rowSums) +
+            labs(title = "counts per row")
+        # Counts per column (sample).
+        colSums <- .plotSumsECDF(assay, fun = colSums) +
+            labs(title = "counts per column")
+        # Dropout rate.
+        zerosVsDepth <- plotZerosVsDepth(assay)
+        # Return paneled plot.
+        plot_grid(
+            plotlist = list(
+                rowSums = rowSums,
+                colSums = colSums,
+                zerosVsDepth = zerosVsDepth
+            )
         )
-    )
-}
+    }
 
 
 

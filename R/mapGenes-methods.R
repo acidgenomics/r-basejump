@@ -119,7 +119,6 @@ setMethod(
 .mapGenesToIDs.gene2symbol <-  # nolint
     function(object, genes) {
         validObject(object)
-        # object <- as(object, "DataFrame")
         assert_is_character(genes)
         assert_is_non_empty(genes)
         if (any(genes %in% rownames(object))) {
@@ -178,7 +177,6 @@ setMethod(
 .mapGenesToSymbols.gene2symbol <-  # nolint
     function(object, genes) {
         validObject(object)
-        # object <- as(object, "DataFrame")
         assert_is_character(genes)
         assert_is_non_empty(genes)
         if (any(genes %in% rownames(object))) {
