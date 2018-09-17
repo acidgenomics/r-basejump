@@ -97,17 +97,6 @@ setGeneric(
 
 
 
-#' @rdname detectOrganism
-#' @export
-setGeneric(
-    name = "detectOrganism",
-    def = function(object, ...) {
-        standardGeneric("detectOrganism")
-    }
-)
-
-
-
 #' @rdname makeNames
 #' @export
 setGeneric(
