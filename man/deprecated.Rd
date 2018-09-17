@@ -21,6 +21,7 @@
 \alias{assertIsURL}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
+\alias{detectOrganism}
 \alias{fixNA}
 \alias{flatFiles}
 \alias{hgnc2gene}
@@ -65,6 +66,8 @@ assertIsURL(...)
 assertIsCharacterOrNULL(object, ...)
 
 assertIsDataFrameOrNULL(object, ...)
+
+detectOrganism(object, ...)
 
 fixNA(...)
 

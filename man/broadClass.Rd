@@ -34,12 +34,12 @@ table(x)
 Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{detectOrganism}}, \code{\link{eggnog}},
-  \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},
-  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{panther}},
+  \code{\link{eggnog}}, \code{\link{emptyRanges}},
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{organism}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
