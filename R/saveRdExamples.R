@@ -26,14 +26,11 @@
 #' # Clean up
 #' unlink("example", recursive = TRUE)
 saveRdExamples <- function(
-    Rd,
+    Rd,  # nolint
     package,
     dir = "."
 ) {
-    assert_is_any_of(
-        x = Rd,
-        classes = c("character", "NULL")
-    )
+    assert_is_any_of(Rd, c("character", "NULL"))
     assert_is_a_string(package)
     dir <- initializeDirectory(dir)
 
@@ -56,7 +53,7 @@ saveRdExamples <- function(
             package = package,
             dir = dir
         ),
-        FUN = function(Rd, package, dir) {
+        FUN = function(Rd, package, dir) {  # nolint
             x <- tryCatch(
                 expr = parseRd(db[[Rd]], tag = "examples"),
                 error = function(e) character()

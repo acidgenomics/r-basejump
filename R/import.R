@@ -121,13 +121,13 @@ import <- function(file, ...) {
     } else if (ext %in% c("yaml", "yml")) {
         data <- suppressMessages(readYAML(file))
     } else {
-        # `rio::import()`
+        # `rio::import`
         # How we declare NA strings depends on the file extension.
         if (ext %in% c("csv", "tsv")) {
-            # `data.table::fread()`
+            # `data.table::fread`
             args[["na.strings"]] <- na
         } else if (ext %in% c("xls", "xlsx")) {
-            # `readxl::read_excel()`
+            # `readxl::read_excel`
             args[["na"]] <- na
         }
         data <- do.call(what = rio::import, args = args)

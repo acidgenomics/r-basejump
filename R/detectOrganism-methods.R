@@ -48,115 +48,116 @@ NULL
 
 
 
-.detectOrganism.string <- function(object) {
-    assert_is_a_string(object)
+.detectOrganism.string <-  # nolint
+    function(object) {
+        assert_is_a_string(object)
 
-    # Homo sapiens
-    grep <- c(
-        "^H(omo)?([._[:space:]]+)?sapiens$",
-        # Ensembl
-        "^ENS(G|T)(\\d{11})$",
-        "^GRCh(\\d{2})(\\.p\\d+)?$",
-        # UCSC
-        "^hg(\\d{2})$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Homo sapiens")
+        # Homo sapiens
+        grep <- c(
+            "^H(omo)?([._[:space:]]+)?sapiens$",
+            # Ensembl
+            "^ENS(G|T)(\\d{11})$",
+            "^GRCh(\\d{2})(\\.p\\d+)?$",
+            # UCSC
+            "^hg(\\d{2})$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Homo sapiens")
+        }
+
+        # Mus musculus
+        grep <- c(
+            "^M(us)?([._[:space:]]+)?musculus$",
+            # Ensembl
+            "^ENSMUS(G|T)(\\d{11})$",
+            "^GRCm(\\d{2})(\\.p\\d+)?$",
+            # UCSC
+            "^mm(\\d{2})$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Mus musculus")
+        }
+
+        # Rattus norvegicus
+        grep <- c(
+            "^R(attus)?([._[:space:]]+)?norvegicus$",
+            # Ensembl
+            "^ENSRNO(G|T)(\\d{11})$",
+            "Rnor_([0-9\\.]+)",
+            # UCSC
+            "^rn(\\d+)$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Rattus norvegicus")
+        }
+
+        # Danio rerio
+        grep <- c(
+            "^D(anio)?([._[:space:]]+)?rerio$",
+            # Ensembl
+            "^ENSDAR(G|T)(\\d{11})$",
+            "GRCz(\\d+)",
+            # UCSC
+            "^danRer(\\d+)$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Danio rerio")
+        }
+
+        # Drosophila melanogaster
+        grep <- c(
+            "^D(rosophila)?([._[:space:]]+)?melanogaster$",
+            # Ensembl
+            "^FB(gn|tr)(\\d{7})$",
+            "^BDGP(\\d+)$",
+            # UCSC
+            "^dm(\\d+)$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Drosophila melanogaster")
+        }
+
+        # Caenorhabditis elegans
+        grep <- c(
+            "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
+            # Ensembl
+            "^WBGene(\\d{8})$",
+            "^WBcel(\\d{3})$",
+            # UCSC
+            "^ce(\\d{2})$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Caenorhabditis elegans")
+        }
+
+        # Gallus gallus
+        grep <- c(
+            "G(allus)?([._[:space:]]+)?gallus$",
+            # Ensembl
+            "^ENSGAL(G|T)(\\d{11})$",
+            "^Gallus_gallus-([0-9\\.]+)$",
+            # UCSC
+            "^galGal(\\d+)$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Gallus gallus")
+        }
+
+        # Ovis aries
+        grep <- c(
+            "^O(vis)?([._[:space:]]+)?aries$",
+            # Ensembl
+            "^ENSOAR(G|T)\\d{11}$",
+            "^Oar_v([0-9\\.]+)$",
+            # UCSC
+            "^oviAri(\\d+)$"
+        )
+        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
+            return("Ovis aries")
+        }
+
+        NA_character_
     }
-
-    # Mus musculus
-    grep <- c(
-        "^M(us)?([._[:space:]]+)?musculus$",
-        # Ensembl
-        "^ENSMUS(G|T)(\\d{11})$",
-        "^GRCm(\\d{2})(\\.p\\d+)?$",
-        # UCSC
-        "^mm(\\d{2})$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Mus musculus")
-    }
-
-    # Rattus norvegicus
-    grep <- c(
-        "^R(attus)?([._[:space:]]+)?norvegicus$",
-        # Ensembl
-        "^ENSRNO(G|T)(\\d{11})$",
-        "Rnor_([0-9\\.]+)",
-        # UCSC
-        "^rn(\\d+)$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Rattus norvegicus")
-    }
-
-    # Danio rerio
-    grep <- c(
-        "^D(anio)?([._[:space:]]+)?rerio$",
-        # Ensembl
-        "^ENSDAR(G|T)(\\d{11})$",
-        "GRCz(\\d+)",
-        # UCSC
-        "^danRer(\\d+)$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Danio rerio")
-    }
-
-    # Drosophila melanogaster
-    grep <- c(
-        "^D(rosophila)?([._[:space:]]+)?melanogaster$",
-        # Ensembl
-        "^FB(gn|tr)(\\d{7})$",
-        "^BDGP(\\d+)$",
-        # UCSC
-        "^dm(\\d+)$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Drosophila melanogaster")
-    }
-
-    # Caenorhabditis elegans
-    grep <- c(
-        "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
-        # Ensembl
-        "^WBGene(\\d{8})$",
-        "^WBcel(\\d{3})$",
-        # UCSC
-        "^ce(\\d{2})$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Caenorhabditis elegans")
-    }
-
-    # Gallus gallus
-    grep <- c(
-        "G(allus)?([._[:space:]]+)?gallus$",
-        # Ensembl
-        "^ENSGAL(G|T)(\\d{11})$",
-        "^Gallus_gallus-([0-9\\.]+)$",
-        # UCSC
-        "^galGal(\\d+)$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Gallus gallus")
-    }
-
-    # Ovis aries
-    grep <- c(
-        "^O(vis)?([._[:space:]]+)?aries$",
-        # Ensembl
-        "^ENSOAR(G|T)\\d{11}$",
-        "^Oar_v([0-9\\.]+)$",
-        # UCSC
-        "^oviAri(\\d+)$"
-    )
-    if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-        return("Ovis aries")
-    }
-
-    NA_character_
-}
 
 
 
