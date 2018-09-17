@@ -229,77 +229,77 @@ test_that("convertUCSCBuildToEnsembl", {
 # detectOrganism ===============================================================
 test_that("detectOrganism : Homo sapiens", {
     object <- "Homo sapiens"
-    expect_identical(object, detectOrganism("Homo sapiens"))
-    expect_identical(object, detectOrganism("hsapiens"))
-    expect_identical(object, detectOrganism("GRCh38"))
-    expect_identical(object, detectOrganism("grch38"))
-    expect_identical(object, detectOrganism("hg38"))
-    expect_identical(object, detectOrganism("ENSG00000000001"))
-    expect_identical(object, detectOrganism("ENST00000000001"))
+    expect_identical(object, organism("Homo sapiens"))
+    expect_identical(object, organism("hsapiens"))
+    expect_identical(object, organism("GRCh38"))
+    expect_identical(object, organism("grch38"))
+    expect_identical(object, organism("hg38"))
+    expect_identical(object, organism("ENSG00000000001"))
+    expect_identical(object, organism("ENST00000000001"))
 })
 
 test_that("detectOrganism : Mus musculus", {
     object <- "Mus musculus"
-    expect_identical(object, detectOrganism("Mus musculus"))
-    expect_identical(object, detectOrganism("mmusculus"))
-    expect_identical(object, detectOrganism("GRCm38"))
-    expect_identical(object, detectOrganism("grcm38"))
-    expect_identical(object, detectOrganism("mm10"))
-    expect_identical(object, detectOrganism("ENSMUSG00000000001"))
-    expect_identical(object, detectOrganism("ENSMUST00000000001"))
+    expect_identical(object, organism("Mus musculus"))
+    expect_identical(object, organism("mmusculus"))
+    expect_identical(object, organism("GRCm38"))
+    expect_identical(object, organism("grcm38"))
+    expect_identical(object, organism("mm10"))
+    expect_identical(object, organism("ENSMUSG00000000001"))
+    expect_identical(object, organism("ENSMUST00000000001"))
 })
 
 test_that("detectOrganism : Rattus norvegicus", {
     object <- "Rattus norvegicus"
-    expect_identical(object, detectOrganism("Rattus norvegicus"))
-    expect_identical(object, detectOrganism("rnorvegicus"))
-    expect_identical(object, detectOrganism("ENSRNOG00000000001"))
-    expect_identical(object, detectOrganism("ENSRNOT00000000001"))
+    expect_identical(object, organism("Rattus norvegicus"))
+    expect_identical(object, organism("rnorvegicus"))
+    expect_identical(object, organism("ENSRNOG00000000001"))
+    expect_identical(object, organism("ENSRNOT00000000001"))
 })
 
 test_that("detectOrganism : Danio rerio", {
     object <- "Danio rerio"
-    expect_identical(object, detectOrganism("Danio rerio"))
-    expect_identical(object, detectOrganism("drerio"))
-    expect_identical(object, detectOrganism("GRCz10"))
-    expect_identical(object, detectOrganism("danRer10"))
-    expect_identical(object, detectOrganism("ENSDARG00000000001"))
-    expect_identical(object, detectOrganism("ENSDART00000000001"))
+    expect_identical(object, organism("Danio rerio"))
+    expect_identical(object, organism("drerio"))
+    expect_identical(object, organism("GRCz10"))
+    expect_identical(object, organism("danRer10"))
+    expect_identical(object, organism("ENSDARG00000000001"))
+    expect_identical(object, organism("ENSDART00000000001"))
 })
 
 test_that("detectOrganism : Drosophila melanogaster", {
     object <- "Drosophila melanogaster"
-    expect_identical(object, detectOrganism("Drosophila melanogaster"))
-    expect_identical(object, detectOrganism("dmelanogaster"))
-    expect_identical(object, detectOrganism("BDGP6"))
-    expect_identical(object, detectOrganism("dm6"))
-    expect_identical(object, detectOrganism("FBgn0000001"))
-    expect_identical(object, detectOrganism("FBtr0000001"))
+    expect_identical(object, organism("Drosophila melanogaster"))
+    expect_identical(object, organism("dmelanogaster"))
+    expect_identical(object, organism("BDGP6"))
+    expect_identical(object, organism("dm6"))
+    expect_identical(object, organism("FBgn0000001"))
+    expect_identical(object, organism("FBtr0000001"))
 })
 
 test_that("detectOrganism : Caenorhabditis elegans", {
     object <- "Caenorhabditis elegans"
-    expect_identical(object, detectOrganism("Caenorhabditis elegans"))
-    expect_identical(object, detectOrganism("celegans"))
-    expect_identical(object, detectOrganism("WBcel235"))
-    expect_identical(object, detectOrganism("ce11"))
-    expect_identical(object, detectOrganism("WBGene00000001"))
+    expect_identical(object, organism("Caenorhabditis elegans"))
+    expect_identical(object, organism("celegans"))
+    expect_identical(object, organism("WBcel235"))
+    expect_identical(object, organism("ce11"))
+    expect_identical(object, organism("WBGene00000001"))
 })
 
 test_that("detectOrganism : Gallus gallus", {
     object <- "Gallus gallus"
-    expect_identical(object, detectOrganism("Gallus gallus"))
-    expect_identical(object, detectOrganism("ggallus"))
-    expect_identical(object, detectOrganism("ENSGALG00000000001"))
-    expect_identical(object, detectOrganism("ENSGALT00000000001"))
+    expect_identical(object, organism("Gallus gallus"))
+    expect_identical(object, organism("ggallus"))
+    expect_identical(object, organism("ENSGALG00000000001"))
+    expect_identical(object, organism("ENSGALT00000000001"))
 })
 
 test_that("detectOrganism : Ovis aries", {
     object <- "Ovis aries"
-    expect_identical(object, detectOrganism("Ovis aries"))
-    expect_identical(object, detectOrganism("oaries"))
-    expect_identical(object, detectOrganism("ENSOARG00000000001"))
-    expect_identical(object, detectOrganism("ENSOART00000000001"))
+    expect_identical(object, organism("Ovis aries"))
+    expect_identical(object, organism("oaries"))
+    expect_identical(object, organism("ENSOARG00000000001"))
+    expect_identical(object, organism("ENSOART00000000001"))
 })
 
 test_that("detectOrganism : Multiple organisms", {
@@ -310,7 +310,7 @@ test_that("detectOrganism : Multiple organisms", {
         "ENSMUSG00000000002"
     )
     expect_identical(
-        object = suppressWarnings(detectOrganism(object, unique = FALSE)),
+        object = suppressWarnings(organism(object, unique = FALSE)),
         expected = c(
             "ENSG00000000001" = "Homo sapiens",
             "ENSG00000000002" = "Homo sapiens",
@@ -319,18 +319,18 @@ test_that("detectOrganism : Multiple organisms", {
         )
     )
     expect_identical(
-        object = suppressWarnings(detectOrganism(object, unique = TRUE)),
+        object = suppressWarnings(organism(object, unique = TRUE)),
         expected = c("Homo sapiens", "Mus musculus")
     )
     expect_warning(
-        object = detectOrganism(object),
+        object = organism(object),
         regexp = "Multiple organisms detected"
     )
 })
 
 test_that("detectOrganism : Detection failure", {
     expect_error(
-        object = detectOrganism("XXX"),
+        object = organism("XXX"),
         regexp = "Failed to detect organism"
     )
 })
@@ -338,7 +338,7 @@ test_that("detectOrganism : Detection failure", {
 test_that("detectOrganism : matrix", {
     object <- mat
     expect_identical(
-        object = detectOrganism(object),
+        object = organism(object),
         expected = "Homo sapiens"
     )
 })
@@ -347,7 +347,7 @@ test_that("detectOrganism : tbl_df", {
     object <- as(mat, "tbl_df")
     expect_true("rowname" %in% colnames(object))
     expect_identical(
-        detectOrganism(object),
+        organism(object),
         "Homo sapiens"
     )
 })
