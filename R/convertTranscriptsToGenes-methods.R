@@ -76,7 +76,7 @@ NULL
         if (is.null(tx2gene)) {
             message("Obtaining transcript-to-gene mappings from Ensembl")
             if (is.null(organism)) {
-                organism <- detectOrganism(object, unique = TRUE)
+                organism <- organism(object)
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected"))

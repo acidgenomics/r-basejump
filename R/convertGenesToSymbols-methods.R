@@ -64,7 +64,7 @@ NULL
         if (is.null(gene2symbol)) {
             message("Obtaining gene-to-symbol mappings from Ensembl")
             if (is.null(organism)) {
-                organism <- detectOrganism(object, unique = TRUE)
+                organism <- organism(object)
             }
             assert_is_a_string(organism)
             message(paste(organism, "genes detected"))
