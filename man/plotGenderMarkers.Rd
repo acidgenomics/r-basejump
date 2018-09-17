@@ -8,12 +8,34 @@
 \usage{
 plotGenderMarkers(object, ...)
 
-\S4method{plotGenderMarkers}{RangedSummarizedExperiment}(object, ...)
+\S4method{plotGenderMarkers}{RangedSummarizedExperiment}(object,
+  style = "wide", interestingGroups = NULL,
+  countsAxisLabel = "counts", medianLine = TRUE,
+  color = getOption("basejump.discrete.color", NULL),
+  legend = getOption("basejump.legend", TRUE))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{style}{\code{string}. Plot style.}
+
+\item{interestingGroups}{\code{character}. Groups of interest.}
+
+\item{countsAxisLabel}{\code{string}. Label to use for the counts axis.}
+
+\item{medianLine}{\code{boolean}. Include median line for each group. Disabled if
+samples are colored by sample name.}
+
+\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
+color palette will be used. If manual color definitions are desired, we
+recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+To set the discrete color palette globally, use
+\code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+
+\item{legend}{\code{boolean}. Show plot legend.}
 }
 \value{
 \code{ggplot}.

@@ -9,7 +9,7 @@
 meltCounts(object, ...)
 
 \S4method{meltCounts}{SummarizedExperiment}(object, trans = c("identity",
-  "log2", "log10"))
+  "log2", "log10"), nonzeroGenes = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -19,6 +19,8 @@ meltCounts(object, ...)
 \item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
 the counts matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
+
+\item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
 }
 \value{
 \code{grouped_df}, grouped by \code{colname} (e.g. sample ID) and \code{rowname}
