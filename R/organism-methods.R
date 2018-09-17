@@ -41,6 +41,9 @@
 #'
 #' # But it only returns the first match, if there are multiple genomes.
 #' organism(c("ENSG00000000003", "ENSMUSG00000000001"))
+#'
+#' # SummarizedExperiment support.
+#' organism(rse_small)
 NULL
 
 
