@@ -11,7 +11,7 @@ plotGene(object, ...)
 \S4method{plotGene}{SummarizedExperiment}(object, genes,
   interestingGroups = NULL, countsAxisLabel = "counts",
   medianLine = TRUE, color = getOption("basejump.discrete.color",
-  NULL), legend = getOption("basejump.legend", TRUE), headerLevel = 2L,
+  NULL), legend = getOption("basejump.legend", TRUE),
   style = c("facet", "wide"))
 }
 \arguments{
@@ -36,8 +36,6 @@ To set the discrete color palette globally, use
 \code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
 
 \item{legend}{\code{boolean}. Show plot legend.}
-
-\item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
 
 \item{style}{\code{string}. Plot style.}
 }
