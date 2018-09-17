@@ -41,8 +41,9 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{selectSamples}}, \code{\link{tx2gene}}
+  \code{\link{metrics}}, \code{\link{organism}},
+  \code{\link{sampleData}}, \code{\link{selectSamples}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh

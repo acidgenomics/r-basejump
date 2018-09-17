@@ -46,6 +46,7 @@ reference:
     - mapGenesToIDs
     - meltCounts
     - metrics
+    - organism
     - sampleData
     - sampleNames
     - selectSamples
@@ -81,7 +82,6 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
-    - starts_with("detect")
     - dots
     - starts_with("initialize")
     - localOrRemoteFile

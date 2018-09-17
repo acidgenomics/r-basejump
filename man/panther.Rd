@@ -36,7 +36,6 @@ Other Annotation Functions: \code{\link{broadClass}},
   \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
   \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
   \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
-  \code{\link{organism}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{
