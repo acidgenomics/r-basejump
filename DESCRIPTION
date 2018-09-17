@@ -168,6 +168,7 @@ Collate:
     'parseRd.R'
     'pheatmap-internal.R'
     'plotCorrelationHeatmap-methods.R'
+    'plotGenderMarkers-methods.R'
     'plotGene-methods.R'
     'plotHeatmap-methods.R'
     'plotQC-methods.R'
