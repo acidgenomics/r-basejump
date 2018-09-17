@@ -48,7 +48,7 @@ saveData <- function(
     objects <- list(...)
     names(objects) <- dots(..., character = TRUE)
     dir <- initializeDirectory(dir)
-    ext <- match.arg(arg = ext, choices = c("rda", "rds", "RData"))
+    ext <- match.arg(arg = ext, choices = c("rds", "rda", "RData"))
     assert_is_a_bool(overwrite)
     assertFormalCompress(compress)
 
