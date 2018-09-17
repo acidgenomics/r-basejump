@@ -1,6 +1,6 @@
-#' Detect Organism
+#' Organism Accessor
 #'
-#' Supports organism detection from genome build or Ensembl identifier.
+#' Supports organism detection from Ensembl identifier or genome build.
 #'
 #' @section Supported organisms:
 #'
@@ -14,41 +14,38 @@
 #' - *Gallus gallus* (chicken)
 #' - *Ovis aries* (sheep)
 #'
-#' @name detectOrganism
+#' @name organism
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
+#' @importFrom BiocGenerics organism
+#' @export
 #'
 #' @inheritParams general
-#' @param unique `boolean`. Only return unique matching organisms. Applies to
-#'   `character` input.
 #'
-#' @return
-#' `character`. Full latin organism name.
-#'
-#' - `atomic`: Named `character` vector containing organism name or `NA` for
-#'   individual match failures (e.g. spike-ins like EGFP, TDTOMATO).
-#' - `dim`: Unique `character` vector of the organism(s) detected. Warns if
-#'   multiple organisms are detected.
-#'
-#' Stops on match failure.
+#' @return `string`. Full latin organism name. Stops on match failure.
 #'
 #' @examples
-#' # By gene identifier
-#' detectOrganism("ENSG00000000003")
-#' detectOrganism(c("ENSG00000000003", "EGFP", "TDTOMATO"))
+#' # Match by gene identifier.
+#' organism("ENSG00000000003")
 #'
-#' # By genome build
-#' detectOrganism("GRCh38")  # Ensembl
-#' detectOrganism("hg38")    # UCSC
+#' # Match by genome build.
+#' organism("GRCh38")  # Ensembl
+#' organism("hg38")    # UCSC
 #'
-#' # By alternate organism name
-#' detectOrganism("H. sapiens")
-#' detectOrganism("hsapiens")
+#' # Match by alternate organism name.
+#' organism("H. sapiens")
+#' organism("hsapiens")
+#'
+#' # The function will skip transgenes/spike-ins until we find a match.
+#' organism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
+#'
+#' # But it only returns the first match, if there are multiple genomes.
+#' organism(c("ENSG00000000003", "ENSMUSG00000000001"))
 NULL
 
 
 
-.detectOrganism.string <-  # nolint
+.organism.string <-  # nolint
     function(object) {
         assert_is_a_string(object)
 
@@ -161,136 +158,140 @@ NULL
 
 
 
-.detectOrganism.character <-  # nolint
-    function(object, unique = FALSE) {
-        assert_is_a_bool(unique)
-        x <- vapply(
-            X = as.character(object),
-            FUN = .detectOrganism.string,
-            FUN.VALUE = character(1L)
-        )
-        if (all(is.na(x))) {
+# We're using a while loop approach here so we can skip transgenes or spike-ins.
+# Fail after 50 unknowns, for speed.
+.organism.character <-  # nolint
+    function(object) {
+        # Parse the vector until we get a match.
+        x <- NA_character_
+        i <- 1L
+        while(
+            is.na(x) &&
+            i <= min(length(object), 50L)
+        ) {
+            x <- .organism.string(object[[i]])
+            i <- i + 1L
+        }
+        if (is.na(x)) {
             stop("Failed to detect organism")
+        } else {
+            x
         }
-        if (is_a_string(x)) {
-            names(x) <- NULL
-        }
-        if (length(na.omit(unique(x))) > 1L) {
-            warning("Multiple organisms detected")
-        }
-        if (isTRUE(unique)) {
-            x <- x %>%
-                as.character() %>%
-                na.omit() %>%
-                unique()
-        }
-        x
     }
 
 
 
-.returnUniqueOrganism <- function(object) {
-    assert_is_character(object)
-    x <- detectOrganism(object)
-    x <- sort(unique(na.omit(x)))
-    x
-}
-
-
-
-.detectOrganism.matrix <-  # nolint
+.organism.matrix <-  # nolint
     function(object) {
         # Assume gene identifiers are defined in the rownames.
         assertHasRownames(object)
-        .returnUniqueOrganism(rownames(object))
+        organism(rownames(object))
     }
 
 
 
-.detectOrganism.tbl_df <-  # nolint
+.organism.GRanges <-  # nolint
     function(object) {
-        assert_has_colnames(object)
-        object <- camel(object)
-        idCols <- c("rowname", "geneID", "ensemblGeneID", "ensgene")
-        assert_are_intersecting_sets(idCols, colnames(object))
-        idCol <- match(
-            x = idCols,
-            table = colnames(object)
-        ) %>%
-            na.omit() %>%
-            .[[1L]]
-        .returnUniqueOrganism(object[, idCol, drop = TRUE])
+        assert_has_names(object)
+        organism(names(object))
     }
 
 
 
-#' @rdname detectOrganism
+# Attempt to use metadata stash first.
+# Then attempt to check rowData.
+# Finally, check against the rownames.
+.organism.SE <-  # nolint
+    function(object) {
+        organism <- metadata(object)[["organism"]]
+        if (is_a_string(organism)) {
+            organism
+        } else if ("geneID" %in% colnames(rowData(object))) {
+            organism(rowData(object)[["geneID"]])
+        } else {
+            organism(rownames(object))
+        }
+    }
+
+
+
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("character"),
-    definition = .detectOrganism.character
+    definition = .organism.character
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("factor"),
     definition = getMethod(
-        f = "detectOrganism",
+        f = "organism",
         signature = signature("character")
     )
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("matrix"),
-    definition = .detectOrganism.matrix
+    definition = .organism.matrix
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("data.frame"),
-    definition = getMethod("detectOrganism", "matrix")
+    definition = getMethod("organism", "matrix")
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("DataFrame"),
-    definition = getMethod("detectOrganism", "matrix")
+    definition = getMethod("organism", "matrix")
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
+    f = "organism",
     signature = signature("sparseMatrix"),
-    definition = getMethod("detectOrganism", "matrix")
+    definition = getMethod("organism", "matrix")
 )
 
 
 
-#' @rdname detectOrganism
+#' @rdname organism
 #' @export
 setMethod(
-    f = "detectOrganism",
-    signature = signature("tbl_df"),
-    definition = .detectOrganism.tbl_df
+    f = "organism",
+    signature = signature("GRanges"),
+    definition = .organism.GRanges
+)
+
+
+
+#' @rdname organism
+#' @export
+setMethod(
+    f = "organism",
+    signature = signature("SummarizedExperiment"),
+    definition = .organism.SE
 )
