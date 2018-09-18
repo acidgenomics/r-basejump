@@ -26,14 +26,17 @@ NULL
 .meltCounts.SE <-  # nolint
     function(
         object,
+        assay = 1L,
         trans = c("identity", "log2", "log10"),
         nonzeroGenes = FALSE
     ) {
         validObject(object)
+        assert_is_scalar(assay)
         trans <- match.arg(trans)
+        assert_is_a_bool(nonzeroGenes)
 
         # Prepare the counts matrix.
-        counts <- assay(object)
+        counts <- assays(object)[[assay]]
         assert_is_non_empty(counts)
         # Coerce to dense matrix.
         counts <- as.matrix(counts)

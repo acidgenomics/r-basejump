@@ -9,6 +9,8 @@
 #' @param x Object.
 #' @param ... Additional arguments.
 #'
+#' @param assay `scalar`. Name or index of counts matrix slotted in [assays()].
+#'   When passing in a `string`, the name must be defined in [assayNames()].
 #' @param color `ggproto`/`ScaleDiscrete` or `NULL`. Desired ggplot2 color
 #'   scale. Must supply discrete values. When set to `NULL`, the default ggplot2
 #'   color palette will be used. If manual color definitions are desired, we
