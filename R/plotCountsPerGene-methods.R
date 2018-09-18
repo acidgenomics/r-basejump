@@ -8,8 +8,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
+#' @inheritParams meltCounts
 #' @inheritParams general
-#' @inheritParams ggplot2::scale_x_continuous
 #' @param geom `string`. Type of ggplot2 geometric object to use.
 #'
 #' @return `ggplot`.
@@ -28,7 +28,7 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         geom = c("density", "boxplot", "violin"),
-        trans = "identity",
+        trans = c("identity", "log2", "log10"),
         color = getOption("basejump.discrete.color", NULL),
         fill = getOption("basejump.discrete.fill", NULL),
         flip = getOption("basejump.flip", TRUE),
@@ -43,17 +43,22 @@ NULL
         )
         interestingGroups(object) <- interestingGroups
         geom <- match.arg(geom)
-        # `trans` passes through to `scale_*_continuous()`.
+        trans <- match.arg(trans)
         assertIsFillScaleDiscreteOrNULL(fill)
         assert_is_a_bool(flip)
         assertIsAStringOrNULL(countsAxisLabel)
         assertIsAStringOrNULL(title)
 
-        data <- meltCounts(object, assay = assay, nonzeroGenes = TRUE)
-        count <- length(unique(data[["rowname"]]))
+        data <- meltCounts(
+            object = object,
+            assay = assay,
+            nonzeroGenes = TRUE,
+            trans = trans
+        )
 
         # Subtitle
         if (is_a_string(title)) {
+            count <- length(unique(data[["rowname"]]))
             subtitle <- paste(count, "non-zero genes")
         } else {
             subtitle <- NULL
@@ -73,7 +78,6 @@ NULL
                     fill = NA,
                     size = 1L
                 ) +
-                scale_x_continuous(trans = trans) +
                 labs(x = countsAxisLabel)
         } else if (geom == "boxplot") {
             p <- p +
@@ -85,7 +89,6 @@ NULL
                     ),
                     color = "black"
                 ) +
-                scale_y_continuous(trans = trans)
                 labs(x = NULL, y = countsAxisLabel)
         } else if (geom == "violin") {
             p <- p +
@@ -98,7 +101,6 @@ NULL
                     color = "black",
                     scale = "width"
                 ) +
-                scale_y_continuous(trans = trans) +
                 labs(x = NULL, y = countsAxisLabel)
         }
 
