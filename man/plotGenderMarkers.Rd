@@ -57,6 +57,10 @@ plotGenderMarkers(object)
 }
 \seealso{
 \code{\link[=plotGene]{plotGene()}}.
+
+Other Quality Control Functions: \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenesDetected}},
+  \code{\link{plotTotalCounts}}
 }
 \author{
 Michael Steinbaugh

@@ -273,6 +273,17 @@ setGeneric(
 
 
 
+#' @rdname plotCountsPerGene
+#' @export
+setGeneric(
+    name = "plotCountsPerGene",
+    def = function(object, ...) {
+        standardGeneric("plotCountsPerGene")
+    }
+)
+
+
+
 #' @rdname plotGenderMarkers
 #' @export
 setGeneric(
@@ -290,6 +301,17 @@ setGeneric(
     name = "plotGene",
     def = function(object, ...) {
         standardGeneric("plotGene")
+    }
+)
+
+
+
+#' @rdname plotGenesDetected
+#' @export
+setGeneric(
+    name = "plotGenesDetected",
+    def = function(object, ...) {
+        standardGeneric("plotGenesDetected")
     }
 )
 
@@ -323,6 +345,17 @@ setGeneric(
     name = "plotQC",
     def = function(object, ...) {
         standardGeneric("plotQC")
+    }
+)
+
+
+
+#' @rdname plotTotalCounts
+#' @export
+setGeneric(
+    name = "plotTotalCounts",
+    def = function(object, ...) {
+        standardGeneric("plotTotalCounts")
     }
 )
 
