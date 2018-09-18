@@ -11,13 +11,11 @@
 #' @export
 #'
 #'
-#' @inheritParams base::sys.call
-#' @inheritParams base::do.call
 #' @inheritParams standardizeCall
+#' @inheritParams base::do.call
 #' @inheritParams general
 #' @param removeFormals `character`. Names of formal arguments to remove from
 #'   `args` list before passing to `do.call()`.
-#'
 #'
 #' @return `list`. Arguments to pass to [do.call()].
 #'
@@ -39,59 +37,40 @@
 #'     do.call(what = paste, args = args)
 #' }
 #' example(c("hello", "world"))
+#'
+#' example <- function(object, xxx, ...) {
+#'     do.call(
+#'         what = paste,
+#'         args = matchArgsToDoCall(
+#'             args = list(collapse = " "),
+#'             removeFormals = "xxx"
+#'         )
+#'     )
+#' }
+#' example(c("hello", "world"))
 matchArgsToDoCall <- function(
     args,
     removeFormals = NULL,
-    n = 1L,
-    definition = NULL,
-    call = NULL,
+    which = sys.parent(n = 1L),
     verbose = FALSE
 ) {
     assert_is_list(args)
     assert_is_non_empty(args)
     assert_has_names(args)
     assert_is_any_of(removeFormals, c("character", "NULL"))
-    assert_is_a_number(n)
-    assert_all_are_positive(n)
-    assert_is_any_of(definition, c("function", "NULL"))
-    assert_is_any_of(call, c("call", "NULL"))
+    assert_is_a_number(which)
     assert_is_a_bool(verbose)
 
-    # Standardize the parent call.
-    # Handle S4 `.local()`, if necessary.
-    # FIXME I don't think this is always moving up the stack correctly for S4...
-    # FIXME Yeah this isn't extracting the local definition correctly...
-    # See `convertGenesToSymbols()` for example.
-    # It's pulling `MethodDefinition` without the formals...
-    if (
-        n == 1L &&
-        isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
-    ) {
-        n <- n + 1L
-    }
-    # Get the position in the stack.
-    which <- sys.parent(n = n)
     list <- standardizeCall(
-        definition = sys.function(which = which),
-        call = sys.call(which = which),
-        expand.dots = TRUE,
-        envir = sys.frame(which = which),
+        which = which,
         return = "list",
         verbose = verbose
     )
-
-    if (is.null(definition)) {
-        definition <- list[["definition"]]
-    }
-    if (is.null(call)) {
-        call <- list[["match.call"]]
-    }
-
+    assert_is_list(list)
+    definition <- list[["definition"]]
     assert_is_function(definition)
+    call <- list[["match.call"]]
     assert_is_call(call)
-    # Check that our automatic `n` method is working.
-    assert_are_identical(list[["definition"]], definition)
-    assert_are_identical(list[["match.call"]], call)
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
@@ -108,8 +87,6 @@ matchArgsToDoCall <- function(
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
         print(list(
-            n = n,
-            which = which,
             definition = definition,
             call = call,
             args = lapply(args, class)
