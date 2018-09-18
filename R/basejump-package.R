@@ -69,7 +69,7 @@
 #' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
-#'   mcols mcols<- metadata metadata<- na.omit setdiff tail
+#'   head mcols mcols<- metadata metadata<- na.omit setdiff tail
 #' @importFrom sessioninfo session_info
 #' @importFrom stats as.formula dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
