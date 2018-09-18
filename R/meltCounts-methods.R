@@ -6,10 +6,10 @@
 #' @export
 #'
 #' @inheritParams general
+#' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
 #'   the counts matrix prior to melting, if desired. Use `"identity"` to return
 #'   unmodified (default).
-#' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #'
 #' @seealso [reshape2::melt()].
 #'
@@ -27,13 +27,13 @@ NULL
     function(
         object,
         assay = 1L,
-        trans = c("identity", "log2", "log10"),
-        nonzeroGenes = FALSE
+        nonzeroGenes = FALSE,
+        trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
         assert_is_scalar(assay)
-        trans <- match.arg(trans)
         assert_is_a_bool(nonzeroGenes)
+        trans <- match.arg(trans)
 
         # Prepare the counts matrix.
         counts <- assays(object)[[assay]]
