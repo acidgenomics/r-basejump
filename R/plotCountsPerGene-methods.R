@@ -9,6 +9,7 @@
 #' @export
 #'
 #' @inheritParams general
+#' @inheritParams ggplot2::scale_x_continuous
 #' @param geom `string`. Type of ggplot2 geometric object to use.
 #'
 #' @return `ggplot`.
@@ -27,6 +28,7 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         geom = c("density", "boxplot", "violin"),
+        trans = "identity",
         color = getOption("basejump.discrete.color", NULL),
         fill = getOption("basejump.discrete.fill", NULL),
         flip = getOption("basejump.flip", TRUE),
@@ -70,6 +72,7 @@ NULL
                     fill = NA,
                     size = 1L
                 ) +
+                scale_x_continuous(trans = trans) +
                 labs(x = countsAxisLabel)
         } else if (geom == "boxplot") {
             p <- p +
@@ -81,6 +84,7 @@ NULL
                     ),
                     color = "black"
                 ) +
+                scale_y_continuous(trans = trans)
                 labs(x = NULL, y = countsAxisLabel)
         } else if (geom == "violin") {
             p <- p +
@@ -93,6 +97,7 @@ NULL
                     color = "black",
                     scale = "width"
                 ) +
+                scale_y_continuous(trans = trans) +
                 labs(x = NULL, y = countsAxisLabel)
         }
 

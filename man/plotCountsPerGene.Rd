@@ -10,8 +10,8 @@ plotCountsPerGene(object, ...)
 
 \S4method{plotCountsPerGene}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, geom = c("density", "boxplot", "violin"),
-  color = getOption("basejump.discrete.color", NULL),
-  fill = getOption("basejump.discrete.fill", NULL),
+  trans = "identity", color = getOption("basejump.discrete.color",
+  NULL), fill = getOption("basejump.discrete.fill", NULL),
   flip = getOption("basejump.flip", TRUE), countsAxisLabel = "counts",
   title = "counts per gene")
 }
@@ -26,6 +26,17 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
 \item{geom}{\code{string}. Type of ggplot2 geometric object to use.}
+
+\item{trans}{Either the name of a transformation object, or the
+object itself. Built-in transformations include "asn", "atanh",
+"boxcox", "exp", "identity", "log", "log10", "log1p", "log2",
+"logit", "probability", "probit", "reciprocal", "reverse" and "sqrt".
+
+A transformation object bundles together a transform, it's inverse,
+and methods for generating breaks and labels. Transformation objects
+are defined in the scales package, and are called \code{name_trans}, e.g.
+\code{\link[scales:boxcox_trans]{scales::boxcox_trans()}}. You can create your own
+transformation with \code{\link[scales:trans_new]{scales::trans_new()}}.}
 
 \item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2

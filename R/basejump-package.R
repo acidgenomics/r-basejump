@@ -46,8 +46,8 @@
 #' @importFrom ggplot2 aes coord_flip element_blank element_line element_rect
 #'   element_text expand_limits facet_wrap geom_bar geom_boxplot geom_density
 #'   geom_hline geom_label geom_point geom_violin geom_vline ggplot guides labs
-#'   position_jitterdodge scale_x_continuous stat_ecdf stat_summary theme
-#'   theme_linedraw
+#'   position_jitterdodge scale_x_continuous scale_y_continuous stat_ecdf
+#'   stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
