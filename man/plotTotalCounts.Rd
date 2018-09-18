@@ -31,7 +31,7 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 Plot Total Counts
 }
 \examples{
-plotTotalCounts(bcb_small)
+plotTotalCounts(rse_small)
 }
 \seealso{
 Other Quality Control Functions: \code{\link{plotCountsPerGene}},

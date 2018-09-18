@@ -29,6 +29,7 @@
 #' @param minCounts `scalar integer`. Minimum number of counts per gene in the
 #'   counts matrix.
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
+#' @param perMillion `boolean`. Display as counts per million.
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
 #'   the first item in the vector by default.
