@@ -70,7 +70,9 @@ NULL
     } else if (any(genes %in% object[["geneID"]])) {
         table <- object[["geneID"]]
     } else {
-        stop(paste("All genes failed to map:", toString(head(genes))))
+        stop(paste(
+            "All genes failed to map:", toString(head(genes))
+        ), call. = FALSE)
     }
 
     # Match the user input `genes` vector to the table.
