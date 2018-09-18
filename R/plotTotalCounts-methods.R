@@ -6,7 +6,6 @@
 #' @export
 #'
 #' @inheritParams general
-#' @param perMillion `boolean`. Display as counts per million.
 #'
 #' @examples
 #' plotTotalCounts(rse_small)
