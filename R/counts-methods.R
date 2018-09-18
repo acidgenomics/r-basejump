@@ -20,9 +20,12 @@ NULL
 .counts.SE <-  # nolint
     function(object) {
         validObject(object)
-        assert_is_subset("counts", assayNames(object))
-        assays(object)[["counts"]]
+        if (!identical("counts", assayNames(object)[[1L]])) {
+            warning("Primary assay is not named `counts`", call. = FALSE)
+        }
+        assay(object)
     }
+
 
 
 #' @rdname counts
