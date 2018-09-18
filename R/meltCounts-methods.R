@@ -44,8 +44,8 @@ NULL
         # Remove genes with all zero counts.
         if (isTRUE(nonzeroGenes)) {
             keep <- rowSums(counts) > 0L
-            message(paste(length(keep), "non-zero genes detected"))
             counts <- counts[keep, , drop = FALSE]
+            message(paste(nrow(counts), "non-zero genes detected"))
         }
 
         # Log transform the matrix, if desired.
