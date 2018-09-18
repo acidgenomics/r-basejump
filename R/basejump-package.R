@@ -13,7 +13,8 @@
 #'   assert_all_are_non_empty_files
 #' @importFrom assertive.numbers assert_all_are_greater_than
 #'   assert_all_are_greater_than_or_equal_to assert_all_are_in_closed_range
-#'   assert_all_are_non_negative assert_all_are_positive
+#'   assert_all_are_in_range assert_all_are_non_negative assert_all_are_positive
+#'   is_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
 #'   assert_has_dimnames assert_has_dims assert_has_names
 #'   assert_has_no_duplicates assert_has_rownames assert_has_rows
@@ -43,8 +44,8 @@
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 aes coord_flip element_blank element_line element_rect
-#'   element_text expand_limits facet_wrap geom_boxplot geom_density geom_hline
-#'   geom_label geom_point geom_violin geom_vline ggplot guides labs
+#'   element_text expand_limits facet_wrap geom_bar geom_boxplot geom_density
+#'   geom_hline geom_label geom_point geom_violin geom_vline ggplot guides labs
 #'   position_jitterdodge scale_x_continuous stat_ecdf stat_summary theme
 #'   theme_linedraw
 #' @importFrom ggrepel geom_label_repel
