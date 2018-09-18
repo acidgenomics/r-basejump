@@ -81,16 +81,14 @@ standardizeCall <- function(
 
     # Extract the definition from `.local()`, if necessary.
     if (isTRUE(.local)) {
+        stopifnot(!isTRUE(.isLocalCall(call)))
         # Update definition.
         if (is(definition, "MethodDefinition")) {
             # Pull the ".local()" function out, which has the formals we need to
             # match against in `match.call()` below.
             definition <- .extractLocal(definition)
+            list[["definition"]] <- definition
         }
-        # Check call.
-        stopifnot(!isTRUE(.isLocalCall(call)))
-        # Update the verbose list.
-        list[[".local.definition"]] <- definition
     }
 
     if (isTRUE(verbose)) {
