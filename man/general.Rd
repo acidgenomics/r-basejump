@@ -38,6 +38,9 @@ directory.}
 
 \item{legend}{\code{boolean}. Show plot legend.}
 
+\item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
+counts matrix.}
+
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
