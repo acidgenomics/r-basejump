@@ -43,6 +43,7 @@ NULL
         )
         interestingGroups(object) <- interestingGroups
         geom <- match.arg(geom)
+        # `trans` passes through to `scale_*_continuous()`.
         assertIsFillScaleDiscreteOrNULL(fill)
         assert_is_a_bool(flip)
         assertIsAStringOrNULL(countsAxisLabel)
