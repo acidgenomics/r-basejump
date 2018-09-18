@@ -9,7 +9,7 @@
 #' @param perMillion `boolean`. Display as counts per million.
 #'
 #' @examples
-#' plotTotalCounts(bcb_small)
+#' plotTotalCounts(rse_small)
 NULL
 
 

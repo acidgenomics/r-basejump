@@ -43,6 +43,8 @@ counts matrix.}
 
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
+\item{perMillion}{\code{boolean}. Display as counts per million.}
+
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
 \item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks

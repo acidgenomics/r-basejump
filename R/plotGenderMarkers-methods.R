@@ -19,13 +19,12 @@
 #' @return `ggplot`.
 #'
 #' @examples
-#' # bcbioRNASeq ====
-#' object <- bcb_small
-#' plotGenderMarkers(object, normalized = "vst")
-#'
-#' # DESeqTransform ====
-#' object <- as(deseq_small, "DESeqTransform")
-#' plotGenderMarkers(object)
+#' # Minimal example doesn't contain these genes.
+#' x <- tryCatch(
+#'     expr = plotGenderMarkers(rse_small),
+#'     error = function(e) e
+#' )
+#' print(x)
 NULL
 
 
