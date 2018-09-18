@@ -41,9 +41,6 @@ NULL
     if (any(duplicated(data[["geneName"]]))) {
         x <- data[["geneName"]]
         n <- length(unique(x[duplicated(x)]))
-        message(paste(
-            "Sanitizing", n, "duplicated symbols using `make.unique()`"
-        ))
         data[["geneName"]] <- make.unique(data[["geneName"]])
     }
     data
