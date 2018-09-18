@@ -26,6 +26,8 @@
 #' @param headerLevel `scalar integer`. Markdown header level (1-7).
 #' @param interestingGroups `character`. Groups of interest.
 #' @param legend `boolean`. Show plot legend.
+#' @param minCounts `scalar integer`. Minimum number of counts per gene in the
+#'   counts matrix.
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
