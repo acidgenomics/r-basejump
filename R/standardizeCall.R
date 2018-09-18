@@ -50,19 +50,20 @@ standardizeCall <- function(
 ) {
     assert_is_a_number(which)
     assert_all_are_non_negative(which)
+    if (which < 1L) {
+        which <- 1L
+    }
     return <- match.arg(return)
     assert_is_a_bool(verbose)
 
     # Determine where the call is in the stack that we want to standardize.
     # Note that this differs for S4 methods containing a nested `.local()`.
     .local <- .isLocalCall(sys.call(which = which))
-    if (isTRUE(.local)) {
+    if (isTRUE(.local) && which > 1L) {
         which <- which - 1L
     }
-    if (which < 1L) {
-        which <- 1L
-    }
 
+    # Local the parameters we need to sanitize call.
     definition <- sys.function(which = which)
     call <- sys.call(which = which)
     envir <- sys.frame(which = which)
