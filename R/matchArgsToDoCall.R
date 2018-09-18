@@ -57,41 +57,41 @@ matchArgsToDoCall <- function(
     assert_is_any_of(call, c("call", "NULL"))
     assert_is_a_bool(verbose)
 
+    # Standardize the parent call.
+    # Handle S4 `.local()`, if necessary.
+    # FIXME I don't think this is always moving up the stack correctly for S4...
+    # FIXME Yeah this isn't extracting the local definition correctly...
+    # See `convertGenesToSymbols()` for example.
+    # It's pulling `MethodDefinition` without the formals...
     if (
-        is.null(definition) &&
-        is.null(call)
+        n == 1L &&
+        isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
     ) {
-        # Handle S4 `.local()`, if necessary.
-        if (
-            n == 1L &&
-            isTRUE(.isLocalCall(sys.call(sys.parent(n = n))))
-        ) {
-            n <- n + 1L
-        }
-
-        # Get the position in the stack.
-        which <- sys.parent(n = n)
-
-        list <- standardizeCall(
-            definition = sys.function(which = which),
-            call = sys.call(which = which),
-            expand.dots = TRUE,
-            envir = sys.frame(which = which),
-            return = "list",
-            verbose = verbose
-        )
-
-        # Get the formals from the definition.
-        definition <- list[["definition"]]
-        assert_is_function(definition)
-
-        # Get the matched (standardized) call.
-        call <- list[["match.call"]]
-        assert_is_call(call)
-    } else {
-        assert_is_function(definition)
-        assert_is_call(call)
+        n <- n + 1L
     }
+    # Get the position in the stack.
+    which <- sys.parent(n = n)
+    list <- standardizeCall(
+        definition = sys.function(which = which),
+        call = sys.call(which = which),
+        expand.dots = TRUE,
+        envir = sys.frame(which = which),
+        return = "list",
+        verbose = verbose
+    )
+
+    if (is.null(definition)) {
+        definition <- list[["definition"]]
+    }
+    if (is.null(call)) {
+        call <- list[["match.call"]]
+    }
+
+    assert_is_function(definition)
+    assert_is_call(call)
+    # Check that our automatic `n` method is working.
+    assert_are_identical(list[["definition"]], definition)
+    assert_are_identical(list[["match.call"]], call)
 
     # Prepare the `args` list.
     callArgs <- as.list(call)[-1L] %>%
@@ -108,6 +108,9 @@ matchArgsToDoCall <- function(
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
         print(list(
+            n = n,
+            which = which,
+            definition = definition,
             call = call,
             args = lapply(args, class)
         ))
