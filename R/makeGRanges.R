@@ -71,8 +71,6 @@
 #'   "`GRCh38`"). If set `NULL`, defaults to the most recent build available.
 #' @param release `scalar integer` or `NULL`. Release version (e.g. `90`). If
 #'   set `NULL`, defaults to the most recent release available.
-#' @param metadata `boolean`. Include the AnnotationHub metadata inside a
-#'   `list`.
 #'
 #' @return
 #' - `makeGRangesFromEnsembl()`, `makeGRangesFromGFF()`: `GRanges`.
@@ -123,19 +121,8 @@ makeGRangesFromEnsembl <- function(
     organism,
     level = c("genes", "transcripts"),
     build = NULL,
-    release = NULL,
-    metadata = FALSE,
-    ...
+    release = NULL
 ) {
-    # Legacy arguments ---------------------------------------------------------
-    call <- match.call()
-    # format
-    if ("format" %in% names(call)) {
-        warning("Use `level` instead of `format`")
-        level <- call[["format"]]
-    }
-
-    # Assert checks ------------------------------------------------------------
     assert_is_a_string(organism)
     # Standard organism query, if necessary.
     organism <- gsub("_", " ", makeNames(organism))
@@ -161,7 +148,6 @@ makeGRangesFromEnsembl <- function(
         assert_all_are_positive(release)
         release <- as.integer(release)
     }
-    assert_is_a_bool(metadata)
 
     # Ensure `select()` isn't masked by ensembldb and/or AnnotationDbi.
     userAttached <- .packages()
@@ -177,13 +163,13 @@ makeGRangesFromEnsembl <- function(
         )
     ) {
         # GRCh37 release 75
-        id <- "EnsDb.Hsapiens.v75"
-        if (requireNamespace(id, quietly = TRUE)) {
-            edb <- get(id, envir = asNamespace(id), inherits = FALSE)
+        ahid <- "EnsDb.Hsapiens.v75"
+        if (requireNamespace(ahid, quietly = TRUE)) {
+            edb <- get(ahid, envir = asNamespace(ahid), inherits = FALSE)
         } else {
             # nocov start
             stop(paste(
-                "GRCh37 genome build requires the", id, "package"
+                "GRCh37 genome build requires the", ahid, "package"
             ))
             # nocov end
         }
@@ -274,35 +260,45 @@ makeGRangesFromEnsembl <- function(
 
         mcols <- tail(mcols, 1L)
         message(mcols[["title"]])
-        id <- rownames(mcols)
+        ahid <- rownames(mcols)
 
         # This step will also output `txProgressBar()` on a fresh install. Using
         # `capture.output()` here again to suppress console output.
         # Additionally, it attaches ensembldb and other Bioconductor dependency
         # packages, which will mask some tidyverse functions (e.g. `select()`).
         invisible(capture.output(
-            edb <- suppressMessages(ah[[id]])
+            edb <- suppressMessages(ah[[ahid]])
         ))
     }
 
     # Get annotations from EnsDb -----------------------------------------------
     assert_is_all_of(edb, "EnsDb")
 
-    meta <- metadata(edb)
-    assert_is_data.frame(meta)
-    meta <- rbind(c("id", id), meta)
-    meta <- as(meta, "tbl_df")
-
-    # Stash the AnnotationHub ID.
-    build <- meta[meta[["name"]] == "genome_build", "value", drop = TRUE]
+    # Get the genome build from the ensembldb metdata.
+    build <- metadata(edb) %>%
+        as("tbl_df") %>%
+        filter(name == "genome_build") %>%
+        pull("value")
     assert_is_a_string(build)
 
+    # Ready to create our metadata list to stash inside the GRanges.
+    metadata <- list(
+        AnnotationHubID = ahid,
+        organism = organism(edb),
+        ensembldb = metadata(edb),
+        build = build,
+        release = ensemblVersion(edb),
+        level = level,
+        version = packageVersion("basejump"),
+        date = Sys.Date()
+    )
+
     message(paste(
-        paste(li, "id:", deparse(id)),
-        paste(li, "organism:", deparse(organism(edb))),
-        paste(li, "build:", deparse(build)),
-        paste(li, "release:", deparse(ensemblVersion(edb))),
-        paste(li, "level:", deparse(level)),
+        paste(li, "AnnotationHub:", deparse(metadata[["AnnotationHubID"]])),
+        paste(li, "Organism:", deparse(metadata[["organism"]])),
+        paste(li, "Build:", deparse(metadata[["build"]])),
+        paste(li, "Release:", deparse(metadata[["release"]])),
+        paste(li, "Level:", deparse(metadata[["level"]])),
         sep = "\n"
     ))
 
@@ -366,14 +362,10 @@ makeGRangesFromEnsembl <- function(
     ))
     assert_are_identical(.packages(), userAttached)
 
-    gr <- .makeGRanges(gr)
+    # Always stash the metadata.
+    metadata(gr) <- metadata
 
-    # Include the EnsDB metadata inside a list, if desired.
-    if (isTRUE(metadata)) {
-        list(data = gr, metadata = meta)
-    } else {
-        gr
-    }
+    .makeGRanges(gr)
 }
 
 

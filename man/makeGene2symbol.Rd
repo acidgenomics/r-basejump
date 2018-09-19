@@ -7,7 +7,7 @@
 \alias{makeGene2symbolFromGTF}
 \title{Make Gene-to-Symbol Mappings}
 \usage{
-makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL, ...)
+makeGene2symbolFromEnsembl(organism, build = NULL, release = NULL)
 
 makeGene2symbolFromGFF(file)
 
@@ -21,8 +21,6 @@ makeGene2symbolFromGTF(file)
 
 \item{release}{\code{scalar integer} or \code{NULL}. Release version (e.g. \code{90}). If
 set \code{NULL}, defaults to the most recent release available.}
-
-\item{...}{Additional arguments.}
 
 \item{file}{\code{string}. File path.}
 }
