@@ -269,7 +269,10 @@ test_that("sampleData : SummarizedExperiment", {
     # Sample data should be identical to colData, but contain an extra
     # interestingGroups column.
     expect_identical(
-        object = setdiff(colnames(sampleData(object)), colnames(colData(object))),
+        object = setdiff(
+            x = colnames(sampleData(object)),
+            y = colnames(colData(object))
+        ),
         expected = "interestingGroups"
     )
     expect_identical(
