@@ -79,6 +79,7 @@ test_that("assertFormalGene2symbol", {
 
 
 # assertFormalInterestingGroups ================================================
+# TODO Require interesting groups to be defined as factor columns.
 test_that("assertFormalInterestingGroups", {
     expect_silent(
         assertFormalInterestingGroups(
@@ -95,16 +96,6 @@ test_that("assertFormalInterestingGroups", {
         ),
         regexp = "is_subset : The element 'XXX'"
     )
-
-    # FIXME
-    # Require interesting groups to be defined as factor columns.
-    # expect_error(
-    #     assertFormalInterestingGroups(
-    #         object = rse_small,
-    #         interestingGroups = c("totalReads", "exonicRate")
-    #     ),
-    #     "The interesting groups \"totalReads, exonicRate\" are not factor"
-    # )
 })
 
 
@@ -344,7 +335,7 @@ test_that("assertIsTx2gene", {
 
 
 # assertIsURL ==================================================================
-# FIXME Need to improve this
+# TODO Need to improve this.
 test_that("isURL", {
     expect_false(isURL("XXX"))
     expect_false(isURL(1L))

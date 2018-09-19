@@ -1,6 +1,8 @@
-context("Annotation Functions")
+# TODO Work on stashing gene2symbol, tx2gene here for better speed.
 
-# FIXME Work on stashing gene2symbol, tx2gene for better speed.
+
+
+context("Annotation Functions")
 
 release <- 87L
 
@@ -154,7 +156,7 @@ test_that("convertTranscriptsToGenes : character", {
     )
 })
 
-# FIXME Improve the collapse unit test here.
+# TODO Improve the collapse unit test here.
 test_that("convertTranscriptsToGenes : matrix", {
     object <- matrix(
         data = seq(1L:8L),
@@ -602,7 +604,7 @@ with_parameters_test_that(
 
 
 # organism =====================================================================
-# FIXME Parameterize these.
+# TODO Parameterize these.
 test_that("organism : Homo sapiens", {
     object <- "Homo sapiens"
     expect_identical(object, organism("Homo sapiens"))
