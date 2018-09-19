@@ -1,7 +1,3 @@
-# FIXME Need to improve handling if user passes in genes that don't map.
-
-
-
 #' Plot Gene Expression
 #'
 #' @name plotGene
