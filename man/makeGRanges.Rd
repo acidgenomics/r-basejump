@@ -11,9 +11,9 @@
 makeGRangesFromEnsembl(organism, level = c("genes", "transcripts"),
   build = NULL, release = NULL)
 
-makeGRangesFromGFF(file, level = c("genes", "transcripts"), ...)
+makeGRangesFromGFF(file, level = c("genes", "transcripts"))
 
-makeGRangesFromGTF(file, level = c("genes", "transcripts"), ...)
+makeGRangesFromGTF(file, level = c("genes", "transcripts"))
 
 annotable(organism, level = c("genes", "transcripts"), build = NULL,
   release = NULL)
@@ -30,8 +30,6 @@ annotable(organism, level = c("genes", "transcripts"), build = NULL,
 set \code{NULL}, defaults to the most recent release available.}
 
 \item{file}{\code{string}. File path.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \itemize{
