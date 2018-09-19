@@ -379,6 +379,15 @@ makeGRangesFromGFF <- function(
     # Note that `readGFF()` has assert checks for file (see below).
     level <- match.arg(level)
 
+    # Stash the formals used into a metadata list, which we'll slot into
+    # our GRanges at the end of the call.
+    metadata <- list(
+        file = file,
+        level = level,
+        version = packageVersion("basejump"),
+        date = Sys.Date()
+    )
+
     # Read GFF -----------------------------------------------------------------
     file <- localOrRemoteFile(file)
     gff <- readGFF(file)
@@ -521,12 +530,8 @@ makeGRangesFromGFF <- function(
         }
     }
 
-    # Stash metadata into GRanges.
-    # Consider attempting to stash organism here in a future update.
-    metadata(gr) <- list(
-        file = file,
-        level = level
-    )
+    # Stash our metadata into the GRanges.
+    metadata(gr) <- metadata
 
     .makeGRanges(gr)
 }
