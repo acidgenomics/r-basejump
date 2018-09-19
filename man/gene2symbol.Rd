@@ -3,10 +3,13 @@
 \docType{methods}
 \name{gene2symbol}
 \alias{gene2symbol}
+\alias{gene2symbol,GRanges-method}
 \alias{gene2symbol,SummarizedExperiment-method}
 \title{Gene-to-Symbol Mappings}
 \usage{
 gene2symbol(object, ...)
+
+\S4method{gene2symbol}{GRanges}(object)
 
 \S4method{gene2symbol}{SummarizedExperiment}(object)
 }

@@ -20,16 +20,31 @@ NULL
 
 
 
+.gene2symbol.GRanges <-  # nolint
+    function(object) {
+        validObject(object)
+        .makeGene2symbol(data)
+    }
+
+
+
 .gene2symbol.SE <-  # nolint
     function(object) {
         validObject(object)
         data <- rowData(object)
         rownames(data) <- rownames(object)
-        if (!all(c("geneID", "geneName") %in% colnames(data))) {
-            stop("Object does not contain gene-to-symbol mappings")
-        }
         .makeGene2symbol(data)
     }
+
+
+
+#' @rdname gene2symbol
+#' @export
+setMethod(
+    f = "gene2symbol",
+    signature = signature("GRanges"),
+    definition = .gene2symbol.GRanges
+)
 
 
 
