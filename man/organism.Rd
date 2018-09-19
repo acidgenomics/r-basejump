@@ -75,15 +75,19 @@ organism(c("ENSG00000000003", "ENSMUSG00000000001"))
 organism(rse_small)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tx2gene}}
+Other Annotation Functions: \code{\link{broadClass}},
+  \code{\link{convertGenesToSymbols}},
+  \code{\link{convertTranscriptsToGenes}},
+  \code{\link{convertUCSCBuildToEnsembl}},
+  \code{\link{eggnog}}, \code{\link{emptyRanges}},
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
+  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
+  \code{\link{panther}},
+  \code{\link{stripTranscriptVersions}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{Annotation Functions}
