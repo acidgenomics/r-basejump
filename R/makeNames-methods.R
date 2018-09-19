@@ -37,6 +37,8 @@
 #'   useful functions that provide similar sanitization support, but isn't
 #'   designed to work natively with [Bioconductor](https://bioconductor.org) and
 #'   S4 object classes.
+#' - [lettercase](https://cran.r-project.org/package=lettercase).
+#' - [snakecase](https://tazinho.github.io/snakecase).
 #'
 #' @examples
 #' loadRemoteData("http://basejump.seq.cloud/mn.rda")

@@ -264,6 +264,8 @@ upperCamel(x) \%>\% names()
 useful functions that provide similar sanitization support, but isn't
 designed to work natively with \href{https://bioconductor.org}{Bioconductor} and
 S4 object classes.
+\item \href{https://cran.r-project.org/package=lettercase}{lettercase}.
+\item \href{https://tazinho.github.io/snakecase}{snakecase}.
 }
 
 Other Sanitization Functions: \code{\link{collapseToString}},

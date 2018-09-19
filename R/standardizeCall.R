@@ -7,7 +7,7 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @inheritParams base::match.call
+#' @inheritParams base::sys.call
 #' @inheritParams general
 #'
 #' @return
@@ -44,57 +44,55 @@
 #' )
 #' testing(aaa, bbb)
 standardizeCall <- function(
+    which = sys.parent(n = 1L),
     return = c("call", "list"),
     verbose = FALSE
 ) {
+    assert_is_a_number(which)
+    assert_all_are_non_negative(which)
+    if (which < 1L) {
+        which <- 1L
+    }
     return <- match.arg(return)
     assert_is_a_bool(verbose)
+
+    # Determine where the call is in the stack that we want to standardize.
+    # Note that this differs for S4 methods containing a nested `.local()`.
+    .local <- .isLocalCall(sys.call(which = which))
+    if (isTRUE(.local) && which > 1L) {
+        which <- which - 1L
+    }
+
+    # Local the parameters we need to sanitize call.
+    definition <- sys.function(which = which)
+    call <- sys.call(which = which)
+    envir <- sys.frame(which = which)
 
     list <- list(
         sys.status = sys.status(),
         sys.nframe = sys.nframe(),
-        sys.parent.1 = sys.parent(n = 1L),
-        sys.parent.2 = sys.parent(n = 2L),
-        sys.parent.3 = sys.parent(n = 3L),
+        sys.parent = sys.parent(),
+        .local = .local,
+        which = which,
         definition = definition,
         call = call,
-        envir = envir,
-        .local = .isLocalCall(call)
+        envir = envir
     )
 
-    # Print the call stack, for debugging.
-    if (isTRUE(verbose)) {
-        print(list)
+    # Extract the definition from `.local()`, if necessary.
+    if (isTRUE(.local)) {
+        stopifnot(!isTRUE(.isLocalCall(call)))
+        # Update definition.
+        if (is(definition, "MethodDefinition")) {
+            # Pull the ".local()" function out, which has the formals we need to
+            # match against in `match.call()` below.
+            definition <- .extractLocal(definition)
+            list[["definition"]] <- definition
+        }
     }
 
-    # Check for S4 `.local()` and move up the stack an extra level accordingly.
-    if (.isLocalCall(call)) {
-        which <- sys.parent(n = 2L)
-        definition <- sys.function(which = which)
-        stopifnot(is(definition, "MethodDefinition"))
-        # Pull the ".local" function out, which has the formals we need to
-        # match against in `match.call()` below.
-        definition <- .extractLocal(definition)
-        call <- sys.call(which = which)
-        stopifnot(!isTRUE(.isLocalCall(call)))
-        envir <- sys.frame(which = which)
-        # Update the verbose list.
-        list <- list(
-            .local.definition = definition,
-            .local.call = call,
-            .local.envir = envir
-        )
-    } else {
-        which <- sys.parent(n = 1L)
-    }
-    list[["which"]] <- which
     if (isTRUE(verbose)) {
-        print(list(
-            which = which,
-            definition = definition,
-            call = call,
-            envir = envir
-        ))
+        print(list)
     }
 
     # Now ready to match (expand) the call.
@@ -103,12 +101,13 @@ standardizeCall <- function(
     call <- match.call(
         definition = definition,
         call = call,
-        expand.dots = expand.dots,
+        expand.dots = TRUE,
         envir = envir
     )
     list[["match.call"]] <- call
+
     if (isTRUE(verbose)) {
-        print(call)
+        print(list(match.call = call))
     }
 
     # Check call integrity before returning.
@@ -124,12 +123,6 @@ standardizeCall <- function(
         call
     }
 }
-
-# Assign the formals.
-# Ensure the function matches `base::match.call()`.
-f <- formals(match.call)
-f <- c(f, formals(standardizeCall))
-formals(standardizeCall) <- f
 
 
 

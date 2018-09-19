@@ -6,10 +6,10 @@
 #' @export
 #'
 #' @inheritParams general
+#' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
 #'   the counts matrix prior to melting, if desired. Use `"identity"` to return
 #'   unmodified (default).
-#' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #'
 #' @seealso [reshape2::melt()].
 #'
@@ -26,14 +26,17 @@ NULL
 .meltCounts.SE <-  # nolint
     function(
         object,
-        trans = c("identity", "log2", "log10"),
-        nonzeroGenes = FALSE
+        assay = 1L,
+        nonzeroGenes = FALSE,
+        trans = c("identity", "log2", "log10")
     ) {
         validObject(object)
+        assert_is_scalar(assay)
+        assert_is_a_bool(nonzeroGenes)
         trans <- match.arg(trans)
 
         # Prepare the counts matrix.
-        counts <- assay(object)
+        counts <- assays(object)[[assay]]
         assert_is_non_empty(counts)
         # Coerce to dense matrix.
         counts <- as.matrix(counts)
@@ -41,8 +44,8 @@ NULL
         # Remove genes with all zero counts.
         if (isTRUE(nonzeroGenes)) {
             keep <- rowSums(counts) > 0L
-            message(paste(length(keep), "non-zero genes detected"))
             counts <- counts[keep, , drop = FALSE]
+            message(paste(nrow(counts), "non-zero genes detected"))
         }
 
         # Log transform the matrix, if desired.

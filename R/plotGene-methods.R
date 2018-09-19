@@ -1,5 +1,4 @@
-# FIXME Gene symbol message pops up even when we pass in IDs.
-# Sanitizing 110 duplicated symbols using `make.unique()`
+# FIXME Need to improve handling if user passes in genes that don't map.
 
 
 
@@ -149,7 +148,7 @@ NULL
         assert_is_character(genes)
         # Limit the number of genes that can be plotted at once.
         assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)
-        genes <- mapGenesToRownames(object, genes)
+        genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups

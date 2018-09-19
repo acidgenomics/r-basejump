@@ -12,12 +12,17 @@
 
 \item{...}{Additional arguments.}
 
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
+
 \item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
 recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
 To set the discrete color palette globally, use
 \code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+
+\item{countsAxisLabel}{\code{string}. Counts axis label.}
 
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
@@ -27,6 +32,16 @@ directory.}
 
 \item{file}{\code{string}. File path.}
 
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
+Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
+palette will be used. If manual color definitions are desired, we recommend
+using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
+To set the discrete fill palette globally, use
+\code{options(bcbio.discrete.fill = scale_fill_viridis_d())}.}
+
+\item{flip}{\code{boolean}. Flip x and y axes. Recommended for quality control
+plots containing many samples.}
+
 \item{genes}{\code{character}. Gene identifiers.}
 
 \item{headerLevel}{\code{scalar integer}. Markdown header level (1-7).}
@@ -35,7 +50,15 @@ directory.}
 
 \item{legend}{\code{boolean}. Show plot legend.}
 
+\item{limit}{\code{scalar numeric}. Threshold to denote on the plot, using a
+dashed line.}
+
+\item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
+counts matrix.}
+
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
+
+\item{perMillion}{\code{boolean}. Display as counts per million.}
 
 \item{plotlist}{\code{list} containing \code{ggplot} objects.}
 
