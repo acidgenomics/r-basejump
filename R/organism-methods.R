@@ -168,7 +168,7 @@ NULL
         # Parse the vector until we get a match.
         x <- NA_character_
         i <- 1L
-        while(
+        while (
             is.na(x) &&
             i <= min(length(object), 50L)
         ) {
