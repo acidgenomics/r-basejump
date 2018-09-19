@@ -29,7 +29,6 @@ NULL
 
 
 
-# FIXME Improve error message if not human or mouse.
 .plotGenderMarkers.RSE <-  # nolint
     function(object, style = "wide") {
         validObject(object)
