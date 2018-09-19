@@ -374,18 +374,8 @@ makeGRangesFromEnsembl <- function(
 #' @export
 makeGRangesFromGFF <- function(
     file,
-    level = c("genes", "transcripts"),
-    ...
+    level = c("genes", "transcripts")
 ) {
-    # Legacy arguments ---------------------------------------------------------
-    call <- match.call()
-    # format
-    if ("format" %in% names(call)) {
-        warning("Use `level` instead of `format`")
-        level <- call[["format"]]
-    }
-
-    # Assert checks ------------------------------------------------------------
     # Note that `readGFF()` has assert checks for file (see below).
     level <- match.arg(level)
 
@@ -530,6 +520,13 @@ makeGRangesFromGFF <- function(
             mcols(gr) <- merge
         }
     }
+
+    # Stash metadata into GRanges.
+    # Consider attempting to stash organism here in a future update.
+    metadata(gr) <- list(
+        file = file,
+        level = level
+    )
 
     .makeGRanges(gr)
 }
