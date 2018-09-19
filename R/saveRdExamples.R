@@ -40,7 +40,7 @@ saveRdExamples <- function(
 
     # If no function is specified, save everything.
     if (is.null(Rd)) {
-        Rd <- names(db)
+        Rd <- names(db)  # nolint
     }
 
     # Check that the requiested function(s) are valid.
