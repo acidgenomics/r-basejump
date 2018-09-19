@@ -8,19 +8,22 @@
 \usage{
 meltCounts(object, ...)
 
-\S4method{meltCounts}{SummarizedExperiment}(object, trans = c("identity",
-  "log2", "log10"), nonzeroGenes = FALSE)
+\S4method{meltCounts}{SummarizedExperiment}(object, assay = 1L,
+  nonzeroGenes = FALSE, trans = c("identity", "log2", "log10"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
+
+\item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
+
 \item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
 the counts matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
-
-\item{nonzeroGenes}{\code{boolean}. Return only non-zero genes.}
 }
 \value{
 \code{grouped_df}, grouped by \code{colname} (e.g. sample ID) and \code{rowname}

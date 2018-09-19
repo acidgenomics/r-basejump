@@ -47,16 +47,19 @@ chromosomes. Currently only \emph{Homo sapiens} and \emph{Mus musculus}
 genomes are supported.
 }
 \examples{
-# bcbioRNASeq ====
-object <- bcb_small
-plotGenderMarkers(object, normalized = "vst")
-
-# DESeqTransform ====
-object <- as(deseq_small, "DESeqTransform")
-plotGenderMarkers(object)
+# Minimal example doesn't contain these genes.
+x <- tryCatch(
+    expr = plotGenderMarkers(rse_small),
+    error = function(e) e
+)
+print(x)
 }
 \seealso{
 \code{\link[=plotGene]{plotGene()}}.
+
+Other Quality Control Functions: \code{\link{plotCountsPerGene}},
+  \code{\link{plotGenesDetected}},
+  \code{\link{plotTotalCounts}}
 }
 \author{
 Michael Steinbaugh

@@ -20,17 +20,20 @@ mapGenesToRownames(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{gene2symbol}(object, genes)
+\S4method{mapGenesToRownames}{gene2symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes)
+\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes,
+  strict = TRUE)
 
-\S4method{mapGenesToIDs}{gene2symbol}(object, genes)
+\S4method{mapGenesToIDs}{gene2symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes)
+\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes,
+  strict = TRUE)
 
-\S4method{mapGenesToSymbols}{gene2symbol}(object, genes)
+\S4method{mapGenesToSymbols}{gene2symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes)
+\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes,
+  strict = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -38,6 +41,10 @@ mapGenesToSymbols(object, ...)
 \item{...}{Additional arguments.}
 
 \item{genes}{\code{character}. Gene identifiers.}
+
+\item{strict}{\code{boolean}. Require all genes to match. Recommended by default.
+If set \code{FALSE}, instead will return a warning to the user, and subset the
+genes vector to only include matches.}
 }
 \value{
 \code{character}.
