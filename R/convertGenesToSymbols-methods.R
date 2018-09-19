@@ -101,10 +101,7 @@ NULL
     }
 f1 <- formals(.convertGenesToSymbols.character)
 f2 <- formals(makeGRangesFromEnsembl)
-f2 <- f2[setdiff(
-    x = names(f2),
-    y = c(names(f1), "format", "metadata")
-)]
+f2 <- f2[setdiff(names(f2), c(names(f1), "level"))]
 f <- c(f1, f2)
 formals(.convertGenesToSymbols.character) <- f
 
