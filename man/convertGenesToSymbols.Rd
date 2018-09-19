@@ -18,15 +18,15 @@ convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol = NULL,
   organism = NULL, level = c("genes", "transcripts"), build = NULL,
-  release = NULL, ...)
+  release = NULL)
 
 \S4method{convertGenesToSymbols}{matrix}(object, gene2symbol = NULL,
   organism = NULL, level = c("genes", "transcripts"), build = NULL,
-  release = NULL, ...)
+  release = NULL)
 
 \S4method{convertGenesToSymbols}{sparseMatrix}(object,
   gene2symbol = NULL, organism = NULL, level = c("genes",
-  "transcripts"), build = NULL, release = NULL, ...)
+  "transcripts"), build = NULL, release = NULL)
 
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
