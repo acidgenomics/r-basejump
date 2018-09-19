@@ -23,6 +23,7 @@ reference:
     - makeGRanges
     - makeTx2gene
     - mgi2ensembl
+    - organism
     - starts_with("strip")
     - panther
     - tx2gene
@@ -46,7 +47,6 @@ reference:
     - mapGenesToIDs
     - meltCounts
     - metrics
-    - organism
     - sampleData
     - sampleNames
     - selectSamples

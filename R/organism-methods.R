@@ -15,7 +15,7 @@
 #' - *Ovis aries* (sheep)
 #'
 #' @name organism
-#' @family Data Functions
+#' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @importFrom BiocGenerics organism
 #' @export
