@@ -1,5 +1,6 @@
 # S3 classes ===================================================================
 # tibble
+# Note that `tbl_df` is properly exported in v1.4.99.9000.
 setOldClass(Classes = class(tibble::tibble()))
 
 
