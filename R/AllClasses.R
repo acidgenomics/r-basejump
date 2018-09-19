@@ -1,6 +1,6 @@
 # S3 classes ===================================================================
 # tibble
-setOldClass(Classes = "tbl_df")
+setOldClass(Classes = class(tibble::tibble()))
 
 
 
