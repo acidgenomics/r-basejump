@@ -51,8 +51,7 @@ slot:
 \itemize{
 \item \code{date}: Today's date, returned from \code{\link[base:Sys.Date]{base::Sys.Date()}}.
 \item \code{wd}: Working directory, returned from \code{\link[base:getwd]{base::getwd()}}.
-\item \code{utilsSessionInfo}: \code{\link[utils:sessionInfo]{utils::sessionInfo()}}.
-\item \code{devtoolsSessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}}.
+\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
 }
 }
 \note{

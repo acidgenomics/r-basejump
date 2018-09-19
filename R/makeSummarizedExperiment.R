@@ -9,8 +9,7 @@
 #'
 #' - `date`: Today's date, returned from [base::Sys.Date()].
 #' - `wd`: Working directory, returned from [base::getwd()].
-#' - `utilsSessionInfo`: [utils::sessionInfo()].
-#' - `devtoolsSessionInfo`: [sessioninfo::session_info()].
+#' - `sessionInfo`: [sessioninfo::session_info()] return.
 #'
 #' @note Column and rows always return sorted alphabetically.
 #'
@@ -263,8 +262,7 @@ makeSummarizedExperiment <- function(
     metadata <- as.list(metadata)
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- normalizePath(".", winslash = "/", mustWork = TRUE)
-    metadata[["utilsSessionInfo"]] <- sessionInfo()
-    metadata[["devtoolsSessionInfo"]] <- session_info(include_base = TRUE)
+    metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
     metadata <- Filter(Negate(is.null), metadata)
 
     # Return -------------------------------------------------------------------
