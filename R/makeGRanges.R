@@ -251,9 +251,9 @@ makeGRangesFromEnsembl <- function(
                     "No ID matched on AnnotationHub",
                     packageVersion("AnnotationHub")
                 ),
-                paste(li, "organism:", deparse(organism)),
-                paste(li, "build:", deparse(build)),
-                paste(li, "release:", deparse(release)),
+                paste(li, "Organism:", deparse(organism)),
+                paste(li, "Build:", deparse(build)),
+                paste(li, "Release:", deparse(release)),
                 sep = "\n"
             ))
         }
@@ -556,6 +556,4 @@ annotable <-
         )
         as(gr, "tbl_df")
     }
-f <- formals(makeGRangesFromEnsembl)
-f <- f[setdiff(names(f), "metadata")]
-formals(annotable) <- f
+formals(annotable) <- formals(makeGRangesFromEnsembl)
