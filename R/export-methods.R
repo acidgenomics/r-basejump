@@ -70,7 +70,7 @@ NULL
 .export.sparseMatrix <-  # nolint
     function(x, file, format) {
         assert_is_non_empty(x)
-        choices = c("mtx", "mtx.gz")
+        choices <- c("mtx", "mtx.gz")
 
         if (missing(file) && missing(format)) {
             stop("Must specify 'file' and/or 'format'", call. = FALSE)
