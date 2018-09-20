@@ -22,7 +22,6 @@ NULL
 
 .gene2symbol.GRanges <-  # nolint
     function(object) {
-        validObject(object)
         .makeGene2symbol(object)
     }
 
@@ -30,7 +29,6 @@ NULL
 
 .gene2symbol.SE <-  # nolint
     function(object) {
-        validObject(object)
         data <- rowData(object)
         rownames(data) <- rownames(object)
         .makeGene2symbol(data)

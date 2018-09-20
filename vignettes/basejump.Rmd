@@ -116,12 +116,12 @@ S4Vectors::mcols(grch38) %>% colnames()
 S4Vectors::mcols(grch38) %>% glimpse()
 ```
 
-Transcript-level annotations are also supported, using the `format = "transcripts"` argument.
+Transcript-level annotations are also supported, using the `level = "transcripts"` argument.
 
 ```{r}
 transcripts <- makeGRangesFromEnsembl(
     organism = "Homo sapiens",
-    format = "transcripts"
+    level = "transcripts"
 )
 summary(transcripts)
 S4Vectors::mcols(transcripts) %>% glimpse()
@@ -155,12 +155,13 @@ GenomeInfoDb::seqinfo(grch37)
 
 ### `tibble` return
 
-For convenience, if you prefer to return annotations as a `tibble` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function and then automatically coerces the return to a `tibble` using our `as(object, Class = "tbl_df")` coercion method. For quick access to current [Ensembl][] annotations in `tibble` format, we also recommend the [annotables][] package.
+For convenience, if you prefer to return annotations as a `tibble` instead of `GRanges`, we provide the `annotable()` function. Internally, this calls the `makeGRangesFromEnsembl()` function and then automatically coerces the return to a `tibble` using our `as(object, Class = "tbl_df")` coercion method. For quick access to current [Ensembl][] annotations as a `tibble`, we also recommend the [annotables][] package.
 
 ```{r, message=FALSE}
-genes <- annotable("Homo sapiens")
+genes <- annotable("Homo sapiens", level = "genes")
 glimpse(genes)
-transcripts <- annotable("Homo sapiens")
+
+transcripts <- annotable("Homo sapiens", level = "transcripts")
 glimpse(transcripts)
 ```
 
@@ -176,9 +177,10 @@ Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the `
 
 ```{r, message=FALSE}
 gene2symbol <- makeGene2symbolFromEnsembl("Homo sapiens")
-glimpse(gene2symbol)
+print(gene2symbol)
+
 tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
-glimpse(tx2gene)
+print(tx2gene)
 ```
 
 ## Parse GTF/GFF files
