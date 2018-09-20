@@ -23,7 +23,7 @@ NULL
 .gene2symbol.GRanges <-  # nolint
     function(object) {
         validObject(object)
-        .makeGene2symbol(data)
+        .makeGene2symbol(object)
     }
 
 
