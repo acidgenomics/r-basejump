@@ -31,8 +31,12 @@ NULL
 
 
 .plotQC.SE <-  # nolint
-    function(object) {
-        assay <- assay(object)
+    function(object, assay = 1L) {
+        validObject(object)
+        assert_is_scalar(assay)
+
+        assay <- assays(object)[[assay]]
+
         # Counts per row (gene).
         rowSums <- .plotSumsECDF(assay, fun = rowSums) +
             labs(title = "counts per row")
