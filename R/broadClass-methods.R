@@ -123,6 +123,7 @@ NULL
                 x = data[["biotype"]],
                 ignore.case = TRUE
             ) ~ "tcr",
+            # Consider using `NA_character_` here instead.
             TRUE ~ "other"
         )
 
