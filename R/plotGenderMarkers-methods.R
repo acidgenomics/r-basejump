@@ -56,10 +56,8 @@ NULL
             )
         )
     }
-f1 <- formals(.plotGenderMarkers.RSE)
-f2 <- methodFormals(f = "plotGene", signature = "SummarizedExperiment")
-f2 <- f2[setdiff(names(f2), c(names(f1), "genes"))]
-f <- c(f1, f2)
+f <- methodFormals(f = "plotGene", signature = "SummarizedExperiment")
+f <- f[setdiff(names(f), "genes")]
 f[["style"]] <- "wide"
 formals(.plotGenderMarkers.RSE) <- f
 
