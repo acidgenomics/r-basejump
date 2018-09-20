@@ -115,13 +115,13 @@ test_that("makeSummarizedExperiment : RangedSummarizedExperiment", {
     expect_s4_class(object, "RangedSummarizedExperiment")
     expect_identical(dim(object), c(4L, 4L))
     expect_identical(names(object), genes)
+    # Previously we stashed devtoolsSessionInfo and utilsSessionInfo here.
     expect_identical(
         object = lapply(metadata(object), class),
         expected = list(
             date = "Date",
             wd = "character",
-            utilsSessionInfo = "sessionInfo",
-            devtoolsSessionInfo = "session_info"
+            sessionInfo = "session_info"
         )
     )
 })
