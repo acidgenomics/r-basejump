@@ -13,6 +13,7 @@ NULL
 
 
 
+# Consider exporting this as a method?
 .plotSumsECDF <- function(object, fun) {
     assert_is_function(fun)
     data <- tibble(x = fun(object))
@@ -35,22 +36,29 @@ NULL
         validObject(object)
         assert_is_scalar(assay)
 
-        assay <- assays(object)[[assay]]
+        mat <- as.matrix(assays(object)[[assay]])
+
+        # Total counts.
+        totalCounts <- plotTotalCounts(object, assay = assay)
+
+        # Dropout rate.
+        zerosVsDepth <- plotZerosVsDepth(mat)
 
         # Counts per row (gene).
-        rowSums <- .plotSumsECDF(assay, fun = rowSums) +
+        rowSums <- .plotSumsECDF(mat, fun = rowSums) +
             labs(title = "counts per row")
+
         # Counts per column (sample).
-        colSums <- .plotSumsECDF(assay, fun = colSums) +
+        colSums <- .plotSumsECDF(mat, fun = colSums) +
             labs(title = "counts per column")
-        # Dropout rate.
-        zerosVsDepth <- plotZerosVsDepth(assay)
+
         # Return paneled plot.
         plot_grid(
             plotlist = list(
+                totalCounts = totalCounts,
+                zerosVsDepth = zerosVsDepth,
                 rowSums = rowSums,
-                colSums = colSums,
-                zerosVsDepth = zerosVsDepth
+                colSums = colSums
             )
         )
     }
