@@ -50,7 +50,7 @@ setMethod(
 
 
 
-#' @rdname sampleData
+#' @rdname counts
 #' @export
 setMethod(
     f = "counts<-",

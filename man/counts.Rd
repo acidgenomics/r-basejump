@@ -4,12 +4,17 @@
 \name{counts}
 \alias{counts}
 \alias{counts,SummarizedExperiment-method}
+\alias{counts<-,SummarizedExperiment-method}
 \title{Counts}
 \usage{
 \S4method{counts}{SummarizedExperiment}(object)
+
+\S4method{counts}{SummarizedExperiment}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
+
+\item{value}{Value to assign.}
 }
 \value{
 \code{matrix}.
