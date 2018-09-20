@@ -30,7 +30,7 @@ NULL
 
 
 .plotGenderMarkers.RSE <-  # nolint
-    function(object, style = "wide") {
+    function() {
         validObject(object)
         # Load the relevant internal gender markers data.
         organism <- organism(object)
@@ -60,6 +60,7 @@ f1 <- formals(.plotGenderMarkers.RSE)
 f2 <- methodFormals(f = "plotGene", signature = "SummarizedExperiment")
 f2 <- f2[setdiff(names(f2), c(names(f1), "genes"))]
 f <- c(f1, f2)
+f[["style"]] <- "wide"
 formals(.plotGenderMarkers.RSE) <- f
 
 
