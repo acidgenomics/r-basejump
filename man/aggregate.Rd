@@ -119,7 +119,7 @@ Other Data Functions: \code{\link{counts}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metrics}}, \code{\link{sampleData}},
   \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tx2gene}}
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

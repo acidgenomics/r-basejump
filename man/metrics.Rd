@@ -37,7 +37,8 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tx2gene}}
+  \code{\link{selectSamples}}, \code{\link{tpm}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
