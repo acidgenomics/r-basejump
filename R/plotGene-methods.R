@@ -131,6 +131,7 @@ NULL
     function(
         object,
         genes,
+        assay = 1L,
         interestingGroups = NULL,
         countsAxisLabel = "counts",
         medianLine = TRUE,
@@ -145,6 +146,7 @@ NULL
         # Limit the number of genes that can be plotted at once.
         assert_all_are_in_closed_range(length(genes), lower = 1L, upper = 20L)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
+        assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -154,6 +156,10 @@ NULL
         assertIsColorScaleDiscreteOrNULL(color)
         assert_is_a_bool(legend)
         style <- match.arg(style)
+
+        # Minimize the SE object only contain the assay of our choice.
+        assay <- assays(object)[[assay]]
+        assays(object) <- list(assay = assay)
 
         # Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
