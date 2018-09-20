@@ -49,6 +49,7 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         n = 10L,
         clusterRows = TRUE,
@@ -67,6 +68,7 @@ setMethod(
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
+        assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -92,7 +94,7 @@ setMethod(
         object <- suppressWarnings(convertGenesToSymbols(object))
 
         # Ensure we're using a dense matrix.
-        mat <- as.matrix(assay(object))
+        mat <- as.matrix(assays(object)[[assay]])
 
         # Calculate the quantile breaks.
         breaks <- .quantileBreaks(mat, n = n)
