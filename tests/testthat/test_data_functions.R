@@ -43,7 +43,7 @@ test_that("gene2symbol", {
 
 test_that("gene2symbol : No mappings", {
     object <- rse_small
-    rowData(object) <- NULL
+    mcols(rowRanges(object))[["geneName"]] <- NULL
     expect_error(
         object = gene2symbol(object),
         regexp = "Object does not contain gene-to-symbol mappings"
