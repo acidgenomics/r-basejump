@@ -460,6 +460,17 @@ setGeneric(
 
 
 
+#' @rdname tpm
+#' @export
+setGeneric(
+    name = "tpm",
+    def = function(object, ...) {
+        standardGeneric("tpm")
+    }
+)
+
+
+
 #' @rdname tx2gene
 #' @export
 setGeneric(
