@@ -9,17 +9,17 @@
 plotGenderMarkers(object, ...)
 
 \S4method{plotGenderMarkers}{RangedSummarizedExperiment}(object,
-  style = "wide", interestingGroups = NULL,
-  countsAxisLabel = "counts", medianLine = TRUE,
-  color = getOption("basejump.discrete.color", NULL),
-  legend = getOption("basejump.legend", TRUE))
+  assay = 1L, interestingGroups = NULL, countsAxisLabel = "counts",
+  medianLine = TRUE, color = getOption("basejump.discrete.color",
+  NULL), legend = getOption("basejump.legend", TRUE), style = "wide")
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
 
-\item{style}{\code{string}. Plot style.}
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
@@ -36,6 +36,8 @@ To set the discrete color palette globally, use
 \code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
 
 \item{legend}{\code{boolean}. Show plot legend.}
+
+\item{style}{\code{string}. Plot style.}
 }
 \value{
 \code{ggplot}.
