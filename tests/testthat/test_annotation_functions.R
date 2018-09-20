@@ -443,20 +443,6 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
     )
 })
 
-test_that("makeGRangesFromEnsembl : metadata", {
-    object <- makeGRangesFromEnsembl(
-        organism = "Homo sapiens",
-        release = release,
-        metadata = TRUE
-    )
-    expect_is(object, "list")
-    expect_identical(
-        object = names(object),
-        expected = c("data", "metadata")
-    )
-    expect_is(object[["metadata"]], "tbl_df")
-})
-
 
 
 # makeGRangesFromGFF ===========================================================
