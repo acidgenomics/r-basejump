@@ -21,9 +21,21 @@ NULL
     function(object) {
         validObject(object)
         if (!identical("counts", assayNames(object)[[1L]])) {
-            warning("Primary assay is not named `counts`", call. = FALSE)
+            stop("Primary assay is not named `counts`", call. = FALSE)
         }
-        assay(object)
+        assays(object)[["counts"]]
+    }
+
+
+
+`.counts<-.SE` <-  # nolint
+    function(object, value) {
+        validObject(object)
+        if (!identical("counts", assayNames(object)[[1L]])) {
+            stop("Primary assay is not named `counts`", call. = FALSE)
+        }
+        assays(object)[["counts"]] <- value
+        object
     }
 
 
@@ -34,4 +46,17 @@ setMethod(
     f = "counts",
     signature = signature("SummarizedExperiment"),
     definition = .counts.SE
+)
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "counts<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "ANY"
+    ),
+    definition = `.counts<-.SE`
 )
