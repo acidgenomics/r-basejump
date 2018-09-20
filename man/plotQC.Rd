@@ -8,12 +8,15 @@
 \usage{
 plotQC(object, ...)
 
-\S4method{plotQC}{SummarizedExperiment}(object)
+\S4method{plotQC}{SummarizedExperiment}(object, assay = 1L)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 }
 \description{
 Plot Quality Control

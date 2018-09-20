@@ -1,3 +1,7 @@
+# TODO Add SE method support.
+
+
+
 #' Plot Percentage of Zeros vs. Library Depth
 #'
 #' Calculate the dropout rate.

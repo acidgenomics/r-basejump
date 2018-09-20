@@ -8,7 +8,7 @@
 \usage{
 plotGene(object, ...)
 
-\S4method{plotGene}{SummarizedExperiment}(object, genes,
+\S4method{plotGene}{SummarizedExperiment}(object, genes, assay = 1L,
   interestingGroups = NULL, countsAxisLabel = "counts",
   medianLine = TRUE, color = getOption("basejump.discrete.color",
   NULL), legend = getOption("basejump.legend", TRUE),
@@ -20,6 +20,9 @@ plotGene(object, ...)
 \item{...}{Additional arguments.}
 
 \item{genes}{\code{character}. Gene identifiers.}
+
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
