@@ -10,8 +10,8 @@
 plotCorrelationHeatmap(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
-  interestingGroups = NULL, method = c("pearson", "spearman"),
-  clusteringMethod = "ward.D2", showRownames = TRUE,
+  assay = 1L, interestingGroups = NULL, method = c("pearson",
+  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
   color = viridis::viridis, legendColor = NULL, borderColor = NULL,
   title = TRUE, ...)
@@ -21,6 +21,9 @@ plotCorrelationHeatmap(object, ...)
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}. The names of the
 arguments should be formatted in camel case, not snake case.}
+
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 

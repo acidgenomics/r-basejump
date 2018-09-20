@@ -71,6 +71,7 @@ NULL
 .plotHeatmap.SE <-  # nolint
     function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         scale = c("none", "row", "column"),
         clusterRows = TRUE,
@@ -88,6 +89,7 @@ NULL
         validObject(object)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
+        assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -116,9 +118,7 @@ NULL
         object <- convertGenesToSymbols(object)
 
         # Ensure we're using a dense matrix.
-        # Note that we want to use `assay()` here instead, so this supports
-        # `DESeqTransform`, which doesn't use `counts` as the primary assay.
-        mat <- as.matrix(assay(object))
+        mat <- as.matrix(assays(object)[[assay]])
 
         # Filter out any zero count rows when row scaling, otherwise hclust
         # calculation will error.

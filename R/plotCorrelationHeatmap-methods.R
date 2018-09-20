@@ -46,6 +46,7 @@ NULL
 .plotCorrelationHeatmap.SE <-  # nolint
     function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         method = c("pearson", "spearman"),
         clusteringMethod = "ward.D2",
@@ -60,6 +61,7 @@ NULL
         ...
     ) {
         validObject(object)
+        assert_is_scalar(assay)
         assert_all_are_greater_than(nrow(object), 1L)
         assert_all_are_greater_than(ncol(object), 1L)
         interestingGroups <- matchInterestingGroups(
@@ -87,7 +89,7 @@ NULL
         }
 
         # Correlation matrix
-        mat <- as.matrix(assay(object))
+        mat <- as.matrix(assays(object)[[assay]])
         mat <- cor(mat, method = method)
 
         # Get annotation columns and colors automatically.
