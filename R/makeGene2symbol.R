@@ -53,13 +53,13 @@ NULL
         x = data,
         classes = c("DataFrame", "GRanges", "tbl_df")
     )
-    assert_has_rows(data)
 
     # Coerce to tibble.
     data <- as(data, "tbl_df")
     if (!all(c("geneID", "geneName") %in% colnames(data))) {
         stop("Object does not contain gene-to-symbol mappings")
     }
+    assert_has_rows(data)
     assertHasRownames(data)
     cols <- c("rowname", "geneID", "geneName")
     assert_is_subset(cols, colnames(data))
