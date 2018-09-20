@@ -38,9 +38,11 @@ NULL
             y = colnames(colData(object))
         )
         data <- colData(object)
-        interestingGroups <- interestingGroups(object)
-        if (length(interestingGroups) > 0L) {
-            data <- uniteInterestingGroups(data, interestingGroups)
+        if (!"interestingGroups" %in% colnames(data)) {
+            interestingGroups <- interestingGroups(object)
+            if (length(interestingGroups) > 0L) {
+                data <- uniteInterestingGroups(data, interestingGroups)
+            }
         }
         data
     }
@@ -49,14 +51,21 @@ NULL
 
 `.sampleData<-.SE` <-  # nolint
     function(object, value) {
-        # Don't allow the user to set `interestingGroups` column manually.
-        value[["interestingGroups"]] <- NULL
         # Check for blacklisted columns.
         assert_are_disjoint_sets(
             colnames(value),
             c("rowname", "sampleID")
         )
-        # Now safe to assign.
+
+        # Reslot the interesting groups column automatically.
+        # Don't allow the user to set `interestingGroups` column manually.
+        value[["interestingGroups"]] <- NULL
+        interestingGroups <- interestingGroups(object)
+        if (length(interestingGroups) > 0L) {
+            value <- uniteInterestingGroups(value, interestingGroups)
+        }
+
+        # Now safe to assign and return.
         colData(object) <- value
         validObject(object)
         object
