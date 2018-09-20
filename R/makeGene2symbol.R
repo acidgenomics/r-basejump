@@ -33,29 +33,27 @@ NULL
 
 
 
-.makeGeneNamesUnique <- function(data) {
+.makeGeneNamesUnique <- function(object) {
     assert_is_subset(
         x = c("geneID", "geneName"),
-        y = colnames(data)
+        y = colnames(object)
     )
-    if (any(duplicated(data[["geneName"]]))) {
-        x <- data[["geneName"]]
-        n <- length(unique(x[duplicated(x)]))
-        data[["geneName"]] <- make.unique(data[["geneName"]])
+    if (any(duplicated(object[["geneName"]]))) {
+        object[["geneName"]] <- make.unique(object[["geneName"]])
     }
-    data
+    object
 }
 
 
 
-.makeGene2symbol <- function(data) {
+.makeGene2symbol <- function(object) {
     assert_is_any_of(
-        x = data,
+        x = object,
         classes = c("DataFrame", "GRanges", "tbl_df")
     )
 
     # Coerce to tibble.
-    data <- as(data, "tbl_df")
+    data <- as(object, "tbl_df")
     if (!all(c("geneID", "geneName") %in% colnames(data))) {
         stop("Object does not contain gene-to-symbol mappings")
     }
