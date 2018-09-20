@@ -277,7 +277,7 @@ makeGRangesFromEnsembl <- function(
     # Get the genome build from the ensembldb metdata.
     build <- metadata(edb) %>%
         as("tbl_df") %>%
-        filter(name == "genome_build") %>%
+        filter(!!sym("name") == "genome_build") %>%
         pull("value")
     assert_is_a_string(build)
 
