@@ -196,6 +196,7 @@ Collate:
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'toStringUnique.R'
+    'tpm-methods.R'
     'transmit.R'
     'tx2gene-methods.R'
     'uniteInterestingGroups-methods.R'
