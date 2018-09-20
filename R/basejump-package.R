@@ -3,7 +3,6 @@
 #' Base functions for bioinformatics and R package development.
 #'
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
 #' @importFrom AnnotationHub AnnotationHub query snapshotDate
 #' @importFrom assertive.base assert_all_are_not_na assert_all_are_true
 #'   assert_are_identical assert_is_identical_to_na is_not_na
