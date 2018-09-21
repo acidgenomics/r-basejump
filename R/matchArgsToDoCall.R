@@ -94,7 +94,12 @@ matchArgsToDoCall <- function(
     args <- lapply(
         X = args,
         FUN = function(expr) {
-            if (is.name(expr) || is.symbol(expr)) {
+            if (
+                is.call(expr) ||
+                is.name(expr) ||
+                is.symbol(expr)
+            ) {
+                # Evaluate, if necessary.
                 tryCatch(
                     expr = eval(expr = expr, envir = envir),
                     error = function(e) NULL
@@ -122,6 +127,7 @@ matchArgsToDoCall <- function(
     invisible(lapply(
         X = args,
         FUN = function(x) {
+            stopifnot(!is.call(x))
             stopifnot(!is.name(x))
             stopifnot(!is.symbol(x))
         }
