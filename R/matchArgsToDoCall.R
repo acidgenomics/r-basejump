@@ -82,14 +82,27 @@ matchArgsToDoCall <- function(
     # Remove formals we want to exclude.
     args <- args[setdiff(names(args), removeFormals)]
 
-    # Ensure all arguments are evaluated, and not `name` or `symbol` class.
+    # Show the unevaluated args, if desired.
+    if (isTRUE(verbose)) {
+        print(list(args = lapply(args, class)))
+    }
+
+    # Ensure all arguments are evaluated.
+    # Missing or NULL arguments will be stripped.
+    # https://stackoverflow.com/questions/16740307
     envir <- sys.frame(which = which)
     args <- lapply(
         X = args,
         FUN = function(expr) {
-            eval(expr = expr, envir = envir)
+            tryCatch(
+                expr = eval(expr = expr, envir = envir),
+                error = function(e) NULL
+            )
         }
     )
+    # Remove any `NULL` arguments. We may want to consider changing this
+    # approach in the future, in case passing `NULL` through is important.
+    args <- Filter(f = Negate(is.null), x = args)
 
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
