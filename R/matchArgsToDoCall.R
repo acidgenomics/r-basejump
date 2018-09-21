@@ -44,14 +44,18 @@
 #' }
 #' example(c("hello", "world"))
 matchArgsToDoCall <- function(
-    args,
+    args = NULL,
     removeFormals = NULL,
     which = sys.parent(n = 1L),
     verbose = FALSE
 ) {
-    assert_is_list(args)
-    assert_is_non_empty(args)
-    assert_has_names(args)
+    assert_is_any_of(args, c("list", "NULL"))
+    if (is.list(args)) {
+        assert_is_non_empty(args)
+        assert_has_names(args)
+    } else {
+        args <- list()
+    }
     assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_number(which)
     if (which < 1L) {
