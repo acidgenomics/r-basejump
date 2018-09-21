@@ -94,10 +94,14 @@ matchArgsToDoCall <- function(
     args <- lapply(
         X = args,
         FUN = function(expr) {
-            tryCatch(
-                expr = eval(expr = expr, envir = envir),
-                error = function(e) NULL
-            )
+            if (is.name(expr) || is.symbol(expr)) {
+                tryCatch(
+                    expr = eval(expr = expr, envir = envir),
+                    error = function(e) NULL
+                )
+            } else {
+                expr
+            }
         }
     )
     # Remove any `NULL` arguments. We may want to consider changing this
