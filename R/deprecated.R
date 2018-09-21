@@ -266,6 +266,13 @@ assertIsURL <- function(...) {
 # v0.99.0 ======================================================================
 #' @rdname deprecated
 #' @export
+assertIsAHeaderLevel <- function(...) {
+    .Deprecated("assertIsHeaderLevel")
+    assertIsHeaderLevel(...)
+}
+
+#' @rdname deprecated
+#' @export
 assertIsCharacterOrNULL <- function(object, ...) {
     .Deprecated("assert_is_any_of")
     assert_is_any_of(
