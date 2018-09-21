@@ -19,6 +19,7 @@
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
 \alias{assertIsURL}
+\alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
 \alias{detectOrganism}
@@ -62,6 +63,8 @@ midnightTheme(...)
 paperwhiteTheme(...)
 
 assertIsURL(...)
+
+assertIsAHeaderLevel(...)
 
 assertIsCharacterOrNULL(object, ...)
 
