@@ -24,7 +24,7 @@ markdownPlotlist <- function(
 ) {
     assert_is_list(plotlist)
     assert_has_names(plotlist)
-    assertIsAHeaderLevel(headerLevel)
+    assertIsHeaderLevel(headerLevel)
     invisible(mapply(
         name = names(plotlist),
         plot = plotlist,
