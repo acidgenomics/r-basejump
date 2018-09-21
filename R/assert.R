@@ -459,10 +459,10 @@ hasRownames <- function(object) {
 
 
 
-# assertIsAHeaderLevel =========================================================
-#' Assert Is a Header Level
+# assertIsAlpha ================================================================
+#' Assert Is Alpha Level
 #'
-#' Markdown supports header levels 1-7 (`<H1>`-`<H7>`).
+#' An alpha level must be between 0 and 1, but not equal either 0 or 1.
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
@@ -470,13 +470,13 @@ hasRownames <- function(object) {
 #' @export
 #'
 #' @examples
-#' assertIsAHeaderLevel(1L)
-assertIsAHeaderLevel <- function(object) {
+#' assertIsAlpha(0.05)
+assertIsAlpha <- function(object) {
     assert_is_a_number(object)
-    assert_is_subset(
-        x = as.integer(object),
-        y = seq(1L:7L)
-    )
+    assert_all_are_in_open_range(object, lower = 0L, upper = 1L)
+    if (object > 0.1) {
+        warning("An alpha level above 0.1 (10%) is not recommended")
+    }
 }
 
 
@@ -736,6 +736,28 @@ assertIsGene2symbol <- function(object) {
         X = object,
         FUN = assert_has_no_duplicates
     ))
+}
+
+
+
+# assertIsHeaderLevel ==========================================================
+#' Assert Is Markdown Header Level
+#'
+#' Markdown supports header levels 1-7 (`<H1>`-`<H7>`).
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#' @export
+#'
+#' @examples
+#' assertIsHeaderLevel(1L)
+assertIsHeaderLevel <- function(object) {
+    assert_is_a_number(object)
+    assert_is_subset(
+        x = as.integer(object),
+        y = seq(1L:7L)
+    )
 }
 
 
