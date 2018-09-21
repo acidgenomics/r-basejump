@@ -493,10 +493,7 @@ assertIsAlpha <- function(object) {
 #' assertIsAnIntegerOrNULL(1L)
 #' assertIsAnIntegerOrNULL(NULL)
 assertIsAnIntegerOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("integer", "NULL")
-    )
+    assert_is_any_of(object, classes = c("integer", "NULL"))
     if (is.integer(object)) {
         assert_is_an_integer(object)
     }
@@ -516,10 +513,7 @@ assertIsAnIntegerOrNULL <- function(object) {
 #' assertIsANumberOrNULL(1.1)
 #' assertIsANumberOrNULL(NULL)
 assertIsANumberOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("numeric", "NULL")
-    )
+    assert_is_any_of(object, classes = c("numeric", "NULL"))
     if (is.numeric(object)) {
         assert_is_a_number(object)
     }
