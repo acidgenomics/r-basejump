@@ -263,7 +263,7 @@ makeSummarizedExperiment <- function(
     metadata[["date"]] <- Sys.Date()
     metadata[["wd"]] <- normalizePath(".", winslash = "/", mustWork = TRUE)
     metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
-    metadata <- Filter(Negate(is.null), metadata)
+    metadata <- Filter(f = Negate(is.null), x = metadata)
 
     # Return -------------------------------------------------------------------
     args <- list(
