@@ -12,8 +12,8 @@
 #'   assert_all_are_non_empty_files
 #' @importFrom assertive.numbers assert_all_are_greater_than
 #'   assert_all_are_greater_than_or_equal_to assert_all_are_in_closed_range
-#'   assert_all_are_in_range assert_all_are_non_negative assert_all_are_positive
-#'   is_positive
+#'   assert_all_are_in_open_range assert_all_are_in_range
+#'   assert_all_are_non_negative assert_all_are_positive is_positive
 #' @importFrom assertive.properties assert_are_same_length assert_has_colnames
 #'   assert_has_dimnames assert_has_dims assert_has_names
 #'   assert_has_no_duplicates assert_has_rownames assert_has_rows
