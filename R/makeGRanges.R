@@ -552,7 +552,7 @@ annotable <-
     function() {
         gr <- do.call(
             what = makeGRangesFromEnsembl,
-            args = as.list(match.call())[-1L]
+            args = matchArgsToDoCall()
         )
         as(gr, "tbl_df")
     }
