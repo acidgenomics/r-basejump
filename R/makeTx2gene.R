@@ -55,11 +55,9 @@ NULL
 #' @export
 makeTx2geneFromEnsembl <-
     function() {
-        args <- as.list(match.call())[-1L]
-        args[["level"]] <- "transcripts"
         gr <- do.call(
             what = makeGRangesFromEnsembl,
-            args = args
+            args = matchArgsToDoCall(args = list(level = "transcripts"))
         )
         .makeTx2gene(gr)
     }
