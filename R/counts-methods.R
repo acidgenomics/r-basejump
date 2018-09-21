@@ -17,6 +17,12 @@ NULL
 
 
 
+#' @importFrom BiocGenerics counts<-
+#' @export
+BiocGenerics::`counts<-`
+
+
+
 .counts.SE <-  # nolint
     function(object) {
         validObject(object)
