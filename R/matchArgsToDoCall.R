@@ -54,6 +54,9 @@ matchArgsToDoCall <- function(
     assert_has_names(args)
     assert_is_any_of(removeFormals, c("character", "NULL"))
     assert_is_a_number(which)
+    if (which < 1L) {
+        which <- 1L
+    }
     assert_is_a_bool(verbose)
 
     list <- standardizeCall(
@@ -79,6 +82,15 @@ matchArgsToDoCall <- function(
     # Remove formals we want to exclude.
     args <- args[setdiff(names(args), removeFormals)]
 
+    # Ensure all arguments are evaluated, and not `name` or `symbol` class.
+    envir <- sys.frame(which = which)
+    args <- lapply(
+        X = args,
+        FUN = function(expr) {
+            eval(expr = expr, envir = envir)
+        }
+    )
+
     # Enable verbose mode, for debugging.
     if (isTRUE(verbose)) {
         print(list(
@@ -90,6 +102,13 @@ matchArgsToDoCall <- function(
 
     assert_all_are_non_missing_nor_empty_character(names(args))
     assert_has_no_duplicates(names(args))
+    invisible(lapply(
+        X = args,
+        FUN = function(x) {
+            stopifnot(!is.name(x))
+            stopifnot(!is.symbol(x))
+        }
+    ))
 
     args
 }
