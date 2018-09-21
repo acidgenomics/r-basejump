@@ -10,10 +10,12 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' interestingGroups(rse_small)
-#' colnames(colData(rse_small))
-#' interestingGroups(rse_small) <- colnames(colData(rse_small))[[1L]]
-#' interestingGroups(rse_small)
+#' object <- rse_small
+#' interestingGroups(object)
+#'
+#' # Assignment support.
+#' interestingGroups(object) <- "sampleName"
+#' interestingGroups(object)
 NULL
 
 
@@ -41,8 +43,13 @@ setMethod(
         value = "character"
     ),
     definition = function(object, value) {
-        assertFormalInterestingGroups(object, value)
+        assertFormalInterestingGroups(
+            object = object,
+            interestingGroups = value
+        )
         metadata(object)[["interestingGroups"]] <- value
+        # Ensure `interestingGroups` column is updated to match.
+        sampleData(object) <- sampleData(object)
         object
     }
 )
