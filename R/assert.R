@@ -64,10 +64,7 @@ assertAllAreNonExisting <- function(
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
-    assert_is_any_of(
-        x = object,
-        classes = c("gene2symbol", "SummarizedExperiment")
-    )
+    assert_is_any_of(object, classes = c("gene2symbol", "SummarizedExperiment"))
     assert_is_character(genes)
     # Get all of the gene names stashed in the object.
     if (is(object, "SummarizedExperiment")) {
@@ -77,16 +74,10 @@ assertAllAreUniqueGeneNames <- function(object, genes) {
     }
     assert_is_non_empty(allGenes)
     # Require that the user passed in gene names.
-    assert_is_subset(
-        x = genes,
-        y = allGenes
-    )
+    assert_is_subset(genes, allGenes)
     # Check for no intersect with duplicate names.
     duplicatedGenes <- allGenes[which(duplicated(allGenes))]
-    assert_are_disjoint_sets(
-        x = genes,
-        y = duplicatedGenes
-    )
+    assert_are_disjoint_sets(genes, duplicatedGenes)
 }
 
 
@@ -127,10 +118,7 @@ assertHasValidNames <- function(object) {
         stop("Use `assertHasValidDimnames()` instead")
     }
     assert_has_names(object)
-    invisible(lapply(
-        X = names(object),
-        FUN = assertAllAreValidNames
-    ))
+    invisible(lapply(names(object), assertAllAreValidNames))
 }
 
 
@@ -219,10 +207,7 @@ validNames <- function(object) {
 #' assertAreGeneAnnotations(object)
 assertAreGeneAnnotations <- function(object) {
     df <- as.data.frame(object)
-    assert_is_subset(
-        x = c("geneID", "geneName"),
-        y = colnames(df)
-    )
+    assert_is_subset(c("geneID", "geneName"), colnames(df))
     assert_is_non_empty(df)
 }
 
@@ -250,10 +235,7 @@ assertAreGeneAnnotations <- function(object) {
 #' assertAreTranscriptAnnotations(object)
 assertAreTranscriptAnnotations <- function(object) {
     df <- as.data.frame(object)
-    assert_is_subset(
-        x = c("transcriptID", "geneID"),
-        y = colnames(df)
-    )
+    assert_is_subset(c("transcriptID", "geneID"), colnames(df))
     assert_is_non_empty(object)
 }
 
@@ -270,16 +252,10 @@ assertAreTranscriptAnnotations <- function(object) {
 #' @examples
 #' assertFormalCompress("xz")
 assertFormalCompress <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("character", "logical")
-    )
+    assert_is_any_of(object, classes = c("character", "logical"))
     if (is.character(object)) {
         assert_is_a_string(object)
-        assert_is_subset(
-            x = object,
-            y = c("bzip2", "gzip", "xz")
-        )
+        assert_is_subset(object, c("bzip2", "gzip", "xz"))
     }
 }
 
@@ -345,15 +321,9 @@ assertFormalGene2symbol <- function(
     assert_is_character(genes)
     assert_is_all_of(gene2symbol, "gene2symbol")
     # Require that all rownames of object are defined in gene2symbol.
-    assert_is_subset(
-        x = rownames(object),
-        y = rownames(gene2symbol)
-    )
+    assert_is_subset(rownames(object), rownames(gene2symbol))
     # Check to ensure the user defined genes map to the rownames of the object.
-    rownames <- mapGenesToRownames(
-        object = gene2symbol,
-        genes = genes
-    )
+    rownames <- mapGenesToRownames(object = gene2symbol, genes = genes)
     assert_is_non_empty(rownames)
     assert_is_subset(rownames, rownames(object))
 }
@@ -379,10 +349,7 @@ assertFormalGene2symbol <- function(
 #' assertFormalInterestingGroups(rse_small, NULL)
 assertFormalInterestingGroups <- function(object, interestingGroups) {
     # Always require SummarizedExperiment for object.
-    assert_is_all_of(
-        x = object,
-        classes = "SummarizedExperiment"
-    )
+    assert_is_all_of(object, classes = "SummarizedExperiment")
 
     # Check `interestingGroups` argument.
     if (is.null(interestingGroups)) {
@@ -394,10 +361,7 @@ assertFormalInterestingGroups <- function(object, interestingGroups) {
     }
 
     # Check intersection with column data.
-    assert_is_subset(
-        x = interestingGroups,
-        y = colnames(colData(object))
-    )
+    assert_is_subset(interestingGroups, colnames(colData(object)))
 
     # Check that interesting groups columns are factors.
     invisible(lapply(
@@ -533,10 +497,7 @@ assertIsANumberOrNULL <- function(object) {
 #' assertIsAStringOrNULL("hello world")
 #' assertIsAStringOrNULL(NULL)
 assertIsAStringOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("character", "NULL")
-    )
+    assert_is_any_of(object, classes = c("character", "NULL"))
     if (is.character(object)) {
         assert_is_a_string(object)
     }
@@ -558,19 +519,14 @@ assertIsAStringOrNULL <- function(object) {
 #' assertIsColorScaleContinuousOrNULL(color)
 #' assertIsColorScaleContinuousOrNULL(NULL)
 assertIsColorScaleContinuousOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("ScaleContinuous", "NULL")
-    )
+    assert_is_any_of(object, classes = c("ScaleContinuous", "NULL"))
     if (!is.null(object)) {
         assert_is_all_of(
             x = object,
             classes = c("ggproto", "Scale", "ScaleContinuous")
         )
-        assert_are_identical(
-            x = object[["aesthetics"]],
-            y = "colour"
-        )
+        # Note that this has to match the British spelling.
+        assert_are_identical(object[["aesthetics"]], "colour")
     }
 }
 
@@ -590,19 +546,14 @@ assertIsColorScaleContinuousOrNULL <- function(object) {
 #' assertIsColorScaleDiscreteOrNULL(color)
 #' assertIsColorScaleDiscreteOrNULL(NULL)
 assertIsColorScaleDiscreteOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("ScaleDiscrete", "NULL")
-    )
+    assert_is_any_of(object, classes = c("ScaleDiscrete", "NULL"))
     if (!is.null(object)) {
         assert_is_all_of(
             x = object,
             classes = c("ggproto", "Scale", "ScaleDiscrete")
         )
-        assert_are_identical(
-            x = object[["aesthetics"]],
-            y = "colour"
-        )
+        # Note that this has to match the British spelling.
+        assert_are_identical(object[["aesthetics"]], "colour")
     }
 }
 
@@ -623,19 +574,13 @@ assertIsColorScaleDiscreteOrNULL <- function(object) {
 #' assertIsFillScaleContinuousOrNULL(fill)
 #' assertIsFillScaleContinuousOrNULL(NULL)
 assertIsFillScaleContinuousOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("ScaleContinuous", "NULL")
-    )
+    assert_is_any_of(object, classes = c("ScaleContinuous", "NULL"))
     if (!is.null(object)) {
         assert_is_all_of(
             x = object,
             classes = c("ggproto", "Scale", "ScaleContinuous")
         )
-        assert_are_identical(
-            x = object[["aesthetics"]],
-            y = "fill"
-        )
+        assert_are_identical(object[["aesthetics"]], "fill")
     }
 }
 
@@ -656,19 +601,13 @@ assertIsFillScaleContinuousOrNULL <- function(object) {
 #' assertIsFillScaleDiscreteOrNULL(fill)
 #' assertIsFillScaleDiscreteOrNULL(NULL)
 assertIsFillScaleDiscreteOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("ScaleDiscrete", "NULL")
-    )
+    assert_is_any_of(object, classes = c("ScaleDiscrete", "NULL"))
     if (!is.null(object)) {
         assert_is_all_of(
             x = object,
             classes = c("ggproto", "Scale", "ScaleDiscrete")
         )
-        assert_are_identical(
-            x = object[["aesthetics"]],
-            y = "fill"
-        )
+        assert_are_identical(object[["aesthetics"]], "fill")
     }
 }
 
@@ -712,24 +651,15 @@ assertIsGene2symbol <- function(object) {
         classes = c("DataFrame", "tbl_df", "data.frame")
     )
     assert_is_non_empty(object)
-    assert_are_identical(
-        x = colnames(object),
-        y = c("geneID", "geneName")
-    )
+    assert_are_identical(colnames(object), c("geneID", "geneName"))
     # Require rownames for standard data frame.
     if (!is_tibble(object)) {
         assertHasRownames(object)
     }
     # Assert that all columns are character.
-    invisible(lapply(
-        X = object,
-        FUN = assert_is_character
-    ))
+    invisible(lapply(object, assert_is_character))
     # Assert that neither column has duplicates.
-    invisible(lapply(
-        X = object,
-        FUN = assert_has_no_duplicates
-    ))
+    invisible(lapply(object, assert_has_no_duplicates))
 }
 
 
@@ -748,10 +678,7 @@ assertIsGene2symbol <- function(object) {
 #' assertIsHeaderLevel(1L)
 assertIsHeaderLevel <- function(object) {
     assert_is_a_number(object)
-    assert_is_subset(
-        x = as.integer(object),
-        y = seq(1L:7L)
-    )
+    assert_is_subset(as.integer(object), seq_len(7L))
 }
 
 
@@ -772,10 +699,7 @@ assertIsHeaderLevel <- function(object) {
 #' assertIsHexColorFunctionOrNULL(hex)
 #' assertIsHexColorFunctionOrNULL(NULL)
 assertIsHexColorFunctionOrNULL <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("function", "NULL")
-    )
+    assert_is_any_of(object, classes = c("function", "NULL"))
     if (is.function(object)) {
         colors <- object(2L)
         assert_is_character(colors)
@@ -923,19 +847,13 @@ assertIsTx2gene <- function(object) {
         colnames(object) <- gsub("^txID$", "transcriptID", colnames(object))
     }
     # nocov end
-    assert_are_identical(
-        x = colnames(object),
-        y = c("transcriptID", "geneID")
-    )
+    assert_are_identical(colnames(object), c("transcriptID", "geneID"))
     # Require rownames for DataFrame.
     if (!is_tibble(object)) {
         assertHasRownames(object)
     }
     # Assert that all columns are character.
-    invisible(lapply(
-        X = object,
-        FUN = assert_is_character
-    ))
+    invisible(lapply(object, assert_is_character))
     # Assert that there are no duplicate transcripts.
     assert_has_no_duplicates(object[["transcriptID"]])
 }
