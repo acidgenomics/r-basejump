@@ -33,7 +33,7 @@ markdownHeader <- function(
 ) {
     assert_is_a_string(text)
     assert_all_are_non_missing_nor_empty_character(text)
-    assertIsAHeaderLevel(level)
+    assertIsHeaderLevel(level)
     assert_is_a_bool(tabset)
     assert_is_a_bool(asis)
 
