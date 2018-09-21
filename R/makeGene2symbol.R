@@ -80,11 +80,9 @@ NULL
 #' @export
 makeGene2symbolFromEnsembl <-
     function() {
-        args <- as.list(match.call())[-1L]
-        args[["level"]] <- "genes"
         gr <- do.call(
             what = makeGRangesFromEnsembl,
-            args = args
+            args = matchArgsToDoCall(args = list(level = "genes"))
         )
         .makeGene2symbol(gr)
     }
