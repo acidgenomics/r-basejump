@@ -140,11 +140,13 @@ as_tibble.GRanges <-  # nolint
 
 # S4 methods -------------------------------------------------------------------
 .asTibble <- function(from) {
-    if (is(from, "tbl_df")) {
-        return(from)
+    from <- as.data.frame(from)
+    if (hasRownames(from)) {
+        rownames <- "rowname"
     } else {
-        as_tibble(from, rownames = "rowname")
+        rownames <- NULL
     }
+    as_tibble(from, rownames = rownames)
 }
 
 
