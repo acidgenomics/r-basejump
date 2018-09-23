@@ -74,15 +74,12 @@ NULL
 
 
 # Coerce to tibble =============================================================
-# Our constructor helps avoid accidental dropping of rownames.
-# Note that the standard tibble methods use `rownames = NULL` instead.
+# Note that our constructors move rownames to "rowname" column automatically
+# by default, to avoid dropping rownames accidentally.
+
 .as_tibble <-  # nolint
     function(x, rownames = "rowname", ...) {
-        if (is(x, "tbl_df")) {
-            return(x)
-        }
-
-        # Require valid columns (atomic, list).
+        # Check for valid columns (atomic, list).
         valid <- vapply(
             X = x,
             FUN = function(x) {
@@ -91,6 +88,7 @@ NULL
             FUN.VALUE = logical(1L),
             USE.NAMES = TRUE
         )
+        # Error if S4 columns are nested.
         if (!all(valid)) {
             invalid <- names(valid[!valid])
             stop(paste0(
@@ -98,21 +96,19 @@ NULL
                 "Invalid columns: ", toString(invalid)
             ), call. = FALSE)
         }
-
-        # Coerce from S4 `DataFrame` to standard `data.frame`.
-        # Here we're suppressing the warning about some object classes not
-        # supporting the `stringsAsFactors` argument (e.g. `DataFrame`).
-        x <- suppressWarnings(
-            as.data.frame(x = x, stringsAsFactors = FALSE)
-        )
-
-        # Move rownames automatically by default to "rowname" column, unless the
-        # object doesn't have rownames defined.
+        # Coerce to standard data frame.
+        x <- as.data.frame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
         }
-
-        as_tibble(x, rownames = rownames)
+        do.call(
+            what = as_tibble,
+            args = list(
+                x = x,
+                rownames = rownames,
+                ...
+            )
+        )
     }
 
 
@@ -128,13 +124,27 @@ as_tibble.DataFrame <- .as_tibble
 #' @importFrom tibble as_tibble
 #' @method as_tibble GRanges
 #' @export
-as_tibble.GRanges <- .as_tibble
+as_tibble.GRanges <-  # nolint
+    function(x, rownames = "rowname", ...) {
+        do.call(
+            what = .as_tibble,
+            args = list(
+                x = as.data.frame(x),
+                rownames = rownames,
+                ...
+            )
+        )
+    }
 
 
 
 # S4 methods -------------------------------------------------------------------
 .asTibble <- function(from) {
-    as_tibble(from)
+    if (is(from, "tbl_df")) {
+        return(from)
+    } else {
+        as_tibble(from, rownames = "rowname")
+    }
 }
 
 
