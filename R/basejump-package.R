@@ -75,7 +75,7 @@
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
 #' @importFrom SummarizedExperiment assay assayNames assays assays<- colData
 #'   colData<- rowData rowRanges SummarizedExperiment
-#' @importFrom tibble as_tibble column_to_rownames is_tibble rownames_to_column
+#' @importFrom tibble as_tibble column_to_rownames
 #' @importFrom tidyr separate unite
 #' @importFrom tools Rd_db
 #' @importFrom utils capture.output download.file globalVariables

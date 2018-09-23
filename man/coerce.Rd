@@ -61,19 +61,16 @@ returning the slots as a \code{list}.
 
 \examples{
 # DataFrame to tbl_df ====
-# Automatically move row names to `rowname` column.
 data <- colData(rse_small)
-class(data)
-hasRownames(data)
+print(data)
 
-tbl_df <- as(data, Class = "tbl_df")
-hasRownames(tbl_df)
-print(tbl_df)
+# Automatically move row names to `rowname` column by default.
+as(data, Class = "tbl_df")
+as_tibble(data)
 
 # tbl_df to DataFrame ====
 data <- as(tbl_df, "DataFrame")
-hasRownames(data)
-class(data)
+print(data)
 
 # SummarizedExperiment to list ====
 x <- as(rse_small, "list")
@@ -84,8 +81,10 @@ names(x)
 \itemize{
 \item \code{\link[methods:as]{methods::as()}}.
 \item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
+\item \code{\link[methods:showMethods]{methods::showMethods()}}.
+\item \code{\link[methods:methods]{methods::methods()}}.
+\item \code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 \item \code{\link[=as.list]{as.list()}}.
-\item \code{\link[tibble:tibble]{tibble::tibble()}}, \code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 }
 }
 \author{
