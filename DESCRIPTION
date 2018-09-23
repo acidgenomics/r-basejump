@@ -195,6 +195,7 @@ Collate:
     'separator.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
+    'tidyverse-methods.R'
     'toStringUnique.R'
     'tpm-methods.R'
     'transmit.R'
