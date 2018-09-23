@@ -94,7 +94,7 @@ NULL
         if (!all(valid)) {
             invalid <- names(valid[!valid])
             stop(paste0(
-                "tibble currently atomic and list columns.\n",
+                "tibble supports atomic and list columns.\n",
                 "Invalid columns: ", toString(invalid)
             ), call. = FALSE)
         }
