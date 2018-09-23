@@ -3,6 +3,7 @@
 \docType{methods}
 \name{counts}
 \alias{counts}
+\alias{counts<-}
 \alias{counts,SummarizedExperiment-method}
 \alias{counts<-,SummarizedExperiment-method}
 \title{Counts}
