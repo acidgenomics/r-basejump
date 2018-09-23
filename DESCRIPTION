@@ -100,7 +100,6 @@ VignetteBuilder: knitr
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
-    'GRanges-internal.R'
     'MethodDefinition.R'
     'RdTags.R'
     'aggregate-methods.R'
