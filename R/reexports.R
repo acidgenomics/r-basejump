@@ -50,10 +50,6 @@ SummarizedExperiment::SummarizedExperiment
 #' @export
 tibble::glimpse
 
-#' @importFrom tibble is_tibble
-#' @export
-tibble::is_tibble
-
 #' @importFrom tibble tibble
 #' @export
 tibble::tibble
