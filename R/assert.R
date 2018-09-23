@@ -653,7 +653,7 @@ assertIsGene2symbol <- function(object) {
     assert_is_non_empty(object)
     assert_are_identical(colnames(object), c("geneID", "geneName"))
     # Require rownames for standard data frame.
-    if (!is_tibble(object)) {
+    if (!is(object, "tbl_df")) {
         assertHasRownames(object)
     }
     # Assert that all columns are character.
@@ -849,7 +849,7 @@ assertIsTx2gene <- function(object) {
     # nocov end
     assert_are_identical(colnames(object), c("transcriptID", "geneID"))
     # Require rownames for DataFrame.
-    if (!is_tibble(object)) {
+    if (!is(object, "tbl_df")) {
         assertHasRownames(object)
     }
     # Assert that all columns are character.
