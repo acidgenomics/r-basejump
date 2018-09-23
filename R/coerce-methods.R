@@ -36,24 +36,23 @@
 #' @seealso
 #' - [methods::as()].
 #' - [methods::canCoerce()].
+#' - [methods::showMethods()].
+#' - [methods::methods()].
+#' - [tibble::as_tibble()].
 #' - [as.list()].
-#' - [tibble::tibble()], [tibble::as_tibble()].
 #'
 #' @examples
 #' # DataFrame to tbl_df ====
-#' # Automatically move row names to `rowname` column.
 #' data <- colData(rse_small)
-#' class(data)
-#' hasRownames(data)
+#' print(data)
 #'
-#' tbl_df <- as(data, Class = "tbl_df")
-#' hasRownames(tbl_df)
-#' print(tbl_df)
+#' # Automatically move row names to `rowname` column by default.
+#' as(data, Class = "tbl_df")
+#' as_tibble(data)
 #'
 #' # tbl_df to DataFrame ====
 #' data <- as(tbl_df, "DataFrame")
-#' hasRownames(data)
-#' class(data)
+#' print(data)
 #'
 #' # SummarizedExperiment to list ====
 #' x <- as(rse_small, "list")
@@ -64,7 +63,7 @@ NULL
 
 
 # Internal =====================================================================
-.coerceToSummarizedExperiment <- function(object) {
+.asSummarizedExperiment <- function(object) {
     assert_is_all_of(object, "SummarizedExperiment")
     if (is(object, "RangedSummarizedExperiment")) {
         object <- as(object, "RangedSummarizedExperiment")
@@ -75,39 +74,108 @@ NULL
 
 
 # Coerce to tibble =============================================================
-# Helps avoid dropping rownames during tidyverse function calls.
-.coerceToTibble <- function(from) {
-    if (is_tibble(from)) {
-        return(from)  # nocov
+# Our constructor helps avoid accidental dropping of rownames.
+# Note that the standard tibble methods use `rownames = NULL` instead.
+.as_tibble <-  # nolint
+    function(x, rownames = "rowname", ...) {
+        if (is(x, "tbl_df")) {
+            return(x)
+        }
+
+        # Require valid columns (atomic, list).
+        valid <- vapply(
+            X = x,
+            FUN = function(x) {
+                is.atomic(x) || is.list(x)
+            },
+            FUN.VALUE = logical(1L),
+            USE.NAMES = TRUE
+        )
+        if (!all(valid)) {
+            invalid <- names(valid[!valid])
+            stop(paste0(
+                "tibble currently atomic and list columns.\n",
+                "Invalid columns: ", toString(invalid)
+            ), call. = FALSE)
+        }
+
+        # Coerce from S4 `DataFrame` to standard `data.frame`.
+        # Here we're suppressing the warning about some object classes not
+        # supporting the `stringsAsFactors` argument (e.g. `DataFrame`).
+        x <- suppressWarnings(
+            as.data.frame(x = x, stringsAsFactors = FALSE)
+        )
+
+        # Move rownames automatically by default to "rowname" column, unless the
+        # object doesn't have rownames defined.
+        if (!hasRownames(x)) {
+            rownames <- NULL
+        }
+
+        as_tibble(x, rownames = rownames)
     }
-    # Suppressing the warning about some object classes not supporting the
-    # `stringsAsFactors` argument (e.g. DataFrame).
-    from <- suppressWarnings(as.data.frame(
-        x = from,
-        stringsAsFactors = FALSE
-    ))
-    assert_has_colnames(from)
-    if (hasRownames(from)) {
-        from <- rownames_to_column(from)
-    }
+
+
+
+# S3 methods -------------------------------------------------------------------
+#' @importFrom tibble as_tibble
+#' @method as_tibble DataFrame
+#' @export
+as_tibble.DataFrame <- .as_tibble
+
+
+
+#' @importFrom tibble as_tibble
+#' @method as_tibble GRanges
+#' @export
+as_tibble.GRanges <- .as_tibble
+
+
+
+# S4 methods -------------------------------------------------------------------
+.asTibble <- function(from) {
     as_tibble(from)
 }
 
+
+
 #' @rdname coerce
 #' @name coerce,matrix,tbl_df-method
-setAs(from = "matrix", to = "tbl_df", def = .coerceToTibble)
+setAs(
+    from = "matrix",
+    to = "tbl_df",
+    def = .asTibble
+)
+
+
 
 #' @rdname coerce
 #' @name coerce,data.frame,tbl_df-method
-setAs(from = "data.frame", to = "tbl_df", def = .coerceToTibble)
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = .asTibble
+)
+
+
 
 #' @rdname coerce
 #' @name coerce,DataFrame,tbl_df-method
-setAs(from = "DataFrame", to = "tbl_df", def = .coerceToTibble)
+setAs(
+    from = "DataFrame",
+    to = "tbl_df",
+    def = .asTibble
+)
+
+
 
 #' @rdname coerce
 #' @name coerce,GRanges,tbl_df-method
-setAs(from = "GRanges", to = "tbl_df", def = .coerceToTibble)
+setAs(
+    from = "GRanges",
+    to = "tbl_df",
+    def = .asTibble
+)
 
 
 
@@ -140,7 +208,7 @@ setAs(
 
 
 # Coerce to list ===============================================================
-.coerceS4ToList <-  # nolint
+.asList <-  # nolint
     function(from) {
         stopifnot(isS4(from))
         to <- lapply(slotNames(from), function(slot) {
@@ -161,7 +229,7 @@ setAs(
 setMethod(
     f = "coerceS4ToList",
     signature = signature("ANY"),
-    definition = .coerceS4ToList
+    definition = .asList
 )
 
 
@@ -185,6 +253,6 @@ setMethod(
     f = "as.list",
     signature = signature("SummarizedExperiment"),
     definition = function(x) {
-        .coerceS4ToList(x)
+        .asList(x)
     }
 )
