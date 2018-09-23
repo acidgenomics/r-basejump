@@ -38,11 +38,15 @@ NULL
             y = colnames(colData(object))
         )
         data <- colData(object)
+        # Generate `interestingGroups` column, if necessary.
         if (!"interestingGroups" %in% colnames(data)) {
-            interestingGroups <- interestingGroups(object)
-            if (length(interestingGroups) > 0L) {
-                data <- uniteInterestingGroups(data, interestingGroups)
-            }
+            data <- uniteInterestingGroups(
+                object = data,
+                interestingGroups = matchInterestingGroups(
+                    object = object,
+                    interestingGroups = interestingGroups
+                )
+            )
         }
         data
     }
@@ -58,12 +62,11 @@ NULL
         )
 
         # Reslot the interesting groups column automatically.
-        # Don't allow the user to set `interestingGroups` column manually.
         value[["interestingGroups"]] <- NULL
-        interestingGroups <- interestingGroups(object)
-        if (length(interestingGroups) > 0L) {
-            value <- uniteInterestingGroups(value, interestingGroups)
-        }
+        value <- uniteInterestingGroups(
+            object = value,
+            interestingGroups = matchInterestingGroups(object)
+        )
 
         # Now safe to assign and return.
         colData(object) <- value
