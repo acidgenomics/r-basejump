@@ -1,5 +1,8 @@
 #' Counts
 #'
+#' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
+#'   defined in [assayNames()], and also slotted first as the primary [assay()].
+#'
 #' @name counts
 #' @family Data Functions
 #' @importFrom BiocGenerics counts
@@ -7,7 +10,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `matrix`.
+#' @return Counts matrix. Typically `matrix` or `sparseMatrix` class.
 #'
 #' @examples
 #' # SummarizedExperiment ====
@@ -68,3 +71,44 @@ setMethod(
     ),
     definition = `.counts<-.SE`
 )
+
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "matrix"
+    ),
+    definition = getMethod(
+        f = "counts<-",
+        signature(
+            object = "SummarizedExperiment",
+            value = "ANY"
+        )
+    )
+)
+
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "sparseMatrix"
+    ),
+    definition = getMethod(
+        f = "counts<-",
+        signature(
+            object = "SummarizedExperiment",
+            value = "ANY"
+        )
+    )
+)
+
+
+

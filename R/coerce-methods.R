@@ -155,27 +155,6 @@ as_tibble.GRanges <-  # nolint
 
 
 
-# FIXME
-# #' @rdname coerce
-# #' @name coerce,matrix,tbl_df-method
-# setAs(
-#     from = "matrix",
-#     to = "tbl_df",
-#     def = .asTibble
-# )
-
-
-
-# #' @rdname coerce
-# #' @name coerce,data.frame,tbl_df-method
-# setAs(
-#     from = "data.frame",
-#     to = "tbl_df",
-#     def = .asTibble
-# )
-
-
-
 #' @rdname coerce
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
