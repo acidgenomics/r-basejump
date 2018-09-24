@@ -1,3 +1,7 @@
+# FIXME Consider slotting which columns are sample level in metadata, for speed.
+
+
+
 #' Sample Data
 #'
 #' Metadata that describes the samples.
