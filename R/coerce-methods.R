@@ -47,15 +47,14 @@
 #' print(data)
 #'
 #' # Automatically move row names to `rowname` column by default.
-#' as(data, Class = "tbl_df")
-#' as_tibble(data)
+#' tbl_df <- as(data, Class = "tbl_df")
 #'
 #' # tbl_df to DataFrame ====
-#' data <- as(tbl_df, "DataFrame")
+#' data <- as(tbl_df, Class = "DataFrame")
 #' print(data)
 #'
 #' # SummarizedExperiment to list ====
-#' x <- as(rse_small, "list")
+#' x <- as(rse_small, Class = "list")
 #' class(x)
 #' names(x)
 NULL
