@@ -42,6 +42,17 @@ setGeneric(
 
 
 
+#' @rdname cell2sample
+#' @export
+setGeneric(
+    "cell2sample",
+    function(object, ...) {
+        standardGeneric("cell2sample")
+    }
+)
+
+
+
 #' @rdname coerce
 #' @export
 setGeneric(
@@ -262,6 +273,17 @@ setGeneric(
 
 
 
+#' @rdname metricsPerSample
+#' @export
+setGeneric(
+    "metricsPerSample",
+    function(object, ...) {
+        standardGeneric("metricsPerSample")
+    }
+)
+
+
+
 #' @rdname plotCorrelationHeatmap
 #' @export
 setGeneric(
@@ -455,6 +477,17 @@ setGeneric(
     name = "stripTranscriptVersions",
     def = function(object, ...) {
         standardGeneric("stripTranscriptVersions")
+    }
+)
+
+
+
+#' @rdname subsetPerSample
+#' @export
+setGeneric(
+    "subsetPerSample",
+    function(object, ...) {
+        standardGeneric("subsetPerSample")
     }
 )
 
