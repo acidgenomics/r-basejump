@@ -11,6 +11,7 @@
 
 
 
+# FIXME Just pull these from rse_small...
 #' Example RNA-Seq Counts
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`.
@@ -38,6 +39,18 @@
 
 
 
+#' SingleCellExperiment Example
+#'
+#' @family Minimal Example Data
+#' @author Michael Steinbaugh
+#'
+#' @examples
+#' sce_small
+"sce_small"
+
+
+
+# FIXME Just pull these from sce_small...
 #' Example Single-Cell RNA-Seq Counts
 #'
 #' Modified version of `scater::sc_example_counts`, with dimnames formatted
