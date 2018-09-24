@@ -48,8 +48,6 @@ setMethod(
             interestingGroups = value
         )
         metadata(object)[["interestingGroups"]] <- value
-        # Ensure `interestingGroups` column is updated to match.
-        sampleData(object) <- sampleData(object)
         object
     }
 )
