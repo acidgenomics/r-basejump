@@ -6,11 +6,17 @@
 \alias{counts<-}
 \alias{counts,SummarizedExperiment-method}
 \alias{counts<-,SummarizedExperiment,ANY-method}
+\alias{counts<-,SummarizedExperiment,matrix-method}
+\alias{counts<-,SummarizedExperiment,sparseMatrix-method}
 \title{Counts}
 \usage{
 \S4method{counts}{SummarizedExperiment}(object)
 
 \S4method{counts}{SummarizedExperiment,ANY}(object) <- value
+
+\S4method{counts}{SummarizedExperiment,matrix}(object) <- value
+
+\S4method{counts}{SummarizedExperiment,sparseMatrix}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
@@ -18,10 +24,14 @@
 \item{value}{Value to assign.}
 }
 \value{
-\code{matrix}.
+Counts matrix. Typically \code{matrix} or \code{sparseMatrix} class.
 }
 \description{
 Counts
+}
+\note{
+For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
+defined in \code{\link[=assayNames]{assayNames()}}, and also slotted first as the primary \code{\link[=assay]{assay()}}.
 }
 \examples{
 # SummarizedExperiment ====
