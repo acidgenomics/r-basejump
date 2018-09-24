@@ -62,7 +62,7 @@ NULL
 
         # Get the sample metadata.
         sampleData <- sampleData(object) %>%
-            as("tbl_df") %>%
+            as_tibble(rownames = "rowname") %>%
             rename(colname = !!sym("rowname")) %>%
             mutate_all(as.factor)
 
@@ -71,7 +71,7 @@ NULL
             # Using reshape2 method here.
             # This sets rownames as "Var1" and colnames as "Var2".
             melt(id = 1L, value.name = "counts") %>%
-            as("tbl_df") %>%
+            as_tibble() %>%
             rename(
                 rowname = !!sym("Var1"),
                 colname = !!sym("Var2")

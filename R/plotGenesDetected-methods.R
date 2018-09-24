@@ -43,7 +43,7 @@ NULL
         counts <- assays(object)[[assay]]
         geneCount <- colSums(counts >= minCounts)
         data <- metrics(object) %>%
-            as("tbl_df") %>%
+            as_tibble() %>%
             mutate(geneCount = !!geneCount)
 
         p <- ggplot(

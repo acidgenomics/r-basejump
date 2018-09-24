@@ -84,7 +84,7 @@ setMethod(
         assertIsAStringOrNULL(title)
 
         data <- zerosVsDepth(object) %>%
-            as("tbl_df")
+            as_tibble()
 
         p <- ggplot(
             data = data,

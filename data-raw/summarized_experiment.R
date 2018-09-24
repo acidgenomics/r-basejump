@@ -44,7 +44,7 @@ names(rowRanges) <- rownames(rse)
 # Ensure factor levels in mcols are dropped, to save space.
 # Otherwise the example will be too large.
 mcols <- mcols(rowRanges) %>%
-    as("tbl_df") %>%
+    as_tibble(rownames = "rowname") %>%
     mutate_if(is.factor, droplevels) %>%
     as("DataFrame")
 mcols(rowRanges) <- mcols

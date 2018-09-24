@@ -37,7 +37,7 @@ NULL
 
         counts <- assays(object)[[assay]]
         data <- sampleData(object) %>%
-            as("tbl_df") %>%
+            as_tibble() %>%
             mutate(totalCounts = colSums(!!counts))
 
         yLab <- "counts"
