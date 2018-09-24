@@ -4,15 +4,12 @@
 
 #' Metrics
 #'
-#' By default, [metrics()] returns [colData()] with an `interestingGroups`
-#' column automatically added. This is useful for `ggplot2` scripting. Column
-#' names are always sorted alphabetically.
+#' This function takes data stored in [colData()] and consistently returns a
+#' tibble grouped by sample, to be used for plotting with `ggplot2`.
 #'
 #' @section SingleCellExperiment:
 #'
-#' Returns `data.frame` with cellular barcodes as rows. If `recalculate = TRUE`,
-#' returns the original object class (e.g. `SingleCellExperiment`), with updated
-#' metrics in [colData()].
+#' Note that metrics are cell level but grouped by sample.
 #'
 #' @name metrics
 #' @family Data Functions
@@ -21,8 +18,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `grouped_df`. Grouped by `sampleID` column, which corresponds to the
-#'   column names for `SummarizedExperiment`.
+#' @return `grouped_df`. Grouped by `sampleID` column.
 #'
 #' @examples
 #' # SummarizedExperiment ====
@@ -49,35 +45,11 @@ NULL
 .metrics.SCE <-  # nolint
     function(object) {
         validObject(object)
-
         colData <- colData(object)
-
-        data <- as.data.frame(colData)
-        if (!all(metricsCols %in% colnames(data))) {
-            stop(paste(
-                "Missing metrics:",
-                setdiff(metricsCols, colnames(data)),
-                "Run `metrics(object, recalculate = TRUE)`."
-            ))
-        }
-        if (!"sampleName" %in% colnames(data)) {
-            data[["sampleID"]] <- factor("unknown")
-            data[["sampleName"]] <- factor("unknown")
-        }
-        interestingGroups <- matchInterestingGroups(
-            object = object,
-            interestingGroups = interestingGroups
-        )
-        data <- uniteInterestingGroups(
-            object = data,
-            interestingGroups = interestingGroups
-        )
-        assert_is_subset(
-            x = c("sampleName", "interestingGroups"),
-            y = colnames(data)
-        )
-
-        data
+        assert_is_subset("sampleID", colnames(colData))
+        colData(object) %>%
+            as_tibble(rownames = "cellID") %>%
+            group_by(!!sym("sampleID"))
     }
 
 
