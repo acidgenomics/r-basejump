@@ -46,10 +46,40 @@
 #' colData(c)
 #'
 #' # SingleCellExperiment ====
+#' x <- sce_small
+#' head(colnames(x))
+#' sampleData(x)
+#'
+#' # Here we're faking a distinct replicate, just as an example.
+#' y <- x
+#' # Increase the cell ID numbers.
+#' cells <- colnames(y) %>%
+#'     sub("cell", "", .) %>%
+#'     as.integer() %>%
+#'     `+`(ncol(y)) %>%
+#'     paste0("cell", .)
+#' colnames(y) <- cells
+#' head(colnames(y))
+#' # Increase the sample ID numbers.
+#' y$sampleID <- gsub("1$", "3", y$sampleID)
+#' y$sampleID <- gsub("2$", "4", y$sampleID)
+#' sampleData(y)
+#'
+#' # Combine two SingleCellExperiment objects.
+#' c <- combine(x, y)
+#' print(c)
+#' sampleNames(c)
 NULL
 
 
 
+# FIXME Move these assert checks to SE method.
+# assert_are_identical(class(x), class(y))
+# assert_are_set_equal(
+#     x = colnames(sampleData(x)),
+#     y = colnames(sampleData(y))
+# )
+# assert_is_character(metadata)
 .combine.SE <-  # nolint
     function(
         x,
@@ -166,50 +196,15 @@ NULL
             "programVersions"
         )
     ) {
-        assert_is_character(metadata)
-
         # Use our SummarizedExperiment method to combine.
-        assert_are_identical(class(x), class(y))
         Class <- "RangedSummarizedExperiment"  # nolint
         rse <- combine(
             x = as(object = x, Class = Class),
             y = as(object = y, Class = Class)
+            # FIXME If we add metadata here, it errors.
+            # metadata = metadata
         )
-        counts <- counts(rse)
-        colData <- colData(rse)
-        rowRanges <- rowRanges(rse)
-
-        # Update cell2sample mappings ------------------------------------------
-        assert_are_set_equal(
-            x = colnames(sampleData(x)),
-            y = colnames(sampleData(y))
-        )
-        cols <- intersect(
-            x = colnames(sampleData(x)),
-            y = colnames(sampleData(y))
-        )
-        sampleData <- rbind(
-            sampleData(x)[, cols, drop = FALSE],
-            sampleData(y)[, cols, drop = FALSE]
-        )
-        stop("This is still in progress")
-        # FIXME Rethink how we want to approach this step.
-        cell2sample <- .mapCellsToSamples(
-            cells = colnames(counts),
-            samples = rownames(sampleData)
-        )
-
-        # Metadata -------------------------------------------------------------
-        metadata <- metadata(x)[metadata]
-        metadata[["cell2sample"]] <- cell2sample
-
-        # Return SingleCellExperiment ------------------------------------------
-        .new.SingleCellExperiment(
-            assays = list(counts = counts),
-            rowRanges = rowRanges,
-            colData = colData,
-            metadata = metadata
-        )
+        as(rse, "SingleCellExperiment")
     }
 
 
