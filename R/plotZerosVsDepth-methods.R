@@ -1,4 +1,5 @@
 # TODO Add SE method support.
+# TODO Add SCE method from bcbioSingleCell.
 
 
 
