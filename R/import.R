@@ -135,9 +135,11 @@ import <- function(file, ...) {
 
     # Return as `DataFrame` instead of `data.frame`.
     if (is.data.frame(data)) {
-        data <- data %>%
-            as("tbl_df") %>%
-            as("DataFrame")
+        data <- as(data, "DataFrame")
+        if ("rowname" %in% colnames(data)) {
+            rownames(data) <- data[["rowname"]]
+            data[["rowname"]] <- NULL
+        }
         # Ensure that rownames assign correctly, if necessary.
         assert_are_disjoint_sets("rowname", colnames(data))
     }

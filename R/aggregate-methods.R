@@ -160,7 +160,7 @@ NULL
         # column with the `aggregate` column metadata.
         interestingGroups <- setdiff(interestingGroups(object), "sampleName")
         sampleData <- sampleData(object) %>%
-            as("tbl_df") %>%
+            as_tibble() %>%
             select(!!!syms(unique(c("aggregate", interestingGroups)))) %>%
             unique() %>%
             mutate(rowname = makeNames(!!sym("aggregate"))) %>%

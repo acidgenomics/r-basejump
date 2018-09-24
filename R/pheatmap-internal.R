@@ -37,7 +37,7 @@
     blacklist <- unique(c("sampleName", blacklist))
 
     data <- data %>%
-        as("tbl_df") %>%
+        as_tibble(rownames = "rowname") %>%
         # Remove blacklisted columns (e.g. `sampleName`).
         .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
         # Ensure all strings are factors.
@@ -45,7 +45,7 @@
         # Ensure unwanted columns like `sizeFactor` are dropped.
         select_if(is.factor) %>%
         as.data.frame() %>%
-        column_to_rownames()
+        column_to_rownames("rowname")
 
     # Drop any remaining factor columns that contain a single level.
     hasLevels <- vapply(

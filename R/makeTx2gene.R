@@ -34,7 +34,7 @@ NULL
 
 .makeTx2gene <- function(data) {
     data <- data %>%
-        as("tbl_df") %>%
+        as_tibble() %>%
         select(!!!syms(c("transcriptID", "geneID"))) %>%
         .[complete.cases(.), , drop = FALSE] %>%
         unique() %>%

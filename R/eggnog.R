@@ -37,7 +37,7 @@ eggnog <- function() {
     ) %>%
         str_subset(pattern) %>%
         str_match(pattern) %>%
-        as("tbl_df") %>%
+        as_tibble() %>%
         select(-1L) %>%
         set_colnames(c("letter", "description")) %>%
         arrange(!!sym("letter"))

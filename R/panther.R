@@ -85,8 +85,7 @@ NULL
 # Organism-specific data modifiers =============================================
 .panther.homoSapiens <- function(data) {  # nolint
     hgnc2ensembl <- hgnc2ensembl() %>%
-        set_rownames(NULL) %>%
-        as("tbl_df")
+        as_tibble(rownames = NULL)
 
     # Ensembl matches
     ensembl <- data %>%
@@ -97,7 +96,7 @@ NULL
 
     # HGNC matches
     hgnc <- data %>%
-        as("tbl_df") %>%
+        as_tibble() %>%
         # Extract the HGNC ID
         mutate(
             hgncID = str_match(!!sym("keys"), "HGNC=([0-9]+)")[, 2L],
@@ -116,8 +115,7 @@ NULL
 
 .panther.musMusculus <- function(data) {  # nolint
     mgi2ensembl <- mgi2ensembl() %>%
-        set_rownames(NULL) %>%
-        as("tbl_df")
+        as_tibble(rownames = NULL)
 
     # Ensembl matches
     ensembl <- data %>%
@@ -128,7 +126,7 @@ NULL
 
     # MGI matches
     mgi <- data %>%
-        as("tbl_df") %>%
+        as_tibble() %>%
         mutate(
             mgiID = str_match(!!sym("keys"), "MGI=([0-9]+)")[, 2L],
             mgiID = as.integer(!!sym("mgiID"))
