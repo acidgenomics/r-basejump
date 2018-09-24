@@ -10,8 +10,8 @@ release <- 92L
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
 params <- newSplatParams()
-params <- setParam(params, name = "nGenes", value = 1000)
-params <- setParam(params, name = "nCells", value = 100)
+params <- setParam(params, name = "batchCells", value = c(100, 100))
+params <- setParam(params, name = "nGenes", value = 100)
 params <- setParam(params, name = "de.facLoc", value = 1)
 params <- setParam(params, name = "de.facScale", value = .25)
 params <- setParam(params, name = "dropout.type", value = "experiment")
@@ -36,11 +36,8 @@ colnames(sce) <- colnames(sce) %>%
 colData(sce) <- camel(colData(sce))
 # Add sampleID and sampleName columns.
 sce$sampleID <- factor(gsub("group", "sample", camel(sce$group)))
-sce$sampleName <- sce$sampleID
 sce$group <- NULL
-sce$batch <- NULL
 sce$cell <- NULL
-stopifnot("sampleName" %in% colnames(colData(sce)))
 
 # Just keep raw counts.
 assays(sce) <- assays(sce)["counts"]
