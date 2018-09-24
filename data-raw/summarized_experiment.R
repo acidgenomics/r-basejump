@@ -89,7 +89,7 @@ counts <- matrix(
 se <- SummarizedExperiment(
     assays = list(counts = counts),
     rowData = tx2gene[rownames(counts), , drop = FALSE],
-    list(date = Sys.Date())
+    metadata = list(date = Sys.Date())
 )
 tx_se_small <- se
 devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
