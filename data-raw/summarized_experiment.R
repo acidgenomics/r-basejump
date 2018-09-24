@@ -1,8 +1,8 @@
 # SummarizedExperiment example objects
 # Last updated 2018-09-24
 
-library("DESeq2")
-library("tidyverse")
+library(DESeq2)
+library(tidyverse)
 
 # Restrict to 1 MB per file.
 mb <- structure(1e6, class = "object_size")
@@ -51,6 +51,8 @@ mcols(rowRanges) <- mcols
 # FIXME Consider subsetting the columns here to make the object smaller.
 # Update the rownames of the object to match our genomic ranges.
 rowRanges(rse) <- rowRanges
+# Stash the date.
+metadata(rse)[["date"]] <- Sys.Date()
 # Define the interesting groups.
 interestingGroups(rse) <- c("genotype", "treatment")
 # Report the size of each slot in bytes.
@@ -86,7 +88,8 @@ counts <- matrix(
 )
 se <- SummarizedExperiment(
     assays = list(counts = counts),
-    rowData = tx2gene[rownames(counts), , drop = FALSE]
+    rowData = tx2gene[rownames(counts), , drop = FALSE],
+    list(date = Sys.Date())
 )
 tx_se_small <- se
 devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)

@@ -35,6 +35,7 @@ colnames(sce) <- colnames(sce) %>%
 # Prepare column data.
 colData(sce) <- camel(colData(sce))
 # Add sampleID and sampleName columns.
+sce$batch <- factor(camel(sce$batch))
 sce$sampleID <- factor(gsub("group", "sample", camel(sce$group)))
 sce$group <- NULL
 sce$cell <- NULL
@@ -46,8 +47,8 @@ assays(sce) <- assays(sce)["counts"]
 gr <- makeGRangesFromEnsembl(organism = organism, release = release)
 rowRanges(sce) <- gr[seq_len(nrow(sce))]
 
-# Stash empty metadata.
-metadata(sce) <- list()
+# Stash minimal metadata.
+metadata(sce) <- list(date = Sys.Date())
 
 sce_small <- sce
 devtools::use_data(sce_small, compress = "xz", overwrite = TRUE)
