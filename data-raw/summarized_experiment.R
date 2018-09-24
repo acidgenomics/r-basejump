@@ -1,5 +1,5 @@
 # SummarizedExperiment example objects
-# Last updated 2018-09-15
+# Last updated 2018-09-24
 
 library("DESeq2")
 library("tidyverse")
@@ -22,9 +22,8 @@ saveData(dds_small, dir = "tests/testthat", compress = "xz")
 rse <- as(dds, "RangedSummarizedExperiment")
 stopifnot(object.size(rse) < mb)
 # Column data.
-# Note that `sampleName` column is required for `sampleData()` return.
+# Note that `sampleName` column is generated for `sampleData()` return.
 colData(rse) <- DataFrame(
-    sampleName = as.factor(colnames(rse)),
     genotype = factor(
         rep(c("wildtype", "knockout"), times = 2L),
         levels = c("wildtype", "knockout")
@@ -49,6 +48,7 @@ mcols <- mcols(rowRanges) %>%
     mutate_if(is.factor, droplevels) %>%
     as("DataFrame")
 mcols(rowRanges) <- mcols
+# FIXME Consider subsetting the columns here to make the object smaller.
 # Update the rownames of the object to match our genomic ranges.
 rowRanges(rse) <- rowRanges
 # Define the interesting groups.
