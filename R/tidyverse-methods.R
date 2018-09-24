@@ -30,8 +30,8 @@ left_join.DataFrame <- function(x, y, ...) {
     assert_is_all_of(x, "DataFrame")
     assert_is_all_of(y, "DataFrame")
     data <- left_join(
-        x = as(x, "tbl_df"),
-        y = as(y, "tbl_df"),
+        x = as_tibble(x, rownames = "rowname"),
+        y = as_tibble(y, rownames = NULL),
         ...
     )
     as(data, "DataFrame")
