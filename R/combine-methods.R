@@ -1,3 +1,7 @@
+# FIXME Check SCE method.
+
+
+
 #' Combine Multiple Objects
 #'
 #' @note We're attempting to make this as strict as possible, requiring:
@@ -17,21 +21,22 @@
 #' @param metadata `character`. Metadata slot names that must be identical
 #'   between the datasets.
 #'
-#' @seealso [BiocGenerics::combine()].
+#' @seealso
+#' - [BiocGenerics::combine()].
+#' - `help("merge.Matrix", "Matrix.utils")`.
 #'
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' # For this simple working example, let's duplicate our minimal dataset.
-#'
+#' # SummarizedExperiment ====
 #' x <- rse_small
 #' colnames(x)
 #' colData(x)
 #'
+#' # Create a copy of our minimal example.
 #' y <- x
 #' colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
 #' colnames(y)
-#' colData(y)[["sampleName"]] <- colnames(y)
 #' colData(y)
 #'
 #' # Combine two SummarizedExperiment objects.
@@ -39,6 +44,8 @@
 #' print(c)
 #' colnames(c)
 #' colData(c)
+#'
+#' # SingleCellExperiment ====
 NULL
 
 
@@ -141,6 +148,72 @@ NULL
 
 
 
+.combine.SCE <-  # nolint
+    function(
+        x,
+        y,
+        metadata = c(
+            "version",
+            "pipeline",
+            "level",
+            "interestingGroups",
+            "organism",
+            "genomeBuild",
+            "ensemblRelease",
+            "umiType",
+            "gffFile",
+            "dataVersions",
+            "programVersions"
+        )
+    ) {
+        assert_is_character(metadata)
+
+        # Use our SummarizedExperiment method to combine.
+        assert_are_identical(class(x), class(y))
+        Class <- "RangedSummarizedExperiment"  # nolint
+        rse <- combine(
+            x = as(object = x, Class = Class),
+            y = as(object = y, Class = Class)
+        )
+        counts <- counts(rse)
+        colData <- colData(rse)
+        rowRanges <- rowRanges(rse)
+
+        # Update cell2sample mappings ------------------------------------------
+        assert_are_set_equal(
+            x = colnames(sampleData(x)),
+            y = colnames(sampleData(y))
+        )
+        cols <- intersect(
+            x = colnames(sampleData(x)),
+            y = colnames(sampleData(y))
+        )
+        sampleData <- rbind(
+            sampleData(x)[, cols, drop = FALSE],
+            sampleData(y)[, cols, drop = FALSE]
+        )
+        stop("This is still in progress")
+        # FIXME Rethink how we want to approach this step.
+        cell2sample <- .mapCellsToSamples(
+            cells = colnames(counts),
+            samples = rownames(sampleData)
+        )
+
+        # Metadata -------------------------------------------------------------
+        metadata <- metadata(x)[metadata]
+        metadata[["cell2sample"]] <- cell2sample
+
+        # Return SingleCellExperiment ------------------------------------------
+        .new.SingleCellExperiment(
+            assays = list(counts = counts),
+            rowRanges = rowRanges,
+            colData = colData,
+            metadata = metadata
+        )
+    }
+
+
+
 #' @rdname combine
 #' @export
 setMethod(
@@ -150,4 +223,17 @@ setMethod(
         y = "SummarizedExperiment"
     ),
     definition = .combine.SE
+)
+
+
+
+#' @rdname combine
+#' @export
+setMethod(
+    f = "combine",
+    signature = signature(
+        x = "SingleCellExperiment",
+        y = "SingleCellExperiment"
+    ),
+    definition = .combine.SCE
 )

@@ -28,7 +28,20 @@
 #'   (features).
 #'
 #' @examples
-#' counts <- S4Vectors::DataFrame(
+#' # Example data ====
+#' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
+#' names(genes) <- rownames(counts)
+#' print(genes)
+#'
+#' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+#' names(samples) <- colnames(counts)
+#' print(samples)
+#'
+#' cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
+#' names(samples) <- colnames(counts)
+#' print(samples)
+#'
+#' counts <- data.frame(
 #'     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
 #'     sample1_replicate2 = as.integer(c(1, 0, 1, 1)),
 #'     sample2_replicate1 = as.integer(c(1, 1, 0, 1)),
@@ -37,23 +50,15 @@
 #' )
 #' print(counts)
 #'
-#' # Dense matrix
+#' # matrix
 #' matrix <- as(counts, "matrix")
 #' class(matrix)
 #' print(matrix)
 #'
-#' # Sparse matrix
+#' # sparseMatrix
 #' sparse <- as(matrix, "sparseMatrix")
 #' class(sparse)
 #' print(sparse)
-#'
-#' samples <- factor(c("sample1", "sample1", "sample2", "sample2"))
-#' names(samples) <- colnames(counts)
-#' print(samples)
-#'
-#' genes <- factor(c("gene1", "gene1", "gene2", "gene2"))
-#' names(genes) <- rownames(counts)
-#' print(genes)
 #'
 #' # SummarizedExperiment
 #' se <- SummarizedExperiment::SummarizedExperiment(
@@ -66,15 +71,22 @@
 #' )
 #' print(se)
 #'
+#' # SingleCellExperiment
+#' sce <- SingleCellExperiment::SingleCellExperiment(se)
+#' colnames(sce) <- gsub("sample", "cell", colnames(sce))
+#' print(sce)
+#'
 #' # aggregateCols ====
 #' aggregateCols(matrix, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
+#' aggregateCols(sce)  # FIXME
 #'
 #' # aggregateRows ====
 #' aggregateRows(matrix, groupings = genes)
 #' aggregateRows(sparse, groupings = genes)
 #' aggregateRows(se)
+#' aggregateRows(sce)  # FIXME
 NULL
 
 
@@ -186,6 +198,73 @@ NULL
 
 
 
+.aggregateCols.SCE <-  # nolint
+    function(object) {
+        validObject(object)
+
+        # Remap cellular barcode groupings -------------------------------------
+        message("Remapping cellular barcodes to aggregate sample IDs")
+        cell2sample <- cell2sample(object)
+        map <- tibble(
+            cell = names(cell2sample),
+            sample = cell2sample,
+            aggregate = colData(object)[["aggregate"]]
+        )
+        groupings <- mapply(
+            FUN = gsub,
+            x = map[["cell"]],
+            pattern = paste0("^", map[["sample"]]),
+            replacement = map[["aggregate"]],
+            SIMPLIFY = TRUE,
+            USE.NAMES = TRUE
+        ) %>%
+            as.factor()
+        # Add the new cell mappings to the tibble.
+        map[["newCell"]] <- groupings
+        # Reslot the `aggregate` column using these groupings.
+        assert_are_identical(names(groupings), colnames(object))
+        colData(object)[["aggregate"]] <- groupings
+
+        # Generate SingleCellExperiment ----------------------------------------
+        # Using `SummarizedExperiment` method here.
+        rse <- aggregateCols(as(object, "RangedSummarizedExperiment"))
+        assert_is_all_of(rse, "RangedSummarizedExperiment")
+
+        stop("This is still in progress")
+
+        # FIXME Rethink how we want to appraoch this step.
+        # Update the cell-to-sample mappings.
+        cell2sample <- .mapCellsToSamples(
+            cells = as.character(map[["newCell"]]),
+            samples = as.character(map[["aggregate"]])
+        )
+
+        # Update the sample data.
+        colData(rse)[["sampleID"]] <- cell2sample
+        colData(rse)[["sampleName"]] <- cell2sample
+
+        # Now ready to generate aggregated SCE.
+        sce <- .new.SingleCellExperiment(
+            assays = assays(rse),
+            rowRanges = rowRanges(object),
+            colData = colData(rse),
+            metadata = list(
+                aggregateCols = groupings,
+                cell2sample = cell2sample,
+                interestingGroups = interestingGroups(object)
+            ),
+            spikeNames = spikeNames(object)
+        )
+
+        # Recalculate the metrics.
+        # FIXME Need to rethink this approach.
+        sce <- metrics(sce, recalculate = TRUE)
+
+        sce
+    }
+
+
+
 #' @rdname aggregate
 #' @export
 setMethod(
@@ -212,6 +291,16 @@ setMethod(
     f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
     definition = .aggregateCols.SE
+)
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateCols",
+    signature = signature("SingleCellExperiment"),
+    definition = .aggregateCols.SCE
 )
 
 
@@ -316,13 +405,13 @@ aggregateReplicates <- function(...) {
 #' @rdname aggregate
 #' @usage NULL
 #' @export
-aggregateSamples <- function(...) {
-    aggregateCols(...)
+aggregateFeatures <- function(...) {
+    aggregateRows(...)
 }
 
 #' @rdname aggregate
 #' @usage NULL
 #' @export
-aggregateFeatures <- function(...) {
-    aggregateRows(...)
+aggregateSamples <- function(...) {
+    aggregateCols(...)
 }
