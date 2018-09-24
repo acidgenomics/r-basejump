@@ -1,13 +1,15 @@
 #' Cell to Sample Mappings
 #'
+#' @note `sampleID` column must be defined in [colData()].
+#'
 #' @name cell2sample
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #'
 #' @inheritParams general
 #'
-#' @return Named `factor` containing sample IDs as the levels and cellular
-#'   barcode IDs as the names.
+#' @return Named `factor` containing sample IDs as the levels and cell IDs as
+#'   the names.
 #'
 #' @examples
 #' x <- cell2sample(sce_small)
