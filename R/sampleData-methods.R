@@ -96,20 +96,6 @@ NULL
         nSamples <- length(unique(data[["sampleID"]]))
         assert_all_are_positive(nSamples)
 
-        # Keep columns that have fewer uniques than the number of samples.
-        keep <- vapply(
-            X = data,
-            FUN = function(x) {
-                uniques <- length(unique(x))
-                uniques <= nSamples
-            },
-            FUN.VALUE = logical(1L)
-        )
-        data <- data[, keep, drop = FALSE]
-
-        # FIXME If we can figure out how to deal with "batch", can remove...
-        stop("Draft update")
-
         # `clusterCols` defines clustering-specific columns that should be
         # dropped. These include columns that map cells to cell types, etc.
         keep <- !grepl(
@@ -118,24 +104,43 @@ NULL
         )
         data <- data[, keep, drop = FALSE]
 
-        # For columns with the same number of
-
+        # Keep columns that have fewer uniques than the number of samples.
+        keep <- vapply(
+            X = data,
+            FUN = function(x) {
+                length(unique(x)) <= nSamples
+            },
+            FUN.VALUE = logical(1L)
+        )
+        data <- data[, keep, drop = FALSE]
 
         # For columns that have the same number of uniques, they need to match
         # our `sampleID` column factor levels exactly. Create a factor integer
         # table to check for this.
-        ftbl <- data %>%
+        subset <- data[
+            ,
+            vapply(
+                X = data,
+                FUN = function(x) {
+                    length(unique(x)) == nSamples
+                },
+                FUN.VALUE = logical(1L)
+            ),
+            drop = FALSE
+        ]
+        factortbl <- subset %>%
             as_tibble(rownames = NULL) %>%
             mutate_all(as.factor) %>%
             mutate_all(as.integer)
-        keep <- vapply(
-            X = ftbl,
+        trash <- !vapply(
+            X = factortbl,
             FUN = function(x) {
-                identical(x, ftbl$sampleID)
+                identical(x, factortbl$sampleID)
             },
             FUN.VALUE = logical(1L)
         )
-        sampleCols <- c(sampleCols, names(keep[keep]))
+        trash <- names(trash[trash])
+        data <- data[, setdiff(colnames(data), trash), drop = FALSE]
 
         # Collapse and set the rownames to `sampleID`.
         rownames(data) <- NULL
