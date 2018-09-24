@@ -42,10 +42,7 @@ NULL
         if (!"interestingGroups" %in% colnames(data)) {
             data <- uniteInterestingGroups(
                 object = data,
-                interestingGroups = matchInterestingGroups(
-                    object = object,
-                    interestingGroups = interestingGroups
-                )
+                interestingGroups = matchInterestingGroups(object)
             )
         }
         data
