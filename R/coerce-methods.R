@@ -73,6 +73,12 @@ NULL
 
 
 # Coerce to tibble =============================================================
+#' @importFrom tibble as_tibble
+#' @export
+tibble::as_tibble
+
+
+
 # Note that our constructors move rownames to "rowname" column automatically
 # by default, to avoid dropping rownames accidentally.
 .as_tibble <-  # nolint
