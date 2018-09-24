@@ -75,7 +75,6 @@ NULL
 # Coerce to tibble =============================================================
 # Note that our constructors move rownames to "rowname" column automatically
 # by default, to avoid dropping rownames accidentally.
-
 .as_tibble <-  # nolint
     function(x, rownames = "rowname", ...) {
         # Check for valid columns (atomic, list).
@@ -150,23 +149,24 @@ as_tibble.GRanges <-  # nolint
 
 
 
-#' @rdname coerce
-#' @name coerce,matrix,tbl_df-method
-setAs(
-    from = "matrix",
-    to = "tbl_df",
-    def = .asTibble
-)
+# FIXME
+# #' @rdname coerce
+# #' @name coerce,matrix,tbl_df-method
+# setAs(
+#     from = "matrix",
+#     to = "tbl_df",
+#     def = .asTibble
+# )
 
 
 
-#' @rdname coerce
-#' @name coerce,data.frame,tbl_df-method
-setAs(
-    from = "data.frame",
-    to = "tbl_df",
-    def = .asTibble
-)
+# #' @rdname coerce
+# #' @name coerce,data.frame,tbl_df-method
+# setAs(
+#     from = "data.frame",
+#     to = "tbl_df",
+#     def = .asTibble
+# )
 
 
 
