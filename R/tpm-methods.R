@@ -6,6 +6,7 @@
 #' @name tpm
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @importFrom SingleCellExperiment tpm
 #' @export
 #'
 #' @inheritParams general
