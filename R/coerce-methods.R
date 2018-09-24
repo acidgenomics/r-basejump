@@ -209,10 +209,6 @@ setAs(
             rownames(to) <- rownames
             to[["rowname"]] <- NULL
         }
-        # Warn on invalid dimnames.
-        if (!all(validDimnames(to))) {
-            warning("Invalid dimnames detected", call. = FALSE)
-        }
         to
     }
 )
