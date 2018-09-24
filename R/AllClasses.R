@@ -38,6 +38,8 @@ setClass(
     contains = "DataFrame"
 )
 
+
+
 setValidity(
     Class = "ensembl2entrez",
     method = function(object) {
@@ -91,6 +93,8 @@ setClass(
     contains = "DataFrame"
 )
 
+
+
 setValidity(
     Class = "gene2symbol",
     method = function(object) {
@@ -131,6 +135,8 @@ setClass(
     Class = "hgnc2ensembl",
     contains = "DataFrame"
 )
+
+
 
 setValidity(
     Class = "hgnc2ensembl",
@@ -179,6 +185,8 @@ setClass(
     contains = "DataFrame"
 )
 
+
+
 setValidity(
     Class = "mgi2ensembl",
     method = function(object) {
@@ -212,6 +220,8 @@ setClass(
     Class = "PANTHER",
     contains = "DataFrame"
 )
+
+
 
 setValidity(
     Class = "PANTHER",
@@ -267,6 +277,8 @@ setClass(
     Class = "tx2gene",
     contains = "DataFrame"
 )
+
+
 
 setValidity(
     Class = "tx2gene",
