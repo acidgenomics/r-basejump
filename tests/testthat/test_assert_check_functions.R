@@ -110,11 +110,11 @@ test_that("assertHasRownames", {
 
 
 
-# assertIsAHeaderLevel =========================================================
-test_that("assertIsAHeaderLevel", {
-    expect_silent(assertIsAHeaderLevel(1L))
+# assertIsHeaderLevel ==========================================================
+test_that("assertIsHeaderLevel", {
+    expect_silent(assertIsHeaderLevel(1L))
     expect_error(
-        object = assertIsAHeaderLevel(8L),
+        object = assertIsHeaderLevel(8L),
         regexp = paste(
             "is_subset :",
             "The element '8' in as.integer\\(object\\)"
