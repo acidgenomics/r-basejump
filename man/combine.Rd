@@ -41,16 +41,14 @@ We're attempting to make this as strict as possible, requiring:
 }
 \examples{
 # SummarizedExperiment ====
-# For this simple working example, let's duplicate our minimal dataset.
-
 x <- rse_small
 colnames(x)
 colData(x)
 
+# Create a copy of our minimal example.
 y <- x
 colnames(y) <- paste0("sample", seq(from = 5L, to = 8L))
 colnames(y)
-colData(y)[["sampleName"]] <- colnames(y)
 colData(y)
 
 # Combine two SummarizedExperiment objects.
@@ -60,42 +58,6 @@ colnames(c)
 colData(c)
 
 # SingleCellExperiment ====
-# For this simple working example, let's duplicate our minimal dataset,
-# modify the cell barcodes, and combine.
-
-x <- indrops_small
-validObject(x)
-sampleData(x)
-sampleNames(x)
-
-# Here we're faking a distinct replicate, just as an example.
-y <- indrops_small
-# Modify the cellular barcodes prefix.
-colnames(y) <- gsub(
-    pattern = "^multiplexed_AAAAAAAA",
-    replacement = "multiplexed_CCCCCCCC",
-    x = colnames(y)
-)
-# Modify the column data.
-colData(y)[["description"]] <- factor("multiplexed-CCCCCCCC")
-colData(y)[["sampleID"]] <- factor("multiplexed_CCCCCCCC")
-colData(y)[["sampleName"]] <- factor("rep_2")
-colData(y)[["sequence"]] <- factor("GGGGGGGG")
-colData(y)[["revcomp"]] <- factor("CCCCCCCC")
-# Modify the sample data.
-sampleData(y)[["sampleName"]] <- factor("rep_2")
-sampleData(y)[["description"]] <- factor("multiplexed-CCCCCCCC")
-sampleData(y)[["sequence"]] <- factor("GGGGGGGG")
-sampleData(y)[["revcomp"]] <- factor("CCCCCCCC")
-rownames(sampleData(y)) <- "multiplexed_CCCCCCCC"
-validObject(y)
-sampleData(y)
-sampleNames(y)
-
-# Combine two SingleCellExperiment objects.
-c <- combine(x, y)
-print(c)
-sampleNames(c)
 }
 \seealso{
 \itemize{
