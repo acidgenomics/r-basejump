@@ -16,7 +16,8 @@ identifiers and Ensembl annotations.
 print(rse_small)
 }
 \seealso{
-Other Minimal Example Data: \code{\link{tx_se_small}}
+Other Minimal Example Data: \code{\link{sce_small}},
+  \code{\link{tx_se_small}}
 }
 \author{
 Michael Steinbaugh

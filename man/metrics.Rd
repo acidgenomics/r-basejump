@@ -4,11 +4,14 @@
 \name{metrics}
 \alias{metrics}
 \alias{metrics,SummarizedExperiment-method}
+\alias{metrics,SingleCellExperiment-method}
 \title{Metrics}
 \usage{
 metrics(object, ...)
 
 \S4method{metrics}{SummarizedExperiment}(object)
+
+\S4method{metrics}{SingleCellExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -16,31 +19,37 @@ metrics(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{DataFrame}.
+\code{grouped_df}. Grouped by \code{sampleID} column.
 }
 \description{
-By default, \code{\link[=metrics]{metrics()}} returns \code{\link[=colData]{colData()}} with an \code{interestingGroups}
-column automatically added. This is useful for \code{ggplot2} scripting. Column
-names are always sorted alphabetically.
+This function takes data stored in \code{\link[=colData]{colData()}} and consistently returns a
+tibble grouped by sample, to be used for plotting with \code{ggplot2}.
 }
-\note{
-\code{\link[=metrics]{metrics()}} Requires that the \code{sampleName} column is defined, and will
-error otherwise.
+\section{SingleCellExperiment}{
+
+
+Note that metrics are cell level but grouped by sample.
 }
+
 \examples{
+# SummarizedExperiment ====
 x <- metrics(rse_small)
-glimpse(x)
+print(x)
+
+# SingleCellExperiment ====
+x <- metrics(sce_small)
+print(x)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{metricsPerSample}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
-Michael Steinbaugh
+Michael Steinbaugh, Rory Kirchner
 }
 \concept{Data Functions}

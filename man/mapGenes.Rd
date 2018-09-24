@@ -94,12 +94,12 @@ mapGenesToSymbols(object, genes = geneNames)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{meltCounts}}, \code{\link{metrics}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{meltCounts}}, \code{\link{metricsPerSample}},
+  \code{\link{metrics}}, \code{\link{sampleData}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
