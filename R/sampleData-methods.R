@@ -83,19 +83,21 @@ NULL
         # Note that `SummarizedExperiment` method differs but not requiring
         # the `sampleID` column, which are the `colnames` of the object.
         # `SingleCellExperiment` maps cells to `colnames` instead of samples.
-        if (!all(c("sampleID", "sampleName") %in% colnames(data))) {
+        if (!"sampleID" %in% colnames(data)) {
             stop(paste(
-                "`sampleData()` requires `sampleID` and `sampleName` columns",
-                "to be defined in `colData()`"
+                "`sampleID` column must be defined in `colData()` slot"
             ), call. = FALSE)
         }
+        if (!"sampleName" %in% colnames(data)) {
+            data[["sampleName"]] <- data[["sampleID"]]
+        }
 
-        # Get the number of samples.
+        # Sample-level columns -------------------------------------------------
         nSamples <- length(unique(data[["sampleID"]]))
         assert_all_are_positive(nSamples)
 
-        # Select only columns that map to samples.
-        isSampleLevel <- vapply(
+        # Keep columns that have fewer uniques than the number of samples.
+        keep <- vapply(
             X = data,
             FUN = function(x) {
                 uniques <- length(unique(x))
@@ -103,17 +105,37 @@ NULL
             },
             FUN.VALUE = logical(1L)
         )
-        data <- data[, isSampleLevel, drop = FALSE]
+        data <- data[, keep, drop = FALSE]
 
-        # `clusterCols` used to define cluster mappings are blacklisted.
-        data <- data[
-            ,
-            !grepl(
-                pattern = paste(clusterCols, collapse = "|"),
-                x = camel(colnames(data))
-            ),
-            drop = FALSE
-            ]
+        # FIXME If we can figure out how to deal with "batch", can remove...
+        stop("Draft update")
+
+        # `clusterCols` defines clustering-specific columns that should be
+        # dropped. These include columns that map cells to cell types, etc.
+        keep <- !grepl(
+            pattern = paste(clusterCols, collapse = "|"),
+            x = camel(colnames(data))
+        )
+        data <- data[, keep, drop = FALSE]
+
+        # For columns with the same number of
+
+
+        # For columns that have the same number of uniques, they need to match
+        # our `sampleID` column factor levels exactly. Create a factor integer
+        # table to check for this.
+        ftbl <- data %>%
+            as_tibble(rownames = NULL) %>%
+            mutate_all(as.factor) %>%
+            mutate_all(as.integer)
+        keep <- vapply(
+            X = ftbl,
+            FUN = function(x) {
+                identical(x, ftbl$sampleID)
+            },
+            FUN.VALUE = logical(1L)
+        )
+        sampleCols <- c(sampleCols, names(keep[keep]))
 
         # Collapse and set the rownames to `sampleID`.
         rownames(data) <- NULL
