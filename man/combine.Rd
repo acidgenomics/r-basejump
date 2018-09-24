@@ -58,6 +58,29 @@ colnames(c)
 colData(c)
 
 # SingleCellExperiment ====
+x <- sce_small
+head(colnames(x))
+sampleData(x)
+
+# Here we're faking a distinct replicate, just as an example.
+y <- x
+# Increase the cell ID numbers.
+cells <- colnames(y) \%>\%
+    sub("cell", "", .) \%>\%
+    as.integer() \%>\%
+    `+`(ncol(y)) \%>\%
+    paste0("cell", .)
+colnames(y) <- cells
+head(colnames(y))
+# Increase the sample ID numbers.
+y$sampleID <- gsub("1$", "3", y$sampleID)
+y$sampleID <- gsub("2$", "4", y$sampleID)
+sampleData(y)
+
+# Combine two SingleCellExperiment objects.
+c <- combine(x, y)
+print(c)
+sampleNames(c)
 }
 \seealso{
 \itemize{
