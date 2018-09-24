@@ -31,7 +31,7 @@ Counts
 }
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
-defined in \code{\link[=assayNames]{assayNames()}}, and also slotted first as the primary \code{\link[=assay]{assay()}}.
+defined in \code{\link[=assayNames]{assayNames()}}.
 }
 \examples{
 # SummarizedExperiment ====
@@ -40,10 +40,12 @@ summary(x)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
+  \code{\link{cell2sample}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tpm}}, \code{\link{tx2gene}}
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}, \code{\link{tpm}},
+  \code{\link{tx2gene}}
 }
 \concept{Data Functions}

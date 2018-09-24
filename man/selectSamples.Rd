@@ -3,40 +3,50 @@
 \docType{methods}
 \name{selectSamples}
 \alias{selectSamples}
-\alias{selectSamples,SummarizedExperiment-method}
+\alias{selectSamples,SingleCellExperiment-method}
 \title{Select Samples}
 \usage{
 selectSamples(object, ...)
 
-\S4method{selectSamples}{SummarizedExperiment}(object, ...)
-}
-\arguments{
-\item{object}{Object.}
-
-\item{...}{Selection arguments that map to the column names of
-\code{\link[=sampleData]{sampleData()}}. \code{character} vectors are supported. Avoid using \code{logical} or
-\code{numeric} indices (e.g. \code{\link[base:which]{base::which()}} calls) here, for improved code
-legibility and reproducibility.}
+\S4method{selectSamples}{SingleCellExperiment}(object, ...)
 }
 \value{
-\code{SummarizedExperiment}.
+\code{SingleCellExperiment}.
 }
 \description{
-Sample selection utility function designed for interactive use.
+Utility function that enables quick an easy sample selection in Bioconductor
+contains that don't correspond to samples in the columns
+(e.g. \code{SingleCellExperiment}).
+}
+\details{
+Internally, pattern matching against sample and file names is
+applied using logical grep matching.
+}
+\note{
+Bracket based subsetting with \code{[} also works on \code{SingleCellExperiment}
+objects but it's not intuitive. In this case, provide cellular barcode
+identifiers for columns and gene identifiers for rows.
 }
 \examples{
-x <- selectSamples(rse_small, genotype = "wildtype")
-print(x)
-colnames(x)
+object <- sce_small
+sample <- sampleNames(object) \%>\% head(1L)
+print(sample)
+subset <- selectSamples(object, sampleName = sample)
+print(subset)
 }
 \seealso{
+\itemize{
+\item \code{\link[=sampleData]{sampleData()}}.
+\item \code{\link[S4Vectors:split]{S4Vectors::split()}}.
+}
+
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh

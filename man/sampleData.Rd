@@ -7,6 +7,8 @@
 \alias{sampleData<-}
 \alias{sampleData,SummarizedExperiment-method}
 \alias{sampleData<-,SummarizedExperiment,DataFrame-method}
+\alias{sampleData,SingleCellExperiment-method}
+\alias{sampleData<-,SingleCellExperiment,DataFrame-method}
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample Data}
 \usage{
@@ -18,6 +20,10 @@ sampleData(object, ...) <- value
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
+\S4method{sampleData}{SingleCellExperiment}(object)
+
+\S4method{sampleData}{SingleCellExperiment,DataFrame}(object) <- value
+
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }
 \arguments{
@@ -28,12 +34,12 @@ sampleData(object, ...) <- value
 \item{value}{Value to assign.}
 }
 \value{
-\code{DataFrame}. Metadata that describes the samples.
+\code{DataFrame}.
 }
 \description{
-Return the sample metadata. Columns are always sanitized to factor.
+Metadata that describes the samples.
 }
-\note{
+\details{
 This is a complement to the standard \code{\link[=colData]{colData()}} function, but improves
 support for accessing sample metadata for datasets where multiple items in
 the columns map to a single sample (e.g. cells for a single-cell RNA-seq
@@ -41,22 +47,31 @@ experiment).
 }
 \examples{
 # SummarizedExperiment ====
-sampleData(rse_small)
+x <- rse_small
+sampleData(x)
 
 # Assignment support
-x <- rse_small
-sampleData(x)[["test"]] <- seq_len(ncol(x))
-# `test` column should be now defined
+sampleData(x)[["batch"]] <- 1L
+# `batch` column should be now defined.
+sampleData(x)
+
+# SingleCellExperiment ====
+x <- sce_small
+sampleData(x)
+
+# Assignment support.
+sampleData(x)[["batch"]] <- 1L
+# `batch` column should be now defined.
 sampleData(x)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh

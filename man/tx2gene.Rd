@@ -4,7 +4,14 @@
 \name{tx2gene}
 \alias{tx2gene}
 \alias{tx2gene,SummarizedExperiment-method}
-\title{Transcript-to-Gene Mappings}
+\title{#' @rdname subsetPerSample
+#' @export
+setGeneric(
+"subsetPerSample",
+function(object, ...) {
+standardGeneric("subsetPerSample")
+}
+)}
 \usage{
 tx2gene(object, ...)
 
@@ -19,6 +26,15 @@ tx2gene(object, ...)
 \code{tx2gene}.
 }
 \description{
+#' @rdname subsetPerSample
+#' @export
+setGeneric(
+"subsetPerSample",
+function(object, ...) {
+standardGeneric("subsetPerSample")
+}
+)
+
 Transcript-to-Gene Mappings
 }
 \examples{
@@ -28,12 +44,12 @@ print(x)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tpm}}
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh

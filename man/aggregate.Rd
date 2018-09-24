@@ -8,12 +8,13 @@
 \alias{aggregateCols,matrix-method}
 \alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
+\alias{aggregateCols,SingleCellExperiment-method}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
 \alias{aggregateReplicates}
-\alias{aggregateSamples}
 \alias{aggregateFeatures}
+\alias{aggregateSamples}
 \title{Aggregate Columns or Rows}
 \usage{
 aggregateCols(object, ...)
@@ -25,6 +26,8 @@ aggregateRows(object, ...)
 \S4method{aggregateCols}{sparseMatrix}(object, groupings)
 
 \S4method{aggregateCols}{SummarizedExperiment}(object)
+
+\S4method{aggregateCols}{SingleCellExperiment}(object)
 
 \S4method{aggregateRows}{matrix}(object, groupings)
 
@@ -65,7 +68,20 @@ and perform the aggregation.
 }
 
 \examples{
-counts <- S4Vectors::DataFrame(
+# Example data ====
+genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
+names(genes) <- rownames(counts)
+print(genes)
+
+samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+names(samples) <- colnames(counts)
+print(samples)
+
+cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
+names(samples) <- colnames(counts)
+print(samples)
+
+counts <- data.frame(
     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
     sample1_replicate2 = as.integer(c(1, 0, 1, 1)),
     sample2_replicate1 = as.integer(c(1, 1, 0, 1)),
@@ -74,23 +90,15 @@ counts <- S4Vectors::DataFrame(
 )
 print(counts)
 
-# Dense matrix
+# matrix
 matrix <- as(counts, "matrix")
 class(matrix)
 print(matrix)
 
-# Sparse matrix
+# sparseMatrix
 sparse <- as(matrix, "sparseMatrix")
 class(sparse)
 print(sparse)
-
-samples <- factor(c("sample1", "sample1", "sample2", "sample2"))
-names(samples) <- colnames(counts)
-print(samples)
-
-genes <- factor(c("gene1", "gene1", "gene2", "gene2"))
-names(genes) <- rownames(counts)
-print(genes)
 
 # SummarizedExperiment
 se <- SummarizedExperiment::SummarizedExperiment(
@@ -103,23 +111,32 @@ se <- SummarizedExperiment::SummarizedExperiment(
 )
 print(se)
 
+# SingleCellExperiment
+sce <- SingleCellExperiment::SingleCellExperiment(se)
+colnames(sce) <- gsub("sample", "cell", colnames(sce))
+print(sce)
+
 # aggregateCols ====
 aggregateCols(matrix, groupings = samples)
 aggregateCols(sparse, groupings = samples)
 aggregateCols(se)
+aggregateCols(sce)  # FIXME
 
 # aggregateRows ====
 aggregateRows(matrix, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
+aggregateRows(sce)  # FIXME
 }
 \seealso{
-Other Data Functions: \code{\link{counts}},
+Other Data Functions: \code{\link{cell2sample}},
+  \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metrics}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
-  \code{\link{tpm}}, \code{\link{tx2gene}}
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}}, \code{\link{tpm}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

@@ -40,9 +40,10 @@ print(x)
 \code{\link[reshape2:melt]{reshape2::melt()}}.
 
 Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapGenesToIDs}}, \code{\link{metrics}},
+  \code{\link{mapGenesToIDs}},
+  \code{\link{metricsPerSample}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}}, \code{\link{tpm}},
   \code{\link{tx2gene}}
