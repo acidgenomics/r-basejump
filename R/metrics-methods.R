@@ -1,7 +1,3 @@
-# FIXME Improve documentation for SE vs. SCE.
-
-
-
 #' Metrics
 #'
 #' This function takes data stored in [colData()] and consistently returns a
@@ -23,11 +19,11 @@
 #' @examples
 #' # SummarizedExperiment ====
 #' x <- metrics(rse_small)
-#' glimpse(x)
+#' print(x)
 #'
 #' # SingleCellExperiment ====
 #' x <- metrics(sce_small)
-#' glimpse(x)
+#' print(x)
 NULL
 
 
@@ -45,9 +41,11 @@ NULL
 .metrics.SCE <-  # nolint
     function(object) {
         validObject(object)
-        colData <- colData(object)
-        assert_is_subset("sampleID", colnames(colData))
+        assert_is_subset("sampleID", colnames(colData(object)))
         colData(object) %>%
+            uniteInterestingGroups(
+                interestingGroups = matchInterestingGroups(object)
+            ) %>%
             as_tibble(rownames = "cellID") %>%
             group_by(!!sym("sampleID"))
     }
