@@ -202,21 +202,27 @@ NULL
 
 
 
+# Example:
+# object$aggregate <- factor("sample")
 .aggregateCols.SCE <-  # nolint
     function(object) {
         validObject(object)
 
         # Remap cellular barcode groupings -------------------------------------
         message("Remapping cellular barcodes to aggregate sample IDs")
-        cell2sample <- cell2sample(object)
-        map <- tibble(
-            cell = names(cell2sample),
-            sample = cell2sample,
-            aggregate = colData(object)[["aggregate"]]
-        )
+        colData <- colData(object)
+        assert_is_subset(c("sampleID", "aggregate"), colnames(colData))
+        assert_is_factor(colData[["aggregate"]])
+        map <- colData(object) %>%
+            as_tibble(rownames = "cellID") %>%
+            select(!!!syms(c("cellID", "sampleID", "aggregate")))
+
+        # FIXME Need to think about a more general cell2sample approach.
+        stop("Draft update")
+        # FIXME This approach needs to be more general.
         groupings <- mapply(
             FUN = gsub,
-            x = map[["cell"]],
+            x = map[["cellID"]],
             pattern = paste0("^", map[["sample"]]),
             replacement = map[["aggregate"]],
             SIMPLIFY = TRUE,
