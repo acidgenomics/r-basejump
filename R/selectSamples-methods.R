@@ -63,7 +63,9 @@ NULL
             function(col, arg) {
                 # Check that column is present.
                 if (!col %in% colnames(sampleData)) {
-                    stop(paste(col, "isn't present in metadata colnames"))
+                    stop(paste(
+                        col, "isn't present in metadata colnames"
+                    ), call. = FALSE)
                 }
                 # Check that all items in argument are present.
                 if (!all(arg %in% sampleData[[col]])) {
@@ -72,7 +74,7 @@ NULL
                         deparse(col),
                         "metadata column doesn't contain",
                         toString(missing)
-                    ))
+                    ), call. = FALSE)
                 }
                 # Get the sample ID matches.
                 sampleData %>%
