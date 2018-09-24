@@ -40,7 +40,6 @@ NULL
 `.counts<-.SE` <-  # nolint
     function(object, value) {
         validObject(object)
-        assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]] <- value
         object
     }
