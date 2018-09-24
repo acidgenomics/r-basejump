@@ -1,18 +1,11 @@
 #' Sample Data
 #'
-#' Return the sample metadata. Columns are always sanitized to factor.
+#' Metadata that describes the samples.
 #'
-#' @note This is a complement to the standard [colData()] function, but improves
-#'   support for accessing sample metadata for datasets where multiple items in
-#'   the columns map to a single sample (e.g. cells for a single-cell RNA-seq
-#'   experiment).
-#'
-#' @section SingleCellExperiment:
-#'
-#' Metadata in columns describing the samples, which are defined in the
-#' rownames. Similar to [colData()], which for `bcbioSingleCell` and
-#' `SingleCellExperiment` objects describes cells in the columns, rather than
-#' the samples.
+#' This is a complement to the standard [colData()] function, but improves
+#' support for accessing sample metadata for datasets where multiple items in
+#' the columns map to a single sample (e.g. cells for a single-cell RNA-seq
+#' experiment).
 #'
 #' @name sampleData
 #' @family Data Functions
@@ -21,24 +14,26 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame`. Metadata that describes the samples.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
-#' sampleData(rse_small)
+#' x <- rse_small
+#' sampleData(x)
 #'
 #' # Assignment support
-#' x <- rse_small
-#' sampleData(x)[["test"]] <- seq_len(ncol(x))
-#' # `test` column should be now defined
+#' sampleData(x)[["batch"]] <- 1L
+#' # `batch` column should be now defined.
 #' sampleData(x)
 #'
 #' # SingleCellExperiment ====
 #' x <- sce_small
-#' sampleData(x) %>% glimpse()
+#' sampleData(x)
+#'
+#' # Assignment support.
 #' sampleData(x)[["batch"]] <- 1L
-#' sampleData(x) %>% glimpse()
-#' "batch" %in% colnames(colData(x))
+#' # `batch` column should be now defined.
+#' sampleData(x)
 NULL
 
 
@@ -48,17 +43,19 @@ NULL
         validObject(object)
         data <- colData(object)
         assertHasRownames(data)
+
         # Require `sampleName` column to be defined.
         if (!"sampleName" %in% colnames(data)) {
             data[["sampleName"]] <- as.factor(rownames(data))
         }
-        # Generate `interestingGroups` column, if necessary.
-        if (!"interestingGroups" %in% colnames(data)) {
-            data <- uniteInterestingGroups(
-                object = data,
-                interestingGroups = matchInterestingGroups(object)
-            )
-        }
+
+        # Generate `interestingGroups` column.
+        data[["interestingGroups"]] <- NULL
+        data <- uniteInterestingGroups(
+            object = data,
+            interestingGroups = matchInterestingGroups(object)
+        )
+
         data
     }
 
@@ -66,19 +63,10 @@ NULL
 
 `.sampleData<-.SE` <-  # nolint
     function(object, value) {
-        # Check for blacklisted columns.
-        assert_are_disjoint_sets(
-            colnames(value),
-            c("rowname", "sampleID")
-        )
-
-        # Reslot the interesting groups column automatically.
+        # Don't allow blacklisted columns.
         value[["interestingGroups"]] <- NULL
-        value <- uniteInterestingGroups(
-            object = value,
-            interestingGroups = matchInterestingGroups(object)
-        )
-
+        value[["rowname"]] <- NULL
+        value[["sampleID"]] <- NULL
         # Now safe to assign and return.
         colData(object) <- value
         validObject(object)
@@ -136,12 +124,12 @@ NULL
         # Return sorted by `sampleID`.
         data <- data[rownames(data), , drop = FALSE]
 
-        if (!"interestingGroups" %in% colnames(data)) {
-            interestingGroups <- interestingGroups(object)
-            if (length(interestingGroups) > 0L) {
-                data <- uniteInterestingGroups(data, interestingGroups)
-            }
-        }
+        # Generate `interestingGroups` column.
+        data[["interestingGroups"]] <- NULL
+        data <- uniteInterestingGroups(
+            object = data,
+            interestingGroups = matchInterestingGroups(object)
+        )
 
         data
     }
@@ -150,44 +138,34 @@ NULL
 
 `.sampleData<-.SCE` <-  # nolint
     function(object, value) {
-        # Don't allow the user to manually set sampleID column.
-        value[["sampleID"]] <- rownames(value)
-
-        # Ensure the interesting groups column is not stashed.
-        value[["interestingGroups"]] <- NULL
-        interestingGroups <- interestingGroups(object)
-        if (length(interestingGroups) > 0L) {
-            value <- uniteInterestingGroups(value, interestingGroups)
-        }
-
-        # Ensure the cell-level column data is also updated.
-        colData <- colData(object)
-        # Require that sampleID column, defined by `cell2sample()`, is present.
-        assert_is_subset("sampleID", colnames(colData))
-        colData <- colData[
-            ,
-            c("sampleID", setdiff(colnames(colData), colnames(value))),
-            drop = FALSE
-            ]
-        colData[["cellID"]] <- rownames(colData)
-        colData <- merge(
-            x = colData,
-            y = value,
-            by = "sampleID",
-            all.x = TRUE
-        )
-        rownames(colData) <- colData[["cellID"]]
-        colData[["cellID"]] <- NULL
-
-        # Re-slot the cell-level data.
-        colData <- colData[colnames(object), , drop = FALSE]
-        colData(object) <- colData
-
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
             message("Removing legacy `sampleData` in `metadata()` slot")
             metadata(object)[["sampleData"]] <- NULL
         }
+
+        # Don't allow blacklisted columns.
+        value[["interestingGroups"]] <- NULL
+        value[["rowname"]] <- NULL
+        value[["sampleID"]] <- NULL
+
+        # Generate `sampleID` column.
+        value[["sampleID"]] <- as.factor(rownames(value))
+
+        # Update colData slot.
+        colData <- colData(object)
+        assert_is_subset("sampleID", colnames(colData))
+        colData <- colData[
+            ,
+            c("sampleID", setdiff(colnames(colData), colnames(value))),
+            drop = FALSE
+        ]
+        colData <- left_join(
+            x = colData,
+            y = value,
+            by = "sampleID"
+        )
+        colData(object) <- colData
 
         object
     }
