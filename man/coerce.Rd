@@ -5,8 +5,6 @@
 \alias{coerceS4ToList}
 \alias{coerce}
 \alias{as}
-\alias{coerce,matrix,tbl_df-method}
-\alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
 \alias{coerce,tbl_df,DataFrame-method}
