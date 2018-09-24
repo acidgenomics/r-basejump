@@ -1,3 +1,7 @@
+# FIXME Check SCE method.
+
+
+
 #' Aggregate Columns or Rows
 #'
 #' Aggregate sample replicates (columns) or gene/transcript features (rows).
