@@ -482,14 +482,15 @@ setGeneric(
 
 
 
-#' @rdname subsetPerSample
-#' @export
-setGeneric(
-    "subsetPerSample",
-    function(object, ...) {
-        standardGeneric("subsetPerSample")
-    }
-)
+# FIXME Need to rework this with bcbioSingleCell.
+#' #' @rdname subsetPerSample
+#' #' @export
+#' setGeneric(
+#'     "subsetPerSample",
+#'     function(object, ...) {
+#'         standardGeneric("subsetPerSample")
+#'     }
+#' )
 
 
 
