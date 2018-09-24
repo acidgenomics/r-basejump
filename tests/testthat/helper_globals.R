@@ -14,5 +14,5 @@ mat <- matrix(
     )
 )
 df <- as.data.frame(mat)
-tbl <- as(df, "tbl_df")
+tbl <- tibble::as_tibble(df, rownames = "rowname")
 sparse <- as(mat, "sparseMatrix")
