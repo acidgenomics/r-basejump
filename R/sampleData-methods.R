@@ -29,14 +29,16 @@ NULL
 
 
 
+# FIXME Generate `sampleName` column if it doesn't exist.
 .sampleData.SE <-  # nolint
     function(object) {
         validObject(object)
         # Require `sampleName` column to be defined.
-        assert_is_subset(
-            x = "sampleName",
-            y = colnames(colData(object))
-        )
+        # FIXME
+        # assert_is_subset(
+        #     x = "sampleName",
+        #     y = colnames(colData(object))
+        # )
         data <- colData(object)
         # Generate `interestingGroups` column, if necessary.
         if (!"interestingGroups" %in% colnames(data)) {
