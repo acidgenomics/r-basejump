@@ -1,7 +1,7 @@
 #' Counts
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in [assayNames()], and also slotted first as the primary [assay()].
+#'   defined in [assayNames()].
 #'
 #' @name counts
 #' @family Data Functions
@@ -31,9 +31,7 @@ NULL
 .counts.SE <-  # nolint
     function(object) {
         validObject(object)
-        if (!identical("counts", assayNames(object)[[1L]])) {
-            stop("Primary assay is not named `counts`", call. = FALSE)
-        }
+        assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]]
     }
 
@@ -42,9 +40,7 @@ NULL
 `.counts<-.SE` <-  # nolint
     function(object, value) {
         validObject(object)
-        if (!identical("counts", assayNames(object)[[1L]])) {
-            stop("Primary assay is not named `counts`", call. = FALSE)
-        }
+        assert_is_subset("counts", assayNames(object))
         assays(object)[["counts"]] <- value
         object
     }
