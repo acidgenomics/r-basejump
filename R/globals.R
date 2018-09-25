@@ -3,18 +3,6 @@ globalVariables(".")
 # Trailing number is to match cellranger output.
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
-# Single-cell clustering columns that can mess up `sampleData()` return.
-# We're grep matching against these camel case variants here to automatically
-# sanitize `colData()` into sample-level `sampleData()`.
-clusterCols <- c(
-    "^ident$",
-    "^origIdent$",
-    "^res[.0-9]+$",
-    "^sScore$",
-    "^g2mScore$",
-    "^phase$"
-)
-
 # Note optional matching of gzip.
 extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 
