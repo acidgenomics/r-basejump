@@ -34,7 +34,7 @@ This function is desired for interactive use and interprets object
 names using non-standard evaluation.
 }
 \examples{
-rnaseq_counts <- counts(rse_small
+rnaseq_counts <- counts(rse_small)
 single_cell_counts <- counts(sce_small)
 
 writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
