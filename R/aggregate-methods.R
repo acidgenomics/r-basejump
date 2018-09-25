@@ -203,6 +203,8 @@ NULL
             args[["rowData"]] <- rowData(object)
         }
         se <- do.call(what = SummarizedExperiment, args = args)
+        # FIXME Improve the metadata stash here.
+        metadata(se)[["aggregate"]] <- TRUE
         validObject(se)
         se
     }
@@ -269,8 +271,8 @@ NULL
             rowRanges = rowRanges(object),
             colData = colData(rse),
             metadata = list(
+                aggregate = TRUE,
                 aggregateCols = groupings,
-                cell2sample = cell2sample,
                 interestingGroups = interestingGroups(object)
             ),
             spikeNames = spikeNames(object)
