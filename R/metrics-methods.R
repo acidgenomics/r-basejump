@@ -41,8 +41,12 @@ NULL
 .metrics.SCE <-  # nolint
     function(object) {
         validObject(object)
-        assert_is_subset("sampleID", colnames(colData(object)))
-        colData(object) %>%
+        colData <- colData(object)
+        assert_is_subset("sampleID", colnames(colData))
+        if (!"sampleName" %in% colnames(colData)) {
+            colData[["sampleName"]] <- colData[["sampleID"]]
+        }
+        colData %>%
             uniteInterestingGroups(
                 interestingGroups = matchInterestingGroups(object)
             ) %>%
