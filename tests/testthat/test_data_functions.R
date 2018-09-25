@@ -263,6 +263,20 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 
 
+# minimalSampleData ============================================================
+# FIXME Test with invalid names.
+test_that("minimalSampleData", {
+    expect_identical(
+        object = minimalSampleData(c("sample 1", "sample 2")),
+        expected = DataFrame(
+            sampleName = factor(c("sample 1", "sample 2")),
+            row.names = factor(c("sample_1", "sample_2"))
+        )
+    )
+})
+
+
+
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
     object <- rse_small
