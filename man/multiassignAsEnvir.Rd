@@ -21,7 +21,7 @@ new \code{environment}, specified by \code{envirName} argument.}
 Assign Multiple Objects as an Environment
 }
 \examples{
-multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
+multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 class(example)
 ls(example)
 }
