@@ -1,4 +1,4 @@
-# FIXME Check SCE method.
+# FIXME SCE won't pass validity check (see below).
 
 
 
@@ -70,13 +70,6 @@ NULL
 
 
 
-# FIXME Move these assert checks to SE method.
-# assert_are_identical(class(x), class(y))
-# assert_are_set_equal(
-#     x = colnames(sampleData(x)),
-#     y = colnames(sampleData(y))
-# )
-# assert_is_character(metadata)
 .combine.SE <-  # nolint
     function(x, y) {
         # Coerce the objects to SummarizedExperiment.
@@ -125,30 +118,18 @@ NULL
         # Row data -------------------------------------------------------------
         # Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
-            assert_are_identical(
-                x = rowRanges(x),
-                y = rowRanges(y)
-            )
+            assert_are_identical(rowRanges(x), rowRanges(y))
             rowRanges <- rowRanges(x)
             rowData <- NULL
         } else {
-            assert_are_identical(
-                x = rowData(x),
-                y = rowData(y)
-            )
+            assert_are_identical(rowData(x), rowData(y))
             rowData <- rowData(x)
             rowRanges <- NULL
         }
 
         # Column data ----------------------------------------------------------
-        assert_are_set_equal(
-            x = colnames(colData(x)),
-            y = colnames(colData(y))
-        )
-        cols <- intersect(
-            x = colnames(colData(x)),
-            y = colnames(colData(y))
-        )
+        assert_are_set_equal(colnames(colData(x)), colnames(colData(y)))
+        cols <- intersect(colnames(colData(x)), colnames(colData(y)))
         colData <- rbind(
             colData(x)[, cols, drop = FALSE],
             colData(y)[, cols, drop = FALSE]
@@ -187,8 +168,7 @@ NULL
         # Make SCE from RSE.
         sce <- as(rse, "SingleCellExperiment")
         # FIXME Note that SCE `as()` coercion doesn't currently return valid.
-        # FIXME Getting a mismatch between rowData/colData and internal ones.
-        # FIXME Add a step to check that sample data will return clean.
+        # TODO Check this against bioc-devel.
         # validObject(sce)
         sce
     }
