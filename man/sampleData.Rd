@@ -20,7 +20,9 @@ sampleData(object, ...) <- value
 
 \S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
 
-\S4method{sampleData}{SingleCellExperiment}(object)
+\S4method{sampleData}{SingleCellExperiment}(object,
+  blacklist = c("^ident$", "^origIdent$", "^res[.0-9]+$", "^sScore$",
+  "^g2mScore$", "^phase$"))
 
 \S4method{sampleData}{SingleCellExperiment,DataFrame}(object) <- value
 
@@ -32,6 +34,11 @@ sampleData(object, ...) <- value
 \item{...}{Additional arguments.}
 
 \item{value}{Value to assign.}
+
+\item{blacklist}{\code{character}. Column names that should never be treated as
+sample-level metadata. Applies to objects where the columns don't map to
+samples (e.g. \code{SingleCellExperiment}), and we need to collapse the
+\code{colData()} dynamically.}
 }
 \value{
 \code{DataFrame}.
