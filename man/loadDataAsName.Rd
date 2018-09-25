@@ -37,9 +37,7 @@ class(renamed)
 }
 \seealso{
 Other Read Functions: \code{\link{import}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readJSON}},
-  \code{\link{readYAML}}
+  \code{\link{loadData}}, \code{\link{loadRemoteData}}
 }
 \author{
 Michael Steinbaugh

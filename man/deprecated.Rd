@@ -29,6 +29,10 @@
 \alias{kables}
 \alias{mgi2gene}
 \alias{readFileByExtension}
+\alias{readGFF}
+\alias{readGTF}
+\alias{readJSON}
+\alias{readYAML}
 \title{Deprecated Functions}
 \usage{
 checkAnnotable(...)
@@ -84,6 +88,14 @@ kables(...)
 mgi2gene(...)
 
 readFileByExtension(...)
+
+readGFF(...)
+
+readGTF(...)
+
+readJSON(...)
+
+readYAML(...)
 }
 \arguments{
 \item{...}{Additional arguments.}
