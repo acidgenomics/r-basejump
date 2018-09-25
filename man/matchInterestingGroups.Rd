@@ -4,7 +4,7 @@
 \alias{matchInterestingGroups}
 \title{Match Interesting Groups}
 \usage{
-matchInterestingGroups(object, interestingGroups)
+matchInterestingGroups(object, interestingGroups = NULL)
 }
 \arguments{
 \item{object}{\code{SummarizedExperiment}.}
@@ -22,8 +22,6 @@ supports a missing \code{interestingGroups} argument, which will then use the
 }
 \examples{
 matchInterestingGroups(rse_small)
-matchInterestingGroups(rse_small, interestingGroups = NULL)
-matchInterestingGroups(rse_small, interestingGroups = "sampleName")
 }
 \seealso{
 Other Developer Functions: \code{\link{MethodDefinition}},
