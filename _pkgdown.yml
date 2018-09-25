@@ -68,7 +68,6 @@ reference:
     - microplate
   - title: R Markdown Functions
     contents:
-    - kables
     - starts_with("markdown")
     - prepareTemplate
   - title: Atomic Vector Functions

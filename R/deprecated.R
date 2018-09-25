@@ -323,6 +323,13 @@ hgnc2gene <- function(...) {
 
 #' @rdname deprecated
 #' @export
+kables <- function(...) {
+    .Deprecated("markdownTables")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
 mgi2gene <- function(...) {
     .Deprecated("mgi2enseml")
     mgi2ensembl(...)
