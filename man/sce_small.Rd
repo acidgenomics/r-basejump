@@ -3,18 +3,20 @@
 \docType{data}
 \name{sce_small}
 \alias{sce_small}
-\title{SingleCellExperiment Example}
+\title{Example Single-Cell RNA-Seq Data Set}
 \format{An object of class \code{SingleCellExperiment} with 100 rows and 200 columns.}
 \usage{
 sce_small
 }
 \description{
-SingleCellExperiment Example
+Example Single-Cell RNA-Seq Data Set
 }
 \examples{
-sce_small
+print(sce_small)
 }
 \seealso{
+\code{scater::sc_example_counts}.
+
 Other Minimal Example Data: \code{\link{rse_small}},
   \code{\link{tx_se_small}}
 }
