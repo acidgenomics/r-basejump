@@ -31,9 +31,10 @@ markdownLink(
 )
 }
 \seealso{
-Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownHeader}}, \code{\link{markdownList}},
+Other R Markdown Functions: \code{\link{markdownHeader}},
+  \code{\link{markdownList}},
   \code{\link{markdownPlotlist}},
+  \code{\link{markdownTables}},
   \code{\link{prepareTemplate}}
 }
 \author{

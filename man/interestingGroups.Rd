@@ -33,10 +33,11 @@ Interesting Groups
 \examples{
 # SummarizedExperiment ====
 object <- rse_small
-interestingGroups(object)
+intgroup <- interestingGroups(object)
+print(intgroup)
 
 # Assignment support.
-interestingGroups(object) <- "sampleName"
+interestingGroups(object) <- intgroup[[1L]]
 interestingGroups(object)
 }
 \author{

@@ -26,6 +26,7 @@
 \alias{fixNA}
 \alias{flatFiles}
 \alias{hgnc2gene}
+\alias{kables}
 \alias{mgi2gene}
 \alias{readFileByExtension}
 \title{Deprecated Functions}
@@ -77,6 +78,8 @@ fixNA(...)
 flatFiles(object)
 
 hgnc2gene(...)
+
+kables(...)
 
 mgi2gene(...)
 
