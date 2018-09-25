@@ -203,6 +203,7 @@ NULL
 
 
 # Example:
+# object <- sce_small
 # object$aggregate <- factor("sample")
 .aggregateCols.SCE <-  # nolint
     function(object) {
