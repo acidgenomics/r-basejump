@@ -11,20 +11,6 @@
 
 
 
-# FIXME Just pull these from rse_small...
-#' Example RNA-Seq Counts
-#'
-#' Generated with `DESeq2::makeExampleDESeqDataSet()`.
-#'
-#' @aliases rnaseqCounts
-#' @author Michael Steinbaugh
-#'
-#' @examples
-#' summary(rnaseq_counts)
-"rnaseq_counts"
-
-
-
 #' Example RNA-Seq Data Set
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene
@@ -39,31 +25,16 @@
 
 
 
-#' SingleCellExperiment Example
+#' Example Single-Cell RNA-Seq Data Set
 #'
 #' @family Minimal Example Data
 #' @author Michael Steinbaugh
 #'
+#' @seealso `scater::sc_example_counts`.
+#'
 #' @examples
-#' sce_small
+#' print(sce_small)
 "sce_small"
-
-
-
-# FIXME Just pull these from sce_small...
-#' Example Single-Cell RNA-Seq Counts
-#'
-#' Modified version of `scater::sc_example_counts`, with dimnames formatted
-#' in camel case for package consistency.
-#'
-#' @aliases singleCellCounts
-#' @author Michael Steinbaugh
-#'
-#' @examples
-#' dim(single_cell_counts)
-#' class(single_cell_counts)
-#' is(single_cell_counts, "sparseMatrix")
-"single_cell_counts"
 
 
 
