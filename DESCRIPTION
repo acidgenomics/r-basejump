@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.99.0
-Date: 2018-09-21
+Date: 2018-09-25
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -183,9 +183,6 @@ Collate:
     'plotZerosVsDepth-methods.R'
     'prepareTemplate.R'
     'printString.R'
-    'readGFF.R'
-    'readJSON.R'
-    'readYAML.R'
     'reexports.R'
     'removeNA-methods.R'
     'sampleData-methods.R'
