@@ -482,15 +482,14 @@ setGeneric(
 
 
 
-# FIXME Need to rework this with bcbioSingleCell.
-#' #' @rdname subsetPerSample
-#' #' @export
-#' setGeneric(
-#'     "subsetPerSample",
-#'     function(object, ...) {
-#'         standardGeneric("subsetPerSample")
-#'     }
-#' )
+#' @rdname subsetPerSample
+#' @export
+setGeneric(
+    "subsetPerSample",
+    function(object, ...) {
+        standardGeneric("subsetPerSample")
+    }
+)
 
 
 
