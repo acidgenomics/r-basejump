@@ -13,6 +13,6 @@ mat <- matrix(
         paste0("sample", seq_len(4L))
     )
 )
-df <- as.data.frame(mat)
-tbl <- tibble::as_tibble(df, rownames = "rowname")
+df <- as(mat, "DataFrame")
+tbl <- tibble::as_tibble(mat, rownames = "rowname")
 sparse <- as(mat, "sparseMatrix")
