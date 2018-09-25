@@ -27,7 +27,7 @@
 #' @return Invisible `list`. File paths.
 #'
 #' @examples
-#' rnaseq_counts <- counts(rse_small
+#' rnaseq_counts <- counts(rse_small)
 #' single_cell_counts <- counts(sce_small)
 #'
 #' writeCounts(rnaseq_counts, single_cell_counts, dir = "example")
@@ -35,11 +35,7 @@
 #'
 #' # Clean up
 #' unlink("example", recursive = TRUE)
-writeCounts <- function(
-    ...,
-    dir = ".",
-    gzip = FALSE
-) {
+writeCounts <- function(..., dir = ".", gzip = FALSE) {
     dots <- dots_list(...)
     assert_is_list(dots)
     names <- dots(..., character = TRUE)
