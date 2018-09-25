@@ -34,7 +34,6 @@ NULL
 
 .sampleNames.SE <-  # nolint
     function(object) {
-        validObject(object)
         data <- sampleData(object)
         assert_is_subset("sampleName", colnames(data))
         data <- data[sort(rownames(data)), , drop = FALSE]
