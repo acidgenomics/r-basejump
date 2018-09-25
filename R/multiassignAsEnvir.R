@@ -12,7 +12,7 @@
 #' @return `character`. Object names defined in the new `environment`.
 #'
 #' @examples
-#' multiassignAsEnvir(rnaseq_counts, single_cell_counts, envirName = "example")
+#' multiassignAsEnvir(rse_small, sce_small, envirName = "example")
 #' class(example)
 #' ls(example)
 multiassignAsEnvir <- function(

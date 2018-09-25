@@ -29,7 +29,7 @@
 #' @return Invisible named `character`. File paths.
 #'
 #' @examples
-#' saveData(rnaseq_counts, single_cell_counts, dir = "example")
+#' saveData(rse_small, sce_small, dir = "example")
 #' list.files("example")
 #'
 #' # Clean up
