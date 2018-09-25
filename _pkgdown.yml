@@ -33,7 +33,6 @@ reference:
     - export
     - import
     - starts_with("load")
-    - starts_with("read")
     - starts_with("save")
     - transmit
     - starts_with("write")
