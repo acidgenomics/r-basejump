@@ -37,9 +37,10 @@ markdownHeader("Header", asis = TRUE)
 \seealso{
 \href{https://daringfireball.net/projects/markdown/syntax}{Markdown Syntax}.
 
-Other R Markdown Functions: \code{\link{kables}},
-  \code{\link{markdownLink}}, \code{\link{markdownList}},
+Other R Markdown Functions: \code{\link{markdownLink}},
+  \code{\link{markdownList}},
   \code{\link{markdownPlotlist}},
+  \code{\link{markdownTables}},
   \code{\link{prepareTemplate}}
 }
 \author{
