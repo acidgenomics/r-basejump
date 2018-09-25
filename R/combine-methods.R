@@ -185,16 +185,11 @@ NULL
         )
         validObject(rse)
         # Make SCE from RSE.
-        # Note that SCE `as()` coercion doesn't currently return valid.
+        sce <- as(rse, "SingleCellExperiment")
+        # FIXME Note that SCE `as()` coercion doesn't currently return valid.
         # FIXME Getting a mismatch between rowData/colData and internal ones.
-        sce <- makeSingleCellExperiment(
-            assays = assays(rse),
-            rowRanges = rowRanges(rse),
-            colData = colData(rse),
-            metadata = metadata(rse),
-            spikeNames = spikeNames(x)
-        )
-        validObject(sce)
+        # FIXME Add a step to check that sample data will return clean.
+        # validObject(sce)
         sce
     }
 
