@@ -43,7 +43,14 @@ NULL
 .export.ANY <-  # nolint
     function(x, file, format, ...) {
         assert_is_non_empty(x)
-        x <- as(x, "tbl_df")
+        # Ensure rownames are automatically moved to `rowname` column.
+        if (hasRownames(x)) {
+            rownames <- "rowname"
+        } else {
+            rownames <- NULL
+        }
+        # Coercing to tibble to provide consistent write support.
+        x <- as_tibble(x, rownames = rownames)
         if (missing(file) && missing(format)) {
             stop("Must specify 'file' and/or 'format'", call. = FALSE)
         } else if (missing(file)) {
