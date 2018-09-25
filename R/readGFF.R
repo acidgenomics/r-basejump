@@ -1,3 +1,7 @@
+# FIXME Deprecate in favor of `import()`.
+
+
+
 #' Read GFF Annotations
 #'
 #' The GFF (General Feature Format) format consists of one line per feature,
