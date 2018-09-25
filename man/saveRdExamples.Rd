@@ -4,7 +4,7 @@
 \alias{saveRdExamples}
 \title{Save R Documentation Examples}
 \usage{
-saveRdExamples(Rd, package, dir = ".")
+saveRdExamples(Rd = NULL, package, dir = ".")
 }
 \arguments{
 \item{Rd}{\code{character} or \code{NULL}. R documentation name(s) from which to parse

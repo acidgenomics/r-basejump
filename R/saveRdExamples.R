@@ -26,7 +26,7 @@
 #' # Clean up
 #' unlink("example", recursive = TRUE)
 saveRdExamples <- function(
-    Rd,  # nolint
+    Rd = NULL,  # nolint
     package,
     dir = "."
 ) {
@@ -38,7 +38,7 @@ saveRdExamples <- function(
     db <- Rd_db(package)
     names(db) <- gsub("\\.Rd", "", names(db))
 
-    # If no function is specified, save everything.
+    # If no Rd file is specified, save everything in package.
     if (is.null(Rd)) {
         Rd <- names(db)  # nolint
     }
