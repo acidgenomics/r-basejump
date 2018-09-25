@@ -95,6 +95,9 @@ NULL
             "^phase$"
         )
     ) {
+        validObject(object)
+        assert_is_character(blacklist)
+
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.
@@ -114,10 +117,9 @@ NULL
         nSamples <- length(unique(data[["sampleID"]]))
         assert_all_are_positive(nSamples)
 
-        # `clusterCols` defines clustering-specific columns that should be
-        # dropped. These include columns that map cells to cell types, etc.
+        # Drop any blacklisted columns.
         keep <- !grepl(
-            pattern = paste(clusterCols, collapse = "|"),
+            pattern = paste(blacklist, collapse = "|"),
             x = camel(colnames(data))
         )
         data <- data[, keep, drop = FALSE]
