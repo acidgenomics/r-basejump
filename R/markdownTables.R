@@ -1,3 +1,7 @@
+# TODO Also export `markdownTable()`.
+
+
+
 #' Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText
 #'
 #' Knit multiple tables in a single R Markdown chunk.
