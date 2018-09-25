@@ -33,6 +33,27 @@
 #'
 #' @examples
 #' # Example data ====
+#' counts <- matrix(
+#'     data = c(
+#'         0L, 1L, 1L, 1L,
+#'         1L, 0L, 1L, 1L,
+#'         1L, 1L, 0L, 1L,
+#'         1L, 1L, 1L, 0L
+#'     ),
+#'     nrow = 4L,
+#'     ncol = 4L,
+#'     byrow = TRUE,
+#'     dimnames = list(
+#'         paste0("transcript", seq_len(4L)),
+#'         paste(
+#'             paste0("sample", rep(seq_len(2L), each = 2L)),
+#'             paste0("replicate", rep(seq_len(2L), times = 2L)),
+#'             sep = "_"
+#'         )
+#'     )
+#' )
+#' print(counts)
+#'
 #' genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
 #' names(genes) <- rownames(counts)
 #' print(genes)
@@ -44,15 +65,6 @@
 #' cells <- factor(paste0("cell", rep(seq_len(2L), each = 2L)))
 #' names(samples) <- colnames(counts)
 #' print(samples)
-#'
-#' counts <- data.frame(
-#'     sample1_replicate1 = as.integer(c(0, 1, 1, 1)),
-#'     sample1_replicate2 = as.integer(c(1, 0, 1, 1)),
-#'     sample2_replicate1 = as.integer(c(1, 1, 0, 1)),
-#'     sample2_replicate2 = as.integer(c(1, 1, 1, 0)),
-#'     row.names = paste0("transcript", seq_len(4))
-#' )
-#' print(counts)
 #'
 #' # matrix
 #' matrix <- as(counts, "matrix")
