@@ -16,9 +16,10 @@
 #' @return `DataFrame` or `ggplot`.
 #'
 #' @examples
+#' # sparseMatrix ====
+#' single_cell_counts <- counts(sce_small)
 #' x <- zerosVsDepth(single_cell_counts)
 #' print(x)
-#'
 #' plotZerosVsDepth(single_cell_counts)
 NULL
 
