@@ -1,4 +1,4 @@
-# FIXME Check SCE method.
+# TODO Improve SCE method documentation.
 
 
 
@@ -75,22 +75,15 @@
 #' )
 #' print(se)
 #'
-#' # SingleCellExperiment
-#' sce <- SingleCellExperiment::SingleCellExperiment(se)
-#' colnames(sce) <- gsub("sample", "cell", colnames(sce))
-#' print(sce)
-#'
 #' # aggregateCols ====
 #' aggregateCols(matrix, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
-#' aggregateCols(sce)  # FIXME
 #'
 #' # aggregateRows ====
 #' aggregateRows(matrix, groupings = genes)
 #' aggregateRows(sparse, groupings = genes)
 #' aggregateRows(se)
-#' aggregateRows(sce)  # FIXME
 NULL
 
 
@@ -202,36 +195,46 @@ NULL
 
 
 
-# Example:
-# object <- sce_small
-# object$aggregate <- factor("sample")
 .aggregateCols.SCE <-  # nolint
     function(object) {
         validObject(object)
 
         # Remap cellular barcode groupings -------------------------------------
-        message("Remapping cellular barcodes to aggregate sample IDs")
         colData <- colData(object)
         assert_is_subset(c("sampleID", "aggregate"), colnames(colData))
         assert_is_factor(colData[["aggregate"]])
+
+        message(paste(
+            "Remapping cells to aggregate samples:",
+            toString(sort(levels(colData[["aggregate"]])))
+        ))
+
         map <- colData(object) %>%
             as_tibble(rownames = "cellID") %>%
             select(!!!syms(c("cellID", "sampleID", "aggregate")))
 
-        # FIXME Need to think about a more general cell2sample approach.
-        stop("Draft update")
-        # FIXME This approach needs to be more general.
+        # Check to see if we can aggregate.
+        if (!all(mapply(
+            FUN = grepl,
+            x = map[["cellID"]],
+            pattern = paste0("^", map[["sampleID"]]),
+            SIMPLIFY = TRUE
+        ))) {
+            stop("Cell IDs are not prefixed with sample IDs")
+        }
         groupings <- mapply(
             FUN = gsub,
             x = map[["cellID"]],
-            pattern = paste0("^", map[["sample"]]),
+            pattern = paste0("^", map[["sampleID"]]),
             replacement = map[["aggregate"]],
             SIMPLIFY = TRUE,
             USE.NAMES = TRUE
-        ) %>%
-            as.factor()
-        # Add the new cell mappings to the tibble.
-        map[["newCell"]] <- groupings
+        )
+        groupings <- as.factor(groupings)
+
+        cell2sample <- as.factor(map[["aggregate"]])
+        names(cell2sample) <- as.character(groupings)
+
         # Reslot the `aggregate` column using these groupings.
         assert_are_identical(names(groupings), colnames(object))
         colData(object)[["aggregate"]] <- groupings
@@ -241,21 +244,13 @@ NULL
         rse <- aggregateCols(as(object, "RangedSummarizedExperiment"))
         assert_is_all_of(rse, "RangedSummarizedExperiment")
 
-        stop("This is still in progress")
-
-        # FIXME Rethink how we want to appraoch this step.
-        # Update the cell-to-sample mappings.
-        cell2sample <- .mapCellsToSamples(
-            cells = as.character(map[["newCell"]]),
-            samples = as.character(map[["aggregate"]])
-        )
-
         # Update the sample data.
-        colData(rse)[["sampleID"]] <- cell2sample
-        colData(rse)[["sampleName"]] <- cell2sample
+        colData <- colData(rse)
+        colData[["sampleID"]] <- cell2sample
+        colData[["sampleName"]] <- colData[["sampleID"]]
 
         # Now ready to generate aggregated SCE.
-        sce <- .new.SingleCellExperiment(
+        makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(object),
             colData = colData(rse),
@@ -266,12 +261,6 @@ NULL
             ),
             spikeNames = spikeNames(object)
         )
-
-        # Recalculate the metrics.
-        # FIXME Need to rethink this approach.
-        sce <- metrics(sce, recalculate = TRUE)
-
-        sce
     }
 
 
