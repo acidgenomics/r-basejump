@@ -42,8 +42,10 @@ sce$batch <- NULL
 sce$cell <- NULL
 sce$group <- NULL
 
-# Just keep raw counts.
-assays(sce) <- assays(sce)["counts"]
+# Just slot the raw counts, as a sparse matrix.
+counts <- counts(sce)
+counts <- as(counts, "sparseMatrix")
+assays(sce) <- list(counts = counts)
 
 # Prepare row data.
 gr <- makeGRangesFromEnsembl(organism = organism, release = release)
