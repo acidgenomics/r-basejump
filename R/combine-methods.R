@@ -65,7 +65,7 @@
 #' # Combine two SingleCellExperiment objects.
 #' c <- combine(x, y)
 #' print(c)
-#' sampleData(c)
+#' # FIXME sampleData(c)
 NULL
 
 
