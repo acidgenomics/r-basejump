@@ -202,7 +202,9 @@ NULL
         } else {
             args[["rowData"]] <- rowData(object)
         }
-        do.call(what = SummarizedExperiment, args = args)
+        se <- do.call(what = SummarizedExperiment, args = args)
+        validObject(se)
+        se
     }
 
 
@@ -262,7 +264,7 @@ NULL
         colData[["sampleName"]] <- colData[["sampleID"]]
 
         # Now ready to generate aggregated SCE.
-        makeSingleCellExperiment(
+        sce <- makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(object),
             colData = colData(rse),
@@ -273,6 +275,8 @@ NULL
             ),
             spikeNames = spikeNames(object)
         )
+        validObject(sce)
+        sce
     }
 
 
@@ -370,7 +374,9 @@ setMethod(
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames)
         }
-        do.call(what = SummarizedExperiment, args = args)
+        se <- do.call(what = SummarizedExperiment, args = args)
+        validObject(se)
+        se
     }
 
 
