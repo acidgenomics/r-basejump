@@ -19,7 +19,7 @@
 #' @note This function attempts to follow the same order as [base::assign()].
 #'
 #' @examples
-#' assignAndSaveData(name = "example", object = rnaseq_counts)
+#' assignAndSaveData(name = "example", object = rse_small)
 #' exists("example", inherits = FALSE)
 #' file.exists("example.rda")
 #'

@@ -21,6 +21,9 @@
 #' @seealso [rio::export()].
 #'
 #' @examples
+#' rnaseq_counts <- counts(rse_small
+#' single_cell_counts <- counts(sce_small)
+#'
 #' export(rnaseq_counts, format = "csv")
 #' export(single_cell_counts, format = "mtx")
 #'
