@@ -11,7 +11,7 @@ context("Read/Write Functions")
 test_that("assignAndSaveData", {
     object <- suppressMessages(assignAndSaveData(
         name = "XXX",
-        object = rnaseq_counts
+        object = rse_small
     ))
     expect_identical(
         object = object,
@@ -407,13 +407,13 @@ test_that("saveData", {
     paths <- file.path(
         getwd(),
         "example",
-        c("rnaseq_counts.rda", "single_cell_counts.rda")
+        c("rse_small.rda", "sce_small.rda")
     )
-    names(paths) <- c("rnaseq_counts", "single_cell_counts")
+    names(paths) <- c("rse_small", "sce_small")
 
     # rda (default)
     object <- saveData(
-        rnaseq_counts, single_cell_counts,
+        rse_small, sce_small,
         ext = "rda",
         dir = dir,
         overwrite = TRUE
@@ -422,20 +422,20 @@ test_that("saveData", {
 
     # rds
     object <- saveData(
-        rnaseq_counts, single_cell_counts,
+        rse_small, sce_small,
         ext = "rds",
         dir = dir,
         overwrite = TRUE
     )
     expect_identical(
         object = basename(object),
-        expected = c("rnaseq_counts.rds", "single_cell_counts.rds")
+        expected = c("rse_small.rds", "sce_small.rds")
     )
 
     # Check `overwrite = FALSE` mode
     expect_warning(
         object = saveData(
-            rnaseq_counts, single_cell_counts,
+            rse_small, sce_small,
             dir = dir, overwrite = FALSE
         ),
         regexp = "No files were saved."
@@ -454,7 +454,7 @@ test_that("saveData : Invalid parameters", {
         regexp = "is_name : X"
     )
     expect_error(
-        object = saveData(rnaseq_counts, dir = NULL),
+        object = saveData(rse_small, dir = NULL),
         regexp = "is_a_string : dir"
     )
 })
