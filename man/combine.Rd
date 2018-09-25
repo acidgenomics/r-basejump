@@ -7,22 +7,14 @@
 \alias{combine,SingleCellExperiment,SingleCellExperiment-method}
 \title{Combine Multiple Objects}
 \usage{
-\S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y,
-  metadata = c("version", "interestingGroups", "organism", "genomeBuild",
-  "ensemblRelease", "rowRangesMetadata", "gffFile"))
+\S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y)
 
-\S4method{combine}{SingleCellExperiment,SingleCellExperiment}(x, y,
-  metadata = c("version", "pipeline", "level", "interestingGroups",
-  "organism", "genomeBuild", "ensemblRelease", "umiType", "gffFile",
-  "dataVersions", "programVersions"))
+\S4method{combine}{SingleCellExperiment,SingleCellExperiment}(x, y)
 }
 \arguments{
 \item{x}{One of the values.}
 
 \item{y}{A second value.}
-
-\item{metadata}{\code{character}. Metadata slot names that must be identical
-between the datasets.}
 }
 \value{
 \code{SummarizedExperiment}.

@@ -18,9 +18,6 @@
 #'
 #' @inheritParams BiocGenerics::combine
 #'
-#' @param metadata `character`. Metadata slot names that must be identical
-#'   between the datasets.
-#'
 #' @seealso
 #' - [BiocGenerics::combine()].
 #' - `help("merge.Matrix", "Matrix.utils")`.
@@ -81,21 +78,7 @@ NULL
 # )
 # assert_is_character(metadata)
 .combine.SE <-  # nolint
-    function(
-        x,
-        y,
-        metadata = c(
-            "version",
-            "interestingGroups",
-            "organism",
-            "genomeBuild",
-            "ensemblRelease",
-            "rowRangesMetadata",
-            "gffFile"
-        )
-    ) {
-        assert_is_character(metadata)
-
+    function(x, y) {
         # Coerce the objects to SummarizedExperiment.
         # Keep as RSE if the data is ranged.
         assert_are_identical(class(x), class(y))
@@ -114,7 +97,18 @@ NULL
         # Require that there are no duplicate cells.
         assert_are_disjoint_sets(colnames(x), colnames(y))
 
-        # Require that specific metadata is identical.
+        # Require specific metadata to be identical, if defined.
+        metadata <- c(
+            "dataVersions",
+            "gffFile",
+            "interestingGroups",
+            "level",
+            "organism",
+            "pipeline",
+            "programVersions",
+            "umiType",
+            "version"
+        )
         assert_are_identical(
             x = metadata(x)[metadata],
             y = metadata(y)[metadata]
@@ -162,6 +156,7 @@ NULL
 
         # Metadata -------------------------------------------------------------
         metadata <- metadata(x)[metadata]
+        metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
 
         # Return SingleCellExperiment ------------------------------------------
@@ -173,38 +168,34 @@ NULL
             metadata = metadata
         )
         args <- Filter(Negate(is.null), args)
-        do.call(what = makeSummarizedExperiment, args = args)
+        se <- do.call(what = makeSummarizedExperiment, args = args)
+        validObject(se)
+        se
     }
 
 
 
 .combine.SCE <-  # nolint
-    function(
-        x,
-        y,
-        metadata = c(
-            "version",
-            "pipeline",
-            "level",
-            "interestingGroups",
-            "organism",
-            "genomeBuild",
-            "ensemblRelease",
-            "umiType",
-            "gffFile",
-            "dataVersions",
-            "programVersions"
-        )
-    ) {
-        # Use our SummarizedExperiment method to combine.
+    function(x, y) {
+        # Coerce to RSE and use combine method.
         Class <- "RangedSummarizedExperiment"  # nolint
         rse <- combine(
             x = as(object = x, Class = Class),
             y = as(object = y, Class = Class)
-            # FIXME If we add metadata here, it errors.
-            # metadata = metadata
         )
-        as(rse, "SingleCellExperiment")
+        validObject(rse)
+        # Make SCE from RSE.
+        # Note that SCE `as()` coercion doesn't currently return valid.
+        # FIXME Getting a mismatch between rowData/colData and internal ones.
+        sce <- makeSingleCellExperiment(
+            assays = assays(rse),
+            rowRanges = rowRanges(rse),
+            colData = colData(rse),
+            metadata = metadata(rse),
+            spikeNames = spikeNames(x)
+        )
+        validObject(sce)
+        sce
     }
 
 
