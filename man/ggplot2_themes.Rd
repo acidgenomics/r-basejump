@@ -72,8 +72,16 @@ p <- ggplot(
         fill = manufacturer
     )
 )
-p + geom_point() + theme_paperwhite()
-p + geom_point() + theme_midnight()
+
+# Paperwhite theme.
+p +
+    geom_point() +
+    theme_paperwhite(legend_position = "none")
+
+# Midnight theme.
+p +
+    geom_point() +
+    theme_midnight(legend_position = "none")
 
 # Minimal bar plot
 p +
