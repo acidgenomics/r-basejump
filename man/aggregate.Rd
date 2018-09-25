@@ -111,27 +111,22 @@ se <- SummarizedExperiment::SummarizedExperiment(
 )
 print(se)
 
-# SingleCellExperiment
-sce <- SingleCellExperiment::SingleCellExperiment(se)
-colnames(sce) <- gsub("sample", "cell", colnames(sce))
-print(sce)
-
 # aggregateCols ====
 aggregateCols(matrix, groupings = samples)
 aggregateCols(sparse, groupings = samples)
 aggregateCols(se)
-aggregateCols(sce)  # FIXME
 
 # aggregateRows ====
 aggregateRows(matrix, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
-aggregateRows(sce)  # FIXME
 }
 \seealso{
 Other Data Functions: \code{\link{cell2sample}},
   \code{\link{counts}},
+  \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapCellsToSamples}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metricsPerSample}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},

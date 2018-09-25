@@ -45,7 +45,9 @@ print(x)
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{cell2sample}}, \code{\link{counts}},
+  \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapCellsToSamples}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
   \code{\link{metricsPerSample}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
