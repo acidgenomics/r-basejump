@@ -33,10 +33,11 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \examples{
-from <- sampleData(rse_small)
+object <- rse_small
+from <- sampleData(object)
 to <- uniteInterestingGroups(
     object = from,
-    interestingGroups = c("genotype", "treatment")
+    interestingGroups = interestingGroups(object)
 )
 print(to)
 }

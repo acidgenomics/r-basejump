@@ -15,10 +15,11 @@
 #' @return Modified object, containing an `interestingGroups` column.
 #'
 #' @examples
-#' from <- sampleData(rse_small)
+#' object <- rse_small
+#' from <- sampleData(object)
 #' to <- uniteInterestingGroups(
 #'     object = from,
-#'     interestingGroups = c("genotype", "treatment")
+#'     interestingGroups = interestingGroups(object)
 #' )
 #' print(to)
 NULL
