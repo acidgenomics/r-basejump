@@ -17,6 +17,10 @@
 #' @export
 #'
 #' @inheritParams general
+#' @param blacklist `character`. Column names that should never be treated as
+#'   sample-level metadata. Applies to objects where the columns don't map to
+#'   samples (e.g. `SingleCellExperiment`), and we need to collapse the
+#'   `colData()` dynamically.
 #'
 #' @return `DataFrame`.
 #'
@@ -80,7 +84,17 @@ NULL
 
 
 .sampleData.SCE <-  # nolint
-    function(object) {
+    function(
+        object,
+        blacklist = c(
+            "^ident$",
+            "^origIdent$",
+            "^res[.0-9]+$",
+            "^sScore$",
+            "^g2mScore$",
+            "^phase$"
+        )
+    ) {
         data <- colData(object)
 
         # Require `sampleID` and `sampleName` columns.
@@ -132,6 +146,7 @@ NULL
             ),
             drop = FALSE
         ]
+        # Make the factor integer table.
         factortbl <- subset %>%
             as_tibble(rownames = NULL) %>%
             mutate_all(as.factor) %>%
@@ -143,13 +158,21 @@ NULL
             },
             FUN.VALUE = logical(1L)
         )
-        trash <- names(trash[trash])
-        data <- data[, setdiff(colnames(data), trash), drop = FALSE]
+        keep <- setdiff(colnames(data), names(trash[trash]))
+        data <- data[, keep, drop = FALSE]
 
         # Collapse and set the rownames to `sampleID`.
         rownames(data) <- NULL
         data <- unique(data)
-        assert_has_no_duplicates(data[["sampleID"]])
+        if (
+            nrow(data) > nSamples ||
+            any(duplicated(data[["sampleID"]]))
+        ) {
+            stop(paste(
+                "Failed to collapse `colData()` to sample level.",
+                "Check these columns:", toString(colnames(data))
+            ))
+        }
         rownames(data) <- data[["sampleID"]]
         data[["sampleID"]] <- NULL
         # Return sorted by `sampleID`.
