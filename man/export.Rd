@@ -44,7 +44,7 @@ CSV. We're performing any internal tibble coercion step to ensure rownames
 are always moved to a "rowname" column in the CSV output.
 }
 \examples{
-rnaseq_counts <- counts(rse_small
+rnaseq_counts <- counts(rse_small)
 single_cell_counts <- counts(sce_small)
 
 export(rnaseq_counts, format = "csv")
