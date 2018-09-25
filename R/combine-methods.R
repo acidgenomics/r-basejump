@@ -1,4 +1,5 @@
 # FIXME SCE won't pass validity check (see below).
+# This is still failing with bioc-devel version of SCE.
 
 
 
