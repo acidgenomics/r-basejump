@@ -21,10 +21,14 @@
 #' @seealso [rio::export()].
 #'
 #' @examples
+#' # matrix ====
 #' rnaseq_counts <- counts(rse_small)
-#' single_cell_counts <- counts(sce_small)
-#'
+#' stopifnot(is.matrix(rnaseq_counts))
 #' export(rnaseq_counts, format = "csv")
+#'
+#' # sparseMatrix ====
+#' single_cell_counts <- counts(sce_small)
+#' stopifnot(is(single_cell_counts, "sparseMatrix"))
 #' export(single_cell_counts, format = "mtx")
 #'
 #' # Clean up
@@ -79,6 +83,7 @@ NULL
 # Consider adding HDF5 support in a future update.
 .export.sparseMatrix <-  # nolint
     function(x, file, format) {
+        stopifnot(is(x, "sparseMatrix"))
         assert_is_non_empty(x)
         choices <- c("mtx", "mtx.gz")
 

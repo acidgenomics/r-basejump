@@ -44,10 +44,14 @@ CSV. We're performing any internal tibble coercion step to ensure rownames
 are always moved to a "rowname" column in the CSV output.
 }
 \examples{
+# matrix ====
 rnaseq_counts <- counts(rse_small)
-single_cell_counts <- counts(sce_small)
-
+stopifnot(is.matrix(rnaseq_counts))
 export(rnaseq_counts, format = "csv")
+
+# sparseMatrix ====
+single_cell_counts <- counts(sce_small)
+stopifnot(is(single_cell_counts, "sparseMatrix"))
 export(single_cell_counts, format = "mtx")
 
 # Clean up
