@@ -1,5 +1,5 @@
 # SingleCellExperiment Example Data
-# 2018-09-24
+# 2018-09-25
 
 library(splatter)
 library(tidyverse)
@@ -17,6 +17,7 @@ params <- setParam(params, name = "de.facScale", value = .25)
 params <- setParam(params, name = "dropout.type", value = "experiment")
 params <- setParam(params, name = "dropout.mid", value = 3)
 
+# Generate a simulated SingleCellExperiment with splatter.
 sce <- splatSimulate(params, group.prob = c(.5, .5), method = "groups")
 
 # Sanitize the dimnames into camel case.
@@ -34,11 +35,12 @@ colnames(sce) <- colnames(sce) %>%
 
 # Prepare column data.
 colData(sce) <- camel(colData(sce))
-# Add sampleID and sampleName columns.
-sce$batch <- factor(camel(sce$batch))
-sce$sampleID <- factor(gsub("group", "sample", camel(sce$group)))
-sce$group <- NULL
+# Add `sampleID` column. Note that `sampleName` is recommended, but if it is
+# not defined, it should be generated from the `sampleID` automatically.
+sce$sampleID <- factor(gsub("batch", "sample", camel(sce$batch)))
+sce$batch <- NULL
 sce$cell <- NULL
+sce$group <- NULL
 
 # Just keep raw counts.
 assays(sce) <- assays(sce)["counts"]
