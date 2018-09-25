@@ -342,6 +342,34 @@ readFileByExtension <- function(...) {
     import(...)
 }
 
+#' @rdname deprecated
+#' @export
+readGFF <- function(...) {
+    .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readGTF <- function(...) {
+    .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readJSON <- function(...) {
+    .Deprecated("import")
+    import(...)
+}
+
+#' @rdname deprecated
+#' @export
+readYAML <- function(...) {
+    .Deprecated("import")
+    import(...)
+}
+
 #' @rdname defunct
 #' @export
 separatorBar <- function(...) {
