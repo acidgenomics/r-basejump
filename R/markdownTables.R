@@ -18,11 +18,11 @@
 #' - [Stack Overflow post](https://stackoverflow.com/a/35149103/3911732).
 #'
 #' @examples
-#' kables(
+#' markdownTables(
 #'     list = list(head(ggplot2::mpg), head(datasets::mtcars)),
 #'     captions = c("mpg", "mtcars")
 #' )
-kables <- function(
+markdownTables <- function(
     list,
     captions,
     force = FALSE
