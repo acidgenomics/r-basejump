@@ -376,7 +376,7 @@ makeGRangesFromGFF <- function(
     file,
     level = c("genes", "transcripts")
 ) {
-    # Note that `readGFF()` has assert checks for file (see below).
+    # Note that `import()` has assert checks for file (see below).
     level <- match.arg(level)
 
     # Stash the formals used into a metadata list, which we'll slot into
@@ -390,7 +390,7 @@ makeGRangesFromGFF <- function(
 
     # Read GFF -----------------------------------------------------------------
     file <- localOrRemoteFile(file)
-    gff <- readGFF(file)
+    gff <- import(file)
     assert_is_all_of(gff, "GRanges")
     gff <- camel(gff)
 
