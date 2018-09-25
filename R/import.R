@@ -2,37 +2,54 @@
 #'
 #' Read file by extension into R.
 #'
-#' This is a wrapper for [rio::import()] that adds support for additional
-#' common genomic data formats.
+#' This is a wrapper for [rio::import()] that adds support for additional common
+#' genomic data files. Remote URLs and compressed files are supported.
 #'
-#' Supports automatic loading of common file extensions:
+#' This function supports automatic loading of common file types:
 #'
 #' - `csv`: Comma Separated Values.
-#' - `gff`/`gff3`/`gtf`: General Feature Format.
+#' - `tsv` Tab Separated Values.
+#' - `xlsx`: Excel workbook.
 #' - `mtx`: MatrixMarket sparse matrix.
+#' - `gtf`/`gff`/`gff3`: General Feature Format.
 #' - `rda`/`RData`: R Data. Must contain a single object. Doesn't require
 #'   internal object name to match, like with the [loadData()] function.
 #' - `rds`: R Data Serialized.
-#' - `tsv` Tab Separated Values.
-#' - `xlsx`: Excel workbook.
+#' - `json`: JSON.
 #' - `yaml`/`yml`: YAML.
-#'
-#' Also supports some additional extensions commonly used with the
-#' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
-#'
-#' - `counts`: Counts `table`.
-#' - `colnames`: Sidecar file containing column names.
-#' - `rownames`: Sidecar file containing row names.
 #'
 #' If the file format isn't supported natively (or blacklisted), the
 #' [rio](https://cran.r-project.org/web/packages/rio/index.html) package will
 #' be used as a fallback attempt.
 #'
-#' @note
-#' Reading a MatrixMarket ("`mtx`") file now requires "`colnames`" and
+#' @section Matrix Market Exchange (MTX/MEX):
+#'
+#' Reading a Matrix Market Exchange ("`mtx`") file now requires "`colnames`" and
 #' `"rownames"` sidecar files containing the [colnames()] and [rownames()] of
 #' the sparse matrix. Legacy support for manual loading of these sidecar files
 #' is provided.
+#'
+#' @section General Feature Format (GFF/GTF):
+#'
+#' The GFF (General Feature Format) format consists of one line per feature,
+#' each containing 9 columns of data, plus optional track definition lines. The
+#' GTF (General Transfer Format) is identical to GFF version 2.
+#'
+#' Column names follow the [Ensembl conventions](https://bit.ly/2K6EBla).
+#
+#' Additional information:
+#'
+#' - [Ensembl](http://www.ensembl.org/info/website/upload/gff.html)
+#' - [Gencode](http://www.gencodegenes.org/gencodeformat.html)
+#'
+#' @section bcbio:
+#'
+#' Also supports some additional extensions commonly used with the
+#' [bcbio](https://bcbio-nextgen.readthedocs.io) pipeline:
+#'
+#' - `counts`: Counts table (e.g. RNA-seq aligned counts).
+#' - `colnames`: Sidecar file containing column names.
+#' - `rownames`: Sidecar file containing row names.
 #'
 #' @family Read Functions
 #' @author Michael Steinbaugh
@@ -40,8 +57,15 @@
 #'
 #' @inheritParams general
 #'
-#' @return Varies, depending on the file extension. Note that data frames are
-#'   returned as `DataFrame` class instead of `data.frame`, when applicable.
+#' @return Varies, depending on the file extension:
+#'
+#' - Default: `DataFrame`.
+#' - MTX: `sparseMatrix`.
+#' - GTF/GFF: `GRanges`.
+#' - JSON/YAML: `list`.
+#'
+#' Note that data frames are returned as S4 `DataFrame` class instead of
+#' `data.frame`, when applicable.
 #'
 #' @seealso
 #' - [readr](http://readr.tidyverse.org).
@@ -61,7 +85,19 @@
 #' x <- import("http://basejump.seq.cloud/mtcars.xlsx")
 #' glimpse(x)
 #'
-#' # bcbio Counts Table
+#' # GTF/GFF
+#' x <- import("http://basejump.seq.cloud/example.gtf")
+#' summary(x)
+#'
+#' # JSON
+#' x <- import("http://basejump.seq.cloud/example.json")
+#' names(x)
+#'
+#' # YAML
+#' x <- import("http://basejump.seq.cloud/example.yml")
+#' names(x)
+#'
+#' # Counts Table (i.e. aligned counts from bcbio)
 #' x <- import("http://basejump.seq.cloud/example.counts")
 #' glimpse(x)
 import <- function(file, ...) {
@@ -96,7 +132,7 @@ import <- function(file, ...) {
             column_to_rownames("id") %>%
             as.matrix()
     } else if (ext %in% c("gff", "gff3", "gtf")) {
-        data <- suppressMessages(readGFF(file))
+        data <- .importGFF(file)
     } else if (ext == "mtx") {
         # MatrixMarket
         # Require `.rownames` and `.colnames` files
@@ -118,8 +154,10 @@ import <- function(file, ...) {
         data <- get(object, envir = safe, inherits = FALSE)
     } else if (ext == "rds") {
         data <- readRDS(file)
+    } else if (ext == "json") {
+        data <- .importJSON(file)
     } else if (ext %in% c("yaml", "yml")) {
-        data <- suppressMessages(readYAML(file))
+        data <- .importYAML(file)
     } else {
         # `rio::import`
         # How we declare NA strings depends on the file extension.
@@ -145,4 +183,39 @@ import <- function(file, ...) {
     }
 
     data
+}
+
+
+
+.importGFF <- function(file) {
+    assert_is_a_string(file)
+    assert_all_are_matching_regex(file, "\\.g(f|t)f(\\d)?(\\.gz)?$")
+    file <- localOrRemoteFile(file)
+    tryCatch(
+        rtracklayer::import(file),
+        error = function(e) {
+            stop("GFF file failed to load")  # nocov
+        },
+        warning = function(w) {
+            stop("GFF file failed to load")  # nocov
+        }
+    )
+}
+
+
+
+.importJSON <- function(file) {
+    assert_is_a_string(file)
+    assert_all_are_matching_regex(file, "\\.json$")
+    file <- localOrRemoteFile(file)
+    read_json(file)
+}
+
+
+
+.importYAML <- function(file) {
+    assert_is_a_string(file)
+    assert_all_are_matching_regex(file, "\\.ya?ml$")
+    file <- localOrRemoteFile(file)
+    yaml.load_file(file)
 }
