@@ -166,6 +166,7 @@ Collate:
     'metricsPerSample-methods.R'
     'mgi2ensembl.R'
     'microplate.R'
+    'minimalSampleData.R'
     'multiassignAsEnvir.R'
     'organism-methods.R'
     'panther.R'
