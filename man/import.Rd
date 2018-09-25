@@ -12,47 +12,78 @@ import(file, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-Varies, depending on the file extension. Note that data frames are
-returned as \code{DataFrame} class instead of \code{data.frame}, when applicable.
+Varies, depending on the file extension:
+\itemize{
+\item Default: \code{DataFrame}.
+\item MTX: \code{sparseMatrix}.
+\item GTF/GFF: \code{GRanges}.
+\item JSON/YAML: \code{list}.
+}
+
+Note that data frames are returned as S4 \code{DataFrame} class instead of
+\code{data.frame}, when applicable.
 }
 \description{
 Read file by extension into R.
 }
 \details{
-This is a wrapper for \code{\link[rio:import]{rio::import()}} that adds support for additional
-common genomic data formats.
+This is a wrapper for \code{\link[rio:import]{rio::import()}} that adds support for additional common
+genomic data files. Remote URLs and compressed files are supported.
 
-Supports automatic loading of common file extensions:
+This function supports automatic loading of common file types:
 \itemize{
 \item \code{csv}: Comma Separated Values.
-\item \code{gff}/\code{gff3}/\code{gtf}: General Feature Format.
+\item \code{tsv} Tab Separated Values.
+\item \code{xlsx}: Excel workbook.
 \item \code{mtx}: MatrixMarket sparse matrix.
+\item \code{gtf}/\code{gff}/\code{gff3}: General Feature Format.
 \item \code{rda}/\code{RData}: R Data. Must contain a single object. Doesn't require
 internal object name to match, like with the \code{\link[=loadData]{loadData()}} function.
 \item \code{rds}: R Data Serialized.
-\item \code{tsv} Tab Separated Values.
-\item \code{xlsx}: Excel workbook.
+\item \code{json}: JSON.
 \item \code{yaml}/\code{yml}: YAML.
-}
-
-Also supports some additional extensions commonly used with the
-\href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
-\itemize{
-\item \code{counts}: Counts \code{table}.
-\item \code{colnames}: Sidecar file containing column names.
-\item \code{rownames}: Sidecar file containing row names.
 }
 
 If the file format isn't supported natively (or blacklisted), the
 \href{https://cran.r-project.org/web/packages/rio/index.html}{rio} package will
 be used as a fallback attempt.
 }
-\note{
-Reading a MatrixMarket ("\code{mtx}") file now requires "\code{colnames}" and
+\section{Matrix Market Exchange (MTX/MEX)}{
+
+
+Reading a Matrix Market Exchange ("\code{mtx}") file now requires "\code{colnames}" and
 \code{"rownames"} sidecar files containing the \code{\link[=colnames]{colnames()}} and \code{\link[=rownames]{rownames()}} of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.
 }
+
+\section{General Feature Format (GFF/GTF)}{
+
+
+The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines. The
+GTF (General Transfer Format) is identical to GFF version 2.
+
+Column names follow the \href{https://bit.ly/2K6EBla}{Ensembl conventions}.
+Additional information:
+\itemize{
+\item \href{http://www.ensembl.org/info/website/upload/gff.html}{Ensembl}
+\item \href{http://www.gencodegenes.org/gencodeformat.html}{Gencode}
+}
+}
+
+\section{bcbio}{
+
+
+Also supports some additional extensions commonly used with the
+\href{https://bcbio-nextgen.readthedocs.io}{bcbio} pipeline:
+\itemize{
+\item \code{counts}: Counts table (e.g. RNA-seq aligned counts).
+\item \code{colnames}: Sidecar file containing column names.
+\item \code{rownames}: Sidecar file containing row names.
+}
+}
+
 \examples{
 # R Data
 x <- import("http://basejump.seq.cloud/rnaseq_counts.rda")
@@ -66,7 +97,19 @@ glimpse(x)
 x <- import("http://basejump.seq.cloud/mtcars.xlsx")
 glimpse(x)
 
-# bcbio Counts Table
+# GTF/GFF
+x <- import("http://basejump.seq.cloud/example.gtf")
+summary(x)
+
+# JSON
+x <- import("http://basejump.seq.cloud/example.json")
+names(x)
+
+# YAML
+x <- import("http://basejump.seq.cloud/example.yml")
+names(x)
+
+# Counts Table (i.e. aligned counts from bcbio)
 x <- import("http://basejump.seq.cloud/example.counts")
 glimpse(x)
 }
@@ -78,9 +121,7 @@ glimpse(x)
 }
 
 Other Read Functions: \code{\link{loadDataAsName}},
-  \code{\link{loadData}}, \code{\link{loadRemoteData}},
-  \code{\link{readGFF}}, \code{\link{readJSON}},
-  \code{\link{readYAML}}
+  \code{\link{loadData}}, \code{\link{loadRemoteData}}
 }
 \author{
 Michael Steinbaugh

@@ -30,9 +30,7 @@ class(single_cell_counts)
 }
 \seealso{
 Other Read Functions: \code{\link{import}},
-  \code{\link{loadDataAsName}}, \code{\link{loadData}},
-  \code{\link{readGFF}}, \code{\link{readJSON}},
-  \code{\link{readYAML}}
+  \code{\link{loadDataAsName}}, \code{\link{loadData}}
 }
 \author{
 Michael Steinbaugh

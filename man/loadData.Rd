@@ -47,8 +47,7 @@ loadData(example, dir = system.file("extdata", package = "basejump"))
 \seealso{
 Other Read Functions: \code{\link{import}},
   \code{\link{loadDataAsName}},
-  \code{\link{loadRemoteData}}, \code{\link{readGFF}},
-  \code{\link{readJSON}}, \code{\link{readYAML}}
+  \code{\link{loadRemoteData}}
 }
 \author{
 Michael Steinbaugh
