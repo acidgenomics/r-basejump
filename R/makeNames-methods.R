@@ -109,7 +109,7 @@ NULL
 
 
 
-# atomic =======================================================================
+# makeNames ====================================================================
 #' @rdname makeNames
 #' @inheritParams base::make.names
 #' @export
@@ -124,6 +124,18 @@ makeNames <- function(names, unique = TRUE) {
 
 
 
+#' @rdname makeNames
+#' @export
+makeDimnames <- function(object) {
+    assert_has_dimnames(object)
+    rownames(object) <- makeNames(rownames(object), unique = TRUE)
+    colnames(object) <- makeNames(colnames(object), unique = TRUE)
+    object
+}
+
+
+
+# atomic =======================================================================
 .camel.atomic <-  # nolint
     function(object, strict = FALSE) {
         if (has_names(object)) {
