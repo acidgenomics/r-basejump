@@ -21,12 +21,13 @@ Load a remote R binary file. This function is vectorized and supports
 multiple URLs in a single call.
 }
 \examples{
-loadRemoteData(c(
-    "http://basejump.seq.cloud/rnaseq_counts.rds",
-    "http://basejump.seq.cloud/single_cell_counts.rds"
-))
-class(rnaseq_counts)
-class(single_cell_counts)
+url <- file.path(
+    basejumpCacheURL,
+    paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
+)
+print(url)
+x <- loadRemoteData(url)
+print(x)
 }
 \seealso{
 Other Read Functions: \code{\link{import}},
