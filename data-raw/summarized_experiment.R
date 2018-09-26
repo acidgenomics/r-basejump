@@ -1,5 +1,5 @@
 # SummarizedExperiment example objects
-# Last updated 2018-09-24
+# Last updated 2018-09-26
 
 library(DESeq2)
 library(tidyverse)
@@ -10,7 +10,7 @@ mb <- structure(1e6, class = "object_size")
 # dds_small ====================================================================
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
-dds <- makeExampleDESeqDataSet(n = 100L, m = 4L)
+dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
 stopifnot(object.size(dds) < mb)
 stopifnot(validObject(dds))
 dds_small <- dds
@@ -34,22 +34,20 @@ colData(rse) <- DataFrame(
     ),
     row.names = colnames(rse)
 )
-# Row data.
+# Row data. Include real `geneID`, `geneName` columns to test mapping functions.
 rowRanges <- makeGRangesFromEnsembl("Homo sapiens")
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
 # Note that we're keeping the original rownames from dds_small, and they won't
 # match the `geneID` column in rowRanges. This is intentional, for unit testing.
 names(rowRanges) <- rownames(rse)
-# Ensure factor levels in mcols are dropped, to save space.
-# Otherwise the example will be too large.
-mcols <- mcols(rowRanges) %>%
-    as_tibble(rownames = "rowname") %>%
-    mutate_if(is.factor, droplevels) %>%
+# Select only `geneID` and `geneName` columns, to keep example small.
+# If factor, make sure we use `droplevels()` here to keep object small.
+mcols(rowRanges) <- mcols(rowRanges) %>%
+    as("tbl_df") %>%
+    select(rowname, geneID, geneName) %>%
+    mutate_all(as.character) %>%
     as("DataFrame")
-mcols(rowRanges) <- mcols
-# FIXME Consider subsetting the columns here to make the object smaller.
-# Update the rownames of the object to match our genomic ranges.
 rowRanges(rse) <- rowRanges
 # Stash the date.
 metadata(rse)[["date"]] <- Sys.Date()
@@ -69,6 +67,7 @@ devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
 # tx_se_small ==================================================================
 tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
 print(tx2gene)
+# Pick transcripts that have gene overlaps, to test our aggregate code.
 transcriptIDs <- c(
     "ENST00000494424",
     "ENST00000496771",
@@ -91,5 +90,13 @@ se <- SummarizedExperiment(
     rowData = tx2gene[rownames(counts), , drop = FALSE],
     metadata = list(date = Sys.Date())
 )
+# Report the size of each slot in bytes.
+vapply(
+    X = flatFiles(se),
+    FUN = object.size,
+    FUN.VALUE = numeric(1L)
+)
+stopifnot(object.size(se) < mb)
+stopifnot(validObject(se))
 tx_se_small <- se
 devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
