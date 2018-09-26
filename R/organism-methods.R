@@ -69,7 +69,7 @@ NULL
             X = ref,
             MARGIN = c(1L, 2L),
             FUN = function(pattern) {
-                grepl(pattern = pattern, x = object)
+                grepl(pattern = pattern, x = object, ignore.case = TRUE)
             }
         )
         # Determine if any organism matched.
