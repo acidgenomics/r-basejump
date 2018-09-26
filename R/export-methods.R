@@ -5,9 +5,14 @@
 #' This is a wrapper for [rio::export()] that adds support for additional S4
 #' classes in Bioconductor.
 #'
-#' @note The standard [rio::export()] call will drop rownames when exporting to
-#'   CSV. We're performing any internal tibble coercion step to ensure rownames
-#'   are always moved to a "rowname" column in the CSV output.
+#' @section Row names:
+#'
+#' The standard [rio::export()] call will drop rownames when exporting to CSV.
+#' The `readr::write_*()` family of functions also never write rownames. This is
+#' a *really poor* default setting for handling genomic data, which often
+#' contain gene identifiers in the rownames. Here we're performing any internal
+#' tibble coercion step to ensure rownames are always moved to a "`rowname`"
+#' column in the CSV export.
 #'
 #' @name export
 #' @author Michael Steinbaugh
