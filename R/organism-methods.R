@@ -65,25 +65,23 @@ NULL
         assert_is_a_string(object)
         ref <- .organismTable
         # Generate a logical matrix of grep matches.
-        mat <- apply(
+        hits <- apply(
             X = ref,
-            MARGIN = c(1L, 2L),
-            FUN = function(pattern) {
-                grepl(pattern = pattern, x = object, ignore.case = TRUE)
-            }
-        )
-        # Determine if any organism matched.
-        hit <- apply(
-            X = mat,
             MARGIN = 1L,
-            FUN = function(x) {
-                any(na.omit(x))
+            FUN = function(row) {
+                any(vapply(
+                    X = row,
+                    FUN = function(pattern) {
+                        grepl(pattern, object, ignore.case = TRUE)
+                    },
+                    FUN.VALUE = integer(1L)
+                ))
             }
         )
         # Return organism name if there's a match, otherwise NA.
         ifelse(
-            test = any(hit),
-            yes = ref[hit, 1L, drop = TRUE],
+            test = any(hits),
+            yes = ref[hits, 1L, drop = TRUE],
             no = NA_character_
         )
     }
