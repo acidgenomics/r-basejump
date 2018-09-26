@@ -86,31 +86,31 @@ Also supports some additional extensions commonly used with the
 
 \examples{
 # R Data
-x <- import("http://basejump.seq.cloud/rnaseq_counts.rda")
+x <- import(file = file.path(cacheURL, "rnaseq_counts.rda"))
 glimpse(x)
 
 # Comma Separated Values
-x <- import("http://basejump.seq.cloud/mtcars.csv")
+x <- import(file = file.path(cacheURL, "mtcars.csv"))
 glimpse(x)
 
 # Microsoft Excel Worksheet
-x <- import("http://basejump.seq.cloud/mtcars.xlsx")
+x <- import(file = file.path(cacheURL, "mtcars.xlsx"))
 glimpse(x)
 
 # GTF/GFF
-x <- import("http://basejump.seq.cloud/example.gtf")
+x <- import(file = file.path(cacheURL, "example.gtf"))
 summary(x)
 
 # JSON
-x <- import("http://basejump.seq.cloud/example.json")
+x <- import(file = file.path(cacheURL, "example.json"))
 names(x)
 
 # YAML
-x <- import("http://basejump.seq.cloud/example.yml")
+x <- import(file file.path(cacheURL, "example.yml"))
 names(x)
 
 # Counts Table (i.e. aligned counts from bcbio)
-x <- import("http://basejump.seq.cloud/example.counts")
+x <- import(file = file.path(cacheURL, "example.counts"))
 glimpse(x)
 }
 \seealso{
