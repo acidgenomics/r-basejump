@@ -15,7 +15,7 @@
 RdTags <- function(object) {  # nolint
     assert_is_all_of(object, "Rd")
     tags <- sapply(object, attr, "Rd_tag")
-    if (!length(tags)) {
+    if (!has_length(tags)) {
         tags <- character()
     } else {
         # Remove the leading "\\" backslashes.

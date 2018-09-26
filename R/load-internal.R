@@ -18,7 +18,7 @@
         full.names = TRUE,
         ignore.case = TRUE
     )
-    if (!length(files)) {
+    if (!has_length(files)) {
         stop(rdataError, call. = FALSE)
     }
     names <- gsub(rdataExtPattern, "", basename(files), ignore.case = TRUE)
@@ -45,7 +45,7 @@
         .[, 2L] %>%
         unique() %>%
         sort()
-    if (length(ext) != 1L) {
+    if (!has_length(ext, n = 1L)) {
         stop(paste(
             paste(
                 "Multiple extensions",

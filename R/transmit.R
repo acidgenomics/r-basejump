@@ -96,7 +96,7 @@ transmit <- function(
     }
 
     # Early return if all files exist.
-    if (!length(localPaths)) {
+    if (!has_length(localPaths)) {
         message("All files have already downloaded")
         files <- normalizePath(files, winslash = "/", mustWork = TRUE)
         names(files) <- match

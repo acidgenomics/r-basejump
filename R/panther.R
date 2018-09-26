@@ -42,7 +42,7 @@ NULL
             sort() %>%
             gsub("#([A-Z0-9:]+)", " [\\1]", .) %>%
             gsub(">", " > ", .)
-        if (length(x)) {
+        if (has_length(x)) {
             x
         } else {
             NULL

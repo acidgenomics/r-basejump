@@ -60,7 +60,7 @@ saveRdExamples <- function(
             )
 
             # Early return if there are no examples.
-            if (!length(x)) {
+            if (!has_length(x)) {
                 message(paste("Skipping", Rd))
                 return(invisible())
             }

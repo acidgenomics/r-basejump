@@ -36,20 +36,21 @@ emptyRanges <- function(
     mcolsNames = NULL
 ) {
     assert_is_character(names)
+    assert_all_are_non_missing_nor_empty_character(names)
     seqname <- match.arg(seqname)
     assert_is_any_of(mcolsNames, c("character", "NULL"))
 
     gr <- GRanges(
         seqnames = seqname,
         ranges = IRanges(
-            start = (1L:length(names) - 1L) * 100L + 1L,
+            start = (seq_len(length(names)) - 1L) * 100L + 1L,
             width = 100L
         )
     )
     names(gr) <- names
 
     # Create the required empty metadata columns.
-    if (!length(mcolsNames)) {
+    if (!has_length(mcolsNames)) {
         ncol <- 0L
     } else {
         ncol <- length(mcolsNames)
