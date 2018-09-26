@@ -1,4 +1,3 @@
-cacheURL <- "http://basejump.seq.cloud"
 files <- c(
     "example.counts",
     "example.csv",
