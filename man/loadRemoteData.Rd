@@ -22,8 +22,8 @@ multiple URLs in a single call.
 }
 \examples{
 loadRemoteData(c(
-    "http://basejump.seq.cloud/rnaseq_counts.rda",
-    "http://basejump.seq.cloud/single_cell_counts.rda"
+    "http://basejump.seq.cloud/rnaseq_counts.rds",
+    "http://basejump.seq.cloud/single_cell_counts.rds"
 ))
 class(rnaseq_counts)
 class(single_cell_counts)

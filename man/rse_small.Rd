@@ -4,7 +4,7 @@
 \name{rse_small}
 \alias{rse_small}
 \title{Example RNA-Seq Data Set}
-\format{An object of class \code{RangedSummarizedExperiment} with 100 rows and 4 columns.}
+\format{An object of class \code{RangedSummarizedExperiment} with 50 rows and 4 columns.}
 \usage{
 rse_small
 }

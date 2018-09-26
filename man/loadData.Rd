@@ -22,7 +22,7 @@ Invisible \code{character}. File paths.
 }
 \description{
 Load R data files from a directory using symbols rather than complete file
-paths. Supports "\code{.RData}", "\code{.rda}", and "\code{.rds}" file extensions.
+paths. Supports "\code{.rds}", "\code{.rda}", and "\code{.RData}" file extensions.
 }
 \details{
 \code{\link[=loadData]{loadData()}} is opinionated about the format of R data files it will accept.
