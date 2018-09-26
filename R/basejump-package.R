@@ -38,9 +38,9 @@
 #' @importFrom BiocGenerics do.call lapply match
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
-#' @importFrom dplyr arrange bind_rows case_when everything filter funs group_by
-#'   left_join mutate mutate_all mutate_at mutate_if pull rename select
-#'   select_if starts_with summarize_all top_n ungroup
+#' @importFrom dplyr arrange bind_rows case_when filter funs group_by left_join
+#'   mutate mutate_all mutate_at mutate_if pull rename select select_if
+#'   summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
@@ -67,7 +67,7 @@
 #' @importFrom RCurl getURL
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom reshape2 melt
-#' @importFrom rlang !! !!! dots_list eval_bare sym syms UQ
+#' @importFrom rlang !! !!! := dots_list eval_bare sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
 #'   head mcols mcols<- metadata metadata<- na.omit setdiff tail
@@ -80,6 +80,7 @@
 #'   colData<- rowData rowRanges SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames
 #' @importFrom tidyr separate unite
+#' @importFrom tidyselect everything matches starts_with
 #' @importFrom tools Rd_db
 #' @importFrom utils capture.output download.file globalVariables
 #'   installed.packages packageVersion read.delim read.table sessionInfo
