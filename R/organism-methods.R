@@ -4,15 +4,15 @@
 #'
 #' @section Supported organisms:
 #'
-#' - *Homo sapiens* (human)
-#' - *Mus musculus* (mouse)
-#' - *Rattus norvegicus* (rat)
+#' - *Caenorhabditis elegans* (roundworm)
 #' - *Danio rerio* (zebrafish)
 #' - *Drosophila melanogaster* (fruitfly)
-#' - *Caenorhabditis elegans* (roundworm)
-#' - *Saccharomyces cerevisiae* (yeast)
 #' - *Gallus gallus* (chicken)
+#' - *Homo sapiens* (human)
+#' - *Mus musculus* (mouse)
 #' - *Ovis aries* (sheep)
+#' - *Rattus norvegicus* (rat)
+#' - *Saccharomyces cerevisiae* (yeast)
 #'
 #' @name organism
 #' @family Annotation Functions
