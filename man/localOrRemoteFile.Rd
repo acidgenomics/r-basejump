@@ -20,15 +20,17 @@ This function is vectorized and supports mixed local and remote paths. Remote
 files are downloaded locally to a temporary directory.
 }
 \examples{
-# Single file
-x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseq_counts.csv.gz")
+# Import a single file.
+file <- file.path(basejumpCacheURL, "rnaseq_counts.csv.gz")
+x <- localOrRemoteFile(file)
 basename(x)
 
-# Vectorized
-x <- localOrRemoteFile(c(
-    "http://basejump.seq.cloud/rnaseq_counts.csv.gz",
-    "http://basejump.seq.cloud/single_cell_counts.mtx.gz"
-))
+# Import multiple files (vectorized).
+files <- file.path(
+    basejumpCacheURL,
+    c("rnaseq_counts.csv.gz", "single_cell_counts.mtx.gz")
+)
+x <- localOrRemoteFile(files)
 basename(x)
 }
 \seealso{
