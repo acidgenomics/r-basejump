@@ -2,15 +2,24 @@
 #'
 #' @section tibble:
 #'
-#' Coerce an object to a `tibble` (`tbl_df`) using `as(object, Class =
-#' "tbl_df")`. Tibbles don't support rowname assignment, so here we are ensuring
-#' they are kept by moving them to a column named `rowname` upon coercion. This
-#' helps avoid downstream unexpected data loss when using the dplyr chain of
-#' single table verbs, such as [dplyr::arrange()], [dplyr::filter()], or
-#' [dplyr::mutate()].
+#' Coerce an object to a `tibble` (`tbl_df`) data frame using either S3 or S4
+#' methods:
+#'
+#' - S3: `as_tibble(x)` (or `as.tibble()` alias).
+#' - S4: `as(object, Class = "tbl_df")`.
+#'
+#' Tibbles don't support row name assignment, so here we are ensuring they are
+#' kept by moving them to a column named `rowname` by default. This helps avoid
+#' downstream unexpected data loss when using the dplyr chain of single table
+#' verbs, such as [dplyr::arrange()], [dplyr::filter()], or [dplyr::mutate()].
+#'
+#' This behavior can be overriden in the S3 method by setting `rowname = NULL`
+#' instead, which is the current default in the tibble package. The S4 coercion
+#' method doesn't support arguments, and therefore always attempts to move
+#' rownames automatically, if defined.
 #'
 #' Conversely, when coercing a `tibble` back to an S4 `DataFrame`, our
-#' `as(tbl_df, Class = "DataFrame")` method looks for the "rowname" column and
+#' `as(tbl_df, Class = "DataFrame")` method looks for the `rowname` column and
 #' will attempt to move it back to [rownames()] automatically, unless there are
 #' duplicates present.
 #'

@@ -35,14 +35,25 @@ Methods for Coercing an Object to a Class
 \section{tibble}{
 
 
-Coerce an object to a \code{tibble} (\code{tbl_df}) using \code{as(object, Class = "tbl_df")}. Tibbles don't support rowname assignment, so here we are ensuring
-they are kept by moving them to a column named \code{rowname} upon coercion. This
-helps avoid downstream unexpected data loss when using the dplyr chain of
-single table verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or
-\code{\link[dplyr:mutate]{dplyr::mutate()}}.
+Coerce an object to a \code{tibble} (\code{tbl_df}) data frame using either S3 or S4
+methods:
+\itemize{
+\item S3: \code{as_tibble(x)} (or \code{as.tibble()} alias).
+\item S4: \code{as(object, Class = "tbl_df")}.
+}
+
+Tibbles don't support row name assignment, so here we are ensuring they are
+kept by moving them to a column named \code{rowname} by default. This helps avoid
+downstream unexpected data loss when using the dplyr chain of single table
+verbs, such as \code{\link[dplyr:arrange]{dplyr::arrange()}}, \code{\link[dplyr:filter]{dplyr::filter()}}, or \code{\link[dplyr:mutate]{dplyr::mutate()}}.
+
+This behavior can be overriden in the S3 method by setting \code{rowname = NULL}
+instead, which is the current default in the tibble package. The S4 coercion
+method doesn't support arguments, and therefore always attempts to move
+rownames automatically, if defined.
 
 Conversely, when coercing a \code{tibble} back to an S4 \code{DataFrame}, our
-\code{as(tbl_df, Class = "DataFrame")} method looks for the "rowname" column and
+\code{as(tbl_df, Class = "DataFrame")} method looks for the \code{rowname} column and
 will attempt to move it back to \code{\link[=rownames]{rownames()}} automatically, unless there are
 duplicates present.
 }
