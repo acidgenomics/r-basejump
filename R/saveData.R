@@ -11,8 +11,8 @@
 #' @inheritParams loadData
 #' @inheritParams base::save
 #' @param overwrite `boolean`. Overwrite existing file.
-#' @param ext `string`. R data ("`rda`", "`RData`") or R data serialized (RDS;
-#'   "`rds`"). RDS is preferred when saving single objects per file, which is
+#' @param ext `string`. R data serialized (RDS; "`rds`") or R data ("`rda`",
+#'   "`RData`"). RDS is preferred when saving single objects per file, which is
 #'   always the convention of [saveData()], regardless of the extension used.
 #'
 #' @note
@@ -37,7 +37,7 @@
 saveData <- function(
     ...,
     dir = getOption("basejump.save.dir", "."),
-    ext = getOption("basejump.save.ext", "rda"),
+    ext = getOption("basejump.save.ext", "rds"),
     overwrite = getOption("basejump.save.overwrite", TRUE),
     compress = getOption("basejump.save.compress", TRUE)
 ) {
@@ -58,7 +58,7 @@ saveData <- function(
         skip <- files[file.exists(files)]
         warning(paste("Skipping", toString(basename(skip))), call. = FALSE)
         files <- files[!file.exists(files)]
-        if (!length(files)) {
+        if (!has_length(files)) {
             warning("No files were saved.")
             return(invisible())
         }
