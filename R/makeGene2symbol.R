@@ -18,16 +18,18 @@
 #'
 #' @examples
 #' # makeGene2symbolFromEnsembl ====
-#' x <- makeGene2symbolFromEnsembl("Homo sapiens")
+#' x <- makeGene2symbolFromEnsembl(organism = "Homo sapiens")
 #' print(x)
 #'
 #' # makeGene2symbolFromGFF ====
 #' # GTF
-#' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gtf")
+#' file <- file.path(basejumpCacheURL, "example.gtf")
+#' x <- makeGene2symbolFromGFF(file)
 #' print(x)
 #'
 #' # GFF3
-#' x <- makeGene2symbolFromGFF("http://basejump.seq.cloud/example.gff3")
+#' file <- file.path(basejumpCacheURL, "example.gff3")
+#' x <- makeGene2symbolFromGFF(file)
 #' print(x)
 NULL
 

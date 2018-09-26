@@ -3,7 +3,8 @@ globalVariables(".")
 version <- packageVersion("basejump")
 versionDir <- paste0("v", version$major, ".", version$minor)
 
-# FIXME Migrate S3 to a bucket that supports https.
+# TODO Migrate S3 to a bucket that supports https.
+
 #' Cache URL
 #' @keywords internal
 #' @export

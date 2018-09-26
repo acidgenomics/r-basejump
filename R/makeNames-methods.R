@@ -8,7 +8,6 @@
 #' they will set [names()], [rownames()], and/or [colnames()] without
 #' modification of the values.
 #'
-#' @note
 #' [makeNames()] sanitizes names using underscores instead of dots, the
 #' convention used by [base::make.names()].
 #'
@@ -45,7 +44,7 @@
 #' - [snakecase](https://tazinho.github.io/snakecase).
 #'
 #' @examples
-#' loadRemoteData("http://basejump.seq.cloud/mn.rda")
+#' loadRemoteData(url = file.path(basejumpCacheURL, "mn.rda"))
 #'
 #' # character ====
 #' x <- mn$character

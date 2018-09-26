@@ -23,7 +23,8 @@ can be used in an R Markdown report, separated by headers. Internally, the
 headers are generated with the \code{\link[=markdownHeader]{markdownHeader()}} function.
 }
 \examples{
-loadRemoteData("http://basejump.seq.cloud/plotlist.rda")
+url <- file.path(basejumpCacheURL, "plotlist.rda")
+loadRemoteData(url)
 names(plotlist)
 markdownPlotlist(plotlist)
 }

@@ -123,7 +123,7 @@ x <- makeGRangesFromEnsembl("Homo sapiens", level = "transcripts")
 summary(x)
 
 # makeGRangesFromGFF ====
-file <- "http://basejump.seq.cloud/example.gtf"
+file <- file.path(basejumpCacheURL, "example.gtf")
 
 # Genes
 x <- makeGRangesFromGFF(file = file, level = "genes")

@@ -17,16 +17,18 @@
 #'
 #' @examples
 #' # makeTx2geneFromEnsembl ====
-#' x <- makeTx2geneFromEnsembl("Homo sapiens")
+#' x <- makeTx2geneFromEnsembl(organism = "Homo sapiens")
 #' print(x)
 #'
 #' # makeTx2geneFromGFF ====
 #' # GTF
-#' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gtf")
+#' file <- file.path(basejumpCacheURL, "example.gtf")
+#' x <- makeTx2geneFromGFF(file)
 #' print(x)
 #'
 #' # GFF3
-#' x <- makeTx2geneFromGFF("http://basejump.seq.cloud/example.gff3")
+#' file <- file.path(basejumpCacheURL, "example.gff3")
+#' x <- makeTx2geneFromGFF(file)
 #' print(x)
 NULL
 
