@@ -67,7 +67,7 @@
 #' @importFrom RCurl getURL
 #' @importFrom readr cols read_lines read_tsv write_csv write_lines
 #' @importFrom reshape2 melt
-#' @importFrom rlang !! !!! := dots_list eval_bare sym syms UQ
+#' @importFrom rlang !! !!! := dots_list eval_bare has_length sym syms UQ
 #' @importFrom rtracklayer import
 #' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
 #'   head mcols mcols<- metadata metadata<- na.omit setdiff tail
