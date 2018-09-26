@@ -37,7 +37,7 @@
 #' - [methods::as()].
 #' - [methods::canCoerce()].
 #' - [methods::showMethods()].
-#' - [methods::methods()].
+#' - [utils::methods()].
 #' - [tibble::as_tibble()].
 #' - [as.list()].
 #'

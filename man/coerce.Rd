@@ -79,7 +79,7 @@ names(x)
 \item \code{\link[methods:as]{methods::as()}}.
 \item \code{\link[methods:canCoerce]{methods::canCoerce()}}.
 \item \code{\link[methods:showMethods]{methods::showMethods()}}.
-\item \code{\link[methods:methods]{methods::methods()}}.
+\item \code{\link[utils:methods]{utils::methods()}}.
 \item \code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 \item \code{\link[=as.list]{as.list()}}.
 }
