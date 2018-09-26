@@ -65,7 +65,7 @@ snake(object, ...)
 
 upperCamel(object, ...)
 
-makeNames(names, unique = FALSE)
+makeNames(names, unique = TRUE)
 
 \S4method{camel}{atomic}(object, strict = FALSE)
 

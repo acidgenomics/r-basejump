@@ -1,3 +1,7 @@
+# FIXME Add `makeDimnames()`.
+
+
+
 #' Make Syntactically Valid Names
 #'
 #' For `atomic` vectors, these functions will sanitize the values. Otherwise,
@@ -110,7 +114,7 @@ NULL
 #' @rdname makeNames
 #' @inheritParams base::make.names
 #' @export
-makeNames <- function(names, unique = FALSE) {
+makeNames <- function(names, unique = TRUE) {
     assert_is_atomic(names)
     assert_is_a_bool(unique)
     names <- as.character(names)
