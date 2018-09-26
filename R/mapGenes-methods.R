@@ -86,7 +86,7 @@ NULL
         fun <- warning
     }
     unmapped <- which(is.na(match))
-    if (length(unmapped) > 0L) {
+    if (has_length(unmapped)) {
         fun(paste(
             "Some genes failed to map:", toString(genes[unmapped])
         ), call. = FALSE)

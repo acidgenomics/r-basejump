@@ -134,7 +134,7 @@ makeGRangesFromEnsembl <- function(
             expr = convertUCSCBuildToEnsembl(build),
             error = function(e) NULL
         )
-        if (length(ucscCheck)) {
+        if (has_length(ucscCheck)) {
             stop(paste(
                 "UCSC build ID detected.",
                 "Use Ensembl ID instead.\n",
@@ -512,7 +512,7 @@ makeGRangesFromGFF <- function(
             x = colnames(mcols(gn)),
             y = colnames(mcols(gr))
         )
-        if (length(geneCols)) {
+        if (has_length(geneCols)) {
             geneCols <- c("geneID", geneCols)
             merge <- merge(
                 x = mcols(gr),

@@ -43,7 +43,7 @@ NULL
             ignore.case = TRUE,
             value = TRUE
         )
-        if (length(biotypeCol)) {
+        if (has_length(biotypeCol)) {
             biotypeCol <- biotypeCol[[1L]]
             biotype <- data[[biotypeCol]]
         } else {
@@ -60,7 +60,7 @@ NULL
             ignore.case = TRUE,
             value = TRUE
         )
-        if (length(seqnameCol)) {
+        if (has_length(seqnameCol)) {
             seqnameCol <- seqnameCol[[1L]]
             seqname <- data[[seqnameCol]]
         } else {

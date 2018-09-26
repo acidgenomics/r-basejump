@@ -91,7 +91,7 @@ NULL
         assertIsTx2gene(tx2gene)
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
-        if (length(missing)) {
+        if (has_length(missing)) {
             stop(paste("Failed to match transcripts:", toString(missing)))
         }
 

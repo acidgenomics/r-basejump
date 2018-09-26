@@ -148,7 +148,7 @@ import <- function(file, ...) {
     } else if (ext %in% c("rda", "rdata")) {
         safe <- new.env()
         object <- load(file, envir = safe)
-        if (length(safe) != 1L) {
+        if (!has_length(safe, n = 1L)) {
             stop("File does not contain a single object")
         }
         data <- get(object, envir = safe, inherits = FALSE)

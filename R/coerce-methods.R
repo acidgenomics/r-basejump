@@ -196,7 +196,7 @@ setAs(
         to <- as(to, "DataFrame")
         rownames <- as.character(to[["rowname"]])
         if (
-            length(rownames) &&
+            has_length(rownames) &&
             !any(duplicated(rownames))
         ) {
             rownames(to) <- rownames

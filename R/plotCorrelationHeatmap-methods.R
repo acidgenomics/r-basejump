@@ -68,7 +68,7 @@ NULL
             object = object,
             interestingGroups = interestingGroups
         )
-        if (length(interestingGroups)) {
+        if (has_length(interestingGroups)) {
             interestingGroups(object) <- interestingGroups
         }
         method <- match.arg(method)
@@ -113,10 +113,10 @@ NULL
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (length(sampleNames)) {
+        if (has_length(sampleNames)) {
             colnames(mat) <- sampleNames
             if (
-                length(annotationCol) &&
+                has_length(annotationCol) &&
                 !is.na(annotationCol)
             ) {
                 rownames(annotationCol) <- sampleNames

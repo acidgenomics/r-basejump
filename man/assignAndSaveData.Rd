@@ -6,7 +6,7 @@
 \usage{
 assignAndSaveData(name, object, envir = parent.frame(),
   dir = getOption("basejump.save.dir", "."),
-  ext = getOption("basejump.save.ext", "rda"),
+  ext = getOption("basejump.save.ext", "rds"),
   overwrite = getOption("basejump.save.overwrite", TRUE),
   compress = getOption("basejump.save.compress", TRUE))
 }
@@ -21,8 +21,8 @@ assignAndSaveData(name, object, envir = parent.frame(),
 \item{dir}{\code{string}. Output directory. Defaults to the current working
 directory.}
 
-\item{ext}{\code{string}. R data ("\code{rda}", "\code{RData}") or R data serialized (RDS;
-"\code{rds}"). RDS is preferred when saving single objects per file, which is
+\item{ext}{\code{string}. R data serialized (RDS; "\code{rds}") or R data ("\code{rda}",
+"\code{RData}"). RDS is preferred when saving single objects per file, which is
 always the convention of \code{\link[=saveData]{saveData()}}, regardless of the extension used.}
 
 \item{overwrite}{\code{boolean}. Overwrite existing file.}

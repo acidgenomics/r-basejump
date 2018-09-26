@@ -891,7 +891,7 @@ assertAllAreURL <- function(object) {
 #'     "r-project.org"
 #' ))
 isURL <- function(object) {
-    if (!is.character(object) || length(object) == 0L) {
+    if (!is.character(object) || !has_length(object)) {
         return(FALSE)
     }
     vapply(

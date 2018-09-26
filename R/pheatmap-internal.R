@@ -23,7 +23,7 @@
     # pheatmap requires `NA` if empty.
     if (
         !has_dims(data) ||
-        !length(interestingGroups) ||
+        !has_length(interestingGroups) ||
         identical(interestingGroups, "sampleName")
     ) {
         return(.emptyPheatmapAnnotations)
@@ -57,7 +57,7 @@
     )
 
     # Return empty if there are no useful factor columns.
-    if (!length(hasLevels)) {
+    if (!has_length(hasLevels)) {
         return(.emptyPheatmapAnnotations)  # nocov
     }
 
@@ -98,7 +98,7 @@
     assert_has_names(args)
     # Abort on snake case formatted formalArgs
     invalidNames <- grep("[._]", names(args), value = TRUE)
-    if (length(invalidNames)) {
+    if (has_length(invalidNames)) {
         stop(paste(
             "Define formalArgs in camel case:",
             toString(invalidNames)
