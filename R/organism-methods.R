@@ -48,22 +48,10 @@ NULL
 
 
 
-# Prepare the organism grep match matrix.
-.organismTable <- basejump::organism_mappings %>%
-    mutate(
-        !!sym("organismGrep") := gsub(
-            pattern = "^([[:upper:]])([[:lower:]]+)[[:space:]]([[:lower:]]+)$",
-            replacement = "\\1(\\2)?([._[:space:]]+)?\\3",
-            x = !!sym("organism")
-        )
-    )
-
-
-
 .organism.string <-  # nolint
     function(object) {
         assert_is_a_string(object)
-        ref <- .organismTable
+        ref <- basejump::organism_mappings
         # Generate a logical matrix of grep matches.
         hits <- apply(
             X = ref,
