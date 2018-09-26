@@ -47,8 +47,10 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{sampleData}},
-  \code{\link{sampleNames}}, \code{\link{selectSamples}},
+  \code{\link{metricsPerSample}},
+  \code{\link{minimalSampleData}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}},
   \code{\link{subsetPerSample}}, \code{\link{tpm}},
   \code{\link{tx2gene}}
 }

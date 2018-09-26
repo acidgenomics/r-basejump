@@ -41,15 +41,15 @@ Supports organism detection from Ensembl identifier or genome build.
 \section{Supported organisms}{
 
 \itemize{
-\item \emph{Homo sapiens} (human)
-\item \emph{Mus musculus} (mouse)
-\item \emph{Rattus norvegicus} (rat)
+\item \emph{Caenorhabditis elegans} (roundworm)
 \item \emph{Danio rerio} (zebrafish)
 \item \emph{Drosophila melanogaster} (fruitfly)
-\item \emph{Caenorhabditis elegans} (roundworm)
-\item \emph{Saccharomyces cerevisiae} (yeast)
 \item \emph{Gallus gallus} (chicken)
+\item \emph{Homo sapiens} (human)
+\item \emph{Mus musculus} (mouse)
 \item \emph{Ovis aries} (sheep)
+\item \emph{Rattus norvegicus} (rat)
+\item \emph{Saccharomyces cerevisiae} (yeast)
 }
 }
 

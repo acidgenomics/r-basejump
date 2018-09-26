@@ -47,20 +47,17 @@ test_that("dots", {
 
 # matchInterestingGroups =======================================================
 test_that("matchInterestingGroups", {
+    object <- rse_small
     expect_identical(
-        object = matchInterestingGroups(rse_small),
-        expected = c("genotype", "treatment")
-    )
-    expect_identical(
-        object = matchInterestingGroups(rse_small, interestingGroups = NULL),
-        expected = c("genotype", "treatment")
+        object = matchInterestingGroups(object),
+        expected = interestingGroups(object)
     )
     expect_identical(
         object = matchInterestingGroups(
             object = rse_small,
-            interestingGroups = "sampleName"
+            interestingGroups = interestingGroups(object)[[1L]]
         ),
-        expected = "sampleName"
+        expected = interestingGroups(object)[[1L]]
     )
 })
 

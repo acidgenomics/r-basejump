@@ -71,7 +71,7 @@ formals(makeTx2geneFromEnsembl) <- f
 #' @export
 makeTx2geneFromGFF <- function(file) {
     message("Making tx2gene from GFF")
-    gff <- readGFF(file)
+    gff <- import(file)
     assert_is_all_of(gff, "GRanges")
 
     # Get information on the type of GFF file.

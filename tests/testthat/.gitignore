@@ -18,3 +18,4 @@ _*.R
 *.yaml
 *.yml
 */
+.httr-oauth

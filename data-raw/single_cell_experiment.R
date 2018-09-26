@@ -1,11 +1,11 @@
 # SingleCellExperiment Example Data
-# 2018-09-25
+# 2018-09-26
 
 library(splatter)
 library(tidyverse)
 
-organism <- "Homo sapiens"
-release <- 92L
+# Restrict to 1 MB per file.
+mb <- structure(1e6, class = "object_size")
 
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
@@ -48,11 +48,27 @@ counts <- as(counts, "sparseMatrix")
 assays(sce) <- list(counts = counts)
 
 # Prepare row data.
-gr <- makeGRangesFromEnsembl(organism = organism, release = release)
-rowRanges(sce) <- gr[seq_len(nrow(sce))]
+gr <- makeGRangesFromEnsembl(organism = "Homo sapiens")
+gr <- gr[seq_len(nrow(sce))]
+# Include only minimal columns.
+mcols(gr) <- mcols(gr) %>%
+    as("tbl_df") %>%
+    select(rowname, broadClass, geneBiotype, geneID, geneName) %>%
+    mutate_if(is.factor, droplevels) %>%
+    as("DataFrame")
+rowRanges(sce) <- gr
 
 # Stash minimal metadata.
 metadata(sce) <- list(date = Sys.Date())
+
+# Report the size of each slot in bytes.
+vapply(
+    X = coerceS4ToList(sce),
+    FUN = object.size,
+    FUN.VALUE = numeric(1L)
+)
+stopifnot(object.size(sce) < mb)
+stopifnot(validObject(sce))
 
 sce_small <- sce
 devtools::use_data(sce_small, compress = "xz", overwrite = TRUE)

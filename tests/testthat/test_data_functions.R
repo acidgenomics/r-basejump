@@ -67,10 +67,11 @@ test_that("interestingGroups : SummarizedExperiment", {
 
 test_that("interestingGroups : Assignment method", {
     object <- rse_small
-    interestingGroups(object) <- "sampleName"
+    intgroup <- interestingGroups(object)[[1L]]
+    interestingGroups(object) <- intgroup
     expect_identical(
         object = interestingGroups(object),
-        expected = "sampleName"
+        expected = intgroup
     )
     expect_error(
         object = interestingGroups(object) <- "XXX",
@@ -263,30 +264,40 @@ test_that("makeSummarizedExperiment : Invalid metadata", {
 
 
 
+# minimalSampleData ============================================================
+test_that("minimalSampleData", {
+    expect_identical(
+        object = minimalSampleData(c("sample 1", "sample 2")),
+        expected = DataFrame(
+            sampleName = factor(c("sample 1", "sample 2")),
+            row.names = factor(c("sample_1", "sample_2"))
+        )
+    )
+})
+
+
+
 # sampleData ===================================================================
 test_that("sampleData : SummarizedExperiment", {
     object <- rse_small
-    # Sample data should be identical to colData, but contain an extra
-    # interestingGroups column.
+    # Check that `sampleName` and `interestingGroups` auto-populate.
     expect_identical(
         object = setdiff(
             x = colnames(sampleData(object)),
             y = colnames(colData(object))
         ),
-        expected = "interestingGroups"
+        expected = c("sampleName", "interestingGroups")
     )
     expect_identical(
         object = sampleData(object)[, colnames(colData(object))],
         expected = colData(object)
     )
 
-    # Requiring `sampleName` column to be defined.
+    # Empty `colData()` is supported. Changed in v0.99.
     object <- rse_small
     colData(object) <- DataFrame(row.names = colnames(object))
-    expect_error(
-        object = sampleData(object),
-        regexp = "sampleName"
-    )
+    interestingGroups(object) <- NULL
+    expect_silent(sampleData(object))
 })
 
 test_that("sampleData<- : SummarizedExperiment", {
@@ -300,31 +311,27 @@ test_that("sampleData<- : SummarizedExperiment", {
 # sampleNames ==================================================================
 test_that("sampleNames", {
     object <- sampleNames(rse_small)
-    expected <- as.character(colData(rse_small)[["sampleName"]])
+    expected <- as.character(sampleData(rse_small)[["sampleName"]])
     names(expected) <- colnames(rse_small)
     expect_identical(object, expected)
-
-    # Require `sampleName` column to be defined.
-    object <- rse_small
-    colData(object) <- DataFrame(row.names = colnames(object))
-    expect_error(
-        object = sampleNames(object),
-        regexp = "sampleName"
-    )
 })
 
 
 
 # selectSamples ================================================================
-test_that("selectSamples : SummarizedExperiment", {
-    object <- selectSamples(rse_small, genotype = "wildtype")
+test_that("selectSamples : SingleCellExperiment", {
+    object <- selectSamples(sce_small, sampleID = "sample1")
     expect_identical(
-        object = dim(object),
-        expected = c(100L, 2L)
+        object = sampleNames(object),
+        expected = c(sample1 = "sample1")
     )
     expect_identical(
-        object = colnames(object),
-        expected = c("sample1", "sample3")
+        object = rownames(sampleData(object)),
+        expected = "sample1"
+    )
+    expect_identical(
+        object = ncol(object),
+        expected = 100L
     )
 })
 
