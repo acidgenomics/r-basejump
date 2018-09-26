@@ -14,12 +14,13 @@
 #'   remote URL as the value.
 #'
 #' @examples
-#' loadRemoteData(c(
-#'     "http://basejump.seq.cloud/rnaseq_counts.rds",
-#'     "http://basejump.seq.cloud/single_cell_counts.rds"
-#' ))
-#' class(rnaseq_counts)
-#' class(single_cell_counts)
+#' url <- file.path(
+#'     basejumpCacheURL,
+#'     paste0(c("rnaseq_counts", "single_cell_counts"), ".rds")
+#' )
+#' print(url)
+#' x <- loadRemoteData(url)
+#' print(x)
 loadRemoteData <- function(url, envir = parent.frame()) {
     stopifnot(has_internet())
     assertAllAreURL(url)

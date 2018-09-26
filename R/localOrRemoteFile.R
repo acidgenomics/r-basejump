@@ -15,22 +15,24 @@
 #' @seealso [base::tempdir()].
 #'
 #' @examples
-#' # Single file
-#' x <- localOrRemoteFile("http://basejump.seq.cloud/rnaseq_counts.csv.gz")
+#' # Import a single file.
+#' file <- file.path(basejumpCacheURL, "rnaseq_counts.csv.gz")
+#' x <- localOrRemoteFile(file)
 #' basename(x)
 #'
-#' # Vectorized
-#' x <- localOrRemoteFile(c(
-#'     "http://basejump.seq.cloud/rnaseq_counts.csv.gz",
-#'     "http://basejump.seq.cloud/single_cell_counts.mtx.gz"
-#' ))
+#' # Import multiple files (vectorized).
+#' files <- file.path(
+#'     basejumpCacheURL,
+#'     c("rnaseq_counts.csv.gz", "single_cell_counts.mtx.gz")
+#' )
+#' x <- localOrRemoteFile(files)
 #' basename(x)
 localOrRemoteFile <- function(file) {
     assert_is_character(file)
     local <- mapply(
         file = file,
         FUN = function(file) {
-            # Remote file mode
+            # Remote file mode.
             if (isURL(file)) {
                 stopifnot(has_internet())
                 assert_all_are_matching_regex(file, extPattern)
@@ -39,7 +41,7 @@ localOrRemoteFile <- function(file) {
                     na.omit() %>%
                     paste(collapse = "")
                 assert_is_non_empty(ext)
-                # Fix for binary files (typically on Windows)
+                # Fix for binary files (typically on Windows).
                 # https://github.com/tidyverse/readxl/issues/374
                 binary <- c(
                     "bz2",
@@ -52,10 +54,10 @@ localOrRemoteFile <- function(file) {
                     "zip"
                 )
                 if (ext %in% binary) {
-                    # Write binary
+                    # Write binary.
                     mode <- "wb"
                 } else {
-                    # Write (default)
+                    # Write (default).
                     mode <- "w"
                 }
                 destfile <- file.path(tempdir(), basename(file))
