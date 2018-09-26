@@ -55,7 +55,7 @@ metadata(rse)[["date"]] <- Sys.Date()
 interestingGroups(rse) <- c("genotype", "treatment")
 # Report the size of each slot in bytes.
 vapply(
-    X = flatFiles(rse),
+    X = coerceS4ToList(rse),
     FUN = object.size,
     FUN.VALUE = numeric(1L)
 )
@@ -92,7 +92,7 @@ se <- SummarizedExperiment(
 )
 # Report the size of each slot in bytes.
 vapply(
-    X = flatFiles(se),
+    X = coerceS4ToList(se),
     FUN = object.size,
     FUN.VALUE = numeric(1L)
 )
