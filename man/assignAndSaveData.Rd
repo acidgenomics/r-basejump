@@ -45,13 +45,13 @@ the newly assigned object, specified by the "\code{dir}" argument.
 This function attempts to follow the same order as \code{\link[base:assign]{base::assign()}}.
 }
 \examples{
-assignAndSaveData(name = "example", object = rse_small)
+assignAndSaveData(name = "example", object = rse_small, ext = "rds")
 exists("example", inherits = FALSE)
-file.exists("example.rda")
+file.exists("example.rds")
 
 # Clean up
 rm(example)
-unlink("example.rda")
+unlink("example.rds")
 }
 \seealso{
 Other Write Functions: \code{\link{saveData}},
