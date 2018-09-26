@@ -68,7 +68,10 @@ rename.DataFrame <- function(.data, ...) {
 #' @method select DataFrame
 #' @export
 select.DataFrame <- function(.data, ...) {
+    rownames <- rownames(.data)
     data <- as(.data, "tbl_df")
     data <- select(data, ...)
-    as(data, "DataFrame")
+    data <- as(data, "DataFrame")
+    rownames(data) <- rownames
+    data
 }
