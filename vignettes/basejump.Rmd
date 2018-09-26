@@ -360,7 +360,8 @@ showMethods("camel")
 To see how these functions work, let's load up an example `list` named `mn` (short for `makeNames`).
 
 ```{r}
-loadRemoteData("http://basejump.seq.cloud/mn.rda")
+url <- file.path(basejumpCacheURL, "mn.rda")
+loadRemoteData(url)
 ```
 
 ## Atomic vectors
