@@ -1,5 +1,10 @@
 globalVariables(".")
 
+version <- packageVersion("basejump")
+versionDir <- paste0("v", version$major, ".", version$minor)
+# FIXME Migrate S3 to a bucket that supports https.
+cacheURL <- paste0("http://basejump.seq.cloud/", versionDir)
+
 # Trailing number is to match cellranger output.
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
 
