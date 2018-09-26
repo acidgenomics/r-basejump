@@ -11,6 +11,20 @@
 
 
 
+#' Organism Mappings
+#'
+#' Strings to match gene/transcript identifiers, Ensembl genome build,
+#' and UCSC genome build.
+#'
+#' @author Michael Steinbaugh
+#' @keywords internal
+#'
+#' @examples
+#' print(organism_mappings)
+"organism_mappings"
+
+
+
 #' Example RNA-Seq Data Set
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene

@@ -4,15 +4,15 @@
 #'
 #' @section Supported organisms:
 #'
-#' - *Homo sapiens* (human)
-#' - *Mus musculus* (mouse)
-#' - *Rattus norvegicus* (rat)
+#' - *Caenorhabditis elegans* (roundworm)
 #' - *Danio rerio* (zebrafish)
 #' - *Drosophila melanogaster* (fruitfly)
-#' - *Caenorhabditis elegans* (roundworm)
-#' - *Saccharomyces cerevisiae* (yeast)
 #' - *Gallus gallus* (chicken)
+#' - *Homo sapiens* (human)
+#' - *Mus musculus* (mouse)
 #' - *Ovis aries* (sheep)
+#' - *Rattus norvegicus* (rat)
+#' - *Saccharomyces cerevisiae* (yeast)
 #'
 #' @name organism
 #' @family Annotation Functions
@@ -48,115 +48,42 @@ NULL
 
 
 
+# Prepare the organism grep match matrix.
+.organismTable <- basejump::organism_mappings %>%
+    mutate(
+        !!sym("organismGrep") := gsub(
+            pattern = "^([[:upper:]])([[:lower:]]+)[[:space:]]([[:lower:]]+)$",
+            replacement = "\\1(\\2)?([._[:space:]]+)?\\3",
+            x = !!sym("organism")
+        )
+    )
+
+
+
 .organism.string <-  # nolint
     function(object) {
         assert_is_a_string(object)
-
-        # Homo sapiens
-        grep <- c(
-            "^H(omo)?([._[:space:]]+)?sapiens$",
-            # Ensembl
-            "^ENS(G|T)(\\d{11})$",
-            "^GRCh(\\d{2})(\\.p\\d+)?$",
-            # UCSC
-            "^hg(\\d{2})$"
+        ref <- .organismTable
+        # Generate a logical matrix of grep matches.
+        hits <- apply(
+            X = ref,
+            MARGIN = 1L,
+            FUN = function(row) {
+                any(vapply(
+                    X = row,
+                    FUN = function(pattern) {
+                        grepl(pattern, object, ignore.case = TRUE)
+                    },
+                    FUN.VALUE = integer(1L)
+                ))
+            }
         )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Homo sapiens")
-        }
-
-        # Mus musculus
-        grep <- c(
-            "^M(us)?([._[:space:]]+)?musculus$",
-            # Ensembl
-            "^ENSMUS(G|T)(\\d{11})$",
-            "^GRCm(\\d{2})(\\.p\\d+)?$",
-            # UCSC
-            "^mm(\\d{2})$"
+        # Return organism name if there's a match, otherwise NA.
+        ifelse(
+            test = any(hits),
+            yes = ref[hits, 1L, drop = TRUE],
+            no = NA_character_
         )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Mus musculus")
-        }
-
-        # Rattus norvegicus
-        grep <- c(
-            "^R(attus)?([._[:space:]]+)?norvegicus$",
-            # Ensembl
-            "^ENSRNO(G|T)(\\d{11})$",
-            "Rnor_([0-9\\.]+)",
-            # UCSC
-            "^rn(\\d+)$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Rattus norvegicus")
-        }
-
-        # Danio rerio
-        grep <- c(
-            "^D(anio)?([._[:space:]]+)?rerio$",
-            # Ensembl
-            "^ENSDAR(G|T)(\\d{11})$",
-            "GRCz(\\d+)",
-            # UCSC
-            "^danRer(\\d+)$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Danio rerio")
-        }
-
-        # Drosophila melanogaster
-        grep <- c(
-            "^D(rosophila)?([._[:space:]]+)?melanogaster$",
-            # Ensembl
-            "^FB(gn|tr)(\\d{7})$",
-            "^BDGP(\\d+)$",
-            # UCSC
-            "^dm(\\d+)$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Drosophila melanogaster")
-        }
-
-        # Caenorhabditis elegans
-        grep <- c(
-            "^C(aenorhabditis)?([._[:space:]]+)?elegans$",
-            # Ensembl
-            "^WBGene(\\d{8})$",
-            "^WBcel(\\d{3})$",
-            # UCSC
-            "^ce(\\d{2})$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Caenorhabditis elegans")
-        }
-
-        # Gallus gallus
-        grep <- c(
-            "G(allus)?([._[:space:]]+)?gallus$",
-            # Ensembl
-            "^ENSGAL(G|T)(\\d{11})$",
-            "^Gallus_gallus-([0-9\\.]+)$",
-            # UCSC
-            "^galGal(\\d+)$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Gallus gallus")
-        }
-
-        # Ovis aries
-        grep <- c(
-            "^O(vis)?([._[:space:]]+)?aries$",
-            # Ensembl
-            "^ENSOAR(G|T)\\d{11}$",
-            "^Oar_v([0-9\\.]+)$",
-            # UCSC
-            "^oviAri(\\d+)$"
-        )
-        if (grepl(paste(grep, collapse = "|"), object, ignore.case = TRUE)) {
-            return("Ovis aries")
-        }
-
-        NA_character_
     }
 
 

@@ -14,6 +14,7 @@ g2s <- new(
 # assertAllAreNonExisting ======================================================
 test_that("assertAllAreNonExisting", {
     expect_silent(assertAllAreNonExisting(c("a", "b", "c")))
+    # Error on existing values in environment.
     a <- 1L
     b <- 2L
     expect_error(assertAllAreNonExisting(c("a", "b", "c")))

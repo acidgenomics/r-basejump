@@ -46,9 +46,9 @@ NULL
 
 
 
+# Don't run validity checks here.
 .sampleData.SE <-  # nolint
     function(object) {
-        validObject(object)
         data <- colData(object)
         assertHasRownames(data)
 
@@ -83,6 +83,7 @@ NULL
 
 
 
+# Don't run validity checks here.
 .sampleData.SCE <-  # nolint
     function(
         object,
@@ -95,7 +96,6 @@ NULL
             "^phase$"
         )
     ) {
-        validObject(object)
         assert_is_character(blacklist)
 
         data <- colData(object)

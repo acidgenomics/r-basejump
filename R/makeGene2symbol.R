@@ -96,7 +96,7 @@ formals(makeGene2symbolFromEnsembl) <- f
 #' @export
 makeGene2symbolFromGFF <- function(file) {
     message("Making gene2symbol from GFF")
-    gff <- readGFF(file)
+    gff <- import(file)
 
     source <- .gffSource(gff)
     type <- .gffType(gff)

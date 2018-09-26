@@ -1,7 +1,7 @@
 #' Load Data
 #'
 #' Load R data files from a directory using symbols rather than complete file
-#' paths. Supports "`.RData`", "`.rda`", and "`.rds`" file extensions.
+#' paths. Supports "`.rds`", "`.rda`", and "`.RData`" file extensions.
 #'
 #' [loadData()] is opinionated about the format of R data files it will accept.
 #' [base::save()] allows for the saving of multiple objects into a single R data

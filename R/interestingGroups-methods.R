@@ -52,3 +52,23 @@ setMethod(
         object
     }
 )
+
+
+
+# Started allowing `NULL` assignment in v0.99.
+#' @rdname interestingGroups
+#' @export
+setMethod(
+    f = "interestingGroups<-",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "NULL"
+    ),
+    definition = getMethod(
+        f = "interestingGroups<-",
+        signature(
+            object = "SummarizedExperiment",
+            value = "character"
+        )
+    )
+)
