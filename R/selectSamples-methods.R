@@ -1,5 +1,4 @@
-# FIXME Need to add on support for `filterCells` in bcbioSingleCell.
-# `prefilter = TRUE` argument
+# FIXME Improve the "..." documentation here.
 
 
 
@@ -20,6 +19,8 @@
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #' @export
+#'
+#' @inheritParams general
 #'
 #' @return `SingleCellExperiment`.
 #'
