@@ -19,6 +19,6 @@ detectLanes <- function(
     if (any(grepl(pattern, object))) {
         as.integer(str_match(object, pattern)[, 2L])
     } else {
-        NULL
+        integer()
     }
 }
