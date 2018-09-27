@@ -61,13 +61,12 @@ saveRdExamples <- function(
 
             # Early return if there are no examples.
             if (!has_length(x)) {
-                message(paste("Skipping", Rd))
+                message(paste0("Skipped ", Rd, "."))
                 return(invisible())
             }
 
             # Save to an R script.
             path <- file.path(dir, paste0(Rd, ".R"))
-            message(paste("Saving", Rd))
             unlink(path)
             write_lines(x = x, path = path)
             path
@@ -82,8 +81,8 @@ saveRdExamples <- function(
     paths <- as.character(paths)
     names(paths) <- names
 
-    message(paste(
-        "Saved", length(paths), "Rd examples from", package, "to", dir
+    message(paste0(
+        "Saved ", length(paths), " Rd examples from ", package, " to ", dir, "."
     ))
 
     # Return file paths of saved R scripts.

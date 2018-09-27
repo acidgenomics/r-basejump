@@ -45,12 +45,12 @@ NULL
         if (isTRUE(nonzeroGenes)) {
             keep <- rowSums(counts) > 0L
             counts <- counts[keep, , drop = FALSE]
-            message(paste(nrow(counts), "non-zero genes detected"))
+            message(paste(nrow(counts), "non-zero genes detected."))
         }
 
         # Log transform the matrix, if desired.
         if (trans != "identity") {
-            message(paste0("Applying ", trans, "(x + 1) transformation"))
+            message(paste0("Applying ", trans, "(x + 1) transformation..."))
             fun <- get(
                 x = trans,
                 envir = asNamespace("base"),

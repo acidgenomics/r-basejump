@@ -111,7 +111,7 @@ NULL
         cells <- metrics %>%
             filter(!!sym("sampleID") %in% !!samples) %>%
             pull("cellID")
-        message(paste(length(cells), "cells matched"))
+        message(paste(length(cells), "cells matched."))
 
         object <- object[, cells]
         metadata(object)[["selectSamples"]] <- TRUE

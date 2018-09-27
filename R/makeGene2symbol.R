@@ -97,12 +97,12 @@ formals(makeGene2symbolFromEnsembl) <- f
 #' @rdname makeGene2symbol
 #' @export
 makeGene2symbolFromGFF <- function(file) {
-    message("Making gene2symbol from GFF")
+    message("Making gene2symbol from GFF...")
     gff <- import(file)
 
     source <- .gffSource(gff)
     type <- .gffType(gff)
-    message(paste(source, type, "detected"))
+    message(paste(source, type, "detected."))
 
     # Coerce to tibble.
     data <- camel(as(gff, "tbl_df"))

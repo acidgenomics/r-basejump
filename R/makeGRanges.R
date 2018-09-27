@@ -183,10 +183,10 @@ makeGRangesFromEnsembl <- function(
             ah <- suppressMessages(AnnotationHub())
         ))
 
-        message(paste(
-            "Making GRanges from Ensembl with AnnotationHub",
+        message(paste0(
+            "Making GRanges from Ensembl with AnnotationHub ",
             packageVersion("AnnotationHub"),
-            paste0("(", snapshotDate(ah), ")")
+            " (", snapshotDate(ah), ")..."
         ))
 
         # Use ensembldb annotations by default.
@@ -396,15 +396,15 @@ makeGRangesFromGFF <- function(
 
     source <- .gffSource(gff)
     type <- .gffType(gff)
-    message(paste(source, type, "detected"))
+    message(paste(source, type, "detected."))
 
     # nocov start
     if (
         source %in% c("FlyBase", "WormBase") &&
         type == "GFF"
     ) {
-        stop(paste(
-            "Only GTF files are currently supported from", source
+        stop(paste0(
+            "Only GTF files are currently supported from ", source, "."
         ))
     }
     # nocov end
@@ -452,7 +452,7 @@ makeGRangesFromGFF <- function(
     )
 
     if (level == "genes") {
-        message(paste(length(gn), "gene annotations"))
+        message(paste(length(gn), "gene annotations detected."))
         gr <- gn
     }
 
@@ -504,7 +504,7 @@ makeGRangesFromGFF <- function(
             y = sort(unique(na.omit(mcols(gff)[["transcriptID"]])))
         )
 
-        message(paste(length(tx), "transcript annotations"))
+        message(paste(length(tx), "transcript annotations detected."))
         gr <- tx
 
         # Merge the gene-level annotations (`geneName`, `geneBiotype`).
@@ -543,7 +543,7 @@ makeGRangesFromGFF <- function(
     assert_has_names(object)
 
     # Standardize the metadata columns.
-    message("Standardizing the metadata columns")
+    message("Standardizing the metadata columns...")
     mcols <- mcols(object)
     # Sanitize to camel case
     mcols <- camel(mcols)
@@ -630,7 +630,7 @@ makeGRangesFromGFF <- function(
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
 
     # Ensure GRanges is sorted by names
-    message(paste("Sorting ranges by", idCol))
+    message(paste0("Sorting ranges by ", idCol, "..."))
     object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")

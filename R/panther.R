@@ -64,7 +64,7 @@ NULL
         ungroup() %>%
         arrange(!!sym("geneID"))
     assert_has_no_duplicates(data[["geneID"]])
-    message("Splitting and sorting the GO terms")
+    message("Splitting and sorting the GO terms...")
     mutate_at(
         .tbl = data,
         .vars = c(
@@ -180,10 +180,10 @@ panther <- function(
     }
     assert_is_a_string(release)
 
-    message(paste(
-        "Downloading PANTHER annotations for",
+    message(paste0(
+        "Downloading PANTHER annotations for ",
         organism,
-        paste0("(", release, ")")
+        " (", release, ")..."
     ))
 
     file <- transmit(

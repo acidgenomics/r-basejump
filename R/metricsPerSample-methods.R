@@ -25,7 +25,7 @@ NULL
         f = c("mean", "median", "sum")
     ) {
         f <- match.arg(f)
-        message(paste("Calculating", f, "per sample"))
+        message(paste("Calculating", f, "per sample..."))
         fxn <- get(f)
         assert_is_function(fxn)
         metrics <- metrics(object)

@@ -72,14 +72,14 @@ formals(makeTx2geneFromEnsembl) <- f
 #' @rdname makeTx2gene
 #' @export
 makeTx2geneFromGFF <- function(file) {
-    message("Making tx2gene from GFF")
+    message("Making tx2gene from GFF...")
     gff <- import(file)
     assert_is_all_of(gff, "GRanges")
 
     # Get information on the type of GFF file.
     source <- .gffSource(gff)
     type <- .gffType(gff)
-    message(paste(source, type, "detected"))
+    message(paste(source, type, "detected."))
 
     # Coerce GRanges to tibble.
     data <- camel(as(gff, "tbl_df"))
