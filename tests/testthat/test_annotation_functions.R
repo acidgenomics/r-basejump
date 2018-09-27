@@ -26,7 +26,7 @@ with_parameters_test_that(
     },
     object = list(
         GRanges = makeGRangesFromEnsembl("Homo sapiens"),
-        SummarizedExperiment = rse_small
+        SingleCellExperiment = sce_small
     )
 )
 

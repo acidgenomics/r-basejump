@@ -10,6 +10,11 @@ selectSamples(object, ...)
 
 \S4method{selectSamples}{SingleCellExperiment}(object, ...)
 }
+\arguments{
+\item{object}{Object.}
+
+\item{...}{Additional arguments.}
+}
 \value{
 \code{SingleCellExperiment}.
 }

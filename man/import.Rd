@@ -106,7 +106,7 @@ x <- import(file = file.path(cacheURL, "example.json"))
 names(x)
 
 # YAML
-x <- import(file file.path(cacheURL, "example.yml"))
+x <- import(file = file.path(cacheURL, "example.yml"))
 names(x)
 
 # Counts Table (i.e. aligned counts from bcbio)

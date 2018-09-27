@@ -1,5 +1,10 @@
 # arrange ======================================================================
 #' @importFrom dplyr arrange
+#' @export
+dplyr::arrange
+
+
+
 #' @method arrange DataFrame
 #' @export
 arrange.DataFrame <- function(.data, ...) {
@@ -12,6 +17,11 @@ arrange.DataFrame <- function(.data, ...) {
 
 # filter =======================================================================
 #' @importFrom dplyr filter
+#' @export
+dplyr::filter
+
+
+
 #' @method filter DataFrame
 #' @export
 filter.DataFrame <- function(.data, ...) {
@@ -24,6 +34,11 @@ filter.DataFrame <- function(.data, ...) {
 
 # left_join ====================================================================
 #' @importFrom dplyr left_join
+#' @export
+dplyr::left_join
+
+
+
 #' @method left_join DataFrame
 #' @export
 left_join.DataFrame <- function(x, y, ...) {
@@ -41,6 +56,11 @@ left_join.DataFrame <- function(x, y, ...) {
 
 # mutate =======================================================================
 #' @importFrom dplyr mutate
+#' @export
+dplyr::mutate
+
+
+
 #' @method mutate DataFrame
 #' @export
 mutate.DataFrame <- function(.data, ...) {
@@ -53,6 +73,11 @@ mutate.DataFrame <- function(.data, ...) {
 
 # rename =======================================================================
 #' @importFrom dplyr rename
+#' @export
+dplyr::rename
+
+
+
 #' @method rename DataFrame
 #' @export
 rename.DataFrame <- function(.data, ...) {
@@ -65,6 +90,11 @@ rename.DataFrame <- function(.data, ...) {
 
 # select =======================================================================
 #' @importFrom dplyr select
+#' @export
+dplyr::select
+
+
+
 #' @method select DataFrame
 #' @export
 select.DataFrame <- function(.data, ...) {

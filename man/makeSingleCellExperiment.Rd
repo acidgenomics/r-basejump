@@ -7,11 +7,98 @@
 makeSingleCellExperiment(assays, rowRanges, colData, metadata,
   transgeneNames = NULL, spikeNames = NULL)
 }
+\arguments{
+\item{assays}{\code{list}. RNA-seq count matrices, which must have matching
+dimensions. Counts can be passed in either a dense matrix (\code{matrix}) or
+sparse matrix (\code{sparseMatrix}).}
+
+\item{rowRanges}{\code{GRanges} or \code{NULL}. \emph{Recommended}. Metadata describing the
+assay rows. If defined, must contain genomic ranges. Can be left \code{NULL} if
+the genome is poorly annotated and/or ranges aren't available from
+AnnotationHub.}
+
+\item{colData}{\code{DataFrame} \code{data.frame}, or \code{matrix}. Metadata
+describing the assay columns. For bulk RNA-seq, this data describes the
+samples. For single-cell RNA-seq, this data describes the cells.}
+
+\item{metadata}{\code{list} or \code{NULL}. Metadata.}
+
+\item{transgeneNames}{\code{character} or \code{NULL}. Vector indicating which
+\code{\link[=assay]{assay()}} rows denote transgenes (e.g. EGFP, TDTOMATO).}
+
+\item{spikeNames}{\code{character} or \code{NULL}. Vector indicating which \code{\link[=assay]{assay()}}
+rows denote spike-in sequences (e.g. ERCCs).}
+}
 \value{
 \code{SingleCellExperiment}.
 }
 \description{
-Make Single-Cell Experiment
+This function is a utility wrapper for
+\code{\link[SummarizedExperiment:SummarizedExperiment]{SummarizedExperiment::SummarizedExperiment()}} that provides automatic
+subsetting for row and column data, as well as automatic handling of
+transgenes and spike-ins. Additionally, it improves upon the standard
+constructor by slotting useful session information into the \code{\link[=metadata]{metadata()}}
+slot:
+}
+\details{
+\itemize{
+\item \code{date}: Today's date, returned from \code{\link[base:Sys.Date]{base::Sys.Date()}}.
+\item \code{wd}: Working directory, returned from \code{\link[base:getwd]{base::getwd()}}.
+\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
+}
+}
+\examples{
+# Rows (genes)
+genes <- c(
+    "EGFP",  # transgene (see below)
+    paste0("gene", seq_len(3L))
+)
+print(genes)
+
+# Columns (samples)
+samples <- paste0("sample", seq_len(4L))
+print(samples)
+
+# Counts (assay)
+counts <- matrix(
+    data = seq_len(16L),
+    nrow = 4L,
+    ncol = 4L,
+    dimnames = list(genes, samples)
+)
+# Primary assay must be named "counts".
+assays <- list(counts = counts)
+print(assays)
+
+# Row data (genomic ranges)
+rowRanges <- GRanges(
+    seqnames = rep("1", times = 3L),
+    ranges = IRanges(
+        start = seq(from = 1L, to = 201L, by = 100L),
+        end = seq(from = 100L, to = 300L, by = 100L)
+    )
+)
+# Note that we haven't defined the transgene here.
+# It will be handled automatically in the function call.
+names(rowRanges) <- paste0("gene", seq_len(3L))
+print(rowRanges)
+
+# Column data
+colData <- DataFrame(
+    genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
+    age = rep(c(3L, 6L), 2L),
+    row.names = samples
+)
+print(colData)
+
+# Note that this returns with the dimnames sorted.
+x <- makeSummarizedExperiment(
+    assays = assays,
+    rowRanges = rowRanges,
+    colData = colData,
+    transgeneNames = "EGFP"
+)
+print(x)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregateCols}},
