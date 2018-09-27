@@ -43,7 +43,7 @@ writeCounts <- function(..., dir = ".", gzip = FALSE) {
     assert_is_a_bool(gzip)
 
     # Iterate across the dot objects and write to disk.
-    message(paste("Writing", toString(names), "to", dir))
+    message(paste0("Writing ", toString(names), " to ", dir, "..."))
 
     # Put the names first in the call here.
     files <- mapply(
@@ -63,7 +63,7 @@ writeCounts <- function(..., dir = ".", gzip = FALSE) {
                     format <- "mtx"
                 }
             } else {
-                stop(paste(name, "is not a matrix"), call. = FALSE)
+                stop(paste(name, "is not a matrix."), call. = FALSE)
             }
             file <- file.path(dir, paste0(name, ".", format))
             do.call(what = export, args = list(x = x, file = file))

@@ -61,7 +61,7 @@ NULL
         # Coercing to tibble to provide consistent write support.
         x <- as_tibble(x, rownames = rownames)
         if (missing(file) && missing(format)) {
-            stop("Must specify 'file' and/or 'format'", call. = FALSE)
+            stop("Must specify `file` and/or `format`.", call. = FALSE)
         } else if (missing(file)) {
             call <- standardizeCall()
             sym <- call[["x"]]
@@ -77,7 +77,7 @@ NULL
             args = list(x = x, file = file, ...)
         )
         file <- normalizePath(file, winslash = "/", mustWork = TRUE)
-        message(paste("Exported", basename(file)))
+        message(paste0("Exported ", basename(file), "."))
         invisible(file)
     }
 
@@ -93,7 +93,7 @@ NULL
         choices <- c("mtx", "mtx.gz")
 
         if (missing(file) && missing(format)) {
-            stop("Must specify 'file' and/or 'format'", call. = FALSE)
+            stop("Must specify `file` and/or `format`.", call. = FALSE)
         } else if (missing(file)) {
             call <- standardizeCall()
             sym <- call[["x"]]
@@ -148,7 +148,7 @@ NULL
             genes = genesFile
         )
 
-        message(paste("Exported", toString(basename(files))))
+        message(paste0("Exported ", toString(basename(files)), "."))
 
         # Return named character of file paths.
         invisible(files)
