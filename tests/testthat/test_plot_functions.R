@@ -71,6 +71,6 @@ with_parameters_test_that(
 test_that("plotHeatmap : Invalid pheatmap passthrough", {
     expect_error(
         plotHeatmap(rse_small, show_colnames = FALSE),
-        "Define formalArgs in camel case: show_colnames"
+        "Specify arguments in camel case: show_colnames"
     )
 })
