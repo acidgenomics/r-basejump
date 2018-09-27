@@ -159,7 +159,7 @@ NULL
         names(groupings) <- colnames(object)
 
         # Assays ---------------------------------------------------------------
-        message("Aggregating counts")
+        message("Aggregating counts...")
         counts <- aggregateCols(counts(object), groupings = groupings)
         assert_are_identical(sum(counts), sum(counts(object)))
 
@@ -236,7 +236,7 @@ NULL
             pattern = paste0("^", map[["sampleID"]]),
             SIMPLIFY = TRUE
         ))) {
-            stop("Cell IDs are not prefixed with sample IDs")
+            stop("Cell IDs are not prefixed with sample IDs.")
         }
         groupings <- mapply(
             FUN = gsub,
@@ -361,7 +361,7 @@ setMethod(
         names(groupings) <- rownames(object)
 
         # Assays ---------------------------------------------------------------
-        message("Aggregating counts")
+        message("Aggregating counts...")
         counts <- aggregateRows(counts(object), groupings = groupings)
         assert_are_identical(sum(counts), sum(counts(object)))
         rownames <- rownames(counts)

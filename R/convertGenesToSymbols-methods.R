@@ -62,12 +62,12 @@ NULL
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations.
         if (is.null(gene2symbol)) {
-            message("Obtaining gene-to-symbol mappings from Ensembl")
+            message("Obtaining gene-to-symbol mappings from Ensembl...")
             if (is.null(organism)) {
                 organism <- organism(object)
             }
             assert_is_a_string(organism)
-            message(paste(organism, "genes detected"))
+            message(paste(organism, "genes detected."))
             gene2symbol <- do.call(
                 what = makeGene2symbolFromEnsembl,
                 args = matchArgsToDoCall(
