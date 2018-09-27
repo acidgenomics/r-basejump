@@ -29,12 +29,74 @@ test_that("import : Comma separated value file (.csv)", {
     expect_is(object, "DataFrame")
 })
 
-test_that("import : GFF", {
-    object <- import("example.gtf")
-    expect_s4_class(object, "GRanges")
-
+test_that("import : GFF3", {
     object <- import("example.gff3")
     expect_s4_class(object, "GRanges")
+    expect_identical(levels(seqnames(object)), "1")
+    expect_identical(
+        object = colnames(mcols(object)),
+        expected = c(
+            "source",
+            "type",
+            "score",
+            "phase",
+            "ID",
+            "Alias",
+            "external_name",
+            "logic_name",
+            "Name",
+            "biotype",
+            "description",
+            "gene_id",
+            "havana_gene",
+            "havana_version",
+            "version",
+            "Parent",
+            "havana_transcript",
+            "tag",
+            "transcript_id",
+            "transcript_support_level",
+            "constitutive",
+            "ensembl_end_phase",
+            "ensembl_phase",
+            "exon_id",
+            "rank",
+            "ccdsid",
+            "protein_id"
+        )
+    )
+})
+
+test_that("import : GTF", {
+    object <- import("example.gtf")
+    expect_identical(levels(seqnames(object)), "1")
+    expect_identical(
+        object = colnames(mcols(object)),
+        expected = c(
+            "source",
+            "type",
+            "score",
+            "phase",
+            "gene_id",
+            "gene_version",
+            "gene_name",
+            "gene_source",
+            "gene_biotype",
+            "transcript_id",
+            "transcript_version",
+            "transcript_name",
+            "transcript_source",
+            "transcript_biotype",
+            "transcript_support_level",
+            "exon_number",
+            "exon_id",
+            "exon_version",
+            "tag",
+            "ccds_id",
+            "protein_id",
+            "protein_version"
+        )
+    )
 })
 
 test_that("import : MatrixMarket file (.mtx)", {
@@ -57,7 +119,7 @@ test_that("import : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    object <- import(paste(cacheURL, "mtcars.xlsx", sep = "/"))
+    object <- import(paste(basejumpCacheURL, "mtcars.xlsx", sep = "/"))
     expect_is(object, "DataFrame")
 })
 
@@ -88,18 +150,23 @@ test_that("import : R script", {
 
 test_that("import : R Data", {
     # rda
-    object <- import(paste(cacheURL, "example.rda", sep = "/"))
+    object <- import(paste(basejumpCacheURL, "example.rda", sep = "/"))
     expect_is(object, "DataFrame")
 
     # rds
-    object <- import(paste(cacheURL, "example.rds", sep = "/"))
+    object <- import(paste(basejumpCacheURL, "example.rds", sep = "/"))
     expect_is(object, "DataFrame")
 
     # Error on object containing multiple data
     expect_error(
-        object = import(paste(cacheURL, "multi.rda", sep = "/")),
+        object = import(paste(basejumpCacheURL, "multi.rda", sep = "/")),
         regexp = "File does not contain a single object"
     )
+})
+
+test_that("import : JSON", {
+    object <- import("example.json")
+    expect_is(object, "list")
 })
 
 test_that("import : YAML", {
@@ -252,7 +319,7 @@ test_that("loadDataAsName : Invalid arguments", {
 
 # loadRemoteData ===============================================================
 test_that("loadRemoteData", {
-    url <- paste(cacheURL, "example.rds", sep = "/")
+    url <- paste(basejumpCacheURL, "example.rds", sep = "/")
     object <- loadRemoteData(url)
     # Character matrix of loaded files
     expect_is(object, "character")
@@ -264,14 +331,14 @@ test_that("loadRemoteData", {
 test_that("loadRemoteData : Already loaded", {
     example <- TRUE
     expect_error(
-        object = loadRemoteData(paste(cacheURL, "example.rda", sep = "/")),
+        object = loadRemoteData(paste(basejumpCacheURL, "example.rda", sep = "/")),
         regexp = "Already exists in environment: example"
     )
 })
 
 test_that("loadRemoteData : Invalid arguments", {
     expect_error(
-        object = loadRemoteData(paste(cacheURL, "mmusculus.gtf", sep = "/")),
+        object = loadRemoteData(paste(basejumpCacheURL, "mmusculus.gtf", sep = "/")),
         regexp = rdataError
     )
     expect_error(
@@ -280,7 +347,7 @@ test_that("loadRemoteData : Invalid arguments", {
     )
     expect_error(
         object = loadRemoteData(
-            paste(paste(cacheURL, "example.rda", sep = "/")),
+            paste(paste(basejumpCacheURL, "example.rda", sep = "/")),
             envir = "XXX"
         ),
         regexp = "is_environment : envir"
@@ -291,7 +358,7 @@ test_that("loadRemoteData : Invalid arguments", {
 
 # localOrRemoteFile ============================================================
 test_that("localOrRemoteFile : Vectorized", {
-    urls <- paste(cacheURL, c("example.csv", "example.rda"), sep = "/")
+    urls <- paste(basejumpCacheURL, c("example.csv", "example.rda"), sep = "/")
     files <- localOrRemoteFile(urls)
     expect_is(files, "character")
     expect_identical(basename(urls), basename(files))
@@ -302,102 +369,6 @@ test_that("localOrRemoteFile : Missing file", {
         object = localOrRemoteFile("XXX.csv"),
         regexp = "is_existing_file :"
     )
-})
-
-
-
-# readGFF ======================================================================
-test_that("readGFF : Minimal GFF3", {
-    object <- readGFF("example.gff3")
-    expect_s4_class(object, "GRanges")
-    expect_identical(levels(seqnames(object)), "1")
-    expect_identical(
-        object = colnames(mcols(object)),
-        expected = c(
-            "source",
-            "type",
-            "score",
-            "phase",
-            "ID",
-            "Alias",
-            "external_name",
-            "logic_name",
-            "Name",
-            "biotype",
-            "description",
-            "gene_id",
-            "havana_gene",
-            "havana_version",
-            "version",
-            "Parent",
-            "havana_transcript",
-            "tag",
-            "transcript_id",
-            "transcript_support_level",
-            "constitutive",
-            "ensembl_end_phase",
-            "ensembl_phase",
-            "exon_id",
-            "rank",
-            "ccdsid",
-            "protein_id"
-        )
-    )
-})
-
-test_that("readGFF : Minimal GTF", {
-    object <- readGFF("example.gtf")
-    expect_identical(levels(seqnames(object)), "1")
-    expect_identical(
-        object = colnames(mcols(object)),
-        expected = c(
-            "source",
-            "type",
-            "score",
-            "phase",
-            "gene_id",
-            "gene_version",
-            "gene_name",
-            "gene_source",
-            "gene_biotype",
-            "transcript_id",
-            "transcript_version",
-            "transcript_name",
-            "transcript_source",
-            "transcript_biotype",
-            "transcript_support_level",
-            "exon_number",
-            "exon_id",
-            "exon_version",
-            "tag",
-            "ccds_id",
-            "protein_id",
-            "protein_version"
-        )
-    )
-})
-
-test_that("readGFF : Unsupported file type", {
-    expect_error(
-        object = readGFF("XXX.rda"),
-        regexp = "is_matching_regex :"
-    )
-})
-
-
-
-# readJSON =====================================================================
-test_that("readJSON", {
-    object <- readJSON("example.json")
-    expect_is(object, "list")
-})
-
-
-
-# readYAML =====================================================================
-test_that("readYAML : bcbio project summary", {
-    object <- readYAML("example.yml")
-    expect_is(object, "list")
 })
 
 
