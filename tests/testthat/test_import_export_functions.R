@@ -223,7 +223,7 @@ test_that("loadData : Already exists", {
 test_that("loadData : Multiple objects in single file", {
     expect_error(
         object = loadData(multi),
-        regexp = "multi.rda contains multiple objects : x, y"
+        regexp = "multi.rda contains multiple objects: x, y"
     )
 })
 
@@ -237,14 +237,14 @@ test_that("loadData : Renamed file", {
 test_that("loadData : Duplicate RDA and RDS files", {
     expect_error(
         object = loadData(example),
-        regexp = "Duplicates : example.rda, example.rds"
+        regexp = "Duplicates: example.rda, example.rds"
     )
 })
 
 test_that("loadData : Uncertain extension", {
     expect_error(
         object = loadData(gr, serialized),
-        regexp = "Multiple extensions : rda, rds"
+        regexp = "Multiple extensions: rda, rds"
     )
 })
 
@@ -299,7 +299,7 @@ test_that("loadDataAsName : Missing files", {
 test_that("loadDataAsName : Multiple objects in single file", {
     expect_error(
         object = loadDataAsName(data = multi),
-        regexp = "multi.rda contains multiple objects : x, y"
+        regexp = "multi.rda contains multiple objects: x, y"
     )
 })
 
@@ -453,7 +453,7 @@ test_that("transmit", {
             pattern = "README",
             compress = FALSE
         ),
-        regexp = "All files have already downloaded"
+        regexp = "All files are already downloaded."
     )
 
     unlink("README")
