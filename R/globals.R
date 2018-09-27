@@ -23,7 +23,7 @@ extPattern <- "\\.([a-zA-Z0-9]+)(\\.gz)?$"
 #' @export
 #' @examples
 #' lanePattern
-lanePattern <- "_L(\\d{3})"
+lanePattern <- "_L([[:digit:]]{3})"
 
 # List item (following HTML convention).
 li <- "  -"
