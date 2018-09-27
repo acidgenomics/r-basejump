@@ -19,3 +19,4 @@ _*.R
 *.yml
 */
 .httr-oauth
+example.R
