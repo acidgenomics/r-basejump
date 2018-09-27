@@ -4,27 +4,6 @@ load("plotlist.rda")
 
 
 
-# kables =======================================================================
-test_that("kables : list", {
-    # Simulate a knit session.
-    object <- kables(
-        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-        captions = c("mpg", "mtcars"),
-        force = TRUE
-    )
-    expect_is(object, "knit_asis")
-
-    # Check for unmodified return in R session.
-    object <- kables(
-        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
-        captions = c("mpg", "mtcars"),
-        force = FALSE
-    )
-    expect_is(object, "list")
-})
-
-
-
 # markdownHeader ===============================================================
 test_that("markdownHeader", {
     object <- markdownHeader("Header")
@@ -116,6 +95,27 @@ test_that("markdownPlotlist", {
             ""
         )
     )
+})
+
+
+
+# markdownTables ===============================================================
+test_that("markdownTables : list", {
+    # Simulate a knit session.
+    object <- markdownTables(
+        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+        captions = c("mpg", "mtcars"),
+        force = TRUE
+    )
+    expect_is(object, "knit_asis")
+
+    # Check for unmodified return in R session.
+    object <- markdownTables(
+        list = list(head(ggplot2::mpg), head(datasets::mtcars)),
+        captions = c("mpg", "mtcars"),
+        force = FALSE
+    )
+    expect_is(object, "list")
 })
 
 
