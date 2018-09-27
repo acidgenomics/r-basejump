@@ -6,7 +6,10 @@
 #'
 #' @family Data Functions
 #' @author Michael Steinbaugh
+#' @inherit makeSummarizedExperiment
 #' @export
+#'
+#' @inheritParams general
 #'
 #' @return `SingleCellExperiment`.
 makeSingleCellExperiment <- function(
