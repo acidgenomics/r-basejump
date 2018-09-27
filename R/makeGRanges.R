@@ -561,10 +561,7 @@ makeGRangesFromGFF <- function(
     # Missing `geneName`
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
-        warning(paste(
-            "`geneName` is missing.",
-            "Using `geneID` in place."
-        ))
+        warning("`geneName` is missing. Using `geneID` instead.")
         assert_is_subset("geneID", colnames(mcols))
         mcols[["geneName"]] <- mcols[["geneID"]]
         # nocov end
@@ -576,10 +573,7 @@ makeGRangesFromGFF <- function(
         !"transcriptName" %in% colnames(mcols)
     ) {
         # nocov start
-        warning(paste(
-            "`transcriptName` is missing.",
-            "Using `transcriptID` in place."
-        ))
+        warning("`transcriptName` is missing. Using `transcriptID` instead.")
         mcols[["transcriptName"]] <- mcols[["transcriptID"]]
         # nocov end
     }

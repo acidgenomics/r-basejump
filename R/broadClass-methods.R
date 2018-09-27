@@ -48,7 +48,7 @@ NULL
             biotype <- data[[biotypeCol]]
         } else {
             # nocov start
-            warning("biotype missing", call. = FALSE)
+            warning("Biotype column is missing.", call. = FALSE)
             biotype <- NA
             # nocov end
         }
@@ -65,7 +65,7 @@ NULL
             seqname <- data[[seqnameCol]]
         } else {
             # nocov start
-            warning("seqname missing", call. = FALSE)
+            warning("`seqname` column is missing.", call. = FALSE)
             seqname <- NA
             # nocov end
         }
