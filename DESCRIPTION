@@ -123,6 +123,7 @@ Collate:
     'data.R'
     'deprecated.R'
     'detectHPC.R'
+    'detectLanes.R'
     'dots.R'
     'eggnog.R'
     'emptyRanges.R'
