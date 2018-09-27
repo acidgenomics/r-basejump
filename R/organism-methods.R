@@ -91,7 +91,7 @@ NULL
             i <- i + 1L
         }
         if (is.na(x)) {
-            stop("Failed to detect organism")
+            stop("Failed to detect organism.")
         } else {
             x
         }

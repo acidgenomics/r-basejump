@@ -95,7 +95,7 @@ basejump_geom_abline <- function(
         (is.null(xintercept) && is.null(yintercept)) ||
         (is.numeric(xintercept) && is.numeric(yintercept))
     ) {
-        stop("Either `xintercept` or `yintercept` is required")
+        stop("Either `xintercept` or `yintercept` is required.")
     } else if (is.numeric(xintercept)) {
         geom_vline(
             xintercept = xintercept,

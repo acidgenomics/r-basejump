@@ -52,7 +52,7 @@ NULL
             FUN = is.atomic,
             FUN.VALUE = logical(1L)
         ))) {
-            stop("Arguments must be atomic vectors")
+            stop("Arguments must be atomic.")
         }
 
         # Match the arguments against the sample metadata.
@@ -65,7 +65,7 @@ NULL
                 # Check that column is present.
                 if (!col %in% colnames(sampleData)) {
                     stop(paste(
-                        col, "isn't present in metadata colnames"
+                        col, "isn't present in metadata colnames."
                     ), call. = FALSE)
                 }
                 # Check that all items in argument are present.
@@ -73,7 +73,7 @@ NULL
                     missing <- arg[which(!arg %in% sampleData[[col]])]
                     stop(paste(
                         deparse(col),
-                        "metadata column doesn't contain",
+                        "metadata column doesn't contain:",
                         toString(missing)
                     ), call. = FALSE)
                 }

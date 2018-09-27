@@ -23,7 +23,7 @@ NULL
         data <- rowData(object)
         rownames(data) <- rownames(object)
         if (!all(c("transcriptID", "geneID") %in% colnames(data))) {
-            stop("Object does not contain transcript-to-gene mappings")
+            stop("Object does not contain transcript-to-gene mappings.")
         }
         .makeTx2gene(data)
     }

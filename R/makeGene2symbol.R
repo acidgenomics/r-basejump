@@ -57,7 +57,7 @@ NULL
     # Coerce to tibble.
     data <- as(object, "tbl_df")
     if (!all(c("geneID", "geneName") %in% colnames(data))) {
-        stop("Object does not contain gene-to-symbol mappings")
+        stop("Object does not contain gene-to-symbol mappings.")
     }
     assert_has_rows(data)
     assertHasRownames(data)

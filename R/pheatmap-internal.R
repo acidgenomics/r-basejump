@@ -100,7 +100,7 @@
     invalidNames <- grep("[._]", names(args), value = TRUE)
     if (has_length(invalidNames)) {
         stop(paste(
-            "Define formalArgs in camel case:",
+            "Specify arguments in camel case:",
             toString(invalidNames)
         ))
     }

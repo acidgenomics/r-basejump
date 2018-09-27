@@ -169,7 +169,7 @@ makeGRangesFromEnsembl <- function(
         } else {
             # nocov start
             stop(paste(
-                "GRCh37 genome build requires the", ahid, "package"
+                "GRCh37 genome build requires the", ahid, "package."
             ))
             # nocov end
         }
@@ -224,7 +224,7 @@ makeGRangesFromEnsembl <- function(
             !nrow(mcols)
         ) {
             # nocov start
-            stop("AnnotationHub requires an Internet connection for lookup")
+            stop("AnnotationHub requires an Internet connection for query.")
             # nocov end
         }
 
@@ -247,9 +247,9 @@ makeGRangesFromEnsembl <- function(
 
         if (!nrow(mcols)) {
             stop(paste(
-                paste(
-                    "No ID matched on AnnotationHub",
-                    packageVersion("AnnotationHub")
+                paste0(
+                    "No ID matched on AnnotationHub ",
+                    packageVersion("AnnotationHub"), "."
                 ),
                 paste(li, "Organism:", deparse(organism)),
                 paste(li, "Build:", deparse(build)),
@@ -651,7 +651,7 @@ makeGRangesFromGFF <- function(
     ))) {
         "Ensembl"
     } else {
-        stop("Unsupported GFF source")  # nocov
+        stop("Unsupported GFF source.")  # nocov
     }
 }
 

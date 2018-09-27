@@ -149,7 +149,7 @@ import <- function(file, ...) {
         safe <- new.env()
         object <- load(file, envir = safe)
         if (!has_length(safe, n = 1L)) {
-            stop("File does not contain a single object")
+            stop("File does not contain a single object.")
         }
         data <- get(object, envir = safe, inherits = FALSE)
     } else if (ext == "rds") {
@@ -194,10 +194,10 @@ import <- function(file, ...) {
     tryCatch(
         rtracklayer::import(file),
         error = function(e) {
-            stop("GFF file failed to load")  # nocov
+            stop("GFF file failed to load.")  # nocov
         },
         warning = function(w) {
-            stop("GFF file failed to load")  # nocov
+            stop("GFF file failed to load.")  # nocov
         }
     )
 }
