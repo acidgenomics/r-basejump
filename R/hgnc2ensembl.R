@@ -11,7 +11,7 @@
 #' print(x)
 hgnc2ensembl <- function() {
     stopifnot(has_internet())
-    message("Obtaining HGNC to Ensembl gene ID mappings")
+    message("Obtaining HGNC to Ensembl gene ID mappings...")
     data <- read_tsv(
         file = paste(
             "ftp://ftp.ebi.ac.uk",

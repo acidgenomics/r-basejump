@@ -196,7 +196,7 @@ NULL
     function(object, value) {
         # Remove legacy `sampleData` in metadata, if defined.
         if (!is.null(metadata(object)[["sampleData"]])) {
-            message("Removing legacy `sampleData` in `metadata()` slot")
+            message("Removed legacy `sampleData` in `metadata()` slot.")
             metadata(object)[["sampleData"]] <- NULL
         }
 

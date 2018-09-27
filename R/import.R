@@ -104,7 +104,7 @@ import <- function(file, ...) {
     args <- list(file, ...)
     assert_is_a_string(file)
 
-    message(paste("Reading", basename(file)))
+    message(paste0("Reading ", basename(file), "..."))
     file <- localOrRemoteFile(file)
 
     ext <- basename(file) %>%
@@ -119,7 +119,7 @@ import <- function(file, ...) {
     if (ext %in% blacklist) {
         stop(unsupported)  # nocov
     } else if (ext %in% source) {
-        message("Importing as source code lines")
+        message("Importing as source code lines.")
         data <- do.call(what = read_lines, args = args)
     } else if (ext %in% c("colnames", "rownames")) {
         args[["na"]] <- na

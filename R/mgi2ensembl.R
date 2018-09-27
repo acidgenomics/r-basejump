@@ -13,7 +13,7 @@
 #' print(x)
 mgi2ensembl <- function() {
     stopifnot(has_internet())
-    message("Obtaining MGI to Ensembl gene ID mappings")
+    message("Obtaining MGI to Ensembl gene ID mappings...")
     data <- read_tsv(
         file = paste(
             "http://www.informatics.jax.org",

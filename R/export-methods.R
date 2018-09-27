@@ -161,7 +161,6 @@ NULL
         call <- standardizeCall()
         name <- as.character(call[["x"]])
         dir <- initializeDirectory(file.path(dir, name))
-        message(paste("Exporting", name, "to", dir))
 
         # Assays
         assays <- lapply(
@@ -199,6 +198,8 @@ NULL
             colData = colData
         )
         files <- Filter(Negate(is.null), files)
+
+        message(paste0("Exported ", name, " to ", dir, "."))
 
         # Return named character of file paths.
         invisible(files)
