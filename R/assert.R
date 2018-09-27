@@ -439,7 +439,7 @@ assertIsAlpha <- function(object) {
     assert_is_a_number(object)
     assert_all_are_in_open_range(object, lower = 0L, upper = 1L)
     if (object > 0.1) {
-        warning("An alpha level above 0.1 (10%) is not recommended")
+        warning("An alpha level above 0.1 (10%) is not recommended.")
     }
 }
 

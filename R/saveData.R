@@ -56,7 +56,9 @@ saveData <- function(
     # If `overwrite = FALSE`, inform the user which files were skipped
     if (identical(overwrite, FALSE) && any(file.exists(files))) {
         skip <- files[file.exists(files)]
-        warning(paste("Skipping", toString(basename(skip))), call. = FALSE)
+        warning(paste0(
+            "Skipped ", toString(basename(skip)), "."
+        ), call. = FALSE)
         files <- files[!file.exists(files)]
         if (!has_length(files)) {
             warning("No files were saved.")

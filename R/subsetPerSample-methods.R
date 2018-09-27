@@ -63,7 +63,7 @@ NULL
                 # Skip if subset doesn't have enough cells.
                 if (ncol(subset) < minCells) {
                     warning(paste(
-                        sampleID, "didn't pass minimum cell cutoff"
+                        sampleID, "didn't pass minimum cell cutoff."
                     ), call. = FALSE)
                     return(NULL)
                 }
