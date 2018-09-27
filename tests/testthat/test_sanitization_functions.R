@@ -211,12 +211,8 @@ test_that("sanitizeRowData", {
             end = "integer",
             width = "integer",
             strand = "factor",
-            broadClass = "factor",
-            description = "factor",
-            geneBiotype = "factor",
             geneID = "character",
-            geneName = "factor",
-            seqCoordSystem = "factor"
+            geneName = "character"
         )
     )
 })
