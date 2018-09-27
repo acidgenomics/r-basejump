@@ -1,4 +1,3 @@
-# TODO Generate a different working data frame example other than mtcars.
 # TODO Need more complete `import()` / `export()` unit tests.
 
 
@@ -119,7 +118,7 @@ test_that("import : Excel file (.xlsx)", {
     # Use remote file to check Windows support. Excel files need to be
     # written as binary on Windows to load properly. See `localOrRemoteFile()`
     # for more information.
-    object <- import(paste(basejumpCacheURL, "mtcars.xlsx", sep = "/"))
+    object <- import(paste(basejumpCacheURL, "example.xlsx", sep = "/"))
     expect_is(object, "DataFrame")
 })
 
@@ -139,7 +138,7 @@ test_that("import : Counts file (.counts)", {
 })
 
 test_that("import : R script", {
-    file <- "test_read_write_functions.R"
+    file <- "example.R"
     expect_message(
         object = import(file),
         regexp = "Importing as source code lines"
@@ -422,7 +421,7 @@ test_that("saveData : Invalid parameters", {
         regexp = "object 'XXX' not found"
     )
     expect_error(
-        object = saveData("mtcars"),
+        object = saveData("example"),
         regexp = "is_name : X"
     )
     expect_error(
