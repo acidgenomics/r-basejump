@@ -21,7 +21,11 @@ Detect Sequencing Lanes
 files <- c("sample1_L001.fastq.gz", "sample1_L002.fastq.gz")
 detectLanes(files)
 }
+\seealso{
+Other Atomic Vector Functions: \code{\link{grepString}},
+  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
+}
 \author{
 Michael Steinbaugh
 }
-\concept{Atomic Functions}
+\concept{Atomic Vector Functions}

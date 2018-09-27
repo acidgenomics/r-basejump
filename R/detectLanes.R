@@ -1,6 +1,6 @@
 #' Detect Sequencing Lanes
 #'
-#' @family Atomic Functions
+#' @family Atomic Vector Functions
 #' @author Michael Steinbaugh
 #' @export
 #'
@@ -16,6 +16,9 @@ detectLanes <- function(
     object,
     pattern = lanePattern
 ) {
+    assert_is_character(object)
+    assert_is_a_string(lanePattern)
+    object <- basename(object)
     if (any(grepl(pattern, object))) {
         as.integer(str_match(object, pattern)[, 2L])
     } else {
