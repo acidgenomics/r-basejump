@@ -189,7 +189,7 @@ For organisms that are not well supported on [Ensembl][], we recommend using [GT
 
 ### GTF
 
-```{r}
+```{r, eval=FALSE}
 gtf_file <- paste(
     "ftp://ftp.ensembl.org",
     "pub",
@@ -199,20 +199,12 @@ gtf_file <- paste(
     "Homo_sapiens.GRCh38.92.gtf.gz",
     sep = "/"
 )
-grch38_gtf <- makeGRangesFromGFF(gtf_file)
-summary(grch38_gtf)
-```
-
-```{r}
-GenomeInfoDb::seqnames(grch38_gtf)
-IRanges::ranges(grch38_gtf)
-BiocGenerics::strand(grch38_gtf)
-S4Vectors::mcols(grch38_gtf) %>% glimpse()
+grch38 <- makeGRangesFromGFF(gtf_file)
 ```
 
 ### GFF3
 
-```{r}
+```{r, eval=FALSE}
 gff_file <- paste(
     "ftp://ftp.ensembl.org",
     "pub",
@@ -222,15 +214,7 @@ gff_file <- paste(
     "Homo_sapiens.GRCh38.92.gff3.gz",
     sep = "/"
 )
-grch38_gff <- makeGRangesFromGFF(gff_file)
-summary(grch38_gff)
-```
-
-```{r}
-GenomeInfoDb::seqnames(grch38_gff)
-IRanges::ranges(grch38_gff)
-BiocGenerics::strand(grch38_gff)
-S4Vectors::mcols(grch38_gff) %>% glimpse()
+grch38 <- makeGRangesFromGFF(gff_file)
 ```
 
 ## Gene interconversion functions
@@ -260,28 +244,32 @@ In addition to interfacing with [Ensembl][], [basejump][] exports a number of ut
 
 ### HGNC
 
-```{r}
+```{r, eval=FALSE}
+# FIXME Use pre-calculated, for speed.
 hgnc2gene <- hgnc2gene()
 glimpse(hgnc2gene)
 ```
 
 ### MGI
 
-```{r}
+```{r, eval=FALSE}
+# FIXME Use pre-calculated, for speed.
 mgi2gene <- mgi2gene()
 glimpse(mgi2gene)
 ```
 
 ### EggNOG
 
-```{r}
+```{r, eval=FALSE}
+# FIXME Use pre-calculated, for speed.
 eggnog <- eggnog()
 glimpse(eggnog)
 ```
 
 ### PANTHER
 
-```{r}
+```{r, eval=FALSE}
+# FIXME Use pre-calculated, for speed.
 panther <- panther(organism = "Homo sapiens")
 glimpse(panther)
 ```

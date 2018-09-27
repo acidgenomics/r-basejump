@@ -1,7 +1,5 @@
 set.seed(1L)
-invisible(lapply(
-    X = c("testthat", "patrick", "basejump"),
-    FUN = library,
-    character.only = TRUE
-))
+library(testthat)
+library(patrick)
+library(basejump)
 test_check("basejump")
