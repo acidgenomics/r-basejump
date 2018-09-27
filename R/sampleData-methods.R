@@ -106,7 +106,7 @@ NULL
         # `SingleCellExperiment` maps cells to `colnames` instead of samples.
         if (!"sampleID" %in% colnames(data)) {
             stop(paste(
-                "`sampleID` column must be defined in `colData()` slot"
+                "`sampleID` column must be defined in `colData()` slot."
             ), call. = FALSE)
         }
         if (!"sampleName" %in% colnames(data)) {

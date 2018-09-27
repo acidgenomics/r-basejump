@@ -35,7 +35,7 @@ NULL
             if (!any(grepl(pattern, colnames(metrics)))) {
                 stop(paste(
                     "`sum` method only applies to metrics columns",
-                    "prefixed with `n` (e.g. `nUMI`)"
+                    "prefixed with `n` (e.g. `nUMI`)."
                 ), call. = FALSE)
             }
             # Sum only the `n*` columns containing counts.

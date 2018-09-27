@@ -32,11 +32,7 @@
             basename(files),
             value = TRUE
         )
-        stop(paste(
-            "Duplicates",
-            toString(dupeFiles),
-            sep = " : "
-        ))
+        stop(paste0("Duplicates: ", toString(dupeFiles)))
     }
 
     # Check for extension soup and stop on detection
@@ -47,11 +43,7 @@
         sort()
     if (!has_length(ext, n = 1L)) {
         stop(paste(
-            paste(
-                "Multiple extensions",
-                toString(ext),
-                sep = " : "
-            ),
+            paste0("Multiple extensions: ", toString(ext)),
             "Use a single R data file format inside a directory.",
             printString(files),
             sep = "\n"
@@ -91,25 +83,20 @@
 
     # Ensure that the loaded name is identical to the file name
     if (!is_a_string(loaded)) {
-        stop(paste(
+        stop(paste0(
             basename(file),
-            "contains multiple objects",
-            ":",
+            " contains multiple objects: ",
             toString(loaded)
         ))
     }
     if (!identical(name, loaded)) {
-        stop(paste(
-            paste(basename(file), "has been renamed."),
-            "The object name inside the file doesn't match.",
-            paste("  - expected:", name),
-            paste("  - actual:  ", loaded),
-            paste(
-                "Avoid renaming R data files;",
-                "this can lead to accidental replacement",
-                "in the working environment."
-            ),
-            sep = "\n"
+        stop(paste0(
+            basename(file), " has been renamed.\n",
+            "The object name inside the file doesn't match.\n",
+            "  expected: ", name, "\n",
+            "    actual: ", loaded, "\n",
+            "Avoid renaming R data files. ",
+            "This can lead to accidental replacement."
         ))
     }
     assert_are_identical(name, loaded)

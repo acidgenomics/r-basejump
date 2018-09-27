@@ -151,7 +151,7 @@ NULL
         assert_is_subset("aggregate", colnames(colData(object)))
         assert_is_subset("aggregate", colnames(sampleData(object)))
         if ("sampleNameAggregate" %in% colnames(colData)) {
-            stop("Use `aggregate` instead of `sampleNameAggregate`")
+            stop("Use `aggregate` instead of `sampleNameAggregate`.")
         }
         groupings <- colData(object)[["aggregate"]]
         assert_is_factor(groupings)

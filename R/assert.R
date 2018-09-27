@@ -115,7 +115,7 @@ assertHasValidDimnames <- function(object) {
 #' @export
 assertHasValidNames <- function(object) {
     if (has_dims(object)) {
-        stop("Use `assertHasValidDimnames()` instead")
+        stop("Use `assertHasValidDimnames()` instead.")
     }
     assert_has_names(object)
     invisible(lapply(names(object), assertAllAreValidNames))
@@ -129,7 +129,7 @@ assertHasValidNames <- function(object) {
 #' validDimnames(datasets::mtcars)
 validDimnames <- function(object) {
     if (is.null(dim(object))) {
-        stop("Object does not support `dim()`")
+        stop("Object does not support `dim()`.")
     } else if (!has_dimnames(object)) {
         c(TRUE, TRUE)
     } else {
