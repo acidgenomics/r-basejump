@@ -20,14 +20,13 @@ test_that("annotable", {
 
 
 # broadClass ===================================================================
-# FIXME This is failing.
 with_parameters_test_that(
     "broadClass", {
         expect_is(broadClass(object), "factor")
     },
     object = list(
         GRanges = makeGRangesFromEnsembl("Homo sapiens"),
-        SummarizedExperiment = rse_small
+        SingleCellExperiment = sce_small
     )
 )
 
