@@ -21,8 +21,8 @@ toStringUnique(c("hello", "world", NA, "hello", "world", NA))
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
 
-Other Atomic Vector Functions: \code{\link{grepString}},
-  \code{\link{sortUnique}}
+Other Atomic Vector Functions: \code{\link{detectLanes}},
+  \code{\link{grepString}}, \code{\link{sortUnique}}
 }
 \author{
 Michael Steinbaugh

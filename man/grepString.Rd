@@ -28,8 +28,8 @@ grepString("gene")
 \item \code{\link[base:toString]{base::toString()}}.
 }
 
-Other Atomic Vector Functions: \code{\link{sortUnique}},
-  \code{\link{toStringUnique}}
+Other Atomic Vector Functions: \code{\link{detectLanes}},
+  \code{\link{sortUnique}}, \code{\link{toStringUnique}}
 }
 \author{
 Michael Steinbaugh
