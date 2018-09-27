@@ -200,7 +200,7 @@ Collate:
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'
-    'tidyverse-methods.R'
+    'tidy-methods.R'
     'toStringUnique.R'
     'tpm-methods.R'
     'transmit.R'
