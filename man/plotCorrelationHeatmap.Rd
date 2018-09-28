@@ -99,9 +99,9 @@ plotCorrelationHeatmap(rse_small, color = NULL)
 \item \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
 }
 
-Other Plot Functions: \code{\link{plotGene}},
-  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
-  \code{\link{plotQuantileHeatmap}},
+Other Plot Functions: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotGene}}, \code{\link{plotHeatmap}},
+  \code{\link{plotQC}}, \code{\link{plotQuantileHeatmap}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{

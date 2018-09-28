@@ -45,6 +45,7 @@ plotZerosVsDepth(single_cell_counts)
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotCountsPerBiotype}},
   \code{\link{plotGene}}, \code{\link{plotHeatmap}},
   \code{\link{plotQC}}, \code{\link{plotQuantileHeatmap}}
 }
