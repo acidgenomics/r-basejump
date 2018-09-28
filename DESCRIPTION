@@ -175,6 +175,7 @@ Collate:
     'parseRd.R'
     'pheatmap-internal.R'
     'plotCorrelationHeatmap-methods.R'
+    'plotCountsPerBiotype-methods.R'
     'plotCountsPerGene-methods.R'
     'plotGene-methods.R'
     'plotGenderMarkers-methods.R'
