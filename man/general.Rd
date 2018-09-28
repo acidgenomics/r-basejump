@@ -20,9 +20,8 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 \item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
 scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
-recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-To set the discrete color palette globally, use
-\code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}. To set the discrete color
+palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
 
 \item{countsAxisLabel}{\code{string}. Counts axis label.}
 
@@ -37,9 +36,8 @@ directory.}
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 fill scale.
 Must supply discrete values. When set to \code{NULL}, the default ggplot2 color
 palette will be used. If manual color definitions are desired, we recommend
-using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
-To set the discrete fill palette globally, use
-\code{options(bcbio.discrete.fill = scale_fill_viridis_d())}.}
+using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}. To set the discrete fill palette
+globally, use \code{options(bcbio.discrete.fill = scale_fill_viridis_d())}.}
 
 \item{flip}{\code{boolean}. Flip x and y axes. Recommended for quality control
 plots containing many samples.}
