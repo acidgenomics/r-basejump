@@ -98,6 +98,7 @@ plotHeatmap(rse_small, clusterCols = FALSE)
 }
 
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
+  \code{\link{plotCountsPerBiotype}},
   \code{\link{plotGene}}, \code{\link{plotQC}},
   \code{\link{plotQuantileHeatmap}},
   \code{\link{plotZerosVsDepth}}
