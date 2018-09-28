@@ -360,12 +360,14 @@ assertFormalInterestingGroups <- function(object, interestingGroups) {
         assert_is_character(interestingGroups)
     }
 
-    # Check intersection with column data.
-    assert_is_subset(interestingGroups, colnames(colData(object)))
+    sampleData <- sampleData(object)
+
+    # Check intersection with sample data.
+    assert_is_subset(interestingGroups, colnames(sampleData))
 
     # Check that interesting groups columns are factors.
     invisible(lapply(
-        X = colData(object)[, interestingGroups, drop = FALSE],
+        X = sampleData[, interestingGroups, drop = FALSE],
         FUN = assert_is_factor
     ))
 }
