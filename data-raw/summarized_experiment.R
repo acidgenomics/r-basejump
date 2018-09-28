@@ -5,13 +5,13 @@ library(DESeq2)
 library(tidyverse)
 
 # Restrict to 1 MB per file.
-mb <- structure(1e6, class = "object_size")
+limit <- structure(1e6, class = "object_size")
 
 # dds_small ====================================================================
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
 dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
-stopifnot(object.size(dds) < mb)
+stopifnot(object.size(dds) < limit)
 stopifnot(validObject(dds))
 dds_small <- dds
 saveData(dds_small, dir = "tests/testthat", compress = "xz")
@@ -20,7 +20,7 @@ saveData(dds_small, dir = "tests/testthat", compress = "xz")
 # Coerce to RangedSummarizedExperiment.
 # Need to change rows to actual gene identifiers here, and slot colData.
 rse <- as(dds, "RangedSummarizedExperiment")
-stopifnot(object.size(rse) < mb)
+stopifnot(object.size(rse) < limit)
 # Column data.
 # Note that `sampleName` column is generated for `sampleData()` return.
 colData(rse) <- DataFrame(
@@ -59,7 +59,7 @@ vapply(
     FUN = object.size,
     FUN.VALUE = numeric(1L)
 )
-stopifnot(object.size(rse) < mb)
+stopifnot(object.size(rse) < limit)
 stopifnot(validObject(rse))
 rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
@@ -96,7 +96,7 @@ vapply(
     FUN = object.size,
     FUN.VALUE = numeric(1L)
 )
-stopifnot(object.size(se) < mb)
+stopifnot(object.size(se) < limit)
 stopifnot(validObject(se))
 tx_se_small <- se
 devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)
