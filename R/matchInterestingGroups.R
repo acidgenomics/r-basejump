@@ -19,7 +19,7 @@
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     assert_is_all_of(object, "SummarizedExperiment")
     if (is.null(interestingGroups)) {
-        interestingGroups <- basejump::interestingGroups(object)
+        interestingGroups <- interestingGroups(object, check = FALSE)
         if (is.null(interestingGroups)) {
             interestingGroups <- "sampleName"
         }
