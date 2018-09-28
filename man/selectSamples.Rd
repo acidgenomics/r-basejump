@@ -3,10 +3,13 @@
 \docType{methods}
 \name{selectSamples}
 \alias{selectSamples}
+\alias{selectSamples,SummarizedExperiment-method}
 \alias{selectSamples,SingleCellExperiment-method}
 \title{Select Samples}
 \usage{
 selectSamples(object, ...)
+
+\S4method{selectSamples}{SummarizedExperiment}(object, ...)
 
 \S4method{selectSamples}{SingleCellExperiment}(object, ...)
 }
@@ -33,6 +36,14 @@ objects but it's not intuitive. In this case, provide cellular barcode
 identifiers for columns and gene identifiers for rows.
 }
 \examples{
+# SummarizedExperiment ====
+object <- rse_small
+sample <- sampleNames(object) \%>\% head(1L)
+print(sample)
+subset <- selectSamples(object, sampleName = sample)
+print(subset)
+
+# SingleCellExperiment ====
 object <- sce_small
 sample <- sampleNames(object) \%>\% head(1L)
 print(sample)
