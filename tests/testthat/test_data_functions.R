@@ -319,6 +319,16 @@ test_that("sampleNames", {
 
 
 # selectSamples ================================================================
+# FIXME Add metadata (e.g. genotype) that we can test here.
+test_that("selectSamples : SummarizedExperiment", {
+    object <- selectSamples(rse_small, sampleName = "sample1")
+    expect_s4_class(object, class = "SummarizedExperiment")
+    expect_identical(
+        object = colnames(object),
+        expected = "sample1"
+    )
+})
+
 test_that("selectSamples : SingleCellExperiment", {
     object <- selectSamples(sce_small, sampleID = "sample1")
     expect_identical(
