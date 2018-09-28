@@ -295,6 +295,17 @@ setGeneric(
 
 
 
+#' @rdname plotCountsPerBiotype
+#' @export
+setGeneric(
+    name = "plotCountsPerBiotype",
+    def = function(object, ...) {
+        standardGeneric("plotCountsPerBiotype")
+    }
+)
+
+
+
 #' @rdname plotCountsPerGene
 #' @export
 setGeneric(
