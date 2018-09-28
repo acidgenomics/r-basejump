@@ -1,4 +1,5 @@
 # FIXME Add `makeDimnames()`.
+# FIXME Add plurarlized acronyms (e.g. "UMIs") to unit tests.
 
 
 
@@ -98,6 +99,8 @@ NULL
         as.character() %>%
         # Ensure "id" is always "ID".
         gsub("\\b(id)\\b", "ID", ., ignore.case = TRUE) %>%
+        # Sanitize plurarlized acronyms.
+        gsub("\\b([A-Z0-9]+)s\\b", "\\1S", .) %>%
         # Sanitize mixed case scientific acronyms.
         gsub("\\b(mRNA)\\b", "MRNA", .) %>%
         gsub("\\b(miRNA)\\b", "MIRNA", .) %>%
