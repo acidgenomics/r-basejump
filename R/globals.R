@@ -1,16 +1,16 @@
 globalVariables(".")
 
-version <- packageVersion("basejump")
-versionDir <- paste0("v", version$major, ".", version$minor)
-
-# TODO Migrate S3 to a bucket that supports https.
+packageVersion <- packageVersion("basejump")
 
 #' Cache URL
 #' @keywords internal
 #' @export
 #' @examples
 #' basejumpCacheURL
-basejumpCacheURL <- paste0("http://basejump.seq.cloud/", versionDir)
+basejumpCacheURL <- paste0(
+    "http://basejump.seq.cloud/",
+    "v", packageVersion$major, ".", packageVersion$minor  # nolint
+)
 
 # Trailing number is to match cellranger output.
 barcodePattern <- ")_([ACGT_]{6,})(_[0-9]+)?$"
