@@ -105,6 +105,7 @@ Collate:
     'MethodDefinition.R'
     'RdTags.R'
     'aggregate-methods.R'
+    'assert-internal.R'
     'assert.R'
     'saveData.R'
     'assignAndSaveData.R'
