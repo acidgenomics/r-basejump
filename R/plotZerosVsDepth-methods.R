@@ -1,11 +1,6 @@
-# TODO Add SE method support.
-# TODO Add SCE method from bcbioSingleCell.
-
-
-
 #' Plot Percentage of Zeros vs. Library Depth
 #'
-#' Calculate the dropout rate.
+#' Calculate and visualize the dropout rate.
 #'
 #' @name plotZerosVsDepth
 #' @family Plot Functions
@@ -13,22 +8,18 @@
 #'
 #' @inheritParams general
 #'
-#' @return `DataFrame` or `ggplot`.
+#' @return `ggplot`.
 #'
 #' @examples
-#' # sparseMatrix ====
-#' single_cell_counts <- counts(sce_small)
-#' x <- zerosVsDepth(single_cell_counts)
-#' print(x)
-#' plotZerosVsDepth(single_cell_counts)
+#' # SingleCellExperiment ====
+#' plotZerosVsDepth(sce_small)
 NULL
 
 
 
+# zerosVsDepth =================================================================
 .zerosVsDepth.matrix <-  # nolint
     function(object) {
-        # Using a logical matrix is faster and more memory efficient.
-        # Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
         present <- object > 0L
         DataFrame(
             dropout = (nrow(present) - colSums(present)) / nrow(present),
@@ -39,11 +30,12 @@ NULL
 
 
 
+# Using a logical matrix is faster and more memory efficient.
+# Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
 .zerosVsDepth.sparseMatrix <-  # nolint
     function(object) {
+        stopifnot(is(object, "sparseMatrix"))
         stopifnot(!is(object, "lgCMatrix"))
-        # Using a logical matrix is faster and more memory efficient.
-        # Ensure dgTMatrix gets coereced to dgCMatrix prior to logical.
         present <- object %>%
             as("dgCMatrix") %>%
             as("lgCMatrix")
@@ -56,8 +48,40 @@ NULL
 
 
 
-#' @rdname plotZerosVsDepth
-#' @export
+.zerosVsDepth.SE <-  # nolint
+    function(
+        object,
+        assay = 1L
+    ) {
+        assert_is_scalar(assay)
+        counts <- assays(object)[[assay]]
+        data <- zerosVsDepth(counts)
+        sampleData <- sampleData(object)
+        assert_are_identical(rownames(data), rownames(sampleData))
+        assert_are_disjoint_sets(colnames(data), colnames(sampleData))
+        cbind(data, sampleData)
+    }
+
+
+
+.zerosVsDepth.SCE <-  # nolint
+    function(
+        object,
+        assay = 1L
+    ) {
+        assert_is_scalar(assay)
+        counts <- assays(object)[[assay]]
+        data <- zerosVsDepth(counts)
+        # Add sample ID column.
+        data[["sampleID"]] <- cell2sample(object)
+        # Join the sample data.
+        sampleData <- sampleData(object)
+        sampleData[["sampleID"]] <- as.factor(rownames(sampleData))
+        left_join(x = data, y = sampleData, by = "sampleID")
+    }
+
+
+
 setMethod(
     f = "zerosVsDepth",
     signature = signature("matrix"),
@@ -66,8 +90,6 @@ setMethod(
 
 
 
-#' @rdname plotZerosVsDepth
-#' @export
 setMethod(
     f = "zerosVsDepth",
     signature = signature("sparseMatrix"),
@@ -76,33 +98,71 @@ setMethod(
 
 
 
+setMethod(
+    f = "zerosVsDepth",
+    signature = signature("SummarizedExperiment"),
+    definition = .zerosVsDepth.SE
+)
+
+
+
+setMethod(
+    f = "zerosVsDepth",
+    signature = signature("SingleCellExperiment"),
+    definition = .zerosVsDepth.SCE
+)
+
+
+
 # plotZerosVsDepth =============================================================
-.plotZerosVsDepth.matrix <-  # nolint
+.plotZerosVsDepth.SE <-  # nolint
     function(
         object,
+        interestingGroups = NULL,
+        color = getOption("basejump.discrete.color", NULL),
         title = "zeros vs. depth"
     ) {
         validObject(object)
+        interestingGroups <- matchInterestingGroups(
+            object = object,
+            interestingGroups = interestingGroups
+        )
+        interestingGroups(object) <- interestingGroups
+        assertIsColorScaleDiscreteOrNULL(color)
         assertIsAStringOrNULL(title)
 
-        data <- zerosVsDepth(object) %>%
-            as_tibble()
+        data <- zerosVsDepth(object)
 
         p <- ggplot(
-            data = data,
+            data = as(data, "tbl_df"),
             mapping = aes(
                 x = !!sym("depth"),
-                y = !!sym("dropout")
+                y = !!sym("dropout"),
+                color = !!sym("interestingGroups")
             )
         ) +
-            geom_point(size = 0.8) +
+            geom_point(size = 0.8, alpha = 0.8) +
             expand_limits(y = c(0L, 1L)) +
             scale_x_continuous(trans = "log10") +
             labs(
                 title = title,
                 x = "library size (depth)",
-                y = "dropout rate"
+                y = "dropout rate",
+                color = paste(interestingGroups, collapse = ":\n")
             )
+
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+
+        # Wrap samples by `aggregate` column, if defined.
+        facets <- NULL
+        if (isTRUE(.hasAggregate(data))) {
+            facets <- "aggregate"
+        }
+        if (is.character(facets)) {
+            p <- p + facet_wrap(facets = syms(facets), scales = "free")
+        }
 
         p
     }
@@ -113,16 +173,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotZerosVsDepth",
-    signature = signature("matrix"),
-    definition = .plotZerosVsDepth.matrix
-)
-
-
-
-#' @rdname plotZerosVsDepth
-#' @export
-setMethod(
-    f = "plotZerosVsDepth",
-    signature = signature("sparseMatrix"),
-    definition = getMethod("plotZerosVsDepth", "matrix")
+    signature = signature("SummarizedExperiment"),
+    definition = .plotZerosVsDepth.SE
 )

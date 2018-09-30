@@ -537,8 +537,6 @@ setGeneric(
 
 
 
-#' @rdname plotZerosVsDepth
-#' @export
 setGeneric(
     name = "zerosVsDepth",
     def = function(object, ...) {

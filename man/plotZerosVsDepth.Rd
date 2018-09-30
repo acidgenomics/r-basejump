@@ -3,24 +3,14 @@
 \docType{methods}
 \name{plotZerosVsDepth}
 \alias{plotZerosVsDepth}
-\alias{zerosVsDepth}
-\alias{zerosVsDepth,matrix-method}
-\alias{zerosVsDepth,sparseMatrix-method}
-\alias{plotZerosVsDepth,matrix-method}
-\alias{plotZerosVsDepth,sparseMatrix-method}
+\alias{plotZerosVsDepth,SummarizedExperiment-method}
 \title{Plot Percentage of Zeros vs. Library Depth}
 \usage{
 plotZerosVsDepth(object, ...)
 
-zerosVsDepth(object, ...)
-
-\S4method{zerosVsDepth}{matrix}(object)
-
-\S4method{zerosVsDepth}{sparseMatrix}(object)
-
-\S4method{plotZerosVsDepth}{matrix}(object, title = "zeros vs. depth")
-
-\S4method{plotZerosVsDepth}{sparseMatrix}(object,
+\S4method{plotZerosVsDepth}{SummarizedExperiment}(object,
+  interestingGroups = NULL,
+  color = getOption("basejump.discrete.color", NULL),
   title = "zeros vs. depth")
 }
 \arguments{
@@ -28,20 +18,25 @@ zerosVsDepth(object, ...)
 
 \item{...}{Additional arguments.}
 
+\item{interestingGroups}{\code{character}. Groups of interest.}
+
+\item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
+scale. Must supply discrete values. When set to \code{NULL}, the default ggplot2
+color palette will be used. If manual color definitions are desired, we
+recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}. To set the discrete color
+palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_color_viridis_d())}.}
+
 \item{title}{\code{string}. Plot title.}
 }
 \value{
-\code{DataFrame} or \code{ggplot}.
+\code{ggplot} or \code{DataFrame}.
 }
 \description{
-Calculate the dropout rate.
+Calculate and visualize the dropout rate.
 }
 \examples{
-# sparseMatrix ====
-single_cell_counts <- counts(sce_small)
-x <- zerosVsDepth(single_cell_counts)
-print(x)
-plotZerosVsDepth(single_cell_counts)
+# SingleCellExperiment ====
+plotZerosVsDepth(sce_small)
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
