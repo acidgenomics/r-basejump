@@ -16,10 +16,13 @@ selectSamples(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional arguments.}
+\item{...}{Selection arguments that map to the column names of
+\code{\link[=sampleData]{sampleData()}}. \code{atomic} values are supported. Avoid using \code{logical} or
+\code{numeric} indices (e.g. \code{\link[base:which]{base::which()}} calls) here, for improved code
+readability.}
 }
 \value{
-\code{SingleCellExperiment}.
+Modified object, with selected samples.
 }
 \description{
 Utility function that enables quick an easy sample selection in Bioconductor

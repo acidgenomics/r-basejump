@@ -1,7 +1,3 @@
-# FIXME Improve the "..." documentation here.
-
-
-
 #' Select Samples
 #'
 #' Utility function that enables quick an easy sample selection in Bioconductor
@@ -21,8 +17,12 @@
 #' @export
 #'
 #' @inheritParams general
+#' @param ... Selection arguments that map to the column names of
+#'   [sampleData()]. `atomic` values are supported. Avoid using `logical` or
+#'   `numeric` indices (e.g. [base::which()] calls) here, for improved code
+#'   readability.
 #'
-#' @return `SingleCellExperiment`.
+#' @return Modified object, with selected samples.
 #'
 #' @seealso
 #' - [sampleData()].
@@ -160,8 +160,8 @@ NULL
 #' @rdname selectSamples
 #' @export
 setMethod(
-    "selectSamples",
-    signature("SummarizedExperiment"),
+    f = "selectSamples",
+    signature = signature("SummarizedExperiment"),
     definition = .selectSamples.SE
 )
 
