@@ -5,6 +5,7 @@
 \alias{plotCountsPerBiotype}
 \alias{plotCountsPerBroadClass}
 \alias{plotCountsPerBiotype,SummarizedExperiment-method}
+\alias{plotCountsPerBroadClass,SummarizedExperiment-method}
 \title{Plot Counts per Biotype}
 \usage{
 plotCountsPerBiotype(object, ...)
@@ -12,7 +13,11 @@ plotCountsPerBiotype(object, ...)
 plotCountsPerBroadClass(object, ...)
 
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
-  n = 9L, interestingGroups = NULL, trans = "log2", points = FALSE,
+  n = 9L, interestingGroups = NULL, trans = "log2",
+  countsAxisLabel = "counts")
+
+\S4method{plotCountsPerBroadClass}{SummarizedExperiment}(object,
+  assay = 1L, interestingGroups = NULL, trans = "log2",
   countsAxisLabel = "counts")
 }
 \arguments{
