@@ -29,8 +29,9 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{metricsPerSample}}, \code{\link{metrics}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{topCells}},
-  \code{\link{tpm}}, \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}},
+  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
+  \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh

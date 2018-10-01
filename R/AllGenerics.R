@@ -504,12 +504,12 @@ setGeneric(
 
 
 
-#' @rdname topCells
+#' @rdname topCellsPerSample
 #' @export
 setGeneric(
-    "topCells",
+    "topCellsPerSample",
     function(object, ...) {
-        standardGeneric("topCells")
+        standardGeneric("topCellsPerSample")
     }
 )
 

@@ -204,6 +204,7 @@ Collate:
     'subsetPerSample-methods.R'
     'tidy-methods.R'
     'toStringUnique.R'
+    'topCells-methods.R'
     'tpm-methods.R'
     'transmit.R'
     'tx2gene-methods.R'
