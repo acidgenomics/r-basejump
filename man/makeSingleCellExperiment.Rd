@@ -48,55 +48,17 @@ slot:
 }
 }
 \examples{
-# Rows (genes)
-genes <- c(
-    "EGFP",  # transgene (see below)
-    paste0("gene", seq_len(3L))
-)
-print(genes)
+object <- sce_small
+assays <- assays(object)
+rowRanges <- rowRanges(object)
+colData <- colData(object)
+metadata <- metadata(object)
 
-# Columns (samples)
-samples <- paste0("sample", seq_len(4L))
-print(samples)
-
-# Counts (assay)
-counts <- matrix(
-    data = seq_len(16L),
-    nrow = 4L,
-    ncol = 4L,
-    dimnames = list(genes, samples)
-)
-# Primary assay must be named "counts".
-assays <- list(counts = counts)
-print(assays)
-
-# Row data (genomic ranges)
-rowRanges <- GRanges(
-    seqnames = rep("1", times = 3L),
-    ranges = IRanges(
-        start = seq(from = 1L, to = 201L, by = 100L),
-        end = seq(from = 100L, to = 300L, by = 100L)
-    )
-)
-# Note that we haven't defined the transgene here.
-# It will be handled automatically in the function call.
-names(rowRanges) <- paste0("gene", seq_len(3L))
-print(rowRanges)
-
-# Column data
-colData <- DataFrame(
-    genotype = rep(c("wildtype", "knockout"), times = 1L, each = 2L),
-    age = rep(c(3L, 6L), 2L),
-    row.names = samples
-)
-print(colData)
-
-# Note that this returns with the dimnames sorted.
-x <- makeSummarizedExperiment(
+x <- makeSingleCellExperiment(
     assays = assays,
     rowRanges = rowRanges,
     colData = colData,
-    transgeneNames = "EGFP"
+    metadata = metadata
 )
 print(x)
 }

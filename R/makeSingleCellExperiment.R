@@ -1,7 +1,3 @@
-# FIXME Improve the documentation.
-
-
-
 #' Make Single-Cell Experiment
 #'
 #' @family Data Functions
@@ -12,6 +8,21 @@
 #' @inheritParams general
 #'
 #' @return `SingleCellExperiment`.
+#'
+#' @examples
+#' object <- sce_small
+#' assays <- assays(object)
+#' rowRanges <- rowRanges(object)
+#' colData <- colData(object)
+#' metadata <- metadata(object)
+#'
+#' x <- makeSingleCellExperiment(
+#'     assays = assays,
+#'     rowRanges = rowRanges,
+#'     colData = colData,
+#'     metadata = metadata
+#' )
+#' print(x)
 makeSingleCellExperiment <- function(
     assays,
     rowRanges,
@@ -32,16 +43,13 @@ makeSingleCellExperiment <- function(
     )
 
     # Then coerce to SingleCellExperiment.
+    # Note that `as()` method isn't currently returning valid.
     sce <- SingleCellExperiment(
         assays = assays(rse),
         rowRanges = rowRanges(rse),
         colData = colData(rse),
         metadata = metadata(rse)
     )
-
-    # Now coerce to SingleCellExperiment.
-    # FIXME This isn't returning valid...
-    # sce <- as(rse, "SingleCellExperiment")
 
     # Optionally, use `isSpike` internally to define the `spikeNames`.
     if (is.character(spikeNames)) {
