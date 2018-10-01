@@ -29,7 +29,6 @@ NULL
         n = 9L,
         interestingGroups = NULL,
         trans = "log2",
-        points = FALSE,
         countsAxisLabel = "counts"
     ) {
         validObject(object)
@@ -41,13 +40,18 @@ NULL
         )
         interestingGroups(object) <- interestingGroups
         assert_is_a_string(trans)
-        assert_is_a_bool(points)
         assert_is_a_string(countsAxisLabel)
 
         rowData <- rowData(object)
-        # FIXME Detect gene/transcript automatically.
-        biotypeCol <- "geneBiotype"
+
+        # Determine whether to use transcripts or genes automatically.
+        if ("transcriptBiotype" %in% colnames(rowData)) {
+            biotypeCol <- "transcriptBiotype"
+        } else {
+            biotypeCol <- "geneBiotype"
+        }
         assert_is_subset(biotypeCol, colnames(rowData))
+
         rowData <- rowData[, biotypeCol, drop = FALSE] %>%
             as("tbl_df")
 
@@ -56,6 +60,8 @@ NULL
         biotypes <- rowData %>%
             group_by(!!biotypeCol) %>%
             summarize(n = n()) %>%
+            # Require at least 10 genes.
+            filter(!!sym("n") >= 10L) %>%
             arrange(desc(!!nCol)) %>%
             top_n(n = n, wt = !!nCol) %>%
             pull(!!biotypeCol) %>%
@@ -64,9 +70,9 @@ NULL
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "sampleID")
 
-        assay <- assays(object)[[assay]]
+        counts <- assays(object)[[assay]]
 
-        data <- assay %>%
+        data <- counts %>%
             as.matrix() %>%
             as_tibble(rownames = "rowname") %>%
             gather(
@@ -79,8 +85,7 @@ NULL
             filter(!!biotypeCol %in% !!biotypes) %>%
             left_join(sampleData, by = "sampleID")
 
-        # FIXME Need to fix the interestingGroups legend label.
-        ggplot(
+        p <- ggplot(
             data = data,
             mapping = aes(
                 x = !!sym("interestingGroups"),
@@ -106,41 +111,94 @@ NULL
                 axis.ticks.x = element_blank(),
                 axis.title.x = element_blank()
             )
+
+        p
     }
 
 
 
+# FIXME Figure out how to share formals with above function.
 .plotCountsPerBroadClass.SE <-  # nolint
-    function(object) {
-        broad_tpm <- tpm(bcb) %>%
-            as.data.frame() %>%
-            rownames_to_column("geneID") %>%
-            gather(key = sampleID, value = tpm, -geneID) %>%
-            left_join(as.data.frame(rowData(bcb)), by = "geneID") %>%
-            filter(!is.na(broadClass)) %>%
-            filter(tpm > 0)
+    function(
+        object,
+        assay = 1L,
+        interestingGroups = NULL,
+        trans = "log2",
+        countsAxisLabel = "counts"
+    ) {
+        validObject(object)
+        assert_is_scalar(assay)
+        interestingGroups <- matchInterestingGroups(
+            object = object,
+            interestingGroups = interestingGroups
+        )
+        interestingGroups(object) <- interestingGroups
+        assert_is_a_string(trans)
+        assert_is_a_string(countsAxisLabel)
 
-        ggplot(
-            data = broad_tpm,
+        rowData <- rowData(object)
+        biotypeCol <- "broadClass"
+        assert_is_subset(biotypeCol, colnames(rowData))
+        rowData <- rowData[, biotypeCol, drop = FALSE] %>%
+            as("tbl_df")
+
+        nCol <- sym("n")
+        biotypeCol <- sym(biotypeCol)
+        biotypes <- rowData %>%
+            group_by(!!biotypeCol) %>%
+            summarize(n = n()) %>%
+            # Require at least 10 genes.
+            filter(!!sym("n") >= 10L) %>%
+            arrange(desc(!!nCol)) %>%
+            pull(!!biotypeCol) %>%
+            as.character()
+
+        sampleData <- sampleData(object) %>%
+            as_tibble(rownames = "sampleID")
+
+        counts <- assays(object)[[assay]]
+
+        data <- counts %>%
+            as.matrix() %>%
+            as_tibble(rownames = "rowname") %>%
+            gather(
+                key = "sampleID",
+                value = "counts",
+                -UQ(sym("rowname"))
+            ) %>%
+            filter(!!sym("counts") > 0L) %>%
+            left_join(rowData, by = "rowname") %>%
+            filter(!!biotypeCol %in% !!biotypes) %>%
+            left_join(sampleData, by = "sampleID")
+
+        p <- ggplot(
+            data = data,
             mapping = aes(
-                x = sampleID,
-                y = tpm,
-                fill = sampleID
+                x = !!sym("interestingGroups"),
+                y = !!sym("counts")
             )
         ) +
             geom_violin(
+                mapping = aes(fill = !!sym("interestingGroups")),
                 color = "black",
-                scale = "area"
+                scale = "area",
+                trim = TRUE
             ) +
-            facet_wrap(~broadClass, scales = "free_y") +
-            scale_y_log10() +
+            scale_y_continuous(trans = trans) +
+            facet_wrap(facets = biotypeCol, scales = "free_y") +
             labs(
-                title = "tpm per broad biotype class",
+                title = "counts per broad class",
                 x = NULL,
-                y = "transcripts per million (tpm)"
+                y = countsAxisLabel,
+                fill = paste(interestingGroups, collapse = ":\n")
             ) +
-            guides(fill = FALSE) +
-            theme(axis.text.x = element_text(angle = 90L, hjust = 1L, vjust = 0.5))
+            theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                axis.title.x = element_blank()
+            )
+
+        p
     }
 
 
@@ -151,4 +209,14 @@ setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SummarizedExperiment"),
     definition = .plotCountsPerBiotype.SE
+)
+
+
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
+    f = "plotCountsPerBroadClass",
+    signature = signature("SummarizedExperiment"),
+    definition = .plotCountsPerBroadClass.SE
 )
