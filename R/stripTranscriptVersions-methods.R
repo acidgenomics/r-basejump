@@ -29,14 +29,18 @@ NULL
 
 .stripTranscriptVersions.character <-  # nolint
     function(object) {
-        # Pattern matching against Ensembl transcript IDs
+        # Pattern matching against Ensembl transcript IDs.
         # http://www.ensembl.org/info/genome/stable_ids/index.html
-        # Examples: ENST (human); ENSMUST (mouse)
+        # Examples: ENST (human); ENSMUST (mouse).
         assert_is_character(object)
         assert_all_are_not_na(object)
         assert_all_are_non_missing_nor_empty_character(object)
-        # punct will match `-` or `_` here
-        gsub("^(ENS.*T\\d{11})[[:punct:]]\\d+$", "\\1", object)
+        # punct will match `-` or `_` here.
+        gsub(
+            pattern = "^(ENS.*[GT][[:digit:]]{11})[[:punct:]][[:digit:]]+$",
+            replacement = "\\1",
+            object
+        )
     }
 
 
