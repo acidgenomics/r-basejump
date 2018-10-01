@@ -1,9 +1,3 @@
-# FIXME Add plotting support for broadClass.
-# FIXME Detect gene or transcript-level automatically.
-# FIXME Add SingleCellExperiment method support.
-
-
-
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
@@ -52,38 +46,56 @@ NULL
         }
         assert_is_subset(biotypeCol, colnames(rowData))
 
+        # Coerce the row data to a tibble containing our column of interest.
         rowData <- rowData[, biotypeCol, drop = FALSE] %>%
             as("tbl_df")
 
-        nCol <- sym("n")
-        biotypeCol <- sym(biotypeCol)
+        # Get the top biotypes from the row data.
         biotypes <- rowData %>%
-            group_by(!!biotypeCol) %>%
+            group_by(!!sym(biotypeCol)) %>%
             summarize(n = n()) %>%
             # Require at least 10 genes.
             filter(!!sym("n") >= 10L) %>%
-            arrange(desc(!!nCol)) %>%
-            top_n(n = n, wt = !!nCol) %>%
-            pull(!!biotypeCol) %>%
+            arrange(desc(!!sym("n"))) %>%
+            top_n(n = n, wt = !!sym("n")) %>%
+            pull(!!sym(biotypeCol)) %>%
             as.character()
 
+        # Coerce the sample data to a tibble.
         sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "sampleID")
+            as_tibble(rownames = "sampleID") %>%
+            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
-        counts <- assays(object)[[assay]]
-
-        data <- counts %>%
+        # Gather the counts into a long tibble.
+        data <- assays(object)[[assay]] %>%
+            # Ensure sparse matrix is coerced to dense.
             as.matrix() %>%
             as_tibble(rownames = "rowname") %>%
+            group_by(!!sym("rowname")) %>%
             gather(
-                key = "sampleID",
+                key = "colname",
                 value = "counts",
                 -UQ(sym("rowname"))
-            ) %>%
+            )
+
+        # SingleCellExperiment requires cell2sample mapping.
+        if (is(object, "SingleCellExperiment")) {
+            c2s <- cell2sample(object, return = "tibble") %>%
+                rename(!!sym("colname") := !!sym("cellID"))
+            data <- left_join(data, c2s, by = "colname")
+        } else {
+            data <- rename(data, !!sym("sampleID") := !!sym("colname"))
+        }
+
+        # Prepare the minimal tibble required for plotting.
+        data <- data %>%
+            # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
             left_join(rowData, by = "rowname") %>%
-            filter(!!biotypeCol %in% !!biotypes) %>%
-            left_join(sampleData, by = "sampleID")
+            filter(!!sym(biotypeCol) %in% !!biotypes) %>%
+            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
+            left_join(sampleData, by = "sampleID") %>%
+            select(!!!syms(c("counts", "interestingGroups", biotypeCol)))
 
         p <- ggplot(
             data = data,
@@ -99,7 +111,7 @@ NULL
                 trim = TRUE
             ) +
             scale_y_continuous(trans = trans) +
-            facet_wrap(facets = biotypeCol, scales = "free_y") +
+            facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
                 title = "counts per biotype",
                 x = NULL,
@@ -117,7 +129,6 @@ NULL
 
 
 
-# FIXME Figure out how to share formals with above function.
 .plotCountsPerBroadClass.SE <-  # nolint
     function(
         object,
@@ -142,33 +153,44 @@ NULL
         rowData <- rowData[, biotypeCol, drop = FALSE] %>%
             as("tbl_df")
 
-        nCol <- sym("n")
-        biotypeCol <- sym(biotypeCol)
         biotypes <- rowData %>%
-            group_by(!!biotypeCol) %>%
+            group_by(!!sym(biotypeCol)) %>%
             summarize(n = n()) %>%
             # Require at least 10 genes.
             filter(!!sym("n") >= 10L) %>%
-            arrange(desc(!!nCol)) %>%
-            pull(!!biotypeCol) %>%
+            arrange(desc(!!sym("n"))) %>%
+            pull(!!sym(biotypeCol)) %>%
             as.character()
 
+        # Coerce the sample data to a tibble.
         sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "sampleID")
+            as_tibble(rownames = "sampleID") %>%
+            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
-        counts <- assays(object)[[assay]]
-
-        data <- counts %>%
+        data <- assays(object)[[assay]] %>%
+            # Ensure sparse matrix is coerced to dense.
             as.matrix() %>%
             as_tibble(rownames = "rowname") %>%
             gather(
-                key = "sampleID",
+                key = "colname",
                 value = "counts",
                 -UQ(sym("rowname"))
-            ) %>%
+            )
+
+        # SingleCellExperiment requires cell2sample mapping.
+        if (is(object, "SingleCellExperiment")) {
+            c2s <- cell2sample(object, return = "tibble") %>%
+                rename(!!sym("colname") := !!sym("cellID"))
+            data <- left_join(data, c2s, by = "colname")
+        } else {
+            data <- rename(data, !!sym("sampleID") := !!sym("colname"))
+        }
+
+        data <- data %>%
             filter(!!sym("counts") > 0L) %>%
             left_join(rowData, by = "rowname") %>%
-            filter(!!biotypeCol %in% !!biotypes) %>%
+            filter(!!sym(biotypeCol) %in% !!biotypes) %>%
+            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
             left_join(sampleData, by = "sampleID")
 
         p <- ggplot(
@@ -185,7 +207,7 @@ NULL
                 trim = TRUE
             ) +
             scale_y_continuous(trans = trans) +
-            facet_wrap(facets = biotypeCol, scales = "free_y") +
+            facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
                 title = "counts per broad class",
                 x = NULL,
@@ -216,7 +238,33 @@ setMethod(
 #' @rdname plotCountsPerBiotype
 #' @export
 setMethod(
+    f = "plotCountsPerBiotype",
+    signature = signature("SingleCellExperiment"),
+    definition = getMethod(
+        f = "plotCountsPerBiotype",
+        signature = signature("SummarizedExperiment")
+    )
+)
+
+
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
     f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
     definition = .plotCountsPerBroadClass.SE
+)
+
+
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
+    f = "plotCountsPerBroadClass",
+    signature = signature("SingleCellExperiment"),
+    definition = getMethod(
+        f = "plotCountsPerBroadClass",
+        signature = signature("SummarizedExperiment")
+    )
 )
