@@ -12,8 +12,8 @@ plotHeatmap(object, ...)
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = NULL, borderColor = NULL,
-  title = NULL, ...)
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}

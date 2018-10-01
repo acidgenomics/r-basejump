@@ -81,7 +81,7 @@ NULL
         treeheightRow = 0L,
         treeheightCol = 50L,
         color = viridis::viridis,
-        legendColor = NULL,
+        legendColor = viridis::viridis,
         borderColor = NULL,
         title = NULL,
         ...

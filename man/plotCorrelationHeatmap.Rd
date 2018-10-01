@@ -13,8 +13,8 @@ plotCorrelationHeatmap(object, ...)
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
-  color = viridis::viridis, legendColor = NULL, borderColor = NULL,
-  title = TRUE, ...)
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = TRUE, ...)
 }
 \arguments{
 \item{object}{Object.}

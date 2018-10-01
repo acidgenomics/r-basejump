@@ -12,7 +12,7 @@ plotQuantileHeatmap(object, ...)
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
   treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legend = FALSE, legendColor = NULL, borderColor = NULL,
+  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
   title = NULL, ...)
 }
 \arguments{
@@ -58,11 +58,11 @@ Refer to the RColorBrewer package for hexadecimal color palettes that may
 be suitable. If set \code{NULL}, will use the default pheatmap colors.
 }}
 
-\item{legend}{\code{boolean}. Show the color legend.}
-
 \item{legendColor}{\code{function} or \code{NULL}. Hexadecimal color function to use
 for legend labels. Note that hexadecimal values are not supported. If set
 \code{NULL}, will use the default pheatmap colors.}
+
+\item{legend}{\code{boolean}. Show the color legend.}
 
 \item{borderColor}{\code{string} or \code{NULL}. Border color. Disabled by default for
 improved aesthetics.}
