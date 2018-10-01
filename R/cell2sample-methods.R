@@ -19,14 +19,27 @@ NULL
 
 
 .cell2sample.SCE <-  # nolint
-    function(object) {
+    function(
+        object,
+        return = c("factor", "tibble")
+    ) {
         validObject(object)
         assert_is_subset("sampleID", colnames(colData(object)))
-        sample <- colData(object)[["sampleID"]]
-        assert_is_factor(sample)
-        cell <- colnames(object)
-        names(sample) <- cell
-        sample
+        return <- match.arg(return)
+
+        colData <- colData(object)
+
+        if (return == "factor") {
+            sample <- colData[["sampleID"]]
+            assert_is_factor(sample)
+            cell <- colnames(object)
+            names(sample) <- cell
+            sample
+        } else if (return == "tibble") {
+            colData %>%
+                as_tibble(rownames = "cellID") %>%
+                select(!!!syms(c("cellID", "sampleID")))
+        }
     }
 
 
