@@ -504,6 +504,17 @@ setGeneric(
 
 
 
+#' @rdname topCells
+#' @export
+setGeneric(
+    "topCells",
+    function(object, ...) {
+        standardGeneric("topCells")
+    }
+)
+
+
+
 #' @rdname tx2gene
 #' @export
 setGeneric(
