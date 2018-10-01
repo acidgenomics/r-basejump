@@ -1,8 +1,11 @@
-# SingleCellExperiment Example Data
-# 2018-09-30
+# SingleCellExperiment Example
+# 2018-10-01
 
 library(splatter)
 library(tidyverse)
+
+organism <- "Homo sapiens"
+release <- 92L
 
 # Restrict to 1 MB per file.
 limit <- structure(1e6, class = "object_size")
@@ -50,15 +53,15 @@ counts <- as(counts, "sparseMatrix")
 assays(sce) <- list(counts = counts)
 
 # Prepare row data.
-gr <- makeGRangesFromEnsembl(organism = "Homo sapiens")
-gr <- gr[seq_len(nrow(sce))]
+rowRanges <- makeGRangesFromEnsembl(organism, release = release)
+rowRanges <- rowRanges[seq_len(nrow(sce))]
 # Include only minimal columns.
-mcols(gr) <- mcols(gr) %>%
+mcols(rowRanges) <- mcols(rowRanges) %>%
     as("tbl_df") %>%
-    select(rowname, broadClass, geneBiotype, geneID, geneName) %>%
+    select(rowname, geneID, geneName, geneBiotype, broadClass) %>%
     mutate_if(is.factor, droplevels) %>%
     as("DataFrame")
-rowRanges(sce) <- gr
+rowRanges(sce) <- rowRanges
 
 # Stash minimal metadata.
 metadata(sce) <- list(date = Sys.Date())
