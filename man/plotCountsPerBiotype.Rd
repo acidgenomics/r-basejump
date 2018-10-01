@@ -58,6 +58,6 @@ Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{
-Rory Kirchner, Michael Steinbaugh
+Michael Steinbaugh, Rory Kirchner
 }
 \concept{Plot Functions}
