@@ -29,7 +29,7 @@ palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_col
 \item{title}{\code{string}. Plot title.}
 }
 \value{
-\code{ggplot} or \code{DataFrame}.
+\code{ggplot}.
 }
 \description{
 Calculate and visualize the dropout rate.

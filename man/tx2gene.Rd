@@ -37,7 +37,8 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}}
+  \code{\link{subsetPerSample}}, \code{\link{topCells}},
+  \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
