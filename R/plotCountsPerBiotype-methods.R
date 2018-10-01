@@ -1,5 +1,6 @@
 # FIXME Add plotting support for broadClass.
 # FIXME Detect gene or transcript-level automatically.
+# FIXME Add SingleCellExperiment method support.
 
 
 
@@ -43,8 +44,6 @@ NULL
         assert_is_a_bool(points)
         assert_is_a_string(countsAxisLabel)
 
-        assay <- assays(object)[[assay]]
-
         rowData <- rowData(object)
         # FIXME Detect gene/transcript automatically.
         biotypeCol <- "geneBiotype"
@@ -65,7 +64,10 @@ NULL
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "sampleID")
 
+        assay <- assays(object)[[assay]]
+
         data <- assay %>%
+            as.matrix() %>%
             as_tibble(rownames = "rowname") %>%
             gather(
                 key = "sampleID",
