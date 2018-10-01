@@ -42,7 +42,7 @@ colnames(sce) <- colnames(sce) %>%
 colData(sce) <- camel(colData(sce))
 # Add `sampleID` column. Note that `sampleName` is recommended, but if it is
 # not defined, it should be generated from the `sampleID` automatically.
-sce$sampleID <- factor(gsub("group", "sample", camel(sce$batch)))
+sce$sampleID <- factor(gsub("group", "sample", camel(sce$group)))
 sce$batch <- NULL
 sce$cell <- NULL
 sce$group <- NULL
