@@ -1,7 +1,3 @@
-# FIXME Ensure geneBiotype and broadClass are defined.
-
-
-
 # SummarizedExperiment Example
 # Last updated 2018-10-01
 
