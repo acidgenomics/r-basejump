@@ -31,8 +31,17 @@ makeSingleCellExperiment <- function(
         spikeNames = spikeNames
     )
 
+    # Then coerce to SingleCellExperiment.
+    sce <- SingleCellExperiment(
+        assays = assays(rse),
+        rowRanges = rowRanges(rse),
+        colData = colData(rse),
+        metadata = metadata(rse)
+    )
+
     # Now coerce to SingleCellExperiment.
-    sce <- as(rse, "SingleCellExperiment")
+    # FIXME This isn't returning valid...
+    # sce <- as(rse, "SingleCellExperiment")
 
     # Optionally, use `isSpike` internally to define the `spikeNames`.
     if (is.character(spikeNames)) {
@@ -41,5 +50,6 @@ makeSingleCellExperiment <- function(
         }
     }
 
+    validObject(sce)
     sce
 }
