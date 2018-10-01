@@ -1,8 +1,8 @@
-#' Top Cells
+#' Top Cells per Sample
 #'
 #' Obtain the top cellular barcodes, based on counts.
 #'
-#' @name topCells
+#' @name topCellsPerSample
 #' @family Data Functions
 #' @author Michael Steinbaugh
 #'
@@ -12,13 +12,13 @@
 #' @return `list`. Top barcodes as `character`, split by `sampleID`.
 #'
 #' @examples
-#' x <- topCells(sce_small)
+#' x <- topCellsPerSample(sce_small)
 #' lapply(x, head)
 NULL
 
 
 
-.topCells.SCE <-  # nolint
+.topCellsPerSample.SCE <-  # nolint
     function(object, n = 100L) {
         validObject(object)
         assertIsAnImplicitInteger(n)
@@ -41,10 +41,10 @@ NULL
 
 
 
-#' @rdname topCells
+#' @rdname topCellsPerSample
 #' @export
 setMethod(
-    f = "topCells",
+    f = "topCellsPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = .topCells.SCE
+    definition = .topCellsPerSample.SCE
 )
