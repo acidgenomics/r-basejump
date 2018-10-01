@@ -2,7 +2,7 @@
 #'
 #' @name plotCountsPerBiotype
 #' @family Plot Functions
-#' @author Rory Kirchner, Michael Steinbaugh
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'
 #' @seealso [broadClass()].
