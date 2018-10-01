@@ -144,8 +144,8 @@ Other Data Functions: \code{\link{cell2sample}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{topCells}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

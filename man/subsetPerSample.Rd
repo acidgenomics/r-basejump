@@ -66,8 +66,8 @@ Other Data Functions: \code{\link{aggregateCols}},
   \code{\link{metricsPerSample}}, \code{\link{metrics}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{selectSamples}}, \code{\link{topCells}},
+  \code{\link{tpm}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
