@@ -40,15 +40,15 @@
 #' @importFrom curl has_internet
 #' @importFrom dplyr arrange bind_rows case_when filter funs group_by left_join
 #'   mutate mutate_all mutate_at mutate_if pull rename select select_if
-#'   summarize_all top_n ungroup
+#'   summarize summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
 #' @importFrom ggplot2 aes coord_flip element_blank element_line element_rect
 #'   element_text expand_limits facet_wrap geom_bar geom_boxplot geom_density
-#'   geom_hline geom_label geom_point geom_violin geom_vline ggplot guides labs
-#'   position_jitterdodge scale_x_continuous scale_y_continuous stat_ecdf
-#'   stat_summary theme theme_linedraw
+#'   geom_hline geom_jitter geom_label geom_point geom_violin geom_vline ggplot
+#'   guides labs position_jitterdodge scale_x_continuous scale_y_continuous
+#'   stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom grDevices colorRampPalette
 #' @importFrom grid arrow unit
@@ -79,7 +79,7 @@
 #' @importFrom SummarizedExperiment assay assayNames assays assays<- colData
 #'   colData<- rowData rowRanges SummarizedExperiment
 #' @importFrom tibble as_tibble column_to_rownames
-#' @importFrom tidyr separate unite
+#' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
 #' @importFrom tools Rd_db
 #' @importFrom utils capture.output download.file globalVariables
