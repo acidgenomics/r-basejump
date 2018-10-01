@@ -8,12 +8,16 @@
 \usage{
 cell2sample(object, ...)
 
-\S4method{cell2sample}{SingleCellExperiment}(object)
+\S4method{cell2sample}{SingleCellExperiment}(object, return = c("factor",
+  "tibble"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{return}{Object class to return. Uses \code{\link[=match.arg]{match.arg()}} internally and picks
+the first item in the vector by default.}
 }
 \value{
 Named \code{factor} containing sample IDs as the levels and cell IDs as
