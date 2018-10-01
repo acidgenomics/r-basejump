@@ -127,7 +127,15 @@ import <- function(file, ...) {
     } else if (ext == "counts") {
         # bcbio counts output
         args[["na"]] <- na
-        data <- do.call(what = read_tsv, args = args) %>%
+        data <- do.call(what = read_tsv, args = args)
+        assert_is_subset("id", colnames(data))
+        # Ensure transcript versions are stripped.
+        id <- data[["id"]]
+        id <- stripTranscriptVersions(id)
+        assert_has_no_duplicates(id)
+        data[["id"]] <- id
+        # Coerce to matrix.
+        data <- data %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
             as.matrix()
