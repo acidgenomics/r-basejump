@@ -72,7 +72,7 @@
 #' @importFrom S4Vectors %in% aggregate as.data.frame as.list complete.cases cor
 #'   head mcols mcols<- metadata metadata<- na.omit setdiff tail
 #' @importFrom sessioninfo session_info
-#' @importFrom SingleCellExperiment isSpike<- spikeNames
+#' @importFrom SingleCellExperiment isSpike<- SingleCellExperiment spikeNames
 #' @importFrom stats as.formula dist hclust quantile
 #' @importFrom stringr regex str_dup str_extract str_length str_match str_pad
 #'   str_replace str_replace_all str_replace_na str_subset str_trunc
