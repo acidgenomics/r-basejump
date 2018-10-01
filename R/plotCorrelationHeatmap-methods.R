@@ -55,7 +55,7 @@ NULL
         treeheightRow = 0L,
         treeheightCol = 50L,
         color = viridis::viridis,
-        legendColor = NULL,
+        legendColor = viridis::viridis,
         borderColor = NULL,
         title = TRUE,
         ...
@@ -114,6 +114,7 @@ NULL
             error = function(e) NULL
         )
         if (has_length(sampleNames)) {
+            rownames(mat) <- sampleNames
             colnames(mat) <- sampleNames
             if (
                 has_length(annotationCol) &&

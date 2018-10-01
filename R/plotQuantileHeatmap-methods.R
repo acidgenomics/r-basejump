@@ -1,3 +1,7 @@
+# TODO Consider prompting the user for really large datasets.
+
+
+
 #' Plot Heatmap with Quantile Breaks
 #'
 #' @name plotQuantileHeatmap
@@ -59,8 +63,8 @@ setMethod(
         treeheightRow = 0L,
         treeheightCol = 50L,
         color = viridis::viridis,
+        legendColor = viridis::viridis,
         legend = FALSE,
-        legendColor = NULL,
         borderColor = NULL,
         title = NULL,
         ...

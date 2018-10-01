@@ -125,16 +125,27 @@ import <- function(file, ...) {
         args[["na"]] <- na
         data <- do.call(what = read_lines, args = args)
     } else if (ext == "counts") {
-        # bcbio counts output
+        # bcbio counts output.
         args[["na"]] <- na
         data <- do.call(what = read_tsv, args = args)
         assert_is_subset("id", colnames(data))
+
+        # Remove duplicate genes in the pseudo-autosomal region (PAR), when
+        # loading counts from GENCODE.
+        pattern <- "_PAR_[[:upper:]]$"
+        if (any(grepl(pattern, data[["id"]]))) {
+            message(paste(
+                "Removed duplicate genes in the pseudo-autosomal region (PAR)."
+            ))
+            keep <- !grepl(pattern, data[["id"]])
+            data <- data[keep, , drop = FALSE]
+        }
+
         # Ensure transcript versions are stripped.
-        id <- data[["id"]]
-        id <- stripTranscriptVersions(id)
-        assert_has_no_duplicates(id)
-        data[["id"]] <- id
+        data[["id"]] <- stripTranscriptVersions(data[["id"]])
+
         # Coerce to matrix.
+        assert_has_no_duplicates(data[["id"]])
         data <- data %>%
             as.data.frame() %>%
             column_to_rownames("id") %>%
@@ -143,7 +154,7 @@ import <- function(file, ...) {
         data <- .importGFF(file)
     } else if (ext == "mtx") {
         # MatrixMarket
-        # Require `.rownames` and `.colnames` files
+        # Require `.rownames` and `.colnames` files.
         data <- do.call(what = readMM, args = args)
         rownames <- paste(file, "rownames", sep = ".") %>%
             localOrRemoteFile() %>%
