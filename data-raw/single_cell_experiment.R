@@ -1,5 +1,5 @@
 # SingleCellExperiment Example Data
-# 2018-09-26
+# 2018-09-30
 
 library(splatter)
 library(tidyverse)
@@ -9,16 +9,18 @@ limit <- structure(1e6, class = "object_size")
 
 # Use splatter to generate an example dataset with simulated counts.
 # Note: These DE params are natural log scale.
-params <- newSplatParams()
-params <- setParam(params, name = "batchCells", value = c(100, 100))
-params <- setParam(params, name = "nGenes", value = 100)
-params <- setParam(params, name = "de.facLoc", value = 1)
-params <- setParam(params, name = "de.facScale", value = .25)
-params <- setParam(params, name = "dropout.type", value = "experiment")
-params <- setParam(params, name = "dropout.mid", value = 3)
-
-# Generate a simulated SingleCellExperiment with splatter.
-sce <- splatSimulate(params, group.prob = c(.5, .5), method = "groups")
+params <- newSplatParams() %>%
+    setParam(name = "batchCells", value = 1000) %>%
+    setParam(name = "nGenes", value = 200) %>%
+    setParam(name = "de.facLoc", value = 1) %>%
+    setParam(name = "de.facScale", value = .25) %>%
+    setParam(name = "dropout.type", value = "experiment") %>%
+    setParam(name = "dropout.mid", value = 3)
+sce <- splatSimulate(
+    params = params,
+    group.prob = c(.5, .5),
+    method = "groups"
+)
 
 # Sanitize the dimnames into camel case.
 sce <- camel(sce, rownames = TRUE, colnames = TRUE)
@@ -37,7 +39,7 @@ colnames(sce) <- colnames(sce) %>%
 colData(sce) <- camel(colData(sce))
 # Add `sampleID` column. Note that `sampleName` is recommended, but if it is
 # not defined, it should be generated from the `sampleID` automatically.
-sce$sampleID <- factor(gsub("batch", "sample", camel(sce$batch)))
+sce$sampleID <- factor(gsub("group", "sample", camel(sce$batch)))
 sce$batch <- NULL
 sce$cell <- NULL
 sce$group <- NULL
