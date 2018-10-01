@@ -1,20 +1,25 @@
-# SummarizedExperiment example objects
-# Last updated 2018-09-26
+# FIXME Ensure geneBiotype and broadClass are defined.
+
+
+
+# SummarizedExperiment Example
+# Last updated 2018-10-01
 
 library(DESeq2)
 library(tidyverse)
 
+organism <- "Homo sapiens"
+release <- 92L
+
 # Restrict to 1 MB per file.
 limit <- structure(1e6, class = "object_size")
 
-# dds_small ====================================================================
+# DESeqDataSet =================================================================
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
 dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
 stopifnot(object.size(dds) < limit)
 stopifnot(validObject(dds))
-dds_small <- dds
-saveData(dds_small, dir = "tests/testthat", compress = "xz")
 
 # rse_small ====================================================================
 # Coerce to RangedSummarizedExperiment.
@@ -35,7 +40,7 @@ colData(rse) <- DataFrame(
     row.names = colnames(rse)
 )
 # Row data. Include real `geneID`, `geneName` columns to test mapping functions.
-rowRanges <- makeGRangesFromEnsembl("Homo sapiens")
+rowRanges <- makeGRangesFromEnsembl(organism, release = release)
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
 # Note that we're keeping the original rownames from dds_small, and they won't
@@ -45,7 +50,7 @@ names(rowRanges) <- rownames(rse)
 # If factor, make sure we use `droplevels()` here to keep object small.
 mcols(rowRanges) <- mcols(rowRanges) %>%
     as("tbl_df") %>%
-    select(rowname, geneID, geneName) %>%
+    select(rowname, geneID, geneName, geneBiotype, broadClass) %>%
     mutate_all(as.character) %>%
     as("DataFrame")
 rowRanges(rse) <- rowRanges
@@ -65,7 +70,7 @@ rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
 
 # tx_se_small ==================================================================
-tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
+tx2gene <- makeTx2geneFromEnsembl(organism, release = release)
 print(tx2gene)
 # Pick transcripts that have gene overlaps, to test our aggregate code.
 transcriptIDs <- c(
