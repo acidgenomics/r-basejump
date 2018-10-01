@@ -9,6 +9,8 @@
 #'
 #' @inheritParams general
 #'
+#' @return `ggplot`.
+#'
 #' @examples
 #' plotCountsPerBiotype(rse_small)
 #' plotCountsPerBroadClass(rse_small)
@@ -71,7 +73,6 @@ NULL
             # Ensure sparse matrix is coerced to dense.
             as.matrix() %>%
             as_tibble(rownames = "rowname") %>%
-            group_by(!!sym("rowname")) %>%
             gather(
                 key = "colname",
                 value = "counts",

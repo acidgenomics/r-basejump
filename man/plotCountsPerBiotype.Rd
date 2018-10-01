@@ -42,6 +42,9 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 
 \item{countsAxisLabel}{\code{string}. Counts axis label.}
 }
+\value{
+\code{ggplot}.
+}
 \description{
 Plot Counts per Biotype
 }
