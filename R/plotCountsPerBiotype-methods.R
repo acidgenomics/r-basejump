@@ -1,3 +1,7 @@
+# FIXME Add plotting support for broadClass.
+
+
+
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
