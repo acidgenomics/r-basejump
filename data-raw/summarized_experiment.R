@@ -1,5 +1,5 @@
 # SummarizedExperiment Example
-# Last updated 2018-10-01
+# Last updated 2018-10-02
 
 library(DESeq2)
 library(tidyverse)
@@ -46,8 +46,15 @@ names(rowRanges) <- rownames(rse)
 # If factor, make sure we use `droplevels()` here to keep object small.
 mcols(rowRanges) <- mcols(rowRanges) %>%
     as("tbl_df") %>%
-    select(rowname, geneID, geneName, geneBiotype, broadClass) %>%
-    mutate_all(as.character) %>%
+    select(
+        rowname,
+        geneID,
+        geneName,
+        geneBiotype,
+        broadClass,
+        entrezID
+    ) %>%
+    mutate_if(is.factor, as.character) %>%
     as("DataFrame")
 rowRanges(rse) <- rowRanges
 # Stash the date.
