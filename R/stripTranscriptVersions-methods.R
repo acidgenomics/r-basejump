@@ -80,5 +80,8 @@ setMethod(
 setMethod(
     f = "stripTranscriptVersions",
     signature = signature("sparseMatrix"),
-    definition = getMethod("stripTranscriptVersions", "matrix")
+    definition = getMethod(
+        f = "stripTranscriptVersions",
+        signature = signature("matrix")
+    )
 )
