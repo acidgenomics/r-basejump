@@ -1,7 +1,3 @@
-# FIXME Add tryCatch for when all genes don't map (e.g. bcb_small)
-
-
-
 #' Plot Sexually Dimorphic Gender Marker Genes
 #'
 #' This is a convenience function that wraps [plotGene()] to quickly plot known
@@ -33,12 +29,14 @@ NULL
 
 
 
-.plotGenderMarkers.RSE <-  # nolint
+.plotGenderMarkers.SE <-  # nolint
     function() {
         validObject(object)
+
         # Load the relevant internal gender markers data.
         organism <- organism(object)
         markers <- basejump::gender_markers
+        # Error if the organism is not supported.
         # Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
             snake() %>%
@@ -53,17 +51,32 @@ NULL
         }
         markers <- markers[[camel(organism)]]
         assert_is_tbl_df(markers)
+
+        # Message the user instead of erroring, since many datasets don't
+        # contain the dimorphic gender markers.
+        genes <- tryCatch(
+            mapGenesToRownames(
+                object = object,
+                genes = markers[["geneID"]]
+            ),
+            error = function(e) { e }
+        )
+        if (is(genes, "error")) {
+            message(genes)
+            return(invisible())
+        }
+
         do.call(
             what = plotGene,
             args = matchArgsToDoCall(
-                args = list(genes = markers[["geneID"]])
+                args = list(genes = genes)
             )
         )
     }
 f <- methodFormals(f = "plotGene", signature = "SummarizedExperiment")
 f <- f[setdiff(names(f), "genes")]
 f[["style"]] <- "wide"
-formals(.plotGenderMarkers.RSE) <- f
+formals(.plotGenderMarkers.SE) <- f
 
 
 
@@ -71,6 +84,6 @@ formals(.plotGenderMarkers.RSE) <- f
 #' @export
 setMethod(
     "plotGenderMarkers",
-    signature("RangedSummarizedExperiment"),
-    definition = .plotGenderMarkers.RSE
+    signature("SummarizedExperiment"),
+    definition = .plotGenderMarkers.SE
 )
