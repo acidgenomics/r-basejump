@@ -4,25 +4,30 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
+#' @inheritParams general
+#'
 #' @return `hgnc2ensembl`.
 #'
 #' @examples
 #' x <- hgnc2ensembl()
 #' print(x)
-hgnc2ensembl <- function() {
+hgnc2ensembl <- function(
+    url = paste(
+        "ftp://ftp.ebi.ac.uk",
+        "pub",
+        "databases",
+        "genenames",
+        "new",
+        "tsv",
+        "hgnc_complete_set.txt",
+        sep = "/"
+    )
+) {
     stopifnot(has_internet())
+    assert_is_a_string(url)
     message("Obtaining HGNC to Ensembl gene ID mappings...")
     data <- read_tsv(
-        file = paste(
-            "ftp://ftp.ebi.ac.uk",
-            "pub",
-            "databases",
-            "genenames",
-            "new",
-            "tsv",
-            "hgnc_complete_set.txt",
-            sep = "/"
-        ),
+        file = url,
         # Suppress the column messages.
         col_types = cols(),
         progress = FALSE
