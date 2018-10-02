@@ -59,10 +59,12 @@ NULL
                 object = object,
                 genes = markers[["geneID"]]
             ),
-            error = function(e) { e }
+            error = function(e) {
+                message(as.character(e))
+                character()
+            }
         )
-        if (is(genes, "error")) {
-            message(genes)
+        if (!has_length(genes)) {
             return(invisible())
         }
 
