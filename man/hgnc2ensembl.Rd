@@ -16,7 +16,7 @@ hgnc2ensembl(.test = FALSE)
 HGNC to Ensembl Gene ID Mappings.
 }
 \examples{
-x <- hgnc2ensembl()
+x <- hgnc2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{

@@ -200,6 +200,7 @@ Collate:
     'saveRdExamples.R'
     'selectSamples-methods.R'
     'separator.R'
+    'show-methods.R'
     'sortUnique.R'
     'stripTranscriptVersions-methods.R'
     'subsetPerSample-methods.R'

@@ -31,7 +31,7 @@ EggNOG is a hierarchical orthology framework with functional annotations for
 eukaryotic, prokaryotic, and viral genomes.
 }
 \examples{
-x <- eggnog()
+x <- eggnog(.test = TRUE)
 print(x)
 }
 \seealso{

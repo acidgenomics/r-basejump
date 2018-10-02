@@ -28,19 +28,14 @@
 #'    identifiers.
 #'
 #' @examples
-#' x <- eggnog()
+#' x <- eggnog(.test = TRUE)
 #' print(x)
 eggnog <- function(.test = FALSE) {
     assert_is_a_bool(.test)
     if (isTRUE(.test)) {
-        categoriesFile <- "cog.txt"
-        eunogFile <- "eunog.tsv.gz"
-        nogFile <- "nog.tsv.gz"
-        assert_all_are_existing_files(c(
-            categoriesFile,
-            eunogFile,
-            nogFile
-        ))
+        categoriesFile <- file.path(basejumpCacheURL, "cog.txt")
+        eunogFile <- file.path(basejumpCacheURL, "eunog.tsv.gz")
+        nogFile <- file.path(basejumpCacheURL, "nog.tsv.gz")
     } else {
         url <- paste(
             "http://eggnogdb.embl.de",
