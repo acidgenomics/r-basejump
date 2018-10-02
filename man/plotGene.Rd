@@ -4,6 +4,7 @@
 \name{plotGene}
 \alias{plotGene}
 \alias{plotGene,SummarizedExperiment-method}
+\alias{plotGene,SingleCellExperiment-method}
 \title{Plot Gene Expression}
 \usage{
 plotGene(object, ...)
@@ -13,6 +14,8 @@ plotGene(object, ...)
   medianLine = TRUE, color = getOption("basejump.discrete.color",
   NULL), legend = getOption("basejump.legend", TRUE),
   style = c("facet", "wide"))
+
+\S4method{plotGene}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -52,6 +55,7 @@ palette globally, use \code{options(basejump.discrete.color = ggplot2::scale_col
 Plot Gene Expression
 }
 \examples{
+# SummarizedExperiment ====
 object <- rse_small
 
 rownames <- head(rownames(object))
