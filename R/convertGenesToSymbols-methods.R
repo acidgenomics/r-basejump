@@ -1,3 +1,7 @@
+# FIXME Speed up the working example.
+
+
+
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
