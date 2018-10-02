@@ -4,15 +4,18 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism, release = NULL)
+panther(organism, release = NULL, .testfile = NULL)
 }
 \arguments{
-\item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
-\emph{Mus musculus}, \emph{Caenorhabditis elegans}, \emph{Drosophila melanogaster}.}
+\item{organism}{\code{string}. Full Latin organism name. Currently supported
+organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegans},
+\emph{Drosophila melanogaster}.}
 
 \item{release}{\code{string} or \code{NULL}. PANTHER release version. If set \code{NULL},
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
+
+\item{.testfile}{\code{string} or \code{NULL}. \emph{For unit testing only}. File path.}
 }
 \value{
 \code{PANTHER}.
