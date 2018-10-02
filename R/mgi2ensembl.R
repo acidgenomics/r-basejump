@@ -4,6 +4,8 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
+#' @inheritParams general
+#'
 #' @seealso `mgi2ensembl-class`.
 #'
 #' @return `mgi2ensembl`.
@@ -11,17 +13,20 @@
 #' @examples
 #' x <- mgi2ensembl()
 #' print(x)
-mgi2ensembl <- function() {
+mgi2ensembl <- function(
+    url = paste(
+        "http://www.informatics.jax.org",
+        "downloads",
+        "reports",
+        "MGI_Gene_Model_Coord.rpt",
+        sep = "/"
+    )
+) {
     stopifnot(has_internet())
+    assert_is_a_string(url)
     message("Obtaining MGI to Ensembl gene ID mappings...")
     data <- read_tsv(
-        file = paste(
-            "http://www.informatics.jax.org",
-            "downloads",
-            "reports",
-            "MGI_Gene_Model_Coord.rpt",
-            sep = "/"
-        ),
+        file = url,
         # Using our global NA strings.
         na = na,
         col_names = FALSE,
