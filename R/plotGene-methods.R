@@ -17,6 +17,7 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
+#' # SummarizedExperiment ====
 #' object <- rse_small
 #'
 #' rownames <- head(rownames(object))
@@ -192,4 +193,16 @@ setMethod(
     f = "plotGene",
     signature = signature("SummarizedExperiment"),
     definition = .plotGene.SE
+)
+
+
+
+#' @rdname plotGene
+#' @export
+setMethod(
+    f = "plotGene",
+    signature = signature("SingleCellExperiment"),
+    definition = function(object, ...) {
+        .Deprecated("pointillism::plotGene")
+    }
 )
