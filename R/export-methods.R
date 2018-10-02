@@ -1,3 +1,7 @@
+# TODO Add SCE method support, writing out reducedDims
+
+
+
 #' Export
 #'
 #' Export data out of R and write to disk.
