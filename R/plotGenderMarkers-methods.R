@@ -1,3 +1,7 @@
+# FIXME Add tryCatch for when all genes don't map (e.g. bcb_small)
+
+
+
 #' Plot Sexually Dimorphic Gender Marker Genes
 #'
 #' This is a convenience function that wraps [plotGene()] to quickly plot known
