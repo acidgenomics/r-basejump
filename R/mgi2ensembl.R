@@ -13,20 +13,26 @@
 #' @examples
 #' x <- mgi2ensembl()
 #' print(x)
-mgi2ensembl <- function(
-    url = paste(
-        "http://www.informatics.jax.org",
-        "downloads",
-        "reports",
-        "MGI_Gene_Model_Coord.rpt",
-        sep = "/"
-    )
-) {
+mgi2ensembl <- function(.test = FALSE) {
     stopifnot(has_internet())
-    assert_is_a_string(url)
+    assert_is_a_bool(.test)
+
+    if (isTRUE(.test)) {
+        file <- "mgi.rpt.gz"
+        assert_all_are_existing_files(file)
+    } else {
+        file <- paste(
+            "http://www.informatics.jax.org",
+            "downloads",
+            "reports",
+            "MGI_Gene_Model_Coord.rpt",
+            sep = "/"
+        )
+    }
+
     message("Obtaining MGI to Ensembl gene ID mappings...")
     data <- read_tsv(
-        file = url,
+        file = file,
         # Using our global NA strings.
         na = na,
         col_names = FALSE,
@@ -40,5 +46,6 @@ mgi2ensembl <- function(
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
     rownames(data) <- data[["mgiID"]]
+
     new("mgi2ensembl", data)
 }
