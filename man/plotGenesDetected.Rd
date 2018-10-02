@@ -4,11 +4,17 @@
 \name{plotGenesDetected}
 \alias{plotGenesDetected}
 \alias{plotGenesDetected,SummarizedExperiment-method}
+\alias{plotGenesDetected,SingleCellExperiment-method}
 \title{Plot Genes Detected}
 \usage{
 plotGenesDetected(object, ...)
 
 \S4method{plotGenesDetected}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, limit = 0L, minCounts = 1L,
+  fill = getOption("basejump.discrete.fill", NULL),
+  flip = getOption("basejump.flip", TRUE), title = "genes detected")
+
+\S4method{plotGenesDetected}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
   fill = getOption("basejump.discrete.fill", NULL),
   flip = getOption("basejump.flip", TRUE), title = "genes detected")
@@ -44,7 +50,11 @@ plots containing many samples.}
 Plot Genes Detected
 }
 \examples{
+# SummarizedExperiment ====
 plotGenesDetected(rse_small)
+
+# SingleCellExperiment ====
+plotGenesDetected(sce_small)
 }
 \seealso{
 Other Quality Control Functions: \code{\link{plotCountsPerGene}},

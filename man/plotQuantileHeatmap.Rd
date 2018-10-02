@@ -4,11 +4,19 @@
 \name{plotQuantileHeatmap}
 \alias{plotQuantileHeatmap}
 \alias{plotQuantileHeatmap,SummarizedExperiment-method}
+\alias{plotQuantileHeatmap,SingleCellExperiment-method}
 \title{Plot Heatmap with Quantile Breaks}
 \usage{
 plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
+  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
+  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
+  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
+  title = NULL, ...)
+
+\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
   treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
@@ -81,12 +89,8 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 # SummarizedExperiment ====
 plotQuantileHeatmap(rse_small)
 
-# Using viridis color palettes.
-plotQuantileHeatmap(
-    object = rse_small,
-    color = viridis::plasma,
-    legendColor = viridis::viridis
-)
+# SingleCellExperiment ====
+plotQuantileHeatmap(sce_small)
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},

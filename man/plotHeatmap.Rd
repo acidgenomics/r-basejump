@@ -4,11 +4,19 @@
 \name{plotHeatmap}
 \alias{plotHeatmap}
 \alias{plotHeatmap,SummarizedExperiment-method}
+\alias{plotHeatmap,SingleCellExperiment-method}
 \title{Plot Heatmap}
 \usage{
 plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, scale = c("none", "row", "column"),
+  clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = NULL, ...)
+
+\S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusterRows = TRUE, clusterCols = TRUE, showRownames = FALSE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
@@ -73,23 +81,19 @@ overrided by setting \code{clusterRows} or \code{clusterCols} to \code{FALSE}.
 # SummarizedExperiment ====
 plotHeatmap(rse_small)
 
-# Using viridis color palette.
-plotHeatmap(
-    object = rse_small,
-    color = viridis::plasma,
-    legendColor = viridis::viridis
-)
+# Disable column clustering.
+plotHeatmap(rse_small, clusterCols = FALSE)
+
+# Using pheatmap default colors.
+plotHeatmap(rse_small, color = NULL, legendColor = NULL)
 
 # Using hexadecimal color input.
-library("RColorBrewer")
+library(RColorBrewer)
 purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 plotHeatmap(rse_small, color = purple_orange)
 
-# Using default pheatmap colors.
-plotHeatmap(rse_small, color = NULL)
-
-# Disable column clustering.
-plotHeatmap(rse_small, clusterCols = FALSE)
+# SingleCellExperiment ====
+plotHeatmap(sce_small)
 }
 \seealso{
 \itemize{
