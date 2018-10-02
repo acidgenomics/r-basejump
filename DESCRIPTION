@@ -2,7 +2,7 @@ Package: basejump
 Title: Base Functions for Bioinformatics
 Description: Toolkit for bioinformatics and R package development.
 Version: 0.99.0
-Date: 2018-09-25
+Date: 2018-10-02
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -31,7 +31,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
 Depends:
-    R (>= 3.4),
+    R (>= 3.5),
     SummarizedExperiment
 Imports:
     AnnotationHub,
