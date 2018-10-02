@@ -1,3 +1,14 @@
+#' @rdname aggregateCellsToSamples
+#' @export
+setGeneric(
+    name = "aggregateCellsToSamples",
+    def = function(object, ...) {
+        standardGeneric("aggregateCellsToSamples")
+    }
+)
+
+
+
 #' @rdname aggregate
 #' @export
 setGeneric(
