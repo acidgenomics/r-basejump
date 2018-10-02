@@ -4,11 +4,10 @@
 \alias{hgnc2ensembl}
 \title{HGNC to Ensembl Gene ID Mappings.}
 \usage{
-hgnc2ensembl(url = paste("ftp://ftp.ebi.ac.uk", "pub", "databases",
-  "genenames", "new", "tsv", "hgnc_complete_set.txt", sep = "/"))
+hgnc2ensembl(.test = FALSE)
 }
 \arguments{
-\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{hgnc2ensembl}.

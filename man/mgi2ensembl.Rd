@@ -4,11 +4,10 @@
 \alias{mgi2ensembl}
 \title{MGI to Ensembl Gene ID Mappings}
 \usage{
-mgi2ensembl(url = paste("http://www.informatics.jax.org", "downloads",
-  "reports", "MGI_Gene_Model_Coord.rpt", sep = "/"))
+mgi2ensembl(.test = FALSE)
 }
 \arguments{
-\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{mgi2ensembl}.
