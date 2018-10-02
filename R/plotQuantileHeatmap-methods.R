@@ -17,12 +17,8 @@
 #' # SummarizedExperiment ====
 #' plotQuantileHeatmap(rse_small)
 #'
-#' # Using viridis color palettes.
-#' plotQuantileHeatmap(
-#'     object = rse_small,
-#'     color = viridis::plasma,
-#'     legendColor = viridis::viridis
-#' )
+#' # SingleCellExperiment ====
+#' plotQuantileHeatmap(sce_small)
 NULL
 
 
@@ -46,12 +42,8 @@ NULL
 
 
 
-#' @rdname plotQuantileHeatmap
-#' @export
-setMethod(
-    f = "plotQuantileHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = function(
+.plotQuantileHeatmap.SE <-  # nolint
+    function(
         object,
         assay = 1L,
         interestingGroups = NULL,
@@ -159,4 +151,39 @@ setMethod(
         args <- .pheatmapArgs(args)
         do.call(what = pheatmap, args = args)
     }
+
+
+
+# FIXME Think about default calculation here. Mean?
+.plotQuantileHeatmap.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotQuantileHeatmap,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotQuantileHeatmap.SCE) <- formals(.plotQuantileHeatmap.SE)
+
+
+
+#' @rdname plotQuantileHeatmap
+#' @export
+setMethod(
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = .plotQuantileHeatmap.SE
+)
+
+
+
+#' @rdname plotQuantileHeatmap
+#' @export
+setMethod(
+    f = "plotQuantileHeatmap",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotQuantileHeatmap.SCE
 )
