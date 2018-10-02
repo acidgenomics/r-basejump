@@ -4,7 +4,7 @@
 \alias{panther}
 \title{PANTHER Gene Ontology Annotations}
 \usage{
-panther(organism, release = NULL, .testfile = NULL)
+panther(organism, release = NULL, .test = FALSE)
 }
 \arguments{
 \item{organism}{\code{string}. Full Latin organism name. Currently supported
@@ -15,7 +15,7 @@ organisms: \emph{Homo sapiens}, \emph{Mus musculus}, \emph{Caenorhabditis elegan
 defaults to current release. Consult the PANTHER website for a list of
 release versions available from the FTP server (e.g. \code{"13.0"}).}
 
-\item{.testfile}{\code{string} or \code{NULL}. \emph{For unit testing only}. File path.}
+\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{PANTHER}.
@@ -25,7 +25,7 @@ PANTHER Gene Ontology Annotations
 }
 \examples{
 invisible(capture.output(
-    x <- panther("Homo sapiens")
+    x <- panther("Homo sapiens", .test = TRUE)
 ))
 glimpse(x)
 }

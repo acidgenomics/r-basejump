@@ -17,7 +17,9 @@ name. Stops on match failure.
 Convert UCSC Build to Ensembl
 }
 \examples{
-convertUCSCBuildToEnsembl(c("hg19", "hg38"))
+from <- c("hg19", "hg38")
+to <- convertUCSCBuildToEnsembl(from)
+print(to)
 }
 \seealso{
 Other Annotation Functions: \code{\link{broadClass}},
