@@ -1,4 +1,9 @@
 # TODO Work on stashing gene2symbol, tx2gene here for better speed.
+# FIXME Add code coverage:
+# - ensembl2entrez
+# - geneSynonyms
+# - hgnc2ensembl
+# - mgi2ensembl
 
 
 
@@ -230,7 +235,7 @@ test_that("convertUCSCBuildToEnsembl", {
 
 # eggnog =======================================================================
 test_that("eggnog", {
-    object <- eggnog()
+    object <- eggnog(.test = TRUE)
     expect_is(object, "list")
     expect_identical(
         object = names(object),
@@ -288,7 +293,7 @@ test_that("emptyRanges : mcols", {
 # geneSynonyms =================================================================
 with_parameters_test_that(
     "geneSynonyms", {
-        object <- geneSynonyms(organism = organism)
+        object <- geneSynonyms(organism = organism, .test = TRUE)
         expect_is(object, "grouped_df")
     },
     organism = .geneSynonymsOrganisms
@@ -733,7 +738,7 @@ test_that("organism : Detection failure", {
 with_parameters_test_that(
     "panther", {
         invisible(capture.output(
-            object <- panther(organism)
+            object <- panther(organism, .test = TRUE)
         ))
         expect_is(object, "DataFrame")
     },
