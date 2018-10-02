@@ -8,7 +8,11 @@
 #' @inheritParams general
 #'
 #' @examples
+#' # SummarizedExperiment ====
 #' plotGenesDetected(rse_small)
+#'
+#' # SingleCellExperiment ====
+#' plotGenesDetected(sce_small)
 NULL
 
 
@@ -86,10 +90,35 @@ NULL
 
 
 
+.plotGenesDetected.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotGenesDetected,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotGenesDetected.SCE) <- formals(.plotGenesDetected.SE)
+
+
+
 #' @rdname plotGenesDetected
 #' @export
 setMethod(
     f = "plotGenesDetected",
     signature = signature("SummarizedExperiment"),
     definition = .plotGenesDetected.SE
+)
+
+
+
+#' @rdname plotGenesDetected
+#' @export
+setMethod(
+    f = "plotGenesDetected",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotGenesDetected.SCE
 )
