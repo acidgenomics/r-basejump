@@ -49,5 +49,5 @@
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
 #'
-#' @param .testfile `string` or `NULL`. *For unit testing only*. File path.
+#' @param .test `boolean`. *For unit testing only*.
 NULL

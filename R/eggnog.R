@@ -30,37 +30,51 @@
 #' @examples
 #' x <- eggnog()
 #' print(x)
-eggnog <- function(
-    url = paste(
-        "http://eggnogdb.embl.de",
-        "download",
-        "latest",
-        sep = "/"
-    ),
-    categoriesFile = "COG_functional_categories.txt",
-    eunogFile = paste(
-        "data",
-        "euNOG",
-        "euNOG.annotations.tsv.gz",
-        sep = "/"
-    ),
-    nogFile = paste(
-        "data",
-        "NOG",
-        "NOG.annotations.tsv.gz",
-        sep = "/"
-    )
-) {
-    assert_is_a_string(url)
+eggnog <- function(.test = FALSE) {
+    assert_is_a_bool(.test)
+    if (isTRUE(.test)) {
+        categoriesFile <- "cog.txt"
+        eunogFile <- "eunog.tsv.gz"
+        nogFile <- "nog.tsv.gz"
+        assert_all_are_existing_files(c(
+            categoriesFile,
+            eunogFile,
+            nogFile
+        ))
+    } else {
+        url <- paste(
+            "http://eggnogdb.embl.de",
+            "download",
+            "latest",
+            sep = "/"
+        )
+        categoriesFile <- paste(
+            url,
+            "COG_functional_categories.txt",
+            sep = "/"
+        )
+        eunogFile <- paste(
+            url,
+            "data",
+            "euNOG",
+            "euNOG.annotations.tsv.gz",
+            sep = "/"
+        )
+        nogFile <- paste(
+            url,
+            "data",
+            "NOG",
+            "NOG.annotations.tsv.gz",
+            sep = "/"
+        )
+    }
     assert_is_a_string(categoriesFile)
     assert_is_a_string(eunogFile)
     assert_is_a_string(nogFile)
 
     # Categories ---------------------------------------------------------------
     pattern <- "^\\s\\[([A-Z])\\]\\s([A-Za-z\\s]+)\\s$"
-    categories <- read_lines(
-        file = paste(url, categoriesFile, sep = "/")
-    ) %>%
+    categories <- read_lines(file = categoriesFile) %>%
         str_subset(pattern) %>%
         str_match(pattern) %>%
         as_tibble() %>%
@@ -80,7 +94,7 @@ eggnog <- function(
 
     # euNOG: Eukaryota
     eunog <- read_tsv(
-        file = paste(url, eunogFile, sep = "/"),
+        file = eunogFile,
         col_names = colnames,
         col_types = cols(),
         progress = FALSE
@@ -88,7 +102,7 @@ eggnog <- function(
 
     # NOG: LUCA
     nog <- read_tsv(
-        file = paste(url, nogFile, sep = "/"),
+        file = nogFile,
         col_names = colnames,
         col_types = cols(),
         progress = FALSE
