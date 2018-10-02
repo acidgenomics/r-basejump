@@ -118,11 +118,13 @@ setMethod(
 .plotZerosVsDepth.SE <-  # nolint
     function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         color = getOption("basejump.discrete.color", NULL),
         title = "zeros vs. depth"
     ) {
         validObject(object)
+        assert_is_scalar(assay)
         interestingGroups <- matchInterestingGroups(
             object = object,
             interestingGroups = interestingGroups
@@ -131,7 +133,7 @@ setMethod(
         assertIsColorScaleDiscreteOrNULL(color)
         assertIsAStringOrNULL(title)
 
-        data <- zerosVsDepth(object)
+        data <- zerosVsDepth(object, assay = assay)
 
         p <- ggplot(
             data = as(data, "tbl_df"),
