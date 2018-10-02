@@ -45,6 +45,9 @@
 #' @param return Object class to return. Uses [match.arg()] internally and picks
 #'   the first item in the vector by default.
 #' @param title `string`. Plot title.
+#' @param url `string`. Uniform Resource Locator (URL). HTTP or FTP address.
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
+#'
+#' @param .testfile `string` or `NULL`. *For unit testing only*. File path.
 NULL

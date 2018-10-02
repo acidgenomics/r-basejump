@@ -67,8 +67,12 @@ the first item in the vector by default.}
 
 \item{title}{\code{string}. Plot title.}
 
+\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+
 \item{verbose}{\code{boolean}. Run the function with verbose messages? It is only
 recommended to enable this when debugging.}
+
+\item{.testfile}{\code{string} or \code{NULL}. \emph{For unit testing only}. File path.}
 }
 \description{
 General Arguments
