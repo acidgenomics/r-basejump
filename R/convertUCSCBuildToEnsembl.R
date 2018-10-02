@@ -10,7 +10,9 @@
 #'   name. Stops on match failure.
 #'
 #' @examples
-#' convertUCSCBuildToEnsembl(c("hg19", "hg38"))
+#' from <- c("hg19", "hg38")
+#' to <- convertUCSCBuildToEnsembl(from)
+#' print(to)
 convertUCSCBuildToEnsembl <- function(object) {
     assert_is_character(object)
     keys <- c(
