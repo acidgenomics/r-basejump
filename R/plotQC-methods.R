@@ -42,7 +42,7 @@ NULL
         totalCounts <- plotTotalCounts(object, assay = assay)
 
         # Dropout rate.
-        zerosVsDepth <- plotZerosVsDepth(mat)
+        zerosVsDepth <- plotZerosVsDepth(object, assay = assay)
 
         # Counts per row (gene).
         rowSums <- .plotSumsECDF(mat, fun = rowSums) +
