@@ -47,23 +47,19 @@
 #' # SummarizedExperiment ====
 #' plotHeatmap(rse_small)
 #'
-#' # Using viridis color palette.
-#' plotHeatmap(
-#'     object = rse_small,
-#'     color = viridis::plasma,
-#'     legendColor = viridis::viridis
-#' )
+#' # Disable column clustering.
+#' plotHeatmap(rse_small, clusterCols = FALSE)
+#'
+#' # Using pheatmap default colors.
+#' plotHeatmap(rse_small, color = NULL, legendColor = NULL)
 #'
 #' # Using hexadecimal color input.
-#' library("RColorBrewer")
+#' library(RColorBrewer)
 #' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
 #' plotHeatmap(rse_small, color = purple_orange)
 #'
-#' # Using default pheatmap colors.
-#' plotHeatmap(rse_small, color = NULL)
-#'
-#' # Disable column clustering.
-#' plotHeatmap(rse_small, clusterCols = FALSE)
+#' # SingleCellExperiment ====
+#' plotHeatmap(sce_small)
 NULL
 
 
@@ -180,10 +176,36 @@ NULL
 
 
 
+# FIXME Think about default calculation here. Mean?
+.plotHeatmap.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotHeatmap,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotHeatmap.SCE) <- formals(.plotHeatmap.SE)
+
+
+
 #' @rdname plotHeatmap
 #' @export
 setMethod(
     f = "plotHeatmap",
     signature = signature("SummarizedExperiment"),
     definition = .plotHeatmap.SE
+)
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotHeatmap",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotHeatmap.SCE
 )
