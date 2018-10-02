@@ -1,3 +1,7 @@
+# FIXME Update the Excel example.
+
+
+
 #' Import
 #'
 #' Read file by extension into R.
@@ -75,15 +79,15 @@
 #' @examples
 #' # R Data
 #' x <- import(file = file.path(basejumpCacheURL, "rnaseq_counts.rda"))
-#' glimpse(x)
+#' class(x)
 #'
 #' # Comma Separated Values
-#' x <- import(file = file.path(basejumpCacheURL, "mtcars.csv"))
-#' glimpse(x)
+#' x <- import(file = file.path(basejumpCacheURL, "example.csv"))
+#' print(x)
 #'
 #' # Microsoft Excel Worksheet
-#' x <- import(file = file.path(basejumpCacheURL, "mtcars.xlsx"))
-#' glimpse(x)
+#' x <- import(file = file.path(basejumpCacheURL, "example.xlsx"))
+#' print(x)
 #'
 #' # GTF/GFF
 #' x <- import(file = file.path(basejumpCacheURL, "example.gtf"))
@@ -99,7 +103,7 @@
 #'
 #' # Counts Table (i.e. aligned counts from bcbio)
 #' x <- import(file = file.path(basejumpCacheURL, "example.counts"))
-#' glimpse(x)
+#' colSums(x)
 import <- function(file, ...) {
     args <- list(file, ...)
     assert_is_a_string(file)
