@@ -1,3 +1,7 @@
+# FIXME Add a calculation option (e.g. sum, mean, median).
+
+
+
 #' Aggregate Cells to Samples
 #'
 #' @name aggregateCellsToSamples
