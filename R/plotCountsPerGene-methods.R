@@ -15,9 +15,13 @@
 #' @return `ggplot`.
 #'
 #' @examples
+#' # SummarizedExperiment ====
 #' plotCountsPerGene(rse_small, geom = "density")
 #' plotCountsPerGene(rse_small, geom = "boxplot")
 #' plotCountsPerGene(rse_small, geom = "violin")
+#'
+#' # SingleCellExperiment ====
+#' plotCountsPerGene(sce_small)
 NULL
 
 
@@ -131,10 +135,35 @@ NULL
 
 
 
+.plotCountsPerGene.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotCountsPerGene,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotCountsPerGene.SCE) <- formals(.plotCountsPerGene.SE)
+
+
+
 #' @rdname plotCountsPerGene
 #' @export
 setMethod(
     f = "plotCountsPerGene",
     signature = signature("SummarizedExperiment"),
     definition = .plotCountsPerGene.SE
+)
+
+
+
+#' @rdname plotCountsPerGene
+#' @export
+setMethod(
+    f = "plotCountsPerGene",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotCountsPerGene.SCE
 )
