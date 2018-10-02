@@ -25,20 +25,8 @@
 #' # SummarizedExperiment ====
 #' plotCorrelationHeatmap(rse_small)
 #'
-#' # Using viridis color palettes.
-#' plotCorrelationHeatmap(
-#'     object = rse_small,
-#'     color = viridis::plasma,
-#'     legendColor = viridis::viridis
-#' )
-#'
-#' # Using hexadecimal color input.
-#' library("RColorBrewer")
-#' purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-#' plotCorrelationHeatmap(rse_small, color = purple_orange)
-#'
-#' # Using default pheatmap colors.
-#' plotCorrelationHeatmap(rse_small, color = NULL)
+#' # SingleCellExperiment ====
+#' plotCorrelationHeatmap(sce_small)
 NULL
 
 
@@ -151,10 +139,36 @@ NULL
 
 
 
+# FIXME Is there a better way to aggregate here than sum?
+.plotCorrelationHeatmap.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotCorrelationHeatmap,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotCorrelationHeatmap.SCE) <- formals(.plotCorrelationHeatmap.SE)
+
+
+
 #' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SummarizedExperiment"),
     definition = .plotCorrelationHeatmap.SE
+)
+
+
+
+#' @rdname plotCorrelationHeatmap
+#' @export
+setMethod(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotCorrelationHeatmap.SCE
 )
