@@ -37,8 +37,8 @@ x <- cell2sample(sce_small)
 table(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{counts}},
+Other Data Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{aggregateCols}}, \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}},

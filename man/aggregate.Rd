@@ -134,8 +134,8 @@ aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
 }
 \seealso{
-Other Data Functions: \code{\link{cell2sample}},
-  \code{\link{counts}},
+Other Data Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}},

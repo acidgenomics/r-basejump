@@ -59,8 +59,9 @@ print(subset)
 \item \code{\link[S4Vectors:split]{S4Vectors::split()}}.
 }
 
-Other Data Functions: \code{\link{aggregateCols}},
-  \code{\link{cell2sample}}, \code{\link{counts}},
+Other Data Functions: \code{\link{aggregateCellsToSamples}},
+  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
+  \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}},

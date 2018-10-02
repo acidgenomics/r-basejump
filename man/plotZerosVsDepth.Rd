@@ -8,7 +8,7 @@
 \usage{
 plotZerosVsDepth(object, ...)
 
-\S4method{plotZerosVsDepth}{SummarizedExperiment}(object,
+\S4method{plotZerosVsDepth}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL,
   color = getOption("basejump.discrete.color", NULL),
   title = "zeros vs. depth")
@@ -17,6 +17,9 @@ plotZerosVsDepth(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
 
