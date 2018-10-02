@@ -138,6 +138,9 @@ NULL
     function(object) {
         validObject(object)
         data <- rowData(object)[["broadClass"]]
+        if (is.character(data)) {
+            data <- as.factor(data)
+        }
         assert_is_factor(data)
         data
     }
