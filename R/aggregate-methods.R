@@ -1,4 +1,5 @@
 # TODO Improve SCE method documentation.
+# FIXME Add calculation options (e.g. sum, mean, median).
 
 
 
