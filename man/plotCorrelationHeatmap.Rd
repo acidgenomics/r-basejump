@@ -5,11 +5,19 @@
 \name{plotCorrelationHeatmap}
 \alias{plotCorrelationHeatmap}
 \alias{plotCorrelationHeatmap,SummarizedExperiment-method}
+\alias{plotCorrelationHeatmap,SingleCellExperiment-method}
 \title{Plot Correlation Heatmap}
 \usage{
 plotCorrelationHeatmap(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
+  assay = 1L, interestingGroups = NULL, method = c("pearson",
+  "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
+  showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
+  color = viridis::viridis, legendColor = viridis::viridis,
+  borderColor = NULL, title = TRUE, ...)
+
+\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "spearman"), clusteringMethod = "ward.D2", showRownames = TRUE,
   showColnames = TRUE, treeheightRow = 0L, treeheightCol = 50L,
@@ -77,20 +85,8 @@ Construct a correlation heatmap comparing the columns of the matrix.
 # SummarizedExperiment ====
 plotCorrelationHeatmap(rse_small)
 
-# Using viridis color palettes.
-plotCorrelationHeatmap(
-    object = rse_small,
-    color = viridis::plasma,
-    legendColor = viridis::viridis
-)
-
-# Using hexadecimal color input.
-library("RColorBrewer")
-purple_orange <- colorRampPalette(brewer.pal(n = 11L, name = "PuOr"))(256L)
-plotCorrelationHeatmap(rse_small, color = purple_orange)
-
-# Using default pheatmap colors.
-plotCorrelationHeatmap(rse_small, color = NULL)
+# SingleCellExperiment ====
+plotCorrelationHeatmap(sce_small)
 }
 \seealso{
 \itemize{

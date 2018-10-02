@@ -4,11 +4,20 @@
 \name{plotCountsPerGene}
 \alias{plotCountsPerGene}
 \alias{plotCountsPerGene,SummarizedExperiment-method}
+\alias{plotCountsPerGene,SingleCellExperiment-method}
 \title{Plot Counts Per Gene}
 \usage{
 plotCountsPerGene(object, ...)
 
 \S4method{plotCountsPerGene}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, geom = c("density", "boxplot", "violin"),
+  trans = c("identity", "log2", "log10"),
+  color = getOption("basejump.discrete.color", NULL),
+  fill = getOption("basejump.discrete.fill", NULL),
+  flip = getOption("basejump.flip", TRUE), countsAxisLabel = "counts",
+  title = "counts per gene")
+
+\S4method{plotCountsPerGene}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, geom = c("density", "boxplot", "violin"),
   trans = c("identity", "log2", "log10"),
   color = getOption("basejump.discrete.color", NULL),
@@ -59,9 +68,13 @@ Generally, we expect similar count spreads for all genes between samples
 unless the library sizes or total RNA expression are different.
 }
 \examples{
+# SummarizedExperiment ====
 plotCountsPerGene(rse_small, geom = "density")
 plotCountsPerGene(rse_small, geom = "boxplot")
 plotCountsPerGene(rse_small, geom = "violin")
+
+# SingleCellExperiment ====
+plotCountsPerGene(sce_small)
 }
 \seealso{
 Other Quality Control Functions: \code{\link{plotGenderMarkers}},
