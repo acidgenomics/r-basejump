@@ -2,9 +2,12 @@
 % Please edit documentation in R/initializeDirectory.R
 \name{initializeDirectory}
 \alias{initializeDirectory}
+\alias{initDir}
 \title{Initialize Directory}
 \usage{
 initializeDirectory(dir)
+
+initDir(dir)
 }
 \arguments{
 \item{dir}{\code{string}. Directory path.}

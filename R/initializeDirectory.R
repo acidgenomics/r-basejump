@@ -24,3 +24,10 @@ initializeDirectory <- function(dir) {
     }
     normalizePath(dir, winslash = "/", mustWork = TRUE)
 }
+
+
+
+# Aliases ======================================================================
+#' @rdname initializeDirectory
+#' @export
+initDir <- initializeDirectory
