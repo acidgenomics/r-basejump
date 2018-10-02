@@ -198,6 +198,7 @@ setMethod(
 
 
 #' @rdname plotGene
+#' @usage NULL
 #' @export
 setMethod(
     f = "plotGene",
