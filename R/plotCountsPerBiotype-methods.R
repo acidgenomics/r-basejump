@@ -1,3 +1,7 @@
+# FIXME Improve the documentation
+
+
+
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
