@@ -20,8 +20,11 @@ cell2sample(object, ...)
 the first item in the vector by default.}
 }
 \value{
-Named \code{factor} containing sample IDs as the levels and cell IDs as
-the names.
+\itemize{
+\item \code{"factor"}: Named \code{factor} containing sample IDs as the levels and cell IDs
+as the names.
+\item \code{"tibble"}: \code{tbl_df} containing \code{cellID} and \code{sampleID} columns.
+}
 }
 \description{
 Cell to Sample Mappings

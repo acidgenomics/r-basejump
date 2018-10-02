@@ -8,8 +8,10 @@
 #'
 #' @inheritParams general
 #'
-#' @return Named `factor` containing sample IDs as the levels and cell IDs as
-#'   the names.
+#' @return
+#' - `"factor"`: Named `factor` containing sample IDs as the levels and cell IDs
+#'   as the names.
+#' - `"tibble"`: `tbl_df` containing `cellID` and `sampleID` columns.
 #'
 #' @examples
 #' x <- cell2sample(sce_small)
