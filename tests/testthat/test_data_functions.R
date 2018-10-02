@@ -339,10 +339,6 @@ test_that("selectSamples : SingleCellExperiment", {
         object = rownames(sampleData(object)),
         expected = "sample1"
     )
-    expect_identical(
-        object = ncol(object),
-        expected = 100L
-    )
 })
 
 
