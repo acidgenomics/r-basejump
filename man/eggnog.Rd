@@ -4,7 +4,20 @@
 \alias{eggnog}
 \title{EggNOG Annotations}
 \usage{
-eggnog()
+eggnog(url = paste("http://eggnogdb.embl.de", "download", "latest", sep =
+  "/"), categoriesFile = "COG_functional_categories.txt",
+  eunogFile = paste("data", "euNOG", "euNOG.annotations.tsv.gz", sep =
+  "/"), nogFile = paste("data", "NOG", "NOG.annotations.tsv.gz", sep =
+  "/"))
+}
+\arguments{
+\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+
+\item{categoriesFile}{\code{string}. Functional categories file.}
+
+\item{eunogFile}{\code{string}. euNOG file. Eukaryota.}
+
+\item{nogFile}{\code{string}. NOG file. LUCA.}
 }
 \value{
 \code{list} containing:
