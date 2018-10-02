@@ -4,11 +4,17 @@
 \name{plotTotalCounts}
 \alias{plotTotalCounts}
 \alias{plotTotalCounts,SummarizedExperiment-method}
+\alias{plotTotalCounts,SingleCellExperiment-method}
 \title{Plot Total Counts}
 \usage{
 plotTotalCounts(object, ...)
 
 \S4method{plotTotalCounts}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, perMillion = FALSE,
+  fill = getOption("basejump.discrete.fill", NULL),
+  flip = getOption("basejump.flip", TRUE), title = "total counts")
+
+\S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE,
   fill = getOption("basejump.discrete.fill", NULL),
   flip = getOption("basejump.flip", TRUE), title = "total counts")
@@ -41,6 +47,7 @@ Plot Total Counts
 }
 \examples{
 plotTotalCounts(rse_small)
+plotTotalCounts(sce_small)
 }
 \seealso{
 Other Quality Control Functions: \code{\link{plotCountsPerGene}},
