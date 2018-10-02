@@ -9,6 +9,7 @@
 #'
 #' @examples
 #' plotTotalCounts(rse_small)
+#' plotTotalCounts(sce_small)
 NULL
 
 
@@ -82,10 +83,35 @@ NULL
 
 
 
+.plotTotalCounts.SCE <-  # nolint
+    function(object) {
+        do.call(
+            what = plotTotalCounts,
+            args = matchArgsToDoCall(
+                args = list(
+                    object = aggregateCellsToSamples(object)
+                )
+            )
+        )
+    }
+formals(.plotTotalCounts.SCE) <- formals(.plotTotalCounts.SE)
+
+
+
 #' @rdname plotTotalCounts
 #' @export
 setMethod(
     f = "plotTotalCounts",
     signature = signature("SummarizedExperiment"),
     definition = .plotTotalCounts.SE
+)
+
+
+
+#' @rdname plotTotalCounts
+#' @export
+setMethod(
+    f = "plotTotalCounts",
+    signature = signature("SingleCellExperiment"),
+    definition = .plotTotalCounts.SCE
 )
