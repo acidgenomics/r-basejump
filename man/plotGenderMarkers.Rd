@@ -3,13 +3,13 @@
 \docType{methods}
 \name{plotGenderMarkers}
 \alias{plotGenderMarkers}
-\alias{plotGenderMarkers,RangedSummarizedExperiment-method}
+\alias{plotGenderMarkers,SummarizedExperiment-method}
 \title{Plot Sexually Dimorphic Gender Marker Genes}
 \usage{
 plotGenderMarkers(object, ...)
 
-\S4method{plotGenderMarkers}{RangedSummarizedExperiment}(object,
-  assay = 1L, interestingGroups = NULL, countsAxisLabel = "counts",
+\S4method{plotGenderMarkers}{SummarizedExperiment}(object, assay = 1L,
+  interestingGroups = NULL, countsAxisLabel = "counts",
   medianLine = TRUE, color = getOption("basejump.discrete.color",
   NULL), legend = getOption("basejump.legend", TRUE), style = "wide")
 }
