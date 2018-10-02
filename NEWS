@@ -921,6 +921,8 @@ Providing basic `SummarizedExperiment` class method support for `counts`.
 [MGI]: http://www.informatics.jax.org
 [NIH]: https://www.nih.gov
 [PANTHER]: http://pantherdb.org
+[pointillism]: https://steinbaugh.com/pointillism
+[R]: https://www.r-project.org
 [readr]: http://readr.tidyverse.org
 [rio]: https://cran.r-project.org/package=rio
 [rlang]: http://rlang.tidyverse.org
