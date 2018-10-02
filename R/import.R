@@ -74,31 +74,31 @@
 #'
 #' @examples
 #' # R Data
-#' x <- import(file = file.path(cacheURL, "rnaseq_counts.rda"))
+#' x <- import(file = file.path(basejumpCacheURL, "rnaseq_counts.rda"))
 #' glimpse(x)
 #'
 #' # Comma Separated Values
-#' x <- import(file = file.path(cacheURL, "mtcars.csv"))
+#' x <- import(file = file.path(basejumpCacheURL, "mtcars.csv"))
 #' glimpse(x)
 #'
 #' # Microsoft Excel Worksheet
-#' x <- import(file = file.path(cacheURL, "mtcars.xlsx"))
+#' x <- import(file = file.path(basejumpCacheURL, "mtcars.xlsx"))
 #' glimpse(x)
 #'
 #' # GTF/GFF
-#' x <- import(file = file.path(cacheURL, "example.gtf"))
+#' x <- import(file = file.path(basejumpCacheURL, "example.gtf"))
 #' summary(x)
 #'
 #' # JSON
-#' x <- import(file = file.path(cacheURL, "example.json"))
+#' x <- import(file = file.path(basejumpCacheURL, "example.json"))
 #' names(x)
 #'
 #' # YAML
-#' x <- import(file = file.path(cacheURL, "example.yml"))
+#' x <- import(file = file.path(basejumpCacheURL, "example.yml"))
 #' names(x)
 #'
 #' # Counts Table (i.e. aligned counts from bcbio)
-#' x <- import(file = file.path(cacheURL, "example.counts"))
+#' x <- import(file = file.path(basejumpCacheURL, "example.counts"))
 #' glimpse(x)
 import <- function(file, ...) {
     args <- list(file, ...)
