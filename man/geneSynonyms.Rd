@@ -4,7 +4,7 @@
 \alias{geneSynonyms}
 \title{Gene Synonyms}
 \usage{
-geneSynonyms(organism)
+geneSynonyms(organism, .testfile = NULL)
 }
 \arguments{
 \item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},

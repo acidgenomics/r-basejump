@@ -17,12 +17,17 @@
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(organism) {
+geneSynonyms <- function(organism, .testfile = NULL) {
     stopifnot(has_internet())
     organism <- match.arg(
         arg = organism,
-        choices = .geneSynonymsOrganisms
+        choices = c(
+            "Homo sapiens",
+            "Mus musculus",
+            "Drosophila melanogaster"
+        )
     )
+    assertIsAStringOrNULL(.testfile)
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -34,16 +39,24 @@ geneSynonyms <- function(organism) {
 
     genome <- c(kingdom = kingdom, species = species)
 
+    url <- paste(
+        "ftp://ftp.ncbi.nih.gov",
+        "gene",
+        "DATA",
+        "GENE_INFO",
+        genome[["kingdom"]],
+        paste0(genome[["species"]], ".gene_info.gz"),
+        sep = "/"
+    )
+
+    if (!is.null(.testfile)) {
+        file <- .testfile
+    } else {
+        file <- url
+    }
+
     data <- read_tsv(
-        file = paste(
-            "ftp://ftp.ncbi.nih.gov",
-            "gene",
-            "DATA",
-            "GENE_INFO",
-            genome[["kingdom"]],
-            paste0(genome[["species"]], ".gene_info.gz"),
-            sep = "/"
-        ),
+        file = file,
         col_types = cols(),
         progress = FALSE
     )
@@ -78,11 +91,3 @@ geneSynonyms <- function(organism) {
         arrange(!!sym("geneID")) %>%
         group_by(!!sym("geneID"))
 }
-
-
-
-.geneSynonymsOrganisms <- c(
-    "Homo sapiens",
-    "Mus musculus",
-    "Drosophila melanogaster"
-)
