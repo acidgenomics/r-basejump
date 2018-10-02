@@ -11,23 +11,29 @@
 #' @examples
 #' x <- hgnc2ensembl()
 #' print(x)
-hgnc2ensembl <- function(
-    url = paste(
-        "ftp://ftp.ebi.ac.uk",
-        "pub",
-        "databases",
-        "genenames",
-        "new",
-        "tsv",
-        "hgnc_complete_set.txt",
-        sep = "/"
-    )
-) {
+hgnc2ensembl <- function(.test = FALSE) {
     stopifnot(has_internet())
-    assert_is_a_string(url)
+    assert_is_a_bool(.test)
+
+    if (isTRUE(.test)) {
+        file <- "hgnc.txt.gz"
+        assert_all_are_existing_files(file)
+    } else {
+        file <- paste(
+            "ftp://ftp.ebi.ac.uk",
+            "pub",
+            "databases",
+            "genenames",
+            "new",
+            "tsv",
+            "hgnc_complete_set.txt",
+            sep = "/"
+        )
+    }
+
     message("Obtaining HGNC to Ensembl gene ID mappings...")
     data <- read_tsv(
-        file = url,
+        file = file,
         # Suppress the column messages.
         col_types = cols(),
         progress = FALSE
@@ -41,5 +47,6 @@ hgnc2ensembl <- function(
     data <- data[order(data[["hgncID"]]), ]
     data <- as(data, "DataFrame")
     rownames(data) <- as.character(data[["hgncID"]])
+
     new("hgnc2ensembl", data)
 }
