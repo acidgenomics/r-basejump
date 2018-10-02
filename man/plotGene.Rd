@@ -14,8 +14,6 @@ plotGene(object, ...)
   medianLine = TRUE, color = getOption("basejump.discrete.color",
   NULL), legend = getOption("basejump.legend", TRUE),
   style = c("facet", "wide"))
-
-\S4method{plotGene}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
