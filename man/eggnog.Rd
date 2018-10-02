@@ -4,14 +4,10 @@
 \alias{eggnog}
 \title{EggNOG Annotations}
 \usage{
-eggnog(url = paste("http://eggnogdb.embl.de", "download", "latest", sep =
-  "/"), categoriesFile = "COG_functional_categories.txt",
-  eunogFile = paste("data", "euNOG", "euNOG.annotations.tsv.gz", sep =
-  "/"), nogFile = paste("data", "NOG", "NOG.annotations.tsv.gz", sep =
-  "/"))
+eggnog(.test = FALSE)
 }
 \arguments{
-\item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
+\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 
 \item{categoriesFile}{\code{string}. Functional categories file.}
 
