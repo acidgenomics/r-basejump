@@ -89,3 +89,16 @@ setMethod(
     signature("SummarizedExperiment"),
     definition = .plotGenderMarkers.SE
 )
+
+
+
+#' @rdname plotGenderMarkers
+#' @usage NULL
+#' @export
+setMethod(
+    "plotGenderMarkers",
+    signature("SingleCellExperiment"),
+    definition = function(object, ...) {
+        stop("SingleCellExperiment is not currently supported.")
+    }
+)
