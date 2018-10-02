@@ -9,15 +9,14 @@
 #' @return `hgnc2ensembl`.
 #'
 #' @examples
-#' x <- hgnc2ensembl()
+#' x <- hgnc2ensembl(.test = TRUE)
 #' print(x)
 hgnc2ensembl <- function(.test = FALSE) {
     stopifnot(has_internet())
     assert_is_a_bool(.test)
 
     if (isTRUE(.test)) {
-        file <- "hgnc.txt.gz"
-        assert_all_are_existing_files(file)
+        file <- file.path(basejumpCacheURL, "hgnc.txt.gz")
     } else {
         file <- paste(
             "ftp://ftp.ebi.ac.uk",

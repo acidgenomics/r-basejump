@@ -1,3 +1,7 @@
+# FIXME Add `.test` support for all supported organisms.
+
+
+
 #' Gene Synonyms
 #'
 #' Look up gene synonyms from NCBI.
@@ -15,7 +19,7 @@
 #' @return `grouped_df`. Grouped by `geneID` column.
 #'
 #' @examples
-#' x <- geneSynonyms(organism = "Homo sapiens")
+#' x <- geneSynonyms(organism = "Homo sapiens", .test = TRUE)
 #' print(x)
 geneSynonyms <- function(organism, .test = FALSE) {
     stopifnot(has_internet())
@@ -44,8 +48,7 @@ geneSynonyms <- function(organism, .test = FALSE) {
     genome <- c(kingdom = kingdom, species = species)
 
     if (isTRUE(.test)) {
-        file <- "homo_sapiens.gene_info.gz"
-        assert_all_are_existing_files(file)
+        file <- file.path(basejumpCacheURL, "homo_sapiens.gene_info.gz")
     } else {
         file <- paste(
             "ftp://ftp.ncbi.nih.gov",

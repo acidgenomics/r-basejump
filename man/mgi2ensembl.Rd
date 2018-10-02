@@ -16,7 +16,7 @@ mgi2ensembl(.test = FALSE)
 MGI to Ensembl Gene ID Mappings
 }
 \examples{
-x <- mgi2ensembl()
+x <- mgi2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{

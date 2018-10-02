@@ -11,15 +11,14 @@
 #' @return `mgi2ensembl`.
 #'
 #' @examples
-#' x <- mgi2ensembl()
+#' x <- mgi2ensembl(.test = TRUE)
 #' print(x)
 mgi2ensembl <- function(.test = FALSE) {
     stopifnot(has_internet())
     assert_is_a_bool(.test)
 
     if (isTRUE(.test)) {
-        file <- "mgi.rpt.gz"
-        assert_all_are_existing_files(file)
+        file <- file.path(basejumpCacheURL, "mgi.rpt.gz")
     } else {
         file <- paste(
             "http://www.informatics.jax.org",

@@ -21,7 +21,7 @@ Synonym support for \emph{Caenorhabditis elegans} is poor on NCBI.
 Use the wormbase package instead.
 }
 \examples{
-x <- geneSynonyms(organism = "Homo sapiens")
+x <- geneSynonyms(organism = "Homo sapiens", .test = TRUE)
 print(x)
 }
 \seealso{
