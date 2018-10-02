@@ -17,17 +17,21 @@
 #' @examples
 #' x <- geneSynonyms(organism = "Homo sapiens")
 #' print(x)
-geneSynonyms <- function(organism, .testfile = NULL) {
+geneSynonyms <- function(organism, .test = FALSE) {
     stopifnot(has_internet())
-    organism <- match.arg(
-        arg = organism,
-        choices = c(
-            "Homo sapiens",
-            "Mus musculus",
-            "Drosophila melanogaster"
+    if (isTRUE(.test)) {
+        organism <- "Homo sapiens"
+    } else {
+        organism <- match.arg(
+            arg = organism,
+            choices = c(
+                "Homo sapiens",
+                "Mus musculus",
+                "Drosophila melanogaster"
+            )
         )
-    )
-    assertIsAStringOrNULL(.testfile)
+    }
+    assert_is_a_bool(.test)
 
     # NCBI uses underscore for species name
     species <- gsub(" ", "_", organism)
@@ -39,20 +43,19 @@ geneSynonyms <- function(organism, .testfile = NULL) {
 
     genome <- c(kingdom = kingdom, species = species)
 
-    url <- paste(
-        "ftp://ftp.ncbi.nih.gov",
-        "gene",
-        "DATA",
-        "GENE_INFO",
-        genome[["kingdom"]],
-        paste0(genome[["species"]], ".gene_info.gz"),
-        sep = "/"
-    )
-
-    if (!is.null(.testfile)) {
-        file <- .testfile
+    if (isTRUE(.test)) {
+        file <- "homo_sapiens.gene_info.gz"
+        assert_all_are_existing_files(file)
     } else {
-        file <- url
+        file <- paste(
+            "ftp://ftp.ncbi.nih.gov",
+            "gene",
+            "DATA",
+            "GENE_INFO",
+            genome[["kingdom"]],
+            paste0(genome[["species"]], ".gene_info.gz"),
+            sep = "/"
+        )
     }
 
     data <- read_tsv(
