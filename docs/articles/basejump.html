@@ -74,7 +74,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">16 September 2018</h4>
+            <h4 class="date">3 October 2018</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/steinbaugh/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -125,53 +125,6 @@
 <a href="https://www.bioconductor.org/help/course-materials/2010/AdvancedR/S4InBioconductor.pdf">S4 System Development in Bioconductor</a>, Patrick Aboyoun, 2010.</li>
 </ul>
 <p>Here’s the current list of S4 generics exported by the package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">generics &lt;-<span class="st"> </span><span class="kw">getGenerics</span>(<span class="kw">asNamespace</span>(<span class="st">"basejump"</span>))
-<span class="kw"><a href="../reference/markdownList.html">markdownList</a></span>(generics<span class="op">@</span>.Data)</code></pre></div>
-<ul>
-<li>aggregateCols</li>
-<li>aggregateRows</li>
-<li>broadClass</li>
-<li>camel</li>
-<li>coerce</li>
-<li>collapseToString</li>
-<li>combine</li>
-<li>convertGenesToSymbols</li>
-<li>convertSymbolsToGenes</li>
-<li>convertTranscriptsToGenes</li>
-<li>counts</li>
-<li>detectOrganism</li>
-<li>dotted</li>
-<li>flatFiles</li>
-<li>foldChangeToLogRatio</li>
-<li>gene2symbol</li>
-<li>geometricMean</li>
-<li>interestingGroups</li>
-<li>interestingGroups&lt;-</li>
-<li>logRatioToFoldChange</li>
-<li>mapGenesToIDs</li>
-<li>mapGenesToRownames</li>
-<li>mapGenesToSymbols</li>
-<li>meltCounts</li>
-<li>metrics</li>
-<li>plotCorrelationHeatmap</li>
-<li>plotGene</li>
-<li>plotHeatmap</li>
-<li>plotQC</li>
-<li>plotQuantileHeatmap</li>
-<li>removeNA</li>
-<li>sampleData</li>
-<li>sampleData&lt;-</li>
-<li>sampleNames</li>
-<li>sampleNames&lt;-</li>
-<li>sanitizeNA</li>
-<li>sanitizePercent</li>
-<li>selectSamples</li>
-<li>snake</li>
-<li>stripTranscriptVersions</li>
-<li>tx2gene</li>
-<li>uniteInterestingGroups</li>
-<li>upperCamel</li>
-</ul>
 <p>In <a href="https://www.r-project.org">R</a>, you can check whether a function is using the S4 object system with the <code><a href="http://www.rdocumentation.org/packages/base/topics/isS4">base::isS4()</a></code> function. Additionally, <code><a href="http://www.rdocumentation.org/packages/methods/topics/showMethods">methods::showMethods()</a></code> and <code><a href="http://www.rdocumentation.org/packages/methods/topics/getMethod">methods::getMethod()</a></code>. In contrast, to obtain information on functions using the <a href="http://adv-r.had.co.nz/S3.html">S3</a> object system, use <code><a href="http://www.rdocumentation.org/packages/utils/topics/methods">utils::methods()</a></code> instead.</p>
 </div>
 <div id="annotation-functions" class="section level1">
@@ -187,16 +140,16 @@
 <a href="#current-release" class="anchor"></a>Current release</h3>
 <p>By default, the function will use the latest release version available from <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://doi.org/doi:10.18129/B9.bioc.ensembldb">ensembldb</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grch38 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</code></pre>
-<pre><code>## Ensembl 92 EnsDb for Homo Sapiens</code></pre>
-<pre><code>## id: "AH60977"
-## organism: "Homo sapiens"
-## build: "GRCh38"
-## release: "92"
-## format: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
+<pre><code>## Ensembl 93 EnsDb for Homo Sapiens</code></pre>
+<pre><code>##   - AnnotationHub: "AH64446"
+##   - Organism: "Homo sapiens"
+##   - Build: "GRCh38"
+##   - Release: "93"
+##   - Level: "genes"</code></pre>
+<pre><code>## Standardizing the metadata columns...</code></pre>
 <pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID</code></pre>
+<pre><code>## Sorting ranges by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38)</code></pre></div>
 <pre><code>## [1] "GRanges object with 65256 ranges and 7 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(grch38)</code></pre></div>
@@ -207,7 +160,15 @@
 ##   ..@ seqinfo        :Formal class 'Seqinfo' [package "GenomeInfoDb"] with 4 slots
 ##   ..@ elementMetadata:Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
 ##   ..@ elementType    : chr "ANY"
-##   ..@ metadata       : list()</code></pre>
+##   ..@ metadata       :List of 8
+##   .. ..$ AnnotationHubID: chr "AH64446"
+##   .. ..$ organism       : chr "Homo sapiens"
+##   .. ..$ ensembldb      :'data.frame':   12 obs. of  2 variables:
+##   .. ..$ build          : chr "GRCh38"
+##   .. ..$ release        : chr "93"
+##   .. ..$ level          : chr "genes"
+##   .. ..$ version        :Classes 'package_version', 'numeric_version'  hidden list of 1
+##   .. ..$ date           : Date[1:1], format: "2018-10-03"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(grch38))</code></pre></div>
 <pre><code>## [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 ## [5] "ENSG00000000460" "ENSG00000000938"</code></pre>
@@ -269,49 +230,49 @@
 ## [5] "geneID"         "geneName"       "seqCoordSystem"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S4Vectors<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">mcols</a></span>(grch38) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
 <pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : NULL
+##   ..@ rownames       : chr [1:65256] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
 ##   ..@ nrows          : int 65256
 ##   ..@ listData       :List of 7
 ##   .. ..$ broadClass    : Factor w/ 8 levels "coding","ig",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##   .. .. ..- attr(*, "names")= chr [1:65256] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ description   : Factor w/ 37499 levels "1-acylglycerol-3-phosphate O-acyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:324]",..: 33719 33552 6386 30004 3887 8291 4876 943 9310 20214 ...
+##   .. ..$ description   : Factor w/ 37685 levels "-PIK3R3 readthrough [Source:NCBI gene;Acc:110117499]",..: 33832 33655 6398 30078 3897 8299 4878 942 9323 20250 ...
 ##   .. ..$ entrezID      :List of 65256
 ##   .. ..$ geneBiotype   : Factor w/ 47 levels "3prime_overlapping_ncRNA",..: 23 23 23 23 23 23 23 23 23 23 ...
 ##   .. ..$ geneID        : chr [1:65256] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ geneName      : Factor w/ 58334 levels "A1BG","A1BG-AS1",..: 55560 54793 26480 50775 22680 28411 24138 28838 29147 40197 ...
+##   .. ..$ geneName      : Factor w/ 58399 levels "A1BG","A1BG-AS1",..: 55624 54855 26549 50821 22723 28462 24175 28890 29201 40227 ...
 ##   .. ..$ seqCoordSystem: Factor w/ 3 levels "chromosome","lrg",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##   ..@ elementType    : chr "ANY"
 ##   ..@ elementMetadata: NULL
 ##   ..@ metadata       : list()</code></pre>
-<p>Transcript-level annotations are also supported, using the <code>format = "transcripts"</code> argument.</p>
+<p>Transcript-level annotations are also supported, using the <code>level = "transcripts"</code> argument.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transcripts &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl</a></span>(
     <span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>,
-    <span class="dt">format =</span> <span class="st">"transcripts"</span>
+    <span class="dt">level =</span> <span class="st">"transcripts"</span>
 )</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</code></pre>
-<pre><code>## Ensembl 92 EnsDb for Homo Sapiens</code></pre>
-<pre><code>## id: "AH60977"
-## organism: "Homo sapiens"
-## build: "GRCh38"
-## release: "92"
-## format: "transcripts"</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
+<pre><code>## Ensembl 93 EnsDb for Homo Sapiens</code></pre>
+<pre><code>##   - AnnotationHub: "AH64446"
+##   - Organism: "Homo sapiens"
+##   - Build: "GRCh38"
+##   - Release: "93"
+##   - Level: "transcripts"</code></pre>
+<pre><code>## Standardizing the metadata columns...</code></pre>
 <pre><code>## Defining broad class using: geneName, transcriptBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by transcriptID</code></pre>
+<pre><code>## Sorting ranges by transcriptID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(transcripts)</code></pre></div>
 <pre><code>## [1] "GRanges object with 225358 ranges and 13 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S4Vectors<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">mcols</a></span>(transcripts) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
 <pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : NULL
+##   ..@ rownames       : chr [1:225358] "ENST00000000233" "ENST00000000412" "ENST00000000442" "ENST00000001008" ...
 ##   ..@ nrows          : int 225358
 ##   ..@ listData       :List of 13
 ##   .. ..$ broadClass            : Factor w/ 9 levels "coding","decaying",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##   .. .. ..- attr(*, "names")= chr [1:225358] "ENST00000000233" "ENST00000000412" "ENST00000000442" "ENST00000001008" ...
-##   .. ..$ description           : Factor w/ 37499 levels "1-acylglycerol-3-phosphate O-acyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:324]",..: 660 15606 7212 8412 5519 19360 943 6655 10155 30158 ...
+##   .. ..$ description           : Factor w/ 37685 levels "-PIK3R3 readthrough [Source:NCBI gene;Acc:110117499]",..: 660 15635 7237 8420 5528 19399 942 6677 10174 30232 ...
 ##   .. ..$ entrezID              :List of 225358
 ##   .. ..$ geneBiotype           : Factor w/ 47 levels "3prime_overlapping_ncRNA",..: 23 23 23 23 23 23 23 23 23 23 ...
 ##   .. ..$ geneID                : Factor w/ 65256 levels "ENSG00000000003",..: 46 33 13473 52 35 42 8 37 25 15 ...
-##   .. ..$ geneName              : Factor w/ 58334 levels "A1BG","A1BG-AS1",..: 21098 35853 27506 28456 25628 39996 28838 25796 31016 50913 ...
+##   .. ..$ geneName              : Factor w/ 58399 levels "A1BG","A1BG-AS1",..: 21121 35880 27576 28507 25696 40026 28890 25865 31062 50958 ...
 ##   .. ..$ seqCoordSystem        : Factor w/ 3 levels "chromosome","lrg",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##   .. ..$ transcriptBiotype     : Factor w/ 50 levels "3prime_overlapping_ncRNA",..: 25 25 25 25 25 25 25 25 25 25 ...
 ##   .. ..$ transcriptCdsSeqEnd   : int [1:225358] 127591299 8946404 64315966 2803258 72147834 37248350 143511634 90019341 11400005 50188115 ...
@@ -331,16 +292,16 @@
     <span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>,
     <span class="dt">release =</span> <span class="dv">90</span>
 )</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.12.1 (2018-04-30)</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
 <pre><code>## Ensembl 90 EnsDb for Homo Sapiens</code></pre>
-<pre><code>## id: "AH57757"
-## organism: "Homo sapiens"
-## build: "GRCh38"
-## release: "90"
-## format: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
+<pre><code>##   - AnnotationHub: "AH57757"
+##   - Organism: "Homo sapiens"
+##   - Build: "GRCh38"
+##   - Release: "90"
+##   - Level: "genes"</code></pre>
+<pre><code>## Standardizing the metadata columns...</code></pre>
 <pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID</code></pre>
+<pre><code>## Sorting ranges by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38_<span class="dv">90</span>)</code></pre></div>
 <pre><code>## [1] "GRanges object with 64661 ranges and 7 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqinfo</a></span>(grch38_<span class="dv">90</span>)</code></pre></div>
@@ -366,14 +327,14 @@
     <span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>,
     <span class="dt">build =</span> <span class="st">"GRCh37"</span>
 )</code></pre></div>
-<pre><code>## id: "EnsDb.Hsapiens.v75"
-## organism: "Homo sapiens"
-## build: "GRCh37"
-## release: "75"
-## format: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
+<pre><code>##   - AnnotationHub: "EnsDb.Hsapiens.v75"
+##   - Organism: "Homo sapiens"
+##   - Build: "GRCh37"
+##   - Release: "75"
+##   - Level: "genes"</code></pre>
+<pre><code>## Standardizing the metadata columns...</code></pre>
 <pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID</code></pre>
+<pre><code>## Sorting ranges by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch37)</code></pre></div>
 <pre><code>## [1] "GRanges object with 64102 ranges and 6 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqinfo</a></span>(grch37)</code></pre></div>
@@ -391,11 +352,11 @@
 ##   LRG_415       44382      FALSE GRCh37
 ##   LRG_93        22459      FALSE GRCh37</code></pre>
 </div>
-<div id="data-frame-return" class="section level3">
+<div id="tibble-return" class="section level3">
 <h3 class="hasAnchor">
-<a href="#data-frame-return" class="anchor"></a>Data frame return</h3>
-<p>For convenience, if you prefer to return annotations as a <code>data.frame</code> instead of <code>GRanges</code>, we provide the <code><a href="../reference/makeGRanges.html">annotable()</a></code> function. Internally, this calls the <code><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl()</a></code> function but automatically coerces the return to a standard <code>data.frame</code>, with the identifiers as the row names. For quick access to current <a href="https://www.ensembl.org">Ensembl</a> annotations in <code>tibble</code> format, we also recommend the <a href="https://github.com/stephenturner/annotables">annotables</a> package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>)
+<a href="#tibble-return" class="anchor"></a><code>tibble</code> return</h3>
+<p>For convenience, if you prefer to return annotations as a <code>tibble</code> instead of <code>GRanges</code>, we provide the <code><a href="../reference/makeGRanges.html">annotable()</a></code> function. Internally, this calls the <code><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl()</a></code> function and then automatically coerces the return to a <code>tibble</code> using our <code><a href="../reference/coerce.html">as(object, Class = "tbl_df")</a></code> coercion method. For quick access to current <a href="https://www.ensembl.org">Ensembl</a> annotations as a <code>tibble</code>, we also recommend the <a href="https://github.com/stephenturner/annotables">annotables</a> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>, <span class="dt">level =</span> <span class="st">"genes"</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(genes)</code></pre></div>
 <pre><code>## Observations: 65,256
 ## Variables: 13
@@ -412,24 +373,30 @@
 ## $ geneID         &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG0000...
 ## $ geneName       &lt;fct&gt; TSPAN6, TNMD, DPM1, SCYL3, C1orf112, FGR, CFH, ...
 ## $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome,...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transcripts &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transcripts &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>, <span class="dt">level =</span> <span class="st">"transcripts"</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(transcripts)</code></pre></div>
-<pre><code>## Observations: 65,256
-## Variables: 13
-## $ rowname        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG0000...
-## $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7...
-## $ start          &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 1696...
-## $ end            &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 1698...
-## $ width          &lt;int&gt; 12883, 15084, 23689, 44637, 192074, 23214, 9562...
-## $ strand         &lt;fct&gt; -, +, -, -, +, -, +, -, -, +, -, +, -, +, +, +,...
-## $ broadClass     &lt;fct&gt; coding, coding, coding, coding, coding, coding,...
-## $ description    &lt;fct&gt; tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:1185...
-## $ entrezID       &lt;I(list)&gt;  7105, 64102,  8813, 57147, 55732,  2268,  ...
-## $ geneBiotype    &lt;fct&gt; protein_coding, protein_coding, protein_coding,...
-## $ geneID         &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG0000...
-## $ geneName       &lt;fct&gt; TSPAN6, TNMD, DPM1, SCYL3, C1orf112, FGR, CFH, ...
-## $ seqCoordSystem &lt;fct&gt; chromosome, chromosome, chromosome, chromosome,...</code></pre>
-<p>Note that <code>GRanges</code> objects can also be coerced to a <code>data.frame</code> using the <code>as.data.frame()</code> coercion method.</p>
+<pre><code>## Observations: 225,358
+## Variables: 19
+## $ rowname                &lt;chr&gt; "ENST00000000233", "ENST00000000412", "...
+## $ seqnames               &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7,...
+## $ start                  &lt;int&gt; 127588345, 8940365, 64305578, 2794953, ...
+## $ end                    &lt;int&gt; 127591705, 8949955, 64316738, 2805423, ...
+## $ width                  &lt;int&gt; 3361, 9591, 11161, 10471, 18801, 17495,...
+## $ strand                 &lt;fct&gt; +, -, +, +, -, +, -, -, -, +, +, -, -, ...
+## $ broadClass             &lt;fct&gt; coding, coding, coding, coding, coding,...
+## $ description            &lt;fct&gt; ADP ribosylation factor 5 [Source:HGNC ...
+## $ entrezID               &lt;I(list)&gt;    381,   4074,   2101,   2288,  56...
+## $ geneBiotype            &lt;fct&gt; protein_coding, protein_coding, protein...
+## $ geneID                 &lt;fct&gt; ENSG00000004059, ENSG00000003056, ENSG0...
+## $ geneName               &lt;fct&gt; ARF5, M6PR, ESRRA, FKBP4, CYP26B1, NDUF...
+## $ seqCoordSystem         &lt;fct&gt; chromosome, chromosome, chromosome, chr...
+## $ transcriptBiotype      &lt;fct&gt; protein_coding, protein_coding, protein...
+## $ transcriptCdsSeqEnd    &lt;int&gt; 127591299, 8946404, 64315966, 2803258, ...
+## $ transcriptCdsSeqStart  &lt;int&gt; 127588499, 8941818, 64307180, 2795140, ...
+## $ transcriptID           &lt;chr&gt; "ENST00000000233", "ENST00000000412", "...
+## $ transcriptName         &lt;chr&gt; "ENST00000000233", "ENST00000000412", "...
+## $ transcriptSupportLevel &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, ...</code></pre>
+<p>Note that <code>GRanges</code> objects can be coerced to a standard <code>data.frame</code> using the <code>as.data.frame()</code> coercion method.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grch38 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
 <pre><code>## Observations: 65,256
 ## Variables: 12
@@ -452,27 +419,37 @@
 <a href="#gene-mapping-functions" class="anchor"></a>Gene mapping functions</h2>
 <p>Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the <code><a href="../reference/gene2symbol.html">gene2symbol()</a></code> and <code><a href="../reference/tx2gene.html">tx2gene()</a></code> functions. Both of these functions return a <code>data.frame</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gene2symbol &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGene2symbol.html">makeGene2symbolFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(gene2symbol)</code></pre></div>
-<pre><code>## Formal class 'gene2symbol' [package "basejump"] with 6 slots
-##   ..@ rownames       : chr [1:65256] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   ..@ nrows          : int 65256
-##   ..@ listData       :List of 2
-##   .. ..$ geneID  : chr [1:65256] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ geneName: chr [1:65256] "TSPAN6" "TNMD" "DPM1" "SCYL3" ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+<span class="kw">print</span>(gene2symbol)</code></pre></div>
+<pre><code>## gene2symbol with 65256 rows and 2 columns
+##                          geneID    geneName
+##                     &lt;character&gt; &lt;character&gt;
+## ENSG00000000003 ENSG00000000003      TSPAN6
+## ENSG00000000005 ENSG00000000005        TNMD
+## ENSG00000000419 ENSG00000000419        DPM1
+## ENSG00000000457 ENSG00000000457       SCYL3
+## ENSG00000000460 ENSG00000000460    C1orf112
+## ...                         ...         ...
+## LRG_995                 LRG_995     FUBP1.1
+## LRG_996                 LRG_996     ERBB3.1
+## LRG_997                 LRG_997      ROS1.1
+## LRG_998                 LRG_998     CCND3.1
+## LRG_999                 LRG_999       CIC.1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tx2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeTx2gene.html">makeTx2geneFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(tx2gene)</code></pre></div>
-<pre><code>## Formal class 'tx2gene' [package "basejump"] with 6 slots
-##   ..@ rownames       : chr [1:225358] "ENST00000000233" "ENST00000000412" "ENST00000000442" "ENST00000001008" ...
-##   ..@ nrows          : int 225358
-##   ..@ listData       :List of 2
-##   .. ..$ transcriptID: chr [1:225358] "ENST00000000233" "ENST00000000412" "ENST00000000442" "ENST00000001008" ...
-##   .. ..$ geneID      : chr [1:225358] "ENSG00000004059" "ENSG00000003056" "ENSG00000173153" "ENSG00000004478" ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+<span class="kw">print</span>(tx2gene)</code></pre></div>
+<pre><code>## tx2gene with 225358 rows and 2 columns
+##                    transcriptID          geneID
+##                     &lt;character&gt;     &lt;character&gt;
+## ENST00000000233 ENST00000000233 ENSG00000004059
+## ENST00000000412 ENST00000000412 ENSG00000003056
+## ENST00000000442 ENST00000000442 ENSG00000173153
+## ENST00000001008 ENST00000001008 ENSG00000004478
+## ENST00000001146 ENST00000001146 ENSG00000003137
+## ...                         ...             ...
+## LRG_998t1             LRG_998t1         LRG_998
+## LRG_998t2             LRG_998t2         LRG_998
+## LRG_999t1             LRG_999t1         LRG_999
+## LRG_999t2             LRG_999t2         LRG_999
+## LRG_99t1               LRG_99t1          LRG_99</code></pre>
 </div>
 <div id="parse-gtfgff-files" class="section level2">
 <h2 class="hasAnchor">
@@ -490,57 +467,7 @@
     <span class="st">"Homo_sapiens.GRCh38.92.gtf.gz"</span>,
     <span class="dt">sep =</span> <span class="st">"/"</span>
 )
-grch38_gtf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromGFF</a></span>(gtf_file)</code></pre></div>
-<pre><code>## Reading Homo_sapiens.GRCh38.92.gtf.gz</code></pre>
-<pre><code>## Ensembl GTF detected</code></pre>
-<pre><code>## 58395 gene annotations</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
-<pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38_gtf)</code></pre></div>
-<pre><code>## [1] "GRanges object with 58395 ranges and 8 metadata columns"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqnames</a></span>(grch38_gtf)</code></pre></div>
-<pre><code>## factor-Rle of length 58395 with 41792 runs
-##   Lengths:  2  1  4  3  2  1  1  1  4  1 ...  1  1  1  1  1  1  1  1  1  2
-##   Values :  X 20  1  6  1  X  6  3  7 12 ...  5  7  9 17 15  6 11 19 20 11
-## Levels(47): 1 2 3 4 5 ... KI270733.1 KI270734.1 KI270744.1 KI270750.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IRanges<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/IRanges/topics/range-squeezers">ranges</a></span>(grch38_gtf)</code></pre></div>
-<pre><code>## IRanges object with 58395 ranges and 0 metadata columns:
-##                       start       end     width
-##                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
-##   ENSG00000000003 100627109 100639991     12883
-##   ENSG00000000005 100584802 100599885     15084
-##   ENSG00000000419  50934867  50958555     23689
-##   ENSG00000000457 169849631 169894267     44637
-##   ENSG00000000460 169662007 169854080    192074
-##               ...       ...       ...       ...
-##   ENSG00000285498   5224309   5225461      1153
-##   ENSG00000285505  41956879  41994232     37354
-##   ENSG00000285508  10413520  10431922     18403
-##   ENSG00000285509 121024125 121113108     88984
-##   ENSG00000285513 116820645 116821541       897</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BiocGenerics<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocGenerics/topics/strand">strand</a></span>(grch38_gtf)</code></pre></div>
-<pre><code>## factor-Rle of length 58395 with 29012 runs
-##   Lengths: 1 1 2 1 1 1 2 1 1 1 1 4 3 1 1 ... 1 2 2 5 2 2 1 1 7 1 1 1 1 4 2
-##   Values : - + - + - + - + - + - + - + - ... + - + - + - + - + - + - + - +
-## Levels(3): + - *</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S4Vectors<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">mcols</a></span>(grch38_gtf) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
-<pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : NULL
-##   ..@ nrows          : int 58395
-##   ..@ listData       :List of 8
-##   .. ..$ broadClass : Factor w/ 8 levels "coding","ig",..: 1 1 1 1 1 1 1 1 1 1 ...
-##   .. .. ..- attr(*, "names")= chr [1:58395] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ geneBiotype: Factor w/ 46 levels "3prime_overlapping_ncRNA",..: 22 22 22 22 22 22 22 22 22 22 ...
-##   .. ..$ geneID     : chr [1:58395] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ geneName   : Factor w/ 56852 levels "A1BG","A1BG-AS1",..: 54079 53312 25104 49295 21400 27033 22856 27454 27763 38724 ...
-##   .. ..$ geneSource : Factor w/ 5 levels "ensembl","ensembl_havana",..: 2 2 2 2 2 2 2 2 2 2 ...
-##   .. ..$ geneVersion: Factor w/ 26 levels "1","10","11",..: 6 22 4 5 8 4 7 5 3 6 ...
-##   .. ..$ source     : Factor w/ 5 levels "havana","mirbase",..: 3 3 3 3 3 3 3 3 3 3 ...
-##   .. ..$ type       : Factor w/ 9 levels "gene","transcript",..: 1 1 1 1 1 1 1 1 1 1 ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+grch38 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromGFF</a></span>(gtf_file)</code></pre></div>
 </div>
 <div id="gff3" class="section level3">
 <h3 class="hasAnchor">
@@ -554,58 +481,7 @@ grch38_gtf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/
     <span class="st">"Homo_sapiens.GRCh38.92.gff3.gz"</span>,
     <span class="dt">sep =</span> <span class="st">"/"</span>
 )
-grch38_gff &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromGFF</a></span>(gff_file)</code></pre></div>
-<pre><code>## Reading Homo_sapiens.GRCh38.92.gff3.gz</code></pre>
-<pre><code>## Ensembl GFF detected</code></pre>
-<pre><code>## 58395 gene annotations</code></pre>
-<pre><code>## Standardizing the metadata columns</code></pre>
-<pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38_gff)</code></pre></div>
-<pre><code>## [1] "GRanges object with 58395 ranges and 9 metadata columns"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqnames</a></span>(grch38_gff)</code></pre></div>
-<pre><code>## factor-Rle of length 58395 with 41792 runs
-##   Lengths:  2  1  4  3  2  1  1  1  4  1 ...  1  1  1  1  1  1  1  1  1  2
-##   Values :  X 20  1  6  1  X  6  3  7 12 ...  5  7  9 17 15  6 11 19 20 11
-## Levels(194): 1 2 3 4 5 ... KI270754.1 KI270755.1 KI270756.1 KI270757.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IRanges<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/IRanges/topics/range-squeezers">ranges</a></span>(grch38_gff)</code></pre></div>
-<pre><code>## IRanges object with 58395 ranges and 0 metadata columns:
-##                       start       end     width
-##                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
-##   ENSG00000000003 100627109 100639991     12883
-##   ENSG00000000005 100584802 100599885     15084
-##   ENSG00000000419  50934867  50958555     23689
-##   ENSG00000000457 169849631 169894267     44637
-##   ENSG00000000460 169662007 169854080    192074
-##               ...       ...       ...       ...
-##   ENSG00000285498   5224309   5225461      1153
-##   ENSG00000285505  41956879  41994232     37354
-##   ENSG00000285508  10413520  10431922     18403
-##   ENSG00000285509 121024125 121113108     88984
-##   ENSG00000285513 116820645 116821541       897</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BiocGenerics<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocGenerics/topics/strand">strand</a></span>(grch38_gff)</code></pre></div>
-<pre><code>## factor-Rle of length 58395 with 29012 runs
-##   Lengths: 1 1 2 1 1 1 2 1 1 1 1 4 3 1 1 ... 1 2 2 5 2 2 1 1 7 1 1 1 1 4 2
-##   Values : - + - + - + - + - + - + - + - ... + - + - + - + - + - + - + - +
-## Levels(3): + - *</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S4Vectors<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">mcols</a></span>(grch38_gff) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
-<pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : NULL
-##   ..@ nrows          : int 58395
-##   ..@ listData       :List of 9
-##   .. ..$ broadClass : Factor w/ 8 levels "coding","ig",..: 1 1 1 1 1 1 1 1 1 1 ...
-##   .. .. ..- attr(*, "names")= chr [1:58395] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ description: Factor w/ 37437 levels "1-acylglycerol-3-phosphate O-acyltransferase 1 [Source:HGNC Symbol;Acc:HGNC:324]",..: 33660 33493 6379 29946 3883 8280 4869 942 9299 20168 ...
-##   .. ..$ geneBiotype: Factor w/ 46 levels "3prime_overlapping_ncRNA",..: 22 22 22 22 22 22 22 22 22 22 ...
-##   .. ..$ geneID     : chr [1:58395] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ geneName   : Factor w/ 56852 levels "A1BG","A1BG-AS1",..: 54079 53312 25104 49295 21400 27033 22856 27454 27763 38724 ...
-##   .. ..$ logicName  : Factor w/ 9 levels "ensembl","ensembl_havana_gene",..: 2 2 2 2 2 2 2 2 2 2 ...
-##   .. ..$ source     : Factor w/ 6 levels "Ensembl","havana",..: 4 4 4 4 4 4 4 4 4 4 ...
-##   .. ..$ type       : Factor w/ 26 levels "chromosome","biological_region",..: 9 9 9 9 9 9 9 9 9 9 ...
-##   .. ..$ version    : Factor w/ 26 levels "1","10","11",..: 6 22 4 5 8 4 7 5 3 6 ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+grch38 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromGFF</a></span>(gff_file)</code></pre></div>
 </div>
 </div>
 <div id="gene-interconversion-functions" class="section level2">
@@ -627,108 +503,41 @@ grch38_gff &lt;-<span class="st"> </span><span class="kw"><a href="../reference/
 <p>In addition to interfacing with <a href="https://www.ensembl.org">Ensembl</a>, <a href="https://steinbaugh.com/basejump">basejump</a> exports a number of utility functions to interface with other genomic databases, including:</p>
 <ul>
 <li>
+<a href="#eggnog">EggNOG</a> <span class="citation">(Huerta-Cepas et al. 2016)</span>.</li>
+<li>
 <a href="#hgnc">HGNC</a> <span class="citation">(Yates et al. 2017)</span>.</li>
 <li>
 <a href="#mgi">MGI</a> <span class="citation">(C. L. Smith et al. 2018)</span>.</li>
-<li>
-<a href="#eggnog">EggNOG</a> <span class="citation">(Huerta-Cepas et al. 2016)</span>.</li>
 <li>
 <a href="#panther">PANTHER</a> <span class="citation">(Mi et al. 2017)</span>.</li>
 </ul>
 <div id="hgnc" class="section level3">
 <h3 class="hasAnchor">
 <a href="#hgnc" class="anchor"></a>HGNC</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hgnc2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">hgnc2gene</a></span>()</code></pre></div>
-<pre><code>## Obtaining HGNC to Ensembl gene ID mappings</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(hgnc2gene)</code></pre></div>
-<pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : chr [1:37589] "5" "7" "8" "15" ...
-##   ..@ nrows          : int 37589
-##   ..@ listData       :List of 2
-##   .. ..$ hgncID: int [1:37589] 5 7 8 15 16 17 18 19 20 21 ...
-##   .. ..$ geneID: chr [1:37589] "ENSG00000121410" "ENSG00000175899" "ENSG00000256069" "ENSG00000253937" ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
+hgnc2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">hgnc2gene</a></span>()
+<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(hgnc2gene)</code></pre></div>
 </div>
 <div id="mgi" class="section level3">
 <h3 class="hasAnchor">
 <a href="#mgi" class="anchor"></a>MGI</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mgi2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">mgi2gene</a></span>()</code></pre></div>
-<pre><code>## Obtaining MGI to Ensembl gene ID mappings</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(mgi2gene)</code></pre></div>
-<pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : chr [1:63434] "87853" "87854" "87859" "87860" ...
-##   ..@ nrows          : int 63434
-##   ..@ listData       :List of 2
-##   .. ..$ mgiID : int [1:63434] 87853 87854 87859 87860 87862 87863 87864 87866 87867 87868 ...
-##   .. ..$ geneID: chr [1:63434] "ENSMUSG00000027596" "ENSMUSG00000030359" "ENSMUSG00000026842" "ENSMUSG00000026596" ...
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
+mgi2gene &lt;-<span class="st"> </span><span class="kw"><a href="../reference/deprecated.html">mgi2gene</a></span>()
+<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(mgi2gene)</code></pre></div>
 </div>
 <div id="eggnog" class="section level3">
 <h3 class="hasAnchor">
 <a href="#eggnog" class="anchor"></a>EggNOG</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eggnog &lt;-<span class="st"> </span><span class="kw"><a href="../reference/eggnog.html">eggnog</a></span>()</code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   taxonomicLevel = col_character(),
-##   groupName = col_character(),
-##   proteinCount = col_integer(),
-##   speciesCount = col_integer(),
-##   cogFunctionalCategory = col_character(),
-##   consensusFunctionalDescription = col_character()
-## )
-## Parsed with column specification:
-## cols(
-##   taxonomicLevel = col_character(),
-##   groupName = col_character(),
-##   proteinCount = col_integer(),
-##   speciesCount = col_integer(),
-##   cogFunctionalCategory = col_character(),
-##   consensusFunctionalDescription = col_character()
-## )</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(eggnog)</code></pre></div>
-<pre><code>## List of 2
-##  $ cogFunctionalCategories:Classes 'tbl_df', 'tbl' and 'data.frame': 18 obs. of  2 variables:
-##   ..$ letter     : chr [1:18] "A" "B" "C" "E" ...
-##   ..$ description: chr [1:18] "RNA processing and modification" "Chromatin structure and dynamics" "Energy production and conversion" "Amino acid transport and metabolism" ...
-##  $ annotations            :Classes 'tbl_df', 'tbl' and 'data.frame': 286584 obs. of  3 variables:
-##   ..$ eggnogID                      : chr [1:286584] "COG0001" "COG0002" "COG0003" "COG0004" ...
-##   ..$ consensusFunctionalDescription: chr [1:286584] "Glutamate-1-semialdehyde aminotransferase" "N-acetylglutamate semialdehyde dehydrogenase" "ATPase required for the post-translational delivery of tail-anchored (TA) proteins to the endoplasmic reticulum"| __truncated__ "ammonium Transporter" ...
-##   ..$ cogFunctionalCategory         : chr [1:286584] "H" "E" "P" "P" ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
+eggnog &lt;-<span class="st"> </span><span class="kw"><a href="../reference/eggnog.html">eggnog</a></span>()
+<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(eggnog)</code></pre></div>
 </div>
 <div id="panther" class="section level3">
 <h3 class="hasAnchor">
 <a href="#panther" class="anchor"></a>PANTHER</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panther &lt;-<span class="st"> </span><span class="kw"><a href="../reference/panther.html">panther</a></span>(<span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>)</code></pre></div>
-<pre><code>## Downloading PANTHER annotations for Homo sapiens (current_release)</code></pre>
-<pre><code>## Downloading PTHR13.1_human.gz</code></pre>
-<pre><code>## Obtaining HGNC to Ensembl gene ID mappings</code></pre>
-<pre><code>## Splitting and sorting the GO terms</code></pre>
-<pre><code>## goMF</code></pre>
-<pre><code>## goBP</code></pre>
-<pre><code>## goCC</code></pre>
-<pre><code>## pantherClass</code></pre>
-<pre><code>## pantherPathway</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(panther)</code></pre></div>
-<pre><code>## Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-##   ..@ rownames       : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   ..@ nrows          : int 19670
-##   ..@ listData       :List of 9
-##   .. ..$ geneID              : chr [1:19670] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457" ...
-##   .. ..$ pantherSubfamily    : chr [1:19670] "PTHR19282:SF169" "PTHR14064:SF3" "PTHR43398:SF1" "PTHR12984:SF15" ...
-##   .. ..$ pantherFamilyName   : chr [1:19670] "TETRASPANIN" "CHONDROMODULIN-RELATED" "FAMILY NOT NAMED" "SCY1-RELATED S/T PROTEIN KINASE-LIKE" ...
-##   .. ..$ pantherSubfamilyName: chr [1:19670] "TETRASPANIN-6" "TENOMODULIN" "DOLICHOL-PHOSPHATE MANNOSYLTRANSFERASE SUBUNIT 1" "PROTEIN-ASSOCIATING WITH THE CARBOXYL-TERMINAL DOMAIN OF EZRIN" ...
-##   .. ..$ goMF                :List of 19670
-##   .. ..$ goBP                :List of 19670
-##   .. ..$ goCC                :List of 19670
-##   .. ..$ pantherClass        :List of 19670
-##   .. ..$ pantherPathway      :List of 19670
-##   ..@ elementType    : chr "ANY"
-##   ..@ elementMetadata: NULL
-##   ..@ metadata       : list()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">FIXME</span><span class="co"> Use pre-calculated, for speed.</span>
+panther &lt;-<span class="st"> </span><span class="kw"><a href="../reference/panther.html">panther</a></span>(<span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>)
+<span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(panther)</code></pre></div>
 </div>
 <div id="wormbase" class="section level3">
 <h3 class="hasAnchor">
@@ -766,25 +575,25 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <p>For reference, here are two popular <a href="https://ggplot2.tidyverse.org">ggplot2</a> default themes: <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_grey()</a></code> and <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_grey</a></span>()</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-23-1.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-21-1.png" width="700"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-23-2.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-21-2.png" width="700"></p>
 <p>The basejump themes extend <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code>, with a few tweaks and color changes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2_themes.html">theme_paperwhite</a></span>()</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-24-1.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-22-1.png" width="700"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2_themes.html">theme_midnight</a></span>()</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-24-2.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-22-2.png" width="700"></p>
 </div>
 <div id="heatmaps" class="section level2">
 <h2 class="hasAnchor">
 <a href="#heatmaps" class="anchor"></a>Heatmaps</h2>
 <p>Additional, the package provides support for easy heatmap generation, by wrapping the popular <a href="https://cran.r-project.org/package=pheatmap">pheatmap</a> package. Here are providing <code>SummarizedExperiment</code> method support, so annotation column metadata is handled seamlessly.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotHeatmap.html">plotHeatmap</a></span>(rse_small)</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-23-1.png" width="700"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotCorrelationHeatmap.html">plotCorrelationHeatmap</a></span>(rse_small)</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-26-1.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-24-1.png" width="700"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap</a></span>(rse_small)</code></pre></div>
-<p><img src="basejump_files/figure-html/unnamed-chunk-27-1.png" width="700"></p>
+<p><img src="basejump_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
 </div>
 </div>
 <div id="sanitization-functions" class="section level1">
@@ -805,12 +614,11 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ## object="list"
 ## object="List"
 ## object="matrix"
-## object="SimpleList"
-## object="tbl_df"
-##     (inherited from: object="data.frame")</code></pre>
+## object="SimpleList"</code></pre>
 <p>To see how these functions work, let’s load up an example <code>list</code> named <code>mn</code> (short for <code>makeNames</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/loadRemoteData.html">loadRemoteData</a></span>(<span class="st">"http://basejump.seq.cloud/mn.rda"</span>)</code></pre></div>
-<pre><code>## Reading mn.rda</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">url &lt;-<span class="st"> </span><span class="kw">file.path</span>(basejumpCacheURL, <span class="st">"mn.rda"</span>)
+<span class="kw"><a href="../reference/loadRemoteData.html">loadRemoteData</a></span>(url)</code></pre></div>
+<pre><code>## Reading mn.rda...</code></pre>
 <div id="atomic-vectors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#atomic-vectors" class="anchor"></a>Atomic vectors</h2>
@@ -891,7 +699,7 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  Group1  Group1  Group2  Group2 
 ## Levels: Group1 Group2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/makeNames.html">makeNames</a></span>(x)</code></pre></div>
-<pre><code>## [1] "group_1" "group_1" "group_2" "group_2"</code></pre>
+<pre><code>## [1] "group_1"   "group_1_1" "group_2"   "group_2_1"</code></pre>
 </div>
 <div id="data-frames" class="section level2">
 <h2 class="hasAnchor">
@@ -1020,141 +828,144 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 <pre><code>## ─ Session info ──────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 3.5.1 (2018-07-02)
-##  os       macOS High Sierra 10.13.6   
+##  os       macOS  10.14                
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
+##  ctype    en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-09-16                  
+##  date     2018-10-03                  
 ## 
 ## ─ Packages ──────────────────────────────────────────────────────────────
-##  package                * version   date       source         
-##  AnnotationDbi            1.42.1    2018-05-08 Bioconductor   
-##  AnnotationFilter         1.4.0     2018-05-01 Bioconductor   
-##  AnnotationHub            2.12.1    2018-09-05 Bioconductor   
-##  assertive.base           0.0-7     2016-12-30 CRAN (R 3.5.0) 
-##  assertive.code           0.0-1     2015-10-06 CRAN (R 3.5.0) 
-##  assertive.data           0.0-1     2015-10-06 CRAN (R 3.5.0) 
-##  assertive.files          0.0-2     2016-05-10 CRAN (R 3.5.0) 
-##  assertive.numbers        0.0-2     2016-05-09 CRAN (R 3.5.0) 
-##  assertive.properties     0.0-4     2016-12-30 CRAN (R 3.5.0) 
-##  assertive.sets           0.0-3     2016-12-30 CRAN (R 3.5.0) 
-##  assertive.strings        0.0-3     2016-05-10 CRAN (R 3.5.0) 
-##  assertive.types          0.0-3     2016-12-30 CRAN (R 3.5.0) 
-##  assertthat               0.2.0     2017-04-11 CRAN (R 3.5.0) 
-##  backports                1.1.2     2017-12-13 CRAN (R 3.5.0) 
-##  basejump               * 0.99.0    2018-09-13 Bioconductor   
-##  bindr                    0.1.1     2018-03-13 CRAN (R 3.5.0) 
-##  bindrcpp               * 0.2.2     2018-03-29 CRAN (R 3.5.0) 
-##  Biobase                * 2.40.0    2018-05-01 Bioconductor   
-##  BiocGenerics           * 0.26.0    2018-05-01 Bioconductor   
-##  BiocInstaller            1.30.0    2018-05-01 Bioconductor   
-##  BiocParallel           * 1.14.2    2018-07-08 Bioconductor   
-##  BiocStyle              * 2.8.2     2018-05-30 Bioconductor   
-##  biomaRt                  2.36.1    2018-05-24 Bioconductor   
-##  Biostrings               2.48.0    2018-05-01 Bioconductor   
-##  bit                      1.1-14    2018-05-29 CRAN (R 3.5.0) 
-##  bit64                    0.9-7     2017-05-08 CRAN (R 3.5.0) 
-##  bitops                   1.0-6     2013-08-17 CRAN (R 3.5.0) 
-##  blob                     1.1.1     2018-03-25 CRAN (R 3.5.0) 
-##  bookdown                 0.7       2018-02-18 CRAN (R 3.5.0) 
-##  clisymbols               1.2.0     2017-05-21 CRAN (R 3.5.0) 
-##  codetools                0.2-15    2016-10-05 CRAN (R 3.5.1) 
-##  colorspace               1.3-2     2016-12-14 CRAN (R 3.5.0) 
-##  commonmark               1.5       2018-04-28 CRAN (R 3.5.0) 
-##  cowplot                  0.9.3     2018-07-15 CRAN (R 3.5.1) 
-##  crayon                   1.3.4     2017-09-16 CRAN (R 3.5.0) 
-##  curl                     3.2       2018-03-28 CRAN (R 3.5.0) 
-##  DBI                      1.0.0     2018-05-02 CRAN (R 3.5.0) 
-##  DelayedArray           * 0.6.6     2018-09-11 Bioconductor   
-##  desc                     1.2.0     2018-05-01 CRAN (R 3.5.0) 
-##  digest                   0.6.17    2018-09-12 CRAN (R 3.5.1) 
-##  dplyr                    0.7.6     2018-06-29 CRAN (R 3.5.0) 
-##  EnsDb.Hsapiens.v75       2.99.0    2018-04-25 Bioconductor   
-##  ensembldb                2.4.1     2018-05-07 Bioconductor   
-##  evaluate                 0.11      2018-07-17 CRAN (R 3.5.1) 
-##  fs                       1.2.6     2018-08-23 CRAN (R 3.5.0) 
-##  GenomeInfoDb           * 1.16.0    2018-05-01 Bioconductor   
-##  GenomeInfoDbData         1.1.0     2018-04-25 Bioconductor   
-##  GenomicAlignments        1.16.0    2018-05-01 Bioconductor   
-##  GenomicFeatures          1.32.2    2018-08-13 Bioconductor   
-##  GenomicRanges          * 1.32.6    2018-07-20 Bioconductor   
-##  ggplot2                * 3.0.0     2018-07-03 CRAN (R 3.5.0) 
-##  ggrepel                  0.8.0     2018-05-09 CRAN (R 3.5.0) 
-##  glue                     1.3.0     2018-07-17 CRAN (R 3.5.1) 
-##  gridExtra                2.3       2017-09-09 CRAN (R 3.5.0) 
-##  grr                      0.9.5     2016-08-26 CRAN (R 3.5.0) 
-##  gtable                   0.2.0     2016-02-26 CRAN (R 3.5.0) 
-##  hms                      0.4.2     2018-03-10 CRAN (R 3.5.0) 
-##  htmltools                0.3.6     2017-04-28 CRAN (R 3.5.0) 
-##  httpuv                   1.4.5     2018-07-19 CRAN (R 3.5.0) 
-##  httr                     1.3.1     2017-08-20 CRAN (R 3.5.0) 
-##  interactiveDisplayBase   1.18.0    2018-05-01 Bioconductor   
-##  IRanges                * 2.14.11   2018-08-24 Bioconductor   
-##  jsonlite                 1.5       2017-06-01 CRAN (R 3.5.0) 
-##  knitr                    1.20      2018-02-20 CRAN (R 3.5.0) 
-##  labeling                 0.3       2014-08-23 CRAN (R 3.5.0) 
-##  later                    0.7.4     2018-08-31 CRAN (R 3.5.1) 
-##  lattice                  0.20-35   2017-03-25 CRAN (R 3.5.1) 
-##  lazyeval                 0.2.1     2017-10-29 CRAN (R 3.5.0) 
-##  magrittr                 1.5       2014-11-22 CRAN (R 3.5.0) 
-##  MASS                     7.3-50    2018-04-30 CRAN (R 3.5.1) 
-##  Matrix                   1.2-14    2018-04-13 CRAN (R 3.5.1) 
-##  Matrix.utils             0.9.7     2018-04-19 CRAN (R 3.5.0) 
-##  matrixStats            * 0.54.0    2018-07-23 CRAN (R 3.5.0) 
-##  memoise                  1.1.0     2017-04-21 CRAN (R 3.5.0) 
-##  mime                     0.5       2016-07-07 CRAN (R 3.5.0) 
-##  munsell                  0.5.0     2018-06-12 CRAN (R 3.5.0) 
-##  pbapply                  1.3-4     2018-01-10 CRAN (R 3.5.0) 
-##  pheatmap                 1.0.10    2018-05-19 CRAN (R 3.5.0) 
-##  pillar                   1.3.0     2018-07-14 CRAN (R 3.5.0) 
-##  pkgconfig                2.0.2     2018-08-16 CRAN (R 3.5.0) 
-##  pkgdown                  1.1.0     2018-06-02 CRAN (R 3.5.0) 
-##  plyr                     1.8.4     2016-06-08 CRAN (R 3.5.0) 
-##  prettyunits              1.0.2     2015-07-13 CRAN (R 3.5.0) 
-##  progress                 1.2.0     2018-06-14 CRAN (R 3.5.0) 
-##  promises                 1.0.1     2018-04-13 CRAN (R 3.5.0) 
-##  ProtGenerics             1.12.0    2018-05-01 Bioconductor   
-##  pryr                     0.1.4     2018-02-18 CRAN (R 3.5.0) 
-##  purrr                    0.2.5     2018-05-29 CRAN (R 3.5.0) 
-##  R.methodsS3              1.7.1     2016-02-16 CRAN (R 3.5.0) 
-##  R.oo                     1.22.0    2018-04-22 CRAN (R 3.5.0) 
-##  R.utils                  2.7.0     2018-08-27 cran (@2.7.0)  
-##  R6                       2.2.2     2017-06-17 CRAN (R 3.5.0) 
-##  RColorBrewer             1.1-2     2014-12-07 CRAN (R 3.5.0) 
-##  Rcpp                     0.12.18   2018-07-23 CRAN (R 3.5.0) 
-##  RCurl                    1.95-4.11 2018-07-15 cran (@1.95-4.)
-##  readr                    1.1.1     2017-05-16 CRAN (R 3.5.0) 
-##  reshape2                 1.4.3     2017-12-11 CRAN (R 3.5.0) 
-##  rlang                    0.2.2     2018-08-16 CRAN (R 3.5.0) 
-##  rmarkdown                1.10      2018-06-11 CRAN (R 3.5.0) 
-##  roxygen2                 6.1.0     2018-07-27 CRAN (R 3.5.1) 
-##  rprojroot                1.3-2     2018-01-03 CRAN (R 3.5.0) 
-##  Rsamtools                1.32.3    2018-08-22 Bioconductor   
-##  RSQLite                  2.1.1     2018-05-06 CRAN (R 3.5.0) 
-##  rstudioapi               0.7       2017-09-07 CRAN (R 3.5.0) 
-##  rtracklayer              1.40.6    2018-09-04 Bioconductor   
-##  S4Vectors              * 0.18.3    2018-06-08 Bioconductor   
-##  scales                   1.0.0     2018-08-09 CRAN (R 3.5.0) 
-##  sessioninfo              1.0.0     2017-06-21 CRAN (R 3.5.0) 
-##  shiny                    1.1.0     2018-05-17 CRAN (R 3.5.0) 
-##  stringi                  1.2.4     2018-07-20 CRAN (R 3.5.0) 
-##  stringr                  1.3.1     2018-05-10 CRAN (R 3.5.0) 
-##  SummarizedExperiment   * 1.10.1    2018-05-11 Bioconductor   
-##  tibble                   1.4.2     2018-01-22 CRAN (R 3.5.0) 
-##  tidyr                    0.8.1     2018-05-18 CRAN (R 3.5.0) 
-##  tidyselect               0.2.4     2018-02-26 CRAN (R 3.5.0) 
-##  viridis                  0.5.1     2018-03-29 CRAN (R 3.5.0) 
-##  viridisLite              0.3.0     2018-02-01 CRAN (R 3.5.0) 
-##  withr                    2.1.2     2018-03-15 CRAN (R 3.5.0) 
-##  xfun                     0.3       2018-07-06 CRAN (R 3.5.1) 
-##  XML                      3.98-1.16 2018-08-19 CRAN (R 3.5.1) 
-##  xml2                     1.2.0     2018-01-24 CRAN (R 3.5.0) 
-##  xtable                   1.8-3     2018-08-29 CRAN (R 3.5.0) 
-##  XVector                  0.20.0    2018-05-01 Bioconductor   
-##  yaml                     2.2.0     2018-07-25 CRAN (R 3.5.0) 
-##  zlibbioc                 1.26.0    2018-05-01 Bioconductor</code></pre>
+##  package                * version   date       lib source        
+##  AnnotationDbi            1.43.1    2018-06-13 [1] Bioconductor  
+##  AnnotationFilter         1.5.2     2018-06-13 [1] Bioconductor  
+##  AnnotationHub            2.13.7    2018-09-26 [1] Bioconductor  
+##  assertive.base           0.0-7     2016-12-30 [1] CRAN (R 3.5.0)
+##  assertive.code           0.0-1     2015-10-06 [1] CRAN (R 3.5.0)
+##  assertive.data           0.0-1     2015-10-06 [1] CRAN (R 3.5.0)
+##  assertive.files          0.0-2     2016-05-10 [1] CRAN (R 3.5.0)
+##  assertive.numbers        0.0-2     2016-05-09 [1] CRAN (R 3.5.0)
+##  assertive.properties     0.0-4     2016-12-30 [1] CRAN (R 3.5.0)
+##  assertive.sets           0.0-3     2016-12-30 [1] CRAN (R 3.5.0)
+##  assertive.strings        0.0-3     2016-05-10 [1] CRAN (R 3.5.0)
+##  assertive.types          0.0-3     2016-12-30 [1] CRAN (R 3.5.0)
+##  assertthat               0.2.0     2017-04-11 [1] CRAN (R 3.5.0)
+##  backports                1.1.2     2017-12-13 [1] CRAN (R 3.5.0)
+##  basejump               * 0.99.0    2018-10-03 [1] Bioconductor  
+##  bindr                    0.1.1     2018-03-13 [1] CRAN (R 3.5.0)
+##  bindrcpp                 0.2.2     2018-03-29 [1] CRAN (R 3.5.0)
+##  Biobase                * 2.41.2    2018-07-18 [1] Bioconductor  
+##  BiocGenerics           * 0.27.1    2018-06-17 [1] Bioconductor  
+##  BiocManager              1.30.2    2018-08-24 [1] CRAN (R 3.5.0)
+##  BiocParallel           * 1.15.12   2018-09-13 [1] Bioconductor  
+##  BiocStyle              * 2.9.6     2018-08-19 [1] Bioconductor  
+##  biomaRt                  2.37.6    2018-09-06 [1] Bioconductor  
+##  Biostrings               2.49.2    2018-10-01 [1] Bioconductor  
+##  bit                      1.1-14    2018-05-29 [1] CRAN (R 3.5.0)
+##  bit64                    0.9-7     2017-05-08 [1] CRAN (R 3.5.0)
+##  bitops                   1.0-6     2013-08-17 [1] CRAN (R 3.5.0)
+##  blob                     1.1.1     2018-03-25 [1] CRAN (R 3.5.0)
+##  bookdown                 0.7       2018-02-18 [1] CRAN (R 3.5.0)
+##  cli                      1.0.1     2018-09-25 [1] CRAN (R 3.5.1)
+##  codetools                0.2-15    2016-10-05 [2] CRAN (R 3.5.1)
+##  colorspace               1.3-2     2016-12-14 [1] CRAN (R 3.5.0)
+##  commonmark               1.6       2018-09-30 [1] CRAN (R 3.5.0)
+##  cowplot                  0.9.3     2018-07-15 [1] CRAN (R 3.5.0)
+##  crayon                   1.3.4     2017-09-16 [1] CRAN (R 3.5.0)
+##  curl                     3.2       2018-03-28 [1] CRAN (R 3.5.0)
+##  DBI                      1.0.0     2018-05-02 [1] CRAN (R 3.5.0)
+##  DelayedArray           * 0.7.45    2018-09-28 [1] Bioconductor  
+##  desc                     1.2.0     2018-05-01 [1] CRAN (R 3.5.0)
+##  digest                   0.6.17    2018-09-12 [1] CRAN (R 3.5.1)
+##  dplyr                    0.7.6     2018-06-29 [1] CRAN (R 3.5.1)
+##  EnsDb.Hsapiens.v75       2.99.0    2018-08-27 [1] Bioconductor  
+##  ensembldb                2.5.8     2018-08-31 [1] Bioconductor  
+##  evaluate                 0.11      2018-07-17 [1] CRAN (R 3.5.1)
+##  fs                       1.2.6     2018-08-23 [1] CRAN (R 3.5.0)
+##  GenomeInfoDb           * 1.17.2    2018-09-26 [1] Bioconductor  
+##  GenomeInfoDbData         1.1.0     2018-07-18 [1] Bioconductor  
+##  GenomicAlignments        1.17.3    2018-07-18 [1] Bioconductor  
+##  GenomicFeatures          1.33.2    2018-08-13 [1] Bioconductor  
+##  GenomicRanges          * 1.33.14   2018-09-20 [1] Bioconductor  
+##  ggplot2                * 3.0.0     2018-07-03 [1] CRAN (R 3.5.0)
+##  ggrepel                  0.8.0     2018-05-09 [1] CRAN (R 3.5.0)
+##  glue                     1.3.0     2018-07-17 [1] CRAN (R 3.5.1)
+##  gridExtra                2.3       2017-09-09 [1] CRAN (R 3.5.0)
+##  grr                      0.9.5     2016-08-26 [1] CRAN (R 3.5.0)
+##  gtable                   0.2.0     2016-02-26 [1] CRAN (R 3.5.0)
+##  hms                      0.4.2     2018-03-10 [1] CRAN (R 3.5.0)
+##  htmltools                0.3.6     2017-04-28 [1] CRAN (R 3.5.0)
+##  httpuv                   1.4.5     2018-07-19 [1] CRAN (R 3.5.0)
+##  httr                     1.3.1     2017-08-20 [1] CRAN (R 3.5.0)
+##  interactiveDisplayBase   1.19.2    2018-09-06 [1] Bioconductor  
+##  IRanges                * 2.15.18   2018-09-20 [1] Bioconductor  
+##  jsonlite                 1.5       2017-06-01 [1] CRAN (R 3.5.0)
+##  knitr                    1.20      2018-02-20 [1] CRAN (R 3.5.0)
+##  labeling                 0.3       2014-08-23 [1] CRAN (R 3.5.0)
+##  later                    0.7.5     2018-09-18 [1] CRAN (R 3.5.1)
+##  lattice                  0.20-35   2017-03-25 [2] CRAN (R 3.5.1)
+##  lazyeval                 0.2.1     2017-10-29 [1] CRAN (R 3.5.0)
+##  magrittr                 1.5       2014-11-22 [1] CRAN (R 3.5.0)
+##  MASS                     7.3-50    2018-04-30 [2] CRAN (R 3.5.1)
+##  Matrix                   1.2-14    2018-04-13 [2] CRAN (R 3.5.1)
+##  Matrix.utils             0.9.7     2018-04-19 [1] CRAN (R 3.5.0)
+##  matrixStats            * 0.54.0    2018-07-23 [1] CRAN (R 3.5.0)
+##  memoise                  1.1.0     2017-04-21 [1] CRAN (R 3.5.0)
+##  mime                     0.5       2016-07-07 [1] CRAN (R 3.5.0)
+##  munsell                  0.5.0     2018-06-12 [1] CRAN (R 3.5.0)
+##  pbapply                  1.3-4     2018-01-10 [1] CRAN (R 3.5.0)
+##  pheatmap                 1.0.10    2018-05-19 [1] CRAN (R 3.5.0)
+##  pillar                   1.3.0     2018-07-14 [1] CRAN (R 3.5.0)
+##  pkgconfig                2.0.2     2018-08-16 [1] CRAN (R 3.5.1)
+##  pkgdown                  1.1.0     2018-06-02 [1] CRAN (R 3.5.0)
+##  plyr                     1.8.4     2016-06-08 [1] CRAN (R 3.5.0)
+##  prettyunits              1.0.2     2015-07-13 [1] CRAN (R 3.5.0)
+##  progress                 1.2.0     2018-06-14 [1] CRAN (R 3.5.0)
+##  promises                 1.0.1     2018-04-13 [1] CRAN (R 3.5.0)
+##  ProtGenerics             1.13.0    2018-06-13 [1] Bioconductor  
+##  purrr                    0.2.5     2018-05-29 [1] CRAN (R 3.5.0)
+##  R.methodsS3              1.7.1     2016-02-16 [1] CRAN (R 3.5.0)
+##  R.oo                     1.22.0    2018-04-22 [1] CRAN (R 3.5.0)
+##  R.utils                  2.7.0     2018-08-27 [1] CRAN (R 3.5.1)
+##  R6                       2.2.2     2017-06-17 [1] CRAN (R 3.5.0)
+##  RColorBrewer             1.1-2     2014-12-07 [1] CRAN (R 3.5.0)
+##  Rcpp                     0.12.19   2018-10-01 [1] CRAN (R 3.5.0)
+##  RCurl                    1.95-4.11 2018-07-15 [1] CRAN (R 3.5.0)
+##  readr                    1.1.1     2017-05-16 [1] CRAN (R 3.5.0)
+##  reshape2                 1.4.3     2017-12-11 [1] CRAN (R 3.5.0)
+##  rlang                    0.2.2     2018-08-16 [1] CRAN (R 3.5.1)
+##  rmarkdown                1.10      2018-06-11 [1] CRAN (R 3.5.0)
+##  roxygen2                 6.1.0     2018-07-27 [1] CRAN (R 3.5.0)
+##  rprojroot                1.3-2     2018-01-03 [1] CRAN (R 3.5.0)
+##  Rsamtools                1.33.5    2018-09-04 [1] Bioconductor  
+##  RSQLite                  2.1.1     2018-05-06 [1] CRAN (R 3.5.0)
+##  rtracklayer              1.41.5    2018-08-31 [1] Bioconductor  
+##  S4Vectors              * 0.19.20   2018-09-29 [1] Bioconductor  
+##  scales                   1.0.0     2018-08-09 [1] CRAN (R 3.5.0)
+##  sessioninfo              1.1.0     2018-09-25 [1] CRAN (R 3.5.1)
+##  shiny                    1.1.0     2018-05-17 [1] CRAN (R 3.5.0)
+##  SingleCellExperiment     1.3.10    2018-08-04 [1] Bioconductor  
+##  stringi                  1.2.4     2018-07-20 [1] CRAN (R 3.5.0)
+##  stringr                  1.3.1     2018-05-10 [1] CRAN (R 3.5.0)
+##  SummarizedExperiment   * 1.11.6    2018-07-17 [1] Bioconductor  
+##  tibble                   1.4.2     2018-01-22 [1] CRAN (R 3.5.0)
+##  tidyr                    0.8.1     2018-05-18 [1] CRAN (R 3.5.0)
+##  tidyselect               0.2.4     2018-02-26 [1] CRAN (R 3.5.0)
+##  viridis                  0.5.1     2018-03-29 [1] CRAN (R 3.5.0)
+##  viridisLite              0.3.0     2018-02-01 [1] CRAN (R 3.5.0)
+##  withr                    2.1.2     2018-03-15 [1] CRAN (R 3.5.0)
+##  xfun                     0.3       2018-07-06 [1] CRAN (R 3.5.0)
+##  XML                      3.98-1.16 2018-08-19 [1] CRAN (R 3.5.1)
+##  xml2                     1.2.0     2018-01-24 [1] CRAN (R 3.5.0)
+##  xtable                   1.8-3     2018-08-29 [1] CRAN (R 3.5.0)
+##  XVector                  0.21.4    2018-10-01 [1] Bioconductor  
+##  yaml                     2.2.0     2018-07-25 [1] CRAN (R 3.5.0)
+##  zlibbioc                 1.27.0    2018-06-13 [1] Bioconductor  
+## 
+## [1] /Users/mike/R/library/3.5-bioc-3.8-devel
+## [2] /Library/Frameworks/R.framework/Versions/3.5/Resources/library</code></pre>
 </div>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">

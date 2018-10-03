@@ -122,7 +122,7 @@ supports a missing <code>interestingGroups</code> argument, which will then use 
     
     </div>
 
-    <pre class="usage"><span class='fu'>matchInterestingGroups</span>(<span class='no'>object</span>, <span class='no'>interestingGroups</span>)</pre>
+    <pre class="usage"><span class='fu'>matchInterestingGroups</span>(<span class='no'>object</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,7 +155,7 @@ supports a missing <code>interestingGroups</code> argument, which will then use 
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "genotype"  "treatment"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; [1] "genotype"  "treatment"</div><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='st'>"sampleName"</span>)</div><div class='output co'>#&gt; [1] "sampleName"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchInterestingGroups</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "genotype"  "treatment"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

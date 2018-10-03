@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Detect Organism — detectOrganism • basejump</title>
+<title>Organism Accessor — organism • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Detect Organism — detectOrganism" />
+<meta property="og:title" content="Organism Accessor — organism" />
 
-<meta property="og:description" content="Supports organism detection from genome build or Ensembl identifier." />
+<meta property="og:description" content="Supports organism detection from Ensembl identifier or genome build." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,39 +105,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Detect Organism</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/detectOrganism-methods.R'><code>R/detectOrganism-methods.R</code></a></small>
-    <div class="hidden name"><code>detectOrganism.Rd</code></div>
+    <h1>Organism Accessor</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/organism-methods.R'><code>R/organism-methods.R</code></a></small>
+    <div class="hidden name"><code>organism.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Supports organism detection from genome build or Ensembl identifier.</p>
+    <p>Supports organism detection from Ensembl identifier or genome build.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for character</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='co'># S4 method for character</span>
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for factor</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)
+<span class='fu'>organism</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for tbl_df</span>
-<span class='fu'>detectOrganism</span>(<span class='no'>object</span>)</pre>
+<span class='co'># S4 method for GRanges</span>
+<span class='fu'>organism</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>organism</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,41 +147,25 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>unique</th>
-      <td><p><code>boolean</code>. Only return unique matching organisms. Applies to
-<code>character</code> input.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>character</code>. Full latin organism name.</p><ul>
-<li><p><code>atomic</code>: Named <code>character</code> vector containing organism name or <code>NA</code> for
-individual match failures (e.g. spike-ins like EGFP, TDTOMATO).</p></li>
-<li><p><code>dim</code>: Unique <code>character</code> vector of the organism(s) detected. Warns if
-multiple organisms are detected.</p></li>
-</ul>
-
-<p>Stops on match failure.</p>
+    <p><code>string</code>. Full latin organism name. Stops on match failure.</p>
     
     <h2 class="hasAnchor" id="supported-organisms"><a class="anchor" href="#supported-organisms"></a>Supported organisms</h2>
 
     
     <ul>
-<li><p><em>Homo sapiens</em> (human)</p></li>
-<li><p><em>Mus musculus</em> (mouse)</p></li>
-<li><p><em>Rattus norvegicus</em> (rat)</p></li>
+<li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
 <li><p><em>Danio rerio</em> (zebrafish)</p></li>
 <li><p><em>Drosophila melanogaster</em> (fruitfly)</p></li>
-<li><p><em>Caenorhabditis elegans</em> (roundworm)</p></li>
-<li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
 <li><p><em>Gallus gallus</em> (chicken)</p></li>
+<li><p><em>Homo sapiens</em> (human)</p></li>
+<li><p><em>Mus musculus</em> (mouse)</p></li>
 <li><p><em>Ovis aries</em> (sheep)</p></li>
+<li><p><em>Rattus norvegicus</em> (rat)</p></li>
+<li><p><em>Saccharomyces cerevisiae</em> (yeast)</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -199,13 +184,18 @@ multiple organisms are detected.</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># By gene identifier</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>))</div><div class='output co'>#&gt; ENSG00000000003            EGFP        TDTOMATO 
-#&gt;  "Homo sapiens"              NA              NA </div><div class='input'>
-<span class='co'># By genome build</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"GRCh38"</span>)  <span class='co'># Ensembl</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hg38"</span>)    <span class='co'># UCSC</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
-<span class='co'># By alternate organism name</span>
-<span class='fu'>detectOrganism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>detectOrganism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Match by gene identifier.</span>
+<span class='fu'>organism</span>(<span class='st'>"ENSG00000000003"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># Match by genome build.</span>
+<span class='fu'>organism</span>(<span class='st'>"GRCh38"</span>)  <span class='co'># Ensembl</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>organism</span>(<span class='st'>"hg38"</span>)    <span class='co'># UCSC</span></div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># Match by alternate organism name.</span>
+<span class='fu'>organism</span>(<span class='st'>"H. sapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'><span class='fu'>organism</span>(<span class='st'>"hsapiens"</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># The function will skip transgenes/spike-ins until we find a match.</span>
+<span class='fu'>organism</span>(<span class='fu'>c</span>(<span class='st'>"EGFP"</span>, <span class='st'>"TDTOMATO"</span>, <span class='st'>"ENSG00000000003"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># But it only returns the first match, if there are multiple genomes.</span>
+<span class='fu'>organism</span>(<span class='fu'>c</span>(<span class='st'>"ENSG00000000003"</span>, <span class='st'>"ENSMUSG00000000001"</span>))</div><div class='output co'>#&gt; [1] "Homo sapiens"</div><div class='input'>
+<span class='co'># SummarizedExperiment support.</span>
+<span class='fu'>organism</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; [1] "Homo sapiens"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

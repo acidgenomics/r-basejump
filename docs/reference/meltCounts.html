@@ -119,8 +119,8 @@
     <pre class="usage"><span class='fu'>meltCounts</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>meltCounts</span>(<span class='no'>object</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"identity"</span>,
-  <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))</pre>
+<span class='fu'>meltCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>nonzeroGenes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +132,15 @@
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>assay</th>
+      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>nonzeroGenes</th>
+      <td><p><code>boolean</code>. Return only non-zero genes.</p></td>
     </tr>
     <tr>
       <th>trans</th>
@@ -149,31 +158,39 @@ unmodified (default).</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/reshape2/topics/melt'>reshape2::melt()</a></code>.</p>
-<p>Other Data Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
+<p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
   <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>,
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
-  <code><a href='selectSamples.html'>selectSamples</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>meltCounts</span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 400 x 7
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 200 x 7
 #&gt; # Groups:   colname, rowname [?]
-#&gt;    rowname colname counts sampleName genotype treatment interestingGroups
-#&gt;    &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;      &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;            
-#&gt;  1 gene1   sample1     22 sample1    wildtype control   wildtype:control 
-#&gt;  2 gene2   sample1     20 sample1    wildtype control   wildtype:control 
-#&gt;  3 gene3   sample1     72 sample1    wildtype control   wildtype:control 
-#&gt;  4 gene4   sample1     68 sample1    wildtype control   wildtype:control 
-#&gt;  5 gene5   sample1      0 sample1    wildtype control   wildtype:control 
-#&gt;  6 gene6   sample1     68 sample1    wildtype control   wildtype:control 
-#&gt;  7 gene7   sample1     28 sample1    wildtype control   wildtype:control 
-#&gt;  8 gene8   sample1     20 sample1    wildtype control   wildtype:control 
-#&gt;  9 gene9   sample1      1 sample1    wildtype control   wildtype:control 
-#&gt; 10 gene10  sample1     96 sample1    wildtype control   wildtype:control 
-#&gt; # ... with 390 more rows</div></pre>
+#&gt;    rowname colname counts genotype treatment sampleName interestingGroups
+#&gt;    &lt;fct&gt;   &lt;fct&gt;    &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
+#&gt;  1 gene1   sample1      7 wildtype control   sample1    wildtype:control 
+#&gt;  2 gene2   sample1     24 wildtype control   sample1    wildtype:control 
+#&gt;  3 gene3   sample1      2 wildtype control   sample1    wildtype:control 
+#&gt;  4 gene4   sample1    230 wildtype control   sample1    wildtype:control 
+#&gt;  5 gene5   sample1     36 wildtype control   sample1    wildtype:control 
+#&gt;  6 gene6   sample1     63 wildtype control   sample1    wildtype:control 
+#&gt;  7 gene7   sample1     26 wildtype control   sample1    wildtype:control 
+#&gt;  8 gene8   sample1      9 wildtype control   sample1    wildtype:control 
+#&gt;  9 gene9   sample1      1 wildtype control   sample1    wildtype:control 
+#&gt; 10 gene10  sample1      3 wildtype control   sample1    wildtype:control 
+#&gt; # ... with 190 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
