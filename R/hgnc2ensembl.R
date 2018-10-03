@@ -18,16 +18,7 @@ hgnc2ensembl <- function(.test = FALSE) {
     if (isTRUE(.test)) {
         file <- file.path(basejumpCacheURL, "hgnc.txt.gz")
     } else {
-        file <- paste(
-            "ftp://ftp.ebi.ac.uk",
-            "pub",
-            "databases",
-            "genenames",
-            "new",
-            "tsv",
-            "hgnc_complete_set.txt",
-            sep = "/"
-        )
+        file <- .hgncURL
     }
 
     message("Obtaining HGNC to Ensembl gene ID mappings...")
@@ -49,3 +40,16 @@ hgnc2ensembl <- function(.test = FALSE) {
 
     new("hgnc2ensembl", data)
 }
+
+
+
+.hgncURL <- paste(
+    "ftp://ftp.ebi.ac.uk",
+    "pub",
+    "databases",
+    "genenames",
+    "new",
+    "tsv",
+    "hgnc_complete_set.txt",
+    sep = "/"
+)

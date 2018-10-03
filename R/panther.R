@@ -1,8 +1,3 @@
-# FIXME Update `.test` mode to work for all supported organisms.
-# FIXME Need to generate a better example of hgnc and mgi mappings.
-
-
-
 #' PANTHER Gene Ontology Annotations
 #'
 #' @name panther
@@ -23,7 +18,7 @@
 #' invisible(capture.output(
 #'     x <- panther("Homo sapiens", .test = TRUE)
 #' ))
-#' glimpse(x)
+#' summary(x)
 NULL
 
 
@@ -148,14 +143,10 @@ panther <- function(
     .test = FALSE
 ) {
     stopifnot(has_internet())
-    if (isTRUE(.test)) {
-        organism <- "Homo sapiens"
-    } else {
-        organism <- match.arg(
-            arg = organism,
-            choices = names(.pantherMappings)
-        )
-    }
+    organism <- match.arg(
+        arg = organism,
+        choices = names(.pantherMappings)
+    )
     pantherName <-  .pantherMappings[[organism]]
     assert_is_a_string(pantherName)
     if (is.null(release)) {
@@ -171,7 +162,10 @@ panther <- function(
     ))
 
     if (isTRUE(.test)) {
-        file <- "pthr13.1_human.gz"
+        file <- file.path(
+            basejumpCacheURL,
+            paste0("PTHR13.1_", pantherName, ".gz")
+        )
     } else {
         file <- transmit(
             remoteDir = paste(
