@@ -28,11 +28,7 @@ geneSynonyms <- function(organism, .test = FALSE) {
     } else {
         organism <- match.arg(
             arg = organism,
-            choices = c(
-                "Homo sapiens",
-                "Mus musculus",
-                "Drosophila melanogaster"
-            )
+            choices = .geneSynonymsOrganisms
         )
     }
     assert_is_a_bool(.test)
@@ -97,3 +93,12 @@ geneSynonyms <- function(organism, .test = FALSE) {
         arrange(!!sym("geneID")) %>%
         group_by(!!sym("geneID"))
 }
+
+
+
+# Using this for parameterized unit testing.
+.geneSynonymsOrganisms <- c(
+    "Homo sapiens",
+    "Mus musculus",
+    "Drosophila melanogaster"
+)
