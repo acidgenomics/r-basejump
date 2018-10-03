@@ -12,9 +12,6 @@
 #' @export
 #'
 #' @inheritParams general
-#' @param categoriesFile `string`. Functional categories file.
-#' @param eunogFile `string`. euNOG file. Eukaryota.
-#' @param nogFile `string`. NOG file. LUCA.
 #'
 #' @seealso [EggNOG README](http://eggnogdb.embl.de/download/latest/README.txt).
 #'
