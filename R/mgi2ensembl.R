@@ -20,13 +20,7 @@ mgi2ensembl <- function(.test = FALSE) {
     if (isTRUE(.test)) {
         file <- file.path(basejumpCacheURL, "mgi.rpt.gz")
     } else {
-        file <- paste(
-            "http://www.informatics.jax.org",
-            "downloads",
-            "reports",
-            "MGI_Gene_Model_Coord.rpt",
-            sep = "/"
-        )
+        file <- .mgiURL
     }
 
     message("Obtaining MGI to Ensembl gene ID mappings...")
@@ -48,3 +42,13 @@ mgi2ensembl <- function(.test = FALSE) {
 
     new("mgi2ensembl", data)
 }
+
+
+
+.mgiURL <- paste(
+    "http://www.informatics.jax.org",
+    "downloads",
+    "reports",
+    "MGI_Gene_Model_Coord.rpt",
+    sep = "/"
+)
