@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assert Is a Header Level — assertIsAHeaderLevel • basejump</title>
+<title>Plot Total Counts — plotTotalCounts • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Assert Is a Header Level — assertIsAHeaderLevel" />
+<meta property="og:title" content="Plot Total Counts — plotTotalCounts" />
 
-<meta property="og:description" content="Markdown supports header levels 1-7 (&amp;lt;H1&amp;gt;-&amp;lt;H7&amp;gt;)." />
+<meta property="og:description" content="Plot Total Counts" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,18 +105,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Assert Is a Header Level</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
-    <div class="hidden name"><code>assertIsAHeaderLevel.Rd</code></div>
+    <h1>Plot Total Counts</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/plotTotalCounts-methods.R'><code>R/plotTotalCounts-methods.R</code></a></small>
+    <div class="hidden name"><code>plotTotalCounts.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Markdown supports header levels 1-7 (<code>&lt;H1&gt;</code>-<code>&lt;H7&gt;</code>).</p>
+    <p>Plot Total Counts</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assertIsAHeaderLevel</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>plotTotalCounts</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>plotTotalCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>perMillion</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.fill"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.flip"</span>, <span class='fl'>TRUE</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"total counts"</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>plotTotalCounts</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>perMillion</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.fill"</span>, <span class='kw'>NULL</span>),
+  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.flip"</span>, <span class='fl'>TRUE</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"total counts"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,47 +137,57 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>assay</th>
+      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>interestingGroups</th>
+      <td><p><code>character</code>. Groups of interest.</p></td>
+    </tr>
+    <tr>
+      <th>perMillion</th>
+      <td><p><code>boolean</code>. Display as counts per million.</p></td>
+    </tr>
+    <tr>
+      <th>fill</th>
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 fill scale.
+Must supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
+palette will be used. If manual color definitions are desired, we recommend
+using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
+globally, use <code>options(bcbio.discrete.fill = scale_fill_viridis_d())</code>.</p></td>
+    </tr>
+    <tr>
+      <th>flip</th>
+      <td><p><code>boolean</code>. Flip x and y axes. Recommended for quality control
+plots containing many samples.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p><code>string</code>. Plot title.</p></td>
+    </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Always stop on error.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
-  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
-  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
-  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
-  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
-  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
-  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
-  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
-  <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
-  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
-  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
-  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
-  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
-  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
-  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
-  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
-  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
-  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
-  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
-  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
+    <div class='dont-index'><p>Other Quality Control Functions: <code><a href='plotCountsPerGene.html'>plotCountsPerGene</a></code>,
+  <code><a href='plotGenderMarkers.html'>plotGenderMarkers</a></code>,
+  <code><a href='plotGenesDetected.html'>plotGenesDetected</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assertIsAHeaderLevel</span>(<span class='fl'>1L</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>plotTotalCounts</span>(<span class='no'>rse_small</span>)</div><div class='img'><img src='plotTotalCounts-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotTotalCounts</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='img'><img src='plotTotalCounts-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

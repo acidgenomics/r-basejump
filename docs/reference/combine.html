@@ -117,9 +117,10 @@
     </div>
 
     <pre class="usage"><span class='co'># S4 method for SummarizedExperiment,SummarizedExperiment</span>
-<span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>,
-  <span class='kw'>metadata</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"version"</span>, <span class='st'>"interestingGroups"</span>, <span class='st'>"organism"</span>, <span class='st'>"genomeBuild"</span>,
-  <span class='st'>"ensemblRelease"</span>, <span class='st'>"rowRangesMetadata"</span>, <span class='st'>"gffFile"</span>))</pre>
+<span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+
+<span class='co'># S4 method for SingleCellExperiment,SingleCellExperiment</span>
+<span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,11 +132,6 @@
     <tr>
       <th>y</th>
       <td><p>A second value.</p></td>
-    </tr>
-    <tr>
-      <th>metadata</th>
-      <td><p><code>character</code>. Metadata slot names that must be identical
-between the datasets.</p></td>
     </tr>
     </table>
     
@@ -154,52 +150,91 @@ between the datasets.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/BiocGenerics/topics/combine'>BiocGenerics::combine()</a></code>.</p></div>
+    <div class='dont-index'><ul>
+<li><p><code><a href='http://www.rdocumentation.org/packages/BiocGenerics/topics/combine'>BiocGenerics::combine()</a></code>.</p></li>
+<li><p><code>help("merge.Matrix", "Matrix.utils")</code>.</p></li>
+</ul></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># For this simple working example, let's duplicate our minimal dataset.</span>
-
+    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
-<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
-#&gt;         sampleName genotype treatment
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control
-#&gt; sample2    sample2 knockout   control
-#&gt; sample3    sample3 wildtype   treated
-#&gt; sample4    sample4 knockout   treated</div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt;         genotype treatment
+#&gt;         &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1 wildtype   control
+#&gt; sample2 knockout   control
+#&gt; sample3 wildtype   treated
+#&gt; sample4 knockout   treated</div><div class='input'>
+<span class='co'># Create a copy of our minimal example.</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
 <span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>seq</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>8L</span>))
-<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>y</span>)<span class='kw'>[[</span><span class='st'>"sampleName"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>y</span>)
-<span class='fu'>colData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
-#&gt;          sampleName genotype treatment
-#&gt;         &lt;character&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample5     sample5 wildtype   control
-#&gt; sample6     sample6 knockout   control
-#&gt; sample7     sample7 wildtype   treated
-#&gt; sample8     sample8 knockout   treated</div><div class='input'>
+<span class='fu'>colnames</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "sample5" "sample6" "sample7" "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt;         genotype treatment
+#&gt;         &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample5 wildtype   control
+#&gt; sample6 knockout   control
+#&gt; sample7 wildtype   treated
+#&gt; sample8 knockout   treated</div><div class='input'>
 <span class='co'># Combine two SummarizedExperiment objects.</span>
 <span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 <span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
-#&gt; dim: 100 8 
-#&gt; metadata(6): version interestingGroups ... utilsSessionInfo
-#&gt;   devtoolsSessionInfo
+#&gt; dim: 50 8 
+#&gt; metadata(6): interestingGroups version ... wd sessionInfo
 #&gt; assays(1): counts
-#&gt; rownames(100): gene1 gene10 ... gene98 gene99
-#&gt; rowData names(7): broadClass description ... geneName seqCoordSystem
+#&gt; rownames(50): gene1 gene10 ... gene8 gene9
+#&gt; rowData names(5): geneID geneName geneBiotype broadClass entrezID
 #&gt; colnames(8): sample1 sample2 ... sample7 sample8
-#&gt; colData names(3): sampleName genotype treatment</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7"
-#&gt; [8] "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 3 columns
-#&gt;         sampleName genotype treatment
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control
-#&gt; sample2    sample2 knockout   control
-#&gt; sample3    sample3 wildtype   treated
-#&gt; sample4    sample4 knockout   treated
-#&gt; sample5    sample5 wildtype   control
-#&gt; sample6    sample6 knockout   control
-#&gt; sample7    sample7 wildtype   treated
-#&gt; sample8    sample8 knockout   treated</div></pre>
+#&gt; colData names(2): genotype treatment</div><div class='input'><span class='fu'>colnames</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; [1] "sample1" "sample2" "sample3" "sample4" "sample5" "sample6" "sample7"
+#&gt; [8] "sample8"</div><div class='input'><span class='fu'>colData</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; DataFrame with 8 rows and 2 columns
+#&gt;         genotype treatment
+#&gt;         &lt;factor&gt;  &lt;factor&gt;
+#&gt; sample1 wildtype   control
+#&gt; sample2 knockout   control
+#&gt; sample3 wildtype   treated
+#&gt; sample4 knockout   treated
+#&gt; sample5 wildtype   control
+#&gt; sample6 knockout   control
+#&gt; sample7 wildtype   treated
+#&gt; sample8 knockout   treated</div><div class='input'>
+<span class='co'># SingleCellExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce_small</span>
+<span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] "cell001" "cell002" "cell003" "cell004" "cell005" "cell006"</div><div class='input'><span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;         sampleName interestingGroups
+#&gt;           &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample2    sample2           sample2
+#&gt; sample1    sample1           sample1</div><div class='input'>
+<span class='co'># Here we're faking a distinct replicate, just as an example.</span>
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
+<span class='co'># Increase the cell ID numbers.</span>
+<span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>sub</span>(<span class='st'>"cell"</span>, <span class='st'>""</span>, <span class='no'>.</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>as.integer</span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'>`+`</span>(<span class='fu'>ncol</span>(<span class='no'>y</span>)) <span class='kw'>%&gt;%</span>
+    <span class='fu'>paste0</span>(<span class='st'>"cell"</span>, <span class='no'>.</span>)
+<span class='fu'>colnames</span>(<span class='no'>y</span>) <span class='kw'>&lt;-</span> <span class='no'>cells</span>
+<span class='fu'>head</span>(<span class='fu'>colnames</span>(<span class='no'>y</span>))</div><div class='output co'>#&gt; [1] "cell1001" "cell1002" "cell1003" "cell1004" "cell1005" "cell1006"</div><div class='input'><span class='co'># Increase the sample ID numbers.</span>
+<span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'>gsub</span>(<span class='st'>"1$"</span>, <span class='st'>"3"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
+<span class='no'>y</span>$<span class='no'>sampleID</span> <span class='kw'>&lt;-</span> <span class='fu'>gsub</span>(<span class='st'>"2$"</span>, <span class='st'>"4"</span>, <span class='no'>y</span>$<span class='no'>sampleID</span>)
+<span class='fu'><a href='sampleData.html'>sampleData</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;          sampleName interestingGroups
+#&gt;         &lt;character&gt;          &lt;factor&gt;
+#&gt; sample4     sample4           sample4
+#&gt; sample3     sample3           sample3</div><div class='input'>
+<span class='co'># Combine two SingleCellExperiment objects.</span>
+<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>x</span>, <span class='no'>y</span>)
+<span class='fu'>print</span>(<span class='no'>c</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 200 2000 
+#&gt; metadata(4): combine date wd sessionInfo
+#&gt; assays(1): counts
+#&gt; rownames(200): ENSG00000000003 ENSG00000000005 ... ENSG00000008056
+#&gt;   ENSG00000008083
+#&gt; rowData names(4): geneID geneName geneBiotype broadClass
+#&gt; colnames(2000): cell001 cell002 ... cell998 cell999
+#&gt; colData names(2): expLibSize sampleID
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div><div class='input'># FIXME sampleData(c)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

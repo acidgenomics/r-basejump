@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Sample Data — sampleData" />
 
-<meta property="og:description" content="Return the sample metadata. Columns are always sanitized to factor." />
+<meta property="og:description" content="Metadata that describes the samples." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,7 +112,7 @@
 
     <div class="ref-description">
     
-    <p>Return the sample metadata. Columns are always sanitized to factor.</p>
+    <p>Metadata that describes the samples.</p>
     
     </div>
 
@@ -124,6 +124,14 @@
 <span class='fu'>sampleData</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for SummarizedExperiment,DataFrame</span>
+<span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>sampleData</span>(<span class='no'>object</span>,
+  <span class='kw'>blacklist</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"^ident$"</span>, <span class='st'>"^origIdent$"</span>, <span class='st'>"^res[.0-9]+$"</span>, <span class='st'>"^sScore$"</span>,
+  <span class='st'>"^g2mScore$"</span>, <span class='st'>"^phase$"</span>))
+
+<span class='co'># S4 method for SingleCellExperiment,DataFrame</span>
 <span class='fu'>sampleData</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
@@ -144,13 +152,20 @@
       <th>value</th>
       <td><p>Value to assign.</p></td>
     </tr>
+    <tr>
+      <th>blacklist</th>
+      <td><p><code>character</code>. Column names that should never be treated as
+sample-level metadata. Applies to objects where the columns don't map to
+samples (e.g. <code>SingleCellExperiment</code>), and we need to collapse the
+<code>colData()</code> dynamically.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>. Metadata that describes the samples.</p>
+    <p><code>DataFrame</code>.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This is a complement to the standard <code>colData()</code> function, but improves
 support for accessing sample metadata for datasets where multiple items in
@@ -159,34 +174,56 @@ experiment).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
   <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
   <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
-  <code><a href='selectSamples.html'>selectSamples</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='fu'>sampleData</span>(<span class='no'>rse_small</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;         sampleName genotype treatment interestingGroups
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;          &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control  wildtype:control
-#&gt; sample2    sample2 knockout   control  knockout:control
-#&gt; sample3    sample3 wildtype   treated  wildtype:treated
-#&gt; sample4    sample4 knockout   treated  knockout:treated</div><div class='input'>
-<span class='co'># Assignment support</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
-<span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"test"</span>]] <span class='kw'>&lt;-</span> <span class='fu'>seq_len</span>(<span class='fu'>ncol</span>(<span class='no'>x</span>))
-<span class='co'># `test` column should be now defined</span>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+#&gt;         genotype treatment sampleName interestingGroups
+#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample1 wildtype   control    sample1  wildtype:control
+#&gt; sample2 knockout   control    sample2  knockout:control
+#&gt; sample3 wildtype   treated    sample3  wildtype:treated
+#&gt; sample4 knockout   treated    sample4  knockout:treated</div><div class='input'>
+<span class='co'># Assignment support</span>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
+<span class='co'># `batch` column should be now defined.</span>
 <span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 5 columns
-#&gt;         sampleName genotype treatment      test interestingGroups
-#&gt;           &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt; &lt;integer&gt;          &lt;factor&gt;
-#&gt; sample1    sample1 wildtype   control         1  wildtype:control
-#&gt; sample2    sample2 knockout   control         2  knockout:control
-#&gt; sample3    sample3 wildtype   treated         3  wildtype:treated
-#&gt; sample4    sample4 knockout   treated         4  knockout:treated</div></pre>
+#&gt;         genotype treatment sampleName     batch interestingGroups
+#&gt;         &lt;factor&gt;  &lt;factor&gt;   &lt;factor&gt; &lt;integer&gt;          &lt;factor&gt;
+#&gt; sample1 wildtype   control    sample1         1  wildtype:control
+#&gt; sample2 knockout   control    sample2         1  knockout:control
+#&gt; sample3 wildtype   treated    sample3         1  wildtype:treated
+#&gt; sample4 knockout   treated    sample4         1  knockout:treated</div><div class='input'>
+<span class='co'># SingleCellExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>sce_small</span>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;         sampleName interestingGroups
+#&gt;           &lt;factor&gt;          &lt;factor&gt;
+#&gt; sample2    sample2           sample2
+#&gt; sample1    sample1           sample1</div><div class='input'>
+<span class='co'># Assignment support.</span>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='st'>"batch"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1L</span>
+<span class='co'># `batch` column should be now defined.</span>
+<span class='fu'>sampleData</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
+#&gt;         sampleName     batch interestingGroups
+#&gt;           &lt;factor&gt; &lt;integer&gt;          &lt;factor&gt;
+#&gt; sample2    sample2         1           sample2
+#&gt; sample1    sample1         1           sample1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -195,7 +232,7 @@ experiment).</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

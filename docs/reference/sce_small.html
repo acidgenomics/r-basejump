@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read JSON File — readJSON • basejump</title>
+<title>Example Single-Cell RNA-Seq Data Set — sce_small • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Read JSON File — readJSON" />
+<meta property="og:title" content="Example Single-Cell RNA-Seq Data Set — sce_small" />
 
-<meta property="og:description" content="Read JSON File" />
+<meta property="og:description" content="Example Single-Cell RNA-Seq Data Set" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,51 +105,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read JSON File</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readJSON.R'><code>R/readJSON.R</code></a></small>
-    <div class="hidden name"><code>readJSON.Rd</code></div>
+    <h1>Example Single-Cell RNA-Seq Data Set</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>sce_small.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Read JSON File</p>
+    <p>Example Single-Cell RNA-Seq Data Set</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>readJSON</span>(<span class='no'>file</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>file</th>
-      <td><p><code>string</code>. File path.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>sce_small</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><code>list</code>.</p>
+    <p>An object of class <code>SingleCellExperiment</code> with 200 rows and 1000 columns.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Read Functions: <code><a href='import.html'>import</a></code>,
-  <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
-  <code><a href='loadRemoteData.html'>loadRemoteData</a></code>, <code><a href='readGFF.html'>readGFF</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/scater/topics/sc_example_counts'>scater::sc_example_counts</a></code>.</p>
+<p>Other Minimal Example Data: <code><a href='rse_small.html'>rse_small</a></code>,
+  <code><a href='tx_se_small.html'>tx_se_small</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readJSON</span>(<span class='st'>"http://basejump.seq.cloud/example.json"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.json</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
-#&gt; [4] "input_fasta_files" "input_gtf_files"   "mem_gb"           
-#&gt; [7] "mkref_version"     "threads"           "version"          </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>print</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt; class: SingleCellExperiment 
+#&gt; dim: 200 1000 
+#&gt; metadata(1): date
+#&gt; assays(1): counts
+#&gt; rownames(200): ENSG00000000003 ENSG00000000005 ... ENSG00000008056
+#&gt;   ENSG00000008083
+#&gt; rowData names(4): geneID geneName geneBiotype broadClass
+#&gt; colnames(1000): cell001 cell002 ... cell999 cell1000
+#&gt; colData names(2): expLibSize sampleID
+#&gt; reducedDimNames(0):
+#&gt; spikeNames(0):</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

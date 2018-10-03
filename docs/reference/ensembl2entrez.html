@@ -146,18 +146,18 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
+  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='geneSynonyms.html'>geneSynonyms</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
+  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>, <code><a href='organism.html'>organism</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>ensembl2entrez</span>(<span class='no'>rse_small</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ensembl2entrez with 99 rows and 2 columns
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; ensembl2entrez with 49 rows and 2 columns
 #&gt;                          geneID  entrezID
 #&gt;                     &lt;character&gt; &lt;integer&gt;
 #&gt; ENSG00000000003 ENSG00000000003      7105
@@ -166,11 +166,11 @@ Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.</p>
 #&gt; ENSG00000000457 ENSG00000000457     57147
 #&gt; ENSG00000000460 ENSG00000000460     55732
 #&gt; ...                         ...       ...
-#&gt; ENSG00000005421 ENSG00000005421      5444
-#&gt; ENSG00000005436 ENSG00000005436      6936
-#&gt; ENSG00000005448 ENSG00000005448     84058
-#&gt; ENSG00000005469 ENSG00000005469     54677
-#&gt; ENSG00000005471 ENSG00000005471      5244</div></pre>
+#&gt; ENSG00000004059 ENSG00000004059       381
+#&gt; ENSG00000004139 ENSG00000004139     23098
+#&gt; ENSG00000004142 ENSG00000004142     26073
+#&gt; ENSG00000004399 ENSG00000004399     23129
+#&gt; ENSG00000004455 ENSG00000004455       204</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

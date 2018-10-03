@@ -119,10 +119,10 @@
     <pre class="usage"><span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='no'>genes</span>,
+<span class='fu'>plotGene</span>(<span class='no'>object</span>, <span class='no'>genes</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
   <span class='kw'>medianLine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.discrete.color"</span>,
-  <span class='kw'>NULL</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.legend"</span>, <span class='fl'>TRUE</span>), <span class='kw'>headerLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+  <span class='kw'>NULL</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.legend"</span>, <span class='fl'>TRUE</span>),
   <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"facet"</span>, <span class='st'>"wide"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -139,6 +139,11 @@
     <tr>
       <th>genes</th>
       <td><p><code>character</code>. Gene identifiers.</p></td>
+    </tr>
+    <tr>
+      <th>assay</th>
+      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
@@ -158,17 +163,12 @@ samples are colored by sample name.</p></td>
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 color
 scale. Must supply discrete values. When set to <code>NULL</code>, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
-recommend using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>.
-To set the discrete color palette globally, use
-<code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+recommend using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
+palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
     </tr>
     <tr>
       <th>legend</th>
       <td><p><code>boolean</code>. Show plot legend.</p></td>
-    </tr>
-    <tr>
-      <th>headerLevel</th>
-      <td><p><code>scalar integer</code>. Markdown header level (1-7).</p></td>
     </tr>
     <tr>
       <th>style</th>
@@ -189,13 +189,15 @@ To set the discrete color palette globally, use
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Plot Functions: <code><a href='plotCorrelationHeatmap.html'>plotCorrelationHeatmap</a></code>,
+  <code><a href='plotCountsPerBiotype.html'>plotCountsPerBiotype</a></code>,
   <code><a href='plotHeatmap.html'>plotHeatmap</a></code>, <code><a href='plotQC.html'>plotQC</a></code>,
   <code><a href='plotQuantileHeatmap.html'>plotQuantileHeatmap</a></code>,
-  <code><a href='zerosVsDepth.html'>plotZerosVsDepth</a></code></p></div>
+  <code><a href='plotZerosVsDepth.html'>plotZerosVsDepth</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
+    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>rse_small</span>
 
 <span class='no'>rownames</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='fu'>rownames</span>(<span class='no'>object</span>))
 <span class='fu'>print</span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene1" "gene2" "gene3" "gene4" "gene5" "gene6"</div><div class='input'><span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gene2symbol.html'>gene2symbol</a></span>(<span class='no'>object</span>)
