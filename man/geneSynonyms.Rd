@@ -9,6 +9,8 @@ geneSynonyms(organism, .test = FALSE)
 \arguments{
 \item{organism}{\code{string}. Supported organisms: \emph{Homo sapiens},
 \emph{Mus musculus}, \emph{Drosophila melanogaster}.}
+
+\item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
 \code{grouped_df}. Grouped by \code{geneID} column.

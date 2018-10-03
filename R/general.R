@@ -39,12 +39,15 @@
 #'   dashed line.
 #' @param minCounts `scalar integer`. Minimum number of counts per gene in the
 #'   counts matrix.
+#' @param n `scalar integer`. Number to include.
 #' @param organism `string`. Full latin organism name (e.g. "`Homo sapiens`").
 #' @param perMillion `boolean`. Display as counts per million.
 #' @param plotlist `list` containing `ggplot` objects.
 #' @param return Object class to return. Uses [match.arg()] internally and picks
 #'   the first item in the vector by default.
 #' @param title `string`. Plot title.
+#' @param trans `string`. Name of the axis scale transformation to apply. See
+#'   `help("scale_x_continuous", "ggplot2")` for more information.
 #' @param url `string`. Uniform Resource Locator (URL). HTTP or FTP address.
 #' @param verbose `boolean`. Run the function with verbose messages? It is only
 #'   recommended to enable this when debugging.
