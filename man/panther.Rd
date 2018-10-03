@@ -27,7 +27,7 @@ PANTHER Gene Ontology Annotations
 invisible(capture.output(
     x <- panther("Homo sapiens", .test = TRUE)
 ))
-glimpse(x)
+summary(x)
 }
 \seealso{
 Other Annotation Functions: \code{\link{broadClass}},
