@@ -13,6 +13,7 @@
 #' @family Annotation Functions
 #' @export
 #'
+#' @inheritParams general
 #' @param organism `string`. Supported organisms: *Homo sapiens*,
 #'   *Mus musculus*, *Drosophila melanogaster*.
 #'

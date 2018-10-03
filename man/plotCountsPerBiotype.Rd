@@ -38,7 +38,12 @@ plotCountsPerBroadClass(object, ...)
 \item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
+\item{n}{\code{scalar integer}. Number to include.}
+
 \item{interestingGroups}{\code{character}. Groups of interest.}
+
+\item{trans}{\code{string}. Name of the axis scale transformation to apply. See
+\code{help("scale_x_continuous", "ggplot2")} for more information.}
 
 \item{countsAxisLabel}{\code{string}. Counts axis label.}
 }

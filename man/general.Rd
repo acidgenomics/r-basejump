@@ -56,6 +56,8 @@ dashed line.}
 \item{minCounts}{\code{scalar integer}. Minimum number of counts per gene in the
 counts matrix.}
 
+\item{n}{\code{scalar integer}. Number to include.}
+
 \item{organism}{\code{string}. Full latin organism name (e.g. "\code{Homo sapiens}").}
 
 \item{perMillion}{\code{boolean}. Display as counts per million.}
@@ -66,6 +68,9 @@ counts matrix.}
 the first item in the vector by default.}
 
 \item{title}{\code{string}. Plot title.}
+
+\item{trans}{\code{string}. Name of the axis scale transformation to apply. See
+\code{help("scale_x_continuous", "ggplot2")} for more information.}
 
 \item{url}{\code{string}. Uniform Resource Locator (URL). HTTP or FTP address.}
 
