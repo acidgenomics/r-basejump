@@ -1,4 +1,5 @@
 # FIXME Speed up the working example.
+# FIXME Improve working example to show `aggregate = TRUE` more clearly.
 
 
 
@@ -96,7 +97,9 @@ NULL
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
         if (has_length(missing)) {
-            stop(paste("Failed to match transcripts:", toString(missing)))
+            stop(paste(
+                "Failed to match transcripts:", toString(missing)
+            ), call. = FALSE)
         }
 
         tx2gene <- tx2gene[
