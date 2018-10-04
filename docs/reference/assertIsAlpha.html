@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read GFF Annotations — readGFF • basejump</title>
+<title>Assert Is Alpha Level — assertIsAlpha • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,11 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Read GFF Annotations — readGFF" />
+<meta property="og:title" content="Assert Is Alpha Level — assertIsAlpha" />
 
-<meta property="og:description" content="The GFF (General Feature Format) format consists of one line per feature,
-each containing 9 columns of data, plus optional track definition lines. The
-GTF (General Transfer Format) is identical to GFF version 2." />
+<meta property="og:description" content="An alpha level must be between 0 and 1, but not equal either 0 or 1." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,56 +105,60 @@ GTF (General Transfer Format) is identical to GFF version 2." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read GFF Annotations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/readGFF.R'><code>R/readGFF.R</code></a></small>
-    <div class="hidden name"><code>readGFF.Rd</code></div>
+    <h1>Assert Is Alpha Level</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <div class="hidden name"><code>assertIsAlpha.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The GFF (General Feature Format) format consists of one line per feature,
-each containing 9 columns of data, plus optional track definition lines. The
-GTF (General Transfer Format) is identical to GFF version 2.</p>
+    <p>An alpha level must be between 0 and 1, but not equal either 0 or 1.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>readGFF</span>(<span class='no'>file</span>)
-
-<span class='fu'>readGTF</span>(<span class='no'>file</span>)</pre>
+    <pre class="usage"><span class='fu'>assertIsAlpha</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p><code>string</code>. File path.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>GRanges</code>.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Column names follow the
-<a href='https://bit.ly/2K6EBla'>conventions defined by Ensembl</a>.</p>
-<p>Remote URLs and compressed files are supported.</p>
+    <p>Always stop on error.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
-<li><p><a href='http://www.ensembl.org/info/website/upload/gff.html'>Ensembl</a></p></li>
-<li><p><a href='http://www.gencodegenes.org/gencodeformat.html'>Gencode</a></p></li>
-</ul></div>
-    <div class='dont-index'><p>Other Read Functions: <code><a href='import.html'>import</a></code>,
-  <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
-  <code><a href='loadRemoteData.html'>loadRemoteData</a></code>, <code><a href='readJSON.html'>readJSON</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
+  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
+  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
+  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
+  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
+  <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
+  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
+  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
+  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
+  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
+  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
+  <code><a href='assertIsHeaderLevel.html'>assertIsHeaderLevel</a></code>,
+  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>readGFF</span>(<span class='st'>"http://basejump.seq.cloud/example.gtf"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 95 ranges and 22 metadata columns"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assertIsAlpha</span>(<span class='fl'>0.05</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -164,8 +166,6 @@ GTF (General Transfer Format) is identical to GFF version 2.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

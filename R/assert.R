@@ -561,6 +561,23 @@ assertIsColorScaleDiscreteOrNULL <- function(object) {
 
 
 
+#' Assert Is Directory
+#'
+#' @family Assert Check Functions
+#' @author Michael Steinbaugh
+#' @inherit assert
+#'
+#' @export
+#'
+#' @examples
+#' assertIsDir("~")
+assertIsDir <- function(object) {
+    assert_is_a_string(object)
+    assert_all_are_dirs(object)
+}
+
+
+
 # assertIsFillScaleContinuousOrNULL ============================================
 #' Assert Is Fill Palette Scale Continuous or NULL
 #'

@@ -116,7 +116,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='no'>organism</span>)</pre>
+    <pre class="usage"><span class='fu'>geneSynonyms</span>(<span class='no'>organism</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,10 @@
       <th>organism</th>
       <td><p><code>string</code>. Supported organisms: <em>Homo sapiens</em>,
 <em>Mus musculus</em>, <em>Drosophila melanogaster</em>.</p></td>
+    </tr>
+    <tr>
+      <th>.test</th>
+      <td><p><code>boolean</code>. <em>For unit testing only</em>.</p></td>
     </tr>
     </table>
     
@@ -143,32 +147,29 @@ Use the wormbase package instead.</p>
   <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
   <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='detectOrganism.html'>detectOrganism</a></code>, <code><a href='eggnog.html'>eggnog</a></code>,
-  <code><a href='emptyRanges.html'>emptyRanges</a></code>, <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>,
-  <code><a href='gene2symbol.html'>gene2symbol</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
+  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
+  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
+  <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>, <code><a href='makeGRanges.html'>makeGRanges</a></code>,
+  <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>, <code><a href='makeTx2gene.html'>makeTx2gene</a></code>,
+  <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>, <code><a href='organism.html'>organism</a></code>,
   <code><a href='panther.html'>panther</a></code>,
   <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>)
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 19,339 x 3
-#&gt; # Groups:   geneID [19,328]
-#&gt;    geneID         geneName synonyms                                            
-#&gt;    &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;                                               
-#&gt;  1 ENSG000000000… TSPAN6   T245, TM4SF6, TSPAN-6                               
-#&gt;  2 ENSG000000000… TNMD     BRICD4, CHM1L, TEM                                  
-#&gt;  3 ENSG000000004… DPM1     CDGIE, MPDS                                         
-#&gt;  4 ENSG000000004… SCYL3    PACE-1, PACE1                                       
-#&gt;  5 ENSG000000009… FGR      SRC2, c-fgr, c-src2, p55-Fgr, p55c-fgr, p58-Fgr, p5…
-#&gt;  6 ENSG000000009… CFH      AHUS1, AMBP1, ARMD4, ARMS1, CFHL3, FH, FHL1, HF, HF…
-#&gt;  7 ENSG000000010… FUCA2    dJ20N2.5                                            
-#&gt;  8 ENSG000000010… GCLC     GCL, GCS, GLCL, GLCLC                               
-#&gt;  9 ENSG000000011… NFYA     CBF-A, CBF-B, HAP2, NF-YA                           
-#&gt; 10 ENSG000000014… STPG1    C1orf201, MAPO2                                     
-#&gt; # ... with 19,329 more rows</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>geneSynonyms</span>(<span class='kw'>organism</span> <span class='kw'>=</span> <span class='st'>"Homo sapiens"</span>, <span class='kw'>.test</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 3
+#&gt; # Groups:   geneID [8]
+#&gt;   geneID          geneName synonyms                    
+#&gt;   &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;                       
+#&gt; 1 ENSG00000114771 AADAC    CES5A1, DAC                 
+#&gt; 2 ENSG00000121410 A1BG     A1B, ABG, GAB, HYST2477     
+#&gt; 3 ENSG00000129673 AANAT    DSPS, SNAT                  
+#&gt; 4 ENSG00000156006 NAT2     AAC2, NAT-2, PNAT           
+#&gt; 5 ENSG00000171428 NAT1     AAC1, MNAT, NAT-1, NATI     
+#&gt; 6 ENSG00000175899 A2M      A2MD, CPAMD5, FWP007, S863-7
+#&gt; 7 ENSG00000196136 SERPINA3 AACT, ACT, GIG24, GIG25     
+#&gt; 8 ENSG00000256069 A2MP1    A2MP                        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

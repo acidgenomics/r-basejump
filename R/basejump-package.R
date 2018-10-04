@@ -38,9 +38,9 @@
 #' @importFrom BiocGenerics do.call lapply match
 #' @importFrom cowplot plot_grid
 #' @importFrom curl has_internet
-#' @importFrom dplyr arrange bind_rows case_when filter funs group_by left_join
-#'   mutate mutate_all mutate_at mutate_if pull rename select select_if
-#'   summarize summarize_all top_n ungroup
+#' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
+#'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
+#'   select_if slice summarize summarize_all top_n ungroup
 #' @importFrom ensembldb ensemblVersion organism
 #' @importFrom GenomicFeatures genes transcripts
 #' @importFrom GenomicRanges GRanges
@@ -62,6 +62,7 @@
 #'   setAs show slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
 #' @importFrom pheatmap pheatmap
+#' @importFrom purrr map
 #' @importFrom R.utils gzip
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom RCurl getURL

@@ -133,40 +133,65 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Varies, depending on the file extension. Note that data frames are
-returned as <code>DataFrame</code> class instead of <code>data.frame</code>, when applicable.</p>
+    <p>Varies, depending on the file extension:</p><ul>
+<li><p>Default: <code>DataFrame</code>.</p></li>
+<li><p>MTX: <code>sparseMatrix</code>.</p></li>
+<li><p>GTF/GFF: <code>GRanges</code>.</p></li>
+<li><p>JSON/YAML: <code>list</code>.</p></li>
+</ul>
+
+<p>Note that data frames are returned as S4 <code>DataFrame</code> class instead of
+<code>data.frame</code>, when applicable.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a wrapper for <code><a href='http://www.rdocumentation.org/packages/rio/topics/import'>rio::import()</a></code> that adds support for additional
-common genomic data formats.</p>
-<p>Supports automatic loading of common file extensions:</p><ul>
+    <p>This is a wrapper for <code><a href='http://www.rdocumentation.org/packages/rio/topics/import'>rio::import()</a></code> that adds support for additional common
+genomic data files. Remote URLs and compressed files are supported.</p>
+<p>This function supports automatic loading of common file types:</p><ul>
 <li><p><code>csv</code>: Comma Separated Values.</p></li>
-<li><p><code>gff</code>/<code>gff3</code>/<code>gtf</code>: General Feature Format.</p></li>
+<li><p><code>tsv</code> Tab Separated Values.</p></li>
+<li><p><code>xlsx</code>: Excel workbook.</p></li>
 <li><p><code>mtx</code>: MatrixMarket sparse matrix.</p></li>
+<li><p><code>gtf</code>/<code>gff</code>/<code>gff3</code>: General Feature Format.</p></li>
 <li><p><code>rda</code>/<code>RData</code>: R Data. Must contain a single object. Doesn't require
 internal object name to match, like with the <code><a href='loadData.html'>loadData()</a></code> function.</p></li>
 <li><p><code>rds</code>: R Data Serialized.</p></li>
-<li><p><code>tsv</code> Tab Separated Values.</p></li>
-<li><p><code>xlsx</code>: Excel workbook.</p></li>
+<li><p><code>json</code>: JSON.</p></li>
 <li><p><code>yaml</code>/<code>yml</code>: YAML.</p></li>
-</ul>
-    <p>Also supports some additional extensions commonly used with the
-<a href='https://bcbio-nextgen.readthedocs.io'>bcbio</a> pipeline:</p><ul>
-<li><p><code>counts</code>: Counts <code>table</code>.</p></li>
-<li><p><code>colnames</code>: Sidecar file containing column names.</p></li>
-<li><p><code>rownames</code>: Sidecar file containing row names.</p></li>
 </ul>
     <p>If the file format isn't supported natively (or blacklisted), the
 <a href='https://cran.r-project.org/web/packages/rio/index.html'>rio</a> package will
 be used as a fallback attempt.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="matrix-market-exchange-mtx-mex-"><a class="anchor" href="#matrix-market-exchange-mtx-mex-"></a>Matrix Market Exchange (MTX/MEX)</h2>
 
-    <p>Reading a MatrixMarket ("<code>mtx</code>") file now requires "<code>colnames</code>" and
+    
+    <p>Reading a Matrix Market Exchange ("<code>mtx</code>") file now requires "<code>colnames</code>" and
 <code>"rownames"</code> sidecar files containing the <code>colnames()</code> and <code>rownames()</code> of
 the sparse matrix. Legacy support for manual loading of these sidecar files
 is provided.</p>
+    
+    <h2 class="hasAnchor" id="general-feature-format-gff-gtf-"><a class="anchor" href="#general-feature-format-gff-gtf-"></a>General Feature Format (GFF/GTF)</h2>
+
+    
+    <p>The GFF (General Feature Format) format consists of one line per feature,
+each containing 9 columns of data, plus optional track definition lines. The
+GTF (General Transfer Format) is identical to GFF version 2.</p>
+<p>Column names follow the <a href='https://bit.ly/2K6EBla'>Ensembl conventions</a>.
+Additional information:</p><ul>
+<li><p><a href='http://www.ensembl.org/info/website/upload/gff.html'>Ensembl</a></p></li>
+<li><p><a href='http://www.gencodegenes.org/gencodeformat.html'>Gencode</a></p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="bcbio"><a class="anchor" href="#bcbio"></a>bcbio</h2>
+
+    
+    <p>Also supports some additional extensions commonly used with the
+<a href='https://bcbio-nextgen.readthedocs.io'>bcbio</a> pipeline:</p><ul>
+<li><p><code>counts</code>: Counts table (e.g. RNA-seq aligned counts).</p></li>
+<li><p><code>colnames</code>: Sidecar file containing column names.</p></li>
+<li><p><code>rownames</code>: Sidecar file containing row names.</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -176,57 +201,48 @@ is provided.</p>
 <li><p><a href='https://cran.r-project.org/web/packages/Matrix/index.html'>Matrix</a>.</p></li>
 </ul></div>
     <div class='dont-index'><p>Other Read Functions: <code><a href='loadDataAsName.html'>loadDataAsName</a></code>,
-  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code>,
-  <code><a href='readGFF.html'>readGFF</a></code>, <code><a href='readJSON.html'>readJSON</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='loadData.html'>loadData</a></code>, <code><a href='loadRemoteData.html'>loadRemoteData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># R Data</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  int [1:1000, 1:12] 0 33 2 18 11 15 93 47 60 25 ...
-#&gt;  - attr(*, "dimnames")=List of 2
-#&gt;   ..$ : chr [1:1000] "gene1" "gene2" "gene3" "gene4" ...
-#&gt;   ..$ : chr [1:12] "sample1" "sample2" "sample3" "sample4" ...</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"rnaseq_counts.rda"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda...</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'>
 <span class='co'># Comma Separated Values</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.csv</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Invalid dimnames detected</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:32] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...
-#&gt;   ..@ nrows          : int 32
-#&gt;   ..@ listData       :List of 11
-#&gt;   .. ..$ mpg : num [1:32] 21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-#&gt;   .. ..$ cyl : int [1:32] 6 6 4 6 8 6 8 4 4 6 ...
-#&gt;   .. ..$ disp: num [1:32] 160 160 108 258 360 ...
-#&gt;   .. ..$ hp  : int [1:32] 110 110 93 110 175 105 245 62 95 123 ...
-#&gt;   .. ..$ drat: num [1:32] 3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-#&gt;   .. ..$ wt  : num [1:32] 2.62 2.88 2.32 3.21 3.44 ...
-#&gt;   .. ..$ qsec: num [1:32] 16.5 17 18.6 19.4 17 ...
-#&gt;   .. ..$ vs  : int [1:32] 0 0 1 1 0 1 0 1 1 1 ...
-#&gt;   .. ..$ am  : int [1:32] 1 1 1 0 0 0 0 0 0 0 ...
-#&gt;   .. ..$ gear: int [1:32] 4 4 4 3 3 3 3 4 4 4 ...
-#&gt;   .. ..$ carb: int [1:32] 4 4 1 1 2 1 4 2 2 4 ...
-#&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata: NULL
-#&gt;   ..@ metadata       : list()</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.csv...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
+#&gt;            genotype   treatment
+#&gt;         &lt;character&gt; &lt;character&gt;
+#&gt; sample1    wildtype     control
+#&gt; sample2    knockout     control
+#&gt; sample3    wildtype     treated
+#&gt; sample4    knockout     treated</div><div class='input'>
 <span class='co'># Microsoft Excel Worksheet</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/mtcars.xlsx"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading mtcars.xlsx</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Invalid dimnames detected</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:6] "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...
-#&gt;   ..@ nrows          : int 6
-#&gt;   ..@ listData       :List of 11
-#&gt;   .. ..$ mpg : num [1:6] 21 21 22.8 21.4 18.7 18.1
-#&gt;   .. ..$ cyl : num [1:6] 6 6 4 6 8 6
-#&gt;   .. ..$ disp: num [1:6] 160 160 108 258 360 225
-#&gt;   .. ..$ hp  : num [1:6] 110 110 93 110 175 105
-#&gt;   .. ..$ drat: num [1:6] 3.9 3.9 3.85 3.08 3.15 2.76
-#&gt;   .. ..$ wt  : num [1:6] 2.62 2.88 2.32 3.21 3.44 ...
-#&gt;   .. ..$ qsec: num [1:6] 16.5 17 18.6 19.4 17 ...
-#&gt;   .. ..$ vs  : num [1:6] 0 0 1 1 0 1
-#&gt;   .. ..$ am  : num [1:6] 1 1 1 0 0 0
-#&gt;   .. ..$ gear: num [1:6] 4 4 4 3 3 3
-#&gt;   .. ..$ carb: num [1:6] 4 4 1 1 2 1
-#&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata: NULL
-#&gt;   ..@ metadata       : list()</div><div class='input'>
-<span class='co'># bcbio Counts Table</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='st'>"http://basejump.seq.cloud/example.counts"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading example.counts</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.xlsx"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.xlsx...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 6 rows and 11 columns
+#&gt;                         mpg       cyl      disp        hp      drat        wt
+#&gt;                   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+#&gt; Mazda RX4                21         6       160       110       3.9      2.62
+#&gt; Mazda RX4 Wag            21         6       160       110       3.9     2.875
+#&gt; Datsun 710             22.8         4       108        93      3.85      2.32
+#&gt; Hornet 4 Drive         21.4         6       258       110      3.08     3.215
+#&gt; Hornet Sportabout      18.7         8       360       175      3.15      3.44
+#&gt; Valiant                18.1         6       225       105      2.76      3.46
+#&gt;                        qsec        vs        am      gear      carb
+#&gt;                   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+#&gt; Mazda RX4             16.46         0         1         4         4
+#&gt; Mazda RX4 Wag         17.02         0         1         4         4
+#&gt; Datsun 710            18.61         1         1         4         1
+#&gt; Hornet 4 Drive        19.44         1         0         3         1
+#&gt; Hornet Sportabout     17.02         0         0         3         2
+#&gt; Valiant               20.22         1         0         3         1</div><div class='input'>
+<span class='co'># GTF/GFF</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.gtf"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.gtf...</span></div><div class='input'><span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 95 ranges and 22 metadata columns"</div><div class='input'>
+<span class='co'># JSON</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.json"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.json...</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "fasta_hash"        "genomes"           "gtf_hash"         
+#&gt; [4] "input_fasta_files" "input_gtf_files"   "mem_gb"           
+#&gt; [7] "mkref_version"     "threads"           "version"          </div><div class='input'>
+<span class='co'># YAML</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.yml"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.yml...</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "date"         "upload"       "bcbio_system" "samples"     </div><div class='input'>
+<span class='co'># Counts Table (i.e. aligned counts from bcbio)</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"example.counts"</span>))</div><div class='output co'>#&gt; <span class='message'>Reading example.counts...</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  id = col_character(),</span>
 #&gt; <span class='message'>  sample01 = col_integer(),</span>
@@ -241,10 +257,10 @@ is provided.</p>
 #&gt; <span class='message'>  sample10 = col_integer(),</span>
 #&gt; <span class='message'>  sample11 = col_integer(),</span>
 #&gt; <span class='message'>  sample12 = col_integer()</span>
-#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  int [1:9, 1:12] 0 0 259 0 3 0 0 0 0 0 ...
-#&gt;  - attr(*, "dimnames")=List of 2
-#&gt;   ..$ : chr [1:9] "ENSMUSG00000102693" "ENSMUSG00000064842" "ENSMUSG00000051951" "ENSMUSG00000102851" ...
-#&gt;   ..$ : chr [1:12] "sample01" "sample02" "sample03" "sample04" ...</div></pre>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>colSums</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; sample01 sample02 sample03 sample04 sample05 sample06 sample07 sample08 
+#&gt;      262      502      299      318      123      620      242      303 
+#&gt; sample09 sample10 sample11 sample12 
+#&gt;      199      258      258      157 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -255,7 +271,11 @@ is provided.</p>
 
       <li><a href="#details">Details</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#matrix-market-exchange-mtx-mex-">Matrix Market Exchange (MTX/MEX)</a></li>
+
+      <li><a href="#general-feature-format-gff-gtf-">General Feature Format (GFF/GTF)</a></li>
+
+      <li><a href="#bcbio">bcbio</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

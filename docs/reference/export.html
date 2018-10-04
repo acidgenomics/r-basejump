@@ -136,15 +136,20 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments for the underlying export functions. See examples.</p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>file</th>
-      <td><p>A character string naming a file. Must specify <code>file</code> and/or <code>format</code>.</p></td>
+      <td><p><code>string</code>. File path.</p></td>
     </tr>
     <tr>
       <th>format</th>
       <td><p>An optional character string containing the file format, which can be used to override the format inferred from <code>file</code> or, in lieu of specifying <code>file</code>, a file with the symbol name of <code>x</code> and the specified file extension will be created. Must specify <code>file</code> and/or <code>format</code>. Shortcuts include: &#8220;,&#8221; (for comma-separated values), &#8220;;&#8221; (for semicolon-separated values), &#8220;|&#8221; (for pipe-separated values), and &#8220;dump&#8221; for <code><a href='http://www.rdocumentation.org/packages/base/topics/dump'>dump</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p><code>string</code>. Output directory. Defaults to the current working
+directory.</p></td>
     </tr>
     </table>
     
@@ -157,11 +162,15 @@
     <p>This is a wrapper for <code><a href='http://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> that adds support for additional S4
 classes in Bioconductor.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="row-names"><a class="anchor" href="#row-names"></a>Row names</h2>
 
-    <p>The standard <code><a href='http://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> call will drop rownames when exporting to
-CSV. We're performing any internal tibble coercion step to ensure rownames
-are always moved to a "rowname" column in the CSV output.</p>
+    
+    <p>The standard <code><a href='http://www.rdocumentation.org/packages/rio/topics/export'>rio::export()</a></code> call will drop rownames when exporting to CSV.
+The <code>readr::write_*()</code> family of functions also never write rownames. This is
+a <em>really poor</em> default setting for handling genomic data, which often
+contain gene identifiers in the rownames. Here we're performing any internal
+tibble coercion step to ensure rownames are always moved to a "<code>rowname</code>"
+column in the CSV export.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -169,7 +178,14 @@ are always moved to a "rowname" column in the CSV output.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>export</span>(<span class='no'>rnaseq_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv</span></div><div class='input'><span class='fu'>export</span>(<span class='no'>single_cell_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"mtx"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported single_cell_counts.mtx, single_cell_counts.mtx.colnames, single_cell_counts.mtx.rownames</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># matrix ====</span>
+<span class='no'>rnaseq_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>rse_small</span>)
+<span class='fu'>stopifnot</span>(<span class='fu'>is.matrix</span>(<span class='no'>rnaseq_counts</span>))
+<span class='fu'>export</span>(<span class='no'>rnaseq_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"csv"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported rnaseq_counts.csv.</span></div><div class='input'>
+<span class='co'># sparseMatrix ====</span>
+<span class='no'>single_cell_counts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='counts.html'>counts</a></span>(<span class='no'>sce_small</span>)
+<span class='fu'>stopifnot</span>(<span class='fu'>is</span>(<span class='no'>single_cell_counts</span>, <span class='st'>"sparseMatrix"</span>))
+<span class='fu'>export</span>(<span class='no'>single_cell_counts</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"mtx"</span>)</div><div class='output co'>#&gt; <span class='message'>Exported single_cell_counts.mtx, single_cell_counts.mtx.colnames, single_cell_counts.mtx.rownames.</span></div><div class='input'>
 <span class='co'># Clean up</span>
 <span class='fu'>file.remove</span>(<span class='fu'>c</span>(
     <span class='st'>"rnaseq_counts.csv"</span>,
@@ -187,7 +203,7 @@ are always moved to a "rowname" column in the CSV output.</p>
 
       <li><a href="#details">Details</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#row-names">Row names</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

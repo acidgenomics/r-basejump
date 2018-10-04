@@ -142,18 +142,19 @@ remote URL as the value.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Read Functions: <code><a href='import.html'>import</a></code>,
-  <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code>,
-  <code><a href='readGFF.html'>readGFF</a></code>, <code><a href='readJSON.html'>readJSON</a></code>,
-  <code><a href='readYAML.html'>readYAML</a></code></p></div>
+  <code><a href='loadDataAsName.html'>loadDataAsName</a></code>, <code><a href='loadData.html'>loadData</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>loadRemoteData</span>(<span class='fu'>c</span>(
-    <span class='st'>"http://basejump.seq.cloud/rnaseq_counts.rda"</span>,
-    <span class='st'>"http://basejump.seq.cloud/single_cell_counts.rda"</span>
-))</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rda</span></div><div class='output co'>#&gt; <span class='message'>Reading single_cell_counts.rda</span></div><div class='input'><span class='fu'>class</span>(<span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>class</span>(<span class='no'>single_cell_counts</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
-#&gt; attr(,"package")
-#&gt; [1] "Matrix"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(
+    <span class='no'>basejumpCacheURL</span>,
+    <span class='fu'>paste0</span>(<span class='fu'>c</span>(<span class='st'>"rnaseq_counts"</span>, <span class='st'>"single_cell_counts"</span>), <span class='st'>".rds"</span>)
+)
+<span class='fu'>print</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; [1] "http://basejump.seq.cloud/v0.99/rnaseq_counts.rds"     
+#&gt; [2] "http://basejump.seq.cloud/v0.99/single_cell_counts.rds"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>loadRemoteData</span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading rnaseq_counts.rds...</span></div><div class='output co'>#&gt; <span class='message'>Reading single_cell_counts.rds...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                                            rnaseq_counts 
+#&gt;      "http://basejump.seq.cloud/v0.99/rnaseq_counts.rds" 
+#&gt;                                       single_cell_counts 
+#&gt; "http://basejump.seq.cloud/v0.99/single_cell_counts.rds" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
