@@ -22,7 +22,26 @@ test_that("filter", {
 })
 
 test_that("left_join", {
-
+    expect_identical(
+        object = left_join(
+            x = DataFrame(
+                cell = paste0("cell", seq_len(4L)),
+                sample = paste0("sample", seq_len(2L)),
+                row.names = paste0("row", seq_len(4L))
+            ),
+            y = DataFrame(
+                sample = paste0("sample", seq_len(2L)),
+                genotype = c("wildtype", "mutant")
+            ),
+            by = "sample"
+        ),
+        expected = DataFrame(
+            cell = paste0("cell", seq_len(4L)),
+            sample = paste0("sample", seq_len(2L)),
+            genotype = c("wildtype", "mutant"),
+            row.names = paste0("row", seq_len(4L))
+        )
+    )
 })
 
 test_that("mutate", {
