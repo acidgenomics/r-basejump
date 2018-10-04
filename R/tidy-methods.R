@@ -1,42 +1,32 @@
-# bind_cols
-# bind_rows
-# slice
+# Utilities ====================================================================
+#' @importFrom dplyr groups
+#' @export
+dplyr::groups
+
+#' @method groups DataFrame
+#' @export
+groups.DataFrame <- function(x) {
+    # DataFrame is never grouped.
+    NULL
+}
+
+
+
+#' @importFrom dplyr tbl_vars
+#' @export
+dplyr::tbl_vars
+
+#' @method tbl_vars DataFrame
+#' @export
+tbl_vars.DataFrame <- function(x) {
+    out <- tbl_vars(as(x, "tbl_df"))
+    # Always ignore `rowname` column.
+    setdiff(out, "rowname")
+}
+
+
 
 # Single table verbs ===========================================================
-# arrange_all
-# arrange_at
-# arrange_if
-# distinct
-# do
-# filter
-# filter_all
-# filter_at
-# filter_if
-# group_by
-# mutate
-# mutate_all
-# mutate_at
-# mutate_if
-# rename
-# rename_all
-# mutate_at
-# mutate_if
-# select
-# select_all
-# select_at
-# select_if
-# summarise
-# summarise_all
-# summarise_at
-# summarise_if
-# summarize variants
-# transmute
-# transmute_all
-# transmute_at
-# trasmute_if
-
-
-
 #' @importFrom dplyr arrange
 #' @export
 dplyr::arrange
@@ -52,6 +42,21 @@ arrange.DataFrame <- function(.data, ...) {
 
 
 
+#' @importFrom dplyr distinct
+#' @export
+dplyr::distinct
+
+#' @method distinct DataFrame
+#' @export
+distinct.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        distinct(...) %>%
+        as("DataFrame")
+}
+
+
+
 #' @importFrom dplyr filter
 #' @export
 dplyr::filter
@@ -59,7 +64,7 @@ dplyr::filter
 #' @method filter DataFrame
 #' @export
 filter.DataFrame <- function(.data, ...) {
-    ..data %>%
+    .data %>%
         as("tbl_df") %>%
         filter(...) %>%
         as("DataFrame")
@@ -67,7 +72,52 @@ filter.DataFrame <- function(.data, ...) {
 
 
 
-#' @importFrom dplyr mutate
+#' @importFrom dplyr filter_all
+#' @export
+dplyr::filter_all
+
+#' @method filter_all DataFrame
+#' @export
+filter_all.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        filter_all(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr filter_at
+#' @export
+dplyr::filter_at
+
+#' @method filter_at DataFrame
+#' @export
+filter_at.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        filter_at(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr filter_if
+#' @export
+dplyr::filter_if
+
+#' @method filter_if DataFrame
+#' @export
+filter_if.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        filter_if(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr transmute
 #' @export
 dplyr::mutate
 
@@ -77,6 +127,53 @@ mutate.DataFrame <- function(.data, ...) {
     .data %>%
         as("tbl_df") %>%
         mutate(...) %>%
+        as("DataFrame")
+}
+
+
+
+# This requires `groups()` export.
+
+#' @importFrom dplyr mutate_all
+#' @export
+dplyr::mutate_all
+
+#' @method mutate_all DataFrame
+#' @export
+mutate_all.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        mutate_all(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr mutate_at
+#' @export
+dplyr::mutate_at
+
+#' @method mutate_at DataFrame
+#' @export
+mutate_at.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        mutate_at(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr mutate_if
+#' @export
+dplyr::mutate_if
+
+#' @method mutate_if DataFrame
+#' @export
+mutate_if.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        mutate_if(...) %>%
         as("DataFrame")
 }
 
@@ -97,6 +194,51 @@ rename.DataFrame <- function(.data, ...) {
 
 
 
+#' @importFrom dplyr rename_all
+#' @export
+dplyr::rename_all
+
+#' @method rename_all DataFrame
+#' @export
+rename_all.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        rename_all(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr rename_at
+#' @export
+dplyr::rename_at
+
+#' @method rename_at DataFrame
+#' @export
+rename_at.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        rename_at(...) %>%
+        as("DataFrame")
+}
+
+
+
+#' @importFrom dplyr rename_if
+#' @export
+dplyr::rename_if
+
+#' @method rename_if DataFrame
+#' @export
+rename_if.DataFrame <- function(.data, ...) {
+    .data %>%
+        as("tbl_df") %>%
+        rename_if(...) %>%
+        as("DataFrame")
+}
+
+
+
 #' @importFrom dplyr select
 #' @export
 dplyr::select
@@ -104,13 +246,91 @@ dplyr::select
 #' @method select DataFrame
 #' @export
 select.DataFrame <- function(.data, ...) {
-    rownames <- rownames(.data)
-    data <- .data %>%
-        as("tbl_df") %>%
+    .data %>%
+        as_tibble(rownames = NULL) %>%
         select(...) %>%
-        as("DataFrame")
-    rownames(data) <- rownames
-    data
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
+}
+
+
+
+#' @importFrom dplyr select_at
+#' @export
+dplyr::select_at
+
+#' @method select_at DataFrame
+#' @export
+select_at.DataFrame <- function(.data, ...) {
+    .data %>%
+        as_tibble(rownames = NULL) %>%
+        select_at(...) %>%
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
+}
+
+
+
+#' @importFrom dplyr select_if
+#' @export
+dplyr::select_if
+
+#' @method select_if DataFrame
+#' @export
+select_if.DataFrame <- function(.data, ...) {
+    .data %>%
+        as_tibble(rownames = NULL) %>%
+        select_if(...) %>%
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
+}
+
+
+
+#' @importFrom dplyr transmute
+#' @export
+dplyr::transmute
+
+#' @method transmute DataFrame
+#' @export
+transmute.DataFrame <- function(.data, ...) {
+    .data %>%
+        as_tibble(rownames = NULL) %>%
+        transmute(...) %>%
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
+}
+
+
+
+#' @importFrom dplyr transmute_at
+#' @export
+dplyr::transmute_at
+
+#' @method transmute_at DataFrame
+#' @export
+transmute_at.DataFrame <- function(.data, ...) {
+    .data %>%
+        as_tibble(rownames = NULL) %>%
+        transmute_at(...) %>%
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
+}
+
+
+
+#' @importFrom dplyr transmute_if
+#' @export
+dplyr::transmute_if
+
+#' @method transmute_if DataFrame
+#' @export
+transmute_if.DataFrame <- function(.data, ...) {
+    .data %>%
+        as_tibble(rownames = NULL) %>%
+        transmute_if(...) %>%
+        as("DataFrame") %>%
+        set_rownames(rownames(.data))
 }
 
 
@@ -123,8 +343,6 @@ dplyr::left_join
 #' @method left_join DataFrame
 #' @export
 left_join.DataFrame <- function(x, y, ...) {
-    assert_is_all_of(x, "DataFrame")
-    assert_is_all_of(y, "DataFrame")
     data <- left_join(
         x = as_tibble(x, rownames = "rowname"),
         y = as_tibble(y, rownames = NULL),
