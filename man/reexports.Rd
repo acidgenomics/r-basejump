@@ -15,12 +15,29 @@
 \alias{SummarizedExperiment}
 \alias{glimpse}
 \alias{tibble}
+\alias{groups}
+\alias{tbl_vars}
 \alias{arrange}
+\alias{distinct}
 \alias{filter}
-\alias{left_join}
+\alias{filter_all}
+\alias{filter_at}
+\alias{filter_if}
 \alias{mutate}
+\alias{mutate_all}
+\alias{mutate_at}
+\alias{mutate_if}
 \alias{rename}
+\alias{rename_all}
+\alias{rename_at}
+\alias{rename_if}
 \alias{select}
+\alias{select_at}
+\alias{select_if}
+\alias{transmute}
+\alias{transmute_at}
+\alias{transmute_if}
+\alias{left_join}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -28,7 +45,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{pull}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{left_join}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{select}}}
+  \item{dplyr}{\code{\link[dplyr]{pull}}, \code{\link[dplyr]{groups}}, \code{\link[dplyr]{tbl_vars}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{filter_all}}, \code{\link[dplyr]{filter_at}}, \code{\link[dplyr]{filter_if}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_at}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{rename_all}}, \code{\link[dplyr]{rename_at}}, \code{\link[dplyr]{rename_if}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{select_at}}, \code{\link[dplyr]{select_if}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{transmute_at}}, \code{\link[dplyr]{transmute_if}}, \code{\link[dplyr]{left_join}}}
 
   \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
 

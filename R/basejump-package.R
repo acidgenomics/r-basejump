@@ -57,7 +57,7 @@
 #' @importFrom knitr asis_output kable opts_knit
 #' @importFrom Matrix colSums rowMeans rowSums readMM t writeMM
 #' @importFrom Matrix.utils aggregate.Matrix
-#' @importFrom magrittr set_colnames
+#' @importFrom magrittr set_colnames set_rownames
 #' @importFrom methods as formalArgs getGeneric getMethod is new selectMethod
 #'   setAs show slot slotNames validObject .hasSlot
 #' @importFrom pbapply pblapply
