@@ -117,7 +117,16 @@
     </div>
 
     <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>counts</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>counts</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SummarizedExperiment,ANY</span>
+<span class='fu'>counts</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for SummarizedExperiment,matrix</span>
+<span class='fu'>counts</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for SummarizedExperiment,sparseMatrix</span>
+<span class='fu'>counts</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -126,32 +135,48 @@
       <th>object</th>
       <td><p>Object.</p></td>
     </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Value to assign.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>matrix</code>.</p>
+    <p>Counts matrix. Typically <code>matrix</code> or <code>sparseMatrix</code> class.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>For a <code>SummarizedExperiment</code> object, <code>"counts"</code> must be explicitly
+defined in <code>assayNames()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
   <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
-  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
   <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>rse_small</span>)
-<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;     sample1          sample2          sample3          sample4       
-#&gt;  Min.   :  0.00   Min.   :  0.00   Min.   :  0.00   Min.   :   0.00  
-#&gt;  1st Qu.:  5.00   1st Qu.:  4.00   1st Qu.:  4.00   1st Qu.:   5.00  
-#&gt;  Median : 16.50   Median : 21.50   Median : 16.00   Median :  18.00  
-#&gt;  Mean   : 45.35   Mean   : 50.24   Mean   : 53.32   Mean   :  56.88  
-#&gt;  3rd Qu.: 56.25   3rd Qu.: 57.00   3rd Qu.: 51.25   3rd Qu.:  39.00  
-#&gt;  Max.   :539.00   Max.   :600.00   Max.   :541.00   Max.   :1050.00  </div></pre>
+<span class='fu'>summary</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;     sample1          sample2          sample3          sample4      
+#&gt;  Min.   :  0.00   Min.   :  0.00   Min.   :  0.00   Min.   :  0.00  
+#&gt;  1st Qu.:  3.00   1st Qu.:  4.00   1st Qu.:  5.25   1st Qu.:  2.00  
+#&gt;  Median : 10.00   Median : 12.00   Median : 11.50   Median : 12.00  
+#&gt;  Mean   : 31.60   Mean   : 30.74   Mean   : 27.30   Mean   : 29.64  
+#&gt;  3rd Qu.: 31.75   3rd Qu.: 34.75   3rd Qu.: 26.50   3rd Qu.: 34.75  
+#&gt;  Max.   :230.00   Max.   :257.00   Max.   :231.00   Max.   :139.00  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -159,6 +184,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

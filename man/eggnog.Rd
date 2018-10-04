@@ -8,12 +8,6 @@ eggnog(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
-
-\item{categoriesFile}{\code{string}. Functional categories file.}
-
-\item{eunogFile}{\code{string}. euNOG file. Eukaryota.}
-
-\item{nogFile}{\code{string}. NOG file. LUCA.}
 }
 \value{
 \code{list} containing:

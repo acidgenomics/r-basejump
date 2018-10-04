@@ -129,17 +129,33 @@
       <td><p>Value to assign.</p></td>
     </tr>
     <tr>
+      <th>x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>assay</th>
+      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>check</th>
+      <td><p><code>boolean</code>. Perform assert checks.</p></td>
     </tr>
     <tr>
       <th>color</th>
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 color
 scale. Must supply discrete values. When set to <code>NULL</code>, the default ggplot2
 color palette will be used. If manual color definitions are desired, we
-recommend using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>.
-To set the discrete color palette globally, use
-<code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+recommend using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>. To set the discrete color
+palette globally, use <code>options(basejump.discrete.color = ggplot2::scale_color_viridis_d())</code>.</p></td>
+    </tr>
+    <tr>
+      <th>countsAxisLabel</th>
+      <td><p><code>string</code>. Counts axis label.</p></td>
     </tr>
     <tr>
       <th>dir</th>
@@ -154,6 +170,19 @@ directory.</p></td>
     <tr>
       <th>file</th>
       <td><p><code>string</code>. File path.</p></td>
+    </tr>
+    <tr>
+      <th>fill</th>
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code> or <code>NULL</code>. Desired ggplot2 fill scale.
+Must supply discrete values. When set to <code>NULL</code>, the default ggplot2 color
+palette will be used. If manual color definitions are desired, we recommend
+using <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_fill_manual()</a></code>. To set the discrete fill palette
+globally, use <code>options(bcbio.discrete.fill = scale_fill_viridis_d())</code>.</p></td>
+    </tr>
+    <tr>
+      <th>flip</th>
+      <td><p><code>boolean</code>. Flip x and y axes. Recommended for quality control
+plots containing many samples.</p></td>
     </tr>
     <tr>
       <th>genes</th>
@@ -172,8 +201,26 @@ directory.</p></td>
       <td><p><code>boolean</code>. Show plot legend.</p></td>
     </tr>
     <tr>
+      <th>limit</th>
+      <td><p><code>scalar numeric</code>. Threshold to denote on the plot, using a
+dashed line.</p></td>
+    </tr>
+    <tr>
+      <th>minCounts</th>
+      <td><p><code>scalar integer</code>. Minimum number of counts per gene in the
+counts matrix.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p><code>scalar integer</code>. Number to include.</p></td>
+    </tr>
+    <tr>
       <th>organism</th>
       <td><p><code>string</code>. Full latin organism name (e.g. "<code>Homo sapiens</code>").</p></td>
+    </tr>
+    <tr>
+      <th>perMillion</th>
+      <td><p><code>boolean</code>. Display as counts per million.</p></td>
     </tr>
     <tr>
       <th>plotlist</th>
@@ -185,9 +232,26 @@ directory.</p></td>
 the first item in the vector by default.</p></td>
     </tr>
     <tr>
+      <th>title</th>
+      <td><p><code>string</code>. Plot title.</p></td>
+    </tr>
+    <tr>
+      <th>trans</th>
+      <td><p><code>string</code>. Name of the axis scale transformation to apply. See
+<code>help("scale_x_continuous", "ggplot2")</code> for more information.</p></td>
+    </tr>
+    <tr>
+      <th>url</th>
+      <td><p><code>string</code>. Uniform Resource Locator (URL). HTTP or FTP address.</p></td>
+    </tr>
+    <tr>
       <th>verbose</th>
       <td><p><code>boolean</code>. Run the function with verbose messages? It is only
 recommended to enable this when debugging.</p></td>
+    </tr>
+    <tr>
+      <th>.test</th>
+      <td><p><code>boolean</code>. <em>For unit testing only</em>.</p></td>
     </tr>
     </table>
     

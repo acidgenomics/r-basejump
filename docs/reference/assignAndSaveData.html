@@ -118,8 +118,11 @@ the newly assigned object, specified by the "<code>dir</code>" argument.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>())</pre>
+    <pre class="usage"><span class='fu'>assignAndSaveData</span>(<span class='no'>name</span>, <span class='no'>object</span>, <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'>parent.frame</span>(),
+  <span class='kw'>dir</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.dir"</span>, <span class='st'>"."</span>),
+  <span class='kw'>ext</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.ext"</span>, <span class='st'>"rds"</span>),
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.overwrite"</span>, <span class='fl'>TRUE</span>),
+  <span class='kw'>compress</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"basejump.save.compress"</span>, <span class='fl'>TRUE</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,9 +136,24 @@ the newly assigned object, specified by the "<code>dir</code>" argument.</p>
       <td><p>Object.</p></td>
     </tr>
     <tr>
+      <th>envir</th>
+      <td><p><code>environment</code>. Environment to use for assignment. Defaults to
+<code>parent.frame()</code>, the calling environment.</p></td>
+    </tr>
+    <tr>
       <th>dir</th>
       <td><p><code>string</code>. Output directory. Defaults to the current working
 directory.</p></td>
+    </tr>
+    <tr>
+      <th>ext</th>
+      <td><p><code>string</code>. R data serialized (RDS; "<code>rds</code>") or R data ("<code>rda</code>",
+"<code>RData</code>"). RDS is preferred when saving single objects per file, which is
+always the convention of <code><a href='saveData.html'>saveData()</a></code>, regardless of the extension used.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p><code>boolean</code>. Overwrite existing file.</p></td>
     </tr>
     <tr>
       <th>compress</th>
@@ -146,16 +164,11 @@ directory.</p></td>
     compression.  Ignored when <code>file</code> is a connection and
     for workspace format version 1.</p></td>
     </tr>
-    <tr>
-      <th>envir</th>
-      <td><p><code>environment</code>. Environment to use for assignment. Defaults to
-<code>parent.frame()</code>, the calling environment.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible named <code>character</code>. File paths.</p>
+    <p>Invisible named <code>string</code>. File path.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -168,10 +181,10 @@ directory.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"example"</span>, <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>rnaseq_counts</span>)</div><div class='output co'>#&gt; <span class='message'>Saving example to /Users/mike/git/basejump-develop/docs/reference</span></div><div class='input'><span class='fu'>exists</span>(<span class='st'>"example"</span>, <span class='kw'>inherits</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>file.exists</span>(<span class='st'>"example.rda"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>assignAndSaveData</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"example"</span>, <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>rse_small</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='st'>"rds"</span>)</div><div class='output co'>#&gt; <span class='message'>Saving example.rds to /Users/mike/git/basejump-private/docs/reference...</span></div><div class='input'><span class='fu'>exists</span>(<span class='st'>"example"</span>, <span class='kw'>inherits</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>file.exists</span>(<span class='st'>"example.rds"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># Clean up</span>
 <span class='fu'>rm</span>(<span class='no'>example</span>)
-<span class='fu'>unlink</span>(<span class='st'>"example.rda"</span>)</div></pre>
+<span class='fu'>unlink</span>(<span class='st'>"example.rds"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

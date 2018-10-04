@@ -144,13 +144,15 @@ headers are generated with the <code><a href='markdownHeader.html'>markdownHeade
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/cowplot/topics/plot_grid'>cowplot::plot_grid()</a></code>.</p>
-<p>Other R Markdown Functions: <code><a href='kables.html'>kables</a></code>,
-  <code><a href='markdownHeader.html'>markdownHeader</a></code>, <code><a href='markdownLink.html'>markdownLink</a></code>,
-  <code><a href='markdownList.html'>markdownList</a></code>, <code><a href='prepareTemplate.html'>prepareTemplate</a></code></p></div>
+<p>Other R Markdown Functions: <code><a href='markdownHeader.html'>markdownHeader</a></code>,
+  <code><a href='markdownLink.html'>markdownLink</a></code>, <code><a href='markdownList.html'>markdownList</a></code>,
+  <code><a href='markdownTables.html'>markdownTables</a></code>,
+  <code><a href='prepareTemplate.html'>prepareTemplate</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='st'>"http://basejump.seq.cloud/plotlist.rda"</span>)</div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; [1] "continuous" "discrete"  </div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='no'>basejumpCacheURL</span>, <span class='st'>"plotlist.rda"</span>)
+<span class='fu'><a href='loadRemoteData.html'>loadRemoteData</a></span>(<span class='no'>url</span>)</div><div class='output co'>#&gt; <span class='message'>Reading plotlist.rda...</span></div><div class='input'><span class='fu'>names</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; [1] "continuous" "discrete"  </div><div class='input'><span class='fu'>markdownPlotlist</span>(<span class='no'>plotlist</span>)</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; ## continuous
 #&gt; </div><div class='img'><img src='markdownPlotlist-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 

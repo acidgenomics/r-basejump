@@ -265,6 +265,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="organism.html">organism(<i>&lt;character&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;factor&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism Accessor</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
         </td>
         <td><p>Strip Transcript Versions</p></td>
@@ -327,24 +333,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="readGFF.html">readGFF()</a></code> <code><a href="readGFF.html">readGTF()</a></code> </p>
-        </td>
-        <td><p>Read GFF Annotations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="readJSON.html">readJSON()</a></code> </p>
-        </td>
-        <td><p>Read JSON File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="readYAML.html">readYAML()</a></code> </p>
-        </td>
-        <td><p>Read YAML File</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="saveData.html">saveData()</a></code> </p>
         </td>
         <td><p>Save Data</p></td>
@@ -383,13 +371,19 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="aggregateCellsToSamples.html">aggregateCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Aggregate Cells to Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Combine Multiple Objects</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;sparseMatrix&gt;</i>)</a></code> </p>
         </td>
         <td><p>Counts</p></td>
       </tr><tr>
@@ -451,7 +445,7 @@
       <tr>
         
         <td>
-          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> </p>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
         </td>
         <td><p>Make Syntactically Valid Names</p></td>
       </tr><tr>
@@ -501,9 +495,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="plotCountsPerBiotype.html">plotCountsPerBiotype()</a></code> <code><a href="plotCountsPerBiotype.html">plotCountsPerBroadClass()</a></code> </p>
+        </td>
+        <td><p>Plot Counts per Biotype</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCountsPerGene.html">plotCountsPerGene()</a></code> </p>
+        </td>
+        <td><p>Plot Counts Per Gene</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenderMarkers.html">plotGenderMarkers()</a></code> </p>
+        </td>
+        <td><p>Plot Sexually Dimorphic Gender Marker Genes</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="plotGene.html">plotGene()</a></code> </p>
         </td>
         <td><p>Plot Gene Expression</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenesDetected.html">plotGenesDetected()</a></code> </p>
+        </td>
+        <td><p>Plot Genes Detected</p></td>
       </tr><tr>
         
         <td>
@@ -525,7 +543,13 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="plotZerosVsDepth.html">plotZerosVsDepth()</a></code> <code><a href="plotZerosVsDepth.html">zerosVsDepth()</a></code> </p>
+          <p><code><a href="plotTotalCounts.html">plotTotalCounts()</a></code> </p>
+        </td>
+        <td><p>Plot Total Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotZerosVsDepth.html">plotZerosVsDepth()</a></code> </p>
         </td>
         <td><p>Plot Percentage of Zeros vs. Library Depth</p></td>
       </tr>
@@ -585,12 +609,6 @@
       <tr>
         
         <td>
-          <p><code><a href="kables.html">kables()</a></code> </p>
-        </td>
-        <td><p>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="markdown.html">markdown()</a></code> </p>
         </td>
         <td><p>Markdown</p></td>
@@ -618,6 +636,12 @@
           <p><code><a href="markdownPlotlist.html">markdownPlotlist()</a></code> <code><a href="markdownPlotlist.html">mdPlotlist()</a></code> </p>
         </td>
         <td><p>Markdown Plotlist</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownTables.html">markdownTables()</a></code> </p>
+        </td>
+        <td><p>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</p></td>
       </tr><tr>
         
         <td>
@@ -681,25 +705,13 @@
       <tr>
         
         <td>
-          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
-        </td>
-        <td><p>Detect HPC Environment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="detectOrganism.html">detectOrganism()</a></code> </p>
-        </td>
-        <td><p>Detect Organism</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="dots.html">dots()</a></code> </p>
         </td>
         <td><p>Extract Dots from Function</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> </p>
+          <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> <code><a href="initializeDirectory.html">initDir()</a></code> </p>
         </td>
         <td><p>Initialize Directory</p></td>
       </tr><tr>
@@ -853,12 +865,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="assertIsAHeaderLevel.html">assertIsAHeaderLevel()</a></code> </p>
-        </td>
-        <td><p>Assert Is a Header Level</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="assertIsANumberOrNULL.html">assertIsANumberOrNULL()</a></code> </p>
         </td>
         <td><p>Assert Is a Number or NULL</p></td>
@@ -868,6 +874,12 @@
           <p><code><a href="assertIsAStringOrNULL.html">assertIsAStringOrNULL()</a></code> </p>
         </td>
         <td><p>Assert Is a String or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsAlpha.html">assertIsAlpha()</a></code> </p>
+        </td>
+        <td><p>Assert Is Alpha Level</p></td>
       </tr><tr>
         
         <td>
@@ -907,6 +919,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="assertIsHeaderLevel.html">assertIsHeaderLevel()</a></code> </p>
+        </td>
+        <td><p>Assert Is Markdown Header Level</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="assertIsHexColorFunctionOrNULL.html">assertIsHexColorFunctionOrNULL()</a></code> </p>
         </td>
         <td><p>Assert Is Hex Color Function or NULL</p></td>
@@ -933,15 +951,633 @@
       <tr>
         
         <td>
-          <p><code><a href="rnaseq_counts.html">rnaseq_counts</a></code> </p>
+          <p><code><a href="MethodDefinition.html">methodFormals()</a></code> <code><a href="MethodDefinition.html">methodFunction()</a></code> </p>
         </td>
-        <td><p>Example RNA-Seq Counts</p></td>
+        <td><p>Access to the Data Inside an S4 Method Definition</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="single_cell_counts.html">single_cell_counts</a></code> </p>
+          <p><code><a href="PANTHER-class.html">PANTHER-class</a></code> </p>
         </td>
-        <td><p>Example Single-Cell RNA-Seq Counts</p></td>
+        <td><p>PANTHER Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RdTags.html">RdTags()</a></code> </p>
+        </td>
+        <td><p>R Documentation Tags</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aggregate.html">aggregateCols()</a></code> <code><a href="aggregate.html">aggregateRows()</a></code> </p>
+        </td>
+        <td><p>Aggregate Columns or Rows</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aggregateCellsToSamples.html">aggregateCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Aggregate Cells to Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreNonExisting.html">assertAllAreNonExisting()</a></code> </p>
+        </td>
+        <td><p>Assert All Variables Are Non-Existing</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreURL.html">assertAllAreURL()</a></code> <code><a href="assertAllAreURL.html">isURL()</a></code> </p>
+        </td>
+        <td><p>Assert All Are URL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreUniqueGeneNames.html">assertAllAreUniqueGeneNames()</a></code> </p>
+        </td>
+        <td><p>Assert All Are Unique Gene Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAllAreValidNames.html">assertAllAreValidNames()</a></code> <code><a href="assertAllAreValidNames.html">assertHasValidDimnames()</a></code> <code><a href="assertAllAreValidNames.html">assertHasValidNames()</a></code> <code><a href="assertAllAreValidNames.html">validDimnames()</a></code> <code><a href="assertAllAreValidNames.html">validNames()</a></code> </p>
+        </td>
+        <td><p>Assert All Are Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAreGeneAnnotations.html">assertAreGeneAnnotations()</a></code> </p>
+        </td>
+        <td><p>Assert Are Gene Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertAreTranscriptAnnotations.html">assertAreTranscriptAnnotations()</a></code> </p>
+        </td>
+        <td><p>Assert Are Ensembl Transcript Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertFormalCompress.html">assertFormalCompress()</a></code> </p>
+        </td>
+        <td><p>Assert Formal Compression</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertFormalGene2symbol.html">assertFormalGene2symbol()</a></code> </p>
+        </td>
+        <td><p>Assert Formal Gene to Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertFormalInterestingGroups.html">assertFormalInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Interesting Groups Formal Assert Check</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertHasRownames.html">assertHasRownames()</a></code> <code><a href="assertHasRownames.html">hasRownames()</a></code> </p>
+        </td>
+        <td><p>Assert Has Rownames</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsANumberOrNULL.html">assertIsANumberOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is a Number or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsAStringOrNULL.html">assertIsAStringOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is a String or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsAlpha.html">assertIsAlpha()</a></code> </p>
+        </td>
+        <td><p>Assert Is Alpha Level</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsAnIntegerOrNULL.html">assertIsAnIntegerOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is an Integer or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsColorScaleContinuousOrNULL.html">assertIsColorScaleContinuousOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is Color Palette Scale Continuous or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsColorScaleDiscreteOrNULL.html">assertIsColorScaleDiscreteOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is Color Palette Scale Discrete or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsFillScaleContinuousOrNULL.html">assertIsFillScaleContinuousOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is Fill Palette Scale Continuous or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsFillScaleDiscreteOrNULL.html">assertIsFillScaleDiscreteOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is Fill Palette Scale Discrete or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsGene2symbol.html">assertIsGene2symbol()</a></code> </p>
+        </td>
+        <td><p>Assert Is Gene to Symbol Mapping Data Frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsHeaderLevel.html">assertIsHeaderLevel()</a></code> </p>
+        </td>
+        <td><p>Assert Is Markdown Header Level</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsHexColorFunctionOrNULL.html">assertIsHexColorFunctionOrNULL()</a></code> </p>
+        </td>
+        <td><p>Assert Is Hex Color Function or NULL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsImplicitInteger.html">assertIsAnImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsAnImplicitIntegerOrNULL()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">assertIsImplicitIntegerOrNULL()</a></code> <code><a href="assertIsImplicitInteger.html">isAnImplicitInteger()</a></code> <code><a href="assertIsImplicitInteger.html">isImplicitInteger()</a></code> </p>
+        </td>
+        <td><p>Assert Is Implicit Integer</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assertIsTx2gene.html">assertIsTx2gene()</a></code> </p>
+        </td>
+        <td><p>Assert Is Transcript-to-Gene Mapping Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="assignAndSaveData.html">assignAndSaveData()</a></code> </p>
+        </td>
+        <td><p>Assign and Save Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="basejump-package.html">basejump-package</a></code> </p>
+        </td>
+        <td><p>basejump</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="broadClass.html">broadClass()</a></code> </p>
+        </td>
+        <td><p>Broad Class Definitions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cell2sample.html">cell2sample()</a></code> </p>
+        </td>
+        <td><p>Cell to Sample Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="coerce.html">coerceS4ToList()</a></code> <code><a href="coerce.html">as.list(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Methods for Coercing an Object to a Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="collapseToString.html">collapseToString()</a></code> </p>
+        </td>
+        <td><p>Collapse to String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="combine.html">combine(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="combine.html">combine(<i>&lt;SingleCellExperiment&gt;</i>,<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Combine Multiple Objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertGenesToSymbols.html">convertGenesToSymbols()</a></code> <code><a href="convertGenesToSymbols.html">convertSymbolsToGenes()</a></code> </p>
+        </td>
+        <td><p>Convert Ensembl Identifiers to Gene Symbols</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertTranscriptsToGenes.html">convertTranscriptsToGenes()</a></code> </p>
+        </td>
+        <td><p>Convert Ensembl Transcripts to Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convertUCSCBuildToEnsembl.html">convertUCSCBuildToEnsembl()</a></code> </p>
+        </td>
+        <td><p>Convert UCSC Build to Ensembl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="counts.html">counts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="counts.html">`counts<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;sparseMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detectHPC.html">detectHPC()</a></code> </p>
+        </td>
+        <td><p>Detect HPC Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detectLanes.html">detectLanes()</a></code> </p>
+        </td>
+        <td><p>Detect Sequencing Lanes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dots.html">dots()</a></code> </p>
+        </td>
+        <td><p>Extract Dots from Function</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="eggnog.html">eggnog()</a></code> </p>
+        </td>
+        <td><p>EggNOG Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="emptyRanges.html">emptyRanges()</a></code> </p>
+        </td>
+        <td><p>Generate Empty Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ensembl2entrez-class.html">ensembl2entrez-class</a></code> </p>
+        </td>
+        <td><p>ensembl2entrez Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ensembl2entrez.html">ensembl2entrez()</a></code> </p>
+        </td>
+        <td><p>Ensembl Gene ID to Entrez ID Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="export.html">export()</a></code> </p>
+        </td>
+        <td><p>Export</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gene2symbol-class.html">gene2symbol-class</a></code> </p>
+        </td>
+        <td><p>gene2symbol Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gene2symbol.html">gene2symbol()</a></code> </p>
+        </td>
+        <td><p>Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geneSynonyms.html">geneSynonyms()</a></code> </p>
+        </td>
+        <td><p>Gene Synonyms</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="geometricMean.html">geometricMean()</a></code> </p>
+        </td>
+        <td><p>Geometric Mean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ggplot2_geoms.html">basejump_geom_abline()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label_average()</a></code> <code><a href="ggplot2_geoms.html">basejump_geom_label_repel()</a></code> </p>
+        </td>
+        <td><p>ggplot2 Geometric Objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ggplot2_themes.html">theme_paperwhite()</a></code> <code><a href="ggplot2_themes.html">theme_midnight()</a></code> </p>
+        </td>
+        <td><p>ggplot2 Themes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="grepString.html">grepString()</a></code> </p>
+        </td>
+        <td><p>Generate a <code>grep</code> String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hgnc2ensembl-class.html">hgnc2ensembl-class</a></code> </p>
+        </td>
+        <td><p>hgnc2ensembl Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hgnc2ensembl.html">hgnc2ensembl()</a></code> </p>
+        </td>
+        <td><p>HGNC to Ensembl Gene ID Mappings.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="import.html">import()</a></code> </p>
+        </td>
+        <td><p>Import</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="initializeDirectory.html">initializeDirectory()</a></code> <code><a href="initializeDirectory.html">initDir()</a></code> </p>
+        </td>
+        <td><p>Initialize Directory</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="interestingGroups.html">interestingGroups()</a></code> <code><a href="interestingGroups.html">`interestingGroups<-`()</a></code> </p>
+        </td>
+        <td><p>Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadData.html">loadData()</a></code> </p>
+        </td>
+        <td><p>Load Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadDataAsName.html">loadDataAsName()</a></code> </p>
+        </td>
+        <td><p>Load Data as Name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="loadRemoteData.html">loadRemoteData()</a></code> </p>
+        </td>
+        <td><p>Load Remote Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="localOrRemoteFile.html">localOrRemoteFile()</a></code> </p>
+        </td>
+        <td><p>Dynamically Handle a Local or Remote File Path</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="logRatio.html">foldChangeToLogRatio()</a></code> <code><a href="logRatio.html">logRatioToFoldChange()</a></code> </p>
+        </td>
+        <td><p>Interconvert Log Ratio and Fold Change Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGRanges.html">makeGRangesFromEnsembl()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGFF()</a></code> <code><a href="makeGRanges.html">makeGRangesFromGTF()</a></code> <code><a href="makeGRanges.html">annotable()</a></code> </p>
+        </td>
+        <td><p>Make Genomic Ranges</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeGene2symbol.html">makeGene2symbolFromEnsembl()</a></code> <code><a href="makeGene2symbol.html">makeGene2symbolFromGFF()</a></code> <code><a href="makeGene2symbol.html">makeGene2symbolFromGTF()</a></code> </p>
+        </td>
+        <td><p>Make Gene-to-Symbol Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeNames.html">camel()</a></code> <code><a href="makeNames.html">dotted()</a></code> <code><a href="makeNames.html">snake()</a></code> <code><a href="makeNames.html">upperCamel()</a></code> <code><a href="makeNames.html">makeNames()</a></code> <code><a href="makeNames.html">makeDimnames()</a></code> </p>
+        </td>
+        <td><p>Make Syntactically Valid Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSingleCellExperiment.html">makeSingleCellExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Single-Cell Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeSummarizedExperiment.html">makeSummarizedExperiment()</a></code> </p>
+        </td>
+        <td><p>Make Summarized Experiment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="makeTx2gene.html">makeTx2geneFromEnsembl()</a></code> <code><a href="makeTx2gene.html">makeTx2geneFromGFF()</a></code> <code><a href="makeTx2gene.html">makeTx2geneFromGTF()</a></code> </p>
+        </td>
+        <td><p>Make Transcript-to-Gene Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mapCellsToSamples.html">mapCellsToSamples()</a></code> </p>
+        </td>
+        <td><p>Map Cells to Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mapGenes.html">mapGenesToIDs()</a></code> <code><a href="mapGenes.html">mapGenesToRownames()</a></code> <code><a href="mapGenes.html">mapGenesToSymbols()</a></code> </p>
+        </td>
+        <td><p>Map Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdown.html">markdown()</a></code> </p>
+        </td>
+        <td><p>Markdown</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownHeader.html">markdownHeader()</a></code> <code><a href="markdownHeader.html">mdHeader()</a></code> </p>
+        </td>
+        <td><p>Markdown Header</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownLink.html">markdownLink()</a></code> <code><a href="markdownLink.html">mdLink()</a></code> </p>
+        </td>
+        <td><p>Markdown Hyperlink</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownList.html">markdownList()</a></code> <code><a href="markdownList.html">mdList()</a></code> </p>
+        </td>
+        <td><p>Markdown List</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownPlotlist.html">markdownPlotlist()</a></code> <code><a href="markdownPlotlist.html">mdPlotlist()</a></code> </p>
+        </td>
+        <td><p>Markdown Plotlist</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="markdownTables.html">markdownTables()</a></code> </p>
+        </td>
+        <td><p>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchArgsToDoCall.html">matchArgsToDoCall()</a></code> </p>
+        </td>
+        <td><p>Match Arguments to Do Call</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchInterestingGroups.html">matchInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Match Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="meltCounts.html">meltCounts()</a></code> </p>
+        </td>
+        <td><p>Melt Counts Matrix to Long Format</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="metrics.html">metrics()</a></code> </p>
+        </td>
+        <td><p>Metrics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="metricsPerSample.html">metricsPerSample()</a></code> </p>
+        </td>
+        <td><p>Metrics per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mgi2ensembl-class.html">mgi2ensembl-class</a></code> </p>
+        </td>
+        <td><p>mgi2ensembl Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mgi2ensembl.html">mgi2ensembl()</a></code> </p>
+        </td>
+        <td><p>MGI to Ensembl Gene ID Mappings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="microplate.html">microplate()</a></code> </p>
+        </td>
+        <td><p>Microtiter Plate Well Identifiers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minimalSampleData.html">minimalSampleData()</a></code> </p>
+        </td>
+        <td><p>Minimal Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="multiassignAsEnvir.html">multiassignAsEnvir()</a></code> </p>
+        </td>
+        <td><p>Assign Multiple Objects as an Environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="organism.html">organism(<i>&lt;character&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;factor&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;matrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;DataFrame&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;sparseMatrix&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;GRanges&gt;</i>)</a></code> <code><a href="organism.html">organism(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Organism Accessor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="panther.html">panther()</a></code> </p>
+        </td>
+        <td><p>PANTHER Gene Ontology Annotations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="parseRd.html">parseRd()</a></code> </p>
+        </td>
+        <td><p>Parse R Documentation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCorrelationHeatmap.html">plotCorrelationHeatmap()</a></code> </p>
+        </td>
+        <td><p>Plot Correlation Heatmap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCountsPerBiotype.html">plotCountsPerBiotype()</a></code> <code><a href="plotCountsPerBiotype.html">plotCountsPerBroadClass()</a></code> </p>
+        </td>
+        <td><p>Plot Counts per Biotype</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotCountsPerGene.html">plotCountsPerGene()</a></code> </p>
+        </td>
+        <td><p>Plot Counts Per Gene</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenderMarkers.html">plotGenderMarkers()</a></code> </p>
+        </td>
+        <td><p>Plot Sexually Dimorphic Gender Marker Genes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGene.html">plotGene()</a></code> </p>
+        </td>
+        <td><p>Plot Gene Expression</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotGenesDetected.html">plotGenesDetected()</a></code> </p>
+        </td>
+        <td><p>Plot Genes Detected</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotHeatmap.html">plotHeatmap()</a></code> </p>
+        </td>
+        <td><p>Plot Heatmap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotQC.html">plotQC()</a></code> </p>
+        </td>
+        <td><p>Plot Quality Control</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotQuantileHeatmap.html">plotQuantileHeatmap()</a></code> </p>
+        </td>
+        <td><p>Plot Heatmap with Quantile Breaks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotTotalCounts.html">plotTotalCounts()</a></code> </p>
+        </td>
+        <td><p>Plot Total Counts</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotZerosVsDepth.html">plotZerosVsDepth()</a></code> </p>
+        </td>
+        <td><p>Plot Percentage of Zeros vs. Library Depth</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="prepareTemplate.html">prepareTemplate()</a></code> </p>
+        </td>
+        <td><p>Prepare R Markdown Template File</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="printString.html">printString()</a></code> </p>
+        </td>
+        <td><p>Print String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="removeNA.html">removeNA()</a></code> </p>
+        </td>
+        <td><p>Remove Rows and Columns Containing Only <code>NA</code> Values</p></td>
       </tr><tr>
         
         <td>
@@ -951,9 +1587,147 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="sampleData.html">sampleData()</a></code> <code><a href="sampleData.html">`sampleData<-`()</a></code> <code><a href="sampleData.html">sampleNames(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sampleNames.html">`sampleNames<-`(<i>&lt;SummarizedExperiment&gt;</i>,<i>&lt;character&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Sample Names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeNA.html">sanitizeNA()</a></code> </p>
+        </td>
+        <td><p>Sanitize <code>NA</code> Values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizePercent.html">sanitizePercent()</a></code> </p>
+        </td>
+        <td><p>Sanitize Percent</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeRowData.html">sanitizeRowData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Row Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sanitizeSampleData.html">sanitizeSampleData()</a></code> </p>
+        </td>
+        <td><p>Sanitize Sample Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveData.html">saveData()</a></code> </p>
+        </td>
+        <td><p>Save Data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="saveRdExamples.html">saveRdExamples()</a></code> </p>
+        </td>
+        <td><p>Save R Documentation Examples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sce_small.html">sce_small</a></code> </p>
+        </td>
+        <td><p>Example Single-Cell RNA-Seq Data Set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="selectSamples.html">selectSamples()</a></code> </p>
+        </td>
+        <td><p>Select Samples</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="separator.html">separator()</a></code> </p>
+        </td>
+        <td><p>Separator Bar</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sortUnique.html">sortUnique()</a></code> </p>
+        </td>
+        <td><p>Sort and Make Unique</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardizeCall.html">standardizeCall()</a></code> </p>
+        </td>
+        <td><p>Standardize Call</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="stripTranscriptVersions.html">stripTranscriptVersions()</a></code> </p>
+        </td>
+        <td><p>Strip Transcript Versions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="subsetPerSample.html">subsetPerSample()</a></code> </p>
+        </td>
+        <td><p>Subset Per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="toStringUnique.html">toStringUnique()</a></code> </p>
+        </td>
+        <td><p>Convert to a Unique Character String</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="topCellsPerSample.html">topCellsPerSample()</a></code> </p>
+        </td>
+        <td><p>Top Cells per Sample</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tpm.html">tpm(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Transcripts Per Million (TPM)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="transmit.html">transmit()</a></code> </p>
+        </td>
+        <td><p>Transmit Files from a Remote FTP Server</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tx2gene-class.html">tx2gene-class</a></code> </p>
+        </td>
+        <td><p>tx2gene Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tx2gene.html">tx2gene()</a></code> </p>
+        </td>
+        <td><p>Transcript-to-Gene Mappings</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="tx_se_small.html">tx_se_small</a></code> </p>
         </td>
         <td><p>Example Transcript-Level Data Set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="uniteInterestingGroups.html">uniteInterestingGroups()</a></code> </p>
+        </td>
+        <td><p>Unite Interesting Groups</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="writeCounts.html">writeCounts()</a></code> </p>
+        </td>
+        <td><p>Write Counts</p></td>
       </tr>
     </tbody>
     </table>

@@ -116,8 +116,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>matchArgsToDoCall</span>(<span class='no'>args</span>, <span class='kw'>removeFormals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>matchArgsToDoCall</span>(<span class='kw'>args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>removeFormals</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>which</span> <span class='kw'>=</span> <span class='fu'>sys.parent</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1L</span>), <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,9 +133,9 @@
 <code>args</code> list before passing to <code>do.call()</code>.</p></td>
     </tr>
     <tr>
-      <th>n</th>
-      <td><p>the number of generations to go back.  (See the
-    &#8216;Details&#8217; section.)</p></td>
+      <th>which</th>
+      <td><p>the frame number if non-negative, the number of frames
+    to go back if negative.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -183,7 +183,17 @@ recommended to enable this when debugging.</p></td>
 #&gt; 
 #&gt; $collapse
 #&gt; [1] " "
-#&gt; </div><div class='output co'>#&gt; [1] "hello world"</div></pre>
+#&gt; </div><div class='output co'>#&gt; [1] "hello world"</div><div class='input'>
+<span class='no'>example</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>object</span>, <span class='no'>xxx</span>, <span class='no'>...</span>) {
+    <span class='fu'>do.call</span>(
+        <span class='kw'>what</span> <span class='kw'>=</span> <span class='no'>paste</span>,
+        <span class='kw'>args</span> <span class='kw'>=</span> <span class='fu'>matchArgsToDoCall</span>(
+            <span class='kw'>args</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>),
+            <span class='kw'>removeFormals</span> <span class='kw'>=</span> <span class='st'>"xxx"</span>
+        )
+    )
+}
+<span class='fu'>example</span>(<span class='fu'>c</span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>))</div><div class='output co'>#&gt; [1] "hello world"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

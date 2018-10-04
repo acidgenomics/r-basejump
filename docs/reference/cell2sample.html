@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText — kables • basejump</title>
+<title>Cell to Sample Mappings — cell2sample • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText — kables" />
+<meta property="og:title" content="Cell to Sample Mappings — cell2sample" />
 
-<meta property="og:description" content="Knit multiple tables in a single R Markdown chunk." />
+<meta property="og:description" content="Cell to Sample Mappings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,77 +105,77 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Multiple Tables in LaTeX, HTML, Markdown and reStructuredText</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/kables.R'><code>R/kables.R</code></a></small>
-    <div class="hidden name"><code>kables.Rd</code></div>
+    <h1>Cell to Sample Mappings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/cell2sample-methods.R'><code>R/cell2sample-methods.R</code></a></small>
+    <div class="hidden name"><code>cell2sample.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Knit multiple tables in a single R Markdown chunk.</p>
+    <p>Cell to Sample Mappings</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>kables</span>(<span class='no'>list</span>, <span class='no'>captions</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>cell2sample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>cell2sample</span>(<span class='no'>object</span>, <span class='kw'>return</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"factor"</span>,
+  <span class='st'>"tibble"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>list</th>
-      <td><p><code>list</code> containing column data (e.g. <code>data.frame</code>, <code>matrix</code>).</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>captions</th>
-      <td><p><code>character</code>. Table captions.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
-      <th>force</th>
-      <td><p><code>boolean</code>. Force knit output. Recommended for development and
-unit testing only.</p></td>
+      <th>return</th>
+      <td><p>Object class to return. Uses <code>match.arg()</code> internally and picks
+the first item in the vector by default.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>asis_output</code> if in a knit call or <code>list</code>.</p>
+    
+<ul>
+<li><p><code>"factor"</code>: Named <code>factor</code> containing sample IDs as the levels and cell IDs
+as the names.</p></li>
+<li><p><code>"tibble"</code>: <code>tbl_df</code> containing <code>cellID</code> and <code>sampleID</code> columns.</p></li>
+</ul>
+
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p><code>sampleID</code> column must be defined in <code>colData()</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
-<li><p><code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>knitr::kable()</a></code>.</p></li>
-<li><p><a href='https://stackoverflow.com/a/35149103/3911732'>Stack Overflow post</a>.</p></li>
-</ul></div>
-    <div class='dont-index'><p>Other R Markdown Functions: <code><a href='markdownHeader.html'>markdownHeader</a></code>,
-  <code><a href='markdownLink.html'>markdownLink</a></code>, <code><a href='markdownList.html'>markdownList</a></code>,
-  <code><a href='markdownPlotlist.html'>markdownPlotlist</a></code>,
-  <code><a href='prepareTemplate.html'>prepareTemplate</a></code></p></div>
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
+  <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
+  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>kables</span>(
-    <span class='kw'>list</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>head</span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/mpg'>mpg</a></span>), <span class='fu'>head</span>(<span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>)),
-    <span class='kw'>captions</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mpg"</span>, <span class='st'>"mtcars"</span>)
-)</div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 6 x 11
-#&gt;   manufacturer model displ  year   cyl trans     drv     cty   hwy fl    class 
-#&gt;   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-#&gt; 1 audi         a4      1.8  1999     4 auto(l5)  f        18    29 p     compa…
-#&gt; 2 audi         a4      1.8  1999     4 manual(m… f        21    29 p     compa…
-#&gt; 3 audi         a4      2    2008     4 manual(m… f        20    31 p     compa…
-#&gt; 4 audi         a4      2    2008     4 auto(av)  f        21    30 p     compa…
-#&gt; 5 audi         a4      2.8  1999     6 auto(l5)  f        16    26 p     compa…
-#&gt; 6 audi         a4      2.8  1999     6 manual(m… f        18    26 p     compa…
-#&gt; 
-#&gt; [[2]]
-#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>cell2sample</span>(<span class='no'>sce_small</span>)
+<span class='fu'>table</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
+#&gt; sample1 sample2 
+#&gt;     517     483 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -183,6 +183,8 @@ unit testing only.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

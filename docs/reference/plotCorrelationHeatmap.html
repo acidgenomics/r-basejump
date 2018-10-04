@@ -120,11 +120,19 @@
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"pearson"</span>, <span class='st'>"spearman"</span>),
-  <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>, <span class='kw'>showRownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"pearson"</span>,
+  <span class='st'>"spearman"</span>), <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>, <span class='kw'>showRownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>showColnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>,
+  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>,
+  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"pearson"</span>,
+  <span class='st'>"spearman"</span>), <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>, <span class='kw'>showRownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>showColnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>,
+  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +145,11 @@
       <th>...</th>
       <td><p>Passthrough arguments to <code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>. The names of the
 arguments should be formatted in camel case, not snake case.</p></td>
+    </tr>
+    <tr>
+      <th>assay</th>
+      <td><p><code>scalar</code>. Name or index of counts matrix slotted in <code>assays()</code>.
+When passing in a <code>string</code>, the name must be defined in <code>assayNames()</code>.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
@@ -214,27 +227,17 @@ improved aesthetics.</p></td>
 <li><p><code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></li>
 <li><p><code><a href='http://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.</p></li>
 </ul></div>
-    <div class='dont-index'><p>Other Plot Functions: <code><a href='plotGene.html'>plotGene</a></code>,
-  <code><a href='plotHeatmap.html'>plotHeatmap</a></code>, <code><a href='plotQC.html'>plotQC</a></code>,
-  <code><a href='plotQuantileHeatmap.html'>plotQuantileHeatmap</a></code>,
-  <code><a href='zerosVsDepth.html'>plotZerosVsDepth</a></code></p></div>
+    <div class='dont-index'><p>Other Plot Functions: <code><a href='plotCountsPerBiotype.html'>plotCountsPerBiotype</a></code>,
+  <code><a href='plotGene.html'>plotGene</a></code>, <code><a href='plotHeatmap.html'>plotHeatmap</a></code>,
+  <code><a href='plotQC.html'>plotQC</a></code>, <code><a href='plotQuantileHeatmap.html'>plotQuantileHeatmap</a></code>,
+  <code><a href='plotZerosVsDepth.html'>plotZerosVsDepth</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
 <span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_small</span>)</div><div class='img'><img src='plotCorrelationHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Using viridis color palettes.</span>
-<span class='fu'>plotCorrelationHeatmap</span>(
-    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>rse_small</span>,
-    <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>plasma</a></span>,
-    <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw pkg'>viridis</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis</a></span>
-)</div><div class='img'><img src='plotCorrelationHeatmap-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Using hexadecimal color input.</span>
-<span class='fu'>library</span>(<span class='st'>"RColorBrewer"</span>)
-<span class='no'>purple_orange</span> <span class='kw'>&lt;-</span> <span class='fu'>colorRampPalette</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>))(<span class='fl'>256L</span>)
-<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_small</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>purple_orange</span>)</div><div class='img'><img src='plotCorrelationHeatmap-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Using default pheatmap colors.</span>
-<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse_small</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='img'><img src='plotCorrelationHeatmap-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='co'># SingleCellExperiment ====</span>
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='img'><img src='plotCorrelationHeatmap-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

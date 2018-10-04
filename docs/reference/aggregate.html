@@ -129,6 +129,9 @@
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>aggregateCols</span>(<span class='no'>object</span>)
 
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
 
@@ -180,36 +183,68 @@ and perform the aggregation.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
   <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metrics.html'>metrics</a></code>, <code><a href='sampleData.html'>sampleData</a></code>,
-  <code><a href='sampleNames.html'>sampleNames</a></code>, <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
+  <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
   <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/DataFrame-class'>DataFrame</a></span>(
-    <span class='kw'>sample1_replicate1</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)),
-    <span class='kw'>sample1_replicate2</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>)),
-    <span class='kw'>sample2_replicate1</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>)),
-    <span class='kw'>sample2_replicate2</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>)),
-    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>paste0</span>(<span class='st'>"transcript"</span>, <span class='fu'>seq_len</span>(<span class='fl'>4</span>))
+    <pre class="examples"><div class='input'><span class='co'># Example data ====</span>
+<span class='no'>counts</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+        <span class='fl'>0L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
+        <span class='fl'>1L</span>, <span class='fl'>0L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
+        <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>0L</span>, <span class='fl'>1L</span>,
+        <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>0L</span>
+    ),
+    <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+    <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>4L</span>,
+    <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(
+        <span class='fu'>paste0</span>(<span class='st'>"transcript"</span>, <span class='fu'>seq_len</span>(<span class='fl'>4L</span>)),
+        <span class='fu'>paste</span>(
+            <span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>rep</span>(<span class='fu'>seq_len</span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)),
+            <span class='fu'>paste0</span>(<span class='st'>"replicate"</span>, <span class='fu'>rep</span>(<span class='fu'>seq_len</span>(<span class='fl'>2L</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>)),
+            <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>
+        )
+    )
 )
-<span class='fu'>print</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
-#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
-#&gt;                      &lt;integer&gt;          &lt;integer&gt;          &lt;integer&gt;
+<span class='fu'>print</span>(<span class='no'>counts</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  1                  1
 #&gt; transcript2                  1                  0                  1
 #&gt; transcript3                  1                  1                  0
 #&gt; transcript4                  1                  1                  1
 #&gt;             sample2_replicate2
-#&gt;                      &lt;integer&gt;
 #&gt; transcript1                  1
 #&gt; transcript2                  1
 #&gt; transcript3                  1
 #&gt; transcript4                  0</div><div class='input'>
-<span class='co'># Dense matrix</span>
+<span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>paste0</span>(<span class='st'>"gene"</span>, <span class='fu'>rep</span>(<span class='fu'>seq_len</span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
+<span class='fu'>names</span>(<span class='no'>genes</span>) <span class='kw'>&lt;-</span> <span class='fu'>rownames</span>(<span class='no'>counts</span>)
+<span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; transcript1 transcript2 transcript3 transcript4 
+#&gt;       gene1       gene1       gene2       gene2 
+#&gt; Levels: gene1 gene2</div><div class='input'>
+<span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>paste0</span>(<span class='st'>"sample"</span>, <span class='fu'>rep</span>(<span class='fu'>seq_len</span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
+<span class='fu'>names</span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>counts</span>)
+<span class='fu'>print</span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
+#&gt;            sample1            sample1            sample2            sample2 
+#&gt; Levels: sample1 sample2</div><div class='input'>
+<span class='no'>cells</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>paste0</span>(<span class='st'>"cell"</span>, <span class='fu'>rep</span>(<span class='fu'>seq_len</span>(<span class='fl'>2L</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>)))
+<span class='fu'>names</span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>counts</span>)
+<span class='fu'>print</span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
+#&gt;            sample1            sample1            sample2            sample2 
+#&gt; Levels: sample1 sample2</div><div class='input'>
+<span class='co'># matrix</span>
 <span class='no'>matrix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>counts</span>, <span class='st'>"matrix"</span>)
 <span class='fu'>class</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt; [1] "matrix"</div><div class='input'><span class='fu'>print</span>(<span class='no'>matrix</span>)</div><div class='output co'>#&gt;             sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt; transcript1                  0                  1                  1
@@ -221,7 +256,7 @@ and perform the aggregation.</p>
 #&gt; transcript2                  1
 #&gt; transcript3                  1
 #&gt; transcript4                  0</div><div class='input'>
-<span class='co'># Sparse matrix</span>
+<span class='co'># sparseMatrix</span>
 <span class='no'>sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coerce.html'>as</a></span>(<span class='no'>matrix</span>, <span class='st'>"sparseMatrix"</span>)
 <span class='fu'>class</span>(<span class='no'>sparse</span>)</div><div class='output co'>#&gt; [1] "dgCMatrix"
 #&gt; attr(,"package")
@@ -236,16 +271,6 @@ and perform the aggregation.</p>
 #&gt; transcript2                  1
 #&gt; transcript3                  1
 #&gt; transcript4                  .</div><div class='input'>
-<span class='no'>samples</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"sample1"</span>, <span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>, <span class='st'>"sample2"</span>))
-<span class='fu'>names</span>(<span class='no'>samples</span>) <span class='kw'>&lt;-</span> <span class='fu'>colnames</span>(<span class='no'>counts</span>)
-<span class='fu'>print</span>(<span class='no'>samples</span>)</div><div class='output co'>#&gt; sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 
-#&gt;            sample1            sample1            sample2            sample2 
-#&gt; Levels: sample1 sample2</div><div class='input'>
-<span class='no'>genes</span> <span class='kw'>&lt;-</span> <span class='fu'>factor</span>(<span class='fu'>c</span>(<span class='st'>"gene1"</span>, <span class='st'>"gene1"</span>, <span class='st'>"gene2"</span>, <span class='st'>"gene2"</span>))
-<span class='fu'>names</span>(<span class='no'>genes</span>) <span class='kw'>&lt;-</span> <span class='fu'>rownames</span>(<span class='no'>counts</span>)
-<span class='fu'>print</span>(<span class='no'>genes</span>)</div><div class='output co'>#&gt; transcript1 transcript2 transcript3 transcript4 
-#&gt;       gene1       gene1       gene2       gene2 
-#&gt; Levels: gene1 gene2</div><div class='input'>
 <span class='co'># SummarizedExperiment</span>
 <span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>SummarizedExperiment</a></span>(
     <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>counts</span> <span class='kw'>=</span> <span class='no'>sparse</span>),
@@ -280,12 +305,12 @@ and perform the aggregation.</p>
 #&gt; transcript1       1       2
 #&gt; transcript2       1       2
 #&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
 #&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
 #&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
 #&gt; dim: 4 2 
-#&gt; metadata(0):
+#&gt; metadata(1): aggregate
 #&gt; assays(1): counts
 #&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
 #&gt; rowData names(1): aggregate
@@ -309,7 +334,7 @@ and perform the aggregation.</p>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
 #&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 

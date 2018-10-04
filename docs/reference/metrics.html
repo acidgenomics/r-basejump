@@ -34,9 +34,8 @@
   
 <meta property="og:title" content="Metrics — metrics" />
 
-<meta property="og:description" content="By default, metrics() returns colData() with an interestingGroups
-column automatically added. This is useful for ggplot2 scripting. Column
-names are always sorted alphabetically." />
+<meta property="og:description" content="This function takes data stored in colData() and consistently returns a
+tibble grouped by sample, to be used for plotting with ggplot2." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,15 +113,17 @@ names are always sorted alphabetically." />
 
     <div class="ref-description">
     
-    <p>By default, <code>metrics()</code> returns <code>colData()</code> with an <code>interestingGroups</code>
-column automatically added. This is useful for <code>ggplot2</code> scripting. Column
-names are always sorted alphabetically.</p>
+    <p>This function takes data stored in <code>colData()</code> and consistently returns a
+tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>metrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>metrics</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>metrics</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -140,37 +141,59 @@ names are always sorted alphabetically.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>DataFrame</code>.</p>
+    <p><code>grouped_df</code>. Grouped by <code>sampleID</code> column.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="singlecellexperiment"><a class="anchor" href="#singlecellexperiment"></a>SingleCellExperiment</h2>
 
-    <p><code>metrics()</code> Requires that the <code>sampleName</code> column is defined, and will
-error otherwise.</p>
+    
+    <p>Note that metrics are cell level but grouped by sample.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregateCols</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
+  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
   <code><a href='counts.html'>counts</a></code>,
+  <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
   <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
+  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>,
+  <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
-  <code><a href='selectSamples.html'>selectSamples</a></code>, <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
+  <code><a href='selectSamples.html'>selectSamples</a></code>,
+  <code><a href='subsetPerSample.html'>subsetPerSample</a></code>,
+  <code><a href='topCellsPerSample.html'>topCellsPerSample</a></code>, <code><a href='tpm.html'>tpm</a></code>,
+  <code><a href='tx2gene.html'>tx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>rse_small</span>)
-<span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; Formal class 'DataFrame' [package "S4Vectors"] with 6 slots
-#&gt;   ..@ rownames       : chr [1:4] "sample1" "sample2" "sample3" "sample4"
-#&gt;   ..@ nrows          : int 4
-#&gt;   ..@ listData       :List of 4
-#&gt;   .. ..$ genotype         : Factor w/ 2 levels "wildtype","knockout": 1 2 1 2
-#&gt;   .. ..$ interestingGroups: Factor w/ 4 levels "knockout:control",..: 3 1 4 2
-#&gt;   .. .. ..- attr(*, "names")= chr [1:4] "sample1" "sample2" "sample3" "sample4"
-#&gt;   .. ..$ sampleName       : Factor w/ 4 levels "sample1","sample2",..: 1 2 3 4
-#&gt;   .. ..$ treatment        : Factor w/ 2 levels "control","treated": 1 1 2 2
-#&gt;   ..@ elementType    : chr "ANY"
-#&gt;   ..@ elementMetadata: NULL
-#&gt;   ..@ metadata       : list()</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>rse_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 5
+#&gt; # Groups:   sampleID [4]
+#&gt;   sampleID genotype treatment sampleName interestingGroups
+#&gt;   &lt;chr&gt;    &lt;fct&gt;    &lt;fct&gt;     &lt;fct&gt;      &lt;fct&gt;            
+#&gt; 1 sample1  wildtype control   sample1    wildtype:control 
+#&gt; 2 sample2  knockout control   sample2    knockout:control 
+#&gt; 3 sample3  wildtype treated   sample3    wildtype:treated 
+#&gt; 4 sample4  knockout treated   sample4    knockout:treated </div><div class='input'>
+<span class='co'># SingleCellExperiment ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metrics</span>(<span class='no'>sce_small</span>)
+<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 1,000 x 5
+#&gt; # Groups:   sampleID [2]
+#&gt;    cellID  expLibSize sampleID sampleName interestingGroups
+#&gt;    &lt;chr&gt;        &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;            
+#&gt;  1 cell001     58954. sample2  sample2    sample2          
+#&gt;  2 cell002     47345. sample1  sample1    sample1          
+#&gt;  3 cell003     67270. sample1  sample1    sample1          
+#&gt;  4 cell004     64677. sample1  sample1    sample1          
+#&gt;  5 cell005     53667. sample2  sample2    sample2          
+#&gt;  6 cell006     39392. sample1  sample1    sample1          
+#&gt;  7 cell007     83541. sample1  sample1    sample1          
+#&gt;  8 cell008     58197. sample1  sample1    sample1          
+#&gt;  9 cell009     38976. sample1  sample1    sample1          
+#&gt; 10 cell010     58569. sample1  sample1    sample1          
+#&gt; # ... with 990 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -179,7 +202,7 @@ error otherwise.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#note">Note</a></li>
+      <li><a href="#singlecellexperiment">SingleCellExperiment</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
@@ -188,7 +211,7 @@ error otherwise.</p>
 
     <h2>Author</h2>
     
-Michael Steinbaugh
+Michael Steinbaugh, Rory Kirchner
 
   </div>
 </div>
