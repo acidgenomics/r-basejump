@@ -1,7 +1,5 @@
 invisible(lapply(
     X = c(
-        "cog.txt",
-        "eunog.tsv.gz",
         "example.counts",
         "example.csv",
         "example.gtf",
@@ -15,13 +13,8 @@ invisible(lapply(
         "example.xlsx",
         "example.yml",
         "gr.rda",
-        "hgnc.txt.gz",
-        "homo_sapiens.gene_info.gz",
-        "mgi.rpt.gz",
         "mn.rda",
         "multi.rda",
-        "nog.tsv.gz",
-        "pthr13.1_human.gz",
         "plotlist.rda",
         "renamed.rda",
         "rnaseq_counts.csv.gz",
