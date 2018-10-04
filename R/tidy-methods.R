@@ -1,3 +1,38 @@
+# Modified from:
+# https://gist.github.com/DarwinAwardWinner/9efb85856616c042874d
+
+# This will allow you to use dplyr functions with Bioconductor's
+# S4Vectors::DataFrame class. Note that this entails conversion of S4 vector
+# columns to primitive vectors.
+
+# Single table verbs ===========================================================
+single.table.verbs <- c(
+    "arrange",
+    "distinct",
+    "do",
+    "filter",
+    "group_by",
+    "mutate",
+    "rename",
+    "select",
+    "summarise",
+    "transmute"
+)
+for (verb in single.table.verbs) {
+    assign(
+        x = paste0(verb, ".DataFrame"),
+        value = local({
+            generic <- get(verb, envir = as.environment("package:dplyr"))
+            function(.data, ...) {
+                .data %>%
+                    as("tbl_df") %>%
+                    generic(...) %>%
+                    as("DataFrame")
+            }
+        })
+    )
+}
+
 # arrange ======================================================================
 #' @importFrom dplyr arrange
 #' @export
@@ -8,9 +43,10 @@ dplyr::arrange
 #' @method arrange DataFrame
 #' @export
 arrange.DataFrame <- function(.data, ...) {
-    data <- as(.data, "tbl_df")
-    data <- filter(data, ...)
-    as(data, "DataFrame")
+    .data %>%
+        as("tbl_df") %>%
+        filter(...) %>%
+        as("DataFrame")
 }
 
 
