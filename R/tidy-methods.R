@@ -42,21 +42,6 @@ arrange.DataFrame <- function(.data, ...) {
 
 
 
-#' @importFrom dplyr distinct
-#' @export
-dplyr::distinct
-
-#' @method distinct DataFrame
-#' @export
-distinct.DataFrame <- function(.data, ...) {
-    .data %>%
-        as("tbl_df") %>%
-        distinct(...) %>%
-        as("DataFrame")
-}
-
-
-
 #' @importFrom dplyr filter
 #' @export
 dplyr::filter
