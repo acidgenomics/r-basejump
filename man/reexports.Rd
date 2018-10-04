@@ -18,7 +18,6 @@
 \alias{groups}
 \alias{tbl_vars}
 \alias{arrange}
-\alias{distinct}
 \alias{filter}
 \alias{filter_all}
 \alias{filter_at}
@@ -45,7 +44,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{pull}}, \code{\link[dplyr]{groups}}, \code{\link[dplyr]{tbl_vars}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{distinct}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{filter_all}}, \code{\link[dplyr]{filter_at}}, \code{\link[dplyr]{filter_if}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_at}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{rename_all}}, \code{\link[dplyr]{rename_at}}, \code{\link[dplyr]{rename_if}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{select_at}}, \code{\link[dplyr]{select_if}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{transmute_at}}, \code{\link[dplyr]{transmute_if}}, \code{\link[dplyr]{left_join}}}
+  \item{dplyr}{\code{\link[dplyr]{pull}}, \code{\link[dplyr]{groups}}, \code{\link[dplyr]{tbl_vars}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{filter_all}}, \code{\link[dplyr]{filter_at}}, \code{\link[dplyr]{filter_if}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{mutate_all}}, \code{\link[dplyr]{mutate_at}}, \code{\link[dplyr]{mutate_if}}, \code{\link[dplyr]{rename}}, \code{\link[dplyr]{rename_all}}, \code{\link[dplyr]{rename_at}}, \code{\link[dplyr]{rename_if}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{select_at}}, \code{\link[dplyr]{select_if}}, \code{\link[dplyr]{transmute}}, \code{\link[dplyr]{transmute_at}}, \code{\link[dplyr]{transmute_if}}, \code{\link[dplyr]{left_join}}}
 
   \item{GenomeInfoDb}{\code{\link[GenomeInfoDb]{seqnames}}}
 
