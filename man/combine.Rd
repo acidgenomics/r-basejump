@@ -72,7 +72,7 @@ sampleData(y)
 # Combine two SingleCellExperiment objects.
 c <- combine(x, y)
 print(c)
-# FIXME sampleData(c)
+sampleData(c)
 }
 \seealso{
 \itemize{
