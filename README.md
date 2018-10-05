@@ -27,10 +27,7 @@ BiocManager::install(
         "GenomeInfoDbData"
     )
 )
-BiocManager::install(
-    pkgs = "steinbaugh/basejump",
-    dependencies = c("Depends", "Imports", "Suggests")
-)
+BiocManager::install("steinbaugh/basejump")
 ```
 
 For [R][] < 3.5, [BiocManager][] is not supported. Use `BiocInstaller::biocLite()` instead of `BiocManager::install()`. This requires sourcing the legacy [Bioconductor][] `biocLite.R` script.
