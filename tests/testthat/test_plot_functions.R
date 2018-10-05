@@ -6,6 +6,18 @@ context("Plot Functions")
 
 
 
+# Counts per biotype ===========================================================
+test_that("plotCountsPerBiotype", {
+    p <- plotCountsPerBiotype(rse_small)
+    expect_is(p, "ggplot")
+})
+
+test_that("plotCountsPerBroadClass", {
+    p <- plotCountsPerBroadClass(rse_small)
+    expect_is(p, "ggplot")
+})
+
+
 # Heatmaps =====================================================================
 funs <- list(
     plotCorrelationHeatmap,
