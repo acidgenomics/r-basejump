@@ -325,6 +325,7 @@ makeGRangesFromEnsembl <- function(
         # Merge the data.
         txData <- mcols(tx)
         geneData <- mcols(gene)
+        # FIXME Update to use `left_join()` here instead.
         mergeData <- merge(
             x = txData,
             y = geneData,
