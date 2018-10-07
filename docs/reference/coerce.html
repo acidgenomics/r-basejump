@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Methods for Coercing an Object to a Class — coerceS4ToList • basejump</title>
+<title>Methods for Coercing an Object to a Class — coerce • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Methods for Coercing an Object to a Class — coerceS4ToList" />
+<meta property="og:title" content="Methods for Coercing an Object to a Class — coerce" />
 
 <meta property="og:description" content="Methods for Coercing an Object to a Class" />
 <meta name="twitter:card" content="summary" />
@@ -106,7 +106,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Methods for Coercing an Object to a Class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerce-methods.R'><code>R/coerce-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/coerce-methods.R'><code>R/coerce-methods.R</code></a></small>
     <div class="hidden name"><code>coerce.Rd</code></div>
     </div>
 
@@ -117,9 +117,6 @@
     </div>
 
     <pre class="usage"><span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for ANY</span>
-<span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>as.list</span>(<span class='no'>x</span>)</pre>
@@ -167,7 +164,7 @@ duplicates present.</p>
 
     
     <p>It is often useful to coerce an S4 object to a flat <code>list</code> for archival
-storage. Here we are providing the <code>coerceS4ToList()</code> generic, which
+storage. Here we are providing the <code>coerceS4ToList()</code> function, which
 consistently coerces the slots in any S4 to a standard <code>list</code>. Additionally,
 here we have improved support for <code>SummarizedExperiment</code> to <code>list</code> coercion,
 returning the slots as a <code>list</code>.</p>

@@ -178,8 +178,7 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='broadClass.html'>broadClass</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
+    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
   <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
   <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
   <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
@@ -191,11 +190,11 @@ set <code>NULL</code>, defaults to the most recent release available.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGene2symbol.html'>makeGene2symbolFromEnsembl</a></span>(<span class='st'>"Mus musculus"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 93 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64461"</span>
+    <pre class="examples"><div class='input'><span class='no'>gene2symbol</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeGene2symbol.html'>makeGene2symbolFromEnsembl</a></span>(<span class='st'>"Mus musculus"</span>)</div><div class='output co'>#&gt; <span class='message'>Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</span></div><div class='output co'>#&gt; <span class='message'>Ensembl 93 EnsDb for Mus Musculus</span></div><div class='output co'>#&gt; <span class='message'>  - AnnotationHub: "AH64461"</span>
 #&gt; <span class='message'>  - Organism: "Mus musculus"</span>
 #&gt; <span class='message'>  - Build: "GRCm38"</span>
 #&gt; <span class='message'>  - Release: "93"</span>
-#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Standardizing the metadata columns...</span></div><div class='output co'>#&gt; <span class='message'>Defining broad class using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Sorting ranges by geneID...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; gene2symbol with 55029 rows and 2 columns
+#&gt; <span class='message'>  - Level: "genes"</span></div><div class='output co'>#&gt; <span class='message'>Defining broadClass using: geneName, geneBiotype, seqnames</span></div><div class='output co'>#&gt; <span class='message'>Arranging by geneID...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>gene2symbol</span>)</div><div class='output co'>#&gt; gene2symbol with 55029 rows and 2 columns
 #&gt;                                geneID    geneName
 #&gt;                           &lt;character&gt; &lt;character&gt;
 #&gt; ENSMUSG00000000001 ENSMUSG00000000001       Gnai3
