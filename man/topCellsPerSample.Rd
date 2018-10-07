@@ -28,7 +28,7 @@ x <- topCellsPerSample(sce_small)
 lapply(x, head)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
+Other Data Functions: \code{\link{aggregate}},
   \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
