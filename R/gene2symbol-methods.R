@@ -10,7 +10,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `gene2symbol`.
+#' @return `Gene2Symbol`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
