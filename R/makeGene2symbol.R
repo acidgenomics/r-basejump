@@ -4,7 +4,7 @@
 #'
 #' Remote URLs and compressed files are supported.
 #'
-#' @name makeGene2symbol
+#' @name makeGene2Symbol
 #' @family Annotation Functions
 #' @author Michael Steinbaugh
 #' @include makeGRanges.R
@@ -14,17 +14,17 @@
 #'
 #' @seealso [makeGRanges].
 #'
-#' @return `gene2symbol`.
+#' @return `Gene2Symbol`.
 #'
 #' @examples
-#' # makeGene2symbolFromEnsembl ====
-#' x <- makeGene2symbolFromEnsembl(organism = "Homo sapiens")
+#' # makeGene2SymbolFromEnsembl ====
+#' x <- makeGene2SymbolFromEnsembl(organism = "Homo sapiens")
 #' print(x)
 #'
-#' # makeGene2symbolFromGFF ====
+#' # makeGene2SymbolFromGFF ====
 #' # GTF
 #' file <- file.path(basejumpCacheURL, "example.gtf")
-#' x <- makeGene2symbolFromGFF(file)
+#' x <- makeGene2SymbolFromGFF(file)
 #' print(x)
 #'
 #' # GFF3
@@ -48,7 +48,7 @@ NULL
 
 
 
-.makeGene2symbol <- function(object) {
+.makeGene2Symbol <- function(object) {
     assert_is_any_of(
         x = object,
         classes = c("DataFrame", "GRanges", "tbl_df")
@@ -57,7 +57,7 @@ NULL
     # Coerce to tibble.
     data <- as(object, "tbl_df")
     if (!all(c("geneID", "geneName") %in% colnames(data))) {
-        stop("Object does not contain gene-to-symbol mappings.")
+        stop("Object does not contain gene-to-symbol mappings.", call. = FALSE)
     }
     assert_has_rows(data)
     assertHasRownames(data)
@@ -73,31 +73,31 @@ NULL
         .makeGeneNamesUnique() %>%
         as("DataFrame")
 
-    new("gene2symbol", data)
+    new(Class = "Gene2Symbol", data)
 }
 
 
 
-#' @rdname makeGene2symbol
+#' @rdname makeGene2Symbol
 #' @export
-makeGene2symbolFromEnsembl <-
+makeGene2SymbolFromEnsembl <-
     function() {
         gr <- do.call(
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "genes"))
         )
-        .makeGene2symbol(gr)
+        .makeGene2Symbol(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level"))]
-formals(makeGene2symbolFromEnsembl) <- f
+formals(makeGene2SymbolFromEnsembl) <- f
 
 
 
-#' @rdname makeGene2symbol
+#' @rdname makeGene2Symbol
 #' @export
-makeGene2symbolFromGFF <- function(file) {
-    message("Making gene2symbol from GFF...")
+makeGene2SymbolFromGFF <- function(file) {
+    message("Making Gene2Symbol from GFF...")
     gff <- import(file)
 
     source <- .gffSource(gff)
@@ -118,7 +118,7 @@ makeGene2symbolFromGFF <- function(file) {
             !"geneName" %in% colnames(data) &&
             "geneSymbol" %in% colnames(data)
         ) {
-            # Needed for FlyBase
+            # Needed for FlyBase.
             data[["geneName"]] <- data[["geneSymbol"]]  # nocov
         }
     } else if (type == "GFF") {
@@ -131,12 +131,12 @@ makeGene2symbolFromGFF <- function(file) {
     }
 
     data[["rowname"]] <- data[["geneID"]]
-    .makeGene2symbol(data)
+    .makeGene2Symbol(data)
 }
 
 
 
 # Aliases ======================================================================
-#' @rdname makeGene2symbol
+#' @rdname makeGene2Symbol
 #' @export
-makeGene2symbolFromGTF <- makeGene2symbolFromGFF
+makeGene2SymbolFromGTF <- makeGene2SymbolFromGFF
