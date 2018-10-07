@@ -2,16 +2,6 @@ context("Atomic Vector Functions")
 
 
 
-# grepString ===================================================================
-test_that("grepString", {
-    expect_identical(
-        grepString("gene"),
-        "^gene$|^gene,\\s|,\\sgene,\\s|,\\sgene$"
-    )
-})
-
-
-
 # sortUnique ===================================================================
 test_that("sortUnique", {
     expect_identical(
