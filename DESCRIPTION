@@ -106,7 +106,6 @@ Collate:
     'MethodDefinition.R'
     'RdTags.R'
     'aggregate-methods.R'
-    'aggregateCellsToSamples-methods.R'
     'assert-internal.R'
     'assert.R'
     'basejump-package.R'
