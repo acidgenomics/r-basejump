@@ -105,6 +105,10 @@
 #' aggregateCols(matrix, groupings = samples)
 #' aggregateCols(sparse, groupings = samples)
 #' aggregateCols(se)
+#'
+#' # aggregateCellsToSamples ====
+#' x <- aggregateCellsToSamples(sce_small)
+#' print(x)
 NULL
 
 
@@ -245,7 +249,12 @@ formals(.aggregateCols.sparseMatrix)[["fun"]] <- .aggregateFuns
             groupings = groupings,
             fun = fun
         )
-        assert_are_identical(sum(counts), sum(counts(object)))
+        if (fun == "sum") {
+            assert_are_identical(
+                x = sum(counts),
+                y = sum(counts(object))
+            )
+        }
         rownames <- rownames(counts)
 
         # Return ---------------------------------------------------------------
@@ -287,7 +296,12 @@ formals(.aggregateRows.SE)[["fun"]] <- .aggregateFuns
             groupings = groupings,
             fun = fun
         )
-        assert_are_identical(sum(counts), sum(counts(object)))
+        if (fun == "sum") {
+            assert_are_identical(
+                x = sum(counts),
+                y = sum(counts(object))
+            )
+        }
 
         # Column data ----------------------------------------------------------
         # Reslot with minimal sample-level data only.
@@ -415,6 +429,22 @@ formals(.aggregateCols.SCE)[["fun"]] <- .aggregateFuns
 
 
 
+.aggregateCellsToSamples.SCE <-  # nolint
+    function(object, fun) {
+        validObject(object)
+        fun <- match.arg(fun)
+        rse <- as(object, "RangedSummarizedExperiment")
+        colData(rse)[["aggregate"]] <- cell2sample(object)
+        aggregateCols(
+            object = rse,
+            col = "aggregate",
+            fun = fun
+        )
+    }
+formals(.aggregateCellsToSamples.SCE)[["fun"]] <- .aggregateFuns
+
+
+
 # Methods ======================================================================
 #' @rdname aggregate
 #' @export
@@ -482,4 +512,14 @@ setMethod(
     f = "aggregateCols",
     signature = signature("SingleCellExperiment"),
     definition = .aggregateCols.SCE
+)
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateCellsToSamples",
+    signature = signature("SingleCellExperiment"),
+    definition = .aggregateCellsToSamples.SCE
 )
