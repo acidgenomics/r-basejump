@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Broad Class Definitions — broadClass • basejump</title>
+<title>Assert Is Directory — assertIsDir • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Broad Class Definitions — broadClass" />
+<meta property="og:title" content="Assert Is Directory — assertIsDir" />
 
-<meta property="og:description" content="Broad Class Definitions" />
+<meta property="og:description" content="Assert Is Directory" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,63 +105,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Broad Class Definitions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/broadClass-methods.R'><code>R/broadClass-methods.R</code></a></small>
-    <div class="hidden name"><code>broadClass.Rd</code></div>
+    <h1>Assert Is Directory</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <div class="hidden name"><code>assertIsDir.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Broad Class Definitions</p>
+    <p>Assert Is Directory</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>broadClass</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for GRanges</span>
-<span class='fu'>broadClass</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>broadClass</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>assertIsDir</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object that can be coerced to <code>DataFrame</code>, containing gene or
-transcript annotations.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Named <code>factor</code> containing broad class definitions.</p>
+    <p>Always stop on error.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Annotation Functions: <code><a href='convertGenesToSymbols.html'>convertGenesToSymbols</a></code>,
-  <code><a href='convertTranscriptsToGenes.html'>convertTranscriptsToGenes</a></code>,
-  <code><a href='convertUCSCBuildToEnsembl.html'>convertUCSCBuildToEnsembl</a></code>,
-  <code><a href='eggnog.html'>eggnog</a></code>, <code><a href='emptyRanges.html'>emptyRanges</a></code>,
-  <code><a href='ensembl2entrez.html'>ensembl2entrez</a></code>, <code><a href='gene2symbol.html'>gene2symbol</a></code>,
-  <code><a href='geneSynonyms.html'>geneSynonyms</a></code>, <code><a href='hgnc2ensembl.html'>hgnc2ensembl</a></code>,
-  <code><a href='makeGRanges.html'>makeGRanges</a></code>, <code><a href='makeGene2symbol.html'>makeGene2symbol</a></code>,
-  <code><a href='makeTx2gene.html'>makeTx2gene</a></code>, <code><a href='mgi2ensembl.html'>mgi2ensembl</a></code>,
-  <code><a href='organism.html'>organism</a></code>, <code><a href='panther.html'>panther</a></code>,
-  <code><a href='stripTranscriptVersions.html'>stripTranscriptVersions</a></code></p></div>
+    <div class='dont-index'><p>Other Assert Check Functions: <code><a href='assertAllAreNonExisting.html'>assertAllAreNonExisting</a></code>,
+  <code><a href='assertAllAreURL.html'>assertAllAreURL</a></code>,
+  <code><a href='assertAllAreUniqueGeneNames.html'>assertAllAreUniqueGeneNames</a></code>,
+  <code><a href='assertAllAreValidNames.html'>assertAllAreValidNames</a></code>,
+  <code><a href='assertAreGeneAnnotations.html'>assertAreGeneAnnotations</a></code>,
+  <code><a href='assertAreTranscriptAnnotations.html'>assertAreTranscriptAnnotations</a></code>,
+  <code><a href='assertFormalCompress.html'>assertFormalCompress</a></code>,
+  <code><a href='assertFormalGene2symbol.html'>assertFormalGene2symbol</a></code>,
+  <code><a href='assertFormalInterestingGroups.html'>assertFormalInterestingGroups</a></code>,
+  <code><a href='assertHasRownames.html'>assertHasRownames</a></code>,
+  <code><a href='assertIsANumberOrNULL.html'>assertIsANumberOrNULL</a></code>,
+  <code><a href='assertIsAStringOrNULL.html'>assertIsAStringOrNULL</a></code>,
+  <code><a href='assertIsAlpha.html'>assertIsAlpha</a></code>,
+  <code><a href='assertIsAnIntegerOrNULL.html'>assertIsAnIntegerOrNULL</a></code>,
+  <code><a href='assertIsColorScaleContinuousOrNULL.html'>assertIsColorScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsColorScaleDiscreteOrNULL.html'>assertIsColorScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsFillScaleContinuousOrNULL.html'>assertIsFillScaleContinuousOrNULL</a></code>,
+  <code><a href='assertIsFillScaleDiscreteOrNULL.html'>assertIsFillScaleDiscreteOrNULL</a></code>,
+  <code><a href='assertIsGene2symbol.html'>assertIsGene2symbol</a></code>,
+  <code><a href='assertIsHeaderLevel.html'>assertIsHeaderLevel</a></code>,
+  <code><a href='assertIsHexColorFunctionOrNULL.html'>assertIsHexColorFunctionOrNULL</a></code>,
+  <code><a href='assertIsImplicitInteger.html'>assertIsImplicitInteger</a></code>,
+  <code><a href='assertIsTx2gene.html'>assertIsTx2gene</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># SummarizedExperiment ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>broadClass</span>(<span class='no'>rse_small</span>)
-<span class='fu'>table</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; x
-#&gt; coding pseudo 
-#&gt;     49      1 </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>assertIsDir</span>(<span class='st'>"~"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -177,7 +175,7 @@ transcript annotations.</p></td>
 
     <h2>Author</h2>
     
-Rory Kirchner and Michael Steinbaugh
+Michael Steinbaugh
 
   </div>
 </div>
