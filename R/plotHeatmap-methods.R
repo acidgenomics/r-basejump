@@ -444,48 +444,45 @@ NULL
 
 
 # SingleCellExperiment =========================================================
-# FIXME Think about default calculation here. Mean?
 .plotHeatmap.SCE <-  # nolint
     function(object) {
+        agg <- aggregateCellsToSamples(
+            object = object,
+            fun = "mean"
+        )
         do.call(
             what = plotHeatmap,
-            args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
-            )
+            args = matchArgsToDoCall(args = list(object = agg))
         )
     }
 formals(.plotHeatmap.SCE) <- formals(.plotHeatmap.SE)
 
 
 
-# FIXME Think about the default calculation here. Sum?
 .plotCorrelationHeatmap.SCE <-  # nolint
     function(object) {
+        agg <- aggregateCellsToSamples(
+            object = object,
+            fun = "mean"
+        )
         do.call(
             what = plotCorrelationHeatmap,
-            args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
-            )
+            args = matchArgsToDoCall(args = list(object = agg))
         )
     }
 formals(.plotCorrelationHeatmap.SCE) <- formals(.plotCorrelationHeatmap.SE)
 
 
 
-# FIXME Think about default calculation here. Mean?
 .plotQuantileHeatmap.SCE <-  # nolint
     function(object) {
+        agg <- aggregateCellsToSamples(
+            object = object,
+            fun = "mean"
+        )
         do.call(
             what = plotQuantileHeatmap,
-            args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
-            )
+            args = matchArgsToDoCall(args = list(object = agg))
         )
     }
 formals(.plotQuantileHeatmap.SCE) <- formals(.plotQuantileHeatmap.SE)
