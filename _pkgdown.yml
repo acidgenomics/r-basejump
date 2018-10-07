@@ -65,7 +65,7 @@ reference:
     - starts_with("plot")
   - title: ggplot2 Functions
     contents:
-    - starts_with("ggplot2_")
+    - starts_with("ggplot2-")
   - title: Math and Science Functions
     contents:
     - matches("Change")
