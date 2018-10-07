@@ -75,8 +75,7 @@ organism(c("ENSG00000000003", "ENSMUSG00000000001"))
 organism(rse_small)
 }
 \seealso{
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{eggnog}}, \code{\link{emptyRanges}},

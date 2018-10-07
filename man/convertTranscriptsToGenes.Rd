@@ -92,8 +92,7 @@ print(object)
 \seealso{
 \code{\link[=aggregateRows]{aggregateRows()}}.
 
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{eggnog}}, \code{\link{emptyRanges}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
