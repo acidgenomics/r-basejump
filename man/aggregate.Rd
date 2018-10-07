@@ -3,9 +3,9 @@
 \docType{methods}
 \name{aggregate}
 \alias{aggregate}
-\alias{aggregateCellsToSamples}
-\alias{aggregateCols}
 \alias{aggregateRows}
+\alias{aggregateCols}
+\alias{aggregateCellsToSamples}
 \alias{aggregateRows,matrix-method}
 \alias{aggregateRows,sparseMatrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
@@ -16,11 +16,11 @@
 \alias{aggregateCellsToSamples,SingleCellExperiment-method}
 \title{Aggregate Rows or Columns}
 \usage{
-aggregateCellsToSamples(object, ...)
+aggregateRows(object, ...)
 
 aggregateCols(object, ...)
 
-aggregateRows(object, ...)
+aggregateCellsToSamples(object, ...)
 
 \S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
   "mean"))
@@ -166,8 +166,8 @@ Other Data Functions: \code{\link{cell2sample}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}}, \code{\link{mapGenes}},
-  \code{\link{meltCounts}}, \code{\link{metricsPerSample}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
+  \code{\link{meltCounts}}, \code{\link{metrics}},
+  \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
   \code{\link{subsetPerSample}},
