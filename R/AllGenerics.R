@@ -32,18 +32,6 @@ setGeneric(
 
 
 
-# broadClass ===================================================================
-#' @rdname broadClass
-#' @export
-setGeneric(
-    name = "broadClass",
-    def = function(object, ...) {
-        standardGeneric("broadClass")
-    }
-)
-
-
-
 # cell2sample ==================================================================
 #' @rdname cell2sample
 #' @export
