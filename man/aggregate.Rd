@@ -5,35 +5,39 @@
 \alias{aggregateCols}
 \alias{aggregateRows}
 \alias{aggregate}
+\alias{aggregateRows,matrix-method}
+\alias{aggregateRows,sparseMatrix-method}
+\alias{aggregateRows,SummarizedExperiment-method}
 \alias{aggregateCols,matrix-method}
 \alias{aggregateCols,sparseMatrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,SingleCellExperiment-method}
-\alias{aggregateRows,matrix-method}
-\alias{aggregateRows,sparseMatrix-method}
-\alias{aggregateRows,SummarizedExperiment-method}
-\alias{aggregateReplicates}
-\alias{aggregateFeatures}
-\alias{aggregateSamples}
-\title{Aggregate Columns or Rows}
+\title{Aggregate Rows or Columns}
 \usage{
 aggregateCols(object, ...)
 
 aggregateRows(object, ...)
 
-\S4method{aggregateCols}{matrix}(object, groupings)
+\S4method{aggregateRows}{matrix}(object, groupings, fun = c("sum",
+  "mean"))
 
-\S4method{aggregateCols}{sparseMatrix}(object, groupings)
+\S4method{aggregateRows}{sparseMatrix}(object, groupings, fun = c("sum",
+  "mean"))
 
-\S4method{aggregateCols}{SummarizedExperiment}(object)
+\S4method{aggregateRows}{SummarizedExperiment}(object, col = "aggregate",
+  fun = c("sum", "mean"))
 
-\S4method{aggregateCols}{SingleCellExperiment}(object)
+\S4method{aggregateCols}{matrix}(object, groupings, fun = c("sum",
+  "mean"))
 
-\S4method{aggregateRows}{matrix}(object, groupings)
+\S4method{aggregateCols}{sparseMatrix}(object, groupings, fun = c("sum",
+  "mean"))
 
-\S4method{aggregateRows}{sparseMatrix}(object, groupings)
+\S4method{aggregateCols}{SummarizedExperiment}(object, col = "aggregate",
+  fun = c("sum", "mean"))
 
-\S4method{aggregateRows}{SummarizedExperiment}(object)
+\S4method{aggregateCols}{SingleCellExperiment}(object, fun = c("sum",
+  "mean"))
 }
 \arguments{
 \item{object}{Object.}
@@ -43,27 +47,33 @@ aggregateRows(object, ...)
 \item{groupings}{\code{factor}. Defines the aggregation groupings.
 The new aggregate names are defined as the \code{factor} \code{levels}, and the
 original, unaggregated names are defined as the \code{names}.}
+
+\item{fun}{\code{string}. Name of the aggregation function. Uses \code{\link[=match.arg]{match.arg()}}.}
+
+\item{col}{\code{string}. Name of column in either \code{\link[=rowData]{rowData()}} or \code{\link[=colData]{colData()}} that
+defines the desired aggregation groupings.}
 }
 \value{
-Modified object, with aggregated columns (samples) or rows
-(features).
+Modified object, with aggregated rows (features) or columns
+(samples).
 }
 \description{
-Aggregate sample replicates (columns) or gene/transcript features (rows).
+Aggregate gene/transcript features (rows) or sample replicates (columns).
 }
 \details{
+\code{\link[=aggregateRows]{aggregateRows()}} works down the rows, and is designed to aggregate features
+(e.g. genes or transcripts). Most commonly, the \code{\link[=aggregateRows]{aggregateRows()}} function
+can be used to aggregate counts from transcript-level to gene-level.
+
 \code{\link[=aggregateCols]{aggregateCols()}} works across the columns, and is designed to aggregate
-sample replicates. \code{\link[=aggregateRows]{aggregateRows()}} works down the rows, and is designed to
-aggregate features (e.g. genes or transcripts). Most commonly, the
-\code{\link[=aggregateRows]{aggregateRows()}} function can be used to aggregate counts from
-transcript-level to gene-level.
+sample replicates.
 }
 \section{SummarizedExperiment}{
 
 
-Slot an \code{aggregate} column into \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} for
-\code{\link[=aggregateCols]{aggregateCols()}}, or into \code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} for
-\code{aggregateRows()}. The S4 method will define the \code{groupings} automatically
+Slot an \code{aggregate} column into \code{\link[SummarizedExperiment:rowData]{SummarizedExperiment::rowData()}} for
+\code{aggregateRows()}, or into \code{\link[SummarizedExperiment:colData]{SummarizedExperiment::colData()}} for
+\code{\link[=aggregateCols]{aggregateCols()}}. The S4 method will define the \code{groupings} automatically
 and perform the aggregation.
 }
 
@@ -123,17 +133,23 @@ se <- SummarizedExperiment::SummarizedExperiment(
 )
 print(se)
 
-# aggregateCols ====
-aggregateCols(matrix, groupings = samples)
-aggregateCols(sparse, groupings = samples)
-aggregateCols(se)
-
 # aggregateRows ====
 aggregateRows(matrix, groupings = genes)
 aggregateRows(sparse, groupings = genes)
 aggregateRows(se)
+
+# aggregateCols ====
+aggregateCols(matrix, groupings = samples)
+aggregateCols(sparse, groupings = samples)
+aggregateCols(se)
 }
 \seealso{
+\itemize{
+\item \link[stats:aggregate]{stats::aggregate}.
+\item \link[Matrix.utils:aggregate.Matrix]{Matrix.utils::aggregate.Matrix}.
+\item \link[S4Vectors:aggregate]{S4Vectors::aggregate}.
+}
+
 Other Data Functions: \code{\link{aggregateCellsToSamples}},
   \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
