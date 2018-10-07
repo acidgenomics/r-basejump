@@ -19,6 +19,9 @@
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
 \alias{assertIsURL}
+\alias{aggregateFeatures}
+\alias{aggregateReplicates}
+\alias{aggregateSamples}
 \alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
@@ -68,6 +71,12 @@ midnightTheme(...)
 paperwhiteTheme(...)
 
 assertIsURL(...)
+
+aggregateFeatures(...)
+
+aggregateReplicates(...)
+
+aggregateSamples(...)
 
 assertIsAHeaderLevel(...)
 
