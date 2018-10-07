@@ -28,7 +28,7 @@
 #' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
-#' @name ggplot2_geoms
+#' @name ggplot2-geoms
 #' @family ggplot2 Functions
 #' @author Michael Steinbaugh
 #'
@@ -104,7 +104,7 @@ NULL
 
 
 
-#' @rdname ggplot2_geoms
+#' @rdname ggplot2-geoms
 #' @export
 basejump_geom_abline <- function(
     xintercept = NULL,
@@ -140,7 +140,7 @@ basejump_geom_abline <- function(
 
 
 
-#' @rdname ggplot2_geoms
+#' @rdname ggplot2-geoms
 #' @export
 basejump_geom_label <- function(
     data = NULL,
@@ -166,7 +166,7 @@ basejump_geom_label <- function(
 
 
 
-#' @rdname ggplot2_geoms
+#' @rdname ggplot2-geoms
 #' @export
 basejump_geom_label_average <- function(
     data,
@@ -217,7 +217,7 @@ basejump_geom_label_average <- function(
 
 
 
-#' @rdname ggplot2_geoms
+#' @rdname ggplot2-geoms
 #' @export
 basejump_geom_label_repel <- function(
     data = NULL,
@@ -271,7 +271,7 @@ basejump_geom_label_repel <- function(
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
 #'
-#' @name ggplot2_themes
+#' @name ggplot2-themes
 #' @family ggplot2 Functions
 #' @author Michael Steinbaugh
 #'
@@ -325,7 +325,7 @@ NULL
 
 
 
-#' @rdname ggplot2_themes
+#' @rdname ggplot2-themes
 #' @export
 theme_paperwhite <- function(
     base_size = 14L,
@@ -394,7 +394,7 @@ theme_paperwhite <- function(
 
 
 
-#' @rdname ggplot2_themes
+#' @rdname ggplot2-themes
 #' @export
 theme_midnight <- function() {
     assert_is_a_number(base_size)
