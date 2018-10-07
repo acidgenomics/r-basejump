@@ -794,6 +794,6 @@ annotable <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall()
         )
-        as(gr, "tbl_df")
+        as_tibble(gr, rownames = NULL)
     }
 formals(annotable) <- formals(makeGRangesFromEnsembl)
