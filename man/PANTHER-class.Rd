@@ -3,21 +3,20 @@
 \docType{class}
 \name{PANTHER-class}
 \alias{PANTHER-class}
-\title{PANTHER Class}
-\value{
-\code{PANTHER}.
-}
+\title{\code{PANTHER} Class}
 \description{
-PANTHER Gene Ontology definitions.
+\href{http://www.pantherdb.org}{PANTHER} Gene Ontology definitions. PANTHER stands
+for \strong{P}rotein \strong{AN}alysis \strong{TH}rough \strong{E}volutionary \strong{R}elationships.
 }
 \seealso{
 \code{\link[=panther]{panther()}}.
 
-Other S4 Classes: \code{\link{ensembl2entrez-class}},
-  \code{\link{gene2symbol-class}},
-  \code{\link{hgnc2ensembl-class}},
-  \code{\link{mgi2ensembl-class}},
-  \code{\link{tx2gene-class}}
+Other S4 Classes: \code{\link{EggNOG-class}},
+  \code{\link{Ensembl2Entrez-class}},
+  \code{\link{Gene2Symbol-class}},
+  \code{\link{HGNC2Ensembl-class}},
+  \code{\link{MGI2Ensembl-class}},
+  \code{\link{Tx2Gene-class}}
 }
 \author{
 Michael Steinbaugh

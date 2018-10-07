@@ -19,7 +19,7 @@ gene2symbol(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{gene2symbol}.
+\code{Gene2Symbol}.
 }
 \description{
 Gene-to-Symbol Mappings
@@ -34,18 +34,11 @@ x <- gene2symbol(rse_small)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
-  \code{\link{ensembl2entrez}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+Other S4 Generators: \code{\link{eggnog}},
+  \code{\link{ensembl2entrez}}, \code{\link{hgnc2ensembl}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

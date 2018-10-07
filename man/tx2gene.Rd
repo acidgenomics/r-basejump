@@ -16,7 +16,7 @@ tx2gene(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{tx2gene}.
+\code{Tx2Gene}.
 }
 \description{
 Transcript-to-Gene Mappings
@@ -27,19 +27,11 @@ x <- tx2gene(tx_se_small)
 print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregate}},
-  \code{\link{cell2sample}}, \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
-  \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}}, \code{\link{mapGenes}},
-  \code{\link{meltCounts}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
-  \code{\link{sampleData}}, \code{\link{sampleNames}},
-  \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}}
+Other S4 Generators: \code{\link{eggnog}},
+  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
+  \code{\link{hgnc2ensembl}}, \code{\link{mgi2ensembl}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Data Functions}
+\concept{S4 Generators}
