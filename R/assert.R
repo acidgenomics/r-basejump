@@ -77,7 +77,7 @@ assertAllAreNonExisting <- function(
 #' print(genes)
 #' assertAllAreUniqueGeneNames(object = object, genes = genes)
 assertAllAreUniqueGeneNames <- function(object, genes) {
-    assert_is_any_of(object, classes = c("gene2symbol", "SummarizedExperiment"))
+    assert_is_any_of(object, classes = c("Gene2Symbol", "SummarizedExperiment"))
     assert_is_character(genes)
     # Get all of the gene names stashed in the object.
     if (is(object, "SummarizedExperiment")) {
@@ -300,7 +300,7 @@ assertFormalCompress <- function(object) {
 #' print(object)
 #'
 #' gene2symbol <- new(
-#'     Class = "gene2symbol",
+#'     Class = "Gene2Symbol",
 #'     DataFrame(
 #'         geneID = c("ENSG00000000003", "ENSG00000000005"),
 #'         geneName = c("TSPAN6", "TNMD"),
@@ -332,7 +332,7 @@ assertFormalGene2symbol <- function(
 ) {
     assertHasRownames(object)
     assert_is_character(genes)
-    assert_is_all_of(gene2symbol, "gene2symbol")
+    assert_is_all_of(gene2symbol, "Gene2Symbol")
     # Require that all rownames of object are defined in gene2symbol.
     assert_is_subset(rownames(object), rownames(gene2symbol))
     # Check to ensure the user defined genes map to the rownames of the object.
