@@ -1,7 +1,7 @@
 # FIXME EggNOG
-# FIXME ensembl2entrez
-# FIXME gene2symbol
-# FIXME hgnc2ensembl
-# FIXME mgi2ensembl
+# FIXME Ensembl2Entrez
+# FIXME Gene2Symbol
+# FIXME HGNC2Ensembl
+# FIXME MGI2Ensembl
 # FIXME PANTHER
-# FIXME tx2gene
+# FIXME Tx2Gene
