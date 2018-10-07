@@ -13,7 +13,7 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
+#' @param gene2symbol `Gene2Symbol` or `NULL`. Gene-to-symbol mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #'
@@ -61,7 +61,7 @@ NULL
     ) {
         # Allowing duplicates here (unlike convertTranscriptsToGenes).
         assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_any_of(gene2symbol, c("DataFrame", "NULL"))
+        assert_is_any_of(gene2symbol, c("Gene2Symbol", "NULL"))
         assertIsAStringOrNULL(organism)
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations.
@@ -80,7 +80,7 @@ NULL
                 )
             )
         }
-        assertIsGene2symbol(gene2symbol)
+        assert_is_all_of(gene2symbol, "Gene2Symbol")
 
         # Arrange the gene2symbol to match the input.
         gene2symbol <- gene2symbol[
