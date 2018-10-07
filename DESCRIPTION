@@ -135,7 +135,6 @@ Collate:
     'ggplot2_geoms.R'
     'ggplot2_themes.R'
     'globals.R'
-    'grepString.R'
     'hgnc2ensembl.R'
     'import.R'
     'initializeDirectory.R'
