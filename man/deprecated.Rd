@@ -28,6 +28,7 @@
 \alias{detectOrganism}
 \alias{fixNA}
 \alias{flatFiles}
+\alias{grepString}
 \alias{hgnc2gene}
 \alias{kables}
 \alias{mgi2gene}
@@ -89,6 +90,8 @@ detectOrganism(object, ...)
 fixNA(...)
 
 flatFiles(object)
+
+grepString(...)
 
 hgnc2gene(...)
 
