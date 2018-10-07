@@ -34,25 +34,6 @@ NULL
 
 
 
-.makeTx2Gene <- function(data) {
-    data <- data %>%
-        as_tibble() %>%
-        select(!!!syms(c("transcriptID", "geneID"))) %>%
-        .[complete.cases(.), , drop = FALSE] %>%
-        unique() %>%
-        mutate_all(as.character) %>%
-        as("DataFrame") %>%
-        set_rownames(.[["transcriptID"]])
-    message(paste(
-        "Mappings:",
-        length(unique(data[["transcriptID"]])), "transcripts,",
-        length(unique(data[["geneID"]])), "genes"
-    ))
-    new("Tx2Gene", data)
-}
-
-
-
 #' @rdname makeTx2Gene
 #' @export
 makeTx2GeneFromEnsembl <-
@@ -61,7 +42,7 @@ makeTx2GeneFromEnsembl <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "transcripts"))
         )
-        .makeTx2Gene(gr)
+        tx2gene(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level", "metadata", "..."))]
@@ -102,7 +83,7 @@ makeTx2GeneFromGFF <- function(file) {
         )
     }
 
-    data <- .makeTx2Gene(data)
+    data <- tx2gene(data)
     assert_are_identical(transcriptIDs, rownames(data))
     data
 }
