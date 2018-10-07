@@ -363,9 +363,8 @@ test_that("makeGRangesFromEnsembl : Invalid parameters", {
 test_that("annotable", {
     object <- annotable(organism, release = release)
     expect_is(object, "tbl_df")
-    expect_true("rowname" %in% colnames(object))
-    expect_identical(dim(object), c(63970L, 13L))
-    expect_identical(object[["rowname"]][[1L]], "ENSG00000000003")
+    expect_identical(dim(object), c(63970L, 12L))
+    expect_identical(object[["geneID"]][[1L]], "ENSG00000000003")
 })
 
 gene2symbol <- makeGene2symbolFromEnsembl(
