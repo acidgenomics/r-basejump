@@ -1,4 +1,10 @@
 #' @rdname aggregate
+#' @name aggregate
+NULL
+
+
+
+#' @rdname aggregate
 #' @export
 setGeneric(
     name = "aggregateCellsToSamples",
