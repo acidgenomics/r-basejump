@@ -221,29 +221,6 @@ paperwhiteTheme <- function(...) {
 
 
 
-# v0.6.2 =======================================================================
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "broadClass",
-    signature = signature("data.frame"),
-    definition = function(object) {
-        .Defunct(
-            msg = "`broadClass()` now requires a `GRanges` class object"
-        )
-    }
-)
-
-#' @rdname defunct
-#' @export
-setMethod(
-    f = "broadClass",
-    signature = signature("DataFrame"),
-    definition = getMethod("broadClass", "data.frame")
-)
-
-
-
 # v0.6.3 =======================================================================
 #' @rdname defunct
 #' @export
@@ -312,6 +289,12 @@ assertIsDataFrameOrNULL <- function(object, ...) {
         classes = c("data.frame", "NULL"),
         ...
     )
+}
+
+#' @rdname defunct
+#' @export
+broadClass <- function(object, ...) {
+    .Defunct("makeGRanges")
 }
 
 #' @rdname deprecated
