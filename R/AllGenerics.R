@@ -1,3 +1,4 @@
+# aggregate ====================================================================
 #' @rdname aggregate
 #' @name aggregate
 NULL
@@ -85,17 +86,6 @@ setGeneric(
     "cell2sample",
     function(object, ...) {
         standardGeneric("cell2sample")
-    }
-)
-
-
-
-#' @rdname coerce
-#' @export
-setGeneric(
-    name = "coerceS4ToList",
-    def = function(from) {
-        standardGeneric("coerceS4ToList")
     }
 )
 
