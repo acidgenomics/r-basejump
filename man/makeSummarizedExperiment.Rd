@@ -120,8 +120,7 @@ print(x)
 }
 
 Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
+  \code{\link{cell2sample}}, \code{\link{counts}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{mapCellsToSamples}},
   \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
