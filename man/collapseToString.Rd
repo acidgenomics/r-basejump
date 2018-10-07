@@ -77,7 +77,7 @@ ggplot2::mpg \%>\%
 \seealso{
 \code{\link[base:toString]{base::toString()}}.
 
-Other Sanitization Functions: \code{\link{camel}},
+Other Sanitization Functions: \code{\link{makeNames}},
   \code{\link{removeNA}}, \code{\link{sanitizeNA}},
   \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}},

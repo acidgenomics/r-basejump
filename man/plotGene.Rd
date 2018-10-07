@@ -69,8 +69,8 @@ plotGene(object, genes = geneIDs, style = "facet")
 plotGene(object, genes = geneNames, style = "wide")
 }
 \seealso{
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotCountsPerBiotype}}, \code{\link{plotQC}},
+Other Plot Functions: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{

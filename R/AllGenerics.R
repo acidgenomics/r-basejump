@@ -2,6 +2,26 @@
 #' @name aggregate
 NULL
 
+#' @rdname coerce
+#' @name coerce
+NULL
+
+#' @rdname logRatio
+#' @name logRatio
+NULL
+
+#' @rdname makeNames
+#' @name makeNames
+NULL
+
+#' @rdname mapGenes
+#' @name mapGenes
+NULL
+
+#' @rdname plotHeatmap
+#' @name plotHeatmap
+NULL
+
 
 
 #' @rdname aggregate

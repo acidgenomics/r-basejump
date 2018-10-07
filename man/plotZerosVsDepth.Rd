@@ -42,9 +42,9 @@ Calculate and visualize the dropout rate.
 plotZerosVsDepth(sce_small)
 }
 \seealso{
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotGene}}, \code{\link{plotQC}}
+Other Plot Functions: \code{\link{plotCountsPerBiotype}},
+  \code{\link{plotGene}}, \code{\link{plotHeatmap}},
+  \code{\link{plotQC}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

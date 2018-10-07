@@ -60,8 +60,8 @@ plotCountsPerBroadClass(rse_small)
 \seealso{
 \code{\link[=broadClass]{broadClass()}}.
 
-Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotGene}}, \code{\link{plotQC}},
+Other Plot Functions: \code{\link{plotGene}},
+  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{
