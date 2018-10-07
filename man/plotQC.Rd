@@ -27,9 +27,7 @@ plotQC(rse_small)
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
   \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotGene}}, \code{\link{plotHeatmap}},
-  \code{\link{plotQuantileHeatmap}},
-  \code{\link{plotZerosVsDepth}}
+  \code{\link{plotGene}}, \code{\link{plotZerosVsDepth}}
 }
 \author{
 Michael Steinbaugh

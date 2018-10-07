@@ -44,8 +44,7 @@ plotZerosVsDepth(sce_small)
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
   \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotGene}}, \code{\link{plotHeatmap}},
-  \code{\link{plotQC}}, \code{\link{plotQuantileHeatmap}}
+  \code{\link{plotGene}}, \code{\link{plotQC}}
 }
 \author{
 Rory Kirchner, Michael Steinbaugh

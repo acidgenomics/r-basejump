@@ -70,9 +70,7 @@ plotGene(object, genes = geneNames, style = "wide")
 }
 \seealso{
 Other Plot Functions: \code{\link{plotCorrelationHeatmap}},
-  \code{\link{plotCountsPerBiotype}},
-  \code{\link{plotHeatmap}}, \code{\link{plotQC}},
-  \code{\link{plotQuantileHeatmap}},
+  \code{\link{plotCountsPerBiotype}}, \code{\link{plotQC}},
   \code{\link{plotZerosVsDepth}}
 }
 \author{

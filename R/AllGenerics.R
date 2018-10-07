@@ -295,7 +295,7 @@ setGeneric(
 
 
 
-#' @rdname plotCorrelationHeatmap
+#' @rdname plotHeatmap
 #' @export
 setGeneric(
     name = "plotCorrelationHeatmap",
@@ -383,23 +383,23 @@ setGeneric(
 
 
 
-#' @rdname plotQuantileHeatmap
-#' @export
-setGeneric(
-    name = "plotQuantileHeatmap",
-    def = function(object, ...) {
-        standardGeneric("plotQuantileHeatmap")
-    }
-)
-
-
-
 #' @rdname plotQC
 #' @export
 setGeneric(
     name = "plotQC",
     def = function(object, ...) {
         standardGeneric("plotQC")
+    }
+)
+
+
+
+#' @rdname plotHeatmap
+#' @export
+setGeneric(
+    name = "plotQuantileHeatmap",
+    def = function(object, ...) {
+        standardGeneric("plotQuantileHeatmap")
     }
 )
 
