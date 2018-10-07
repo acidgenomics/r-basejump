@@ -188,19 +188,24 @@ test_that("import : No extension", {
 # loadData =====================================================================
 test_that("loadData", {
     # rda
-    object <- loadData(gr)
     expect_identical(
-        object = object,
+        object = loadData(gr),
         expected = c(gr = normalizePath("gr.rda", winslash = "/"))
     )
 
     # rds
-    object <- loadData(serialized)
     expect_identical(
-        object = object,
+        object = loadData(serialized),
         expected = c(
             serialized = normalizePath("serialized.rds", winslash = "/")
         )
+    )
+})
+
+test_that("loadData : Mixed extensions", {
+    expect_identical(
+        object = loadData(gr, serialized) %>% basename(),
+        expected = c("gr.rda", "serialized.rds")
     )
 })
 
@@ -237,14 +242,7 @@ test_that("loadData : Renamed file", {
 test_that("loadData : Duplicate RDA and RDS files", {
     expect_error(
         object = loadData(example),
-        regexp = "Duplicates: example.rda, example.rds"
-    )
-})
-
-test_that("loadData : Uncertain extension", {
-    expect_error(
-        object = loadData(gr, serialized),
-        regexp = "Multiple extensions: rda, rds"
+        regexp = "example is not unique on disk."
     )
 })
 

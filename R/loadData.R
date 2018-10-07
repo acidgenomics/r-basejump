@@ -171,25 +171,17 @@ loadData <- function(
     assert_is_environment(envir)
     names <- dots(..., character = TRUE)
     files <- .listRData(names = names, dir = dir)
-    if (any(grepl("\\.rds$", files))) {
-        # R data serialized.
-        mapply(
-            FUN = .safeLoadRDS,
-            file = files,
-            MoreArgs = list(envir = envir),
-            SIMPLIFY = TRUE,
-            USE.NAMES = FALSE
-        )
-    } else {
-        # R data.
-        mapply(
-            FUN = .safeLoad,
-            file = files,
-            MoreArgs = list(envir = envir),
-            SIMPLIFY = TRUE,
-            USE.NAMES = FALSE
-        )
-    }
+    lapply(
+        X = files,
+        FUN = function(file) {
+            if (grepl("\\.rds$", file)) {
+                fun <- .safeLoadRDS
+            } else {
+                fun <- .safeLoad
+            }
+            fun(file, envir = envir)
+        }
+    )
     invisible(files)
 }
 
