@@ -645,57 +645,6 @@ assertIsFillScaleDiscreteOrNULL <- function(object) {
 
 
 
-# assertIsGene2symbol ==========================================================
-#' Assert Is Gene to Symbol Mapping Data Frame
-#'
-#' @note Standard `data.frame` class is not supported. Use either `DataFrame`
-#'   or `tbl_df` class.
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assert
-#' @export
-#'
-#' @param object `DataFrame` or `tbl_df`. Must contain "`geneID`" and
-#'   "`geneName`" columns. If `DataFrame`, must also have `rownames` set.
-#'
-#' @examples
-#' # DataFrame ====
-#' object <- DataFrame(
-#'     geneID = "ENSG00000000003",
-#'     geneName = "TSPAN6",
-#'     row.names = "ENSG00000000003"
-#' )
-#' assertIsGene2symbol(object)
-#'
-#' # tibble ====
-#' object <- tibble(
-#'     geneID = "ENSG00000000003",
-#'     geneName = "TSPAN6"
-#' )
-#' assertIsGene2symbol(object)
-assertIsGene2symbol <- function(object) {
-    # Requiring standard data frame class.
-    assert_is_any_of(
-        x = object,
-        # Remove data.frame in a future update.
-        # This can cause validity checks on old bcbio objects to fail otherwise.
-        classes = c("DataFrame", "tbl_df", "data.frame")
-    )
-    assert_is_non_empty(object)
-    assert_are_identical(colnames(object), c("geneID", "geneName"))
-    # Require rownames for standard data frame.
-    if (!is(object, "tbl_df")) {
-        assertHasRownames(object)
-    }
-    # Assert that all columns are character.
-    invisible(lapply(object, assert_is_character))
-    # Assert that neither column has duplicates.
-    invisible(lapply(object, assert_has_no_duplicates))
-}
-
-
-
 # assertIsHeaderLevel ==========================================================
 #' Assert Is Markdown Header Level
 #'
@@ -834,60 +783,6 @@ isImplicitInteger <- function(object) {
         },
         FUN.VALUE = logical(1L)
     )
-}
-
-
-
-# assertIsTx2gene ==============================================================
-#' Assert Is Transcript-to-Gene Mapping Data
-#'
-#' @family Assert Check Functions
-#' @author Michael Steinbaugh
-#' @inherit assertIsGene2symbol
-#' @export
-#'
-#' @param object `DataFrame` or `tbl_df` containing transcript-to-gene
-#'   identifier mappings. Must contain the columns "`transcriptID`" and
-#'   "`geneID`". If `DataFrame`, must also have `rownames` set.
-#'
-#' @examples
-#' # DataFrame ====
-#' object <- DataFrame(
-#'     transcriptID = "ENST00000000233",
-#'     geneID = "ENSG00000004059",
-#'     row.names = "ENST00000000233"
-#' )
-#'
-#' # tibble ====
-#' object <- tibble(
-#'     transcriptID = "ENST00000000233",
-#'     geneID = "ENSG00000004059"
-#' )
-#' assertIsTx2gene(object)
-assertIsTx2gene <- function(object) {
-    assert_is_any_of(
-        x = object,
-        # Remove data.frame in a future update.
-        # This can cause validity checks on old bcbio objects to fail otherwise.
-        classes = c("DataFrame", "tbl_df", "data.frame")
-    )
-    assert_is_non_empty(object)
-    # nocov start
-    if ("txID" %in% colnames(object)) {
-        # Consider warning here in a future update.
-        # "Use `transcript` instead of `tx`"
-        colnames(object) <- gsub("^txID$", "transcriptID", colnames(object))
-    }
-    # nocov end
-    assert_are_identical(colnames(object), c("transcriptID", "geneID"))
-    # Require rownames for DataFrame.
-    if (!is(object, "tbl_df")) {
-        assertHasRownames(object)
-    }
-    # Assert that all columns are character.
-    invisible(lapply(object, assert_is_character))
-    # Assert that there are no duplicate transcripts.
-    assert_has_no_duplicates(object[["transcriptID"]])
 }
 
 
