@@ -177,7 +177,7 @@ NULL
     }
 
     message(paste(
-        "Defining broad class using:",
+        "Defining broadClass using:",
         toString(c("geneName", biotypeCol, seqnameCol))
     ))
 
@@ -447,25 +447,14 @@ makeGRangesFromEnsembl <- function(
             return.type = "GRanges"
         )
 
-        # Merge the data.
+        # Join the transcript- and gene-level annotations.
         txData <- mcols(tx)
         geneData <- mcols(gene)
-        # FIXME Update to use `left_join()` here instead.
-        mergeData <- merge(
-            x = txData,
-            y = geneData,
-            by = "gene_id",
-            all.x = TRUE,
-            sort = FALSE
-        )
-        assert_are_set_equal(txData[["tx_id"]], mergeData[["tx_id"]])
-        match <- match(x = txData[["tx_id"]], table = mergeData[["tx_id"]])
-        stopifnot(!any(is.na(match)))
-        mergeData <- mergeData[match, , drop = FALSE]
-        assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
+        data <- left_join(x = txData, y = geneData, by = "gene_id")
+        assert_are_identical(txData[["tx_id"]], data[["tx_id"]])
 
         # Now we can slot back into the transcript mcols.
-        mcols(tx) <- mergeData
+        mcols(tx) <- data
         gr <- tx
     }
 
@@ -562,7 +551,7 @@ makeGRangesFromGFF <- function(
         assert_is_subset("biotype", colnames(mcols(gn)))
         mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
-        # Remove extra columns
+        # Remove extra columns.
         mcols(gn)[["alias"]] <- NULL
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
@@ -615,7 +604,7 @@ makeGRangesFromGFF <- function(
                 replacement = "",
                 x = mcols(tx)[["geneID"]]
             )
-            # Remove extra columns
+            # Remove extra columns.
             mcols(tx)[["alias"]] <- NULL
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
@@ -669,9 +658,8 @@ makeGRangesFromGFF <- function(
     assert_has_names(object)
 
     # Standardize the metadata columns.
-    message("Standardizing the metadata columns...")
     mcols <- mcols(object)
-    # Sanitize to camel case
+    # Sanitize to camel case.
     mcols <- camel(mcols)
     # Ensure "ID" is always capitalized (e.g. "entrezid").
     colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
@@ -684,7 +672,7 @@ makeGRangesFromGFF <- function(
     # Remove columns that are all NA.
     mcols <- removeNA(mcols)
 
-    # Missing `geneName`
+    # Missing `geneName`.
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
@@ -746,11 +734,11 @@ makeGRangesFromGFF <- function(
     # Ensure broad class definitions are included.
     mcols(object)[["broadClass"]] <- .broadClass(object)
 
-    # Sort metadata columns alphabetically
+    # Sort metadata columns alphabetically.
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
 
-    # Ensure GRanges is sorted by names
-    message(paste0("Sorting ranges by ", idCol, "..."))
+    # Ensure GRanges is sorted by names.
+    message(paste0("Arranging by ", idCol, "..."))
     object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")
