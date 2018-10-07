@@ -320,6 +320,12 @@ flatFiles <- function(object) {
 
 #' @rdname deprecated
 #' @export
+grepString <- function(...) {
+    .Defunct("")
+}
+
+#' @rdname deprecated
+#' @export
 hgnc2gene <- function(...) {
     .Deprecated("hgnc2ensembl")
     hgnc2ensembl(...)
