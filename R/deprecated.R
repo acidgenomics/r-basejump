@@ -141,17 +141,11 @@ sanitizeAnnotable <- function(...) {
     sanitizeRowData(...)
 }
 
-# #' @rdname defunct
-# #' @export
-# tx2gene <- function(...) {
-#     .Defunct("makeTx2geneFromGFF or bcbioBase::readTx2gene")
-# }
-
 #' @rdname deprecated
 #' @export
 tx2geneFromGFF <- function(...) {
-    .Deprecated("makeTx2geneFromGFF")
-    makeTx2geneFromGFF(...)
+    .Deprecated("makeTx2GeneFromGFF")
+    makeTx2GeneFromGFF(...)
 }
 
 #' @rdname deprecated
@@ -278,6 +272,18 @@ assertIsCharacterOrNULL <- function(object, ...) {
         classes = c("character", "NULL"),
         ...
     )
+}
+
+#' @rdname defunct
+#' @export
+assertIsGene2symbol <- function(...) {
+    .Defunct(msg = "Create `Gene2Symbol` class object.")
+}
+
+#' @rdname defunct
+#' @export
+assertIsTx2gene <- function(...) {
+    .Defunct(msg = "Create `Tx2Gene` class object.")
 }
 
 #' @rdname deprecated
