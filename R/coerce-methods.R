@@ -26,7 +26,7 @@
 #' @section list:
 #'
 #' It is often useful to coerce an S4 object to a flat `list` for archival
-#' storage. Here we are providing the [coerceS4ToList()] generic, which
+#' storage. Here we are providing the [coerceS4ToList()] function, which
 #' consistently coerces the slots in any S4 to a standard `list`. Additionally,
 #' here we have improved support for `SummarizedExperiment` to `list` coercion,
 #' returning the slots as a `list`.
@@ -209,29 +209,20 @@ setAs(
 
 
 # Coerce to list ===============================================================
-.asList <-  # nolint
-    function(from) {
-        stopifnot(isS4(from))
-        to <- lapply(slotNames(from), function(slot) {
-            if (.hasSlot(from, slot)) {
-                slot(from, slot)
-            } else {
-                NULL  # nocov
-            }
-        })
-        names(to) <- slotNames(from)
-        to
-    }
-
-
-
 #' @rdname coerce
 #' @export
-setMethod(
-    f = "coerceS4ToList",
-    signature = signature("ANY"),
-    definition = .asList
-)
+coerceS4ToList <- function(from) {
+    stopifnot(isS4(from))
+    to <- lapply(slotNames(from), function(slot) {
+        if (.hasSlot(from, slot)) {
+            slot(from, slot)
+        } else {
+            NULL  # nocov
+        }
+    })
+    names(to) <- slotNames(from)
+    to
+}
 
 
 
@@ -240,10 +231,7 @@ setMethod(
 setAs(
     from = "SummarizedExperiment",
     to = "list",
-    def = getMethod(
-        f = "coerceS4ToList",
-        signature = signature(from = "ANY")
-    )
+    def = coerceS4ToList
 )
 
 
@@ -254,6 +242,6 @@ setMethod(
     f = "as.list",
     signature = signature("SummarizedExperiment"),
     definition = function(x) {
-        .asList(x)
+        coerceS4ToList(x)
     }
 )
