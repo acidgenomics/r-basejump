@@ -58,7 +58,7 @@ plotCountsPerBiotype(rse_small)
 plotCountsPerBroadClass(rse_small)
 }
 \seealso{
-\code{\link[=broadClass]{broadClass()}}.
+\link{makeGRanges}.
 
 Other Plot Functions: \code{\link{plotGene}},
   \code{\link{plotHeatmap}}, \code{\link{plotQC}},

@@ -27,8 +27,7 @@ x <- ensembl2entrez(rse_small)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{eggnog}}, \code{\link{emptyRanges}},

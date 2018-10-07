@@ -31,8 +31,7 @@ print(x)
 \seealso{
 \href{http://eggnogdb.embl.de/download/latest/README.txt}{EggNOG README}.
 
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
   \code{\link{emptyRanges}}, \code{\link{ensembl2entrez}},

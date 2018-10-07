@@ -22,8 +22,7 @@ to <- convertUCSCBuildToEnsembl(from)
 print(to)
 }
 \seealso{
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{eggnog}}, \code{\link{emptyRanges}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
