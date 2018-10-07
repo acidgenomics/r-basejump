@@ -10,7 +10,7 @@ mgi2ensembl(.test = FALSE)
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
-\code{mgi2ensembl}.
+\code{MGI2Ensembl}.
 }
 \description{
 MGI to Ensembl Gene ID Mappings
@@ -20,20 +20,11 @@ x <- mgi2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-\code{mgi2ensembl-class}.
-
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
+Other S4 Generators: \code{\link{eggnog}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{hgnc2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

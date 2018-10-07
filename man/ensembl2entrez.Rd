@@ -16,7 +16,7 @@ ensembl2entrez(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{ensembl2entrez}.
+\code{Ensembl2Entrez}.
 }
 \description{
 Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
@@ -27,18 +27,11 @@ x <- ensembl2entrez(rse_small)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
-  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+Other S4 Generators: \code{\link{eggnog}},
+  \code{\link{gene2symbol}}, \code{\link{hgnc2ensembl}},
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

@@ -33,7 +33,7 @@ object <- DataFrame(
 print(object)
 
 gene2symbol <- new(
-    Class = "gene2symbol",
+    Class = "Gene2Symbol",
     DataFrame(
         geneID = c("ENSG00000000003", "ENSG00000000005"),
         geneName = c("TSPAN6", "TNMD"),
@@ -78,11 +78,9 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDir}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHeaderLevel}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

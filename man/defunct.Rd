@@ -11,6 +11,8 @@
 \alias{parseGFFAttributes}
 \alias{dynamicPlotlist}
 \alias{synonyms}
+\alias{assertIsGene2symbol}
+\alias{assertIsTx2gene}
 \alias{broadClass}
 \alias{separatorBar}
 \alias{setArgsToDoCall}
@@ -33,6 +35,10 @@ parseGFFAttributes(...)
 dynamicPlotlist(...)
 
 synonyms(...)
+
+assertIsGene2symbol(...)
+
+assertIsTx2gene(...)
 
 broadClass(object, ...)
 

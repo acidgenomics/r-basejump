@@ -6,11 +6,11 @@
 \alias{mapGenesToRownames}
 \alias{mapGenesToIDs}
 \alias{mapGenesToSymbols}
-\alias{mapGenesToRownames,gene2symbol-method}
+\alias{mapGenesToRownames,Gene2Symbol-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
-\alias{mapGenesToIDs,gene2symbol-method}
+\alias{mapGenesToIDs,Gene2Symbol-method}
 \alias{mapGenesToIDs,SummarizedExperiment-method}
-\alias{mapGenesToSymbols,gene2symbol-method}
+\alias{mapGenesToSymbols,Gene2Symbol-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map Genes}
 \usage{
@@ -20,17 +20,17 @@ mapGenesToIDs(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{gene2symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes,
   strict = TRUE)
 
-\S4method{mapGenesToIDs}{gene2symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes,
   strict = TRUE)
 
-\S4method{mapGenesToSymbols}{gene2symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes,
   strict = TRUE)
@@ -94,17 +94,13 @@ mapGenesToSymbols(object, genes = geneNames)
 }
 \seealso{
 Other Data Functions: \code{\link{aggregate}},
-  \code{\link{cell2sample}}, \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
+  \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
   \code{\link{meltCounts}}, \code{\link{metrics}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
