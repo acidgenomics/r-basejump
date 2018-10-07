@@ -8,6 +8,7 @@
 #' - Specific metadata must be identical (see `metadata` parameter).
 #'
 #' @name combine
+#' @family Data Functions
 #' @author Michael Steinbaugh
 #' @importFrom BiocGenerics combine
 #' @export
