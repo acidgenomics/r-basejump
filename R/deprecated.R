@@ -266,6 +266,27 @@ assertIsURL <- function(...) {
 # v0.99.0 ======================================================================
 #' @rdname deprecated
 #' @export
+aggregateFeatures <- function(...) {
+    .Deprecated("aggregateRows")
+    aggregateRows(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateReplicates <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+#' @rdname deprecated
+#' @export
+aggregateSamples <- function(...) {
+    .Deprecated("aggregateCols")
+    aggregateCols(...)
+}
+
+#' @rdname deprecated
+#' @export
 assertIsAHeaderLevel <- function(...) {
     .Deprecated("assertIsHeaderLevel")
     assertIsHeaderLevel(...)
