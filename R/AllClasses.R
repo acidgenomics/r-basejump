@@ -86,11 +86,27 @@ setValidity(
 #' @seealso [gene2symbol()].
 setClass(Class = "Gene2Symbol", contains = "DataFrame")
 
+# FIXME Improve this. Don't require rownames.
 setValidity(
     Class = "Gene2Symbol",
     method = function(object) {
-        # FIXME Deprecate and move this assert check code in a future release.
-        assertIsGene2symbol(object)
+        # Requiring standard data frame class.
+        assert_is_any_of(
+            x = object,
+            # Remove data.frame in a future update.
+            # This can cause validity checks on old bcbio objects to fail otherwise.
+            classes = c("DataFrame", "tbl_df", "data.frame")
+        )
+        assert_is_non_empty(object)
+        assert_are_identical(colnames(object), c("geneID", "geneName"))
+        # Require rownames for standard data frame.
+        if (!is(object, "tbl_df")) {
+            assertHasRownames(object)
+        }
+        # Assert that all columns are character.
+        invisible(lapply(object, assert_is_character))
+        # Assert that neither column has duplicates.
+        invisible(lapply(object, assert_has_no_duplicates))
         TRUE
     }
 )
@@ -115,12 +131,15 @@ setValidity(
     Class = "HGNC2Ensembl",
     method = function(object) {
         assert_are_identical(
-            x = colnames(object),
-            y = c("hgncID", "geneID")
+            x = lapply(object, class),
+            y = list(
+                hgncID = "integer",
+                geneID = "character"
+            )
         )
         assert_are_identical(
             x = rownames(object),
-            y = as.character(object[["hgncID"]])
+            y = NULL
         )
         TRUE
     }
@@ -211,11 +230,33 @@ setValidity(
 #' - [tx2gene()].
 setClass(Class = "Tx2Gene", contains = "DataFrame")
 
+# FIXME Improve this. Don't require rownames.
 setValidity(
     Class = "Tx2Gene",
     method = function(object) {
-        # FIXME Deprecate and move this assert check code in a future release.
-        assertIsTx2gene(object)
+        assert_is_any_of(
+            x = object,
+            # Remove data.frame in a future update.
+            # This can cause validity checks on old bcbio objects to fail otherwise.
+            classes = c("DataFrame", "tbl_df", "data.frame")
+        )
+        assert_is_non_empty(object)
+        # nocov start
+        if ("txID" %in% colnames(object)) {
+            # Consider warning here in a future update.
+            # "Use `transcript` instead of `tx`"
+            colnames(object) <- gsub("^txID$", "transcriptID", colnames(object))
+        }
+        # nocov end
+        assert_are_identical(colnames(object), c("transcriptID", "geneID"))
+        # Require rownames for DataFrame.
+        if (!is(object, "tbl_df")) {
+            assertHasRownames(object)
+        }
+        # Assert that all columns are character.
+        invisible(lapply(object, assert_is_character))
+        # Assert that there are no duplicate transcripts.
+        assert_has_no_duplicates(object[["transcriptID"]])
         TRUE
     }
 )
