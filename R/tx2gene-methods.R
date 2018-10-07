@@ -7,7 +7,7 @@
 #'
 #' @inheritParams general
 #'
-#' @return `tx2gene`.
+#' @return `Tx2Gene`.
 #'
 #' @examples
 #' # SummarizedExperiment ====
