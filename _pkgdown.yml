@@ -39,16 +39,22 @@ reference:
   - title: Data Functions
     contents:
     - starts_with("aggregate")
+    - cell2sample
     - combine
     - counts
     - interestingGroups
+    - makeSingleCellExperiment
     - makeSummarizedExperiment
-    - mapGenesToIDs
+    - starts_with("map")
     - meltCounts
     - metrics
+    - minimalSampleData
     - sampleData
     - sampleNames
     - selectSamples
+    - subsetPerSample
+    - topCellsPerSample
+    - tpm
   - title: Sanitization Functions
     contents:
     - makeNames
@@ -72,7 +78,6 @@ reference:
   - title: Atomic Vector Functions
     contents:
     - collapseToString
-    - grepString
     - sortUnique
     - toStringUnique
   - title: Coercion Methods
@@ -80,6 +85,7 @@ reference:
     - starts_with("coerce")
   - title: Developer Functions
     contents:
+    - starts_with("detect")
     - dots
     - starts_with("initialize")
     - localOrRemoteFile
@@ -100,6 +106,8 @@ reference:
     - starts_with("assert")
   - title: Example Datasets
     contents:
-    - ends_with("_counts")
-    - ends_with("_markers")
     - ends_with("_small")
+  - title: Internal Data
+    contents:
+    - gender_markers
+    - organism_mappings
