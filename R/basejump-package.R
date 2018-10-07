@@ -83,8 +83,9 @@
 #' @importFrom tidyr gather separate unite
 #' @importFrom tidyselect everything matches starts_with
 #' @importFrom tools Rd_db
-#' @importFrom utils capture.output download.file globalVariables
-#'   installed.packages packageVersion read.delim read.table sessionInfo
+#' @importFrom utils capture.output download.file getFromNamespace
+#'   globalVariables installed.packages packageVersion read.delim read.table
+#'   sessionInfo
 #' @importFrom yaml yaml.load_file
 "_PACKAGE"
 
