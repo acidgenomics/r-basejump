@@ -3,8 +3,8 @@
 \docType{methods}
 \name{mapGenes}
 \alias{mapGenes}
-\alias{mapGenesToIDs}
 \alias{mapGenesToRownames}
+\alias{mapGenesToIDs}
 \alias{mapGenesToSymbols}
 \alias{mapGenesToRownames,gene2symbol-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
@@ -14,9 +14,9 @@
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map Genes}
 \usage{
-mapGenesToIDs(object, ...)
-
 mapGenesToRownames(object, ...)
+
+mapGenesToIDs(object, ...)
 
 mapGenesToSymbols(object, ...)
 
@@ -98,8 +98,8 @@ Other Data Functions: \code{\link{aggregate}},
   \code{\link{makeSingleCellExperiment}},
   \code{\link{makeSummarizedExperiment}},
   \code{\link{mapCellsToSamples}},
-  \code{\link{meltCounts}}, \code{\link{metricsPerSample}},
-  \code{\link{metrics}}, \code{\link{minimalSampleData}},
+  \code{\link{meltCounts}}, \code{\link{metrics}},
+  \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
   \code{\link{subsetPerSample}},
