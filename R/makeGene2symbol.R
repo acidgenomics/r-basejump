@@ -35,49 +35,6 @@ NULL
 
 
 
-.makeGeneNamesUnique <- function(object) {
-    assert_is_subset(
-        x = c("geneID", "geneName"),
-        y = colnames(object)
-    )
-    if (any(duplicated(object[["geneName"]]))) {
-        object[["geneName"]] <- make.unique(object[["geneName"]])
-    }
-    object
-}
-
-
-
-.makeGene2Symbol <- function(object) {
-    assert_is_any_of(
-        x = object,
-        classes = c("DataFrame", "GRanges", "tbl_df")
-    )
-
-    # Coerce to tibble.
-    data <- as(object, "tbl_df")
-    if (!all(c("geneID", "geneName") %in% colnames(data))) {
-        stop("Object does not contain gene-to-symbol mappings.", call. = FALSE)
-    }
-    assert_has_rows(data)
-    assertHasRownames(data)
-    cols <- c("rowname", "geneID", "geneName")
-    assert_is_subset(cols, colnames(data))
-
-    # Sanitize using tidyverse chain.
-    data <- data %>%
-        select(!!!syms(cols)) %>%
-        .[complete.cases(.), , drop = FALSE] %>%
-        mutate_all(as.character) %>%
-        unique() %>%
-        .makeGeneNamesUnique() %>%
-        as("DataFrame")
-
-    new(Class = "Gene2Symbol", data)
-}
-
-
-
 #' @rdname makeGene2Symbol
 #' @export
 makeGene2SymbolFromEnsembl <-
@@ -86,7 +43,7 @@ makeGene2SymbolFromEnsembl <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall(args = list(level = "genes"))
         )
-        .makeGene2Symbol(gr)
+        gene2symbol(gr)
     }
 f <- formals(makeGRangesFromEnsembl)
 f <- f[setdiff(names(f), c("level"))]
@@ -130,8 +87,7 @@ makeGene2SymbolFromGFF <- function(file) {
         }
     }
 
-    data[["rowname"]] <- data[["geneID"]]
-    .makeGene2Symbol(data)
+    gene2symbol(data)
 }
 
 
