@@ -55,7 +55,7 @@ NULL
 
 
 .mapGenes <- function(object, genes, strict = TRUE) {
-    assert_is_all_of(object, "gene2symbol")
+    assert_is_all_of(object, "Gene2Symbol")
     validObject(object)
     assert_is_character(genes)
     assert_is_non_empty(genes)
@@ -101,7 +101,7 @@ NULL
 
 
 # mapGenesToRownames ===========================================================
-.mapGenesToRownames.gene2symbol <-  # nolint
+.mapGenesToRownames.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -140,8 +140,8 @@ NULL
 #' @export
 setMethod(
     f = "mapGenesToRownames",
-    signature = signature("gene2symbol"),
-    definition = .mapGenesToRownames.gene2symbol
+    signature = signature("Gene2Symbol"),
+    definition = .mapGenesToRownames.Gene2Symbol
 )
 
 
@@ -157,7 +157,7 @@ setMethod(
 
 
 # mapGenesToIDs ================================================================
-.mapGenesToIDs.gene2symbol <-  # nolint
+.mapGenesToIDs.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -197,8 +197,8 @@ setMethod(
 #' @export
 setMethod(
     f = "mapGenesToIDs",
-    signature = signature("gene2symbol"),
-    definition = .mapGenesToIDs.gene2symbol
+    signature = signature("Gene2Symbol"),
+    definition = .mapGenesToIDs.Gene2Symbol
 )
 
 
@@ -214,7 +214,7 @@ setMethod(
 
 
 # mapGenesToSymbols ============================================================
-.mapGenesToSymbols.gene2symbol <-  # nolint
+.mapGenesToSymbols.Gene2Symbol <-  # nolint
     function(object, genes, strict = TRUE) {
         mapped <- do.call(
             what = .mapGenes,
@@ -254,8 +254,8 @@ setMethod(
 #' @export
 setMethod(
     f = "mapGenesToSymbols",
-    signature = signature("gene2symbol"),
-    definition = .mapGenesToSymbols.gene2symbol
+    signature = signature("Gene2Symbol"),
+    definition = .mapGenesToSymbols.Gene2Symbol
 )
 
 
