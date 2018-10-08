@@ -41,6 +41,8 @@ Gene2Symbol <- function(object, ...) {
         }
         object %>%
             select(!!!syms(cols)) %>%
+            # This is needed for processing GFF files.
+            unique() %>%
             mutate_all(as.character) %>%
             mutate(!!sym("geneName") := make.unique(!!sym("geneName"))) %>%
             as("DataFrame") %>%
