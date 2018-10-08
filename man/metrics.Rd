@@ -41,6 +41,8 @@ Note that metrics are cell level but grouped by sample.
 }
 
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 x <- metrics(rse_small)
 print(x)

@@ -33,6 +33,7 @@ unmodified (default).}
 Melt Count Matrix to Long Format
 }
 \examples{
+data(rse_small)
 x <- meltCounts(rse_small)
 print(x)
 }

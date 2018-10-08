@@ -72,6 +72,7 @@ organism(c("EGFP", "TDTOMATO", "ENSG00000000003"))
 organism(c("ENSG00000000003", "ENSMUSG00000000001"))
 
 # SummarizedExperiment support.
+data(rse_small)
 organism(rse_small)
 }
 \seealso{
