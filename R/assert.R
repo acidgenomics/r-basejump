@@ -276,8 +276,8 @@ assertFormalCompress <- function(object) {
 
 
 
-# assertFormalGene2symbol ======================================================
-#' Assert Formal Gene to Symbol Mappings
+# assertFormalGene2Symbol ======================================================
+#' Assert Formal Gene-to-Symbol Mappings
 #'
 #' @family Assert Check Functions
 #' @author Michael Steinbaugh
@@ -289,7 +289,7 @@ assertFormalCompress <- function(object) {
 #' @param genes `character`. Gene identifiers. Note that gene names (symbols)
 #'   are also supported, but not recommended if the stable IDs can be easily
 #'   provided instead.
-#' @param gene2symbol `gene2symbol`. Gene-to-symbol mappings. Must contain
+#' @param gene2symbol `Gene2Symbol`. Gene-to-symbol mappings. Must contain
 #'   `geneID` and `geneName` columns, with rownames defined. All of the `object`
 #'   rownames must be defined here, otherwise the function will error.
 #'
@@ -317,17 +317,17 @@ assertFormalCompress <- function(object) {
 #' geneNames <- gene2symbol[["geneName"]]
 #' print(geneNames)
 #'
-#' assertFormalGene2symbol(
+#' assertFormalGene2Symbol(
 #'     object = object,
 #'     genes = geneIDs,
 #'     gene2symbol = gene2symbol
 #' )
-#' assertFormalGene2symbol(
+#' assertFormalGene2Symbol(
 #'     object = object,
 #'     genes = geneNames,
 #'     gene2symbol = gene2symbol
 #' )
-assertFormalGene2symbol <- function(
+assertFormalGene2Symbol <- function(
     object,
     genes,
     gene2symbol

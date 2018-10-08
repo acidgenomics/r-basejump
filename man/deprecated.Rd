@@ -22,6 +22,7 @@
 \alias{aggregateFeatures}
 \alias{aggregateReplicates}
 \alias{aggregateSamples}
+\alias{assertFormalGene2symbol}
 \alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
@@ -84,6 +85,8 @@ aggregateFeatures(...)
 aggregateReplicates(...)
 
 aggregateSamples(...)
+
+assertFormalGene2symbol(...)
 
 assertIsAHeaderLevel(...)
 

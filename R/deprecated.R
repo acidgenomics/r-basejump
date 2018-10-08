@@ -258,6 +258,13 @@ aggregateSamples <- function(...) {
 
 #' @rdname deprecated
 #' @export
+assertFormalGene2symbol <- function(...) {
+    .Deprecated("assertFormalGene2Symbol")
+    assertFormalGene2Symbol(...)
+}
+
+#' @rdname deprecated
+#' @export
 assertIsAHeaderLevel <- function(...) {
     .Deprecated("assertIsHeaderLevel")
     assertIsHeaderLevel(...)
