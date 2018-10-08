@@ -2,10 +2,10 @@ context("dplyr method support for DataFrame")
 
 test_that("arrange", {
     expect_identical(
-        df %>%
+        object = df %>%
             arrange(desc(sample1)) %>%
             rownames(),
-        c(
+        expected = c(
             "ENSG00000000004",
             "ENSG00000000003",
             "ENSG00000000002",
@@ -15,8 +15,18 @@ test_that("arrange", {
 })
 
 test_that("filter", {
-    # filter
-    # filter_all
+    expect_identical(
+        object = df %>%
+            filter(sample1 > 2L) %>%
+            rownames(),
+        expected = c("ENSG00000000003", "ENSG00000000004")
+    )
+    expect_identical(
+        object = df %>%
+            filter_all(all_vars(. < 15)) %>%
+            rownames(),
+        expected = c("ENSG00000000001", "ENSG00000000002")
+    )
     # filter_at
     # filter_if
 })
