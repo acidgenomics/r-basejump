@@ -1,5 +1,5 @@
-# SummarizedExperiment Example
-# Last updated 2018-10-02
+# Gene-level RangedSummarizedExperiment example
+# Last updated 2018-10-08
 
 library(DESeq2)
 library(tidyverse)
@@ -10,18 +10,17 @@ release <- 92L
 # Restrict to 1 MB per file.
 limit <- structure(1e6, class = "object_size")
 
-# DESeqDataSet =================================================================
 # Generate example DESeqDataSet using DESeq2.
 # Note that we're using simulated counts here.
 dds <- makeExampleDESeqDataSet(n = 50L, m = 4L)
 stopifnot(object.size(dds) < limit)
 stopifnot(validObject(dds))
 
-# rse_small ====================================================================
 # Coerce to RangedSummarizedExperiment.
 # Need to change rows to actual gene identifiers here, and slot colData.
 rse <- as(dds, "RangedSummarizedExperiment")
 stopifnot(object.size(rse) < limit)
+
 # Column data.
 # Note that `sampleName` column is generated for `sampleData()` return.
 colData(rse) <- DataFrame(
@@ -35,7 +34,9 @@ colData(rse) <- DataFrame(
     ),
     row.names = colnames(rse)
 )
-# Row data. Include real `geneID`, `geneName` columns to test mapping functions.
+
+# Row data.
+# Include real `geneID`, `geneName` columns to test mapping functions.
 rowRanges <- makeGRangesFromEnsembl(organism, release = release)
 # Subset to match the number of rows in the example.
 rowRanges <- rowRanges[seq_len(nrow(rse))]
@@ -57,11 +58,14 @@ mcols(rowRanges) <- mcols(rowRanges) %>%
     mutate_if(is.factor, as.character) %>%
     as("DataFrame")
 rowRanges(rse) <- rowRanges
+
+# Metadata.
 # Stash the date.
 metadata(rse)[["date"]] <- Sys.Date()
 # Define the interesting groups.
 interestingGroups(rse) <- c("genotype", "treatment")
-# Report the size of each slot in bytes.
+
+# Size check.
 vapply(
     X = coerceS4ToList(rse),
     FUN = object.size,
@@ -69,51 +73,6 @@ vapply(
 )
 stopifnot(object.size(rse) < limit)
 stopifnot(validObject(rse))
+
 rse_small <- rse
 devtools::use_data(rse_small, compress = "xz", overwrite = TRUE)
-
-# tx_se_small ==================================================================
-tx2gene <- makeTx2GeneFromEnsembl(organism, release = release)
-print(tx2gene)
-# Pick transcripts that have gene overlaps, to test our aggregate code.
-transcripts <- c(
-    "ENST00000494424",
-    "ENST00000496771",
-    "ENST00000612152",
-    "ENST00000371584",
-    "ENST00000371588",
-    "ENST00000413082"
-)
-samples <- paste0("sample", seq_len(4L))
-counts <- matrix(
-    data = seq_len(length(transcripts) * length(samples)),
-    byrow = TRUE,
-    nrow = length(transcripts),
-    ncol = length(samples),
-    dimnames = list(transcripts, samples)
-)
-rowData <- tx2gene %>%
-    as("DataFrame") %>%
-    .[
-        match(
-            x = rownames(counts),
-            table = .[["transcriptID"]]
-        ),
-        ,
-        drop = FALSE
-    ]
-se <- SummarizedExperiment(
-    assays = list(counts = counts),
-    rowData = rowData,
-    metadata = list(date = Sys.Date())
-)
-# Report the size of each slot in bytes.
-vapply(
-    X = coerceS4ToList(se),
-    FUN = object.size,
-    FUN.VALUE = numeric(1L)
-)
-stopifnot(object.size(se) < limit)
-stopifnot(validObject(se))
-tx_se_small <- se
-devtools::use_data(tx_se_small, compress = "xz", overwrite = TRUE)

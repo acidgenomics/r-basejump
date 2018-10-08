@@ -1,5 +1,5 @@
-# SingleCellExperiment Example
-# 2018-10-01
+# Gene-level SingleCellExperiment example
+# 2018-10-09
 
 library(splatter)
 library(tidyverse)
