@@ -357,22 +357,22 @@ test_that("annotable", {
     expect_identical(object[["geneID"]][[1L]], "ENSG00000000003")
 })
 
-gene2symbol <- makeGene2symbolFromEnsembl(
+gene2symbol <- makeGene2SymbolFromEnsembl(
     organism = organism,
     release = release
 )
 
-test_that("makeGene2symbolFromEnsembl", {
+test_that("makeGene2SymbolFromEnsembl", {
     expect_is(gene2symbol, "Gene2Symbol")
     expect_identical(nrow(gene2symbol), 63970L)
 })
 
-tx2gene <- makeTx2geneFromEnsembl(
+tx2gene <- makeTx2GeneFromEnsembl(
     organism = organism,
     release = release
 )
 
-test_that("makeTx2geneFromEnsembl", {
+test_that("makeTx2GeneFromEnsembl", {
     expect_is(tx2gene, "Tx2Gene")
     expect_identical(nrow(tx2gene), 216741L)
 })
