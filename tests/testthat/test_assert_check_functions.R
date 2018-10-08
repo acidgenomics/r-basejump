@@ -262,15 +262,6 @@ test_that("assertIsFillScaleDiscreteOrNULL", {
 
 
 
-# assertIsGene2symbol ==========================================================
-test_that("assertIsGene2symbol", {
-    expect_silent(assertIsGene2symbol(g2s))
-    expect_error(assertIsGene2symbol(mtcars))
-    expect_error(assertIsGene2symbol(NULL))
-})
-
-
-
 # assertIsHexColorFunctionOrNULL ===============================================
 test_that("assertIsHexColorFunctionOrNULL", {
     object <- function(n) {
@@ -318,19 +309,6 @@ test_that("isImplicitInteger", {
     expect_true(isImplicitInteger(1L))
     expect_true(isImplicitInteger(1.0))
     expect_false(isImplicitInteger(1.1))
-})
-
-
-
-# assertIsTx2gene ==============================================================
-test_that("assertIsTx2gene", {
-    t2g <- tibble(
-        transcriptID = paste0("transcript", seq_len(2L)),
-        geneID = paste0("gene", seq_len(2L))
-    )
-    expect_silent(assertIsTx2gene(t2g))
-    expect_error(assertIsTx2gene(mtcars))
-    expect_error(assertIsTx2gene(NULL))
 })
 
 
