@@ -1,3 +1,7 @@
+# FIXME Don't expose gender_markers, organism_mappings to the user
+
+
+
 #' Sexually Dimorphic Gender Marker Genes
 #'
 #' *Homo sapiens* and *Mus musculus* are currently defined.
