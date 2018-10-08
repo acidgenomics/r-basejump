@@ -363,7 +363,7 @@ gene2symbol <- makeGene2symbolFromEnsembl(
 )
 
 test_that("makeGene2symbolFromEnsembl", {
-    expect_is(gene2symbol, "gene2symbol")
+    expect_is(gene2symbol, "Gene2Symbol")
     expect_identical(nrow(gene2symbol), 63970L)
 })
 
@@ -373,7 +373,7 @@ tx2gene <- makeTx2geneFromEnsembl(
 )
 
 test_that("makeTx2geneFromEnsembl", {
-    expect_is(tx2gene, "tx2gene")
+    expect_is(tx2gene, "Tx2Gene")
     expect_identical(nrow(tx2gene), 216741L)
 })
 
@@ -385,11 +385,11 @@ context("Annotation Functions : GTF/GFF")
 with_parameters_test_that(
     "makeGene2symbolFromGFF", {
         object <- makeGene2symbolFromGFF(file)
-        expect_is(object, "gene2symbol")
+        expect_is(object, "Gene2Symbol")
         expect_identical(
             object = head(object, n = 2L),
             expected = new(
-                "gene2symbol",
+                "Gene2Symbol",
                 DataFrame(
                     geneID = c(
                         "ENSMUSG00000102693",
@@ -511,11 +511,11 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 with_parameters_test_that(
     "makeTx2geneFromGFF", {
         object <- makeTx2geneFromGFF(file)
-        expect_is(object, "tx2gene")
+        expect_is(object, "Tx2Gene")
         expect_identical(
             object = head(object, n = 2L),
             expected = new(
-                Class = "tx2gene",
+                Class = "Tx2Gene",
                 DataFrame(
                     transcriptID = c(
                         "ENSMUST00000193812",

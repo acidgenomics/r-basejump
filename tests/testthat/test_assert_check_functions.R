@@ -1,7 +1,7 @@
 context("Assert Check Functions")
 
 g2s <- new(
-    "gene2symbol",
+    "Gene2Symbol",
     DataFrame(
         geneID = paste0("gene", seq_len(2L)),
         geneName = paste0("symbol", seq_len(2L)),
