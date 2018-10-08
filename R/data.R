@@ -1,34 +1,3 @@
-# FIXME Don't expose gender_markers, organism_mappings to the user
-
-
-
-#' Sexually Dimorphic Gender Marker Genes
-#'
-#' *Homo sapiens* and *Mus musculus* are currently defined.
-#'
-#' @author Michael Steinbaugh
-#' @keywords internal
-#'
-#' @examples
-#' names(basejump::gender_markers)
-"gender_markers"
-
-
-
-#' Organism Mappings
-#'
-#' Strings to match gene/transcript identifiers, Ensembl genome build,
-#' and UCSC genome build.
-#'
-#' @author Michael Steinbaugh
-#' @keywords internal
-#'
-#' @examples
-#' print(basejump::organism_mappings)
-"organism_mappings"
-
-
-
 #' Example RNA-Seq Data Set
 #'
 #' Generated with `DESeq2::makeExampleDESeqDataSet()`. Contains actual gene
