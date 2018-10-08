@@ -23,6 +23,7 @@
 #'
 #' @examples
 #' # SummarizedExperiment ====
+#' data(rse_small)
 #' x <- rse_small
 #' colnames(x)
 #' colData(x)
@@ -40,6 +41,7 @@
 #' colData(c)
 #'
 #' # SingleCellExperiment ====
+#' data(sce_small)
 #' x <- sce_small
 #' head(colnames(x))
 #' sampleData(x)
