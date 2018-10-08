@@ -31,6 +31,10 @@
 \alias{grepString}
 \alias{hgnc2gene}
 \alias{kables}
+\alias{makeGene2symbolFromGFF}
+\alias{makeGene2symbolFromGTF}
+\alias{makeTx2geneFromGFF}
+\alias{makeTx2geneFromGTF}
 \alias{mgi2gene}
 \alias{readFileByExtension}
 \alias{readGFF}
@@ -96,6 +100,14 @@ grepString(...)
 hgnc2gene(...)
 
 kables(...)
+
+makeGene2symbolFromGFF(...)
+
+makeGene2symbolFromGTF(...)
+
+makeTx2geneFromGFF(...)
+
+makeTx2geneFromGTF(...)
 
 mgi2gene(...)
 

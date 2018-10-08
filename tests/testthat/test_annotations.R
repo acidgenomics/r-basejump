@@ -689,15 +689,13 @@ test_that("eggnog", {
     )
 })
 
-with_parameters_test_that(
-    "geneSynonyms", {
-        expect_is(
-            object = geneSynonyms(organism = organism, .test = TRUE),
-            class = "grouped_df"
-        )
-    },
-    organism = .geneSynonymsOrganisms
-)
+# TODO Add coverage for all supported organisms.
+test_that("geneSynonyms", {
+    expect_is(
+        object = geneSynonyms(organism = "Homo sapiens", .test = TRUE),
+        class = "grouped_df"
+    )
+})
 
 with_parameters_test_that(
     "panther", {
