@@ -53,6 +53,7 @@ setValidity(
                 "cogFunctionalCategory"
             )
         )
+        TRUE
     }
 )
 
