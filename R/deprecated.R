@@ -362,14 +362,14 @@ makeGene2symbolFromGTF <- function(...) {
 #' @export
 makeTx2geneFromGFF <- function(...) {
     .Deprecated("makeTx2GeneFromGFF")
-    makeTx2geneFromGFF(...)
+    makeTx2GeneFromGFF(...)
 }
 
 #' @rdname deprecated
 #' @export
 makeTx2geneFromGTF <- function(...) {
     .Deprecated("makeTx2GeneFromGTF")
-    makeTx2geneFromGTF(...)
+    makeTx2GeneFromGTF(...)
 }
 
 #' @rdname deprecated
