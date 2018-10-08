@@ -69,9 +69,6 @@ makeTx2GeneFromGFF <- function(file) {
     # Remove rows that don't contain transcript annotations.
     data <- filter(data, !is.na(!!sym("transcriptID")))
 
-    # Get a vector of unique transcript IDs.
-    transcriptIDs <- unique(data[["transcriptID"]])
-
     if (type == "GFF") {
         assert_is_subset("parent", colnames(data))
         stopifnot(all(grepl("^gene:", data[["parent"]])))

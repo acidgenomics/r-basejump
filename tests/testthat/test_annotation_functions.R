@@ -7,16 +7,6 @@ release <- 87L
 context("Annotation Functions : General")
 
 with_parameters_test_that(
-    "broadClass", {
-        expect_is(broadClass(object), "factor")
-    },
-    object = list(
-        SummarizedExperiment = rse_small,
-        SingleCellExperiment = sce_small
-    )
-)
-
-with_parameters_test_that(
     "convertUCSCBuildToEnsembl", {
         expect_identical(
             object = convertUCSCBuildToEnsembl(object) %>%
