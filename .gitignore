@@ -9,3 +9,4 @@ docs/reference/*.R
 docs/reference/*.Rmd
 docs/reference/*.yaml
 inst/doc/
+.httr-oauth
