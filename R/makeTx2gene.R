@@ -83,9 +83,7 @@ makeTx2GeneFromGFF <- function(file) {
         )
     }
 
-    data <- tx2gene(data)
-    assert_are_identical(transcriptIDs, rownames(data))
-    data
+    tx2gene(data)
 }
 
 
