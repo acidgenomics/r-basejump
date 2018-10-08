@@ -49,7 +49,7 @@ print(x)
 
 # GFF3
 file <- file.path(basejumpCacheURL, "example.gff3")
-x <- makeGene2symbolFromGFF(file)
+x <- makeGene2SymbolFromGFF(file)
 print(x)
 }
 \seealso{
