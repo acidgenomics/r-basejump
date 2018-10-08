@@ -103,7 +103,7 @@ NULL
             match(x = object, table = tx2gene[["transcriptID"]]),
             ,
             drop = FALSE
-            ]
+        ]
 
         return <- as.factor(tx2gene[["geneID"]])
         names(return) <- tx2gene[["transcriptID"]]

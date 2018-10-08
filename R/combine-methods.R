@@ -22,8 +22,9 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' # SummarizedExperiment ====
-#' data(rse_small)
 #' x <- rse_small
 #' colnames(x)
 #' colData(x)
@@ -41,7 +42,6 @@
 #' colData(c)
 #'
 #' # SingleCellExperiment ====
-#' data(sce_small)
 #' x <- sce_small
 #' head(colnames(x))
 #' sampleData(x)
@@ -157,8 +157,6 @@ NULL
 
 
 
-# FIXME Improve `spikeNames` handling.
-# Need to add support for RSE.
 .combine.SCE <-  # nolint
     function(x, y) {
         validObject(x)
@@ -171,12 +169,13 @@ NULL
         )
         validObject(rse)
         # Make SCE from RSE.
-        # Note that standard SCE `as()` coercion method isn't returning valid.
+        # Note that standard SCE `as()` coercion method doesn't return valid.
         sce <- makeSingleCellExperiment(
             assays = assays(rse),
             rowRanges = rowRanges(rse),
             colData = colData(rse),
-            metadata = metadata(rse)
+            metadata = metadata(rse),
+            spikeNames = spikeNames(x)
         )
         validObject(sce)
         sce
