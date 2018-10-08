@@ -9,24 +9,25 @@ reference:
   - title: S4 Classes
     contents:
     - ends_with("-class")
-  - title: Annotation Functions
+  - title: S4 Generators
     contents:
-    - broadClass
-    - starts_with("convert")
     - eggnog
-    - emptyRanges
     - ensembl2entrez
     - gene2symbol
-    - geneSynonyms
     - hgnc2ensembl
+    - mgi2ensembl
+    - panther
+    - tx2gene
+  - title: Annotation Functions
+    contents:
+    - starts_with("convert")
+    - emptyRanges
+    - geneSynonyms
     - makeGene2symbol
     - makeGRanges
     - makeTx2gene
-    - mgi2ensembl
     - organism
     - starts_with("strip")
-    - panther
-    - tx2gene
   - title: Read/Write Functions
     contents:
     - starts_with("assign")
@@ -39,13 +40,11 @@ reference:
   - title: Data Functions
     contents:
     - starts_with("aggregate")
-    - cell2sample
     - combine
     - counts
     - interestingGroups
-    - makeSingleCellExperiment
     - makeSummarizedExperiment
-    - starts_with("map")
+    - starts_with("mapGenes")
     - meltCounts
     - metrics
     - minimalSampleData
@@ -53,8 +52,13 @@ reference:
     - sampleNames
     - selectSamples
     - subsetPerSample
-    - topCellsPerSample
     - tpm
+  - title: Single-Cell Functions
+    contents:
+    - cell2sample
+    - makeSingleCellExperiment
+    - mapCellsToSamples
+    - topCellsPerSample
   - title: Sanitization Functions
     contents:
     - makeNames
@@ -68,8 +72,8 @@ reference:
     - starts_with("ggplot2-")
   - title: Math and Science Functions
     contents:
-    - matches("Change")
-    - matches("Mean")
+    - geometricMean
+    - logRatio
     - microplate
   - title: R Markdown Functions
     contents:
