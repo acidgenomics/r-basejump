@@ -346,6 +346,13 @@ kables <- function(...) {
 
 #' @rdname deprecated
 #' @export
+makeGene2symbolFromEnsembl <- function(...) {
+    .Deprecated("makeGene2SymbolFromEnsembl")
+    makeGene2SymbolFromEnsembl(...)
+}
+
+#' @rdname deprecated
+#' @export
 makeGene2symbolFromGFF <- function(...) {
     .Deprecated("makeGene2SymbolFromGFF")
     makeGene2SymbolFromGFF(...)
@@ -356,6 +363,13 @@ makeGene2symbolFromGFF <- function(...) {
 makeGene2symbolFromGTF <- function(...) {
     .Deprecated("makeGene2SymbolFromGTF")
     makeGene2SymbolFromGTF(...)
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromEnsembl <- function(...) {
+    .Deprecated("makeTx2GeneFromEnsembl")
+    makeTx2GeneFromEnsembl(...)
 }
 
 #' @rdname deprecated

@@ -31,8 +31,10 @@
 \alias{grepString}
 \alias{hgnc2gene}
 \alias{kables}
+\alias{makeGene2symbolFromEnsembl}
 \alias{makeGene2symbolFromGFF}
 \alias{makeGene2symbolFromGTF}
+\alias{makeTx2geneFromEnsembl}
 \alias{makeTx2geneFromGFF}
 \alias{makeTx2geneFromGTF}
 \alias{mgi2gene}
@@ -101,9 +103,13 @@ hgnc2gene(...)
 
 kables(...)
 
+makeGene2symbolFromEnsembl(...)
+
 makeGene2symbolFromGFF(...)
 
 makeGene2symbolFromGTF(...)
+
+makeTx2geneFromEnsembl(...)
 
 makeTx2geneFromGFF(...)
 
