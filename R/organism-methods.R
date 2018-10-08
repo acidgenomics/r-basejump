@@ -52,7 +52,9 @@ NULL
 .organism.string <-  # nolint
     function(object) {
         assert_is_a_string(object)
-        ref <- basejump::organism_mappings
+        # Get reference data from sysdata.rda.
+        ref <- organism_mappings
+        assert_is_tbl_df(ref)
         # Generate a logical matrix of grep matches.
         hits <- apply(
             X = ref,
