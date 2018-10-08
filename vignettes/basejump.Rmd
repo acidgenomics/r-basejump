@@ -176,10 +176,10 @@ grch38 %>% as.data.frame() %>% glimpse()
 Gene-to-symbol and transcript-to-gene mappings can be easily acquired with the `gene2symbol()` and `tx2gene()` functions. Both of these functions return a `data.frame`.
 
 ```{r, message=FALSE}
-gene2symbol <- makeGene2symbolFromEnsembl("Homo sapiens")
+gene2symbol <- makeGene2SymbolFromEnsembl("Homo sapiens")
 print(gene2symbol)
 
-tx2gene <- makeTx2geneFromEnsembl("Homo sapiens")
+tx2gene <- makeTx2GeneFromEnsembl("Homo sapiens")
 print(tx2gene)
 ```
 
@@ -245,32 +245,28 @@ In addition to interfacing with [Ensembl][], [basejump][] exports a number of ut
 ### HGNC
 
 ```{r, eval=FALSE}
-# FIXME Use pre-calculated, for speed.
-hgnc2gene <- hgnc2gene()
+hgnc2gene <- hgnc2gene(.test = TRUE)
 glimpse(hgnc2gene)
 ```
 
 ### MGI
 
 ```{r, eval=FALSE}
-# FIXME Use pre-calculated, for speed.
-mgi2gene <- mgi2gene()
+mgi2gene <- mgi2gene(.test = TRUE)
 glimpse(mgi2gene)
 ```
 
 ### EggNOG
 
 ```{r, eval=FALSE}
-# FIXME Use pre-calculated, for speed.
-eggnog <- eggnog()
+eggnog <- eggnog(.test = TRUE)
 glimpse(eggnog)
 ```
 
 ### PANTHER
 
 ```{r, eval=FALSE}
-# FIXME Use pre-calculated, for speed.
-panther <- panther(organism = "Homo sapiens")
+panther <- panther(organism = "Homo sapiens", .test = TRUE)
 glimpse(panther)
 ```
 
