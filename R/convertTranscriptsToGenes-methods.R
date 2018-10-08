@@ -1,8 +1,3 @@
-# FIXME Speed up the working example.
-# FIXME Improve working example to show `aggregate = TRUE` more clearly.
-
-
-
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @note
@@ -33,21 +28,23 @@
 #' @seealso [aggregateRows()].
 #'
 #' @examples
-#' tx2gene <- tx2gene(tx_se_small)
+#' data(tx_se_small)
+#' object <- tx_se_small
+#'
+#' tx2gene <- tx2gene(object)
 #' print(tx2gene)
-#' transcriptIDs <- rownames(tx_se_small)
-#' print(transcriptIDs)
-#' stopifnot(all(transcriptIDs %in% rownames(tx2gene)))
+#' transcripts <- rownames(object)
+#' print(transcripts)
 #'
 #' # character ====
 #' # Returns as factor.
-#' x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+#' x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 #' print(x)
 #' str(x)
 #'
 #' # matrix ====
 #' # Note that transcript IDs currently must be in the rows.
-#' counts <- counts(tx_se_small)
+#' counts <- counts(object)
 #' print(counts)
 #' # Aggregate to gene level.
 #' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
@@ -59,8 +56,8 @@
 #' colSums(x)
 #'
 #' # SummarizedExperiment ====
-#' object <- tx_se_small
-#' print(object)
+#' x <- convertTranscriptsToGenes(object)
+#' print(x)
 NULL
 
 
