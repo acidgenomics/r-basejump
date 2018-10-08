@@ -4,7 +4,7 @@ release <- 87L
 
 
 # General ======================================================================
-context("Annotation Functions : General")
+context("Annotations : General")
 
 with_parameters_test_that(
     "convertUCSCBuildToEnsembl", {
@@ -103,7 +103,7 @@ test_that("stripTranscriptVersions : matrix", {
 
 
 # Organism Matching ============================================================
-context("Annotation Functions : Organism Matching")
+context("Annotations : Organism Matching")
 
 with_parameters_test_that(
     "organism : Homo sapiens", {
@@ -245,7 +245,7 @@ test_that("organism : Failure", {
 
 
 # AnnotationHub ================================================================
-context("Annotation Functions : AnnotationHub")
+context("Annotations : AnnotationHub")
 
 test_that("makeGRangesFromEnsembl : genes", {
     object <- makeGRangesFromEnsembl(
@@ -380,11 +380,11 @@ test_that("makeTx2GeneFromEnsembl", {
 
 
 # GTF/GFF ======================================================================
-context("Annotation Functions : GTF/GFF")
+context("Annotations : GTF/GFF")
 
 with_parameters_test_that(
-    "makeGene2symbolFromGFF", {
-        object <- makeGene2symbolFromGFF(file)
+    "makeGene2SymbolFromGFF", {
+        object <- makeGene2SymbolFromGFF(file)
         expect_is(object, "Gene2Symbol")
         expect_identical(
             object = head(object, n = 2L),
@@ -509,8 +509,8 @@ test_that("makeGRangesFromGFF : Minimal GFF3", {
 })
 
 with_parameters_test_that(
-    "makeTx2geneFromGFF", {
-        object <- makeTx2geneFromGFF(file)
+    "makeTx2GeneFromGFF", {
+        object <- makeTx2GeneFromGFF(file)
         expect_is(object, "Tx2Gene")
         expect_identical(
             object = head(object, n = 2L),
@@ -539,7 +539,7 @@ with_parameters_test_that(
 
 
 # Remapping ====================================================================
-context("Annotation Functions : Remapping")
+context("Annotations : Remapping")
 
 test_that("convertGenesToSymbols : character", {
     expect_identical(
@@ -674,7 +674,7 @@ test_that("convertTranscriptsToGenes : Invalid params", {
 
 
 # Databases ====================================================================
-context("Annotation Functions : Databases")
+context("Annotations : Databases")
 
 # FIXME Add code coverage:
 # - ensembl2entrez
@@ -683,32 +683,18 @@ context("Annotation Functions : Databases")
 # - mgi2ensembl
 
 test_that("eggnog", {
-    object <- eggnog(.test = TRUE)
-    expect_is(object, "list")
-    expect_identical(
-        object = names(object),
-        expected = c("cogFunctionalCategories", "annotations")
-    )
-    expect_identical(
-        object = lapply(object, colnames),
-        expected = list(
-            cogFunctionalCategories = c(
-                "letter",
-                "description"
-            ),
-            annotations = c(
-                "eggnogID",
-                "consensusFunctionalDescription",
-                "cogFunctionalCategory"
-            )
-        )
+    expect_is(
+        object = eggnog(.test = TRUE),
+        class = "EggNOG"
     )
 })
 
 with_parameters_test_that(
     "geneSynonyms", {
-        object <- geneSynonyms(organism = organism, .test = TRUE)
-        expect_is(object, "grouped_df")
+        expect_is(
+            object = geneSynonyms(organism = organism, .test = TRUE),
+            class = "grouped_df"
+        )
     },
     organism = .geneSynonymsOrganisms
 )
@@ -718,7 +704,7 @@ with_parameters_test_that(
         invisible(capture.output(
             object <- panther(organism, .test = TRUE)
         ))
-        expect_is(object, "DataFrame")
+        expect_is(object, "PANTHER")
     },
     organism = names(.pantherMappings)
 )

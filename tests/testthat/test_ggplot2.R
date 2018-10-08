@@ -1,4 +1,4 @@
-context("ggplot2 Functions")
+context("ggplot2")
 
 
 

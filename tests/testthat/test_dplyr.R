@@ -1,4 +1,4 @@
-context("dplyr method support for DataFrame")
+context("dplyr : DataFrame")
 
 test_that("arrange", {
     expect_identical(

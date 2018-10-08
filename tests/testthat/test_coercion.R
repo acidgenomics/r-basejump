@@ -1,4 +1,4 @@
-context("Coercion Methods")
+context("Coercion")
 
 
 

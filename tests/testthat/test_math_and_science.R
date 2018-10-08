@@ -1,4 +1,4 @@
-context("Math and Science Functions")
+context("Math and Science")
 
 
 
