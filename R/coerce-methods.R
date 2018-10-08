@@ -51,6 +51,8 @@
 #' - [as.list()].
 #'
 #' @examples
+#' data(rse_small)
+#'
 #' # DataFrame to tbl_df ====
 #' data <- colData(rse_small)
 #' print(data)
