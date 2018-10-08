@@ -1,3 +1,4 @@
+data(rse_small, sce_small, tx_se_small)
 mat <- matrix(
     data = seq(1L:16L),
     nrow = 4L,
