@@ -1,14 +1,12 @@
-#' MGI to Ensembl Gene ID Mappings
+#' `MGI2Ensembl` Generator
 #'
-#' @family Annotation Functions
+#' @family S4 Generators
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
 #'
-#' @seealso `mgi2ensembl-class`.
-#'
-#' @return `mgi2ensembl`.
+#' @return `MGI2Ensembl`.
 #'
 #' @examples
 #' x <- mgi2ensembl(.test = TRUE)
@@ -38,10 +36,15 @@ mgi2ensembl <- function(.test = FALSE) {
     colnames(data) <- c("mgiID", "geneID")
     data[["mgiID"]] <- as.integer(gsub("^MGI\\:", "", data[["mgiID"]]))
     data <- data[order(data[["mgiID"]]), , drop = FALSE]
-    rownames(data) <- data[["mgiID"]]
 
-    new("mgi2ensembl", data)
+    new(Class = "MGI2Ensembl", data)
 }
+
+
+
+#' @rdname mgi2ensembl
+#' @export
+MGI2Ensembl <- mgi2ensembl
 
 
 

@@ -1,7 +1,3 @@
-# FIXME Add `.test` support for all supported organisms.
-
-
-
 #' Gene Synonyms
 #'
 #' Look up gene synonyms from NCBI.
@@ -24,14 +20,10 @@
 #' print(x)
 geneSynonyms <- function(organism, .test = FALSE) {
     stopifnot(has_internet())
-    if (isTRUE(.test)) {
-        organism <- "Homo sapiens"
-    } else {
-        organism <- match.arg(
-            arg = organism,
-            choices = .geneSynonymsOrganisms
-        )
-    }
+    organism <- match.arg(
+        arg = organism,
+        choices = .geneSynonymsOrganisms
+    )
     assert_is_a_bool(.test)
 
     # NCBI uses underscore for species name
@@ -45,7 +37,11 @@ geneSynonyms <- function(organism, .test = FALSE) {
     genome <- c(kingdom = kingdom, species = species)
 
     if (isTRUE(.test)) {
-        file <- file.path(basejumpCacheURL, "homo_sapiens.gene_info.gz")
+        stopifnot(organism == "Homo sapiens")
+        file <- file.path(
+            basejumpCacheURL,
+            paste0(snake(organism), ".gene_info.gz")
+        )
     } else {
         file <- paste(
             "ftp://ftp.ncbi.nih.gov",

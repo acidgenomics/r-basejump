@@ -1,7 +1,7 @@
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @note
-#' For objects containing a counts matrix, the object rows will be collapsed to
+#' For objects containing a count matrix, the object rows will be collapsed to
 #' gene level using [aggregateRows()]. This applies to our
 #' `SummarizedExperiment` method.
 #'

@@ -8,10 +8,8 @@
 #' @inheritParams general
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' data(rse_small, sce_small)
 #' plotGenesDetected(rse_small)
-#'
-#' # SingleCellExperiment ====
 #' plotGenesDetected(sce_small)
 NULL
 

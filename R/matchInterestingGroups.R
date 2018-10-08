@@ -15,6 +15,7 @@
 #' @return `character`. Interesting groups.
 #'
 #' @examples
+#' data(rse_small)
 #' matchInterestingGroups(rse_small)
 matchInterestingGroups <- function(object, interestingGroups = NULL) {
     assert_is_all_of(object, "SummarizedExperiment")

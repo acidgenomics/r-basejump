@@ -1,21 +1,30 @@
-#' Ensembl Gene ID to Entrez ID Mappings
+#' `Ensembl2Entrez` Generator
 #'
 #' Defines 1:1 mappings from Ensembl gene IDs to Entrez IDs. Uses the oldest
 #' Entrez ID if there are multiple identifiers that map to an Ensembl gene ID.
 #'
 #' @name ensembl2entrez
-#' @family Annotation Functions
+#' @family S4 Generators
 #' @author Michael Steinbaugh
 #' @export
 #'
 #' @inheritParams general
 #'
-#' @return `ensembl2entrez`.
+#' @return `Ensembl2Entrez`.
 #'
 #' @examples
+#' data(rse_small)
 #' x <- ensembl2entrez(rse_small)
 #' print(x)
 NULL
+
+
+
+#' @rdname ensembl2entrez
+#' @export
+Ensembl2Entrez <- function(object, ...) {
+    ensembl2entrez(object, ...)
+}
 
 
 
@@ -46,7 +55,7 @@ NULL
             entrezID = vec,
             row.names = names(vec)
         )
-        new("ensembl2entrez", data)
+        new(Class = "Ensembl2Entrez", data)
     }
 
 
