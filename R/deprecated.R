@@ -346,6 +346,34 @@ kables <- function(...) {
 
 #' @rdname deprecated
 #' @export
+makeGene2symbolFromGFF <- function(...) {
+    .Deprecated("makeGene2SymbolFromGFF")
+    makeGene2SymbolFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+makeGene2symbolFromGTF <- function(...) {
+    .Deprecated("makeGene2SymbolFromGTF")
+    makeGene2SymbolFromGTF(...)
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromGFF <- function(...) {
+    .Deprecated("makeTx2GeneFromGFF")
+    makeTx2geneFromGFF(...)
+}
+
+#' @rdname deprecated
+#' @export
+makeTx2geneFromGTF <- function(...) {
+    .Deprecated("makeTx2GeneFromGTF")
+    makeTx2geneFromGTF(...)
+}
+
+#' @rdname deprecated
+#' @export
 mgi2gene <- function(...) {
     .Deprecated("mgi2enseml")
     mgi2ensembl(...)
@@ -397,8 +425,6 @@ separatorBar <- function(...) {
 setArgsToDoCall <- function(...) {
     .Defunct("matchArgsToDoCall")
 }
-
-# FIXME Deprecate the camel variants of makeGene2symbol and makeTx2gene
 
 
 
