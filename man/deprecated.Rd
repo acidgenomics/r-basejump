@@ -19,12 +19,16 @@
 \alias{midnightTheme}
 \alias{paperwhiteTheme}
 \alias{assertIsURL}
+\alias{aggregateFeatures}
+\alias{aggregateReplicates}
+\alias{aggregateSamples}
 \alias{assertIsAHeaderLevel}
 \alias{assertIsCharacterOrNULL}
 \alias{assertIsDataFrameOrNULL}
 \alias{detectOrganism}
 \alias{fixNA}
 \alias{flatFiles}
+\alias{grepString}
 \alias{hgnc2gene}
 \alias{kables}
 \alias{mgi2gene}
@@ -69,6 +73,12 @@ paperwhiteTheme(...)
 
 assertIsURL(...)
 
+aggregateFeatures(...)
+
+aggregateReplicates(...)
+
+aggregateSamples(...)
+
 assertIsAHeaderLevel(...)
 
 assertIsCharacterOrNULL(object, ...)
@@ -80,6 +90,8 @@ detectOrganism(object, ...)
 fixNA(...)
 
 flatFiles(object)
+
+grepString(...)
 
 hgnc2gene(...)
 

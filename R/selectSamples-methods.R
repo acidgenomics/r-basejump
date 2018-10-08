@@ -29,6 +29,8 @@
 #' - [S4Vectors::split()].
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' # SummarizedExperiment ====
 #' object <- rse_small
 #' sample <- sampleNames(object) %>% head(1L)

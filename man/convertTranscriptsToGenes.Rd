@@ -29,7 +29,7 @@ convertTranscriptsToGenes(object, ...)
 
 \item{...}{Passthrough to \code{\link[=makeTx2geneFromEnsembl]{makeTx2geneFromEnsembl()}}.}
 
-\item{tx2gene}{\code{tx2gene} or \code{NULL}. Transcript-to-gene mappings. If set
+\item{tx2gene}{\code{Tx2Gene} or \code{NULL}. Transcript-to-gene mappings. If set
 \code{NULL}, the function will attempt to download the mappings from Ensembl
 automatically.}
 
@@ -55,26 +55,28 @@ collapsed to gene level by default (see \code{aggregate} argument).
 Convert Ensembl Transcripts to Genes
 }
 \note{
-For objects containing a counts matrix, the object rows will be collapsed to
+For objects containing a count matrix, the object rows will be collapsed to
 gene level using \code{\link[=aggregateRows]{aggregateRows()}}. This applies to our
 \code{SummarizedExperiment} method.
 }
 \examples{
-tx2gene <- tx2gene(tx_se_small)
+data(tx_se_small)
+object <- tx_se_small
+
+tx2gene <- tx2gene(object)
 print(tx2gene)
-transcriptIDs <- rownames(tx_se_small)
-print(transcriptIDs)
-stopifnot(all(transcriptIDs \%in\% rownames(tx2gene)))
+transcripts <- rownames(object)
+print(transcripts)
 
 # character ====
 # Returns as factor.
-x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 print(x)
 str(x)
 
 # matrix ====
 # Note that transcript IDs currently must be in the rows.
-counts <- counts(tx_se_small)
+counts <- counts(object)
 print(counts)
 # Aggregate to gene level.
 x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
@@ -86,21 +88,18 @@ print(x)
 colSums(x)
 
 # SummarizedExperiment ====
-object <- tx_se_small
-print(object)
+x <- convertTranscriptsToGenes(object)
+print(x)
 }
 \seealso{
 \code{\link[=aggregateRows]{aggregateRows()}}.
 
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
-  \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{geneSynonyms}}, \code{\link{hgnc2ensembl}},
-  \code{\link{makeGRanges}}, \code{\link{makeGene2symbol}},
-  \code{\link{makeTx2gene}}, \code{\link{mgi2ensembl}},
-  \code{\link{organism}}, \code{\link{panther}},
+  \code{\link{emptyRanges}}, \code{\link{geneSynonyms}},
+  \code{\link{makeGRanges}}, \code{\link{makeGene2Symbol}},
+  \code{\link{makeTx2Gene}}, \code{\link{organism}},
+  \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

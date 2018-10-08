@@ -28,28 +28,24 @@ Utility function that provides support for creating internal \code{GRanges} for
 transgene and FASTA spike-in sequences.
 }
 \examples{
-# Unknown/dead genes
+# Unknown/dead genes.
 emptyRanges("ENSG00000000000", seqname = "unknown")
 
-# Transgenes
+# Transgenes.
 emptyRanges(c("EGFP", "TDTOMATO", "GAL4"), seqname = "transgene")
 
-# Spike-ins
+# Spike-ins.
 emptyRanges("ERCC", seqname = "spike")
 }
 \seealso{
 \code{help("seqinfo", "GenomeInfoDb")}.
 
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
+Other Annotation Functions: \code{\link{convertGenesToSymbols}},
   \code{\link{convertTranscriptsToGenes}},
   \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{ensembl2entrez}},
-  \code{\link{gene2symbol}}, \code{\link{geneSynonyms}},
-  \code{\link{hgnc2ensembl}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
+  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
+  \code{\link{makeGene2Symbol}}, \code{\link{makeTx2Gene}},
+  \code{\link{organism}}, \code{\link{panther}},
   \code{\link{stripTranscriptVersions}}
 }
 \author{

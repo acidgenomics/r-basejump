@@ -1,24 +1,7 @@
-#' @rdname aggregateCellsToSamples
-#' @export
-setGeneric(
-    name = "aggregateCellsToSamples",
-    def = function(object, ...) {
-        standardGeneric("aggregateCellsToSamples")
-    }
-)
-
-
-
+# aggregate ====================================================================
 #' @rdname aggregate
-#' @export
-setGeneric(
-    name = "aggregateCols",
-    def = function(object, ...) {
-        standardGeneric("aggregateCols")
-    }
-)
-
-
+#' @name aggregate
+NULL
 
 #' @rdname aggregate
 #' @export
@@ -29,30 +12,27 @@ setGeneric(
     }
 )
 
-
-
-#' @rdname broadClass
+#' @rdname aggregate
 #' @export
 setGeneric(
-    name = "broadClass",
+    name = "aggregateCols",
     def = function(object, ...) {
-        standardGeneric("broadClass")
+        standardGeneric("aggregateCols")
+    }
+)
+
+#' @rdname aggregate
+#' @export
+setGeneric(
+    name = "aggregateCellsToSamples",
+    def = function(object, ...) {
+        standardGeneric("aggregateCellsToSamples")
     }
 )
 
 
 
-#' @rdname makeNames
-#' @export
-setGeneric(
-    name = "camel",
-    def = function(object, ...) {
-        standardGeneric("camel")
-    }
-)
-
-
-
+# cell2sample ==================================================================
 #' @rdname cell2sample
 #' @export
 setGeneric(
@@ -64,17 +44,7 @@ setGeneric(
 
 
 
-#' @rdname coerce
-#' @export
-setGeneric(
-    name = "coerceS4ToList",
-    def = function(from) {
-        standardGeneric("coerceS4ToList")
-    }
-)
-
-
-
+# collapseToString =============================================================
 #' @rdname collapseToString
 #' @export
 setGeneric(
@@ -86,6 +56,7 @@ setGeneric(
 
 
 
+# convertGenesToSymbols ========================================================
 #' @rdname convertGenesToSymbols
 #' @export
 setGeneric(
@@ -94,8 +65,6 @@ setGeneric(
         standardGeneric("convertGenesToSymbols")
     }
 )
-
-
 
 #' @rdname convertGenesToSymbols
 #' @export
@@ -108,6 +77,7 @@ setGeneric(
 
 
 
+# convertTranscriptsToGenes ====================================================
 #' @rdname convertTranscriptsToGenes
 #' @export
 setGeneric(
@@ -119,17 +89,7 @@ setGeneric(
 
 
 
-#' @rdname makeNames
-#' @export
-setGeneric(
-    name = "dotted",
-    def = function(object, ...) {
-        standardGeneric("dotted")
-    }
-)
-
-
-
+# ensembl2entrez ===============================================================
 #' @rdname ensembl2entrez
 #' @export
 setGeneric(
@@ -141,6 +101,7 @@ setGeneric(
 
 
 
+# export =======================================================================
 #' @rdname export
 #' @export
 setGeneric(
@@ -152,17 +113,7 @@ setGeneric(
 
 
 
-#' @rdname logRatio
-#' @export
-setGeneric(
-    name = "foldChangeToLogRatio",
-    def = function(object, ...) {
-        standardGeneric("foldChangeToLogRatio")
-    }
-)
-
-
-
+# gene2symbol ==================================================================
 #' @rdname gene2symbol
 #' @export
 setGeneric(
@@ -174,6 +125,7 @@ setGeneric(
 
 
 
+# geometricMean ================================================================
 #' @rdname geometricMean
 #' @export
 setGeneric(
@@ -185,6 +137,7 @@ setGeneric(
 
 
 
+# interestingGroups ============================================================
 #' @rdname interestingGroups
 #' @export
 setGeneric(
@@ -193,8 +146,6 @@ setGeneric(
         standardGeneric("interestingGroups")
     }
 )
-
-
 
 #' @rdname interestingGroups
 #' @export
@@ -207,6 +158,20 @@ setGeneric(
 
 
 
+# logRatio =====================================================================
+#' @rdname logRatio
+#' @name logRatio
+NULL
+
+#' @rdname logRatio
+#' @export
+setGeneric(
+    name = "foldChangeToLogRatio",
+    def = function(object, ...) {
+        standardGeneric("foldChangeToLogRatio")
+    }
+)
+
 #' @rdname logRatio
 #' @export
 setGeneric(
@@ -218,280 +183,28 @@ setGeneric(
 
 
 
-#' @rdname mapGenes
+# makeNames ====================================================================
+#' @rdname makeNames
+#' @name makeNames
+NULL
+
+#' @rdname makeNames
 #' @export
 setGeneric(
-    name = "mapGenesToIDs",
+    name = "camel",
     def = function(object, ...) {
-        standardGeneric("mapGenesToIDs")
+        standardGeneric("camel")
     }
 )
 
-
-
-#' @rdname mapGenes
+#' @rdname makeNames
 #' @export
 setGeneric(
-    name = "mapGenesToRownames",
+    name = "dotted",
     def = function(object, ...) {
-        standardGeneric("mapGenesToRownames")
+        standardGeneric("dotted")
     }
 )
-
-
-
-#' @rdname mapGenes
-#' @export
-setGeneric(
-    name = "mapGenesToSymbols",
-    def = function(object, ...) {
-        standardGeneric("mapGenesToSymbols")
-    }
-)
-
-
-
-#' @rdname markdown
-#' @export
-setGeneric(
-    name = "markdown",
-    def = function(object, ...) {
-        standardGeneric("markdown")
-    }
-)
-
-
-
-#' @rdname meltCounts
-#' @export
-setGeneric(
-    name = "meltCounts",
-    def = function(object, ...) {
-        standardGeneric("meltCounts")
-    }
-)
-
-
-
-#' @rdname metrics
-#' @export
-setGeneric(
-    name = "metrics",
-    def = function(object, ...) {
-        standardGeneric("metrics")
-    }
-)
-
-
-
-#' @rdname metricsPerSample
-#' @export
-setGeneric(
-    "metricsPerSample",
-    function(object, ...) {
-        standardGeneric("metricsPerSample")
-    }
-)
-
-
-
-#' @rdname plotCorrelationHeatmap
-#' @export
-setGeneric(
-    name = "plotCorrelationHeatmap",
-    def = function(object, ...) {
-        standardGeneric("plotCorrelationHeatmap")
-    }
-)
-
-
-
-#' @rdname plotCountsPerBiotype
-#' @export
-setGeneric(
-    name = "plotCountsPerBiotype",
-    def = function(object, ...) {
-        standardGeneric("plotCountsPerBiotype")
-    }
-)
-
-
-
-#' @rdname plotCountsPerBiotype
-#' @export
-setGeneric(
-    name = "plotCountsPerBroadClass",
-    def = function(object, ...) {
-        standardGeneric("plotCountsPerBroadClass")
-    }
-)
-
-
-
-#' @rdname plotCountsPerGene
-#' @export
-setGeneric(
-    name = "plotCountsPerGene",
-    def = function(object, ...) {
-        standardGeneric("plotCountsPerGene")
-    }
-)
-
-
-
-#' @rdname plotGenderMarkers
-#' @export
-setGeneric(
-    name = "plotGenderMarkers",
-    def = function(object, ...) {
-        standardGeneric("plotGenderMarkers")
-    }
-)
-
-
-
-#' @rdname plotGene
-#' @export
-setGeneric(
-    name = "plotGene",
-    def = function(object, ...) {
-        standardGeneric("plotGene")
-    }
-)
-
-
-
-#' @rdname plotGenesDetected
-#' @export
-setGeneric(
-    name = "plotGenesDetected",
-    def = function(object, ...) {
-        standardGeneric("plotGenesDetected")
-    }
-)
-
-
-
-#' @rdname plotHeatmap
-#' @export
-setGeneric(
-    name = "plotHeatmap",
-    def = function(object, ...) {
-        standardGeneric("plotHeatmap")
-    }
-)
-
-
-
-#' @rdname plotQuantileHeatmap
-#' @export
-setGeneric(
-    name = "plotQuantileHeatmap",
-    def = function(object, ...) {
-        standardGeneric("plotQuantileHeatmap")
-    }
-)
-
-
-
-#' @rdname plotQC
-#' @export
-setGeneric(
-    name = "plotQC",
-    def = function(object, ...) {
-        standardGeneric("plotQC")
-    }
-)
-
-
-
-#' @rdname plotTotalCounts
-#' @export
-setGeneric(
-    name = "plotTotalCounts",
-    def = function(object, ...) {
-        standardGeneric("plotTotalCounts")
-    }
-)
-
-
-
-#' @rdname plotZerosVsDepth
-#' @export
-setGeneric(
-    name = "plotZerosVsDepth",
-    def = function(object, ...) {
-        standardGeneric("plotZerosVsDepth")
-    }
-)
-
-
-
-#' @rdname removeNA
-#' @export
-setGeneric(
-    name = "removeNA",
-    def = function(object, ...) {
-        standardGeneric("removeNA")
-    }
-)
-
-
-
-#' @rdname sampleData
-#' @export
-setGeneric(
-    name = "sampleData",
-    def = function(object, ...) {
-        standardGeneric("sampleData")
-    }
-)
-
-
-
-#' @rdname sampleData
-#' @export
-setGeneric(
-    name = "sampleData<-",
-    def = function(object, ..., value) {
-        standardGeneric("sampleData<-")
-    }
-)
-
-
-
-#' @rdname sanitizeNA
-#' @export
-setGeneric(
-    name = "sanitizeNA",
-    def = function(object, ...) {
-        standardGeneric("sanitizeNA")
-    }
-)
-
-
-
-#' @rdname sanitizePercent
-#' @export
-setGeneric(
-    name = "sanitizePercent",
-    def = function(object, ...) {
-        standardGeneric("sanitizePercent")
-    }
-)
-
-
-
-#' @rdname selectSamples
-#' @export
-setGeneric(
-    name = "selectSamples",
-    def = function(object, ...) {
-        standardGeneric("selectSamples")
-    }
-)
-
-
 
 #' @rdname makeNames
 #' @export
@@ -501,63 +214,6 @@ setGeneric(
         standardGeneric("snake")
     }
 )
-
-
-
-#' @rdname stripTranscriptVersions
-#' @export
-setGeneric(
-    name = "stripTranscriptVersions",
-    def = function(object, ...) {
-        standardGeneric("stripTranscriptVersions")
-    }
-)
-
-
-
-#' @rdname subsetPerSample
-#' @export
-setGeneric(
-    "subsetPerSample",
-    function(object, ...) {
-        standardGeneric("subsetPerSample")
-    }
-)
-
-
-
-#' @rdname topCellsPerSample
-#' @export
-setGeneric(
-    "topCellsPerSample",
-    function(object, ...) {
-        standardGeneric("topCellsPerSample")
-    }
-)
-
-
-
-#' @rdname tx2gene
-#' @export
-setGeneric(
-    name = "tx2gene",
-    def = function(object, ...) {
-        standardGeneric("tx2gene")
-    }
-)
-
-
-
-#' @rdname uniteInterestingGroups
-#' @export
-setGeneric(
-    name = "uniteInterestingGroups",
-    def = function(object, ...) {
-        standardGeneric("uniteInterestingGroups")
-    }
-)
-
-
 
 #' @rdname makeNames
 #' @export
@@ -570,9 +226,354 @@ setGeneric(
 
 
 
+# mapGenes =====================================================================
+#' @rdname mapGenes
+#' @name mapGenes
+NULL
+
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    name = "mapGenesToRownames",
+    def = function(object, ...) {
+        standardGeneric("mapGenesToRownames")
+    }
+)
+
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    name = "mapGenesToIDs",
+    def = function(object, ...) {
+        standardGeneric("mapGenesToIDs")
+    }
+)
+
+#' @rdname mapGenes
+#' @export
+setGeneric(
+    name = "mapGenesToSymbols",
+    def = function(object, ...) {
+        standardGeneric("mapGenesToSymbols")
+    }
+)
+
+
+
+# markdown =====================================================================
+#' @rdname markdown
+#' @export
+setGeneric(
+    name = "markdown",
+    def = function(object, ...) {
+        standardGeneric("markdown")
+    }
+)
+
+
+
+# meltCounts ===================================================================
+#' @rdname meltCounts
+#' @export
+setGeneric(
+    name = "meltCounts",
+    def = function(object, ...) {
+        standardGeneric("meltCounts")
+    }
+)
+
+
+
+# metrics ======================================================================
+#' @rdname metrics
+#' @export
+setGeneric(
+    name = "metrics",
+    def = function(object, ...) {
+        standardGeneric("metrics")
+    }
+)
+
+#' @rdname metrics
+#' @export
+setGeneric(
+    "metricsPerSample",
+    function(object, ...) {
+        standardGeneric("metricsPerSample")
+    }
+)
+
+
+
+# plotCountsPerBiotype =========================================================
+#' @rdname plotCountsPerBiotype
+#' @export
+setGeneric(
+    name = "plotCountsPerBiotype",
+    def = function(object, ...) {
+        standardGeneric("plotCountsPerBiotype")
+    }
+)
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setGeneric(
+    name = "plotCountsPerBroadClass",
+    def = function(object, ...) {
+        standardGeneric("plotCountsPerBroadClass")
+    }
+)
+
+
+
+# plotCountsPerGene ============================================================
+#' @rdname plotCountsPerGene
+#' @export
+setGeneric(
+    name = "plotCountsPerGene",
+    def = function(object, ...) {
+        standardGeneric("plotCountsPerGene")
+    }
+)
+
+
+
+# plotGenderMarkers ============================================================
+#' @rdname plotGenderMarkers
+#' @export
+setGeneric(
+    name = "plotGenderMarkers",
+    def = function(object, ...) {
+        standardGeneric("plotGenderMarkers")
+    }
+)
+
+
+
+# plotGene =====================================================================
+#' @rdname plotGene
+#' @export
+setGeneric(
+    name = "plotGene",
+    def = function(object, ...) {
+        standardGeneric("plotGene")
+    }
+)
+
+
+
+# plotGenesDetected ============================================================
+#' @rdname plotGenesDetected
+#' @export
+setGeneric(
+    name = "plotGenesDetected",
+    def = function(object, ...) {
+        standardGeneric("plotGenesDetected")
+    }
+)
+
+
+
+# plotHeatmap ==================================================================
+#' @rdname plotHeatmap
+#' @name plotHeatmap
+NULL
+
+#' @rdname plotHeatmap
+#' @export
+setGeneric(
+    name = "plotHeatmap",
+    def = function(object, ...) {
+        standardGeneric("plotHeatmap")
+    }
+)
+
+#' @rdname plotHeatmap
+#' @export
+setGeneric(
+    name = "plotCorrelationHeatmap",
+    def = function(object, ...) {
+        standardGeneric("plotCorrelationHeatmap")
+    }
+)
+
+#' @rdname plotHeatmap
+#' @export
+setGeneric(
+    name = "plotQuantileHeatmap",
+    def = function(object, ...) {
+        standardGeneric("plotQuantileHeatmap")
+    }
+)
+
+
+
+# plotQC =======================================================================
+#' @rdname plotQC
+#' @export
+setGeneric(
+    name = "plotQC",
+    def = function(object, ...) {
+        standardGeneric("plotQC")
+    }
+)
+
+
+
+# plotTotalCounts ==============================================================
+#' @rdname plotTotalCounts
+#' @export
+setGeneric(
+    name = "plotTotalCounts",
+    def = function(object, ...) {
+        standardGeneric("plotTotalCounts")
+    }
+)
+
+
+
+# plotZerosVsDepth =============================================================
+#' @rdname plotZerosVsDepth
+#' @export
+setGeneric(
+    name = "plotZerosVsDepth",
+    def = function(object, ...) {
+        standardGeneric("plotZerosVsDepth")
+    }
+)
+
 setGeneric(
     name = "zerosVsDepth",
     def = function(object, ...) {
         standardGeneric("zerosVsDepth")
+    }
+)
+
+
+
+# removeNA =====================================================================
+#' @rdname removeNA
+#' @export
+setGeneric(
+    name = "removeNA",
+    def = function(object, ...) {
+        standardGeneric("removeNA")
+    }
+)
+
+
+
+# sampleData ===================================================================
+#' @rdname sampleData
+#' @export
+setGeneric(
+    name = "sampleData",
+    def = function(object, ...) {
+        standardGeneric("sampleData")
+    }
+)
+
+#' @rdname sampleData
+#' @export
+setGeneric(
+    name = "sampleData<-",
+    def = function(object, ..., value) {
+        standardGeneric("sampleData<-")
+    }
+)
+
+
+
+# sanitizeNA ===================================================================
+#' @rdname sanitizeNA
+#' @export
+setGeneric(
+    name = "sanitizeNA",
+    def = function(object, ...) {
+        standardGeneric("sanitizeNA")
+    }
+)
+
+
+
+# sanitizePercent ==============================================================
+#' @rdname sanitizePercent
+#' @export
+setGeneric(
+    name = "sanitizePercent",
+    def = function(object, ...) {
+        standardGeneric("sanitizePercent")
+    }
+)
+
+
+
+# selectSamples ================================================================
+#' @rdname selectSamples
+#' @export
+setGeneric(
+    name = "selectSamples",
+    def = function(object, ...) {
+        standardGeneric("selectSamples")
+    }
+)
+
+
+
+# stripTranscriptVersions ======================================================
+#' @rdname stripTranscriptVersions
+#' @export
+setGeneric(
+    name = "stripTranscriptVersions",
+    def = function(object, ...) {
+        standardGeneric("stripTranscriptVersions")
+    }
+)
+
+
+
+# subsetPerSample ==============================================================
+#' @rdname subsetPerSample
+#' @export
+setGeneric(
+    "subsetPerSample",
+    function(object, ...) {
+        standardGeneric("subsetPerSample")
+    }
+)
+
+
+
+# topCellsPerSample ============================================================
+#' @rdname topCellsPerSample
+#' @export
+setGeneric(
+    "topCellsPerSample",
+    function(object, ...) {
+        standardGeneric("topCellsPerSample")
+    }
+)
+
+
+
+# tx2gene ======================================================================
+#' @rdname tx2gene
+#' @export
+setGeneric(
+    name = "tx2gene",
+    def = function(object, ...) {
+        standardGeneric("tx2gene")
+    }
+)
+
+
+
+# uniteInterestingGroups =======================================================
+#' @rdname uniteInterestingGroups
+#' @export
+setGeneric(
+    name = "uniteInterestingGroups",
+    def = function(object, ...) {
+        standardGeneric("uniteInterestingGroups")
     }
 )

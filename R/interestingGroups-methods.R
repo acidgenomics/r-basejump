@@ -9,8 +9,9 @@
 #' @return `character`.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' data(rse_small)
 #' object <- rse_small
+#'
 #' intgroup <- interestingGroups(object)
 #' print(intgroup)
 #'

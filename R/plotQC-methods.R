@@ -8,6 +8,7 @@
 #' @inheritParams general
 #'
 #' @examples
+#' data(rse_small)
 #' plotQC(rse_small)
 NULL
 

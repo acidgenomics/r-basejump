@@ -1,4 +1,4 @@
-#' Melt Counts Matrix to Long Format
+#' Melt Count Matrix to Long Format
 #'
 #' @name meltCounts
 #' @family Data Functions
@@ -8,7 +8,7 @@
 #' @inheritParams general
 #' @param nonzeroGenes `boolean`. Return only non-zero genes.
 #' @param trans `string`. Apply a log transformation (e.g. `log2(x + 1L)`) to
-#'   the counts matrix prior to melting, if desired. Use `"identity"` to return
+#'   the count matrix prior to melting, if desired. Use `"identity"` to return
 #'   unmodified (default).
 #'
 #' @seealso [reshape2::melt()].
@@ -17,6 +17,7 @@
 #'   (e.g. gene ID).
 #'
 #' @examples
+#' data(rse_small)
 #' x <- meltCounts(rse_small)
 #' print(x)
 NULL
@@ -35,7 +36,7 @@ NULL
         assert_is_a_bool(nonzeroGenes)
         trans <- match.arg(trans)
 
-        # Prepare the counts matrix.
+        # Prepare the count matrix.
         counts <- assays(object)[[assay]]
         assert_is_non_empty(counts)
         # Coerce to dense matrix.

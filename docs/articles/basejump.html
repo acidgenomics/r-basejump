@@ -74,7 +74,7 @@
       <h1>basejump</h1>
                         <h4 class="author">Michael Steinbaugh</h4>
             
-            <h4 class="date">3 October 2018</h4>
+            <h4 class="date">7 October 2018</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/steinbaugh/basejump/blob/master/vignettes/basejump.Rmd"><code>vignettes/basejump.Rmd</code></a></small>
       <div class="hidden name"><code>basejump.Rmd</code></div>
@@ -140,16 +140,15 @@
 <a href="#current-release" class="anchor"></a>Current release</h3>
 <p>By default, the function will use the latest release version available from <a href="https://bioconductor.org/packages/release/bioc/html/AnnotationHub.html">AnnotationHub</a> and <a href="https://doi.org/doi:10.18129/B9.bioc.ensembldb">ensembldb</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grch38 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">makeGRangesFromEnsembl</a></span>(<span class="st">"Homo sapiens"</span>)</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</code></pre>
 <pre><code>## Ensembl 93 EnsDb for Homo Sapiens</code></pre>
 <pre><code>##   - AnnotationHub: "AH64446"
 ##   - Organism: "Homo sapiens"
 ##   - Build: "GRCh38"
 ##   - Release: "93"
 ##   - Level: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns...</code></pre>
-<pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID...</code></pre>
+<pre><code>## Defining broadClass using: geneName, geneBiotype, seqnames</code></pre>
+<pre><code>## Arranging by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38)</code></pre></div>
 <pre><code>## [1] "GRanges object with 65256 ranges and 7 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(grch38)</code></pre></div>
@@ -168,7 +167,7 @@
 ##   .. ..$ release        : chr "93"
 ##   .. ..$ level          : chr "genes"
 ##   .. ..$ version        :Classes 'package_version', 'numeric_version'  hidden list of 1
-##   .. ..$ date           : Date[1:1], format: "2018-10-03"</code></pre>
+##   .. ..$ date           : Date[1:1], format: "2018-10-07"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(grch38))</code></pre></div>
 <pre><code>## [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 ## [5] "ENSG00000000460" "ENSG00000000938"</code></pre>
@@ -249,16 +248,15 @@
     <span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>,
     <span class="dt">level =</span> <span class="st">"transcripts"</span>
 )</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</code></pre>
 <pre><code>## Ensembl 93 EnsDb for Homo Sapiens</code></pre>
 <pre><code>##   - AnnotationHub: "AH64446"
 ##   - Organism: "Homo sapiens"
 ##   - Build: "GRCh38"
 ##   - Release: "93"
 ##   - Level: "transcripts"</code></pre>
-<pre><code>## Standardizing the metadata columns...</code></pre>
-<pre><code>## Defining broad class using: geneName, transcriptBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by transcriptID...</code></pre>
+<pre><code>## Defining broadClass using: geneName, transcriptBiotype, seqnames</code></pre>
+<pre><code>## Arranging by transcriptID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(transcripts)</code></pre></div>
 <pre><code>## [1] "GRanges object with 225358 ranges and 13 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S4Vectors<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/S4Vectors/topics/Vector-class">mcols</a></span>(transcripts) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
@@ -292,16 +290,15 @@
     <span class="dt">organism =</span> <span class="st">"Homo sapiens"</span>,
     <span class="dt">release =</span> <span class="dv">90</span>
 )</code></pre></div>
-<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-08-20)...</code></pre>
+<pre><code>## Making GRanges from Ensembl with AnnotationHub 2.13.7 (2018-10-04)...</code></pre>
 <pre><code>## Ensembl 90 EnsDb for Homo Sapiens</code></pre>
 <pre><code>##   - AnnotationHub: "AH57757"
 ##   - Organism: "Homo sapiens"
 ##   - Build: "GRCh38"
 ##   - Release: "90"
 ##   - Level: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns...</code></pre>
-<pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID...</code></pre>
+<pre><code>## Defining broadClass using: geneName, geneBiotype, seqnames</code></pre>
+<pre><code>## Arranging by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch38_<span class="dv">90</span>)</code></pre></div>
 <pre><code>## [1] "GRanges object with 64661 ranges and 7 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqinfo</a></span>(grch38_<span class="dv">90</span>)</code></pre></div>
@@ -332,9 +329,8 @@
 ##   - Build: "GRCh37"
 ##   - Release: "75"
 ##   - Level: "genes"</code></pre>
-<pre><code>## Standardizing the metadata columns...</code></pre>
-<pre><code>## Defining broad class using: geneName, geneBiotype, seqnames</code></pre>
-<pre><code>## Sorting ranges by geneID...</code></pre>
+<pre><code>## Defining broadClass using: geneName, geneBiotype, seqnames</code></pre>
+<pre><code>## Arranging by geneID...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(grch37)</code></pre></div>
 <pre><code>## [1] "GRanges object with 64102 ranges and 6 metadata columns"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GenomeInfoDb<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/GenomeInfoDb/topics/seqinfo">seqinfo</a></span>(grch37)</code></pre></div>
@@ -359,8 +355,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genes &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>, <span class="dt">level =</span> <span class="st">"genes"</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(genes)</code></pre></div>
 <pre><code>## Observations: 65,256
-## Variables: 13
-## $ rowname        &lt;chr&gt; "ENSG00000000003", "ENSG00000000005", "ENSG0000...
+## Variables: 12
 ## $ seqnames       &lt;fct&gt; X, X, 20, 1, 1, 1, 1, 6, 6, 6, 1, 1, X, 6, 3, 7...
 ## $ start          &lt;int&gt; 100627109, 100584802, 50934867, 169849631, 1696...
 ## $ end            &lt;int&gt; 100639991, 100599885, 50958555, 169894267, 1698...
@@ -376,8 +371,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">transcripts &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeGRanges.html">annotable</a></span>(<span class="st">"Homo sapiens"</span>, <span class="dt">level =</span> <span class="st">"transcripts"</span>)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>(transcripts)</code></pre></div>
 <pre><code>## Observations: 225,358
-## Variables: 19
-## $ rowname                &lt;chr&gt; "ENST00000000233", "ENST00000000412", "...
+## Variables: 18
 ## $ seqnames               &lt;fct&gt; 7, 12, 11, 12, 2, 2, 6, 16, 4, 3, 7, 7,...
 ## $ start                  &lt;int&gt; 127588345, 8940365, 64305578, 2794953, ...
 ## $ end                    &lt;int&gt; 127591705, 8949955, 64316738, 2805423, ...
@@ -562,7 +556,7 @@ panther &lt;-<span class="st"> </span><span class="kw"><a href="../reference/pan
 <div id="ggplot2-themes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ggplot2-themes" class="anchor"></a>ggplot2 themes</h2>
-<p>The package provides two simple, high-contrast <a href="https://ggplot2.tidyverse.org">ggplot2</a> <span class="citation">(Wickham 2009)</span> themes that are suitable for publication and presentation. Both of these themes extend the <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_bw()</a></code> theme, with a few tweaks. <code><a href="../reference/ggplot2_themes.html">theme_paperwhite()</a></code> uses black on white colors, and <code><a href="../reference/ggplot2_themes.html">theme_midnight()</a></code> is a dark theme, instead opting for white on black. Both themes use bold sans serif fonts for all labels, and remove the axis grid by default, which are typically not very informative and make a plot appear more cluttered.</p>
+<p>The package provides two simple, high-contrast <a href="https://ggplot2.tidyverse.org">ggplot2</a> <span class="citation">(Wickham 2009)</span> themes that are suitable for publication and presentation. Both of these themes extend the <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">ggplot2::theme_bw()</a></code> theme, with a few tweaks. <code><a href="../reference/ggplot2-themes.html">theme_paperwhite()</a></code> uses black on white colors, and <code><a href="../reference/ggplot2-themes.html">theme_midnight()</a></code> is a dark theme, instead opting for white on black. Both themes use bold sans serif fonts for all labels, and remove the axis grid by default, which are typically not very informative and make a plot appear more cluttered.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"ggplot2"</span>)
 p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(
     <span class="dt">data =</span> mpg,
@@ -579,9 +573,9 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-21-2.png" width="700"></p>
 <p>The basejump themes extend <code><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code>, with a few tweaks and color changes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2_themes.html">theme_paperwhite</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2-themes.html">theme_paperwhite</a></span>()</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-22-1.png" width="700"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2_themes.html">theme_midnight</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggplot2-themes.html">theme_midnight</a></span>()</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-22-2.png" width="700"></p>
 </div>
 <div id="heatmaps" class="section level2">
@@ -590,9 +584,9 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 <p>Additional, the package provides support for easy heatmap generation, by wrapping the popular <a href="https://cran.r-project.org/package=pheatmap">pheatmap</a> package. Here are providing <code>SummarizedExperiment</code> method support, so annotation column metadata is handled seamlessly.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotHeatmap.html">plotHeatmap</a></span>(rse_small)</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-23-1.png" width="700"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotCorrelationHeatmap.html">plotCorrelationHeatmap</a></span>(rse_small)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotHeatmap.html">plotCorrelationHeatmap</a></span>(rse_small)</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-24-1.png" width="700"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotQuantileHeatmap.html">plotQuantileHeatmap</a></span>(rse_small)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/plotHeatmap.html">plotQuantileHeatmap</a></span>(rse_small)</code></pre></div>
 <p><img src="basejump_files/figure-html/unnamed-chunk-25-1.png" width="700"></p>
 </div>
 </div>
@@ -835,134 +829,259 @@ p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentat
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-10-03                  
+##  date     2018-10-07                  
 ## 
 ## ─ Packages ──────────────────────────────────────────────────────────────
-##  package                * version   date       lib source        
-##  AnnotationDbi            1.43.1    2018-06-13 [1] Bioconductor  
-##  AnnotationFilter         1.5.2     2018-06-13 [1] Bioconductor  
-##  AnnotationHub            2.13.7    2018-09-26 [1] Bioconductor  
-##  assertive.base           0.0-7     2016-12-30 [1] CRAN (R 3.5.0)
-##  assertive.code           0.0-1     2015-10-06 [1] CRAN (R 3.5.0)
-##  assertive.data           0.0-1     2015-10-06 [1] CRAN (R 3.5.0)
-##  assertive.files          0.0-2     2016-05-10 [1] CRAN (R 3.5.0)
-##  assertive.numbers        0.0-2     2016-05-09 [1] CRAN (R 3.5.0)
-##  assertive.properties     0.0-4     2016-12-30 [1] CRAN (R 3.5.0)
-##  assertive.sets           0.0-3     2016-12-30 [1] CRAN (R 3.5.0)
-##  assertive.strings        0.0-3     2016-05-10 [1] CRAN (R 3.5.0)
-##  assertive.types          0.0-3     2016-12-30 [1] CRAN (R 3.5.0)
-##  assertthat               0.2.0     2017-04-11 [1] CRAN (R 3.5.0)
-##  backports                1.1.2     2017-12-13 [1] CRAN (R 3.5.0)
-##  basejump               * 0.99.0    2018-10-03 [1] Bioconductor  
-##  bindr                    0.1.1     2018-03-13 [1] CRAN (R 3.5.0)
-##  bindrcpp                 0.2.2     2018-03-29 [1] CRAN (R 3.5.0)
-##  Biobase                * 2.41.2    2018-07-18 [1] Bioconductor  
-##  BiocGenerics           * 0.27.1    2018-06-17 [1] Bioconductor  
-##  BiocManager              1.30.2    2018-08-24 [1] CRAN (R 3.5.0)
-##  BiocParallel           * 1.15.12   2018-09-13 [1] Bioconductor  
-##  BiocStyle              * 2.9.6     2018-08-19 [1] Bioconductor  
-##  biomaRt                  2.37.6    2018-09-06 [1] Bioconductor  
-##  Biostrings               2.49.2    2018-10-01 [1] Bioconductor  
-##  bit                      1.1-14    2018-05-29 [1] CRAN (R 3.5.0)
-##  bit64                    0.9-7     2017-05-08 [1] CRAN (R 3.5.0)
-##  bitops                   1.0-6     2013-08-17 [1] CRAN (R 3.5.0)
-##  blob                     1.1.1     2018-03-25 [1] CRAN (R 3.5.0)
-##  bookdown                 0.7       2018-02-18 [1] CRAN (R 3.5.0)
-##  cli                      1.0.1     2018-09-25 [1] CRAN (R 3.5.1)
-##  codetools                0.2-15    2016-10-05 [2] CRAN (R 3.5.1)
-##  colorspace               1.3-2     2016-12-14 [1] CRAN (R 3.5.0)
-##  commonmark               1.6       2018-09-30 [1] CRAN (R 3.5.0)
-##  cowplot                  0.9.3     2018-07-15 [1] CRAN (R 3.5.0)
-##  crayon                   1.3.4     2017-09-16 [1] CRAN (R 3.5.0)
-##  curl                     3.2       2018-03-28 [1] CRAN (R 3.5.0)
-##  DBI                      1.0.0     2018-05-02 [1] CRAN (R 3.5.0)
-##  DelayedArray           * 0.7.45    2018-09-28 [1] Bioconductor  
-##  desc                     1.2.0     2018-05-01 [1] CRAN (R 3.5.0)
-##  digest                   0.6.17    2018-09-12 [1] CRAN (R 3.5.1)
-##  dplyr                    0.7.6     2018-06-29 [1] CRAN (R 3.5.1)
-##  EnsDb.Hsapiens.v75       2.99.0    2018-08-27 [1] Bioconductor  
-##  ensembldb                2.5.8     2018-08-31 [1] Bioconductor  
-##  evaluate                 0.11      2018-07-17 [1] CRAN (R 3.5.1)
-##  fs                       1.2.6     2018-08-23 [1] CRAN (R 3.5.0)
-##  GenomeInfoDb           * 1.17.2    2018-09-26 [1] Bioconductor  
-##  GenomeInfoDbData         1.1.0     2018-07-18 [1] Bioconductor  
-##  GenomicAlignments        1.17.3    2018-07-18 [1] Bioconductor  
-##  GenomicFeatures          1.33.2    2018-08-13 [1] Bioconductor  
-##  GenomicRanges          * 1.33.14   2018-09-20 [1] Bioconductor  
-##  ggplot2                * 3.0.0     2018-07-03 [1] CRAN (R 3.5.0)
-##  ggrepel                  0.8.0     2018-05-09 [1] CRAN (R 3.5.0)
-##  glue                     1.3.0     2018-07-17 [1] CRAN (R 3.5.1)
-##  gridExtra                2.3       2017-09-09 [1] CRAN (R 3.5.0)
-##  grr                      0.9.5     2016-08-26 [1] CRAN (R 3.5.0)
-##  gtable                   0.2.0     2016-02-26 [1] CRAN (R 3.5.0)
-##  hms                      0.4.2     2018-03-10 [1] CRAN (R 3.5.0)
-##  htmltools                0.3.6     2017-04-28 [1] CRAN (R 3.5.0)
-##  httpuv                   1.4.5     2018-07-19 [1] CRAN (R 3.5.0)
-##  httr                     1.3.1     2017-08-20 [1] CRAN (R 3.5.0)
-##  interactiveDisplayBase   1.19.2    2018-09-06 [1] Bioconductor  
-##  IRanges                * 2.15.18   2018-09-20 [1] Bioconductor  
-##  jsonlite                 1.5       2017-06-01 [1] CRAN (R 3.5.0)
-##  knitr                    1.20      2018-02-20 [1] CRAN (R 3.5.0)
-##  labeling                 0.3       2014-08-23 [1] CRAN (R 3.5.0)
-##  later                    0.7.5     2018-09-18 [1] CRAN (R 3.5.1)
-##  lattice                  0.20-35   2017-03-25 [2] CRAN (R 3.5.1)
-##  lazyeval                 0.2.1     2017-10-29 [1] CRAN (R 3.5.0)
-##  magrittr                 1.5       2014-11-22 [1] CRAN (R 3.5.0)
-##  MASS                     7.3-50    2018-04-30 [2] CRAN (R 3.5.1)
-##  Matrix                   1.2-14    2018-04-13 [2] CRAN (R 3.5.1)
-##  Matrix.utils             0.9.7     2018-04-19 [1] CRAN (R 3.5.0)
-##  matrixStats            * 0.54.0    2018-07-23 [1] CRAN (R 3.5.0)
-##  memoise                  1.1.0     2017-04-21 [1] CRAN (R 3.5.0)
-##  mime                     0.5       2016-07-07 [1] CRAN (R 3.5.0)
-##  munsell                  0.5.0     2018-06-12 [1] CRAN (R 3.5.0)
-##  pbapply                  1.3-4     2018-01-10 [1] CRAN (R 3.5.0)
-##  pheatmap                 1.0.10    2018-05-19 [1] CRAN (R 3.5.0)
-##  pillar                   1.3.0     2018-07-14 [1] CRAN (R 3.5.0)
-##  pkgconfig                2.0.2     2018-08-16 [1] CRAN (R 3.5.1)
-##  pkgdown                  1.1.0     2018-06-02 [1] CRAN (R 3.5.0)
-##  plyr                     1.8.4     2016-06-08 [1] CRAN (R 3.5.0)
-##  prettyunits              1.0.2     2015-07-13 [1] CRAN (R 3.5.0)
-##  progress                 1.2.0     2018-06-14 [1] CRAN (R 3.5.0)
-##  promises                 1.0.1     2018-04-13 [1] CRAN (R 3.5.0)
-##  ProtGenerics             1.13.0    2018-06-13 [1] Bioconductor  
-##  purrr                    0.2.5     2018-05-29 [1] CRAN (R 3.5.0)
-##  R.methodsS3              1.7.1     2016-02-16 [1] CRAN (R 3.5.0)
-##  R.oo                     1.22.0    2018-04-22 [1] CRAN (R 3.5.0)
-##  R.utils                  2.7.0     2018-08-27 [1] CRAN (R 3.5.1)
-##  R6                       2.2.2     2017-06-17 [1] CRAN (R 3.5.0)
-##  RColorBrewer             1.1-2     2014-12-07 [1] CRAN (R 3.5.0)
-##  Rcpp                     0.12.19   2018-10-01 [1] CRAN (R 3.5.0)
-##  RCurl                    1.95-4.11 2018-07-15 [1] CRAN (R 3.5.0)
-##  readr                    1.1.1     2017-05-16 [1] CRAN (R 3.5.0)
-##  reshape2                 1.4.3     2017-12-11 [1] CRAN (R 3.5.0)
-##  rlang                    0.2.2     2018-08-16 [1] CRAN (R 3.5.1)
-##  rmarkdown                1.10      2018-06-11 [1] CRAN (R 3.5.0)
-##  roxygen2                 6.1.0     2018-07-27 [1] CRAN (R 3.5.0)
-##  rprojroot                1.3-2     2018-01-03 [1] CRAN (R 3.5.0)
-##  Rsamtools                1.33.5    2018-09-04 [1] Bioconductor  
-##  RSQLite                  2.1.1     2018-05-06 [1] CRAN (R 3.5.0)
-##  rtracklayer              1.41.5    2018-08-31 [1] Bioconductor  
-##  S4Vectors              * 0.19.20   2018-09-29 [1] Bioconductor  
-##  scales                   1.0.0     2018-08-09 [1] CRAN (R 3.5.0)
-##  sessioninfo              1.1.0     2018-09-25 [1] CRAN (R 3.5.1)
-##  shiny                    1.1.0     2018-05-17 [1] CRAN (R 3.5.0)
-##  SingleCellExperiment     1.3.10    2018-08-04 [1] Bioconductor  
-##  stringi                  1.2.4     2018-07-20 [1] CRAN (R 3.5.0)
-##  stringr                  1.3.1     2018-05-10 [1] CRAN (R 3.5.0)
-##  SummarizedExperiment   * 1.11.6    2018-07-17 [1] Bioconductor  
-##  tibble                   1.4.2     2018-01-22 [1] CRAN (R 3.5.0)
-##  tidyr                    0.8.1     2018-05-18 [1] CRAN (R 3.5.0)
-##  tidyselect               0.2.4     2018-02-26 [1] CRAN (R 3.5.0)
-##  viridis                  0.5.1     2018-03-29 [1] CRAN (R 3.5.0)
-##  viridisLite              0.3.0     2018-02-01 [1] CRAN (R 3.5.0)
-##  withr                    2.1.2     2018-03-15 [1] CRAN (R 3.5.0)
-##  xfun                     0.3       2018-07-06 [1] CRAN (R 3.5.0)
-##  XML                      3.98-1.16 2018-08-19 [1] CRAN (R 3.5.1)
-##  xml2                     1.2.0     2018-01-24 [1] CRAN (R 3.5.0)
-##  xtable                   1.8-3     2018-08-29 [1] CRAN (R 3.5.0)
-##  XVector                  0.21.4    2018-10-01 [1] Bioconductor  
-##  yaml                     2.2.0     2018-07-25 [1] CRAN (R 3.5.0)
-##  zlibbioc                 1.27.0    2018-06-13 [1] Bioconductor  
+##  package                * version   date       lib
+##  AnnotationDbi            1.43.1    2018-06-13 [1]
+##  AnnotationFilter         1.5.2     2018-06-13 [1]
+##  AnnotationHub            2.13.7    2018-09-26 [1]
+##  assertive.base           0.0-7     2016-12-30 [1]
+##  assertive.code           0.0-1     2015-10-06 [1]
+##  assertive.data           0.0-1     2015-10-06 [1]
+##  assertive.files          0.0-2     2016-05-10 [1]
+##  assertive.numbers        0.0-2     2016-05-09 [1]
+##  assertive.properties     0.0-4     2016-12-30 [1]
+##  assertive.sets           0.0-3     2016-12-30 [1]
+##  assertive.strings        0.0-3     2016-05-10 [1]
+##  assertive.types          0.0-3     2016-12-30 [1]
+##  assertthat               0.2.0     2017-04-11 [1]
+##  backports                1.1.2     2017-12-13 [1]
+##  basejump               * 0.99.0    2018-10-07 [1]
+##  bindr                    0.1.1     2018-03-13 [1]
+##  bindrcpp                 0.2.2     2018-03-29 [1]
+##  Biobase                * 2.41.2    2018-07-18 [1]
+##  BiocGenerics           * 0.27.1    2018-06-17 [1]
+##  BiocManager              1.30.2    2018-08-24 [1]
+##  BiocParallel           * 1.15.15   2018-10-05 [1]
+##  BiocStyle              * 2.9.6     2018-08-19 [1]
+##  biomaRt                  2.37.8    2018-10-05 [1]
+##  Biostrings               2.49.2    2018-10-01 [1]
+##  bit                      1.1-14    2018-05-29 [1]
+##  bit64                    0.9-7     2017-05-08 [1]
+##  bitops                   1.0-6     2013-08-17 [1]
+##  blob                     1.1.1     2018-03-25 [1]
+##  bookdown                 0.7       2018-02-18 [1]
+##  cli                      1.0.1     2018-09-25 [1]
+##  codetools                0.2-15    2016-10-05 [2]
+##  colorspace               1.3-2     2016-12-14 [1]
+##  commonmark               1.6       2018-09-30 [1]
+##  cowplot                  0.9.3     2018-07-15 [1]
+##  crayon                   1.3.4     2017-09-16 [1]
+##  curl                     3.2       2018-03-28 [1]
+##  DBI                      1.0.0     2018-05-02 [1]
+##  DelayedArray           * 0.7.47    2018-10-02 [1]
+##  desc                     1.2.0     2018-05-01 [1]
+##  digest                   0.6.17    2018-09-12 [1]
+##  dplyr                    0.7.6     2018-06-29 [1]
+##  EnsDb.Hsapiens.v75       2.99.0    2018-10-07 [1]
+##  ensembldb                2.5.8     2018-08-31 [1]
+##  evaluate                 0.11      2018-07-17 [1]
+##  fs                       1.2.6     2018-08-23 [1]
+##  GenomeInfoDb           * 1.17.2    2018-09-26 [1]
+##  GenomeInfoDbData         1.2.0     2018-10-07 [1]
+##  GenomicAlignments        1.17.3    2018-07-18 [1]
+##  GenomicFeatures          1.33.3    2018-10-05 [1]
+##  GenomicRanges          * 1.33.14   2018-09-20 [1]
+##  ggplot2                * 3.0.0     2018-07-03 [1]
+##  ggrepel                  0.8.0     2018-05-09 [1]
+##  glue                     1.3.0     2018-07-17 [1]
+##  gridExtra                2.3       2017-09-09 [1]
+##  grr                      0.9.5     2016-08-26 [1]
+##  gtable                   0.2.0     2016-02-26 [1]
+##  hms                      0.4.2     2018-03-10 [1]
+##  htmltools                0.3.6     2017-04-28 [1]
+##  httpuv                   1.4.5     2018-07-19 [1]
+##  httr                     1.3.1     2017-08-20 [1]
+##  interactiveDisplayBase   1.19.2    2018-09-06 [1]
+##  IRanges                * 2.15.18   2018-09-20 [1]
+##  jsonlite                 1.5       2017-06-01 [1]
+##  knitr                    1.20      2018-02-20 [1]
+##  labeling                 0.3       2014-08-23 [1]
+##  later                    0.7.5     2018-09-18 [1]
+##  lattice                  0.20-35   2017-03-25 [2]
+##  lazyeval                 0.2.1     2017-10-29 [1]
+##  magrittr                 1.5       2014-11-22 [1]
+##  MASS                     7.3-50    2018-04-30 [2]
+##  Matrix                   1.2-14    2018-04-13 [2]
+##  Matrix.utils             0.9.7     2018-04-19 [1]
+##  matrixStats            * 0.54.0    2018-07-23 [1]
+##  memoise                  1.1.0     2017-04-21 [1]
+##  mime                     0.6       2018-10-05 [1]
+##  munsell                  0.5.0     2018-06-12 [1]
+##  pbapply                  1.3-4     2018-01-10 [1]
+##  pheatmap                 1.0.10    2018-05-19 [1]
+##  pillar                   1.3.0     2018-07-14 [1]
+##  pkgconfig                2.0.2     2018-08-16 [1]
+##  pkgdown                  1.1.0     2018-06-02 [1]
+##  plyr                     1.8.4     2016-06-08 [1]
+##  prettyunits              1.0.2     2015-07-13 [1]
+##  progress                 1.2.0     2018-06-14 [1]
+##  promises                 1.0.1     2018-04-13 [1]
+##  ProtGenerics             1.13.0    2018-06-13 [1]
+##  purrr                    0.2.5     2018-05-29 [1]
+##  R.methodsS3              1.7.1     2016-02-16 [1]
+##  R.oo                     1.22.0    2018-04-22 [1]
+##  R.utils                  2.7.0     2018-08-27 [1]
+##  R6                       2.3.0     2018-10-04 [1]
+##  RColorBrewer             1.1-2     2014-12-07 [1]
+##  Rcpp                     0.12.19   2018-10-01 [1]
+##  RCurl                    1.95-4.11 2018-07-15 [1]
+##  readr                    1.1.1     2017-05-16 [1]
+##  reshape2                 1.4.3     2017-12-11 [1]
+##  rlang                    0.2.2     2018-08-16 [1]
+##  rmarkdown                1.10      2018-06-11 [1]
+##  roxygen2                 6.1.0     2018-07-27 [1]
+##  rprojroot                1.3-2     2018-01-03 [1]
+##  Rsamtools                1.33.6    2018-10-02 [1]
+##  RSQLite                  2.1.1     2018-05-06 [1]
+##  rtracklayer              1.41.5    2018-08-31 [1]
+##  S4Vectors              * 0.19.20   2018-09-29 [1]
+##  scales                   1.0.0     2018-08-09 [1]
+##  sessioninfo              1.1.0     2018-09-25 [1]
+##  shiny                    1.1.0     2018-05-17 [1]
+##  SingleCellExperiment     1.3.10    2018-08-04 [1]
+##  stringi                  1.2.4     2018-07-20 [1]
+##  stringr                  1.3.1     2018-05-10 [1]
+##  SummarizedExperiment   * 1.11.6    2018-07-17 [1]
+##  tibble                   1.4.2     2018-01-22 [1]
+##  tidyr                    0.8.1     2018-05-18 [1]
+##  tidyselect               0.2.4     2018-02-26 [1]
+##  viridis                  0.5.1     2018-03-29 [1]
+##  viridisLite              0.3.0     2018-02-01 [1]
+##  withr                    2.1.2     2018-03-15 [1]
+##  xfun                     0.3       2018-07-06 [1]
+##  XML                      3.98-1.16 2018-08-19 [1]
+##  xml2                     1.2.0     2018-01-24 [1]
+##  xtable                   1.8-3     2018-08-29 [1]
+##  XVector                  0.21.4    2018-10-01 [1]
+##  yaml                     2.2.0     2018-07-25 [1]
+##  zlibbioc                 1.27.0    2018-06-13 [1]
+##  source                                       
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  local (mjsteinbaugh/basejump-private@75d4c8e)
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.1)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.1)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.1)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.1)                               
+##  CRAN (R 3.5.1)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.1)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
+##  CRAN (R 3.5.0)                               
+##  Bioconductor                                 
 ## 
 ## [1] /Users/mike/R/library/3.5-bioc-3.8-devel
 ## [2] /Library/Frameworks/R.framework/Versions/3.5/Resources/library</code></pre>

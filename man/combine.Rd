@@ -33,6 +33,7 @@ We're attempting to make this as strict as possible, requiring:
 }
 \examples{
 # SummarizedExperiment ====
+data(rse_small)
 x <- rse_small
 colnames(x)
 colData(x)
@@ -50,6 +51,7 @@ colnames(c)
 colData(c)
 
 # SingleCellExperiment ====
+data(sce_small)
 x <- sce_small
 head(colnames(x))
 sampleData(x)
@@ -72,14 +74,24 @@ sampleData(y)
 # Combine two SingleCellExperiment objects.
 c <- combine(x, y)
 print(c)
-# FIXME sampleData(c)
+sampleData(c)
 }
 \seealso{
 \itemize{
 \item \code{\link[BiocGenerics:combine]{BiocGenerics::combine()}}.
 \item \code{help("merge.Matrix", "Matrix.utils")}.
 }
+
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{counts}},
+  \code{\link{makeSummarizedExperiment}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{minimalSampleData}},
+  \code{\link{sampleData}}, \code{\link{sampleNames}},
+  \code{\link{selectSamples}},
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh
 }
+\concept{Data Functions}

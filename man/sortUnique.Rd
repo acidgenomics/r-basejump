@@ -22,7 +22,7 @@ sortUnique(c(NA, NA, "milk", "eggs", "eggs"))
 }
 \seealso{
 Other Atomic Vector Functions: \code{\link{detectLanes}},
-  \code{\link{grepString}}, \code{\link{toStringUnique}}
+  \code{\link{toStringUnique}}
 }
 \author{
 Michael Steinbaugh

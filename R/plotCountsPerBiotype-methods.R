@@ -1,7 +1,3 @@
-# FIXME Improve the documentation.
-
-
-
 #' Plot Counts per Biotype
 #'
 #' @name plotCountsPerBiotype
@@ -9,15 +5,22 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @export
 #'
-#' @seealso [broadClass()].
-#'
 #' @inheritParams general
 #'
 #' @return `ggplot`.
 #'
+#' @seealso [makeGRanges].
+#'
 #' @examples
+#' data(rse_small, sce_small)
+#'
+#' # SummarizedExperiment ====
 #' plotCountsPerBiotype(rse_small)
 #' plotCountsPerBroadClass(rse_small)
+#'
+#' # SingleCellExperiment ====
+#' plotCountsPerBiotype(sce_small)
+#' plotCountsPerBroadClass(sce_small)
 NULL
 
 

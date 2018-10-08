@@ -28,7 +28,8 @@ Always stop on error.
 Assert All Are Valid Names
 }
 \examples{
-assertAllAreValidNames(c("sample_1", "sample_2"))
+assertAllAreValidNames(c("sample1", "sample2"))
+validDimnames(basejump::rse_small)
 validDimnames(datasets::mtcars)
 validNames(c(
     "sample_1",
@@ -57,11 +58,9 @@ Other Assert Check Functions: \code{\link{assertAllAreNonExisting}},
   \code{\link{assertIsDir}},
   \code{\link{assertIsFillScaleContinuousOrNULL}},
   \code{\link{assertIsFillScaleDiscreteOrNULL}},
-  \code{\link{assertIsGene2symbol}},
   \code{\link{assertIsHeaderLevel}},
   \code{\link{assertIsHexColorFunctionOrNULL}},
-  \code{\link{assertIsImplicitInteger}},
-  \code{\link{assertIsTx2gene}}
+  \code{\link{assertIsImplicitInteger}}
 }
 \author{
 Michael Steinbaugh

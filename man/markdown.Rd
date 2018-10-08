@@ -22,6 +22,7 @@ Markdown output.
 Markdown
 }
 \examples{
+data(rse_small)
 markdown(rse_small)
 }
 \author{

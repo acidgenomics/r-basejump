@@ -30,7 +30,7 @@ plotCountsPerGene(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -38,7 +38,7 @@ When passing in a \code{string}, the name must be defined in \code{\link[=assayN
 \item{geom}{\code{string}. Type of ggplot2 geometric object to use.}
 
 \item{trans}{\code{string}. Apply a log transformation (e.g. \code{log2(x + 1L)}) to
-the counts matrix prior to melting, if desired. Use \code{"identity"} to return
+the count matrix prior to melting, if desired. Use \code{"identity"} to return
 unmodified (default).}
 
 \item{color}{\code{ggproto}/\code{ScaleDiscrete} or \code{NULL}. Desired ggplot2 color
@@ -68,6 +68,8 @@ Generally, we expect similar count spreads for all genes between samples
 unless the library sizes or total RNA expression are different.
 }
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 plotCountsPerGene(rse_small, geom = "density")
 plotCountsPerGene(rse_small, geom = "boxplot")

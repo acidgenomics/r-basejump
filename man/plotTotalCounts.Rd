@@ -24,7 +24,7 @@ plotTotalCounts(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{scalar}. Name or index of counts matrix slotted in \code{\link[=assays]{assays()}}.
+\item{assay}{\code{scalar}. Name or index of count matrix slotted in \code{\link[=assays]{assays()}}.
 When passing in a \code{string}, the name must be defined in \code{\link[=assayNames]{assayNames()}}.}
 
 \item{interestingGroups}{\code{character}. Groups of interest.}
@@ -46,6 +46,7 @@ plots containing many samples.}
 Plot Total Counts
 }
 \examples{
+data(rse_small, sce_small)
 plotTotalCounts(rse_small)
 plotTotalCounts(sce_small)
 }

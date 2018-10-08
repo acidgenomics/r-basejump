@@ -17,7 +17,7 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' # SummarizedExperiment ====
+#' data(rse_small)
 #' object <- rse_small
 #'
 #' rownames <- head(rownames(object))

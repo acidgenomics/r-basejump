@@ -2,37 +2,32 @@
 % Please edit documentation in R/hgnc2ensembl.R
 \name{hgnc2ensembl}
 \alias{hgnc2ensembl}
-\title{HGNC to Ensembl Gene ID Mappings.}
+\alias{HGNC2Ensembl}
+\title{\code{HGNC2Ensembl} Generator}
 \usage{
 hgnc2ensembl(.test = FALSE)
+
+HGNC2Ensembl(.test = FALSE)
 }
 \arguments{
 \item{.test}{\code{boolean}. \emph{For unit testing only}.}
 }
 \value{
-\code{hgnc2ensembl}.
+\code{HGNC2Ensembl}.
 }
 \description{
-HGNC to Ensembl Gene ID Mappings.
+\code{HGNC2Ensembl} Generator
 }
 \examples{
 x <- hgnc2ensembl(.test = TRUE)
 print(x)
 }
 \seealso{
-Other Annotation Functions: \code{\link{broadClass}},
-  \code{\link{convertGenesToSymbols}},
-  \code{\link{convertTranscriptsToGenes}},
-  \code{\link{convertUCSCBuildToEnsembl}},
-  \code{\link{eggnog}}, \code{\link{emptyRanges}},
+Other S4 Generators: \code{\link{eggnog}},
   \code{\link{ensembl2entrez}}, \code{\link{gene2symbol}},
-  \code{\link{geneSynonyms}}, \code{\link{makeGRanges}},
-  \code{\link{makeGene2symbol}}, \code{\link{makeTx2gene}},
-  \code{\link{mgi2ensembl}}, \code{\link{organism}},
-  \code{\link{panther}},
-  \code{\link{stripTranscriptVersions}}
+  \code{\link{mgi2ensembl}}, \code{\link{tx2gene}}
 }
 \author{
 Michael Steinbaugh
 }
-\concept{Annotation Functions}
+\concept{S4 Generators}

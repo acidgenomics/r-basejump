@@ -29,6 +29,7 @@ generated internally, and should not be user defined.
 Currently supports \code{DataFrame} or \code{data.frame} input.
 }
 \examples{
+data(rse_small)
 from <- sampleData(rse_small)
 print(from)
 to <- sanitizeSampleData(from)
@@ -36,8 +37,8 @@ all(vapply(to, is.factor, logical(1L)))
 print(to)
 }
 \seealso{
-Other Sanitization Functions: \code{\link{camel}},
-  \code{\link{collapseToString}}, \code{\link{removeNA}},
+Other Sanitization Functions: \code{\link{collapseToString}},
+  \code{\link{makeNames}}, \code{\link{removeNA}},
   \code{\link{sanitizeNA}}, \code{\link{sanitizePercent}},
   \code{\link{sanitizeRowData}}
 }

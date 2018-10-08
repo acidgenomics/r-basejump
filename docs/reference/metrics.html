@@ -120,11 +120,17 @@ tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
 
     <pre class="usage"><span class='fu'>metrics</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='fu'>metricsPerSample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>metrics</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>metrics</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>metrics</span>(<span class='no'>object</span>)
+
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>metricsPerSample</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mean"</span>,
+  <span class='st'>"median"</span>, <span class='st'>"sum"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,6 +142,10 @@ tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
     <tr>
       <th>...</th>
       <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code>string</code>. Mathematical function name to apply. Uses <code>match.arg()</code>.</p></td>
     </tr>
     </table>
     
@@ -150,14 +160,12 @@ tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
-  <code><a href='aggregate.html'>aggregateCols</a></code>, <code><a href='cell2sample.html'>cell2sample</a></code>,
-  <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregate.html'>aggregate</a></code>,
+  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
-  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
+  <code><a href='meltCounts.html'>meltCounts</a></code>,
   <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code>,
@@ -193,7 +201,13 @@ tibble grouped by sample, to be used for plotting with <code>ggplot2</code>.</p>
 #&gt;  8 cell008     58197. sample1  sample1    sample1          
 #&gt;  9 cell009     38976. sample1  sample1    sample1          
 #&gt; 10 cell010     58569. sample1  sample1    sample1          
-#&gt; # ... with 990 more rows</div></pre>
+#&gt; # ... with 990 more rows</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>metricsPerSample</span>(<span class='no'>sce_small</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating mean per sample...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+#&gt; # Groups:   sampleID [2]
+#&gt;   sampleID expLibSize sampleName interestingGroups
+#&gt;   &lt;fct&gt;         &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt;            
+#&gt; 1 sample1      61525. sample1    sample1          
+#&gt; 2 sample2      61330. sample2    sample2          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

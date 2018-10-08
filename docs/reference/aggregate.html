@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aggregate Columns or Rows — aggregateCols • basejump</title>
+<title>Aggregate Rows or Columns — aggregate • basejump</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aggregate Columns or Rows — aggregateCols" />
+<meta property="og:title" content="Aggregate Rows or Columns — aggregate" />
 
-<meta property="og:description" content="Aggregate sample replicates (columns) or gene/transcript features (rows)." />
+<meta property="og:description" content="Aggregate gene/transcript features (rows) or sample replicates (columns)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,41 +105,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aggregate Columns or Rows</h1>
+    <h1>Aggregate Rows or Columns</h1>
     <small class="dont-index">Source: <a href='https://github.com/steinbaugh/basejump/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/steinbaugh/basejump/blob/master/R/aggregate-methods.R'><code>R/aggregate-methods.R</code></a></small>
     <div class="hidden name"><code>aggregate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Aggregate sample replicates (columns) or gene/transcript features (rows).</p>
+    <p>Aggregate gene/transcript features (rows) or sample replicates (columns).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
+<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>,
+  <span class='st'>"mean"</span>))
 
 <span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
+<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>,
+  <span class='st'>"mean"</span>))
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>)
+<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))
+
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>,
+  <span class='st'>"mean"</span>))
+
+<span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='no'>groupings</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>,
+  <span class='st'>"mean"</span>))
+
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"aggregate"</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>object</span>)
+<span class='fu'>aggregateCols</span>(<span class='no'>object</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>,
+  <span class='st'>"mean"</span>))
 
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
-
-<span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>, <span class='no'>groupings</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>object</span>)</pre>
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>aggregateCellsToSamples</span>(<span class='no'>object</span>,
+  <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sum"</span>, <span class='st'>"mean"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,38 +171,51 @@
 The new aggregate names are defined as the <code>factor</code> <code>levels</code>, and the
 original, unaggregated names are defined as the <code>names</code>.</p></td>
     </tr>
+    <tr>
+      <th>fun</th>
+      <td><p><code>string</code>. Name of the aggregation function. Uses <code>match.arg()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p><code>string</code>. Name of column in either <code>rowData()</code> or <code>colData()</code> that
+defines the desired aggregation groupings.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified object, with aggregated columns (samples) or rows
-(features).</p>
+    <p>Modified object, with aggregated rows (features) or columns
+(samples).</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>aggregateCols()</code> works across the columns, and is designed to aggregate
-sample replicates. <code>aggregateRows()</code> works down the rows, and is designed to
-aggregate features (e.g. genes or transcripts). Most commonly, the
-<code>aggregateRows()</code> function can be used to aggregate counts from
-transcript-level to gene-level.</p>
+    <p><code>aggregateRows()</code> works down the rows, and is designed to aggregate features
+(e.g. genes or transcripts). Most commonly, the <code>aggregateRows()</code> function
+can be used to aggregate counts from transcript-level to gene-level.</p>
+<p><code>aggregateCols()</code> works across the columns, and is designed to aggregate
+sample replicates.</p>
     
     <h2 class="hasAnchor" id="summarizedexperiment"><a class="anchor" href="#summarizedexperiment"></a>SummarizedExperiment</h2>
 
     
-    <p>Slot an <code>aggregate</code> column into <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> for
-<code>aggregateCols()</code>, or into <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> for
-<code>aggregateRows()</code>. The S4 method will define the <code>groupings</code> automatically
+    <p>Slot an <code>aggregate</code> column into <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::rowData()</a></code> for
+<code>aggregateRows()</code>, or into <code><a href='http://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>SummarizedExperiment::colData()</a></code> for
+<code>aggregateCols()</code>. The S4 method will define the <code>groupings</code> automatically
 and perform the aggregation.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Data Functions: <code><a href='aggregateCellsToSamples.html'>aggregateCellsToSamples</a></code>,
-  <code><a href='cell2sample.html'>cell2sample</a></code>, <code><a href='counts.html'>counts</a></code>,
+    <div class='dont-index'><ul>
+<li><p><a href='http://www.rdocumentation.org/packages/stats/topics/aggregate'>stats::aggregate</a>.</p></li>
+<li><p><a href='http://www.rdocumentation.org/packages/Matrix.utils/topics/aggregate.Matrix'>Matrix.utils::aggregate.Matrix</a>.</p></li>
+<li><p><a href='http://www.rdocumentation.org/packages/S4Vectors/topics/aggregate-methods'>S4Vectors::aggregate</a>.</p></li>
+</ul></div>
+    <div class='dont-index'><p>Other Data Functions: <code><a href='cell2sample.html'>cell2sample</a></code>,
+  <code><a href='counts.html'>counts</a></code>,
   <code><a href='makeSingleCellExperiment.html'>makeSingleCellExperiment</a></code>,
   <code><a href='makeSummarizedExperiment.html'>makeSummarizedExperiment</a></code>,
-  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>,
-  <code><a href='mapGenes.html'>mapGenesToIDs</a></code>, <code><a href='meltCounts.html'>meltCounts</a></code>,
-  <code><a href='metricsPerSample.html'>metricsPerSample</a></code>, <code><a href='metrics.html'>metrics</a></code>,
+  <code><a href='mapCellsToSamples.html'>mapCellsToSamples</a></code>, <code><a href='mapGenes.html'>mapGenes</a></code>,
+  <code><a href='meltCounts.html'>meltCounts</a></code>, <code><a href='metrics.html'>metrics</a></code>,
   <code><a href='minimalSampleData.html'>minimalSampleData</a></code>,
   <code><a href='sampleData.html'>sampleData</a></code>, <code><a href='sampleNames.html'>sampleNames</a></code>,
   <code><a href='selectSamples.html'>selectSamples</a></code>,
@@ -289,35 +315,9 @@ and perform the aggregation.</p>
 #&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt;   sample2_replicate2
 #&gt; colData names(2): sampleName aggregate</div><div class='input'>
-<span class='co'># aggregateCols ====</span>
-<span class='fu'>aggregateCols</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
-#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
-#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt;             sample1 sample2
-#&gt; transcript1       1       2
-#&gt; transcript2       1       2
-#&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
-#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
-#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; 4 x 2 sparse Matrix of class "dgCMatrix"
-#&gt;             sample1 sample2
-#&gt; transcript1       1       2
-#&gt; transcript2       1       2
-#&gt; transcript3       2       1
-#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
-#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
-#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
-#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 4 2 
-#&gt; metadata(1): aggregate
-#&gt; assays(1): counts
-#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
-#&gt; rowData names(1): aggregate
-#&gt; colnames(2): sample1 sample2
-#&gt; colData names(1): sampleName</div><div class='input'>
 <span class='co'># aggregateRows ====</span>
-<span class='fu'>aggregateRows</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
+<span class='fu'>aggregateRows</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
 #&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt;       sample1_replicate1 sample1_replicate2 sample2_replicate1
@@ -325,7 +325,8 @@ and perform the aggregation.</p>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>genes</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
 #&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
@@ -334,7 +335,8 @@ and perform the aggregation.</p>
 #&gt; gene2                  2                  2                  1
 #&gt;       sample2_replicate2
 #&gt; gene1                  2
-#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts...</span></div><div class='output co'>#&gt; <span class='message'>Groupings:</span>
+#&gt; gene2                  1</div><div class='input'><span class='fu'>aggregateRows</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
 #&gt; <span class='message'>transcript1 transcript2 transcript3 transcript4 </span>
 #&gt; <span class='message'>      gene1       gene1       gene2       gene2 </span>
 #&gt; <span class='message'>Levels: gene1 gene2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
@@ -345,7 +347,47 @@ and perform the aggregation.</p>
 #&gt; rowData names(0):
 #&gt; colnames(4): sample1_replicate1 sample1_replicate2 sample2_replicate1
 #&gt;   sample2_replicate2
-#&gt; colData names(2): sampleName aggregate</div></pre>
+#&gt; colData names(2): sampleName aggregate</div><div class='input'>
+<span class='co'># aggregateCols ====</span>
+<span class='fu'>aggregateCols</span>(<span class='no'>matrix</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
+#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
+#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt;             sample1 sample2
+#&gt; transcript1       1       2
+#&gt; transcript2       1       2
+#&gt; transcript3       2       1
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>sparse</span>, <span class='kw'>groupings</span> <span class='kw'>=</span> <span class='no'>samples</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
+#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
+#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; 4 x 2 sparse Matrix of class "dgCMatrix"
+#&gt;             sample1 sample2
+#&gt; transcript1       1       2
+#&gt; transcript2       1       2
+#&gt; transcript3       2       1
+#&gt; transcript4       2       1</div><div class='input'><span class='fu'>aggregateCols</span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span>
+#&gt; <span class='message'>Groupings:</span>
+#&gt; <span class='message'>sample1_replicate1 sample1_replicate2 sample2_replicate1 sample2_replicate2 </span>
+#&gt; <span class='message'>           sample1            sample1            sample2            sample2 </span>
+#&gt; <span class='message'>Levels: sample1 sample2</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 4 2 
+#&gt; metadata(1): aggregate
+#&gt; assays(1): counts
+#&gt; rownames(4): transcript1 transcript2 transcript3 transcript4
+#&gt; rowData names(1): aggregate
+#&gt; colnames(2): sample1 sample2
+#&gt; colData names(1): sampleName</div><div class='input'>
+<span class='co'># aggregateCellsToSamples ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>aggregateCellsToSamples</span>(<span class='no'>sce_small</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using `sum()`...</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; class: RangedSummarizedExperiment 
+#&gt; dim: 200 2 
+#&gt; metadata(1): aggregate
+#&gt; assays(1): counts
+#&gt; rownames(200): ENSG00000000003 ENSG00000000005 ... ENSG00000008056
+#&gt;   ENSG00000008083
+#&gt; rowData names(4): geneID geneName geneBiotype broadClass
+#&gt; colnames(2): sample1 sample2
+#&gt; colData names(1): sampleName</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

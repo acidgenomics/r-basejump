@@ -3,20 +3,29 @@
 \docType{methods}
 \name{metrics}
 \alias{metrics}
+\alias{metricsPerSample}
 \alias{metrics,SummarizedExperiment-method}
 \alias{metrics,SingleCellExperiment-method}
+\alias{metricsPerSample,SingleCellExperiment-method}
 \title{Metrics}
 \usage{
 metrics(object, ...)
 
+metricsPerSample(object, ...)
+
 \S4method{metrics}{SummarizedExperiment}(object)
 
 \S4method{metrics}{SingleCellExperiment}(object)
+
+\S4method{metricsPerSample}{SingleCellExperiment}(object, fun = c("mean",
+  "median", "sum"))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{fun}{\code{string}. Mathematical function name to apply. Uses \code{\link[=match.arg]{match.arg()}}.}
 }
 \value{
 \code{grouped_df}. Grouped by \code{sampleID} column.
@@ -32,6 +41,8 @@ Note that metrics are cell level but grouped by sample.
 }
 
 \examples{
+data(rse_small, sce_small)
+
 # SummarizedExperiment ====
 x <- metrics(rse_small)
 print(x)
@@ -39,22 +50,19 @@ print(x)
 # SingleCellExperiment ====
 x <- metrics(sce_small)
 print(x)
+
+x <- metricsPerSample(sce_small, fun = "mean")
+print(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
   \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

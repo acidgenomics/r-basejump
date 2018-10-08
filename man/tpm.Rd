@@ -28,19 +28,14 @@ summary(x)
 }
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{counts}},
-  \code{\link{makeSingleCellExperiment}},
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}}, \code{\link{counts}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}
 }
 \author{
 Michael Steinbaugh

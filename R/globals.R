@@ -34,7 +34,11 @@ na <- c("", "NA", "#N/A", "NULL", "null")
 # Ignore case.
 rdataExtPattern <- "\\.(rd[a|ata|s])$"
 
-rdataError <- "R data files must contain `.rda`, `.rds`, or `.RData` extension."
+rdataError <- paste(
+    "Failed to load data.",
+    "R data files must contain `.rda`, `.rds`, or `.RData` extension.",
+    sep = "\n"
+)
 
 #' Update Message
 #' @keywords internal

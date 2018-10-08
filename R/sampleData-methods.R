@@ -25,6 +25,8 @@
 #' @return `DataFrame`.
 #'
 #' @examples
+#' data(rse_small, sce_small)
+#'
 #' # SummarizedExperiment ====
 #' x <- rse_small
 #' sampleData(x)

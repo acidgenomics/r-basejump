@@ -1,7 +1,3 @@
-# FIXME Speed up the working example.
-
-
-
 #' Convert Ensembl Identifiers to Gene Symbols
 #'
 #' @name convertGenesToSymbols
@@ -13,29 +9,32 @@
 #'
 #' @inheritParams makeGRangesFromEnsembl
 #' @inheritParams general
-#' @param gene2symbol `data.frame` or `NULL`. Gene-to-symbol mappings. If set
+#' @param gene2symbol `Gene2Symbol` or `NULL`. Gene-to-symbol mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #'
 #' @return Object with gene IDs converted to names (symbols).
 #'
 #' @examples
-#' gene2symbol <- makeGene2symbolFromEnsembl("Mus musculus")
+#' data(rse_small)
+#' object <- rse_small
+#'
+#' gene2symbol <- gene2symbol(object)
 #' print(gene2symbol)
-#' geneIDs <- c("ENSMUSG00000000001", "ENSMUSG00000000003")
-#' sampleIDs = paste0("sample", seq_len(2L))
+#' genes <- head(gene2symbol[["geneID"]])
 #'
 #' # character ====
-#' x <- convertGenesToSymbols(geneIDs, gene2symbol = gene2symbol)
+#' x <- convertGenesToSymbols(genes, gene2symbol = gene2symbol)
 #' print(x)
 #'
 #' # matrix ====
+#' samples <- head(colnames(object))
 #' counts <- matrix(
-#'     data = seq_len(length(geneIDs) * length(sampleIDs)),
+#'     data = seq_len(length(genes) * length(samples)),
 #'     byrow = TRUE,
-#'     nrow = length(geneIDs),
-#'     ncol = length(sampleIDs),
-#'     dimnames = list(geneIDs, sampleIDs)
+#'     nrow = length(genes),
+#'     ncol = length(samples),
+#'     dimnames = list(genes, samples)
 #' )
 #' print(counts)
 #' x <- convertGenesToSymbols(counts, gene2symbol = gene2symbol)
@@ -61,7 +60,7 @@ NULL
     ) {
         # Allowing duplicates here (unlike convertTranscriptsToGenes).
         assert_all_are_non_missing_nor_empty_character(object)
-        assert_is_any_of(gene2symbol, c("DataFrame", "NULL"))
+        assert_is_any_of(gene2symbol, c("Gene2Symbol", "NULL"))
         assertIsAStringOrNULL(organism)
 
         # If no gene2symbol is provided, fall back to using Ensembl annotations.
@@ -80,7 +79,7 @@ NULL
                 )
             )
         }
-        assertIsGene2symbol(gene2symbol)
+        assert_is_all_of(gene2symbol, "Gene2Symbol")
 
         # Arrange the gene2symbol to match the input.
         gene2symbol <- gene2symbol[

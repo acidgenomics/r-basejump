@@ -14,6 +14,7 @@
 #' @return `DataFrame`. Contains only `character` and `factor` columns.
 #'
 #' @examples
+#' data(rse_small)
 #' from <- SummarizedExperiment::rowRanges(rse_small)
 #' colnames(S4Vectors::mcols(from))
 #' to <- sanitizeRowData(from)

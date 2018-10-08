@@ -1,12 +1,7 @@
-# FIXME Speed up the working example.
-# FIXME Improve working example to show `aggregate = TRUE` more clearly.
-
-
-
 #' Convert Ensembl Transcripts to Genes
 #'
 #' @note
-#' For objects containing a counts matrix, the object rows will be collapsed to
+#' For objects containing a count matrix, the object rows will be collapsed to
 #' gene level using [aggregateRows()]. This applies to our
 #' `SummarizedExperiment` method.
 #'
@@ -15,10 +10,10 @@
 #' @author Michael Steinbaugh
 #' @export
 #'
-#' @include makeTx2gene.R
+#' @include makeTx2Gene.R
 #' @inherit convertGenesToSymbols
 #'
-#' @param tx2gene `tx2gene` or `NULL`. Transcript-to-gene mappings. If set
+#' @param tx2gene `Tx2Gene` or `NULL`. Transcript-to-gene mappings. If set
 #'   `NULL`, the function will attempt to download the mappings from Ensembl
 #'   automatically.
 #' @param aggregate `boolean`. For objects supporting [dim()], aggregate counts
@@ -33,21 +28,23 @@
 #' @seealso [aggregateRows()].
 #'
 #' @examples
-#' tx2gene <- tx2gene(tx_se_small)
+#' data(tx_se_small)
+#' object <- tx_se_small
+#'
+#' tx2gene <- tx2gene(object)
 #' print(tx2gene)
-#' transcriptIDs <- rownames(tx_se_small)
-#' print(transcriptIDs)
-#' stopifnot(all(transcriptIDs %in% rownames(tx2gene)))
+#' transcripts <- rownames(object)
+#' print(transcripts)
 #'
 #' # character ====
 #' # Returns as factor.
-#' x <- convertTranscriptsToGenes(transcriptIDs, tx2gene = tx2gene)
+#' x <- convertTranscriptsToGenes(transcripts, tx2gene = tx2gene)
 #' print(x)
 #' str(x)
 #'
 #' # matrix ====
 #' # Note that transcript IDs currently must be in the rows.
-#' counts <- counts(tx_se_small)
+#' counts <- counts(object)
 #' print(counts)
 #' # Aggregate to gene level.
 #' x <- convertTranscriptsToGenes(counts, tx2gene = tx2gene, aggregate = TRUE)
@@ -59,8 +56,8 @@
 #' colSums(x)
 #'
 #' # SummarizedExperiment ====
-#' object <- tx_se_small
-#' print(object)
+#' x <- convertTranscriptsToGenes(object)
+#' print(x)
 NULL
 
 
@@ -74,7 +71,7 @@ NULL
     ) {
         assert_all_are_non_missing_nor_empty_character(object)
         assert_has_no_duplicates(object)
-        assert_is_any_of(tx2gene, c("DataFrame", "NULL"))
+        assert_is_any_of(tx2gene, c("Tx2Gene", "NULL"))
         assertIsAStringOrNULL(organism)
 
         # If no tx2gene is provided, fall back to using Ensembl annotations.
@@ -93,7 +90,7 @@ NULL
                 )
             )
         }
-        assertIsTx2gene(tx2gene)
+        assert_is_all_of(tx2gene, "Tx2Gene")
 
         missing <- setdiff(object, tx2gene[["transcriptID"]])
         if (has_length(missing)) {
@@ -113,7 +110,7 @@ NULL
         return
     }
 f1 <- formals(.convertTranscriptsToGenes.character)
-f2 <- formals(makeTx2geneFromEnsembl)
+f2 <- formals(makeTx2GeneFromEnsembl)
 f2 <- f2[setdiff(names(f2), c(names(f1)))]
 f <- c(f1, f2)
 formals(.convertTranscriptsToGenes.character) <- f

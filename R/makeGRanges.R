@@ -115,6 +115,131 @@ NULL
 
 
 
+#' Broad Class Definitions
+#'
+#' @noRd
+#' @author Rory Kirchner, Michael Steinbaugh
+#'
+#' @inheritParams general
+#' @param object Object that can be coerced to `DataFrame`, containing gene or
+#'   transcript annotations. `GRanges` is recommended.
+#'
+#' @return Named `factor` containing broad class definitions.
+.broadClass <- function(object) {
+    data <- as(object, "tbl_df")
+    assert_are_identical(data[["rowname"]], names(object))
+    rownames <- data[["rowname"]]
+
+    # Early return if already defined.
+    if ("broadClass" %in% colnames(data)) {
+        broad <- data[["broadClass"]]
+        names(broad) <- rownames
+        return(broad)
+    }
+
+    # Gene name (required).
+    assert_is_subset("geneName", colnames(data))
+    geneName <- data[["geneName"]]
+
+    # Biotype (optional)
+    # Prioritize transcript over gene, if present.
+    biotypeCol <- grep(
+        pattern = "biotype$",
+        x = colnames(data),
+        ignore.case = TRUE,
+        value = TRUE
+    )
+    if (has_length(biotypeCol)) {
+        biotypeCol <- biotypeCol[[1L]]
+        biotype <- data[[biotypeCol]]
+    } else {
+        # nocov start
+        warning("Biotype column is missing.", call. = FALSE)
+        biotype <- NA
+        # nocov end
+    }
+
+    # Seqname (optional; aka chromosome).
+    seqnameCol <- grep(
+        pattern = "seqname",
+        x = colnames(data),
+        ignore.case = TRUE,
+        value = TRUE
+    )
+    if (has_length(seqnameCol)) {
+        seqnameCol <- seqnameCol[[1L]]
+        seqname <- data[[seqnameCol]]
+    } else {
+        # nocov start
+        warning("`seqname` column is missing.", call. = FALSE)
+        seqname <- NA
+        # nocov end
+    }
+
+    message(paste(
+        "Defining broadClass using:",
+        toString(c("geneName", biotypeCol, seqnameCol))
+    ))
+
+    data <- tibble(
+        geneName = geneName,
+        biotype = biotype,
+        seqname = seqname
+    )
+
+    broad <- case_when(
+        data[["seqname"]] == "MT" ~ "mito",
+        grepl(
+            pattern = "^mt[\\:\\-]",
+            x = data[["geneName"]],
+            ignore.case = TRUE
+        ) ~ "mito",
+        data[["biotype"]] == "protein_coding" ~ "coding",
+        data[["biotype"]] %in% c(
+            "known_ncrna",
+            "lincRNA",
+            "non_coding"
+        ) ~ "noncoding",
+        grepl(
+            pattern = "pseudo",
+            x = data[["biotype"]]
+        ) ~ "pseudo",
+        data[["biotype"]] %in% c(
+            "miRNA",
+            "misc_RNA",
+            "ribozyme",
+            "rRNA",
+            "scaRNA",
+            "scRNA",
+            "snoRNA",
+            "snRNA",
+            "sRNA"
+        ) ~ "small",
+        data[["biotype"]] %in% c(
+            "non_stop_decay",
+            "nonsense_mediated_decay"
+        ) ~ "decaying",
+        grepl(
+            pattern = "^ig_",
+            x = data[["biotype"]],
+            ignore.case = TRUE
+        ) ~ "ig",
+        grepl(
+            pattern = "^tr_",
+            x = data[["biotype"]],
+            ignore.case = TRUE
+        ) ~ "tcr",
+        # Consider using `NA_character_` here instead.
+        TRUE ~ "other"
+    )
+
+    broad <- as.factor(broad)
+    names(broad) <- rownames
+    broad
+}
+
+
+
 #' @rdname makeGRanges
 #' @export
 makeGRangesFromEnsembl <- function(
@@ -322,24 +447,14 @@ makeGRangesFromEnsembl <- function(
             return.type = "GRanges"
         )
 
-        # Merge the data.
+        # Join the transcript- and gene-level annotations.
         txData <- mcols(tx)
         geneData <- mcols(gene)
-        mergeData <- merge(
-            x = txData,
-            y = geneData,
-            by = "gene_id",
-            all.x = TRUE,
-            sort = FALSE
-        )
-        assert_are_set_equal(txData[["tx_id"]], mergeData[["tx_id"]])
-        match <- match(x = txData[["tx_id"]], table = mergeData[["tx_id"]])
-        stopifnot(!any(is.na(match)))
-        mergeData <- mergeData[match, , drop = FALSE]
-        assert_are_identical(txData[["tx_id"]], mergeData[["tx_id"]])
+        data <- left_join(x = txData, y = geneData, by = "gene_id")
+        assert_are_identical(txData[["tx_id"]], data[["tx_id"]])
 
         # Now we can slot back into the transcript mcols.
-        mcols(tx) <- mergeData
+        mcols(tx) <- data
         gr <- tx
     }
 
@@ -436,7 +551,7 @@ makeGRangesFromGFF <- function(
         assert_is_subset("biotype", colnames(mcols(gn)))
         mcols(gn)[["geneBiotype"]] <- mcols(gn)[["biotype"]]
         mcols(gn)[["biotype"]] <- NULL
-        # Remove extra columns
+        # Remove extra columns.
         mcols(gn)[["alias"]] <- NULL
         mcols(gn)[["id"]] <- NULL
         mcols(gn)[["parent"]] <- NULL
@@ -489,7 +604,7 @@ makeGRangesFromGFF <- function(
                 replacement = "",
                 x = mcols(tx)[["geneID"]]
             )
-            # Remove extra columns
+            # Remove extra columns.
             mcols(tx)[["alias"]] <- NULL
             mcols(tx)[["id"]] <- NULL
             mcols(tx)[["parent"]] <- NULL
@@ -543,9 +658,8 @@ makeGRangesFromGFF <- function(
     assert_has_names(object)
 
     # Standardize the metadata columns.
-    message("Standardizing the metadata columns...")
     mcols <- mcols(object)
-    # Sanitize to camel case
+    # Sanitize to camel case.
     mcols <- camel(mcols)
     # Ensure "ID" is always capitalized (e.g. "entrezid").
     colnames(mcols) <- gsub("id$", "ID", colnames(mcols))
@@ -558,7 +672,7 @@ makeGRangesFromGFF <- function(
     # Remove columns that are all NA.
     mcols <- removeNA(mcols)
 
-    # Missing `geneName`
+    # Missing `geneName`.
     if (!"geneName" %in% colnames(mcols)) {
         # nocov start
         warning("`geneName` is missing. Using `geneID` instead.")
@@ -618,13 +732,13 @@ makeGRangesFromGFF <- function(
     names(object) <- mcols(object)[[idCol]]
 
     # Ensure broad class definitions are included.
-    mcols(object)[["broadClass"]] <- broadClass(object)
+    mcols(object)[["broadClass"]] <- .broadClass(object)
 
-    # Sort metadata columns alphabetically
+    # Sort metadata columns alphabetically.
     mcols(object) <- mcols(object)[, sort(colnames(mcols(object)))]
 
-    # Ensure GRanges is sorted by names
-    message(paste0("Sorting ranges by ", idCol, "..."))
+    # Ensure GRanges is sorted by names.
+    message(paste0("Arranging by ", idCol, "..."))
     object <- object[sort(names(object))]
 
     assert_is_all_of(object, "GRanges")
@@ -680,6 +794,6 @@ annotable <-
             what = makeGRangesFromEnsembl,
             args = matchArgsToDoCall()
         )
-        as(gr, "tbl_df")
+        as_tibble(gr, rownames = NULL)
     }
 formals(annotable) <- formals(makeGRangesFromEnsembl)

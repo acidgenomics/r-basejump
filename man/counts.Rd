@@ -24,10 +24,10 @@
 \item{value}{Value to assign.}
 }
 \value{
-Counts matrix. Typically \code{matrix} or \code{sparseMatrix} class.
+Matrix. Typically \code{matrix} or \code{sparseMatrix} class.
 }
 \description{
-Counts
+Count matrix.
 }
 \note{
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
@@ -39,18 +39,13 @@ x <- counts(rse_small)
 summary(x)
 }
 \seealso{
-Other Data Functions: \code{\link{aggregateCellsToSamples}},
-  \code{\link{aggregateCols}}, \code{\link{cell2sample}},
-  \code{\link{makeSingleCellExperiment}},
+Other Data Functions: \code{\link{aggregate}},
+  \code{\link{combine}},
   \code{\link{makeSummarizedExperiment}},
-  \code{\link{mapCellsToSamples}},
-  \code{\link{mapGenesToIDs}}, \code{\link{meltCounts}},
-  \code{\link{metricsPerSample}}, \code{\link{metrics}},
-  \code{\link{minimalSampleData}},
+  \code{\link{mapGenes}}, \code{\link{meltCounts}},
+  \code{\link{metrics}}, \code{\link{minimalSampleData}},
   \code{\link{sampleData}}, \code{\link{sampleNames}},
   \code{\link{selectSamples}},
-  \code{\link{subsetPerSample}},
-  \code{\link{topCellsPerSample}}, \code{\link{tpm}},
-  \code{\link{tx2gene}}
+  \code{\link{subsetPerSample}}, \code{\link{tpm}}
 }
 \concept{Data Functions}
